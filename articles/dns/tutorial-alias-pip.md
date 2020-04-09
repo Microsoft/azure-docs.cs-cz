@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77149928"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985435"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Kurz: Konfigurace záznamu aliasu odkazujícího na veřejnou IP adresu Azure 
 
@@ -20,8 +20,8 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření síťové infrastruktury
-> * Vytvoření virtuálního počítače s webovým serverem
-> * Vytvoření záznamu aliasu
+> * Vytvořte virtuální počítač webového serveru s veřejnou IP adresou.
+> * Vytvořte záznam aliasu, který odkazuje na veřejnou IP adresu.
 > * Test záznamu aliasu
 
 
@@ -48,7 +48,7 @@ Nejprve vytvořte virtuální síť a podsíť, do které umístíte webové ser
 4. V části **Nastavení** vyberte virtuální síť **VNet-Servers** a podsíť **SN-Web**. U veřejných příchozích portů vyberte **HTTP** > **HTTPS** > **RDP (3389)** a pak vyberte **OK**.
 5. Na stránce **Souhrn** vyberte **Vytvořit**.
 
-Dokončení tohoto postupu trvá několik minut.
+Dokončení tohoto postupu trvá několik minut. Virtuální počítač bude mít připojenou síťovou síťovou karty, která bude mít základní dynamickou veřejnou IP adresu nazvanou Web-01-ip. Veřejná IP adresa se změní při každém restartování virtuálního počítače.
 
 ### <a name="install-iis"></a>Instalace služby IIS
 

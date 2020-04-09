@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 04/07/2020
 ms.author: willzhan
-ms.openlocfilehash: 64cd93acc78f4cb5b7ebc4266e7359aec662890c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295421"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887193"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline Widevine streamování pro Android s Mediální služby v3
 
@@ -153,65 +153,13 @@ Výše uvedená aplikace aplikace PWA s otevřeným zdrojovým kódem je napsán
     - Certifikát musí mít důvěryhodnou certifikační autoritu a certifikát vývoje podepsaný svým držitelem nefunguje.
     - Certifikát musí mít cn odpovídající názvu DNS webového serveru nebo brány.
 
-## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+## <a name="faqs"></a>Nejčastější dotazy
 
-### <a name="question"></a>Otázka
-
-Jak mohu dodat trvalé licence (offline povoleno) pro některé klienty / uživatele a netrvalé licence (offline zakázáno) pro ostatní? Musím duplikovat obsah a používat samostatný klíč obsahu?
-
-### <a name="answer"></a>Odpověď
-Vzhledem k tomu, Media Services v3 umožňuje Asset mít více StreamingLocators. Můžete mít
-
-1.    One ContentKeyPolicy with license_type = "persistent", ContentKeyPolicyRestriction with claim on "persistent" a its StreamingLocator;
-2.    Další ContentKeyPolicy s license_type ="nonpersistent", ContentKeyPolicyRestriction s deklarací "nonpersistent" a jeho StreamingLocator.
-3.    Dva StreamingLocators mají různé ContentKey.
-
-V závislosti na obchodní logiku vlastní STS, různé deklarace identity jsou vydány v tokenu JWT. S tokenem lze získat pouze odpovídající licenci a hrát pouze odpovídající ADRESU URL.
-
-### <a name="question"></a>Otázka
-
-Pro úrovně zabezpečení Widevine, Google "Widevine DRM Architektura Přehled" doc definuje tři různé úrovně zabezpečení. V [dokumentaci k Mediální službě Azure v šabloně licence Widevine](widevine-license-template-overview.md)je však uvedeno pět různých úrovní zabezpečení. Jaký je vztah nebo mapování mezi dvěma různými sadami úrovní zabezpečení?
-
-### <a name="answer"></a>Odpověď
-
-Google "Widevine DRM Architektura Recenze" doc definuje následující tři úrovně zabezpečení:
-
-1.  Úroveň zabezpečení 1: Veškeré zpracování obsahu, kryptografie a řízení se provádějí v prostředí trusted execution environment (TEE). V některých modelech implementace může být zpracování zabezpečení prováděno v různých čipech.
-2.  Úroveň zabezpečení 2: Provádí kryptografii (ale ne zpracování videa) v rámci TEE: dešifrované vyrovnávací paměti jsou vráceny do domény aplikace a zpracovány prostřednictvím samostatného grafického hardwaru nebo softwaru. Na úrovni 2 jsou však kryptografické informace stále zpracovávány pouze v rámci TEE.
-3.  Úroveň zabezpečení 3 nemá v zařízení TEE. Mohou být přijata vhodná opatření k ochraně kryptografických informací a dešifrovaného obsahu v hostitelském operačním systému. Implementace úrovně 3 může také obsahovat hardwarový kryptografický modul, ale to pouze zvyšuje výkon, nikoli zabezpečení.
-
-Současně v [dokumentaci k Mediální službě Azure na šabloně licence Widevine](widevine-license-template-overview.md)může mít vlastnost security_level content_key_specs následujících pět různých hodnot (požadavky na odolnost klientů pro přehrávání):
-
-1.  Je vyžadováno softwarové kryptografické bílky.
-2.  Je vyžadováno softwarové krypto a zamlžený dekodér.
-3.  Klíčové materiálové a kryptografické operace musí být prováděny v rámci tee podporovaného hardwarem.
-4.  Šifrování a dekódování obsahu musí být provedeno v rámci hardwarového tee.
-5.  Šifrování, dekódování a veškerá manipulace s médii (komprimovaná a nekomprimovaná) musí být zpracována v rámci hardwarově podporované tee.
-
-Obě úrovně zabezpečení jsou definovány společností Google Widevine. Rozdíl je v jeho úrovni využití: úroveň architektury nebo úroveň rozhraní API. Pět úrovní zabezpečení se používá v rozhraní WIDEVINE API. Objekt content_key_specs, který obsahuje security_level je deserializován a předán službě widevine globální doručovací služby služby Azure Media Services Widevine licence. V následující tabulce je zobrazeno mapování mezi dvěma sadami úrovní zabezpečení.
-
-| **Úrovně zabezpečení definované v rozsáhlé architektuře** |**Úrovně zabezpečení používané v rozhraní Widevine API**|
-|---|---| 
-| **Úroveň zabezpečení 1**: Veškeré zpracování obsahu, kryptografie a řízení se provádějí v prostředí trusted execution environment (TEE). V některých modelech implementace může být zpracování zabezpečení prováděno v různých čipech.|**security_level=5**: S kryptografickým, dekódovacím a veškerým zpracováním médií (komprimovaných a nekomprimovaných) musí být nakládáno v rámci tee podporovaného hardwarem.<br/><br/>**security_level=4**: Šifrování a dekódování obsahu musí být provedeno v rámci tee podporovaného hardwarem.|
-**Úroveň zabezpečení 2**: Provádí kryptografii (ale ne zpracování videa) v rámci TEE: dešifrované vyrovnávací paměti jsou vráceny do domény aplikace a zpracovány prostřednictvím samostatného grafického hardwaru nebo softwaru. Na úrovni 2 jsou však kryptografické informace stále zpracovávány pouze v rámci TEE.| **security_level=3**: Klíčové materiálové a kryptografické operace musí být prováděny v rámci TEE podporovaného hardwarem. |
-| **Úroveň zabezpečení 3**: Nemá v zařízení TEE. Mohou být přijata vhodná opatření k ochraně kryptografických informací a dešifrovaného obsahu v hostitelském operačním systému. Implementace úrovně 3 může také obsahovat hardwarový kryptografický modul, ale to pouze zvyšuje výkon, nikoli zabezpečení. | **security_level=2**: Je vyžadováno softwarové krypto a zamlžený dekodér.<br/><br/>**security_level=1**: Je vyžadováno softwarové šifrování whiteboxu.|
-
-### <a name="question"></a>Otázka
-
-Proč stahování obsahu trvá tak dlouho?
-
-### <a name="answer"></a>Odpověď
-
-Rychlost stahování lze zlepšit dvěma způsoby:
-
-1.  Povolte CDN, aby koncoví uživatelé s větší pravděpodobností stiskli cdn místo koncového bodu původu/streamování pro stahování obsahu. Pokud uživatel narazí na koncový bod streamování, každý segment HLS nebo dash fragment je dynamicky zabalen a šifrován. I když je tato latence v milisekundovém měřítku pro každý segment nebo fragment, pokud máte hodinové video, akumulovaná latence může být velká, což způsobuje delší stahování.
-2.  Poskytněte koncovým uživatelům možnost selektivně stahovat vrstvy kvality videa a zvukové stopy namísto veškerého obsahu. Pro režim offline nemá smysl stahovat všechny vrstvy kvality. Existují dva způsoby, jak toho dosáhnout:
-    1.  Klientřízeno: buď přehrávač aplikace automaticky vybere nebo uživatel vybere vrstvu kvality videa a zvukové stopy ke stažení;
-    2.  Řízeno službou: pomocí funkce dynamického manifestu ve službě Azure Media Services můžete vytvořit (globální) filtr, který omezuje seznam stop HLS nebo DASH MPD na jednu vrstvu kvality videa a vybrané zvukové stopy. Pak bude tento filtr obsahovat adresa URL pro stažení prezentovaná koncovým uživatelům.
+Další informace naleznete v [nejčastějších dotazech k widevine](frequently-asked-questions.md#widevine-streaming-for-android).
 
 ## <a name="additional-notes"></a>Další poznámky
 
-* Widevine je služba poskytovaná společností Google Inc. a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google, Inc.
+Widevine je služba poskytovaná společností Google Inc. a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google, Inc.
 
 ## <a name="summary"></a>Souhrn
 

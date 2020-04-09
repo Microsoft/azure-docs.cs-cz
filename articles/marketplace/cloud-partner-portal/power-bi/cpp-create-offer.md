@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 43bb34a80d8d62cfa2bde445b94fb97da25ccda3
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: c396468bff0edef5cfceccd3d3c3394662111c10
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745473"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984840"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Vytvoření nabídky aplikace Power BI
 
 >[!Important]
->března 2020 začneme přesouvat správu nabídek aplikací Power BI do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
+>dubna 2020 začneme přesouvat správu nabídek aplikací Power BI do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
 
 V tomto článku se uvádí postup, jak vytvořit novou nabídku aplikace Power BI pro [AppSource](https://appsource.microsoft.com). Každá nabídka se zobrazí jako jeho vlastní entita v AppSource. Když vytvoříte novou nabídku na [portálu partnerů](https://cloudpartner.azure.com/)cloudu , budete muset zadat čtyři skupiny prostředků pro vaši nabídku.
 
@@ -44,7 +44,7 @@ Po přihlášení k portálu partnerů cloudu vyberte v levém podokně **novou 
 
 Následující články vysvětlují karty na stránce **Nová nabídka** pro typ nabídky aplikace Power BI. Každý článek popisuje skupiny prostředků a podpůrné služby pro novou nabídku aplikace Power BI.
 
--  [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
+-  [Karta nastavení nabídky](./cpp-offer-settings-tab.md)
 -  [Karta Technické informace](./cpp-technical-info-tab.md)
 -  [Karta podrobností o prodejních místech](./cpp-storefront-details-tab.md)
 -  [Karta Kontakty](./cpp-contacts-tab.md)

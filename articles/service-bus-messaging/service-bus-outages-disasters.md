@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 2a7f5d5eacb2d03e64ae95d34e1cf0bd37bbc7f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07b071b0e8efc5d664dada133a214d778c6531d0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259250"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984942"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Osvědčené postupy pro ochranu aplikací před haváriemi a výpadky služby Service Bus
 
@@ -33,7 +33,7 @@ Service Bus Premium podporuje geografické zotavení po havárii na úrovni obor
 
 ### <a name="availability-zones"></a>Zóny dostupnosti
 
-Skladová položka Service Bus Premium podporuje [zóny dostupnosti](../availability-zones/az-overview.md)a poskytuje umístění izolovaná po chybám v rámci stejné oblasti Azure.
+Skladová položka Service Bus Premium podporuje [zóny dostupnosti](../availability-zones/az-overview.md)a poskytuje umístění izolovaná po chybám v rámci stejné oblasti Azure. Service Bus spravuje tři kopie úložiště zpráv (1 primární a 2 sekundární). Service Bus udržuje všechny tři kopie synchronizovány pro operace správy dat a správy. Pokud se primární kopie nezdaří, jedna ze sekundárních kopií je povýšena na primární bez vnímaných prostojů. Pokud aplikace vidět přechodné odpojí od Service Bus, logika opakování v sdk se automaticky znovu připojit k service bus. 
 
 > [!NOTE]
 > Podpora zón dostupnosti pro Azure Service Bus Premium je k dispozici jenom v [oblastech Azure,](../availability-zones/az-overview.md#services-support-by-region) kde jsou k dispozici zóny dostupnosti.

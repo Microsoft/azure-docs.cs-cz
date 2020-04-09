@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452091"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984533"
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod do automatického škálování
 Automatické škálování je další možnost Service Fabric dynamicky škálovat služby na základě zatížení, které služby hlásí, nebo na základě jejich využití prostředků. Automatické škálování poskytuje velkou pružnost a umožňuje zřizování dalších instancí nebo oddílů služby na vyžádání. Celý proces automatického škálování je automatizovaný a transparentní a po nastavení zásad ve službě není nutné provádět ruční škálování na úrovni služby. Automatické škálování lze zapnout buď v době vytvoření služby, nebo kdykoli aktualizací služby.
@@ -136,6 +136,9 @@ Stejné jako u mechanismu, který používá škálování přidáním nebo odeb
 
 ### <a name="using-application-manifest"></a>Použití manifestu aplikace
 ``` xml
+<NamedPartition>
+    <Partition Name="0" />
+</NamedPartition>
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>

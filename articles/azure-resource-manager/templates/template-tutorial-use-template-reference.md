@@ -1,19 +1,19 @@
 ---
-title: Využití referenčních informací k šablonám
-description: Pomocí odkazu na šablonu Azure Resource Manageru vytvořte šablonu.
+title: Použít odkaz na šablonu
+description: K vytvoření šablony použijte odkaz na šablonu Správce prostředků Azure.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b742982121a20a2b057eba4211584b0386dde411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373425"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878481"
 ---
-# <a name="tutorial-utilize-the-arm-template-reference"></a>Kurz: Využití odkazu na šablonu ARM
+# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Kurz: Využití odkazu na šablonu Správce prostředků
 
 Zjistěte, jak najít informace o schématu šablony a použít tyto informace k vytvoření šablon Azure Resource Manager (ARM).
 
@@ -65,9 +65,13 @@ K dokončení tohoto článku potřebujete:
     * **resources**: určete typy prostředků nasazovaných nebo aktualizovaných ve skupině prostředků.
     * **outputs**: uvádí hodnoty vrácené po nasazení.
 
-1. Rozbalte element **resources**. Obsahuje definici prostředku `Microsoft.Storage/storageAccounts`.
+1. Rozbalte element **resources**. Obsahuje definici prostředku `Microsoft.Storage/storageAccounts`. Název skladové položky používá hodnotu parametru.  Parametr se nazývá **storageAccountType**.
 
     ![Definice účtu úložiště v šabloně Resource Manageru](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
+
+1. Rozbalte **parametry** a podívejte se, jak je definován **storageAccountType.** Parametr má čtyři povolené hodnoty. Najdete další povolené hodnoty a potom revidovat definici parametru.
+
+    ![Prostředky účtu úložiště šablony Správce prostředků skus](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
 ## <a name="find-the-template-reference"></a>Vyhledání referenčních informací k šablonám
 
@@ -84,7 +88,7 @@ K dokončení tohoto článku potřebujete:
 
     ![Verze účtů úložiště pro odkazy na šablony Správce prostředků](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. Vyberte nejnovější verzi typu prostředku **účtu úložiště.**  Nejnovější verze je **2019-06-01** při napsání tohoto článku.
+1. Vyberte nejnovější verzi typu prostředku **účtu úložiště.** Nejnovější verze je **2019-06-01** při napsání tohoto článku. Ujistěte se, že tato verze odpovídá verzi použité pro prostředek účtu úložiště v šabloně. Pokud aktualizujete verzi rozhraní API, ověřte, zda definice prostředku odpovídá odkazu na šablonu.
 
 1. Na této stránce jsou uvedeny podrobnosti o typu prostředku account úložiště.  Například uvádí povolené hodnoty pro objekt **Sku.** Existuje více skus než to, co je uvedeno v šabloně rychlého startu, kterou jste otevřeli dříve. Šablonu rychlého startu můžete přizpůsobit tak, aby zahrnovala všechny dostupné typy úložišť.
 
@@ -98,7 +102,21 @@ Z kódu Visual Studia přidejte další typy účtů úložiště, jak je znázo
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Informace o procesu nasazení najdete v části [Nasazení šablony](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) v rychlém startu pro Visual Studio Code. Při nasazení šablony zadejte parametr **storageAccountType** s nově přidanou hodnotou, například **Premium_ZRS**. Nasazení by se nezdaří, pokud použijete původní šablonu rychlého **startu,** protože Premium_ZRS nebyla povolená hodnota.
+Informace o procesu nasazení najdete v části [Nasazení šablony](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) v rychlém startu pro Visual Studio Code. Při nasazení šablony zadejte parametr **storageAccountType** s nově přidanou hodnotou, například **Premium_ZRS**. Nasazení by se nezdaří, pokud použijete původní šablonu rychlého **startu,** protože Premium_ZRS nebyla povolená hodnota.  Chcete-li předat hodnotu parametru, přidejte do příkazu nasazení následující přepínač:
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+
+```azurecli
+--parameters storageAccountType='Premium_ZRS'
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+-storageAccountType "Premium_ZRS"
+```
+
+---
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

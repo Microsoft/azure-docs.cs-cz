@@ -2,13 +2,13 @@
 title: Funkce šablony - řetězec
 description: Popisuje funkce, které se mají použít v šabloně Azure Resource Manager pro práci s řetězci.
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 070133c3db538e5df76644b62c25ced916adc4af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: c0517375b273384f263e8ba421995d4afb6c193b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156272"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982410"
 ---
 # <a name="string-functions-for-arm-templates"></a>Řetězcové funkce pro šablony ARM
 
@@ -46,7 +46,6 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci v �
 * [Uri](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
-* [utcNow](#utcnow)
 
 ## <a name="base64"></a>base64
 
@@ -1097,6 +1096,8 @@ Tuto funkci lze použít pouze ve výrazu pro výchozí hodnotu parametru. Použ
 
 Funkce newGuid se liší od funkce [guid,](#guid) protože nepřevezme žádné parametry. Při volání guid se stejným parametrem vrátí stejný identifikátor pokaždé. Guid použijte, když potřebujete spolehlivě generovat stejný identifikátor GUID pro určité prostředí. NewGuid použijte, když potřebujete pokaždé jiný identifikátor, jako je například nasazení prostředků do testovacího prostředí.
 
+Funkce newGuid používá [guid strukturu](/dotnet/api/system.guid) v rozhraní .NET Framework ke generování globálně jedinečný identifikátor.
+
 Pokud použijete [možnost znovu nasadit dřívější úspěšné nasazení](rollback-on-error.md)a dřívější nasazení obsahuje parametr, který používá newGuid, parametr není znovu vyhodnocen. Místo toho hodnota parametru z předchozího nasazení je automaticky znovu použita v nasazení vrácení zpět.
 
 V testovacím prostředí může být nutné opakovaně nasazovat prostředky, které jsou aktivní pouze krátkou dobu. Spíše než vytváření jedinečných názvů, můžete použít newGuid s [uniqueString](#uniquestring) k vytvoření jedinečných názvů.
@@ -1876,7 +1877,7 @@ Následující příklad ukazuje, jak vytvořit jedinečný název pro účet ú
     ...
 ```
 
-Pokud potřebujete vytvořit nový jedinečný název při každém nasazení šablony a nemáte v úmyslu aktualizovat prostředek, můžete použít funkci [utcNow](#utcnow) s uniqueString. Tento přístup můžete použít v testovacím prostředí. Příklad naleznete [v tématu utcNow](#utcnow).
+Pokud potřebujete vytvořit nový jedinečný název při každém nasazení šablony a nemáte v úmyslu aktualizovat prostředek, můžete použít funkci [utcNow](template-functions-date.md#utcnow) s uniqueString. Tento přístup můžete použít v testovacím prostředí. Příklad naleznete [v tématu utcNow](template-functions-date.md#utcnow).
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -2093,115 +2094,6 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | uriOutput | Řetězec | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | Řetězec | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
 | toStringOutput | Řetězec | `http://contoso.com/resources/nested/azuredeploy.json` |
-
-## <a name="utcnow"></a>utcNow
-
-`utcNow(format)`
-
-Vrátí aktuální hodnotu datatime (UTC) v zadaném formátu. Pokud není k dispozici žádný formát, použije se formát ISO 8601 (yyyMMddTHHmmmssZ). **Tuto funkci lze použít pouze ve výchozí hodnotě parametru.**
-
-### <a name="parameters"></a>Parametry
-
-| Parametr | Požaduje se | Typ | Popis |
-|:--- |:--- |:--- |:--- |
-| formát |Ne |řetězec |Hodnota kódovaná identifikátorem URI, který chcete převést na řetězec. Použijte standardní [formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
-
-### <a name="remarks"></a>Poznámky
-
-Tuto funkci lze použít pouze ve výrazu pro výchozí hodnotu parametru. Použití této funkce kdekoli jinde v šabloně vrátí chybu. Funkce není povolena v jiných částech šablony, protože při každém volání vrátí jinou hodnotu. Nasazení stejné šablony se stejnými parametry by spolehlivě nepřineslo stejné výsledky.
-
-Pokud použijete [možnost znovu nasadit dřívější úspěšné nasazení](rollback-on-error.md)a dřívější nasazení obsahuje parametr, který používá utcNow, parametr není znovu vyhodnocen. Místo toho hodnota parametru z předchozího nasazení je automaticky znovu použita v nasazení vrácení zpět.
-
-Buďte opatrní opětovné nasazení šablony, která závisí na funkci utcNow pro výchozí hodnotu. Při opětovném nasazení a neposkytují hodnotu parametru, funkce je přehodnocena. Pokud chcete aktualizovat existující prostředek spíše než vytvořit nový, předat hodnotu parametru z předchozího nasazení.
-
-### <a name="return-value"></a>Návratová hodnota
-
-Aktuální hodnota datačasu uTC.
-
-### <a name="examples"></a>Příklady
-
-Následující ukázková šablona zobrazuje různé formáty pro hodnotu datetime.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcValue": {
-            "type": "string",
-            "defaultValue": "[utcNow()]"
-        },
-        "utcShortValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "utcCustomValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('M d')]"
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "utcOutput": {
-            "type": "string",
-            "value": "[parameters('utcValue')]"
-        },
-        "utcShortOutput": {
-            "type": "string",
-            "value": "[parameters('utcShortValue')]"
-        },
-        "utcCustomOutput": {
-            "type": "string",
-            "value": "[parameters('utcCustomValue')]"
-        }
-    }
-}
-```
-
-Výstup z předchozího příkladu se liší pro každé nasazení, ale bude podobný:
-
-| Name (Název) | Typ | Hodnota |
-| ---- | ---- | ----- |
-| utcOutput | řetězec | 20190305T175318Z |
-| utcShortOutput | řetězec | 03/05/2019 |
-| utcCustomOutput | řetězec | 3 5 |
-
-Následující příklad ukazuje, jak použít hodnotu z funkce při nastavování hodnoty značky.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "rgName": {
-            "type": "string"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "name": "[parameters('rgName')]",
-            "location": "westeurope",
-            "tags":{
-                "createdDate": "[parameters('utcShort')]"
-            },
-            "properties":{}
-        }
-    ],
-    "outputs": {
-        "utcShort": {
-            "type": "string",
-            "value": "[parameters('utcShort')]"
-        }
-    }
-}
-```
 
 ## <a name="next-steps"></a>Další kroky
 * Popis oddílů v šabloně Azure Resource Manager u najdete v tématu [Vytváření šablon Azure Resource Manageru](template-syntax.md).

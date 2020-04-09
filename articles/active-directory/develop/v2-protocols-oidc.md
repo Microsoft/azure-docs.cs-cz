@@ -2,27 +2,22 @@
 title: Protokol OpenID Connect – platforma identit Microsoftu | Azure
 description: Vytvářejte webové aplikace pomocí implementace platformy microsoftu identit y ověřovacího protokolu OpenID Connect.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0ed1cb6a080a35fa81c6a859f88d987020c8504c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf268bef4401026084b26002c24730bc2a92e003
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262292"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886190"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Platforma identit Microsoftu a protokol OpenID Connect
 
@@ -90,7 +85,7 @@ Když vaše webová aplikace potřebuje ověřit uživatele, může `/authorize`
 > [!IMPORTANT]
 > Aby bylo možné úspěšně požádat o token ID z koncového bodu /autorizace, registrace aplikace na [registračním portálu](https://portal.azure.com) musí mít implicitní udělení id_tokens povolena na kartě Ověřování (která nastaví `oauth2AllowIdTokenImplicitFlow` příznak v [manifestu aplikace).](reference-app-manifest.md) `true` Pokud není povolena, `unsupported_response` bude vrácena chyba: "Zadaný parametr pro vstupní parametr response_type není pro tohoto klienta povolen. Očekávaná hodnota je "kód".
 
-Například:
+Příklad:
 
 ```
 // Line breaks are for legibility only.

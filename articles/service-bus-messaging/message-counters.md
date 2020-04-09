@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/08/2020
 ms.author: aschhab
-ms.openlocfilehash: 3a4fca0b3b60fcb76bcdc4f5f2d53df816c5053b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8020b12ca892fbf7dec6fed6259526d958fb110f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756368"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891760"
 ---
 # <a name="message-counters"></a>Čítače zpráv
 
@@ -43,6 +43,11 @@ Znalost počtu aktivních zpráv je užitečná při určování, zda fronta vyt
 -   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): Zprávy čekající na převod do jiné fronty nebo tématu.
 
 Pokud aplikace chce škálovat prostředky na základě délky fronty, měla by tak učinit s měřeným tempem. Získání čítače zpráv je nákladné operace uvnitř zprostředkovatele zpráv a provádění často přímo a nepříznivě ovlivňuje výkon entity.
+
+> [!NOTE]
+> Zprávy, které jsou odesílány do tématu service bus jsou předány odběry pro toto téma. Takže počet aktivních zpráv na samotné téma je 0, protože tyto zprávy byly úspěšně předány k odběru. Získejte počet zpráv na předplatné a ověřte, že je větší než 0. I když se zobrazí zprávy v předplatném, jsou ve skutečnosti uloženy v úložišti vlastněném tématem. 
+
+Pokud se podíváte na odběry, pak by měly nenulový počet zpráv (které přidávají až 323 MB místa pro celou entitu).
 
 ## <a name="next-steps"></a>Další kroky
 

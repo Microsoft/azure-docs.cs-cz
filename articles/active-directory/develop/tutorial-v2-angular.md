@@ -3,25 +3,21 @@ title: Kurz jednostránkových aplikací s úhlem – Azure
 titleSuffix: Microsoft identity platform
 description: Zjistěte, jak angular SPA aplikace můžete volat rozhraní API, které vyžaduje přístupové tokeny z koncového bodu platformy identity Microsoftu
 services: active-directory
-documentationcenter: dev-center-name
 author: hahamil
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81ade6f02b38a0a4d5ed04c8190b99216638c45d
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 63eda0c5d7b5ef4741e8244fbde290d13b54c5fb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637844"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880835"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application-spa"></a>Přihlášení uživatelů a volání rozhraní Microsoft Graph API z úhlové jednostránkové aplikace (SPA)
 
@@ -277,14 +273,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 Kde `scopes` obsahuje obory, které jsou požadovány, aby byly vráceny v přístupovém tokenu pro rozhraní API.
 
-Například:
+Příklad:
 
 * `["user.read"]`pro microsoft graph
 * `["<Application ID URL>/scope"]`pro vlastní webová api `api://<Application ID>/access_as_user`(to znamená)
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Někdy potřebujete, aby uživatel komunikoval s koncovým bodem platformy identit y Microsoft. Například:
+Někdy potřebujete, aby uživatel komunikoval s koncovým bodem platformy identit y Microsoft. Příklad:
 
 * Uživatelé mohou potřebovat znovu zadat svá pověření, protože jejich heslo vypršelo.
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, se kterými musí uživatel souhlasit.

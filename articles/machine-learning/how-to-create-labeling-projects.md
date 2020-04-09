@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/01/2020
-ms.openlocfilehash: d39cf8745c6f53cb11bb12561fd452325fe52ac6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6723992ac3335e6abdd78f2008130dfe136f7df
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79296944"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873884"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření projektu označování dat a exportu popisků 
 
@@ -20,14 +20,14 @@ ms.locfileid: "79296944"
 
 Označování objemných dat v projektech strojového učení je často bolest hlavy. Projekty, které mají součást počítačového vidění, jako je například klasifikace obrázků nebo detekce objektů, obvykle vyžadují popisky pro tisíce obrazů.
  
-[Azure Machine Learning](https://ml.azure.com/) poskytuje centrální místo pro vytváření, správu a monitorování projektů označování. Slouží ke koordinaci dat, popisků a členů týmu pro efektivní správu úloh popisování. Strojové učení podporuje klasifikaci obrázků, buď vícepopisek nebo více tříd, a identifikaci objektu s ohraničenými poli.
+[Azure Machine Learning](https://ml.azure.com/) poskytuje centrální místo pro vytváření, správu a monitorování projektů označování (public preview). Slouží ke koordinaci dat, popisků a členů týmu pro efektivní správu úloh popisování. Strojové učení podporuje klasifikaci obrázků, buď vícepopisek nebo více tříd, a identifikaci objektu s ohraničenými poli.
 
 Strojové učení sleduje průběh a udržuje frontu neúplných úloh označování. Labelery k účasti nepotřebují účet Azure. Po ověření pomocí vašeho účtu Microsoft nebo [Služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)můžou dělat tolik popisků, kolik jejich času dovolí.
 
 Můžete spustit a zastavit projekt, přidat a odebrat labelers a týmy a sledovat průběh označování. Data označená ve formátu COCO nebo jako datovou sadu Azure Machine Learning můžete exportovat.
 
 > [!Important]
-> V současné době jsou podporovány pouze projekty klasifikace obrázků a identifikace objektů. Kromě toho musí být k dispozici image dat v úložišti dat objektů blob Azure. (Pokud nemáte existující úložiště dat, můžete nahrát obrázky během vytváření projektu.) 
+> V současné době jsou podporovány pouze projekty klasifikace obrázků a identifikace objektů. Kromě toho musí být k dispozici image dat v úložišti dat objektů blob Azure. (Pokud nemáte existující úložiště dat, můžete nahrát obrázky během vytváření projektu.)
 
 V tomto článku se dozvíte, jak:
 
@@ -41,6 +41,7 @@ V tomto článku se dozvíte, jak:
 
 ## <a name="prerequisites"></a>Požadavky
 
+
 * Data, která chcete označit, buď v místních souborech nebo v úložišti objektů blob Azure.
 * Sada popisků, které chcete použít.
 * Pokyny pro označování.
@@ -51,11 +52,12 @@ V tomto článku se dozvíte, jak:
 
 Projekty označování se spravují z Azure Machine Learning. Stránka **Projekty označování** slouží ke správě projektů a osob. V projektu je přiřazen jeden nebo více týmů a k němu je přiřazen jeden nebo více lidí.
 
-Pokud vaše data jsou již v úložišti objektů Blob Azure, měli byste je zpřístupnit jako úložiště dat před vytvořením projektu označování. Podrobnosti naleznete v [tématu Vytvoření a registrace úložišť dat](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores).
+Pokud vaše data jsou již v úložišti objektů Blob Azure, měli byste je zpřístupnit jako úložiště dat před vytvořením projektu označování. Příklad použití úložiště dat najdete v [tématu Kurz: Vytvoření prvního projektu označení klasifikace obrázků](tutorial-labeling.md).
 
 Chcete-li vytvořit projekt, vyberte **přidat projekt**. Pojmenujte projekt a vyberte **Typ úkolu Popisování**.
 
 ![Průvodce vytvořením projektu popisem](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
+
 
 * Zvolte **Klasifikace obrázků více tříd** pro projekty, pokud chcete použít pouze *jednu třídu* ze sady tříd na bitovou kopii.
 * Pokud chcete na obrázek použít jeden *nebo více* popisků ze sady tříd, zvolte **vícepopisek klasifikace** obrázků pro projekty. Například, fotografie psa může být označen a to jak *pes* a *denní*.
@@ -168,9 +170,9 @@ Po inicializace projektu popisky jsou některé aspekty projektu neměnné. Typ 
 
 ## <a name="manage-teams-and-people"></a>Správa týmů a lidí
 
-Ve výchozím nastavení každý projekt označování, který vytvoříte získá nový tým s vámi jako členem. Týmy však mohou být také sdíleny mezi projekty. A projekty mohou mít více než jeden tým. Pokud chcete vytvořit tým, na stránce **Týmy** vyberte **Přidat tým.**
+Ve výchozím nastavení každý projekt označování, který vytvoříte získá nový tým s vámi jako členem. Týmy však mohou být také sdíleny mezi projekty. A projekty mohou mít více než jeden tým. Pokud chcete vytvořit tým, na stránce **Týmy** vyberte **Přidat tým.** 
 
-Spravujete lidi na stránce **Lidé.** Přidávejte a odebírat lidi podle e-mailové adresy. Každý labeler se musí ověřit prostřednictvím vašeho účtu Microsoft nebo Služby Azure Active Directory, pokud ho používáte.  
+Můžete spravovat lidi na stránce **Labelers.** Přidávejte a odebírat lidi podle e-mailové adresy. Každý labeler se musí ověřit prostřednictvím vašeho účtu Microsoft nebo Služby Azure Active Directory, pokud ho používáte.  
 
 Po přidání osoby můžete tuto osobu přiřadit k jednomu nebo více týmům: Přejděte na stránku **Týmy,** vyberte tým a pak vyberte **Přiřadit lidi** nebo **Odebrat lidi**.
 
@@ -216,5 +218,6 @@ Soubor COCO se vytvoří ve výchozím úložišti objektů blob pracovního pro
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Kurz: Vytvořte svůj první projekt klasifikace obrázků .](tutorial-labeling.md)
 * Popisky obrázků pro [klasifikaci obrázků nebo detekci objektů](how-to-label-images.md)
 * Další informace o [Azure Machine Learning a Machine Learning Studio (klasické)](compare-azure-ml-to-studio-classic.md)

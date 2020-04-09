@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6062ec008a7a12c720cf28c2d79531e805ebba0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268181"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984431"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Azure Files](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardního [protokolu Server Message Block (SMB).](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) Sdílené složky Azure můžete připevnit souběžně v cloudových nebo místních nasazeních Windows, Linuxu a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows Server pomocí Azure File Sync pro rychlý přístup v blízkosti místa, kde se data používají.
@@ -45,7 +45,7 @@ Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí S
 
     Azure Files je konkrétně souborový systém. Azure Files obsahuje všechny abstrakty souborů, které znáte a milujete z let práce s místními operačními systémy. Stejně jako úložiště objektů blob Azure nabízí Azure Files rozhraní REST a klientské knihovny založené na REST. Na rozdíl od úložiště objektů blob Azure nabízí Azure Files přístup s mb ke sdíleným složkám Azure. Pomocí SMB můžete připojit sdílenou složku Azure přímo ve Windows, Linuxu nebo macOS, ať už místně nebo v cloudových virtuálních počítačích, bez psaní kódu nebo připojení speciálních ovladačů k systému souborů. Sdílené složky Azure můžete také ukládat do mezipaměti na místních souborových serverech pomocí Azure File Sync pro rychlý přístup, blízko místa, kde se data používají. 
    
-    Podrobnější popis rozdílů mezi soubory Azure a úložištěm objektů blob Azure najdete v [tématu Rozhodnutí, kdy použít azure blob storage, Azure Files nebo Azure Disks](../common/storage-decide-blobs-files-disks.md). Další informace o úložišti objektů Blob Azure najdete [v tématu Úvod do úložiště objektů Blob](../blobs/storage-blobs-introduction.md).
+    Podrobnější popis rozdílů mezi soubory Azure a úložištěm objektů blob Azure najdete v [tématu Úvod do základních služeb Azure Storage](../common/storage-introduction.md). Další informace o úložišti objektů Blob Azure najdete [v tématu Úvod do úložiště objektů Blob](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Proč bych měl použít sdílenou složku Azure místo Azure Disks?**  
     Disk v Azure Disks je jednoduše disk. Chcete-li získat hodnotu z Disky Azure, musíte připojit disk k virtuálnímu počítači, který běží v Azure. Disky Azure lze použít pro všechno, co byste použít disk pro na místním serveru. Můžete jej použít jako systémový disk operačního systému, jako odkládací místo pro operační systém nebo jako vyhrazené úložiště pro aplikaci. Zajímavé použití pro Azure Disks je vytvořit souborový server v cloudu pro použití na stejných místech, kde můžete použít sdílenou složku Azure. Nasazení souborového serveru ve virtuálních počítačích Azure je vysoce výkonný způsob, jak získat úložiště souborů v Azure, když potřebujete možnosti nasazení, které aktuálně nejsou podporované soubory Azure (například podpora protokolu nfs nebo úložiště premium). 
@@ -54,7 +54,7 @@ Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí S
 
     Jedním z přístupů k získání toho nejlepšího ze souborů Azure a souborového serveru, který je hostovaný ve virtuálních počítačích Azure (kromě použití Azure Disks jako back-endového úložiště), je instalace Azure File Sync na souborový server, který je hostovaný na cloudovém virtuálním počítači. Pokud je sdílená složka Azure ve stejné oblasti jako souborový server, můžete povolit vrstvení cloudu a nastavit objem volného místa na maximum (99 %). Tím je zajištěno minimální duplikace dat. Se souborovými servery můžete také použít libovolné aplikace, jako jsou aplikace, které vyžadují podporu protokolu NFS.
 
-    Informace o možnosti nastavení vysoce výkonného a vysoce dostupného souborového serveru v Azure najdete v [tématu Nasazení clusterů hosta virtuálního počítače IaaS v Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Podrobnější popis rozdílů mezi soubory Azure a disky Azure najdete v [tématu Rozhodování o tom, kdy použít azure blob úložiště, soubory Azure nebo disky Azure](../common/storage-decide-blobs-files-disks.md). Další informace o Azure Disky najdete v [tématu Přehled spravovaných disků Azure](../../virtual-machines/windows/managed-disks-overview.md).
+    Informace o možnosti nastavení vysoce výkonného a vysoce dostupného souborového serveru v Azure najdete v [tématu Nasazení clusterů hosta virtuálního počítače IaaS v Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Podrobnější popis rozdílů mezi soubory Azure a disky Azure najdete v [tématu Úvod do základních služeb Azure Storage](../common/storage-introduction.md). Další informace o Azure Disky najdete v [tématu Přehled spravovaných disků Azure](../../virtual-machines/windows/managed-disks-overview.md).
 
 * <a id="get-started"></a>
   **Jak můžu začít používat Soubory Azure?**  
@@ -261,7 +261,7 @@ Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí S
 
     Sdílenou složku můžete připojit pomocí protokolu SMB, pokud je port 445 (odchozí TCP) otevřený a váš klient podporuje protokol SMB 3.0 (například pokud používáte Windows 10 nebo Windows Server 2016). Pokud je port 445 blokován zásadami vaší organizace nebo vaším isp, můžete použít Azure File Sync pro přístup ke sdílené složce Azure.
 
-## <a name="backup"></a>Zálohování
+## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Jak můžu zálohovat sdílenou složku Azure?**  
     [Snímky periodické sdílené složky](storage-snapshots-files.md) můžete použít k ochraně proti náhodnému odstranění. Můžete také použít AzCopy, Robocopy nebo nástroj pro zálohování jiného výrobce, který může zálohovat připojenou sdílenou složku. Azure Backup nabízí zálohování souborů Azure. Další informace o [zálohování sdílených složek Azure pomocí Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-files).

@@ -7,12 +7,12 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d9928a50f1f77cd59b83bd1af5a7a40715b6fa98
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 493dcd71905970434dd2ab2997cfebd17b8e47ff
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673947"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891590"
 ---
 # <a name="tutorial-create-and-connect-a-python-client-application-to-your-azure-iot-central-application-python"></a>Kurz: Vytvoření a připojení klientské aplikace Pythonu k aplikaci Azure IoT Central (Python)
 
@@ -214,7 +214,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci Pythonu, která
 1. Přidejte do `main` funkce následující funkce pro zpracování aktualizací vlastností odeslaných z aplikace IoT Central:
 
     ```python
-        sync def name_setting(value, version):
+        async def name_setting(value, version):
           await asyncio.sleep(1)
           print(f'Setting name value {value} - {version}')
           await device_client.patch_twin_reported_properties({'name' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})

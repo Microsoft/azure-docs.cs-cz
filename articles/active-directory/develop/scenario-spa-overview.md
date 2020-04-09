@@ -2,24 +2,21 @@
 title: JavaScript jednostránkový scénář aplikace - platforma identit Microsoft | Azure
 description: Zjistěte, jak vytvořit jednostránkovou aplikaci (přehled scénářů) pomocí platformy identit Microsoftu.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b430778bed811656b5c8aadc75ba3cf35917f737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ead0ea58c6860519f027eb6a7450df37396bd89
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76701871"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885170"
 ---
 # <a name="scenario-single-page-application"></a>Scénář: Jednostránková aplikace
 
@@ -57,4 +54,4 @@ Chcete-li povolit tento scénář pro vaši aplikaci, potřebujete:
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Registrace aplikace](scenario-spa-app-registration.md)
+> [Registrace aplikací](scenario-spa-app-registration.md)

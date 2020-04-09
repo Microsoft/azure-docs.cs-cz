@@ -3,12 +3,12 @@ title: Nasazení zákazníků do správy delegovaných prostředků Azure
 description: Zjistěte, jak naložit zákazníka do azure delegované správy prostředků, což umožňuje přístup k jejich prostředkům a správu prostřednictvím vlastního tenanta.
 ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a5f4ce03f762b5903e8b3d6f10810819e02e422
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9eef2e73de7812fc65104131dfd319bf8dfb014e
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246870"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984585"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
@@ -126,17 +126,17 @@ Proces registrace vyžaduje šablonu Azure Resource Manager (k dispozici v [naš
 
 |Chcete-li na palubě tohoto  |Použití této šablony Správce prostředků Azure  |A upravit tento soubor parametrů |
 |---------|---------|---------|
-|Předplatné   |[delegovánoResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegovánoResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
-|Skupina prostředků   |[rgDelegovánoResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Více skupin prostředků v rámci předplatného   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
-|Předplatné (při použití nabídky publikované na Azure Marketplace)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
+|Předplatné   |[delegovánoResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegovánoResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Skupina prostředků   |[rgDelegovánoResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
+|Více skupin prostředků v rámci předplatného   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Předplatné (při použití nabídky publikované na Azure Marketplace)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
 > Proces popsaný zde vyžaduje samostatné nasazení na úrovni předplatného pro každé předplatné, které je na palubě, i když jste onboarding předplatná ve stejném klientovi zákazníka. Samostatná nasazení jsou také vyžadována, pokud zapisujete více skupin prostředků v rámci různých předplatných ve stejném klientovi zákazníka. Však onboarding více skupin prostředků v rámci jednoho předplatného lze provést v jednom nasazení na úrovni předplatného.
 >
 > Samostatná nasazení jsou také vyžadována pro více nabídek, které se používají pro stejné předplatné (nebo skupiny prostředků v rámci předplatného). Každá použitá nabídka musí používat jiný **název mspOfferName**.
 
-Následující příklad ukazuje upravený **delegovaný soubor ResourceManagement.parameters.json,** který lze použít k napalubí předplatného. Soubory parametrů skupiny prostředků (umístěné ve složce [rg-delegated-resource-management)](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) jsou podobné, ale také obsahují parametr **rgName** k identifikaci konkrétní skupiny prostředků, které mají být zahrnuty.
+Následující příklad ukazuje upravený **delegovaný soubor ResourceManagement.parameters.json,** který lze použít k napalubí předplatného. Soubory parametrů skupiny prostředků (umístěné ve složce [rg-delegated-resource-management)](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) jsou podobné, ale také obsahují parametr **rgName** k identifikaci konkrétní skupiny prostředků, které mají být zahrnuty.
 
 ```json
 {
@@ -242,7 +242,7 @@ az deployment create --name <deploymentName> \
 
 ## <a name="confirm-successful-onboarding"></a>Potvrdit úspěšné zaškolení
 
-Pokud bylo předplatné zákazníka úspěšně zapalubo do správy delegovaných prostředků Azure, uživatelé v tenantovi poskytovatele služeb budou moci zobrazit předplatné a jeho prostředky (pokud jim byl udělen přístup prostřednictvím výše uvedeného procesu, samostatně nebo jako člen skupiny Azure AD s příslušnými oprávněními). Chcete-li to potvrdit, zkontrolujte, zda se předplatné zobrazí jedním z následujících způsobů.  
+Pokud bylo předplatné zákazníka úspěšně založeno pro správu delegovaných prostředků Azure, uživatelé v tenantovi poskytovatele služeb budou moci zobrazit předplatné a jeho prostředky (pokud jim byl udělen přístup prostřednictvím výše uvedeného procesu, a to buď jednotlivě, nebo jako člen skupiny Azure AD s příslušnými oprávněními). Chcete-li to potvrdit, zkontrolujte, zda se předplatné zobrazí jedním z následujících způsobů.  
 
 ### <a name="azure-portal"></a>portál Azure
 

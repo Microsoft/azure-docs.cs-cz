@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: b9b66c379714c2f4fa2421876fda3bdb500ce6c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9e86706ecd4e5b2526e1d801dda45ed6b345c6
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250390"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887244"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Monitorování Služby Azure Cosmos DB
 Pokud máte důležité aplikace a obchodní procesy, které jsou závislé na prostředcích Azure, chcete tyto prostředky sledovat z důvodu jejich dostupnosti, výkonu a provozu. Tento článek popisuje data monitorování generovaná databázemi Azure Cosmos a jak můžete pomocí funkcí Azure Monitoru analyzovat a upozorňovat na tato data.
@@ -38,7 +38,7 @@ Následující části vycházejí z tohoto článku tím, že popisují konkré
 
 ## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Zobrazení metrik úrovně operace pro Azure Cosmos DB
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Na levém navigačním panelu vyberte **Sledovat** a vyberte **Metriky**.
 
@@ -63,10 +63,6 @@ Můžete také filtrovat metriky a graf zobrazený určitým **názvem Collectio
 Metriky můžete seskupit pomocí možnosti **Použít rozdělení.** Můžete například seskupit jednotky požadavků podle typu operace a zobrazit graf pro všechny operace najednou, jak je znázorněno na následujícím obrázku:
 
 ![Přidat filtr použít rozdělení](./media/monitor-cosmos-db/apply-metrics-splitting.png)
-
-Zde je další příklad pro zobrazení metriklatence na straně serveru pro konkrétní databázi, kontejner nebo operaci:
-
-![Metriky latence na straně serveru](./media/monitor-cosmos-db/serverside-latency-metric.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>Data monitorování shromážděná z Azure Cosmos DB
 

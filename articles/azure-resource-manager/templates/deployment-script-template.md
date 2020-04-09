@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f84707adfa406011989c8f9bfdf1e8d9270698a6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743313"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984789"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Náhled)
 
@@ -182,7 +182,7 @@ Výstup bude vypadat následovně:
 
 ## <a name="use-external-scripts"></a>Použití externích skriptů
 
-Kromě vložkových skriptů můžete také použít externí soubory skriptů. Podporovány jsou pouze primární skripty prostředí PowerShell s příponou **ps1.** Pro skripty vykázaných kódových řízení mohou mít primární skripty libovolné rozšíření (nebo bez rozšíření), pokud jsou skripty platné skripty bash. Chcete-li použít externí `scriptContent` `primaryScriptUri`soubory skriptů, nahraďte je . Například:
+Kromě vložkových skriptů můžete také použít externí soubory skriptů. Podporovány jsou pouze primární skripty prostředí PowerShell s příponou **ps1.** Pro skripty vykázaných kódových řízení mohou mít primární skripty libovolné rozšíření (nebo bez rozšíření), pokud jsou skripty platné skripty bash. Chcete-li použít externí `scriptContent` `primaryScriptUri`soubory skriptů, nahraďte je . Příklad:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -313,7 +313,7 @@ Skript nasazení vytvoří účet úložiště a instanci kontejneru, které se 
 
 Spuštění skriptu nasazení je idempotentní operace. Pokud se nezmění žádná z vlastností prostředku deploymentScripts (včetně vložkového skriptu), skript nebude spuštěn při opětovném nasazení šablony. Služba skriptu nasazení porovnává názvy prostředků v šabloně s existujícími prostředky ve stejné skupině prostředků. Existují dvě možnosti, pokud chcete spustit stejný skript nasazení vícekrát:
 
-- Změňte název prostředku deploymentScripts. Použijte například funkci šablony [utcNow](./template-functions-string.md#utcnow) jako název prostředku nebo jako součást názvu prostředku. Změna názvu prostředku vytvoří nový prostředek deploymentScripts. Je to dobré pro vedení historie spuštění skriptu.
+- Změňte název prostředku deploymentScripts. Použijte například funkci šablony [utcNow](./template-functions-date.md#utcnow) jako název prostředku nebo jako součást názvu prostředku. Změna názvu prostředku vytvoří nový prostředek deploymentScripts. Je to dobré pro vedení historie spuštění skriptu.
 
     > [!NOTE]
     > Funkci utcNow lze použít pouze ve výchozí hodnotě parametru.

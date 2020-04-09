@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: fae4206e555c85fe0555ce1c4366cd57dd386f1e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471825"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878030"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Front Dooru
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > - Povolit protokol HTTPS pro vlastní doménu
 > - Použít certifikát spravovaný službou AFD 
-> - Použít vlastní certifikát, tj. vlastní certifikát SSL
+> - Použijte vlastní certifikát, tedy vlastní certifikát TLS/SSL
 > - Ověření domény
 > - Zákaz protokolu HTTPS pro vlastní doménu
 
@@ -48,9 +48,9 @@ V tomto kurzu se naučíte:
 
 Před dokončením kroků v tomto kurzu musíte nejprve vytvořit Front Door s minimálně jednou začleněnou vlastní doménou. Další informace najdete v [kurzu přidání vlastní domény do Front Dooru](front-door-custom-domain.md).
 
-## <a name="ssl-certificates"></a>Certifikáty SSL
+## <a name="tlsssl-certificates"></a>Certifikáty TLS/SSL
 
-Pokud chcete povolit protokol HTTPS, abyste mohli zabezpečeně dodávat obsah do vlastní domény Front Dooru, musíte použít certifikát SSL. Můžete použít certifikát, který je spravovaný Azure Front Door nebo použít vlastní certifikát.
+Chcete-li povolit protokol HTTPS pro bezpečné doručování obsahu ve vlastní doméně Front Door, musíte použít certifikát TLS/SSL. Můžete použít certifikát, který je spravovaný Azure Front Door nebo použít vlastní certifikát.
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Možnost 1 (výchozí): Použití certifikátu spravovaného službou Front Door
@@ -72,7 +72,7 @@ Pokud chcete povolit HTTPS pro vlastní doménu, postupujte následovně:
 
 ### <a name="option-2-use-your-own-certificate"></a>Možnost 2: Použití vlastního certifikátu
 
-K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se provádí prostřednictvím integrace s Azure Key Vault, která vám umožní bezpečně ukládat vaše certifikáty. Azure Front Door používá tento zabezpečený mechanismus k získání certifikátu a vyžaduje několik dalších kroků. Když vytváříte svůj certifikát SSL, musíte ho vytvořit s povolenou certifikační autoritou (CA). Pokud použijete nepovolenou certifikační autoritu, vaše žádost se odmítne. Seznam povolených certifikačních úřadů najdete [v tématu Povolené certifikační autority, kde najdete povolení vlastního protokolu HTTPS na Azure Front Door](front-door-troubleshoot-allowed-ca.md).
+K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se provádí prostřednictvím integrace s Azure Key Vault, která vám umožní bezpečně ukládat vaše certifikáty. Azure Front Door používá tento zabezpečený mechanismus k získání certifikátu a vyžaduje několik dalších kroků. Při vytváření certifikátu TLS/SSL je nutné jej vytvořit s povolenou certifikační autoritou (CA). Pokud použijete nepovolenou certifikační autoritu, vaše žádost se odmítne. Seznam povolených certifikačních úřadů najdete [v tématu Povolené certifikační autority, kde najdete povolení vlastního protokolu HTTPS na Azure Front Door](front-door-troubleshoot-allowed-ca.md).
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Příprava účtu a certifikátu Azure Key Vault
  
@@ -84,7 +84,7 @@ K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se
 2. Certifikáty Azure Key Vault: Pokud už certifikát máte, můžete ho nahrát přímo do vašeho účtu Azure Key Vault, nebo můžete vytvořit nový certifikát přímo prostřednictvím služby Azure Key Vault z jedné z certifikačních autorit, se kterými se Azure Key Vault integruje. Nahrajte certifikát jako objekt **certifikátu,** nikoli jako **tajný klíč**.
 
 > [!NOTE]
-> Pro váš vlastní certifikát SSL nepodporuje front door certifikáty s kryptografickými algoritmy ES.
+> Pro váš vlastní certifikát TLS/SSL nepodporuje přední dveře certifikáty s algoritmy ES kryptografie.
 
 #### <a name="register-azure-front-door"></a>Registrace předních dveří Azure
 
@@ -260,7 +260,7 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 
 4. *Je používání certifikátu SAN méně bezpečné než vyhrazený certifikát?*
     
-    Certifikát SAN využívá stejné standardy šifrování a zabezpečení jako vyhrazený certifikát. Všechny vystavené certifikáty SSL k vylepšení zabezpečení serveru využívají šifrování SHA-256.
+    Certifikát SAN využívá stejné standardy šifrování a zabezpečení jako vyhrazený certifikát. Všechny vydané certifikáty TLS/SSL používají SHA-256 pro lepší zabezpečení serveru.
 
 5. *Potřebuji záznam CAA (Certificate Authority Authorization) pro svého poskytovatele DNS?*
 

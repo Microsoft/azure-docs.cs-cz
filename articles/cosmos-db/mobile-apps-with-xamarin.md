@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 40f7de4b4feb2b312705238abd30402edb635ea9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8fbd2065ceae1aadf1dc57c78adb21b7c2848297
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720886"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985554"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Kurz: Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Azure Cosmos DB poskytuje vývojářům mobilních aplikací následující klí
 * Vysoká propustnost. Se službou Azure Cosmos DB trvá čtení a zápis dokumentů pouze několik milisekund. Vývojáři můžou určit požadovanou propustnost a Azure Cosmos DB ji bude respektovat se smlouvou SLA o 99,99% dostupnosti pro všechny účty v jedné oblasti a všechny účty ve více oblastech s mírnější konzistencí a 99,999% dostupnosti čtení pro všechny účty databáze ve více oblastech.
 * Neomezené škálování. Vaše kontejnery Azure Cosmos [rostou s růstem vaší aplikace](partition-data.md). Můžete začít s malým množstvím dat a propustností v řádu stovek požadavků za sekundu. Vaše kolekce nebo databáze se můžou rozšířit na petabajty dat s libovolně velkou propustností v řádu stovek milionů požadavků za sekundu.
 * Globální distribuce. Uživatelé mobilních aplikací jsou v pohybu, často po celém světě. Azure Cosmos DB je [globálně distribuovaná databáze](distribute-data-globally.md). Kliknutím na mapu zpřístupníte svá data uživatelům.
-* Integrovaná bohatá autorizace. Azure Cosmos DB umožňujte snadnou implementaci oblíbených modelů, jako jsou [data jednotlivých uživatelů](https://aka.ms/documentdb-xamarin-todouser) nebo data sdílená několika uživateli bez potřeby vlastního složitého autorizačního kódu.
+* Integrovaná bohatá autorizace. Azure Cosmos DB umožňujte snadnou implementaci oblíbených modelů, jako jsou [data jednotlivých uživatelů](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems) nebo data sdílená několika uživateli bez potřeby vlastního složitého autorizačního kódu.
 * Geoprostorové dotazy. Řada mobilních aplikací dnes nabízí prostředí využívající geografický kontext. Azure Cosmos DB usnadňuje vytváření takových prostředí díky prvotřídní podpoře [geoprostorových typů](geospatial.md).
 * Binární přílohy. Data aplikací často zahrnují binární objekty blob. Nativní podpora příloh usnadňuje použití služby Azure Cosmos DB jako univerzálního úložiště pro data aplikací.
 
@@ -83,7 +83,7 @@ Podle těchto pokynů upravte aplikaci seznamu úkolů na víceuživatelskou apl
 
   4. Upravte aplikaci tak, aby se ve zprostředkovateli tokenu prostředku ověřovala přes Facebook a odesílala požadavky na tokeny prostředků pro přihlášené uživatele Facebooku. Pak můžete přistupovat k jejich datům v kolekci UserItems.  
 
-Kompletní vzorový kód tohoto modelu najdete v úložišti [zprostředkovatele tokenu prostředku na GitHubu](https://aka.ms/documentdb-xamarin-todouser). Toto řešení znázorňuje tento diagram:
+Kompletní vzorový kód tohoto modelu najdete v úložišti [zprostředkovatele tokenu prostředku na GitHubu](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems). Toto řešení znázorňuje tento diagram:
 
 ![Uživatelé služby Azure Cosmos DB a zprostředkovatel oprávnění](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
 

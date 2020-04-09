@@ -2,15 +2,15 @@
 title: Přehled šablon
 description: Popisuje výhody použití šablon Azure Resource Manager pro nasazení prostředků.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 4570f5471ef6baf6f3f4a920be4d93c3f5a90438
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258120"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885731"
 ---
-# <a name="what-are-arm-templates"></a>Co jsou šablony ARM?
+# <a name="what-are-arm-templates"></a>Co je šablona ARM?
 
 S přechodem do cloudu, mnoho týmů přijaly agilní metody vývoje. Tyto týmy rychle zitýrá. Potřebují opakovaně nasazovat svá řešení do cloudu a vědět, že jejich infrastruktura je ve spolehlivém stavu. Vzhledem k tomu, že infrastruktura se stala součástí iterativního procesu, rozdělení mezi operacemi a vývojem zmizelo. Týmy potřebují spravovat infrastrukturu a kód aplikace prostřednictvím jednotného procesu.
 
@@ -30,11 +30,17 @@ Pokud se pokoušíte rozhodnout mezi použitím šablon ARM a jedné z dalších
 
    ![Porovnání nasazení šablony](./media/overview/template-processing.png)
 
-* **Integrované ověření**: Šablona se nasadí až po předání ověření. Správce prostředků zkontroluje šablonu před zahájením nasazení a ujistěte se, že nasazení bude úspěšné. Vaše nasazení je méně pravděpodobné, že se zastaví v polodokončeném stavu.
-
 * **Modulární soubory**: Šablony můžete rozdělit na menší opakovaně použitelné součásti a propojit je v době nasazení. Můžete také vnořit jednu šablonu do jiné šablony.
 
 * **Vytvoření libovolného prostředku Azure**: Můžete okamžitě použít nové služby Azure a funkce v šablonách. Jakmile poskytovatel prostředků zavede nové prostředky, můžete tyto prostředky nasadit prostřednictvím šablon. Před použitím nových služeb nemusíte čekat na aktualizaci nástrojů nebo modulů.
+
+* **Rozšiřitelnost**: Pomocí [skriptů nasazení](deployment-script-template.md)můžete do šablon přidat skripty powershellu nebo bash. Skripty nasazení rozšiřují možnost nastavení prostředků během nasazení. Skript může být zahrnut do šablony nebo uložen v externím zdroji a odkazován v šabloně. Skripty nasazení vám poskytují možnost dokončit nastavení koncového prostředí v jedné šabloně ARM.
+
+* **Testování**: Můžete se ujistit, že vaše šablona dodržuje doporučené pokyny testováním pomocí sady nástrojů šablony ARM (arm-ttk). Tato testovací sada je skript PowerShellu, který si můžete stáhnout z [GitHubu](https://github.com/Azure/arm-ttk). Sada nástrojů vám usnadní rozvoj odborných znalostí pomocí jazyka šablony.
+
+* **Náhled změn**: Před nasazením šablony můžete použít [operaci "Co if".](template-deploy-what-if.md) U what-if uvidíte, které prostředky budou vytvořeny, aktualizovány nebo odstraněny a všechny vlastnosti prostředků, které se změní. Operace what-if kontroluje aktuální stav vašeho prostředí a eliminuje potřebu spravovat stav.
+
+* **Integrované ověření**: Šablona se nasadí až po předání ověření. Správce prostředků zkontroluje šablonu před zahájením nasazení a ujistěte se, že nasazení bude úspěšné. Vaše nasazení je méně pravděpodobné, že se zastaví v polodokončeném stavu.
 
 * **Sledování nasazení**: Na webu Azure Portal můžete zkontrolovat historii nasazení a získat informace o nasazení šablony. Můžete zobrazit šablonu, která byla nasazena, hodnoty parametrů předané a všechny výstupní hodnoty. Ostatní infrastruktury jako kódové služby nejsou sledovány prostřednictvím portálu.
 

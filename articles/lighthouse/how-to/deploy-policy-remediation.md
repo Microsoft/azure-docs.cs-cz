@@ -3,12 +3,12 @@ title: Nasazení zásady, která se dá napravit
 description: Zjistěte, jak naložit zákazníka do azure delegované správy prostředků, což umožňuje přístup k jejich prostředkům a správu prostřednictvím vlastního tenanta.
 ms.date: 10/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b625e9e3c96866cfbc655a55b770c9ac07a626bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270638"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985163"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Nasazení zásady, kterou lze napravit v rámci delegovaného předplatného
 
@@ -40,7 +40,7 @@ Následující příklad ukazuje **principalId,** který bude mít roli správce
 
 Jakmile vytvoříte uživatele s potřebnými oprávněními, jak je popsáno výše, může tento uživatel nasadit zásady v klientovi zákazníka, které používají nápravné úlohy.
 
-Řekněme například, že jste chtěli povolit diagnostiku prostředků azure key vault u klienta zákazníka, jak je znázorněno v této [ukázce](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring). Uživatel ve správcovním tenantovi s příslušnými oprávněními (jak je popsáno výše) by nasadil [šablonu Azure Resource Manager,](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) která by tento scénář povolila.
+Řekněme například, že jste chtěli povolit diagnostiku prostředků azure key vault u klienta zákazníka, jak je znázorněno v této [ukázce](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring). Uživatel ve správcovním tenantovi s příslušnými oprávněními (jak je popsáno výše) by nasadil [šablonu Azure Resource Manager,](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) která by tento scénář povolila.
 
 Všimněte si, že vytvoření přiřazení zásad pro použití s delegovaným odběrem musí být aktuálně provedeno prostřednictvím api, nikoli na webu Azure Portal. Při tom **apiVersion** musí být nastavena na **2019-04-01-preview**, který zahrnuje nové **delegovanéManagedIdentityResourceId** vlastnost. Tato vlastnost umožňuje zahrnout spravovanou identitu, která se nachází v tenantovi zákazníka (ve skupině předplatného nebo prostředků, která byla na palubě pro správu delegovaných prostředků Azure).
 
@@ -62,7 +62,7 @@ Následující příklad ukazuje přiřazení role s **delegovaným IdentityIden
 ```
 
 > [!TIP]
-> [Podobná ukázka](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-add-or-replace-tag) je k dispozici k předvedení, jak nasadit zásadu, která přidá nebo odebere značku (pomocí efektu změny) do delegovaného předplatného.
+> [Podobná ukázka](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) je k dispozici k předvedení, jak nasadit zásadu, která přidá nebo odebere značku (pomocí efektu změny) do delegovaného předplatného.
 
 ## <a name="next-steps"></a>Další kroky
 

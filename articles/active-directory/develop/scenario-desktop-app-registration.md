@@ -2,26 +2,21 @@
 title: Registrace aplikací klasické pracovní plochy, které volají webová rozhraní API – platforma identit Microsoftu | Azure
 description: Přečtěte si, jak vytvořit desktopovou aplikaci, která volá webová API (registrace aplikace)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c55fc9eb94a88dba1ab9fc915fe84bc2dd7d4d40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702177"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885153"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Desktopová aplikace, která volá webová API: Registrace aplikací
 
@@ -52,7 +47,7 @@ Identifikátory URI přesměrování, které se mají používat v desktopové a
 
 - Pokud vytváříte nativní aplikaci Objective-C nebo Swift pro macOS, zaregistrujte identifikátor URI přesměrování na základě identifikátoru sady vaší aplikace v následujícím formátu: msauth.<your.app.bundle.id>://auth. Nahraďte <your.app.bundle.id> s identifikátorem sady.
 - Pokud vaše aplikace používá jenom integrované ověřování systému Windows nebo uživatelské jméno a heslo, nemusíte registrovat identifikátor URI přesměrování pro vaši aplikaci. Tyto toky provést odezvu na platformě identit microsoftu v2.0 koncový bod. Vaše aplikace nebude volána zpět na žádné konkrétní identifikátor URI.
-- Chcete-li rozlišit tok kódu zařízení, integrované ověřování systému Windows a uživatelské jméno a heslo od důvěrného toku klientské aplikace, který nemá ani rozhraní URI přesměrování (tok pověření klienta používaný v aplikacích daemon), musíte to vyjádřit vaše aplikace je veřejná klientská aplikace. Chcete-li dosáhnout této konfigurace, přejděte k části **Ověřování** pro vaši aplikaci. V podčásti **Upřesnit nastavení** vyberte v odstavci **Výchozí typ klienta** možnost **Ano** pro **léčbu aplikace jako veřejného klienta**.
+- Chcete-li rozlišit tok kódu zařízení, integrované ověřování systému Windows a uživatelské jméno a heslo od důvěrného toku klientské aplikace, který nemá ani rozhraní URI přesměrování (tok pověření klienta používaný v aplikacích daemon), musíte vyjádřit, že vaše aplikace je veřejná klientská aplikace. Chcete-li dosáhnout této konfigurace, přejděte k části **Ověřování** pro vaši aplikaci. V podčásti **Upřesnit nastavení** vyberte v odstavci **Výchozí typ klienta** možnost **Ano** pro **léčbu aplikace jako veřejného klienta**.
 
   ![Povolit veřejného klienta](media/scenarios/default-client-type.png)
 

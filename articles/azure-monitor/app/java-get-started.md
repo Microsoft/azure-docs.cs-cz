@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: efa498ba600a664beab4b9a49eae2b2c3f1c8397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2355cb7ab995cab3060c7a94c9e7ea344bd9e92b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298299"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984636"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Úvodní příručka: Začínáme s Application Insights ve webovém projektu v Jazyce Java
 
@@ -25,7 +25,7 @@ Application Insights představují rozšiřitelnou analytickou službu, která w
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Získejte klíč instrumentace Application Insights
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Na webu Azure Portalvytvořte prostředek Application Insights. Nastavte typ aplikace na webovou aplikaci Java.
 
 3. Najděte klíč instrumentace nového prostředku. Tento klíč budete muset za chvíli vložit do projektu kódu.
@@ -223,7 +223,7 @@ A pro automatické pojmenování operací.
 
 Sada Application Insights Java SDK nyní podporuje [distribuované trasování W3C](https://w3c.github.io/trace-context/).
 
-Příchozí konfigurace sady SDK je vysvětlena dále v našem článku o [korelaci](correlation.md#telemetry-correlation-in-the-java-sdk).
+Příchozí konfigurace sady SDK je vysvětlena dále v našem článku o [korelaci](correlation.md).
 
 Odchozí konfigurace sady SDK je definována v souboru [AI-Agent.xml.](java-agent.md)
 
@@ -258,7 +258,7 @@ Můžete zadat další čítače výkonu, které se mají shromažďovat.
 * `displayName` – název zobrazený na portálu služby Application Insights
 * `objectName` – název objektu JMX
 * `attribute` – atribut názvu objektu JMX k načtení
-* `type`(volitelné) – typ atributu JMX objektu:
+* `type`(nepovinné) - Typ atributu objektu JMX:
   * Výchozí hodnota: jednoduchý typ, například int nebo long.
   * `composite`: data čítače výkonu jsou ve formátu „Attribute.Data“
   * `tabular`: data čítače výkonu jsou ve formátu řádku tabulky

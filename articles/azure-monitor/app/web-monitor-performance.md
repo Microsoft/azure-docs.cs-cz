@@ -4,12 +4,12 @@ description: Začínáme s Přehledy aplikací. Analyzujte využití, dostupnost
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275617"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985061"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Sledování výkonu webových aplikací
 
@@ -26,8 +26,7 @@ Pokud jste ještě do projektu nepřidali Application Insights (to znamená, že
 * [Webové aplikace v ASP.NET](../../azure-monitor/app/asp-net.md)
   * [Přidání monitorování výjimek](../../azure-monitor/app/asp-net-exceptions.md)
   * [Přidání monitorování závislostí](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Webové aplikace Java EE](../../azure-monitor/app/java-get-started.md)
-  * [Přidání monitorování závislostí](../../azure-monitor/app/java-agent.md)
+* [Webové aplikace Java EE](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Zkoumání metrik výkonu
 Na [webu Azure Portal](https://portal.azure.com)přejděte na prostředek Application Insights, který jste nastavili pro vaši aplikaci. Okno přehledu zobrazuje základní údaje o výkonu:

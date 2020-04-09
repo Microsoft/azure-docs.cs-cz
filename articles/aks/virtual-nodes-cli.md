@@ -1,15 +1,16 @@
 ---
-title: Vytváření virtuálních uzlů pomocí azure cli ve službách Azure Kubernetes Services (AKS)
+title: Vytváření virtuálních uzlů pomocí azure cli
+titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak pomocí azure cli vytvořit cluster služeb Azure Kubernetes Services (AKS), který používá virtuální uzly ke spouštění podů.
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 05e32b6b0017e945044bc7593d4d6dbc543a5b64
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: b6d44ceb9b447d670c4e51c951b547e90dfce38f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616460"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984670"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Vytvoření a konfigurace clusteru Služeb Azure Kubernetes (AKS) pro použití virtuálních uzlů pomocí rozhraní příkazového příkazu Azure
 
@@ -66,7 +67,7 @@ Funkce virtuálních uzlů je silně závislá na sadě funkcí ACI. Následují
 * [Hostitelské aliasy](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * [Argumenty](../container-instances/container-instances-exec.md#restrictions) pro exec v ACI
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nebude nasazovat pody do virtuálního uzlu
-* [Uzly systému Windows Server (aktuálně ve verzi preview v AKS)](windows-container-cli.md) nejsou podporovány vedle virtuálních uzlů. Virtuální uzly můžete použít k plánování kontejnerů systému Windows Server bez nutnosti uzlů Systému Windows Server v clusteru AKS.
+* Virtuální uzly podporují plánování linuxových podů. Můžete ručně nainstalovat open source [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) poskytovatele naplánovat Windows Server kontejnery ACI. 
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 

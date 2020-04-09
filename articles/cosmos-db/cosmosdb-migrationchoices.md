@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 9111193bb441487b9e3c49bc9ee1a296d49f8a31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34698a215477abdd7d68c3dfe050657ecf049690
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72882391"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984891"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Možnosti migrace místních nebo cloudových dat do Azure Cosmos DB
 
@@ -38,7 +38,7 @@ Výběr nástroje pro migraci určují následující faktory:
 |Offline|[Konektor Azure Cosmos DB Spark](https://docs.microsoft.com/azure/cosmos-db/spark-connector)|&bull;Využívá knihovnu hromadného vykonavatele služby Azure Cosmos DB <br/>&bull;Vhodné pro velké datové sady <br/>&bull;Potřebuje vlastní nastavení Spark <br/>&bull;Spark je citlivý na nekonzistence schématu a to může být problém během migrace |
 |Offline|[Vlastní nástroj s knihovnou hromadného vykonavatele Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/migrate-cosmosdb-data)|&bull;Poskytuje možnosti vytváření nedoručených bodů, které zvyšují odolnost migrace. <br/>&bull;Vhodné pro velmi velké datové sady (10 TB+)  <br/>&bull;Vyžaduje vlastní nastavení tohoto nástroje spuštěného jako služba App Service. |
 |Online|[Funkce Cosmos DB + Rozhraní API ChangeFeed](https://docs.microsoft.com/azure/cosmos-db/change-feed-functions)|&bull;Snadné nastavení <br/>&bull;Funguje pouze v případě, že zdroj je kontejner Azure Cosmos DB <br/>&bull;Nevhodné pro velké datové sady <br/>&bull;Nezachytí odstranění ze zdrojového kontejneru. |
-|Online|[Služba vlastní migrace pomocí služby ChangeFeed](https://aka.ms/CosmosDBMigrationSample)|&bull;Poskytuje sledování průběhu <br/>&bull;Funguje pouze v případě, že zdroj je kontejner Azure Cosmos DB <br/>&bull;Funguje také pro větší datové sady. <br/>&bull;Vyžaduje, aby uživatel nastavil službu App Service pro hostování procesoru kanálu Změn. <br/>&bull;Nezachytí odstranění ze zdrojového kontejneru.|
+|Online|[Služba vlastní migrace pomocí služby ChangeFeed](https://github.com/nomiero/CosmosDBLiveETLSample)|&bull;Poskytuje sledování průběhu <br/>&bull;Funguje pouze v případě, že zdroj je kontejner Azure Cosmos DB <br/>&bull;Funguje také pro větší datové sady. <br/>&bull;Vyžaduje, aby uživatel nastavil službu App Service pro hostování procesoru kanálu Změn. <br/>&bull;Nezachytí odstranění ze zdrojového kontejneru.|
 |Online|[Striim](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-sql-api-migrate-data-striim)|&bull;Pracuje s širokou škálou zdrojů, jako jsou Oracle, DB2, SQL Server <br/>&bull;Snadné sestavení etl kanálů a poskytuje řídicí panel pro monitorování <br/>&bull;Podporuje větší datové sady <br/>&bull;Vzhledem k tomu, že se jedná o nástroj jiného výrobce, je třeba jej zakoupit na trhu a nainstalovat do prostředí uživatele.|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API
@@ -64,7 +64,7 @@ Pro rozhraní API než rozhraní SQL API, Rozhraní MONGO API a rozhraní CASSAN
 * [Nástroj pro migraci dat](https://docs.microsoft.com/azure/cosmos-db/table-import#data-migration-tool)
 * [AzCopy](https://docs.microsoft.com/azure/cosmos-db/table-import#migrate-data-by-using-azcopy)
 
-**Gremlin API**
+**Rozhraní Gremlin API**
 * [Knihovna hromadného vykonavatele modulu grafů](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-graph-dotnet)
 * [Gremlin Jiskra](https://github.com/Azure/azure-cosmosdb-spark/blob/2.4/samples/graphframes/main.scala) 
 

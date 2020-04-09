@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79409554"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879424"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrazů v projektu popisků
 
-Poté, co správce projektu [vytvoří projekt označování](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) v Azure Machine Learning, můžete použít nástroj pro označování rychle připravit data pro projekt Machine Learning. Tento článek popisuje:
+Poté, co správce projektu [vytvoří projekt označování](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) v Azure Machine Learning, můžete použít nástroj pro označování (public preview) k rychlé přípravě dat pro projekt Machine Learning. Tento článek popisuje:
 
 > [!div class="checklist"]
 > * Jak získat přístup k projektům označování
@@ -45,7 +45,9 @@ Přejděte na **zobrazit podrobné pokyny**. Tyto pokyny jsou specifické pro v�
 
 Ve všech úlohách označování obrázků zvolíte příslušnou značku nebo značky ze sady určené správcem projektu. Prvních devět značek můžete vybrat pomocí číselné klávesy na klávesnici.  
 
-Při úlohách klasifikace obrázků můžete zvolit zobrazení více obrazů současně. Pomocí ikon nad oblastí obrázku vyberte rozložení. Chcete-li vybrat všechny zobrazené obrázky současně, použijte **možnost Vybrat vše**. Chcete-li vybrat jednotlivé obrazy, použijte kruhové tlačítko výběru v pravém horním rohu obrazu. Chcete-li značku použít, musíte vybrat alespoň jeden obrázek. Pokud vyberete více obrazů, všechny vybrané značky se použijí na všechny vybrané obrazy.
+Při úlohách klasifikace obrázků můžete zvolit zobrazení více obrazů současně. Pomocí ikon nad oblastí obrázku vyberte rozložení. 
+
+Chcete-li vybrat všechny zobrazené obrázky současně, použijte **možnost Vybrat vše**. Chcete-li vybrat jednotlivé obrazy, použijte kruhové tlačítko výběru v pravém horním rohu obrazu. Chcete-li značku použít, musíte vybrat alespoň jeden obrázek. Pokud vyberete více obrazů, všechny vybrané značky se použijí na všechny vybrané obrazy.
 
 Zde jsme si vybrali rozložení dva po dvou a chystáme se použít značku "Mammal" na obrazy medvěda a kosatky. Obrázek žraloka byl již označen jako "chrupavčitá ryba" a leguán ještě nebyl označen.
 

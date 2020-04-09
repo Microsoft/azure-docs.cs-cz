@@ -1,10 +1,9 @@
 ---
-title: Rozhraní Api pro graf y Služby Azure AD | Dokumenty společnosti Microsoft
+title: Azure Active Directory Graph API
 description: Přehled a průvodce rychlým startem pro rozhraní API Azure AD Graph, který umožňuje programový přístup k Azure AD prostřednictvím koncových bodů rozhraní REST API.
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9515238449b3ece79815c9b3c616bd715b3b3400
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 73cdac1a372b42df5a8f52ea09f04ecc40031698
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476545"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885714"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 

@@ -3,12 +3,12 @@ title: Sledování změn delegování ve vašem správě klienta
 description: Přečtěte si, jak sledovat aktivitu delegování od klientů zákazníků až po správu klienta.
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82c41c392210e088c85af510b9698e0140f660e5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 322580cc3d0246f7a34e28cdae94da57fda070b5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421909"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985146"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Sledování změn delegování ve vašem správě klienta
 
@@ -73,7 +73,7 @@ Po vytvoření účtu instančního objektu a přiřazení role Čtečka monitor
 
 Jakmile vytvoříte nový účet instančního objektu s přístupem čtečky monitorování ke kořenovému oboru vašeho klienta pro správu, můžete ho použít k dotazování a vykazování aktivity delegování ve vašem tenantovi. 
 
-[Tento skript Azure PowerShell](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/monitor-delegation-changes) umíte dotaz na poslední 1 den aktivity a sestavy na všechny přidané nebo odebrané delegování (nebo pokusy, které nebyly úspěšné). Dotazuje se dat [protokolu aktivit klienta](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) a pak vytvoří následující hodnoty pro hlášení o delegacích, které jsou přidány nebo odebrány:
+[Tento skript Azure PowerShell](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) umíte dotaz na poslední 1 den aktivity a sestavy na všechny přidané nebo odebrané delegování (nebo pokusy, které nebyly úspěšné). Dotazuje se dat [protokolu aktivit klienta](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) a pak vytvoří následující hodnoty pro hlášení o delegacích, které jsou přidány nebo odebrány:
 
 - **DelegatedResourceId**: ID delegovaného předplatného nebo skupiny prostředků
 - **CustomerTenantId:** ID klienta zákazníka

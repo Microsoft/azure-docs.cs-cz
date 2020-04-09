@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 06/26/2019
-ms.openlocfilehash: 6e46d7403e251bccd69467cfcdaa1d5073b4e454
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,mvc
+ms.date: 04/07/2020
+ms.openlocfilehash: 963f5bd4dfdd9dda78a437bdb1111c9eec2795dc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494559"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878438"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Kurz: Vytvoření aplikace apache spark strojového učení v Azure HDInsight
 
-V tomto kurzu se dozvíte, jak pomocí [poznámkového bloku Jupyter](https://jupyter.org/) vytvořit aplikaci [Apache Spark](https://spark.apache.org/) pro strojové učení pro Azure HDInsight.
+V tomto kurzu se dozvíte, jak pomocí [poznámkového bloku Jupyter](https://jupyter.org/) vytvořit aplikaci [Apache Spark](./apache-spark-overview.md) pro strojové učení pro Azure HDInsight.
 
-[MLlib](https://spark.apache.org/docs/latest/ml-guide.html) je knihovna škálovatelného strojového učení Sparku, která se skládá z běžných algoritmů a nástrojů strojového učení, včetně klasifikace, regrese, clusteringu, filtrování založeného na spolupráci, snížení počtu dimenzí a také základních primitiv optimalizace.
+[MLlib](https://spark.apache.org/docs/latest/ml-guide.html) je knihovna strojového učení společnosti Spark, která se skládá z běžných algoritmů učení a nástrojů. (Klasifikace, regrese, shlukování, kolaborativní filtrování a snížení dimenzionality. Také základní optimalizace primitiv.)
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -33,13 +33,13 @@ V tomto kurzu se naučíte:
 
 ## <a name="understand-the-data-set"></a>Vysvětlení datové sady
 
-Aplikace používá ukázková data **HVAC.csv,** která jsou ve výchozím nastavení k dispozici ve všech clusterech. Soubor je umístěn `\HdiSamples\HdiSamples\SensorSampleData\hvac`na adrese . Data ukazují cílovou teplotu a skutečnou teplotu několika budov s nainstalovanými systémy HVAC. Sloupec **System** představuje ID systému a sloupec **SystemAge** představuje počet let, kolik je systém HVAC v budově umístěný. Pomocí těchto dat můžete odhadnout, jestli budova bude teplejší nebo studenější na základě cílové teploty, daného ID systému a stáří systému.
+Aplikace používá ukázková data **HVAC.csv,** která jsou ve výchozím nastavení k dispozici ve všech clusterech. Soubor je umístěn `\HdiSamples\HdiSamples\SensorSampleData\hvac`na adrese . Data ukazují cílovou teplotu a skutečnou teplotu několika budov s nainstalovanými systémy HVAC. Sloupec **System** představuje ID systému a sloupec **SystemAge** představuje počet let, kolik je systém HVAC v budově umístěný. Můžete předpovědět, zda bude budova teplejší nebo chladnější na základě cílové teploty, daného ID systému a stáří systému.
 
 ![Snímek dat použitých pro příklad strojového učení Spark](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Snímek dat použitých pro příklad strojového učení Spark")
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Vývoj aplikace strojového učení Sparku pomocí knihovny Spark MLlib
 
-V této aplikaci použijete [kanál ML](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) Sparku k provedení klasifikace dokumentu. Kanály ML poskytují jednotnou sadu rozhraní API vysoké úrovně postavených nad datovými rámci, která uživatelům pomáhají vytvářet a ladit užitečné kanály strojového učení. V kanálu rozdělíte dokument na slova, převedete slova na vektory číselné funkce a nakonec pomocí vektorů číselné funkce a popisků sestavíte prediktivní model. Proveďte následující kroky a vytvořte aplikaci.
+Tato aplikace používá kanál Spark [ML](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) k provedení klasifikace dokumentů. Ml kanály poskytují jednotnou sadu rozhraní API vysoké úrovně postavené na dataframes. DataFrames pomáhají uživatelům vytvářet a ladit praktické kanály strojového učení. V kanálu rozdělíte dokument na slova, převedete slova na vektory číselné funkce a nakonec pomocí vektorů číselné funkce a popisků sestavíte prediktivní model. Chcete-li vytvořit aplikaci, postupujte takto.
 
 1. Vytvořte poznámkový blok Jupyter pomocí jádra PySpark. Pokyny najdete v tématu [Vytvoření poznámkového bloku Jupyter](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
@@ -143,9 +143,9 @@ V této aplikaci použijete [kanál ML](https://spark.apache.org/docs/2.2.0/ml-p
 
     ![Snímek výstupních dat pro příklad strojového učení Spark](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Snímek výstupních dat pro příklad strojového učení Spark")
 
-    Všimněte si, že skutečná teplota je nižší než cílová teplota. To značí, že je budova studená. Proto je v trénovacím výstupu hodnota **label** na prvním řádku **0.0**, což znamená, že budova není teplá.
+    Všimněte si, že skutečná teplota je nižší než cílová teplota. To značí, že je budova studená. Hodnota **popisku** v prvním řádku je **0,0**, což znamená, že budova není horká.
 
-1. Připravte datovou sadu, pro kterou chcete natrénovaný model spustit. Provedete to tak, že předáte ID systému a stáří systému (v trénovacím výstupu označené jako **SystemInfo**) a model odhadne, jestli budova s tímto ID systému a stářím systému bude teplejší (označení 1.0) nebo studenější (označení 0.0).
+1. Připravte datovou sadu, pro kterou chcete natrénovaný model spustit. Chcete-li tak učinit, předáte ID systému a stáří systému (označené jako **SystemInfo** ve výstupu školení). Model předpovídá, zda budova s tímto ID systému a stáří systému bude teplejší (označené 1.0) nebo chladnější (označené 0,0).
 
     ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
@@ -180,7 +180,7 @@ V této aplikaci použijete [kanál ML](https://spark.apache.org/docs/2.2.0/ml-p
     Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
     ```
 
-   Na prvním řádku předpovědi vidíte, že v případě systému HVAC s ID 20 a stářím 25 let je budova teplá (**prediction=1.0**). První hodnota DenseVector (0.49999) odpovídá předpovědi 0.0 a druhá hodnota (0.5001) odpovídá předpovědi 1.0. Přestože je druhá hodnota pouze nepatrně vyšší, model ve výstupu zobrazí **prediction=1.0**.
+   Sledujte první řádek v předpovědi. U klimatizačního systému s ID 20 a stářím systému 25 let je budova horká (**predikce = 1,0**). První hodnota DenseVector (0.49999) odpovídá předpovědi 0.0 a druhá hodnota (0.5001) odpovídá předpovědi 1.0. Přestože je druhá hodnota pouze nepatrně vyšší, model ve výstupu zobrazí **prediction=1.0**.
 
 1. Vypněte poznámkový blok a uvolněte tak prostředky. Provedete to tak, že v nabídce **Soubor** poznámkového bloku vyberete **Zavřít a zastavit**. Tato akce poznámkový blok vypne a zavře.
 
@@ -192,7 +192,7 @@ Clustery Apache Spark ve službě HDInsight obsahují knihovny Anaconda. Jejich 
 
 Pokud nebudete nadále používat tuto aplikaci, odstraňte cluster, který jste vytvořili pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Do pole **Hledat** v horní části zadejte **HDInsight**.
 
@@ -202,7 +202,7 @@ Pokud nebudete nadále používat tuto aplikaci, odstraňte cluster, který jste
 
 1. Vyberte **Odstranit**. Vyberte **ano**.
 
-![Azure Portal odstraní cluster HDInsight](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "Odstranění clusteru HDInsight")
+![Portál Azure odstraní cluster HDInsight](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "Odstranění clusteru HDInsight")
 
 ## <a name="next-steps"></a>Další kroky
 

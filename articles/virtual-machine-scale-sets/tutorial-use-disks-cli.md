@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3accb1bb8c79d1842c4effe3b99fe2a904fa832
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067045"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878863"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure CLI
 Škálovací sady virtuálních počítačů využívají disky k ukládání operačních systémů, aplikací a dat instancí virtuálních počítačů. Při vytváření a správě škálovací sady je důležité, abyste zvolili vhodnou velikost disku a konfiguraci pro očekávané úlohy. Tento kurz se zabývá vytvořením a správou disků virtuálních počítačů. Co se v tomto kurzu naučíte:
@@ -51,18 +51,7 @@ Při vytváření nebo škálování škálovací sady se ke každé instanci vi
 
 
 ## <a name="azure-data-disks"></a>Datové disky Azure
-Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další datové disky. Datové disky by se měly používat v každé situaci, kdy se vyžaduje odolné a responzivní úložiště dat. Každý datový disk má maximální kapacitu 4 TB. Velikost instance virtuálního počítače určuje, kolik datových disků je možné připojit. Na každý virtuální procesor virtuálního počítače je možné připojit dva datové disky.
-
-### <a name="max-data-disks-per-vm"></a>Maximum datových disků na virtuální počítač
-| Typ | Běžné velikosti | Maximum datových disků na virtuální počítač |
-|----|----|----|
-| [Obecné účely](../virtual-machines/linux/sizes-general.md) | Řady A, B a D | 64 |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md) | Řada F | 64 |
-| [Optimalizované z hlediska paměti](../virtual-machines/linux/sizes-memory.md) | Řady D, E, G a M | 64 |
-| [Optimalizované z hlediska úložiště](../virtual-machines/linux/sizes-storage.md) | Řada L | 64 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | Řada N | 64 |
-| [Vysoký výkon](../virtual-machines/linux/sizes-hpc.md) | Řady A a H | 64 |
-
+Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další datové disky. Datové disky by se měly používat v každé situaci, kdy se vyžaduje odolné a responzivní úložiště dat. Každý datový disk má maximální kapacitu 4 TB. Velikost instance virtuálního počítače určuje, kolik datových disků je možné připojit. Pro každý virtuální procesor virtuálního počítače lze připojit dva datové disky až do absolutního maxima 64 disků na virtuální počítač.
 
 ## <a name="vm-disk-types"></a>Typy disků virtuálního počítače
 Azure poskytuje dva typy disků.

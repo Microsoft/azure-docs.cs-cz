@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 843f12d14120a7becdc1e8b15bfcc65948602c44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74007756"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891505"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 
@@ -135,11 +135,11 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa aplikací|AdminPolicyDatas-SetResources|
 |Správa aplikací|AdminUserJourneys-GetResources|
 |Správa aplikací|AdminUserJourneys-RemoveResources|
-|Ověřování|AdminUserJourneys-SetResources|
-|Ověřování|Create IdentityProvider|
-|Ověřování|Vytvoření aplikace V1|
-|Ověřování|Vytvoření aplikace V2|
-|Ověřování|Vytvoření vlastních domén v tenantovi|
+|Authentication|AdminUserJourneys-SetResources|
+|Authentication|Create IdentityProvider|
+|Authentication|Vytvoření aplikace V1|
+|Authentication|Vytvoření aplikace V2|
+|Authentication|Vytvoření vlastních domén v tenantovi|
 |Autorizace|Vytvoření nového objektu AdminUserJourney|
 |Autorizace|Vytvoření kódu JSON lokalizovaného prostředku|
 |Autorizace|Vytvoření nového vlastního zprostředkovatele identity|
@@ -370,8 +370,8 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa aplikací|Úprava podmínky použití|
 |Správa aplikací|Publikování podmínek použití|
 |Správa aplikací|Zrušení publikování podmínek použití|
-|Správa aplikací|Přidání certifikátu SSL aplikace|
-|Správa aplikací|Odstranění vazby SSL|
+|Správa aplikací|Přidat certifikát TLS/SSL aplikace|
+|Správa aplikací|Odstranit vazbu TLS|
 |Správa aplikací|Registrace konektoru|
 |Správa aplikací|AdminPolicyDatas-RemoveResources|
 |Správa aplikací|AdminPolicyDatas-SetResources|

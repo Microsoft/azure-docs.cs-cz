@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 5a5305ffd388d2573d250d93131c1fed236008b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9356ab0aec375a046a8f200838df296b2cf74bce
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76771615"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984976"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Tabulka DB Azure Cosmos .NET API: Poznámky ke stažení a verzi
 
@@ -26,8 +26,8 @@ ms.locfileid: "76771615"
 
 |   |   |
 |---|---|
-|**SDK ke stažení**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**Quickstart**|[Azure Cosmos DB: Vytvoření aplikace s rozhraním .NET a rozhraním TABLE API](create-table-dotnet.md)|
+|**SDK ke stažení**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
+|**Rychlý start**|[Azure Cosmos DB: Vytvoření aplikace s rozhraním .NET a rozhraním TABLE API](create-table-dotnet.md)|
 |**Tutorial**|[Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API](tutorial-develop-table-dotnet.md)|
 |**Aktuální podporovaný rámec**|[Rozhraní Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
