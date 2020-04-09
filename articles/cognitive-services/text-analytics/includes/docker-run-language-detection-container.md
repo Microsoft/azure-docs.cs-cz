@@ -3,18 +3,18 @@ title: Spustit příklad kontejneru příkazu spuštění dockeru
 titleSuffix: Azure Cognitive Services
 description: Příkaz Spuštění Dockeru pro kontejner Zjišťování jazyka
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/12/2019
-ms.author: dapine
-ms.openlocfilehash: d2818336de2b3d4d810932cefb21edd95b8cf733
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 1f6bfbf3a15f17c3cfd0487cdd0bbb535ffc31ae
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "70966696"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876979"
 ---
 Chcete-li spustit kontejner zjišťování `docker run` *jazyka,* proveďte následující příkaz.
 

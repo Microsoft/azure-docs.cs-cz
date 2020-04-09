@@ -4,12 +4,12 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: 16ce537a54fc77fc0f72b859d6d193501d86c1fc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aec13c6beb8dbfcdd5f38e7f96b86bf03e42fa37
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67175240"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986725"
 ---
 ## <a name="create-a-ruby-application"></a>Vytvoření aplikace Ruby
 Pokyny najdete [v tématu Vytvoření aplikace Ruby v Azure](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md).
@@ -42,3 +42,14 @@ sb_host = "https://#{Azure.sb_namespace}.servicebus.windows.net"
 ```
 
 Nastavte hodnotu oboru názvů na hodnotu, kterou jste vytvořili, nikoli na celou adresu URL. Například použijte **"yourexamplenamespace"**, ne "yourexamplenamespace.servicebus.windows.net".
+
+Při práci s více obory názvů můžete předat klíč a `SharedAccessSigner` jeho název konstruktoru při vytváření objektů
+
+```ruby
+sb_namespace = '<your azure service bus namespace>'
+sb_sas_key_name = '<your azure service bus access keyname>'
+sb_sas_key = '<your azure service bus access key>'
+
+signer = Azure::ServiceBus::Auth::SharedAccessSigner.new(sb_sas_key_name, sb_sas_key)
+sb_host = "https://#{sb_namespace}.servicebus.windows.net"
+```

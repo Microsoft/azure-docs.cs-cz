@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 967d391d4ac9a9704688dce9636d9a71b2002549
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241420"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879356"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
@@ -76,6 +76,15 @@ Azure ve výchozím nastavení směruje provoz mezi podsítěmi, propojenými vi
 
 - **Směrovací tabulky:** Pro jednotlivé podsítě můžete vytvářet vlastní směrovací tabulky s trasami, které řídí cíl směrování provozu. Další informace o [směrovacích tabulkách](virtual-networks-udr-overview.md#user-defined).
 - **Trasy protokolu Border Gateway Protocol (BGP):** Pokud připojíte virtuální síť k místní síti pomocí připojení Azure VPN Gateway nebo ExpressRoute, můžete do svých virtuálních sítí rozšířit místní trasy BGP. Další informace o použití BGP se službou [Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange).
+
+## <a name="virtual-network-integration-for-azure-services"></a>Integrace virtuální sítě pro služby Azure
+
+Integrace služeb Azure do virtuální sítě Azure umožňuje privátní přístup ke službě z virtuálních počítačů nebo výpočetních prostředků ve virtuální síti.
+Služby Azure můžete integrovat do virtuální sítě s následujícími možnostmi:
+- Nasazení [vyhrazených instancí služby](virtual-network-for-azure-services.md) do virtuální sítě. Ke službám pak lze přistupovat soukromě v rámci virtuální sítě a z místních sítí.
+- Použití [private link](../private-link/private-link-overview.md) pro soukromý přístup k určité instanci služby z vaší virtuální sítě a z místních sítí.
+- Ke službě můžete přistupovat také pomocí veřejných koncových bodů rozšířením virtuální sítě na službu prostřednictvím [koncových bodů služby](virtual-network-service-endpoints-overview.md). Koncové body služby umožňují prostředky služby, které mají být zabezpečeny do virtuální sítě.
+ 
 
 ## <a name="azure-vnet-limits"></a>Limity azure virtuální sítě
 

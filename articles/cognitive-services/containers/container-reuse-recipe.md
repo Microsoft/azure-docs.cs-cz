@@ -3,19 +3,19 @@ title: Recepty pro kontejnery Dockeru
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak vytvářet, testovat a ukládat kontejnery s některými nebo všemi nastaveními konfigurace pro nasazení a opakované použití.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: dapine
-ms.openlocfilehash: 97342f1dd4f6ce343626ba6c294f09dabe3db5c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 7380ff58d033a68565de7e419ff318f7bdec121d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76717202"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875074"
 ---
 # <a name="create-containers-for-reuse"></a>Vytváření kontejnerů pro opakované použití
 

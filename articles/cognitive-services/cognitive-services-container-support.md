@@ -3,19 +3,19 @@ title: Podpora kontejnerů
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak můžou kontejnery Dockeru přibližovat služby Cognitive Services vašim datům.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: dapine
-ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 7a38ec47d416027e8ea3fa772ae01e4f6264197a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219409"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876813"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službách Azure Cognitive Services
 
@@ -23,7 +23,7 @@ Podpora kontejnerů ve službě Azure Cognitive Services umožňuje vývojářů
 
 > [!div class="checklist"]
 > * [Detektor anomálií][ad-containers]
-> * [Počítačové vidění][cv-containers]
+> * [Computer Vision][cv-containers]
 > * [Tvář][fa-containers]
 > * [Rozpoznávání formulářů][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
@@ -52,7 +52,7 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 | Služba | Podporovaná cenová úroveň | Kontejner | Popis |
 |---------|----------|----------|-------------|
 |[Detektor anomálií][ad-containers] |F0, S0|**Detektor anomálií** |Rozhraní API detektoru anomálií umožňuje sledovat a detekovat abnormality v datech časových řad pomocí strojového učení.<br>[Vyžádání přístup](https://aka.ms/adcontainer)|
-|[Počítačové vidění][cv-containers] |F0, S1|**Čtení** |Extrahuje vytištěný text z obrázků různých objektů s různými povrchy a pozadími, jako jsou účtenky, plakáty a vizitky. Kontejner Pro čtení také detekuje *ručně psaný text* v obrazech a poskytuje podporu PDF/TIFF/více stránek.<br/><br/>**Důležité:** Read kontejner aktuálně funguje pouze s angličtinou.|
+|[Computer Vision][cv-containers] |F0, S1|**Čtení** |Extrahuje vytištěný text z obrázků různých objektů s různými povrchy a pozadími, jako jsou účtenky, plakáty a vizitky. Kontejner Pro čtení také detekuje *ručně psaný text* v obrazech a poskytuje podporu PDF/TIFF/více stránek.<br/><br/>**Důležité:** Read kontejner aktuálně funguje pouze s angličtinou.|
 |[Tvář][fa-containers] |F0, S0|**Tvář** |Detekuje lidské tváře v obrazech a identifikuje atributy, včetně orientačních bodů obličeje (například nosů a očí), pohlaví, věku a dalších strojově předpovídaných obličejových rysů. Kromě detekce může plocha zkontrolovat, zda jsou dvě plochy ve stejném obrázku nebo v různých obrázcích stejné pomocí skóre spolehlivosti, nebo porovnat plochy s databází, abyste zjistili, zda již existuje podobně vypadající nebo identická plocha. Může také uspořádat podobné tváře do skupin pomocí sdílených vizuálních vlastností.<br>[Vyžádání přístup](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Nástroj pro rozpoznávání formulářů][fr-containers] |F0, S0|**Rozpoznávání formulářů** |Form Understanding používá technologii strojového učení k identifikaci a extrahování párů klíč-hodnota a tabulek z formulářů.<br>[Vyžádání přístup](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS][lu-containers] |F0, S0|**LUIS** ([obrázek](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Načte trénovaný nebo publikovaný model language understanding, označovaný také jako aplikace LUIS, do kontejneru dockeru a poskytuje přístup k předpovědím dotazů z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrát je zpět na [portál LUIS](https://www.luis.ai) ke zlepšení přesnosti předpovědi aplikace.|
@@ -70,7 +70,7 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 
 Kromě toho některé kontejnery jsou podporovány v kognitivní služby [**All-In-One nabízí**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) klíče prostředků. Můžete vytvořit jeden prostředek služby Cognitive Services All-In-One a použít stejný fakturační klíč napříč podporovanými službami pro následující služby:
 
-* Počítačové zpracování obrazu
+* Computer Vision
 * Tvář
 * LUIS
 * Analýza textu

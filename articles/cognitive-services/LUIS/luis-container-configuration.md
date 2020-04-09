@@ -3,20 +3,20 @@ title: Nastavení kontejneru Dockeru – LUIS
 titleSuffix: Azure Cognitive Services
 description: Prostředí runtime kontejneru LUIS `docker run` je konfigurováno pomocí argumentů příkazu. Služba LUIS má několik požadovaných nastavení spolu s několika volitelnými nastaveními.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: dapine
-ms.openlocfilehash: a30fcd0ec7e53c78876596baf787639e81c638db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73795014"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874207"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnerů Dockeru pro rozpoznávání jazyků 
 
@@ -34,7 +34,7 @@ Tento kontejner má následující nastavení konfigurace:
 |Ano|[Eula](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
 |Ne|[Plynulý](#fluentd-settings)|Zápis protokolu a volitelně metrických dat na server Fluentd.|
 |Ne|[Http Proxy](#http-proxy-credentials-settings)|Nakonfigurujte proxy http pro vytváření odchozích požadavků.|
-|Ne|[protokolování](#logging-settings)|Poskytuje podporu protokolování ASP.NET core pro váš kontejner. |
+|Ne|[Protokolování](#logging-settings)|Poskytuje podporu protokolování ASP.NET core pro váš kontejner. |
 |Ano|[Koně](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru zpět do hostitelského počítače.|
 
 > [!IMPORTANT]

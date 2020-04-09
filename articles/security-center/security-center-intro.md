@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 11201d6560319dd34ec829f1fb34bd13d45011d7
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: d2e7e157156a4049a5db37b1d5c0e02773adbcc3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435816"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879543"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -29,7 +29,7 @@ Zajištění bezpečnosti vašich prostředků je společné úsilí mezi vaší
 
 Azure Security Center řeší tři nejnaléhavější nároky na zabezpečení:
 
--   **Rychle se měnící úlohy** – jedná se o silné a zároveň slabé místo cloudu. Na jedné straně mají koncoví uživatelé větší možnosti. Na straně druhé, jak zajistíte, aby stále se měnící služby, které uživatelé používají a vytvářejí, vyhovovaly standardům zabezpečení a dodržovaly osvědčené postupy zabezpečení?
+-   **Rychle se měnící úlohy** – je to síla i výzva cloudu. Na jedné straně mají koncoví uživatelé větší možnosti. Na straně druhé, jak zajistíte, aby stále se měnící služby, které uživatelé používají a vytvářejí, vyhovovaly standardům zabezpečení a dodržovaly osvědčené postupy zabezpečení?
 
 -   **Stále důmyslnější útoky** – bez ohledu na to, kde své úlohy provozujete, jsou útoky stále důmyslnější. Musíte zabezpečit své úlohy ve veřejném cloudu, což jsou vlastně úlohy přístupné z internetu, které ještě více zvyšují vaši zranitelnost, pokud nedodržujete osvědčené postupy zabezpečení.
 
@@ -146,5 +146,7 @@ Rozsáhlá kolekce protokolů – protokoly z Windows a Linuxu jsou všechny vyu
 ## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete začít využívat Security Center, musíte mít předplatné Microsoft Azure. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
-- Bezplatná cenová úroveň Security Center je povolená s vaším předplatným Azure. Chcete-li využít výhod rozšířené správy zabezpečení a možností ochrany před hrozbami, je nutné upgradovat na standardní cenovou úroveň. Standardní úroveň lze vyzkoušet zdarma po dobu 30 dnů. Další informace naleznete na [stránce Scenní centrum zabezpečení](https://azure.microsoft.com/pricing/details/security-center/).
+
+- Bezplatná cenová úroveň Security Center je povolená ve všech vašich aktuálních předplatných Azure, jakmile poprvé navštívíte řídicí panel Azure Security Center na Webu Azure Portal nebo pokud je programově povolena prostřednictvím rozhraní API. Chcete-li využít výhod rozšířené správy zabezpečení a možností detekce hrozeb, je nutné upgradovat na standardní cenovou úroveň. Standardní úroveň lze vyzkoušet zdarma po dobu 30 dnů. Další informace najdete na [stránce s cenami za Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+
 - Pokud jste připraveni povolit standard Security Center nyní, [rychlý start: Onboard předplatné Azure security center standard](security-center-get-started.md) vás provede kroky.

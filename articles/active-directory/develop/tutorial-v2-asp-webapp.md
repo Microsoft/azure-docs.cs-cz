@@ -3,25 +3,21 @@ title: Přidání přihlášení k platformě Microsoft identit ASP.NET webové 
 titleSuffix: Microsoft identity platform
 description: Implementace přihlášení Microsoftu k řešení ASP.NET pomocí tradiční aplikace založené na webovém prohlížeči a standardu OpenID Connect
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 017cc886b3d47a97a29f45979cb49215de31ae0a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79126644"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880971"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Přidání přihlášení k Microsoftu do ASP.NET webové aplikace
 

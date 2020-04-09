@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/07/2020
+ms.date: 04/08/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 951396afc95a215a6ff9f4885f83fcdf6efdeb72
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 60d936d9c2785e4723cdc09e55927fe13af8d8a1
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810329"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892304"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -115,12 +115,14 @@ Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP)
 |Nelze odebrat první veřejnou konfiguraci IP|Každá veřejná IP adresa Azure Firewall je přiřazena *ke konfiguraci IP*adresy .  První konfigurace protokolu IP je přiřazena během nasazení brány firewall a obvykle také obsahuje odkaz na podsíť brány firewall (pokud není explicitně nakonfigurována jinak prostřednictvím nasazení šablony). Tuto konfiguraci PROTOKOLU IP nelze odstranit, protože by byla brána firewall zrušena. Stále můžete změnit nebo odebrat veřejnou IP adresu přidruženou k této konfiguraci IP, pokud má brána firewall k dispozici alespoň jednu další veřejnou IP adresu.|Toto chování je úmyslné.|
 |Zóny dostupnosti lze konfigurovat pouze během nasazení.|Zóny dostupnosti lze konfigurovat pouze během nasazení. Zóny dostupnosti nelze konfigurovat po nasazení brány firewall.|Toto chování je úmyslné.|
 |SNAT na příchozí připojení|Kromě DNAT jsou připojení přes veřejnou IP adresu firewallu (příchozí) nahlašována do jednoho z privátních IP adres brány firewall. Tento požadavek dnes (také pro aktivní/aktivní neva) pro zajištění symetrického směrování.|Chcete-li zachovat původní zdroj pro protokol HTTP/S, zvažte použití záhlaví [XFF.](https://en.wikipedia.org/wiki/X-Forwarded-For) Můžete například použít službu, jako je [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) nebo Azure Application [Gateway](../application-gateway/rewrite-http-headers.md) před bránou firewall. Waf můžete také přidat jako součást Azure Front Door a řetězu do brány firewall.
-|Podpora filtrování SQL FQDN pouze v režimu proxy (port 1433)|Pro Azure SQL Database, Azure SQL Data Warehouse a Azure SQL Managed Instance:<br><br>Během náhledu sql fqdn filtrování je podporována pouze v režimu proxy (port 1433).<br><br>Pro Azure SQL IaaS:<br><br>Pokud používáte nestandardní porty, můžete tyto porty zadat v pravidlech aplikace.|Pro SQL v režimu přesměrování, což je výchozí, pokud se připojujete z Azure, můžete místo toho filtrovat přístup pomocí značky služby SQL jako součást pravidel sítě Azure Firewall.
-|Odchozí provoz na portu TCP 25 není povolen.| Odchozí připojení SMTP, která používají port TCP 25, jsou blokována. Port 25 se používá především pro neověřené doručování e-mailů. Toto je výchozí chování platformy pro virtuální počítače. Další informace najdete [v tématu Řešení potíží s odchozím připojením SMTP v Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Na rozdíl od virtuálních počítačů však není v současné době možné povolit tuto funkci v bráně Azure Firewall.|Podle doporučené metody odeslat e-mail, jak je popsáno v článku řešení potíží SMTP. Nebo vylučte virtuální počítač, který potřebuje odchozí přístup SMTP z výchozí trasy do brány firewall, a místo toho nakonfigurujte odchozí přístup přímo do Internetu.
+|Podpora filtrování SQL FQDN pouze v režimu proxy (port 1433)|Pro Azure SQL Database, Azure SQL Data Warehouse a Azure SQL Managed Instance:<br><br>Během náhledu sql fqdn filtrování je podporována pouze v režimu proxy (port 1433).<br><br>Pro Azure SQL IaaS:<br><br>Pokud používáte nestandardní porty, můžete tyto porty zadat v pravidlech aplikace.|Pro SQL v režimu přesměrování (výchozí, pokud se připojujete z Azure), můžete místo toho filtrovat přístup pomocí značky služby SQL jako součást pravidel sítě Azure Firewall.
+|Odchozí provoz na portu TCP 25 není povolen.| Odchozí připojení SMTP, která používají port TCP 25, jsou blokována. Port 25 se používá především pro neověřené doručování e-mailů. Toto je výchozí chování platformy pro virtuální počítače. Další informace najdete [v tématu Řešení potíží s odchozím připojením SMTP v Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Na rozdíl od virtuálních počítačů však není v současné době možné povolit tuto funkci v bráně Azure Firewall.|Podle doporučené metody odeslat e-mail, jak je popsáno v článku řešení potíží SMTP. Nebo vylučte virtuální počítač, který potřebuje odchozí přístup SMTP z výchozí trasy do brány firewall. Místo toho nakonfigurujte odchozí přístup přímo do Internetu.
 |Aktivní ftp není podporován.|Aktivní ftp je zakázáno na Azure Firewall k ochraně proti útokům FTP bounce pomocí příkazu FTP PORT.|Místo toho můžete použít pasivní FTP. Stále je nutné explicitně otevřít porty TCP 20 a 21 v bráně firewall.
 |Metrika využití portu SNAT zobrazuje 0 %|Metrika využití portu Azure Firewall SNAT může zobrazovat 0 % využití i při použití portů SNAT. V tomto případě pomocí metriky jako součást metriky stavu brány firewall poskytuje nesprávný výsledek.|Tento problém byl vyřešen a zavedení do výroby je určeno na květen 2020. V některých případech přeřazení brány firewall problém vyřeší, ale není konzistentní. Jako zprostředkující řešení použijte stav brány firewall pouze k vyhledání *stavu=degradováno*, nikoli *stavu=není v pořádku*. Vyčerpání portů se projeví jako *zhoršené*. *Není v pořádku* je vyhrazena pro budoucí použití, když jsou další metriky ovlivnit stav brány firewall.
-|Funkce DNAT není podporována s povoleným vynuceným tunelovým propojením.|Brány firewall nasazené s povoleným vynuceným tunelovým propojením nemohou z důvodu asymetrického směrování podporovat příchozí přístup z Internetu.|Toto je záměrné z důvodu asymetrického směrování. Zpáteční cesta pro příchozí připojení vede přes místní bránu firewall, ve které se připojení nenapojovalo.
+|DNAT není podporován s povoleným vynuceným tunelovým propojením.|Brány firewall nasazené s povoleným vynuceným tunelovým propojením nemohou z důvodu asymetrického směrování podporovat příchozí přístup z Internetu.|Toto je záměrné z důvodu asymetrického směrování. Zpáteční cesta pro příchozí připojení vede přes místní bránu firewall, ve které se připojení nenapojovalo.
 |Odchozí pasivní ftp nefunguje pro brány firewall s více veřejnými IP adresami.|Pasivní FTP vytváří různá připojení pro řídicí a datové kanály. Pokud brána firewall s více veřejnými IP adresami odešle odchozí data, náhodně vybere jednu ze svých veřejných IP adres pro zdrojovou IP adresu. Protokol FTP selže, pokud datové a řídicí kanály používají různé zdrojové adresy IP.|Je plánována explicitní konfigurace SNAT. Mezitím zvažte použití jedné IP adresy v této situaci.|
+|Metrika NetworkRuleHit postrádá dimenzi protokolu|ApplicationRuleHit metrika umožňuje filtrování na základě protokolu, ale tato funkce chybí v odpovídající NetworkRuleHit metriky.|Oprava se vyšetřuje.|
+|Aktualizace konfigurace může trvat v průměru pět minut.|Aktualizace konfigurace azure firewall může trvat v průměru tři až pět minut a paralelní aktualizace nejsou podporovány.|Oprava se vyšetřuje.
 
 ## <a name="next-steps"></a>Další kroky
 

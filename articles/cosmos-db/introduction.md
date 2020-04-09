@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6292c3c2d928581d0564fe457342ea7b1e17111c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240391"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983020"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
 Dnešní aplikace musí být vysoce citlivé a vždy online. Chcete-li dosáhnout nízké latence a vysoké dostupnosti, instance těchto aplikací je třeba nasadit v datových centrech, které jsou blízko k jejich uživatelům. Aplikace musí reagovat v reálném čase na velké změny v používání ve špičce, ukládat stále rostoucí objemy dat a zpřístupnit tato data uživatelům v milisekundách.
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu s více modely. Pomocí kliknutí na tlačítko cosmos DB umožňuje elasticky a nezávisle škálovat propustnost a úložiště v libovolném počtu oblastí Azure po celém světě. Můžete elasticky škálovat propustnost a úložiště a využít rychlý, jednociferný milisekundový přístup k datům pomocí vašeho oblíbeného rozhraní API, včetně: SQL, MongoDB, Cassandra, Tables nebo Gremlin. Cosmos DB poskytuje komplexní [smlouvy o úrovni služeb](https://aka.ms/acdbsla) (SLA) pro propustnost, latenci, dostupnost a konzistenci záruky, něco, co žádná jiná databázová služba nabízí.
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu s více modely. Pomocí kliknutí na tlačítko cosmos DB umožňuje elasticky a nezávisle škálovat propustnost a úložiště v libovolném počtu oblastí Azure po celém světě. Můžete elasticky škálovat propustnost a úložiště a využít rychlý, jednociferný milisekundový přístup k datům pomocí vašeho oblíbeného rozhraní API, včetně: SQL, MongoDB, Cassandra, Tables nebo Gremlin. Cosmos DB poskytuje komplexní [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) (SLA) pro propustnost, latenci, dostupnost a konzistenci záruky, něco, co žádná jiná databázová služba nabízí.
 
 Azure [Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, bezplatně a závazků, nebo použít [bezplatnou úroveň Azure Cosmos DB](optimize-dev-test.md#azure-cosmos-db-free-tier) k získání účtu s prvními 400 RU/s a 5 GB úložiště zdarma.
 
@@ -56,7 +56,7 @@ Udržování schématu databáze a indexů v synchronizaci se schématem aplikac
 
 ### <a name="battle-tested-database-service"></a>Bitva testována databázová služba
 
-Cosmos DB je základní služba v Azure. Cosmos DB používá téměř deset let mnoho produktů Microsoftu pro klíčové aplikace v globálním měřítku, včetně Skype, Xbox, Office 365, Azure a mnoha dalších. Cosmos DB je dnes jednou z nejrychleji rostoucích služeb v Azure, kterou používá mnoho externích zákazníků a klíčových aplikací, které vyžadují elastické škálování, globální distribuci na klíč, replikaci více hlavních serverů pro nízkou latenci a vysokou dostupnost obou čte a píše.
+Cosmos DB je základní služba v Azure. Cosmos DB používá téměř deset let mnoho produktů Microsoftu pro klíčové aplikace v globálním měřítku, včetně Skype, Xbox, Office 365, Azure a mnoha dalších. Dnes je Cosmos DB jednou z nejrychleji rostoucích služeb v Azure, kterou používá mnoho externích zákazníků a důležitých aplikací, které vyžadují elastické škálování, globální distribuci na klíč, replikaci více hlavních serverů pro nízkou latenci a vysokou dostupnost čtení i zápisů.
 
 ### <a name="ubiquitous-regional-presence"></a>Všudypřítomná regionální přítomnost
 

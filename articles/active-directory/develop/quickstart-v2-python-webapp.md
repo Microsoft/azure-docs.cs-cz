@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: a8ef0f172a8e9118eef2d2f8a11f3efbce665171
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 0affae56ef6998efe4bb370287ff3688f83f3878
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473536"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873952"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Úvodní příručka: Přidání přihlášení s Microsoftem do webové aplikace Pythonu
 
@@ -41,8 +41,7 @@ Chcete-li spustit tuto ukázku, budete potřebovat:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
 >
-> 1. Přejděte na [portál Azure – registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
-> 1. Vyberte **možnost Nová registrace**.
+> 1. Přejděte na [portál Azure – registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs).
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
 >
@@ -59,8 +58,11 @@ Chcete-li spustit tuto ukázku, budete potřebovat:
 > 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `python-webapp`.
 >      - V části **Podporované typy účtů**vyberte Účty ve všech **organizačních adresářích a osobních účtech Microsoft**.
->      - V části **Identifikátor URI přesměrování** vyberte v rozevíracím seznamu **webovou** platformu a nastavte hodnotu na . `http://localhost:5000/getAToken`
->      - Vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
+>      - Vyberte **Zaregistrovat**.
+>      - Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
+> 1. V nabídce vyberte **ověřování** a přidejte následující informace:
+>    - Přidejte konfiguraci **webové** platformy. Přidat `http://localhost:5000/getAToken` jako **přesměrování identifikátorů URI**.
+>    - Vyberte **Uložit**.
 > 1. V nabídce na levé straně zvolte **Certifikáty & tajných kódů** a klikněte na **Nový tajný klíč klienta** v části **Tajné klíče klienta:**
 >
 >      - Zadejte popis klíče (tajného klíče aplikace instance).
@@ -105,11 +107,11 @@ Chcete-li spustit tuto ukázku, budete potřebovat:
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-application"></a>Krok 3: Konfigurace aplikace
-> 
+>
 > 1. Extrahujte soubor ZIP do místní složky bližší ke kořenové složce, třeba **C:\Azure-Samples**.
 > 1. Pokud používáte integrované vývojové prostředí, otevřete ukázku ve vašem oblíbeném integrovaném vývojovém prostředí (volitelné).
 > 1. Otevřete soubor **app_config.py,** který najdete v kořenové složce, a nahraďte je následujícím fragmentem kódu:
-> 
+>
 > ```python
 > CLIENT_ID = "Enter_the_Application_Id_here"
 > CLIENT_SECRET = "Enter_the_Client_Secret_Here"

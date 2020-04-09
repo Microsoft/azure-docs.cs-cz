@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 0ee35f4f0b4bd8c46a0445e2905ae3b50d11f721
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471640"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879118"
 ---
 # <a name="what-is-azure-front-door"></a>Co je Azure Front Door?
 Azure Front Door umožňuje definovat, spravovat a monitorovat globální směrování pro váš webový provoz optimalizací pro nejlepší výkon a okamžité globální převzetí služeb při selhání pro vysokou dostupnost. Pomocí aplikací Front Door můžete transformovat globální spotřebitelské a podnikové aplikace (s více oblastmi) na robustní, vysoce výkonné přizpůsobené moderní aplikace, api a obsah, který se díky Azure dostane k globálnímu publiku.
@@ -51,12 +51,12 @@ Podobně také můžete mít dvě různé domény – `www.contoso.com` a `www.f
 ## <a name="session-affinity"></a>Spřažení relací
 Funkce spřažení relací na základě souborů cookie je užitečná v případě, že chcete zachovat uživatelskou relaci na stejném back-endu aplikací. Využitím spravovaných souborů cookie služby Front Door je možné následný provoz z relace uživatele nasměrovat do stejného back-endu aplikace za účelem zpracování. Tato funkce je důležitá v případech, kdy se stav jednotlivých uživatelských relací ukládá místně na back-endu.
 
-## <a name="secure-sockets-layer-ssl-termination"></a>Ukončení protokolu SSL (Secure Sockets Layer)
-Služba Front Door podporuje ukončení protokolu SSL na hraničních zařízeních. To znamená, že uživatelé mohou nastavit připojení SSL pomocí prostředí služby Front Door místo toho, aby toto připojení navazovali přes dálková připojení pomocí back-endu aplikace. Služba Front Door dále podporuje připojení přes protokol HTTP i HTTPS mezi prostředími služby Front Door a back-endy. Můžete tedy nastavit i šifrování SSL od začátku až do konce. Pokud například služba Front Door obdrží pro úlohu aplikace více než 5 000 žádostí za minutu, z důvodu opakovaného použití pohotovostního připojení se u aktivních služeb vytvoří řekněme 500 připojení k back-endu aplikace. Tím se výrazně sníží zátěž z back-endů.
+## <a name="tls-termination"></a>Ukončení TLS
+Front Door podporuje ukončení TLS na okraji, to znamená, že jednotliví uživatelé mohou nastavit připojení TLS s prostředím front door namísto jeho navázání přes dálková připojení s back-endem aplikace. Služba Front Door dále podporuje připojení přes protokol HTTP i HTTPS mezi prostředími služby Front Door a back-endy. Můžete tedy také nastavit end-to-end šifrování TLS. Pokud například služba Front Door obdrží pro úlohu aplikace více než 5 000 žádostí za minutu, z důvodu opakovaného použití pohotovostního připojení se u aktivních služeb vytvoří řekněme 500 připojení k back-endu aplikace. Tím se výrazně sníží zátěž z back-endů.
 
 ## <a name="custom-domains-and-certificate-management"></a>Vlastní domény a správa certifikátů
 Pokud k doručování obsahu používáte službu Front Door a chcete, aby se v adrese URL služby Front Door zobrazoval název vaší vlastní domény, potřebujete vlastní doménu. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky.
-Pro názvy vlastních domén podporuje služba Front Door také protokol HTTPS. Tuto funkci můžete použít buď tak, že pro provoz vyberete spravované certifikáty služby Front Door, nebo nahrajete vlastní certifikát SSL.
+Pro názvy vlastních domén podporuje služba Front Door také protokol HTTPS. Tuto funkci použijte buď výběrem spravovaných certifikátů Front Door pro váš provoz, nebo nahráním vlastního certifikátu TLS/SSL.
 
 ## <a name="application-layer-security"></a>Zabezpečení aplikační vrstvy
 Azure Front Door umožňuje vytvářet vlastní pravidla brány firewall webových aplikací (WAF) pro řízení přístupu k ochraně úlohy HTTP/HTTPS před zneužitím na základě IP adres klienta, kódu země a parametrů http. Front Door dále umožňuje vytvořit pravidla omezení rychlosti, aby bylo možné vypořádat se s provozem škodlivých robotů. Další informace o bráně firewall webových aplikací najdete v tématu [Co je brána firewall pro webové aplikace Azure?](../web-application-firewall/overview.md)

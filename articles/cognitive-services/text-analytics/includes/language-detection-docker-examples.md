@@ -3,18 +3,18 @@ title: Příklady dockeru pro zjišťování jazyka
 titleSuffix: Azure Cognitive Services
 description: Příklady dockeru pro zjišťování jazyka
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/19/2019
-ms.author: dapine
-ms.openlocfilehash: 6e09a19ceb7b892a8ec405b348700b65c9d55ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 01863bfd1bf1c2c6f5688145ac5cbf74d1d2dfc1
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71148386"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878651"
 ---
 ### <a name="language-detection-container-docker-examples"></a>Příklady dockeru pro zjišťování jazyka
 

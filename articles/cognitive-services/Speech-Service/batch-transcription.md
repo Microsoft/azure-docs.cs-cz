@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1f88df186526c2f9903337bb3331940be0989c3d
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668837"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892457"
 ---
 # <a name="what-is-batch-transcription"></a>Co je přepis dávky?
 
@@ -129,7 +129,7 @@ Pomocí těchto volitelných vlastností můžete nakonfigurovat přepis:
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      Určuje, zda má být analýza mínění použita pro utterance. Přijaté hodnoty `true` jsou `false` povolit a (výchozí hodnota) zakázat.
+      Určuje, zda má být analýza mínění použita pro utterance. Přijaté hodnoty `true` jsou `false` povolit a (výchozí hodnota) zakázat. Další podrobnosti najdete v [tématu Analýza mínění.](#sentiment-analysis)
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -146,7 +146,7 @@ Pomocí těchto volitelných vlastností můžete nakonfigurovat přepis:
       Volitelná adresa URL se [službou SAS](../../storage/common/storage-sas-overview.md) do zapisovatelného kontejneru v Azure. Výsledek je uložen v tomto kontejneru.
 :::row-end:::
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 Dávkový přepis podporuje [úložiště objektů Blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) pro čtení zvuku a zápis přepisů do úložiště.
 
@@ -218,12 +218,41 @@ Pro mono vstupní zvuk se vytváří jeden soubor výsledků transkripce. Pro st
 
 Výsledek obsahuje tyto formy:
 
-| Formulář        | Obsah                                                                                                                                                  |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Lexical`   | Skutečná slova rozpoznána.                                                                                                                             |
-| `ITN`       | Inverzní text normalizovaná forma rozpoznaného textu. Používají se zkratky ("doctor smith" až "dr smith"), telefonní čísla a další transformace. |
-| `MaskedITN` | Formulář ITN s vulgárním maskováním.                                                                                                             |
-| `Display`   | Zobrazovaný formulář rozpoznaného textu. Zahrnuta jsou zahrnuta přidána interpunkce a velká písmena.                                                             |
+:::row:::
+   :::column span="1":::
+      **Formulář**
+   :::column-end:::
+   :::column span="2":::
+      **Obsah**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Lexical`
+   :::column-end:::
+   :::column span="2":::
+      Skutečná slova rozpoznána.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ITN`
+   :::column-end:::
+   :::column span="2":::
+      Inverzní text normalizovaná forma rozpoznaného textu. Používají se zkratky ("doctor smith" až "dr smith"), telefonní čísla a další transformace.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `MaskedITN`
+   :::column-end:::
+   :::column span="2":::
+      Formulář ITN s vulgárním maskováním.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Display`
+   :::column-end:::
+   :::column span="2":::
+      Zobrazovaný formulář rozpoznaného textu. Zahrnuta jsou zahrnuta přidána interpunkce a velká písmena.
+:::row-end:::
 
 ## <a name="speaker-separation-diarization"></a>Oddělení reproduktorů (diarizace)
 
@@ -260,6 +289,10 @@ Funkce mínění odhaduje mínění vyjádřené ve zvuku. Sentiment je vyjádř
 - Zjištění, co se zákazníkům líbí a co se jim na produktu nebo službě nelíbí
 
 Mínění se skóre skóre pro každý segment zvuku na základě lexikální formuláře. Celý text v tomto zvukovém segmentu se používá k výpočtu mínění. Pro celý přepis se nepočítá žádný souhrnný mínění. V současné době je analýza mínění k dispozici pouze pro anglický jazyk.
+
+> [!NOTE]
+> Doporučujeme místo toho použít rozhraní Microsoft Text Analytics API. Nabízí pokročilejší funkce nad rámec analýzy mínění, jako je extrakce klíčových frází, automatická detekce jazyka a další. Informace a ukázky naleznete v [dokumentaci k textové analýze](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
+>
 
 Ukázka výstupu JSON vypadá takto:
 

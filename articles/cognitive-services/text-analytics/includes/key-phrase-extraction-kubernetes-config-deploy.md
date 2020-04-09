@@ -3,18 +3,18 @@ title: Klíčové fráze Extrakce Kubernetes config a nasazení kroky
 titleSuffix: Azure Cognitive Services
 description: Klíčové fráze Extrakce Kubernetes config a nasazení kroky
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/21/2019
-ms.author: dapine
-ms.openlocfilehash: 1a96b5e4d03ce72bac29126028ca61e11e8c7324
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 6ef7efe3d48fd20c5141803430260a80395faa82
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78262411"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877805"
 ---
 ### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Nasazení kontejneru extrakce frází klíče do clusteru AKS
 

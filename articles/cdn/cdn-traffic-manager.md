@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: de91f61385942db077bc98721eabe9f3f0b8624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d44e53520481e4ada5c2f16f0c56a4a6a724ec1
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083001"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892474"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Nastavení převzetí služeb při selhání ve více koncových bodech Azure CDN pomocí Azure Traffic Manageru
 
@@ -62,13 +62,13 @@ Po nastavení profilů CDN a Traffic Manager přidejte mapování DNS a zaregist
 
     a. Pro první položku CNAME namapujte vlastní doménu pomocí subdomény cdnverify na koncový bod CDN. Tato položka je povinným krokem k registraci vlastní domény do koncového bodu CDN, který jste přidali do Traffic Manageru v kroku 2.
 
-      Například: 
+      Příklad: 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
     b. Pro druhou položku CNAME namapujte vlastní doménu bez subdomény cdnverify na koncový bod CDN. Tato položka mapuje vlastní doménu na Traffic Manager. 
 
-      Například: 
+      Příklad: 
       
       `cdndemo101.dustydogpetcare.online  CNAME  cdndemo101.trafficmanager.net`   
 
@@ -82,12 +82,12 @@ Po nastavení profilů CDN a Traffic Manager přidejte mapování DNS a zaregist
     Azure CDN používá *subdoménu cdnverify* k ověření mapování DNS k dokončení tohoto procesu registrace. Další informace naleznete [v tématu Vytvoření záznamu CNAME DNS](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Tento krok umožňuje Azure CDN rozpoznat vlastní doménu tak, aby mohla reagovat na jeho požadavky.
     
     > [!NOTE]
-    > Chcete-li povolit SSL na Azure CDN z profilů **Akamai,** musíte přímo cname vlastní domény do koncového bodu. cdnverify pro povolení SSL ještě není podporován. 
+    > Chcete-li povolit TLS na Azure CDN z profilů **Akamai,** musíte přímo cname vlastní domény do koncového bodu. cdnverify pro povolení TLS ještě není podporován. 
     >
 
 3.  Vraťte se na web pro poskytovatele domény vlastní domény a aktualizujte první mapování DNS, které jste vytvořili v aplikaci, aby byla vlastní doména mapována na druhý koncový bod CDN.
                              
-    Například: 
+    Příklad: 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 

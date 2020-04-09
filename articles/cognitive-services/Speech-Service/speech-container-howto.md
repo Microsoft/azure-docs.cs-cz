@@ -3,19 +3,19 @@ title: Instalace kontejnerů řeči – služba řeči
 titleSuffix: Azure Cognitive Services
 description: Nainstalujte a spusťte kontejnery řeči. Převod řeči na text přepne zvukové proudy na text v reálném čase, který mohou aplikace, nástroje nebo zařízení využívat nebo zobrazovat. Převod textu na řeč převede vstupní text na syntetizovanou řeč podobné člověku.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.author: dapine
-ms.openlocfilehash: 2beee81bc365d00e59a62cacabacc5f5d6b62a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 2caae4fecdf13a1833f23cf9423cf3ded67f6f72
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474777"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879005"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby rozpoznávání řeči (náhled)
 
@@ -380,7 +380,7 @@ Tento příkaz:
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Dotaz na koncový bod předpovědi kontejneru
 
-| Kontejnery | Adresa URL hostitele sady SDK | Protocol (Protokol) |
+| Containers | Adresa URL hostitele sady SDK | Protocol (Protokol) |
 |--|--|--|
 | Převod řeči na text a vlastní převod řeči na text | `ws://localhost:5000` | WS |
 | Převod textu na řeč a Vlastní převod textu na řeč | `http://localhost:5000` | HTTP |

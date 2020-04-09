@@ -1,5 +1,5 @@
 ---
-title: Aktualizace uživatelského jména a hesla RDP v powershellu
+title: Aktualizace uživatelského jména a hesla RDP v Prostředí PowerShell
 description: Ukázkový skript Azure PowerShellu – Aktualizace uživatelského jména a hesla protokolu RDP pro všechny uzly clusteru Service Fabric konkrétního typu
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 0cf9f8362d3fa683084aef840cf35cd9a843608a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614804"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984925"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Aktualizace uživatelského jména a hesla správce virtuálních počítačů v clusteru
 
@@ -42,6 +42,10 @@ Tento skript používá následující příkazy: Každý příkaz v tabulce odk
 | [Získat-AzVmss](/powershell/module/az.compute/get-azvmss) | Získá vlastnosti typu uzlu clusteru (škálovací sada virtuálních počítačů).   |
 | [Přidat-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| Přidá do škálovací sady virtuálních počítačů rozšíření.|
 | [Aktualizace-AzVmss](/powershell/module/az.compute/update-azvmss)|Aktualizuje stav škálovací sady virtuálních počítačů na stav místního objektu škálovací sady virtuálních počítačů.|
+
+## <a name="duration"></a>Doba trvání
+
+Jeden typ uzlu s pěti uzly, například má dobu trvání 45 až 60 minut změnit uživatelské jméno nebo heslo. 
 
 ## <a name="next-steps"></a>Další kroky
 

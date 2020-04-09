@@ -1,5 +1,5 @@
 ---
-title: Microsoft identity platformwindows desktop rychlý start | Dokumenty společnosti Microsoft
+title: Rychlý start plochy platformy Microsoft identity Windows
 description: Zjistěte, jak může aplikace Windows desktop .NET (XAML) získat přístupový token a volat rozhraní API chráněné koncovým bodem platformy identit Microsoftu
 services: active-directory
 author: jmprieur
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f7b6a682498bfce55107ba139600b6c9ab688542
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f202a6c06c2137501c2c6a1b47fbd086f80043a0
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473333"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883606"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows
 

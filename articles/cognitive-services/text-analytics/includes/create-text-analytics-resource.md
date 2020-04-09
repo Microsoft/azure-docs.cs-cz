@@ -3,22 +3,22 @@ title: Vytvoření prostředku analýzy textu služeb cognitive services
 titleSuffix: Azure Cognitive Services
 description: Přečtěte si, jak vytvořit prostředek analýzy textu služeb Cognitive Services.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/21/2019
-ms.author: dapine
-ms.openlocfilehash: d3b65174f3d161e0b8780a890f297d9d1c812b44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 6cd653909e26dc5e0484ca289a1d2ab47e20457f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74383478"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876398"
 ---
 ## <a name="create-a-cognitive-services-text-analytics-resource"></a>Vytvoření prostředku analýzy textu služeb cognitive services
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyberte **Vytvořit zdroj**a přejděte na **AI + Machine Learning** > **Text Analytics**.
    Nebo přejděte na [vytvořit analýzu textu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics).
 1. Zadejte všechna požadovaná nastavení:

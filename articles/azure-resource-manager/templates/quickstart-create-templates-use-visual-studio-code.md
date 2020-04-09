@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c9447d356cff792d9a70e33cc2a5e35898d8982b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a0c80f18e9cd09b765804aaddbd178b4b3e32a9d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80131891"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984448"
 ---
 # <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>Úvodní příručka: Vytvoření šablon ARM pomocí kódu sady Visual Studio
 
@@ -94,7 +94,7 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
 
 2. V levém horním rohu vyberte preferované prostředí výběrem **prostředí PowerShell** nebo **Bash**(CLI).  Po přepnutí se vyžaduje restartování prostředí.
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ![CLI v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
@@ -106,7 +106,7 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
 
 3. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**.
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ![Nahrání souboru v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
@@ -120,7 +120,7 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
 
     Volitelně můžete použít příkaz **ls** a příkaz **cat** k ověření úspěšného nahrání souboru.
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ![Zobrazení souboru v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
@@ -131,12 +131,14 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
     ---
 4. Ve službě Cloud Shell spusťte následující příkazy. Výběrem odpovídající karty zobrazíte kód PowerShellu nebo kód rozhraní příkazového řádku.
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+
     ```azurecli
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
     echo "Enter the location (i.e. centralus):" &&
     read location &&
+    resourceGroupName="${projectName}rg" &&
     az group create --name $resourceGroupName --location "$location" &&
     az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
@@ -144,8 +146,9 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
@@ -157,7 +160,7 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
 
     Následující snímek obrazovky ukazuje ukázkové nasazení:
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ![Šablona nasazení v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
@@ -171,7 +174,8 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
 
 5. Spuštěním následujícího příkazu rozhraní příkazového řádku nebo PowerShellu zobrazíte nově vytvořený účet úložiště:
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&

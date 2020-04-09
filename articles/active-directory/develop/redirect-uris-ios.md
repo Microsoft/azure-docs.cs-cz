@@ -3,26 +3,22 @@ title: Použití identifikátorů URI přesměrování s nástrojem MSAL (iOS/ma
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o rozdílech mezi knihovnou ověřování Microsoftu pro ObjectiveC (MSAL pro iOS a macOS) a Knihovnou ověřování Azure AD pro objectivec (ADAL. ObjC) a jak mezi nimi migrovat.
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: c36c6b1b1b08de6d2db9a7f7f9ebd3b162c02383
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1291563a39e3cf3acd4b343302be8b150bf794ca
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240839"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883504"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Použití identifikátorů URI přesměrování s ověřovací knihovnou Microsoftu pro iOS a macOS
 
@@ -40,7 +36,7 @@ Však může být nutné změnit přesměrování URI pro pokročilé scénáře
 
 Aby mohla platforma Microsoft Identity sdílet tokeny mezi aplikacemi, musí mít každá aplikace stejné ID klienta nebo ID aplikace. Jedná se o jedinečný identifikátor poskytnutý při registraci aplikace na portálu (nikoli ID sady aplikací, které registrujete na aplikaci u společnosti Apple).
 
-Identifikátory URI přesměrování musí být pro každou aplikaci pro iOS odlišné. To umožňuje službě identit společnosti Microsoft jednoznačně identifikovat různé aplikace, které sdílejí ID aplikace. Každá aplikace může mít více identifikátorů URI přesměrování registrovaných na webu Azure Portal. Každá aplikace ve vaší sadě bude mít jiný identifikátor URI přesměrování. Například:
+Identifikátory URI přesměrování musí být pro každou aplikaci pro iOS odlišné. To umožňuje službě identit společnosti Microsoft jednoznačně identifikovat různé aplikace, které sdílejí ID aplikace. Každá aplikace může mít více identifikátorů URI přesměrování registrovaných na webu Azure Portal. Každá aplikace ve vaší sadě bude mít jiný identifikátor URI přesměrování. Příklad:
 
 Vzhledem k následující registraci aplikace na webu Azure Portal:
 
@@ -82,7 +78,7 @@ MSAL ověří, zda se identifikátor URI přesměrování registruje správně, 
 
 ## <a name="use-a-custom-redirect-uri"></a>Použití vlastního identifikátoru URI přesměrování
 
-Chcete-li použít vlastní identifikátor `redirectUri` URI `MSALPublicClientApplicationConfig` přesměrování, předajte parametr a předajte mu tento objekt při `MSALPublicClientApplication` inicializaci objektu. Pokud je identifikátor URI přesměrování neplatný, `nil` inicializátor se vrátí a nastaví `redirectURIError`další informace.  Například:
+Chcete-li použít vlastní identifikátor `redirectUri` URI `MSALPublicClientApplicationConfig` přesměrování, předajte parametr a předajte mu tento objekt při `MSALPublicClientApplication` inicializaci objektu. Pokud je identifikátor URI přesměrování neplatný, `nil` inicializátor se vrátí a nastaví `redirectURIError`další informace.  Příklad:
 
 Cíl-C:
 

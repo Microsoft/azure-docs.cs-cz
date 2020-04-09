@@ -2,26 +2,22 @@
 title: Microsoft identity platforma (v2.0) přehled - Azure
 description: Přečtěte si o koncovém bodu a platformě platformy Microsoft identity platformy (v2.0).
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2e5bbbd311d71f2925e86ae756b36de7194aa9fb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240825"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886241"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft identity platformy (v2.0) přehled
 

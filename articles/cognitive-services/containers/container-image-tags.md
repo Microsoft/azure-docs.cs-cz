@@ -3,18 +3,18 @@ title: Značky imagí kontejnerů Cognitive Services
 titleSuffix: Azure Cognitive Services
 description: Komplexní seznam všech značek image kontejneru služby Cognitive Service.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 03/09/2020
-ms.author: dapine
-ms.openlocfilehash: eed2223dbfeee307b552cdd010530f27c379f5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 786fde90e1bcf47e08857c26235a27862c5b3d75
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219442"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878761"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Značky obrázků kontejneru Azure Cognitive Services
 
@@ -35,7 +35,7 @@ Tato image kontejneru má k dispozici následující značky:
 | `1.1.009301-amd64-preview`    |       |
 | `1.1.008500001-amd64-preview` |       |
 
-## <a name="computer-vision"></a>Počítačové zpracování obrazu
+## <a name="computer-vision"></a>Computer Vision
 
 Image [kontejneru počítačového zpracování][cv-containers] `containerpreview.azurecr.io` lze nalézt v registru kontejneru. Je umístěn v `microsoft` úložišti a `cognitive-services-read`je pojmenován . Plně kvalifikovaný název bitové `containerpreview.azurecr.io/microsoft/cognitive-services-read`kopie kontejneru je . .
 

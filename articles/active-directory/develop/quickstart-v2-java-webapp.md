@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 1d73f974e2452c225220bc6f610568a2cded9887
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42b478b598fe3034f1a97fe41662a38bc265074d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473628"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875975"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Úvodní příručka: Přidání přihlášení s Microsoftem do webové aplikace Java
 
@@ -36,27 +36,27 @@ Chcete-li spustit tuto ukázku, budete potřebovat:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
 >
-> 1. Přejděte na [portál Azure – registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
+> 1. Přejděte na portál Azure – rychlé spuštění [registrace aplikací.](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs)
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
-> 1. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
+> 1. Podle pokynů v úvodním startu portálu stáhněte automaticky nakonfigurovaný kód aplikace.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu
 >
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 >
-> Chcete-li zaregistrovat přihlášku a ručně přidat registrační údaje aplikace do vašeho řešení, postupujte takto:
+> Chcete-li zaregistrovat přihlášku a ručně přidat registrační údaje aplikace do aplikace, postupujte takto:
 >
 > 1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 >
-> 1. Přejděte na platformu identit Microsoftpro vývojáře [Registrace aplikací](/azure/active-directory/develop/) stránky.
+> 1. Přejděte na platformu identit Microsoftpro vývojáře [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
 > 1. Vyberte **možnost Nová registrace**.
 > 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `java-webapp`.
->    - Ponechejte identifikátor **URI přesměrování** prozatím prázdný a vyberte **registrovat**.
+>    - Vyberte **Zaregistrovat**.
 > 1. Na stránce **Přehled** vyhledejte **ID aplikace (klienta)** a hodnoty **ID adresáře (klienta)** aplikace. Zkopírujte tyto hodnoty pro pozdější.
 > 1. V nabídce vyberte **ověřování** a přidejte následující informace:
->    - V **rozhraní URI**přesměrování `https://localhost:8080/msal4jsample/secure/aad` `https://localhost:8080/msal4jsample/graph/me`přidejte a .
+>    - Přidejte konfiguraci **webové** platformy.  Přidejte `https://localhost:8080/msal4jsample/secure/aad` `https://localhost:8080/msal4jsample/graph/me` tyto a jako **přesměrování identifikátorů URI**..
 >    - Vyberte **Uložit**.
 > 1. V nabídce vyberte **tajný &ch kódů certifikátů** a v části **Tajné klíče klienta** klikněte na **Nový tajný klíč klienta**:
 >
@@ -84,7 +84,7 @@ Chcete-li spustit tuto ukázku, budete potřebovat:
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Stáhněte projekt a extrahujte soubor ZIP do místní složky blíže ke kořenové složce – například **C:\Azure-Samples**
-> 
+>
 > Chcete-li použít https s localhost, vyplňte vlastnosti server.ssl.key. Chcete-li vygenerovat certifikát podepsaný svým držitelem, použijte nástroj keytool (součástí jre).
 >
 >  ```
@@ -97,7 +97,7 @@ Chcete-li spustit tuto ukázku, budete potřebovat:
 >   server.ssl.key-alias=testCert
 >   ```
 >   Vložte generovaný soubor úložiště klíčů do složky "zdroje".
-   
+
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Stáhnout ukázku kódu](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
@@ -157,8 +157,56 @@ Pokud používáte webovou aplikaci z ide, klikněte na spustit, přejděte na d
     - *Odhlásit*: Odhlásí aktuálního uživatele z aplikace a přesměruje ho na domovskou stránku.
     - *Zobrazit informace o uživateli*: Získá token pro Microsoft Graph a zavolá Microsoft Graph s požadavkem obsahujícím token, který vrátí základní informace o přihlášeném uživateli.
 
+##### <a name="running-from-tomcat"></a>Útěk z Tomcatu
 
-   
+Pokud chcete nasadit ukázku webu do Aplikace Tomcat, budete muset provést několik změn zdrojového kódu.
+
+1. Otevřít ms-identity-java-webapp/pom.xml
+    - V `<name>msal-web-sample</name>` části přidat`<packaging>war</packaging>`
+    - Přidat závislost:
+
+         ```xml
+         <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+          <scope>provided</scope>
+         </dependency>
+         ```
+
+2. Otevřít ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication
+
+    - Odstraňte veškerý zdrojový kód a nahraďte je:
+
+   ```Java
+    package com.microsoft.azure.msalwebsample;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.boot.builder.SpringApplicationBuilder;
+    import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+    @SpringBootApplication
+    public class MsalWebSampleApplication extends SpringBootServletInitializer {
+
+     public static void main(String[] args) {
+      SpringApplication.run(MsalWebSampleApplication.class, args);
+     }
+
+     @Override
+     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+      return builder.sources(MsalWebSampleApplication.class);
+     }
+    }
+   ```
+
+3. Otevření příkazového řádku, přejděte do kořenové složky projektu a spusťte`mvn package`
+    - Tím se `msal-web-sample-0.1.0.war` vygeneruje soubor v adresáři /targets.
+    - Přejmenujte tento soubor na`ROOT.war`
+    - Nasaďte tento válečný soubor pomocí Tomcatu nebo jiného řešení kontejneru J2EE.
+        - Chcete-li nasazení v kontejneru Tomcat, zkopírujte soubor .war do složky webapps v rámci instalace Tomcat a spusťte server Tomcat.
+
+Tato funkce WAR bude https://localhost:8080/automaticky hostována na adrese .
+
 > [!IMPORTANT]
 > Tato aplikace rychlého startu používá tajný klíč klienta k identifikaci jako důvěrný klient. Vzhledem k tomu, že tajný klíč klienta je přidán jako prostý text do souborů projektu, z bezpečnostních důvodů se doporučuje použít certifikát namísto tajného klíče klienta před zvážením aplikace jako produkční aplikace. Další informace o použití certifikátu naleznete v [tématu Pověření certifikátu pro ověřování aplikací](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials).
 
@@ -173,6 +221,8 @@ MSAL for Java (MSAL4J) je java knihovna používaná k přihlášení uživatel�
 
 Přidejte MSAL4J do aplikace pomocí Maven nebo Gradle ke správě závislostí provedením následujících změn v souboru pom.xml (Maven) nebo build.gradle (Gradle) aplikace.
 
+V pom.xml:
+
 ```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
@@ -180,6 +230,8 @@ Přidejte MSAL4J do aplikace pomocí Maven nebo Gradle ke správě závislostí 
     <version>1.0.0</version>
 </dependency>
 ```
+
+V build.gradle:
 
 ```$xslt
 compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'

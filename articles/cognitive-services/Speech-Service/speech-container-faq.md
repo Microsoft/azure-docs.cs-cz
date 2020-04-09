@@ -3,19 +3,19 @@ title: Často kladené otázky kontejnerů služby rozpoznávání řeči (FAQ)
 titleSuffix: Azure Cognitive Services
 description: Nainstalujte a spusťte kontejnery řeči. převod řeči na text přepisuje zvukové proudy na text v reálném čase, který mohou aplikace, nástroje nebo zařízení využívat nebo zobrazovat. Převod textu na řeč převede vstupní text na syntetizovanou řeč podobné člověku.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 2afb7c84c4d737703917d12a43aa7c3bb799836b
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 9b0fd89693517bdb63ba6f4265fddf2b0aa57ba5
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80537018"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874479"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Často kladené otázky kontejnerů služby rozpoznávání řeči (FAQ)
 
@@ -97,7 +97,7 @@ Náklady na údržbu hrazené společnosti Microsoft závisí na úrovni služeb
 
 **Odpověď:** By `speech_recognition_language=<YOUR_LANGUAGE>` měl být explicitně nakonfigurován v požadavku, pokud používají carbon klienta.
 
-Například:
+Příklad:
 
 ```python
 if not recognize_once(

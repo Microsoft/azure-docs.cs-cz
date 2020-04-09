@@ -5,18 +5,25 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c1e5c0a714a8b66d83c19acc53f6a680a9196a90
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 3e1cf95d3c6ac8918e9e7e5593d687ee2d398810
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673431"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886615"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Úvodní příručka: Vytvoření projektu Azure Functions pomocí kódu Visual Studia
 
 V tomto článku pomocí kódu sady Visual Studio vytvořit funkci, která reaguje na požadavky HTTP. Po testování kódu místně jej nasadíte do prostředí Azure Functions bez serveru. Dokončení tohoto rychlého startu bude mít na účtu Azure malé náklady na několik usd centů nebo méně. 
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
 K dispozici je také verze tohoto článku [založená na cli.](functions-create-first-azure-function-azure-cli.md)
+::: zone-end  
+
+::: zone pivot="programming-language-java"  
+> [!NOTE]
+> Pokud VS Kód není váš preferovaný vývojový nástroj, podívejte se na naše podobné návody pro Devlopers Java pomocí [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [Gradle](/azure/azure-functions/functions-create-first-java-gradle) a [IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions).
+::: zone-end  
 
 ## <a name="configure-your-environment"></a>Konfigurace prostředí
 
@@ -25,11 +32,11 @@ Než začnete, ujistěte se, že máte následující požadavky:
 + Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
-+ [Node.js](https://nodejs.org/), vyžadované systémem Windows pro npm. Pouze [verze LTS active LTS a Údržba LTS ](https://nodejs.org/about/releases/). Pomocí `npm --version` příkazu zkontrolujte svou verzi.
++ [Node.js](https://nodejs.org/), vyžadované systémem Windows pro npm. Pouze [verze LTS active LTS a Údržba LTS](https://nodejs.org/about/releases/). Pomocí `node --version` příkazu zkontrolujte svou verzi.
     Není vyžadováno pro místní vývoj na macOS a Linux.   
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-+ [Node.js](https://nodejs.org/), Verze LTS active LTS a Údržba (doporučeno 10.14.1). Pomocí `npm --version` příkazu zkontrolujte svou verzi.
++ [Node.js](https://nodejs.org/), Verze LTS active LTS a Údržba (doporučeno 10.14.1). Pomocí `node --version` příkazu zkontrolujte svou verzi.
 ::: zone-end 
 ::: zone pivot="programming-language-python"
 + [Python 3.8](https://www.python.org/downloads/release/python-381/), [Python 3.7](https://www.python.org/downloads/release/python-375/), [Python 3.6](https://www.python.org/downloads/release/python-368/) jsou podporované funkcemi Azure (x64).

@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 03/12/2020
-ms.openlocfilehash: 5847ef3033d257faef4831785b8abd864d54e835
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c072161db7a477b7973571a18d4f686b1b9c6202
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79209604"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985673"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-a-sql-database"></a>Úvodní příručka: Pomocí editoru dotazů na portál Azure Portal můžete dotazovat na databázi SQL.
 
@@ -175,7 +175,7 @@ Při práci s editorem dotazů je třeba vědět několik věcí.
 
 * Editor dotazů používá ke komunikaci porty 443 a 1443. Ujistěte se, že jste na těchto portech povolili odchozí přenoshttps. Pro přístup k databázím a datovým skladům budete také muset přidat odchozí IP adresu do pravidel brány firewall na serveru.
 
-* Editor dotazů pracuje s privátním odkazem, aniž by bylo nutné přidávat ip adresu klienta do brány firewall databáze SQL
+* Pokud máte privátní připojení, Editor dotazů funguje bez nutnosti přidávat ip adresu klienta do brány firewall databáze SQL
 
 * Stisknutím klávesy **F5** obnovíte stránku editoru dotazů a veškerý dotaz, na kterém se pracuje, bude ztracen.
 

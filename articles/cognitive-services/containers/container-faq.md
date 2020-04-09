@@ -3,18 +3,18 @@ title: Kognitivní služby kontejnery často kladené otázky (FAQ)
 titleSuffix: Azure Cognitive Services
 description: Nejčastější dotazy a odpovědi.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: dapine
-ms.openlocfilehash: 33b99d50db4384c7de818a7dd0bb8492c86bef97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73961893"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876502"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services kontejnery nejčastější dotazy (FAQ)
 
@@ -26,7 +26,7 @@ ms.locfileid: "73961893"
 
 > [!div class="checklist"]
 > * [Detektor anomálií][ad-containers]
-> * [Počítačové vidění][cv-containers]
+> * [Computer Vision][cv-containers]
 > * [Tvář][fa-containers]
 > * [Rozpoznávání formulářů][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
@@ -108,7 +108,7 @@ Prozkoumejte následující značky pro potenciální otázky a odpovědi, kter�
 **A:** Zákazníkům se účtuje účtovaná spotřeba, podobně jako cloud služeb Cognitive Services. Kontejnery musí být nakonfigurované pro odesílání dat měření do Azure a transakce se budou účtovat odpovídajícím způsobem. Prostředky používané v hostovaných a místních službách přidají k jedné kvótě s odstupňovanými cenami a započítá se do obou použití. Další podrobnosti naleznete na stránce s cenami odpovídající nabídky.
 
 * [Detektor anomálií][ad-containers-billing]
-* [Počítačové vidění][cv-containers-billing]
+* [Computer Vision][cv-containers-billing]
 * [Tvář][fa-containers-billing]
 * [Rozpoznávání formulářů][fr-containers-billing]
 * [Language Understanding (LUIS)][lu-containers-billing]
@@ -135,7 +135,7 @@ Prozkoumejte následující značky pro potenciální otázky a odpovědi, kter�
 **A:** Kontejnery služeb Cognitive Services jsou kontejnery založené na x64, které můžou spouštět libovolné kompatibilní linuxové uzly, virtuální počítače a hraniční zařízení, které podporuje kontejnery x64 Linux Docker. Všechny vyžadují procesory. Minimální a doporučené konfigurace pro každou nabídku kontejnerů jsou k dispozici níže:
 
 * [Detektor anomálií][ad-containers-recommendations]
-* [Počítačové vidění][cv-containers-recommendations]
+* [Computer Vision][cv-containers-recommendations]
 * [Tvář][fa-containers-recommendations]
 * [Rozpoznávání formulářů][fr-containers-recommendations]
 * [Language Understanding (LUIS)][lu-containers-recommendations]
