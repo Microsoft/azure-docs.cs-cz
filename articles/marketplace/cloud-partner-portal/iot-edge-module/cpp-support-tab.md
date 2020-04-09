@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 306f13cbc83c0c48ce1c90581762275a86dfcb90
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 45304e12bf959cb1f695384535360af283ee3f10
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743968"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981864"
 ---
 # <a name="iot-edge-module-support-tab"></a>Karta Podpora modulu IoT Edge
 
 >[!Important]
->března 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
+>dubna 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
 
 Karta **Podpora** na stránce **Nová nabídka** slouží k poskytování technických a uživatelských zdrojů podpory pro vaši nabídku.  Ve formuláři podpory jsou k dispozici následující vstupní oblasti: **Technický kontakt**, **Zákaznická podpora**a Adresy URL **podpory**. Hvězdička (*) připojená k názvu pole označuje, že je požadováno.
 

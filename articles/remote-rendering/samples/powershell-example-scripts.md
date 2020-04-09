@@ -1,18 +1,18 @@
 ---
-title: Příklad skriptů prostředí PowerShell
+title: Ukázkové skripty PowerShellu
 description: Příklady, které ukazují, jak používat front-end pomocí skriptů prostředí PowerShell
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: d7238c899301d76edde86d52c6db74468ffe18ad
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679475"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891488"
 ---
-# <a name="example-powershell-scripts"></a>Příklad skriptů prostředí PowerShell
+# <a name="example-powershell-scripts"></a>Ukázkové skripty PowerShellu
 
 Vzdálené vykreslování Azure poskytuje následující dvě rest api:
 
@@ -37,7 +37,10 @@ Chcete-li spustit ukázkové skripty, potřebujete funkční nastavení [Azure P
 
 1. Přihlaste se k předplatnému obsahujícímu váš účet vzdáleného vykreslování Azure:
     1. Otevření PowerShellu
-    1. Spustit:`Connect-AzAccount -Subscription "<your Azure subscription id>"`
+    1. Spustit: `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
+
+> [!NOTE]
+> V případě, že vaše organizace má více než jedno předplatné, budete muset zadat SubscriptionId a Tenant argumenty. Podrobnosti naleznete v [dokumentaci connect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
 
 1. Stáhněte složku *Skripty* z [úložiště GithHub vzdáleného vykreslování Azure](https://github.com/Azure/azure-remote-rendering).
 

@@ -3,12 +3,12 @@ title: Důležité informace o úložišti pro funkce Azure
 description: Přečtěte si o požadavcích na úložiště v Azure Functions a o šifrování uložených dat.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276579"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984159"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Důležité informace o úložišti pro funkce Azure
 
@@ -29,7 +29,7 @@ Funkce Azure vyžadují účet Azure Storage při vytváření instance aplikace
 
 Při vytváření aplikace funkce musíte vytvořit nebo propojit účet úložiště Azure pro obecné účely, který podporuje úložiště objektů Blob, Fronta a Tabulka. Důvodem je, že funkce závisí na Azure Storage pro operace, jako je správa aktivačních událostí a spuštění funkcí protokolování. Některé účty úložiště nepodporují fronty a tabulky. Tyto účty zahrnují účty úložiště pouze pro objekty blob, Azure Premium Storage a účty úložiště pro obecné účely s replikací ZRS. Tyto nepodporované účty jsou odfiltrovány z okna účtu úložiště při vytváření aplikace funkce.
 
-Další informace o typech účtů úložiště najdete v tématu [Seznámení se službami Azure Storage](../storage/common/storage-introduction.md#azure-storage-services). 
+Další informace o typech účtů úložiště najdete v tématu [Seznámení se službami Azure Storage](../storage/common/storage-introduction.md#core-storage-services). 
 
 Zatímco můžete použít existující účet úložiště s vaší aplikace funkce, musíte se ujistit, že splňuje tyto požadavky. Účty úložiště vytvořené jako součást toku vytvoření aplikace funkce je zaručeno, že splňují tyto požadavky na účet úložiště.  
 

@@ -2,25 +2,21 @@
 title: Platforma microsoftu pro identitu UPW začíná | Azure
 description: Jak univerzální platformy Windows aplikace (UPW) můžete volat rozhraní API, které vyžaduje přístupové tokeny koncovým bodem platformy identity Microsoftu.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6e7ee1b03dda30bea15a837b6daf6469e00e46d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129884"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886394"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace platformy Universal Windows (XAML)
 
@@ -320,7 +316,7 @@ Přidejte do *MainPage.xaml.cs* následující metodu, chcete-li zobrazit zákla
    }
    ```
 
-#### <a name="more-information"></a>Více informací<a name="more-information-1"></a>
+#### <a name="more-information"></a>Další informace<a name="more-information-1"></a>
 
 ID tokeny získané pomocí **OpenID Connect** také obsahují malou podmnožinu informací týkajících se uživatele. `DisplayBasicTokenInfo`zobrazí základní informace obsažené v tokenu. Tyto informace zahrnují zobrazované jméno uživatele a ID. Obsahuje také datum vypršení platnosti tokenu a řetězec, který představuje samotný přístupový token. Pokud několikrát vyberete tlačítko Volat rozhraní **Microsoft Graph API,** uvidíte, že stejný token byl znovu použit pro pozdější požadavky. Můžete také zobrazit datum vypršení platnosti prodloužena, když MSAL rozhodne, že je čas na obnovení tokenu.
 
@@ -346,7 +342,7 @@ Do *MainPage.xaml.cs*přidejte následující novou metodu :
 
 Nyní je třeba zaregistrovat svou žádost:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyberte**registrace aplikací**Azure **Active Directory** > .
 1. Vyberte **možnost Nová registrace**. Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například *UWP-App-calling-MSGraph*.
 1. V části **Podporované typy účtů**vyberte Účty v **libovolném organizačním adresáři a osobních účtech Microsoft (např. skype, Xbox)** a pokračujte v možnosti **Registrovat.**

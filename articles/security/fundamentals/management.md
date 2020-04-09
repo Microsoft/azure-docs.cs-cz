@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2019
+ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e50eb561bcbb924ea093722d6c61bbe51747b328
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811270"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981303"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
 Předplatitelé služby Azure mohou svoje cloudová prostředí spravovat z více zařízení. Můžou k tomu využívat pracovní stanice, počítače vývojářů a dokonce i privilegovaná zařízení koncových uživatelů, která mají oprávnění ke konkrétním úlohám. V některých případech se funkce správy provádějí prostřednictvím webových konzol, například [portálu Azure](https://azure.microsoft.com/features/azure-portal/). V ostatních případech můžou existovat přímá připojení k Azure z místních systémů prostřednictvím virtuálních privátních sítí (VPN), terminálových služeb, protokolů klientských aplikací nebo (v kódu) rozhraní API pro správu služby Azure (SMAPI). Kromě toho můžou být koncové body klienta buď připojené k doménám nebo izolované a nespravované, jako například tablety nebo smartphony.
@@ -145,9 +145,6 @@ V případě posílených pracovních stanic doporučujeme, tři primární konf
 | - | Jasné oddělení povinností | - |
 | Podnikový počítač jako virtuální počítač |Snížení náklady na hardware | - |
 | - | Odloučení role a aplikací | - |
-| Windows používá šifrování jednotky pomocí BitLockeru |Kompatibilita s většinou počítačů |Sledování prostředků |
-| - | Nákladová efektivnost a přenositelnost | - |
-| - | Izolované prostředí správy |- |
 
 Je důležité, aby posílená pracovní stanice byla hostitelem a ne hostem a aby neobsahovala nic, co by stálo mezi hostitelským operačním systémem a hardwarem. Dodržování „zásady čistého zdroje“ (také označovaného jako „bezpečný původ“) znamená, že hostitel musí být posílený nejvíc. V opačném případě bude posílená pracovní stanice (host) terčem útoků na systém, na kterém je hostovaná.
 
@@ -170,15 +167,6 @@ V případech, kdy je samostatná posílená pracovní stanice nákladově nevý
 Abyste zabránili několika bezpečnostním rizikům, která mohou vyplývat z používání jedné pracovní stanice pro správu systémů a další každodenní pracovní úlohy, můžete na posílenou pracovní stanici nasadit virtuální počítač Windows Hyper-V. Tento virtuální počítač můžete používat jako podnikový počítač. Prostředí s podnikovými počítači může zůstat izolované od hostitele. Tím omezíte prostor k útokům a oddělíte denní aktivity uživatele (například příjem e-mailů) od citlivých úloh správy.
 
 Virtuální počítač s podnikovým počítačem běží v chráněném prostoru a poskytuje uživatelské aplikace. Hostitel zůstává „čistým zdrojem“ a vynucuje přísné síťové zásady v kořenovém operačním systému (například blokuje přístup RDP z virtuálního počítače).
-
-### <a name="windows-to-go"></a>Windows To Go
-Jinou alternativou k požadavku na samostatnou posílenou pracovní stanici je jednotka [Windows To Go](https://technet.microsoft.com/library/hh831833.aspx). Jedná se o funkci, která podporuje možnost spouštění z USB na straně klienta. Windows To Go uživatelům umožňuje spouštění kompatibilního počítače s izolovaným imagem systému, která běží na šifrovaném USB flash disku. Nabízí další ovládací prvky pro vzdáleně spravované koncové body, protože image může plně spravovat podniková skupina IT pomocí přísných bezpečnostních zásad, minimalistického sestavení operačního systému a podpory čipu TPM.
-
-Na obrázku níže představuje přenosný image systém připojený k doméně, který je předem nakonfigurovaný pro připojení výhradně k Azure, vyžaduje vícefaktorové ověřování a blokuje veškerý provoz, který se netýká správy. Pokud uživatel spustí stejný počítač se standardním podnikovým imagem a pokusí se přistoupit k bráně VP, aby se dostal k nástrojům pro správu Azure, relace se zablokuje. Windows To Go se stává operačním systémem na kořenové úrovni a nejsou potřeba žádné další vrstvy (hostitelský operační systém, hypervisor, virtuální počítač), které můžou být zranitelnější vůči útokům zvenku.
-
-![](./media/management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png)
-
-Je důležité si uvědomit, že USB flash disky se dají ztratit mnohem snadněji než průměrný stolní počítač. K šifrování celého svazku používejte BitLocker společně se silným heslem. Podstatně tím snížíte pravděpodobnost, že útočník image disku využije ke škodlivým účelům. Pokud USB flash disk ztratíte, použijte odvolání a [vydání nového certifikátu pro správu](https://technet.microsoft.com/library/hh831574.aspx) a rychlé resetování hesla, abyste omezili možnost zpřístupnění citlivých údajů. Protokoly auditu správy jsou uloženy v Azure a ne v klientovi. Tím se ještě víc omezuje riziko potenciální ztráty dat.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 Když spravujete aplikace a data v Azure, vezměte v úvahu následující pokyny.
@@ -215,7 +203,7 @@ Minimalizace počtu úloh, které můžou správci provádět na posílené prac
 * Zásady skupiny. Vytvořte globální zásady správy, které se budou používat na libovolné pracovní stanice domény, které se používají pro správu (a zablokujte přístup ze všech ostatních), a na uživatelské účty na těchto pracovních stanicích ověřené.
 * Zřizování s rozšířeným zabezpečením. Zabezpečte svůj image posílené pracovní stanice, abyste byli lépe chráněni před manipulací. Používejte bezpečnostní opatření, například šifrování a izolaci k ukládání imagů, virtuálních počítačů a skriptů a omezte přístup (použijte třeba auditovatelný proces vrácení a rezervace).
 * Opravy chyb. Udržujte konzistentní sestavení (nebo mějte samostatné image pro vývoj, provoz a další úlohy správy), pravidelně kontrolujte změny a malware, udržujte sestavení v aktuálním stavu a počítače aktivujte jenom v případě potřeby.
-* Šifrování. Zajistěte, aby pracovní stanice pro správu byly vybaveny čipy TPM pro bezpečnější povolování [systému souborů EFS](https://technet.microsoft.com/library/cc700811.aspx) (Encrypting File System) a BitLockeru. Pokud používáte Windows To Go, používejte jenom šifrované USB klíče spolu s BitLockerem.
+* Šifrování. Zajistěte, aby pracovní stanice pro správu byly vybaveny čipy TPM pro bezpečnější povolování [systému souborů EFS](https://technet.microsoft.com/library/cc700811.aspx) (Encrypting File System) a BitLockeru.
 * Řízení. K řízení všech rozhraní Windows pro správce, například sdílení souborů, používejte GPO v AD DS. Zahrňte pracovní stanice pro správu do procesů auditování, sledování a protokolování. Sledujte všechny přístupy a chování správců a vývojářů.
 
 ## <a name="summary"></a>Souhrn

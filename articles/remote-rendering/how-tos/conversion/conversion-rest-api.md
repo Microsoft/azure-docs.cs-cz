@@ -5,14 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 064a7b8adaec6f47a153743b58f4e1caf50db723
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681503"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887040"
 ---
-# <a name="use-the-model-conversion-rest-api"></a>Použití rozhraní REST API převodu modelu
+# <a name="use-the-model-conversion-rest-api"></a>Použití rozhraní REST API pro převod modelů
 
 Služba [převodu modelu](model-conversion.md) je řízena prostřednictvím [rozhraní REST API](https://en.wikipedia.org/wiki/Representational_state_transfer). Tento článek popisuje podrobnosti rozhraní API služby převodu.
 
@@ -47,7 +47,7 @@ Váš účet vzdáleného vykreslování Azure musí mít přístup k účtu pos
 
 | Koncový bod | Metoda |
 |-----------|:-----------|
-| /v1/účty/**accountID**/konverze/vytvořit | POST |
+| /v1/účty/**accountID**/převody/vytvořit | POST |
 
 Vrátí ID probíhajícího převodu zabalené v dokumentu JSON. Název pole je "conversionId".
 
@@ -77,7 +77,7 @@ Pokud váš účet ARR není propojen s vaším účtem úložiště, toto rozhr
 
 | Koncový bod | Metoda |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversion/createWithSharedAccessSignature | POST |
+| /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
 
 Vrátí ID probíhajícího převodu zabalené v dokumentu JSON. Název pole je "conversionId".
 
@@ -128,5 +128,5 @@ Pokud je stav "Selhání", bude existovat další "chyba" pole s dílčím polem
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Použití azure blob storage pro převod modelu](blob-storage.md)
+- [Použití služby Azure Blob Storage pro převod modelů](blob-storage.md)
 - [Převod modelu](model-conversion.md)

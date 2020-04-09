@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a71c5328c6fa85f85db4bd7e6103f6470b86d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 723411191d0990583d039a0fc9651437480807b4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258324"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983258"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizace služby Azure Active Directory Connect: Konfigurace umístění upřednostňovaných dat pro prostředky Office 365
 Účelem tohoto tématu je vás provede, jak nakonfigurovat atribut pro umístění upřednostňovaných dat v Azure Active Directory (Azure AD) Connect synchronizace. Když někdo používá funkce Multi-Geo v Office 365, použijte tento atribut k určení geografického umístění dat Office 365 uživatele. (Termíny *region* a *geo* se používají zaměnitelně.)
@@ -51,6 +51,7 @@ Geos v Office 365 dostupné pro Multi-Geo jsou:
 | Japonsko | JPN |
 | Jižní Korea | KOR |
 | Jižní Afrika | ZAF |
+| Švýcarsko | Che |
 | Spojené arabské emiráty | Jsou |
 | Spojené království | Gbr |
 | Spojené státy | Nam |

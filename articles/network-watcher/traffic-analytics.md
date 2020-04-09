@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 83164a615cacc067e5f1ea6a1dd6ce0f0fd9d540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298855"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981541"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -183,8 +183,8 @@ Vyberte následující volby, jak je znázorněno na obrázku:
 
 1. Vybrat *zapnuto* pro **stav**
 2. Vyberte *verzi 2* pro **verzi protokolů toku**. Verze 2 obsahuje statistiku relace toku (bajty a pakety)
-3. Vyberte existující účet úložiště pro uložení protokolů toku. Pokud chcete data ukládat navždy, nastavte hodnotu na *hodnotu 0*. Poplatky za úložiště Azure pro účet úložiště. Ujistěte se, že vaše úložiště nemá "Data Lake Storage Gen2 Hierarchical Namespace Enabled" nastavena na hodnotu true.
-4. Nastavte **uchovávání informací** na počet dní, pro které chcete data ukládat.
+3. Vyberte existující účet úložiště pro uložení protokolů toku. Ujistěte se, že vaše úložiště nemá "Data Lake Storage Gen2 Hierarchical Namespace Enabled" nastavena na hodnotu true.
+4. Nastavte **uchovávání informací** na počet dní, pro které chcete data ukládat. Pokud chcete data ukládat navždy, nastavte hodnotu na *hodnotu 0*. Poplatky za úložiště Azure pro účet úložiště. 
 5. Vyberte *možnost Zapnuto* pro **stav analýzy provozu**.
 6. Vyberte interval zpracování. Na základě vašeho výběru budou protokoly toků shromažďovány z účtu úložiště a zpracovány službou Traffic Analytics. Můžete si vybrat interval zpracování každých 1 hodinu nebo každých 10 minut. 
 7. Vyberte existující pracovní prostor Analýzy protokolů (OMS) nebo vyberte **Vytvořit nový pracovní prostor** a vytvořte nový. Pracovní prostor Analýzy protokolů používá Služba Traffic Analytics k ukládání agregovaných a indexovaných dat, která se pak používají ke generování analýzy. Pokud vyberete existující pracovní prostor, musí existovat v jedné z [podporovaných oblastí](#supported-regions-log-analytics-workspaces) a byly upgradovány na nový dotazovací jazyk. Pokud nechcete upgradovat existující pracovní prostor nebo nemáte pracovní prostor v podporované oblasti, vytvořte nový. Další informace o jazycích dotazů najdete [v tématu Upgrade Azure Log Analytics na nové hledání protokolu](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).

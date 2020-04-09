@@ -1,5 +1,5 @@
 ---
-title: Nasazení samostatné instance Prometheus v clusteru Azure Red Hat OpenShift | Dokumenty společnosti Microsoft
+title: Nasazení instance Prometheus v clusteru Azure Red Hat OpenShift
 description: Vytvořte instanci Prometheus v clusteru Azure Red Hat OpenShift ke sledování metrik vaší aplikace.
 author: makdaam
 ms.author: b-lejaku
@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: prometheus, aro, openshift, metriky, červený klobouk
-ms.openlocfilehash: f81a993caa31578e689fb3a90108f3cf0ca81fc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69875123"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886884"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Nasazení samostatné instance Prometheus v clusteru Azure Red Hat OpenShift
 

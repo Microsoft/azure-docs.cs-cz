@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 03/10/2020
-ms.openlocfilehash: 6302a7d6ffe7218d339121ec98a624f8e98356f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 3fe5a58046776d00ce68189cf724a995380869eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065594"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887286"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místního prostředí Integration Runtime
 
@@ -62,11 +62,14 @@ Pomocí následujících kroků vytvořte infračervený přenos s vlastním hos
 
    ![Vytvoření prostředí Integration Runtime](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
 
-1. V okně **nastavení prostředí Integrace vyberte** **Provést přesun dat a odeslání aktivit do externích výpočetních prostředků**a vyberte **Pokračovat**.
+1. Na stránce **nastavení prostředí Runtime integrace** vyberte **Azure, Vlastní hostované**a pak vyberte **Pokračovat**. 
+
+1. Na následující stránce vyberte **Možnost Vlastní hostované,** chcete-li vytvořit infračervené odznaženou infračervené odpočinkovou infračervené odpočinkovou infračervený přenos, a pak vyberte **Pokračovat**.
+   ![Vytvoření infračerveného přenosu s vlastním hostitelem](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
 
 1. Zadejte název infračerveného zařízení a vyberte **Vytvořit**.
 
-1. Chcete-li v počítači otevřít expresní nastavení, vyberte odkaz v části **Možnost 1.** Nebo postupujte podle pokynů v části **Možnost 2** nastavit ručně. Následující pokyny jsou založeny na ručním nastavení:
+1. Na stránce **Nastavení prostředí Runtime integrace** vyberte odkaz v části Možnost **1** a otevřete expresní nastavení v počítači. Nebo postupujte podle pokynů v části **Možnost 2** nastavit ručně. Následující pokyny jsou založeny na ručním nastavení:
 
    ![Instalace prostředí Integration Runtime](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
 

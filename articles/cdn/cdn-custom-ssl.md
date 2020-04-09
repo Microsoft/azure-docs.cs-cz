@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f27adb6098ac339ee188b3e84e1c225faa9f72a6
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238717"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892491"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN
 
@@ -58,8 +58,8 @@ Kromě toho musíte ke koncovému bodu CDN přidružit vlastní doménu Azure CD
 
 ---
 
-## <a name="ssl-certificates"></a>Certifikáty SSL
-Pokud chcete povolit protokol HTTPS, abyste mohli zabezpečeně dodávat obsah na vlastní doménu služby Azure CDN, musíte použít certifikát SSL. Můžete použít certifikát, který je spravovaný službou Azure CDN, nebo můžete použít svůj vlastní certifikát.
+## <a name="tlsssl-certificates"></a>Certifikáty TLS/SSL
+Chcete-li povolit protokol HTTPS pro bezpečné doručování obsahu na vlastní doméně Azure CDN, musíte použít certifikát TLS/SSL. Můžete použít certifikát, který je spravovaný službou Azure CDN, nebo můžete použít svůj vlastní certifikát.
 
 
 # <a name="option-1-default-enable-https-with-a-cdn-managed-certificate"></a>[1. možnost (výchozí): Povolení protokolu HTTPS s certifikátem spravovaným CDN](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
@@ -99,7 +99,7 @@ Pokud chcete povolit HTTPS pro vlastní doménu, postupujte následovně:
 > Tato možnost je dostupná jenom s **Azure CDN od Microsoftu** a **Azure CDN z** profilů Verizonu. 
 >
  
-K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se provádí prostřednictvím integrace s Azure Key Vault, která vám umožní bezpečně ukládat vaše certifikáty. Azure CDN používá tento zabezpečený mechanismus k získání vašeho certifikátu a vyžaduje několik dalších kroků. Když vytváříte svůj certifikát SSL, musíte ho vytvořit s povolenou certifikační autoritou (CA). Pokud použijete nepovolenou certifikační autoritu, vaše žádost se odmítne. Seznam povolených certifikačních úřadů najdete [v tématu Povolené certifikační autority, kde najdete povolení vlastního protokolu HTTPS v azure cdn](cdn-troubleshoot-allowed-ca.md). Pro **Azure CDN od společnosti Verizon**bude přijata jakákoli platná certifikační autorita. 
+K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se provádí prostřednictvím integrace s Azure Key Vault, která vám umožní bezpečně ukládat vaše certifikáty. Azure CDN používá tento zabezpečený mechanismus k získání vašeho certifikátu a vyžaduje několik dalších kroků. Při vytváření certifikátu TLS/SSL je nutné jej vytvořit s povolenou certifikační autoritou (CA). Pokud použijete nepovolenou certifikační autoritu, vaše žádost se odmítne. Seznam povolených certifikačních úřadů najdete [v tématu Povolené certifikační autority, kde najdete povolení vlastního protokolu HTTPS v azure cdn](cdn-troubleshoot-allowed-ca.md). Pro **Azure CDN od společnosti Verizon**bude přijata jakákoli platná certifikační autorita. 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Příprava účtu a certifikátu Azure Key Vault
  
@@ -308,7 +308,7 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 
 4. *Je používání certifikátu SAN méně bezpečné než vyhrazený certifikát?*
     
-    Certifikát SAN využívá stejné standardy šifrování a zabezpečení jako vyhrazený certifikát. Všechny vystavené certifikáty SSL k vylepšení zabezpečení serveru využívají šifrování SHA-256.
+    Certifikát SAN využívá stejné standardy šifrování a zabezpečení jako vyhrazený certifikát. Všechny vydané certifikáty TLS/SSL používají SHA-256 pro lepší zabezpečení serveru.
 
 5. *Potřebuji záznam CAA (Certificate Authority Authorization) pro svého poskytovatele DNS?*
 
@@ -320,7 +320,7 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 
 7. *Jak funguje obnovení certifikátu s certifikátem Přineste si vlastní certifikát?*
 
-    Chcete-li zajistit nasazení novějšího certifikátu do infrastruktury PoP, jednoduše nahrajte nový certifikát do Azure KeyVault a pak v nastavení SSL v Azure CDN zvolte nejnovější verzi certifikátu a stiskněte tlačítko Uložit. Azure CDN pak rozšíří váš nový aktualizovaný certifikát. 
+    Chcete-li zajistit nasazení novějšího certifikátu do infrastruktury PoP, jednoduše nahrajte nový certifikát do Azure KeyVault a pak v nastavení TLS v Azure CDN zvolte nejnovější verzi certifikátu a stiskněte tlačítko Uložit. Azure CDN pak rozšíří váš nový aktualizovaný certifikát. 
 
 ## <a name="next-steps"></a>Další kroky
 

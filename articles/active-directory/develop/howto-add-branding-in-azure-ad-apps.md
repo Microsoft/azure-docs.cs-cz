@@ -5,7 +5,6 @@ description: Komplexní průvodce prostředky služby Azure Active Directory ur�
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -14,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 37d6cd03c07c10bfac5b25e3850c7d3af97bcec7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5b63fb0b66c78b33fb073eca919ed55bd05107c
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76697485"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884422"
 ---
 # <a name="branding-guidelines-for-applications"></a>Pokyny pro branding aplikací
 
@@ -68,7 +67,7 @@ Poté, co správci s vaší aplikací souhlasí, můžou si ji přidat do prost�
 
 ![Tlačítko zobrazující logo Microsoftu a text Přidat do organizace](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Například:
+Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Příklad:
 
 > *Pokud už používáte Office 365 nebo jinou obchodní službu od Microsoftu, můžete <your_app_name> přístup k datům vaší organizace. To umožní uživatelům přístup k <your_app_name> s jejich stávajícípracovní účty.*
 

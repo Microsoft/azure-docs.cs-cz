@@ -1,18 +1,18 @@
 ---
 title: 'Vzdálená práce s P2S: Brána AZURE VPN'
-description: Tato stránka popisuje, jak můžete využít Azure Bastion k povolení práce na dálku kvůli pandemii COVID-19.
+description: Tato stránka popisuje, jak můžete využít VPN Gateway, abyste umožnili vzdálenou práci kvůli pandemii COVID-19.
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: b751817467bd263e8b7c64ccc95ec82ef1579836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d07a13c654f30e48c37d2e8d3e801166e26f4f4
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337109"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886581"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Vzdálená práce s využitím bodu na pracoviště brány Azure VPN
 
@@ -24,7 +24,7 @@ Tento článek popisuje možnosti, které jsou k dispozici organizacím nastavit
 
 Řešení Azure point-to-site je založené na cloudu a lze je rychle zřídit, aby bylo možné uspokojit zvýšenou poptávku uživatelů po práci z domova. To může škálovat až snadno a vypnout stejně snadno a rychle, když zvýšená kapacita není potřeba už.
 
-## <a name="about-point-to-site-vpn"></a>O síti VPN z bodu na web
+## <a name="about-point-to-site-vpn"></a><a name="p2s"></a>O síti VPN z bodu na web
 
 Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení k virtuální síti z jednotlivých klientských počítačů. Připojení P2S se vytvoří jeho zahájením z klientského počítače. Toto řešení je užitečné pro pracovníky pracující na dálku, kteří se chtějí připojit k virtuálním sítím Azure nebo místním datovým centrům ze vzdáleného umístění, například z domova nebo z konference. Tento článek popisuje, jak povolit uživatelům pracovat vzdáleně na základě různých scénářů.
 
@@ -32,25 +32,26 @@ V následující tabulce jsou uvedeny klientské operační systémy a možnosti
 
 ![bod na místo](./media/working-remotely-support/ostable.png "Operační systém")
 
-## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a>Scénář 1 – Uživatelé potřebují přístup k prostředkům jenom v Azure
+## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>Scénář 1 – Uživatelé potřebují přístup k prostředkům jenom v Azure
 
 V tomto scénáři připojení k vzdáleným uživatelům stačí k přístupu k prostředkům, které jsou v Azure.
 
-![bod na místo](./media/working-remotely-support/scenario1.png "Scanario 1")
+![bod na místo](./media/working-remotely-support/scenario1.png "Scénář 1")
 
 Na vysoké úrovni jsou potřeba následující kroky, které uživatelům umožní bezpečné připojení k prostředkům Azure:
 
-1. Vytvoření brány virtuální sítě (pokud neexistuje)
-2. Konfigurace sítě VPN z bodu na místo na bráně
-    3. [Ověřování certifikátů naleznete na tomto odkazu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw).
-    2.  [Pro OpenVPN, následujte tento odkaz](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn).
-    3.  [Pro ověřování Azure AD, postupujte podle tohoto odkazu](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant).
-    4.  [Řešení potíží s připojením bodu k webu naleznete na tomto odkazu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems).
-3. Stažení a distribuce konfigurace klienta VPN
-4. Distribuce certifikátů (pokud je vybráno ověření certifikátu) klientům
-5. Připojení k Azure VPN
+1. Vytvořte bránu virtuální sítě (pokud neexistuje).
+2. Konfigurace sítě VPN z bodu na místo na bráně.
 
-## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a>Scénář 2 – uživatelé potřebují přístup k prostředkům v Azure a/nebo na prem prostředky
+   * Ověřování certifikátů naleznete na [tomto odkazu](vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw).
+   * Pro OpenVPN, následujte [tento odkaz](vpn-gateway-howto-openvpn.md).
+   * Pro ověřování Azure AD, postupujte podle [tohoto odkazu](openvpn-azure-ad-tenant.md).
+   * Řešení potíží s připojením bodu k webu naleznete na [tomto odkazu](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+3. Stáhněte a distribuujte konfiguraci klienta VPN.
+4. Distribuovat certifikáty (pokud je vybráno ověřování certifikátů) klientům.
+5. Připojte se k Azure VPN.
+
+## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a><a name="scenario2"></a>Scénář 2 – uživatelé potřebují přístup k prostředkům v Azure a/nebo na prem prostředky
 
 V tomto scénáři vzdálení uživatelé potřebují přístup k prostředkům, které jsou v Azure a v místních datových center.
 
@@ -58,13 +59,13 @@ V tomto scénáři vzdálení uživatelé potřebují přístup k prostředkům,
 
 Na vysoké úrovni jsou potřeba následující kroky, které uživatelům umožní bezpečné připojení k prostředkům Azure:
 
-1. Vytvoření brány virtuální sítě (pokud neexistuje)
-2. Konfigurace sítě VPN z bodu na místo na bráně (viz scénář 1 výše)
-3. Konfigurace tunelového propojení site-to-site v bráně virtuální sítě Azure s povoleným protokolem BGP
-4. Konfigurace místního zařízení pro připojení k bráně virtuální sítě Azure
+1. Vytvořte bránu virtuální sítě (pokud neexistuje).
+2. Konfigurace sítě VPN z bodu na místo na bráně (viz [scénář 1](#scenario1)).
+3. Nakonfigurujte tunelové propojení mezi lokalitami na bráně virtuální sítě Azure s povoleným protokolem BGP.
+4. Nakonfigurujte místní zařízení pro připojení k bráně virtuální sítě Azure.
 5. Stažení profilu z bodu na web z portálu Azure a distribuce klientům
 
-[Pomocí tohoto odkazu se dozvíte, jak nastavit tunel VPN mezi lokalitami.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
+Informace o nastavení tunelového propojení VPN mezi lokalitami naleznete v [tomto odkazu](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>Nejčastější dotazy k nativnímu ověřování certifikátů Azure
 

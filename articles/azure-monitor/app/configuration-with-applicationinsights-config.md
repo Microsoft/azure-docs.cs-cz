@@ -4,12 +4,12 @@ description: Povolte nebo zakažte moduly shromažďování dat a přidejte čí
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: b2c407036277b17c0f8c08f3261c932a6dc66624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 460bd79e3a37c492301f7438112fef4487618fed
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276176"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982085"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Sada Application Insights .NET SDK se skládá z několika balíčků NuGet. [Základní balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrie do Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrické *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jejího kontextu. Úpravou konfiguračního souboru můžete povolit nebo zakázat moduly telemetrie a inicializátory a nastavit parametry pro některé z nich.
@@ -165,65 +165,6 @@ K dispozici je také standardní [vzorkovací telemetrický procesor](../../azur
      </Add>
    </TelemetryProcessors>
 
-```
-
-
-
-## <a name="channel-parameters-java"></a>Parametry kanálu (Java)
-Tyto parametry ovlivňují, jak java sdk by měl ukládat a vyprázdnění telemetrická data, která shromažďuje.
-
-#### <a name="maxtelemetrybuffercapacity"></a>MaxTelemetricbufferCapacity
-Počet položek telemetrie, které mohou být uloženy v úložišti sady SDK v paměti. Po dosažení tohoto čísla je vyprázdněna vyrovnávací paměť telemetrie – to znamená, že položky telemetrie jsou odeslány na server Application Insights.
-
-* Min.: 1.
-* Max: 1000
-* Výchozí: 500
-
-```
-
-  <ApplicationInsights>
-      ...
-      <Channel>
-       <MaxTelemetryBufferCapacity>100</MaxTelemetryBufferCapacity>
-      </Channel>
-      ...
-  </ApplicationInsights>
-```
-
-#### <a name="flushintervalinseconds"></a>FlushIntervalInSeconds
-Určuje, jak často mají být vyprázdněna data uložená v úložišti v paměti (odeslána do application insights).
-
-* Min.: 1.
-* Max: 300
-* Výchozí: 5
-
-```
-
-    <ApplicationInsights>
-      ...
-      <Channel>
-        <FlushIntervalInSeconds>100</FlushIntervalInSeconds>
-      </Channel>
-      ...
-    </ApplicationInsights>
-```
-
-#### <a name="maxtransmissionstoragecapacityinmb"></a>Maximální přenoskapacity inmb
-Určuje maximální velikost v MB, která je přidělena trvalému úložišti na místním disku. Toto úložiště se používá pro uchování položek telemetrie, které se nepodařilo přenést do koncového bodu Application Insights. Po splnění velikosti úložiště budou zahozeny nové položky telemetrie.
-
-* Min.: 1.
-* Max: 100
-* Výchozí: 10
-
-```
-
-   <ApplicationInsights>
-      ...
-      <Channel>
-        <MaxTransmissionStorageCapacityInMB>50</MaxTransmissionStorageCapacityInMB>
-      </Channel>
-      ...
-   </ApplicationInsights>
 ```
 
 ## <a name="instrumentationkey"></a>InstrumentaceKlíč

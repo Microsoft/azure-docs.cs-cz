@@ -4,12 +4,12 @@ description: Tady je postup, jak povolit podporu spravovaných identit v existuj
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 396978546b301884087c4ea51e242258d64a6b0b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934953"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983802"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Konfigurace podpory spravovaných identit v existujícím clusteru Service Fabric (preview)
 
@@ -40,7 +40,7 @@ Chcete-li povolit službu tokenů spravované identity v existujícím clusteru,
 ]
 ```
 
-Aby se změny projevily, budete také muset změnit zásady upgradu a určit vynucené restartování runtime Service Fabric v každém uzlu, zatímco upgrade probíhá v clusteru. Toto restartování zajišťuje, že nově povolená systémová služba je spuštěna a spuštěna na každém uzlu. Ve fragmentu níže, `forceRestart` je základní nastavení; stávající hodnoty pro zbývající část nastavení.  
+Aby se změny projevily, budete také muset změnit zásady upgradu a určit vynucené restartování runtime Service Fabric v každém uzlu, zatímco upgrade probíhá v clusteru. Toto restartování zajišťuje, že nově povolená systémová služba je spuštěna a spuštěna na každém uzlu. Ve fragmentu níže, `forceRestart` je základní nastavení povolit restartování. Pro zbývající parametry použijte níže popsané hodnoty nebo použijte existující vlastní hodnoty, které již byly zadány pro prostředek clusteru. Vlastní nastavení zásad upgradu prostředků ("upgradeDescription") lze zobrazit z webu Azure Portal výběrem možnosti Upgrady prostředků prostředků nebo resources.azure.com. Výchozí možnosti zásad upgradu ("upgradeDescription") nelze zobrazit z prostředí Powershell nebo resources.azure.com. Další informace naleznete v [tématu ClusterUpgradePolicy.](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)  
 
 ```json
 "upgradeDescription": {

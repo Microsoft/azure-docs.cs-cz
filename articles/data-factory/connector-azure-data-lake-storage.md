@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 3c7ff0061a57d1a1a7525ec03b4f77c117415ca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: 929b9548661fe48fe90a55f0cacef234c3078cda
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155847"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887261"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
@@ -44,8 +44,6 @@ U aktivity Kopírování můžete pomocí tohoto konektoru:
 >[!IMPORTANT]
 >Pokud povolíte **možnost Povolit důvěryhodným službám Microsoftu přístup k této možnosti účtu úložiště** v nastavení brány firewall Azure Storage a chcete použít runtime integrace Azure pro připojení k vašemu gen2 úložiště datového [jezera,](#managed-identity) musíte použít ověřování spravované identity pro ADLS Gen2.
 
->[!TIP]
->Pokud povolíte hierarchický obor názvů, v současné době neexistuje žádná interoperabilita operací mezi objektem BLOB a datová jezera úložiště Gen2 API. Pokud stisknete chybu "ErrorCode=FilesystemNotFound" se zprávou "Zadaný souborový systém neexistuje", je způsobena zadaným systémem souborů dřezu, který byl vytvořen prostřednictvím rozhraní BLOB API namísto rozhraní API úložiště datového jezera jinde. Chcete-li problém vyřešit, zadejte nový systém souborů s názvem, který neexistuje jako název kontejneru objektů Blob. Potom Data Factory automaticky vytvoří tento systém souborů během kopírování dat.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -314,7 +312,7 @@ Následující vlastnosti jsou podporovány pro `storeSettings` Data Lake Storag
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | Vlastnost type `storeSettings` under musí být nastavena na **AzureBlobFSWriteSettings**. | Ano      |
 | copyBehavior             | Definuje chování kopírování, když zdroj jsou soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>- PreserveHierarchy (výchozí)</b>: Zachová hierarchii souborů v cílové složce. Relativní cesta zdrojového souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>- Sloučení :</b>Všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>- MergeFiles</b>: Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru, je zadaným názvem sloučený název souboru. V opačném případě se jedná o název automaticky generovaného souboru. | Ne       |
-| blockSizeInMB | Zadejte velikost bloku v MB, která slouží k zápisu dat do adls gen2. Další informace [o objektech BLOB bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Povolená hodnota je **mezi 4 a 100 MB**. <br/>Ve výchozím nastavení adf automaticky určit velikost bloku na základě typu úložiště zdrojového obchodu a data. Pro nebinární kopírování do ADLS Gen2 je výchozí velikost bloku 100 MB, aby se vešla maximálně do dat 4.95 TB. Nemusí být optimální, pokud vaše data nejsou velká, zejména při použití prostředí Runtime integrace s vlastním hostitelem se špatnou sítí, což vede k výpadku operace nebo problému s výkonem. Můžete explicitně zadat velikost bloku, zatímco ujistěte se, že blockSizeInMB*50000 je dostatečně velký pro uložení dat, jinak se spustí operace kopírování. | Ne |
+| blockSizeInMB | Zadejte velikost bloku v MB, která slouží k zápisu dat do adls gen2. Další informace [o objektech BLOB bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Povolená hodnota je **mezi 4 a 100 MB**. <br/>Ve výchozím nastavení adf automaticky určuje velikost bloku na základě typu úložiště zdrojového obchodu a dat. Pro nebinární kopírování do ADLS Gen2 je výchozí velikost bloku 100 MB, aby se vešla maximálně do dat 4.95 TB. Nemusí být optimální, pokud vaše data nejsou velká, zejména při použití prostředí Runtime integrace s vlastním hostitelem se špatnou sítí, což vede k výpadku operace nebo problému s výkonem. Můžete explicitně zadat velikost bloku, zatímco ujistěte se, že blockSizeInMB*50000 je dostatečně velký pro uložení dat, jinak se spustí operace kopírování. | Ne |
 | maxConcurrentConnections | Počet připojení pro připojení k úložišti dat současně. Zadejte pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne       |
 
 **Příklad:**

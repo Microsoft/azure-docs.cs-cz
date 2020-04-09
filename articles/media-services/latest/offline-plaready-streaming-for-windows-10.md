@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: ceb6de6556968385d88ac799c11bdb6393072864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 151aadadb5674f7f144d42b1f9d5115501ed381d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513112"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887227"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Offline streamování PlayReady pro Windows 10 s mediálními službami v3
 
@@ -121,10 +121,6 @@ Stručně řečeno, ve službě Azure Media Services jsme dosáhli offline reži
 * Obsah může být hostovaný ve Službě Azure Media Services nebo Azure Storage pro postupné stahování;
 * Doručování licencí PlayReady může být z Azure Media Services nebo jinde;
 * Připravený hladký streaming ový obsah lze stále používat pro online streamování přes DASH nebo hladký s PlayReady jako DRM.
-
-## <a name="additional-notes"></a>Další poznámky
-
-* Widevine je služba poskytovaná společností Google Inc. a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google, Inc.
 
 ## <a name="next-steps"></a>Další kroky
 

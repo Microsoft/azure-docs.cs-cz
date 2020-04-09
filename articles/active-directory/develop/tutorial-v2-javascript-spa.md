@@ -2,25 +2,21 @@
 title: JavaScript jednostránkový kurz aplikace - Platforma identit y Microsoft | Azure
 description: Jak mohou aplikace JavaScript SPA volat rozhraní API, které vyžaduje přístupové tokeny podle koncového bodu Azure Active Directory v2.0
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6eb144e648e8f5fa1682c353f14686d6f82c7328
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 307490837b2963b3a1272eaafde63431de6645aa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79530440"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984346"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Přihlášení uživatelů a volání rozhraní Microsoft Graph API z jednostránkové aplikace JavaScript (SPA)
 
@@ -269,7 +265,7 @@ Nyní máte jednoduchý server sloužit vaše SPA. Zamýšlená struktura slože
 
 Než budete pokračovat v ověřování, zaregistrujte svou aplikaci ve **službě Azure Active Directory**.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Pokud váš účet umožňuje přístup k více než jednomu tenantovi, vyberte účet v pravém horním bodě a nastavte relaci portálu na klienta Azure AD, který chcete použít.
 1. Přejděte na stránku Microsoft identity platformy pro vývojáře [Registrace aplikací.](https://go.microsoft.com/fwlink/?linkid=2083908)
 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
@@ -353,6 +349,18 @@ Vytvořte nový soubor JS s názvem `authPopup.js`, který bude obsahovat logiku
 
    function signOut() {
      myMSALObj.logout();
+   }
+   
+   function callMSGraph(theUrl, accessToken, callback) {
+       var xmlHttp = new XMLHttpRequest();
+       xmlHttp.onreadystatechange = function () {
+           if (this.readyState == 4 && this.status == 200) {
+              callback(JSON.parse(this.responseText));
+           }
+       }
+       xmlHttp.open("GET", theUrl, true); // true for asynchronous
+       xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+       xmlHttp.send();
    }
 
    function getTokenPopup(request) {

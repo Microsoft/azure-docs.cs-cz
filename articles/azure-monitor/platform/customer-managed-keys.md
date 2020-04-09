@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 03/26/2020
-ms.openlocfilehash: 18c926d16319eb8a8736a51d5f10e434b94d0ebe
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.date: 04/08/2020
+ms.openlocfilehash: 5b99e2f31d82630e2adc138c11485201a617af81
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582505"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892321"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Konfigurace klíče spravované ho zákazníkem Azure Monitor 
 
@@ -92,7 +92,7 @@ Postup není podporován v ui aktuálně a proces zřizování se provádí pros
 > [!IMPORTANT]
 > Každý požadavek rozhraní API musí obsahovat token autorizace nosiče v hlavičce požadavku.
 
-Například:
+Příklad:
 
 ```rst
 GET
@@ -110,6 +110,34 @@ Token můžete získat pomocí jedné z těchto metod:
     1. Vyhledejte autorizační řetězec v části "Záhlaví požadavků" v jedné z instancí "batch?api-version". Vypadá to takto: "autorizace: Žeton nosiče \<\>". 
     1. Zkopírujte a přidejte do volání rozhraní API podle níže uvedených příkladů.
 3. Přejděte na web dokumentace Azure REST. Stiskněte tlačítko "Try it" na libovolnérozhraní API a zkopírujte token Nosiče.
+
+### <a name="asynchronous-operations-and-status-check"></a>Asynchronní operace a kontrola stavu
+
+Některé operace v této konfigurační masce jsou spuštěny asynchronně, protože je nelze rychle dokončit. Odpověď pro asynchronní operace zpočátku vrátí stavový kód HTTP 200 (OK) a záhlaví s *vlastností Azure-AsyncOperation* při přijetí:
+```json
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview"
+```
+
+Stav asynchronní operace můžete zkontrolovat odesláním požadavku GET do hodnoty hlavičky *Azure-AsyncOperation:*
+```rst
+GET "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview
+Authorization: Bearer <token>
+```
+
+Tělo odpovědi z operace obsahuje informace o operaci a *Stav* vlastnost označuje jeho stav. Asynchronní operace v tomto konfiguračním postupu a jejich stavy jsou:
+
+**Vytvoření *prostředku clusteru***
+* AccountingAccount – cluster ADX je v zřizování 
+* Úspěšné – zřizování clusteru ADX je dokončeno.
+
+**Udělení oprávnění trezoru klíčů**
+* Aktualizace – probíhá aktualizace podrobností identifikátoru klíče.
+* Úspěšné – aktualizace byla dokončena.
+
+**Přisuzování pracovních prostorů Analýzy protokolů**
+* Propojení – probíhá přidružení pracovního prostoru ke clusteru
+* Úspěšné – přidružení bylo dokončeno.
+
 
 ### <a name="subscription-whitelisting"></a>Seznam povolených odběrů
 
@@ -136,6 +164,8 @@ Při vytváření prostředku *clusteru* je nutné určit úroveň rezervace kap
 
 **Vytvořit**
 
+Tento požadavek správce prostředků je asynchronní operace.
+
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
@@ -159,10 +189,11 @@ Identita je přiřazena prostředku *clusteru* v době vytvoření.
 
 **Reakce**
 
-202 Přijato. Toto je standardní odpověď Správce prostředků pro asynchronní operace.
-
+200 OK a záhlaví při přijetí.
 >[!Important]
-> Trvá zřizování poddx clusteru chvíli dokončit. Můžete ověřit stav zřizování při provádění volání rozhraní API GET REST na prostředku *clusteru* a při pohledu na hodnotu *provisioningState.* Je *ProvisioningAccount* při zřizování a *úspěšné po* dokončení.
+> Během období předčasného přístupu funkce clusteru ADX je zřízena ručně. Zatímco trvá zřizování poddx clusteru chvíli dokončit, můžete zkontrolovat stav zřizování dvěma způsoby:
+> 1. Zkopírujte hodnotu ADRESY URL *Azure-AsyncOperation* z odpovědi a použijte ji pro kontrolu stavu operace v [asynchronních operacích](#asynchronous-operations-and-status-check)
+> 2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState.* Je *ProvisioningAccount* při zřizování a *úspěšné po* dokončení.
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Zřizování úložiště dat Azure Monitor (cluster ADX)
 
@@ -177,6 +208,7 @@ Authorization: Bearer <token>
 > Zkopírujte a uložte odpověď, protože budete potřebovat její podrobnosti v pozdějších krocích
 
 **Reakce**
+
 ```json
 {
   "identity": {
@@ -216,7 +248,7 @@ Aktualizujte trezor klíčů pomocí nové zásady přístupu, která uděluje o
 
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>Aktualizace prostředku clusteru podrobnostmi o identifikátoru klíče
 
-Tento krok platí pro počáteční a budoucí aktualizace klíčových verzí v trezoru klíčů. Informuje Azure Monitor Storage o verzi klíče, která se má použít pro šifrování dat. Po aktualizaci se nový klíč používá k zabalení a rozbalení klíče úložiště (AEK).
+Tento krok se provádí během počátečních a budoucích aktualizací klíčových verzí v trezoru klíčů. Informuje Azure Monitor Storage o verzi klíče, která se má použít pro šifrování dat. Po aktualizaci se nový klíč používá k zabalení a rozbalení klíče úložiště (AEK).
 
 Chcete-li aktualizovat prostředek *clusteru* podrobnostmi *o identifikátoru klíče* trezoru klíčů, vyberte aktuální verzi klíče v trezoru klíčů Azure, abyste získali podrobnosti o identifikátoru klíče.
 
@@ -225,6 +257,8 @@ Chcete-li aktualizovat prostředek *clusteru* podrobnostmi *o identifikátoru kl
 Aktualizujte prostředek *clusteru* KeyVaultProperties podrobnostmi o identifikátoru klíče.
 
 **Aktualizace**
+
+Tento požadavek správce prostředků je asynchronní operace.
 
 >[!Warning]
 > V aktualizaci prostředků *clusteru* je nutné zadat celé tělo, které zahrnuje *identitu*, *sku*, *KeyVaultProperties* a *umístění*. Chybějící podrobnosti *KeyVaultProperties* odeberou identifikátor klíče z prostředku *clusteru* a způsobí [odvolání klíče](#cmk-kek-revocation).
@@ -256,6 +290,14 @@ Content-type: application/json
 
 **Reakce**
 
+200 OK a záhlaví při přijetí.
+>[!Important]
+> Trvá šíření identifikátor klíče několik minut k dokončení. Stav zřizování můžete zkontrolovat dvěma způsoby:
+> 1. Zkopírujte hodnotu ADRESY URL *Azure-AsyncOperation* z odpovědi a použijte ji pro kontrolu stavu operace v [asynchronních operacích](#asynchronous-operations-and-status-check)
+> 2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na vlastnosti *KeyVaultProperties.* Vaše nedávno aktualizované údaje o identifikátoru klíče by se měly vrátit v odpovědi.
+
+Odpověď na požadavek GET na prostředek *clusteru* by měla vypadat takto po dokončení aktualizace identifikátoru klíče:
+
 ```json
 {
   "identity": {
@@ -286,19 +328,22 @@ Content-type: application/json
 ```
 
 ### <a name="workspace-association-to-cluster-resource"></a>Přidružení pracovního prostoru k prostředku *clusteru*
-
 Pro konfiguraci CMK Application Insights postupujte podle obsahu dodatku pro tento krok.
 
-> [!IMPORTANT]
-> Tento krok by měl být proveden pouze po zřizování clusteru ADX. Pokud přidružíte pracovní prostory a ingestovat data před zřizování, ingestovaná data budou zrušena a nebude obnovitelná.
-> Chcete-li ověřit, zda je zřízen cluster ADX, spusťte prostředek *clusteru* Získat rozhraní REST API a zkontrolujte, zda je hodnota *provisioningState* *Succeeded*.
+Tento požadavek správce prostředků je asynchronní operace.
 
 K provedení této operace, která zahrnuje tyto akce, musíte mít oprávnění k zápisu do pracovního prostoru i prostředků *clusteru:*
 
 - V pracovním prostoru: Microsoft.OperationalInsights/workspaces/write
 - V *prostředku clusteru:* Microsoft.OperationalInsights/clusters/write
 
+> [!IMPORTANT]
+> Tento krok by měl být proveden pouze po zřizování clusteru ADX. Pokud přidružíte pracovní prostory a ingestovat data před zřizování, ingestovaná data budou zrušena a nebude obnovitelná.
+
 **Přidružení pracovního prostoru**
+
+Tento požadavek správce prostředků je asynchronní operace.
+
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
 Authorization: Bearer <token>
@@ -313,21 +358,12 @@ Content-type: application/json
 
 **Reakce**
 
-```json
-{
-  "properties": {
-    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
-    },
-  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name/linkedservices/cluster",
-  "name": "workspace-name/cluster",
-  "type": "microsoft.operationalInsights/workspaces/linkedServices",
-}
-```
+200 OK a záhlaví při přijetí.
+>[!Important]
+> To může provoz až 90 minut na dokončení. Data požitá do pracovních prostorů jsou uložena šifrovaná pomocí spravovaného klíče až po úspěšném přidružení pracovních prostorů.
+> Chcete-li zkontrolovat stav přidružení pracovního prostoru, zkopírujte hodnotu ADRESY URL *Azure-AsyncOperation* z odpovědi a použijte ji pro kontrolu stavu operace v [asynchronních operacích.](# asynchronous-operations-and-status-check)
 
-Přidružení pracovního prostoru se provádí prostřednictvím asynchronních operací Správce prostředků, jejichž dokončení může trvat až 90 minut. V dalším kroku se zobrazí, jak lze zkontrolovat stav přidružení pracovního prostoru. Po přidružení pracovních prostorů jsou data požitá do pracovních prostorů zašifrována pomocí spravovaného klíče.
-
-### <a name="workspace-association-verification"></a>Ověření přidružení pracovního prostoru
-Můžete ověřit, zda je pracovní prostor přidružený k prostředku *clusteru,* a to tak, že se podíváte na [pracovní prostory – získat](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) odpověď. Přidružené pracovní prostory budou mít vlastnost clusterResourceId s ID prostředku *clusteru.*
+Prostředek *clusteru* přidružený k vašemu pracovnímu prostoru můžete zkontrolovat odesláním požadavku GET do [pracovních prostorů – získat](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) a sledovat odpověď. Id *prostředku clusteru* označuje na ID prostředku *clusteru.*
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview

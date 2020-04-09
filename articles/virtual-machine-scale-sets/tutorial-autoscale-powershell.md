@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2376f039b93ca22d3d5a988818538419489d2456
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278414"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985605"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
@@ -209,7 +209,7 @@ Obě relace připojení ke vzdálené ploše nechte otevřené, aby nástroj **C
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>Monitorování aktivních pravidel automatického škálování
-K monitorování počtu instancí virtuálních počítačů ve škálovací sadě použijte **while**. Zahájení procesu horizontálního navýšení kapacity na základě zatížení CPU generovaného nástrojem *CPUStress* na jednotlivých instancích virtuálních počítačů pravidly automatického škálování trvá přibližně 5 minut:
+K monitorování počtu instancí virtuálních počítačů ve škálovací sadě použijte **while**. Trvá 5 minut, než se škály automatického škálování zahájí proces horizontálního navýšení kapacity v reakci na zatížení procesoru generované **cpustress** na každé instancí virtuálního počítače:
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `

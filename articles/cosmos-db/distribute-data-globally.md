@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264301"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982119"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globální distribuce dat pomocí Azure Cosmos DB – přehled.
 
@@ -41,7 +41,7 @@ Pomocí Azure Cosmos DB multi-naváděcí API, vaše aplikace si je vědoma nejb
 
 **Udržujte kontinuitu provozu během regionálních výpadků.** Azure Cosmos DB podporuje [automatické převzetí služeb při selhání](how-to-manage-database-account.md#automatic-failover) během místnívývývý výpadek. Během místnívýpadrnosti azure cosmos DB nadále udržovat svou latenci, dostupnost, konzistenci a propustnost SLA. Chcete-li zajistit, že celá aplikace je vysoce dostupná, Cosmos DB nabízí ruční rozhraní API pro převzetí služeb při selhání simulovat místní výpadek. Pomocí tohoto rozhraní API můžete provádět pravidelné vrtáky kontinuity provozu.
 
-**Globální propustnost čtení a zápisu škálujte.** Můžete povolit, aby každá oblast byla zapisovatelná a elasticky škálovat čtení a zápisy po celém světě. Propustnost, kterou vaše aplikace konfiguruje v databázi Azure Cosmos nebo v kontejneru, se zaručeně bude doručovat do všech oblastí přidružených k vašemu účtu Azure Cosmos. Zřízená propustnost je garantována [finančně zajištěnými sla](https://aka.ms/acdbsla).
+**Globální propustnost čtení a zápisu škálujte.** Můžete povolit, aby každá oblast byla zapisovatelná a elasticky škálovat čtení a zápisy po celém světě. Propustnost, kterou vaše aplikace konfiguruje v databázi Azure Cosmos nebo v kontejneru, se zaručeně bude doručovat do všech oblastí přidružených k vašemu účtu Azure Cosmos. Zřízená propustnost je garantována [finančně zajištěnými sla](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/).
 
 **Vyberte si z několika dobře definovaných modelů konzistence.** Replikační protokol Azure Cosmos DB nabízí pět dobře definovaných, praktických a intuitivních modelů konzistence. Každý model má kompromis mezi konzistence a výkonu. Tyto modely konzistence slouží k snadnému vytváření globálně distribuovaných aplikací.
 

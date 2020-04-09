@@ -1,15 +1,16 @@
 ---
-title: RDP do clusteru Azure Kubernetes Service (AKS) uzly Windows Server
+title: RdP na uzly AKS Windows Server
+titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak vytvořit připojení RDP s clustery Azure Kubernetes Service (AKS) uzly Windows Server pro řešení potíží a úlohy údržby.
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 897504aa9902d0feaf4245c719d3a4a3c6fd2241
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 140d59894b38c7f07f16b0ac3cf99316c201d120
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594477"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886785"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Připojení k rdp clusteru Azure Kubernetes Service (AKS) uzly Windows Server pro údržbu nebo řešení potíží
 

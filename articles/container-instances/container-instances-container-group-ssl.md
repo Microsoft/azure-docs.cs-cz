@@ -1,26 +1,26 @@
 ---
-title: Povolit SSL s kontejnerem sajdkaři
+title: Povolení TLS s kontejnerem sajdkaři
 description: Vytvoření koncového bodu SSL nebo TLS pro skupinu kontejnerů spuštěnou v instanci kontejneru Azure spuštěním Nginx v kontejneru postranního vaginu
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 43b39c7c13d6d5e52aae2ce1706e4880ab27d225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294949"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984602"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>Povolení koncového bodu SSL v kontejneru postranního važeku
+# <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Povolení koncového bodu TLS v kontejneru postranního važeku
 
-Tento článek ukazuje, jak vytvořit [skupinu kontejnerů](container-instances-container-groups.md) s kontejnerem aplikace a kontejneru sajdkáru se systémem Zprostředkovatel SSL. Nastavením skupiny kontejnerů se samostatným koncovým bodem SSL povolíte připojení SSL pro vaši aplikaci beze změny kódu aplikace.
+Tento článek ukazuje, jak vytvořit [skupinu kontejnerů](container-instances-container-groups.md) s kontejnerem aplikace a kontejneru sajdkáru se systémem zprostředkovatele TLS/SSL. Nastavením skupiny kontejnerů se samostatným koncovým bodem TLS povolíte připojení TLS pro vaši aplikaci beze změny kódu aplikace.
 
 Nastavíte ukázkovou skupinu kontejnerů skládající se ze dvou kontejnerů:
 * Kontejner aplikace, který spouští jednoduchou webovou aplikaci pomocí veřejné image [Microsoft aci-helloworld.](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) 
-* Kontejner sajdkársá kopie s veřejným [obrazem Nginx,](https://hub.docker.com/_/nginx) nakonfigurovaný pro použití ssl. 
+* Kontejner sajdkársá kopie s veřejným [obrazem Nginx,](https://hub.docker.com/_/nginx) nakonfigurovaný pro použití TLS. 
 
 V tomto příkladu skupina kontejnerů pouze zveřejňuje port 443 pro Nginx s jeho veřejnou IP adresu. Nginx směruje požadavky HTTPS do doprovodné webové aplikace, která interně naslouchá na portu 80. Můžete přizpůsobit příklad pro kontejnerové aplikace, které poslouchají na jiných portech. 
 
-Další kroky k povolení protokolu SSL ve skupině kontejnerů naleznete v [dalších krocích.](#next-steps)
+Další kroky k povolení protokolu TLS ve skupině kontejnerů naleznete v [dalších krocích.](#next-steps)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -28,9 +28,9 @@ K dokončení tohoto článku můžete použít Azure Cloud Shell nebo místní 
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
-Chcete-li nastavit Nginx jako zprostředkovatele SSL, potřebujete certifikát SSL. Tento článek ukazuje, jak vytvořit a nastavit certifikát SSL podepsaný svým držitelem. Pro produkční scénáře byste měli získat certifikát od certifikační autority.
+Chcete-li nastavit Nginx jako poskytovatele TLS, potřebujete certifikát TLS/SSL. Tento článek ukazuje, jak vytvořit a nastavit certifikát TLS/SSL s vlastním podpisem. Pro produkční scénáře byste měli získat certifikát od certifikační autority.
 
-Chcete-li vytvořit certifikát SSL podepsaný svým držitelem, použijte nástroj [OpenSSL](https://www.openssl.org/) dostupný v Prostředí Azure Cloud Shell a v mnoha distribucích Linuxu nebo použijte srovnatelný klientský nástroj ve vašem operačním systému.
+Chcete-li vytvořit certifikát TLS/SSL podepsaný svým držitelem, použijte nástroj [OpenSSL](https://www.openssl.org/) dostupný v Azure Cloud Shellu a mnoha distribucích Linuxu nebo použijte srovnatelný klientský nástroj ve vašem operačním systému.
 
 Nejprve vytvořte žádost o certifikát (soubor.csr) v místním pracovním adresáři:
 
@@ -40,7 +40,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 Podle pokynů přidejte identifikační údaje. Do pole Běžný název zadejte název hostitele přidružený k certifikátu. Po zobrazení výzvy k zadání hesla stisknutím klávesy Enter bez psaní přidání hesla přeskočíte.
 
-Spusťte následující příkaz a vytvořte z žádosti o certifikát certifikát certifikát podepsaný svým držitelem (soubor CRT). Například:
+Spusťte následující příkaz a vytvořte z žádosti o certifikát certifikát certifikát podepsaný svým držitelem (soubor CRT). Příklad:
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
@@ -48,11 +48,11 @@ openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 
 Nyní byste měli vidět tři soubory v`ssl.csr`adresáři: žádost`ssl.key`o certifikát ( ),`ssl.crt`soukromý klíč ( ) a certifikát podepsaný svým držitelem ( ). Můžete `ssl.key` použít `ssl.crt` a v pozdějších krocích.
 
-## <a name="configure-nginx-to-use-ssl"></a>Konfigurace nginxu pro použití protokolu SSL
+## <a name="configure-nginx-to-use-tls"></a>Konfigurace nginxu pro použití TLS
 
 ### <a name="create-nginx-configuration-file"></a>Vytvoření konfiguračního souboru Nginx
 
-V této části vytvoříte konfigurační soubor pro Nginx pro použití protokolu SSL. Začněte zkopírováním následujícího textu `nginx.conf`do nového souboru s názvem . V Prostředí Azure Cloud Shell můžete použít visual studio kód k vytvoření souboru ve vašem pracovním adresáři:
+V této části vytvoříte konfigurační soubor pro Nginx pro použití TLS. Začněte zkopírováním následujícího textu `nginx.conf`do nového souboru s názvem . V Prostředí Azure Cloud Shell můžete použít visual studio kód k vytvoření souboru ve vašem pracovním adresáři:
 
 ```console
 code nginx.conf
@@ -93,7 +93,7 @@ http {
         ssl_ciphers                ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
         ssl_prefer_server_ciphers  on;
 
-        # Optimize SSL by caching session parameters for 10 minutes. This cuts down on the number of expensive SSL handshakes.
+        # Optimize TLS/SSL by caching session parameters for 10 minutes. This cuts down on the number of expensive TLS/SSL handshakes.
         # The handshake is the most CPU-intensive operation, and by default it is re-negotiated on every new/parallel connection.
         # By enabling a cache (of type "shared between all Nginx workers"), we tell the client to re-use the already negotiated state.
         # Further optimization can be achieved by raising keepalive_timeout, but that shouldn't be done unless you serve primarily HTTPS.
@@ -124,7 +124,7 @@ http {
 
 ### <a name="base64-encode-secrets-and-configuration-file"></a>Základní kód tajných kódů a konfigurační soubor
 
-Base64 kódovat konfigurační soubor Nginx, certifikát SSL a klíč SSL. V další části zadáte kódovaný obsah do souboru YAML, který se používá k nasazení skupiny kontejnerů.
+Base64 kódovat konfigurační soubor Nginx, certifikát TLS/SSL a klíč TLS. V další části zadáte kódovaný obsah do souboru YAML, který se používá k nasazení skupiny kontejnerů.
 
 ```console
 cat nginx.conf | base64 > base64-nginx.conf
@@ -221,7 +221,7 @@ Name          ResourceGroup    Status    Image                                  
 app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
 ```
 
-## <a name="verify-ssl-connection"></a>Ověření připojení SSL
+## <a name="verify-tls-connection"></a>Ověření připojení TLS
 
 Pomocí prohlížeče přejděte na veřejnou IP adresu skupiny kontejnerů. Adresa IP zobrazená v `52.157.22.76`tomto příkladu **https://52.157.22.76**je , takže adresa URL je . Chcete-li zobrazit spuštěnou aplikaci, musíte použít protokol HTTPS z důvodu konfigurace serveru Nginx. Pokusy o připojení přes protokol HTTP se nezdaří.
 
@@ -234,11 +234,11 @@ Pomocí prohlížeče přejděte na veřejnou IP adresu skupiny kontejnerů. Adr
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek vám ukázal, jak nastavit kontejner Nginx povolit připojení SSL k webové aplikaci spuštěné ve skupině kontejnerů. Tento příklad můžete přizpůsobit pro aplikace, které poslouchají na jiných portech než port 80. Můžete také aktualizovat konfigurační soubor Nginx tak, aby automaticky přesměroval připojení serveru na portu 80 (HTTP) na použití protokolu HTTPS.
+Tento článek vám ukázal, jak nastavit kontejner Nginx povolit připojení TLS k webové aplikaci spuštěné ve skupině kontejnerů. Tento příklad můžete přizpůsobit pro aplikace, které poslouchají na jiných portech než port 80. Můžete také aktualizovat konfigurační soubor Nginx tak, aby automaticky přesměroval připojení serveru na portu 80 (HTTP) na použití protokolu HTTPS.
 
-Zatímco tento článek používá Nginx v sajdkáru, můžete použít jiného zprostředkovatele SSL, jako je [Caddy](https://caddyserver.com/).
+Zatímco tento článek používá Nginx v sajdkáru, můžete použít jiného poskytovatele TLS, jako je [Caddy](https://caddyserver.com/).
 
-Pokud nasadíte skupinu kontejnerů ve [virtuální síti Azure](container-instances-vnet.md), můžete zvážit další možnosti povolení koncového bodu SSL pro instanci back-endového kontejneru, včetně:
+Pokud nasadíte skupinu kontejnerů ve [virtuální síti Azure](container-instances-vnet.md), můžete zvážit další možnosti povolení koncového bodu TLS pro instanci back-endového kontejneru, včetně:
 
 * [Servery Proxy pro funkce Azure](../azure-functions/functions-proxies.md)
 * [Azure API Management](../api-management/api-management-key-concepts.md)

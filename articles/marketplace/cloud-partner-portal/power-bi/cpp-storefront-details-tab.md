@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1bcf06056dd7fdaf22716409f53d86da7321b94d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f4fb5fba78cdea7996d006d34b2f07f3ac5e58fa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745585"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981286"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Karta Podrobnosti o aplikaci Power BI
 
 >[!Important]
->března 2020 začneme přesouvat správu nabídek aplikací Power BI do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
+>dubna 2020 začneme přesouvat správu nabídek aplikací Power BI do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
 
 Na stránce **Nová nabídka** můžete potenciálním zákazníkům poskytnout marketingové, prodejní a právní informace na kartě **Podrobnosti ve výloze.** Na této kartě můžete také nastavit správu zájemců, které Azure Marketplace generuje. Tato dlouhá forma je rozdělena do šesti částí: **Podrobnosti nabídky**, **Podrobnosti výpisu**, **Marketingové artefakty**, **Právní**, **Zákaznická podpora**a **Správa zájemců**.  Hvězdička (*) na konci popisku pole znamená, že pole je povinné.
 

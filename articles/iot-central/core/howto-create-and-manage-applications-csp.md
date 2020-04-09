@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 5d876d7db13ce73603f212ec11544cb2f680bf46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158176"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982034"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Vytvoření a správa aplikace Azure IoT Central z portálu CSP
 
@@ -33,7 +33,7 @@ Přistanete na stránce Azure IoT Central Application Manager. Azure IoT Central
 
 ![Vytvořit správce pro ošetřovně](media/howto-create-and-manage-applications-csp/image3.png)
 
-Pokud chcete vytvořit aplikaci Azure IoT Central, v levém menu vyberte **Build.** Vyberte jednu z oborových šablon nebo zvolte **starší aplikaci** a vytvořte aplikaci od začátku. Tím se načte stránka Vytvoření aplikace. Musíte vyplnit všechna pole na této stránce a pak zvolte **Vytvořit**. Další informace o jednotlivých polích naleznete níže.
+Pokud chcete vytvořit aplikaci Azure IoT Central, v levém menu vyberte **Build.** Vyberte jednu ze šablon odvětví nebo zvolte **Vlastní aplikaci** a vytvořte aplikaci od začátku. Tím se načte stránka Vytvoření aplikace. Musíte vyplnit všechna pole na této stránce a pak zvolte **Vytvořit**. Další informace o jednotlivých polích naleznete níže.
 
 ![Vytvořit stránku aplikace pro ospravky](media/howto-create-and-manage-applications-csp/image4.png)
 

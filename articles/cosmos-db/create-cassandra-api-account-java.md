@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: b0103f7b827de77c522f78000c8d28683ac85f4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 971f705099ffec22599af83323e5e15d604c4bca
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441901"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983003"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Kurz: Vytvoření účtu rozhraní CASSAndS API v Azure Cosmos DB pomocí aplikace Java pro ukládání dat klíče a hodnoty
 
@@ -34,14 +34,14 @@ Tento kurz se zabývá následujícími úkony:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) než začnete. 
 
-* Získejte nejnovější verzi [Java Development Kit (JDK)](https://aka.ms/azure-jdks). 
+* Získejte nejnovější verzi [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable). 
 
 * [Stáhněte](https://maven.apache.org/download.cgi) a [nainstalujte](https://maven.apache.org/install.html) binární archiv [Maven.](https://maven.apache.org/) 
   - Na Ubuntu můžete Maven nainstalovat spuštěním příkazu `apt-get install maven`. 
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). 
 
 2. Vyberte **Vytvořit** > **databáze** > prostředků**Azure Cosmos DB**. 
 

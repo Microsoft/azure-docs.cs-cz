@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 04/07/2020
 ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9ecd193282ed9b7333df44689530b4d057ad7f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f027fbce66a73306165a0ad35d1ba3faa7a5c0bc
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68693900"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983887"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Proxy aplikace Azure AD: Historie verzí vydání
 Tento článek uvádí verze a funkce proxy aplikací Azure Active Directory (Azure AD), které byly vydány. Tým Azure AD pravidelně aktualizuje proxy aplikace s novými funkcemi a funkcemi. Konektory proxy aplikací jsou automaticky aktualizovány při vydání nové verze. 
@@ -35,6 +35,22 @@ Prostředek |  Podrobnosti
 Jak povolit proxy aplikace | Předpoklady pro povolení proxy aplikace a instalaci a registraci konektoru jsou popsány v tomto [kurzu](application-proxy-add-on-premises-application.md).
 Principy konektorů proxy aplikací Azure AD | Další informace o [správě konektorů](application-proxy-connectors.md) a o [automatickém upgradu](application-proxy-connectors.md#automatic-updates)konektorů .
 Konektor proxy aplikace Azure AD ke stažení |  [Stáhněte si nejnovější konektor](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
+
+## <a name="1515260"></a>1.5.1526.0
+
+### <a name="release-status"></a>Stav verze
+
+Duben 07, 2020: Vydáno ke stažení
+
+### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
+-   Konektory používají tls 1.2 pouze pro všechna připojení. Další podrobnosti najdete [v tématu Požadavky konektoru.](application-proxy-add-on-premises-application.md#before-you-begin)
+- Vylepšená signalizace mezi konektorem a službami Azure. To zahrnuje podporu spolehlivé relace pro komunikaci WCF mezi konektorem a službami Azure a vylepšení ukládání DO mezipaměti DNS pro komunikaci WebSocket.
+- Podpora konfigurace proxy mezi konektorem a back-endovou aplikací. Další informace naleznete v [tématu Práce s existujícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
+
+### <a name="fixed-issues"></a>Oprava potíží
+- Odebráno, když se vrátíte na port 8080 pro komunikaci ze služby Konektor do Služby Azure.
+- Přidány trasování ladění pro komunikaci WebSocket. 
+- Vyřešeno zachování atributu SameSite při nastavení souborů cookie back-endové aplikace.
 
 ## <a name="156120"></a>1.5.612.0
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/28/2019
-ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: dea7e8d5679c8c5a14d6a4253b8a4b36343e6ed8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934560"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887091"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalace a použití hue na clusterech HDInsight Hadoop
 
@@ -51,7 +51,7 @@ Informace v následující tabulce použijte pro akci skriptu. Konkrétní pokyn
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>Použití hue s clustery HDInsight
 
-Tunelové propojení SSH je jediný způsob, jak získat přístup k Hue v clusteru, jakmile je spuštěn. Tunelové propojení přes SSH umožňuje přenos přejít přímo do hlavního uzlu clusteru, kde je spuštěn Hue. Po dokončení zřizování clusteru použijte následující kroky k použití hue v clusteru HDInsight.
+V běžných clusterech můžete mít pouze jeden uživatelský účet s hue. Pro přístup více uživatelů povolte v clusteru [balíček Enterprise Security Package.](./domain-joined/hdinsight-security-overview.md) Tunelové propojení SSH je jediný způsob, jak získat přístup k Hue v clusteru, jakmile je spuštěn. Tunelové propojení přes SSH umožňuje přenos přejít přímo do hlavního uzlu clusteru, kde je spuštěn Hue. Po dokončení zřizování clusteru použijte následující kroky k použití hue v clusteru HDInsight.
 
 > [!NOTE]  
 > Doporučujeme používat webový prohlížeč Firefox, abyste postupovali podle níže uvedených pokynů.
@@ -113,9 +113,9 @@ Tunelové propojení SSH je jediný způsob, jak získat přístup k Hue v clust
 
 1. Během instalace je restartováno více služeb Hadoop (HDFS, YARN, MR2, Oozie) pro aktualizaci konfigurace. Po dokončení skriptu instalace Hue, může nějakou dobu trvat, než se spustí další služby Hadoop. To může mít vliv na výkon Hue zpočátku. Jakmile se všechny služby spustí, Hue bude plně funkční.
 
-1. Hue nerozumí úlohy Apache Tez, což je aktuální výchozí pro Hive. Pokud chcete použít MapReduce jako modul spuštění Hive, aktualizujte skript tak, aby používal následující příkaz ve skriptu:
+1. Hue nerozumí apache tez úlohy, což je aktuální výchozí pro Hive. Pokud chcete použít MapReduce jako modul spuštění Hive, aktualizujte skript tak, aby používal následující příkaz ve skriptu:
 
-        set hive.execution.engine=mr;
+         set hive.execution.engine=mr;
 
 1. S clustery Linux, můžete mít scénář, kde jsou vaše služby spuštěny na primární headnode, zatímco Správce prostředků může být spuštěn na sekundární. Takový scénář může mít za následek chyby (viz níže) při použití Hue zobrazit podrobnosti o spuštění úloh v clusteru. Můžete však zobrazit podrobnosti o úloze po dokončení úlohy.
 

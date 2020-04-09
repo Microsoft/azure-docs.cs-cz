@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/29/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 871a3edf70690a09d3747703e8bc999dfcce967c
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 84736b7f1dcdf8b186fddbced5dd773e008c0dd2
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385176"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887405"
 ---
 Pro prémiové Disky SSD je podporováno prasknutí disku. Roztržení je podporováno na všech prémiových ssd diskech velikosti <= 512 GiB (P20 nebo nižší). Tyto velikosti disků podporují prasknutí na základě nejlepšíúsilí a využít kreditní systém pro správu prasknutí. Kredity se hromadí v intervalu shluků vždy, když je provoz na disku nižší než zřízený cíl výkonu pro jejich velikost disku, a spotřebovávají kredity, když provoz přejde za cíl. Provoz disku je sledován proti iOPS a šířku pásma v zřízeném cíli. Roztržení disku neobejde omezení velikosti virtuálního počítače (VM) na viops nebo propustnost.
 
@@ -46,8 +46,8 @@ Roztržení disku je k dispozici ve všech oblastech veřejného cloudu.
 
 Chcete-li získat lepší představu o tom, jak to funguje, zde je několik příkladů scénářů:
 
-- Jeden běžný scénář, který může těžit z roztržení disku je rychlejší spuštění virtuálního počítače a spuštění aplikace na discích operačního systému. Vezměte virtuální počítač s Linuxem s 8 GiB OS image jako příklad. Pokud používáme disk P2 jako disk operačního systému, zřízený cíl je 120 VOPS a 25 MB/s. Při spuštění virtuálního počítače bude na disku s osovým systémem načítat spouštěcí soubory špička pro čtení. Se zavedením prasknutí můžete číst při maximální rychlosti roztržení 3500 IOPS a 170 MB/s, což urychluje dobu načítání nejméně o 6x. Po spuštění virtuálního počítače je úroveň provozu na disku operačního systému obvykle nízká, protože většina datových operací aplikace bude proti připojeným datovým diskům. Pokud je provoz pod zřízeným cílem, budete hromadit kredity.
+- Jeden běžný scénář, který může těžit z roztržení disku je rychlejší spuštění virtuálního počítače a spuštění aplikace na discích operačního systému. Vezměte virtuální počítač s Linuxem s 8 GiB OS image jako příklad. Pokud používáme disk P2 jako disk operačního systému, zřízený cíl je 120 VOPS a 25 MiB. Při spuštění virtuálního počítače bude na disku s osovým systémem načítat spouštěcí soubory špička pro čtení. Se zavedením roztržení můžete číst při maximální rychlosti roztržení 3500 IOPS a 170 MiB, což urychluje dobu načítání nejméně 6x. Po spuštění virtuálního počítače je úroveň provozu na disku operačního systému obvykle nízká, protože většina datových operací aplikace bude proti připojeným datovým diskům. Pokud je provoz pod zřízeným cílem, budete hromadit kredity.
 
 - Pokud hostujete prostředí vzdálené virtuální plochy, kdykoli aktivní uživatel spustí aplikaci, jako je AutoCAD, výrazně se zvýší provoz na disk operačního systému. V takovém případě bude shlukový provoz spotřebovávat nahromaděné kredity, což vám umožní jít nad rámec zřízeného cíle a spuštění aplikace mnohem rychleji.
 
-- Disk P1 má zřízený cíl 120 VOPS a 25 MB/s. Pokud skutečný provoz na disku byl 100 IOPS a 20 MB v posledních 1 sekundový interval, pak nevyužité 20 IOs a 5 MB jsou připsány na burst kbelík disku. Kredity v bloku roztržení lze později použít, když provoz překročí zřízený cíl, a to až do maximálního limitu roztržení. Maximální limit shluků definuje strop provozu na disku, i když máte praskla kredity konzumovat z. V tomto případě i v případě, že máte 10 000 iOs v kontejneru kreditu, disk P1 nemůže vydat více než maximální shluk 3 500 IO za sekundu.  
+- Disk P1 má zřízený cíl 120 VOPS a 25 MiB. Pokud skutečný provoz na disku byl 100 IOPS a 20 MiB v posledních 1 sekundový interval, pak nevyužité 20 IOs a 5 MB jsou připsány na burst kbelík disku. Kredity v bloku roztržení lze později použít, když provoz překročí zřízený cíl, a to až do maximálního limitu roztržení. Maximální limit shluků definuje strop provozu na disku, i když máte praskla kredity konzumovat z. V tomto případě i v případě, že máte 10 000 iOs v kontejneru kreditu, disk P1 nemůže vydat více než maximální shluk 3 500 IO za sekundu.  

@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7233a0bba5cf30eab018bfa744a7322303300604
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a6af1a78582ebf62aed82bad8fa06cac37f511ea
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550315"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982578"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Modul plug-in Microsoft Enterprise SSO pro zařízení Apple (preview)
 
@@ -27,7 +27,7 @@ ms.locfileid: "80550315"
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-*Modul plug-in jednotného přihlašování microsoft enterprise pro zařízení Apple* poskytuje jednotné přihlašování (SSO) pro účty Služby Active Directory ve všech aplikacích, které podporují funkci [jednotného přihlašování společnosti](https://developer.apple.com/documentation/authenticationservices) Apple Enterprise. Společnost Microsoft úzce spolupracovala se společností Apple na vývoji tohoto modulu plug-in, aby zvýšila použitelnost vaší aplikace a zároveň poskytla nejlepší ochranu, kterou mohou společnosti Apple a Microsoft poskytnout.
+*Modul plug-in jednotného přihlašování microsoftu Enterprise pro zařízení Apple* poskytuje jednotné přihlašování (SSO) pro účty Azure Active Directory (Azure AD) ve všech aplikacích, které podporují funkci [jednotného přihlašování společnosti](https://developer.apple.com/documentation/authenticationservices) Apple Enterprise. Společnost Microsoft úzce spolupracovala se společností Apple na vývoji tohoto modulu plug-in, aby zvýšila použitelnost vaší aplikace a zároveň poskytla nejlepší ochranu, kterou mohou společnosti Apple a Microsoft poskytnout.
 
 V této verzi Public Preview je modul plug-in enterprise sso k dispozici pouze pro zařízení se systémem iOS a distribuuje se v některých aplikacích společnosti Microsoft.
 
@@ -37,7 +37,7 @@ Naše první použití modulu plug-in Enterprise SSO je s naší novou funkcí [
 
 Modul plug-in Microsoft Enterprise SSO pro zařízení Apple nabízí následující výhody:
 
-- Poskytuje jednotné přihlašování pro účty služby Active Directory ve všech aplikacích, které podporují funkci jednotného přihlašování k podniku Apple.
+- Poskytuje jednotné přihlašování pro účty Azure AD ve všech aplikacích, které podporují funkci jednotného přihlašování k podnikání společnosti Apple.
 - Automaticky dodané v microsoft authenticatoru a může být povoleno libovolným řešením správy mobilních zařízení (MDM).
 
 ## <a name="requirements"></a>Požadavky

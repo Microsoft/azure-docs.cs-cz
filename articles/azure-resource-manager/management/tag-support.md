@@ -3,12 +3,12 @@ title: Označit podporu pro zdroje
 description: Zobrazuje, které typy prostředků Azure podporují značky. Obsahuje podrobnosti o všech službách Azure.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: e012126995136bec15dc360be5e91007b6f69f09
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: b8b1c0b738bb8b94ee53433141f1ae3dbbb3f942
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80802488"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982323"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora prostředků Azure pro značky
 Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popiskem **Supports označuje,** zda má typ prostředku vlastnost značky. Sloupec označený **značka v sestavě nákladů** označuje, zda tento typ zdroje předá značku sestavě nákladů. Náklady můžete zobrazit podle značek v [analýze nákladů na správu nákladů](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) a fakturační [faktury Azure a denních dat o využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -1493,6 +1493,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | síťSecuritygroups | Ano | Ano |
 > | networkWatchers | Ano | Ne |
 > | networkWatchers / connectionMonitory | Ano | Ne |
+> | networkWatchers / flowLogs | Ne | Ne |
 > | networkWatchers / objektivy | Ano | Ne |
 > | networkWatchers / pingMeshes | Ano | Ne |
 > | p2sVpnBrány | Ano | Ano |

@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300532"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983071"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkce synchronizační služby Azure AD Connect
 
@@ -89,12 +89,14 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>Synchronizace aktualizací userPrincipalName
 
-Historicky byly blokovány aktualizace atributu UserPrincipalName pomocí služby synchronizace z místního prostředí, pokud nejsou splněny obě tyto podmínky:
+Historicky byly blokovány aktualizace atributu UserPrincipalName pomocí služby synchronizace z místního prostředí, pokud nebyly splněny obě tyto podmínky:
 
 * Uživatel je spravován (nefederovaný).
 * Uživateli nebyla přiřazena licence.
 
-Další podrobnosti najdete [v tématu Uživatelská jména v Office 365, Azure nebo Intune neodpovídají místní UPN nebo alternativní přihlašovací ID](https://support.microsoft.com/kb/2523192).
+> [!NOTE]
+> Od března 2019 je povolena synchronizace změn UPN pro federované uživatelské účty.
+> 
 
 Povolení této funkce umožňuje synchronizačnímu modulu aktualizovat userPrincipalName při změně místně a použití synchronizace hash hesla nebo předávacího ověřování.
 

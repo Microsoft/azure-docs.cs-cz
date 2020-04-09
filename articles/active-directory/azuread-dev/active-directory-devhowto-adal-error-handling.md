@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fc45ead65a29f2e7567133b5af4667bdb7c79ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8973412b2d6575d524874ba05b34af7661655e19
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154980"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981065"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Při zpracování osvědčených postupů pro klienty ADAL (Azure Active Directory) došlo k chybám.
 
@@ -543,7 +543,7 @@ Chcete-li prozkoumat konkrétní chyby ADAL, zdrojový kód v [úložišti azure
 
 #### <a name="operating-system-errors"></a>Chyby operačního systému
 
-Chyby iOS mohou nastat během přihlášení, když uživatelé používají webová zobrazení, a povahu ověřování. Příčinou mohou být podmínky, jako jsou chyby SSL, časové toto časy nebo chyby sítě:
+Chyby iOS mohou nastat během přihlášení, když uživatelé používají webová zobrazení, a povahu ověřování. Příčinou mohou být podmínky, jako jsou chyby TLS, časové výtažky nebo chyby sítě:
 
 - U sdílení nároků nejsou přihlášení trvalá a mezipaměť se zobrazí prázdná. Můžete vyřešit přidáním následujícířádek kódu do řetězce klíčů:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - Pro sadu chyb NsUrlDomain se akce mění v závislosti na logice aplikace. Naleznete [nsURLErrorDomain referenční dokumentaci](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) pro konkrétní instance, které mohou být zpracovány.

@@ -3,7 +3,6 @@ title: Změny provedené v projektu MVC při připojení ke službě Azure AD
 description: Popisuje, co se stane s vaším projektem MVC při připojení k Azure AD pomocí připojených služeb Visual Studia
 author: ghogen
 manager: jillfra
-ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
@@ -11,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: ac38adba4ca0d978dd48a546bed1b1faf4fe40fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d42d905bf35c015213e76bc50c4bc339a5c4a062
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79036957"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886105"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s mým projektem MVC (propojená služba Visual Studio Azure Active Directory)?
 
@@ -32,7 +31,7 @@ Informace o práci s připojenou službou naleznete v [tématu Začínáme](vs-a
 
 Ovlivňuje soubor projektu (*.NET odkazy) a `packages.config` (NuGet odkazy).
 
-| Typ | Odkaz |
+| Typ | Referenční informace |
 | --- | --- |
 | .NET; NuGet | Rozšíření Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -47,7 +46,7 @@ Ovlivňuje soubor projektu (*.NET odkazy) a `packages.config` (NuGet odkazy).
 
 Další odkazy, pokud jste vybrali možnost **Číst data adresáře:**
 
-| Typ | Odkaz |
+| Typ | Referenční informace |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (pouze Visual Studio 2015) |
@@ -61,7 +60,7 @@ Další odkazy, pokud jste vybrali možnost **Číst data adresáře:**
 
 Následující odkazy jsou odebrány (ASP.NET pouze 4 projekty, jako v Sadě Visual Studio 2015):
 
-| Typ | Odkaz |
+| Typ | Referenční informace |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e57029e53365fbf99054e2d926296ccca3360663
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77558924"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983598"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro ROZHRANÍ SQL API: Poznámky k vydání a prostředky
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "77558924"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Odpočinku](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Hromadný vykonavatel - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -36,10 +36,10 @@ Sql API Java SDK podporuje synchronní operace. Pro asynchronní podporu použij
 |---|---|
 |**SDK ke stažení**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace java api](/java/api/com.microsoft.azure.documentdb)|
-|**Přispívat do sady SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**Přispívat do sady SDK**|[GitHubu](https://github.com/Azure/azure-documentdb-java/)|
 |**Začínáme**|[Začínáme s sadou Java SDK](sql-api-java-get-started.md)|
 |**Kurz webové aplikace**|[Vývoj webových aplikací s Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimální podporovaný modul runtime**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
+|**Minimální podporovaný modul runtime**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
@@ -131,7 +131,7 @@ Sql API Java SDK podporuje synchronní operace. Pro asynchronní podporu použij
 
 ### <a name="1150"></a><a name="1.15.0"/>1.15.0
 * Vylepšený výkon serializace Json.
-* Tato verze sady SDK vyžaduje nejnovější verzi emulátoru Azure https://aka.ms/cosmosdb-emulatorCosmos DB, která je k dispozici ke stažení z aplikace .
+* Tato verze sady SDK vyžaduje nejnovější verzi [emulátoru Azure Cosmos DB](https://aka.ms/cosmosdb-emulator).
 
 ### <a name="1140"></a><a name="1.14.0"/>1.14.0
 * Interní změny pro knihovny přátel microsoftu.

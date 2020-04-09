@@ -3,12 +3,12 @@ title: Filtrování a předběžné zpracování v sadě Azure Application Insig
 description: Zapsat telemetrické procesory a telemetrické inicializátory pro sdk filtrovat nebo přidat vlastnosti do dat před telemetrie je odeslána na portál Application Insights.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: 53b6ecc51961feba35d571eab3115c8e7ccf9964
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8f2064f73821a017046cbb552a8dcf592ce13267
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366296"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983754"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrování a předzpracování telemetrie v application insights SDK
 
@@ -21,7 +21,7 @@ Můžete psát a konfigurovat moduly plug-in pro application insights SDK přizp
 
 Než začnete, potřebujete:
 
-* Nainstalujte příslušnou sadu SDK pro vaši aplikaci: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Non HTTP/Worker pro .NET/.NET Core](worker-service.md), [Java](../../azure-monitor/app/java-get-started.md) nebo [JavaScript](javascript.md)
+* Nainstalujte příslušnou sadu SDK pro vaši aplikaci: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Non HTTP/Worker pro .NET/.NET Core](worker-service.md)nebo [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
@@ -203,7 +203,7 @@ public void Process(ITelemetry item)
    ```JS
    var filteringFunction = (envelope) => {
      if (envelope.data.someField === 'tobefilteredout') {
-        return false;
+         return false;
      }
   
      return true;
@@ -307,28 +307,8 @@ Pro aplikace napsané pomocí [ASP.NET Core](asp-net-core.md#adding-telemetryini
     services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
 }
 ```
-
-### <a name="java-telemetry-initializers"></a>Inicializátory telemetrie Java
-
-[Dokumentace sady Java SDK](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
-
-```Java
-public interface TelemetryInitializer
-{ /** Initializes properties of the specified object. * @param telemetry The {@link com.microsoft.applicationinsights.telemetry.Telemetry} to initialize. */
-
-void initialize(Telemetry telemetry); }
-```
-
-Potom zaregistrujte vlastní inicializátor v souboru applicationinsights.xml.
-
-```xml
-<Add type="mypackage.MyConfigurableContextInitializer">
-    <Param name="some_config_property" value="some_value" />
-</Add>
-```
-
 ### <a name="javascript-telemetry-initializers"></a>JavaScript telemetrické inicializátory
-*Javascript*
+*JavaScript*
 
 Vložte inicializátor telemetrie ihned po inicializačníkód, který jste získali z portálu:
 
@@ -545,4 +525,4 @@ Jaký je rozdíl mezi telemetrickými procesory a inicializátory telemetrie?
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
 * [Hledání událostí a protokolů](../../azure-monitor/app/diagnostic-search.md)
 * [Vzorkování](../../azure-monitor/app/sampling.md)
-* [Řešení potíží](../../azure-monitor/app/troubleshoot-faq.md)
+* [Odstraňování potíží](../../azure-monitor/app/troubleshoot-faq.md)

@@ -1,5 +1,5 @@
 ---
-title: Rozhraní Microsoft Graph API | Dokumenty společnosti Microsoft
+title: Microsoft Graph API
 description: Rozhraní Microsoft Graph API je webové rozhraní API RESTful, které umožňuje přístup k prostředkům služby Microsoft Cloud.
 author: davidmu1
 services: active-directory
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67dbf696903e7a930d75762deb00ad58ed1a4f69
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136496"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886462"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -53,7 +53,7 @@ Rychlé starty zahrnují čtyři kroky:
 
 Po dokončení rychlého startu máte aplikaci, která je připravená ke spuštění. Další informace naleznete v [nejčastějších dotazech k rychlému spuštění aplikace Microsoft Graph](https://docs.microsoft.com/graph/quick-start-faq). Chcete-li začít s ukázkami, naleznete [v tématu Microsoft Graph QuickStart](https://developer.microsoft.com/graph/quick-start).
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 
 Microsoft Graph Explorer je webový nástroj, který můžete použít k vytváření a testování požadavků pomocí rozhraní API aplikace Microsoft Graph. K aplikaci Microsoft Graph `https://developer.microsoft.com/graph/graph-explorer`Explorer můžete přistupovat na adrese: .
 

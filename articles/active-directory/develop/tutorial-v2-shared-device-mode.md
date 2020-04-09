@@ -2,25 +2,22 @@
 title: Použití režimu sdíleného zařízení s MSAL Android | Azure
 description: Přečtěte si, jak připravit zařízení Android tak, aby běželo ve sdíleném režimu a jak spustit pracovní aplikaci první linie.
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e74ff320f26a4b6fa7d1caf3d4effca5e10669f4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546232"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886428"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Kurz: Použití režimu sdíleného zařízení v aplikaci pro Android
 

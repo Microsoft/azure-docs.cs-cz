@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442172"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982699"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Použití knihovny hromadného prováděcího modulu .NET grafu k provádění hromadných operací v rozhraní API Azure Cosmos DB Gremlin
 
 Tento kurz obsahuje pokyny o použití hromadné vykonavatel knihovny .NET Azure CosmosDB k importu a aktualizaci objektů grafu do kontejneru rozhraní API Azure Cosmos DB Gremlin. Tento proces využívá třídu Graph v [knihovně hromadného vykonavatele](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) k vytvoření objektů Vrchol a Edge programově a pak vložte více z nich na požadavek na síť. Toto chování je konfigurovatelné prostřednictvím knihovny hromadného vykonavatele, aby bylo možné optimálně využívat prostředky databáze i místní paměti.
 
-Na rozdíl od odesílání Gremlin dotazy do databáze, kde je příkaz vyhodnocena a pak provedeny jeden po druhém, pomocí hromadné vykonavatel knihovny bude místo toho vyžadovat k vytvoření a ověření objektů místně. Po vytvoření objektů vám knihovna umožní postupně odeslat objekty grafu do databázové služby. Pomocí této metody je možné až 100krát zvýšit rychlost příjmu dat, což z ní dělá ideální metodu pro počáteční migrace dat nebo pravidelné operace přesunu dat. Další informace najdete na stránce GitHub [u hromadné hovado aplikace aplikace Azure Cosmos DB Graph hromadné vykořiscení](https://aka.ms/graph-bulkexecutor-sample).
+Na rozdíl od odesílání Gremlin dotazy do databáze, kde je příkaz vyhodnocena a pak provedeny jeden po druhém, pomocí hromadné vykonavatel knihovny bude místo toho vyžadovat k vytvoření a ověření objektů místně. Po vytvoření objektů vám knihovna umožní postupně odeslat objekty grafu do databázové služby. Pomocí této metody je možné až 100krát zvýšit rychlost příjmu dat, což z ní dělá ideální metodu pro počáteční migrace dat nebo pravidelné operace přesunu dat. Další informace najdete na stránce GitHub [u hromadné hovado aplikace aplikace Azure Cosmos DB Graph hromadné vykořiscení](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started).
 
 ## <a name="bulk-operations-with-graph-data"></a>Hromadné operace s daty grafu
 
@@ -120,7 +120,7 @@ e.AddProperty("customProperty", "value");
 * Git. Další informace najdete na [stránce pro stažení Gitu](https://git-scm.com/downloads).
 
 ### <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
-V tomto kurzu budeme postupovat podle kroků, jak začít pomocí [ukázky hromadného vykonavatele aplikace Azure Cosmos DB Graph](https://aka.ms/graph-bulkexecutor-sample) hostované na GitHubu. Tato aplikace se skládá z řešení .NET, které náhodně generuje objekty vrcholů a hran a pak je hromadně vkládá do zadaného účtu databáze grafu. Aplikaci získáte spuštěním následujícího příkazu `git clone`:
+V tomto kurzu budeme postupovat podle kroků, jak začít pomocí [ukázky hromadného vykonavatele aplikace Azure Cosmos DB Graph](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started) hostované na GitHubu. Tato aplikace se skládá z řešení .NET, které náhodně generuje objekty vrcholů a hran a pak je hromadně vkládá do zadaného účtu databáze grafu. Aplikaci získáte spuštěním následujícího příkazu `git clone`:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git

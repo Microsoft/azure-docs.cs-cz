@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: 71e1f8be2af5556d86996175e8a1ddbccc9c7de1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a16120194b1b8015466005f42336828c2b4ace6c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72001666"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983836"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Poradce při potížích se stavem back-endu v bráně aplikace
 ==================================================
@@ -157,7 +157,7 @@ Zkontrolujte také, zda některý nsg / UDR / firewall blokuje přístup k Ip a 
 
     a.  Otevřete příkazový řádek (Win+R\> `netstat`- cmd), zadejte a vyberte Enter.
 
-    b.  Zkontrolujte, zda server naslouchá na nakonfigurovaném portu. Například:
+    b.  Zkontrolujte, zda server naslouchá na nakonfigurovaném portu. Příklad:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -170,7 +170,7 @@ Zkontrolujte také, zda některý nsg / UDR / firewall blokuje přístup k Ip a 
 
 **Zpráva:** Stavový kód odpovědi\'HTTP back-endu s neodpovídá nastavení sondy. Bylo přijato:{HTTPStatusCode0} :{HTTPStatusCode1}.
 
-**Příčina:** Po navázání připojení TCP a dokončení protokolu SSL handshake (pokud je povoleno ssl), aplikace gateway odešle sondu jako požadavek HTTP GET na back-endový server. Jak je popsáno výše, výchozí \<sonda\>bude protokol ://127.0.0.1:\<port\>/, a považuje kódy stavu odezvy ve vzteku 200 až 399 jako v pořádku. Pokud server vrátí jiný stavový kód, bude označen jako Není v pořádku s touto zprávou.
+**Příčina:** Po navázání připojení TCP a dokončení protokolu Handshake tls (pokud je povolena tls), aplikace gateway odešle sondu jako požadavek HTTP GET na back-endový server. Jak je popsáno výše, výchozí \<sonda\>bude protokol ://127.0.0.1:\<port\>/, a považuje kódy stavu odezvy ve vzteku 200 až 399 jako v pořádku. Pokud server vrátí jiný stavový kód, bude označen jako Není v pořádku s touto zprávou.
 
 **Řešení:** V závislosti na kódu odpovědi back-endového serveru můžete provést následující kroky. Zde je uvedeno několik běžných stavových kódů:
 
@@ -208,7 +208,7 @@ Další informace o [párování sondy aplikační brány](https://docs.microsof
 **Zpráva:** Certifikát serveru používaný back-endem není podepsán známou certifikační autoritou (CA). Whitelist back-end u brány aplikace nahráním kořenového certifikátu certifikátu serveru používaného back-endem.
 
 **Příčina:** End-to-end SSL s aplikační bránou v2 vyžaduje, aby byl certifikát back-endového serveru ověřen, aby bylo možné považovat server za v pořádku.
-Aby byl certifikát SSL důvěryhodný, musí být tento certifikát back-endového serveru vydán certifikační autoritou, která je součástí důvěryhodného úložiště aplikační brány. Pokud certifikát nebyl vydán důvěryhodnou certifikační autoritou (například pokud byl použit certifikát podepsaný svým držitelem), uživatelé by měli nahrát certifikát vystavittele do brány aplikace.
+Aby byl certifikát TLS/SSL důvěryhodný, musí být tento certifikát back-endového serveru vydán certifikační autoritou, která je součástí důvěryhodného úložiště aplikační brány. Pokud certifikát nebyl vydán důvěryhodnou certifikační autoritou (například pokud byl použit certifikát podepsaný svým držitelem), uživatelé by měli nahrát certifikát vystavittele do brány aplikace.
 
 **Řešení:** Následujícím postupem exportujte a nahrajte důvěryhodný kořenový certifikát do aplikační brány. (Tyto kroky jsou určeny pro klienty systému Windows.)
 
@@ -241,7 +241,7 @@ Další informace o tom, jak extrahovat a nahrát důvěryhodné kořenové cert
 **Zpráva:** Kořenový certifikát certifikátu serveru používaný back-endem neodpovídá důvěryhodnému kořenovému certifikátu přidanému do aplikační brány. Ujistěte se, že přidáte správný kořenový certifikát do seznamu povolených back-endů
 
 **Příčina:** End-to-end SSL s aplikační bránou v2 vyžaduje, aby byl certifikát back-endového serveru ověřen, aby bylo možné považovat server za v pořádku.
-Aby byl certifikát SSL důvěryhodný, musí být certifikát back-endového serveru vydán certifikační autoritou, která je součástí důvěryhodného úložiště aplikační brány. Pokud certifikát nebyl vydán důvěryhodnou certifikační autoritou (například byl použit certifikát podepsaný svým držitelem), uživatelé by měli nahrát certifikát vystavittele do brány aplikace.
+Aby byl certifikát TLS/SSL důvěryhodný, musí být certifikát back-endového serveru vydán certifikační autoritou, která je součástí důvěryhodného úložiště aplikační brány. Pokud certifikát nebyl vydán důvěryhodnou certifikační autoritou (například byl použit certifikát podepsaný svým držitelem), uživatelé by měli nahrát certifikát vystavittele do brány aplikace.
 
 Certifikát, který byl odeslán do nastavení HTTP brány aplikace, se musí shodovat se kořenovým certifikátem certifikátu back-endového serveru.
 
@@ -253,7 +253,7 @@ Další informace o tom, jak extrahovat a nahrát důvěryhodné kořenové cert
 > [!NOTE]
 > K této chybě může dojít také v případě, že back-endový server nevyměňuje úplný řetězec certifikátu, včetně Kořenového > Intermediate (pokud je to možné) > Leaf během tls handshake. Chcete-li ověřit, můžete použít příkazy OpenSSL z libovolného klienta a připojit se k back-endovému serveru pomocí nakonfigurovaných nastavení v sondě Application Gateway.
 
-Například:
+Příklad:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -280,7 +280,7 @@ Pokud výstup nezobrazuje úplný řetězec vráceného certifikátu, exportujte
 
 **Zpráva:** Obecný název (CN) certifikátu back-endu neodpovídá záhlaví hostitele sondy.
 
-**Příčina:** Aplikační brána zkontroluje, zda název hostitele zadaný v nastavení http back-endu odpovídá názvu propojené sítě, který je prezentován certifikátem SSL back-endového serveru. Jedná se o Standard_v2 a WAF_v2 chování skladové položky. Označení názvu serveru (SNI) standardní a wafové sku je nastaveno jako hlavní název v adrese back-endového fondu.
+**Příčina:** Aplikace Gateway zkontroluje, zda název hostitele zadaný v nastavení http back-endu odpovídá názvu sítě KN prezentovanému certifikátem TLS/SSL back-endového serveru. Jedná se o Standard_v2 a WAF_v2 chování skladové položky. Označení názvu serveru (SNI) standardní a wafové sku je nastaveno jako hlavní název v adrese back-endového fondu.
 
 Ve sku v2, pokud je výchozí sonda (žádná vlastní sonda byla nakonfigurována a přidružena), SNI se nastaví z názvu hostitele uvedeného v nastavení HTTP. Nebo pokud "Vyskladnění názvu hostitele z back-endové adresy" je uvedeno v nastavení HTTP, kde fond adres back-endobsahuje platný souhrnný název, bude toto nastavení použito.
 
@@ -321,9 +321,9 @@ Pro Linux pomocí OpenSSL:
 
 **Zpráva:** Back-endový certifikát je neplatný. Aktuální datum není \"v\" rozsahu \"Platné\" od a Platné do data na certifikátu.
 
-**Příčina:** Každý certifikát je dodáván s rozsahem platnosti a připojení HTTPS nebude zabezpečené, dokud není certifikát SSL serveru platný. Aktuální data musí být v rámci **platné ho rozsahu od** a platné **do** rozsahu. Pokud tomu tak není, certifikát je považován za neplatný a vytvoří problém se zabezpečením, ve kterém aplikační brána označí back-endový server jako nefunkční.
+**Příčina:** Každý certifikát je dodáván s rozsahem platnosti a připojení HTTPS nebude zabezpečené, pokud není platný certifikát TLS/SSL serveru. Aktuální data musí být v rámci **platné ho rozsahu od** a platné **do** rozsahu. Pokud tomu tak není, certifikát je považován za neplatný a vytvoří problém se zabezpečením, ve kterém aplikační brána označí back-endový server jako nefunkční.
 
-**Řešení:** Pokud platnost certifikátu SSL vypršela, obnovte jej u dodavatele a aktualizujte nastavení serveru novým certifikátem. Pokud se jedná o certifikát podepsaný svým držitelem, musíte vygenerovat platný certifikát a nahrát kořenový certifikát do nastavení HTTP aplikační brány. Provedete to podle těchto kroků:
+**Řešení:** Pokud platnost certifikátu TLS/SSL vypršela, obnovte certifikát u dodavatele a aktualizujte nastavení serveru novým certifikátem. Pokud se jedná o certifikát podepsaný svým držitelem, musíte vygenerovat platný certifikát a nahrát kořenový certifikát do nastavení HTTP aplikační brány. Provedete to podle těchto kroků:
 
 1.  Otevřete nastavení HTTP aplikační brány na portálu.
 
@@ -333,7 +333,7 @@ Pro Linux pomocí OpenSSL:
 
 #### <a name="certificate-verification-failed"></a>Ověření certifikátu se nezdařilo.
 
-**Zpráva:** Platnost certifikátu back-end nelze ověřit. Chcete-li zjistit důvod, zkontrolujte, zda je zpráva spojená s kódem chyby {errorCode} otevřena diagnostika SSL.
+**Zpráva:** Platnost certifikátu back-end nelze ověřit. Chcete-li zjistit důvod, zkontrolujte diagnostiku OpenSSL pro zprávu přidruženou ke kódu chyby {errorCode}
 
 **Příčina:** K této chybě dochází, když brána aplikace nemůže ověřit platnost certifikátu.
 

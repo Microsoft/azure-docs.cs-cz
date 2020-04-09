@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: bcdd938365e50da1f5ae0e830e86692f1b915123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618918"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982850"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Vzdálená práce pomocí síťových služeb Azure
 
@@ -80,16 +80,16 @@ Pro vaše nasazení v jiných veřejných cloudech může společnost Microsoft 
 
 Následující články popisují, jak lze různé síťové funkce Azure použít k škálování uživatelů tak, aby pracovali na dálku:
 
-| **Článku** | **Poslední aktualizace** |
+| **Článku** | **Popis** |
 | --- | --- |
-| [Jak povolit uživatelům pracovat na dálku](../vpn-gateway/work-remotely-support.md) | 23. března 2020 |
-| [Snaží se obstarávat práci z domova potřeb? Zde je místo, kde azure virtuální WAN může pomoci](../virtual-wan/work-remotely-support.md) | 23. března 2020 |
-| [Podpora vysokého provozu služby Application Gateway](../application-gateway/high-traffic-support.md) | 23. března 2020 |
-| [Aspekty síťového virtuálního zařízení (NVA) pro práci na dálku](../vpn-gateway/nva-work-remotely-support.md)| 23. března 2020 |
-| [Přechod na protokol OpenVPN nebo IKEv2 z SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | 23. března 2020 |
-| [Vzdálená práce s Azure Bastion](../bastion/work-remotely-support.md) | 23. března 2020 |
-| [Použití Služby Azure ExpressRoute k vytvoření hybridního připojení pro podporu vzdálených uživatelů](../expressroute/work-remotely-support.md) | 23. března 2020 |
-| [Podpora vzdálené práce azure firewallu](../firewall/remote-work-support.md)|25. března 2020|
+| [Jak povolit uživatelům pracovat na dálku](../vpn-gateway/work-remotely-support.md) | Zkontrolujte dostupné možnosti nastavení vzdáleného přístupu pro uživatele nebo doplnění jejich stávajících řešení o další kapacitu pro vaši organizaci.|
+| [Snaží se obstarávat práci z domova potřeb? Zde je místo, kde azure virtuální WAN může pomoci](../virtual-wan/work-remotely-support.md) | Azure Virtual WAN slouží k řešení potřeb vzdáleného připojení vaší organizace.|
+| [Podpora vysokého provozu služby Application Gateway](../application-gateway/high-traffic-support.md) | Pomocí brány aplikace s bránou webových aplikací (WEB Application Firewall) můžete škálovatelný a bezpečný způsob správy provozu webových aplikací. |
+| [Aspekty síťového virtuálního zařízení (NVA) pro práci na dálku](../vpn-gateway/nva-work-remotely-support.md)|Přečtěte si pokyny týkající se využití virtuálních zařízení v Azure k poskytování řešení pro vzdálený přístup. |
+| [Přechod na protokol OpenVPN nebo IKEv2 z SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | Překonejte limit souběžného připojení 128 SSTP přechodem na protokol OpenVPN nebo IKEv2.|
+| [Vzdálená práce s Azure Bastion](../bastion/work-remotely-support.md) | Poskytujte zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům v rámci virtuální sítě Azure, přímo na portálu Azure, bez použití veřejné IP adresy. |
+| [Použití Služby Azure ExpressRoute k vytvoření hybridního připojení pro podporu vzdálených uživatelů](../expressroute/work-remotely-support.md) | Pomocí aplikace ExpressRoute pro hybridní připojení umožníte uživatelům ve vaší organizaci pracovat na dálku.|
+| [Podpora vzdálené práce azure firewallu](../firewall/remote-work-support.md)|Chraňte své prostředky virtuální sítě Azure pomocí Azure Firewall. |
 
 <!--Link References-->
 [VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

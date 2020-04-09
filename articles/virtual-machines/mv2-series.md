@@ -5,18 +5,18 @@ services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 04/07/2020
 ms.author: lahugh
-ms.openlocfilehash: 6fb0f93d3ac124b21bbc52ddc57bc720de6406e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764dc93608ae3b8882b7048a722c6d3415cbc644
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163892"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885782"
 ---
 # <a name="mv2-series"></a>Řada Mv2
 
-Řada Mv2 je vybavena vysokou propustností, platformou s nízkou latencí, která běží na hyper-threaded Intel® Xeon® Platinum 8180M 2.5GHz (Skylake) procesor s základní frekvencí jádra 2,5 GHz a maximální turbo frekvencí 3,8 GHz. Všechny velikosti virtuálních počítačů řady Mv2 mohou používat standardní i prémiové trvalé disky. Instance řady Mv2 jsou velikosti virtuálních počítače optimalizované pro paměť, které poskytují bezkonkurenční výpočetní výkon pro podporu velkých databází a úloh v paměti s vysokým poměrem paměti k procesoru, který je ideální pro relační databázové servery, velké mezipaměti a v paměti Analytics.
+Řada Mv2 je vybavena vysokou propustností, platformou s nízkou latencí, která běží na hyper-threaded Intel® Xeon® Platinum 8180M 2.5GHz (Skylake) procesor s základní frekvencí jádra 2,5 GHz a maximální turbo frekvencí 3,8 GHz. Všechny velikosti virtuálních počítačů řady Mv2 mohou používat standardní i prémiové trvalé disky. Instance řady Mv2 jsou velikosti virtuálních počítače optimalizované pro paměť, které poskytují bezkonkurenční výpočetní výkon pro podporu velkých databází a úloh v paměti s vysokým poměrem paměti k procesoru, který je ideální pro relační databázové servery, velké mezipaměti a analýzy v paměti.
 
 Funkce virtuálního rozhraní Mv2 intel® technologie hyper-threadingu
 
@@ -34,12 +34,17 @@ Akcelerátor zápisu: [Podporováno](https://docs.microsoft.com/azure/virtual-ma
 |---|---|---|---|---|---|---|---|
 | Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4 096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16 000 |
 | <sup>1.</sup> Standard_M208s_v2 | 208 | 2850 | 4 096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16 000 |
-| Standard_M416ms_v2<sup>1, 2.</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
-| Standard_M416s_v2<sup>1, 2.</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
+| Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
+| Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
 
-<sup>1</sup> Virtuální klíče řady Mv2 jsou pouze generace 2. Pokud používáte Linux, přečtěte si informace o tom, jak najít a vybrat bitovou kopii nawebu [podpory virtuálních počítačích generace 2 v Azure.](./linux/generation-2.md)
+<sup>1</sup> Virtuální klíče řady Mv2 jsou pouze generace 2. Pokud používáte Linux, přečtěte si informace o tom, jak najít a vybrat bitovou kopii nawebu [podpory virtuálních počítačích generace 2 v Azure.](./linux/generation-2.md) Pokud používáte Windows, přečtěte si informace o tom, jak najít a vybrat bitovou kopii nawebu [podpory virtuálních počítačích generace 2 v Azure.](./windows/generation-2.md) Minimální verze operačního systému požadované pro všechny čtyři různé typy virtuálních počítačů řady Mv2, jako jsou:
 
-<sup>2</sup> Pro M416ms_v2 a M416s_v2 velikosti si všimněte, že existuje počáteční podpora pouze pro následující obrázek: "GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 pro aplikace SAP."
+- Windows Server 2019 nebo novější
+- SUSE Linux Enterprise Server 12 SP4 a novější nebo SUSE Linux Enterprise Server 15 SP1 a novější
+- Red Hat Enterprise Linux 7.6, 7.7, 8.1 nebo novější 
+- Oracle Enterprise Linux 7.7 nebo novější
+
+
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

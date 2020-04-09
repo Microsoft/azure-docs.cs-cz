@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086979"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886921"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Vytvoření zásad brány firewall webových aplikací pro bránu aplikací
 
@@ -24,6 +24,8 @@ Pokud vaše aplikační brána má zásady použít a potom použít jinou zása
 
    > [!NOTE]
    > Zásady WAF pro vlastní web a uri jsou ve verzi Public Preview. To znamená, že tato funkce podléhá doplňkovým podmínkám použití společnosti Microsoft. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > [!NOTE]
+   > Jakmile je zásada brány firewall přidružena k waf, musí být vždy zásady přidružené k tomuto WAF. Tuto zásadu můžete přepsat, ale zcela není podporováno zrušení zásady od waf. 
 
 Všechna nová nastavení WAF brány firewall webových aplikací (vlastní pravidla, spravované konfigurace rulse, vyloučení atd.) žijí v rámci zásad WAF. Pokud máte existující WAF, tato nastavení mohou stále existovat v konfiguraci WAF. Postup přechodu na nové zásady WAF naleznete v [tématu Migrace konfigurace WAF na zásady WAF](#migrate) dále v tomto článku. 
 

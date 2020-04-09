@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: 9250464e3d28bdac20840aa9f69cfac707f73b30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bc28a03476e773325d14808e1c7ac99103b2d5d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371497"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879441"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurace klienta VPN pro připojení protokolu P2S OpenVPN: Ověřování Azure AD
 
@@ -230,6 +230,16 @@ Můžete upravit stažený soubor XML profilu a přidat ** \<příkazy \<>\<>tra
 </clientconfig>
 </azvpnprofile>
 ```
+
+### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Mohu profil importovat z příkazového řádku?
+
+Profil můžete importovat z příkazového řádku umístěním staženého souboru **azurevpnconfig.xml** do **%userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState** a spuštěním následujícího příkazu:
+
+```
+azurevpn -i azurevpnconfig.xml 
+```
+vynutit import použít **-f** přepínač také
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 55fa14f367dbf24e951fde8e9075a34499a510b1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f8f21405a79a6fcf70adef9815ba06a229d6954d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547078"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886972"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -193,11 +193,11 @@ Přidělení portů SNAT jsou specifická pro přenosový protokol PROTOKOLU IP 
 Tato část je určena ke zmírnění vyčerpání SNAT a které mohou nastat s odchozí připojení v Azure.
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>Správa vyčerpání portů SNAT (PAT)
-[Dočasné porty](#preallocatedports) používané pro [PAT](#pat) jsou vyčerpatelný prostředek, jak je popsáno v [samostatném virtuálním virtuálním ms bez veřejné IP adresy](#defaultsnat) a [virtuálního virtuálního počítačů s vyrovnáváním zatížení bez veřejné IP adresy](#lb).
+[Dočasné porty](#preallocatedports) používané pro [PAT](#pat) jsou vyčerpatelný prostředek, jak je popsáno v [samostatném virtuálním virtuálním ms bez veřejné IP adresy](#defaultsnat) a [virtuálního virtuálního počítačů s vyrovnáváním zatížení bez veřejné IP adresy](#lb). Můžete sledovat vaše využití dočasných portů a porovnat s aktuální přidělení k určení rizika nebo k potvrzení snat exhuastion pomocí [této](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) příručky.
 
 Pokud víte, že iniciujete mnoho odchozích připojení TCP nebo UDP ke stejné cílové adrese IP a portu a zjistíte selhání odchozích připojení nebo jste upozorněni podporou, že vyčerpáváte porty SNAT (předčasované dočasné [porty](#preallocatedports) používané [patem](#pat)), máte několik obecných možností zmírnění rizik. Projděte si tyto možnosti a rozhodněte se, co je k dispozici a co je nejlepší pro váš scénář. Je možné, že jeden nebo více může pomoci spravovat tento scénář.
 
-Pokud máte potíže s pochopením chování odchozího připojení, můžete použít statistiku zásobníku IP (netstat). Nebo může být užitečné sledovat chování připojení pomocí zachycení paketů. Tato zachycení paketů můžete provádět v hostovaném osu vaší instance nebo použít [sledovací proces sítě pro sběr paketů](../network-watcher/network-watcher-packet-capture-manage-portal.md).
+Pokud máte potíže s pochopením chování odchozího připojení, můžete použít statistiku zásobníku IP (netstat). Nebo může být užitečné sledovat chování připojení pomocí zachycení paketů. Tato zachycení paketů můžete provádět v hostovaném osu vaší instance nebo použít [sledovací proces sítě pro sběr paketů](../network-watcher/network-watcher-packet-capture-manage-portal.md). 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>Úprava aplikace pro opakované použití připojení 
 Můžete snížit poptávku po dočasných portech, které se používají pro SNAT pomocí opětovného použití připojení ve vaší aplikaci. To platí zejména pro protokoly, jako je HTTP/1.1, kde opětovné použití připojení je výchozí. A další protokoly, které používají http jako jejich přenos (například REST) může mít prospěch zase. 

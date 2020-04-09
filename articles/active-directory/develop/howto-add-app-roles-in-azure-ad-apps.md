@@ -3,7 +3,6 @@ title: Přidání rolí aplikace a jejich získání z tokenu | Azure
 titleSuffix: Microsoft identity platform
 description: Zjistěte, jak přidat role aplikací v aplikaci registrované ve službě Azure Active `roles` Directory, přiřadit k těmto rolím uživatele a skupiny a obdržet je v deklaraci v tokenu.
 services: active-directory
-documentationcenter: ''
 author: kkrishna
 manager: CelesteDG
 ms.service: active-directory
@@ -14,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 144fad249011d547ac6a8cf2d404cb3f8fe74f96
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399089"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884252"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postup: Přidání rolí aplikací do aplikace a jejich přijetí v tokenu
 
@@ -35,7 +34,7 @@ Tyto role aplikace jsou definovány na [portálu Azure](https://portal.azure.com
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarování rolí aplikací pomocí portálu Azure
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů portálu vyberte ikonu **Adresář + Odběr.**
 1. V seznamu **Oblíbené položky** nebo **Všechny adresáře** zvolte klienta služby Active Directory, ve kterém chcete aplikaci zaregistrovat.
 1. Na webu Azure Portal vyhledejte a vyberte **Službu Azure Active Directory**.

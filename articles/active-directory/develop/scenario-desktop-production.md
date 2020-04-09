@@ -2,26 +2,21 @@
 title: Přesunutí webových rozhraní API pro volání webových rozhraní API pro stolní počítače do produkčního prostředí – platforma identit Microsoftu | Azure
 description: Přečtěte si, jak přesunout desktopovou aplikaci, která volá webová api do produkčního prostředí.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c8a9cf0c05d8af14d52bb1efb536dc8bbe7db84d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262565"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882875"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Desktopová aplikace, která volá webová API: Přechod do produkčního prostředí
 

@@ -13,19 +13,17 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75768006"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982595"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Správa přístupu k aplikacím a prostředkům pomocí skupin služby Azure Active Directory
 Azure Active Directory (Azure AD) umožňuje používat skupiny ke správě přístupu ke cloudovým aplikacím, místním aplikacím a prostředkům. Vaše prostředky mohou být součástí organizace Azure AD, jako jsou oprávnění ke správě objektů prostřednictvím rolí ve službě Azure AD nebo externích aplikací, jako jsou aplikace Software jako služba (SaaS), služby Azure, weby SharePointu a místní prostředky.
 
 >[!NOTE]
->Abyste mohli používat Azure Active Directory, musíte mít účet Azure. Pokud účet Azure nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
->
 > Na webu Azure Portal uvidíte některé skupiny, jejichž členství a podrobnosti o skupině se na portálu nedaří spravovat:
 >
 > - Skupiny synchronizované z místní služby Active Directory lze spravovat pouze v místním adresáři Active Directory.
