@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 2813d96fdd9fcd588b78cbfb58fe57bf58a4fe68
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e15d325f0cf13ae774a5dc471a1e2b447286a99c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80047354"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81009249"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Vytvoření webové aplikace v PHP v Azure
 
@@ -72,12 +72,16 @@ V prostředí Cloud Shell vytvořte `myAppServicePlan` webovou aplikaci [`az web
 
 V následujícím příkladu nahraďte `<app_name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `PHP|7.0`. Chcete-li zobrazit všechny [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)podporované moduly runtimes, spusťte . 
 
+
 ```azurecli-interactive
 # Bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
 # PowerShell
 az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
 ```
+> [!NOTE]
+> Symbol `(--%)`stop-parsing , který byl zaveden v prostředí PowerShell 3.0, nasměruje prostředí PowerShell, aby se zdrželinterpretace vstupu jako příkazů nebo výrazů prostředí PowerShell. 
+>
 
 Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujícímu příkladu:
 
@@ -192,4 +196,4 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [PHP s databází MySQL](app-service-web-tutorial-php-mysql.md)
+> [PHP s MySQL](app-service-web-tutorial-php-mysql.md)

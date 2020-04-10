@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 88703581c507b79c1b10e0f8741c99e64d204a7e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78300481"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010864"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Úvodní příručka: Použití Azure Cache pro Redis s node.js
 
@@ -41,7 +41,7 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## <a name="connect-to-the-cache"></a>Připojení k mezipaměti
 
-Nejnovější sestavení [node_redis](https://github.com/mranney/node_redis) poskytují podporu pro připojení k Azure Cache pro Redis pomocí SSL. Následující příklad ukazuje, jak se připojit k Azure Cache pro Redis pomocí koncového bodu SSL 6380. 
+Nejnovější sestavení [node_redis](https://github.com/mranney/node_redis) poskytují podporu pro připojení k Azure Cache pro Redis pomocí TLS. Následující příklad ukazuje, jak se připojit k Azure Cache pro Redis pomocí koncového bodu TLS 6380. 
 
 ```js
 var redis = require("redis");
@@ -69,7 +69,7 @@ bluebird.promisifyAll(redis.Multi.prototype);
 
 async function testCache() {
 
-    // Connect to the Azure Cache for Redis over the SSL port using the key.
+    // Connect to the Azure Cache for Redis over the TLS port using the key.
     var cacheConnection = redis.createClient(6380, process.env.REDISCACHEHOSTNAME, 
         {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
         

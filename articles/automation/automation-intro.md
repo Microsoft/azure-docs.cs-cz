@@ -3,84 +3,91 @@ title: Přehled Azure Automation
 description: Zjistěte, jako pomocí Azure Automation automatizovat životní cyklus infrastruktury a aplikací.
 services: automation
 ms.subservice: process-automation
-keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical
+keywords: azure automation, DSC, powershell, konfigurace stavu, správa aktualizací, sledování změn, DSC, inventář, runbooky, python, grafické
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8ee8fd4d9a81746be7b65aeb6410691a5e3aea96
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76930398"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010235"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 
-Azure Automation nabízí cloudovou službu pro automatizaci a konfiguraci, která poskytuje konzistentní správu napříč Azure i prostředími mimo Azure. Skládá se z automatizace procesů, správy aktualizací a funkcí konfigurace. Azure Automation poskytuje úplnou kontrolu v průběhu nasazení, provozu i vyřazení úloh a prostředků z provozu.
 Tento článek poskytuje stručný přehled Azure Automation a odpovědi na některé běžné dotazy. Další informace o různých možnostech najdete na odkazech uvedených v tomto přehledu.
 
-## <a name="azure-automation-capabilities"></a>Možnosti Azure Automation
+## <a name="about-azure-automation"></a>O automatizaci Azure
 
-![Přehled možností Automation](media/automation-overview/automation-overview.png)
+Azure Automation poskytuje cloudovou automatizační a konfigurační službu, která podporuje konzistentní správu v prostředích Azure i mimo Azure. Zahrnuje automatizaci procesů, správu konfigurace, správu aktualizací, sdílené funkce a heterogenní funkce. Automatizace poskytuje úplnou kontrolu při nasazování, provozu a vyřazování úloh a prostředků z provozu.
 
-### <a name="process-automation"></a>Automatizace procesů
+![Možnosti automatizace](media/automation-overview/automation-overview.png)
 
-Azure Automation poskytuje možnost automatizovat časté a časově náročné úlohy správy cloudu, které jsou náchylné k chybám. Tato automatizace vám umožní věnovat víc času práci, která vytváří přidanou hodnotu. Díky menšímu množství chyb a vyšší efektivitě vám také pomůže snížit provozní náklady. Služby Azure můžete integrovat s dalšími veřejnými systémy nezbytnými k nasazování, konfiguraci a správě vašich ucelených procesů. Tato služba umožňuje [vytvářet runbooky](automation-runbook-types.md) v grafickém prostředí, v PowerShellu nebo Pythonu. S použitím hybridního pracovního procesu runbooku můžete sjednotit správu díky orchestraci napříč místními prostředími. [Webhooky](automation-webhooks.md) poskytují způsob, jak plnit požadavky a zajistit průběžné doručování a provoz díky aktivaci automatizace z ITSM, DevOps a monitorovacích systémů.
+## <a name="process-automation"></a>Automatizace procesů
 
-### <a name="configuration-management"></a>Správa konfigurace
+Automatizace procesů v Azure Automation umožňuje automatizovat časté, časově náročné úlohy správy cloudu náchylné k chybám. Tato služba vám pomůže soustředit se na práci, která přidává obchodní hodnotu. Díky menšímu množství chyb a vyšší efektivitě vám také pomůže snížit provozní náklady. Provozní prostředí automatizace procesů je podrobně popsáno v [spuštění sady Runbook v Azure Automation](automation-runbook-execution.md).
 
-[Konfigurace požadovaného stavu](automation-dsc-overview.md) Azure Automation je cloudové řešení pro PowerShell DSC, které poskytuje služby nezbytné pro podniková prostředí. Svoje prostředky DSC můžete spravovat v Azure Automation a konfigurace můžete používat na virtuálních nebo fyzických počítačích ze serveru vyžádaných replikací s DSC v cloudu Azure. Poskytuje bohaté sestavy, které informují o důležitých událostech, například když se uzly odchylují od svých přiřazených konfigurací. Můžete snadno a spolehlivě monitorovat a automaticky aktualizovat konfigurace počítačů fyzických i virtuálních, s Windows i s Linuxem, v cloudu i místně.
+Automatizace procesů podporuje integraci služeb Azure a dalších veřejných systémů potřebných při nasazování, konfiguraci a správě vašich komplexních procesů. Služba umožňuje vytvářet [runbooky](automation-runbook-types.md) graficky, v PowerShellu nebo pomocí Pythonu. Pomocí [hybridního pracovníka runbooku](automation-hybrid-runbook-worker.md)můžete sjednotit správu orchestrací napříč místními prostředími. [Webhooky](automation-webhooks.md) umožňují plnit požadavky a zajistit nepřetržité doručování a provoz spuštěním automatizace z ITSM, DevOps a monitorovacích systémů. 
 
-Můžete získat inventář prostředků na hostovi a tím i přehled o nainstalovaných aplikací a dalších položkách konfigurace. Dostupné bohaté možnosti generování sestav a vyhledávaní vám umožní rychle najít podrobné informace, abyste porozuměli nejrůznějším konfiguracím v rámci operačního systému. Můžete sledovat změny napříč službami, procesy démon, softwarem, registry a soubory a díky tomu rychle identifikovat pravděpodobnou příčinu problémů. Kromě toho může DSC pomoct s diagnostikou a upozorněním v případě, že ve vašem prostředí dojde k nežádoucím změnám.
+## <a name="configuration-management"></a>Správa konfigurace
 
-### <a name="update-management"></a>Správa aktualizací
+Konfigurace [stavu](automation-dsc-overview.md) Azure Automation je cloudové řešení pro konfiguraci požadovaného stavu PowerShellu (DSC), které poskytuje služby pro podniková prostředí. Pomocí této funkce můžete spravovat prostředky DSC v Azure Automation a použít konfigurace pro virtuální nebo fyzické počítače z serveru pro vyžádat DSC v cloudu Azure. Konfigurace počítačů můžete monitorovat a automaticky aktualizovat napříč fyzickými a virtuálními počítači, ve Windows nebo Linuxu, v cloudu nebo místně. Podpora inventáře umožňuje dotazovat prostředky hosta pro přehled o nainstalovaných aplikacích a dalších položkách konfigurace.
+ 
+Služba konfigurace stavu Azure Automation poskytuje bohaté možnosti vytváření sestav a vyhledávání. Tyto funkce můžete použít k vyhledání podrobných informací o tom, co je konfigurováno v operačním systému. Služba podporuje sledování změn napříč službami, daemony, softwarem, registrem a soubory ve vašem prostředí, které vám pomohou diagnostikovat nežádoucí změny a vyvolat výstrahy. Důležitou související funkcí je vykazování hlavních událostí, například událostí vydaných v případě, že se uzly odchylují od přiřazených konfigurací. 
 
-Pomocí Azure Automation můžete aktualizovat systémy Windows i Linux napříč hybridními prostředími. Získáte přehled o kompatibilitě aktualizací mezi Azure, místním prostředím a jinými cloudy. Můžete vytvářet plánovaná nasazení a orchestrovat instalaci aktualizací v rámci definovaného časového období údržby. Pokud by se na počítač některé aktualizace instalovat neměly, můžete takové aktualizace vyloučit z nasazení.
+## <a name="update-management"></a>Správa aktualizací
+
+Azure Automation zahrnuje řešení [pro správu aktualizací](automation-update-management.md) pro systémy Windows a Linux v hybridních prostředích. Díky tomuto řešení získáte přehled o dodržování předpisů pro aktualizace v Azure a dalších cloudech a v místním prostředí. Správa aktualizací umožňuje vytvářet naplánovaná nasazení, která orchestrují instalaci aktualizací v rámci definovaného časového intervalu údržby. Pokud by aktualizace neměla být nainstalována v počítači, můžete ji vyloučit z nasazení pomocí funkcí správy aktualizací.
+
+## <a name="shared-capabilities"></a>Sdílené možnosti
+
+Azure Automation nabízí řadu sdílených funkcí, včetně sdílených prostředků, řízení přístupu na základě rolí, flexibilního plánování, integrace správy zdrojového kódu, auditování a označování.
 
 ### <a name="shared-resources"></a><a name="shared-resources"></a>Sdílené prostředky
 
 Azure Automation se skládá ze sady sdílených prostředků, které usnadňují automatizaci a konfiguraci prostředí ve velkém měřítku.
 
-* **[Plány](automation-schedules.md)** – Slouží ve službě k aktivování automatizace v předdefinované časy.
-* **[Moduly](automation-integration-modules.md)** – moduly se používají ke správě Azure a dalších systémů. Importujte do účtu automatizace pro Microsoft, třetí strany, komunitu nebo vlastní definované rutiny a prostředky DSC.
-* **[Galerie modulů](automation-runbook-gallery.md)** – nativní integrace do Galerie prostředí PowerShell, která zobrazuje runbooky a importuje je do účtu automatizace.
-* **[Balíčky Pythonu 2](python-packages.md)** – Přidejte balíčky Pythonu 2 do svého automatizačního účtu, které se použijí ve vašich runbookech Pythonu.
-* **[Přihlašovací údaje](automation-credentials.md)** – Zabezpečeně uchovávají citlivé údaje, které můžou za běhu používat runbooky a konfigurace.
-* **[Připojení](automation-connections.md)** – Při připojování k systémům ukládejte páry název-hodnota s informacemi obsahujícími běžné údaje v prostředcích připojení. Připojení pro použití za běhu v runboocích a konfiguracích definuje autor modulu.
-* **[Certifikáty](automation-certificates.md)** – Ukládejte je a zpřístupněte je za běhu, aby se daly použít k ověřování a zabezpečení nasazených prostředků.
-* **[Proměnné](automation-variables.md)** – Poskytují způsob uložení obsahu, který se může používat napříč runbooky a konfiguracemi. Hodnoty můžete změnit, aniž byste museli měnit runbooky a konfigurace, které na ně odkazují.
+* **[Plány](automation-schedules.md)** - Trigger Automation operace v předdefinovaných časech.
+* **[Moduly](automation-integration-modules.md)** – správa Azure a dalších systémů. Moduly můžete importovat do účtu Automatizace pro Microsoft, třetí strany, komunitu a vlastní definované rutiny a prostředky DSC.
+* **[Galerie modulů](automation-runbook-gallery.md)** – Podporuje nativní integraci s Galerií prostředí PowerShell, která vám umožní zobrazit runbooky a importovat je do účtu Automatizace. Galerie umožňuje rychle začít s integrací a vytvářením procesů z galerie prostředí PowerShell a z centra Microsoft Script Center.
+* **[Balíčky pythonu 2](python-packages.md)** – podpora runbooků pythonu 2 pro váš účet Automation.
+* **[Pověření](automation-credentials.md)** – bezpečně ukládat citlivé informace, které runbooky a konfigurace můžete použít za běhu.
+* **[Připojení](automation-connections.md)** – uložte dvojice společných informací o hodnotách názvů pro připojení k systémům. Autor modulu definuje připojení v sadách Runbook a konfiguracích pro použití za běhu.
+* **[Certifikáty](automation-certificates.md)** – definujte informace, které mají být použity při ověřování a zabezpečení nasazených prostředků při přístupu pomocí runbooků nebo konfigurací DSC za běhu. 
+* **[Proměnné](automation-variables.md)** – Podržte obsah, který lze použít v runbookech a konfiguracích. Můžete změnit hodnoty proměnných, aniž byste museli měnit některou z runbooků nebo konfigurací, které na ně odkazují.
+
+### <a name="role-based-access-control"></a>Řízení přístupu na základě role
+
+Azure Automation podporuje řízení přístupu na základě rolí (RBAC) k regulaci přístupu k účtu Automation a jeho prostředků. Další informace o konfiguraci RBAC na vašem účtu automation, runbooky a úlohy, najdete v [tématu řízení přístupu na základě rolí pro Azure Automation](automation-role-based-access-control.md).
 
 ### <a name="source-control-integration"></a>Integrace správy zdrojového kódu
 
-Azure Automation má schopnost [integrovat se správou zdrojového kódu,](source-control-integration.md) která podporuje konfiguraci jako kód, kde runbooky nebo konfigurace lze zkontrolovat do systému správy zdrojového kódu.
+Azure Automation umožňuje [integraci správy zdrojového kódu](source-control-integration.md). Tato funkce podporuje konfiguraci jako kód, kde lze sady Runbook nebo konfigurace rezervovat do systému správy zdrojového kódu.
 
-### <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
+## <a name="heterogeneous-support-windows-and-linux"></a>Heterogenní podpora (Windows a Linux)
 
-Azure Automation podporuje řízení přístupu na základě rolí pro řízení přístupu k účtu automation a jeho prostředkům, další informace o konfiguraci RBAC na vašem účtu Automation, runbooks a úlohy, najdete v [tématu řízení přístupu na základě rolí pro Azure Automation](automation-role-based-access-control.md).
-
-### <a name="windows-and-linux"></a>Windows a Linux
-
-Služba Azure Automation je navržená pro fungování v hybridním cloudovém prostředí i ve Windows a Linuxu. Zajišťuje konzistentní automatizaci a konfiguraci nasazených úloh a operačního systému, na kterém běží.
-
-### <a name="community-gallery"></a>Galerie komunity
-
-V [Galerii služby Automation](automation-runbook-gallery.md) najdete runbooky a moduly, pomocí kterých můžete rychle začít integrovat a vytvářet vlastní procesy z Galerie prostředí PowerShell a Centra skriptů Microsoft.
+Automatizace je navržena tak, aby fungovala v celém hybridním cloudovém prostředí a také v systémech Windows a Linux. Poskytuje konzistentní způsob automatizace a konfigurace nasazených úloh a operačních systémů, které je spouštějí.
 
 ## <a name="common-scenarios-for-automation"></a>Běžné scénáře pro službu Automation
 
-Azure Automation spravuje životní cyklus vaší infrastruktury i aplikací. Přeneste do systému znalosti o způsobu, jakým organizace doručuje a udržuje úlohy. Tvořte v běžných jazycích jako PowerShell, konfigurace požadovaného stavu, Python a grafické runbooky. Získejte kompletní inventář nasazených prostředků pro účely cílení, generování sestav a dodržování předpisů. Identifikujte změny, které můžou způsobit chybnou konfiguraci, a zlepšete provozní dodržování předpisů.
+Azure Automation podporuje správu po celou dobu životnosti vaší infrastruktury a aplikací. Mezi obvyklé scénáře patří:
 
-* **Sestavování a nasazování prostředků** – Nasazujte virtuální počítače napříč hybridním prostředím pomocí runbooků a šablon Azure Resource Manageru. Zajistěte integraci do vývojových nástrojů, jako je Jenkins a Azure DevOps.
-* **Konfigurace virtuálních počítačů** – Vyhodnocujte a konfigurujte počítače s Windows a Linuxem s využitím požadované konfigurace pro infrastrukturu a aplikaci.
-* **Monitorování** – Identifikujte na počítačích změny, které způsobují problémy, a opravte je nebo je eskalujte do systémů pro správu.
-* **Ochrana** – Když se vyvolá výstraha zabezpečení, virtuální počítač se umístí do karantény. Nastavte požadavky na hostovi.
-* **Správné řízení** – Nastavte pro týmy řízení přístupu na základě role. Obnovte nevyužité prostředky.
+* **Napište runbooky** – Author PowerShell, PowerShell Workflow, grafické, Python 2 a DSC runbooky v běžných jazycích. 
+* **Vytváření a nasazování prostředků** – nasazení virtuálních počítačů v hybridním prostředí pomocí runbooků a šablon Azure Resource Manager. Integrujte do vývojových nástrojů, jako jsou Jenkins a Azure DevOps.
+* **Konfigurace virtuálních počítačů** – vyhodnocujte a konfigurujte počítače se systémem Windows a Linux s konfiguracemi pro infrastrukturu a aplikaci.
+* **Sdílení znalostí** – Přeneste znalosti do systému o tom, jak vaše organizace poskytuje a udržuje úlohy. 
+* **Načíst inventář** – získejte kompletní soupis nasazených prostředků pro cílení, vytváření sestav a dodržování předpisů. 
+* **Najít změny** – Identifikujte změny, které mohou způsobit nesprávnou konfiguraci, a zlepšit provozní dodržování předpisů.
+* **Monitor** – izolujte změny počítače, které způsobují problémy, a napravujte je nebo eskalujte do systémů správy.
+* **Chránit** – karanténní počítače, pokud jsou aktivovány výstrahy zabezpečení. Nastavte požadavky na hostovi.
+* **Govern** - Nastavte RBAC pro týmy. Obnovte nevyužité prostředky.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="pricing-for-automation"></a>Ceny služby Automation
 
-Ceny služby Azure Automation najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/automation/).
+Ceny spojené s Azure Automation si můžete prohlédnout na stránce [s cenami.](https://azure.microsoft.com/pricing/details/automation/)
 
 ## <a name="next-steps"></a>Další kroky
 

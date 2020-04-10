@@ -4,9 +4,9 @@
       href: oracle-overview.md
     - name: Řešení na virtuálních počítačích Azure
       href: oracle-vm-solutions.md
-    - name: Řešení s využitím OCI – Preview
+    - name: Řešení s využitím OCI
       href: oracle-oci-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vytvoření Oracle DB
       href: oracle-database-quick-create.md
@@ -32,7 +32,7 @@
       href: oracle-disaster-recovery.md
 - name: Návody
   items:
-    - name: Vzájemné propojení Azure a OCI – Preview
+    - name: Vzájemné propojení Azure a OCI
       href: configure-azure-oci-networking.md
 - name: Zdroje a prostředky
   items:

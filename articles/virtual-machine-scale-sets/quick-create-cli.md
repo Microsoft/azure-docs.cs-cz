@@ -1,20 +1,20 @@
 ---
 title: Úvodní příručka – vytvoření škálovací sady virtuálních strojů pomocí azure CLI
 description: S nasazením můžete začít tím, že se naučíte, jak rychle vytvořit škálovací sadu virtuálních strojů pomocí azure CLI.
-author: cynthn
+author: ju-shim
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.openlocfilehash: 172a498b6b92a059c50cac4ad45fee322e12fdd0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: jushiman
+ms.openlocfilehash: 392af4d96efc9b60cedc8488dc1cebbfd68a92c5
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76278039"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011323"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů pomocí Azure CLI
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů a nasadíte ukázkovou aplikaci pomocí Azure CLI.

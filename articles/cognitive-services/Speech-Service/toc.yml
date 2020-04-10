@@ -113,6 +113,8 @@
       items:
         - name: Co je převod textu na řeč?
           href: text-to-speech.md
+        - name: Základy převodu textu na řeč
+          href: text-to-speech-basics.md
     - name: Rychlý start
       items:
         - name: Syntéza řeči do reproduktoru
@@ -545,6 +547,8 @@
       href: sovereign-clouds.md
     - name: Ceny a omezení
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Šifrování

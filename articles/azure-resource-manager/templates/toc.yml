@@ -85,7 +85,7 @@
           href: deployment-tutorial-pipeline.md
     - name: Rozšířené šablony
       items:
-        - name: Využití referenčních informací k šablonám
+        - name: Použití referenčních informací k šablonám
           href: template-tutorial-use-template-reference.md
         - name: Vytvoření několika instancí
           displayName: 'iteration,copy'
@@ -291,6 +291,8 @@
           href: template-functions-array.md
         - name: Funkce porovnání
           href: template-functions-comparison.md
+        - name: Datové funkce
+          href: template-functions-date.md
         - name: Funkce nasazení
           href: template-functions-deployment.md
         - name: Logické funkce

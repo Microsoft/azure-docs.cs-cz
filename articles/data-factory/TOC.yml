@@ -8,7 +8,7 @@
       href: introduction.md
     - name: Porovnávání aktuální verze s verzí 1
       href: compare-versions.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření datové továrny – uživatelské rozhraní
@@ -45,7 +45,7 @@
               href: tutorial-hybrid-copy-data-tool.md
             - name: Uživatelské rozhraní
               href: tutorial-hybrid-copy-portal.md
-            - name: Azure Powershell
+            - name: Azure PowerShell
               href: tutorial-hybrid-copy-powershell.md
         - name: Z Amazon Web Services S3 do Azure Data Lake Storage
           items:
@@ -65,7 +65,7 @@
           items:
             - name: Uživatelské rozhraní
               href: tutorial-bulk-copy-portal.md
-            - name: Azure Powershell
+            - name: Azure PowerShell
               href: tutorial-bulk-copy.md
         - name: Přírůstkové načtení dat
           href: tutorial-incremental-copy-overview.md
@@ -74,19 +74,19 @@
               items:
                 - name: Uživatelské rozhraní
                   href: tutorial-incremental-copy-portal.md
-                - name: Azure Powershell
+                - name: Azure PowerShell
                   href: tutorial-incremental-copy-powershell.md
             - name: Z několika místních tabulek SQL Serveru
               items:
                 - name: Uživatelské rozhraní
                   href: tutorial-incremental-copy-multiple-tables-portal.md
-                - name: Azure Powershell
+                - name: Azure PowerShell
                   href: tutorial-incremental-copy-multiple-tables-powershell.md
             - name: S využitím informací o sledování změn v SQL Serveru
               items:
                 - name: Uživatelské rozhraní
                   href: tutorial-incremental-copy-change-tracking-feature-portal.md
-                - name: Azure Powershell
+                - name: Azure PowerShell
                   href: tutorial-incremental-copy-change-tracking-feature-powershell.md
             - name: Nové soubory podle data poslední úpravy
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
@@ -108,7 +108,7 @@
               items:
                 - name: Uživatelské rozhraní
                   href: tutorial-transform-data-spark-portal.md
-                - name: Azure Powershell
+                - name: Azure PowerShell
                   href: tutorial-transform-data-spark-powershell.md
             - name: Poznámkový blok Databricks
               items:
@@ -118,7 +118,7 @@
               items:
                 - name: Uživatelské rozhraní
                   href: tutorial-transform-data-hive-virtual-network-portal.md
-                - name: Azure Powershell
+                - name: Azure PowerShell
                   href: tutorial-transform-data-hive-virtual-network.md
     - name: Tok řízení
       items:
@@ -130,7 +130,7 @@
       items:
         - name: Uživatelské rozhraní
           href: tutorial-deploy-ssis-packages-azure.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
         - name: Připojení k virtuální síti
           href: tutorial-deploy-ssis-virtual-network.md
@@ -138,11 +138,11 @@
       items:
         - name: Integrace dat s využitím služeb Data Factory a Data Share
           href: lab-data-flow-data-share.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=data-factory'
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: samples-powershell.md
 - name: Koncepty
   items:
@@ -607,6 +607,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Vyčištění protokolů SSISDB s využitím úloh Elastic Database
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: Migrace úloh SSIS s využitím SSMS
+          href: how-to-migrate-ssis-job-ssms.md
     - name: Vytvoření aktivačních událostí
       items:
         - name: Vytvoření aktivační události na základě událostí

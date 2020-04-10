@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 42b478b598fe3034f1a97fe41662a38bc265074d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: f3ede3ef0557c5ca425901e7404746b4e85aefcb
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875975"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991122"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Úvodní příručka: Přidání přihlášení s Microsoftem do webové aplikace Java
 
@@ -256,10 +256,5 @@ Další informace o toku auth pro tento scénář naleznete v toku autorizační
 
 > [!div class="nextstepaction"]
 > [Tok autorizačního kódu Oauth](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
-
-Pomozte nám vylepšit platformu identit Microsoftu. Řekněte nám, co si myslíte, že dokončení krátké hod-průzkum u dvou otázek.
-
-> [!div class="nextstepaction"]
-> [Průzkum platformy identity Microsoftu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

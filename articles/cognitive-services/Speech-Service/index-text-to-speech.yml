@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 4aa2cb134bc47841da2964f4f83898875098e6c4
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.openlocfilehash: e9fb4f1b26dd8c5a958f8321f8c6fd0def605c93
+  ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "80052802"
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80991343"
 landingContent:
 - title: Převod textu na řeč
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: Co je převod textu na řeč?
       url: text-to-speech.md
+    - text: Základy syntézy řeči
+      url: text-to-speech-basics.md
   - linkListType: quickstart
     links:
     - text: Syntéza řeči do reproduktoru
@@ -50,11 +52,11 @@ landingContent:
       url: how-to-custom-voice-create-voice.md
     - text: Omezení přístupu pro Vlastní hlas
       url: concepts-gating-overview.md
-- title: Odkaz
+- title: Referenční informace
   linkLists:
   - linkListType: reference
     links:
-    - text: Standardní hlasová podpora
+    - text: Podpora standardního hlasu
       url: language-support.md#standard-voices
     - text: Podpora neurálního hlasu
       url: language-support.md#neural-voices

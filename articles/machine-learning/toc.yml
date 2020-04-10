@@ -15,24 +15,27 @@
 - name: Kurzy
   expanded: true
   items:
-    - name: Studio a Designer
+    - name: Studio
       items:
         - name: Designer (přetahování)
           items:
-            - name: 'Designer: 1. Trénování regresního modelu'
+            - name: 1. Trénování regresního modelu
               displayName: studio
               href: tutorial-designer-automobile-price-train-score.md
-            - name: 'Designer: 2. Nasazení tohoto modelu'
+            - name: 2. Nasazení tohoto modelu
               displayName: studio
               href: tutorial-designer-automobile-price-deploy.md
         - name: Automatizované ML (uživatelské rozhraní)
           items:
-            - name: Vytvoření automatizovaného experimentu ML
+            - name: Vytváření experimentů automatizovaného strojového učení
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-first-experiment-automated-ml.md
-            - name: Prognóza poptávky s využitím automatizovaného strojového učení (data o sdílení kol)
+            - name: Prognóza poptávky (údaje o sdílení kol)
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-automated-ml-forecast.md
+        - name: Označení dat obrázku
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: Python SDK
       items:
         - name: Vytvoření prvního experimentu ML
@@ -78,14 +81,14 @@
     - name: Poznámkové bloky Jupyter
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Otevřené datové sady Azure
-      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
     - name: Datové sady designeru
       href: sample-designer-datasets.md
+    - name: Ukázkové kanály designeru
+      href: samples-designer.md
     - name: Kompletní příklady MLOps
       href: 'https://github.com/microsoft/MLOps'
-    - name: Kanály designeru
-      href: samples-designer.md
+    - name: Otevřené datové sady (veřejné)
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Koncepty
   items:
     - name: Pracovní prostor
@@ -118,7 +121,7 @@
     - name: Automatizované strojové učení
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: Správa nástrah ML
+    - name: Přeurčení a nevyvážená data
       displayName: 'automl, auto ml, risks'
       href: concept-manage-ml-pitfalls.md
     - name: Instance služby Compute
@@ -351,6 +354,8 @@
       items:
         - name: Vytváření kanálů ML (Python)
           href: how-to-create-your-first-pipeline.md
+        - name: Přesun dat kroků kanálu ML a mezi nimi (Python)
+          href: how-to-move-data-in-out-of-pipelines.md
         - name: Naplánování kanálu (Python)
           href: how-to-schedule-pipelines.md
         - name: Aktivace kanálu

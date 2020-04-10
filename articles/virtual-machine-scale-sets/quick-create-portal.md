@@ -1,7 +1,7 @@
 ---
 title: Úvodní příručka – vytvoření škálovací sady virtuálních strojů na webu Azure Portal
 description: S nasazením můžete začít tím, že se naučíte, jak rychle vytvořit škálování virtuálního počítače na webu Azure Portal.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -9,13 +9,13 @@ ms.tgt_pltfrm: vm
 ms.topic: quickstart
 ms.custom: mvc, H1Hack27Feb2017
 ms.date: 10/23/2019
-ms.author: cynthn
-ms.openlocfilehash: 41bfe86f4635a54c56a8313fabefa1f381f4a4ee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: jushiman
+ms.openlocfilehash: 410ae93ea109e5757ccb5b65d353a600574dd595
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80062747"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010473"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022116"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999023"
 ---
 # <a name="in-store-analytics-architecture"></a>Architektura analýz y v obchodě
 
@@ -48,10 +48,10 @@ Aplikace Azure IoT Central ingestuje data z různých druhů senzorů IoT a tak�
 Azure IoT Central také poskytuje přizpůsobené prostředí pro operátora obchodu, které jim umožňuje vzdáleně monitorovat a spravovat zařízení infrastruktury.
 
 ## <a name="data-transform"></a>Transformace dat
-Aplikaci Azure IoT Central v rámci řešení lze nakonfigurovat tak, aby exportovala nezpracované nebo agregované přehledy do sady služeb Azure PaaS (Platforma jako služba), které můžou provádět manipulaci s daty a obohatit tyto poznatky před jejich přistáním v podniku. Aplikace. 
+Aplikace Azure IoT Central v rámci řešení můžete nakonfigurovat pro export nezpracovaných nebo agregovaných přehledů do sady služeb Azure PaaS (platforma jako služba), které můžou provádět manipulaci s daty a obohatit tyto poznatky před jejich přistáním v obchodní aplikaci. 
 
 ## <a name="business-application"></a>Obchodní aplikace
-Data IoT lze použít k napájení různých druhů obchodních aplikací nasazených v maloobchodním prostředí. Manažer maloobchodu nebo zaměstnanec může tyto aplikace použít k vizualizaci obchodních přehledů a k významným akcím v reálném čase. Pokud se chcete dozvědět, jak vytvořit řídicí panel Power BI v reálném čase pro váš maloobchodní tým, postupujte podle [kurzu](./tutorial-in-store-analytics-create-app-pnp.md).
+Data IoT lze použít k napájení různých druhů obchodních aplikací nasazených v maloobchodním prostředí. Manažer maloobchodu nebo zaměstnanec může tyto aplikace použít k vizualizaci obchodních přehledů a k významným akcím v reálném čase. Pokud se chcete dozvědět, jak vytvořit řídicí panel Power BI v reálném čase pro váš maloobchodní tým, postupujte podle [kurzu](./tutorial-in-store-analytics-create-app.md).
 
 ## <a name="next-steps"></a>Další kroky
 * Začínáme se šablonami aplikací [pro kontrolu analýzy v obchodě a](https://aka.ms/checkouttemplate) v [úložišti.](https://aka.ms/conditiontemplate) 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77169480"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998969"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Úvodní příručka: Konfigurace pravidel a akcí pro vaše zařízení v Azure IoT Central
 
@@ -24,7 +24,7 @@ V tomto rychlém startu vytvoříte pravidlo, které odešle e-mail, když&deg; 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, měli byste dokončit dva předchozí rychlé starty [Vytvořte aplikaci Azure IoT Central](./quick-deploy-iot-central.md) a [přidejte simulované zařízení do aplikace IoT Central](./quick-create-pnp-device.md) a vytvořte šablonu zařízení **MXChip IoT DevKit,** se kterou chcete pracovat.
+Než začnete, měli byste dokončit dva předchozí rychlé starty [Vytvořte aplikaci Azure IoT Central](./quick-deploy-iot-central.md) a [přidejte simulované zařízení do aplikace IoT Central](./quick-create-simulated-device.md) a vytvořte šablonu zařízení **MXChip IoT DevKit,** se kterou chcete pracovat.
 
 ## <a name="create-a-telemetry-based-rule"></a>Vytvoření pravidla založeného na telemetrii
 

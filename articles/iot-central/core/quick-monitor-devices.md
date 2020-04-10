@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1dec52bbf1435cd7e363edf111f769d3e2cffb6a
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77168743"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998922"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Úvodní příručka: Pomocí Azure IoT Central ke sledování vašich zařízení
 
@@ -24,7 +24,7 @@ Tento rychlý start vám jako operátorovi ukáže, jak používat aplikaci Micr
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, měli byste dokončit tři předchozí rychlé starty [Vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md), Přidání [simulovaného zařízení do aplikace IoT Central](./quick-create-pnp-device.md) a Konfigurace pravidel a akcí pro vaše [zařízení](quick-configure-rules.md).
+Než začnete, měli byste dokončit tři předchozí rychlé starty [Vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md), Přidání [simulovaného zařízení do aplikace IoT Central](./quick-create-simulated-device.md) a Konfigurace pravidel a akcí pro vaše [zařízení](quick-configure-rules.md).
 
 ## <a name="receive-a-notification"></a>Přijmout oznámení
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 2946551233500a80c6fa7f02ad4c427f2d654b40
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7f927d230efba580cff163d31c6f572a10d0b4aa
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883640"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991135"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Úvodní příručka: Přidání přihlášení platformy microsoftu k webové aplikaci ASP.NET
 V tomto rychlém startu se pomocí ukázky kódu dozvíte, jak ASP.NET webovou aplikaci k přihlášení osobních účtů (hotmail.com, outlook.com, ostatní) a pracovních a školních účtů z libovolné instance Služby Azure Active Directory (Azure AD).  (Viz [jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
@@ -205,8 +205,3 @@ Vyzkoušejte kurz pro ASP.NET, který nabízí vyčerpávající podrobný návo
 > [Kurz týkající se přihlašování](./tutorial-v2-asp-webapp.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-Pomozte nám vylepšit platformu identit Microsoftu. Řekněte nám, co si myslíte, že dokončení krátké hod-průzkum u dvou otázek.
-
-> [!div class="nextstepaction"]
-> [Průzkum platformy identity Microsoftu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

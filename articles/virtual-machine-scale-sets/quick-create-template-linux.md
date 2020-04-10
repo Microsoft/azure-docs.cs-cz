@@ -1,19 +1,19 @@
 ---
 title: Úvodní příručka – vytvoření škálovací sady virtuálních strojů pro Linux pomocí šablony Azure Resource Manageru
 description: Zjistěte, jak rychle vytvořit škálovací sadu virtuálních počítačů s Linuxem pomocí šablony Azure Resource Manageru, která nasadí ukázkovou aplikaci a nakonfiguruje pravidla automatického škálování.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 03/27/2020
-ms.author: cynthn
-ms.openlocfilehash: f3bdaa70650f82172707674a225d5a5b7750dfea
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.author: jushiman
+ms.openlocfilehash: 4c0bac943be996c02436824334bd79a270f9a2e2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411452"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010456"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Úvodní příručka: Vytvoření škálovací sady virtuálních strojů pro Linux pomocí šablony Azure Resource Manageru
 

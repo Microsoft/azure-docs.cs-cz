@@ -262,7 +262,7 @@
           href: /powershell/scripting/dsc/overview/overview
     - name: Rychlé starty
       items:
-        - name: začínáme
+        - name: Začínáme
           href: automation-dsc-getting-started.md
           displayName: DSC
         - name: Správa konfigurace počítače
@@ -278,9 +278,6 @@
         - name: Konfigurace serverů do požadovaného stavu a správa odchylek s využitím konfigurace stavu
           href: tutorial-configure-servers-desired-state.md
           displayName: 'DSC, compliance'
-        - name: Připojování počítačů pro správu
-          href: automation-dsc-onboarding.md
-          displayName: 'DSC, state configuration'
         - name: Kompilace konfigurací DSC
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
@@ -289,7 +286,7 @@
           displayName: 'state configuration, DSC, remediate'
         - name: Vytváření konfigurací DSC s využitím složených prostředků
           href: compose-configurationwithcompositeresources.md
-        - name: Nepřetržité nasazování pomocí Chocolatey
+        - name: Zajištění průběžného nasazování s využitím Chocolatey
           href: automation-dsc-cd-chocolatey.md
           displayName: 'dsc, state configuration'
         - name: Předávání dat sestav konfigurace stavu do protokolů Azure Monitoru
@@ -297,12 +294,12 @@
           displayName: DSC
     - name: Řešení potíží
       items:
-        - name: Onboarding
+        - name: Řešení potíží s onboardingem
           href: troubleshoot/onboarding.md
           displayName: troubleshoot
         - name: Řešení potíží se službou State Configuration (DSC)
           href: troubleshoot/desired-state-configuration.md
-          displayName: 'Desired State Configuration, troubleshoot'
+          displayName: 'state configuration, DSC, troubleshoot'
     - name: Referenční informace
       items:
         - name: Komunitní řešení

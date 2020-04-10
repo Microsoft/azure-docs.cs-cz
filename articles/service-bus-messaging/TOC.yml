@@ -213,6 +213,8 @@
     - name: Řešení potíží
       items:
         - name: Průvodce odstraňováním potíží
+          href: service-bus-troubleshooting-guide.md
+        - name: Výjimky zasílání zpráv
           href: service-bus-messaging-exceptions.md
         - name: Výjimky Resource Manageru
           href: service-bus-resource-manager-exceptions.md

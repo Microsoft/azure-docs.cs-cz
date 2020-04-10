@@ -4,6 +4,8 @@
   items:
     - name: Co je Azure Blob Storage?
       href: storage-blobs-overview.md
+    - name: Porovnání základních služeb úložiště
+      href: ../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   expanded: true
 - name: Blob Storage
   items:

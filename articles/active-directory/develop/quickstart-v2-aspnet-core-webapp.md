@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2d604da58f4056fc718239b6bc019d61ddbee51b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 1a73894e2003ae742f329adcda51cf21ceeacb31
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883827"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991156"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Úvodní příručka: Přidání přihlášení s Microsoftem do webové aplikace ASP.NET Core
 V tomto rychlém startu se pomocí ukázky kódu dozvíte, jak ASP.NET webová aplikace Core může přihlašovat osobní účty (hotmail.com, outlook.com, ostatní) a pracovní a školní účty z libovolné instance Služby Azure Active Directory (Azure AD). (Viz [jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
@@ -168,8 +168,3 @@ Podívejte se na úložiště GitHub pro tento kurz ASP.NET Core pro další inf
 
 > [!div class="nextstepaction"]
 > [kurz ASP.NET Základní webová aplikace](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
-
-Pomozte nám vylepšit platformu identit Microsoftu. Řekněte nám, co si myslíte, že dokončení krátké hod-průzkum u dvou otázek.
-
-> [!div class="nextstepaction"]
-> [Průzkum platformy identity Microsoftu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

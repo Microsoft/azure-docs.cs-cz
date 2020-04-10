@@ -26,10 +26,8 @@
           href: quickstarts/ruby.md
     - name: Klientská knihovna
       items:
-        - name: 'C#'
-          href: quickstarts/csharp-sdk.md
-        - name: Přejít
-          href: quickstarts/go-sdk.md
+        - name: Klientské knihovny Automatických návrhů Bingu
+          href: ./quickstarts/client-libraries.md
 - name: Kurzy
   items:
     - name: Jednostránková webová aplikace

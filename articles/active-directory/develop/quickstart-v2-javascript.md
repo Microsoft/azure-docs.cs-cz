@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 526922d73f2176825b8bba8982316f3c9c129963
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ac134dce5ad739d1d81ef0c62a6bfb04468cafff
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473579"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991105"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Úvodní příručka: Přihlášení uživatelů a získání přístupového tokenu v javascriptovém spa
 
@@ -268,7 +268,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Existují situace, kdy je třeba vynutit uživatelům interakci s koncovým bodem platformy identit microsoftu. Například:
+Existují situace, kdy je třeba vynutit uživatelům interakci s koncovým bodem platformy identit microsoftu. Příklad:
 * Uživatelé mohou potřebovat znovu zadat svá pověření, protože jejich heslo vypršelo.
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, se kterými musí uživatel souhlasit.
 * Je vyžadováno dvoufaktorové ověřování.
@@ -306,8 +306,3 @@ Chcete-li procházet repo nástroje MSAL pro dokumentaci, nejčastější dotazy
 
 > [!div class="nextstepaction"]
 > [Úložiště MSAL.js GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js)
-
-Pomozte nám vylepšit platformu identit Microsoftu. Řekněte nám, co si myslíte, že dokončení krátké hod-průzkum u dvou otázek.
-
-> [!div class="nextstepaction"]
-> [Průzkum platformy identity Microsoftu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

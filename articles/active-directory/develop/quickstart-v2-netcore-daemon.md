@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c4580708c827ebf700808974d01ed30ab9d2162d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 47c4daa0d164802e0c23ea28f71e89ac5029c313
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883623"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991071"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Úvodní příručka: Získání tokenu a volání rozhraní Microsoft Graph API pomocí identity konzolové aplikace
 
@@ -245,8 +245,3 @@ Další informace o toku ověřování pro tento scénář naleznete v toku pov�
 
 > [!div class="nextstepaction"]
 > [Tok pověření klienta Oauth](v2-oauth2-client-creds-grant-flow.md)
-
-Pomozte nám vylepšit platformu identit Microsoftu. Řekněte nám, co si myslíte, že dokončení krátké hod-průzkum u dvou otázek.
-
-> [!div class="nextstepaction"]
-> [Průzkum platformy identity Microsoftu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

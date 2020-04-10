@@ -71,7 +71,11 @@
           href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: Partnerské vztahy
           href: virtual-network-peering-overview.md
-        - name: Virtuální síť pro služby Azure
+    - name: Integrace pro služby Azure
+      items:
+        - name: Koncové body služby
+          href: virtual-network-service-endpoints-overview.md
+        - name: Nasazení vyhrazené služby
           href: virtual-network-for-azure-services.md
     - name: Služby IP adres
       items:
@@ -91,8 +95,6 @@
           href: application-security-groups.md
         - name: Značky služeb
           href: service-tags-overview.md
-        - name: Koncové body služby
-          href: virtual-network-service-endpoints-overview.md
         - name: Zásady koncového bodu služby
           href: virtual-network-service-endpoint-policies-overview.md
         - name: Zásady sítě Kubernetes

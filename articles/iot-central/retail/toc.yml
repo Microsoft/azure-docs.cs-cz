@@ -3,45 +3,45 @@
 - name: Přehled
   items:
     - name: Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
-      href: overview-iot-central-retail-pnp.md
+      href: overview-iot-central-retail.md
 - name: Kurzy
   items:
     - name: Kontrola analýz v obchodech
       items:
         - name: 1. Vytvoření aplikace pro maloobchod
-          href: tutorial-in-store-analytics-create-app-pnp.md
+          href: tutorial-in-store-analytics-create-app.md
         - name: 2. Přizpůsobení řídicího panelu operátora
-          href: tutorial-in-store-analytics-customize-dashboard-pnp.md
+          href: tutorial-in-store-analytics-customize-dashboard.md
         - name: 3. Export dat a vizualizace přehledů
-          href: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+          href: tutorial-in-store-analytics-export-data-visualize-insights.md
     - name: Inteligentní řízení zásob
       items:
         - name: Vytvoření aplikace pro inteligentní řízení zásob
-          href: tutorial-iot-central-smart-inventory-management-pnp.md
+          href: tutorial-iot-central-smart-inventory-management.md
     - name: Propojená logistika
       items:
         - name: Vytvoření aplikace pro propojenou logistiku
-          href: tutorial-iot-central-connected-logistics-pnp.md
+          href: tutorial-iot-central-connected-logistics.md
     - name: Digitální distribuční centrum
       items:
         - name: Vytvoření aplikace pro digitální distribuční centrum
-          href: tutorial-iot-central-digital-distribution-center-pnp.md
+          href: tutorial-iot-central-digital-distribution-center.md
     - name: Centrum mikroplnění
       items:
         - name: Vytvoření aplikace centra mikroplnění
-          href: tutorial-micro-fulfillment-center-pnp.md
+          href: tutorial-micro-fulfillment-center.md
 - name: Koncepty
   items:
     - name: Architektura šablony aplikace pro propojenou logistiku
-      href: architecture-connected-logistics-pnp.md
+      href: architecture-connected-logistics.md
     - name: Architektura šablony aplikace pro digitální distribuční centrum
-      href: architecture-digital-distribution-center-pnp.md
+      href: architecture-digital-distribution-center.md
     - name: Architektura šablony aplikace pro inteligentní řízení zásob
-      href: architecture-smart-inventory-management-pnp.md
+      href: architecture-smart-inventory-management.md
     - name: Architektura analýz obchodů
       href: store-analytics-architecture.md
     - name: Architektura šablony aplikace pro centrum mikroplnění
-      href: architecture-micro-fulfillment-center-pnp.md
+      href: architecture-micro-fulfillment-center.md
     - name: Připojení
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Co jsou šablony aplikací?
@@ -127,7 +127,7 @@
         - name: Akcelerátory řešení IoT
           href: /azure/iot-accelerators
         - name: IoT Plug and Play
-          href: /azure/iot-pnp
+          href: /azure/iot
         - name: Azure Maps
           href: /azure/azure-maps
         - name: Time Series Insights

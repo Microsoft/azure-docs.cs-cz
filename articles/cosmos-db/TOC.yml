@@ -480,6 +480,8 @@
       items:
         - name: Přehled kanálů změn
           href: change-feed.md
+        - name: Vzory návrhu kanálů změn
+          href: change-feed-design-patterns.md
         - name: Čtení kanálu změn
           href: read-change-feed.md
         - name: Procesor kanálu změn
@@ -1033,6 +1035,8 @@
       items:
         - name: Monitorování Cosmos DB
           href: monitor-cosmos-db.md
+        - name: Monitorování latence na straně serveru
+          href: monitor-server-side-latency.md
         - name: Monitorování s diagnostickými protokoly
           href: cosmosdb-monitor-resource-logs.md
         - name: Protokoly auditu řídicí roviny
@@ -1155,7 +1159,7 @@
     - name: Tahák pro dotazy
       href: query-cheat-sheet.md
     - name: SQL Playground
-      href: 'https://aka.ms/cosmos-db-playground'
+      href: 'https://www.documentdb.com/sql/demo'
     - name: Nejčastější dotazy
       href: faq.md
     - name: Dokumenty white paper

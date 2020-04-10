@@ -12,7 +12,7 @@
     - name: 1. Vytvoření nové aplikace
       href: quick-deploy-iot-central.md
     - name: 2. Přidání simulovaného zařízení
-      href: quick-create-pnp-device.md
+      href: quick-create-simulated-device.md
     - name: 3. Konfigurace pravidel a akcí
       href: quick-configure-rules.md
     - name: 4. Monitorování zařízení

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3306fe6265d02fda48e3a75540be42e46e8feb89
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ecbed58eabd2e835d8fa202916829d1da91210e7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473551"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991054"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Úvodní příručka: Získání tokenu a volání rozhraní Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace
 
@@ -239,8 +239,3 @@ Další informace o toku ověřování pro tento scénář naleznete v toku pov�
 
 > [!div class="nextstepaction"]
 > [Tok pověření klienta Oauth](v2-oauth2-client-creds-grant-flow.md)
-
-Pomozte nám vylepšit platformu identit Microsoftu. Řekněte nám, co si myslíte, že dokončení krátké hod-průzkum u dvou otázek.
-
-> [!div class="nextstepaction"]
-> [Průzkum platformy identity Microsoftu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

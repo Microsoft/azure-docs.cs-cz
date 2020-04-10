@@ -114,12 +114,6 @@
               href: index-add-language-analyzers.md
             - name: Přidání vlastního analyzátoru
               href: index-add-custom-analyzers.md
-        - name: Našeptávání
-          items:
-            - name: Vytvoření navrhovatele
-              href: index-add-suggesters.md
-            - name: Přidání návrhů nebo automatického dokončování
-              href: search-autocomplete-tutorial.md
         - name: Synonyma
           items:
             - name: Přidání synonym
@@ -230,6 +224,14 @@
           href: search-query-lucene-examples.md
         - name: Částečné výrazy a speciální znaky
           href: search-query-partial-matching.md
+        - name: Vyhledávání přibližných shod
+          href: search-query-fuzzy.md
+        - name: Automatické dokončování hledání během psaní
+          items:
+            - name: Vytvoření navrhovatele
+              href: index-add-suggesters.md
+            - name: Přidání návrhů nebo automatického dokončování
+              href: search-autocomplete-tutorial.md
         - name: Dotaz z Power Apps
           href: search-howto-powerapps.md
         - name: Reference k syntaxi
