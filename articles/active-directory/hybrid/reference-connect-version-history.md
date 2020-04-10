@@ -12,12 +12,12 @@ ms.date: 04/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60dca30496aa17ad7add00ca4eca914cb58fddd7
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 5d2e3f8da4a05feedb8c1ab585fabcc74edbc71a
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655981"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998752"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky se vztahují na všechny cílové skupiny.
@@ -48,6 +48,13 @@ Ne všechny verze Azure AD Connect budou k dispozici pro automatický upgrade. S
 >
 >Další informace o upgradu služby Azure AD Connect na nejnovější verzi najdete v [tomto článku.](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
 
+## <a name="15200"></a>1.5.20.0
+
+### <a name="release-status"></a>Stav verze
+04/09/2020: Vydáno ke stažení
+
+### <a name="fixed-issues"></a>Oprava potíží
+Toto sestavení opravy hotfix opravuje problém s sestavením 1.5.18.0, pokud máte povolenou funkci filtrování skupiny a používáte mS-DS-ConsistencyGuid jako zdrojovou kotvu.
 
 ## <a name="15180"></a>1.5.18.0
 

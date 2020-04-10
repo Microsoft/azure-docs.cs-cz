@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77123242"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007863"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generovat soubor žádosti o podpis certifikátu
 
@@ -74,11 +74,21 @@ Pokud chcete odesílat nabízená oznámení do aplikace pro iOS, zaregistrujte 
 
 4. Na stránce **Certifikáty, identifikátory & profily** **vyhledejte**řádkovou položku ID aplikace, kterou jste právě vytvořili, a vyberte její řádek, aby se zobrazila obrazovka **Upravit konfiguraci ID aplikace.**
 
-5. Posuňte se dolů na zaškrtnutou možnost **Nabízená oznámení** a pak vyberte **Konfigurovat,** chcete-li vytvořit certifikát.
+## <a name="creating-a-certificate-for-notification-hubs"></a>Vytvoření certifikátu pro centra oznámení
+K povolení práce centra s oznamovacíslužbou **apns**je vyžadován certifikát. To lze provést jedním ze dvou způsobů:
+
+1. **Vytvořte.p12,** který lze nahrát přímo do Centra oznámení.  
+2. Vytvořte **.p8,** který lze použít pro [ověřování založené na tokenech](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) *(novější přístup*).
+
+Novější přístup má řadu výhod (ve srovnání s použitím certifikátů), jak je popsáno v [ověřování založené na tokenu (HTTP/2) pro APNS](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification). Byly však stanoveny kroky pro oba přístupy. 
+
+### <a name="option-1-creating-a-p12-push-certificate-that-can-be-uploaded-directly-to-notification-hub"></a>MOŽNOST 1: Vytvoření nabízeného certifikátu .p12, který lze odeslat přímo do centra oznámení
+
+1. Posuňte se dolů na zaškrtnutou možnost **Nabízená oznámení** a pak vyberte **Konfigurovat,** chcete-li vytvořit certifikát.
 
     ![Úprava stránky ID aplikace](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-6. Zobrazí se okno **Apple Push Notification service SSL Certificates** . V části **Vývojový certifikát SSL** vyberte tlačítko **Vytvořit certifikát.**
+2. Zobrazí se okno **Apple Push Notification service SSL Certificates** . V části **Vývojový certifikát SSL** vyberte tlačítko **Vytvořit certifikát.**
 
     ![Tlačítko Vytvořit certifikát pro ID aplikace](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
@@ -87,9 +97,9 @@ Pokud chcete odesílat nabízená oznámení do aplikace pro iOS, zaregistrujte 
     > [!NOTE]
     > Tento kurz používá vývojový certifikát. Stejný postup se používá při registraci produkčního certifikátu. Dejte pozor, abyste při odesílání oznámení používali stejný typ certifikátu.
 
-1. Vyberte **Zvolit soubor**, vyhledejte umístění, do kterého jste uložili soubor ZÁSTUPCE z prvníúlohy, a potom poklepejte na název certifikátu, který chcete načíst. Potom vyberte **Pokračovat**.
+3. Vyberte **Zvolit soubor**, vyhledejte umístění, do kterého jste uložili soubor ZÁSTUPCE z prvníúlohy, a potom poklepejte na název certifikátu, který chcete načíst. Potom vyberte **Pokračovat**.
 
-1. Po portálu vytvoří certifikát, vyberte **tlačítko Stáhnout.** Uložte certifikát a zapamatujte si umístění, do kterého je uložen.
+4. Po portálu vytvoří certifikát, vyberte **tlačítko Stáhnout.** Uložte certifikát a zapamatujte si umístění, do kterého je uložen.
 
     ![Stránka pro stažení vygenerovaného certifikátu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
@@ -100,14 +110,14 @@ Pokud chcete odesílat nabízená oznámení do aplikace pro iOS, zaregistrujte 
     > [!NOTE]
     > Ve výchozím nastavení je stažený vývojový certifikát pojmenován **aps_development.cer**.
 
-1. Poklikejte na stažený nabízený certifikát **aps_development.cer**. Tato akce nainstaluje nový certifikát do Klíčenky, jak je znázorněno na následujícím obrázku:
+5. Poklikejte na stažený nabízený certifikát **aps_development.cer**. Tato akce nainstaluje nový certifikát do Klíčenky, jak je znázorněno na následujícím obrázku:
 
     ![Seznam certifikátů nástroje Keychain Access zobrazující nový certifikát](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
     > I když se název v certifikátu může lišit, bude předponou **s nabízenými službami pro vývoj iOS společnosti Apple**.
 
-1. V nástroji Keychain Access, klikněte pravým tlačítkem na nový nabízený certifikát, který jste vytvořili v kategorii **Certifikáty**. Vyberte **Exportovat**, pojmenujte soubor, vyberte formát **.p12** a pak vyberte **Uložit**.
+6. V nástroji Keychain Access, klikněte pravým tlačítkem na nový nabízený certifikát, který jste vytvořili v kategorii **Certifikáty**. Vyberte **Exportovat**, pojmenujte soubor, vyberte formát **.p12** a pak vyberte **Uložit**.
 
     ![Export certifikátu ve formátu p12](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
@@ -115,6 +125,45 @@ Pokud chcete odesílat nabízená oznámení do aplikace pro iOS, zaregistrujte 
 
     > [!NOTE]
     > Název a umístění souboru .p12 se může lišit od toho, co je znázorněno v tomto kurzu.
+
+### <a name="option-2-creating-a-p8-certificate-that-can-be-used-for-token-based-authentication"></a>MOŽNOST 2: Vytvoření certifikátu .p8, který lze použít pro ověřování založené na tokenech
+
+1. Poznamenejte si následující podrobnosti:
+
+    - **Předpona ID aplikace** (toto je **ID týmu)**
+    - **ID sady prostředků**
+    
+2. Zpět v **certifikátech, identifikátorech & profilech**klepněte na tlačítko **Klíče**.
+
+   > [!NOTE]
+   > Pokud již máte klíč nakonfigurovaný pro **soubor APNS**, můžete certifikát .p8, který jste stáhli, znovu použít ihned po jeho vytvoření. Pokud ano, můžete ignorovat kroky **3** až **5**.
+
+3. Kliknutím **+** na tlačítko (nebo tlačítko **Vytvořit klíč)** vytvořte nový klíč.
+4. Zadejte vhodnou hodnotu **Název klíče,** zaškrtněte možnost **služby Nabízených oznámení Apple (APNs)** a na další obrazovce klikněte na **Pokračovat**a potom **register.**
+5. Klepněte na tlačítko **Stáhnout** a přesuňte soubor **P8** (s předponou *s AuthKey_*) do zabezpečeného místního adresáře a klepněte na **tlačítko Hotovo**.
+
+   > [!NOTE] 
+   > Uchovávejte soubor .p8 na bezpečném místě (a uložte zálohu). Po stažení klíče jej nelze znovu stáhnout při odebrání kopie serveru.
+  
+6. Na **klávesy**, klikněte na klíč, který jste právě vytvořili (nebo existující klíč, pokud jste se rozhodli použít, že místo).
+7. Poznamenejte si hodnotu **ID klíče.**
+8. Otevřete certifikát .p8 ve vhodné aplikaci podle vašeho výběru, jako je [**například Visual Studio Code**](https://code.visualstudio.com) a poznamenejte si hodnotu klíče. Toto je hodnota mezi **-----BEGIN PRIVATE KEY-----** a **-----END PRIVATE KEY-----** .
+
+    ```
+    -----BEGIN PRIVATE KEY-----
+    <key_value>
+    -----END PRIVATE KEY-----
+    ```
+
+    > [!NOTE]
+    > Toto je **hodnota tokenu,** která bude později použita ke konfiguraci **centra oznámení**. 
+
+Na konci těchto kroků byste měli mít následující informace pro pozdější použití v [aplikaci Configure your notification hub with APNs information](#configure-your-notification-hub-with-apns-information):
+
+- **ID týmu** (viz krok 1)
+- **ID balíčku** (viz krok 1)
+- **ID klíče** (viz krok 7)
+- **Hodnota tokenu,** tj.
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Vytvoření zřizovacího profilu pro aplikaci
 
@@ -153,13 +202,18 @@ Pokud chcete odesílat nabízená oznámení do aplikace pro iOS, zaregistrujte 
 
 ## <a name="create-a-notification-hub"></a>Vytvoříte centrum oznámení.
 
-V této části vytvoříte centrum oznámení a nakonfigurujete ověřování pomocí center pomocí příkazového systému .p12, který jste dříve vytvořili. Pokud chcete použít centrum oznámení, které jste už vytvořili, můžete přeskočit ke kroku 5.
+V této části vytvoříte centrum oznámení a nakonfigurujete ověřování pomocí center pomocí nabízeného certifikátu .p12 nebo ověřování založeného na tokenech. Pokud chcete použít centrum oznámení, které jste už vytvořili, můžete přeskočit ke kroku 5.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
 ## <a name="configure-your-notification-hub-with-apns-information"></a>Konfigurace centra oznámení s informacemi o kódech APN
 
-1. V části **Notification Services**vyberte **Apple (APNS).**
+V části **Notification Services**vyberte **Apple (APNS)** a postupujte podle příslušných kroků na základě přístupu, který jste zvolili dříve v části [Vytvoření certifikátu pro centra oznámení.](#creating-a-certificate-for-notification-hubs)  
+
+> [!NOTE]
+> Režim **Produkční** **pro aplikaci** použijte jenom v případě, že chcete odesílat nabízená oznámení uživatelům, kteří si koupili vaši aplikaci v obchodě.
+
+### <a name="option-1-using-a-p12-push-certificate"></a>MOŽNOST 1: Použití nabízeného certifikátu .p12
 
 1. Vyberte **Certifikát**.
 
@@ -169,10 +223,23 @@ V této části vytvoříte centrum oznámení a nakonfigurujete ověřování p
 
 1. V případě potřeby zadejte správné heslo.
 
-1. Vyberte režim **Izolovaný prostor**. **Produkční** režim použijte pouze v případě, že chcete zasílat nabízená oznámení uživatelům, kteří si zakoupili aplikaci z obchodu s aplikacemi.
+1. Vyberte režim **Izolovaný prostor**.
 
     ![Konfigurace certifikační služby APNs na webu Azure Portal](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
 1. Vyberte **Uložit**.
+
+### <a name="option-2-using-token-based-authentication"></a>MOŽNOST 2: Použití ověřování na základě tokenů
+
+1. Vyberte **token**.
+1. Zadejte následující hodnoty, které jste získali dříve:
+
+    - **ID klíče**
+    - **ID sady prostředků**
+    - **ID týmu**
+    - **Token** 
+
+1. Zvolte **Sandbox**
+1. Vyberte **Uložit**. 
 
 Nyní jste centrum oznámení nakonfigurovali pomocí kódů APN. Máte také připojovací řetězce pro registraci aplikace a odesílání nabízených oznámení.

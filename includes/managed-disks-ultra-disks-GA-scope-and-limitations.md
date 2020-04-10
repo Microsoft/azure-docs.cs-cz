@@ -5,27 +5,36 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/18/2019
+ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b819264895e35c6ef4fe9dc5263444dcac17eaa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5e0e459800e7cb57672518597f3d04a74f53118
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74935937"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008624"
 ---
 Pro tuto chvíli, ultra disky mají další omezení, jsou následující:
 
-- Jsou podporovány v následujících oblastech s různým počtem zón dostupnosti na oblast:
-    - USA – východ 2
-    - USA – východ
-    - USA – západ 2
-    - Jihovýchodní Asie
-    - Severní Evropa
-    - Západní Evropa
-    - Spojené království – jih 
-- Lze použít pouze s dostupností zón (dostupnost sady a nasazení jednoho virtuálního počítače mimo zóny nebude mít možnost připojit ultra disk)
+Jediné možnosti redundance infrastruktury, které jsou v současné době k dispozici pro ultra disky, jsou zóny dostupnosti. Virtuální počítače využívající jiné možnosti redundance nemohou připojit ultra disk.
+
+V následující tabulce jsou uvedeny oblasti, ve kterých jsou ultra disky k dispozici, a také jejich odpovídající možnosti dostupnosti:
+
+> [!NOTE]
+> Některé zóny dostupnosti v těchto oblastech nenabízejí ultra disky.
+
+|Oblasti  |Žádné redundance infrastruktury  |Zóny dostupnosti  |
+|---------|---------|---------|
+|USA – západ     |Ano         |Ne         |
+|USA – západ 2    |Ne         |Ano         |
+|USA – východ     |Ne         |Ano         |
+|USA – východ 2     |Ne         |Ano         |
+|Jihovýchodní Asie     |Ne         |Ano         |
+|Severní Evropa     |Ne         |Ano         |
+|Západní Evropa     |Ne         |Ano         |
+|Spojené království – jih     |Ne         |Ano         |
+
 - Jsou podporovány jenom na následující chod ů virtuálních počítačích:
     - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
     - [DSv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
@@ -35,7 +44,8 @@ Pro tuto chvíli, ultra disky mají další omezení, jsou následující:
 - Ne každá velikost virtuálního počítače je dostupná ve všech podporovaných oblastech s ultra disky
 - Jsou k dispozici pouze jako datové disky a podporují pouze velikost fyzického sektoru 4k. Vzhledem k velikosti 4K nativního sektoru Ultra Disk, existují některé aplikace, které nebudou kompatibilní s ultra disky. Jedním z příkladů by byla databáze Oracle Database, která vyžaduje vydání 12.2 nebo novější pro podporu ultra disků.  
 - Lze vytvořit pouze jako prázdné disky  
-- Zatím nepodporujete snímky disku, image virtuálních počítačů, sady dostupnosti a šifrování disku Azure
-- Ještě nepodporujte integraci s Azure Backup nebo Azure Site Recovery
+- Momentálně nepodporuje snímky disků, image virtuálních počítačů, sady dostupnosti, vyhrazené hostitele Azure nebo šifrování disku Azure.
+- Momentálně nepodporuje integraci s Azure Backup nebo Azure Site Recovery.
 - Aktuální maximální limit pro viopy na virtuálních počítačích GA je 80 000.
-- Pokud se chcete zúčastnit omezeného náhledu virtuálního počítače, který může dosáhnout 160 000 UltraDiskFeedback@microsoft VOPS s ultra disky, pošlete e-mail .com
+
+Azure ultra disky nabízejí až 16 TiB na oblast na předplatné ve výchozím nastavení, ale ultra disky podporují vyšší kapacitu na vyžádání. Chcete-li požádat o zvýšení kapacity, obraťte se na podporu Azure.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 0bfae10d3b3b491c3662385055b23cc585a6e24d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcd8e400b978b2139de7a9f53b87cf6ec04e7484
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471155"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991990"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopírování dat z MySQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
@@ -65,7 +65,7 @@ Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<datab
 
 | Vlastnost | Popis | Možnosti | Požaduje se |
 |:--- |:--- |:--- |:--- |
-| Režim SSLMode | Tato možnost určuje, zda ovladač používá šifrování SSL a ověřování při připojování k MySQL. Např.`SSLMode=<0/1/2/3/4>`| ZDRAVOTNĚ postižené (0) / PREFEROVANÉ (1) **(Výchozí)** / POVINNÉ (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Ne |
+| Režim SSLMode | Tato možnost určuje, zda ovladač používá šifrování TLS a ověření při připojování k MySQL. Např.`SSLMode=<0/1/2/3/4>`| ZDRAVOTNĚ postižené (0) / PREFEROVANÉ (1) **(Výchozí)** / POVINNÉ (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Ne |
 | UseSystemTrustStore | Tato možnost určuje, zda se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| Povoleno (1) / Zakázáno (0) **(Výchozí)** | Ne |
 
 **Příklad:**

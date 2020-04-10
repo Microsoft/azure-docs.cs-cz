@@ -1,19 +1,19 @@
 ---
 title: Škálovací sady virtuálních strojů na webu Azure Portal s automatickým škálování
 description: Jak vytvořit pravidla automatického škálování pro škálovací sady virtuálních strojů na webu Azure Portal
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: ecd80f49f0161c8bbc6ab7309f2af89e2ded1fe9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 1915b144aec5a5447504c70d18dbf420d255a08e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278185"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010286"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatické škálování škálovací sady virtuálních strojů na webu Azure Portal
 Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu.
@@ -96,7 +96,7 @@ Pokud chcete zobrazit počet a stav instancí virtuálních počítačů, vybert
 
 
 ## <a name="autoscale-based-on-a-schedule"></a>Automatické škálování na základě plánu
-Předchozí příklady automaticky škálovat škálovací sadu v nebo mimo pomocí základní metriky hostitele, jako je využití procesoru. Můžete také vytvořit pravidla automatického škálování na základě plánů. Tato pravidla založená na plánu umožňují automaticky škálovat počet instancí virtuálních aplikací před očekávaným nárůstem poptávky po aplikaci, jako je základní pracovní doba, a pak automaticky škálovat počet instancí v době, kdy očekáváte méně poptávky, jako je víkend.
+Předchozí příklady automaticky škálovat škálovací sadu v nebo mimo pomocí základní metriky hostitele, jako je využití procesoru. Můžete také vytvořit pravidla automatického škálování na základě plánů. Tato pravidla založená na plánu umožňují automaticky škálovat počet instancí virtuálních aplikací před očekávaným zvýšením poptávky po aplikaci, jako je základní pracovní doba, a pak automaticky škálovat počet instancí v době, kdy očekáváte nižší poptávku, například víkend.
 
 1. Z nabídky na levé straně okna škálovací sady zvolte **Změna velikosti.** Chcete-li odstranit existující pravidla automatického škálování vytvořená v předchozích příkladech, zvolte ikonu koše.
 

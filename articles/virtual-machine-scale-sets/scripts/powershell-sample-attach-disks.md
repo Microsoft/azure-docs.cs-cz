@@ -1,19 +1,19 @@
 ---
 title: Ukázky Prostředí Azure PowerShell – připojení a použití datových disků
 description: Tento skript vytvoří škálovací sadu virtuálních počítačů Azure a připojí a připraví datové disky pomocí Prostředí PowerShell.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: ea18b6d2271d56d9a2287b92678ef8bfcab891a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bff0bb0673862d614aac5bb783bc501516871b29
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76279131"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010378"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>Připojení a použití datových disků se škálovací sadou virtuálních počítačů pomocí PowerShellu
 Tento skript vytvoří škálovací sadu virtuálních počítačů a připojí a připraví datové disky.

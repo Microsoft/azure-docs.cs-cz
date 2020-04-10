@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 128b4203d34b99df8363ef19783baa4a7b608aa5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 654aeddbb305124ea00a883dbef9d8b5ad585a36
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631318"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990782"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>Pokyny k návrhu pro použití replikovaných tabulek v sql analytics
 
@@ -124,7 +124,7 @@ Znovu jsme `DimDate` vytvořili a `DimSalesTerritory` jako replikované tabulky 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Důležité informace o výkonu při úpravách replikovaných tabulek
 
-SQL Analytics implementuje replikovanou tabulku udržováním hlavní verze tabulky. Zkopíruje hlavní verzi do jedné distribuční databáze na každém výpočetním uzlu. Pokud dojde ke změně, SQL Analytics nejprve aktualizuje hlavní tabulku. Potom znovu vytvoří tabulky na každém uzlu Compute. Opětovné sestavení replikované tabulky zahrnuje zkopírování tabulky do každého výpočetního uzlu a následné sestavení indexů.  Například replikovaná tabulka na DW400 obsahuje 5 kopií dat.  Hlavní kopie a úplná kopie na každém výpočetním uzlu.  Všechna data jsou uložena v distribučních databázích. SQL Analytics používá tento model k podpoře rychlejších příkazů pro úpravy dat a flexibilních operací škálování.
+SQL Analytics implementuje replikovanou tabulku udržováním hlavní verze tabulky. Zkopíruje hlavní verzi do první distribuční databáze na každém výpočetním uzlu. Pokud dojde ke změně, SQL Analytics nejprve aktualizuje hlavní verzi, pak znovu tabulky na každém výpočetním uzlu. Opětovné sestavení replikované tabulky zahrnuje zkopírování tabulky do každého výpočetního uzlu a následné sestavení indexů.  Například replikovaná tabulka na DW2000c obsahuje 5 kopií dat.  Hlavní kopie a úplná kopie na každém výpočetním uzlu.  Všechna data jsou uložena v distribučních databázích. SQL Analytics používá tento model k podpoře rychlejších příkazů pro úpravy dat a flexibilních operací škálování.
 
 Znovusestavení jsou vyžadována po:
 

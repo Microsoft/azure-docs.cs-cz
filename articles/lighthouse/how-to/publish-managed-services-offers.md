@@ -1,19 +1,19 @@
 ---
-title: Publikování nabídky spravovaných služeb na Azure Marketplace
+title: Publikování nabídky spravované služby na Azure Marketplace
 description: Zjistěte, jak publikovat nabídku spravované služby, která zákazníkům zařazuje delegovanou správu prostředků Azure.
 ms.date: 04/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4791b1d2ae233b0cc7aad33dd5b15b6ea94b2018
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984550"
+ms.locfileid: "80991905"
 ---
-# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publikování nabídky spravovaných služeb na Azure Marketplace
+# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publikování nabídky spravované služby na Azure Marketplace
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek spravovaných služeb do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nových nabídek spravovaných služeb](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) ke správě migrovaných nabídek.
+> dubna 2020 začneme přesouvat správu nabídek spravovaných služeb do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nové nabídky spravované služby](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) pro správu migrovaných nabídek.
 
 V tomto článku se dozvíte, jak publikovat veřejnou nebo soukromou nabídku spravované služby na [Azure Marketplace](https://azuremarketplace.microsoft.com) pomocí [portálu cloudových partnerů](https://cloudpartner.azure.com/). Zákazníci, kteří si zakoupí nabídku, pak mohou zavést předplatná a skupiny prostředků pro [správu delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md).
 
@@ -28,7 +28,7 @@ ID sítě Microsoft Partner Network (MPN) bude [automaticky přidruženo](../../
 > [!NOTE]
 > Pokud nechcete publikovat nabídku na Azure Marketplace, můžete zákazníky zaoklézat ručně pomocí šablon Azure Resource Manager. Další informace najdete [v tématu Onboard zákazníka azure delegované správy prostředků](onboard-customer.md).
 
-Publikování nabídky spravovaných služeb je podobné publikování jakéhokoli jiného typu nabídky na Azure Marketplace. Informace o obecném procesu publikování najdete v [tématu Azure Marketplace a Průvodce publikováním AppSource](../../marketplace/marketplace-publishers-guide.md). Měli byste si také přečíst [zásady certifikace komerčního tržiště](https://docs.microsoft.com/legal/marketplace/certification-policies), zejména část [Spravované služby.](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)
+Publikování nabídky spravované služby je podobné publikování jakéhokoli jiného typu nabídky na Azure Marketplace. Informace o obecném procesu publikování najdete v [tématu Azure Marketplace a Průvodce publikováním AppSource](../../marketplace/marketplace-publishers-guide.md). Měli byste si také přečíst [zásady certifikace komerčního tržiště](https://docs.microsoft.com/legal/marketplace/certification-policies), zejména část [Spravované služby.](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)
 
 Jakmile zákazník přidá vaši nabídku, bude moct delegovat jedno nebo více předplatných nebo skupin prostředků, které pak budou [na palubě pro správu delegovaných prostředků Azure](#the-customer-onboarding-process).
 

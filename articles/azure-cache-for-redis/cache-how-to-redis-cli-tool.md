@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: a48e69f19db88c7823365964c2fe9c0629a078bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75412675"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010762"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Jak používat nástroj příkazového řádku Redis s Azure Cache for Redis
 
@@ -38,9 +38,9 @@ V této části načtete klíče z webu Azure Portal.
 
 ## <a name="enable-access-for-redis-cliexe"></a>Povolení přístupu pro redis-cli.exe
 
-S Azure Cache pro Redis je ve výchozím nastavení povolen pouze port SSL (6380). Nástroj `redis-cli.exe` příkazového řádku nepodporuje ssl. Máte dvě možnosti konfigurace, které můžete použít:
+S Azure Cache pro Redis je ve výchozím nastavení povolen pouze port TLS (6380). Nástroj `redis-cli.exe` příkazového řádku nepodporuje TLS. Máte dvě možnosti konfigurace, které můžete použít:
 
-1. [Povolte port bez SSL (6379)](cache-configure.md#access-ports) - **Tato konfigurace se nedoporučuje,** protože v této konfiguraci jsou přístupové klíče odesílány prostřednictvím protokolu TCP ve prostém textu. Tato změna může ohrozit přístup k mezipaměti. Jediný scénář, kde můžete zvážit tuto konfiguraci je, když jste právě přístup k mezipaměti test.
+1. [Povolte port ne-TLS (6379)](cache-configure.md#access-ports) - **Tato konfigurace se nedoporučuje,** protože v této konfiguraci jsou přístupové klíče odesílány prostřednictvím protokolu TCP ve prostém textu. Tato změna může ohrozit přístup k mezipaměti. Jediný scénář, kde můžete zvážit tuto konfiguraci je, když jste právě přístup k mezipaměti test.
 
 2. Stáhněte si a nainstalujte [stunnel](https://www.stunnel.org/downloads.html).
 
@@ -74,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![stunnel s redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-Pokud používáte testovací mezipaměť s **nezabezpečeným** portem `redis-cli.exe` bez SSL, spusťte a předejte *název hostitele*, *port*a *přístupový klíč* (primární nebo sekundární) pro připojení k testovací mezipaměti.
+Pokud používáte testovací mezipaměť s **nezabezpečeným** portem `redis-cli.exe` tls, spusťte a předejte *název hostitele*, *port*a *přístupový klíč* (primární nebo sekundární) pro připojení k testovací mezipaměti.
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278711"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010218"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro Azure Cache for Redis.
@@ -54,7 +54,7 @@ Následující časté dotazy popisují základní koncepty a otázky týkajíc�
 * [Co jsou databáze Redis?](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>Nejčastější dotazy k zabezpečení
-* [Kdy mám povolit port bez SSL pro připojení k Redisu?](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+* [Kdy mám povolit port non-TLS/SSL pro připojení k Redisu?](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
 
 ## <a name="production-faqs"></a>Časté otázky k výrobě
 * [Jaké jsou některé výrobní osvědčené postupy?](#what-are-some-production-best-practices)
@@ -112,7 +112,7 @@ Níže jsou uvedeny důležité informace pro výběr nabídky mezipaměti.
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Výkon Azure Cache for Redis
-V následující tabulce jsou uvedeny maximální hodnoty šířky pásma `redis-benchmark.exe` pozorované při testování různých velikostí mezipamětí Standard a Premium pomocí z virtuálního počítače IaaS proti koncovému bodu Azure Cache for Redis. Pro propustnost SSL redis benchmark se používá s stunnel pro připojení ke koncovému bodu Azure Cache pro Redis.
+V následující tabulce jsou uvedeny maximální hodnoty šířky pásma `redis-benchmark.exe` pozorované při testování různých velikostí mezipamětí Standard a Premium pomocí z virtuálního počítače IaaS proti koncovému bodu Azure Cache for Redis. Pro propustnost TLS redis benchmark se používá s stunnel pro připojení ke koncovému bodu Azure Cache pro Redis.
 
 >[!NOTE] 
 >Tyto hodnoty nejsou zaručeny a neexistuje žádná sla pro tato čísla, ale by měla být typické. Měli byste načíst test vlastní aplikace k určení správné velikosti mezipaměti pro vaši aplikaci.
@@ -196,7 +196,7 @@ Obvykle jsou postačující výchozí hodnoty klienta. Možnosti můžete doladi
   * Pro aplikaci použijte jednu instanci ConnectionMultiplexer. LazyConnection můžete použít k vytvoření jedné instance, která je vrácena vlastností Connection, jak je znázorněno v [části Připojit ke mezipaměti pomocí třídy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
   * Nastavte `ConnectionMultiplexer.ClientName` vlastnost na jedinečný název instance aplikace pro diagnostické účely.
   * Pro `ConnectionMultiplexer` vlastní úlohy použijte více instancí.
-      * Tento model můžete sledovat, pokud máte různé zatížení v aplikaci. Například:
+      * Tento model můžete sledovat, pokud máte různé zatížení v aplikaci. Příklad:
       * Můžete mít jeden multiplexer pro práci s velkými klíči.
       * Můžete mít jeden multiplexer pro práci s malými klíči.
       * Můžete nastavit různé hodnoty pro časové limity připojení a logiku opakování pro každý ConnectionMultiplexer, který používáte.
@@ -244,7 +244,7 @@ Můžete použít libovolný z příkazů uvedených na [příkazech Redis](http
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Nástroje příkazového řádku Redis nefungují s portem SSL, ale `stunnel` můžete použít nástroj, jako je například bezpečně připojit nástroje k portu SSL podle pokynů v [jak používat nástroj příkazového řádku Redis s Azure Cache pro Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) článku.
+> Nástroje příkazového řádku Redis nefungují s portem TLS, ale `stunnel` můžete použít nástroj, jako je například bezpečně připojit nástroje k portu TLS podle pokynů v [jak používat nástroj příkazového řádku Redis s Azure Cache pro Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) článku.
 >
 >
 
@@ -281,15 +281,15 @@ Redis Databases jsou jen logické oddělení dat v rámci stejné instance Redis
 
 <a name="cache-ssl"></a>
 
-### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>Kdy mám povolit port bez SSL pro připojení k Redisu?
-Redis server nepodporuje nativně SSL, ale Azure Cache pro Redis dělá. Pokud se připojujete k Azure Cache pro Redis a váš klient podporuje SSL, jako stackExchange.Redis, pak byste měli použít SSL.
+### <a name="when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis"></a>Kdy mám povolit port non-TLS/SSL pro připojení k Redisu?
+Redis server nepodporuje nativně TLS, ale Azure Cache pro Redis dělá. Pokud se připojujete k Azure Cache pro Redis a váš klient podporuje TLS, jako stackexchange.Redis, pak byste měli použít TLS.
 
 >[!NOTE]
->Port bez SSL je ve výchozím nastavení zakázán pro nové instance Azure Cache for Redis. Pokud váš klient nepodporuje SSL, musíte povolit port bez SSL podle pokynů v části [Porty Přístup](cache-configure.md#access-ports) u článku [Konfigurace mezipaměti v mezipaměti Azure Cache for Redis.](cache-configure.md)
+>Port bez TLS je ve výchozím nastavení zakázán pro nové instance Azure Cache for Redis. Pokud váš klient nepodporuje TLS, musíte povolit port bez TLS podle pokynů v části [Porty Přístup](cache-configure.md#access-ports) u článku [Konfigurace mezipaměti v mezipaměti Azure Cache for Redis.](cache-configure.md)
 >
 >
 
-Nástroje Redis, `redis-cli` jako je například nefungují s portem SSL, ale můžete použít nástroj, například `stunnel` bezpečně připojit nástroje k portu SSL podle pokynů v oznámení ASP.NET stavu relace [zprostředkovatele pro Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogu.
+Nástroje Redis, `redis-cli` jako je například nefungují s portem TLS, ale můžete použít nástroj, například `stunnel` bezpečně připojit nástroje k portu TLS podle pokynů v oznámení ASP.NET stavu relace [zprostředkovatele pro Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogu.
 
 Pokyny ke stažení nástrojů Redis naleznete v části [Jak lze spustit příkazy Redis?](#cache-commands)
 
@@ -312,7 +312,7 @@ Pokyny ke stažení nástrojů Redis naleznete v části [Jak lze spustit přík
 * Rozvíjet systém tak, že může zvládnout připojení výkyvy [v důsledku opravy a převzetí služeb při selhání](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
 #### <a name="performance-testing"></a>Testování výkonu
-* Začněte `redis-benchmark.exe` pomocí získat pocit pro možnou propustnost před psaním vlastní perf testy. Vzhledem k tomu, že `redis-benchmark` nepodporuje SSL, musíte [povolit port non-SSL prostřednictvím portálu Azure](cache-configure.md#access-ports) před spuštěním testu. Příklady najdete v tématu [Jak můžu porovnat a otestovat výkon mezipaměti?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* Začněte `redis-benchmark.exe` pomocí získat pocit pro možnou propustnost před psaním vlastní perf testy. Vzhledem k tomu, že `redis-benchmark` nepodporuje TLS, musíte [povolit port non-TLS prostřednictvím portálu Azure](cache-configure.md#access-ports) před spuštěním testu. Příklady najdete v tématu [Jak můžu porovnat a otestovat výkon mezipaměti?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * Virtuální počítač klienta používaný pro testování by měl být ve stejné oblasti jako vaše instance Azure Cache for Redis.
 * Doporučujeme používat dv2 VM Series pro vašeho klienta, protože mají lepší hardware a měl by poskytnout nejlepší výsledky.
 * Ujistěte se, že váš klientský virtuální počítač, který zvolíte, má alespoň tolik výpočetní ch od kapacity a šířky pásma jako testoce mezipaměti.
@@ -381,7 +381,7 @@ Vzhledem k tomu, tyto informace důrazně doporučujeme, aby zákazníci nastavi
 
 Jak toto nastavení nakonfigurovat:
 
-* Doporučujeme změnit toto nastavení programově pomocí [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metoda v `global.asax.cs`. Například:
+* Doporučujeme změnit toto nastavení programově pomocí [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metoda v `global.asax.cs`. Příklad:
 
 ```cs
 private readonly int minThreads = 200;
@@ -411,7 +411,7 @@ Povolení server GC můžete optimalizovat klienta a poskytují lepší výkon a
 
 * [Povolení globálního katalogu serverů](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
 * [Základy kolekce paměti](/dotnet/standard/garbage-collection/fundamentals)
-* [Uvolnění paměti a výkon](/dotnet/standard/garbage-collection/performance)
+* [Uvolňování paměti a výkon](/dotnet/standard/garbage-collection/performance)
 
 
 ### <a name="performance-considerations-around-connections"></a>Aspekty výkonu kolem připojení

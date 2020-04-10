@@ -8,17 +8,17 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: de6e08534722deccb8be11248dd8af3ca2e66739
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6baf5d77b70fa6e2717b492163826f27d80fbb88
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983208"
+ms.locfileid: "80991616"
 ---
 # <a name="create-a-new-managed-service-offer"></a>Vytvoření nové nabídky spravované služby
 
 > [!IMPORTANT]
-> Přesouváme správu vašich nabídek spravovaných služeb z portálu partnerů cloudu do Partnerského centra. Dokud se vaše nabídky nebudou migrovat, postupujte podle pokynů v [části Publikování nabídky spravované služby na Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md) a spravujte své nabídky.
+> Přesouváme správu nabídek spravovaných služeb z portálu partnerů cloudu do Centra partnerů. Dokud se vaše nabídky nebudou migrovat, postupujte podle pokynů v [nabídce Publish a Managed Service na Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md) a spravujte své nabídky na portálu cloudových partnerů.
 
 Spravovaná služba nabízí pomoc s povolením scénářů [Azure Lighthouse.](../../lighthouse/overview.md) Když zákazník přijme nabídku spravované služby, pak je možné k onboard prostředky pro [azure delegovanou správu prostředků](../../lighthouse/concepts/azure-delegated-resource-management.md).
 

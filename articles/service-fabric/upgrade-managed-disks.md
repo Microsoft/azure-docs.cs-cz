@@ -2,13 +2,13 @@
 title: Upgrade uzlů clusteru na spravované disky Azure
 description: Tady je postup, jak upgradovat existující cluster Service Fabric tak, aby používal spravované disky Azure s malými nebo žádnými prostoji vašeho clusteru.
 ms.topic: how-to
-ms.date: 3/01/2020
-ms.openlocfilehash: 2bda5572eda5579bb31c3613b220885f27220d99
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 4/07/2020
+ms.openlocfilehash: 5f4698718a35970e47de2a0ee6d053802c8ef919
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80758050"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991207"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgrade uzlů clusteru na spravované disky Azure
 
@@ -27,11 +27,11 @@ Tento článek vás provede kroky upgradu typu primárního uzlu ukázkového cl
 > [!CAUTION]
 > K výpadku tohoto postupu dojde pouze v případě, že máte závislosti na dns clusteru (například při přístupu k [aplikaci Service Fabric Explorer).](service-fabric-visualizing-your-cluster.md) [Architektonická best practice pro front-end ové služby](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) je mít nějaký druh nástrojů pro [vyrovnávání zatížení](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) před typy uzlů, aby bylo možné vyměnit uzel bez výpadku.
 
-Tady jsou [šablony a rutiny](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage) pro Azure Resource Manager, které použijeme k dokončení scénáře upgradu. Změny šablony budou vysvětleny v [části Nasazení upgradované škálovací sady pro typ primárního uzlu](#deploy-an-upgraded-scale-set-for-the-primary-node-type) níže.
+Tady jsou [šablony a rutiny](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) pro Azure Resource Manager, které použijeme k dokončení scénáře upgradu. Změny šablony budou vysvětleny v [části Nasazení upgradované škálovací sady pro typ primárního uzlu](#deploy-an-upgraded-scale-set-for-the-primary-node-type) níže.
 
 ## <a name="set-up-the-test-cluster"></a>Nastavení testovacího clusteru
 
-Nastavíme počáteční testovací cluster Service Fabric. Nejprve [si stáhněte](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage) ukázkové šablony Správce prostředků Azure, které použijeme k dokončení tohoto scénáře.
+Nastavíme počáteční testovací cluster Service Fabric. Nejprve [si stáhněte](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) ukázkové šablony Správce prostředků Azure, které použijeme k dokončení tohoto scénáře.
 
 Dále se přihlaste ke svému účtu Azure.
 
@@ -370,6 +370,6 @@ Naučte se:
 
 Viz také:
 
-* [Ukázka: Upgrade uzlů clusteru na spravované disky Azure](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage)
+* [Ukázka: Upgrade uzlů clusteru na spravované disky Azure](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
 
 * [Důležité informace o vertikálním měřítku](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)

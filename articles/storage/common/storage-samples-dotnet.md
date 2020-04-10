@@ -7,12 +7,12 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: a4c9188c8f1315a3af452cd0c1fb5cf45ab82081
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77486113"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010490"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Ukázky úložiště Azure pomocí klientských knihoven v12 .NET
 
@@ -23,7 +23,7 @@ Následující tabulka obsahuje přehled úložiště našich ukázek a scéná�
 
 ## <a name="blob-samples"></a>Vzorky objektů blob
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
@@ -51,18 +51,18 @@ Následující tabulka obsahuje přehled úložiště našich ukázek a scéná�
 
 :::row:::
    :::column span="":::
-      [Odstranění několika objektů BLOB v jednom požadavku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L22)
+      [Odstranění několika objektů BLOB v jednom požadavku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [Nastavení několika úrovní přístupu k objektům blob v jednom požadavku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L56)
+      [Nastavení několika úrovní přístupu k objektům blob v jednom požadavku](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Jemně odstupňovaná kontrola v požadavku na dávku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L90)
+      [Jemně odstupňovaná kontrola v požadavku na dávku](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L90)
    :::column-end:::
    :::column span="":::
-      [Zachytit chyby z neúspěšné dílčí operace](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L136)
+      [Zachytit chyby z neúspěšné dílčí operace](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L136)
    :::column-end:::
 :::row-end:::
 
@@ -94,7 +94,7 @@ Následující tabulka obsahuje přehled úložiště našich ukázek a scéná�
 
 ## <a name="data-lake-storage-gen2-samples"></a>Vzorky Data Lake Storage Gen2
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
@@ -180,7 +180,7 @@ Následující tabulka obsahuje přehled úložiště našich ukázek a scéná�
 
 ## <a name="azure-files-samples"></a>Ukázky souborů Azure
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
@@ -222,7 +222,7 @@ Následující tabulka obsahuje přehled úložiště našich ukázek a scéná�
 
 ## <a name="queue-samples"></a>Ukázky fronty
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
@@ -281,7 +281,7 @@ Následující tabulka obsahuje přehled úložiště našich ukázek a scéná�
 
 :::row:::
    :::column span="":::
-      [Vytvoření tabulky](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/Common.cs#L40)
+      [Vytvořit tabulku](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/Common.cs#L40)
    :::column-end:::
    :::column span="":::
       [Odstranit entitu/tabulku](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs)

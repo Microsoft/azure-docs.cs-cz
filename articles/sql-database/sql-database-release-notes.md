@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/09/2020
 ms.author: sstein
-ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607536"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011442"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi databáze SQL
 
@@ -22,12 +22,11 @@ Tento článek uvádí funkce databáze SQL, které jsou aktuálně ve verzi Pub
 
 ## <a name="features-in-public-preview"></a>Funkce ve verzi Public Preview
 
-### <a name="single-database"></a>[Izolovaná databáze](#tab/single-database)
+### <a name="single-database"></a>[Jednotná databáze](#tab/single-database)
 
 | Funkce | Podrobnosti |
 | ---| --- |
 | Nové generace hardwaru řady Fsv2 a Řady M| Další informace naleznete v [tématu Hardware generations](sql-database-service-tiers-vcore.md#hardware-generations).|
-| [Privátní propojení Azure](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Private Link zjednodušuje síťovou architekturu a zabezpečuje připojení mezi koncovými body v Azure udržováním dat v síti Azure, čímž eliminuje vystavení internetu. Private Link také umožňuje vytvářet a vykreslovat vlastní služby v Azure. |
 | Zrychlené obnovení databáze s jednotlivými databázemi a elastické fondy | Další informace naleznete [v tématu Accelerated Database Recovery](sql-database-accelerated-database-recovery.md).|
 |Přibližný počet odlišných|Další informace naleznete [v tématu Přibližný počet odlišných](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
 |Dávkový režim na Rowstore (pod úrovní kompatibility 150)|Další informace naleznete [v tématu Dávkový režim v rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
@@ -38,7 +37,7 @@ Tento článek uvádí funkce databáze SQL, které jsou aktuálně ve verzi Pub
 |Zpětná vazba grantu paměti (řádkový režim) (pod úrovní kompatibility 150)|Další informace naleznete v [tématu Feedback grant u paměti (řádkový režim).](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)|
 | Editor dotazů na webu Azure Portal |Další informace najdete [v tématu Použití editoru dotazů SQL na webu Azure Portal pro připojení a dotazování na data](sql-database-connect-query-portal.md).|
 | R služby / strojové učení s jednotlivými databázemi a elastické fondy |Další informace najdete v tématu [Machine Learning Services v Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
-|Analýza SQL|Další informace najdete v [tématu Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
+|SQL Analytics|Další informace najdete v [tématu Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
 |Proměnná tabulka Odložená kompilace (pod úrovní kompatibility 150)|Další informace naleznete v [tématu Tabulka proměnná odložená kompilace](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | &nbsp; |
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: c655ddf47318951f01cb86841a72389489941db2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8e8b24aba5daa421c1840bb7164ba09e683981a
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930513"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991854"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Kopírování dat z řešení Oracle Service Cloud pomocí Azure Data Factory (Preview)
 
@@ -53,8 +53,8 @@ Pro propojenou službu Oracle Service Cloud jsou podporovány následující vla
 | uživatelské jméno | Uživatelské jméno, které používáte pro přístup k serveru Oracle Service Cloud.  | Ano |
 | heslo | Heslo odpovídající uživatelskému jménu, které jste zadali v klíči uživatelského jména. Toto pole můžete označit jako securestring pro bezpečné uložení v adf nebo ukládat heslo v trezoru klíčů Azure a nechat adf kopírovat aktivitu vytáhnout odtud při provádění kopírování dat - další informace z [přihlašovacích údajů úložiště v trezoru klíčů](store-credentials-in-key-vault.md). | Ano |
 | použitíEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, zda má být při připojování přes SSL vyžadován název hostitele v certifikátu serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, zda se má ověřit identita serveru při připojování přes SSL. Výchozí hodnotou je hodnota true.  | Ne |
+| useHostVerification | Určuje, zda má být při připojování přes TLS vyžadovánnázev hostitele v certifikátu serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| usePeerVerification | Určuje, zda se má ověřit identita serveru při připojování přes TLS. Výchozí hodnotou je hodnota true.  | Ne |
 
 **Příklad:**
 

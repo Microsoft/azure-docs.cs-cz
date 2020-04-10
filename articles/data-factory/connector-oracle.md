@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 534e5c913685eeac92022f6694ea31b24816da5d
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422505"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011646"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do společnosti Oracle pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
@@ -37,6 +37,7 @@ Data z databáze Oracle můžete zkopírovat do libovolného podporovaného úlo
 Konkrétně tento konektor Oracle podporuje:
 
 - Následující verze databáze Oracle:
+    - Oracle 19c R1 (19.1) a vyšší
     - Oracle 18c R1 (18.1) a vyšší
     - Oracle 12c R1 (12.1) a vyšší
     - Oracle 11g R1 (11.1) a vyšší
@@ -84,9 +85,9 @@ Chcete-li povolit šifrování v připojení Oracle, máte dvě možnosti:
 
 -   Chcete-li použít **triple-DES encryption (3DES) a Advanced Encryption Standard (AES) ( AES)** na straně serveru Oracle, přejděte na oracle advanced security (OAS) a nakonfigurujte nastavení šifrování. Podrobnosti naleznete v této [dokumentaci k řešení Oracle](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Konektor Oracle Application Development Framework (ADF) automaticky vyjedná metodu šifrování tak, aby při navazování připojení k řešení Oracle používala metodu konfigurace v aplikaci OAS.
 
--   Použití **ssl**:
+-   Použití **TLS**:
 
-    1.  Získejte informace o certifikátu SSL. Získejte informace o certifikátu s kódováním (DER) kódovaná odlišenými písmeny (DER) a uložte výstup (----- Begin Certificate ... Koncový certifikát -----) jako textový soubor.
+    1.  Získejte informace o certifikátu TLS/SSL. Získejte informace o certifikátu kódu TLS/SSL (Distinguished Encoding Rules) (DER) a uložte výstup (----- Begin Certificate ... Koncový certifikát -----) jako textový soubor.
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text

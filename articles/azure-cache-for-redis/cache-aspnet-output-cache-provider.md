@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: af003f1f0422c2351bcdf9b0c0010e38785c0344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1d8189068278b46e3ec3ea66875d79bb91e5e16
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530321"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010201"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET zprostředkovatele výstupní mezipaměti pro Azure Cache for Redis
 
@@ -54,9 +54,9 @@ Nakonfigurujte atributy s hodnotami z okna mezipaměti na portálu Microsoft Azu
 | Atribut | Typ | Výchozí | Popis |
 | --------- | ---- | ------- | ----------- |
 | *Hostitele* | řetězec | "localhost" | Ip adresa serveru Redis nebo název hostitele |
-| *Port* | kladné celé číslo | 6379 (jiné než SSL)<br/>6380 (SSL) | Port serveru Redis |
+| *Port* | kladné celé číslo | 6379 (bez TLS/SSL)<br/>6380 (TLS/SSL) | Port serveru Redis |
 | *Accesskey* | řetězec | "" | Redis heslo serveru, pokud je povolena autorizace Redis. Hodnota je ve výchozím nastavení prázdný řetězec, což znamená, že poskytovatel stavu relace nepoužije žádné heslo při připojování k serveru Redis. **Pokud je váš server Redis ve veřejně přístupné síti, jako je Azure Redis Cache, nezapomeňte povolit autorizaci Redis ke zlepšení zabezpečení a zadat zabezpečené heslo.** |
-| *Ssl* | Boolean | **False** | Zda se připojit k serveru Redis přes SSL. Tato hodnota je ve výchozím nastavení **false,** protože Redis nepodporuje SSL po vybalení z krabice. **Pokud používáte Azure Redis Cache, který podporuje SSL po vybalení z krabice, nezapomeňte nastavit na true ke zlepšení zabezpečení.**<br/><br/>Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Zadejte **hodnotu true** pro toto nastavení, chcete-li použít port SSL. Další informace o povolení portu bez SSL naleznete v části [Přístupové porty](cache-configure.md#access-ports) v [tématu Konfigurace mezipaměti.](cache-configure.md) |
+| *Ssl* | Boolean | **False** | Zda se připojit k serveru Redis přes TLS. Tato hodnota je **false** ve výchozím nastavení, protože Redis nepodporuje TLS po vybalení z krabice. **Pokud používáte Azure Redis Cache, který podporuje SSL po vybalení z krabice, nezapomeňte nastavit na true ke zlepšení zabezpečení.**<br/><br/>Port netls je ve výchozím nastavení zakázán pro nové mezipaměti. Zadejte **hodnotu true** pro toto nastavení, chcete-li použít port TLS. Další informace o povolení portu bez tls naleznete v části [Přístupové porty](cache-configure.md#access-ports) v [tématu Konfigurace mezipaměti.](cache-configure.md) |
 | *databaseIdNumber* | kladné celé číslo | 0 | *Tento atribut lze zadat pouze prostřednictvím web.config nebo AppSettings.*<br/><br/>Určete, kterou databázi Redis chcete použít. |
 | *connectionTimeoutInMilliseconds* | kladné celé číslo | Poskytuje StackExchange.Redis | Slouží k nastavení *ConnectTimeout* při vytváření StackExchange.Redis.ConnectionMultiplexer. |
 | *operationTimeoutInMilliseconds* | kladné celé číslo | Poskytuje StackExchange.Redis | Slouží k nastavení *SyncTimeout* při vytváření StackExchange.Redis.ConnectionMultiplexer. |

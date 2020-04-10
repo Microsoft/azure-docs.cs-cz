@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 2dfb2a7766ddbda5dd27d5b4fd6745836ad1dc75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05f13bc668710e93c492206629f1d09ecb4e22f4
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929377"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992194"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopírování dat z HBase pomocí Azure Data Factory 
 
@@ -56,9 +56,9 @@ Pro propojenou službu HBase jsou podporovány následující vlastnosti:
 | authenticationType | Mechanismus ověřování, který se má použít pro připojení k serveru HBase. <br/>Povolené hodnoty jsou: **Anonymní**, **Základní** | Ano |
 | uživatelské jméno | Uživatelské jméno použité pro připojení k instanci HBase.  | Ne |
 | heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ne |
-| enableSsl | Určuje, zda jsou připojení k serveru šifrována pomocí ssl. Výchozí hodnota je False.  | Ne |
-| trustedCertPath | Úplná cesta k souboru PEM obsahujícího důvěryhodné certifikáty certifikační autority pro ověření serveru při připojování přes SSL. Tuto vlastnost lze nastavit pouze při použití ssl na samoobslužné infračervené ovládání. Výchozí hodnota je soubor cacerts.pem nainstalovaný s infračerveným přenosem.  | Ne |
-| allowHostNameCNMismatch | Určuje, zda má být při připojování přes SSL vyžadován název certifikátu SSL vydaný certifikační autoritou. Výchozí hodnota je False.  | Ne |
+| enableSsl | Určuje, zda jsou připojení k serveru šifrována pomocí systému TLS. Výchozí hodnota je False.  | Ne |
+| trustedCertPath | Úplná cesta k souboru PEM obsahujícího důvěryhodné certifikáty certifikační autority pro ověření serveru při připojování přes TLS. Tuto vlastnost lze nastavit pouze při použití TLS na samostatně hostované infračervené ovládání. Výchozí hodnota je soubor cacerts.pem nainstalovaný s infračerveným přenosem.  | Ne |
+| allowHostNameCNMismatch | Určuje, zda má být při připojování přes TLS vyžadován název certifikátu TLS/SSL vydaný certifikační autoritou. Výchozí hodnota je False.  | Ne |
 | allowSelfSignedServerCert | Určuje, zda mají být ze serveru povoleny certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | Ne |
 | connectVia | [Prostředí Integrace Runtime,](concepts-integration-runtime.md) které se má použít k připojení k úložišti dat. Další informace naleznete v části [Požadavky.](#prerequisites) Pokud není zadán, používá výchozí Azure Integration Runtime. |Ne |
 

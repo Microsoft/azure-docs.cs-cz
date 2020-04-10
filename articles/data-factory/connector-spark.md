@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 63e352ce47c5934171594ae87ee307603fff4c35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb628ec73430d542295a83773401c256421605a0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931015"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990867"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Kopírování dat ze Sparku pomocí Azure Data Factory 
 
@@ -58,10 +58,10 @@ Pro propojenou službu Spark jsou podporovány následující vlastnosti:
 | uživatelské jméno | Uživatelské jméno, které používáte pro přístup k serveru Spark Server.  | Ne |
 | heslo | Heslo odpovídající uživateli. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ne |
 | httpPath | Částečná adresa URL odpovídající serveru Spark.  | Ne |
-| enableSsl | Určuje, zda jsou připojení k serveru šifrována pomocí ssl. Výchozí hodnota je False.  | Ne |
-| trustedCertPath | Úplná cesta k souboru PEM obsahujícího důvěryhodné certifikáty certifikační autority pro ověření serveru při připojování přes SSL. Tuto vlastnost lze nastavit pouze při použití ssl na samoobslužné infračervené ovládání. Výchozí hodnota je soubor cacerts.pem nainstalovaný s infračerveným přenosem.  | Ne |
+| enableSsl | Určuje, zda jsou připojení k serveru šifrována pomocí systému TLS. Výchozí hodnota je False.  | Ne |
+| trustedCertPath | Úplná cesta k souboru PEM obsahujícího důvěryhodné certifikáty certifikační autority pro ověření serveru při připojování přes TLS. Tuto vlastnost lze nastavit pouze při použití TLS na samostatně hostované infračervené ovládání. Výchozí hodnota je soubor cacerts.pem nainstalovaný s infračerveným přenosem.  | Ne |
 | useSystemTrustStore | Určuje, zda se má použít certifikát certifikační autority z úložiště důvěryhodných certifikátů systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | Ne |
-| allowHostNameCNMismatch | Určuje, zda má být při připojování přes SSL vyžadován název certifikátu SSL vydaný certifikační autoritou. Výchozí hodnota je False.  | Ne |
+| allowHostNameCNMismatch | Určuje, zda má být při připojování přes TLS vyžadován název certifikátu TLS/SSL vydaný certifikační autoritou. Výchozí hodnota je False.  | Ne |
 | allowSelfSignedServerCert | Určuje, zda mají být ze serveru povoleny certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | Ne |
 | connectVia | [Prostředí Integrace Runtime,](concepts-integration-runtime.md) které se má použít k připojení k úložišti dat. Další informace naleznete v části [Požadavky.](#prerequisites) Pokud není zadán, používá výchozí Azure Integration Runtime. |Ne |
 

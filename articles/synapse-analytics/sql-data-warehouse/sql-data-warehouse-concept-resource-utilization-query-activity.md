@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 03/11/2020
+ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 85457b62c905cb30ca22264eff1b6c677473f9b9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745304"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011102"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure Synapse Analytics
 
@@ -33,8 +33,8 @@ Následující metriky jsou k dispozici na webu Azure Portal for SQL Analytics. 
 | Procento paměti       | Využití paměti (SQL Server) ve všech uzlech pro datový sklad | Vztaž, Min, Max   |
 | Aktivní dotazy          | Počet aktivních dotazů spuštěných v systému             | Součet              |
 | Dotazy ve frontě          | Počet dotazů ve frontě čekajících na spuštění provádění          | Součet              |
-| Úspěšná připojení  | Počet úspěšných připojení k datům                 | Součet, počet       |
-| Neúspěšná připojení      | Počet neúspěšných připojení k datovému skladu           | Součet, počet       |
+| Úspěšná připojení  | Počet úspěšných připojení (přihlášení) k databázi | Součet, počet       |
+| Neúspěšná připojení      | Počet neúspěšných připojení (přihlášení) k databázi | Součet, počet       |
 | Blokováno bránou firewall     | Počet přihlášení do datového skladu, který byl zablokován     | Součet, počet       |
 | DWU limit               | Cíl úrovně služeb datového skladu                | Vztaž, Min, Max    |
 | Procento DWU          | Maximální mezi procentem procesoru a vprocentem vyvázlových dat        | Vztaž, Min, Max    |
@@ -42,7 +42,7 @@ Následující metriky jsou k dispozici na webu Azure Portal for SQL Analytics. 
 | Procento přístupů do mezipaměti    | (cache hity / cache miss) * 100, kde cache hity je součet všech columnstore segmentů hity v místní mezipaměti SSD a cache miss je columnstore segmenty mine v místní mezipaměti SSD sečteny ve všech uzlech | Vztaž, Min, Max    |
 | Procento použité mezipaměti   | (využitá vyrovnávací paměť / kapacita mezipaměti) * 100, kde se používá mezipaměť, je součet všech bajtů v místní mezipaměti SSD ve všech uzlech a kapacita mezipaměti je součtem úložné kapacity místní mezipaměti SSD ve všech uzlech | Vztaž, Min, Max    |
 | Procento místní databáze tempdb | Místní využití databáze tempdb ve všech výpočetních uzlech – hodnoty jsou vydávány každých pět minut | Vztaž, Min, Max    |
-| Velikost úložiště dat (GB) | Celková velikost dat načtených do databáze. To zahrnuje data s bydlištěm v tabulkách CCI a mimo CCI, kde se velikost tabulek mimo CCI měří podle celkové velikosti souboru databáze | Součet |
+| Velikost úložiště dat (GB) | Celková velikost databáze. To zahrnuje použité, vyhrazené a nepřidělené místo. Nepřidělené místo je zachováno pro databázi optimalizovat dotaz a načíst výkon. | Součet |
 | Velikost zotavení po havárii (GB) | Celková velikost geografické zálohy zachycované každých 24 hodin | Součet |
 | Velikost úložiště snímků (GB) | Celková velikost snímků pořízených za účelem poskytnutí bodů obnovení databáze. To zahrnuje automatické a uživatelem definované snímky. | Součet |
 

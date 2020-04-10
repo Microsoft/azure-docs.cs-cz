@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: ec9eeb0c35d96ee777771260686178faa536e909
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877299"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990901"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy serveru Proxy aplikace služby Active Directory (Azure AD)
 
@@ -52,6 +52,9 @@ Doporučení naleznete v tématu [Vysoká dostupnost a vyrovnávání zatížen�
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Je podporováno ukončení TLS (kontrola nebo zrychlení TLS/HTTPS) na provozech ze serverů konektorů do Azure?
 
 Konektor proxy aplikace provádí ověřování na základě certifikátu do Azure. Ukončení TLS (kontrola TLS/HTTPS nebo zrychlení) přeruší tuto metodu ověřování a není podporováno. Provoz z konektoru do Azure musí obejít všechna zařízení, která provádějí ukončení TLS.  
+
+### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Mohu umístit předávací proxy zařízení mezi konektorové servery a servery back-end aplikace?
+Ano, tento scénář je podporován od konektoru verze 1.5.1526.0. Viz [Práce s existujícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>Mám vytvořit vyhrazený účet pro registraci konektoru pomocí proxy aplikace Azure AD?
 

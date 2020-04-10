@@ -1,21 +1,21 @@
 ---
 title: Přehled automatického škálování pomocí škálovacích sad virtuálních počítačů Azure
 description: Seznamte se s různými způsoby, jak můžete automaticky škálovat škálovací sadu virtuálních strojů Azure na základě výkonu nebo podle pevného plánu.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b3af40de107fd9273ec50425c58afc9772ea426
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278141"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010337"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Přehled automatického škálování pomocí škálovacích sad virtuálních počítačů Azure
 Škálovací sada virtuálního počítače Azure může automaticky zvýšit nebo snížit počet instancí virtuálních virtuálních zařízení, které spouštějí vaši aplikaci. Toto automatizované a elastické chování snižuje režii na správu pro monitorování a optimalizaci výkonu vaší aplikace. Vytvoříte pravidla, která definují přijatelný výkon pro pozitivní zákaznickou zkušenost. Pokud jsou tyto definované prahové hodnoty splněny, pravidla automatického škálování provést akci upravit kapacitu škálovací sady. Můžete také naplánovat události tak, aby automaticky zvyšovaly nebo snižovaly kapacitu škálovací sady v pevně stanovených časech. Tento článek obsahuje přehled metriky výkonu, které jsou k dispozici a jaké akce automatické škálování lze provádět.
@@ -34,7 +34,7 @@ Můžete vytvořit pravidla automatického škálování, která integrované me
 
 Pravidla automatického škálování využívající metriky hostitele je možné vytvořit pomocí některého z následujících nástrojů:
 
-- [Portál Azure](virtual-machine-scale-sets-autoscale-portal.md)
+- [portál Azure](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Šablony Azure](tutorial-autoscale-template.md)

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278035"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010915"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat clustering Redis pro premium Azure Cache pro Redis
 Azure Cache for Redis má různé nabídky mezipaměti, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně funkcí úrovně Premium, jako je clustering, trvalost a podpora virtuálních sítí. Tento článek popisuje, jak nakonfigurovat clustering v prémiové azure cache pro redis instance.
@@ -125,7 +125,7 @@ Ke mezipaměti se můžete připojit pomocí [stejných koncových bodů](cache-
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Mohu se přímo připojit k jednotlivým úlomkům mezipaměti?
 Clustering protocol vyžaduje, aby klient provést správné připojení šitrů. Takže klient by měl udělat správně za vás. S tím řekl, každý oddíl se skládá z dvojice mezipaměti primární/replika, souhrnně známý jako instance mezipaměti. K těmto instancím mezipaměti se můžete připojit pomocí nástroje redis-cli v [nestabilní](https://redis.io/download) větvi repozitáře Redis na GitHubu. Tato verze implementuje základní `-c` podporu při spuštění s přepínačem. Další informace naleznete v [tématu Přehrávání s clusterem](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) v [https://redis.io](https://redis.io) [kurzu clusteru Redis](https://redis.io/topics/cluster-tutorial).
 
-Pro jiné funkce bez ssl použijte následující příkazy.
+Pro jiné než TLS použijte následující příkazy.
 
     Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
     Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
@@ -133,7 +133,7 @@ Pro jiné funkce bez ssl použijte následující příkazy.
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-Pro ssl `1300N` nahraďte . `1500N`
+V případě TLS `1500N`nahraďte . `1300N`
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Lze nakonfigurovat clustering pro dříve vytvořenou mezipaměť?
 Ano. Nejprve se ujistěte, že vaše mezipaměť je prémiová, škálováním, pokud není. Dále byste měli být schopni zobrazit možnosti konfigurace clusteru, včetně možnosti povolit cluster. Velikost clusteru můžete změnit po vytvoření mezipaměti nebo po prvním povolení clusteringu.

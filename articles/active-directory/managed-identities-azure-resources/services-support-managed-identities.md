@@ -4,18 +4,18 @@ description: Seznam služeb, které podporují spravované identity pro prostře
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 04/03/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7a65df100cd58561ce12ac2ae01281eebd419a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656046"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991275"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 
@@ -70,7 +70,7 @@ Nawebu na následující seznam nakonfigurujte spravovanou identitu pro azure ap
 - [portál Azure](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Šablona Azure Resource Manager](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
 ### <a name="azure-blueprints"></a>Azure Blueprint
 
@@ -96,7 +96,7 @@ Ke konfiguraci spravované identity pro funkce Azure (v oblastech, kde je k disp
 - [portál Azure](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Šablona Azure Resource Manager](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
 
@@ -109,7 +109,7 @@ Typ spravované identity | Všechny obecně dostupné<br>Globální oblasti Azur
 Ke konfiguraci spravované identity pro Azure Logic Apps (v oblastech, kde je k dispozici), najdete v následujícím seznamu:
 
 - [portál Azure](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Šablona Azure Resource Manager](/azure/app-service/overview-managed-identity)
+- [Šablona Azure Resource Manageru](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
@@ -134,7 +134,7 @@ Typ spravované identity | Všechny obecně dostupné<br>Globální oblasti Azur
 
 Ke konfiguraci spravované identity pro Azure API Management (v oblastech, kde je k dispozici), najdete v následujícím seznamu:
 
-- [Šablona Azure Resource Manager](/azure/api-management/api-management-howto-use-managed-service-identity)
+- [Šablona Azure Resource Manageru](/azure/api-management/api-management-howto-use-managed-service-identity)
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -146,7 +146,7 @@ Typ spravované identity | Všechny obecně dostupné<br>Globální oblasti Azur
 Odkazovat na následující seznam pro konfiguraci spravované identity pro instance kontejnerů Azure (v oblastech, kde je k dispozici):
 
 - [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
-- [Šablona Azure Resource Manager](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [Šablona Azure Resource Manageru](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
 - [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 ### <a name="azure-container-registry-tasks"></a>Úlohy Azure Container Registry
@@ -169,7 +169,7 @@ Typ spravované identity | Všechny obecně dostupné<br>Globální oblasti Azur
 | Přiřazený uživatel | ![K dispozici][check] | Není k dispozici | Není k dispozici |Není k dispozici |
 
 Na webu nakonfigurujete spravovanou identitu pro aplikace Azure Service Fabric ve všech oblastech:
-- [Šablona Azure Resource Manager](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
+- [Šablona Azure Resource Manageru](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Služby Azure, které podporují ověřování Azure AD
 
@@ -270,6 +270,9 @@ Chcete-li nakonfigurovat přístup ke Správci prostředků Azure, najdete v ná
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | ![K dispozici][check] |
 | Azure Germany | `https://*.asazure.cloudapi.de` | ![K dispozici][check] |
 | Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![K dispozici][check] |
+
+> [!Note]
+> Microsoft Power BI také [podporuje spravované identity](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity).
 
 
 [check]: media/services-support-managed-identities/check.png "K dispozici"

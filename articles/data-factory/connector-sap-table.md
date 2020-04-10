@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 65e51258b3a24b14b5171968645e88420e92dd5a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 04/09/2020
+ms.openlocfilehash: 44efd0d402d6cb9f1ee44c583c88140121ca3001
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421078"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011612"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -242,6 +242,7 @@ V `rfcTableOptions`aplikaci můžete k filtrování řádků použít následuj�
 | `LE` | Menší nebo rovno |
 | `GT` | Větší než |
 | `GE` | Větší nebo rovno |
+| `IN` | Stejně jako v`TABCLASS IN ('TRANSP', 'INTTAB')` |
 | `LIKE` | Stejně jako v`LIKE 'Emma%'` |
 
 ### <a name="example"></a>Příklad

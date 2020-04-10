@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
-ms.openlocfilehash: 20a5c4befaa30383c54ac9536a3fd26dce3db4d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80059974"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010558"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -185,8 +186,7 @@ Pokud předávání dotazů do Azure nevyhovuje vašim potřebám, měli byste p
 * Být zabezpečeny proti přístupu z internetu, aby se zmírnily hrozby, které představují externí agenti.
 
 > [!NOTE]
-> Pro dosažení nejlepšího výkonu, pokud používáte virtuální počítače Azure jako servery DNS, iPv6 by měl být zakázán. Každému virtuálnímu virtuálnímu počítačům serveru DNS by měla být přiřazena [veřejná IP adresa.](virtual-network-public-ip-address.md) 
-> 
+> Pro dosažení nejlepšího výkonu, pokud používáte virtuální počítače Azure jako servery DNS, iPv6 by měl být zakázán.
 
 ### <a name="web-apps"></a>Webové aplikace
 Předpokládejme, že potřebujete provést překlad názvů z webové aplikace vytvořené pomocí služby App Service, propojené s virtuální sítí, na virtuální počítače ve stejné virtuální síti. Kromě nastavení vlastního serveru DNS, který má server pro předávání DNS, který předává dotazy do Azure (virtuální IP 168.63.129.16), proveďte následující kroky:

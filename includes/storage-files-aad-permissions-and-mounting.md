@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666820"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011412"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Přiřazení přístupových oprávnění k identitě
 
-Chcete-li získat přístup k prostředkům Souborů Azure pomocí ověřování na základě identity, musí mít identita (uživatel, skupina nebo instanční objekt) potřebná oprávnění na úrovni sdílené složky. Tento proces je podobný určení oprávnění ke sdílení systému Windows, kde zadáte typ přístupu, který má konkrétní uživatel ke sdílené složce. Obecné doporučení je použít oprávnění na úrovni sdílení pro správu přístupu na vysoké úrovni týmu nebo skupině a potom využít oprávnění NTFS pro podrobné řízení přístupu na úrovni adresáře nebo souboru. Pokyny v této části ukazují, jak přiřadit oprávnění pro čtení, zápis nebo odstranění sdílené složky identitě. 
+Chcete-li získat přístup k prostředkům Souborů Azure pomocí ověřování na základě identity, musí mít identita (uživatel, skupina nebo instanční objekt) potřebná oprávnění na úrovni sdílené složky. Tento proces je podobný určení oprávnění ke sdílení systému Windows, kde zadáte typ přístupu, který má konkrétní uživatel ke sdílené složce. Pokyny v této části ukazují, jak přiřadit oprávnění pro čtení, zápis nebo odstranění sdílené složky identitě. 
 
 Zavedli jsme tři předdefinované role Azure pro udělování oprávnění na úrovni sdílení uživatelům:
 
@@ -32,6 +32,8 @@ Pomocí portálu Azure, PowerShellu nebo rozhraní api Azure můžete přiřadit
 
 > [!NOTE]
 > Nezapomeňte synchronizovat přihlašovací údaje služby AD do služby Azure AD, pokud chcete službu AD používat k ověřování. Synchronizace hash hesla ze služby AD do služby Azure AD je volitelná. Oprávnění na úrovni sdílení bude uděleno identitě Azure AD, která se synchronizuje ze služby AD.
+
+Obecným doporučením je použít oprávnění na úrovni sdílení pro správu přístupu na vysoké úrovni ke skupině služby AD představující skupinu uživatelů a identit a potom využít oprávnění ntfs pro podrobné řízení přístupu na úrovni adresáře nebo souboru. 
 
 #### <a name="azure-portal"></a>portál Azure
 Pokud chcete přiřadit roli RBAC k identitě Azure AD pomocí [portálu Azure](https://portal.azure.com), postupujte takto:

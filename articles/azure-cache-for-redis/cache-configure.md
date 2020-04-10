@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278737"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010303"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure Cache pro Redis
 Toto téma popisuje konfigurace, které jsou k dispozici pro vaše instance Azure Cache for Redis. Toto téma také popisuje výchozí konfiguraci serveru Redis pro instance Azure Cache for Redis.
@@ -44,16 +44,16 @@ Následující nastavení můžete zobrazit a nakonfigurovat pomocí **nabídky 
     * [Trvalost dat](#redis-data-persistence)
     * [Plán aktualizací](#schedule-updates)
     * [Geografická replikace](#geo-replication)
-    * [Virtuální síť](#virtual-network)
+    * [Virtual Network](#virtual-network)
     * [Brána firewall](#firewall)
     * [Vlastnosti](#properties)
     * [Zámky](#locks)
     * [Automatizační skript](#automation-script)
 * Správa
     * [Import dat](#importexport)
-    * [Export dat](#importexport)
+    * [Exportovat data](#importexport)
     * [Restartování](#reboot)
-* [Sledování](#monitoring)
+* [Monitorování](#monitoring)
     * [Redis metriky](#redis-metrics)
     * [Pravidla výstrah](#alert-rules)
     * [Diagnostika](#diagnostics)
@@ -96,7 +96,7 @@ Klikněte na **Diagnostikovat a vyřešte problémy,** které mají být vybaven
 * [Trvalost dat](#redis-data-persistence)
 * [Plán aktualizací](#schedule-updates)
 * [Geografická replikace](#geo-replication)
-* [Virtuální síť](#virtual-network)
+* [Virtual Network](#virtual-network)
 * [Brána firewall](#firewall)
 * [Vlastnosti](#properties)
 * [Zámky](#locks)
@@ -117,10 +117,10 @@ Následující nastavení jsou konfigurována v okně **Upřesnit nastavení.**
 * [Oznámení o klíčovém prostoru (upřesňující nastavení)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Přístup ové porty
-Přístup bez SSL je ve výchozím nastavení pro nové mezipaměti zakázaný. Chcete-li povolit port bez SSL, klepněte na tlačítko **Ne** **pro povolení přístupu pouze prostřednictvím** protokolu **Upřesnit nastavení** a potom klepněte na tlačítko **Uložit**.
+Ve výchozím nastavení je pro nové mezipaměti zakázán přístup bez tls/ssl. Chcete-li povolit port bez tls, klepněte na tlačítko **Ne** **pro povolení přístupu pouze prostřednictvím protokolu Upřesnit** **nastavení** a potom klepněte na tlačítko **Uložit**.
 
 > [!NOTE]
-> Přístup SSL k Azure Cache pro Redis podporuje TLS 1.0, 1.1 a 1.2 v současné době, ale verze 1.0 a 1.1 jsou vyřazeny brzy.  Další podrobnosti najdete na [stránce Remove TLS 1.0 a 1.1.](cache-remove-tls-10-11.md)
+> Přístup TLS k Azure Cache pro Redis podporuje TLS 1.0, 1.1 a 1.2 v současné době, ale verze 1.0 a 1.1 jsou vyřazeny brzy.  Další podrobnosti najdete na [stránce Remove TLS 1.0 a 1.1.](cache-remove-tls-10-11.md)
 
 ![Azure Cache pro porty pro přístup Redis](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -193,7 +193,7 @@ Každá cenová úroveň má různá omezení pro připojení klientů, paměť 
 Chcete-li mezipaměť upgradovat, kliknutím na **tlačítko Upgradovat nyní** změňte cenovou úroveň a [škálujte](#scale) mezipaměť. Další informace o výběru cenové úrovně najdete v tématu Co mám použít jakou [mezipaměť Azure pro Redis?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>Škálování
+### <a name="scale"></a>Měřítko
 Kliknutím na **Měřítko** zobrazíte nebo změníte cenovou úroveň mezipaměti. Další informace o škálování najdete v tématu [Jak škálovat azure mezipaměť pro Redis](cache-how-to-scale.md).
 
 ![Cenová úroveň Azure Cache for Redis](./media/cache-configure/pricing-tier.png)
@@ -291,7 +291,7 @@ Nastavení v části **Správa** umožňuje provádět následující úlohy spr
 ![Správa](./media/cache-configure/redis-cache-administration.png)
 
 * [Import dat](#importexport)
-* [Export dat](#importexport)
+* [Exportovat data](#importexport)
 * [Restartování](#reboot)
 
 

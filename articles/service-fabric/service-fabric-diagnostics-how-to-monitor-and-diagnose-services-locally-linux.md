@@ -3,12 +3,12 @@ title: Ladění aplikací Azure Service Fabric v Linuxu
 description: Přečtěte si, jak monitorovat a diagnostikovat služby Service Fabric na místním vývojovém počítači s Linuxem.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75526290"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991326"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Sledování a diagnostika služeb v místním nastavení vývoje linuxových strojů
 
@@ -59,7 +59,7 @@ Další informace naleznete v [příkladech kódu na GitHubu](https://github.com
 ## <a name="debugging-service-fabric-c-applications"></a>Ladění aplikací Jazyka C fabric služby
 
 
-Pro sledování aplikací CoreCLR v Linuxu je k dispozici více architektur. Další informace naleznete v tématu [GitHub: protokolování](http:/github.com/aspnet/logging).  Vzhledem k tomu, EventSource je obeznámen s vývojáři Jazyka C#, 'tento článek používá EventSource pro trasování v ukázkách CoreCLR na Linuxu.
+Pro sledování aplikací CoreCLR v Linuxu je k dispozici více architektur. Další informace naleznete v [tématu .NET Extensions for Logging](https://github.com/dotnet/extensions/tree/master/src/Logging).  Vzhledem k tomu, EventSource je obeznámen s vývojáři Jazyka C#, 'tento článek používá EventSource pro trasování v ukázkách CoreCLR na Linuxu.
 
 Prvním krokem je zahrnout System.Diagnostics.Tracing tak, aby bylo možné zapisovat protokoly do paměti, výstupní datové proudy nebo soubory konzoly.  Pro protokolování pomocí EventSource přidejte do souboru project.json následující projekt:
 

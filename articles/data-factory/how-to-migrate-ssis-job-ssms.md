@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: c65fbd9bbd83db9c7c8ec0e9041d08372243b72f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: ee51be1d994c3b81765266e95c48d321a2f43b14
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887642"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989438"
 ---
-# <a name="migrate-on-premises-ssis-jobs-to-azure-data-factory"></a>Migrace místních úloh SSIS do Azure Data Factory
+# <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrace úloh agenta serveru SQL Server do adf s SSMS
 
 Při [migraci místních úloh služby SQL Server Integration Services (SSIS) do ssis v adf](scenario-ssis-migration-overview.md)můžete po migraci balíčků SSIS provést dávkovou migraci úloh agenta SQL Server s typem kroku úlohy SQL Server Integration Services Package do kanálu/aktivit/spouštění aktivit/plánu Azure Data Factory (ADF) prostřednictvím **Průvodce migrace úloh SSIS**(SQL Server Management Studio) SSIS .
 

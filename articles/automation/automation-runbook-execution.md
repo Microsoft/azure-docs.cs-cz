@@ -5,24 +5,24 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: c8968eb72b29b004d94e25433da65d3262287147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1907eb7cde482927ee8e6b0a2522158f05c1808f
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367138"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010932"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění sady Runbook v Azure Automation
 
 Sady Runbook se provádějí na základě logiky definované uvnitř nich. Pokud je runbook přerušen, runbook se restartuje na začátku. Toto chování vyžaduje, abyste zapisovali sady Runbook, které podporují restartování, pokud dojde k přechodným problémům.
 
-Spuštění sady Runbook v Azure Automation vytvoří úlohu. Úloha je jedna instance spuštění runbooku. Každá úloha má přístup k prostředkům Azure tím, že navazuje připojení k vašemu předplatnému Azure. Úloha má přístup k prostředkům ve vašem datovém centru pouze v případě, že tyto prostředky jsou přístupné z veřejného cloudu.
+Spuštění sady Runbook v Azure Automation vytvoří úlohu, což je jedna instance spuštění sady Runbook. Každá úloha má přístup k prostředkům Azure tím, že navazuje připojení k vašemu předplatnému Azure. Úloha má přístup k prostředkům ve vašem datovém centru pouze v případě, že tyto prostředky jsou přístupné z veřejného cloudu.
 
 Azure Automation přiřadí pracovníka ke spuštění každé úlohy během spuštění sady Runbook. Zatímco pracovníci jsou sdíleny mnoha účty Azure, úlohy z různých účtů automatizace jsou izolované od sebe navzájem. Nemáte kontrolu nad tím, který pracovník bude obsluhovat vaši žádost o práci.
 
 Když zobrazíte seznam runbooků na webu Azure Portal, zobrazí se stav každé úlohy, která byla spuštěna pro každou runbook. Azure Automation ukládá protokoly úloh po dobu maximálně 30 dnů. 
 
-Následující diagram znázorňuje životní cyklus úlohy sady Runbook pro [sady Runbook prostředí PowerShell](automation-runbook-types.md#powershell-runbooks), [Grafické sady Runbook](automation-runbook-types.md#graphical-runbooks)a [Runbook pracovního postupu prostředí PowerShell](automation-runbook-types.md#powershell-workflow-runbooks).
+Následující diagram znázorňuje životní cyklus úlohy sady Runbook pro [sady Runbook prostředí PowerShell](automation-runbook-types.md#powershell-runbooks), [grafické sady Runbook](automation-runbook-types.md#graphical-runbooks)a [runbooky pracovního postupu prostředí PowerShell](automation-runbook-types.md#powershell-workflow-runbooks).
 
 ![Stavy úloh – pracovní postup prostředí PowerShell](./media/automation-runbook-execution/job-statuses.png)
 

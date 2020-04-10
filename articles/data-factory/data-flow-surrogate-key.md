@@ -1,55 +1,83 @@
 ---
-title: Mapování transformace náhradního klíče toku dat
+title: Transformace náhradního klíče v toku dat mapování
 description: Jak pomocí mapování datového toku Azure Data Factory pro transformaci náhradního klíče ke generování sekvenčních hodnot klíčů
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: bab48aa9079c1b8020bb828a6bb91bd244a78cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: e5ac25c002da121be3adadf0eed978dd60ba26d9
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930203"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010607"
 ---
-# <a name="mapping-data-flow-surrogate-key-transformation"></a>Mapování transformace náhradního klíče toku dat
+# <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Transformace náhradního klíče v toku dat mapování 
 
+Transformace náhradního klíče slouží k přidání přírůstkové hodnoty klíče do každého řádku dat. To je užitečné při navrhování tabulek dimenzí v analytickém datovém modelu schématu hvězd. Ve schématu hvězdičky vyžaduje každý člen v tabulkách dimenze jedinečný klíč, který není obchodním klíčem.
 
-
-Pomocí transformace náhradního klíče přidejte do sady řádků toku dat přírůstkovou hodnotu libovolného klíče, která nepodniká. To je užitečné při navrhování tabulek dimenzí v analytickém datovém modelu schématu hvězd, kde každý člen v tabulkách dimenzí musí mít jedinečný klíč, který je neobchodní klíč, který je součástí metodiky Kimball DW.
+## <a name="configuration"></a>Konfigurace
 
 ![Transformace náhradního klíče](media/data-flow/surrogate.png "Transformace náhradního klíče")
 
-"Klíčový sloupec" je název, který přidáte novému sloupci náhradního klíče.
+**Klíčový sloupec:** Název generovaného sloupce náhradního klíče.
 
-"Počáteční hodnota" je počátečníbod přírůstkové hodnoty.
+**Počáteční hodnota:** Nejnižší hodnota klíče, která bude generována.
 
 ## <a name="increment-keys-from-existing-sources"></a>Přírůstek klíče z existujících zdrojů
 
-Pokud chcete spustit sekvenci z hodnoty, která existuje ve zdroji, můžete použít transformaci odvozeného sloupce bezprostředně po transformaci náhradního klíče a přidat dvě hodnoty dohromady:
+Chcete-li spustit sekvenci z hodnoty, která existuje ve zdroji, použijte odvozenou transformaci sloupce po transformaci náhradního klíče a přidejte dvě hodnoty dohromady:
 
 ![SK přidat Max](media/data-flow/sk006.png "Náhradní transformace klíče Přidat max")
 
-Chcete-li osivo hodnotu klíče s předchozí max, existují dvě techniky, které můžete použít:
+### <a name="increment-from-existing-maximum-value"></a>Přírůstek z existující maximální hodnoty
 
-### <a name="database-sources"></a>Zdroje databáze
+Chcete-li osivo hodnotu klíče s předchozí max, existují dvě techniky, které můžete použít na základě místa, kde jsou zdrojová data.
 
-Pomocí možnosti "Dotaz" vyberte max() ze zdroje pomocí transformace zdroj:
+#### <a name="database-sources"></a>Zdroje databáze
+
+Pomocí možnosti dotazu SQL vyberte ze zdroje příkaz MAX(). Například`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
 ![Dotaz na náhradní klíč](media/data-flow/sk002.png "Dotaz na transformaci náhradního klíče")
 
-### <a name="file-sources"></a>Zdroje souborů
+#### <a name="file-sources"></a>Zdroje souborů
 
-Pokud je předchozí maximální hodnota v souboru, můžete použít transformaci Source společně s agregační transformací a použít funkci výrazu MAX() k získání předchozí maximální hodnoty:
+Pokud je předchozí maximální hodnota v `max()` souboru, použijte funkci v agregované transformaci k získání předchozí maximální hodnoty:
 
 ![Soubor náhradního klíče](media/data-flow/sk008.png "Soubor náhradního klíče")
 
-V obou případech je nutné spojit příchozí nová data spolu se zdrojem, který obsahuje předchozí maximální hodnotu:
+V obou případech je nutné spojit příchozí nová data spolu se zdrojem, který obsahuje předchozí maximální hodnotu.
 
 ![Připojení náhradního klíče](media/data-flow/sk004.png "Připojení náhradního klíče")
+
+## <a name="data-flow-script"></a>Skript toku dat
+
+### <a name="syntax"></a>Syntaxe
+
+```
+<incomingStream> 
+    keyGenerate(
+        output(<surrogateColumnName> as long),
+        startAt: <number>L
+    ) ~> <surrogateKeyTransformationName>
+```
+
+### <a name="example"></a>Příklad
+
+![Transformace náhradního klíče](media/data-flow/surrogate.png "Transformace náhradního klíče")
+
+Skript toku dat pro výše uvedenou konfiguraci náhradního klíče je ve fragmentu kódu níže.
+
+```
+AggregateDayStats
+    keyGenerate(
+        output(key as long),
+        startAt: 1L
+    ) ~> SurrogateKey1
+```
 
 ## <a name="next-steps"></a>Další kroky
 

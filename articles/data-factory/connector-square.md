@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: de795d082069ff5ad895c48b7a507512449d0208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0113e6a728009d6e24b469041c6e7dc065b79238
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931005"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990816"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopírování dat ze čtverce pomocí Azure Data Factory (Preview)
 
@@ -56,8 +56,8 @@ Pro propojenou službu Square jsou podporovány následující vlastnosti:
 | clientSecret | Tajný klíč klienta přidružený k aplikaci Square. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
 | redirectUri | Adresa URL přesměrování přiřazená v řídicím panelu aplikace Square. (tj. http:\//localhost:2500)  | Ano |
 | použitíEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, zda má být při připojování přes SSL vyžadován název hostitele v certifikátu serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, zda se má ověřit identita serveru při připojování přes SSL. Výchozí hodnotou je hodnota true.  | Ne |
+| useHostVerification | Určuje, zda má být při připojování přes TLS vyžadovánnázev hostitele v certifikátu serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| usePeerVerification | Určuje, zda se má ověřit identita serveru při připojování přes TLS. Výchozí hodnotou je hodnota true.  | Ne |
 
 **Příklad:**
 

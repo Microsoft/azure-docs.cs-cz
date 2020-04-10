@@ -5,12 +5,12 @@ author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: 876980bd6a59bace9ab4e490358964d19fa52c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586083"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991650"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Osvědčené postupy návrhu aplikace Azure Service Fabric
 
@@ -58,8 +58,8 @@ Ušetřete náklady a zlepšete dostupnost:
 ## <a name="how-to-work-with-reliable-services"></a>Jak pracovat se spolehlivými službami
 Service Fabric Spolehlivé služby umožňuje snadno vytvářet bezstavové a stavové služby. Další informace naleznete v [úvodu služby spolehlivé](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction).
 - Vždy ctít [zrušení](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) token `RunAsync()` v metodě pro bezstavové a stavové služby a metodu `ChangeRole()` pro stavové služby. Pokud tak nechcete, Service Fabric neví, pokud vaše služba může být uzavřena. Například pokud nectíte token zrušení, může dojít k mnohem delším časům upgradu aplikace.
--   Otevřete a zavřete [posluchače komunikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) včas a ctít tokeny zrušení.
--   Nikdy nekombinujte synchronizační kód s asynchronním kódem. Nepoužívejte `.GetAwaiter().GetResult()` například v asynchronních hovorech. Používejte asynchronní *celou cestu* přes zásobník volání.
+-    Otevřete a zavřete [posluchače komunikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) včas a ctít tokeny zrušení.
+-    Nikdy nekombinujte synchronizační kód s asynchronním kódem. Nepoužívejte `.GetAwaiter().GetResult()` například v asynchronních hovorech. Používejte asynchronní *celou cestu* přes zásobník volání.
 
 ## <a name="how-to-work-with-reliable-actors"></a>Jak pracovat se spolehlivými aktéry
 Service Fabric Reliable Actors umožňuje snadno vytvářet stavové virtuální objekty actor. Další informace naleznete v [úvodu spolehlivé herci](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction).
@@ -77,7 +77,7 @@ Service Fabric Reliable Actors umožňuje snadno vytvářet stavové virtuální
 Buďte důkladní při [přidávání protokolování aplikací](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) do servisních hovorů. To vám pomůže diagnostikovat scénáře, ve kterých služby volat navzájem. Například při volání B c volání D, volání může selhat kdekoli. Pokud nemáte dostatek protokolování, selhání je těžké diagnostikovat. Pokud služby jsou protokolování příliš mnoho z důvodu svazků volání, ujistěte se, že alespoň protokolovat chyby a upozornění.
 
 ## <a name="iot-and-messaging-applications"></a>Aplikace IoT a zasílání zpráv
-Při čtení zpráv z [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) nebo Azure Event [Hubs](https://docs.microsoft.com/azure/event-hubs/)použijte [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor). ServiceFabricProcessor integruje s Service Fabric spolehlivé služby k udržení stavu čtení z oddílů centra událostí a odesílá nové zprávy do vašich služeb prostřednictvím `IEventProcessor::ProcessEventsAsync()` metody.
+Při čtení zpráv z [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) nebo Azure Event [Hubs](https://docs.microsoft.com/azure/event-hubs/)použijte [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor). ServiceFabricProcessor integruje s Service Fabric spolehlivé služby k udržení stavu čtení z oddílů centra událostí a odesílá nové zprávy do vašich služeb prostřednictvím `IEventProcessor::ProcessEventsAsync()` metody.
 
 
 ## <a name="design-guidance-on-azure"></a>Pokyny k návrhu v Azure

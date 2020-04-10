@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 38f5778e363a16117bab482a758666ec81352afd
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 62c10a2ada9ff7d3bf7090028dd9684192517d02
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887564"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991386"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Jak sledovat latenci na straně serveru pro operace v kontejneru nebo účtu Azure Cosmos DB
 
@@ -35,11 +35,11 @@ Můžete vyhledat diagnostický protokol a zobrazit velikost vrácených dat. Po
 
 1. V podokně **Metriky** > **Vyberte zdroj** > zvolte požadované **předplatné**a **skupinu prostředků**. Pro **typ prostředku**vyberte **účty Azure Cosmos DB**, vyberte jeden z vašich existujících účtů Azure Cosmos a vyberte **Použít**.
    
-   ![Výběr účtu Cosmos DB pro zobrazení metrik](./media/monitor-server-side-latency/select-cosmosdb-account.png)
+   ![Výběr účtu Cosmos DB pro zobrazení metrik](./media/monitor-server-side-latency/select-cosmos-db-account.png)
 
 1. Dále vyberte metriku **latence na straně serveru** ze seznamu dostupných metrik. Podrobné informace o všech dostupných metrikách v tomto seznamu najdete v článku [Metriky podle kategorií.](monitor-cosmos-db-reference.md) V tomto příkladu vyberte **latenci na straně serveru** a **avg** jako hodnotu agregace. Kromě těchto podrobností můžete také vybrat **časový rozsah** a **rozlišovací** schopnost metrik. Při maximální mlze můžete zobrazit metriky za posledních 30 dní.  Po použití filtru se na základě filtru zobrazí graf. Můžete zobrazit průměrný počet jednotek požadavku spotřebovaných za minutu pro vybrané období.  
 
-   ![Výběr metriky latence na straně serveru z webu Azure Portal](./media/monitor-server-side-latency/serverside-latency-metric.png)
+   ![Výběr metriky latence na straně serveru z webu Azure Portal](./media/monitor-server-side-latency/server-side-latency-metric.png)
 
 ## <a name="filters-for-server-side-latency"></a>Filtry pro latenci na straně serveru
 
@@ -49,7 +49,7 @@ Chcete-li metriky filtrovat, vyberte **možnost Přidat filtr** a zvolte požado
 
 Metriky **latence na straně serveru** pro každou operaci jsou zobrazeny tak, jak je znázorněno na následujícím obrázku:
 
-![Filtry pro metriky latence na straně serveru](./media/monitor-server-side-latency/serverside-latency-filters.png)
+![Filtry pro metriky latence na straně serveru](./media/monitor-server-side-latency/server-side-latency-filters.png)
 
 Metriky můžete také seskupit pomocí možnosti **Použít rozdělení.**  
 

@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: c68b83726371d346019d18d0b066173f93196e6d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6ceace1ee93fab8c0a46ed4a67850fc87a5cdad2
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982051"
+ms.locfileid: "80991224"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v application insights
 
@@ -129,6 +129,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Povolení podpory distribuovaného trasování W3C pro aplikace Java
 
+#### <a name="java-30-agent"></a>Java 3.0 agent
+
+  Java 3.0 agent podporuje W3C po vybalení z krabice a není nutná žádná další konfigurace. 
+
+#### <a name="java-sdk"></a>Java SDK
 - **Příchozí konfigurace**
 
   - Pro aplikace Java EE přidejte `<TelemetryModules>` do tagu v ApplicationInsights.xml následující:
@@ -320,17 +325,32 @@ Je nový modul HTTP, [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.o
 Sada Application Insights SDK, počínaje verzí 2.4.0-beta1, používá `DiagnosticSource` a `Activity` shromažďuje telemetrii a přidružuje ji k aktuální aktivitě.
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java"></a>Korelace telemetrie v Javě
+## <a name="telemetry-correlation-in-java"></a>Korelace telemetrie v Jazyce Java
 
-[Application Insights Java agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) a [java sdk](../../azure-monitor/app/java-get-started.md) verze 2.0.0 nebo novější podporuje automatickou korelaci telemetrie. Automaticky naplní `operation_id` všechny telemetrie (jako trasování, výjimky a vlastní události) vydané v rámci požadavku. Také šíří záhlaví korelace (popsané výše) pro volání služby služby prostřednictvím protokolu HTTP, pokud je nakonfigurován [agent Java SDK.](../../azure-monitor/app/java-agent.md)
+[Java agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) a [java sdk](../../azure-monitor/app/java-get-started.md) verze 2.0.0 nebo novější podporuje automatickou korelaci telemetrie. Automaticky naplní `operation_id` všechny telemetrie (jako trasování, výjimky a vlastní události) vydané v rámci požadavku. Také šíří záhlaví korelace (popsané výše) pro volání služby služby prostřednictvím protokolu HTTP, pokud je nakonfigurován [agent Java SDK.](../../azure-monitor/app/java-agent.md)
 
 > [!NOTE]
 > Application Insights Java agent automaticky shromažďuje požadavky a závislosti pro JMS, Kafka, Netty/Webflux a další. Pro Java SDK jsou podporovány pouze volání prostřednictvím Apache HttpClient jsou podporovány pro funkci korelace. Automatické šíření kontextu napříč technologiemi zasílání zpráv (jako jsou Kafka, RabbitMQ a Azure Service Bus) není v sdk podporováno. 
 
-<a name="java-role-name"></a>
-## <a name="role-name"></a>Název role
+> [!NOTE]
+> Chcete-li sbírat vlastní telemetrii, musíte instrumentovat aplikaci pomocí sady Java 2.6 SDK. 
+
+### <a name="role-names"></a>Názvy rolí
 
 Můžete chtít přizpůsobit způsob zobrazení názvů součástí v [mapě aplikace](../../azure-monitor/app/app-map.md). Chcete-li tak učinit, můžete `cloud_RoleName` ručně nastavit provedením jedné z následujících akcí:
+
+- Pro Application Insights Java agent 3.0 nastavte název role cloudu takto:
+
+    ```json
+    {
+      "instrumentationSettings": {
+        "preview": {
+          "roleName": "my cloud role name"
+        }
+      }
+    }
+    ```
+    Můžete také nastavit název role cloudu `APPLICATIONINSIGHTS_ROLE_NAME`pomocí proměnné prostředí .
 
 - Pomocí sady Application Insights java sdcharty 2.5.0 `<RoleName>` a novějších můžete zadat přidání souboru `cloud_RoleName` ApplicationInsights.xml:
 

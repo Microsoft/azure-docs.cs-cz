@@ -1,6 +1,6 @@
 ---
 title: Videa platformy identit microsoftu | Azure
-description: Seznam videí o platformě microsoft identity
+description: Seznam videí o moderním ověřování a platformě identit microsoftu
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -8,24 +8,73 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/29/2020
+ms.date: 04/08/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8c7ec6cf1d15e414a6db54d5bc2ad7e4994cd82
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085198"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991292"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Videa k platformě Microsoft Identity Platform
 
-Další informace o platformě identit microsoftu a knihovnách Microsoft Authentication (MSAL). Jsou obvykle 1-2 minuty dlouhé.
+Seznamte se se základy moderního ověřování, platformou identit microsoftu a knihovnami Ověřování Microsoft (MSAL).
+
+## <a name="authentication-fundamentals"></a>Základy ověřování
+
+Pokud s koncepty, jako jsou poskytovatelé identit, tokeny zabezpečení, deklarace identity, nároky a okruh uživatelů, jste na tom tak, že tato série videí je dobrým místem, kde začít.
+___
+
+:::row:::
+    :::column:::
+        1 - Základy: Pojmy moderní autentizace (4:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+     :::column:::
+        2 - Moderní ověřování webových aplikací (6:02)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        3 - Jednotné webové přihlašování (04:13)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/51B-jSOBF8U?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        4 - Federované webové ověřování (6:19)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        5 - Nativní klientské aplikace - Část 1 (8:12)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/OGMDnuDrAcQ?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        6 - Nativní klientské aplikace - Část 2 (05:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/2RE6IhXfmHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
 
 ## <a name="microsoft-identity-platform-basics"></a>Základy platformy identit Microsoftu
 
-**Naučte se základní koncepty platformy identit Microsoftu**
+Seznamte se s komponentami platformy microsoftidentity, knihoven ověřování Microsoft (MSAL) a o tom, jak tyto součásti spolupracují se službou Azure Active Directory. One Dev Otázka videa jsou 1-2 minuty na délku.
+___
 
 :::row:::
     :::column:::
@@ -112,7 +161,8 @@ Další informace o platformě identit microsoftu a knihovnách Microsoft Authen
 
 ## <a name="migrate-from-v10-to-v20"></a>Migrace z v1.0 na v2.0
 
-**Informace o migraci na nejnovější verzi platformy Microsoft identit**
+Informace o migraci na nejnovější verzi platformy microsoft identit, včetně přechodu z knihovny ADAL (Active Directory Authentication Library) na MSAL.
+___
 
 :::row:::
     :::column:::

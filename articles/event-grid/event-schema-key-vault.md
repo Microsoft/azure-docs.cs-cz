@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 17404388b2b6c3fee1c6ab666f7233a66817f642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe186e2ba8f3cafeb4d186066ba65ae036302f70
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082871"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010507"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Schéma událostí Azure Event Grid pro Azure Key Vault (preview)
 
@@ -25,13 +25,13 @@ Tento článek obsahuje vlastnosti a schéma pro události v [azure key vault](.
 | Celé jméno události | Zobrazovaný název události | Popis |
 | ---------- | ----------- |---|
 | Microsoft.KeyVault.CertificateNewVersionVytvořeno | Byla vytvořena nová verze certifikátu | Aktivuje se při vytvoření nového certifikátu nebo nové verze certifikátu. |
-| Nearexpiry rozhraní Microsoft.KeyVault.Certificate | Certifikát blížící se vypršení platnosti | Aktivuje se, když vyprší platnost aktuální verze certifikátu. (Výchozí hodnota je 30 dní před datem vypršení platnosti.) |
+| Nearexpiry rozhraní Microsoft.KeyVault.Certificate | Certifikát blížící se vypršení platnosti | Aktivuje se, když vyprší platnost aktuální verze certifikátu. (Událost se spustí 30 dní před datem vypršení platnosti.) |
 | Platnost programu Microsoft.KeyVault.Certificate vypršela | Platnost certifikátu vypršela | Aktivuje se po vypršení platnosti certifikátu. |
 | Microsoft.KeyVault.KeyNewVersionVytvořeno | Vytvořena nová verze klíče | Aktivuje se při vytvoření nového klíče nebo nové verze klíče. |
-| Microsoft.KeyVault.KeyNearExpiry | Klíč v blízkosti vypršení platnosti | Aktivuje se, když vyprší platnost aktuální verze klíče. (Výchozí hodnota je 30 dní před datem vypršení platnosti.) |
+| Microsoft.KeyVault.KeyNearExpiry | Klíč v blízkosti vypršení platnosti | Aktivuje se, když vyprší platnost aktuální verze klíče. (Událost se spustí 30 dní před datem vypršení platnosti.) |
 | Platnost souboru Microsoft.KeyVault.KeyVypršela | Platnost klíče vypršela. | Aktivuje se při vypršení platnosti klíče. |
 | Microsoft.KeyVault.SecretNewVersionVytvořeno | Byla vytvořena tajná nová verze | Aktivuje se při vytvoření nového tajného nebo nového tajného klíče. |
-| Microsoft.KeyVault.SecretNearExpiry | Tajné téměř vypršení platnosti | Aktivuje se, když vyprší platnost aktuální verze tajného klíče. (Výchozí hodnota je 30 dní před datem vypršení platnosti.) |
+| Microsoft.KeyVault.SecretNearExpiry | Tajné téměř vypršení platnosti | Aktivuje se, když vyprší platnost aktuální verze tajného klíče. (Událost se spustí 30 dní před datem vypršení platnosti.) |
 | Platnost souboru Microsoft.KeyVault.SecretVypršela | Platnost tajného klíče vypršela | Aktivuje se při vypršení platnosti tajného klíče. |
 
 ## <a name="event-examples"></a>Příklady událostí

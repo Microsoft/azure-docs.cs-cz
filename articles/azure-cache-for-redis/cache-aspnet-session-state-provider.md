@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 25cef95e2d01012506148f03be45104e455e1fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530270"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010898"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Zprostředkovatel stavu relací ASP.NET pro Azure Cache for Redis
 
@@ -82,10 +82,10 @@ Komentář část obsahuje příklad atributů a ukázkové nastavení pro každ
 Nakonfigurujte atributy s hodnotami z okna mezipaměti na portálu Microsoft Azure a podle potřeby nakonfigurujte další hodnoty. Pokyny k přístupu ke vlastnostem mezipaměti najdete [v tématu Konfigurace mezipaměti Azure pro nastavení Redis](cache-configure.md#configure-azure-cache-for-redis-settings).
 
 * **host** – zadejte koncový bod mezipaměti.
-* **port** – v závislosti na nastavení ssl použijte buď port bez SSL, nebo port SSL.
+* **port** – v závislosti na nastavení TLS použijte port bez TLS/SSL nebo port TLS/SSL.
 * **accessKey** – použijte primární nebo sekundární klíč pro vaši mezipaměť.
-* **ssl** – true, pokud chcete zabezpečit cache / klient komunikace s ssl; jinak nepravdivé. Nezapomeňte zadat správný port.
-  * Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Zadejte hodnotu true pro toto nastavení, chcete-li použít port SSL. Další informace o povolení portu bez SSL naleznete v části [Přístupové porty](cache-configure.md#access-ports) v [tématu Konfigurace mezipaměti.](cache-configure.md)
+* **ssl** – true, pokud chcete zabezpečit komunikaci mezipaměť/klienta s TLS; jinak nepravdivé. Nezapomeňte zadat správný port.
+  * Port netls je ve výchozím nastavení zakázán pro nové mezipaměti. Zadejte hodnotu true pro toto nastavení, chcete-li použít port TLS. Další informace o povolení portu bez tls naleznete v části [Přístupové porty](cache-configure.md#access-ports) v [tématu Konfigurace mezipaměti.](cache-configure.md)
 * **throwOnError** – true, pokud chcete, aby byla vyvolána výjimka, pokud došlo k chybě, nebo false, pokud chcete, aby operace selhat tiše. Chybu můžete zkontrolovat kontrolou statické vlastnosti Microsoft.Web.Redis.RedisSessionStateProvider.LastException. Výchozí hodnota je true.
 * **retryTimeoutInMilliseconds** – operace, které se nezdaří, jsou opakovány během tohoto intervalu, zadané v milisekundách. První opakování dojde po 20 milisekund ách a pak opakování dojít každou sekundu, dokud interval retryTimeoutInMilliseconds vyprší. Ihned po tomto intervalu je operace zopakována naposledy. Pokud operace stále selže, je výjimka vyvolána zpět volajícímu, v závislosti na nastavení throwOnError. Výchozí hodnota je 0, což znamená žádné opakování.
 * **databaseId** – Určuje, která databáze se má použít pro výstupní data mezipaměti. Pokud není zadán, použije se výchozí hodnota 0.

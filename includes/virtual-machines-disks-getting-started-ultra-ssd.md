@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/14/2019
+ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0d081a8cec088f4743bd0dc7d3cc37a9fade61d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117233"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008622"
 ---
 Ultra disky Azure nabízejí vysokou propustnost, vysoké viopy a konzistentní diskové úložiště s nízkou latencí pro virtuální počítače Azure IaaS. Tato nová nabídka poskytuje špičkový výkon na stejné úrovni dostupnosti jako naše stávající nabídky disků. Jednou z hlavních výhod ultra disků je možnost dynamicky měnit výkon SSD spolu s vašimi úlohami bez nutnosti restartování virtuálních počítačů. Disky Ultra jsou vhodné pro úlohy náročné na data, jako jsou úlohy SAP HANA, databáze nejvyšší úrovně a úlohy s velkým počtem transakcí.
 
@@ -23,9 +23,11 @@ Ultra disky Azure nabízejí vysokou propustnost, vysoké viopy a konzistentní 
 
 ## <a name="determine-vm-size-and-region-availability"></a>Určení dostupnosti velikosti virtuálního počítače a oblasti
 
+### <a name="vms-using-availability-zones"></a>Virtuální aplikace používající zóny dostupnosti
+
 Chcete-li využít ultra disky, musíte určit, ve které zóně dostupnosti se právě nacházejíte. Ne každá oblast podporuje každou velikost virtuálního počítače s ultra disky. Chcete-li zjistit, zda velikost oblasti, zóny a virtuálního počítače podporuje ultra disky, spusťte některý z následujících příkazů, nejprve vyměňte hodnoty **oblasti**, **vmSize**a **předplatného:**
 
-Cli:
+#### <a name="cli"></a>Rozhraní příkazového řádku
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -37,7 +39,7 @@ $vmSize = "<yourVMSize>"
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
 
-PowerShell:
+#### <a name="powershell"></a>PowerShell
 
 ```powershell
 $region = "southeastasia"
@@ -58,9 +60,58 @@ Zachovat hodnotu **Zóny,** představuje zónu dostupnosti a budete ji potřebov
 
 Teď, když víte, do které zóny se nasadit, postupujte podle kroků nasazení v tomto článku a nasaďte virtuální počítač s připojeným ultra diskem nebo připojte ultra disk k existujícímu virtuálnímu počítači.
 
+### <a name="vms-with-no-redundancy-options"></a>Virtuální aplikace bez možností redundance
+
+Ultra disky nasazené v západní CHOdusa musí být prozatím nasazeny bez možnosti redundance. Však ne každá velikost disku, který podporuje ultra disky může být v této oblasti. Chcete-li zjistit, které z nich v usa v západní USA podporují ultra disky, můžete použít některý z následujících fragmentů kódu. Nejprve nezapomeňte `vmSize` nahradit `subscription` hodnoty a:
+
+```azurecli
+$subscription = "<yourSubID>"
+$region = "westus"
+# example value is Standard_E64s_v3
+$vmSize = "<yourVMSize>"
+
+az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
+```
+
+```azurepowershell
+$region = "westus"
+$vmSize = "Standard_E64s_v3"
+(Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) })[0].Capabilities
+```
+
+Odpověď bude podobná následujícímu formuláři, označuje, `UltraSSDAvailable   True` zda velikost virtuálního počítače podporuje ultra disky v této oblasti.
+
+```
+Name                                         Value
+----                                         -----
+MaxResourceVolumeMB                          884736
+OSVhdSizeMB                                  1047552
+vCPUs                                        64
+HyperVGenerations                            V1,V2
+MemoryGB                                     432
+MaxDataDiskCount                             32
+LowPriorityCapable                           True
+PremiumIO                                    True
+VMDeploymentTypes                            IaaS
+vCPUsAvailable                               64
+ACUs                                         160
+vCPUsPerCore                                 2
+CombinedTempDiskAndCachedIOPS                128000
+CombinedTempDiskAndCachedReadBytesPerSecond  1073741824
+CombinedTempDiskAndCachedWriteBytesPerSecond 1073741824
+CachedDiskBytes                              1717986918400
+UncachedDiskIOPS                             80000
+UncachedDiskBytesPerSecond                   1258291200
+EphemeralOSDiskSupported                     True
+AcceleratedNetworkingEnabled                 True
+RdmaEnabled                                  False
+MaxNetworkInterfaces                         8
+UltraSSDAvailable                            True
+```
+
 ## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Nasazení ultradisku pomocí Azure Resource Manageru
 
-Nejprve určete velikost virtuálního počítače, který chcete nasadit. Seznam podporovaných velikostí virtuálních počítače najdete v tématu oddíl [oboru a omezení GA.](#ga-scope-and-limitations)
+Nejprve určete velikost virtuálního počítače, který chcete nasadit. Seznam podporovaných velikostí virtuálních počítače najdete v části [Rozsah a omezení GA.](#ga-scope-and-limitations)
 
 Pokud chcete vytvořit virtuální počítač s více ultra disky, podívejte se na [ukázku Vytvoření virtuálního počítače s více ultra disky](https://aka.ms/ultradiskArmTemplate).
 
@@ -151,6 +202,18 @@ Nahraďte nebo nastavte proměnné **$vmname**, **$rgname**, **$diskname**, **$l
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
 ```
 
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Povolení kompatibility ultra disku na existujícím virtuálním počítači
+
+Pokud váš virtuální počítač splňuje požadavky popsané v [oboru ga a omezení](#ga-scope-and-limitations) a je v příslušné zóně pro váš [účet](#determine-vm-size-and-region-availability), pak můžete povolit kompatibilitu ultra disk na vašem virtuálním počítači.
+
+Chcete-li povolit kompatibilitu ultra disku, musíte zastavit virtuální počítač. Po zastavení virtuálního počítače můžete povolit kompatibilitu, připojit ultra disk a restartovat virtuální počítač:
+
+```azurecli
+az vm deallocate -n $vmName -g $rgName
+az vm update -n $vmName -g $rgName --ultra-ssd-enabled true
+az vm start -n $vmName -g $rgName
+```
+
 ### <a name="create-an-ultra-disk-using-cli"></a>Vytvoření ultra disku pomocí cli
 
 Teď, když máte virtuální počítač, který je schopný připojit ultra disky, můžete k němu vytvořit a připojit ultra disk.
@@ -214,9 +277,22 @@ New-AzVm `
     -Name $vmName `
     -Location "eastus2" `
     -Image "Win2016Datacenter" `
-    -EnableUltraSSD `
+    -EnableUltraSSD $true `
     -size "Standard_D4s_v3" `
     -zone $zone
+```
+
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Povolení kompatibility ultra disku na existujícím virtuálním počítači
+
+Pokud váš virtuální počítač splňuje požadavky popsané v [oboru ga a omezení](#ga-scope-and-limitations) a je v příslušné zóně pro váš [účet](#determine-vm-size-and-region-availability), pak můžete povolit kompatibilitu ultra disk na vašem virtuálním počítači.
+
+Chcete-li povolit kompatibilitu ultra disku, musíte zastavit virtuální počítač. Po zastavení virtuálního počítače můžete povolit kompatibilitu, připojit ultra disk a restartovat virtuální počítač:
+
+```azurepowershell
+#stop the VM
+$vm1 = Get-AzureRMVM -name $vmName -ResourceGroupName $rgName
+Update-AzureRmVM -ResourceGroupName $rgName -VM $vm1 -UltraSSDEnabled 1
+#start the VM
 ```
 
 ### <a name="create-an-ultra-disk-using-powershell"></a>Vytvoření ultradisku pomocí PowerShellu
@@ -265,7 +341,3 @@ Ultra disky mají jedinečnou schopnost, která vám umožní upravit jejich vý
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
-
-## <a name="next-steps"></a>Další kroky
-
-Chcete-li vyzkoušet nový typ [disku, požádejte o přístup k tomuto průzkumu](https://aka.ms/UltraDiskSignup).

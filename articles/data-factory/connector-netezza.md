@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c7e17f7c4493560bd6118b8d4837fd795a6ab0c8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 69e2a0fe63be65a2b5d51f7bd2e0885fcbfc5bbb
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422865"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991667"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezzy pomocí Azure Data Factory
 
@@ -63,8 +63,8 @@ Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<datab
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| Úroveň zabezpečení | Úroveň zabezpečení (SSL/TLS), kterou ovladač používá pro připojení k úložišti dat. Příklad: `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>- **Pouze nezabezpečené** **(pouzeNezabezpečené):** Ovladač nepoužívá SSL.<br/>- **Upřednostňované nezabezpečené (upřednostňovanéNezabezpečené) (výchozí):** Pokud server poskytuje možnost volby, ovladač nepoužívá SSL. <br/>- **Upřednostňované zabezpečené (preferredSecured)**: Pokud server poskytuje možnost volby, ovladač používá SSL. <br/>- **Pouze zabezpečené (pouzeZabezpečené)**: Ovladač se nepřipojí, pokud není k dispozici připojení SSL. | Ne |
-| Soubor CaCert | Úplná cesta k certifikátu SSL, který používá server. Příklad: `CaCertFile=<cert path>;`| Ano, pokud je povolen protokol SSL |
+| Úroveň zabezpečení | Úroveň zabezpečení (SSL/TLS), kterou ovladač používá pro připojení k úložišti dat. Příklad: `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>- **Pouze nezabezpečené** **(pouzeNezabezpečené):** Ovladač nepoužívá TLS.<br/>- **Upřednostňované nezabezpečené (upřednostňovanéNezabezpečené) (výchozí):** Pokud server poskytuje možnost volby, ovladač nepoužívá TLS. <br/>- **Upřednostňované zabezpečené (preferredSecured)**: Pokud server poskytuje možnost volby, ovladač používá TLS. <br/>- **Pouze zabezpečené (pouzeZabezpečené)**: Ovladač se nepřipojí, pokud není k dispozici připojení TLS. | Ne |
+| Soubor CaCert | Úplná cesta k certifikátu TLS/SSL, který používá server. Příklad: `CaCertFile=<cert path>;`| Ano, pokud je povolen a je povolen protokol TLS |
 
 **Příklad**
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: c3491a54682e8f2b244c0400480a69e083335f5c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548631"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008385"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure v klidovém stavu
 
@@ -263,22 +263,30 @@ Podpora šifrování serveru je aktuálně poskytována prostřednictvím funkce
 |                                  | **Pomocí klíče spravovaného službou na straně serveru**     | **Na straně serveru pomocí klíče spravovaného zákazníkem**             | **Na straně klienta pomocí klientského klíče**      |
 | **Umělá a počítačová výuka**      |                    |                    |                    |
 | Azure Cognitive Search           | Ano                | Ano                | -                  |
+| Azure Cognitive Services         | Ano                | Ano                | -                  |
 | Azure Machine Learning           | Ano                | Ano                | -                  |
 | Azure Machine Learning Studio    | Ano                | Náhled, RSA 2048-bit | -               |
+| Content Moderator                | Ano                | Ano                | -                  |
+| Tvář                             | Ano                | Ano                | -                  |
+| Language Understanding           | Ano                | Ano                | -                  |
+| Personalizace                     | Ano                | Ano                | -                  |
+| QnA Maker                        | Ano                | Ano                | -                  |
+| Hlasové služby                  | Ano                | Ano                | -                  |
+| Translator Text                  | Ano                | Ano                | -                  |
 | Power BI                         | Ano                | Náhled, RSA 2048-bit | -                  |
 | **Analýza**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ano                | -                  | -                  |
+| Azure Stream Analytics           | Ano                | –\*            | -                  |
 | Event Hubs                       | Ano                | Ano, všechny délky RSA. | -                  |
 | Functions                        | Ano                | Ano, všechny délky RSA. | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
 | Azure Data Catalog               | Ano                | -                  | -                  |
-| Apache Kafka ve službě Azure HDInsight  | Ano                | Všechny délky RSA.   | -                  |
+| Azure HDInsight                  | Ano                | Všechny                | -                  |
 | Přehledy aplikací Azure Monitor | Ano                | Ano                | -                  |
 | Azure Monitor Log Analytics | Ano                | Ano                | -                  |
 | Průzkumník dat Azure              | Ano                | Ano                | -                  |
 | Azure Data Factory               | Ano                | Ano                | -                  |
 | Azure Data Lake Store            | Ano                | Ano, RSA 2048-bit  | -                  |
-| **Kontejnery**                   |                    |                    |                    |
+| **Containers**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Ano                | Ano                | -                  |
 | Container Instances              | Ano                | Ano                | -                  |
 | Container Registry               | Ano                | Ano                | -                  |
@@ -305,7 +313,7 @@ Podpora šifrování serveru je aktuálně poskytována prostřednictvím funkce
 | Azure Cosmos DB                  | Ano                | Ano                | -                  |
 | Azure Databricks                 | Ano                | Ano                | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps                     | Ano                | -                  | Ano                |
+| Azure DevOps Services            | Ano                | -                  | Ano                |
 | Azure Repos                      | Ano                | -                  | Ano                |
 | **Identita**                     |                    |                    |                    |
 | Azure Active Directory           | Ano                | -                  | -                  |
@@ -316,24 +324,35 @@ Podpora šifrování serveru je aktuálně poskytována prostřednictvím funkce
 | API Management                   | Ano                | -                  | -                  |
 | **Služby IoT**                 |                    |                    |                    |
 | IoT Hub                          | Ano                | Ano                | Ano                |
+| Zřizování zařízení centra IoT      | Ano                | Ano                | -                  |
 | **Správa a zásady správného řízení**    |                    |                    |                    |
 | Azure Site Recovery              | Ano                | -                  | -                  |
+| Azure Migrate                    | Ano                | Ano                | -                  |
 | **Média**                        |                    |                    |                    |
 | Media Services                   | Ano                | -                  | Ano                |
-| **Úložiště**                      |                    |                    |                    |
+| **Zabezpečení**                     |                    |                    |                    |
+| Azure Security Center for IoT    | Ano                | Ano                | -                  |
+| Azure Sentinel                   | Ano                | Ano                | -                  |
+| **Storage**                      |                    |                    |                    |
 | Blob Storage                     | Ano                | Ano, RSA 2048-bit  | Ano                |
+| Prémiové úložiště objektů blob             | Ano                | Ano, RSA 2048-bit  | Ano                |
 | Disk Storage                     | Ano                | Ano                | -                  |
+| Úložiště ultra disků               | Ano                | Ano                | -                  |
 | Spravované diskové úložiště             | Ano                | Ano                | -                  |
 | File Storage                     | Ano                | Ano, RSA 2048-bit  | -                  |
+| Úložiště souborového premiumu             | Ano                | Ano, RSA 2048-bit  | -                  |
+| Synchronizace souborů                        | Ano                | Ano, RSA 2048-bit  | -                  |
 | Queue Storage                    | Ano                | Ano                | Ano                |
 | Avere vFXT                       | Ano                | -                  | -                  |
-| Azure NetApp Files               | Ano                | -                  | -                  |
+| Azure NetApp Files               | Ano                | Ano                | -                  |
 | Archiv služby Storage                  | Ano                | Ano, RSA 2048-bit  | -                  |
 | StorSimple                       | Ano                | Ano, RSA 2048-bit  | Ano                |
 | Azure Backup                     | Ano                | Ano                | Ano                |
 | Data Box                         | Ano                | -                  | Ano                |
 | Data Box Edge                    | Ano                | Ano                | -                  |
 
+\*Tato služba neuchovává data. Přechodné mezipaměti, pokud existují, jsou šifrovány pomocí klíče společnosti Microsoft.
+
 ## <a name="conclusion"></a>Závěr
 
-Ochrana zákaznických dat uložených ve službách Azure má pro Microsoft prvořadý význam. Všechny hostované služby Azure se zavázaly k poskytování šifrování v klidovém stavu. Základní služby, jako je Azure Storage, Azure SQL Database a klíčové analýzy a zpravodajské služby, už už poskytují možnosti šifrování v klidovém stavu. Některé z těchto služeb podporují klíče řízené zákazníkem a šifrování na straně klienta, stejně jako klíče spravované službou a šifrování. Služby Microsoft Azure obecně zvyšují dostupnost šifrování v klidovém stavu a v nadcházejících měsících se plánují nové možnosti pro předběžnou verzi a obecnou dostupnost.
+Ochrana zákaznických dat uložených ve službách Azure má pro Microsoft prvořadý význam. Všechny hostované služby Azure se zavázaly k poskytování šifrování v klidovém stavu. Služby Azure podporují buď klíče spravované službou, klíče spravované zákazníkem nebo šifrování na straně klienta. Služby Azure obecně zvyšují dostupnost šifrování v klidovém stavu a v nadcházejících měsících se plánují nové možnosti pro předběžnou verzi a obecnou dostupnost.

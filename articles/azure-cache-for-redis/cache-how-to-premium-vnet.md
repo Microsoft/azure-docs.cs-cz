@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 6c7c041565f6376e7f8b8b84f5076b30c1eec7bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2821ee637b2562b5287dd3d59cf943b3dcb7ef97
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278113"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010881"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat podporu virtuálních sítí pro prémiovou mezipaměť Azure pro Redis
 Azure Cache for Redis má různé nabídky mezipaměti, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně funkcí úrovně Premium, jako je clustering, trvalost a podpora virtuálních sítí. Virtuální síť je privátní síť v cloudu. Když je instance Azure Cache for Redis nakonfigurovaná pomocí virtuální sítě, není veřejně adresovatelná a je přístupná jenom z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje, jak nakonfigurovat podporu virtuální sítě pro prémiovou instanci Azure Cache for Redis.
@@ -118,7 +118,7 @@ Existuje devět požadavků na odchozí port. Odchozí požadavky v těchto rozs
 
 #### <a name="geo-replication-peer-port-requirements"></a>Požadavky na porty partnerských uzlů geografické replikace
 
-Pokud používáte geografickou replikaci mezi mezipaměti ve virtuálních sítích Azure, vezměte prosím na vědomí, že doporučená konfigurace je odblokovat porty 15000-15999 pro celou podsíť v příchozích i odchozích směrech do obou mezipamětí, takže všechny součásti replik v podsíti může komunikovat přímo mezi sebou i v případě budoucího geo-převzetí služeb při selhání.
+Pokud používáte geografickou replikaci mezi mezipaměti ve virtuálních sítích Azure, vezměte prosím na vědomí, že doporučená konfigurace je odblokovat porty 15000-15999 pro celou podsíť v příchozích i odchozích směrech do obou mezipamětí, takže všechny součásti replik v podsíti mohou komunikovat přímo mezi sebou i v případě budoucího geografického převzetí služeb při selhání.
 
 #### <a name="inbound-port-requirements"></a>Požadavky na port pro příchozí spojení
 
@@ -142,9 +142,9 @@ Existuje osm požadavků na rozsah příchozích portů. Příchozí požadavky 
 Existují požadavky na připojení k síti pro Azure Cache pro Redis, které nemusí být zpočátku splněny ve virtuální síti. Azure Cache for Redis vyžaduje, aby všechny následující položky fungovaly správně, pokud jsou používány ve virtuální síti.
 
 * Odchozí síťové připojení ke koncovým bodům Azure Storage po celém světě. To zahrnuje koncové body umístěné ve stejné oblasti jako instance Azure Cache for Redis, stejně jako koncové body úložiště umístěné v **jiných** oblastech Azure. Koncové body Azure Storage se řeší v následujících doménách DNS: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net*a *file.core.windows.net*. 
-* Odchozí síťové připojení k *ocsp.msocsp.com*, *mscrl.microsoft.com*a *crl.microsoft.com*. Toto připojení je potřebné pro podporu funkcí SSL.
+* Odchozí síťové připojení k *ocsp.msocsp.com*, *mscrl.microsoft.com*a *crl.microsoft.com*. Toto připojení je potřebné pro podporu funkcí TLS/SSL.
 * Konfigurace DNS pro virtuální síť musí být schopná vyřešit všechny koncové body a domény uvedené v předchozích bodech. Tyto požadavky DNS lze splnit zajištěním platné infrastruktury DNS je nakonfigurován a udržován pro virtuální síť.
-* Odchozí síťové připojení k následujícím koncovým bodům Azure Monitoring, které řeší v následujících doménách DNS: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net azglobal-black.azglobal.metrics.nsatc.net , shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
+* Odchozí síťové připojení k následujícím koncovým bodům Azure Monitoring, které se řeší v následujících doménách DNS: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Jak ověřit fungování mezipaměti ve virtuální síti?
 
@@ -157,7 +157,7 @@ Jakmile jsou požadavky na port nakonfigurovány tak, jak je popsáno v předcho
 
 - [Restartujte](cache-administration.md#reboot) všechny uzly mezipaměti. Pokud není možné dosáhnout všech požadovaných závislostí mezipaměti (jak je popsáno v [požadavcích na příchozí port](cache-how-to-premium-vnet.md#inbound-port-requirements) a [požadavky na odchozí port](cache-how-to-premium-vnet.md#outbound-port-requirements)), nebude možné úspěšně restartovat mezipaměť.
 - Po restartování uzlů mezipaměti (jak je uvedeno stav mezipaměti na webu Azure Portal), můžete provést následující testy:
-  - příkaz příkaz příkazem ping koncového bodu mezipaměti (pomocí portu 6380) z počítače, který je ve stejné virtuální síti jako cache, pomocí [tcping](https://www.elifulkerson.com/projects/tcping.php). Například:
+  - příkaz příkaz příkazem ping koncového bodu mezipaměti (pomocí portu 6380) z počítače, který je ve stejné virtuální síti jako cache, pomocí [tcping](https://www.elifulkerson.com/projects/tcping.php). Příklad:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -180,7 +180,7 @@ Nepoužívejte adresu IP podobnou následujícímu připojovacímu řetězci:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Pokud nemůžete přeložit název DNS, některé klientské knihovny `sslHost` obsahují možnosti konfigurace, jako je to, které poskytuje klient StackExchange.Redis. To umožňuje přepsat název hostitele používaný pro ověření certifikátu. Například:
+Pokud nemůžete přeložit název DNS, některé klientské knihovny `sslHost` obsahují možnosti konfigurace, jako je to, které poskytuje klient StackExchange.Redis. To umožňuje přepsat název hostitele používaný pro ověření certifikátu. Příklad:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
@@ -220,13 +220,13 @@ Pokud je to možné, doporučujeme použít následující konfiguraci:
 
 Kombinovaný efekt těchto kroků je, že úroveň podsítě UDR má přednost před expressroute vynucené tunelové propojení, čímž je zajištěn odchozí přístup k Internetu z mezipaměti Azure pro Redis.
 
-Připojení k instanci Azure Cache for Redis z místní aplikace pomocí ExpressRoute není typický scénář použití z důvodů výkonu (pro nejlepší výkon Azure Cache pro klienty Redis by měl být ve stejné oblasti jako Azure Cache for Redis) .
+Připojení k instanci Azure Cache for Redis z místní aplikace pomocí ExpressRoute není typický scénář použití z důvodu výkonu (pro nejlepší výkon Azure Cache pro klienty Redis by měl být ve stejné oblasti jako Azure Cache pro Redis).
 
 >[!IMPORTANT] 
 >Trasy definované v UDR **musí** být dostatečně specifické, aby měly přednost před všemi trasami inzerovanými konfigurací ExpressRoute. Následující příklad používá široký rozsah adres 0.0.0.0/0 a jako takový může být potenciálně náhodně přepsán a reklamy na trasu pomocí konkrétnější rozsahy adres.
 
 >[!WARNING]  
->Azure Cache for Redis není podporována konfiguracemi ExpressRoute, které **nesprávně inzerují trasy z cesty veřejného partnerského vztahu k cestě soukromého partnerského vztahu**. Konfigurace ExpressRoute, které mají nakonfigurované veřejný partnerský vztah, přijímají inzerování tras od Microsoftu pro rozsáhlou sadu rozsahů IP adres Microsoft Azure. Pokud jsou tyto rozsahy adres nesprávně inzerovány v cestě soukromého partnerského vztahu, výsledkem je, že všechny odchozí síťové pakety z podsítě instance Azure Cache pro redis jsou nesprávně vynutitně tunelované do místní sítě zákazníka Infrastruktury. Tento tok sítě přeruší mezipaměť Azure pro Redis. Řešením tohoto problému je zastavit křížové reklamní trasy z cesty veřejného partnerského vztahu k cestě soukromého partnerského vztahu.
+>Azure Cache for Redis není podporována konfiguracemi ExpressRoute, které **nesprávně inzerují trasy z cesty veřejného partnerského vztahu k cestě soukromého partnerského vztahu**. Konfigurace ExpressRoute, které mají nakonfigurované veřejný partnerský vztah, přijímají inzerování tras od Microsoftu pro rozsáhlou sadu rozsahů IP adres Microsoft Azure. Pokud jsou tyto rozsahy adres nesprávně inzerovány v cestě soukromého partnerského vztahu, výsledkem je, že všechny odchozí síťové pakety z podsítě instance Azure Cache pro redis jsou nesprávně vynuceně tunelovány do místní síťové infrastruktury zákazníka. Tento tok sítě přeruší mezipaměť Azure pro Redis. Řešením tohoto problému je zastavit křížové reklamní trasy z cesty veřejného partnerského vztahu k cestě soukromého partnerského vztahu.
 
 
 V tomto [přehledu](../virtual-network/virtual-networks-udr-overview.md)jsou k dispozici základní informace o uživatelem definovaných trasách .

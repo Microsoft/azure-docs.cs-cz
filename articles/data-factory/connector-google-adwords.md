@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.openlocfilehash: b01dcad71747da6b7aa770e3993cb82892ae55fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d536b706db85603624e0fa2362df7c537958f6f2
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929438"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991599"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Kopírování dat ze služby Google AdWords pomocí Azure Data Factory
 
@@ -55,7 +55,7 @@ Pro propojenou službu Google AdWords jsou podporovány následující služby:
 | clientSecret | Tajný klíč klienta aplikace Google použitý k získání obnovovacího tokenu. Toto pole můžete označit jako securestring pro bezpečné uložení v adf nebo ukládat heslo v trezoru klíčů Azure a nechat adf kopírovat aktivitu vytáhnout odtud při provádění kopírování dat - další informace z [přihlašovacích údajů úložiště v trezoru klíčů](store-credentials-in-key-vault.md). | Ne |
 | e-mail | ID e-mailu účtu služby, který se používá pro ServiceAuthentication a lze použít pouze na samostatně hostované infračervené ovládání.  | Ne |
 | keyFilePath | Úplnou cestu k souboru klíče .p12, který se používá k ověření e-mailové adresy účtu služby a lze jej použít pouze na samoobslužné infračervené ovládání.  | Ne |
-| trustedCertPath | Úplná cesta k souboru PEM obsahujícího důvěryhodné certifikáty certifikační autority pro ověření serveru při připojování přes SSL. Tuto vlastnost lze nastavit pouze při použití ssl na samoobslužné infračervené ovládání. Výchozí hodnota je soubor cacerts.pem nainstalovaný s infračerveným přenosem.  | Ne |
+| trustedCertPath | Úplná cesta k souboru PEM obsahujícího důvěryhodné certifikáty certifikační autority pro ověření serveru při připojování přes TLS. Tuto vlastnost lze nastavit pouze při použití TLS na samostatně hostované infračervené ovládání. Výchozí hodnota je soubor cacerts.pem nainstalovaný s infračerveným přenosem.  | Ne |
 | useSystemTrustStore | Určuje, zda se má použít certifikát certifikační autority z úložiště důvěryhodných certifikátů systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | Ne |
 
 **Příklad:**

@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 8cb4af8faccb68c455928c0d3c5405ef2d3e70df
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742706"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011017"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Indexování tabulek ve fondu Synapse SQL
 
@@ -52,9 +52,9 @@ Existuje několik scénářů, kde clusterované columnstore nemusí být dobrou
 
 ## <a name="heap-tables"></a>Tabulky hald
 
-Při dočasném přistání dat v fondu SYNAPse SQL, můžete zjistit, že pomocí haldy tabulky je celkový proces rychlejší. Důvodem je, že zatížení do hromady jsou rychlejší než index tabulky a v některých případech následné čtení lze provést z mezipaměti.  Pokud načítáte data pouze k fázi před spuštěním více transformací, načítání tabulky haldy tabulka je mnohem rychlejší než načítání dat do clusterované columnstore tabulky. Kromě toho načítání dat do [dočasné tabulky](sql-data-warehouse-tables-temporary.md) načte rychleji než načítání tabulky do trvalého úložiště.  
+Při dočasném přistání dat v fondu SYNAPse SQL, můžete zjistit, že pomocí haldy tabulky je celkový proces rychlejší. Důvodem je, že zatížení do hromady jsou rychlejší než index tabulky a v některých případech následné čtení lze provést z mezipaměti.  Pokud načítáte data pouze k fázi před spuštěním více transformací, načítání tabulky haldy tabulka je mnohem rychlejší než načítání dat do clusterované columnstore tabulky. Kromě toho načítání dat do [dočasné tabulky](sql-data-warehouse-tables-temporary.md) načte rychleji než načítání tabulky do trvalého úložiště.  Po načtení dat můžete vytvořit indexy v tabulce pro rychlejší výkon dotazu.  
 
-Pro malé vyhledávací tabulky, méně než 60 milionů řádků, často haldy tabulky smysl.  Cluster columnstore tabulky začnou dosáhnout optimální komprese, jakmile je více než 60 milionů řádků.
+Cluster columnstore tabulky začnou dosáhnout optimální komprese, jakmile je více než 60 milionů řádků.  Pro malé vyhledávací tabulky, méně než 60 milionů řádků, zvažte použití haldy nebo seskupený index pro rychlejší výkon dotazu. 
 
 Chcete-li vytvořit tabulku haldy, jednoduše zadejte haldu v klauzuli WITH:
 

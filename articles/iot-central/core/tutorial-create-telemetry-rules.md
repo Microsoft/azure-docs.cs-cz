@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0d55bafc513ef7553952ee2096ea32db65d6205d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673776"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999056"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Kurz: Vytvoření pravidla a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -34,11 +34,11 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, [dokončete vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md) a [přidejte simulované zařízení do](./quick-create-pnp-device.md) rychlých startů aplikace IoT Central a vytvořte šablonu zařízení **MXChip IoT DevKit,** se kterou budete pracovat.
+Než začnete, [dokončete vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md) a [přidejte simulované zařízení do](./quick-create-simulated-device.md) rychlých startů aplikace IoT Central a vytvořte šablonu zařízení **MXChip IoT DevKit,** se kterou budete pracovat.
 
 ## <a name="create-a-rule"></a>Vytvoření pravidla
 
-Chcete-li vytvořit pravidlo telemetrie, musí šablona zařízení obsahovat alespoň jednu hodnotu telemetrie. Tento kurz používá simulované zařízení **MXChip IoT DevKit,** které odesílá telemetrii teploty a vlhkosti. Tuto šablonu zařízení jste přidali a vytvořili simulované zařízení v rychlém startu [přidat simulované zařízení do aplikace IoT Central.](./quick-create-pnp-device.md) Pravidlo monitoruje teplotu hlášenou zařízením a odešle e-mail, když jde nad 70 stupňů.
+Chcete-li vytvořit pravidlo telemetrie, musí šablona zařízení obsahovat alespoň jednu hodnotu telemetrie. Tento kurz používá simulované zařízení **MXChip IoT DevKit,** které odesílá telemetrii teploty a vlhkosti. Tuto šablonu zařízení jste přidali a vytvořili simulované zařízení v rychlém startu [přidat simulované zařízení do aplikace IoT Central.](./quick-create-simulated-device.md) Pravidlo monitoruje teplotu hlášenou zařízením a odešle e-mail, když jde nad 70 stupňů.
 
 1. V levém podokně vyberte **Pravidla**.
 

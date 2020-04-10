@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: b215531fdc1a1bb07b33c427623d5cd4f5f8219a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc81e66e609400c6558f00ee957ccaee715bd7fa
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252480"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991633"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopírování dat ze serveru FTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
@@ -62,7 +62,7 @@ Pro propojenou službu FTP jsou podporovány následující vlastnosti:
 | host | Zadejte název nebo adresu IP serveru FTP. | Ano |
 | port | Určete port, na kterém server FTP naslouchá.<br/>Povolené hodnoty jsou: celé číslo, výchozí hodnota je **21**. | Ne |
 | enableSsl | Určete, zda se má použít FTP přes kanál SSL/TLS.<br/>Povolené hodnoty jsou: **true** (výchozí), **false**. | Ne |
-| enableServerCertificateValidation | Určete, zda chcete povolit ověření certifikátu SSL serveru, pokud používáte FTP přes kanál SSL/TLS.<br/>Povolené hodnoty jsou: **true** (výchozí), **false**. | Ne |
+| enableServerCertificateValidation | Určete, zda chcete povolit ověření certifikátu TLS/SSL serveru, pokud používáte FTP přes kanál SSL/TLS.<br/>Povolené hodnoty jsou: **true** (výchozí), **false**. | Ne |
 | authenticationType | Zadejte typ ověřování.<br/>Povolené hodnoty jsou: **Základní**, **Anonymní** | Ano |
 | userName | Zadejte uživatele, který má přístup k serveru FTP. | Ne |
 | heslo | Zadejte heslo pro uživatele (userName). Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ne |

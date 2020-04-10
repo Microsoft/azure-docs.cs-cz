@@ -1,5 +1,5 @@
 ---
-title: Začínáme s konfigurací stavu automatizace Azure
+title: Začínáme s konfigurací stavu azure automatizace
 description: Vysvětlení a příklady nejběžnějších úloh v konfiguraci stavu automatizace Azure (DSC)
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fce9a769dd6d88c9926913d22716666284938c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c33fbed6c547897847c79cc1260d2bdc9ec6b17
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74850954"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010320"
 ---
-# <a name="getting-started-with-azure-automation-state-configuration"></a>Začínáme s konfigurací stavu automatizace Azure
+# <a name="get-started-with-azure-automation-state-configuration"></a>Začínáme s konfigurací stavu azure automatizace
 
 Tento článek vysvětluje, jak provést nejběžnější úkoly s Azure Automation state Configuration, jako je vytváření, import a kompilace konfigurací, připojení počítačů pro správu a zobrazení sestav. Přehled konfigurace stavu automatizace Azure najdete v tématu [Přehled konfigurace stavu automatizace Azure](automation-dsc-overview.md). Dokumentace k požadované konfiguraci stavu (DSC) naleznete v tématu [Windows PowerShell Přehled konfigurace požadovaného stavu](/powershell/scripting/dsc/overview/overview).
 
@@ -67,7 +67,7 @@ Tato konfigurace volá jeden prostředek v každém bloku uzlu, [prostředek Win
 
 Dále importujete konfiguraci do účtu automatizace.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **Všechny prostředky** a potom na název účtu Automation.
 1. Na stránce **Účet automatizace** vyberte **konfiguraci stavu (DSC)** v části **Správa konfigurace**.
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Konfigurace** a potom klikněte na **+ Přidat**.
@@ -81,7 +81,7 @@ Dále importujete konfiguraci do účtu automatizace.
 
 Po importu konfigurace ji můžete zobrazit na webu Azure Portal.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **Všechny prostředky** a potom na název účtu Automation.
 1. Na stránce **Účet automatizace** vyberte **konfiguraci stavu (DSC)** v části **Správa konfigurace**.
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Konfigurace** a potom klikněte na **TestConfig** (toto je název konfigurace importované v předchozím postupu).
@@ -96,7 +96,7 @@ Po importu konfigurace ji můžete zobrazit na webu Azure Portal.
 Před použitím požadovaného stavu na uzel, konfigurace DSC definující tento stav musí být zkompilována do jednoho nebo více konfigurací uzlu (dokument MOF) a umístěna na serveru pro vyžádanou službu Automation DSC. Podrobnější popis kompilace konfigurací v konfiguraci stavu azure automatizace najdete [v tématu kompilace konfigurací v konfiguraci stavu azure automatizace](automation-dsc-compile.md).
 Další informace o kompilaci konfigurací naleznete v [tématu Konfigurace dsc](/powershell/scripting/dsc/configurations/configurations).
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **Všechny prostředky** a potom na název účtu Automation.
 1. Na stránce **Účet automatizace** klepněte na **položku Konfigurace stavu (DSC)** v části **Správa konfigurace**.
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Konfigurace** a potom klikněte na **TestConfig** (název dříve importované konfigurace).
@@ -111,7 +111,7 @@ Další informace o kompilaci konfigurací naleznete v [tématu Konfigurace dsc]
 
 Po spuštění kompilace ji můžete zobrazit na **dlaždici Úlohy kompilace** na stránce **Konfigurace.** Dlaždice **Úlohy kompilace** zobrazuje aktuálně spuštěné, dokončené a neúspěšné úlohy. Při otevření stránky úlohy kompilace se zobrazí informace o této úloze, včetně chyb nebo upozornění, vstupních parametrů použitých v konfiguraci a protokolů kompilace.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **Všechny prostředky** a potom na název účtu Automation.
 1. Na stránce **Účet automatizace** klepněte na **položku Konfigurace stavu (DSC)** v části **Správa konfigurace**.
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Konfigurace** a potom klikněte na **TestConfig** (název dříve importované konfigurace).
@@ -125,7 +125,7 @@ Po spuštění kompilace ji můžete zobrazit na **dlaždici Úlohy kompilace** 
 
 Úspěšné dokončení úlohy kompilace vytvoří jeden nebo více nových konfigurací uzlů. Konfigurace uzlu je dokument MOF, který je nasazen na server vyžádat a připraven k vyprovoknutí a použít jedním nebo více uzly. Konfigurace uzlů v účtu Automation můžete zobrazit na stránce **Konfigurace stavu (DSC).** Konfigurace uzlu má název s formulářem *ConfigurationName*. *NodeName*.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **Všechny prostředky** a potom na název účtu Automation.
 1. V okně **Účet automatizace** klepněte na **položku Konfigurace stavu (DSC)** v části **Správa konfigurace**.
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Kompilované konfigurace.**
@@ -138,7 +138,7 @@ Konfigurace stavu Azure Automation můžete použít ke správě virtuálních p
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>Pokud chcete napalubě virtuálního počítače Azure Resource Manager pro správu pomocí konfigurace stavu automatizace Azure
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **Všechny prostředky** a potom na název účtu Automation.
 1. V okně **Účet automatizace** klepněte na **položku Konfigurace stavu (DSC)** v části **Správa konfigurace**.
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartě **Uzly** na **+ Přidat**.
@@ -164,7 +164,7 @@ Azure spustí proces registrace virtuálního počítače. Po dokončení se vir
 
 Seznam všech počítačů, které byly zaloizovány pro správu ve vašem účtu Automation, můžete zobrazit na kartě **Uzly** na stránce **Konfigurace stavu (DSC).**
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **Všechny prostředky** a potom na název účtu Automation.
 1. V okně **Účet automatizace** klepněte na **položku Konfigurace stavu (DSC)** v části **Správa konfigurace**.
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Uzly.**
@@ -173,7 +173,7 @@ Seznam všech počítačů, které byly zaloizovány pro správu ve vašem účt
 
 Pokaždé, když konfigurace stavu automatizace Azure provede kontrolu konzistence spravovaného uzlu, uzel odešle zprávu o stavu zpět na server vyžádat. Tyto sestavy můžete zobrazit na stránce pro tento uzel.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **Všechny prostředky** a potom na název účtu Automation.
 1. V okně **Účet automatizace** klepněte na **položku Konfigurace stavu (DSC)** v části **Správa konfigurace**.
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Uzly.** Zde můžete zobrazit přehled stavu konfigurace a podrobnosti pro každý uzel.
@@ -203,7 +203,7 @@ Může trvat nějakou dobu po vytvoření uzlu, než bude k dispozici první ses
 
 Uzel můžete přiřadit k použití jiné konfigurace uzlu, než který jste původně přiřadili.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **Všechny prostředky** a potom na název účtu Automation.
 1. V okně **Účet automatizace** klepněte na **položku Konfigurace stavu (DSC)** v části **Správa konfigurace**.
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Uzly.**
@@ -220,7 +220,7 @@ Uzel můžete přiřadit k použití jiné konfigurace uzlu, než který jste p�
 
 Pokud už nechcete, aby uzel spravoval Azure Automation DSC, můžete ho zrušit.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **Všechny prostředky** a potom na název účtu Automation.
 1. V okně **Účet automatizace** klepněte na **položku Konfigurace stavu (DSC)** v části **Správa konfigurace**.
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Uzly.**

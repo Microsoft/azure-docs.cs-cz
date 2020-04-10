@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f465fe4bb69bc5ae81db6c78df51bf5133de1b60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c7690390936a05dd472796eb6f50f582f652e35
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929301"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990836"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Kopírování dat z Impala pomocí Azure Data Factory
 
@@ -55,10 +55,10 @@ Následující vlastnosti jsou podporovány pro službu propojenou s Impala.
 | authenticationType | Typ ověřování, který chcete použít. <br/>Povolené hodnoty jsou **Anonymní**, **SASLUsername**a **UsernameAndPassword**. | Ano |
 | uživatelské jméno | Uživatelské jméno používané pro přístup k serveru Impala. Výchozí hodnota je anonymní při použití SASLUsername.  | Ne |
 | heslo | Heslo, které odpovídá uživatelské jméno při použití UsernameAndPassword. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ne |
-| enableSsl | Určuje, zda jsou připojení k serveru šifrována pomocí ssl. Výchozí hodnota je **false** (nepravda).  | Ne |
-| trustedCertPath | Úplná cesta k souboru PEM, který obsahuje důvěryhodné certifikáty certifikační autority používané k ověření serveru při připojení přes ssl. Tuto vlastnost lze nastavit pouze v případě, že používáte SSL na vlastní hostované integrační runtime. Výchozí hodnota je soubor cacerts.pem nainstalovaný s integračním runtime.  | Ne |
+| enableSsl | Určuje, zda jsou připojení k serveru šifrována pomocí tls. Výchozí hodnota je **false** (nepravda).  | Ne |
+| trustedCertPath | Úplná cesta k souboru PEM, který obsahuje důvěryhodné certifikáty certifikační autority používané k ověření serveru při připojení přes tls. Tuto vlastnost lze nastavit pouze v případě, že používáte TLS na prostředí integrace s vlastním hostitelem. Výchozí hodnota je soubor cacerts.pem nainstalovaný s integračním runtime.  | Ne |
 | useSystemTrustStore | Určuje, zda se má použít certifikát certifikační autority z úložiště důvěryhodných certifikátů systému nebo ze zadaného souboru PEM. Výchozí hodnota je **false** (nepravda).  | Ne |
-| allowHostNameCNMismatch | Určuje, zda má být při připojení přes ssl vyžadován název certifikátu SSL vydaný certifikační autoritou, který by odpovídal názvu hostitele serveru. Výchozí hodnota je **false** (nepravda).  | Ne |
+| allowHostNameCNMismatch | Určuje, zda má být při připojení přes TLS vyžadován název certifikátu TLS/SSL vydaný certifikační autoritou. Výchozí hodnota je **false** (nepravda).  | Ne |
 | allowSelfSignedServerCert | Určuje, zda mají být ze serveru povoleny certifikáty podepsané svým držitelem. Výchozí hodnota je **false** (nepravda).  | Ne |
 | connectVia | [Integrační runtime,](concepts-integration-runtime.md) který se má použít k připojení k úložišti dat. Další informace naleznete v části [Požadavky.](#prerequisites) Pokud není zadán, používá výchozí Azure Integration Runtime. |Ne |
 

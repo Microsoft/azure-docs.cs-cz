@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 2388b51c8103b6bcbae0c32d3c4d78a176caf282
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a96cf4b07e6d564be1cac7fbb62a45d2d9ea7943
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266803"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011153"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Vyhledání imagí virtuálních počítačů s Windows na Azure Marketplace pomocí Azure PowerShellu
 
@@ -45,8 +45,7 @@ V této tabulce je uvedena podmnožina dostupné aplikace Skus pro uvedené vyda
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter-s-kontejnery |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftDynamicsNAV |DynamicsNAV |2017 |
-| MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
+| MicrosoftSharePoint |MicrosoftSharePointServer |aktualizace sp2019 |
 | MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
 | Server MicrosoftRServer |RServer-WS2016 |Enterprise |
 

@@ -1,5 +1,5 @@
 ---
-title: Přehled konfigurace stavu automatizace Azure
+title: Přehled konfigurace stavu
 description: Přehled konfigurace stavu automatizace Azure (DSC), jeho termíny a známé problémy
 keywords: powershell dsc, požadovaná konfigurace stavu, powershell dsc azure
 services: automation
@@ -10,14 +10,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 46cf0d6a12ffbc836db7bd79c0f2738a94e23085
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283187"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010252"
 ---
-# <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu automatizace Azure
+# <a name="state-configuration-overview"></a>Přehled konfigurace stavu
 
 Azure Automation State Configuration je služba Azure, která umožňuje psát, spravovat a kompilovat [konfigurace](/powershell/scripting/dsc/configurations/configurations)konfigurace konfigurace požadovaného stavu prostředí PowerShell (DSC). Služba také importuje [prostředky DSC](/powershell/scripting/dsc/resources/resources)a přiřazuje konfigurace cílovým uzlům, to vše v cloudu.
 

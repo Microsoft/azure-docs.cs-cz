@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/08/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 5b532908df4b8dd58177b7e128f4e55aa96458e6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d03b053f2aa5de4a6f7874dbf4e6ccb3a305a964
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409953"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992075"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů azure monitoru
 
@@ -88,6 +88,9 @@ Cenovou [úroveň](https://docs.microsoft.com/azure/azure-monitor/platform/templ
 Předplatná, kteří měli pracovní prostor Log Analytics nebo prostředek Application Insights před **2.** **Free** **Standalone (Per GB)**  Pracovní prostory v cenové úrovni Free budou mít denní ingestování dat omezené na 500 MB (s výjimkou typů dat zabezpečení shromážděných službou Azure Security Center) a uchovávání dat je omezeno na 7 dní. Cenová úroveň Free je určena pouze pro účely hodnocení. Pracovní prostory v cenových úrovních Samostatné nebo Podle uzlu mají uživatelem konfigurovatelné uchovávání informací od 30 do 730 dnů.
 
 Poplatky za úroveň ocenění podle uzlu na monitorovaný virtuální počítač (uzel) na hodinu rozlišovací schopnost. Pro každý sledovaný uzel je pracovnímu prostoru přiděleno 500 MB dat za den, která se neúčtují. Toto přidělení je agregováno na úrovni pracovního prostoru. Data požitá nad agregovaným denním přidělením dat se účtují za GB jako nadlimitní data. Všimněte si, že na vaší vyúčtování služby bude **Insight a Analytics** pro log Analytics využití, pokud je pracovní prostor v cenové úrovni per node. 
+
+> [!TIP]
+> Pokud má váš pracovní prostor přístup k cenové úrovni **Podle uzlu,** ale přemýšlíte, zda by to bylo levnější na úrovni průběžných plateb, můžete [pomocí níže uvedeného dotazu](#evaluating-the-legacy-per-node-pricing-tier) snadno získat doporučení. 
 
 Pracovní prostory vytvořené před dubnem 2016 mají také přístup k původním cenovým úrovním **Standard** a **Premium,** které mají pevné uchovávání dat 30 a 365 dní. Nové pracovní prostory nelze vytvořit v cenové úrovně **Standard** nebo **Premium** a pokud je pracovní prostor přesunut z těchto úrovní, nelze jej přesunout zpět. 
 
@@ -434,6 +437,49 @@ Chcete-li zobrazit počet různých uzlů automatizace, použijte dotaz:
        | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
  ) on lowComputer
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc
+```
+
+## <a name="evaluating-the-legacy-per-node-pricing-tier"></a>Vyhodnocení starší cenové úrovně pro každý uzel
+
+Rozhodnutí o tom, zda pracovní prostory s přístupem ke starší cenové úrovni **podle uzlu** jsou lepší v této vrstvě nebo v aktuální úrovni **průběžných plateb** nebo rezervace **kapacity,** je pro zákazníky často obtížné posoudit.  To zahrnuje pochopení kompromisu mezi pevnou cenou na sledovaný uzel v cenové vrstvě Podle uzlu a jeho zahrnutým přidělením dat 500 MB/uzel/den a náklady na pouhé platby za požitá data na úrovni průběžných plateb (za GB). 
+
+Pro usnadnění tohoto posouzení lze následující dotaz použít k doporučení pro optimální cenovou úroveň založenou na vzorcích využití pracovního prostoru.  Tento dotaz se zabývá sledovanými uzly a daty požitých do pracovního prostoru za posledních 7 dní a pro každý den vyhodnocuje, která cenová úroveň by byla optimální. Chcete-li použít dotaz, musíte určit, zda pracovní prostor `workspaceHasSecurityCenter` používá `true` `false`Azure Security Center nastavením nebo nebo a pak (volitelně) aktualizace za uzel a za GB ceny, které vaše organizaiton obdrží. 
+
+```kusto
+// Set these paramaters before running query
+let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
+let PerNodePrice = 15.; // Enter your price per node / month 
+let PerGBPrice = 2.30; // Enter your price per GB 
+// ---------------------------------------
+let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
+union withsource = tt * 
+| where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
+| summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
+| join (
+    Usage 
+    | where TimeGenerated > ago(8d)
+    | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
+    | where IsBillable == true
+    | extend NonSecurityData = iff(DataType !in (SecurityDataTypes), Quantity, 0.)
+    | extend SecurityData = iff(DataType in (SecurityDataTypes), Quantity, 0.)
+    | summarize DataGB=sum(Quantity)/1000., NonSecurityDataGB=sum(NonSecurityData)/1000., SecurityDataGB=sum(SecurityData)/1000. by day=bin(StartTime, 1d)  
+) on day
+| extend AvgGbPerNode =  NonSecurityDataGB / nodesPerDay
+| extend PerGBDailyCost = iff(workspaceHasSecurityCenter,
+             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*nodesPerDay, 0.)) * PerGBPrice,
+             DataGB * PerGBPrice)
+| extend OverageGB = iff(workspaceHasSecurityCenter, 
+             max_of(DataGB - 1.0*nodesPerDay, 0.), 
+             max_of(DataGB - 0.5*nodesPerDay, 0.))
+| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
+| extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
+             iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
+| project day, nodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
+| project day, Recommendation // Comment this line to see details
+| sort by day asc
 ```
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Vytvoření výstrahy při vysokém shromažďování dat

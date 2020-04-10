@@ -4,12 +4,12 @@ description: Sledování složitých topologií aplikací pomocí mapy aplikace
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657395"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989523"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikací: Třídění distribuovaných aplikací
 
@@ -155,7 +155,25 @@ Pro [ASP.NET základní](asp-net-core.md#adding-telemetryinitializers) aplikace,
 
 # <a name="java"></a>[Java](#tab/java)
 
-Počínaje aplikací Insights Java SDK 2.5.0, můžete zadat `<RoleName>` název `ApplicationInsights.xml` role cloudu přidáním do souboru, například.
+**Java agent**
+
+Pro [agenta Java 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) je název role cloudu nastaven takto:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "roleName": "my cloud role name"
+    }
+  }
+}
+```
+
+Můžete také nastavit název role cloudu ```APPLICATIONINSIGHTS_ROLE_NAME```pomocí proměnné prostředí .
+
+**Java SDK**
+
+Pokud používáte sadu SDK, počínaje application insights Java SDK 2.5.0, `<RoleName>` můžete `ApplicationInsights.xml` zadat název role cloudu přidáním do souboru, například.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>

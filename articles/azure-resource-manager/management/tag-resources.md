@@ -3,18 +3,21 @@ title: Označení prostředků, skupin prostředků a předplatných pro logicko
 description: Ukazuje, jak použít značky pro uspořádání prostředků Azure pro fakturaci a správu.
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 44759db59ef7e7556c8fbfca3bbc58ef84796198
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548483"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010796"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
 
 Značky použijete na prostředky Azure, skupiny prostředků a předplatná, abyste je logicky uspořádali do taxonomie. Každá značka se skládá z názvu a dvojice hodnot. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
 
 Doporučení, jak implementovat strategii označování, naleznete v [tématu Resource naming and tagging decision guide](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).
+
+> [!IMPORTANT]
+> Názvy značek nerozlišují malá a velká písmena. Hodnoty značek rozlišují malá a velká písmena.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 

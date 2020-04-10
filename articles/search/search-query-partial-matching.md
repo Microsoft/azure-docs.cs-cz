@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666786"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998336"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>Částečné vyhledávání termínů a vzory se speciálními znaky – Azure Cognitive Search (zástupný znak, regulární výraz, vzory)
+# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Částečné vyhledávání termínů a vzory se speciálními znaky (zástupný znak, regulární výraz, vzory)
 
 *Částečné hledání termínu* odkazuje na dotazy skládající se z fragmentů termínu, jako je například první, poslední nebo vnitřní části řetězce. *Vzorek* může být kombinací fragmentů, někdy se speciálními znaky, jako jsou pomlčky nebo lomítka, které jsou součástí dotazu. Běžné případy použití zahrnují dotazování na části telefonního čísla, adresy URL, kódy osob nebo kódů produktů nebo složená slova.
 
 Částečné hledání může být problematické, pokud index nemá termíny ve formátu požadovaném pro porovnávání vzorů. Během fáze analýzy textu indexování pomocí výchozího standardního analyzátoru jsou speciální znaky zahozeny, složené a složené řetězce jsou rozděleny, což způsobuje selhání dotazů na vzorky, když není nalezena žádná shoda. Například telefonní číslo `+1 (425) 703-6214`jako (tokenizované `"425"` `"703"`jako `"6214"` `"1"`, , ) se `"3-62"` v dotazu nezobrazí, protože tento obsah ve skutečnosti v indexu neexistuje. 
 
-Řešením je vyvolat analyzátor, který zachová úplný řetězec, včetně mezer a speciálních znaků v případě potřeby, takže můžete podporovat částečné termíny a vzorky. Vytvoření dalšího pole pro neporušený řetězec a pomocí analyzátoru pro zachování obsahu je základem řešení.
+Řešením je vyvolat analyzátor, který zachová úplný řetězec, včetně mezer a speciálních znaků v případě potřeby, takže můžete odpovídat na částečné podmínky a vzorky. Vytvoření dalšího pole pro neporušený řetězec a pomocí analyzátoru pro zachování obsahu je základem řešení.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Co je částečné vyhledávání v Azure Cognitive Search
 
@@ -64,7 +64,7 @@ Analyzátory jsou přiřazovány pro pole, což znamená, že můžete vytvořit
   "type": "Edm.String",
   "retrievable": true,
   "searchable": true,
-  "analyzer": "my_customanalyzer"
+  "analyzer": "my_custom_analyzer"
 },
 ```
 

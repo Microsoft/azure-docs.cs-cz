@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 74d56d553c4049a98b4401c66b27ae33e31da5c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40a16d559a96c88a864ef809d40d798b99746230
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927117"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992092"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopírování dat z Marketo pomocí Azure Data Factory (Preview)
 
@@ -37,7 +37,7 @@ Můžete zkopírovat data z Marketo do libovolného úložiště dat podporovan�
 Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, proto není nutné ručně instalovat žádný ovladač pomocí tohoto konektoru.
 
 >[!NOTE]
->Tento konektor Marketo je postaven na rozhraní Marketo REST API. Uvědomte si, že Marketo má [souběžný limit požadavků](https://developers.marketo.com/rest-api/) na straně služby. Pokud narazíte na chyby s nápisem "Chyba při pokusu o použití rozhraní REST API: Maximální limit rychlosti 100' byl překročen v chybách 20 sekund (606)" nebo "Chyba při pokusu o použití rozhraní REST API: Souběžný limit přístupu "10" dosažený (615)", zvažte snížení souběžné aktivity kopírování, která se spustí na snížit počet požadavků na službu.
+>Tento konektor Marketo je postaven na rozhraní Marketo REST API. Uvědomte si, že Marketo má [souběžný limit požadavků](https://developers.marketo.com/rest-api/) na straně služby. Pokud se zobrazí chyby s nápisem "Chyba při pokusu o použití rozhraní REST API: Maximální limit rychlosti 100" byl překročen v chybách 20 sekund (606)" nebo "Chyba při pokusu o použití rozhraní REST API: Souběžný limit přístupu "10" dosažený (615)", zvažte snížení souběžných spuštění aktivity kopírování, abyste snížili počet požadavků na službu.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -56,8 +56,8 @@ Pro propojenou službu Marketo jsou podporovány následující vlastnosti:
 | clientId | ID klienta vaší služby Marketo.  | Ano |
 | clientSecret | Klient tajemství vaší služby Marketo. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
 | použitíEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, zda má být při připojování přes SSL vyžadován název hostitele v certifikátu serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, zda se má ověřit identita serveru při připojování přes SSL. Výchozí hodnotou je hodnota true.  | Ne |
+| useHostVerification | Určuje, zda má být při připojování přes TLS vyžadovánnázev hostitele v certifikátu serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| usePeerVerification | Určuje, zda se má ověřit identita serveru při připojování přes TLS. Výchozí hodnotou je hodnota true.  | Ne |
 
 **Příklad:**
 

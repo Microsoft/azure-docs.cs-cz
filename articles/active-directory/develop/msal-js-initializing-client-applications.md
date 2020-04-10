@@ -13,12 +13,12 @@ ms.date: 04/12/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084046"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010150"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicializovat klientské aplikace pomocí souboru MSAL.js
 Tento článek popisuje inicializaci knihovny Microsoft Authentication Library pro JavaScript (MSAL.js) s instancí aplikace user-agent. Aplikace user-agent je forma veřejné klientské aplikace, ve které je klientský kód spuštěn v uživatelském agentovi, jako je například webový prohlížeč. Tito klienti neukládají tajné klíče, protože kontext prohlížeče je otevřeně přístupný. Další informace o typech klientských aplikací a možnostech konfigurace aplikace naleznete v [přehledu](msal-client-applications.md).
@@ -35,7 +35,7 @@ Před inicializací aplikace ji musíte nejdřív zaregistrovat na [portálu Azu
 
 MSAL.js můžete použít následujícím způsobem v jednoduché aplikaci JavaScript/Typescript. Inicializovat kontext ověřování MSAL `UserAgentApplication` vytvořením instance pomocí konfiguračního objektu. Minimální požadovaná konfigurace pro inicializaci souboru MSAL.js je clientID vaší aplikace, které byste měli získat z portálu pro registraci aplikací.
 
-Pro metody ověřování s`loginRedirect` toky přesměrování ( a `acquireTokenRedirect`), budete muset explicitně zaregistrovat zpětné volání pro úspěch nebo chybu prostřednictvím `handleRedirectCallback()` metody. To je potřeba, protože toky přesměrování nevracejí sliby jako metody s vyskakovací prostředí.
+Pro metody ověřování s`loginRedirect` toky přesměrování ( a `acquireTokenRedirect`), v MSAL.js 1.2.x nebo starší, `handleRedirectCallback()` budete muset explicitně zaregistrovat zpětné volání pro úspěch nebo chybu prostřednictvím metody. To je potřeba, protože toky přesměrování nevracejí sliby jako metody s vyskakovací prostředí. To se stalo volitelné v MSAL.js verze 1.3.0.
 
 ```javascript
 // Configuration object constructed

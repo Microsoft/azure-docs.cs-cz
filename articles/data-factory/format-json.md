@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 7dac8d21e3b45307284ece15ca5ddbcc69db909b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b63dcfd6ed293cab9d0107a8b6a35c7ce358d429
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260641"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011680"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Formát JSON ve službě Azure Data Factory
 
@@ -30,9 +30,10 @@ Formát JSON je podporovaný pro následující konektory: [Amazon S3](connector
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Vlastnost type datové sady musí být nastavena na **Json**. | Ano      |
 | location         | Nastavení umístění souborů. Každý konektor založený na souboru má svůj `location`vlastní typ umístění a podporované vlastnosti v části . **Viz podrobnosti v článku konektoru -> část vlastností datové sady**. | Ano      |
-| encodingName     | Typ kódování používaný ke čtení a zápisu testovacích souborů. <br>Povolené hodnoty jsou následující: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", " IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01147", "IBM01148", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Ne       |
-| kompreseKodlič | Kompresní kodek používaný ke čtení a zápisu textových souborů. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **deflate**, **ZipDeflate**, **snappy**nebo **lz4**. použijete při ukládání souboru. <br>Poznámka: Aktuálně kopírovat aktivitu nepodporuje "snappy" & "lz4".<br>Poznámka: Při použití kopírování aktivity dekompresi ZipDeflate soubor (y) a zapisovat `<path specified in dataset>/<folder named as source zip file>/`do úložiště dat jímky založené na souboru, soubory budou extrahovány do složky: . | Ne       |
-| kompreseÚroveň | Kompresní poměr. <br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **Nejrychlejší:** Operace komprese by měla být dokončena co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **Optimální**: Operace komprese by měla být optimálně komprimována, i když operace trvá delší dobu. Další informace naleznete v tématu [Úroveň komprese.](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) | Ne       |
+| encodingName     | Typ kódování používaný ke čtení a zápisu testovacích souborů. <br>Allowed values are as follows: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13" , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Ne       |
+| komprese | Skupina vlastností pro konfiguraci komprese souborů. Tuto část nakonfigurujte, pokud chcete provést kompresi nebo dekompresi během provádění aktivity. | Ne |
+| type | Kompresní kodek používaný ke čtení/zápisu souborů JSON. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **deflate**, **ZipDeflate**, **snappy**nebo **lz4**. použijete při ukládání souboru. Výchozí hodnota není komprimována.<br>**Poznámka:** Aktuálně kopírovat aktivitu nepodporuje "snappy" & "lz4" a mapování toku dat nepodporuje "ZipDeflate".<br>**Poznámka:** Při použití kopírování aktivity dekompresi ZipDeflate soubor (y) a zapisovat `<path specified in dataset>/<folder named as source zip file>/`do úložiště dat jímky založené na souboru, soubory budou extrahovány do složky: . | Ne.  |
+| level | Kompresní poměr. <br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **Nejrychlejší:** Operace komprese by měla být dokončena co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **Optimální**: Operace komprese by měla být optimálně komprimována, i když operace trvá delší dobu. Další informace naleznete v tématu [Úroveň komprese.](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) | Ne       |
 
 Níže je uveden příklad datové sady JSON ve službě Azure Blob Storage:
 
@@ -54,6 +55,7 @@ Níže je uveden příklad datové sady JSON ve službě Azure Blob Storage:
             },
             "compression": {
                 "type": "gzip"
+            }
         }
     }
 }

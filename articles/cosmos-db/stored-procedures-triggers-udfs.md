@@ -1,18 +1,18 @@
 ---
 title: Práce s uloženými procedurami, aktivačními událostmi a uflvy v Azure Cosmos DB
 description: Tento článek představuje koncepty, jako jsou uložené procedury, aktivační události a uživatelem definované funkce v Azure Cosmos DB.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: mjbrown
+ms.date: 04/09/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 23a14e7590eca6f63c92acdf6336ffaef8b54381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065897"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010541"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, aktivační události a uživatelem definované funkce
 
@@ -69,7 +69,7 @@ Uložené procedury a aktivační události jsou vždy spouštěny na primární
 
 Všechny operace Azure Cosmos DB musí být dokončeny v rámci zadané doby trvání časového roku. Toto omezení platí pro funkce Jazyka JavaScript – uložené procedury, aktivační události a uživatelem definované funkce. Pokud operace není dokončena v tomto časovém limitu, transakce je vrácena zpět.
 
-Můžete buď zajistit, že vaše funkce JavaScriptdokončit v časovém limitu nebo implementovat model založený na pokračování dávkové/obnovení spuštění. Aby se zjednodušil vývoj uložených procedur a aktivačních událostí pro zpracování časových limitů, vrátí všechny funkce v kontejneru Azure Cosmos (například vytvoření, čtení, aktualizace a odstranění položek) logickou hodnotu představující, zda tato operace bude Kompletní. Pokud je tato hodnota false, je označení, že postup musí zabalit spuštění, protože skript spotřebovává více času nebo zřízená propustnost než nakonfigurovaná hodnota. Operace zařazené do fronty před první nepřijatou operací úložiště jsou zaručeně dokončeny, pokud se uložená procedura dokončí včas a nezařadí do fronty žádné další požadavky. Operace by proto měly být zařazeny do fronty po jednom pomocí konvence zpětného volání javascriptu ke správě toku řízení skriptu. Vzhledem k tomu, že skripty jsou spouštěny v prostředí na straně serveru, jsou přísně řízeny. Skripty, které opakovaně porušují hranice provádění, mohou být označeny jako neaktivní a nelze je spustit a měly by být znovu vytvořeny, aby byly doznány hranice provádění.
+Můžete buď zajistit, že vaše funkce JavaScriptdokončit v časovém limitu nebo implementovat model založený na pokračování dávkové/obnovení spuštění. Aby se zjednodušil vývoj uložených procedur a aktivačních událostí pro zpracování časových limitů, všechny funkce v rámci kontejneru Azure Cosmos (například vytvořit, číst, aktualizovat a odstranit položky) vrátí logickou hodnotu, která představuje, zda bude tato operace dokončena. Pokud je tato hodnota false, je označení, že postup musí zabalit spuštění, protože skript spotřebovává více času nebo zřízená propustnost než nakonfigurovaná hodnota. Operace zařazené do fronty před první nepřijatou operací úložiště jsou zaručeně dokončeny, pokud se uložená procedura dokončí včas a nezařadí do fronty žádné další požadavky. Operace by proto měly být zařazeny do fronty po jednom pomocí konvence zpětného volání javascriptu ke správě toku řízení skriptu. Vzhledem k tomu, že skripty jsou spouštěny v prostředí na straně serveru, jsou přísně řízeny. Skripty, které opakovaně porušují hranice provádění, mohou být označeny jako neaktivní a nelze je spustit a měly by být znovu vytvořeny, aby byly doznány hranice provádění.
 
 Funkce JavaScriptu také podléhají [zřízené kapacitě propustnosti](request-units.md). Funkce JavaScriptu by mohly potenciálně skončit pomocí velkého počtu jednotek požadavku v krátkém čase a může být omezena rychlost, pokud je dosaženo limitu kapacity zřízeného propustnosti. Je důležité si uvědomit, že skripty spotřebovávají další propustnost kromě propustnosti strávené provádění databázových operací, i když tyto databázové operace jsou o něco levnější než provádění stejných operací z klienta.
 
@@ -90,7 +90,7 @@ Podobně jako před aktivační události, post-triggers, jsou také přidružen
 
 ## <a name="user-defined-functions"></a><a id="udfs"></a>Uživatelsky definované funkce
 
-Uživatelem definované funkce (UD) se používají k rozšíření syntaxe dotazovacího jazyka ROZHRANÍ SQL API a snadné implementaci vlastní obchodní logiky. Mohou být volány pouze v rámci dotazů. UDFnemají přístup k objektu kontextu a jsou určeny k použití jako výpočetní pouze JavaScript. Proto udfs lze spustit na sekundární repliky. Příklady naleznete v tématu [Jak psát uživatelem definované funkce](how-to-write-stored-procedures-triggers-udfs.md#udfs) článku.
+[Uživatelem definované funkce](sql-query-udfs.md) (UD) se používají k rozšíření syntaxe dotazovacího jazyka ROZHRANÍ SQL API a snadné implementaci vlastní obchodní logiky. Mohou být volány pouze v rámci dotazů. UDFnemají přístup k objektu kontextu a jsou určeny k použití jako výpočetní pouze JavaScript. Proto udfs lze spustit na sekundární repliky. Příklady naleznete v tématu [Jak psát uživatelem definované funkce](how-to-write-stored-procedures-triggers-udfs.md#udfs) článku.
 
 ## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>Rozhraní API dotazů integrovaných jazykem JavaScriptu
 

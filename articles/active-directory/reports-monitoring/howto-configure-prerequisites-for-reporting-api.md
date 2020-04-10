@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399298"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991258"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Požadavky pro přístup k rozhraní API pro vytváření sestav služby Azure Active Directory
 
@@ -33,9 +33,10 @@ Rozhraní API pro vytváření sestav používá [OAuth](https://docs.microsoft.
 Chcete-li připravit přístup k rozhraní API pro vytváření přehledů, je třeba:
 
 1. [Přiřazení rolí](#assign-roles)
-2. [Registrace přihlášky](#register-an-application)
-3. [Udělení oprávnění](#grant-permissions)
-4. [Shromáždit nastavení konfigurace](#gather-configuration-settings)
+2. [Licenční požadavky](#license-requirements)
+3. [Registrace aplikace](#register-an-application)
+4. [Udělení oprávnění](#grant-permissions)
+5. [Shromáždit nastavení konfigurace](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>Přiřazení rolí
 
@@ -46,6 +47,10 @@ Chcete-li získat přístup k datům sestav prostřednictvím rozhraní API, mus
 - Správce zabezpečení
 
 - Globální správce
+
+## <a name="license-requirements"></a>Licenční požadavky
+
+Aby bylo možné získat přístup k přihlašovací sestavy pro klienta, klient Azure AD musí mít přidružené licence Azure AD Premium. Licence Azure AD Premium P1 (nebo vyšší) je vyžadována pro přístup k přihlašovacím sestavám pro všechny klienty Azure AD. Případně pokud typ adresáře je Azure AD B2C , sestavy přihlášení jsou přístupné prostřednictvím rozhraní API bez jakékoli další licenční požadavek. 
 
 
 ## <a name="register-an-application"></a>Registrace aplikace

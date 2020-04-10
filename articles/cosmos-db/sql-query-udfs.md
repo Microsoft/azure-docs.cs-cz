@@ -1,27 +1,38 @@
 ---
 title: Uživatelem definované funkce (UDF) v Azure Cosmos DB
 description: Další informace o uživatelem definovaných funkcích v Azure Cosmos DB.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.author: tisande
+ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69614329"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011119"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Uživatelem definované funkce (UDF) v Azure Cosmos DB
 
 Rozhraní SQL API poskytuje podporu pro uživatelem definované funkce (UD). Pomocí skalárních udfs můžete předat v nula nebo mnoho argumentů a vrátit jeden výsledek argumentu. Rozhraní API kontroluje každý argument pro bytí právní hodnoty JSON.  
 
-Rozhraní API rozšiřuje syntaxi SQL tak, aby podporovala vlastní aplikační logiku pomocí ufls. Udfs můžete zaregistrovat pomocí rozhraní SQL API a odkazovat na ně v dotazech SQL. Ve skutečnosti jsou UDjsou nádherně navrženy tak, aby volaly z dotazů. Jako důsledek, UDnemají přístup k objektu kontextu, jako jsou jiné typy JavaScriptu, jako jsou uložené procedury a aktivační události. Dotazy jsou jen pro čtení a lze je spustit na primární nebo sekundární repliky. UD, na rozdíl od jiných typů JavaScriptu, jsou navrženy tak, aby spouštět na sekundární repliky.
+## <a name="udf-use-cases"></a>Případy použití UDF
 
-Následující příklad registruje UDF pod kontejnerem položek v databázi Cosmos. Příklad vytvoří udf, jehož název je `REGEX_MATCH`. Přijímá dvě hodnoty řetězce JSON `pattern`a a kontroluje, `string.match()` `input` zda první odpovídá vzoru zadanému v druhém pomocí funkce JavaScriptu.
+Rozhraní API rozšiřuje syntaxi SQL tak, aby podporovala vlastní aplikační logiku pomocí ufls. Udfs můžete zaregistrovat pomocí rozhraní SQL API a odkazovat na ně v dotazech SQL. Na rozdíl od uložené procedury a aktivační události UDFs jsou jen pro čtení.
+
+Pomocí uofs, můžete rozšířit Azure Cosmos DB dotazovací jazyk. UDF s jsou skvělý způsob, jak vyjádřit komplexní obchodní logiku v projekci dotazu.
+
+Doporučujeme však vyhnout se UDFs, když:
+
+- Ekvivalentní [systémová funkce](sql-query-system-functions.md) již v Azure Cosmos DB existuje. Systémové funkce budou vždy používat méně RU než ekvivalentní UDF.
+- UDF je jediný filtr `WHERE` v klauzuli dotazu. UDF nevyužívají index, takže vyhodnocení UDF bude vyžadovat načítání dokumentů. Kombinace dalších predikátů filtru, které používají index v `WHERE` kombinaci s udf, v klauzuli sníží počet dokumentů zpracovaných udf.
+
+Pokud je nutné použít stejný UDF vícekrát v dotazu, měli byste odkazovat na UDF v [poddotazu](sql-query-subquery.md#evaluate-once-and-reference-many-times), což vám umožní použít výraz JOIN k vyhodnocení UDF jednou, ale odkazovat mnohokrát.
 
 ## <a name="examples"></a>Příklady
+
+Následující příklad registruje UDF pod kontejnerem položek v databázi Cosmos. Příklad vytvoří udf, jehož název je `REGEX_MATCH`. Přijímá dvě hodnoty řetězce JSON `pattern`a a kontroluje, `string.match()` `input` zda první odpovídá vzoru zadanému v druhém pomocí funkce JavaScriptu.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction

@@ -1,20 +1,20 @@
 ---
 title: Vytvoření škálovací sady Azure, která používá zóny dostupnosti
 description: Zjistěte, jak vytvořit škálovací sady virtuálních strojů Azure, které používají zóny dostupnosti pro zvýšení redundance proti výpadkům
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.author: cynthn
-ms.openlocfilehash: 11695eb889a10dc689b00399a37382a3b9772eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: c8795f46e47b2ab43898f6f436b9ee6026a22fa7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76274411"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011561"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření škálovací sady virtuálních strojů, která používá zóny dostupnosti
 
@@ -39,7 +39,7 @@ Při nasazení škálovací sady máte také možnost nasadit s jednou [skupinou
 
 ### <a name="zone-balancing"></a>Vyvažování zón
 
-A konečně, pro škálovací sady nasazené ve více zónách máte také možnost zvolit "rovnováhu zón nejlepšího úsilí" nebo "striktní rovnováhu zón". Škálovací sada se považuje za "vyváženou", pokud každá\\zóna má stejný počet virtuálních virtuálních uživatelů nebo + - 1 virtuální hod ve všech ostatních zónách pro škálovací sadu. Například:
+A konečně, pro škálovací sady nasazené ve více zónách máte také možnost zvolit "rovnováhu zón nejlepšího úsilí" nebo "striktní rovnováhu zón". Škálovací sada se považuje za "vyváženou", pokud každá\\zóna má stejný počet virtuálních virtuálních uživatelů nebo + - 1 virtuální hod ve všech ostatních zónách pro škálovací sadu. Příklad:
 
 - Škálovací sada se 2 virtuálními virtuálními aplikacemi v zóně 1, 3 virtuálními aplikacemi v zóně 2 a 3 virtuálními aplikacemi v zóně 3 se považuje za vyvážená. Existuje pouze jedna zóna s jiným počtem virtuálních uživatelů a je pouze o 1 menší než ostatní zóny. 
 - Škálovací sada s 1 virtuálním virtuálním prostorem v zóně 1, 3 virtuálními virtuálními aplikacemi v zóně 2 a 3 virtuálními aplikacemi v zóně 3 se považuje za nevyváženou. Zóna 1 má o 2 virtuální chod méně než zóny 2 a 3.
@@ -58,7 +58,7 @@ Když vytvoříte škálovací sadu v jedné zóně, řídíte, ve které zóně
 
 Chcete-li použít zóny dostupnosti, škálovací sada musí být vytvořena v [podporované oblasti Azure](../availability-zones/az-overview.md#services-support-by-region). Škálovací sadu, která používá zóny dostupnosti, můžete vytvořit jednou z následujících metod:
 
-- [Portál Azure](#use-the-azure-portal)
+- [portál Azure](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Šablony Azure Resource Manageru](#use-azure-resource-manager-templates)

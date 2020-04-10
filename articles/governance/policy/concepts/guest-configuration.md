@@ -3,12 +3,12 @@ title: Naučte se auditovat obsah virtuálních počítačů
 description: Zjistěte, jak zásady Azure používají agenta konfigurace hosta k auditování nastavení uvnitř virtuálních počítačů.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985316"
+ms.locfileid: "80998841"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Principy konfigurace hosta zásad Azure
 
@@ -91,6 +91,13 @@ Windows Server Nano Server není v žádné verzi podporován.
 
 Ke komunikaci s poskytovatelem prostředků konfigurace hosta v Azure vyžadují počítače odchozí přístup k datovým centrům Azure na portu **443**. Pokud v Azure používáte privátní virtuální síť, která nepovoluje odchozí provoz, nakonfigurujte výjimky pomocí pravidel [skupiny zabezpečení sítě.](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)
 [Značku služby](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" lze použít k odkazování na službu konfigurace hosta.
+
+## <a name="azure-managed-identity-requirements"></a>Požadavky na spravovanou identitu Azure
+
+**Zásady DeployIfNotExists,** které přidávají rozšíření do virtuálních počítačů, také umožňují systémpřiřazenou spravovanou identitu, pokud neexistuje.
+
+> [!WARNING]
+> Vyhněte se povolení uživatele přiřazené spravované identity virtuálním počítačům v oboru pro zásady, které umožňují systémpřiřazenou spravovanou identitu. Identita přiřazená uživateli bude nahrazena a může dojít k tomu, že počítač přestane reagovat.
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na definici konfigurace hosta
 

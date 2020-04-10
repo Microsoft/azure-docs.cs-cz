@@ -1,19 +1,19 @@
 ---
 title: Nasazení aplikace do škálovací sady virtuálních strojů Azure
 description: Zjistěte, jak nasadit aplikace do instancí virtuálních strojů Linuxu a Windows ve škálovací sadě
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: 6bc319ea50da4ff6a654b2c9ab09bbe218695533
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: e157db79f1835a8ca891dd360a99e3319565d1d4
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278104"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011459"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace do škálovací sady virtuálních počítačů
 

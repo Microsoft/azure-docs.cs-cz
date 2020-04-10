@@ -3,14 +3,14 @@ title: Nasazení šablony what-if (Náhled)
 description: Zjistěte, jaké změny se stane s vašimi prostředky před nasazením šablony Azure Resource Manager.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/09/2020
 ms.author: jgao
-ms.openlocfilehash: 9e0d0d572e08961b585a93e66e400b8c2e54bf7f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b8e94d0b4f364e2873dfc21792a67f11c33483bf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886836"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010184"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Operace pro nasazení šablony ARM (preview)
 
@@ -24,6 +24,14 @@ Funkci "Co se ještě chcete" použít s příkazy Prostředí PowerShell nebo s
 ## <a name="install-powershell-module"></a>Instalace modulu PowerShell
 
 Pokud chcete v PowerShellu použít what-if, nainstalujte verzi preview modulu Az.Resources z galerie PowerShellu.
+
+### <a name="install-preview-version"></a>Instalace verze náhledu
+
+Chcete-li nainstalovat modul náhledu, použijte:
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
 
 ### <a name="uninstall-alpha-version"></a>Odinstalovat alfa verzi
 
@@ -47,14 +55,6 @@ Pokud jste dříve nainstalovali alfa verzi modulu what-if, odinstalujte tento m
    ```powershell
    Unregister-PSRepository -Name WhatIfRepository
    ```
-
-### <a name="install-preview-version"></a>Instalace verze náhledu
-
-Chcete-li nainstalovat modul náhledu, použijte:
-
-```powershell
-Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
-```
 
 Jste připraveni použít what-if.
 

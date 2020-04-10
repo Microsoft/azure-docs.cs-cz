@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4301a55e3f5ea5b445ef1540ee59d1b5c28ca0ed
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278243"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010813"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Řešení potíží s časovými limity služby Azure Cache for Redis
 
@@ -82,7 +82,7 @@ Můžete použít následující kroky k prozkoumání možných příčin root.
    - Sledováním [metriky výkonu mezipaměti](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)procesoru zkontrolujte, zda na serveru přilne procesor. Požadavky přicházející v době, kdy je Redis vázán na procesor, mohou způsobit, že tyto požadavky budou vypovězení. Chcete-li tuto podmínku vyřešit, můžete distribuovat zatížení mezi více úlomků v mezipaměti premium nebo upgradovat na větší velikost nebo cenovou úroveň. Další informace naleznete v [tématu Omezení šířky pásma na straně serveru](cache-troubleshoot-server.md#server-side-bandwidth-limitation).
 1. Zpracovávají se příkazy na serveru dlouho? Dlouhotrvající příkazy, které trvá dlouhou dobu zpracování na serveru redis může způsobit časové oběhu. Další informace o dlouhotrvajících příkazech naleznete v [tématu Long-running commands](cache-troubleshoot-server.md#long-running-commands). K instanci Azure Cache for Redis se můžete připojit pomocí klienta redis-cli nebo [konzoly Redis](cache-configure.md#redis-console). Potom spusťte příkaz [SLOWLOG](https://redis.io/commands/slowlog) a zjistěte, zda existují požadavky pomalejší, než bylo očekáváno. Redis Server a StackExchange.Redis jsou optimalizovány pro mnoho malých požadavků, nikoli méně velkých požadavků. Rozdělení dat na menší bloky dat může zlepšit věci zde.
 
-    Informace o připojení ke koncovému bodu SSL mezipaměti pomocí redis-cli a stunnel najdete v příspěvku blogu [Oznámení ASP.NET zprostředkovatele stavu relace pro vydání Redis Preview .](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)
+    Informace o připojení ke koncovému bodu TLS/SSL mezipaměti pomocí redis-cli a stunnel najdete v příspěvku blogu [Oznámení ASP.NET zprostředkovatele stavu relace pro vydání Redis Preview .](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)
 1. Vysoké zatížení serveru Redis může způsobit časové protytby. Zatížení serveru můžete sledovat sledováním `Redis Server Load` [metriky výkonu mezipaměti](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Zatížení serveru 100 (maximální hodnota) znamená, že server redis byl zaneprázdněn, bez doby nečinnosti, zpracování požadavků. Chcete-li zjistit, zda některé požadavky zabírají všechny funkce serveru, spusťte příkaz SlowLog, jak je popsáno v předchozím odstavci. Další informace naleznete v tématu Vysoké využití procesoru / Zatížení serveru.
 1. Byla na straně klienta nějaká jiná událost, která mohla způsobit výkyv v síti? Mezi běžné události patří: škálování počtu instancí klienta nahoru nebo dolů, nasazení nové verze klienta nebo automatické škálování povoleno. V našem testování jsme zjistili, že automatické škálování nebo škálování nahoru/dolů může způsobit ztrátu odchozího připojení k síti na několik sekund. StackExchange.Redis kód je odolný vůči těmto událostem a znovu připojí. Při opětovném připojení mohou být všechny požadavky ve frontě vypodonomovat.
 1. Byl tam velký požadavek předcházející několik malých požadavků do mezipaměti, která časový režim? Parametr `qs` v chybové zprávě informuje o tom, kolik požadavků bylo odesláno z klienta na server, ale nezpracovalodpověď. Tato hodnota může nadále růst, protože StackExchange.Redis používá jedno připojení TCP a lze číst pouze jednu odpověď najednou. I když byl časový režim první operace outd, nezastaví další data před odesláním na server nebo ze serveru. Ostatní požadavky budou blokovány, dokud nebude velký požadavek dokončen a může způsobit časové toky. Jedním z řešení je minimalizovat možnost časového nastavení tím, že zajistíte, že vaše mezipaměť je dostatečně velká pro vaše úlohy a rozdělení velkých hodnot na menší bloky. Dalším možným řešením je použití `ConnectionMultiplexer` fondu objektů v klientovi `ConnectionMultiplexer` a zvolte nejméně načtené při odesílání nového požadavku. Načítání přes více objektů připojení by měla zabránit jeden časový limit z příčinou jiných požadavků také časový limit.

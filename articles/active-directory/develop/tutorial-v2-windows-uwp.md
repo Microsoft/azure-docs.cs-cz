@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f6e7ee1b03dda30bea15a837b6daf6469e00e46d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 205f4a27a7903bc5a1da3fc12e3d4a02b23f58cf
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886394"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990918"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace platformy Universal Windows (XAML)
 
@@ -435,8 +435,3 @@ Příčina: Tento problém je známé omezení zprostředkovatele webového ově
 Řešení: Vyberte **Přihlásit se pomocí dalších možností**. Pak vyberte **Přihlásit pomocí uživatelského jména a hesla**. Vyberte **Zadat heslo**. Pak projděte procesem ověřování telefonu.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-Pomozte nám vylepšit platformu identit Microsoftu. Řekněte nám, co si myslíte, že dokončení krátké hod-průzkum dvou otázek:
-
-> [!div class="nextstepaction"]
-> [Průzkum platformy identity Microsoftu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260420"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991565"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Přesunutí dat ze zdroje HTTP pomocí Azure Data Factory
 
@@ -55,7 +55,7 @@ Následující tabulka popisuje prvky JSON, které jsou specifické pro propojen
 | type | Vlastnost **type** musí být nastavena na **http**. | Ano |
 | url | Základní adresa URL webového serveru. | Ano |
 | authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **Anonymous**, **Basic**, **Digest**, **Windows**a **ClientCertificate**. <br><br> Další vlastnosti a ukázky JSON pro tyto typy ověřování naleznete v dalších částech tohoto článku. | Ano |
-| enableServerCertificateValidation | Určuje, zda má být povolení ověření certifikátu SSL serveru, pokud je zdrojem webový server HTTPS. Pokud server HTTPS používá certifikát podepsaný svým držitelem, nastavte tento certifikát na **hodnotu false**. | Ne<br /> (výchozí nastavení je **pravda**) |
+| enableServerCertificateValidation | Určuje, zda má být povolení ověření certifikátu TLS/SSL serveru, pokud je zdrojem webový server HTTPS. Pokud server HTTPS používá certifikát podepsaný svým držitelem, nastavte tento certifikát na **hodnotu false**. | Ne<br /> (výchozí nastavení je **pravda**) |
 | název brány | Název instance Brány pro správu dat, který se má použít pro připojení k místnímu zdroji HTTP. | Ano, pokud kopírujete data z místního zdroje HTTP |
 | šifrované pověření | Šifrované přihlašovací údaje pro přístup ke koncovému bodu HTTP. Hodnota je automaticky generována při konfiguraci ověřovacích informací v Průvodci kopírováním nebo pomocí dialogového okna **ClickOnce.** | Ne<br /> (platí pouze při kopírování dat z místního http serveru) |
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 02213feb507e9a032a50241fddf31714b9dfd7ee
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387831"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011057"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů GPU AMD na virtuální chody řady N se systémem Windows
 
@@ -40,7 +40,7 @@ Základní specifikace, kapacity úložiště a podrobnosti o disku najdete [v t
 
 2. Pokud jste zákazník s náhledem NVv4, zastavte virtuální ho a počkejte, až se přesune do stavu Zastaveno(Deallocated).
 
-3. Spusťte virtuální hospodařící spouštění a stáhněte si nejnovější [nástroj AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Odinstalujte existující ovladač spuštěním programu amdcleanuputility-x64.exe. Nepoužívejte žádný nástroj exisitng cleanup, který byl nainstalován s předchozím ovladačem.  
+3. Spusťte virtuální hospodařící spouštění a stáhněte si nejnovější [nástroj AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Odinstalujte existující ovladač spuštěním programu amdcleanuputility-x64.exe. Nepoužívejte žádný existující nástroj pro vyčištění, který byl nainstalován s předchozím ovladačem.  
 
 4. Stáhněte a nainstalujte nejnovější ovladač.
 
@@ -52,6 +52,12 @@ Instalaci ovladače můžete ověřit ve Správci zařízení. Následující p�
 <br />
 ![Vlastnosti ovladače GPU](./media/n-series-amd-driver-setup/device-manager.png)
 
-Pomocí dxdiagu můžete ověřit vlastnosti zobrazení GPU včetně grafické paměti RAM. Následující příklad ukazuje 1/8oddíl karty Radeon Instinct MI25 na virtuálním počítači Azure NVv4.
+Pomocí dxdiagu můžete ověřit vlastnosti zobrazení GPU včetně grafické paměti RAM. Následující příklad ukazuje 1/2 oddíl karty Radeon Instinct MI25 na virtuálním počítači Azure NVv4.
 <br />
-![Vlastnosti ovladače GPU](./media/n-series-amd-driver-setup/dxdiag.png)
+![Vlastnosti ovladače GPU](./media/n-series-amd-driver-setup/dxdiag-output.png)
+
+Pokud používáte Windows 10 sestavení 1903 nebo vyšší pak dxdiag nezobrazí žádné informace v záložce 'Zobrazit'. Použijte možnost "Uložit všechny informace" v dolní části a výstupní soubor zobrazí informace týkající se GPU AMD MI25.
+
+![Vlastnosti ovladače GPU](./media/n-series-amd-driver-setup/dxdiag-details.png)
+
+

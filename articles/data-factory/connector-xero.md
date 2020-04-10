@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 1f6404da163e075b63a99a1d8474cdba4e064b06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdb2dc283287bf83410f1846aca11f233e93d01b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930883"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990838"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopírování dat z Xero pomocí Azure Data Factory
 
@@ -55,8 +55,8 @@ Pro propojenou službu Xero jsou podporovány následující vlastnosti:
 | consumerKey | Klíč příjemce přidružený k aplikaci Xero. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
 | privátní klíč | Soukromý klíč ze souboru PEM, který byl vygenerován pro vaši soukromou aplikaci Xero, najdete [v tématu Vytvoření páru veřejného a soukromého klíče](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Poznámka: **chcete-li generovat privatekey.pem s numbits 512** pomocí `openssl genrsa -out privatekey.pem 512`; 1024 není podporován. Zahrňte veškerý text ze souboru .pem včetně zakončení unixového řádku(\n), viz ukázka níže.<br/><br/>Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
 | použitíEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, zda je v certifikátu serveru vyžadován název hostitele, aby odpovídal názvu hostitele serveru při připojování přes SSL. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, zda se má ověřit identita serveru při připojování přes SSL. Výchozí hodnotou je hodnota true.  | Ne |
+| useHostVerification | Určuje, zda je název hostitele v certifikátu serveru vyžadován tak, aby odpovídal názvu hostitele serveru při připojování přes TLS. Výchozí hodnotou je hodnota true.  | Ne |
+| usePeerVerification | Určuje, zda se má ověřit identita serveru při připojování přes TLS. Výchozí hodnotou je hodnota true.  | Ne |
 
 **Příklad:**
 

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: 081ee364b3ddee5d1d1be75613309a4ae427066f
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ae575eebf700f5495ea20d2bd3732ca21ad32315
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666837"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011411"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Povolení ověřování služby Active Directory přes SMB pro sdílené složky Azure
 
@@ -36,7 +36,9 @@ Když povolíte sdílené složky Služby AD pro Azure přes SMB, vaše počíta
 Identity služby AD používané pro přístup ke sdíleným složkám Azure musí být synchronizovány do Azure AD, aby bylo možné vynutit oprávnění k souborům na úrovni sdílení prostřednictvím standardního modelu [řízení přístupu (RBAC) založeného na rolích.](../../role-based-access-control/overview.md) [Seznamy DACL ve stylu systému Windows](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) na souborech nebo adresářích přenesených z existujících souborových serverů budou zachovány a vynuceny. Tato funkce nabízí bezproblémovou integraci s podnikovou infrastrukturou domény služby AD. Při nahrazení souborových serverů na předplacených souborech sdílenými složkami Azure mohou stávající uživatelé přistupovat ke sdíleným spodám souborů Azure ze svých aktuálních klientů pomocí jednotného přihlašování bez jakékoli změny přihlašovacích údajů, které se používají.  
 
 > [!NOTE]
-> Abychom vám pomohli nastavit ověřování Azure Files AD pro běžné případy použití, jsme publikovali [dvě videa](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos) s podrobnými pokyny k nahrazení místních souborových serverů soubory Azure Files a použití souborů Azure jako kontejneru profilu pro Windows Virtual Desktop.
+> Abychom vám pomohli nastavit ověřování Azure Files AD pro běžné případy použití, publikovali jsme [dvě videa](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos) s podrobnými pokyny pro 
+> * Nahrazení místních souborových serverů soubory Azure (včetně nastavení na privátní propojení pro soubory a ověřování služby AD)
+> * Použití souborů Azure jako kontejneru profilu pro Virtuální plochu Windows (včetně nastavení ověřování a služby AD a konfigurace FsLogix)
  
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -111,8 +113,7 @@ Můžete použít následující skript k provedení registrace a povolení funk
 ### <a name="12-domain-join-your-storage-account"></a>1.2 Doména se připojí k účtu úložiště
 Nezapomeňte nahradit zástupné hodnoty vlastními v níže uvedených parametrech, než je provedete v prostředí PowerShell.
 > [!IMPORTANT]
-> Doporučujeme zadat organizační jednotku (OU) a která nevylučuje vypršení platnosti hesla. Pokud používáte ouovou akci s nakonfigurovanou vypršeníplatnosti hesla, je nutné heslo aktualizovat před dosažením maximálního stáří hesla. Pokud se nepodaří aktualizovat heslo účtu služby AD, dojde k selhání ověřování při přístupu ke sdíleným položkám azure. Informace o aktualizaci hesla naleznete v [tématu Aktualizace hesla účtu služby AD](#5-update-ad-account-password).
-
+> Níže uvedená rutina připojení k doméně vytvoří účet služby AD představující účet úložiště (sdílenou složku) ve službě AD. Můžete se zaregistrovat jako účet počítače nebo přihlašovací účet služby. U účtů počítačů je ve společnosti AD nastavenvýchozí věk vypršení platnosti hesla po 30 dnech. Podobně přihlašovací účet služby může mít výchozí stáří vypršení platnosti hesla nastavené v doméně služby AD nebo organizační jednotce (OU). Důrazně doporučujeme zkontrolovat, jaký je věk vypršení platnosti hesla konfigurovaný ve vašem prostředí služby AD, a plán [ovat aktualizaci hesla účtu služby AD](#5-update-ad-account-password) účtu služby AD níže před dosažením maximálního stáří hesla. Pokud se nepodaří aktualizovat heslo účtu služby AD, dojde k selhání ověřování při přístupu ke sdíleným položkám azure. Můžete zvážit [vytvoření nové organizační jednotky služby AD (OU) ve službě AD](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) a odpovídajícím způsobem zakázat zásady vypršení platnosti hesla u [účtů počítačů](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) nebo přihlašovacích účtů služeb. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -138,6 +139,11 @@ Join-AzStorageAccountForAuth `
         -Name "<storage-account-name-here>" `
         -DomainAccountType "ComputerAccount" `
         -OrganizationalUnitName "<ou-name-here>" or -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>"
+
+#If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
+
+#
+
 ```
 
 Následující popis shrnuje všechny `Join-AzStorageAccountForAuth` akce provedené při spuštění rutiny. Pokud nechcete příkaz používat, můžete tyto kroky provést ručně:

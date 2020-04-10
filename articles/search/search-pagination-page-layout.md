@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 451e83fa6ab547536a4cfd85304930e749a8247f
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656016"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998394"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Cognitive Search
 
@@ -94,7 +94,11 @@ Další možností je použití [vlastního profilu hodnocení](index-add-scorin
 
 Zvýraznění zásahu označuje formátování textu (například tučné nebo žluté zvýraznění) použité na odpovídající termín ve výsledku, což usnadňuje zobrazení shody. Pokyny pro zvýraznění přístupů jsou k dispozici v [žádosti o dotaz](https://docs.microsoft.com/rest/api/searchservice/search-documents). Vyhledávač uzavře odpovídající termín ve `highlightPreTag` značkách `highlightPostTag`a , a váš kód zpracovává odpověď (například použití tučnépísmo).
 
-Formátování se použije na dotazy na celý termín. V následujícím příkladu jsou pro zvýraznění označeny výrazy "písčité", "písek", "pláže", "pláž" v poli Popis. Dotazy na částečné termíny, jako je například přibližné vyhledávání nebo hledání se zástupnými kódy, které vedou k rozšíření dotazu v modulu, nelze použít zvýraznění přístupů.
+Formátování se použije na dotazy na celý termín. V následujícím příkladu jsou pro zvýraznění označeny výrazy "písčité", "písek", "pláže", "pláž" v poli Popis. Dotazy, které aktivují rozšíření dotazů v modulu, jako je například vyhledávání přibližných a zástupných symbolů, mají omezenou podporu pro zvýraznění přístupů.
+
+```http
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+```
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 

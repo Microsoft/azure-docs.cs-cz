@@ -7,17 +7,17 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro, openshift, az aro, červený klobouk, cli
-ms.openlocfilehash: 423f09c135da51b8401c1933a4a271d0becd2c8f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9488ef593cf4ec8600dcb42ea4a2cefa4fcb1446
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349432"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998799"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Vytvoření, přístup a správa clusteru Azure Red Hat OpenShift 4.3
 
 > [!IMPORTANT]
-> Upozorňujeme, že Azure Red Hat OpenShift 4.3 je momentálně k dispozici jenom v privátní verzi Preview v USA – východ. Přijetí soukromé verze preview je pouze na pozvání. Než se pokusíte povolit tuto funkci: [Azure Red Hat OpenShift Private Preview Registration,](https://aka.ms/aro-preview-register) nezapomeňte si zaregistrovat předplatné.
+> Upozorňujeme, že Azure Red Hat OpenShift 4.3 je momentálně k dispozici jenom v privátní verzi Preview v USA a východ USA 2. Přijetí soukromé verze preview je pouze na pozvání. Než se pokusíte povolit tuto funkci: [Azure Red Hat OpenShift Private Preview Registration,](https://aka.ms/aro-preview-register) nezapomeňte si zaregistrovat předplatné.
 
 > [!NOTE]
 > Funkce náhledu jsou samoobslužné a jsou poskytovány tak, jak jsou k dispozici a jsou vyloučeny ze smlouvy o úrovni služeb (SLA) a omezené záruky. Proto funkce nejsou určeny pro produkční použití.
@@ -65,7 +65,7 @@ Rozšíření `az aro` umožňuje vytvářet, přistupovat a odstraňovat cluste
    az -v
    ...
    Extensions:
-   aro                                0.1.0
+   aro                                0.3.0
    ...
    ```
   
@@ -108,7 +108,7 @@ Následujícím postupem vytvořte virtuální síť obsahující dvě prázdné
 4. Přidejte do virtuální sítě dvě prázdné podsítě.
 
    ```console
-    for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
+   for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
      az network vnet subnet create \
        -g "$RESOURCEGROUP" \
        --vnet-name vnet \
@@ -141,6 +141,8 @@ az aro create \
   --vnet vnet \
   --master-subnet "$CLUSTER-master" \
   --worker-subnet "$CLUSTER-worker" \
+  --cluster-resource-group "aro-$CLUSTER" \
+  --domain "$CLUSTER" \
   --pull-secret "$PULL_SECRET"
 ```
 

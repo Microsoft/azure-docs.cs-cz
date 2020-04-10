@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 52629b8e2e190cc041116e6f65488480712baf01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ad5bb26959916f60973a8c0274e17eee03aa7a1
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929789"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991462"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Migrace místních úloh SSIS do SSIS v ADF
 
 ## <a name="overview"></a>Přehled
 
-Když migrujete databázové úlohy z MÍSTNĚ SQL Serveru do databázových služeb Azure, konkrétně Azure SQL Database nebo azure sql database spravované instance, vaše etl úlohy na SQL Server Integration Services (SSIS) jako jeden z primárních přidané hodnoty budou muset být migrovány i služby.
+Když migrujete databázové úlohy z SQL Serveru v místním prostředí do databázových služeb Azure, konkrétně Azure SQL Database nebo Azure SQL Database spravované instance, vaše etl úlohy na SQL Server Integration Services (SSIS) jako jednu z primárních služeb s přidanou hodnotou bude muset být migrována také.
 
 Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF) podporuje spuštěné balíčky SSIS. Po zřízení služby Azure-SSIS IR můžete k nasazení a spuštění balíčků v Azure použít známé nástroje, jako jsou například nástroje SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) a nástroje příkazového řádku, jako je dtinstall/dtutil/dtexec. Další informace najdete [v tématu Přehled nárůstu a posunu Azure SSIS](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
@@ -63,7 +63,7 @@ V závislosti na [typech úložiště](#four-storage-types-for-ssis-packages) zd
 | **Typ úložiště balíčků** |Jak dávkově migrovat balíčky SSIS|Jak dávkově migrovat úlohy SSIS|
 |-|-|-|
 |SSISDB|[Migrace **sissisdb**](scenario-ssis-migration-ssisdb-mi.md)|[Migrace úloh SSIS do agenta spravované instance Azure SQL Database](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-azure-sql-database-managed-instance-agent)|
-|Systém souborů|Znovu je nasaďte do sdílených složek/souborů Azure prostřednictvím dtinstall/dtutil/ruční kopírování nebo k uchovávejte v souborových systémech přístup přes infračervený přenos hostované na virtuální síti/vlastní hostované. Další informace naleznete v tématu [nástroj dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Převeďte je na kanály ADF/aktivity/aktivační události prostřednictvím skriptů/portálu SSMS/ADF. Další informace naleznete v [tématu SSMS scheduling feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
+|Systém souborů|Znovu je nasaďte do sdílených složek/souborů Azure prostřednictvím dtinstall/dtutil/ruční kopírování nebo k uchovávejte v souborových systémech přístup přes infračervený přenos hostované na virtuální síti/vlastní hostované. Další informace naleznete v tématu [nástroj dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|<li> Migrovat pomocí [Průvodce migrací úlohy SSIS v SSMS]. (how-to-migrate-ssis-job-ssms.md) <li>Převeďte je na kanály ADF/aktivity/aktivační události prostřednictvím skriptů/portálu SSMS/ADF. Další informace naleznete v [tématu SSMS scheduling feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |SQL Server (MSDB)|Exportujte je do systémů souborů/sdílených složek souborů/souborů Azure přes SSMS/dtutil. Další informace naleznete v [tématu Export balíčků SSIS](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Převeďte je na kanály ADF/aktivity/aktivační události prostřednictvím skriptů/portálu SSMS/ADF. Další informace naleznete v [tématu SSMS scheduling feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Úložiště balíčků|Exportujte je do systémů souborů/sdílených složek souborů/souborů Azure prostřednictvím SSMS/dtutil nebo je znovu nasaďte do sdílených složek/souborů Azure pomocí dtinstall/dtutil/ruční kopírování nebo je uchovávejte v souborových systémech pro přístup přes infračervený přenos v síti/vlastní hostované. Další informace naleznete v tématu nástroj dtutil. Další informace naleznete v tématu [nástroj dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Převeďte je na kanály ADF/aktivity/aktivační události prostřednictvím skriptů/portálu SSMS/ADF. Další informace naleznete v [tématu SSMS scheduling feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 
@@ -72,7 +72,7 @@ V závislosti na [typech úložiště](#four-storage-types-for-ssis-packages) zd
 | **Typ úložiště balíčků** |Jak dávkově migrovat balíčky SSIS|Jak dávkově migrovat úlohy|
 |-|-|-|
 |SSISDB|Znovu nasadit do Azure-SSISDB přes SSDT/SSMS. Další informace najdete [v tématu nasazení balíčků SSIS v Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial).|Převeďte je na kanály ADF/aktivity/aktivační události prostřednictvím skriptů/portálu SSMS/ADF. Další informace naleznete v [tématu SSMS scheduling feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
-|Systém souborů|Znovu je nasaďte do sdílených složek/souborů Azure prostřednictvím dtinstall/dtutil/ruční kopírování nebo k uchovávejte v souborových systémech přístup přes infračervený přenos hostované na virtuální síti/vlastní hostované. Další informace naleznete v tématu [nástroj dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Převeďte je na kanály ADF/aktivity/aktivační události prostřednictvím skriptů/portálu SSMS/ADF. Další informace naleznete v [tématu SSMS scheduling feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
+|Systém souborů|Znovu je nasaďte do sdílených složek/souborů Azure prostřednictvím dtinstall/dtutil/ruční kopírování nebo k uchovávejte v souborových systémech přístup přes infračervený přenos hostované na virtuální síti/vlastní hostované. Další informace naleznete v tématu [nástroj dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|<li> Migrovat pomocí [Průvodce migrací úlohy SSIS v SSMS]. (how-to-migrate-ssis-job-ssms.md) <li> Převeďte je na kanály ADF/aktivity/aktivační události prostřednictvím skriptů/portálu SSMS/ADF. Další informace naleznete v [tématu SSMS scheduling feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |SQL Server (MSDB)|Exportujte je do systémů souborů/sdílených složek souborů/souborů Azure přes SSMS/dtutil. Další informace naleznete v [tématu Export balíčků SSIS](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Převeďte je na kanály ADF/aktivity/aktivační události prostřednictvím skriptů/portálu SSMS/ADF. Další informace naleznete v [tématu SSMS scheduling feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Úložiště balíčků|Exportujte je do systémů souborů/sdílených složek souborů/souborů Azure prostřednictvím SSMS/dtutil nebo je znovu nasaďte do sdílených složek/souborů Azure pomocí dtinstall/dtutil/ruční kopírování nebo je uchovávejte v souborových systémech pro přístup přes infračervený přenos v síti/vlastní hostované. Další informace naleznete v tématu nástroj dtutil. Další informace naleznete v tématu [nástroj dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Převeďte je na kanály ADF/aktivity/aktivační události prostřednictvím skriptů/portálu SSMS/ADF. Další informace naleznete v [tématu SSMS scheduling feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 

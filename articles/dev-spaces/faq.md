@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Najděte odpovědi na některé běžné otázky týkající se Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery, Helm, síť služeb, směrování sítě služeb, kubectl, k8s '
-ms.openlocfilehash: e7b4620faa01aa9f6d46c34bafb1c623c338beb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3ac6ec3c3ddbe8ff508befba2eb4a8423e66f07
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240502"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998738"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Nejčastější dotazy týkající se Azure Dev Spaces
 
@@ -81,6 +81,14 @@ Při použití sady Visual Studio k přípravě projektu máte možnost povolen�
 
 Azure Dev Spaces v současné době nepodporuje použití [pod spravované identity][aks-pod-managed-id] v clusterech AKS s povolenou Azure Dev Spaces. Pokud máte nainstalovány spravované identity pod a chcete je odinstalovat, najdete další podrobnosti v poznámkách k [odinstalaci][aks-pod-managed-id-uninstall].
 
+## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>Můžu v aplikaci používat Azure Dev Spaces s více mikroslužbami?
+
+Ano, můžete použít Azure Dev Spaces v aplikaci s více mikroslužeb, ale je nutné připravit a spustit jednotlivé mikroslužeb v jejich kořenovém adresáři. Azure Dev Spaces CLI, rozšíření Azure Dev Spaces VS Code a úlohy Visual Studio Azure Development očekávají, že soubor *azds.yaml* bude v kořenovém adresáři mikroslužby za účelem spuštění a ladění. Podívejte se na [ukázkovou aplikaci Bike Sharing][bike-sharing] pro příklad více mikroslužeb v jedné aplikaci.
+
+V kódu Visual Studio je možné [otevřít samostatné projekty v jednom pracovním prostoru][vs-code-multi-root-workspaces] a ladit je samostatně prostřednictvím Azure Dev Spaces. Každý z projektů musí být samostatný a připravený pro Azure Dev Spaces.
+
+V sadě Visual Studio je možné nakonfigurovat řešení .NET Core pro ladění prostřednictvím Azure Dev Spaces.
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
@@ -89,6 +97,7 @@ Azure Dev Spaces v současné době nepodporuje použití [pod spravované ident
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
+[bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
 [dev-spaces-routing]: how-dev-spaces-works-routing.md#how-routing-works
 [ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller
@@ -97,4 +106,5 @@ Azure Dev Spaces v současné době nepodporuje použití [pod spravované ident
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
 [quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
+[vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces
 [windows-containers]: how-to/run-dev-spaces-windows-containers.md

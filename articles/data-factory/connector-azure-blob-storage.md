@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 214b2868f9733dfc6790c492543fb86a832f18b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.openlocfilehash: dd13a08b3c2f63baf509efbb730032edd4eba61a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065509"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011544"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování a transformace dat v úložišti objektů Blob Azure pomocí Azure Data Factory
 
@@ -25,7 +25,8 @@ ms.locfileid: "80065509"
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do úložiště objektů blob Azure a pomocí toku dat k transformaci dat v úložišti objektů Blob Azure. Další informace o Azure Data Factory najdete v [úvodním článku](introduction.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+>[!TIP]
+>V případě migrace datového jezera nebo datového skladu najdete další informace v [aplikaci Azure Data Factory k migraci dat z datového jezera nebo datového skladu do Azure](data-migration-guidance-overview.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -64,7 +65,7 @@ Konektor azure blob podporuje následující typy ověřování, naleznete v odp
 - [Spravované identity pro ověřování prostředků Azure](#managed-identity)
 
 >[!NOTE]
->Při použití technologie PolyBase k načtení dat do datového skladu SQL, pokud je zdrojové nebo pracovní úložiště objektů Blob nakonfigurováno s koncovým bodem virtuální sítě, musíte použít spravované ověřování identity podle požadavků služby PolyBase a používat modul Runtime integrace s vlastním hostitelem s verzí 3.18 nebo vyšší. Podívejte se na část [ověřování spravované identity](#managed-identity) s dalšími požadavky na konfiguraci.
+>Při použití PolyBase k načtení dat do datového skladu SQL, pokud je zdrojové nebo pracovní úložiště objektů Blob nakonfigurováno s koncovým bodem virtuální sítě, musíte použít spravované ověřování identity podle požadavků PolyBase a použít modul Runtime integrace s vlastním hostitelem s verzí 3.18 nebo vyšší. Podívejte se na část [ověřování spravované identity](#managed-identity) s dalšími požadavky na konfiguraci.
 
 >[!NOTE]
 >HdInsights a Azure Machine Learning aktivity podporují jenom ověřování klíče účtu úložiště Azure Blob.
@@ -136,11 +137,6 @@ Sdílený přístupový podpis poskytuje delegovaný přístup k prostředkům v
 > [!NOTE]
 >- Data Factory nyní podporuje jak **služby sdílené přístupové podpisy** a **podpisy sdíleného přístupu účtu**. Další informace o sdílených přístupových podpisech najdete v tématu [Udělení omezeného přístupu k prostředkům úložiště Azure pomocí sdílených přístupových podpisů (SAS).](../storage/common/storage-sas-overview.md)
 >- V pozdější konfiguraci datové sady je cesta ke složce absolutní cestou počínaje úrovní kontejneru. Je třeba nakonfigurovat jeden zarovnán s cestou v identifikátoru URI SAS.
-
-> [!TIP]
-> Chcete-li vygenerovat podpis sdíleného přístupu služby pro váš účet úložiště, můžete spustit následující příkazy prostředí PowerShell. Nahraďte zástupné symboly a udělte potřebná oprávnění.
-> `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
-> `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Chcete-li použít ověřování podpisu sdíleného přístupu, jsou podporovány následující vlastnosti:
 

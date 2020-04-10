@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 1d6fa75beabdc36750525310008add9594562228
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887108"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991769"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
@@ -86,6 +86,7 @@ Konfigurace upozornění:
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Běžné diagnostické scénáře a doporučená zobrazení
 
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Je cesta k datům nahoru a dostupná pro můj program VYROVNÁVÁNÍ zatížení VIP?
+<details><summary>Rozbalit</summary>
 
 Metrika dostupnosti VIP popisuje stav datové cesty v rámci oblasti k výpočetnímu hostiteli, kde jsou umístěny vaše virtuální počítače. Metrika je odrazem stavu infrastruktury Azure. Pomocí metriky můžete:
 - Sledování externí dostupnosti služby
@@ -113,9 +114,11 @@ Dostupnost programu VIP se nezdaří z následujících důvodů:
 Pro diagnostické účely můžete použít [metriku dostupnost cesty k datům spolu se stavem sondy stavu](#vipavailabilityandhealthprobes).
 
 Pro většinu scénářů použijte jako agregaci **průměr.**
+</details>
 
 #### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>Odpovídají back-endové instance pro mé VIP sondy?
-
+<details>
+  <summary>Rozbalit</summary>
 Metrika stavu sondy stavu popisuje stav nasazení aplikace, jak jste nakonfigurovali při konfiguraci sondy stavu nástrojpro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení používá stav sondy stavu k určení, kam chcete odeslat nové toky. Sondy stavu pocházejí z adresy infrastruktury Azure a jsou viditelné v rámci hostovaného operačního systému virtuálního počítače.
 
 Získání stavu sondy pro vaše prostředky standardního nástrojového bilance zatížení:
@@ -127,9 +130,11 @@ Sondy stavu se nezdaří z následujících důvodů:
 - Vaše sonda není povolena skupinou zabezpečení sítě, bránou firewall hostovaného operačního systému virtuálního počítače nebo filtry aplikační vrstvy.
 
 Pro většinu scénářů použijte jako agregaci **průměr.**
+</details>
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Jak zjistím statistiku odchozího připojení? 
-
+<details>
+  <summary>Rozbalit</summary>
 Metrika připojení SNAT popisuje objem úspěšných a neúspěšných připojení pro [odchozí toky](https://aka.ms/lboutbound).
 
 Neúspěšný objem připojení větší než nula označuje vyčerpání portu SNAT. Je nutné prozkoumat další zjistit, co může být příčinou těchto selhání. Vyčerpání portu SNAT se projevuje jako selhání při vytváření [odchozího toku](https://aka.ms/lboutbound). Projděte si článek o odchozích připojeních, abyste porozuměli scénářům a mechanismům v práci a zjistili, jak zmírnit a navrhnout, abyste se vyhnuli vyčerpání portu SNAT. 
@@ -141,10 +146,12 @@ Chcete-li získat statistiky připojení SNAT:
 ![Připojení SNAT](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
 *Obrázek: Počet připojení SNAT pro vyrovnávání zatížení*
+</details>
 
 
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>Jak zkontroluji využití a přidělení portu SNAT?
-
+<details>
+  <summary>Rozbalit</summary>
 Metrika využití SNAT označuje, kolik jedinečných toků je vytvořeno mezi internetovým zdrojem a back-endovým virtuálním počítačem nebo škálovací sadou virtuálního počítače, která je za nástrojem pro vyrovnávání zatížení a nemá veřejnou IP adresu. Porovnáním s metrikou přidělení SNAT můžete určit, zda vaše služba zažívá nebo je ohrožena vyčerpáním SNAT a výsledkem selhání odchozího toku. 
 
 Pokud metriky označují riziko selhání [odchozího toku,](https://aka.ms/lboutbound) odkazujte na článek a podnikněte kroky ke zmírnění tohoto stavu, abyste zajistili stav služby.
@@ -166,9 +173,11 @@ Zobrazení využití a přidělení portu SNAT:
 ![Využití SNAT podle instance back-endu](./media/load-balancer-standard-diagnostics/snat-usage-split.png)
 
 *Obrázek: Využití portu TCP SNAT na instanci back-endu*
+</details>
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Jak lze zkontrolovat pokusy o příchozí nebo odchozí připojení pro svou službu?
-
+<details>
+  <summary>Rozbalit</summary>
 Metrika paketů SYN popisuje objem paketů TCP SYN, které byly doručeny nebo odeslány (pro [odchozí toky),](https://aka.ms/lboutbound)které jsou přidruženy k určitému front-endu. Tuto metriku můžete použít k pochopení pokusů o připojení TCP k vaší službě.
 
 Pro většinu scénářů použijte jako agregaci **součet.**
@@ -176,10 +185,12 @@ Pro většinu scénářů použijte jako agregaci **součet.**
 ![Připojení SYN](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
 *Obrázek: Počet SYN vykladače zatížení*
+</details>
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>Jak lze zkontrolovat spotřebu šířky pásma sítě? 
-
+<details>
+  <summary>Rozbalit</summary>
 Metrika čítače bajtů a paketů popisuje objem bajtů a paketů, které jsou odesílány nebo přijímány vaší službou na základě front-endu.
 
 Pro většinu scénářů použijte jako agregaci **součet.**
@@ -193,9 +204,11 @@ Chcete-li získat statistiku počtu bajtů nebo paketů:
 ![Počet bajtů](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
 *Obrázek: Počet bajtů vyvažovači zatížení*
+</details>
 
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>Jak diagnostikuji nasazení vyvyčovávače zatížení?
-
+<details>
+  <summary>Rozbalit</summary>
 Pomocí kombinace metriky dostupnosti VIP a sondy stavu v jednom grafu můžete zjistit, kde chcete problém vyhledat a problém vyřešit. Můžete získat jistotu, že Azure funguje správně a použít tyto znalosti přesvědčivě určit, že konfigurace nebo aplikace je hlavní příčinou.
 
 Pomocí metrik sondy stavu můžete pochopit, jak Azure zobrazení stavu vašeho nasazení podle konfigurace, kterou jste poskytli. Při pohledu na zdravotní sondy je vždy skvělý první krok při sledování nebo určení příčiny.
@@ -211,6 +224,7 @@ Graf zobrazuje následující informace:
 - Stav sondy stavu (dostupnost DIP), označený fialovým trasováním, je na začátku grafu 0 procent. Zakroužkovaná oblast zeleně upozorňuje, kde stav sondy stavu (dip dostupnost) se stal v pořádku a v tomto okamžiku nasazení zákazníka byl schopen přijmout nové toky.
 
 Graf umožňuje zákazníkům řešit řešení potíží s nasazením samostatně, aniž by museli hádat nebo se ptát na podporu, zda dochází k dalším problémům. Služba nebyla k dispozici, protože sondy stavu se nezdařily z důvodu chybné konfigurace nebo neúspěšné aplikace.
+</details>
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Stav zdroje
 

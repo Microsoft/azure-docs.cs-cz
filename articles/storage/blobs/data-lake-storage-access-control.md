@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 192e46fd7f86b6053eaf658fa65e3c6cdfa3a4e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528604"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992211"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen2
 
@@ -54,7 +54,7 @@ Tokeny SAS zahrnují povolená oprávnění jako součást tokenu. Oprávnění 
 Objekt zabezpečení můžete přidružit k úrovni přístupu pro soubory a adresáře. Tato přidružení jsou zachycena v *seznamu řízení přístupu (ACL).* Každý soubor a adresář v účtu úložiště má seznam řízení přístupu.
 
 > [!NOTE]
-> Počet aklů platí pouze pro objekty zabezpečení ve stejném tenantovi. Uživatele typu Host nelze přidružit k úrovni přístupu.  
+> Počet aklů platí pouze pro objekty zabezpečení ve stejném tenantovi. 
 
 Pokud jste přiřadili roli k objektu zabezpečení na úrovni účtu úložiště, můžete pomocí seznamů řízení přístupu udělit tomuto zaregistrovaný objekt zabezpečení zvýšený přístup k určitým souborům a adresářům.
 

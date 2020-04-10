@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793431"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998484"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Použití syntaxe vyhledávání "full" Lucene (rozšířené dotazy v Azure Cognitive Search)
 
@@ -86,7 +86,7 @@ Tento první příklad není specifické pro Lucene, ale vedeme s ním zavést p
 
 Pro stručnost dotaz cíle pouze *business_title* pole a určuje pouze obchodní tituly jsou vráceny. Parametr **searchFields** omezuje spuštění dotazu pouze na business_title pole a **vyberte,** která pole jsou zahrnuta do odpovědi.
 
-### <a name="partial-query-string"></a>Řetězec částečného dotazu
+### <a name="search-expression"></a>Vyhledávací výraz
 
 ```http
 &search=*&searchFields=business_title&$select=business_title
@@ -119,7 +119,7 @@ Možná jste si všimli skóre vyhledávání v odpovědi. K jednotnému skóre 
 
 Úplná syntaxe Lucene podporuje vymezení jednotlivých vyhledávacích výrazů do určitého pole. Tento příklad vyhledá obchodní tituly s termínem senior v nich, ale ne junior.
 
-### <a name="partial-query-string"></a>Řetězec částečného dotazu
+### <a name="search-expression"></a>Vyhledávací výraz
 
 ```http
 $select=business_title&search=business_title:(senior NOT junior)
@@ -156,7 +156,7 @@ Pole zadané v **poli FieldName:searchExpression** musí být prohledávatelné 
 
 Úplná syntaxe Lucene také podporuje přibližné vyhledávání, odpovídající termíny, které mají podobnou konstrukci. Chcete-li provést přibližné `~` vyhledávání, přidejte symbol vlnovky na konec jednoho slova s volitelným parametrem, hodnotou mezi 0 a 2, která určuje vzdálenost úprav. Například `blue~` nebo `blue~1` vrátí modrou, modrou a lepicí.
 
-### <a name="partial-query-string"></a>Řetězec částečného dotazu
+### <a name="search-expression"></a>Vyhledávací výraz
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:asosiate~
@@ -186,7 +186,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-4-proximity-search"></a>Příklad 4: Hledání bezkontaktní chod
 Hledání bezkontaktní chodse se používá k vyhledání termínů, které jsou v dokumentu blízko sebe. Na konec fráze vložte symbol vlnovky "~", za nímž následuje počet slov, která vytvářejí hranici přiblížení. Například "hotelové letiště"~5 najde termíny hotel a letiště do 5 slov od sebe v dokumentu.
 
-### <a name="partial-query-string"></a>Řetězec částečného dotazu
+### <a name="search-expression"></a>Vyhledávací výraz
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
@@ -239,7 +239,7 @@ Při nastavování úrovně faktoru, čím vyšší je faktor zesílení, tím r
 
 Hledání regulárních výrazů vyhledá shodu na základě obsahu mezi lomítkem "/", jak je popsáno ve [třídě RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html).
 
-### <a name="partial-query-string"></a>Řetězec částečného dotazu
+### <a name="search-expression"></a>Vyhledávací výraz
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
@@ -262,7 +262,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-7-wildcard-search"></a>Příklad 7: Hledání zástupných symbolů
 Obecně rozpoznanou syntaxi\*můžete použít pro více násobné ( ) nebo jednoznakové zástupné vyhledávání. Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů s jediným termínem a nikoli frází.
 
-### <a name="partial-query-string"></a>Řetězec částečného dotazu
+### <a name="search-expression"></a>Vyhledávací výraz
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:prog*

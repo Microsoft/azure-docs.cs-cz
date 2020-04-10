@@ -3,12 +3,12 @@ title: Škálování typu uzlu Azure Service Fabric
 description: Zjistěte, jak škálovat cluster Service Fabric přidáním škálovací sady virtuálních strojů.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 33d535cb093eeb95e0ce95bdd5722bfd21150a40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dbb9e4fbfeb27c5b8b13f70207888cf37bbb0e0
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464225"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998930"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Vertikální navýšení kapacity primárního typu uzlu clusteru Service Fabric
 Tento článek popisuje, jak vertikálně navýšit kapacitu typu primárního uzlu clusteru Service Fabric zvýšením prostředků virtuálního počítače. Cluster Service Fabric je síťová sada virtuálních nebo fyzických počítačů, do kterých jsou vaše mikroslužby nasazeny a spravovány. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Škálovací sady virtuálních počítačů jsou výpočetní prostředek Azure, který používáte k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Azure, je [nastaven jako samostatná škálovací sada](service-fabric-cluster-nodetypes.md). Každý typ uzlu lze pak spravovat samostatně. Po vytvoření clusteru Service Fabric můžete škálovat typ uzlu clusteru svisle (změnit prostředky uzlů) nebo upgradovat operační systém virtuálních zařízení typu uzlu.  Cluster můžete kdykoli škálovat, i když jsou v clusteru spuštěny úlohy.  Při škálování clusteru se automaticky škálují také vaše aplikace.
@@ -34,7 +34,7 @@ Tady je proces aktualizace velikosti virtuálního počítače a operačního sy
     Chcete-li najít novou škálovací sadu v šabloně, vyhledejte prostředek "Microsoft.Compute/virtualMachineScaleSets" pojmenovaný parametrem *vmNodeType2Name.*  Nová škálovací sada je přidána do primárního typu uzlu pomocí vlastností >virtualMachineProfile->extensions->extensions->properties->settings->nodeTypeRef.
 4. Zkontrolujte stav clusteru a ověřte, zda jsou všechny uzly v pořádku.
 5. Zakažte uzly ve staré škálovací sadě typu primárního uzlu s úmyslem odebrat uzel. Můžete zakázat všechny najednou a operace jsou zařazeny do fronty. Počkejte, až budou všechny uzly zakázány, což může nějakou dobu trvat.  Jako starší uzly v typu uzlu jsou zakázány, systémové služby a osiva uzly migrují do virtuálních počítačů nové škálovací sady v typu primární uzel.
-6. Odeberte starší škálovací sadu z primárního typu uzlu.
+6. Odeberte starší škálovací sadu z primárního typu uzlu. (Po uzly jsou zakázány jako v kroku 5, v okně škálovací sady virtuálních strojů na webu Azure Portal, navrátit uzly ze starého typu uzlu jeden po druhém.)
 7. Odeberte pro vyrovnávání zatížení přidruženého ke staré škálovací sadě. Cluster není k dispozici, zatímco nová veřejná IP adresa a vyrovnávání zatížení jsou nakonfigurovány pro novou škálovací sadu.  
 8. Uložte nastavení DNS veřejné IP adresy přidružené ke staré sadě typů primárních uzlů do proměnné a odeberte tuto veřejnou IP adresu.
 9. Nahraďte nastavení DNS veřejné ip adresy přidružené k nové sadě měřítka typu primárního uzlu nastavením DNS odstraněné veřejné IP adresy.  Cluster je nyní opět dostupný.

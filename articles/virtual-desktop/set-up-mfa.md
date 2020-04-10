@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0b3c47e1bbe5efdc5ee303305e52a785a49d0c00
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b470f9278bdca94d1fe98c64b11b070fb36cb075
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586870"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998481"
 ---
-# <a name="set-up-azure-multi-factor-authentication"></a>Nastavení azure vícefaktorového ověřování
+# <a name="set-up-azure-multi-factor-authentication"></a>Nastavení služby Azure Multi-Factor Authentication
 
 Klient systému Windows pro virtuální plochu systému Windows je vynikající volbou pro integraci virtuální plochy systému Windows do místního počítače. Pokud však nakonfigurujete účet Virtuální plochy systému Windows do klienta systému Windows, budete muset přijmout určitá opatření, abyste udrželi sebe a své uživatele v bezpečí.
 
@@ -32,7 +32,7 @@ Zde je to, co budete potřebovat, abyste mohli začít:
   - Azure Active Directory Premium P1 nebo P2
   - Podniková mobilita + zabezpečení E3 nebo E5
 - Skupina Azure Active Directory s uživateli přiřazenými jako členové skupiny.
-- Povolte Azure MFA pro všechny uživatele. Další informace o tom, jak to provést, naleznete v [tématu Jak vyžadovat dvoustupňové ověření pro uživatele](/active-directory/authentication/howto-mfa-userstates).
+- Povolte Azure MFA pro všechny uživatele. Další informace o tom, jak to provést, naleznete v [tématu Jak vyžadovat dvoustupňové ověření pro uživatele](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user).
 
 >[!NOTE]
 >Následující nastavení platí také pro [webového klienta Windows Virtual Desktop](https://rdweb.wvd.microsoft.com/webclient/index.html).

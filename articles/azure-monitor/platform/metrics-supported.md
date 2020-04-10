@@ -7,19 +7,25 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 80e38893d764f35511793d8b31f596dcbf16dd42
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754661"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991888"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky pomocí Azure Monitoru
 
 > [!NOTE]
 > Tento seznam je z velké části automaticky generované z rozhraní REST rozhraní API metriky monitorování Azure. Jakékoli změny provedené v tomto seznamu přes Github mohou být zapsány bez varování. Chcete-li získat podrobnosti o tom, jak provádět trvalé aktualizace, obraťte se na autora tohoto článku.
 
-Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně jejich vytváření grafů na portálu, přístupu k nim prostřednictvím rozhraní REST API nebo dotazování pomocí prostředí PowerShell nebo CLI. Níže je úplný seznam všech metrik, které jsou aktuálně dostupné v kanálu metrik Azure Monitoru. Jiné metriky mohou být k dispozici na portálu nebo pomocí starších rozhraní API. Tento seznam níže zahrnuje pouze metriky, které jsou k dispozici pomocí konsolidovaného kanálu metrikazure monitoru. Metriky jsou uspořádány podle oboru názvů. Seznam služeb a obory názvů, které jim patří, najdete v [tématu zprostředkovatelé prostředků pro služby Azure](../../azure-resource-manager/management/azure-services-resource-providers.md). Chcete-li tyto metriky dotazovat a přistupovat k nim programově, použijte [verzi api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně jejich vytváření grafů na portálu, přístupu k nim prostřednictvím rozhraní REST API nebo dotazování pomocí prostředí PowerShell nebo CLI. 
+
+Tento článek je úplný seznam všech metrik platformy (to znamená, automaticky sbírat) aktuálně dostupné s konsolidovaným kanálem metrik Azure Monitoru. Seznam byl naposledy aktualizován 27.března 2020. Metriky změněné nebo přidané po tomto datu se nemusí zobrazit níže. Chcete-li dotazovat a přistupovat k seznamu metrik programově, použijte [2018-01-01 api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+
+Jiné metriky mohou být k dispozici na portálu nebo pomocí starších rozhraní API. Metriky pro hostovaný operační systém (hostovaný operační systém), který běží ve virtuálních počítačích Azure, Service Fabric a cloudových služeb **nejsou** uvedeny zde. Ty musí být shromažďovány prostřednictvím jednoho nebo více agentů, které běží na nebo jako součást operačního systému. Metriky agenta můžete odeslat do databáze metrik platformy pomocí rozhraní API [vlastní metriky,](metrics-custom-overview.md) které jsou aktuálně ve verzi Public Preview. Pak můžete mapovat, upozornit a jinak používat metriky operačního služby hosta, jako jsou metriky platformy. Další informace naleznete [v tématu Přehled agentů monitorování](agents-overview.md).    
+
+Metriky jsou uspořádány podle oboru názvů. Seznam služeb a obory názvů, které jim patří, najdete v [tématu zprostředkovatelé prostředků pro služby Azure](../../azure-resource-manager/management/azure-services-resource-providers.md). 
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.

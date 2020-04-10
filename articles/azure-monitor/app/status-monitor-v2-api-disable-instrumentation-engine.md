@@ -1,16 +1,16 @@
 ---
-title: Odkaz na rozhraní API agenta Azure Application Insights
+title: Azure Application Insights Agent Disable-InstrumentationEngine
 description: Odkaz na rozhraní API agenta Application Insights. Zakázat instrumentaceMotor. Sledujte výkon webových stránek bez opětovného nasazení webu. Funguje s ASP.NET webových aplikací hostovaných místně, ve virtuálních počítačích nebo v Azure.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dafa12db95a10df467bf0d042cfd9395720648b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c52d429b527c437db5bb8aaf7e3cc1f1c52af57
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671371"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998374"
 ---
 # <a name="application-insights-agent-api-disable-instrumentationengine"></a>Rozhraní API agenta application insights: Disable-InstrumentationEngine
 

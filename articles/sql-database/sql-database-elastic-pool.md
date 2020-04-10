@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 08/06/2019
-ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/09/2020
+ms.openlocfilehash: 3252ecb030234e4c5543c07dfb4fc702f850a73e
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981422"
+ms.locfileid: "80998991"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy umožňují spravovat a škálovat více databází Azure SQL
 
@@ -110,9 +110,9 @@ Nejlepší velikost fondu závisí na agregační prostředky potřebné pro vš
 - Maximální prostředky využité všemi databázemi ve fondu (maximální DTU nebo maximální virtuální jádra v závislosti na vašem modelu zdrojů).
 - Maximální počet bajtů úložiště využitých všemi databázemi ve fondu
 
-Dostupné úrovně služeb pro každý model prostředků najdete v [nákupním modelu založeném na DTU](sql-database-service-tiers-dtu.md) nebo [nákupním modelu založeném na virtuálních jádrech](sql-database-service-tiers-vcore.md).
+Dostupné úrovně služeb a limity pro každý model prostředků najdete v [nákupním modelu založeném na DTU](sql-database-service-tiers-dtu.md) nebo [nákupním modelu založeném na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 
-V případech, kdy nejde používat nástroje, vám při odhadování, jestli je fond cenově výhodnější než izolované databáze, pomůže následující postup:
+Následující kroky vám mohou pomoci odhadnout, zda je fond nákladově efektivnější než jednotlivé databáze:
 
 1. Odhadněte eDTU nebo virtuální jádra potřebné pro fond takto:
 
@@ -126,6 +126,10 @@ V případech, kdy nejde používat nástroje, vám při odhadování, jestli je
 3. U nákupního modelu založeného na DTU pořiďte větší odhady eDTU z kroku 1 a kroku 2. Pro nákupní model založený na virtuálních jádrech, vzít odhad virtuálních jader z kroku 1.
 4. Podívejte se na [stránku s cenami databáze SQL](https://azure.microsoft.com/pricing/details/sql-database/) a najděte nejmenší velikost fondu, která je větší než odhad z kroku 3.
 5. Porovnejte cenu fondu z kroku 5 na cenu pomocí příslušné výpočetní velikosti pro jednotlivé databáze.
+
+> [!IMPORTANT]
+> Pokud se počet databází ve fondu blíží maximální podporované, nezapomeňte zvážit [správu prostředků v husté elastické fondy](sql-database-elastic-pool-resource-management.md).
+> 
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Použití dalších funkcí databáze SQL s elastické fondy
 
@@ -218,7 +222,7 @@ Další informace najdete v tématu [vytváření výstrah databáze SQL na webu
 
 - [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-   Daxko/CSI používá elastické fondy s Azure SQL Database k urychlení svého vývojového cyklu a ke zvýšení svých zákaznických služeb a výkonu.   
+   Daxko/CSI používá elastické fondy s Azure SQL Database k urychlení svého vývojového cyklu a ke zvýšení svých zákaznických služeb a výkonu.    
 
 ## <a name="next-steps"></a>Další kroky
 

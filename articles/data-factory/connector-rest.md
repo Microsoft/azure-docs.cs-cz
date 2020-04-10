@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca913a4c197e04e20c962c4a4a7a1e479a3cdf92
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867370"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990884"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu REST pomocí Azure Data Factory
 
@@ -60,7 +60,7 @@ Pro propojenou službu REST jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost **type** musí být nastavena na **RestService**. | Ano |
 | url | Základní adresa URL služby REST. | Ano |
-| enableServerCertificateValidation | Určuje, zda se má při připojování ke koncovému bodu ověřit certifikát SSL na straně serveru. | Ne<br /> (výchozí nastavení je **pravda**) |
+| enableServerCertificateValidation | Určuje, zda má být při připojování ke koncovému bodu ověřen certifikát TLS/SSL na straně serveru. | Ne<br /> (výchozí nastavení je **pravda**) |
 | authenticationType | Typ ověřování používaný pro připojení ke službě REST. Povolené hodnoty jsou **Anonymous**, **Basic**, **AadServicePrincipal** a **ManagedServiceIdentity**. Podívejte se na odpovídající části níže na více vlastností a příklady, resp. | Ano |
 | connectVia | [Prostředí Integrace Runtime](concepts-integration-runtime.md) pro připojení k úložišti dat. Další informace naleznete v části [Požadavky.](#prerequisites) Pokud není zadán, tato vlastnost používá výchozí Azure Integration Runtime. |Ne |
 

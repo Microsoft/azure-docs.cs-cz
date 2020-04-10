@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: c0eb043ce040f154050ef4c3675f165dad326e32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fe6b494398337dd49bd8f0fe53b24666412a1b0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929431"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991582"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopírování dat z Google BigQuery pomocí Azure Data Factory
 
@@ -99,7 +99,7 @@ Nastavte vlastnost authenticationType na **ServiceAuthentication**a zadejte nás
 |:--- |:--- |:--- |
 | e-mail | ID e-mailu účtu služby, který se používá pro ServiceAuthentication. Lze jej použít pouze v prostředí Runtime integrace s vlastním hostitelem.  | Ne |
 | keyFilePath | Úplná cesta k souboru klíče .p12, který se používá k ověření e-mailové adresy účtu služby. | Ne |
-| trustedCertPath | Úplná cesta k souboru PEM, který obsahuje důvěryhodné certifikáty certifikační autority používané k ověření serveru při připojení přes ssl. Tuto vlastnost lze nastavit pouze v případě, že používáte SSL na vlastní hostované integrační runtime. Výchozí hodnota je soubor cacerts.pem nainstalovaný s integračním runtime.  | Ne |
+| trustedCertPath | Úplná cesta k souboru PEM, který obsahuje důvěryhodné certifikáty certifikační autority používané k ověření serveru při připojení přes tls. Tuto vlastnost lze nastavit pouze v případě, že používáte TLS na prostředí integrace s vlastním hostitelem. Výchozí hodnota je soubor cacerts.pem nainstalovaný s integračním runtime.  | Ne |
 | useSystemTrustStore | Určuje, zda se má použít certifikát certifikační autority z úložiště důvěryhodných certifikátů systému nebo ze zadaného souboru PEM. Výchozí hodnota je **false** (nepravda).  | Ne |
 
 **Příklad:**

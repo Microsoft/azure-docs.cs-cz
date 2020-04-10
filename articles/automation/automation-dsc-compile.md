@@ -1,18 +1,18 @@
 ---
-title: Kompilace konfigurací v konfiguraci stavu automatizace Azure
+title: Kompilace konfigurací DSC v konfiguraci stavu automatizace Azure
 description: This article describes how to compile Desired State Configuration (DSC) configurations for Azure Automation.
 services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b366777cce4dd4212a2e3ec0cdcd180e0d7164f4
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 6ce55b83f5547534e44d689adccdd952abc025d5
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757188"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010949"
 ---
-# <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu automatizace Azure
+# <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu automatizace Azure
 
 You can compile Desired State Configuration (DSC) configurations in Azure Automation State Configuration in the following ways:
 

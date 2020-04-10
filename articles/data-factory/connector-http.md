@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ca439d1a82e3cdbe2cc0274cf63653d39048057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a05d955be88f68b3c0db1f4a29b3f6e1155aa0d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532548"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992177"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu HTTP pomocí Azure Data Factory
 
@@ -68,7 +68,7 @@ Pro propojenou službu HTTP jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost **type** musí být nastavena na **httpserver**. | Ano |
 | url | Základní adresa URL webového serveru. | Ano |
-| enableServerCertificateValidation | Určete, zda se má povolit ověření certifikátu SSL serveru při připojení ke koncovému bodu HTTP. Pokud server HTTPS používá certifikát podepsaný svým držitelem, nastavte tuto vlastnost na **hodnotu false**. | Ne<br /> (výchozí nastavení je **pravda**) |
+| enableServerCertificateValidation | Určete, zda se má povolit ověření certifikátu TLS/SSL serveru při připojení ke koncovému bodu HTTP. Pokud server HTTPS používá certifikát podepsaný svým držitelem, nastavte tuto vlastnost na **hodnotu false**. | Ne<br /> (výchozí nastavení je **pravda**) |
 | authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **Anonymous**, **Basic**, **Digest**, **Windows**a **ClientCertificate**. <br><br> Další vlastnosti a ukázky JSON pro tyto typy ověřování naleznete v následujících částech, které následují po této tabulce. | Ano |
 | connectVia | [Prostředí Integrace Runtime](concepts-integration-runtime.md) pro připojení k úložišti dat. Další informace naleznete v části [Požadavky.](#prerequisites) Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
