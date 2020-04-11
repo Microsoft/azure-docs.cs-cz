@@ -145,8 +145,6 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (Preview)
               href: service-fabric-docker-compose.md
-            - name: Zásady správného řízení prostředků
-              href: service-fabric-resource-governance.md
         - name: Reliable Services
           items:
             - name: Přehled Reliable Services
@@ -193,6 +191,8 @@
               href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
         - name: Spustitelné soubory typu Host
           href: service-fabric-guest-executables-introduction.md
+        - name: Zásady správného řízení prostředků
+          href: service-fabric-resource-governance.md
     - name: Aplikace a služby
       items:
         - name: Aplikační model
@@ -408,8 +408,6 @@
           items:
             - name: Docker Compose (Preview)
               href: service-fabric-docker-compose.md
-            - name: Zásady správného řízení prostředků pro kontejnery a služby
-              href: service-fabric-resource-governance.md
             - name: Svazek a ovladače protokolování
               href: service-fabric-containers-volume-logging-drivers.md
             - name: Zobrazení protokolů kontejneru
