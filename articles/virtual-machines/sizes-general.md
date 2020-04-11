@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 4b36f456f70eb79cff1f615c7c136b8fe4b1b3d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22826c32dc2aee0e580ec0b2a05c7eb8f08b7570
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78226705"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115308"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Univerzální velikosti virtuálních strojů
 
@@ -32,7 +32,7 @@ Univerzální velikosti virtuálních zařízení poskytují vyvážený poměr 
 
 - [Roztržení řady B](sizes-b-series-burstable.md) Virtuální počítače jsou ideální pro úlohy, které nepotřebují plný výkon procesoru nepřetržitě, jako jsou webové servery, malé databáze a vývojová a testovací prostředí. Tyto úlohy mají obvykle sknutelné požadavky na výkon. Řada B poskytuje těmto zákazníkům možnost zakoupit velikost virtuálního počítače s cenovým výkonem, který umožňuje instanci virtuálního počítače vytvářet kredity, když virtuální počítače využívají méně než jeho základní výkon. Když virtuální počítač nahromaděný kredit, virtuální počítač může prasknout nad směrný plán virtuálního počítače pomocí až 100 % procesoru, když vaše aplikace vyžaduje vyšší výkon procesoru.
 
-- [Dav4 a Dasv4-series](dav4-dasv4-series.md) jsou nové velikosti využívající procesor 2.35Ghz EPYC<sup>TM</sup> 7452 společnosti AMD v konfiguraci s více vlákny s mezipamětí L3 o velikosti až 256 MB, která věnuje 8 GB této mezipaměti L3 každému 8 jádrům, což zvyšuje možnosti zákazníků pro spuštění jejich úloh pro obecné účely. Řady Dav4 a Dasv4 mají stejnou konfiguraci paměti a disku jako řada D & Dsv3.
+- [Dav4 a Dasv4-series](dav4-dasv4-series.md) jsou nové velikosti využívající procesor 2.35Ghz EPYC<sup>TM</sup> 7452 společnosti AMD v konfiguraci s více vlákny s mezipamětí L3 o velikosti až 256 MB, která věnuje 8 MB této mezipaměti L3 každému 8 jádrům, což zvyšuje možnosti zákazníků pro spuštění jejich úloh pro obecné účely. Řady Dav4 a Dasv4 mají stejnou konfiguraci paměti a disku jako řada D & Dsv3.
 
 - [Řada DCv2](dcv2-series.md) může pomoci chránit důvěrnost a integritu vašich dat a kódu při jejich zpracování ve veřejném cloudu. Tyto stroje jsou podpořeny nejnovější generací procesoru Intel XEON E-2288G s technologií SGX. S technologií Intel Turbo Boost mohou tyto stroje sjet až na 5,0 GHz. Instance řady DCv2 umožňují zákazníkům vytvářet zabezpečené aplikace založené na enklávě, které chrání jejich kód a data, když jsou používány.
 

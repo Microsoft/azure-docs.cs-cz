@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677452"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113554"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -88,7 +88,7 @@ Viz [Ceny azure firewall .](https://azure.microsoft.com/pricing/details/azure-fi
 
 Můžete použít Azure PowerShell *navrátit* a *přidělit* metody.
 
-Například:
+Příklad:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -172,17 +172,11 @@ Ne. Azure Firewall nepotřebuje podsíť větší než /26.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Jak mohu zvýšit propustnost brány firewall?
 
-Počáteční kapacita azure firewallu je 2,5 – 3 Gb/s a škáluje se na 30 Gb/s. Škáluje se na základě využití procesoru a propustnosti. Chcete-li zvýšit kapacitu propustnosti brány firewall, obraťte se na podporu.
+Počáteční kapacita azure firewallu je 2,5 – 3 Gb/s a škáluje se na 30 Gb/s. Automaticky se škáluje na základě využití procesoru a propustnosti.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Jak dlouho trvá, než se Azure Firewall zvětšuje?
 
-Vertikálně škálovat služby Azure Firewall trvá pět až sedm minut. Obraťte se na podporu a zvyšte počáteční kapacitu propustnosti brány firewall, pokud máte shluky, které vyžadují rychlejší automatické škálování.
-
-Při testování automatického škálování brány firewall je třeba vzít v úvahu následující body:
-
-- Výkon toku jednoho protokolu TCP je omezen na 1,4 Gb/s. Takže test výkonu musí vytvořit více toků TCP.
-- Nástroje pro sledování výkonu musí průběžně vytvářet nová připojení, aby se mohly připojit k vertikálně škálovatelným back-endovým instancím brány firewall. Pokud test vytvoří připojení jednou na začátku, pak ty se připojí pouze s počáteční back-endové instance. I když se brána firewall zvětšuje, neuvidíte žádný zvýšený výkon, protože připojení jsou přidružena k počátečním instancím.
-
+Azure Firewall se postupně škáluje, když průměrná propustnost nebo spotřeba procesoru je 60 %. Horizontální navýšení kapacity trvá pět až sedm minut. Při testování výkonu se ujistěte, že testujete alespoň 10 až 15 minut, a inicializujte nová připojení, abyste využili výhod nově vytvořených uzlů brány firewall.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Umožňuje azure brána Azure ve výchozím nastavení přístup ke službě Active Directory?
 
@@ -212,7 +206,7 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Proč se příkaz ping tcp a podobné nástroje mohou úspěšně připojit k cílovému virtuálnímu síti, i když žádné pravidlo na Azure Firewall tento provoz neumožňuje?
 
-Příkaz ping protokolu TCP se ve skutečnosti nepřipojuje k cílovému fqdn. K tomu dochází, protože transparentní proxy server Azure Firewall naslouchá na portu 80/443 pro odchozí provoz. Příkaz ping protokolu TCP naváže připojení k bráně firewall, která poté paket zahodí a zaznamená připojení. Toto chování nemá žádný dopad na zabezpečení. Abychom se však vyhnuli nejasnostem, zkoumáme potenciální změny tohoto chování.
+Příkaz ping protokolu TCP se ve skutečnosti nepřipojuje k cílovému vícesměrovému síti. K tomu dochází, protože transparentní proxy server Azure Firewall naslouchá na portu 80/443 pro odchozí provoz. Příkaz ping protokolu TCP naváže připojení k bráně firewall, která poté paket zahodí a zaznamená připojení. Toto chování nemá žádný dopad na zabezpečení. Abychom se však vyhnuli nejasnostem, zkoumáme potenciální změny tohoto chování.
 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Existují omezení pro počet IP adres podporovaných skupinami IP?
 

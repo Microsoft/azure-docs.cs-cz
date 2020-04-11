@@ -3,12 +3,12 @@ title: Naučte se auditovat obsah virtuálních počítačů
 description: Zjistěte, jak zásady Azure používají agenta konfigurace hosta k auditování nastavení uvnitř virtuálních počítačů.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 4a2989badc099a199bf21f7e020ca8e6256ddaf0
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998841"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113429"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Principy konfigurace hosta zásad Azure
 
@@ -26,32 +26,11 @@ Chcete-li auditovat nastavení uvnitř počítače, je povoleno [rozšíření v
 
 ### <a name="limits-set-on-the-extension"></a>Limity nastavené na rozšíření
 
-Chcete-li omezit rozšíření z dopadu na aplikace spuštěné uvnitř počítače, konfigurace hosta není povoleno překročit více než 5 % využití procesoru. Toto omezení existuje pro předdefinované i vlastní definice.
+Chcete-li omezit rozšíření z dopadu na aplikace spuštěné uvnitř počítače, konfigurace hosta není povoleno překročit více než 5 % procesoru. Toto omezení existuje pro předdefinované i vlastní definice.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Registrace zprostředkovatele prostředků konfigurace hosta
 
-Před použitím konfigurace hosta je nutné zaregistrovat poskytovatele prostředků. Můžete se zaregistrovat prostřednictvím portálu nebo prostřednictvím prostředí PowerShell. Poskytovatel prostředků je registrován automaticky, pokud se přiřazení zásadkonfigurace hosta provádí prostřednictvím portálu.
-
-### <a name="registration---portal"></a>Registrace - Portál
-
-Pokud chcete zaregistrovat poskytovatele prostředků pro konfiguraci hosta prostřednictvím portálu Azure, postupujte takto:
-
-1. Spusťte portál Azure a klikněte na **Všechny služby**. Vyhledejte a vyberte **předplatná**.
-
-1. Najděte předplatné, pro které chcete povolit konfiguraci hosta, a klikněte na něj.
-
-1. V levé nabídce stránky **Odběr** klikněte na **Zprostředkovatelé prostředků**.
-
-1. Filtrujte nebo posouváte, dokud nenajdete **Microsoft.GuestConfiguration**, pak klepněte na **tlačítko Registrovat** na stejném řádku.
-
-### <a name="registration---powershell"></a>Registrace - PowerShell
-
-Chcete-li zaregistrovat zprostředkovatele prostředků pro konfiguraci hosta prostřednictvím prostředí PowerShell, spusťte následující příkaz:
-
-```azurepowershell-interactive
-# Login first with Connect-AzAccount if not using Cloud Shell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
-```
+Před použitím konfigurace hosta je nutné zaregistrovat poskytovatele prostředků. Zaregistrovat se můžete prostřednictvím [portálu](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure PowerShellu](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)nebo [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli). Poskytovatel prostředků je registrován automaticky, pokud se přiřazení zásadkonfigurace hosta provádí prostřednictvím portálu.
 
 ## <a name="validation-tools"></a>Nástroje pro ověřování pravosti
 
@@ -89,7 +68,7 @@ Windows Server Nano Server není v žádné verzi podporován.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Požadavky na síť rozšíření konfigurace hosta
 
-Ke komunikaci s poskytovatelem prostředků konfigurace hosta v Azure vyžadují počítače odchozí přístup k datovým centrům Azure na portu **443**. Pokud v Azure používáte privátní virtuální síť, která nepovoluje odchozí provoz, nakonfigurujte výjimky pomocí pravidel [skupiny zabezpečení sítě.](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)
+Ke komunikaci s poskytovatelem prostředků konfigurace hosta v Azure vyžadují počítače odchozí přístup k datovým centrům Azure na portu **443**. Pokud síť v Azure neumožňuje odchozí provoz, nakonfigurujte výjimky pomocí pravidel [skupiny zabezpečení sítě.](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)
 [Značku služby](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" lze použít k odkazování na službu konfigurace hosta.
 
 ## <a name="azure-managed-identity-requirements"></a>Požadavky na spravovanou identitu Azure
@@ -101,7 +80,7 @@ Ke komunikaci s poskytovatelem prostředků konfigurace hosta v Azure vyžadují
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na definici konfigurace hosta
 
-Každý audit spuštěný konfigurací hosta vyžaduje dvě definice zásad, **definici DeployIfNotExists** a **definici AuditIfNotExists.** Definice **DeployIfNotExists** se používá k přípravě počítače s agentem konfigurace hosta a dalšími součástmi pro podporu [ověřovacích nástrojů](#validation-tools).
+Každý audit spuštěný konfigurací hosta vyžaduje dvě definice zásad, **definici DeployIfNotExists** a **definici AuditIfNotExists.** 
 
 Definice zásad **DeployIfNotExists** ověřuje a opravuje následující položky:
 
@@ -112,24 +91,24 @@ Definice zásad **DeployIfNotExists** ověřuje a opravuje následující polož
 
 Pokud **deployifNotExists** přiřazení je nekompatibilní, [nápravná úloha](../how-to/remediate-resources.md#create-a-remediation-task) lze použít.
 
-Jakmile **deployifNotExists** přiřazení je kompatibilní, **auditIfNotExists** přiřazení zásad používá místní ověřovací nástroje k určení, zda přiřazení konfigurace je kompatibilní nebo nekompatibilní. Ověřovací nástroj poskytuje výsledky klientovi konfigurace hosta. Klient předá výsledky rozšíření hosta, což je zpřístupňuje prostřednictvím zprostředkovatele prostředků konfigurace hosta.
+Jakmile **deployifNotExists** přiřazení je kompatibilní, **AuditIfNotExists** přiřazení zásad určuje, zda je přiřazení hosta kompatibilní nebo nekompatibilní. Ověřovací nástroj poskytuje výsledky klientovi konfigurace hosta. Klient předá výsledky rozšíření hosta, což je zpřístupňuje prostřednictvím zprostředkovatele prostředků konfigurace hosta.
 
 Zásady Azure používají vlastnost **complianceStatus** poskytovatelů konfigurace hosta k ohlášení dodržování předpisů v uzlu **Dodržování předpisů.** Další informace naleznete v [tématu získávání dat dodržování předpisů](../how-to/get-compliance-data.md).
 
 > [!NOTE]
 > **Zásada DeployIfNotExists** je vyžadována pro zásadu **AuditIfNotExists** k vrácení výsledků. Bez **DeployIfNotExists**, **AuditIfNotExists zásady** zobrazuje "0 z 0" prostředky jako stav.
 
-Všechny předdefinované zásady pro konfiguraci hosta jsou zahrnuty v iniciativě pro seskupení definic pro použití v přiřazeních. Integrovaná iniciativa s názvem _ \[Náhled\]: Auditovat nastavení zabezpečení hesla v počítačích s Linuxem a Windows_ obsahuje 18 zásad. Existuje šest **DeployIfNotExists** a **AuditIfNotExists** dvojice pro Windows a tři páry pro Linux. Logika [definice zásad](definition-structure.md#policy-rule) ověřuje, zda je vyhodnocen pouze cílový operační systém.
+Všechny předdefinované zásady pro konfiguraci hosta jsou zahrnuty v iniciativě pro seskupení definic pro použití v přiřazeních. Integrovaná iniciativa s názvem _ \[Náhled\]: Auditování zabezpečení hesla v počítačích s Linuxem a Windows_ obsahuje 18 zásad. Existuje šest **DeployIfNotExists** a **AuditIfNotExists** dvojice pro Windows a tři páry pro Linux. Logika [definice zásad](definition-structure.md#policy-rule) ověřuje, zda je vyhodnocen pouze cílový operační systém.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Auditování nastavení operačního systému podle směrných plánů odvětví
 
-Jedna z iniciativ dostupných v Azure Policy poskytuje možnost auditovat nastavení operačního systému uvnitř virtuálních počítačů podle "směrného plánu" od Microsoftu. Definice, _ \[náhled\]: Auditovat virtuální počítače se systémem Windows, které neodpovídají nastavení směrného plánu zabezpečení Azure_ zahrnuje úplnou sadu pravidel auditu na základě nastavení ze zásad skupiny služby Active Directory.
+Jedna iniciativa v Azure Policy poskytuje možnost auditovat nastavení operačního systému podle "směrného plánu". Definice, _ \[náhled\]: Auditovat virtuální počítače se systémem Windows, které neodpovídají nastavení směrného plánu zabezpečení Azure,_ zahrnuje sadu pravidel založených na zásadách skupiny služby Active Directory.
 
-Většina nastavení je k dispozici jako parametry. Tato funkce umožňuje přizpůsobit auditování tak, aby byly zásady sladěny s požadavky vaší organizace, nebo na mapovat zásady na informace třetích stran, jako jsou oborové regulační standardy.
+Většina nastavení je k dispozici jako parametry. Parametry umožňují přizpůsobit auditování. Srovnejte zásady s vašimi požadavky nebo namapujte zásady na informace třetích stran, jako jsou oborové regulační standardy.
 
-Některé parametry podporují rozsah hodnot celé číslo. Například maximální stáří hesla parametr lze nastavit pomocí operátoru rozsahu poskytnout flexibilitu vlastníkům počítačů. Můžete auditovat, že efektivní nastavení zásad skupiny, které vyžaduje, aby uživatelé změnili svá hesla, nemělo být delší než 70 dní, ale nemělo by být kratší než jeden den. Jak je popsáno v info-bublina pro parametr, aby se tato obchodní politika efektivní hodnotu auditu, nastavte hodnotu na "1,70".
+Některé parametry podporují rozsah hodnot celé číslo. Například nastavení Maximální stáří hesla může auditovat efektivní nastavení zásad skupiny. Rozsah "1,70" by potvrdil, že uživatelé jsou povinni měnit svá hesla alespoň každých 70 dní, ale ne méně než jeden den.
 
-Pokud přiřadíte zásadu pomocí šablony nasazení Azure Resource Manager, můžete použít soubor parametrů ke správě těchto nastavení ze správy zdrojového kódu. Použití nástroje, jako je Git, ke správě změn zásad auditu s komentáři při každém vrácení se změnami důkazy o tom, proč by přiřazení mělo být výjimkou z očekávané hodnoty.
+Pokud přiřadíte zásadu pomocí šablony nasazení Azure Resource Manager, použijte soubor parametrů ke správě výjimek. Vrácení souborů se změnami do systému správy verzí, jako je Git. Komentáře ke změnám souborů poskytují důkazy o tom, proč je přiřazení výjimkou z očekávané hodnoty.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Použití konfigurací pomocí konfigurace hosta
 
@@ -162,7 +141,7 @@ Pokud to není úspěšné, shromažďování protokolů klientů může pomoci 
 
 #### <a name="windows"></a>Windows
 
-Použití funkce Azure VM Run Command k zachycení informací ze souborů protokolu v počítačích se systémem Windows může být užitečný následující příklad skriptu PowerShellu. Další informace naleznete [v tématu Spuštění skriptů prostředí PowerShell ve vašem virtuálním počítači se systémem Windows pomocí příkazu Spustit](../../../virtual-machines/windows/run-command.md).
+Zachyťte informace ze souborů protokolu pomocí [příkazu Azure VM Run Command](../../../virtual-machines/windows/run-command.md), může být užitečný následující příklad skriptu PowerShellu.
 
 ```powershell
 $linesToIncludeBeforeMatch = 0
@@ -173,7 +152,7 @@ Select-String -Path $logPath -pattern 'DSCEngine','DSCManagedEngine' -CaseSensit
 
 #### <a name="linux"></a>Linux
 
-Použití funkce Azure VM Run Command k zachycení informací ze souborů protokolu v počítačích s Linuxem může být užitečný následující příklad skriptu Bash. Další informace najdete v tématu [Spuštění skriptů prostředí ve vašem virtuálním počítači s Linuxem pomocí příkazu Spustit](../../../virtual-machines/linux/run-command.md)
+Zachyťte informace ze souborů protokolu pomocí [příkazu Azure VM Run Command](../../../virtual-machines/linux/run-command.md), může být užitečný následující příklad skriptu Bash.
 
 ```Bash
 linesToIncludeBeforeMatch=0
@@ -184,7 +163,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="guest-configuration-samples"></a>Ukázky konfigurace hosta
 
-Zdroj pro integrované iniciativy konfigurace hosta zásad jsou k dispozici v následujících umístěních:
+Předdefinované ukázky zásad konfigurace hosta jsou k dispozici v následujících umístěních:
 
 - [Předdefinované definice zásad – konfigurace hosta](../samples/built-in-policies.md#guest-configuration)
 - [Vestavěné iniciativy – Konfigurace hostů](../samples/built-in-initiatives.md#guest-configuration)
@@ -192,6 +171,7 @@ Zdroj pro integrované iniciativy konfigurace hosta zásad jsou k dispozici v n�
 
 ## <a name="next-steps"></a>Další kroky
 
+- Přečtěte si, jak zobrazit podrobnosti o jednotlivých nastaveních v [zobrazení dodržování předpisů Konfigurace hosta](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)
 - Projděte si příklady na [ukázkách zásad Azure](../samples/index.md).
 - Projděte si [strukturu definic Azure Policy](definition-structure.md).
 - Projděte si [Vysvětlení efektů zásad](effects.md).

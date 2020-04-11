@@ -17,12 +17,12 @@ ms.date: 11/04/2019
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73612801"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113317"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Zřizování sestav na portálu Azure Active Directory (preview)
 
@@ -90,38 +90,19 @@ Vyberte položku v zobrazení seznamu, abyste získali podrobnější informace.
 
 ## <a name="filter-provisioning-activities"></a>Filtrování zřizovacích aktivit
 
-Chcete-li zúžit nahlášené údaje na úroveň, která vám vyhovuje, můžete filtrovat data zřizování pomocí následujících výchozích polí. Všimněte si, že hodnoty ve filtrech jsou dynamicky naplněny na základě vašeho tenanta. Pokud například nemáte žádné vytvořit události ve vašem tenantovi, nebude filtr možnost pro vytvoření.
+Můžete filtrovat data zřizování. Některé hodnoty filtru jsou dynamicky naplněny na základě vašeho tenanta. Pokud například nemáte žádné vytvořit události ve vašem tenantovi, nebude filtr možnost pro vytvoření.
+Ve výchozím zobrazení můžete vybrat následující filtry:
 
 - Identita
-- Akce
-- Zdrojový systém
-- Cílový systém
-- Status
 - Datum
+- Status
+- Akce
 
 
-![Filtr](./media/concept-provisioning-logs/filter.png "Filtr")
+![Filtr](./media/concept-provisioning-logs/default-filter.png "Filtr")
 
 Filtr **Identita** umožňuje zadat název nebo identitu, která vás zajímá. Tato identita může být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu z Azure AD na SalesForce, ID zdroje je ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Pracovního dne do služby Active Directory je ID zdroje ID ID pracovníka pracovního dne. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci Identita. Vždy bude existovat jeden ID. 
 
-**Filtr zdrojového systému** umožňuje určit, odkud se identita zmiňuje. Například při zřizování objektu z Azure AD do ServiceNow, zdrojový systém je Azure AD. 
-
-Filtr **Cílový systém** umožňuje určit, kam se identita zřává. Například při zřizování objektu z Azure AD do ServiceNow, cílový systém je ServiceNow. 
-
-**Stavový** filtr umožňuje vybrat:
-
-- Všechny
-- Úspěch
-- Selhání
-- Přeskočen
-
-Filtr **Akce** umožňuje filtrovat:
-
-- Vytvořit 
-- Aktualizace
-- Odstranění
-- Zakázat
-- Ostatní
 
 Filtr **Datum** umožňuje definovat časový rámec pro vracená data.  
 Možné hodnoty:
@@ -135,7 +116,35 @@ Možné hodnoty:
 Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a koncové datum.
 
 
-Kromě výchozích polí můžete při výběru zahrnout do filtru také následující pole:
+**Stavový** filtr umožňuje vybrat:
+
+- Všechny
+- Úspěch
+- Selhání
+- Přeskočen
+
+
+
+Filtr **Akce** umožňuje filtrovat:
+
+- Vytvořit 
+- Aktualizace
+- Odstranit
+- Zakázat
+- Ostatní
+
+Kromě filtrů výchozího zobrazení můžete také nastavit následující filtry:
+
+- ID úlohy
+- ID cyklu
+- ID změny
+- ID zdroje
+- ID cíle
+- Aplikace
+
+
+![Výběr pole](./media/concept-provisioning-logs/add-filter.png "Výběr pole")
+
 
 - **ID úlohy** – ke každé aplikaci, pro kterou jste povolili zřizování, je přidruženo jedinečné ID úlohy.   
 
@@ -144,8 +153,13 @@ Kromě výchozích polí můžete při výběru zahrnout do filtru také násled
 - **ID změny** – jedinečný identifikátor události zřizování. Toto ID můžete sdílet pro podporu pro vyvyhledávání události zřizování.   
 
 
+- **Zdrojový systém** – umožňuje určit, odkud se identita zmiňuje. Například při zřizování objektu z Azure AD do ServiceNow, zdrojový systém je Azure AD. 
 
-  
+- **Cílový systém** – umožňuje určit, kde je identita stále zmiňována. Například při zřizování objektu z Azure AD do ServiceNow, cílový systém je ServiceNow. 
+
+- **Aplikace** – umožňuje zobrazit pouze záznamy aplikací se zobrazovaným názvem, který obsahuje určitý řetězec.
+
+ 
 
 ## <a name="provisioning-details"></a>Podrobnosti zřizování 
 

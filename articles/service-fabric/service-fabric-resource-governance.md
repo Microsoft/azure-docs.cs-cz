@@ -3,12 +3,12 @@ title: Zásady správného řízení prostředků pro kontejnery a služby
 description: Azure Service Fabric umožňuje určit omezení prostředků pro služby spuštěné uvnitř nebo vně kontejnerů.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772376"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115147"
 ---
 # <a name="resource-governance"></a>Zásady správného řízení prostředků
 
@@ -31,7 +31,8 @@ Pro tyto dvě metriky [Správce prostředků clusteru](service-fabric-cluster-re
 * Cluster lze [defragmentovat](service-fabric-cluster-resource-manager-defragmentation-metrics.md) podle těchto dvou metrik.
 * Při [popisu clusteru](service-fabric-cluster-resource-manager-cluster-description.md)lze pro tyto dvě metriky nastavit kapacitu ve vyrovnávací paměti.
 
-[Dynamické vykazování zatížení](service-fabric-cluster-resource-manager-metrics.md) není pro tyto metriky podporováno a zatížení těchto metrik jsou definována v době vytvoření.
+> [!NOTE]
+> [Dynamické vykazování zatížení](service-fabric-cluster-resource-manager-metrics.md) není pro tyto metriky podporováno. zatížení pro tyto metriky jsou definovány v době vytvoření.
 
 ## <a name="resource-governance-mechanism"></a>Mechanismus řízení zdrojů
 

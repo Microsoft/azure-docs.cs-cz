@@ -3,12 +3,12 @@ title: Služby partitioning Service Fabric
 description: Popisuje, jak rozdělit stavové služby Service Fabric. Oddíly umožňuje ukládání dat na místních počítačích, takže data a výpočetní prostředky lze škálovat společně.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258613"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115165"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Dělení spolehlivých služeb Service Fabric
 Tento článek obsahuje úvod k základním konceptům rozdělení spolehlivých služeb Azure Service Fabric. Zdrojový kód použitý v článku je také k dispozici na [GitHubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -25,7 +25,7 @@ Existují opravdu dva typy bezstavových řešení služeb. První z nich je slu
 
 V obou případech dělení bezstavové služby je velmi vzácný scénář -- škálovatelnost a dostupnost jsou obvykle dosaženo přidáním další instance. Chcete-li zvážit více oddílů pro instance bezstavové služby, je pouze v případě, že potřebujete splnit zvláštní požadavky na směrování.
 
-Jako příklad zvažte případ, kdy uživatelé s ID v určitém rozsahu by měly být obsluhovány pouze konkrétní instance služby. Dalším příkladem, kdy byste mohli rozdělit bezstavovou službu, je, když máte skutečně rozdělený back-end (např. rozdělenou databázi SQL) a chcete řídit, která instance služby by měla zapisovat do databázového oddílu-- nebo provést další přípravné práce v rámci bezstavová služba, která vyžaduje stejné informace o dělení, které se používají v back-endu. Tyto typy scénářů lze také vyřešit různými způsoby a nemusí nutně vyžadovat dělení služby.
+Jako příklad zvažte případ, kdy uživatelé s ID v určitém rozsahu by měly být obsluhovány pouze konkrétní instance služby. Dalším příkladem, kdy byste mohli rozdělit bezstavovou službu, je, když máte skutečně rozdělený back-end (např. rozdělenou databázi SQL) a chcete řídit, která instance služby by měla zapisovat do oddílu databáze -- nebo provést další přípravné práce v rámci bezstavové služby, která vyžaduje stejné informace o dělení, jaké se používají v back-endu. Tyto typy scénářů lze také vyřešit různými způsoby a nemusí nutně vyžadovat dělení služby.
 
 Zbývající část tohoto návodu se zaměřuje na stavové služby.
 
@@ -348,9 +348,6 @@ Jak jsme doslova chcete mít jeden oddíl na písmeno, můžeme použít 0 jako 
     ![Snímek obrazovky prohlížeče](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
 Celý zdrojový kód ukázky je k dispozici na [GitHubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
-
-## <a name="reliable-services-and-actor-forking-subprocesses"></a>Spolehlivé služby a objekt actor forking podprocesy
-Service Fabric nepodporuje spolehlivé služby a následně spolehlivé objekty actor forking podprocesy. Příkladem toho, proč jeho není podporován je [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nelze použít k registraci nepodporované ho dílčího procesu a tokeny zrušení jsou odesílány pouze do registrovaných procesů; Výsledkem jsou všechny druhy problémů, jako jsou chyby upgradu, když se dílčí procesy neuzavřou poté, co nadřazený proces obdrží token zrušení. 
 
 ## <a name="next-steps"></a>Další kroky
 Informace o konceptech Service Fabric naleznete v následujících tématech:

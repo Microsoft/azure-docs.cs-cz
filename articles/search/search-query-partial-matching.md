@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.date: 04/09/2020
+ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998336"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114965"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Částečné vyhledávání termínů a vzory se speciálními znaky (zástupný znak, regulární výraz, vzory)
 
-*Částečné hledání termínu* odkazuje na dotazy skládající se z fragmentů termínu, jako je například první, poslední nebo vnitřní části řetězce. *Vzorek* může být kombinací fragmentů, někdy se speciálními znaky, jako jsou pomlčky nebo lomítka, které jsou součástí dotazu. Běžné případy použití zahrnují dotazování na části telefonního čísla, adresy URL, kódy osob nebo kódů produktů nebo složená slova.
+*Částečné hledání termínu* odkazuje na dotazy skládající se z fragmentů termínu, kde místo celého termínu můžete mít pouze počáteční, střední nebo koncový termín (někdy označované jako dotazy předpony, infixu nebo přípony). *Vzorek* může být kombinací fragmentů, často se speciálními znaky, jako jsou pomlčky nebo lomítka, které jsou součástí řetězce dotazu. Běžné případy použití zahrnují dotazování na části telefonního čísla, adresy URL, kódy osob nebo kódů produktů nebo složená slova.
 
-Částečné hledání může být problematické, pokud index nemá termíny ve formátu požadovaném pro porovnávání vzorů. Během fáze analýzy textu indexování pomocí výchozího standardního analyzátoru jsou speciální znaky zahozeny, složené a složené řetězce jsou rozděleny, což způsobuje selhání dotazů na vzorky, když není nalezena žádná shoda. Například telefonní číslo `+1 (425) 703-6214`jako (tokenizované `"425"` `"703"`jako `"6214"` `"1"`, , ) se `"3-62"` v dotazu nezobrazí, protože tento obsah ve skutečnosti v indexu neexistuje. 
+Částečné a vzor hledání může být problematické, pokud index nemá termíny v očekávaném formátu. Během [fáze lexikální analýzy](search-lucene-query-architecture.md#stage-2-lexical-analysis) indexování (za předpokladu výchozího standardního analyzátoru) jsou speciální znaky zahozeny, složené a složené řetězce se rozdělí a prázdné znaky se odstraní; všechny, které mohou způsobit vzor dotazy nezdaří, pokud je nalezena žádná shoda. Například telefonní číslo `+1 (425) 703-6214` jako (tokenizované `"425"` `"703"`jako `"6214"` `"1"`, , ) se `"3-62"` v dotazu nezobrazí, protože tento obsah ve skutečnosti v indexu neexistuje. 
 
 Řešením je vyvolat analyzátor, který zachová úplný řetězec, včetně mezer a speciálních znaků v případě potřeby, takže můžete odpovídat na částečné podmínky a vzorky. Vytvoření dalšího pole pro neporušený řetězec a pomocí analyzátoru pro zachování obsahu je základem řešení.
 
@@ -27,21 +27,21 @@ ms.locfileid: "80998336"
 
 V Azure Cognitive Search částečné vyhledávání a vzor je k dispozici v těchto formulářích:
 
-+ [Prefix vyhledávání](query-simple-syntax.md#prefix-search), `search=cap*`například , odpovídající na "Cap'n Jack waterfront Inn" nebo "Gacc Capital". Pro vyhledávání předpon můžete použít syntaxi jednoduchého dotazu.
++ [Prefix vyhledávání](query-simple-syntax.md#prefix-search), `search=cap*`například , odpovídající na "Cap'n Jack waterfront Inn" nebo "Gacc Capital". Pro vyhledávání předpon můžete použít jednoduchou syntaxi dotazu nebo úplnou syntaxi dotazu Lucene.
 
-+ [Hledání se zástupnými znaky](query-lucene-syntax.md#bkmk_wildcard) nebo [regulární výrazy,](query-lucene-syntax.md#bkmk_regex) které vyhledávají vzorek nebo části vloženého řetězce, včetně přípony. Zástupný znak a regulární výrazy vyžadují úplnou syntaxi Lucene. 
++ [Hledání se zástupnými znaky](query-lucene-syntax.md#bkmk_wildcard) nebo [regulární výrazy,](query-lucene-syntax.md#bkmk_regex) které hledají vzorek nebo části vloženého řetězce. Zástupný znak a regulární výrazy vyžadují úplnou syntaxi Lucene. Přípona a indexové dotazy jsou formulovány jako regulární výraz.
 
-  Některé příklady částečného hledání termínů zahrnují následující. Pro dotaz přípony, vzhledem k termínu "alfanumerické",`search=/.*numeric.*/`byste použít zástupné hledání ( ) najít shodu. Pro částečný termín, který obsahuje znaky, jako je například fragment adresy URL, může být nutné přidat řídicí znaky. V JSON lomítko lomítko `/` `\`je uvozena s zpětné lomítko . Jako takový `search=/.*microsoft.com\/azure\/.*/` je syntaxe fragmentu adresy URL "microsoft.com/azure/".
+  Některé příklady částečného hledání termínů zahrnují následující. Pro dotaz přípony, vzhledem k termínu "alfanumerické",`search=/.*numeric.*/`byste použít zástupné hledání ( ) najít shodu. Pro částečný termín, který obsahuje vnitřní znaky, jako je například fragment adresy URL, může být nutné přidat řídicí znaky. V JSON lomítko lomítko `/` `\`je uvozena s zpětné lomítko . Jako takový `search=/.*microsoft.com\/azure\/.*/` je syntaxe fragmentu adresy URL "microsoft.com/azure/".
 
 Jak již bylo uvedeno, všechny výše uvedené vyžadují, aby index obsahuje řetězce ve formátu příznivém pro porovnávání vzorů, které standardní analyzátor neposkytuje. Podle kroků v tomto článku můžete zajistit, že existuje potřebný obsah pro podporu těchto scénářů.
 
-## <a name="solving-partial-search-problems"></a>Řešení problémů s částečným vyhledáváním
+## <a name="solving-partialpattern-search-problems"></a>Řešení problémů s částečným hledáním/vzorem
 
-Když potřebujete hledat vzorky nebo speciální znaky, můžete přepsat výchozí analyzátor pomocí vlastního analyzátoru, který pracuje podle jednodušších pravidel tokenizace a zachová celý řetězec. Vezmeme-li krok zpět, přístup vypadá takto:
+Když potřebujete hledat fragmenty nebo vzorky nebo speciální znaky, můžete přepsat výchozí analyzátor pomocí vlastního analyzátoru, který pracuje podle jednodušších pravidel tokenizace a zachová celý řetězec. Vezmeme-li krok zpět, přístup vypadá takto:
 
 + Definujte pole pro uložení neporušené verze řetězce (za předpokladu, že chcete analyzovat a neanalyzovaný text)
-+ Zvolte předdefinovaný analyzátor nebo definujte vlastní analyzátor pro výstup neporušeného řetězce
-+ Přiřazení analyzátoru k poli
++ Zvolte předdefinovaný analyzátor nebo definujte vlastní analyzátor pro výstup neanalyzovaného neporušeného řetězce.
++ Přiřazení vlastního analyzátoru k poli
 + Sestavení a testování indexu
 
 > [!TIP]
@@ -222,6 +222,10 @@ V předchozích částech vysvětlil logiku. Tato část prochází každé rozh
 + [Test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) byl představen v [vyberte analyzátor](#choose-an-analyzer). Otestujte některé řetězce v indexu pomocí různých analyzátorů pochopit, jak jsou tokenizovány termíny.
 
 + [Hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents) vysvětluje, jak vytvořit požadavek na dotaz pomocí [jednoduché syntaxe](query-simple-syntax.md) nebo [úplné syntaxe Lucene](query-lucene-syntax.md) pro zástupné symboly a regulární výrazy.
+
+  Pro dotazy s částečným termínem, jako je například dotazování "3-6214", chcete-li najít shodu na "+1 (425) 703-6214", můžete použít jednoduchou syntaxi: `search=3-6214&queryType=simple`.
+
+  Pro dotazy na infix a příponu, jako je například dotazování "num" nebo "numeric k nalezení shody na "alfanumerické", použijte úplnou syntaxi Lucene a regulární výraz:`search=/.*num.*/&queryType=full`
 
 ## <a name="tips-and-best-practices"></a>Tipy a osvědčené postupy
 

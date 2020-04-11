@@ -8,12 +8,12 @@ ms.date: 4/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dd24631f8e6b4f3f87438bf22654016dd7699950
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 6bc74e82dd04e5845e95bdec5c841d0264dd1d3e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618301"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115089"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení řešení IoT Edge v produkčním prostředí
 
@@ -134,25 +134,28 @@ Při přechodu z testovacích scénářů do produkčních scénářů nezapome�
   * Správa přístupu k registru kontejnerů
   * Správa verzí pomocí značek
 
-### <a name="manage-access-to-your-container-registry-with-a-service-principal"></a>Správa přístupu k registru kontejnerů pomocí instančního objektu
+### <a name="manage-access-to-your-container-registry"></a>Správa přístupu k registru kontejnerů
 
 Před nasazením modulů do produkčních zařízení IoT Edge se ujistěte, že řídíte přístup k registru kontejnerů, aby uživatelé nemohli přistupovat k iobrazům kontejnerů ani je provádět. Ke správě iblkopií kontejnerů použijte soukromý, nikoli veřejný registr kontejnerů.
 
-V kurzech a další dokumentaci vás poučíme, abyste používali stejná přihlašovací údaje registru kontejneru na zařízení IoT Edge jako ve vývojovém počítači. Tyto pokyny jsou určeny pouze k tomu, aby vám pomohly snadněji nastavit testovací a vývojová prostředí a neměly by být dodržovány v produkčním scénáři. Azure Container Registry doporučuje [ověřování s instančními objekty,](../container-registry/container-registry-auth-service-principal.md) když aplikace nebo služby vytahují iblakci kontejnerů automatizovaným nebo jinak bezobslužným způsobem (bezhlavým) jako zařízení IoT Edge.
+V kurzech a další dokumentaci vás poučíme, abyste používali stejná přihlašovací údaje registru kontejneru na zařízení IoT Edge jako ve vývojovém počítači. Tyto pokyny jsou určeny pouze k tomu, aby vám pomohly snadněji nastavit testovací a vývojová prostředí a neměly by být dodržovány v produkčním scénáři.
 
-Chcete-li vytvořit instanční objekt, spusťte dva skripty, jak je popsáno v [vytvoření instančního objektu](../container-registry/container-registry-auth-aci.md#create-a-service-principal). Tyto skripty plní následující úkoly:
+Chcete-li získat bezpečnější přístup k registru, můžete si vybrat [možnosti ověřování](../container-registry/container-registry-authentication.md). Oblíbené a doporučené ověřování je použití objektu zabezpečení služby Active Directory, který je vhodný pro aplikace nebo služby k vytahování imagí kontejnerů automatizovaným nebo jinak bezobslužným (bezhlavým) způsobem, jako to dělají zařízení IoT Edge.
+
+Chcete-li vytvořit instanční objekt, spusťte dva skripty, jak je popsáno v [vytvoření instančního objektu](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal). Tyto skripty plní následující úkoly:
 
 * První skript vytvoří instanční objekt. Výstupy ID instančního objektu a heslo instančního objektu. Ukládejte tyto hodnoty bezpečně do svých záznamů.
 
-* Druhý skript vytvoří přiřazení rolí udělit instanční objekt, který lze spustit následně v případě potřeby. Doporučujeme použít roli uživatele **acrPull** pro `role` parametr. Seznam rolí najdete v tématu [Role a oprávnění registru kontejnerů Azure.](../container-registry/container-registry-roles.md)
+* Druhý skript vytvoří přiřazení rolí udělit instanční objekt, který lze spustit následně v případě potřeby. Doporučujeme použít roli uživatele **acrPull** pro `role` parametr. Seznam rolí najdete v tématu [Role a oprávnění registru kontejnerů Azure](../container-registry/container-registry-roles.md).
 
-Chcete-li ověřit pomocí instančního objektu, zadejte ID instančního objektu a heslo, které jste získali z prvního skriptu.
+Chcete-li ověřit pomocí instančního objektu, zadejte ID instančního objektu a heslo, které jste získali z prvního skriptu. Zadejte tato pověření v manifestu nasazení.
 
 * Pro uživatelské jméno nebo ID klienta zadejte ID instančního objektu.
 
 * Pro heslo nebo tajný klíč klienta zadejte heslo instančního objektu.
 
-Příklad spuštění instance kontejneru pomocí příkazového příkazu k řešení Azure najdete v [tématu Authenticate using the service inizu.](../container-registry/container-registry-auth-aci.md#authenticate-using-the-service-principal)
+> [!NOTE]
+> Po implementaci rozšířeného ověřování zabezpečení zakažte nastavení **uživatele správce,** aby již nebylo k dispozici výchozí uživatelské jméno nebo přístup k heslu. V registru kontejnerů na webu Azure Portal vyberte v nabídce levého podokna v části **Nastavení** **přístupové klávesy**.
 
 ### <a name="use-tags-to-manage-versions"></a>Správa verzí pomocí značek
 
@@ -247,7 +250,7 @@ Aby se změny projevily, musí být motor kontejneru restartován.
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Možnost: Úprava nastavení protokolu pro každý modul kontejneru
 
-Můžete tak učinit v **createOptions** každého modulu. Například:
+Můžete tak učinit v **createOptions** každého modulu. Příklad:
 
 ```yml
 "createOptions": {

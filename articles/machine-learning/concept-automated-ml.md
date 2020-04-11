@@ -10,21 +10,18 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: c8864e00be9f491d87478c253286070b9334a26e
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 095561f02fdeff6688b78d69cc1becc4ee0f8901
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383187"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115215"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatizované strojové učení?
 
 Automatizované strojové učení, označované také jako automatizované ML, je proces automatizace časově náročných a iterativních úkolů vývoje modelu strojového učení. Umožňuje datovým vědcům, analytikům a vývojářům vytvářet modely ML s vysokým rozsahem, efektivitou a produktivitou při zachování kvality modelu. Automatizovaná technologie ML je založena na průlomu v naší [divizi Microsoft Research](https://arxiv.org/abs/1705.05355).
 
 Tradiční vývoj modelu strojového učení je náročný na zdroje, což vyžaduje značné znalosti domény a čas na výrobu a porovnání desítek modelů. Díky automatizovanému strojovému učení urychlíte čas potřebný k tomu, abyste získali modely ML připravené pro výrobu s velkou lehkostí a efektivitou.
-
- 
-
 
 ## <a name="when-to-use-automated-ml"></a>Kdy použít automatizovanou ML
 
@@ -139,9 +136,13 @@ Algoritmus [výběru souboru Caruana](http://www.niculescu-mizil.org/papers/shot
 
 Podívejte [se na návody](how-to-configure-auto-train.md#ensemble) pro změnu výchozího nastavení souboru v automatizovaném strojovém učení.
 
-## <a name="use-with-onnx-in-c-apps"></a>Použití s ONNX v aplikacích C#
+## <a name="use-with-onnx"></a>Použití s ONNX
 
-S Azure Machine Learning můžete použít automatické ML k vytvoření modelu Pythonu a jeho převedení do formátu ONNX. Runtime ONNX podporuje C#, takže můžete použít model vytvořený automaticky v aplikacích Jazyka C# bez nutnosti překódování nebo jakékoli latence sítě, které zavádějí koncové body REST. Zkuste příklad tohoto toku [v tomto poznámkovém bloku Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb).
+S Azure Machine Learning můžete použít automatické ML k vytvoření modelu Pythonu a jeho převedení do formátu ONNX. Jakmile jsou modely ve formátu ONNX, mohou být spuštěny na různých platformách a zařízeních. Přečtěte si další informace o [urychlení modelů ML s ONNX](concept-onnx.md).
+
+Podívejte se, jak převést do formátu ONNX [v tomto příkladu poznámkového bloku Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). Zjistěte, které [algoritmy jsou podporovány v ONNX](how-to-configure-auto-train.md#select-your-experiment-type).
+
+Runtime ONNX také podporuje C#, takže můžete použít model vytvořený automaticky v aplikacích C# bez nutnosti překódování nebo některé z latencí sítě, které zavádějí koncové body REST. Další informace o [odvození modelů ONNX pomocí rozhraní API ONNX runtime C#](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md). 
 
 ## <a name="automated-ml-in-azure-machine-learning"></a>Automatizovaná ml v Azure Machine Learning
 
@@ -151,7 +152,7 @@ Azure Machine Learning nabízí dvě možnosti pro práci s automatizovanou ML
 
 * Pro zákazníky s omezeným/bez kódu můžete studio Azure Machine Learning studio[https://ml.azure.com](https://ml.azure.com/)  
 
-Následující shrnuje vysoké úrovně automatizované ML funkce podporované v každém prostředí.
+Následující shrnuje funkce ml vysoké úrovně podporované v každém prostředí.
 
 <a name="parity"></a>
 

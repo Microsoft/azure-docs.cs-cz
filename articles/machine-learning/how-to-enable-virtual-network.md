@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: ca4bf1b0043a2c73851eab48ff8b9b6b7a987b72
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607616"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115296"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečené úlohy experimentování a odvození Azure ML v rámci virtuální sítě Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,6 +43,11 @@ Tento článek také obsahuje podrobné informace o *pokročilých nastavení za
 + Již existující virtuální síť a podsíť, která se použije s výpočetními prostředky.
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>Použití účtu úložiště pro pracovní prostor
+
+> [!WARNING]
+> Pokud máte datové vědce, kteří používají návrháře Azure Machine Learning, zobrazí se chyba při vizualizaci dat z účtu úložiště uvnitř virtuální sítě. Následující text je chyba, která se jim zobrazí:
+>
+> __Chyba: Tuto datovou sadu nelze profilovat. Důvodem může být, že vaše data jsou uložena za virtuální sítí nebo vaše data nepodporuje profil.__
 
 Pokud chcete pro pracovní prostor ve virtuální síti použít účet úložiště Azure, použijte následující kroky:
 

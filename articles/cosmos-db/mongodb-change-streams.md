@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
-ms.openlocfilehash: ecfa98241f74aac43a827b645a6ed877624d643d
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437806"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114154"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Změna datových proudů v rozhraní API Služby Azure Cosmos DB pro MongoDB
 
@@ -26,7 +26,8 @@ ms.locfileid: "80437806"
 Následující omezení platí při použití datových proudů změn:
 
 * `operationType` Vlastnosti `updateDescription` a ještě nejsou podporovány ve výstupním dokumentu.
-* Typy `insert` `update`, `replace` a operace jsou aktuálně podporovány. Operace odstranění nebo jiné události ještě nejsou podporovány.
+* Typy `insert` `update`, `replace` a operace jsou aktuálně podporovány. 
+* Operace odstranění nebo jiné události ještě nejsou podporovány.
 
 Z důvodu těchto omezení jsou vyžadovány $match fáze, $project fáze a fullDocument možnosti, jak je znázorněno v předchozích příkladech.
 

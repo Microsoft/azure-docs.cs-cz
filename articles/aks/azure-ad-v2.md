@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
-ms.openlocfilehash: 27abdfe28e2594c98778b51532fbd22f95bfa3ac
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b121830192a2b88185bbbbc9a92934e51b32a61c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984704"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114645"
 ---
 # <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Integrace Azure AD ve službě Azure Kubernetes (Preview)
 
@@ -98,12 +98,12 @@ Výše uvedený příkaz vytvoří cluster AKS se třemi uzny, ale uživatel, kt
 Po vytvoření skupiny a přidání sebe (a dalších) jako člena můžete aktualizovat cluster se skupinou Azure AD pomocí následujícího příkazu
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 Případně pokud nejprve vytvoříte skupinu a přidáte členy, můžete povolit skupinu Azure AD v době vytvoření pomocí následujícího příkazu,
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
 Úspěšné vytvoření clusteru Azure AD v2 má následující část v těle odpovědi

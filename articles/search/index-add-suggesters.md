@@ -1,54 +1,50 @@
 ---
-title: Přidání dotazů dopředného psaní do indexu
+title: Vytvoření navrhovatele
 titleSuffix: Azure Cognitive Search
 description: Povolte akce dotazů s dopředem v Azure Cognitive Search vytvořením návrhy a formulováním požadavků, které vyvolávají automatické dokončování nebo automaticky navrhované termíny dotazů.
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: a312068d5c8c574e7b069263cf37e3b855810e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: a6c4051a5b3d557f9ac2927a62492425e7636c0d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72790106"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113470"
 ---
-# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>Přidání návrhovačů do indexu pro dopředné psaní v Azure Cognitive Search
+# <a name="create-a-suggester-to-enable-autocomplete-and-suggestions-in-azure-cognitive-search"></a>Vytvoření návrhu umožňujícího automatické dokončování a návrhy v Azure Cognitive Search
 
-V Azure Cognitive Search je funkce "hledání podle typu" nebo dopředného psaní založena na konstrukci **návrhu,** kterou přidáte do [indexu vyhledávání](search-what-is-an-index.md). Jedná se o seznam jednoho nebo více polí, pro které chcete dopředného textu aktivovat.
+V Azure Cognitive Search je funkce "hledání podle typu" nebo dopředného psaní založena na konstrukci **návrhu,** kterou přidáte do [indexu vyhledávání](search-what-is-an-index.md). Návrhovač podporuje dvě varianty vyhledávání podle typu: *automatické dokončování*, které doplní zadávaný termín nebo frázi, a *návrhy,* které vracejí krátký seznam odpovídajících dokumentů.  
 
-Návrhovač podporuje dvě varianty dopředného psaní: *automatické dokončování*, které doplní zadávaný termín nebo frázi, a *návrhy,* které vracejí krátký seznam odpovídajících dokumentů.  
-
-Následující snímek obrazovky z [ukázky Vytvořit první aplikaci v c#](tutorial-csharp-type-ahead-and-suggestions.md) ilustruje text ahead. Automatické dokončování předvídá, co může uživatel zadat do vyhledávacího pole. Skutečný vstup je "tw", který automatické dokončování končí s "in", řešení jako "dvojče" jako budoucí hledaný výraz. Návrhy jsou vizualizovány v rozevíracím seznamu. U návrhů můžete vysušovat libovolnou část dokumentu, která nejlépe vystichne výsledek. V tomto příkladu jsou návrhy názvy hotelů. 
+Následující snímek obrazovky z ukázky [Vytvořit první aplikaci v c#](tutorial-csharp-type-ahead-and-suggestions.md) ilustruje obě prostředí. Automatické dokončování předvídá, co může uživatel zadat, a dokončuje "tw" s "in" jako potenciální hledaný výraz. Návrhy jsou skutečné výsledky hledání, z nichž každý představuje odpovídající dokument. U návrhů můžete vysušovat libovolnou část dokumentu, která nejlépe vystichne výsledek. V tomto příkladu jsou návrhy reprezentovány polem název hotelu.
 
 ![Vizuální porovnání automatických dokončování a navrhovaných dotazů](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "Vizuální porovnání automatických dokončování a navrhovaných dotazů")
 
 Chcete-li implementovat tato chování v Azure Cognitive Search, je index a dotaz součást. 
 
-+ V indexu přidejte návrhového objektu do indexu. Můžete použít portál, [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)nebo [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Zbývající část tohoto článku je zaměřena na vytvoření návrhu. 
++ V indexu přidejte návrhového objektu do indexu. Můžete použít portál, [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)nebo [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Zbývající část tohoto článku je zaměřena na vytvoření návrhu.
 
 + V žádosti o dotaz volejte jeden z [níže uvedených api](#how-to-use-a-suggester).
 
 Podpora vyhledávání podle typu je povolena pro dané pole. Můžete implementovat obě chování typeahead v rámci stejného řešení vyhledávání, pokud chcete prostředí podobné tomu, které je uvedeno na snímku obrazovky. Oba požadavky cílí na *kolekci dokumentů* konkrétní ho indexu a odpovědi jsou vráceny poté, co uživatel poskytl alespoň vstupní řetězec o třech znacích.
 
+## <a name="what-is-a-suggester"></a>Co je to sugester?
+
+Návrhovač je datová struktura, která podporuje chování typu hledání podle chování uložením předpon pro párování s částečnými dotazy. Podobně jako tokenizované termíny jsou předpony uloženy v invertovaných indexech, jedno pro každé pole zadané v kolekci pole návrhu.
+
+Při vytváření předpon má návrhovač svůj vlastní řetězec analýzy, podobný řetězci používanému pro fulltextové vyhledávání. Na rozdíl od analýzy v fulltextovém vyhledávání však může návrhař používat pouze předdefinované analyzátory (standardní analyzátory Lucene, [analyzátory jazyků](index-add-language-analyzers.md)nebo jiné analyzátory v [seznamu předdefinovaných analyzátorů](index-add-custom-analyzers.md#predefined-analyzers-reference). [Vlastní analyzátory](index-add-custom-analyzers.md) a konfigurace jsou výslovně zakázány, aby se zabránilo náhodné konfigurace, které poskytují špatné výsledky.
+
+> [!NOTE]
+> Pokud potřebujete obejít omezení analyzátoru, použijte pro stejný obsah dvě samostatná pole. To umožní jedno z polí mít návrh, zatímco druhé lze nastavit s vlastní konfigurací analyzátoru.
+
 ## <a name="create-a-suggester"></a>Vytvoření navrhovatele
 
 Přestože návrhmá několik vlastností, je především kolekce polí, pro které povolujete prostředí dopředného psaní. Cestovatelská aplikace může například chtít povolit vyhledávání typu dopředného v destinacích, městech a atrakcích. Jako takový by všechna tři pole jít do kolekce polí.
 
-Chcete-li vytvořit návrh, přidejte jeden do schématu indexu. Můžete mít jeden návrhový v indexu (konkrétně jeden suggester v suggesters kolekce). 
+Chcete-li vytvořit návrh, přidejte jeden do schématu indexu. Můžete mít jeden návrhový v indexu (konkrétně jeden suggester v suggesters kolekce).
 
 ### <a name="when-to-create-a-suggester"></a>Kdy vytvořit návrhovače
 
@@ -78,7 +74,6 @@ V rozhraní REST API přidejte návrhy pomocí [vytvořit index](https://docs.mi
     ]
   }
   ```
-
 
 ### <a name="create-using-the-net-sdk"></a>Vytvoření pomocí sady .NET SDK
 
@@ -110,13 +105,6 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |`name`        |Jméno návrhače.|
 |`searchMode`  |Strategie používaná k vyhledávání frází kandidátů. Jediný aktuálně podporovaný režim `analyzingInfixMatching`je , který provádí flexibilní párování frází na začátku nebo uprostřed vět.|
 |`sourceFields`|Seznam jednoho nebo více polí, která jsou zdrojem obsahu návrhů. Pole musí být `Edm.String` `Collection(Edm.String)`typu a . Pokud je v poli zadán analyzátor, musí se jednat o pojmenovaný analyzátor z [tohoto seznamu](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) (nikoli vlastní analyzátor).<p/>Jako osvědčený postup zadejte pouze pole, která se hodí k očekávané a vhodné odpovědi, ať už se jedná o dokončený řetězec v řádku hledání nebo v rozevíracím seznamu.<p/>Název hotelu je dobrým kandidátem, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou příliš hustá. Podobně jsou méně účinná opakující se pole, například kategorie a značky. V příkladech uvádíme "kategorie", abychom ukázali, že můžete zahrnout více polí. |
-
-### <a name="analyzer-restrictions-for-sourcefields-in-a-suggester"></a>Omezení analyzátoru pro sourceFields v návrhu
-
-Azure Cognitive Search analyzuje obsah pole a umožňuje dotazování podle jednotlivých termínů. Návrhy vyžadují, aby byly předpony indexovány kromě úplných termínů, což vyžaduje další analýzu zdrojových polí. Vlastní konfigurace analyzátoru můžete kombinovat libovolný z různých tokenizers a filtry, často způsoby, které by výrobu předpony potřebné pro návrhy nemožné. Z tohoto důvodu Azure Cognitive Search zabrání pole s vlastní analyzátory zahrnuty do návrhu.
-
-> [!NOTE] 
->  Pokud potřebujete obejít výše uvedené omezení, použijte dvě samostatná pole pro stejný obsah. To umožní jedno z polí mít návrh, zatímco druhé lze nastavit s vlastní konfigurací analyzátoru.
 
 <a name="how-to-use-a-suggester"></a>
 

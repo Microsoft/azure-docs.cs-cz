@@ -7,16 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 56e86aa75b153b5cb005c96fca45373d30ffa8b4
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: c7a2fea94e0dc1ff868eff26399877cab66e6f66
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437097"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115339"
 ---
 # <a name="dav4-and-dasv4-series"></a>Řada Dav4 a Dasv4
 
-Dav4-series a Dasv4-series jsou nové velikosti využívající procesor 2.35Ghz EPYC<sup>TM</sup> 7452 společnosti AMD v konfiguraci s více vlákny s až 256 MB mezipaměti L3, která věnuje 8 GB této mezipaměti L3 každému 8 jádrům, což zvyšuje možnosti zákazníků pro spuštění jejich úloh pro obecné účely. Řady Dav4 a Dasv4 mají stejnou konfiguraci paměti a disku jako řada D & Dsv3.
+Dav4-series a Dasv4-series jsou nové velikosti využívající procesor 2.35Ghz EPYC<sup>TM</sup> 7452 společnosti AMD v konfiguraci s více vlákny s mezipamětí L3 o velikosti až 256 MB, která věnuje 8 MB této mezipaměti L3 každému 8 jádrům, což zvyšuje možnosti zákazníků pro spuštění jejich úloh pro obecné účely. Řady Dav4 a Dasv4 mají stejnou konfiguraci paměti a disku jako řada D & Dsv3.
 
 ## <a name="dav4-series"></a>Řada Dav4
 

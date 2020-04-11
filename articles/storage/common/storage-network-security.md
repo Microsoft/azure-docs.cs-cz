@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 77ad8579f31ce900a67e2ba3ddc53a5b034b6d42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7120ba2cf71c9af5373b830d04d0b67952922887
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454665"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113509"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran azure storage a virtuálních sítí
 
@@ -252,7 +252,7 @@ Pravidla sítě IP jsou povolena pouze pro **veřejné internetové** IP adresy.
    > Pravidla sítě IP nemají žádný vliv na požadavky pocházející ze stejné oblasti Azure jako účet úložiště. Použití [pravidla virtuální sítě](#grant-access-from-a-virtual-network) povolit požadavky stejné oblasti.
 
   > [!NOTE]
-  > Služby nasazené ve stejné oblasti jako účet úložiště používají pro komunikaci privátní IP adresy Azure. Proto nelze omezit přístup ke konkrétním službám Azure na základě jejich rozsahu veřejných příchozích IP adres.
+  > Služby nasazené ve stejné oblasti jako účet úložiště používají pro komunikaci privátní IP adresy Azure. Proto nelze omezit přístup ke konkrétním službám Azure na základě jejich rozsahu veřejných odchozích IP adres.
 
 Pro konfiguraci pravidel brány firewall úložiště jsou podporovány pouze adresy IPV4.
 

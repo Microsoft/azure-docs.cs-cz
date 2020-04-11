@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/07/2020
+ms.date: 04/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4a7c27beeb7208efcf6687e49193c8d3b68f5300
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce69593c1df0039d64f89e79124af1150409eff7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77186515"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113300"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace modulu runtime a procesu démon zabezpečení IoT Edge
 
@@ -56,7 +56,7 @@ Na zařízeních se systémem Windows použijte skript Prostředí PowerShell k 
 
 Spuštění příkazu Update-IoTEdge odebere a aktualizuje daemon zabezpečení ze zařízení spolu se dvěma bitovými kopiemi kontejnerů runtime. Soubor config.yaml je uložen v zařízení, stejně jako data z modulu kontejneru Moby (pokud používáte kontejnery Windows). Uchovávání informací o konfiguraci znamená, že během procesu aktualizace není třeba znovu zadávat informace o připojovacím řetězci nebo službě Device Provisioning Service pro vaše zařízení.
 
-Pokud chcete aktualizovat na konkrétní verzi demonu zabezpečení, najděte verzi, na kterou chcete cílit z [vydání IoT Edge](https://github.com/Azure/azure-iotedge/releases). V této verzi stáhněte soubor **Microsoft-Azure-IoTEdge.cab.** Potom použijte `-OfflineInstallationPath` parametr a přejděte na místní umístění souboru. Například:
+Pokud chcete aktualizovat na konkrétní verzi demonu zabezpečení, najděte verzi, na kterou chcete cílit z [vydání IoT Edge](https://github.com/Azure/azure-iotedge/releases). V této verzi stáhněte soubor **Microsoft-Azure-IoTEdge.cab.** Potom použijte `-OfflineInstallationPath` parametr a přejděte na místní umístění souboru. Příklad:
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
@@ -120,6 +120,35 @@ Pokud ve svém nasazení používáte určité značky (například mcr.microsof
 
 1. Vyberte **Zkontrolovat + vytvořit**, zkontrolujte nasazení a vyberte **Vytvořit**.
 
+## <a name="update-offline-or-to-a-specific-version"></a>Aktualizace offline nebo na určitou verzi
+
+Pokud chcete aktualizovat zařízení offline nebo aktualizovat na konkrétní verzi IoT Edge spíše než nejnovější verzi, můžete tak učinit s parametrem. `-OfflineInstallationPath`
+
+Dvě součásti se používají k aktualizaci zařízení IoT Edge:
+
+* Skript prostředí PowerShell, který obsahuje pokyny k instalaci
+* Kabina Microsoft Azure IoT Edge, která obsahuje daemon zabezpečení IoT Edge (iotedged), modul kontejneru Moby a moby cli
+
+1. Nejnovější instalační soubory IoT Edge spolu s předchozími verzemi najdete v [tématu Verze Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
+
+2. Najděte verzi, kterou chcete nainstalovat, a stáhněte si následující soubory z části **Datové zdroje** v poznámkách k verzi do zařízení IoT:
+
+   * IoTEdgeSecurityDaemon.ps1
+   * Microsoft-Azure-IoTEdge-amd64.cab z verzí 1.0.9 nebo novější, nebo Microsoft-Azure-IoTEdge.cab z verzí 1.0.8 a starší.
+
+   Microsoft-Azure-IotEdge-arm32.cab je k dispozici také od 1.0.9 pouze pro účely testování. IoT Edge není aktuálně podporovánna zařízeních s Windows ARM32.
+
+   Je důležité použít skript prostředí PowerShell ze stejné verze jako soubor CAB, který používáte, protože funkce se mění tak, aby podporovaly funkce v každé verzi.
+
+3. Pokud soubor CAB, který jste stáhli, obsahuje příponu architektury, přejmenujte soubor na jenom **Microsoft-Azure-IoTEdge.cab**.
+
+4. Chcete-li aktualizovat pomocí offline komponent, [dot source](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) místní kopii skriptu Prostředí PowerShell. Potom použijte `-OfflineInstallationPath` parametr jako součást `Update-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Například:
+
+   ```powershell
+   . <path>\IoTEdgeSecurityDaemon.ps1
+   Update-IoTEdge -OfflineInstallationPath <path>
+   ```
+
 ## <a name="update-to-a-release-candidate-version"></a>Aktualizace na verzi kandidáta verze
 
 Azure IoT Edge pravidelně vydává nové verze služby IoT Edge. Před každým stabilním vydáním existuje jedna nebo více verzí release candidate (RC). RC verze obsahují všechny plánované funkce pro vydání, ale stále procházejí testováním a ověřováním. Pokud chcete otestovat novou funkci brzy, můžete nainstalovat RC verzi a poskytnout zpětnou vazbu prostřednictvím GitHubu.
@@ -128,14 +157,7 @@ Verze kandidátů verze postupujte podle stejné číslování konvence vydání
 
 Moduly agenta a rozbočovače IoT Edge mají verze RC, které jsou označeny stejnou konvencí. Například **mcr.microsoft.com/azureiotedge-hub:1.0.7-rc2**.
 
-Jako náhledy nejsou verze pro kandidáty k verzi zahrnuty jako nejnovější verze, na kterou se zaměřují běžné instalační programy. Místo toho je třeba ručně cílit prostředky pro verzi RC, kterou chcete testovat. Z větší části je instalace nebo aktualizace na RC verzi stejná jako cílení na jakoukoli jinou konkrétní verzi IoT Edge s výjimkou jednoho rozdílu pro zařízení se systémem Windows. 
-
-V případě kandidáta na vydání může mít skript prostředí PowerShell, který umožňuje instalaci a správu demonu zabezpečení IoT Edge na zařízení se systémem Windows, mít jiné funkce než nejnovější obecně dostupná verze. Kromě stažení souboru IoT Edge .cab pro RC si také stáhněte skript **IotEdgeSecurityDaemon.ps1.** Ke spuštění staženého skriptu v aktuálním zdroji použijte [dot sourcing.](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) Například: 
-
-```powershell
-. <path>\IoTEdgeSecurityDaemon.ps1
-Update-IoTEdge -OfflineInstallationPath <path>
-```
+Jako náhledy nejsou verze pro kandidáty k verzi zahrnuty jako nejnovější verze, na kterou se zaměřují běžné instalační programy. Místo toho je třeba ručně cílit prostředky pro verzi RC, kterou chcete testovat. Z větší části je instalace nebo aktualizace na RC verzi stejná jako cílení na jakoukoli jinou konkrétní verzi IoT Edge.
 
 V částech tohoto článku se dozvíte, jak aktualizovat zařízení IoT Edge na konkrétní verzi modulů daemonu zabezpečení nebo modulů runtime.
 

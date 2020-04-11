@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d10b6c52310da3d799a7fe78c83284960318f82e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742907"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115250"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je Azure Private Endpoint?
 
@@ -113,7 +113,7 @@ Ke konfiguraci nastavení DNS pro soukromé koncové body můžete použít nás
 > [!IMPORTANT]
 > Není doporučeno přepsat zónu, která se aktivně používá k řešení veřejných koncových bodů. Připojení k prostředkům nebude možné správně vyřešit bez dns předávání veřejné DNS. Chcete-li se vyhnout problémům, vytvořte jiný název domény nebo postupujte podle navrhovaného názvu pro každou službu níže. 
  
-Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následující tabulce:
+Pro služby Azure použijte názvy zón, jak je popsáno v následující tabulce:
 
 |Typ prostředku privátního propojení   |Dílčí zdroj  |Název zóny  |
 |---------|---------|---------|

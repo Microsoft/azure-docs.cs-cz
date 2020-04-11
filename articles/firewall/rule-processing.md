@@ -5,28 +5,30 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/10/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264775"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113437"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Logika zpracování pravidel Azure Firewall
-Pravidla překladu a řízení o azure firewall můžete nakonfigurovat pravidla překladu a aplikací. Pravidla jsou zpracována podle typu pravidla. 
+Pravidla překladu a řízení o azure firewall můžete nakonfigurovat pravidla překladu a aplikací. Kolekce pravidel jsou zpracovány podle typu pravidla v pořadí podle priority, nižší čísla na vyšší čísla od 100 do 65 000. Název kolekce pravidel může mít pouze písmena, čísla, podtržítka, tečky nebo pomlčky. Musí začínat písmenem nebo číslem a končit písmenem, číslem nebo podtržítkem. Maximální délka názvu je 80 znaků.
+
+Zpočátku je vhodné rozmístit čísla priorit kolekce pravidel ve 100 krocích (100, 200, 300 a tak dále), abyste měli v případě potřeby prostor pro přidání dalších kolekcí pravidel.
 
 > [!NOTE]
 > Pokud povolíte filtrování založené na inteligenci hrozeb, mají tato pravidla nejvyšší prioritu a jsou vždy zpracována jako první. Filtrování threat-intelligence může odepřít provoz před zpracováním všech nakonfigurovaných pravidel. Další informace najdete v tématu [filtrování založené na analýzách hrozeb azure firewall](threat-intel.md).
 
-## <a name="outbound"></a>Odchozí
+## <a name="outbound-connectivity"></a>Odchozí připojení
 
 ### <a name="network-rules-and-applications-rules"></a>Pravidla sítě a pravidla aplikací
 
 Pokud nakonfigurujete síťová pravidla a pravidla aplikací, budou pravidla sítě použita v pořadí priorit před pravidly aplikace. Pravidla se ukončují. Pokud je tedy shoda nalezena v síťovém pravidle, nebudou zpracována žádná další pravidla.  Pokud neexistuje žádná shoda pravidel sítě a pokud je protokol HTTP, HTTPS nebo MSSQL, je paket vyhodnocen pravidly aplikace v pořadí podle priority. Pokud stále není nalezena žádná shoda, je paket vyhodnocen proti [kolekci pravidel infrastruktury](infrastructure-fqdns.md). Pokud se stále nenajde žádná shoda, ve výchozím nastavení se paket odepře.
 
-## <a name="inbound"></a>Příchozí
+## <a name="inbound-connectivity"></a>Příchozí připojení
 
 ### <a name="nat-rules"></a>Pravidla NAT
 

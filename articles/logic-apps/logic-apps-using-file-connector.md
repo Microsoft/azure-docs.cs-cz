@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab17137f162b893b54942d870b07a36f87d1b71d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651402"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115073"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
 
@@ -69,7 +69,7 @@ Tento článek ukazuje, jak se můžete připojit k místnímu systému souborů
    | -------- | -------- | ----- | ----------- |
    | **Název připojení** | Ano | <*název připojení*> | Název, který chcete pro připojení |
    | **Kořenová složka** | Ano | <*název kořenové složky*> | Kořenová složka systému souborů, například pokud jste nainstalovali místní bránu dat, jako je místní složka v počítači, kde je nainstalována místní brána dat, nebo složka pro sdílenou síťovou složku, ke které má počítač přístup. <p>Příklad: `\\PublicShare\\DropboxFiles` <p>Kořenová složka je hlavní nadřazená složka, která se používá pro relativní cesty pro všechny akce související se souborem. |
-   | **Typ ověřování** | Ne | <*typ auth*> | Typ ověřování, které systém souborů používá, například **systém Windows** |
+   | **Typ ověřování** | Ne | <*typ auth*> | Typ ověřování, které používá systém souborů: **Windows** |
    | **Username** | Ano | <*domain*>\\<*uživatelské jméno* domény> | Uživatelské jméno počítače, ve kterém máte systém souborů |
    | **Heslo** | Ano | <*vaše heslo*> | Heslo pro počítač, ve kterém máte systém souborů |
    | **Brána** | Ano | <*nainstalovaný název brány*> | Název dříve nainstalované brány |

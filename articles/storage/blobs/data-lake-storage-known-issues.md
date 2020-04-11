@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 204b5dd4661b34aae8b76d65505a65e20f293f0f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985418"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115333"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -112,8 +112,8 @@ Aplikace třetích stran, které používají REST API pro práci bude i nadále
 
 Pokud [anonymní přístup pro čtení](storage-manage-access-to-resources.md) byla udělena kontejneru, pak seznamy ACNemají žádný vliv na tento kontejner nebo soubory v tomto kontejneru.
 
-## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Ovladač objektu blob úložiště Windows Azure (WASB) (bez podpory s ADLS Gen2)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Ovladač objektu blob úložiště Windows Azure (WASB) (bez podpory s datovým jezerem Gen2)
 
-V současné době ovladač WASB - který byl navržen pro práci pouze s rozhraním BLOB API - narazí na problémy v několika běžných scénářích, to znamená, když je klientem účtu úložiště s povolenou oborem názvů. Všimněte si, že multi-Protocol Access (MPA) nebude zmírnit tyto problémy, a to buď. 
+V současné době ovladač WASB, který byl navržen pro práci pouze s rozhraním BLOB API, dochází k problémům v několika běžných scénářích. Konkrétně pokud je klientem účtu úložiště s povolenou hierarchickou službou namespace. Přístup k více protokolům v úložišti datového jezera tyto problémy nezmírní. 
 
-V současné době (a s největší pravděpodobností v dohledné budoucnosti) nebudeme podporovat zákazníky, kteří používají ovladač WASB jako klienta k účtu úložiště s povolenou oborem názvů. Místo toho doporučujeme, abyste se rozhodli použít ovladač [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) v prostředí Hadoop. Pokud se pokoušíte migrovat z místního prostředí Hadoop s verzí starší než Pobočka Hadoop-3, otevřete lístek podpory Azure, abychom se s vámi mohli spojit na správné cestě vpřed pro vás a vaši organizaci.
+V současné době (a s největší pravděpodobností v dohledné budoucnosti) nebudeme podporovat zákazníky, kteří používají ovladač WASB jako klienta k účtu úložiště s povolenou hierarchickou jmennou službou. Místo toho doporučujeme, abyste se rozhodli použít ovladač [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) v prostředí Hadoop. Pokud se pokoušíte migrovat z místního prostředí Hadoop s verzí starší než Pobočka Hadoop-3, otevřete lístek podpory Azure, abychom se s vámi mohli spojit na správné cestě vpřed pro vás a vaši organizaci.

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4ab59ab5b988b54333c419ced7fa852da531eaa
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8ef791759a33d08aaff068b0dd2634e5f21bb1b6
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984329"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114996"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Nejčastější dotazy k šifrování disku Azure pro virtuální počítače s Windows
 
@@ -64,7 +64,7 @@ Azure Disk Encryption poskytuje end-to-end šifrování pro disk operačního sy
 
 - Pokud vaše požadavky zahrnují šifrování všech výše uvedených a koncových šifrování, použijte Azure Disk Encryption. 
 - Pokud vaše požadavky zahrnují šifrování pouze dat v klidovém stavu pomocí klíče spravovaného zákazníkem, použijte [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md). Disk nelze šifrovat pomocí šifrování na webu Azure Disk i šifrování na straně serveru úložiště pomocí klíčů spravovaných zákazníkem.
-_ Pokud používáte scénář vyvolaný v [nepodporovaných scénářích pro systém Windows](disk-encryption-windows.md#unsupported-scenarios), zvažte [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md). 
+- Pokud používáte scénář vyvolaný v [nepodporovaných scénářích pro systém Windows](disk-encryption-windows.md#unsupported-scenarios), zvažte [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md). 
 - Pokud zásady vaší organizace umožňují šifrovat obsah v klidovém stavu pomocí klíče spravovaného Azure, není potřeba žádná akce – obsah je ve výchozím nastavení zašifrovaný. U spravovaných disků je obsah uvnitř úložiště ve výchozím nastavení šifrován šifrováním na straně serveru pomocí klíče spravovaného platformou. Klíč spravuje služba Azure Storage. 
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Jak lze otočit tajné kódy nebo šifrovací klíče?

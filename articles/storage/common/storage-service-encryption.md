@@ -4,17 +4,17 @@ description: Azure Storage chrání vaše data tím, že je automaticky šifruje
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f8f6f40f8ce8297b3cbfe6b3afcbf10df4db6572
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f112a4523bc5af9ecae57e93dfb90795d3fe9c50
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409826"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113276"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Šifrování Azure Storage pro data v klidovém stavu
 
@@ -34,7 +34,7 @@ Další informace o kryptografických modulech, které jsou základem šifrován
 
 ## <a name="about-encryption-key-management"></a>O správě šifrovacích klíčů
 
-Ve výchozím nastavení jsou data v účtu úložiště šifrována pomocí klíčů spravovaných společností Microsoft. Můžete se spolehnout na klíče spravované společností Microsoft pro šifrování vašich dat, nebo můžete spravovat šifrování pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, máte dvě možnosti:
+Data v novém účtu úložiště jsou šifrována pomocí klíčů spravovaných společností Microsoft. Můžete se spolehnout na klíče spravované společností Microsoft pro šifrování vašich dat, nebo můžete spravovat šifrování pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, máte dvě možnosti:
 
 - Pomocí služby Azure Key Vault můžete určit *klíč spravovaný zákazníkem,* který se použije k šifrování a dešifrování dat v úložišti objektů Blob a v souborech Azure. <sup>1,2</sup> Další informace o klíčích spravovaných zákazníky najdete [v tématu Použití klíčů spravovaných zákazníkem s Azure Key Vault ke správě šifrování Azure Storage](encryption-customer-managed-keys.md).
 - Můžete zadat *klíč zadaný zákazníkem* pro operace úložiště objektů Blob. Klient, který provádí požadavek na čtení nebo zápis proti úložišti objektů Blob, může v žádosti o podrobnou kontrolu nad šifrováním a dešifrováním dat objektů blob obsahovat šifrovaný a dešifrovaný. Další informace o klíčích poskytovaných zákazníkem najdete [v tématu Poskytnutí šifrovacího klíče v žádosti o úložiště objektů Blob (preview).](encryption-customer-provided-keys.md)
@@ -47,8 +47,7 @@ Následující tabulka porovnává možnosti správy klíčů pro šifrování A
 |    Podporované služby Azure Storage    |    Všechny                                                |    Úložiště objektů blob, soubory Azure<sup>1,2</sup>                                                                                                               |    Blob Storage                                                                  |
 |    Úložiště klíčů                         |    Úložiště klíčů Microsoftu    |    Azure Key Vault                                                                                                                              |    Azure Key Vault nebo jiné úložiště klíčů                                                                 |
 |    Odpovědnost za střídání klíčů         |    Microsoft                                          |    Zákazník                                                                                                                                     |    Zákazník                                                                      |
-|    Použití klíče                           |    Microsoft                                          |    Portál Azure, rozhraní REST API zprostředkovatele úložišť, knihovny pro správu úložiště Azure, PowerShell, rozhraní příkazového uživatelského rozhraní        |    Azure Storage REST API (úložiště objektů blob), klientské knihovny Azure Storage    |
-|    Přístup ke klíči                          |    Pouze microsoft                                     |    Microsoft, zákazník                                                                                                                    |    Pouze zákazník                                                                 |
+|    Ovládání klíče                          |    Microsoft                                     |    Zákazník                                                                                                                    |    Zákazník                                                                 |
 
 <sup>1</sup> Informace o vytvoření účtu, který podporuje používání klíčů spravovaných zákazníkem s úložištěm fronty, naleznete [v tématu Vytvoření účtu, který podporuje klíče spravované zákazníkem pro fronty](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).<br />
 <sup>2</sup> Informace o vytvoření účtu, který podporuje používání klíčů spravovaných zákazníkem s úložištěm tabulek, naleznete [v tématu Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).

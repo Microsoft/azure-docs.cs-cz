@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55537fb923b26de4e02be35fdb817dee147584d7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75354651"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115128"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Pochopení zpracování času ve službě Azure Stream Analytics
 
@@ -96,7 +96,7 @@ Možná jste si všimli jiného konceptu nazvaného okno předčasného příjez
 
 Vzhledem k tomu, že Azure Stream Analytics zaručuje, že vždy generuje úplné výsledky, můžete zadat pouze **čas zahájení úlohy** jako první výstupní čas úlohy, nikoli vstupní čas. Čas zahájení úlohy je vyžadován tak, aby bylo zpracováno celé okno, nikoli pouze ze středu okna.
 
-Stream Analytics pak odvozuje počáteční čas ze specifikace dotazu. Protože je však zprostředkovatel vstupních událostí indexován pouze podle času doručení, systém musí přeložit čas počáteční události do času příjezdu. Systém může spustit zpracování událostí z tohoto okamžiku ve vstupním zprostředkovateli událostí. S častým limitem pro příchod oken je překlad jednoduchý. Začíná čas události mínus 5minutové okno předčasně. Tento výpočet také znamená, že systém zahodí všechny události, které jsou vidět s čas události 5 minut větší než čas příjezdu.
+Stream Analytics pak odvozuje počáteční čas ze specifikace dotazu. Protože je však zprostředkovatel vstupních událostí indexován pouze podle času doručení, systém musí přeložit čas počáteční události do času příjezdu. Systém může spustit zpracování událostí z tohoto okamžiku ve vstupním zprostředkovateli událostí. S častým limitem pro příchod oken je překlad jednoduchý. Jedná se o počáteční čas události mínus 5minutové okno předčasně. Tento výpočet také znamená, že systém zahodí všechny události, které jsou považovány za s čas události 5 minut ealier než čas příjezdu.
 
 Tento koncept se používá k zajištění zpracování je opakovatelné bez ohledu na to, kde začnete výstup z. Bez takového mechanismu by nebylo možné zaručit opakovatelnost, jak tvrdí mnoho jiných streamovacích systémů.
 

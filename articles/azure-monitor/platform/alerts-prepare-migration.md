@@ -1,17 +1,17 @@
 ---
-title: Příprava migrace klasických výstrah Azure Monitoru aktualizací aplikací logiky a sad Runbook
+title: Aktualizace aplikací logiky & runbooky pro migraci výstrah
 description: Přečtěte si, jak upravit webhooky, aplikace logiky a runbooky a připravit se na dobrovolnou migraci.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665588"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114409"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Příprava aplikací logiky a runbooků na migraci klasických pravidel upozornění
 
@@ -32,7 +32,7 @@ Následující tabulka je odkazem na programová rozhraní pro klasické i nové
 |---------|---------|---------|
 |REST API     | [Microsoft.Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [az monitor výstraha](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [upozornění na metriky az monitoru](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Odkaz](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Odkaz](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+|PowerShell      | [Referenční informace](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Odkaz](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Šablona Azure Resource Manageru | [Pro klasická upozornění](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Pro nová upozornění na metriky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
 ## <a name="notification-payload-changes"></a>Změny datové části oznámení
@@ -43,7 +43,7 @@ Následující tabulka slouží k mapování polí datové části webového há
 
 |  |Klasická upozornění  |Nová upozornění na metriky |
 |---------|---------|---------|
-|Bylo upozornění aktivováno nebo vyřešeno?    | **status**       | **data.status** |
+|Bylo upozornění aktivováno nebo vyřešeno?    | **Stav**       | **data.status** |
 |Kontextové informace o výstraze     | **Kontextu**        | **data.context**        |
 |Časové razítko, při kterém bylo upozornění aktivováno nebo vyřešeno     | **context.timestamp**       | **data.context.timestamp**        |
 | ID pravidla výstrahy | **context.id** | **data.context.id** |

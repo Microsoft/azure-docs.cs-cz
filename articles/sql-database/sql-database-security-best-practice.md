@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 7b3a223ca504bff380afad54afda73880717814f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673613"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115388"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Playbook pro řešení běžných požadavků na zabezpečení pomocí Azure SQL Database
 
@@ -89,14 +89,14 @@ Centrální správa identit nabízí následující výhody:
 
 - Vytvořte klienta Azure AD a [vytvořte uživatele, kteří](../active-directory/fundamentals/add-users-azure-active-directory.md) budou zastupovat lidské uživatele a vytvářet [instanční objekty](../active-directory/develop/app-objects-and-service-principals.md) představující aplikace, služby a nástroje pro automatizaci. Instanční objekty jsou ekvivalentní účtům služeb v systému Windows a Linuxu. 
 
-- Přiřaďte přístupová práva k prostředkům k objektům zabezpečení Azure AD prostřednictvím přiřazení skupin: Vytvořte skupiny Azure AD, udělte přístup ke skupinám a přidejte do skupin jednotlivé členy. V databázi vytvořte obsažené uživatele databáze, kteří mapují vaše skupiny Azure AD. Chcete-li přiřadit oprávnění uvnitř databáze, vložte uživatele do databázových rolí s příslušnými oprávněními.
+- Přiřaďte přístupová práva k prostředkům k objektům zabezpečení Azure AD prostřednictvím přiřazení skupin: Vytvořte skupiny Azure AD, udělte přístup ke skupinám a přidejte do skupin jednotlivé členy. V databázi vytvořte obsažené uživatele databáze, kteří mapují vaše skupiny Azure AD. Chcete-li přiřadit oprávnění uvnitř databáze, vložte uživatele, kteří jsou přidruženi k vašim skupinám Azure AD, do databázových rolí příslušná oprávnění.
   - Podívejte se na [články, Konfigurace a správa ověřování Azure Active Directory pomocí SQL](sql-database-aad-authentication-configure.md) a použití Azure [AD pro ověřování pomocí SQL](sql-database-aad-authentication.md).
   > [!NOTE]
   > Ve spravované instanci můžete také vytvořit přihlášení, které mapují na objekty Azure AD v hlavní databázi. Viz [CREATE LOGIN (Transact-SQL).](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)
 
 - Použití skupin Azure AD zjednodušuje správu oprávnění a vlastníka skupiny a vlastník prostředků můžete přidat nebo odebrat členy do nebo ze skupiny. 
 
-- Vytvořte samostatnou skupinu pro správce Azure AD pro servery SQL DB.
+- Vytvořte samostatnou skupinu pro správce Azure AD pro každý server SQL DB.
 
   - V článku [Zřízení správce služby Azure Active Directory pro váš databázový server Azure SQL](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
 
@@ -108,7 +108,7 @@ Centrální správa identit nabízí následující výhody:
 > [!NOTE]
 > - Ověřování Azure AD se zaznamená v protokolech auditu Azure SQL, ale ne v protokolech přihlášení Azure AD.
 > - Oprávnění RBAC udělená v Azure se nevztahují na oprávnění Azure SQL DB. Tato oprávnění musí být vytvořena nebo mapována ručně v databázi SQL pomocí existujících oprávnění SQL.
-> - Na straně klienta Azure AD ověřování potřebuje přístup k internetu nebo prostřednictvím uživatelem definované trasy (UDR) do virtuální sítě.
+> - Na straně klienta azure ad ověřování potřebuje přístup k internetu nebo prostřednictvím uživatelem definované trasy (UDR) do virtuální sítě.
 > - Přístupový token Azure AD je uložen v mezipaměti na straně klienta a jeho životnost závisí na konfiguraci tokenu. Podívejte se na článek [Konfigurovatelné životnosti tokenů ve službě Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Pokyny k řešení problémů s ověřováním azure ad najdete v následujícím blogu:<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
@@ -213,7 +213,7 @@ Ověřování SQL odkazuje na ověřování uživatele při připojování k Azu
 
 ## <a name="access-management"></a>Správa přístupu
 
-Správa přístupu je proces řízení a správy přístupu oprávněných uživatelů a oprávnění k Azure SQL Database.
+Správa přístupu (označovaná také jako Autorizace) je proces řízení a správy přístupu oprávněných uživatelů a oprávnění k Azure SQL Database.
 
 ### <a name="implement-principle-of-least-privilege"></a>Uplatňovat zásadu nejnižšího privilegia
 
@@ -225,7 +225,7 @@ Princip nejnižších oprávnění uvádí, že uživatelé by neměli mít víc
 
 Přiřaďte k dokončení požadovaných úkolů pouze [potřebná oprávnění:](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)
 
-- V rovině dat SQL: 
+- V databázích SQL: 
     - Použití podrobných oprávnění a uživatelem definovaných databázových rolí (nebo rolí serveru v MI): 
         1. Vytvoření požadovaných rolí
             - [VYTVOŘIT ROLI](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
@@ -294,7 +294,7 @@ Oddělení povinností, nazývané také oddělení povinností, popisuje požad
   - Vytvořte role serveru pro úlohy celého serveru (vytváření nových přihlášení, databází) ve spravované instanci. 
   - Vytvořte databázové role pro úlohy na úrovni databáze.
 
-- U některých citlivých úkolů zvažte vytvoření speciálních uložených procedur podepsaných certifikátem k provádění úkolů jménem uživatelů. 
+- U některých citlivých úkolů zvažte vytvoření speciálních uložených procedur podepsaných certifikátem k provádění úkolů jménem uživatelů. Jednou z důležitých výhod digitálně podepsané uložené procedury je, že pokud je postup změněn, oprávnění, která byla udělena předchozí verzi procedury jsou okamžitě odebrány.
   - Příklad: [Kurz: Podepisování uložených procedur pomocí certifikátu](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
 
 - Implementujte transparentní šifrování dat (TDE) pomocí klíčů spravovaných zákazníky v trezoru klíčů Azure, abyste umožnili oddělení povinností mezi vlastníkem dat a vlastníkem zabezpečení. 
@@ -303,7 +303,7 @@ Oddělení povinností, nazývané také oddělení povinností, popisuje požad
 - Chcete-li zajistit, aby dba nelze zobrazit data, která je považována za vysoce citlivé a stále můžete provést úkoly DBA, můžete použít vždy šifrované s oddělení rolí. 
   - Podívejte se na články, [Přehled správy klíčů pro vždy šifrované](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted), [Zřizování klíčů s oddělením rolí](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)a Otočení [hlavního klíče sloupce s oddělením rolí](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation). 
 
-- V případech, kdy to není možné alespoň ne bez velkých nákladů a úsilí, které mohou způsobit, že systém je téměř nepoužitelný, lze provést kompromisy a zmírnit pomocí kompenzačních ovládacích prvků, jako jsou: 
+- V případech, kdy použití vždy šifrované není možné, nebo alespoň ne bez velkých nákladů a úsilí, které mohou dokonce způsobit, že systém v blízkosti nepoužitelný, kompromisy mohou být provedeny a zmírnit pomocí kompenzačních ovládacích prvků, jako jsou: 
   - Lidský zásah do procesů. 
   - Auditní stopy – další informace o auditování naleznete v [tématu Audit kritické události zabezpečení](#audit-critical-security-events).
 
@@ -315,17 +315,17 @@ Oddělení povinností, nazývané také oddělení povinností, popisuje požad
 
 - Předdefinované role použijte v případě, že oprávnění přesně odpovídají potřebným oprávněním – pokud sjednocení všech oprávnění z více předdefinovaných rolí vede ke 100% shodě, můžete přiřadit více rolí současně. 
 
-- Vytvořte a používejte vlastní role, když předdefinované role udělují příliš mnoho oprávnění nebo nedostatečná oprávnění. 
+- Vytvořte a používejte uživatelem definované role, když předdefinované role udělují příliš mnoho oprávnění nebo nedostatečná oprávnění. 
 
 - Přiřazení rolí lze také provést dočasně, označované také jako dynamické oddělení povinností (DSD), buď v rámci kroků úlohy sql agenta v T-SQL nebo pomocí Azure PIM pro role RBAC. 
 
-- Ujistěte se, že správci dba nemají přístup k šifrovacíklíče nebo úložiště klíčů a správci zabezpečení s přístupem ke klíčům nemají přístup k databázi zase. 
+- Ujistěte se, že správci dba nemají přístup k šifrovacím klíčům nebo úložištím klíčů a že správci zabezpečení s přístupem ke klíčům nemají zase přístup k databázi. Použití [extensible Key Management (EKM)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) může usnadnit dosažení tohoto oddělení. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) lze použít k implementaci EKM. 
 
 - Vždy se ujistěte, že máte záznam auditu pro akce související se zabezpečením. 
 
 - Můžete načíst definici předdefinované role RBAC zobrazit oprávnění a vytvořit vlastní roli na základě výňatky a kumulace z nich prostřednictvím prostředí PowerShell.
 
-- Vzhledem k tomu, že každý člen db_owner databázové role může změnit nastavení zabezpečení, jako je transparentní šifrování dat (TDE), nebo změnit SLO, toto členství by mělo být uděleno s opatrností. Existuje však mnoho úkolů, které vyžadují oprávnění db_owner. Úloha jako změna nastavení databáze, jako je například změna možností DB. Auditování hraje klíčovou roli v každém řešení.
+- Vzhledem k tomu, že každý člen db_owner databázové role můžete změnit nastavení zabezpečení, jako je transparentní šifrování dat (TDE) nebo změnit SLO, toto členství by mělo být uděleno s opatrností. Existuje však mnoho úkolů, které vyžadují oprávnění db_owner. Úloha jako změna nastavení databáze, jako je například změna možností DB. Auditování hraje klíčovou roli v každém řešení.
 
 - Není možné omezit oprávnění db_owner a proto zabránit účtu správce zobrazení uživatelských dat. Pokud je v databázi vysoce citlivá data, vždy šifrované lze bezpečně zabránit db_owners nebo jiné DBA z jeho zobrazení.
 
@@ -436,11 +436,11 @@ Zásady, které určují, která data jsou citlivá a zda citlivá data musí b�
 
 - Deterministické šifrování použijte, pokud je třeba podporovat výpočty (rovnost) dat. V opačném případě použijte randomizované šifrování. Nepoužívejte deterministické šifrování pro datové sady s nízkou entropií nebo datové sady s veřejně známou distribucí. 
 
-- Pokud máte obavy, že k vašim datům budou mít třetí strany přístup legálně bez vašeho souhlasu, ujistěte se, že všechny aplikace a nástroje, které mají přístup ke klíčům a datům ve formátu prostého textu, běží mimo Microsoft Azure Cloud. Bez přístupu ke klíčům nebude mít třetí strana žádný způsob, jak data dešifrovat, pokud neobejde šifrování.
+- Pokud máte obavy, že třetí strany budou mít přístup k vašim datům legálně bez vašeho souhlasu, ujistěte se, že všechny aplikace a nástroje, které mají přístup ke klíčům a datům ve formátu prostého textu, běží mimo Microsoft Azure Cloud. Bez přístupu ke klíčům nebude mít třetí strana žádný způsob, jak data dešifrovat, pokud neobejde šifrování.
 
 - Vždy šifrované nepodporuje snadno udělení dočasného přístupu ke klíčům (a chráněným datům). Například pokud potřebujete sdílet klíče s DBA povolit DBA provést některé operace čištění na citlivá a šifrovaná data. Jediným způsobem, jak spolehlivost odvolat přístup k datům z dba bude otočit klíče šifrování sloupce a hlavní klíče sloupce chrání data, což je nákladná operace. 
 
-- Chcete-li získat přístup k hodnotám prostého textu v zašifrovaných sloupcích, musí mít uživatel přístup k cmk, který chrání sloupce, který je nakonfigurován v úložišti klíčů, který drží CMK. Uživatel také musí mít **zobrazit libovolný sloupec master key definice** a zobrazit libovolný sloupec šifrování klíč **definice** databáze oprávnění.
+- Chcete-li získat přístup k hodnotám prostého textu v zašifrovaných sloupcích, musí mít uživatel přístup k hlavnímu klíči sloupce (CMK), který chrání sloupce, které jsou konfigurovány v úložišti klíčů, které obsahuje CMK. Uživatel také musí mít **zobrazit libovolný sloupec master key definice** a zobrazit libovolný sloupec šifrování klíč **definice** databáze oprávnění.
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>Řízení přístupu uživatelů aplikací k citlivým datům prostřednictvím šifrování
 

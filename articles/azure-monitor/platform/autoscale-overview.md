@@ -1,15 +1,15 @@
 ---
-title: Přehled automatického škálování ve virtuálních počítačích, cloudových službách a webových aplikacích
+title: Automatické škálování ve virtuálních aplikacích, cloudových službách a webových aplikacích
 description: Automatické škálování v Microsoft Azure. Platí pro virtuální počítače, škálovací sady virtuálních počítačů, cloudové služby a webové aplikace.
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a60c03f1928b38c78a59edca4b5493307d7d19d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeb8b301bf087efa164a7864cdce3a04952f45ed
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75364369"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114145"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Přehled automatického škálování ve službách Microsoft Azure Virtual Machines, Cloud Services a Web Apps
 Tento článek popisuje, co je automatické škálování Microsoft Azure, jeho výhody a jak začít používat.  
@@ -91,7 +91,7 @@ Naproti tomu vertikální škálování se liší. Udržuje stejný počet virtu
 ## <a name="methods-of-access"></a>Metody přístupu
 Automatické škálování můžete nastavit pomocí
 
-* [Portál Azure](../../azure-monitor/platform/autoscale-get-started.md)
+* [portál Azure](../../azure-monitor/platform/autoscale-get-started.md)
 * [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Rozhraní příkazového řádku (CLI) pro různé platformy](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)

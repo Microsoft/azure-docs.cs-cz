@@ -1,22 +1,22 @@
 ---
-title: Vytvoření nové nabídky Dynamics 365 Business Central na komerčním trhu
-description: Jak vytvořit novou nabídku Dynamics 365 Business Central pro zápis nebo prodej na Webu Azure Marketplace, AppSource nebo prostřednictvím programu Zprostředkovatel cloudových řešení (CSP) pomocí portálu Commercial Marketplace v Centru microsoftpartnerů.
+title: Vytvoření nové nabídky Dynamics 365 Business Central na komerčním trhu Microsoftu
+description: Jak vytvořit novou nabídku Dynamics 365 Business Central pro zápis nebo prodej na Webu Azure Marketplace, Microsoft AppSource nebo prostřednictvím programu Zprostředkovatel cloudových řešení (CSP) pomocí portálu Commercial Marketplace v Centru microsoft partnerů.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 908d0fb9d494ec048e6b254f91ec1faf56b47c90
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.date: 04/09/2020
+ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529405"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115284"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Vytvoření nové nabídky Dynamics 365 Business Central
 
-Toto téma vysvětluje, jak vytvořit novou nabídku Dynamics 365 Business Central. [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) je systém plánování podnikových zdrojů (ERP), který zpracovává širokou škálu obchodních procesů, včetně financí, operací, dodavatelského řetězce, CRM a řízení projektů a elektronického obchodu. Prémiové balíčky také podporují klasický model nasazení a výrobu. Všechny nabídky pro Dynamics 365 Business Central musí projít naším certifikačním procesem.
+Tento článek vysvětluje, jak vytvořit novou nabídku Dynamics 365 Business Central. [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) je systém plánování podnikových zdrojů (ERP), který zpracovává širokou škálu obchodních procesů, včetně financí, operací, dodavatelského řetězce, CRM a řízení projektů a elektronického obchodu. Prémiové balíčky také podporují klasický model nasazení a výrobu. Všechny nabídky pro Dynamics 365 Business Central musí projít naším certifikačním procesem.
 
 Chcete-li začít vytvářet nabídky Dynamics 365 Business Central, nejprve [vytvořte účet Centra partnerů](./create-account.md) a otevřete [řídicí panel Komerční tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)s vybranou stránkou **Přehled.**
 
@@ -113,12 +113,10 @@ Uveďte své vlastní právní podmínky v oblasti **smluvních podmínek.** Mů
 
 ## <a name="offer-listing"></a>Nabídka výpis
 
-Na stránce Nabídky se zobrazují jazyky, ve kterých bude vaše nabídka uvedena. V současné době je angličtina **(Spojené státy)** jedinou dostupnou možností.
-
-Pro každý jazyk/trh budete muset definovat podrobnosti tržiště (název nabídky, popis, obrázky atd.). Chcete-li tyto informace zadat, vyberte název jazyka/trhu.
+Stránka Nabídka uvádí, kde definujete podrobnosti pro vaši nabídku (například název, popis, obrázky atd.).
 
 > [!NOTE]
-> Nabídka výpis obsah (například popis, dokumenty, screenshoty, podmínky použití, atd.) nemusí být v angličtině, pokud popis nabídky začíná frází, "Tato aplikace je k dispozici pouze v [non-anglický jazyk]." Je také přijatelné poskytnout *užitečnou adresu URL odkazu* pro nabízení obsahu v jiném jazyce, než který byl použit v obsahu nabídky.
+> Podrobnosti nabídky můžete poskytnout pouze v jednom jazyce. Nemusí být v angličtině, pokud popis nabídky začíná frází"Tato aplikace je k dispozici pouze v [neanglickém jazyce]." Je také přijatelné poskytnout *adresu URL odkazu nápovědy* pro nabízení obsahu v jiném jazyce, než který byl použit v obsahu nabídky.
 
 ### <a name="name"></a>Name (Název)
 
@@ -169,23 +167,23 @@ Volitelně můžete zadat až tři klíčová slova pro vyhledávání, která z
 
 Pokud chcete zákazníkům dát vědět, že vaše aplikace funguje s konkrétními produkty, zadejte sem až tři názvy produktů.
 
-### <a name="support-urls"></a>Adresy URL podpory
+### <a name="helpprivacy-urls"></a>Adresy URL nápovědy/ochrany osobních údajů
 
 Tato část umožňuje poskytnout odkazy, které zákazníkům pomohou lépe porozumět vaší nabídce.
 
 #### <a name="help-link"></a>Odkaz na nápovědu
 
-Zadejte adresu URL, na které mohou zákazníci získat další informace o vaší nabídce.
+Zadejte adresu URL, na které mohou zákazníci získat další informace o vaší nabídce. **Odkaz na nápovědu** nemůže být stejný jako **adresa URL podpory** (vysvětleno níže).
 
-#### <a name="privacy-policy-url"></a>Adresa URL zásad ochrany osobních údajů
+#### <a name="privacy-policy-link"></a>Odkaz na zásady ochrany osobních údajů
 
 Zadejte adresu URL zásad ochrany osobních údajů vaší organizace. Jste zodpovědní za to, že vaše aplikace je v souladu se zákony a předpisy ochrany osobních údajů a za poskytnutí platných zásad ochrany osobních údajů.
 
-### <a name="contacts"></a>Kontakty
+### <a name="contact-information"></a>Kontaktní informace
 
 V této části je nutné zadat jméno, e-mail a telefonní číslo **kontaktu podpory** a **technického kontaktu**. Tyto informace se zákazníkům nezobrazují, ale budou k dispozici společnosti Microsoft a mohou být poskytnuty partnerům CSP.
 
-V části **Kontakt podpory** musíte také zadat adresu **URL podpory,** kde mohou partneři CSP najít podporu pro vaši nabídku.
+V části **Kontakt podpory** musíte také zadat adresu **URL podpory,** kde mohou partneři CSP najít podporu pro vaši nabídku. Adresa URL podpory nemůže být stejná jako **odkaz na nápovědu**.
 
 ### <a name="supporting-documents"></a>Podklady
 
@@ -193,15 +191,7 @@ Zadejte zde alespoň jeden (a až tři) související marketingové dokumenty, j
 
 ### <a name="marketplace-images"></a>Obrázky na marketplace
 
-V této části můžete poskytnout loga a obrázky, které budou použity při zobrazování vaší nabídky zákazníkovi. Všechny obrázky musí být ve formátu PNG.
-
-#### <a name="store-logos"></a>Loga obchodu
-
-Zadejte logo nabídky ve dvou velikostech: **Malé (48 x 48)** a **Velké (216 x 216).**
-
-#### <a name="hero"></a>Hrdina
-
-Obrázek hrdiny je volitelný. Pokud zadáte jeden, musí měřit 815 x 290 pixelů.
+V této části můžete poskytnout loga a obrázky, které budou použity při zobrazování vaší nabídky zákazníkovi. Všechny obrázky musí být ve formátu PNG. Nahrajte logo nabídky ve dvou velikostech: **Malé (48 x 48)** a **Velké (216 x 216).**
 
 #### <a name="screenshots"></a>Snímky obrazovek
 
@@ -350,7 +340,11 @@ Nezapomeňte **uložit** před přechodem na další sekci!
 
 ### <a name="test-drive-marketplace-listings"></a>Test disk marketplace výpisy
 
-Možnost **výpisu na Marketplace,** která se nachází na kartě **Testovací jednotka,** zobrazuje jazyky, ve kterých je testovací jednotka k dispozici. V současné době **angličtina (Spojené státy)** je jediné místo k dispozici. Vyberte název jazyka a zadejte informace, které popisují prostředí testovací jízdy.
+Možnost **výpisu marketplace,** která se nachází na kartě **Testovací jednotka,** je místo, kde definujete podrobnosti pro prostředí testovací jednotky.
+
+> [!NOTE]
+> Podrobnosti výpisu testovací jednotky můžete zadat pouze v jednom jazyce. Nemusí být v angličtině, pokud popis nabídky začíná frází"Tato aplikace je k dispozici pouze v [neanglickém jazyce]." Je také přijatelné poskytnout *adresu URL odkazu nápovědy* pro nabízení obsahu v jiném jazyce, než který byl použit v obsahu výpisu testovací jednotky.
+
 
 - **Popis** (povinné): Popište zkušební jízdu, co bude prokázáno, cíle pro uživatele experimentovat s, funkce k prozkoumání a veškeré relevantní informace, které pomohou uživateli určit, zda získat vaši nabídku. Do tohoto pole lze zadat až 3 000 znaků textu. 
 

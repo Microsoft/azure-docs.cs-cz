@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 3/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 39ff4f42457451dfa4aae90b281d6b163c56b4cd
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 7b839df5940ab26e5c1a99a1bda1fbd2545f8cc4
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522235"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113124"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Průvodce řízením chování při vypínání systému Windows
 
@@ -58,7 +58,7 @@ Chcete-li nastavit časový limit nečinnosti relace RDP, můžete se připojit 
 
 ```powershell
 # The MaxIdleTime is in milliseconds; by default, this script sets MaxIdleTime to 15 minutes.
-$maxIdleTime = 15 * 60 * 90
+$maxIdleTime = 15 * 60 * 1000
 
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "MaxIdleTime" -Value $maxIdleTime -Force
 ```
@@ -79,6 +79,9 @@ Nebo můžete postupovat podle těchto ručních kroků pomocí šablony virtuá
     ![Limit nečinné relace](../media/how-to-windows-shutdown/edit-idle-time-limit.png)
 
 1. Nakonec chcete-li kombinovat toto chování s **automatickým vypnutím při nastavení odpojení,** postupujte podle pokynů v článku s postupy: [Povolit automatické vypnutí virtuálních počítačů při odpojení](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect).
+
+> [!WARNING]
+> Po konfiguraci tohoto nastavení pomocí prostředí PowerShell upravit nastavení registru přímo nebo ručně pomocí editoru zásad skupiny, musíte nejprve restartovat virtuální počítač pro nastavení, které se projeví.  Pokud nakonfigurujete nastavení pomocí registru, editor zásad skupiny se vždy neaktualizuje, aby odrážel změny nastavení registru. nastavení registru se však stále projeví podle očekávání a relace RDP se při nečinnosti po dobu, kterou jste zadali, odpojí.
 
 ## <a name="remove-windows-shutdown-command-from-start-menu"></a>Příkaz Odebrat vypnutí systému Windows z nabídky Start
 

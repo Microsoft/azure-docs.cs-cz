@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a40c64910260a2d63a529d25e1089fb618fcec1b
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886479"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113495"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
 Tento článek obsahuje řešení běžných problémů Azure FarmBeats. Pro další pomoc kontaktujte naše [fórum podpory](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) nebo nám napište na adresu farmbeatssupport@microsoft.com.
 
 > [!NOTE]
-  > Pokud jste nainstalovali FarmBeats během dubna a vaše úlohy selhávají s prázdnou chybovou zprávou, vaše instalace nemusí být přidělena žádná dávková kvóta kvůli všem zdrojům, které jsou zaměřeny na nouzové, zdravotní péči a další kritické potřeby. Budete muset požádat virtuální chod, které mají být přiděleny k účtu Batch.
+  > Pokud jste nainstalovali FarmBeats během dubna a vaše úlohy selhávají s prázdnou chybovou zprávou, vaše instalace pravděpodobně nebyla přidělena žádná dávková kvóta, aby byla upřednostněna podpora pro kritické organizace pro bezpečnost a ochranu zdraví. Více informací naleznete [zde.](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) Budete muset požádat virtuální chody, které mají být přiděleny k účtu Batch úspěšně spustit úlohy.
 
 ## <a name="install-issues"></a>Problémy s instalací
 
@@ -45,7 +45,9 @@ Kontaktujte nás s následujícími údaji:
 - Postupujte podle následujících kroků a připojte soubor protokolu pro selhání nasazení:
 
     1. Přejděte do **skupiny prostředků** na webu Azure Portal.
+
     2. V části **Nastavení** na levé straně vyberte **Nasazení.**
+
     3. Pro každé nasazení, které zobrazuje **neúspěšné**, vyberte až do podrobností a stáhněte podrobnosti o nasazení. Připojte tento soubor k e-mailu.
 
 ## <a name="sensor-telemetry"></a>Telemetrie senzoru

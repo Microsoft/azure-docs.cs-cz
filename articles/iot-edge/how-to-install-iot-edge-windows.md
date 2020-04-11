@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: 80ce962ac6977fcce2455c8e2ef29af448a44075
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61b382f1c286209a12d0be39a81e6817806d3251
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133144"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113459"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Instalace modulu runtime Azure IoT Edge ve Windows
 
@@ -78,9 +78,9 @@ Tento příklad ukazuje ruční instalaci s kontejnery systému Windows:
 
 1. Pokud jste tak ještě neučinili, zaregistrujte nové zařízení IoT Edge a načtěte **připojovací řetězec zařízení**. Zkopírujte připojovací řetězec, který chcete použít později v této části. Tento krok můžete provést pomocí následujících nástrojů:
 
-   * [Portál Azure](how-to-register-device.md#register-in-the-azure-portal)
+   * [portál Azure](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
-   * [Kód visual studia](how-to-register-device.md#register-with-visual-studio-code)
+   * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. Spusťte PowerShell jako správce.
 
@@ -139,33 +139,45 @@ Další informace o těchto možnostech instalace získáte v tomto článku neb
 
 ## <a name="offline-or-specific-version-installation"></a>Instalace offline nebo konkrétní verze
 
-Během instalace se stáhnou dva soubory:
+Během instalace se stáhnou tři soubory:
 
-* Kabina Microsoft Azure IoT Edge, která obsahuje daemon zabezpečení IoT Edge (iotedged), modul kontejneru Moby a moby cli.
-* Visual C++ redistributable package (VC runtime) MSI
+* Skript prostředí PowerShell, který obsahuje pokyny k instalaci
+* Kabina Microsoft Azure IoT Edge, která obsahuje daemon zabezpečení IoT Edge (iotedged), modul kontejneru Moby a moby cli
+* Instalační program redistribuovatelného balíčku Visual C++ (VC runtime)
 
-Pokud bude vaše zařízení během instalace offline nebo pokud chcete nainstalovat konkrétní verzi ioT Edge, můžete si do zařízení předem stáhnout jeden nebo oba tyto soubory. Když je čas na instalaci, namiřte instalační skript na adresář, který obsahuje stažené soubory. Instalační program nejprve zkontroluje tento adresář a potom stáhne pouze součásti, které nebyly nalezeny. Pokud jsou všechny soubory k dispozici offline, můžete nainstalovat bez připojení k internetu.
+Pokud bude vaše zařízení během instalace offline nebo pokud chcete nainstalovat konkrétní verzi ioT Edge, můžete si tyto soubory stáhnout předem do zařízení. Když je čas na instalaci, namiřte instalační skript na adresář, který obsahuje stažené soubory. Instalační program nejprve zkontroluje tento adresář a potom stáhne pouze součásti, které nebyly nalezeny. Pokud jsou všechny soubory k dispozici offline, můžete nainstalovat bez připojení k internetu.
 
-Nejnovější instalační soubory IoT Edge spolu s předchozími verzemi najdete v [tématu Verze Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
+K aktualizaci ioT edge můžete také použít parametr cesty instalace offline. Další informace naleznete [v tématu Aktualizace daemonu zabezpečení IoT Edge a runtime](how-to-update-iot-edge.md).
 
-Chcete-li nainstalovat s offline `-OfflineInstallationPath` součástmi, použijte parametr jako součást příkazu Deploy-IoTEdge a zadejte absolutní cestu k adresáři souborů. Například:
+1. Nejnovější instalační soubory IoT Edge spolu s předchozími verzemi najdete v [tématu Verze Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
 
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
-```
+2. Najděte verzi, kterou chcete nainstalovat, a stáhněte si následující soubory z části **Datové zdroje** v poznámkách k verzi do zařízení IoT:
 
->[!NOTE]
->Parametr `-OfflineInstallationPath` hledá soubor s názvem **Microsoft-Azure-IoTEdge.cab** v adresáři k dispozici. Počínaje IoT Edge verze 1.0.9-rc4, existují dva .cab soubory k dispozici pro použití, jeden pro zařízení AMD64 a jeden pro ARM32. Stáhněte si správný soubor pro vaše zařízení a přejmenujte soubor a odeberte příponu architektury.
+   * IoTEdgeSecurityDaemon.ps1
+   * Microsoft-Azure-IoTEdge-amd64.cab z verzí 1.0.9 nebo novější, nebo Microsoft-Azure-IoTEdge.cab z verzí 1.0.8 a starší.
 
-Příkaz `Deploy-IoTEdge` nainstaluje součásti IoT Edge a potom budete `Initialize-IoTEdge` muset pokračovat k příkazu a zřídit zařízení s ID zařízení služby IoT Hub a připojením. Buď spusťte příkaz přímo a zadejte připojovací řetězec z ioT hubu, nebo použijte jeden z odkazů v předchozí části se dozvíte, jak automaticky zřídit zařízení se službou Device Provisioning Service.
+   Microsoft-Azure-IotEdge-arm32.cab je k dispozici také od 1.0.9 pouze pro účely testování. IoT Edge není aktuálně podporovánna zařízeních s Windows ARM32.
 
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Initialize-IoTEdge
-```
+   Je důležité použít skript prostředí PowerShell ze stejné verze jako soubor CAB, který používáte, protože funkce se mění tak, aby podporovaly funkce v každé verzi.
 
-Můžete také použít parametr cesty instalace offline pomocí příkazu Update-IoTEdge.
+3. Pokud soubor CAB, který jste stáhli, obsahuje příponu architektury, přejmenujte soubor na jenom **Microsoft-Azure-IoTEdge.cab**.
+
+4. Volitelně můžete stáhnout instalační program pro visual c++ redistribuovatelné. Skript prostředí PowerShell například používá tuto verzi: [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Uložte instalační program do stejné složky na zařízení IoT jako soubory IoT Edge.
+
+5. Chcete-li instalovat s offline součástmi, [dot source](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) místní kopii skriptu Prostředí PowerShell. Potom použijte `-OfflineInstallationPath` parametr jako součást `Deploy-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Například:
+
+   ```powershell
+   . <path>\IoTEdgeSecurityDaemon.ps1
+   Deploy-IoTEdge -OfflineInstallationPath <path>
+   ```
+
+   Příkaz nasazení použije všechny součásti nalezené v místním adresáři souborů. Pokud chybí soubor CAB nebo instalační program Visual C++, pokusí se je stáhnout.
+
+6. Spusťte `Initialize-IoTEdge` příkaz a zřídíte zařízení s identitou v centru IoT Hub. Buď zadejte připojovací řetězec zařízení pro ruční zřizování, nebo zvolte jednu z metod popsaných v předchozí části [automaticky zřizování.](#option-2-install-and-automatically-provision)
+
+   Pokud se zařízení po `Deploy-IoTEdge`spuštění restartovalo , dot `Initialize-IoTEdge`source powershellový skript před spuštěním .
+
+Další informace o možnosti instalace offline získáte přeskočením o [všech parametrech instalace](#all-installation-parameters).
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 

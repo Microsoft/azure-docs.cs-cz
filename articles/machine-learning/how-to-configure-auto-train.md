@@ -1,5 +1,5 @@
 ---
-title: Vytváření automatizovaných experimentů ML
+title: Vytváření experimentů automatizovaného strojového učení
 titleSuffix: Azure Machine Learning
 description: Automatizované strojové učení vybere algoritmus pro vás a generuje model připravený k nasazení. Seznamte se s možnostmi, které můžete použít ke konfiguraci automatizovaných experimentů strojového učení.
 author: cartacioS
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618543"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115423"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,24 +43,27 @@ Než začnete experiment, měli byste určit druh problému strojového učení,
 
 Automatizované strojové učení podporuje následující algoritmy během procesu automatizace a ladění. Jako uživatel není nutné zadat algoritmus.
 
+> [!NOTE]
+> Pokud plánujete exportovat modely vytvořené automatickým ML do [modelu ONNX](concept-onnx.md), lze do formátu ONNX převést pouze ty algoritmy označené * . Další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx). <br> <br> Všimněte si také, ONNX podporuje pouze klasifikace a regresní úkoly v tomto okamžiku. 
+
 Classification | Regrese | Prognózování časové řady
 |-- |-- |--
-[Logistická regrese](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Zesílení přechodu](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Zesílení přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Zesílení přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)|[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K Nejbližší sousedé](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Nejbližší sousedé](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Nejbližší sousedé](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Lineární SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Klasifikace vektorů podpory (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stochastický gradient nísestup (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stochastický gradient nísestup (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[Náhodný les](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Náhodný les](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Náhodný les](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Extrémně randomizované stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extrémně randomizované stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extrémně randomizované stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN třídění](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[Lineární klasifikátor DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineární regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineární regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naivní Bayesovy klasifikátory](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Rychlý lineární regresor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Stochastický gradient nísestup (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Online přechod sestup urychlovač](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prorok](https://facebook.github.io/prophet/docs/quick_start.html)
+[Logistická regrese](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Zesílení přechodu](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[Zesílení přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[Zesílení přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K Nejbližší sousedé](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K Nejbližší sousedé](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K Nejbližší sousedé](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Lineární SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Laso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Klasifikace vektorů podpory (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[Stochastický gradient nísestup (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[Stochastický gradient nísestup (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Náhodná doména](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Náhodná doména](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Náhodný les](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Extrémně randomizované stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extrémně randomizované stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extrémně randomizované stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[DNN třídění](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[Lineární klasifikátor DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineární regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[Lineární regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[Naivní Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Rychlý lineární regresor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Stochastický gradient nísestup (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[Online přechod sestup urychlovač](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prorok](https://facebook.github.io/prophet/docs/quick_start.html)
 |[Averaged Perceptron Třídění](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||PrognózaTCN
-|[Lineární klasifikátor SVM](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
+|[Lineární klasifikátor SVM](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
 
 Pomocí `task` parametru `AutoMLConfig` v konstruktoru určete typ experimentu.
 

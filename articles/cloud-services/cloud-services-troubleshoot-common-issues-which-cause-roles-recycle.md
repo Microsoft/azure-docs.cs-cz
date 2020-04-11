@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 554508b1bf784e306cd12a4a601f908e06320933
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a644e211cc933ca686f0bd6a13b0d2ba8ae20162
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154981"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114114"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Běžné potíže, které můžou způsobit recyklaci rolí
 Tento článek popisuje některé běžné příčiny problémů s nasazením a poskytuje tipy pro řešení potíží, které vám pomohou tyto problémy vyřešit. Označení, že existuje problém s aplikací je v případě, že instance role se nezdaří spustit, nebo cykly mezi inicializace, zaneprázdněn a zastavení stavy.
@@ -58,7 +58,7 @@ Chcete-li `DiagnosticsConnectionString` se ujistit, že vaše nastavení je spr�
   Pokud vyvíjíte aplikaci pomocí Nástroje Azure pro Microsoft Visual Studio, můžete tuto hodnotu nastavit pomocí stránek vlastností.
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>Exportovaný certifikát neobsahuje soukromý klíč.
-Chcete-li spustit webovou roli v části SSL, musíte zajistit, aby exportovaný certifikát správy zahrnoval soukromý klíč. Pokud k exportu certifikátu používáte *Správce certifikátů systému Windows,* nezapomeňte vybrat **možnost Ano** pro možnost **Exportovat soukromý klíč.** Certifikát musí být exportován ve formátu PFX, což je jediný aktuálně podporovaný formát.
+Chcete-li spustit webovou roli v části TLS, musíte zajistit, aby exportovaný certifikát správy zahrnoval soukromý klíč. Pokud k exportu certifikátu používáte *Správce certifikátů systému Windows,* nezapomeňte vybrat **možnost Ano** pro možnost **Exportovat soukromý klíč.** Certifikát musí být exportován ve formátu PFX, což je jediný aktuálně podporovaný formát.
 
 ## <a name="next-steps"></a>Další kroky
 Zobrazit další [články o řešení potíží](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) pro cloudové služby.

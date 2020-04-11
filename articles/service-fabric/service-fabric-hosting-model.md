@@ -5,12 +5,12 @@ author: harahma
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82bc5068be651b05eb24efa3b05e46c1e7c1e24d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282390"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115042"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Model hostování Azure Service Fabric
 Tento článek obsahuje přehled modelů hostování aplikací poskytovaných Azure Service Fabric a popisuje rozdíly mezi **sdíleného procesu** a **výhradní proces** modely. Popisuje, jak nadeštěná aplikace vypadá na uzlu Service Fabric a vztah mezi replikami (nebo instancemi) služby a procesem hostitele služby.
@@ -168,6 +168,10 @@ Při aktivaci 'MultiTypeServicePackage' pro repliku oddílu **P1** service **fab
 
 
 V předchozím příkladu si můžete myslet, že pokud 'MyCodePackageA' registruje myServiceTypeA ' a "MyServiceTypeB' a není 'MyCodePackageB', pak není spuštěn žádný redundantní *CodePackage.* I když je to správné, tento model aplikace není zarovnán s modelhostingu výhradní proces. Pokud je cílem umístit každou repliku do vlastního vyhrazeného procesu, není nutné registrovat oba *ServiceTypes* ze *stejnécodepackage*. Místo toho jednoduše umístit každý *ServiceType* v jeho vlastní *ServicePackage*.
+
+### <a name="reliable-services-and-actor-forking-subprocesses"></a>Spolehlivé služby a objekt actor forking podprocesy
+
+Service Fabric nepodporuje spolehlivé služby a následně spolehlivé objekty actor forking podprocesy. Příkladem toho, proč jeho není podporován je [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nelze použít k registraci nepodporované ho dílčího procesu a tokeny zrušení jsou odesílány pouze do registrovaných procesů; Výsledkem jsou všechny druhy problémů, jako jsou chyby upgradu, když se dílčí procesy neuzavřou poté, co nadřazený proces obdrží token zrušení.
 
 ## <a name="next-steps"></a>Další kroky
 [Zabalte aplikaci][a4] a připravte ji k nasazení.

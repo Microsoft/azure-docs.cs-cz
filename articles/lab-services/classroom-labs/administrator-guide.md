@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370848"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115022"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – průvodce správcem
 Správci informačních technologií (IT), kteří spravují cloudové prostředky univerzity, jsou obvykle zodpovědní za nastavení účtu testovacího prostředí pro svou školu. Po nastavení účtu testovacího prostředí správci nebo pedagogové vytvoří testovací prostředí ve třídě, která jsou obsažena v účtu testovacího prostředí. Tento článek poskytuje podrobný přehled o azure prostředků zapojených a pokyny pro jejich vytvoření.
@@ -156,6 +156,9 @@ Umístění, ve které existuje učebna, se liší v závislosti na následujíc
        
     Pokud neexistuje **žádný** partnerský vztah virtuální sítě a [tvůrci testovacího prostředí mohou vybrat umístění testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), umístění, která může být vybrána tvůrcem testovacího prostředí, jsou založená na dostupné kapacitě.
 
+> [!NOTE]
+> Chcete-li zajistit, že je dostatečná kapacita virtuálního pracovního bodu pro oblast, je důležité nejprve požadovat kapacitu prostřednictvím účtu testovacího prostředí nebo při vytváření testovacího prostředí.
+
 Obecným pravidlem je nastavit oblast prostředku na oblast, která je nejblíže uživatelům. Pro učebny laboratoře, to znamená vytvoření učebny laboratoř nejblíže k vašim studentům. Pro online kurzy, kde se studenti nacházejí po celém světě, musíte použít svůj nejlepší úsudek k vytvoření učební laboratoře, která je centrálně umístěná. Nebo rozdělte třídu do několika učebních laboratoří na základě oblasti vašich studentů.
 
 ### <a name="shared-image-gallery"></a>Sdílená galerie obrázků
@@ -169,7 +172,7 @@ Když správci nebo tvůrci testovacího prostředí vytvoří testovací prost�
 | ---- | ----- | ------ | ------------- |
 | Krátkodobé používání| <ul><li>2 jádra</li><li>3,5 GB paměti RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro příkazový řádek, otevření webového prohlížeče, webové servery s nízkým provozem, malé až střední databáze. |
 | Střednědobé používání | <ul><li>4 Jádra</li><li>7 GB PAMĚTI RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro relační databáze, ukládání do mezipaměti v paměti a analýzy. |
-| Střední (vnořená virtualizace) | <ul><li>4 Jádra</li><li>16 GB paměti RAM</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro relační databáze, ukládání do mezipaměti v paměti a analýzy.  Tato velikost také podporuje vnořenou virtualizaci. |
+| Střední (vnořená virtualizace) | <ul><li>4 Jádra</li><li>16 GB paměti RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Tato velikost je nejvhodnější pro relační databáze, ukládání do mezipaměti v paměti a analýzy.  Tato velikost také podporuje vnořenou virtualizaci. |
 | Dlouhodobé používání | <ul><li>8 jader</li><li>32 GB paměti RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro aplikace, které potřebují rychlejší procesory, lepší výkon místního disku, velké databáze, velké mezipaměti.  Tato velikost také podporuje vnořenou virtualizaci. |
 | Malý GPU (vizualizace) | <ul><li>6 Jader</li><li>56 GB paměti RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní her, kódování pomocí architektur, jako jsou OpenGL a DirectX. |
 | Malý GPU (výpočetní) | <ul><li>6 Jader</li><li>56 GB paměti RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Tato velikost je nejvhodnější pro počítačem náročné aplikace, jako je umělá inteligence a hloubkové učení. |

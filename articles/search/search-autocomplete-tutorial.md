@@ -1,27 +1,27 @@
 ---
-title: Přidání návrhů a automatického dokončování do vyhledávacího pole
+title: Přidání automatického dokončování a návrhů do vyhledávacího pole
 titleSuffix: Azure Cognitive Search
-description: Povolte akce dotazů dopředného psaní v Azure Cognitive Search vytvořením návrhovačů a formulováním požadavků, které vyplňují vyhledávací pole s dokončenými výrazy nebo frázemi.
+description: Povolte akce dotazů jako typ vyhledávání v Azure Cognitive Search vytvořením návrhy a formulováním požadavků, které automaticky doplní vyhledávací pole s hotovými výrazy nebo frázemi. Můžete také vrátit navrhované zápasy.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 64c4e65ca7b69c7d61c706b48591ac19be3bfcf5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.topic: conceptual
+ms.date: 04/10/2020
+ms.openlocfilehash: d6c1819366fede0b1e81e43bc92ed56af93b39fd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72792523"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114959"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>Přidání návrhů nebo automatického dokončování do aplikace Azure Cognitive Search
 
 V tomto článku se dozvíte, jak pomocí [návrhů](https://docs.microsoft.com/rest/api/searchservice/suggestions) a [automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) vytvořit výkonné vyhledávací pole, které podporuje chování typu hledání podle vás.
 
-+ *Návrhy* jsou navrženy výsledky generované při psaní, kde každý návrh je jeden výsledek z indexu, který odpovídá tomu, co jste zadali tak daleko. 
++ *Návrhy* generují výsledky hledání při psaní, kde každý návrh je jeden výsledek nebo vyhledávací dokument z indexu, který odpovídá tomu, co jste dosud zadali. 
 
-+ *Automatické dokončování* "dokončí" slovo nebo frázi, kterou uživatel právě píše. Místo vrácení výsledků dokončí dotaz, který pak můžete spustit a vrátit výsledky. Stejně jako u návrhů je dokončené slovo nebo fráze v dotazu založena na shodě v indexu. Služba nebude nabízet dotazy, které vrátí nulové výsledky v indexu.
++ *Automatické dokončování* generuje dotazy "dokončení" slovo nebo frázi. Místo vrácení výsledků dokončí dotaz, který pak můžete spustit a vrátit výsledky. Stejně jako u návrhů je dokončené slovo nebo fráze v dotazu založena na shodě v indexu. Služba nebude nabízet dotazy, které vrátí nulové výsledky v indexu.
 
 Můžete stáhnout a spustit ukázkový kód v **DotNetHowToAutocomplete** vyhodnotit tyto funkce. Ukázkový kód cílí na předem vytvořený index naplněný [ukázkovými daty NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). NycJobs index obsahuje [Konstrukce Sustrumeje](index-add-suggesters.md), což je požadavek pro použití návrhy nebo automatické dokončování. Připravený index hostovaný ve službě izolovaného prostoru můžete použít nebo [naplnit vlastní index](#configure-app) pomocí zavaděče dat v ukázkovém řešení NYCJobs. 
 

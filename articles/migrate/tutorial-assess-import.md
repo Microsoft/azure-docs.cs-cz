@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79453642"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115066"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Vyhodnocení serverů pomocí importovaných dat
 
@@ -126,22 +126,8 @@ Následující tabulka shrnuje pole souborů, která chcete vyplnit:
 **Propustnost sítě** | Ne | Data přijatá serverem v MB za sekundu.
 **Propustnost sítě** | Ne | Data přenášená serverem v MB za sekundu.
 **Typ firmwaru** | Ne | Firmware serveru. Hodnoty mohou být "BIOS" nebo "UEFI".
-**Typ serveru** | Ne | Hodnoty mohou být "Fyzické" nebo "Virtuální".
-**Hypervisor** | Ne | Hypervisor, na kterém běží stroj. <br/> Hodnoty mohou být "VMware", "Hyper-V", "Xen", "AWS", "GCP" nebo "Jiné".
-**Číslo verze Hypervisoru** | Ne | Verze Hypervisoru.
-**ID virtuálního počítače** | Ne | Identifikátor virtuálního zařízení. Toto je hodnota **InstanceUUid** pro virtuální virtuální vCenter VMware nebo **ID virtuálního vav technologie Hyper-V** pro technologie Hyper-V.
-**ID správce virtuálních strojů** | Ne | Toto je hodnota **InstanceUUid** pro vCenter VMWare. Není to potřeba pro Hyper-V.
 **Adresa MAC**| Ne | Adresa MAC serveru.
-**BIOS ID** | Ne | ID systému Systému windows serveru.
-**Vlastní ID serveru** | Ne | Místní, jedinečné ID serveru v místním prostředí. <br/> Užitečné pro sledování importovaného serveru podle místního ID.
-**Název aplikace 1** | Ne | Název úlohy spuštěné na serveru.<br/>Podrobnosti o dalších aplikacích můžete přidat [přidáním sloupců](#add-multiple-applications) do šablony. Můžete přidat až pět aplikací.
-**Typ aplikace 1** | Ne | Typ úlohy spuštěné na serveru
-**Verze aplikace 1** | Ne | Verze úlohy spuštěné na serveru.
-**Vypršení platnosti licence aplikace 1** | Ne | Vypršení platnosti licence pracovního vytížení (je-li k dispozici).
-**Obchodní jednotka** | Ne | Organizační jednotka, do které server patří.
-**Vlastník firmy** | Ne | Vlastník organizační jednotky.
-**Název obchodní aplikace** | Ne | Název aplikace, do které aplikace patří.
-**Umístění** | Ne | Datové centrum, ve kterém je server umístěn.
+
 
 ### <a name="add-operating-systems"></a>Přidání operačních systémů
 
@@ -159,19 +145,6 @@ Chcete-li například zadat všechna pole pro druhý disk, přidejte tyto sloupc
 - Propustnost čtení disku 2
 - Propustnost zápisu disku 2
 
-### <a name="add-multiple-applications"></a>Přidání více aplikací
-
-Šablona obsahuje pole pro jednu aplikaci. Podobné sloupce můžete přidat až pro pět aplikací.  
-
-Chcete-li například zadat všechna pole pro druhou aplikaci, přidejte tyto sloupce:
-
-- Název aplikace 2
-- Typ aplikace 2
-- Verze aplikace 2
-- Vypršení platnosti licence aplikace 2
-
-> [!NOTE]
-> Informace o aplikacích jsou užitečné při vyhodnocování místního prostředí pro migraci. Azure Migrate Server Assessment však aktuálně neprovádí hodnocení na úrovni aplikací ani nebere v úvahu aplikace při vytváření hodnocení.
 
 ## <a name="import-the-server-information"></a>Import informací o serveru
 

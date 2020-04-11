@@ -1,17 +1,17 @@
 ---
-title: Omezení rychlosti pro SMS, e-maily, nabízená oznámení aplikací Azure a webhooky
+title: Omezení rychlosti pro SMS, e-maily, nabízená oznámení
 description: Zjistěte, jak Azure omezuje počet možných SMS, e-mailů, nabízených oznámení aplikací Azure nebo webhooku ze skupiny akcí.
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
-ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61e6cc22171815b15b865dd6ed5670bd9c446ead
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665523"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114330"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Omezení rychlosti pro hlas, SMS, e-maily, nabízená oznámení o aplikacích Azure a příspěvky webhooku
 Omezení rychlosti je pozastavení oznámení, ke kterému dochází, když je na konkrétní telefonní číslo, e-mailovou adresu nebo zařízení odesláno příliš mnoho. Omezení rychlosti zajišťuje, že výstrahy jsou spravovatelné a žalovatelné.

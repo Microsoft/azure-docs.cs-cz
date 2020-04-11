@@ -1,17 +1,17 @@
 ---
-title: Přepnutí ze staršího rozhraní API upozornění služby Log Analytics na nové rozhraní API upozornění Azure
+title: Přepnutí na nové rozhraní API upozornění Azure
 description: Přehled starších uložených rozhraní API upozornění na analýzu protokolů založeného na vyhledávání a procesu přepnutí pravidel výstrah do nového rozhraní API ScheduledQueryRules s podrobnostmi o řešení běžných problémů zákazníků.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
-ms.openlocfilehash: c1ca85ba9c79f828b5ddcf0d640cfe7f8b6e097c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7950b3f584c36b68a4eff66b05e83ba94c1ec1dd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249435"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114356"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Přepnout rozhraní API před upozornění
 

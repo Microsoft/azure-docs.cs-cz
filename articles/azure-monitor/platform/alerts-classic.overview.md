@@ -1,15 +1,15 @@
 ---
-title: Přehled klasických výstrah v Microsoft Azure a Azure Monitoru
+title: Přehled klasických výstrah ve službě Azure Monitor
 description: Klasické výstrahy jsou zastaralé. Výstrahy umožňují sledovat metriky prostředků Azure, události nebo protokoly a být upozorněni, když je splněna podmínka, kterou zadáte.
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 098efd3075c6b099bdfc925cb4f09163f83532a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668262"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114505"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou klasická upozornění v Microsoft Azure?
 
@@ -28,20 +28,20 @@ Klasické výstrahy můžete zobrazit jenom na obrazovce klasického uživatele 
  ![Volby výstrah na webu Azure Portal](media/alerts-classic.overview/monitor-alert-screen2.png)
 
 Nové uživatelské prostředí výstrah má následující výhody oproti klasickému prostředí výstrah:
--   **Lepší systém oznámení** – všechny novější výstrahy používají skupiny akcí, které jsou pojmenované skupiny oznámení a akcí, které lze znovu použít ve více výstrahách. Klasické metriky výstrahy a starší log Analytics výstrahy nepoužívají skupiny akcí.
--   **Jednotné prostředí pro vytváření** – všechny vytváření výstrah pro metriky, protokoly a protokoly aktivit napříč Azure Monitor, Log Analytics a Application Insights je na jednom místě.
--   **Zobrazit vypálené výstrahy Analýzy protokolů na webu Azure Portal** – teď můžete ve svém předplatném taky vidět vypálené výstrahy Analýzy protokolů. Dříve byly v samostatném portálu.
--   **Oddělení vymažení výstrah a výstrahy pravidla** – definice podmínky, která aktivuje výstrahu) a aktivovaná výstraha (instance spuštění pravidla výstrahy) jsou diferencované, takže zobrazení provozní a konfigurace jsou odděleny.
--   **Lepší pracovní postup** – Nové prostředí vytváření výstrah vede uživatele v průběhu procesu konfigurace pravidla výstrahy, což usnadňuje zjišťování správných věcí, na které je třeba upozornit.
--   **Konsolidace inteligentních výstrah** a **nastavení stavu výstrah** – novější výstrahy zahrnují funkce automatického seskupení, které společně zobrazují podobné výstrahy, aby se snížilo přetížení v uživatelském rozhraní. 
+- **Lepší systém oznámení** – všechny novější výstrahy používají skupiny akcí, které jsou pojmenované skupiny oznámení a akcí, které lze znovu použít ve více výstrahách. Klasické metriky výstrahy a starší log Analytics výstrahy nepoužívají skupiny akcí.
+- **Jednotné prostředí pro vytváření** – všechny vytváření výstrah pro metriky, protokoly a protokoly aktivit napříč Azure Monitor, Log Analytics a Application Insights je na jednom místě.
+- **Zobrazit vypálené výstrahy Analýzy protokolů na webu Azure Portal** – teď můžete ve svém předplatném taky vidět vypálené výstrahy Analýzy protokolů. Dříve byly v samostatném portálu.
+- **Oddělení vymažení výstrah a výstrahy pravidla** – definice podmínky, která aktivuje výstrahu) a aktivovaná výstraha (instance spuštění pravidla výstrahy) jsou diferencované, takže zobrazení provozní a konfigurace jsou odděleny.
+- **Lepší pracovní postup** – Nové prostředí vytváření výstrah vede uživatele v průběhu procesu konfigurace pravidla výstrahy, což usnadňuje zjišťování správných věcí, na které je třeba upozornit.
+- **Konsolidace inteligentních výstrah** a **nastavení stavu výstrah** – novější výstrahy zahrnují funkce automatického seskupení, které společně zobrazují podobné výstrahy, aby se snížilo přetížení v uživatelském rozhraní. 
 
 Novější upozornění metriky mají následující výhody oproti klasické metriky výstrahy:
--   **Vylepšená latence:** Novější upozornění metriky lze spustit stejně často jako každou minutu. Starší upozornění na metriky se vždy spouštějí s frekvencí 5 minut. Novější výstrahy mají rostoucí menší zpoždění od výskytu problému k oznámení nebo akci (3 až 5 minut). Starší výstrahy jsou 5 až 15 minut v závislosti na typu.  Výstrahy protokolu mají obvykle 10 až 15 minut zpoždění z důvodu čas potřebný k ingestování protokolů, ale novější metody zpracování snižují tento čas. 
--   **Podpora vícerozměrných metrik**: Můžete upozornit na dimenzionální metriky, které vám umožní sledovat zajímavý segment metriky.
--   **Větší kontrola nad podmínkami metriky**: Můžete definovat bohatší pravidla výstrah. Novější výstrahy podporují sledování maximální, minimální, průměrné a celkové hodnoty metrik.
--   **Kombinované monitorování více metrik**: Pomocí jediného pravidla můžete sledovat více metrik (aktuálně až dvě metriky). Výstraha se aktivuje, pokud obě metriky překročí příslušné prahové hodnoty pro zadané časové období.
--   **Lepší systém oznámení**: Všechny novější výstrahy používají [skupiny akcí](../../azure-monitor/platform/action-groups.md), které jsou pojmenované skupiny oznámení a akcí, které lze znovu použít ve více výstrahách.  Klasické metriky výstrahy a starší log Analytics výstrahy nepoužívají skupiny akcí. 
--   **Metriky z protokolů** (veřejná verze Preview): Data protokolu, která se přecvádějí do Analýzy protokolů, teď můžou extrahovat a převést na metriky Azure Monitoru a pak je upozornit stejně jako ostatní metriky. Viz [Výstrahy (klasické)](alerts-classic.overview.md) pro terminologii specifické pro klasické výstrahy. 
+- **Vylepšená latence:** Novější upozornění metriky lze spustit stejně často jako každou minutu. Starší upozornění na metriky se vždy spouštějí s frekvencí 5 minut. Novější výstrahy mají rostoucí menší zpoždění od výskytu problému k oznámení nebo akci (3 až 5 minut). Starší výstrahy jsou 5 až 15 minut v závislosti na typu.  Výstrahy protokolu mají obvykle 10 až 15 minut zpoždění z důvodu čas potřebný k ingestování protokolů, ale novější metody zpracování snižují tento čas. 
+- **Podpora vícerozměrných metrik**: Můžete upozornit na dimenzionální metriky, které vám umožní sledovat zajímavý segment metriky.
+- **Větší kontrola nad podmínkami metriky**: Můžete definovat bohatší pravidla výstrah. Novější výstrahy podporují sledování maximální, minimální, průměrné a celkové hodnoty metrik.
+- **Kombinované monitorování více metrik**: Pomocí jediného pravidla můžete sledovat více metrik (aktuálně až dvě metriky). Výstraha se aktivuje, pokud obě metriky překročí příslušné prahové hodnoty pro zadané časové období.
+- **Lepší systém oznámení**: Všechny novější výstrahy používají [skupiny akcí](../../azure-monitor/platform/action-groups.md), které jsou pojmenované skupiny oznámení a akcí, které lze znovu použít ve více výstrahách.  Klasické metriky výstrahy a starší log Analytics výstrahy nepoužívají skupiny akcí. 
+- **Metriky z protokolů** (veřejná verze Preview): Data protokolu, která se přecvádějí do Analýzy protokolů, teď můžou extrahovat a převést na metriky Azure Monitoru a pak je upozornit stejně jako ostatní metriky. Viz [Výstrahy (klasické)](alerts-classic.overview.md) pro terminologii specifické pro klasické výstrahy. 
 
 
 ## <a name="classic-alerts-on-azure-monitor-data"></a>Klasické výstrahy na datech Azure Monitoru

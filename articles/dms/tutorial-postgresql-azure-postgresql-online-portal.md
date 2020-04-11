@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 03/25/2020
-ms.openlocfilehash: 4985c492c8ca71da87cf1a519ebc658c203d3952
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/11/2020
+ms.openlocfilehash: e01cc1c07d720c4743a03b5001e640f8b851dd5c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246972"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114005"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Kurz: Migrace PostgreSQL do Azure DB pro PostgreSQL online pomocí DMS přes portál Azure
 
@@ -45,7 +45,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 * Stáhněte a nainstalujte [komunitní edici PostgreSQL](https://www.postgresql.org/download/) 9.4, 9.5, 9.6 nebo 10. Zdroj PostgreSQL Server verze musí být 9.4, 9.5, 9.6, 10 nebo 11. Další informace naleznete v článku [Podporované verze databáze PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
 
-    Kromě toho místní verze PostgreSQL musí odpovídat Azure Database for PostgreSQL. Například PostgreSQL 9.6 můžete jenom migrovat do databáze Azure pro PostgreSQL 9.6, 10 nebo 11, ale ne do Databáze Azure pro PostgreSQL 9.5.
+    Všimněte si také, že cílová databáze Azure pro postgreSQL verze musí být rovna nebo novější než místní verze PostgreSQL. Například PostgreSQL 9.6 můžete migrovat do databáze Azure pro PostgreSQL 9.6, 10 nebo 11, ale ne do Databáze Azure pro PostgreSQL 9.5.
 
 * [Vytvořte databázi Azure pro postgreSQL server](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) nebo [vytvořte databázi Azure pro server PostgreSQL – Hyperscale (Citus).](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)
 * Vytvořte službu Migrace databáze Microsoft Azure pro Azure pomocí modelu nasazení Azure Resource Manageru, který poskytuje připojení k místním zdrojovým serverům site-to-site pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytvoření virtuální sítě naleznete v [dokumentaci k virtuální síti](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlého startu s podrobnými podrobnostmi.
@@ -104,7 +104,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Například:
+    Příklad:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental citus < dvdrentalSchema.sql
