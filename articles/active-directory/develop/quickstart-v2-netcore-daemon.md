@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 47c4daa0d164802e0c23ea28f71e89ac5029c313
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 1faaa7a925d807152fed1b08627e76341a101958
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991071"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113530"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Úvodní příručka: Získání tokenu a volání rozhraní Microsoft Graph API pomocí identity konzolové aplikace
 
@@ -196,7 +196,6 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientSecret(config.ClientSecret)
                                           .WithAuthority(new Uri(config.Authority))
                                           .Build();
-);
 ```
 
 > | Kde: ||

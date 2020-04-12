@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98345e8585a3f6653659e0d41eb5c3308a0a6634
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b7fa447e8564fcbf77702f1d3d474cceb48705c5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057419"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114632"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Vytvoření a použití prostředí služby Internal Load Balancer App Service Environment 
 
@@ -60,6 +60,9 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
     ![Vytvoření služby ASE](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
+> [!NOTE]
+> Název prostředí služby App Service nesmí mít více než 37 znaků.
+
 6. Vybrat síť
 
 7. Vyberte nebo vytvořte virtuální síť. Pokud zde vytvoříte novou virtuální síť, bude definována s rozsahem adres 192.168.250.0/23. Pokud chcete vytvořit virtuální síť s jiným rozsahem adres nebo v jiné skupině prostředků než služba ASE, použijte portál pro vytváření virtuální sítě Azure. 
@@ -69,6 +72,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
     ![ASE sítě][1]
 
 7. Vyberte **Zkontrolovat a Vytvořit** a pak vyberte **Vytvořit**.
+
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Vytvoření aplikace ve službě ASE s interním nástrojem pro vyrovnání zatížení ##
 

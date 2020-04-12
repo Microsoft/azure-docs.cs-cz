@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: fcfc86a3aca4aae042ce3589988aa91d821dce98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d95055e79356b9e0fe9c4c0e64f5935619204b3
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76842119"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112849"
 ---
 1. V kódu sady Visual Studio otevřete paletu příkazů stisknutím klávesy F1. V paletě příkazů vyhledejte `Azure Functions: Open in portal`a vyberte .
 
-1. Vyberte aplikaci funkcí a stiskněte Enter. Stránka aplikace funkce se otevře na [webu Azure Portal](https://portal.azure.com).
+1. Vyberte aplikaci funkcí a stiskněte Enter. Otevře se stránka aplikace funkce na webu Azure Portal.
 
 1. Na kartě **Přehled** vyberte pojmenovaný odkaz v části **Skupina prostředků**.
 

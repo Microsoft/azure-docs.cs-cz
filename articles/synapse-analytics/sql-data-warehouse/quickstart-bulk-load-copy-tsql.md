@@ -11,12 +11,12 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d03c7d72a0adf02959badac758f94e47fd81de5c
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: d39b3085a802ca0ff745ab1f63f4a8fba966ea48
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992225"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115008"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Úvodní příručka: Hromadné načítání dat pomocí příkazu COPY
 
@@ -38,7 +38,7 @@ Tento rychlý start předpokládá, že již máte fond SQL. Pokud fond SQL neby
 
 ## <a name="create-the-target-table"></a>Vytvoření cílové tabulky
 
-V tomto příkladu budeme načítat data z datové sady taxi v New Yorku. naložíme stůl s názvem Trip, který představuje taxi výlety během jednoho roku. Chcete-li tabulku vytvořit, spusťte následující:
+V tomto příkladu budeme načítat data z datové sady taxi v New Yorku. Naložíme stůl s názvem Trip, který představuje taxi výlety během jednoho roku. Chcete-li tabulku vytvořit, spusťte následující:
 
 ```sql
 CREATE TABLE [dbo].[Trip]

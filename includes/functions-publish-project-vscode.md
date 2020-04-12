@@ -4,16 +4,20 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8665b4cec3357baee5d6c1b77b5719645575419
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77029276"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112847"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikování projektu do Azure
 
 V této části vytvoříte aplikaci funkcí a související prostředky ve vašem předplatném Azure a pak nasadíte svůj kód. 
+
+> [!IMPORTANT]
+> Publikování do existující aplikace funkcí přepíše obsah této aplikace v Azure. 
+
 
 1. Vyberte ikonu Azure na panelu aktivit a pak v oblasti **Azure: Funkce** zvolte tlačítko **Nasadit do funkce...**
 
@@ -23,11 +27,8 @@ V této části vytvoříte aplikaci funkcí a související prostředky ve vaš
 
     + **Vyberte předplatné**: Zvolte předplatné, které chcete použít. Pokud máte pouze jedno předplatné, nezobrazí se vám to.
 
-    + **Vyberte aplikaci funkce v Azure:** Zvolte `+ Create new Function App` (ne). `Advanced` Tento článek nepodporuje [pokročilý tok publikování](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options). 
-    
-    >[!IMPORTANT]
-    > Publikování do existující aplikace funkcí přepíše obsah této aplikace v Azure. 
-    
+    + **Vyberte aplikaci**funkce `+ Create new Function App`v Azure : Zvolte . (Nevybírejte `Advanced` možnost, která není zahrnuta v tomto článku.)
+      
     + **Zadejte globálně jedinečný název aplikace funkce**: Zadejte název, který je platný v cestě URL. Název, který zadáte, se ověří, abyste se ujistili, že je jedinečný v Azure Functions. 
     
     ::: zone pivot="programming-language-python"
@@ -40,13 +41,13 @@ V této části vytvoříte aplikaci funkcí a související prostředky ve vaš
 
     + **Vyberte umístění pro nové zdroje**: Chcete-li dosáhnout lepšího výkonu, zvolte [oblast](https://azure.microsoft.com/regions/) ve vašem okolí. 
     
-1.  Po dokončení se ve vašem předplatném vytvoří následující prostředky Azure:
-
-    + **[Skupina prostředků](../articles/azure-resource-manager/management/overview.md)**: Obsahuje všechny vytvořené prostředky Azure. Název je založen na názvu aplikace funkce.
-    + **[Účet úložiště](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)**: Standardní účet úložiště se vytvoří s jedinečným názvem, který je založen na názvu aplikace funkce.
-    + **[Hostingový plán](../articles/azure-functions/functions-scale.md)**: Plán spotřeby se vytvoří v oblasti Západní USA, aby hostoval vaši aplikaci bez serveru.
-    + **Aplikace funkce**: Váš projekt je nasazen a běží v této nové aplikaci funkce.
-    + **Application Insights**: Instance, která je připojena k vaší aplikaci funkce, se vytvoří na základě názvu vaší funkce.
+1.  Po dokončení se ve vašem předplatném vytvoří následující prostředky Azure pomocí názvů založených na názvu aplikace funkce:
+    
+    + Skupina prostředků, která je logickým kontejnerem pro související prostředky.
+    + Standardní účet Azure Storage, který udržuje stav a další informace o vašich projektech.
+    + Plán spotřeby, který definuje základního hostitele pro aplikaci funkcí bez serveru. 
+    + Aplikace funkce, která poskytuje prostředí pro provádění kódu funkce. Aplikace funkce umožňuje seskupit funkce jako logická jednotka pro snadnější správu, nasazení a sdílení prostředků v rámci stejného plánu hostování.
+    + Instance Application Insights připojená k aplikaci funkce, která sleduje využití funkce bez serveru.
 
     Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí oznámení. 
     
