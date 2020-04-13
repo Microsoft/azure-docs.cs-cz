@@ -85,9 +85,9 @@
     - name: Zabezpečení databází
       items:
         - name: Přehled
-          href: database-security-overview.md
+          href: ../../sql-database/sql-database-security-overview.md
         - name: Osvědčené postupy
-          href: database-best-practices.md
+          href: ../../sql-database/sql-database-security-best-practice.md
         - name: Kontrolní seznam zabezpečení
           href: database-security-checklist.md
     - name: Příručka zabezpečení úložiště
@@ -115,6 +115,8 @@
       href: log-audit.md
     - name: Monitorování a správa zabezpečení
       href: management-monitoring-overview.md
+    - name: Posílení vzdálené správy
+      href: management.md
     - name: Provozní zabezpečení
       items:
         - name: Přehled

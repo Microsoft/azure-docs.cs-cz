@@ -61,14 +61,18 @@
           href: stream-analytics-sql-output-perf.md
         - name: Vzory vlastních cest objektů blob
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
-    - name: Uživatelsky definované funkce
+    - name: Rozšiřování dotazů pomocí funkcí
       items:
-        - name: Uživatelsky definovaná funkce v pro strojové učení
-          href: machine-learning-udf.md
-        - name: 'Uživatelsky definovaná funkce v C#'
-          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Přehled funkcí
+          href: functions-overview.md
         - name: Uživatelsky definovaná funkce v Javascriptu
           href: stream-analytics-javascript-user-defined-functions.md
+        - name: JavaScript UDA
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: 'Uživatelsky definovaná funkce v C#'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Uživatelsky definovaná funkce v pro strojové učení
+          href: machine-learning-udf.md
     - name: Optimalizace úlohy Stream Analytics
       items:
         - name: Principy a úpravy jednotek streamování
@@ -140,8 +144,6 @@
           href: stream-analytics-edge.md
         - name: Analýza dat snímačů z mýtných bran
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-        - name: Spuštění UDA JavaScriptu
-          href: stream-analytics-javascript-user-defined-aggregates.md
         - name: Vysokofrekvenční obchodování
           href: stream-analytics-high-frequency-trading.md
         - name: Zpracování streamovaných dat IoT

@@ -1037,6 +1037,8 @@
           href: monitor-cosmos-db.md
         - name: Monitorování latence na straně serveru
           href: monitor-server-side-latency.md
+        - name: Monitorování využití jednotek žádostí
+          href: monitor-request-unit-usage.md
         - name: Monitorování s diagnostickými protokoly
           href: cosmosdb-monitor-resource-logs.md
         - name: Protokoly auditu řídicí roviny

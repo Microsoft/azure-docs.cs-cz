@@ -1007,6 +1007,40 @@
         - name: Přehled zabezpečení
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: Řízení přístupu
+          items:
+            - name: Přehled řízení přístupu
+              href: /azure/databricks/security/access-control/index
+              maintainContext: true
+            - name: Řízení přístupu k pracovním prostorům
+              href: /azure/databricks/security/access-control/workspace-acl
+              maintainContext: true
+            - name: Řízení přístupu ke clusterům
+              href: /azure/databricks/security/access-control/cluster-acl
+              maintainContext: true
+            - name: Řízení přístupu k fondům
+              href: /azure/databricks/security/access-control/pool-acl
+              maintainContext: true
+            - name: Řízení přístupu k úlohám
+              href: /azure/databricks/security/access-control/job-acl
+              maintainContext: true
+            - name: Řízení přístupu k tabulkám
+              items:
+                - name: Přehled řízení přístupu k tabulkám
+                  href: /azure/databricks/security/access-control/table-acls/index
+                  maintainContext: true
+                - name: Povolení řízení přístupu k tabulkám pro cluster
+                  href: /azure/databricks/security/access-control/table-acls/table-acl
+                  maintainContext: true
+                - name: Oprávnění datových objektů
+                  href: /azure/databricks/security/access-control/table-acls/object-privileges
+                  maintainContext: true
+            - name: Řízení přístupu k tajným klíčům
+              href: /azure/databricks/security/access-control/secret-acl
+              maintainContext: true
+        - name: Ověření pro Azure Data Lake Storage s využitím přihlašovacích údajů Azure Active Directory
+          href: /azure/databricks/security/credential-passthrough/adls-passthrough
+          maintainContext: true
         - name: Tajné kódy
           items:
             - name: Zabezpečení dat s využitím tajných kódů
@@ -1018,9 +1052,6 @@
             - name: Tajné kódy
               href: /azure/databricks/security/secrets/secrets
               maintainContext: true
-            - name: Řízení přístupu k tajným klíčům
-              href: /azure/databricks/security/secrets/secret-acl
-              maintainContext: true
             - name: Úpravy tajných kódů
               href: /azure/databricks/security/secrets/redaction
               maintainContext: true
@@ -1028,11 +1059,11 @@
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
         - name: Šifrování provozu mezi pracovními uzly clusteru
-          href: /azure/databricks/security/encrypt-otw
+          href: /azure/databricks/security/encryption/encrypt-otw
         - name: Povolení klíčů spravovaných zákazníkem pro poznámkové bloky
-          href: /azure/databricks/security/customer-managed-key-notebook
+          href: /azure/databricks/security/keys/customer-managed-key-notebook
         - name: Povolení klíčů spravovaných zákazníkem pro DBFS
-          href: /azure/databricks/security/customer-managed-keys-dbfs
+          href: /azure/databricks/security/keys/customer-managed-keys-dbfs
     - name: Správa
       items:
         - name: Přehled správy
@@ -1080,28 +1111,20 @@
             - name: Přehled řízení přístupu
               href: /azure/databricks/administration-guide/access-control/index
               maintainContext: true
-            - name: Řízení přístupu ke clusterům
+            - name: Povolení řízení přístupu k pracovním prostorům
+              href: /azure/databricks/administration-guide/access-control/workspace-acl
+              maintainContext: true
+            - name: Povolení řízení přístupu ke clusterům
               href: /azure/databricks/administration-guide/access-control/cluster-acl
               maintainContext: true
-            - name: Řízení přístupu k fondům
+            - name: Povolení řízení přístupu k fondům
               href: /azure/databricks/administration-guide/access-control/pool-acl
               maintainContext: true
-            - name: Řízení přístupu k úlohám
+            - name: Povolení řízení přístupu k úlohám
               href: /azure/databricks/administration-guide/access-control/jobs-acl
               maintainContext: true
-            - name: Řízení přístupu k tabulkám
-              items:
-                - name: Přehled řízení přístupu k tabulkám
-                  href: /azure/databricks/administration-guide/access-control/table-acls/index
-                  maintainContext: true
-                - name: Povolení řízení přístupu k tabulkám
-                  href: /azure/databricks/administration-guide/access-control/table-acls/table-acl
-                  maintainContext: true
-                - name: Nastavení oprávnění pro datový objekt
-                  href: /azure/databricks/administration-guide/access-control/table-acls/object-privileges
-                  maintainContext: true
-            - name: Řízení přístupu k pracovním prostorům
-              href: /azure/databricks/administration-guide/access-control/workspace-acl
+            - name: Povolení řízení přístupu k tabulkám
+              href: /azure/databricks/administration-guide/access-control/table-acl
               maintainContext: true
             - name: Povolení ověřování s využitím tokenů
               href: /azure/databricks/administration-guide/access-control/tokens
@@ -1688,6 +1711,9 @@
           items:
             - name: Poznámky k verzi platformy
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: Duben 2020
+              href: /azure/databricks/release-notes/product/2020/april
               maintainContext: true
             - name: Březen 2020
               href: /azure/databricks/release-notes/product/2020/march
