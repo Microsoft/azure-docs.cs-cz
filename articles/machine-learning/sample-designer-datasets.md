@@ -1,7 +1,7 @@
 ---
-title: Použití ukázkových datových sad v návrháři Azure Machine Learning
+title: Ukázková data pro návrháře
 titleSuffix: Azure Machine Learning
-description: Další informace o ukázkových datových sadách zahrnutých v návrháři Azure Machine Learning.
+description: Přečtěte si další informace o ukázkových datových sadách, které jsou k dispozici v návrháři Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.date: 03/03/2020
-ms.openlocfilehash: 943e23aa9d83df33bbe636ce7aee62e6e5a2950e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b19c1ed5aa556a2cfb633ac6fbc0cf9f95d0337f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037311"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256973"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-designer-preview"></a>Použití ukázkových datových sad v návrháři Azure Machine Learning (preview)
+# <a name="sample-datasets-in-azure-machine-learning-designer-preview"></a>Ukázkové datové sady v návrháři Azure Machine Learning (preview)
 
 Když vytvoříte nový kanál v návrháři Azure Machine Learning (preview), ve výchozím nastavení se dosadí několik ukázkových datových sad. Tyto ukázkové datové sady jsou používány ukázkové kanály na domovské stránce návrháře. 
 
@@ -37,7 +37,7 @@ Ukázkové datové sady jsou k dispozici v kategorii**Vzorky datových** **sad.*
 |Německý datový soubor UCI kreditní karty|Datová sada UCI Statlog (německá kreditní karta) ([Statlog+German+Credit+Data)](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data))používající soubor german.data.<br/>Datová sada klasifikuje osoby, které je popsáno sadou atributů, jako nízké nebo vysoké úvěrové riziko. Každý příklad představuje osobu. K dispozici je 20 funkcí, číselných i kategorických, a binární popisek (hodnota úvěrového rizika). Položky s vysokým úvěrovým rizikem mají popisek = 2, položky s nízkým úvěrovým rizikem mají popisek = 1. Náklady na nesprávné klasifikaci příkladu s nízkým rizikem jako vysoké jsou 1, zatímco náklady na chybnou klasifikaci vysoce rizikového příkladu jako nízké jsou 5.|
 |Filmové tituly IMDB|Datová sada obsahuje informace o filmech, které byly hodnoceny v tweetech Twitteru: ID filmu ID IMDB, název filmu, žánr a rok výroby. V datové sadě je 17 kS. Datová sada byla zavedena v dokumentu "S. Dooms, T. De Pessemier a L. Martens. MovieTweetings: Movie Rating Datová sada shromážděná z Twitteru. Workshop o crowdsourcingu a lidském výpočtu pro doporučující systémy, CrowdRec na recsys 2013."|
 |Hodnocení filmů|Datová sada je rozšířená verze datové sady Movie Tweetings. Datová sada má hodnocení 170K pro filmy, extrahované z dobře strukturovaných tweetů na Twitteru. Každá instance představuje pípání a je n-tice: ID uživatele, IMDB film ID, hodnocení, časové razítko, počet oblíbených pro tento tweet, a počet retweets tohoto pípání. Datovou sadu zpřístupnili A. Said, S. Dooms, B. Loni a D. Tikk pro Recommender Systems Challenge 2014.|
-|Datová sada počasí|Hodinová pozemní pozorování počasí z NOAA ([sloučené údaje z let 201304 až 201310](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Údaje o počasí zahrnují pozorování z letištních meteorologických stanic, která pokrývají období od dubna do října 2013. Před odesláním do návrháře byla datová sada zpracována následujícím způsobem:    <br/> - ID meteorologické stanice byly namapovány na odpovídající id letiště    <br/> - Meteorologické stanice, které nejsou spojeny se 70 nejrušnějšími letišti, byly odfiltrovány    <br/> - Sloupec Datum byl rozdělen do samostatných sloupců Rok, Měsíc a Den.    <br/> - Byly vybrány následující sloupce: AirportID, Rok, Měsíc, Den, Čas, TimeZone, SkyCondition, Viditelnost, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter|
+|Datová sada počasí|Hodinová pozemní pozorování počasí z NOAA ([sloučené údaje z let 201304 až 201310](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Údaje o počasí zahrnují pozorování z letištních meteorologických stanic, která pokrývají období od dubna do října 2013. Před odesláním do návrháře byla datová sada zpracována následujícím způsobem:    <br/> - ID meteorologické stanice byly namapovány na odpovídající id letiště    <br/> - Meteorologické stanice, které nejsou spojeny se 70 nejrušnějšími letišti, byly odfiltrovány    <br/> - Sloupec Datum byl rozdělen do samostatných sloupců Rok, Měsíc a Den.    <br/> - Byly vybrány následující sloupce: AirportID, Rok, Měsíc, Den, Čas, TimeZone, SkyCondition, Viditelnost, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaPressurePressurePressure, RecordType, HourPrecip, Alter|
 |Datová sada Wikipedie SP 500|Data jsou odvozena zhttps://www.wikipedia.org/) Wikipedie (na základě článků každé společnosti S&P 500, uložených jako XML data.    <br/>Před odesláním do návrháře byla datová sada zpracována následujícím způsobem:    <br/> - Extrahovat textový obsah pro každou konkrétní společnost    <br/> - Odstranit formátování wiki    <br/> - Odstranění nealfanumerických znaků    <br/> - Převést veškerý text na malá písmena    <br/> - Byly přidány známé kategorie společností    <br/>Všimněte si, že u některých společností nebyl nalezen článek, takže počet záznamů je menší než 500.|
 
 ## <a name="next-steps"></a>Další kroky

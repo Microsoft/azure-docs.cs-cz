@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 22efb5e94049b975780c6f6ea69aa94a71cc9992
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f06480767b697dca8fe41e484c02aefc58f040bf
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279010"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261325"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -92,7 +92,7 @@ Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky
 | AzureRunAsCertificate |Datový zdroj certifikátu, který se automaticky vytvoří při vytvoření účtu Automation nebo pomocí skriptu prostředí PowerShell pro existující účet. Certifikát se ověřuje pomocí Azure, takže můžete spravovat prostředky Azure Resource Manager u runbooků. Tento certifikát má životnost jeden rok. |
 | AzureRunAsConnection |Prostředek připojení, který se automaticky vytvoří při vytvoření účtu Automation nebo pomocí skriptu prostředí PowerShell pro existující účet. |
 
-## <a name="classic-run-as-accounts"></a>Klasické účty run-as
+## <a name="create-a-classic-run-as-account"></a>Vytvoření klasického run-as účtu
 
 Klasické účty Run-As se už při vytváření účtu Azure Automation nevytvářejí. Pokud stále potřebujete klasický účet Run-As, proveďte následující kroky.
 

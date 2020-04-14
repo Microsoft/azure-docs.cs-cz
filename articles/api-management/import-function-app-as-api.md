@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c393ba081b480408373ed6867624ac6278c1674e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209184"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260951"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Import aplikace Azure Function App jako rozhraní API ve službě Azure API Management
 
@@ -118,7 +118,7 @@ Při importu aplikace Azure Function App se automaticky vygeneruje:
 * Klíč hostitele uvnitř aplikace function app s názvem apim-{*název instance služby Azure API Management*},
 * Pojmenovaná hodnota uvnitř instance Azure API Management s názvem {*název instance aplikace Azure Function App*}-key, který obsahuje vytvořený klíč hostitele.
 
-Pro rozhraní API vytvořená po 4. Starší rozhraní API předají klíč hostitele jako [parametr dotazu](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Toto chování může `PATCH Backend` být změněno prostřednictvím [volání rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) na entitu *Back-end* přidružené k aplikaci funkce.
+Pro rozhraní API vytvořená po 4. Starší rozhraní API předají klíč hostitele jako [parametr dotazu](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Toto chování může `PATCH Backend` být změněno prostřednictvím [volání rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) na entitu *Back-end* přidružené k aplikaci funkce.
 
 > [!WARNING]
 > Odebráním nebo změnou hodnoty klíče hostitele aplikace Azure Function App nebo pojmenované hodnoty ve službě Azure API Management se přeruší komunikace mezi službami. Tyto hodnoty se nesynchronizují automaticky.

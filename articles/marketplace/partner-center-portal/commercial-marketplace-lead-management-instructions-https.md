@@ -5,20 +5,23 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a0131cf94759fc529a52ea33d5392a60c5ef30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33359883df86091120295b93618a13476e428d2f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281591"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262527"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurace správy potenciálních zákazníků pomocí koncového bodu HTTPS
 
-Pokud váš systém správy vztahů se zákazníky (CRM) není explicitně podporován v Centru partnerů pro příjem zájemců Azure Marketplace a AppSource, můžete k zpracování těchto zájemců použít koncový bod HTTPS v MS Flow. S koncovým bodem HTTPS mohou být tito zájemci odesláni jako e-mailové oznámení nebo mohou být zapsáni do systému řízení vztahů se zákazníky (CRM) podporovaného ms flow. Pokyny v tomto článku vás provedou základním procesem k vytvoření nového toku pomocí microsoft flow, který vygeneruje adresu URL HTTP POST, kterou zadáte do portálu pro publikování pro pole URL adresy URL služby Správa potenciálních zákazníků > **HTTPS.** Také jsou zahrnuty pokyny, jak můžete vyzkoušet svůj tok pomocí nástroje s názvem [Pošťák,](https://www.getpostman.com/downloads/) který lze nalézt na internetu.
+>[!Note]
+>Konektor Power Automate použitý v těchto pokynech vyžaduje placené předplatné Power Automate. Před použitím pokynů v tomto dokumentu to prosím zúčtujte.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Vytvoření toku pomocí Microsoft Flow
+Pokud váš systém správy vztahů se zákazníky (CRM) není explicitně podporován v Centru partnerů pro příjem potenciálních zákazníků Azure Marketplace a AppSource, můžete k zpracování těchto zájemců použít koncový bod HTTPS v Power Automate. S koncovým bodem HTTPS mohou být tito zájemci odesláni jako e-mailové oznámení nebo mohou být zapsáni do systému správy vztahů se zákazníky (CRM) podporovaného power automatem. Pokyny v tomto článku vás provedou základním procesem k vytvoření nového toku pomocí power automatu, který vygeneruje adresu URL HTTP POST, kterou zadáte do portálu pro publikování pro pole URL adresy URL pro správu zájemců > **HTTPS.** Také jsou zahrnuty pokyny, jak můžete vyzkoušet svůj tok pomocí nástroje s názvem [Pošťák,](https://www.getpostman.com/downloads/) který lze nalézt na internetu.
+
+## <a name="create-a-flow-using-power-automate"></a>Vytvoření toku pomocí power automatu
 
 1. Otevřete webovou stránku [Flow.](https://flow.microsoft.com/) Vyberte **Přihlásit**se , nebo pokud ještě nemáte účet, vyberte **Zaregistrovat se zdarma** a vytvořte si bezplatný účet Flow.
 
@@ -168,7 +171,7 @@ Můžete otestovat, že vše funguje podle očekávání pomocí následujícíc
 
    ![Otestujte můj tok](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-4. Vložte adresu URL HTTP POST z toku, který jste vytvořili v MS Flow, kde je uvedeno *Enter request URL*.
+4. Vložte adresu URL HTTP POST z toku, který jste vytvořili v Power Automate, kde je uvedeno *Enter request URL*.
 
    ![Vložení adresy URL HTTP POST](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
@@ -202,7 +205,10 @@ Až budete připraveni nakonfigurovat informace o správě zájemců pro vaši n
 1. Přejděte na stránku **Nastavení nabídky** pro vaši nabídku.
 2. V části Správa zájemců vyberte **Připojit.**
 3. V rozbalovacím okně Podrobnosti o připojení vyberte **koncový bod HTTPS** pro cíl **zájemce** a vložte do adresy URL HTTP POST z toku, který jste vytvořili podle předchozích kroků do pole **URL koncového bodu HTTPS.**
-4. Vyberte **Uložit**. 
+4. **Kontaktní e-mail** – Poskytněte e-maily lidem ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Můžete poskytnout více e-mailů tím, že je oddělíte středníkem.
+5. Vyberte **OK**.
+
+Chcete-li se ujistit, že jste se úspěšně připojili k cíli zájemce, klikněte na tlačítko ověřit. Pokud bude úspěšná, budete mít testovacího zájemce v cíli zájemce.
 
 >[!Note] 
 >Před přijetím zájemců o nabídku je nutné dokončit konfiguraci zbývající nabídky a publikovat ji.
@@ -213,5 +219,5 @@ Při generování zájemců odesílá společnost Microsoft zájemce na tok, kte
 
 ![Podrobnosti připojení](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
 
-![Podrobnosti připojení](./media/commercial-marketplace-lead-management-instructions-https/connection-details-1.png)
+![Podrobnosti připojení](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 

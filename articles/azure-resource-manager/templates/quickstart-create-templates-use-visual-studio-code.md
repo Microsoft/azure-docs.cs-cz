@@ -2,15 +2,15 @@
 title: Vytvořit šablonu – kód Visual Studia
 description: Při práci na šablonách Resource Manageru můžete použít Visual Studio Code a rozšíření Nástroje Azure Resource Manageru.
 author: mumian
-ms.date: 03/04/2019
+ms.date: 04/13/2020
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a0c80f18e9cd09b765804aaddbd178b4b3e32a9d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 96e57146fb6bb17cbb8bb5975371e07b66f3ec8b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984448"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255086"
 ---
 # <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>Úvodní příručka: Vytvoření šablon ARM pomocí kódu sady Visual Studio
 
@@ -18,7 +18,7 @@ Zjistěte, jak pomocí kódu Visual Studia a rozšíření Nástrojů Správce p
 
 V tomto rychlém startu nasadíte účet úložiště:
 
-![diagram kódu aplikace Visual Studio pro rychlé spuštění šablony správce prostředků](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
+![Diagram kódu sady Visual Studio, která se má na začátku šablony Resource Manager](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
 
 Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
@@ -86,21 +86,19 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Šablony můžete nasadit mnoha způsoby. Prostředí Azure Cloud se používá v tomto rychlém startu. Prostředí cloudpodporuje azure cli a Azure PowerShell. Pomocí voliče karet si můžete vybrat mezi příkazem příkazového příkazu k příkazu k příkazu PowerShell.
+Šablony můžete nasadit mnoha způsoby. Azure Cloud Shell se používá v tomto rychlém startu. Cloud Shell podporuje azure cli a Azure PowerShell. Pomocí voliče karet si můžete vybrat mezi příkazem příkazového příkazu k příkazu k příkazu PowerShell.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-1. Přihlaste se do služby [Azure Cloud Shell](https://shell.azure.com).
+1. Přihlášení do [prostředí Azure Cloud Shell](https://shell.azure.com)
 
 2. V levém horním rohu vyberte preferované prostředí výběrem **prostředí PowerShell** nebo **Bash**(CLI).  Po přepnutí se vyžaduje restartování prostředí.
 
     # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
-    ![CLI v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
+    ![Cli prostředí Cloud Shell azure portálu](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Prostředí Cloud shellu Azure portal PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
+    ![Azure portal Cloud Shell PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
 
     ---
 
@@ -108,11 +106,11 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
 
     # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
-    ![Nahrání souboru v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
+    ![Soubor pro nahrávání služby Azure portal Cloud Shell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Nahrání souboru v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
+    ![Soubor pro nahrávání služby Azure portal Cloud Shell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
 
     ---
 
@@ -122,14 +120,14 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
 
     # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
-    ![Zobrazení souboru v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
+    ![Soubor seznamu Cloud shellu portálu Azure](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Zobrazení souboru v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
+    ![Soubor seznamu Cloud shellu portálu Azure](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
 
     ---
-4. Ve službě Cloud Shell spusťte následující příkazy. Výběrem odpovídající karty zobrazíte kód PowerShellu nebo kód rozhraní příkazového řádku.
+4. Z prostředí Cloud Shell spusťte následující příkazy. Výběrem odpovídající karty zobrazíte kód PowerShellu nebo kód rozhraní příkazového řádku. Zadejte název projektu, který se používá ke generování názvu skupiny zdrojů.  Název skupiny zdrojů je název projektu s **rg** připojen.
 
     # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
@@ -140,7 +138,8 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
     read location &&
     resourceGroupName="${projectName}rg" &&
     az group create --name $resourceGroupName --location "$location" &&
-    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" &&
+    echo "Press [ENTER] to continue ..."
     ```
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -152,6 +151,7 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
     ---
@@ -162,11 +162,11 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
 
     # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
-    ![Šablona nasazení v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
+    ![Šablona nasazení Cloud Shellu na portálu Azure](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Šablona nasazení v Cloud Shellu na portálu Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
+    ![Šablona nasazení Cloud Shellu na portálu Azure](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
     ---
 
@@ -181,7 +181,8 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
     read resourceGroupName &&
     echo "Enter the Storage Account name:" &&
     read storageAccountName &&
-    az storage account show --resource-group $resourceGroupName --name $storageAccountName
+    az storage account show --resource-group $resourceGroupName --name $storageAccountName &&
+    echo "Press [ENTER] to continue ..."
     ```
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -190,6 +191,7 @@ Chcete-li získat možnost upravit šablonu pomocí kódu sady `outputs` Visual 
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
     Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
     ---
@@ -202,12 +204,12 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
-3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
+3. Vyberte název skupiny prostředků. Název skupiny zdrojů je název projektu s **rg** připojen. Zobrazí se prostředek účtu úložiště ve skupině prostředků.
 4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Hlavním cílem tohoto rychlého zprovoznění byla úprava existující šablony z šablon Azure pro rychlý start pomocí editoru Visual Studio Code. Také jste se naučili, jak nasadit šablonu pomocí cli nebo PowerShell z prostředí Azure Cloud. Šablony Azure pro rychlý start možná nenabízí vše, co potřebujete. Další informace o vývoji šablon najdete v našem novém výukovém programu pro začátečníky:
+Hlavním cílem tohoto rychlého zprovoznění byla úprava existující šablony z šablon Azure pro rychlý start pomocí editoru Visual Studio Code. Také jste se naučili, jak nasadit šablonu pomocí cli nebo PowerShell z Azure Cloud Shell. Šablony Azure pro rychlý start možná nenabízí vše, co potřebujete. Další informace o vývoji šablon najdete v našem novém výukovém programu pro začátečníky:
 
 > [!div class="nextstepaction"]
 > [Kurzy pro začátečníky](./template-tutorial-create-first-template.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4362d0875ac2c20fc6963d404f86898a12387dad
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834301"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260917"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat pojmenované hodnoty v zásadách správy rozhraní Azure API
 
@@ -59,7 +59,7 @@ Pojmenované hodnoty mohou obsahovat literálové řetězce a [výrazy zásad](/
 
 Po vytvoření pojmenované hodnoty ji můžete upravit kliknutím na ní. Pokud změníte název pojmenované hodnoty, všechny zásady, které odkazují na pojmenovanou hodnotu, budou automaticky aktualizovány, aby používaly nový název.
 
-Informace o úpravách pojmenované hodnoty pomocí rozhraní REST API naleznete v tématu [Úprava pojmenované hodnoty pomocí rozhraní REST API](/rest/api/apimanagement/2019-01-01/property?patch).
+Informace o úpravách pojmenované hodnoty pomocí rozhraní REST API naleznete v tématu [Úprava pojmenované hodnoty pomocí rozhraní REST API](/rest/api/apimanagement/2019-12-01/property?patch).
 
 ## <a name="to-delete-a-named-value"></a>Odstranění pojmenované hodnoty
 
@@ -68,7 +68,7 @@ Pokud chcete odstranit pojmenovanou hodnotu, klikněte vedle pojmenované hodnot
 > [!IMPORTANT]
 > Pokud je pojmenovaná hodnota odkazována všemi zásadami, nebude možné ji úspěšně odstranit, dokud neodeberete pojmenovanou hodnotu ze všech zásad, které ji používají.
 
-Informace o odstranění pojmenované hodnoty pomocí rozhraní REST API naleznete v tématu [Odstranění pojmenované hodnoty pomocí rozhraní REST API](/rest/api/apimanagement/2019-01-01/property/delete).
+Informace o odstranění pojmenované hodnoty pomocí rozhraní REST API naleznete v tématu [Odstranění pojmenované hodnoty pomocí rozhraní REST API](/rest/api/apimanagement/2019-12-01/property/delete).
 
 ## <a name="to-search-and-filter-named-values"></a>Hledání a filtrování pojmenovaných hodnot
 

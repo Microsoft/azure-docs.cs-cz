@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 595c87d2b8182c9044baeb2662e34871d9e52c52
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991241"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261019"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit Azure AD ve službě Azure Monitor
 
@@ -98,12 +98,13 @@ Události se seskupují do dávek asi po pětiminutových intervalech a odesíla
 
 Například u velkého tenanta s více než 100 000 uživateli běžně dochází k přibližně 18 událostem za sekundu, což odpovídá 5 400 událostem za každých pět minut. Vzhledem k tomu, že protokoly auditu pro každou událost mají velikost přibližně 2 kB, odpovídá toto množství 10,8 MB dat. Proto se v takovém pětiminutovém intervalu do centra událostí odešle 43 zpráv. 
 
-Následující tabulka obsahuje odhad měsíčních nákladů na základní centrum událostí v oblasti USA – západ v závislosti na objemu dat událostí. Přesnější odhad objemu dat, který můžete ve své aplikaci očekávat, vám poskytne [cenová kalkulačka služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
+Následující tabulka obsahuje odhadované náklady za měsíc pro základní centrum událostí v západní USA, v závislosti na objemu dat událostí, které se mohou lišit od tenanta k tenantovi podle mnoha faktorů, jako je chování při přihlašování uživatele atd. Chcete-li vypočítat přesný odhad objemu dat, který očekáváte pro vaši aplikaci, použijte [cenovou kalkulačku Centra událostí](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 | Kategorie protokolu | Počet uživatelů | Počet událostí za sekundu | Počet událostí za pětiminutový interval | Objem za interval | Počet zpráv za interval | Počet zpráv za měsíc | Náklady za měsíc (odhad) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Auditování | 100 000 | 18 | 5 400 | 10,8 MB | 43 | 371 520 | 10,83 USD |
 | Auditování | 1 000 | 0.1 | 52 | 104 kB | 1 | 8 640 | 10,80 USD |
+| Přihlášení | 100 000 | 18000 | 5,400,000 | 10,8 GB | 42188 | 364,504,320 | 23,9 dolarů |  
 | Přihlášení | 1 000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 USD |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitor zaznamenává aspekty nákladů

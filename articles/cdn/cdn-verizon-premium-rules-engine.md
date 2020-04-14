@@ -2,17 +2,17 @@
 title: Přepsat chování PROTOKOLU HTTP pomocí modulu pravidel Azure CDN – Verizon Premium
 description: Modul pravidel umožňuje přizpůsobit, jak jsou požadavky HTTP zpracovány Azure CDN z Verizon Premium, jako je blokování doručování určitých typů obsahu, definovat zásady ukládání do mezipaměti a upravit hlavičky HTTP.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 2e5e4265f30631f8e68d8f9e7156ea578ae85e7a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082958"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253471"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Přepsat chování PROTOKOLU HTTP pomocí modulu pravidel Azure CDN z verizon premium
 

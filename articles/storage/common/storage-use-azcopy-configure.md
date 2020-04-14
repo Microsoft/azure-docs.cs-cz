@@ -4,16 +4,16 @@ description: Konfigurace, optimalizace a řešení potíží s AzCopy.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87a335f44a31436de735395adbee9035493cbbd2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526491"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263416"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s azcopy
 
@@ -53,9 +53,6 @@ Tato část vám pomůže provádět tyto úlohy optimalizace:
 ### <a name="run-benchmark-tests"></a>Spuštění srovnávacích testů
 
 Můžete spustit test benchmark výkonu na konkrétní kontejnery objektů blob zobrazit obecné statistiky výkonu a problémová místa výkonu identity. 
-
-> [!NOTE]
-> V aktuální verzi je tato funkce dostupná jenom pro kontejnery úložiště objektů Blob.
 
 Pomocí následujícího příkazu spusťte test výkonnostní ho testu benchmarku.
 

@@ -2,17 +2,17 @@
 title: Akce v modulu standardních pravidel pro Azure CDN | Dokumenty společnosti Microsoft
 description: Referenční dokumentace pro akce v modulu standardnípravidla pro Síť doručování obsahu Azure (Azure CDN).
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: 53280bc90f629d93ff8a045c80f34a73970b43f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74171635"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259948"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Akce v modulu standardních pravidel pro Azure CDN
 
@@ -65,7 +65,7 @@ Akce | Název záhlaví protokolu HTTP | Hodnota
 -------|------------------|------
 Připojit | Pokud je vybrána tato možnost a pravidlo se shoduje, hlavička zadaná v **názvu záhlaví** je přidána do požadavku se zadanou hodnotou. Pokud je záhlaví již k dispozici, hodnota je připojena k existující hodnotě. | Řetězec
 Přepsat | Pokud je vybrána tato možnost a pravidlo se shoduje, hlavička zadaná v **názvu záhlaví** je přidána do požadavku se zadanou hodnotou. Pokud je záhlaví již k dispozici, zadaná hodnota přepíše existující hodnotu. | Řetězec
-Odstranění | Pokud je vybrána tato možnost, pravidlo odpovídá a záhlaví zadané v pravidle je k dispozici, záhlaví je odstraněn z požadavku. | Řetězec
+Odstranit | Pokud je vybrána tato možnost, pravidlo odpovídá a záhlaví zadané v pravidle je k dispozici, záhlaví je odstraněn z požadavku. | Řetězec
 
 ### <a name="modify-response-header"></a>Změnit záhlaví odpovědi
 
@@ -77,7 +77,7 @@ Akce | Název hlavičky HTTP | Hodnota
 -------|------------------|------
 Připojit | Pokud je vybrána tato možnost a pravidlo se shoduje, je hlavička zadaná v **názvu záhlaví** přidána k odpovědi pomocí zadané **hodnoty**. Pokud záhlaví je již k dispozici, **Value** je připojen k existující hodnotě. | Řetězec
 Přepsat | Pokud je vybrána tato možnost a pravidlo se shoduje, je hlavička zadaná v **názvu záhlaví** přidána k odpovědi pomocí zadané **hodnoty**. Pokud je záhlaví již k dispozici, **Value** přepíše existující hodnotu. | Řetězec
-Odstranění | Pokud je vybrána tato možnost, pravidlo odpovídá a záhlaví zadané v pravidle je k dispozici, záhlaví je odstraněn z odpovědi. | Řetězec
+Odstranit | Pokud je vybrána tato možnost, pravidlo odpovídá a záhlaví zadané v pravidle je k dispozici, záhlaví je odstraněn z odpovědi. | Řetězec
 
 ### <a name="url-redirect"></a>Přesměrování adresy URL
 

@@ -1,5 +1,5 @@
 ---
-title: Interpretovatelnost modelu pro místní a vzdálené spuštění
+title: Vysvětlení modelů a předpovědí strojového učení
 titleSuffix: Azure Machine Learning
 description: Zjistěte, jak získat vysvětlení, jak váš model strojového učení určuje důležitost funkce a dělá předpovědi při použití sady Azure Machine Learning SDK.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: 1ff42149ccb629a0a7094e6dfede422d4dd7f61f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.date: 04/12/2020
+ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632027"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257195"
 ---
-# <a name="model-interpretability-for-local-and-remote-runs"></a>Interpretovatelnost modelu pro místní a vzdálené spuštění
+# <a name="explain-machine-learning-models-and-predictions"></a>Vysvětlení modelů a předpovědí strojového učení
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -30,7 +30,6 @@ V tomto návodu se naučíte používat balíček interpretability sady Python S
 
 * Vysvětlete chování pro celý model a jednotlivé předpovědi v Azure.
 
- 
 * Pomocí vizualizačního řídicího panelu můžete pracovat s vysvětlením modelu.
 
 * Nasaďte vysvětlující vysvětlivku hodnocení vedle modelu sledovat vysvětlení během odvození.

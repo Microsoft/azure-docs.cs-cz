@@ -5,22 +5,22 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f4b0805e2a9247aff881a9e34b0bd1cd4c6ca27
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 7b619d3c9b4b334e637d6a1c456256cb33ad5134
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550406"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261376"
 ---
 # <a name="enable-azure-startstop-vms-solution"></a>Povolení řešení Azure Start/Stop VM
 
 Pomocí následujících kroků přidejte virtuální chod start/stop během mimopracovní doby do nového nebo existujícího účtu Automation a propojeného pracovního prostoru Log Analytics. Po dokončení procesu registrace nakonfigurujte proměnné tak, aby přizpůsobily řešení.
 
 >[!NOTE]
->Chcete-li použít toto řešení s klasickými virtuálními aplikacemi, potřebujete účet Classic RunAs, který není vytvořen ve výchozím nastavení. Pokyny k vytvoření účtu Classic RunAs naleznete [v tématu Klasické účty run-as](automation-create-standalone-account.md#classic-run-as-accounts).
+>Chcete-li toto řešení použít s klasickými virtuálními aplikacemi, potřebujete účet Classic Run As, který není vytvořen ve výchozím nastavení. Pokyny k vytvoření účtu Classic Run As naleznete v [tématu Vytvoření účtu klasického spuštění jako](automation-create-standalone-account.md#create-a-classic-run-as-account).
 >
 
-## <a name="enable-solution"></a>Povolit řešení
+## <a name="enable-solution"></a>Povolení řešení
 
 1. Přihlaste se k [portálu](https://portal.azure.com)Azure .
 

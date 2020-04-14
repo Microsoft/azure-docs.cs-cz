@@ -3,7 +3,7 @@ title: Přidání monitorování & diagnostiky do virtuálního počítače Azur
 description: Pomocí šablony Azure Resource Manager uvytvořit nový virtuální počítač Windows s rozšířením diagnostiky Azure.
 services: virtual-machines-windows
 documentationcenter: ''
-author: sbtron
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2017
-ms.author: saurabh
+ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2490c3de60e0deac6a1a4ddc5abc95cb46e240b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073846"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258826"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Použití monitorování a diagnostiky se šablonami virtuálních aplikací pro Windows a Azure Resource Manager
 Rozšíření Diagnostika Azure poskytuje funkce monitorování a diagnostiky na virtuálním počítači Azure založeném na Windows. Tyto funkce můžete povolit ve virtuálním počítači zahrnutím rozšíření jako součást šablony Azure Resource Manager. Další informace o zahrnutí jakéhokoli rozšíření jako součásti šablony virtuálního počítače najdete v článku [Vytváření šablon Azure Resource Manageru s rozšířeními virtuálních](../windows/template-description.md#extensions) zařízení. Tento článek popisuje, jak můžete přidat rozšíření Diagnostika Azure do šablony virtuálního počítače windows.  
@@ -62,7 +62,7 @@ Pro jednoduchý virtuální počítač založený na Nástroji pro prostředky p
 ]
 ```
 
-Další běžnou konvencí je přidání konfigurace rozšíření v uzlu kořenových prostředků šablony namísto jeho definování pod uzětem prostředků virtuálního počítače. S tímto přístupem je nutné explicitně zadat hierarchický vztah mezi rozšířením a virtuálním počítačem s hodnotami *názvu* a *typu.* Například: 
+Další běžnou konvencí je přidání konfigurace rozšíření v uzlu kořenových prostředků šablony namísto jeho definování pod uzětem prostředků virtuálního počítače. S tímto přístupem je nutné explicitně zadat hierarchický vztah mezi rozšířením a virtuálním počítačem s hodnotami *názvu* a *typu.* Příklad: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -84,7 +84,7 @@ Element *nastavení* obsahuje vlastnosti konfigurace pro rozšíření, které l
 Vlastnosti v *protectedSettings* (někdy označované jako privátní konfigurace) lze nastavit, ale nelze číst zpět po nastavení. Pouze pro zápis povahy *protectedSettings* je užitečné pro ukládání tajných kódů, jako je klíč účtu úložiště, kde jsou zapsána data diagnostiky.    
 
 ## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Určení účtu úložiště diagnostiky jako parametrů
-Rozšíření diagnostiky json fragment výše předpokládá dva parametry *existingdiagnosticsStorageAccountName* a *existingdiagnosticsStorageResourceGroup* určit účet úložiště diagnostiky, kde jsou uložena diagnostická data. Určení účtu úložiště diagnostiky jako parametr usnadňuje změnu účtu úložiště diagnostiky v různých prostředích, například můžete chtít použít jiný účet úložiště diagnostiky pro testování a jiný účet pro vaše nasazení v produkčním prostředí.  
+Rozšíření diagnostiky json fragment výše předpokládá dva parametry *existingdiagnosticsStorageAccountName* a *existingdiagnosticsStorageResourceGroup* určit účet úložiště diagnostiky, kde jsou uložena diagnostická data. Určení účtu úložiště diagnostiky jako parametr usnadňuje změnu účtu úložiště diagnostiky v různých prostředích, například můžete chtít použít jiný účet úložiště diagnostiky pro testování a jiný účet pro nasazení v produkčním prostředí.  
 
 ```json
 "existingdiagnosticsStorageAccountName": {
@@ -101,7 +101,7 @@ Rozšíření diagnostiky json fragment výše předpokládá dva parametry *exi
 }
 ```
 
-Je vhodné zadat účet úložiště diagnostiky v jiné skupině prostředků než skupina prostředků pro virtuální počítač. Skupinu prostředků lze považovat za jednotku nasazení s vlastní životností, virtuální počítač lze nasadit a znovu nasadit, protože se do ní budou provádět nové aktualizace konfigurace, ale můžete pokračovat v ukládání diagnostických dat ve stejném účtu úložiště napříč těchto nasazení virtuálních strojů. S účet úložiště v jiném prostředku umožňuje účet úložiště přijímat data z různých nasazení virtuálních počítačů usnadňuje řešení problémů v různých verzích.
+Je vhodné zadat účet úložiště diagnostiky v jiné skupině prostředků než skupina prostředků pro virtuální počítač. Skupinu prostředků lze považovat za jednotku nasazení s vlastní životností, virtuální počítač lze nasadit a znovu nasadit, protože se do ní budou provádět nové aktualizace konfigurace, ale můžete pokračovat v ukládání diagnostických dat ve stejném účtu úložiště napříč těmito nasazeními virtuálních počítačů. S účet úložiště v jiném prostředku umožňuje účet úložiště přijímat data z různých nasazení virtuálních počítačů usnadňuje řešení problémů v různých verzích.
 
 > [!NOTE]
 > Pokud vytvoříte šablonu virtuálního počítače systému Windows z visual studia, může být výchozí účet úložiště nastaven ý na stejný účet úložiště, ve kterém se nahraje virtuální počítač. To to je zjednodušit počáteční nastavení virtuálního počítači. Znovu faktor šablony použít jiný účet úložiště, které mohou být předány jako parametr. 

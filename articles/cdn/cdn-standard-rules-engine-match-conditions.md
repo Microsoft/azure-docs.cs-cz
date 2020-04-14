@@ -2,17 +2,17 @@
 title: Podmínky shody v modulu standardních pravidel pro Azure CDN | Dokumenty společnosti Microsoft
 description: Referenční dokumentace pro podmínky shody v modulu standardních pravidel pro síť doručování obsahu Azure (Azure CDN).
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74900176"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259918"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Shody podmínek v modulu standardních pravidel pro Azure CDN
 
@@ -97,10 +97,10 @@ Identifikuje požadavky na základě umístění nebo IP adresy uchazeče.
 
 Operátor | Podporované hodnoty
 ---------|-----------------
-Všechny | Není dostupné.
+Všechny | –
 Geografická shoda | Kód země
 Shoda IP | IP adresa (oddělená od místa)
-Ne žádné | Není dostupné.
+Ne žádné | –
 Není geo shoda | Kód země
 Není ip shoda | IP adresa (oddělená od místa)
 
@@ -110,7 +110,7 @@ Není ip shoda | IP adresa (oddělená od místa)
 - Chcete-li zadat více adres IP a bloků IP adres, použijte jednu mezeru mezi hodnotami:
   - **Příklad IPv4**: *1.2.3.4 10.20.30.40* odpovídá všem požadavkům, které přicházejí z adresy 1.2.3.4 nebo 10.20.30.40.
   - **Příklad IPv6**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* odpovídá všem požadavkům, které přicházejí z adresy 1:2:3:4:5:6:7:8 nebo 10:20:30:40:50:60:70:80.
-- Syntaxe bloku IP adres je základní IP adresa následovaná lomítkem a velikostí předpony. Například:
+- Syntaxe bloku IP adres je základní IP adresa následovaná lomítkem a velikostí předpony. Příklad:
   - **Příklad IPv4**: *5.5.5.64/26* odpovídá všem požadavkům, které přicházejí z adres 5.5.5.64 až 5.5.5.127.
   - **Příklad IPv6**: *1:2:3:/48* odpovídá všem požadavkům, které přicházejí z adres 1:2:3:0:0:0:0: 0 až 1:2:3:ffff:ffff:ffff:ffff:ffff:ffff:ffff.ffff.
 

@@ -4,12 +4,12 @@ description: Zjistěte, jak průběžně vytvářet, testovat a nasazovat šablo
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 303edac9221b2a58986129388e33c84c3817d96e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369367"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255069"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: Průběžná integrace šablon Azure Resource Manageru s Azure Pipelines
 
@@ -44,7 +44,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="prepare-a-github-repository"></a>Příprava úložiště GitHub
 
-GitHub se používá k ukládání zdrojového kódu projektu včetně šablon Správce prostředků. Další podporovaná úložiště najdete v [tématu repozitáře podporované Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types).
+GitHub se používá k ukládání zdrojového kódu projektu včetně šablon Správce prostředků. Další podporovaná úložiště najdete v [tématu repozitáře podporované Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops).
 
 ### <a name="create-a-github-repository"></a>Vytvoření úložiště GitHubu
 
@@ -202,7 +202,7 @@ Vytvoření kanálu s krokem nasazení šablony:
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Název je to, co jste zadali v kanálu Soubor UAML.  Zobrazí se jeden účet úložiště vytvořen.  Název účtu úložiště začíná **store**.
 1. Vyberte název účtu úložiště, který chcete otevřít.
 1. Vyberte **vlastnosti**. Všimněte si, **že replikace** je **místně redundantní úložiště (LRS).**

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření nové nabídky aplikací Azure na komerčním trhu
+title: Vytvoření nové nabídky Aplikací Azure na komerčním trhu
 description: Jak vytvořit novou nabídku Aplikací Azure pro zápis nebo prodej na Webu Azure Marketplace, AppSource nebo prostřednictvím programu Zprostředkovatel cloudových řešení (CSP) pomocí portálu Commercial Marketplace v Centru partnerů Microsoftu.
 author: dsindona
 ms.author: dsindona
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 0ff1bbd976273a7d0cbfb22effebdf45c84d2f41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 260193b3c71e29a32e0589f50864ffcca2e9a67c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277235"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262260"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -56,7 +56,7 @@ Projděte si následující dokumentaci k aplikacím Azure, která poskytuje ryc
 * [Principy šablon Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
 * Rychlá zprovoznění:
 
-    * [Šablony Azure pro rychlé zprovoznění](https://azure.microsoft.com/documentation/templates/)
+    * [Šablony Azure Quickstart](https://azure.microsoft.com/documentation/templates/)
     * [Šablony githubazure rychlých startů](https://github.com/azure/azure-quickstart-templates)
     * [Publikování definice aplikace](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
     * [Nasazení aplikace katalogu služeb](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
@@ -93,7 +93,7 @@ Chcete-li spravovat aplikaci Azure, zvolte jedno nebo obě následující skript
 
 Doporučujeme přidat do vývojového prostředí následující nástroje:
 
-* [Průzkumník úložišť Azure](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Visual Studio Code](https://code.visualstudio.com/) s následujícími rozšířeními:
     * Rozšíření: [Nástroje Azure Správce prostředků](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * Rozšíření: [Zkrášlení](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -103,7 +103,7 @@ Dostupné nástroje si můžete prohlédnout na stránce [Nástroje pro vývojá
 
 ## <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
-Před vytvořením nabídky aplikace Azure musíte [nejprve vytvořit účet Centra partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a otevřít řídicí panel Commercial [Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)s vybranou kartou **Přehled.**
+Před vytvořením nabídky aplikací Azure musíte nejprve [vytvořit účet Centra partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a otevřít řídicí panel [komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)s vybranou kartou **Přehled.**
 
 >[!Note]
 >Po zveřejnění nabídky budou úpravy nabídky provedené v Partnerském centru aktualizovány pouze v systému a výlohách po opětovném publikování.  Po provedených změnách se ujistěte, že odešlete nabídku ke zveřejnění.

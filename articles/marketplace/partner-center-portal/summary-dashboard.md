@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 3da3109bd813fc3b99a4f59e5a357fa351c75394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86bce85c6ec273b4ab5f9f00cbae68fc054f53f5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281370"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262396"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Souhrnný řídicí panel v analýze komerčního tržiště
 
@@ -21,7 +21,7 @@ Tento článek obsahuje informace na panelu Souhrn v Centru partnerů. Tento ř�
 Chcete-li získat přístup k řídicímu panelu Souhrn, otevřete **[řídicí panel Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v části Komerční tržiště.
 
 >[!NOTE]
-> Podrobné definice terminologie analýzy naleznete v [tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+> Podrobné definice terminologie analýzy naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního trhu](./faq-terminology.md).
 
 ## <a name="summary-dashboard"></a>Souhrnný řídicí panel
 
@@ -116,9 +116,9 @@ Objednávky **podle typu licence marketplace** a použití podle **výsečových
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled analytických přehledů dostupných na komerčním trhu Partnerského centra najdete v [článku Analýza pro komerční tržiště v Centru partnerů](./analytics.md).
-- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Dashboard objednávek v analýze komerčního tržiště](./orders-dashboard.md).
-- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčních Marketplace analýzy](./usage-dashboard.md).
-- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýze komerčního webu Marketplace](./customer-dashboard.md).
-- Seznam žádostí o stažení za posledních 30 dní najdete v článku [Panel stahování v analýze komerčního tržiště](./downloads-dashboard.md).
-- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze na řídicím panelu Commercial Marketplace analytics](./ratings-reviews.md).
-- Nejčastější dotazy týkající se analýzy na komerčním marketplace a komplexní slovník datových termínů naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Řídicí panel objednávek v analýze komerčního tržiště](./orders-dashboard.md).
+- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčním tržišti analýzy](./usage-dashboard.md).
+- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýzách komerčního tržiště](./customer-dashboard.md).
+- Seznam žádostí o stažení za posledních 30 dní najdete [v tématu Řídicí panel ke stažení v analýze komerčního tržiště](./downloads-dashboard.md).
+- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze v analýze komerčního webu](./ratings-reviews.md).
+- Nejčastější dotazy týkající se analýzy komerčního tržiště a komplexní slovník termínů pro data naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).

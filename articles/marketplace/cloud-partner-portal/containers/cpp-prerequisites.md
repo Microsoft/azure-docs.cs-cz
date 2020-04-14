@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: dsindona
-ms.openlocfilehash: db2300ae827677f8902e420b136acec3da694c8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0453117ee2984e0b8ebee60145353584a02a359a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280010"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270124"
 ---
 # <a name="container-publishing-prerequisites"></a>Požadavky na publikování kontejnerů
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek Azure Container do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky kontejneru Azure](https://aka.ms/CreateContainerOffer) ke správě migrovaných nabídek.
 
 Tento článek popisuje předpoklady pro publikování nabídky kontejnerů na Azure Marketplace.  Pokud jste tak ještě neučinili, měli byste si přečíst [průvodce publikováním nabídek kontejnerů](../../marketplace-containers.md).
 

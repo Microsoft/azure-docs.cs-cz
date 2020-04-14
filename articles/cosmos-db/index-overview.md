@@ -4,14 +4,14 @@ description: Zjistěte, jak funguje indexování v Azure Cosmos DB, různé druh
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 65186262095560d7ae54d32b218d1c01f1fb921d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873620"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273235"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – Přehled
 
@@ -82,7 +82,7 @@ Azure Cosmos DB aktuálně podporuje tři druhy indexů.
 
    Shoda rovnosti na prvku pole
    ```sql
-    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1”)
+    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1")
     ```
 
 - Dotazy na rozsah:
@@ -164,7 +164,7 @@ Prostorové indexy lze použít na správně formátované objekty [GeoJSON.](ge
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Tak dlouho, dokud jeden predikát filtru používá na druhu indexu, dotazovací stroj vyhodnotí, že první před skenování mzda zbytek. Pokud máte například dotaz SQL, například`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Tak dlouho, dokud jeden predikát filtru používá jeden z druhu indexu, dotazovací stroj vyhodnotí, že první před skenování mzda zbytek. Pokud máte například dotaz SQL, například`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * Výše uvedený dotaz nejprve filtruje položky, kde firstName = "Andrew" pomocí indexu. Potom předat všechny firstName = "Andrew" položky prostřednictvím následného kanálu k vyhodnocení obsahuje predikát filtru.
 

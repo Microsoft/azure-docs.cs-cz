@@ -3,7 +3,7 @@ title: Používání Azure CDN s SAS | Dokumenty společnosti Microsoft
 description: Azure CDN podporuje použití sdíleného přístupového podpisu (SAS) k udělení omezeného přístupu k soukromým kontejnerům úložiště.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
-ms.author: magattus
-ms.openlocfilehash: e7a170eaf74531cf4bd8c28aafaa5873f2459d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: c2580aa4ee22996c1bf0fe5c86064a6543450071
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69982414"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260169"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Používání Azure CDN s SAS
 
@@ -39,7 +39,7 @@ Po vygenerování tokenu SAS můžete přistupovat k souboru `?sv=<SAS token>` �
 
 `https://<account name>.blob.core.windows.net/<container>/<file>?sv=<SAS token>`
  
-Například:
+Příklad:
  ```
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
@@ -60,7 +60,7 @@ Tato možnost je nejjednodušší a používá jeden token SAS, který se před�
    
    Výsledná adresa URL koncového bodu CDN má následující formát:`https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
 
-   Například:   
+   Příklad:   
    ```
    https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
@@ -91,7 +91,7 @@ Tato možnost je dostupná jenom pro **Azure CDN Premium od verizonských** prof
 
 2. Jakmile se nové pravidlo stane aktivním, může kdokoli získat přístup k souborům v zadaném kontejneru v koncovém bodě CDN bez ohledu na to, zda v adrese URL používá token SAS. Zde je formát:`https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
-   Například:   
+   Příklad:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
@@ -106,7 +106,7 @@ Chcete-li použít ověřování tokenů zabezpečení Azure CDN, musíte mít p
    Adresa URL koncového bodu tokenu zabezpečení má následující formát:   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
  
-   Například:   
+   Příklad:   
    ```
    https://sasstoragedemo.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
@@ -135,7 +135,7 @@ Vzhledem k tomu, že parametry SAS nejsou viditelné pro Azure CDN, Azure CDN ne
 
 | Název parametru SAS | Popis |
 | --- | --- |
-| Start | Čas, který Azure CDN můžete začít přistupovat k souboru objektů blob. Vzhledem k zkosení hodin (když signál hodin dorazí v různých časech pro různé součásti), zvolte čas o 15 minut dříve, pokud chcete, aby byl datový zdroj k dispozici okamžitě. |
+| Spustit | Čas, který Azure CDN můžete začít přistupovat k souboru objektů blob. Vzhledem k zkosení hodin (když signál hodin dorazí v různých časech pro různé součásti), zvolte čas o 15 minut dříve, pokud chcete, aby byl datový zdroj k dispozici okamžitě. |
 | End | Po dobu, po které Azure CDN již přístup k souboru objektů blob. Dříve uložené soubory v Azure CDN jsou stále přístupné. Chcete-li řídit čas vypršení platnosti souboru, nastavte příslušný čas vypršení platnosti na tokenu zabezpečení Azure CDN nebo vymazání prostředku. |
 | Povolené IP adresy | Nepovinný parametr. Pokud používáte **Azure CDN od společnosti Verizon**, můžete tento parametr nastavit na rozsahy definované v Azure [CDN z rozsahů IP serveru Verizon Edge](/azure/cdn/cdn-pop-list-api). Pokud používáte **Azure CDN z Akamai**, nelze nastavit parametr rozsahy IP, protože IP adresy nejsou statické.|
 | Povolené protokoly | Protokol (protokoly) povoleno pro požadavek s účtem SAS. Doporučujeme nastavení HTTPS.|

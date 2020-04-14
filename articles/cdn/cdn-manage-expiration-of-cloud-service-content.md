@@ -3,7 +3,7 @@ title: Správa vypršení platnosti webového obsahu v Azure CDN | Dokumenty spo
 description: Zjistěte, jak spravovat vypršení platnosti obsahu Azure Web Apps/Cloud Services, ASP.NET nebo IIS v Azure CDN.
 services: cdn
 documentationcenter: .NET
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: magattus
-ms.openlocfilehash: a701c332659181081184906a73826b7137d8c49c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 4598e6cee6ffbaaeb2a99727842fcd17fe0046c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593721"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260560"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Správa platnosti webového obsahu v Azure CDN
 > [!div class="op_single_selector"]
 > * [Webový obsah Azure](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Úložiště objektů blob Azure](cdn-manage-expiration-of-blob-content.md)
+> * [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
 > 
 
 Soubory z veřejně přístupných webových serverů původu lze ukládat do mezipaměti v síti Azure Content Delivery Network (CDN) až do doby, kdy jejich doba aktivního vysílání (TTL) neuplyne. TTL je určena `Cache-Control` hlavičkou v odpovědi HTTP z původního serveru. Tento článek popisuje, `Cache-Control` jak nastavit záhlaví pro funkci Webové aplikace služby Microsoft Azure App Service, Cloud Services Azure, ASP.NET aplikací a internetových informačních služeb (IIS), které jsou nakonfigurovány podobně. `Cache-Control` Záhlaví můžete nastavit buď pomocí konfiguračních souborů, nebo programově. 

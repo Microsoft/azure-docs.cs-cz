@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 55e319ba8aecb9205c00dda4a400e37f7c010649
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115022"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257772"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – průvodce správcem
 Správci informačních technologií (IT), kteří spravují cloudové prostředky univerzity, jsou obvykle zodpovědní za nastavení účtu testovacího prostředí pro svou školu. Po nastavení účtu testovacího prostředí správci nebo pedagogové vytvoří testovací prostředí ve třídě, která jsou obsažena v účtu testovacího prostředí. Tento článek poskytuje podrobný přehled o azure prostředků zapojených a pokyny pro jejich vytvoření.
@@ -59,7 +59,7 @@ Následující seznam upozorňuje na scénáře, kde může být přínosné ví
     
     Při nastavovat účet testovacího prostředí nastavíte zásady, které se vztahují na *všechna* testovací prostředí v rámci testovacího účtu, například:
     - Virtuální síť Azure se sdílenými prostředky, ke kterým má testovací prostředí učebny přístup. Můžete mít například sadu testovacích prostředí ve třídě, které potřebují přístup ke sdílené sadě dat v rámci virtuální sítě.
-    - Image virtuálního počítače (VM), které můžete použít v testovacím prostředí učebny k vytváření virtuálních počítačů. Můžete mít například sadu testovacích prostředí ve třídě, které potřebují přístup k virtuálnímu [počítači datové vědy pro](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) image Linux Marketplace. 
+    - Image virtuálního počítače (VM), které můžete použít v testovacím prostředí učebny k vytváření virtuálních počítačů. Můžete mít například sadu testovacích prostředí ve třídě, které potřebují přístup k virtuálnímu [počítači datové vědy pro](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) image Linux Marketplace. 
     
     Pokud máte učebny laboratoře, které mají jedinečné požadavky na zásady od sebe, může být prospěšné vytvořit samostatné laboratorní účty pro správu těchto učebny laboratoře samostatně.
 

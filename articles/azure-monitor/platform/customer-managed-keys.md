@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 04/08/2020
-ms.openlocfilehash: 5b99e2f31d82630e2adc138c11485201a617af81
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.date: 04/12/2020
+ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892321"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260853"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Konfigurace klíče spravované ho zákazníkem Azure Monitor 
 
@@ -95,8 +95,7 @@ Postup není podporován v ui aktuálně a proces zřizování se provádí pros
 Příklad:
 
 ```rst
-GET
-https://management.azure.com/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 Authorization: Bearer eyJ0eXAiO....
 ```
 
@@ -106,8 +105,8 @@ Token můžete získat pomocí jedné z těchto metod:
 
 1. Použijte [metodu registrace aplikací.](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
 2. Na webu Azure Portal
-    1. Přechod na portál Azure v "vývojářském nástroji (F12)
-    1. Vyhledejte autorizační řetězec v části "Záhlaví požadavků" v jedné z instancí "batch?api-version". Vypadá to takto: "autorizace: Žeton nosiče \<\>". 
+    1. Přechod na portál Azure v "vývojářském nástroji" (F12)
+    1. Vyhledejte autorizační řetězec v části "Záhlaví požadavků" v jedné z instancí "batch?api-version". Vypadá to takto: "autorizace: Bearer eyJ0eXAiO....". 
     1. Zkopírujte a přidejte do volání rozhraní API podle níže uvedených příkladů.
 3. Přejděte na web dokumentace Azure REST. Stiskněte tlačítko "Try it" na libovolnérozhraní API a zkopírujte token Nosiče.
 
@@ -115,29 +114,52 @@ Token můžete získat pomocí jedné z těchto metod:
 
 Některé operace v této konfigurační masce jsou spuštěny asynchronně, protože je nelze rychle dokončit. Odpověď pro asynchronní operace zpočátku vrátí stavový kód HTTP 200 (OK) a záhlaví s *vlastností Azure-AsyncOperation* při přijetí:
 ```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
 
 Stav asynchronní operace můžete zkontrolovat odesláním požadavku GET do hodnoty hlavičky *Azure-AsyncOperation:*
 ```rst
-GET "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
-Tělo odpovědi z operace obsahuje informace o operaci a *Stav* vlastnost označuje jeho stav. Asynchronní operace v tomto konfiguračním postupu a jejich stavy jsou:
+Odpověď obsahuje informace o operaci a jejím *stavu*. Může to být jedna z následujících možností:
 
-**Vytvoření *prostředku clusteru***
-* AccountingAccount – cluster ADX je v zřizování 
-* Úspěšné – zřizování clusteru ADX je dokončeno.
+Probíhá operace.
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "InProgress", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+}
+```
 
-**Udělení oprávnění trezoru klíčů**
-* Aktualizace – probíhá aktualizace podrobností identifikátoru klíče.
-* Úspěšné – aktualizace byla dokončena.
+Operace je dokončena.
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Succeeded", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
 
-**Přisuzování pracovních prostorů Analýzy protokolů**
-* Propojení – probíhá přidružení pracovního prostoru ke clusteru
-* Úspěšné – přidružení bylo dokončeno.
-
+Operace se nezdařila.
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Failed", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+    "error" : { 
+        "code": "error-code",  
+        "message": "error-message" 
+    }
+}
+```
 
 ### <a name="subscription-whitelisting"></a>Seznam povolených odběrů
 
@@ -149,6 +171,8 @@ Funkce CMK je funkce včasného přístupu. Předplatná, kde plánujete vytvoř
 ### <a name="storing-encryption-key-kek"></a>Ukládání šifrovacího klíče (KEK)
 
 Vytvořte nebo použijte trezor klíčů Azure, který už musíte vygenerovat, nebo importujte klíč, který se použije pro šifrování dat. Trezor klíčů Azure musí být nakonfigurovaný jako obnovitelný, aby byl váš klíč a přístup k vašim datům ve službě Azure Monitor. Tuto konfiguraci můžete ověřit ve vlastnostech v trezoru klíčů, měla by být povolena *ochrana proti odstranění pomocí programu Soft* a *Purge.*
+
+![Nastavení ochrany proti odstranění a vymazání](media/customer-managed-keys/soft-purge-protection.png)
 
 Tato nastavení jsou k dispozici prostřednictvím rozhraní příkazu příkazové ho příkazu a prostředí PowerShell:
 - [Obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
@@ -189,11 +213,10 @@ Identita je přiřazena prostředku *clusteru* v době vytvoření.
 
 **Reakce**
 
-200 OK a záhlaví při přijetí.
->[!Important]
-> Během období předčasného přístupu funkce clusteru ADX je zřízena ručně. Zatímco trvá zřizování poddx clusteru chvíli dokončit, můžete zkontrolovat stav zřizování dvěma způsoby:
-> 1. Zkopírujte hodnotu ADRESY URL *Azure-AsyncOperation* z odpovědi a použijte ji pro kontrolu stavu operace v [asynchronních operacích](#asynchronous-operations-and-status-check)
-> 2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState.* Je *ProvisioningAccount* při zřizování a *úspěšné po* dokončení.
+200 OK a záhlaví.
+Během období předčasného přístupu funkce clusteru ADX je zřízena ručně. Zatímco trvá zřizování poddx clusteru chvíli dokončit, můžete zkontrolovat stav zřizování dvěma způsoby:
+1. Zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState.* Je *ProvisioningAccount* při zřizování a *úspěšné po* dokončení.
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Zřizování úložiště dat Azure Monitor (cluster ADX)
 
@@ -205,7 +228,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> Zkopírujte a uložte odpověď, protože budete potřebovat její podrobnosti v pozdějších krocích
+> Zkopírujte a uložte odpověď, protože budete potřebovat podrobnosti v dalších krocích.
 
 **Reakce**
 
@@ -260,11 +283,11 @@ Aktualizujte prostředek *clusteru* KeyVaultProperties podrobnostmi o identifik�
 
 Tento požadavek správce prostředků je asynchronní operace.
 
->[!Warning]
+> [!Warning]
 > V aktualizaci prostředků *clusteru* je nutné zadat celé tělo, které zahrnuje *identitu*, *sku*, *KeyVaultProperties* a *umístění*. Chybějící podrobnosti *KeyVaultProperties* odeberou identifikátor klíče z prostředku *clusteru* a způsobí [odvolání klíče](#cmk-kek-revocation).
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -290,11 +313,10 @@ Content-type: application/json
 
 **Reakce**
 
-200 OK a záhlaví při přijetí.
->[!Important]
-> Trvá šíření identifikátor klíče několik minut k dokončení. Stav zřizování můžete zkontrolovat dvěma způsoby:
-> 1. Zkopírujte hodnotu ADRESY URL *Azure-AsyncOperation* z odpovědi a použijte ji pro kontrolu stavu operace v [asynchronních operacích](#asynchronous-operations-and-status-check)
-> 2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na vlastnosti *KeyVaultProperties.* Vaše nedávno aktualizované údaje o identifikátoru klíče by se měly vrátit v odpovědi.
+200 OK a záhlaví.
+Trvá šíření identifikátor klíče několik minut k dokončení. Stav zřizování můžete zkontrolovat dvěma způsoby:
+1. Zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na vlastnosti *KeyVaultProperties.* Vaše nedávno aktualizované údaje o identifikátoru klíče by se měly vrátit v odpovědi.
 
 Odpověď na požadavek GET na prostředek *clusteru* by měla vypadat takto po dokončení aktualizace identifikátoru klíče:
 
@@ -330,8 +352,6 @@ Odpověď na požadavek GET na prostředek *clusteru* by měla vypadat takto po 
 ### <a name="workspace-association-to-cluster-resource"></a>Přidružení pracovního prostoru k prostředku *clusteru*
 Pro konfiguraci CMK Application Insights postupujte podle obsahu dodatku pro tento krok.
 
-Tento požadavek správce prostředků je asynchronní operace.
-
 K provedení této operace, která zahrnuje tyto akce, musíte mít oprávnění k zápisu do pracovního prostoru i prostředků *clusteru:*
 
 - V pracovním prostoru: Microsoft.OperationalInsights/workspaces/write
@@ -345,7 +365,7 @@ K provedení této operace, která zahrnuje tyto akce, musíte mít oprávnění
 Tento požadavek správce prostředků je asynchronní operace.
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -358,15 +378,13 @@ Content-type: application/json
 
 **Reakce**
 
-200 OK a záhlaví při přijetí.
->[!Important]
-> To může provoz až 90 minut na dokončení. Data požitá do pracovních prostorů jsou uložena šifrovaná pomocí spravovaného klíče až po úspěšném přidružení pracovních prostorů.
-> Chcete-li zkontrolovat stav přidružení pracovního prostoru, zkopírujte hodnotu ADRESY URL *Azure-AsyncOperation* z odpovědi a použijte ji pro kontrolu stavu operace v [asynchronních operacích.](# asynchronous-operations-and-status-check)
-
-Prostředek *clusteru* přidružený k vašemu pracovnímu prostoru můžete zkontrolovat odesláním požadavku GET do [pracovních prostorů – získat](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) a sledovat odpověď. Id *prostředku clusteru* označuje na ID prostředku *clusteru.*
+200 OK a záhlaví.
+Po operaci přidružení jsou uložena deštovaná data se spravovaným klíčem, což může trvat až 90 minut. Stav přidružení pracovního prostoru můžete zkontrolovat dvěma způsoby:
+1. Zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+2. Odeslat [pracovní prostory – získat](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) požadavek a sledovat odpověď, přidružený pracovní prostor bude mít clusterResourceId pod "funkce".
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 ```
 
 **Reakce**
@@ -455,7 +473,7 @@ Všechna data jsou přístupná po operaci otočení klíče, včetně dat poži
 - Získejte všechny prostředky *clusteru* pro skupinu prostředků:
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -492,7 +510,7 @@ Všechna data jsou přístupná po operaci otočení klíče, včetně dat poži
 - Získejte všechny prostředky *clusteru* pro předplatné:
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -503,8 +521,7 @@ Všechna data jsou přístupná po operaci otočení klíče, včetně dat poži
 - Odstranit prostředek *clusteru* – operace obnovitelného odstranění se provádí, aby bylo možné obnovit prostředek clusteru, data a přidružené pracovní prostory do 14 dnů, ať už bylo odstranění náhodné nebo úmyslné. Název *prostředku clusteru* zůstane rezervován během období slabého odstranění a nelze vytvořit nový cluster s tímto názvem. Po období obnovitelného odstranění jsou prostředky *clusteru* a data neobnovitelná. Přidružené pracovní prostory jsou de-associated z prostředku *clusteru* a nová data se ingestuje do sdíleného úložiště a šifrované s klíčem Microsoft.
 
   ```rst
-  DELETE
-  https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
 
@@ -540,8 +557,10 @@ Tento prostředek se používá jako zprostředkující připojení identity mez
 
 **Vytvořit**
 
+Tento požadavek správce prostředků je asynchronní operace.
+
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -562,10 +581,10 @@ Content-type: application/json
 
 **Reakce**
 
-202 Přijato. Toto je standardní odpověď Správce prostředků pro asynchronní operace.
-
->[!Important]
-> Trvá zřizování poddx clusteru několik minut k dokončení. Můžete ověřit stav zřizování při provádění volání rozhraní API GET REST na prostředku *clusteru* a při pohledu na hodnotu *provisioningState.* Je *ProvisioningAccount* při zřizování a "Úspěšné" po dokončení.
+200 OK a záhlaví.
+Během období předčasného přístupu funkce clusteru ADX je zřízena ručně. Zatímco trvá zřizování poddx clusteru chvíli dokončit, můžete zkontrolovat stav zřizování dvěma způsoby:
+1. Zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState.* Je *ProvisioningAccount* při zřizování a *úspěšné po* dokončení.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Přidružení komponenty k prostředku *clusteru* pomocí [rozhraní Components – vytvoření nebo aktualizace](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) rozhraní API
 
@@ -579,7 +598,7 @@ K provedení této operace, která zahrnuje tyto akce, musíte mít oprávnění
 > Chcete-li ověřit, zda je zřízen cluster ADX, spusťte prostředek *clusteru* Získat rozhraní REST API a zkontrolujte, zda je hodnota *provisioningState* *Succeeded*.
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
@@ -614,7 +633,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> Zkopírujte a zachovejte hodnotu "principle-id", protože ji budete potřebovat v dalších krocích.
+> Zkopírujte a uchovávejte odpověď, protože ji budete potřebovat v dalších krocích.
 
 **Přidružení komponenty**
 

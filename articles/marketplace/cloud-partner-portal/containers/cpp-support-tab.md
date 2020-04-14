@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: 8124828c565f344387ae946a1fa6e61a84675b81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58845401fc14950b9c446d1481b8ac6f8ecc5523
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279959"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269920"
 ---
 # <a name="container-support-tab"></a>Karta Podpora kontejnerů
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek Azure Container do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky kontejneru Azure](https://aka.ms/CreateContainerOffer) ke správě migrovaných nabídek.
 
 Karta **Podpora** na stránce **Nová nabídka** slouží k poskytování technických a uživatelských zdrojů podpory pro vaši nabídku.  Ve formuláři podpory jsou k dispozici následující vstupní oblasti: **Technický kontakt**, **Zákaznická podpora**a Adresy URL **podpory**. Hvězdička (*) připojená k názvu pole označuje, že je požadováno.
 

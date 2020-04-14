@@ -7,21 +7,21 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d0db6553a774a69bb8a55538cbd2b4a333be9316
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281404"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261257"
 ---
-# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Objednávky v analýze komerčního tržiště
+# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel objednávek v analýze komerčního tržiště
 
 Tento článek obsahuje informace na **řídicím panelu Objednávky** v Centru partnerů. Tento řídicí panel zobrazuje informace o vašich objednávkách v grafickém formátu a formátu ke stažení.
 
 Chcete-li získat přístup k **řídicímu panelu Objednávky** v analytických nástrojích Centra partnerů, otevřete **[řídicí panel Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v části Komerční tržiště.
 
 >[!NOTE]
-> Podrobné definice terminologie analýzy naleznete v [tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+> Podrobné definice terminologie analýzy naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního trhu](./faq-terminology.md).
 
 ## <a name="orders-dashboard"></a>Řídicí panel objednávek
 
@@ -36,7 +36,7 @@ Chcete-li získat přístup k **řídicímu panelu Objednávky** v analytických
 - [Tabulka podrobností objednávky](#order-details-table)
 
 > [!NOTE]
-> Existují rozdíly mezi zobrazením analytických sestav na portálu partnerů cloudu (CPP) a novým programem Commercial Marketplace v Centru partnerů. Jedním z konkrétních způsobů je, že **Přehledy prodejců** v CPP mají kartu **Objednávky & použití,** která zobrazuje data pro nabídky založené na využití a nabídky nezaložené na využití. V Centru partnerů má stránka **Objednávky** samostatnou kartu pro nabídky SaaS.
+> Existují rozdíly mezi zobrazením analytických sestav na portálu partnerů cloudu (CPP) a novým komerčním programem marketplace v Partnerském centru. Jedním z konkrétních způsobů je, že **Přehledy prodejců** v CPP mají kartu **Objednávky & použití,** která zobrazuje data pro nabídky založené na využití a nabídky nezaložené na využití. V Centru partnerů má stránka **Objednávky** samostatnou kartu pro nabídky SaaS.
 
 ## <a name="order-dashboard-details"></a>Podrobnosti řídicího panelu objednávky
 
@@ -125,9 +125,9 @@ Můžete vybrat více filtrů, chcete-li vykreslit graf pro kritéria, která ch
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled analytických přehledů dostupných na komerčním trhu Partnerského centra najdete v [článku Analýza pro komerční tržiště v Centru partnerů](./analytics.md).
-- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Souhrnný řídicí panel v analýze komerčního webu Marketplace](./summary-dashboard.md).
-- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití řídicího panelu v komerčních Marketplace analytics](./usage-dashboard.md).
-- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníka v analytice na komerčním trhu](./customer-dashboard.md).
-- Seznam žádostí o stažení za posledních 30 dní najdete [v tématu Panel stahování v analytice na komerčním webu Marketplace](./downloads-dashboard.md).
-- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze na řídicím panelu Commercial Marketplace analytics](./ratings-reviews.md).
-- Nejčastější dotazy týkající se analýzy na komerčním marketplace a komplexní slovník datových termínů naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Souhrnný řídicí panel v analýze komerčního tržiště](./summary-dashboard.md).
+- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití řídicího panelu v komerčním tržišti analýzy](./usage-dashboard.md).
+- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníka v analýzách komerčního tržiště](./customer-dashboard.md).
+- Seznam žádostí o stažení za posledních 30 dní najdete [v tématu Řídicí panel Ke stažení v analýze komerčního tržiště](./downloads-dashboard.md).
+- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze v analýze komerčního webu](./ratings-reviews.md).
+- Nejčastější dotazy týkající se analýzy komerčního tržiště a komplexní slovník termínů pro data naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: 332d7e4cae3b65d794d48d208b54db3809b78a8f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f12b5c158025db89dcc64a3be03b263f95a3a64c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632366"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261354"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Kurz: Odeslání e-mailu z runbooku Azure Automation
 
@@ -81,7 +81,7 @@ Chcete-li používat Azure KeyVault v rámci sady Runbook, váš účet Automati
 
 Klikněte <kbd>na Nasadit do Azure Automation</kbd> na kartě Azure Automation v části Možnosti instalace. Tato akce otevře portál Azure. Na stránce Import vyberte účet automatizace a klepněte na tlačítko <kbd>OK</kbd>.
 
-Další metody pro přidání požadovaných modulů naleznete [v tématu Import Modules](/azure/automation/shared-resources/modules#import-modules).
+Další metody pro přidání požadovaných modulů naleznete [v tématu Import Modules](/azure/automation/shared-resources/modules#importing-modules).
 
 ## <a name="create-the-runbook-to-send-an-email"></a>Vytvoření runbooku pro odeslání e-mailu
 

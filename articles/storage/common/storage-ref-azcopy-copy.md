@@ -4,16 +4,16 @@ description: Tento článek obsahuje referenční informace pro příkaz azcopy 
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933782"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253335"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -41,7 +41,7 @@ Další informace naleznete v příkladech.
 - [Přenos dat pomocí AzCopy a ukládání souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s azcopy](storage-use-azcopy-configure.md)
 
-## <a name="advanced"></a>Upřesnit
+## <a name="advanced"></a>Upřesňující
 
 AzCopy automaticky detekuje typ obsahu souborů při nahrávání z místního disku na základě přípony souboru nebo obsahu (pokud není zadána žádná přípona).
 
@@ -169,6 +169,8 @@ Zkopírujte podmnožinu bloků pomocí zástupného symbolu (*) v názvu bloku. 
 
 ## <a name="options"></a>Možnosti
 
+**--zálohování**                               Aktivuje Windows'SeBackupPrivilege pro nahrávání nebo SeRestorePrivilege pro stahování, aby AzCopy mohl zobrazit všechny soubory bez ohledu na jejich oprávnění systému souborů a obnovit všechna oprávnění. Vyžaduje, aby účet se spuštěným AzCopy již má tato oprávnění (např. má práva správce nebo je členem skupiny "Backup Operators"). Tento příznak je aktivován a oprávnění, která již účet má.
+
 **--řetězec typu objektu blob** Definuje typ objektu blob v cílovém umístění. Používá se pro nahrávání objektů BLOB a při kopírování mezi účty (výchozí "Rozpoznat"). Mezi platné hodnoty patří "Detect", 'BlockBlob', 'PageBlob' a 'AppendBlob'. Při kopírování mezi účty, hodnota 'Detect' způsobí, že AzCopy použít typ zdrojového objektu blob k určení typu cílového objektu blob. Při nahrávání souboru určuje ,Detect' zda je soubor VHD nebo VHDX soubor založený na příponě souboru. Pokud je soubor ether VHD nebo VHDX soubor, AzCopy zachází se souborem jako objekt blob stránky. (výchozí "Detect")
 
 **--blok-blob-tier** řetězec Nahrát objekty blob bloku přímo na [úroveň přístupu](../blobs/storage-blob-storage-tiers.md) podle vašeho výběru. (výchozí "Žádné"). Mezi platné hodnoty patří "Žádné", "Horké", "Cool" a "Archivovat". Pokud je předána žádná nebo žádná úroveň, objekt blob zdědí úroveň účtu úložiště.
@@ -223,6 +225,12 @@ Zkopírujte podmnožinu bloků pomocí zástupného symbolu (*) v názvu bloku. 
 
 **--zachovat-poslední-upravený-čas**          K dispozici pouze v případě, že cílem je systém souborů.
 
+**--preserve-smb-permissions** string False ve výchozím nastavení. Zachová seznamy ACS SMB mezi prostředky s vědomím (Windows a Soubory Azure). Pro stahování budete také muset použít `--backup` příznak k obnovení oprávnění, kde nový vlastník nebude uživatel, který je spuštěn AzCopy. Tento příznak se vztahuje na soubory i složky, pokud není zadán `include-pattern`filtr pouze pro soubory (např. ).
+
+**--preserve-smb-info** řetězec False ve výchozím nastavení. Zachová informace o vlastnostech SMB (čas posledního zápisu, čas vytvoření, bity atributů) mezi prostředky podporujícími smb (Windows a Soubory Azure). Budou přeneseny pouze bity atributu podporované soubory Azure; ostatní budou ignorovány. Tento příznak se vztahuje na soubory i složky, pokud není zadán filtr pouze pro soubory (např. vzor zahrnutí). Informace přenášené pro složky jsou stejné jako u souborů, s výjimkou času posledního zápisu, který není nikdy zachován pro složky.
+
+**--preserve-owner**                       Má vliv pouze při stahování dat a `--preserve-smb-permissions` pouze při použití. Pokud true (výchozí), vlastník souboru a skupina jsou zachovány ve stahování. Pokud je tento příznak `--preserve-smb-permissions` nastaven na hodnotu false, bude stále zachovávat seznamy ACL, ale vlastník a skupina budou založeny na uživateli, který je spuštěn AzCopy.
+
 **--put-md5**                             Vytvořte hash MD5 každého souboru a uložte hash jako Content-MD5 vlastnost cílového objektu blob nebo souboru. (Ve výchozím nastavení není hodnota hash vytvořena.) K dispozici pouze při nahrávání.
 
 **--rekurzivní**                            Při nahrávání z místního systému souborů se rekurzivně podívejte do podadresářů.
@@ -243,4 +251,4 @@ Zkopírujte podmnožinu bloků pomocí zástupného symbolu (*) v názvu bloku. 
 
 ## <a name="see-also"></a>Viz také
 
-- [azkopie](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

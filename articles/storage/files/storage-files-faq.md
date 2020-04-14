@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6062ec008a7a12c720cf28c2d79531e805ebba0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984431"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261750"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Azure Files](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardního [protokolu Server Message Block (SMB).](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) Sdílené složky Azure můžete připevnit souběžně v cloudových nebo místních nasazeních Windows, Linuxu a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows Server pomocí Azure File Sync pro rychlý přístup v blízkosti místa, kde se data používají.
@@ -217,7 +217,7 @@ Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí S
 * <a id="ad-aad-smb-files"></a>
 **Jak můžu zkontrolovat, jestli jsem povolil ad ověřování v účtu úložiště a v informacích o doméně služby AD?**
 
-    Můžete odkazovat na pokyny [zde](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) uvedené ověřit, pokud Azure Files AD Ověřování je povolena na vašem účtu úložiště a načíst informace o doméně služby AD.
+    Můžete odkazovat na pokyny [zde](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account) uvedené ověřit, pokud Azure Files AD Ověřování je povolena na vašem účtu úložiště a načíst informace o doméně služby AD.
     
 * <a id="encryption-at-rest"></a>
 **Jak zajistím, aby byla moje sdílená složka Azure zašifrovaná v klidovém stavu?**  

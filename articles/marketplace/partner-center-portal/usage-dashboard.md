@@ -1,5 +1,5 @@
 ---
-title: Řídicí panel využití v analýze Komerčnítržiště v Partnerském centru
+title: Řídicí panel využití v analýze komerčního tržiště v Partnerském centru
 description: Přečtěte si, jak získat přístup ke všem nabídkám virtuálních aplikací a metrikám fakturace účtovaných podle objemu dat.
 author: dsindona
 ms.author: dsindona
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0cd6614c1ccc51a2b25f115dccf0ee389075aa70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33762540d14ea51e8325abe9a466007cd7cca748
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285125"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262175"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel využití v analýze komerčního tržiště
 
@@ -21,7 +21,7 @@ Tento článek obsahuje informace o řídicím panelu Využití v Centru partner
 Chcete-li získat přístup k řídicímu panelu Využití, otevřete řídicí panel **[Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v části Komerční tržiště.
 
 >[!NOTE]
-> Podrobné definice terminologie analýzy naleznete v [tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+> Podrobné definice terminologie analýzy naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního trhu](./faq-terminology.md).
 
 ## <a name="usage-dashboard"></a>Řídicí panel využití
 
@@ -119,9 +119,9 @@ Karta **Využití fakturace podle objemu dat** zobrazuje informace o využití t
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled analytických přehledů dostupných na komerčním trhu Partnerského centra najdete v [článku Analýza pro komerční tržiště v Centru partnerů](./analytics.md).
-- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Summary Dashboard in Commercial Marketplace analytics](./summary-dashboard.md).
-- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Dashboard objednávek v analýze komerčního tržiště](./orders-dashboard.md).
-- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýze komerčního webu Marketplace](./customer-dashboard.md).
-- Seznam žádostí o stažení za posledních 30 dní najdete v článku [Panel stahování v analýze komerčního tržiště](./downloads-dashboard.md).
-- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze na řídicím panelu Commercial Marketplace analytics](./ratings-reviews.md).
-- Nejčastější dotazy týkající se analýzy na komerčním marketplace a komplexní slovník datových termínů naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Souhrnný řídicí panel v analýze komerčního tržiště](./summary-dashboard.md).
+- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Řídicí panel objednávek v analýze komerčního tržiště](./orders-dashboard.md).
+- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýzách komerčního tržiště](./customer-dashboard.md).
+- Seznam žádostí o stažení za posledních 30 dní najdete [v tématu Řídicí panel ke stažení v analýze komerčního tržiště](./downloads-dashboard.md).
+- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze v analýze komerčního webu](./ratings-reviews.md).
+- Nejčastější dotazy týkající se analýzy komerčního tržiště a komplexní slovník termínů pro data naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).

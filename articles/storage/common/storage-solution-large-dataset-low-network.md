@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be1f74dcccc654dbdd0a743d1da2da89071045f1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60730686"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253131"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Přenos dat rozsáhlých datových sad s malou nebo žádnou šířkou pásma sítě
  
@@ -56,7 +56,7 @@ Následující tabulka shrnuje rozdíly v klíčových možnostech.
 |    Šifrování                       |    AES 128bitová                  |    AES 256bitový                                   |    AES 256bitový                           |    AES 128bitová                         |
 |    Hardware                         |     Společnost Microsoft dodala          |    Společnost Microsoft dodala                            |    Společnost Microsoft dodala                    |    Zákazník dodán                   |
 |    Síťové rozhraní                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
-|    Integrace partnerských řešení              |    Některé                         |    [Vysoké](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Vysoké](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Některé                                |
+|    Integrace partnerských řešení              |    Některé                         |    [Vysoké](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Vysoké](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Některé                                |
 |    Shipping                         |    Microsoft se podařilo            |    Microsoft se podařilo                             |    Microsoft se podařilo                     |    Zákazník řízený                    |
 | Použít při přesunu dat         |V rámci hranice obchodu|V rámci hranice obchodu|V rámci hranice obchodu|Přes zeměpisné hranice, např.|
 |    Ceny                          |    [Ceny](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Ceny](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |

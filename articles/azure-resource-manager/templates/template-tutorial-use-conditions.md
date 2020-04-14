@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f88f141257e8e614f62c7441c313002b5735116d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 8f51c65489efeed1fa18e70bd75e7370a9e59903
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239192"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260621"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Kurz: Použití podmínky v šablonách ARM
 
@@ -55,23 +55,25 @@ K dokončení tohoto článku potřebujete:
 Azure QuickStart Templates je úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
 
 1. V kódu sady Visual Studio vyberte **Soubor**>**otevřít soubor**.
-2. Do pole **File name** (Název souboru) vložte následující adresu URL:
+1. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. Výběrem **Open** (Otevřít) soubor otevřete.
-4. Šablona definuje pět prostředků:
+1. Výběrem **Open** (Otevřít) soubor otevřete.
+1. Šablona definuje šest prostředků:
 
-   * `Microsoft.Storage/storageAccounts`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAdresy**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Soubor Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     Než začnete šablonu přizpůsobovat, je vhodné se s ní nejprve trochu seznámit.
-5. Vyberte **Soubor**>**Uložit jako,** chcete-li uložit kopii souboru do místního počítače s názvem **azuredeploy.json**.
+    Před přizpůsobením šablony je užitečné zkontrolovat odkaz na šablonu.
+
+1. Vyberte **Soubor**>**Uložit jako,** chcete-li uložit kopii souboru do místního počítače s názvem **azuredeploy.json**.
 
 ## <a name="modify-the-template"></a>Úprava šablony
 
@@ -83,12 +85,12 @@ Ve stávající šabloně proveďte dvě změny:
 Tady je postup, jak tyto změny provést:
 
 1. Ve Visual Studio Code otevřete soubor **azuredeploy.json**.
-2. Nahraďte tři **proměnné ('storageAccountName')** **parametry ('storageAccountName')** v celé šabloně.
-3. Odeberte definici následující proměnné:
+1. Nahraďte tři **proměnné ('storageAccountName')** **parametry ('storageAccountName')** v celé šabloně.
+1. Odeberte definici následující proměnné:
 
     ![Diagram podmínek použití šablony Správce prostředků](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
-4. Přidejte do šablony následující dva parametry:
+1. Na začátek oddílu parametry přidejte následující dva parametry:
 
     ```json
     "storageAccountName": {
@@ -103,11 +105,13 @@ Tady je postup, jak tyto změny provést:
     },
     ```
 
+    Stisknutím kláves **[ALT]+[SHIFT]+F** naformátujte šablonu v kódu sady Visual Studio.
+
     Aktualizovaná definice parametrů vypadá takto:
 
     ![Resource Manager – použití podmínky](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-parameters.png)
 
-5. Na začátek definice účtu úložiště přidejte následující řádek.
+1. Na začátek definice účtu úložiště přidejte následující řádek.
 
     ```json
     "condition": "[equals(parameters('newOrExisting'),'new')]",
@@ -118,7 +122,7 @@ Tady je postup, jak tyto změny provést:
     Aktualizovaná definice účtu úložiště vypadá takto:
 
     ![Resource Manager – použití podmínky](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. Aktualizujte vlastnost **storageUri** definice prostředku virtuálního počítače s následující hodnotou:
+1. Aktualizujte vlastnost **storageUri** definice prostředku virtuálního počítače s následující hodnotou:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -126,20 +130,25 @@ Tady je postup, jak tyto změny provést:
 
     Tato změna je nezbytná v případě, že použijete existující účet úložiště v jiné skupině prostředků.
 
-7. Uložte změny.
+1. Uložte změny.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Podle pokynů v [části Nasazení šablony](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) otevřete prostředí Cloud a nahrajte revidovanou šablonu a pak spusťte následující skript Prostředí PowerShell, který šablonu nasadí.
+Podle pokynů v [části Nasazení šablony](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) otevřete prostředí Cloud Shell a nahrajte revidovanou šablonu a pak spusťte následující skript Prostředí PowerShell, který šablonu nasadí.
+
+> [!IMPORTANT]
+> Název účtu úložiště musí být jedinečný v rámci Azure. Název musí mít pouze malá písmena nebo čísla. Nesmí být delší než 24 znaků. Název účtu úložiště je název projektu s připojeným "store". Ujistěte se, že název projektu a název generovaného účtu úložiště splňují požadavky na název účtu úložiště.
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-$storageAccountName = Read-Host -Prompt "Enter the storage account name"
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
 $location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
 $vmAdmin = Read-Host -Prompt "Enter the admin username"
 $vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
+
+$resourceGroupName = "${projectName}rg"
+$storageAccountName = "${projectName}store"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
@@ -150,6 +159,8 @@ New-AzResourceGroupDeployment `
     -storageAccountName $storageAccountName `
     -newOrExisting $newOrExisting `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!NOTE]
@@ -159,11 +170,15 @@ Zkuste vytvořit jiné nasazení s **newOrExisting** nastavena na "existující"
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků. Pokud chcete skupinu prostředků odstranit, vyberte **Vyzkoušet,** chcete-li otevřít prostředí Cloud. Pokud chcete vložit skript Prostředí PowerShell, klikněte pravým tlačítkem myši na podokno prostředí a pak vyberte **Vložit**.
+Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků. Pokud chcete skupinu prostředků odstranit, vyberte **Zkuste ji** otevřít cloudové prostředí. Pokud chcete vložit skript Prostředí PowerShell, klikněte pravým tlačítkem myši na podokno prostředí a pak vyberte **Vložit**.
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
+$projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+
 Remove-AzResourceGroup -Name $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>Další kroky

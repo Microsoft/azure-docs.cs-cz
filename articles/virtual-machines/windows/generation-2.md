@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ed7d62ef5c1c4837b3eb6d02f301085178fe5e0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99abb6cb493cca3aa4e2ac0c42744e1fbaf84f12
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528213"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272980"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora pro virtuální počítače generace 2 v Azure
 
@@ -35,7 +35,9 @@ Virtuální počítače generace 1 jsou podporované všemi velikostmi virtuáln
 * [Řada B](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [Řada DC](../dcv2-series.md)
 * [Řada DSv2](../dv2-dsv2-series.md) a [Dsv3](../dv3-dsv3-series.md)
+* [Řada Dasv4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
 * [Řada Esv3](../ev3-esv3-series.md)
+* [Řada Easv4](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series)
 * [Řada Fsv2](../fsv2-series.md)
 * [Řada GS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [Řada HB](../hb-series.md)
@@ -59,7 +61,7 @@ Virtuální virtuální chod generace 2 podporují následující image Marketpl
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04, 18.04, 19.04, 19.10 
 * RHEL 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 7,0
-* Cent OS 8,0, 7,7, 7,6, 7,5, 7,4
+* Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4
 * Oracle Linux 7.7, 7.7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Místní virtuální počítače azure generace 2

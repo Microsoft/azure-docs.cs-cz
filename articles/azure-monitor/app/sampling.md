@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e888e0606b7a9bcd9a7a94c28455d705c5f1bec
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275825"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255477"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -22,7 +22,7 @@ Když jsou na portálu prezentovány počty metrik, jsou znovu normalizovány, a
 
 * Existují tři různé typy odběru vzorků: adaptivní odběr vzorků, odběr vzorků s pevnou rychlostí a odběr vzorků při požití.
 * Adaptivní vzorkování je ve výchozím nastavení povoleno ve všech nejnovějších verzích sad Application Insights ASP.NET a ASP.NET core software Development Kits (SDK). Používá se také azure [funkce](https://docs.microsoft.com/azure/azure-functions/functions-overview).
-* Vzorkování s pevnou rychlostí je k dispozici v nejnovějších verzích sad SDK Application Insights pro ASP.NET, ASP.NET Jádra, Javy a Pythonu.
+* Vzorkování s pevnou rychlostí je k dispozici v nejnovějších verzích sad SDK Application Insights pro ASP.NET, ASP.NET Core, Java (agent i SDK) a Python.
 * Vzorkování ingestování funguje na koncovém bodu služby Application Insights. Použije se pouze v případě, že není v platnosti žádný jiný odběr vzorků. Pokud sada SDK vzorky telemetrie, vzorkování ingestování je zakázáno.
 * Pro webové aplikace, pokud protokolovat vlastní události a je třeba zajistit, že sada událostí je `OperationId` zachována nebo zahozena společně, události musí mít stejnou hodnotu.
 * Pokud píšete dotazy Analytics, měli byste [vzít v úvahu vzorkování](../../azure-monitor/log-query/aggregations.md). Zejména místo pouhého počítání záznamů byste `summarize sum(itemCount)`měli použít .
@@ -33,7 +33,7 @@ Následující tabulka shrnuje typy vzorkování, které jsou k dispozici pro ka
 | Aplikace Přehledy SDK | Adaptivní vzorkování podporováno | Odběr vzorků s pevnou frekvencí podporován | Odběr vzorků z požití podporován |
 |-|-|-|-|
 | ASP.NET | [Ano (zapnuto ve výchozím nastavení)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-applications) | Pouze v případě, že nedochází k jinému odběru vzorků |
-| ASP.NET Core | [Ano (zapnuto ve výchozím nastavení)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Pouze v případě, že nedochází k jinému odběru vzorků |
+| Jádro ASP.NET | [Ano (zapnuto ve výchozím nastavení)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Pouze v případě, že nedochází k jinému odběru vzorků |
 | Azure Functions | [Ano (zapnuto ve výchozím nastavení)](#configuring-adaptive-sampling-for-azure-functions) | Ne | Pouze v případě, že nedochází k jinému odběru vzorků |
 | Java | Ne | [Ano](#configuring-fixed-rate-sampling-for-java-applications) | Pouze v případě, že nedochází k jinému odběru vzorků |
 | Python | Ne | [Ano](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Pouze v případě, že nedochází k jinému odběru vzorků |
@@ -306,7 +306,29 @@ V Průzkumníku metrik se sazby, jako je počet požadavků a výjimek, násobí
 
 ### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>Konfigurace vzorkování s pevnou rychlostí pro aplikace java
 
-Ve výchozím nastavení není v sadě Java SDK povoleno žádné vzorkování. V současné době podporuje pouze vzorkování s pevnou rychlostí. Adaptivní vzorkování není v sadě Java SDK podporováno.
+Ve výchozím nastavení není v agentovi Java a sadě SDK povoleno žádné vzorkování. V současné době podporuje pouze vzorkování s pevnou rychlostí. Adaptivní vzorkování není v jazyce Java podporováno.
+
+#### <a name="configuring-java-agent"></a>Konfigurace agenta Jazyka Java
+
+1. Stáhnout [applicationinsights-agent-3.0.0-PREVIEW.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar)
+
+1. Chcete-li povolit vzorkování, přidejte `ApplicationInsights.json` do souboru následující:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
+        }
+      }
+    }
+  }
+}
+```
+
+#### <a name="configuring-java-sdk"></a>Konfigurace sady Java SDK
 
 1. Stáhněte a nakonfigurujte webovou aplikaci pomocí nejnovější [sady Application Insights Java SDK](../../azure-monitor/app/java-get-started.md).
 
@@ -534,7 +556,7 @@ Přesnost aproximace do značné míry závisí na nakonfigurovaném procentu od
 
 * Vzorkování při požití může dojít automaticky pro všechny telemetrie nad určitý svazek, pokud sada SDK neprovádí vzorkování. Tato konfigurace by fungovala například v případě, že používáte starší verzi sady ASP.NET Sady SDK nebo sady Java SDK.
 * Pokud používáte aktuální ASP.NET nebo ASP.NET sady Core SDK (hostované buď v Azure nebo na vlastním serveru), získáte adaptivní vzorkování ve výchozím nastavení, ale můžete přepnout na pevnou sazbu, jak je popsáno výše. Při vzorkování s pevnou rychlostí se sada SDK prohlížeče automaticky synchronizuje s ukázkovými událostmi. 
-* Pokud používáte aktuální sadu Java SDK, můžete nakonfigurovat `ApplicationInsights.xml` zapnutí vzorkování s pevnou frekvencí. Vzorkování je ve výchozím nastavení vypnuto. Při vzorkování s pevnou rychlostí se sada SDK prohlížeče a server automaticky synchronizují s ukázkovými událostmi.
+* Pokud používáte aktuálního agenta Jazyka `ApplicationInsights.json` Java, můžete nakonfigurovat `ApplicationInsights.xml`(pro java sdk) zapnout vzorkování s pevnou frekvencí. Vzorkování je ve výchozím nastavení vypnuto. Při vzorkování s pevnou rychlostí se sada SDK prohlížeče a server automaticky synchronizují s ukázkovými událostmi.
 
 *Jsou tu vzácné události, které chci vždycky vidět. Jak je mohu dostat přes vzorkovací modul?*
 

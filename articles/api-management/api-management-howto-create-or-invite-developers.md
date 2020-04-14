@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 9de75b5537b3e267116882e7f151d893de575071
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70072463"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260968"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Správa uživatelských účtů ve službě Azure API Management
 
-Ve správě rozhraní API jsou vývojáři uživateli rozhraní API, která zveřejňujete pomocí správy rozhraní API. Tato příručka ukazuje, jak vytvořit a pozvat vývojáře k použití rozhraní API a produkty, které jim zpřístupnit s vaší instance správy rozhraní API. Informace o programové správě uživatelských účtů naleznete v dokumentaci k [entitě uživatele](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user) v odkazu [SPRÁVA ROZHRANÍ API REST.](/rest/api/apimanagement/)
+Ve správě rozhraní API jsou vývojáři uživateli rozhraní API, která zveřejňujete pomocí správy rozhraní API. Tato příručka ukazuje, jak vytvořit a pozvat vývojáře k použití rozhraní API a produkty, které jim zpřístupnit s vaší instance správy rozhraní API. Informace o programové správě uživatelských účtů naleznete v dokumentaci k [entitě uživatele](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user) v odkazu [SPRÁVA ROZHRANÍ API REST.](/rest/api/apimanagement/)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

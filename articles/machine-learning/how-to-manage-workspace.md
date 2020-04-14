@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38b0895b0d6eddcf63c082d3df205f4d9de9d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297066"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269720"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Vytváření a správa pracovních prostorů Azure Machine Learning na webu Azure Portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ V tomto článku vytvoříte, zobrazíte a odstraníte [**pracovní prostory Azu
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, než začnete. Vyzkoušejte [bezplatnou nebo placenou verzi Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
+K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušejte [bezplatnou nebo placenou verzi Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/) pomocí přihlašovacích údajů pro vaše předplatné Azure. 
 
@@ -51,7 +51,7 @@ K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud nemát
     ![Konfigurace pracovního prostoru](./media/how-to-manage-workspace/select-edition.png)
 
 1. Po dokončení konfigurace pracovního prostoru vyberte **Zkontrolovat + Vytvořit**.
-2. Zkontrolujte nastavení a proveďte další změny nebo opravy. Až budete satisified s nastavením, vyberte **Vytvořit**.
+2. Zkontrolujte nastavení a proveďte další změny nebo opravy. Až budete s nastavením spokojeni, vyberte **Vytvořit**.
 
    > [!Warning] 
    > Vytvoření pracovního prostoru v cloudu může trvat několik minut.
@@ -90,6 +90,8 @@ Pracovní prostor můžete upgradovat ze základní edice na edici Enterprise a 
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Vyhledání pracovního prostoru
 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+
 1. V horním vyhledávacím poli zadejte **Machine Learning**.  
 
 1. Vyberte **možnost Strojové učení**.
@@ -102,9 +104,9 @@ Pracovní prostor můžete upgradovat ze základní edice na edici Enterprise a 
 
 ## <a name="delete-a-workspace"></a>Odstranění pracovního prostoru
 
-Použijte tlačítko Odstranit v horní části pracovního prostoru, který chcete odstranit.
+Na [webu Azure Portal](https://portal.azure.com/)vyberte **Odstranit** v horní části pracovního prostoru, který chcete odstranit.
 
-  ![Tlačítko Odstranit](./media/how-to-manage-workspace/delete-workspace.png)
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Odstranit pracovní prostor":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

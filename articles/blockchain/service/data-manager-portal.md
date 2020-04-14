@@ -4,12 +4,12 @@ description: Vytvářejte a spravujte Blockchain Data Manager pro službu Azure 
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529600"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260594"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurace Blockchain Data Manageru s využitím webu Azure Portal
 
@@ -28,11 +28,11 @@ Chcete-li nakonfigurovat instanci Správce dat blockchainu, můžete:
 
 ## <a name="create-instance"></a>Vytvořit instanci
 
-Instance Správce dat Blockchain propojuje a monitoruje transakční uzel služby Azure Blockchain Service. Připojení mohou vytvořit pouze uživatelé s přístupem k uzlu transakce. Instance zachytí všechna nezpracovaná data bloku a nezpracovaných transakcí z uzlu transakce.
+Instance Správce dat Blockchain propojuje a monitoruje transakční uzel služby Azure Blockchain Service. Připojení mohou vytvořit pouze uživatelé s přístupem k uzlu transakce. Instance zachytí všechna nezpracovaná data bloku a nezpracovaných transakcí z uzlu transakce. Blockchain Data Manager publikuje zprávu **RawBlockAndTransactionMsg,** která je nadmnožinou informací vrácených z web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) a [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) dotazů.
 
 Odchozí připojení odesílá data blockchainu do Azure Event Grid. Při vytváření instance nakonfigurujete jedno odchozí připojení. Blockchain Data Manager podporuje více odchozích připojení Event Grid Topic pro danou instanci Blockchain Data Manager. Data blockchainu můžete odesílat do jednoho cíle nebo data blockchainu do více destinací. Chcete-li přidat další cíl, stačí k instanci přidat další odchozí připojení.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte na člena služby Azure Blockchain Service, kterého chcete připojit ke Správci dat Blockchain. Vyberte **Správce dat blockchainu**.
 1. Vyberte **Přidat**.
 

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cdc9f9a4503c786065b6d514f61fe17eae4ce5e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264779"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270906"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurace automatického vypínání pro testovací a výpočetní virtuální počítače v azure devtest labs
 
@@ -28,7 +28,7 @@ Tento článek vysvětluje, jak nakonfigurovat nastavení automatického vypnut�
 ## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>Konfigurace automatického vypínání pro testovací virtuální počítače (DevTest Labs)
 Azure DevTest Labs umožňuje řídit náklady a minimalizovat plýtvání ve vašich testovacích prostředích pomocí správy zásad (nastavení) pro každé testovací prostředí. Tento článek ukazuje, jak nakonfigurovat zásady automatického vypnutí pro účet testovacího prostředí a konfigurovat nastavení automatického vypnutí pro testovací prostředí v účtu testovacího prostředí. Pokud se chcete podívat, jak nastavit všechny zásady testovacího prostředí, [přečtěte si informace o definování zásad testovacího prostředí v laboratořích Azure DevTest .](devtest-lab-set-lab-policy.md)  
 
-### <a name="set-auto-shut-down-policy-for-a-lab"></a>Nastavení zásad automatického vypnutí testovacího prostředí
+### <a name="set-auto-shutdown-policy-for-a-lab"></a>Nastavení zásad automatického vypnutí testovacího prostředí
 Jako vlastník testovacího prostředí můžete nakonfigurovat plán vypnutí pro všechny virtuální počítače ve vašem testovacím prostředí. Tímto způsobem můžete ušetřit náklady ze spuštěných počítačů, které nejsou používány (nečinnosti). Můžete vynutit zásady vypnutí na všech virtuálních počítačích testovacího prostředí centrálně, ale také ušetřit uživatelům testovacího prostředí úsilí od nastavení plánu pro jejich jednotlivé počítače. Tato funkce umožňuje nastavit zásady v plánu testovacího prostředí od nabízení žádného ovládacího prvku až po úplné řízení pro uživatele testovacího prostředí. Jako vlastník testovacího prostředí můžete tuto zásadu nakonfigurovat následujícím postupem:
 
 1. Na domovské stránce testovacího prostředí vyberte **Konfigurace a zásady**.
@@ -42,7 +42,7 @@ Zásady automatického vypnutí pomáhá minimalizovat plýtvání v laboratoři
 
 Chcete-li zobrazit (a změnit) zásady pro testovací prostředí, postupujte takto:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Všechny služby**a ze seznamu vyberte **DevTest Labs.**
 3. Ze seznamu testovacích prostředí vyberte požadovanou testovací prostředí.   
 4. Vyberte **možnost Konfigurace a zásady**.
@@ -191,13 +191,34 @@ Pokud chcete začít, vytvořte aplikaci logiky ve svém předplatném Azure pom
 
 ## <a name="configure-autoshutdown-for-compute-vms"></a>Konfigurace automatického vypnutí pro výpočetní virtuální počítače
 
-1. Na stránce **Virtuální počítač** vyberte v levé nabídce **automatické vypnutí.** 
+1. Na stránce **Virtuální počítač** vyberte v levé nabídce v části **Operace** možnost **Automatické vypnutí.** 
 2. Na stránce Automatické vypnutí tuto zásadu povolte **výběrem** **možnosti Zapnuto** a Chcete-li ji **zakázat.**
 3. Pokud povolíte tuto zásadu, zadejte **čas** (a **časové pásmo),** ve kterém by měl být virtuální vír vypnut.
 4. Zadejte **ano** nebo **ne** pro možnost odeslat oznámení 30 minut před zadaným časem automatického vypnutí. Pokud zvolíte **Ano**, zadejte koncový bod adresy URL webhooku nebo e-mailovou adresu určující, kam má být oznámení odesláno nebo odesláno. Uživatel obdrží oznámení a je mu dána možnost odložit vypnutí. Další informace naleznete v části [Oznámení.](#notifications) 
 9. Vyberte **Uložit**.
 
     ![Konfigurace automatického vypnutí pro výpočetní virtuální počítač](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+
+### <a name="view-activity-logs-for-auto-shutdown-updates"></a>Zobrazení protokolů aktivit pro aktualizace automatického vypnutí
+Když aktualizujete nastavení automatického vypnutí, zobrazí se aktivita protokolovaná v protokolu aktivit pro virtuální počítače. 
+
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte na domovskou stránku virtuálního počítače.
+2. V levé nabídce vyberte **protokol aktivit.** 
+3. Odebrat **resource: mycomputevm** z filtrů.
+3. Potvrďte, že se v protokolu aktivit zobrazí operace **Přidat nebo upravit plány.** Pokud jej nevidíte, počkejte někdy a aktualizujte protokol aktivit.
+
+    ![Položka protokolu aktivit](./media/devtest-lab-auto-shutdown/activity-log-entry.png)
+4. Výběrem operace **Přidat nebo upravit plány** zobrazíte na stránce **Souhrn** následující informace:
+
+    - Název operace (Přidání nebo úprava plánů)
+    - Datum a čas, kdy bylo aktualizováno nastavení automatického vypnutí.
+    - E-mailová adresa uživatele, který nastavení aktualizoval. 
+
+        ![Souhrn položek protokolu aktivit](./media/devtest-lab-auto-shutdown/activity-log-entry-summary.png)
+5. Přepněte na kartu **Změnit historii** na stránce Přidat nebo **upravit plány,** zobrazí se historie změn nastavení. V následujícím příkladu byl čas vypnutí změněn z 19:00 na 18:00 v dubnu 10, 2020 v 15:18:47 EST. A nastavení bylo zakázáno v 15:25:09 EST. 
+
+    ![Protokol aktivit - historie změn](./media/devtest-lab-auto-shutdown/activity-log-entry-change-history.png)
+6. Chcete-li zobrazit další podrobnosti o operaci, přepněte na kartu **JSON** na stránce **Přidat nebo upravit plány.**
 
 ## <a name="next-steps"></a>Další kroky
 Informace o tom, jak nastavit všechny zásady, najdete [v tématu Definování zásad testovacího prostředí v laboratořích Azure DevTest .](devtest-lab-set-lab-policy.md)

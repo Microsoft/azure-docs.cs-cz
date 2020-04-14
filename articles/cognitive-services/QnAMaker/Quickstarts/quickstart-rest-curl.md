@@ -1,16 +1,16 @@
 ---
 title: 'Úvodní příručka: Ke správě znalostní báze cURL & REST použijte – QnA Maker'
 description: Tento rychlý start ukazuje, jak vytvořit, publikovat a dotazovat znalostní báze pomocí rest API.
-ms.date: 02/27/2020
+ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78851201"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261699"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Úvodní příručka: Správa znalostní báze cURL a REST pomocí cURL a REST
 
@@ -21,9 +21,9 @@ Tento rychlý začátek vás provede vytvářením, publikováním a dotazován�
 ## <a name="prerequisites"></a>Požadavky
 
 * Aktuální verze [cURL](https://curl.haxx.se/). V rychlých startech se používá několik přepínačů příkazového řádku, které jsou uvedeny v [dokumentaci cURL](https://curl.haxx.se/docs/manpage.html).
-* Musíte mít [prostředek QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst název klíče a prostředku, vyberte **rychlý start** pro svůj prostředek na webu Azure Portal. Název prostředku je první část adresy URL koncového bodu:
+* Chcete-li použít klíč a název prostředku, musíte mít [prostředek qnA makeru.](../How-To/set-up-qnamaker-service-azure.md) Během vytváření zdroje jste zadali **název** zdroje a klíč byl vytvořen za vás. Název prostředku se používá jako subdoména pro koncový bod. Pokud chcete načíst název klíče a prostředku, vyberte **rychlý start** pro svůj prostředek na webu Azure Portal. Název prostředku je první subdoménou adresy URL koncového bodu:
 
-    `https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
+    `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
 > Následující příklady BASH `\` používají znak pokračování řádku. Pokud konzolová nebo terminál používá jiný znak pokračování řádku, použijte tento znak.

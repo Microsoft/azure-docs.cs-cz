@@ -1,20 +1,20 @@
 ---
-title: Nejčastější dotazy a terminologie pro analytiku komerčního tržiště v Partnerském centru
-description: Přečtěte si, jak řešit nejčastější dotazy týkající se analýz y Komerčního tržiště. Obsahuje datový slovník pro terminologii analýzy.
+title: Nejčastější dotazy a terminologie pro analýzu komerčního trhu v Partnerském centru
+description: Přečtěte si, jak řešit nejčastější dotazy týkající se analýzy komerčního tržiště. Obsahuje datový slovník pro terminologii analýzy.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d53ae01fb302382ca5bc2d31e729e153aea6c838
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286077"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251822"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Nejčastější dotazy a terminologie pro analytiku komerčního tržiště
+# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Nejčastější dotazy a terminologie pro analýzu komerčního trhu
 
 Tento článek se zabývá běžně kladenými dotazy týkajícími se analytických zpráv v Partnerském centru a také obsahuje slovník terminologie analýzy.
 
@@ -29,14 +29,14 @@ Tato část obsahuje odpovědi na nejčastější dotazy týkající se **zpráv
 Proč se vám může dostat tuto zprávu:
 
 - Pro publikované nabídky na tržišti v současné době neexistují žádné akvizice. To může znamenat, že vaše nabídky jsou aktivní na marketplace a získávají zobrazení od zákazníků na stránkách zobrazení produktu, ale zákazníci ještě nepodnikli kroky k jejich nákupu a nasazení.
-- Publikování vaší nabídky může být v procesu a ještě není živé. Zákazníci mohou získat pouze živé nabídky. Chcete-li zkontrolovat stav nabídek, přečtěte si část Přehled na [řídicím panelu Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary). Další informace naleznete [v tématu Summary Dashboard in Commercial Marketplace analytics](./summary-dashboard.md).
+- Publikování vaší nabídky může být v procesu a ještě není živé. Zákazníci mohou získat pouze živé nabídky. Chcete-li zkontrolovat stav nabídek, přečtěte si část Přehled na [řídicím panelu Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary). Další informace najdete [v tématu Summary Dashboard v analýzách komerčního tržiště](./summary-dashboard.md).
 - Vaše nabídky mohou být uvedeny jako **Služby Kontaktujte mě**, což jsou nabídky pouze pro seznam a zákazníci na trhu je nemohou zakoupit. I když tyto nabídky generují zájemce a jsou s vámi sdíleny, objednávky se pro tyto nabídky nevytvářejí, protože je nelze zakoupit. Chcete-li zkontrolovat typ nabídky, přejděte na stránku nastavení.
 
 **Vím, že mám analytická data, ale zobrazuje se níže uvedená zpráva:**
 
 ![Pro dané časové období nejsou k dispozici žádná data.](./media/analytics-faq-data-range.png)
 
-Pokud se zobrazí tato zpráva, znamená to, že máte analytická data, ale pro vybrané období nejsou k dispozici žádná data. Vyberte jiné časové období nebo vlastní rozsah dat, chcete-li zobrazit všechna data od roku 2010. Další informace naleznete v části Rozsah dat [v souhrnné mašice v analýze komerčního tržiště](./summary-dashboard.md).
+Pokud se zobrazí tato zpráva, znamená to, že máte analytická data, ale pro vybrané období nejsou k dispozici žádná data. Vyberte jiné časové období nebo vlastní rozsah dat, chcete-li zobrazit všechna data od roku 2010. Další informace naleznete v části Rozsah dat [v souhrnném řídicím panelu v analýze komerčního tržiště](./summary-dashboard.md).
 
 ## <a name="dictionary-of-data-terms"></a>Slovník datových termínů
 
@@ -97,9 +97,9 @@ Pokud se zobrazí tato zpráva, znamená to, že máte analytická data, ale pro
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled analytických přehledů dostupných na komerčním trhu Partnerského centra najdete v [článku Analýza pro komerční tržiště v Centru partnerů](./analytics.md).
-- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Summary Dashboard in Commercial Marketplace analytics](./summary-dashboard.md).
-- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Dashboard objednávek v analýze komerčního tržiště](./orders-dashboard.md).
-- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčních Marketplace analýzy](./usage-dashboard.md).
-- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýze komerčního webu Marketplace](./customer-dashboard.md).
-- Seznam žádostí o stažení za posledních 30 dní najdete v článku [Panel stahování v analýze komerčního tržiště](./downloads-dashboard.md).
-- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze na řídicím panelu Commercial Marketplace analytics](./ratings-reviews.md).
+- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Souhrnný řídicí panel v analýze komerčního tržiště](./summary-dashboard.md).
+- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Řídicí panel objednávek v analýze komerčního tržiště](./orders-dashboard.md).
+- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčním tržišti analýzy](./usage-dashboard.md).
+- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýzách komerčního tržiště](./customer-dashboard.md).
+- Seznam žádostí o stažení za posledních 30 dní najdete [v tématu Řídicí panel ke stažení v analýze komerčního tržiště](./downloads-dashboard.md).
+- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze v analýze komerčního webu](./ratings-reviews.md).

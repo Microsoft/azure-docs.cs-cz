@@ -9,21 +9,21 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: bc691299f38d562aee5c08a89e10372331663f8e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998484"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262804"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Použití syntaxe vyhledávání "full" Lucene (rozšířené dotazy v Azure Cognitive Search)
 
 Při vytváření dotazů pro Azure Cognitive Search můžete nahradit výchozí [jednoduchý analyzátor dotazů](query-simple-syntax.md) rozsáhlejším [analyzátorem lucene dotazů v Azure Cognitive Search](query-lucene-syntax.md) a formulovat specializované a pokročilé definice dotazů. 
 
-Analyzátor Lucene podporuje složité konstrukce dotazů, jako jsou dotazy s rozsahem polí, vyhledávání přibližovaných a předponami se zástupnými kódy, hledání bezkontaktních dat, zesílení termínů a vyhledávání regulárních výrazů. Další napájení je dodáváno s dalšími požadavky na zpracování, takže byste měli očekávat o něco delší dobu provádění. V tomto článku můžete krokovat příklady demonstrující operace dotazu k dispozici při použití úplné syntaxe.
+Analyzátor Lucene podporuje složité konstrukce dotazů, jako jsou dotazy s rozsahem polí, přibližné hledání, vyhledávání zástupných symbolů infixu a přípony, hledání bezkontaktní chodicí, zesílení termínů a vyhledávání regulárních výrazů. Další napájení je dodáváno s dalšími požadavky na zpracování, takže byste měli očekávat o něco delší dobu provádění. V tomto článku můžete krokovat příklady demonstrující operace dotazu k dispozici při použití úplné syntaxe.
 
 > [!Note]
-> Mnoho konstrukce specializované dotazu povolené prostřednictvím úplné syntaxe dotazu Lucene nejsou [textově analyzovány](search-lucene-query-architecture.md#stage-2-lexical-analysis), což může být překvapivé, pokud očekáváte vyplývající nebo lemmatizace. Lexikální analýza se provádí pouze za úplných termínů (termín ový dotaz nebo frázový dotaz). Typy dotazů s neúplnými termíny (předpona dotaz, zástupný dotaz, dotaz regulárního výrazu, přibližný dotaz) jsou přidány přímo do stromu dotazu, čímž se obejde fáze analýzy. Jedinou transformací provedenou na neúplných dotazových termínech je snížení počtu. 
+> Mnoho konstrukce specializované dotazu povolené prostřednictvím úplné syntaxe dotazu Lucene nejsou [textově analyzovány](search-lucene-query-architecture.md#stage-2-lexical-analysis), což může být překvapivé, pokud očekáváte vyplývající nebo lemmatizace. Lexikální analýza se provádí pouze za úplných termínů (termín ový dotaz nebo frázový dotaz). Typy dotazů s neúplnými termíny (předpona dotaz, zástupný dotaz, dotaz regulárního výrazu, přibližný dotaz) jsou přidány přímo do stromu dotazu, čímž se obejde fáze analýzy. Jedinou transformací provedenou na termínech částečného dotazu je snížení počtu. 
 >
 
 ## <a name="formulate-requests-in-postman"></a>Formulovat požadavky v Pošťákovi

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f779781eee81bf85f6420e5bae6b0feb62680b8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064175"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257330"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: Architektura a koncepty
 
@@ -62,7 +62,7 @@ Pro Azure Machine Learning použijte tyto nástroje:
             * [Spustit konfiguraci](#run-configurations)
             * [Snímek](#snapshots)
             * [Git sledování](#github-tracking-and-integration)
-            * [protokolování](#logging)
+            * [Protokolování](#logging)
     * [Kanály ML](#ml-pipelines)
     * [Modely](#models)
         * [Prostředí](#environments)
@@ -127,7 +127,7 @@ Když spustíte trénovací běh, kde zdrojový adresář je místní úložišt
 
 Další informace najdete v [tématu Integrace Gitu pro Azure Machine Learning](concept-train-model-git-integration.md).
 
-### <a name="logging"></a>protokolování
+### <a name="logging"></a>Protokolování
 
 Při vývoji řešení použijte Azure Machine Learning Python SDK ve skriptu Pythonu k protokolování libovolných metrik. Po spuštění dotaz metriky k určení, zda spuštění vytvořil model, který chcete nasadit.
 
@@ -187,7 +187,7 @@ Další informace najdete v těchto článcích:
 * [Trénovat modely ML s odhady](how-to-train-ml-models.md).
 * [Trénujte modely hlubokého učení Pytorch ve velkém měřítku pomocí Azure Machine Learning](how-to-train-pytorch.md).
 * [Trénování a registrace modelů TensorFlow ve velkém měřítku pomocí Azure Machine Learning](how-to-train-tensorflow.md).
-* [Trénování a registrace chainermodely ve velkém měřítku s Azure Machine Learning](how-to-train-chainer.md).
+* [Trénování a registrace chainermodely ve velkém měřítku s Azure Machine Learning](how-to-train-ml-models.md).
 
 ### <a name="endpoints"></a>Koncové body
 

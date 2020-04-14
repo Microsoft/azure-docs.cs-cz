@@ -4,12 +4,12 @@ description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 3c3c8a7bd47ae03a013ddfadffabaa16fd04412b
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b9cdb187aa3b8750bead8e81ad6d0ee50dcb3d6c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677544"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254916"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Jak obnovit data virtuálních virtuálních počítače Azure na webu Azure Portal
 
@@ -28,8 +28,6 @@ Azure Backup poskytuje řadu způsobů, jak obnovit virtuální počítač.
 
 > [!NOTE]
 > Můžete také obnovit konkrétní soubory a složky na virtuálním počítači Azure. [Další informace](backup-azure-restore-files-from-vm.md).
->
-> Pokud používáte [nejnovější verzi](backup-instant-restore-capability.md) Azure Backup pro virtuální počítače Azure (označované jako Okamžité obnovení), snímky se uchovávají až sedm dní a virtuální počítač můžete obnovit ze snímků před odesláním dat zálohy do trezoru. Pokud chcete obnovit virtuální ho virtuálního počítače ze zálohy z posledních sedmi dnů, je rychlejší obnovit ze snímku a ne z trezoru.
 
 ## <a name="storage-accounts"></a>Účty úložiště
 

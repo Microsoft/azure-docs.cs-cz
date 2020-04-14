@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6720a018cdc3fff95192b0956b3d1040be263ab2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76122606"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261846"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Přihlašovací údaje pro ukládání v trezoru klíčů Azure
 
@@ -32,7 +32,7 @@ Tato funkce závisí na identitě spravované z datové továrny. Zjistěte, jak
 Chcete-li odkazovat na přihlašovací údaje uložené v úložišti klíčů Azure, musíte:
 
 1. **Načtěte identitu spravovanou z továrny** z kopírováním hodnoty "ID spravovaného objektu identity" generovaného spolu s vaší továrnou. Pokud používáte vývojové ui ADF, id spravovaného objektu identity se zobrazí v okně vytvoření propojené služby Azure Key Vault; můžete také načíst z webu Azure Portal, odkazovat na [načíst identitu spravovanou z datové továrny](data-factory-service-identity.md#retrieve-managed-identity).
-2. **Udělte spravované identitě přístup k úložišti klíčů Azure.** Ve vašem trezoru klíčů -> Zásady přístupu -> Přidat nové -> prohledávat tuto spravovanou identitu a udělit **oprávnění Získat** v seznamu tajných oprávnění. Umožňuje této určené továrně přístup k tajným klíčům v trezoru klíčů.
+2. **Udělte spravované identitě přístup k úložišti klíčů Azure.** V trezoru klíčů -> Zásady přístupu -> Přidat zásady přístupu, vyhledejte tuto spravovanou identitu a **udělte vám** v rozevíracím seznamu Získat oprávnění v tajném oprávnění. Umožňuje této určené továrně přístup k tajným klíčům v trezoru klíčů.
 3. **Vytvořte propojenou službu směřující na trezor klíčů Azure.** Odkazovat na [azure key vault propojené služby](#azure-key-vault-linked-service).
 4. **Vytvořte propojenou službu úložiště dat, ve které se odkazuje na odpovídající tajný klíč uložený v trezoru klíčů.** Viz [referenční tajný klíč uložený v trezoru klíčů](#reference-secret-stored-in-key-vault).
 
@@ -47,13 +47,13 @@ Pro propojenou službu Azure Key Vault jsou podporovány následující vlastnos
 
 **Použití vývojového ui:**
 
-Klikněte na **Připojení** -> **propojené služby** -> **+New** -> hledat "Azure Key Vault":
+Vyberte **Možnost Připojení** -> **propojených služeb** -> **Nová**. V nové propojené službě vyhledejte a vyberte "Azure Key Vault":
 
-![Hledat AKV](media/store-credentials-in-key-vault/search-akv.png)
+![Hledání trezoru klíčů Azure](media/store-credentials-in-key-vault/search-akv.png)
 
 Vyberte zřízený trezor klíčů Azure, kde jsou uloženy vaše přihlašovací údaje. Můžete provést **test připojení,** abyste se ujistili, že vaše připojení AKV je platné. 
 
-![Konfigurace AKV](media/store-credentials-in-key-vault/configure-akv.png)
+![Konfigurace Azure Key Vaultu](media/store-credentials-in-key-vault/configure-akv.png)
 
 **Příklad JSON:**
 
@@ -87,7 +87,7 @@ Vyberte **Azure Key Vault** pro tajná pole při vytváření připojení k úlo
 >[!TIP]
 >Pro konektory pomocí připojovacího řetězce v propojené službě, jako je SQL Server, úložiště objektů Blob atd., můžete buď uložit pouze tajné pole, například heslo v AKV, nebo uložit celý připojovací řetězec v AKV. Obě možnosti najdete v ui.
 
-![Konfigurace tajného klíče AKV](media/store-credentials-in-key-vault/configure-akv-secret.png)
+![Konfigurace tajného klíče Azure Key Vault](media/store-credentials-in-key-vault/configure-akv-secret.png)
 
 **Příklad JSON: (viz část "heslo")**
 

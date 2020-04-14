@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010558"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262192"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -88,6 +88,7 @@ Reverzní DNS je podporován ve všech virtuálních sítích založených na AR
 * Dopředné vyhledávání na názvových \[názevch\]ve formuláři vmname .internal.cloudapp.net se přeloží na ADRESU IP přiřazenou virtuálnímu počítači.
 * Pokud je virtuální síť propojená s [privátními zónami Azure DNS](../dns/private-dns-overview.md) jako registrační virtuální síť, vrátí se zpětné dotazy DNS dva záznamy. Jeden záznam bude formuláře \[vmname\]. [priatednszonename] a další by \[měly\]být ve tvaru vmname .internal.cloudapp.net
 * Zpětné vyhledávání DNS je vymezeno na danou virtuální síť, i když je partnerský vztah k jiným virtuálním sítím. Reverzní dotazy DNS (dotazy PTR) pro IP adresy virtuálních počítačů umístěných v partnerských virtuálních sítích vrátí NXDOMAIN.
+* Pokud chcete vypnout funkci reverzní DNS ve virtuální síti, můžete tak učinit vytvořením zóny zpětného vyhledávání pomocí [privátních zón Azure DNS](../dns/private-dns-overview.md) a propojit tuto zónu s vaší virtuální sítí. Pokud je například adresní prostor IP virtuální sítě 10.20.0.0/16, můžete vytvořit prázdnou soukromou zónu DNS 20.10.in-addr.arpa a propojit ji s virtuální sítí. Při propojování zóny s vaší virtuální sítí byste měli zakázat automatickou registraci na odkazu. Tato zóna přepíše výchozí zóny zpětného vyhledávání pro virtuální síť a protože je tato zóna prázdná, získáte NXDOMAIN pro reverzní dotazy DNS. Podrobnosti o vytvoření privátní zóny DNS a propojení s virtuální sítí najdete v našem [průvodci rychlým startem.](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal)
 
 > [!NOTE]
 > Pokud chcete, aby se zpětné vyhledávání DNS rozšířilo napříč virtuální sítí, můžete vytvořit zónu zpětného vyhledávání (in-addr.arpa) [privátní zóny Azure DNS](../dns/private-dns-overview.md) a propojit ji s více virtuálními sítěmi. Budete však muset ručně spravovat reverzní záznamy DNS pro virtuální počítače.

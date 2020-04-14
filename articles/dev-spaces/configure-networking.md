@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Popisuje požadavky na sítě pro spuštění Azure Dev Spaces ve službách Azure Kubernetes Services
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery, CNI, kubenet, SDN, síť
-ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240571"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262039"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Konfigurace sítě pro Azure Dev Spaces v různých síťových topologii
 
@@ -20,9 +20,9 @@ Azure Dev Spaces běží na clusterech Služby Azure Kubernetes (AKS) s výchoz�
 
 ## <a name="virtual-network-or-subnet-configurations"></a>Konfigurace virtuální sítě nebo podsítě
 
-Cluster AKS může mít jinou konfiguraci virtuální sítě nebo podsítě, která omezuje příchozí nebo odchozí přenosy pro cluster AKS. Cluster může být například za bránou firewall, jako je například Brána Azure Firewall, nebo můžete použít skupiny zabezpečení sítě nebo vlastní role pro omezení síťového provozu.
+Cluster AKS může mít jinou konfiguraci virtuální sítě nebo podsítě, která omezuje příchozí nebo odchozí přenosy pro cluster AKS. Cluster může být například za bránou firewall, jako je například Brána Azure Firewall, nebo můžete použít skupiny zabezpečení sítě nebo vlastní role pro omezení síťového provozu. Ukázkovou konfiguraci sítě najdete v [ukázkovém úložišti Azure Dev Spaces na GitHubu][sample-repo].
 
-Azure Dev Spaces má určité požadavky pro *příchozí a odchozí síťový* provoz, jakož i příchozí přenos y *pouze* přenosy dat. Pokud používáte Azure Dev Spaces v clusteru AKS s virtuální sítí nebo konfigurací podsítě, která omezuje provoz pro váš cluster AKS, musíte postupovat pouze podle následujících požadavků na příchozí přenosy a odchozí přenosy, aby se azure dev spaces správně fungovat.
+Azure Dev Spaces má určité požadavky pro *příchozí a odchozí síťový* provoz, jakož i příchozí přenos y *pouze* přenosy dat. Pokud používáte Azure Dev Spaces v clusteru AKS s virtuální sítí nebo konfigurací podsítě, která omezuje provoz pro váš cluster AKS, musíte postupovat pouze podle následujících požadavků na příchozí přenos y a odchozí přenosy, aby azure dev spaces správně fungovaly.
 
 ### <a name="ingress-and-egress-network-traffic-requirements"></a>Požadavky na přenos v síti příchozích a odchozích přenosů
 
@@ -73,7 +73,7 @@ Azure Dev Spaces má možnost zpřístupnit koncové body pro vaše služby spu�
 * *Soukromý* koncový bod nasazuje řadič příchozího přenosu dat s privátní IP adresou. S privátní IP adresou je nástroj pro vyrovnávání zatížení vašeho clusteru přístupný pouze z virtuální sítě clusteru. Privátní IP adresa nástroje pro vyrovnávání zatížení je registrována na dns clusteru, takže služby uvnitř virtuální sítě clusteru jsou přístupné pomocí adresy URL. Tuto adresu URL `azds list-uris`můžete zobrazit pomocí aplikace .
 * Nastavení *žádné* pro možnost koncového bodu způsobí, že žádný řadič příchozího přenosu dat, které mají být nasazeny. Bez nasazeného řadiče příchozího přenosu dat nebudou [fungovat možnosti směrování Azure Dev Spaces.][dev-spaces-routing] Volitelně můžete implementovat vlastní řešení řadiče příchozího přenosu dat pomocí [traefik][traefik-ingress] nebo [NGINX][nginx-ingress], které umožní možnosti směrování znovu pracovat.
 
-Chcete-li nakonfigurovat možnost koncového bodu, použijte *-e* nebo *--endpoint* při povolení Azure Dev Spaces ve vašem clusteru. Například:
+Chcete-li nakonfigurovat možnost koncového bodu, použijte *-e* nebo *--endpoint* při povolení Azure Dev Spaces ve vašem clusteru. Příklad:
 
 > [!NOTE]
 > Možnost koncového bodu vyžaduje, abyste spouštěli Azure CLI verze 2.2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
@@ -109,4 +109,5 @@ Zjistěte, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace např�
 [endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
+[sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
 [team-quickstart]: quickstart-team-development.md

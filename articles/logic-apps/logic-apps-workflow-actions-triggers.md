@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e14cc00d1bd716b3e4880e585b05447d2e55e2b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270365"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257432"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Referenční příručka schématu pro typy aktivačních událostí a akcí v Aplikacích logiky Azure
 
@@ -73,10 +73,10 @@ Každý typ aktivační události má jiné rozhraní a vstupy, které definují
 
 | Typ aktivační události | Popis | 
 |--------------|-------------| 
-| [**Protokol HTTP**](#http-trigger) | Zkontroluje nebo *dotazování* libovolný koncový bod. Tento koncový bod musí odpovídat konkrétní aktivační smlouvy pomocí "202" asynchronní vzor nebo vrácením pole. | 
+| [**HTTP**](#http-trigger) | Zkontroluje nebo *dotazování* libovolný koncový bod. Tento koncový bod musí odpovídat konkrétní aktivační smlouvy pomocí "202" asynchronní vzor nebo vrácením pole. | 
 | [**HTTPWebhook**](#http-webhook-trigger) | Vytvoří volatelný koncový bod pro vaši aplikaci logiky, ale zavolá zadanou adresu URL k registraci nebo zrušení registrace. |
 | [**Opakování**](#recurrence-trigger) | Požáry na základě definovaného plánu. Můžete nastavit budoucí datum a čas pro spuštění této aktivační události. Na základě frekvence můžete také zadat časy a dny spuštění pracovního postupu. | 
-| [**Požadavek**](#request-trigger)  | Vytvoří volatelný koncový bod pro vaši aplikaci logiky a je také označován jako aktivační událost "ruční". Například najdete v tématu [Volání, aktivační události nebo vnoření pracovních postupů s koncovými body HTTP](../logic-apps/logic-apps-http-endpoint.md). | 
+| [**Žádost**](#request-trigger)  | Vytvoří volatelný koncový bod pro vaši aplikaci logiky a je také označován jako aktivační událost "ruční". Například najdete v tématu [Volání, aktivační události nebo vnoření pracovních postupů s koncovými body HTTP](../logic-apps/logic-apps-http-endpoint.md). | 
 ||| 
 
 ### <a name="managed-api-triggers"></a>Aktivační události spravovaného rozhraní API
@@ -821,10 +821,10 @@ Zde jsou některé běžně používané typy akcí:
 | [**Vytvořit**](#compose-action) | Vytvoří jeden výstup ze vstupů, které mohou mít různé typy. | 
 | [**Spuštění kódu JavaScript**](#run-javascript-code) | Spusťte fragmenty kódu JavaScriptu, které odpovídají určitým kritériím. Požadavky na kód a další informace naleznete v tématu [Přidání a spuštění fragmentů kódu s vsazeným kódem](../logic-apps/logic-apps-add-run-inline-code.md). |
 | [**Funkce**](#function-action) | Volá funkci Azure. | 
-| [**Protokol HTTP**](#http-action) | Volá koncový bod HTTP. | 
+| [**HTTP**](#http-action) | Volá koncový bod HTTP. | 
 | [**Připojit**](#join-action) | Vytvoří řetězec ze všech položek v poli a odděluje tyto položky se zadaným znakem oddělovače. | 
 | [**Analyzovat JSON**](#parse-json-action) | Vytvoří uživatelsky přívětivé tokeny z vlastností v obsahu JSON. Potom můžete odkazovat na tyto vlastnosti zahrnutím tokeny ve vaší aplikaci logiky. | 
-| [**Dotazu**](#query-action) | Vytvoří pole z položek v jiném poli na základě podmínky nebo filtru. | 
+| [**Dotaz**](#query-action) | Vytvoří pole z položek v jiném poli na základě podmínky nebo filtru. | 
 | [**Reakce**](#response-action) | Vytvoří odpověď na příchozí hovor nebo požadavek. | 
 | [**Vyberte**](#select-action) | Vytvoří pole s objekty JSON transformací položek z jiného pole na základě zadané mapy. | 
 | [**Table**](#table-action) | Vytvoří tabulku CSV nebo HTML z pole. | 
@@ -2407,11 +2407,17 @@ Výchozí chování aktivačních událostí a akcí `operationOptions` můžete
 
 Ve výchozím nastavení instance pracovního postupu aplikace logiky všechny spustit ve stejnou dobu (souběžně nebo paralelně). Toto chování znamená, že každá instance aktivační události se aktivuje před dokončením spuštění dříve aktivní instance pracovního postupu. Počet souběžně spuštěných instancí má však [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Když počet souběžně spuštěných instancí pracovního postupu dosáhne tohoto limitu, musí všechny ostatní nové instance čekat na spuštění. Toto omezení pomáhá řídit počet požadavků, které back-endové systémy přijímat.
 
-Chcete-li změnit výchozí limit, můžete použít editor zobrazení kódu nebo Návrhář logic apps, protože `runtimeConfiguration.concurrency.runs` změna nastavení souběžnosti prostřednictvím návrháře přidá nebo aktualizuje vlastnost v definici základní aktivační události a naopak. Tato vlastnost řídí maximální počet instancí pracovního postupu, které lze spustit paralelně. Zde jsou některé důležité informace o tom, kdy chcete povolit řízení souběžnosti:
+Když zapnete řízení souběžnosti aktivační události, instance aktivační události spustit paralelně až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Chcete-li změnit tento výchozí limit souběžnosti, můžete použít editor zobrazení kódu nebo Návrhář logic apps, protože změna nastavení souběžnosti prostřednictvím návrháře přidá nebo aktualizuje `runtimeConfiguration.concurrency.runs` vlastnost v definici základní aktivační události a naopak. Tato vlastnost řídí maximální počet nových instancí pracovního postupu, které lze spustit paralelně.
+
+Zde jsou některé důležité informace o tom, kdy chcete povolit souběžnost na aktivační události:
 
 * Pokud je povolena souběžnost, [limit SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) je výrazně snížena pro [debatní pole](#split-on-debatch). Pokud počet položek překročí tento limit, je funkce SplitOn zakázána.
 
-* Při souběžnosti je povolena, dlouhotrvající instance aplikace logiky může způsobit nové instance aplikace logiky pro zadání stavu čekání. Tento stav zabraňuje Azure Logic Apps z vytváření nových instancí a stane i v případě, že počet souběžných spuštění je menší než zadaný maximální počet souběžných spuštění.
+* Souběžnost nelze zakázat po povolení ovládacího prvku souběžnosti.
+
+* Pokud je povolena souběžnost, [limit SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) je výrazně snížena pro [debatní pole](#split-on-debatch). Pokud počet položek překročí tento limit, je funkce SplitOn zakázána.
+
+* Pokud je povolena souběžnost, dlouhotrvající instance aplikace logiky může způsobit, že nové instance aplikace logiky zadají stav čekání. Tento stav zabraňuje Azure Logic Apps z vytváření nových instancí a stane i v případě, že počet souběžných spuštění je menší než zadaný maximální počet souběžných spuštění.
 
   * Chcete-li tento stav přerušit, zrušte nejstarší instance, které jsou *stále spuštěny*.
 

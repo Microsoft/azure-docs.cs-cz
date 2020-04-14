@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ccfaa57b8e8fdea325bed908ffe8815b09d0d15
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271158"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257789"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace s centrem IoT pomocí protokolu MQTT
 
@@ -118,7 +118,7 @@ Pokud zařízení nemůže používat sady SDK zařízení, může se stále př
 
   Další informace o tom, jak generovat tokeny SAS, naleznete v části zařízení [pomocí tokenů zabezpečení služby IoT Hub](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app).
 
-  Při testování můžete také použít nástroje [Azure IoT pro vizuální studio](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) pro různé platformy nebo nástroj Průzkumník [zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) k rychlému generování tokenu SAS, který můžete zkopírovat a vložit do vlastního kódu:
+  Při testování můžete také použít nástroje [Azure IoT pro vizuální studio](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) pro různé platformy nebo příkaz rozšíření příkazu CLI [az iot hub generate-sas-token,](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) abyste rychle vygenerovali token SAS, který můžete zkopírovat a vložit do vlastního kódu:
 
 ### <a name="for-azure-iot-tools"></a>Pro nástroje Azure IoT
 
@@ -129,16 +129,6 @@ Pokud zařízení nemůže používat sady SDK zařízení, může se stále př
 3. Nastavte **čas vypršení platnosti** a stiskněte klávesu Enter.
   
 4. Token SAS je vytvořen a zkopírován do schránky.
-
-### <a name="for-device-explorer"></a>Pro Průzkumníka zařízení
-
-1. Přejděte na kartu **Správa** v **Průzkumníkovi zařízení**.
-
-2. Klikněte na **Token SAS** (vpravo nahoře).
-
-3. Na **SASTokenForm**vyberte zařízení v rozevíracím souboru **DeviceID.** Nastavte **ttl**.
-
-4. Chcete-li vytvořit token, klepněte na **tlačítko Generovat.**
 
    Vygenerovaný token SAS má následující strukturu:
 
@@ -286,7 +276,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Odesílání zpráv mezi zařízeními a cloudy
 
-Po úspěšném připojení může zařízení odesílat zprávy do `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` služby IoT Hub pomocí nebo jako **název tématu**. Prvek `{property_bag}` umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Například:
+Po úspěšném připojení může zařízení odesílat zprávy do `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` služby IoT Hub pomocí nebo jako **název tématu**. Prvek `{property_bag}` umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Příklad:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -359,7 +349,7 @@ Následující sekvence popisuje, jak zařízení aktualizuje hlášené vlastno
 
 3. Služba pak odešle zprávu odpovědi, která obsahuje novou hodnotu `$iothub/twin/res/{status}/?$rid={request id}`ETag pro kolekci ohlášených vlastností na téma . Tato zpráva odpovědi používá stejné **ID požadavku** jako požadavek.
 
-Text zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro ohlášené vlastnosti. Každý člen dokumentu JSON aktualizuje nebo přidat odpovídající člen v dokumentu dvojčete zařízení. Člen nastavenna `null`na , odstraní člen z obsahující objekt. Například:
+Text zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro ohlášené vlastnosti. Každý člen dokumentu JSON aktualizuje nebo přidat odpovídající člen v dokumentu dvojčete zařízení. Člen nastavenna `null`na , odstraní člen z obsahující objekt. Příklad:
 
 ```json
 {
@@ -397,7 +387,7 @@ Další informace naleznete v [příručce pro vývojáře dvojčat zařízení]
 
 ## <a name="receiving-desired-properties-update-notifications"></a>Příjem oznámení o aktualizaci požadovaných vlastností
 
-Když je připojeno zařízení, služba IoT `$iothub/twin/PATCH/properties/desired/?$version={new version}`Hub odešle oznámení tématu , která obsahují obsah aktualizace prováděné back-endem řešení. Například:
+Když je připojeno zařízení, služba IoT `$iothub/twin/PATCH/properties/desired/?$version={new version}`Hub odešle oznámení tématu , která obsahují obsah aktualizace prováděné back-endem řešení. Příklad:
 
 ```json
 {

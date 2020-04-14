@@ -1,7 +1,7 @@
 ---
-title: Ladění kanálů strojového učení a řešení souvisejících potíží
+title: Ladění & odstraňování potíží s kanály ML
 titleSuffix: Azure Machine Learning
-description: Ladění a řešení potíží s kanály strojového učení v Azure Machine Learning SDK pro Python. Seznamte se s běžnými náskali pro vývoj kanálů a tipy, které vám pomohou ladit skripty před a během vzdáleného spuštění. Naučte se používat visual studio kód interaktivně ladit vaše kanály strojového učení.
+description: Ladění kanálu Azure Machine Learning v Pythonu. Seznamte se s běžnými náskali pro vývoj kanálů a tipy, které vám pomohou ladit skripty před a během vzdáleného spuštění. Naučte se používat visual studio kód interaktivně ladit vaše kanály strojového učení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80388980"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257203"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Následující části poskytují přehled běžných úskalí při vytváření
 
 ### <a name="testing-scripts-locally"></a>Testování skriptů místně
 
-Jednou z nejběžnějších chyb v kanálu je, že připojený skript (skript pro čištění dat, skript pro vyhodnocování atd.) není spuštěn tak, jak má, nebo obsahuje chyby za běhu ve vzdáleném výpočetním kontextu, které je obtížné ladit ve vašem pracovním prostoru v Azure Machine Učící se studio. 
+Jednou z nejběžnějších chyb v kanálu je, že připojený skript (skript pro čištění dat, skript vyhodnocování atd.) neběží tak, jak má, nebo obsahuje chyby za běhu ve vzdáleném výpočetním kontextu, které je obtížné ladit ve vašem pracovním prostoru ve studiu Azure Machine Learning. 
 
 Samotné kanály nelze spustit místně, ale spuštění skriptů v izolaci v místním počítači umožňuje ladění rychleji, protože nemusíte čekat na výpočetní a environmentální proces sestavení. K tomu je nutná některá vývojová práce:
 
@@ -50,7 +50,7 @@ Jakmile budete mít nastavení skriptu pro spuštění v místním prostředí, 
 
 ### <a name="debugging-scripts-from-remote-context"></a>Ladění skriptů ze vzdáleného kontextu
 
-Testování skriptů místně je skvělý způsob, jak ladit hlavní fragmenty kódu a komplexní logiku před zahájením vytváření kanálu, ale v určitém okamžiku budete pravděpodobně muset ladit skripty během samotného spuštění kanálu, zejména při diagnostice chování, ke kterému dochází během interakce mezi kroky kanálu. Doporučujeme liberální `print()` použití příkazů ve skriptech kroku, abyste viděli stav objektu a očekávané hodnoty během vzdáleného spuštění, podobně jako byste ladili kód JavaScriptu.
+Testování skriptů místně je skvělý způsob, jak ladit hlavní fragmenty kódu a složité logiky před zahájením vytváření kanálu, ale v určitém okamžiku budete pravděpodobně muset ladit skripty během samotného spuštění kanálu, zejména při diagnostice chování, ke kterému dochází během interakce mezi kroky kanálu. Doporučujeme liberální `print()` použití příkazů ve skriptech kroku, abyste viděli stav objektu a očekávané hodnoty během vzdáleného spuštění, podobně jako byste ladili kód JavaScriptu.
 
 Soubor `70_driver_log.txt` protokolu obsahuje: 
 
@@ -88,7 +88,7 @@ Následující tabulka obsahuje běžné problémy během vývoje kanálu s pote
 
 Níže uvedená tabulka obsahuje informace o různých možnostech ladění pro kanály. Není to vyčerpávající seznam, protože existují i jiné možnosti kromě azure machine learningu, Pythonu a opencensusu, které jsou zobrazeny zde.
 
-| Knihovna                    | Typ   | Příklad                                                          | Cíl                                  | Prostředky                                                                                                                                                                                                                                                                                                                    |
+| Knihovna                    | Typ   | Příklad                                                          | Cíl                                  | Zdroje a prostředky                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | Metrika | `run.log(name, val)`                                             | Azure Machine Learning Portal UI             | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br>[třída azureml.core.Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
 | Python tisk/protokolování    | Protokol    | `print(val)`<br>`logging.info(message)`                          | Protokoly ovladačů, návrhář Azure Machine Learning | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Protokolování v Pythonu](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |

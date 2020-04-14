@@ -3,12 +3,12 @@ title: Časté otázky týkající se zotavení po havárii společnosti VMware 
 description: Pomocí Azure Site Recovery najdete odpovědi na běžné otázky týkající se obnovení místních virtuálních zařízení VMware v Azure.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ae16138ae44262f53a8f9948d6287f0acf621244
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240026"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259506"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné otázky týkající se replikace z VMware do Azure
 
@@ -96,7 +96,7 @@ Instalační programy jsou ve složce %ProgramData%\ASR\home\svsystems\pushinsta
 Na každém virtuálním počítači, který chcete replikovat, nainstalujte službu jednou z několika metod:
 
 - [Push instalace](vmware-physical-mobility-service-overview.md#push-installation)
-- [Ruční instalace](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui) z nového prostředí nebo prostředí PowerShell
+- [Ruční instalace](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui) z nového prostředí nebo prostředí PowerShell
 - Nasazení pomocí nástroje pro nasazení, jako je [nástroj Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md)
 
 ## <a name="managed-disks"></a>Spravované disky

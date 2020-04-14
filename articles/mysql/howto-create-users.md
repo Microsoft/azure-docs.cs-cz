@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/2/2020
-ms.openlocfilehash: 99b614de87c666d1cb1fb8a34eaafadf6fa82849
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f8c020da72e9cdf8777a3eefac266e97e4a312bd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632553"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263467"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Vytvoření uživatelů v Azure Database pro mySQL server
 
@@ -92,4 +92,4 @@ Po vytvoření azure databáze pro mysql server, můžete použít první účet
 
 Otevřete bránu firewall pro IP adresy počítačů nových uživatelů, abyste jim umožnili připojení: [Vytvořte a spravujte pravidla brány firewall Azure Database for MySQL pomocí portálu Azure nebo](howto-manage-firewall-using-portal.md) [nastavení uživatelského příkazu Azure](howto-manage-firewall-using-cli.md).
 
-Další informace o správě uživatelských účtů naleznete v dokumentaci k produktu MySQL pro [správu uživatelských účtů](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), [syntaxi GRANT](https://dev.mysql.com/doc/refman/5.7/en/grant.html)a [oprávnění](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).
+Další informace o správě uživatelských účtů naleznete v dokumentaci k produktu MySQL pro [správu uživatelských účtů](https://dev.mysql.com/doc/refman/5.7/en/access-control.html), [syntaxi GRANT](https://dev.mysql.com/doc/refman/5.7/en/grant.html)a [oprávnění](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).

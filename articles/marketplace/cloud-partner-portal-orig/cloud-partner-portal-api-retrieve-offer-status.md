@@ -5,24 +5,25 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280503"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255906"
 ---
-<a name="retrieve-offer-status"></a>Načtení stavu nabídky 
-=====================
+# <a name="retrieve-offer-status"></a>Načtení stavu nabídky
+
+> [!NOTE]
+> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
 
 Načte aktuální stav nabídky.
 
   `GET  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/status?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>Parametry identifikátoru URI
---------------
+## <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 |  **Název**       |   **Popis**                            |  **Datový typ** |
 |  -------------  |  ------------------------------------------  |  ------------  |
@@ -32,8 +33,8 @@ Načte aktuální stav nabídky.
 |  |  |
 
 
-<a name="header"></a>Hlavička
-------
+## <a name="header"></a>Hlavička
+
 
 |  Name (Název)           |  Hodnota               |
 |  -------------  | -------------------  |
@@ -41,9 +42,8 @@ Načte aktuální stav nabídky.
 |  Autorizace  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
+## <a name="body-example"></a>Příklad těla
 
-<a name="body-example"></a>Příklad těla
-------------
 
 ### <a name="response"></a>Odpověď
 
@@ -115,8 +115,7 @@ Načte aktuální stav nabídky.
       ],
       "previewLinks": [],
       liveLinks": [],
-      "notificationEmails": "jdoe@contoso.com"
-  } 
+  }
 ```
 
 
@@ -136,9 +135,8 @@ Načte aktuální stav nabídky.
 |  processProcento    | Procentuální dokončení kroku                                                              |
 |  náhledOdkazy         | *Není aktuálně implementováno*                                                                    |
 |  liveOdkazy            | *Není aktuálně implementováno*                                                                    |
-|  oznámeníEee   | Seznam e-mailových adres oddělených čárkami, které mají být oznámeny průběhu operace        |
+|  oznámeníEee   | Zastaralé pro nabídky migrované do Centra partnerů. E-maily s oznámením pro migrované nabídky budou odeslány na e-mail uvedený v části Kontaktní údaje prodejce v nastavení účtu.<br><br>U nemigrovaných nabídek je třeba o průběhu operace upozornit seznam e-mailových adres oddělených čárkami.        |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Stavové kódy odpovědi
 
@@ -148,7 +146,6 @@ Načte aktuální stav nabídky.
 |  400     | `Bad/Malformed request`- Tělo odpovědi na chybu může obsahovat více informací.                 |
 |  404     | `Not found`- Zadaná entita neexistuje.                                                |
 |  |  |
-
 
 ### <a name="offer-status"></a>Stav nabídky
 
@@ -162,7 +159,6 @@ Načte aktuální stav nabídky.
 |  Zrušeno                    | Odeslání nabídky bylo zrušeno.                           |
 |  Failed                      | Odeslání nabídky se nezdařilo.                                 |
 |  |  |
-
 
 ### <a name="step-status"></a>Stav kroku
 

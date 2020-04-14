@@ -5,20 +5,22 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 4e04f521ed2023dfb9cd562549cb2e1bcd319b8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4d4d5cb16e1037458d09f8c7681ab2d2ecf8676
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288627"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256327"
 ---
 # <a name="api-considerations"></a>Důležité informace o rozhraní API
 
-
 <a name="api-versioning"></a>Správa verzí rozhraní API
 --------------
+
+> [!NOTE]
+> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
 
 Může existovat více verzí rozhraní API, které jsou k dispozici současně. Klienti musí určit, kterou verzi chtějí `api-version` vyvolat použití zadáním parametru jako součást řetězce dotazu.
 

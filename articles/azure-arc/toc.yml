@@ -1,21 +1,23 @@
 - name: Dokumentace ke službě Azure Arc
   href: index.yml
 - name: Přehled
-  expanded: true
   items:
     - name: Co je Azure Arc pro servery?
       href: ./servers/overview.md
-- name: Připojení ke službě Azure Arc
-  expanded: true
+- name: Návody
   items:
-    - name: Připojení počítačů ke službě Azure Arc z webu Azure Portal
-      href: ./servers/onboard-portal.md
-    - name: Připojení počítačů ve velkém měřítku s využitím instančního objektu
-      href: ./servers/onboard-service-principal.md
-    - name: Připojení počítačů ke službě Azure Arc s využitím DSC PowerShellu
-      href: ./servers/onboard-dsc.md
-- name: Správa agenta
-  href: ./servers/manage-agent.md
+    - name: Připojení ke službě Azure Arc
+      items:
+        - name: Připojení počítačů ke službě Azure Arc z webu Azure Portal
+          href: ./servers/onboard-portal.md
+        - name: Připojení počítačů ve velkém měřítku s využitím instančního objektu
+          href: ./servers/onboard-service-principal.md
+        - name: Připojení počítačů ke službě Azure Arc s využitím DSC PowerShellu
+          href: ./servers/onboard-dsc.md
+    - name: Spravovat
+      items:
+        - name: Správa agenta
+          href: ./servers/manage-agent.md
 - name: Referenční informace
   items:
     - name: Rozhraní příkazového řádku agenta připojeného počítače Azure

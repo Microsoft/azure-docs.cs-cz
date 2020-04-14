@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k komerčnímu tržišti společnosti Microsoft
+title: Nejčastější dotazy k komerčním tržištím společnosti Microsoft
 description: Odpovědi na běžné otázky týkající se Azure Marketplace a Microsoft AppSource
 author: qianw211
 ms.service: marketplace
@@ -7,20 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/4/2019
 ms.author: dsindona
-ms.openlocfilehash: ae5c691375d52bc7da7a877f5b2e0c2ca52cc87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288457"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262022"
 ---
-# <a name="microsoft-commercial-marketplace-faqs"></a>Nejčastější dotazy k komerčnímu tržišti společnosti Microsoft
+# <a name="microsoft-commercial-marketplace-faqs"></a>Nejčastější dotazy ke komerčnímu marketplace Microsoftu
 
-Odpovědi na běžné otázky týkající se Azure Marketplace a Microsoft AppSource.
+Odpovědi na běžné otázky týkající se komerčního trhu.
 
 ## <a name="faq-for-customers"></a>Nejčastější dotazy pro zákazníky
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Co potřebujete vědět o Azure Marketplace a Microsoft AppSource
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Co potřebujete vědět o komerčním trhu
 
 **Co je Azure Marketplace?**
 
@@ -168,11 +168,11 @@ Ano, u zákazníků smlouvy Enterprise (EA) může správce registrace vypnout o
 
 **Jaké způsoby platby jsou podporovány pro nákupy na komerčním trhu?**
 
-Zákazníci si můžou nabídky zakoupit na Azure Marketplace a Microsoft AppSource pomocí platebních karet. Pokud máte existující předplatné Azure, nákupy z Azure Marketplace budou používat způsob platby nakonfigurovaný na účtu a zobrazí se na stejné faktuře jako samostatná řádková položka. Některé nabídky spotřebovávají peněžní závazek Azure, ale většina nákupů na komerčním trhu nečerpá závazky smlouvy Enterprise, i když spotřeba infrastruktury Azure bude.
+Zákazníci si mohou zakoupit nabídky z komerčního trhu pomocí kreditních karet. Pokud máte existující předplatné Azure, nákupy z Azure Marketplace budou používat způsob platby nakonfigurovaný na účtu a zobrazí se na stejné faktuře jako samostatná řádková položka. Některé nabídky spotřebovávají peněžní závazek Azure, ale většina nákupů na komerčním trhu nečerpá závazky smlouvy Enterprise, i když spotřeba infrastruktury Azure bude.
 
 **Můžu na nabídky Azure Marketplace použít kredity předplatného Azure nebo peněžní prostředky na závazky na svém účtu?**
 
-Konkrétní nabídky Azure Marketplace můžou využívat kredity předplatného Azure nebo fondy peněžních závazků. Úplný seznam produktů zapojených do tohoto programu najdete v tématu [Peněžní závazek Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/). Tyto nabídky nezahrnují možnosti BYOL nebo BYOS. Všechny ostatní nabídky Azure Marketplace nemohou používat kredity předplatného Azure ani peněžní závazek: jako je bezplatný měsíční zkušební kredit, měsíční kredity MSDN, kredity z propagačních akcí Azure, zůstatky peněžních závazků a další bezplatné kredity poskytované Azure.
+Konkrétní nabídky Azure Marketplace můžou využívat kredity předplatného Azure nebo fondy peněžních závazků. Úplný seznam produktů zapojených do tohoto programu najdete v tématu [Peněžní závazek Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/). Tyto nabídky nezahrnují možnosti BYOL nebo BYOS. Všechny ostatní nabídky Azure Marketplace nemohou používat kredity předplatného Azure ani peněžní závazek: jako je bezplatný měsíční zkušební kredit, měsíční kredity MSDN, kredity z propagačních akcí Azure, zůstatky peněžních závazků a další bezplatné kredity poskytované z Azure.
 
 **Vztahují se na nákupy na Azure Marketplace slevy na multilicence?**
 
@@ -258,12 +258,12 @@ Ano, je možné, aby zákazník vlastnil dva plány ze stejné nabídky současn
 
 **Liší se zásady refundace a změny plánu podle výkladní skříně?**
 
-Ne, obchodní zásady jsou konzistentní napříč Azure Marketplace a Microsoft AppSource. Pokud je partner emitován partnerem v programu Cloud Solution Provide, může partner vynutit pro své zákazníky jiné zásady.
+Ne, obchodní zásady jsou konzistentní na celém komerčním trhu. Pokud je partner emitován partnerem v programu Cloud Solution Provide, může partner vynutit pro své zákazníky jiné zásady.
 
 
 ## <a name="faq-for-publishers"></a>Nejčastější dotazy pro majitele stránek
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Co potřebujete vědět o Azure Marketplace a Microsoft AppSource
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Co potřebujete vědět o komerčním trhu
 
 **Co je Azure Marketplace?**
 
@@ -347,7 +347,7 @@ Po dokončení nabídky a nastavení cíle zájemce může být výpis správně
 
 **Z jakých zemí nebo oblastí jsou Azure Marketplace k dispozici pro vydavatele k prodeji?**
 
-Vydavatelé se sídlem v následujících zemích nebo oblastech se můžou v současné době prodávat na Azure Marketplace: Afghánistán, Albánie, Alžírsko, Angola, Antigua a Barbuda, Argentina, Arménie, Austrálie, Rakousko, Ázerbájdžán, Bahrajn, Bangladéš, Bělorusko, Belgie, Benin, Bolívie, Bosna a Hercegovina, Botswana, Brazílie, Bulharsko, Burkina Faso, Burundi, Kambodža, Kamerun, Kanada, Středoafrická republika, Čad, Chile, Kolumbie, Komory, Kongo, Kongo (Konžská republika), Kostarika, Pobřeží slonoviny, Chorvatsko, Kypr, Česká republika, Česká republika, Dánsko, Dominika, Dominikánská republika, Ekvádor, Egypt, Salvador, Eritrea, Estonsko, Etiopie, Fidži Finsko, Francie, Gruzie, Německo, Ghana, Řecko, Guatemala, Guinea, Haiti, Honduras, Hongkong – zvláštní správní oblast, Maďarsko, Island, Indie, Indonésie, Irák, Irsko, Izrael, Itálie, Jamajka, Japonsko, Jordánsko, Kazachstán, Keňa, Korea (Jih), Kuvajt, Laos, Lotyšsko, Libanon, Libérie, Lichtenštejnsko, Litva, Lucembursko, Madagaskar, Malawi, Malajsie, Mali, Malta, Mauricius, Mexiko, Monako, Monako, Černá Hora, Malajsie, Malajsie, Mali, Malta, Mauricius, Mexiko, Monako, Mongolsko, Černá Hora, Malajsie, Mali, Malta, Mauricius, Mexiko, Monako, Monako, Černá Hora, Maroko, Mosambik, Nepál, Nizozemsko, Nový Zéland, Nikaragua, Niger, Nigérie, Norsko, Omán, Pákistán, Panama, Paraguay, Peru, Filipíny, Polsko, Portugalsko, Katar, Rumunsko, Rusko, Rwanda, Saúdská Arábie, Senegal, Srbsko, Sierra Leone, Singapur, Slovensko, Slovinsko, Somálsko, Jihoafrická republika, Španělsko, Srí Lanka, Švédsko, Švýcarsko, Tádžikistán, Tanzanie, Thajsko, Východní Timor, Togo, Tonga, Trinidad a Tobago, Tunisko, Turecko, Turkmenistán, Uganda, Ukrajina, Spojené arabské emiráty, Spojené království, Spojené království, Spojené království, Spojené království, Spojené království, Spojené království, Spojené království, Spojené království, Spojené království, Spojené království, Spojené království, Spojené království, Spojené království státy, Uruguay, Uzbekistán, Venezuela, Vietnam, Zambie a Zimbabwe.
+Vydavatelé se sídlem v následujících zemích nebo oblastech mohou v současné době prodávat na azure marketplace: Afghánistán, Albánie, Alžírsko, Angola, Antigua a Barbuda, Argentina, Arménie, Austrálie, Rakousko, Ázerbájdžán, Bahrajn, Bangladéš, Bělorusko, Belgie, Benin, Bolívie, Bosna a Hercegovina, Botswana, Brazílie, Bulharsko, Burkina Faso, Burundi, Kambodža, Kamerun, Kanada, Středoafrická republika, Čad, Chile, Kolumbie, Komory, Kongo, Kongo, Kostarika, Pobřeží slonoviny, Chorvatsko, Kypr, Česká republika, Dánsko, Dominika, Dominikánská republika, Ekvádor, Egypt, Salvador, Eritrea, Estonsko, Estonsko, Estonsko, Etiopie, Fidži, Finsko, Francie, Gruzie, Německo, Ghana, Řecko, Guatemala, Guinea, Haiti, Honduras, Hongkong – zvláštní správní oblast, Maďarsko, Island, Indie, Indonésie, Irák, Irsko, Izrael, Itálie, Jamajka, Japonsko, Jordánsko, Kazachstán, Keňa, Korea (Jih), Kuvajt, Laos, Lotyšsko, Libanon, Libérie, Lichtenštejnsko, Litva, Lucembursko, Madagaskar, Malawi, Malajsie, Mali, Malta, Mauricius, Mexiko, Monako, Mongolsko, Černá Hora , Maroko, Mosambik, Nepál, Nizozemsko, Nový Zéland, Nikaragua, Niger, Nigérie, Norsko, Omán, Pákistán, Panama, Paraguay, Peru, Filipíny, Polsko, Portugalsko, Katar, Rumunsko, Rusko, Rwanda, Saúdská Arábie, Senegal, Srbsko, Sierra Leone, Singapur, Slovensko, Slovinsko, Somálsko, Jihoafrická republika, Španělsko, Srí Lanka, Švédsko, Švýcarsko, Tádžikistán, Tanzanie, Thajsko, Východní Timor, Togo, Tonga, Trinidad a Tobago, Tunisko, Turecko, Turkmenistán, Uganda, Ukrajina, Spojené arabské emiráty, Spojené království, Spojené státy americké, Uruguay, Uzbekistán, Venezuela, Vietnam, Zambie a Zimbabwe.
 
 **Jak odstraním zápis z Azure Marketplace?**
 
@@ -372,8 +372,8 @@ Další informace naleznete v [tématu Odstranění nabídky](./cloud-partner-po
 
 *Aplikace O365:*
 
-1.  Přihlaste <https://sellerdashboard.microsoft.com> se ke svému dev účtu.
-1.  Stáhněte doplněk.
+1.    Přihlaste <https://sellerdashboard.microsoft.com> se ke svému dev účtu.
+1.    Stáhněte doplněk.
 
     > [!NOTE]
     > Aplikace zmizí z existujícího zápisu po 90 dnech.
@@ -422,7 +422,7 @@ Pokud chcete s nákupem na Azure Marketplace řešit účty a předplatné, kont
 
 **Na koho se mám obrátit s otázkami týkajícími se publikování nebo správy nabídek?**
 
-Aktuální informace o zdrojích a dokumentaci k nejčastějším dotazům najdete v [Průvodci vydavateli Azure Marketplace.](marketplace-publishers-guide.md) Kromě toho můžete protokolovat lístek s [podporou společnosti Microsoft v Centru partnerů](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Aktuální informace o zdrojích a dokumentaci k nejčastějším dotazům najdete v [průvodci vydavatelem komerčního tržiště.](marketplace-publishers-guide.md) Kromě toho můžete protokolovat lístek s [podporou společnosti Microsoft v Centru partnerů](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace pro vydavatele
 
@@ -473,7 +473,7 @@ Ano, na vaši žádost prostřednictvím lístku podpory zpracuje společnost Mi
 
 ## <a name="next-steps"></a>Další kroky
 
-Navštivte stránku [průvodce Azure Marketplace a AppSource Publisher.](/azure/marketplace/marketplace-publishers-guide)
+Navštivte stránku [s průvodcem vydavatelem komerčního trhu.](/azure/marketplace/marketplace-publishers-guide)
 
 
-[Portál Azure]: https://portal.azure.com
+[portál Azure]: https://portal.azure.com

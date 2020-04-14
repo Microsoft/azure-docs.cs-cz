@@ -1,6 +1,6 @@
 ---
-title: Určení možnosti publikování v Microsoft AppSource a Azure Marketplace
-description: Tento článek popisuje kritéria způsobilosti a požadavky na publikování, kteří se snaží pochopit, jak publikovat aplikace na Microsoft AppSource a Azure Marketplace.
+title: Určení možnosti publikování na komerčním trhu
+description: Tento článek popisuje kritéria způsobilosti a požadavky na publikování, kteří se snaží pochopit, jak publikovat aplikace na komerčním trhu.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: dsindona
-ms.openlocfilehash: 4c41fcbb8766feb68db7d60d591e914a6ba0aea2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 84d5c351f3997fe5430ea1ce517c2dca13203c03
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349527"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261682"
 ---
 # <a name="determine-your-publishing-option"></a>Určení možnosti publikování
 
 Možnost publikování, kterou zvolíte pro svou nabídku, se přímo vztahuje jak na požadavky na způsobilost, tak na výhody GTM na komerčním trhu. Ještě důležitější je, že výběr možnosti publikování a typu nabídky definuje, jak budou uživatelé komunikovat s vaší komerční nabídkou tržiště.
 
-Chcete-li nakonfigurovat nabídku, musíte pochopit následující klíčové koncepty komerčního tržiště: možnosti publikování, typy nabídek a konfigurace a výzvy k akci, které budou řídit, jak a kde je vaše nabídka prezentována na komerčním trhu. Vitríny.
+Chcete-li nakonfigurovat nabídku, musíte pochopit následující klíčové koncepty komerčního tržiště: možnosti publikování, typy nabídek a konfigurace a výzvy k akci, které budou řídit, jak a kde je vaše nabídka prezentována v obchodních prodejněch.
 
 ![Obchodní výlohy a možnosti publikování na komerčním trhu společnosti Microsoft](./media/marketplace-publishers-guide/storefronts_options_table.png)
 

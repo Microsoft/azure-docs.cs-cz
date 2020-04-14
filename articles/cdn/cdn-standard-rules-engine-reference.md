@@ -2,19 +2,19 @@
 title: Odkaz na modul standardních pravidel pro Azure CDN | Dokumenty společnosti Microsoft
 description: Referenční dokumentace pro podmínky a akce shody v modulu standardních pravidel pro síť doručování obsahu Azure (Azure CDN).
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: aa401150ee7a0f02e809ad702b8247e18081c8a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 6d4fa4451c3db3d6f2a506eabd5676d18b0219f4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74171564"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259897"
 ---
-# <a name="standard-rules-engine-reference-for-azure-cdn"></a>Odkaz na modul standardních pravidel pro Azure CDN
+# <a name="standard-rules-engine-reference-for-azure-cdn"></a>Reference ke stroji pravidel Standard pro Azure CDN
 
 V [modulu standardnípravidla](cdn-standard-rules-engine.md) pro Azure Content Delivery Network (Azure CDN) se pravidlo skládá z jedné nebo více podmínek shody a akce. Tento článek obsahuje podrobný popis podmínek shody a funkce, které jsou k dispozici v modulu standardní pravidla pro Azure CDN.
 

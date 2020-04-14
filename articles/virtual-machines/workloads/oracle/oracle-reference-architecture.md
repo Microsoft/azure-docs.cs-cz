@@ -2,7 +2,7 @@
 title: Referenční architektury pro databáze Oracle v Azure | Dokumenty společnosti Microsoft
 description: Odkazuje na architektury pro spouštění databází Oracle Database Enterprise Edition na virtuálních počítačích Microsoft Azure.
 services: virtual-machines-linux
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.service: virtual-machines
@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 235482f5d44877e5c4e47aed4d7eaf2baea5c3fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dc677ded1e13a64c082d49140fa0de69c0ed9d4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75560330"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263263"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
 
@@ -177,7 +177,7 @@ Následující diagram je referenční architektura pro Oracle Sharding s Oracle
 
 ![Oracle Database Sharding pomocí zón dostupnosti s zprostředkovatelem ochrany dat - FSFO](./media/oracle-reference-architecture/oracledb_dg_sh_az.png)
 
-Zatímco systémově spravované rozdělení sprajení je nejjednodušší konfigurovat a spravovat, uživatelem definované rozdělení nebo složené rozdělení je vhodné pro scénáře, kde jsou data a aplikace geograficky distribuovány nebo ve scénářích, kde potřebujete mít kontrolu nad replikací každého úlomku. 
+Zatímco systémspravované rozdělení se spraje je nejjednodušší konfigurovat a spravovat, uživatelem definované rozdělení nebo složené rozdělení je vhodné pro scénáře, kde jsou data a aplikace geograficky distribuovány nebo ve scénářích, kde je třeba mít kontrolu nad replikací každého oddílu. 
 
 V předchozí architektuře složené horizontálního dělení se používá ke geografické distribuci dat a horizontální škálování na kapacitu aplikačních vrstev. Složené synění je kombinací systémově spravovaného a uživatelem definovaného síně a poskytuje tak výhody obou metod. V předchozím scénáři data je nejprve oddíly mezi více mezery oddílu oddělené podle oblasti. Potom data je dále rozdělena podle konzistentní hash přes více oddílů v prostoru shardspace. Každý shardspace obsahuje více shardgroups. Každá skupina oddílů má více oddílů a je "jednotka" replikace, v tomto případě. Každá skupina shardgroup obsahuje všechna data v prostoru shardspace. Shardgroups A1 a B1 jsou primární shardgroups, zatímco shardgroups A2 a B2 jsou pohotovostní režimy. Můžete zvolit, aby jednotlivé úlomky byly jednotkou replikace, nikoli skupinou oddílů.
 

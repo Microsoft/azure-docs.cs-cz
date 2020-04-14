@@ -1,22 +1,22 @@
 ---
-title: Jak spravovat účet Commercial Marketplace v Partnerském centru
-description: Přečtěte si, jak spravovat účet Commercial Marketplace v Partnerském centru.
+title: Jak spravovat účet komerčního tržiště v Partnerském centru
+description: Přečtěte si, jak spravovat komerční účet marketplace v Partnerském centru.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 6d3952c38703d8102a45c4117e3c59e3fa464957
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50ea56a8c743636f9fdd9105e5b07a868e71d3d0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275811"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262923"
 ---
-# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Správa účtu komerčního marketplace v Partnerském centru
+# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak spravovat svůj komerční účet marketplace v Partnerském centru
 
-Po vytvoření [účtu Partnerského centra](./create-account.md)můžete svůj účet a nabídky spravovat pomocí [řídicího panelu Commercial Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
+Po vytvoření [účtu Partnerského centra](./create-account.md)můžete svůj účet a nabídky spravovat pomocí [řídicího panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
 
 V tomto článku se podíváme na to, jak spravovat váš účet v Partnerském centru, včetně toho, jak:
 
@@ -40,7 +40,7 @@ Pokud jste tak ještě neučinili, měli byste vy (nebo správce vaší organiza
 
 ### <a name="open-developer-settings"></a>Otevřít nastavení vývojáře
 
-Nastavení účtu se nachází v pravém horním rohu [řídicího panelu Komerční tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace) v Centru partnerů. Vyberte ikonu ozubeného kola (v pravém horním rohu řídicího panelu) a pak vyberte **Nastavení vývojáře**.
+Nastavení účtu se nachází v pravém horním rohu [řídicího panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace) v Centru partnerů. Vyberte ikonu ozubeného kola (v pravém horním rohu řídicího panelu) a pak vyberte **Nastavení vývojáře**.
 
 ![Nabídka Nastavení účtu v Centru partnerů](./media/dashboard-developer-settings.png)
 
@@ -126,8 +126,8 @@ Doporučujeme vytvořit jedinečný identifikátor GUID pro každou nabídku a d
 
 Pokud nasadíte produkt pomocí šablony a je k dispozici na Azure Marketplace i na GitHubu, můžete vytvořit a zaregistrovat 2 odlišné identifikátory GUID:
 
-*   Produkt A na Azure Marketplace
-*   Produkt A na GitHubu
+*    Produkt A na Azure Marketplace
+*    Produkt A na GitHubu
 
 Vytváření sestav se provádí podle hodnoty partnera (Microsoft Partner ID) a identifikátorů GUID. Můžete také sledovat identifikátory GUID na podrobnější úrovni, která se zarovná každému plánu v rámci vaší nabídky.
 
@@ -308,7 +308,7 @@ Další informace o správě rolí a oprávnění v jiných oblastech Centra par
 
 ## <a name="manage-tenants"></a>Správa klientů
 
-Tenant Azure Active Directory (AD), označovaný také jako váš "pracovní účet" v této dokumentaci, je reprezentace vaší organizace nastavené na webu Azure Portal a pomáhá vám spravovat konkrétní instanci cloudových služeb Microsoftu pro vaše interní a externími uživateli. Pokud se vaše organizace přihlásila k odběru cloudové služby Microsoftu, jako je Azure, Microsoft Intune nebo Office 365, byl pro vás vytvořen klient Azure AD.
+Tenant Azure Active Directory (AD), označovaný také jako váš "pracovní účet" v této dokumentaci, je reprezentace vaší organizace nastavené na webu Azure Portal a pomáhá vám spravovat konkrétní instanci cloudových služeb Microsoftu pro vaše interní a externí uživatele. Pokud se vaše organizace přihlásila k odběru cloudové služby Microsoftu, jako je Azure, Microsoft Intune nebo Office 365, byl pro vás vytvořen klient Azure AD.
 
 Můžete nastavit více klientů pro použití s Partnerským centrem. Každý uživatel s rolí **Správce** v účtu Partnerského centra bude mít možnost přidat a odebrat klienty Azure AD z účtu.  
 

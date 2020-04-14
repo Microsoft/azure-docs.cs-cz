@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 9b0e0b39b7ac7d7834c9cdcbd79ba45b024c823a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: b59c68e3f2edc0fbe5eee3c3861a3e5116d4fac6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992007"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262379"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 (preview)
 
@@ -270,15 +270,14 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 ## <a name="manage-access-permissions"></a>Správa přístupových oprávnění
 
-Můžete získat, nastavit a aktualizovat přístupová oprávnění k souborovým systémům, adresářům a souborům.
+Můžete získat, nastavit a aktualizovat přístupová oprávnění k souborovým systémům, adresářům a souborům. Tato oprávnění jsou zachycena v seznamech řízení přístupu (AcLs).
 
 > [!NOTE]
 > Pokud používáte Azure Active Directory (Azure AD) k autorizaci příkazů, ujistěte se, že váš objekt zabezpečení byl přiřazen [roli vlastníka dat objektu blob úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Další informace o použití oprávnění seznamu ACL a jejich efektech najdete [v tématu Řízení přístupu v azure datovém úložišti.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
 
-### <a name="get-permissions"></a>Získat oprávnění
+### <a name="get-an-acl"></a>Získání acl
 
 Získejte seznam ACL adresáře nebo `Get-AzDataLakeGen2Item`souboru pomocí rutiny.
-
 
 Tento příklad získá acl **systému souborů** a potom vytiskne acl do konzoly.
 
@@ -311,7 +310,7 @@ Následující obrázek znázorňuje výstup po získání seznamu ACL adresář
 
 V tomto příkladu má vlastnící uživatel oprávnění ke čtení, zápisu a spouštění. Vlastnící skupina má pouze oprávnění ke čtení a spouštění. Další informace o seznamech řízení přístupu najdete [v tématu Řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
-### <a name="set-or-update-permissions"></a>Nastavení nebo aktualizace oprávnění
+### <a name="set-an-acl"></a>Nastavení acl
 
 Pomocí `set-AzDataLakeGen2ItemAclObject` rutiny vytvořte acl pro vlastnící uživatele, vlastnící skupinu nebo jiné uživatele. Potom použijte `Update-AzDataLakeGen2Item` rutinu k potvrzení acl.
 
@@ -359,7 +358,7 @@ Následující obrázek znázorňuje výstup po nastavení acl souboru.
 V tomto příkladu vlastnící uživatel a vlastnící skupina mají pouze oprávnění ke čtení a zápisu. Všichni ostatní uživatelé mají oprávnění k zápisu a spouštění. Další informace o seznamech řízení přístupu najdete [v tématu Řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
 
-### <a name="set-permissions-on-all-items-in-a-file-system"></a>Nastavení oprávnění pro všechny položky v systému souborů
+### <a name="set-acls-on-all-items-in-a-file-system"></a>Nastavení aklů pro všechny položky v systému souborů
 
 Parametr `Get-AzDataLakeGen2Item` a společně s rutinou `Update-AzDataLakeGen2Item` můžete rekurzivně nastavit seznam ACL všech adresářů a souborů v systému souborů. `-Recurse` 
 
@@ -370,6 +369,41 @@ $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
 ```
+### <a name="add-or-update-an-acl-entry"></a>Přidání nebo aktualizace položky acl
+
+Nejprve získejte ACL. Potom použijte `set-AzDataLakeGen2ItemAclObject` rutinu k přidání nebo aktualizaci položky ACL. Pomocí `Update-AzDataLakeGen2Item` rutiny potvrdíte acl.
+
+Tento příklad vytvoří nebo aktualizuje seznam ACL v **adresáři** pro uživatele.
+
+```powershell
+$filesystemName = "my-file-system"
+$dirname = "my-directory/"
+$acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname).ACL
+$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -InputObject $acl 
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+```
+
+### <a name="remove-an-acl-entry"></a>Odebrání položky acl
+
+Tento příklad odebere položku z existujícího přístupu.
+
+```powershell
+$id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "User"-and $a.DefaultScope -eq $false -and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
+```
+
 <a id="gen1-gen2-map" />
 
 ## <a name="gen1-to-gen2-mapping"></a>Mapování Gen1 až Gen2

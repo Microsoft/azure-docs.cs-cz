@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: f9758678708338a284a35b45f7f9dd43b9a9017c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335960"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260985"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management
 
@@ -55,7 +55,7 @@ Všechny úkoly, které provedete u prostředků používajících Správce pros
 
 ### <a name="create-an-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Pomocí předplatného, které obsahuje instanci **služby** Api Management, přejděte na kartu Registrace aplikací ve **službě Azure Active Directory** (Azure Active Directory > registrace správou a aplikací).
 
     > [!NOTE]
@@ -131,7 +131,7 @@ namespace GetTokenResourceManagerRequests
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Volání operací zálohování a obnovení
 
-Rozhraní REST API jsou [služba api management service – služba zálohování](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) a správy rozhraní API – [obnovení](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore).
+Rozhraní REST API jsou [služba api management service – služba zálohování](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup) a správy rozhraní API – [obnovení](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore).
 
 Před voláním operace zálohování a obnovení popsané v následujících částech nastavte hlavičku žádosti o autorizaci pro volání REST.
 

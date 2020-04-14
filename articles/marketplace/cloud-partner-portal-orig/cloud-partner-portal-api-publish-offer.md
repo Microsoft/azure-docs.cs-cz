@@ -5,23 +5,25 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 4163bf5727c327d559b81db42f99684aa0cc8d5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 960d5facb53f20719045c5fdbe2179f549aca3f2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280520"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255936"
 ---
-<a name="publish-an-offer"></a>Publikování nabídky
-================
+# <a name="publish-an-offer"></a>Publikování nabídky
+
+> [!NOTE]
+> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
 
 Spustí proces publikování pro zadanou nabídku. Toto volání je dlouho běžící operace.
 
   `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/publish?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>Parametry identifikátoru URI
+## <a name="uri-parameters"></a>Parametry identifikátoru URI
 --------------
 
 |  **Název**      |    **Popis**                               |  **Datový typ** |
@@ -31,8 +33,7 @@ Spustí proces publikování pro zadanou nabídku. Toto volání je dlouho běž
 |  verze-api   | Nejnovější verze rozhraní API                        |   Datum         |
 |  |  |
 
-
-<a name="header"></a>Hlavička
+## <a name="header"></a>Hlavička
 ------
 
 |  **Název**        |    **Hodnotu**          |
@@ -42,7 +43,7 @@ Spustí proces publikování pro zadanou nabídku. Toto volání je dlouho běž
 |  |  |
 
 
-<a name="body-example"></a>Příklad těla
+## <a name="body-example"></a>Příklad těla
 ------------
 
 ### <a name="request"></a>Žádost
@@ -66,14 +67,20 @@ Spustí proces publikování pro zadanou nabídku. Toto volání je dlouho běž
 
 ### <a name="response"></a>Odpověď
 
-   `Operation-Location: /api/operations/contoso$56615b67-2185-49fe-80d2-c4ddf77bb2e8$2$preview?api-version=2017-10-31`
+#### <a name="migrated-offers"></a>Migrované nabídky
+
+`Location: /api/publishers/contoso/offers/contoso-offer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8?api-version=2017-10-31`
+
+#### <a name="non-migrated-offers"></a>Nemigrované nabídky
+
+`Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
 
 ### <a name="response-header"></a>Hlavička odpovědi
 
 |  **Název**             |    **Hodnotu**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
-| Umístění operace    | Adresa URL, která může být dotazována k určení aktuálního stavu operace.    |
+| Umístění    | Relativní cesta k načtení stavu této operace     |
 |  |  |
 
 

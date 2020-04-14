@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 76ab92285cace284c187109ca48c6634777ebbc0
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ea4bfadd55935712a292355dc25fb778b1523c75
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398320"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261861"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
@@ -45,7 +45,7 @@ Jakákoli entita, která odesílá data do centra událostí, je producentem ud�
 
 Událost můžete publikovat prostřednictvím AMQP 1.0, Kafka 1.0 (a novější) nebo HTTPS. Centra událostí poskytuje [klientské knihovny a třídy](event-hubs-dotnet-framework-api-overview.md) pro publikování událostí do centra událostí z klientů .NET. Pro jiné moduly runtime a platformy můžete použít libovolného klienta protokolu AMQP 1.0, například [Apache Qpid](https://qpid.apache.org/). Události můžete publikovat samostatně nebo v dávce. Jedna publikace (instance dat události) má limit 1 MB, bez ohledu na to, zda se jedná o jednu událost nebo dávku. Publikování událostí větších než tato prahová hodnota má za následek chybu. Je osvědčeným postupem pro vydavatele, aby nevěděli o oddílech v centru událostí a zadali pouze *klíč oddílu* (zavedený v další části) nebo jejich identitu prostřednictvím tokenu SAS.
 
-Volba, jestli se použije protokol AMQP nebo HTTPS, závisí na konkrétním scénáři použití. Protokol AMQP vyžaduje nejen protokol TLS (Transport Level Security) nebo SSL/TLS, ale i vytvoření trvalého obousměrného soketu. AMQP má vyšší náklady na síť při inicializaci relace, ale HTTPS pro každý požadavek vyžaduje další režii SSL. AMQP má pro často používané zdroje vyšší výkon.
+Volba, jestli se použije protokol AMQP nebo HTTPS, závisí na konkrétním scénáři použití. Protokol AMQP vyžaduje nejen protokol TLS (Transport Level Security) nebo SSL/TLS, ale i vytvoření trvalého obousměrného soketu. AMQP má vyšší náklady na síť při inicializaci relace, ale HTTPS vyžaduje další tlas režii pro každý požadavek. AMQP má pro často používané zdroje vyšší výkon.
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 

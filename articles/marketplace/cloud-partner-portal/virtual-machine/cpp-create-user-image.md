@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 49db8c6717cd26886c3b49f8c99fdd2b08e8713d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bbee7f53cb9a61b72bdbbd941a3a0401f5b913b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278003"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273949"
 ---
 # <a name="create-a-user-vm-image"></a>Vytvoření uživatelské image virtuálního počítače
+
+> [!IMPORTANT]
+> dubna 2020 začneme s přesouváním nabídky virtuálních strojů Azure do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření technických prostředků virtuálního počítače Azure](https://aka.ms/AzureVMTechAsset) a spravujte migrované nabídky.
 
 Tento článek vysvětluje dva obecné kroky potřebné k vytvoření nespravovaného obrazu z generalizovaného virtuálního pevného disku.  Odkazy jsou k dispozici, aby vás provedly jednotlivými kroky: zachycení obrazu a zobecnění obrazu.
 

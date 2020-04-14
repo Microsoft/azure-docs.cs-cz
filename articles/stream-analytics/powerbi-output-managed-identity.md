@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31a5195038ef25acadc08e2acbedf8471b25833c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086328"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261410"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Ověření úlohy Azure Stream Analytics v Power BI pomocí spravované identity
 
@@ -160,7 +160,7 @@ Teď, když byla vytvořena úloha Stream Analytics, může jí být udělen př
 ### <a name="use-the-power-bi-ui"></a>Použití uj.
 
    > [!Note]
-   > Abyste mohli přidat úlohu Stream Analytics do pracovního prostoru Power BI pomocí uživatelského rozhraní, musíte taky povolit přístup k hlavnímu nastavení služby v **nastavení vývojáře** na portálu pro správu Power BI. Další podrobnosti [najdete v tématu Začínáme s instančním objektem.](https://docs.microsoft.com/power-bi/developer/embed-service-principal#get-started-with-a-service-principal)
+   > Abyste mohli přidat úlohu Stream Analytics do pracovního prostoru Power BI pomocí uživatelského rozhraní, musíte taky povolit přístup k hlavnímu nastavení služby v **nastavení vývojáře** na portálu pro správu Power BI. Další podrobnosti [najdete v tématu Začínáme s instančním objektem.](https://docs.microsoft.com/power-bi/developer/embed-service-principal)
 
 1. Přejděte do nastavení přístupu k pracovnímu prostoru. Další podrobnosti naleznete v tomto článku: [Udělit přístup k pracovnímu prostoru](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace).
 

@@ -1,5 +1,5 @@
 ---
-title: Interpretovatelnost modelů v rámci automatizovaného strojového učení
+title: Explanability v automatizovaném strojovém učení
 titleSuffix: Azure Machine Learning
 description: Zjistěte, jak získat vysvětlení, jak váš automatizovaný model ML určuje důležitost funkce a dělá předpovědi při použití sady Azure Machine Learning SDK.
 services: machine-learning
@@ -8,20 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
-ms.reviewer: trbye
 ms.date: 03/11/2020
-ms.openlocfilehash: e2465a2df3fab736c8f118911da14ef23c8aec86
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437281"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257160"
 ---
-# <a name="model-interpretability-in-automated-machine-learning"></a>Interpretovatelnost modelů v rámci automatizovaného strojového učení
+# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretovatelnost: modelová vysvětlení v automatizovaném strojovém učení
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak povolit funkce interpretace pro automatizované strojové učení (ML) v Azure Machine Learning. Automatizovaná funkce ML vám pomůže porozumět důležitosti navržených funkcí. 
+V tomto článku se dozvíte, jak získat vysvětlení pro automatizované strojové učení (ML) v Azure Machine Learning. Automatizovaná funkce ML vám pomůže porozumět důležitosti navržených funkcí. 
 
 Všechny verze sady SDK po 1.0.85 nastavené `model_explainability=True` ve výchozím nastavení. V sadě SDK verze 1.0.85 a `model_explainability=True` starších `AutoMLConfig` verzích musí uživatelé nastavit objekt, aby mohli používat interpretabilitu modelu. 
 

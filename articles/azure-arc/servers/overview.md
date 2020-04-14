@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure automation, DSC, powershell, požadovaná konfigurace stavu, správa aktualizací, sledování změn, inventář, runbooky, python, grafické, hybridní
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 5ffe845178fffc252e95794bfb58801c9bff16a7
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: a441b80e4d7dd9604aa2ca69da320e462859a486
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411227"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261211"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure Arc pro servery (preview)
 
@@ -54,7 +54,7 @@ Pro agenta Azure Connected Machine jsou oficiálně podporované následující 
 - Centos Linux 7
 - SUSE Linux Enterprise Server (SLES) 15
 - Red Hat Enterprise Linux (RHEL) 7
-- Amazon Linux 7
+- Amazon Linux 2
 
 >[!NOTE]
 >Tato předběžná verze agenta connected machine pro systém Windows podporuje pouze systém Windows Server nakonfigurovaný pro použití anglického jazyka.

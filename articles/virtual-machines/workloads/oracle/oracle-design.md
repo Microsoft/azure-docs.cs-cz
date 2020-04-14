@@ -3,7 +3,7 @@ title: Návrh a implementace databáze Oracle v Azure | Dokumenty společnosti M
 description: Navrhujte a implementujte databázi Oracle ve vašem prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 41e1720dfeaa98a9d0bc2227c58083ce769b06e0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70100115"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263399"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
@@ -46,13 +46,13 @@ V následující tabulce jsou uvedeny některé rozdíly mezi místní implement
 > 
 > |  | **Místní implementace** | **Implementace Azure** |
 > | --- | --- | --- |
-> | **Síťové služby** |Lan/WAN  |SDN (softwarově definované sítě)|
+> | **Sítě** |Lan/WAN  |SDN (softwarově definované sítě)|
 > | **Skupina zabezpečení** |Nástroje pro omezení IP/portů |[Skupina zabezpečení sítě (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 > | **Odolnost** |MTBF (střední doba mezi poruchami) |MTTR (střední doba do zotavení)|
 > | **Plánovaná údržba** |Opravy/upgrady|[Skupiny dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (opravy/upgrady spravované Azure) |
 > | **Zdrojů** |Vyhrazená  |Sdíleno s ostatními klienty|
 > | **Oblasti** |Datová centra |[Párování oblastí](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Úložiště** |SAN/fyzické disky |[Spravované úložiště Azure](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Storage** |SAN/fyzické disky |[Spravované úložiště Azure](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Měřítko** |Svislé měřítko |Horizontální škálování|
 
 
@@ -139,7 +139,7 @@ Celková propustnost sítě se odhaduje na základě následujících informací
 
 Na základě požadavků na šířku pásma sítě si můžete vybrat z různých typů bran. Patří mezi ně základní, VpnGw a Azure ExpressRoute. Další informace naleznete na [stránce s cenami brány VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/?v=17.23h).
 
-**Recommendations** (Doporučení)
+**Doporučení**
 
 - Latence sítě je vyšší ve srovnání s místním nasazením. Snížení síťových zpátečních cest může výrazně zlepšit výkon.
 - Chcete-li omezit zpáteční cesty, konsolidujte aplikace, které mají vysoké transakce nebo "chattované" aplikace na stejném virtuálním počítači.
@@ -179,7 +179,7 @@ IOPS je 12,200,000 / 2,358 = 5,174.
 
 Po dosažení jasného přehledu o požadavcích na vstupy a vstupně-va můžete zvolit kombinaci jednotek, které jsou nejvhodnější pro splnění těchto požadavků.
 
-**Recommendations** (Doporučení)
+**Doporučení**
 
 - V oblasti tabulky dat rozprostřete vstupně-rozložitelné pracovní vytížení na několik disků pomocí spravovaného úložiště nebo řešení Oracle ASM.
 - Jak se velikost bloku vstupně-v.i. zvětšuje pro operace náročné na čtení a náročné na zápis, přidejte další datové disky.
@@ -199,7 +199,7 @@ Existují tři možnosti ukládání hostitelů do mezipaměti:
 
 - *Žádné* (zakázáno): Pomocí této možnosti můžete obejít mezipaměť. Všechna data se přenesou na disk a trvalé do Služby Azure Storage. Tato metoda poskytuje nejvyšší vstupně-v sazby pro vstupně-v.i. intenzivní úlohy. Je také třeba vzít v úvahu "transakční náklady".
 
-**Recommendations** (Doporučení)
+**Doporučení**
 
 Chcete-li maximalizovat propustnost, doporučujeme začít s **none** pro ukládání do mezipaměti hostitele. Pro úložiště Premium, mějte na paměti, že je nutné zakázat "bariéry" při připojení systému souborů s **ReadOnly** nebo **Žádné** možnosti. Aktualizujte soubor /etc/fstab pomocí UUID na disky.
 

@@ -3,7 +3,7 @@ title: Architektury pro nasazení aplikací Oracle na virtuálních počítačí
 description: Aplikační architektury pro nasazení aplikací Oracle, včetně E-Business Suite, JD Edwards EnterpriseOne a PeopleSoft, na virtuálních počítačích Microsoft Azure s databázemi v Azure nebo v Oracle Cloud Infrastructure (OCI).
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.service: virtual-machines
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: b183a4d4922c89f60ccb19b3e3e978216f33cc9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 20e751b322d06ac176ee5c634d92e0efe874baac
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70100088"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263297"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Architektury pro nasazení aplikací Oracle v Azure
 

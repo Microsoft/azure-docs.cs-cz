@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 12aeea8393a00d7d2662c826f847265bdbdc0119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442715"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259132"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Postup při integraci služby Azure API Management s Azure Application Insights
 
@@ -51,7 +51,7 @@ Než budete moci použít Azure Application Insights, musíte nejprve vytvořit 
     ![Logger Přehledů aplikací](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> Za scénou je vytvořena entita [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate) v instanci správy rozhraní API, která obsahuje klíč instrumentace instance Application Insights.
+> Za scénou je vytvořena entita [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate) v instanci správy rozhraní API, která obsahuje klíč instrumentace instance Application Insights.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Povolení protokolování přehledů aplikací pro rozhraní API
 
@@ -70,7 +70,7 @@ Než budete moci použít Azure Application Insights, musíte nejprve vytvořit 
 > Přepsání výchozí hodnoty **0** v **poli První bajty těla** může výrazně snížit výkon vašich api.
 
 > [!NOTE]
-> Za scénou je vytvořena [diagnostická](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/diagnostic/createorupdate) entita s názvem Applicationinsights na úrovni rozhraní API.
+> Za scénou je vytvořena [diagnostická](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) entita s názvem Applicationinsights na úrovni rozhraní API.
 
 | Název nastavení                        | Typ hodnoty                        | Popis                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

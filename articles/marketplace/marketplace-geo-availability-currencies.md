@@ -1,22 +1,22 @@
 ---
-title: Geografická dostupnost a podpora měn | Azure
-description: Geografická dostupnost na Azure Marketplace a AppSource
+title: Geografická dostupnost a podpora měny | Azure
+description: Geografická dostupnost na komerčním trhu
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c3ed79bbcc566a91f9f249ec2df747bbc01cac
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288423"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262005"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografická dostupnost a podpora měny
 
-Nabídky Azure Marketplace a AppSource lze zakoupit ve 141 zeměpisných oblastech definovaných fakturační adresou zákazníka a transakce lze dokončit v 17 měnách. V následující tabulce je uvedena každá podporovaná zeměpisná poloha, [dvoumístný alfa kód ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)a přiřazená měna.
+Nabídky na komerčním trhu lze zakoupit ve 141 zeměpisných oblastech definovaných fakturační adresou zákazníka a transakce lze dokončit v 17 měnách. V následující tabulce je uvedena každá podporovaná zeměpisná poloha, [dvoumístný alfa kód ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)a přiřazená měna.
 
 |   Název země nebo oblasti               |   ISO-2   |   Měna   |
 |-------------------------------------|-----------|--------------|
@@ -48,7 +48,7 @@ Nabídky Azure Marketplace a AppSource lze zakoupit ve 141 zeměpisných oblaste
 | Cabo Verde                          | CV        | USD          |
 | Kajmanské ostrovy                      | KY        | USD          |
 | Chile                               | CL        | USD          |
-| Čína\**                            | CN        | Není dostupné.          |
+| Čína\**                            | CN        | –          |
 | Kolumbie                            | CO        | USD          |
 | Kostarika                          | CR        | USD          |
 | Côte d’Ivoire (Pobřeží slonoviny)                       | CI        | USD          |

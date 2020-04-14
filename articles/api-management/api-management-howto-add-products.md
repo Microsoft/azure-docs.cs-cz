@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 813117bce4abd3550ac559109c1650ea4a7cff5c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 686d6e2ff01fd4d8283350ab8097e1f73c914af0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74538264"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260992"
 ---
 # <a name="create-and-publish-a-product"></a>Vytvoření a publikování produktu  
 
@@ -85,7 +85,7 @@ Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získa
 4. Zvolte rozhraní API a klikněte na **Vybrat**.
 
 > [!TIP]
-> Uživatelské předplatné *produktu* můžete vytvořit nebo aktualizovat s použitím vlastních klíčů předplatného [prostřednictvím rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) nebo pomocí příkazu PowerShellu.
+> Uživatelské předplatné *produktu* můžete vytvořit nebo aktualizovat s použitím vlastních klíčů předplatného [prostřednictvím rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate) nebo pomocí příkazu PowerShellu.
 
 ## <a name="next-steps"></a>Další kroky
 

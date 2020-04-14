@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 9345138e948d84e0ea3c804dbd7a4b3c21daca2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668141"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261070"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Upozornění metrik s dynamickými prahovými hodnotami v Azure Monitoru
 
@@ -61,7 +61,7 @@ Výstrahu, která se má aktivovat, můžete zvolit za jedné z následujících
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Co znamenají upřesňující nastavení v dynamickém prahu?
 
-**Selhání období** - dynamické prahové hodnoty také umožňuje nakonfigurovat "Porušení počtu pro aktivaci výstrahy", minimální počet odchylek požadovaných v rámci určitého časového období pro systém vyvolat výstrahu (výchozí časové okno je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat selhání období a zvolit, co má být upozorněni změnou selhání období a časové okno. Tato schopnost snižuje výstražný šum generovaný přechodovými špičkami. Například:
+**Selhání období** - dynamické prahové hodnoty také umožňuje nakonfigurovat "Porušení počtu pro aktivaci výstrahy", minimální počet odchylek požadovaných v rámci určitého časového období pro systém vyvolat výstrahu (výchozí časové okno je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat selhání období a zvolit, co má být upozorněni změnou selhání období a časové okno. Tato schopnost snižuje výstražný šum generovaný přechodovými špičkami. Příklad:
 
 Chcete-li spustit výstrahu, pokud je problém nepřetržitý po dobu 20 minut, čtyřikrát za sebou v daném období seskupení 5 minut, použijte následující nastavení:
 
@@ -93,7 +93,8 @@ Při prvním vytvoření pravidla výstrahy se prahové hodnoty uvedené v grafu
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Kolik dat je potřeba k aktivaci výstrahy?
 
-Pokud máte nový prostředek nebo chybějící data metriky, dynamické prahové hodnoty nespustí výstrahy před třemi dny nebo 30 vzorky metrických dat jsou k dispozici pro zajištění přesné prahové hodnoty.
+Pokud máte nový prostředek nebo chybějící data metriky, dynamické prahové hodnoty nespustí výstrahy před třemi dny a k dispozici je alespoň 30 vzorků dat metriky, aby bylo zajištěno přesné prahové hodnoty.
+U existujících prostředků s dostatečnými metrickými daty mohou dynamické prahové hodnoty okamžitě aktivovat výstrahy.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Doporučené postupy dynamických prahových hodnot
 

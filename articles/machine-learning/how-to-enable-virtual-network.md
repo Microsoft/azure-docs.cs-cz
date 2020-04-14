@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ca4bf1b0043a2c73851eab48ff8b9b6b7a987b72
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115296"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257245"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečené úlohy experimentování a odvození Azure ML v rámci virtuální sítě Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -546,7 +546,7 @@ Další informace o konfiguraci síťového pravidla najdete v tématu [Nasazen�
     > [!IMPORTANT]
     > Váš účet úložiště, výpočetní cluster a Azure Container Registry musí být ve stejné podsíti virtuální sítě.
     
-    Další informace naleznete v odkazu na metodu [update().](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none-)
+    Další informace naleznete v odkazu na metodu [update().](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-)
 
 1. Pokud používáte privátní odkaz pro pracovní prostor Azure Machine Learning a umístit registr kontejnerů Azure pro váš pracovní prostor ve virtuální síti, musíte také použít následující šablonu Azure Resource Manager. Tato šablona umožňuje vašemu pracovnímu prostoru komunikovat s ACR přes soukromé propojení.
 

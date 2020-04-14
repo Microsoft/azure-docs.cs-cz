@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 362b35af191c1caebeb30149ce060a5366182ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cffefb294aaeeb4d66358ceae72c98becd04cc58
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289417"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261954"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Základ zabezpečení Azure pro Azure Database for MySQL
 
@@ -134,7 +134,7 @@ Principy využití výrobních značek pro Azure Database for MySQL:https://docs
 
 Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Ukázky zásad Azure pro sítě:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Ukázky zásad Azure pro sítě:https://docs.microsoft.com/azure/governance/policy/samples/
 
 Jak vytvořit Azure Blueprint:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -904,7 +904,7 @@ Jak zajistit ověřování trezoru klíčů se spravovanou identitou:https://doc
 
 **Pokyny:** Instance Azure Database for MySQL podporuje ověřování Azure Active Directory (ve verzi Preview) pro přístup k databázím.  Při vytváření instance Azure Database for MySQL zadejte přihlašovací údaje pro uživatele správce. Tento správce lze použít k vytvoření dalších uživatelů databáze.  
 
-Pro virtuální počítače Azure nebo webové aplikace spuštěné ve službě Azure App Service, které se používají k přístupu k vaší databázi Azure pro instance MySQL, použijte identitu spravované služby ve spojení s Azure Key Vault k ukládání a načítání přihlašovacích údajů pro Azure Database for MySQL Instance. Ujistěte se, že je povoleno měkké odstranění trezoru klíčů.
+Pro virtuální počítače Azure nebo webové aplikace spuštěné ve službě Azure App Service, které se používají k přístupu k vaší databázi Azure pro instance MySQL, použijte identitu spravované služby ve spojení s Azure Key Vault k ukládání a načítání přihlašovacích údajů pro instanci Azure Database for MySQL. Ujistěte se, že je povoleno měkké odstranění trezoru klíčů.
 
 Pomocí spravovaných identit můžete poskytovat služby Azure s automaticky spravovanou identitou ve službě Azure Active Directory (AD). Spravované identity umožňuje ověření na libovolnou službu, která podporuje ověřování Azure AD, včetně trezoru klíčů, bez pověření ve vašem kódu.
 

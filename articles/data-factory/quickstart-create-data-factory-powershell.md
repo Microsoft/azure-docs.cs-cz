@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 682c35e1510834d8958b2ed6765d6fe530432ebd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75440084"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262141"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Úvodní příručka: Vytvoření azure datové továrny pomocí PowerShellu
 
@@ -111,6 +111,10 @@ Je třeba počítat s následujícím:
 ## <a name="create-a-linked-service"></a>Vytvoření propojené služby
 
 V datové továrně vytvořte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V tomto rychlém startu vytvoříte propojenou službu Azure Storage, která slouží jako zdroj i úložiště jímky. Tato propojená služba má informace o připojení, které služba Data Factory používá pro připojení za běhu.
+
+>[!TIP]
+>V tomto rychlém startu použijete *klíč account* jako typ ověřování pro úložiště dat, ale v případě potřeby můžete zvolit jiné podporované metody ověřování: Identifikátor *URI SAS*,*Instanční objekt* a *Spravovaná identita.* Podrobnosti naleznete v odpovídajících částech [tohoto článku.](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)
+>Chcete-li bezpečně ukládat tajné klíče pro úložiště dat, doporučujeme také použít trezor klíčů Azure. Podrobné ilustrace naleznete v [tomto článku.](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
 
 1. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** s následujícím obsahem: (pokud ještě neexistuje, složku ADFv2QuickStartPSH vytvořte).
 

@@ -13,21 +13,20 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 8f3497f113981ae563023750ad8979c88c640f5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123335"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269869"
 ---
 # <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 <a name="network-security-groups"></a>
 
-Pomocí skupiny zabezpečení sítě můžete filtrovat síťový provoz do a z prostředků Azure ve virtuální síti Azure. Skupina zabezpečení sítě obsahuje pravidla zabezpečení umožňující povolit nebo odepřít příchozí nebo odchozí síťový provoz několika typů prostředků Azure. Informace o prostředcích Azure, které je možné nasadit do virtuální sítě a ke kterým je možné přidružit skupiny zabezpečení sítě, najdete v tématu [Integrace virtuální sítě pro služby Azure](virtual-network-for-azure-services.md). Pro každé pravidlo můžete určit zdroj a cíl, port a protokol.
+Skupinu zabezpečení sítě Azure můžete použít k filtrování síťového provozu do a z prostředků Azure ve virtuální síti Azure. Skupina zabezpečení sítě obsahuje [pravidla zabezpečení,](#security-rules) která povolují nebo zapínají příchozí síťový provoz nebo odchozí síťový provoz z několika typů prostředků Azure. Pro každé pravidlo můžete určit zdroj a cíl, port a protokol.
+Tento článek popisuje vlastnosti pravidla skupiny zabezpečení sítě, [výchozí použitá pravidla zabezpečení](#default-security-rules) a vlastnosti pravidla, které můžete upravit a vytvořit rozšířené pravidlo [zabezpečení](#augmented-security-rules).
 
-Tento článek vysvětluje koncepty skupin zabezpečení sítě, které vám pomůžou je efektivně využívat. Pokud jste ještě nikdy skupinu zabezpečení sítě nevytvářeli, můžete si projít rychlý [kurz](tutorial-filter-network-traffic.md), ve kterém se seznámíte s jejím vytvořením. Pokud už skupiny zabezpečení sítě znáte a potřebujete je spravovat, přečtěte si téma [Správa skupiny zabezpečení sítě](manage-network-security-group.md). Pokud máte problémy s komunikací a potřebujete řešit potíže se skupinami zabezpečení sítě, přečtěte si téma [Diagnostika potíží s filtrováním síťového provozu virtuálních počítačů](diagnose-network-traffic-filter-problem.md). Můžete povolit [protokoly toků skupin zabezpečení sítě](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), abyste mohli analyzovat síťový provoz směřující do a z prostředků s přidruženou skupinou zabezpečení sítě.
-
-## <a name="security-rules"></a>Pravidla zabezpečení
+## <a name="security-rules"></a><a name="security-rules"></a>Bezpečnostní pravidla
 
 Skupina zabezpečení sítě nemusí obsahovat žádná pravidla nebo může podle potřeby obsahovat libovolný počet pravidel v rámci [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) předplatného Azure. Každé pravidlo určuje následující vlastnosti:
 
@@ -46,7 +45,7 @@ Pokud odeberete pravidlo zabezpečení, které povolilo tok, nesmí se přeruši
 
 Počet pravidel zabezpečení, která můžete ve skupině zabezpečení sítě vytvořit, je omezený. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-### <a name="default-security-rules"></a>Výchozí pravidla zabezpečení
+### <a name="default-security-rules"></a><a name="default-security-rules"></a>Výchozí pravidla zabezpečení
 
 Azure v každé skupině zabezpečení sítě, kterou vytvoříte, vytvoří následující výchozí pravidla:
 
@@ -94,7 +93,7 @@ Ve sloupcích **Zdroj** a **Cíl** jsou hodnoty *VirtualNetwork*, *AzureLoadBala
  
 Výchozí pravidla nemůžete odebrat, ale můžete je přepsat vytvořením pravidel s vyšší prioritou.
 
-### <a name="augmented-security-rules"></a>Rozšířená pravidla zabezpečení
+### <a name="augmented-security-rules"></a><a name="augmented-security-rules"></a>Rozšířená bezpečnostní pravidla
 
 Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro virtuální sítě tím, že umožňují definovat větší a složitější zásady zabezpečení sítě při použití menšího počtu pravidel. Můžete zkombinovat více portů a explicitních IP adres a rozsahů do jediného, snadno pochopitelného pravidla zabezpečení. Rozšířená pravidla používejte v polích pravidla pro zdroj, cíl a port. Chcete-li zjednodušit údržbu definice pravidel zabezpečení, zkombinujte rozšířená pravidla zabezpečení se [značkami služeb](service-tags-overview.md) nebo [skupinami zabezpečení aplikací](#application-security-groups). Počet adres, rozsahů a portů, které lze zadat v pravidle, je limitován. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
@@ -170,4 +169,8 @@ Agregovaná pravidla použitá na síťové rozhraní můžete snadno zobrazit v
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak [vytvořit skupinu zabezpečení sítě](tutorial-filter-network-traffic.md).
+* Informace o tom, které prostředky Azure se dá nasadit do virtuální sítě a které mají přidružené skupiny zabezpečení sítě, najdete v [tématu Integrace virtuální chod sítě pro služby Azure.](virtual-network-for-azure-services.md)
+* Pokud jste ještě nikdy skupinu zabezpečení sítě nevytvářeli, můžete si projít rychlý [kurz](tutorial-filter-network-traffic.md), ve kterém se seznámíte s jejím vytvořením. 
+* Pokud už skupiny zabezpečení sítě znáte a potřebujete je spravovat, přečtěte si téma [Správa skupiny zabezpečení sítě](manage-network-security-group.md). 
+* Pokud máte problémy s komunikací a potřebujete řešit potíže se skupinami zabezpečení sítě, přečtěte si téma [Diagnostika potíží s filtrováním síťového provozu virtuálních počítačů](diagnose-network-traffic-filter-problem.md). 
+* Zjistěte, jak povolit [protokoly toku skupiny zabezpečení sítě](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) k analýze síťového provozu do a z prostředků, které mají přidruženou skupinu zabezpečení sítě.

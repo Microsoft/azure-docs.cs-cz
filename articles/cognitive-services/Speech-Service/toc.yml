@@ -214,6 +214,8 @@
       items:
         - name: Co je překlad řeči?
           href: speech-translation.md
+        - name: Základy překladu řeči
+          href: speech-translation-basics.md
     - name: Rychlý start
       items:
         - name: Překlad řeči na text

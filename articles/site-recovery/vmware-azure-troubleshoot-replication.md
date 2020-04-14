@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 7237bb7e0538ba1a9b6333ccb6589efe657a247d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f91ee5654b4add37d3cce4f875be1f9c2b398ab9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74423960"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259489"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Poradce při potížích s replikací virtuálních virtuálních měn v systému VMware a fyzických serverů
 
@@ -30,7 +30,7 @@ Doporučujeme sledovat stav procesních serverů na portálu, abyste zajistili, 
 
 ## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>Krok 2: Řešení problémů s připojením a replikací
 
-Počáteční a probíhající selhání replikace jsou často způsobeny problémy s připojením mezi zdrojovým serverem a procesovým serverem nebo mezi procesním serverem a Azure. 
+Počáteční a probíhající selhání replikace jsou často způsobeny problémy s připojením mezi zdrojovým serverem a procesovým serverem nebo mezi procesním serverem a Azure.
 
 Chcete-li tyto problémy vyřešit, [odstraňte potíže s připojením a replikací](vmware-physical-azure-troubleshoot-process-server.md#check-connectivity-and-replication).
 
@@ -96,7 +96,7 @@ Chcete-li tento problém vyřešit, ověřte připojení k síti ze zdrojového 
 4. Ve zdrojovém počítači zkontrolujte protokoly v umístění podrobnosti o chybě:
 
        C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
-    
+
 ### <a name="process-server-with-no-heartbeat-error-806"></a>Procesní server bez prezenčního signálu [chyba 806]
 V případě, že z procesního serveru (PS) nedochází k prezenčnímu signálu, zkontrolujte, zda:
 1. Virtuální vod systému PS je v provozu
@@ -116,7 +116,7 @@ Chcete-li tento problém vyřešit, ověřte stav služby pomocí následující
 2. Přihlaste se k hlavnímu cílovému virtuálnímu virtuálnímu účtu pomocí účtu, který má oprávnění správce.
     - Ověřte, zda je spuštěna služba svagents. Pokud je spuštěna, restartujte službu
     - Podrobnosti o chybě naleznete v protokolech v umístění:
-        
+
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
 3. Chcete-li zaregistrovat hlavní cíl pomocí konfiguračního serveru, přejděte do složky **%PROGRAMDATA%\ASR\Agent**a na příkazovém řádku spusťte následující:
    ```
@@ -132,38 +132,38 @@ Chcete-li tento problém vyřešit, ověřte stav služby pomocí následující
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>ID chyby 78144 – v posledních minutách XXX není pro virtuální virtuální mě k dispozici žádný bod obnovení konzistentní s aplikací.
 
-Byla provedena vylepšení ve verzích agenta mobility [9.23](vmware-physical-mobility-service-overview.md#from-923-version-onwards) & [9.27](site-recovery-whats-new.md#update-rollup-39) pro zpracování chování při selhání instalace služby VSS. Ujistěte se, že jste na nejnovější verze pro nejlepší pokyny k řešení potíží selhání VSS.
+Byla provedena vylepšení ve verzích agenta mobility [9.23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher) & [9.27](site-recovery-whats-new.md#update-rollup-39) pro zpracování chování při selhání instalace služby VSS. Ujistěte se, že jste na nejnovější verze pro nejlepší pokyny k řešení potíží selhání VSS.
 
 Některé z nejčastějších problémů jsou uvedeny níže
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Příčina 1: Známý problém v serveru SQL Server 2008/2008 R2 
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Příčina 1: Známý problém v serveru SQL Server 2008/2008 R2
 **Jak opravit** : Je známý problém s SQL server 2008/2008 R2. Naleznete tento článek kb [Azure Site Recovery Agent nebo jiné nesoučásti VSS zálohování selže pro server hostující SQL Server 2008 R2](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Příčina 2: Úlohy obnovení webu Azure selhávají na serverech hostujících libovolnou verzi instancí SQL Serveru s AUTO_CLOSE dbs 
-**Jak opravit** : Odkazujte na [článek](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) Kb 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Příčina 2: Úlohy obnovení webu Azure selhávají na serverech hostujících libovolnou verzi instancí SQL Serveru s AUTO_CLOSE dbs
+**Jak opravit** : Odkazujte na [článek](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) Kb
 
 
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Příčina 3: Známý problém v SQL Server 2016 a 2017
-**Jak opravit** : Odkazujte na [článek](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) Kb 
+**Jak opravit** : Odkazujte na [článek](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) Kb
 
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>Další příčiny v důsledku problémů souvisejících s VSS:
 
 Chcete-li dále řešit potíže, zkontrolujte soubory ve zdrojovém počítači, abyste získali přesný kód chyby pro selhání:
-    
+
     C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
 
 Jak najít chyby v souboru?
 Hledání řetězce "vacpError" otevřením souboru vacp.log v editoru
-        
+
     Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
 
 Ve výše uvedeném příkladu **2147754994** je kód chyby, který informuje o selhání, jak je znázorněno níže
 
-#### <a name="vss-writer-is-not-installed---error-2147221164"></a>Zapisovač VSS není nainstalován - chyba 2147221164 
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>Zapisovač VSS není nainstalován - chyba 2147221164
 
 *Jak opravit*: Ke generování značky konzistence aplikace azure site recovery používá službu Microsoft Volume Shadow copy Service (VSS). Nainstaluje zprostředkovatele VSS pro jeho provoz, aby pořizovat snímky konzistence aplikace. Tento zprostředkovatel VSS je nainstalován jako služba. V případě, že služba Zprostředkovatel VSS není nainstalována, vytvoření snímku konzistence aplikace se nezdaří s chybou id 0x80040154 "Třída není registrována". </br>
-Článek [popisuje řešení potíží s instalací zapisovače VSS](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
+Článek [popisuje řešení potíží s instalací zapisovače VSS](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>Zapisovač VSS je zakázán - chyba 2147943458
 
@@ -178,12 +178,13 @@ Ve výše uvedeném příkladu **2147754994** je kód chyby, který informuje o 
 
 ####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED - chyba 2147754756
 
-**Jak opravit**: Ke generování značky konzistence aplikace azure site recovery používá službu Microsoft Volume Shadow copy Service (VSS). Zkontrolujte, jestli je nainstalovaná služba Zprostředkovatel webu Azure. </br>
+**Jak opravit**: Ke generování značky konzistence aplikace azure site recovery používá službu Microsoft Volume Shadow copy Service (VSS).
+Zkontrolujte, jestli je nainstalovaná služba Zprostředkovatel webu Azure. </br>
 
 - Opakujte instalaci zprostředkovatele pomocí následujících příkazů:
 - Odinstalace stávajícího zprostředkovatele: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
 - Přeinstalace: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
- 
+
 Ověřte, zda je typ spuštění služby Zprostředkovatel VSS nastaven na **možnost Automaticky**.
     - Restartujte následující služby:
         - Služba VSS

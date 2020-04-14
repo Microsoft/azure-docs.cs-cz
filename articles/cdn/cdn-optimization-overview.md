@@ -3,7 +3,7 @@ title: Optimalizace Azure CDN pro typ doručování obsahu
 description: Optimalizace Azure CDN pro typ doručování obsahu
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: magattus
-ms.openlocfilehash: da8f17da9225da1d2b92bd8515d645bce9a1bbaa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 473636dc95d96ea348a42ec0f1090029bf3a7728
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252113"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260430"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optimalizace Azure CDN pro typ doručování obsahu
 

@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 245a0b18187ff1c1b226e94b03374f2c071e51c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314823"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263382"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Sledování a zmírnění omezení ke snížení latence v Azure Time Series Insights
 
@@ -30,7 +30,7 @@ S největší pravděpodobností zažijete latenci a omezení, když:
 - Přidejte zdroj událostí, který obsahuje stará data, která mohou překročit přidělenou rychlost příchozího přenosu dat (Time Series Insights bude muset dohnat).
 - Přidejte do prostředí další zdroje událostí, což vede k nárůstu z dalších událostí (které mohou překročit kapacitu vašeho prostředí).
 - Zatlačte velké množství historických událostí do zdroje událostí, což má za následek zpoždění (Time Series Insights bude muset dohnat).
-- Připojte referenční data pomocí telemetrie, což má za následek větší velikost událostí. Z hlediska omezení příchozí datový paket s velikostí paketu 32 KB je považován za 32 událostí, z nichž každá velikost 1 KB. Maximální povolená velikost události je 32 kB; datové pakety větší než 32 KB jsou zkráceny.
+- Připojte referenční data pomocí telemetrie, což má za následek větší velikost událostí. Maximální povolená velikost paketu je 32 kB; datové pakety větší než 32 KB jsou zkráceny.
 
 ## <a name="video"></a>Video
 

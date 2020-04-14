@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: b0154401a9233a6ea85a8e8c06ee14fcc918b2b6
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657076"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261767"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Nastavení šifrování a ověřování TLS pro Apache Kafka v Azure HDInsight
 
@@ -22,8 +22,9 @@ Tento článek ukazuje, jak nastavit šifrování TLS (Transport Layer Security)
 > [!Important]
 > Existují dva klienti, které můžete použít pro aplikace Kafka: Java klient a konzolový klient. Pouze klient `ProducerConsumer.java` Java může používat TLS pro výrobu i spotřebu. Klient `console-producer.sh` výrobce konzoly nepracuje s tls.
 
-> [!Note] 
+> [!Note]
 > Výrobce konzoly HDInsight Kafka s verzí 1.1 nepodporuje SSL.
+
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka broker nastavení
 
 Nastavení zprostředkovatele Kafka TLS bude používat čtyři virtuální počítače clusteru HDInsight následujícím způsobem:
@@ -136,7 +137,7 @@ Chcete-li dokončit změnu konfigurace, postupujte takto:
 
     ![Úprava vlastností konfigurace kafka ssl v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. Přidejte do souboru server.properties nové vlastnosti konfigurace.
+1. Pro HDI verze 3.6 přejděte na uživatelské rozhraní Ambari a přidejte následující konfigurace pod **Advanced kafka-env** a vlastnost **šablony kafka-env.**
 
     ```bash
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -151,7 +152,7 @@ Chcete-li dokončit změnu konfigurace, postupujte takto:
     echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. Přejděte na uživatelské rozhraní konfigurace Ambari a ověřte, zda se nové vlastnosti zobrazují v části **Rozšířené kafka-env** a vlastnost **šablony kafka-env.**
+1. Zde je snímek obrazovky, který ukazuje, Ambari konfigurace UI s těmito změnami.
 
     Pro HDI verze 3.6:
 
@@ -159,10 +160,9 @@ Chcete-li dokončit změnu konfigurace, postupujte takto:
 
     Pro HDI verze 4.0:
 
-     ![Úprava vlastnosti šablony kafka-env ve čtyřech Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)   
+     ![Úprava vlastnosti šablony kafka-env ve čtyřech Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
 
 1. Restartujte všechny makléře Kafka.
-1. Spusťte admin klienta s výrobci a spotřebiteli možnosti ověřit, že výrobci i spotřebitelé pracují na portu 9093.
 
 ## <a name="client-setup-without-authentication"></a>Nastavení klienta (bez ověřování)
 
@@ -208,13 +208,15 @@ Tyto kroky jsou podrobně popsány v následujících fragmentech kódu.
     keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. Vytvořte `client-ssl-auth.properties`soubor . Měl by mít následující řádky:
+1. Vytvořte `client-ssl-auth.properties` soubor v klientském počítači (hn1) . Měl by mít následující řádky:
 
     ```config
     security.protocol=SSL
     ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
     ssl.truststore.password=MyClientPassword123
     ```
+
+1. Spusťte admin klienta s výrobci a spotřebiteli možnosti ověřit, že výrobci i spotřebitelé pracují na portu 9093. Postup potřebný k ověření nastavení pomocí výrobce/spotřebitele konzoly naleznete v části [Ověření](apache-kafka-ssl-encryption-authentication.md#verification) níže.
 
 ## <a name="client-setup-with-authentication"></a>Nastavení klienta (s ověřováním)
 
@@ -278,17 +280,24 @@ Podrobnosti o každém kroku jsou uvedeny níže.
     scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
     ```
 
-1. Vytvořte úložiště klientů s podepsaným certifikátem a importujte certifikát ca do úložiště klíčů a úložiště důvěryhodnosti:
+    1. Přihlaste se ke klientském počítači (uzel head head) a přejděte do adresáře ssl.
 
     ```bash
-    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    ssh sshuser@HeadNode1_Name
+    cd ssl
     ```
 
-1. Vytvořte `client-ssl-auth.properties`soubor . Měl by mít následující řádky:
+1. Vytvořte úložiště klientů s podepsaným certifikátem a importujte certifikát ca do úložiště klíčů a úložiště důvěryhodnosti v klientském počítači (hn1):
+
+    ```bash
+    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```
+
+1. Vytvořte `client-ssl-auth.properties` soubor v klientském počítači (hn1) . Měl by mít následující řádky:
 
     ```bash
     security.protocol=SSL
@@ -300,6 +309,8 @@ Podrobnosti o každém kroku jsou uvedeny níže.
     ```
 
 ## <a name="verification"></a>Ověření
+
+Spusťte tyto kroky v klientském počítači.
 
 > [!Note]
 > Pokud je nainstalován hdinsight 4.0 a Kafka 2.1, můžete použít výrobce konzole/spotřebitele k ověření nastavení. Pokud ne, spusťte výrobce Kafka na portu 9092 a odesílejte zprávy na téma a potom použijte spotřebitele Kafka na portu 9093, který používá TLS.

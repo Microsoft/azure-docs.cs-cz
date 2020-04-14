@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/20/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: cc937589b2fc4f394b44cf6890a352d770751d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502034"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257738"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa testovacích prostředí ve třídě ve službě Azure Lab Services 
 Tento článek popisuje, jak vytvořit a odstranit testovací prostředí učebny. Také ukazuje, jak zobrazit všechny učebny laboratoře v účtu testovacího prostředí. 
@@ -37,6 +37,8 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
     1. Zadejte **název** testovacího prostředí. 
     2. Vyberte **velikost virtuálních počítačů,** které potřebujete pro třídu. Seznam velikostí, které jsou k dispozici, najdete v části [Velikosti virtuálních počítače.](#vm-sizes) 
     3. Vyberte **bitovou kopii virtuálního počítače,** kterou chcete použít pro testovací prostředí učebny. Pokud vyberete bitovou kopii Linuxu, zobrazí se možnost povolit připojení ke vzdálené ploše. Podrobnosti naleznete v [tématu Povolení připojení ke vzdálené ploše pro Linux](how-to-enable-remote-desktop-linux.md).
+
+        Pokud jste se přihlásili pomocí přihlašovacích údajů vlastníka účtu testovacího prostředí, zobrazí se možnost povolit další image pro testovací prostředí. Další informace naleznete [v tématu Povolení obrázků v době vytvoření testovacího prostředí](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation).
     4. Zkontrolujte **celkovou cenu za hodinu** zobrazenou na stránce. 
     6. Vyberte **Uložit**.
 

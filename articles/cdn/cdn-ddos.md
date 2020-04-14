@@ -3,7 +3,7 @@ title: Možnosti ochrany DDoS Azure CDN | Dokumenty společnosti Microsoft
 description: Azure CDN od Microsoftu je chráněna ddos ochranou basic bez dalších nákladů
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
-ms.author: magattus
-ms.openlocfilehash: 9cd688de861015cc12d1f98ed71e5376e5f574db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: dc7af555bcaf8654ecdb27d804cbef0c2cedb284
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593887"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253811"
 ---
 # <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS Protection
 

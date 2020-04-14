@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 04/09/2020
 ms.author: robinsh
-ms.openlocfilehash: 3613062cf8765a4aec3327b660bb5818898f2dd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c3b35eeed85dd3a1c44dea6ec46203eb812e1e8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110431"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257815"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Odesílání zpráv z cloudu na zařízení pomocí služby IoT Hub (Python)
 
@@ -29,21 +29,19 @@ Tento kurz staví na [odesílání telemetrie ze zařízení do služby IoT hub]
 
 * Příjem zpráv z cloudu na zařízení na zařízení.
 
-* Z back-endu vašeho řešení požádejte o potvrzení doručení *(zpětnou vazbu)* pro zprávy odeslané do zařízení ze služby IoT Hub.
-
 Další informace o zprávách mezi cloudy najdete v [průvodci vývojáři služby IoT Hub](iot-hub-devguide-messaging.md).
 
 Na konci tohoto kurzu spustíte dvě konzolové aplikace Pythonu:
 
 * **SimulatedDevice.py**, upravená verze aplikace vytvořená v [aplikaci Send telemetrie ze zařízení do služby IoT hub](quickstart-send-telemetry-python.md), která se připojuje k centru IoT hub a přijímá zprávy z cloudu na zařízení.
 
-* **SendCloudToDeviceMessage.py**, který odešle zprávu z cloudu na zařízení do aplikace simulované zařízení prostřednictvím služby IoT Hub a pak obdrží potvrzení o doručení.
+* **SendCloudToDeviceMessage.py**, který odesílá zprávy z cloudu na zařízení do aplikace simulovaných zařízení prostřednictvím služby IoT Hub.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+[!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
 * Zkontrolujte, zda je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokován v některých prostředích podnikové a vzdělávací sítě. Další informace a způsoby, jak tento problém vyřešit, najdete [v tématu připojení k centru IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -51,24 +49,31 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Pythonu:
 
 V této části vytvoříte konzolovou aplikaci Pythonu, která simuluje zařízení a přijímá zprávy z cloudu na zařízení z centra IoT Hub.
 
-1. Pomocí textového editoru vytvořte **soubor SimulatedDevice.py.**
+1. Z příkazového řádku ve vašem pracovním adresáři nainstalujte **sadku Azure IoT Hub Device SDK pro Python**:
 
-2. Na začátek **SimulatedDevice.py** souboru přidejte následující `import` příkazy a proměnné:
+    ```cmd/sh
+    pip install azure-iot-device
+    ```
 
-   ```python
+1. Pomocí textového editoru vytvořte soubor s názvem **SimulatedDevice.py**.
+
+1. Na začátek **SimulatedDevice.py** souboru přidejte následující `import` příkazy a proměnné:
+
+    ```python
     import threading
+    import time
     from azure.iot.device import IoTHubDeviceClient
 
     RECEIVED_MESSAGES = 0
     ```
 
-3. Do **SimulatedDevice.py** souboru přidejte následující kód. Nahraďte zástupnou hodnotu {deviceConnectionString}připojovacím řetězcem zařízení pro zařízení, které jste vytvořili v [modulu Odeslat telemetrii ze zařízení do rychlého startu služby IoT hub:](quickstart-send-telemetry-python.md)
+1. Do **SimulatedDevice.py** souboru přidejte následující kód. `{deviceConnectionString}` Nahraďte zástupnou hodnotu připojovacím řetězcem zařízení pro zařízení, které jste vytvořili v [možnosti Odeslat telemetrii ze zařízení do rychlého startu centra IoT:](quickstart-send-telemetry-python.md)
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-4. Přidejte následující funkci pro tisk přijatých zpráv do konzoly:
+1. Přidejte následující funkci pro tisk přijatých zpráv do konzoly:
 
     ```python
     def message_listener(client):
@@ -76,13 +81,17 @@ V této části vytvoříte konzolovou aplikaci Pythonu, která simuluje zaříz
         while True:
             message = client.receive_message()
             RECEIVED_MESSAGES += 1
-            print("Message received")
-            print( "    Data: <<{}>>".format(message.data) )
-            print( "    Properties: {}".format(message.custom_properties))
-            print( "    Total calls received: {}".format(RECEIVED_MESSAGES))
+            print("\nMessage received:")
+
+            #print data and both system and application (custom) properties
+            for property in vars(message).items():
+                print ("    {0}".format(property))
+
+            print( "Total calls received: {}".format(RECEIVED_MESSAGES))
+            print()
     ```
 
-5. Přidejte následující kód pro inicializaci klienta a počkejte na příjem zprávy z cloudu na zařízení:
+1. Přidejte následující kód pro inicializaci klienta a počkejte na příjem zprávy z cloudu na zařízení:
 
     ```python
     def iothub_client_sample_run():
@@ -97,20 +106,20 @@ V této části vytvoříte konzolovou aplikaci Pythonu, která simuluje zaříz
                 time.sleep(1000)
 
         except KeyboardInterrupt:
-            print ( "IoTHubDeviceClient sample stopped" )
+            print ( "IoT Hub C2D Messaging device sample stopped" )
     ```
 
-6. Přidejte následující hlavní funkci:
+1. Přidejte následující hlavní funkci:
 
     ```python
     if __name__ == '__main__':
-        print ( "Starting the IoT Hub Python sample..." )
-        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
+        print ( "Starting the Python IoT Hub C2D Messaging device sample..." )
+        print ( "Waiting for C2D messages, press Ctrl-C to exit" )
 
         iothub_client_sample_run()
     ```
 
-7. Uložit a zavřít **SimulatedDevice.py** soubor.
+1. Uložte a zavřete soubor **SimulatedDevice.py**.
 
 ## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT hub
 
@@ -120,67 +129,58 @@ V tomto článku vytvoříte back-endovou službu pro odesílání zpráv mezi c
 
 ## <a name="send-a-cloud-to-device-message"></a>Odeslání zprávy z cloudu na zařízení
 
-V této části vytvoříte konzolovou aplikaci Pythonu, která odesílá zprávy z cloudu na zařízení do aplikace simulovaných zařízení. Potřebujete ID zařízení zařízení, které jste přidali v [odesílání telemetrie ze zařízení do rychlého startu služby IoT hub.](quickstart-send-telemetry-python.md) Potřebujete také připojovací řetězec centra IoT, který jste dříve zkopírovali v [připojovacím řetězci Centra IoT](#get-the-iot-hub-connection-string).
+V této části vytvoříte konzolovou aplikaci Pythonu, která odesílá zprávy z cloudu na zařízení do aplikace simulovaných zařízení. Potřebujete ID zařízení zařízení, které jste přidali v [odesílání telemetrie ze zařízení do rychlého startu služby IoT hub.](quickstart-send-telemetry-python.md) Potřebujete také připojovací řetězec centra IoT, který jste dříve zkopírovali v [připojovacím řetězci Konzumního Centrum IoT](#get-the-iot-hub-connection-string).
 
-1. Pomocí textového editoru vytvořte **soubor SendCloudToDeviceMessage.py.**
+1. Ve svém pracovním adresáři otevřete příkazový řádek a nainstalujte **sadu Azure IoT Hub Service SDK pro Python**.
 
-2. Na začátek **SendCloudToDeviceMessage.py** souboru přidejte následující `import` příkazy a proměnné:
+   ```cmd/sh
+   pip install azure-iot-hub
+   ```
+
+1. Pomocí textového editoru vytvořte soubor s názvem **SendCloudToDeviceMessage.py**.
+
+1. Na začátek **SendCloudToDeviceMessage.py** souboru přidejte následující `import` příkazy a proměnné:
 
     ```python
     import random
     import sys
-    import iothub_service_client
-    from iothub_service_client import IoTHubMessaging, IoTHubMessage, IoTHubError
+    from azure.iot.hub import IoTHubRegistryManager
 
-    OPEN_CONTEXT = 0
-    FEEDBACK_CONTEXT = 1
-    MESSAGE_COUNT = 1
+    MESSAGE_COUNT = 2
     AVG_WIND_SPEED = 10.0
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-3. Do **SendCloudToDeviceMessage.py** souboru přidejte následující kód. Nahraďte zástupné hodnoty "{iot hub connection string}" a {device id}zástupným symbolem připojovacím řetězcem ioT hubu a ID zařízení, které jste si dříve poznamenali:
+1. Do **SendCloudToDeviceMessage.py** souboru přidejte následující kód. `{iot hub connection string}` Nahraďte `{device id}` a zástupné hodnoty připojovacím řetězcem centra IoT a ID zařízení, které jste si dříve poznamenali:
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
     ```
 
-4. Přidejte následující funkci pro tisk zpráv zpětné vazby do konzoly:
-
-    ```python
-    def open_complete_callback(context):
-        print ( 'open_complete_callback called with context: {0}'.format(context) )
-
-    def send_complete_callback(context, messaging_result):
-        context = 0
-        print ( 'send_complete_callback called with context : {0}'.format(context) )
-        print ( 'messagingResult : {0}'.format(messaging_result) )
-    ```
-
-5. Přidejte následující kód, který odešle zprávu do zařízení a zpracovat zprávu o zpětné vazbě, když zařízení potvrdí zprávu z cloudu na zařízení:
+1. Přidejte následující kód pro odesílání zpráv do zařízení:
 
     ```python
     def iothub_messaging_sample_run():
         try:
-            iothub_messaging = IoTHubMessaging(CONNECTION_STRING)
-
-            iothub_messaging.open(open_complete_callback, OPEN_CONTEXT)
+            # Create IoTHubRegistryManager
+            registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
 
             for i in range(0, MESSAGE_COUNT):
                 print ( 'Sending message: {0}'.format(i) )
-                msg_txt_formatted = MSG_TXT % (AVG_WIND_SPEED + (random.random() * 4 + 2))
-                message = IoTHubMessage(bytearray(msg_txt_formatted, 'utf8'))
+                data = MSG_TXT % (AVG_WIND_SPEED + (random.random() * 4 + 2))
 
-                # optional: assign ids
-                message.message_id = "message_%d" % i
-                message.correlation_id = "correlation_%d" % i
-                # optional: assign properties
-                prop_map = message.properties()
+                props={}
+                # optional: assign system properties
+                props.update(messageId = "message_%d" % i)
+                props.update(correlationId = "correlation_%d" % i)
+                props.update(contentType = "application/json")
+
+                # optional: assign application properties
                 prop_text = "PropMsg_%d" % i
-                prop_map.add("Property", prop_text)
+                props.update(testProperty = prop_text)
 
-                iothub_messaging.send_async(DEVICE_ID, message, send_complete_callback, i)
+                registry_manager.send_c2d_message(DEVICE_ID, data, properties=props)
 
             try:
                 # Try Python 2.xx first
@@ -190,63 +190,47 @@ V této části vytvoříte konzolovou aplikaci Pythonu, která odesílá zpráv
                 # Use Python 3.xx in the case of exception
                 input("Press Enter to continue...\n")
 
-            iothub_messaging.close()
-
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error {0}" % iothub_error )
+        except Exception as ex:
+            print ( "Unexpected error {0}" % ex )
             return
         except KeyboardInterrupt:
-            print ( "IoTHubMessaging sample stopped" )
+            print ( "IoT Hub C2D Messaging service sample stopped" )
     ```
 
-6. Přidejte následující hlavní funkci:
+1. Přidejte následující hlavní funkci:
 
     ```python
     if __name__ == '__main__':
-        print ( "Starting the IoT Hub Service Client Messaging Python sample..." )
-        print ( "    Connection string = {0}".format(CONNECTION_STRING) )
-        print ( "    Device ID         = {0}".format(DEVICE_ID) )
+        print ( "Starting the Python IoT Hub C2D Messaging service sample..." )
 
         iothub_messaging_sample_run()
     ```
 
-7. Uložit a zavřít **soubor SendCloudToDeviceMessage.py.**
+1. Uložit a zavřít **soubor SendCloudToDeviceMessage.py.**
 
 ## <a name="run-the-applications"></a>Spuštění aplikací
 
 Nyní můžete spustit aplikace.
 
-1. Otevřete příkazový řádek a nainstalujte **sadku Azure IoT Hub Device SDK pro Python**.
-
-    ```shell
-    pip install azure-iothub-device-client
-    ```
-
-2. Na příkazovém řádku spusťte následující příkaz pro poslech zpráv z cloudu na zařízení:
+1. Na příkazovém řádku v pracovním adresáři spusťte následující příkaz pro poslech zpráv mezi cloudy a zařízení:
 
     ```shell
     python SimulatedDevice.py
     ```
 
-    ![Spuštění aplikace simulované zařízení](./media/iot-hub-python-python-c2d/simulated-device.png)
+    ![Spuštění aplikace simulované zařízení](./media/iot-hub-python-python-c2d/device-1.png)
 
-3. Otevřete nový příkazový řádek a nainstalujte **sadu Azure IoT Hub Service SDK pro Python**.
-
-    ```shell
-    pip install azure-iothub-service-client
-    ```
-
-4. Na příkazovém řádku spusťte následující příkaz, který odešle zprávu z cloudu na zařízení a vyčká te na zpětnou vazbu:
+1. Otevřete nový příkazový řádek v pracovním adresáři a spusťte následující příkaz pro odesílání zpráv z cloudu na zařízení:
 
     ```shell
     python SendCloudToDeviceMessage.py
     ```
 
-    ![Spuštění aplikace pro odeslání příkazu cloud-to-device](./media/iot-hub-python-python-c2d/send-command.png)
+    ![Spuštění aplikace pro odeslání příkazu cloud-to-device](./media/iot-hub-python-python-c2d/service.png)
 
-5. Poznamenejte si zprávu přijatou zařízením.
+1. Poznamenejte si zprávy přijaté zařízením.
 
-    ![Přijatá zpráva](./media/iot-hub-python-python-c2d/message-received.png)
+    ![Přijatá zpráva](./media/iot-hub-python-python-c2d/device-2.png)
 
 ## <a name="next-steps"></a>Další kroky
 

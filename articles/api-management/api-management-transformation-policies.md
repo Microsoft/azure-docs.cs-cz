@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803241"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260900"
 ---
 # <a name="api-management-transformation-policies"></a>Zásady transformace ve službě API Management
 Toto téma obsahuje odkaz na následující zásady správy rozhraní API. Informace o přidávání a konfiguraci zásad naleznete [v tématu Zásady ve správě rozhraní API](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -214,7 +214,7 @@ Toto téma obsahuje odkaz na následující zásady správy rozhraní API. Infor
 ```
 
 > [!NOTE]
-> Back-endové entity lze spravovat pomocí [rozhraní API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) pro správu a [prostředí PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
+> Back-endové entity lze spravovat pomocí [rozhraní API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) pro správu a [prostředí PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
 
 ### <a name="example"></a>Příklad
 
@@ -269,7 +269,7 @@ V tomto příkladu zásady směruje požadavek na back-end service fabric pomoc�
 |Name (Název)|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |základní adresa URL|Nová adresa URL back-endové služby.|Jeden `base-url` z `backend-id` nich nebo musí být přítomen.|–|
-|backend-id|Identifikátor back-endu, do které chcete směrovat. (Back-endové entity se spravují přes [rozhraní API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) a [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Jeden `base-url` z `backend-id` nich nebo musí být přítomen.|–|
+|backend-id|Identifikátor back-endu, do které chcete směrovat. (Back-endové entity se spravují přes [rozhraní API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) a [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Jeden `base-url` z `backend-id` nich nebo musí být přítomen.|–|
 |sf-partition-key|Použitelné pouze v případě, že back-end je služba Service Fabric a je zadán pomocí 'backend-id'. Slouží k překladu konkrétního oddílu ze služby překladu názvů.|Ne|–|
 |sf-replika typu|Použitelné pouze v případě, že back-end je služba Service Fabric a je zadán pomocí 'backend-id'. Ovládací prvky, pokud by měl požadavek přejít na primární nebo sekundární repliku oddílu. |Ne|–|
 |sf-resolve-condition|Platí pouze v případě, že back-end je služba Service Fabric. Podmínka identifikující, pokud má být volání back-endu Service Fabric opakováno s novým rozlišením.|Ne|–|

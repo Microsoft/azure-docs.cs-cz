@@ -3,7 +3,7 @@ title: Ladění hlaviček HTTP pro Azure CDN od Microsoftu | Dokumenty společno
 description: Hlavičky požadavků na ladění mezipaměti poskytují další informace o zásadách mezipaměti použitých na požadovaný prostředek. Tyto hlavičky jsou specifické pro Azure CDN od Microsoftu.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2019
-ms.author: magattus
-ms.openlocfilehash: 297c65c1cd89163b8663819f844dc6c2a83fd1bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 2475bdce3ab8f153cc837601964bf4a2e90a470c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68814074"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260407"
 ---
 # <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Ladění hlavičky HTTP pro Azure CDN od Microsoftu
 Hlavička odpovědi ladění `X-Cache`, obsahuje podrobnosti o tom, z jaké vrstvy zásobníku CDN byl obsah obsluhován. Tato hlavička je specifická pro Azure CDN od Microsoftu.

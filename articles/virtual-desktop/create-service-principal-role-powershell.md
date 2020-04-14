@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 322ff2be4b90a945305915432a8191db9f4efee2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79365419"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252553"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Kurz: Vytvoření instančních objektů a přiřazení rolí pomocí Prostředí PowerShell
 
@@ -77,7 +77,7 @@ Zde jsou tři pověření, které byste měli zapsat, a rutiny, které potřebuj
     $svcPrincipal.AppId
     ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Vytvoření přiřazení role ve verzi Windows Virtual Desktop Preview
+## <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Vytvoření přiřazení role ve virtuální ploše windows
 
 Dále je třeba vytvořit přiřazení role, aby se instanční objekt mohl přihlásit k virtuální ploše systému Windows. Nezapomeňte se přihlásit pomocí účtu, který má oprávnění k vytváření přiřazení rolí.
 

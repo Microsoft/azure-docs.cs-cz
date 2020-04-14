@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 5f9ad827fa947e645f7eb4850f90a73c61a45cd3
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637111"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258420"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Možnosti podpory a zpětné vazby azure cognitive services
 
@@ -59,10 +59,7 @@ Kde `{search keywords}` je kontext vašeho hledání. Zvažte vhodné použití 
 
 Pokud nemůžete najít odpověď na svůj problém s vyhledávacím polem na Přetečení zásobníku, odešlete novou otázku. Přetečení zásobníku je upřednostňovaný kanál pro otázky související s vývojem. Je to místo, kde členové komunity přetečení zásobníku a členové týmu Microsoft jsou přímo zapojeni do pomoci při řešení vašich problémů.
 
- Při formulování otázky použijte jednu z následujících značek:
-
- - [Microsoft Kognitivní](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
- - [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
+Post dotaz [zde](https://go.microsoft.com/fwlink/?linkid=2126464). Použijte příslušnou značku pro vaši otázku, takže jsme si jisti, vidět otázku.
 
 > [!TIP]
 > Následující příspěvky z přetečení zásobníku obsahují tipy, jak vytvářet otázky a přidávat zdrojový kód. Následující pokyny mohou pomoci zvýšit pravděpodobnost, že členové komunity vaši otázku rychle vyhodnotí a na vaši otázku odpoví:

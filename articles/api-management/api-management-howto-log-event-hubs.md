@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f07f6a27e78ee4df8c64a09918758d02c28c6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76898785"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260934"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak protokolovat události do Azure Event Hubs ve správě Azure API
 Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Event Hubs funguje jako "přední dveře" pro kanál událostí a jakmile jsou data shromážděna do centra událostí, lze je transformovat a uložit pomocí libovolného poskytovatele analýzy v reálném čase nebo adaptérů dávkového nebo úložného systému. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.
@@ -30,9 +30,9 @@ Tento článek je společníkem [pro integraci správy rozhraní Azure API s](ht
 Podrobné kroky k vytvoření centra událostí a získání připojovacích řetězců, které potřebujete k odesílání a přijímání událostí do a z centra událostí, najdete [v tématu Vytvoření oboru názvů Event Hubs a centra událostí pomocí portálu Azure](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
 ## <a name="create-an-api-management-logger"></a>Vytvoření loggeru správy rozhraní API
-Teď, když máte Centrum událostí, dalším krokem je konfigurace [protokolování](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger) ve službě api management tak, aby mohl protokolovat události do centra událostí.
+Teď, když máte Centrum událostí, dalším krokem je konfigurace [protokolování](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) ve službě api management tak, aby mohl protokolovat události do centra událostí.
 
-Úhozy kláves API Management jsou konfigurovány pomocí [rozhraní API API PRO správu rozhraní API.](https://aka.ms/apimapi) Podrobné příklady požadavků naleznete v tématu [jak vytvořit úhozy kláves](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate).
+Úhozy kláves API Management jsou konfigurovány pomocí [rozhraní API API PRO správu rozhraní API.](https://aka.ms/apimapi) Podrobné příklady požadavků naleznete v tématu [jak vytvořit úhozy kláves](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate).
 
 ## <a name="configure-log-to-eventhubs-policies"></a>Konfigurace zásad log-to-eventhubs
 
@@ -65,7 +65,7 @@ Kliknutím na **Uložit** uložte aktualizovanou konfiguraci zásad. Jakmile je 
   * [Přijímání zpráv pomocí třídy EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Průvodce programováním pro službu Event Hubs](../event-hubs/event-hubs-programming-guide.md)
 * Další informace o integraci služby API Management a Event Hubs
-  * [Odkaz na entitu loggeru](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger)
+  * [Odkaz na entitu loggeru](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
   * [odkaz na zásady log-to-eventhub](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
   * [Monitorování rozhraní API pomocí Azure API Management, Event Hubs a Moesif](api-management-log-to-eventhub-sample.md)  
 * Další informace o [integraci s Azure Application Insights](api-management-howto-app-insights.md)

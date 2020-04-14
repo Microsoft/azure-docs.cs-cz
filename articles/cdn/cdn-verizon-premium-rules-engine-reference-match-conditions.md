@@ -2,17 +2,17 @@
 title: Azure CDN od Verizon Premium pravidla pravidla režimu zápas podmínky | Dokumenty společnosti Microsoft
 description: Referenční dokumentace pro Azure Content Delivery Network od Verizon Premium pravidla pravidla podmínky.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 1660dca34b2f128ef5889145fcdeed0d2523b9bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593205"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253437"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN od Verizon Premium pravidla pravidla podmínky motoru zápas
 
@@ -165,10 +165,10 @@ Možnost **Neodpovídá**/**Does Not Match** možnosti určuje podmínky, za kte
 Klíčové informace:
 
 - Použijte cidr zápis.
-- Zadejte více adres IP a/nebo bloků IP adres tak, že každý z nich vymezíte jednou mezerou. Například:
+- Zadejte více adres IP a/nebo bloků IP adres tak, že každý z nich vymezíte jednou mezerou. Příklad:
   - **Příklad IPv4**: 1.2.3.4 10.20.30.40 odpovídá všem požadavkům, které přicházejí z adresy 1.2.3.4 nebo 10.20.30.40.
   - **Příklad IPv6**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 odpovídá všem požadavkům, které přicházejí z adresy 1:2:3:4:5:6:7:8 nebo 10:20:30:40:50:60:70:80.
-- Syntaxe bloku IP adres je základní IP adresa následovaná lomítkem a velikostí předpony. Například:
+- Syntaxe bloku IP adres je základní IP adresa následovaná lomítkem a velikostí předpony. Příklad:
   - **Příklad IPv4**: 5.5.5.64/26 odpovídá všem požadavkům, které přicházejí z adres 5.5.5.64 až 5.5.5.127.
   - **Příklad IPv6**: 1:2:3:/48 odpovídá všem požadavkům, které přicházejí z adres 1:2:3:0:0:0:0: 0 až 1:2:3:ffff:ffff:ffff:ffff:ffff:ffff:ffff.ffff.
 - Vzhledem ke způsobu sledování nastavení mezipaměti je tato podmínka shody nekompatibilní s následujícími funkcemi:
@@ -993,7 +993,7 @@ Klíčové informace:
 
 - Speciální znaky regulárních výrazů \^s dvojitým escapem (například $.+) pro zahrnutí zpětného lomítka do regulárního výrazu.
 
-   Například:
+   Příklad:
 
    Hodnota | Interpretováno jako 
    ------|---------------

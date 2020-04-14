@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 03/19/2020
+ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 01767e88714bfb4e134957298505edd218d462d3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 927696d029bf1b8742dc0001e03799322f368191
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546925"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261716"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -99,10 +99,8 @@ Virtuální počítače Azure, které vytvoříte pro Virtuální plochu Windows
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Aktivace Windows|Internet|
 
-
-
 >[!IMPORTANT]
->Otevření těchto adres URL je nezbytné pro spolehlivé nasazení virtuální plochy systému Windows. Blokování přístupu k těmto adresám URL není podporováno a ovlivní funkčnost služby. Tyto adresy URL odpovídají jenom webům a prostředkům virtuální plochy Windows a nezahrnují adresy URL pro jiné služby, jako je Azure Active Directory.
+>Ve většině případů doporučujeme používat značky služeb místo adres URL, abyste předešli problémům se službou. Odblokování těchto adres URL je nezbytné pro spolehlivé nasazení virtuální plochy systému Windows. Blokování přístupu k těmto adresám URL není podporováno a ovlivní funkčnost služby. Tyto adresy URL odpovídají jenom webům a prostředkům virtuální plochy Windows a nezahrnují adresy URL pro jiné služby, jako je Azure Active Directory.
 
 V následující tabulce jsou uvedeny volitelné adresy URL, ke kterým můžou mít vaše virtuální počítače Azure přístup:
 
@@ -142,7 +140,7 @@ Následující klienti vzdálené plochy podporují virtuální plochu systému 
 
 * [Plocha systému Windows](connect-windows-7-and-10.md)
 * [Web](connect-web.md)
-* [Macos](connect-macos.md)
+* [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android (náhled)](connect-android.md)
 
@@ -199,4 +197,4 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 Chcete-li začít, budete muset vytvořit klienta. Další informace o tom, jak vytvořit klienta, pokračujte v kurzu pro vytváření klienta.
 
 > [!div class="nextstepaction"]
-> [Vytvoření klienta v Windows Virtual Desktop](tenant-setup-azure-active-directory.md)
+> [Vytvoření klienta ve Windows Virtual Desktop](tenant-setup-azure-active-directory.md)

@@ -3,8 +3,8 @@ title: Proaktivní konfigurace GRUB konzoly Azure Serial Console| Dokumenty spol
 description: Konfigurace GRUB napříč různými distribucemi, které umožňují přístup k režimu jednoho uživatele a režimu obnovení ve virtuálních počítačích Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: vilibert
-manager: spogge
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
-ms.author: vilibert
-ms.openlocfilehash: a154ab4742f0d0d7acae0376bcf894bc2b62b4cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186926"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262889"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktivně zajištění přístupu k GRUB a sysrq vám může ušetřit spoustu prostojů
 
@@ -98,7 +98,7 @@ V tomto článku zkontrolujeme různé distribuce Linuxu a konfigurace dokument�
 Klíč sysrq je povolen na některých novějších distribucích Linuxu ve výchozím nastavení, i když v jiných může být nakonfigurován pro příjem hodnot pouze pro určité funkce SysRq.
 U starších distribucí může být zcela zakázán.
 
-Funkce SysRq je užitečná pro restartování havarovaného nebo zavěšeného virtuálního počítače přímo z konzoly Azure Serial Console, která je také užitečná při získání přístupu k nabídce GRUB, alternativně restartování virtuálního počítače z jiného okna portálu nebo relace ssh může vynechat aktuální připojení konzoly a tak vyprší grub časové lhůty, na které se používají k zobrazení menu GRUB.
+Funkce SysRq je užitečná pro restartování havarovaného nebo zavěšeného virtuálního počítače přímo z konzoly Azure Serial Console, která je také užitečná při získání přístupu k nabídce GRUB, případně restartování virtuálního počítače z jiného okna portálu nebo relace ssh může vynechat aktuální připojení konzoly, což vyprší vypršení časového limitu GRUB, na které se slouží k zobrazení nabídky GRUB.
 Virtuální počítač musí být nakonfigurován tak, aby přijímal hodnotu 1 pro parametr jádra, který umožňuje všechny funkce sysrq nebo 128, což umožňuje restartování/vypnutí
 
 

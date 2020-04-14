@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: dapine
-ms.openlocfilehash: 239bb1e43b6a89ed1e8a18d544cf646b5f2de9b9
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 6f501ffd7bd9405fb5818c4af06156912021c6e4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671220"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275459"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -82,7 +82,7 @@ Pokud máte problémy podle těchto pokynů, naleznete v [podrobnějším kurzu 
 
 ## <a name="next-steps"></a>Další kroky
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 ## <a name="see-also"></a>Viz také
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 03/12/2020
-ms.openlocfilehash: 418be090e7ff78ec0089c115c9884ffeffdda871
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4359c5581d14f4a918a49cf2b91ac58561ea93d3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284015"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257449"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -84,7 +84,7 @@ Tady jsou limity pro spuštění jedné aplikace logiky:
 
 | Name (Název) | Omezení | Poznámky |
 | ---- | ----- | ----- |
-| Souběžnost aktivační události | - Neomezené, když je vypnuto řízení souběžnosti <p><p>- 25 je výchozí limit při řízení souběžnosti je zapnuta, které nelze vrátit zpět po zapnutí ovládacího prvku. Můžete změnit výchozí hodnotu mezi 1 a 50 včetně. | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které lze spustit současně nebo paralelně. <p><p>**Poznámka:** Je-li souběžnost zapnuta, limit SplitOn se sníží na 100 položek pro [debatní pole](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Pokud chcete změnit výchozí limit na hodnotu mezi 1 a 50 inkluzívně, přečtěte si následující informace [o omezení souběžnosti aktivační](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) události nebo instance aktivační [události](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Souběžnost aktivační události | - Neomezené, když je vypnuto řízení souběžnosti <p><p>- 25 je výchozí limit při řízení souběžnosti je zapnuta, které nelze vrátit po povolení souběžnosti. Můžete změnit výchozí hodnotu mezi 1 a 50 včetně. | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které lze spustit současně nebo paralelně. <p><p>**Poznámka:** Je-li souběžnost zapnuta, limit SplitOn se sníží na 100 položek pro [debatní pole](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Pokud chcete změnit výchozí limit na hodnotu mezi 1 a 50 inkluzívně, přečtěte si následující informace [o omezení souběžnosti aktivační](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) události nebo instance aktivační [události](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maximální počet čekání | - Bez souběžnosti je minimální počet čekajících běhů 1, zatímco maximální počet je 50. <p><p>- S souběžnosti, minimální počet čekajících spuštění je 10 plus počet souběžných spuštění (aktivační událost souběžnosti). Maximální počet můžete změnit na 100 včetně. | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které můžete čekat na spuštění, když vaše aplikace logiky je již spuštěna maximální souběžné instance. <p><p>Pokud chcete změnit výchozí limit, přečtěte si informace [o omezení počtu přečkání čekání](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | Foreach pole položky | 100 000 | Toto omezení popisuje nejvyšší počet položek pole, které může zpracovat smyčka "pro každou". <p><p>Chcete-li filtrovat větší pole, můžete použít [akci dotazu](logic-apps-perform-data-operations.md#filter-array-action). |
 | Souběžnost Foreach | 20 je výchozí limit při vypnutí ovládacího prvku souběžnosti. Můžete změnit výchozí hodnotu mezi 1 a 50 včetně. | Toto omezení je nejvyšší počet iterací smyčky "pro každou", která může být spuštěna současně nebo paralelně. <p><p>Chcete-li změnit výchozí limit na hodnotu mezi 1 a 50 včetně, naleznete [v tématu Změna "pro každý" limit souběžnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [Spustit "pro každou" smyčky postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
@@ -167,6 +167,8 @@ Některé operace konektoru provádět asynchronní volání nebo naslouchat po�
 | Požadavek na limit znaků adresy URL | 16 384 znaků |
 |||
 
+<a name="retry-policy-limits"></a>
+
 #### <a name="retry-policy"></a>Zásady opakování
 
 | Name (Název) | Omezení | Poznámky |
@@ -228,7 +230,7 @@ Cenové sazby najdete v tématu [Logic Apps pricing](https://azure.microsoft.com
 > [!NOTE]
 > Použijte free vrstvu pouze pro průzkumné scénáře, ne produkční scénáře. Tato úroveň omezuje propustnost a využití a nemá žádnou smlouvu o úrovni služeb (SLA).
 
-| Artefakt | Free | Basic | Standard |
+| Artefakt | Free | Základní | Standard |
 |----------|------|-------|----------|
 | Edi obchodní dohody | 10 | 1 | 1 000 |
 | Edi obchodní partneři | 25 | 2 | 1 000 |
@@ -254,7 +256,7 @@ Cenové sazby najdete v tématu [Logic Apps pricing](https://azure.microsoft.com
 
 ### <a name="throughput-limits"></a>Omezení propustnosti
 
-| Koncový bod runtime | Free | Basic | Standard | Poznámky |
+| Koncový bod runtime | Free | Základní | Standard | Poznámky |
 |------------------|------|-------|----------|-------|
 | Čtení hovorů za 5 minut | 3 000 | 30,000 | 60 000 | Podle potřeby můžete distribuovat úlohy mezi více než jeden účet. |
 | Vyvolání hovorů za 5 minut | 3 000 | 30,000 | 45 000 | Podle potřeby můžete distribuovat úlohy mezi více než jeden účet. |

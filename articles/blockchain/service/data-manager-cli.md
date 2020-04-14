@@ -4,12 +4,12 @@ description: Vytvoření a správa správce blockchainových dat pro službu Azu
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: 5ceca96f760ab62ca7f3df9ad26139b9b4a3e5be
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529593"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254406"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurace Blockchain Data Manageru s využitím Azure CLI
 
@@ -48,7 +48,7 @@ az group create --name myRG --location eastus
 
 ## <a name="create-instance"></a>Vytvořit instanci
 
-Instance Správce dat Blockchain monitoruje transakční uzel služby Azure Blockchain Service. Instance zachytí všechna nezpracovaná data bloku a nezpracovaných transakcí z uzlu transakce.
+Instance Správce dat Blockchain monitoruje transakční uzel služby Azure Blockchain Service. Instance zachytí všechna nezpracovaná data bloku a nezpracovaných transakcí z uzlu transakce. Blockchain Data Manager publikuje zprávu **RawBlockAndTransactionMsg,** která je nadmnožinou informací vrácených z web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) a [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) dotazů.
 
 ``` azurecli
 az resource create \

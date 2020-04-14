@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 4e960a2dee87db77647ba1596a9c22138c64d15c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 19a3ce3672b48967c2cff5698a646069319b8a82
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671465"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274985"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -99,4 +99,4 @@ Teď jste připraveni znovu vytvořit aplikaci a otestovat funkci rozpoznáván�
 
 ## <a name="next-steps"></a>Další kroky
 
-[!INCLUDE [footer](../footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
