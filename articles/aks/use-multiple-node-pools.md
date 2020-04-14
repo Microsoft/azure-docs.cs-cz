@@ -4,16 +4,16 @@ description: Zjistěte, jak vytvořit a spravovat fondy více uzlů pro cluster 
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 26fd541552ee203216af5a08d948644d82061191
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984908"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259081"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa fondů více uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
 
-Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny do *fondů uzlů*. Tyto fondy uzlů obsahují základní virtuální počítače, které spouštějí vaše aplikace. Počáteční počet uzlů a jejich velikost (SKU) je definována při vytváření clusteru AKS, který vytvoří *výchozí fond uzlů*. Chcete-li podporovat aplikace, které mají různé požadavky na výpočetní prostředky nebo úložiště, můžete vytvořit další fondy uzlů. Tyto další fondy uzlů můžete například použít k poskytování grafických procesorů pro aplikace náročné na výpočetní výkon nebo přístupu k vysoce výkonnému úložišti SSD.
+Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny do *fondů uzlů*. Tyto fondy uzlů obsahují základní virtuální počítače, které spouštějí vaše aplikace. Počáteční počet uzlů a jejich velikost (SKU) je definována při vytváření clusteru AKS, který vytvoří [fond systémových uzlů][use-system-pool]. Chcete-li podporovat aplikace, které mají různé požadavky na výpočetní prostředky nebo úložiště, můžete vytvořit další *fondy uživatelských uzlů*. Fondy systémových uzlů slouží primárnímu účelu hostování kritických systémových podů, jako je CoreDNS a tunnelfront. Fondy uživatelských uzlů slouží primárnímu účelu hostování podů aplikací. Pody aplikací však lze naplánovat ve fondech systémových uzlů, pokud chcete mít v clusteru AKS pouze jeden fond. Fondy uzlů uživatelů jsou místo, kam umístíte pody specifické pro aplikaci. Tyto fondy dalších uživatelských uzlů můžete například použít k poskytování grafických procesorů pro aplikace náročné na výpočetní výkon nebo přístupu k vysoce výkonnému úložišti SSD.
 
 > [!NOTE]
 > Tato funkce umožňuje vyšší kontrolu nad tím, jak vytvořit a spravovat více fondů uzlů. V důsledku toho jsou pro vytvoření/aktualizaci/odstranění vyžadovány samostatné příkazy. Dříve clusterové `az aks create` `az aks update` operace prostřednictvím nebo používal spravované clusterapi a byly jedinou možností změnit rovinu ovládacího prvku a jeden uzel fondu. Tato funkce zveřejňuje samostatnou sadu operací pro fondy agentů prostřednictvím rozhraní API agentPool a vyžaduje použití `az aks nodepool` sady příkazů ke spuštění operací v fondu jednotlivých uzlů.
@@ -29,7 +29,8 @@ Potřebujete nainstalované a nakonfigurované azure CLI verze 2.2.0 nebo nověj
 Následující omezení platí při vytváření a správě clusterů AKS, které podporují více fondů uzlů:
 
 * Viz [Kvóty, omezení velikosti virtuálního počítače a dostupnost oblasti ve službě Azure Kubernetes Service (AKS).][quotas-skus-regions]
-* Fond systémových uzlů nelze odstranit, ve výchozím nastavení fond prvních uzlů.
+* Fondy systémových uzlů můžete odstranit za předpokladu, že máte jiný fond systémových uzlů, který zaujme své místo v clusteru AKS.
+* Systémové fondy musí obsahovat alespoň jeden uzel a fondy uživatelských uzlů mohou obsahovat nula nebo více uzlů.
 * Cluster AKS musí používat standardní správce zatížení sku používat více fondů uzlů, funkce není podporována základní mise pro vyrovnávání zatížení skladových položk.
 * Cluster AKS musí používat škálovací sady virtuálních strojů pro uzly.
 * Název fondu uzlů může obsahovat pouze malá alfanumerická písmena a musí začínat s malou písmena. U fondů uzlů Linux musí být délka mezi 1 a 12 znaky, pro fondy uzlů systému Windows musí být délka mezi 1 a 6 znaky.
@@ -37,6 +38,9 @@ Následující omezení platí při vytváření a správě clusterů AKS, kter�
 * Při vytváření více fondů uzlů v době vytváření clusteru musí všechny verze Kubernetes používané fondy uzlů odpovídat verzi nastavené pro rovinu ovládacího prvku. To lze aktualizovat po zřízení clusteru pomocí operací fondu uzlů.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
+
+> [!Important]
+> Pokud spustíte fond jednoho systémového uzlu pro cluster AKS v produkčním prostředí, doporučujeme použít alespoň tři uzly pro fond uzlů.
 
 Chcete-li začít, vytvořte cluster AKS s fondem jednoho uzlu. Následující příklad používá příkaz [az group create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus.* Cluster AKS s názvem *myAKSCluster* je pak vytvořen pomocí příkazu [az aks create.][az-aks-create] A *--kubernetes-version* *1.15.7* se používá k zobrazení způsobu aktualizace fondu uzlů v následujícím kroku. Můžete zadat libovolnou [podporovanou verzi Kubernetes][supported-versions].
 
@@ -753,6 +757,8 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Další kroky
 
+Další informace o [fondech systémových uzlů][use-system-pool].
+
 V tomto článku jste se dozvěděli, jak vytvořit a spravovat více fondů uzlů v clusteru AKS. Další informace o tom, jak řídit pody ve fondech uzlů, naleznete [v tématu Doporučené postupy pro pokročilé funkce plánovače v AKS][operator-best-practices-advanced-scheduler].
 
 Informace o vytvoření a použití fondů uzlů kontejnerů systému Windows Server naleznete [v tématu Vytvoření kontejneru windows serveru v aks][aks-windows].
@@ -788,3 +794,4 @@ Informace o vytvoření a použití fondů uzlů kontejnerů systému Windows Se
 [tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
+[use-system-pool]: use-system-pools.md

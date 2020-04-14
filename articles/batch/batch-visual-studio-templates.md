@@ -14,19 +14,19 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e42917237f3b114881655d88a017c2c4366612b3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022745"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254559"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Použití šablon projektů sady Visual Studio k nastartování dávkových řešení
 
 **Šablony správce úloh** a **procesorúloh Visual Studio** pro Batch poskytují kód, který vám pomůže implementovat a spustit úlohy náročné na výpočetní výkon v batch s nejmenším úsilím. Tento dokument popisuje tyto šablony a poskytuje pokyny pro jejich použití.
 
 > [!IMPORTANT]
-> Tento článek popisuje pouze informace vztahující se k těmto dvěma šablonám a předpokládá, že jste obeznámeni se službou Batch a klíčovými koncepty, které s ní souvisejí: fondy, výpočetní uzly, úlohy a úkoly, úlohy správce úloh, proměnné prostředí a další relevantní Informace. Další informace najdete v [přehledu základních](batch-technical-overview.md) funkcí Azure Batch a [Batch pro vývojáře](batch-api-basics.md).
+> Tento článek popisuje pouze informace vztahující se k těmto dvěma šablonám a předpokládá, že jste obeznámeni se službou Batch a klíčovými koncepty, které s ní souvisejí: fondy, výpočetní uzly, úlohy a úkoly, úlohy správce úloh, proměnné prostředí a další relevantní informace. Další informace najdete v [přehledu základních](batch-technical-overview.md) funkcí Azure Batch a [Batch pro vývojáře](batch-api-basics.md).
 > 
 > 
 
@@ -361,7 +361,7 @@ Implementace Run() má přístup k:
 
 **Selhání úlohy**
 
-V případě selhání můžete ukončit Run() metoda vyvoláním výjimky, ale to ponechává obslužnou rutinu výjimky nejvyšší úrovně v řízení kódu ukončení úlohy. Pokud potřebujete řídit ukončovací kód, abyste mohli rozlišit různé typy selhání, například pro diagnostické účely nebo proto, že některé režimy selhání by měly ukončit úlohu a jiné by neměly, měli byste ukončit metodu Run() vrácením nenulové ukončovací kód. To se stane kód ukončení úlohy.
+V případě selhání můžete ukončit Run() metoda vyvoláním výjimky, ale to ponechává obslužnou rutinu výjimky nejvyšší úrovně v řízení kódu ukončení úlohy. Pokud potřebujete řídit ukončovací kód, abyste mohli rozlišit různé typy selhání, například pro diagnostické účely nebo proto, že některé režimy selhání by měly ukončit úlohu a jiné by neměly, měli byste ukončit metodu Run() vrácením nenulového ukončovacího kódu. To se stane kód ukončení úlohy.
 
 ### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Ukončovací kódy a výjimky v šabloně Procesor úloh
 Ukončovací kódy a výjimky poskytují mechanismus k určení výsledku spuštění programu a mohou pomoci identifikovat všechny problémy s prováděním programu. Šablona task processor implementuje ukončovací kódy a výjimky popsané v této části.
@@ -444,7 +444,7 @@ Dalším užitečným nástrojem ve vývoji řešení Batch je [Azure Batch File
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
-[vs_gallery_templates]: https://go.microsoft.com/fwlink/?linkid=820714
+[vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
 [vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png

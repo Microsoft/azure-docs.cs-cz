@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985282"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273507"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Zabezpečení ve službě Azure Cosmos DB – Přehled
 
@@ -66,8 +66,8 @@ Pojďme se podívat do každého z nich podrobně.
 |Globální replikace|Azure Cosmos DB nabízí globální distribuci na klíč, která umožňuje replikovat data do některého z celosvětově datových center Azure kliknutím na tlačítko. Globální replikace umožňuje globální škálování a poskytuje přístup k datům s nízkou latencí po celém světě.<br><br>V kontextu zabezpečení globální replikace zajišťuje ochranu dat před regionálními selháními.<br><br>Další informace najdete v části [Globální distribuce dat](distribute-data-globally.md).|
 |Místní převzetí služeb při selhání|Pokud jste replikovali data ve více než jednom datovém centru, Azure Cosmos DB se automaticky převrátí přes vaše operace, pokud regionální datové centrum přejde do režimu offline. Pomocí oblastí, ve kterých jsou data replikována, můžete vytvořit seznam oblastí s prioritou převzetí služeb při selhání. <br><br>Další informace o [místních převzetích služeb při selhání v Azure Cosmos DB](high-availability.md).|
 |Místní replikace|I v rámci jednoho datového centra Azure Cosmos DB automaticky replikuje data pro vysokou dostupnost, což vám dává možnost volby [úrovní konzistence](consistency-levels.md). Tato replikace zaručuje 99,99% [dostupnost sla](https://azure.microsoft.com/support/legal/sla/cosmos-db) pro všechny účty s jednou oblastí a všechny účty s více oblastmi s uvolněnou konzistencí a 99,999% dostupnost čtení na všech databázových účtech s více oblastmi.|
-|Automatické zálohování online|Databáze Azure Cosmos se pravidelně zálohují a ukládají v geograficky redundantním úložišti. <br><br>Další informace najdete v [oblasti Automatické zálohování a obnovení online pomocí Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).|
-|Obnovení odstraněných dat|Automatické zálohování online lze použít k obnovení dat, která jste omylem odstranili až do ~30 dnů po události. <br><br>Další informace v [oblasti Automatické zálohování a obnovení online pomocí Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)|
+|Automatické zálohování online|Databáze Azure Cosmos se pravidelně zálohují a ukládají v geograficky redundantním úložišti. <br><br>Další informace najdete v [oblasti Automatické zálohování a obnovení online pomocí Azure Cosmos DB](online-backup-and-restore.md).|
+|Obnovení odstraněných dat|Automatické zálohování online lze použít k obnovení dat, která jste omylem odstranili až do ~30 dnů po události. <br><br>Další informace v [oblasti Automatické zálohování a obnovení online pomocí Azure Cosmos DB](online-backup-and-restore.md)|
 |Ochrana a izolování citlivých dat|Všechna data v oblastech uvedených v části Co je nového? je nyní zašifrován v klidu.<br><br>Osobní údaje a další důvěrné údaje mohou být izolovány pro konkrétní kontejner a pro čtení a zápis nebo přístup jen pro čtení může být omezen na konkrétní uživatele.|
 |Sledování útoků|Pomocí [protokolování auditování a protokolů aktivit](logging.md)můžete sledovat, že váš účet má normální a neobvyklou aktivitu. Můžete zobrazit, jaké operace byly provedeny na vašich prostředcích, kdo operaci inicioval, kdy došlo k operaci, stav operace a mnohem více, jak je znázorněno na snímku obrazovky za touto tabulkou.|
 |Reakce na útoky|Jakmile kontaktujete podporu Azure a nahlásíte potenciální útok, zakopne se proces reakce na incidenty v 5 krocích. Cílem procesu v 5 krocích je co nejrychleji obnovit normální zabezpečení a provoz služby po zjištění problému a zahájení šetření.<br><br>Další informace najdete v [části Microsoft Azure Security Response v cloudu](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|

@@ -4,20 +4,23 @@ description: Tento článek obsahuje kolekci příkazů AzCopy příklad, které
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73685f124f93bb541f33b3b70727d90ce22b3cdd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933578"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263433"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Přenos dat pomocí úložiště AzCopy a Blob
 
 AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování dat do účtů úložiště, z nich nebo mezi nimi. Tento článek obsahuje ukázkové příkazy, které fungují s úložištěm objektů Blob.
+
+> [!TIP]
+> Příklady v tomto článku uzavírají argumenty cesty s jednoduchými uvozovkami (''). Ve všech příkazových prostředích s výjimkou prostředí Windows Command Shell (cmd.exe) používejte jednoduché uvozovky. Pokud používáte prostředí Windows Command Shell (cmd.exe), uzavřete argumenty cesty s dvojitými uvozovkami ("") namísto jednoduchých uvozovek ('').
 
 ## <a name="get-started"></a>Začínáme
 
@@ -31,9 +34,6 @@ Podívejte se na [článek Začínáme s AzCopy,](storage-use-azcopy-v10.md) kde
 > Například: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
-
-> [!TIP]
-> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (''). Ve všech příkazových prostředích s výjimkou prostředí Windows Command Shell (cmd.exe) používejte jednoduché uvozovky. Pokud používáte prostředí Windows Command Shell (cmd.exe), uzavřete argumenty cesty s dvojitými uvozovkami ("") namísto jednoduchých uvozovek ('').
 
 Můžete použít [příkaz azcopy make](storage-ref-azcopy-make.md) k vytvoření kontejneru. Příklady v této části vytvoří `mycontainer`kontejner s názvem .
 
@@ -57,10 +57,16 @@ Tato část obsahuje následující příklady:
 > * Nahrání obsahu adresáře 
 > * Nahrání konkrétních souborů
 
-Podrobné referenční dokumenty viz [azcopy copy](storage-ref-azcopy-copy.md).
-
 > [!TIP]
-> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (''). Ve všech příkazových prostředích s výjimkou prostředí Windows Command Shell (cmd.exe) používejte jednoduché uvozovky. Pokud používáte prostředí Windows Command Shell (cmd.exe), uzavřete argumenty cesty s dvojitými uvozovkami ("") namísto jednoduchých uvozovek ('').
+> Operaci nahrávání můžete vyladit pomocí volitelných příznaků. Zde je několik příkladů.
+>
+> |Scénář|Příznak|
+> |---|---|
+> |Nahrajte soubory jako objekty BLOB pro připojení nebo objekty BLOB stránky.|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob --blob\]|
+> |Nahrajte se na určitou úroveň přístupu (například archivní vrstvu).|**--block-blob-tier**=\[\|None\|\|Hot Cool Archiv\]|
+> |Automaticky dekomprimovat soubory.|**--dekomprimovat**=\[gzip\|vyfouknout\]|
+> 
+> Úplný seznam naleznete v tématu [možnosti](storage-ref-azcopy-copy.md#options).
 
 ### <a name="upload-a-file"></a>Nahrání souboru
 
@@ -71,10 +77,6 @@ Podrobné referenční dokumenty viz [azcopy copy](storage-ref-azcopy-copy.md).
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
 Soubor můžete také nahrát pomocí zástupný symbol (*) kdekoli v cestě k souboru nebo názvu souboru. Například: `'C:\myDirectory\*.txt'`, `C:\my*\*.txt`nebo .
-
-> [!NOTE]
-> AzCopy ve výchozím nastavení nahrává data jako objekty BLOB bloku. Chcete-li nahrát soubory jako objekty BLOB pro `--blob-type=[BlockBlob|PageBlob|AppendBlob]`připojení nebo objekty BLOB stránky, použijte příznak .
-> AzCopy ve výchozím nastavení nahrává vaše data, aby zdědila úroveň přístupu k účtu. Chcete-li odeslat soubory do určité `--block-blob-tier=[Hot|Cool|Archive]` [vrstvy přístupu](../blobs/storage-blob-storage-tiers.md), použijte příznak .
 
 ### <a name="upload-a-directory"></a>Nahrání adresáře
 
@@ -152,13 +154,19 @@ Tato část obsahuje následující příklady:
 > * Stažení obsahu adresáře
 > * Stažení konkrétních souborů
 
+> [!TIP]
+> Operaci stahování můžete vyladit pomocí volitelných příznaků. Zde je několik příkladů.
+>
+> |Scénář|Příznak|
+> |---|---|
+> |Automaticky dekomprimovat soubory.|**--dekomprimovat**=\[gzip\|vyfouknout\]|
+> |Určete, jak podrobné mají být položky protokolu související s kopírováním.|**--log-level**=\[\|WARNING\|\|ERROR INFO NONE --log-level WARNING ERROR INFO NONE --log-level WARNING ERROR INFO NONE --log\]|
+> |Určete, zda a jak přepsat konfliktní soubory a objekty BLOB v cílovém umístění.|**--přepsat**=\[true\|\|false ifSourceNewer\|prompt\]|
+> 
+> Úplný seznam naleznete v tématu [možnosti](storage-ref-azcopy-copy.md#options).
+
 > [!NOTE]
 > Pokud `Content-md5` hodnota vlastnosti objektu blob obsahuje hodnotu hash, AzCopy vypočítá hodnotu hash MD5 pro stažená data a `Content-md5` ověří, zda hodnota hash MD5 uložená ve vlastnosti objektu blob odpovídá vypočtené hodnotě hash. Pokud se tyto hodnoty neshodují, stahování se nezdaří, `--check-md5=NoCheck` pokud `--check-md5=LogOnly` toto chování nepřepíšete připojením nebo příkazem copy.
-
-Podrobné referenční dokumenty viz [azcopy copy](storage-ref-azcopy-copy.md).
-
-> [!TIP]
-> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (''). Ve všech příkazových prostředích s výjimkou prostředí Windows Command Shell (cmd.exe) používejte jednoduché uvozovky. Pokud používáte prostředí Windows Command Shell (cmd.exe), uzavřete argumenty cesty s dvojitými uvozovkami ("") namísto jednoduchých uvozovek ('').
 
 ### <a name="download-a-file"></a>Stažení souboru
 
@@ -245,12 +253,18 @@ Tato část obsahuje následující příklady:
 > * Kopírování kontejneru do jiného účtu úložiště
 > * Kopírování všech kontejnerů, adresářů a souborů do jiného účtu úložiště
 
-Podrobné referenční dokumenty viz [azcopy copy](storage-ref-azcopy-copy.md).
+Tyto příklady také pracují s účty, které mají hierarchický obor názvů. [Víceprotokolový přístup v úložišti Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) `blob.core.windows.net`umožňuje používat u těchto účtů stejnou syntaxi adresy URL ( ).
 
 > [!TIP]
-> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (''). Ve všech příkazových prostředích s výjimkou prostředí Windows Command Shell (cmd.exe) používejte jednoduché uvozovky. Pokud používáte prostředí Windows Command Shell (cmd.exe), uzavřete argumenty cesty s dvojitými uvozovkami ("") namísto jednoduchých uvozovek ('').
-
- Tyto příklady také pracují s účty, které mají hierarchický obor názvů. [Víceprotokolový přístup v úložišti Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) `blob.core.windows.net`umožňuje používat u těchto účtů stejnou syntaxi adresy URL ( ). 
+> Operaci kopírování můžete vyladit pomocí volitelných příznaků. Zde je několik příkladů.
+>
+> |Scénář|Příznak|
+> |---|---|
+> |Zkopírujte soubory jako objekty BLOB pro připojení nebo objekty BLOB stránky.|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob --blob\]|
+> |Zkopírujte do určité úrovně přístupu (například archivní vrstvy).|**--block-blob-tier**=\[\|None\|\|Hot Cool Archiv\]|
+> |Automaticky dekomprimovat soubory.|**--dekomprimovat**=\[gzip\|vyfouknout\]|
+> 
+> Úplný seznam naleznete v tématu [možnosti](storage-ref-azcopy-copy.md#options).
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>Kopírování objektu blob do jiného účtu úložiště
 
@@ -306,10 +320,16 @@ Pokud nastavíte `--delete-destination` `true` příznak AzCopy odstraní soubor
 > [!NOTE]
 > Chcete-li zabránit nechtěnému odstranění, před použitím příznaku `--delete-destination=prompt|true` nezapomeňte povolit funkci [obnovitelného odstranění.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)
 
-Podrobné referenční dokumenty naleznete v části [azcopy sync](storage-ref-azcopy-sync.md).
-
 > [!TIP]
-> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (''). Ve všech příkazových prostředích s výjimkou prostředí Windows Command Shell (cmd.exe) používejte jednoduché uvozovky. Pokud používáte prostředí Windows Command Shell (cmd.exe), uzavřete argumenty cesty s dvojitými uvozovkami ("") namísto jednoduchých uvozovek ('').
+> Operaci synchronizace můžete vyladit pomocí volitelných příznaků. Zde je několik příkladů.
+>
+> |Scénář|Příznak|
+> |---|---|
+> |Určete, jak přísně md5 hashe má být ověřena při stahování.|**--check-md5**=\[NoCheck LogOnly FailIfDifferent FailIfDifferentOrMissing --check-md5 NoCheck LogOnly FailIfDifferentIfDifferentOrMissing --check-md5 NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing --check-\]|
+> |Vylučte soubory na základě vzorku.|**--vyloučit-cesta**|
+> |Určete, jak podrobné mají být položky protokolu související se synchronizací.|**--log-level**=\[\|WARNING\|\|ERROR INFO NONE --log-level WARNING ERROR INFO NONE --log-level WARNING ERROR INFO NONE --log\]|
+> 
+> Úplný seznam naleznete v tématu [možnosti](storage-ref-azcopy-sync.md#options).
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Aktualizace kontejneru se změnami v místním systému souborů
 

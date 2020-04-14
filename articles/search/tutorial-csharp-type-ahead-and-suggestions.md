@@ -1,36 +1,36 @@
 ---
-title: C# návod na automatické dokončování a návrhy
+title: Automatické dokončování a návrhy
 titleSuffix: Azure Cognitive Search
 description: Tento kurz ukazuje automatické dokončování a návrhy jako způsob, jak shromažďovat zadávání vyhledávacích termínů od uživatelů pomocí rozevíracího seznamu. Navazuje na stávající hotelový projekt.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/12/2020
+ms.openlocfilehash: 4391b565b684b74258b9c71da88600d4628b5c6f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121528"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259761"
 ---
-# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>Kurz C#: Přidání automatického dokončování a návrhů – Azure Cognitive Search
+# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>Kurz C#: Přidání automatického dokončování a návrhů – Azure Cognitive Search
 
-Přečtěte si, jak implementovat automatické dokončování (typ dopředu a návrhy), když uživatel začne psát do vyhledávacího pole. V tomto kurzu budeme zobrazovat výsledky typu dopředu a návrhy výsledky samostatně, pak ukázat metodu jejich kombinování k vytvoření bohatší uživatelské prostředí. Uživatel může mít pouze zadat dva nebo tři klíče najít všechny výsledky, které jsou k dispozici. Tento kurz navazuje na stránkovací projekt vytvořený v [kurzu C#: Stránkování výsledků hledání – kurz azure kognitivního vyhledávání.](tutorial-csharp-paging.md)
+Přečtěte si, jak implementovat automatické dokončování (dotazy typu dopředné a navrhované dokumenty), když uživatel začne psát do vyhledávacího pole. V tomto kurzu se zobrazí automaticky dokončené dotazy a návrhy výsledky samostatně, pak ukázat způsob jejich kombinování vytvořit bohatší uživatelské prostředí. Uživatel může mít pouze zadat dva nebo tři znaky najít všechny výsledky, které jsou k dispozici.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Přidání návrhů
 > * Přidání zvýraznění k návrhům
-> * Přidat automatické dokončování
+> * Přidání automatického dokončování
 > * Zkombinujte automatické dokončování a návrhy
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu je potřeba provést následující:
+Tento kurz je součástí řady a staví na projektu stránkování vytvořeném v [kurzu C#: Stránkování výsledků hledání – Azure Cognitive Search](tutorial-csharp-paging.md).
 
-Mít [c# kurz: stránkování výsledků hledání – projekt Azure Cognitive Search](tutorial-csharp-paging.md) je spuštěn. Tento projekt může být buď vaše vlastní verze, kterou jste dokončili v předchozím kurzu, nebo jej nainstalujte z GitHubu: [Vytvořit první aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Případně si můžete stáhnout a spustit řešení pro tento konkrétní kurz: [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead).
 
 ## <a name="add-suggestions"></a>Přidání návrhů
 

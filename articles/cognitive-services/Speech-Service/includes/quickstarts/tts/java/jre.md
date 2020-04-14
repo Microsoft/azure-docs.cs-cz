@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: yulili
-ms.openlocfilehash: 5a6053cd0ca05de1012857626e061d19bfd80b88
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 31bfe77c85723d6c24872f1e52ede60936f7804e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671165"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275598"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,7 +50,7 @@ Po zobrazení výzvy zadejte text a uslyšíte syntetizovaný zvuk přehrávaný
 
 ## <a name="next-steps"></a>Další kroky
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 ## <a name="see-also"></a>Viz také
 

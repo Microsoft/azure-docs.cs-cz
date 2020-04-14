@@ -5,24 +5,26 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 6d4c1f52f0f3b1e05ec06f5a66a36323f346d4eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9e55ff2c581f9392a125f6dc3ec8d903e9876a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280537"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256429"
 ---
-# <a name="cancel-operation"></a>Zrušit operaci 
+# <a name="cancel-operation"></a>Zrušit operaci
+
+> [!NOTE]
+> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
 
 Toto rozhraní API zruší právě probíhající operaci nabídky. Pomocí [rozhraní API pro načtení operací](./cloud-partner-portal-api-retrieve-operations.md) získáte a `operationId` předejte toto rozhraní API. Zrušení je obvykle synchronní operace, ale v některých složitých scénářích může být vyžadována nová operace ke zrušení existující operace. V tomto případě tělo odpovědi HTTP obsahuje umístění operace, která by měla být použita k dotazování stavu.
 
-Můžete poskytnout seznam e-mailových adres oddělených čárkami s požadavkem a rozhraní API bude tyto adresy upozorňovat na průběh operace.
-
   `POST https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/cancel?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>Parametry identifikátoru URI
+## <a name="uri-parameters"></a>Parametry identifikátoru URI
+
 --------------
 
 |  **Název**    |      **Popis**                                  |    **Datový typ**  |
@@ -32,8 +34,7 @@ Můžete poskytnout seznam e-mailových adres oddělených čárkami s požadavk
 | verze-api  |  Aktuální verze rozhraní API                               |    Datum           |
 |  |  |  |
 
-
-<a name="header"></a>Hlavička
+## <a name="header"></a>Hlavička
 ------
 
 |  **Název**              |  **Hodnotu**         |
@@ -42,8 +43,7 @@ Můžete poskytnout seznam e-mailových adres oddělených čárkami s požadavk
 |  Autorizace         |  Nositel váš token |
 |  |  |
 
-
-<a name="body-example"></a>Příklad těla
+## <a name="body-example"></a>Příklad těla
 ------------
 
 ### <a name="request"></a>Žádost
@@ -63,19 +63,22 @@ Můžete poskytnout seznam e-mailových adres oddělených čárkami s požadavk
 |  e-maily s oznámením     | Seznam e-mailových ID oddělených čárkami, která mají být oznámena průběhu operace publikování. |
 |  |  |
 
-
 ### <a name="response"></a>Odpověď
 
-  `Operation-Location: https://cloudpartner.azure.com/api/publishers/contoso/offers/contoso-virtualmachineoffer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8`
+#### <a name="migrated-offers"></a>Migrované nabídky
 
+`Location: /api/publishers/contoso/offers/contoso-offer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8?api-version=2017-10-31`
+
+#### <a name="non-migrated-offers"></a>Nemigrované nabídky
+
+`Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
 ### <a name="response-header"></a>Hlavička odpovědi
 
 |  **Název**             |    **Hodnotu**                       |
 |  ---------            |    ----------                      |
-| Umístění operace    | ADRESA URL, která může být dotazována k určení aktuálního stavu operace. |
+| Umístění    | Relativní cesta k načtení stavu této operace. |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Stavové kódy odpovědi
 

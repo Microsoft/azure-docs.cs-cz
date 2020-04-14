@@ -1,5 +1,5 @@
 ---
-title: Řídicí panel Marketplace Insights v analytice na Komerčním tržišti v Partnerském centru
+title: Řídicí panel Marketplace Insights v analýze komerčního tržiště v Partnerském centru
 description: Získejte přístup ke souhrnu webové analýzy marketplace, která vydavatelům umožňuje měřit zapojení zákazníků v obchodech AppSource a Azure Marketplace.
 author: dsindona
 ms.author: dsindona
@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: a547ced9df98298361360ecab88036599cd86027
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275845"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251703"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Marketplace Insights v analýze komerčního tržiště
+# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Marketplace Insights v analýzách komerčního tržiště
 
 Tento článek obsahuje informace na řídicím panelu Marketplace Insights v Centru partnerů. Tento řídicí panel zobrazuje souhrn webové analýzy marketplace, která vydavatelům umožňuje měřit zájem zákazníků o příslušné stránky s podrobnostmi o produktu uvedené na výloze marketplace: AppSource a Azure Marketplace.
 
@@ -34,7 +34,7 @@ Můžete zobrazit grafické znázornění následujících položek:
 - [Tabulka podrobností přehledů marketplace](#marketplace-insights-details-table)
 
 >[!NOTE]
-> Podrobné definice terminologie analýzy naleznete v [tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+> Podrobné definice terminologie analýzy naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního trhu](./faq-terminology.md).
 
 ### <a name="insights-dashboard-layout"></a>Rozložení řídicího panelu Přehledy
 
@@ -135,10 +135,10 @@ Tato tabulka obsahuje zobrazení seznamu návštěv stránek a výzvy k akci vyb
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled analytických přehledů dostupných na komerčním trhu Partnerského centra najdete v [článku Analýza pro komerční tržiště v Centru partnerů](./analytics.md).
-- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Summary Dashboard in Commercial Marketplace analytics](./summary-dashboard.md).
-- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Dashboard objednávek v analýze komerčního tržiště](./orders-dashboard.md).
-- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčních Marketplace analýzy](./usage-dashboard.md).
-- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýze komerčního webu Marketplace](./customer-dashboard.md).
-- Seznam žádostí o stažení za posledních 30 dní najdete v článku [Panel stahování v analýze komerčního tržiště](./downloads-dashboard.md).
-- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze na řídicím panelu Commercial Marketplace analytics](./ratings-reviews.md).
-- Nejčastější dotazy týkající se analýzy na komerčním marketplace a komplexní slovník datových termínů naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Souhrnný řídicí panel v analýze komerčního tržiště](./summary-dashboard.md).
+- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Řídicí panel objednávek v analýze komerčního tržiště](./orders-dashboard.md).
+- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčním tržišti analýzy](./usage-dashboard.md).
+- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýzách komerčního tržiště](./customer-dashboard.md).
+- Seznam žádostí o stažení za posledních 30 dní najdete [v tématu Řídicí panel ke stažení v analýze komerčního tržiště](./downloads-dashboard.md).
+- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze v analýze komerčního webu](./ratings-reviews.md).
+- Nejčastější dotazy týkající se analýzy komerčního tržiště a komplexní slovník termínů pro data naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).

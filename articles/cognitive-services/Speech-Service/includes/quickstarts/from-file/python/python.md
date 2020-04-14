@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/20/2020
 ms.author: dapine
-ms.openlocfilehash: e01e6f0e38abe9bdd3afa83306b90725daf287ce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: a6fa385faeb757b86b9a59b3a3c8197cccc5ac83
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80116875"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274748"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -121,4 +121,4 @@ Pokud máte problémy podle těchto pokynů, naleznete v [podrobnějším kurzu 
 
 ## <a name="next-steps"></a>Další kroky
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

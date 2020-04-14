@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/02/2020
+ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bea9e375e00d6fc0f6c33aa1bcc766773db2059
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163586"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269937"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -70,9 +70,9 @@ V následujícím seznamu jsou uvedeny přehledy, které můžete z videí nač�
 
 ### <a name="audio-insights"></a>Přehledy zvuku
 
-* **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština a brazilská portugalština. Pokud jazyk nelze identifikovat s důvěrou, Video Indexer předpokládá, že mluvený jazyk je angličtina. Další informace naleznete v [tématu Model identifikace jazyka](language-identification-model.md).
+* **Přepis zvuku**: Převádí řeč na text ve 12 jazycích a umožňuje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, mandarínština, japonština, arabština, ruština, brazilská portugalština, hindština a korejština.
+* **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, mandarínština, japonština, ruština a brazilská portugalština. Pokud jazyk nelze identifikovat s důvěrou, Video Indexer předpokládá, že mluvený jazyk je angličtina. Další informace naleznete v [tématu Model identifikace jazyka](language-identification-model.md).
 * **Vícejazyčná identifikace a přepis řeči** (náhled): Automaticky identifikuje mluvený jazyk v různých segmentech od zvuku. Odešle každý segment mediálního souboru k přepisu a pak zkombinuje přepis zpět do jednoho jednotného přepisu. Další informace naleznete v tématu [Automaticky identifikovat a přepsat vícejazyčný obsah](multi-language-identification-transcription.md).
-* **Přepis zvuku**: Převádí řeč na text ve 12 jazycích a umožňuje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, arabština, ruština, brazilská portugalština, hindština a korejština.
 * **Tvorba titulků**: Vytvoří titulky ve třech formátech: VTT, TTML, SRT.
 * **Zpracování dvou kanálů**: Auto detekuje samostatný přepis a sloučí se na jednu časovou osu.
 * **Redukce šumu**: Vymaže zvukové nebo hlučné nahrávky telefonního subsystému (na základě filtrů Skype).

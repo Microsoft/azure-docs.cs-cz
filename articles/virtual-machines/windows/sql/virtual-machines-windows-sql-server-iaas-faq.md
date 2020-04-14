@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d6d69b82e80ff9bc33e49302cf59766b9c2e8d4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249734"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270821"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy týkající se SQL Serveru na virtuálních počítačích s Windows v Azure
 
@@ -53,9 +53,17 @@ Tento článek obsahuje odpovědi na některé z nejčastějších otázek týka
 
    Ano, pomocí prostředí PowerShell. Další informace o nasazení virtuálních počítačů SQL Serveru pomocí PowerShellu najdete v tématu [Jak zřídit virtuální počítače SQL Serveru pomocí Azure PowerShellu](virtual-machines-windows-ps-sql-create.md).
 
-1. **Můžu vytvořit zobecněnou image Azure SQL Server Marketplace mého virtuálního počítače SQL Serveru a použít ji k nasazení virtuálních počítačů?**
+1. **Jak můžu zobecnit SQL Server na virtuálním počítači Azure a použít ho k nasazení nových virtuálních počítačů?**
 
-   Ano, ale pak musíte [zaregistrovat každý virtuální počítač SQL Server u poskytovatele prostředků virtuálního počítače SQL Server,](virtual-machines-windows-sql-register-with-resource-provider.md) abyste mohli spravovat virtuální počítač SQL Server na portálu a využívat funkce, jako jsou automatické opravy a automatické zálohování. Při registraci u poskytovatele prostředků budete také muset zadat typ licence pro každý virtuální modul SQL Server. 
+   Můžete nasadit virtuální počítač se systémem Windows Server (bez jakéhokoli serveru SQL Server nainstalovaného) a použít proces [sysprep SQL](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) k generalizaci SQL Serveru ve virtuálním počítači Azure (Windows) pomocí instalačního média SQL Serveru. Zákazníci, kteří mají [záruku softwaru,](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) mohou získat instalační médium v [Centru multilicenčního programu](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Zákazníci, kteří nemají záruku softwaru, můžou používat instalační médium z bitové kopie virtuálního počítače Marketplace SQL Server, která má požadovanou edici.
+
+   Případně můžete použít jednu z ibi SQL Serveru z webu Azure Marketplace k generalizaci SQL Serveru na virtuálním počítači Azure. Všimněte si, že je nutné odstranit následující klíč registru ve zdrojové bitové kopii před vytvořením vlastní bitové kopie. Pokud tak neučiníte, může dojít k nadýmání složky zaváděcí moduly sql serveru a rozšíření SQL IaaS ve stavu selhání.
+
+   Cesta klíče registru:  
+   `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
+
+   > [!NOTE]
+   > Doporučujeme, aby všechny virtuální počítače SQL Server Azure, včetně těch nasazených z vlastních generalizovaných bitových kopií, [byly zaregistrovány u zprostředkovatele využití virtuálních zařízení SQL VM,](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash) aby splňovaly požadavky na dodržování předpisů a využívaly volitelné funkce, jako jsou automatické opravy a automatické zálohování. Také vám umožní [zadat typ licence](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal) pro každý virtuální modul SQL Server.
 
 1. **Můžu k nasazení virtuálního virtuálního modulu SQL Serveru použít vlastní virtuální pevný disk?**
 
@@ -117,13 +125,13 @@ Tento článek obsahuje odpovědi na některé z nejčastějších otázek týka
    Pasivní instance serveru SQL Server neobsluhuje data serveru SQL Server klientům ani nespouštějí aktivní úlohy serveru SQL Server. Používá se pouze k synchronizaci s primárním serverem a jinak udržovat pasivní databázi v teplém pohotovostním stavu. Pokud se poskytuje data, jako jsou sestavy klientům s provozem aktivní úlohy SQL Server nebo provádění jakékoli jiné práce než co je uvedeno v podmínkách produktu, musí být placené licencované SQL Server instance. Následující aktivita je povolena v sekundární instanci: kontroly konzistence databáze nebo CheckDB, úplné zálohy, zálohy transakčních protokolů a data o využití prostředků monitorování. Můžete také spustit primární a odpovídající instance zotavení po havárii současně pro krátké období testování zotavení po havárii každých 90 dní.
    
 
-1. **Jaké scénáře mohou využít výhodu zotavení z distasteru(DR)?**
+1. **Jaké scénáře mohou využít výhodu zotavení po havárii(DR)?**
 
    [Průvodce licencováním](https://aka.ms/sql2019licenseguide) obsahuje scénáře, ve kterých lze využít výhodu zotavení po havárii. Další informace naleznete v podmínkách produktu a obraťte se na licenční kontakty nebo správce účtu.
 
 1. **Která předplatná podporují výhodu zotavení po havárii?**
 
-   Komplexní programy, které nabízejí rovnocenná práva předplatného programu Software Assurance jako pevnou výhodu, podporují výhodu zotavení po havárii. To zahrnuje. ale není omezena na otevřené hodnoty (OV), předplatné s otevřenou hodnotou (OVS), smlouvu Enterprise Agreement (EA), smlouvu o předplatném enterprise (EAS) a zápis serveru a cloudu (SCE). Další informace naleznete v [podmínkách produktu](https://www.microsoft.com/licensing/product-licensing/products) a obraťte se na licenční kontakty nebo na manažera společnosti Acocunt. 
+   Komplexní programy, které nabízejí rovnocenná práva předplatného programu Software Assurance jako pevnou výhodu, podporují výhodu zotavení po havárii. To zahrnuje. ale není omezena na otevřené hodnoty (OV), předplatné s otevřenou hodnotou (OVS), smlouvu Enterprise Agreement (EA), smlouvu o předplatném enterprise (EAS) a zápis serveru a cloudu (SCE). Další informace naleznete v [podmínkách produktu](https://www.microsoft.com/licensing/product-licensing/products) a obraťte se na licenční kontakty nebo správce účtu. 
 
    
  ## <a name="resource-provider"></a>Poskytovatel prostředků
@@ -219,7 +227,7 @@ Tento článek obsahuje odpovědi na některé z nejčastějších otázek týka
    
     Ano. Místní dtc je podporován pro SQL Server 2016 SP2 a vyšší. Aplikace však musí být testovány při využití vždy na skupiny dostupnosti, jako transakce za letu během převzetí služeb při selhání se nezdaří a musí být opakován. Clusterovaný dtc je k dispozici od Windows Server 2019. 
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 **Virtuální aplikace Windows**:
 

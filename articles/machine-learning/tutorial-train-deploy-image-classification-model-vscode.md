@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: f793f8c4cb84f821c098cc5ce98e693d272e725f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239879"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272753"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Trénování a nasazování modelu TensorFlow klasifikace bitových obrázků pomocí rozšíření kódu Azure Machine Learning Visual Studio
 
@@ -99,71 +99,33 @@ Vytvoření výpočetního cíle:
 1. Vyberte velikost virtuálního počítače. Ze seznamu možností vyberte **Standard_F2s_v2.** Velikost virtuálního počítače má vliv na dobu, kterou trvá trénování modelů. Další informace o velikostech virtuálních počítačů najdete v [tématu velikosti pro virtuální počítače s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 1. Pojmenujte svůj výpočetní program TeamWkspc-com a stisknutím **klávesy Enter** vytvořte výpočetní prostředky.
 
-Po několika minutách se nový výpočetní cíl zobrazí v *výpočetním* uzlu vašeho pracovního prostoru.
-
-## <a name="create-a-run-configuration"></a>Vytvoření konfigurace spuštění
-
-Když odešlete spuštění školení na cíl výpočetní ho diody, odešlete také konfiguraci potřebnou ke spuštění úlohy školení. Například skript, který obsahuje školicí kód a závislosti Pythonu potřebné ke spuštění.
-
-Vytvoření konfigurace spuštění:
-
-1. Na panelu aktivit kódu Visual Studia vyberte ikonu **Azure.** Zobrazí se zobrazení Azure Machine Learning. 
-1. Rozbalte uzel předplatného. 
-1. Rozbalte uzel **TeamWorkspace.** 
-1. V uzlu pracovního prostoru klikněte pravým tlačítkem myši na výpočetní uzel **TeamWkspc-com** a zvolte **Vytvořit konfiguraci spuštění**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Vytvoření konfigurace spuštění](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
-
-1. Pojmenujte konfiguraci spuštění "MNIST-rc" a stisknutím **klávesy Enter** vytvořte konfiguraci spuštění.
-1. Potom vyberte **TensorFlow jednouzelškolení** jako typ úlohy školení.
-1. Stisknutím **klávesy Enter** procházejte soubor skriptu, který chcete spustit na výpočetních výkonech. V tomto případě skript trénovat model `train.py` je soubor `vscode-tools-for-ai/mnist-vscode-docs-sample` uvnitř adresáře.
-1. Zadejte následující do vstupního pole a určete požadované balíčky.
-    
-    ```text
-    pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-    ```
-    
-    Soubor volaný `MNIST-rc.runconfig` se zobrazí v VS Code s obsahem podobným tomu níže:
+    Soubor se zobrazí v Kódu VS s obsahem podobným obsahu níže:
 
     ```json
     {
-        "script": "train.py",
-        "framework": "Python",
-        "communicator": "None",
-        "target": "TeamWkspc-com",
-        "environment": {
-            "python": {
-                "userManagedDependencies": false,
-                "condaDependencies": {
-                    "dependencies": [
-                        "python=3.6.2",
-                        "tensorflow=1.15.0",
-                        {
-                            "pip": [
-                                "azureml-defaults"
-                            ]
-                        }
-                    ]
-                }
-            },
-            "docker": {
-                "baseImage": "mcr.microsoft.com/azureml/base:0.2.4",
-                "enabled": true,
-                "baseImageRegistry": {
-                    "address": null,
-                    "username": null,
-                    "password": null
-                }
+        "location": "westus2",
+        "tags": {},
+        "properties": {
+            "computeType": "AmlCompute",
+            "description": "",
+            "properties": {
+                "vmSize": "Standard_F2s_v2",
+                "vmPriority": "dedicated",
+                "scaleSettings": {
+                    "maxNodeCount": 4,
+                    "minNodeCount": 0,
+                    "nodeIdleTimeBeforeScaleDown": 120
+                },
+                "userAccountCredentials": {
+                    "adminUserName": "",
+                    "adminUserPassword": "",
+                    "adminUserSshPublicKey": ""
+                },
+                "subnetName": "",
+                "vnetName": "",
+                "vnetResourceGroupName": "",
+                "remoteLoginPortPublicAccess": ""
             }
-        },
-        "nodeCount": 1,
-        "history": {
-            "outputCollection": true,
-            "snapshotProject": false,
-            "directoriesToWatch": [
-                "logs"
-            ]
         }
     }
     ```
@@ -175,7 +137,152 @@ Vytvoření konfigurace spuštění:
     Azure ML: Save and Continue
     ```
 
-Konfigurace `MNIST-rc` spuštění je přidána pod výpočetní uzel *TeamWkspc-com.*
+Po několika minutách se nový výpočetní cíl zobrazí v *výpočetním* uzlu vašeho pracovního prostoru.
+
+## <a name="create-a-run-configuration"></a>Vytvoření konfigurace spuštění
+
+Když odešlete spuštění školení na cíl výpočetní ho diody, odešlete také konfiguraci potřebnou ke spuštění úlohy školení. Například skript, který obsahuje školicí kód a závislosti Pythonu potřebné ke spuštění.
+
+Vytvoření konfigurace spuštění:
+
+1. Na panelu aktivit kódu Visual Studia vyberte ikonu **Azure.** Zobrazí se zobrazení Azure Machine Learning. 
+1. Rozbalte uzel předplatného. 
+1. Rozbalte uzel **TeamWorkspace > Výpočetní prostředí.** 
+1. Pod výpočetním uzlem klikněte pravým tlačítkem myši na výpočetní uzel **TeamWkkspc-com** a zvolte **Vytvořit konfiguraci spuštění**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Vytvoření konfigurace spuštění](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
+
+1. Pojmenujte konfiguraci spuštění "MNIST-rc" a stisknutím **klávesy Enter** vytvořte konfiguraci spuštění.
+1. Potom vyberte **Vytvořit nové prostředí Azure ML**. Prostředí definují závislosti potřebné ke spuštění skriptů.
+1. Pojmenujte své prostředí "MNIST-env" a stiskněte **enter**.
+1. Ze seznamu vyberte **soubor závislostí Conda.**
+1. Stisknutím **klávesy Enter** procházejte soubor závislostí Conda. V tomto případě je soubor `env.yml` závislostí `vscode-tools-for-ai/mnist-vscode-docs-sample` soubor uvnitř adresáře.
+
+    Soubor se zobrazí v Kódu VS s obsahem podobným obsahu níže:
+
+    ```json
+    {
+        "name": "MNIST-env",
+        "version": "1",
+        "python": {
+            "interpreterPath": "python",
+            "userManagedDependencies": false,
+            "condaDependencies": {
+                "name": "vs-code-azure-ml-tutorial",
+                "channels": [
+                    "defaults"
+                ],
+                "dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip",
+                    {
+                        "pip": [
+                            "azureml-defaults"
+                        ]
+                    }
+                ]
+            },
+            "baseCondaEnvironment": null
+        },
+        "environmentVariables": {},
+        "docker": {
+            "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+            "baseDockerfile": null,
+            "baseImageRegistry": {
+                "address": null,
+                "username": null,
+                "password": null
+            },
+            "enabled": false,
+            "arguments": []
+        },
+        "spark": {
+            "repositories": [],
+            "packages": [],
+            "precachePackages": true
+        },
+        "inferencingStackVersion": null
+    }
+    ```
+
+1. Jakmile budete s konfigurací spokojeni, uložte ji tak, že otevřete paletu příkazů a zadáte následující příkaz:
+
+    ```text
+    Azure ML: Save and Continue
+    ```
+
+1. Stisknutím **klávesy Enter** procházejte soubor skriptu, který chcete spustit na výpočetních výkonech. V tomto případě skript trénovat model `train.py` je soubor `vscode-tools-for-ai/mnist-vscode-docs-sample` uvnitř adresáře.
+
+    Soubor volaný `MNIST-rc.runconfig` se zobrazí v VS Code s obsahem podobným tomu níže:
+
+    ```json
+    {
+        "script": "train.py",
+        "framework": "Python",
+        "communicator": "None",
+        "target": "TeamWkspc-com",
+        "environment": {
+            "name": "MNIST-env",
+            "version": "1",
+            "python": {
+                "interpreterPath": "python",
+                "userManagedDependencies": false,
+                "condaDependencies": {
+                    "name": "vs-code-azure-ml-tutorial",
+                    "channels": [
+                        "defaults"
+                    ],
+                    "dependencies": [
+                        "python=3.6.2",
+                        "tensorflow=1.15.0",
+                        "pip",
+                        {
+                            "pip": [
+                                "azureml-defaults"
+                            ]
+                        }
+                    ]
+                },
+                "baseCondaEnvironment": null
+            },
+            "environmentVariables": {},
+            "docker": {
+                "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+                "baseDockerfile": null,
+                "baseImageRegistry": {
+                    "address": null,
+                    "username": null,
+                    "password": null
+                },
+                "enabled": false,
+                "arguments": []
+            },
+            "spark": {
+                "repositories": [],
+                "packages": [],
+                "precachePackages": true
+            },
+            "inferencingStackVersion": null
+        },
+        "history": {
+            "outputCollection": true,
+            "snapshotProject": false,
+            "directoriesToWatch": [
+                "logs"
+            ]
+        }
+    }
+    ```
+
+1. Jakmile budete s konfigurací spokojeni, uložte ji tak, že otevřete paletu příkazů a zadáte následující příkaz:
+
+    ```text
+    Azure ML: Save and Continue
+    ```
+
+Konfigurace `MNIST-rc` spuštění je přidána pod výpočetní uzel *TeamWkspc-com* a konfigurace `MNIST-env` prostředí je přidána pod uzel *Prostředí.*
 
 ## <a name="train-the-model"></a>Trénování modelu
 
@@ -264,7 +371,7 @@ Nasazení webové služby jako Služby ACI :
 1. Klepněte pravým tlačítkem myši na **model MNIST-TensorFlow** a vyberte **možnost Nasadit službu z registrovaného modelu**.
 
     > [!div class="mx-imgBorder"]
-    > ![Nasazení modelu](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
+    > ![Nasazení modelu](./media/tutorial-train-deploy-image-classification-model-vscode/deploy-model.png)
 
 1. Vyberte **instance kontejneru Azure**.
 1. Pojmenujte službu "mnist-tensorflow-svc" a stiskněte **enter**.
@@ -300,6 +407,7 @@ Nasazení webové služby jako Služby ACI :
         ]
     }
     ```
+
 1. Jakmile budete s konfigurací spokojeni, uložte ji tak, že otevřete paletu příkazů a zadáte následující příkaz:
 
     ```text

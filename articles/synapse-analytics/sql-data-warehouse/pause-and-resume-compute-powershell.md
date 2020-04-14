@@ -11,12 +11,12 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: dc56fe8cffa72c61b3f29f8b0fb8108547395f9c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 44ce56238140de90145f69e966c94be8572c7749
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742780"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252298"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Úvodní příručka: Pozastavení a obnovení výpočetních prostředků ve fondu Synapse SQL pomocí Azure PowerShellu
 
@@ -55,7 +55,7 @@ Vyhledejte název databáze, název serveru a skupinu prostředků fondu SQL, kt
 
 Chcete-li najít informace o poloze fondu SQL, postupujte takto:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Klikněte na **Azure Synapse Analytics (dříve SQL DW)** na levé stránce portálu Azure.
 1. Na stránce **Azure Synapse Analytics (dříve SQL DW)** vyberte **mySampleDataWarehouse.** Otevře se fond SQL.
 
@@ -107,7 +107,7 @@ $resultDatabase
 
 ## <a name="check-status-of-your-sql-pool-operation"></a>Kontrola stavu operace fondu SQL
 
-Chcete-li zkontrolovat stav fondu SQL, použijte rutinu [Get-AzSqlDatabaseActivity.](/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+Chcete-li zkontrolovat stav fondu SQL, použijte rutinu [Get-AzSqlDatabaseActivity.](/powershell/module/az.sql/Get-AzSqlDatabaseActivity?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"

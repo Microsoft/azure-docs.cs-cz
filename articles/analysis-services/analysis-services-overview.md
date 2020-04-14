@@ -4,15 +4,15 @@ description: Seznamte se s Azure Analysis Services, plně spravovanou platformou
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 03/30/2020
+ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7eb46e0eda1cd702f26829fac49ffe0e7916626f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 350fd9c7057df96a4ad1abc0d9c8b5ec3871ef38
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410379"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271654"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -64,12 +64,14 @@ Tato úroveň je pro důležité produkční aplikace, které vyžadují elastic
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8*    |    320     |    200     |
-|S9*    |    640    |    400     |
-|S8v2*    |    640     |    200     |
-|S9v2*    |    1280    |    400     |
+|S8 <sup>[1](#depr)</sup>, <sup>[2.](#rec)</sup>    |    320    |    200     |
+|S9 <sup>[1](#depr)</sup>, <sup>[2.](#rec)</sup>    |    640    |    400     |
+|S8v2 <sup> [1](#depr)</sup>   |    640     |    200     |
+|S9v2 <sup> [1](#depr)</sup>    |    1280    |    400     |
 
-\* Není dostupné ve všech oblastech.  
+<a name="depr">1</a> - Není k dispozici ve všech oblastech.   
+<a name="rec">2</a> - Tento plán je zastaralé. v2.
+
 
 ## <a name="availability-by-region"></a>Dostupnost podle oblasti
 
@@ -83,15 +85,15 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |USA – východ     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |USA – východ 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|USA – východ 2     |     S8, S9, S8v2, S9v2   |    1    |
+|USA – východ 2     |     S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    1    |
 |USA – středosever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA – střed     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA – středojih     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA – středozápad   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA – západ     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|USA – západ     |    S8, S9, S8v2, S9v2   |    2  |
+|USA – západ     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    2  |
 |USA – západ 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|USA – západ 2    |    S8, S9, S8v2, S9v2  |    1     |
+|USA – západ 2    |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Evropa
 
@@ -101,17 +103,17 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |Severní Evropa     |    S8v2, S9v2      |    3     |
 |Spojené království – jih     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Západní Evropa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Západní Evropa    |   S8, S9, S8v2, S9v2  |  1  |
+|Západní Evropa    |   S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Asie a Tichomoří 
 
 |Region (Oblast)  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Austrálie – východ     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Austrálie – východ     |    S8, S9, S8v2, S9v2    |    1     |
+|Austrálie – východ     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2    |    1     |
 |Austrálie – jihovýchod     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japonsko – východ     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
+|Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2, D1     |   1      |
 |Indie – západ     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Škálování podle vašich potřeb

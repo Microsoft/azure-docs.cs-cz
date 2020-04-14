@@ -1,18 +1,18 @@
 ---
 title: Automatické upgrady bitových obrázků operačního systému pomocí škálovacích sad virtuálních strojů Azure
 description: Zjistěte, jak automaticky upgradovat bitovou kopii operačního systému na instancích virtuálních počítačí ve škálovací sadě
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.author: manayar
-ms.openlocfilehash: 6d550e8e960cb8e212702796467c91d1cd1ebb23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: b1e5ad60041e9d3b902a06a4875206fa061c73e6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235185"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269903"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Škálovatautomatické upgrady bitových obrázků virtuálního počítače Azure
 

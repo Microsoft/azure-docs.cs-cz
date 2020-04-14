@@ -2,20 +2,20 @@
 title: Aspekty návrhu škálovacísady virtuálních strojů Azure
 description: Přečtěte si o aspektech návrhu škálovacích sad virtuálních strojů Azure. Porovnejte funkce škálovacích sad s funkcemi virtuálního virtuálního měn.
 keywords: linux virtuální stroj, škálovací sady virtuálních strojů
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 06/01/2017
-ms.author: manayar
-ms.openlocfilehash: b427319fdba634ea3c61681baa30547450709dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 20f6cb08781c7c6aca7a4022e75a7be8640ef18a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250774"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273762"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Aspekty návrhu pro škálovací sady
 Tento článek popisuje aspekty návrhu pro škálovací sady virtuálních strojů. Informace o velikosti sady virtuálních strojů najdete v článku [Přehled škálovacích sad virtuálních strojů](virtual-machine-scale-sets-overview.md).
@@ -39,7 +39,7 @@ Některé funkce jsou momentálně dostupné jenom ve virtuálních discích:
 - Jednotlivé virtuální počítače můžete migrovat z nativních disků na spravované disky, ale nemůžete migrovat instance virtuálních počítačů ve škálovací sadě.
 - Veřejné IP adresy IPv6 můžete přiřadit jednotlivým kartám virtuálního síťového rozhraní virtuálního počítače(NIC), ale nemůžete to udělat pro instance virtuálních počítačů ve škálovací sadě. Veřejné IP adresy IPv6 můžete přiřadit k vykladačům zatížení před jednotlivými virtuálními počítačůnebo virtuálními počítačůmi škálovací sady.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Škálovací sady se spravovanými disky Azure
 Škálovací sady se můžou vytvářet pomocí [spravovaných disků Azure](../virtual-machines/windows/managed-disks-overview.md) namísto tradičních účtů úložiště Azure. Spravované disky poskytují následující výhody:

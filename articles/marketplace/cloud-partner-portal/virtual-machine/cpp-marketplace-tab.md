@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 567dc83e36020ef9af328f52dae89ef37b6e4908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 156a405d93aeac27f27fe617e1a5485044309846
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277717"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273813"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Karta Marketplace virtuálního počítače
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky virtuálního počítače Azure](https://aka.ms/CreateAzureVMoffer) ke správě migrovaných nabídek.
 
 Karta **Marketplace** na stránce **Nová nabídka** umožňuje poskytovat potenciálním zákazníkům marketingové, prodejní a právní informace a smlouvy a spravovat potenciální zákazníky generované z tržiště. Tato dlouhá forma je rozdělena do čtyř částí: **Přehled**, **Marketingové artefakty**, **Správa zájemců**a **Právní**.
 
@@ -33,7 +36,7 @@ Následující tabulka popisuje účel a obsah těchto polí. Povinná pole jsou
 | **Dlouhý souhrn\***          | Účel nebo funkce řešení.  Maximální délka 256 znaků. |
 | **Popis\***           | Popis roztoku.  Maximální délka 3000 znaků, podporuje jednoduché formátování HTML. |
 | **Kanál prodejce CSP společnosti Microsoft\*** | Přihlášení partnerského kanálu zprostředkovatelů cloudových řešení (CSP) je nyní k dispozici.  Další informace o marketingu vaší nabídky prostřednictvím partnerských kanálů Microsoft CSP najdete v tématu [Poskytovatelé cloudových řešení.](../../cloud-solution-providers.md) |
-| **Identifikátor marketingu\***  | Jedinečná adresa URL, kterou je třeba přidružit k této nabídce, obvykle zahrnuje název organizace a řešení, maximální délka 50 znaků.  Například: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **Identifikátor marketingu\***  | Jedinečná adresa URL, kterou je třeba přidružit k této nabídce, obvykle zahrnuje název organizace a řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Náhled ID předplatného\*** | Přidejte jeden až 100 identifikátorů předplatného pro předběžné recenzenty. Tato předplatná uvedená na seznamu povolených budou mít přístup k nabídce, jakmile bude zveřejněna, než začne být uvedena v provozu. |
 | **Užitečné odkazy**          | Přidejte adresy URL do dokumentace, poznámek k verzi, nejčastějších dotazů a tak dále. |
 | **Navrhované kategorie\*** | Vyberte až dvě (2) kategorie, včetně primární a sekundární kategorie (volitelné). Vyberte až dvě (2) podkategorie pro každou primární nebo sekundární kategorii. Pokud není vybrána žádná podkategorie, nabídka bude stále zjistitelná pouze pro vybranou kategorii. |
@@ -52,13 +55,13 @@ Následující tabulka popisuje účel a obsah těchto polí. Povinná pole jsou
 |  ---------                |     ---------------                                                          |
 | *Loga*  |  |
 | **Krátkodobé používání\***                 | Bitmapa .ico o rozměrech 40 x 40 pixelů                                                      |
-| **Střednědobé používání\***                | Bitmapa .ico o rozměrech 90 x 90 pixelů                                                      |
+| **Medium\***                | Bitmapa .ico o rozměrech 90 x 90 pixelů                                                      |
 | **Dlouhodobé používání\***                 | Bitmapa .ico 115 x 115 pixelů                                                   |
 | **Široký\***                  | Bitmapa .ico o rozměrech 255 x 115 pixelů                                                    |
 | **Hrdina**                  | 815x290 bitmapa.  Volitelné, ale po nahrání nelze ikonu hrdiny odstranit. |
 | *Snímky obrazovek*  | Volitelné, ale maximálně pět snímků obrazovky na skladovou položku. |
 | **Název**                  | Jméno nebo název <!-- TODO - max char length? none specified in UI -->                               |
-| **Obrázek**                 | Snímek obrazovky, 533x324 pixelů                                         |
+| **Image**                 | Snímek obrazovky, 533x324 pixelů                                         |
 | *Videa*  |  |
 | **Název**                  | Jméno nebo název  <!-- TODO - max char length? -->                              |
 | **Odkaz**                  | Adresa URL videa hostovaná na YouTube nebo Vimeo                                        |

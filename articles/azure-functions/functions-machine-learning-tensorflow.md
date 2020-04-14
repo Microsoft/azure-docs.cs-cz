@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9d25e2e32f09cc681d85d5adffe53f1237d7200c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190768"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255494"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Kurz: Použití modelů strojového učení ve funkcích Azure pomocí Pythonu a TensorFlow
 
@@ -153,8 +153,10 @@ V Azure Functions je projekt funkce kontejner pro jednu nebo více jednotlivých
 
 Chcete-li `classify` upravit funkci pro klasifikaci image na základě jejího obsahu, použijte předem sestavený model TensorFlow, který byl trénovaný se službou Azure Custom Vision Service a exportoval ji ze služby Azure Custom Vision Service. Model, který je obsažen ve složce *prostředků* vzorku, který jste naklonovali dříve, klasifikuje obrázek na základě toho, zda obsahuje psa nebo kočku. Potom přidáte některé pomocné kód a závislosti do projektu.
 
+Chcete-li vytvořit vlastní model pomocí volné úrovně služby Custom Vision Service, postupujte podle pokynů v [ukázkovém úložišti projektu](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
+
 > [!TIP]
-> Pokud chcete vytvořit svůj vlastní model pomocí volné vrstvy služby Custom Vision Service, postupujte podle pokynů v [ukázkovém úložišti projektu](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
+> Pokud chcete hostovat model TensorFlow nezávisle na aplikaci funkce, můžete místo toho připojit sdílenou složku obsahující váš model do aplikace pro funkce Linuxu. Další informace najdete [v tématu Připojení sdílené složky do aplikace funkce Pythonu pomocí azure cli](./scripts/functions-cli-mount-files-storage-linux.md).
 
 1. Ve složce *Start* spusťte následující příkaz a zkopírujte soubory modelu do složky *klasifikovat.* Nezapomeňte zahrnout `\*` do příkazu. 
 
@@ -315,3 +317,4 @@ Viz také:
 
 - [Nasazení funkce do Azure pomocí kódu Visual Studia](https://code.visualstudio.com/docs/python/tutorial-azure-functions).
 - [Průvodce vývojářem Pythonu s funkcemi Azure](./functions-reference-python.md)
+- [Připojení sdílené složky do aplikace pro funkce Pythonu pomocí azure cli](./scripts/functions-cli-mount-files-storage-linux.md)

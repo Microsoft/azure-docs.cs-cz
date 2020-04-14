@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3d5076b8ca4e1c79451bfe3bcd1dbe554b17a88
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 1d36da49bfdddaa612a71652504584c32b66490d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586464"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261430"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Partneři azure synapse analytics pro správu dat
 
@@ -31,6 +31,7 @@ Chcete-li vytvořit řešení datového skladu pomocí funkce Fondu synapse SQL 
 | ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |**Kyligence**<br>Společnost Kyligence, založená tvůrci Apache Kylin, je na misi, aby urychlila produktivitu svých zákazníků automatizací správy dat, objevování, interakce a generování poznatků - to vše bez překážek. Kyligence Cloud umožňuje nasazení clusteru, zlepšuje přístup k datům a dramaticky urychluje analýzu dat. Platforma pro správu analýzy velkých objemů dat společnosti Kyligence s umělou analýzou dat umožňuje rychlé a snadné budování datových jezer v podnikovém měřítku.|[Stránka produktu](https://kyligence.io/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence)<br> |
 | ![Globální redpoint](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**Správa dat RedPoint**<br>RedPoint Data Management umožňuje marketingu použít všechna svá data k podpoře zapojení zákazníků napříč kanály při provádění strukturované a nestrukturované správy dat. Využitím Azure Synapse a RedPoint u můžete maximalizovat hodnotu strukturovaných a nestrukturovaných dat a zajistit tak hyperpersonalizované kontextové interakce potřebné k zapojení dnešního všekanálového zákazníka. Rozhraní přetažení usnadňuje navrhování a provádění procesů správy dat. |[Stránka produktu](http://www.redpoint.net/products/data-management-solutions/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-rpdm/)<br> |
 | ![Hlídka jedna](./media/sql-data-warehouse-partner-data-management/sql-sentry-logo.png) |**SentryOne (DW Sentry)**<br>S inteligentním řídicím panelem pro přesun dat a kalendářem událostí vždy přesně víte, co má vliv na vaše pracovní vytížení. Jste navrženi tak, abyste vám poskytli přehled o vašich dotazech a úlohách spuštěných pro načtení, zálohování nebo obnovení dat, a nikdy se nemusíte starat o to, abyste co nejlépe využít prostředky Azure. |[Stránka produktu](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure Marketplace](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
+| ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>SqlDBM je cloudový nástroj pro modelování dat, který vám nabízí snadný a pohodlný způsob, jak rozvíjet databázi kdekoli v libovolném prohlížeči. Všechny při zahrnutí všechna potřebná pravidla databáze a objekty, jako jsou databázové klíče, schémata, indexy, omezení sloupců a vztahy. |[Stránka produktu](http://sqldbm.com/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o dalších partnerech najdete v tématu [Partneři Business Intelligence](sql-data-warehouse-partner-business-intelligence.md) a Partneři pro integraci [dat](sql-data-warehouse-partner-data-integration.md).

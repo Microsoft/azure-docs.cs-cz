@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991769"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272691"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
@@ -37,8 +37,8 @@ Různé konfigurace standardního nástroje pro vyrovnávání zatížení posky
 
 | Metrika | Typ prostředku | Popis | Doporučená agregace |
 | --- | --- | --- | --- |
-| Dostupnost datové cesty (dostupnost vip)| Veřejný a interní systém vyrovnávání zatížení | Standardní vyrovnávání zatížení nepřetržitě cvičí cestu dat z oblasti do front-endu vyrovnávání zatížení, a to až do zásobníku SDN, který podporuje váš virtuální počítač. Tak dlouho, dokud v pořádku instance zůstávají, měření následuje stejnou cestu jako provoz s vyrovnáváním zatížení vaší aplikace. Cesta k datům, kterou používají vaši zákazníci, je také ověřena. Měření je pro vaši aplikaci neviditelné a nenarušuje jiné operace.| Průměr |
-| Stav sondy (dostupnost protokolu DIP) | Veřejný a interní systém vyrovnávání zatížení | Standardní nástroj pro vyrovnávání zatížení používá distribuovanou službu zjišťování stavu, která monitoruje stav koncového bodu aplikace podle nastavení konfigurace. Tato metrika poskytuje agregované nebo koncové hodované zobrazení každého koncového bodu instance ve fondu vyrovnávání zatížení. Můžete vidět, jak nástroj pro vyrovnávání zatížení zobrazení stavu vaší aplikace, jak je uvedeno v konfiguraci sondy stavu. |  Průměr |
+| Dostupnost cesty k datům | Veřejný a interní systém vyrovnávání zatížení | Standardní vyrovnávání zatížení nepřetržitě cvičí cestu dat z oblasti do front-endu vyrovnávání zatížení, a to až do zásobníku SDN, který podporuje váš virtuální počítač. Tak dlouho, dokud v pořádku instance zůstávají, měření následuje stejnou cestu jako provoz s vyrovnáváním zatížení vaší aplikace. Cesta k datům, kterou používají vaši zákazníci, je také ověřena. Měření je pro vaši aplikaci neviditelné a nenarušuje jiné operace.| Průměr |
+| Stav zdravotní sondy | Veřejný a interní systém vyrovnávání zatížení | Standardní nástroj pro vyrovnávání zatížení používá distribuovanou službu zjišťování stavu, která monitoruje stav koncového bodu aplikace podle nastavení konfigurace. Tato metrika poskytuje agregované nebo koncové hodované zobrazení každého koncového bodu instance ve fondu vyrovnávání zatížení. Můžete vidět, jak nástroj pro vyrovnávání zatížení zobrazení stavu vaší aplikace, jak je uvedeno v konfiguraci sondy stavu. |  Průměr |
 | SYN (synchronizovat) pakety | Veřejný a interní systém vyrovnávání zatížení | Standardní likvidátor zatížení neukončuje připojení tcp (Transmission Control Protocol) ani nekomunikuje s toky paketů TCP nebo UDP. Toky a jejich handshakes jsou vždy mezi zdrojem a instancí virtuálního zařízení. Chcete-li lépe řešit scénáře protokolu TCP, můžete použít čítače paketů SYN, abyste pochopili, kolik pokusů o připojení TCP je provedeno. Metrika hlásí počet přijatých paketů TCP SYN.| Průměr |
 | Připojení SNAT | Veřejný odvykač zatížení |Standardní vyrovnávání zatížení hlásí počet odchozích toků, které jsou maskovány do front-endu veřejné IP adresy. Porty pro překlad zdrojových síťových adres (SNAT) jsou vyčerpatelným zdrojem. Tato metrika může poskytnout informace o tom, jak silně vaše aplikace spoléhá na SNAT pro odchozí původní toky. Čítače pro úspěšné a neúspěšné odchozí toky SNAT jsou hlášeny a lze je použít k řešení potíží a pochopení stavu odchozích toků.| Průměr |
 | Přidělené porty SNAT | Veřejný odvykač zatížení | Standardní vyrovnávání zatížení hlásí počet portů SNAT přidělených na instanci back-endu | Průměrná. |
@@ -85,13 +85,13 @@ Konfigurace upozornění:
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Běžné diagnostické scénáře a doporučená zobrazení
 
-#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Je cesta k datům nahoru a dostupná pro můj program VYROVNÁVÁNÍ zatížení VIP?
+#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>Je cesta k datům nahoru a je k dispozici pro front-end vykladače vyrovnávání zatížení?
 <details><summary>Rozbalit</summary>
 
-Metrika dostupnosti VIP popisuje stav datové cesty v rámci oblasti k výpočetnímu hostiteli, kde jsou umístěny vaše virtuální počítače. Metrika je odrazem stavu infrastruktury Azure. Pomocí metriky můžete:
+Metrika dostupnosti cesty k datům popisuje stav datové cesty v rámci oblasti k výpočetnímu hostiteli, kde jsou umístěny vaše virtuální počítače. Metrika je odrazem stavu infrastruktury Azure. Pomocí metriky můžete:
 - Sledování externí dostupnosti služby
 - Hlouběji a zjistěte, zda je platforma, na které je vaše služba nasazená, v pořádku nebo zda je váš hostovaný operační počítač nebo instance aplikace v pořádku.
-- Izolujte, zda událost souvisí s vaší službou nebo základní rovinou dat. Nepleťte si tuto metriku se stavem sondy stavu ("dostupnost DIP").
+- Izolujte, zda událost souvisí s vaší službou nebo základní rovinou dat. Nepleťte si tuto metriku se stavem sondy stavu ("dostupnost back-endové instance").
 
 Dostupnost cesty k datům pro standardní prostředky vyrovnávání zatížení:
 1. Zkontrolujte, zda je vybrán správný prostředek pro vyrovnávání zatížení. 
@@ -107,7 +107,7 @@ Metrika je generována aktivním měřením v pásmu. Sondovací služba v rámc
 
 Pravidelně se generuje paket odpovídající front-endu a pravidlu nasazení. Prochází oblast ze zdroje do hostitele, kde se nachází virtuální ho virtuálního ms v back-endfondu. Infrastruktura nástroje pro vyrovnávání zatížení provádí stejné operace vyrovnávání zatížení a překladu jako u všech ostatních přenosů. Tato sonda je v pásmu na koncový bod s vyrovnáváním zatížení. Po sonda dorazí na výpočetní hostitele, kde je umístěn virtuální počítač v pořádku ve fondu back-endu, výpočetní hostitel generuje odpověď na službu zjišťování. Váš virtuální počítač tento provoz neuvidí.
 
-Dostupnost programu VIP se nezdaří z následujících důvodů:
+Dostupnost datové cesty se nezdaří z následujících důvodů:
 - Vaše nasazení nemá žádné virtuální počítače v pořádku zbývající ve fondu back-endu. 
 - Došlo k výpadku infrastruktury.
 
@@ -116,7 +116,7 @@ Pro diagnostické účely můžete použít [metriku dostupnost cesty k datům s
 Pro většinu scénářů použijte jako agregaci **průměr.**
 </details>
 
-#### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>Odpovídají back-endové instance pro mé VIP sondy?
+#### <a name="are-the-backend-instances-for-my-load-balancer-responding-to-probes"></a>Odpovídají back-endové instance pro můj balancer na sondy?
 <details>
   <summary>Rozbalit</summary>
 Metrika stavu sondy stavu popisuje stav nasazení aplikace, jak jste nakonfigurovali při konfiguraci sondy stavu nástrojpro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení používá stav sondy stavu k určení, kam chcete odeslat nové toky. Sondy stavu pocházejí z adresy infrastruktury Azure a jsou viditelné v rámci hostovaného operačního systému virtuálního počítače.
@@ -209,19 +209,19 @@ Chcete-li získat statistiku počtu bajtů nebo paketů:
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>Jak diagnostikuji nasazení vyvyčovávače zatížení?
 <details>
   <summary>Rozbalit</summary>
-Pomocí kombinace metriky dostupnosti VIP a sondy stavu v jednom grafu můžete zjistit, kde chcete problém vyhledat a problém vyřešit. Můžete získat jistotu, že Azure funguje správně a použít tyto znalosti přesvědčivě určit, že konfigurace nebo aplikace je hlavní příčinou.
+Pomocí kombinace metrikdostupnost cesty k datům a stavu sondy stavu v jednom grafu můžete zjistit, kde chcete problém vyhledat a problém vyřešit. Můžete získat jistotu, že Azure funguje správně a použít tyto znalosti přesvědčivě určit, že konfigurace nebo aplikace je hlavní příčinou.
 
 Pomocí metrik sondy stavu můžete pochopit, jak Azure zobrazení stavu vašeho nasazení podle konfigurace, kterou jste poskytli. Při pohledu na zdravotní sondy je vždy skvělý první krok při sledování nebo určení příčiny.
 
-Můžete to udělat ještě o krok dál a pomocí metrik dostupnosti VIP získat přehled o tom, jak Azure zobrazení stavu základní datové roviny, která je zodpovědná za vaše konkrétní nasazení. Když zkombinujete obě metriky, můžete izolovat, kde může být chyba, jak je znázorněno v tomto příkladu:
+Můžete to udělat o krok dál a použít metriku dostupnosti cesty k datům, abyste získali přehled o tom, jak Azure zhlédne stav základní datové roviny, která je zodpovědná za vaše konkrétní nasazení. Když zkombinujete obě metriky, můžete izolovat, kde může být chyba, jak je znázorněno v tomto příkladu:
 
 ![Kombinace metrik dostupnosti datové cesty a stavu sondy stavu](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
 *Obrázek: Kombinování metrik dostupnosti datové cesty a stavu sondy stavu*
 
 Graf zobrazuje následující informace:
-- Infrastruktura hostující vaše virtuální počítače nebyla k dispozici a na začátku grafu byla 0 procent. Později byla infrastruktura v pořádku a virtuální servery byly dosažitelné a víc než jeden virtuální virtuální byl umístěn v back-endu. Tyto informace jsou označeny modrým trasování pro dostupnost datové cesty (DOSTUPNOST VIP), která byla později na 100 procent. 
-- Stav sondy stavu (dostupnost DIP), označený fialovým trasováním, je na začátku grafu 0 procent. Zakroužkovaná oblast zeleně upozorňuje, kde stav sondy stavu (dip dostupnost) se stal v pořádku a v tomto okamžiku nasazení zákazníka byl schopen přijmout nové toky.
+- Infrastruktura hostující vaše virtuální počítače nebyla k dispozici a na začátku grafu byla 0 procent. Později byla infrastruktura v pořádku a virtuální servery byly dosažitelné a víc než jeden virtuální virtuální byl umístěn v back-endu. Tyto informace jsou označeny modrým trasování pro dostupnost datové cesty, která byla později na 100 procent. 
+- Stav sondy stavu, označený fialovým trasováním, je na začátku grafu na 0 procent. Zakroužkovaná oblast zeleně upozorňuje, kde se stav sondy stavu stal zdravým a v tomto okamžiku bylo nasazení zákazníka schopno přijmout nové toky.
 
 Graf umožňuje zákazníkům řešit řešení potíží s nasazením samostatně, aniž by museli hádat nebo se ptát na podporu, zda dochází k dalším problémům. Služba nebyla k dispozici, protože sondy stavu se nezdařily z důvodu chybné konfigurace nebo neúspěšné aplikace.
 </details>

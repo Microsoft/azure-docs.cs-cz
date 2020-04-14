@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 89bdd209315445519c35f3ef2c2f1ad2555106ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 1e67637d36eaba55e4c6baaf6f775fc7b79fcd14
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531392"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270587"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Konfigurace a přístup k pomalým protokolům dotazů z webu Azure Portal
 
@@ -23,7 +23,7 @@ Kroky v tomto článku vyžadují, abyste měli [Azure Database pro mariadb serv
 ## <a name="configure-logging"></a>Konfigurace protokolování
 Nakonfigurujte přístup k pomalému protokolu dotazů. 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte databázi Azure pro server MariaDB.
 
@@ -32,11 +32,15 @@ Nakonfigurujte přístup k pomalému protokolu dotazů.
 
 4. Chcete-li zobrazit parametry serveru, vyberte klepnutím **sem povolit protokoly a konfigurovat parametry protokolu**.
 
-5. Změňte parametry, které je třeba upravit, včetně zapnutí **slow_query_log** **na ZAPNUTO**. Všechny změny provedené v této relaci jsou zvýrazněny fialovou barvou. 
+5. Zapněte **slow_query_log** **na ZAPNUTO**.
 
-   Po změně parametrů vyberte **Uložit**. Nebo můžete zahodit změny.
+6. Vyberte, kde se mají protokoly vyprosit pomocí **log_output**. Pokud chcete odeslat protokoly do místního úložiště i do diagnostických protokolů monitorování Azure, vyberte **Soubor**. 
 
-   ![Snímek obrazovky s možnostmi parametrů serveru](./media/howto-configure-server-logs-portal/3-save-discard.png)
+7. Změňte všechny další potřebné parametry. 
+
+8. Vyberte **Uložit**. 
+
+   :::image type="content" source="./media/howto-configure-server-logs-portal/3-save-discard.png" alt-text="Snímek obrazovky s parametry protokolu pomalých dotazů a uložení":::
 
 Na stránce **Parametry serveru** se můžete vrátit do seznamu protokolů zavřením stránky.
 

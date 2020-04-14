@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632898"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271688"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Běžné problémy s dvoufaktorovým ověřením a pracovním nebo školním účtem
 
@@ -65,6 +65,7 @@ Zkontrolujte, zda máte signál zařízení a připojení k internetu. | Zkontro
 Vypnout funkce Nerušit | Ujistěte se, že jste pro své mobilní zařízení nezapnuli funkci **Nerušit.** Když je tato funkce zapnutá, oznámení vás na mobilním zařízení nebudou moci upozorňovat. Pokyny k vypnutí této funkce naleznete v příručce k mobilnímu zařízení.
 Odblokování telefonních čísel | Ve Spojených státech hlasové hovory od microsoftu pocházejí z následujících čísel: +1 (866) 539 4191, +1 (855) 330 8653 a +1 (877) 668 6536.
 Kontrola nastavení souvisejících s baterií | Ten se zdá být na povrchu trochu zvláštní, ale pokud jste nastavili optimalizaci baterie, abyste zabránili méně používaným aplikacím, aby zůstaly aktivní na pozadí, váš oznamovací systém byl s největší pravděpodobností ovlivněn. Chcete-li se pokusit tento problém vyřešit, vypněte optimalizaci baterie pro ověřovací aplikaci a aplikaci pro zasílání zpráv a zkuste se k účtu přihlásit znovu.
+Zakázání aplikací zabezpečení jiných výrobců | Pokud máte aplikaci, která chrání textové zprávy nebo telefonní hovory, aby se minimalizovalo neznámé volající, mohou zabránit přijetí ověřovacího kódu. Zkuste v telefonu zakázat všechny aplikace pro zabezpečení třetích stran a potom požádejte o odeslání dalšího ověřovacího kódu.
 
 ## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>Nedostává se na mě výzva k zadání druhých ověřovacích informací
 

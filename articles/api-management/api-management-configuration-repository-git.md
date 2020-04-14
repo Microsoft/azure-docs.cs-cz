@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548986"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259166"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložení a konfigurace nastavení služby API Management pomocí Gitu
 
@@ -56,7 +56,7 @@ Chcete-li zobrazit a nakonfigurovat nastavení konfigurace Gitu, můžete klikno
 >
 >
 
-Informace o povolení nebo zakázání přístupu Gitpomocí rozhraní REST API najdete v tématu [Povolení nebo zakázání přístupu gitu pomocí rozhraní REST API](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit).
+Informace o povolení nebo zakázání přístupu Gitpomocí rozhraní REST API najdete v tématu [Povolení nebo zakázání přístupu gitu pomocí rozhraní REST API](/rest/api/apimanagement/2019-12-01/tenantaccess?EnableGit).
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>Uložení konfigurace služby do úložiště Git
 
@@ -68,7 +68,7 @@ Po několika okamžicích je konfigurace uložena a zobrazí se stav konfigurace
 
 Jakmile je konfigurace uložena do úložiště, může být klonována.
 
-Informace o provádění této operace pomocí rozhraní REST API naleznete v tématu [Potvrzení snímku konfigurace pomocí rozhraní REST API](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot).
+Informace o provádění této operace pomocí rozhraní REST API naleznete v tématu [Potvrzení snímku konfigurace pomocí rozhraní REST API](/rest/api/apimanagement/2019-12-01/tenantaccess?CommitSnapshot).
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>Klonování úložiště do místního počítače
 
@@ -142,7 +142,7 @@ git push
 
 Jakmile jsou místní změny potvrzeny a zatlačeny do úložiště serveru, můžete je nasadit do instance služby API Management.
 
-Informace o provádění této operace pomocí rozhraní REST API naleznete v tématu [Nasazení změn Gitu do konfigurační databáze pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration).
+Informace o provádění této operace pomocí rozhraní REST API naleznete v tématu [Nasazení změn Gitu do konfigurační databáze pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantconfiguration).
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Odkaz na strukturu souborů a složek místního úložiště Git
 
@@ -172,9 +172,9 @@ Tyto soubory lze vytvářet, odstraňovat, upravovat a spravovat v místním sys
 > [!NOTE]
 > Následující entity nejsou obsaženy v úložišti Git a nelze je konfigurovat pomocí Gitu.
 >
-> * [Uživatelé](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)
-> * [Předplatná](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription)
-> * [Pojmenované hodnoty](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property)
+> * [Uživatelé](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
+> * [Předplatná](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
+> * [Pojmenované hodnoty](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/property)
 > * Entity portálu pro vývojáře jiné než styly
 >
 
@@ -222,14 +222,14 @@ Konečné nastavení `$ref-policy`, mapuje na soubor globálních příkazů zá
 ### <a name="apis-folder"></a>složka apis
 Složka `apis` obsahuje složku pro každé rozhraní API v instanci služby, která obsahuje následující položky.
 
-* `apis\<api name>\configuration.json`- toto je konfigurace rozhraní API a obsahuje informace o adrese URL back-endové služby a operacích. Jedná se o stejné informace, které by byly vráceny, `application/json` pokud byste měli volat Získat konkrétní rozhraní [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) s `export=true` ve formátu.
+* `apis\<api name>\configuration.json`- toto je konfigurace rozhraní API a obsahuje informace o adrese URL back-endové služby a operacích. Jedná se o stejné informace, které by byly vráceny, `application/json` pokud byste měli volat Získat konkrétní rozhraní [API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) s `export=true` ve formátu.
 * `apis\<api name>\api.description.html`- toto je popis ROZHRANÍ API `description` a odpovídá vlastnosti [entity API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
 * `apis\<api name>\operations\`- tato `<operation name>.description.html` složka obsahuje soubory, které mapují na operace v API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje na `description` vlastnost entity [operace](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) v rozhraní REST API.
 
 ### <a name="groups-folder"></a>složka skupiny
 Složka `groups` obsahuje složku pro každou skupinu definovanou v instanci služby.
 
-* `groups\<group name>\configuration.json`- toto je konfigurace skupiny. Jedná se o stejné informace, které by byly vráceny, pokud byste měli volat [získat konkrétní skupiny](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get) operace.
+* `groups\<group name>\configuration.json`- toto je konfigurace skupiny. Jedná se o stejné informace, které by byly vráceny, pokud byste měli volat [získat konkrétní skupiny](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get) operace.
 * `groups\<group name>\description.html`- toto je popis skupiny a `description` odpovídá vlastnosti [subjektu skupiny](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>složka zásad
@@ -249,7 +249,7 @@ Složka `portalStyles` obsahuje konfigurace a šablony stylů pro vlastní nasta
 ### <a name="products-folder"></a>složka produktů
 Složka `products` obsahuje složku pro každý produkt definovaný v instanci služby.
 
-* `products\<product name>\configuration.json`- toto je konfigurace produktu. Jedná se o stejné informace, které by byly vráceny, pokud byste měli volat [získat konkrétní](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get) produkt operace.
+* `products\<product name>\configuration.json`- toto je konfigurace produktu. Jedná se o stejné informace, které by byly vráceny, pokud byste měli volat [získat konkrétní](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get) produkt operace.
 * `products\<product name>\product.description.html`- toto je popis produktu a `description` odpovídá vlastnosti [entity produktu](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) v rozhraní REST API.
 
 ### <a name="templates"></a>šablony

@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 01/29/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76900658"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255043"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist adresy URL portálu Azure na firewallu nebo proxy serveru
 
@@ -80,13 +80,3 @@ Koncové body adresy URL do seznamu safelist pro portál Azure jsou specifické 
 > Přenosy do těchto koncových bodů používají standardní porty TCP pro http (80) a HTTPS (443).
 >
 >
-## <a name="next-steps"></a>Další kroky
-
-Potřebujete safelist IP adresy? Stáhněte si seznam rozsahů IP adres datového centra Microsoft Azure pro váš cloud:
-
-* [Celosvětově](https://www.microsoft.com/download/details.aspx?id=56519)
-* [Vláda USA](https://www.microsoft.com/download/details.aspx?id=57063)
-* [Německo](https://www.microsoft.com/download/details.aspx?id=57064)
-* [Čína](https://www.microsoft.com/download/details.aspx?id=57062)
-
-Jiné služby společnosti Microsoft používají pro připojení další adresy URL a adresy IP. Informace o optimalizaci připojení k síti pro služby Microsoft 365 najdete v tématu [Nastavení sítě pro Office 365](/office365/enterprise/set-up-network-for-office-365).

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 74f97b082c07e17a59a1615c4b1245434c497ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 650ef45e56184b67efba67810580d9d6e763a4d0
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279942"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271263"
 ---
 # <a name="update-an-existing-container-offer"></a>Aktualizace existující nabídky kontejneru
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek Azure Container do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky kontejneru Azure](https://aka.ms/CreateContainerOffer) ke správě migrovaných nabídek.
 
 Tento článek prochází různé aspekty aktualizace nabídky kontejneru na [portálu cloudových partnerů](https://cloudpartner.azure.com/).
 

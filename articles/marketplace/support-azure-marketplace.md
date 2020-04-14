@@ -1,5 +1,5 @@
 ---
-title: Podpora Azure Marketplace a AppSource | Azure
+title: Podpora pro komerční trh | Azure
 description: Informace o podpoře a odkazy pro Azure Marketplace a AppSource
 author: dsindona
 ms.service: marketplace
@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 3/19/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cb08e11910bc0afdd4b2f454582612395cbd50f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2dba23bdf07233a9945086fba2274602cb2dcf1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284921"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252230"
 ---
 # <a name="support-for-the-marketplace"></a>Podpora pro marketplace  
 Tady je seznam možností podpory pro Marketplace.  
@@ -47,7 +47,7 @@ Otevřete lístek s [podporou vydavatele webu](https://aka.ms/marketplacepublish
 
 ## <a name="next-steps"></a>Další kroky
 
-* Navštivte [stránku Azure Marketplace a Průvodce vydavatelem AppSource](https://docs.microsoft.com/azure/marketplace/).
-* Další informace o [podpoře programu Commercial Marketplace v Centru partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+* Navštivte [web ovou stránku s průvodcem pro vydavatele komerčního tržiště](https://docs.microsoft.com/azure/marketplace/).
+* Další informace o [podpoře programu komerčního tržiště v Centru partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
 
 ---

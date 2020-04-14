@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 35d57d117f6308863965ffd789c0e28bedd0f301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04eae529efcf9509d8cd43a7629bb0b76b593cd0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281506"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252426"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Konfigurace správy potenciálních zákazníků v Marketu
 
@@ -76,3 +76,9 @@ Až budete připraveni nakonfigurovat informace o správě zájemců pro vaši n
     >[!Note]
     >Před přijetím zájemců o nabídku je nutné dokončit konfiguraci zbývající nabídky a publikovat ji. 
 
+5. **Kontaktní e-mail** – Poskytněte e-maily lidem ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Můžete poskytnout více e-mailů tím, že je oddělíte středníkem.
+6. Vyberte **OK**.
+
+Chcete-li se ujistit, že jste se úspěšně připojili k cíli zájemce, klikněte na tlačítko ověřit. Pokud bude úspěšná, budete mít testovacího zájemce v cíli zájemce.
+
+![Podrobnosti připojení](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

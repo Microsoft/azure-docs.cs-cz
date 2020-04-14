@@ -1,18 +1,18 @@
 ---
 title: Použití sekvencování rozšíření pomocí škálovacích sad virtuálních strojů Azure
 description: Zjistěte, jak seřadit zřizování rozšíření při nasazování více rozšíření na škálovací sady virtuálních strojů.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 737040699dd62d722b9a9ad4d8915ccb270c2d06
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278058"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273745"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Zřizování rozšíření sekvence ve škálovacích sadách virtuálních strojů
 Rozšíření virtuálních počítačů Azure poskytují funkce, jako je konfigurace a správa po nasazení, monitorování, zabezpečení a další. Produkční nasazení obvykle používají kombinaci více rozšíření nakonfigurovaných pro instance virtuálních aplikací k dosažení požadovaných výsledků.

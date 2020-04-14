@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 7d5269cf8865faeb65356bc8fd3eea087cb7653c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e39f1c70cd94c14b12e54817941ea9106aacfdd
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277969"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273864"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Nasazení virtuálního počítače z Azure Marketplace
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [certifikaci image virtuálního počítače Azure](https://aks.ms/CertifyVMimage) spravujte migrované nabídky.
 
 Tento článek vysvětluje, jak nasadit předem nakonfigurovaný virtuální počítač (VM) z Azure Marketplace pomocí zadaný skript Azure PowerShell.  Tento skript také zveřejňuje koncové body WinRM HTTP a HTTPS na virtuálním počítači.  Skript vyžaduje, abyste už měli certifikát nahraný do úložiště klíčů Azure Key Vault, jak je popsáno v [tématu Vytvořit certifikáty pro Azure Key Vault](./cpp-create-key-vault-cert.md). 
 
@@ -26,16 +29,16 @@ Tento článek vysvětluje, jak nasadit předem nakonfigurovaný virtuální po�
 
 |  **Parametr**        |   **Popis**                                 |
 |  -------------        |   ---------------                                 |
-| newStorageAccountName | Název účtu úložiště                       |
+| newStorageAccountName    | Název účtu úložiště                       |
 | adresa dnsNameForPublicIP    | Název DNS pro veřejnou IP adresu. Musí být malá písmena.    |
-| adminUserName         | Uživatelské jméno správce                          |
-| adminPassword         | Heslo správce                          |
+| adminUserName            | Uživatelské jméno správce                          |
+| adminPassword            | Heslo správce                          |
 | imagePublisher        | Vydavatel obrázků                                   |
 | imageNabídka            | Nabídka obrázků                                       |
-| imageSKU              | Skladová položka obrázku                                         |
+| imageSKU                | Skladová položka obrázku                                         |
 | vmSize                | Velikost virtuálního počítače                                    |
 | vmName                | Název virtuálního_                                    |
-| název trezoru             | Název trezoru klíčů                             |
+| název trezoru                | Název trezoru klíčů                             |
 | vaultResourceGroup    | Skupina prostředků trezoru klíčů                   |
 | certificateUrl        | Adresa URL certifikátu, včetně verze v KeyVault, například`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 |  |  |

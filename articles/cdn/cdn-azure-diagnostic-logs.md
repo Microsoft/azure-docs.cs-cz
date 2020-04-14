@@ -3,7 +3,7 @@ title: Diagnostické protokoly Azure | Dokumenty společnosti Microsoft
 description: Zákazník může povolit analýzu protokolu pro Azure CDN.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
-ms.author: magattus
-ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67594211"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254797"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -27,7 +27,7 @@ Pomocí diagnostických protokolů Azure můžete zobrazit základní analýzy a
 
  - Účet služby Azure Storage
  - Azure Event Hubs
- - [Pracovní prostor Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
+ - [Pracovní prostor služby Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
 Tato funkce je k dispozici na koncových bodech CDN pro všechny cenové úrovně. 
 
@@ -51,7 +51,7 @@ Další informace o diagnostických protokolech naleznete [v tématu Diagnostick
 
 Povolte protokolování pomocí základní analýzy CDN následujícím způsobem:
 
-Přihlaste se k [portálu Azure](https://portal.azure.com). Pokud jste ještě nepovolili CDN pro váš pracovní postup, [vytvořte profil azure CDN a koncový bod,](cdn-create-new-endpoint.md) než budete pokračovat.
+Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud jste ještě nepovolili CDN pro váš pracovní postup, [vytvořte profil azure CDN a koncový bod,](cdn-create-new-endpoint.md) než budete pokračovat.
 
 1. Na webu Azure Portal přejděte na **profil CDN**.
 
@@ -445,7 +445,7 @@ Příklad vlastností:
 
 * [Diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Základní analýzy prostřednictvím doplňkového portálu Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Protokoly azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Protokoly služby Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Rozhraní REST Azure Log Analytics](https://docs.microsoft.com/rest/api/loganalytics)
 
 

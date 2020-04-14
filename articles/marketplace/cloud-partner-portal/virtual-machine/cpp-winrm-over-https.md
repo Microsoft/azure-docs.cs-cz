@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: dsindona
-ms.openlocfilehash: 7c799c4a56ee5fc2074e4d644bdbcbc6d2b1ca5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2a4bb107309894a7180e0a4585cdba6f04d1bee
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288746"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273031"
 ---
 # <a name="windows-remote-management-over-https"></a>Vzdálená správa systému Windows v rámci protokolu HTTPS
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky virtuálního počítače Azure](https://aka.ms/CreateAzureVMoffer) ke správě migrovaných nabídek.
 
 Tato část vysvětluje, jak nakonfigurovat virtuální počítač založený na Windows hostovaný v Azure tak, aby ho bylo možné spravovat a nasadit vzdáleně pomocí PowerShellu.  Chcete-li povolit vzdálené komunikace prostředí PowerShell, cílový virtuální ms musí vystavit koncový bod HTTPS vzdálené správy systému Windows (WinRM).  Další informace o vzdálené modus lezení prostředí PowerShell upozornění naleznete v [tématu Spuštění vzdálených příkazů](https://docs.microsoft.com/powershell/scripting/learn/remoting/running-remote-commands).  Další informace o službě WinRM naleznete [v tématu Vzdálená správa systému Windows](https://docs.microsoft.com/windows/desktop/WinRM/portal).
 

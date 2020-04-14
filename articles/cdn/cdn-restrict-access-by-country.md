@@ -3,7 +3,7 @@ title: Omezení obsahu Azure CDN podle země nebo oblasti | Dokumenty společnos
 description: Zjistěte, jak omezit přístup podle země nebo oblasti k obsahu Azure CDN pomocí funkce geografického filtrování.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: magattus
-ms.openlocfilehash: 75c422d456f2509ce478e2609a6509f78a6eb31e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 7ae7224efdaa281106dfbe2118ab0092c8284c6e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593433"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260152"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Omezení obsahu Azure CDN podle země nebo oblasti
 

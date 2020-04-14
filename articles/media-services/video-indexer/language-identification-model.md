@@ -8,18 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1521581316d559eb4e67bafba0061c31cc666b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513877"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272946"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatická identifikace mluveného jazyka pomocí modelu identifikace jazyka
 
-Video Indexer podporuje automatickou identifikaci jazyka (LID), což je proces automatické identifikace mluveného jazyka ze zvuku a odeslání mediálního souboru, který má být přepsán v dominantním identifikovaném jazyce. V současné době LID podporuje angličtinu, španělštinu, francouzštinu, němčinu, italštinu, čínštinu (zjednodušenou), japonštinu, ruštinu a portugalštinu (brazilskou). 
+Video Indexer podporuje automatickou identifikaci jazyka (LID), což je proces automatické identifikace mluveného jazyka ze zvuku a odeslání mediálního souboru, který má být přepsán v dominantním identifikovaném jazyce. 
+
+V současné době LID podporuje: angličtina, španělština, francouzština, němčina, italština, mandarinské chines, japonština, ruština a portugalština (brazilská). 
+
+Přečtěte si níže uvedenou část [Pokyny a omezení.](#guidelines-and-limitations)
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Volba automatické identifikace jazyka při indexování
 
@@ -49,7 +53,10 @@ Model dominantní jazyk je k dispozici v `sourceLanguage` přehledech JSON jako 
 
 ## <a name="guidelines-and-limitations"></a>Pokyny a omezení
 
-* Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština a brazilská portugalština.
+* Automatická identifikace jazyka (LID) podporuje následující jazyky: 
+
+    Angličtina, španělština, francouzština, němčina, italština, mandarinka, japonština, ruština a portugalština (brazilská).
+* I když Video Indexer podporuje arabštinu (Moderní standard a Levantine), Hindština a Korejština, tyto jazyky nejsou podporovány v lid.
 * Pokud zvuk obsahuje jiné jazyky než výše podporovaný seznam, výsledek je neočekávaný.
 * Pokud Video Indexer nelze identifikovat jazyk s`>0.6`dostatečně vysokou spolehlivostí ( ), záložní jazyk je angličtina.
 * Neexistuje žádná aktuální podpora pro soubor se smíšenými jazyky zvuku. Pokud zvuk obsahuje smíšené jazyky, výsledek je neočekávaný. 

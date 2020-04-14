@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 49f1de5128325b2884ea76b010727be45f1b195d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8dbadf959107e733a94216c8a01495e6ebf5039
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288882"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273116"
 ---
 # <a name="virtual-machine-skus-tab"></a>Karta SKU virtuálního počítače
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky virtuálního počítače Azure](https://aka.ms/CreateAzureVMoffer) ke správě migrovaných nabídek.
 
 Karta **SKU** na stránce **Nová nabídka** umožňuje vytvořit jednu nebo více slok a přidružit je k nové nabídce.  Různé sku mohou rozlišit řešení podle sad funkcí, typů bitových bitových obrazů virtuálních počítačů, propustnosti nebo škálovatelnosti, fakturačních modelů nebo jiné charakteristiky.
 

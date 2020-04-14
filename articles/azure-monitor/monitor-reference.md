@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408495"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255324"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co monitor umonitoruje?
 Tento článek popisuje různé aplikace a služby, které jsou monitorovány azure monitoru. 
@@ -31,7 +31,7 @@ Přehledy poskytují přizpůsobené prostředí monitorování pro konkrétní 
 | [Azure Monitor pro sítě (preview)](insights/network-insights-overview.md) | Poskytuje komplexní přehled o stavu a metriky pro všechny síťové prostředky. Rozšířené vyhledávací funkce vám pomohou identifikovat závislosti prostředků a umožní vám scénáře, jako je identifikace prostředků, které hostují váš web, pouhým vyhledáním názvu webu. |
 [Azure Monitor pro skupiny prostředků (preview)](insights/resource-group-insights.md) |  Třídění a diagnostikovat všechny problémy, které vaše jednotlivé prostředky narazí, a zároveň nabízí kontext, pokud jde o stav a výkon skupiny prostředků jako celku. |
 | [Azure Monitor pro úložiště (preview)](insights/storage-insights-overview.md) | Poskytuje komplexní monitorování vašich účtů Azure Storage tím, že poskytuje jednotné zobrazení výkonu, kapacity a dostupnosti služeb Azure Storage. |
-| [Azure Monitor pro virtuální počítače (preview)](insights/container-insights-overview.md) | Monitoruje vaše virtuální počítače (VM) Azure a škálovací sady virtuálních počítačů ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linuxem a monitoruje jejich procesy a závislosti na jiných prostředcích a externích procesech. |
+| [Azure Monitor pro virtuální počítače](insights/container-insights-overview.md) | Monitoruje vaše virtuální počítače (VM) Azure a škálovací sady virtuálních počítačů ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linuxem a monitoruje jejich procesy a závislosti na jiných prostředcích a externích procesech. |
 
 ### <a name="core-solutions"></a>Základní řešení
 
@@ -143,7 +143,7 @@ V následující tabulce jsou uvedeny služby Azure a data, která shromažďuj�
 |Resource Graph | Ne | Ne | Ne |  |
 |Resource Manager | Ne | Ne | Ne |  |
 |Maloobchodní vyhledávání – podle bingu | Ne | Ne | Ne |  |
-|Hledat | Ano | Ano | Ne |  |
+|Search | Ano | Ano | Ne |  |
 |Service Bus | Ano | Ano | Ne |  |
 |Service Fabric | Ne | Ano | Ne | Agent potřebný ke sledování hostovaného operačního systému a pracovních postupů.  |
 |Registrační portál | Ne | Ne | Ne |  |
@@ -178,11 +178,11 @@ Služby a řešení v následující tabulce ukládají svá data do pracovního
 | [Ochrana informací Azure](https://docs.microsoft.com/azure/information-protection/) | Klasifikují a volitelně chrání dokumenty a e-maily. Viz [Centrální vykazování pro Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
 | [Azure Security Center](/azure/security-center/) | Shromažďujte a analyzujte události zabezpečení a provádějte analýzu hrozeb. Viz [Shromažďování dat v Azure Security Center](/azure/security-center/security-center-enable-data-collection) |
 | [Azure Sentinel](/azure/sentinel/) | Připojuje se k různým zdrojům, včetně Office 365 a Amazon Web Services Cloud Trail. Viz [Připojení zdrojů dat](/azure/sentinel/connect-data-sources). |
-| [Analýza služby Key Vault](insights/azure-key-vault.md) | Analyzujte protokoly auditu azure trezoru klíčů. |
+| [Key Vault Analytics](insights/azure-key-vault.md) | Analyzujte protokoly auditu azure trezoru klíčů. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Vytvořte diagnostické nastavení pro odesílání protokolů do Azure Monitoru. Viz [Odesílání dat protokolu do úložiště, centra událostí nebo analýzy protokolů v Intune (preview).](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)  |
 | Síť  | [Sledování výkonu sítě](insights/network-performance-monitor.md) – sledování připojení k síti a výkonu koncových bodů služby a aplikace.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) – analyzujte protokoly a metriky z Azure Application Gateway.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) – analyzuje protokoly toku skupiny zabezpečení sítě Network Watcher (NSG), aby poskytl přehled o toku provozu ve vašem cloudu Azure. |
 | [Office 365](insights/solution-office-365.md) | Sledujte své prostředí Office 365. Aktualizovaná verze s vylepšeným nástupem, které je k dispozici prostřednictvím Azure Sentinelu. |
-| [Analýza SQL](insights/azure-sql.md) | Sledujte výkon databází Azure SQL, elastických fondů a spravovaných instancí ve velkém měřítku a napříč několika předplatnými. |
+| [SQL Analytics](insights/azure-sql.md) | Sledujte výkon databází Azure SQL, elastických fondů a spravovaných instancí ve velkém měřítku a napříč několika předplatnými. |
 | [Surface Hub](insights/surface-hubs.md) | Sledujte stav a využití zařízení Surface Hub. |
 | [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | Shromažďujte data od agentů Operations Manageru propojením jejich skupiny pro správu s Azure Monitorem. Viz [Připojení nástroje Operations Manager k Azure Monitoru](platform/om-agents.md)<br> Vyhodnoťte rizika a stav vaší skupiny pro správu operations center operations manageru pomocí řešení [Operations Manager Assessment.](insights/scom-assessment.md) |
 | [Místnosti Microsoft Teams](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | Integrovaná komplexní správa zařízení Microsoft Teams Rooms. |
@@ -201,7 +201,7 @@ Další řešení jsou k dispozici pro sledování různých aplikací a služeb
 | [Analýza protokolu aktivit](platform/activity-log-view.md#azure-portal) | Zobrazení položek protokolu aktivit. |
 | [Služba DNS Analytics (náhled)](insights/dns-analytics.md) | Shromažďuje, analyzuje a koreluje analytické a auditní protokoly služby Windows DNS a další související data ze serverů DNS. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Shromažďujte, zobrazujte a analyzujte metriky stavu a výkonu systému Cloud Foundry napříč několika nasazeními. |
-| [Kontejnery](insights/containers.md) | Zobrazení a správa hostitelů kontejnerů Dockeru a Windows. |
+| [Containers](insights/containers.md) | Zobrazení a správa hostitelů kontejnerů Dockeru a Windows. |
 | [Hodnocení na vyžádání](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Vyhodnoťte a optimalizujte dostupnost, zabezpečení a výkon místních, hybridních a cloudových technologických prostředí Microsoftu. |
 | [Kontrola stavu SQL](insights/sql-assessment.md) | Vyhodnoťte rizika a stav prostředí serveru SQL Server.  |
 | [Linková data](insights/wire-data.md) | Konsolidovaná data o síti a výkonu shromážděná z počítačů připojených k Systému Windows a počítačů s Linuxem s agentem Log Analytics. |

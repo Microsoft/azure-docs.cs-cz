@@ -3,7 +3,7 @@ title: Vytvoření koncového bodu Azure CDN | Dokumenty společnosti Microsoft
 description: Tento článek ukazuje, jak vytvořit nový koncový bod sítě doručování obsahu Azure (CDN), včetně upřesňující nastavení.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: afd9599dd1e396dea6975c397688e4b97371fd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593940"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254011"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Vytvoření koncového bodu Azure CDN
 Tento článek popisuje všechna nastavení pro vytvoření koncového bodu [sítě doručování obsahu Azure (CDN)](cdn-overview.md) v existujícím profilu CDN. Po vytvoření profilu a koncového bodu můžete začít doručovat obsah zákazníkům. Úvodní příručka k vytvoření profilu a koncového bodu najdete v [tématu Úvodní příručka: Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md).

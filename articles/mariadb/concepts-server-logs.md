@@ -5,35 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 2c07e5eeedd2e4f42ec7b165bf161e142421df58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527890"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272079"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Pomalé protokoly dotazů v Azure Database pro MariaDB
 V Azure Database pro MariaDB, pomalý protokol dotazů je k dispozici uživatelům. Přístup k transakčnímu protokolu není podporován. Pomalý protokol dotazů lze použít k identifikaci kritických bodů výkonu pro řešení potíží.
 
 Další informace o protokolu pomalých dotazů naleznete v dokumentaci MariaDB pro [protokol pomalých dotazů](https://mariadb.com/kb/en/library/slow-query-log-overview/).
 
-## <a name="access-slow-query-logs"></a>Přístup k protokolům pomalých dotazů
-Můžete seznam a stáhnout Azure Database pro MariaDB protokoly pomalých dotazů pomocí portálu Azure a Rozhraní příkazového příkazového příkazu Konto Azure.
-
-Na webu Azure Portal vyberte azure databázi pro server MariaDB. V záhlaví **Sledování** vyberte stránku **Protokoly serveru.**
-
-Další informace o rozhraní příkazového příkazového odlohovky a řízení o Azure najdete [v tématu Konfigurace a přístup k protokolům serveru pomocí rozhraní příkazového příkazového příkazu Kontu Azure](howto-configure-server-logs-cli.md).
-
-Podobně můžete kanál protokoly Azure Monitor pomocí diagnostických protokolů. Více informací naleznete [níže.](concepts-server-logs.md#diagnostic-logs)
-
-## <a name="log-retention"></a>Uchovávání protokolu
-Protokoly jsou k dispozici až sedm dní od jejich vytvoření. Pokud celková velikost dostupných protokolů přesáhne 7 GB, nejstarší soubory budou odstraněny, dokud není k dispozici místo.
-
-Protokoly se otáčejí každých 24 hodin nebo 7 GB podle toho, co nastane dříve.
-
 ## <a name="configure-slow-query-logging"></a>Konfigurace pomalého protokolování dotazů
-Ve výchozím nastavení je pomalý protokol dotazů zakázán. Chcete-li jej povolit, nastavte slow_query_log na ZAPNUTO.
+Ve výchozím nastavení je pomalý protokol dotazů zakázán. Chcete-li jej `slow_query_log` povolit, nastavte možnost ZAPNUTO. To lze povolit pomocí portálu Azure nebo azure cli. 
 
 Mezi další parametry, které můžete upravit, patří:
 
@@ -48,6 +34,21 @@ Mezi další parametry, které můžete upravit, patří:
 > Pokud plánujete protokolování pomalé dotazy na delší dobu, je `log_output` doporučeno nastavit na "Žádný". Pokud je nastavena na "Soubor", tyto protokoly jsou zapsány do úložiště místního serveru a může ovlivnit výkon MariaDB. 
 
 Úplný popis parametrů protokolu pomalých dotazů naleznete v [dokumentaci k pomalému dotazu](https://mariadb.com/kb/en/library/slow-query-log-overview/) MariaDB.
+
+## <a name="access-slow-query-logs"></a>Přístup k protokolům pomalých dotazů
+Existují dvě možnosti pro přístup k protokolům pomalých dotazů v Azure Database for MariaDB: místní úložiště serveru nebo diagnostické protokoly azure monitoru. To je nastaveno pomocí parametru. `log_output`
+
+Pro místní úložiště serveru můžete vypsat a stáhnout pomalé protokoly dotazů pomocí portálu Azure nebo rozhraní příkazového příkazového příkazu Kontu Azure. Na webu Azure Portal přejděte na svůj server na webu Azure Portal. V záhlaví **Sledování** vyberte stránku **Protokoly serveru.** Další informace o rozhraní příkazového příkazového odlohovky a řízení o Azure najdete [v tématu Konfigurace a přístup k protokolům serveru pomocí rozhraní příkazového příkazového příkazu Kontu Azure](howto-configure-server-logs-cli.md). 
+
+Diagnostické protokoly monitorování Azure umožňuje kanál pomalé protokoly dotazů do protokolů monitorování Azure (Log Analytics), Azure Storage nebo Centra událostí. Více informací naleznete [níže.](concepts-server-logs.md#diagnostic-logs)
+
+## <a name="local-server-storage-log-retention"></a>Uchovávání protokolu úložiště místního serveru
+Při protokolování do místního úložiště serveru protokoly jsou k dispozici po dobu až sedmi dnů od jejich vytvoření. Pokud celková velikost dostupných protokolů přesáhne 7 GB, nejstarší soubory budou odstraněny, dokud není k dispozici místo.
+
+Protokoly se otáčejí každých 24 hodin nebo 7 GB podle toho, co nastane dříve.
+
+> [!Note]
+> Výše uvedené uchovávání protokolu se nevztahuje na protokoly, které jsou kanálové pomocí protokolů diagnostiky monitorování Azure. Můžete změnit dobu uchování pro jímky dat vyzařované do (např. Azure Storage).
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 Azure Database for MariaDB je integrovaná s diagnostickými protokoly azure monitoru. Jakmile povolujete pomalé protokoly dotazů na serveru MariaDB, můžete je nechat vyzařovat do protokolů Azure Monitor, centra událostí nebo do úložiště Azure. Další informace o povolení diagnostických protokolů naleznete v části Jak v dokumentaci k [diagnostickým protokolům](../azure-monitor/platform/platform-logs-overview.md).
@@ -81,6 +82,9 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na v�
 | `server_id_s` | ID serveru |
 | `thread_id_s` | ID vlákna |
 | `\_ResourceId` | Identifikátor URI prostředku |
+
+> [!Note]
+> Pro `sql_text`protokol bude zkrácen, pokud překročí 2048 znaků.
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>Analýza protokolů v protokolech monitorování Azure
 

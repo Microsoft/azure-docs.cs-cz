@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
-ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af42476f9d04f7f2bfc275c731b02aa5a9b8ecf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286417"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273150"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Vytvoření klienta s vlastním testem pro předběžnou ověření image virtuálního počítače Azure
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [certifikaci image virtuálního počítače Azure](https://aks.ms/CertifyVMimage) spravujte migrované nabídky.
 
 Tento článek použijte jako vodítko pro vytvoření klientské služby, která spotřebovává rozhraní API pro vlastní testování. Rozhraní API pro autotestování můžete použít k předběžnému ověření virtuálního počítače(VM), abyste zajistili, že splňuje nejnovější požadavky na publikování na Azure Marketplace. Tato klientská služba umožňuje otestovat virtuální počítač před odesláním nabídky pro certifikaci Microsoftu.
 
@@ -219,7 +222,7 @@ Následující snímek obrazovky ukazuje výsledky JSON z volání curl.
 
 Pomocí následujících kroků zvolte klienta Azure AD, kde chcete vytvořit aplikaci.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Na horním řádku nabídek vyberte svůj účet a v seznamu Adresář vyberte klienta služby Active Directory, ve kterém chcete aplikaci zaregistrovat. Nebo vyberte ikonu **Adresář + Odběr** a zobcvujte filtr globálníodběr. Následující snímek obrazovky ukazuje příklad tohoto filtru.
 
    ![Výběr filtru předplatného](./media/stclient-subscription-filter.png)

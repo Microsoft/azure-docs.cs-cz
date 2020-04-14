@@ -3,19 +3,19 @@ title: Nasazení škálovací sady virtuálních strojů pomocí Sady Visual Stu
 description: Nasazení škálovacích sad virtuálních strojů pomocí sady Visual Studio a šablony Správce prostředků
 ms.custom: vs-azure, H1Hack27Feb2017
 ms.workload: azure-vs
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.author: manayar
-ms.openlocfilehash: c49b4f42bc726c68880bdd4d6f58956936e83177
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: adc91d5f4f79be8a85dfed7d10a882493f6427b0
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066961"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273337"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Jak vytvořit škálovací sadu virtuálních strojů pomocí sady Visual Studio
 

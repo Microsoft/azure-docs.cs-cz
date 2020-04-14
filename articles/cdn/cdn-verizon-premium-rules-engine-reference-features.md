@@ -2,17 +2,17 @@
 title: Azure CDN od Verizon Premium pravidla funkce | Dokumenty společnosti Microsoft
 description: Referenční dokumentace pro Azure CDN z funkcí modulu pravidel Verizon Premium.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247576"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253488"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN od Verizon Premium pravidla funkce
 
@@ -846,7 +846,7 @@ Za normálních okolností, když vyprší maximální stáří datového zdroje
 
 Pokud protokol POP nemůže navázat spojení se zdrojovým serverem při pokusu o takové opětovné ověření, pak tato funkce Internal Max-Stale určuje, zda a na jak dlouho může protokol POP nadále obsluhovat nyní zastaralý prostředek.
 
-Všimněte si, že tento časový interval začíná, když vyprší maximální stáří datového zdroje, nikoli při selhání opětovného ověření. Maximální doba, po kterou může být majetek doručen bez úspěšného prodloužení platnosti, je tedy doba určená kombinací maximálního stáří plus maximálního zatuchlého majetku. Pokud byl například datový zdroj uložen do mezipaměti v 9:00 s maximálním stářím 30 minut a maximálním zatuchlým 15 minutem, pak neúspěšný pokus o prodloužení platnosti v 9:44 by vedl k tomu, že by koncový uživatel obdržel zastaralý prostředek uložený v mezipaměti, zatímco neúspěšný pokus o opětovné ověření v 9:46 by vedl k selhání koncového uživatele, který obdrží časový výtok brány 504.
+Všimněte si, že tento časový interval začíná, když vyprší maximální stáří datového zdroje, nikoli při selhání opětovného ověření. Maximální doba, po kterou může být majetek doručen bez úspěšného prodloužení platnosti, je tedy doba určená kombinací maximálního stáří plus maximálního zatuchlého majetku. Například pokud byl prostředek uložen do mezipaměti v 9:00 s maximální stáří 30 minut a maximální zastaralá 15 minut, pak neúspěšný pokus o opětovné ověření v 9:44 by mělo za následek koncový uživatel obdrží zastaralé mezipaměti datového zdroje, zatímco neúspěšný pokus o opětovné ověření v 9:46 by mělo za následek koncový uživatel obdrží 504 Gateway Timeout.
 
 Každá hodnota nakonfigurovaná pro `Cache-Control: must-revalidate` tuto `Cache-Control: proxy-revalidate` funkci je nahrazena záhlavími přijatými z původního serveru. Pokud je některá z těchto hlaviček přijata ze zdrojového serveru při počátečním ukládání datového zdroje do mezipaměti, nebude protokol POP sloužit zastaralému prostředku uloženému v mezipaměti. V takovém případě pokud pop není schopen znovu ověřit s původem po vypršení maximálního stáří datového zdroje, pop vrátí chybu vypršení časového limitu brány 504.
 
@@ -938,7 +938,7 @@ Možnost|Popis|Příklad
 -|-|-
 Připojit|Zadaná hodnota bude přidána na konec existující hodnoty hlavičky požadavku.|**Hodnota hlavičky požadavku (klient):**<br/>Hodnota1<br/>**Hodnota hlavičky požadavku (modul pravidel):**<br/>Hodnota2 <br/>**Nová hodnota hlavičky požadavku:** <br/>Hodnota1Value2
 Přepsat|Hodnota hlavičky požadavku bude nastavena na zadanou hodnotu.|**Hodnota hlavičky požadavku (klient):**<br/>Hodnota1<br/>**Hodnota hlavičky požadavku (modul pravidel):**<br/>Hodnota2<br/>**Nová hodnota hlavičky požadavku:**<br/> Hodnota2 <br/>
-Odstranění|Odstraní zadanou hlavičku požadavku.|**Hodnota hlavičky požadavku (klient):**<br/>Hodnota1<br/>**Změna konfigurace hlavičky požadavku klienta:**<br/>Odstraňte dotyčnou hlavičku požadavku.<br/>**Výsledek:**<br/>Zadaná hlavička požadavku nebude předána na zdrojový server.
+Odstranit|Odstraní zadanou hlavičku požadavku.|**Hodnota hlavičky požadavku (klient):**<br/>Hodnota1<br/>**Změna konfigurace hlavičky požadavku klienta:**<br/>Odstraňte dotyčnou hlavičku požadavku.<br/>**Výsledek:**<br/>Zadaná hlavička požadavku nebude předána na zdrojový server.
 
 Klíčové informace:
 
@@ -978,7 +978,7 @@ Možnost|Popis|Příklad
 -|-|-
 Připojit|Zadaná hodnota bude přidána na konec existující hodnoty hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):**<br />Hodnota1<br/>**Hodnota hlavičky odpovědi (modul pravidel):**<br/>Hodnota2<br/>**Nová hodnota hlavičky odpovědi:**<br/>Hodnota1Value2
 Přepsat|Hodnota hlavičky odpovědi bude nastavena na zadanou hodnotu.|**Hodnota hlavičky odpovědi (klient):**<br/>Hodnota1<br/>**Hodnota hlavičky odpovědi (modul pravidel):**<br/>Hodnota2 <br/>**Nová hodnota hlavičky odpovědi:**<br/>Hodnota2 <br/>
-Odstranění|Odstraní zadanou hlavičku odpovědi.|**Hodnota hlavičky odpovědi (klient):**<br/>Hodnota1<br/>**Změna konfigurace hlavičky odpovědi klienta:**<br/>Odstraňte dotyčnou hlavičku odpovědi.<br/>**Výsledek:**<br/>Zadaná hlavička odpovědi nebude předána žadateli.
+Odstranit|Odstraní zadanou hlavičku odpovědi.|**Hodnota hlavičky odpovědi (klient):**<br/>Hodnota1<br/>**Změna konfigurace hlavičky odpovědi klienta:**<br/>Odstraňte dotyčnou hlavičku odpovědi.<br/>**Výsledek:**<br/>Zadaná hlavička odpovědi nebude předána žadateli.
 
 Klíčové informace:
 
@@ -1240,7 +1240,7 @@ Přesměrování adresy URL je použitelné pouze pro kódy odpovědí 3xx.
 
 Volba Volitelná hodnota záhlaví podporuje alfanumerické znaky, uvozovky a mezery.
 
-#### <a name="authentication"></a>Ověřování
+#### <a name="authentication"></a>Authentication
 
 Tato funkce podporuje možnost zahrnout hlavičku WWW-Authenticate při odpovídání na neoprávněný požadavek na obsah chráněný ověřováním na základě tokenu. Pokud byla hlavička WWW-Authenticate v konfiguraci nastavena na "základní", bude neoprávněný uživatel vyzván k zadání pověření účtu.
 

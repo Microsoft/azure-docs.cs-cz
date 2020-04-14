@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fdf22e4d981549b876a14aed2b0a1d7e0c76e40e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435347"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263450"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
@@ -159,19 +159,20 @@ Další informace naleznete v tématu:
 
 
 
-
 ## <a name="threat-protection-for-azure-storage"></a>Ochrana před hrozbami pro Azure Storage<a name="azure-storage"></a>
 
-> [!NOTE]
-> Tato služba je dostupná v amerických vládních cloudech, ale žádné jiné suverénní nebo azure vládní cloudové oblasti.
+Pokročilá ochrana před hrozbami pro úložiště detekuje neobvyklé a potenciálně škodlivé pokusy o přístup k účtům úložiště nebo o zneužití jejich využití. Tato úroveň ochrany umožňuje řešit hrozby, aniž byste museli být odborníkem na zabezpečení, a pomáhá vám spravovat systémy monitorování zabezpečení.
 
-Pokročilá ochrana před internetovými hrozbami pro úložiště (která je v současné době k dispozici jenom pro úložiště objektů Blob) detekuje neobvyklé a potenciálně škodlivé pokusy o přístup k účtům úložiště nebo o jejich zneužití. Tato úroveň ochrany umožňuje řešit hrozby, aniž byste museli být odborníkem na zabezpečení, a pomáhá vám spravovat systémy monitorování zabezpečení.
+Pokročilá ochrana před hrozbami pro Azure Storage je momentálně dostupná jenom pro [úložiště objektů Blob](https://azure.microsoft.com/services/storage/blobs/). 
+
+Tato služba je dostupná ve všech veřejných cloudech a cloudech vlády USA, ale žádné jiné suverénní nebo vládní oblasti cloudu Azure.
+
+Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na [stránce s cenami Centra zabezpečení Azure](https://azure.microsoft.com/pricing/details/security-center/).
 
 Další informace naleznete v tématu:
 
 * [Jak povolit pokročilou ochranu před internetovými hrozbami pro azure storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Seznam výstrah ochrany před hrozbami pro Azure Storage](alerts-reference.md#alerts-azurestorage)
-
 
 > [!TIP]
 > Výstrahy Azure Storage můžete simulovat podle pokynů v [tomto příspěvku blogu](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131).

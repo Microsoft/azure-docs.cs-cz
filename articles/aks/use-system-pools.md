@@ -4,16 +4,19 @@ description: Zjistěte, jak vytvářet a spravovat fondy systémových uzlů ve 
 services: container-service
 ms.topic: article
 ms.date: 04/06/2020
-ms.openlocfilehash: ef5400f19f68fd2da45776d220e17777f58e46e6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986314"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259064"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Správa fondů systémových uzlů ve službě Azure Kubernetes Service (AKS)
 
-Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny do *fondů uzlů*. Fondy uzlů obsahují základní virtuální počítače, které spouštějí vaše aplikace. Fondy systémových uzlů a fondy uživatelských uzlů jsou dva různé režimy fondu uzlů pro clustery AKS. Fondy systémových uzlů jsou hostiteli základních systémových služeb, jako je například CoreDNS. Fondy uzlů uživatelů jsou místo, kam umístíte pody specifické pro aplikaci. Každý cluster AKS musí obsahovat alespoň jeden fond systémových uzlů s alespoň jedním uzlem. Pokud spustíte fond jednoho systémového uzlu pro cluster AKS, doporučujeme použít alespoň tři uzly pro fond uzlů. 
+Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny do *fondů uzlů*. Fondy uzlů obsahují základní virtuální počítače, které spouštějí vaše aplikace. Fondy systémových uzlů a fondy uživatelských uzlů jsou dva různé režimy fondu uzlů pro clustery AKS. Fondy systémových uzlů slouží primárnímu účelu hostování kritických systémových podů, jako je CoreDNS a tunnelfront. Fondy uživatelských uzlů slouží primárnímu účelu hostování podů aplikací. Pody aplikací však lze naplánovat ve fondech systémových uzlů, pokud chcete mít v clusteru AKS pouze jeden fond. Každý cluster AKS musí obsahovat alespoň jeden fond systémových uzlů s alespoň jedním uzlem. 
+
+> [!Important]
+> Pokud spustíte fond jednoho systémového uzlu pro cluster AKS v produkčním prostředí, doporučujeme použít alespoň tři uzly pro fond uzlů.
 
 ## <a name="before-you-begin"></a>Než začnete
 

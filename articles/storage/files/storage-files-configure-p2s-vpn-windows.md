@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5f12b77f5baa1a3b06a093aac7267c65a038881e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061021"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273473"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Konfigurace sítě VPN point-to-site (P2S) v systému Windows pro použití se soubory Azure
 Připojení VPN z bodu na webu (P2S) můžete použít k připojení sdílených složek Azure přes SMB mimo Azure, aniž byste museli otevřít port 445. Připojení VPN bodu k webu je připojení VPN mezi Azure a jednotlivým klientem. Chcete-li použít připojení P2S VPN se soubory Azure, připojení P2S VPN bude muset být nakonfigurováno pro každého klienta, který se chce připojit. Pokud máte mnoho klientů, kteří se potřebují připojit ke sdíleným složekm Azure z místní sítě, můžete místo připojení typu Point-to-Site pro každého klienta použít připojení VPN site-to-site (Site-to-Site). Další informace najdete [v tématu Konfigurace sítě VPN mezi lokalitami pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
@@ -31,7 +31,7 @@ V článku jsou podrobně kroky konfigurace sítě VPN s bodem na místo v syst�
 ## <a name="deploy-a-virtual-network"></a>Nasazení virtuální sítě
 Chcete-li získat přístup ke sdílené složce Azure a dalším prostředkům Azure z místní sítě prostřednictvím sítě VPN s bodem na webu, musíte vytvořit virtuální síť nebo virtuální síť. Připojení Vpn P2S, které automaticky vytvoříte, je mostem mezi místním počítačem se systémem Windows a touto virtuální sítí Azure.
 
-Následující PowerShell vytvoří virtuální síť Azure se třemi podsítěmi: jednu pro koncový bod služby vašeho účtu úložiště, jednu pro soukromý koncový bod vašeho účtu úložiště, který je nutný pro přístup k účtu úložiště v místním prostředí bez vytváření vlastní směrování pro veřejnou IP adresu účtu úložiště, která se může změnit, a pro bránu virtuální sítě, která poskytuje službu VPN. 
+Následující PowerShell vytvoří virtuální síť Azure se třemi podsítěmi: jednu pro koncový bod služby vašeho účtu úložiště, jednu pro soukromý koncový bod vašeho účtu úložiště, která je vyžadována pro přístup k účtu úložiště v místním prostředí bez vytvoření vlastního směrování pro veřejnou IP adresu účtu úložiště, která se může změnit, a pro bránu virtuální sítě, která poskytuje službu VPN. 
 
 Nezapomeňte nahradit `<region>` `<resource-group>`, `<desired-vnet-name>` a příslušné hodnoty pro vaše prostředí.
 
@@ -79,7 +79,7 @@ $gatewaySubnet = $virtualNetwork.Subnets | `
 ```
 
 ## <a name="create-root-certificate-for-vpn-authentication"></a>Vytvoření kořenového certifikátu pro ověřování pomocí sítě VPN
-Aby bylo možné ověřit připojení VPN z místních počítačů se systémem Windows pro přístup k vaší virtuální síti, musíte vytvořit dva certifikáty: kořenový certifikát, který bude poskytnut bráně virtuálního počítače, a klientský certifikát, který bude být podepsány kořenovým certifikátem. Následující prostředí PowerShell vytvoří kořenový certifikát. klientský certifikát se vytvoří po vytvoření brány virtuální sítě Azure s informacemi z brány. 
+Aby bylo možné ověřit připojení VPN z místních počítačů se systémem Windows pro přístup k vaší virtuální síti, musíte vytvořit dva certifikáty: kořenový certifikát, který bude poskytnut bráně virtuálního počítače, a klientský certifikát, který bude podepsán kořenovým certifikátem. Následující prostředí PowerShell vytvoří kořenový certifikát. klientský certifikát se vytvoří po vytvoření brány virtuální sítě Azure s informacemi z brány. 
 
 ```PowerShell
 $rootcertname = "CN=P2SRootCert"
@@ -138,7 +138,7 @@ $vpnName = "<desired-vpn-name-here>"
 $publicIpAddressName = "$vpnName-PublicIP"
 
 $publicIPAddress = New-AzPublicIpAddress `
-    -ResourceGroupName $resourceGroupName ` 
+    -ResourceGroupName $resourceGroupName `
     -Name $publicIpAddressName `
     -Location $region `
     -Sku Basic `
@@ -242,7 +242,7 @@ foreach ($session in $sessions) {
         -ArgumentList `
             $mypwd, `
             $vpnTemp, `
-            $virtualNetworkName
+            $virtualNetworkName `
         -ScriptBlock { 
             $mypwd = $args[0] 
             $vpnTemp = $args[1]
@@ -267,7 +267,7 @@ foreach ($session in $sessions) {
 
             Add-VpnConnection `
                 -Name $virtualNetworkName `
-                -ServerAddress $vpnProfile.VpnServer ` 
+                -ServerAddress $vpnProfile.VpnServer `
                 -TunnelType Ikev2 `
                 -EncryptionLevel Required `
                 -AuthenticationMethod MachineCertificate `

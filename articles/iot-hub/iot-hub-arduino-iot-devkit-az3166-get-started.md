@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 326b79e1aca6fa82b3275249401c755428a8b71d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 631a20c7bf73aa2af363fdc0019ef24cccc58f9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878557"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258588"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Připojení IoT DevKit AZ3166 k Azure IoT Hub
 
@@ -327,6 +327,17 @@ Ukázková aplikace je úspěšně spuštěna, když se zobrazí následující 
 * Led dioda na MXChip IoT DevKit bliká.
 
 ![Výstup sériového monitoru](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
+
+> [!NOTE]
+> Při testování, při kterém led dioda nebliká, se může vyskytne chyba, na kterém se na webu Azure portal nezobrazují příchozí data ze zařízení, ale obrazovka OLED zařízení se zobrazuje jako **Spuštěná...**. Chcete-li tento problém vyřešit, přejděte na zařízení v centru IoT a odešlete zprávu zařízení. Pokud se v sériovém monitoru v kódu VS zobrazí následující odpověď, je možné, že přímá komunikace ze zařízení je blokována na úrovni směrovače. Zkontrolujte pravidla brány firewall a směrovače, která jsou nakonfigurována pro připojovací zařízení. Zkontrolujte také, zda je otevřený výstupní port 1833.
+> 
+> Chyba: mqtt_client.c (ln 454): Chyba: při otevření připojení ke koncovému bodu došlo k chybě  
+> INFO: >>>Stav připojení: odpojeno  
+> Chyba: tlsio_mbedtls.c (ln 604): Podkladový IO open selhal  
+> CHYBA: mqtt_client.c (LN 1042): Chyba: io_open selhalo  
+> Chyba: iothubtransport_mqtt_common.c (ln 2283): selhání připojení k atcsliothub.azure-devices.net adres.  
+> INFO: >>>Znovu připojit.  
+> INFO: IoThub Verze: 1.3.6  
 
 ### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>Zobrazení telemetrie přijaté službou Azure IoT Hub
 

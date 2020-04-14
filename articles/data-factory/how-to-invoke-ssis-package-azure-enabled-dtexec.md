@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/21/2019
+ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 006d4fa9ed09170a423e796e893b817e079e861b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931701"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261923"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Spouštění balíčků služby SQL Server Integration Services pomocí nástroje Dtexec s podporou Azure
 Tento článek popisuje nástroj příkazového řádku dtexec (AzureDTExec). Používá se ke spuštění balíčků sql server integration services (SSIS) na Azure-SSIS Integration Runtime (IR) v Azure Data Factory.
@@ -46,19 +46,19 @@ V okně **AzureDTExecConfig** zadejte nastavení konfigurace následujícím zp�
 - **ApplicationId**: Zadejte jedinečný identifikátor aplikace Azure AD, kterou vytvoříte se správnými oprávněními ke generování kanálů ve vaší datové továrně. Další informace najdete [v tématu Vytvoření aplikace Azure AD a instančního objektu služby prostřednictvím portálu Azure](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 - **AuthenticationKey**: Zadejte ověřovací klíč pro aplikaci Azure AD.
 - **TenantId**: Zadejte jedinečný identifikátor klienta Azure AD, pod kterým se vytvoří vaše aplikace Azure AD.
-- **SubscriptionId**: Zadejte jedinečný identifikátor předplatného Azure, pod kterým byla vytvořena vaše továrna na data.
-- **ResourceGroup:** Zadejte název skupiny prostředků Azure, ve které byla vytvořena vaše továrna na data.
 - **DataFactory**: Zadejte název vaší datové továrny, ve kterém jsou generovány jedinečné kanály s aktivitou sexecute SSIS Package v nich na základě hodnot možností poskytnutých při vyvolání AzureDTExec.
 - **IRName**: Zadejte název Azure-SSIS Ir ve vaší datové továrně, na kterém se spustí balíčky zadané v jejich cestě UNC (Universal Naming Convention) při vyvolání AzureDTExec.
-- **PackageAccessDomain**: Zadejte pověření domény pro přístup k balíčkům v jejich cestě UNC, která je určena při vyvolání AzureDTExec.
-- **PackageAccessUserName**: Zadejte přihlašovací údaje uživatelského jména pro přístup k balíčkům v cestě UNC, která je určena při vyvolání AzureDTExec.
-- **PackageAccessPassword**: Zadejte pověření hesla pro přístup k balíčkům v jejich cestě UNC, která je zadána při vyvolání AzureDTExec.
-- **LogPath**: Zadejte cestu UNC složky protokolu, do které jsou zapsány soubory protokolu z provádění balíčků na Azure-SSIS IR.
-- **LogLevel**: Zadejte vybraný obor protokolování z předdefinované **null**, **Basic**, **Verbose**nebo **Performance** možnosti pro spuštění balíčku na Azure-SSIS Ir.
-- **LogAccessDomain**: Při zápisu souborů protokolu zadejte pověření domény pro přístup ke složce protokolu v cestě UNC, což je vyžadováno při zadání **logpath** a **loglevel** není **null**.
-- **LogAccessUserName**: Zadejte pověření uživatelského jména pro přístup ke složce protokolu v cestě UNC při zápisu souborů protokolu, což je vyžadováno při zadání **LogPath** a **LogLevel** není **null**.
-- **LogAccessPassword**: Zadejte pověření hesla pro přístup ke složce protokolu v cestě UNC při zápisu souborů protokolu, což je vyžadováno při **logpath** je zadán a **LogLevel** není **null**.
 - **PipelineNameHashStrLen**: Zadejte délku řetězce hash, které mají být generovány z hodnot možností, které zadáte při vyvolání AzureDTExec. Řetězce se používají k vytvoření jedinečných názvů pro kanály data factory, které spouštějí balíčky na Azure-SSIS IR. Obvykle je dostatečná délka 32 znaků.
+- **ResourceGroup:** Zadejte název skupiny prostředků Azure, ve které byla vytvořena vaše továrna na data.
+- **SubscriptionId**: Zadejte jedinečný identifikátor předplatného Azure, pod kterým byla vytvořena vaše továrna na data.
+- **LogAccessDomain**: Při zápisu souborů protokolu zadejte pověření domény pro přístup ke složce protokolu v cestě UNC, což je vyžadováno při zadání **logpath** a **loglevel** není **null**.
+- **LogAccessPassword**: Zadejte pověření hesla pro přístup ke složce protokolu v cestě UNC při zápisu souborů protokolu, což je vyžadováno při **logpath** je zadán a **LogLevel** není **null**.
+- **LogAccessUserName**: Zadejte pověření uživatelského jména pro přístup ke složce protokolu v cestě UNC při zápisu souborů protokolu, což je vyžadováno při zadání **LogPath** a **LogLevel** není **null**.
+- **LogLevel**: Zadejte vybraný obor protokolování z předdefinované **null**, **Basic**, **Verbose**nebo **Performance** možnosti pro spuštění balíčku na Azure-SSIS Ir.
+- **LogPath**: Zadejte cestu UNC složky protokolu, do které jsou zapsány soubory protokolu z provádění balíčků na Azure-SSIS IR.
+- **PackageAccessDomain**: Zadejte pověření domény pro přístup k balíčkům v jejich cestě UNC, která je určena při vyvolání AzureDTExec.
+- **PackageAccessPassword**: Zadejte pověření hesla pro přístup k balíčkům v jejich cestě UNC, která je zadána při vyvolání AzureDTExec.
+- **PackageAccessUserName**: Zadejte přihlašovací údaje uživatelského jména pro přístup k balíčkům v cestě UNC, která je určena při vyvolání AzureDTExec.
 
 Chcete-li ukládat balíčky a soubory protokolu v souborových systémech nebo sdílených sporeh souborů v místním prostředí, připojte zařízení Azure-SSIS IR k virtuální síti připojené k místní síti, aby mohla načítat balíčky a zapisovat soubory protokolu. Další informace najdete [v tématu Připojení azure-SSIS IR k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
 
@@ -92,7 +92,7 @@ Vyvolání AzureDTExec nabízí podobné možnosti jako vyvolání dtexec. Dalš
 
 ## <a name="next-steps"></a>Další kroky
 
-Po jedinečné kanály s spustit balíček SSIS aktivity v nich jsou generovány a spustit po vyvolání AzureDTExec, mohou být sledovány na portálu datové továrny. Další informace naleznete [v tématu Spuštění balíčků SSIS jako aktivit y data factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Po jedinečné kanály s spustit balíček SSIS aktivity v nich jsou generovány a spustit při vyvolání AzureDTExec, mohou být sledovány na portálu Data Factory. Aktivační události data factory jim můžete také přiřadit, pokud je chcete organizovat nebo plánovat pomocí data factory. Další informace naleznete [v tématu Spuštění balíčků SSIS jako aktivit y data factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 
 > [!WARNING]
 > Vygenerované kanálu se očekává, že bude použit pouze AzureDTExec. Jeho vlastnosti nebo parametry se mohou v budoucnu změnit, takže je neupravujte ani znovu nepoužívejte pro jiné účely. Změny může přerušit AzureDTExec. Pokud k tomu dojde, odstraňte kanál. AzureDTExec generuje nový kanál při příštím vyvolání.

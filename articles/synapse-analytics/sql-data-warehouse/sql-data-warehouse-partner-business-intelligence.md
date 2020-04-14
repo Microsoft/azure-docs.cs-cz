@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0994e1af8ca6deccbe6224625a5320fb195a10a1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 1a026cc241eb372e15f2600e52ec53a46efb1024
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586504"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256004"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Partneři azure synapse analytics business intelligence
 
@@ -37,7 +37,7 @@ Chcete-li vytvořit kompletní řešení datového skladu pomocí fondu Synapse 
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Pomocí aplikace pro vizualizaci dat, kterou může používat kdokoli, můžete využít zjišťování přehledů. S Qlik Sense může každý ve vaší organizaci snadno vytvářet flexibilní interaktivní vizualizace a činit smysluplná rozhodnutí. |[Stránka produktu](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/) |
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense je full-stack Business Intelligence software, který je dodáván s nástroji, které podnik potřebuje k analýze a vizualizaci dat: vysoce výkonná analytická databáze, schopnost připojit se k více zdrojům, jednoduché extrakce dat (ETL) a webové vizualizace dat. Začněte analyzovat a vizualizovat velké datové sady pomocí SiSense BI a Analytics ještě dnes. |[Stránka produktu](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Samoobslužná analýza tableau pomáhá komukoli v reálném zobrazení a pochopení jejich dat napříč mnoha druhy dat od plochých souborů po databáze. Tableau má nativní, optimalizovaný konektor do fondu SYNApse SQL, který podporuje živé údaje i analýzy v paměti. |[Stránka produktu](https://www.tableau.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
-| ![Targit (Fr.)](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Rozhodovací sada)**<br>Targit Decision Suite poskytuje platformu BI a Analytics, která poskytuje řídicí panely v reálném čase, samoobslužné analýzy, uživatelsky přívětivé vytváření sestav, ohromující mobilní funkce a jednoduchou technologii zjišťování dat v jediném soudržném řešení. Targit dává společnostem odvahu jednat. |[Stránka produktu](https://www.targit.com/en/software/deployment/targitonazure)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
+| ![Targit (Fr.)](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Rozhodovací sada)**<br>Targit Decision Suite poskytuje platformu BI a Analytics, která poskytuje řídicí panely v reálném čase, samoobslužné analýzy, uživatelsky přívětivé vytváření sestav, ohromující mobilní funkce a jednoduchou technologii zjišťování dat v jediném soudržném řešení. Targit dává společnostem odvahu jednat. |[Stránka produktu](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
 | ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>Yellowfin je nejlépe hodnocený dodavatel Cloud BI pro ad hoc Reporting a dashboardy od společnosti BARC; Průzkum BI. Připojte se k fondu Synapse SQL a pak vytvářejte a sdílejte krásné sestavy a řídicí panely s oceňovanými funkcemi BI pro spolupráci a zjišťování polohy. |[Stránka produktu](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

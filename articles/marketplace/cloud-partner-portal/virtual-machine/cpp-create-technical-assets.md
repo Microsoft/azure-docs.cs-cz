@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: dsindona
-ms.openlocfilehash: 57f56a341cfc3db6a5f0664503809e6ab6cf3d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a62af1d8d751d36150c236280077cde8f6547385
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278020"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273966"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Vytvoření technických prostředků pro nabídku virtuálních strojů
+
+> [!IMPORTANT]
+> dubna 2020 začneme s přesouváním nabídky virtuálních strojů Azure do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření technických prostředků virtuálního počítače Azure](https://aka.ms/AzureVMTechAsset) a spravujte migrované nabídky.
 
 Tato část vás provede vytvořením a konfigurací technických prostředků pro nabídku virtuálního počítače (VM) pro Azure Marketplace.  Virtuální počítač obsahuje dvě součásti: virtuální pevný disk (VHD) řešení a volitelné přidružené datové disky.  
 
@@ -35,26 +38,26 @@ Je nutné nakonfigurovat operační systém virtuálního počítače, velikost 
 ## <a name="fundamental-technical-knowledge"></a>Základní technické znalosti
 
 Navrhování, vytváření a testování těchto prostředků vyžaduje čas a vyžaduje technické znalosti platformy Azure i technologií používaných k sestavení nabídky. Kromě domény řešení by váš technický tým měl mít znalosti o následujících technologiích společnosti Microsoft: 
--   Základní znalosti [služeb Azure](https://azure.microsoft.com/services/) 
--   Jak [navrhovat a navrhovat aplikace Azure](https://azure.microsoft.com/solutions/architecture/)
--   Pracovní znalosti virtuálních [počítačů Azure](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage) a Azure [Networking](https://azure.microsoft.com/services/?filter=networking)
--   Pracovní znalosti [Správce prostředků Azure](https://azure.microsoft.com/features/resource-manager/)
--   Pracovní znalosti [JSON](https://www.json.org/)
+-    Základní znalosti [služeb Azure](https://azure.microsoft.com/services/) 
+-    Jak [navrhovat a navrhovat aplikace Azure](https://azure.microsoft.com/solutions/architecture/)
+-    Pracovní znalosti virtuálních [počítačů Azure](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage) a Azure [Networking](https://azure.microsoft.com/services/?filter=networking)
+-    Pracovní znalosti [Správce prostředků Azure](https://azure.microsoft.com/features/resource-manager/)
+-    Pracovní znalosti [JSON](https://www.json.org/)
 
 
 ## <a name="suggested-tools"></a>Navrhované nástroje 
 
 Chcete-li spravovat virtuální diat a virtuální virtuální měna, zvolte jedno nebo obě následující skriptovací prostředí:
--   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
--   [Azure CLI](https://docs.microsoft.com/cli/azure)
+-    [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+-    [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 Kromě toho doporučujeme přidat do vývojového prostředí následující nástroje: 
 
--   [Průzkumník úložišť Azure](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [Kód visual studia](https://code.visualstudio.com/)
-    *   Rozšíření: [Nástroje Azure Správce prostředků](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Rozšíření: [Zkrášlení](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Rozšíření: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-    [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-    [Visual Studio Code](https://code.visualstudio.com/)
+    *    Rozšíření: [Nástroje Azure Správce prostředků](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *    Rozšíření: [Zkrášlení](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *    Rozšíření: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Doporučujeme také zkontrolovat dostupné nástroje na stránce [Nástroje pro vývojáře Azure](https://azure.microsoft.com/tools/) a pokud používáte Visual Studio, [tržiště Visual Studia](https://marketplace.visualstudio.com/).
 

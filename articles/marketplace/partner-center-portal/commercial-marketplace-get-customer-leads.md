@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: ce576d9825819770486197a6c39425adf6ac3208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275896"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252602"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Potenciální zákazníci vaší nabídky na marketplace
 
@@ -133,7 +133,7 @@ Cíl zájemců o objekt blob Azure už není podporovaný, takže vám chybí v�
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Obdržel(a) jsem e-mail od marketplace, proč nemohu najít zájemce v crm?
 
-Je možné, že e-mailová doména koncového uživatele pochází z .edu. Z důvodu ochrany osobních údajů nepředáváme osobní údaje z domény .edu. Odešlete lístek podpory prostřednictvím aka.ms/marketplacepublishersupport.
+Je možné, že e-mailová doména koncového uživatele pochází z .edu. Z důvodu ochrany osobních údajů nepředáváme soukromé identifikovatelné informace z domény .edu. Odešlete lístek podpory prostřednictvím aka.ms/marketplacepublishersupport.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Nakonfiguroval jsem Azure Table jako cíl pro potenciální zákazníky, jak můžu zobrazit zájemce?
 
@@ -149,13 +149,17 @@ Zkontrolujte, zda je formulář "web pro zájemce" povinným polem založeným n
 
 ### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Byl tam problém s mým hlavním cílem, a já jsem vynechal některé vede. Mohu si je nechat poslat e-mailem?
 
-Vzhledem k zásadám pii (private identifiable information) nemůžeme sdílet informace o potenciálních zákaznících prostřednictvím nezabezpečených e-mailů.
+Vzhledem k zásadám pro identifikaci soukromých informací nemůžeme sdílet informace o potenciálních zákaznících prostřednictvím nezabezpečených e-mailů.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Nakonfiguroval jsem Azure Table jako cíl pro potenciální zákazníky, kolik to bude stát?
 
 Data olověné genje nízká (<1 GB pro téměř všechny vydavatele). Náklady budou záviset na počtu přijatých zájemců, pokud bude za měsíc přijato 1 000 zájemců, bude to stát kolem 50 centů. Další informace o cenách úložiště najdete v [tématu ceny za úložiště](https://azure.microsoft.com/pricing/details/storage/).
 
 Pokud vaše otázka stále není zodpovězena, kontaktujte podporu prostřednictvím aka.ms/marketplacepublishersupport a pak vyberte **možnost "vytvoření nabídky"** → **typ nabídky** → **"konfigurace správy potenciálních zákazníků".** 
+
+### <a name="i-am-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-who-to-receive-these-emails"></a>Dostávám e-mailová oznámení, když jsou přijati noví zákazníci zájemci. Jak mohu nakonfigurovat, kdo bude tyto e-maily dostávat?
+
+Získejte přístup ke své nabídce v Centru partnerů a přejděte na stránku **Nastavení nabídky** ->**úpravy** **správy** -> zájemců . Aktualizujte e-mailové adresy v poli **Kontaktní e-mail.**
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: e8143f33aacbc68653d19ffb72e88af447f8cc40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2734bc0868584f9d02147abb953458bbcdec205e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288848"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273099"
 ---
 # <a name="virtual-machine-support-tab"></a>Karta Podpora virtuálního počítače
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky virtuálního počítače Azure](https://aka.ms/CreateAzureVMoffer) ke správě migrovaných nabídek.
 
 Karta **Podpora** na stránce **Nová nabídka** umožňuje poskytovat technické a uživatelské zdroje podpory pro vaši nabídku.  Je rozdělena do tří oblastí: **Inženýrské ,** **Zákaznická podpora**a **Adresy URL podpory**.
 

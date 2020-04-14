@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 09569be88daa6295834e58da6b51656d0438bed4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74976974"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270923"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videí a přepisů
 
@@ -82,7 +82,7 @@ Třída `Program` v souboru `Program.cs` je hlavní vstupní bod do aplikace mod
 Pokud nejsou přítomné žádné argumenty příkazového řádku, `Main()` zavolá metodu `GetUserInputs()`. Tato metoda vyzve uživatele, aby zadal cestu k jedinému souboru videa a určil, jestli se má vygenerovat přepis textu.
 
 > [!NOTE]
-> Konzolová aplikace používá [rozhraní API Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) ke generování přepisů ze zvukové stopy nahraného videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
+> Konzolová aplikace používá [rozhraní API Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) ke generování přepisů ze zvukové stopy nahraného videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/docs/Web/API/WebVTT_API).
 
 ### <a name="initialize-and-processvideo-methods"></a>Metody Initialize a ProcessVideo
 
@@ -223,7 +223,7 @@ Výsledek úlohy moderování videa (viz [rychlý start moderování videa](vide
 Přepis zvuku z videa se vytvoří také při nastavení příznaku `GenerateVTT`.
 
 > [!NOTE]
-> Konzolová aplikace používá [rozhraní API Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) ke generování přepisů ze zvukové stopy nahraného videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
+> Konzolová aplikace používá [rozhraní API Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) ke generování přepisů ze zvukové stopy nahraného videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/docs/Web/API/WebVTT_API).
 
 ## <a name="create-a-human-review"></a>Vytvoření lidské recenze
 

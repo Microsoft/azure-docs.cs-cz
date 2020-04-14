@@ -1,5 +1,5 @@
 ---
-title: Přibližné hledání
+title: Vyhledávání přibližných shod
 titleSuffix: Azure Cognitive Search
 description: Implementujte prostředí vyhledávání "máte na mysli" k automatické opravě chybně napsaného výrazu nebo překlepu.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 95f6befa7e97984ad64a3ffb2a9b91d343945cbb
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81000658"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262430"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Přibližné hledání pro opravu překlepů a překlepů
 
@@ -71,7 +71,7 @@ V Azure Cognitive Search, kromě termínu a vzdálenosti (maximálně 2) neexist
 > [!NOTE]
 > Během zpracování dotazů fuzzy dotazy neprocházejí [lexikální analýzy](search-lucene-query-architecture.md#stage-2-lexical-analysis). Vstup dotazu je přidán přímo do stromu dotazu a rozbalen, aby se vytvořil graf termínů. Jediná provedená transformace je nižší kryt.
 
-## <a name="how-to-test-fuzzy-search"></a>Jak otestovat fuzzy vyhledávání
+## <a name="testing-fuzzy-search"></a>Testování přibližné vyhledávání
 
 Pro jednoduché testování doporučujeme [Průzkumník a hledání](search-explorer.md) nebo [Pošťák](search-get-started-postman.md) pro iterace přes výraz dotazu. Oba nástroje jsou interaktivní, což znamená, že můžete rychle projít více variant termínu a vyhodnotit odpovědi, které se vrátí.
 

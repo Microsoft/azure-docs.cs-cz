@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: b55c351927a56afce697d07f41bfbe668144d68d
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ce9919a0b0f614e427c12ee3e3fbda0be46470ea
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475518"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273303"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -22,6 +22,54 @@ V tomto článku se dozvíte o vydáních Azure Machine Learning.  Úplný refer
 
 Podívejte se [na seznam známých problémů,](resource-known-issues.md) kde se dozvíte o známých chybách a řešeních.
 
+## <a name="2020-04-13"></a>2020-04-13
+
+### <a name="azure-machine-learning-sdk-for-python-v130"></a>Azure Machine Learning SDK pro Python v1.3.0
+
++ **Opravy a vylepšení chyb**
+  + **azureml-automl-core**
+    + Přidána další telemetrie kolem operací po tréninku.
+    + Urychluje automatické školení ARIMA pomocí podmíněného součtu čtverců (CSS) školení pro řadu déle než 100. Všimněte si, že použitá délka je uložena jako konstantní ARIMA_TRIGGER_CSS_TRAINING_LENGTH w/v třídě TimeSeriesInternal na adrese /src/azureml-automl-core/azureml/automl/core/shared/constants.py
+    + Bylo vylepšeno protokolování prognostických běhů uživatele, nyní se v protokolu zobrazí další informace o tom, jaká fáze je aktuálně spuštěna.
+    + Zakázáno target_rolling_window_size nastavena na hodnoty nižší než 2
+  + **azureml-automl-runtime**
+    + Byla vylepšena chybová zpráva zobrazená při nalezení duplicitních časových razítek.
+    + Nepovolené target_rolling_window_size nastaveny na hodnoty nižší než 2.
+    + Opravena chyba imputace zpoždění. Problém byl způsoben nedostatečným počtem pozorování potřebných k sezónnímu rozkladu série. "De-seasonalized" data se používá k výpočtu částečné funkce autokorelace (PACF) k určení délky zpoždění.
+    + Povolené účelové přizpůsobení účelu sloupce pro prognózování úkolů pomocí konfigurace featurization. Nyní jsou podporovány číselné a kategorické jako účel sloupce pro prognostické úlohy.
+    + Povolené přetažení sloupce featurization přizpůsobení pro prognózování úkolů podle featurization config.
+    + Povolené přizpůsobení imputace pro prognózování úkolů pomocí konfigurace featurization. Konstantní hodnota imputace pro cílový sloupec a střední, medián, most_frequent a konstantní hodnota imputace pro trénovací data jsou nyní podporovány.
+  + **azureml-contrib-pipeline-steps**
+    + Přijmout názvy výpočetních výpočtů řetězců, které mají být předány parallelrunconfig
+  + **azureml-core**
+    +  Přidáno rozhraní API Environment.clone(new_name) pro vytvoření kopie objektu Environment
+    +  Environment.docker.base_dockerfile přijímá cestu souboru. Pokud je možné přeložit soubor, obsah bude přečten do vlastnosti prostředí base_dockerfile
+    + Automatické resetování vzájemně se vylučujících hodnot pro base_image a base_dockerfile, když uživatel ručně nastaví hodnotu v prostředí Environment.docker
+    +  Datová sada: opraveno selhání stahování datové sady, pokud datová cesta obsahující znaky unicode
+    +  Datová sada: vylepšený mechanismus ukládání do mezipaměti datové sady, aby respektoval minimální požadavek na místo na disku ve službě Azure Machine Learning Compute, což zabrání tomu, aby byl uzel nepoužitelný a došlo ke zrušení úlohy.
+    + Přidán příznak user_managed v RSection, který označuje, zda je prostředí spravované uživatelem nebo AzureML.
+    + Datová sada: přidáme index pro sloupec časových řad, když přistupujete k datové sadě časových řad jako datové rámce pandy, které se používají k urychlení přístupu k přístupu k datům založeným na časových řadách.  Dříve byl index dostal stejný název jako sloupec časového razítka, matoucí uživatelé, o kterých je skutečný sloupec časového razítka a který je index. Nyní neposkytujeme žádný konkrétní název indexu, protože by neměl být používán jako sloupec. 
+  + **azureml-dataprep**
+    + Opraven problém s ověřováním datových sad v suverénním cloudu
+    + Opravena `Dataset.to_spark_dataframe` chyba pro datové sady vytvořené z datových úložišť Azure PostgreSQL
+  + **azureml-interpret**
+    + Přidáno globální skóre do vizualizace, pokud jsou hodnoty místnídůležitosti řídké
+    + Aktualizováno azureml-interpret ovat použít interpret-community 0.9.*
+    + Opraven problém se stahováním, které mělo řídké vyhodnocovací údaje
+    + Přidána podpora řídkého formátu vysvětlujícího objektu v automatické mlze
+  + **azureml-potrubí-jádro**
+    + Podpora ComputeInstance jako výpočetní cíl v kanálech
+  + **azureml-train-automl-client**
+    + Přidána další telemetrie kolem operací po tréninku.
+    + Opravena regrese v časném zastavení
+    + Zastaralé azureml.dprep.Dataflow jako platný typ pro vstupní data.
+    +  Změna výchozího časového limitu experimentu AutoML na 6 dní.
+  + **azureml-train-automl-runtime**
+    + Přidána další telemetrie kolem operací po tréninku.
+    + přidána podpora automatického automatického ml e2e
+  + **azureml-opendatasets**
+    + Přidána další telemetrie pro monitorování služeb.
+    + Povolení frontdooru pro objekt blob pro zvýšení stability 
 ## <a name="2020-03-23"></a>2020-03-23
 
 ### <a name="azure-machine-learning-sdk-for-python-v120"></a>Azure Machine Learning SDK pro Python v1.2.0
@@ -1736,7 +1784,7 @@ Azure Machine Learning Compute se dá vytvořit v Pythonu pomocí portálu Azure
   * Inspektor počtu hodnot nyní může zobrazit více než 1000 jedinečných hodnot
   * Náhodné rozdělení již selže, pokud původní tok dat nemá název
 
-+ **Více informací**
++ **Další informace**
   * [Sada SDK pro přípravu dat Azure Machine Learning](https://aka.ms/data-prep-sdk)
 
 ### <a name="docs-and-notebooks"></a>Dokumenty a poznámkové bloky

@@ -3,8 +3,8 @@ title: Použití rozhraní API pro správu služeb (Python) – průvodce funkce
 description: Naučte se programově provádět běžné úlohy správy služeb z Pythonu.
 services: cloud-services
 documentationcenter: python
-author: lmazuel
-manager: wpickett
+author: tanmaygore
+manager: vashan
 editor: ''
 ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
 ms.service: cloud-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: lmazuel
-ms.openlocfilehash: ae44ce77ce480cc1bc56ead5547e003d7d4bb39c
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.author: tagore
+ms.openlocfilehash: 135dd92f7af4397f2053ea0bdc15d98dfad93914
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547582"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253352"
 ---
 # <a name="use-service-management-from-python"></a>Použití správy služeb z Pythonu
 Tato příručka ukazuje, jak programově provádět běžné úlohy správy služeb z Pythonu. Třída **ServiceManagementService** v [azure sdk pro Python](https://github.com/Azure/azure-sdk-for-python) podporuje programový přístup k velké části funkcí souvisejících se správou služeb, která je dostupná na webu Azure [Portal][management-portal]. Pomocí této funkce můžete vytvářet, aktualizovat a odstraňovat cloudové služby, nasazení, služby správy dat a virtuální počítače. Tato funkce může být užitečná při vytváření aplikací, které potřebují programový přístup ke správě služeb.

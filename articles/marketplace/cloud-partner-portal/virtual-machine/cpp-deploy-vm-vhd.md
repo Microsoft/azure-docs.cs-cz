@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: dsindona
-ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f13e4066137e0d76612040d9f6e5ff3d0aa399c8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277935"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273896"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Nasazení virtuálního počítače z virtuálních dispon
+
+> [!IMPORTANT]
+> dubna 2020 začneme s přesouváním nabídky virtuálních strojů Azure do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření technických prostředků virtuálního počítače Azure](https://aka.ms/AzureVMTechAsset) a spravujte migrované nabídky.
 
 Tato část vysvětluje, jak nasadit virtuální počítač (VM) z virtuálního pevného disku (VHD) nasazeného v Azure.  Obsahuje seznam požadovaných nástrojů a jejich použití k vytvoření image virtuálního počítače uživatele a následné nasazení do Azure pomocí skriptů PowerShellu.
 

@@ -3,8 +3,8 @@ title: Rozšíření virtuálního počítače o agenta Azure Network Watcher pr
 description: Nasazení agenta sledování sítě ve virtuálním počítači se systémem Windows pomocí rozšíření virtuálního počítače
 services: virtual-machines-windows
 documentationcenter: ''
-author: gurudennis
-manager: amku
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
-ms.author: dennisg
-ms.openlocfilehash: 998e160edce25b9d466a1db090abcefeb7870172
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: f226e240a59b33c2913919495410b1a4923b4902
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073685"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261665"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače agenta sledování sítě pro Windows
 

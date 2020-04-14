@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 373fc2829e599d0989b59c6386757c8f5f3e1d66
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76984530"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251720"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure Time Series Insights
 
@@ -102,9 +102,9 @@ Tato část popisuje běžné hlavičky a parametry požadavků HTTP, které se 
 > [!TIP]
 > Přečtěte si [odkaz na rozhraní API Azure REST,](https://docs.microsoft.com/rest/api/azure/) kde se dozvíte další informace o tom, jak využívat rozhraní REST API, provádět požadavky HTTP a zpracovávat odpovědi HTTP.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
-Chcete-li provádět ověřené dotazy proti [api maty REST Časové řady Insights](https://docs.microsoft.com/rest/api/time-series-insights/), musí být platný nosný token OAuth 2.0 předán v [hlavičce autorizace](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) pomocí klienta REST podle vašeho výběru (Postman, JavaScript, C#). 
+Chcete-li provádět ověřené dotazy proti [api maty REST Časové řady Insights](https://docs.microsoft.com/rest/api/time-series-insights/), musí být platný nosný token OAuth 2.0 předán v [hlavičce autorizace](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) pomocí klienta REST podle vašeho výběru (Postman, JavaScript, C#). 
 
 > [!TIP]
 > Přečtěte si hostovizované Azure Time Series Insights [klienta SDK ukázkové vizualizace](https://tsiclientsample.azurewebsites.net/) se dozvíte, jak ověřit pomocí časové řady Insights API programově pomocí [JavaScript Client SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) spolu s grafy a grafy.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 371c2186d44469a22b138255fb513761a9be4437
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 222f5647248d27c3bdfabd0feaeb66dd9f543652
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478222"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257721"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Nastavení testovacího prostředí pro výuku datové vědy pomocí pythonových a jupyterových poznámkových bloků
 
@@ -37,7 +37,7 @@ Povolte nastavení popsaná v následující tabulce pro účet testovacího pro
 | Obrázek tržiště | Povolte virtuální počítač pro datové vědy – bitovou kopii [Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) pro použití v rámci vašeho účtu testovacího prostředí. |
 
 >[!TIP]
->Tento článek se zaměří na konfiguraci počítače se šablonami, který používá operační systém Windows Server.  Je také možné nastavit třídu datové vědy s pythonovými a jupyterovými notebooky pomocí iniciací [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) z Azure Marketplace.
+>Tento článek se zaměří na konfiguraci počítače se šablonami, který používá operační systém Windows Server.  Je také možné nastavit třídu datové vědy s pythonovými a jupyterovými notebooky pomocí iniciací [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) z Azure Marketplace.
 
 ### <a name="lab-settings"></a>Nastavení laboratoře
 

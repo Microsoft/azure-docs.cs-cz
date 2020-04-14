@@ -5,27 +5,29 @@ author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.devlang: php
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c73fb55e485d0c92d27eac2ac197a81337b9d5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016795"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272470"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Konfigurace PHP ve službě Azure App Service
 
 ## <a name="introduction"></a>Úvod
 
-Tato příručka ukazuje, jak nakonfigurovat vestavěný běh ový čas PHP pro webové aplikace, mobilní back-endy a aplikace rozhraní API ve [službě Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), poskytnout vlastní běhový čas PHP a povolit rozšíření. Chcete-li používat službu App Service, zaregistrujte si [bezplatnou zkušební verzi]. Chcete-li získat co nejvíce z této příručky, měli byste nejprve vytvořit aplikaci PHP v App Service.
+Tato příručka ukazuje, jak nakonfigurovat vestavěný běh ový čas PHP pro webové aplikace a aplikace rozhraní API ve [službě Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), poskytnout vlastní běhový čas PHP a povolit rozšíření. Chcete-li používat službu App Service, zaregistrujte si [bezplatnou zkušební verzi]. Chcete-li získat co nejvíce z této příručky, měli byste nejprve vytvořit aplikaci PHP v App Service.
 
 ## <a name="how-to-change-the-built-in-php-version"></a>Postup: Změna vestavěné verze PHP
 
-Ve výchozím nastavení je PHP 5.6 nainstalováno a okamžitě k dispozici pro použití při vytváření aplikace App Service. Nejlepší způsob, jak zobrazit dostupnou revizi vydání, její výchozí konfiguraci a povolené rozšíření, je nasadit skript, který volá funkci [phpinfo().]
+Při vytváření webové aplikace si můžete vybrat verzi PHP, která bude nakonfigurována. Aktuální informace o aktuálně podporovaných verzích [najdete v tématu PHP on App Service.](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md)
 
-Verze PHP 7.0 a PHP 7.2 jsou také k dispozici, ale ve výchozím nastavení nejsou povoleny. Chcete-li aktualizovat verzi PHP, postupujte podle jedné z těchto metod:
+Chcete-li zkontrolovat existující runtime verzi aplikace, můžete nasadit skript, který volá funkci [phpinfo().]
+
+Chcete-li aktualizovat verzi PHP, postupujte podle jedné z těchto metod:
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -49,7 +51,7 @@ Chcete-li používat rozhraní příkazového řádku Azure, musíte do počíta
 
 2. Nastavte verzi PHP pro aplikaci.
 
-        az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
+        az webapp config set --php-version {5.6 | 7.2 | 7.3} --name {app-name} --resource-group {resource-group-name}
 
 3. Verze PHP je nyní nastavena. Můžete potvrdit tato nastavení:
 
@@ -79,7 +81,7 @@ Jako alternativu k `.user.ini` použití souboru můžete použít funkci [ini_s
 
 1. Přidání nastavení aplikace do aplikace `PHP_INI_SCAN_DIR` s klíčem a hodnotou`d:\home\site\ini`
 1. Vytvořte `settings.ini` soubor pomocí konzoly&lt;Kudu&gt;(http:// název `d:\home\site\ini` webu .scm.azurewebsite.net) v adresáři.
-1. Přidejte nastavení `settings.ini` konfigurace do souboru pomocí stejné `php.ini` syntaxe, jakou byste použili v souboru. Pokud byste například chtěli `curl.cainfo` nasměrovat `*.crt` nastavení na soubor a nastavit nastavení wincache.maxfilesize `settings.ini` na 512 kM, soubor by obsahoval tento text:
+1. Přidejte nastavení `settings.ini` konfigurace do souboru pomocí stejné `php.ini` syntaxe, jakou byste použili v souboru. Pokud byste například chtěli `curl.cainfo` nasměrovat `*.crt` nastavení na soubor a nastavit nastavení wincache.maxfilesize `settings.ini` na 512 K, soubor by obsahoval tento text:
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: e272a95c5eb7d00b7c2169acb820ec8e4e8d9614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb879a9578a550e972ed7874a42cf389271abf47
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280044"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270294"
 ---
 # <a name="container-marketplace-tab"></a>Karta Tržiště kontejnerů
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek Azure Container do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky kontejneru Azure](https://aka.ms/CreateContainerOffer) ke správě migrovaných nabídek.
 
 Karta **Marketplace** na stránce **Nová nabídka** umožňuje poskytovat potenciálním zákazníkům marketingové, prodejní a právní informace a smlouvy a spravovat potenciální zákazníky generované z tržiště. Přidejte obsah specifický pro marketing do části **Přehled.**
 

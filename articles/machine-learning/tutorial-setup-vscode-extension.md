@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77604867"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272902"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Nastavení rozšíření kódu Azure Machine Learning Visual Studio
 
@@ -70,36 +70,36 @@ Teď, když jste se přihlásili do Azure pomocí přihlašovacích údajů úč
 1. Po rozšíření palety příkazů postupujte podle pokynů.
 
     1. Vyberte své předplatné Azure.
-    1. Vyberte **Vytvořit nový pracovní prostor Azure ML.**
-    1. Vyberte typ úlohy **tentenzifukum školení s jedním uzlovým písmem.**
-    1. Zadejte `train.py` jako skript trénovat. Jedná se o soubor, který obsahuje kód pro model strojového učení, který kategorizuje obrázky ručně psaných číslic.
-    1. Zadejte následující balíčky jako požadavky ke spuštění.
-
-        ```text
-        pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-        ```
+    1. V seznamu prostředí vyberte **soubor závislostí Conda**.
+    1. Stisknutím **klávesy Enter** procházejte soubor závislostí Conda. Tento soubor obsahuje závislosti potřebné ke spuštění skriptu. V tomto případě je soubor `env.yml` závislostí `mnist-vscode-docs-sample` soubor uvnitř adresáře.
+    1. Stisknutím **klávesy Enter** procházejte soubor školicího skriptu. Jedná se o soubor, který obsahuje kód pro model strojového učení, který kategorizuje obrázky ručně psaných číslic. V tomto případě skript trénovat model `train.py` je soubor `mnist-vscode-docs-sample` uvnitř adresáře.
 
 1. V tomto okamžiku se v textovém editoru zobrazí konfigurační soubor podobný tomu níže. Konfigurace obsahuje informace potřebné ke spuštění úlohy školení, jako je soubor, který obsahuje kód pro trénování modelu a všechny závislosti Pythonu zadané v předchozím kroku.
 
     ```json
     {
-        "workspace": "WS01311608",
-        "resourceGroup": "WS01311608-rg1",
+        "workspace": "WS04131142",
+        "resourceGroup": "WS04131142-rg1",
         "location": "South Central US",
-        "experiment": "WS01311608-exp1",
+        "experiment": "WS04131142-exp1",
         "compute": {
-            "name": "WS01311608-com1",
+            "name": "WS04131142-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS01311608-com1-rc1",
-            "condaDependencies": [
-                "python=3.6.2",
-                "tensorflow=1.15.0"
-            ],
-            "pipDependencies": [
-                "azureml-defaults"
-            ]
+            "filename": "WS04131142-com1-rc1",
+            "environment": {
+                "name": "WS04131142-env1",
+                "conda_dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip"
+                ],
+                "pip_dependencies": [
+                    "azureml-defaults"
+                ],
+                "environment_variables": {}
+            }
         }
     }
     ```

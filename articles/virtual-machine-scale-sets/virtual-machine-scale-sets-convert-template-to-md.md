@@ -2,19 +2,19 @@
 title: Převod šablony škálovací sady pro použití spravovaného disku
 description: Převeďte šablonu škálovací sady virtuálních počítačů Azure Resource Manager u spravované ho disku na šablonu škálovací sady spravovaných disků.
 keywords: škálovací sady virtuálních počítačů
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 5/18/2017
-ms.author: manayar
-ms.openlocfilehash: 4ab5c48c6673a2353c70fe808d09aa15675e0424
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 79fafa8344312294f6df107b88c9b7c571af1969
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278127"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270651"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Převedení šablony škálovací sady na šablonu škálovací sady spravovaného disku
 
@@ -119,7 +119,7 @@ V konfiguraci škálovací sady neexistuje žádná explicitní vlastnost, zda c
 
 ## <a name="data-disks"></a>Datové disky
 
-S výše uvedenými změnami používá škálovací sada spravované disky pro disk operačního systému, ale co datové disky? Chcete-li přidat datové disky, přidejte vlastnost "dataDisks" pod "storageProfile" na stejné úrovni jako "osDisk". Hodnota vlastnosti je json seznam objektů, z nichž každý má vlastnosti "lun" (které musí být jedinečné pro datový disk na virtuálním počítači), "createOption" ("prázdný" je aktuálně jedinou podporovanou možností) a "diskSizeGB" (velikost disku v gigabajtů; musí být větší než větší než větší než 0 a menší než 1024) jako v následujícím příkladu:
+S výše uvedenými změnami používá škálovací sada spravované disky pro disk operačního systému, ale co datové disky? Chcete-li přidat datové disky, přidejte vlastnost "dataDisks" pod "storageProfile" na stejné úrovni jako "osDisk". Hodnota vlastnosti je json seznam objektů, z nichž každý má vlastnosti "lun" (které musí být jedinečné pro datový disk na virtuálním počítači), "createOption" ("prázdný" je aktuálně jedinou podporovanou možností) a "diskSizeGB" (velikost disku v gigabajtů; musí být větší než 0 a menší než 1024) jako v následujícím příkladu:
 
 ```
 "dataDisks": [

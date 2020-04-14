@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297584"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273286"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Uchování souborů v prostředí Azure Cloud Shell
 Cloud Shell využívá úložiště souborů Azure k uchování souborů napříč relacemi. Při počátečním spuštění vás prostředí Cloud Shell vyzve k přidružení nové nebo existující sdílené složky, aby se udály soubory napříč relacemi.
@@ -50,7 +50,7 @@ Pomocí rozšířené možnosti můžete přidružit existující prostředky. P
 Po zobrazení výzvy k nastavení úložiště zobrazte další **možnosti výběrem možnosti Zobrazit upřesňující nastavení.** Filtr možností nabytého úložiště pro místně redundantní úložiště (LRS), geograficky redundantní úložiště (GRS) a účty zónově redundantního úložiště (ZRS). 
 
 > [!NOTE]
-> Použití účtů úložiště GRS nebo ZRS se doporučuje pro další odolnost pro záložní sdílenou složku. Jaký typ redundance závisí na vašich cílech a cenových preferencích. [Přečtěte si další informace o možnostech replikace pro účty Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
+> Použití účtů úložiště GRS nebo ZRS se doporučuje pro další odolnost pro záložní sdílenou složku. Jaký typ redundance závisí na vašich cílech a cenových preferencích. [Přečtěte si další informace o možnostech replikace pro účty Azure Storage](../storage/common/storage-redundancy.md).
 
 ![Nastavení skupiny prostředků](media/persisting-shell-storage/advanced-storage.png)
 
@@ -169,5 +169,5 @@ Poznámka: Pokud potřebujete definovat funkci v souboru a volat ji z rutin pros
 
 ## <a name="next-steps"></a>Další kroky
 [Rychlý start prostředí cloud](quickstart.md) <br>
-[Informace o úložišti Souborů Microsoft Azure](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
+[Informace o úložišti Souborů Microsoft Azure](../storage/files/storage-files-introduction.md) <br>
 [Informace o značkách úložiště](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

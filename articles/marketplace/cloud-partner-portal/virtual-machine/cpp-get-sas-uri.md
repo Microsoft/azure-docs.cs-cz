@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 6fe15fb18d8865911363a4696e44dd7fe1d90c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fdbc2a11bd963057b465a629757f2be51ae4061
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277799"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273847"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Získání identifikátoru URI sdíleného přístupového podpisu pro bitovou kopii virtuálního počítače
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Získat identifikátor URI sdíleného přístupového podpisu pro bitovou kopii virtuálního počítače](https://aka.ms/GetSASURI) a spravovat migrované nabídky.
 
 Během procesu publikování je nutné zadat jednotný identifikátor prostředku (URI) pro každý virtuální pevný disk (VHD) přidružený k vašim skum. Společnost Microsoft potřebuje přístup k těmto virtuálním serverům během procesu certifikace. Tento článek vysvětluje, jak generovat identifikátor URI sdílený přístupový podpis (SAS) pro každý virtuální pevný disk. Tento identifikátor URI zadáte na kartě **SKU** na portálu partnerů cloudu.
 

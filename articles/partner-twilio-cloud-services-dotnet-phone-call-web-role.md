@@ -3,7 +3,7 @@ title: Jak telefonovat z Twilio (.NET) | Dokumenty společnosti Microsoft
 description: Přečtěte si, jak telefonovat a odesílat SMS zprávy pomocí služby Twilio API v Azure. Ukázky kódu napsané v rozhraní .NET.
 services: ''
 documentationcenter: .net
-author: georgewallace
+author: mimckitt
 editor: ''
 ms.assetid: 789185ad-69dc-4e9e-a936-42e0a25315c8
 ms.service: cloud-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
-ms.author: gwallace
-ms.openlocfilehash: 27b4f3cdd8f622a97cfc0853f79bb77d76673dcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: df1f5e1c21c28fa8c1fcdef6b2278fb92014a3b1
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69636138"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272555"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Jak volat pomocí Twilio ve webové roli v Azure
 Tato příručka ukazuje, jak pomocí Twilio volat z webové stránky hostované v Azure. Výsledná aplikace vyzve uživatele k volání s daným číslem a zprávou, jak je znázorněno na následujícím snímku obrazovky.
@@ -150,7 +150,7 @@ Volání je provedeno a zobrazí se koncový bod Twilio, verze rozhraní API a s
 Více informací o TwiML [https://www.twilio.com/docs/api/twiml][twiml]naleznete na adrese . Více informací &lt;&gt; o Say a dalších slovestcích Twilio naleznete na adrese [https://www.twilio.com/docs/api/twiml/say][twilio_say].
 
 ## <a name="next-steps"></a><a id="nextsteps"></a>Další kroky
-Tento kód byl k dispozici ukázat základní funkce pomocí Twilio v ASP.NET webové role v Azure. Před nasazením do Azure v produkčním prostředí můžete přidat další zpracování chyb nebo jiné funkce. Například:
+Tento kód byl k dispozici ukázat základní funkce pomocí Twilio v ASP.NET webové role v Azure. Před nasazením do Azure v produkčním prostředí můžete přidat další zpracování chyb nebo jiné funkce. Příklad:
 
 * Místo použití webového formuláře můžete k ukládání telefonních čísel a textu volání použít azure blob storage nebo instanci Azure SQL Database. Informace o používání objektů BLOB v Azure najdete v [tématu Jak používat službu úložiště objektů Blob Azure v rozhraní .NET][howto_blob_storage_dotnet]. Informace o použití databáze SQL najdete [v tématu Použití azure sql database v aplikacích .NET][howto_sql_azure_dotnet].
 * Můžete použít `RoleEnvironment.getConfigurationSettings` k načtení ID účtu Twilio a ověřovací ho tokenu z nastavení konfigurace nasazení namísto pevného kódování hodnot ve formuláři. Informace o `RoleEnvironment` třídě naleznete v [tématu Microsoft.WindowsAzure.ServiceRuntime Namespace][azure_runtime_ref_dotnet].

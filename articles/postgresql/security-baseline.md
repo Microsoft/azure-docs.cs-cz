@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f83cee2fb1435252f34d1a64f531b5befef66ffb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4034759dc4f20649c15236b057e348966d72409e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289690"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261156"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Základ zabezpečení Azure pro databázi Azure pro postgreSQL single server
 
@@ -134,7 +134,7 @@ Principy využití výrobních značek pro Azure Database for PostgreSQL:https:/
 
 Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Ukázky zásad Azure pro sítě:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Ukázky zásad Azure pro sítě:https://docs.microsoft.com/azure/governance/policy/samples/
 
 Jak vytvořit Azure Blueprint:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -908,7 +908,7 @@ Jak zajistit ověřování trezoru klíčů se spravovanou identitou:https://doc
 
 **Pokyny:** Azure Database for PostgreSQL server podporuje ověřování Azure Active Directory (ve verzi Preview) pro přístup k databázím.  Při vytváření azure databáze pro postgresql server, zadáte pověření pro uživatele správce. Tento správce lze použít k vytvoření dalších uživatelů databáze.  
 
-Pro virtuální počítače Azure nebo webové aplikace spuštěné ve službě Azure App Service, které se používají k přístupu k serveru Azure Database for PostgreSQL, použijte identitu spravované služby ve spojení s Azure Key Vault k ukládání a načítání přihlašovacích údajů pro Azure Database pro PostgreSQL server. Ujistěte se, že je povoleno měkké odstranění trezoru klíčů.
+Pro virtuální počítače Azure nebo webové aplikace spuštěné ve službě Azure App Service, které se používají k přístupu k serveru Azure Database for PostgreSQL, použijte identitu spravované služby ve spojení s Azure Key Vault k ukládání a načítání přihlašovacích údajů pro server Azure Database for PostgreSQL. Ujistěte se, že je povoleno měkké odstranění trezoru klíčů.
 
 Pomocí spravovaných identit můžete poskytovat služby Azure s automaticky spravovanou identitou ve službě Azure Active Directory (AD). Spravované identity umožňuje ověření na libovolnou službu, která podporuje ověřování Azure AD, včetně trezoru klíčů, bez pověření ve vašem kódu.
 

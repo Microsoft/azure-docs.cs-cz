@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: fe1397d7ad00a2eb6e9fe04d8bfa50e49839fe34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15ccb1de2a9ce0072d032e624ead3b4d730763b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288780"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273048"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualizace existující nabídky virtuálních počítačů na Azure Marketplace
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky virtuálního počítače Azure](https://aka.ms/CreateAzureVMoffer) ke správě migrovaných nabídek.
 
 Tento článek vás provede různými aspekty aktualizace nabídky virtuálního počítače (VM) na [portálu partnerů cloudu](https://cloudpartner.azure.com/) a pak znovu publikuje nabídku. 
 

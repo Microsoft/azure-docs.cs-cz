@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 6ed5c509cf310b743e4ef52f411dfa34e5db09c1
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411611"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262906"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení widgetů Video Indexer u svých aplikací
 
@@ -186,7 +186,7 @@ Pokud používáte jiný přehrávač videa než Azure Media Player, musíte ru�
         </video>    
 
 2. Vložte widget Cognitive Insights.
-3. Implementujte komunikaci pro přehrávač prostřednictvím naslouchání události „zpráva“. Například:
+3. Implementujte komunikaci pro přehrávač prostřednictvím naslouchání události „zpráva“. Příklad:
 
         <script>
     
@@ -247,7 +247,7 @@ Všimněte si, že je tato možnost relevantní jenom v případech, když přeh
 
 Pokud vložíte přehrávač Video Indexeru, můžete zvolit velikost přehrávače zadáním velikosti prvku iframe.
 
-Například:
+Příklad:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
@@ -265,7 +265,7 @@ Ve výchozím nastavení začne přehrávač video přehrávat. můžete se rozh
 
 ## <a name="code-samples"></a>Ukázky kódů
 
-Podívejte se na [ukázky kódu](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets) úložiště, které obsahuje ukázky pro rozhraní API a widgety video indexeru:
+Podívejte se na [ukázky kódu](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) úložiště, které obsahuje ukázky pro rozhraní API a widgety video indexeru:
 
 | Soubor/složka                       | Popis                                |
 |-----------------------------------|--------------------------------------------|

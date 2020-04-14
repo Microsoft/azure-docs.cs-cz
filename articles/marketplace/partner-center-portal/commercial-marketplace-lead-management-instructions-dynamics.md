@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 8af6b3a451d20bcc9cab3fa4adb9643f82b85e49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3e35b6d19905e3c5262dfea3e52511510c9ffe
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288814"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252755"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Konfigurace správy potenciálních zákazníků pro Dynamics 365 pro customer engagement
 
@@ -180,6 +180,7 @@ Až budete připraveni nakonfigurovat informace o správě zájemců pro vaši n
     ![Podrobnosti o připojení – cíl zájemce](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
 4. Zadejte adresu URL instance Dynamics `https://contoso.crm4.dynamics.com` **365,** například .
+
 5. Vyberte metodu **ověřování**, Službu Azure Active Directory nebo Office 365. 
 6. Pokud jste vybrali službu Azure Active Directory, zadejte `23456052-aaaa-bbbb-8662-1234df56788f` **ID aplikace (klienta)** (například), **ID adresáře** `12345678-8af1-4asf-1234-12234d01db47`(příklad: ) a **tajný klíč klienta** (příklad: `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`).
 
@@ -188,6 +189,13 @@ Až budete připraveni nakonfigurovat informace o správě zájemců pro vaši n
 7. Pokud jste vybrali Office 365, zadejte **uživatelské jméno** (příklad: `contoso@contoso.onmicrosoft.com`) a Heslo (příklad: `P@ssw0rd`).
 
     ![Podrobnosti o připojení – uživatelské jméno](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+
+8. **Kontaktní e-mail** – Poskytněte e-maily lidem ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Můžete poskytnout více e-mailů tím, že je oddělíte středníkem.
+9. Vyberte **OK**.
+
+Chcete-li se ujistit, že jste se úspěšně připojili k cíli zájemce, klikněte na tlačítko ověřit. Pokud bude úspěšná, budete mít testovacího zájemce v cíli zájemce.
+
+![Správa zájemců – účet úložiště podrobností o připojení](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
 >[!Note]
 >Před přijetím zájemců o nabídku je nutné dokončit konfiguraci zbývající nabídky a publikovat ji.

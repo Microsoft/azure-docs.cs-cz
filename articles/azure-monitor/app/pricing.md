@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275942"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271110"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro službu Application Insights
 
@@ -28,6 +28,8 @@ Ceny pro [Azure Application Insights][start] je model s **průběžným platbou*
 
 [Za vícestupňové webové testy](../../azure-monitor/app/availability-multistep.md) se účtuje příplatek. Vícekrokové webové testy jsou webové testy, které provádějí posloupnost akcí. Neexistuje žádný samostatný poplatek za *ping testy* jedné stránky. Telemetrie z ping testů a vícekrokových testů se účtuje stejně jako ostatní telemetrie z vaší aplikace.
 
+Možnost Application Insights [povolit výstrahy na vlastní dimenze metriky](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) můžete také generovat dodatečné náklady, protože to může mít za následek vytvoření další chod metriky předběžné agregace. [Další informace] o protokolech založené a předem agregované metriky v Application Insights a o [cenách](https://azure.microsoft.com/pricing/details/monitor/) pro vlastní metriky Azure Monitoru.
+
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Odhad nákladů na správu aplikace
 
 Pokud ještě nepoužíváte Application Insights, můžete pomocí [cenové kalkulačky Azure Monitor](https://azure.microsoft.com/pricing/calculator/?service=monitor) odhadnout náklady na používání Application Insights. Začněte zadáním "Azure Monitor" do vyhledávacího pole a kliknutím na výslednou dlaždici Azure Monitor. Posuňte se dolů po stránce na Azure Monitor a v rozevíracím seznamu Typ vyberte Přehledy aplikací.  Zde můžete zadat počet GB dat, které očekáváte, že shromáždíte za měsíc, takže otázkou je, kolik dat bude Application Insights shromažďovat sledování vaší aplikace.
@@ -42,7 +44,7 @@ Pro sady SDK, které nepodporují adaptivní vzorkování, můžete použít [vz
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Zjistěte, z čeho podobní zákazníci sbírají
 
-Pokud v kalkulačce cen monitorování Azure pro přehledy aplikací povolíte funkci Odhad objemu dat na základě aktivity aplikace, můžete poskytnout vstupy o vaší aplikaci (požadavky za měsíc a zobrazení stránek za měsíc, v případě, že budete shromažďovat telemetrii na straně klienta) a pak vám kalkulačka řekne medián a 90% množství dat shromážděných podobnými aplikacemi. Tyto aplikace pokrývají rozsah konfigurace Application Insights (např. některé mají výchozí [vzorkování](../../azure-monitor/app/sampling.md), některé nemají vzorkování atd.), takže stále máte ovládací prvek pro snížení objemu dat, která ingestujete hluboko pod střední úroveň pomocí vzorkování. Ale to je výchozí bod pochopit, co ostatní, podobné zákazníci vidí.
+Pokud v kalkulačce cen monitorování Azure pro application insights povolíte funkci Odhad objemu dat na základě aktivity aplikace, můžete poskytnout vstupy o vaší aplikaci (požadavky za měsíc a zobrazení stránek za měsíc, v případě, že budete shromažďovat telemetrii na straně klienta) a pak vám kalkulačka sdělí střední a 90% množství dat shromážděných podobnými aplikacemi. Tyto aplikace pokrývají rozsah konfigurace Application Insights (např. některé mají výchozí [vzorkování](../../azure-monitor/app/sampling.md), některé nemají vzorkování atd.), takže stále máte ovládací prvek pro snížení objemu dat, která ingestujete hluboko pod střední úroveň pomocí vzorkování. Ale to je výchozí bod pochopit, co ostatní, podobné zákazníci vidí.
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Pochopení využití a odhad nákladů
 
@@ -176,7 +178,7 @@ Chcete-li [změnit denní limit prostřednictvím Správce prostředků Azure](.
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Vytváření upozornění pro denní limit
 
-Denní zakončení Application Insights vytvoří událost v kog aktivity Azure, když svazky ingestovaných dat narazí na úroveň upozornění nebo na úroveň denního limitu.  Můžete [vytvořit výstrahu na základě těchto událostí protokolu aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). Názvy signálů pro tyto události jsou:
+Denní zakončení Application Insights vytvoří událost v protokolu aktivit Azure, když svazky ingace dat narazí na úroveň upozornění nebo na úroveň denního limitu.  Můžete [vytvořit výstrahu na základě těchto událostí protokolu aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). Názvy signálů pro tyto události jsou:
 
 * Dosažena prahová hodnota upozornění na denní limit komponenty Application Insights
 
@@ -216,7 +218,7 @@ Chcete-li změnit uchovávání informací, přejděte ze zdroje Application Ins
 
 ![Nastavení denního limitu hlasitosti telemetrie](./media/pricing/pricing-005.png)
 
-Uchovávání lze také [nastavit programově pomocí prostředí PowerShell](powershell.md#set-the-data-retention) pomocí parametru. `retentionInDays` Navíc pokud nastavíte uchovávání dat na 30 dní, můžete aktivovat `immediatePurgeDataOn30Days` okamžité vymazání starších dat pomocí parametru, což může být užitečné pro scénáře související s dodržováním předpisů. Tato funkce vymazání je kontumačně zpřístupněna jenom prostřednictvím Správce prostředků Azure a měla by se používat s maximální opatrností. Denní čas obnovení limitu svazku dat lze nakonfigurovat `dailyQuotaResetTime` pomocí Správce prostředků Azure k nastavení parametru.
+Uchovávání lze také [nastavit programově pomocí prostředí PowerShell](powershell.md#set-the-data-retention) pomocí parametru. `retentionInDays` Pokud je uchování sníženo, existuje několik dní odkladu před odebráním nejstarších dat. Pokud nastavíte uchovávání dat na 30 dní, můžete aktivovat `immediatePurgeDataOn30Days` okamžité vymazání starších dat pomocí parametru, což může být užitečné pro scénáře související s dodržováním předpisů. Tato funkce vymazání je kontumačně zpřístupněna jenom prostřednictvím Správce prostředků Azure a měla by se používat s maximální opatrností. Denní čas obnovení limitu svazku dat lze nakonfigurovat `dailyQuotaResetTime` pomocí Správce prostředků Azure k nastavení parametru.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Poplatky za přenos dat pomocí přehledů aplikací
 
@@ -228,7 +230,7 @@ Odesílání dat do Application Insights může být účtovánpoplatek za ší�
 
 ## <a name="disable-daily-cap-e-mails"></a>Zakázání e-mailů denního limitu
 
-Chcete-li zakázat e-maily s denním limitem svazku, vyberte v podokně Využití a odhadované náklady v části **Konfigurovat** prostředek Přehledy aplikací v podokně **Využití a odhadované náklady** **položku Denní omezení**. Existují nastavení pro odesílání e-mailů po dosažení limitu, stejně jako při dosažení nastavitelné úrovně upozornění. Pokud chcete zakázat všechny denní cap svazek-související e-maily zrušit zaškrtnutí obou políček.
+Chcete-li zakázat e-maily s denním limitem svazku, vyberte v podokně Využití a odhadované náklady v části **Konfigurovat** prostředek Přehledy aplikací v podokně **Využití a odhadované náklady** **položku Denní omezení**. Existují nastavení pro odesílání e-mailů po dosažení limitu, stejně jako při dosažení nastavitelné úrovně upozornění. Pokud chcete zakázat všechny denní e-maily související s limitem, zaškrtněte obě políčka.
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>Cenová úroveň Starší verze rozlehlé sítě (na uzel)
 
@@ -282,7 +284,7 @@ Vzhledem k tomu, že tato úroveň je použitelná pouze pro zákazníky s před
   * Pokud vaše aplikace používá sadu SDK k nastavení **instance role** na vlastní hodnotu, ve výchozím nastavení se stejná hodnota používá k určení počtu uzlů.
   * Pokud používáte novou verzi sady SDK s aplikací, která běží z klientských počítačů nebo mobilních zařízení, počet uzlů může vrátit číslo, které je velké (z důvodu velkého počtu klientských počítačů nebo mobilních zařízení).
 
-## <a name="automation"></a>Automatizace
+## <a name="automation"></a>Automation
 
 Můžete napsat skript pro nastavení cenové úrovně pomocí Azure Resource Management. [Zjistěte jak](powershell.md#price).
 

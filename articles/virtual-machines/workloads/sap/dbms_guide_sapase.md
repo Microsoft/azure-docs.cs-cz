@@ -12,19 +12,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/21/2020
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 007e8d87c670376ad334c1c4e58fd93995930b78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616236"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273201"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
 
-V tomto dokumentu popisuje několik různých oblastí, které je třeba zvážit při nasazování služby SAP ASE v Azure IaaS. Jako podmínku pro tento dokument byste si měli přečíst dokument [Aspekty nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) a další chod v [pracovním vytížení SAP v dokumentaci Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). Tento dokument se vztahuje na SAP ASE běžící na Linuxu a na operačních systémech Windows. Minimální podporovaná verze v Azure je SAP ASE 16.0 Patch Level 2.  Doporučujeme nasadit nejnovější verzi SAP a nejnovější úroveň opravy.  Doporučuje se minimálně SAP ASE 16.3 Patch Level 7.  Nejnovější verzi SAP naleznete v [cílené ase 16.0 Plán vydání a CR seznam informací](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
+V tomto dokumentu popisuje několik různých oblastí, které je třeba zvážit při nasazování služby SAP ASE v Azure IaaS. Jako podmínku pro tento dokument byste si měli přečíst dokument [Aspekty nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) a další chod v [pracovním vytížení SAP v dokumentaci Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). Tento dokument se vztahuje na SAP ASE běžící na Linuxu a na operačních systémech Windows. Minimální podporovaná verze v Azure je SAP ASE 16.0.02 (Release 16 Support Pack 2). Doporučujeme nasadit nejnovější verzi SAP a nejnovější úroveň opravy.  Doporučuje se minimálně SAP ASE 16.0.03.07 (Release 16 Support Pack 3 Patch Level 7).  Nejnovější verzi SAP naleznete v [cílené ase 16.0 Plán vydání a CR seznam informací](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
 
 Další informace o podpoře vydání s aplikacemi SAP nebo umístěním instalačního média jsou k dispozici kromě matice dostupnosti produktu SAP v těchto umístěních:
 
@@ -84,7 +84,7 @@ Příklad konfigurace pro malý server SAP ASE DB S velikostí databáze mezi 50
 | --- | --- | --- | --- |
 | Typ virtuálního virtuálního mísy | E4s_v3 (4 virtuální procesory/32 GB PAMĚTI RAM) | E4s_v3 (4 virtuální procesory/32 GB PAMĚTI RAM) | --- |
 | Akcelerované síťové služby | Povolení | Povolení | ---|
-| Verze sap ase | 16.3 PL 7 nebo vyšší | 16.3 PL 7 nebo vyšší | --- |
+| Verze sap ase | 16.0.03.07 nebo vyšší | 16.0.03.07 nebo vyšší | --- |
 | Počet datových zařízení | 4 | 4 | ---|
 | Počet log zařízení | 1 | 1 | --- |
 | Počet dočasných zařízení | 1 | 1 | více pro pracovní zátěž SAP BW |
@@ -105,7 +105,7 @@ Příklad konfigurace pro střední SAP ASE DB Server s velikostí databáze mez
 | --- | --- | --- | --- |
 | Typ virtuálního virtuálního mísy | E16s_v3 (16 virtuálních procesorů/128 GB paměti RAM) | E16s_v3 (16 virtuálních procesorů/128 GB paměti RAM) | --- |
 | Akcelerované síťové služby | Povolení | Povolení | ---|
-| Verze sap ase | 16.3 PL 7 nebo vyšší | 16.3 PL 7 nebo vyšší | --- |
+| Verze sap ase | 16.0.03.07 nebo vyšší | 16.0.03.07 nebo vyšší | --- |
 | Počet datových zařízení | 8 | 8 | ---|
 | Počet log zařízení | 1 | 1 | --- |
 | Počet dočasných zařízení | 1 | 1 | více pro pracovní zátěž SAP BW |
@@ -125,7 +125,7 @@ Příklad konfigurace pro malý sap ASE DB Server s velikostí databáze mezi 75
 | --- | --- | --- | --- |
 | Typ virtuálního virtuálního mísy | E64s_v3 (64 virtuálních procesorů/432 GB paměti RAM) | E64s_v3 (64 virtuálních procesorů/432 GB paměti RAM) | --- |
 | Akcelerované síťové služby | Povolení | Povolení | ---|
-| Verze sap ase | 16.3 PL 7 nebo vyšší | 16.3 PL 7 nebo vyšší | --- |
+| Verze sap ase | 16.0.03.07 nebo vyšší | 16.0.03.07 nebo vyšší | --- |
 | Počet datových zařízení | 16 | 16 | ---|
 | Počet log zařízení | 1 | 1 | --- |
 | Počet dočasných zařízení | 1 | 1 | více pro pracovní zátěž SAP BW |
@@ -146,7 +146,7 @@ Příklad konfigurace pro malý server SAP ASE DB S velikostí databáze 2 TB+, 
 | --- | --- | --- | --- |
 | Typ virtuálního virtuálního mísy | Řada M (1,0 až 4,0 TB RAM)  | Řada M (1,0 až 4,0 TB RAM) | --- |
 | Akcelerované síťové služby | Povolení | Povolení | ---|
-| Verze sap ase | 16.3 PL 7 nebo vyšší | 16.3 PL 7 nebo vyšší | --- |
+| Verze sap ase | 16.0.03.07 nebo vyšší | 16.0.03.07 nebo vyšší | --- |
 | Počet datových zařízení | 32 | 32 | ---|
 | Počet log zařízení | 1 | 1 | --- |
 | Počet dočasných zařízení | 1 | 1 | více pro pracovní zátěž SAP BW |
@@ -203,7 +203,7 @@ SAP Software provisioning Manager (SWPM) dává možnost šifrovat databázi bě
 
 ## <a name="sap-ase-on-azure-deployment-checklist"></a>Sap ASE na kontrolním seznamu nasazení Azure
  
-- Nasazení sap ase 16,3 PL7 nebo vyšší
+- Nasazení sap ase 16.0.03.07 nebo vyšší
 - Aktualizace na nejnovější verzi a opravy FaultManager a SAPHostAgent
 - Nasazení na nejnovější certifikovaný operační systém k dispozici, jako je Windows 2019, Suse 15.1 nebo Redhat 7.6 nebo vyšší
 - Použití virtuálních počítačů s certifikací SAP – doporučujeme su s vus virtuálních zařízení Azure s vysokou pamětí, jako jsou Es_v3 nebo pro x-velké systémy Virtuální počítače řady M
@@ -277,7 +277,7 @@ Další informace o DBA Cockpit pro SAP ASE naleznete v následujících poznám
 
 
 ## <a name="useful-links-notes--whitepapers-for-sap-ase"></a>Užitečné odkazy, poznámky & dokumenty white paper pro SAP ASE
-Úvodní stránka dokumentace [Sybase ASE 16.3 PL7](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US) obsahuje odkazy na různé dokumenty, z nichž dokumenty:
+Úvodní stránka pro [DOKUMENTACI SAP ASE 16.0.03.07 obsahuje](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US) odkazy na různé dokumenty, z nichž dokumenty:
 
 - SAP ASE Learning Journey - Správa & monitorování
 - Sap ASE Learning Journey – upgrade & instalace
@@ -303,11 +303,11 @@ Další užitečné poznámky podpory SAP jsou:
 Další informace jsou zveřejňovány dne 
 
 - [Aplikace SAP na sap adaptivní server enterprise](https://community.sap.com/topics/applications-on-ase)
-- [Informační centrum Sybase](http://infocenter.sybase.com/help/index.jsp) 
+- [Informační centrum SAP ASE](http://infocenter.sybase.com/help/index.jsp) 
+- [Sap ASE always-on s nastavením třetího uzlu DR](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)
 
 Měsíční bulletin je publikován prostřednictvím [poznámky podpory SAP #2381575](https://launchpad.support.sap.com/#/notes/2381575) 
 
-[Vždy zapnutá ase služby Sybase a s nastavením třetího uzlu zotavení po havárii](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199) 
 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na článek [úlohSAP v Azure: kontrolní seznam plánování a nasazení](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)

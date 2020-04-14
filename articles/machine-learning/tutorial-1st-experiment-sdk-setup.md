@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 820332b0692c0c863ed23912fe9913c419769155
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239886"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272997"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme vytvářet první experiment ML pomocí sady Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -86,7 +86,7 @@ Můžete dokončit následující experiment set-up a spustit kroky v Azure Mach
     
 1. Vyberte soubor **tutorial-1st-experiment-sdk-train.ipynb** ve složce **tutorials/create-first-ml-experiment.**
 
-1. Na horním panelu vyberte výpočetní instanci, která se má použít ke spuštění poznámkového bloku. Tyto virtuální počítače jsou předem nakonfigurované se [vším, co potřebujete ke spuštění Azure Machine Learning](concept-compute-instance.md#contents). Můžete vybrat virtuální počítač vytvořený libovolným uživatelem vašeho pracovního prostoru. 
+1. Na horním panelu vyberte výpočetní instanci, která se má použít ke spuštění poznámkového bloku. Tyto virtuální počítače jsou předem nakonfigurované se [vším, co potřebujete ke spuštění Azure Machine Learning](concept-compute-instance.md#contents). 
 
 1. Pokud se nenajdou žádné virtuální počítače, vyberte **+ Přidat** k vytvoření virtuálního počítače výpočetní instance. 
 

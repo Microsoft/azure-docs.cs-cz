@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 04/10/2020
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 53f1b9a2fde20cacccd0730213695f26c1200fa7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 902486f7e19f2dfd7cc64e27589e192c57ef64e8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132539"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255511"
 ---
 # <a name="what-is-azure-databricks"></a>Co je Azure Databricks?
 
@@ -85,6 +85,11 @@ Azure Databricks poskytuje zabezpečení Azure na podnikové úrovni, včetně i
 * Integrace s Azure Active Directory umožňuje provozovat kompletní řešení založená na Azure s využitím Azure Databricks.
 * Přístup na základě rolí v Azure Databricks umožňuje využívat jemně odstupňovaná uživatelská oprávnění pro poznámkové bloky, clustery, úlohy a data.
 * Smlouvy SLA na podnikové úrovni. 
+
+> [!IMPORTANT]
+>
+> Azure Databricks je služba Microsoft Azure první strany, která se nasadí na globální infrastruktuře Azure Public Cloud. Veškerá komunikace mezi součástmi služby, včetně mezi veřejnými IP adresy v rovině ovládacího prvku a rovinou dat zákazníka, zůstává v páteřní síti Microsoft Azure. Viz také [globální síť společnosti Microsoft](https://docs.microsoft.com/azure/networking/microsoft-global-network).
+
 
 ## <a name="integration-with-azure-services"></a>Integrace se službami Azure
 

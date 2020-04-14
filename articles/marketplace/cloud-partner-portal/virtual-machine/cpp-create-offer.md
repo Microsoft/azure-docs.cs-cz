@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: bc1cf7a839307e65bd91eb29531663141e521472
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d06809df2774224b61fd3fb643ab628dd2890f6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278037"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273983"
 ---
 # <a name="create-virtual-machine-offer"></a>Vytvořit nabídku virtuálního počítače
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky virtuálního počítače Azure](https://aka.ms/CreateAzureVMoffer) ke správě migrovaných nabídek.
 
 V této části jsou uvedeny kroky potřebné k vytvoření nového virtuálního počítače (VM) žádost o nabídku pro Azure Marketplace.  Každá nabídka se na Azure Marketplace zobrazuje jako vlastní entita a je přidružená k jedné nebo více skum.  Nabídka virtuálních her se skládá z následujících seskupení aktiv a podpůrných služeb: 
 
@@ -46,7 +49,7 @@ Po přihlášení na [portál pro partnery cloudu](https://cloudpartner.azure.co
 
 Následující témata v této části zrcadlí karty na stránce **Nová nabídka** (pro typ nabídky virtuálního soudu).  Každý článek vysvětluje, jak pomocí přidružené karty definovat skupiny prostředků a podpůrné služby pro vaši novou nabídku virtuálních her.
 
-- [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
+- [Karta nastavení nabídky](./cpp-offer-settings-tab.md)
 - [Karta Skladové položky](./cpp-skus-tab.md)
 - [Karta Testovací verze](./cpp-test-drive-tab.md)
 - [Karta Marketplace](./cpp-marketplace-tab.md)

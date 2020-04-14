@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 673fe1f31f6a8602225e7cde3bf1eb4c3b28b8a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b80325594eedb87293c31de3236bb4690eb89e05
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278140"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273014"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>Konfigurace služby WinRM po vytvoření virtuálního počítače
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky virtuálního počítače Azure](https://aka.ms/CreateAzureVMoffer) ke správě migrovaných nabídek.
 
 Tento článek vysvětluje, jak nakonfigurovat existující virtuální počítač (VM) hostovaný v Azure, aby povolil WinRM přes protokol HTTPS.  Tato konfigurace platí jenom pro virtuální počítače se systémem Windows a vyžaduje následující dvoustupňový proces:
 
@@ -26,8 +29,8 @@ Tento článek vysvětluje, jak nakonfigurovat existující virtuální počíta
 
 Protokol WinRM přes HTTPS používá port 5986, který není ve výchozím nastavení povolený na předkonfigurovaných virtuálních počítačích s Windows nabízených na Azure Marketplace. Chcete-li tento protokol povolit, přidejte pomocí následujících kroků nové pravidlo do skupiny zabezpečení sítě (NSG) s [portálem Azure](https://portal.azure.com).  Další informace o skupinách zabezpečení zabezpečení naleznete v [tématu Skupiny zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
-1.  Přejděte k utoče **Virtuální počítače >**   < *název* >   virtuálního počítače>** Nastavení/sítě**.
-2.  Kliknutím na název nsg (v tomto příkladu **testvm11002**) zobrazíte jeho vlastnosti:
+1. Přejděte k utoče **Virtuální počítače >**   < *název* >   virtuálního počítače>** Nastavení/sítě**.
+2. Kliknutím na název nsg (v tomto příkladu **testvm11002**) zobrazíte jeho vlastnosti:
 
     ![Vlastnosti skupiny zabezpečení sítě](./media/nsg-properties.png)
  

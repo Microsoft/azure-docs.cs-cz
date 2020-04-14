@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 1e559309b8e8d9768ca2f79dabfb01ec6086a961
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/10/2019
+ms.openlocfilehash: b8d7f995997b828c2323b3e6934b97354c2f8c8b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348723"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255239"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům protokolu a pracovním prostorům v Azure Monitoru
 
@@ -91,7 +91,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 }
 ```
 
-### <a name="using-a-resource-manager-template"></a>Použití šablony Správce prostředků
+### <a name="using-a-resource-manager-template"></a>Použití šablony Resource Manageru
 
 Chcete-li nakonfigurovat režim přístupu v šabloně Správce prostředků Azure, nastavte příznak funkce **enableLogAccessUsingOnlyResourcePermissions** v pracovním prostoru na jednu z následujících hodnot.
 
@@ -273,7 +273,7 @@ Chcete-li vytvořit roli s přístupem pouze k tabulce _SecurityBaseline,_ vytvo
 
  Vlastní protokoly jsou vytvářeny ze zdrojů dat, jako jsou vlastní protokoly a rozhraní API shromažďování dat HTTP. Nejjednodušší způsob, jak identifikovat typ protokolu, je kontrolou tabulek uvedených v části [Vlastní protokoly ve schématu protokolu](../log-query/get-started-portal.md#understand-the-schema).
 
- V současné době nelze udělit přístup k jednotlivým vlastním protokolům, ale můžete udělit přístup ke všem vlastním protokolům. Chcete-li vytvořit roli s přístupem ke všem vlastním protokolům, vytvořte vlastní roli pomocí následujících akcí:
+ Nelze udělit přístup k jednotlivým vlastním protokolům, ale můžete udělit přístup ke všem vlastním protokolům. Chcete-li vytvořit roli s přístupem ke všem vlastním protokolům, vytvořte vlastní roli pomocí následujících akcí:
 
 ```
 "Actions":  [
@@ -282,6 +282,9 @@ Chcete-li vytvořit roli s přístupem pouze k tabulce _SecurityBaseline,_ vytvo
     "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
 ],
 ```
+Alternativní přístup ke správě přístupu k vlastním protokolům je přiřadit je k prostředku Azure a spravovat přístup pomocí paradigmatu kontextu prostředků. Chcete-li použít tuto metodu, musíte zahrnout ID prostředku zadáním v záhlaví [x-ms-AzureResourceId](data-collector-api.md#request-headers) při požití dat do analýzy protokolů prostřednictvím [rozhraní API shromažďování dat HTTP](data-collector-api.md). ID prostředku musí být platné a musí na něj být použita pravidla přístupu. Po požití protokolů jsou přístupné pro ty, kteří mají přístup pro čtení k prostředku, jak je vysvětleno zde.
+
+Někdy vlastní protokoly pocházejí ze zdrojů, které nejsou přímo přidruženy k určitému prostředku. V takovém případě vytvořte skupinu prostředků, která bude spravovat přístup k těmto protokolům. Skupině prostředků nevznikají žádné náklady, ale poskytuje platné ID prostředku pro řízení přístupu k vlastním protokolům. Například pokud konkrétní brána firewall odesílá vlastní protokoly, vytvořte skupinu prostředků s názvem "MyFireWallLogs" a ujistěte se, že požadavky rozhraní API obsahují ID prostředku "MyFireWallLogs". Záznamy protokolu brány firewall jsou pak přístupné pouze uživatelům, kterým byl udělen přístup buď k MyFireWallLogs, nebo k uživatelům s úplným přístupem k pracovnímu prostoru.          
 
 ### <a name="considerations"></a>Požadavky
 

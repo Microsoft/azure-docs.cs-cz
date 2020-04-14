@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 47702959474a352a8e13710ec850f789dee4d517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c575389538230218e1e6e4f172ebcfbee8ee51dc
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278157"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273456"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>Běžné problémy a opravy adres URL s pomocí SAS
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [běžných problémech s adresou URL a opravách spravovaných](https://aka.ms/AzureSAS_URL_FAQ) nabídek.
 
 V následující tabulce jsou uvedeny některé běžné problémy, ke kterým došlo při práci se sdílenými přístupovými podpisy (které slouží k identifikaci a sdílení nahraných virtuálních discích pro vaše řešení) spolu s navrhovanými řešeními.
 

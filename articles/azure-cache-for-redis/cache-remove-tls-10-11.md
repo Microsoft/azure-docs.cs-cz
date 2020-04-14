@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 0d28469820f63f63089d9b91d57ccd7fe75c8b95
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348642"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261226"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Odebrání tls 1.0 a 1.1 z použití s Azure Cache pro Redis
 
@@ -51,7 +51,7 @@ Většina aplikací používá klientské knihovny Redis ke zpracování komunik
 Klienti Redis .NET používají nejstarší verzi TLS ve výchozím nastavení v rozhraní .NET Framework 4.5.2 nebo starší a používají nejnovější verzi TLS v rozhraní .NET Framework 4.6 nebo novější. Pokud používáte starší verzi rozhraní .NET Framework, můžete tls 1.2 povolit ručně:
 
 * **StackExchange.Redis:** Set `ssl=true` `sslprotocols=tls12` a v připojovacím řetězci.
-* **ServiceStack.Redis:** Postupujte podle [pokynů ServiceStack.Redis](https://github.com/ServiceStack/ServiceStack.Redis/pull/247).
+* **ServiceStack.Redis:** Postupujte podle pokynů [ServiceStack.Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support) a vyžaduje ServiceStack.Redis v5.6 minimálně.
 
 ### <a name="net-core"></a>.NET Core
 

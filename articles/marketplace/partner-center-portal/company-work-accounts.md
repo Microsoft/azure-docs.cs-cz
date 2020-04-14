@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: c4e7427d87c5f88d8c686b867ef88ceb05f28286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c0ee2f8d5291f7904435dea32d913adeaaf25c5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281421"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262362"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Firemní pracovní účty a Partnerské centrum
 
@@ -54,4 +54,4 @@ Pokud máte potíže s přihlášením k vašemu pracovnímu účtu (označovan�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa účtu Commercial Marketplace v Partnerském centru](./manage-account.md) 
+- [Správa účtu komerčního tržiště v Partnerském centru](./manage-account.md) 

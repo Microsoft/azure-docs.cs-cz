@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114965"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262872"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Částečné vyhledávání termínů a vzory se speciálními znaky (zástupný znak, regulární výraz, vzory)
 
@@ -22,6 +22,9 @@ ms.locfileid: "81114965"
 Částečné a vzor hledání může být problematické, pokud index nemá termíny v očekávaném formátu. Během [fáze lexikální analýzy](search-lucene-query-architecture.md#stage-2-lexical-analysis) indexování (za předpokladu výchozího standardního analyzátoru) jsou speciální znaky zahozeny, složené a složené řetězce se rozdělí a prázdné znaky se odstraní; všechny, které mohou způsobit vzor dotazy nezdaří, pokud je nalezena žádná shoda. Například telefonní číslo `+1 (425) 703-6214` jako (tokenizované `"425"` `"703"`jako `"6214"` `"1"`, , ) se `"3-62"` v dotazu nezobrazí, protože tento obsah ve skutečnosti v indexu neexistuje. 
 
 Řešením je vyvolat analyzátor, který zachová úplný řetězec, včetně mezer a speciálních znaků v případě potřeby, takže můžete odpovídat na částečné podmínky a vzorky. Vytvoření dalšího pole pro neporušený řetězec a pomocí analyzátoru pro zachování obsahu je základem řešení.
+
+> [!TIP]
+> Znáte pošťáka a REST API? [Stáhněte si kolekci příkladů dotazu](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples) a zadejte dotaz na částečné termíny a speciální znaky popsané v tomto článku.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Co je částečné vyhledávání v Azure Cognitive Search
 
@@ -74,6 +77,7 @@ Při výběru analyzátoru, který vytváří tokeny po celou dobu, jsou běžn�
 
 | Analyzer | Chování |
 |----------|-----------|
+| [analyzátory jazyků](index-add-language-analyzers.md) | Zachová pomlčky ve složených slovech nebo řetězcích, mutacích samohlásek a tvarech sloves. Pokud vzorky dotazu obsahují pomlčky, může být použití analyzátoru jazyka dostačující. |
 | [klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Obsah celého pole je tokenizován jako jeden termín. |
 | [Mezery](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Odděluje pouze na prázdné matné znaky. Termíny, které obsahují pomlčky nebo jiné znaky jsou považovány za jeden token. |
 | [vlastní analyzátor](index-add-custom-analyzers.md) | (doporučeno) Vytvoření vlastního analyzátoru umožňuje zadat tokenizer a token filtr. Předchozí analyzátory musí být použity tak, jak jsou. Vlastní analyzátor umožňuje vybrat, které tokenizers a token filtry použít. <br><br>Doporučená kombinace je [tokenizer klíčového slova](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) s [filtrem tokenů malých písmen](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Předdefinovaný [analyzátor klíčových slov](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) sám o sobě nepředstavuje malá písmena žádného textu s velkými písmeny, což může způsobit selhání dotazů. Vlastní analyzátor poskytuje mechanismus pro přidání filtru tokenu malých písmen. |
@@ -151,7 +155,9 @@ Bez ohledu na to, zda vyhodnocujete analyzátor nebo se posouváte vpřed s urč
 
 ### <a name="use-built-in-analyzers"></a>Použití vestavěných analyzátorů
 
-Vestavěné nebo předdefinované analyzátory lze `analyzer` zadat podle názvu na vlastnost definice pole, bez další konfigurace požadované v indexu. Následující příklad ukazuje, jak byste `whitespace` nastavili analyzátor v poli. Další informace o dostupných vestavěných analyzátorech naleznete v [seznamu předdefinovaných analyzátorů](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
+Vestavěné nebo předdefinované analyzátory lze `analyzer` zadat podle názvu na vlastnost definice pole, bez další konfigurace požadované v indexu. Následující příklad ukazuje, jak byste `whitespace` nastavili analyzátor v poli. 
+
+Další scénáře a další informace o dalších integrovaných analyzátorech najdete v [seznamu předdefinovaných analyzátorů](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ```json
     {

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b469c098db4f8d90147b491bcb54bd55d326b03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4e8b544ea3daeb23b22f3864beb21ba9d3f342f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080304"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255613"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -72,7 +72,7 @@ Akumulační počet Azure VD pod RAID, je kumulativní z viporu a úložiště p
 Při dimenzování velikosti nebo rozhodování o virtuálním virtuálním ms také mějte na paměti celkovou propustnost vstupně-v.v.V., pokud jde o velikost virtuálního soudu. Celková propustnost úložiště virtuálních počítače je dokumentována v článku [Velikosti virtuálních strojů optimalizované pro paměť](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory).
 
 ## <a name="linux-io-scheduler-mode"></a>Režim Plánovač i/O Linuxu
-Linux má několik různých režimů plánování vstupně-in a o. Běžné doporučení prostřednictvím dodavatelů Linuxu a SAP je překonfigurovat vstupně-vajatický režim pro diskové svazky z **cfq** režimu do **noop** (non-multiqueue) nebo **žádný** pro (multiqueue) režim. Podrobnosti jsou uvedeny v [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787). 
+Linux má několik různých režimů plánování vstupně-in a o. Běžné doporučení prostřednictvím dodavatelů Linuxu a SAP je překonfigurovat režim plánovače vstupně-odpovědí pro diskové svazky z **režimu mq-deadline** nebo **kyber** do režimu **noop** (non-multiqueue) nebo **žádný** pro (multiqueue) režim. Podrobnosti jsou uvedeny v [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787). 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Řešení s úložištěm Premium a akcelerátorem zápisu Azure pro virtuální počítače Azure řady M

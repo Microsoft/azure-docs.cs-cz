@@ -7,17 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: b0ed430098203c5c1a0d00eb7bf17da1be0000cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f20beced7d977668d12c06375ceb8a2554c6d335
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278088"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273422"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurace virtuálního počítače hostovaného v Azure
 
-Tento článek vysvětluje, jak velikost, aktualizaci a generalizaci virtuálního počítače (VM) hostovaného v Azure.  Tyto kroky jsou nezbytné k přípravě virtuálního počítače k nasazení z Azure Marketplace.
+> [!IMPORTANT]
+> dubna 2020 začneme s přesouváním nabídky virtuálních strojů Azure do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření technických prostředků virtuálního počítače Azure](https://aka.ms/AzureVMTechAsset) a spravujte migrované nabídky.
 
+Tento článek vysvětluje, jak velikost, aktualizaci a generalizaci virtuálního počítače (VM) hostovaného v Azure.  Tyto kroky jsou nezbytné k přípravě virtuálního počítače k nasazení z Azure Marketplace.
 
 ## <a name="sizing-the-vhds"></a>Dimenzování virtuálních diod
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 272188b50fe59435031a4a2fb9c252f3f358bb6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535727"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270889"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí souborů Azure NetApp
 
@@ -45,7 +45,7 @@ Před vytvořením kontejneru profilu FSLogix pro fond hostitelů je nutné:
 
 Chcete-li začít, musíte nastavit účet Azure NetApp Files.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Zkontrolujte, zda má váš účet oprávnění přispěvatele nebo správce.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Zkontrolujte, zda má váš účet oprávnění přispěvatele nebo správce.
 
 2. Kliknutím na **ikonu Azure Cloud Shell** napravo od vyhledávacího panelu otevřete Azure Cloud Shell.
 
@@ -117,9 +117,6 @@ Poté se musíte připojit k připojení služby Active Directory.
     - Pro **předponu SMB Server (Účet počítače)** zadejte řetězec, který chcete připojit k názvu účtu počítače.
     - Do **pole Uživatelské jméno**zadejte název účtu s oprávněními k provedení připojení k doméně.
     - V **části Heslo**zadejte heslo účtu.
-
-  >[!NOTE]
-  >Osvědčeným postupem je potvrdit, že účet počítače, který jste vytvořili v [okně Připojit se k připojení služby Active Directory,](create-fslogix-profile-container.md#join-an-active-directory-connection) se objevil v řadiči domény v části **Počítače** nebo v příslušné **hlavní jednotce rozlehlé sítě**.
 
 ## <a name="create-a-new-volume"></a>Vytvoření nového svazku
 

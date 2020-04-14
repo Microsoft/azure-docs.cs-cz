@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 02/04/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e4f72300752c93659db4edd4610464dbebf2503
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77014415"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271059"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Co je Azure Time Series Insights ve verzi Preview?
 
@@ -49,22 +49,22 @@ Následující obrázek znázorňuje typický tok dat IoT.
 
 Krajina IoT je různorodá se zákazníky, kteří pokrývají různé průmyslové segmenty, včetně výroby, automobilového průmyslu, energetiky, veřejných služeb, inteligentních budov a poradenství. Na této široké škále průmyslových ioT trhu se stále vyvíjejí cloudová nativní řešení, která poskytují komplexní analýzy zaměřené na rozsáhlá data IoT. 
 
-Azure Time Series Insights řeší tuto potřebu trhu tím, že poskytuje komplexní analytické řešení IoT na klíč s bohatým sémantickým modelováním pro kontextovou analýzu dat časových řad, přehledy založené na aktivech a nejlepší uživatelské prostředí ve své třídě pro zjišťování, trendy, detekce anomálií a provozní inteligenci. 
+Azure Time Series Insights řeší tuto potřebu trhu tím, že poskytuje komplexní analytické řešení IoT na klíč s bohatým sémantickým modelováním pro kontextovou analýzu dat časových řad, přehledy založené na aktivech a nejlepší uživatelské prostředí ve své třídě pro zjišťování, trendy, detekci anomálií a provozní inteligenci. 
 
 Bohatá platforma provozní analýzy v kombinaci s našimi interaktivními možnostmi zkoumání dat můžete pomocí Time Series Insights odvodit větší hodnotu z dat shromážděných z prostředků IoT. Nabídka náhledu podporuje: 
 
 * Vícevrstvé úložné řešení s teplou a studenou analýzou podporuje poskytování zákazníkům možnost směrovat data mezi teplými a studenými pro interaktivní analýzu přes teplá data a provozní inteligenci po celá desetiletí historických dat. 
 
-    *   Vysoce interaktivní teplé analytické řešení pro časté a velké množství dotazů v kratším časovém rozpětí 
-    *   Škálovatelné, výkonné a nákladově optimalizované datové jezero časových řad založené na Azure Storage umožňuje zákazníkům trend ovat data časových řad za několik let. 
+    *    Vysoce interaktivní teplé analytické řešení pro časté a velké množství dotazů v kratším časovém rozpětí 
+    *    Škálovatelné, výkonné a nákladově optimalizované datové jezero časových řad založené na Azure Storage umožňuje zákazníkům trend ovat data časových řad za několik let. 
 
 * Podpora sémantického modelu, která popisuje doménu a metadata spojená s odvozenými a nezpracovanými signály z prostředků a zařízení.
 
 * Flexibilní analytická platforma pro ukládání historických dat časových řad v účtu Azure Storage vlastněném zákazníkem, což zákazníkům umožňuje vlastnictví jejich dat IoT. Data jsou uložena ve formátu Apache Parquet s otevřeným zdrojovým kódem, který umožňuje připojení a propojení mezi různými datovými scénáři, včetně prediktivní analýzy, strojového učení a dalších vlastních výpočtů provedených pomocí známých technologií včetně Spark, Databricks a Jupyter.
 
-* Bohatá analýza s rozšířenými rozhraními API dotazů a uživatelským prostředím, která kombinují přehledy dat založené na aktivech s bohatými analýzami dat ad hoc s podporou interpolačních, skalárních a agregačních funkcí, kategorických proměnných, bodových grafů a času posunu času sériové signály pro hloubkovou analýzu.
+* Bohatá analýza s rozšířenými rozhraními API dotazů a uživatelským prostředím, která kombinují přehledy dat založené na aktivech s bohatými analýzami dat ad hoc s podporou interpolací, skalárních a agregačních funkcí, kategorických proměnných, bodových grafů a časových posunových časových řad pro hloubkovou analýzu.
 
-*   Platforma podnikové úrovně pro podporu potřeb v oblasti škálování, výkonu, zabezpečení a spolehlivosti našich podnikových zákazníků IoT.
+*    Platforma podnikové úrovně pro podporu potřeb v oblasti škálování, výkonu, zabezpečení a spolehlivosti našich podnikových zákazníků IoT.
 
 * Rozšiřitelnost a podpora integrace pro komplexní analýzy. Time Series Insights poskytuje rozšiřitelnou analytickou platformu pro různé scénáře dat. Konektor Time Series Insights Power BI umožňuje zákazníkům pořštit dotazy, které dělají v Time Series Insights, přímo do Power BI a získat tak jednotný přehled o svých BI a analýzách časových řad v jediném skleněném podokně.
 

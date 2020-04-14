@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 2db8c05d086c7b4e8537a1c17b1ca84eedb19857
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277867"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273915"
 ---
-# <a name="virtual-hard-disk-deployment-template"></a>Šablona nasazení virtuálního pevného disku 
+# <a name="virtual-hard-disk-deployment-template"></a>Šablona nasazení virtuálního pevného disku
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [certifikaci image virtuálního počítače Azure](https://aks.ms/CertifyVMimage) spravujte migrované nabídky.
 
 Následující šablona Azure Resource Manager definuje novou instanci virtuálního počítače Azure (VM), vytvořenou z místního virtuálního pevného disku (VHD).  Tato šablona se používá v článku [Nasazení virtuálního počítače Azure z uživatelského virtuálního pevného disku](./cpp-deploy-vm-user-image.md). 
 

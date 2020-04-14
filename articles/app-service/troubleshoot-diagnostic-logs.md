@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f22d5b2140e42f5f4b8ef5787d22b4be399c7e8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280466"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272521"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolení protokolování diagnostiky aplikací ve službě Azure App Service
 ## <a name="overview"></a>Přehled
@@ -105,9 +105,9 @@ Oba typy protokolů jsou uloženy v systému souborů služby App Service. Je za
 
 ## <a name="add-log-messages-in-code"></a>Přidání zpráv protokolu do kódu
 
-V kódu aplikace použijete obvyklé možnosti protokolování k odesílání zpráv protokolu do protokolů aplikace. Například:
+V kódu aplikace použijete obvyklé možnosti protokolování k odesílání zpráv protokolu do protokolů aplikace. Příklad:
 
-- ASP.NET aplikace mohou použít třídu [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu diagnostiky aplikací. Například:
+- ASP.NET aplikace mohou použít třídu [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu diagnostiky aplikací. Příklad:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -135,12 +135,12 @@ Chcete-li streamovat protokoly živě v [prostředí Cloud Shell](../cloud-shell
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Chcete-li filtrovat konkrétní události, například chyby, použijte parametr **--Filter.** Například:
+Chcete-li filtrovat konkrétní události, například chyby, použijte parametr **--Filter.** Příklad:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Chcete-li filtrovat určité typy protokolů, například HTTP, použijte parametr **--Path.** Například:
+Chcete-li filtrovat určité typy protokolů, například HTTP, použijte parametr **--Path.** Příklad:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -188,7 +188,7 @@ V následující tabulce jsou uvedeny podporované typy protokolů a popisy:
 | Protokoly HTTPSlužby AppService | Ano | Ano | Protokoly webového serveru |
 | AppServiceEnvironmentPlatformLogs | Ano | Ano | Prostředí služby App Service: škálování, změny konfigurace a protokoly stavu|
 | AppServiceAuditLogs | Ano | Ano | Přihlašovací aktivita přes FTP a Kudu |
-| AppServiceFileAuditLogs | Tba | Ano | Změny souborů přes FTP a Kudu |
+| AppServiceFileAuditLogs | Ano | Bude doplněno | Změny souborů přes FTP a Kudu |
 | AppServiceAppLogs | Tba | Java SE & Tomcat | Protokoly aplikací |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Další kroky

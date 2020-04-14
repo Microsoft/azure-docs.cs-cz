@@ -3,12 +3,12 @@ title: Zálohování souborů a složek – běžné otázky
 description: Řeší běžné otázky týkající se zálohování souborů a složek pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421307"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254746"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Běžné otázky týkající se zálohování souborů a složek
 
@@ -22,7 +22,7 @@ Nejnovější agent MARS používaný při zálohování počítačů se systém
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Jak dlouho jsou pověření trezoru platná?
 
-Platnost přihlašovacích údajů trezoru vyprší po 48 hodinách. Pokud vyprší platnost souboru přihlašovacích údajů, stáhněte soubor znovu z webu Azure Portal.
+Platnost přihlašovacích údajů trezoru vyprší po 10 dnech. Pokud vyprší platnost souboru přihlašovacích údajů, stáhněte soubor znovu z webu Azure Portal.
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Z jakých jednotek lze zálohovat soubory a složky?
 
@@ -185,7 +185,6 @@ Pokud máte stejné přístupové heslo (které jste zadali při registraci) pů
 | --- | --- | --- |
 | Ztracené |K dispozici. |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným přístupovým heslem, které jste zadali při registraci původního počítače. Zvolte **možnost** > obnovení**Jiné umístění** k provedení obnovení. Další informace naleznete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Ztracené |Ztracené |Není možné obnovit data nebo data není k dispozici |
-
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co se stane, když zruším probíhající úlohu obnovení?
 

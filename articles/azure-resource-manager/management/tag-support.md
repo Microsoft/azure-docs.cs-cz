@@ -3,12 +3,12 @@ title: Označit podporu pro zdroje
 description: Zobrazuje, které typy prostředků Azure podporují značky. Obsahuje podrobnosti o všech službách Azure.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: b8b1c0b738bb8b94ee53433141f1ae3dbbb3f942
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982323"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255022"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora prostředků Azure pro značky
 Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popiskem **Supports označuje,** zda má typ prostředku vlastnost značky. Sloupec označený **značka v sestavě nákladů** označuje, zda tento typ zdroje předá značku sestavě nákladů. Náklady můžete zobrazit podle značek v [analýze nákladů na správu nákladů](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) a fakturační [faktury Azure a denních dat o využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -96,6 +96,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > - [Microsoft.HybridData](#microsofthybriddata)
 > - [Microsoft.Hydra](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
+> - [Microsoft.Insights](#microsoftinsights)
 > - [Microsoft.Intune](#microsoftintune)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
@@ -1201,6 +1202,33 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ----------- |
 > | Úlohy | Ano | Ano |
 
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+> [!div class="mx-tableFixed"]
+> | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
+> | ------------- | ----------- | ----------- |
+> | skupiny akcí | Ano | Ano |
+> | activityLogAlerts | Ano | Ano |
+> | pravidla výstrah | Ano | Ano |
+> | nastavení automatického škálování | Ano | Ano |
+> | Součásti | Ano | Ano |
+> | komponenty / linkedStorageAccounts | Ne | Ne |
+> | komponenty / ProactiveDetectionConfigs | Ne | Ne |
+> | diagnosticSettings | Ne | Ne |
+> | guestDiagnosticSettings | Ano | Ano |
+> | guestDiagnosticSettingsAssociation | Ano | Ano |
+> | logprofiles | Ano | Ano |
+> | metricAlerts | Ano | Ano |
+> | privátnílinkové obory | Ano | Ano |
+> | privátníLinkScopes / privateEndpointConnections | Ne | Ne |
+> | privateLinkScopes / oborZdroje | Ne | Ne |
+> | queryPacks | Ano | Ano |
+> | queryPacks / dotazy | Ne | Ne |
+> | scheduledQueryRules | Ano | Ano |
+> | webové testy | Ano | Ano |
+> | sešity | Ano | Ano |
+> | šablony sešitů | Ano | Ano |
+
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
 > [!div class="mx-tableFixed"]
@@ -1454,7 +1482,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | applicationSecurityGroups | Ano | Ano |
 > | azureFirewallFqdnTagy | Ne | Ne |
 > | azureFirewalls | Ano | Ne |
-> | bastionHosts | Ano | Ano |
+> | bastionHosts | Ano | Ne |
 > | bGPServiceCommunities | Ne | Ne |
 > | Připojení | Ano | Ano |
 > | ddosCustomPolicies | Ano | Ano |
@@ -1484,14 +1512,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | frontdoorWebApplicationFirewallPolicies | Ano, ale omezené (viz [poznámka níže)](#frontdoor) | Ano |
 > | getDnsResourceReference | Ne | Ne |
 > | internalNotify | Ne | Ne |
-> | vynakládače | Ano | Ne |
+> | vynakládače | Ano | Ano |
 > | localNetworkGateways | Ano | Ano |
 > | natGateways | Ano | Ano |
 > | networkIntentPolicies | Ano | Ano |
 > | síťová rozhraní | Ano | Ano |
 > | networkProfiles | Ano | Ano |
 > | síťSecuritygroups | Ano | Ano |
-> | networkWatchers | Ano | Ne |
+> | networkWatchers | Ano | Ano |
 > | networkWatchers / connectionMonitory | Ano | Ne |
 > | networkWatchers / flowLogs | Ne | Ne |
 > | networkWatchers / objektivy | Ano | Ne |
@@ -1524,8 +1552,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | virtualNetworkGateways | Ano | Ano |
 > | virtualNetworks | Ano | Ano |
 > | virtualNetworkKohouty | Ano | Ano |
-> | virtualWans | Ano | Ano |
-> | vpnBrány | Ano | Ne |
+> | virtualWans | Ano | Ne |
+> | vpnBrány | Ano | Ano |
 > | vpnWe | Ano | Ano |
 > | webApplicationFirewallPolicies | Ano | Ano |
 
@@ -1821,7 +1849,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | Obory názvů | Ano | Ne |
+> | Obory názvů | Ano | Ano |
 > | obory názvů / autorizační pravidla | Ne | Ne |
 > | obory názvů / disasterrecoveryconfigs | Ne | Ne |
 > | obory názvů / eventgridfilters | Ne | Ne |

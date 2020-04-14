@@ -4,14 +4,14 @@ description: Zjistěte, jak nastavit Azure Private Link pro přístup k účtu A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 9a6a1560e169c51256c198868dc7293a020189f4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421420"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270685"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního spojení Azure pro účet Azure Cosmos
 
@@ -401,7 +401,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-Ve skriptu Prostředí `GroupId` PowerShell může proměnná obsahovat pouze jednu hodnotu. Tato hodnota je typ rozhraní API účtu. Povolené hodnoty `Sql`jsou: `Cassandra` `Gremlin`, `MongoDB` `Table`, , a . Některé typy účtů Azure Cosmos jsou přístupné prostřednictvím více api. Například:
+Ve skriptu Prostředí `GroupId` PowerShell může proměnná obsahovat pouze jednu hodnotu. Tato hodnota je typ rozhraní API účtu. Povolené hodnoty `Sql`jsou: `Cassandra` `Gremlin`, `MongoDB` `Table`, , a . Některé typy účtů Azure Cosmos jsou přístupné prostřednictvím více api. Příklad:
 
 * Účet rozhraní GREMLIN API je přístupný z účtů Gremlin i SQL API.
 * Účet rozhraní TABLE API lze přistupovat z účtů Table i SQL API.
@@ -624,6 +624,10 @@ Následující situace a výsledky jsou možné při použití private link v ko
 * Pokud nakonfigurujete veřejný provoz nebo koncový bod služby a vytvoříte soukromé koncové body, pak jsou různé typy příchozích přenosů autorizovány odpovídajícím typem pravidla brány firewall.
 
 * Pokud nenakonfigurujete žádný veřejný provoz nebo koncový bod služby a vytvoříte privátní koncové body, pak je účet Azure Cosmos přístupný jenom prostřednictvím privátních koncových bodů. Pokud nenakonfigurujete veřejný provoz nebo koncový bod služby, po odmítnutí nebo odstranění všech schválených soukromých koncových bodů je účet otevřen pro celou síť.
+
+## <a name="blocking-public-network-access-during-account-creation"></a>Blokování přístupu k veřejné síti během vytváření účtu
+
+Jak je popsáno v předchozí části a pokud konkrétní pravidla brány firewall byly nastaveny, přidání privátní koncový bod zpřístupní váš účet Azure Cosmos přístupné prostřednictvím privátních koncových bodů pouze. To znamená, že účet Azure Cosmos lze dosáhnout z veřejného provozu po jeho vytvoření a před přidáním privátní koncový bod. Chcete-li se ujistit, že přístup k veřejné síti je `publicNetworkAccess` zakázán `Disabled` ještě před vytvořením soukromých koncových bodů, můžete nastavit příznak během vytváření účtu. Podívejte se na [tuto šablonu Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) příklad ukazuje, jak používat tento příznak.
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Aktualizace soukromého koncového bodu při přidání nebo odebrání oblasti
 

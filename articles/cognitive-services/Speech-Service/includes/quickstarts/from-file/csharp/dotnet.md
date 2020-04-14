@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: dapine
-ms.openlocfilehash: 7d0898251c21f574e1da11f1143df36d1ba30893
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 36fb26fbc658e00c98f118d9b14347bd8392c8ae
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671723"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275208"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -208,4 +208,4 @@ Teď jste připraveni vytvořit aplikaci a otestovat naše rozpoznávání řeč
 
 ## <a name="next-steps"></a>Další kroky
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

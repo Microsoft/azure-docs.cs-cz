@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9b59181f7c1b24a7bc00ab579bbe67a70f499c92
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 087cdafe8b819e4929e1608ed7e00be2c1169414
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755374"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262993"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurace správy zájemců pro službu Salesforce
 
@@ -64,11 +64,15 @@ Až budete připraveni nakonfigurovat informace o správě zájemců pro vaši n
 
 1. V rozbalovacím okně Podrobnosti o připojení vyberte **salesforce** pro **cíl zájemce** a vložte do formuláře `oid` od webu k zájemce, který jste vytvořili, a to podle předchozích kroků do pole identifikátor **organizace.**
 
-1. Vyberte **Uložit**. 
+1. **Kontaktní e-mail** – Poskytněte e-maily lidem ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Můžete poskytnout více e-mailů tím, že je oddělíte středníkem.
 
-    >[!Note]
-    >Před přijetím zájemců o nabídku je nutné dokončit konfiguraci zbývající nabídky a publikovat ji.
+1. Vyberte **OK**.
 
-    ![Podrobnosti o připojení – výběr cíle zájemce](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+Chcete-li se ujistit, že jste se úspěšně připojili k cíli zájemce, klikněte na tlačítko ověřit. Pokud bude úspěšná, budete mít testovacího zájemce v cíli zájemce.
 
-    ![Podrobnosti o připojení – výběr cíle zájemce](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)
+>[!Note]
+>Před přijetím zájemců o nabídku je nutné dokončit konfiguraci zbývající nabídky a publikovat ji.
+
+![Podrobnosti o připojení – výběr cíle zájemce](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+
+![Podrobnosti o připojení – výběr cíle zájemce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

@@ -7,20 +7,23 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: dc106ecf40367172f28c0f339bbcce8bddb50a34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09e82b9905104df9b1902b0f64f6cfdf812aabb8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278071"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274000"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Vytvoření certifikátů pro Azure Key Vault
 
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [certifikaci image virtuálního počítače Azure](https://aks.ms/CertifyVMimage) spravujte migrované nabídky.
+
 Tento článek vysvětluje, jak zřídit certifikáty podepsané svým držitelem potřebné k vytvoření připojení Windows Remote Management (WinRM) k virtuálnímu počítači (VM) hostovanému v Azure. Tento proces se skládá ze tří kroků:
 
-1.  Vytvořte certifikát zabezpečení. 
-2.  Vytvořte trezor klíčů Azure pro uložení tohoto certifikátu. 
-3.  Uložte certifikáty do tohoto trezoru klíčů. 
+1.    Vytvořte certifikát zabezpečení. 
+2.    Vytvořte trezor klíčů Azure pro uložení tohoto certifikátu. 
+3.    Uložte certifikáty do tohoto trezoru klíčů. 
 
 Pro tuto práci můžete použít novou nebo existující skupinu prostředků Azure.  První přístup se používá v následujícím vysvětlení.
 

@@ -2,14 +2,14 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/24/2020
+ms.date: 04/8/2020
 ms.author: aahi
-ms.openlocfilehash: 988de8da839a677b47d679e7bd44059c7477a517
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 2693fd6a84c221fdcbbe2d3511490805316a156b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986694"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275122"
 ---
 <a name="HOLTop"></a>
 
@@ -105,10 +105,11 @@ Tyto fragmenty kódu ukazují, jak provést následující úkoly v klientské k
 Vytvořte funkci pro vytvoření `TextAnalyticsClient` instance objektu pomocí `key` a `endpoint` vytvořené výše. Pak vytvořte nového klienta. 
 
 ```python
-from azure.ai.textanalytics import TextAnalyticsClient, TextAnalyticsApiKeyCredential
+from azure.ai.textanalytics import TextAnalyticsClient
+from azure.core.credentials import AzureKeyCredential
 
 def authenticate_client():
-    ta_credential = TextAnalyticsApiKeyCredential(key)
+    ta_credential = AzureKeyCredential(key)
     text_analytics_client = TextAnalyticsClient(
             endpoint=endpoint, credential=ta_credential)
     return text_analytics_client
@@ -136,8 +137,8 @@ Vytvořte novou `sentiment_analysis_example()` funkci s názvem, která přebír
 ```python
 def sentiment_analysis_example(client):
 
-    document = ["I had the best day of my life. I wish you were there with me."]
-    response = client.analyze_sentiment(inputs=document)[0]
+    documents = ["I had the best day of my life. I wish you were there with me."]
+    response = client.analyze_sentiment(documents = documents)[0]
     print("Document Sentiment: {}".format(response.sentiment))
     print("Overall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} \n".format(
         response.confidence_scores.positive,
@@ -152,8 +153,7 @@ def sentiment_analysis_example(client):
             sentence.confidence_scores.neutral,
             sentence.confidence_scores.negative,
         ))
-
-            
+          
 sentiment_analysis_example(client)
 ```
 
@@ -161,7 +161,7 @@ sentiment_analysis_example(client)
 
 ```console
 Document Sentiment: positive
-Overall scores: positive=1.00; neutral=0.00; negative=0.00
+Overall scores: positive=1.00; neutral=0.00; negative=0.00 
 
 [Length: 30]
 Sentence 1 sentiment: positive
@@ -207,8 +207,8 @@ Vytvořte novou `language_detection_example()` funkci s názvem, která přebír
 ```python
 def language_detection_example(client):
     try:
-        document = ["Ce document est rédigé en Français."]
-        response = client.detect_language(inputs = document, country_hint = 'us')[0]
+        documents = ["Ce document est rédigé en Français."]
+        response = client.detect_language(documents = documents, country_hint = 'us')[0]
         print("Language: ", response.primary_language.name)
 
     except Exception as err:
@@ -245,8 +245,7 @@ Document ID: 3 , Language: Chinese_Simplified
 #### <a name="version-30-preview"></a>[Verze 3.0-preview](#tab/version-3)
 
 > [!NOTE]
-> Ve `3.0-preview`verzi :
-> * Ner obsahuje samostatné metody pro zjišťování osobních údajů. 
+> Ve `3.0-preview`verzi : 
 > * Propojení entit je samostatný požadavek než NER.
 
 Vytvořte novou `entity_recognition_example` funkci s názvem, která přebírá `recognize_entities()` klienta jako argument, pak volá funkci a itetuje prostřednictvím výsledků. Vrácený objekt odpovědi bude obsahovat seznam `entity` zjištěných entit v případě úspěchu `error` a pokud ne. Pro každou zjištěnou entitu vytiskněte její kategorii a podkategorii, pokud existuje.
@@ -255,13 +254,13 @@ Vytvořte novou `entity_recognition_example` funkci s názvem, která přebírá
 def entity_recognition_example(client):
 
     try:
-        document = ["I had a wonderful trip to Seattle last week."]
-        result = client.recognize_entities(inputs= document)[0]
+        documents = ["I had a wonderful trip to Seattle last week."]
+        result = client.recognize_entities(documents = documents)[0]
 
         print("Named Entities:\n")
         for entity in result.entities:
             print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
-                    "\n\tLength: \t", entity.grapheme_length, "\tConfidence Score: \t", round(entity.score, 2), "\n")
+                    "\n\tLength: \t", entity.grapheme_length, "\tConfidence Score: \t", round(entity.confidence_score, 2), "\n")
 
     except Exception as err:
         print("Encountered exception. {}".format(err))
@@ -280,35 +279,6 @@ Named Entities:
     Length:          9      Confidence Score:        0.8
 ```
 
-## <a name="using-ner-to-detect-personal-information"></a>Použití funkce NER ke zjišťování osobních informací
-
-Vytvořte novou `entity_pii_example()` funkci s názvem, která přebírá `recognize_pii_entities()` klienta jako argument, pak volá funkci a získá výsledek. Poté iterate prostřednictvím výsledků a vytisknout entity.
-
-```python
-def entity_pii_example(client):
-
-        document = ["Insurance policy for SSN on file 123-12-1234 is here by approved."]
-
-
-        result = client.recognize_pii_entities(inputs= document)[0]
-        
-        print("Personally Identifiable Information Entities: ")
-        for entity in result.entities:
-            print("\tText: ",entity.text,"\tCategory: ", entity.category,"\tSubCategory: ", entity.subcategory)
-            print("\t\tLength: ", entity.grapheme_length, "\tScore: {0:.2f}".format(entity.score), "\n")
-        
-entity_pii_example(client)
-```
-
-### <a name="output"></a>Výstup
-
-```console
-Personally Identifiable Information Entities:
-    Text:  123-12-1234      Category:  U.S. Social Security Number (SSN)    SubCategory:  None
-        Length:  11     Score: 0.85
-```
-
-
 ## <a name="entity-linking"></a>Entity Linking
 
 Vytvořte novou `entity_linking_example()` funkci s názvem, která přebírá `recognize_linked_entities()` klienta jako argument, pak volá funkci a itetuje prostřednictvím výsledků. Vrácený objekt odpovědi bude obsahovat seznam `entities` zjištěných entit v případě úspěchu `error` a pokud ne. Vzhledem k tomu, že propojené entity jsou jednoznačně identifikovány, výskyty stejné entity jsou seskupeny pod objektem `entity` jako seznam `match` objektů.
@@ -317,12 +287,12 @@ Vytvořte novou `entity_linking_example()` funkci s názvem, která přebírá `
 def entity_linking_example(client):
 
     try:
-        document = ["""Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
+        documents = ["""Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
         to develop and sell BASIC interpreters for the Altair 8800. 
         During his career at Microsoft, Gates held the positions of chairman,
         chief executive officer, president and chief software architect, 
         while also being the largest individual shareholder until May 2014."""]
-        result = client.recognize_linked_entities(inputs= document)[0]
+        result = client.recognize_linked_entities(documents = documents)[0]
 
         print("Linked Entities:\n")
         for entity in result.entities:
@@ -331,7 +301,7 @@ def entity_linking_example(client):
             print("\tMatches:")
             for match in entity.matches:
                 print("\t\tText:", match.text)
-                print("\t\tScore: {0:.2f}".format(match.score), "\tLength: {}\n".format(match.grapheme_length))
+                print("\t\tConfidence Score: {0:.2f}".format(match.confidence_score), "\tLength: {}\n".format(match.grapheme_length))
             
     except Exception as err:
         print("Encountered exception. {}".format(err))
@@ -343,48 +313,47 @@ entity_linking_example(client)
 ```console
 Linked Entities:
 
-    Name:  Altair 8800      Id:  Altair 8800        Url:  https://en.wikipedia.org/wiki/Altair_8800
+    Name:  Altair 8800     Id:  Altair 8800     Url:  https://en.wikipedia.org/wiki/Altair_8800 
     Data Source:  Wikipedia
     Matches:
         Text: Altair 8800
-        Score: 0.78     Length: 11
+        Confidence Score: 0.00     Length: 11
 
-    Name:  Bill Gates       Id:  Bill Gates         Url:  https://en.wikipedia.org/wiki/Bill_Gates
+    Name:  Bill Gates     Id:  Bill Gates     Url:  https://en.wikipedia.org/wiki/Bill_Gates 
     Data Source:  Wikipedia
     Matches:
         Text: Bill Gates
-        Score: 0.55     Length: 10
+        Confidence Score: 0.00     Length: 10
 
         Text: Gates
-        Score: 0.55     Length: 5
+        Confidence Score: 0.00     Length: 5
 
-    Name:  Paul Allen       Id:  Paul Allen         Url:  https://en.wikipedia.org/wiki/Paul_Allen
+    Name:  Paul Allen     Id:  Paul Allen     Url:  https://en.wikipedia.org/wiki/Paul_Allen 
     Data Source:  Wikipedia
     Matches:
         Text: Paul Allen
-        Score: 0.53     Length: 10
+        Confidence Score: 0.00     Length: 10
 
-    Name:  Microsoft        Id:  Microsoft  Url:  https://en.wikipedia.org/wiki/Microsoft
+    Name:  Microsoft     Id:  Microsoft     Url:  https://en.wikipedia.org/wiki/Microsoft 
     Data Source:  Wikipedia
     Matches:
         Text: Microsoft
-        Score: 0.47     Length: 9
+        Confidence Score: 0.00     Length: 9
 
         Text: Microsoft
-        Score: 0.47     Length: 9
+        Confidence Score: 0.00     Length: 9
 
-    Name:  April 4  Id:  April 4    Url:  https://en.wikipedia.org/wiki/April_4
+    Name:  April 4     Id:  April 4     Url:  https://en.wikipedia.org/wiki/April_4 
     Data Source:  Wikipedia
     Matches:
         Text: April 4
-        Score: 0.25     Length: 7
+        Confidence Score: 0.00     Length: 7
 
-    Name:  BASIC    Id:  BASIC      Url:  https://en.wikipedia.org/wiki/BASIC
+    Name:  BASIC     Id:  BASIC     Url:  https://en.wikipedia.org/wiki/BASIC 
     Data Source:  Wikipedia
     Matches:
         Text: BASIC
-        Score: 0.28     Length: 5
-
+        Confidence Score: 0.00     Length: 5
 ```
 
 #### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
@@ -448,9 +417,9 @@ Vytvořte novou `key_phrase_extraction_example()` funkci s názvem, která přeb
 def key_phrase_extraction_example(client):
 
     try:
-        document = ["My cat might need to see a veterinarian."]
+        documents = ["My cat might need to see a veterinarian."]
 
-        response = client.extract_key_phrases(inputs= document)[0]
+        response = client.extract_key_phrases(documents = documents)[0]
 
         if not response.is_error:
             print("\tKey Phrases:")

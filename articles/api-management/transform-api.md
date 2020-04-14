@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70067469"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258741"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API
 
@@ -112,9 +112,9 @@ Původní odpověď zobrazíte následovně:
 2.  Vyberte **všechny operace**.
 3.  V horní části obrazovky vyberte kartu **Návrh**.
 4.  V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
-5.  Umístěte kurzor uvnitř ** &lt;odchozího&gt; ** prvku.
+5.  Umístěte kurzor mezi ** &lt;odchozí&gt; ** prvek a v pravém horním rohu klikněte na **tlačítko Vložit zásady.**
 6.  V pravém okně v části **Zásady transformace** klikněte na **+ Find and replace string in body** (Najít a nahradit řetězec v těle textu).
-7.  Nahraďte adresu URL upravením kódu **find-and-replace** (v elementu **\<outbound\>**) tak, aby odpovídala bráně služby APIM. Například:
+7.  Nahraďte adresu URL upravením kódu **find-and-replace** (v elementu **\<outbound\>**) tak, aby odpovídala bráně služby APIM. Příklad:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 

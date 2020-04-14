@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: aa85e80f1a90191a0a34a6962437c27a9d57ef65
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547556"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257227"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasazujte automatizované modely strojového učení pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -155,7 +155,6 @@ Rozptyl| Měření, jak daleko jsou data tohoto sloupce, pochází z jeho prům�
 Šikmost| Měření, jak se liší data tohoto sloupce od normální distribuce.
 Špičatost| Měření toho, jak silně sledoval data tohoto sloupce je porovnán s normální rozdělení.
 
-
 <a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>Pokročilé možnosti featurization
@@ -164,12 +163,15 @@ Automatizované strojové učení nabízí automatické předběžné zpracován
 
 ### <a name="preprocessing"></a>Předzpracování
 
+> [!NOTE]
+> Pokud plánujete exportovat modely vytvořené automatickým ML do [modelu ONNX](concept-onnx.md), jsou ve formátu ONNX podporovány pouze možnosti featurization označené * . Další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx). 
+
 |Kroky&nbsp;předběžného zpracování| Popis |
 | ------------- | ------------- |
-|Pokles vysoké mohutnosti nebo žádné prvky rozptylu|Drop tyto z trénovací a ověřovací sady, včetně funkcí se všemi hodnotami chybí, stejnou hodnotu ve všech řádcích nebo s extrémně vysokou mohutnost (například hodnoty hash, ID nebo GUID).|
-|Impute chybějící hodnoty|Pro číselné funkce, impute s průměrem hodnot ve sloupci.<br/><br/>Pro kategorické funkce, impute s nejčastější hodnotou.|
-|Generovat další funkce|Funkce DateTime: Rok, Měsíc, Den, Den v týdnu, Den v roce, Čtvrtletí, Týden v roce, Hodina, Minuta, Sekunda.<br/><br/>Funkce textu: Frekvence termínů na základě unigramů, dvougramů a triznakových gramů.|
-|Transformace a kódování |Číselné prvky s několika málo jedinečnými hodnotami jsou transformovány do kategorických prvků.<br/><br/>Jednohorké kódování se provádí pro nízkou mohutnost kategorické; pro vysokou mohutnost, jedno-hot-hash kódování.|
+|Pokles vysoké mohutnosti nebo žádné funkce rozptylu* |Drop tyto z trénovací a ověřovací sady, včetně funkcí se všemi hodnotami chybí, stejnou hodnotu ve všech řádcích nebo s extrémně vysokou mohutnost (například hodnoty hash, ID nebo GUID).|
+|Impute chybějící hodnoty* |Pro číselné funkce, impute s průměrem hodnot ve sloupci.<br/><br/>Pro kategorické funkce, impute s nejčastější hodnotou.|
+|Generovat další funkce* |Funkce DateTime: Rok, Měsíc, Den, Den v týdnu, Den v roce, Čtvrtletí, Týden v roce, Hodina, Minuta, Sekunda.<br/><br/>Funkce textu: Frekvence termínů na základě unigramů, dvougramů a triznakových gramů.|
+|Transformace a kódování *|Číselné prvky s několika málo jedinečnými hodnotami jsou transformovány do kategorických prvků.<br/><br/>Jednohorké kódování se provádí pro nízkou mohutnost kategorické; pro vysokou mohutnost, jedno-hot-hash kódování.|
 |Vkládání do Wordu|Text featurizer, který převádí vektory textových tokenů na vektory věty pomocí předem trénovaného modelu. Vektor vkládání každého slova v dokumentu je agregován dohromady a vytváří vektor prvku dokumentu.|
 |Cílové kódování|Pro kategorické funkce mapuje každou kategorii s průměrnou cílovou hodnotou pro regresní problémy a pravděpodobnost třídy pro každou třídu pro problémy klasifikace. K omezení montáže mapování a šumu způsobeného řídkými datovými kategoriemi se používá vážení na základě frekvence a křížové ověření k-fold.|
 |Kódování cíle textu|Pro zadávání textu se ke generování pravděpodobnosti jednotlivých tříd používá skládaný lineární model s vakem slov.|
@@ -178,19 +180,13 @@ Automatizované strojové učení nabízí automatické předběžné zpracován
 
 ### <a name="data-guardrails"></a>Datová svodidla
 
-Svodidla dat se používají, když je povolena automatická featurization nebo ověření je nastavena na auto. Svodidla dat vám pomohou identifikovat potenciální problémy s vašimi daty (např. chybějící hodnoty, nerovnováha ve třídě) a pomáhají přijmout nápravná opatření pro zlepšení výsledků. Existuje mnoho osvědčených postupů, které jsou k dispozici a lze použít k dosažení spolehlivých výsledků. Uživatelé mohou zkontrolovat svodidla dat ve studiu v záložce Datové ```show_output=True``` **svodidla** automatického spuštění ml nebo nastavením při odeslání experimentu pomocí sady Python SDK. Následující tabulka popisuje aktuálně podporovaná svodidla dat a přidružené stavy, se kterými se uživatelé mohou sejít při odesílání experimentu.
+Svodidla dat se používají, když je povolena automatická featurization nebo ověření je nastavena na auto. Svodidla dat vám pomohou identifikovat potenciální problémy s vašimi daty (např. chybějící hodnoty, nerovnováha ve třídě) a pomáhají přijmout nápravná opatření pro zlepšení výsledků. 
 
-Svodidla|Status|Podmínka&nbsp;&nbsp;pro aktivační událost
----|---|---
-Chybějící přinikace hodnot prvků |**Předán** <br><br><br> **hotovo**| V trénovacích datech nebyly zjištěny žádné chybějící hodnoty prvků. Další informace o [chybějící imputaci hodnoty.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> V trénovacích datech byly zjištěny chybějící hodnoty funkcí a byly imputovány.
-Zpracování prvků s vysokou mohutností |**Předán** <br><br><br> **hotovo**| Vaše vstupy byly analyzovány a nebyly zjištěny žádné funkce vysoké mohutnosti. Další informace o [detekci funkcí vysoké mohutnosti.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Funkce vysoké mohutnosti byly zjištěny ve vašich vstupech a byly zpracovány.
-Zpracování rozdělení ověření |**hotovo**| *Konfigurace ověření byla nastavena na "auto" a trénovací data obsahovala **méně** než 20 000 řádků.* <br> Každá iterace trénovaného modelu byla ověřena pomocí křížového ověření. Přečtěte si další informace o [ověřovacích datech.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *Konfigurace ověření byla nastavena na "auto" a trénovací data obsahovala **více** než 20 000 řádků.* <br> Vstupní data byla rozdělena do trénovací datové sady a ověřovací datové sady pro ověření modelu.
-Detekce vyvažování tříd |**Předán** <br><br><br><br> **Upozorněni** | Vaše vstupy byly analyzovány a všechny třídy jsou vyvážené v trénovacích datech. Datová sada je považována za vyváženou, pokud každá třída má v datové sadě dobrou reprezentaci, měřeno počtem a poměrem vzorků. <br><br><br> Ve vstupech byly zjištěny nevyvážené třídy. Chcete-li opravit zkreslení modelu opravit problém vyvažování. Přečtěte si další informace o [nevyvážených datech.](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml#imbalance)
-Zjišťování problémů s pamětí |**Předán** <br><br><br><br> **hotovo** |<br> Vybraná hodnota {horizont, zpoždění, rolovací okno} byla analyzována a nebyly zjištěny žádné potenciální problémy s nepaměti. Přečtěte si další informace o [konfiguracích prognóz časových řad.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>Vybrané hodnoty {horizont, zpoždění, postupné okno} byly analyzovány a potenciálně způsobí, že experiment bude mít nedostatek paměti. Konfigurace lagnebo rolling window byly vypnuty.
-Detekce frekvence |**Předán** <br><br><br><br> **hotovo** |<br> Časové řady byly analyzovány a všechny datové body jsou zarovnány s detekotorní frekvencí. <br> <br> Byly analyzovány časové řady a byly zjištěny datové body, které nejsou v souladu s detekotorní frekvencí. Tyto datové body byly odebrány z datové sady. Přečtěte si další informace o [přípravě dat pro prognózování časových řad.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+Uživatelé mohou zkontrolovat svodidla dat ve studiu v záložce Datové ```show_output=True``` **svodidla** automatického spuštění ml nebo nastavením při odeslání experimentu pomocí sady Python SDK. 
 
 #### <a name="data-guardrail-states"></a>Stavy svodidla dat
-Svodidla dat zobrazí jeden ze tří stavů: "Prošel", "Hotovo" nebo "Upozorněni".
+
+Svodidla dat zobrazí jeden ze tří stavů: **Passed**, **Done**, nebo **Alerted**.
 
 Stav| Popis
 ----|----
@@ -198,7 +194,19 @@ Předán| Nebyly zjištěny žádné problémy s daty a není vyžadována žád
 Hotovo| Změny byly použity u vašich dat. Doporučujeme uživatelům, aby přezkoumali nápravná opatření, která automatizovaná hodnota ML provedla, aby bylo zajištěno, že změny budou v souladu s očekávanými výsledky. 
 Upozorněni| Byl zjištěn problém s daty, který nebylo možné odstranit. Doporučujeme uživatelům, aby problém revidovali a opravili. 
 
-Předchozí verze automatizovaného ml zobrazí čtvrtý stav: 'Opraveno'. Novější experimenty tento stav nezobrazí a všechna svodidla, která zobrazila stav Opraveno, se nyní zobrazí "Hotovo".   
+>[!NOTE]
+> Předchozí verze automatizovaných experimentů ML zobrazovaly čtvrtý stav: **Opraveno**. Novější experimenty se nezobrazí tento stav, a všechna svodidla, která se zobrazí **pevný** stav se nyní zobrazí **Hotovo**.   
+
+Následující tabulka popisuje aktuálně podporovaná svodidla dat a přidružené stavy, se kterými se uživatelé mohou sejít při odesílání experimentu.
+
+Svodidla|Status|Podmínka&nbsp;&nbsp;pro aktivační událost
+---|---|---
+Chybějící přinikace hodnot prvků |**Předán** <br><br><br> **hotovo**| V trénovacích datech nebyly zjištěny žádné chybějící hodnoty prvků. Další informace o [chybějící imputaci hodnoty.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> V trénovacích datech byly zjištěny chybějící hodnoty funkcí a byly imputovány.
+Zpracování prvků s vysokou mohutností |**Předán** <br><br><br> **hotovo**| Vaše vstupy byly analyzovány a nebyly zjištěny žádné funkce vysoké mohutnosti. Další informace o [detekci funkcí vysoké mohutnosti.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Funkce vysoké mohutnosti byly zjištěny ve vašich vstupech a byly zpracovány.
+Zpracování rozdělení ověření |**hotovo**| *Konfigurace ověření byla nastavena na "auto" a trénovací data obsahovala **méně** než 20 000 řádků.* <br> Každá iterace trénovaného modelu byla ověřena pomocí křížového ověření. Přečtěte si další informace o [ověřovacích datech.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *Konfigurace ověření byla nastavena na "auto" a trénovací data obsahovala **více** než 20 000 řádků.* <br> Vstupní data byla rozdělena do trénovací datové sady a ověřovací datové sady pro ověření modelu.
+Detekce vyvažování tříd |**Předán** <br><br><br><br> **Upozorněni** | Vaše vstupy byly analyzovány a všechny třídy jsou vyvážené v trénovacích datech. Datová sada je považována za vyváženou, pokud každá třída má v datové sadě dobrou reprezentaci, měřeno počtem a poměrem vzorků. <br><br><br> Ve vstupech byly zjištěny nevyvážené třídy. Chcete-li opravit zkreslení modelu opravit problém vyvažování. Přečtěte si další informace o [nevyvážených datech.](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)
+Zjišťování problémů s pamětí |**Předán** <br><br><br><br> **hotovo** |<br> Vybraná hodnota {horizont, zpoždění, rolovací okno} byla analyzována a nebyly zjištěny žádné potenciální problémy s nepaměti. Přečtěte si další informace o [konfiguracích prognóz časových řad.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>Vybrané hodnoty {horizont, zpoždění, postupné okno} byly analyzovány a potenciálně způsobí, že experiment bude mít nedostatek paměti. Konfigurace lagnebo rolling window byly vypnuty.
+Detekce frekvence |**Předán** <br><br><br><br> **hotovo** |<br> Časové řady byly analyzovány a všechny datové body jsou zarovnány s detekotorní frekvencí. <br> <br> Byly analyzovány časové řady a byly zjištěny datové body, které nejsou v souladu s detekotorní frekvencí. Tyto datové body byly odebrány z datové sady. Přečtěte si další informace o [přípravě dat pro prognózování časových řad.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
 
 ## <a name="run-experiment-and-view-results"></a>Spuštění experimentu a zobrazení výsledků
 

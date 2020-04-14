@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 2b7eb6d321a64835254b684c8faeedc53645dffe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f2652a98aa081b62ba80951212ef3a3de513593
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278054"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272657"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Připojení k virtuálnímu počítači založenému na Azure
+
+> [!IMPORTANT]
+> dubna 2020 začneme s přesouváním nabídky virtuálních strojů Azure do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření technických prostředků virtuálního počítače Azure](https://aka.ms/AzureVMTechAsset) a spravujte migrované nabídky.
 
 Tento článek vysvětluje, jak se připojit a přihlásit se k virtuálním počítačům,, které jste vytvořili v Azure.  Po úspěšném připojení můžete s virtuálním počítačem pracovat, jako byste byli místně přihlášeni k hostitelskému serveru. 
 

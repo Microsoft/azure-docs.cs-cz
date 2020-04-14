@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2a1022c6d041bf645b43dfed391a489de30b2fce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df94cba1f77ae3ea8cf595e7c651af7a69108bb6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288559"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255970"
 ---
 <a name="api-prerequisites"></a>Požadavky rozhraní API
 ================
+
+> [!NOTE]
+> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
 
 Existují dva požadované programové prostředky, které je potřeba použít rozhraní API portálu cloudových partnerů: instanční objekt a přístupový token Azure Active Directory (Azure AD).
 
@@ -41,7 +44,7 @@ Pomocí následujících kroků přidejte instanční objekt:
 3. V rozevíracím **příkladu Typ** vyberte **Instanční objekt** a přidejte následující podrobnosti:
 
 -   Popisný **název** pro instanční `spAccount`objekt, například .
--   **ID aplikace**. Pokud chcete najít tento identifikátor, přejděte na [Portál Azure](https://portal.azure.com), klikněte na Azure **Active Directory**, zvolte Registrace **aplikací**a klikněte na svou aplikaci.
+-   **ID aplikace**. Pokud chcete najít tento identifikátor, přejděte na [portál Azure](https://portal.azure.com), klikněte na Azure **Active Directory**, zvolte Registrace **aplikací**a klikněte na svou aplikaci.
 -   **ID klienta**, označované také jako **ID adresáře**, pro vašeho klienta Azure AD. Tento identifikátor najdete na stránce Azure Active Directory na [webu Azure Portal](https://portal.azure.com)v části **Vlastnosti**.
 -   **ID objektu** pro objekt instančního objektu. Tento identifikátor můžete získat z webu Azure Portal. Přejděte do **Služby Azure Active Directory**, zvolte **Registrace aplikací**, klikněte na aplikaci a klikněte na název aplikace v části **Spravovaná aplikace v místním adresáři**. Potom přejděte na stránku **Vlastnosti** a vyhledejte ID objektu. Ujistěte se, že nezabírápočáteční ID objektu, který je ve vaší aplikaci, ale místo toho ID objektu ve spravované aplikaci.
 -   **Role** přidružené k účtu, který bude použit pro RBAC.

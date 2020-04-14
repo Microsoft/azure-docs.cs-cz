@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fee74cb6ec5acd5fa0f171eab9769a833f04ad66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792915"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262447"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search – nejčastější dotazy (nejčastější dotazy)
 
@@ -24,16 +24,6 @@ ms.locfileid: "72792915"
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Jak se Azure Cognitive Search liší od fulltextového vyhledávání v mém DBMS?
 
 Azure Cognitive Search podporuje více zdrojů dat, [jazykové analýzy pro mnoho jazyků](https://docs.microsoft.com/rest/api/searchservice/language-support), vlastní [analýzy pro zajímavé a neobvyklé datové vstupy](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), řízení pořadí vyhledávání prostřednictvím [vyhodnocování profily](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)a uživatelské prostředí funkce, jako je dopředné písmo, zvýraznění přístupů a fazetované navigace. Obsahuje také další funkce, jako jsou synonyma a syntaxe bohatého dotazu, ale obecně se nejedná o rozlišovací funkce.
-
-### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Jaký je rozdíl mezi Azure Cognitive Search a Elasticsearch?
-
-Při porovnávání vyhledávacích technologií se zákazníci často ptají na podrobnosti o tom, jak azure kognitivní vyhledávání porovnává s elasticsearch. Zákazníci, kteří pro své projekty vyhledávacích aplikací zvolili azure kognitivní vyhledávání přes elastické vyhledávání, to obvykle dělají, protože jsme usnadnili klíčový úkol nebo potřebují integrovanou integraci s jinými technologiemi Microsoftu:
-
-+ Azure Cognitive Search je plně spravovaná cloudová služba s 99,9% smlouvami o úrovni služeb (SLA) při zřízení s dostatečnou redundancí (2 repliky pro přístup pro čtení, tři repliky pro čtení a zápis).
-+ [Procesory microsoft Natural language](https://docs.microsoft.com/rest/api/searchservice/language-support) nabízejí špičkovou jazykovou analýzu.  
-+ [Indexery Azure Cognitive Search](search-indexer-overview.md) můžou procházet různé zdroje dat Azure pro počáteční a přírůstkové indexování.
-+ Pokud potřebujete rychlou reakci na výkyvy v dotazu nebo indexování svazků, můžete použít [posuvník ovládací prvky](search-manage.md#scale-up-or-down) na portálu Azure nebo spustit [skript PowerShell](search-manage-powershell.md), vynechání správu oddílů přímo.  
-+ [Bodování a ladění funkce](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) poskytují prostředky pro ovlivňování skóre vyhledávání hodnosti nad rámec toho, co vyhledávač sám může poskytnout.
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Můžu pozastavit službu Azure Cognitive Search a zastavit fakturaci?
 

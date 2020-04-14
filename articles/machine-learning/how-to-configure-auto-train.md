@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 11f52df683b7a85a8ad5163bbede33d786897452
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115423"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257262"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -197,7 +197,7 @@ Informace o konkrétních definicích těchto metrik najdete v [části Principy
 
 V každém automatizovaném experimentu strojového učení se vaše data [automaticky škálují a normalizují,](concept-automated-ml.md#preprocess) aby pomohla *určitým* algoritmům, které jsou citlivé na funkce, které jsou v různých měřítkách.  Můžete však také povolit další featurization, jako jsou chybějící hodnoty imputace, kódování a transformace. [Další informace o tom, co featurization je zahrnuta](how-to-use-automated-ml-for-ml-models.md#featurization).
 
-Při konfiguraci experimentů můžete povolit `featurization`rozšířené nastavení . V následující tabulce jsou uvedena přijatá [ `AutoMLConfig` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)nastavení pro featurization ve třídě .
+Při konfiguraci experimentů můžete povolit `featurization`rozšířené nastavení . V následující tabulce jsou uvedena přijatá nastavení pro featurization ve [třídě AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
 |Konfigurace featurizace | Popis |
 | ------------- | ------------- |

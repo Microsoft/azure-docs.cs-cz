@@ -3,12 +3,12 @@ title: Vytvoření skupin pro správu pro uspořádání prostředků – Zásad
 description: Zjistěte, jak vytvořit skupiny pro správu Azure pro správu více prostředků pomocí portálu, Azure PowerShellu a Azure CLI.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a06679432d795b5b7854af8dc66b468841978e9c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436535"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273184"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci a správu prostředků
 
@@ -20,7 +20,7 @@ Dokončení první skupiny pro správu vytvořené v adresáři může trvat až
 
 Každý uživatel Azure AD v tenantovi můžete vytvořit skupinu pro správu bez oprávnění pro zápis skupiny pro správu přiřazené tomuto uživateli.  Tato nová skupina pro správu bude podřízenou skupinou Root Management Group a tvůrce bude mít přiřazení role Vlastník. Služba skupiny pro správu umožňuje tuto schopnost tak, aby přiřazení rolí nejsou potřeba na kořenové úrovni. Žádní uživatelé nemají přístup ke skupině root management group při jeho vytvoření.  Abychom se vyhnuli překážkám při hledání globálních správců Azure AD, aby mohli začít používat skupiny pro správu, povolujeme vytváření počátečních skupin pro správu na kořenové úrovni.      
 
-Skupinu pro správu můžete vytvořit pomocí portálu, PowerShellu nebo Azure CLI. V současné době nelze k vytváření skupin pro správu používat šablony Správce prostředků.
+Skupinu pro správu můžete vytvořit pomocí portálu, [šablony Správce prostředků](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), PowerShellu nebo azure CLI.
 
 ### <a name="create-in-portal"></a>Vytvořit na portálu
 

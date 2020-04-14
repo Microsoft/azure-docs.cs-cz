@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: d4fc8762e25825b21637b16b751d57a0dcbf369e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22538047adc17a40438359e11bff7fd20e43bcc6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288797"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273082"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>Karta Testovací jednotka virtuálního počítače
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky virtuálního počítače Azure](https://aka.ms/CreateAzureVMoffer) ke správě migrovaných nabídek.
 
 Karta **Testovací cesta** na stránce Nová **nabídka** umožňuje potenciálním zákazníkům poskytnout praktickou ukázku klíčových funkcí a výhod produktu, která je demonstrována ve standardizovaném scénáři.  Test Drive je volitelná funkce pro typy nabídek, které podporují testovací jízdu.  Test Drive vyžaduje podporu prostředků, které mají být správně implementovány.  Další informace naleznete v článku [Azure Marketplace Test Drive](https://azure.microsoft.com/blog/azure-marketplace-test-drive/).  <!--TD: Replace with migrated version of Test Drive article! -->
 

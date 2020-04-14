@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 04/10/2020
 ms.author: dsindona
-ms.openlocfilehash: a370b7b21d25f117e44d613d060dd8cdd060c062
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2fdf40dde287a65548f1db04d34ed3cf67d0374
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336267"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262158"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Zásady a podmínky komerčního tržiště
 
@@ -21,7 +21,7 @@ ms.locfileid: "80336267"
 
 Děkujeme vám za váš zájem o publikování nabídek na komerčním trhu. Zavázali jsme se, že s vámi budeme spolupracovat na vytváření bohatého zdroje cloudových řešení a řady obchodních nabídek, které potěší zákazníky po celém světě a pomohou vám vybudovat vaše podnikání.
 
-Nabídky na trhu musí být v souladu s našimi zásadami a podmínkami. Tyto zásady a podmínky čas od času aktualizujeme, abychom zajistili dobrou zákaznickou zkušenost a poskytli partnerům příležitost uspět. Pokud máte zpětnou vazbu k našim zásadám nebo podmínkám, dejte nám vědět komentářem ve [fóru Azure Marketplace a AppSource](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
+Nabídky na trhu musí být v souladu s našimi zásadami a podmínkami. Tyto zásady a podmínky čas od času aktualizujeme, abychom zajistili dobrou zákaznickou zkušenost a poskytli partnerům příležitost uspět. Pokud máte zpětnou vazbu k našim zásadám nebo podmínkám, dejte nám vědět na fóru [Azure Marketplace a Microsoft AppSource](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
 
 ## <a name="policies-and-terms"></a>Zásady a podmínky
 
@@ -35,6 +35,6 @@ Nabídky na trhu musí být v souladu s našimi zásadami a podmínkami. Tyto z�
 
 ## <a name="next-steps"></a>Další kroky
 
-Navštivte stránku [průvodce publikováním Azure Marketplace a AppSource.](./marketplace-publishers-guide.md)
+Navštivte stránku [s průvodcem publikováním na komerčním trhu.](./marketplace-publishers-guide.md)
 
 ---

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 64eb19e43223c1953a7244f8fd29c48d085f1e96
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2fa2e40ba2a7fe84b6df57bfb711d01332b8f523
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80117217"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275034"
 ---
 <a name="HOLTop"></a>
 
@@ -44,7 +44,7 @@ Pomocí rozhraní IDE sady Visual Studio vytvořte novou konzolovou aplikaci .NE
 
 #### <a name="version-30-preview"></a>[Verze 3.0-preview](#tab/version-3)
 
-Nainstalujte klientskou knihovnu kliknutím pravým tlačítkem myši na řešení v **Průzkumníku řešení** a výběrem **možnosti Spravovat balíčky NuGet**. Ve správci balíčků, který se otevře, vyberte `Azure.AI.TextAnalytics` **Procházet**, **zaškrtněte políčko Zahrnout předběžnou verzi**a vyhledejte . Vyberte `1.0.0-preview.3`verzi a **nainstalujte**program Install . Můžete také použít [konzolu Správce balíčků](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
+Nainstalujte klientskou knihovnu kliknutím pravým tlačítkem myši na řešení v **Průzkumníku řešení** a výběrem **možnosti Spravovat balíčky NuGet**. Ve správci balíčků, který se otevře, vyberte `Azure.AI.TextAnalytics` **Procházet**, **zaškrtněte políčko Zahrnout předběžnou verzi**a vyhledejte . Vyberte `1.0.0-preview.4`verzi a **nainstalujte**program Install . Můžete také použít [konzolu Správce balíčků](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
 
 > [!TIP]
 > Chcete zobrazit celý soubor kódu rychlého startu najednou? Najdete ji [na GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs), který obsahuje příklady kódu v tomto rychlém startu. 
@@ -63,6 +63,7 @@ Nainstalujte klientskou knihovnu kliknutím pravým tlačítkem myši na řešen
 Otevřete soubor *program.cs* a `using` přidejte následující direktivy:
 
 ```csharp
+using Azure;
 using System;
 using System.Globalization;
 using Azure.AI.TextAnalytics;
@@ -73,7 +74,7 @@ Ve `Program` třídě aplikace vytvořte proměnné pro klíč a koncový bod pr
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
 ```csharp
-private static readonly TextAnalyticsApiKeyCredential credentials = new TextAnalyticsApiKeyCredential("<replace-with-your-text-analytics-key-here>");
+private static readonly AzureKeyCredential credentials = new AzureKeyCredential("<replace-with-your-text-analytics-key-here>");
 private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
 ```
 
@@ -87,7 +88,6 @@ static void Main(string[] args)
     SentimentAnalysisExample(client);
     LanguageDetectionExample(client);
     EntityRecognitionExample(client);
-    EntityPIIExample(client);
     EntityLinkingExample(client);
     KeyPhraseExtractionExample(client);
 
@@ -121,14 +121,13 @@ Nahraďte metodu `Main` aplikace. Zde volané metody budete později.
 
 Klient Text Analytics `TextAnalyticsClient` je objekt, který se ověřuje v Azure pomocí vašeho klíče a poskytuje funkce pro přijímání textu jako jednotlivé řetězce nebo jako dávka. Text můžete odeslat do rozhraní API synchronně nebo asynchronně. Objekt odpovědi bude obsahovat informace o analýze pro každý odeslané dokument. 
 
-Pokud používáte verzi `3.0-preview`, můžete použít `TextAnalyticsClientOptions` volitelnou instanci k inicializaci klienta s různými výchozími nastaveními (například výchozím jazykem nebo nápovědou k zemi). Můžete se také ověřit pomocí tokenu služby Azure Active Directory. 
+Pokud používáte verzi `3.0-preview` služby, můžete použít `TextAnalyticsClientOptions` volitelnou instanci k inicializaci klienta s různými výchozími nastaveními (například výchozí jazyk nebo nápověda země). Můžete se také ověřit pomocí tokenu služby Azure Active Directory. 
 
 ## <a name="code-examples"></a>Příklady kódu
 
 * [Analýza mínění](#sentiment-analysis)
 * [Detekce jazyka](#language-detection)
-* [Pojmenované rozpoznávání entit](#named-entity-recognition-ner)
-* [Zjišťování osobních údajů](#detect-personal-information)
+* [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner)
 * [Propojení entit](#entity-linking)
 * [Extrakce klíčových frází](#key-phrase-extraction)
 
@@ -264,7 +263,6 @@ Language: English
 
 > [!NOTE]
 > Novinka ve `3.0-preview`verzi :
-> * Rozpoznávání entit nyní zahrnuje schopnost rozpoznat osobní údaje v textu.
 > * Propojení entit je nyní odděleno od rozpoznávání entit.
 
 
@@ -293,33 +291,6 @@ Named Entities:
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
                 Length: 9,      Score: 0.80
 ```
-
-## <a name="detect-personal-information"></a>Zjišťování osobních údajů
-
-Vytvořte novou `EntityPIIExample()` funkci s názvem, která přebírá `RecognizePiiEntities()` klienta, který jste vytvořili dříve, volat jeho funkci a iterát prostřednictvím výsledků. Podobně jako předchozí funkce `Response<IReadOnlyCollection<CategorizedEntity>>` bude vrácený objekt obsahovat seznam zjištěných entit. Pokud došlo k chybě, bude `RequestFailedException`hodit .
-
-```csharp
-static void EntityPIIExample(TextAnalyticsClient client)
-{
-    string inputText = "Insurance policy for SSN on file 123-12-1234 is here by approved.";
-    var response = client.RecognizePiiEntities(inputText);
-    Console.WriteLine("Personally Identifiable Information Entities:");
-    foreach (var entity in response.Value)
-    {
-        Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
-    }
-}
-```
-
-### <a name="output"></a>Výstup
-
-```console
-Personally Identifiable Information Entities:
-        Text: 123-12-1234,      Category: U.S. Social Security Number (SSN),    Sub-Category:
-                Length: 11,     Score: 0.85
-```
-
 
 ## <a name="entity-linking"></a>Propojení entit
 

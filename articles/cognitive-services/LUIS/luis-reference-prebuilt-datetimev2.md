@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 04/13/2020
 ms.author: diberry
-ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270736"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272606"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 předem sestavená entita pro aplikaci LUIS
 
@@ -145,7 +145,7 @@ Každý prvek `values` pole může mít následující pole:
 
 |Název vlastnosti|Popis vlastnosti|
 |--|--|
-|Timex|čas, datum nebo rozsah dat vyjádřený ve formátu TIMEX, který se řídí [standardem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a atributy TIMEX3 pro poznámky pomocí jazyka TimeML. Tato anotace je popsána v [pokynech TIMEX](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf).|
+|Timex|čas, datum nebo rozsah dat vyjádřený ve formátu TIMEX, který se řídí [standardem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a atributy TIMEX3 pro poznámky pomocí jazyka TimeML.|
 |Mod|termín používaný k popisu, jak `before`používat `after`hodnotu, jako je , .|
 |type|Podtyp, který může být jednou z `datetime` `date`následujících položek: `duration` `set`, , `time`, `daterange` `timerange`, `datetimerange`, , .|
 |value|**Volitelné.** Objekt datetime v formátu yyyy-MM-dd (datum), HH:mm:ss (čas) yyyy-MM-dd HH:mm:ss (datetime). Pokud `type` `duration`je , hodnota je počet sekund (doba trvání) <br/> Používá se `type` `datetime` pouze `date` `time`v případě, že je nebo , nebo 'doba trvání.|

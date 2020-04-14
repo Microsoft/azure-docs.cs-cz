@@ -5,24 +5,26 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1907eb7cde482927ee8e6b0a2522158f05c1808f
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: de01a7a76a5d225770c273c67f864c83226ecd07
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010932"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261308"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění sady Runbook v Azure Automation
 
-Sady Runbook se provádějí na základě logiky definované uvnitř nich. Pokud je runbook přerušen, runbook se restartuje na začátku. Toto chování vyžaduje, abyste zapisovali sady Runbook, které podporují restartování, pokud dojde k přechodným problémům.
+Automatizace procesů v Azure Automation umožňuje vytvářet a spravovat PowerShell, PowerShell Workflow a grafické runbooky. Podrobnosti najdete v [tématu Azure Automation runbooky](automation-runbook-types.md). 
 
-Spuštění sady Runbook v Azure Automation vytvoří úlohu, což je jedna instance spuštění sady Runbook. Každá úloha má přístup k prostředkům Azure tím, že navazuje připojení k vašemu předplatnému Azure. Úloha má přístup k prostředkům ve vašem datovém centru pouze v případě, že tyto prostředky jsou přístupné z veřejného cloudu.
+Automatizace provede vaše runbooky na základě logiky definované uvnitř nich. Pokud je runbook přerušen, restartuje se na začátku. Toto chování vyžaduje, abyste zapisovali sady Runbook, které podporují restartování, pokud dojde k přechodným problémům.
 
-Azure Automation přiřadí pracovníka ke spuštění každé úlohy během spuštění sady Runbook. Zatímco pracovníci jsou sdíleny mnoha účty Azure, úlohy z různých účtů automatizace jsou izolované od sebe navzájem. Nemáte kontrolu nad tím, který pracovník bude obsluhovat vaši žádost o práci.
+Spuštění sady Runbook v Azure Automation vytvoří úlohu, což je jedna instance spuštění sady Runbook. Každá úloha přistupuje k prostředkům Azure tím, že navazuje připojení k vašemu předplatnému Azure. Úloha může přistupovat k prostředkům ve vašem datovém centru pouze v případě, že tyto prostředky jsou přístupné z veřejného cloudu.
+
+Azure Automation přiřadí pracovníka ke spuštění každé úlohy během spuštění sady Runbook. Zatímco pracovníci jsou sdíleny mnoha účty Azure, úlohy z různých účtů automatizace jsou izolované od sebe navzájem. Nelze řídit, které pracovní služby vaše žádosti o práci.
 
 Když zobrazíte seznam runbooků na webu Azure Portal, zobrazí se stav každé úlohy, která byla spuštěna pro každou runbook. Azure Automation ukládá protokoly úloh po dobu maximálně 30 dnů. 
 
-Následující diagram znázorňuje životní cyklus úlohy sady Runbook pro [sady Runbook prostředí PowerShell](automation-runbook-types.md#powershell-runbooks), [grafické sady Runbook](automation-runbook-types.md#graphical-runbooks)a [runbooky pracovního postupu prostředí PowerShell](automation-runbook-types.md#powershell-workflow-runbooks).
+Následující diagram znázorňuje životní cyklus úlohy sady Runbook pro [sady Runbook prostředí PowerShell](automation-runbook-types.md#powershell-runbooks), [runbooky pracovního postupu prostředí PowerShell](automation-runbook-types.md#powershell-workflow-runbooks)a [grafické sady Runbook](automation-runbook-types.md#graphical-runbooks).
 
 ![Stavy úloh – pracovní postup prostředí PowerShell](./media/automation-runbook-execution/job-statuses.png)
 
@@ -33,7 +35,10 @@ Následující diagram znázorňuje životní cyklus úlohy sady Runbook pro [sa
 
 ## <a name="where-to-run-your-runbooks"></a>Kde spustit runbooky
 
-Runbooky v Azure Automation můžou běžet na izolovaném prostoru Azure nebo na [hybridním pracovníkovi runbooku](automation-hybrid-runbook-worker.md). Většinu runbooků lze snadno spustit v izolovaném prostoru Azure, sdíleném prostředí, které můžete použít více úloh. Úlohy používající stejnou oblast složky síní jsou vázány omezeními prostředků izolovaného prostoru.
+Runbooky v Azure Automation můžou běžet na izolovaném prostoru Azure nebo na [hybridním pracovníkovi runbooku](automation-hybrid-runbook-worker.md). Většinu runbooků můžete snadno spouštět v izolovaném prostoru Azure, což je sdílené prostředí, které můžete použít více úloh. Úlohy používající stejnou oblast složky síní jsou vázány omezeními prostředků izolovaného prostoru.
+
+>[!NOTE]
+>Prostředí izolovaného prostoru Azure nepodporuje interaktivní operace. Vyžaduje také použití místních souborů MOF pro sady Runbook, které vyžadují volání Win32.
 
 Hybridní pracovník sady Runbook můžete spustit runbooky přímo v počítači, který je hostitelem role, a proti místním prostředkům v prostředí. Azure Automation ukládá a spravuje runbooky a pak je doručuje do jednoho nebo více přiřazených počítačů.
 
@@ -45,15 +50,15 @@ V následující tabulce jsou uvedeny některé úlohy provádění runbooku s d
 |Získání optimálního výkonu pro správu prostředků Azure|Azure Sandbox|Skript je spuštěn ve stejném prostředí, které má menší latenci.|
 |Minimalizujte provozní náklady|Azure Sandbox|Neexistuje žádná režie výpočetní ch od povzdál a není potřeba virtuálního počítače.|
 |Spuštění dlouhotrvajícího skriptu|Hybrid Runbook Worker|Karantény zabezpečení Azure mají [omezení na prostředky](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).|
-|Interakce s místními službami|Hybrid Runbook Worker|Může mít přístup přímo k hostitelskému počítači.|
+|Interakce s místními službami|Hybrid Runbook Worker|Může mít přímý přístup k hostitelskému počítači.|
 |Vyžadovat software a spustitelné soubory jiných výrobců|Hybrid Runbook Worker|Spravujete operační systém a můžete nainstalovat software.|
 |Sledování souboru nebo složky pomocí runbooku|Hybrid Runbook Worker|Použijte [úlohu sledovací ho sledovacího](automation-watchers-tutorial.md) procesu u hybridního pracovníka runbooku.|
 |Spuštění skriptu náročného na prostředky|Hybrid Runbook Worker| Karantény zabezpečení Azure mají [omezení na prostředky](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).|
 |Použití modulů se specifickými požadavky| Hybrid Runbook Worker|Tady je několik příkladů:</br> WinSCP - závislost na winscp.exe </br> Správa iIS – závislost na povolení služby IIS.|
 |Instalace modulu s instalačním programem|Hybrid Runbook Worker|Moduly pro izolované pískoviště musí podporovat kopírování.|
-|Použití runbooků nebo modulů, které vyžadují verzi rozhraní .NET Framework odlišnou od verze 4.7.2|Hybrid Runbook Worker|Karantény zabezpečení automatizace mají rozhraní .NET Framework 4.7.2 a neexistuje žádný způsob, jak ji upgradovat.|
-|Spouštění skriptů, které vyžadují zvýšení oprávnění|Hybrid Runbook Worker|Karantény neumožňují výšku. S hybridním pracovníkem runbooku můžete vypnout příkaz Řízení řízení o řízení a použít **příkaz Invoke-Command** při spuštění příkazu, který vyžaduje zvýšení oprávnění.|
-|Spouštění skriptů, které vyžadují přístup ke službám WMI|Hybrid Runbook Worker|Úlohy spuštěné v karanténách zabezpečení v cloudu nemají přístup ke službě WMI. |
+|Použití runbooků nebo modulů, které vyžadují verzi rozhraní .NET Framework odlišnou od verze 4.7.2|Hybrid Runbook Worker|Karantény zabezpečení automatizace mají rozhraní .NET Framework 4.7.2 a neexistuje žádný způsob, jak upgradovat verzi.|
+|Spouštění skriptů, které vyžadují zvýšení oprávnění|Hybrid Runbook Worker|Pískoviště neumožňují výšku. S hybridním pracovníkem runbooku můžete vypnout příkaz Řízení řízení o řízení a použít [příkaz Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) při spuštění příkazu, který vyžaduje zvýšení oprávnění.|
+|Spouštění skriptů, které vyžadují přístup ke službě WMI (WMI)|Hybrid Runbook Worker|Úlohy spuštěné v karanténách zabezpečení v cloudu nemají přístup ke službě WMI. |
 
 ## <a name="runbook-behavior"></a>Chování runbooku
 
@@ -89,7 +94,7 @@ Pokud vaše runbook obvykle běží v časovém omezení, mají skript implement
 
 ### <a name="tracking-progress"></a>Sledování průběhu
 
-Je vhodné vytvářet runbooky jako modulární povahy a strukturovat logiku runbooku tak, aby ji bylo možné snadno znovu použít a restartovat. Sledování průběhu v runbooku je dobrý způsob, jak zajistit, že logika runbooku se spustí správně, pokud existují problémy. Je možné sledovat průběh runbooku pomocí externího zdroje, jako je například účet úložiště, databáze nebo sdílené soubory. Můžete vytvořit logiku v aplikaci Runbook a nejprve zkontrolovat stav poslední provedené akce. Potom na základě výsledku kontroly logika můžete přeskočit nebo pokračovat konkrétní úkoly v runbooku.
+Je vhodné vytvářet runbooky jako modulární povahy s logikou, kterou lze snadno znovu použít a restartovat. Sledování průběhu v runbooku je dobrý způsob, jak zajistit, že logika runbooku se spustí správně, pokud existují problémy. Je možné sledovat průběh runbooku pomocí externího zdroje, jako je například účet úložiště, databáze nebo sdílené soubory. Můžete vytvořit logiku v aplikaci Runbook a nejprve zkontrolovat stav poslední provedené akce. Potom na základě výsledku kontroly logika můžete přeskočit nebo pokračovat konkrétní úkoly v runbooku.
 
 ### <a name="preventing-concurrent-jobs"></a>Zabránění souběžným úlohám
 
@@ -123,7 +128,7 @@ If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Stat
 
 ### <a name="working-with-multiple-subscriptions"></a>Práce s několika předplatnými
 
-Chcete-li se vypořádat s více předplatnými, musí váš runbook použít rutinu [Disable-AzContextAutosave,](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) aby se zajistilo, že kontext ověřování není načten z jiného runbooku spuštěného ve stejné izolované masivu. Runbook také používá`AzContext` parametr na rutinách modulu Az a předá mu správný kontext.
+Chcete-li se vypořádat s více předplatnými, musí váš runbook používat rutinu [Disable-AzContextAutosave.](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) Tato rutina zajišťuje, že kontext ověřování není načten z jiného runbooku spuštěného ve stejné izolované skříni. Runbook také používá`AzContext` parametr na rutinách modulu Az a předá mu správný kontext.
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -154,13 +159,13 @@ Tato část popisuje některé způsoby zpracování výjimek nebo občasných p
 
 #### <a name="erroractionpreference"></a>ErrorActionPreference
 
-Proměnná [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) určuje, jak prostředí PowerShell reaguje na neukončující chybu. Ukončující chyby vždy ukončit a nejsou ovlivněny *ErrorActionPreference*.
+Proměnná [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) určuje, jak prostředí PowerShell reaguje na neukončující chybu. Ukončující chyby vždy `ErrorActionPreference`ukončit a nejsou ovlivněny .
 
-Pokud runbook `ErrorActionPreference`používá , obvykle neukončující chyba, `Get-ChildItem` jako je **PathNotFound** z rutiny zastaví runbook z dokončení. Následující příklad ukazuje použití `ErrorActionPreference`. Konečný `Write-Output` příkaz se nikdy nespustí, protože se skript zastaví.
+Pokud runbook `ErrorActionPreference`používá , obvykle neukončující chyba, například `PathNotFound` z [Rutina Get-ChildItem](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) zastaví dokončení runbooku. Následující příklad ukazuje použití `ErrorActionPreference`. Konečný příkaz [Zápis-výstup](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) se nikdy nespustí, protože se skript zastaví.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
-Get-Childitem -path nofile.txt
+Get-ChildItem -path nofile.txt
 Write-Output "This message will not show"
 ```
 
@@ -198,7 +203,7 @@ function Get-ContosoFiles
 
 ### <a name="using-executables-or-calling-processes"></a>Použití spustitelných nebo volajících procesů
 
-Sady Runbook, které se spouštějí v karanténách zabezpečení Azure, nepodporují volající procesy, jako jsou spustitelné soubory (**soubory EXE)** nebo dílčí procesy.  Důvodem je, že azure izolovaného prostoru je sdílený proces spuštěn v kontejneru, který nemusí mít přístup ke všem podkladovým api. Pro scénáře, které vyžadují software jiného výrobce nebo volání dílčích procesů, se doporučuje spustit runbook na [hybridní množiny runbook .](automation-hybrid-runbook-worker.md)
+Sady Runbook, které běží v karanténách zabezpečení Azure, nepodporují volající procesy, jako jsou spustitelné soubory (**soubory EXE)** nebo dílčí procesy. Důvodem je, že azure izolovaného prostoru je sdílený proces spuštěn v kontejneru, který nemusí být schopen přistupovat ke všem podkladovým api. Pro scénáře, které vyžadují software jiného výrobce nebo volání dílčích procesů, byste měli spustit runbook na [hybridní pracovník runbooku](automation-hybrid-runbook-worker.md).
 
 ### <a name="accessing-device-and-application-characteristics"></a>Přístup k charakteristikám zařízení a aplikace
 
@@ -208,15 +213,15 @@ Sady Runbook, které se spouštějí v karanténách zabezpečení Azure, nepodp
 
 Sady Runbook musí být schopny zpracovávat chyby. Prostředí PowerShell má dva typy chyb, ukončující a neukončující. Ukončení chyb zastavit spuštění runbooku, když k nim dojde. Soubor Runbook se zastaví se stavem úlohy Failed.
 
-Neukončující chyby umožňují skript pokračovat i poté, co k nim dojde. Příkladem neukončující chyby je chyba, ke které `Get-ChildItem` dochází, když runbook používá rutinu s cestou, která neexistuje. Prostředí PowerShell vidí, že cesta neexistuje, vyvolá chybu a pokračuje do další složky. Chyba v tomto případě nenastaví stav úlohy sady Runbook na Nepodařilo se a úloha může být dokonce dokončena. Chcete-li vynutit zastavení runbooku při neukončující chybě, můžete použít `-ErrorAction Stop` rutinu.
+Neukončující chyby umožňují skript pokračovat i poté, co k nim dojde. Příkladem neukončující chyby je chyba, ke které `Get-ChildItem` dochází, když runbook používá rutinu s cestou, která neexistuje. Prostředí PowerShell vidí, že cesta neexistuje, vyvolá chybu a pokračuje do další složky. Chyba v tomto případě nenastaví stav úlohy sady Runbook na Neúspěšné a úloha může být dokonce dokončena. Chcete-li vynutit zastavení runbooku při neukončující chybě, můžete použít `ErrorAction Stop` rutinu.
 
 ## <a name="handling-jobs"></a>Manipulace s úlohami
 
 Prostředí spuštění můžete znovu použít pro úlohy ze stejného účtu Automatizace. Jeden runbook může mít mnoho úloh spuštěna najednou. Čím více úloh spustíte současně, tím častěji mohou být odeslány do stejné hospodařící skříně.
 
-Úlohy spuštěné ve stejném procesu izolovaného prostoru se mohou vzájemně ovlivňovat. Jedním z příkladů `Disconnect-AzAccount` je spuštění rutiny. Spuštění této rutiny odpojí každou úlohu runbooku v procesu sdílené izolované ho složky.
+Úlohy spuštěné ve stejném procesu izolovaného prostoru se mohou vzájemně ovlivňovat. Jedním z příkladů je spuštění rutiny [Disconnect-AzAccount.](https://docs.microsoft.com/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0) Spuštění této rutiny odpojí každou úlohu runbooku v procesu sdílené izolované ho složky.
 
-Úlohy prostředí PowerShell spuštěné z runbooku, který běží v izolovaném prostoru Azure, nemusí běžet v režimu úplného jazyka. Další informace o jazykových režimech Prostředí PowerShell najdete v [tématu Režimy jazyků Prostředí PowerShell](/powershell/module/microsoft.powershell.core/about/about_language_modes). Další podrobnosti o interakci s úlohami v Azure Automation najdete v [tématu Načítání stavu úlohy pomocí PowerShellu](#retrieving-job-status-using-powershell).
+Úlohy Prostředí PowerShell spuštěné z runbooku, který běží v izolovaném prostoru Azure, nemusí běžet v [režimu jazyka PowerShell](/powershell/module/microsoft.powershell.core/about/about_language_modes). Další informace o interakci s úlohami v Azure Automation najdete v [tématu Načítání stavu úlohy pomocí Prostředí PowerShell](#retrieving-job-status-using-powershell).
 
 ### <a name="job-statuses"></a>Stavy úloh
 
@@ -239,7 +244,7 @@ Následující tabulka popisuje stavy, které jsou možné pro úlohu.
 
 ### <a name="viewing-job-status-from-the-azure-portal"></a>Zobrazení stavu úlohy z portálu Azure
 
-Můžete zobrazit souhrnný stav všech úloh sady Runbook nebo přejít k podrobnostem konkrétní úlohy sady Runbook na webu Azure Portal. Můžete také nakonfigurovat integraci s pracovním prostorem Log Analytics tak, aby přesměrovalstav úlohy runbooku a datové proudy úloh. Další informace o integraci s protokoly Azure Monitor, najdete [v tématu předávání stavu úlohy a toky úloh z automatizace do protokolů Azure Monitor](automation-manage-send-joblogs-log-analytics.md).
+Můžete zobrazit souhrn stavu pro všechny úlohy runbooku nebo přejít k podrobnostem o konkrétní úloze runbooku na webu Azure Portal. Můžete také nakonfigurovat integraci s pracovním prostorem Log Analytics tak, aby přesměrovalstav úlohy runbooku a datové proudy úloh. Další informace o integraci s protokoly Azure Monitor, najdete [v tématu předávání stavu úlohy a toky úloh z automatizace do protokolů Azure Monitor](automation-manage-send-joblogs-log-analytics.md).
 
 Na pravé straně vybraného účtu Automatizace se zobrazí souhrn všech úloh runbooku na dlaždici **Statistika úloh.**
 
@@ -261,7 +266,7 @@ Případně můžete zobrazit souhrnné podrobnosti o úloze pro konkrétní run
 
 ### <a name="viewing-the-job-summary"></a>Zobrazení souhrnu úlohy
 
-Výše popsaný souhrn úloh umožňuje podívat se na seznam všech úloh, které byly vytvořeny pro konkrétní soubor Runbook, a jejich nejnovější stav. Chcete-li zobrazit podrobné informace a výstup pro úlohu, klepněte na její název v seznamu. Podrobné zobrazení úlohy zahrnuje hodnoty parametrů runbooku, které byly této úloze poskytnuty.
+Souhrn úloh popsaný výše umožňuje podívat se na seznam všech úloh, které byly vytvořeny pro konkrétní runbook a jejich nejnovější stavy. Chcete-li zobrazit podrobné informace a výstup pro úlohu, klepněte na její název v seznamu. Podrobné zobrazení úlohy zahrnuje hodnoty parametrů runbooku, které byly této úloze poskytnuty.
 
 Úlohy Runbooku můžete zobrazit takto.
 
@@ -286,7 +291,7 @@ Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
 ```
 
-Následující příklad načte výstup pro konkrétní úlohu a vrátí každý záznam. Pokud existuje výjimka pro jeden ze záznamů, skript zapíše výjimku namísto hodnoty. Toto chování je užitečné, jako výjimky mohou poskytnout další informace, které nemusí být zaznamenány normálně během výstupu.
+Následující příklad načte výstup pro konkrétní úlohu a vrátí každý záznam. Pokud existuje výjimka pro jeden ze záznamů, skript zapíše výjimku namísto hodnoty. Toto chování je užitečné, protože výjimky mohou poskytnout další informace, které nemusí být zaznamenány normálně během výstupu.
 
 ```azurepowershell-interactive
 $output = Get-AzAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
@@ -342,11 +347,12 @@ Chcete-li sdílet prostředky mezi všechny sady Runbook v cloudu, Azure Automat
 
 Pro dlouhotrvající úlohy se doporučuje použít hybridní pracovník runbooku. Hybridní pracovníci runbooku nejsou omezeni spravedlivým podílem a nemají omezení na to, jak dlouho může runbook spustit. Ostatní [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) úloh platí pro karantény zabezpečení Azure i hybridní runbook pracovníků. Zatímco hybridní pracovníci runbooku nejsou omezeni limitem spravedlivého sdílení 3 hodiny, měli byste vyvinout runbooky, které se budou spouštět na pracovnících, kteří podporují restartování z neočekávaných problémů s místní infrastrukturou.
 
-Další možností je optimalizace sady Runbook pomocí podřízených runbooků. Runbook může například cykinovat prostřednictvím stejné funkce na několika prostředcích, jako je například databázová operace v několika databázích. Tuto funkci můžete přesunout do [podřízeného runbooku](automation-child-runbooks.md) a nechat ji volat pomocí `Start-AzAutomationRunbook`aplikace Runbook . Podřízené runbooky se spouštějí paralelně v samostatných procesech.
+Další možností je optimalizace sady Runbook pomocí podřízených runbooků. Runbook může například cykinovat prostřednictvím stejné funkce na několika prostředcích, jako je například databázová operace v několika databázích. Tuto funkci můžete přesunout do [podřízeného runbooku](automation-child-runbooks.md) a nechat ji volat pomocí [služby Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0). Podřízené runbooky se spouštějí paralelně v samostatných procesech.
 
-Použití podřízených runbooků zkracovou celkovou dobu, po kterou má nadřazená sada Runbook dokončit. Sada Runbook může `Get-AzAutomationJob` pomocí rutiny zkontrolovat stav úlohy podřízeného runbooku, pokud má po dokončení podřízeného zařízení stále operace, které je třeba provést.
+Použití podřízených runbooků zkracovou celkovou dobu, po kterou má nadřazená sada Runbook dokončit. Vaše sada Runbook můžete použít [Rutina Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationjob?view=azps-3.7.0) ke kontrole stavu úlohy pro podřízený runbook, pokud má stále více operací po dokončení podřízené.
 
 ## <a name="next-steps"></a>Další kroky
 
+* Informace o tom, jak pracovat s runbookem, najdete v [tématu Správa runbooků v Azure Automation](manage-runbooks.md).
 * Další informace o metodách, které se dá použít ke spuštění sady Runbook v Azure Automation, najdete v [tématu Spuštění runbooku v Azure Automation](automation-starting-a-runbook.md).
-* Další informace o prostředí PowerShell, včetně jazykových odkazů a výukových modulů, najdete v dokumentu [PowerShell](https://docs.microsoft.com/powershell/scripting/overview).
+* Další informace o Prostředí PowerShell, včetně jazykových referencí a výukových modulů, najdete v [tématu Dokumenty prostředí PowerShell](https://docs.microsoft.com/powershell/scripting/overview).

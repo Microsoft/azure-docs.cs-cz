@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 8d3f3bfcf1f175d5dbb05e661efbcf28e9c4a974
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: bdff6c0e65d341bb4948ff772171d8b42728ff0a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671489"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275131"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -92,4 +92,5 @@ Vytvořte zdrojový soubor Jazyka C++ s názvem *helloworld.cpp*a vložte do ně
 
 ## <a name="next-steps"></a>Další kroky
 
-[!INCLUDE [footer](../footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
+

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: dsindona
-ms.openlocfilehash: 0225069179e0d7d94a983c5161976a5c1933fac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1e001b9cafff83a3f9bf546d6903cc4a4f450f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278191"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273490"
 ---
 # <a name="certify-your-vm-image"></a>Certifikace image virtuálního počítače
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [certifikaci image virtuálního počítače Azure](https://aks.ms/CertifyVMimage) spravujte migrované nabídky.
 
 Po vytvoření a nasazení virtuálního počítače (VM) je nutné otestovat a odeslat image virtuálního počítače pro certifikaci Azure Marketplace. Tento článek vysvětluje, kde získat *certifikační testovací nástroj pro Azure Certified*, jak tento nástroj použít k certifikaci image virtuálního počítače a jak nahrát výsledky ověření do kontejneru Azure, kde se nacházejí vaše virtuální počítače. 
 

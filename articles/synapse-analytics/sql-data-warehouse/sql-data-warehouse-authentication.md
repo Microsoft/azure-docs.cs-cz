@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: fcd9607cd630f41c67c655c2e8016254600b52e2
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ed8dd902ac490b4e6a0f172029bf3ffa1d44acee
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745388"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251839"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Ověření azure synapse analytics
 
@@ -76,7 +76,7 @@ Chcete-li nakonfigurovat ověřování služby Azure Active Directory, postupujt
 5. Vytvoření obsahujících uživatelů databáze v databázi mapovaných na identity Azure AD
 6. Připojení k fondu SQL pomocí identit Azure AD
 
-V současné době se uživatelé služby Azure Active Directory nezobrazují v Průzkumníku objektů SSDT. Jako zástupné řešení zobrazíte uživatele v [souboru sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#azure-ad-features-and-limitations).
+V současné době se uživatelé služby Azure Active Directory nezobrazují v Průzkumníku objektů SSDT. Jako zástupné řešení zobrazíte uživatele v [souboru sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="find-the-details"></a>Najít podrobnosti
 

@@ -4,12 +4,12 @@ description: Zjistěte, jak pomocí portálu Azure vytvořit cluster Služeb Azu
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 696821e12e963292107cad5b22f00a9816a94b25
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616413"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259115"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Vytvoření a konfigurace clusteru Služeb Azure Kubernetes (AKS) pro použití virtuálních uzlů na webu Azure Portal
 
@@ -66,7 +66,7 @@ Funkce virtuálních uzlů je silně závislá na sadě funkcí ACI. Následují
 * [Hostitelské aliasy](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * [Argumenty](../container-instances/container-instances-exec.md#restrictions) pro exec v ACI
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nebude nasazovat pody do virtuálního uzlu
-* [Uzly systému Windows Server (aktuálně ve verzi preview v AKS)](windows-container-cli.md) nejsou podporovány vedle virtuálních uzlů. Virtuální uzly můžete použít k plánování kontejnerů systému Windows Server bez nutnosti uzlů Systému Windows Server v clusteru AKS.
+* Virtuální uzly podporují plánování linuxových podů. Můžete ručně nainstalovat open source [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) poskytovatele naplánovat Windows Server kontejnery ACI. 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

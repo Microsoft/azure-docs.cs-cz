@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 2014a775edd4e24f5d302d863d0b69d83009b8a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99d2bc95c1dd837bfc3bcabcead28777b7e6f746
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277986"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273932"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Vytvoření virtuálního pevného disku kompatibilního s Azure
+
+> [!IMPORTANT]
+> dubna 2020 začneme s přesouváním nabídky virtuálních strojů Azure do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření technických prostředků virtuálního počítače Azure](https://aka.ms/AzureVMTechAsset) a spravujte migrované nabídky.
 
 Tento článek podrobně popisuje kroky potřebné k vytvoření virtuálního pevného disku (VHD) pro nabídku virtuálního počítače (VM) na Azure Marketplace.  Obsahuje také osvědčené postupy pro různé aspekty, jako je například použití protokolu RDP (Rdp) – protokol RDP), výběr velikosti virtuálního počítače, instalace nejnovějších aktualizací systému Windows a zobecnění bitové kopie virtuálního pevného disku.  Následující části se zaměřují především na virtuální počítače založené na oknech; Další informace o vytváření virtuálních disdrátů založených na Linuxu najdete v [tématu Linux o distribucích schválených Azure](../../../virtual-machines/linux/endorsed-distros.md). 
 
@@ -26,9 +29,9 @@ Tento článek podrobně popisuje kroky potřebné k vytvoření virtuálního p
 Virtuální pevný disk operačního systému pro bitovou kopii virtuálního počítače musí být založený na základní bitové kopii schválené Azure, která obsahuje Windows Server nebo SQL Server.
 Chcete-li začít, vytvořte virtuální počítač z jedné z následujících bitových kopií umístěných na portálu Microsoft Azure:
 
--   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
--   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (enterprise, standard, web)
--   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (enterprise, standard, web)
+-    Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+-    [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (enterprise, standard, web)
+-    [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (enterprise, standard, web)
 
 > [!TIP]
 > Pokud používáte aktuální portál Azure nebo PowerShell, image Windows Serveru publikované 8.

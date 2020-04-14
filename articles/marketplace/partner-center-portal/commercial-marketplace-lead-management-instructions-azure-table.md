@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: f511a60b533d6d1e0b1ae8847d0ee0fb6be3500c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a36c411b9ababc42adb51d82a316df4252c01e24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288831"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251959"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Konfigurace správy potenciálních zákazníků pomocí tabulky Azure
 
@@ -66,12 +66,12 @@ Tento příklad použijte jako vodítko k vytvoření jednoduchého toku, který
 
    ![Moje toky **+ Naplánováno - z prázdné**](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  V *sestavení naplánovaného toku* okna v části *Opakovat každý* výběr "1" pro interval a "hodina" pro frekvenci. Také uveďte název toku, pokud se vám líbí. Vyberte **Vytvořit**.
+5.    V *sestavení naplánovaného toku* okna v části *Opakovat každý* výběr "1" pro interval a "hodina" pro frekvenci. Také uveďte název toku, pokud se vám líbí. Vyberte **Vytvořit**.
 
-    >[!Note]
-    >I když tento příklad používá interval 1 hodin, můžete vybrat interval a frekvenci, která je nejlepší pro vaše obchodní potřeby.
+>[!Note]
+>I když tento příklad používá interval 1 hodin, můžete vybrat interval a frekvenci, která je nejlepší pro vaše obchodní potřeby.
 
-    ![Vytvořte naplánovaný tok.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
+![Vytvořte naplánovaný tok.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 6. Vyberte **+ Nový krok**.
 7. V části Zvolit okno *akce* vyhledejte "získat čas" a pak v části Akce vyberte **Získat čas.**
@@ -92,23 +92,17 @@ V další sadě kroků se připojíte k tabulce Azure a nastavíte logiku zpraco
 
 9. Po kroku Získat čas vyberte **+ Nový krok**a v okně *Zvolte akci* vyhledejte výraz "Získat entity".
 10. V části **Akce**vyberte **Získat entity (Azure Table Storage)**.
-11. V okně **Azure Table Storage** zadejte informace pro následující pole a vyberte **Vytvořit**:
+11.    V okně **Azure Table Storage** zadejte informace pro následující pole a vyberte **Vytvořit**:
+* *Název připojení* – zadejte smysluplný název pro připojení, které vytváříte mezi tímto tokem a azure table.
+* *Název účtu úložiště* – zadejte název účtu úložiště pro tabulku Azure. Najdete ji na stránce **přístupových klíčů** účtu úložiště.
+* *Sdílený klíč úložiště* – zadejte hodnotu klíče pro váš účet úložiště pro vaši tabulku Azure. Najdete ji na stránce **přístupových klíčů** účtu úložiště.
+    ![Azure Table storage.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
-    * *Název připojení* – zadejte smysluplný název pro připojení, které vytváříte mezi tímto tokem a azure table.
-    * *Název účtu úložiště* – zadejte název účtu úložiště pro tabulku Azure. Najdete ji na stránce **přístupových klíčů** účtu úložiště.
-    * *Sdílený klíč úložiště* – zadejte hodnotu klíče pro váš účet úložiště pro vaši tabulku Azure. Najdete ji na stránce **přístupových klíčů** účtu úložiště.
+Po kliknutí na tlačítko Vytvořit se zobrazí okno *Získat entity.* Zde vyberte **Zobrazit upřesňující možnosti** a poskytněte informace pro následující pole:
+* *Tabulka* – vyberte název úložiště tabulek Azure (od kroku 6 pokynů ke konfiguraci tabulky Azure). Další snímek obrazovky zobrazí výzvu, když je vybrána tabulka "marketplaceleads" v tomto příkladu.
+    ![Azure Table získat entity.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        ![Azure Table storage.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
-
-    Po kliknutí na tlačítko Vytvořit se zobrazí okno *Získat entity.* Zde vyberte **Zobrazit upřesňující možnosti** a poskytněte informace pro následující pole:
-
-       * *Tabulka* – vyberte název úložiště tabulek Azure (od kroku 6 pokynů ke konfiguraci tabulky Azure). Další snímek obrazovky zobrazí výzvu, když je vybrána tabulka "marketplaceleads" v tomto příkladu.
-
-            ![Azure Table získat entity.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
-
-        * *Filtrovat dotaz* - Vyberte toto pole a vložte tuto funkci do pole:`Timestamp gt datetime'@{body('Get_past_time')}'`
-
-            ![Azure Table získat entity – filtr Querry.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
+* *Filtrovat dotaz* – vyberte toto pole `Timestamp gt datetime'@{body('Get_past_time')}'` ![a vložte tuto funkci do pole: Azure Table get entity - Filter Query.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
 12. Teď, když jste dokončili nastavení připojení k tabulce Azure, vyberte **Nový krok** a přidejte podmínku pro skenování tabulky Azure pro nové zájemce. 
 
@@ -178,7 +172,10 @@ Až budete připraveni nakonfigurovat informace o správě zájemců pro vaši n
 1. Přejděte na stránku **Nastavení nabídky** pro vaši nabídku.
 2. V části Správa zájemců vyberte **Připojit.**
 3. V rozbalovacím okně Podrobnosti o připojení vyberte **Azure Table** pro **cíl zájemce**a vložte do připojovacího řetězce z účtu úložiště Azure, který jste vytvořili podle předchozích kroků do pole **připojovacího řetězce účtu úložiště.**
-4. Vyberte **Uložit**. 
+4. **Kontaktní e-mail** – Poskytněte e-maily lidem ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Můžete poskytnout více e-mailů tím, že je oddělíte středníkem.
+5. Vyberte **OK**.
+
+Chcete-li se ujistit, že jste se úspěšně připojili k cíli zájemce, klikněte na tlačítko ověřit. Pokud bude úspěšná, budete mít testovacího zájemce v cíli zájemce.
 
 >[!Note]
 >Před přijetím zájemců o nabídku je nutné dokončit konfiguraci zbývající nabídky a publikovat ji.

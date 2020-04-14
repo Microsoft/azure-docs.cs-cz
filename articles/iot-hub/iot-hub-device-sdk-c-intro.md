@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: robinsh
-ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71193523a83987de2440d8c70c133c29dde4fe91
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70813785"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257874"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT device SDK for C
 
@@ -73,13 +73,13 @@ Nyní, když máte ukázkový zdrojový kód, další věc, kterou musíte uděl
 
 Existuje několik open source nástrojů, které vám pomůžou spravovat vaše centrum IoT hub.
 
-* Aplikace systému Windows nazvaná [Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+* Aplikace pro Windows s názvem [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer).
 
 * Rozšíření kódu Visual Studia napříč platformami s názvem [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 * Multiplatformní python CLI s názvem [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
 
-Tento kurz používá grafický nástroj *průzkumníkzařízení.* Pokud vyvíjíte v kódu VS, můžete použít *nástroje Azure IoT pro kód VS.* Rozšíření *IoT pro nástroj Azure CLI 2.0* můžete použít také, pokud dáváte přednost použití nástroje příkazového příkazového příkazu.
+Tento kurz používá grafický nástroj *průzkumníkzařízení.* Pokud vyvíjíte v kódu VS, můžete použít *nástroje Azure IoT pro kód VS.* *Rozšíření IoT pro nástroj Azure CLI 2.0* můžete použít také, pokud dáváte přednost použití nástroje příkazového příkazového příkazu.
 
 Nástroj průzkumník zařízení používá knihovny služeb Azure IoT k provádění různých funkcí v centru IoT Hub, včetně přidávání zařízení. Pokud k přidání zařízení použijete nástroj Průzkumník zařízení, získáte pro zařízení připojovací řetězec. Tento připojovací řetězec potřebujete ke spuštění ukázkových aplikací.
 
@@ -245,7 +245,7 @@ Poslední parametr je void ukazatel na co chcete. V ukázce je ukazatel na celé
 
 Když zařízení obdrží zprávu, je vyvolána registrovaná funkce zpětného volání. Tato funkce zpětného volání načte:
 
-* ID zprávy a id korelace ze zprávy.
+* ID zprávy a ID korelace ze zprávy.
 * Obsah zprávy.
 * Všechny vlastní vlastnosti ze zprávy.
 

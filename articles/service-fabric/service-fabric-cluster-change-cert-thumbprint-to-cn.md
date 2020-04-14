@@ -3,12 +3,12 @@ title: Aktualizace clusteru pro použití běžného názvu certifikátu
 description: Zjistěte, jak přepnout cluster Service Fabric z použití kryptografických otisků certifikátu na použití běžného názvu certifikátu.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610195"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272623"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Změna z kryptografického otisku certifikátu clusteru na běžný název
 Žádné dva certifikáty mohou mít stejný kryptografický otisk, což ztěžuje přechod na certifikát y clusteru nebo správu. Více certifikátů však může mít stejný běžný název nebo předmět.  Přepnutí mno ženete nasazený cluster z použití kryptografických otisků certifikátů na běžné názvy certifikátů, což usnadňuje správu certifikátů. Tento článek popisuje, jak aktualizovat spuštěný cluster Service Fabric použít běžný název certifikátu namísto kryptografického otisku certifikátu.
@@ -20,12 +20,12 @@ ms.locfileid: "75610195"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Získání certifikátu
-Nejprve získejte certifikát od [certifikační autority .](https://wikipedia.org/wiki/Certificate_authority)  Běžný název certifikátu by měl být název hostitele clusteru.  Například "myclustername.southcentralus.cloudapp.azure.com".  
+Nejprve získejte certifikát od [certifikační autority .](https://wikipedia.org/wiki/Certificate_authority)  Běžný název certifikátu by měl být pro vlastní doménu, kterou vlastníte, a měl by být zakoupen od doménového registrátora. Například "azureservicefabricbestpractices.com"; ti, kteří nejsou zaměstnanci společnosti Microsoft, nemohou zřídit certifikáty pro domény MS, takže nemůžete používat názvy DNS vašeho LB nebo Traffic Manageru jako běžné názvy pro váš certifikát a budete muset zřídit [Zónu Azure DNS,](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) pokud má být vaše vlastní doména v Azure řešitelná. Budete také chtít deklarovat vlastní doménu, kterou vlastníte jako "managementEndpoint" vašeho clusteru, pokud chcete, aby portál odrážel vlastní alias domény pro váš cluster.
 
 Pro účely testování můžete získat certifikát podepsaný certifikační autoritou od svobodné nebo otevřené certifikační autority.
 
 > [!NOTE]
-> Certifikáty podepsané svým držitelem, včetně certifikátů generovaných při nasazování clusteru Service Fabric na webu Azure Portal, nejsou podporovány.
+> Certifikáty podepsané svým držitelem, včetně certifikátů generovaných při nasazování clusteru Service Fabric na webu Azure Portal, nejsou podporovány. 
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Nahrajte certifikát a nainstalujte jej do škálovací sady
 V Azure se cluster Service Fabric nasazuje na škálovací sadě virtuálních strojů.  Nahrajte certifikát do trezoru klíčů a nainstalujte jej do škálovací sady virtuálních strojů, na které je cluster spuštěn.

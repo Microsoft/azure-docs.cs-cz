@@ -5,17 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/14/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 4fc77407ae1c5854d3fe977da5a81f4226bf5305
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93b2ca700a987b86aedfdae55d58540c8ffe84ed
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280469"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255868"
 ---
-<a name="retrieve-operations"></a>Načtení operací
-===================
+# <a name="retrieve-operations"></a>Načtení operací
+
+> [!NOTE]
+> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
 
 Načte všechny operace v nabídce nebo získat konkrétní operaci pro zadané operationId. Klient může použít parametry dotazu k filtrování spuštěných operací.
 
@@ -28,21 +30,18 @@ Načte všechny operace v nabídce nebo získat konkrétní operaci pro zadané 
 ```
 
 
-<a name="uri-parameters"></a>Parametry identifikátoru URI
---------------
+## <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 |  **Název**          |      **Popis**                                                                                           | **Datový typ** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  id vydavatele       |  Identifikátor vydavatele, například`Contoso`                                                                   |  Řetězec       |
 |  offerId           |  Identifikátor nabídky                                                                                              |  Řetězec       |
 |  operationId       |  IDENTIFIKÁTOR GUID, který jednoznačně identifikuje operaci v nabídce. OperationId může být načtenpomocí tohoto rozhraní API a je také vrácena v hlavičce HTTP odpovědi pro všechny dlouhotrvající operace, jako je například rozhraní API [nabídky publikování.](./cloud-partner-portal-api-publish-offer.md)  |   Identifikátor GUID   |
-|  filteredStatus    | Volitelný parametr dotazu používaný k `running`filtrování podle stavu (například) v kolekci vrácené tímto rozhraním API.  |   Řetězec |
-|  verze-api       | Nejnovější verze rozhraní API                                                                                           |    Datum      |
+|  verze-api       | Nejnovější verze rozhraní API |    Datum      |
 |  |  |  |
 
+## <a name="header"></a>Hlavička
 
-<a name="header"></a>Hlavička
-------
 
 |  **Název**          |  **Hodnotu**           |
 |  ---------------   | -------------------- |
@@ -51,8 +50,7 @@ Načte všechny operace v nabídce nebo získat konkrétní operaci pro zadané 
 |  |  |
 
 
-<a name="body-example"></a>Příklad těla
-------------
+## <a name="body-example"></a>Příklad těla
 
 ### <a name="response"></a>Odpověď
 
@@ -167,25 +165,35 @@ Načte všechny operace v nabídce nebo získat konkrétní operaci pro zadané 
                     ],
                 "previewLinks": [],
                 "liveLinks": [],
-                "notificationEmails": "jondoe@contoso.com"
-            } 
+            }
         }
     ]
 ```
-
 
 ### <a name="response-body-properties"></a>Vlastnosti těla odezvy
 
 |  **Název**                    |  **Popis**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | IDENTIFIKÁTOR GUID, který jednoznačně identifikuje operaci                                                       |
-|  submissionTyp              | Identifikuje typ operace, která je hlášena pro nabídku, například`Publish/GGoLive`      |
+|  submissionTyp              | Identifikuje typ operace, která je hlášena pro nabídku, například`Publish/GoLive`      |
 |  createdDateTime             | Datum uTC, kdy byla operace vytvořena                                                       |
 |  lastActionDateTime          | Čas data času u času u operace byla provedena poslední aktualizace                                       |
 |  status                      | Stav operace, a `not started` \| `running` \| `failed` \| `completed`to buď . Stav může být `running` v jednom okamžiku pouze jedna operace. |
 |  error                       | Chybová zpráva pro neúspěšné operace                                                               |
 |  |  |
 
+### <a name="response-step-properties"></a>Vlastnosti kroku odpovědi
+
+|  **Název**                    |  **Popis**                                                                                  |
+|  --------------------        |  ------------------------------------------------------------------------------------------------ |
+| odhadTimeFrame | Odhadovaná doba trvání této operace |
+| id | Jedinečný identifikátor pro krokový proces |
+| description | Popis kroku |
+| název kroku | Popisný název kroku |
+| status | Stav kroku, a `notStarted` \| `running` \| `failed` \| to buď`completed` |
+| cloud-zařízení | Všechna oznámení nebo upozornění zjištěná během kroku. Pole řetězců |
+| progressPercentage | Celé číslo od 0 do 100 označující průběh kroku |
+| | |
 
 ### <a name="response-status-codes"></a>Stavové kódy odpovědi
 

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 8ae1dcbeff6e14e6f1f7cd44ae3a0a68bd379b56
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 988121effb35949cce442ba9458789105e88feec
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387338"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273439"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Běžné problémy při vytváření virtuálního pevného disku (FAQ)
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v části [Vytvoření nejčastějších dotazů k virtuálnímu pevnému disku](https://aka.ms/VHDcreationIssues) spravujte migrované nabídky.
 
 Následující nejčastější dotazy (FAQ) pokrývají běžné problémy, se kterými se vyskytly při vytváření virtuálního pevného disku (VHD) a virtuálního počítače pro nabídky virtuálních počítačů. 
 

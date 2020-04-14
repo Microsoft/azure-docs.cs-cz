@@ -7,34 +7,51 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e104877ef641a87eac4ba19bb3342c6e029bf80c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 099ab150cde763551c2ad10a4e9159909ccff4dd
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294582"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270702"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Vlastní metriky ve Službě Azure Monitor
 
-Při nasazování prostředků a aplikací v Azure budete chtít začít shromažďovat telemetrii, abyste získali přehled o jejich výkonu a stavu. Azure vám zpřístupní některé metriky ipo za balení. Tyto metriky se nazývají standard nebo platforma. Nicméně, oni jsou omezené povahy. Můžete chtít shromáždit některé vlastní ukazatele výkonu nebo metriky specifické pro podnikání, abyste poskytli hlubší přehledy.
+Při nasazování prostředků a aplikací v Azure budete chtít začít shromažďovat telemetrii, abyste získali přehled o jejich výkonu a stavu. Azure vám zpřístupní některé metriky ipo za balení. Tyto metriky se nazývají [standard nebo platforma](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported). Nicméně, oni jsou omezené povahy. Můžete chtít shromáždit některé vlastní ukazatele výkonu nebo metriky specifické pro podnikání, abyste poskytli hlubší přehledy.
 Tyto **vlastní** metriky lze shromažďovat prostřednictvím telemetrie aplikace, agenta, který běží na vašich prostředcích Azure, nebo dokonce externího monitorovacího systému a odeslány přímo do Azure Monitoru. Po publikování na Azure Monitor, můžete procházet, dotazovat a výstrahy na vlastní metriky pro vaše prostředky Azure a aplikace vedle standardní metriky vyzařované Azure.
 
-## <a name="send-custom-metrics"></a>Odeslání vlastních metrik
+## <a name="methods-to-send-custom-metrics"></a>Metody odesílání vlastních metrik
+
 Vlastní metriky lze odeslat do Azure Monitoru pomocí několika metod:
 - Instrumentujte svou aplikaci pomocí sady Azure Application Insights SDK a odesílejte vlastní telemetrii do Azure Monitoru. 
 - Nainstalujte si rozšíření Diagnostika Windows Azure (WAD) na [virtuální počítač Azure](collect-custom-metrics-guestos-resource-manager-vm.md), [škálovací sadu virtuálních počítačů](collect-custom-metrics-guestos-resource-manager-vmss.md), [klasický virtuální počítač](collect-custom-metrics-guestos-vm-classic.md)nebo [klasické cloudové služby](collect-custom-metrics-guestos-vm-cloud-service-classic.md) a odešlete čítače výkonu do Azure Monitoru. 
 - Nainstalujte [agenta InfluxData Telegraf](collect-custom-metrics-linux-telegraf.md) do virtuálního počítače Azure Linux a odesílejte metriky pomocí výstupního modulu plug-in Azure Monitor.
 - Odešlete vlastní metriky [přímo do rozhraní AZURE Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md). `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`
 
+## <a name="pricing-model"></a>Cenový model
+
+Neexistuje žádné náklady na ingestování standardní metriky (metriky platformy) do úložiště metrik Azure Monitoru. Vlastní metriky ingestované do úložiště metrik Azure Monitoru se budou účtovat za MByte s každou vlastní metrickou datovou pointou zapsanou za velikost 8 bajtů. Všechny požité metriky jsou zachovány po dobu 90 dnů.
+
+Metriky dotazy budou účtovány na základě počtu volání standardní rozhraní API. Standardní volání rozhraní API je volání, které analyzuje 1 440 datových bodů (1 440 je také celkový počet datových bodů, které lze uložit na metriku za den). Pokud volání rozhraní API analyzuje více než 1 440 datových bodů, pak se bude počítat jako více standardních volání rozhraní API. Pokud volání rozhraní API analyzuje méně než 1 440 datových bodů, bude se počítat jako méně než jedno volání rozhraní API. Počet standardních volání rozhraní API se vypočítá každý den jako celkový počet datových bodů analyzovaných za den vydělený 1 440.
+
+Konkrétní podrobnosti o ceně pro vlastní metriky a dotazy na metriky jsou k dispozici na [stránce s cenami Azure Monitoru](https://azure.microsoft.com/pricing/details/monitor/).
+
+> [!NOTE]  
+> Metriky odeslané do Azure Monitoru prostřednictvím sady Application Insights SDK se budou účtovat jako data protokolu a účtují se vám další poplatky za metriky pouze v případě, že byla vybrána funkce Přehledy aplikací [Povolit výstrahy na vlastní dimenze metriky.](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) Přečtěte si další informace o [cenovém modelu Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) a [cenách ve vaší oblasti](https://azure.microsoft.com/pricing/details/monitor/).
+
+> [!NOTE]  
+> Podrobnosti o tom, kdy bude fakturace povolena pro vlastní metriky a dotazy na metriky, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/) Azure Monitoru. 
+
+## <a name="how-to-send-custom-metrics"></a>Jak odesílat vlastní metriky
+
 Když odesíláte vlastní metriky do Azure Monitoru, každý datový bod nebo hodnota, hlášené musí obsahovat následující informace.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 Chcete-li odeslat vlastní metriky do Azure Monitoru, entita, která odešle metriku, potřebuje platný token Azure Active Directory (Azure AD) v hlavičce **Doručitele** požadavku. Existuje několik podporovaných způsobů, jak získat platný žeton nosiče:
 1. [Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Poskytuje identitu samotnému prostředku Azure, jako je například virtuální počítač. Identita spravované služby (MSI) je navržena tak, aby udělují oprávnění k provádění určitých operací prostředků. Příkladem je povolení prostředku vyzařovat metriky o sobě. Prostředek nebo jeho MSI, může být udělena **oprávnění vydavatele metriky monitorování** na jiný prostředek. S tímto oprávněním může MSI vyzařovat metriky i pro jiné prostředky.
 2. [Azure AD Service Inismu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). V tomto scénáři aplikace Azure AD nebo služby lze přiřadit oprávnění k emitování metriko v yomovaném prostředku Azure.
 K ověření požadavku Azure Monitor ověří token aplikace pomocí veřejných klíčů Azure AD. Existující role **vydavatele metrik monitorování** již toto oprávnění má. Je k dispozici na webu Azure Portal. Instanční objekt, v závislosti na tom, jaké prostředky vydává vlastní metriky pro, může být uveden role **vydavatele metrikmonitorování metriky** v požadovaném oboru. Příklady jsou předplatné, skupina prostředků nebo konkrétní prostředek.
 
-> [!NOTE]  
+> [!TIP]  
 > Když požádáte o token Azure AD k vyzařují vlastní metriky, ujistěte se, že cílovou skupinu nebo prostředek token je `https://monitoring.azure.com/`požadováno . Nezapomeňte uvést koncové '/'.
 
 ### <a name="subject"></a>Subjekt
@@ -42,8 +59,7 @@ Tato vlastnost zachycuje, které ID prostředku Azure vlastní metrika je hláš
 
 > [!NOTE]  
 > Vlastní metriky nelze vyzařovat podle ID prostředku skupiny prostředků nebo předplatného.
->
->
+
 
 ### <a name="region"></a>Region (Oblast)
 Tato vlastnost zachycuje, v jaké oblasti Azure se nasadí prostředek, pro který vyzařujete metriky. Metriky musí být vyzařovány do stejného koncového bodu Azure Monitor jako oblast, ve které se prostředek nasazuje. Například vlastní metriky pro virtuální počítač nasazený v západní USA musí být odeslány do koncového bodu WestUS regional Azure Monitor. Informace o oblasti jsou také zakódovány v adrese URL volání rozhraní API.
@@ -84,7 +100,7 @@ Azure Monitor ukládá všechny metriky v intervalech rozlišovací schopnosti j
 * **Součet**: Součet všech pozorovaných hodnot ze všech vzorků a měření během minuty.
 * **Počet**: Počet vzorků a měření odebraných během minuty.
 
-Pokud například během dané minuty došlo ke 4 přihlašovacím transakcím do vaší aplikace, může být výsledná naměřená čekací doba pro každou z nich následující:
+Pokud například během dané minuty došlo ke čtyřem transakcím přihlášení do aplikace, může být výsledná naměřená čekací doba pro každou z nich následující:
 
 |Transakce 1|Transakce 2|Transakce 3|Transakce 4|
 |---|---|---|---|
@@ -214,6 +230,6 @@ Používejte vlastní metriky z různých služeb:
  - [Škálovací sada virtuálních počítačů](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Virtuální počítače Azure (klasické)](collect-custom-metrics-guestos-vm-classic.md)
  - [Virtuální stroj Linux pomocí agenta Telegraf](collect-custom-metrics-linux-telegraf.md)
- - [ROZHRANÍ API PRO ODPOČINEK](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
+ - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
  - [Klasické cloudové služby](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  

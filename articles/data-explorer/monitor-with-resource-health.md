@@ -7,12 +7,12 @@ ms.reviewer: prvavill
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 9b8b1b40e972d7719ef2cf495ed12cb4ed3478fd
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ee42f45d8c96e908061142b5a8e6b2e5cee21993
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479367"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262056"
 ---
 # <a name="monitor-azure-data-explorer-using-resource-health-preview"></a>Monitorování Průzkumníka dat Azure pomocí stavu prostředků (preview)
 
@@ -44,7 +44,7 @@ Stav K **dispozici** označuje, že váš prostředek Azure Data Explorer je v p
 
 ### <a name="unavailable"></a>Neaktivní
 
-Stav **Nedostupné** označuje, že je pokračující problém s prostředek Azure Data Explorer, který způsobí, že není k dispozici pro dotazy a ingestování. Například uzly ve vašem prostředku Průzkumníka dat Azure může mít neočekávaně restartován. Pokud váš prostředek Průzkumník dat Azure zůstane v tomto stavu delší dobu, obraťte se na [podporu]().
+Stav **Nedostupné** označuje, že je pokračující problém s prostředek Azure Data Explorer, který způsobí, že není k dispozici pro dotazy a ingestování. Například uzly ve vašem prostředku Průzkumníka dat Azure může mít neočekávaně restartován. Pokud váš prostředek Průzkumník dat Azure zůstane v tomto stavu delší dobu, obraťte se na podporu.
 
 ![Neaktivní](media/monitor-with-resource-health/unavailable.png)
 

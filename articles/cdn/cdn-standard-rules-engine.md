@@ -2,17 +2,17 @@
 title: Vynucení protokolu HTTPS ve standardním azure cdn pomocí modulu pravidel | Dokumenty společnosti Microsoft
 description: Pomocí modulu pravidel pro Microsoft Standard Azure Content Delivery Network (Azure CDN) můžete přizpůsobit způsob, jakým Azure CDN zpracovává požadavky HTTP, včetně blokování doručování určitých typů obsahu, definování zásad ukládání do mezipaměti a úpravy hlaviček HTTP. V tomto článku se dozvíte, jak vytvořit pravidlo pro přesměrování uživatelů na protokol HTTPS.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: 724861305d7a25db409072200ac2bc3bd83f0682
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 91a442573139bf4fdd09978290bf2380c8bcb97e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74171571"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259917"
 ---
 # <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Nastavení modulu standardních pravidel pro Azure CDN
 

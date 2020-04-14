@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/07/2020
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86c5f572ba66845467a7e3f4412b8da8368fe772
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 0866db6b549bc940d2e73bccfc77b8fad19abd51
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811249"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273218"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů úloh SAP
 
@@ -110,6 +110,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v tématu:
 
 
 ## <a name="change-log"></a>Protokol změn
+- 04/13/2020: Opravte přesná čísla verzí SAP ASE v [nasazení DBMS virtuálních počítačů SAP ASE Azure pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
 - 04/07/2020: Změna nastavení [kardiostimulátoru na SLES v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro objasnění pokynů cloud-netconfig-azure
 - 04/06/2020: Změny v [sap HANA horizontální navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Soubory na SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) a v [SAP HANA horizontální navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp soubory na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) odebrat odkazy na NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf) (nahrazenTR-4746 ) [TR-4746](https://www.netapp.com/us/media/tr-4746.pdf)
 - 03/31/2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure na SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) a [vysoká dostupnost SAP HANA na virtuálních počítačích Azure na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) přidat pokyny, jak určit velikost proklápěcí při vytváření prokládaných svazků
@@ -173,11 +174,6 @@ Informace o integraci služeb Azure do komponent SAP najdete v tématu:
 - 10/11/2019: Změny konfigurace úložiště Ultra disků a zavedení ANF v [konfiguracích úložiště virtuálních počítačů SAP HANA Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 - 10/01/2019: Změna [grafiky skupin umístění bezkontaktní komunikace Azure pro optimální latenci sítě s aplikacemi SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) pro získání větší přehlednosti
 - 10/01/2019: Změna [konfigurace a operace infrastruktury SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) v Azure opravit příkazy kolem vysoce dostupné sdílené složky nfs pro /hana/shared. 
-- 09/28/2019: Změna nastavení [kardiostimulátoru na Red Hat Enterprise Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) pro objasnění SBD jako mechanismuš oplocení není podporována v clusterech RHEL  
-- 09/17/2019: Změna v NetWeaver plánování a nasazení Průvodce sjednotit podmínky kolem rozšíření virtuálního počítače pro SAP  
-- 08/22/2019: Změny v [nastavení kardiostimulátoru na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro aktualizaci adres URL pro vytvoření vlastní role  
-- 08/16/2019: Změny v [nastavení kardiostimulátoru na Red Hat Enterprise Linux v Azure,](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) aby zákazníkům připomněly, že mají aktualizovat akce ve vlastní roli, pokud se aktualizuje te na novou verzi agenta Plot Azure  
-- 08/15/2019: Změny v [konfiguracích úložiště virtuálních počítačů SAP HANA Azure,](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) které odrážejí obecnou dostupnost ultra disku (dříve Ultra SSD)
-- 08/01/2019: Změny [nastavení kardiostimulátoru na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro integraci změn speciálně pro SLES 15 
+
 
 

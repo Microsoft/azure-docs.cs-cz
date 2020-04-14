@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 957bc187b0123338947f62333c913cf82a6c66a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79754b4ce7c3dfe2a5c549f4a39ef3160be423d8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277952"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273881"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Nasazení virtuálního počítače Azure z uživatelského virtuálního pevného disku
+
+> [!IMPORTANT]
+> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [certifikaci image virtuálního počítače Azure](https://aks.ms/CertifyVMimage) spravujte migrované nabídky.
 
 Tento článek vysvětluje, jak nasadit zobecněnou image virtuálního pevného disku k vytvoření nového prostředku virtuálního počítače Azure pomocí dodané šablony Azure Resource Manager a skriptu Azure PowerShell.
 

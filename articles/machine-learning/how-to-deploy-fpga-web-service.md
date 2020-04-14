@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8cb6cf49e302122849dc2402bcff008e72e15608
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 870f7b0ab0f1d7b247435cdbb74e21801b3b052a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472354"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257177"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Co jsou pole programovatelná pole brány (FPGA) a jak nasadit
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ Microsoft Azure je největší investice do cloudu na světě v oblasti FPGA. Po
 FPGA v Azure podporuje:
 
 + Scénáře klasifikace a rozpoznávání obrázků
-+ Nasazení Tentendflow
++ Nasazení TentenredFlow (vyžaduje Tentenorflow 1.x)
 + Hardware Intel FPGA
 
 Tyto modely DNN jsou v současné době k dispozici:
@@ -115,9 +115,8 @@ Model můžete nasadit jako webovou službu na FPGA s modely s akcelerací hardw
 - Sada Python SDK pro hardwarově akcelerované modely:
 
     ```bash
-    pip install --upgrade azureml-accel-models
+    pip install --upgrade azureml-accel-models[cpu]
     ```
-
 
 ## <a name="1-create-and-containerize-models"></a>1. Vytváření a kontejnery modelů
 
