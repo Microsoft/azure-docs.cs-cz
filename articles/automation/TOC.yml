@@ -18,11 +18,11 @@
     - name: Správa řízení přístupu na základě rolí
       href: automation-role-based-access-control.md
       displayName: RBAC
-    - name: Použití Azure AD ve službě Azure Automation pro ověření do Azure
+    - name: Použití Azure AD k ověření v Azure
       href: automation-use-azure-ad.md
-    - name: Správa služeb Office 365 s využitím služby Azure Automation
+    - name: Správa služeb Office 365
       href: manage-office-365.md
-    - name: Konfigurace ověřování pomocí AWS
+    - name: Ověření runbooků Azure Automation pomocí Amazon Web Services
       href: automation-config-aws-account.md
     - name: Šifrování zabezpečených prostředků ve službě Azure Automation
       href: automation-secure-asset-encryption.md
@@ -42,6 +42,9 @@
           displayName: troubleshoot
 - name: Automatizace procesů
   items:
+    - name: Spouštění runbooků ve službě Azure Automation
+      href: automation-runbook-execution.md
+      displayName: 'fair share, activity log'
     - name: Přehled funkce Hybrid Runbook Worker
       href: automation-hybrid-runbook-worker.md
     - name: Galerie runbooků
@@ -111,9 +114,6 @@
             - name: Výstup runbooku
               href: automation-runbook-output-and-messages.md
               displayName: 'message streams, progress records, preference'
-            - name: Sledování úlohy runbooku
-              href: automation-runbook-execution.md
-              displayName: 'fair share, activity log'
             - name: Zpracování chyb v grafických runbookách
               href: automation-runbook-graphical-error-handling.md
         - name: Hybrid Runbook Worker

@@ -3,17 +3,17 @@ title: Optimalizace investic do cloudu se službou Azure Cost Management
 description: Tento článek vám pomůže maximalizovat hodnotu svých investic do cloudu, snížit náklady a vyhodnotit způsob utrácení peněz.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80157207"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874581"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat investice do cloudu se službou Azure Cost Management
 
@@ -36,6 +36,10 @@ Abyste mohli úspěšně spravovat náklady, je potřeba v organizaci zajistit s
 ### <a name="key-principles"></a>Hlavní principy
 
 Následující principy zajistí vaší organizaci úspěch při správě cloudových nákladů.
+
+Další informace najdete ve videu věnovaném [nastavení služby Cost Management pro dosažení úspěchu](https://www.youtube.com/watch?v=dVuwITdSAZ4). Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/dVuwITdSAZ4]
 
 #### <a name="planning"></a>Plánování
 
@@ -125,7 +129,7 @@ Nechte se informovat o vývoji nákladů organizace v čase. Následující tech
 
 Při organizaci svých prostředků myslete na náklady. Když vytváříte předplatná a skupiny prostředků, myslete na týmy, které odpovídají za související náklady. Dbejte na to, aby výkazy zohledňovaly vaši organizaci. Vhodnými kontejnery pro uspořádání a přiřazování nákladů v celé organizaci jsou předplatná a skupiny prostředků. K přiřazování nákladů se hodí i značky. Můžete je používat jako filtry. A můžete je použít i k seskupení, když chcete analyzovat data a zkoumat náklady. Zákazníci se smlouvou Enterprise také můžou vytvářet oddělení a přiřazovat k nim předplatná. Když Azure uspořádáte podle nákladů, pomůže vám to, aby příslušní lidé ve vaší organizaci odpovídali u svých týmů za snižování výdajů.
 
-Podívejte se na video o [kontrole zásad značek s využitím služby Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) a seznamte se s nástroji, které máte k dispozici pro vynucení škálovatelného označování prostředků ve vaší organizaci.
+Podívejte se na video o [kontrole zásad značek s využitím služby Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) a seznamte se s nástroji, které máte k dispozici pro vynucení škálovatelného označování prostředků ve vaší organizaci. Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 

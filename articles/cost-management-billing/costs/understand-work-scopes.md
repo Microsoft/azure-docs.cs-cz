@@ -3,17 +3,17 @@ title: Vysvětlení a práce s rozsahy Azure Cost Management
 description: Tento článek vám pomůže pochopit rozsahy fakturace a správy prostředků, které jsou dostupné v Azure, a způsoby použití rozsahů ve službě Cost Management a rozhraních API.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: bbed4209d26fe32f95b93b2c7411e1ab74f03ede
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ebae9d1c66a721926ca07b21059ec57b05b99a0f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80131360"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877928"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -27,7 +27,11 @@ _Rozsah_ je uzel v hierarchii prostředků Azure, ve kterém mají uživatelé A
 
 V rozsazích můžete spravovat fakturační údaje, mít zvláštní role pro platby, zobrazovat faktury a provádět všeobecnou správu účtu. Role pro fakturaci a účet se spravují nezávisle na rolích určených ke správě prostředků, které používají [Azure RBAC](../../role-based-access-control/overview.md). Aby bylo možné jasně rozlišit účel těchto samostatných rozsahů, včetně rozdílů v řízení přístupu, označují se jako _rozsahy fakturace_ a _rozsahy RBAC_.
 
-## <a name="how-cost-management-uses-scopes"></a>Jak služba Cost Management používá rozsahy
+Další informace o rozsazích najdete ve videu věnovaném [nastavení hierarchií ve službě Cost Management](https://www.youtube.com/watch?v=n3TLRaYJ1NY). Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
+
+## <a name="how-cost-management-uses-scopes"></a>Jak Cost Management používá rozsahy
 
 Cost Management funguje ve všech rozsazích nad úrovní prostředků, aby organizace mohly spravovat náklady na úrovni, pro kterou mají přístup, a to bez ohledu na to, jestli jde o celý fakturační účet nebo jednu skupinu prostředků. Rozsahy fakturace se liší v závislosti na vaší smlouvě s Microsoftem (typu předplatné), ale rozsahy RBAC nikoli.
 
@@ -71,7 +75,7 @@ Přispěvatel Cost Management je doporučená role s nejnižší úrovní opráv
 
 Fakturační účty smlouvy Enterprise (EA), označované taky jako registrace, mají následující rozsahy:
 
-- [**Fakturační účet**](../manage/view-all-accounts.md) – představuje registraci EA. V tomto rozsahu se generují faktury. Nákupy, které nejsou založené na využití, jako je například Marketplace a rezervace, jsou k dispozici pouze v tomto rozsahu. Nejsou zastoupeny v odděleních ani registračních účtech.
+- [**Fakturační účet**](../manage/view-all-accounts.md) – představuje registraci EA. V tomto rozsahu se generují faktury. Nákupy, které nejsou založené na využití, jako je například Marketplace a rezervace, jsou k dispozici pouze v tomto rozsahu. Nejsou zastoupeny v odděleních ani registračních účtech. Využití rezervací se společně s veškerým dalším využitím vztahuje na jednotlivé prostředky. Využití se shrnuje do předplatných v rámci fakturačního účtu. Pokud chcete zobrazit rozpis nákladů na rezervace podle jednotlivých prostředků, v analýze nákladů přepněte na zobrazení **Amortizované náklady**.
 
     Typ prostředku: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **Oddělení** – volitelné seskupení registračních účtů.

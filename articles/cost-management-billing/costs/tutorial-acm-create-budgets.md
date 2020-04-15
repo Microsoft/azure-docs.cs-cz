@@ -3,17 +3,17 @@ title: 'Kurz: Vytváření a správa rozpočtů Azure'
 description: Tento kurz vám pomůže plánovat a zohledňovat náklady na služby Azure, které využíváte.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 82094fadf7b11d97b0e9e74d9ba897baed16ee01
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155932"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874275"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a správa rozpočtů Azure
 
@@ -25,7 +25,7 @@ Po výběru budoucího data vypršení platnosti se rozpočty automaticky obnov�
 
 Příklady v tomto kurzu vás provedou vytvořením a úpravou rozpočtu pro předplatné se smlouvou Azure Enterprise (EA).
 
-Podívejte se na video zobrazující, [jak použít rozpočty na předplatná pomocí webu Azure Portal](https://www.youtube.com/watch?v=UrkHiUx19Po), a zjistěte, jak můžete vytvářet rozpočty v Azure za účelem sledování výdajů.
+Podívejte se na video zobrazující, [jak použít rozpočty na předplatná pomocí webu Azure Portal](https://www.youtube.com/watch?v=UrkHiUx19Po), a zjistěte, jak můžete vytvářet rozpočty v Azure za účelem sledování výdajů. Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
@@ -38,11 +38,32 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Rozpočty jsou podporovány pro různé typy účtů Azure. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku, který [vysvětluje data služby Cost Management](understand-cost-mgt-data.md). Pokud chcete zobrazit rozpočty, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure.
+Rozpočty se podporují pro následující typy rozsahů a účtů Azure:
+
+- Rozsahy řízení přístupu na základě role Azure
+    - Skupiny pro správu
+    - Předplatné
+- Rozsahy smlouvy Enterprise
+    - Fakturační účet
+    - Oddělení
+    - Registrační účet
+- Jednotlivé smlouvy
+    - Fakturační účet
+- Rozsahy smluv se zákazníky Microsoftu
+    - Fakturační účet
+    - Fakturační profil
+    - Oddíl faktury
+    - Zákazník
+- Rozsahy AWS
+    - Externí účet
+    - Externí předplatné
+
+
+Pokud chcete zobrazit rozpočty, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure.
 
 Pokud máte nové předplatné, nemůžete rovnou vytvořit rozpočet ani využívat další funkce služby Cost Management. Může trvat až 48 hodin, než budete moct využívat všechny funkce služby Cost Management.
 
-Pokud máte předplatná Azure EA, musíte mít oprávnění ke čtení, abyste si mohli rozpočty zobrazit. Chcete-li rozpočty vytvářet a spravovat, musíte mít oprávnění přispěvatele. Můžete vytvořit individuální rozpočty pro předplatná EA a skupiny prostředků. Nemůžete však vytvořit rozpočty pro fakturační účty EA.
+Pokud máte předplatná Azure EA, musíte mít oprávnění ke čtení, abyste si mohli rozpočty zobrazit. Chcete-li rozpočty vytvářet a spravovat, musíte mít oprávnění přispěvatele.
 
 Pro rozpočty se podporují následující oprávnění nebo obory Azure pro předplatná podle uživatelů a skupin. Další informace o oborech najdete v článku o [principech oborů a práci s nimi](understand-work-scopes.md).
 
@@ -58,7 +79,7 @@ Další informace o přiřazování oprávnění k datům služby Cost Managemen
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Vytvoření rozpočtu na portálu Azure Portal
 
-Můžete si vytvořit rozpočet pro předplatné Azure na dobu jednoho měsíce, čtvrtletí nebo roku. Váš navigační obsah na webu Azure Portal určuje, zda vytvoříte rozpočet pro předplatné nebo skupinu pro správu.
+Můžete si vytvořit rozpočet pro předplatné Azure na dobu jednoho měsíce, čtvrtletí nebo roku.
 
 Chcete-li vytvořit nebo zobrazit rozpočet, otevřete požadovaný obor na webu Azure Portal a v nabídce vyberte **Rozpočty**. Přejděte například na **Předplatná**, vyberte předplatné ze seznamu a pak v nabídce vyberte **Rozpočty**. Pomocí možnosti **Obor** můžete v části Rozpočty přepnout na jiný obor, například na skupinu pro správu. Další informace o oborech najdete v článku o [principech oborů a práci s nimi](understand-work-scopes.md).
 
@@ -110,15 +131,11 @@ Vyhodnocení rozpočtových nákladů vychází ze skutečných nákladů a neza
 
 Když vytváříte nebo upravujete rozpočet pro předplatné nebo obor skupiny prostředků, můžete ho nakonfigurovat tak, aby volal skupinu akcí. Skupina akcí může při dosažení prahové hodnoty rozpočtu provádět různé akce. Skupiny akcí jsou aktuálně podporovány jenom pro předplatná a obory skupin prostředků. Další informace o skupinách akcí najdete v tématu týkajícím se [vytváření a správy skupin akcí na webu Azure Portal](../../azure-monitor/platform/action-groups.md). Další informace o používání automatizace pro rozpočty pomocí skupin akcí najdete v tématu popisujícím [správu nákladů pomocí rozpočtů Azure](../manage/cost-management-budget-scenario.md).
 
-
-
 Pokud chcete vytvořit nebo aktualizovat skupiny akcí, vyberte během vytváření nebo úprav rozpočtu **Spravovat skupiny akcí**.
 
 ![Příklad vytváření rozpočtu se zobrazenou možností Spravovat skupiny akcí](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
-
 Potom vyberte **Přidat skupinu akcí** a vytvořte skupinu akcí.
-
 
 ![Obrázek skupinového rámečku Přidat skupinu akcí](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 

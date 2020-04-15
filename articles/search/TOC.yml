@@ -198,6 +198,8 @@
               href: cognitive-search-custom-skill-python.md
             - name: Příklad – Azure Functions
               href: cognitive-search-create-custom-skill-example.md
+            - name: Příklad – Rozpoznávání formulářů Azure
+              href: cognitive-search-custom-skill-form.md
             - name: Příklad – kontejnery
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Tipy k návrhům

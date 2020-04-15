@@ -5,77 +5,53 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0635c21ee30a40344281f31c8f9aedf9d74a1284
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199241"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633858"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Zobrazení rezervací Azure na webu Azure Portal
+# <a name="view-azure-reservations"></a>Zobrazení rezervací Azure
 
-V závislosti na typu a oprávněních vašeho předplatného existuje několik způsobů, jak zobrazit rezervace v Azure.
+Zakoupené rezervace můžete zobrazit a spravovat na webu Azure Portal.   
 
-## <a name="view-purchased-reservations"></a>Zobrazení zakoupených rezervací
+## <a name="permissions-to-view-a-reservation"></a>Oprávnění k zobrazení rezervace
 
-Když zakoupíte rezervaci, ve výchozím nastavení ji můžete zobrazit vy a správce účtu. Vy a správce účtu automaticky získáte roli Vlastník objednávky rezervace a samotné rezervace. Pokud chcete umožnit ostatním uživatelům zobrazit rezervaci, musíte je přidat jako **vlastníka** nebo **čtenáře** objednávky rezervace nebo samotné rezervace.
+Pokud chcete zobrazit nebo spravovat rezervaci, musíte k ní mít oprávnění čtenáře nebo vlastníka. Když zakoupíte rezervaci, ve výchozím nastavení vy a správce účtu automaticky získáte roli vlastníka objednávky rezervace a samotné rezervace. Pokud chcete umožnit ostatním uživatelům zobrazit rezervaci, musíte je přidat jako **vlastníka** nebo **čtenáře** objednávky rezervace nebo samotné rezervace. Přidáním uživatele do předplatného zadaného pro fakturaci rezervace se uživatel nepřidá automaticky do rezervace. 
 
 Další informace najdete v tématu [Přidání nebo změna uživatelů, kteří můžou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 
-Pokud chcete zobrazit rezervaci jako vlastník nebo čtenář, postupujte následovně:
+## <a name="view-reservation-and-utilization-in-azure-portal"></a>Zobrazení rezervace a informací o využití na webu Azure Portal
+
+Zobrazení rezervace jako vlastník nebo čtenář
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyhledejte **Rezervace**.
-    ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/view-reservations/portal-reservation-search.png)  
-3. V seznamu se zobrazí všechny rezervace, u kterých máte roli Vlastník nebo Čtenář. U každé rezervace se zobrazí poslední známé procento využití.  
-    ![Příklad ukazující seznam rezervací](./media/view-reservations/view-reservations.png)
-4. Po výběru rezervace se zobrazí trend využití za posledních pět dnů.  
-    ![Příklad ukazující trend využití rezervace](./media/view-reservations/reservation-utilization.png)
-5. Informace o [využití rezervací](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) můžete získat také pomocí rozhraní API Podrobnosti o rezervované instanci a [balíčku obsahu Power BI pro Microsoft Azure Consumption Insights](/power-bi/service-connect-to-azure-consumption-insights).
+2. Přejděte do části [Rezervace](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+3. V seznamu se zobrazí všechny rezervace, u kterých máte roli vlastníka nebo čtenáře. U každé rezervace se zobrazí poslední známé procento využití.
+4. Kliknutím na procento využití zobrazíte historii a podrobnosti využití. Podrobnosti najdete v následujícím videu.
+   > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4sYwk] 
 
-Pokud potřebujete změnit rozsah rezervace, rozdělit rezervaci nebo změnit, kdo může rezervaci spravovat, přečtěte si téma [Správa rezervací Azure](manage-reserved-vm-instance.md).
+## <a name="get-reservations-and-utilization-using-apis-powershell-cli"></a>Získání informací o rezervacích a využití pomocí rozhraní API, PowerShellu nebo rozhraní příkazového řádku
 
-## <a name="view-reservation-transactions-for-enterprise-enrollments"></a>Zobrazení transakcí rezervací u smluv Enterprise
+Seznam všech rezervací můžete získat s využitím následujících zdrojů informací.
+- [Rozhraní API: Objednávka rezervace – Výpis](/rest/api/reserved-vm-instances/reservationorder/list)
+- [PowerShell: Objednávka rezervace – Výpis](/powershell/module/azurerm.reservations/get-azurermreservationorder)
+- [Rozhraní příkazového řádku: Objednávka rezervace – Výpis](/cli/azure/reservations/reservation-order#az-reservations-reservation-order-list)
 
- Pokud máte smlouvu Enterprise vedenou partnerem, můžete rezervace zobrazit na portálu EA Portal v části **Sestavy**. V případě ostatních smluv Enterprise můžete rezervace zobrazit na portálu EA Portal i na webu Azure Portal. Pokud chcete zobrazit transakce rezervací, musíte být správcem EA.
+Pomocí rozhraní API pro využití rezervovaných instancí můžete získat také informace o [využití rezervací](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage). 
 
-Pokud chcete zobrazit transakce rezervací na webu Azure Portal, postupujte následovně:
+## <a name="see-reservations-and-utilization-in-power-bi"></a>Zobrazení rezervací a využití v Power BI
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte položku **Správa nákladů a fakturace**.
-
-    ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/view-reservations/portal-cm-billing-search.png)
-
-1. Vyberte **Transakce rezervací**.
-1. Pokud chcete filtrovat výsledky, vyberte **Časový rozsah**, **Typ** nebo **Popis**.
-1. Vyberte **Použít**.
-
-    ![Snímek obrazovky ukazující výsledky transakcí rezervací](./media/view-reservations/portal-billing-reservation-transaction-results.png)
-
-Informace o získání dat pomocí rozhraní API najdete v tématu [Získání informací o poplatcích za rezervované instance pro podnikové zákazníky](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges).
+Pro uživatele Power BI jsou k dispozici dvě možnosti.
+- Balíček obsahu: Informace o nákupech rezervací a data o využití jsou k dispozici v [balíčku obsahu Power BI pro Consumption Insights](/power-bi/desktop-connect-azure-cost-management). Pomocí tohoto balíčku obsahu můžete vytvářet libovolné sestavy. 
+- Aplikace Cost Management: V [aplikaci Cost Management](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp) můžete využít předem vytvořené sestavy, které si můžete dál přizpůsobit.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rezervacích Azure najdete v následujících článcích:
-
-- [Co jsou rezervace v Azure?](save-compute-costs-reservations.md)
-- [Správa rezervací v Azure](manage-reserved-vm-instance.md)
-
-Zakoupení plánu služby:
-
-- [Předplacení rezervované kapacity služby Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
-- [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../../sql-database/sql-database-reserved-capacity.md)
-- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-
-Zakoupení plánu softwaru:
-
-- [Předplacení plánů softwaru Red Hat z rezervací Azure](../../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Předplacení plánů softwaru SUSE z rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-Vysvětlení využití:
-
+- [Správa rezervací Azure](manage-reserved-vm-instance.md)
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervací u smlouvy Enterprise](understand-reserved-instance-usage-ea.md)
 - [Vysvětlení využití rezervací u předplatných CSP](https://docs.microsoft.com/partner-center/azure-reservations)

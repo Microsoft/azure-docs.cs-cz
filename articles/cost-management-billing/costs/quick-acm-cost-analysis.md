@@ -3,17 +3,17 @@ title: 'Rychlý start: Prozkoumání nákladů na Azure s využitím analýzy n�
 description: Tento rychlý start vám pomůže prozkoumat a analyzovat náklady organizace na Azure pomocí analýzy nákladů.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e63e3ef999db7053609fb098cd2b7583143a2937
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155949"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874496"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -45,7 +45,7 @@ Pokud si chcete zkontrolovat náklady v analýze nákladů, otevřete požadovan
 
 Vybraný obor se použije v celé službě Cost Management v zájmu konsolidace dat a k řízení přístupu k informacím o nákladech. Při použití oborů nevybíráte více oborů. Místo toho vyberete rozsáhlejší obor, který zahrnuje ostatní obory, a potom vyfiltrujete potřebné vnořené obory. Tomuto přístupu je důležité rozumět, protože někteří lidé nemusí mít přístup k jednomu nadřazenému oboru, který pokrývá více vnořených oborů.
 
-Podívejte se na video [Jak používat Cost Management na webu Azure Portal](https://www.youtube.com/watch?v=mfxysF-kTFA), kde najdete další informace o použití analýzy nákladů.
+Podívejte se na video [Jak používat Cost Management na webu Azure Portal](https://www.youtube.com/watch?v=mfxysF-kTFA), kde najdete další informace o použití analýzy nákladů. Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
@@ -145,6 +145,10 @@ Pro jakékoli zobrazení si můžete zobrazit celou datovou sadu. Data se zobraz
 
 ## <a name="understanding-grouping-and-filtering-options"></a>Vysvětlení možností seskupování a filtrování
 
+Analýza nákladů nabízí řadu možností seskupení a filtrování. Pokud se chcete podívat na video o možnostech seskupení a filtrování, najdete ho tady: [Generování sestav služby Cost Management podle dimenzí a značek](https://www.youtube.com/watch?v=2Vx7V17zbmk). Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/2Vx7V17zbmk]
+
 V následující tabulce jsou uvedené některé nejběžnější možnosti seskupování a filtrování a situace vhodné k jejich použití.
 
 | Vlastnost | Kdy je použít | Poznámky |
@@ -178,7 +182,7 @@ Další informace o použitých termínech najdete v článku s [vysvětlením t
 
 Přizpůsobená zobrazení si můžete uložit a nasdílet je ostatním tak, že připnete analýzu nákladů na řídicí panel na webu Azure Portal nebo zkopírujete odkaz na analýzu nákladů.
 
-Podívejte se na video věnované [sdílení a ukládání zobrazení v Azure Cost Managementu](https://www.youtube.com/watch?v=kQkXXj-SmvQ), kde se dozvíte víc o tom, jak tento portál využívat ke sdílení znalostí o nákladech v rámci vaší organizace.
+Podívejte se na video věnované [sdílení a ukládání zobrazení v Azure Cost Managementu](https://www.youtube.com/watch?v=kQkXXj-SmvQ), kde se dozvíte víc o tom, jak tento portál využívat ke sdílení znalostí o nákladech v rámci vaší organizace. Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 

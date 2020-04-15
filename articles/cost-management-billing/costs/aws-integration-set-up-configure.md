@@ -3,22 +3,26 @@ title: Nastavení integrace AWS se službou Azure Cost Management
 description: Tento článek vás provede nastavením a konfigurací integrace sestavy nákladů a využití AWS se službou Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3b1efabbf5f05c05ef939ee8713829fbd49f483
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203079"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878982"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Nastavení a konfigurace integrace sestavy nákladů a využití AWS
 
 Díky integraci sestavy nákladů a využití (CUR) AWS (Amazon Web Services) můžete monitorovat a řídit své útraty AWS ve službě Azure Cost Management. Integrace umožňuje využít jedno umístění na portálu Azure Portal, odkud můžete monitorovat a řídit útratu pro Azure i pro AWS. Tento článek vysvětluje, jak nastavit integraci a nakonfigurovat ji, aby bylo možné používat funkce Azure Cost Management k analýze nákladů a kontrole rozpočtů.
 
 Služba Cost Management zpracuje sestavu nákladů a využití AWS uloženou v kbelíku S3 pomocí přihlašovacích údajů pro přístup k AWS, aby získala definice sestav a stáhla soubory sestav GZIP CSV.
+
+Další informace o nastavení integrace sestav AWS najdete ve videu věnovaném [nastavení konektorů pro AWS ve službě Cost Management](https://www.youtube.com/watch?v=Jg5KC1cx5cA). Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/Jg5KC1cx5cA]
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>Vytvoření sestavy nákladů a využití v AWS
 

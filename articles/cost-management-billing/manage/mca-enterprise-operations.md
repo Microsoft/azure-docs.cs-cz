@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: 6692bb8f323e42edfe546e15620442881f99032d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 01a7b81794342871ae8eadc090e61bbac0876c03
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78272179"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586160"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Provádění úkolů ze smlouvy Enterprise ve fakturačním účtu pro smlouvu se zákazníkem Microsoftu
 
@@ -28,16 +28,16 @@ Následující diagram popisuje uspořádání fakturace v novém fakturačním 
 |------------------------|--------------------------------------------------------|
 | Registrace            | Ke správě fakturace ve vaší organizaci používáte fakturační profil, podobně jako u registrace smlouvy Enterprise. Podnikoví správci se stanou vlastníky fakturačního profilu. Další informace o fakturačních profilech najdete ve [vysvětlení fakturačních profilů](../understand/mca-overview.md#billing-profiles).
 | Oddělení            | K uspořádání nákladů používáte oddíl faktury, podobně jako oddělení v registraci smlouvy Enterprise. Z oddělení se stanou oddíly faktury a správci oddělení se stanou vlastníky odpovídajících oddílů faktury. Další informace o oddílech faktury najdete ve [vysvětlení oddílů faktury](../understand/mca-overview.md#invoice-sections). |
-| Účet               | Účty, které byly vytvořeny u smlouvy Enterprise, se v novém fakturačním účtu nepodporují. Předplatná účtu patří do odpovídajícího oddílu faktury vytvořeného pro jejich oddělení. Vlastníci účtu můžou vytvářet a spravovat předplatná pro svoje oddíly faktury. |
+| Účet               | Účty, které byly vytvořené u smlouvy Enterprise, se v novém fakturačním účtu nepodporují. Předplatná účtu patří do odpovídajícího oddílu faktury vytvořeného pro jejich oddělení. Vlastníci účtu můžou vytvářet a spravovat předplatná pro svoje oddíly faktury. |
 
 ## <a name="changes-for-enterprise-administrators"></a>Změny pro podnikové správce
 
 Následující změny platí pro podnikové správce u smlouvy Enterprise, která byla prodloužena jako smlouva se zákazníkem Microsoftu.
 
-- Pro registraci se vytvoří fakturační profil. Ke správě fakturace ve vaší organizaci používáte fakturační profil, podobně jako u registrace smlouvy Enterprise. Další informace o fakturačních profilech najdete ve [vysvětlení fakturačních profilů](../understand/mca-overview.md#billing-profiles).
+- Pro registraci se vytvoří fakturační profil. Fakturační profil budete používat ke správě fakturace ve vaší organizaci, podobně jako u registrace smlouvy Enterprise. Další informace o fakturačních profilech najdete ve [vysvětlení fakturačních profilů](../understand/mca-overview.md#billing-profiles).
 - V registraci smlouvy Enterprise se vytvoří oddíl faktury pro každé oddělení. Oddíly faktury slouží ke správě oddělení. Pokud chcete nastavit další oddělení, můžete vytvořit nové oddíly faktury. Další informace o oddílech faktury najdete ve [vysvětlení oddílů faktury](../understand/mca-overview.md#invoice-sections).
-- Roli tvůrce předplatného Azure v oddílech faktury použijete k tomu, abyste ostatním dali oprávnění k vytvoření předplatného Azure, podobně jako u účtů vytvořených v registraci smlouvy Enterprise.
-- Fakturace organizace se spravuje na webu [Azure Portal](https://portal.azure.com), nikoli na portálu Azure EA.
+- Roli tvůrce předplatného Azure v oddílech faktury použijete k tomu, abyste ostatním udělili oprávnění k vytvoření předplatného Azure, podobně jako u účtů vytvořených v registraci smlouvy Enterprise.
+- Fakturace organizace se spravuje na webu [Azure Portal](https://portal.azure.com), nikoli na webu Azure EA Portal.
 
 U nového fakturačního účtu máte následující role:
 
@@ -92,8 +92,8 @@ Přiřaďte uživatelům roli Tvůrce předplatného Azure v oddílech faktury a
 Následující změny platí pro správce oddělení ve smlouvě Enterprise, která byla prodloužena jako smlouva se zákazníkem Microsoftu.
 
 - V registraci smlouvy Enterprise se vytvoří oddíl faktury pro každé oddělení. Oddíly faktury slouží ke správě oddělení. Další informace o oddílech faktury najdete ve [vysvětlení oddílů faktury](../understand/mca-overview.md#invoice-sections).
-- Roli Tvůrce předplatného Azure v oddílu faktury použijete k tomu, abyste ostatním dali oprávnění k vytvoření předplatného Azure, jako u účtů vytvořených v registraci smlouvy Enterprise.
-- Fakturace organizace se spravuje na webu Azure Portal, nikoli na portálu Azure EA.
+- Roli tvůrce předplatného Azure v oddílu faktury použijete k tomu, abyste ostatním udělili oprávnění k vytvoření předplatného Azure, jako u účtů vytvořených v registraci smlouvy Enterprise.
+- Fakturace organizace se spravuje na webu Azure Portal, nikoli na webu Azure EA Portal.
 
 U nového fakturačního účtu máte následující role:
 
@@ -101,7 +101,7 @@ U nového fakturačního účtu máte následující role:
 
 ### <a name="view-charges-for-your-department"></a>Zobrazení poplatků pro oddělení
 
-Poplatky pro oddíl faktury vytvořený pro vaše oddělení můžete zobrazit na [stránce Správa nákladů a fakturace](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview) na webu Azure Portal.
+Poplatky pro oddíl faktury vytvořený pro vaše oddělení můžete zobrazit na [stránce Cost Management a fakturace](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview) na webu Azure Portal.
 
 ### <a name="add-an-additional-department-administrator"></a>Přidání dalšího správce oddělení
 
@@ -111,7 +111,7 @@ Další informace o poskytování přístupu k oddílu faktury najdete v tématu
 
 ### <a name="create-a-new-account-in-your-department"></a>Vytvoření nového účtu v oddělení
 
-Přiřaďte uživatelům roli tvůrce předplatného Azure u oddílu faktury, který byl vytvořen pro vaše oddělení. Další informace o přiřazování rolí najdete v tématu [Správa fakturačních rolí na webu Azure Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+Přiřaďte uživatelům roli tvůrce předplatného Azure u oddílu faktury vytvořeného pro vaše oddělení. Další informace o přiřazování rolí najdete v tématu [Správa fakturačních rolí na webu Azure Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>Zobrazení poplatků pro účty ve vašem oddělení
 

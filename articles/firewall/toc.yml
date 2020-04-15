@@ -20,6 +20,9 @@
     - name: Nasazení s využitím skupin IP adres
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
+    - name: Nasazení s využitím několika adres
+      displayName: Resource Manager
+      href: quick-create-multiple-ip-template.md
 - name: ukázky
   items:
     - name: Azure PowerShell

@@ -3,16 +3,16 @@ title: Řešení potíží s přístupem k portálu Azure EA
 description: Tento článek popisuje některé běžné problémy, které mohou nastat u smlouvy Azure Enterprise (EA) na portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3bf1c10e28ef9e3e4008968c9dbaef576bccdb5f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ee8363a76db93f0c2bd4734151e3d250de5402fc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411555"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586205"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Řešení potíží s přístupem k portálu Azure EA
 
@@ -108,11 +108,11 @@ Upozorňujeme, že pokud jsou v dané registraci další správci EA, obrátíme
 
 ### <a name="my-enrollment-is-showing-in-pending-status-how-do-i-activate-my-enrollment"></a>Moje registrace se zobrazuje ve stavu čekání na vyřízení. Jak můžu registraci aktivovat?
 
-Registrace jsou ve stavu čekání na vyřízení v případě, že se původní správce EA ještě k registraci nepřihlásil. Pokud jste správcem EA, přihlaste se k portálu Azure EA. Na úvodní stránce s čísly všech vašich registrací se možná vaše registrace čekající na vyřízení nezobrazí. V pravém horním rohu portálu EA zrušte zaškrtnutí políčka Aktivní, aby se zobrazila i registrace čekající na vyřízení. Kliknutím na příslušnou registraci přejděte k informacím o registraci. Jakmile se dostanete na stránku Správa registrace, stav Čeká na vyřízení se aktualizuje na Aktivní.
+Registrace jsou ve stavu čekání na vyřízení v případě, že se původní správce EA ještě k registraci nepřihlásil. Pokud jste správcem EA, přihlaste se k portálu Azure EA. Na úvodní stránce s čísly všech vašich registrací se možná vaše registrace čekající na vyřízení nezobrazí. V pravém horním rohu webu EA Portal zrušte zaškrtnutí políčka Aktivní, aby se zobrazila i registrace čekající na vyřízení. Kliknutím na příslušnou registraci přejděte k informacím o registraci. Jakmile se dostanete na stránku Správa registrace, stav Čeká na vyřízení se aktualizuje na Aktivní.
 
 ### <a name="why-is-my-account-stuck-in-pending-status"></a>Proč se můj účet zaseknul ve stavu čekání na vyřízení?
 
-Při prvním přidání nových vlastníků účtů k registraci se u nových vlastníků vždy zobrazí stav Čeká na vyřízení. Jakmile obdrží úvodní aktivační e-mail, můžou se vlastníci účtu přihlásit a aktivovat svůj účet. Po přihlášení se stav účtu aktualizuje z Čeká na vyřízení na Aktivní.
+Při prvním přidání nových vlastníků účtů k registraci se u nich vždy zobrazí stav Čeká na vyřízení. Jakmile obdrží úvodní aktivační e-mail, můžou se vlastníci účtu přihlásit a aktivovat svůj účet. Po přihlášení se stav účtu aktualizuje z Čeká na vyřízení na Aktivní.
 
 ### <a name="i-received-an-error-when-signing-in-to-azure-ea-portal"></a>Při přihlašování k portálu Azure EA došlo k chybě
 
@@ -125,7 +125,7 @@ Během přihlašování k portálu Azure EA se může zobrazit chybová zpráva 
     - Přejděte do části Vaše informace a vyberte Spravovat přihlašovací e-mail nebo telefonní číslo.
     - Podle pokynů na obrazovce ověřte alternativní e-mailovou adresu a získejte kód pro přístup k citlivým informacím.
     - Zadejte tento bezpečnostní kód.
-    - Pokud chcete dvojúrovňové ověřování nastavit později, vyberte Nastavit později.
+    - Pokud chcete dvoustupňové ověřování nastavit později, vyberte Nastavit později.
     - Přejdete na stránku Správa aliasů účtu, kde se zobrazí vaše aliasy účtu. Pečlivě zkontrolujte, že se k portálu Azure EA přihlašujete pomocí primárního aliasu. Pokud se přihlašujete pomocí jiného aliasu, můžete ho nastavit jako svůj primární nebo místo něj použijte primární alias pro portál EA.
 
 Pokud výše uvedený postup při řešení potíží selže, na stránce [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) odešlete žádost obsahující například následující informace:

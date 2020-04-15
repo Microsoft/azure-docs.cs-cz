@@ -83,10 +83,12 @@
           href: logic-apps-author-definitions.md
         - name: Zpracování typů obsahu
           href: logic-apps-content-type.md
-        - name: Zpracování chyb a výjimek
+        - name: Zpracování výjimek
           href: logic-apps-exception-handling.md
         - name: Zpracování velkých zpráv
           href: logic-apps-handle-large-messages.md
+        - name: Zpracování problémů s omezováním nebo chyb 429
+          href: handle-throttling-problems-429-errors.md
         - name: Zabezpečení
           items:
             - name: Vylepšení zabezpečení pro aplikace logiky

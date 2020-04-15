@@ -7,7 +7,7 @@
           href: what-is-b2b.md
         - name: Porovnání B2B a B2C
           href: compare-with-b2c.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Přidání uživatelů typu host na portálu
           href: b2b-quickstart-add-guest-users-portal.md
@@ -21,7 +21,7 @@
           href: tutorial-bulk-invite.md
         - name: Vynucení vícefaktorového ověřování
           href: b2b-tutorial-require-mfa.md
-    - name: Ukázky
+    - name: ukázky
       items:
         - name: Ukázky kódu a Azure PowerShellu
           href: code-samples.md
@@ -63,6 +63,8 @@
               href: add-users-administrator.md
             - name: Informační pracovníci přidávají uživatele B2B
               href: add-users-information-worker.md
+            - name: Pozvání interních uživatelů k B2B
+              href: invite-internal-users.md
             - name: Federace Googlu
               href: google-federation.md
             - name: Ověřování jednorázovým heslem

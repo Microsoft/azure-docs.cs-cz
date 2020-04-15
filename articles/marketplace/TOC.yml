@@ -1,11 +1,11 @@
-- name: Dokumentace k platformám Azure Marketplace a AppSource
+- name: Dokumentace ke komerčnímu marketplace
   href: index.yml
   items:
-    - name: Plán nasazení pro Azure Marketplace a AppSource
+    - name: Plán nasazení komerčního marketplace
       href: ./marketplace-roadmap.md
-    - name: Podmínky a zásady Azure Marketplace
+    - name: Podmínky a zásady komerčního marketplace
       href: ./policies-terms.md
-    - name: Přehled a výhody platforem Azure Marketplace a AppSource
+    - name: Přehled a výhody komerčního marketplace
       href: ./marketplace-publishers-guide.md
       items:
         - name: 'Jeden marketplace, dvě prodejní místa'
@@ -15,7 +15,7 @@
           items:
             - name: Správa potenciálních zákazníků
               href: ./lead-management-for-cloud-marketplace.md
-            - name: Transakce na Azure Marketplace
+            - name: Transakce na komerčním marketplace
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
             - name: Soukromé nabídky
               href: ./private-offers.md
@@ -66,7 +66,7 @@
               href: ./preferred-solutions.md
             - name: Integrovaná řešení
               href: ./integrated-solutions.md
-        - name: Podpora pro Azure Marketplace a AppSource
+        - name: Podpora pro komerční marketplace
           href: ./support-azure-marketplace.md
           items:
             - name: Nejčastější dotazy k Marketplace
@@ -78,6 +78,8 @@
   items:
     - name: Migrace portálu partnerů cloudu do Partnerského centra
       href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
+    - name: Nejčastější dotazy k migraci
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: Prohlídka portálu
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -427,12 +429,10 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Získání podpory
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
-- name: Portál pro komerční marketplace v partnerském centru
+- name: Komerční marketplace v Partnerském centru
   items:
-    - name: Přehled
-      items:
-        - name: Co je komerční marketplace?
-          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Přehled komerčního marketplace
+      href: ./partner-center-portal/commercial-marketplace-overview.md
     - name: Správa účtů
       items:
         - name: Vytvoření nového účtu v partnerském centru
@@ -453,6 +453,30 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: Rozhraní API pro onboarding
               href: ./partner-center-portal/azure-app-apis.md
+        - name: Nabídky kontejnerů Azure
+          items:
+            - name: Příprava technických prostředků
+              href: ./partner-center-portal/create-azure-container-technical-assets.md
+            - name: Vytvoření nabídky kontejnerů Azure
+              href: ./partner-center-portal/create-azure-container-offer.md
+        - name: Nabídka virtuálních počítačů
+          items:
+            - name: Vytvoření nabídky virtuálních počítačů Azure
+              href: ./partner-center-portal/azure-vm-create-offer.md
+            - name: Vytvoření technického prostředku virtuálního počítače Azure
+              items:
+                - name: Vytvoření technického prostředku virtuálního počítače Azure
+                  href: ./partner-center-portal/create-azure-vm-technical-asset.md
+                - name: Nejčastější dotazy k technickým prostředkům virtuálního počítače Azure
+                  href: ./partner-center-portal/common-issues-during-vhd-creation.md
+                - name: Certifikace image virtuálního počítače Azure
+                  href: ./partner-center-portal/azure-vm-image-certification.md
+                - name: Identifikátor URI sdíleného přístupového podpisu
+                  items:
+                    - name: Získání identifikátoru URI sdíleného přístupového podpisu
+                      href: ./partner-center-portal/get-sas-uri.md
+                    - name: Nejčastější dotazy k identifikátoru URI sdíleného přístupového podpisu
+                      href: ./partner-center-portal/common-sas-uri-issues.md
         - name: Konzultační služby
           items:
             - name: Požadavky

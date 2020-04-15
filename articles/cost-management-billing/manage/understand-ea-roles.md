@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: f31d8638e8672feafc1ab822acecb78ec0a48b11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 28fff2a24f703e0cff967bdde29a7b1238e197ee
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202769"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586150"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Principy rolí pro správu smlouvy Azure Enterprise v Azure
 
@@ -46,18 +46,18 @@ Následující části popisují omezení a možnosti jednotlivých rolí.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Organizační struktura a oprávnění podle role
 
-|Úlohy| Podnikový správce|Podnikový správce (jen pro čtení)|Správce oddělení|Správce oddělení (jen pro čtení)|Vlastník účtu|
-|---|---|---|---|---|---|
-|Zobrazení podnikových správců|✔|✔|✘|✘|✘|
-|Přidání nebo odebrání podnikových správců|✔|✘|✘|✘|✘|
-|Zobrazení kontaktů pro oznámení<sup>4</sup> |✔|✔|✘|✘|✘|
-|Přidání nebo odebrání kontaktů pro oznámení<sup>4</sup> |✔|✘|✘|✘|✘|
-|Vytvoření a správa oddělení |✔|✘|✘|✘|✘|
-|Zobrazení správců oddělení|✔|✔|✔|✔|✘|
-|Přidání nebo odebrání správců oddělení|✔|✘|✔|✘|✘|
-|Zobrazení účtů v registraci |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
-|Přidání účtů do registrace a změna vlastníka účtu|✔|✘|✔<sup>5</sup>|✘|✘|
-|Vytvoření a správa předplatných a oprávnění předplatných|✘|✘|✘|✘|✔|
+|Úlohy| Podnikový správce|Podnikový správce (jen pro čtení)|Správce oddělení|Správce oddělení (jen pro čtení)|Vlastník účtu| Partner|
+|---|---|---|---|---|---|---|
+|Zobrazení podnikových správců|✔|✔|✘|✘|✘|✔|
+|Přidání nebo odebrání podnikových správců|✔|✘|✘|✘|✘|✘|
+|Zobrazení kontaktů pro oznámení<sup>4</sup> |✔|✔|✘|✘|✘|✔|
+|Přidání nebo odebrání kontaktů pro oznámení<sup>4</sup> |✔|✘|✘|✘|✘|✘|
+|Vytvoření a správa oddělení |✔|✘|✘|✘|✘|✘|
+|Zobrazení správců oddělení|✔|✔|✔|✔|✘|✔|
+|Přidání nebo odebrání správců oddělení|✔|✘|✔|✘|✘|✘|
+|Zobrazení účtů v registraci |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
+|Přidání účtů do registrace a změna vlastníka účtu|✔|✘|✔<sup>5</sup>|✘|✘|✘|
+|Vytvoření a správa předplatných a oprávnění předplatných|✘|✘|✘|✘|✔|✘|
 
 - <sup>4</sup> Kontaktům pro oznámení se odesílá e-mailová komunikace týkající se smlouvy Azure Enterprise.
 - <sup>5</sup> Úloha je omezená na účty ve vašem oddělení.
@@ -65,14 +65,14 @@ Následující části popisují omezení a možnosti jednotlivých rolí.
 
 ## <a name="usage-and-costs-access-by-role"></a>Přístup k využití a nákladům podle role
 
-|Úlohy| Podnikový správce|Podnikový správce (jen pro čtení)|Správce oddělení|Správce oddělení (jen pro čtení) |Vlastník účtu|
-|---|---|---|---|---|---|
-|Zobrazení zůstatku kreditu včetně peněžního závazku|✔|✔|✘|✘|✘|
-|Zobrazení kvót útraty oddělení|✔|✔|✘|✘|✘|
-|Nastavení kvót útraty oddělení|✔|✘|✘|✘|✘|
-|Zobrazení ceníku EA v organizaci|✔|✔|✘|✘|✘|
-|Zobrazení podrobností o využití a nákladech|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
-|Správa prostředků na webu Azure Portal|✘|✘|✘|✘|✔|
+|Úlohy| Podnikový správce|Podnikový správce (jen pro čtení)|Správce oddělení|Správce oddělení (jen pro čtení) |Vlastník účtu| Partner|
+|---|---|---|---|---|---|---|
+|Zobrazení zůstatku kreditu včetně peněžního závazku|✔|✔|✘|✘|✘|✔|
+|Zobrazení kvót útraty oddělení|✔|✔|✘|✘|✘|✔|
+|Nastavení kvót útraty oddělení|✔|✘|✘|✘|✘|✘|
+|Zobrazení ceníku EA v organizaci|✔|✔|✘|✘|✘|✔|
+|Zobrazení podrobností o využití a nákladech|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
+|Správa prostředků na webu Azure Portal|✘|✘|✘|✘|✔|✘|
 
 - <sup>6</sup> Podnikový správce musí na webu Enterprise Portal povolit zásadu **DA view charges** (Správce oddělení může zobrazit náklady). Správce oddělení pak může zobrazit podrobnosti o nákladech daného oddělení.
 - <sup>7</sup> Podnikový správce musí na webu Enterprise Portal povolit zásadu **AO view charges** (Vlastník účtu může zobrazit náklady). Vlastník účtu pak může zobrazit podrobnosti o nákladech daného účtu.

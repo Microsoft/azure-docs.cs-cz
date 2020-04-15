@@ -3,16 +3,16 @@ title: Faktury za smlouvu Azure Enterprise
 description: V tomto článku je vysvětlená správa faktury za Azure Enterprise a její další použití.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d8d189d2ee67e3f98fec5d7d4cd295879e8689c9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037258"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743887"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za smlouvu Azure Enterprise
 
@@ -494,6 +494,12 @@ Následující služby se účtují samostatně:
 - Visual Studio Enterprise (roční)
 - Visual Studio Professional (měsíční)
 - Visual Studio Professional (roční)
+
+## <a name="what-to-expect-after-change-of-channel-partner"></a>Co očekávat po změně distribučního partnera
+
+Pokud ke změně distribučního partnera dojde uprostřed měsíce, zákazník obdrží fakturu na využití pod předchozím přidruženým partnerem a další fakturu za využití pod novým partnerem.
+
+Tyto faktury se vystaví následující měsíc po skončení fakturačního období. V případě měsíční fakturace se faktura za září pro oba partnery vystaví v říjnu. V případě čtvrtletního nebo ročního fakturačního období může zákazník očekávat fakturu za využití v období pod předchozím přidruženým partnerem a zbývající využití se v závislosti na četnosti fakturace bude účtovat pod novým partnerem.
 
 ## <a name="azure-marketplace-for-ea-customers"></a>Azure Marketplace pro zákazníky EA
 

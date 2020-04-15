@@ -3,16 +3,16 @@ title: Smlouvy k Azure EA a jejich změny
 description: Tento článek vysvětluje, jak smlouvy k Azure EA a jejich změny ovlivňují vaše používání portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b007e98f37246d17679761fd601ed76fd9fb875
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78301416"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586232"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Smlouvy k Azure EA a jejich změny
 
@@ -164,7 +164,7 @@ Plán předběžného nákupu pro výpočty Azure (CPP – dříve označovaný 
 
 Pokud jste si objednali skladovou položku CPP, je určená pro konkrétní typ počítače v konkrétním datacentru. V současnosti v rámci této funkce neposkytujeme seznam všech nákupů CPP, které zákazník realizoval, takže neexistuje seznam nevyužitých kreditů. Pokud si ale zakoupené typy počítačů nakonfigurujete v datacentru, ve kterém byly zakoupené, bude se vám na webu EA Portal zobrazovat měsíční přidělení v sestavě souhrnu využití.
 
-Předplacená částka se bude zobrazovat jako kredit ve sloupci Included Units (Zahrnuté jednotky) a za využití příslušných funkcí se nebudou účtovat žádné poplatky, dokud se tyto „zahrnuté jednotky“ nespotřebují. Jakmile se spotřebují, bude se další využití účtovat vyjednanými sazbami v běžném ceníku pro zákazníky EA.
+Předplacená částka se bude zobrazovat jako kredit ve sloupci Zahrnuté jednotky a za využití příslušných funkcí se nebudou účtovat žádné poplatky, dokud se tyto zahrnuté jednotky nespotřebují. Jakmile se spotřebují, bude se další využití účtovat vyjednanými sazbami v běžném ceníku pro zákazníky EA.
 
 Způsob nákupu kreditů vychází z počtu počítačů konkrétní třídy za měsíc. Příklad: Pokud jste si koupili 70 virtuálních počítačů A2 na roky v oblasti USA – východ 2, nebude se tato skutečnost na webu EA Portal zobrazovat stejným způsobem jako při nákupu.
 
@@ -174,7 +174,7 @@ Různé typy počítačů používají různé měrné jednotky. Například vir
 
 Následující vzorec uvádí počet zakoupených virtuálních počítačů na základě jejich měrné jednotky:
 
-<center><b> (zahrnuté množství * měrná jednotka)/744 </b></center>
+<center><b> (zahrnuté množství × měrná jednotka)/744 </b></center>
 
 ## <a name="plan-skus"></a>Skladové položky plánu
 
@@ -190,7 +190,7 @@ Podnikoví správci můžou přiřazovat vlastníky účtů, aby zřizovali dř�
 1. V levém navigačním panelu klikněte na **Sestavy**.
 1. Klikněte na kartu **Ceník**.
 1. Klikněte na ikonu Stáhnout v pravém horním rohu.
-1. Vyhledejte odpovídající výrobní čísla skladové položky plánu pomocí filtru pro sloupec Zahrnuté množství a vyberte hodnoty větší než 0.
+1. Vyhledejte odpovídající výrobní čísla skladových položek plánu pomocí filtru pro sloupec Zahrnuté množství a vyberte hodnoty větší než 0.
 
 ### <a name="provision-the-plan-skus"></a>Zřízení skladových položek plánu
 
@@ -219,7 +219,7 @@ Podnikoví správci můžou přidat nové vlastníky účtů, přidružit stáva
 1. Zadejte název, který chcete použít k identifikaci tohoto účtu v sestavách.
 1. Klikněte na tlačítko **Add** (Přidat).
 1. Můžete znovu vybrat možnost **+ Přidat účet** a přidat další účet nebo se výběrem tlačítka **Správce** můžete vrátit na domovskou stránku.  
-1. Pokud si zobrazíte stránku Účet, nově přidaný účet se zobrazí ve stavu čekání na vyřízení. Po prvním přihlášení vlastníka účtu na portál EA Portal se změní stav na aktivní.
+1. Pokud si zobrazíte stránku Účet, nově přidaný účet se zobrazí ve stavu čekání na vyřízení. Po prvním přihlášení vlastníka účtu k webu EA Portal se změní stav na aktivní.
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Stávající a noví vlastníci účtů pro vytváření nových předplatných
 
@@ -248,13 +248,13 @@ Zobrazovat a spravovat předplatná mohou jenom vlastníci účtů.
 
 **Vlastník účtu se zobrazuje ve stavu čekání na vyřízení**
 
-Při prvním přidání nových vlastníků účtů k registraci se u nich vždy zobrazí stav Pending (Čeká na vyřízení). Jakmile obdrží úvodní aktivační e-mail, mohou se vlastníci účtu přihlásit a aktivovat svůj účet. Po dokončení aktivace se stav účtu aktualizuje z Pending (Čeká na vyřízení) na Active (Aktivní).
+Při prvním přidání nových vlastníků účtů k registraci se u nich vždy zobrazí stav Čeká na vyřízení. Jakmile obdrží úvodní aktivační e-mail, mohou se vlastníci účtu přihlásit a aktivovat svůj účet. Po dokončení aktivace se stav účtu aktualizuje z Čeká na vyřízení na Aktivní.
 
 **Zpoplatněné využití po nákupu skladových položek plánu**
 
 K tomuto scénáři dochází, když zákazník nasadí služby pod nesprávným číslem registrace nebo vybere nesprávné služby.
 
-Pokud chcete ověřit, že nasazujete v rámci správné registrace, můžete prostřednictvím ceníku zkontrolovat informace o zahrnutých jednotkách. Přihlaste se jako podnikový správce, v levém navigačním panelu klikněte na **Reports** (Sestavy) a potom vyberte kartu **Price Sheet** (Ceník). Klikněte na ikonu pro stažení v pravém horním rohu, pomocí filtru pro sloupec Included Quantity (Zahrnuté množství) vyhledejte odpovídající výrobní čísla skladových položek plánu a vyberte hodnoty větší než 0.
+Pokud chcete ověřit, že nasazujete v rámci správné registrace, můžete prostřednictvím ceníku zkontrolovat informace o zahrnutých jednotkách. Přihlaste se jako podnikový správce, v levém navigačním panelu klikněte na **Reports** (Sestavy) a potom vyberte kartu **Price Sheet** (Ceník). Klikněte na ikonu pro stažení v pravém horním rohu, pomocí filtru pro sloupec Zahrnuté množství vyhledejte odpovídající výrobní čísla skladových položek plánu a vyberte hodnoty větší než 0.
 
 Zkontrolujte, že se plán OMS zobrazuje v ceníku v rámci zahrnutých jednotek. Pokud vaše registrace nemá pro plán OMS žádné zahrnuté jednotky, je plán OMS pravděpodobně pod jinou registrací. Kontaktujte tým podpory Azure Enterprise Portal Support na [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
 

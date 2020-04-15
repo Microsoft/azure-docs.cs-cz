@@ -264,13 +264,13 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
-    - name: Interpretace modelů
+    - name: Vysvětlení modelů
       displayName: interpretability
       items:
-        - name: Interpretace místních a vzdálených modelů
+        - name: Vysvětlení modelů ML
           displayName: 'SDK, interpret'
           href: how-to-machine-learning-interpretability-aml.md
-        - name: Interpretace automatizovaných modelů ML
+        - name: Vysvětlení automatizovaných modelů ML
           displayName: 'SDK, interpret, automl'
           href: how-to-machine-learning-interpretability-automl.md
     - name: Automatizace strojového učení
@@ -310,34 +310,36 @@
         - name: Kde a jak nasadit
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Azure Kubernetes Service
-          displayName: 'aks, aad, authentication, azure active directory'
-          href: how-to-deploy-azure-kubernetes-service.md
-        - name: Azure Container Instances
-          displayName: aci
-          href: how-to-deploy-azure-container-instance.md
-        - name: IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Odvozování FPGA
-          href: how-to-deploy-fpga-web-service.md
-        - name: Odvozování GPU
-          href: how-to-deploy-inferencing-gpus.md
-        - name: Azure App Service
-          displayName: web app
-          href: how-to-deploy-app-service.md
-        - name: Azure Functions
-          displayName: functions app
-          href: how-to-deploy-functions.md
-        - name: Instance služby Compute
-          href: how-to-deploy-local-container-notebook-vm.md
-        - name: Použití vlastní image Dockeru
-          href: how-to-deploy-custom-docker-image.md
-        - name: Použití existujících modelů
-          displayName: publish existing model
-          href: how-to-deploy-existing-model.md
+        - name: Scénáře nasazení
+          items:
+            - name: Výpočetní instance Azure ML
+              href: how-to-deploy-local-container-notebook-vm.md
+            - name: Azure Kubernetes Service
+              displayName: 'aks, aad, authentication, azure active directory'
+              href: how-to-deploy-azure-kubernetes-service.md
+            - name: Azure Container Instances
+              displayName: aci
+              href: how-to-deploy-azure-container-instance.md
+            - name: Odvozování GPU
+              href: how-to-deploy-inferencing-gpus.md
+            - name: Azure App Service
+              displayName: web app
+              href: how-to-deploy-app-service.md
+            - name: Azure Functions
+              displayName: functions app
+              href: how-to-deploy-functions.md
+            - name: Zařízení Azure IoT Edge
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+            - name: Odvozování FPGA
+              href: how-to-deploy-fpga-web-service.md
+            - name: Vlastní image Dockeru
+              href: how-to-deploy-custom-docker-image.md
+            - name: Modely ML mimo Azure
+              displayName: publish existing model
+              href: how-to-deploy-existing-model.md
         - name: Řešení potíží a ladění
           href: how-to-troubleshoot-deployment.md
-        - name: Vytváření klientů
+        - name: Volání koncového bodu služby
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: Monitorování modelů

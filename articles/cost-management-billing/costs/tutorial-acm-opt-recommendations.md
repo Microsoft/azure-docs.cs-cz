@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 030ae5dcac85a88309b317be1edfab11d0da051a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155915"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878455"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Kurz: Optimalizace nákladů na základě doporučení
 
 Služba Azure Cost Management spolupracuje s Azure Advisorem a nabízí doporučení, která se týkají optimalizace nákladů. Azure Advisor provádí optimalizaci a zvyšuje efektivitu tím, že identifikuje nečinné a nevyužité prostředky. Tento kurz vás provede příkladem, ve kterém určíte nevyužité prostředky Azure a potom provedete akci ke snížení nákladů.
 
-Podívejte se na video věnované [optimalizaci cloudových investic v Azure Cost Managementu](https://www.youtube.com/watch?v=cSNPoAb-TNc), kde se dozvíte víc o využití Advisoru k optimalizaci vašich nákladů.
+Podívejte se na video věnované [optimalizaci cloudových investic v Azure Cost Managementu](https://www.youtube.com/watch?v=cSNPoAb-TNc), kde se dozvíte víc o využití Advisoru k optimalizaci vašich nákladů. Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 

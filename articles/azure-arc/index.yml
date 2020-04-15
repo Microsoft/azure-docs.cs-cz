@@ -10,12 +10,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/04/2019
   ms.author: robreed
-  ms.openlocfilehash: 2ff0b9a194faf4d5a6b9e5181c52dc135208bdee
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: e80cdec365a14caee5c74900e1c21f7349165e66
+  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73508546"
+  ms.lasthandoff: 04/13/2020
+  ms.locfileid: "81261274"
 landingContent:
 - title: Přehled služby Azure Arc
   linkLists:
@@ -31,7 +31,9 @@ landingContent:
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
-    - text: Připojení počítačů k Azure s využitím služby Azure Arc pro servery – portál
-      url: ./servers/quickstart-onboard-portal.md
-    - text: Připojení počítačů k Azure s využitím služby Azure Arc pro servery – PowerShell
-      url: ./servers/quickstart-onboard-portal.md
+    - text: Připojení počítačů ke službě Azure Arc z webu Azure Portal
+      url: ./servers/onboard-portal.md
+    - text: Připojení počítačů ve velkém měřítku s využitím instančního objektu
+      url: ./servers/onboard-service-principal.md
+    - text: Připojení počítačů k Azure s využitím DSC PowerShellu
+      url: ./servers/onboard-dsc.md

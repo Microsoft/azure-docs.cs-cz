@@ -3,17 +3,17 @@ title: Přiřazení přístupu k datům služby Azure Cost Management
 description: Tento článek vás provede přiřazením oprávnění k datům služby Azure Cost Management pro různé rozsahy přístupu.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/19/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 56090798defd9209c3587aa701c88db6958d1b97
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b3ede4dcc4df8bf10ce24b3d74dc5af0424de5a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065840"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879101"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
 
@@ -21,9 +21,9 @@ Pro uživatele se smlouvou Azure Enterprise je úroveň jejich přístupu k dat�
 
 Rozsah, který uživatel vybere, se používá v celé službě Cost Management k poskytování konsolidace dat a k řízení přístupu k informacím o nákladech. Uživatelé při použití nevybírají rozsahy vícenásobně. Místo toho si vyberou větší rozsah, který již zahrnuje podřízené rozsahy, a potom vyfiltrují, co chtějí zobrazit. Konsolidace dat je důležitá, protože někteří uživatelé by neměli mít přístup k nadřazenému rozsahu, který zahrnuje data z podřízených rozsahů.
 
-Podívejte se na video [Jak přiřadit přístup pomocí služby Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8), kde najdete informace o přiřazení přístupu k zobrazení nákladů a poplatků pomocí řízení přístupu na základě role v Azure.
+Informace o přiřazení přístupu k zobrazení nákladů a poplatků pomocí řízení přístupu na základě role Azure najdete ve videu věnovaném [řízení přístupu ve službě Cost Management](https://www.youtube.com/watch?v=_uQzQ9puPyM). Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
 
->[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
+>[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
 ## <a name="cost-management-scopes"></a>Rozsahy služby Cost Management
 
