@@ -1,6 +1,6 @@
 ---
-title: Správa dlouhodobého uchovávání záloh
-description: Přečtěte si, jak ukládat automatické zálohy do úložiště SQL Azure a pak je obnovit.
+title: 'Jedna databáze: Správa dlouhodobého uchovávání záloh'
+description: Zjistěte, jak ukládat a obnovovat automatické zálohy pro jednu nebo sdruženou databázi Azure SQL Database v úložišti Azure (až 10 let) pomocí Portálu Azure a PowerShellu
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 08/21/2019
-ms.openlocfilehash: a560f4f1399792a7b150b37c3c048ccc0079b98d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 2564fd0ffd980dae4ca1835f4211fee0a0cf040c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74420800"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380919"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa dlouhodobého uchovávání záloh v Azure SQL Database
 

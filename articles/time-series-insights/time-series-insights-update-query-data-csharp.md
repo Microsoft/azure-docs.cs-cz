@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 76e3ac85a6725976ebd14dac1805079613c94ec6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbc2cbc29cb23a21e7d3713091fc22f01bb1b15a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76980983"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81379813"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Dotazování na data z prostředí Azure Time Series Insights Preview pomocí C #
 
@@ -65,7 +65,7 @@ Ukázkový kód obsahuje několik požadovaných závislostí, které lze zobraz
 
 Stáhněte si balíčky v Visual Studiu 2019 výběrem **možnosti Sestavení** > **sestavení řešení.** 
 
-Případně můžete přidat každý balíček pomocí [NuGet 2.12+](https://www.nuget.org/). Například:
+Případně můžete přidat každý balíček pomocí [NuGet 2.12+](https://www.nuget.org/). Příklad:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 

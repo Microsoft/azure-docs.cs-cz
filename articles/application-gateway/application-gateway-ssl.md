@@ -1,28 +1,28 @@
 ---
-title: Přepětí ssl pomocí PowerShellu – aplikační brána Azure
-description: Tento článek obsahuje pokyny k vytvoření aplikační brány s ssl zátěže pomocí modelu klasického nasazení Azure
+title: Přepětí TLS pomocí PowerShellu – aplikační brána Azure
+description: Tento článek obsahuje pokyny k vytvoření aplikační brány s přepětím TLS pomocí modelu klasického nasazení Azure
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: c456a0856adb0d36349b5f96ba0ab8bab3eec5c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ead16b61784b8073d50b7e0e6079805a1e48e9b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047924"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312324"
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Konfigurace aplikační brány pro přepětí ssl pomocí klasického modelu nasazení
+# <a name="configure-an-application-gateway-for-tls-offload-by-using-the-classic-deployment-model"></a>Konfigurace aplikační brány pro přepětí TLS pomocí klasického modelu nasazení
 
 > [!div class="op_single_selector"]
-> * [Portál Azure](application-gateway-ssl-portal.md)
+> * [portál Azure](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Klasické PowerShell Azure](application-gateway-ssl.md)
 > * [Azure CLI](application-gateway-ssl-cli.md)
 
-Služba Azure Application Gateway se dá nakonfigurovat k ukončení relace Secure Sockets Layer (SSL) v bráně, vyhnete se tak nákladným úlohám dešifrování SSL na webové serverové farmě. Přesměrování zpracování SSL zjednodušuje i nastavení a správu front-end serverů webových aplikací.
+Azure Aplikační brána může být nakonfigurována tak, aby ukončila zabezpečení transportní vrstvy (TLS), dříve známé jako SSL (Secure Sockets Layer), relace u brány, aby se zabránilo nákladné úlohy dešifrování TLS se stane na webové farmě. Přečtení tls také zjednodušuje nastavení front-endserveru a správu webové aplikace.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -30,10 +30,10 @@ Služba Azure Application Gateway se dá nakonfigurovat k ukončení relace Secu
 2. Ověřte, že máte funkční virtuální síť s platnou podsítí. Ujistěte se, že tuto podsíť nepoužívají žádné virtuální počítače ani cloudová nasazení. Služba Application Gateway musí být sama o sobě v podsíti virtuální sítě.
 3. Servery, které nakonfigurujete pro použití aplikační brány, musí existovat nebo jim musí být přiřazeny jejich koncové body, které jsou vytvořeny ve virtuální síti nebo s veřejnou IP adresou nebo virtuální IP adresou (VIP).
 
-Chcete-li nakonfigurovat přepočet ssl na aplikační bráně, proveďte následující kroky v uvedeném pořadí:
+Chcete-li nakonfigurovat přepočet tls na aplikační bráně, proveďte následující kroky v uvedeném pořadí:
 
 1. [Vytvoření aplikační brány](#create-an-application-gateway)
-2. [Nahrání certifikátů SSL](#upload-ssl-certificates)
+2. [Nahrání certifikátů TLS/SSL](#upload-tlsssl-certificates)
 3. [Konfigurace brány](#configure-the-gateway)
 4. [Nastavení konfigurace brány](#set-the-gateway-configuration)
 5. [Spusťte bránu](#start-the-gateway)
@@ -55,7 +55,7 @@ V ukázce jsou volitelné parametry **Description**, **InstanceCount**a **Gatewa
 Get-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="upload-ssl-certificates"></a>Nahrání certifikátů SSL
+## <a name="upload-tlsssl-certificates"></a>Nahrání certifikátů TLS/SSL
 
 Zadáním `Add-AzureApplicationGatewaySslCertificate` této možnosti nahrajete certifikát serveru ve formátu PFX do aplikační brány. Název certifikátu je uživatelem zvolený název a musí být jedinečný v rámci brány aplikace. Tento certifikát je označován tímto názvem ve všech operacích správy certifikátů v bráně aplikace.
 
@@ -95,12 +95,12 @@ Hodnoty jsou:
 * **Back-end server fond**: Seznam IP adres serverů back-end. Uvedené IP adresy by měly patřit do podsítě virtuální sítě nebo by měly být veřejnou IP nebo VIP adresou.
 * **Nastavení fondu serverů back-end**: Každý fond má nastavení, jako je port, protokol a spřažení založené na souborech cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
 * **Front-end port**: Tento port je veřejný port, který je otevřen v bráně aplikace. Když datový přenos dorazí na tento port, přesměruje se na některý back-end server.
-* **Naslouchací proces**: Naslouchací proces má front-end port, protokol (Http nebo Https; tyto hodnoty jsou malá a velká písmena) a název certifikátu SSL (pokud konfigurace ssl offload).
+* **Naslouchací proces**: Naslouchací proces má front-end port, protokol (Http nebo Https; tyto hodnoty jsou malá a velká písmena) a název certifikátu TLS/SSL (pokud konfigurujete redukční zatížení TLS).
 * **Pravidlo**: Pravidlo váže naslouchací proces a fond serveru back-end a definuje, který back-end ový fond serveru směřuje k přenosu, když narazí na konkrétní naslouchací proces. V tuhle chvíli se podporuje jenom *základní* pravidlo. *Základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
 
 **Další poznámky ke konfiguraci**
 
-Pro konfiguraci certifikátů SSL by se měl změnit protokol v **HttpListener** na **Https** (rozlišování velkých a malých písmen). Přidejte element **SslCert** do **httplisteneru** s hodnotou nastavenou na stejný název použitý v části [Nahrát certifikáty SSL.](#upload-ssl-certificates) Front-end port by měl být aktualizován na **443**.
+Pro konfiguraci certifikátů TLS/SSL by se měl protokol v **httplisteneru** změnit na **Https** (rozlišuje malá a velká písmena). Přidejte element **SslCert** do **httplisteneru** s hodnotou nastavenou na stejný název použitý v části [Nahrát certifikáty TLS/SSL.](#upload-tlsssl-certificates) Front-end port by měl být aktualizován na **443**.
 
 **Povolení spřažení založené na souborech cookie**: Můžete nakonfigurovat aplikační bránu, abyste zajistili, že požadavek z relace klienta bude vždy směrován na stejný virtuální počítač ve webové farmě. Chcete-li to provést, vložte soubor cookie relace, který umožňuje bráně správně směrovat provoz. Když chcete povolit spřažení na základě souboru cookie, nastavte **CookieBasedAffinity** na **Povoleno** v elementu **BackendHttpSettings**.
 

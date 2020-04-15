@@ -1,5 +1,5 @@
 ---
-title: Principy modulu zabezpečení Azure Security Center pro IoT pro IoT Edge| Dokumenty společnosti Microsoft
+title: Bezpečnostní modul pro IoT Edge
 description: Seznamte se s architekturou a možnostmi modulu zabezpečení Azure Security Center pro IoT pro IoT Edge.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0eb68f517c4c5b04dd4f92dd1a804dcf5ad24362
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71315892"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310630"
 ---
 # <a name="azure-iot-edge-security-module"></a>Modul zabezpečení Azure IoT Edge
 
@@ -36,7 +36,7 @@ Další informace [najdete v tématu Konfigurace agenta.](how-to-agent-configura
 Modul zabezpečení Azure Security Center for IoT pro IoT Edge nabízí následující funkce:
 
 - Shromažďuje nezpracované události zabezpečení ze základního operačního systému (Linux) a systémů IoT Edge Container.
-  
+
   Další informace o dostupných kolekcích dat zabezpečení najdete v [tématu Azure Security Center for IoT agent configuration.](how-to-agent-configuration.md)
 
 - Analýza manifestů nasazení IoT Edge.
@@ -52,7 +52,7 @@ Privilegovaný režim je vyžadován, aby modul mohl monitorovat operační syst
 
 ## <a name="module-supported-platforms"></a>Platformy podporované moduly
 
-Azure Security Center pro zabezpečení IoT modul pro IoT Edge je momentálně k dispozici jenom pro Linux. 
+Azure Security Center pro zabezpečení IoT modul pro IoT Edge je momentálně k dispozici jenom pro Linux.
 
 ## <a name="next-steps"></a>Další kroky
 

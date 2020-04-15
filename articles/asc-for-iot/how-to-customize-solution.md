@@ -1,5 +1,5 @@
 ---
-title: Průvodce přizpůsobením řešení Azure Security Center for IoT| Dokumenty společnosti Microsoft
+title: Přizpůsobení nastavení
 description: Tento způsob, jak průvodce vysvětluje, jak přizpůsobit nastavení ve vašem Azure Security Center pro ioT řešení.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
-ms.openlocfilehash: c385be0c21e7a61f66eb274ec293f4aabd4208ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: efacec21482704393d4aa6e728377311e2bc5cda
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77458881"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311269"
 ---
-# <a name="customize-your-azure-security-center-for-iot-solution"></a>Přizpůsobení řešení Azure Security Center for IoT 
+# <a name="customize-your-azure-security-center-for-iot-solution"></a>Přizpůsobení řešení Azure Security Center for IoT
 
-V této příručce se dozvíte, jak přizpůsobit různá nastavení v Centru zabezpečení Azure pro IoT.  
+V této příručce se dozvíte, jak přizpůsobit různá nastavení v Centru zabezpečení Azure pro IoT.
 
 > [!div class="checklist"]
-> * Konfigurace doporučení řešení 
-> * Změna nastavení 
+> * Konfigurace doporučení řešení
+> * Změna nastavení
 
 ## <a name="change-settings"></a>Změna nastavení
 
@@ -36,20 +36,20 @@ Správa nastavení Centra zabezpečení Azure pro IoT:
 
 Ve službě IoT Hub přejděte do okna přehledu zabezpečení v levém horním rohu najdete v tématu Nastavení: Chcete-li nakonfigurovat nastavení Centra zabezpečení Azure pro IoT, postupujte takto:
 
-1. Otevřete **ioT hub** na Webu Azure Portal. 
+1. Otevřete **ioT hub** na Webu Azure Portal.
 1. V levé nabídce v části **Zabezpečení**vyberte a otevřete **možnost Přehled**.
-1. V části Nastavení vyberte nastavení řešení, které chcete změnit.   
-1. Nezapomeňte vždy kliknout na **Uložit** v horní části libovolné obrazovky nastavení, abyste uložili změny nastavení. 
+1. V části Nastavení vyberte nastavení řešení, které chcete změnit.
+1. Nezapomeňte vždy kliknout na **Uložit** v horní části libovolné obrazovky nastavení, abyste uložili změny nastavení.
 
 ## <a name="configure-solution-recommendations"></a>Konfigurace doporučení řešení
 
 Pokud chcete nakonfigurovat doporučení řešení Azure Security Center for IoT, postupujte takto:
 
-1. Otevřete **ioT hub** na Webu Azure Portal. 
+1. Otevřete **ioT hub** na Webu Azure Portal.
 1. V levé nabídce vyberte a otevřete **možnost Přehled** v části **Zabezpečení.**
-1. V části Nastavení vyberte v levé nabídce **položku Doporučená konfigurace.** 
-1. Zakažte nebo povolte doporučení řešení relevantní pro vaši organizaci a pracovní postupy. 
-1. V horní části obrazovky vyberte **Uložit,** chcete-li uložit výběry. 
+1. V části Nastavení vyberte v levé nabídce **položku Doporučená konfigurace.**
+1. Zakažte nebo povolte doporučení řešení relevantní pro vaši organizaci a pracovní postupy.
+1. V horní části obrazovky vyberte **Uložit,** chcete-li uložit výběry.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Podpora migrace VMware v Azure Migrate
 description: Přečtěte si o podpoře migrace virtuálních počítačů VMware v Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269507"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313999"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci voblasti VMware
 
@@ -47,7 +47,7 @@ Projděte si [tento článek](server-migrate-overview.md) a zjistěte, kterou me
 **Požadované změny pro Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je můžou běžet v Azure. Azure Migrate provádí tyto změny automaticky pro následující operační systémy:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - Centos 6,5+, 7,0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS, 16.04LTS, 18.04LTS<br/> - Debian 7, 8<br/><br/> U jiných operačních systémů je třeba provést před migrací úpravy ručně. Příslušné články obsahují pokyny, jak to udělat.
 **Linux boot** | Pokud /boot je na vyhrazeném oddílu, by měl být umístěn na disku operačního systému a nesmí být rozloženy na více disků.<br/> Pokud /boot je součástí kořenového (/) oddílu, pak '/' oddíl by měl být na disku operačního systému a ne span jiné disky.
 **UEFI bota** | Virtuální aplikace se spouštěním UEFI nejsou pro migraci podporované.
-**Velikost disku** | 2 TB OS disk; 4 TB pro datové disky.
+**Velikost disku** | 2 TB OS disk; 8 TB pro datové disky.
 **Omezení disku** |  Až 60 disků na virtuální hod.
 **Šifrované disky/svazky** | Virtuální počítače se šifrovanými disky/svazky nejsou pro migraci podporované.
 **Cluster sdíleného disku** | Není podporováno.

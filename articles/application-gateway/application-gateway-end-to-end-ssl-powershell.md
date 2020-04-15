@@ -1,26 +1,26 @@
 ---
-title: Konfigurace komplexního sssl s aplikační bránou Azure
-description: Tento článek popisuje, jak nakonfigurovat komplexní ssl s Azure Application Gateway pomocí PowerShellu
+title: Konfigurace komplexního tls pomocí aplikační brány Azure
+description: Tento článek popisuje, jak nakonfigurovat komplexní tls s Azure Application Gateway pomocí PowerShellu
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 7ba273cddb6cf41872c4db1c34560c104b992787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72286468"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312501"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurace kompletního SSL ve službě Application Gateway pomocí PowerShellu
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Konfigurace koncového koncového protokolu TLS pomocí aplikační brány s prostředím PowerShell
 
 ## <a name="overview"></a>Přehled
 
-Azure Application Gateway podporuje end-to-end šifrování provozu. Aplikační brána ukončí připojení SSL na aplikační bráně. Brána pak použije pravidla směrování na přenos, znovu zašifruje paket a předá paket příslušnému serveru back-end na základě definovaných pravidel směrování. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem.
+Azure Application Gateway podporuje end-to-end šifrování provozu. Aplikační brána ukončí připojení TLS/SSL na aplikační bráně. Brána pak použije pravidla směrování na přenos, znovu zašifruje paket a předá paket příslušnému serveru back-end na základě definovaných pravidel směrování. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem.
 
-Aplikační brána podporuje definování vlastních možností SSL. Podporuje také zakázání následujících verzí protokolu: **TLSv1.0**, **TLSv1.1**a **TLSv1.2**, a také definování, které šifrovací sady použít a pořadí preferencí. Další informace o konfigurovatelných možnostech ssl naleznete v [přehledu zásad SSL](application-gateway-SSL-policy-overview.md).
+Aplikační brána podporuje definování vlastních možností TLS. Podporuje také zakázání následujících verzí protokolu: **TLSv1.0**, **TLSv1.1**a **TLSv1.2**, a také definování, které šifrovací sady použít a pořadí preferencí. Další informace o konfigurovatelných možnostech TLS naleznete v [přehledu zásad TLS](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
 > SSL 2.0 a SSL 3.0 jsou ve výchozím nastavení zakázány a nelze je povolit. Jsou považovány za nezabezpečené a nelze je použít s aplikační bránou.
@@ -29,22 +29,22 @@ Aplikační brána podporuje definování vlastních možností SSL. Podporuje t
 
 ## <a name="scenario"></a>Scénář
 
-V tomto scénáři se dozvíte, jak vytvořit aplikační bránu pomocí ssl od konce s prostředím PowerShell.
+V tomto scénáři se dozvíte, jak vytvořit aplikační bránu pomocí komplexního tls s Prostředím PowerShell.
 
 Tento scénář bude:
 
 * Vytvořte skupinu prostředků s názvem **appgw-rg**.
 * Vytvořte virtuální síť s názvem **appgwvnet** s adresním prostorem **10.0.0.0/16**.
 * Vytvořte dvě podsítě s názvem **appgwsubnet** a **appsubnet**.
-* Vytvořte malou aplikační bránu podporující komplexní šifrování SSL, která omezuje verze protokolu SSL a šifrovací sady.
+* Vytvořte malou aplikační bránu podporující komplexní šifrování TLS, která omezuje verze protokolů TLS a šifrovací sady.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Chcete-li nakonfigurovat protokol SSL od konce s aplikační bránou, je pro bránu vyžadován certifikát a pro servery back-end jsou vyžadovány certifikáty. Certifikát brány se používá k odvození symetrického klíče podle specifikace protokolu SSL. Symetrický klíč se pak používá šifrovat a dešifrovat provoz odeslaný do brány. Certifikát brány musí být ve formátu PFX (Personal Information Exchange). Tento formát souboru umožňuje exportovat soukromý klíč, který je vyžadován aplikační bránou k provedení šifrování a dešifrování provozu.
+Chcete-li nakonfigurovat komplexní protokol TLS s aplikační bránou, je pro bránu vyžadován certifikát a pro servery back-end jsou vyžadovány certifikáty. Certifikát brány se používá k odvození symetrického klíče podle specifikace protokolu TLS. Symetrický klíč se pak používá šifrovat a dešifrovat provoz odeslaný do brány. Certifikát brány musí být ve formátu PFX (Personal Information Exchange). Tento formát souboru umožňuje exportovat soukromý klíč, který je vyžadován aplikační bránou k provedení šifrování a dešifrování provozu.
 
-Pro šifrování ssl od konce musí být back-end explicitně povolen aplikační bránou. Nahrajte veřejný certifikát serverů back-end do aplikační brány. Přidání certifikátu zajistí, že aplikační brána komunikuje pouze se známými back-endovými instancemi. To dále zabezpečuje komunikaci mezi koncovými soubory.
+Pro šifrování TLS od konce musí být back-end explicitně povolen aplikační bránou. Nahrajte veřejný certifikát serverů back-end do aplikační brány. Přidání certifikátu zajistí, že aplikační brána komunikuje pouze se známými back-endovými instancemi. To dále zabezpečuje komunikaci mezi koncovými soubory.
 
 Proces konfigurace je popsán v následujících částech.
 
@@ -154,20 +154,20 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
    ```
 
    > [!NOTE]
-   > Tato ukázka konfiguruje certifikát použitý pro připojení SSL. Certifikát musí být ve formátu .pfx a heslo musí mít 4 až 12 znaků.
+   > Tato ukázka konfiguruje certifikát použitý pro připojení TLS. Certifikát musí být ve formátu .pfx a heslo musí mít 4 až 12 znaků.
 
-6. Vytvořte naslouchací proces HTTP pro aplikační bránu. Přiřaďte konfiguraci ip adres front-endu, port a certifikát SSL, který chcete použít.
+6. Vytvořte naslouchací proces HTTP pro aplikační bránu. Přiřaďte konfiguraci ip adres front-endu, port a certifikát TLS/SSL, který chcete použít.
 
    ```powershell
    $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-7. Nahrajte certifikát, který se má použít na prostředky back-endového fondu s podporou SSL.
+7. Nahrajte certifikát, který se má použít na prostředky back-endového fondu s podporou TLS.
 
    > [!NOTE]
-   > Výchozí sonda získá veřejný klíč z *výchozí* ssl vazby na adresu IP back-endu a porovná hodnotu veřejného klíče, kterou obdrží, s hodnotou veřejného klíče, kterou zde zadáte. 
+   > Výchozí sonda získá veřejný klíč z *výchozí* vazby TLS na ip adresu back-endu a porovná hodnotu veřejného klíče, kterou obdrží, s hodnotou veřejného klíče, kterou zde zadáte. 
    > 
-   > Pokud používáte záhlaví hostitele a označení názvu serveru (SNI) na back-endu, načtený veřejný klíč nemusí být zamýšleným webem, do kterého toky provozu. Pokud máte pochybnosti, https://127.0.0.1/ navštivte servery back-end a ověřte, který certifikát se používá pro *výchozí* vazbu SSL. Použijte veřejný klíč z této žádosti v této části. Pokud používáte hlavičky hostitele a SNI na vazby HTTPS a neobdržíte odpověď https://127.0.0.1/ a certifikát z ručního požadavku prohlížeče na serverech back-end, je nutné nastavit výchozí vazbu SSL na nich. Pokud tak neučiníte, sondy se nezdaří a back-end není na seznamu povolených.
+   > Pokud používáte záhlaví hostitele a označení názvu serveru (SNI) na back-endu, načtený veřejný klíč nemusí být zamýšleným webem, do kterého toky provozu. Pokud máte pochybnosti, https://127.0.0.1/ navštivte servery back-end a ověřte, který certifikát se používá pro *výchozí* vazbu TLS. Použijte veřejný klíč z této žádosti v této části. Pokud používáte hlavičky hostitele a SNI na vazby HTTPS a neobdržíte odpověď https://127.0.0.1/ a certifikát z ručního požadavku prohlížeče na serverech back-end, musíte nastavit výchozí vazbu TLS na nich. Pokud tak neučiníte, sondy se nezdaří a back-end není na seznamu povolených.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -176,7 +176,7 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
    > [!NOTE]
    > Certifikát uvedený v předchozím kroku by měl být veřejným klíčem certifikátu .pfx, který je k dispozici na back-endu. Exportujte certifikát (nikoli kořenový certifikát) nainstalovaný na serveru back-end ve formátu Deklarace, Evidence a Uvažování (CER) a použijte jej v tomto kroku. Tento krok zapisuje back-end s aplikační bránou.
 
-   Pokud používáte sku sku aplikace v2, vytvořte důvěryhodný kořenový certifikát namísto ověřovacího certifikátu. Další informace naleznete v [tématu Přehled ssl od konce do konce s aplikační bránou](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
+   Pokud používáte sku sku aplikace v2, vytvořte důvěryhodný kořenový certifikát namísto ověřovacího certifikátu. Další informace naleznete v [tématu Přehled koncového do koncového tls s aplikační bránou](ssl-overview.md#end-to-end-tls-with-the-v2-sku):
 
    ```powershell
    $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
@@ -209,7 +209,7 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
     > [!NOTE]
     > Počet instancí 1 lze zvolit pro účely testování. Je důležité vědět, že počet instancí v rámci dvou instancí se nevztahuje na sla, a proto se nedoporučuje. Malé brány se mají používat pro dev test a ne pro výrobní účely.
 
-11. Nakonfigurujte zásady SSL, které mají být použity v bráně aplikace. Aplikační brána podporuje možnost nastavit minimální verzi pro verze protokolu SSL.
+11. Nakonfigurujte zásady TLS, které mají být použity v bráně aplikace. Aplikační brána podporuje možnost nastavit minimální verzi pro verze protokolu TLS.
 
     Následující hodnoty jsou seznam verzí protokolu, které lze definovat:
 
@@ -247,7 +247,7 @@ Tento postup použijte k použití nového certifikátu, pokud vypršela platnos
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. Přidejte nový prostředek certifikátu ze souboru CER, který obsahuje veřejný klíč certifikátu a může být také stejný certifikát přidaný do naslouchací proces u končit ssl v bráně aplikace.
+2. Přidejte nový prostředek certifikátu ze souboru CER, který obsahuje veřejný klíč certifikátu a může být také stejný certifikát přidaný do naslouchací proces u ukončení TLS v bráně aplikace.
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
@@ -300,9 +300,9 @@ Tento postup slouží k odebrání nepoužívaného certifikátu, jehož platnos
    ```
 
    
-## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Omezení verzí protokolu SSL na existující aplikační bráně
+## <a name="limit-tls-protocol-versions-on-an-existing-application-gateway"></a>Omezení verzí protokolu TLS na existující aplikační bráně
 
-Předchozí kroky vás provedly vytvořením aplikace s protokolem SSL od konce do konce a zakázáním určitých verzí protokolu SSL. Následující příklad zakáže určité zásady SSL na existující aplikační bráně.
+Předchozí kroky vás provedly vytvořením aplikace s komplexním protokolem TLS a zakázáním určitých verzí protokolu TLS. Následující příklad zakáže určité zásady TLS na existující aplikační bráně.
 
 1. Načíst bránu aplikace aktualizovat.
 
@@ -310,14 +310,14 @@ Předchozí kroky vás provedly vytvořením aplikace s protokolem SSL od konce 
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Definujte zásadu SSL. V následujícím příkladu jsou **zakázány TLSv1.0** a **TLSv1.1** a šifrovací sady **\_TLS\_ECDHE ECDSA\_s\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_s\_AES\_256\_GCM\_SHA384**a **TLS\_RSA\_s\_AES\_128\_GCM\_SHA256** jsou jediné povolené.
+2. Definujte zásadu TLS. V následujícím příkladu jsou **zakázány TLSv1.0** a **TLSv1.1** a šifrovací sady **\_TLS\_ECDHE ECDSA\_s\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_s\_AES\_256\_GCM\_SHA384**a **TLS\_RSA\_s\_AES\_128\_GCM\_SHA256** jsou jediné povolené.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-3. Nakonec aktualizujte bránu. Tento poslední krok je dlouhotrvající úloha. Po dokončení je na aplikační bráně nakonfigurován osazený ssl od konce.
+3. Nakonec aktualizujte bránu. Tento poslední krok je dlouhotrvající úloha. Po dokončení je v bráně aplikace nakonfigurován koncový server TLS.
 
    ```powershell
    $gw | Set-AzApplicationGateway

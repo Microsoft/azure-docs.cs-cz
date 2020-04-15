@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548869"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311943"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generovat certifikát podepsaný vlastními podpisy brány Aplikace Azure s vlastní kořenovou certifikační autoritou
 
-Aplikační brána v2 SKU zavádí použití důvěryhodných kořenových certifikátů povolit back-endové servery. Tím odeberete ověřovací certifikáty, které byly požadovány ve skladové jednotce v1. *Kořenový certifikát* je Kódovaný X.509(. CER) formátuje kořenový certifikát ze serveru back-endového certifikátu. Identifikuje kořenovou certifikační autoritu (CA), která vydala certifikát serveru, a certifikát serveru se pak použije pro komunikaci SSL.
+Aplikační brána v2 SKU zavádí použití důvěryhodných kořenových certifikátů povolit back-endové servery. Tím odeberete ověřovací certifikáty, které byly požadovány ve skladové jednotce v1. *Kořenový certifikát* je Kódovaný X.509(. CER) formátuje kořenový certifikát ze serveru back-endového certifikátu. Identifikuje kořenovou certifikační autoritu (CA), která vydala certifikát serveru, a certifikát serveru se pak použije pro komunikaci TLS/SSL.
 
-Aplikace Gateway ve výchozím nastavení důvěřuje certifikátu vašeho webu, pokud je podepsán známou certifikační autoritou (například GoDaddy nebo DigiCert). V takovém případě nemusíte explicitně nahrát kořenový certifikát. Další informace naleznete v [tématu Přehled ukončení SSL a od konce do konce SSL s aplikační bránou](ssl-overview.md). Pokud však máte prostředí pro vývoj a testování a nechcete si zakoupit ověřený certifikát podepsaný certifikační autoritou, můžete vytvořit vlastní certifikační autoritu a vytvořit s ním certifikát podepsaný svým držitelem. 
+Aplikace Gateway ve výchozím nastavení důvěřuje certifikátu vašeho webu, pokud je podepsán známou certifikační autoritou (například GoDaddy nebo DigiCert). V takovém případě nemusíte explicitně nahrát kořenový certifikát. Další informace naleznete v [tématu Přehled ukončení TLS a ukončení tls s aplikační bránou](ssl-overview.md). Pokud však máte prostředí pro vývoj a testování a nechcete si zakoupit ověřený certifikát podepsaný certifikační autoritou, můžete vytvořit vlastní certifikační autoritu a vytvořit s ním certifikát podepsaný svým držitelem. 
 
 > [!NOTE]
 > Certifikáty podepsané svým držitelem nejsou ve výchozím nastavení důvěryhodné a jejich údržba může být obtížně udržovatelné. Také mohou používat zastaralé hash a šifrovací sady, které nemusí být silné. Pro lepší zabezpečení si zakupte certifikát podepsaný známou certifikační autoritou.
@@ -125,15 +125,15 @@ Zástupce odpovědnosti za zástupce je veřejný klíč, který je přidělen c
    - fabrikam.crt
    - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>Konfigurace certifikátu v nastavení SSL webového serveru
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>Konfigurace certifikátu v nastavení tls webového serveru
 
-Na webovém serveru nakonfigurujte protokol SSL pomocí souborů fabrikam.crt a fabrikam.key. Pokud váš webový server nemůže převzít dva soubory, můžete je kombinovat s jedním souborem .pem nebo .pfx pomocí příkazů OpenSSL.
+Na webovém serveru nakonfigurujte protokol TLS pomocí souborů fabrikam.crt a fabrikam.key. Pokud váš webový server nemůže převzít dva soubory, můžete je kombinovat s jedním souborem .pem nebo .pfx pomocí příkazů OpenSSL.
 
 ### <a name="iis"></a>IIS
 
 Pokyny k importu certifikátu a jejich nahrání jako certifikátu serveru ve službě IIS naleznete v [tématu HOW: Install Imported Certificates on a Web Server in Windows Server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
-Pokyny pro vazbu SSL naleznete v tématu [Jak nastavit protokol SSL ve službě IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
+Pokyny pro vazbu TLS naleznete v tématu [Jak nastavit protokol SSL ve službě IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 
 ### <a name="apache"></a>Apache
 
@@ -151,9 +151,9 @@ Následující konfigurace je příkladem [virtuálního hostitele nakonfigurova
 
 ### <a name="nginx"></a>NGINX
 
-Následující konfigurace je příklad [bloku serveru NGINX](https://nginx.org/docs/http/configuring_https_servers.html) s konfigurací SSL:
+Následující konfigurace je příklad [bloku serveru NGINX](https://nginx.org/docs/http/configuring_https_servers.html) s konfigurací TLS:
 
-![NGINX s SSL](media/self-signed-certificates/nginx-ssl.png)
+![NGINX s TLS](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>Přístup k serveru k ověření konfigurace
 
@@ -232,7 +232,7 @@ $probe = Get-AzApplicationGatewayProbeConfig `
 
 ## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server's certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that TLS handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -272,5 +272,5 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o ssl\tls v aplikační bráně najdete v [tématu Přehled ukončení ssl a od konce ssl s aplikační bránou](ssl-overview.md).
+Další informace o ssl\tls v aplikační bráně najdete v [tématu Přehled ukončení TLS a koncového tls s aplikační bránou](ssl-overview.md).
 

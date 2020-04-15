@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: bfe8aa088538663ac3e64f5913ff031e6160b045
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877911"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382640"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -228,12 +228,11 @@ Uživatelé s touto rolí mají přístup ke všem funkcím správy ve službě 
 
 ### <a name="global-reader"></a>[Globální čtečka](#global-reader-permissions)
 
-Uživatelé v této roli mohou číst informace o nastavení a správě ve službách Microsoft 365, ale nemohou akce správy přijímat. Globální čtenář je protějšek globálního správce jen pro čtení. Přiřaďte globální čtečku místo globálního správce pro plánování, audity nebo šetření. Pomocí globálního čtenáře v kombinaci s dalšími omezenými rolemi správce, jako je správce serveru Exchange, usnadníte práci bez přiřazení role globálního správce. Globální čtečka spolupracuje s Centrem pro správu Microsoftu 365, Centrem pro správu Exchange, Centrem pro správu Teams, Centrem zabezpečení, Centrem dodržování předpisů, Centrem pro správu Azure AD a Centrem pro správu zařízení.
+Uživatelé v této roli mohou číst informace o nastavení a správě ve službách Microsoft 365, ale nemohou akce správy přijímat. Globální čtenář je protějšek globálního správce jen pro čtení. Přiřaďte globální čtečku místo globálního správce pro plánování, audity nebo šetření. Pomocí globálního čtenáře v kombinaci s dalšími omezenými rolemi správce, jako je správce serveru Exchange, usnadníte práci bez přiřazení role globálního správce. Globální čtečka spolupracuje s Centrem pro správu Microsoftu 365, Centrem pro správu Exchange, Centrem pro správu SharePointu, Centrem pro správu Teams, Centrem zabezpečení, Centrem pro dodržování předpisů, Centrem pro správu Azure AD a Centrem pro správu zařízení.
 
 > [!NOTE]
 > Globální čtenářská role má právě teď několik omezení -
 >
->- Centrum pro správu SharePointu – Centrum pro správu SharePointu nepodporuje roli globálního čtenáře. V levém podokně v Centru pro správu v [Centru pro správu Microsoftu 365 se v Centru pro správu Microsoftu 365](https://admin.microsoft.com/Adminportal/Home#/homepage)nezobrazí "SharePoint".
 >- [Centrum pro správu OneDrivu](https://admin.onedrive.com/) – Centrum pro správu OneDrivu nepodporuje roli globálního čtenáře.
 >- [Portál Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) – globální čtenář nemůže číst zřizovací režim podnikové aplikace.
 >- [Centrum pro správu M365](https://admin.microsoft.com/Adminportal/Home#/homepage) – Globální čtenář nemůže číst požadavky bezpečnostního systému zákazníků. V levém podokně Centra pro správu M365 nenajdete kartu **Požadavky bezpečnostního oken zákazníka** v části **Podpora.**

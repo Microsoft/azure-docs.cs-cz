@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 01/21/2020
+ms.date: 04/08/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: eceb4a9d4e0cc84166280f30b094b82088f53a4a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4641c50f0579e2a8db514df58c0401eb2173d793
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79475302"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309055"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Kurz: Použití odkazů na trezor klíčů v aplikaci ASP.NET Core
 
@@ -82,7 +82,7 @@ Chcete-li do trezoru přidat tajný klíč, musíte provést pouze několik dal�
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidání odkazu trezoru klíčů do konfigurace aplikace
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **Všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**.
 
@@ -160,14 +160,12 @@ Chcete-li do trezoru přidat tajný klíč, musíte provést pouze několik dal�
 1. Přidejte odkaz na požadované balíčky NuGet spuštěním následujícího příkazu:
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.KeyVault
     dotnet add package Azure.Identity
     ```
 
 1. Otevřete *Program.cs*a přidejte odkazy na následující požadované balíčky:
 
     ```csharp
-    using Microsoft.Azure.KeyVault;
     using Azure.Identity;
     ```
 

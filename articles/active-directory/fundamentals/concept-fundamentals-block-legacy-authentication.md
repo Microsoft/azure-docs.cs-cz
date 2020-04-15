@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63271567e70955f6dfb0b10a5c882b6dce9545ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74932486"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309200"
 ---
 # <a name="blocking-legacy-authentication"></a>Blokování staršíverze ověřování
  
@@ -31,11 +31,11 @@ Dnes většina všech kompromitujících pokusů o přihlášení pochází ze s
 
 Než budete moci blokovat starší verze ověřování ve vašem adresáři, musíte nejprve pochopit, zda vaši uživatelé mají aplikace, které používají starší verze ověřování a jak ovlivňuje celkový adresář. Protokoly přihlášení Azure AD lze použít k pochopení, pokud používáte starší verze ověřování.
 
-1. Přejděte na portál Azure > přihlášení > služby Azure Active Directory.
-1. Pokud se sloupec Klientská aplikace nezobrazuje, přidejte kliknutím na sloupce > klientskou aplikaci.
-1. Filtrovat podle klientské aplikace > zkontrolujte všechny zobrazené ostatní možnosti klienta a klepněte na tlačítko Použít.
-1. Filtrovat podle stavu > úspěch a klikněte na Použít. 
-1. V případě potřeby rozbalte rozsah dat pomocí filtru Datum.
+1. Přejděte na **portál Azure** > **Azure Active Directory** > **Přihlášení**.
+1. Přidejte sloupec **Klientská aplikace,** pokud se nezobrazuje kliknutím na **sloupce** > **klientské aplikace**.
+1. Filtrovat podle **klientské aplikace**  > zkontrolujte všechny **možnosti starších klientů ověřování** prezentovány.
+1. Filtrovat podle **stavu** > **úspěch**. 
+1. V případě potřeby rozbalte rozsah dat pomocí filtru **Datum.**
 
 Filtrování zobrazí pouze úspěšné pokusy o přihlášení, které byly provedeny vybranými staršími ověřovacími protokoly. Kliknutím na každý jednotlivý pokus o přihlášení se zobrazí další podrobnosti. Sloupec Klientská aplikace nebo pole Klientská aplikace na kartě Základní informace po výběru jednotlivého řádku dat bude označovat, který starší ověřovací protokol byl použit. Tyto protokoly budou označovat, kteří uživatelé jsou stále závislé na starší verze ověřování a které aplikace používají starší protokoly k požadavkům na ověření. Pro uživatele, kteří se nezobrazují v těchto protokolech a je potvrzeno, že nepoužívají starší verze ověřování, implementujte zásady podmíněného přístupu nebo povolte zásadu směrného plánu: blokovat starší verze ověřování pouze pro tyto uživatele.
 
@@ -62,7 +62,7 @@ Pokud používáte klienty Office 2013 windows nebo starší, doporučujeme upgr
 
 Office 2010 nepodporuje moderní ověřování. Budete muset upgradovat všechny uživatele s Office 2010 na novější verzi Office. Doporučujeme upgradovat na Office 2016 nebo novější, protože ve výchozím nastavení blokuje starší verze ověřování.
 
-Pokud používáte MacOS, doporučujeme upgradovat na Office for Mac 2016 nebo novější. Pokud používáte nativního poštovního klienta, budete muset mít macOS verze 10.14 nebo novější na všech zařízeních.
+Pokud používáte macOS, doporučujeme upgradovat na Office for Mac 2016 nebo novější. Pokud používáte nativního poštovního klienta, budete muset mít macOS verze 10.14 nebo novější na všech zařízeních.
 
 ### <a name="step-3-exchange-and-sharepoint"></a>Krok 3: Exchange a SharePoint
 

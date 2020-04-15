@@ -1,5 +1,5 @@
 ---
-title: Přehled konfigurace stavu
+title: Přehled konfigurace stavu automatizace Azure
 description: Přehled konfigurace stavu automatizace Azure (DSC), jeho termíny a známé problémy
 keywords: powershell dsc, požadovaná konfigurace stavu, powershell dsc azure
 services: automation
@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010252"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383183"
 ---
 # <a name="state-configuration-overview"></a>Přehled konfigurace stavu
 
@@ -123,6 +123,7 @@ Uživatelé Azure ExpressRoute by si měli uvědomit, že tento soubor se použ�
 - Pokud chcete začít používat DSC v konfiguraci stavu automatizace Azure, najdete [v tématu Začínáme s azure automation state configuration](automation-dsc-getting-started.md).
 - Další informace o tom, jak napalubě uzly, najdete [v tématu onboarding počítače pro správu pomocí konfigurace stavu automatizace Azure](automation-dsc-onboarding.md).
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit k cílovým uzlům, najdete [v tématu Kompilace konfigurací v konfiguraci stavu automatizace Azure](automation-dsc-compile.md).
-- Odkaz na rutinu prostředí PowerShell najdete [v tématu Rutiny konfigurace stavu azure automatizace](/powershell/module/azurerm.automation/#automation).
+- Odkaz na rutinu prostředí PowerShell naleznete v tématu [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
 - Informace o cenách najdete v [tématu Ceny konfigurace stavu Azure Automation](https://azure.microsoft.com/pricing/details/automation/).
 - Příklad použití konfigurace stavu azure automatizace v kanálu průběžného nasazení najdete v [tématu Průběžné nasazení pomocí konfigurace stavu azure automatizace a Chocolatey](automation-dsc-cd-chocolatey.md).

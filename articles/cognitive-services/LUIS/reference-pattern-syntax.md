@@ -1,25 +1,19 @@
 ---
 title: Odkaz na syntaxi vzoru – LUIS
-titleSuffix: Azure Cognitive Services
 description: Vytvořte entity pro extrahování klíčových dat z projevy uživatelů v aplikacích language understanding (LUIS). Extrahovaná data používá klientská aplikace.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/09/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219728"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382145"
 ---
 # <a name="pattern-syntax"></a>Syntaxe vzoru
 
-Syntaxe vzoru je šablona pro utterance. Šablona by měla obsahovat slova a entity, které chcete spárovat, stejně jako slova a interpunkci, které chcete ignorovat. **Nejedná** se o regulární výraz.
+Syntaxe vzoru je šablona pro utterance. Šablona by měla obsahovat slova a entity, které chcete spárovat, stejně jako slova a [interpunkci,](luis-reference-application-settings.md#punctuation-normalization) které chcete ignorovat. **Nejedná** se o regulární výraz.
 
 > [!CAUTION]
 > Vzorky zahrnují pouze počítačem učené entity, nikoli dílčí součásti.

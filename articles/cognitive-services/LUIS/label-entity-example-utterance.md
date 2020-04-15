@@ -1,21 +1,14 @@
 ---
 title: Utterance příklad entity popisku
-titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak označit entitu načenou počítače podkomponentami v příkladu utterance na stránce podrobností záměru portálu LUIS.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.author: diberry
-ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898378"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382406"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Označit entitu naučil stroj v příkladu utterance
 
@@ -72,7 +65,7 @@ Paleta entit nabízí alternativu k předchozímu prostředí s popisky. Umožň
 
 ## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Označení dílčích součástí počítače získané entity
 
-Dílčí součásti v entitách jsou označeny přesně stejným způsobem jako entity nejvyšší úrovně. Při výběru textu jsou entity dostupné v rozbalovacím okně relativní vzhledem k kontextu, ve kterém se text zobrazuje. Pokud například máte entitu s 5 úrovní strojově nabytou a vybíráte text, který byl označen první a druhou úrovní (označenou názvem entity označené popiskem pod ukázkovým utterancem), jsou entity dostupné v rozbalovacím okně omezeny na složek třetí úrovně. Chcete-li označit text jinými entitami, vyberte **Popisovat jako jinou** možnost entity.
+Dílčí součásti v entitách jsou označeny přesně stejným způsobem jako entity nejvyšší úrovně. Při výběru textu jsou entity dostupné v rozbalovacím okně relativní vzhledem k kontextu, ve kterém se text zobrazuje. Například pokud máte entitu s 5 úrovní počítače a vybíráte text, který byl označen první a druhou úrovní (označeno názvem labeled entity pod ukázkovou utterance), entity dostupné v rozbalovacím okně jsou omezeny na kontext komponent třetí úrovně. Chcete-li označit text jinými entitami, vyberte **Popisovat jako jinou** možnost entity.
 
 > [!div class="mx-imgBorder"]
 > ![Paleta entit pro entitu navoděnou strojem](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
@@ -88,6 +81,10 @@ Role entit jsou označeny paletou entit.
 1. Přesuňte se do **inspektoru entity**a vyberte existující roli nebo vytvořte novou roli.
 1. V textu utterance příklad uvězte text s rolí entity.
 
+## <a name="labeling-for-punctuation"></a>Popisek pro interpunkci
+
+Pro interpunkci není nutné označovat. Nastavení [aplikace](luis-reference-application-settings.md) slouží k řízení, pokud interpunkce ovlivňuje předpovědi utterance.
+
 ## <a name="unlabel-entities"></a>Zrušit označení entit
 
 Chcete-li zrušit označení entity, vyberte název entity pod textem a vyberte **Zrušit popisek**. Pokud entita, kterou se pokoušíte zrušit popisek, má označené dílčí součásti, musí být dílčí součásti nejprve neoznačeny.
@@ -96,7 +93,7 @@ Chcete-li zrušit označení entity, vyberte název entity pod textem a vyberte 
 
 Pokud při popisování uděláte chybu, paleta entit je snadný nástroj, který umožňuje rychlé úpravy. Pokud například popisek entity omylem zahrnuje další slovo a již má označené dílčí součásti, můžete pomocí palety entit vyčistit požadovaný kratší rozsah slov.
 
-Například:
+Příklad:
 
 1. Pizza Typ podsložka zahrnuje "sýr pizza s", který obsahuje extra nesprávné slovo - "s"
 

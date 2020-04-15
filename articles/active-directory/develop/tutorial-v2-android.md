@@ -12,12 +12,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 309e1278959a917f0cef2f419aec1f4f3afcef60
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991020"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380060"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Kurz: Přihlášení uživatelů a volání Microsoft Graphu z aplikace pro Android 
 
@@ -91,7 +91,7 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle následujících kr
 
 1. V podokně projektů aplikace Android Studio přejděte na **app\src\main\res**.
 2. Klepněte pravým tlačítkem myši na **položku Res** a zvolte **Nový** > **adresář**. Zadejte `raw` jako nový název adresáře a klepněte na tlačítko **OK**.
-3. V **aplikaci** > **src** > **hlavní** > **res** > **raw**, `auth_configbn_single_account.json` vytvořte nový soubor JSON s názvem a vložte konfiguraci MSAL, kterou jste uložili dříve. 
+3. V **aplikaci** > **src** > **hlavní** > **res** > **raw**, `auth_config_single_account.json` vytvořte nový soubor JSON s názvem a vložte konfiguraci MSAL, kterou jste uložili dříve. 
 
     Pod identifikátor URI přesměrování vložte: 
     ```json
@@ -190,7 +190,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>Vytvořit instanci aplikace PublicClientApplication
 #### <a name="initialize-variables"></a>Inicializovat proměnné 
 ```java
-private final static String[] SCOPES = {"File.Read"};
+private final static String[] SCOPES = {"Files.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.microsoftonline.com/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;

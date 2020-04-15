@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2c33fbed6c547897847c79cc1260d2bdc9ec6b17
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: eb285d15814f1105462c414541657d43b5371d98
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010320"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383238"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Začínáme s konfigurací stavu azure automatizace
 
@@ -59,7 +59,7 @@ Vytvoříte jednoduchou [konfiguraci DSC,](/powershell/scripting/dsc/configurati
         }
     }
     ```
-1. Uložte soubor jako `TestConfig.ps1`.
+1. Uložte soubor jako **TestConfig.ps1**.
 
 Tato konfigurace volá jeden prostředek v každém bloku uzlu, [prostředek WindowsFeature](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource), který zajišťuje přítomnost nebo nepřítomnost funkce **webového serveru.**
 
@@ -105,7 +105,7 @@ Další informace o kompilaci konfigurací naleznete v [tématu Konfigurace dsc]
    ![Snímek obrazovky s konfigurační stránkou TestConfig, která zvýrazňuje tlačítko kompilace](./media/automation-dsc-getting-started/CompileConfig.png)
 
 > [!NOTE]
-> Když zkompilujete konfiguraci v Azure Automation, automaticky nasadí všechny vytvořené konfigurace uzlu MOFs na server vyžádat.
+> Když zkompilujete konfiguraci v Azure Automation, automaticky nasadí všechny vytvořené soubory MOF konfigurace uzlu na server vyžádat.
 
 ## <a name="viewing-a-compilation-job"></a>Zobrazení kompilace
 
@@ -123,7 +123,7 @@ Po spuštění kompilace ji můžete zobrazit na **dlaždici Úlohy kompilace** 
 
 ## <a name="viewing-node-configurations"></a>Zobrazení konfigurací uzlů
 
-Úspěšné dokončení úlohy kompilace vytvoří jeden nebo více nových konfigurací uzlů. Konfigurace uzlu je dokument MOF, který je nasazen na server vyžádat a připraven k vyprovoknutí a použít jedním nebo více uzly. Konfigurace uzlů v účtu Automation můžete zobrazit na stránce **Konfigurace stavu (DSC).** Konfigurace uzlu má název s formulářem *ConfigurationName*. *NodeName*.
+Úspěšné dokončení úlohy kompilace vytvoří jeden nebo více nových konfigurací uzlů. Konfigurace uzlu je dokument MOF, který je nasazen na server vyžádat a připraven k vyprovoknutí a použít jedním nebo více uzly. Konfigurace uzlů v účtu Automation můžete zobrazit na stránce **Konfigurace stavu (DSC).** Konfigurace uzlu má název s `ConfigurationName.NodeName`formulářem .
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **Všechny prostředky** a potom na název účtu Automation.
@@ -134,7 +134,7 @@ Po spuštění kompilace ji můžete zobrazit na **dlaždici Úlohy kompilace** 
 
 ## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration"></a>Registrace virtuálního počítače Azure pro správu pomocí konfigurace stavu automatizace Azure
 
-Konfigurace stavu Azure Automation můžete použít ke správě virtuálních počítačů Azure (Classic i Resource Manager), místních virtuálních počítačů, počítačů s Linuxem, virtuálních počítačů AWS a místních fyzických počítačů. V tomto článku se dozvíte, jak napalubě pouze virtuální počítače Azure Resource Manager. Informace o připojení jiných typů počítačů najdete [v tématu Onboarding machines for management by Azure Automation State Configuration](automation-dsc-onboarding.md).
+Konfigurace stavu Azure Automation můžete použít ke správě virtuálních počítačů Azure (klasické i Správce prostředků), místních virtuálních počítačů, počítačů s Linuxem, virtuálních počítačů AWS a místních fyzických počítačů. V tomto článku se dozvíte, jak napalubě pouze virtuální počítače Azure Resource Manager. Informace o připojení jiných typů počítačů najdete [v tématu Onboarding machines for management by Azure Automation State Configuration](automation-dsc-onboarding.md).
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>Pokud chcete napalubě virtuálního počítače Azure Resource Manager pro správu pomocí konfigurace stavu automatizace Azure
 

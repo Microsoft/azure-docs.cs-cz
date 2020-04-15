@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfec30e56b0fd523896cbc1a7e84e92f639075a8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 15a4c9b16b102310fd02f8db3a4fb93cff84882b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879050"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314074"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuální ploše Windows
 
@@ -67,3 +67,7 @@ Desktopovou aplikaci Teams můžete nasadit pomocí instalace pro celé počíta
 
       > [!NOTE]
       > Pokud nainstalujete Teams s nastavením MSI ALLUSER=1, automatické aktualizace budou zakázány. Doporučujeme, abyste týmy aktualizovali alespoň jednou měsíčně.
+      
+### <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokolu Vzdálené plochy pro fond hostitelů
+Přizpůsobení vlastností protokolu RDP (RdP) hostitelského fondu, jako je například možnosti více monitorů, povolení přesměrování mikrofonu a zvuku, umožňuje uživatelům poskytovat optimální prostředí na základě jejich potřeb. Vlastnosti protokolu RDP ve virtuální ploše systému Windows můžete přizpůsobit pomocí parametru **-CustomRdpProperty** v rutině **Set-RdsHostPool.**
+Úplný seznam podporovaných vlastností a jejich výchozích hodnot naleznete v [části Podporovaná nastavení souborů PROTOKOLU RDP.](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)

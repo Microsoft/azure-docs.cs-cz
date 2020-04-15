@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8e0b874e0ce56d7b4ed9fce15b2d88503d6c49b7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631478"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309150"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Řešení problémů s konfigurací požadovaného stavu azure automation (DSC)
 
@@ -114,6 +114,8 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 ### <a name="cause"></a>Příčina
 
 Tento problém je způsoben chybný certifikát nebo vypršela jeho platnost.  Další informace naleznete v [tématu Vypršení platnosti certifikátu a jeho opětovné registrace](../automation-dsc-onboarding.md#re-registering-a-node).
+
+Tento problém může být také způsoben konfigurací proxy neumožňuje přístup k ***.azure-automation.net**. Další informace naleznete v [tématu Konfigurace privátních sítí](../automation-dsc-overview.md#network-planning). 
 
 ### <a name="resolution"></a>Řešení
 

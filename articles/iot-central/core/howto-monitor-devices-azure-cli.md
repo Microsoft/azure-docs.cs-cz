@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 09209c21fe1b2b115c1ba6d6e00fcd0ee59a9393
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 0fa1b58547e0260ec5486003cf4cb85d855de33a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365424"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310216"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Monitorování připojení zařízení s využitím Azure CLI
 
@@ -21,7 +21,7 @@ ms.locfileid: "80365424"
 
 Pomocí rozšíření Azure CLI IoT zobrazíte zprávy, které vaše zařízení odesílají do služby IoT Central, a sledujte změny v dvojčeti zařízení. Tento nástroj můžete použít k ladění a sledování připojení zařízení a diagnostikovat problémy se zprávami zařízení, které nedosahují cloudu nebo zařízení, která nereagují na změny dvojčat.
 
-[Další podrobnosti najdete v odkazu na rozšíření Azure CLI.](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/central)
+[Další podrobnosti najdete v odkazu na rozšíření Azure CLI.](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
 
 ## <a name="prerequisites"></a>Požadavky
 

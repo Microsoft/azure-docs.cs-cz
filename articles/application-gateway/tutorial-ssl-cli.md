@@ -1,6 +1,6 @@
 ---
-title: Ukončení SSL pomocí příkazového příkazového příkazu k příkazu k onomu – brána aplikací Azure
-description: Přečtěte si, jak vytvořit aplikační bránu a přidat certifikát pro ukončení protokolu SSL pomocí Azure CLI.
+title: Ukončení TLS pomocí příkazového příkazového příkazu k onomu – Azure Application Gateway
+description: Zjistěte, jak vytvořit aplikační bránu a přidat certifikát pro ukončení TLS pomocí azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c297a7d34e8b85420329abaca0e15029ce207861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246616"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311982"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Vytvoření aplikační brány s ukončením SSL pomocí azure cli
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Vytvoření aplikační brány s ukončením TLS pomocí azure cli
 
-Pomocí příkazového příkazového příkazu Azure můžete vytvořit [aplikační bránu](overview.md) s certifikátem pro [ukončení SSL](ssl-overview.md). Pro back-endové servery můžete použít [škálovací sadu virtuálních strojů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
+Pomocí příkazového příkazového příkazu azure můžete vytvořit [aplikační bránu](overview.md) s certifikátem pro [ukončení TLS](ssl-overview.md). Pro back-endové servery můžete použít [škálovací sadu virtuálních strojů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
 
 V tomto článku získáte informace o těchto tématech:
 

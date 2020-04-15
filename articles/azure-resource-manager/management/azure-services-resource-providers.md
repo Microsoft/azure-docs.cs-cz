@@ -3,12 +3,12 @@ title: Poskytovatelé prostředků podle služeb Azure
 description: Zobrazí seznam všech oborů názvů zprostředkovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 9cf18a1e4c0dd40ae9106d32547ba4795ea9fbb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55fbe4ae383e5275d185e2a03224e77660a01ef5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472958"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382511"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -29,7 +29,7 @@ Tento článek ukazuje, jak obory názvů zprostředkovatele prostředků mapova
 | Platforma Microsoft.AppPlatforma | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft.Atestation | Služba atestace Azure |
 | Microsoft.Authorization | [Azure Resource Manager](../index.yml) |
-| Microsoft.Automation | [Automatizace](../../automation/index.yml) |
+| Microsoft.Automation | [Automation](../../automation/index.yml) |
 | Adresář Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
 | Microsoft.AzureData | Registr serveru SQL Server |
 | Microsoft.AzureStack | core |
@@ -51,10 +51,10 @@ Tento článek ukazuje, jak obory názvů zprostředkovatele prostředků mapova
 | Microsoft.ClassicPředplatné | Model nasazení Classic |
 | Microsoft.CognitiveServices | [Cognitive Services](/azure/cognitive-services/) |
 | Microsoft.Commerce | core |
-| Microsoft.Compute | [Virtuální počítače](/azure/virtual-machines/)<br />[Škálovací sady virtuálních strojů](/azure/virtual-machine-scale-sets/) |
+| Microsoft.Compute | [Virtuální počítače](/azure/virtual-machines/)<br />[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) |
 | Microsoft.Spotřeba | [Řízení nákladů](/azure/cost-management/) |
 | Microsoft.ContainerInstance | [Container Instances](/azure/container-instances/) |
-| Microsoft.ContainerRegistry | [Registr kontejnerů](/azure/container-registry/) |
+| Microsoft.ContainerRegistry | [Container Registry](/azure/container-registry/) |
 | Microsoft.ContainerService | [Azure Kubernetes Service (AKS)](/azure/aks/) |
 | Microsoft.CostManagement | [Řízení nákladů](/azure/cost-management/) |
 | Microsoft.CostManagementExport | [Řízení nákladů](/azure/cost-management/) |
@@ -83,9 +83,9 @@ Tento článek ukazuje, jak obory názvů zprostředkovatele prostředků mapova
 | Microsoft.DomainRegistration | [App Service](/azure/app-service/) |
 | Microsoft.EnterpriseKnowledgeGraph | Graf znalostní báze Enterprise |
 | Microsoft.EventGrid | [Event Grid](/azure/event-grid/) |
-| Microsoft.EventHub | [Centra událostí](../../event-hubs/index.yml) |
+| Microsoft.EventHub | [Event Hubs](../../event-hubs/index.yml) |
 | Microsoft.Features | [Azure Resource Manager](../index.yml) |
-| Microsoft.GuestConfiguration | [Zásady Azure](../../governance/policy/index.yml) |
+| Microsoft.GuestConfiguration | [Azure Policy](../../governance/policy/index.yml) |
 | Microsoft.HanaOnAzure | [SAP HANA ve velkých instancích Azure](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Moduly Microsoft.HardwareSecurityModules | [Rezervované HSM Azure](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
@@ -96,9 +96,9 @@ Tento článek ukazuje, jak obory názvů zprostředkovatele prostředků mapova
 | microsoft.insights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.IoTCentral | [Azure IoT Central](/azure/iot-central/) |
 | Microsoft.IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
-| Microsoft.KeyVault | [Trezor klíčů](../../key-vault/index.yml) |
+| Microsoft.KeyVault | [Key Vault](../../key-vault/index.yml) |
 | Microsoft.Kubernetes | [Azure Kubernetes Service (AKS)](/azure/aks/) |
-| Microsoft.Kusto | [Průzkumník dat Azure](../../data-explorer/index.yml) |
+| Microsoft.Kusto | [Průzkumník dat Azure](/azure/data-explorer/) |
 | Služby Microsoft.LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft.Logic | [Logic Apps](../../logic-apps/index.yml) |
 | Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/studio/index.yml) |
@@ -115,17 +115,17 @@ Tento článek ukazuje, jak obory názvů zprostředkovatele prostředků mapova
 | Microsoft.Migrate | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft.MixedReality | [Azure Spatial Anchors](/azure/spatial-anchors/) |
 | Microsoft.NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Aplikační brána](../../application-gateway/index.yml)<br />[Azure Bastion](/azure/bastion/)<br />[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Virtuální síť](../../virtual-network/index.yml)<br />[Virtuální síť WAN](../../virtual-wan/index.yml)<br />[Brána VPN](../../vpn-gateway/index.yml)<br /> |
+| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](/azure/bastion/)<br />[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Brána Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Virtual Network](../../virtual-network/index.yml)<br />[Virtuální síť WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
 | Microsoft.NotificationHubs | [Notification Hubs](../../notification-hubs/index.yml) |
 | Microsoft.OffAzure | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft.OperationalInsights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.Peering | [Služba partnerského vztahu Azure](../../peering-service/index.yml) |
-| Microsoft.PolicyInsights | [Zásady Azure](../../governance/policy/index.yml) |
-| Microsoft.Portal | [Portál Azure](/azure/azure-portal/) |
+| Microsoft.PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
+| Microsoft.Portal | [portál Azure](/azure/azure-portal/) |
 | Microsoft.PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft.PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
-| Služby Microsoft.RecoveryServices | [Obnovení webu Azure](../../site-recovery/index.yml) |
+| Služby Microsoft.RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
 | Microsoft.RedHatOpenShift | [Azure Red Hat OpenShift](../../virtual-machines/linux/openshift-get-started.md) |
 | Microsoft.Relay | [Azure Relay](../../service-bus-relay/relay-what-is-it.md) |
 | Microsoft.ResourceGraph | [Azure Resource Graph](/azure/governance/resource-graph/) |
@@ -145,20 +145,20 @@ Tento článek ukazuje, jak obory názvů zprostředkovatele prostředků mapova
 | Microsoft.Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../sql-database/index.yml)<br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.SqlVirtualMachine | [SQL Server na Azure Virtual Machines](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) |
-| Microsoft.Storage | [Úložiště](../../storage/index.yml) |
+| Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft.StorageCache | [Azure HPC Cache](/azure/hpc-cache/) |
-| Microsoft.StorageSync | [Úložiště](../../storage/index.yml) |
+| Microsoft.StorageSync | [Storage](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](/azure/storsimple/) |
 | Microsoft.StreamAnalytics | [Azure Stream Analytics](../../stream-analytics/index.yml) |
 | Microsoft.Subscription | core |
 | Microsoft.support | core |
 | Microsoft.Synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Microsoft.TimeSeriesInsights | [Přehledy Azure Time Series](../../time-series-insights/index.yml) |
+| Microsoft.TimeSeriesInsights | [Azure Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft.VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
 | Microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
 | Microsoft.VMwareCloudJednoduché | [Azure VMware Solution by CloudSimple](/azure/vmware-cloudsimple/) |
 | Microsoft.Web | [App Service](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
-| Microsoft.WindowsIoT | [Základní služby IoT ve Windows 10](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
+| Microsoft.WindowsIoT | [Windows 10 IoT Core Services](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
 | Microsoft.WorkloadMonitor | [Azure Monitor](../../azure-monitor/index.yml) |
 
 ## <a name="next-steps"></a>Další kroky

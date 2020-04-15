@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: f06480767b697dca8fe41e484c02aefc58f040bf
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3a885f071c89ff6d9bb79d908b19c9451b4ed735
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261325"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383306"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -92,11 +92,11 @@ Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky
 | AzureRunAsCertificate |Datový zdroj certifikátu, který se automaticky vytvoří při vytvoření účtu Automation nebo pomocí skriptu prostředí PowerShell pro existující účet. Certifikát se ověřuje pomocí Azure, takže můžete spravovat prostředky Azure Resource Manager u runbooků. Tento certifikát má životnost jeden rok. |
 | AzureRunAsConnection |Prostředek připojení, který se automaticky vytvoří při vytvoření účtu Automation nebo pomocí skriptu prostředí PowerShell pro existující účet. |
 
-## <a name="create-a-classic-run-as-account"></a>Vytvoření klasického run-as účtu
+## <a name="create-a-classic-run-as-account"></a>Vytvoření účtu Klasické spuštění jako
 
-Klasické účty Run-As se už při vytváření účtu Azure Automation nevytvářejí. Pokud stále potřebujete klasický účet Run-As, proveďte následující kroky.
+Klasické spustit jako účty se už nevytvářejí ve výchozím nastavení při vytváření účtu Azure Automation. Pokud stále potřebujete účet Classic Run As:
 
-1. Na stránce **Účet automatizace** vyberte v části **Nastavení účtu**možnost Spustit **jako účty** .
+1. V části Nastavení **účtu**automation vyberte možnost **Spustit jako účty** .
 2. Vyberte **Azure Classic Run as Account**.
 3. Chcete-li pokračovat v vytváření účtu Classic Run As, klepněte na **tlačítko Vytvořit.**
 
@@ -105,5 +105,6 @@ Klasické účty Run-As se už při vytváření účtu Azure Automation nevytv�
 * Další informace o vytváření grafických funkcí najdete [v tématu Vytváření grafikva v Azure Automation](automation-graphical-authoring-intro.md).
 * První kroky s powershellovými runbooky najdete v článku [Můj první powershellový runbook](automation-first-runbook-textual-powershell.md).
 * Pokud chcete začít s runbooky pracovních postupů Prostředí PowerShell, [přečtěte si první runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md).
-* První kroky s runbooky Python2 najdete v článku [Můj první runbook Python2](automation-first-runbook-textual-python2.md).
-
+* Informace o tom, jak začít s runbooky pythonu 2, najdete [v tématu Moje první runbook pythonu2](automation-first-runbook-textual-python2.md).
+* Odkaz na rutinu prostředí PowerShell naleznete v tématu [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

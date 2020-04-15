@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e0c1a93ef663762bec199abc5aa7eabbc821168d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654949"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382888"
 ---
 # <a name="availability-alerts"></a>Upozornění na dostupnost
 
@@ -33,6 +33,9 @@ Výstrahy jsou nyní automaticky povoleny ve výchozím nastavení, ale aby bylo
 2. Nastavte požadovanou úroveň závažnosti, popis pravidla a co je nejdůležitější – skupinu akcí, která má předvolby oznámení, které chcete použít pro toto pravidlo výstrahy.
 
    ![Upravit po uložení](./media/availability-alerts/set-action-group.png)
+
+> [!NOTE]
+> Výstrahy dostupnosti vytvořené prostřednictvím tohoto prostředí jsou založeny na stavu. To znamená, že pokud jsou splněna kritéria výstrahy, je generována jedna výstraha, když je lokalita zjištěna jako nedostupná. Pokud je web stále mimo, při příštím vyhodnocení kritérií výstrahy se nevytvoří nová výstraha. Takže pokud váš web byl mimo dobu jedné hodiny a měli jste nastavení e-mailové upozornění, budete dostávat pouze e-mail, když místo šel dolů, a následné e-mail, když byl web zálohovat. Neobdržíte nepřetržitá upozornění, která by vás upozorovala na to, že web je stále nedostupný.
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Výstraha na x mimo umístění Y hlásí cípy
 

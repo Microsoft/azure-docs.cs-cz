@@ -9,15 +9,15 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4ef8ca9e116328e14182ca77c787befa837041d0
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 0a884850d57418e9daafba980d0a08dc86fc0974
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886224"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309398"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Platforma identit Microsoftu a implicitní tok grantů
 

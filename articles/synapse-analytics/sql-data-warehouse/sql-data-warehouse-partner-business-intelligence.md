@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a026cc241eb372e15f2600e52ec53a46efb1024
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 75020b0dd58a80f989bd03eb92031d904ebf4c82
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256004"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313689"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Partneři azure synapse analytics business intelligence
 
@@ -38,6 +38,7 @@ Chcete-li vytvořit kompletní řešení datového skladu pomocí fondu Synapse 
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense je full-stack Business Intelligence software, který je dodáván s nástroji, které podnik potřebuje k analýze a vizualizaci dat: vysoce výkonná analytická databáze, schopnost připojit se k více zdrojům, jednoduché extrakce dat (ETL) a webové vizualizace dat. Začněte analyzovat a vizualizovat velké datové sady pomocí SiSense BI a Analytics ještě dnes. |[Stránka produktu](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Samoobslužná analýza tableau pomáhá komukoli v reálném zobrazení a pochopení jejich dat napříč mnoha druhy dat od plochých souborů po databáze. Tableau má nativní, optimalizovaný konektor do fondu SYNApse SQL, který podporuje živé údaje i analýzy v paměti. |[Stránka produktu](https://www.tableau.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
 | ![Targit (Fr.)](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Rozhodovací sada)**<br>Targit Decision Suite poskytuje platformu BI a Analytics, která poskytuje řídicí panely v reálném čase, samoobslužné analýzy, uživatelsky přívětivé vytváření sestav, ohromující mobilní funkce a jednoduchou technologii zjišťování dat v jediném soudržném řešení. Targit dává společnostem odvahu jednat. |[Stránka produktu](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
+| ![Myšlenkový bod](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**Myšlenkový bod**<br>Nejinovativnější podniky na světě využívají Společnost ThoughtSpot k posílení postavení každého člověka ve své organizaci, od manažera C-suite až po zaměstnance v první linii, se schopností rychle odhalit poznatky založené na datech. S ThoughtSpot mohou podnikatelé zadat jednoduché vyhledávání, aby okamžitě analyzovali miliardy řádků dat a využili umělou inteligenci, aby získali důvěru, relevantní poznatky, které jsou k nim tlačeny jako odpovědi na tisíce otázek, které si možná nemysleli, že se ptají. ThoughtSpot je dostatečně jednoduchý pro všechny obchodní osoby k použití, ale dostatečně silný, aby zvládnout i největší, nejsložitější podniková data bez obětování rychlosti, zabezpečení, nebo řízení. To je důvod, proč zákazníci jako Walmart, 7-11, BT, Daimler, Exxon, Hulu, Royal Bank of Canada, Bank of the West a Nationwide Building Society se obrátili na ThoughtSpot, aby změnili své rozhodovací kultury a analytickou firmu Gartner s názvem ThoughtSpot leader v magickém kvadrantu 2020. Tím, že postřehy součástí každé konverzace a každé rozhodnutí, ThoughtSpot je reimagining roli dat při vytváření více fakt-řízený svět. |[Stránka produktu](https://www.thoughtspot.com)<br>|
 | ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>Yellowfin je nejlépe hodnocený dodavatel Cloud BI pro ad hoc Reporting a dashboardy od společnosti BARC; Průzkum BI. Připojte se k fondu Synapse SQL a pak vytvářejte a sdílejte krásné sestavy a řídicí panely s oceňovanými funkcemi BI pro spolupráci a zjišťování polohy. |[Stránka produktu](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

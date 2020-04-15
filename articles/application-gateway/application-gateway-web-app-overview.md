@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: efa2885ce0534c5d78bb08bbf24da59850f6ea22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075177"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312320"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Podpora aplikační brány pro víceklientské back-endy, jako je například služba App
 
@@ -30,9 +30,9 @@ Služba Application Gateway nabízí uživatelům možnost přepsat hlavičku ho
 
 Možnost zadat přepsání hostitele je definována v [nastavení protokolu HTTP](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) a lze ji použít pro libovolný back-endový fond během vytváření pravidel. Následující dva způsoby přepsání hlavičky hostitele a rozšíření SNI pro víceklientské back-endy je podporována:
 
-- Možnost nastavit název hostitele na pevnou hodnotu explicitně zadanou v nastavení protokolu HTTP. Tato funkce zajišťuje, že záhlaví hostitele je přepsána na tuto hodnotu pro veškerý provoz do back-endového fondu, kde jsou použita konkrétní nastavení HTTP. Při použití koncového šifrování protokolu SSL se přepsaný název hostitele použije v rozšíření SNI. Tato funkce umožňuje scénáře, kde farma back-endového fondu očekává hlavičku hostitele, která se liší od hlavičky hostitele příchozího zákazníka.
+- Možnost nastavit název hostitele na pevnou hodnotu explicitně zadanou v nastavení protokolu HTTP. Tato funkce zajišťuje, že záhlaví hostitele je přepsána na tuto hodnotu pro veškerý provoz do back-endového fondu, kde jsou použita konkrétní nastavení HTTP. Při použití end to end TLS, tento přepsaný název hostitele se používá v rozšíření SNI. Tato funkce umožňuje scénáře, kde farma back-endového fondu očekává hlavičku hostitele, která se liší od hlavičky hostitele příchozího zákazníka.
 
-- Možnost odvodit název hostitele z IP nebo ReQDN členů back-endového fondu. Nastavení protokolu HTTP také poskytují možnost dynamicky vybrat název hostitele z fQDN člena back-endového fondu, pokud je nakonfigurován s možností odvodit název hostitele od jednotlivého člena fondu back-end. Při použití koncového šifrování protokolu SSL se tento název hostitele odvodí z plně kvalifikovaného názvu domény a použije v rozšíření SNI. Tato funkce umožňuje scénáře, kde back-endový fond může mít dva nebo více víceklientských služeb PaaS, jako jsou webové aplikace Azure a hlavička hostitele požadavku pro každého člena obsahuje název hostitele odvozený z jeho hlavního názvu sítě. Pro implementaci tohoto scénáře používáme přepínač v nastavení HTTP s názvem [Pick hostname z back-endové adresy,](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) který dynamicky přepíše hlavičku hostitele v původním požadavku na ten, který je uveden v back-endovém fondu.  Například pokud váš fond back-endu, který je v ykonané masy, obsahuje "contoso11.azurewebsites.net" a "contoso22.azurewebsites.net", bude záhlaví hostitele původní žádosti, které je contoso.com, přepsáno na contoso11.azurewebsites.net nebo contoso22.azurewebsites.net při odeslání požadavku na příslušný server back-end. 
+- Možnost odvodit název hostitele z IP nebo ReQDN členů back-endového fondu. Nastavení protokolu HTTP také poskytují možnost dynamicky vybrat název hostitele z fQDN člena back-endového fondu, pokud je nakonfigurován s možností odvodit název hostitele od jednotlivého člena fondu back-end. Při použití end to end TLS, tento název hostitele je odvozen od FQDN a používá se v rozšíření SNI. Tato funkce umožňuje scénáře, kde back-endový fond může mít dva nebo více víceklientských služeb PaaS, jako jsou webové aplikace Azure a hlavička hostitele požadavku pro každého člena obsahuje název hostitele odvozený z jeho hlavního názvu sítě. Pro implementaci tohoto scénáře používáme přepínač v nastavení HTTP s názvem [Pick hostname z back-endové adresy,](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) který dynamicky přepíše hlavičku hostitele v původním požadavku na ten, který je uveden v back-endovém fondu.  Například pokud váš fond back-endu FQDN obsahuje "contoso11.azurewebsites.net" a "contoso22.azurewebsites.net", původní hlavička hostitele požadavku, který je contoso.com bude přepsána na contoso11.azurewebsites.net nebo contoso22.azurewebsites.net při odeslání požadavku na příslušný server back-end. 
 
   ![scénář webové aplikace](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -40,11 +40,11 @@ Díky této schopnosti můžou zákazníci zadat možnosti v nastavení HTTP a v
 
 ## <a name="special-considerations"></a>Zvláštní aspekty
 
-### <a name="ssl-termination-and-end-to-end-ssl-with-multi-tenant-services"></a>Ukončení SSL a ukončení ssl s víceklientské služby
+### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>Ukončení TLS a ukončení TLS s víceklientské služby
 
-SSL ukončení a end-to-end SSL šifrování je podporováno víceklientské služby. Pro ukončení SSL v bráně aplikace ssl certifikát i nadále nutné přidat do naslouchací proces brány aplikace. Však v případě, že konec do konce SSL, důvěryhodné služby Azure, jako jsou webové aplikace služby Azure App služby nevyžadují whitelisting back-endy v aplikační bráně. Proto není nutné přidávat žádné ověřovací certifikáty. 
+Ukončení TLS a end-to-end šifrování TLS je podporováno víceklientské služby. Pro ukončení TLS v bráně aplikace tls certifikát i nadále nutné přidat do naslouchací proces brány aplikace. Však v případě, že od konce do konce TLS, důvěryhodné služby Azure, jako jsou webové aplikace služby Azure App služby nevyžadují whitelisting back-endy v aplikační bráně. Proto není nutné přidávat žádné ověřovací certifikáty. 
 
-![ssl od konce ke konci](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
+![od konce ke konci TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 
 Všimněte si, že ve výše uvedeném obrázku není žádný požadavek na přidání ověřovacích certifikátů, když je služba App vybrána jako back-end.
 

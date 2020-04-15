@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: b6a8bc083b589463b67f2e25e262b15456355d05
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011412"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383841"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Přiřazení přístupových oprávnění k identitě
 
@@ -98,7 +98,7 @@ Další informace o použití icacls k nastavení oprávnění NTFS a o různýc
 
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>Připojení sdílené složky z příkazového řádku
 
-Pomocí příkazu **Windows net use** můžete připojit sdílenou složku Azure. Nezapomeňte nahradit zástupné hodnoty v následujícím příkladu vlastními hodnotami. Další informace o připojujících se sdílených složek najdete [v tématu Použití sdílené složky Azure se systémem Windows](../articles/storage/files/storage-how-to-use-files-windows.md).
+Pomocí příkazu **Windows net use** můžete připojit sdílenou složku Azure. Nezapomeňte nahradit zástupné hodnoty v následujícím příkladu vlastními hodnotami. Další informace o připojujících se sdílených složek najdete [v tématu Použití sdílené složky Azure se systémem Windows](../articles/storage/files/storage-how-to-use-files-windows.md). 
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -123,7 +123,7 @@ Přihlaste se k virtuálnímu počítači pomocí identity Azure AD, které jste
 
 ![Snímek obrazovky s přihlašovací obrazovkou Azure AD pro ověřování uživatelů](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-Pomocí následujícího příkazu připojte sdílenou složku Azure. Nezapomeňte nahradit zástupné hodnoty vlastními hodnotami. Vzhledem k tomu, že jste byli ověřeni, nemusíte zadejte klíč účtu úložiště, přihlašovací údaje služby AD nebo přihlašovací údaje Azure AD. Jednotné přihlašování je podporováno pro ověřování pomocí služby AD nebo Azure AD DS.
+Pomocí následujícího příkazu připojte sdílenou složku Azure. Nezapomeňte nahradit zástupné hodnoty vlastními hodnotami. Vzhledem k tomu, že jste byli ověřeni, nemusíte zadejte klíč účtu úložiště, přihlašovací údaje služby AD nebo přihlašovací údaje Azure AD. Jednotné přihlašování je podporováno pro ověřování pomocí služby AD nebo Azure AD DS. Pokud narazíte na problémy při připřipojování s přihlašovacími údaji služby AD, [zkontrolujte řešení problémů se soubory Azure v systému Windows,](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) kde najdete pokyny pro vlastní diagnostiku.
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>

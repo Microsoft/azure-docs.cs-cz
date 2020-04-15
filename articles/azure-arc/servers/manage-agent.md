@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8bcf59ee863bb2fd2a3213480372ad215c2fc00d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 5ad2127b4cb9da3ca83aa04bd1885908a88dba62
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528592"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308959"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného stroje
 
@@ -113,6 +113,78 @@ Akce příkazu [yum,](https://access.redhat.com/articles/yum-cheat-sheet) jako j
 
 Do souboru protokolu jsou zaznamenány akce příkazu `/var/log/zypper.log` [zypper,](https://en.opensuse.org/Portal:Zypper) například instalace a odebrání balíčků. 
 
+## <a name="about-the-azcmagent-tool"></a>O nástroji Azcmagent
+
+Nástroj Azcmagent (Azcmagent.exe) se používá ke konfiguraci agenta Azure Arc pro servery (náhled) připojeného počítače během instalace nebo k úpravě počáteční konfigurace agenta po instalaci. Azcmagent.exe poskytuje parametry příkazového řádku pro přizpůsobení agenta a zobrazení jeho stavu:
+
+* **Připojení** – připojení počítače k Azure Arc
+
+* **Odpojit** – odpojení počítače od Azure Arc
+
+* **Opětovné připojení** – opětovné připojení odpojeného počítače k Azure Arc
+
+* **Zobrazit** – zobrazení stavu agenta a jeho vlastností konfigurace (název skupiny prostředků, ID předplatného, verze atd.), což může pomoci při řešení problému s agentem.
+
+* **-h nebo --help** - Zobrazuje dostupné parametry příkazového řádku.
+
+    Chcete-li například zobrazit podrobnou nápovědu `azcmagent reconnect -h`k parametru **Znovu připojit,** zadejte . 
+
+* **-v nebo --verbose** - Povolit podrobné protokolování
+
+Můžete provádět **připojit**, **odpojit**a **znovu připojit** ručně, když přihlášen interaktivně nebo automatizovat pomocí stejného instančního objektu, který jste použili k připojení více agentů nebo s [tokenem přístupu](../../active-directory/develop/access-tokens.md)platformy identit Microsoft . Pokud jste nepoužili instanční objekt k registraci počítače s Azure Arc pro servery (náhled), najdete v následujícím [článku](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) k vytvoření instančního objektu.
+
+### <a name="connect"></a>Připojení
+
+Tento parametr určuje prostředek ve Správci prostředků Azure představující počítač se vytvoří v Azure. Prostředek je v zadané skupině předplatného a prostředků a data o počítači `--location` se ukládají v oblasti Azure určené nastavením. Výchozí název prostředku je název hostitele tohoto počítače, pokud není zadán.
+
+Certifikát odpovídající systémově přiřazené identitě počítače je pak stažen a uložen místně. Po dokončení tohoto kroku začne služba metadat azure připojeného počítače a agent konfigurace hosta synchronizaci s Azure Arc pro servery (náhled).
+
+Chcete-li se připojit pomocí instančního objektu služby, spusťte následující příkaz:
+
+`azcmagent connect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+Chcete-li se připojit pomocí přístupového tokenu, spusťte následující příkaz:
+
+`azcmagent connect --access-token <> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+Chcete-li se spojit se zvýšenými přihlašovacími přihlašovacími údaji (interaktivními), spusťte následující příkaz:
+
+`azcmagent connect --tenant-id <TenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+### <a name="disconnect"></a>Odpojit
+
+Tento parametr určuje prostředek ve Správci prostředků Azure představující počítač se odstraní v Azure. Neodstraní agenta z počítače, musí to být provedeno jako samostatný krok. Po odpojení počítače, pokud chcete znovu zaregistrovat pomocí Azure Arc pro `azcmagent connect` servery (preview), použijte tak nový prostředek se vytvoří pro něj v Azure.
+
+Chcete-li se odpojit pomocí instančního objektu služby, spusťte následující příkaz:
+
+`azcmagent disconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
+
+Chcete-li se odpojit pomocí přístupového tokenu, spusťte následující příkaz:
+
+`azcmagent disconnect --access-token <accessToken>`
+
+Chcete-li se odpojit se zvýšenými přihlašovacími údaji (interaktivními), spusťte následující příkaz:
+
+`azcmagent disconnect --tenant-id <tenantID>`
+
+### <a name="reconnect"></a>Znovu připojit
+
+Tento parametr znovu připojí již registrovaný nebo připojený počítač s Azure Arc pro servery (náhled). To může být nezbytné, pokud byl stroj vypnut, alespoň 45 dní, aby jeho platnost platnost platnosti certifikátu vypršela. Tento parametr používá možnosti ověřování k načtení nových přihlašovacích údajů odpovídajících prostředku Azure Resource Manager představující tento počítač.
+
+Tento příkaz vyžaduje vyšší oprávnění než role [Připojení k počítači Azure.](overview.md#required-permissions)
+
+Chcete-li se znovu připojit pomocí instančního objektu služby, spusťte následující příkaz:
+
+`azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
+
+Chcete-li se znovu připojit pomocí přístupového tokenu, spusťte následující příkaz:
+
+`azcmagent reconnect --access-token <accessToken>`
+
+Chcete-li se znovu připojit ke zvýšeným přihlašovacím pověřením (interaktivním), spusťte následující příkaz:
+
+`azcmagent reconnect --tenant-id <tenantID>`
+
 ## <a name="remove-the-agent"></a>Odebrání agenta
 
 Chcete-li odinstalovat agenta počítače S Windows nebo Linux Connected Machine, proveďte jednu z následujících metod. Odebráníagenta nezruší registraci počítače pomocí arc pro servery (náhled), jedná se o samostatný proces, který provádíte, když už nemusíte spravovat počítač v Azure.
@@ -184,7 +256,7 @@ Chcete-li odinstalovat agenta Linuxu, příkaz, který chcete použít, závisí
 
 ## <a name="unregister-machine"></a>Zrušit registraci počítače
 
-Pokud plánujete zastavit správu počítače s podpůrnými službami v Azure, proveďte následující kroky k odregistru počítače s Arc pro servery (náhled). Tento krok můžete provést před odebráním agenta připojeného počítače ze zařízení nebo po jeho odebrání.
+Pokud plánujete zastavit správu počítače s podpůrnými službami v Azure, proveďte následující kroky k odregistru počítače s Arc pro servery (náhled). Tyto kroky můžete provést před nebo po odebrání agenta připojeného počítače ze zařízení.
 
 1. Otevřete Azure Arc pro servery (preview) na [webu Azure Portal](https://aka.ms/hybridmachineportal).
 

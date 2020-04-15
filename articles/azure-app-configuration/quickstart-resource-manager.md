@@ -3,18 +3,18 @@ title: Rychlé spuštění automatického virtuálního počítače pomocí rych
 description: Tento rychlý start ukazuje, jak používat modul Azure PowerShell a šablony Azure Resource Manager k nasazení úložiště Konfigurace aplikací Azure. Pak použijte hodnoty v úložišti k nasazení virtuálního soudu.
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 03/05/2020
+ms.date: 04/14/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 02afa2cb36323e0c3c38c2451b1924b636f7faed
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79126378"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309094"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Úvodní příručka: Automatické nasazení virtuálních počítačů pomocí šablony Konfigurace aplikace a Správce prostředků
 
@@ -152,6 +152,9 @@ Než budete moct použít hodnoty klíčů na virtuální počítač, musíte m�
 ## <a name="deploy-vm-using-stored-key-values"></a>Nasazení virtuálního mísa pomocí uložených hodnot klíčů
 
 Teď, když jste do úložiště přidali hodnoty klíčů, jste připraveni nasadit virtuální počítač pomocí šablony Azure Resource Manager. Šablona odkazuje na **windowsOsVersion** a **diskSizeGB** klíče, které jste vytvořili.
+
+> [!WARNING]
+> Šablony ARM nemohou odkazovat na klíče v úložišti konfigurace aplikací, které mají povolenou privátní vazbu.
 
 1. Zkopírujte a vložte následující kód json do nového souboru s názvem *azuredeploy.json*nebo stáhněte soubor ze [šablon Azure Quickstart](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json).
 
@@ -423,13 +426,13 @@ Teď, když jste do úložiště přidali hodnoty klíčů, jste připraveni nas
    |storageAccountName|Jedinečný název pro účet úložiště přidružený k virtuálnímu virtuálnímu ms.|
    |domainNameLabel|Jedinečný název domény.|
 
-1. V okně PowerShellu spusťte následující příkaz pro nasazení úložiště Azure App Configuration Store. Nezapomeňte nahradit název skupiny prostředků, cestu k souboru šablony a cestu k souboru parametru šablony.
+1. V okně PowerShellu spusťte následující příkaz pro nasazení virtuálního počítače. Nezapomeňte nahradit název skupiny prostředků, cestu k souboru šablony a cestu k souboru parametru šablony.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
+       -ResourceGroupName "<your resource group>"
+       -TemplateFile "<path to azuredeploy.json>" `
+       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
    ```
 
 Blahopřejeme! Virtuální počítač jste nasadili pomocí konfigurací uložených v konfiguraci aplikací Azure.

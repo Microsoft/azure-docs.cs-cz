@@ -1,22 +1,15 @@
 ---
 title: Nejčastější dotazy (FAQ) – LUIS
-titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se porozumění jazykům (LUIS).
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 235eba7f80778b8a60ba880616cf80f2c14ccba1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219706"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382189"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy týkající se porozumění jazykům
 
@@ -59,7 +52,10 @@ Předchozí **funkce Pole** je aktuálně zastaralá, nahrazená **[vzorky](luis
 Viz [entity](luis-concept-entity-types.md) a [extrakce dat](luis-concept-data-extraction.md).
 
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Měly by varianty příkladu utterance zahrnovat interpunkci?
-Buď přidejte různé varianty jako příklad projevy záměru nebo přidejte vzor promluvy příkladu se [syntaxí ignorovat](luis-concept-patterns.md#pattern-syntax) interpunkci.
+Použijte jeden z následujících řešení:
+* Ignorovat [interpunkci](luis-reference-application-settings.md#punctuation-normalization)
+* Přidejte různé varianty jako příklad projevy záměru
+* Přidejte vzor promluvy příkladu se [syntaxí, která ignoruje](luis-concept-patterns.md#pattern-syntax) interpunkci.
 
 ### <a name="does-luis-currently-support-cortana"></a>Podporuje služba LUIS aktuálně Cortanu?
 
@@ -68,11 +64,11 @@ Předdefinované aplikace Cortany byly v roce 2017 zastaralé. Již nejsou podpo
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak převádím vlastnictví aplikace LUIS?
 Chcete-li přenést aplikaci LUIS do jiného předplatného Azure, exportujte aplikaci LUIS a importujte ji pomocí nového účtu. Aktualizujte ID aplikace LUIS v klientské aplikaci, která ji volá. Nová aplikace může vrátit mírně odlišné skóre LUIS z původní aplikace.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Předem sestavená entita je označena v příkladu utterance namísto mé vlastní entity. Jak to mohu opravit? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Předem sestavená entita je označena v příkladu utterance namísto mé vlastní entity. Jak to mohu opravit?
 
-Na portálu LUIS můžete označit text pro přesnou entitu, která vás zajímá extrahování. Pokud portál LUIS nezobrazuje správnou předpověď entity, budete muset přidat další projevy a označit entitu v textu nebo přidat popisovač (například funkci). 
+Na portálu LUIS můžete označit text pro přesnou entitu, která vás zajímá extrahování. Pokud portál LUIS nezobrazuje správnou předpověď entity, budete muset přidat další projevy a označit entitu v textu nebo přidat popisovač (například funkci).
 
-### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Snažil jsem se importovat aplikaci nebo soubor verze, ale došlo k chybě, co se stalo? 
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Snažil jsem se importovat aplikaci nebo soubor verze, ale došlo k chybě, co se stalo?
 
 Přečtěte si další informace o [chybách importu verze](luis-how-to-manage-versions.md#import-errors).
 
@@ -82,7 +78,7 @@ Přečtěte si další informace o [chybách importu verze](luis-how-to-manage-v
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Jak udělit spolupracovníkům přístup k LUIS pomocí Azure Active Directory (Azure AD) nebo řízení přístupu na základě rolí (RBAC)?
 
-Informace o tom, jak spolupracovníkům poskytnout přístup, najdete v tématu [Prostředky Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-resources) a uživatel [klienta Azure Active Directory.](luis-how-to-collaborate.md#azure-active-directory-tenant-user) 
+Informace o tom, jak spolupracovníkům poskytnout přístup, najdete v tématu [Prostředky Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-resources) a uživatel [klienta Azure Active Directory.](luis-how-to-collaborate.md#azure-active-directory-tenant-user)
 
 <a name="luis-endpoint"></a>
 
@@ -92,7 +88,7 @@ Informace o tom, jak spolupracovníkům poskytnout přístup, najdete v tématu 
 
 Pokud překročíte transakce za sekundu nebo transakce za měsíc pro cenovou úroveň, zobrazí se 403 a 429 kódů chyb. Zvyšte svou cenovou úroveň nebo použijte [kontejnery](luis-container-howto.md)Language Understanding .
 
-Při použití všech těchto volných 1000 koncový bod dotazy nebo překročíte kvótu měsíčních transakcí cenové úrovně, obdržíte kód stavu chyby HTTP 403. 
+Při použití všech těchto volných 1000 koncový bod dotazy nebo překročíte kvótu měsíčních transakcí cenové úrovně, obdržíte kód stavu chyby HTTP 403.
 
 Chcete-li tuto chybu opravit, musíte buď [změnit cenovou úroveň](luis-how-to-azure-subscription.md#change-pricing-tier) na vyšší úroveň, nebo [vytvořit nový prostředek](get-started-portal-deploy-app.md#create-the-endpoint-resource) a přiřadit jej [k aplikaci](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
 
@@ -105,23 +101,23 @@ Chcete-li tuto chybu opravit, musíte buď [změnit cenovou úroveň](luis-how-t
 
 Pokud překročíte transakce za sekundu nebo transakce za měsíc pro cenovou úroveň, zobrazí se 403 a 429 kódů chyb. Zvyšte svou cenovou úroveň nebo použijte [kontejnery](luis-container-howto.md)Language Understanding .
 
-Tento stavový kód je vrácen, když vaše transakce za sekundu překročí cenovou úroveň.  
+Tento stavový kód je vrácen, když vaše transakce za sekundu překročí cenovou úroveň.
 
 Řešení zahrnují:
 
 * Pokud nejste na nejvyšší úrovni , můžete [zvýšit cenovou úroveň](luis-how-to-azure-subscription.md#change-pricing-tier).
 * Pokud vaše využití překročí nejvyšší cenovou úroveň, přidejte další prostředky language understanding s vyvažovačem zatížení před nimi. Kontejner [Language Understanding](luis-container-howto.md) s Kubernetes nebo Docker Compose vám může pomoci.
-* Můžete gate vaše požadavky klientské aplikace s [zásady opakování](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) implementovat sami, když se dostanete tento stavový kód. 
+* Můžete gate vaše požadavky klientské aplikace s [zásady opakování](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) implementovat sami, když se dostanete tento stavový kód.
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Dotaz na koncový bod vrátil neočekávané výsledky. Co bych měl/a dělat?
 
-Neočekávané výsledky předpovědi dotazu jsou založeny na stavu publikovaného modelu. Chcete-li opravit model, bude pravděpodobně nutné změnit model, trénování a publikování znovu. 
+Neočekávané výsledky předpovědi dotazu jsou založeny na stavu publikovaného modelu. Chcete-li opravit model, bude pravděpodobně nutné změnit model, trénování a publikování znovu.
 
 Oprava modelu začíná [aktivním učením](luis-how-to-review-endpoint-utterances.md).
 
 Nedeterministické školení můžete odebrat aktualizací [rozhraní API pro nastavení verze aplikace,](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) abyste mohli používat všechna trénovací data.
 
-Přečtěte si [doporučené postupy](luis-concept-best-practices.md) pro další tipy. 
+Přečtěte si [doporučené postupy](luis-concept-best-practices.md) pro další tipy.
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Proč luis přidat mezery do dotazu kolem nebo uprostřed slov?
 Služba LUIS [tokenizuje](luis-glossary.md#token) utterance na základě [jazykové verze](luis-language-support.md#tokenization). Původní hodnota i tokenizovaná hodnota jsou k dispozici pro [extrakci dat](luis-concept-data-extraction.md#tokenized-entity-returned).
@@ -145,7 +141,7 @@ Ke kvótě koncového bodu můžete zobrazit příkaz Prostředí PowerShell:
 
 ```powershell
 Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
-``` 
+```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Moje aplikace LUIS pracovalvčera, ale dnes jsem dostat 403 chyb. Nezměnil jsem aplikaci. Jak ho mám opravit?
 Podle těchto [pokynů](#how-do-i-create-and-assign-a-luis-endpoint-key) vytvořte klíč koncového bodu LUIS a přiřaďte ho k aplikaci. Potom je nutné změnit požadavek HTTP klientské aplikace na koncový bod, aby [bylo nutné použít nový klíč koncového bodu](luis-concept-keys.md). Pokud jste vytvořili nový prostředek v jiné oblasti, změňte také oblast požadavku klienta HTTP.
@@ -186,7 +182,7 @@ Podívejte se na kurz [testování dávky.](luis-tutorial-batch-testing.md)
 
 Viz [Predikce rozdíly mezi kopiemi stejné aplikace](luis-concept-prediction-score.md#review-intents-with-similar-scores).
 
-### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Některé projevy přejít na nesprávný záměr po provedené změny v aplikaci. Zdá se, že problém zmizí náhodně. Jak ho mám opravit? 
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Některé projevy přejít na nesprávný záměr po provedené změny v aplikaci. Zdá se, že problém zmizí náhodně. Jak ho mám opravit?
 
 Viz [Vlak se všemi daty](luis-how-to-train.md#train-with-all-data).
 
@@ -202,27 +198,27 @@ V Azure představuje klient klientklienta nebo organizaci, která je přidružen
 
 
 ### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Proč je v mé aplikaci přiřazeno víc klíčů koncového bodu, než jsem přiřadil?
-Každá aplikace LUIS má pro usnadnění v seznamu koncových bodů klíč pro vytváření a spuštění. Tento klíč umožňuje pouze několik přístupů koncového bodu, takže si můžete vyzkoušet LUIS.  
+Každá aplikace LUIS má pro usnadnění v seznamu koncových bodů klíč pro vytváření a spuštění. Tento klíč umožňuje pouze několik přístupů koncového bodu, takže si můžete vyzkoušet LUIS.
 
 Pokud vaše aplikace existovala před LUIS byl obecně k dispozici (GA), luis klíče koncového bodu ve vašem předplatném jsou přiřazeny automaticky. To bylo provedeno, aby se migrace GA jednodušší. Všechny nové klíče koncového bodu LUIS na portálu Azure _nejsou_ automaticky přiřazeny luis.
 
 ## <a name="key-management"></a>Správa klíčů
 
-### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Jak poznám, jaký klíč potřebuji, kde ho získám a co s ním udělám? 
+### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Jak poznám, jaký klíč potřebuji, kde ho získám a co s ním udělám?
 
-Viz [Vytváření a předpověď dotazu koncového bodu klíče v LUIS](luis-concept-keys.md) se dozvíte o rozdílech mezi klíč vytváření a klíč běhu předpověď. 
+Viz [Vytváření a předpověď dotazu koncového bodu klíče v LUIS](luis-concept-keys.md) se dozvíte o rozdílech mezi klíč vytváření a klíč běhu předpověď.
 
-### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Došlo k chybě v tom, že jsem nebyl akvóta. Jak ho mám opravit? 
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Došlo k chybě v tom, že jsem nebyl akvóta. Jak ho mám opravit?
 
 Další informace najdete v tématu Oprava stavového kódu HTTP [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) a [429.](#i-received-an-http-429-error-status-code-how-do-i-fix-it)
 
-### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Potřebuji zpracovat další dotazy koncového bodu. Jak to mám udělat? 
+### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Potřebuji zpracovat další dotazy koncového bodu. Jak to mám udělat?
 
 Další informace najdete v tématu Oprava stavového kódu HTTP [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) a [429.](#i-received-an-http-429-error-status-code-how-do-i-fix-it)
 
 ### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>Vytvořil i autorský klíč, ale nezobrazuje se na portálu LUIS. Co se stalo?
 
-Vývojové klíče jsou k dispozici na portálu LUIS po [migraci do prostředí s klíči pro vytváření](luis-migration-authoring.md).  
+Vývojové klíče jsou k dispozici na portálu LUIS po [migraci do prostředí s klíči pro vytváření](luis-migration-authoring.md).
 
 ## <a name="app-management"></a>Správa aplikací
 
@@ -266,28 +262,28 @@ Váš klíč pro vytváření a startování je povolen pouze 1000 dotazů konco
 
 ### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>Můj LUIS bot nefunguje. Co mám udělat?
 
-První problém je izolovat, pokud problém souvisí s LUIS nebo se stane mimo middleware LUIS. 
+První problém je izolovat, pokud problém souvisí s LUIS nebo se stane mimo middleware LUIS.
 
 #### <a name="resolve-issue-in-luis"></a>Řešení problému v luis
 Předat stejnou promluvu luis z [koncového bodu LUIS](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Pokud se zobrazí chyba, vyřešte problém v LUIS, dokud se chyba již nevrátí. Běžné chyby zahrnují:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`- Tento problém znamená, že je třeba buď změnit z vývojového klíče na [klíč koncového bodu,](luis-how-to-azure-subscription.md) nebo je třeba změnit [úrovně služby](luis-how-to-azure-subscription.md#change-pricing-tier). 
+* `Out of call volume quota. Quota will be replenished in <time>.`- Tento problém znamená, že je třeba buď změnit z vývojového klíče na [klíč koncového bodu,](luis-how-to-azure-subscription.md) nebo je třeba změnit [úrovně služby](luis-how-to-azure-subscription.md#change-pricing-tier).
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Řešení problému ve službě Azure Bot Service
 
 Pokud používáte službu Azure Bot service a problém je, že **test ve webovém chatu** vrátí `Sorry, my bot code is having an issue`, zkontrolujte protokoly:
 
 1. Na webu Azure Portal včásti správa **botů** vyberte **build**.
-1. Otevřete online editor kódu. 
+1. Otevřete online editor kódu.
 1. V horní části modrého navigačního panelu vyberte název robota (druhá položka vpravo).
 1. Ve výsledném rozevíracím seznamu vyberte **Otevřít konzolu Kudu**.
-1. Vyberte **LogFiles**, pak vyberte **Aplikace**. Zkontrolujte všechny soubory protokolu. Pokud chybu nevidíte ve složce aplikace, zkontrolujte všechny soubory protokolu v části **LogFiles**. 
+1. Vyberte **LogFiles**, pak vyberte **Aplikace**. Zkontrolujte všechny soubory protokolu. Pokud chybu nevidíte ve složce aplikace, zkontrolujte všechny soubory protokolu v části **LogFiles**.
 1. Nezapomeňte znovu sestavit projekt, pokud používáte zkompilovaný jazyk, jako je například C#.
 
-> [!Tip] 
-> Konzola může také instalovat balíčky. 
+> [!Tip]
+> Konzola může také instalovat balíčky.
 
-#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Vyřešte problém při ladění v místním počítači pomocí rozhraní Bot Framework. 
+#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Vyřešte problém při ladění v místním počítači pomocí rozhraní Bot Framework.
 
 Další informace o místním ladění robota najdete v [tématu Ladění robota](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
 
@@ -303,19 +299,19 @@ Pokud vyberete šablonu LUIS a v podokně předlohy vyberete tlačítko **Vybrat
 
 ## <a name="api-programming-strategies"></a>Strategie programování rozhraní API
 
-### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Jak programově získám oblast LUIS prostředku? 
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Jak programově získám oblast LUIS prostředku?
 
-Pomocí ukázky SLUŽBY LUIS [vyhledejte oblast](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) programově pomocí jazyka C# nebo Node.Js. 
+Pomocí ukázky SLUŽBY LUIS [vyhledejte oblast](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) programově pomocí jazyka C# nebo Node.Js.
 
 ## <a name="luis-service"></a>Služba LUIS
 
 ### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>Je language understanding (LUIS) k dispozici místně nebo v privátním cloudu?
 
-Ano, můžete použít [kontejner](luis-container-howto.md) LUIS pro tyto scénáře, pokud máte potřebné připojení k využití měřiče. 
+Ano, můžete použít [kontejner](luis-container-howto.md) LUIS pro tyto scénáře, pokud máte potřebné připojení k využití měřiče.
 
 ## <a name="migrating-to-the-next-version"></a>Migrace na další verzi
 
-### <a name="how-do-i-migrate-to-preview-v3-api"></a>Jak se migruje do náhledu rozhraní API V3? 
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>Jak se migruje do náhledu rozhraní API V3?
 
 Viz [ROZHRANÍ API v2 až v3 Průvodce migrací pro aplikace LUIS](luis-migration-api-v3.md)
 
@@ -325,7 +321,7 @@ Na konferenci Build 2019 byly vydány následující funkce:
 
 * [Náhled průvodce migrací rozhraní API V3](luis-migration-api-v3.md)
 * [Vylepšený řídicí panel analýzy](luis-how-to-use-dashboard.md)
-* [Vylepšené předem vyestavěné domény](luis-reference-prebuilt-domains.md) 
+* [Vylepšené předem vyestavěné domény](luis-reference-prebuilt-domains.md)
 * [Entity dynamického seznamu](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Externí subjekty](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 

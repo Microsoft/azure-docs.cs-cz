@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: 4c265cb0cdc665ef52f4dc6e69440e83c22db449
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f0eada5184f2c8e36b0deb5a9d27a8a9230776d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77460970"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382769"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Explorerpomocí Azure Data Factory
 
-Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat do nebo z [Azure Data Explorer](../data-explorer/data-explorer-overview.md). Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat do nebo z [Azure Data Explorer](/azure/data-explorer/data-explorer-overview). Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který nabízí obecný přehled o aktivitě kopírování.
 
 >[!TIP]
->Pro Azure Data Factory a Integrace Azure Data Explorer obecně, další informace z [integrace Azure Data Explorer s Azure Data Factory](../data-explorer/data-factory-integration.md).
+>Pro Azure Data Factory a Integrace Azure Data Explorer obecně, další informace z [integrace Azure Data Explorer s Azure Data Factory](/azure/data-explorer/data-factory-integration).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -47,7 +47,7 @@ Pomocí konektoru Průzkumníka dat Azure můžete provést následující kroky
 ## <a name="getting-started"></a>Začínáme
 
 >[!TIP]
->Návod konektoru Azure Data Explorer najdete v [tématu Kopírování dat do/z Azure Data Explorer pomocí Azure Data Factory](../data-explorer/data-factory-load-data.md) a hromadné kopírování z databáze do [Průzkumníka dat Azure](../data-explorer/data-factory-template.md).
+>Návod konektoru Azure Data Explorer najdete v [tématu Kopírování dat do/z Azure Data Explorer pomocí Azure Data Factory](/azure/data-explorer/data-factory-load-data) a hromadné kopírování z databáze do [Průzkumníka dat Azure](/azure/data-explorer/data-factory-template).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -63,7 +63,7 @@ Konektor Průzkumníka dat Azure používá ověřování instančního objektu.
     - Klíč aplikace
     - ID tenanta
 
-2. Udělte instančnímu objektu správná oprávnění v Průzkumníku dat Azure. Podrobné informace o rolích a oprávněních a o správě oprávnění najdete v [tématu Správa oprávnění databáze Průzkumníka dat Azure.](../data-explorer/manage-database-permissions.md) Obecně musíte:
+2. Udělte instančnímu objektu správná oprávnění v Průzkumníku dat Azure. Podrobné informace o rolích a oprávněních a o správě oprávnění najdete v [tématu Správa oprávnění databáze Průzkumníka dat Azure.](/azure/data-explorer/manage-database-permissions) Obecně musíte:
 
     - **Jako zdroj**udělte databázi alespoň roli **prohlížeče databáze.**
     - **Jako jímky**udělte databázi alespoň roli **ingestestátoru** databáze.

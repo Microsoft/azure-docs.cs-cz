@@ -1,19 +1,19 @@
 ---
 title: Vytvářejte clustery Apache Hadoop pomocí webového prohlížeče Azure HDInsight
-description: Naučte se vytvářet clustery Apache Hadoop, Apache HBase, Apache Storm nebo Apache Spark na Linuxu pro HDInsight pomocí webového prohlížeče a portálu Azure.
+description: Naučte se vytvářet clustery Apache Hadoop, Apache HBase, Apache Storm nebo Apache Spark na HDInsightu. Použijte webový prohlížeč a portál Azure.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/19/2020
-ms.openlocfilehash: bcc71b7244ba3498b2fcde023d372e67f41d6117
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: a5f6ac76d509a0a63c2d641f91cd91cdb2e0d19d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623200"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313811"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Vytváření clusterů založených na Linuxu ve službě HDInsight pomocí portálu Azure
 
@@ -31,7 +31,7 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V horní nabídce vyberte **+ Vytvořit prostředek**.
 
@@ -51,7 +51,7 @@ Na kartě **Základy** zadejte následující informace:
 |Skupina prostředků|V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **Vytvořit nový**.|
 |Název clusteru|Zadejte globálně jedinečný název.|
 |Region (Oblast)|V rozevíracím seznamu vyberte oblast, ve které je cluster vytvořen.|
-|Typ clusteru|Chcete-li otevřít **seznam,** vyberte vybrat typ clusteru. Ze seznamu vyberte požadovaný typ clusteru. Clustery HDInsight se domýšlet v různých typech. Odpovídají zatížení nebo technologii, pro kterou je cluster naladěn. Neexistuje žádná podporovaná metoda k vytvoření clusteru, který kombinuje více typů.|
+|Typ clusteru|Kliknutím na **Vybrat typ clusteru** otevřete seznam. Ze seznamu vyberte hledaný typ clusteru. Clustery HDInsight se domýšlet v různých typech. Odpovídají zatížení nebo technologii, pro kterou je cluster naladěn. Neexistuje žádná podporovaná metoda k vytvoření clusteru, který kombinuje více typů.|
 |Version|V rozevíracím seznamu vyberte **verzi**. Pokud nevíte, co si vybrat, použijte výchozí verzi. Další informace najdete v článku [Verze clusterů HDInsight](hdinsight-component-versioning.md).|
 |Uživatelské jméno přihlášení clusteru|Zadejte uživatelské jméno, výchozí je **admin**.|
 |Heslo přihlášení clusteru|Zadejte heslo.|
@@ -61,7 +61,7 @@ Na kartě **Základy** zadejte následující informace:
 
 Vyberte **Další: Úložiště >>,** abyste postoupili na další kartu.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 ![HDInsight vytvořit úložiště clusteru](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Vytvoření nového clusteru na portálu Azure – úložiště")
 
@@ -81,7 +81,7 @@ Volitelné: Vyberte **Přidat Azure Storage** pro další úložiště clusteru.
 
 ### <a name="metastore-settings"></a>Nastavení metaúložiště
 
-Volitelné: Zadejte existující databázi SQL pro uložení metadat Apache Hive, Apache Oozie a/nebo Apache Ambari mimo cluster. Azure SQL Database, která se používá pro metastore musí umožňovat připojení k jiným službám Azure, včetně Azure HDInsight. Při vytváření metaúložiště nepojmenovávejte databázi pomlčkami nebo spojovníky. Tyto znaky mohou způsobit selhání procesu vytváření clusteru.
+Volitelné: Zadejte existující databázi SQL pro uložení metadat Apache Hive, Apache Oozie a Apache Ambari mimo cluster. Azure SQL Database, která se používá pro metastore musí umožňovat připojení k jiným službám Azure, včetně Azure HDInsight. Při vytváření metaúložiště nepojmenovávejte databázi pomlčkami nebo spojovníky. Tyto znaky mohou způsobit selhání procesu vytváření clusteru.
 
 Vyberte **Další: Zabezpečení + síťové >>** pro postup na další kartu.
 
@@ -139,7 +139,7 @@ Některé ikony v okně jsou vysvětleny takto:
 |Přehled|Poskytuje všechny základní informace o clusteru. Příklady jsou název, skupina prostředků, do které patří, umístění, operační systém a adresa URL řídicího panelu clusteru.|
 |Řídicí panely clusteru|Přesměruje vás na portál Ambari přidružený ke clusteru.|
 |SSH + Přihlášení do clusteru|Obsahuje informace potřebné pro přístup ke clusteru pomocí SSH.|
-|Odstranění|Odstraní cluster HDInsight.|
+|Odstranit|Odstraní cluster HDInsight.|
 
 ## <a name="customize-clusters"></a>Přizpůsobení clusterů
 
@@ -158,25 +158,7 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 
 Úspěšně jste vytvořili cluster HDInsight. Teď se dozvíte, jak pracovat s clusterem.
 
-### <a name="apache-hadoop-clusters"></a>Clustery Apache Hadoop
-
 * [Použití Apache Hive s HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použití mapreduce s HDInsight](hadoop/hdinsight-use-mapreduce.md)
-
-### <a name="apache-hbase-clusters"></a>Clustery Apache HBase
-
 * [Začínáme s Apache HBase na HDInsightu](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Vývoj java aplikací pro Apache HBase na HDInsightu](hbase/apache-hbase-build-java-maven-linux.md)
-
-### <a name="apache-storm-clusters"></a>Clustery Apache Storm
-
 * [Vývoj java topologie pro Apache Storm na HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Použití komponent Pythonu v Apache Storm na HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Nasazení a sledování topologie pomocí Apache Storm na HDInsightu](storm/apache-storm-deploy-monitor-topology-linux.md)
-
-### <a name="apache-spark-clusters"></a>Clustery Apache Spark
-
 * [Vytvoření samostatné aplikace pomocí scaly](spark/apache-spark-create-standalone-application.md)
-* [Spouštění úloh na dálku v clusteru Apache Spark pomocí Apache Livy](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Spark v HDInsightu s nástroji BI](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark s machine learningem: Využijte Spark v HDInsightu k předvídání výsledků kontroly potravin](spark/apache-spark-machine-learning-mllib-ipython.md)

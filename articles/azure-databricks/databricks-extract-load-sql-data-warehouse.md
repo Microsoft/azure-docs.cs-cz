@@ -1,6 +1,6 @@
 ---
 title: Kurz – provádění operací ETL pomocí Azure Databricks
-description: V tomto kurzu se dozvíte, jak extrahovat data z Data Lake Storage Gen2 do Azure Databricks, transformovat data a pak načíst data do Azure SQL Data Warehouse.
+description: V tomto kurzu se dozvíte, jak extrahovat data z Data Lake Storage Gen2 do Azure Databricks, transformovat data a pak načíst data do Azure Synapse Analytics.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,22 +8,22 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 8819b79a105b7a654a34e47c5ba9b3d351a1d926
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239420"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382729"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: Extrahujte, transformujte a načtěte data pomocí Azure Databricks
 
-V tomto kurzu provedete operaci ETL (extrahování, transformace a načítání dat) pomocí Azure Databricks. Extrahujete data z Azure Data Lake Storage Gen2 do Azure Databricks, spustíte transformace na datech v Azure Databricks a načtete transformovaná data do Azure SQL Data Warehouse.
+V tomto kurzu provedete operaci ETL (extrahování, transformace a načítání dat) pomocí Azure Databricks. Extrahujete data z Azure Data Lake Storage Gen2 do Azure Databricks, spustíte transformace na datech v Azure Databricks a načtete transformovaná data do Azure Synapse Analytics.
 
-Postup, který je popsaný v tomto kurzu, používá k přenosu dat do Azure Databricks konektor SQL Data Warehouse pro Azure Databricks. Tento konektor zase používá Azure Blob Storage jako dočasné úložiště dat přenášených mezi clusterem Azure Databricks a službou Azure SQL Data Warehouse.
+Kroky v tomto kurzu používají konektor Azure Synapse pro Azure Databricks k přenosu dat do Azure Databricks. Tento konektor zase používá Azure Blob Storage jako dočasné úložiště pro data přenášená mezi clusterem Azure Databricks a Azure Synapse.
 
 Následující obrázek ukazuje běh aplikace:
 
-![Azure Databricks s úložištěm datových jezer a datovým skladem SQL](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks s úložištěm datových jezer a datovým skladem SQL")
+![Azure Databricks s úložištěm datových jezer a Azure Synapse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks s úložištěm datových jezer a Azure Synapse")
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -35,7 +35,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Vytvořte instanční objekt.
 > * Extrahujte data z účtu Azure Data Lake Storage Gen2.
 > * Transformujte data v Azure Databricks.
-> * Načtěte data do Datového skladu Azure SQL.
+> * Načtení dat do Azure Synapse.
 
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
@@ -47,9 +47,9 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 Před zahájením tohoto kurzu proveďte tyto úkoly:
 
-* Vytvořte datový sklad Azure SQL, vytvořte pravidlo brány firewall na úrovni serveru a připojte se k serveru jako správce serveru. Viz [Úvodní příručka: Vytvoření datového skladu Azure SQL na webu Azure Portal a jeho dotazování.](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
+* Vytvořte Azure Synapse, vytvořte pravidlo brány firewall na úrovni serveru a připojte se k serveru jako správce serveru. Viz [Úvodní příručka: Vytvoření a dotazování fondu Synapse SQL pomocí portálu Azure](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
-* Vytvořte hlavní klíč pro datový sklad Azure SQL. Viz [Vytvoření hlavního klíče databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+* Vytvořte hlavní klíč pro Azure Synapse. Viz [Vytvoření hlavního klíče databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
 * Vytvořili jste účet Azure Blob Storage a v něm kontejner. A načetli jste přístupový klíč pro přístup k účtu úložiště. Viz [Úvodní příručka: Nahrávání, stahování a seznam objektů BLOB s portálem Azure](../storage/blobs/storage-quickstart-blobs-portal.md).
 
@@ -63,9 +63,9 @@ Před zahájením tohoto kurzu proveďte tyto úkoly:
 
       Pokud dáváte přednost použití seznamu řízení přístupu (ACL) k přidružení instančního objektu k určitému souboru nebo adresáři, odkazujte na [řízení přístupu v Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
-   * Při provádění kroků v části [Získat hodnoty pro podepisování v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku vložte ID klienta, ID aplikace a tajné hodnoty do textového souboru. Brzy je budeš potřebovat.
+   * Při provádění kroků v části [Získat hodnoty pro podepisování v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku vložte ID klienta, ID aplikace a tajné hodnoty do textového souboru.
 
-* Přihlaste se k [portálu Azure](https://portal.azure.com/).
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Shromážděte informace, které potřebujete
 
@@ -73,7 +73,7 @@ Ujistěte se, že jste dokončili předpoklady tohoto kurzu.
 
    Než začnete, měli byste mít tyto informace:
 
-   :heavy_check_mark: Název databáze, název databázového serveru, uživatelské jméno a heslo vašeho datového skladu Azure SQL.
+   :heavy_check_mark: Název databáze, název databázového serveru, uživatelské jméno a heslo vaší Azure Synapse.
 
    :heavy_check_mark: Přístupový klíč vašeho účtu úložiště objektů blob.
 
@@ -316,11 +316,11 @@ Nezpracovaná ukázková data **small_radio_json.json** soubor zachycuje publiku
    +---------+----------+------+--------------------+-----------------+
    ```
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Načtení dat do Azure SQL Data Warehouse
+## <a name="load-data-into-azure-synapse"></a>Načítání dat do Azure Synapse
 
-V této části načtete transformovaná data do služby Azure SQL Data Warehouse. Pomocí konektoru Azure SQL Data Warehouse pro Azure Databricks přímo nahrát datový rámec jako tabulku v datovém skladu SQL.
+V této části nahrajete transformovaná data do Azure Synapse. Pomocí konektoru Azure Synapse pro Azure Databricks přímo nahrát datový rámec jako tabulka ve fondu Synapse Spark.
 
-Jak již bylo zmíněno dříve, konektor SQL Data Warehouse používá úložiště objektů blob Azure jako dočasné úložiště k nahrávání dat mezi Azure Databricks a Azure SQL Data Warehouse. Proto musíte napřed zadat konfiguraci pro připojení k účtu tohoto úložiště. Již musíte vytvořit účet jako součást předpokladů pro tento článek.
+Jak již bylo zmíněno dříve, konektor Azure Synapse používá azure blob úložiště jako dočasné úložiště k nahrávání dat mezi Azure Databricks a Azure Synapse. Proto musíte napřed zadat konfiguraci pro připojení k účtu tohoto úložiště. Již musíte vytvořit účet jako součást předpokladů pro tento článek.
 
 1. Zadejte konfiguraci pro přístup k účtu Azure Storage z Azure Databricks.
 
@@ -330,7 +330,7 @@ Jak již bylo zmíněno dříve, konektor SQL Data Warehouse používá úloži�
    val blobAccessKey =  "<access-key>"
    ```
 
-2. Zadejte dočasnou složku, která se má použít při přesouvání dat mezi Azure Databricks a Azure SQL Data Warehouse.
+2. Zadejte dočasnou složku, která se má použít při přesouvání dat mezi Azure Databricks a Azure Synapse.
 
    ```scala
    val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
@@ -343,10 +343,10 @@ Jak již bylo zmíněno dříve, konektor SQL Data Warehouse používá úloži�
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Jako předpoklad musíte vytvořit datový sklad SQL. Použijte plně kvalifikovaný název serveru pro **dwServer**. Například, `<servername>.database.windows.net`.
+4. Zadejte hodnoty pro připojení k instanci Azure Synapse. Jako předpoklad musíte vytvořit službu Azure Synapse Analytics. Použijte plně kvalifikovaný název serveru pro **dwServer**. Například, `<servername>.database.windows.net`.
 
    ```scala
-   //SQL Data Warehouse related settings
+   //Azure Synapse related settings
    val dwDatabase = "<database-name>"
    val dwServer = "<database-server-name>"
    val dwUser = "<user-name>"
@@ -357,7 +357,7 @@ Jak již bylo zmíněno dříve, konektor SQL Data Warehouse používá úloži�
    val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
-5. Spusťte následující úryvek a načtěte transformovaný datový rámec **přejmenovaný na ColumnsDF**jako tabulku v datovém skladu SQL. Tento fragment kódu vytvoří v SQL databázi tabulku s názvem **SampleTable**.
+5. Spusťte následující úryvek k načtení transformovaného datového rámce **s názvemColumnsDF**jako tabulky v Azure Synapse. Tento fragment kódu vytvoří v SQL databázi tabulku s názvem **SampleTable**.
 
    ```scala
    spark.conf.set(
@@ -368,9 +368,9 @@ Jak již bylo zmíněno dříve, konektor SQL Data Warehouse používá úloži�
    ```
 
    > [!NOTE]
-   > Tato ukázka `forward_spark_azure_storage_credentials` používá příznak, který způsobí, že SQL Data Warehouse pro přístup k datům z úložiště objektů blob pomocí přístupového klíče. Toto je jediná podporovaná metoda ověřování.
+   > Tato ukázka `forward_spark_azure_storage_credentials` používá příznak, který způsobí, že Azure Synapse pro přístup k datům z úložiště objektů blob pomocí přístupového klíče. Toto je jediná podporovaná metoda ověřování.
    >
-   > Pokud je úložiště objektů blob Azure omezeno na vybrané virtuální sítě, sql data warehouse vyžaduje [identitu spravované služby namísto přístupových klíčů](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). To způsobí chybu "Tento požadavek není oprávněn k provedení této operace."
+   > Pokud je úložiště objektů blob Azure omezeno na vybrané virtuální sítě, Azure Synapse vyžaduje [identitu spravované služby místo přístupových klíčů](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). To způsobí chybu "Tento požadavek není oprávněn k provedení této operace."
 
 6. Připojte se k databázi SQL a ověřte, zda se zobrazí databáze s názvem **SampleTable**.
 
@@ -398,7 +398,7 @@ V tomto kurzu jste se naučili:
 > * Vytvoření poznámkového bloku v Azure Databricks
 > * Extrahování dat z účtu Data Lake Storage Gen2
 > * Transformace dat v Azure Databricks
-> * Načtení dat do Azure SQL Data Warehouse
+> * Načítání dat do Azure Synapse
 
 Pokračujte dalším kurzem, ve kterém se naučíte streamovat data v reálném čase do Azure Databricks pomocí služby Azure Event Hubs.
 

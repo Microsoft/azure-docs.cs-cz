@@ -1,34 +1,27 @@
 ---
 title: Doporučené postupy pro vytváření aplikace LUIS
-titleSuffix: Azure Cognitive Services
 description: Seznamte se s osvědčenými postupy, jak dosáhnout nejlepších výsledků z modelu aplikace LUIS.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: b4be79338db71ad83204fae971da0b77885a8070
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 525d450084723a53ae090319d9ebf3f68d63beee
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74280931"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382390"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Doporučené postupy pro vytváření aplikace pro porozumění jazykům (LUIS)
-K vytvoření aplikace LUIS použijte proces vytváření aplikací: 
+K vytvoření aplikace LUIS použijte proces vytváření aplikací:
 
 * Vytváření jazykových modelů (záměry a entity)
 * Přidejte několik promluv příklad školení (15-30 na záměr)
 * Publikovat do koncového bodu
-* Zkouška z koncového bodu 
+* Zkouška z koncového bodu
 
-Po [publikování](luis-how-to-publish-app.md)aplikace můžete pomocí životního cyklu vývoje přidávat funkce, publikovat a testovat z koncového bodu. Nezačínejte další cyklus vytváření přidáním další příklad projevy, protože to neumožňuje LUIS naučit váš model s projevy uživatele reálného světa. 
+Po [publikování](luis-how-to-publish-app.md)aplikace můžete pomocí životního cyklu vývoje přidávat funkce, publikovat a testovat z koncového bodu. Nezačínejte další cyklus vytváření přidáním další příklad projevy, protože to neumožňuje LUIS naučit váš model s projevy uživatele reálného světa.
 
-Nerozbalujte projevy, dokud aktuální sada ukázkové a koncového bodu projevy jsou vracející se spolehlivé, vysoké předpověď skóre. Zlepšete skóre pomocí [aktivního učení](luis-concept-review-endpoint-utterances.md). 
+Nerozbalujte projevy, dokud aktuální sada ukázkové a koncového bodu projevy jsou vracející se spolehlivé, vysoké předpověď skóre. Zlepšete skóre pomocí [aktivního učení](luis-concept-review-endpoint-utterances.md).
 
 
 
@@ -49,7 +42,7 @@ Následující seznam obsahuje osvědčené postupy pro aplikace LUIS:
 ## <a name="do-define-distinct-intents"></a>Definovat odlišné záměry
 Ujistěte se, že slovní zásoba pro každý záměr je pouze pro tento záměr a není překrývající se s jiným záměrem. Například pokud chcete mít aplikaci, která zpracovává cestovní opatření, jako jsou letecké lety a hotely, můžete si vybrat, aby tyto oblasti předmětu jako samostatné záměry nebo stejný záměr s entitami pro konkrétní data uvnitř utterance.
 
-Pokud je slovní zásoba mezi dvěma záměry stejná, zkombinujte záměr a použijte entity. 
+Pokud je slovní zásoba mezi dvěma záměry stejná, zkombinujte záměr a použijte entity.
 
 Zvažte následující příklad projevy:
 
@@ -58,20 +51,20 @@ Zvažte následující příklad projevy:
 |Rezervace letu|
 |Rezervujte si hotel|
 
-`Book a flight`a `Book a hotel` používat stejnou slovní `book a `zásobu . Tento formát je stejný, takže by měl být `flight` stejný `hotel` záměr s různými slovy a jako extrahované entity. 
+`Book a flight`a `Book a hotel` používat stejnou slovní `book a `zásobu . Tento formát je stejný, takže by měl být `flight` stejný `hotel` záměr s různými slovy a jako extrahované entity.
 
 ## <a name="do-add-descriptors-to-intents"></a>Přidejte popisovače k záměrům
 
-Popisovače pomáhají popsat funkce záměru. Popisovač může být seznam frází slov, která jsou významná pro tento záměr nebo entitu, která je pro tento záměr významná. 
+Popisovače pomáhají popsat funkce záměru. Popisovač může být seznam frází slov, která jsou významná pro tento záměr nebo entitu, která je pro tento záměr významná.
 
 ## <a name="do-find-sweet-spot-for-intents"></a>Do najít sladké místo pro záměry
-Pomocí dat předpověď z LUIS k určení, pokud vaše záměry se překrývají. Překrývající se záměry zmást LUIS. Výsledkem je, že hlavní záměr bodování je příliš blízko k jinému záměru. Vzhledem k tomu, že služba LUIS nepoužívá přesně stejnou cestu přes data pro školení pokaždé, překrývající záměr má šanci být první nebo druhý v trénování. Chcete, aby skóre utterance pro každý záměr byl dále od sebe, takže tento flip / flop se nestane. Dobré rozlišení pro záměry by mělo mít za následek očekávaný nejvyšší záměr pokaždé. 
- 
+Pomocí dat předpověď z LUIS k určení, pokud vaše záměry se překrývají. Překrývající se záměry zmást LUIS. Výsledkem je, že hlavní záměr bodování je příliš blízko k jinému záměru. Vzhledem k tomu, že služba LUIS nepoužívá přesně stejnou cestu přes data pro školení pokaždé, překrývající záměr má šanci být první nebo druhý v trénování. Chcete, aby skóre utterance pro každý záměr byl dále od sebe, takže tento flip / flop se nestane. Dobré rozlišení pro záměry by mělo mít za následek očekávaný nejvyšší záměr pokaždé.
+
 <a name="#do-build-the-app-iteratively"></a>
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>Vytvářejte aplikaci iterativně s verzemi
 
-Každý cyklus vytváření by měl být v rámci nové [verze](luis-concept-version.md), klonované z existující verze. 
+Každý cyklus vytváření by měl být v rámci nové [verze](luis-concept-version.md), klonované z existující verze.
 
 ## <a name="do-build-for-model-decomposition"></a>Vytvořit pro rozklad modelu
 
@@ -82,58 +75,33 @@ Rozklad modelu má typický proces:
 * popisek konceptu dat nejvyšší úrovně v příkladu utterance
 * rozdělit koncept dat na dílčí součásti
 * přidání popisovačů (prvků) do dílčích součástí
-* přidání popisovačů (funkcí) k záměru 
+* přidání popisovačů (funkcí) k záměru
 
-Po vytvoření záměru a přidané příklad projevy, následující příklad popisuje rozklad entity. 
+Po vytvoření záměru a přidané příklad projevy, následující příklad popisuje rozklad entity.
 
-Začněte tím, že identifikuje teplu koncepty dat, které chcete extrahovat v utterance. Tohle je vaše strojově naučená entita. Pak rozložte frázi na její části. To zahrnuje identifikaci dílčích součástí (jako entity), spolu s popisovači a omezeními. 
+Začněte tím, že identifikuje teplu koncepty dat, které chcete extrahovat v utterance. Tohle je vaše strojově naučená entita. Pak rozložte frázi na její části. To zahrnuje identifikaci dílčích součástí (jako entity), spolu s popisovači a omezeními.
 
-Například pokud chcete extrahovat adresu, může být volána horní počítačově nabytá entita `Address`. Při vytváření adresy identifikujte některé její dílčí součásti, například adresu, město, stát a PSČ. 
+Například pokud chcete extrahovat adresu, může být volána horní počítačově nabytá entita `Address`. Při vytváření adresy identifikujte některé její dílčí součásti, například adresu, město, stát a PSČ.
 
 Pokračujte v rozkladu těchto prvků **omezením** PSČ na regulární výraz. Rozkládají adresu ulice na části čísla ulice (pomocí předem sestaveného čísla), název ulice a typ ulice. Typ ulice lze popsat pomocí **seznamu popisů,** jako je třída, kruh, silnice a jízdní pruh.
 
-Rozhraní API pro vytváření V3 umožňuje rozklad modelu. 
+Rozhraní API pro vytváření V3 umožňuje rozklad modelu.
 
 ## <a name="do-add-patterns-in-later-iterations"></a>Do přidat vzory v pozdějších iterací
 
-Měli byste pochopit, jak se aplikace chová před přidáním [vzory,](luis-concept-patterns.md) protože vzorky jsou váženy více než příklad projevy a zkosení spolehlivosti. 
+Měli byste pochopit, jak se aplikace chová před přidáním [vzory,](luis-concept-patterns.md) protože vzorky jsou váženy více než příklad projevy a zkosení spolehlivosti.
 
-Až pochopíte, jak se vaše aplikace chová, přidejte vzory, které se vztahují na vaši aplikaci. Není nutné je přidávat s každou [iterací](luis-concept-app-iteration.md). 
+Až pochopíte, jak se vaše aplikace chová, přidejte vzory, které se vztahují na vaši aplikaci. Není nutné je přidávat s každou [iterací](luis-concept-app-iteration.md).
 
-Není na škodu jejich přidání na začátku návrhu modelu, ale je snazší vidět, jak každý vzor změní model po modelu je testován s projevy. 
- 
-<!--
-
-### Phrase lists
-
-[Phrase lists](luis-concept-feature.md) allow you to define dictionaries of words related to your app domain. Seed your phrase list with a few words then use the suggest feature so LUIS knows about more words in the vocabulary specific to your app. A Phrase List improves intent detection and entity classification by boosting the signal associated with words or phrases that are significant to your app. 
-
-Don't add every word to the vocabulary since the phrase list isn't an exact match. 
-
-For more information:
-* Concept: [Phrase list features in your LUIS app](luis-concept-feature.md)
-* How-to: [Use phrase lists to boost signal of word list](luis-how-to-add-features.md)
-
-
-
-### Patterns
-
-Real user utterances from the endpoint, very similar to each other, may reveal patterns of word choice and placement. The [pattern](luis-concept-patterns.md) feature takes this word choice and placement along with regular expressions to improve your prediction accuracy. A regular expression in the pattern allows for words and punctuation you intend to ignore while still matching the pattern. 
-
-Use pattern's [optional syntax](luis-concept-patterns.md) for punctuation so punctuation can be ignored. Use the [explicit list](luis-concept-patterns.md#explicit-lists) to compensate for pattern.any syntax issues. 
-
-For more information:
-* Concept: [Patterns improve prediction accuracy](luis-concept-patterns.md)
-* How-to: [How to add Patterns to improve prediction accuracy](luis-how-to-model-intent-pattern.md)
--->
+Není na škodu jejich přidání na začátku návrhu modelu, ale je snazší vidět, jak každý vzor změní model po modelu je testován s projevy.
 
 <a name="balance-your-utterances-across-all-intents"></a>
 
 ## <a name="do-balance-your-utterances-across-all-intents"></a>Vyvažte své projevy ve všech záměrech
 
-Aby luis předpovědi být přesné, množství příklad projevy v každém záměru (s výjimkou žádný záměr), musí být relativně stejné. 
+Aby luis předpovědi být přesné, množství příklad projevy v každém záměru (s výjimkou žádný záměr), musí být relativně stejné.
 
-Pokud máte záměr s 100 příklad projevy a záměr s 20 příklad projevy, záměr 100 utterance bude mít vyšší rychlost předpověď.  
+Pokud máte záměr s 100 příklad projevy a záměr s 20 příklad projevy, záměr 100 utterance bude mít vyšší rychlost předpověď.
 
 ## <a name="do-add-example-utterances-to-none-intent"></a>Přidat příklad projevy žádný záměr
 
@@ -145,41 +113,41 @@ Používejte **projevy koncového bodu recenzování** [aktivního učení](luis
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Sledujte výkon aplikace
 
-Sledujte přesnost předpovědi pomocí [dávkové testovací](luis-concept-batch-test.md) sady. 
+Sledujte přesnost předpovědi pomocí [dávkové testovací](luis-concept-batch-test.md) sady.
 
-Zachovat samostatnou sadu projevy, které nejsou používány jako [ukázkové projevy](luis-concept-utterance.md) nebo projevy koncového bodu. Pokračujte ve vylepšování aplikace pro testovací sadu. Přizpůsobte testovací sadu tak, aby odrážela skutečné uživatelské projevy. Tato testovací sada slouží k vyhodnocení každé iterace nebo verze aplikace. 
+Zachovat samostatnou sadu projevy, které nejsou používány jako [ukázkové projevy](luis-concept-utterance.md) nebo projevy koncového bodu. Pokračujte ve vylepšování aplikace pro testovací sadu. Přizpůsobte testovací sadu tak, aby odrážela skutečné uživatelské projevy. Tato testovací sada slouží k vyhodnocení každé iterace nebo verze aplikace.
 
 ## <a name="dont-add-many-example-utterances-to-intents"></a>Nepřidávejte mnoho příkladprojevy záměry
 
-Po publikování aplikace přidejte pouze projevy z aktivního učení v procesu životního cyklu vývoje. Pokud projevy jsou příliš podobné, přidejte vzorek. 
+Po publikování aplikace přidejte pouze projevy z aktivního učení v procesu životního cyklu vývoje. Pokud projevy jsou příliš podobné, přidejte vzorek.
 
 ## <a name="dont-use-few-or-simple-entities"></a>Nepoužívejte několik nebo jednoduchých entit
 
-Entity jsou vytvořeny pro extrakci dat a předpověď. Je důležité, aby každý záměr mít počítačem naučil entity, které popisují data v záměru. To pomáhá luis předpovědět záměr, i v případě, že vaše klientská aplikace není nutné používat extrahované entity. 
+Entity jsou vytvořeny pro extrakci dat a předpověď. Je důležité, aby každý záměr mít počítačem naučil entity, které popisují data v záměru. To pomáhá luis předpovědět záměr, i v případě, že vaše klientská aplikace není nutné používat extrahované entity.
 
 ## <a name="dont-use-luis-as-a-training-platform"></a>Nepoužívejte službu LUIS jako školicí platformu
 
-Služba LUIS je specifická pro doménu modelu jazyka. To není chtěl pracovat jako obecné přirozeného jazyka vzdělávací platformu. 
+Služba LUIS je specifická pro doménu modelu jazyka. To není chtěl pracovat jako obecné přirozeného jazyka vzdělávací platformu.
 
 ## <a name="dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats"></a>Nepřidávejte mnoho příkladů promluv stejného formátu a ignorujte jiné formáty
 
-Služba LUIS očekává změny v projevech záměru. Projevy se mohou lišit a zároveň mají stejný celkový význam. Varianty mohou zahrnovat délku utterance, volbu slova a umístění slova. 
+Služba LUIS očekává změny v projevech záměru. Projevy se mohou lišit a zároveň mají stejný celkový význam. Varianty mohou zahrnovat délku utterance, volbu slova a umístění slova.
 
 |Nepoužívejte stejný formát|Používat různý formát|
 |--|--|
 |Koupit jízdenku do Seattlu<br>Koupit jízdenku do Paříže<br>Koupit jízdenku do Orlanda|Koupit 1 lístek do Seattlu<br>Rezervujte si dvě místa na červenou do Paříže příští pondělí<br>Chtěl bych rezervovat 3 vstupenky do Orlanda na jarní prázdniny|
 
-Druhý sloupec používá různá slovesa (koupit, rezervovat, rezervovat), různá množství (1, dva, 3) a různá uspořádání slov, ale všechny mají stejný záměr zakoupit letenky pro cestování. 
+Druhý sloupec používá různá slovesa (koupit, rezervovat, rezervovat), různá množství (1, dva, 3) a různá uspořádání slov, ale všechny mají stejný záměr zakoupit letenky pro cestování.
 
 ## <a name="dont-mix-the-definition-of-intents-and-entities"></a>Nemíchejte definici záměrů a entit
 
-Vytvořte záměr pro jakoukoli akci, kterou váš robot provede. Použijte entity jako parametry, které umožňují tuto akci. 
+Vytvořte záměr pro jakoukoli akci, kterou váš robot provede. Použijte entity jako parametry, které umožňují tuto akci.
 
-Pro bota, který si rezervuje letecké lety, vytvořte záměr **BookFlight.** Nevytvářejte záměr pro každou leteckou společnost nebo každou destinaci. Použijte tyto části dat jako [entity](luis-concept-entity-types.md) a označte je v příkladu projevy. 
+Pro bota, který si rezervuje letecké lety, vytvořte záměr **BookFlight.** Nevytvářejte záměr pro každou leteckou společnost nebo každou destinaci. Použijte tyto části dat jako [entity](luis-concept-entity-types.md) a označte je v příkladu projevy.
 
 ## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Nevytvářejte popisovače se všemi možnými hodnotami
 
-Uveďte několik příkladů v [seznamech frází deskriptoru,](luis-concept-feature.md) ale ne každé slovo. SLUŽBA LUIS zobecňuje a bere v úvahu kontext. 
+Uveďte několik příkladů v [seznamech frází deskriptoru,](luis-concept-feature.md) ale ne každé slovo. SLUŽBA LUIS zobecňuje a bere v úvahu kontext.
 
 ## <a name="dont-add-many-patterns"></a>Nepřidávat mnoho vzorů
 
@@ -187,7 +155,7 @@ Nepřidávejte příliš mnoho [vzorů](luis-concept-patterns.md). Služba LUIS 
 
 ## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Netrénujte a publikovat s každým příkladem utterance
 
-Přidejte 10 nebo 15 projevy před školení a publikování. To vám umožní zobrazit dopad na přesnost předpovědi. Přidání jednoho utterance nemusí mít viditelný vliv na skóre. 
+Přidejte 10 nebo 15 projevy před školení a publikování. To vám umožní zobrazit dopad na přesnost předpovědi. Přidání jednoho utterance nemusí mít viditelný vliv na skóre.
 
 ## <a name="next-steps"></a>Další kroky
 

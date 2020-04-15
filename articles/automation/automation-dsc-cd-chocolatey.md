@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 79eaac74fd4475a613c0309476a12292e400dbaa
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 706ab128af4379a56223ff65fb12f29d37b524f7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010966"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383279"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Zajistěte průběžné nasazení virtuálních počítačů pomocí konfigurace stavu automatizace a chocolatey
 
@@ -39,10 +39,9 @@ Jakmile jsou oba tyto základní procesy na svém místě, je snadné automatick
 Správci balíčků, jako je [apt-get,](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) jsou dobře známí ve světě Linuxu, ale ne tolik ve světě Windows.
 [Chocolatey](https://chocolatey.org/) je taková věc, a Scott Hanselman [blog](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) na toto téma je skvělý úvod. Stručně řečeno, Chocolatey umožňuje použít příkazový řádek k instalaci balíčků z centrálního úložiště do operačního systému Windows. Můžete vytvořit a spravovat vlastní úložiště a Chocolatey můžete nainstalovat balíčky z libovolného počtu úložišť, které určíte.
 
-[PowerShell DSC](/powershell/scripting/dsc/overview/overview)) je nástroj prostředí PowerShell, který umožňuje deklarovat požadovanou konfiguraci počítače. Pokud například chcete nainstalovat Chocolatey, nainstalovat službu IIS, otevřít port 80 a nainstalovat verzi 1.0.0 webu, implementuje tuto konfiguraci místní konfigurační nástroj DSC (DSC Local Configuration Manager). Server pro vyžádat DSC obsahuje úložiště konfigurací pro vaše počítače. LCM na každém počítači kontroluje pravidelně, zda jeho konfigurace odpovídá uložené konfiguraci. Může buď hlásit stav, nebo se pokusit uvést počítač zpět do souladu s uloženou konfigurací. Uloženou konfiguraci na serveru pro vyžádat můžete upravit a způsobit tak, že se počítač nebo sada počítačů zarovná se změněnou konfigurací.
+[PowerShell DSC](/powershell/scripting/dsc/overview/overview) je nástroj prostředí PowerShell, který umožňuje deklarovat konfiguraci, kterou chcete pro počítač. Pokud například chcete nainstalovat Chocolatey, nainstalovat službu IIS, otevřít port 80 a nainstalovat verzi 1.0.0 webu, implementuje tuto konfiguraci místní konfigurační nástroj DSC (DSC Local Configuration Manager). Server pro vyžádat DSC obsahuje úložiště konfigurací pro vaše počítače. LCM na každém počítači kontroluje pravidelně, zda jeho konfigurace odpovídá uložené konfiguraci. Může buď hlásit stav, nebo se pokusit uvést počítač zpět do souladu s uloženou konfigurací. Uloženou konfiguraci na serveru pro vyžádat můžete upravit a způsobit tak, že se počítač nebo sada počítačů zarovná se změněnou konfigurací.
 
-Prostředek DSC je modul kódu, který má specifické funkce, jako je například správa sítí, služby Active Directory nebo sql serveru. Chocolatey DSC resource ví, jak získat přístup k nugetserveru (mimo jiné), stáhnout balíčky, nainstalovat balíčky a tak dále. Existuje mnoho dalších prostředků DSC v [Galerii prostředí PowerShell](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title).
-Tyto moduly se instalují do serveru pro vyžádat konfiguraci stavu Azure Automation (vámi), aby je mohly používat vaše konfigurace.
+Prostředek DSC je modul kódu, který má specifické funkce, jako je například správa sítí, služby Active Directory nebo sql serveru. Chocolatey DSC resource ví, jak získat přístup k nugetserveru (mimo jiné), stáhnout balíčky, nainstalovat balíčky a tak dále. Existuje mnoho dalších prostředků DSC v [Galerii prostředí PowerShell](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title). Tyto moduly nainstalujete na serveru pro vyžádat konfiguraci stavu Azure Automation pro použití ve vašich konfiguracích.
 
 Šablony Správce prostředků poskytují deklarativní způsob generování infrastruktury, například sítě, podsítě, zabezpečení sítě a směrování, nástroje pro vyrovnávání zatížení, síťové karty, virtuální počítače a tak dále. Tady je [článek,](../azure-resource-manager/management/deployment-models.md) který porovnává model nasazení Správce prostředků (deklarativní) s modelem nasazení Azure Service Management (ASM nebo classic) (imperativní). Tento článek obsahuje diskusi o základní zprostředkovatelé prostředků: výpočetní prostředky, úložiště a sítě.
 
@@ -50,16 +49,15 @@ Jednou z klíčových funkcí šablony Správce prostředků je jeho schopnost n
 
 ## <a name="quick-trip-around-the-diagram"></a>Rychlý výlet kolem diagramu
 
-Počínaje v horní části, napíšete kód, sestavíte ho, otestujete a pak vytvoříte instalační balíček. Chocolatey zvládne různé typy instalačních balíčků, jako jsou MSI, MSU, ZIP. A máte plnou sílu PowerShell uděláte skutečnou instalaci, pokud nativní schopnosti Chocolatey nejsou na to. Vložte balíček na nějaké místo dosažitelné – úložiště balíčků. Tento příklad použití používá veřejnou složku v účtu úložiště objektů blob Azure, ale může být kdekoli. Chocolatey pracuje nativně se servery NuGet a několik dalších pro správu metadat balíčku. [Tento článek](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) popisuje možnosti. Tento příklad použití používá NuGet. Nuspec je metadata o vašich balíčcích. Nuspec jsou "zkompilovány" do NuPkg a uloženy na serveru NuGet. Když vaše konfigurace požaduje balíček podle názvu a odkazuje na server NuGet, prostředek Chocolatey DSC na virtuálním počítači uchopí balíček a nainstaluje ho za vás. Můžete také požádat o konkrétní verzi balíčku.
+Počínaje v horní části, napíšete kód, sestavíte ho, otestujete a pak vytvoříte instalační balíček. Chocolatey zvládne různé typy instalačních balíčků, jako jsou MSI, MSU, ZIP. A máte plnou sílu PowerShell uděláte skutečnou instalaci, pokud nativní schopnosti Chocolatey nejsou na to. Vložte balíček na nějaké místo dosažitelné – úložiště balíčků. Tento příklad použití používá veřejnou složku v účtu úložiště objektů blob Azure, ale může být kdekoli. Chocolatey pracuje nativně se servery NuGet a několik dalších pro správu metadat balíčku. [Tento článek](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) popisuje možnosti. Příklad použití používá NuGet. Nuspec je metadata o vašich balíčcích. Informace Nuspec je zkompilován do NuPkg a uloženy na serveru NuGet. Když vaše konfigurace požaduje balíček podle názvu a odkazuje na server NuGet, prostředek Chocolatey DSC na virtuálním počítači popadne balíček a nainstaluje jej. Můžete také požádat o konkrétní verzi balíčku.
 
-V levém dolním rohu obrázku je šablona Azure Resource Manager. V tomto příkladu použití rozšíření virtuálního počítače zaregistruje virtuální počítač s serverem pro vyžádat stav Azure Automation jako uzel. Konfigurace je uložena na serveru vyžádat.
-Ve skutečnosti je uložen dvakrát: jednou jako prostý text a jednou zkompilován jako soubor MOF. Na webu Azure Portal mof je "konfigurace uzlu" (na rozdíl od jednoduše "konfigurace"). Je to artefakt, který je spojen s uzlem, takže uzel bude znát jeho konfiguraci. Podrobnosti níže ukazují, jak přiřadit konfiguraci uzlu k uzlu.
+V levém dolním rohu obrázku je šablona Azure Resource Manager. V tomto příkladu použití rozšíření virtuálního počítače zaregistruje virtuální počítač s serverem pro vyžádat stav Azure Automation jako uzel. Konfigurace je uložena na serveru pro vyžádat dvakrát: jednou jako prostý text a jednou zkompilován jako soubor MOF. Na webu Azure Portal mof představuje konfiguraci uzlu, na rozdíl od jednoduché konfigurace. Je to artefakt, který je spojen s uzlem, takže uzel bude znát jeho konfiguraci. Podrobnosti níže ukazují, jak přiřadit konfiguraci uzlu k uzlu.
 
-Vytvoření nuspec, kompilace a ukládání na serveru NuGet je malá věc. A už spravujete virtuální manažery. 
+Vytvoření Nuspec, kompilace a ukládání na serveru NuGet je malá věc. A už spravujete virtuální manažery. 
 
-Provedení dalšího kroku k průběžnému nasazení vyžaduje jednorázové nastavení serveru pro vyžádat, registraci uzlů s ním (jednou) a vytvoření a uložení počáteční konfigurace. Potom jako balíčky jsou upgradovány a nasazeny do úložiště, stačí aktualizovat konfiguraci a konfiguraci uzlu na serveru vyžádat podle potřeby. 
+Další krok k průběžnému nasazení vyžaduje jednorázové nastavení serveru pro vyžádat, jednorázové registraci uzlů a vytvoření a uložení počáteční konfigurace na serveru. Jako balíčky jsou upgradovány a nasazeny do úložiště, stačí aktualizovat konfiguraci a konfiguraci uzlu na serveru vyžádat podle potřeby.
 
-Pokud nezačínáte se šablonou Správce prostředků, je to v pořádku. Existují Prostředí PowerShell, které vám pomůže zaregistrovat virtuální počítače pomocí serveru pro vyžádat a všech ostatních. Další informace naleznete v tomto článku: [Onboarding ové počítače pro správu pomocí konfigurace stavu automatizace Azure](automation-dsc-onboarding.md).
+Pokud nezačínáte se šablonou Správce prostředků, je to v pořádku. Existují příkazy prostředí PowerShell, které vám pomohou zaregistrovat virtuální počítače na serveru pro vyžádat. Další informace najdete [v tématu Onboarding machines for management by Azure Automation State Configuration](automation-dsc-onboarding.md).
 
 ## <a name="about-the-usage-example"></a>O příkladu použití
 
@@ -97,31 +95,40 @@ Přejděte na požadovaný prostředek a klikněte na tlačítko "Nasadit do Azu
 
 Další technika, která byla nedávno přidána na portál Azure, umožňuje vyžádat nové moduly nebo aktualizovat stávající moduly. Proklikejte se prostředkem účtu automatizace, dlaždicí Prostředky a nakonec dlaždicí Moduly. Ikona Galerie procházení umožňuje zobrazit seznam modulů v galerii, přejít k podrobnostem a nakonec importovat do účtu Automation. To je skvělý způsob, jak udržet vaše moduly aktuální čas od času. A funkce importu kontroluje závislosti s jinými moduly, aby bylo zajištěno, že se nic nesynchronizuje.
 
-Nebo je tu manuální přístup. Struktura složek modulu integrace prostředí PowerShell pro počítač se systémem Windows se trochu liší od struktury složek očekávané Azure Automation.
-To vyžaduje trochu vylepšování z vaší strany. Ale není to těžké, a to se provádí pouze jednou za zdroj (pokud chcete upgradovat v budoucnu.) Další informace o vytváření modulů integrace Prostředí PowerShell najdete v tomto článku: [Vytváření integračních modulů pro Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
+Nebo je tu manuální přístup. Tento přístup se používá pouze jednou na prostředek, pokud jej nechcete později upgradovat. Další informace o vytváření integračních modulů Prostředí PowerShell najdete v [tématu Vytváření integračních modulů pro azure automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/).
 
-- Nainstalujte modul, který potřebujete, na pracovní stanici, a to následovně:
-  - Instalace [rozhraní Windows Management Framework, v5](https://aka.ms/wmf5latest) (není potřeba pro Windows 10)
-  - `Install-Module –Name MODULE-NAME`< – popadne modul z Galerie prostředí PowerShell
-- Kopírování složky `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` modulu z dočasné složky
-- Odstranění vzorků a dokumentace z hlavní složky
-- Zip hlavní složky, pojmenování souborzip přesně stejný jako složka 
-- Vložte soubor ZIP do dostupného umístění PROTOKOLU HTTP, jako je úložiště objektů blob v účtu úložiště Azure.
-- Spusťte tento PowerShell:
+>[!NOTE]
+>Struktura složek modulu integrace prostředí PowerShell pro počítač se systémem Windows se trochu liší od struktury složek očekávané Azure Automation. 
 
-  ```powershell
-  New-AzAutomationModule `
-    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-    -Name MODULE-NAME –ContentLink 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
-  ```
+1. Instalace [rozhraní Windows Management Framework v5](https://aka.ms/wmf5latest) (není potřeba pro Windows 10).
+
+2. Nainstalujte integrační modul.
+
+    ```azurepowershell-interactive
+    Install-Module –Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
+    ```
+
+3. Zkopírujte složku modulu z **aplikace c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME** do dočasné složky.
+
+4. Odstraňte ukázky a dokumentaci z hlavní složky.
+
+5. Zapněte hlavní složku a pojmenujte soubor ZIP s názvem složky.
+
+6. Vložte soubor ZIP do dostupného umístění PROTOKOLU HTTP, jako je úložiště objektů blob v účtu azure storage.
+
+7. Spusťte následující příkaz.
+
+    ```azurepowershell-interactive
+    New-AzAutomationModule `
+      -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
+      -Name MODULE-NAME –ContentLink 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+    ```
 
 Zahrnutý příklad implementuje tyto kroky pro cChoco a xNetworking. 
 
 ## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>Krok 4: Přidání konfigurace uzlu na server vyžádat
 
-Není nic zvláštního o prvním importu konfigurace do serveru pro vyžádat a kompilovat. Všechny pozdější importy nebo kompilace stejné konfigurace vypadají úplně stejně. Pokaždé, když aktualizujete balíček a potřebujete jej vytlačit do produkčního prostředí, uděláte tento krok po zajištění správného konfiguračního souboru - včetně nové verze balíčku. Tady je konfigurační soubor a PowerShell:
-
-SOUBOR ISVBoxConfig.ps1:
+Není nic zvláštního o prvním importu konfigurace do serveru pro vyžádat a kompilovat. Všechny pozdější importy nebo kompilace stejné konfigurace vypadají úplně stejně. Pokaždé, když aktualizujete balíček a potřebujete jej vytlačit do produkčního prostředí, uděláte tento krok po zajištění správného konfiguračního souboru - včetně nové verze balíčku. Zde je konfigurační soubor **ISVBoxConfig.ps1**:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -166,7 +173,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-New-ConfigurationScript.ps1 (upraveno pro použití modulu Az):
+Zde je skript **New-ConfigurationScript.ps1** (upraven o použití modulu Az):
 
 ```powershell
 Import-AzAutomationDscConfiguration `
@@ -185,7 +192,7 @@ Get-AzAutomationDscCompilationJob `
     -Id $compilationJobId
 ```
 
-Výsledkem těchto kroků je umístění nové konfigurace uzlu s názvem "ISVBoxConfig.isvbox" na server vyžádat. Název konfigurace uzlu je vytvořen jako "configurationName.nodeName".
+Výsledkem těchto kroků je umístění nové konfigurace uzlu s názvem **ISVBoxConfig.isvbox** na server vyžádat. Název konfigurace uzlu je `configurationName.nodeName`vytvořen jako .
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>Krok 5: Vytvoření a údržba metadat balíčku
 
@@ -205,9 +212,10 @@ Od tohoto okamžiku je na virtuálních počítačích, které jsou závislé na
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled najdete v tématu [Konfigurace stavu automatizace Azure](automation-dsc-overview.md)
-- Další informace najdete v tématu [Začínáme s konfigurací stavu automatizace Azure](automation-dsc-getting-started.md)
-- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit k cílovým uzlům, najdete [v tématu Kompilace konfigurací v konfiguraci stavu automatizace Azure](automation-dsc-compile.md)
-- Informace o odkazu na rutinu prostředí PowerShell najdete v tématu [Rutiny konfigurace stavu automatizace Azure](/powershell/module/azurerm.automation/#automation)
-- Informace o cenách najdete v [tématu Ceny konfigurace stavu Azure Automation](https://azure.microsoft.com/pricing/details/automation/)
-- Příklad použití konfigurace stavu azure automatizace v kanálu průběžného nasazení najdete v [tématu Průběžné nasazení pomocí konfigurace stavu automatizace Azure a Chocolatey](automation-dsc-cd-chocolatey.md)
+- Přehled najdete v tématu [Konfigurace stavu automatizace Azure](automation-dsc-overview.md).
+- Další informace najdete [v tématu Začínáme s azure automation state configuration](automation-dsc-getting-started.md).
+- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit k cílovým uzlům, najdete [v tématu Kompilace konfigurací v konfiguraci stavu automatizace Azure](automation-dsc-compile.md).
+- Odkaz na rutinu prostředí PowerShell naleznete v tématu [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
+- Informace o cenách najdete v [tématu Ceny konfigurace stavu Azure Automation](https://azure.microsoft.com/pricing/details/automation/).
+- Příklad použití konfigurace stavu azure automatizace v kanálu průběžného nasazení najdete v [tématu průběžné nasazení pomocí konfigurace stavu automatizace Azure a Chocolatey](automation-dsc-cd-chocolatey.md).

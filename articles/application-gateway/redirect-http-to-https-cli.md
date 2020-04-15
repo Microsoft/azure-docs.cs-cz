@@ -1,23 +1,23 @@
 ---
 title: Přesměrování protokolu HTTP na https pomocí funkce CLI
 titleSuffix: Azure Application Gateway
-description: Přečtěte si, jak vytvořit aplikační bránu a přidat certifikát pro ukončení protokolu SSL pomocí Azure CLI.
+description: Zjistěte, jak vytvořit aplikační bránu a přidat certifikát pro ukončení TLS pomocí azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: 41b2fb754f1d6ead3a7475ca146ab99758aa8134
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bf8f3b7bfb446db78f0c97a246977fec6cd54cb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246864"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312144"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s přesměrováním HTTP na HTTPS pomocí azure cli
 
-Pomocí azure cli můžete vytvořit [aplikační bránu](overview.md) s certifikátem pro ukončení SSL. Pravidlo směrování se používá k přesměrování přenosu HTTP na port HTTPS v aplikační bráně. V tomto příkladu také vytvoříte [škálovací sadu virtuálních strojů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-endový fond aplikační brány, který obsahuje dvě instance virtuálního počítače.
+Pomocí azure cli můžete vytvořit [aplikační bránu](overview.md) s certifikátem pro ukončení TLS/SSL. Pravidlo směrování se používá k přesměrování přenosu HTTP na port HTTPS v aplikační bráně. V tomto příkladu také vytvoříte [škálovací sadu virtuálních strojů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-endový fond aplikační brány, který obsahuje dvě instance virtuálního počítače.
 
 V tomto článku získáte informace o těchto tématech:
 

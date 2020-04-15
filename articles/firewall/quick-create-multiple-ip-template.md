@@ -5,22 +5,24 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
-ms.date: 04/13/2020
+ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: b14ff2e94e9df25186a13ae8fbd63d8d4044b538
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 76211014f96aee864412fd19686d58d0338ec5c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274239"
+ms.locfileid: "81310239"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Úvodní příručka: Vytvoření brány Azure Firewall s více veřejnými IP adresami – šablona Správce prostředků
 
 V tomto rychlém startu použijete šablonu Správce prostředků k nasazení brány Azure Firewall s více veřejnými IP adresami.
 
-Pravidla shromažďování pravidel NAT umožňují připojení RDP ke dvěma virtuálním počítačům Se systémem Windows Server 2019.
+Nasazená brána firewall obsahuje pravidla shromažďování pravidel NAT, která umožňují připojení RDP ke dvěma virtuálním počítačům se systémem Windows Server 2019.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Další informace o Azure Firewall s více veřejnými IP adresami najdete [v tématu Nasazení brány Azure firewall s více veřejnými IP adresami pomocí Azure PowerShellu](deploy-multi-public-ip-powershell.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

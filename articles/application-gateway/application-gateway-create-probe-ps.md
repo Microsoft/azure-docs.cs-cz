@@ -8,17 +8,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075262"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312590"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Vytvoření vlastní sondy pro Bránu aplikací Azure pomocí PowerShellu pro Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [Portál Azure](application-gateway-create-probe-portal.md)
+> * [portál Azure](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -91,7 +91,7 @@ Před vytvořením aplikační brány nastavíte všechny položky konfigurace. 
 |---|---|
 | **Konfigurace protokolu IP brány** | Konfigurace IP pro aplikační bránu.|
 | **Back-endový fond** | Fond adres IP, souborů FQDN nebo nic, které jsou pro aplikační servery, které jsou hostitelem webové aplikace|
-| **Zdravotní sonda** | Vlastní sonda používaná ke sledování stavu členů back-endového fondu|
+| **Sonda stavu** | Vlastní sonda používaná ke sledování stavu členů back-endového fondu|
 | **Nastavení protokolu HTTP** | Kolekce nastavení, včetně portu, protokolu, spřažení založené na souborech cookie, sondy a časového času.  Tato nastavení určují způsob směrování provozu na členy back-endového fondu.|
 | **Port front-endu** | Port, který brána aplikace naslouchá pro provoz na|
 | **Naslouchací proces** | Kombinace protokolu, konfigurace ip adres front-endu a portu front-endu. To je to, co naslouchá příchozím požadavkům.
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se konfigurovat snižování zátěže SSL návštěvou: [Konfigurace snižování zátěže SSL](application-gateway-ssl-arm.md)
+Naučte se konfigurovat snižování zátěže TLS na adrese: [Konfigurace snižování zátěže TLS](application-gateway-ssl-arm.md)
 

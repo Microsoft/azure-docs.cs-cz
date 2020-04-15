@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c56e6729307a1cad998a060202f51cb8f29bf94a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 16fa33999a38b21fd2016c986dd2db81f7d84051
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548321"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383752"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace zprostředkovatele prostředků Azure Resource Manager
 
@@ -327,7 +327,7 @@ Služba Azure: [Správa rozhraní API](../api-management/index.yml)
 > | Akce | Microsoft.ApiManagement/operations/read | Čtení všech operací rozhraní API dostupných pro prostředek Microsoft.ApiManagement |
 > |  | **sestavy** |  |
 > | Akce | Microsoft.ApiManagement/reports/read | Získejte sestavy agregované podle časových období, zeměpisné oblasti, vývojářů, produktů, rozhraní API, operací, předplatného a žádosti. |
-> |  | **služba** |  |
+> |  | **Služby** |  |
 > | Akce | Microsoft.ApiManagement/service/write | Vytvořit nebo aktualizovat instanci služby api pro správu |
 > | Akce | Microsoft.ApiManagement/service/read | Čtení metadat pro instanci služby api Management Service |
 > | Akce | Microsoft.ApiManagement/service/delete | Odstranit instanci služby správy rozhraní API |
@@ -5180,7 +5180,7 @@ Služba Azure: [Trezor klíčů](../key-vault/index.yml)
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
-Služba Azure: [Azure Data Explorer](../data-explorer/index.yml)
+Služba Azure: [Azure Data Explorer](/azure/data-explorer/)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |

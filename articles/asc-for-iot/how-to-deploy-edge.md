@@ -1,5 +1,5 @@
 ---
-title: Nasazení centra zabezpečení Azure pro modul IoT Edge| Dokumenty společnosti Microsoft
+title: Nasazení modulu zabezpečení IoT Edge
 description: Přečtěte si, jak nasadit agenta zabezpečení Azure Security Center pro IoT na IoT Edge.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 3aee30e8ad82f9657c3bc9e97a7657a1e8c7989d
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4dd7ca8f926862487b9505731c0662e68ee3d7c0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548914"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311275"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Nasazení modulu zabezpečení na zařízení IoT Edge
-
 
 **Modul Azure Security Center for IoT** poskytuje komplexní řešení zabezpečení pro vaše zařízení IoT Edge.
 Modul zabezpečení shromažďuje, agreguje a analyzuje nezpracovaná data zabezpečení z operačního systému a kontejnerového systému na doporučení a výstrahy s použitelným zabezpečením.
@@ -42,14 +41,13 @@ Pomocí následujících kroků nasadit modul zabezpečení Azure Security Cente
 1. Azure Security Center pro IoT Edge modul vyžaduje [auditované architektury](https://linux.die.net/man/8/auditd) je nainstalován na zařízení IoT Edge.
 
     - Nainstalujte architekturu spuštěním následujícího příkazu na zařízení IoT Edge:
-   
+
     `sudo apt-get install auditd audispd-plugins`
 
-    - Ověření, zda je auditováno aktivní, spuštěním následujícího příkazu: 
-   
+    - Ověření, zda je auditováno aktivní, spuštěním následujícího příkazu:
+
     `sudo systemctl status auditd`<br>
-    - Očekávaná odpověď je:`active (running)` 
-        
+    - Očekávaná odpověď je:`active (running)`
 
 ### <a name="deployment-using-azure-portal"></a>Nasazení pomocí portálu Azure
 
@@ -59,14 +57,14 @@ Pomocí následujících kroků nasadit modul zabezpečení Azure Security Cente
 
    ![Vyberte Azure Security Center pro IoT](media/howto/edge-onboarding-8.png)
 
-1. Chcete-li nakonfigurovat nasazení, klepněte na tlačítko **Vytvořit.** 
+1. Chcete-li nakonfigurovat nasazení, klepněte na tlačítko **Vytvořit.**
 
-1. Zvolte **předplatné** Azure ve vašem IoT Hubu a vyberte **ioT hub**.<br>Vyberte **Nasadit do zařízení,** chcete-li cílit na jedno zařízení, nebo vyberte **Nasadit ve velkém měřítku** tak, aby cílila na více zařízení, a klikněte na **Vytvořit**. Další informace o nasazení ve velkém měřítku naleznete v tématu [Jak nasadit](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor). 
+1. Zvolte **předplatné** Azure ve vašem IoT Hubu a vyberte **ioT hub**.<br>Vyberte **Nasadit do zařízení,** chcete-li cílit na jedno zařízení, nebo vyberte **Nasadit ve velkém měřítku** tak, aby cílila na více zařízení, a klikněte na **Vytvořit**. Další informace o nasazení ve velkém měřítku naleznete v tématu [Jak nasadit](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor).
 
-    >[!Note] 
-    >Pokud jste vybrali **možnost Nasadit ve velkém měřítku**, přidejte název zařízení a podrobnosti před pokračováním na kartu **Přidat moduly** v následujících pokynech.     
+    >[!Note]
+    >Pokud jste vybrali **možnost Nasadit ve velkém měřítku**, přidejte název zařízení a podrobnosti před pokračováním na kartu **Přidat moduly** v následujících pokynech.
 
-Dokončete každý krok a dokončete nasazení IoT Edge pro Azure Security Center for IoT. 
+Dokončete každý krok a dokončete nasazení IoT Edge pro Azure Security Center for IoT.
 
 #### <a name="step-1-modules"></a>Krok 1: Moduly
 
@@ -90,11 +88,11 @@ Dokončete každý krok a dokončete nasazení IoT Edge pro Azure Security Cente
                 "/:/host"
             ]
         }
-    }    
+    }
     ```
-    
+
 1. Na kartě **Nastavení dvojčete modulu** přidejte následující konfiguraci:
-      
+
     ``` json
       "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
     ```
@@ -105,24 +103,24 @@ Dokončete každý krok a dokončete nasazení IoT Edge pro Azure Security Cente
 
 1. Vyberte **možnost Nastavení běhu**.
 1. V části **Edge Hub**změňte **image** na **mcr.microsoft.com/azureiotedge-hub:1.0.8.3**.
-1. Ověřit, **že možnosti vytvoření** jsou nastaveny na následující konfiguraci: 
-         
+1. Ověřit, **že možnosti vytvoření** jsou nastaveny na následující konfiguraci:
+
     ``` json
-    { 
-       "HostConfig":{ 
-          "PortBindings":{ 
-             "8883/tcp":[ 
-                { 
+    {
+       "HostConfig":{
+          "PortBindings":{
+             "8883/tcp":[
+                {
                    "HostPort":"8883"
                 }
              ],
-             "443/tcp":[ 
-                { 
+             "443/tcp":[
+                {
                    "HostPort":"443"
                 }
              ],
-             "5671/tcp":[ 
-                { 
+             "5671/tcp":[
+                {
                    "HostPort":"5671"
                 }
              ]
@@ -130,24 +128,24 @@ Dokončete každý krok a dokončete nasazení IoT Edge pro Azure Security Cente
        }
     }
     ```
-    
+
 1. Vyberte **Uložit**.
-   
+
 1. Vyberte **další**.
 
-#### <a name="step-3-specify-routes"></a>Krok 3: Určení tras 
+#### <a name="step-3-specify-routes"></a>Krok 3: Určení tras
 
 1. Na **kartě Zadejte trasy** se ujistěte, že máte trasu (explicitní nebo implicitní), která bude předávat zprávy z modulu **azureiotsecurity,** aby **$upstream** podle následujících příkladů. Pouze v případě, že je trasa na místě, vyberte **další**.
 
    Příklady tras:
 
-    ~~~Default implicit route
-    "route": "FROM /messages/* INTO $upstream" 
-    ~~~
+    ```Default implicit route
+    "route": "FROM /messages/* INTO $upstream"
+    ```
 
-    ~~~Explicit route
+    ```Explicit route
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
-    ~~~
+    ```
 
 1. Vyberte **další**.
 
@@ -162,29 +160,29 @@ Pokud narazíte na problém, protokoly kontejnerů jsou nejlepší způsob, jak 
 ### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>Ověřte, zda jsou požadované kontejnery nainstalovány a fungují podle očekávání.
 
 1. Na zařízení IoT Edge spusťte následující příkaz:
-    
+
     `sudo docker ps`
-   
+
 1. Ověřte, zda jsou spuštěny následující kontejnery:
-   
+
    | Name (Název) | OBRÁZEK |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0.1 |
-   
+
    Pokud nejsou k dispozici minimální požadované kontejnery, zkontrolujte, jestli je manifest nasazení IoT Edge zarovnán s doporučeným nastavením. Další informace naleznete [v tématu Deploy IoT Edge module .](#deployment-using-azure-portal)
 
 ### <a name="inspect-the-module-logs-for-errors"></a>Zkontrolujte, zda protokoly modulu neobsahuje chyby
-   
+
 1. Na zařízení IoT Edge spusťte následující příkaz:
 
    `sudo docker logs azureiotsecurity`
-   
+
 1. Pro podrobnější protokoly přidejte následující proměnnou prostředí do nasazení modulu `logLevel=Debug` **azureiotsecurity:** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o možnostech konfigurace najdete v návodu pro konfiguraci modulu. 
+Další informace o možnostech konfigurace najdete v návodu pro konfiguraci modulu.
 > [!div class="nextstepaction"]
 > [Návod pro konfiguraci modulu](./how-to-agent-configuration.md)

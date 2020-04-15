@@ -1,26 +1,20 @@
 ---
 title: Nastavení aplikace - LUIS
-titleSuffix: Azure Cognitive Services
 description: Nastavení aplikací pro aplikace pro porozumění jazykům Azure Cognitive Services se ukládá v aplikaci a na portálu.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/12/2019
-ms.author: diberry
-ms.openlocfilehash: d1ead09f6248a6ad14646371aa70b42b57cf8e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 9e17736cd6ff5074a6eab76a6cf5bdb8acedc185
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270805"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382207"
 ---
 # <a name="application-settings"></a>Nastavení aplikace
 
 Tato nastavení aplikace jsou uloženy v [exportované](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) aplikaci a [aktualizovány](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) pomocí rest API. Změna nastavení verze aplikace obnoví stav školení aplikace na neškolený.
+
+Naučte se [koncepty diakritiky](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) a interpunkce.
 
 |Nastavení|Výchozí hodnota|Poznámky|
 |--|--|--|
@@ -183,3 +177,7 @@ Následující interpunkce je odebrána s `NormalizePunctuation` je nastavena na
 |`}`|
 |`+`|
 |`¡`|
+
+## <a name="next-steps"></a>Další kroky
+
+* Naučte se [koncepty diakritiky](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) a interpunkce.

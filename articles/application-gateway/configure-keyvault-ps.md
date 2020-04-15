@@ -1,5 +1,5 @@
 ---
-title: Konfigurace ukončení protokolu SSL pomocí certifikátů trezoru klíčů – PowerShell
+title: Konfigurace ukončení protokolu TLS pomocí certifikátů trezoru klíčů – PowerShell
 titleSuffix: Azure Application Gateway
 description: Zjistěte, jak můžete integrovat Azure Application Gateway s Trezorem klíčů pro serverové certifikáty, které jsou připojené k naslouchacím líným a https povoleno.
 services: application-gateway
@@ -8,20 +8,20 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 15e10d34120ab5475f241235bbebeb0c7689ca14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1979f759f5a1b037adfd7b67a7be50cbba0f596f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371230"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312213"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurace ukončení protokolu SSL pomocí certifikátů trezoru klíčů pomocí Azure PowerShellu
+# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurace ukončení protokolu TLS pomocí certifikátů trezoru klíčů pomocí Azure PowerShellu
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) je úložiště tajných klíčů spravované platformou, které můžete použít k zabezpečení tajných kódů, klíčů a certifikátů SSL. Azure Application Gateway podporuje integraci s trezorem klíčů pro serverové certifikáty, které jsou připojené k naslouchací procesy s podporou PROTOKOLU HTTPS. Tato podpora je omezena na sku sku aplikace v2.
+[Azure Key Vault](../key-vault/key-vault-overview.md) je úložiště tajných klíčů spravované platformou, které můžete použít k zabezpečení tajných kódů, klíčů a certifikátů TLS/SSL. Azure Application Gateway podporuje integraci s trezorem klíčů pro serverové certifikáty, které jsou připojené k naslouchací procesy s podporou PROTOKOLU HTTPS. Tato podpora je omezena na sku sku aplikace v2.
 
-Další informace naleznete v [tématu SSL ukončení s certifikáty trezoru klíčů](key-vault-certs.md).
+Další informace naleznete [v tématu Ukončení TLS s certifikáty trezoru klíčů](key-vault-certs.md).
 
-Tento článek ukazuje, jak pomocí skriptu Azure PowerShell integrovat trezor klíčů s vaší aplikační bránou pro certifikáty ukončení SSL.
+Tento článek ukazuje, jak pomocí skriptu Azure PowerShell integrovat trezor klíčů s vaší aplikační bránou pro koncové certifikáty TLS/SSL.
 
 Tento článek vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Chcete-li spustit příkazy v tomto článku, musíte také `Connect-AzAccount`vytvořit připojení s Azure spuštěním .
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> Příznak -EnableSoftDelete musí být použit pro ukončení SSL správně fungovat. Pokud konfigurujete [obnovitelné odstranění trezoru klíčů prostřednictvím portálu](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior), musí být doba uchování zachována na 90 dnech, což je výchozí hodnota. Aplikační brána ještě nepodporuje jiné období uchovávání informací. 
+> Příznak -EnableSoftDelete musí být použit pro ukončení TLS správně fungovat. Pokud konfigurujete [obnovitelné odstranění trezoru klíčů prostřednictvím portálu](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior), musí být doba uchování zachována na 90 dnech, což je výchozí hodnota. Aplikační brána ještě nepodporuje jiné období uchovávání informací. 
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -102,7 +102,7 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-ssl-certificate-to-your-key-vault"></a>Najeďte certifikát ssl na trezor klíčů
+### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>Najeďte certifikát TLS/SSL do trezoru klíčů
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
@@ -144,4 +144,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace o ukončení SSL](ssl-overview.md)
+[Další informace o ukončení TLS](ssl-overview.md)

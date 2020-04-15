@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 0e4214466a2650df833cebd704577114b8818690
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 9e81efd826c78bfa1af5624272ae9b190cb54348
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259629"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313870"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště Azure Blob Storage do databáze SQL Database pomocí služby Azure Data Factory
 V tomto kurzu vytvoříte datovou továrnu pomocí uživatelského rozhraní služby Azure Data Factory. Kanál v této datové továrně kopíruje data z úložiště objektů blob Azure do databáze Azure SQL. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -199,11 +199,11 @@ V tomto kroku ručně aktivujete kanál, který jste publikovali v minulém krok
 
 1. Vlevo přejděte na kartu **Monitorování**. Zobrazí se stav ručně aktivovaného spuštění kanálu. Pomocí odkazů ve sloupci **NÁZEV kanálu** můžete zobrazit podrobnosti o aktivitě a znovu spustit kanál.
 
-    ![Monitorování spuštění kanálu](./media/tutorial-copy-data-portal/monitor-pipeline.png)
+    [![Spuštění kanálu monitoru](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
 
 1. Chcete-li zobrazit spuštění aktivity přidružená ke spuštění kanálu, vyberte odkaz **CopyPipeline** ve sloupci **NÁZEV KANÁLU.** V tomto příkladu je pouze jedna aktivita, takže se v seznamu zobrazí pouze jedna položka. Podrobnosti o operaci kopírování vyberte odkaz **Podrobnosti** (ikona brýlí) ve sloupci **NÁZEV AKTIVITY.** Vyberte **Všechny kanál běží** v horní části se vrátit do zobrazení Spuštění kanálu. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
 
-    ![Monitorování spuštění aktivit](./media/tutorial-copy-data-portal/view-activity-runs.png)
+    [![Monitorování spuštění aktivit](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
 1. Ověřte, že se do tabulky **emp** v databázi SQL Database přidaly další dva řádky.
 
@@ -243,7 +243,7 @@ V tomto kroku vytvoříte pro kanál aktivační událost plánovače. Tato akt
 
 1. Vlevo přejděte na kartu **Monitorování**, kde uvidíte aktivovaná spuštění kanálu.
 
-    ![Aktivovaná spuštění kanálu](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)   
+    [![Aktivovaná spuštění kanálu](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox)
 
 1. Chcete-li přepnout ze zobrazení **Spuštění kanálu** do zobrazení Spuštění **aktivační události,** vyberte **možnost Spuštění aktivační události** na levé straně okna.
 

@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobitelné výstrahy zabezpečení pro Azure Security Center pro IoT| Dokumenty společnosti Microsoft
+title: Přizpůsobitelné výstrahy zabezpečení
 description: Přečtěte si o přizpůsobitelných výstrahách zabezpečení a doporučených nápravách pomocí azure security center pro funkce a služby IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 32d79267559480de8ec91e5e66196bfd57e01cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299569"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311642"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Výstrahy zabezpečení ve službě Azure Security Center pro IoT
 
 Azure Security Center for IoT průběžně analyzuje vaše řešení IoT pomocí pokročilých analýz a analýzy hrozeb, které vás upozorní na škodlivou aktivitu.
 
-Doporučujeme vám vytvořit vlastní výstrahy na základě vašich znalostí očekávaného chování zařízení, abyste zajistili, že výstrahy budou fungovat jako nejúčinnější ukazatele potenciálního ohrožení ve vašem jedinečném nasazení a prostředí organizace. 
+Doporučujeme vám vytvořit vlastní výstrahy na základě vašich znalostí očekávaného chování zařízení, abyste zajistili, že výstrahy budou fungovat jako nejúčinnější ukazatele potenciálního ohrožení ve vašem jedinečném nasazení a prostředí organizace.
 
 Následující seznam výstrah Azure Security Center pro IoT jsou definovatelné na základě očekávaného ioT hubu nebo chování zařízení. Další podrobnosti o přizpůsobení jednotlivých výstrah naleznete v [tématu vytvoření vlastních výstrah](quickstart-create-custom-alerts.md).
 
-## <a name="iot-hub-alerts-available-for-customization"></a>Výstrahy služby IoT Hub, které jsou k dispozici pro vlastní nastavení 
-
-
+## <a name="iot-hub-alerts-available-for-customization"></a>Výstrahy služby IoT Hub, které jsou k dispozici pro vlastní nastavení
 
 | Severity | Název výstrahy | Zdroj dat | Popis | Navrhovaná náprava|
 |---|---|---|---|---|
@@ -51,7 +49,7 @@ Následující seznam výstrah Azure Security Center pro IoT jsou definovatelné
 | Nízká      | Vlastní výstraha - počet neoprávněných operací je mimo povolený rozsah  | IoT Hub     | Množství neoprávněných operací v určitém časovém okně je mimo aktuálně nakonfigurovaný a povolený rozsah.|
 |
 
-## <a name="agent-alerts-available-for-customization"></a>Výstrahy agentů, které jsou k dispozici pro vlastní nastavení 
+## <a name="agent-alerts-available-for-customization"></a>Výstrahy agentů, které jsou k dispozici pro vlastní nastavení
 
 | Severity | Název výstrahy | Zdroj dat | Popis | Navrhovaná náprava|
 |---|---|---|---|---|

@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 51c191a7815bb64243e2324e150c00c2dcb7ec4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705322"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312099"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Vytvoření aplikační brány s přesměrováním HTTP na HTTPS pomocí webu Azure Portal
 
-Portál Azure můžete použít k vytvoření [aplikační brány](overview.md) s certifikátem pro ukončení SSL. Pravidlo směrování se používá k přesměrování přenosu HTTP na port HTTPS v aplikační bráně. V tomto příkladu také vytvoříte [škálovací sadu virtuálních strojů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-endový fond aplikační brány, který obsahuje dvě instance virtuálního počítače.
+Portál Azure můžete použít k vytvoření [aplikační brány](overview.md) s certifikátem pro ukončení TLS. Pravidlo směrování se používá k přesměrování přenosu HTTP na port HTTPS v aplikační bráně. V tomto příkladu také vytvoříte [škálovací sadu virtuálních strojů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-endový fond aplikační brány, který obsahuje dvě instance virtuálního počítače.
 
 V tomto článku získáte informace o těchto tématech:
 

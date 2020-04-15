@@ -4,12 +4,12 @@ description: Seznamte se s podporovanými službami a schématem událostí pro 
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248811"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380526"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Podporované služby, schémata a kategorie pro protokoly prostředků Azure
 
@@ -54,7 +54,7 @@ Schéma pro protokoly diagnostiky prostředků se liší v závislosti na prost�
 | Azure Batch |[Protokolování dávek Azure](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL diagnostické protokoly](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database pro postgreSQL protokoly](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Průzkumník dat Azure | [Protokoly Průzkumníka dat Azure](../../data-explorer/using-diagnostic-logs.md) |
+| Průzkumník dat Azure | [Protokoly Průzkumníka dat Azure](/azure/data-explorer/using-diagnostic-logs) |
 | Cognitive Services | [Protokolování pro Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Protokolování pro registr kontejnerů Azure](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [Azure protokoly pro CDN](../../cdn/cdn-azure-diagnostic-logs.md) |

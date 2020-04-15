@@ -1,7 +1,7 @@
 ---
 title: Vytvořit klienta pro model nasazený jako webová služba
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak využívat webovou službu, která byla vygenerována při nasazení modelu s modelem Azure Machine Learning. Webová služba zpřístupňuje rozhraní REST API. Vytvořte klienty pro toto rozhraní API pomocí programovacího jazyka podle vašeho výběru.
+description: Zjistěte, jak volat koncový bod webové služby, který byl vygenerován při nasazení modelu z Azure Machine Learning. Koncový bod zpřístupňuje rozhraní REST API, které můžete volat k provedení odvození s modelem. Vytvořte klienty pro toto rozhraní API pomocí programovacího jazyka podle vašeho výběru.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/07/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: a86b8ddb59719db9bdaffea44aecd5428ad16834
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282660"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383395"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití modelu Azure Machine Learning nasazeného jako webová služba
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Nasazení modelu Azure Machine Learning jako webové služby vytvoří rozhraní REST API. Můžete odeslat data do tohoto rozhraní API a přijímat předpověď vrácena modelem. V tomto dokumentu se dozvíte, jak vytvořit klienty pro webovou službu pomocí C#, Go, Java a Python.
+Nasazení modelu Azure Machine Learning jako webové služby vytvoří koncový bod rozhraní REST API. Můžete odeslat data do tohoto koncového bodu a přijímat předpověď vrácené modelem. V tomto dokumentu se dozvíte, jak vytvořit klienty pro webovou službu pomocí C#, Go, Java a Python.
 
-Webovou službu vytvoříte při nasazení image do instancí kontejnerů Azure, služby Azure Kubernetes service nebo polí programovatelných polí brány (FPGA). Můžete vytvářet obrázky z registrovaných modelů a vyhodnocování souborů. Identifikátor URI používaný pro přístup k webové službě načtete pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Pokud je ověřování povoleno, můžete také použít sadu SDK k získání ověřovacích klíčů nebo tokenů.
+Webovou službu vytvoříte při nasazení modelu do místního prostředí, instance kontejnerů Azure, služby Azure Kubernetes service nebo pole programovatelných polí brány (FPGA). Identifikátor URI používaný pro přístup k webové službě načtete pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Pokud je ověřování povoleno, můžete také použít sadu SDK k získání ověřovacích klíčů nebo tokenů.
 
 Obecný pracovní postup pro vytvoření klienta, který používá webovou službu strojového učení, je:
 
@@ -174,6 +174,17 @@ Webová služba může přijímat více sad dat v jednom požadavku. Vrátí dok
 ### <a name="binary-data"></a>Binární data
 
 Informace o povolení podpory binárních dat ve službě naleznete v [tématu Binární data](how-to-deploy-and-where.md#binary).
+
+> [!TIP]
+> Povolení podpory binárních dat probíhá v souboru score.py používaném nasazeným modelem. Z klienta použijte funkci HTTP programovacího jazyka. Například následující úryvek odešle obsah souboru JPG webové službě:
+>
+> ```python
+> import requests
+> # Load image data
+> data = open('example.jpg', 'rb').read()
+> # Post raw data to scoring URI
+> res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/> octet-stream'})
+> ```
 
 ### <a name="cross-origin-resource-sharing-cors"></a>Sdílení zdrojů mezi zdroji (CORS)
 

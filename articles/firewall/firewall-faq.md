@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113554"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383072"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -72,9 +72,9 @@ Brána firewall webových aplikací (WEB Application Firewall) je funkce applica
 
 Služba Azure Firewall doplňuje funkce skupiny zabezpečení sítě. Společně poskytují lepší "obranu do hloubky" zabezpečení sítě. Skupiny zabezpečení sítě poskytují filtrování distribuovaných síťových vrstev, které omezuje provoz na prostředky v rámci virtuálních sítí v každém předplatném. Azure Firewall je plně stavová centralizovaná síťová brána firewall jako služba, která poskytuje ochranu na úrovni sítě a aplikací napříč různými předplatnými a virtuálními sítěmi.
 
-## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Jsou skupiny zabezpečení sítě (NSG) podporované v podsíti Azure Firewall?
+## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>Jsou skupiny zabezpečení sítě (NSG) podporovány v síti AzureFirewallSubnet?
 
-Azure Firewall je spravovaná služba s více vrstvami ochrany, včetně ochrany platformy pomocí nsG na úrovni nic (nelze zobrazit).  Skupiny zabezpečení na úrovni podsítě nejsou v podsíti Azure Firewall povinné a jsou zakázány, aby se zajistilo, že nedojde k přerušení služby.
+Azure Firewall je spravovaná služba s více vrstvami ochrany, včetně ochrany platformy pomocí nsG na úrovni nic (nelze zobrazit).  Skupiny zabezpečení na úrovni podsítě nejsou v síti AzureFirewallSubnet vyžadovány a jsou zakázány, aby bylo zajištěno žádné přerušení služby.
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Jak nastavím Azure Firewall pomocí koncových bodů služby?
 

@@ -1,22 +1,22 @@
 ---
-title: 'Kurz: Konfigurace ukončení protokolu SSL na portálu – Aplikační brána Azure'
-description: V tomto kurzu se dozvíte, jak nakonfigurovat aplikační bránu a přidat certifikát pro ukončení SSL pomocí portálu Azure.
+title: 'Kurz: Konfigurace ukončení TLS na portálu – Aplikační brána Azure'
+description: V tomto kurzu se dozvíte, jak nakonfigurovat aplikační bránu a přidat certifikát pro ukončení TLS pomocí portálu Azure.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74012310"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312380"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Kurz: Konfigurace aplikační brány s ukončením SSL pomocí portálu Azure
+# <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Kurz: Konfigurace aplikační brány s ukončením TLS pomocí portálu Azure
 
-Portál Azure můžete použít ke konfiguraci [aplikační brány](overview.md) s certifikátem pro ukončení SSL, který používá virtuální počítače pro back-endové servery.
+Portál Azure můžete použít ke konfiguraci [aplikační brány](overview.md) s certifikátem pro ukončení TLS, který používá virtuální počítače pro back-endové servery.
 
 V tomto kurzu se naučíte:
 
@@ -265,4 +265,4 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače pouze k 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o podpoře SSL aplikační brány](ssl-overview.md)
+> [Další informace o podpoře TLS aplikační brány](ssl-overview.md)

@@ -2,13 +2,13 @@
 title: 'Úvodní příručka: Vytvoření nové aplikace na portálu LUIS'
 description: V tomto rychlém startu vytvoříte základní části aplikace, záměry a entity, stejně jako test s ukázkovým utterance na portálu LUIS.
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.openlocfilehash: 2d601646c43c0f0d99dc6934cf1f1c960e0b0f79
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244610"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382571"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Úvodní příručka: Vytvoření nové aplikace na portálu LUIS
 
@@ -88,11 +88,10 @@ Přidejte následující 15 příklad projevy záměru. `FindForm`
 Podle návrhu tyto příkladprojevy se liší v následujících způsobech:
 
 * délka utterance
-* interpunkce
+* [Interpunkce](luis-reference-application-settings.md#punctuation-normalization)
 * volba slova
 * sloveso čas (je, byl, bude)
 * pořadí slov
-
 
 
 ## <a name="create-a-regular-expression-entity"></a>Vytvoření entity regulárního výrazu

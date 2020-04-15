@@ -1,5 +1,5 @@
 ---
-title: Předávací ověřování Azure AD – rychlý start | Dokumenty společnosti Microsoft
+title: Předávací ověřování Azure AD – úvodní příručka | Dokumenty společnosti Microsoft
 description: Tento článek popisuje, jak začít s předávacím ověřováním služby Azure Active Directory (Azure AD).
 services: active-directory
 keywords: Předávací ověřování Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, Jednotné přihlašování, jednotné přihlašování
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc45033cdf1bdaa6d4ecd6ab58cc7f90ff9c1ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331418"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312861"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Předávací ověřování služby Azure Active Directory: Rychlý start
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Předávací ověřování služby Azure Active Directory: Úvodní příručka
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>Nasazení předávacího ověřování Azure AD
 
@@ -66,9 +66,14 @@ Ujistěte se, že jsou na místě následující požadavky.
      | **8080** (volitelně) | Agenti ověřování hlásí svůj stav každých deset minut přes port 8080, pokud port 443 není k dispozici. Tento stav se zobrazí na portálu Azure AD. Port 8080 se _nepoužívá_ pro přihlášení uživatele. |
      
      Pokud brána firewall vynucuje pravidla podle původních uživatelů, otevřete tyto porty pro přenosy ze služeb systému Windows, které běží jako síťová služba.
-   - Pokud brána firewall nebo proxy server umožňuje zařazení na seznam povolených serverů DNS, seznam povolených připojení ** \*ke** msappproxy.net a ** \*.servicebus.windows.net**. Pokud ne, povolte přístup k [rozsahům IP adres datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují každý týden.
+   - Pokud brána firewall nebo proxy server umožňuje seznam povolených dns, přidejte připojení k ** \*možnostem .msappproxy.net** a ** \*.servicebus.windows.net**. Pokud ne, povolte přístup k [rozsahům IP adres datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují každý týden.
    - Vaši agenti pro ověřování potřebují přístup k **login.windows.net** a **login.microsoftonline.com** pro počáteční registraci. Otevřete také bránu firewall pro tyto adresy URL.
    - Pro ověření certifikátu odblokujte následující adresy URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**a **www\.microsoft.com:80**. Vzhledem k tomu, že tyto adresy URL se používají pro ověření certifikátu s jinými produkty společnosti Microsoft, je možné, že tyto adresy URL již byly odblokovány.
+
+### <a name="azure-government-cloud-prerequisite"></a>Předpoklad cloudu Azure Government
+Před povolením předávacího ověřování prostřednictvím Azure AD Connect s krokem 2 stáhněte nejnovější verzi agenta PTA z webu Azure Portal.  Musíte se ujistit, že váš agent je verze **x.x.xxx.x** nebo novější.  Informace o ověření agenta naleznete v [tématu Upgrade ověřovacích agentů](how-to-connect-pta-upgrade-preview-authentication-agents.md)
+
+Po stažení nejnovější verze agenta postupujte podle níže uvedených pokynů ke konfiguraci předávacího ověřování prostřednictvím služby Azure AD Connect.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: Povolení funkce
 
@@ -114,8 +119,8 @@ Pokud plánujete nasadit předávací ověřování v produkčním prostředí, 
 Instalace více předávacích agentů ověřování zajišťuje vysokou dostupnost, ale není deterministické vyrovnávání zatížení mezi agenty ověřování. Chcete-li zjistit, kolik agentů ověřování potřebujete pro vašeho tenanta, zvažte špičku a průměrné zatížení žádostí o přihlášení, které očekáváte, že se zobrazí na vašem tenantovi. Jako měřítko může jeden agent ověřování zpracovat 300 až 400 ověřování za sekundu na standardním 4jádrovém procesoru, 16 GB RAM serveru.
 
 Chcete-li odhadnout síťový provoz, použijte následující pokyny pro velikost:
-- Každý požadavek má velikost datové části (0,5 kB + 1 kB * num_of_agents) bajtů; tedy data z Azure AD do agenta ověřování. Zde "num_of_agents" označuje počet agentů ověřování registrovaných ve vašem tenantovi.
-- Každá odpověď má velikost datové části 1 kB bajtů; tedy data z agenta ověřování do služby Azure AD.
+- Každý požadavek má velikost datové části (0.5K + 1K * num_of_agents) bajtů, to znamená data z Azure AD na agenta ověřování. Zde "num_of_agents" označuje počet agentů ověřování registrovaných ve vašem tenantovi.
+- Každá odpověď má velikost datové části 1 kB bajtů, to znamená data z agenta ověřování do Azure AD.
 
 Pro většinu zákazníků jsou pro vysokou dostupnost a kapacitu dostačující celkem tři agenti ověřování. Agenti pro ověřování byste měli nainstalovat v blízkosti řadičů domény, abyste zlepšili latenci přihlášení.
 

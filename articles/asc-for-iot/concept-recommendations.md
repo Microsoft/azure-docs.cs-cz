@@ -1,5 +1,5 @@
 ---
-title: Principy doporučení zabezpečení Centra zabezpečení Azure pro IoT| Dokumenty společnosti Microsoft
+title: Doporučení zabezpečení
 description: Seznamte se s konceptem doporučení zabezpečení a jejich používáním v Centru zabezpečení Azure pro IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,22 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: a8de821abcedf6bb9a331852a2c0af9b6439667a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 213595ac69efc90ec855b2891641e1f00bd1ba92
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303575"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311548"
 ---
 # <a name="security-recommendations"></a>Doporučení zabezpečení
 
-Azure Security Center pro IoT prohledá vaše prostředky Azure a zařízení IoT a poskytuje bezpečnostní doporučení pro snížení vašeho útoku povrchu. Bezpečnostní doporučení jsou žalovatelná a jejich cílem je pomoci zákazníkům dodržovat osvědčené postupy zabezpečení.
+Azure Security Center pro IoT prohledá vaše prostředky Azure a zařízení IoT a poskytuje bezpečnostní doporučení pro snížení vašeho útoku povrchu.
+Bezpečnostní doporučení jsou žalovatelná a jejich cílem je pomoci zákazníkům dodržovat osvědčené postupy zabezpečení.
 
 V tomto článku najdete seznam doporučení, která se dá aktivovat na vašich zařízeních IoT Hub a/nebo IoT.
 
 ## <a name="recommendations-for-iot-devices"></a>Doporučení pro zařízení IoT
 
-Doporučení zařízení poskytují přehledy a návrhy na zlepšení stavu zabezpečení zařízení. 
+Doporučení zařízení poskytují přehledy a návrhy na zlepšení stavu zabezpečení zařízení.
 
 | Severity | Name (Název)                                                      | Zdroj dat | Popis                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -53,7 +54,7 @@ Provozní doporučení poskytují přehledy a návrhy na zlepšení konfigurace 
 
 ## <a name="recommendations-for-iot-hub"></a>Doporučení pro ioT hub
 
-Upozornění na doporučení poskytují přehled a návrhy akcí ke zlepšení stavu zabezpečení vašeho prostředí.  
+Upozornění na doporučení poskytují přehled a návrhy akcí ke zlepšení stavu zabezpečení vašeho prostředí.
 
 | Severity | Name (Název)                                                     | Zdroj dat | Popis                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

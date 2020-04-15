@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 019e50057497c9f98d303a93dfa3f905226fa246
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cf1ede2db8dbdc7557775cf7b22dde53b69280da
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75465449"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314243"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Kurz: Vytvoření aplikace s front-endovou službou java api a stavovou back-endovou službou ve službě Azure Service Fabric
 
@@ -889,7 +889,7 @@ V tuto chvíli je aplikace připravená k nasazení do místního clusteru Servi
     Pokud používáte počítač Mac, spustíte místní cluster pomocí následujícího příkazu. Příkaz předávaný v parametru **-v** nahraďte cestou k vašemu pracovnímu prostoru.
 
     ```bash
-    docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox
+    docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest
     ```
     Podrobnější pokyny najdete v [příručce k nastavení OS X.](service-fabric-get-started-mac.md)
 

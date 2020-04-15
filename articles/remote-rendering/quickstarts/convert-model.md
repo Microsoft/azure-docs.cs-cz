@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b1bf2c365229a418870250a78a733f9870fb5bb0
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892372"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312997"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Úvodní příručka: Převod modelu pro vykreslování
 
@@ -73,9 +73,9 @@ Vyplňte formulář následujícím způsobem:
 * Pro **název účtu úložiště**zadejte jedinečný název zde. **Tento název musí být globálně jedinečný**, jinak bude existovat výzva, která vás informuje, že je název připraven. V rozsahu tohoto rychlého startu, pojmenujeme to **arrtutorialstorage**. Proto je třeba jej nahradit svým jménem pro každou událost v tomto rychlém startu.
 * Vyberte **umístění** ve své blízkosti. V ideálním případě použijte stejné umístění jako pro nastavení vykreslování v jiném rychlém startu.
 * **Výkon** nastavený na standardní
-* **Typ účtu** nastavený na StorageV2 (pro všeobecné použití v2)
-* **Replikace** nastavená na geograficky redundantní úložiště pro čtení (RA-GRS)
-* **Úroveň přístupu** nastavená na aktivní
+* **Typ účtu** nastavený na "StorageV2 (pro všeobecné účely v2)"
+* **Replikace** nastavena na "Geograficky redundantní úložiště pro čtení (RA-GRS)"
+* **Úroveň přístupu** nastavená na "Hot"
 
 Žádná z vlastností na jiných kartách nemusí být změněna, takže můžete pokračovat **v "Review + create"** a potom postupujte podle pokynů k dokončení instalace.
 

@@ -1,5 +1,5 @@
 ---
-title: Ukončení ssl s certifikáty Azure Key Vault
+title: Ukončení tls s certifikáty Azure Key Vault
 description: Zjistěte, jak můžete integrovat Azure Application Gateway s Trezorem klíčů pro serverové certifikáty, které jsou připojené k naslouchacím líným a https povoleno.
 services: application-gateway
 author: vhorne
@@ -7,32 +7,32 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 5633dd7b72f4de22cd34b7d093e8ec4d9cb411f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26093d051da8f2182a40f80837acbd9ef7dd008f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137704"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312069"
 ---
-# <a name="ssl-termination-with-key-vault-certificates"></a>Ukončení ssl s certifikáty trezoru klíčů
+# <a name="tls-termination-with-key-vault-certificates"></a>Ukončení tls s certifikáty trezoru klíčů
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) je úložiště tajných klíčů spravované platformou, které můžete použít k zabezpečení tajných kódů, klíčů a certifikátů SSL. Azure Application Gateway podporuje integraci s trezorem klíčů pro serverové certifikáty, které jsou připojené k naslouchací procesy s podporou PROTOKOLU HTTPS. Tato podpora je omezena na skladovou položku v2 aplikační brány.
+[Azure Key Vault](../key-vault/key-vault-overview.md) je úložiště tajných klíčů spravované platformou, které můžete použít k zabezpečení tajných kódů, klíčů a certifikátů TLS/SSL. Azure Application Gateway podporuje integraci s trezorem klíčů pro serverové certifikáty, které jsou připojené k naslouchací procesy s podporou PROTOKOLU HTTPS. Tato podpora je omezena na skladovou položku v2 aplikační brány.
 
-Integrace trezoru klíčů nabízí dva modely pro ukončení SSL:
+Integrace trezoru klíčů nabízí dva modely pro ukončení TLS:
 
-- Můžete explicitně poskytnout SSL certifikáty připojené k naslouchací proces. Tento model je tradiční způsob, jak předat certifikáty SSL do aplikační brány pro ukončení SSL.
+- Můžete explicitně poskytnout certifikáty TLS/SSL připojené k naslouchací proces. Tento model je tradiční způsob předání certifikátů TLS/SSL do aplikační brány pro ukončení TLS.
 - Volitelně můžete poskytnout odkaz na existující certifikát trezoru klíčů nebo tajný klíč při vytváření naslouchací proces s podporou protokolu HTTPS.
 
 Integrace aplikační brány s trezorem klíčů nabízí mnoho výhod, včetně:
 
-- Silnější zabezpečení, protože certifikáty SSL nejsou přímo zpracovány týmem pro vývoj aplikací. Integrace umožňuje samostatnému týmu zabezpečení:
+- Silnější zabezpečení, protože certifikáty TLS/SSL nejsou přímo zpracovány vývojovým týmem aplikací. Integrace umožňuje samostatnému týmu zabezpečení:
   * Nastavte aplikační brány.
   * Řízení životního cyklu aplikační brány.
   * Udělte vybraným aplikačním bránám oprávnění pro přístup k certifikátům uloženým v trezoru klíčů.
 - Podpora importu existujících certifikátů do trezoru klíčů. Pomocí souborů API úložiště klíčů můžete také vytvářet a spravovat nové certifikáty s libovolným důvěryhodným partnerem trezoru klíčů.
 - Podpora automatického obnovení certifikátů, které jsou uloženy v trezoru klíčů.
 
-Aplikační brána v současné době podporuje pouze certifikáty ověřené softwarem. Certifikáty ověřené modulem hardwarového zabezpečení (HSM) nejsou podporovány. Po nakonfigurování aplikační brány pro použití certifikátů trezoru klíčů načíst certifikát z trezoru klíčů a nainstalovat je místně pro ukončení SSL. Instance také dotazování trezoru klíčů v 24hodinových intervalech k načtení obnovené verze certifikátu, pokud existuje. Pokud je nalezen aktualizovaný certifikát, certifikát SSL, který je aktuálně přidružen k naslouchací procesu HTTPS, se automaticky otočí.
+Aplikační brána v současné době podporuje pouze certifikáty ověřené softwarem. Certifikáty ověřené modulem hardwarového zabezpečení (HSM) nejsou podporovány. Po nakonfigurování aplikační brány pro použití certifikátů trezoru klíčů načíst certifikát z trezoru klíčů a nainstalovat je místně pro ukončení TLS. Instance také dotazování trezoru klíčů v 24hodinových intervalech k načtení obnovené verze certifikátu, pokud existuje. Pokud je nalezen aktualizovaný certifikát, certifikát TLS/SSL, který je aktuálně přidružen k naslouchací proceshttps, se automaticky otočí.
 
 > [!NOTE]
 > Portál Azure podporuje jenom certifikáty KeyVault, ne tajné klíče. Aplikační brána stále podporuje odkazování na tajné klíče z KeyVault, ale pouze prostřednictvím prostředků, které nejsou portálem, jako je PowerShell, CLI, API, ARM šablony atd. 
@@ -51,10 +51,10 @@ Integrace aplikační brány s trezorem klíčů vyžaduje proces konfigurace ve
 
 1. **Nakonfigurujte aplikační bránu**
 
-   Po dokončení dvou předchozích kroků můžete nastavit nebo upravit existující aplikační bránu tak, aby používala spravovanou identitu přiřazenou uživateli. Můžete také nakonfigurovat certifikát SSL naslouchací proces HTTP tak, aby ukazoval na úplný identifikátor URI certifikátu trezoru klíčů nebo ID tajného klíče.
+   Po dokončení dvou předchozích kroků můžete nastavit nebo upravit existující aplikační bránu tak, aby používala spravovanou identitu přiřazenou uživateli. Můžete také nakonfigurovat certifikát TLS/SSL naslouchaného protokolu HTTP tak, aby ukazoval na úplný identifikátor URI certifikátu trezoru klíčů nebo ID tajného klíče.
 
    ![Certifikáty trezoru klíčů](media/key-vault-certs/ag-kv.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace ukončení protokolu SSL pomocí certifikátů trezoru klíčů pomocí Azure PowerShellu](configure-keyvault-ps.md)
+[Konfigurace ukončení protokolu TLS pomocí certifikátů trezoru klíčů pomocí Azure PowerShellu](configure-keyvault-ps.md)

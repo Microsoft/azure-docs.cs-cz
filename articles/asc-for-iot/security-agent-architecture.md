@@ -1,5 +1,5 @@
 ---
-title: Principy architektury agenta zabezpečení Azure Security Center pro IoT| Dokumenty společnosti Microsoft
+title: Architektura agenta zabezpečení
 description: Seznamte se s architekturou agenta zabezpečení pro agenty používané ve službě Azure Security Center for IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 998aeab197931a75579fc39b28e3a248b85fc57b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9029ece923b7cda09c7a57d07736791e241c9e70
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68596910"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310689"
 ---
 # <a name="security-agent-reference-architecture"></a>Referenční architektura agenta zabezpečení
 
@@ -38,9 +38,9 @@ Agenti zabezpečení podporují následující funkce:
 
 - Nakonfigurujte vzdáleně pomocí dvojčete modulu **azureiotsecurity.** Další informace najdete [v tématu Konfigurace Centra zabezpečení Azure pro agenta IoT](how-to-agent-configuration.md).
 
-Azure Security Center pro agenty zabezpečení IoT se vyvíjí jako open source projekty a jsou dostupné na GitHubu: 
+Azure Security Center pro agenty zabezpečení IoT se vyvíjí jako open source projekty a jsou dostupné na GitHubu:
 
-- [Azure Security Center pro agenta založeného na IoT C](https://github.com/Azure/Azure-IoT-Security-Agent-C) 
+- [Azure Security Center pro agenta založeného na IoT C](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [Azure Security Center pro agenta založeného na IoT C#](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
 ## <a name="agent-supported-platforms"></a>Platformy podporované agenty

@@ -1,6 +1,6 @@
 ---
-title: Uklápěcí zálohy až na 10 let
-description: Zjistěte, jak Azure SQL Database podporuje ukládání úplných záloh databází po dobu až 10 let.
+title: Dlouhodobé uchovávání záloh
+description: Zjistěte, jak Azure SQL Database podporuje ukládání úplných záloh databáze po dobu až 10 let prostřednictvím zásad dlouhodobého uchovávání informací.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,20 +11,22 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d015eea21bcfa499d6751e024a882a7316b7f1a5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77499981"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380761"
 ---
-# <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Ukládání záloh Azure SQL Database po dobu až 10 let
+# <a name="azure-sql-database-long-term-retention"></a>Azure SQL Database dlouhodobé uchovávání
 
-Mnoho aplikací má regulační předpisy, dodržování předpisů nebo jiné obchodní účely, které vyžadují uchování záloh databáze po dobu 7 až 35 dnů, které poskytuje [automatické zálohování](sql-database-automated-backups.md)Azure SQL Database . Pomocí funkce dlouhodobé uchovávání (LTR) můžete ukládat zadané úplné zálohy databáze SQL v úložišti objektů Blob Azure s geograficky redundantním úložištěm pro čtení až na 10 let. Potom můžete obnovit libovolnou zálohu jako novou databázi. Další informace o redundanci Azure Storage najdete v [tématu redundance Azure Storage](../storage/common/storage-redundancy.md).
+Mnoho aplikací má regulační předpisy, dodržování předpisů nebo jiné obchodní účely, které vyžadují uchování záloh databáze po dobu 7 až 35 dnů, které poskytuje [automatické zálohování](sql-database-automated-backups.md)Azure SQL Database . Pomocí funkce dlouhodobé uchovávání (LTR) můžete ukládat zadané úplné zálohy databáze SQL v úložišti objektů Blob Azure s geograficky redundantním úložištěm pro čtení až na 10 let. Potom můžete obnovit libovolnou zálohu jako novou databázi. Další informace o redundanci Azure Storage najdete v [tématu redundance Azure Storage](../storage/common/storage-redundancy.md). 
+
+Dlouhodobé uchovávání informací lze povolit pro jednu a sdruženou databází a je v omezené matné verzi verze verze pro spravované instance Azure SQL Database. 
 
 > [!NOTE]
-> LTR lze povolit pro jednu a sdružené databáze. Zatím není k dispozici pro například databáze ve spravovaných instancích. Úlohy sql agenta můžete naplánovat [zálohování pouze zkopírované databáze](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) jako alternativu k LTR po dobu 35 dnů.
-> 
+> Úlohy sql agenta můžete naplánovat [zálohování pouze zkopírované databáze](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) jako alternativu k LTR po dobu 35 dnů.
+
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Jak funguje dlouhodobé uchovávání databáze SQL Database
 
@@ -74,6 +76,16 @@ Pokud jako řešení kontinuity podnikání používáte aktivní skupiny geogra
 
 > [!NOTE]
 > Když se původní primární databáze obnoví z výpadku, který způsobil převzetí služeb při selhání, stane se novým sekundárním. Proto vytvoření zálohy nebude pokračovat a existující zásady LTR se projeví, dokud se stane primární znovu. 
+
+## <a name="managed-instance-support"></a>Podpora spravované instance
+
+Použití dlouhodobého uchovávání záloh u instancí spravované hodnou databází Azure SQL Database má následující omezení:
+
+- **Omezená veřejná verze preview** – tato předběžná verze je dostupná jenom pro předplatná EA a CSP a závisí na omezené dostupnosti.  
+- [**Jenom PowerShell**](sql-database-managed-instance-long-term-backup-retention-configure.md) – momentálně neexistuje žádná podpora portálu Azure. LTR musí být povolena pomocí prostředí PowerShell. 
+
+Chcete-li požádat o registraci, vytvořte [lístek podpory Azure](https://azure.microsoft.com/support/create-ticket/) pod tématem podpory **Zálohování, Obnovení a kontinuita podnikání / Dlouhodobé uchovávání záloh**.
+
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurace dlouhodobého uchovávání záloh
 

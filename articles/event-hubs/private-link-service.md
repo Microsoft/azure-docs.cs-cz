@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: cff1b3b79b34d3f0bed27a2ea50799185958a8ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc360bbe4dd58200993b9377317ccb608b3529d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477847"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383651"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Integrace Center událostí Azure s Privátním propojením Azure (preview)
 Služba Azure Private Link Service umožňuje přístup ke službám Azure Services (například Azure Event Hubs, Azure Storage a Azure Cosmos DB) a službám hostovaným zákazníkům/partnerům Azure přes **privátní koncový bod** ve vaší virtuální síti.
@@ -45,7 +45,7 @@ Váš soukromý koncový bod používá privátní IP adresu ve virtuální sít
 ### <a name="steps"></a>Kroky
 Pokud již máte obor názvů Event Hubs, můžete vytvořit privátní připojení propojení následujícím postupem:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. Do vyhledávacího panelu zadejte **centra událostí**.
 3. Vyberte **obor názvů** ze seznamu, do kterého chcete přidat soukromý koncový bod.
 4. V části **Nastavení**vyberte kartu **Síť** .
@@ -151,6 +151,32 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 (Get-AzResource -ResourceId $namespaceResource.ResourceId -ExpandProperties).Properties
 
 
+```
+
+### <a name="configure-the-private-dns-zone"></a>Konfigurace privátní zóny DNS
+Vytvořte privátní zónu DNS pro doménu Event Hubs a vytvořte asociační propojení s virtuální sítí:
+
+```azurepowershell-interactive
+$zone = New-AzPrivateDnsZone -ResourceGroupName $rgName `
+                            -Name "privatelink.servicebus.windows.net" 
+ 
+$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName $rgName `
+                                            -ZoneName "privatelink.servicebus.windows.net" `
+                                            -Name "mylink" `
+                                            -VirtualNetworkId $virtualNetwork.Id  
+ 
+$networkInterface = Get-AzResource -ResourceId $privateEndpoint.NetworkInterfaces[0].Id -ApiVersion "2019-04-01" 
+ 
+foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
+    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
+        Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
+        $recordName = $fqdn.split('.',2)[0] 
+        $dnsZone = $fqdn.split('.',2)[1] 
+        New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.servicebus.windows.net"  `
+                                -ResourceGroupName $rgName -Ttl 600 `
+                                -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address $ipconfig.properties.privateIPAddress)  
+    } 
+}
 ```
 
 ## <a name="manage-private-endpoints-using-azure-portal"></a>Správa privátních koncových bodů pomocí Portálu Azure

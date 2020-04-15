@@ -708,6 +708,8 @@
               href: sql-database-managed-instance-configure-vm.md
             - name: Připojení typu Point-to-Site
               href: sql-database-managed-instance-configure-p2s.md
+            - name: Dlouhodobé uchovávání záloh
+              href: sql-database-managed-instance-long-term-backup-retention-configure.md
         - name: Načtení dat
           items:
             - name: Obnovení databáze ze zálohy

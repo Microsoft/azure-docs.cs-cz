@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544510"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312469"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se brány aplikace
 
@@ -28,11 +28,11 @@ Azure Application Gateway poskytuje řadič pro doručování aplikací (ADC) ja
 
 ### <a name="what-features-does-application-gateway-support"></a>Jaké funkce aplikace gateway podporuje?
 
-Aplikační brána podporuje automatické škálování, snižování zátěže SSL a end-to-end SSL, bránu firewall webové aplikace (WAF), spřažení relací založenou na souborech cookie, směrování na základě cesty URL, hostování ve více sítích a další funkce. Úplný seznam podporovaných funkcí naleznete [v tématu Úvod do aplikační brány](application-gateway-introduction.md).
+Aplikační brána podporuje automatické škálování, snižování zátěže TLS a komplexní protokol TLS, bránu firewall webové aplikace (WAF), spřažení relací založenou na souborech cookie, směrování na základě cesty URL, hostování ve více sítích a další funkce. Úplný seznam podporovaných funkcí naleznete [v tématu Úvod do aplikační brány](application-gateway-introduction.md).
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Jak se liší aplikační brána a Azure Load Balancer?
 
-Aplikační brána je nástroj pro vyrovnávání zatížení vrstvy 7, což znamená, že funguje pouze s webovým provozem (HTTP, HTTPS, WebSocket a HTTP/2). Podporuje funkce, jako je například ukončení SSL, spřažení relací na základě souborů cookie a kruhové dotazování pro přenos vyrovnávání zatížení. Balancer zatížení vyrovnává provoz na úrovni 4 (TCP nebo UDP).
+Aplikační brána je nástroj pro vyrovnávání zatížení vrstvy 7, což znamená, že funguje pouze s webovým provozem (HTTP, HTTPS, WebSocket a HTTP/2). Podporuje funkce, jako je ukončení TLS, spřažení relací na základě souborů cookie a kruhové dotazování pro přenos vyrovnávání zatížení. Balancer zatížení vyrovnává provoz na úrovni 4 (TCP nebo UDP).
 
 ### <a name="what-protocols-does-application-gateway-support"></a>Jaké protokoly aplikace gateway podporuje?
 
@@ -216,7 +216,7 @@ Ne.
 
 Aplikační brána v2 aktuálně nepodporuje IPv6. Může pracovat ve virtuální síti s dvěma zásobníky pouze pomocí IPv4, ale podsíť brány musí být jenom s IPv4. Aplikační brána v1 nepodporuje virtuální sítě s duálním zásobníkem. 
 
-## <a name="configuration---ssl"></a>Konfigurace - SSL
+## <a name="configuration---tls"></a>Konfigurace - TLS
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Jaké certifikáty aplikace gateway podporuje?
 
@@ -255,13 +255,13 @@ Aplikační brána podporuje následující šifrovací sady.
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-Informace o přizpůsobení možností protokolu SSL naleznete v [tématu Konfigurace verzí zásad SSL a šifrovacích sad v aplikaci Application Gateway](application-gateway-configure-ssl-policy-powershell.md).
+Informace o přizpůsobení možností protokolu TLS naleznete v [tématu Konfigurace verzí zásad TLS a šifrovacích sad v bráně aplikace](application-gateway-configure-ssl-policy-powershell.md).
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>Podporuje aplikační brána opětovné šifrování provozu do back-endu?
 
-Ano. Aplikační brána podporuje snižování zátěže SSL a end-to-end SSL, které znovu šifrují provoz do back-endu.
+Ano. Aplikační brána podporuje snižování zátěže TLS a end-to-end TLS, které znovu šifrují provoz do back-endu.
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Lze nakonfigurovat zásady SSL pro řízení verzí protokolu SSL?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Mohu nakonfigurovat zásady TLS pro řízení verzí protokolů TLS?
 
 Ano. Můžete nakonfigurovat aplikaci Gateway odepřít TLS1.0, TLS1.1 a TLS1.2. Ve výchozím nastavení jsou ssl 2.0 a 3.0 již zakázány a nelze je konfigurovat.
 
@@ -278,9 +278,9 @@ Ano. V application gateway můžete [konfigurovat šifrovací sady](application-
 
 Aplikační brána používá SHA256 pro správu back-endu.
 
-### <a name="how-many-ssl-certificates-does-application-gateway-support"></a>Kolik certifikátů SSL aplikace podporuje?
+### <a name="how-many-tlsssl-certificates-does-application-gateway-support"></a>Kolik certifikátů TLS/SSL aplikace podporuje?
 
-Aplikační brána podporuje až 100 SSL certifikátů.
+Aplikační brána podporuje až 100 tls/Ssl certifikátů.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Kolik ověřovacích certifikátů pro šifrování back-endu podporuje aplikační brána?
 
@@ -288,7 +288,7 @@ Aplikační brána podporuje až 100 ověřovacích certifikátů.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Integruje se aplikační brána nativně s Azure Key Vault?
 
-Ano, aplikační brána v2 sku podporuje trezor klíčů. Další informace naleznete v [tématu SSL ukončení s certifikáty trezoru klíčů](key-vault-certs.md).
+Ano, aplikační brána v2 sku podporuje trezor klíčů. Další informace naleznete [v tématu Ukončení TLS s certifikáty trezoru klíčů](key-vault-certs.md).
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Jak nakonfiguruji naslouchací procesy HTTPS pro weby .com a .net? 
 
@@ -338,7 +338,7 @@ Ano. Můžete povolit ochranu DDoS ve virtuální síti, kde se nasadí aplikač
 
 ### <a name="what-is-an-ingress-controller"></a>Co je řadič příchozího přenosu dat?
 
-Kubernetes umožňuje `deployment` vytváření `service` a prostředek vystavit skupinu podů interně v clusteru. Chcete-li vystavit stejnou službu [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) externě, je definován prostředek, který poskytuje vyrovnávání zatížení, ukončení SSL a virtuální hosting založený na názvu.
+Kubernetes umožňuje `deployment` vytváření `service` a prostředek vystavit skupinu podů interně v clusteru. Chcete-li vystavit stejnou službu [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) externě, je definován prostředek, který poskytuje vyrovnávání zatížení, ukončení TLS a virtuální hosting založený na názvu.
 K uspokojení `Ingress` tohoto prostředku je vyžadován řadič příchozího přenosu `Ingress` dat, který naslouchá všem změnám prostředků a konfiguruje zásady vyrovnávání zatížení.
 
 Řadič příchozího přenosu dat aplikační brány umožňuje Azure [Application Gateway,](https://azure.microsoft.com/services/application-gateway/) který se používá jako příchozí přenos dat pro [službu Azure Kubernetes,](https://azure.microsoft.com/services/kubernetes-service/) která se také označuje jako cluster AKS.

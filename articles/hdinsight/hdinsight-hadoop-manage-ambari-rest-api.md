@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/07/2019
-ms.openlocfilehash: 1d684957939c5cb83aae05962c1694f7a8d8da23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 317d12f6d5dee92d998266d4e9b6d52e6ef9c7a5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272393"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381388"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Správa clusterů HDInsight pomocí rozhraní Apache Ambari REST API
 
@@ -21,25 +21,25 @@ ms.locfileid: "79272393"
 
 Přečtěte si, jak pomocí rozhraní APACHE Ambari REST API spravovat a monitorovat clustery Apache Hadoop v Azure HDInsight.
 
-## <a name="what-is-apache-ambari"></a><a id="whatis"></a>Co je Apache Ambari
+## <a name="what-is-apache-ambari"></a>Co je Apache Ambari
 
 [Apache Ambari](https://ambari.apache.org) zjednodušuje správu a monitorování clusterů Hadoop tím, že poskytuje snadno použitelné webové uživatelské prostředí podporované jeho [REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Ambari je k dispozici ve výchozím nastavení s linuxovými clustery HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Cluster Hadoop na HDInsight**. Viz [Začínáme s HDInsight na Linuxu](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* Cluster Hadoop na HDInsight. Viz [Začínáme s HDInsight na Linuxu](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* **Bash na Ubuntu na Windows 10**.  Příklady v tomto článku používají prostředí Bash ve Windows 10. Postup instalace najdete v [příručce k instalaci podsystému Windows pro Linux pro Windows 10.](https://docs.microsoft.com/windows/wsl/install-win10)  Ostatní [unixové granáty](https://www.gnu.org/software/bash/) budou fungovat také.  Příklady s některými drobnými úpravami mohou fungovat na příkazovém řádku systému Windows.  Případně můžete použít prostředí Windows PowerShell.
+* Bash na Ubuntu na Windows 10.  Příklady v tomto článku používají prostředí Bash ve Windows 10. Postup instalace najdete v [příručce k instalaci podsystému Windows pro Linux pro Windows 10.](https://docs.microsoft.com/windows/wsl/install-win10)  Ostatní [unixové granáty](https://www.gnu.org/software/bash/) budou fungovat také.  Příklady s některými drobnými úpravami mohou fungovat na příkazovém řádku systému Windows.  Nebo můžete použít prostředí Windows PowerShell.
 
-* **jq**, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* jq, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
-* **Prostředí Windows PowerShell**.  Případně můžete použít [Bash](https://www.gnu.org/software/bash/).
+* Prostředí Windows PowerShell.  Nebo můžete použít [Bash](https://www.gnu.org/software/bash/).
 
-## <a name="base-uri-for-ambari-rest-api"></a>Základní identifikátor URI pro rozhraní API pro odpočinek Ambari
+## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Základní identifikátor jednotného prostředku pro rozhraní API ambari rest API
 
  Základní identifikátor URI (Uniform Resource Identifier) pro rozhraní API `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`Ambari REST na rozhraní HDInsight je , kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI **rozlišují malá a velká písmena**.  Zatímco název clusteru v plně kvalifikované části názvu domény (Plně`CLUSTERNAME.azurehdinsight.net`kvalifikovaný název domény) uri ( ) je malá a velká písmena, ostatní výskyty v URI jsou malá a velká písmena.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Připojení k Ambari na HDInsight vyžaduje HTTPS. Použijte název účtu správce (výchozí je **správce)** a heslo, které jste zadali při vytváření clusteru.
 
@@ -48,6 +48,7 @@ Pro clustery balíčků podnikového `admin`zabezpečení použijte místo něho
 ## <a name="examples"></a>Příklady
 
 ### <a name="setup-preserve-credentials"></a>Nastavení (zachovat pověření)
+
 Zachovejte pověření, abyste je pro každý příklad nezadali znovu.  Název clusteru bude zachován v samostatném kroku.
 
 **A. Bash**  
@@ -64,7 +65,8 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
 ### <a name="identify-correctly-cased-cluster-name"></a>Správně identifikovat název clusteru s velikostmi písmen
-Skutečné velikosti písmen názvu clusteru se mohou lišit od očekávání v závislosti na způsobu vytvoření clusteru.  Kroky zde zobrazí skutečné velikostě písmen a pak jej uložte do proměnné pro všechny následující příklady.
+
+Skutečné velikosti písmen názvu clusteru se mohou lišit od očekávání.  Kroky zde zobrazí skutečné velikostě písmen a pak jej uložte do proměnné pro všechny pozdější příklady.
 
 Upravte níže uvedené `CLUSTERNAME` skripty a nahraďte je názvem clusteru. Pak zadejte příkaz. (Název clusteru pro hlavní název sítě se nerozlišují malá a velká písmena.)
 
@@ -99,9 +101,9 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
 ```
 
-### <a name="get-the-fqdn-of-cluster-nodes"></a><a name="example-get-the-fqdn-of-cluster-nodes"></a>Získání hlavního název sítě clusteru uzlů
+### <a name="get-the-fqdn-of-cluster-nodes"></a>Získání hlavního název sítě clusteru uzlů
 
-Při práci s HDInsight, budete muset znát plně kvalifikovaný název domény (FQDN) uzlu clusteru. Hlavní název sítě pro různé uzly v clusteru můžete snadno načíst pomocí následujících příkladů:
+Možná budete potřebovat znát plně kvalifikovaný název domény (FQDN) uzlu clusteru. Hlavní název sítě pro různé uzly v clusteru můžete snadno načíst pomocí následujících příkladů:
 
 **Všechny uzly**  
 
@@ -159,13 +161,13 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.host_components.HostRoles.host_name
 ```
 
-### <a name="get-the-internal-ip-address-of-cluster-nodes"></a><a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>Získání interní IP adresy uzlů clusteru
+### <a name="get-the-internal-ip-address-of-cluster-nodes"></a>Získání interní IP adresy uzlů clusteru
 
-Ip adresy vrácené příklady v této části nejsou přímo přístupné přes internet. Jsou přístupné jenom v rámci virtuální sítě Azure, která obsahuje cluster HDInsight.
+IP adresy vrácené příklady v této části nejsou přímo přístupné přes internet. Jsou přístupné jenom v rámci virtuální sítě Azure, která obsahuje cluster HDInsight.
 
 Další informace o práci s HDInsight a virtuálními sítěmi najdete [v tématu Plánování virtuální sítě pro HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
-Chcete-li najít adresu IP, musíte znát interní plně kvalifikovaný název domény (FQDN) uzlů clusteru. Jakmile budete mít hlavní název souboru, můžete získat IP adresu hostitele. Následující příklady první dotaz Ambari pro reqdn všech uzlů hostitele, pak dotaz Ambari pro IP adresu každého hostitele.
+Chcete-li najít adresu IP, musíte znát interní plně kvalifikovaný název domény (FQDN) uzlů clusteru. Jakmile budete mít hlavní název souboru, můžete získat IP adresu hostitele. Následující příklady první dotaz Ambari pro reqdn všech uzlů hostitele. Pak se dotazuje Ambari na IP adresu každého hostitele.
 
 ```bash
 for HOSTNAME in $(curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" | jq -r '.items[].Hosts.host_name')
@@ -183,7 +185,7 @@ foreach($item in $respObj.items) {
     $hostName = [string]$item.Hosts.host_name
     $hostInfoResp = Invoke-WebRequest -Uri "$uri/$hostName" `
         -Credential $creds -UseBasicParsing
-    $hostInfoObj = ConvertFrom-Json $hostInfoResp 
+    $hostInfoObj = ConvertFrom-Json $hostInfoResp
     $hostIp = $hostInfoObj.Hosts.ip
     "$hostName <--> $hostIp"
 }
@@ -191,7 +193,7 @@ foreach($item in $respObj.items) {
 
 ### <a name="get-the-default-storage"></a>Získání výchozího úložiště
 
-Když vytvoříte cluster HDInsight, musíte použít účet úložiště Azure nebo úložiště datového jezera jako výchozí úložiště pro cluster. Ambari můžete použít k načtení těchto informací po vytvoření clusteru. Například pokud chcete číst a zapisovat data do kontejneru mimo HDInsight.
+Clustery HDInsight musí jako výchozí úložiště používat účet úložiště Azure nebo úložiště datových jezer. Ambari můžete použít k načtení těchto informací po vytvoření clusteru. Například pokud chcete číst a zapisovat data do kontejneru mimo HDInsight.
 
 Následující příklady načítají výchozí konfiguraci úložiště z clusteru:
 
@@ -253,7 +255,7 @@ Vrácená hodnota je podobná jednomu z následujících příkladů:
 > [!NOTE]  
 > Rutina [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) poskytovaná [prostředím Azure PowerShell](/powershell/azure/overview) také vrací informace o úložišti pro cluster.
 
-### <a name="get-all-configurations"></a><a name="get-all-configurations"></a>Získejte všechny konfigurace
+### <a name="get-all-configurations"></a>Získejte všechny konfigurace
 
 Získejte konfigurace, které jsou k dispozici pro váš cluster.
 
@@ -267,7 +269,7 @@ $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v
 $respObj.Content
 ```
 
-Tento příklad vrátí dokument JSON obsahující aktuální konfiguraci (identifikovanou hodnotou *značky)* pro součásti nainstalované v clusteru. Následující příklad je výňatek z dat vrácených z typu clusteru Spark.
+Tento příklad vrátí dokument JSON obsahující aktuální konfiguraci pro nainstalované součásti. Viz hodnota *značky.* Následující příklad je výňatek z dat vrácených z typu clusteru Spark.
 
 ```json
 "jupyter-site" : {
@@ -305,10 +307,11 @@ Tento příklad vrátí dokument JSON obsahující aktuální `livy2-conf` konfi
 1. Vytvořit `newconfig.json`.  
    Upravte a zadejte níže uvedené příkazy:
 
-   * Nahraďte `livy2-conf` požadovanou komponentou.
+   * Nahraďte `livy2-conf` novou komponentou.
    * Nahraďte `INITIAL` skutečnou `tag` hodnotou načtenou z [možnosti Získat všechny konfigurace](#get-all-configurations).
 
-     **A. Bash**  
+     **A. Bash**
+
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
      | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
@@ -326,11 +329,11 @@ Tento příklad vrátí dokument JSON obsahující aktuální `livy2-conf` konfi
      $resp.Content | C:\HD\jq\jq-win64 --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
-     Jq se používá k přeměně dat načtených z HDInsight na novou konfigurační šablonu. Konkrétně tyto příklady provádět následující akce:
+     Jq se používá k přeměně dat načtených z HDInsight na novou konfigurační šablonu. Konkrétně tyto příklady provést následující akce:
 
    * Vytvoří jedinečnou hodnotu obsahující řetězec "verze" a datum, které je uloženo v aplikaci `newtag`.
 
-   * Vytvoří kořenový dokument pro novou požadovanou konfiguraci.
+   * Vytvoří kořenový dokument pro novou konfiguraci.
 
    * Získá obsah `.items[]` pole a přidá jej pod **desired_config** element.
 
@@ -382,11 +385,11 @@ Tento příklad vrátí dokument JSON obsahující aktuální `livy2-conf` konfi
     $resp.Content
     ```  
 
-    Tyto příkazy odešlí obsah souboru **newconfig.json** do clusteru jako novou požadovanou konfiguraci. Požadavek vrátí dokument JSON. Prvek **versionTag** v tomto dokumentu by měl odpovídat verzi, kterou jste odeslali, a objekt **configs** obsahuje požadované změny konfigurace.
+    Tyto příkazy odešlí obsah souboru **newconfig.json** do clusteru jako novou konfiguraci. Požadavek vrátí dokument JSON. Prvek **versionTag** v tomto dokumentu by měl odpovídat verzi, kterou jste odeslali, a objekt **configs** obsahuje požadované změny konfigurace.
 
 ### <a name="restart-a-service-component"></a>Restartování součásti služby
 
-V tomto okamžiku, pokud se podíváte na webové uživatelské uživatelské nastavení Ambari, služba Spark označuje, že je třeba restartovat, než se nová konfigurace projeví. K restartování služby použijte následující kroky.
+V tomto okamžiku webové uživatelské uživatelské nastavení Ambari označuje, že služba Spark musí být restartována, než se nová konfigurace projeví. K restartování služby použijte následující kroky.
 
 1. K povolení režimu údržby služby Spark2 použijte následující:
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
-ms.date: 08/26/2019
-ms.openlocfilehash: 1e13c7ef8eae81ef2a12a8761b0596f6329f94dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: a95c4d654650276c815c5b23fb2c6f8a6d06bc2e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937908"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383453"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Poradce při potížích s chybami při vytváření clusteru pomocí Azure HDInsight
 

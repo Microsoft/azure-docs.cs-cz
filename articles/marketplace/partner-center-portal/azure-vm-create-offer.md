@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 706a8c554dafbf792471729929d6e6484dfa35ae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266081"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383804"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Vytvoření nabídky virtuálního počítače Azure
 
@@ -116,9 +116,9 @@ Před pokračováním vyberte **Uložit pracovní verzi.**
 
 Tato stránka umožňuje definovat kategorie a odvětví používaná k seskupení nabídky na trhu, verzi aplikace a právní smlouvy, které vaši nabídku podporují.
 
-### <a name="category"></a>Kategorie
+### <a name="categories"></a>Kategorie
 
-Vyberte minimálně jednu a maximálně tři kategorie. Tyto kategorie se používají k umístění vaší nabídky do příslušných oblastí vyhledávání na trhu. V popisu nabídky vysvětlete, jak vaše nabídka podporuje tyto kategorie. Nabídky virtuálních automatů se zobrazují v kategorii **Výpočetní výkon** na Azure Marketplace.
+Vyberte minimálně jednu a maximálně pět kategorií. Tyto kategorie se používají k umístění vaší nabídky do příslušných oblastí vyhledávání na trhu. V popisu nabídky vysvětlete, jak vaše nabídka podporuje tyto kategorie. Nabídky virtuálních automatů se zobrazují v kategorii **Výpočetní výkon** na Azure Marketplace.
 
 ### <a name="legal"></a>Právní informace
 
@@ -234,7 +234,6 @@ Poskytněte web podpory, kde se zákazníci mohou dostat k vašemu týmu podpory
 
 - Web globální podpory Azure
 - Web podpory Azure Government
-- Další operace
 
 ### <a name="partner-support-contact"></a>Kontakt na podporu partnera
 
@@ -389,6 +388,8 @@ Každý plán musí být k dispozici alespoň na jednom trhu. Zaškrtněte polí
 
 Pokud jste již nastavili ceny pro svůj plán v amerických dolarech (USD) a přidali další umístění na trhu, cena nového trhu bude vypočtena podle aktuálních směnných kurzů. Před publikováním vždy zkontrolujte cenu pro každý trh. Po uložení změn zkontrolujte ceny pomocí odkazu **Vývozní ceny (xlsx).**
 
+Když odeberete trh, zákazníci z tohoto trhu pomocí aktivních nasazení nebudou moci vytvářet nová nasazení nebo vertikálně navýšit své stávající nasazení. Stávající nasazení nebudou ovlivněna.
+
 #### <a name="pricing"></a>Ceny
 
 **Licenční model** – Vyberte **měsíční fakturovaný plán založený na využití, chcete-li** nakonfigurovat ceny pro tento plán, nebo **přineste vlastní licenci,** která zákazníkům umožní používat tento plán s jejich stávající licencí.
@@ -421,16 +422,16 @@ Každý plán můžete navrhnout tak, aby byl viditelný pro všechny nebo pouze
 
 #### <a name="hide-plan"></a>Skrýt plán
 
-Pokud váš virtuální počítač je určen k použití pouze nepřímo, když odkazuje prostřednictvím jiné šablony řešení nebo spravované aplikace, zaškrtněte toto políčko publikovat virtuální počítač nebo nabídku, ale skrýt před zákazníky vyhledávání a procházení přímo.
+Pokud váš virtuální počítač je určen k použití pouze nepřímo, když odkazuje prostřednictvím jiné šablony řešení nebo spravované aplikace, zaškrtněte toto políčko publikovat virtuální počítač, ale skrýt před zákazníky vyhledávání a procházení přímo.
 
 > [!NOTE]
-> Skryté plány nepodporují odkazy náhledu.
+> Skryté plány nepodporují odkazy ve verzi Preview.
 
 Před pokračováním vyberte **Uložit pracovní verzi.**
 
 ### <a name="technical-configuration"></a>Technická konfigurace
 
-Zadejte obrázky a další technické vlastnosti spojené s tímto plánem.
+Zadejte obrázky a další technické vlastnosti spojené s tímto plánem. Podrobnosti najdete [v tématu Vytvoření technického prostředku virtuálního počítače Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
 
 > [!NOTE]
 > Tato karta se nezobrazí, pokud jste tento plán nakonfigurovali pro opakované použití balíčků z jiného plánu na kartě **Nastavení plánu.**
@@ -459,7 +460,7 @@ Otevřete veřejné nebo soukromé porty na nasazeném virtuálním počítači.
 
 #### <a name="vm-images"></a>Image virtuálních počítačů
 
-Zadejte verzi disku a identifikátor URI SAS pro bitové kopie virtuálních počítačů. Přidejte až 16 datových disků pro každou bitovou kopii virtuálního počítače. Zadejte pouze jednu novou verzi bitové kopie na plán v daném příspěvku. Po publikování obrázku jej nelze upravit, ale můžete ho odstranit. Odstraněním verze zabráníte uživatelům v nasazení nové instance odstraněné verze.
+Zadejte verzi disku a identifikátor URI SAS pro bitové kopie virtuálních počítačů. Přidejte až 16 datových disků pro každou bitovou kopii virtuálního počítače. Zadejte pouze jednu novou verzi bitové kopie na plán v daném příspěvku. Po publikování obrázku jej nelze upravit, ale můžete ho odstranit. Odstranění verze zabrání novým i stávajícím uživatelům v nasazení nové instance odstraněné verze.
 
 - **Verze disku** je verze obrázku, kterou poskytujete.
 - **Identifikátor URI sas** je umístění ve službě Azure Storage, kde jste uložili virtuální pevný disk operačního systému.

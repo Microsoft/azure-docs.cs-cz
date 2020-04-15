@@ -2,7 +2,7 @@
 title: Dokumentace ke službě Azure Security Center pro IoT
 summary: Azure Security Center pro IoT je služba zabezpečení cloudu založená na Azure, která poskytuje komplexní ochranu zařízení IoT před hrozbami.
 metadata:
-  title: Dokumentace ke službě Azure Security Center pro IoT
+  title: Dokumentace
   description: Zjistěte, jak Azure Security Center pro IoT, služba zabezpečení cloudu založená na Azure, poskytuje komplexní ochranu zařízení IoT před hrozbami.
   services: service
   ms.service: asc-for-iot
@@ -11,12 +11,12 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 09/23/2019
-  ms.openlocfilehash: 251cb6efab940993c6242bc921855d9a4a98819f
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: f5b399ad604918f7644b90e7b5f852bb27c46be0
+  ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74554143"
+  ms.lasthandoff: 04/14/2020
+  ms.locfileid: "81310972"
 landingContent:
 - title: Informace o službě Azure Security Center pro IoT
   linkLists:

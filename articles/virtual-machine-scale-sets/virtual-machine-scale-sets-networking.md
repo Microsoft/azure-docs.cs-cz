@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
-ms.openlocfilehash: 7e6b8ea702d28fcd2747115710a8b1a8ec2bb1b2
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f048c7d89da0ab75c321cd8e3932ea97c7ed09c
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270515"
+ms.locfileid: "81310017"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Síťové služby pro škálovací sady virtuálních počítačů Azure
 
@@ -69,6 +69,14 @@ az vmss create \
 
 >[!NOTE]
 > Po vytvoření škálovací sady nelze port back-endu změnit pro pravidlo vyrovnávání zatížení používané sondou stavu systému vyrovnávání zatížení. Chcete-li změnit port, můžete odebrat sondu stavu aktualizací škálovací sady virtuálního počítače Azure, aktualizovat port a pak znovu nakonfigurovat sondu stavu. 
+
+Další informace o nástroji pro vyrovnávání zatížení a škálovací sady virtuálních počítačů najdete [v tématu Virtuální sítě a virtuální počítače v Azure](../../articles/virtual-machines/windows/network-overview.md).
+
+Následující metody lze použít k nasazení škálovací sady virtuálních strojů s existujícím nástrojem pro vyrovnávání zatížení Azure.
+
+* [Nakonfigurujte škálovací sadu virtuálních strojů pomocí existujícího nástroje Provynaci zatížení Azure pomocí portálu Azure](../../articles/load-balancer/configure-vm-scale-set-portal.md).
+* [Nakonfigurujte škálovací sadu virtuálních strojů pomocí existujícího nástroje Provynaci zatížení Azure pomocí Azure PowerShellu](../../articles/load-balancer/configure-vm-scale-set-powershell.md).
+* [Nakonfigurujte škálovací sadu virtuálních strojů pomocí existujícího nástroje pro vyrovnávání zatížení Azure pomocí rozhraní příkazového příkazového příkazu Kontu Azure](../../articles/load-balancer/configure-vm-scale-set-cli.md).
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Vytvoření škálovací sady, která odkazuje na aplikační bránu
 Pokud chcete vytvořit škálovací sadu, která používá aplikační bránu, odkažte v sekci ipConfigurations této škálovací sady na fond adres back-endu aplikační brány jako v této konfiguraci šablony ARM:

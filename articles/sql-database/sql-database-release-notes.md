@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/14/2020
 ms.author: sstein
-ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 7d922aa0727ad28054d050a29039951d3f04985f
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011442"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383372"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi databáze SQL
 
@@ -49,6 +49,7 @@ Tento článek uvádí funkce databáze SQL, které jsou aktuálně ve verzi Pub
 | <a href="https://aka.ms/managed-instance-aadlogins">Objekty serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvořte přihlášení na úrovni serveru pomocí <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">příkazu CREATE LOGIN FROM EXTERNAL PROVIDER.</a> |
 | [Transakční replikace](sql-database-managed-instance-transactional-replication.md) | Replikujte změny z tabulek do jiných databází umístěných v klientech spravované instance, jednoduché databáze nebo SQL Server instance nebo aktualizovat tabulky při změně některých řádků v jiných spravovaných insposací nebo SQL Server instance. Další informace naleznete [v tématu Konfigurace replikace v databázi spravovaných instancí Azure SQL Database](replication-with-sql-database-managed-instance.md). |
 | Detekce hrozeb |Další informace naleznete [v tématu Konfigurace zjišťování hrozeb ve spravované instanci Azure SQL Database](sql-database-managed-instance-threat-detection.md).|
+| Dlouhodobé uchovávání záloh | Další informace najdete [v tématu Konfigurace dlouhodobé horečné retence ve spravované instanci Azure SQL Database](sql-database-managed-instance-long-term-backup-retention-configure.md). | 
 
 ---
 
@@ -167,7 +168,7 @@ Dialogová okna služby zprostředkovatele mezi databázemi zastaví doručován
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Impersonifikace typů přihlášení Azure AD není podporována
 
 Zosobnění `EXECUTE AS USER` pomocí `EXECUTE AS LOGIN` nebo následující objekty AAD není podporována:
--   Aliased AAD uživatelů. V tomto případě `15517`je vrácena následující chyba .
+-    Aliased AAD uživatelů. V tomto případě `15517`je vrácena následující chyba .
 - AAD přihlášení a uživatelé na základě aplikací AAD nebo instančních objektů. V tomto případě `15517` jsou vráceny následující chyby a `15406`.
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryparametr není v sp_send_db_mail podporován

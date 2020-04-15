@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 4cd2969f9a56c96af2b2c6db216f6829a080260c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7feb0f00c5431048d19d4ad6cb3860f6eb8ed052
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371282"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312710"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a zónově redundantní služby Application Gateway v2 
 
@@ -26,16 +26,16 @@ Nová skladová položka v2 obsahuje následující vylepšení:
   Redundance zóny je k dispozici jenom tam, kde jsou k dispozici zóny Azure. V jiných oblastech jsou podporovány všechny ostatní funkce. Další informace najdete v tématu [Co jsou zóny dostupnosti v Azure?](../availability-zones/az-overview.md#services-support-by-region)
 - **Static VIP**: Aplikační brána v2 SKU podporuje výhradně statický typ VIP. Tím je zajištěno, že virtuální ip adresy přidružené k bráně aplikace nezmění pro životní cyklus nasazení, a to i po restartování.  Ve v1 není statická virtuální ip adresa, takže místo IP adresy pro směrování názvu domény do app services přes aplikační bránu je nutné použít adresu URL brány aplikace namísto IP adresy pro směrování názvu domény do služby App Services.
 - **Přepsání záhlaví**: Aplikační brána umožňuje přidávat, odebírat nebo aktualizovat hlavičky požadavků a odpovědí HTTP pomocí sku sku v2. Další informace naleznete [v tématu Přepis záhlaví PROTOKOLU HTTP pomocí aplikace Gateway](rewrite-http-headers.md)
-- **Integrace trezoru klíčů**: Aplikační brána v2 podporuje integraci s trezorem klíčů pro serverové certifikáty, které jsou připojeny k naslouchacím líným a listenerům s povoleným protokolem HTTPS. Další informace naleznete v [tématu SSL ukončení s certifikáty trezoru klíčů](key-vault-certs.md).
+- **Integrace trezoru klíčů**: Aplikační brána v2 podporuje integraci s trezorem klíčů pro serverové certifikáty, které jsou připojeny k naslouchacím líným a listenerům s povoleným protokolem HTTPS. Další informace naleznete [v tématu Ukončení TLS s certifikáty trezoru klíčů](key-vault-certs.md).
 - **Řadič příchozího přenosu dat služby Azure Kubernetes:** Řadič příchozího přenosu dat služby Application Gateway v2 umožňuje, aby se aplikační brána Azure používala jako příchozí přenos dat pro službu Azure Kubernetes Service (AKS) známou jako Cluster AKS. Další informace naleznete v tématu [Co je řadič příchozího přenosu dat brány aplikace?](ingress-controller-overview.md).
-- **Vylepšení výkonu**: Skladová položka v2 nabízí až 5x lepší výkon ssl zátěže ve srovnání se standardní/WAF SKU.
+- **Vylepšení výkonu**: Skladová položka v2 nabízí až 5x lepší výkon tls snížení zátěže ve srovnání se standardní/WAF SKU.
 - **Rychlejší nasazení a aktualizace** Skladová položka v2 poskytuje rychlejší nasazení a čas aktualizace ve srovnání se standardní/WAF SKU. To zahrnuje také změny konfigurace WAF.
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-SKU Standard_v2 a WAF_v2 je k dispozici v následujících oblastech: Severní střed USA, Jižní Střed USA, Západní USA, Západní USA 2, Východní USA, Východní USA 2, Střední USA, Severní Evropa, Západní Evropa, Jihovýchodní Asie, Francie – střed, Velká Británie – západ, Japonsko – východ, Japonsko – západ, Austrálie – východ , Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Východní Asie, Korea – střed, Korea – jih, Spojené království – jih, Střední Indie, Západní Indie, Jižní Indie.
+SKU Standard_v2 a WAF_v2 je k dispozici v následujících oblastech: Severní střed USA, Jižní Střed USA, Západní USA, Západní USA 2, Východní USA, Východní USA 2, Střední USA, Severní Evropa, Západní Evropa, Jihovýchodní Asie, Francie – střed, Velká Británie – západ, Japonsko – východ, Japonsko – západ, Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Východní Asie, Korea – střed, Korea – jih , Spojené království – jih, střední Indie, západní Indie, jižní Indie.
 
 ## <a name="pricing"></a>Ceny
 
@@ -77,7 +77,7 @@ Celková cena = $148.8 + $297.6 = $446.4
 
 **Příklad 2**
 
-Aplikační brána standard_v2 je zřízena po dobu jednoho měsíce s nulovými minimálními instancemi a během této doby obdrží 25 nových připojení SSL za sekundu, průměr přenosu dat 8,88 Mb/s. Za předpokladu, že spojení je krátkodobé, vaše cena by byla:
+Aplikační brána standard_v2 je zřízena po dobu jednoho měsíce s nulovými minimálními instancemi a během této doby obdrží 25 nových připojení TLS za sekundu, průměr přenosu dat 8,88 Mb/s. Za předpokladu, že spojení je krátkodobé, vaše cena by byla:
 
 Pevná cena = 744(hodin) * $0.20 = $148.8
 
@@ -105,7 +105,7 @@ V tomto případě se vám účtuje celých pět instancí, i když není žádn
 
 **Příklad 4**
 
-Aplikační brána standard_v2 je zřízena po dobu jednoho měsíce, s minimálně pět instancí, ale tentokrát je v průměru 125 mb/s přenos dat a 25 SSL připojení za sekundu. Za předpokladu, že neexistuje žádný provoz a spojení jsou krátkodobé, vaše cena by byla:
+Aplikační brána standard_v2 je zřízena po dobu jednoho měsíce, s minimálně pěti instancemi, ale tentokrát je v průměru 125 Mb/s přenos dat a 25 připojení TLS za sekundu. Za předpokladu, že neexistuje žádný provoz a spojení jsou krátkodobé, vaše cena by byla:
 
 Pevná cena = 744(hodin) * $0.20 = $148.8
 
@@ -117,7 +117,7 @@ V takovém případě se vám bude účtovat celých pět instancí plus sedm je
 
 **Příklad 5**
 
-WAF_v2 brány aplikace se zřizováno po dobu jednoho měsíce. Během této doby obdrží 25 nových připojení SSL za s, průměr 8.88-Mbps přenos dat a dělá 80 žádost za sekundu. Za předpokladu, že připojení jsou krátkodobé a výpočet výpočetní jednotky pro aplikaci podporuje 10 RPS na výpočetní jednotku, vaše cena by byla:
+WAF_v2 brány aplikace se zřizováno po dobu jednoho měsíce. Během této doby obdrží 25 nových připojení TLS za sekundu, průměr přenosu dat 8,88 Mb/s a činí požadavek 80 za sekundu. Za předpokladu, že připojení jsou krátkodobé a výpočet výpočetní jednotky pro aplikaci podporuje 10 RPS na výpočetní jednotku, vaše cena by byla:
 
 Pevná cena = 744(hodin) * $0.36 = $267.84
 
@@ -152,10 +152,10 @@ Následující tabulka porovnává funkce, které jsou k dispozici s každou skl
 | Přesměrování provozu                               | &#x2713; | &#x2713; |
 | Firewall webových aplikací (WAF)                    | &#x2713; | &#x2713; |
 | Vlastní pravidla WAF                                  |          | &#x2713; |
-| Ukončení protokolu SSL (Secure Sockets Layer)            | &#x2713; | &#x2713; |
-| Komplexní šifrování SSL                         | &#x2713; | &#x2713; |
+| Ukončení zabezpečení transportní vrstvy (TLS) /SSL (Secure Sockets L)            | &#x2713; | &#x2713; |
+| Komplexní šifrování TLS                         | &#x2713; | &#x2713; |
 | Spřažení relací                                  | &#x2713; | &#x2713; |
-| Stránky vlastních chyb                                | &#x2713; | &#x2713; |
+| Vlastní chybové stránky                                | &#x2713; | &#x2713; |
 | Podpora protokolu WebSocket                                 | &#x2713; | &#x2713; |
 | Podpora HTTP/2                                    | &#x2713; | &#x2713; |
 | Vyprázdnění připojení                               | &#x2713; | &#x2713; |
@@ -167,7 +167,7 @@ Následující tabulka porovnává funkce, které jsou k dispozici s každou skl
 
 |Rozdíl|Podrobnosti|
 |--|--|
-|Ověřovací certifikát|Není podporováno.<br>Další informace naleznete v [tématu Přehled ssl od konce do konce pomocí aplikační brány](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
+|Ověřovací certifikát|Není podporováno.<br>Další informace naleznete v [tématu Přehled koncového do koncového tls s aplikační bránou](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
 |Míchání Standard_v2 a standardní aplikační brány ve stejné podsíti|Nepodporuje se|
 |Uživatelem definovaná trasa (UDR) v podsíti Aplikační brána|Podporováno (konkrétní scénáře). V náhledu.<br> Další informace o podporovaných scénářích naleznete v [tématu Přehled konfigurace aplikační brány](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).|
 |NSG pro rozsah příchozích portů| - 65200 až 65535 pro Standard_v2 Skladové položky<br>- 65503 až 65534 pro standardní skladovou položku.<br>Další informace naleznete v [nejčastějších dotazech](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|

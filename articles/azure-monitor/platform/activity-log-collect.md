@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/24/2020
-ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 04/14/2020
+ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396783"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382856"
 ---
 # <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Shromažďování a analýza protokolu aktivit Azure v Azure Monitoru
 [Protokol aktivit Azure](platform-logs-overview.md) je protokol [platformy,](platform-logs-overview.md) který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Zatímco můžete zobrazit protokol aktivit na webu Azure Portal, měli byste ho nakonfigurovat tak, aby se odesílal do pracovního prostoru Log Analytics, aby povolil další funkce Azure Monitoru. Tento článek popisuje, jak provést tuto konfiguraci a jak odeslat protokol aktivit do úložiště Azure a centra událostí.
@@ -25,7 +25,8 @@ Shromažďování protokolu aktivit v pracovním prostoru Analýzy protokolů po
 - Uložte položky protokolu aktivit po dobu delší než 90 dní.
 - Konsolidujte položky protokolu z více předplatných Azure a tenantů do jednoho umístění pro analýzu společně.
 
-
+> [!IMPORTANT]
+> Shromažďování protokolů mezi tenanty vyžaduje [Azure Lighthouse](/azure/lighthouse).
 
 ## <a name="collecting-activity-log"></a>Shromažďování protokolu aktivit
 Protokol aktivit se shromažďuje automaticky pro [zobrazení na webu Azure Portal](activity-log-view.md). Chcete-li jej shromažďovat v pracovním prostoru Analýzy protokolů nebo jej odeslat do centra úložiště Azure nebo událostí, vytvořte [diagnostické nastavení](diagnostic-settings.md). Jedná se o stejnou metodu, kterou používají protokoly prostředků, takže je konzistentní pro všechny [protokoly platformy](platform-logs-overview.md).  

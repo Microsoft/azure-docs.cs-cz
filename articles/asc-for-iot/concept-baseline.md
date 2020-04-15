@@ -1,5 +1,5 @@
 ---
-title: Principy směrného plánu Centra zabezpečení Azure pro IoT| Dokumenty společnosti Microsoft
+title: Směrné plány a vlastní kontroly
 description: Přečtěte si o konceptu Centra zabezpečení Azure pro směrný plán IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c52a3e55e3801eaaac885b9a3c364283f74906ba
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72176623"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311645"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Centrum zabezpečení Azure pro směrné plány IoT a vlastní kontroly
 
@@ -28,11 +28,11 @@ Tento článek vysvětluje Azure Security Center pro směrný plán IoT a shrnuj
 
 ## <a name="baseline"></a>Standardní hodnoty
 
-Směrný plán stanoví standardní chování pro každé zařízení a usnadňuje vytvoření neobvyklého chování nebo odchylky od očekávaných norem.  
+Směrný plán stanoví standardní chování pro každé zařízení a usnadňuje vytvoření neobvyklého chování nebo odchylky od očekávaných norem.
 
 ## <a name="baseline-custom-checks"></a>Vlastní kontroly podle směrného plánu
 
-Vlastní kontroly podle směrného plánu vytvoří vlastní seznam kontrol pro každý směrný plán zařízení pomocí **dvojčete identity modulu** zařízení. 
+Vlastní kontroly podle směrného plánu vytvoří vlastní seznam kontrol pro každý směrný plán zařízení pomocí **dvojčete identity modulu** zařízení.
 
 ## <a name="setting-baseline-properties"></a>Nastavení vlastností směrného plánu
 

@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: c7c27f00b9f8b4fdcd8f735f842edb8f66803c6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c0c0ab84e60335f58ac075459b95cfabb9135ac
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278000"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311966"
 ---
 # <a name="renew-application-gateway-certificates"></a>Obnovení certifikátů aplikační brány
 
-V určitém okamžiku budete muset obnovit certifikáty, pokud jste nakonfigurovali aplikační bránu pro šifrování SSL.
+V určitém okamžiku budete muset obnovit certifikáty, pokud jste nakonfigurovali aplikační bránu pro šifrování TLS/SSL.
 
 Certifikát přidružený k naslouchací proces můžete obnovit pomocí portálu Azure, Azure PowerShellu nebo azure cli:
 
@@ -62,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o konfiguraci snižování zátěže SSL pomocí brány aplikace Azure najdete v [tématu Konfigurace snižování zátěže protokolu SSL.](application-gateway-ssl-portal.md)
+Informace o konfiguraci snižování zátěže TLS pomocí brány aplikace Azure najdete v [tématu Konfigurace snižování zátěže TLS](application-gateway-ssl-portal.md)

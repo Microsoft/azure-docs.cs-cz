@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: f5aaf8adf33d27f8ebb99c8ca3a873d958632a4f
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616834"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314297"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -124,6 +124,16 @@ Chcete-li nasadit model jako webovou službu, musíte zadat následující polo�
 
 Další informace naleznete v [tématu Nasazení modelů](how-to-deploy-and-where.md).
 
+#### <a name="controlled-rollout"></a>Řízené zavádění
+
+Při nasazování do služby Azure Kubernetes service můžete pomocí řízeného zavádění povolit následující scénáře:
+
+* Vytvoření více verzí koncového bodu pro nasazení
+* Proveďte testování A/B směrováním provozu do různých verzí koncového bodu.
+* Přepínejte mezi verzemi koncových bodů aktualizací procenta provozu v konfiguraci koncového bodu.
+
+Další informace naleznete [v tématu Řízené zavádění modelů ML](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview).
+
 #### <a name="iot-edge-devices"></a>Zařízení IoT Edge
 
 Modely se zařízeními IoT můžete používat prostřednictvím **modulů Azure IoT Edge**. Moduly IoT Edge se nasazují do hardwarového zařízení, které umožňuje odvození nebo vyhodnocování modelu na zařízení.
@@ -136,12 +146,20 @@ Microsoft Power BI podporuje použití modelů strojového učení pro analýzu 
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Zachyťte data zásad správného řízení potřebná pro zachycení životního cyklu ML od konce
 
-Azure ML umožňuje sledovat komplexní auditní stopu všech vašich prostředků ML. Konkrétně:
+Azure ML umožňuje sledovat stopu auditu od konce na konci všech vašich prostředků ML pomocí metadat.
 
 - Azure ML [se integruje s Gitem](how-to-set-up-training-targets.md#gitintegration) a sleduje informace o tom, ze kterého úložiště nebo větvení nebo potvrzení kódu pochází.
-- [Datové sady Azure ML](how-to-create-register-datasets.md) vám pomůžou sledovat data, profil a verze. 
+- [Datové sady Azure ML](how-to-create-register-datasets.md) vám pomůžou sledovat data, profil a verze.
+- [Interpretabilita](how-to-machine-learning-interpretability.md) umožňuje vysvětlit vaše modely, splnit dodržování předpisů a pochopit, jak modely přicházejí k výsledku pro daný vstup.
 - Historie Azure ML Run ukládá snímek kódu, dat a výpočetních prostředků používaných k trénování modelu.
 - Registr modelu Azure ML zachycuje všechna metadata přidružená k vašemu modelu (který experiment trénoval, kde se nasazuje, pokud jsou jeho nasazení v pořádku).
+- [Integrace s Azure Event Grid](concept-event-grid-integration.md) umožňuje jednat na události v životním cyklu ML. Například registrace modelu, nasazení, posun dat a trénovací (spustit) události.
+
+> [!TIP]
+> Zatímco některé informace o modelech a datových sadách jsou automaticky zachyceny, můžete přidat další informace pomocí __značek__. Při hledání registrovaných modelů a datových sad v pracovním prostoru můžete značky použít jako filtr.
+>
+> Připojování datové sady s registrovaným modelem je volitelný krok. Informace o odkazování na datovou sadu při registraci modelu naleznete v odkazu na třídu [modelu.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py)
+
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Upozorňovat, automatizovat a upozorňovat na události v životním cyklu ml
 Azure ML publikuje klíčové události do Azure EventGrid, které se dají upozornit a automatizovat na událostech v životním cyklu ML. Další informace naleznete v [tomto dokumentu](how-to-use-event-grid.md).
@@ -157,7 +175,7 @@ Další informace naleznete v tématu [Jak povolit shromažďování dat modelu]
 
 ## <a name="retrain-your-model-on-new-data"></a>Přeškolení modelu na nová data
 
-Často budete chtít aktualizovat model, nebo dokonce přeškolit od začátku, jak budete dostávat nové informace. V některých případě je příjem nových dat očekávanou součástí domény. Jindy, jak je popsáno v [tématu Detekce posunu dat (náhled) na datové sady](how-to-monitor-datasets.md), může výkon modelu snížit tváří v tvář takovým věcem, jako jsou změny konkrétního senzoru, změny přirozených dat, jako jsou sezónní efekty, nebo funkce, které se ve vztahu k ostatním funkcím mění. 
+Často budete chtít ověřit model, aktualizovat, nebo dokonce přeškolit od začátku, jak budete dostávat nové informace. V některých případě je příjem nových dat očekávanou součástí domény. Jindy, jak je popsáno v [tématu Detekce posunu dat (náhled) na datové sady](how-to-monitor-datasets.md), může výkon modelu snížit tváří v tvář takovým věcem, jako jsou změny konkrétního senzoru, změny přirozených dat, jako jsou sezónní efekty, nebo funkce, které se ve vztahu k ostatním funkcím mění. 
 
 Neexistuje univerzální odpověď na otázku "Jak mám vědět, jestli mám přeškolit?" ale Azure ML události a monitorování nástroje dříve diskutované jsou dobrým výchozím bodem pro automatizaci. Jakmile se rozhodnete přeškolit, měli byste: 
 

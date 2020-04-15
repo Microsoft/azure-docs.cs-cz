@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 6abb4f632535f1bda7e9f337f111ba372a624f2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55373f71c78b6d45b9c78c52dea61a37b89b4a00
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239616"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383047"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Používání služby Azure Kubernetes se službou Apache Kafka na WEBU HDInsight
 
@@ -163,7 +163,7 @@ V tomto okamžiku Kafka a Azure Kubernetes Service jsou v komunikaci prostředni
     * `var topic = 'mytopic'`: `mytopic` Nahraďte se názvem tématu Kafka, které tato aplikace používá.
     * `var brokerHost = '176.16.0.13:9092`: `176.16.0.13` Nahraďte interní IP adresou jednoho z hostitelů brokera pro váš cluster.
 
-        Chcete-li najít interní IP adresu hostitelů brokerů (workernodes) v clusteru, najdete v dokumentu [Apache Ambari REST API.](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) Vyberte IP adresu jedné z položek, kde `wn`název domény začíná na .
+        Chcete-li najít interní IP adresu hostitelů brokerů (workernodes) v clusteru, najdete v dokumentu [Apache Ambari REST API.](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-internal-ip-address-of-cluster-nodes) Vyberte IP adresu jedné z položek, kde `wn`název domény začíná na .
 
 4. Z příkazového řádku `src` v adresáři nainstalujte závislosti a pomocí Dockeru vytvořte bitovou kopii pro nasazení:
 

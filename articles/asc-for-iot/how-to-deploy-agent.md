@@ -1,5 +1,5 @@
 ---
-title: Výběr a nasazení Azure Security Center pro agenta IoT| Dokumenty společnosti Microsoft
+title: Výběr a nasazení agentů zabezpečení
 description: Přečtěte si, jak výběr a nasazení Azure Security Center pro agenty zabezpečení IoT na zařízeních IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770012"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311202"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Výběr a nasazení agenta zabezpečení na zařízení IoT
 
@@ -29,7 +29,8 @@ Další informace naleznete v [tématu Referenční architektura agenta zabezpe�
 
 Agenti jsou vyvíjeny jako open-source projekty a jsou k dispozici ve dvou variantách: <br> [C](https://aka.ms/iot-security-github-c)a [C#](https://aka.ms/iot-security-github-cs).
 
-V tomto článku získáte informace o těchto tématech: 
+V tomto článku získáte informace o těchto tématech:
+
 > [!div class="checklist"]
 > * Porovnat příchutě agenta zabezpečení
 > * Objevte podporované platformy agentů
@@ -37,9 +38,9 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="understand-security-agent-options"></a>Principy možností agenta zabezpečení
 
-Každý Azure Security Center pro zabezpečení IoT agent chuť nabízí stejnou sadu funkcí a podporuje podobné možnosti konfigurace. 
+Každý Azure Security Center pro zabezpečení IoT agent chuť nabízí stejnou sadu funkcí a podporuje podobné možnosti konfigurace.
 
-Agent zabezpečení založený na C má nižší nároky na paměť a je ideální volbou pro zařízení s menším počtem dostupných prostředků. 
+Agent zabezpečení založený na C má nižší nároky na paměť a je ideální volbou pro zařízení s menším počtem dostupných prostředků.
 
 |     | Agent zabezpečení na bázi C | Agent zabezpečení založený na c# |
 | --- | ----------- | --------- |
@@ -59,20 +60,19 @@ Agent zabezpečení založený na C má nižší nároky na paměť a je ideáln
 
 ## <a name="security-agent-installation-guidelines"></a>Pokyny pro instalaci agenta zabezpečení
 
-Pro **systém Windows**: Skript Install SecurityAgent.ps1 musí být spuštěn z okna prostředí PowerShell správce. 
+Pro **systém Windows**: Skript Install SecurityAgent.ps1 musí být spuštěn z okna prostředí PowerShell správce.
 
 Pro **Linux**: InstallSecurityAgent.sh musí být spuštěn jako superuser. Doporučujeme předpojit instalační příkaz "sudo".
 
-
-## <a name="choose-an-agent-flavor"></a>Vyberte si agent chuť 
+## <a name="choose-an-agent-flavor"></a>Vyberte si agent chuť
 
 Odpovězte na následující otázky týkající se zařízení IoT a vyberte správného agenta:
 
-- Používáte _Windows Server_ nebo _Windows IoT Core_? 
+- Používáte _Windows Server_ nebo _Windows IoT Core_?
 
     [Nasazení agenta zabezpečení založeného na c#pro systém Windows](how-to-deploy-windows-cs.md).
 
-- Používáte linuxovou distribuci s architekturou x86? 
+- Používáte linuxovou distribuci s architekturou x86?
 
     [Nasazení agenta zabezpečení založeného na C pro Linux](how-to-deploy-linux-c.md).
 
@@ -90,10 +90,10 @@ Následující seznam obsahuje všechny aktuálně podporované platformy.
 
 |Azure Security Center pro agenta IoT |Operační systém |Architektura |
 |--------------|------------|--------------|
-|C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64, ARMv7|
-|C|Debian 9 |   x64, x86|
-|C#|Ubuntu 16.04    |x64|
+|C|Ubuntu 16.04 |    x64|
+|C|Ubuntu 18.04 |    x64, ARMv7|
+|C|Debian 9 |    x64, x86|
+|C#|Ubuntu 16.04     |x64|
 |C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    x64|
@@ -102,6 +102,6 @@ Následující seznam obsahuje všechny aktuálně podporované platformy.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o možnostech konfigurace najdete v návodu pro konfiguraci agenta. 
+Další informace o možnostech konfigurace najdete v návodu pro konfiguraci agenta.
 > [!div class="nextstepaction"]
 > [Konfigurace agenta, jak vést](./how-to-agent-configuration.md)

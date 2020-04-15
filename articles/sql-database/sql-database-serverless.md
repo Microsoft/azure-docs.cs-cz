@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 4/3/2020
-ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6a1d2f6079280002c868702a6547c8fd359a7c21
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657067"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310124"
 ---
 # <a name="azure-sql-database-serverless"></a>Bez serveru Azure SQL Database
 
@@ -138,6 +138,8 @@ Autorizace se spustí, pokud je kdykoli splněna některá z následujících po
 |Synchronizace dat SQL|Synchronizace mezi databázemi rozbočovače a členy, které běží podle konfigurovatelného plánu nebo jsou prováděny ručně|
 |Úprava určitých metadat databáze|Přidání nových značek databáze.<br>Změna maximálnívirtuální jádra, min virtuální jádra nebo automatické pozastavení zpoždění.|
 |SQL Server Management Studio (SSMS)|Použití verzí SSMS starších než 18.1 a otevření nového okna dotazu pro libovolnou databázi na serveru obnoví všechny automaticky pozastavené databáze na stejném serveru. K tomuto chování nedochází, pokud používáte SSMS verze 18.1 nebo novější.|
+
+Monitorování, správa nebo jiná řešení provádějící některou z výše uvedených operací spustí automatické obnovení.
 
 Autorizace se také aktivuje během nasazení některých aktualizací služby, které vyžadují, aby databáze byla online.
 

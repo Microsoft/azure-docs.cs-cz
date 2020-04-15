@@ -1,22 +1,14 @@
 ---
 title: Plánování aplikace – LUIS
-titleSuffix: Azure Cognitive Services
 description: Načrtněte relevantní záměry a entity aplikací a pak vytvořte plány aplikací v inteligentních službách pro porozumění jazykům (LUIS).
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/20/2019
-ms.author: diberry
-ms.openlocfilehash: 6a155f4c43da03ccdc40d289742918973aa6da7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74326780"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382308"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Plánování schématu aplikace LUIS s doménou subjektu a extrakcí dat
 
@@ -44,7 +36,7 @@ Pokud nepotřebujete identifikovat celkový záměr uživatele, přidejte všech
 
 ## <a name="create-example-utterances-for-each-intent"></a>Vytvořit ukázkové projevy pro každý záměr
 
-Chcete-li začít s, vyhněte se vytváření příliš mnoho projevy pro každý záměr. Jakmile jste určili záměry, vytvořte 15 až 30 příklad projevy na záměr. Každý utterance by se měla lišit od dříve zadaných projevy. Dobrá rozmanitost v projevech zahrnují celkový počet slov, volbu slova, slovesný čas a interpunkci.
+Chcete-li začít s, vyhněte se vytváření příliš mnoho projevy pro každý záměr. Jakmile jste určili záměry, vytvořte 15 až 30 příklad projevy na záměr. Každý utterance by se měla lišit od dříve zadaných projevy. Dobrá rozmanitost v projevech zahrnují celkový počet slov, volbu slova, slovesný čas a [interpunkci](luis-reference-application-settings.md#punctuation-normalization).
 
 Další informace naleznete [v tématu pochopení dobré projevy pro aplikace LUIS](luis-concept-utterance.md).
 

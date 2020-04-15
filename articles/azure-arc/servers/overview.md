@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure automation, DSC, powershell, požadovaná konfigurace stavu, správa aktualizací, sledování změn, inventář, runbooky, python, grafické, hybridní
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: a441b80e4d7dd9604aa2ca69da320e462859a486
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 5fa39028f1041a063bab295adabf8145a8b46ae4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261211"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308776"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure Arc pro servery (preview)
 
@@ -143,7 +143,7 @@ Balíček agenta Azure Connected Machine pro Windows a Linux si můžete stáhno
 >[!NOTE]
 >Během tohoto náhledu byl vydán pouze jeden balíček, který je vhodný pro Ubuntu 16.04 nebo 18.04.
 
-Agent azure connected machine pro Windows a Linux lze upgradovat na nejnovější verzi ručně nebo automaticky v závislosti na vašich požadavcích. Další informace naleznete [zde](manage-agent.md)
+Agent azure connected machine pro Windows a Linux lze upgradovat na nejnovější verzi ručně nebo automaticky v závislosti na vašich požadavcích. Další informace naleznete [zde](manage-agent.md).
 
 ### <a name="agent-status"></a>Stav agenta
 

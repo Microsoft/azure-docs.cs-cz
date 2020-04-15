@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 1b807908c9fb54ecf15de6d44a04760659196a31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb1af86e04c0b4ba0b59398161fa111fd8065042
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75980968"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310055"
 ---
 # <a name="diagnostic-logs-for-azure-web-application-firewall"></a>Diagnostické protokoly pro bránu firewall webových aplikací Azure
 
@@ -101,7 +101,7 @@ Protokol přístupu se generuje pouze v případě, že jste jej povolili v kaž
 |přijaté bajty     | Velikost přijatého paketu v bajtech.        |
 |sentBytes| Velikost odeslaného paketu v bajtech.|
 |timeTaken| Doba (v milisekundách), která trvá pro zpracování požadavku a jeho odpověď, která má být odeslána. Vypočítá se jako interval od okamžiku, kdy brána aplikace obdrží první bajt požadavku HTTP, do okamžiku dokončení operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje čas, kdy pakety požadavku a odpovědi cestují po síti. |
-|sslEnabled| Zda komunikace s back-end fondy používá SSL. Platné hodnoty jsou zapínat a vypínat.|
+|sslEnabled| Zda komunikace s back-end fondy používá TLS/SSL. Platné hodnoty jsou zapínat a vypínat.|
 |host| Název hostitele, se kterým byl požadavek odeslán na server back-end. Pokud back-end název hostitele je přepsána, tento název bude odrážet.|
 |originalHost| Název hostitele, se kterým byl požadavek přijat aplikační bránou od klienta.|
 ```json
@@ -144,9 +144,9 @@ Pro aplikační bránu a WAF v2, protokoly zobrazit trochu více informací:
 |přijaté bajty     | Velikost přijatého paketu v bajtech.        |
 |sentBytes| Velikost odeslaného paketu v bajtech.|
 |timeTaken| Doba (v milisekundách), která trvá pro zpracování požadavku a jeho odpověď, která má být odeslána. Vypočítá se jako interval od okamžiku, kdy brána aplikace obdrží první bajt požadavku HTTP, do okamžiku dokončení operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje čas, kdy pakety požadavku a odpovědi cestují po síti. |
-|sslEnabled| Zda komunikace s back-end fondy používá SSL. Platné hodnoty jsou zapínat a vypínat.|
-|sslCipher| Cipher suite se používá pro komunikaci SSL (pokud je povoleno SSL).|
-|protokol ssl| Protokol SSL (pokud je povolen protokol SSL).|
+|sslEnabled| Zda komunikace s back-end fondy používá TLS. Platné hodnoty jsou zapínat a vypínat.|
+|sslCipher| Cipher suite se používá pro komunikaci TLS (pokud je povolena TLS).|
+|protokol ssl| Používaný protokol TLS (pokud je povolen protokol TLS).|
 |serverSměrováno| Back-endový server, na který brána aplikace směruje požadavek.|
 |serverStatus| Stavový kód HTTP back-endového serveru.|
 |serverResponseLatency| Latence odpovědi z back-endového serveru.|

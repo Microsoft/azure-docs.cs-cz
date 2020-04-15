@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 03/10/2020
-ms.openlocfilehash: 4c635d285f83e8e9c4c5547a9ee983686c507819
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/14/2020
+ms.openlocfilehash: d62d05cdbda86af3c3a38757877624e87f6d1719
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261733"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383758"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření komerčního účtu marketplace v Partnerském centru
 
@@ -100,7 +100,7 @@ Ujistěte se, že máte po ruce informace o svém účtu.
 
 Pokud jste již zaregistrovaní v programu Microsoft Partner Network, vytvořte účet přímo z Centra partnerů v této části.
 
-Přihlaste se do [Partnerského centra](https://partner.microsoft.com/) pomocí účtu Microsoft Partner Network, abyste propojili doménu pracovního e-mailového účtu vaší společnosti s novým účtem Partnerského centra. Přisuzováním těchto účtů se zaměstnanci vaší společnosti mohou přihlásit do Partnerského centra pomocí uživatelských jmen a hesel pracovního účtu.
+Přihlaste se do [Partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) pomocí účtu Microsoft Partner Network, abyste propojili doménu pracovního e-mailového účtu vaší společnosti s novým účtem Partnerského centra. Přisuzováním těchto účtů se zaměstnanci vaší společnosti mohou přihlásit do Partnerského centra pomocí uživatelských jmen a hesel pracovního účtu.
 
 >[!NOTE]
 >Chcete-li zkontrolovat, zda vaše společnost již má pracovní účet Partnerského centra, jak vytvořit nový pracovní účet nebo jak nastavit více pracovních účtů pro použití s Partnerským centrem, navštivte [pracovní účet společnosti a Partnerské centrum](./company-work-accounts.md).
@@ -130,7 +130,7 @@ Pokud jste již zaregistrovaní v vývojářském programu Partnerského centra,
 >
 >Jednotlivé účty jsou určeny pro jednotlivé vývojáře, kteří pracují sami. Firemní účty jsou určeny pro organizace a firmy. Firemní účty vám poskytují přístup k odesílání aplikací s dalšími funkcemi. Po registraci potřebujeme větší ověření účtů společnosti, abychom potvrdili, že jste oprávněni účet pro vaši společnost nastavit. Toto ověření může trvat několik dní až několik týdnů a často zahrnuje telefonní hovor do vaší společnosti. Oba typy účtů umožňují odesílat aplikace, doplňky a služby. Další informace najdete [v tématu Typy účtů, místa a poplatky](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
 
-Přihlaste se do [Partnerského centra](https://partner.microsoft.com/) pomocí účtu Microsoft Partner Center a zaregistrujte se do programu Commercial Marketplace pod stejným účtem. Po registraci na komerčním webu Marketplace pomocí stejného účtu uvidíte jak stávající registrace programů, tak komerční tržiště v levé navigační nabídce Centra partnerů.
+Přihlaste se do [Partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) pomocí účtu Microsoft Partner Center a zaregistrujte se do programu Commercial Marketplace pod stejným účtem. Po registraci na komerčním webu Marketplace pomocí stejného účtu uvidíte jak stávající registrace programů, tak komerční tržiště v levé navigační nabídce Centra partnerů.
 
 Po přihlášení dokončete nastavení účtu následujícím postupem:
 

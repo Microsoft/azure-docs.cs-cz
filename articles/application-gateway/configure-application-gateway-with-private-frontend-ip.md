@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 809274aba35e9607aeacf7c6483ec3d10f899667
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198594"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312372"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurace aplikační brány s interním koncovým bodem pro vyrovnávání zatížení (ILB)
 
 Azure Application Gateway můžete nakonfigurovat pomocí virtuální ip adresy pro internet nebo s interním koncovým bodem, který není vystavený internetu. Interní koncový bod používá privátní IP adresu pro front-end, který se také označuje jako *koncový bod interního vykladače zatížení (ILB).*
 
-Konfigurace brány pomocí privátní IP adresy front-end je užitečná pro interní obchodní aplikace, které nejsou vystaveny Internetu. Je také užitečné pro služby a vrstvy v rámci vícevrstvé aplikace, které jsou v hranici zabezpečení, která není vystavena internetu, ale stále vyžadují rozdělení zatížení kruhového dotazování, lepivost relace nebo ukončení ssl (Secure Sockets Layer).
+Konfigurace brány pomocí privátní IP adresy front-end je užitečná pro interní obchodní aplikace, které nejsou vystaveny Internetu. Je také užitečné pro služby a vrstvy v rámci vícevrstvé aplikace, které jsou v hranici zabezpečení, která není vystavena internetu, ale stále vyžadují rozdělení zatížení kruhového dotazování, lepivost relace nebo zabezpečení transportní vrstvy (TLS), dříve známé jako SSL (Secure Sockets Layer).
 
 Tento článek vás provede kroky konfigurace aplikační brány s privátní IP adresou front-end pomocí portálu Azure.
 

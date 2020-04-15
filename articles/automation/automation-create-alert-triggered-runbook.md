@@ -5,16 +5,19 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: df28116c588ed77f02c78a42a85feb91ca339e7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5eb330cd6e5d02432298a5b58e84ae7d24ee7e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366696"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383325"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Spuštění runbooku Azure Automation pomocí výstrahy
 
 [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) můžete použít ke sledování metrik y základní úrovně a protokolů pro většinu služeb v Azure. Runbooky Azure Automation můžete volat pomocí [skupin akcí](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) nebo pomocí klasických výstrah k automatizaci úloh založených na výstrahách. Tento článek ukazuje, jak nakonfigurovat a spustit runbook pomocí výstrah.
+
+>[!NOTE]
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="alert-types"></a>Typy výstrah
 
@@ -45,7 +48,7 @@ Jak je popsáno v předchozí části, každý typ výstrahy má jiné schéma. 
 
 Tento příklad používá výstrahu z virtuálního virtuálního mísy. Načte data virtuálního soudu z datové části a pak tyto informace použije k zastavení virtuálního soudu. Připojení musí být nastaveno v účtu Automation, kde je spuštěna sada Runbook. Při použití výstrah pro aktivaci runbooků je důležité zkontrolovat stav výstrahy v aktivované sady Runbook. Runbook se aktivuje pokaždé, když se výstraha změní stav. Výstrahy mají více stavů, `Activated` dva `Resolved`nejběžnější stavy jsou a . Zkontrolujte tento stav v logice runbooku, abyste zajistili, že váš runbook neběží více než jednou. Příklad v tomto článku ukazuje, `Activated` jak hledat pouze výstrahy.
 
-Runbook používá účet **AzureRunAsConnection** [Run As](automation-create-runas-account.md) k ověření pomocí Azure k provedení akce správy proti virtuálnímu počítači.
+Runbook používá `AzureRunAsConnection` [účet Spustit jako](automation-create-runas-account.md) k ověření pomocí Azure k provedení akce správy proti virtuálnímu počítači.
 
 Tento příklad slouží k vytvoření sady Runbook s názvem **Stop-AzureVmInResponsetoVMAlert**. Můžete upravit skript Prostředí PowerShell a použít jej s mnoha různými prostředky.
 
@@ -139,13 +142,13 @@ Tento příklad slouží k vytvoření sady Runbook s názvem **Stop-AzureVmInRe
                     throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
                 }
                 Write-Verbose "Authenticating to Azure with service principal." -Verbose
-                Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
+                Add-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
                 Write-Verbose "Setting subscription to work against: $SubId" -Verbose
-                Set-AzureRmContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
+                Set-AzContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
 
                 # Stop the Resource Manager VM
                 Write-Verbose "Stopping the VM - $ResourceName - in resource group - $ResourceGroupName -" -Verbose
-                Stop-AzureRmVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
+                Stop-AzVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
                 # [OutputType(PSAzureOperationResponse")]
             }
             else {
@@ -170,7 +173,7 @@ Tento příklad slouží k vytvoření sady Runbook s názvem **Stop-AzureVmInRe
 
 Výstrahy používají skupiny akcí, což jsou kolekce akcí, které jsou vyvolány výstrahou. Sady Runbook jsou pouze jednou z mnoha akcí, které můžete použít se skupinami akcí.
 
-1. V účtu Automation vyberte v části Sledování **možnostI** **Výstrahy**.
+1. V účtu Automation vyberte **upozornění v** části **Sledování**.
 1. Vyberte **+ Nové pravidlo upozornění**.
 1. Klepněte na **tlačítko Vybrat** v části **Zdroj**. Na stránce **Vybrat prostředek** vyberte virtuální počítač, na který chcete upozornit, a klikněte na **Hotovo**.
 1. Klepněte na tlačítko **Přidat podmínku** **pod podmínkou**. Vyberte signál, který chcete použít, například **Procento procesoru** a klepněte na **tlačítko Hotovo**.
@@ -195,3 +198,5 @@ Výstrahy používají skupiny akcí, což jsou kolekce akcí, které jsou vyvol
 * Podrobnosti o různých způsobech spuštění runbooku najdete v [tématu Spuštění runbooku](automation-starting-a-runbook.md).
 * Informace o tom, jak vytvořit výstrahu protokolu aktivit, najdete v [tématu Vytvoření výstrah protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
 * Informace o tom, jak vytvořit výstrahu téměř v reálném čase, najdete [v tématu Vytvoření pravidla výstrahy na webu Azure Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
+* Odkaz na rutinu prostředí PowerShell naleznete v tématu [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

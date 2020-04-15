@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: c84452ff71fa34a65b2e56ec753b68bf551c7e35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73826283"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313590"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení Connected Factory
 
@@ -76,7 +76,7 @@ Pokud jste nasadili řešení z www.azureiotsolutions.com, nemůžete se přihl�
 1. Chcete-li zkontrolovat, které `docker ps`kontejnery jsou aktivní, spusťte: .
 1. Chcete-li zastavit všechny `./stopsimulation`kontejnery simulace, spusťte: .
 1. Spuštění všech simulačních kontejnerů:
-    * Exportujte proměnnou prostředí s názvem **IOTHUB_CONNECTIONSTRING**. Použijte hodnotu nastavení **IotHubOwnerConnectionString** `<name of your deployment>.config.user` v souboru. Například:
+    * Exportujte proměnnou prostředí s názvem **IOTHUB_CONNECTIONSTRING**. Použijte hodnotu nastavení **IotHubOwnerConnectionString** `<name of your deployment>.config.user` v souboru. Příklad:
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -125,7 +125,7 @@ Případně se přihlaste k virtuálnímu virtuálnímu provozu přes SSH a zkon
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Jak lze zkontrolovat, zda simulace odesílá data do cloudu?
 
-Pomocí [deviceexploreru](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo příkazu [události monitorování rozšíření Azure IoT CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) můžete zkontrolovat data odeslaná do služby IoT Hub z určitých zařízení. Chcete-li použít tyto nástroje, musíte znát připojovací řetězec pro službu IoT hub ve vašem nasazení. Viz [Jak zjistím připojovací řetězec centra IoT, který používá moje řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Pomocí [deviceexploreru](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo příkazu [události monitorování rozšíření Azure IoT CLI](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) můžete zkontrolovat data odeslaná do služby IoT Hub z určitých zařízení. Chcete-li použít tyto nástroje, musíte znát připojovací řetězec pro službu IoT hub ve vašem nasazení. Viz [Jak zjistím připojovací řetězec centra IoT, který používá moje řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Zkontrolujte data odeslaná jedním ze zařízení vydavatele:
 

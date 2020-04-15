@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 82c516eeac6d3e88ca7b6ac1c97ebb638ba27979
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261750"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383911"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Azure Files](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardního [protokolu Server Message Block (SMB).](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) Sdílené složky Azure můžete připevnit souběžně v cloudových nebo místních nasazeních Windows, Linuxu a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows Server pomocí Azure File Sync pro rychlý přístup v blízkosti místa, kde se data používají.
@@ -199,16 +199,6 @@ Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí S
 
     Ne, ověřování z virtuálních počítačů s Linuxem není podporované.
 
-* <a id="ad-multiple-forest"></a>
-**Podporuje ověřování Azure Files AD integraci s prostředím služby AD pomocí více doménových struktur?**    
-
-    Ověřování Azure Files AD se integruje jenom s doménovou doménou služby AD, na kterou je účet úložiště registrovaný. Pro podporu ověřování z jiné doménové struktury služby AD musí být vaše prostředí správně nakonfigurováno. Způsob registrace souborů Azure do služby domény služby AD je většinou stejný jako běžný souborový server, kde ve službě AD vytvoří identitu (přihlašovací účet počítače nebo služby) pro ověřování. Jediným rozdílem je, že registrovaný hlavní název služby účtu úložiště končí "file.core.windows.net", který neodpovídá příponě domény. Obraťte se na správce domény a zjistěte, zda je nutná nějaká aktualizace zásad směrování DNS, která by umožnila ověřování více doménových domén z důvodu jiné přípony domény.
-
-* <a id=""></a>
-**Jaké oblasti jsou dostupné pro ověřování azure soubory ad (preview)?**
-
-    Podrobnosti najdete [v místní dostupnosti služby AD.](storage-files-identity-auth-active-directory-enable.md#regional-availability)
-
 * <a id="ad-aad-smb-afs"></a>
 **Můžu využít azure files azure ad ds ověřování nebo ověřování ve službě Active Directory (AD) ve sdílených složkách spravovaných službou Azure File Sync?**
 
@@ -218,7 +208,7 @@ Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí S
 **Jak můžu zkontrolovat, jestli jsem povolil ad ověřování v účtu úložiště a v informacích o doméně služby AD?**
 
     Můžete odkazovat na pokyny [zde](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account) uvedené ověřit, pokud Azure Files AD Ověřování je povolena na vašem účtu úložiště a načíst informace o doméně služby AD.
-    
+
 * <a id="encryption-at-rest"></a>
 **Jak zajistím, aby byla moje sdílená složka Azure zašifrovaná v klidovém stavu?**  
 
@@ -243,6 +233,37 @@ Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí S
 **Jaké zásady dodržování předpisů pro data podporují soubory Azure?**  
 
    Azure Files běží nad stejnou architekturou úložiště, která se používá v jiných službách úložiště ve službě Azure Storage. Azure Files používá stejné zásady dodržování předpisů dat, které se používají v jiných službách úložiště Azure. Další informace o dodržování předpisů azure storage dat, můžete odkazovat na [azure storage dodržování předpisů nabídky](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)a přejděte na Microsoft Trust [Center](https://microsoft.com/trustcenter/default.aspx).
+   
+### <a name="ad-authentication"></a>Ověřování ve službě AD
+* <a id=""></a>
+**Podporuje ověřování Azure AD Azure virtuální počítače s Linuxem?**
+
+    Ne, ověřování z virtuálních počítačů s Linuxem není podporované.
+
+* <a id="ad-multiple-forest"></a>
+**Podporuje ověřování Azure Files AD integraci s prostředím služby AD pomocí více doménových struktur?**    
+
+    Ověřování Azure Files AD se integruje jenom s doménovou doménou služby AD, na kterou je účet úložiště registrovaný. Pro podporu ověřování z jiné doménové struktury služby AD musí být vaše prostředí správně nakonfigurováno. Způsob registrace souborů Azure do služby domény služby AD je většinou stejný jako běžný souborový server, kde ve službě AD vytvoří identitu (přihlašovací účet počítače nebo služby) pro ověřování. Jediným rozdílem je, že registrovaný hlavní název služby účtu úložiště končí "file.core.windows.net", který neodpovídá příponě domény. Obraťte se na správce domény a zjistěte, zda je nutná nějaká aktualizace zásad směrování DNS, která by umožnila ověřování více doménových domén z důvodu jiné přípony domény.
+
+* <a id=""></a>
+**Jaké oblasti jsou dostupné pro ověřování azure soubory ad (preview)?**
+
+    Podrobnosti najdete [v místní dostupnosti služby AD.](storage-files-identity-auth-active-directory-enable.md#regional-availability)
+
+* <a id="ad-aad-smb-afs"></a>
+**Můžu využít ověřování azure souborů ad (AD) ve sdílených složkách spravovaných službou Azure File Sync?**
+
+    Ano, ověřování ad ve sdílené složce spravované synchronizací souborů Azure můžete povolit. Změny seznamů ACL adresáře nebo souboru NTFS na místních souborových serverech budou vrstvené na soubory Azure a naopak.
+
+* <a id="ad-aad-smb-files"></a>
+**Jak můžu zkontrolovat, jestli jsem povolil ad ověřování v účtu úložiště a v informacích o doméně služby AD?**
+
+    Můžete odkazovat na pokyny [zde](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) uvedené ověřit, pokud Azure Files AD Ověřování je povolena na vašem účtu úložiště a načíst informace o doméně služby AD.
+
+* <a id="ad-aad-smb-files"></a>
+**Je nějaký rozdíl ve vytvoření účtu počítače nebo přihlašovacího účtu služby, který představuje můj účet úložiště ve službě AD?**
+
+    Vytvoření [účtu počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí) nebo přihlašovací [účet služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) nemá žádný rozdíl v tom, jak by ověřování fungovalo se soubory Azure. Můžete si sami vybrat, jak reprezentovat účet úložiště jako identitu v prostředí služby AD. Výchozí domainaccounttype nastavená v rutině Join-AzStorageAccountForAuth je účet počítače. Stáří vypršení platnosti hesla nakonfigurované v prostředí služby AD se však může lišit pro přihlašovací účet počítače nebo služby a je třeba to vzít v úvahu při [aktualizaci hesla identity účtu úložiště ve službě AD](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password).
 
 ## <a name="on-premises-access"></a>Místní přístup
 

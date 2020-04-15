@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3237fe7d87ad058f255d1c77cb6d814bcd1c292e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262243"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383909"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se službou Azure Files ve Windows
 
@@ -324,6 +324,30 @@ Došlo k chybě systémová chyba 1359. Vnitřní chyba se stane, když se pokus
 V současné době můžete zvážit opětovné nasazení služby AAD DS pomocí nového názvu DNS domény, který platí s následujícími pravidly:
 - Názvy nemohou začínat číselným znakem.
 - Názvy musí mít 3 až 63 znaků.
+
+## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Nelze připojit soubory Azure pomocí přihlašovacích údajů služby AD. 
+
+### <a name="self-diagnostics-steps"></a>Kroky vlastní diagnostiky
+Nejprve se ujistěte, že jste provedli všechny čtyři kroky k [povolení ověřování souborů Azure AD](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable).
+
+Za druhé zkuste [připojení Azure sdílení souborů s klíčem účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Pokud se vám nepodařilo připojit, stáhněte si [Soubor AzFileDiagnostics.ps1,](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) který vám pomůže ověřit klientské prostředí, zjistit nekompatibilní konfiguraci klienta, která by způsobila selhání přístupu pro soubory Azure, poskytne normativní pokyny k vlastní opravě a shromažďuje trasování diagnostiky.
+
+Za třetí, můžete spustit rutinu Ladění AzStorageAccountAuth k provedení sady základních kontrol konfigurace služby AD s přihlášeným uživatelem služby AD. Tato rutina je podporována ve [verzi AzFilesHybrid v0.1.2+](https://github.com/Azure-Samples/azure-files-samples/releases). Tuto rutinu je třeba spustit s uživatelem služby AD, který má oprávnění vlastníka pro cílový účet úložiště.  
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
+```
+Rutina provádí tyto kontroly níže v pořadí a poskytuje pokyny pro chyby:
+1. CheckPort445Connectivity: zkontrolujte, zda je port 445 otevřen pro připojení SMB
+2. CheckDomainJoined: ověření, že klientský počítač je doména připojena ke službu AD
+3. CheckADObject: zkontrolujte, zda má přihlášený uživatel v doméně služby AD platnou reprezentaci, ke které je účet úložiště přidružen.
+4. CheckGetKerberosTicket: pokus o získání lístku protokolu Kerberos pro připojení k účtu úložiště 
+5. CheckADObjectPasswordIsCorrect: ujistěte se, že heslo nakonfigurované na identitě služby AD, která představuje účet úložiště, odpovídá klíči obrubníku účtu úložiště
+6. CheckSidHasAadUser: zkontrolujte, zda je přihlášený uživatel služby AD synchronizován se službou Azure AD.
+
+Aktivně pracujeme na rozšíření této rutiny diagnostiky, abychom poskytli lepší pokyny pro řešení potíží.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 Pokud stále potřebujete pomoc, obraťte se na [podporu,](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) abyste problém rychle vyřešili.

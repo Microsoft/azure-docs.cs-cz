@@ -1,14 +1,14 @@
 ---
 title: Aktualizace existujícího přiřazení z portálu
 description: Přečtěte si o mechanismu pro aktualizaci existujícího přiřazení podrobného plánu z portálu v Azure Blueprints.
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264658"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381793"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 
@@ -26,18 +26,18 @@ Při přiřazení podrobného plánu lze přiřazení aktualizovat. Aktualizace 
 
 1. V seznamu podrobných plánů klikněte levým tlačítkem myši na přiřazení podrobného plánu. Potom klepněte na tlačítko **Aktualizovat přiřazení** nebo klikněte pravým tlačítkem myši na přiřazení podrobného plánu a vyberte **aktualizovat přiřazení**.
 
-   ![Aktualizace existujícího přiřazení podrobného plánu](../media/update-existing-assignments/update-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Aktualizace existujícího přiřazení podrobného plánu" border="false":::
 
 1. Stránka **Přiřadit podrobný plán** se načte předvyplněná všemi hodnotami z původního přiřazení.
    Můžete změnit **verzi definice podrobného plánu**, stav **přiřazení zámku** a všechny dynamické parametry, které existují v definici podrobného plánu. Po dokončení změn klikněte na **Přiřadit.**
 
 1. Na stránce s aktualizovanými podrobnostmi o přiřazení se podívejte na nový stav. V tomto příkladu jsme přidali **uzamčení** přiřazení.
 
-   ![Aktualizováno existující přiřazení podrobného plánu – změněn režim uzamčení](../media/update-existing-assignments/updated-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Aktualizováno existující přiřazení podrobného plánu – změněn režim uzamčení" border="false":::
 
 1. Podrobnosti o **dalších operacích přiřazení** naleznete v rozevíracím seznamu. Tabulka **Spravovaných prostředků** se aktualizuje podle vybrané operace přiřazení.
 
-   ![Operace přiřazení podrobného plánu](../media/update-existing-assignments/assignment-operations.png)
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Operace přiřazení podrobného plánu" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Pravidla pro aktualizaci přiřazení
 

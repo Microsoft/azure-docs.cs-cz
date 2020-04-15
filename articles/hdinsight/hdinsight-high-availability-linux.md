@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198935"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381394"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsightu
 
@@ -33,7 +33,7 @@ Uzly v clusteru HDInsight se implementují pomocí virtuálních počítačů Az
 
 Pro zajištění vysoké dostupnosti služeb Hadoop, HDInsight poskytuje dva hlavní uzly. Oba hlavní uzly jsou aktivní a běží v clusteru HDInsight současně. Některé služby, například Apache HDFS nebo Apache Hadoop YARN, jsou v daném okamžiku aktivní pouze na jednom hlavním uzlu. Ostatní služby, jako je HiveServer2 nebo Hive MetaStore jsou aktivní na obou hlavní uzly ve stejnou dobu.
 
-Chcete-li získat názvy hostitelů pro různé typy uzlů v clusteru, použijte [rozhraní REST API Ambari](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
+Chcete-li získat názvy hostitelů pro různé typy uzlů v clusteru, použijte [rozhraní REST API Ambari](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes).
 
 > [!IMPORTANT]  
 > Nepřidružte číselnou hodnotu k tomu, zda je uzel primární nebo sekundární. Číselná hodnota je k dispozici pouze poskytnout jedinečný název pro každý uzel.

@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 9d32b66b7e3ab27012ee671ba8d70735dce73884
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274273"
+ms.locfileid: "81313667"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>Ruční oprava problémů se synchronizací služby ServiceNow
 
-Azure Monitor se může připojit k poskytovatelům správy IT služeb (ITSM) od jiných výrobců. ServiceNow je jedním z těchto poskytovatelů. 
+Azure Monitor se může připojit k poskytovatelům správy IT služeb (ITSM) od jiných výrobců. ServiceNow je jedním z těchto poskytovatelů.
 
 Z bezpečnostních důvodů může být nutné aktualizovat ověřovací token používaný pro vaše připojení k ServiceNow.
-K opětovné aktivaci připojení a aktualizaci tokenu použijte následující proces synchronizace: 
+K opětovné aktivaci připojení a aktualizaci tokenu použijte následující proces synchronizace:
 
 
 1. Vyhledejte řešení v horní vyhledávací banner, pak vyberte příslušná řešení

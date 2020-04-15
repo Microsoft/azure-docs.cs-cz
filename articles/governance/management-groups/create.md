@@ -1,24 +1,25 @@
 ---
 title: Vytvoření skupin pro správu pro uspořádání prostředků – Zásady správného řízení Azure
 description: Zjistěte, jak vytvořit skupiny pro správu Azure pro správu více prostředků pomocí portálu, Azure PowerShellu a Azure CLI.
-ms.date: 12/18/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: a06679432d795b5b7854af8dc66b468841978e9c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 34815089367512c4aa54f148c118a669625d0ea3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273184"
+ms.locfileid: "81381590"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci a správu prostředků
 
 Skupiny pro správu jsou kontejnery, které vám pomohou spravovat přístup, zásady a dodržování předpisů napříč více předplatnými. Vytvořte tyto kontejnery k vytvoření efektivní a efektivní hierarchie, kterou lze použít s [Azure Policy](../policy/overview.md) a Azure Role Based [Access Controls](../../role-based-access-control/overview.md). Další informace o skupinách pro správu najdete [v tématu Uspořádání prostředků pomocí skupin pro správu Azure](overview.md).
 
-Dokončení první skupiny pro správu vytvořené v adresáři může trvat až 15 minut. Existují procesy, které se spustí poprvé nastavit službu skupin pro správu v rámci Azure pro váš adresář. Po dokončení procesu obdržíte oznámení. Další informace naleznete [v tématu počáteční nastavení skupin pro správu](./overview.md#initial-setup-of-management-groups). 
+Dokončení první skupiny pro správu vytvořené v adresáři může trvat až 15 minut. Existují procesy, které se spustí poprvé nastavit službu skupin pro správu v rámci Azure pro váš adresář. Po dokončení procesu obdržíte oznámení. Další informace naleznete [v tématu počáteční nastavení skupin pro správu](./overview.md#initial-setup-of-management-groups).
 
 ## <a name="create-a-management-group"></a>Vytvoření skupiny pro správu
 
-Každý uživatel Azure AD v tenantovi můžete vytvořit skupinu pro správu bez oprávnění pro zápis skupiny pro správu přiřazené tomuto uživateli.  Tato nová skupina pro správu bude podřízenou skupinou Root Management Group a tvůrce bude mít přiřazení role Vlastník. Služba skupiny pro správu umožňuje tuto schopnost tak, aby přiřazení rolí nejsou potřeba na kořenové úrovni. Žádní uživatelé nemají přístup ke skupině root management group při jeho vytvoření.  Abychom se vyhnuli překážkám při hledání globálních správců Azure AD, aby mohli začít používat skupiny pro správu, povolujeme vytváření počátečních skupin pro správu na kořenové úrovni.      
+Každý uživatel Azure AD v tenantovi můžete vytvořit skupinu pro správu bez oprávnění pro zápis skupiny pro správu přiřazené tomuto uživateli. Tato nová skupina pro správu bude podřízenou skupinou Root Management Group a tvůrce bude mít přiřazení role Vlastník. Služba skupiny pro správu umožňuje tuto schopnost tak, aby přiřazení rolí nejsou potřeba na kořenové úrovni. Žádní uživatelé nemají přístup ke skupině root management group při jeho vytvoření. Abychom se vyhnuli překážkám při hledání globálních správců Azure AD, aby mohli začít používat skupiny pro správu, povolujeme vytváření počátečních skupin pro správu v kořenovém adresáři.  
+Úrovni.
 
 Skupinu pro správu můžete vytvořit pomocí portálu, [šablony Správce prostředků](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), PowerShellu nebo azure CLI.
 
@@ -34,14 +35,15 @@ Skupinu pro správu můžete vytvořit pomocí portálu, [šablony Správce pros
 
 1. Vyberte **+ Přidat skupinu pro správu**.
 
-   ![Stránka pro práci se skupinami pro správu](./media/main.png)
+   :::image type="content" source="./media/main.png" alt-text="Stránka pro práci se skupinami pro správu" border="false":::
 
 1. Vyplňte pole ID skupiny pro správu.
 
    - **ID skupiny pro správu** je jedinečný identifikátor adresáře, který se používá k odesílání příkazů v této skupině pro správu. Tento identifikátor není upravitelný po vytvoření, protože se používá v celém systému Azure k identifikaci této skupiny. [Kořenová skupina pro správu](overview.md#root-management-group-for-each-directory) se automaticky vytvoří s ID, které je ID služby Azure Active Directory. Pro všechny ostatní skupiny pro správu přiřaďte jedinečné ID.
-   - Pole se zobrazovatým názvem je název, který se zobrazí na webu Azure Portal. Samostatný zobrazovaný název je volitelné pole při vytváření skupiny pro správu a lze jej kdykoli změnit.  
+   - Pole se zobrazovatým názvem je název, který se zobrazí na webu Azure Portal. Samostatný zobrazovaný název je volitelné pole při vytváření skupiny pro správu a lze jej změnit  
+     Čas.
 
-   ![Podokno Možností pro vytvoření nové skupiny pro správu](./media/create_context_menu.png)  
+   :::image type="content" source="./media/create_context_menu.png" alt-text="Podokno Možností pro vytvoření nové skupiny pro správu" border="false":::
 
 1. Vyberte **Uložit**.
 
@@ -94,8 +96,8 @@ az account management-group create --name ContosoSubGroup --parent Contoso
 
 Další informace o řešeních pro správu najdete v následujících tématech:
 
-- [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
-- [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
+- [Vytváření skupin pro správu pro organizaci prostředků Azure](./create.md)
+- [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](./manage.md)
 - [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](/powershell/module/az.resources#resources)
 - [Kontrola skupin pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
 - [Kontrola skupin pro správu v Azure CLI](/cli/azure/account/management-group)

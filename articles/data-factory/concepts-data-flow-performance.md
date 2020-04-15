@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/14/2020
+ms.openlocfilehash: 18f8b0732e4af0229ff225d9c3b423e27bf342a8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409843"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382800"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce mapováním toků dat a laděním
 
@@ -31,13 +31,13 @@ Při navrhování mapování datových toků můžete jednotkový test každé t
 
  Tyto informace můžete použít k odhadu výkonu toku dat proti různým velikostem zdrojů dat. Další informace naleznete v [tématu Monitorování toků dat mapování](concepts-data-flow-monitoring.md).
 
-![Sledování toku dat](media/data-flow/mon003.png "Monitor toku dat 3")
+![Monitorování toku dat](media/data-flow/mon003.png "Monitor toku dat 3")
 
  Pro spuštění ladění kanálu je pro teplý cluster vyžadována přibližně jedna minuta nastaveného času clusteru v celkovém výpočtu výkonu. Pokud inicializujete výchozí prostředí Azure Integration Runtime, může trvat přibližně 5 minut doba spouštění.
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Zvětšení výpočetní velikosti v prostředí Azure Integration Runtime
 
-Prostředí Integration Runtime s více jádry zvyšuje počet uzlů ve výpočetních prostředích Spark a poskytuje větší výpočetní výkon pro čtení, zápis a transformaci dat.
+Prostředí Integration Runtime s více jádry zvyšuje počet uzlů ve výpočetních prostředích Spark a poskytuje větší výpočetní výkon pro čtení, zápis a transformaci dat. Datové toky ADF využívají Spark pro výpočetní stroj. Prostředí Spark funguje velmi dobře na prostředky optimalizované pro paměť.
 * Pokud chcete, aby byla rychlost zpracování vyšší než vstupní rychlost, zkuste cluster **optimalizovaný pro výpočetní** výkon.
 * Pokud chcete uložit do mezipaměti více dat v paměti, zkuste cluster **optimalizovaný pro paměť.** Optimalizovaná paměť má vyšší cenu za jádro než optimalizovaná výpočetní prostředky, ale pravděpodobně povede k rychlejším rychlostem transformace.
 
@@ -49,7 +49,11 @@ Další informace o tom, jak vytvořit prostředí Integration Runtime, najdete 
 
 Ve výchozím nastavení zapnutí ladění bude používat výchozí runtime integrace Azure, který se vytvoří automaticky pro každou datovou továrnu. Tento výchozí Azure IR je nastavena pro osm jader, čtyři pro uzel ovladače a čtyři pro pracovní uzel, pomocí obecné výpočetní vlastnosti. Při testování s většími daty můžete zvětšit velikost ladicího clusteru vytvořením azure ir s většími konfiguracemi a zvolit tento nový Azure IR při zapnutí ladění. To bude pokyn ADF použít tento Azure IR pro náhled dat a ladění kanálu s toky dat.
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optimalizace pro Azure SQL Database a Azure SQL Data Warehouse
+### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>Snížení výpočetního času clusteru při spuštění pomocí TTL
+
+V azure ir v rámci vlastnosti toku dat je vlastnost, která vám umožní stand-up fond výpočetních prostředků clusteru pro vaši továrnu. Pomocí tohoto fondu můžete postupně odesílat aktivity toku dat pro spuštění. Po vytvoření fondu bude každá další úloha trvat 1-2 minuty, než cluster Spark na vyžádání provede vaši úlohu. Počáteční nastavení fondu zdrojů bude trvat přibližně 6 minut. Zadejte dobu, po kterou chcete udržovat fond zdrojů v nastavení time-to-live (TTL).
+
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optimalizace pro Azure SQL Database a Azure SQL Data Warehouse Synapse
 
 ### <a name="partitioning-on-source"></a>Dělení na zdroji
 

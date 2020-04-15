@@ -3,16 +3,16 @@ title: Přehled služby Azure Resource Graph
 description: Zjistěte, jak služba Azure Resource Graph umožňuje komplexní dotazování prostředků ve velkém měřítku napříč předplatnými a klienty.
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240055"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381517"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph?
 
-Azure Resource Graph je služba v Azure, která je navržená k rozšíření správy prostředků Azure tím, že poskytuje efektivní a efektivní průzkum zdrojů s možností dotazovat se ve velkém měřítku napříč danou sadou předplatných, abyste mohli efektivně řídit své Prostředí. Tyto dotazy poskytují následující funkce:
+Azure Resource Graph je služba v Azure, která je navržená k rozšíření správy prostředků Azure tím, že poskytuje efektivní a výkonné zkoumání prostředků s možností dotazovat se ve velkém měřítku napříč danou sadou předplatných, abyste mohli efektivně řídit vaše prostředí. Tyto dotazy poskytují následující funkce:
 
 - Možnost dotazu ohledně zdrojů s komplexním filtrováním, seskupováním a řazením podle vlastností zdroje.
 - Schopnost iterativně prozkoumat prostředky na základě požadavků na zásadsprávné řízení.
@@ -50,7 +50,7 @@ Resource Graph pak aktualizuje svou databázi. Resource Graph také provádí pr
 
 Teď, když máte lepší pochopení toho, co je Azure Resource Graph, pojďme se ponořit do toho, jak vytvářet dotazy.
 
-Je důležité si uvědomit, že dotazovací jazyk Azure Resource Graph je založený na [dotazovacím jazyce Kusto](../../data-explorer/data-explorer-overview.md) používaném Průzkumníkem dat Azure.
+Je důležité si uvědomit, že dotazovací jazyk Azure Resource Graph je založený na [dotazovacím jazyce Kusto](/azure/data-explorer/data-explorer-overview) používaném Průzkumníkem dat Azure.
 
 Nejprve se podívejte na podrobnosti o operacích a funkcích, které lze použít s Azure Resource Graph, viz [ jazyk dotazu pro graf zdrojů ](./concepts/query-language.md).
 Chcete-li procházet zdroje, podívejte se na [ prozkoumat zdroje ](./concepts/explore-resources.md).

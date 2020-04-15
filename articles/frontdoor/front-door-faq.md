@@ -3,20 +3,20 @@ title: Azure Front Door – nejčastější dotazy
 description: Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se azure front door
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: sohamnchatterjee
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/08/2019
-ms.author: sharadag
-ms.openlocfilehash: 0fe5d245d629c731a47ca5441afd2a3388a22de4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/13/2020
+ms.author: sohamnc
+ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878013"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313758"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy týkající se dveří Azure Front Door
 
@@ -159,7 +159,11 @@ Pro možnost spravovaného certifikátu Přední dveře jsou certifikáty automa
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Jaké jsou aktuální šifrovací sady podporované Azure Front Door?
 
-Níže jsou uvedeny aktuální šifry sady podporované Azure Front Door:
+Pro TLS1.2 jsou podporovány následující šifrovací sady
+
+TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+
+Při použití vlastních domén s povolenou technologií TLS1.0/1.1 jsou podporovány následující šifrovací sady:
 
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384

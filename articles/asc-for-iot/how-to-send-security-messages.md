@@ -1,5 +1,5 @@
 ---
-title: Odeslání zpráv zabezpečení do Centra zabezpečení Azure pro IoT| Dokumenty společnosti Microsoft
+title: Odesílání zpráv o zabezpečení zařízení
 description: Přečtěte si, jak posílat zprávy zabezpečení pomocí Azure Security Center pro IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,25 +15,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4877493982671b1b5db686715ef854f25c2966ea
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76963814"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310984"
 ---
 # <a name="send-security-messages-sdk"></a>Odeslání zpráv zabezpečení sady SDK
 
-Tento návod vysvětluje možnosti Služby Azure Security Center pro služby IoT, když se rozhodnete shromažďovat a odesílat zprávy zabezpečení zařízení bez použití agenta Azure Security Center pro IoT a vysvětluje, jak to udělat.  
+Tento návod vysvětluje možnosti Služby Azure Security Center pro služby IoT, když se rozhodnete shromažďovat a odesílat zprávy zabezpečení zařízení bez použití agenta Azure Security Center pro IoT a vysvětluje, jak to udělat.
 
-V této příručce se naučíte: 
+V této příručce se naučíte:
+
 > [!div class="checklist"]
 > * Odesílání zpráv zabezpečení pomocí sady Azure IoT C SDK
 > * Odesílání zpráv zabezpečení pomocí sady Azure IoT C# SDK
 > * Odesílání zpráv zabezpečení pomocí sady Azure IoT Python SDK
 > * Odesílání zpráv zabezpečení pomocí sady Azure IoT Node.js SDK
 > * Odesílání zpráv zabezpečení pomocí sady Azure IoT Java SDK
-
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>Azure Security Center pro funkce IoT
 
@@ -42,6 +42,7 @@ Azure Security Center pro IoT můžete zpracovat a analyzovat jakýkoli druh dat
 ## <a name="security-message"></a>Zpráva zabezpečení
 
 Azure Security Center pro IoT definuje zprávu zabezpečení pomocí následujících kritérií:
+
 - Pokud byla zpráva odeslána pomocí sady Azure IoT SDK
 - Pokud zpráva odpovídá [schématu zprávy zabezpečení](https://aka.ms/iot-security-schemas)
 - Pokud byla zpráva před odesláním nastavena jako zpráva zabezpečení
@@ -49,10 +50,10 @@ Azure Security Center pro IoT definuje zprávu zabezpečení pomocí následují
 Každá zpráva zabezpečení obsahuje metadata odesílatele, `AgentVersion` `MessageSchemaVersion` například `AgentId`, a seznam událostí zabezpečení.
 Schéma definuje platné a požadované vlastnosti zprávy zabezpečení včetně typů událostí.
 
->[!Note]
-> Odeslané zprávy, které nejsou v souladu se schématem, jsou ignorovány. Před zahájením odesílání dat nezapomeňte ověřit schéma, protože ignorované zprávy nejsou aktuálně uloženy. 
+> [!NOTE]
+> Odeslané zprávy, které nejsou v souladu se schématem, jsou ignorovány. Před zahájením odesílání dat nezapomeňte ověřit schéma, protože ignorované zprávy nejsou aktuálně uloženy.
 
->[!Note]
+> [!NOTE]
 > Odeslané zprávy, které nebyly nastaveny jako zpráva zabezpečení pomocí sady Azure IoT SDK, nebudou směrovány do kanálu Centra zabezpečení Azure pro IoT.
 
 ## <a name="valid-message-example"></a>Platný příklad zprávy
@@ -89,62 +90,63 @@ Po nastavení jako zpráva zabezpečení a odeslané, tato zpráva bude zpracov�
 ]
 ```
 
-## <a name="send-security-messages"></a>Odesílání zpráv zabezpečení 
+## <a name="send-security-messages"></a>Odesílání zpráv zabezpečení
 
 Posílejte zprávy o zabezpečení *bez* použití Azure Security Center pro agenta IoT, pomocí [sady Azure IoT C device SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), Azure [IoT C# device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), [Azure IoT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node), [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)nebo [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java).
 
-Pokud chcete odeslat data zařízení ze svých zařízení ke zpracování pomocí Azure Security Center pro IoT, použijte jedno z následujících rozhraní API k označení zpráv pro správné směrování do kanálu pro zpracování IoT centra zabezpečení Azure. 
+Pokud chcete odeslat data zařízení ze svých zařízení ke zpracování pomocí Azure Security Center pro IoT, použijte jedno z následujících rozhraní API k označení zpráv pro správné směrování do kanálu pro zpracování IoT centra zabezpečení Azure.
 
-Všechna data, která jsou odeslána, i když jsou označena správnou hlavičkou, musí být také v souladu se [schématem zpráv Centra zabezpečení Azure pro IoT](https://aka.ms/iot-security-schemas). 
+Všechna data, která jsou odeslána, i když jsou označena správnou hlavičkou, musí být také v souladu se [schématem zpráv Centra zabezpečení Azure pro IoT](https://aka.ms/iot-security-schemas).
 
-### <a name="send-security-message-api"></a>Odeslat rozhraní API zprávy zabezpečení 
+### <a name="send-security-message-api"></a>Odeslat rozhraní API zprávy zabezpečení
 
-Rozhraní **API odesílání zpráv zabezpečení** je aktuálně k dispozici v jazycích C a C#, Pythonu, Node.js a jazyce Java.  
+Rozhraní **API odesílání zpráv zabezpečení** je aktuálně k dispozici v jazycích C a C#, Pythonu, Node.js a jazyce Java.
 
 #### <a name="c-api"></a>C API
 
 ```c
 bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
- 
+
     bool success = true;
     IOTHUB_MESSAGE_HANDLE messageHandle = NULL;
- 
+
     messageHandle = IoTHubMessage_CreateFromByteArray(data, dataSize);
- 
+
     if (messageHandle == NULL) {
         success = false;
         goto cleanup;
     }
- 
+
     if (IoTHubMessage_SetAsSecurityMessage(messageHandle) != IOTHUB_MESSAGE_OK) {
         success = false;
         goto cleanup;
     }
- 
+
     if (IoTHubModuleClient_SendEventAsync(iotHubAdapter->moduleHandle, messageHandle, SendConfirmCallback, iotHubAdapter) != IOTHUB_CLIENT_OK) {
         success = false;
         goto cleanup;
     }
- 
+
 cleanup:
     if (messageHandle != NULL) {
         IoTHubMessage_Destroy(messageHandle);
     }
- 
+
     return success;
 }
- 
+
 static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback) {
     if (userContextCallback == NULL) {
         //error handling
         return;
     }
- 
+
     if (result != IOTHUB_CLIENT_CONFIRMATION_OK){
         //error handling
     }
 }
 ```
+
 #### <a name="c-api"></a>Rozhraní API C#
 
 ```cs
@@ -157,6 +159,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
     await client.SendEventAsync(securityMessage);
 }
 ```
+
 #### <a name="nodejs-api"></a>Node.js API
 
 ```typescript
@@ -194,7 +197,7 @@ function SendSecurityMessage(messageContent)
 
 Chcete-li použít rozhraní API Pythonu, musíte nainstalovat balíček [azure-iot-device](https://pypi.org/project/azure-iot-device/).
 
-Při použití rozhraní Python API můžete zprávu zabezpečení odeslat prostřednictvím modulu nebo prostřednictvím zařízení pomocí jedinečného připojovacího řetězce zařízení nebo modulu. Při použití následujícího příkladu skriptu Pythonu se zařízením použijte **IoTHubDeviceClient**a s modulem použijte **IoTHubModuleClient**. 
+Při použití rozhraní Python API můžete zprávu zabezpečení odeslat prostřednictvím modulu nebo prostřednictvím zařízení pomocí jedinečného připojovacího řetězce zařízení nebo modulu. Při použití následujícího příkladu skriptu Pythonu se zařízením použijte **IoTHubDeviceClient**a s modulem použijte **IoTHubModuleClient**.
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
@@ -224,8 +227,8 @@ public void SendSecurityMessage(string message)
 }
 ```
 
-
 ## <a name="next-steps"></a>Další kroky
+
 - Přečtěte si [přehled](overview.md) služby Azure Security Center for IoT
 - Další informace o Azure Security Center pro [architekturu](architecture.md) IoT
 - Povolení [služby](quickstart-onboard-iot-hub.md)

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: d31b7531e00199ea63c7b057dacff1b67d7cedc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528927"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382971"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurace a přístup k protokolům auditu na webu Azure Portal
 
@@ -30,7 +30,7 @@ Chcete-li projít tento návod, co potřebujete:
 
 Povolte a nakonfigurujte protokolování auditu.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte databázi Azure pro server MariaDB.
 
@@ -69,4 +69,5 @@ Povolte a nakonfigurujte protokolování auditu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [protokolech auditování](concepts-audit-logs.md) v Azure Database pro MariaDB.
+- Další informace o [protokolech auditu](concepts-audit-logs.md) v Azure Database for MariaDB
+- Zjistěte, jak nakonfigurovat protokoly auditu v [rozhraní příkazového příkazu Azure](howto-configure-audit-logs-cli.md)

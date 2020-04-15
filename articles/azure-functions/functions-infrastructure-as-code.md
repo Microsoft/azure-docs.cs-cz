@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276891"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382524"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro vaši funkční aplikaci ve službě Azure Functions
 
@@ -33,7 +33,7 @@ Nasazení Azure Functions se obvykle skládá z těchto prostředků:
 | Součást [Application Insights](../azure-monitor/app/app-insights-overview.md) | Nepovinné    | [Microsoft.Insights/komponenty](/azure/templates/microsoft.insights/components)         |   |
 | [Hostingový plán](./functions-scale.md)                                             | Volitelně<sup>1</sup>    | [Farmy Microsoft.Web/server](/azure/templates/microsoft.web/serverfarms)                 |   |
 
-<sup>1.</sup> Hostingový plán je vyžadován pouze v případě, že se rozhodnete spustit aplikaci funkcí v [plánu Premium](./functions-premium-plan.md) (ve verzi Preview) nebo v [plánu služby App Service](../app-service/overview-hosting-plans.md).
+<sup>1.</sup> Hostingový plán je vyžadován pouze v případě, že se rozhodnete spustit aplikaci funkcí v [plánu Premium](./functions-premium-plan.md) nebo v [plánu služby App Service](../app-service/overview-hosting-plans.md).
 
 > [!TIP]
 > I když to není nutné, důrazně doporučujeme nakonfigurovat Application Insights pro vaši aplikaci.
@@ -111,7 +111,7 @@ Kromě toho musí být klíč instrumentace poskytnut aplikaci `APPINSIGHTS_INST
 
 Definice hostingového plánu se liší a může být jedna z následujících možností:
 * [Plán spotřeby](#consumption) (výchozí)
-* [Prémiový plán](#premium) (ve verzi Preview)
+* [Plán Premium](#premium)
 * [Plán služby App Service](#app-service-plan)
 
 ### <a name="function-app"></a>Function App
@@ -649,8 +649,8 @@ K nasazení šablony můžete použít některý z následujících způsobů:
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Portál Azure](../azure-resource-manager/templates/deploy-portal.md)
-* [ROZHRANÍ API PRO ODPOČINEK](../azure-resource-manager/templates/deploy-rest.md)
+* [portál Azure](../azure-resource-manager/templates/deploy-portal.md)
+* [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Tlačítko Nasazení do Azure
 

@@ -3,12 +3,12 @@ title: Principy zamykání prostředků
 description: Další informace o možnostech uzamčení v Azure Blueprints k ochraně prostředků při přiřazování podrobného plánu.
 ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9c4e2f4c6fd8f5fb574002217ca71d1e7d130ff7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676752"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383594"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Principy zamykání prostředků v azure blueprints
 
@@ -103,7 +103,7 @@ Když je přiřazení odebráno, zámky vytvořené Azure Blueprints jsou odebr�
 
 RBAC [odepřít přiřazení](../../../role-based-access-control/deny-assignments.md) odepřít akce se použije na artefakt prostředky během přiřazení podrobného plánu, pokud přiřazení vybrané **jen pro čtení** nebo **neodstraňovat** možnost. Akce odepřít je přidán a spravované identity přiřazení podrobného plánu a lze odebrat z prostředků artefaktu pouze stejné spravované identity. Toto bezpečnostní opatření vynucuje mechanismus uzamčení a zabraňuje odebrání zámku podrobného plánu mimo Azure Blueprints.
 
-![Podrobné zamítne přiřazení ve skupině prostředků](../media/resource-locking/blueprint-deny-assignment.png)
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Podrobné zamítne přiřazení ve skupině prostředků" border="false":::
 
 [Vlastnosti přiřazení odepření](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) každého režimu jsou následující:
 

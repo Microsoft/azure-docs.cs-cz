@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/10/2020
 ms.author: rogarana
-ms.openlocfilehash: ae575eebf700f5495ea20d2bd3732ca21ad32315
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 172e0944fe117dc78565b10e6c0324737056ddcb
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011411"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383827"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Povolení ověřování služby Active Directory přes SMB pro sdílené složky Azure
 
@@ -72,7 +72,7 @@ Ověřování Azure Files AD (preview) je dostupné ve [všech oblastech ve veř
 
 ## <a name="workflow-overview"></a>Přehled pracovního postupu
 
-Než povolíte ověřování ve službě AD přes SMB pro sdílené složky Azure, doporučujeme projít [si požadavky](#prerequisites) a ujistěte se, že jste dokončili všechny kroky. Požadavky ověřují, že vaše prostředí Služby AD, Azure AD a Azure Storage jsou správně nakonfigurované. 
+Než povolíte ověřování ve službě AD přes SMB pro sdílené složky Azure, doporučujeme projít [si požadavky](#prerequisites) a ujistěte se, že jste dokončili všechny kroky. Požadavky ověřují, že vaše prostředí Služby AD, Azure AD a Azure Storage jsou správně nakonfigurované. Pokud plánujete povolit všechny konfigurace sítě ve sdílené složce, doporučujeme nejprve vyhodnotit [pozornost sítě](https://docs.microsoft.com/azure/storage/files/storage-files-networking-overview) a před povolením ověřování ve službě AD nejprve dokončit související konfiguraci. 
 
 Dále postupujte podle následujících kroků k nastavení souborů Azure pro ověřování ve službě AD: 
 
@@ -84,7 +84,7 @@ Dále postupujte podle následujících kroků k nastavení souborů Azure pro o
 
 4. Připojení sdílené složky Azure z domény služby AD připojované k virtuálnímu počítači. 
 
-5. Otočit heslo účtu služby AD (volitelné)
+5. Aktualizace hesla identity účtu úložiště ve službě AD
 
 Následující diagram znázorňuje pracovní postup od konce pro povolení ověřování Azure AD přes SMB pro sdílené složky Azure. 
 
@@ -100,7 +100,7 @@ Chcete-li povolit ověřování služby AD přes SMB pro sdílené složky Azure
 > [!IMPORTANT]
 > Rutina `Join-AzStorageAccountForAuth` provede změny prostředí AD. Přečtěte si následující vysvětlení, abyste lépe pochopili, co dělá, abyste zajistili, že máte správná oprávnění ke spuštění příkazu a že použité změny jsou v souladu se zásadami dodržování předpisů a zabezpečení. 
 
-Rutina `Join-AzStorageAccountForAuth` provede ekvivalent připojení domény offline jménem uvedeného účtu úložiště. Vytvoří účet ve vaší doméně služby AD, buď [účet počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí) nebo přihlašovací [účet služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts). Vytvořený účet služby AD představuje účet úložiště v doméně služby AD. Pokud je účet služby AD vytvořen v organizační jednotce služby AD , která vynucuje vypršení platnosti hesla, je nutné heslo aktualizovat před dosažením maximálního stáří hesla. Pokud se nepodaří aktualizovat heslo účtu služby AD, dojde k selhání ověřování při přístupu ke sdíleným položkám azure. Informace o aktualizaci hesla naleznete v [tématu Aktualizace hesla účtu služby AD](#5-update-ad-account-password).
+Rutina `Join-AzStorageAccountForAuth` provede ekvivalent připojení domény offline jménem uvedeného účtu úložiště. Vytvoří účet ve vaší doméně služby AD, buď [účet počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí) nebo přihlašovací [účet služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts). Vytvořený účet služby AD představuje účet úložiště v doméně služby AD. Pokud je účet služby AD vytvořen v organizační jednotce služby AD , která vynucuje vypršení platnosti hesla, je nutné heslo aktualizovat před dosažením maximálního stáří hesla. Pokud se nepodaří aktualizovat heslo účtu služby AD, dojde k selhání ověřování při přístupu ke sdíleným položkám azure. Informace o aktualizaci hesla najdete v [tématu Aktualizace hesla identity účtu úložiště ve službách AD](#5-update-the-password-of-your-storage-account-identity-in-ad).
 
 Můžete použít následující skript k provedení registrace a povolení funkce nebo alternativně můžete ručně provádět operace, které by skript. Tyto operace jsou popsány v části následující skript. Nemusíte dělat obojí.
 
@@ -113,7 +113,8 @@ Můžete použít následující skript k provedení registrace a povolení funk
 ### <a name="12-domain-join-your-storage-account"></a>1.2 Doména se připojí k účtu úložiště
 Nezapomeňte nahradit zástupné hodnoty vlastními v níže uvedených parametrech, než je provedete v prostředí PowerShell.
 > [!IMPORTANT]
-> Níže uvedená rutina připojení k doméně vytvoří účet služby AD představující účet úložiště (sdílenou složku) ve službě AD. Můžete se zaregistrovat jako účet počítače nebo přihlašovací účet služby. U účtů počítačů je ve společnosti AD nastavenvýchozí věk vypršení platnosti hesla po 30 dnech. Podobně přihlašovací účet služby může mít výchozí stáří vypršení platnosti hesla nastavené v doméně služby AD nebo organizační jednotce (OU). Důrazně doporučujeme zkontrolovat, jaký je věk vypršení platnosti hesla konfigurovaný ve vašem prostředí služby AD, a plán [ovat aktualizaci hesla účtu služby AD](#5-update-ad-account-password) účtu služby AD níže před dosažením maximálního stáří hesla. Pokud se nepodaří aktualizovat heslo účtu služby AD, dojde k selhání ověřování při přístupu ke sdíleným položkám azure. Můžete zvážit [vytvoření nové organizační jednotky služby AD (OU) ve službě AD](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) a odpovídajícím způsobem zakázat zásady vypršení platnosti hesla u [účtů počítačů](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) nebo přihlašovacích účtů služeb. 
+> Níže uvedená rutina připojení k doméně vytvoří účet služby AD představující účet úložiště (sdílenou složku) ve službě AD. Můžete se zaregistrovat jako účet počítače nebo přihlašovací účet služby, podrobnosti najdete v [častých dotazech.](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) U účtů počítačů je ve společnosti AD nastavenvýchozí věk vypršení platnosti hesla po 30 dnech. Podobně přihlašovací účet služby může mít výchozí stáří vypršení platnosti hesla nastavené v doméně služby AD nebo organizační jednotce (OU).
+> U obou typů účtů důrazně doporučujeme zkontrolovat, jaký je věk vypršení platnosti hesla konfigurovaný ve vašem prostředí služby AD, a [plánovat aktualizaci hesla identity účtu úložiště ve službě AD](#5-update-the-password-of-your-storage-account-identity-in-ad) účtu služby AD níže před dosažením maximálního stáří hesla. Pokud se nepodaří aktualizovat heslo účtu služby AD, dojde k selhání ověřování při přístupu ke sdíleným položkám azure. Můžete zvážit [vytvoření nové organizační jednotky služby AD (OU) ve službě AD](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) a odpovídajícím způsobem zakázat zásady vypršení platnosti hesla u [účtů počítačů](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) nebo přihlašovacích účtů služeb. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -128,21 +129,27 @@ Import-Module -Name AzFilesHybrid
 #Login with an Azure AD credential that has either storage account owner or contributer RBAC assignment
 Connect-AzAccount
 
+#Define parameters
+$SubscriptionId = "<your-subscription-id-here>"
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
 #Select the target subscription for the current session
-Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
+Select-AzSubscription -SubscriptionId $SubscriptionId 
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
 # You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName. You can choose to provide one of the two names to specify the target OU.
 # You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
+#You can run Get-Help Join-AzStorageAccountForAuth to find more details on this cmdlet.
+
 Join-AzStorageAccountForAuth `
-        -ResourceGroupName "<resource-group-name-here>" `
-        -Name "<storage-account-name-here>" `
-        -DomainAccountType "ComputerAccount" `
-        -OrganizationalUnitName "<ou-name-here>" or -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>"
+        -ResourceGroupName $ResourceGroupName `
+        -Name $StorageAccountName `
+        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" ` #Default set to "ComputerAccount"
+        -OrganizationalUnitName "<ou-name-here>" #You can also use -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" instead. If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
 
-#If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
-
-#
+#You can run the Debug-AzStorageAccountAuth cmdlet to conduct a set of basic checks on your AD configuration with the logged on AD user. This cmdlet is supported on AzFilesHybrid v0.1.2+ version. For more details on the checks performed in this cmdlet, go to Azure Files FAQ.
+Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 
 ```
 
@@ -161,7 +168,7 @@ Chcete-li tento účet vytvořit ručně, vytvořte nový klíč `New-AzStorageA
 
 Jakmile budete mít tento klíč, vytvořte buď službu nebo účet počítače pod ou. Použijte následující specifikaci: HLAVNÍ název služby: "cifs/your-storage-account-name-here.file.core.windows.net" Heslo: Klíč Kerberos pro váš účet úložiště.
 
-Pokud vaše hlavní cena vynucuje vypršení platnosti hesla, je nutné aktualizovat heslo před maximální stáří hesla, aby se zabránilo selhání ověřování při přístupu ke sdíleným položkám souborů Azure. Podrobnosti najdete [v tématu Aktualizace hesla účtu služby AD.](#5-update-ad-account-password)
+Pokud vaše hlavní cena vynucuje vypršení platnosti hesla, je nutné aktualizovat heslo před maximální stáří hesla, aby se zabránilo selhání ověřování při přístupu ke sdíleným položkám souborů Azure. Podrobnosti najdete [v tématu Aktualizace hesla identity účtu úložiště ve službě AD.](#5-update-the-password-of-your-storage-account-identity-in-ad)
 
 Zachovat SID nově vytvořeného účtu, budete potřebovat pro další krok. Identita služby AD, kterou jste právě vytvořili a která představuje účet úložiště, nemusí být synchronizována do služby Azure AD.
 
@@ -207,7 +214,7 @@ Nyní jste tuto funkci úspěšně povolili v účtu úložiště. I když je ta
 
 Nyní jste úspěšně povolili ověřování služby AD přes SMB a přiřadili vlastní roli, která poskytuje přístup ke sdílené složce Azure s identitou služby AD. Chcete-li udělit přístup ke sdílené složce dalším uživatelům, postupujte podle pokynů v části [Přiřadit přístupová oprávnění](#2-assign-access-permissions-to-an-identity) k použití identity a [konfigurace oprávnění ntfs přes](#3-configure-ntfs-permissions-over-smb) oddíly SMB.
 
-## <a name="5-update-ad-account-password"></a>5. Aktualizace hesla účtu služby AD
+## <a name="5-update-the-password-of-your-storage-account-identity-in-ad"></a>5. Aktualizace hesla identity účtu úložiště ve službách AD
 
 Pokud jste zaregistrovali identitu a účet služby AD představující váš účet úložiště pod ou, která vynucuje dobu vypršení platnosti hesla, musíte heslo otočit před maximálním stářím hesla. Pokud se nepodaří aktualizovat heslo účtu služby AD, bude mít za následek selhání ověřování pro přístup ke sdíleným položkám Azure.  
 

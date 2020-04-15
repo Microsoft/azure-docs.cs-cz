@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ad821036047dcf46821b2b2722e3dd17f8e318c2
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: cb2302637efb16fc31bd420bf8c4ead19d7f598d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80386108"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81384963"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Potřebuje uživatel mít rozbočovač a mluvil se zařízeními SD-WAN/VPN, aby mohl používat Azure Virtual WAN?
 
@@ -131,6 +131,8 @@ Ano. Prohlédněte si stránku s [cenami](https://azure.microsoft.com/pricing/de
 
 * Pokud jste měli ExpressRoute bránu kvůli ExpressRoute okruhy připojení k virtuálnímu rozbočovači, pak byste platit za jednotkovou cenu stupnice. Každá jednotka škálování v ER má 2 Gb/s a každá připojovací jednotka se účtuje stejnou rychlostí jako jednotka připojení VPN.
 
+* Pokud jste měli paprskové vnety připojené k rozbočovači, poplatky za partnerský vztah na vyčovávacích zařízení Paprsky paprsku stále platí. 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Jak se onboardují noví partneři, kteří nejsou uvedení ve vašem seznamu partnerů pro spouštění?
 
 Všechna virtuální rozhraní WAN rozhraní API jsou otevřená rozhraní API. Můžete si projít dokumentaci a posoudit technickou proveditelnost. Máte-li jakékoli otázky, pošlete e-mail na adresu azurevirtualwan@microsoft.com. Ideální partner je takový, pro jehož zařízení se dá zřídit připojení IKEv1 nebo IKEv2 protokolu IPSec.
@@ -149,7 +151,7 @@ Virtuální síť můžete připojit v jiné oblasti, než je vaše virtuální 
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Můžou virtuální sítě pro paprsky připojené k virtuálnímu rozbočovači vzájemně komunikovat (V2V Transit)?
 
-Ano. Standardní virtuální síť WAN podporuje přenosité připojení virtuálnísítě k virtuálnísíti prostřednictvím rozbočovače Virtuální síť WAN, ke kterému jsou virtuální sítě připojeny. V terminologii virtuální sítě WAN označujeme tyto cesty jako "místní přenos virtuální virtuální sítě WAN" pro virtuální sítě připojené k virtuálnímu wan hubu v rámci jedné oblasti a "globální přenos virtuální virtuální sítě WAN" pro virtuální sítě připojené přes více virtuálních rozbočovačů WAN přes dvě nebo více Regiony. Přenos virtuální sítě podporuje až 3 Gb/s propustnost během veřejné verze Preview. Propustnost se rozšíří, když globální tranzit přejde GA.
+Ano. Standardní virtuální síť WAN podporuje přenosité připojení virtuálnísítě k virtuálnísíti prostřednictvím rozbočovače Virtuální síť WAN, ke kterému jsou virtuální sítě připojeny. V terminologii virtuální sítě WAN označujeme tyto cesty jako "místní přenos virtuální virtuální sítě WAN" pro virtuální sítě připojené k virtuálnímu wan hubu v rámci jedné oblasti a "globální přenos virtuální virtuální sítě WAN" pro virtuální sítě připojené přes více virtuálních rozbočovačů WAN ve dvou nebo více oblastech. Přenos virtuální sítě podporuje až 3 Gb/s propustnost během veřejné verze Preview. Propustnost se rozšíří, když globální tranzit přejde GA.
 
 Poznámka: V současné době V2V tranzit náhled vyžaduje VPN GW, které mají být nasazeny ve virtuálním centru pro aktivaci směrovací prvky, které mají být spuštěny. Tato VPN GW se nepoužívá pro tranzitní cestu V2V. Toto je známé omezení a bude odstraněno v době V2V GA. Bránu VPN můžete odstranit v rozbočovačích poté, co je plně spuštěna, protože není potřebná pro funkci přenosu V2V. 
 

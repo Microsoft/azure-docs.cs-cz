@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f70c24c91e048270696b244bb9775cb24f0ef30d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257245"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383472"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečené úlohy experimentování a odvození Azure ML v rámci virtuální sítě Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -484,6 +484,21 @@ Obsah souboru, `body.json` na který odkazuje příkaz, je podobný následujíc
 > V současné době nelze konfigurovat vyrovnávání zatížení při provádění operace __připojení__ na existující cluster. Nejprve je nutné připojit cluster a potom provést operaci aktualizace pro změnu systému vyrovnávání zatížení.
 
 Další informace o použití interního systému pro vyrovnávání zatížení s AKS najdete [v tématu Použití interního vyvažovače zatížení se službou Azure Kubernetes Service](/azure/aks/internal-lb).
+
+## <a name="use-azure-container-instances-aci"></a>Použití instancí kontejnerů Azure (ACI)
+
+Azure Container Instances se dynamicky vytvářejí při nasazování modelu. Chcete-li povolit Azure Machine Learning k vytvoření ACI uvnitř virtuální sítě, musíte povolit __delegování podsítě__ pro podsíť používanou nasazením.
+
+Pokud chcete aci používat ve virtuální síti do pracovního prostoru, použijte následující kroky:
+
+1. Chcete-li povolit delegování podsítě ve virtuální síti, použijte informace v článku [Přidat nebo odebrat delegování podsítě.](../virtual-network/manage-subnet-delegation.md) Při vytváření virtuální sítě můžete povolit delegování nebo ji přidat do existující sítě.
+
+    > [!IMPORTANT]
+    > Při povolení delegování použijte `Microsoft.ContainerInstance/containerGroups` jako podsíť Delegát na hodnotu __služby.__
+
+2. Nasazení modelu pomocí [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-) `vnet_name` , `subnet_name` použijte parametry a. Nastavte tyto parametry na název virtuální sítě a podsíť, kde jste povolili delegování.
+
+
 
 ## <a name="use-azure-firewall"></a>Použití brány Azure Firewall
 

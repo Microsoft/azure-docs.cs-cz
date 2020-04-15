@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Vytvoření vlastních výstrah pro Azure Security Center pro IoT'
+title: 'Úvodní příručka: Vytvoření vlastních výstrah'
 description: Pochopit, vytvořit a přiřadit vlastní výstrahy zařízení pro Azure Security Center pro službu zabezpečení IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,19 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: 063e5c9e7d75fd1c07d148c265b1fe64eee3cbc8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78303524"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310838"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Úvodní příručka: Vytvoření vlastních výstrah
 
+Pomocí vlastních skupin zabezpečení a výstrah plně využívá informace o zabezpečení od konce na konec a znalosti kategorických zařízení, aby zajistil lepší zabezpečení v rámci řešení IoT.
 
-Pomocí vlastních skupin zabezpečení a výstrah plně využívá informace o zabezpečení od konce na konec a znalosti kategorických zařízení, aby zajistil lepší zabezpečení v rámci řešení IoT. 
-
-## <a name="why-use-custom-alerts"></a>Proč používat vlastní výstrahy? 
+## <a name="why-use-custom-alerts"></a>Proč používat vlastní výstrahy?
 
 Znáte vaše zařízení IoT nejlépe.
 
@@ -40,8 +39,8 @@ Skupiny zabezpečení umožňují definovat logické skupiny zařízení a centr
 Tyto skupiny mohou představovat zařízení s konkrétním hardwarem, zařízení nasazená v určitém umístění nebo jakoukoli jinou skupinu vhodnou pro vaše specifické potřeby.
 
 Skupiny zabezpečení jsou definovány vlastností značky dvojčete zařízení s názvem **SecurityGroup**. Ve výchozím nastavení má každé řešení IoT v iot hubu jednu skupinu zabezpečení s názvem **default**. Změňte hodnotu vlastnosti **SecurityGroup** a změňte skupinu zabezpečení zařízení.
- 
-Například:
+
+Příklad:
 
 ```
 {
@@ -61,26 +60,24 @@ Například:
   "version": 4,
   "tags": {
     "SecurityGroup": "default"
-  }, 
+  },
 ```
 
-Pomocí skupin zabezpečení můžete zařízení seskupit do logických kategorií. Po vytvoření skupin je přiřaďte k vlastním výstrahám podle vašeho výběru, abyste vytvořili nejefektivnější komplexní řešení zabezpečení IoT. 
+Pomocí skupin zabezpečení můžete zařízení seskupit do logických kategorií. Po vytvoření skupin je přiřaďte k vlastním výstrahám podle vašeho výběru, abyste vytvořili nejefektivnější komplexní řešení zabezpečení IoT.
 
 ## <a name="customize-an-alert"></a>Přizpůsobení výstrahy
 
-1. Otevřete svůj IoT Hub. 
-2. V části **Zabezpečení** klikněte na **Vlastní výstrahy.** 
-3. Vyberte skupinu zabezpečení, na kterou chcete použít vlastní nastavení. 
-4. Klikněte **na Přidat vlastní výstrahu**.
-5. V rozevíracím seznamu vyberte vlastní výstrahu. 
-6. Upravte požadované vlastnosti, klepněte na **tlačítko OK**.
-7. Nezapomeňte klepnout na tlačítko **ULOŽIT**. Bez uložení nové výstrahy se výstraha odstraní při příštím zavření centra IoT Hub.
+1. Otevřete svůj IoT Hub.
+1. V části **Zabezpečení** klikněte na **Vlastní výstrahy.**
+1. Vyberte skupinu zabezpečení, na kterou chcete použít vlastní nastavení.
+1. Klikněte **na Přidat vlastní výstrahu**.
+1. V rozevíracím seznamu vyberte vlastní výstrahu.
+1. Upravte požadované vlastnosti, klepněte na **tlačítko OK**.
+1. Nezapomeňte klepnout na tlačítko **ULOŽIT**. Bez uložení nové výstrahy se výstraha odstraní při příštím zavření centra IoT Hub.
 
- 
 ## <a name="alerts-available-for-customization"></a>Upozornění, která jsou k dispozici pro vlastní nastavení
 
-Azure Security Center pro IoT nabízí velké množství výstrah, které lze přizpůsobit podle vašich konkrétních potřeb. Zkontrolujte [přizpůsobitelnou tabulku výstrah,](concept-customizable-security-alerts.md) zda není závažnost výstrah, zdroj dat, popis a naše navrhované nápravné kroky, pokud a kdy je každá výstraha přijata. 
-
+Azure Security Center pro IoT nabízí velké množství výstrah, které lze přizpůsobit podle vašich konkrétních potřeb. Zkontrolujte [přizpůsobitelnou tabulku výstrah,](concept-customizable-security-alerts.md) zda není závažnost výstrah, zdroj dat, popis a naše navrhované nápravné kroky, pokud a kdy je každá výstraha přijata.
 
 ## <a name="next-steps"></a>Další kroky
 

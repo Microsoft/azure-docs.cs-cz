@@ -85,8 +85,6 @@
   items:
     - name: Podpora TLS
       href: iot-hub-tls-support.md
-    - name: Vyřazení TLS 1.0 a 1.1
-      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: Podpora virtuálních sítí
       href: virtual-network-support.md
     - name: Přehled obohacení zpráv
@@ -444,6 +442,8 @@
           href: iot-hub-operations-monitoring.md
         - name: Migrace do nastavení diagnostiky
           href: iot-hub-migrate-to-diagnostics-settings.md
+        - name: Vyřazení TLS 1.0 a 1.1
+          href: iot-hub-tls-deprecating-1-0-and-1-1.md
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory

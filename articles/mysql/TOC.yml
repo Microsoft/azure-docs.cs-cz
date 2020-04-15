@@ -204,6 +204,8 @@
           items:
             - name: portál Azure
               href: howto-configure-audit-logs-portal.md
+            - name: Azure CLI
+              href: howto-configure-audit-logs-cli.md
     - name: Monitorování
       items:
         - name: Vytváření upozornění na metriky

@@ -7,20 +7,23 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 04/14/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8cee874106598c7d81b923d7dd32ba91902d9326
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745184"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383631"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Převést třídy prostředků na skupiny úloh
 
 Skupiny úloh poskytují mechanismus pro izolaci a obsahují systémové prostředky.  Kromě toho skupiny úloh umožňují nastavit pravidla spuštění pro požadavky spuštěné v nich.  Pravidlo časového limitu dotazu umožňuje zrušit dotazy na útěk bez zásahu uživatele.  Tento článek vysvětluje, jak přijmout existující třídu prostředků a vytvořit skupinu úloh s podobnou konfigurací.  Kromě toho je přidáno volitelné pravidlo časového limitu dotazu.
+
+> [!NOTE]
+> Informace o použití skupin pracovních vytížení a tříd prostředků současně naleznete v části [Míchání přiřazení tříd zdrojů s klasifikátory](sql-data-warehouse-workload-classification.md#mixing-resource-class-assignments-with-classifiers) v dokumentu [konceptu klasifikace pracovního vytížení.](sql-data-warehouse-workload-classification.md)
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>Principy konfigurace existující třídy prostředků
 
@@ -86,4 +89,6 @@ SELECT request_id, [label], classifier_name, group_name, command
 ## <a name="next-steps"></a>Další kroky
 
 - [Izolace pracovního vytížení](sql-data-warehouse-workload-isolation.md)
-- [Jak vytvořit odkaz skupiny pracovních vytížek](quickstart-configure-workload-isolation-tsql.md)
+- [Jak vytvořit skupinu úloh](quickstart-configure-workload-isolation-tsql.md)
+- [VYTVOŘIT TŘÍDĚNÍ ÚLOH (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
+- [VYTVOŘIT SKUPINU ÚLOH (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)

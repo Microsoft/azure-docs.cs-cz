@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 24c0d9955a857e8bbc1e1c09e600031a7541026c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fcfac923da1c0daee58b10d92cbc6a6ad5e7910
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296964"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383409"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro trénování modelu 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -152,32 +152,19 @@ Použijte virtuální počítač Azure Data Science (DSVM) jako virtuální poč
     > [!WARNING]
     > Azure Machine Learning podporuje jenom virtuální počítače, na kterých běží Ubuntu. Když vytvoříte virtuální hod nebo vyberete existující virtuální hod, musíte vybrat virtuální hod, který používá Ubuntu.
 
-1. **Připojit**: Chcete-li připojit existující virtuální počítač jako výpočetní cíl, musíte zadat plně kvalifikovaný název domény (FQDN), uživatelské jméno a heslo pro virtuální počítač. V tomto příkladu nahraďte \<fqdn> veřejným vícenežitým virtuálním mocnam virtuálního počítačů nebo veřejnou IP adresou. Nahraďte \<uživatelské \<jméno> a> hesla uživatelským jménem a heslem SSH pro virtuální počítače.
+1. **Připojit**: Chcete-li připojit existující virtuální počítač jako výpočetní cíl, musíte zadat ID prostředku, uživatelské jméno a heslo pro virtuální počítač. ID prostředku virtuálního aplikace lze sestavit pomocí ID předplatného, názvu skupiny prostředků a názvu virtuálního aplikace pomocí následujícího formátu řetězce:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
-    > [!IMPORTANT]
-    > Následující oblasti Azure nepodporují připojení virtuálního počítače pomocí veřejné IP adresy virtuálního počítače. Místo toho použijte ID Správce prostředků Azure `resource_id` virtuálního počítače s parametrem:
-    >
-    > * USA – východ
-    > * USA – západ 2
-    > * USA (střed) – jih
-    >
-    > ID prostředku virtuálního_ virtuálního serveru lze sestavit pomocí ID předplatného, názvu skupiny prostředků `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`a názvu virtuálního aplikace pomocí následujícího formátu řetězce: .
-
-
+ 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
-                                                    ssh_port=22,
-                                                    username='<username>',
-                                                    password="<password>")
-   # If in US East, US West 2, or US South Central, use the following instead:
-   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
-   #                                                 ssh_port=22,
-   #                                                 username='<username>',
-   #                                                 password="<password>")
+   
+   attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+                                                   ssh_port=22,
+                                                   username='<username>',
+                                                   password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -211,16 +198,7 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
     
     Po vytvoření clusteru se k němu \<připojte názvem clusteru \<>-ssh.azurehdinsight.net, kde název clusteru> je název, který jste pro cluster zadali. 
 
-1. **Připojit**: Chcete-li připojit cluster HDInsight jako výpočetní cíl, musíte zadat název hostitele, uživatelské jméno a heslo pro cluster HDInsight. Následující příklad používá sadu SDK k připojení clusteru k pracovnímu prostoru. V tomto příkladu nahraďte \<název clusteru> názvem clusteru. Nahraďte \<uživatelské \<jméno> a heslo> uživatelským jménem a heslem SSH pro cluster.
-
-    > [!IMPORTANT]
-    > Následující oblasti Azure nepodporují připojení clusteru HDInsight pomocí veřejné IP adresy clusteru. Místo toho použijte ID Správce prostředků Azure `resource_id` clusteru s parametrem:
-    >
-    > * USA – východ
-    > * USA – západ 2
-    > * USA (střed) – jih
-    >
-    > ID prostředku clusteru lze sestavit pomocí ID předplatného, názvu skupiny prostředků a názvu `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`clusteru pomocí následujícího formátu řetězce: .
+1. **Připojit**: Chcete-li připojit cluster HDInsight jako cíl výpočetního výkonu, musíte zadat ID prostředku, uživatelské jméno a heslo pro cluster HDInsight. ID prostředku clusteru HDInsight lze sestavit pomocí ID předplatného, názvu skupiny prostředků a názvu clusteru HDInsight pomocí následujícího formátu řetězce:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -228,15 +206,11 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
 
    try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
-    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azurehdinsight.net', 
+
+    attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
-    # If you are in US East, US West 2, or US South Central, use the following instead:
-    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
-    #                                                      ssh_port=22, 
-    #                                                      username='<ssh-username>', 
-    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)

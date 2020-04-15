@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 554a4c64700bb189b4b9f085bd7c259312a36b4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: c718b9a66b378044618c8c52eec3a1a498ace83c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410938"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383210"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboardingové počítače pro správu pomocí konfigurace stavu azure automatizace
 
@@ -39,6 +39,9 @@ Pokud nejste připraveni ke správě konfigurace počítače z cloudu, můžete 
 > Správa virtuálních počítačů Azure s Azure Automation State Configuration je zahrnuta bez příplatku, pokud je nainstalovaná verze rozšíření konfigurace požadovaného stavu virtuálního počítače Azure větší než 2.70. Další informace naleznete na [**stránce S cenami automatizace**](https://azure.microsoft.com/pricing/details/automation/).
 
 Následující části tohoto článku popisují, jak můžete na palubě počítačů uvedených výše konfigurace stavu Azure Automation.
+
+>[!NOTE]
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="onboarding-azure-vms"></a>Registrace virtuálních počítačů Azure
 
@@ -280,15 +283,15 @@ Podpora proxy pro metakonfigurace je řízena LCM, což je modul Windows PowerSh
 Pokud výchozí hodnoty PowerShell DSC LCM odpovídají vašemu případu použití a chcete napalubě počítače navádět se z konfigurace stavu automatizace Azure a sestavy, můžete vygenerovat potřebné metakonfigurace DSC jednodušeji pomocí rutin Azure Automation.
 
 1. Otevřete konzolu PowerShell nebo VSCode jako správce počítače v místním prostředí.
-2. Připojení ke Správci prostředků Azure pomocí`Connect-AzAccount`
+2. Připojte se ke Správci prostředků Azure pomocí [connect-azaccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0).
 3. Stáhněte si metakonfigurace Prostředí PowerShell DSC pro počítače, které chcete nastoupit z účtu Automatizace, ve kterém nastavujete uzly.
 
    ```powershell
    # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
    $Params = @{
-       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation Account
-       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation Account where you want a node on-boarded to
-       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
+       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation account
+       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation account where you want a node on-boarded to
+       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the metaconfiguration will be generated for
        OutputFolder = "$env:UserProfile\Desktop\";
    }
    # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
@@ -296,7 +299,7 @@ Pokud výchozí hodnoty PowerShell DSC LCM odpovídají vašemu případu použi
    Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
-1. Nyní byste měli mít složku s názvem **DscMetaConfigs**, obsahující metakonfigurace Prostředí PowerShell DSC pro počítače na palubě (jako správce).
+1. Nyní byste měli mít složku **DscMetaConfigs** obsahující metakonfigurace Prostředí DSC prostředí Pro počítače na palubě (jako správce).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
@@ -325,7 +328,7 @@ Po registraci počítače jako uzlu DSC v konfiguraci stavu automatizace Azure, 
 
 - **Změny hodnot DSC LCM.** Možná budete muset změnit [hodnoty LCM prostředí PowerShell,](/powershell/scripting/dsc/managing-nodes/metaConfig4) které jsou nastaveny `ConfigurationMode`při počáteční registraci uzlu, například . V současné době můžete změnit pouze tyto hodnoty agenta DSC prostřednictvím opětovné registrace. Jedinou výjimkou je hodnota konfigurace uzlu přiřazená uzlu. Můžete to změnit v Azure Automation DSC přímo.
 
-Uzel můžete znovu zaregistrovat stejným způsobem, jakým jste uzel zaregistrovali zpočátku, pomocí některé z metod registrace popsaných v tomto dokumentu. Před opětovnou registrací není nutné zrušit registraci uzlu z konfigurace stavu automatizace Azure.
+Uzel můžete znovu zaregistrovat stejně jako původně registrovaný uzel pomocí některé z metod registrace popsaných v tomto dokumentu. Před opětovnou registrací není nutné zrušit registraci uzlu z konfigurace stavu automatizace Azure.
 
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Řešení potíží s připnutím virtuálního počítače Azure
 
@@ -347,6 +350,7 @@ Další informace o řešení potíží najdete [v tématu řešení potíží s
 
 - Další informace najdete [v tématu Začínáme s azure automation state configuration](automation-dsc-getting-started.md).
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit k cílovým uzlům, najdete [v tématu Kompilace konfigurací v konfiguraci stavu automatizace Azure](automation-dsc-compile.md).
-- Odkaz na rutinu prostředí PowerShell najdete [v tématu Rutiny konfigurace stavu azure automatizace](/powershell/module/az.automation#automation).
+- Odkaz na rutinu prostředí PowerShell naleznete v tématu [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
 - Informace o cenách najdete v [tématu Ceny konfigurace stavu Azure Automation](https://azure.microsoft.com/pricing/details/automation/).
 - Příklad použití konfigurace stavu azure automatizace v kanálu průběžného nasazení najdete v [tématu Příklad použití: Průběžné nasazení do virtuálních počítačů pomocí konfigurace stavu automatizace Azure a Chocolatey](automation-dsc-cd-chocolatey.md).

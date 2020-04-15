@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475171"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312035"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace brány aplikace Azure a brány firewall webových aplikací z v1 na 2
 
@@ -36,7 +36,7 @@ K dispozici je skript Azure PowerShell, který provádí následující akce:
 
 * Nová brána v2 má nové veřejné a soukromé IP adresy. Není možné přesunout IP adresy přidružené k existující bráně v1 bez problémů na v2. Můžete však přidělit existující (nepřidělenou) veřejnou nebo soukromou IP adresu nové bráně v2.
 * Je nutné zadat ip adresní prostor pro jinou podsíť v rámci virtuální sítě, kde je umístěna vaše brána v1. Skript nemůže vytvořit bránu v2 v žádné existující podsítě, které již mají bránu v1. Pokud však existující podsíť již má bránu v2, může to stále fungovat za předpokladu, že je dostatek adresního místa IP.
-* Chcete-li migrovat konfiguraci SSL, musíte zadat všechny certifikáty SSL používané v bráně v1.
+* Chcete-li migrovat konfiguraci TLS/SSL, musíte zadat všechny certifikáty TLS/SSL používané v bráně v1.
 * Pokud máte pro bránu V1 zapnutý režim FIPS, nebude migrována do nové brány v2. Režim FIPS není podporován ve v2.
 * v2 nepodporuje Protokol IPv6, takže brány s povoleným protokolem IPv6 v1 se nemigrují. Pokud spustíte skript, nemusí být dokončen.
 * Pokud brána v1 má pouze privátní IP adresu, skript vytvoří veřejnou IP adresu a privátní IP adresu pro novou bránu v2. v2 brány v současné době nepodporují pouze soukromé IP adresy.
@@ -101,7 +101,7 @@ Spuštění skriptu:
 
    * **podsíťAddressRange: [String]: Povinné** - Toto je ip adresní prostor, který jste přidělili (nebo chcete přidělit) pro novou podsíť, která obsahuje novou bránu v2. To musí být uvedeno v zápisu CIDR. Například: 10.0.0.0/24. Tuto podsíť není nutné vytvářet předem. Skript jej vytvoří za vás, pokud neexistuje.
    * **appgwName: [String]: Volitelné**. Toto je řetězec, který zadáte jako název nové Standard_v2 nebo WAF_v2 brány. Pokud tento parametr není zadán, název vaší stávající brány v1 se použije s příponou *_v2* připojen.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Volitelné**.  Seznam objektů PSApplicationGatewaySslCertificate oddělených čárkami, který vytvoříte k reprezentaci certifikátů SSL z brány v1, musí být odeslán do nové brány v2. Pro každý z vašich certifikátů SSL nakonfigurovaných pro bránu Standard v1 nebo WAF v1 můžete vytvořit nový objekt PSApplicationGatewaySslCertificate pomocí zde uvedeného příkazu. `New-AzApplicationGatewaySslCertificate` Potřebujete cestu k souboru SSL Cert a heslo.
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Volitelné**.  Seznam objektů PSApplicationGatewaySslCertificate oddělených čárkami, který vytvoříte k reprezentaci certifikátů TLS/SSL z brány v1, musí být odeslán do nové brány v2. Pro každý z vašich certifikátů TLS/SSL nakonfigurovaných pro bránu Standard v1 nebo WAF v1 můžete vytvořit nový objekt PSApplicationGatewaySslCertificate pomocí zde uvedeného příkazu. `New-AzApplicationGatewaySslCertificate` Potřebujete cestu k souboru TLS/SSL Cert a heslo.
 
      Tento parametr je volitelný pouze v případě, že nemáte naslouchací procesy HTTPS nakonfigurované pro bránu v1 nebo WAF. Pokud máte alespoň jedno nastavení naslouchacího procesu HTTPS, musíte zadat tento parametr.
 

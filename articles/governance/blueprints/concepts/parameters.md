@@ -1,14 +1,14 @@
 ---
 title: Použití parametrů k vytváření dynamických podrobných plánů
 description: Přečtěte si o statických a dynamických parametrech a o tom, jak je používat k vytváření zabezpečených a dynamických podrobných plánů.
-ms.date: 03/12/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36735d71b746301819e5079aba1697b55fe5e183
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677587"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383619"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických podrobných plánů prostřednictvím parametrů
 
@@ -28,8 +28,7 @@ Prostřednictvím rozhraní REST API parametry lze vytvořit na samotný podrobn
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>Použití parametrů secureString a secureObject
 
-Zatímco _artefakt_ šablony Správce prostředků podporuje parametry typů **secureString** a **secureObject,** Azure Blueprints vyžaduje, aby každý z nich byl propojen s trezorem klíčů Azure.
-Toto bezpečnostní opatření zabraňuje nebezpečné praxi ukládání tajemství spolu s blueprint a podporuje zaměstnávání bezpečných vzorů. Azure Blueprints podporuje toto bezpečnostní opatření a detekuje zahrnutí buď zabezpečeného parametru do _artefaktu_šablony Správce prostředků . Služba pak během přiřazení zobrazí výzvu pro následující vlastnosti trezoru klíčů na detekovaný zabezpečený parametr:
+Zatímco _artefakt_ šablony Správce prostředků podporuje parametry typů **secureString** a **secureObject,** Azure Blueprints vyžaduje, aby každý z nich byl propojen s trezorem klíčů Azure. Toto bezpečnostní opatření zabraňuje nebezpečné praxi ukládání tajemství spolu s blueprint a podporuje zaměstnávání bezpečných vzorů. Azure Blueprints podporuje toto bezpečnostní opatření a detekuje zahrnutí buď zabezpečeného parametru do _artefaktu_šablony Správce prostředků . Služba pak během přiřazení zobrazí výzvu pro následující vlastnosti trezoru klíčů na detekovaný zabezpečený parametr:
 
 - ID prostředku trezoru klíčů
 - Tajný název trezoru klíčů
@@ -62,11 +61,11 @@ Hodnota parametru definovaná v definici podrobného plánu se nazývá **static
 
 1. Artefakty přidané do podrobného plánu, které mají možnosti parametrů, zobrazují **parametry X Y navyplněné** ve sloupci **Parametry.** Klikněte na řádek artefaktu upravit parametry artefaktu.
 
-   ![Parametry podrobného plánu v definici podrobného plánu](../media/parameters/parameter-column.png)
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Parametry podrobného plánu v definici podrobného plánu" border="false":::
 
 1. Stránka **Upravit artefakt** zobrazuje možnosti hodnoty odpovídající artefaktu, na který jste klikli. Každý parametr na artefaktmá název, pole hodnoty a zaškrtávací políčko. Nastavte políčko na nezaškrtnuté, aby bylo **statický parametr**. V níže uvedeném příkladu je **statický parametr** pouze _Umístění,_ protože není zaškrtnuto a je zaškrtnuto _políčko Název skupiny prostředků._
 
-   ![Statické parametry podrobného plánu na artefaktu podrobného plánu](../media/parameters/static-parameter.png)
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Statické parametry podrobného plánu na artefaktu podrobného plánu" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Nastavení statických parametrů z rozhraní REST API
 
@@ -177,7 +176,7 @@ Opakem statického parametru je **dynamický parametr**. Tento parametr není de
 
 1. Na stránce **Přiřadit podrobný plán** vyhledejte část **Parametry artefaktu.** Každý artefakt s alespoň jedním **dynamickým parametrem** zobrazí artefakt a možnosti konfigurace. Před přiřazením podrobného plánu zadejte požadované hodnoty parametrům. V příkladu níže _Name_ je **dynamický parametr,** který musí být definován k dokončení přiřazení podrobného plánu.
 
-   ![Dynamický parametr podrobného plánu během přiřazení podrobného plánu](../media/parameters/dynamic-parameter.png)
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Dynamický parametr podrobného plánu během přiřazení podrobného plánu" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Nastavení dynamických parametrů z rozhraní REST API
 

@@ -1,23 +1,23 @@
 ---
 title: 'Kurz: Operace ETL s interaktivním dotazem – Azure HDInsight'
-description: Kurz – Naučte se extrahovat data z nezpracované datové sady CSV, transformovat je pomocí interaktivního dotazu na HDInsight a pak načíst transformovaná data do databáze Azure SQL pomocí Apache Sqoop.
+description: Kurz – Naučte se extrahovat data z nezpracované datové sady CSV. Transformujte jej pomocí interaktivního dotazu na HDInsight. Pak načtěte transformovaná data do databáze Azure SQL pomocí Apache Sqoop.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 07/02/2019
-ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/02/2019
+ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494157"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313745"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Kurz: Extrahování, transformace a načítání dat pomocí interaktivního dotazu v Azure HDInsight
 
-V tomto kurzu vezmete nezpracovaný datový soubor CSV veřejně dostupných letových dat, importujete je do úložiště clusteru HDInsight a pak transformujete data pomocí interaktivního dotazu v Azure HDInsight. Po transformaci dat načtete tato data do databáze Azure SQL pomocí [Apache Sqoop](https://sqoop.apache.org/).
+V tomto kurzu stáhnete nezpracovaný datový soubor CSV veřejně dostupných letových dat. Importujte je do úložiště clusteru HDInsight a pak transformujte data pomocí interaktivního dotazu v Azure HDInsight. Po transformaci dat načtete tato data do databáze Azure SQL pomocí [Apache Sqoop](https://sqoop.apache.org/).
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -46,7 +46,7 @@ Tento kurz se zabývá následujícími úkony:
    | --- | --- |
    | Filter Year (Filtr roku) |2019 |
    | Filter Period (Filtr období) |January (Leden) |
-   | Pole |Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Fields (Pole) |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
 3. Vyberte **Download** (Stáhnout). Získáte soubor .zip s vybranými datovými poli.
 
@@ -60,7 +60,7 @@ Do úložiště přidruženého ke clusteru HDInsight můžete data nahrát mnoh
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    Pokud budete vyzváni k zadání ano nebo ne pokračovat, zadejte ano na příkazovém řádku a stiskněte klávesu ENTER. Text není při psaní v okně viditelný.
+    Pokud se zobrazí výzva, zadejte ano nebo ne. Text není při psaní v okně viditelný.
 
 2. Po dokončení nahrávání se ke clusteru připojte pomocí SSH. Upravte níže uvedený `CLUSTERNAME` příkaz nahrazením názvem clusteru HDInsight. Potom zadejte následující příkaz:
 
@@ -283,13 +283,13 @@ V předchozích částech jste zkopírovali transformovaná data do umístění 
     GO
     ```
 
-    Měl by se zobrazit výpis dat v tabulce. Tabulka obsahuje název města a průměrnou délku zpoždění letu pro příslušné město. 
+    Měl by se zobrazit výpis dat v tabulce. Tabulka obsahuje název města a průměrnou délku zpoždění letu pro příslušné město.
 
     Zadáním `exit` ukončete nástroj tsql.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení kurzu můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
+Po dokončení kurzu můžete cluster odstranit. S HDInsight, vaše data jsou uloženy ve službě Azure Storage, takže můžete bezpečně odstranit clusteru, když není v provozu. Účtuje se vám také cluster HDInsight, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster jsou mnohonásobně vyšší než poplatky za úložiště, má ekonomické smysl odstranit clustery, když nejsou používány.
 
 Pokud chcete odstranit cluster, přečtěte si informace [o odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového příkazu k Azure](../hdinsight-delete-cluster.md).
 
@@ -298,4 +298,4 @@ Pokud chcete odstranit cluster, přečtěte si informace [o odstranění cluster
 V tomto kurzu jste vzali nezpracovaný datový soubor CSV, importovali ho do úložiště clusteru HDInsight a pak jste data transformovali pomocí interaktivního dotazu v Azure HDInsight.  Přejdete k dalšímu kurzu, kde se dozvíte o konektoru Apache Hive Warehouse Connector.
 
 > [!div class="nextstepaction"]
->[Integrace Apache Spark a Apache Hive s konektorem Hive Warehouse Connector](./apache-hive-warehouse-connector.md)
+> [Integrace Apache Spark a Apache Hive s konektorem Hive Warehouse Connector](./apache-hive-warehouse-connector.md)

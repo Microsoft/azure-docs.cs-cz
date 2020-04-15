@@ -1,5 +1,5 @@
 ---
-title: Průvodce šetřením zařízení Azure Security Center for IoT Device| Dokumenty společnosti Microsoft
+title: Prošetření podezřelého zařízení
 description: Tento způsob, jak průvodce vysvětluje, jak pomocí Azure Security Center pro IoT prozkoumat podezřelé zařízení IoT pomocí Log Analytics.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,23 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8d2fe8d63c7ece6f3b3426d8fc5a3454a61826f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68596253"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311037"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Prozkoumání podezřelého zařízení IoT
 
-Výstrahy služby Azure Security Center for IoT poskytují jasné informace o tom, kdy jsou zařízení IoT podezřelá z účasti na podezřelých aktivitách nebo když existují náznaky, že je zařízení ohroženo. 
+Výstrahy služby Azure Security Center for IoT poskytují jasné informace o tom, kdy jsou zařízení IoT podezřelá z účasti na podezřelých aktivitách nebo když existují náznaky, že je zařízení ohroženo.
 
-V této příručce použijte návrhy šetření k určení potenciálních rizik pro vaši organizaci, rozhodnout, jak napravit a zjistit nejlepší způsoby, jak zabránit podobným útokům v budoucnu.  
+V této příručce použijte návrhy šetření k určení potenciálních rizik pro vaši organizaci, rozhodnout, jak napravit a zjistit nejlepší způsoby, jak zabránit podobným útokům v budoucnu.
 
 > [!div class="checklist"]
 > * Vyhledání dat zařízení
 > * Prozkoumat pomocí dotazů kql
-
 
 ## <a name="how-can-i-access-my-data"></a>Jak mohu získat přístup ke svým údajům?
 
@@ -39,15 +38,15 @@ Ve výchozím nastavení Azure Security Center pro IoT ukládá výstrahy zabezp
 
 Chcete-li vyhledat pracovní prostor Log Analytics pro ukládání dat:
 
-1. Otevřete centrum IoT, 
+1. Otevřete centrum IoT,
 1. V části **Zabezpečení**klepněte na položku **Přehled**a vyberte **položku Nastavení**.
-1. Změňte podrobnosti konfigurace pracovního prostoru Analýzy protokolů. 
-1. Klikněte na **Uložit**. 
+1. Změňte podrobnosti konfigurace pracovního prostoru Analýzy protokolů.
+1. Klikněte na **Uložit**.
 
 V návaznosti na konfiguraci postupujte takto, abyste měli přístup k datům uloženým v pracovním prostoru Log Analytics:
 
-1. Vyberte a klikněte na azure security center pro iot upozornění ve vašem Centru IoT. 
-1. Klepněte na tlačítko **Další šetření**. 
+1. Vyberte a klikněte na azure security center pro iot upozornění ve vašem Centru IoT.
+1. Klepněte na tlačítko **Další šetření**.
 1. Vyberte **Chcete-li zjistit, která zařízení mají tuto výstrahu, klikněte sem a zobrazte sloupec DeviceId**.
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>Vyšetřovací kroky pro podezřelá zařízení IoT
@@ -70,7 +69,7 @@ Chcete-li zjistit, zda byly spuštěny další výstrahy přibližně ve stejnou
 
 ### <a name="users-with-access"></a>Uživatelé s přístupem
 
-Chcete-li zjistit, kteří uživatelé mají přístup k tomuto zařízení, použijte následující dotaz kql: 
+Chcete-li zjistit, kteří uživatelé mají přístup k tomuto zařízení, použijte následující dotaz kql:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -85,13 +84,14 @@ Chcete-li zjistit, kteří uživatelé mají přístup k tomuto zařízení, pou
      UserName=extractjson("$.UserName", EventDetails, typeof(string))
   | summarize FirstObserved=min(TimestampLocal) by GroupNames, UserName
  ```
-Pomocí těchto dat můžete zjistit: 
+Pomocí těchto dat můžete zjistit:
+
 - Kteří uživatelé mají k zařízení přístup?
 - Mají uživatelé s přístupem očekávané úrovně oprávnění?
 
 ### <a name="open-ports"></a>Otevřené porty
 
-Chcete-li zjistit, které porty v zařízení jsou aktuálně používány nebo byly použity, použijte následující dotaz kql: 
+Chcete-li zjistit, které porty v zařízení jsou aktuálně používány nebo byly použity, použijte následující dotaz kql:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -112,14 +112,15 @@ Chcete-li zjistit, které porty v zařízení jsou aktuálně používány nebo 
  ```
 
 Pomocí těchto dat můžete zjistit:
+
 - Které naslouchání zásuvky jsou v zařízení aktuálně aktivní?
 - Mají být povoleny naslouchání sokety, které jsou aktuálně aktivní?
 - Jsou k zařízení připojeny nějaké podezřelé vzdálené adresy?
 
 ### <a name="user-logins"></a>Přihlášení uživatele
 
-Chcete-li najít uživatele, kteří se přihlásili k zařízení, použijte následující dotaz kql: 
- 
+Chcete-li najít uživatele, kteří se přihlásili k zařízení, použijte následující dotaz kql:
+
  ```
   let device = "YOUR_DEVICE_ID";
   let hub = "YOUR_HUB_NAME";
@@ -143,13 +144,14 @@ Chcete-li najít uživatele, kteří se přihlásili k zařízení, použijte n�
  ```
 
 Výsledky dotazu slouží ke zjištění:
+
 - Kteří uživatelé se k zařízení přihlásili?
 - Mají se uživatelé přihlásit?
 - Připojili se uživatelé, kteří se přihlásili, z očekávaných nebo neočekávaných IP adres?
-  
+
 ### <a name="process-list"></a>Seznam procesů
 
-Chcete-li zjistit, zda je seznam procesů očekávaný, použijte následující dotaz kql: 
+Chcete-li zjistit, zda je seznam procesů očekávaný, použijte následující dotaz kql:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -186,4 +188,4 @@ Výsledky dotazu slouží ke zjištění:
 
 ## <a name="next-steps"></a>Další kroky
 
-Po prozkoumání zařízení a lepší pochopení rizik, možná budete chtít [zvážit konfigurace vlastní výstrahy](quickstart-create-custom-alerts.md) ke zlepšení stavu zabezpečení řešení IoT. Pokud agenta zařízení ještě nemáte, zvažte [nasazení agenta zabezpečení](how-to-deploy-agent.md) nebo [změnu konfigurace existujícího agenta zařízení](how-to-agent-configuration.md) za účelem zlepšení výsledků. 
+Po prozkoumání zařízení a lepší pochopení rizik, možná budete chtít [zvážit konfigurace vlastní výstrahy](quickstart-create-custom-alerts.md) ke zlepšení stavu zabezpečení řešení IoT. Pokud agenta zařízení ještě nemáte, zvažte [nasazení agenta zabezpečení](how-to-deploy-agent.md) nebo [změnu konfigurace existujícího agenta zařízení](how-to-agent-configuration.md) za účelem zlepšení výsledků.

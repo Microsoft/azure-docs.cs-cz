@@ -1,5 +1,5 @@
 ---
-title: Průvodce výstrahami zabezpečení pro Azure Security Center pro IoT| Dokumenty společnosti Microsoft
+title: Integrovaný seznam vlastních & upozornění
 description: Přečtěte si o výstrahách zabezpečení a doporučených nápravách pomocí funkcí a služeb Azure Security Center for IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 7a319baeba3d34f3d3056ce9b42f2e733b5a874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74a6adbd2415cfcf7d5d48cff01d189cfd8b73a5
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78296129"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311486"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Výstrahy zabezpečení ve službě Azure Security Center pro IoT
 
@@ -32,11 +32,9 @@ V tomto článku najdete seznam předdefinovaných výstrah, které se můžou a
 Kromě integrovaných výstrah umožňuje Azure Security Center for IoT definovat vlastní výstrahy na základě očekávaného ioT hubu nebo chování zařízení.
 Další podrobnosti naleznete [v tématu přizpůsobitelné výstrahy](concept-customizable-security-alerts.md).
 
-
-
 ## <a name="built-in-alerts-for-iot-devices"></a>Integrovaná upozornění pro zařízení IoT
 
-| Name (Název) | Severity | Zdroj dat | Popis | Navrhované nápravné kroky|                  
+| Name (Název) | Severity | Zdroj dat | Popis | Navrhované nápravné kroky|
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Vysoká** závažnost|  |  |  |
 |   Binární příkazový řádek   | Vysoká | Agent | Byl zjištěn binární soubor LA Linux, který byl volán/spuštěn z příkazového řádku. Tento proces může být legitimní aktivitou nebo známkou ohrožení vašeho zařízení.|   Zkontrolujte příkaz s uživatelem, který jej spustil, a zkontrolujte, zda se jedná o něco, co oprávněně očekává, že bude spuštěno v zařízení. Pokud ne, eskalujte výstrahu týmu pro zabezpečení informací. |
@@ -52,7 +50,7 @@ Další podrobnosti naleznete [v tématu přizpůsobitelné výstrahy](concept-c
 |  Chování podobné Fairware ransomware zjištěna  | Střednědobé používání | Agent       | Provádění příkazů rm -rf aplikovaných na podezřelá místa zjištěná pomocí analýzy dat hostitele. Protože rm -rf rekurzivně odstraňuje soubory, obvykle se používá pouze u diskrétních složek. V tomto případě se používá v umístění, které by mohly odebrat velké množství dat. Fairware ransomware je známo, že spustit rm -rf příkazy v této složce. |Zkontrolujte s uživatelem, který spustil příkaz to byla legitimní aktivita, kterou očekáváte, že vidět na zařízení. Pokud ne, eskalovat výstrahu týmu pro zabezpečení informací.
 |  Chování podobné zjištěné ransomwaru  | Střednědobé používání | Agent       | Provádění souborů podobných známému ransomwaru, které mohou uživatelům bránit v přístupu k jejich systému nebo osobním souborům a mohou požadovat platbu výkupného, aby získali přístup.|Zkontrolujte s uživatelem, který spustil příkaz, pokud se jednalo o legitimní aktivitu, kterou očekáváte, že se zobrazí na zařízení. Pokud ne, eskalovat výstrahu týmu pro zabezpečení informací.
 |   Obrázek kontejneru crypto mince horník a kontejneru detekován | Střednědobé používání                   | Agent       | Kontejner detekce běží známé digitální měna těžební bitové kopie. |  1. Pokud toto chování není zamýšleno, odstraňte příslušný obrázek kontejneru.<br> 2. Ujistěte se, že daemon Docker není přístupný prostřednictvím nebezpečného soketu TCP.<br> 3. Eskalovat výstrahu pro tým pro bezpečnost informací.|
-|  Crypto mince horník obrázek  | Střednědobé používání| Agent       | Bylo zjištěno spuštění procesu obvykle spojeného s těžbou digitální měny.| Ověřte u uživatele, který spustil příkaz, pokud se jednalo o legitimní aktivitu v zařízení. Pokud ne, eskalovat výstrahu týmu pro zabezpečení informací.| 
+|  Crypto mince horník obrázek  | Střednědobé používání| Agent       | Bylo zjištěno spuštění procesu obvykle spojeného s těžbou digitální měny.| Ověřte u uživatele, který spustil příkaz, pokud se jednalo o legitimní aktivitu v zařízení. Pokud ne, eskalovat výstrahu týmu pro zabezpečení informací.|
 |   Bylo zjištěno podezřelé použití příkazu nohup | Střednědobé používání | Agent       | Bylo zjištěno podezřelé použití příkazu nohup na hostiteli. Škodlivé objekty běžně spouštějí příkaz nohup z dočasného adresáře, což umožňuje jejich spustitelné soubory na pozadí. Zobrazení tohoto příkazu spustit na soubory umístěné v dočasném adresáři není očekávané nebo obvyklé chování. |Zkontrolujte s uživatelem, který spustil příkaz, pokud se jednalo o legitimní aktivitu, kterou očekáváte, že se zobrazí na zařízení. Pokud ne, eskalovat výstrahu týmu pro zabezpečení informací.
 |   Bylo zjištěno podezřelé použití příkazu useradd  | Střednědobé používání      | Agent       | Podezřelé použití příkazu useradd zjištěného v zařízení. |Zkontrolujte s uživatelem, který spustil příkaz, pokud se jednalo o legitimní aktivitu, kterou očekáváte, že se zobrazí na zařízení. Pokud ne, eskalovat výstrahu týmu pro zabezpečení informací.
 |  Byl odhalen démon Dockeru podle tcp socketu  | Střednědobé používání | Agent | Protokoly počítače označují, že váš daemon Dockeru (dockerd) zpřístupňuje soket TCP. Ve výchozím nastavení konfigurace Dockeru nepoužívá šifrování nebo ověřování, pokud je povolen soket TCP. Výchozí konfigurace Dockeru umožňuje úplný přístup k daemondockeru, kdokoli s přístupem k příslušnému portu.|Zkontrolujte s uživatelem, který spustil příkaz, pokud se jednalo o legitimní aktivitu, kterou očekáváte, že se zobrazí na zařízení. Pokud ne, eskalovat výstrahu týmu pro zabezpečení informací.
@@ -60,7 +58,7 @@ Další podrobnosti naleznete [v tématu přizpůsobitelné výstrahy](concept-c
 |  Bylo zjištěno stahování souborů ze známého škodlivého zdroje.   | Střednědobé používání  | Agent       |  Bylo zjištěno stažení souboru ze známého zdroje malwaru.|Zkontrolujte s uživatelem, který spustil příkaz, pokud se jednalo o legitimní aktivitu, kterou očekáváte, že se zobrazí na zařízení. Pokud ne, eskalovat výstrahu týmu pro zabezpečení informací.
 |   Byl zjištěn přístup k souborům htaccess | Střednědobé používání                       | Agent       | Analýza dat hostitele zjistila možnou manipulaci se souborem htaccess. Htaccess je výkonný konfigurační soubor, který umožňuje provádět více změn na webovém serveru se systémem Apache Web software, včetně základních funkcí přesměrování a pokročilejšífunkce, jako je základní ochrana heslem. Škodlivé objekty actor často upravují soubory htaccess na ohrožených počítačích, aby získali trvalost. |Zkontrolujte, zda se jedná o legitimní očekávanou aktivitu na hostiteli. Pokud ne, eskalujte výstrahu týmu pro zabezpečení informací.|
 |  Známý útočný nástroj  | Střednědobé používání                                   | Agent       | Byl zjištěn nástroj, který je často spojován s uživateli se zlými úmysly, kteří nějakým způsobem útočí na jiné počítače. |Zkontrolujte s uživatelem, který spustil příkaz, pokud se jednalo o legitimní aktivitu, kterou očekáváte, že se zobrazí na zařízení. Pokud ne, eskalovat výstrahu týmu pro zabezpečení informací.|
-|  Agent IoT se pokusil analyzovat konfiguraci dvojčete modulu a nepodařilo se mu analyzovat | Střednědobé používání  | Agent       | Agentu zabezpečení Azure Security Center pro IoT se nepodařilo analyzovat konfiguraci dvojčete modulu z důvodu neshod typů v objektu konfigurace.|Ověřte konfiguraci dvojčete modulu podle schématu konfigurace agenta IoT, opravte všechny neshody. 
+|  Agent IoT se pokusil analyzovat konfiguraci dvojčete modulu a nepodařilo se mu analyzovat | Střednědobé používání  | Agent       | Agentu zabezpečení Azure Security Center pro IoT se nepodařilo analyzovat konfiguraci dvojčete modulu z důvodu neshod typů v objektu konfigurace.|Ověřte konfiguraci dvojčete modulu podle schématu konfigurace agenta IoT, opravte všechny neshody.
 |  Byl zjištěn průzkum místního hostitele.  | Střednědobé používání | Agent       | Bylo zjištěno spuštění příkazu, který je obvykle spojen s běžným průzkumem linuxových robotů. |Zkontrolujte podezřelý příkazový řádek a ověřte, zda byl proveden legitimním uživatelem. Pokud ne, eskalujte výstrahu týmu pro zabezpečení informací.
 |  Neshoda mezi interpretem skriptu a příponou souboru  | Střednědobé používání | Agent       | Neshoda mezi interpretem skriptu a příponou souboru skriptu, který je k dispozici jako zjištěný vstup. Tento typ neshody je obvykle spojen s spuštěním skriptu útočníka. |Zkontrolujte s uživatelem, který spustil příkaz, pokud se jednalo o legitimní aktivitu, kterou očekáváte, že se zobrazí na zařízení. Pokud ne, eskalovat výstrahu týmu pro zabezpečení informací.
 |  Možné zadní vrátka detekována  | Střednědobé používání | Agent |Podezřelý soubor byl stažen a pak spustit na hostiteli ve vašem předplatném. Tento typ aktivity je obvykle spojena s instalací backdoor. |Zkontrolujte s uživatelem, který spustil příkaz, pokud se jednalo o legitimní aktivitu, kterou očekáváte, že se zobrazí na zařízení. Pokud ne, eskalovat výstrahu týmu pro zabezpečení informací.

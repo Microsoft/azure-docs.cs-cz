@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26656b6dafd91d47c05c2d1f923e53f4ba790cf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942898"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309919"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinovaná registrace bezpečnostních informací (preview)
 
@@ -47,7 +47,7 @@ Stránky Můj profil jsou lokalizovány na základě nastavení jazyka počíta�
 
 Kombinovaná registrace podporuje následující metody a akce ověřování:
 
-|   | Zaregistrovat | Změnit | Odstranění |
+|   | Zaregistrovat | Změnit | Odstranit |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
 | Další ověřovací aplikace | Ano (maximálně 5) | Ne | Ano |
@@ -96,7 +96,7 @@ Zde je několik scénářů, ve kterých mohou být uživatelé vyzváni k regis
 
 Při vynucení registrace se uživatelům zobrazí minimální počet metod, které jsou nutné pro kompatibilní s vícefaktorovým ověřováním a zásadami samoobslužného tisku, od většiny po nejméně zabezpečené.
 
-Například:
+Příklad:
 
 - Uživatel je povolen pro sspr. Zásady sspr vyžadovaly dvě metody resetování a povolily kód mobilní aplikace, e-mail a telefon.
    - Tento uživatel je povinen zaregistrovat dvě metody.
@@ -139,7 +139,7 @@ Uživatel, který dříve nastavil alespoň jednu metodu, kterou lze použít [h
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vynucení opětovné registrace metod ověřování uživatelem](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[Vynucení opětovné registrace metod ověřování uživatelem](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
 
 [Povolení kombinované registrace v tenantovi](howto-registration-mfa-sspr-combined.md)
 

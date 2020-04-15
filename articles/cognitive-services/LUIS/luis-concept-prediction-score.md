@@ -1,28 +1,20 @@
 ---
 title: Predikční skóre - LUIS
-titleSuffix: Azure Cognitive Services
 description: Skóre předpověď označuje stupeň spolehlivosti služby LUIS API má pro výsledky předpověď, na základě projevuživatele.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74280828"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382363"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Skóre předpovědi označují přesnost předpovědi pro záměr a entity
 
 Skóre předpověď označuje stupeň spolehlivosti LUIS má pro výsledky předpovědi promluvy uživatele.
 
-Predikce skóre je mezi nulou (0) a jeden (1). Příklad vysoce sebevědomé skóre LUIS je 0,99. Příkladem skóre nízké důvěry je 0,01. 
+Predikce skóre je mezi nulou (0) a jeden (1). Příklad vysoce sebevědomé skóre LUIS je 0,99. Příkladem skóre nízké důvěry je 0,01.
 
 |Hodnota skóre|Spolehlivost|
 |--|--|
@@ -33,11 +25,11 @@ Predikce skóre je mezi nulou (0) a jeden (1). Příklad vysoce sebevědomé sk�
 
 ## <a name="top-scoring-intent"></a>Záměr s nejvyšším skóre
 
-Každý utterance předpověď vrátí záměr nejvyšší bodování. Tato předpověď je číselné porovnání skóre předpovědi. 
+Každý utterance předpověď vrátí záměr nejvyšší bodování. Tato předpověď je číselné porovnání skóre předpovědi.
 
 ## <a name="proximity-of-scores-to-each-other"></a>Blízkost skóre k sobě navzájem
 
-Top 2 skóre může mít velmi malý rozdíl mezi nimi. Služba LUIS neznamená tuto blízkost jiné než vrácení nejvyšší skóre.  
+Top 2 skóre může mít velmi malý rozdíl mezi nimi. Služba LUIS neznamená tuto blízkost jiné než vrácení nejvyšší skóre.
 
 ## <a name="return-prediction-score-for-all-intents"></a>Vrátit skóre předpovědi pro všechny záměry
 
@@ -74,9 +66,11 @@ Predikční skóre můžete použít exponent zápisu, které se `9.910309E-07` 
 |--|--|
 |9.910309E-07|.0000009910309|
 
-## <a name="punctuation"></a>Interpunkční znaménka
+<a name="punctuation"></a>
 
-[Přečtěte si další informace](luis-concept-utterance.md#punctuation-marks) o tom, jak používat nebo ignorovat interpunkci. 
+## <a name="application-settings"></a>Nastavení aplikace
+
+Pomocí [nastavení aplikace](luis-reference-application-settings.md) můžete určit, jak bude mít diakritika a skóre předpovědi interpunkce vliv.
 
 ## <a name="next-steps"></a>Další kroky
 

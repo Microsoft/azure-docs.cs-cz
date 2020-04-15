@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 ms.author: aahi
-ms.openlocfilehash: 4d597b872cf31a823f314d9f3c67c9f45201c542
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258469"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383082"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Často kladené otázky kontejnerů služby rozpoznávání řeči (FAQ)
 
@@ -379,7 +379,7 @@ Doc říká vystavit jiný port, což mám dělat, ale kontejner LUIS je stále 
 <b>Jak mohu získat nedávková api &lt;pro zpracování zvuku o 15 sekundách?</b>
 </summary>
 
-**Odpověď:** To je v interaktivním režimu. Pokud používáte diktování nebo konverzaci, která není problém.
+**Odpověď:** `RecognizeOnce()` V interaktivním režimu zpracovává pouze až 15 sekund zvuku, jako režim je určen pro rozpoznávání řeči příkazu, kde se očekává, že projevy být krátký. Pokud používáte `StartContinuousRecognition()` pro diktování nebo konverzaci, neexistuje žádný limit 15 sekund.
 
 
 <br>

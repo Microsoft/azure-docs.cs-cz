@@ -18,7 +18,3 @@
       items:
         - name: Správa agenta
           href: ./servers/manage-agent.md
-- name: Referenční informace
-  items:
-    - name: Rozhraní příkazového řádku agenta připojeného počítače Azure
-      href: ./servers/azcmagent-reference.md

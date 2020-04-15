@@ -1,5 +1,5 @@
 ---
-title: Principy nákladů Centra zabezpečení Azure pro IoT| Dokumenty společnosti Microsoft
+title: Ceny a související náklady
 description: Přečtěte si o nákladech spojených s Azure Security Center pro IoT a o tom, jak je řídit.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71348521"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311565"
 ---
 # <a name="pricing-and-associated-costs"></a>Ceny a související náklady
 
@@ -34,13 +34,11 @@ Azure Security Center for IoT cenový model se skládá ze dvou částí a účt
 
 - Náklady podle zpráv – rozšířené možnosti zabezpečení založené na zprávách zabezpečení z IoT Edge nebo leaf zařízení.
 
-
 Další informace naleznete v [tématu Security Center pricing](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Související náklady
 
 Azure Security Center pro IoT má přidružené náklady, které nejsou součástí přímých cen:
-
 
 - Náklady na úložiště Log Analytics
 
@@ -50,9 +48,9 @@ Změna nastavení:
 
 1. Otevřete centrum IoT.
 
-2. V části **Zabezpečení**klepněte na položku **Přehled**.
+1. V části **Zabezpečení**klepněte na položku **Přehled**.
 
-3. Klikněte na příkaz **Nastavení**.
+1. Klikněte na příkaz **Nastavení**.
 
 Následující tabulka obsahuje souhrn souvisejících nákladů a důsledků jednotlivých možností.
 
@@ -64,8 +62,8 @@ Následující tabulka obsahuje souhrn souvisejících nákladů a důsledků je
 |
 
 >[!Important]
-> Odhlášení má závažné důsledky pro dostupnost funkcí zabezpečení Azure Security Center for IoT. 
-  
+> Odhlášení má závažné důsledky pro dostupnost funkcí zabezpečení Azure Security Center for IoT.
+
 | Odhlásit | Důsledky |
 | --- | --- |
 | _Kolekce metadat dvojčat_ | Zakázání [vlastních výstrah](quickstart-create-custom-alerts.md) |
@@ -74,7 +72,6 @@ Následující tabulka obsahuje souhrn souvisejících nákladů a důsledků je
 | _Ukládání nezpracovaných událostí zabezpečení zařízení_ | Podrobnosti o základních doporučeních operačního systémem zařízení nejsou k dispozici. |
 | | Podrobnosti o [vyšetřování výstrah](concept-security-alerts.md) a [doporučení](concept-recommendations.md) nejsou k dispozici |
 |
-
 
 ## <a name="see-also"></a>Viz také
 

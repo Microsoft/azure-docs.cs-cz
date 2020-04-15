@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 49b41715d95a5f210e6e70faf09aa016d1478728
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75e5a28f7ec56750432e74ee48ba68491a5e481
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158727"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310287"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicího panelu aplikace
 
@@ -74,7 +74,7 @@ Následující tabulka shrnuje využití dlaždic v Azure IoT Central:
 | Obsah | Řídicí panely sady aplikací a zařízení |Dlaždice podporované značkou jsou dlaždice, na které lze kliknout a které zobrazují nadpis a popisný text. Tuto dlaždici můžete také použít jako dlaždici odkazu, která uživateli umožní přejít na adresu URL související s vaší aplikací.|
 | Image | Řídicí panely sady aplikací a zařízení |Dlaždice obrázků zobrazují vlastní obrázek a lze na ně kliknout. Pomocí dlaždice obrázku můžete přidat grafiku na řídicí panel a volitelně umožnit uživateli přejít na adresu URL relevantní pro vaši aplikaci.|
 | Popisek | Řídicí panely aplikací |Dlaždice popisků zobrazují vlastní text na řídicím panelu. Můžete zvolit velikost textu. Pomocí dlaždice s popiskem můžete na řídicí panel přidat relevantní informace, jako jsou popisy, kontaktní údaje nebo nápověda.|
-| Mapa | Řídicí panely sady aplikací a zařízení |Dlaždice mapy zobrazují umístění a stav zařízení na mapě. Můžete například zobrazit, kde se zařízení nachází a zda je jeho ventilátor zapnutý.|
+| Mapa | Řídicí panely aplikací a zařízení |Dlaždice mapy zobrazují umístění zařízení na mapě. Můžete také zobrazit až 100 bodů historie polohy zařízení. Můžete například zobrazit ukázkovou trasu, kde se zařízení v uplynulém týdnu nadisplejo.|
 | Spojnicový graf | Řídicí panely aplikací a zařízení |Dlaždice spojnicí grafu zobrazují graf souhrnného měření pro zařízení po určitou dobu. Můžete například zobrazit spojnicový graf, který zobrazuje průměrnou teplotu a tlak zařízení za poslední hodinu.|
 | Pruhový graf | Řídicí panely aplikací a zařízení |Dlaždice pruhového grafu zobrazují graf souhrnných měření pro zařízení po určitou dobu. Můžete například zobrazit pruhový graf, který zobrazuje průměrnou teplotu a tlak zařízení za poslední hodinu.|
 | Výsečový graf | Řídicí panely sady aplikací a zařízení |Dlaždice výsečového grafu zobrazují graf souhrnných měření pro zařízení po určitou dobu.|

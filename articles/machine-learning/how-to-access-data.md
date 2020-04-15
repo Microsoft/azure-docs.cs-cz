@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 97aa446636ea3131246a06f69f74b5868abff608
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668648"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383446"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení ke službám úložiště Azure
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -73,7 +73,7 @@ Doporučujeme vytvořit úložiště dat pro [kontejner objektů blob Azure](htt
 Když vytvoříte pracovní prostor, kontejner objektů blob Azure a sdílená složka Azure se automaticky zaregistrují do pracovního prostoru. Jsou pojmenovány `workspaceblobstore` `workspacefilestore`a , v uvedeném pořadí. `workspaceblobstore`slouží k ukládání artefaktů pracovního prostoru a protokolů experimentů strojového učení. `workspacefilestore`se používá k ukládání poznámkových bloků a skriptů R autorizovaných prostřednictvím [instance compute](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files). Kontejner `workspaceblobstore` je nastaven jako výchozí úložiště dat.
 
 > [!IMPORTANT]
-> Návrhář Azure Machine Learning (preview) vytvoří úložiště dat s názvem **azureml_globaldatasets** automaticky při otevření ukázky na domovské stránce návrháře. Toto úložiště dat obsahuje pouze ukázkové datové sady. Prosím, **nepoužívejte** tento datastore pro jakýkoli důvěrný přístup k datům!
+> Návrhář Azure Machine Learning (preview) vytvoří úložiště dat s názvem **azureml_globaldatasets** automaticky při otevření ukázky na domovské stránce návrháře. Toto úložiště dat obsahuje pouze ukázkové datové sady. **Nepoužívejte** prosím toto úložiště dat pro žádný důvěrný přístup k datům.
 > ![Automaticky vytvořené úložiště dat pro ukázkové datové sady návrháře](media/how-to-access-data/datastore-designer-sample.png)
 
 <a name="access"></a>
@@ -94,7 +94,7 @@ Všechny metody registru jsou [`Datastore`](https://docs.microsoft.com/python/ap
 Informace, které potřebujete k naplnění `register()` metody, najdete na [webu Azure Portal](https://portal.azure.com).
 V levém podokně vyberte **Účty úložiště** a vyberte účet úložiště, který chcete zaregistrovat. Stránka **Přehled** obsahuje informace, jako je název účtu, kontejner a název sdílené složky. 
 
-* Informace o položkách ověřování, jako je klíč účtu nebo token SAS, přejděte v podokně **Nastavení** do části **Klíče účtu.** 
+* Informace o položkách ověřování, jako je klíč účtu nebo token SAS, přejděte v podokně **Nastavení** na **přístupové klíče.** 
 
 * Pokud chcete použít hlavní položky služby, jako je ID klienta a ID klienta, přejděte na **registrace aplikací** a vyberte, kterou aplikaci chcete použít. Jeho odpovídající **přehled** stránka bude obsahovat tyto položky.
 
@@ -107,13 +107,13 @@ Následující příklady ukazují, jak zaregistrovat kontejner objektů blob Az
 
 Chcete-li zaregistrovat kontejner objektů blob [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)Azure jako úložiště dat, použijte .
 
-Následující kód vytvoří a `blob_datastore_name` zaregistruje úložiště `ws` dat do pracovního prostoru. Toto úložiště dat `my-container-name` přistupuje k kontejneru objektů blob v `my-account-name` účtu úložiště pomocí zadaný klíč účtu.
+Následující kód vytvoří a `blob_datastore_name` zaregistruje úložiště `ws` dat do pracovního prostoru. Toto úložiště dat `my-container-name` přistupuje k kontejneru objektů blob v `my-account-name` účtu úložiště pomocí zadaný přístupový klíč účtu.
 
 ```Python
 blob_datastore_name='azblobsdk' # Name of the datastore to workspace
 container_name=os.getenv("BLOB_CONTAINER", "<my-container-name>") # Name of Azure blob container
 account_name=os.getenv("BLOB_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 blob_datastore = Datastore.register_azure_blob_container(workspace=ws, 
                                                          datastore_name=blob_datastore_name, 
@@ -126,13 +126,13 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 Chcete-li zaregistrovat sdílenou složku [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)Azure jako úložiště dat, použijte . 
 
-Následující kód vytvoří a `file_datastore_name` zaregistruje úložiště `ws` dat do pracovního prostoru. Toto úložiště dat `my-fileshare-name` přistupuje ke sdílené složce v `my-account-name` účtu úložiště pomocí zadaný klíč účtu.
+Následující kód vytvoří a `file_datastore_name` zaregistruje úložiště `ws` dat do pracovního prostoru. Toto úložiště dat `my-fileshare-name` přistupuje ke sdílené složce v `my-account-name` účtu úložiště pomocí zadaný klíč přístupu k účtu.
 
 ```Python
 file_datastore_name='azfilesharesdk' # Name of the datastore to workspace
 file_share_name=os.getenv("FILE_SHARE_CONTAINER", "<my-fileshare-name>") # Name of Azure file share container
 account_name=os.getenv("FILE_SHARE_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      datastore_name=file_datastore_name, 
@@ -181,7 +181,7 @@ Vytvořte nové úložiště dat v několika krocích ve studiu Azure Machine Le
   
 Informace, které potřebujete k vyplnění formuláře, najdete na [webu Azure Portal](https://portal.azure.com). V levém podokně vyberte **Účty úložiště** a vyberte účet úložiště, který chcete zaregistrovat. Stránka **Přehled** obsahuje informace, jako je název účtu, kontejner a název sdílené složky. 
 
-* Informace o položkách ověřování, jako je klíč účtu nebo token SAS, přejděte v podokně **Nastavení** do části **Klíče účtu.** 
+* Informace o položkách ověřování, jako je klíč účtu nebo token SAS, přejděte v podokně **Nastavení** na **přístupové klíče.** 
 
 * Pokud chcete použít hlavní položky služby, jako je ID klienta a ID klienta, přejděte na **registrace aplikací** a vyberte, kterou aplikaci chcete použít. Jeho odpovídající **přehled** stránka bude obsahovat tyto položky. 
 

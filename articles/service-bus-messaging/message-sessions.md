@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 4df6396d156c3fe1b75e3cac3d3f4aad7f23553a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e22641e9d4f9959c26cd2043ea2acd7e260e0f0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660661"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314044"
 ---
 # <a name="message-sessions"></a>Relace zpráv
 Relace služby Microsoft Azure Service Bus umožňují společné a seřazené zpracování neomezených sekvencí souvisejících zpráv. Relace lze použít v první dovnitř, první ven (FIFO) a požadavky na odpověď vzory. Tento článek ukazuje, jak používat relace k implementaci těchto vzorů při použití service bus. 
@@ -68,7 +68,7 @@ Zámek relace v držení příjemce relace je zastřešující pro uzamčení zp
 
 ### <a name="message-session-state"></a>Stav relace zprávy
 
-Při zpracování pracovních postupů v cloudových systémech s vysokou dostupností, obslužná rutina pracovního postupu přidružená k určité relaci musí být schopna zotavit se z neočekávaných chyb a může pokračovat v částečně dokončené práci na jiném procesu nebo počítači z kde práce započala.
+Při zpracování pracovních postupů v cloudových systémech s vysokou dostupností s vysokou dostupností musí být obslužná rutina pracovního postupu přidružená k určité relaci schopna zotavit se z neočekávaných selhání a pokračovat v částečně dokončené práci na jiném procesu nebo počítači, než kde práce začala.
 
 Zařízení stavu relace umožňuje aplikaci definované poznámky relace zprávy uvnitř zprostředkovatele, takže zaznamenaný stav zpracování vzhledem k této relaci bude okamžitě k dispozici, když je relace získána novým procesorem.
 
@@ -78,7 +78,7 @@ Api pro správu stavu relace [SetState](/dotnet/api/microsoft.servicebus.messagi
 
 Stav relace zůstane tak dlouho, dokud není vymazán (vrácení **null**), i v případě, že jsou spotřebovány všechny zprávy v relaci.
 
-Všechny existující relace ve frontě nebo předplatném mohou být uvedeny pomocí metody **SessionBrowser** v rozhraní Java API a [s GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) na [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) a [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) v klientovi .NET.
+Všechny existující relace ve frontě nebo předplatném mohou být uvedeny pomocí metody **SessionBrowser** v rozhraní Java API a [s GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) na [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) a [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) v klientovi rozhraní .NET Framework.
 
 Stav relace podržený ve frontě nebo v předplatném se započítává do kvóty úložiště této entity. Po dokončení aplikace s relace, proto se doporučuje pro aplikaci vyčistit jeho zachovaného stavu, aby se zabránilo externí náklady na správu.
 

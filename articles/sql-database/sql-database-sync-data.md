@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 1ee2efbb8aebfc2f1a94c89edef6166898946d8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80afbeb5668d43ac7bb0b12fadb88a93c68e0ddb
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74422522"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383714"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat ve více cloudových a místních databázích pomocí synchronizace dat SQL
 
@@ -84,7 +84,7 @@ Skupina synchronizace má následující vlastnosti:
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Nastavení synchronizace dat na webu Azure Portal
 
-- [Nastavení Synchronizace dat SQL Azure](sql-database-get-started-sql-data-sync.md)
+- [Nastavení synchronizace dat SQL v Azure](sql-database-get-started-sql-data-sync.md)
 - Agent synchronizace dat – [agent synchronizace dat pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
 
 ### <a name="set-up-data-sync-with-powershell"></a>Nastavení synchronizace dat pomocí PowerShellu
@@ -144,7 +144,7 @@ Zřizování a zrušení zřizování během vytváření, aktualizace a odstra�
 
 #### <a name="unsupported-column-types"></a>Nepodporované typy sloupců
 
-Synchronizace dat nemůže synchronizovat sloupce jen pro čtení nebo sloupce generované systémem. Například:
+Synchronizace dat nemůže synchronizovat sloupce jen pro čtení nebo sloupce generované systémem. Příklad:
 
 - Vypočítané sloupce.
 - Systémem generované sloupce pro časové tabulky.

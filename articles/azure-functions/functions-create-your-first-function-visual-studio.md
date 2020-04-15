@@ -1,22 +1,22 @@
 ---
 title: 'Úvodní příručka: Vytvoření první funkce v Azure pomocí Visual Studia'
-description: V tomto rychlém startu se dozvíte, jak vytvořit a publikovat aktivační událost HTTP Azure function pomocí Visual Studia.
+description: V tomto rychlém startu se dozvíte, jak vytvořit a publikovat funkci Azure spouštěnou HTTP pomocí sady Visual Studio.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: dadb705e8b756418be40d738aa81b3e77961aead
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e58414fa94a4ef54eb2f288b2cd636c10611460d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657599"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308937"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Úvodní příručka: Vytvoření první funkce v Azure pomocí Visual Studia
 
 Funkce Azure umožňuje spouštět kód v prostředí bez serveru, aniž byste museli nejprve vytvořit virtuální počítač nebo publikovat webovou aplikaci.
 
-V tomto rychlém startu se dozvíte, jak pomocí Visual Studia 2019 místně vytvořit a otestovat aplikaci funkce jazyka HTTP http aktivační událost Jazyka C, kterou pak publikujete do Azure. 
+V tomto rychlém startu se dozvíte, jak pomocí Visual Studia 2019 místně vytvořit a otestovat aplikaci c# spouštěnou na http svět hello, kterou pak publikujete do Azure. 
 
 ![Odezva místního hostitele funkce v prohlížeči](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -28,7 +28,7 @@ Chcete-li tento kurz dokončit, nainstalujte [nejprve Visual Studio 2019](https:
 
 ![Instalace Visual Studia s úlohou vývoje Azure](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Pokud ještě nemáte [předplatné Azure](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/dotnet/) před tím, než začnete.
 
 ## <a name="create-a-function-app-project"></a>Vytvoření projektu aplikace funkcí
 
@@ -38,7 +38,7 @@ Visual Studio vytvoří projekt a třídu, která obsahuje často používaný k
 
 Rozšiřte možnosti funkce pomocí vstupních a výstupních vazeb použitím příslušných atributů na metodu. Další informace najdete v části [Triggery a vazby](functions-dotnet-class-library.md#triggers-and-bindings) v [referenčních informacích pro vývojáře v jazyce C# v Azure Functions](functions-dotnet-class-library.md).
 
-Nyní, když jste vytvořili projekt funkce a aktivační funkci PROTOKOLU HTTP, můžete jej otestovat v místním počítači.
+Teď máte vytvořený projekt funkcí a funkci aktivovanou protokolem HTTP, takže ji můžete otestovat na místním počítači.
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
@@ -58,7 +58,7 @@ Než budete moci publikovat svůj projekt, musíte mít ve svém předplatném A
 
 1. Zkopírujte základní adresu URL aplikace funkce ze stránky **Profil publikování.** Nahraďte `localhost:port` část adresy URL, kterou jste použili k místnímu testování funkce, novou základní adresou URL. Přidejte řetězec `?name=<YOUR_NAME>` dotazu k této adrese URL a spusťte požadavek.
 
-    Adresa URL, která volá aktivační funkci protokolu HTTP, je v následujícím formátu:
+    Adresa URL, která volá spuštěnou funkci HTTP, je v následujícím formátu:
 
     `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
 
@@ -72,7 +72,7 @@ Než budete moci publikovat svůj projekt, musíte mít ve svém předplatném A
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste pomocí Visual Studia vytvořili a publikovali aplikaci funkce C# v Azure pomocí jednoduché funkce aktivační události HTTP. 
+V tomto rychlém startu jste pomocí Visual Studia vytvořili a publikovali aplikaci funkce C# v Azure pomocí jednoduché funkce aktivované http. 
 
 Přejdete k dalšímu článku, kde se dozvíte, jak do vaší funkce přidat vazbu fronty Azure Storage:
 > [!div class="nextstepaction"]
