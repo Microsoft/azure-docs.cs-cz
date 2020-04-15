@@ -1,5 +1,5 @@
 ---
-title: Principy Azure Security Center pro ioT agent místní konfigurační soubor pro C# | Dokumenty společnosti Microsoft
+title: Místní konfigurace agenta zabezpečení (C#)
 description: Přečtěte si další informace o službě zabezpečení Azure Security Center for IoT, místním konfiguračním souboru agenta zabezpečení pro C#.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74664185"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311666"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Principy místního konfiguračního souboru (agent jazyka C#)
-
 
 Azure Security Center pro agenta zabezpečení IoT používá konfigurace z místního konfiguračního souboru.
 
@@ -35,18 +34,21 @@ Agent zabezpečení jazyka C# používá více konfiguračních souborů:
 - **Authentication.config** - Konfigurace související s ověřováním (včetně podrobností o ověřování).
 - **SecurityIotInterface.config** - Konfigurace související s IoT.
 
-Konfigurační soubory obsahují výchozí konfiguraci. Konfigurace ověřování je naplněna během instalace agenta a změny konfiguračního souboru jsou provedeny při restartování agenta. 
+Konfigurační soubory obsahují výchozí konfiguraci. Konfigurace ověřování je naplněna během instalace agenta a změny konfiguračního souboru jsou provedeny při restartování agenta.
 
 ## <a name="configuration-file-location"></a>Umístění konfiguračního souboru
+
 Pro Linux:
+
 - Konfigurační soubory `/var/ASCIoTAgent`operačního systému jsou umístěny v .
 
 Ve Windows:
-- Konfigurační soubory operačního systému jsou umístěny v adresáři agenta zabezpečení. 
+
+- Konfigurační soubory operačního systému jsou umístěny v adresáři agenta zabezpečení.
 
 ### <a name="generalconfig-configurations"></a>Konfigurace General.config
 
-| Název konfigurace | Možné hodnoty | Podrobnosti | 
+| Název konfigurace | Možné hodnoty | Podrobnosti |
 |:-----------|:---------------|:--------|
 | agentId | GUID | Jedinečný identifikátor agenta |
 | readRemoteConfigurationTimeout | TimeSpan | Časové období pro načítání vzdálené konfigurace z ioT hubu. Pokud agent nemůže načíst konfiguraci v zadaném čase, operace bude časový mzda.|
@@ -61,6 +63,7 @@ Ve Windows:
 | defaultEventPriority | "Vysoká", "Nízká", "Vypnuto" | Výchozí priorita události. |
 
 ### <a name="generalconfig-example"></a>Příklad souboru General.config
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <General>
@@ -80,7 +83,7 @@ Ve Windows:
 
 ### <a name="authenticationconfig"></a>Nástroj Authentication.config
 
-| Název konfigurace | Možné hodnoty | Podrobnosti | 
+| Název konfigurace | Možné hodnoty | Podrobnosti |
 |:-----------|:---------------|:--------|
 | název modulu | řetězec | Název identity modulu zabezpečení. Tento název musí odpovídat názvu identity modulu v zařízení. |
 | deviceId | řetězec | ID zařízení (jako registrované v Azure IoT Hub). || schedulerInterval | Řetězec TimeSpan | Interval interního plánovače. |
@@ -94,6 +97,7 @@ Ve Windows:
 |
 
 ### <a name="authenticationconfig-example"></a>Příklad authentication.config
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
@@ -108,14 +112,16 @@ Ve Windows:
   <add key="registrationId" value="d1"/>
 </Authentication>
 ```
+
 ### <a name="securityiotinterfaceconfig"></a>Bezpečnostní rozhraní Iot.config
 
-| Název konfigurace | Možné hodnoty | Podrobnosti | 
+| Název konfigurace | Možné hodnoty | Podrobnosti |
 |:-----------|:---------------|:--------|
 | transportType | "Ampq" "Mqtt" | Typ přenosu ioT Hub. |
 |
 
 ### <a name="securityiotinterfaceconfig-example"></a>Příklad SecurityIotInterface.config
+
 ```XML
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
@@ -124,6 +130,7 @@ Ve Windows:
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 - Přečtěte si [přehled](overview.md) služby Azure Security Center for IoT
 - Další informace o Azure Security Center pro [architekturu](architecture.md) IoT
 - Povolení [služby](quickstart-onboard-iot-hub.md) Azure Security Center for IoT

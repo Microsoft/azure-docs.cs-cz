@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: e01a1cad98ded9d7ce8683b6adf38b5d53959774
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966800"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312558"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Vytvoření vlastní sondy pro Aplikační bránu Azure (klasická) pomocí PowerShellu
 
 > [!div class="op_single_selector"]
-> * [Portál Azure](application-gateway-create-probe-portal.md)
+> * [portál Azure](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -200,7 +200,7 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete nakonfigurovat redukce ssl (Secure Sockets Layer), přečtěte si část [Konfigurace aplikační brány pro přepětí ssl](application-gateway-ssl.md).
+Pokud chcete nakonfigurovat zabezpečení transportní vrstvy (TLS), dříve známé jako SSL (Secure Sockets Layer), přečtěte si část [Konfigurace aplikační brány pro redukci TLS](application-gateway-ssl.md).
 
 Pokud chcete provést konfiguraci aplikační brány pro použití s interním nástrojem pro vyrovnávání zatížení, přečtěte si část [Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení (ILB)](application-gateway-ilb.md).
 

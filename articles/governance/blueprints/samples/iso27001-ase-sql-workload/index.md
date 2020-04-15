@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu úlohy ASE/SQL ISO 27001 – přehled
 description: Přehled a architektura ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: d77029b93b1e77bdba85c5dd5608cbdc5d6543a5
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9957ab1bef5b65fc90b5a357bd56d6f0013ea690
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75920776"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381734"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Přehled ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 
@@ -24,7 +24,7 @@ K dispozici jsou dvě ukázky podrobného plánu ISO 27001, tato ukázka a ukáz
 
 Ukázka podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database nasazuje webové prostředí založené na platformě jako službě. Toto prostředí se dá využít k hostování několika webových aplikací, webových rozhraní API a instancí SQL Database, které dodržují standardy ISO 27001. Tato ukázka podrobného plánu závisí na ukázce podrobného plánu [ISO 27001: Sdílené služby](../iso27001-shared/index.md).
 
-![Návrh ukázky podrobného plánu úlohy ASE/SQL ISO 27001](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png" alt-text="Návrh ukázky podrobného plánu úlohy ASE/SQL ISO 27001" border="false":::
 
 Toto prostředí je tvořené několika službami Azure, které se využívají k zajištění zabezpečené a plně monitorované infrastruktury úloh na podnikové úrovni, která je založená na standardech ISO 27001. Toto prostředí tvoří:
 

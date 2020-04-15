@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 11/27/2019
+ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c5d0efe8e662544dc69356c6b17dd7eca6f3a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75b127f8429650d46af9f171ed7ff03692f1499e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74786448"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81379901"
 ---
 # <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Agent předávacího ověřování Azure AD: Historie verzí vydání 
  
@@ -27,6 +27,14 @@ Zde jsou související témata:
 
 - [Přihlášení uživatele pomocí předávacího ověřování Azure AD](how-to-connect-pta.md) 
 - [Instalace agenta předávacího ověřování Azure AD](how-to-connect-pta-quick-start.md) 
+
+## <a name="1517420"></a>1.5.1742.0
+### <a name="release-status"></a>Stav vydání: 
+04/09/2020: Vydáno ke stažení
+
+### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
+
+- Přidána podpora pro cílení cloudových prostředí při instalaci. Balíček lze připnout do daného cloudového prostředí.
 
 
 

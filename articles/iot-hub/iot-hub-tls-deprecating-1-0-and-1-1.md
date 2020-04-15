@@ -1,22 +1,26 @@
 ---
-title: Zavržení TLS 1.0 a 1.1 ve službě IoT Hub a zřizování zařízení (DPS) | Dokumenty společnosti Microsoft
-description: Pokyny týkající se vyřazení TLS 1.0 a 1.1 a podporovaných šifer v IoT Hubu a DPS.
-author: rezasherafat
-ms.author: rezas
+title: Zavržení TLS 1.0 a 1.1 v iot hubu | Dokumenty společnosti Microsoft
+description: Pokyny týkající se vyřazení TLS 1.0 a 1.1 a podporovaných šifer v IoT Hubu.
+author: jlian
+ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: d61ca8fe7c6f5e7cc400714d7c31a0a7e50b8a88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: a887dd4df44ba58b0e6646ffb1c10eb21edf3e69
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402784"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381296"
 ---
-# <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>Vyřazení TLS 1.0 a 1.1 ve službě IoT Hub a device provisioning Service
+# <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>Vyřazení TLS 1.0 a 1.1 v iot hubu
 
-Chcete-li poskytnout nejlepší šifrování ve své třídě, služby IoT Hub a služba zřizování zařízení (DPS) se přesouvají do služby TLS (Transport Layer Security) 1.2 jako mechanismus šifrování pro zařízení a služby IoT. 
+Chcete-li poskytnout nejlepší šifrování ve své třídě, IoT Hub se přesouvá do zabezpečení transportní vrstvy (TLS) 1.2 jako mechanismus šifrování volby pro zařízení a služby IoT. 
+
+## <a name="timeline"></a>Časová osa
+
+IoT Hub bude až do odvolání nadále podporovat TLS 1.0/1.1. Doporučujeme však, aby všichni zákazníci migrovali na TLS 1.2 co nejdříve.
 
 ## <a name="supported-ciphers"></a>Podporované šifry
 
@@ -26,7 +30,6 @@ Chcete-li poskytnout nejlepší šifrování ve své třídě, služby IoT Hub a
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (bude podporováno v druhé polovině roku 2020)
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (bude podporováno v druhé polovině roku 2020)
 * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (bude podporováno v druhé polovině roku 2020)
-
 
 ## <a name="customer-feedback"></a>Zpětná vazba od zákazníků
 

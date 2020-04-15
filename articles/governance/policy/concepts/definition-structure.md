@@ -3,12 +3,12 @@ title: Podrobnosti o struktuře definice politiky
 description: Popisuje, jak se definice zásad používají k vytváření konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: e6b1d5c43f290fc2dd953492440670608a15faca
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 017878c4c47a5645ea8815580d2176c7a2ff5d66
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638077"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314018"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -252,11 +252,13 @@ Podmínka vyhodnotí, zda **pole** nebo přistupující **hodnotu** splňuje ur�
 - `"notIn": ["stringValue1","stringValue2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
-- `"less": "value"`
-- `"lessOrEquals": "value"`
-- `"greater": "value"`
-- `"greaterOrEquals": "value"`
+- `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
+- `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
+- `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
 - `"exists": "bool"`
+
+Pro **méně**, **lessOrEquals**, **greater**, a **greaterOrEquals**, pokud typ vlastnosti neodpovídá typu podmínky, je vyvolána chyba. Porovnání řetězců se `InvariantCultureIgnoreCase`provádí pomocí .
 
 Při použití podmínky to se mi k `*` nám **a** **nelike,** zadáte zástupný znak v hodnotě.
 Hodnota by neměla mít více `*`než jeden zástupný znak .
@@ -680,7 +682,7 @@ Seznam aliasů se neustále zvětšuje. Chcete-li zjistit, jaké aliasy jsou akt
 
 ### <a name="understanding-the--alias"></a>Principy aliasu [*]
 
-Některé aliasy, které jsou k dispozici mají verzi, která se ** \[ \* ** zobrazí jako 'normální' název a jiný, který je připojen k němu. Například:
+Některé aliasy, které jsou k dispozici mají verzi, která se ** \[ \* ** zobrazí jako 'normální' název a jiný, který je připojen k němu. Příklad:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

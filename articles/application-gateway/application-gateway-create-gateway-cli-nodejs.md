@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed7bbbf55956d655115b94c8ac46432b3e36c49b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62095978"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312631"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Vytvoření aplikační brány pomocí nastavení příkazového příkazu Azure
 
-Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu. Aplikační brána má následující funkce pro doručování aplikací: vyrovnávání zatížení HTTP, spřažení relací na základě souborů cookie a snímání ssl (Secure Sockets Layer), vlastní sondy stavu a podpora pro více webů.
+Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu. Aplikační brána má následující funkce pro doručování aplikací: vyrovnávání zatížení HTTP, spřažení relací na základě souborů cookie a zabezpečení transportní vrstvy (TLS), dříve známé jako SSL (Secure Sockets Layer), offload, vlastní sondy stavu a podpora pro více lokalit.
 
 ## <a name="prerequisite-install-the-azure-cli"></a>Předpoklad: Instalace příkazového příkazového příkazu Azure
 
@@ -135,7 +135,7 @@ Pokud již máte webovou aplikaci definovanou s back-endovým fondem v předchoz
 
 Naučte se, jak vytvořit vlastní sondy stavu na stránce [Vytvořit vlastní sondu stavu](application-gateway-create-probe-portal.md)
 
-Naučte se, jak nakonfigurovat snižování zátěže SSL a odstranění nákladného dešifrování SSL z webových serverů na stránce [Konfigurace snižování zátěže Protokolu SSL](application-gateway-ssl-arm.md)
+Naučte se, jak nakonfigurovat snižování zátěže TLS a odstranění nákladného dešifrování TLS z webových serverů na stránce [Konfigurace snižování zátěže TLS](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 

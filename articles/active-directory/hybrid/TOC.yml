@@ -336,6 +336,8 @@
       href: reference-connect-faq.md
     - name: Azure AD Connect Health – nejčastější dotazy
       href: reference-connect-health-faq.md
+    - name: Aspekty hybridní identity pro Azure Government
+      href: reference-connect-government-cloud.md
     - name: Ochrana osobních údajů uživatelů služby Azure AD Connect
       href: reference-connect-user-privacy.md
     - name: Ochrana osobních údajů uživatelů služby Azure AD Connect Health

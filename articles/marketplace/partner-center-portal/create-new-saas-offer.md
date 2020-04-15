@@ -1,22 +1,22 @@
 ---
-title: Vytvoření nové nabídky SaaS na komerčním trhu
-description: Jak vytvořit novou nabídku Software as a Service (SaaS) pro zápis nebo prodej na Webu Azure Marketplace, AppSource nebo prostřednictvím programu Zprostředkovatel cloudových řešení (CSP) pomocí portálu Commercial Marketplace v Centru microsoft partnerů.
+title: Vytvoření nové nabídky SaaS pro komerční tržiště Microsoftu
+description: Jak vytvořit novou nabídku Software as a Service (SaaS) pro zápis nebo prodej v Microsoft AppSource, Azure Marketplace nebo prostřednictvím programu Zprostředkovatel cloudových řešení (CSP) pomocí programu Microsoft commercial marketplace v Centru microsoftu Partner.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.openlocfilehash: 3f2201db4b78ba61ba15608a676a8b9f8f5e612a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286196"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314086"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvoření nové nabídky SaaS
 
-Chcete-li začít vytvářet nabídky Software jako služba (SaaS), nejprve [vytvořte účet Centra partnerů](./create-account.md) a otevřete [řídicí panel Komerční tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)s vybranou kartou **Přehled.**
+Chcete-li začít vytvářet nabídky Softwaru jako služby (SaaS), ujistěte se, že nejprve [vytvoříte účet Centra partnerů](./create-account.md) a otevřete [řídicí panel Komerční tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)s vybranou kartou **Přehled.**
 
 ![Řídicí panel Komerční tržiště v Partnerském centru](./media/new-offer-overview.png)
 
@@ -82,6 +82,7 @@ Chcete-li uvést nabídky softwaru jako služby (SaaS) s commercial marketplace 
 - Podrobnější požadavky naleznete v [Průvodci publikováním nabídek SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
 #### <a name="saas-pricing-and-billing-options"></a>Možnosti saas u cen a fakturace
+
 Díky tomu, že řešení SaaS běží v předplaceném Azure vydavatele, licenční poplatky placené zákazníky zahrnují náklady na infrastrukturu, na které se software nasazuje. Využití infrastruktury Azure se spravuje a účtuje přímo vám, partnerovi. Skutečné poplatky za využití infrastruktury nejsou zákazníkem vidět. Vydavatelé by měli do cen softwarových licencí začlenit poplatky za využití infrastruktury Azure. 
 
 SaaS nabízí podporu měsíční nebo roční fakturaci na základě paušálního poplatku za uživatele nebo poplatků za spotřebu pomocí fakturační služby účtované podle objemu dat. Komerční tržiště společnosti Microsoft funguje na modelu agentury, kdy vydavatelé stanovují ceny, microsoft účtuje zákazníkům a Microsoft platí vydavateli příjmy, zatímco zadržuje poplatek za agenturu.
@@ -109,16 +110,19 @@ Propagujte svou firmu se společností Microsoft vytvořením nabídky na market
 
 - **Jak chcete, aby potenciální zákazníci komunikovali s touto nabídkou nabídek?**
 
-##### <a name="get-it-now-free"></a>Získejte jej nyní (zdarma)
+#### <a name="get-it-now-free"></a>Získejte jej nyní (zdarma)
+
 Seznam vaší nabídky zákazníkům zdarma poskytnutím platné adresy URL (počínaje *http* nebo *https),* kde mohou získat zkušební verzi prostřednictvím [ověřování jedním kliknutím pomocí Služby Azure Active Directory (Azure AD).](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)  Příklad: `https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>Zkušební verze zdarma (výpis)
+#### <a name="free-trial-listing"></a>Zkušební verze zdarma (výpis)
+
 Uveďte svou nabídku zákazníkům s odkazem na bezplatnou zkušební verzi zadáním platné adresy URL (začínající *na http* nebo *https),* kde můžou získat zkušební verzi pomocí [ověřování jedním kliknutím pomocí Služby Azure Active Directory (Azure AD).](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)  Například: `https://contoso.com/trial/saas-app`. Nabídka výpis bezplatné zkušební verze jsou vytvořeny, spravovány a nakonfigurovány vaší službou a nemají předplatná spravuje společnost Microsoft.
 
 > [!NOTE]
 > Tokeny, které vaše aplikace obdrží prostřednictvím zkušebního odkazu, lze použít jenom k získání informací o uživateli prostřednictvím služby Azure AD k automatizaci vytváření účtu ve vaší aplikaci. Účty Microsoft (MSA) nejsou podporovány pro ověřování pomocí tohoto tokenu.
 
-##### <a name="contact-me"></a>Kontaktujte mě
+#### <a name="contact-me"></a>Kontaktujte mě
+
 Shromážděte kontaktní informace zákazníků propojením systému řízení vztahů se zákazníky (CRM). Zákazník bude požádán o povolení ke sdílení svých informací. Tyto podrobnosti o zákaznících spolu s názvem nabídky, ID a zdrojem tržiště, kde našli vaši nabídku, budou odeslány do systému CRM, který jste nakonfigurovali. Další informace o konfiguraci aplikace CRM naleznete v tématu [Připojení správy zájemců](#connect-lead-management).
 
 ## <a name="example-marketplace-offer-listing"></a>Příklad nabídky na marketplace
@@ -127,16 +131,16 @@ Shromážděte kontaktní informace zákazníků propojením systému řízení 
 
 ## <a name="enable-a-test-drive"></a>Povolení zkušební jízdy
 
-Testovací jízda je skvělý způsob, jak předvést svou nabídku potenciálním zákazníkům tím, že jim dáte možnost "vyzkoušet si před nákupem", což vede ke zvýšené konverzi a generování vysoce kvalifikovaných potenciálních zákazníků. [Přečtěte si další informace o testovacích jízdách.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+Testovací jízda je skvělý způsob, jak předvést svou nabídku potenciálním zákazníkům tím, že jim dáte možnost "vyzkoušet si před nákupem", což vede ke zvýšené konverzi a generování vysoce kvalifikovaných potenciálních zákazníků. Další informace najdete v [tématu Povolení zákazníkům otestovat nabídku](./test-drive.md).
 
 - **Povolení testovací jízdy** (zaškrtávací políčko)
 
 Povolením testovací jednotky budete vyzváni ke konfiguraci demonstračního prostředí pro zákazníky, aby vyzkoušeli vaši nabídku na pevně stanovenou dobu. 
 
-#### <a name="test-drive-resources"></a>Prostředky testovací jednotky
-- [Technické osvědčené postupy pro testovací jízdu](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Osvědčené postupy pro marketing testovacího disku](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [Přehled testovací jednotky jeden pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+### <a name="test-drive-resources"></a>Prostředky testovací jednotky
+
+- [Osvědčené postupy](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)- pro marketing test drive[technické osvědčené postupy](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Přehled testovací jízdy (stažení ve formátu PDF)](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
 ## <a name="connect-lead-management"></a>Připojení správy potenciálních zákazníků
 
@@ -299,7 +303,7 @@ Karta **Náhled** umožňuje definovat omezený **okruh uživatelů ve verzi Pre
 
 - **Definujte cílovou skupinu náhledu: Přidejte jeden e-mail účtu AAD/MSA na řádek spolu s volitelným popisem.**
 
-Přidejte až deset (10) e-mailových adres ručně nebo dvacet (20) při nahrávání souboru CSV pro existující účty Microsoft (MSA) nebo Azure Active Directory, které vám pomohou ověřit vaši nabídku před publikováním živého vysílání. Přidáním těchto účtů definujete okruh uživatelů, kterým bude povolen náhled přístup k vaší nabídce před publikováním na tržišti. Pokud je vaše nabídka již aktivní, můžete stále definovat náhled publika pro testování jakýchkoli změn nebo aktualizací nabídky.
+Přidejte až 10 e-mailových adres ručně nebo 20 při nahrávání souboru CSV pro existující účty Microsoft (MSA) nebo Azure Active Directory, které vám pomohou ověřit vaši nabídku před publikováním v přímém přenosu. Přidáním těchto účtů definujete okruh uživatelů, kterým bude povolen náhled přístup k vaší nabídce před publikováním na tržišti. Pokud je vaše nabídka již aktivní, můžete stále definovat náhled publika pro testování jakýchkoli změn nebo aktualizací nabídky.
 
 > [!NOTE]
 > Náhled okruhu uživatelů se liší od soukromého okruhu uživatelů. Před _publikováním_ na tržištích je přístup k vaší nabídce ve verzi Preview povolen přístup k vaší nabídce. Můžete také vytvořit plán a zpřístupnit jej pouze soukromému publiku. Na kartě **výpis plánu** můžete definovat soukromou cílovou skupinu pomocí zaškrtávacího **políčka Toto je soukromý plán.** Potom můžete definovat soukromou skupinu až 20 000 zákazníků pomocí ID klienta Azure.
@@ -359,7 +363,7 @@ Nabídky SaaS prostřednictvím komerčního tržiště vám umožňují poskyto
 >[!Note]
 >Pokud se zákazník rozhodne převést na plán bez bezplatných zkušebních verzí, dojde k převodu, ale bezplatná zkušební verze bude okamžitě ztracena.  Jakmile zákazník začne platit za plán, nemůže již znovu získat bezplatnou zkušební verzi na stejném předplatném, a to ani v případě, že převede na skladovou položku, která podporuje bezplatné zkušební verze.
 
-Možnost konfigurace bezplatné zkušební verze je k dispozici pro každý plán ve vaší nabídce. Jednoduše přejděte na cenu a dostupnost pro každou nabídku a zaškrtněte políčko, abyste povolili měsíční zkušební verzi.
+Možnost konfigurace bezplatné zkušební verze je k dispozici pro každý plán ve vaší nabídce. Přejděte na Cenu a dostupnost pro každou nabídku a zaškrtněte políčko, abyste povolili měsíční zkušební verzi.
 
 ![Zaškrtávací políčko zkušební verze na jeden měsíc](./media/free-trial-enable.png)
 
@@ -377,7 +381,7 @@ Chcete-li získat informace o odběrech zákazníků, která se `isFreeTrial`akt
 
 Každý plán musí být k dispozici alespoň na jednom trhu. Zaškrtněte políčko pro libovolné místo na trhu, kde chcete tento plán zpřístupnit. Vyhledávací pole a tlačítko pro výběr zemí "Promované daně", ve kterých microsoft uložených daní a použití daně vaším jménem, jsou zahrnuty jako pomoc.
 
-Pokud jste již nastavili ceny pro svůj plán v amerických dolarech (USD) a přidali další umístění na trhu, cena nového trhu bude vypočtena podle aktuálních směnných kurzů. Vždy byste měli zkontrolovat cenu pro každý trh před publikováním. Ceny lze zkontrolovat pomocí odkazu "Vývozní ceny (xlsx)" po uložení změn.
+Pokud jste již nastavili ceny pro svůj plán v amerických dolarech (USD) a přidali další umístění na trhu, cena nového trhu bude vypočtena podle aktuálních směnných kurzů. Před publikováním zkontrolujte cenu pro každý trh. Ceny lze zkontrolovat pomocí odkazu "Vývozní ceny (xlsx)" po uložení změn.
 
 #### <a name="pricing"></a>Ceny
 
@@ -418,7 +422,7 @@ Zaškrtnutím tohoto políčka bude váš plán soukromý a viditelný pouze pro
 
 Přiřaďte cílovou skupinu, která bude mít přístup k tomuto soukromému plánu. Přístup je přiřazen pomocí ID klienta s možností zahrnout popis každého přiřazeného ID klienta. Při importu souboru tabulky CSV lze přidat maximálně 10 ID klienta nebo 20 000 ID klienta zákazníků.
 
-Tenant je reprezentace organizace s ID reprezentované jako identifikátor GUID (globálně jedinečný identifikátor, 128bitové celé číslo používané k identifikaci prostředků). Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365. Každý klient Azure AD se odlišuje a je oddělený od ostatních klientů Azure AD. Pokud chcete zkontrolovat, jestli máte tenanta, přihlaste se k webu Azure Portal pomocí účtu, který chcete použít ke správě vaší aplikace. Pokud tenanta máte, budete k němu automaticky přihlášeni a název tenanta se zobrazí přímo pod názvem vašeho účtu. Najeďte myší na název vašeho účtu v pravém horním rohu webu Azure Portal, zobrazí se vaše jméno, e-mail, ID adresáře nebo tenanta (GUID) a vaše doména. Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta. ID klienta vaší organizace můžete také vyhledat pomocí adresy [https://www.whatismytenantid.com](https://www.whatismytenantid.com)URL názvu domény na adrese: .
+Tenant je reprezentace organizace s ID reprezentované jako identifikátor GUID (globálně jedinečný identifikátor, 128bitové celé číslo používané k identifikaci prostředků). Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikace obdrží, když organizace nebo vývojář aplikace vytvoří vztah s Microsoftem, například při registraci do Azure, Microsoft Intune nebo Microsoftu 365. Každý klient Azure AD se odlišuje a je oddělený od ostatních klientů Azure AD. Pokud chcete zkontrolovat, jestli máte tenanta, přihlaste se k webu Azure Portal pomocí účtu, který chcete použít ke správě vaší aplikace. Pokud tenanta máte, budete k němu automaticky přihlášeni a název tenanta se zobrazí přímo pod názvem vašeho účtu. Najeďte myší na název vašeho účtu v pravém horním rohu webu Azure Portal, zobrazí se vaše jméno, e-mail, ID adresáře nebo tenanta (GUID) a vaše doména. Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta. ID klienta vaší organizace můžete také vyhledat pomocí adresy [https://www.whatismytenantid.com](https://www.whatismytenantid.com)URL názvu domény na adrese: .
 
 Zatímco SaaS nabízí použití ID klienta k definování soukromé cílové skupiny, jiné typy nabídek můžete použít ID předplatného Azure (které jsou také reprezentovány jako GUID).
 
@@ -429,19 +433,15 @@ Zatímco SaaS nabízí použití ID klienta k definování soukromé cílové sk
 
 ![Příklad výpisu plánu tržiště s poznámkami](./media/marketplace-plan.svg)
 
-## <a name="test-drive"></a>Zkušební jízda
-
-[!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
-
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Okruh uživatelů prodejce pro poskytovatele cloudových řešení (CSP)
 
 Volba zpřístupnit vaši nabídku v programu CSP umožňuje poskytovatelům cloudových řešení prodávat váš produkt jako součást přibaleného řešení svým zákazníkům. Další informace naleznete v [tématu Zprostředkovatelé cloudových řešení](https://go.microsoft.com/fwlink/?linkid=2111109).
 
 ## <a name="publish"></a>Publikování
 
-Po dokončení všech požadovaných částí nabídky vyberte **publikovat** v pravém horním rohu portálu. Budete přesměrováni na stránku **Recenze a publikování.**
+Po dokončení všech požadovaných částí nabídky vyberte **publikovat** v pravém horním rohu portálu. Budete přesměrováni na stránku **Revize a publikování.**
 
-#### <a name="submit-offer-to-preview"></a>Odeslat nabídku do náhledu
+### <a name="submit-offer-to-preview"></a>Odeslat nabídku do náhledu
 
 Pokud tuto nabídku publikujete poprvé, můžete:
 

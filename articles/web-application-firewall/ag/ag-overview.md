@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 8d43851a6a546bd23881c4d0a72185ca03e63092
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983615"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314358"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Brána firewall webových aplikací Azure v bráně aplikací Azure
 
@@ -28,9 +28,9 @@ Všechny níže uvedené funkce WAF existují uvnitř zásad WAF. Můžete vytvo
 
 ![Diagram WAF aplikační brány](../media/ag-overview/waf1.png)
 
-Aplikační brána funguje jako řadič pro doručování aplikací (ADC). Nabízí ukončení ssl (Secure Sockets Layer), spřažení relací na základě souborů cookie, distribuci zatížení kruhového dotazování, směrování založené na obsahu, schopnost hostovat více webových stránek a vylepšení zabezpečení.
+Aplikační brána funguje jako řadič pro doručování aplikací (ADC). Nabízí zabezpečení transportní vrstvy (TLS), dříve známé jako SSL (Secure Sockets Layer), ukončení, spřažení relací založené na souborech cookie, distribuci zatížení kruhového dotazování, směrování založené na obsahu, schopnost hostovat více webových stránek a vylepšení zabezpečení.
 
-Vylepšení zabezpečení aplikační brány zahrnují správu zásad SSL a komplexní podporu SSL. Zabezpečení aplikací je posíleno integrací WAF do aplikační brány. Tato kombinace chrání webové aplikace před běžnými chybami zabezpečení. A poskytuje snadno konfigurovatelné centrální umístění pro správu.
+Vylepšení zabezpečení aplikační brány zahrnují správu zásad TLS a komplexní podporu TLS. Zabezpečení aplikací je posíleno integrací WAF do aplikační brány. Tato kombinace chrání webové aplikace před běžnými chybami zabezpečení. A poskytuje snadno konfigurovatelné centrální umístění pro správu.
 
 ## <a name="benefits"></a>Výhody
 

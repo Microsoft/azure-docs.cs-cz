@@ -2,13 +2,13 @@
 title: 'Výuka: Vzory - LUIS'
 description: Pomocí vzorů zvýšit záměr a predikce entity při poskytování méně příklad projevy v tomto kurzu. Vzor je k dispozici jako příklad utterance šablony, který zahrnuje syntaxi k identifikaci entit a ignorovatelný text.
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.openlocfilehash: 10f0ade45dedb3413887cc4b4dea89e857c1bde7
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/14/2020
+ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545992"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380767"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Kurz: Přidání běžných formátů promluv šablony vzoru pro zlepšení předpovědí
 
@@ -198,7 +198,7 @@ Použitím vzorů výrazně procentuálně zvýšíte skóre správného záměr
 Toto druhé okno prohlížeče ponechte otevřené. Použijete je později v průběhu kurzu.
 
 ## <a name="template-utterances"></a>Šablony promluv
-Vzhledem k povaze domény předmětu lidských zdrojů existuje několik běžných způsobů, jak se ptát na vztahy se zaměstnanci v organizacích. Například:
+Vzhledem k povaze domény předmětu lidských zdrojů existuje několik běžných způsobů, jak se ptát na vztahy se zaměstnanci v organizacích. Příklad:
 
 |Projevy|
 |--|
@@ -214,7 +214,7 @@ Tyto promluvy jsou si příliš blízké na to, aby bylo možné určit jejich o
 |`Who does {Employee} report to[?]`|Zaměnitelné`{Employee}`<br>Ignorovat`[?]`|
 |`Who reports to {Employee}[?]`|Zaměnitelné`{Employee}`<br>Ignorovat`[?]`|
 
-Syntaxe `{Employee}` označí umístění entity v šabloně promluvy a to, o jakou entitu se jedná. Volitelná syntaxe , `[?]`označí slova nebo interpunkci, která je volitelná. LUIS páruje promluvy a ignoruje volitelný text v závorkách.
+Syntaxe `{Employee}` označí umístění entity v šabloně promluvy a to, o jakou entitu se jedná. Volitelná syntaxe , `[?]`označí slova nebo [interpunkci,](luis-reference-application-settings.md#punctuation-normalization) která je volitelná. LUIS páruje promluvy a ignoruje volitelný text v závorkách.
 
 Syntaxe sice vypadá jako regulární výraz, ale není regulárním výrazem. Podporovaná je pouze syntaxe se složenými `{}` a hranatými `[]` závorkami. Můžou být vnořené až dvě úrovně.
 

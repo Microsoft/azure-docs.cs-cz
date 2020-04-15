@@ -3,12 +3,12 @@ title: Jak vytvořit zásady konfigurace hosta pro Windows
 description: Přečtěte si, jak vytvořit zásady Azure Zásady konfigurace pro Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 24069ff6518c4244026378e48216d4568fffeb8a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365469"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313982"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Jak vytvořit zásady konfigurace hosta pro Windows
 
@@ -73,7 +73,11 @@ Přehled konceptů a terminologie DSC najdete v [tématu Přehled DSC prostřed�
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Jak se moduly konfigurace hosta liší od modulů DSC prostředí Windows PowerShell
 
-Když konfigurace hosta audituje `Test-TargetResource` počítač, nejprve se spustí, aby zjistil, zda je ve správném stavu. Logická hodnota vrácená funkcí určuje, jestli by měl být stav Správce prostředků Azure pro přiřazení hosta kompatibilní nebo nekompatibilní. Dále zprostředkovatel `Get-TargetResource` spustí vrátit aktuální stav každé nastavení, takže podrobnosti jsou k dispozici jak o tom, proč počítač není kompatibilní, nebo pro potvrzení, že aktuální stav je kompatibilní.
+Když konfigurace hosta audituje počítač:
+
+1. Agent nejprve `Test-TargetResource` spustí k určení, pokud je konfigurace ve správném stavu.
+1. Logická hodnota vrácená funkcí určuje, jestli by měl být stav Správce prostředků Azure pro přiřazení hosta kompatibilní nebo nekompatibilní.
+1. Zprostředkovatel spustí `Get-TargetResource` vrátit aktuální stav každé nastavení, takže podrobnosti jsou k dispozici jak o tom, proč počítač není kompatibilní a potvrdit, že aktuální stav je kompatibilní.
 
 ### <a name="get-targetresource-requirements"></a>Požadavky na zdroj Get-Target
 
@@ -102,6 +106,25 @@ return @{
     reasons = $reasons
 }
 ```
+
+Vlastnost Důvody musí být také přidándo mof schématu pro prostředek jako vložené třídy.
+
+```mof
+[ClassVersion("1.0.0.0")] 
+class Reason
+{
+    [Read] String Phrase;
+    [Read] String Code;
+};
+
+[ClassVersion("1.0.0.0"), FriendlyName("ResourceName")]
+class ResourceName : OMI_BaseResource
+{
+    [Key, Description("Example description")] String Example;
+    [Read, EmbeddedInstance("Reason")] String Reasons[];
+};
+```
+
 ### <a name="configuration-requirements"></a>Požadavky na konfiguraci
 
 Název vlastní konfigurace musí být konzistentní všude. Název souboru ZIP pro balíček obsahu, název konfigurace v souboru MOF a název přiřazení hosta v šabloně Správce prostředků musí být stejný.
@@ -134,7 +157,7 @@ Můžete také implementovat [koncový bod služby](../../../storage/common/stor
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Postupné vytvoření vlastní zásady auditu konfigurace hosta pro systém Windows
 
-Vytvořte konfiguraci DSC. Následující příklad skriptu prostředí PowerShell vytvoří konfiguraci s názvem **AuditBitLocker**, importuje modul prostředků **PsDscResources** a použije `Service` prostředek k auditování spuštěné služby. Konfigurační skript lze spustit z počítače se systémem Windows nebo macOS.
+Vytvořte konfiguraci DSC pro nastavení auditování. Následující příklad skriptu prostředí PowerShell vytvoří konfiguraci s názvem **AuditBitLocker**, importuje modul prostředků **PsDscResources** a použije `Service` prostředek k auditování spuštěné služby. Konfigurační skript lze spustit z počítače se systémem Windows nebo macOS.
 
 ```powershell
 # Define the DSC configuration and import GuestConfiguration
@@ -160,7 +183,7 @@ Příkaz `Node AuditBitlocker` není technicky vyžadován, ale vytvoří soubor
 
 Po kompilaci MOF musí být podpůrné soubory zabaleny společně. Dokončený balíček se používá konfigurace hosta k vytvoření definice zásad Azure.
 
-Rutina `New-GuestConfigurationPackage` vytvoří balíček. Parametry rutiny při vytváření obsahu systému `New-GuestConfigurationPackage` Windows:
+Rutina `New-GuestConfigurationPackage` vytvoří balíček. Moduly, které jsou potřebné pro konfiguraci, musí být k dispozici v aplikaci `$Env:PSModulePath`. Parametry rutiny při vytváření obsahu systému `New-GuestConfigurationPackage` Windows:
 
 - **Název**: Název balíčku Konfigurace hosta.
 - **Konfigurace**: Zkompilovaný konfigurační dokument DSC úplná cesta.
@@ -176,7 +199,7 @@ New-GuestConfigurationPackage `
 
 Po vytvoření balíčku konfigurace, ale před publikováním do Azure, můžete otestovat balíček z pracovní stanice nebo CI/CD prostředí. Rutina GuestConfiguration `Test-GuestConfigurationPackage` obsahuje ve vývojovém prostředí stejného agenta, jak se používá v počítačích Azure. Pomocí tohoto řešení můžete provést testování integrace místně před uvolněním do fakturovaných cloudových prostředí.
 
-Vzhledem k tomu, že agent ve skutečnosti vyhodnocuje místní prostředí, ve většině případů je třeba spustit rutinu Test- na stejné platformě operačního systému, jak plánujete auditovat.
+Vzhledem k tomu, že agent ve skutečnosti vyhodnocuje místní prostředí, ve většině případů je třeba spustit rutinu Test- na stejné platformě operačního systému, jak plánujete auditovat. Test bude používat pouze moduly, které jsou součástí balíčku obsahu.
 
 Parametry rutiny: `Test-GuestConfigurationPackage`
 

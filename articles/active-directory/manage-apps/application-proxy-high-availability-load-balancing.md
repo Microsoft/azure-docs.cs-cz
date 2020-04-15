@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3202c2fbfedfce0b0b52be94b1e0d165a6e72546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481309"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312937"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Vysoká dostupnost a vyrovnávání zatížení konektorů a aplikací proxy aplikací
 
@@ -40,16 +40,12 @@ Konektory vytvořit jejich připojení na základě zásad pro vysokou dostupnos
 1. Uživatel na klientském zařízení se pokusí získat přístup k místní aplikaci publikované prostřednictvím proxy aplikace.
 2. Požadavek prochází Azure Balancer k určení, která instance služby Proxy aplikace by měla přijmout požadavek. Podle oblasti jsou k dispozici desítky instancí, které mohou požadavek přijmout. Tato metoda pomáhá rovnoměrně distribuovat provoz mezi instancemi služby.
 3. Požadavek je odeslán do [služby Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/).
-4. Service Bus zkontroluje, zda připojení dříve používalo existující konektor ve skupině konektorů. Pokud ano, znovu použije připojení. Pokud ještě není s připojením spárován žádný konektor, vybere náhodně dostupný konektor, ke kterým bude signalizovat. Konektor pak vyzvedne požadavek z service bus.
-
+4. Signály Service Bus k dostupnému konektoru. Konektor pak vyzvedne požadavek z service bus.
    - V kroku 2 požadavky přejít na různé instance služby proxy aplikace, takže připojení jsou pravděpodobnější, že budou provedeny s různými konektory. V důsledku toho jsou konektory téměř rovnoměrně používány v rámci skupiny.
-
-   - Připojení je obnoveno pouze v případě, že je připojení přerušeno nebo dojde k době nečinnosti 10 minut. Například připojení může být přerušeno při restartování služby počítače nebo konektoru nebo při přerušení sítě.
-
 5. Konektor předá požadavek na server back-end aplikace. Potom aplikace odešle odpověď zpět do konektoru.
 6. Konektor dokončí odpověď otevřením odchozí připojení k instanci služby, odkud přišel požadavek. Poté je toto připojení okamžitě uzavřeno. Ve výchozím nastavení je každý konektor omezen na 200 souběžných odchozích připojení.
 7. Odpověď je pak předána zpět klientovi z instance služby.
-8. Následné požadavky ze stejného připojení opakují výše uvedené kroky, dokud nebude toto připojení přerušeno nebo dokud nebude nečinné po dobu 10 minut.
+8. Následné požadavky ze stejného připojení opakují výše uvedené kroky.
 
 Aplikace má často mnoho prostředků a otevře více připojení, když je načten. Každé připojení prochází výše uvedenými kroky, aby se stala přidělena instance služby, vyberte nový konektor k dispozici, pokud připojení ještě nebyla dříve spárována s konektorem.
 

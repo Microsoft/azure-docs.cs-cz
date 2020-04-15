@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: a565aba12f1b10f215d8f6cc7fc0b7247a0441d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066351"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314290"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Kurz: Směrování síťového provozu s využitím směrovací tabulky pomocí webu Azure Portal
 
@@ -208,8 +208,8 @@ Než vyberete **Vytvořit** pro vytvoření veřejného nebo soukromého virtuá
 | Základy | Skupina prostředků | **myResourceGroup** |
 | | Název virtuálního počítače | *myVmPublic* |
 | | Veřejné příchozí porty | **Povolit vybrané porty** |
-| | Výběr příchozích portů | **PROTOKOLY HTTP** a **RDP** |
-| Síťové služby | Virtuální síť | **myVirtualNetwork** |
+| | Výběr příchozích portů | **Protokol RDP** |
+| Sítě | Virtuální síť | **myVirtualNetwork** |
 | | Podsíť | **Veřejná otisčná (10.0.0.0/24)** |
 | | Veřejná IP adresa | Výchozí hodnota |
 | Správa | Účet úložiště diagnostiky | **mynvastorageaccount** |
@@ -221,8 +221,8 @@ Než vyberete **Vytvořit** pro vytvoření veřejného nebo soukromého virtuá
 | Základy | Skupina prostředků | **myResourceGroup** |
 | | Název virtuálního počítače | *myVmPrivate* |
 | | Veřejné příchozí porty | **Povolit vybrané porty** |
-| | Výběr příchozích portů | **PROTOKOLY HTTP** a **RDP** |
-| Síťové služby | Virtuální síť | **myVirtualNetwork** |
+| | Výběr příchozích portů | **Protokol RDP** |
+| Sítě | Virtuální síť | **myVirtualNetwork** |
 | | Podsíť | **Soukromé (10.0.1.0/24)** |
 | | Veřejná IP adresa | Výchozí hodnota |
 | Správa | Účet úložiště diagnostiky | **mynvastorageaccount** |

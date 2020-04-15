@@ -4,12 +4,15 @@
   items:
     - name: Co je služba Azure Analysis Services?
       href: analysis-services-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vytvoření serveru – portál
       href: analysis-services-create-server.md
     - name: Vytvoření serveru – PowerShell
       href: analysis-services-create-powershell.md
+    - name: Vytvoření šablony serveru – šablona Resource Manageru
+      displayName: Resource Manager
+      href: analysis-services-create-template.md
     - name: Konfigurace brány firewall serveru – portál
       href: analysis-services-qs-firewall.md
 - name: Kurzy
@@ -110,7 +113,7 @@
       href: analysis-services-capacity-limits.md
 - name: Zdroje a prostředky
   items:
-    - name: Ukázky
+    - name: ukázky
       href: analysis-services-samples.md
     - name: Blog týmu Analysis Services
       href: 'https://blogs.msdn.microsoft.com/analysisservices/'

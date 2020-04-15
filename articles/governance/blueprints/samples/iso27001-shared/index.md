@@ -1,14 +1,14 @@
 ---
 title: 'Ukázka podrobného plánu ISO 27001: Sdílené služby – přehled'
 description: 'Přehled a architektura ukázky podrobného plánu ISO 27001: Sdílené služby Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly ISO 27001.'
-ms.date: 01/13/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 0b6a250ebac2744adca813219225388841f1776f
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75922539"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381569"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Přehled ukázky podrobného plánu ISO 27001: Sdílené služby
 
@@ -21,7 +21,7 @@ Ukázka podrobného plánu [úlohy ISO 27001 App Service Environment/SQL Databas
 Ukázka podrobného plánu ISO 27001: Sdílené služby nasazuje v Azure základní infrastrukturu, kterou organizace mohou využít k hostování více úloh na základě přístupu VDC (virtuální datové centrum).
 VDC je prověřená sada referenčních architektur, nástrojů pro automatizaci a modelů zapojení využívaných Microsoftem pro největší podnikové zákazníky. Ukázka podrobného plánu sdílených služeb je založená na plně nativním prostředí Azure VDC znázorněném níž.
 
-![Návrhy ukázky podrobného plánu ISO 27001: Sdílené služby](../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png" alt-text="Návrhy ukázky podrobného plánu ISO 27001: Sdílené služby" border="false":::
 
 Toto prostředí je tvořené několika službami Azure, které se využívají k zajištění zabezpečené a plně monitorované infrastruktury sdílených služeb na podnikové úrovni, která je založená na standardech ISO 27001. Toto prostředí tvoří:
 

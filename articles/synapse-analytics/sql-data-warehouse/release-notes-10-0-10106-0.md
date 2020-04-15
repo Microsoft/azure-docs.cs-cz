@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 7e05458214732a1835dd73b85dad871683ef5bbe
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: acfca3f41cc8bf69572843c3f035a67e8df9e0fe
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743120"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313615"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Poznámky k verzi Azure Synapse Analytics
 
@@ -40,18 +40,13 @@ Pomocí identifikované verze potvrďte, která verze byla použita ve vašem fo
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
-## <a name="march-2020"></a>Březen 2020
-
-| Vylepšení služeb                                         | Podrobnosti                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16.6 Náhled 2](/visualstudio/releases/2019/release-notes-preview) – datové nástroje SQL Serveru (SSDT)** | Tato verze obsahuje následující vylepšení a opravy: </br> </br> - Vyřešen problém, kdy změna tabulky odkazuje materializované zobrazení (MV) způsobí, že Alter View příkazy, které mají být generovány, které nejsou podporovány pro MVs<br/><br/> - Implementována změna k zajištění porovnání schématu operace neselže, pokud jsou v databázi nebo projektu přítomny objekty zabezpečení na úrovni řádků. Objekty zabezpečení na úrovni řádků nejsou aktuálně podporovány pro ssdt.  <br/><br/> - Prahová hodnota časového limitu aplikace SQL Server Object Explorer byla zvýšena, aby se zabránilo časovým limitům při výpisu velkého počtu objektů v databázi<br/><br/> - Optimalizován způsob, jakým SQL Server Object Explorer načte seznam databázových objektů pro snížení nestability a zvýšení výkonu při vyplnění objektexplorer |
-
-## <a name="february-2020"></a>Únor 2020
+## <a name="april-2020"></a>Duben 2020
 
 | Vylepšení služeb | Podrobnosti |
 | --- | --- |
 |**Úroveň kompatibility databáze (náhled)**| V této verzi mohou uživatelé nyní nastavit úroveň kompatibility databáze, aby získali chování jazyka Transact-SQL a zpracování dotazů konkrétní verze modulu SYNApse SQL. Další informace naleznete [v tématech sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [Alter Database Scoped Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
 |**Sp_describe_undeclared_parameters**| Umožněte uživatelům zobrazit metadata o nedeklarovaných parametrech v dávce Transact-SQL. Další informace naleznete [v tématu sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
+|**[Visual Studio 16.6 Náhled 2](/visualstudio/releases/2019/release-notes-preview) – datové nástroje SQL Serveru (SSDT)** | Tato verze obsahuje následující vylepšení a opravy pro SSDT: </br> </br> - Vyřešen problém, kdy změna tabulky odkazuje materializované zobrazení (MV) způsobí, že Alter View příkazy, které mají být generovány, které nejsou podporovány pro MVs<br/><br/> - Implementována změna k zajištění porovnání schématu operace neselže, pokud jsou v databázi nebo projektu přítomny objekty zabezpečení na úrovni řádků. Objekty zabezpečení na úrovni řádků nejsou aktuálně podporovány pro ssdt.  <br/><br/> - Prahová hodnota časového limitu aplikace SQL Server Object Explorer byla zvýšena, aby se zabránilo časovým limitům při výpisu velkého počtu objektů v databázi<br/><br/> - Optimalizován způsob, jakým SQL Server Object Explorer načte seznam databázových objektů pro snížení nestability a zvýšení výkonu při vyplnění objektexplorer |
 
 ## <a name="january-2020"></a>Leden 2020
 

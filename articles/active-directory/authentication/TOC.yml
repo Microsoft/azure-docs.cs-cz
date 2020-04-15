@@ -42,17 +42,13 @@
       items:
         - name: Jak funguje MFA
           href: concept-mfa-howitworks.md
-        - name: Licencování uživatelů
-          href: concept-mfa-licensing.md
-        - name: Správa poskytovatele ověřování
-          href: concept-mfa-authprovider.md
-        - name: Doprovodné materiály k zabezpečení
-          href: multi-factor-authentication-security-best-practices.md
         - name: Rezidence dat
           href: concept-mfa-data-residency.md
+        - name: Licence
+          href: concept-mfa-licensing.md
         - name: MFA pro Office 365
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
-        - name: Nejčastější dotazy k MFA
+        - name: Nejčastější dotazy
           href: multi-factor-authentication-faq.md
     - name: Ochrana hesel Azure AD
       items:
@@ -72,16 +68,18 @@
           href: howto-sspr-authenticationdata.md
         - name: Klienti SSPR pro Windows
           href: howto-sspr-windows.md
-    - name: Cloudové ověřování MFA
+    - name: Azure Multi-Factor Authentication
       items:
         - name: Průvodce nasazením
           href: howto-mfa-getstarted.md
-        - name: Ověřování MFA podle uživatele
-          href: howto-mfa-userstates.md
-        - name: Nastavení uživatelů a zařízení
-          href: howto-mfa-userdevicesettings.md
         - name: Konfigurace nastavení
           href: howto-mfa-mfasettings.md
+        - name: Konfigurace uživatelů
+          href: howto-mfa-userdevicesettings.md
+        - name: Povolení MFA pro jednotlivé uživatele
+          href: howto-mfa-userstates.md
+        - name: Konfigurace zprostředkovatelů ověřování
+          href: concept-mfa-authprovider.md
         - name: Directory Federation
           items:
             - name: Adaptér AD FS Windows Serveru 2016
@@ -140,6 +138,8 @@
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello pro firmy
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+    - name: Použití ověření na základě SMS (Preview)
+      href: howto-authentication-sms-signin.md
     - name: Ověřování pomocí certifikátů
       items:
         - name: Začínáme s ověřováním pomocí certifikátů

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 1a4ae0701174278203023c156a86aad8feb1ca4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: d68f7dc6368c2b3de7f26f2946c5fb47237a820d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240624"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313938"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití sdílených přístupových podpisů služby Azure Storage k omezení přístupu k datům ve službě HDInsight
 
@@ -27,8 +27,6 @@ HDInsight má úplný přístup k datům v účtech Azure Storage přidruženýc
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure.
-
 * Klient SSH. Další informace naleznete [v tématu Připojení k HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Existující [kontejner úložiště](../storage/blobs/storage-quickstart-blobs-portal.md).  
@@ -41,7 +39,7 @@ HDInsight má úplný přístup k datům v účtech Azure Storage přidruženýc
 
 * Pokud používáte C#, Visual Studio musí být verze 2013 nebo vyšší.
 
-* Schéma [URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) pro váš účet úložiště. To by `wasb://` bylo pro `abfs://` Azure Storage, pro `adl://` Azure Data Lake Storage Gen2 nebo pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI bude `wasbs://`. Viz také [bezpečný přenos](../storage/common/storage-require-secure-transfer.md).
+* Schéma [URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) pro váš účet úložiště. Toto schéma `wasb://` by bylo `abfs://` pro Azure Storage, `adl://` pro Azure Data Lake Storage Gen2 nebo pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI bude `wasbs://`. Viz také [bezpečný přenos](../storage/common/storage-require-secure-transfer.md).
 
 * Existující cluster HDInsight, do který chcete přidat sdílený přístupový podpis. Pokud ne, můžete pomocí Azure PowerShellu vytvořit cluster a přidat sdílený přístupový podpis během vytváření clusteru.
 
@@ -56,11 +54,11 @@ HDInsight má úplný přístup k datům v účtech Azure Storage přidruženýc
 
 Sdílené přístupové podpisy mají dvě formy:
 
-* Ad hoc: Čas zahájení, čas vypršení platnosti a oprávnění pro SAS jsou zadány na identifikátoru URI SAS.
+* `Ad hoc`: Čas zahájení, čas vypršení platnosti a oprávnění pro SAS jsou zadány na identifikátoru URI SAS.
 
-* Uložené zásady přístupu: Uložené zásady přístupu je definována na kontejneru prostředků, jako je například kontejner objektů blob. Zásadu lze použít ke správě omezení pro jeden nebo více sdílených přístupových podpisů. Když přidružíte SAS k uložené zásady přístupu, SAS zdědí omezení – čas zahájení, čas vypršení platnosti a oprávnění – definované pro zásady uloženého přístupu.
+* `Stored access policy`: Uložené zásady přístupu je definována na kontejneru prostředků, jako je například kontejner objektů blob. Zásadu lze použít ke správě omezení pro jeden nebo více sdílených přístupových podpisů. Když přidružíte SAS k uložené zásady přístupu, SAS zdědí omezení – čas zahájení, čas vypršení platnosti a oprávnění – definované pro zásady uloženého přístupu.
 
-Rozdíl mezi těmito dvěma formami je důležitý pro jeden klíčový scénář: odvolání. SAS je adresa URL, takže každý, kdo získá SAS můžete použít, bez ohledu na to, kdo požádal, aby začal. Pokud je SAS publikovánveřejně, může jej používat kdokoli na světě. SAS, který je distribuován je platný, dokud se stane jedna ze čtyř věcí:
+Rozdíl mezi těmito dvěma formami je důležitý pro jeden klíčový scénář: odvolání. SAS je adresa URL, takže ji může používat každý, kdo získá SAS. Nezáleží na tom, kdo o to požádal. Pokud je SAS publikovánveřejně, může jej používat kdokoli na světě. SAS, který je distribuován je platný, dokud se stane jedna ze čtyř věcí:
 
 1. Je dosaženo doby vypršení platnosti zadané na SAS.
 
@@ -82,7 +80,7 @@ Další informace o sdílených přístupových podpisech naleznete [v tématu P
 
 ## <a name="create-a-stored-policy-and-sas"></a>Vytvoření uložené zásady a SAS
 
-Uložte token SAS, který je vytvořen na konci každé metody. Token bude vypadat podobně jako následující:
+Uložte token SAS, který je vytvořen na konci každé metody. Token bude vypadat podobně jako následující výstup:
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
@@ -205,7 +203,7 @@ Otevřete `SASToken.py` soubor `storage_account_name`a `storage_account_key`nahr
 
 Pokud se zobrazí `pip install --upgrade azure-storage` chybová zpráva `ImportError: No module named azure.storage`, bude pravděpodobně nutné provést spuštění .
 
-### <a name="using-c"></a>Pomocí C#
+### <a name="using-c"></a>Použití C\#
 
 1. Otevřete řešení v sadě Visual Studio.
 
@@ -213,21 +211,20 @@ Pokud se zobrazí `pip install --upgrade azure-storage` chybová zpráva `Import
 
 3. Vyberte **Nastavení** a přidejte hodnoty pro následující položky:
 
-   * StorageConnectionString: Připojovací řetězec pro účet úložiště, který chcete vytvořit uloženou zásadu a SAS pro. Formát by `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` měl `myaccount` být tam, kde `mykey` je název vašeho účtu úložiště a je klíčem pro účet úložiště.
-
-   * ContainerName: Kontejner v účtu úložiště, ke kterému chcete omezit přístup.
-
-   * SASPolicyName: Název, který chcete použít pro uložené zásady k vytvoření.
-
-   * FileToUpload: Cesta k souboru, který je odeslán do kontejneru.
+    |Položka |Popis |
+    |---|---|
+    |StorageConnectionString|Připojovací řetězec pro účet úložiště, který chcete vytvořit uloženou zásadu a SAS pro. Formát by `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` měl `myaccount` být tam, kde `mykey` je název vašeho účtu úložiště a je klíčem pro účet úložiště.|
+    |ContainerName|Kontejner v účtu úložiště, ke kterému chcete omezit přístup.|
+    |Název zásad SAS|Název, který chcete použít pro uložené zásady k vytvoření.|
+    |SouborToUpload|Cesta k souboru, který je odeslán do kontejneru.|
 
 4. Spusťte projekt. Uložte token zásad SAS, název účtu úložiště a název kontejneru. Tyto hodnoty se používají při připojování účtu úložiště k clusteru HDInsight.
 
 ## <a name="use-the-sas-with-hdinsight"></a>Použití SAS s HDInsight
 
-Při vytváření clusteru HDInsight je nutné zadat účet primárního úložiště a volitelně můžete zadat další účty úložiště. Obě tyto metody přidání úložiště vyžadují úplný přístup k účtům úložiště a kontejnerům, které se používají.
+Při vytváření clusteru HDInsight je nutné zadat účet primárního úložiště. Můžete také zadat další účty úložiště. Obě tyto metody přidání úložiště vyžadují úplný přístup k účtům úložiště a kontejnerům, které se používají.
 
-Chcete-li k omezení přístupu ke kontejneru použít sdílený přístupový podpis, přidejte vlastní položku do konfigurace **hlavní lokality** pro cluster. Položku můžete přidat během vytváření clusteru pomocí prostředí PowerShell nebo po vytvoření clusteru pomocí ambari.
+K omezení přístupu ke kontejneru použijte sdílený přístupový podpis. Přidejte vlastní položku do konfigurace **hlavní lokality** pro cluster. Položku můžete přidat během vytváření clusteru pomocí prostředí PowerShell nebo po vytvoření clusteru pomocí ambari.
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>Vytvoření clusteru, který používá SAS
 

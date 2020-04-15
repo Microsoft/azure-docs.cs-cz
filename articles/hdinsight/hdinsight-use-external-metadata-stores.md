@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/03/2020
-ms.openlocfilehash: 0cadf3930008868fe223e6e1024a2d14d17d8131
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657119"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313945"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat v Azure HDInsightu
 
@@ -63,7 +63,7 @@ HDInsight také podporuje vlastní metastores, které jsou doporučeny pro produ
 
 Před nastavením vlastního metaúložiště Hive pro cluster HDInsight vytvořte nebo máte existující Azure SQL Database.  Další informace najdete [v tématu Úvodní příručka: Vytvoření jedné databáze v Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
 
-Nakonfigurujte pravidla brány firewall Azure SQL Database, abyste umožnili službám a prostředkům Azure přístup k serveru. Tuto možnost povolte na webu Azure Portal výběrem **možnosti Nastavit serverovou bránu firewall**. Pak vyberte **ZAPNUTO** pod **Povolit služby Azure a prostředky pro přístup k tomuto serveru** pro server Azure SQL Database nebo databáze. Další informace naleznete v [tématu Vytvoření a správa pravidel brány firewall IP](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+Při vytváření clusteru se služba HDInsight musí připojit k externímu metastore a ověřit vaše přihlašovací údaje. Nakonfigurujte pravidla brány firewall Azure SQL Database, abyste umožnili službám a prostředkům Azure přístup k serveru. Tuto možnost povolte na webu Azure Portal výběrem **možnosti Nastavit serverovou bránu firewall**. Pak vyberte **ne** pod **Odepřít přístup k veřejné síti**a **Ano** pod **Povolit služby Azure a prostředky pro přístup k tomuto serveru** pro server Azure SQL Database nebo databáze. Další informace naleznete v [tématu Vytvoření a správa pravidel brány firewall IP](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
 ![tlačítko nastavit serverovou bránu firewall](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 

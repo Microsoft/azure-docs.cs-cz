@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: be5a2f76a99149fde378d29f2ef7748ebe60b038
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5889afa033b30606f8981ddb826aa192f24efa10
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78303235"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312917"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Kurz: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -47,7 +47,7 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
   > [!IMPORTANT]
   > Nezapomeňte přiřadit roli v oboru účtu úložiště Storage Storage Data Lake Storage. Roli můžete přiřadit nadřazené skupině prostředků nebo předplatnému, ale budete dostávat chyby související s oprávněními, dokud se tato přiřazení rolí nerozšíří do účtu úložiště.
 
-  :heavy_check_mark: Při provádění kroků v části [Získat hodnoty pro podepisování v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku vložte ID klienta, ID aplikace a hodnoty hesla do textového souboru. Brzy je budeš potřebovat.
+  :heavy_check_mark: Při provádění kroků v části [Získat hodnoty pro podepisování v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku vložte ID klienta, ID aplikace a tajné hodnoty klienta do textového souboru. Brzy je budeš potřebovat.
 
 ### <a name="download-the-flight-data"></a>Stažení letových údajů
 
@@ -151,7 +151,7 @@ V této části vytvoříte kontejner a složku ve vašem účtu úložiště.
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
            "fs.azure.account.oauth2.client.id": "<appId>",
-           "fs.azure.account.oauth2.client.secret": "<password>",
+           "fs.azure.account.oauth2.client.secret": "<clientSecret>",
            "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant>/oauth2/token",
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
@@ -161,7 +161,7 @@ V této části vytvoříte kontejner a složku ve vašem účtu úložiště.
     extra_configs = configs)
     ```
 
-18. V tomto bloku kódu `appId` `password`nahraďte hodnoty , , `tenant`a `storage-account-name` zástupný symbol v tomto bloku kódu hodnotami, které jste shromáždili při vyplňování předpokladů tohoto kurzu. Nahraďte `container-name` zástupnou hodnotu názvem kontejneru.
+18. V tomto bloku kódu `appId` `clientSecret`nahraďte hodnoty , , `tenant`a `storage-account-name` zástupný symbol v tomto bloku kódu hodnotami, které jste shromáždili při vyplňování předpokladů tohoto kurzu. Nahraďte `container-name` zástupnou hodnotu názvem kontejneru.
 
 19. Stisknutím kláves **SHIFT + ENTER** spusťte kód v tomto bloku.
 

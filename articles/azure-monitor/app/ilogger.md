@@ -4,12 +4,12 @@ description: Ukázky použití poskytovatele Azure Application Insights ILogger 
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0f40c1c1a8ee7f20c769a62e9746da43face4cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33effe9cfec6d766d573617ff03b58564e5b34d1
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276372"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313659"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider pro protokoly ILogger jádra .NET
 
@@ -213,7 +213,7 @@ Stále můžete použít starého zprostředkovatele. (Bude odebránpouze v hlav
 - V ASP.NET Core (2.0 a novější) je doporučeným způsobem, jak [povolit poskytovatele protokolování,](https://github.com/aspnet/Announcements/issues/255) použití metod rozšíření na ILoggingBuilder v **samotném Program.cs.**
 
 > [!Note]
-> Nový zprostředkovatel je k dispozici pro aplikace, které cílí na NETSTANDARD2.0 nebo novější. Pokud vaše aplikace cílí na starší verze .NET Core, například .NET Core 1.1, nebo pokud cílí na rozhraní .NET Framework, pokračujte v používání starého zprostředkovatele.
+> Nový zprostředkovatel je k dispozici pro aplikace, které cílí na NETSTANDARD2.0 nebo novější. Od [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.14.0 dále nový zprostředkovatel je k dispozici také pro aplikace, které cílí na rozhraní .NET Framework NET461 nebo novější. Pokud vaše aplikace cílí na starší verze .NET Core, například .NET Core 1.1, nebo pokud cílí na rozhraní .NET Framework menší než NET46, pokračujte v používání starého zprostředkovatele.
 
 ## <a name="console-application"></a>Konzolová aplikace
 

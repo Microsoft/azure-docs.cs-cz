@@ -4,14 +4,14 @@ description: Přidání příznaků funkcí do aplikací spring boot a jejich sp
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.author: lcozzens
-ms.openlocfilehash: 489bc0234580e8df8dcc85c1d3cc0add547818b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 398005b37660cfa68936a0c8b3a3d90da8160e49
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78944345"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309075"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Úvodní příručka: Přidání příznaků funkcí do aplikace Spring Boot
 
@@ -103,7 +103,7 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
 1. Přejděte `resources` do adresáře aplikace `bootstrap.properties`a otevřete .  Pokud soubor neexistuje, vytvořte jej. Přidejte do souboru následující řádek.
 
     ```properties
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. Na portálu Konfigurace aplikace pro vaše `Access keys` úložiště konfigurace vyberte z postranního panelu. Vyberte kartu Klíče jen pro čtení. Zkopírujte hodnotu primárního připojovacího řetězce.
@@ -283,7 +283,7 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
     mvn spring-boot:run
     ```
 
-1. Otevřete okno prohlížeče a přejděte na výchozí adresu URL `https://localhost:8080`místně hostované webové aplikace: .
+1. Otevřete okno prohlížeče a přejděte `http://localhost:8080/welcome`na adresu URL: .
 
     ![Spuštění aplikace QuickStart místní](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 

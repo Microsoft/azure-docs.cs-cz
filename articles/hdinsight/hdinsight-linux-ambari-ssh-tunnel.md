@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72991355"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314161"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Použití tunelového propojení SSH pro přístup k webovému uživatelskému uživatelskému uživatelskému uživatelskému uživatelskému uživatelskému nastavení Apache Ambari, JobHistory, NameNode, Apache Oozie a dalších ui
 
-Clustery HDInsight poskytují přístup k webovému uživatelskému rozhraní Apache Ambari přes Internet, ale některé funkce vyžadují tunel SSH. Například webové uživatelské uživatelské okno pro službu Apache Oozie nelze přistupovat přes internet bez tunelu SSh.
+Clustery HDInsight poskytují přístup k webovému uživatelskému rozhraní Apache Ambari přes internet. Některé funkce vyžadují tunel SSH. Například webové uživatelské uživatelské okno Apache Oozie nelze přistupovat přes internet bez tunelu SSH.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Proč používat tunel SSH
 
@@ -31,7 +31,7 @@ Následující webová una vyžadují tunelové propojení SSH:
 * Webové uživatelské uzlina Oozie
 * Hlavní a protokolové hlavní a protokolové umělá iv
 
-Pokud k přizpůsobení clusteru používáte akce skriptu, vyžadují všechny služby nebo nástroje, které nainstalujete a které zveřejňují webovou službu, tunelové propojení SSH. Pokud například nainstalujete Hue pomocí akce skriptu, musíte použít tunel SSH pro přístup k webovému uživatelskému uživatelskému uživatelskému uživatelskému nastavení Hue.
+Služby nainstalované pomocí akcí skriptu, které zveřejňují webovou službu, budou vyžadovat tunelové propojení SSH. Odstín nainstalovaný pomocí akce skriptu vyžaduje tunel SSH pro přístup k webovému uživatelskému uživatelskému nastavení.
 
 > [!IMPORTANT]  
 > Pokud máte přímý přístup k HDInsight prostřednictvím virtuální sítě, není nutné používat tunely SSH. Příklad přímého přístupu k HDInsightprostřednictvím virtuální sítě najdete v tématu [Připojení HDInsightu k místnímu síťovému](connect-on-premises-network.md) dokumentu.
@@ -64,14 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 Tento příkaz vytvoří připojení, které směruje provoz na místní port 9876 do clusteru přes SSH. Dostupné možnosti:
 
-* **D 9876** - Místní přístav, který směruje dopravu tunelem.
-* **C** - Komprimovat všechna data, protože webový provoz je většinou text.
-* **2** - Force SSH vyzkoušet protokol verze 2 pouze.
-* **q** - Tichý režim.
-* **T** - Zakázat pseudo-tty přidělení, protože jste právě předávání portu.
-* **n** - Zabránit čtení STDIN, protože jste právě předávání portu.
-* **N** - Nespouštějte vzdálený příkaz, protože právě předáváte port.
-* **f** - Spustit na pozadí.
+    |Možnost |Popis |
+    |---|---|
+    |D 9876|Místní port, který směruje provoz tunelem.|
+    |C|Komprimovat všechna data, protože webový provoz je většinou text.|
+    |2|Vynutit SSH vyzkoušet protokol verze 2 pouze.|
+    |q|Tichý režim.|
+    |T|Zakázat pseudo-tty přidělení, protože jste právě předávání portu.|
+    |n|Zabránit čtení STDIN, protože jste právě předávání portu.|
+    |Ne|Nespouštějte vzdálený příkaz, protože právě předáváte port.|
+    |f|Běhat na pozadí.|
 
 Po dokončení příkazu je provoz odeslaný na port 9876 v místním počítači směrován do hlavního uzlu clusteru.
 

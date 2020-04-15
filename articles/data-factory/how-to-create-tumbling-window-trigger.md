@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f9e31b8f0fce1af8408b80afb1049dae8c8ecf1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a634c81273c26722d53610a13e362e5e453f7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73673711"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380113"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Vytvoření aktivační události, která spustí kanál v přeskakujícím okně
 Tento článek obsahuje kroky k vytvoření, spuštění a sledování aktivační události omílání okna. Obecné informace o aktivačních událostech a podporovaných typech naleznete v [tématu Pipeline execution and triggers](concepts-pipeline-execution-triggers.md).
@@ -97,7 +97,7 @@ Následující tabulka obsahuje přehled na vysoké úrovni hlavních prvků JSO
 | **Typ** | Typ aktivační události. Typ je pevná hodnota "TumblingWindowTrigger". | Řetězec | "TumblingWindowTrigger" | Ano |
 | **runtimeState** | Aktuální stav běhu aktivační události.<br/>**Poznámka**: Tento \<prvek je pouze pro čtení>. | Řetězec | "Spuštěno", Zastaveno, Zakázáno. | Ano |
 | **Frekvence** | Řetězec, který představuje frekvenční jednotku (minuty nebo hodiny), ve které se aktivační událost opakuje. Pokud jsou hodnoty data **startTime** podrobnější než hodnota **frekvence,** data **startTime** jsou při výpočtu hranic okna zohledněna. Například pokud je hodnota **frekvence** hodinová a hodnota **startTime** je 2017-09-01T10:10:10Z, první okno je (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Řetězec | "minuta", "hodina"  | Ano |
-| **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Pokud je například **interval** 3 a **frekvence** je "hodina", aktivační událost se opakuje každé 3 hodiny. <br/>**Poznámka:** Minimální interval okna je 15 minut. | Integer | Kladné celé číslo. | Ano |
+| **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Pokud je například **interval** 3 a **frekvence** je "hodina", aktivační událost se opakuje každé 3 hodiny. <br/>**Poznámka:** Minimální interval okna je 5 minut. | Integer | Kladné celé číslo. | Ano |
 | **startTime**| První výskyt, který může být v minulosti. První aktivační interval je (**startTime**, **startTime** + **interval**). | DateTime | A DateTime hodnota. | Ano |
 | **endTime**| Poslední výskyt, který může být v minulosti. | DateTime | A DateTime hodnota. | Ano |
 | **Zpoždění** | Doba zpoždění zahájení zpracování dat pro okno. Spuštění kanálu je spuštěna po očekávané době spuštění plus množství **zpoždění**. **Zpoždění** definuje, jak dlouho aktivační událost čeká po termínu před spuštěním nového spuštění. **Zpoždění** nemění **okno startTime**. Například hodnota **zpoždění** 00:10:00 znamená zpoždění 10 minut. | Časový interval<br/>(hh:mm:ss)  | Hodnota timespan, kde je výchozí hodnota 00:00:00. | Ne |
