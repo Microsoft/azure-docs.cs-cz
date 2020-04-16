@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7ba921656d0dad059b1d15f443bcefeff03ade50
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977386"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418724"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 V tomto kurzu vytvoříte kanál Data Factory, který představuje některé funkce toku ovládacího prvku. Tento kanál zkopíruje z kontejneru v Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud je aktivita kopírování úspěšná, kanál odešle podrobnosti o úspěšné operaci kopírování v e-mailu. Tyto informace by mohly zahrnovat množství zapsaných údajů. Pokud se aktivita kopírování nezdaří, odešle podrobnosti o selhání kopírování, jako je například chybová zpráva, v e-mailu. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
 

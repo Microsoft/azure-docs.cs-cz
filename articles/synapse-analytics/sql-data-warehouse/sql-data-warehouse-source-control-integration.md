@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0ffa33811957af95fc10396ffecef0b3de7959fe
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 3ec52c5274891619cf7976e99b5241bfc67a4076
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633017"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415088"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Integrace správy zdrojového kódu pro fond SQL
 
@@ -37,7 +37,7 @@ Tento kurz popisuje, jak integrovat databázový projekt databázových nástroj
 
    ![Správa připojení](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Správa připojení")
 
-   ![Připojit](./media/sql-data-warehouse-source-control-integration/3-connect.png "Připojení")
+   ![Připojit](./media/sql-data-warehouse-source-control-integration/3-connect.png "Připojit")
 
 3. Klonování úložiště Azure Repo z projektu do místního počítače
 
@@ -81,4 +81,4 @@ Tento kurz popisuje, jak integrovat databázový projekt databázových nástroj
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vývoj pro fond SQL](sql-data-warehouse-overview-develop.md)
+- [Vývoj pro vývoj pro fond SQL](sql-data-warehouse-overview-develop.md)

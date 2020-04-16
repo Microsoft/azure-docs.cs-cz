@@ -1,16 +1,16 @@
 ---
-title: Ukázka nasazení Unity na plochu
+title: Nasazení ukázky Unity do Desktopu
 description: Úvodní příručka, která ukazuje, jak dostat ukázku Unity do stolního počítače
 author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 93ec25123f60083d4b31cf54592b1a1c0dacab69
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 95993a54d321c9581d35f12b56d60e4ea052e505
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679755"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415727"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Úvodní příručka: Nasazení ukázky Unity na plochu
 
@@ -58,6 +58,9 @@ Pouze ploché desktopové aplikace jsou v současné době podporovány na ploš
 1. Přepněte režim ladicího programu na **místní počítač**.
   ![Konfigurace řešení](./media/unity-deploy-config-pc.png)
 1. Sestavte řešení (F7).
+
+> [!WARNING]
+> Ujistěte se, že jste vybrali **x86**. **x64** není v současné době podporován, viz [omezení platformy](../reference/limits.md#platform-limitations).
 
 ## <a name="launch-the-sample-project"></a>Spuštění ukázkového projektu
 

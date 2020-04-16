@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 397eb6fbfea88b0eab0648275fc59764505f7d42
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633108"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416031"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co je Azure Synapse Analytics (dříve SQL DW)?
 
-Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure Synapse přináší tyto dva světy spolu s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro okamžité potřeby BI a strojového učení
+Azure Synapse je analytická služba, která sdružuje podnikové datové sklady a analýzu velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure Synapse spojuje tyto dva světy s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro okamžité potřeby BI a strojového učení.
 
 Azure Synapse má čtyři součásti:
 
@@ -27,11 +27,13 @@ Azure Synapse má čtyři součásti:
   - Fond SQL (platba za dwu zřízené)
   - SQL na vyžádání (platba za zpracované TB) – (náhled)
 - Jiskra: Hluboce integrovaná Apache Spark (náhled)
-- Integrace dat: Hybridní integrace dat (náhled)
+- Synapse Pipelines: Hybridní integrace dat (náhled)
 - Studio: Jednotné uživatelské prostředí.  (Preview)
 
 > [!NOTE]
 > Chcete-li získat přístup k funkcím náhledu služby Azure Synapse, požádejte o přístup [zde](https://aka.ms/synapsepreview). Společnost Microsoft bude třídění všech požadavků a reagovat co nejdříve.
+>
+> Prohlédněte si [dokumentaci k náhledu Azure Synapse](../overview-what-is.md).
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Fond synapse SQL v Azure Synapse
 

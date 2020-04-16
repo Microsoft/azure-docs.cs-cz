@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/27/2020
-ms.openlocfilehash: 5108335c0b5d0a51559653d51bfe6154237731f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 04469fa1bd0473710d9fa0bf0190c6459f1f8a07
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78162532"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418775"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento kurz ukazuje **kopírování počtu tabulek z Azure SQL Database do Azure Synapse Analytics (dříve SQL DW).** Stejný vzor můžete využít i u dalších scénářů kopírování. Například kopírování tabulek z SQL Server/Oracle do Azure SQL Database/Azure Synapse Analytics (dříve SQL DW) /Azure Blob, kopírování různých cest z blob do tabulky Azure SQL Database.
 
@@ -79,7 +81,7 @@ Chcete-li toto nastavení ověřit a zapnout, přejděte na server Azure SQL ser
  
    Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba pole názvu, změňte název datové továrny (například na vaše_jméno_ADFTutorialBulkCopyDF). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
-       `Data factory name “ADFTutorialBulkCopyDF” is not available`
+       `Data factory name "ADFTutorialBulkCopyDF" is not available`
 1. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu. 
 1. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
      

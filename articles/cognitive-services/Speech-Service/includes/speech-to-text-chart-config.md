@@ -3,19 +3,19 @@ title: Instalace kontejnerů řeči
 titleSuffix: Azure Cognitive Services
 description: Podrobnosti o možnostech konfigurace grafu kormidelník řeči na text.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/22/2019
-ms.author: dapine
-ms.openlocfilehash: 3f390affe7badb401277aa86d1867c763aa0ae3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: f7ca8fdaddab9757292939c4f7e658179d6e517c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "69971314"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81421672"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Převod řeči na text (podgraf: grafy/speechToText)
 

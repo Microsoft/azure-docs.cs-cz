@@ -7,16 +7,20 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d453b2724c308e48366d653a51d9e6aa8e82c96
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76156722"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415929"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a Azure Data Share
 
-Když se zákazníci pustí do svých moderních projektů datového skladu a analýzy, vyžadují nejen více dat, ale také větší přehled o svých datech v celém datovém kombi. Tento workshop se zabývá tím, jak vylepšení Azure Data Factory a Azure Data Share zjednodušují integraci a správu dat v Azure. Od povolení etl/elt bez kódu až po vytvoření komplexního zobrazení vašich dat, vylepšení v Azure Data Factory umožní vašim datovým inženýrům s jistotou přinést do vašeho podniku více dat, a tím i větší hodnotu. Azure Data Share vám umožní podnikat s obchodním sdílením řízeným způsobem.
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Když se zákazníci pustí do svých moderních projektů datového skladu a analýzy, vyžadují nejen více dat, ale také větší přehled o svých datech v celém datovém kombi. Tento workshop se zabývá tím, jak vylepšení Azure Data Factory a Azure Data Share zjednodušují integraci a správu dat v Azure. 
+
+Od povolení etl/elt bez kódu až po vytvoření komplexního zobrazení vašich dat, vylepšení v Azure Data Factory umožní vašim datovým inženýrům s jistotou přinést do vašeho podniku více dat, a tím i větší hodnotu. Azure Data Share vám umožní podnikat s obchodním sdílením řízeným způsobem.
 
 V tomto workshopu použijete Azure Data Factory (ADF) k ingestování dat z databáze Azure SQL (SQL DB) do gen2 Azure Data Lake Storage (ADLS gen2). Jakmile data přistanete v jezeře, transformujete je pomocí toků mapových dat, nativní transformační služby datové továrny a ponoříte je do Azure Synapse Analytics (dříve SQL DW). Pak budete sdílet tabulku s transformovanými daty spolu s některými dalšími daty pomocí služby Azure Data Share. 
 

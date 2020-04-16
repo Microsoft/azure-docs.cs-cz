@@ -12,18 +12,20 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
-ms.openlocfilehash: 52ed43277eef84de826d2f4fa41ba860211a1531
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: be9395b908461b54b607fff32747ca0d9f20f45c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78969914"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418656"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů blob Azure do databáze SQL pomocí nástroje Kopírovat data
 
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](tutorial-copy-data-tool.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 V tomto kurzu pomocí webu Azure Portal vytvoříte datovou továrnu. Potom pomocí nástroje Kopírovat data vytvořte kanál, který kopíruje data z úložiště objektů Blob Azure do databáze SQL.
 
@@ -132,7 +134,7 @@ Připravte úložiště objektů blob a databázi SQL pro kurz provedením těch
 
     b. Kliknutím na **Next** (Další) přejděte k dalšímu kroku.
 
-1. Na stránce **Nastavení formátu souboru** povolte zaškrtávací políčko *Pro první řádek jako záhlaví*. Všimněte si, že nástroj automaticky detekuje oddělovače sloupců a řádků. Vyberte **další**. Můžete také zobrazit náhled dat a zobrazit schéma vstupních dat na této stránce.
+1. Na stránce **Nastavení formátu souboru** povolte zaškrtávací políčko *Pro první řádek jako záhlaví*. Všimněte si, že nástroj automaticky detekuje oddělovače sloupců a řádků. Vyberte **Další**. Můžete také zobrazit náhled dat a zobrazit schéma vstupních dat na této stránce.
 
     ![Nastavení formátu souboru](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. Na stránce **Destination data store** (Cílové úložiště dat) proveďte následující kroky:

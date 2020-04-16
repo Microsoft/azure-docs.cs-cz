@@ -4,12 +4,12 @@ description: V tomto kurzu zjistíte, jak do webové front-end služby ASP.NET C
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 0e8b79a88fc173674caa0ca65e394e21d58d5f2f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: aafe2e7c89f6d4a90806378e9cf25c81f51feb60
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756100"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411187"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-endové služby webového rozhraní API ASP.NET Core využívající Kestrel
 
@@ -156,27 +156,42 @@ Pokud&lt;jste&gt;vytvořili certifikát podepsaný svým držitelem s předchoz�
 Uvědomte si, že v `localhost` případě místní nasazení je vhodnější použít "CN = localhost" aby se zabránilo výjimky ověřování.
 
 ```csharp
-private X509Certificate2 GetHttpsCertificateFromStore()
+private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonName)
 {
     using (var store = new X509Store(StoreName.My, StoreLocation.LocalMachine))
     {
-        store.Open(OpenFlags.ReadOnly);
+        store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadOnly);
         var certCollection = store.Certificates;
-        var currentCerts = certCollection.Find(X509FindType.FindBySubjectDistinguishedName, "CN=<your_CN_value>", false);
+        var matchingCerts = new X509Certificate2Collection();
+    
+    foreach (var enumeratedCert in certCollection)
+    {
+      if (StringComparer.OrdinalIgnoreCase.Equals(subjectCommonName, enumeratedCert.GetNameInfo(X509NameType.SimpleName, forIssuer: false))
+        && DateTime.Now < enumeratedCert.NotAfter
+        && DateTime.Now >= enumeratedCert.NotBefore)
+        {
+          matchingCerts.Add(enumeratedCert);
+        }
+    }
+
+        if (matchingCerts.Count == 0)
+    {
+        throw new Exception($"Could not find a match for a certificate with subject 'CN={subjectCommonName}'.");
+    }
         
-        if (currentCerts.Count == 0)
-                {
-                    throw new Exception("Https certificate is not found.");
-                }
-        
-        return currentCerts[0];
+        return matchingCerts[0];
     }
 }
+
+
 ```
 
-## <a name="give-network-service-access-to-the-certificates-private-key"></a>Poskytnout účtu NETWORK SERVICE přístup k privátnímu klíči certifikátu
+## <a name="grant-network-service-access-to-the-certificates-private-key"></a>Udělit službě NETWORK SERVICE přístup k soukromému klíči certifikátu
 
 V předchozím kroku jste importovali certifikát do úložiště `Cert:\LocalMachine\My` na vývojovém počítači.  Nyní explicitně udělit účet spuštěnslužbu (NETWORK SERVICE, ve výchozím nastavení) přístup k soukromému klíči certifikátu. Tento krok můžete provést ručně (pomocí nástroje certlm.msc), ale je lepší automaticky spustit skript prostředí PowerShell [konfigurací spouštěcího skriptu](service-fabric-run-script-at-service-startup.md) v **setupentrypointu** manifestu služby.
+
+>[!NOTE]
+> Service Fabric podporuje deklarování certifikátů koncového bodu kryptografickým otiskem nebo běžným názvem subjektu. V takovém případě za běhu nastaví vazbu a ACL certifikátu soukromý klíč k identitě, která je spuštěna jako služba. Runtime bude také sledovat certifikát pro změny nebo obnovení a re-ACL odpovídající soukromý klíč odpovídajícím způsobem.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Konfigurace vstupního bodu nastavení služby
 

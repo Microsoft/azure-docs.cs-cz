@@ -14,14 +14,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0eb3a3d6c988746c1174398005463d25911c11e1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ada3762b6daae86033903f72ad9865ca66904ead
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336151"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418639"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>Nastavení infračerveného počítače Azure-SSIS v Azure Data Factory pomocí PowerShellu
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tento kurz ukazuje, jak v Azure Data Factory vytvořit modul Runtime integrace služby Azure-SQL Server Integration Services (Azure-SSIS IR). Infračervená infračervená infračervená zručná infračervená zručná infračervený přenos Azure-SSIS podporuje spuštěné balíčky, které jsou nasazené do:
 * Katalog SSIS (SSISDB), který je hostovaný instancí serveru Azure SQL Database nebo spravované instance (model nasazení projektu).
@@ -49,7 +51,7 @@ V tomto kurzu provedete následující:
 - (Nepovinné) Databázový server Azure SQL. Pokud ještě nemáte databázový server, vytvořte si ho na webu Azure Portal před tím, než začnete. Azure Data Factory zase vytvoří SSISDB na tomto databázovém serveru. Doporučujeme vytvořit databázový server ve stejné oblasti Azure jako prostředí Integration Runtime. Tato konfigurace umožňuje prostředí Integration Runtime zapisovat protokoly spuštění do databáze SSISDB bez přecházení mezi oblastmi Azure. 
     - Na základě vybraného databázového serveru může být SSISDB vytvořen vaším jménem jako jedna databáze, část elastického fondu nebo ve spravované instanci a přístupná ve veřejné síti nebo připojením k virtuální síti. Pokyny při výběru typu databázového serveru pro hostování SSISDB najdete v [tématu Porovnání jedné databáze Azure SQL Database, elastického fondu a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). 
     
-      Pokud používáte server Azure SQL Database s koncovými body ip firewall nebo virtuální síťové služby nebo spravovanou instanci s privátním koncovým bodem k hostování SSISDB, nebo pokud požadujete přístup k místním datům bez konfigurace samoobslužné infračervené hodu, připojte zařízení Azure-SSIS IR k virtuální sítě. Další informace najdete [v tématu Vytvoření Azure-SSIS IR ve virtuální síti](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+      Pokud používáte server Azure SQL Database s koncovými body ip firewall nebo virtuální síťové služby nebo spravovanou instanci s privátním koncovým bodem k hostování SSISDB, nebo pokud požadujete přístup k místním datům bez konfigurace samoobslužné infračervené hodu, připojte zařízení Azure-SSIS IR k virtuální síti. Další informace najdete [v tématu Vytvoření Azure-SSIS IR ve virtuální síti](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
     - Zkontrolujte, zda je pro databázový server povoleno **povolit přístup ke službám Azure.** Toto nastavení se nepoužije, pokud používáte server Azure SQL Database s pravidly brány firewall IP nebo koncovými body služby virtuální sítě nebo spravovanou instanci s privátním koncovým bodem pro hostování SSISDB. Další informace najdete v tématu [Zabezpečení databáze Azure SQL](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Chcete-li toto nastavení povolit pomocí prostředí PowerShell, přečtěte si [téma New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
     - Přidejte ip adresu klientského počítače nebo rozsah IP adres včetně IP adresy klientského počítače do seznamu adres IP klienta v nastavení brány firewall pro databázový server. Další informace najdete v tématu [Pravidla brány firewall na úrovni serveru a databáze služby Azure SQL Database](../sql-database/sql-database-firewall-configure.md).
     - K databázovému serveru se můžete připojit pomocí ověřování SQL s přihlašovacími údaji správce serveru nebo ověřováním Azure Active Directory (Azure AD) se spravovanou identitou pro vaši datovou továrnu. Pokud chcete pro ověřování Azure AD přidat spravovanou identitu pro vaši datovou továrnu do skupiny Azure AD s přístupovými oprávněními k databázovému serveru, přečtěte si informace [o vytvoření infračerveného zařízení Azure-SSIS s ověřováním Azure AD](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
