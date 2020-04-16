@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: e0f9e87fbef72db6f3a21d7531df3e1cefc6317f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 050037748969fe76dd1be9db80d68fb23ccd7940
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444318"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417390"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>Kopírování dat z přechodu k podrobnostem pomocí Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat z přejídat. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
 

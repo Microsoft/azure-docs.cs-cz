@@ -11,14 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 08cc7ce8f306095a66bc0f8cf74dff8c8b551ecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440492"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417994"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Vyhledávací aktivita v Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivita vyhledávání můžete načíst datovou sadu z libovolného zdroje dat podporované Azure Data Factory. Použijte jej v následujícím scénáři:
 - Dynamicky určete, na kterých objektech se má pracovat v následné aktivitě, namísto pevného kódování názvu objektu. Některé příklady objektů jsou soubory a tabulky.
@@ -53,7 +54,7 @@ Následující zdroje dat jsou podporovány pro aktivitu vyhledávání. Největ
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Name (Název) | Popis | Typ | Povinné?
+Název | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
 Dataset | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z části **Vlastnosti datové sady** v každém článku odpovídající konektor. | Dvojice klíč/hodnota | Ano
 source | Obsahuje zdrojové vlastnosti specifické pro datovou sadu, stejné jako zdroj Aktivity kopírování. Získejte podrobnosti z části **Kopírovat aktivitu vlastnosti** v každém článku odpovídající konektor. | Dvojice klíč/hodnota | Ano

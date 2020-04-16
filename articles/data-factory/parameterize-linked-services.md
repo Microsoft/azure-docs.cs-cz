@@ -10,14 +10,15 @@ ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: acc7284eb607d20ca1d62b478d802be56048bc6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa8603f2bee7e42db0f085d78117d61bd14ce5c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440095"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419387"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrize propojených služeb v Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Nyní můžete parametrizovat propojenou službu a předat dynamické hodnoty za běhu. Například pokud se chcete připojit k různým databázím na stejném serveru Azure SQL Database, můžete nyní parametrizovat název databáze v definici propojené služby. Tím zabráníte nutnosti vytvořit propojenou službu pro každou databázi na databázovém serveru Azure SQL. Můžete parametrizovat i další vlastnosti v definici propojené služby - například *Uživatelské jméno.*
 
@@ -37,7 +38,7 @@ V tuto chvíli je parametrizace propojené služby podporována v uzdu datové t
 - Azure SQL Data Warehouse
 - SQL Server
 - Oracle
-- Cosmos DB
+- Databáze Cosmos
 - Amazon Redshift
 - MySQL
 - Azure Database for MySQL

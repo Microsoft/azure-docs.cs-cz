@@ -10,18 +10,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260576"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418945"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-use-custom-activities.md)
 > * [Aktuální verze](transform-data-using-dotnet-custom-activity.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Existují dva typy aktivit, které můžete použít v kanálu Azure Data Factory.
 
@@ -115,7 +116,7 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 &#42; `resourceLinkedService` Vlastnosti `folderPath` a musí být zadány nebo obě vynechány.
 
 > [!NOTE]
-> Pokud předáváte propojené služby jako referenceObjekty ve vlastní aktivitě, je vhodné předat propojenou službu azure key vault (protože neobsahuje žádné zabezpečené řetězce) a načíst pověření pomocí tajného názvu přímo z klíče Trezor z kódu. Zde najdete [příklad,](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) který odkazuje na propojenou službu povolenou službou AKV, načte pověření z trezoru klíčů a pak přistupuje k úložišti v kódu.
+> Pokud předáváte propojené služby jako referenceObjekty ve vlastní aktivitě, je vhodné předat propojené služby s povoleným trezorem klíčů Azure (protože neobsahuje žádné zabezpečené řetězce) a načíst pověření pomocí tajného názvu přímo z trezoru klíčů z kódu. Zde najdete [příklad,](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) který odkazuje na propojenou službu povolenou službou AKV, načte pověření z trezoru klíčů a pak přistupuje k úložišti v kódu.
 
 ## <a name="custom-activity-permissions"></a>Vlastní oprávnění aktivity
 
@@ -309,7 +310,7 @@ Vlastní hodnoty z kódu ve vlastní aktivitě můžete odeslat zpět do Azure D
 
 ## <a name="retrieve-securestring-outputs"></a>Načíst výstupy SecureString
 
-Hodnoty citlivých vlastností označené jako typ *SecureString*, jak je znázorněno v některých příkladech v tomto článku, jsou maskovány na kartě Monitorování v uživatelském rozhraní data factory.  Při skutečném spuštění kanálu je však vlastnost *SecureString* serializována jako JSON v souboru `activity.json` jako prostý text. Například:
+Hodnoty citlivých vlastností označené jako typ *SecureString*, jak je znázorněno v některých příkladech v tomto článku, jsou maskovány na kartě Monitorování v uživatelském rozhraní data factory.  Při skutečném spuštění kanálu je však vlastnost *SecureString* serializována jako JSON v souboru `activity.json` jako prostý text. Příklad:
 
 ```json
 "extendedProperties": {
@@ -344,7 +345,7 @@ Následující tabulka popisuje rozdíly mezi vlastní aktivitou Data Factory V2
 |Je vyžadována datová sada.      |Nepovinné      |Vyžadováno pro řetězové činnosti a předání informací      |
 |Předání informací z aktivity do vlastní logiky      |Prostřednictvím ReferenceObjects (LinkedServices a datové sady) a ExtendedProperties (vlastní vlastnosti)      |Prostřednictvím ExtendedProperties (vlastní vlastnosti), vstupní a výstupní datové sady      |
 |Načtení informací ve vlastní logice      |Analyzuje soubor activity.json, soubor linkedServices.json a datasets.json uložené ve stejné složce spustitelného souboru.      |Prostřednictvím sady .NET SDK (.NET Frame 4.5.2)      |
-|protokolování      |Zápisy přímo do STDOUT      |Implementace protokolovacího nástroje v dll .NET      |
+|Protokolování      |Zápisy přímo do STDOUT      |Implementace protokolovacího nástroje v dll .NET      |
 
 Pokud máte existující kód .NET napsaný pro aktivitu DotNet verze 1 (Vlastní), je třeba upravit kód, aby fungoval s aktuální verzí vlastní aktivity. Aktualizujte kód podle následujících pokynů na vysoké úrovni:
 

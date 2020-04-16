@@ -11,18 +11,20 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/15/2019
-ms.openlocfilehash: b4af3f897a12c71d73962735d3fe68d95f138cef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c5c917e12b1314c40763f58a7723a4df787ffa0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912913"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418928"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hadoop Hive v Azure Data Factory
 
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-hive-activity.md)
 > * [Aktuální verze](transform-data-using-hadoop-hive.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivita HDInsight Hive v [kanálu](concepts-pipelines-activities.md) Datové továrny provádí dotazy Hive ve [vašem vlastním](compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight nebo na [vyžádání.](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Tento článek vychází z článku [aktivit transformace dat,](transform-data.md) který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
 

@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440383"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418004"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Přepínání aktivit ve Službě Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Switch aktivita poskytuje stejné funkce, které příkaz switch poskytuje v programovacích jazycích. Vyhodnotí sadu aktivit odpovídající případu, který odpovídá vyhodnocení podmínky.
 
@@ -331,9 +333,9 @@ $result.Error -join "`r`n"
 
 Podívejte se na další aktivity toku řízení podporované factory: 
 
-- [Aktivita podmínky If](control-flow-if-condition-activity.md)
+- [Aktivita podmínky Když](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Aktivita For Each](control-flow-for-each-activity.md)
-- [Získat aktivitu metadat](control-flow-get-metadata-activity.md)
+- [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)

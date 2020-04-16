@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2df49e65603573e4a3adcdda0635982252e70b18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130822"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419319"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
@@ -227,7 +227,7 @@ Pokud nejsou splněny požadavky, Azure Data Factory zkontroluje nastavení a au
 Pokud vaše zdrojová data nesplňují kritéria zavedená v předchozí části, můžete povolit kopírování dat prostřednictvím dočasného pracovního úložiště objektů blob Azure (nemůže být úložiště Premium). V takovém případě Azure Data Factory automaticky provádí transformace na data ke splnění požadavků na formát dat PolyBase, pak použijte PolyBase k načtení dat do datového skladu SQL a konečně vyčištění temp data z úložiště objektů blob. Podrobnosti o tom, jak kopírování dat prostřednictvím pracovního objektu blob Azure funguje obecně, najdete v tématu [Fázované kopírování.](data-factory-copy-activity-performance.md#staged-copy)
 
 > [!NOTE]
-> Při kopírování dat z místního úložiště dat do Azure SQL Data Warehouse pomocí PolyBase a staging, pokud vaše verze brány pro správu dat je nižší než 2.4, JRE (Java Runtime Environment) je vyžadováno na počítači brány, který se používá k transformaci zdroje do správného formátu. Navrhněte upgradovat bránu na nejnovější, abyste se vyhnuli takové závislosti.
+> Při kopírování dat z místního úložiště dat do Azure SQL Data Warehouse pomocí PolyBase a pracovní, pokud vaše verze brány pro správu dat je nižší než 2.4, JRE (Java Runtime Environment) je vyžadována na počítači brány, který se používá k transformaci zdrojových dat do správného formátu. Navrhněte upgradovat bránu na nejnovější, abyste se vyhnuli takové závislosti.
 >
 
 Chcete-li použít tuto funkci, vytvořte [propojenou službu Azure Storage,](data-factory-azure-blob-connector.md#azure-storage-linked-service) která odkazuje na `enableStaging` `stagingSettings` účet úložiště Azure, který má dočasné úložiště objektů blob, a pak zadejte vlastnosti a vlastnosti aktivity kopírování, jak je znázorněno v následujícím kódu:
@@ -295,7 +295,7 @@ All columns of the table must be specified in the INSERT BULK statement.
 Hodnota NULL je zvláštní forma výchozí hodnoty. Pokud je sloupec nullable, vstupní data (v objektu blob) pro tento sloupec může být prázdný (nemůže chybět ze vstupní datové sady). PolyBase vloží hodnotu NULL pro ně v datovém skladu Azure SQL.
 
 ## <a name="auto-table-creation"></a>Automatické vytváření tabulek
-Pokud používáte Průvodce kopírováním ke kopírování dat z SQL Serveru nebo Azure SQL Database do datového skladu Azure SQL a tabulka, která odpovídá zdrojové tabulce, v cílovém úložišti neexistuje, může Data Factory automaticky vytvořit tabulku v datovém skladu podle pomocí schématu zdrojové tabulky.
+Pokud používáte Průvodce kopírováním ke kopírování dat z SQL Serveru nebo Azure SQL Database do Azure SQL Data Warehouse a tabulka, která odpovídá zdrojové tabulce, v cílovém úložišti neexistuje, může Data Factory automaticky vytvořit tabulku v datovém skladu pomocí schématu zdrojové tabulky.
 
 Data Factory vytvoří tabulku v cílovém úložišti se stejným názvem tabulky v úložišti zdrojových dat. Datové typy pro sloupce jsou vybrány na základě následujícího mapování typů. V případě potřeby provádí převody typů opravit všechny nekompatibility mezi zdrojové a cílové úložiště. Používá také rozložení tabulky kruhového dotazování.
 

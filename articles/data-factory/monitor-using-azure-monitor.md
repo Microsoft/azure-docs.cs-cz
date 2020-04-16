@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5753336eeef115038de4eb0b5ade0651b1fa293e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979151"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419455"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Výstrahy a monitorování datových továren pomocí Azure Monitoru
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Cloudové aplikace jsou složité a mají mnoho pohyblivých částí. Monitory poskytují data, která pomáhají zajistit, aby vaše aplikace zůstaly v provozu v pořádku. Monitory vám také pomohou vyhnout se potenciálním problémům a řešit problémy z minulosti.
 
@@ -117,7 +119,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **storageAccountId** |Řetězec | ID prostředku účtu úložiště, do kterého chcete odeslat diagnostické protokoly. |
 | **serviceBusRuleId** |Řetězec | ID pravidla sběrnice oboru názvů service-bus, ve kterém chcete mít centra událostí vytvořená pro datové diagnostické protokoly. ID pravidla má `{service bus resource ID}/authorizationrules/{key name}`formát .|
 | **workspaceId** | Komplexní typ | Pole metriky čas zrna a jejich zásady uchovávání informací. Hodnota této vlastnosti je prázdná. |
-|**metriky**| Hodnoty parametrů kanálu, který má být předán do vyvolání kanálu| A JSON objekt, který mapuje názvy parametrů na hodnoty argumentů. |
+|**Metriky**| Hodnoty parametrů kanálu, který má být předán do vyvolání kanálu| A JSON objekt, který mapuje názvy parametrů na hodnoty argumentů. |
 | **Protokoly**| Komplexní typ| Název kategorie diagnostického protokolu pro typ prostředku. Chcete-li získat seznam kategorií diagnostických protokolů pro prostředek, proveďte operaci nastavení diagnostiky GET. |
 | **Kategorie**| Řetězec| Pole kategorií protokolu a jejich zásady uchovávání informací. |
 | **timeGrain** | Řetězec | Členitost metriky, které jsou zachyceny ve formátu iso 8601 doba trvání. Hodnota vlastnosti `PT1M`musí být , která určuje jednu minutu. |
@@ -346,7 +348,7 @@ Další informace naleznete [v tématu Diagnostic Settings](https://docs.microso
 |**název_kanálu**| Řetězec | Název kanálu. | `MyPipeline` |
 |**Spustit**| Řetězec | Čas zahájení aktivity běží ve formátu Timespan UTC. | `2017-06-26T20:55:29.5007959Z`. |
 |**Konec**| Řetězec | Koncový čas aktivity běží ve formátu Timespan UTC. Pokud diagnostický protokol ukazuje, že aktivita byla spuštěna, ale ještě neskončila, hodnota vlastnosti je `1601-01-01T00:00:00Z`.  | `2017-06-26T20:55:29.5007959Z` |
-|**status**| Řetězec | Konečný stav spuštění kanálu. Možné hodnoty `Succeeded` vlastností jsou a `Failed`. | `Succeeded`|
+|**Stav**| Řetězec | Konečný stav spuštění kanálu. Možné hodnoty `Succeeded` vlastností jsou a `Failed`. | `Succeeded`|
 
 #### <a name="trigger-run-log-attributes"></a>Atributy protokolu s pouštěm
 
@@ -391,7 +393,7 @@ Další informace naleznete [v tématu Diagnostic Settings](https://docs.microso
 |**triggerType**| Řetězec | Typ aktivační události. Možné hodnoty `Manual Trigger` vlastností jsou a `Schedule Trigger`. | `ScheduleTrigger` |
 |**triggerEvent**| Řetězec | Událost aktivační události. | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |**Spustit**| Řetězec | Čas spuštění spuštění aktivační události ve formátu UTC časového období. | `2017-06-26T20:55:29.5007959Z`|
-|**status**| Řetězec | Konečný stav zobrazující, zda aktivační událost úspěšně aktivována. Možné hodnoty `Succeeded` vlastností jsou a `Failed`. | `Succeeded`|
+|**Stav**| Řetězec | Konečný stav zobrazující, zda aktivační událost úspěšně aktivována. Možné hodnoty `Succeeded` vlastností jsou a `Failed`. | `Succeeded`|
 
 ### <a name="log-analytics-schema"></a>Schéma analýzy protokolů
 

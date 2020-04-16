@@ -11,14 +11,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 18555fbffbc48594793163894c010998094b3b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c3f58d42b6f311e4e238dcffe7da42afd8a5306
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336227"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416731"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření runtime integrace Azure-SSIS v Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tento článek obsahuje kroky pro zřizování modulu runtime integrace Azure-SQL Server Integration Services (SSIS) (IR) v Azure Data Factory. Azure-SSIS IR podporuje:
 
@@ -78,7 +80,7 @@ Následující tabulka porovnává některé funkce serveru Azure SQL Database a
 | Funkce | Jedna databáze/elastický fond| Spravovaná instance |
 |---------|--------------|------------------|
 | **Plánování** | Agent serveru SQL Server není k dispozici.<br/><br/>Viz [Naplánování spuštění balíčku v kanálu datové továrny](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Agent spravované instance je k dispozici. |
-| **Ověřování** | Můžete vytvořit instanci SSISDB s uživatelem obsažené databáze, který představuje libovolnou skupinu Azure AD se spravovanou identitou vaší datové továrny jako člen v **roli db_owner.**<br/><br/>V [tématu Povolení ověřování Azure AD k vytvoření instance SSISDB na databázovém serveru Azure SQL](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Můžete vytvořit instanci SSISDB s uživatelem obsažené databáze, který představuje spravovanou identitu vaší datové továrny. <br/><br/>V [tématu Povolení ověřování Azure AD k vytvoření instance SSISDB ve spravované instanci Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
+| **Authentication** | Můžete vytvořit instanci SSISDB s uživatelem obsažené databáze, který představuje libovolnou skupinu Azure AD se spravovanou identitou vaší datové továrny jako člen v **roli db_owner.**<br/><br/>V [tématu Povolení ověřování Azure AD k vytvoření instance SSISDB na databázovém serveru Azure SQL](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Můžete vytvořit instanci SSISDB s uživatelem obsažené databáze, který představuje spravovanou identitu vaší datové továrny. <br/><br/>V [tématu Povolení ověřování Azure AD k vytvoření instance SSISDB ve spravované instanci Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
 | **Úroveň služeb** | Když vytvoříte infračervený přenos Azure-SSIS s vaším serverem Azure SQL Database, můžete vybrat úroveň služby pro SSISDB. Existuje více úrovní služby. | Když vytvoříte Indiční reziduum Azure-SSIS se spravovanou instancí, nemůžete vybrat úroveň služeb pro SSISDB. Všechny databáze ve spravované instanci sdílejí stejný prostředek přidělený této instanci. |
 | **Virtuální síť** | Vaše Indiční služba Azure-SSIS IR se může připojit k virtuální síti Azure Resource Manager, pokud používáte server Azure SQL Database s koncovými body brány firewall IP nebo koncových bodů virtuální síťové služby. | Vaše Azure-SSIS IR se může připojit k virtuální síti Azure Resource Manager, pokud používáte spravovanou instanci s privátním koncovým bodem. Virtuální síť je vyžadována, pokud nepovolíte veřejný koncový bod pro spravovanou instanci.<br/><br/>Pokud připojíte infračervený přenos Azure-SSIS do stejné virtuální sítě jako spravovaná instance, ujistěte se, že vaše zařízení Azure-SSIS IR je v jiné podsíti než vaše spravovaná instance. Pokud připojíte azure-SSIS IR do jiné virtuální sítě než spravované instance, doporučujeme buď partnerský vztah virtuální sítě nebo připojení k síti k síti. Viz [Připojení aplikace ke spravované instanci Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md). |
 | **Distribuované transakce** | Tato funkce je podporována prostřednictvím elastických transakcí. Transakce koordinátora distribuovaných transakcí (MSDTC) společnosti Microsoft nejsou podporovány. Pokud vaše balíčky SSIS používají msdtc ke koordinaci distribuovaných transakcí, zvažte migraci na elastické transakce pro Azure SQL Database. Další informace naleznete [v tématu Distribuované transakce napříč cloudovými databázemi](../sql-database/sql-database-elastic-transactions-overview.md). | Není podporováno. |
@@ -118,7 +120,7 @@ Po vytvoření datové továrny otevřete jeho stránku s přehledem na webu Azu
 
    1. V **části Ušetřete peníze**vyberte možnost Hybridní výhoda Azure pro prostředí integrace: **Ano** nebo **Ne**. Pokud chcete přinést vlastní licenci SQL Serveru s programem Software Assurance, vyberte **ano,** abyste měli prospěch z úspor nákladů při hybridním použití.
 
-   1. Vyberte **další**.
+   1. Vyberte **Další**.
 
 1. V části **Nastavení SQL** proveďte následující kroky.
 

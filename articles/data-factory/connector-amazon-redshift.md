@@ -11,17 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce63da745fb84ebccd57b246fc934f595dd7cda1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243585"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418248"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopírování dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-amazon-redshift-connector.md)
 > * [Aktuální verze](connector-amazon-redshift.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
 Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat z Amazon Redshift. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
@@ -164,7 +166,7 @@ Další informace o tom, jak používat UNLOAD efektivně kopírovat data z Amaz
 
 **Příklad: kopírování dat z Amazon Redshift do Azure SQL Data Warehouse pomocí UNLOAD, fázované kopie a PolyBase**
 
-V tomto ukázkovém případě použití zkopíruje aktivita uvolnění dat z Amazon Redshift na Amazon S3, jak je nakonfigurováno v "redshiftUnloadSettings", a pak zkopírujte data z Amazon S3 do objektu Blob Azure, jak je uvedeno v "stagingSettings", nakonec použijte PolyBase k načtení dat do dat SQL Skladu. Veškerý dočasný formát je správně zpracován aktivitou kopírování.
+V tomto případě ukázkového použití zkopíruje aktivita uvolní data z Amazon Redshift na Amazon S3 nakonfigurovaná v "redshiftUnloadSettings" a pak zkopíruje data z AmazonS3 do objektu Blob Azure, jak je uvedeno v "stagingSettings", nakonec použijte PolyBase k načtení dat do datového skladu SQL. Veškerý dočasný formát je správně zpracován aktivitou kopírování.
 
 ![Červený posun na pracovní postup kopírování SQL DW](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 

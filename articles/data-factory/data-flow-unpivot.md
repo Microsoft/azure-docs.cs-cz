@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: b207012335e68d389a07b54408e840dbb305a30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f42b44fdab28cb60ff903a048d9162115bf67d9c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930139"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417755"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Transformace unpivot Azure Data Factory
 
-
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Použijte unpivot v toku dat mapování ADF jako způsob, jak přeměnit nenormalizovanou datovou sadu na více normalizovanou verzi rozbalením hodnot z více sloupců v jednom záznamu do více záznamů se stejnými hodnotami v jednom sloupci.
 

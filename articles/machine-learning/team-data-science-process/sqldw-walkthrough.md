@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 96d0a5b2fb59e4612107d8ccbf7285fff7576585
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128392"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418537"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Proces vědecké ho procesu týmových dat v akci: pomocí Azure Synapse Analytics
 V tomto kurzu vás provedeme vytvářením a nasazováním modelu strojového učení pomocí Azure Synapse Analytics pro veřejně dostupnou datovou sadu – datovou sadu [NYC Taxi Trips.](https://www.andresmh.com/nyctaxitrips/) Binární klasifikační model vytvořený předpovídá, zda je tip placen za cestu.  Modely zahrnují klasifikaci více tříd (bez ohledu na to, zda je špička) a regrese (rozdělení zaplacených částek tipu).
@@ -84,7 +84,7 @@ Postupujte podle dokumentace na [vytvoření a dotaz na Azure SQL Data Warehouse
 
 **Nainstalujte nástroje Visual Studio a SQL Server Data Tools.** Pokyny najdete [v tématu Začínáme s Visual Studio 2019 pro SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
 
-**Připojte se k Azure Synapse Analytics pomocí Sady Visual Studio.** Pokyny najdete v článku kroky 1 & 2 v [tématu Připojení k Datovému skladu Azure SQL](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-connect-overview.md).
+**Připojte se k Azure Synapse Analytics pomocí Sady Visual Studio.** Pokyny najdete v článku kroky 1 & 2 v [tématu Připojení k SQL Analytics v Azure Synapse Analytics](../../synapse-analytics/sql/connect-overview.md).
 
 > [!NOTE]
 > Spusťte následující dotaz SQL v databázi, kterou jste vytvořili ve službě Azure Synapse Analytics (namísto dotazu uvedeného v kroku 3 tématu připojení), a **vytvořte hlavní klíč**.
@@ -126,7 +126,7 @@ Ve vašem *-DestDir*spusťte v režimu správce následující skript prostřed�
 Při prvním spuštění skriptu Prostředí PowerShell budete vyzváni k zadání informací z Azure Synapse Analytics a vašeho účtu úložiště objektů blob Azure. Po dokončení tohoto skriptu prostředí PowerShell je poprvé spuštěno, zadávaná pověření budou zapsána do konfiguračního souboru SQLDW.conf v současném pracovním adresáři. Budoucí spuštění tohoto souboru skriptu prostředí PowerShell má možnost číst všechny potřebné parametry z tohoto konfiguračního souboru. Pokud potřebujete změnit některé parametry, můžete po výzvě zadat parametry na obrazovce odstraněním tohoto konfiguračního souboru a zadáním hodnot parametrů tak, jak byly vyzvány, nebo změnit hodnoty parametrů úpravou souboru SQLDW.conf v adresáři *-DestDir.*
 
 > [!NOTE]
-> Aby se zabránilo konfliktu názvu schématu s názvy, které již existují ve vašem Azure Azure Synapse Analytics, při čtení parametrů přímo ze souboru SQLDW.conf je do názvu schématu přidáno 3místné náhodné číslo ze souboru SQLDW.conf jako výchozí schéma název pro každý běh. Skript prostředí PowerShell vás může vyzvat k zadání názvu schématu: název může být zadán podle uvážení uživatele.
+> Aby se zabránilo konfliktu názvu schématu s názvy, které již existují ve vašem Azure Azure Synapse Analytics, při čtení parametrů přímo ze souboru SQLDW.conf, 3 místné náhodné číslo je přidán do názvu schématu ze souboru SQLDW.conf jako výchozí název schématu pro každé spuštění. Skript prostředí PowerShell vás může vyzvat k zadání názvu schématu: název může být zadán podle uvážení uživatele.
 >
 >
 
@@ -310,7 +310,7 @@ Tento soubor **skriptu prostředí PowerShell** dokončí následující úkoly:
 Geografická poloha účtů úložiště ovlivňuje dobu načítání.
 
 > [!NOTE]
-> V závislosti na geografické poloze vašeho účtu úložiště soukromých objektů blob může proces kopírování dat z veřejného objektu blob do vašeho účtu soukromého úložiště trvat asi 15 minut nebo dokonce déle a proces načítání dat z vašeho účtu úložiště do vašeho Azure Azure Synapse Analytics může trvat 20 minut nebo déle.
+> V závislosti na geografické poloze vašeho účtu úložiště soukromých objektů blob může proces kopírování dat z veřejného objektu blob do vašeho účtu soukromého úložiště trvat přibližně 15 minut nebo dokonce déle a proces načítání dat z vašeho účtu úložiště do azure Azure Synapse Analytics může trvat 20 minut nebo déle.
 >
 >
 
@@ -330,7 +330,7 @@ Můžete použít vlastní data. Pokud jsou vaše data v místním počítači v
 >
 >
 
-Tento skript Prostředí PowerShell také připojí informace o Azure Synapse Analytics do souborů příkladu průzkumu dat SQLDW_Explorations.sql, SQLDW_Explorations.ipynb a SQLDW_Explorations_Scripts.py, aby tyto tři soubory byly připravené k vyzkoušení okamžitě po dokončení skriptu prostředí PowerShell.
+Tento skript Prostředí PowerShell také připojí informace O Azure Synapse Analytics do ukázkových souborů průzkumu dat SQLDW_Explorations.sql, SQLDW_Explorations.ipynb a SQLDW_Explorations_Scripts.py, aby tyto tři soubory byly připraveny k okamžitému vyzkoušení po dokončení skriptu Prostředí PowerShell.
 
 Po úspěšném provedení uvidíte obrazovku jako níže:
 
@@ -839,7 +839,7 @@ V tomto cvičení jsme již prozkoumali a navrhli data v Azure Synapse Analytics
 5. Zadejte *uživatelské jméno SQL* do názvu **uživatelského účtu serveru**a *heslo* do **hesla uživatelského účtu serveru**.
 7. V oblasti úprav textu **databázového dotazu** vložte dotaz, který extrahuje potřebná databázová pole (včetně všech vypočítaných polí, jako jsou popisky), a dolů ukažte data na požadovanou velikost vzorku.
 
-Příklad experimentu binární klasifikace, který čte data přímo z databáze Azure Synapse Analytics, je na obrázku níže (nezapomeňte nahradit názvy tabulek nyctaxi_trip a nyctaxi_fare názvem schématu a názvy tabulek, které jste použili ve vašem návodu). Podobné experimenty lze sestavit pro vícetřídní klasifikace a regresní problémy.
+Příklad experimentu binární klasifikace čtení dat přímo z databáze Azure Synapse Analytics je na obrázku níže (nezapomeňte nahradit názvy tabulek nyctaxi_trip a nyctaxi_fare názvem schématu a názvy tabulek, které jste použili v návodu). Podobné experimenty lze sestavit pro vícetřídní klasifikace a regresní problémy.
 
 ![Vlak Azure ML][10]
 
@@ -875,7 +875,7 @@ Ukázkový bodovací experiment je uveden na obrázku níže. Až budete připra
 ![Publikování Azure ML][11]
 
 ## <a name="summary"></a>Souhrn
-Chcete-li shrnout, co jsme udělali v tomto návodu, jste vytvořili prostředí Azure pro datové vědy, pracovali s velkou veřejnou datovou sadou, provedli ji procesem vědecké ho zpracování týmových dat, od získávání dat až po školení modelu a poté nasazení webové služby Azure Machine Learning.
+Chcete-li shrnout, co jsme udělali v tomto kurzu návodu, vytvořili jste prostředí Azure pro datové vědy, pracovali s rozsáhlou veřejnou datovou sadou, provedli ji procesem vědecké správy týmových dat, od získávání dat až po školení modelu a pak nasazení webové služby Azure Machine Learning.
 
 ### <a name="license-information"></a>Informace o licenci
 Tento ukázkový návod a jeho doprovodné skripty a poznámkové bloky IPython jsou sdíleny společností Microsoft pod licencí MIT. Další podrobnosti najdete v souboru LICENSE.txt v adresáři ukázkového kódu na GitHubu.

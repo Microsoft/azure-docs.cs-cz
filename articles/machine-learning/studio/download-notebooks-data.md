@@ -7,17 +7,17 @@ ms.subservice: studio
 ms.topic: how-to
 author: xiaoharper
 ms.author: amlstudiodocs
-ms.date: 03/12/2020
-ms.openlocfilehash: 9c4215d2c2e811b4c6369ee3773fb811695da4fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: a342ef86817f4f66a6e74b72b4d167fa548b6345
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204354"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419183"
 ---
 # <a name="download-notebookspreview-data"></a>Stažení dat poznámkových bloků (náhledu)
 
-Funkce Notebooky (preview) bude odstraněna *13.* Po tomto datu zmizí karta Poznámkové bloky(náhled) a data poznámkových bloků nelze obnovit. Stáhněte si data z notebooků do 13.4.2020.
+Funkce Notebooky (preview) byla *odebrána 13.* Odebrání karty Poznámkové bloky (náhled) a soubory uživatelských poznámkových bloků se aktuálně zavádí do oblastí Azure po celém světě.
 
 Tento článek obsahuje podrobné pokyny, jak stahovat data poznámkových bloků(náhledu).
 

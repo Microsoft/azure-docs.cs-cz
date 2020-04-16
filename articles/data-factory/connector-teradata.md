@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4eed79210e3e39f82b892ac0681e161ebb59597e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421224"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418027"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 >
 > * [Verze 1](v1/data-factory-onprem-teradata-connector.md)
 > * [Aktuální verze](connector-teradata.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat z Teradata Vantage. Vychází z [přehledu aktivity kopírování](copy-activity-overview.md).
 
@@ -256,7 +258,7 @@ Doporučujese povolit paralelní kopírování s dělení dat zejména při nač
 
 | Scénář                                                     | Navrhovaná nastavení                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Plné zatížení z velkého stolu.                                   | **Možnost oddílu**: Hash. <br><br/>Během provádění Data Factory automaticky detekuje sloupec PK, použije hodnotu hash proti němu a zkopíruje data podle oddílů. |
+| Plné zatížení z velkého stolu.                                   | **Možnost oddílu**: Hash. <br><br/>Během provádění Data Factory automaticky detekuje sloupec primární index, použije hash proti němu a zkopíruje data podle oddílů. |
 | Načtěte velké množství dat pomocí vlastního dotazu.                 | **Možnost oddílu**: Hash.<br>**Dotaz** `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`: .<br>**Sloupec oddílu**: Zadejte sloupec použitý pro použití oddílu hash. Pokud není zadán, Data Factory automaticky detekuje sloupec PK tabulky, kterou jste zadali v datové sadě Teradata.<br><br>Během provádění Data Factory `?AdfHashPartitionCondition` nahradí logiku oddílu hash a odešle teradata. |
 | Načtěte velké množství dat pomocí vlastního dotazu, který má celý sloupec s rovnoměrně rozloženou hodnotou pro dělení rozsahu. | **Možnosti oddílu**: Oddíl dynamického rozsahu.<br>**Dotaz** `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`: .<br>**Sloupec oddílu**: Zadejte sloupec použitý k rozdělení dat. Můžete oddíl proti sloupci s celýdatový typ.<br>**Horní mez oddílu** a **dolní mez oddílu**: Určete, zda chcete filtrovat proti sloupci oddílu, chcete-li načíst data pouze mezi dolní a horní oblastí.<br><br>Během provádění Data Factory `?AdfRangePartitionColumnName` `?AdfRangePartitionUpbound`nahradí `?AdfRangePartitionLowbound` , a skutečné název sloupce a rozsahy hodnot pro každý oddíl a odešle teradata. <br>Například pokud sloupec oddílu "ID" nastavit s dolní mez jako 1 a horní mez jako 80, s paralelní kopírování nastavit jako 4, Data Factory načte data o 4 oddíly. Jejich ID jsou mezi [1,20], [21, 40], [41, 60], a [61, 80]. |
 

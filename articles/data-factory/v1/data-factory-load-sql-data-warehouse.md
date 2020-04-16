@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 079d29c241cfbbdcc991f024c07b07b378670c10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130891"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419302"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Načtení 1 TB do datového skladu Azure SQL za méně než 15 minut pomocí Data Factory
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "80130891"
 
 [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) je cloudová databáze s horizontálním navýšením kapacity schopná zpracovávat obrovské objemy dat, relační i nerelační.  Sql Data Warehouse, postavený na architektuře masivně paralelního zpracování (MPP), je optimalizován pro úlohy podnikového datového skladu.  Nabízí elasticitu cloudu s flexibilitou škálování úložiště a výpočtu nezávisle.
 
-Začínáme s Azure SQL Data Warehouse je teď jednodušší než kdy dřív pomocí **Azure Data Factory**.  Azure Data Factory je plně spravovaná cloudová služba pro integraci dat, kterou lze použít k naplnění datového skladu SQL dat dat daty z vašeho stávajícího systému a k uložení cenného času při vyhodnocování datového skladu SQL a vytváření analýz Řešení. Tady jsou hlavní výhody načítání dat do Azure SQL Data Warehouse pomocí Azure Data Factory:
+Začínáme s Azure SQL Data Warehouse je teď jednodušší než kdy dřív pomocí **Azure Data Factory**.  Azure Data Factory je plně spravovaná cloudová služba pro integraci dat, kterou lze použít k naplnění datového skladu SQL dat dat dat daty z vašeho stávajícího systému a šetří vám cenný čas při vyhodnocování SQL Data Warehouse a vytváření analytických řešení. Tady jsou hlavní výhody načítání dat do Azure SQL Data Warehouse pomocí Azure Data Factory:
 
 * **Snadné nastavení:** 5-krok intuitivní průvodce bez skriptování nutné.
 * **Bohatá podpora úložiště dat:** integrovaná podpora pro bohatou sadu místních a cloudových úložišť dat.
@@ -141,7 +141,7 @@ Na stránce **Vlastnosti**:
 
 1. Zadejte **CopyFromBlobToAzureSqlDataWarehouse** pro **název úlohy.**
 2. Vyberte **Možnost Spustit jednou.**   
-3. Klikněte na **Další**.  
+3. Klikněte na **Další**.  
 
     ![Průvodce kopírováním – stránka Vlastnosti](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
@@ -183,7 +183,7 @@ Tato část ukazuje, jak nakonfigurovat cíl: `lineitem` tabulka v databázi Azu
 
 ## <a name="step-4-performance-settings"></a>Krok 4: Nastavení výkonu
 
-**Povolit polybase** je kontrolována ve výchozím nastavení.  Klikněte na **Další**.
+**Povolit polybase** je kontrolována ve výchozím nastavení.  Klikněte na **Další**.
 
 ![Průvodce kopírováním – stránka mapování schématu](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 

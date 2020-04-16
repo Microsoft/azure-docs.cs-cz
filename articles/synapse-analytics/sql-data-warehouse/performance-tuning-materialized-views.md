@@ -10,19 +10,18 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743175"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417029"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Ladění výkonu s využitím materializovaných zobrazení
 
 Materialized zobrazení ve fondu Synapse SQL poskytují metodu nízké údržby pro složité analytické dotazy získat rychlý výkon bez jakékoli změny dotazu. Tento článek popisuje obecné pokyny pro použití zhmotněných zobrazení.
 
-Materializovaná zobrazení v Azure SQL Data Warehouse poskytují metodu nízké údržby pro složité analytické dotazy, abyste získali rychlý výkon bez jakékoli změny dotazu. Tento článek popisuje obecné pokyny pro použití zhmotněných zobrazení.
+Materializovaná zobrazení ve fondu SQL poskytují metodu nízké údržby pro složité analytické dotazy, abyste získali rychlý výkon bez jakékoli změny dotazu. Tento článek popisuje obecné pokyny pro použití zhmotněných zobrazení.
 
 ## <a name="materialized-views-vs-standard-views"></a>Zhmotněná zobrazení vs. standardní pohledy
 
@@ -34,7 +33,7 @@ Materializované zobrazení předem vypočítá, uloží a udržuje svá data ve
 
 Většina požadavků na standardní pohled se stále vztahuje na zhmotněný pohled. Podrobnosti o syntaxi materializovaného zobrazení a dalších požadavcích naleznete v části [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-| Srovnání                     | Zobrazit                                         | Materialized View
+| Srovnání                     | Zobrazení                                         | Materialized View
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Zobrazení definice                 | Uloženo ve fondu SQL.              | Uloženo ve fondu SQL.
 |Zobrazení obsahu                    | Generováno při každém použití zobrazení.   | Předem zpracovány a uloženy ve fondu SQL během vytváření zobrazení. Aktualizováno jako data jsou přidány do podkladových tabulek.
@@ -45,7 +44,7 @@ Většina požadavků na standardní pohled se stále vztahuje na zhmotněný po
 
 ## <a name="benefits-of-using-materialized-views"></a>Výhody použití zhmotněných pohledů
 
-Správně navržené zhmotněné zobrazení může poskytnout následující výhody:
+Správně navržené zhmotněné zobrazení poskytuje následující výhody:
 
 - Zkraťte dobu provádění složitých dotazů pomocí akcí JOIN a agregačních funkcí. Čím složitější dotaz, tím vyšší je potenciál pro úsporu času spuštění. Největší výhoda je získána, když jsou náklady na výpočty dotazu vysoké a výsledná sada dat je malá.  
 - Optimalizátor ve fondu SQL můžete automaticky použít nasazená materializovaná zobrazení ke zlepšení plány spuštění dotazu.  Tento proces je transparentní pro uživatele poskytující rychlejší výkon dotazů a nevyžaduje dotazy, aby se přímý odkaz na zhmotněné zobrazení.
@@ -118,7 +117,7 @@ Možnosti snížení počtu zhmotněných pohledů:
 
 - Přetáhněte zhmotněné pohledy, které mají nízké využití nebo již nejsou potřeba.  Zakázané zhmotněné zobrazení není zachováno, ale stále mu vznikají náklady na úložiště.  
 
-- Kombinujte materializované pohledy vytvořené ve stejných nebo podobných základních tabulkách, i když se jejich data nepřekrývají.  Česání materializovaných pohledů může mít za následek větší velikost pohledu než součet samostatných pohledů, avšak náklady na údržbu pohledu by se měly snížit.  Například:
+- Kombinujte materializované pohledy vytvořené ve stejných nebo podobných základních tabulkách, i když se jejich data nepřekrývají.  Kombinace zhmotněných pohledů může mít za následek větší velikost pohledu než součet samostatných pohledů, avšak náklady na údržbu pohledu by se měly snížit.  Příklad:
 
 ```sql
 

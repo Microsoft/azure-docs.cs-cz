@@ -11,14 +11,15 @@ manager: shwang
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: c7a2aec35511ef066033c3d6462143ac31660e76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d3c9f0df0d834ffe75d0b56e3c80a432c27ea38
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74923064"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419013"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformace dat spuštěním poznámkového bloku Databricks
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivita poznámkového bloku Azure Databricks v [kanálu datové továrny](concepts-pipelines-activities.md) spouští poznámkový blok Databricks v pracovním prostoru Azure Databricks. Tento článek vychází z článku [aktivit transformace](transform-data.md) dat, který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
 

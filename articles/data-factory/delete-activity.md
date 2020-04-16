@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: f265cdc955becd53ae7ba61ad827b2be69b92907
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: d90f38f83bd4d2d5311f277fcc928e442d7ea793
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618272"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416380"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Aktivita odstranění v Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 Odstranit aktivitu v Azure Data Factory můžete použít k odstranění souborů nebo složek z místních úložišť úložiště nebo úložišť cloudových úložišť. Tuto aktivitu použijte k vyčištění nebo archivaci souborů, pokud již nejsou potřeba.
 
@@ -40,7 +42,7 @@ Tady jsou některá doporučení pro použití aktivity Delete:
 
 ## <a name="supported-data-stores"></a>Podporované zdroje dat
 
--   [Azure Blob Storage](connector-azure-blob-storage.md)
+-   [Úložiště objektů blob Azure](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 -   [Azure File Storage](connector-azure-file-storage.md)
@@ -116,7 +118,7 @@ Existují dvě místa, kde můžete vidět a sledovat výsledky aktivity Odstran
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Ukázkový soubor protokolu aktivity Odstranit
 
-| Name (Název) | Kategorie | Status | Chyba |
+| Název | Kategorie | Status | Chyba |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | File | Odstranění |  |
 | test2/hello789.txt | File | Odstranění |  |

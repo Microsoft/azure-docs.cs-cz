@@ -7,14 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7235e95e5b33fb931411a51796a8dbec96c46355
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74287031"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417653"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformační funkce v toku dat hádání
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tok dat ve službě Azure Data Factory umožňuje provést agilní přípravu agilních dat bez kódu a hašteření v cloudovém měřítku. Tahanice o tok dat se integruje s [Power Query Online](https://docs.microsoft.com/powerquery-m/power-query-m-reference) a zpřístupňuje funkce Power Query M pro hádání dat prostřednictvím spuštění jiskry. 
 

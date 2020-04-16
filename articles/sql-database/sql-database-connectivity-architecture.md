@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256416"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419259"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení k SQL Azure
 > [!NOTE]
@@ -45,7 +45,7 @@ Následující kroky popisují, jak je navázáno připojení k databázi Azure 
 Azure SQL Database podporuje následující tři možnosti pro nastavení zásad připojení serveru SQL Database:
 
 - **Přesměrování (doporučeno):** Klienti navázat připojení přímo k uzlu hostování databáze, což vede ke snížení latence a lepší propustnost. Aby připojení používali tento režim, klienti musí:
-   - Povolit odchozí komunikaci z klienta na všechny IP adresy Azure v oblasti na portech v rozsahu 11000 11999. Pomocí značek služby pro SQL to usnadníte správě.  
+   - Povolit odchozí komunikaci z klienta na všechny IP adresy Azure SQL v oblasti na portech v rozsahu 11000 11999. Pomocí značek služby pro SQL to usnadníte správě.  
    - Povolit odchozí komunikaci z klienta na IP adresy brány Azure SQL Database na portu 1433.
 
 - **Proxy:** V tomto režimu jsou všechna připojení proxied prostřednictvím brány Azure SQL Database, což vede ke zvýšení latence a snížení propustnosti. Aby připojení mohli používat tento režim, klienti musí povolit odchozí komunikaci z klienta na IP adresy brány Azure SQL Database na portu 1433.

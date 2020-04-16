@@ -10,14 +10,16 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 1f920f2672c19455a8e8ac979e8d6d1eb14d4c35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 024d61c5bcc38c78dc5a2bd5e01cba43d7b5267e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74924301"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418826"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformace dat v Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector"]
 > * [Mapování toku dat](data-flow-create.md)
@@ -33,7 +35,7 @@ ms.locfileid: "74924301"
 > * [Databricks Jar](transform-data-databricks-jar.md)
 > * [Databricks Python](transform-data-databricks-python.md)
 > * [Vlastní .NET](transform-data-using-dotnet-custom-activity.md)
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 ## <a name="overview"></a>Přehled
 Tento článek vysvětluje aktivity transformace dat v Azure Data Factory, které můžete použít k transformaci a zpracování nezpracovaná data do předpovědi a přehledy ve velkém měřítku. Transformační aktivita se spouští v výpočetním prostředí, jako jsou Azure Databricks nebo Azure HDInsight. Poskytuje odkazy na články s podrobnými informacemi o každé transformační aktivitě.
 

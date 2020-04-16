@@ -1,22 +1,22 @@
 ---
-title: Jak spravovat účet komerčního tržiště v Partnerském centru
-description: Přečtěte si, jak spravovat komerční účet marketplace v Partnerském centru.
+title: Jak spravovat účet komerčního tržiště v Centru microsoftu Partnerské centrum
+description: Přečtěte si, jak spravovat komerční účet marketplace v Centru microsoft partnerů.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 50ea56a8c743636f9fdd9105e5b07a868e71d3d0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 256ea1a03cd22df443362623177f91893f28b664
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262923"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419149"
 ---
-# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak spravovat svůj komerční účet marketplace v Partnerském centru
+# <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Správa účtu komerčního tržiště v Partnerském centru
 
-Po vytvoření [účtu Partnerského centra](./create-account.md)můžete svůj účet a nabídky spravovat pomocí [řídicího panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
+Po vytvoření [účtu Partnerského centra](./create-account.md)můžete ke správě účtu a nabídek použít [řídicí panel komerčního tržiště.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)
 
 V tomto článku se podíváme na to, jak spravovat váš účet v Partnerském centru, včetně toho, jak:
 
@@ -35,12 +35,12 @@ V tomto článku se podíváme na to, jak spravovat váš účet v Partnerském 
 
 Pokud jste tak ještě neučinili, měli byste vy (nebo správce vaší organizace) přistupovat k [nastavení účtu](https://partner.microsoft.com/dashboard/account/management) pro váš účet Partnerského centra:
 - Kontrola stavu ověření účtu vaší společnosti
-- Potvrďte své ID symantec, ID prodejce, ID MPN, ID vydavatele a kontaktní informace, včetně schvalovatele společnosti a kontaktu prodejce
+- Potvrďte své ID symantec, ID prodejce, ID sítě partnerů (MPN), ID vydavatele a kontaktní informace, včetně schvalovatele společnosti a kontaktu prodejce
 - Vytvoření uživatelských účtů pro každého, kdo bude používat váš firemní účet v Centru partnerů
 
 ### <a name="open-developer-settings"></a>Otevřít nastavení vývojáře
 
-Nastavení účtu se nachází v pravém horním rohu [řídicího panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace) v Centru partnerů. Vyberte ikonu ozubeného kola (v pravém horním rohu řídicího panelu) a pak vyberte **Nastavení vývojáře**.
+**Nastavení účtu** se nachází v pravém horním rohu [řídicího panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace) v Centru partnerů. Vyberte ikonu ozubeného kola (v pravém horním rohu řídicího panelu) a pak vyberte **Nastavení vývojáře**.
 
 ![Nabídka Nastavení účtu v Centru partnerů](./media/dashboard-developer-settings.png)
 
@@ -70,7 +70,7 @@ Chcete-li nastavit výplatní účet, musíte **svůj účet Microsoft přidruž
 1. Přejděte na [stránku přehledu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) v Centru partnerů.
 2. V části Profil vyberte **Přidružit svůj účet Microsoft**.
 3. Po zobrazení výzvy se přihlaste pomocí svého účtu Microsoft (MSA). Tento účet již nelze přidružit k jinému účtu Centra partnerského centra.
-4. Chcete-li dokončit nastavení výplatního účtu, odhlaste se úplně mimo Centrum partnerů a pak se znovu přihlaste pomocí svého účtu Microsoft (nikoli pomocí pracovního účtu).
+4. Chcete-li dokončit nastavení výplatního účtu, odhlaste se z Centra partnerů a pak se znovu přihlaste pomocí svého účtu Microsoft (nikoli pomocí pracovního účtu).
 
 Nyní, když je váš účet Microsoft přidružený, abyste přidali výplatní účet, budete muset:
 - **Zvolte způsob platby**: Bankovní účet nebo PayPal
@@ -91,7 +91,7 @@ Identifikační číslo daňového poplatníka (nebo ITIN) ve Spojených státec
 
 Daňové formuláře můžete vyplnit a podat elektronicky v Partnerském centru; ve většině případů není nutné tisknout a zasílat žádné formuláře.
 
-Různé země a regiony mají různé daňové požadavky. Přesná částka, kterou musíte zaplatit na daních, závisí na zemích a oblastech, kde nabídky prodáváte. Společnost Microsoft v některých zemích ukázňuje daň z prodeje a použití vaším jménem. Tyto země budou identifikovány v procesu uvedení vaší nabídky. V jiných zemích, v závislosti na tom, kde jste registrováni, může být nutné provést daň z prodeje a použít daň z prodeje přímo místnímu daňovému úřadu. Výnosy z prodeje, které obdržíte, mohou být navíc zdanitelné jako příjem. Důrazně doporučujeme, abyste se obrátili na příslušný úřad pro vaši zemi nebo oblast, který vám může nejlépe pomoci určit správné daňové údaje pro vaše prodejní transakce společnosti Microsoft.
+Různé země a regiony mají různé daňové požadavky. Přesná částka, kterou musíte zaplatit na daních, závisí na zemích a oblastech, kde nabídky prodáváte. Společnost Microsoft v některých zemích uvázne na daň vaším jménem. Tyto země budou identifikovány v procesu uvedení vaší nabídky. V jiných zemích, v závislosti na tom, kde jste registrováni, může být nutné provést daň z prodeje a použít daň z prodeje přímo místnímu daňovému úřadu. Výnosy z prodeje, které obdržíte, mohou být navíc zdanitelné jako příjem. Důrazně doporučujeme, abyste se obrátili na příslušný úřad pro vaši zemi nebo oblast, který vám může nejlépe pomoci určit správné daňové údaje pro vaše prodejní transakce společnosti Microsoft.
 
 ##### <a name="withholding-rates"></a>Srážkové sazby
 Údaje, které zadáte ve svých daňových formulářích, určují příslušnou sazbu srážkové daně. Srážková sazba se vztahuje pouze na prodeje, které provedete do Spojených států; prodeje uskutečněné do poboček mimo USA nepodléhají srážkové účasti. Sazby srážkové daně se liší, ale pro většinu vývojářů, kteří se registrují mimo Spojené státy, je výchozí sazba 30%. Máte možnost snížit tuto sazbu, pokud vaše země souhlasila se smlouvou o dani z příjmu se Spojenými státy.
@@ -124,7 +124,7 @@ Chcete-li vytvořit identifikátory GUID pro sledování, měli byste použít g
 
 Doporučujeme vytvořit jedinečný identifikátor GUID pro každou nabídku a distribuční kanál pro každý produkt. Pokud nechcete, aby bylo hlášení rozděleno, můžete použít jeden identifikátor GUID pro více distribučních kanálů produktu.
 
-Pokud nasadíte produkt pomocí šablony a je k dispozici na Azure Marketplace i na GitHubu, můžete vytvořit a zaregistrovat 2 odlišné identifikátory GUID:
+Pokud nasadíte produkt pomocí šablony a je k dispozici na Azure Marketplace i na GitHubu, můžete vytvořit a zaregistrovat dva odlišné identifikátory GUID:
 
 *    Produkt A na Azure Marketplace
 *    Produkt A na GitHubu
@@ -145,23 +145,20 @@ Centrum partnerů využívá [Azure Active Directory](https://docs.microsoft.com
 
 ## <a name="manage-users"></a>Správa uživatelů
 
-V části **Uživatelé** v Centru partnerů (v části **Nastavení účtu)** můžete pomocí Azure AD spravovat uživatele, skupiny a aplikace Azure AD, které mají přístup k vašemu účtu Partnerského centra. Chcete-li spravovat uživatele, musíte být přihlášeni pomocí [svého pracovního účtu](./company-work-accounts.md) (přidruženého klienta Azure AD). Chcete-li spravovat uživatele v rámci jiného pracovního účtu / tenanta, budete se muset odhlásit a znovu se přihlásit jako uživatel s oprávněními **správce** pro tento pracovní účet / tenanta.
+Část **Uživatelé** v Centru partnerů (v části **Nastavení účtu)** umožňuje používat Azure AD ke správě uživatelů, skupin a aplikací Azure AD, které mají přístup k vašemu účtu Partnerského centra. Váš účet musí mít oprávnění [**na úrovni správce**](#define-user-roles-and-permissions) pro pracovní účet [(tenant Azure AD),](./company-work-accounts.md) ve kterém chcete přidat nebo upravit uživatele. Chcete-li spravovat uživatele v rámci jiného pracovního účtu / tenanta, budete se muset odhlásit a znovu se přihlásit jako uživatel s oprávněními **správce** pro tento pracovní účet / tenanta.
 
 Jakmile jste přihlášeni pomocí pracovního účtu (tenantA Azure AD), můžete:
-- [Přidání nebo odebrání uživatelů](#add-or-remove-users)
+
+- [Přidání nebo odebrání uživatelů](#add-existing-users)
 - [Změna uživatelského hesla](#change-a-user-password)
-- [Přidání nebo odebrání skupin](#add-or-remove-users)
+- [Přidání nebo odebrání skupin](#manage-groups)
 - [Přidání nebo odebrání aplikací Azure AD](#add-new-azure-ad-applications)
 - [Správa klíčů pro aplikaci Azure AD](#manage-keys-for-an-azure-ad-application)
 - [Definování rolí a oprávnění uživatelů](#define-user-roles-and-permissions)
 
 Mějte na paměti, že všichni uživatelé Partnercenter (včetně skupin a aplikací Azure AD) musí mít aktivní pracovní účet v [tenantovi Azure AD,](#manage-tenants) který je přidružený k vašemu účtu Partner Center.
 
-### <a name="add-or-remove-users"></a>Přidání nebo odebrání uživatelů
-
-Váš účet musí mít oprávnění [**na úrovni správce**](#define-user-roles-and-permissions) pro pracovní účet [(tenant Azure AD),](./company-work-accounts.md) ve kterém chcete přidat nebo upravit uživatele.
-
-#### <a name="add-existing-users"></a>Přidání stávajících uživatelů
+### <a name="add-existing-users"></a>Přidání stávajících uživatelů
 
 Přidání uživatelů do účtu Partnerského centra, které už existují v pracovním účtu vaší společnosti [(tenant Azure AD),](./company-work-accounts.md):
 
@@ -172,7 +169,7 @@ Přidání uživatelů do účtu Partnerského centra, které už existují v pr
 4. V části **Role** zadejte role nebo přizpůsobená oprávnění pro vybrané uživatele.
 5. Vyberte **Uložit**.
 
-#### <a name="create-new-users"></a>Vytvořit nové uživatele
+### <a name="create-new-users"></a>Vytvořit nové uživatele
 
 Chcete-li vytvořit zcela nové uživatelské účty, musíte mít účet s oprávněními [**globálního správce.**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 
 
@@ -186,7 +183,7 @@ Chcete-li vytvořit zcela nové uživatelské účty, musíte mít účet s opr�
 
 Vytvoření nového uživatele v Centru partnerských center také vytvoří účet pro tohoto uživatele v pracovním účtu (tenant Azure AD), ke kterému jste přihlášeni. Provádění změn jména uživatele v Partnerském centru provede stejné změny v pracovním účtu vaší organizace (tenant Azure AD).
 
-#### <a name="invite-new-users-by-email"></a>Pozvání nových uživatelů e-mailem
+### <a name="invite-new-users-by-email"></a>Pozvání nových uživatelů e-mailem
 
 Chcete-li pozvat uživatele, kteří nejsou aktuálně součástí vašeho firemního pracovního účtu (tenanta Azure AD) prostřednictvím e-mailu, musíte mít účet s oprávněními [**globálního správce.**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)
 
@@ -202,11 +199,11 @@ Pokud potřebujete pozvánku odeslat znovu, navštivte stránku **Uživatelé,**
 > [!NOTE]
 > Pokud vaše organizace používá [integraci adresářů](https://go.microsoft.com/fwlink/p/?LinkID=724033) k synchronizaci místní adresářové služby s azure ad, nebudete moct vytvářet nové uživatele, skupiny nebo aplikace Azure AD v Centru partnerů. Vy (nebo jiný správce v místním adresáři) je budete muset vytvořit přímo v místním adresáři, než je budete moct zobrazit a přidat v Centru partnerů.
 
-#### <a name="remove-a-user"></a>Odebrání uživatele
+### <a name="remove-a-user"></a>Odebrání uživatele
 
 Pokud chcete odebrat uživatele ze svého pracovního účtu (tenant Azure AD), přejděte na **Users** (v části **Nastavení účtu),** vyberte uživatele, kterého chcete odebrat, pomocí zaškrtávacího políčka ve sloupci zcela vpravo a pak zvolte **Odebrat** z dostupných akcí. Zobrazí se vyskakovací okno, které potvrzuje, že chcete vybraného uživatele odebrat.
 
-#### <a name="change-a-user-password"></a>Změna uživatelského hesla
+### <a name="change-a-user-password"></a>Změna uživatelského hesla
 
 Pokud jeden z vašich uživatelů potřebuje změnit své heslo, může tak učinit sami, pokud jste při vytváření uživatelského účtu zadali **e-mail pro obnovení hesla.** Heslo uživatele můžete také aktualizovat podle následujících kroků. Chcete-li změnit heslo uživatele ve vašem pracovním účtu společnosti (tenant Azure AD), musíte být přihlášeni k účtu s oprávněními [**globálního správce.**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) Všimněte si, že tím se změní heslo uživatele ve vašem tenantovi Azure AD, spolu s heslem, které používají pro přístup k Centru partnerů.
 
@@ -218,7 +215,7 @@ Pokud jeden z vašich uživatelů potřebuje změnit své heslo, může tak uči
 
 Skupiny umožňují řídit více uživatelských rolí a oprávnění dohromady.
 
-#### <a name="add-an-existing-group"></a>Přidání existující skupiny
+### <a name="add-an-existing-group"></a>Přidání existující skupiny
 
 Přidání skupiny, která už v pracovním účtu vaší organizace (tenant Azure AD) existuje, do účtu Partnerského centra:
 
@@ -231,7 +228,7 @@ Pokud vyberete více než jednu skupinu, kterou chcete přidat do účtu Partner
 
 Přidáte-li existující skupinu, bude mít každý uživatel, který je členem této skupiny, přístup k vašemu účtu Partnerského centra s oprávněními přidruženými k přiřazené roli skupiny.
 
-#### <a name="add-a-new-group"></a>Přidání nové skupiny
+### <a name="add-a-new-group"></a>Přidání nové skupiny
 
 Přidání zcela nové skupiny do účtu Partnerského centra:
 
@@ -245,7 +242,7 @@ Přidání zcela nové skupiny do účtu Partnerského centra:
 
 Všimněte si, že tato nová skupina se vytvoří v pracovním účtu vaší organizace (tenant Azure AD) také, nejen ve vašem účtu Partnerského centra.
 
-#### <a name="remove-a-group"></a>Odebrání skupiny
+### <a name="remove-a-group"></a>Odebrání skupiny
 
 Pokud chcete odebrat skupinu ze svého pracovního účtu (tenant Azure AD), přejděte na **Users** (v části **Nastavení účtu),** vyberte skupinu, kterou chcete odebrat, pomocí zaškrtávacího políčka ve sloupci zcela vpravo a pak zvolte **Odebrat** z dostupných akcí. Zobrazí se vyskakovací okno, které potvrzuje, že chcete vybrané skupiny odebrat.
 
@@ -253,7 +250,7 @@ Pokud chcete odebrat skupinu ze svého pracovního účtu (tenant Azure AD), př
 
 Můžete povolit aplikacím nebo službám, které jsou součástí služby Azure AD vaší společnosti, přístup k účtu Partnercenter.
 
-#### <a name="add-existing-azure-ad-applications"></a>Přidání existujících aplikací Azure AD
+### <a name="add-existing-azure-ad-applications"></a>Přidání existujících aplikací Azure AD
 
 Přidání aplikací, které už ve službě Azure Active Directory vaší společnosti existují:
 
@@ -263,7 +260,7 @@ Přidání aplikací, které už ve službě Azure Active Directory vaší spole
 4. V části **Role** zadejte role nebo přizpůsobená oprávnění pro vybrané aplikace Azure AD.
 5. Vyberte **Uložit**.
 
-#### <a name="add-new-azure-ad-applications"></a>Přidání nových aplikací Azure AD
+### <a name="add-new-azure-ad-applications"></a>Přidání nových aplikací Azure AD
 
 Pokud chcete udělit Partner Center přístup ke zbrusu nový účet aplikace Azure AD, můžete vytvořit v části **Uživatelé.** Všimněte si, že tím se vytvoří nový účet ve vašem firemním pracovním účtu (tenant Azure AD), nejen ve vašem účtu Partnerského centra. Pokud používáte především tuto aplikaci Azure AD pro ověřování v Centru partnerských center a nepotřebujete, aby k ní uživatelé měli přímý přístup, můžete zadat libovolnou platnou adresu adresy **URL odpovědi** a **identifikátoru URI ID aplikace**, pokud tyto hodnoty nepoužívají žádná jiná aplikace Azure AD ve vašem adresáři.
 
@@ -276,11 +273,11 @@ Pokud chcete udělit Partner Center přístup ke zbrusu nový účet aplikace Az
 
 Po přidání nebo vytvoření aplikace Azure AD se můžete vrátit do části **Uživatelé** a vybrat název aplikace, který chcete zkontrolovat nastavení aplikace, včetně ID klienta, ID klienta, adresy URL odpovědi a identifikátoru URI ID aplikace.
 
-#### <a name="remove-an-application"></a>Odebrání aplikace
+### <a name="remove-an-azure-ad-application"></a>Odebrání aplikace Azure AD
 
 Pokud chcete odebrat aplikaci z vašeho pracovního účtu (tenant Azure AD), přejděte na **Users** (v části **Nastavení účtu**), vyberte aplikaci, kterou chcete odebrat pomocí zaškrtávacího políčka ve sloupci zcela vpravo, a pak zvolte **Odebrat** z dostupných akcí. Zobrazí se vyskakovací okno, které potvrzuje, že chcete vybrané aplikace odebrat.
 
-#### <a name="manage-keys-for-an-azure-ad-application"></a>Správa klíčů pro aplikaci Azure AD
+### <a name="manage-keys-for-an-azure-ad-application"></a>Správa klíčů pro aplikaci Azure AD
 
 Pokud vaše aplikace Azure AD čte a zapisuje data ve službě Microsoft Azure AD, bude potřebovat klíč. Klíče pro aplikaci Azure AD můžete vytvořit úpravou jejích informací v Centru partnerů. Můžete také odebrat klíče, které již nejsou potřeba.
 
@@ -350,7 +347,3 @@ Při odebrání klienta se k účtu obchodního centra partnerského centra již
 V části **Smlouvy** v Centru partnerů (v části **Nastavení účtu)** si můžete prohlédnout seznam smluv o publikování, které jste autorizovali. Tyto smlouvy jsou uvedeny podle názvu a čísla verze, včetně data, kdy byla přijata, a jména uživatele, který smlouvu přijal.
 
 **Pokud** existují aktualizace smluv, které vyžadují vaši pozornost, mohou se v horní části této stránky zobrazit potřebné akce. Chcete-li přijmout aktualizovanou smlouvu, přečtěte si nejprve propojenou verzi smlouvy a pak vyberte **Přijmout smlouvu**.
-
-## <a name="next-steps"></a>Další kroky
-
-- [Vytvoření nové nabídky SaaS](./create-new-saas-offer.md)

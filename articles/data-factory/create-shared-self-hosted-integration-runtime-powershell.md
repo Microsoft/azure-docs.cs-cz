@@ -11,14 +11,16 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 10/31/2018
-ms.openlocfilehash: a2f24d8203ac5fb9724370cbdf4309bdc43c166a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cabdb45467f71749184c5f9a6a112242a82d618b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444102"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416609"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Vytvoření sdíleného runtime integrace s vlastním hostitelem v Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tato příručka ukazuje, jak vytvořit sdílený runtime integrace s vlastním hostitelem v Azure Data Factory. Potom můžete použít sdílený prostředí integrace s vlastním hostitelem v jiné datové továrně.
 

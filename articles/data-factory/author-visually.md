@@ -10,14 +10,16 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 12/19/2019
-ms.openlocfilehash: 09d4055ba98da2dd87efc9421402f2827a87ba16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440934"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418486"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření ve Službě Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Prostředí uživatelského rozhraní Azure Data Factory (UX) umožňuje vizuálně vytvářet a nasazovat prostředky pro vaši datovou továrnu, aniž byste museli psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádět testovací jízdy, ladění iterativně a nasadit a sledovat spuštění kanálu.
 

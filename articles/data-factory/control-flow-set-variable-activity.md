@@ -11,14 +11,15 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: e736cc95628bd0e15bdb7ffd425608278788c353
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879257"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417976"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Nastavení aktivity proměnných ve Službě Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivita Nastavit proměnnou slouží k nastavení hodnoty existující proměnné typu String, Bool nebo Array definované v kanálu Datové továrny.
 

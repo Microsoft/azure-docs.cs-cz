@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: ced2279878ee2eb361ec7338647418658e411513
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79213006"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417874"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Aktivita webhooku v Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Webhooku aktivity můžete řídit provádění kanálů prostřednictvím vlastního kódu. S aktivitou webhooku může kód zákazníků volat koncový bod a předat mu adresu URL zpětného volání. Spuštění kanálu čeká na vyvolání zpětného volání před pokračováním další aktivity.
 
@@ -63,15 +65,15 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 **timeout** | Jak dlouho aktivita čeká na zpětné volání zadané **callBackUri,** které mají být vyvolány. Výchozí hodnota je 10 minut ("00:10:00"). Hodnoty mají formát TimeSpan *d*. *hh*:*mm*:*ss*. | Řetězec | Ne |
 **Stav sestavy při zpětném volání** | Umožňuje uživateli nahlásit neúspěšný stav aktivity webhooku. | Logická hodnota | Ne |
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Aktivita webhooku podporuje následující typy ověřování.
 
-### <a name="none"></a>Žádný
+### <a name="none"></a>Žádná
 
 Pokud ověřování není vyžadováno, nezahrnejte vlastnost **ověřování.**
 
-### <a name="basic"></a>Basic
+### <a name="basic"></a>Základní
 
 Zadejte uživatelské jméno a heslo, které se má použít při základním ověřování.
 
@@ -142,10 +144,10 @@ Při použití **stav sestavy na zpětné volání** vlastnost, musíte přidat 
 
 Podívejte se na následující aktivity toku řízení podporované factory:
 
-- [Aktivita podmínky If](control-flow-if-condition-activity.md)
+- [Aktivita podmínky Když](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Aktivita For Each](control-flow-for-each-activity.md)
-- [Získat aktivitu metadat](control-flow-get-metadata-activity.md)
+- [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

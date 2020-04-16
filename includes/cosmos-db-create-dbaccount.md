@@ -6,20 +6,27 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/08/2019
+ms.date: 04/10/2020
 ms.custom: include file
-ms.openlocfilehash: 9c6ce482a4f6464008f4be0ecd94455f0239ede2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4c6e45eaa816499c7e5969e302a036368bea0937
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81275120"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81422182"
 ---
-1. Přejděte na [portál Azure](https://portal.azure.com/) a vytvořte účet Azure Cosmos DB. Vyhledejte a vyberte **Azure Cosmos DB**.
+1. Přejděte na [portál Azure](https://portal.azure.com/) a vytvořte účet Azure Cosmos DB. Na domovské stránce zvolte **Vytvořit prostředek** z panelu **služeb Azure.**
 
-   ![Podokno databází portálu Azure Portal](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
+   ![Vytvoření prostředku](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-resource-1.png)
 
-1. Vyberte **Přidat**.
+1. Vyhledejte a vyberte **Azure Cosmos DB**.
+
+   ![Rozevírací přehled prostředků portálu Azure](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-updated-1.png)
+
+1. Vyberte **Vytvořit**.
+
+   ![Vytvoření prostředku Azure Cosmos DB](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-account-1.png)
+
 1. Na stránce **Vytvořit účet Azure Cosmos DB** zadejte základní nastavení pro nový účet Azure Cosmos. 
 
     |Nastavení|Hodnota|Popis |
@@ -31,6 +38,7 @@ ms.locfileid: "81275120"
     |Použít slevu na úrovni zdarma|Použít nebo Neuplatňovat|S bezplatnou vrstvou Azure Cosmos DB získáte prvních 400 RU/s a 5 GB úložiště zdarma na účtu. Přečtěte si další informace o [bezplatné úrovni](https://azure.microsoft.com/pricing/details/cosmos-db/).|
     |Umístění|Oblast nejbližší vašim uživatelům|Vyberte zeměpisné umístění, ve kterém chcete účet služby Azure Cosmos DB hostovat. Použijte umístění, které je uživatelům nejblíže, a poučte jim k datům co nejrychlejší přístup.|
     |Typ účtu|Výroba nebo nevýroba|Vyberte **Výroba,** pokud bude účet použit pro produkční pracovní vytížení. Vyberte **neprodukční,** pokud bude účet použit pro neprodukční, například vývoj, testování, qa nebo pracovní. Toto je nastavení značky prostředků Azure, které ladí prostředí portálu, ale nemá vliv na základní účet Azure Cosmos DB. Tuto hodnotu můžete kdykoli změnit.|
+
 
     > [!NOTE]
     > Můžete mít až jednu bezplatnou úroveň účtu Azure Cosmos DB na jedno předplatné Azure a musíte se přihlásit při vytváření účtu. Pokud nevidíte možnost použít slevu na bezplatnou úroveň, znamená to, že jiný účet v předplatném již byl povolen s bezplatnou úrovní.

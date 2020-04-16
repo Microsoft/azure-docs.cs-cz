@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: 3215f5952daef053c94432bc8fdef15e1775047a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73171089"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81422097"
 ---
 Umístění virtuálních zařízení v jedné oblasti snižuje fyzickou vzdálenost mezi instancemi. Jejich umístění do jedné zóny dostupnosti je také fyzicky sblíží. Však jako stopa Azure roste, jedna zóna dostupnosti může span více fyzických datových center, což může mít za následek latence sítě ovlivňující vaši aplikaci. 
 
@@ -39,6 +39,13 @@ Existující prostředek můžete také přesunout do skupiny umístění bez ko
 V případě sad dostupnosti a škálovacích sad virtuálních počítačů byste měli nastavit skupinu umístění bezkontaktní komunikace na úrovni prostředků, nikoli na úrovni jednotlivých virtuálních počítačů. 
 
 Skupina umístění bez kontaktní místa je omezení společného umístění, nikoli připnuté mechanismus. Je připnutý do konkrétního datového centra s nasazením prvního prostředku, který jej používá. Jakmile jsou všechny prostředky používající skupinu umístění bezkontaktní komunikace zastaveny (s ambulancí) nebo odstraněny, již se nepřipnou. Proto při použití skupiny umístění bezkontaktní komunikace s více řadami virtuálních počítačů, je důležité zadat všechny požadované typy předem v šabloně, pokud je to možné, nebo postupujte podle pořadí nasazení, které zlepší vaše šance na úspěšné nasazení. Pokud se nasazení nezdaří, restartujte nasazení s velikostí virtuálního počítače, která se nezdařila jako první velikost, která má být nasazena.
+
+## <a name="what-to-expect-when-using-proximity-placement-groups"></a>Co můžete očekávat při používání skupin umístění bezkontaktní komunikace 
+Skupiny umístění bezkontaktních umístění nabízejí společné umístění ve stejném datovém centru. Protože však skupiny umístění bezkontaktní komunikace představují další omezení nasazení, může dojít k selhání přidělení. Existuje několik případů použití, kdy se může zobrazit selhání přidělení při použití skupin umístění bezkontaktní komunikace:
+
+- Když požádáte o první virtuální počítač ve skupině umístění bezkontaktní komunikace, automaticky se vybere datové centrum. V některých případech může druhý požadavek na jiný virtuální počítač SKU selhat, pokud neexistuje v tomto datovém centru. V tomto případě je vrácena chyba **OverconstrainedAllocationRequest.** Chcete-li tomu zabránit, zkuste změnit pořadí, ve kterém nasazujete vaše skum nebo mají oba prostředky nasazené pomocí jedné šablony ARM.
+-   V případě elastické úlohy, kde přidáte a odeberete instance virtuálních počítače, které mají omezení skupiny umístění přiblížení na vaše nasazení může mít za následek selhání splnění požadavku, což má za následek **allocationfailure** chyba. 
+- Zastavení (navrátit) a spuštění virtuálních počítačů podle potřeby je další způsob, jak dosáhnout pružnosti. Vzhledem k tomu, že kapacita není zachována po zastavení (navrátit) virtuální ho, spuštění znovu může mít za následek **allocationfailure** chyba.
 
 
 ## <a name="best-practices"></a>Osvědčené postupy 

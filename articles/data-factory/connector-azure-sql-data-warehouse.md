@@ -11,18 +11,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7fb1560fb9be809d816dde7dd69f1ec8afe5649f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422187"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417576"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Synapse Analytics (dříve Azure SQL Data Warehouse) pomocí Azure Data Factory 
 
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Aktuální verze](connector-azure-sql-data-warehouse.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do Azure Synapse Analytics a pomocí toku dat k transformaci dat v Azure Data Lake Storage Gen2. Další informace o Azure Data Factory najdete v [úvodním článku](introduction.md).
+
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do Azure SQL Data Warehouse a použít Tok dat k transformaci dat v Azure Data Lake Storage Gen2. Další informace o Azure Data Factory najdete v [úvodním článku](introduction.md).
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do Azure Synapse Analytics a pomocí toku dat k transformaci dat v Azure Data Lake Storage Gen2. Další informace o Azure Data Factory najdete v [úvodním článku](introduction.md).
 
@@ -531,7 +540,7 @@ Chcete-li tuto funkci použít, vytvořte [propojenou službu Azure Blob Storage
 
 ### <a name="best-practices-for-using-polybase"></a>Doporučené postupy pro používání PolyBase
 
-Následující části obsahují kromě těch, které jsou uvedeny v [doporučených postupech pro Azure Synapse Analytics ,](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)také doporučené postupy.
+Následující části obsahují kromě těch, které jsou uvedeny v [doporučených postupech pro Azure Synapse Analytics ,](../synapse-analytics/sql/best-practices-sql-pool.md)také doporučené postupy.
 
 #### <a name="required-database-permission"></a>Požadované oprávnění k databázi
 
@@ -740,7 +749,7 @@ Nastavení specifická pro Azure Synapse Analytics jsou k dispozici na kartě **
 Když kopírujete data z Azure Synapse Analytics nebo do ní, použijí se z datových typů Azure Synapse Analytics následující mapování do dočasných datových typů Azure Data Factory. Podívejte se na schéma a mapování datových typů se [dozvíte,](copy-activity-schema-and-type-mapping.md) jak aktivita kopírování mapuje zdrojové schéma a datový typ do jímky.
 
 >[!TIP]
->Podívejte se na [datové typy tabulky v článku Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) o datových typech podporovaných SQL DW a o zástupných řešeních pro nepodporované datové typy.
+>Podívejte se na [datové typy tabulky v článku Azure Synapse Analytics](../synapse-analytics/sql/develop-tables-data-types.md) o datových typech podporovaných SQL DW a o zástupných řešeních pro nepodporované datové typy.
 
 | Datový typ Azure Synapse Analytics    | Dočasný datový typ datové továrny |
 | :------------------------------------ | :----------------------------- |

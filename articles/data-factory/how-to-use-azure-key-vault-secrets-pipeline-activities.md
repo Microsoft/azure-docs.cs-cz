@@ -10,14 +10,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 09051ad3633ddc720cb34d3d145ccf649fa9cb08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77200108"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417081"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Použití tajných kódů služby Azure Key Vault v aktivitách kanálu
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Můžete uložit přihlašovací údaje nebo tajné hodnoty v trezoru klíčů Azure a použít je během spuštění kanálu předat své aktivity.
 
@@ -52,7 +54,7 @@ Tato funkce závisí na identitě spravované z datové továrny.  Zjistěte, ja
     |Zabezpečený výstup     |True         |
     |zprostředkovatele identity     |[Vaše tajná hodnota identifikátoru URI]?api-version=7.0         |
     |Metoda     |GET         |
-    |Ověřování     |MSI         |
+    |Authentication     |MSI         |
     |Prostředek        |https://vault.azure.net       |
 
     ![Webová aktivita](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)

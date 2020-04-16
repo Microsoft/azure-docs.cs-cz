@@ -7,14 +7,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
-ms.openlocfilehash: 18f8b0732e4af0229ff225d9c3b423e27bf342a8
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c09a035c8994118b0fb116f357485766e05883ac
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382800"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418435"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce mapováním toků dat a laděním
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Mapování toků dat v Azure Data Factory poskytuje rozhraní bez kódu pro navrhování, nasazování a orchestraci transformace dat ve velkém měřítku. Pokud nejste obeznámeni s mapováním toků dat, podívejte se na [přehled toku dat mapování](concepts-data-flow-overview.md).
 

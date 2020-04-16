@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 02/04/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9dfe499a7d6084a23fd71ab98db472befe71fc04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024360"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416997"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 
@@ -29,7 +29,7 @@ Průzkumník přehledů časové řady podporuje parametry dotazu URL k určení
 
 ## <a name="environment-id"></a>ID prostředí
 
-Parametr `environmentId=<guid>` určuje ID cílového prostředí. Je součástí hlavního přístupu k datům a najdete ho v pravém horním rohu přehledu prostředí na webu Azure Portal. Je to vše před `env.timeseries.azure.com`.
+Parametr `environmentId=<guid>` určuje ID cílového prostředí. Je součástí hlavního přístupu k datům a najdete ho v pravém horním rohu přehledu prostředí na webu Azure Portal. Je to všechno, `env.timeseries.azure.com`co předchází .
 
 Příkladem parametru ID prostředí je `?environmentId=10000000-0000-0000-0000-100000000108`.
 

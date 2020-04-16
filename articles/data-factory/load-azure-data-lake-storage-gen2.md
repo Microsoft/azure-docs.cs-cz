@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 90573f77c77d614923f882053145d2f84598953d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96674f059e9cbc21c5c8c64eff8c94c810c4aa32
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440238"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417772"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen2 s Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Lake Storage Gen2 je sada funkcí určených pro analýzu velkých objemů dat, integrované do [úložiště objektů blob Azure](../storage/blobs/storage-blobs-introduction.md). To vám umožní rozhraní s daty pomocí souborového systému a paradigmat pro ukládání objektů.
 
@@ -82,7 +84,7 @@ Tento článek ukazuje, jak pomocí nástroje Data Factory Copy Data tool načí
    1. Zadejte hodnotu **ID přístupového klíče.**
    2. Zadejte hodnotu **klíče tajného přístupu.**
    3. Kliknutím na **Test připojení** ověřte nastavení a pak vyberte **Dokončit**.
-   4. Uvidíte nové připojení dostane vytvořen. Vyberte **další**.
+   4. Uvidíte nové připojení dostane vytvořen. Vyberte **Další**.
    
       ![Zadejte účet Amazon S3](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       

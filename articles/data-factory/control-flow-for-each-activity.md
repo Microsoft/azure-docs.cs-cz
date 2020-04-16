@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 71528385563b29ce70edf396434be0174beac105
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804839"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417183"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Pro každou aktivitu v Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Aktivita ForEach definuje opakující se tok řízení v kanálu. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
 
 ## <a name="syntax"></a>Syntaxe
@@ -491,6 +493,6 @@ Zde jsou některá omezení foreach aktivity a navrhovaná řešení.
 Podívejte se na další aktivity toku řízení podporované factory: 
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
-- [Získat aktivitu metadat](control-flow-get-metadata-activity.md)
+- [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)

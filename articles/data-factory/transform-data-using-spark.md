@@ -10,17 +10,19 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/31/2018
-ms.openlocfilehash: eb887a7d9081875c28964ddb1e3d1b2e609862fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c39575e8ea60a091124c633f8958ec36e8a61885
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912971"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418843"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Spark v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-spark.md)
 > * [Aktuální verze](transform-data-using-spark.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivita Spark v [kanálu](concepts-pipelines-activities.md) Data Factory spustí program Spark na [vlastní](compute-linked-services.md#azure-hdinsight-linked-service) cluster nebo [na vyžádání](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight. Tento článek vychází z článku [aktivit transformace dat,](transform-data.md) který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Když používáte propojenou službu Na vyžádání, Data Factory automaticky vytvoří cluster Spark pro zpracování dat a po dokončení zpracování cluster uhasí. 
 

@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 7b7ef3b6f2d400dafb28cfb7a15cf95cbbe2c457
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 76085dc29d40944cf704dbc5efc578b3314f499a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351012"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419234"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí nákupního modelu DTU
 
@@ -33,13 +33,16 @@ Pro elastické fondy databáze SQL zobrazí následující tabulky prostředky, 
 > [!NOTE]
 > Omezení prostředků jednotlivých databází v elastických fondech jsou obecně stejné jako pro jednotlivé databáze mimo fondy založené na DTU a vrstvě služby. Například maximální počet souběžných pracovníků pro databázi S2 je 120 pracovníků. Takže maximální souběžné pracovníky pro databázi ve fondu Standard je také 120 pracovníků, pokud je maximální DTU na databázi ve fondu 50 DTU (což je ekvivalentní S2).
 
+> [!NOTE]
+> Limit prostředků úložiště na fond v každé z následujících tabulek nezahrnuje úložiště tempdb a protokolu.
+
 ### <a name="basic-elastic-pool-limits"></a>Základní limity elastického fondu
 
 | Počet eDTU na fond | **50** | **100** | **200** | **300** | **400** | **800** | **1200** | **1600** |
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maximální počet možností úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. |
+| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – | – | – | – |
 | Maximální počet DB s počtem na fond <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovníků (požadavků) na fond <sup>2</sup> | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -58,7 +61,7 @@ Pro elastické fondy databáze SQL zobrazí následující tabulky prostředky, 
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | Maximální počet možností úložiště na fond (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. |
+| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – | – |
 | Maximální počet DB s počtem na fond <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovníků (požadavků) na fond <sup>2</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -77,7 +80,7 @@ Pro elastické fondy databáze SQL zobrazí následující tabulky prostředky, 
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maximální počet možností úložiště na fond (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. |
+| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – |
 | Maximální počet DB s počtem na fond <sup>1</sup> | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovníků (požadavků) na fond <sup>2</sup> | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |

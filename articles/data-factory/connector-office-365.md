@@ -11,21 +11,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: d97b3caccc92f0fdfeb229d94e30ee6499c26181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea68fa8d9326e6d9ebb4f475d16ac83959cae6e5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912401"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416873"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopírování dat z Office 365 do Azure pomocí Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory se integruje s [Microsoft Graph data connect](https://docs.microsoft.com/graph/data-connect-concept-overview), což vám umožní přenést bohatá organizační data ve vašem tenantovi Office 365 do Azure škálovatelným způsobem a vytvářet analytické aplikace a extrahovat přehledy založené na těchto cenných datových prostředkůch. Integrace se správou privilegovaného přístupu poskytuje zabezpečené řízení přístupu pro cenná kurátorská data v Office 365.  Přehled připojení dat microsoft graphu naleznete v [tomto odkazu](https://docs.microsoft.com/graph/data-connect-concept-overview) a informace o licencích naleznete v [tomto odkazu.](https://docs.microsoft.com/graph/data-connect-policies#licensing)
 
 Tento článek popisuje, jak pomocí kopírovat aktivitu v Azure Data Factory ke kopírování dat z Office 365. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
-Konektor ADF Office 365 a připojení dat microsoft graphu umožňují při škálování při řání různých typů datových sad z poštovních schránek s povoleným e-mailem Exchange, včetně kontaktů v adresáři, událostí kalendáře, e-mailových zpráv, informací o uživateli, nastavení poštovní schránky a tak dále.  Zde [here](https://docs.microsoft.com/graph/data-connect-datasets) naleznete úplný seznam dostupných datových sad.
+Konektor ADF Office 365 a připojení dat Microsoft Graphu umožňují při škálování při řání různých typů datových sad z poštovních schránek s povoleným e-mailem Exchange, včetně kontaktů adresáře, událostí kalendáře, e-mailových zpráv, informací o uživateli, nastavení poštovní schránky a tak dále.  Zde [here](https://docs.microsoft.com/graph/data-connect-datasets) naleznete úplný seznam dostupných datových sad.
 
 Prozatím můžete v rámci jedné aktivity kopírování kopírovat jenom **data z Office 365 do [Azure Blob Storage](connector-azure-blob-storage.md), Azure Data Lake Storage [Gen1](connector-azure-data-lake-store.md)a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) ve formátu JSON** (typ setOfObjects). Pokud chcete načíst Office 365 do jiných typů úložišť dat nebo v jiných formátech, můžete zřetězit první aktivitu kopírování s následnou aktivitou kopírování a dále načíst data do některého z [podporovaných cílových úložišť ADF](copy-activity-overview.md#supported-data-stores-and-formats) (viz sloupec "Podporováno jako jímka" v tabulce Podporovaná úložiště a formáty dat).
 
@@ -63,11 +64,11 @@ Pokud je adf vytvořen jako součást spravované aplikace a přiřazení zásad
 
 Můžete vytvořit kanál s aktivitou kopírování pomocí jednoho z následujících nástrojů nebo sad SDK. Vyberte odkaz pro přejděte do kurzu s podrobnými pokyny k vytvoření kanálu s aktivitou kopírování. 
 
-- [Portál Azure](quickstart-create-data-factory-portal.md)
-- [Sada SDK rozhraní .NET](quickstart-create-data-factory-dot-net.md)
+- [portál Azure](quickstart-create-data-factory-portal.md)
+- [.NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Python SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
-- [ROZHRANÍ API PRO ODPOČINEK](quickstart-create-data-factory-rest-api.md)
+- [REST API](quickstart-create-data-factory-rest-api.md)
 - [Šablona Azure Resource Manager](quickstart-create-data-factory-resource-manager-template.md). 
 
 V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit Data Factory specifických pro konektor Office 365.

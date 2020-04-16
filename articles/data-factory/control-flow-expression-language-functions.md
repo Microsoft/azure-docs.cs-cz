@@ -10,24 +10,25 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 9ef4b569fd8413d2825374c963fb272dd450cf0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c456e486217886510a1fd2ef1aeabae47d35b53c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533142"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417191"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Výrazy a funkce ve službě Azure Data Factory
 
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-functions-variables.md)
 > * [Aktuální verze](control-flow-expression-language-functions.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek obsahuje podrobnosti o výrazy a funkce podporované Azure Data Factory. 
 
 ## <a name="expressions"></a>Výrazy
 
-JSON hodnoty v definici může být literál nebo výrazy, které jsou vyhodnocovány za běhu. Například:  
+JSON hodnoty v definici může být literál nebo výrazy, které jsou vyhodnocovány za běhu. Příklad:  
   
 ```json
 "name": "value"
@@ -142,7 +143,7 @@ V následujícím příkladu kanálu trvá **inputPath** a **outputPath** parame
 Tento [kurz](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) vás provede, jak předat parametry mezi kanálu a aktivity, jakož i mezi aktivitami.
 
   
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Můžete volat funkce v rámci výrazů. V následujících částech jsou uvedeny informace o funkcích, které lze použít ve výrazu.  
 

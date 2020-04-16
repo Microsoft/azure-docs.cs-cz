@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ac2426bbfa074e58aa5c4a213f3ecbee20052358
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d78d533bc4a863a0a70b1dbb47bdfa85d539884f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444368"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417441"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopírování dat z Couchbase pomocí Azure Data Factory (Preview)
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat z Couchbase. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
 
 > [!IMPORTANT]

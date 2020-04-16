@@ -3,12 +3,12 @@ title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků Azure umožňuje prostředí pro správu mezi tenanty.
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 66e2b2f7fbbae5940b576ead22a416625af3c058
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754133"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418506"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -25,11 +25,7 @@ Obvykle za účelem správy prostředků Azure pro zákazníka by se poskytovate
 
 Díky správě delegovaných prostředků Azure určuje proces registrace uživatele v rámci tenanta poskytovatele služeb, kteří budou mít přístup k předplatným, skupinám prostředků a prostředkům v tenantovi zákazníka a spravovat je. Tito uživatelé se pak můžou přihlásit k portálu Azure pomocí vlastních přihlašovacích údajů. V rámci portálu Azure můžou spravovat prostředky patřící všem zákazníkům, ke kterým mají přístup. To lze provést na stránce [Moji zákazníci](../how-to/view-manage-customers.md) na webu Azure Portal nebo přímo v rámci předplatného tohoto zákazníka, a to buď na portálu Azure, nebo prostřednictvím api.
 
-Správa delegovaných prostředků Azure umožňuje větší flexibilitu při správě prostředků pro více zákazníků, aniž byste se museli přihlašovat k různým účtům v různých klientech. Poskytovatel služeb může mít například tři zákazníky s různými povinnostmi a úrovněmi přístupu, jak je znázorněno zde:
-
-![Tři klienti zákazníků zobrazující odpovědnosti poskytovatele služeb](../media/azure-delegated-resource-management-customer-tenants.jpg)
-
-Pomocí správy delegovaných prostředků Azure se oprávnění uživatelé můžou přihlásit k tenantovi poskytovatele služeb a získat tak přístup k těmto prostředkům, jak je znázorněno tady:
+Správa delegovaných prostředků Azure umožňuje větší flexibilitu při správě prostředků pro více zákazníků, aniž byste se museli přihlašovat k různým účtům v různých klientech. Poskytovatel služeb může mít například dva zákazníky s různými povinnostmi a úrovněmi přístupu. Pomocí azure delegované správy prostředků se oprávnění uživatelé můžou přihlásit k tenantovi poskytovatele služeb, aby měli přístup k těmto prostředkům.
 
 ![Prostředky zákazníků spravované prostřednictvím jednoho klienta poskytovatele služeb](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 

@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: bfa308e2cc67bd14a248f3edc7b182f9a772ed98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238704"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417173"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Pokud aktivita stavu v Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycích. Vyhodnotí sadu aktivit, když se podmínka vyhodnotí jako `true`, a jinou sadu aktivit, když se podmínka vyhodnotí jako `false`. 
 
 ## <a name="syntax"></a>Syntaxe
@@ -290,6 +292,6 @@ Podívejte se na další aktivity toku řízení podporované factory:
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Aktivita For Each](control-flow-for-each-activity.md)
-- [Získat aktivitu metadat](control-flow-get-metadata-activity.md)
+- [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)

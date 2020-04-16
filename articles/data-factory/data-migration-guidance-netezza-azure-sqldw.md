@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 80c9929f37b4890387a7625f04db6ce3e37f0cdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74922124"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416459"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Migrace dat z místního serveru Netezza do Azure pomocí Azure Data Factory 
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory poskytuje výkonný, robustní a nákladově efektivní mechanismus pro migraci dat ve velkém měřítku z místního serveru Netezza do vašeho účtu úložiště Azure nebo databáze Azure SQL Data Warehouse. 
 
@@ -139,7 +141,7 @@ Každá tabulka může k identifikaci nových nebo aktualizovaných řádků pou
 
 ### <a name="configure-a-self-hosted-integration-runtime"></a>Konfigurace prostředí runtime integrace s vlastním hostitelem
 
-Pokud migrujete data ze serveru Netezza do Azure, ať už je server místní za bránou firewall vaší společnosti nebo v prostředí virtuální sítě, musíte nainstalovat infračervený přenos s vlastním hostitelem na počítač s Windows nebo virtuální počítač, což je modul, který se používá k přesunout data. Při instalaci infračerveného systému s vlastním hostitelem doporučujeme následující postup:
+Pokud migrujete data ze serveru Netezza do Azure, ať už je server místně za bránou firewall vaší společnosti nebo v prostředí virtuální sítě, musíte nainstalovat infračervený přenos s vlastním hostitelem na počítač s Windows nebo virtuální počítač, což je modul, který se používá k přesunu dat. Při instalaci infračerveného systému s vlastním hostitelem doporučujeme následující postup:
 
 - Pro každý počítač s Windows nebo virtuální počítač, začněte s konfigurací 32 virtuálních procesorů a 128 GB paměti. Během migrace dat můžete sledovat využití procesoru a paměti infračerveného počítače a zjistit, zda je třeba dále vertikálně navýšit kapacitu počítače pro lepší výkon nebo zmenšit kapacitu počítače, abyste ušetřili náklady.
 
@@ -151,7 +153,7 @@ Jako osvědčený postup proveďte ověření výkonu konceptu (POC) s reprezent
 
 Chcete-li zkopírovat tabulku, začněte s aktivitou jedné kopie pomocí jednoho počítače infračerveného počítače s vlastním hostitelem. Postupně zvyšujte `parallelCopies` nastavení na základě počtu oddílů s řezy dat v tabulce. Zjistěte, jestli celou tabulku lze načíst do Azure do dvou hodin, podle propustnost, která je výsledkem úlohy kopírování. 
 
-Pokud se do Azure nenačte do dvou hodin a kapacita infračerveného uzlu hostovaného na vlastním trhu a úložiště dat není plně využita, postupně zvyšujte počet souběžných aktivit kopírování, dokud nedosáhnete limitu sítě nebo limitu šířky pásma dat. Obchody. 
+Pokud ji nelze načíst do Azure do dvou hodin a kapacita samoobslužného infračerveného uzlu a úložiště dat nejsou plně využity, postupně zvyšujte počet souběžných aktivit kopírování, dokud nedosáhnete limitu sítě nebo limitu šířky pásma úložišť dat. 
 
 Mějte sledování využití procesoru a paměti na samoobslužné infračervený počítač a buďte připraveni vertikálně navýšit kapacitu počítače nebo horizontální navýšení kapacity do více počítačů, když uvidíte, že procesor a paměť jsou plně používány. 
 

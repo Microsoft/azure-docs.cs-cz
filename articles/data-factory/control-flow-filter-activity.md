@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 5794a2c754e2082fdf45ad689bdb89ea494541c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73679862"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417211"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Filtrování aktivity ve Službě Azure Data Factory
 Aktivitu filtru v kanálu můžete použít k použití výrazu filtru na vstupní pole. 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -114,10 +115,10 @@ V tomto příkladu má kanál dvě aktivity: **Filter** a **ForEach**. Aktivita 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na další aktivity toku řízení podporované factory: 
 
-- [Aktivita podmínky If](control-flow-if-condition-activity.md)
+- [Aktivita podmínky Když](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Aktivita For Each](control-flow-for-each-activity.md)
-- [Získat aktivitu metadat](control-flow-get-metadata-activity.md)
+- [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

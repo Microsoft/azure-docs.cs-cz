@@ -5,16 +5,16 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 6e23c716a965cdf178c9f847900e66c141d5d7eb
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b6e501cdc1d5091a27d86406c6919587bedb261a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680333"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417687"
 ---
-# <a name="limits"></a>Omezení
+# <a name="limitations"></a>Omezení
 
-Řada funkcí má omezení velikosti nebo počtu kvůli interním podrobnostem spuštěného systému.
+Řada funkcí má velikost, počet nebo jiná omezení.
 
 ## <a name="azure-frontend"></a>Azure Front-end
 
@@ -26,7 +26,7 @@ ms.locfileid: "80680333"
 * Celkový počet povolených objektů jednoho typu (entita, komponenta CutPlaneComponent atd.): 16 777 215.
 * Celkový přípustný počet aktivních rovin řezu: 8.
 
-## <a name="materials"></a>Materials
+## <a name="materials"></a>Materiály
 
 * Celkový přípustný počet povolených materiálů v aktivu: 65 535.
 
@@ -40,4 +40,13 @@ Povolený počet mnohomocnic pro všechny načtené modely závisí na velikosti
 |Premium| bez omezení |
 
 
+## <a name="platform-limitations"></a>Omezení platformy
 
+**Stolní počítač s Windows 10**
+
+* "Pc Standalone" nasazení z Unity není podporována. Místo toho použijte UPW.
+* UWP/x86 je jedinou podporovanou platformou UPW. UWP/x64 není podporován.
+
+**Hololens 2**
+
+* Funkce [vykreslení z PV kamery](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) není podporována.

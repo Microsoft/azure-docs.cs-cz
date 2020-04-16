@@ -11,18 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: fc81e66e609400c6558f00ee957ccaee715bd7fa
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 55687529045e705f0a80b900b1cddaa49dba64d9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991633"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417338"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopírování dat ze serveru FTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 >
 > * [Verze 1](v1/data-factory-ftp-connector.md)
 > * [Aktuální verze](connector-ftp.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak kopírovat data ze serveru FTP. Další informace o Azure Data Factory najdete v [úvodním článku](introduction.md).
 

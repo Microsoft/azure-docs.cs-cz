@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 33b257e9d344fc31df072509f105d2e8fd1bd29b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb9d697c11427c7ebbf811f9cc05740347c74452
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72245172"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417557"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Šifrování disku Azure pomocí Azure AD (předchozí verze)
 
@@ -27,7 +27,7 @@ Tento článek doplňuje [Azure Disk Encryption pro virtuální počítače s Wi
   - Chcete-li zapsat šifrovací klíče do trezoru klíčů, musí být virtuální počítač IaaS schopen se připojit ke koncovému bodu trezoru klíčů.
   - Virtuální počítač IaaS musí být schopen se připojit ke koncovému bodu úložiště Azure, který je hostitelem úložiště rozšíření Azure a účtu úložiště Azure, který hostuje soubory Virtuálního pevného disku.
   -  Pokud vaše zásady zabezpečení omezují přístup z virtuálních počítačů Azure k Internetu, můžete vyřešit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo, které umožní odchozí připojení k IP adresám. Další informace naleznete v [tématu Azure Key Vault za bránou firewall](../../key-vault/key-vault-access-behind-firewall.md).
-  - Pokud byla verze TLS 1.0 v systému Windows explicitně zakázána a verze rozhraní .NET nebyla aktualizována na verzi 4.6 nebo vyšší, následující změna registru umožní ade vybrat novější verzi TLS:
+  - Zašifrovaný virtuální virtuální počítače musí být nakonfigurován tak, aby jako výchozí protokol používal protokol TLS 1.2. Pokud byl tls 1.0 explicitně zakázán a verze rozhraní .NET nebyla aktualizována na 4.6 nebo vyšší, následující změna registru umožní ADE vybrat novější verzi TLS:
     
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
         "SystemDefaultTlsVersions"=dword:00000001

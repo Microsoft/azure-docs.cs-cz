@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cb2302637efb16fc31bd420bf8c4ead19d7f598d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a2d79391832bbb5424c6d4096eb5c1a597623367
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384963"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81422304"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Potřebuje uživatel mít rozbočovač a mluvil se zařízeními SD-WAN/VPN, aby mohl používat Azure Virtual WAN?
 
@@ -208,6 +208,13 @@ Ano. Připojení k internetu a fyzické zařízení, které podporuje IPsec, nej
 ### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Jak povolím výchozí trasu (0.0.0.0/0) v připojení (VPN, ExpressRoute nebo virtuální síť):
 
 Virtuální rozbočovač může šířit naučenou výchozí trasu do připojení VPN/ExpressRoute mezi lokalitami, pokud je příznak v připojení povolen. Tento příznak je viditelný, když uživatel ueviduje připojení k virtuální síti, připojení VPN nebo připojení ExpressRoute. Ve výchozím nastavení je tento příznak zakázán, pokud je lokalita nebo okruh ExpressRoute připojen k rozbočovači. Je ve výchozím nastavení povolena, když se přidá připojení k virtuální síti pro připojení virtuální sítě k virtuálnímu rozbočovači. Výchozí trasa nepochází z rozbočovače Virtuální WAN. Výchozí trasa je šířena, pokud se již zjistilo, že centrum Virtual WAN v důsledku nasazení brány firewall v rozbočovači nebo pokud je povoleno vynucené tunelové propojení jiné připojené lokality.
+
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Jak virtuální rozbočovač ve virtuální malze vymezuje nejlepší cestu pro trasu z více rozbočovačů
+
+Pokud se virtuální centrum naučí stejnou trasu z více vzdálených rozbočovačů, pořadí, ve kterém se rozhodne, je následující:
+1) Původ trasy a) Síťové trasy – předpony virtuální sítě přímo naučné branami virtuálního rozbočovače b) BGP c) Hub RouteTable (staticky nakonfigurované trasy) d) trasy InterHub
+2)  Metrika trasy : Virtuální síť WAN upřednostňuje expressroute před VPN. Peer ExpressRoute mají vyšší váhu ve srovnání s partnerem VPN
+3)  Délka cesty AS
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Jaké jsou rozdíly mezi virtuálními typy WAN (základní a standardní)?
 

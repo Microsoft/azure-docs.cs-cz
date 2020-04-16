@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 2113e5ac3563a22c5f2c6b755230b05fb9a2cb35
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583876"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417039"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu s využitím uspořádaného clusterovaného indexu columnstore  
 
@@ -28,7 +28,7 @@ Ve výchozím nastavení pro každou tabulku vytvořenou bez možnosti indexu vy
 
 Při vytváření objednané CCI, Synapse SQL engine seřadí existující data v paměti podle klíče pořadí před tvůrce indexu komprimuje do segmentů indexu.  U seřazených dat je omezení překrývání segmentů, což umožňuje dotazům efektivnější eliminaci segmentů a tím i vyšší výkon, protože počet segmentů pro čtení z disku je menší.  Pokud lze všechna data seřadit v paměti najednou, lze se vyhnout překrývání segmentů.  Vzhledem k velké tabulky v datových skladech, tento scénář se nestává často.  
 
-Chcete-li zkontrolovat rozsahy segmentů pro sloupec, spusťte tento příkaz s názvem tabulky a názvem sloupce:
+Chcete-li zkontrolovat rozsahy segmentů pro sloupec, spusťte následující příkaz s názvem tabulky a názvem sloupce:
 
 ```sql
 SELECT o.name, pnp.index_id, 

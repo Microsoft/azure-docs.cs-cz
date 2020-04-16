@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/22/2019
-ms.openlocfilehash: 025b5c5c1e3b8543111e112202906ef6f1fdb482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 7a299ce16f6e9c7292cebf198c9c3077f8e05fcb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74561805"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417614"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Použití Jazyka C# s mapovým streamováním MapReduce na Apache Hadoop v HDInsightu
 
 Naučte se, jak pomocí jazyka C# vytvořit řešení MapReduce na webu HDInsight.
 
-Apache Hadoop streaming je nástroj, který umožňuje spustit MapReduce úlohy pomocí skriptu nebo spustitelného souboru. V tomto příkladu .NET se používá k implementaci mapper a reduktor pro řešení počtu slov.
+Apache Hadoop streaming umožňuje spustit MapReduce úlohy pomocí skriptu nebo spustitelný soubor. Zde .NET se používá k implementaci mapper a reduktor pro řešení počtu slov.
 
 ## <a name="net-on-hdinsight"></a>Rozhraní .NET na HDInsight
 
@@ -49,12 +49,9 @@ Další informace o streamování naleznete v tématu [Hadoop Streaming](https:/
 
 * Pokud používáte Prostředí PowerShell, budete potřebovat [modul Az](https://docs.microsoft.com/powershell/azure/overview).
 
-* Klient SSH (nepovinné). Další informace naleznete [v tématu Připojení k HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
 * Cluster Apache Hadoop na HDInsight. Viz [Začínáme s HDInsight na Linuxu](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* [Schéma URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To by `wasb://` bylo pro `abfs://` Azure Storage, pro `adl://` Azure Data Lake Storage Gen2 nebo pro Azure Data Lake Storage Gen1. Pokud je zabezpečený přenos povolen pro Azure Storage nebo `wasbs://` `abfss://`Data Lake Storage Gen2, identifikátor URI by byl nebo , respektive Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
-
+* [Schéma URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. Toto schéma `wasb://` by bylo `abfs://` pro Azure Storage, `adl://` pro Azure Data Lake Storage Gen2 nebo pro Azure Data Lake Storage Gen1. Pokud je zabezpečený přenos povolen pro Azure Storage nebo `wasbs://` `abfss://`Data Lake Storage Gen2, identifikátor URI by byl nebo , respektive Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="create-the-mapper"></a>Vytvoření mapovače
 
@@ -221,14 +218,16 @@ Následující postup popisuje, jak spustit úlohu MapReduce pomocí relace SSH:
 
    Následující seznam popisuje, co jednotlivé parametry a možnosti představují:
 
-   * *hadoop-streaming.jar*: Určuje soubor jar, který obsahuje funkci streamování MapReduce.
-   * `-files`: Určuje soubory *mapper.exe* a *reducer.exe* pro tuto úlohu. `wasbs:///`Deklarace `adl:///`, `abfs:///` nebo protokol před každým souborem je cesta ke kořenovému adresáři výchozího úložiště pro cluster.
-   * `-mapper`: Určuje soubor, který implementuje mapovač.
-   * `-reducer`: Určuje soubor, který implementuje reduktor.
-   * `-input`: Určuje vstupní data.
-   * `-output`: Určuje výstupní adresář.
+   |Parametr | Popis |
+   |---|---|
+   |hadoop-streaming.jar|Určuje soubor jar, který obsahuje funkci streamování MapReduce.|
+   |-soubory|Určuje soubory *mapper.exe* a *reducer.exe* pro tuto úlohu. `wasbs:///`Deklarace `adl:///`, `abfs:///` nebo protokol před každým souborem je cesta ke kořenovému adresáři výchozího úložiště pro cluster.|
+   |-mapovač|Určuje soubor, který implementuje mapovač.|
+   |-reduktor|Určuje soubor, který implementuje reduktor.|
+   |-vstup|Určuje vstupní data.|
+   |-výstup|Určuje výstupní adresář.|
 
-3. Po dokončení úlohy MapReduce zobrazte výsledky pomocí následujícího příkazu:
+1. Po dokončení úlohy MapReduce zobrazte výsledky pomocí následujícího příkazu:
 
    ```bash
    hdfs dfs -text /example/wordcountout/part-00000

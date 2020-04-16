@@ -1,5 +1,5 @@
 ---
-title: Důležité informace o zabezpečení
+title: Aspekty zabezpečení
 description: Popisuje základní infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k zabezpečení vašich dat.
 services: data-factory
 ms.author: abnarain
@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: bee627ade4f66206cd5254fc32bc7aa9973c7bee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131316"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416469"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Důležité informace o zabezpečení pro přesun dat v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 >
 > * [Verze 1](v1/data-factory-data-movement-security-considerations.md)
 > * [Aktuální verze](data-movement-security-considerations.md)
+
+ [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tento článek popisuje základní infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k zabezpečení vašich dat. Prostředky správy Data Factory jsou postavené na infrastruktuře zabezpečení Azure a využívají všechna možná bezpečnostní opatření nabízená Azure.
 

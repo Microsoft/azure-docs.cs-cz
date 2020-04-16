@@ -10,14 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 85b1d6b532ba11819947558226291e62af6b5119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40b1b8d040c4b3ea76372920f88551fba35c5f26
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75690939"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419438"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Vizuální monitorování Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Po vytvoření a publikování kanálu v Azure Data Factory ho můžete přidružit k aktivační události nebo ručně zahájit ad hoc spuštění. Všechny vaše kanály běží nativně v uživatelském prostředí Azure Data Factory. Chcete-li otevřít prostředí monitorování, vyberte dlaždici **Monitor & Správa** v okně datové továrny na webu Azure [Portal](https://portal.azure.com/). Pokud jste již v uživatelském panelu ADF, klikněte na ikonu **Monitor** na levém postranním panelu.
 

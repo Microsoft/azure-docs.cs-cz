@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 065610a9de4898d012cef8a16849c09a81f0774c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7470af23059ccd07e48050e6dc34521e299a986f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76841093"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418605"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Konfigurace modulu runtime integrace služby Azure-SQL Server Integration Services (SSIS) pro připojení k virtuální síti
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento kurz obsahuje základní kroky pro použití portálu Azure ke konfiguraci modulu runtime integrace Azure-SQL Server Integration Services (SSIS) pro připojení k virtuální síti.
 
@@ -70,7 +72,7 @@ Než se pokusíte připojit infračervený přenos Azure-SSIS, použijte portál
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují uživatelské nastavení datové továrny.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **Další služby**. Filtrovat a vybrat **virtuální sítě**.
 

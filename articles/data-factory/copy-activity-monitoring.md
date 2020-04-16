@@ -1,5 +1,5 @@
 ---
-title: Sledovat aktivitu kopírování
+title: Monitorování aktivity kopírování
 description: Přečtěte si, jak sledovat provádění aktivit kopírování v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: jingwang
-ms.openlocfilehash: 6494352bf957af83b45488493bf12a094c730c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47824095e892ca3c919d2d871feb612758ab2308
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79125755"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417840"
 ---
-# <a name="monitor-copy-activity"></a>Sledovat aktivitu kopírování
+# <a name="monitor-copy-activity"></a>Monitorování aktivity kopírování
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak sledovat provádění aktivity kopírování v Azure Data Factory. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
 
@@ -153,4 +155,4 @@ Podívejte se na další články aktivity kopírování:
 
 \-[Kopírovat přehled aktivit](copy-activity-overview.md)
 
-\-[Kopírovat výkon aktivity](copy-activity-performance.md)
+\- [Výkon aktivity kopírování](copy-activity-performance.md)

@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 0798a3f9ab45ce68086681e7aea96deeb9639f94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2923e087426ee04c74da629f4e2d2d49a06eb1ef
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834543"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416536"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Změna transformace řádků v toku dat mapování
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Pomocí transformace Alter Row nastavte na řádcích zásady vložení, odstranění, aktualizace a upsert. Jako výrazy můžete přidat podmínky 1:N. Tyto podmínky by měly být specifikovány v pořadí podle priority, protože každý řádek bude označen zásadou odpovídající výrazu první hospo- odpovídající. Každá z těchto podmínek může mít za následek řádek (nebo řádky) vkládá, aktualizuje, odstraní nebo upserted. Alter Row může vytvořit obě akce DDL & DML proti databázi.
 

@@ -10,16 +10,17 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: a0c07aaf27825254f776a03b9b9ca2cbeddca02d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 344ad8e106c119c1de59570d1ec4e3df5e1cc8af
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250270"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417106"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získání aktivity metadat v Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivitu Získat metadata můžete použít k načtení metadat všech dat v Azure Data Factory. Tuto aktivitu můžete použít v následujících scénářích:
 
@@ -40,7 +41,7 @@ Get Metadata aktivita trvá datovou sadu jako vstup a vrátí informace metadat 
 
 ### <a name="supported-connectors"></a>Podporované konektory
 
-**File Storage**
+**Úložiště souborů**
 
 | Konektor/metadata | název_položky<br>(soubor/složka) | Itemtype<br>(soubor/složka) | velikost<br>(soubor) | Vytvořen<br>(soubor/složka) | lastModified<br>(soubor/složka) |podřízené položky<br>(složka) |obsahMD5<br>(soubor) | – struktura<br/>(soubor) | Columncount<br>(soubor) | Existuje<br>(soubor/složka) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -54,6 +55,7 @@ Get Metadata aktivita trvá datovou sadu jako vstup a vrátí informace metadat 
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
+- Při použití aktivity získat metadata proti složce, ujistěte se, že máte LIST/EXECUTE oprávnění k dané složce.
 - Pro Amazon S3 a `lastModified` Google Cloud Storage, se vztahuje na kbelík a `exists` klíč, ale ne na virtuální složku, a platí pro kbelík a klíč, ale ne na předponu nebo virtuální složku.
 - Pro úložiště objektů `lastModified` blob Azure platí pro kontejner a objekt blob, ale ne pro virtuální složku.
 - `lastModified`filtr se aktuálně vztahuje na podřízené položky filtru, ale ne na samotnou zadanou složku nebo soubor.
