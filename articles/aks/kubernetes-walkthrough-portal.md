@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: e91e5e2701b02ab4c705cd80117dfc7689c7d054
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: e4ac5a953b5d88d0074c3cfb7f1bd45331577238
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668456"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392793"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Úvodní příručka: Nasazení clusteru služby Azure Kubernetes Service (AKS) pomocí portálu Azure
 
@@ -25,7 +25,7 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
@@ -52,6 +52,8 @@ Pokud chcete vytvořit cluster AKS, proveďte následující kroky:
 5. Na stránce **Ověřování** nakonfigurujte následující možnosti:
     - Vytvořte nový instanční objekt tak, že ponecháte pole **Zaregistrovaný objekt servisu** s **(novým) výchozím instančním objektem .** Nebo můžete zvolit *Konfigurovat instanční objekt* pro použití existujícího objektu. Pokud používáte existující, budete muset zadat ID klienta SPN a tajný klíč.
     - Povolte možnost řízení přístupu na základě role (RBAC) v Kubernetes. To zajistí podrobnější kontrolu nad přístupem k prostředkům Kubernetes nasazeným v clusteru AKS.
+
+    Alternativně můžete použít spravovanou identitu namísto instančního objektu. Další informace najdete v [tématu použití spravovaných identit.](use-managed-identity.md)
 
 Ve výchozím nastavení se používá *základní* sítě a Azure Monitor pro kontejnery je povolená. Klikněte na **Revize + vytvořit** a potom **vytvořit** po dokončení ověření.
 
@@ -250,7 +252,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
 
 > [!NOTE]
-> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete].
+> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete]. Pokud jste použili spravovanou identitu, identita je spravována platformou a nevyžaduje odebrání.
 
 ## <a name="get-the-code"></a>Získání kódu
 

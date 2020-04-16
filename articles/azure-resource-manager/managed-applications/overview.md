@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: b4aa5dfd288819930da2f7af36b7d70df709e638
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79473026"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391566"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
 
@@ -75,7 +75,7 @@ Při publikování [spravované aplikace na tržiště](publish-marketplace-app.
 
 Když zákazník spravovanou aplikaci odstraní, dojde i k odstranění spravované skupiny prostředků.
 
-## <a name="azure-policy"></a>Zásady Azure
+## <a name="azure-policy"></a>Azure Policy
 
 Na spravovanou aplikaci můžete použít zásady [Azure Policy](../../governance/policy/overview.md). Zásady se používají k zajištění souladu nasazených instancí vaší spravované aplikace s požadavky na data a zabezpečení. Pokud aplikace pracuje s citlivými daty, nezapomeňte vyhodnotit, jak by se měla tato data chránit. Například pokud aplikace pracuje s daty z Office 365, použijte zásadu, abyste měli jistotu, že je šifrování dat zapnuté.
 
@@ -84,4 +84,4 @@ Na spravovanou aplikaci můžete použít zásady [Azure Policy](../../governanc
 V tomto článku jste se dozvěděli o výhodách používání spravovaných aplikací. Přejděte na další článek, který se zabývá vytvořením definice spravované aplikace.
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Publikování definice aplikace spravované Azure](publish-managed-app-definition-quickstart.md)
+> [Rychlý start: Publikování definice aplikace spravované Azure](publish-service-catalog-app.md)

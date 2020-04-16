@@ -3,19 +3,19 @@ title: 'Kurz: Hlasy umožňují botovi používat řečOvou sdk - službu řeči
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte Echo Bot pomocí Microsoft Bot-Framework, nasadit do Azure a zaregistrovat pomocí bot-framework přímé linky řeči kanálu. Pak nakonfigurujete ukázkovou klientskou aplikaci pro Windows, která vám umožní mluvit s vaším robotem a slyšet, jak vám reaguje.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: dapine
-ms.openlocfilehash: 3c2d74eb7e46d9909d87a7ccadadd6129a3d48d8
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: b2c119f6552773bce7bb93a503c22324278ac0bc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397886"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399460"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: Hlasové povolení robota pomocí sady Speech SDK
 
@@ -56,7 +56,7 @@ Zde je to, co budete potřebovat k dokončení tohoto kurzu:
 
 - Počítač s Windows 10 s funkčním mikrofonem a reproduktory (nebo sluchátky)
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) nebo vyšší
-- [Sada .NET Core SDK](https://dotnet.microsoft.com/download) verze 2.1 nebo novější
+- [Rozhraní .NET Framework Runtime 4.6.1](https://dotnet.microsoft.com/download) nebo vyšší
 - Účet Azure. [Zaregistrujte se zdarma](https://azure.microsoft.com/free/ai/).
 - Účet [GitHub](https://github.com/)
 - [Git pro Windows](https://git-scm.com/download/win)
@@ -104,7 +104,7 @@ Podle těchto pokynů vytvořte zdroj řeči:
 
 V tomto okamžiku zkontrolujte, zda vaše skupina prostředků (**SpeechEchoBotTutorial-ResourceGroup**) má prostředek řeči:
 
-| Name (Název) | Typ  | Umístění |
+| Název | Typ  | Umístění |
 |------|-------|----------|
 | SpeechEchoBotTutorial-Řeč | Cognitive Services | USA – západ |
 
@@ -125,7 +125,7 @@ Dalším krokem je vytvoření plánu služby App Service. Plán služby App Ser
 
 V tomto okamžiku zkontrolujte, zda vaše skupina prostředků (**SpeechEchoBotTutorial-ResourceGroup**) má dva prostředky:
 
-| Name (Název) | Typ  | Umístění |
+| Název | Typ  | Umístění |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
 | SpeechEchoBotTutorial-Řeč | Cognitive Services | USA – západ |
@@ -164,7 +164,7 @@ Nyní, když jste vytvořili nějaké zdroje, pojďme vytvořit bot. Začneme se
 1. Instalace [emulátoru Rozhraní Bot](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) verze 4.3.0 nebo vyšší
 2. Spusťte Robot Framework Emulátor a otevřete bot:
    * **Soubor** -> **Open Bot**.
-3. Zadejte adresu URL svého robota. Například:
+3. Zadejte adresu URL svého robota. Příklad:
 
    ```
    http://localhost:3978/api/messages
@@ -207,7 +207,7 @@ Dalším krokem je nasazení Echo Bot do Azure. Existuje několik způsobů, jak
 1. Výchozí prohlížeč by měl otevřít a zobrazit stránku s nápisem: "Váš bot je připraven!".
 1. V tomto okamžiku zkontrolujte skupinu prostředků **SpeechEchoBotTutorial-ResourceGroup** na webu Azure portal a potvrďte, že existují tři prostředky:
 
-| Name (Název) | Typ  | Umístění |
+| Název | Typ  | Umístění |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA – západ |
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
@@ -248,7 +248,7 @@ Teď, když jste vytvořili službu Azure App Service pro hostování vašeho ro
 
 V tomto okamžiku zkontrolujte skupinu prostředků **SpeechEchoBotTutorial-ResourceGroup** na webu Azure Portal. Nyní by měl yukázat čtyři zdroje:
 
-| Name (Název) | Typ  | Umístění |
+| Název | Typ  | Umístění |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA – západ |
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
@@ -276,19 +276,23 @@ Nyní je čas zaregistrovat svého robota pomocí kanálu Direct Line Speech. Te
 > [!TIP]
 > Pokud se chcete dozvědět více, přečtěte si informace [o připojení robota k přímé muzice .](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) Tato stránka obsahuje další informace a známé problémy.
 
-## <a name="build-the-windows-voice-assistant-client"></a>Vytvoření klienta hlasového asistenta systému Windows
+## <a name="run-the-windows-voice-assistant-client"></a>Spuštění klienta hlasového asistenta systému Windows
 
-V tomto kroku vytvoříte klienta hlasového asistenta systému Windows. Klient je aplikace WPF (Windows Presentation Foundation) v C# , která používá [sadu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) ke správě komunikace s robotem pomocí kanálu Direct Line Speech. Použijte jej k interakci s a testování robota před napsáním vlastní klientské aplikace.
+V tomto kroku spustíte klienta hlasového asistenta systému Windows. Klient je aplikace WPF (Windows Presentation Foundation) v C# , která používá [sadu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) ke správě komunikace s robotem pomocí kanálu Direct Line Speech. Použijte jej k interakci s a testování robota před napsáním vlastní klientské aplikace. Je to open source, takže si můžete buď stáhnout spustitelný soubor a spustit jej, nebo jej vytvořit sami.
 
 Klient hlasového asistenta systému Windows má jednoduché rozhraní, které umožňuje konfigurovat připojení k robotovi, zobrazit textovou konverzaci, zobrazit aktivity Bot-Framework ve formátu JSON a zobrazit adaptivní karty. Podporuje také používání vlastních klíčových slov. Budete používat tento klient mluvit s bot a přijímat hlasovou odpověď.
 
 Než budeme pokračovat, ujistěte se, že máte zapnutý mikrofon a reproduktory a že fungují.
 
 1. Přejděte do úložiště GitHub pro [klienta hlasového asistenta Windows](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/README.md).
-2. Postupujte podle pokynů k klonování úložiště, sestavení projektu, konfiguraci klienta a spuštění klienta.
-3. Klikněte na **Znovu připojit** a ujistěte se, že se zobrazí zpráva **Stiskněte tlačítko mikrofonu nebo zadejte, abyste začali mluvit se svým robotem**.
-4. Pojďme to otestovat. Klikněte na tlačítko mikrofonu a promluvte několik slov v angličtině. Rozpoznaný text se zobrazí během mluví. Až budete hotovi mluvit, bot odpoví svým vlastním hlasem, řka: "echo" následovaný rozpoznaná slova.
-5. Můžete také použít text pro komunikaci s robotem. Stačí zadat text v dolní liště. 
+1. Postupujte podle pokynů, které jsou zde uvedeny,
+   * stáhnout balíček ZIP obsahující spustitelný soubor, nebo
+   * vytvořit spustitelný soubor sami, klonováním úložiště a sestavením projektu.
+
+1. Spusťte klientskou aplikaci a nakonfigurujte ji.
+1. Klikněte na **Znovu připojit** a ujistěte se, že se zobrazí zpráva **Stiskněte tlačítko mikrofonu nebo zadejte, abyste začali mluvit se svým robotem**.
+1. Pojďme to otestovat. Klikněte na tlačítko mikrofonu a promluvte několik slov v angličtině. Rozpoznaný text se zobrazí během mluví. Až budete hotovi mluvit, bot odpoví svým vlastním hlasem, řka: "echo" následovaný rozpoznaná slova.
+1. Můžete také použít text pro komunikaci s robotem. Stačí zadat text v dolní liště. 
 
 ### <a name="troubleshooting-errors-in-windows-voice-assistant-client"></a>Poradce při potížích s chybami v klientovi hlasového asistenta systému Windows
 
@@ -425,7 +429,7 @@ Teď, když jste provedli potřebnou změnu robota, je dalším krokem znovu pub
 2. Předchozí konfigurace nasazení již byla načtena jako výchozí. Jednoduše klepněte na tlačítko **Publikovat** vedle **položky EchoBot20190805125647 - Web Deploy**.
 3. Zpráva **Úspěšné publikování** se zobrazí ve výstupním okně sady Visual Studio a spustí se webová stránka se zprávou "Váš robot je připraven!".
 4. Otevřete klientskou aplikaci Windows Voice Assistant, klikněte na tlačítko nastavení (ikona pravého horního ozubeného kola) a ujistěte se, že máte `de-de` stále v poli Jazyk.
-5. Podle pokynů v [části Sestavení klienta hlasového asistenta systému Windows](#build-the-windows-voice-assistant-client) se znovu připojte k nově nasazenému robotovi, mluvte v novém jazyce a uslyšíte odpověď robota v tomto jazyce novým hlasem.
+5. Podle pokynů v [části Spusťte klienta hlasového asistenta systému Windows,](#run-the-windows-voice-assistant-client) abyste se znovu spojili s nově nasazeným robotem, mluvili v novém jazyce a slyšeli odpověď robota v tomto jazyce novým hlasem.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

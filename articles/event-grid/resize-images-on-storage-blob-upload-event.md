@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 868c7e3956f20837b3774c0958842a7835579a04
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: fc5e379aae7d8ff0d7cb685b0dd7e7e0a46bb677
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607503"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393292"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: Automatizace změna velikosti nahraných obrázků pomocí mřížky událostí
 
@@ -161,12 +161,12 @@ az functionapp deployment source config --name $functionapp --resource-group $re
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-Ukázková funkce změny velikosti v Node.js je k dispozici na [GitHubu](https://github.com/Azure-Samples/storage-blob-resize-function-node). Pomocí příkazu [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) nasaďte tento projekt kódu funkce do aplikace Function App.
+Ukázková funkce změny velikosti v Node.js je k dispozici na [GitHubu](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10). Pomocí příkazu [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) nasaďte tento projekt kódu funkce do aplikace Function App.
 
 ```azurecli-interactive
 az functionapp deployment source config --name $functionapp \
   --resource-group $resourceGroupName --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node
+  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
 ---
 
@@ -210,7 +210,7 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
     | **Typ tématu** | Účty úložiště | Vyberte zprostředkovatele událostí Účty úložiště. |
     | **Předplatné** | Vaše předplatné Azure | Ve výchozím nastavení je vybrané vaše aktuální předplatné Azure. |
     | **Skupina prostředků** | myResourceGroup | Vyberte **Použít existující** a zvolte skupinu prostředků, které jste už používali v tomto kurzu. |
-    | **Zdrojů** | Váš účet služby Blob Storage | Vyberte účet služby Blob Storage, který jste vytvořili. |
+    | **Prostředek** | Váš účet služby Blob Storage | Vyberte účet služby Blob Storage, který jste vytvořili. |
     | **Typy událostí** | Vytvoření objektu blob | Zrušte zaškrtnutí všech typů komě **Vytvoření objektu blob**. Do funkce se předají jenom události typu `Microsoft.Storage.BlobCreated`. |
     | **Typ koncového bodu** | automaticky generovaný | Předdefinováno jako **funkce Azure**. |
     | **Koncový bod** | automaticky generovaný | Název funkce. V tomto případě je **miniatura**. |

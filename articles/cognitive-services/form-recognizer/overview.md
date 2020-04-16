@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6b19dc11438274ecf6218d5c0bd8c9ef3dafbf01
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6919849d28573ad7388a7f2e317d2b8433f35559
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052438"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399456"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -74,7 +74,7 @@ Chcete-li začít extrahovat data z formulářů, postupujte podle rychlého za�
 
 Následující api použijete k trénování modelů a extrahování strukturovaných dat z formulářů.
 
-|Name (Název) |Popis |
+|Název |Popis |
 |---|---|
 | **Vlastní model vlaku**| Trénování nového modelu k analýze formulářů pomocí pěti formulářů stejného typu. Nastavte parametr _useLabelFile_ tak, aby `true` trénoval s ručně označenými daty. |
 | **Analyzovat formulář** |Analyzujte jeden dokument předaný jako datový proud a extrahujte text, dvojice klíč/hodnota a tabulky z formuláře pomocí vlastního modelu.  |

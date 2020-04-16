@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/14/2020
-ms.author: dapine
-ms.openlocfilehash: 668cf9e831191a5d649f7dd82af03eb637bb0d3a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.date: 04/15/2020
+ms.author: trbye
+ms.openlocfilehash: b11194640c4d049c90f85974022908dce6b4fd79
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314214"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399800"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,7 +28,15 @@ Navíc v závislosti na cílovém prostředí použijte jednu z následujících
 # <a name="import"></a>[Import](#tab/import)
 
 ```javascript
-import * as sdk from "microsoft-cognitiveservices-speech-sdk";
+import {
+    AudioConfig,
+    CancellationDetails,
+    CancellationReason,
+    PhraseListGrammar,
+    ResultReason,
+    SpeechConfig,
+    SpeechRecognizer
+} from "microsoft-cognitiveservices-speech-sdk";
 ```
 
 Další informace `import`naleznete v tématu <a href="https://javascript.info/import-export" target="_blank">Export a import <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
@@ -44,14 +52,14 @@ Další informace `require`o tématu naleznete v tématu <a href="https://nodejs
 
 # <a name="script"></a>[Skript](#tab/script)
 
-Stáhněte a extrahujte sadu <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript Speech <span class="docon docon-navigate-external x-hidden-focus"></span> SDK</a> *microsoft.cognitiveservices.speech.sdk.bundle.js* a umístěte ji do složky přístupné souboru HTML.
+Stáhněte a extrahujte sadu <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript Speech <span class="docon docon-navigate-external x-hidden-focus"></span> SDK</a> *microsoft.cognitiveservices.speech.bundle.js* a umístěte ji do složky přístupné souboru HTML.
 
 ```html
-<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
+<script src="microsoft.cognitiveservices.speech.bundle.js"></script>;
 ```
 
 > [!TIP]
-> Pokud cílíte na webový prohlížeč `<script>` a používáte značku; `sdk` předpona není potřeba. Předpona `sdk` je alias, který `import` používáme k pojmenování našeho nebo `require` modulu.
+> Pokud cílíte na webový prohlížeč `<script>` a používáte značku; `sdk` předpona není potřeba. Předpona `sdk` je alias používaný `require` k pojmenování modulu.
 
 ---
 
@@ -72,7 +80,7 @@ Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](https:/
 Podívejme se na to, [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) jak se vytvoří pomocí klíče a oblasti. Na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) najdete identifikátor oblasti.
 
 ```javascript
-const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
 ## <a name="initialize-a-recognizer"></a>Inicializovat nástroj pro rozpoznávání
@@ -82,7 +90,7 @@ Po vytvoření [`SpeechConfig`](https://docs.microsoft.com/javascript/api/micros
 Pokud rozpoznávání řeči rozpoznáte pomocí výchozího mikrofonu zařízení, [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) mělo by vypadat takto:
 
 ```javascript
-const recognizer = new sdk.SpeechRecognizer(speechConfig);
+const recognizer = new SpeechRecognizer(speechConfig);
 ```
 
 Pokud chcete zadat vstupní zvukové zařízení, budete muset vytvořit [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) a `audioConfig` zadat parametr při [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)inicializaci aplikace .
@@ -93,15 +101,15 @@ Pokud chcete zadat vstupní zvukové zařízení, budete muset vytvořit [`Audio
 Odkazujte `AudioConfig` na objekt následovně:
 
 ```javascript
-const audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-const speechConfig = sdk.SpeechConfig.fromSubscription(speechConfig, audioConfig);
+const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
+const speechConfig = SpeechConfig.fromSubscription(speechConfig, audioConfig);
 ```
 
 Pokud chcete místo mikrofonu zadat zvukový soubor, budete muset zadat `audioConfig`soubor . To však lze provést pouze při cílení **Node.js** [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest)a `fromDefaultMicrophoneInput`při vytváření , `fromWavFileOutput` namísto `filename` volání , budete volat a předat parametr.
 
 ```javascript
-const audioConfig = sdk.AudioConfig.fromWavFileInput("YourAudioFile.wav");
-const speechConfig = sdk.SpeechConfig.fromSubscription(speechConfig, audioConfig);
+const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
+const speechConfig = SpeechConfig.fromSubscription(speechConfig, audioConfig);
 ```
 
 ## <a name="recognize-speech"></a>Rozpoznávání řeči
@@ -132,20 +140,20 @@ Budete muset napsat nějaký kód pro zpracování výsledku. Tento vzorek vyhod
 
 ```javascript
 switch (result.reason) {
-    case sdk.ResultReason.RecognizedSpeech:
-        console.log(`RECOGNIZED: Text=${result.Text}`);
+    case ResultReason.RecognizedSpeech:
+        console.log(`RECOGNIZED: Text=${result.text}`);
         console.log("    Intent not recognized.");
         break;
-    case sdk.ResultReason.NoMatch:
+    case ResultReason.NoMatch:
         console.log("NOMATCH: Speech could not be recognized.");
         break;
-    case sdk.ResultReason.Canceled:
-        const cancellation = sdk.CancellationDetails.fromResult(result);
-        console.log(`CANCELED: Reason=${cancellation.Reason}`);
+    case ResultReason.Canceled:
+        const cancellation = CancellationDetails.fromResult(result);
+        console.log(`CANCELED: Reason=${cancellation.reason}`);
 
-        if (cancellation.Reason == sdk.CancellationReason.Error) {
+        if (cancellation.reason == CancellationReason.Error) {
             console.log(`CANCELED: ErrorCode=${cancellation.ErrorCode}`);
-            console.log(`CANCELED: ErrorDetails=${cancellation.ErrorDetails}`);
+            console.log(`CANCELED: ErrorDetails=${cancellation.errorDetails}`);
             console.log("CANCELED: Did you update the subscription info?");
         }
         break;
@@ -160,7 +168,7 @@ Průběžné rozpoznávání je o něco více než jednorázové rozpoznávání
 Začněme definováním vstupu a inicializací [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest):
 
 ```javascript
-const recognizer = new sdk.SpeechRecognizer(speechConfig);
+const recognizer = new SpeechRecognizer(speechConfig);
 ```
 
 Přihlásíme se k odběru událostí [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)odeslaných z aplikace .
@@ -171,32 +179,32 @@ Přihlásíme se k odběru událostí [`SpeechRecognizer`](https://docs.microsof
 * [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#canceled): Signál pro události obsahující zrušené výsledky rozpoznávání (označující pokus o uznání, který byl zrušen v důsledku nebo požadavek na přímé zrušení nebo případně selhání přenosu nebo protokolu).
 
 ```javascript
-recognizer.Recognizing = (s, e) => {
-    console.log(`RECOGNIZING: Text=${e.Result.Text}`);
+recognizer.recognizing = (s, e) => {
+    console.log(`RECOGNIZING: Text=${e.result.text}`);
 };
 
 recognizer.recognized = (s, e) => {
-    if (e.Result.Reason == sdk.ResultReason.RecognizedSpeech) {
-        console.log(`RECOGNIZED: Text=${e.Result.Text}`);
+    if (e.result.reason == ResultReason.RecognizedSpeech) {
+        console.log(`RECOGNIZED: Text=${e.result.text}`);
     }
-    else if (e.Result.Reason == sdk.ResultReason.NoMatch) {
+    else if (e.result.reason == ResultReason.NoMatch) {
         console.log("NOMATCH: Speech could not be recognized.");
     }
 };
 
-recognizer.Canceled = (s, e) => {
-    console.log(`CANCELED: Reason=${e.Reason}`);
+recognizer.canceled = (s, e) => {
+    console.log(`CANCELED: Reason=${e.reason}`);
 
-    if (e.Reason == sdk.CancellationReason.Error) {
-        console.log(`"CANCELED: ErrorCode=${e.ErrorCode}`);
-        console.log(`"CANCELED: ErrorDetails=${e.ErrorDetails}`);
+    if (e.reason == CancellationReason.Error) {
+        console.log(`"CANCELED: ErrorCode=${e.errorCode}`);
+        console.log(`"CANCELED: ErrorDetails=${e.errorDetails}`);
         console.log("CANCELED: Did you update the subscription info?");
     }
 
     recognizer.stopContinuousRecognitionAsync();
 };
 
-recognizer.SessionStopped = (s, e) => {
+recognizer.sessionStopped = (s, e) => {
     console.log("\n    Session stopped event.");
     recognizer.stopContinuousRecognitionAsync();
 };
@@ -234,7 +242,7 @@ Vlastnost [`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/ap
 
 ## <a name="improve-recognition-accuracy"></a>Zlepšete přesnost rozpoznávání
 
-Existuje několik způsobů, jak zlepšit přesnost rozpoznávání pomocí sady Speech SDK. Podívejme se na seznamy frází. Seznamy frází se používají k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění. Do seznamu frází lze přidat jednotlivá slova nebo úplné fráze. Během rozpoznávání se používá položka v seznamu frází, pokud je do zvuku zahrnuta přesná shoda pro celou frázi. Pokud není nalezena přesná shoda s frází, rozpoznávání není podporováno.
+Existuje několik způsobů, jak zlepšit přesnost rozpoznávání s řeč Pojďme se podívat na seznamy frází. Seznamy frází se používají k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění. Do seznamu frází lze přidat jednotlivá slova nebo úplné fráze. Během rozpoznávání se používá položka v seznamu frází, pokud je do zvuku zahrnuta přesná shoda pro celou frázi. Pokud není nalezena přesná shoda s frází, rozpoznávání není podporováno.
 
 > [!IMPORTANT]
 > Funkce Seznam frází je k dispozici pouze v angličtině.
@@ -244,7 +252,7 @@ Chcete-li použít seznam frází, nejprve vytvořte [`PhraseListGrammar`](https
 Jakékoli změny, které se [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest) projeví při dalším rozpoznávání nebo po opětovném připojení ke službě Speech.
 
 ```javascript
-const phraseList = sdk.PhraseListGrammar.fromRecognizer(recognizer);
+const phraseList = PhraseListGrammar.fromRecognizer(recognizer);
 phraseList.addPhrase("Supercalifragilisticexpialidocious");
 ```
 

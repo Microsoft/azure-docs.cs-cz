@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: e8117eb1b521dc2e3fa9eaca1316e0b9c14f0e98
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c5ea54a33ee027de0b11c59c53085b9d20ca6a3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80129454"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392832"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Úvodní příručka: Nasazení clusteru služby Azure Kubernetes Service (AKS) pomocí šablony Azure Resource Manager
 
@@ -30,7 +30,7 @@ Pokud se rozhodnete nainstalovat a používat příkaz cli místně, tento rychl
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li vytvořit cluster AKS pomocí šablony Správce prostředků, zadejte veřejný klíč SSH a instanční objekt služby Azure Active Directory. Pokud potřebujete některý z těchto zdrojů, naleznete v následující části; jinak přejděte k části [Vytvořit cluster AKS.](#create-an-aks-cluster)
+Chcete-li vytvořit cluster AKS pomocí šablony Správce prostředků, zadejte veřejný klíč SSH a instanční objekt služby Azure Active Directory.  Případně můžete použít [spravovanou identitu](use-managed-identity.md) namísto instančního objektu pro oprávnění. Pokud potřebujete některý z těchto zdrojů, naleznete v následující části; jinak přejděte k části [Vytvořit cluster AKS.](#create-an-aks-cluster)
 
 ### <a name="create-an-ssh-key-pair"></a>Vytvoření páru klíčů SSH
 
@@ -48,7 +48,7 @@ Další informace o vytváření klíčů SSH najdete v [tématu Vytvoření a s
 
 ### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Aby mohl cluster AKS pracovat a komunikovat s jinými prostředky Azure, používá se instanční objekt služby Azure Active Directory. Vytvořte instanční objekt pomocí příkazu [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. Parametr `--skip-assignment` nastavuje omezení, aby už nešla přidělovat žádná další oprávnění. Ve výchozím nastavení je tento instanční objekt platný po dobu jednoho roku.
+Aby mohl cluster AKS pracovat a komunikovat s jinými prostředky Azure, používá se instanční objekt služby Azure Active Directory. Vytvořte instanční objekt pomocí příkazu [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. Parametr `--skip-assignment` nastavuje omezení, aby už nešla přidělovat žádná další oprávnění. Ve výchozím nastavení je tento instanční objekt platný po dobu jednoho roku. Všimněte si, že můžete použít spravovanou identitu namísto instančního objektu. Další informace naleznete v tématu [Použití spravovaných identit](use-managed-identity.md).
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -281,7 +281,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete].
+> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete]. Pokud jste použili spravovanou identitu, identita je spravována platformou a nevyžaduje odebrání.
 
 ## <a name="get-the-code"></a>Získání kódu
 

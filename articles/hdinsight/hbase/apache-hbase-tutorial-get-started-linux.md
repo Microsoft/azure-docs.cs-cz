@@ -1,20 +1,19 @@
 ---
 title: Kurz – použití Apache HBase v Azure HDInsight
 description: Postupujte podle tohoto kurzu Apache HBase a začněte používat hadoop na HDInsight. Vytvářejte tabulky z prostředí HBase a dotazujte je pomocí Hive.
-keywords: příkaz hbase,příklad hbase
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: tutorial
-ms.date: 06/25/2019
-ms.author: hrasheed
-ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 04/14/2020
+ms.openlocfilehash: a601d54ebda074a25a988ac2a115f6418dd5c7ee
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71077143"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390262"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: Použití Apache HBase v Azure HDInsight
 
@@ -33,17 +32,17 @@ V tomto kurzu se naučíte:
 
 * Klient SSH. Další informace naleznete [v tématu Připojení k HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Bash. Příklady v tomto článku použít prostředí Bash na Windows 10 pro příkazy curl. Postup instalace najdete v [příručce k instalaci podsystému Windows pro Linux pro Windows 10.](https://docs.microsoft.com/windows/wsl/install-win10)  Ostatní [unixové granáty](https://www.gnu.org/software/bash/) budou fungovat také.  Příklady curl, s některými drobnými úpravami, mohou fungovat na příkazovém řádku systému Windows.  Případně můžete použít rutinu prostředí Windows PowerShell [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod).
+* Bash. Příklady v tomto článku použít prostředí Bash na Windows 10 pro příkazy curl. Postup instalace najdete v [příručce k instalaci podsystému Windows pro Linux pro Windows 10.](https://docs.microsoft.com/windows/wsl/install-win10)  Ostatní [unixové granáty](https://www.gnu.org/software/bash/) budou fungovat také.  Příklady curl, s některými drobnými úpravami, mohou fungovat na příkazovém řádku systému Windows.  Nebo můžete použít rutinu prostředí Windows PowerShell [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod).
 
 ## <a name="create-apache-hbase-cluster"></a>Vytvoření clusteru Apache HBase
 
-Následující postup používá šablonu Azure Resource Manager k vytvoření clusteru HBase a závislého výchozího účtu úložiště Azure. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+Následující postup používá šablonu Azure Resource Manager k vytvoření clusteru HBase. Šablona také vytvoří závislý výchozí účet Azure Storage. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 1. Kliknutím na následující obrázek otevřete šablonu na webu Azure Portal. Šablona se nachází v [šablonách azure quickstart](https://azure.microsoft.com/resources/templates/).
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-2. V okně **Vlastní nasazení** zadejte následující hodnoty:
+2. V dialogovém okně **Vlastní nasazení** zadejte následující hodnoty:
 
     |Vlastnost |Popis |
     |---|---|
@@ -56,7 +55,7 @@ Následující postup používá šablonu Azure Resource Manager k vytvoření c
 
     Další parametry jsou volitelné.  
 
-    Každý cluster obsahuje závislost účtu Azure Storage. Po odstranění clusteru se data zachovají na účtu úložiště. Výchozí název účtu úložiště clusteru je název clusteru s připojenou příponou „úložiště“. Je pevně kódovaný v části proměnných šablon.
+    Každý cluster obsahuje závislost účtu Azure Storage. Po odstranění clusteru zůstanou data v účtu úložiště. Výchozí název účtu úložiště clusteru je název clusteru s připojenou příponou „úložiště“. Je pevně zakódován v části proměnné šablony.
 
 3. Vyberte **Možnost Souhlasím s výše uvedenými podmínkami**a pak vyberte možnost **Nákup**. Vytvoření clusteru trvá přibližně 20 minut.
 
@@ -203,7 +202,7 @@ Data v tabulkách HBase můžete dotazovat pomocí [Apache Hive](https://hive.ap
 
 Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). Požadavky byste vždy měli provádět pomocí protokolu HTTPS (Secure HTTP), čímž pomůžete zajistit, že se přihlašovací údaje budou na server odesílat bezpečně.
 
-1. Spusťte proměnnou prostředí pro snadné použití. Upravte níže uvedené příkazy nahrazením `MYPASSWORD` přihlašovacím heslem clusteru. Nahraďte `MYCLUSTERNAME` název clusteru HBase. Pak zadejte příkazy.
+1. Nastavte proměnnou prostředí pro snadné použití. Upravte níže uvedené příkazy nahrazením `MYPASSWORD` přihlašovacím heslem clusteru. Nahraďte `MYCLUSTERNAME` název clusteru HBase. Pak zadejte příkazy.
 
     ```bash
     export password='MYPASSWORD'
@@ -240,10 +239,10 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
     -v
     ```
 
-    Hodnoty určené v přepínači -d musíte zakódovat base64. V tomto příkladu:
+    Base64 kóduje hodnoty zadané v přepínači -d. V tomto příkladu:
 
    * MTAwMA==: 1000
-   * UGVyc29uYWw6TmFtZQ==: Personal:Name
+   * UGVyc29uYWw6TmFtZQ==: Osobní: Jméno
    * Sm9obiBEb2xl: John Dole
 
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) umožňuje vložit více (dávkových) hodnot.
@@ -298,7 +297,7 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 
 Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru. Můžete použít příkaz `disable 'Contacts'`HBase . Pokud nebudete nadále používat tuto aplikaci, odstraňte cluster HBase, který jste vytvořili pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Do pole **Hledat** v horní části zadejte **HDInsight**.
 1. V části **Služby** **vyberte clustery HDInsight** .
 1. V seznamu clusterů HDInsight, který se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro tento kurz.
@@ -306,7 +305,7 @@ Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před od
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, jak vytvořit cluster Apache HBase a jak vytvořit tabulky a zobrazit data v těchto tabulkách z prostředí HBase. Také jste se naučili, jak používat dotazy na data Hive v tabulkách HBase a jak používat rozhraní REST API HBase C# k vytvoření tabulky HBase a načtení dat z tabulky. Další informace naleznete v tématu:
+V tomto kurzu jste se naučili, jak vytvořit cluster Apache HBase. A jak vytvořit tabulky a zobrazit data v těchto tabulkách z prostředí HBase. Také jste se naučili, jak používat dotaz Hive na data v tabulkách HBase. A jak použít HBase C# REST API k vytvoření tabulky HBase a načtení dat z tabulky. Další informace naleznete v tématu:
 
 > [!div class="nextstepaction"]
 > [Přehled hdinsight hbážíb](./apache-hbase-overview.md)

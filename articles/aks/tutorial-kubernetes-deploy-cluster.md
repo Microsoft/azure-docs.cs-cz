@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 72d7d3b8a4dc2831f397326d54560358c19b9b92
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616815"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392696"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Kurz: Nasazení clusteru Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ Tento kurz vyžaduje, abyste spouštěli Azure CLI verze 2.0.53 nebo novější.
 
 Clustery AKS můžou využívat řízení přístupu na základě role (RBAC) v Kubernetes. Toto řízení umožňuje definovat přístup k prostředkům na základě rolí přiřazených uživatelům. Oprávnění jsou kombinována, pokud je uživateli přiřazeno více rolí, a oprávnění mohou být vymezena na jeden obor názvů nebo v celém clusteru. Ve výchozím nastavení Azure CLI automaticky povolí řízení přístupu na základě role při vytvoření clusteru AKS.
 
-Vytvořte cluster AKS pomocí příkazu [az aks create][]. Následující příklad vytvoří cluster *myAKSCluster* ve skupině prostředků *myResourceGroup*. Tato skupina prostředků se vytvořila v [předchozím kurzu][aks-tutorial-prepare-acr]. Chcete-li povolit clusteru AKS interakci s jinými prostředky Azure, je automaticky vytvořen objekt zabezpečení služby Azure Active Directory, protože jste nezadali jeden. Tady je tomuto instančnímu [objektu uděleno právo na vyžádat ibi][container-registry-integration] z instance Azure Container Registry (ACR), kterou jste vytvořili v předchozím kurzu.
+Vytvořte cluster AKS pomocí příkazu [az aks create][]. Následující příklad vytvoří cluster *myAKSCluster* ve skupině prostředků *myResourceGroup*. Tato skupina prostředků se vytvořila v [předchozím kurzu][aks-tutorial-prepare-acr]. Chcete-li povolit clusteru AKS interakci s jinými prostředky Azure, je automaticky vytvořen objekt zabezpečení služby Azure Active Directory, protože jste nezadali jeden. Tady je tomuto instančnímu [objektu uděleno právo na vyžádat ibi][container-registry-integration] z instance Azure Container Registry (ACR), kterou jste vytvořili v předchozím kurzu. Všimněte si, že můžete použít [spravovanou identitu](use-managed-identity.md) namísto instančního objektu pro snadnější správu.
 
 ```azurecli
 az aks create \

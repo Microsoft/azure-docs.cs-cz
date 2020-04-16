@@ -4,26 +4,24 @@
   items:
     - name: Informace o spravovaných aplikacích
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Publikování definice aplikace
-      href: publish-managed-app-definition-quickstart.md
+      href: publish-service-catalog-app.md
     - name: Nasazení aplikace katalogu služeb
       href: deploy-service-catalog-quickstart.md
 - name: Kurzy
   items:
-    - name: Vytvoření definičních souborů
-      href: publish-service-catalog-app.md
     - name: Publikování aplikace Marketplace
       href: publish-marketplace-app.md
     - name: Vytvoření spravované aplikace s využitím vlastního zprostředkovatele
       href: tutorial-create-managed-app-with-custom-provider.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: powershell-samples.md
     - name: Řešení spravovaných aplikací
       href: sample-projects.md
@@ -120,7 +118,7 @@
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtualNetworkCombo
               href: microsoft-network-virtualnetworkcombo.md
-        - name: Úložiště
+        - name: Storage
           items:
             - name: MultiStorageAccountCombo
               href: microsoft-storage-multistorageaccountcombo.md

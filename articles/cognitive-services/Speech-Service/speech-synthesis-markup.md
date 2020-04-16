@@ -3,19 +3,19 @@ title: Jazyk značek syntézy řeči (SSML) – služba řeči
 titleSuffix: Azure Cognitive Services
 description: Použití jazyka značek syntézy řeči k řízení výslovnosti a prosody v převodu textu na řeč.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7d5dd79399b15ade90173a55aeb71dacbc61fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: dc11d26c73c52b5e6c4d8e05cc27dd6ebce0c5d8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80365816"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399821"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Zlepšete syntézu pomocí jazyka s poznámkami o syntéze řeči (SSML)
 
@@ -145,7 +145,7 @@ speech_config.set_property_by_name(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Další informace naleznete <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>v tématu .
 
@@ -196,7 +196,6 @@ Ve výchozím nastavení služba převodu textu na řeč syntetizuje text pomoc�
 V současné době jsou podporovány úpravy stylu mluvení pro tyto nervové hlasy:
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
-* `pt-BR-FranciscaNeural`
 
 Změny se použijí na úrovni věty a styl se liší podle hlasu. Pokud styl není podporován, služba vrátí řeč ve výchozím neutrálním stylu mluvení.
 
@@ -214,18 +213,17 @@ Změny se použijí na úrovni věty a styl se liší podle hlasu. Pokud styl ne
 
 V této tabulce můžete určit, které styly mluvení jsou podporovány pro každý neurální hlas.
 
-| Hlas | Styl | Popis |
-|-------|------|-------------|
-| `en-US-AriaNeural` | `style="newscast"` | Vyjadřuje formální a profesionální tón pro vyprávění novinek |
-| | `style="customerservice"` | Vyjadřuje přátelský a užitečný tón pro zákaznickou podporu |
-| | `style="chat"` | Vyjadřuje ležérní a uvolněný tón |
-| | `style="cheerful"` | Vyjadřuje pozitivní a šťastný tón |
-| | `style="empathetic"` | Vyjadřuje pocit péče a porozumění |
-| `zh-CN-XiaoxiaoNeural` | `style="newscast"` | Vyjadřuje formální a profesionální tón pro vyprávění novinek |
-| | `style="customerservice"` | Vyjadřuje přátelský a užitečný tón pro zákaznickou podporu |
-| | `style="assistant"` | Vyjadřuje hřejivý a uvolněný tón pro digitální asistenty  |
-| | `style="lyrical"` | Vyjadřuje emoce melodickým a sentimentálním způsobem |
-| `pt-BR-FranciscaNeural` | `style="cheerful"` | Vyjadřuje pozitivní a šťastný tón |
+| Hlas                   | Styl                     | Popis                                                 |
+|-------------------------|---------------------------|-------------------------------------------------------------|
+| `en-US-AriaNeural`      | `style="newscast"`        | Vyjadřuje formální a profesionální tón pro vyprávění novinek |
+|                         | `style="customerservice"` | Vyjadřuje přátelský a užitečný tón pro zákaznickou podporu  |
+|                         | `style="chat"`            | Vyjadřuje ležérní a uvolněný tón                         |
+|                         | `style="cheerful"`        | Vyjadřuje pozitivní a šťastný tón                         |
+|                         | `style="empathetic"`      | Vyjadřuje pocit péče a porozumění               |
+| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Vyjadřuje formální a profesionální tón pro vyprávění novinek |
+|                         | `style="customerservice"` | Vyjadřuje přátelský a užitečný tón pro zákaznickou podporu  |
+|                         | `style="assistant"`       | Vyjadřuje hřejivý a uvolněný tón pro digitální asistenty    |
+|                         | `style="lyrical"`         | Vyjadřuje emoce melodickým a sentimentálním způsobem         |
 
 **Příklad**
 
@@ -263,15 +261,14 @@ Pomocí `break` prvku můžete mezi slova vložit pauzy (nebo přestávky) nebo 
 | `strength` | Určuje relativní trvání pauzy pomocí jedné z následujících hodnot:<ul><li>Žádná</li><li>x-slabý</li><li>Slabý</li><li>střední (výchozí)</li><li>Silné</li><li>x-silný</li></ul> | Nepovinné |
 | `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných `2s` hodnot jsou a`500` | Nepovinné |
 
-| Sílu | Popis |
-|----------|-------------|
-| Žádná, nebo pokud není poskytnuta žádná hodnota | 0 ms |
-| x-slabý | 250 ms |
-| Slabý | 500 ms |
-| střední | 750 ms |
-| Silné | 1000 ms |
-| x-silný | 1250 ms |
-
+| Sílu                      | Popis |
+|-------------------------------|-------------|
+| Žádná, nebo pokud není poskytnuta žádná hodnota | 0 ms        |
+| x-slabý                        | 250 ms      |
+| Slabý                          | 500 ms      |
+| střední                        | 750 ms      |
+| Silné                        | 1000 ms     |
+| x-silný                      | 1250 ms     |
 
 **Příklad**
 
@@ -372,9 +369,9 @@ Někdy TTS nemůže přesně vyslovit slovo, například název společnosti neb
 
 **Atributy**
 
-| Atribut | Popis | Povinné / Nepovinné |
-|-----------|-------------|---------------------|
-| `uri` | Adresa externího dokumentu PLS. | Povinná hodnota. |
+| Atribut | Popis                               | Povinné / Nepovinné |
+|-----------|-------------------------------------------|---------------------|
+| `uri`     | Adresa externího dokumentu PLS. | Povinná hodnota.           |
 
 **Použití**
 
@@ -472,7 +469,7 @@ Vzhledem k tomu, že hodnoty prozodických atributů se mohou v širokém rozsah
 | Atribut | Popis | Povinné / Nepovinné |
 |-----------|-------------|---------------------|
 | `pitch` | Označuje rozteč účaří textu. Rozteč můžete vyjádřit takto:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaná "Hz" (Hertz). Například 600 Hz.</li><li>Relativní hodnota, vyjádřená jako číslo předchází "+" nebo "-" a následuje "Hz" nebo "st", která určuje částku pro změnu výšky. Například: +80 Hz nebo -2st. "St" označuje, že jednotka změny je polotón, což je polovina tónu (půl kroku) na standardní diatonické stupnici.</li><li>Konstantní hodnota:<ul><li>x-nízká</li><li>Nízké</li><li>střední</li><li>high</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | Nepovinné |
-| `contour` | Contour není podporovánpro nervové hlasy. Obrys představuje změny rozteče. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Například: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny rozteče jako procento doby trvání textu. Druhá hodnota určuje částku pro zvýšení nebo snížení rozteče pomocí relativní hodnoty nebo `pitch`hodnoty výčtu pro rozteč (viz). | Nepovinné |
+| `contour` | Contour není podporovánpro nervové hlasy. Obrys představuje změny rozteče. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Příklad: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny rozteče jako procento doby trvání textu. Druhá hodnota určuje částku pro zvýšení nebo snížení rozteče pomocí relativní hodnoty nebo `pitch`hodnoty výčtu pro rozteč (viz). | Nepovinné |
 | `range` | Hodnota, která představuje rozsah rozteče pro text. Můžete vyjádřit `range` pomocí stejné absolutní hodnoty, relativní hodnoty nebo výčtu hodnoty používané k popisu `pitch`. | Nepovinné |
 | `rate` | Označuje rychlost mluvení textu. Můžete vyjádřit `rate` jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako multiplikátor výchozí hodnoty. Například hodnota *1* má za následek žádnou změnu sazby. Hodnota *0,5* má za následek snížení sazby na polovinu. Hodnota *3* má za následek ztrojnásobení sazby.</li><li>Konstantní hodnota:<ul><li>x-pomalé</li><li>Pomalé</li><li>střední</li><li>Rychle</li><li>x-rychlé</li><li>default</li></ul></li></ul> | Nepovinné |
 | `duration` | Doba, která by měla uplynout, zatímco služba syntézy řeči (TTS) čte text v sekundách nebo milisekundách. Například *2s* nebo *1800ms*. | Nepovinné |
@@ -614,9 +611,9 @@ Veškerý zvuk obsažený v dokumentu SSML musí splňovat tyto požadavky:
 
 **Atributy**
 
-| Atribut | Popis | Povinné / Nepovinné |
-|-----------|-------------|---------------------|
-| `src` | Určuje umístění/adresu URL zvukového souboru. | Povinné při použití zvukového prvku v dokumentu SSML. |
+| Atribut | Popis                                   | Povinné / Nepovinné                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+| `src`     | Určuje umístění/adresu URL zvukového souboru. | Povinné při použití zvukového prvku v dokumentu SSML. |
 
 **Příklad**
 

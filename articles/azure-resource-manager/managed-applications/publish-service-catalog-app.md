@@ -2,23 +2,21 @@
 title: Publikovat spravovanou aplikaci katalogu služeb
 description: Ukazuje, jak vytvořit spravovanou aplikaci Azure, která je určená pro členy vaší organizace.
 author: tfitzmac
-ms.topic: tutorial
-ms.date: 10/04/2018
+ms.topic: quickstart
+ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 13c45bc6e67d9d3d06a70b7cf3326cc112cd7829
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 48aaca64949aafecff27c76ad7572b3c2fa44732
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79473009"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391510"
 ---
-# <a name="tutorial-create-and-publish-a-managed-application-definition"></a>Kurz: Vytvoření a publikování definice spravované aplikace
+# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Úvodní příručka: Vytvoření a publikování definice spravované aplikace
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+Tento rychlý start poskytuje úvod do práce s [azure spravovaných aplikací](overview.md). Můžete vytvořit a publikovat spravovanou aplikaci, která je určena pro členy vaší organizace.
 
-Můžete vytvořit a publikovat [spravovanou aplikaci](overview.md) Azure, která je určená pro členy vaší organizace. Oddělení IT může například publikovat spravované aplikace, které vyhovují standardům organizace. Tyto spravované aplikace jsou k dispozici prostřednictvím katalogu služeb, ne prostřednictvím Azure Marketplace.
-
-Pokud chcete publikovat spravovanou aplikaci do katalogu služeb Azure, musíte:
+Chcete-li publikovat spravovanou aplikaci do katalogu služeb, musíte:
 
 * Vytvořte šablonu, která definuje prostředky pro nasazení se spravovanou aplikací.
 * Definujte prvky uživatelského rozhraní portálu pro nasazení spravované aplikace.
@@ -26,13 +24,9 @@ Pokud chcete publikovat spravovanou aplikaci do katalogu služeb Azure, musíte:
 * Rozhodněte, který uživatel, skupina nebo aplikace potřebují přístup ke skupině prostředků v rámci předplatného uživatele.
 * Vytvořte definici spravované aplikace, která odkazuje na balíček ZIP a požaduje přístup pro příslušnou identitu.
 
-V tomto článku má spravovaná aplikace jenom účet úložiště. Jejím cílem je ilustrovat postup publikování spravované aplikace. Úplné příklady najdete v tématu [Ukázkové projekty pro spravované aplikace Azure](sample-projects.md).
+## <a name="create-the-arm-template"></a>Vytvoření šablony ARM
 
-Příklady PowerShellu v tomto článku vyžadují prostředí Azure PowerShell verze 6.2 nebo novější. V případě potřeby [aktualizujte verzi](/powershell/azure/install-Az-ps).
-
-## <a name="create-the-resource-template"></a>Vytvoření šablony prostředků
-
-Každá definice spravované aplikace obsahuje soubor s názvem **mainTemplate.json**. V něm se definují prostředky Azure, které se mají nasadit. Šablona se nijak neliší od běžné šablony Resource Manageru.
+Každá definice spravované aplikace obsahuje soubor s názvem **mainTemplate.json**. V něm se definují prostředky Azure, které se mají nasadit. Šablona se neliší od běžné šablony Správce prostředků Azure (ARM).
 
 Vytvořte soubor s názvem **mainTemplate.json**. V názvu se rozlišují velká a malá písmena.
 
@@ -60,20 +54,20 @@ Přidejte do souboru následující kód JSON. Definuje parametry pro vytvořen�
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
             "name": "[variables('storageAccountName')]",
-            "apiVersion": "2016-01-01",
             "location": "[parameters('location')]",
             "sku": {
                 "name": "[parameters('storageAccountType')]"
             },
-            "kind": "Storage",
+            "kind": "StorageV2",
             "properties": {}
         }
     ],
     "outputs": {
         "storageEndpoint": {
             "type": "string",
-            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob]"
+            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
         }
     }
 }
@@ -81,9 +75,9 @@ Přidejte do souboru následující kód JSON. Definuje parametry pro vytvořen�
 
 Uložte soubor mainTemplate.json.
 
-## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Definování prostředí pro vytváření pomocí souboru CreateUiDefinition.json
+## <a name="define-your-create-experience"></a>Definujte své prostředí pro vytváření
 
-Jako vydavatel definujete prostředí pro vytváření pomocí souboru **createUiDefinition.json,** který generuje rozhraní pro uživatele vytvářející spravované aplikace. Můžete definovat, jak uživatelé poskytují vstup pro každý parametr pomocí [ovládacích prvků,](create-uidefinition-elements.md) včetně rozevíracích seznamů, textových polí a hesel.
+Jako vydavatel definujete prostředí portálu pro vytváření spravované aplikace. Soubor **createUiDefinition.json** generuje rozhraní portálu. Můžete definovat, jak uživatelé poskytují vstup pro každý parametr pomocí [ovládacích prvků,](create-uidefinition-elements.md) včetně rozevíracích seznamů, textových polí a hesel.
 
 Vytvoření souboru s názvem **createUiDefinition.json** (Tento název rozlišuje malá a velká písmena)
 
@@ -142,59 +136,123 @@ Další informace najdete [v tématu Začínáme s createuidefinition](create-ui
 
 ## <a name="package-the-files"></a>Zabalení souborů
 
-Přidejte oba soubory do souboru ZIP a s názvem app.zip. Oba soubory musí být na kořenové úrovni souboru ZIP. Pokud je umístíte do složky, zobrazí se při vytváření definice spravované aplikace chyba s informacemi, že požadované soubory nejsou k dispozici. 
+Přidejte oba soubory do souboru ZIP a s názvem app.zip. Oba soubory musí být na kořenové úrovni souboru ZIP. Pokud je umístíte do složky, zobrazí se při vytváření definice spravované aplikace chyba s informacemi, že požadované soubory nejsou k dispozici.
 
-Nahrajte balíček do přístupného umístění, ze kterého je možné použít ho. 
+Nahrajte balíček do přístupného umístění, ze kterého je možné použít ho. Budete muset zadat jedinečný název účtu úložiště.
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 New-AzResourceGroup -Name storageGroup -Location eastus
-$storageAccount = New-AzStorageAccount -ResourceGroupName storageGroup `
+
+$storageAccount = New-AzStorageAccount `
+  -ResourceGroupName storageGroup `
   -Name "mystorageaccount" `
   -Location eastus `
   -SkuName Standard_LRS `
-  -Kind Storage
+  -Kind StorageV2
 
 $ctx = $storageAccount.Context
 
 New-AzStorageContainer -Name appcontainer -Context $ctx -Permission blob
 
-Set-AzStorageBlobContent -File "D:\myapplications\app.zip" `
+Set-AzStorageBlobContent `
+  -File "D:\myapplications\app.zip" `
   -Container appcontainer `
   -Blob "app.zip" `
   -Context $ctx 
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az group create --name storageGroup --location eastus
+
+az storage account create \
+    --name mystorageaccount \
+    --resource-group storageGroup \
+    --location eastus \
+    --sku Standard_LRS \
+    --kind StorageV2
+
+az storage container create \
+    --account-name mystorageaccount \
+    --name appcontainer \
+    --public-access blob
+
+az storage blob upload \
+    --account-name mystorageaccount \
+    --container-name appcontainer \
+    --name "app.zip" \
+    --file "D:\myapplications\app.zip"
+
+```
+
+---
+
 ## <a name="create-the-managed-application-definition"></a>Vytvoření definice spravované aplikace
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Vytvoření skupiny uživatelů nebo aplikace Azure Active Directory
 
-Dalším krokem je výběr skupiny uživatelů nebo aplikace pro správu prostředků jménem zákazníka. Tato skupina uživatelů nebo aplikace má oprávnění pro skupinu spravovaných prostředků podle přiřazené role. Touto rolí může být kterákoli předdefinovaná role řízení přístupu na základě role (RBAC), například role vlastníka nebo přispěvatele. Oprávnění ke správě prostředků můžete udělit i jednotlivým uživatelům, obvykle se ale toto oprávnění přiřazuje skupině uživatelů. Pokud chcete vytvořit novou skupinu uživatelů služby Active Directory, přečtěte si téma [Vytvoření skupiny a přidání členů v Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Dalším krokem je výběr skupiny uživatelů, uživatele nebo aplikace pro správu prostředků pro zákazníka. Tato identita má oprávnění pro spravovanou skupinu prostředků podle přiřazené role. Touto rolí může být kterákoli předdefinovaná role řízení přístupu na základě role (RBAC), například role vlastníka nebo přispěvatele. Pokud chcete vytvořit novou skupinu uživatelů služby Active Directory, přečtěte si téma [Vytvoření skupiny a přidání členů v Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Potřebujete ID objektu skupiny uživatelů, které se má používat pro správu zdrojů. 
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 $groupID=(Get-AzADGroup -DisplayName mygroup).Id
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+groupid=$(az ad group show --group mygroup --query objectId --output tsv)
+```
+
+---
 
 ### <a name="get-the-role-definition-id"></a>Získání ID definici role
 
 Dál potřebujete ID definice role pro předdefinovanou roli řízení přístupu na základě role (RBAC), pro které chcete uživateli, skupině uživatelů nebo aplikaci udělit přístup. Obvykle se používá role vlastníka, přispěvatele nebo čtenáře. Následující příkaz ukazuje, jak získat ID definice role pro roli vlastníka:
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 $ownerID=(Get-AzRoleDefinition -Name Owner).Id
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+ownerid=$(az role definition list --name Owner --query [].name --output tsv)
+```
+
+---
 
 ### <a name="create-the-managed-application-definition"></a>Vytvoření definice spravované aplikace
 
 Pokud ještě nemáte skupinu prostředků pro uložení definice spravované aplikace, vytvořte ji:
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 New-AzResourceGroup -Name appDefinitionGroup -Location westcentralus
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az group create --name appDefinitionGroup --location westcentralus
+```
+
+---
+
 Teď vytvoříte prostředek definice spravované aplikace.
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 $blob = Get-AzStorageBlob -Container appcontainer -Blob app.zip -Context $ctx
 
 New-AzManagedApplicationDefinition `
@@ -208,25 +266,55 @@ New-AzManagedApplicationDefinition `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+blob=$(az storage blob url --account-name mystorageaccount --container-name appcontainer --name app.zip --output tsv)
+
+az managedapp definition create \
+  --name "ManagedStorage" \
+  --location "westcentralus" \
+  --resource-group appDefinitionGroup \
+  --lock-level ReadOnly \
+  --display-name "Managed Storage Account" \
+  --description "Managed Azure Storage Account" \
+  --authorizations "$groupid:$ownerid" \
+  --package-file-uri "$blob"
+```
+
+---
+
+Po dokončení příkazu máte definici spravované aplikace ve vaší skupině prostředků.
+
+Některé z parametrů použitých v předchozím příkladu:
+
+* **Skupina prostředků**: Název skupiny prostředků, ve které je vytvořena definice spravované aplikace.
+* **Úroveň zámku**: Typ zámku umístěného ve skupině spravovaných prostředků. Zabraňuje zákazníkovi v provádění nežádoucích operací s touto skupinou prostředků. Jedinou podporovanou úrovní zámku momentálně je ReadOnly. Prostředky, které jsou ve spravované skupině prostředků dostupné, může při zadání úrovně ReadOnly zákazník jenom číst. Zámek se nevztahuje na identity vydavatelů s uděleným přístupem ke spravované skupině prostředků.
+* **authorizations:** Popisuje ID objektu zabezpečení a ID definice role, které slouží k udělení oprávnění pro spravovanou skupinu prostředků. tento parametr je zadaný ve formátu `<principalId>:<roleDefinitionId>`. Pokud je potřeba zadat více hodnot, zadejte je ve formátu `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Jednotlivé hodnoty jsou oddělené mezerou.
+* **Identifikátor URI souboru balíčku**: Umístění balíčku ZIP, který obsahuje požadované soubory.
+
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Přineste si vlastní úložiště pro definici spravované aplikace
-Definici spravované aplikace můžete uložit do účtu úložiště, který jste poskytli během vytváření, aby ji bylo možné plně spravovat pro vaše regulační potřeby.
+
+Definici spravované aplikace můžete uložit do účtu úložiště, který jste poskytli během vytváření, aby bylo možné plně spravovat její umístění a přístup pro vaše regulační potřeby.
 
 > [!NOTE]
 > Přineste si vlastní úložiště je podporováno pouze s ARM šablony nebo REST API nasazení definice spravované aplikace.
 
 ### <a name="select-your-storage-account"></a>Vyberte účet úložiště
+
 Je nutné [vytvořit účet úložiště,](../../storage/common/storage-account-create.md) který bude obsahovat definici spravované aplikace pro použití s katalogem služeb.
 
 Zkopírujte ID prostředku účtu úložiště. Bude použit později při nasazení definice.
 
 ### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Nastavení přiřazení role pro "Zprostředkovatel prostředků zařízení" v účtu úložiště
+
 Před nasazením definice spravované aplikace do vašeho účtu úložiště musíte udělit oprávnění přispěvatele k roli **Zprostředkovatel prostředků zařízení,** aby mohl zapisovat definiční soubory do kontejneru vašeho účtu úložiště.
 
 1. Na [webu Azure Portal](https://portal.azure.com)přejděte na svůj účet úložiště.
 1. Vyberte **řízení přístupu (IAM),** chcete-li zobrazit nastavení řízení přístupu pro účet úložiště. Výběrem karty **Přiřazení rolí** zobrazíte seznam přiřazení rolí.
 1. V okně **Přidat přiřazení role** vyberte roli **přispěvatele.** 
 1. V poli **Přiřadit přístup k** vyberte **uživatele, skupinu nebo instanční objekt Azure AD**.
-1. V **části Vyberte** roli Hledat **zprostředkovatele prostředků zařízení** a vyberte ji.
+1. V **části Vybrat**vyhledejte roli **Zprostředkovatele prostředků zařízení** a vyberte ji.
 1. Uložte přiřazení role.
 
 ### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Nasazení definice spravované aplikace pomocí šablony ARM 
@@ -303,18 +391,20 @@ Následující šablona ARM slouží k nasazení sbalené spravované aplikace j
 }
 ```
 
-Přidali jsme novou vlastnost s názvem **storageAccountId** do vlastností vaší aplikaceDefintion a poskytnout id účtu úložiště, které chcete uložit definici v jako jeho hodnotu:
+Přidali jsme novou vlastnost s názvem **storageAccountId** do vlastností vaší aplikaceDefintion a poskytnout ID účtu úložiště, které chcete uložit definici jako jeho hodnotu:
 
 Můžete ověřit, že soubory definice aplikace jsou uloženy v zadaný účet úložiště v kontejneru s názvem **applicationdefinitions**.
 
 > [!NOTE]
 > Pro zvýšení zabezpečení můžete vytvořit definici spravovaných aplikací, uložte ji do [objektu blob účtu úložiště Azure, kde je povoleno šifrování](../../storage/common/storage-service-encryption.md). Obsah definice je šifrován prostřednictvím možností šifrování účtu úložiště. Definici mohou v katalogu služeb zobrazit pouze uživatelé s oprávněními k souboru.
 
-### <a name="make-sure-users-can-see-your-definition"></a>Je potřeba zajistit, že budou uživatelé vidět vaši definici.
+## <a name="make-sure-users-can-see-your-definition"></a>Je potřeba zajistit, že budou uživatelé vidět vaši definici.
 
 Máte přístup k definici spravované aplikace, ale je potřeba zajistit přístup i pro ostatní uživatele ve vaší organizaci. Udělte jim k definici alespoň přístup role Čtenář. Je možné, že tuto úroveň přístupu zdědili z předplatného nebo skupiny prostředků. Informace o tom, kdo má přístup k definici, a o přidání uživatelů nebo skupin najdete v tématu [Použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o publikování spravované aplikace na webu Azure Marketplace najdete v tématu [Spravované aplikace Azure v Marketplace](publish-marketplace-app.md).
-* Informace o nasazení instance spravované aplikace najdete v tématu [Nasazení aplikace z katalogu služeb prostřednictvím webu Azure Portal](deploy-service-catalog-quickstart.md).
+Publikovali jste definici spravované aplikace. Teď se dozvíte, jak nasadit instanci této definice.
+
+> [!div class="nextstepaction"]
+> [Rychlý start: Nasazení aplikace katalogu služeb](deploy-service-catalog-quickstart.md)

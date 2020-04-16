@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c1626542aba71f971ad96fe9f187ce9f1c1a99f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7b27f10567816884b14a0a2c69e3bd8e85cb7a76
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70012930"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398705"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Kurz: Objednejte disk datové schránky Azure
 
@@ -33,12 +33,7 @@ Před nasazením vyplňte následující požadavky konfigurace pro službu Data
 
 ### <a name="for-service"></a>Služba
 
-Než začnete, ujistěte se, že:
-- Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
-- Typ předplatného, které používáte pro službu Data Box, musí být jeden z následujících:
-    - Smlouva Microsoft Enterprise (EA). Další informace o [předplatných se smlouvou Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
-    - Cloud Solution Provider (CSP). Další informace o [programu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
-- Pokud chcete vytvořit objednávku Data Boxu, potřebujete mít u předplatného přístup vlastníka nebo přispěvatele.
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Zařízení
 
@@ -82,7 +77,7 @@ Postupujte podle následujících kroků k objednání disku datové schránky.
 
     |Nastavení|Hodnota|
     |---|---|
-    |Name (Název)|Zadejte popisný název pro sledování objednávky.<br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí. |
+    |Název|Zadejte popisný název pro sledování objednávky.<br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí. |
     |Skupina prostředků| Použijte existující skupinu prostředků, nebo vytvořte novou. <br> Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. |
     |Cílová oblast Azure| K účtu úložiště přiřaďte oblast.<br> V současné době se podporují účty úložiště ve všech oblastech USA, Západní Evropě, Severní Evropě, Kanadě a Austrálii. |
     |Odhadovaná velikost dat v TB| Zadejte odhad v TB. <br>Podle objemu dat vám Microsoft pošle odpovídající počet 8TB disků SSD (s využitelnou kapacitou 7 TB). <br>Maximální využitelná kapacita 5 disků je 35 TB. |
@@ -103,7 +98,7 @@ Postupujte podle následujících kroků k objednání disku datové schránky.
 
     Účet úložiště zadaný pro spravované disky slouží jako přípravný účet úložiště. Služba Data Box nahraje virtuální disky do účtu pracovního úložiště a pak je převede na spravované disky a přesune se do skupin prostředků. Další informace najdete v tématu popisujícím [ověření nahrání dat do Azure](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure).
 
-13. Klikněte na **Další**.
+13. Klikněte na **Další**.
 
     ![Zadání podrobností objednávky](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
