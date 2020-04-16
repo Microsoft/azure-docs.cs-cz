@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4e9077d06341ce5ecf6b2238374ce1ac8e13dca3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70241390"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415162"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>Kurz: Objednání Azure Data Boxu Heavy
 
@@ -41,17 +41,9 @@ Než začnete, ujistěte se, že:
 - Při instalaci v jiném patře než přízemí musíte mít možnost přenést zařízení výtahem nebo přes rampu. Zařízení váží přibližně 227 kg.
 - Ujistěte se, že v datacentru máte rovnou plochu v blízkosti dostupného síťového připojení, kam je možné umístit takto velké zařízení.
 
-
 ### <a name="for-service"></a>Služba
 
-Než začnete, ujistěte se, že:
-- Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
-- Typ předplatného, které používáte pro službu Data Box, musí být jeden z následujících:
-    - Smlouva Microsoft Enterprise (EA). Další informace o [předplatných se smlouvou Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
-    - Cloud Solution Provider (CSP). Další informace o [programu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
-    - Microsoft Azure Sponsorship. Získejte další informace o [programu Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
-
-- Pokud chcete vytvořit objednávku Data Boxu Heavy, potřebujete mít u předplatného přístup vlastníka nebo přispěvatele.
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Zařízení
 
