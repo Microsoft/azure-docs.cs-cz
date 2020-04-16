@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: e0116c1cfe61b49f2d5aff46fab9cadc0e423ecc
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 18212726f0ab921a05a3b640a32754c62958d047
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310179"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393146"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>Konfigurace pravidel brány firewall IP pro obor názvů Centra událostí Azure
 Ve výchozím nastavení jsou obory názvů Event Hubs přístupné z Internetu, pokud je požadavek dodáván s platným ověřováním a autorizací. S ip firewallem ji můžete dále omezit pouze na sadu adres IPv4 nebo rozsahy adres IPv4 v zápisu [CIDR (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -29,6 +29,7 @@ Tato funkce je užitečná ve scénářích, ve kterých azure event huby by mě
 > Důvěryhodné služby společnosti Microsoft nejsou podporovány při implementaci virtuálních sítí.
 >
 > Běžné scénáře Azure, které nefungují s virtuálními sítěmi (všimněte si, že seznam **není** vyčerpávající) -
+> - Azure Monitor (nastavení diagnostiky)
 > - Azure Stream Analytics
 > - Integrace s Azure Event Grid
 > - Trasy rozbočovače Azure IoT Hub

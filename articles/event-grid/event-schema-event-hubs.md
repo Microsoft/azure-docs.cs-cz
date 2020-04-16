@@ -1,30 +1,30 @@
 ---
-title: Schéma událostí centra event gridu Azure
+title: Azure Event Hubs jako zdroj gridu událostí
 description: Popisuje vlastnosti, které jsou k dispozici pro události centra událostí s Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561824"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393342"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Schéma událostí Azure Event Grid pro centra událostí
+# <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs jako zdroj gridu událostí
 
 Tento článek obsahuje vlastnosti a schéma pro události centra událostí.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
 
-Seznam ukázkových skriptů a kurzů naleznete v tématu [Zdroj událostí Centra událostí](event-sources.md#event-hubs).
+## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
 
 ### <a name="available-event-types"></a>Dostupné typy událostí
 
 Centra událostí vyzařují typ události **Microsoft.EventHub.CaptureFileCreated** při vytvoření souboru sběru.
 
-## <a name="example-event"></a>Příklad události
+### <a name="example-event"></a>Příklad události
 
 Tato ukázková událost zobrazuje schéma události centra událostí, která byla vyvolána, když funkce sběru ukládá soubor: 
 
@@ -53,7 +53,7 @@ Tato ukázková událost zobrazuje schéma události centra událostí, která b
 ]
 ```
 
-## <a name="event-properties"></a>Vlastnosti události
+### <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující data nejvyšší úrovně:
 
@@ -81,6 +81,12 @@ Datový objekt má následující vlastnosti:
 | lastSequenceNumber | celé číslo | Poslední pořadové číslo z fronty. |
 | firstEnqueueTime | řetězec | Poprvé z fronty. |
 | lastEnqueueTime | řetězec | Poslední čas z fronty. |
+
+## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
+
+|Nadpis  |Popis  |
+|---------|---------|
+| [Kurz: streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md) | Když Centra událostí vytvoří soubor pro digitalizaci, event grid odešle událost do aplikace funkce. Aplikace načte soubor capture a migruje data do datového skladu. |
 
 ## <a name="next-steps"></a>Další kroky
 

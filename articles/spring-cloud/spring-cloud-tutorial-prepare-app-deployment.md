@@ -1,21 +1,21 @@
 ---
-title: Výuka – příprava aplikace Java Spring pro nasazení v Azure Spring Cloud
-description: V tomto kurzu připravíte aplikaci Java Spring pro nasazení do Azure Spring Cloud.
+title: Jak na to – příprava aplikace Java Spring pro nasazení v Azure Spring Cloudu
+description: V tomto tématu připravíte aplikaci Java Spring pro nasazení do Azure Spring Cloud.
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 49ebfec131c8b9fa7b8535163c03eb7cb692790d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 025dbc56fb46ef5b6225d35564b8e4ac3c82e6e3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78200018"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414468"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava aplikace Java Spring pro nasazení v Azure Spring Cloud
 
-Tento rychlý start ukazuje, jak připravit existující java jarní aplikaci pro nasazení do Azure Spring Cloud. Pokud je Azure Spring Cloud správně nakonfigurovaný, poskytuje robustní služby pro monitorování, škálování a aktualizaci aplikace Java Spring Cloud.
+Toto téma ukazuje, jak připravit existující java jarní aplikaci pro nasazení do Azure Spring Cloud. Pokud je Azure Spring Cloud správně nakonfigurovaný, poskytuje robustní služby pro monitorování, škálování a aktualizaci aplikace Java Spring Cloud.
 
 Další příklady vysvětlují, jak nasadit aplikaci do Azure Spring Cloud, když je nakonfigurovaný soubor POM. 
 * [Spuštění aplikace pomocí portálu Azure](spring-cloud-quickstart-launch-app-portal.md)
@@ -225,7 +225,7 @@ Do oddílu závislostí v souboru pom.xml zahrňte následující `spring-cloud-
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, jak nakonfigurovat aplikaci Java Spring pro nasazení do Azure Spring Cloud. Chcete-li se dozvědět, jak nastavit instanci serveru Konfigurace, pokračujte dalším kurzem.
+V tomto tématu jste se dozvěděli, jak nakonfigurovat aplikaci Java Spring pro nasazení do Azure Spring Cloud. Informace o tom, jak nastavit instanci konfiguračního serveru, naleznete v následujícím článku.
 
 > [!div class="nextstepaction"]
 > [Přečtěte si, jak nastavit instanci konfiguračního serveru](spring-cloud-tutorial-config-server.md)

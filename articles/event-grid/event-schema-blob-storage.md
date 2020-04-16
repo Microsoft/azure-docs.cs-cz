@@ -1,29 +1,30 @@
 ---
-title: Schéma události úložiště objektů blob azure event grid
+title: Azure Blob Storage jako zdroj mřížky událostí
 description: Popisuje vlastnosti, které jsou k dispozici pro události úložiště objektů blob pomocí Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 71aa937536f35c9af44adb5822ce7a2bb8f3a9eb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: cfc6e4790b67137b423cc90d93874d4914f81251
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756006"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393373"
 ---
-# <a name="azure-event-grid-event-schema-for-blob-storage"></a>Schéma událostí Azure Event Grid pro úložiště objektů Blob
+# <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob Storage jako zdroj mřížky událostí
 
-Tento článek obsahuje vlastnosti a schéma pro události úložiště objektů blob.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události úložiště objektů blob.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md). Poskytuje také seznam rychlých spuštění a kurzů pro použití Azure Blob Storage jako zdroj událostí.
 
-Seznam ukázkových skriptů a kurzů naleznete v [tématu Storage event source](event-sources.md#storage).
 
 >[!NOTE]
 > Pouze účty úložiště druhu **StorageV2 (pro obecné účely v2)**, **BlockBlobStorage**a Integrace událostí podpory **BlobStorage.** **Úložiště (genral účel v1)** *nepodporuje* integraci s Event Grid.
 
-## <a name="list-of-events-for-blob-rest-apis"></a>Seznam událostí pro api objektů BLOB REST
+## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
+
+### <a name="list-of-events-for-blob-rest-apis"></a>Seznam událostí pro api objektů BLOB REST
 
 Tyto události se aktivují, když klient vytvoří, nahradí nebo odstraní objekt blob voláním objektů API B REST.
 
@@ -35,7 +36,7 @@ Tyto události se aktivují, když klient vytvoří, nahradí nebo odstraní obj
 > [!NOTE]
 > Pokud chcete zajistit, že **Microsoft.Storage.BlobCreated** událost se aktivuje pouze v případě, že `CopyBlob`objekt `PutBlob`blob bloku je zcela potvrzena, filtrovat událost pro volání rozhraní API a `PutBlockList` REST. Tato volání rozhraní API aktivují událost **Microsoft.Storage.BlobCreated** až poté, co jsou data plně potvrzena pro objekt blob bloku. Informace o vytvoření filtru naleznete v tématu [Filtrování událostí pro mřížku událostí](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
-## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Seznam událostí pro azure data lake storage gen 2 rest api
+### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Seznam událostí pro azure data lake storage gen 2 rest api
 
 Tyto události se aktivují, pokud povolíte hierarchický obor názvů v účtu úložiště a klienti volají Azure Data Lake Storage Gen2 REST API. Další informace o azure data lake storage gen2, najdete [v tématu Úvod do Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
@@ -53,7 +54,7 @@ Tyto události se aktivují, pokud povolíte hierarchický obor názvů v účtu
 
 <a id="example-event" />
 
-## <a name="the-contents-of-an-event-response"></a>Obsah odpovědi na událost
+### <a name="the-contents-of-an-event-response"></a>Obsah odpovědi na událost
 
 Když je událost spuštěna, služba Event Grid odešle data o této události do koncového bodu přihlášení.
 
@@ -288,7 +289,7 @@ Pokud má účet úložiště objektů blob hierarchický obor názvů, data vyp
 }]
 ```
 
-## <a name="event-properties"></a>Vlastnosti události
+### <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující data nejvyšší úrovně:
 
@@ -321,6 +322,17 @@ Datový objekt má následující vlastnosti:
 | Rekurzivní | řetězec | `True`provádět operaci na všech podřízených adresářích; v `False`opačném případě . <br>Zobrazí se pouze pro události aktivované na účtech úložiště objektů blob, které mají hierarchický obor názvů. |
 | Sekvencer | řetězec | Neprůhledná hodnota řetězce představující logickou posloupnost událostí pro libovolný konkrétní název objektu blob.  Uživatelé mohou použít standardní porovnání řetězců k pochopení relativní posloupnosti dvou událostí na stejném názvu objektu blob. |
 | storageDiagnostika | objekt | Diagnostická data občas zahrnutá službou Azure Storage. Pokud je k dispozici, by měly být ignorovány příjemci událostí. |
+
+## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
+|Nadpis  |Popis  |
+|---------|---------|
+| [Úvodní příručka: směrování událostí úložiště objektů Blob do vlastního webového koncového bodu pomocí azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ukazuje, jak používat Azure CLI k odesílání událostí úložiště objektů blob na WebHook. |
+| [Úvodní příručka: směrování událostí úložiště objektů Blob do vlastního webového koncového bodu pomocí Prostředí PowerShell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ukazuje, jak používat Azure PowerShell k odesílání událostí úložiště objektů blob na WebHook. |
+| [Úvodní příručka: vytváření a směrování událostí úložiště objektů Blob pomocí portálu Azure](blob-event-quickstart-portal.md) | Ukazuje, jak pomocí portálu odesílat události úložiště objektů blob na WebHook. |
+| [Nastavení příkazu k řešení Azure: přihlášení k odběru událostí pro účet úložiště objektů Blob](./scripts/event-grid-cli-blob.md) | Ukázkový skript, který se přihlásí k odběru události pro účet úložiště objektů Blob. Odešle událost webhooku. |
+| [PowerShell: Přihlášení k odběru událostí pro účet úložiště objektů Blob](./scripts/event-grid-powershell-blob.md) | Ukázkový skript, který se přihlásí k odběru události pro účet úložiště objektů Blob. Odešle událost webhooku. |
+| [Šablona Správce prostředků: Vytvoření úložiště objektů Blob a předplatného](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Nasadí účet úložiště objektů blob v Azure a přihlásí se k odběru událostí tohoto účtu úložiště. Odesílá události webhooku. |
+| [Přehled: Reakce na události úložiště objektů Blob](../storage/blobs/storage-blob-event-overview.md) | Přehled integrace úložiště objektů Blob s událostí. |
 
 ## <a name="next-steps"></a>Další kroky
 

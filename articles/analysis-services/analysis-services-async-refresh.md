@@ -4,15 +4,15 @@ description: Popisuje, jak používat rozhraní REST služby Azure Analysis Serv
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273724"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406292"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
 
@@ -56,7 +56,7 @@ Můžete například použít příkaz POST v kolekci Refreshs k provedení oper
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Všechna volání musí být ověřena pomocí platného tokenu služby Azure Active Directory (OAuth 2) v hlavičce autorizace a musí splňovat následující požadavky:
 
@@ -97,7 +97,7 @@ Tělo se může podobat následujícímu:
 
 Zadání parametrů není vyžadováno. Použije se výchozí nastavení.
 
-| Name (Název)             | Typ  | Popis  |Výchozí  |
+| Název             | Typ  | Popis  |Výchozí  |
 |------------------|-------|--------------|---------|
 | `Type`           | Výčet  | Typ zpracování, které má být provést. Typy jsou zarovnány s typy [příkazů aktualizace](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) TMSL: úplné, clearValues, vypočítat, dataOnly, automatické a defragmentace. Typ přidání není podporován.      |   automatická      |
 | `CommitMode`     | Výčet  | Určuje, zda budou objekty potvrzeny v dávkách nebo pouze po dokončení. Režimy zahrnují: výchozí, transakční, partialBatch.  |  Transakční       |
@@ -208,8 +208,8 @@ Tady je ukázka kódu C#, která vám pomůže začít, [RestApiSample na GitHub
 
 ### <a name="to-use-the-code-sample"></a>Použití ukázky kódu
 
-1.  Klonujte nebo stáhněte repo. Otevřete řešení RestApiSample.
-2.  Najděte **klienta linky. BaseAddress = ...** a zadejte [základní adresu URL](#base-url).
+1.    Klonujte nebo stáhněte repo. Otevřete řešení RestApiSample.
+2.    Najděte **klienta linky. BaseAddress = ...** a zadejte [základní adresu URL](#base-url).
 
 Ukázka kódu používá ověřování [instančního objektu.](#service-principal)
 
@@ -217,14 +217,14 @@ Ukázka kódu používá ověřování [instančního objektu.](#service-princip
 
 Další informace o nastavení instančního objektu a přiřazení potřebných oprávnění v Azure AS najdete v tématu [Vytvoření instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md) – portál Azure portal a [Přidání instančního objektu do role správce serveru.](analysis-services-addservprinc-admins.md) Po dokončení kroků proveďte následující další kroky:
 
-1.  V ukázce kódu vyhledejte **autoritu řetězce = ...**, nahraďte **společné** ID klienta vaší organizace.
-2.  Komentář/uncomment tak ClientCredential třídy se používá k vytvoření instance objektu cred. Ujistěte \<se, že \<id aplikace> a klíč aplikace> hodnoty jsou přístupné bezpečným způsobem nebo použít ověřování na základě certifikátu pro instanční objekty.
-3.  Spusťte ukázku.
+1.    V ukázce kódu vyhledejte **autoritu řetězce = ...**, nahraďte **společné** ID klienta vaší organizace.
+2.    Komentář/uncomment tak ClientCredential třídy se používá k vytvoření instance objektu cred. Ujistěte \<se, že \<id aplikace> a klíč aplikace> hodnoty jsou přístupné bezpečným způsobem nebo použít ověřování na základě certifikátu pro instanční objekty.
+3.    Spusťte ukázku.
 
 
 ## <a name="see-also"></a>Viz také
 
 [Vzorky](analysis-services-samples.md)   
-[ROZHRANÍ API PRO ODPOČINEK](https://docs.microsoft.com/rest/api/analysisservices/servers)   
+[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
 
 

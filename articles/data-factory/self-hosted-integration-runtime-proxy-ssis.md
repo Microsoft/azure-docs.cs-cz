@@ -11,15 +11,17 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: 9a1923057bc318869f491791520aacb4d0d17591
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/15/2020
+ms.openlocfilehash: ecfdf2a11f31c18064be9a607f2bb3938d26e661
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346623"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414900"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurace infračerveného serveru hostovaného s vlastním hostitelem jako proxy serveru pro infračervený přenos Azure-SSIS v Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tento článek popisuje, jak spustit balíčky sql server integration services (SSIS) na Modul runtime integrace Azure-SSIS (Azure-SSIS IR) v Azure Data Factory s runtime integrace s vlastním hostitelem (samoobslužné IR) nakonfigurované jako proxy server. 
 
@@ -52,7 +54,7 @@ Nakonec si stáhnete a nainstalujete nejnovější verzi infračerveného zaří
 
 Pokud jste tak ještě neučinili, vytvořte službu propojenou s úložištěm Azure blob ve stejné datové továrně, kde je nastavena infračervená infračervená zisu Azure-SSIS. Pokud tak chcete provést, najdete [v tématu vytvoření služby propojené s azure data factory](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service). Ujistěte se, že děláte následující kroky:
 - V **případě úložiště dat**vyberte Azure **Blob Storage**.  
-- Pro **připojení prostřednictvím integračního běhu**vyberte Možnost **AutoResolveIntegrationRuntime** (ne azure-SSIS IR ani vaše infračervená zručná zařízení pro vlastní potřebu), protože k načtení přístupových přihlašovacích údajů pro úložiště objektů blob Azure používáme výchozí zařízení Azure IR.  
+- Pro **připojení prostřednictvím integračního běhu**vyberte Možnost **AutoResolveIntegrationRuntime** (ne azure-SSIS IR ani vaše infračervená zručná infračervená zem), protože k načtení přístupových přihlašovacích údajů pro úložiště objektů blob Azure používáme výchozí zařízení Azure IR.
 - V **případě metody Authentication**vyberte klíč **účtu**, **identifikátor URI**nebo **instanční objekt .**  
 
     >[!TIP]
@@ -171,7 +173,7 @@ Pokud potřebujete použít silnou kryptografii/bezpečnější síťový protok
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-- V současné době jsou podporovány pouze úlohy toku dat s otevřeným připojením k databázi (ODBC)/OLEDB/Ploché zdroje souborů. 
+- V současné době jsou podporovány pouze úlohy toku dat s otevřeným připojením k databázi (ODBC)/OLEDB/Flat File nebo cílem OLEDB. 
 - Momentálně jsou podporovány pouze služby propojené s úložištěm objektů blob Azure, které jsou nakonfigurované pomocí *klíče účtu*, *identifikátoru URI s podpisem sdíleného přístupu (SAS)* nebo ověřování *matnina instančního objektu.*
 - *Mapování parametrů* ve zdroji OLEDB ještě není podporováno. Jako řešení použijte *příkaz SQL Command From Variable* jako *AccessMode* a použijte *expression* k vložení proměnných/parametrů do příkazu SQL. Jako obrázek naleznete *balíček ParameterMappingSample.dtsx,* který najdete ve složce *SelfHostedIRProxy/Limitations* v našem kontejneru public preview. Pomocí Průzkumníka úložiště Azure se můžete připojit k našemu kontejneru public preview zadáním výše uvedeného identifikátoru URI SAS.
 

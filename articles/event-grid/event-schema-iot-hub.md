@@ -1,29 +1,27 @@
 ---
-title: Schéma sítě událostí Azure pro službu IoT Hub | Dokumenty společnosti Microsoft
+title: Azure IoT Hub jako zdroj gridu událostí
 description: Tento článek obsahuje vlastnosti a schéma pro události služby Azure IoT Hub. Obsahuje seznam dostupných typů událostí, ukázkové události a vlastností události.
 services: iot-hub
 documentationcenter: ''
-author: kgremban
-manager: timlt
+author: spelluru
 editor: ''
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/21/2020
-ms.author: kgremban
-ms.openlocfilehash: cfbd46ad961bd1dc914bae98e761cd83d445ff88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513027"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393331"
 ---
-# <a name="azure-event-grid-event-schema-for-iot-hub"></a>Schéma událostí služby Azure Event Grid pro službu IoT Hub
-
+# <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub jako zdroj gridu událostí
 Tento článek obsahuje vlastnosti a schéma pro události služby Azure IoT Hub. Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md). 
 
-Seznam ukázkových skriptů a kurzů najdete v tématu [Zdroj událostí služby IoT Hub](event-sources.md#iot-hub).
+## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
 
-## <a name="available-event-types"></a>Dostupné typy událostí
+### <a name="available-event-types"></a>Dostupné typy událostí
 
 Azure IoT Hub vydává následující typy událostí:
 
@@ -37,7 +35,7 @@ Azure IoT Hub vydává následující typy událostí:
 
 Všechny události zařízení s výjimkou událostí telemetrie zařízení jsou obecně dostupné ve všech oblastech podporovaných službou Event Grid. Událost telemetrie zařízení je ve verzi Public Preview a je dostupná ve všech oblastech kromě východních USA, Západní USA, Západní Evropy, [Azure Government](../azure-government/documentation-government-welcome.md), Azure [China 21Vianet](/azure/china/china-welcome)a [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
 
-## <a name="example-event"></a>Příklad události
+### <a name="example-event"></a>Příklad události
 
 Schéma pro DeviceConnected a DeviceDisconnected události mají stejnou strukturu. Tato ukázková událost ukazuje schéma události vyvolané při připojení zařízení k centru IoT:
 
@@ -205,6 +203,13 @@ Pro události **služby** IoT Hub vytvořené zařízení a **odstraněné zař�
 | Požadované | objekt | Část vlastností, které mohou být zapsány pouze back-endaplikace a číst zařízení. | 
 | Hlášeny | objekt | Část vlastností, které mohou být zapsány pouze zařízení a číst back-end aplikace. |
 | lastUpdated | řetězec | Časové razítko ISO8601 poslední aktualizace vlastnosti dvojčete zařízení. | 
+
+## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
+|Nadpis  |Popis  |
+|---------|---------|
+| [Posílání e-mailových oznámení o událostech Azure IoT Hub pomocí Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Aplikace logiky odešle e-mail s oznámením pokaždé, když se zařízení přidá do vašeho IoT Hubu. |
+| [Reakce na události služby IoT Hub pomocí služby Event Grid ke spuštění akcí](../iot-hub/iot-hub-event-grid.md) | Přehled integrace IoT Hubu s Event Grid. |
+| [Objednejte připojení zařízení a odpojené události zařízení](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Ukazuje, jak objednat události stavu připojení zařízení. |
 
 ## <a name="next-steps"></a>Další kroky
 

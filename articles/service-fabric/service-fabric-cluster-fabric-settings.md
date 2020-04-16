@@ -3,12 +3,12 @@ title: Změna nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 3eb558c7d0745ada43696fd4189a7ac663867849
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c2e280af814a3e10ad84c5ba07fc376868fcd851
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80753978"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416248"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení nastavení clusteru Service Fabric
 Tento článek popisuje různá nastavení prostředků infrastruktury pro cluster Service Fabric, které můžete přizpůsobit. U clusterů hostovaných v Azure můžete nastavení přizpůsobit na [webu Azure Portal](https://portal.azure.com) nebo pomocí šablony Azure Resource Manager. Další informace najdete [v tématu Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). U samostatných clusterů můžete přizpůsobit nastavení aktualizací souboru *ClusterConfig.json* a provedením upgradu konfigurace v clusteru. Další informace naleznete [v tématu Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).

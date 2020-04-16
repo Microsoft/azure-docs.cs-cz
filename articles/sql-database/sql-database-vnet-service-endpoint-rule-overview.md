@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4faead13c10171c31e76fe2dd59be32a93a12f86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124751"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414395"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncových bodů a pravidel služby virtuální sítě pro databázové servery
 
@@ -64,6 +64,7 @@ Máte možnost pomocí [řízení přístupu na základě rolí (RBAC)][rbac-wha
 
 > [!NOTE]
 > V některých případech azure SQL database a podsítě virtuální sítě jsou v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
+>
 > - Obě předplatná musí být ve stejném tenantovi služby Azure Active Directory.
 > - Uživatel má požadovaná oprávnění k zahájení operací, jako je například povolení koncových bodů služby a přidání podsítě virtuální sítě na daný server.
 > - Obě předplatná musí mít registrovaného zprostředkovatele Microsoft.Sql.
@@ -134,7 +135,7 @@ PolyBase se běžně používá k načtení dat do Azure SQL Data Warehouse z ú
    > [!NOTE]
    > - Pokud máte účet úložiště pro obecné účely v1 nebo objektblo, musíte **nejprve upgradovat na v2** pomocí této [příručky](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Známé problémy s Azure Data Lake Storage Gen2, naleznete v této [příručce](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
-    
+
 1. V části účet úložiště přejděte na **příkaz Řízení přístupu (IAM)** a klikněte na **Přidat přiřazení role**. Přiřaďte roli RBAC **přispěvatele dat objektu blob úložiště** k vašemu Azure SQL Serveru, který hostuje váš Datový sklad Azure SQL, který jste zaregistrovali ve službě Azure Active Directory (AAD) jako v kroku#1.
 
    > [!NOTE]
@@ -235,7 +236,7 @@ Musíte už mít podsíť, která je označena konkrétní *název* koncového b
 
 ## <a name="azure-portal-steps"></a>Kroky portálu Azure
 
-1. Přihlaste se k [portálu Azure][http-azure-portal-link-ref-477t].
+1. Přihlaste se k webu [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Vyhledejte a vyberte **servery SQL**a vyberte server. V části **Zabezpečení**vyberte **brány firewall a virtuální sítě**.
 
@@ -264,6 +265,7 @@ Musíte už mít podsíť, která je označena konkrétní *název* koncového b
 
 > [!NOTE]
 > Na pravidla se vztahují následující stavy nebo stavy:
+>
 > - **Připraveno:** Označuje, že operace, kterou jste zahájili, byla úspěšná.
 > - **Nezdařilo se:** Označuje, že operace, kterou jste zahájili, selhala.
 > - **Odstraněno:** Platí pouze pro operaci Odstranit a označuje, že pravidlo bylo odstraněno a již neplatí.

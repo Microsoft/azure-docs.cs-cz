@@ -11,14 +11,15 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: e4301afafb48fb9a1b0c9e36dde9800e2b8390f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d697fb8afe3e92dfe54eb5d89a2ef59425cb0cde
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443925"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414914"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření aktivační události, která spustí kanál v reakci na událost
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje aktivační události založené na událostech, které můžete vytvořit v kanálech datové továrny.
 
@@ -104,4 +105,4 @@ Tato část obsahuje příklady nastavení aktivační události založené na u
 | **Cesta objektu blob končí** | `foldername/file.txt` | Přijímá události pro objekt `file.txt` blob pojmenovaný ve `foldername` složce pod libovolným kontejnerem. |
 
 ## <a name="next-steps"></a>Další kroky
-Podrobné informace o aktivačních událostech naleznete v [tématu Pipeline execution and triggers](concepts-pipeline-execution-triggers.md#triggers).
+Podrobné informace o aktivačních událostech naleznete v [tématu Pipeline execution and triggers](concepts-pipeline-execution-triggers.md#trigger-execution).

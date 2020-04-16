@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 6ceace1ee93fab8c0a46ed4a67850fc87a5cdad2
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 2e862410e2bf12e09e1a6388bbb6f7105b5b2edf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991224"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405270"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v application insights
 
@@ -314,7 +314,7 @@ V průběhu času rozhraní .NET definovalo několik způsobů korelace telemetr
 
 Tyto metody však neumožnily podporu automatického distribuovaného trasování. `DiagnosticSource`podporuje automatickou korelaci mezi stroji. Knihovny .NET `DiagnosticSource` podporují a umožňují automatické šíření kontextu korelace pomocí přenosu, například HTTP.
 
-[Uživatelská příručka k aktivitám](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) v `DiagnosticSource` příručce vysvětluje základy sledování aktivit.
+[Uživatelská příručka k aktivitám](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) v `DiagnosticSource` příručce vysvětluje základy sledování aktivit.
 
 ASP.NET Core 2.0 podporuje extrakci http hlaviček a spouštění nových aktivit.
 

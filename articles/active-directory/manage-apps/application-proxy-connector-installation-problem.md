@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466e1ce0efbdec3f5475634f3857d02554d93d98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d773e6302edf0b799e6dfccc702750a9cc74f60
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049136"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406685"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Potíže při instalaci konektoru agenta proxy aplikací
 
@@ -50,20 +50,69 @@ Pokud instalace konektoru selže, hlavní příčinou je obvykle jedna z násled
 
 3.  Otevřete prohlížeč (samostatnou kartu) a přejděte na následující webovou stránku: `https://login.microsoftonline.com`, ujistěte se, že se na tuto stránku můžete přihlásit.
 
-## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Ověření podpory součástí počítače a back-endu pro certifikát důvěryhodnosti proxy aplikace
+## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-certificate"></a>Ověření podpory součástí počítače a back-endu pro certifikát důvěryhodnosti proxy aplikace
 
-**Cíl:** Ověřte, zda počítač s konektorem, proxy server back-endu a brána firewall mohou podporovat certifikát vytvořený konektorem pro budoucí důvěryhodnost.
+**Cíl:** Ověřte, zda počítač s konektorem, proxy server back-endu a brána firewall podporují certifikát vytvořený konektorem pro budoucí důvěryhodnost a zda je certifikát platný.
 
 >[!NOTE]
 >Spojnice se pokusí vytvořit certifikát SHA512, který je podporován TLS1.2. Pokud počítač nebo back-endfirewall a proxy server nepodporují TLS1.2, instalace se nezdaří.
 >
 >
 
-**Chcete-li tento problém vyřešit:**
+**Zkontrolujte požadované požadavky:**
 
 1.  Ověřte, zda počítač podporuje TLS1.2 – Všechny verze systému Windows po 2012 R2 by měly podporovat TLS 1.2. Pokud je váš konektor ový počítač z verze 2012 R2 nebo předchozí, ujistěte se, že jsou v počítači nainstalovány následující kb:<https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
 
 2.  Obraťte se na správce sítě a požádejte o ověření, zda back-endový proxy server a brána firewall neblokují sha512 pro odchozí provoz.
+
+**Ověření klientského certifikátu:**
+
+Ověřte kryptografický otisk aktuálního klientského certifikátu. Úložiště certifikátů naleznete v %ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<ConnectorTrustSettingsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CloudProxyTrust>
+    <Thumbprint>4905CC64B2D81BBED60962ECC5DCF63F643CCD55</Thumbprint>
+    <IsInUserStore>false</IsInUserStore>
+  </CloudProxyTrust>
+</ConnectorTrustSettingsFile>
+```
+
+Zde jsou možné **isinuserstore** hodnoty a významy:
+
+- **false** - Klientský certifikát byl vytvořen během instalace nebo registrace iniciované příkazem Register-AppProxyConnector. Je uložen v osobním kontejneru v úložišti certifikátů místního počítače. 
+
+Certifikát ověřte takto:
+
+1. Spustit **certlm.msc**
+2. V konzole pro správu rozbalte osobní kontejner a klikněte na certifikáty
+3. Vyhledejte certifikát vydaný **connectorregistrationca.msappproxy.net**
+
+- **true** – Automaticky obnovený certifikát je uložen v osobním kontejneru v úložišti uživatelských certifikátů síťové služby. 
+
+Certifikát ověřte takto:
+
+1. Stažení [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
+2. Extrahujte [psexec](https://docs.microsoft.com/sysinternals/downloads/psexec) z balíčku a spusťte **psexec -i -u "nt authority\network service" cmd.exe** z příkazového řádku se zvýšenými oprávněními.
+3. Spustit **certmgr.msc** v nově objeveném příkazovém řádku
+2. V konzole pro správu rozbalte osobní kontejner a klikněte na certifikáty
+3. Vyhledejte certifikát vydaný **connectorregistrationca.msappproxy.ne
+
+**Obnovení klientského certifikátu:**
+
+Pokud konektor není připojen ke službě po dobu několika měsíců, jeho certifikáty mohou být zastaralé. Selhání obnovení certifikátu vede k certifikátu, jehož platnost vypršela. Díky tomu služba konektoru přestane fungovat. Událost 1000 je zaznamenána v admin protokolu konektoru:
+
+"Obnovení registrace konektoru se nezdařilo: Platnost certifikátu důvěryhodnosti konektoru vypršela. Spusťte rutinu PowerShell Register-AppProxyConnector v počítači, ve kterém je spuštěn konektor, abyste znovu zaregistrovali konektor."
+
+V takovém případě odinstalujte a znovu nainstalujte konektor pro aktivaci registrace nebo můžete spustit následující příkazy prostředí PowerShell:
+
+```
+Import-module AppProxyPSModule
+Register-AppProxyConnector
+```
+
+Další informace o příkazu Register-AppProxyConnector najdete v [tématu Vytvoření skriptu bezobslužné instalace pro konektor proxy aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell)
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Ověření, že správce slouží k instalaci konektoru
 

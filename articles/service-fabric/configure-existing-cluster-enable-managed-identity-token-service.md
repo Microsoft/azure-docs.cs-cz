@@ -2,16 +2,16 @@
 title: Konfigurace podpory spravovaných identit v existujícím clusteru Service Fabric
 description: Tady je postup, jak povolit podporu spravovaných identit v existujícím clusteru Azure Service Fabric.
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: 396978546b301884087c4ea51e242258d64a6b0b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983802"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415691"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Konfigurace podpory spravovaných identit v existujícím clusteru Service Fabric (preview)
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Konfigurace podpory spravovaných identit v existujícím clusteru Service Fabric
 
 Chcete-li používat [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) ve vašich aplikacích Service Fabric, povolte nejprve *službu Token spravované identity* v clusteru. Tato služba je zodpovědná za ověřování aplikací Service Fabric pomocí jejich spravovaných identit a za získání přístupových tokenů jejich jménem. Jakmile je služba povolena, můžete ji vidět v aplikaci Service Fabric Explorer v části **Systém** v levém podokně, která je spuštěna pod názvem **fabric:/System/ManagedIdentityTokenService**.
 

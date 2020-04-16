@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3145c7db064432e443aae5dcd503905b865ffe46
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f7558745442ac26fc33a063ff66fe170d08487ac
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383251"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392090"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu automatizace Azure
 
@@ -36,7 +36,7 @@ K nabízení konfigurací virtuálním počítačům Azure můžete taky použí
 
 ### <a name="portal"></a>Portál
 
-1. V účtu Automatizace klikněte na **stav konfigurace (DSC)**.
+1. V účtu Automation klikněte na **konfigurace stavu (DSC).**
 1. Klikněte na kartu **Konfigurace** a potom klikněte na název konfigurace, který chcete zkompilovat.
 1. Klepněte na tlačítko **Kompilovat**.
 1. Pokud konfigurace nemá žádné parametry, budete vyzváni k potvrzení, zda chcete zkompilovat. Pokud má konfigurace parametry, otevře se okno **Konfigurace kompilace,** takže můžete zadat hodnoty parametrů.
@@ -130,12 +130,12 @@ Funkce **Složené prostředky** umožňuje používat konfigurace DSC jako vno�
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>Správa configurationdata při kompilaci konfigurací v Azure Automation
 
-**ConfigurationData** umožňuje oddělit strukturální konfiguraci od libovolné konfigurace specifické pro prostředí při použití prostředí PowerShell DSC. Další informace naleznete [v tématu Oddělení "Co" od "Kde" v Prostředí PowerShell DSC](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/).
+`ConfigurationData`je vestavěný parametr DSC, který umožňuje oddělit strukturální konfiguraci od libovolné konfigurace specifické pro prostředí při použití prostředí PowerShell DSC. Další informace naleznete [v tématu Oddělení "Co" od "Kde" v Prostředí PowerShell DSC](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/).
 
 > [!NOTE]
-> Při kompilaci v azure automation state configuration můžete použít **ConfigurationData** v Azure PowerShellu, ale ne na webu Azure Portal.
+> Při kompilaci v Azure Automation State `ConfigurationData` Configuration, můžete použít v Azure PowerShell, ale ne na webu Azure Portal.
 
-Následující příklad konfigurace DSC používá `$ConfigurationData` **ConfigurationData** prostřednictvím `$AllNodes` a klíčová slova. V tomto příkladu také potřebujete [modul xWebAdministration.](https://www.powershellgallery.com/packages/xWebAdministration/)
+Následující příklad konfigurace DSC `$ConfigurationData` používá `$AllNodes` `ConfigurationData` prostřednictvím a klíčová slova. V tomto příkladu také potřebujete [modul xWebAdministration.](https://www.powershellgallery.com/packages/xWebAdministration/)
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -198,7 +198,7 @@ Konfigurace DSC v Azure Automation můžou `Get-AutomationPSCredential` odkazova
 
 Zabezpečení přihlašovacích údajů v konfiguracích uzlů (konfigurační dokumenty MOF) vyžaduje šifrování pověření v souboru MOF konfigurace uzlu. V současné době je nutné udělit PowerShell DSC oprávnění k výstupu pověření ve formátu prostého textu během konfigurace uzlu MOF generace. Prostředí PowerShell DSC si není vědomo, že Azure Automation šifruje celý soubor MOF po jeho generování prostřednictvím úlohy kompilace.
 
-PowerShell DSC můžete sdělit, že je v pořádku, aby pověření byla vyprosazena ve formátu prostého textu v konfiguračních mofech generovaného uzlu pomocí konfiguračních dat. Měli byste `PSDscAllowPlainTextPassword = $true` předat přes **ConfigurationData** pro každý název bloku uzlu, který se zobrazí v konfiguraci DSC a používá pověření.
+PowerShell DSC můžete sdělit, že je v pořádku, aby pověření byla vyprosazena ve formátu prostého textu v konfiguračních mofech generovaného uzlu pomocí konfiguračních dat. Měli byste `PSDscAllowPlainTextPassword = $true` `ConfigurationData` předat prostřednictvím pro každý název bloku uzlu, který se zobrazí v konfiguraci DSC a používá pověření.
 
 Následující příklad ukazuje konfiguraci DSC, která používá prostředek pověření automatizace.
 
@@ -262,9 +262,9 @@ Tento proces můžete spustit z pracovní stanice pro vývojáře nebo v rámci 
 
 ### <a name="import-a-node-configuration-in-the-azure-portal"></a>Import konfigurace uzlu na webu Azure Portal
 
-1. V části Správa **konfigurace**klikněte na účet Automation na položku Konfigurace stavu **(DSC).**
+1. V účtu Automation klikněte v části **Správa konfigurace**na stav **konfigurace (DSC).**
 1. Na stránce Konfigurace stavu (DSC) klikněte na kartu **Konfigurace** a potom klikněte na **Přidat**.
-1. Na stránce Import klikněte na ikonu složky vedle textového pole **Konfigurační soubor uzlu** a vyhledejte v místním počítači konfigurační soubor uzlu (MOF).
+1. Na stránce Import klepněte na ikonu složky vedle pole **Konfigurační soubor uzlu** a vyhledejte v místním počítači soubor MOF konfigurace uzlu.
 
    ![Vyhledat místní soubor](./media/automation-dsc-compile/import-browse.png)
 

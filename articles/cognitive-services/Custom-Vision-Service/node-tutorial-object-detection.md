@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: 94013b735f70358d0c49512e6d90cd1d03e78d5f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 18cf714ba7ee0a2bf5251c6e109bf997ba6834af
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705713"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403637"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Úvodní příručka: Vytvoření projektu detekce objektů pomocí sady SDK Custom Vision Node.js
 
@@ -233,7 +233,7 @@ V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné 
 
 ## <a name="next-steps"></a>Další kroky
 
-Právě jste viděli, jak se dají jednotlivé kroky procesu detekce objektů provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
+Nyní jste viděli, jak lze provést každý krok procesu detekce objektů v kódu. Tato ukázka provede jednu trénovací iteraci, ale často budete muset trénovat a testovat model vícekrát, aby byl přesnější. Následující průvodce školeníse zabývá klasifikací obrázků, ale jeho principy jsou podobné detekci objektů.
 
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](test-your-model.md)

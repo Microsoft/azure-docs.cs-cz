@@ -1,24 +1,26 @@
 ---
-title: Schéma událostí Azure Grid Azure Maps Azure
+title: Mapy Azure jako zdroj mřížky událostí
 description: Popisuje vlastnosti a schémata poskytovaná pro události Azure Maps pomocí Azure Event Grid
 services: event-grid
-author: femila
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 02/08/2019
-ms.author: femila
-ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: e879ec3442f2e7912acb450a97079d80d7d95a01
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77486355"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393403"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Schéma událostí Azure Event Grid pro Azure Maps
+# <a name="azure-maps-as-an-event-grid-source"></a>Azure Maps jako zdroj sítě událostí
 
-Tento článek obsahuje vlastnosti a schéma pro události Azure Maps. Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema).
+Tento článek obsahuje vlastnosti a schéma pro události Azure Maps. Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema). Poskytuje také seznam rychlých startů a kurzů pro použití Azure Maps jako zdroje událostí.
 
-## <a name="available-event-types"></a>Dostupné typy událostí
+## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
+
+### <a name="available-event-types"></a>Dostupné typy událostí
 
 Účet Azure Maps vydává následující typy událostí:
 
@@ -28,7 +30,7 @@ Tento článek obsahuje vlastnosti a schéma pro události Azure Maps. Úvod do 
 | Soubor Microsoft.Maps.Geofenceukončen | Zvýšené, když se přijaté souřadnice přesunuly z daného geofence do vnějšího |
 | Microsoft.Maps.GeofenceVýsledek | Vyvolána pokaždé, když geofencing dotaz vrátí výsledek, bez ohledu na stav |
 
-## <a name="event-examples"></a>Příklady událostí
+### <a name="event-examples"></a>Příklady událostí
 
 Následující příklad ukazuje schéma **události GeofenceEntered**
 
@@ -98,7 +100,7 @@ Následující příklad ukazuje schéma pro **GeofenceResult**
 }
 ```
 
-## <a name="event-properties"></a>Vlastnosti události
+### <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující data nejvyšší úrovně:
 
@@ -162,6 +164,12 @@ Datový objekt má následující vlastnosti:
 | Geometrie | geometrie[] |Zobrazí seznam geometrií plotu, které obsahují pozici souřadnic nebo překrývají vyhledávací vyrovnávací paměť kolem pozice. |
 | invalidPeriodGeofenceGeometryId | řetězec[]  | Seznami ID geometrie geofence, která je v neplatnéobdobí vzhledem k času uživatele v požadavku. |
 | isEventPublished | Boolean | True pokud alespoň jedna událost je publikována na předplatitele události Azure Maps, false, pokud žádná událost je publikována na předplatitele události Azure Maps. |
+
+## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
+|Nadpis  |Popis  |
+|---------|---------|
+| [Reakce na události Azure Maps pomocí Gridu událostí](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Přehled integrace Map Azure s Event Grid. |
+| [Kurz: Nastavení geografické zóny](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Tento kurz vás provede základními kroky nastavení geografické zóny pomocí Azure Maps. Azure Event Grid slouží k streamování výsledků geografické zóny a nastavení oznámení na základě výsledků geografické zóny. |
 
 ## <a name="next-steps"></a>Další kroky
 

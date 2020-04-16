@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6d6375b19689c582c0f129378c76936e624e04
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285329"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416286"
 ---
 <a name="web-analytics"></a>Webová analýza
 =============
@@ -40,7 +40,7 @@ Existují dva způsoby, jak vytvořit vlastní kampaň.
 
 1. Přidejte do adresy URL parametr dotazu **mktcmpid,** který popisuje, co je kampaň a z jaké stránky/události tito zákazníci pocházejí.
 
-Můžete například použít:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+Můžete například použít:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign```
 
 1. (Upřesnit): Použijte jedno z našich podporovaných obecných ID kampaně v adrese URL. Chceme být vstřícní s dalšími značkami ref, které musíte použít, takže podporujeme úmluvu, abychom automaticky rozpoznali tyto další značky:
     
@@ -49,14 +49,14 @@ Můžete například použít:<https://appsource.microsoft.com/product/dynamics-
     3. **ref**
     4. **src**
 
-Můžete například použít:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+Můžete například použít:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign```
 
 Můžete si vybrat, zda chcete mít kombinaci více id těchto kampaní, abyste dále identifikovali více zdrojů, které zvyšují návštěvnost kampaně, například odkud zákazník pochází (e-mail, blog, zdroj sociálních médií atd.).
 
-Například:
+Příklad:
 
-1. Newsletter referrer:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. Odkazovná osoba linkedinu:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Newsletter referrer:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter```
+2. Odkazovná osoba linkedinu:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn```
 
 ### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Zajištění průchodu kampaní všemi stránkami**
 
@@ -64,13 +64,13 @@ Může napovědět situaci, kdy vaše kampaně mají mezistránku, na kterou zvy
 
 Zde naleznete příklad:
 
-1. Zaměstnanec marketingu kupuje reklamy od Googlu, <https://contoso.com>aby mohl zvýšit návštěvnost vstupní stránky společnosti\'. Tato vstupní stránka \"má\" vyzkoušet můj <https://appsource.com>odkaz na produkt, který jde do .
+1. Zaměstnanec marketingu kupuje reklamy od Googlu, ```https://contoso.com```aby mohl zvýšit návštěvnost vstupní stránky společnosti\'. Tato vstupní stránka \"má\" vyzkoušet můj ```https://appsource.com```odkaz na produkt, který jde do .
 2. Uživatel klikne na reklamu a\'přistane na vstupní stránce své společnosti.
     1.  Adresa URL odkazu = google.com
-    2.  Adresa URL vstupní stránky =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2.  Adresa URL vstupní stránky =```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
 3. Uživatel klikne \"na odkaz\" vyzkoušet můj produkt a přejde do AppSource.
-    1. Adresa URL odkazu =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Vstupní adresa URL stránky (**Ujistěte\_se, že\_tato adresa URL má do této adresy URL přidanou kampaň utm a zdroj utm**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    1. Adresa URL odkazu =```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
+    2. Adresa URL vstupní stránky (**Ujistěte\_se, že\_tato adresa URL obsahuje kampaň UTM a zdroj utm přidaný na tuto adresu URL**) =```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**```
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>Jak vyhodnotit úspěšnost kampaně
 -----------------------------------------

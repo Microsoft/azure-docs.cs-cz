@@ -1,20 +1,20 @@
 ---
-title: Schéma události předplatného služby Azure Event Grid
+title: Předplatné Azure jako zdroj gridu událostí
 description: Popisuje vlastnosti, které jsou k dispozici pro události předplatného s Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/12/2019
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561672"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393228"
 ---
-# <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schéma událostí Azure Event Grid pro předplatná
+# <a name="azure-subscription-as-an-event-grid-source"></a>Předplatné Azure jako zdroj gridu událostí
 
 Tento článek obsahuje vlastnosti a schéma pro události předplatného Azure.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
 
@@ -28,9 +28,10 @@ Chcete-li programově zpracovávat události, můžete `operationName` události
 
 Předmět události je ID prostředku, který je cílem operace. Chcete-li filtrovat události pro prostředek, zadejte toto ID prostředku při vytváření předplatného události. Chcete-li filtrovat podle typu prostředku, použijte hodnotu v následujícím formátu:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Seznam ukázkových skriptů a kurzů najdete v tématu [Zdroj událostí předplatného Azure](event-sources.md#azure-subscriptions).
 
-## <a name="available-event-types"></a>Dostupné typy událostí
+## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
+
+### <a name="available-event-types"></a>Dostupné typy událostí
 
 Předplatná Azure vyzařují události správy ze Správce prostředků Azure, například když se vytvoří virtuální počítač nebo se odstraní účet úložiště.
 
@@ -46,7 +47,7 @@ Předplatná Azure vyzařují události správy ze Správce prostředků Azure, 
 | Microsoft.Resources.ResourceWriteFailure | Je aktivována při vytvoření nebo aktualizaci operace se nezdaří. |
 | Microsoft.Resources.ResourceWriteSuccess | Je aktivována při úspěšném vytvoření nebo aktualizaci operace. |
 
-## <a name="example-event"></a>Příklad události
+### <a name="example-event"></a>Příklad události
 
 Následující příklad ukazuje schéma události **ResourceWriteSuccess.** Stejné schéma se používá pro **události ResourceWriteFailure** a **ResourceWriteCancel** s různými hodnotami pro `eventType`.
 
@@ -230,7 +231,7 @@ Následující příklad ukazuje schéma události **ResourceActionSuccess.** St
 }]
 ```
 
-## <a name="event-properties"></a>Vlastnosti události
+### <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující data nejvyšší úrovně:
 
@@ -259,6 +260,14 @@ Datový objekt má následující vlastnosti:
 | status | řetězec | Stav operace. |
 | subscriptionId | řetězec | ID předplatného prostředku. |
 | tenantId | řetězec | ID klienta prostředku. |
+
+## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
+|Nadpis |Popis  |
+|---------|---------|
+| [Kurz: Azure Automation s Grid událostí a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Vytvořte virtuální počítač, který odešle událost. Událost aktivuje runbook automatizace, který označí virtuální počítač a aktivuje zprávu, která je odeslána do kanálu Microsoft Teams. |
+| [Jak: přihlásit se k odběru událostí prostřednictvím portálu](subscribe-through-portal.md) | Pomocí portálu se můžete přihlásit k odběru událostí pro předplatné Azure. |
+| [Vyjednané zúžení azure: přihlášení k odběru událostí pro předplatné Azure](./scripts/event-grid-cli-azure-subscription.md) |Ukázkový skript, který vytvoří předplatné služby Event Grid pro předplatné Azure a odešle události do WebHooku. |
+| [PowerShell: přihlášení k odběru událostí pro předplatné Azure](./scripts/event-grid-powershell-azure-subscription.md)| Ukázkový skript, který vytvoří předplatné služby Event Grid pro předplatné Azure a odešle události do WebHooku. |
 
 ## <a name="next-steps"></a>Další kroky
 

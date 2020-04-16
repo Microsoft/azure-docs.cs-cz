@@ -2,13 +2,13 @@
 title: Práce s Reliable Collections
 description: Seznamte se s osvědčenými postupy pro práci se spolehlivými kolekcemi v rámci aplikace Azure Service Fabric.
 ms.topic: conceptual
-ms.date: 02/22/2019
-ms.openlocfilehash: 4a1f48d9523e5d753c222f0526e210a30e1927e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/10/2020
+ms.openlocfilehash: 94836a37a62e3eeffb94d891980cc02694bd973e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645969"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409810"
 ---
 # <a name="working-with-reliable-collections"></a>Práce s Reliable Collections
 Service Fabric nabízí stavový programovací model, který je k dispozici vývojářům rozhraní .NET prostřednictvím spolehlivých kolekcí. Konkrétně Service Fabric poskytuje spolehlivý slovník a spolehlivé třídy fronty. Při použití těchto tříd, váš stav je rozdělen a oddíl (pro škálovatelnost), replikovány (pro dostupnost) a zpracovány v rámci oddílu (pro acid sémantiku). Podívejme se na typické použití spolehlivého slovníkového objektu a uvidíme, co vlastně dělá.
@@ -50,6 +50,19 @@ Ve výše uvedeném kódu volání CommitAsync potvrdí všechny operace transak
 
 Pokud CommitAsync není volána (obvykle z důvodu vyvolání výjimky), pak iTransaction objekt získá uvolněn. Při likvidaci nepotvrzeného objektu ITransaction service fabric připojí informace o přerušení do souboru protokolu místního uzlu a nic nemusí být odesláno do žádné sekundární repliky. A pak jsou uvolněny všechny zámky spojené s klíči, které byly manipulovány prostřednictvím transakce.
 
+## <a name="volatile-reliable-collections"></a>Volatile spolehlivé kolekce 
+V některých úlohách, jako je například replikovaná mezipaměť, může být tolerována příležitostná ztráta dat. Vyhnout se trvalost dat na disk může umožnit lepší latence a propustnosti při zápisu do spolehlivé slovníky. Kompromis pro nedostatek trvalosti je, že pokud dojde ke ztrátě kvora, dojde ke ztrátě úplné hod. Vzhledem k tomu, že ztráta kvora je vzácný výskyt, zvýšený výkon může stát za vzácnou možnost ztráty dat pro tyto úlohy.
+
+V současné době je nestálá podpora k dispozici pouze pro spolehlivé slovníky a spolehlivé fronty a nikoli pro služby ReliableConcurrentQueues. Informace o tom, zda použít těkavé kolekce, naleznete v seznamu [upozornění.](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)
+
+Chcete-li povolit nestálou ```HasPersistedState``` podporu ve vaší ```false```službě, nastavte příznak v deklaraci typu služby na , například takto:
+```xml
+<StatefulServiceType ServiceTypeName="MyServiceType" HasPersistedState="false" />
+```
+
+>[!NOTE]
+>Existující trvalé služby nelze provést volatilní a naopak. Pokud si to přejete, budete muset odstranit existující službu a potom nasadit službu s aktualizovaným příznakem. To znamená, že musíte být ochotni vynaložit ```HasPersistedState``` úplnou ztrátu dat, pokud chcete změnit příznak. 
+
 ## <a name="common-pitfalls-and-how-to-avoid-them"></a>Časté úskalí a jak se jim vyhnout
 Nyní, když chápete, jak spolehlivé sbírky fungují interně, podívejme se na některé běžné zneužití z nich. Viz kód níže:
 
@@ -60,7 +73,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
    // & sends the bytes to the secondary replicas.
    await m_dic.AddAsync(tx, name, user);
 
-   // The line below updates the property’s value in memory only; the
+   // The line below updates the property's value in memory only; the
    // new value is NOT serialized, logged, & sent to secondary replicas.
    user.LastLogin = DateTime.UtcNow;  // Corruption!
 
@@ -87,13 +100,13 @@ Zde je další příklad ukazující běžnou chybu:
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction())
 {
-   // Use the user’s name to look up their data
+   // Use the user's name to look up their data
    ConditionalValue<User> user = await m_dic.TryGetValueAsync(tx, name);
 
    // The user exists in the dictionary, update one of their properties.
    if (user.HasValue)
    {
-      // The line below updates the property’s value in memory only; the
+      // The line below updates the property's value in memory only; the
       // new value is NOT serialized, logged, & sent to secondary replicas.
       user.Value.LastLogin = DateTime.UtcNow; // Corruption!
       await tx.CommitAsync();
@@ -110,7 +123,7 @@ Následující kód ukazuje správný způsob aktualizace hodnoty ve spolehlivé
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction())
 {
-   // Use the user’s name to look up their data
+   // Use the user's name to look up their data
    ConditionalValue<User> currentUser = await m_dic.TryGetValueAsync(tx, name);
 
    // The user exists in the dictionary, update one of their properties.
@@ -124,7 +137,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
       // In the new object, modify any properties you desire
       updatedUser.LastLogin = DateTime.UtcNow;
 
-      // Update the key’s value to the updateUser info
+      // Update the key's value to the updateUser info
       await m_dic.SetValue(tx, name, updatedUser);
       await tx.CommitAsync();
    }
@@ -138,7 +151,7 @@ Typ UserInfo níže ukazuje, jak definovat neměnný typ s využitím výše uve
 
 ```csharp
 [DataContract]
-// If you don’t seal, you must ensure that any derived classes are also immutable
+// If you don't seal, you must ensure that any derived classes are also immutable
 public sealed class UserInfo
 {
    private static readonly IEnumerable<ItemId> NoBids = ImmutableList<ItemId>.Empty;

@@ -10,13 +10,12 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 64490bbd44066389186a59e851045b6becbe7acc
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632469"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408028"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Dočasné tabulky v fondu SYNApse SQL
 Tento článek obsahuje základní pokyny pro použití dočasných tabulek a zdůrazňuje zásady dočasné tabulky na úrovni relace. 
@@ -30,8 +29,15 @@ Dočasné tabulky jsou viditelné pouze pro relaci, ve které byly vytvořeny a 
 
 Dočasné tabulky nabízejí výhodu výkonu, protože jejich výsledky jsou zapsány do místního, nikoli vzdáleného úložiště.
 
-## <a name="create-a-temporary-table"></a>Vytvoření dočasné tabulky
-Dočasné tabulky jsou vytvářeny předponou `#`názvu tabulky pomocí aplikace .  Například:
+Dočasné tabulky jsou užitečné při zpracování dat, zejména během transformace, kde jsou přechodné průběžné výsledky. S SQL Analytics existují dočasné tabulky na úrovni relace.  Jsou viditelné pouze pro relaci, ve které byly vytvořeny. Jako takové jsou automaticky vynechány, když se relace odhlásí. 
+
+## <a name="temporary-tables-in-sql-pool"></a>Dočasné tabulky ve fondu SQL
+
+V prostředku fondu SQL dočasné tabulky nabízejí výhodu výkonu, protože jejich výsledky jsou zapsány do místní ho nikoli vzdáleného úložiště.
+
+### <a name="create-a-temporary-table"></a>Vytvoření dočasné tabulky
+
+Dočasné tabulky jsou vytvářeny předponou `#`názvu tabulky pomocí aplikace .  Příklad:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -89,7 +95,7 @@ GROUP BY
 ,        st.[has_filter]
 )
 ;
-``` 
+```
 
 > [!NOTE]
 > `CTAS`je výkonný příkaz a má tu výhodu, že je efektivní při jeho využití prostoru transakční protokol. 
@@ -226,5 +232,6 @@ Fond SQL ukládá několik omezení při implementaci dočasné tabulky.  V sou�
 Zobrazení nelze také vytvořit v dočasných tabulkách.  Dočasné tabulky lze vytvořit pouze s hash nebo kruhové dotazování distribuce.  Replikované dočasné rozložení tabulky není podporováno. 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o vývoji tabulek naleznete v tématu [Přehled tabulek](sql-data-warehouse-tables-overview.md).
+
+Další informace o vývoji tabulek najdete v [tématu Návrh tabulek pomocí článku o prostředcích SQL Analytics.](sql-data-warehouse-tables-overview.md)
 

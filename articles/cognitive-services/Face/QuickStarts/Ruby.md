@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 892e7e0fe362e25cf1ca69146bd27a77baf41f24
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3ec6eb60a7325eb87ca637541c5f4222eab98053
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76169443"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403176"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Ruby
 
-V tomto rychlém startu použijete rozhraní AZURE Face REST API s Ruby k detekci lidských tváří v bitové kopii.
+V tomto rychlém startu použijete rozhraní Azure Face REST API s Ruby k detekci lidských tváří v bitové kopii.
 
 ## <a name="prerequisites"></a>Požadavky
 

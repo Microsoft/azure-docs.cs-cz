@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 114c632d43dbb254222def2437fbffc22ec84688
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 4c76bcbf945c63588f8471c10deca0b5982d3562
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672461"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414237"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy k různým rozhraním API ve službě Azure Cosmos DB
 
@@ -404,7 +404,7 @@ Můžete přidat libovolný počet oblastí pro účet a řídit, kde může př
 
 ### <a name="is-the-table-api-enabled-for-backups"></a>Je rozhraní TABLE API povoleno pro zálohování?
 
-Ano, rozhraní Table API využívá platformu Azure Cosmos DB pro zálohování. Zálohy se provádějí automaticky. Další informace najdete [v tématu Online zálohování a obnovení pomocí Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).
+Ano, rozhraní Table API využívá platformu Azure Cosmos DB pro zálohování. Zálohy se provádějí automaticky. Další informace najdete [v tématu Online zálohování a obnovení pomocí Azure Cosmos DB](online-backup-and-restore.md).
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>Indexuje rozhraní TABLE API ve výchozím nastavení všechny atributy entity?
 
@@ -761,7 +761,7 @@ V současné době má Azure Cosmos DB optimalizované prostředí pro cloudové
 ### <a name="does-cassandra-api-provide-full-backups"></a>Poskytuje rozhraní CASSANDRA API úplné zálohy?
 
 Azure Cosmos DB poskytuje dvě bezplatné úplné zálohy pořízené v intervalu čtyři hodiny dnes ve všech rozhraních API. Tím zajistíte, že nemusíte nastavovat plán zálohování a další věci.
-Pokud chcete upravit uchovávání informací a frekvenci, pošlete e-mail nebo [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) vyvoláte případ podpory. Informace o možnosti zálohování je k dispozici v [automatické zálohování online a obnovení pomocí Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) článku.
+Pokud chcete upravit uchovávání informací a frekvenci, pošlete e-mail nebo [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) vyvoláte případ podpory. Informace o možnosti zálohování je k dispozici v [automatické zálohování online a obnovení pomocí Azure Cosmos DB](online-backup-and-restore.md) článku.
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Jak zpracovává účet rozhraní API Cassandra převzetí služeb při selhání, pokud dojde k selhání oblasti?
 

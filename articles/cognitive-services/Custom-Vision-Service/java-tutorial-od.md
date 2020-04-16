@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 02/25/2020
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: 78db95240974d1c9ca07546f8237eca2b564ecb2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 086e67d1058443a6f4afd615f2d2725aaf19a259
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77616329"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403828"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Rychlý start: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro Javu
 
@@ -109,7 +109,7 @@ Ve výstupu konzoly zobrazte výsledky protokolování a předpovědi. Pak můž
 
 ## <a name="next-steps"></a>Další kroky
 
-Právě jste viděli, jak se dají jednotlivé kroky procesu detekce objektů provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
+Nyní jste viděli, jak lze provést každý krok procesu detekce objektů v kódu. Tato ukázka provede jednu trénovací iteraci, ale často budete muset trénovat a testovat model vícekrát, aby byl přesnější. Následující průvodce školeníse zabývá klasifikací obrázků, ale jeho principy jsou podobné detekci objektů.
 
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](test-your-model.md)

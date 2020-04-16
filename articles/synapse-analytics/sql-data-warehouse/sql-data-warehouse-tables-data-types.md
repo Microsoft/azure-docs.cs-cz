@@ -2,21 +2,21 @@
 title: Definování datových typů
 description: Doporučení pro definování typů dat tabulky v fondu SYNAPse SQL.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/17/2018
-ms.author: xiaoyul
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8578e657368ef700503062397ceef66aebfe5d3a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.date: 01/06/2020
+ms.author: fipopovi
+ms.reviewer: jrasnick
+ms.custom: ''
+ms.openlocfilehash: 2c99bf77246463dd84c41218afbb5e50f4335f9f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742847"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413767"
 ---
 # <a name="table-data-types-in-synapse-sql-pool"></a>Datové typy tabulek ve fondu SYNAPse SQL
 

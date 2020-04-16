@@ -2,18 +2,18 @@
 title: Interaktivní prostředí PySpark s nástroji Azure HDInsight Tools
 description: Přečtěte si, jak pomocí nástrojů Azure HDInsight pro kód Visual Studia vytvářet a odesílat dotazy a skripty.
 keywords: VScode,Nástroje Azure HDInsight,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interaktivní úl,Interaktivní dotaz
-author: jejiang
-ms.author: jejiang
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.openlocfilehash: db2336fb79207ada24b71e0e64f0aaaab543e4da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 2a725f3c5c9e1428079807b5b76dbe72d416a9c7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73241544"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393659"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Nastavení interaktivního prostředí PySpark pro kód sady Visual Studio
 
@@ -34,7 +34,7 @@ K vytvoření virtuálního prostředí na domovské cestě používáme příka
 
 2. Nainstalujte **virtualenv** spuštěním příkazu níže.
 
-   ```
+   ```bash
    pip install virtualenv
    ```
 
@@ -44,11 +44,11 @@ Pokud narazíte na chybovou zprávu, nainstalujte požadované balíčky spušt�
 
    ![Instalace balíčku libkrb5 pro python](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
 
-```
+```bash
 sudo apt-get install libkrb5-dev
 ```
 
-```
+```bash
 sudo apt-get install python-dev
 ```
 
@@ -57,9 +57,11 @@ Restartujte Kód VS a vraťte se do editoru skriptů, ve které běží **HDInsi
 ## <a name="next-steps"></a>Další kroky
 
 ### <a name="demo"></a>Ukázka
+
 * HDInsight pro Kód VS: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
+
 * [Použití nástroje Azure HDInsight pro kód Visual Studia](hdinsight-for-vscode.md)
 * [Použití sady Azure Toolkit pro IntelliJ k vytváření a odesílání aplikací Apache Spark Scala](spark/apache-spark-intellij-tool-plugin.md)
 * [Použití sady Azure Toolkit for IntelliJ k vzdálenému ladění aplikací Apache Spark prostřednictvím SSH](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)

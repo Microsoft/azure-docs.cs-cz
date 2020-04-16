@@ -9,16 +9,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f04955fb910a6159dc09ac40a87a398e67d59d6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260810"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414116"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapování schématu v aktivitě kopírování
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak aktivita kopírování Azure Data Factory provádí mapování schématu a mapování datového typu ze zdrojových dat do jímky dat při provádění kopírování dat.
 
@@ -278,11 +279,7 @@ Aktivita kopírování provádí typy zdrojů pro mapování typů jímek s nás
 1. Převod z nativních typů zdrojů na dočasné datové typy Azure Data Factory
 2. Převést z dočasných datových typů Azure Data Factory na nativní typ jímky
 
-Mapování mezi nativním typem a dočasným typem najdete v části "Mapování datového typu" v každém tématu konektoru.
-
-### <a name="supported-data-types"></a>Podporované datové typy
-
-Data Factory podporuje následující dočasné datové typy: Při konfiguraci informací o typu v konfiguraci [struktury datové sady](concepts-datasets-linked-services.md#dataset-structure-or-schema) můžete zadat níže uvedené hodnoty:
+Aktivita kopírování podporuje následující prozatímní datové typy: 
 
 * Bajt[]
 * Logická hodnota

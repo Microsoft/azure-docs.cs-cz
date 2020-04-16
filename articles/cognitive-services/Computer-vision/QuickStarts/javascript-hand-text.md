@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/26/2020
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cca5680d307874a565dec47f643bf9320192c270
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 35988f10703967bd5986015ccb0fb480679b94e9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656100"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404748"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-javascript"></a>Úvodní příručka: Extrakce tištěného a ručně psaného textu pomocí rozhraní API API PRO zobrazení počítače 2.0 a 2.1 a javascriptu
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Úvodní příručka: Extrakce tištěného a ručně psaného textu pomocí rozhraní API PRO ODPOČINEK v počítači a javascriptu
 
 V tomto rychlém startu extrahnete tištěný nebo ručně psaný text z obrázku pomocí rozhraní API REKONČOVÁNÍ Počítače. Pomocí metod [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) and Read [Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) můžete detekovat text v obraze a extrahovat rozpoznané znaky do strojově čitelného datového proudu znaků. Rozhraní API určí, který model rozpoznávání se má použít pro každý řádek textu, takže podporuje obrázky s vytištěným i ručně psaným textem.
 
-Ve srovnání s počítačovým viděním 2.0 a 2.1 poskytuje verze Computer Vision 3.0 Public Preview:
+Tato funkce je k dispozici v rozhraní API verze 2.1 i rozhraní API verze 3.0 Public Preview. Ve srovnání s v2.1 má rozhraní API 3.0:
 
-* ještě lepší přesnost
-* změněný výstupní formát
-* skóre spolehlivosti pro slova
-* podpora španělského i anglického jazyka s dodatečným jazykovým parametrem
+* Vylepšená přesnost
+* Skóre spolehlivosti slov
+* Podpora španělštiny a angličtiny `language` s dodatečným parametrem
+* Jiný výstupní formát
+
+Vyberte kartu níže pro verzi, kterou používáte.
 
 #### <a name="version-2"></a>[Verze 2](#tab/version-2)
 
@@ -784,7 +786,9 @@ Image to read:
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte aplikaci v JavaScriptu, která používá počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytvořte chytře ořezané miniatury a rozpoznávejte, kategorizujte, označujte a popisujte vizuální vlastnosti na obrázku včetně obličejů. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte aplikaci JavaScript, která používá počítačové vidění k provádění optického rozpoznávání znaků (OCR); vytvářet miniatury s inteligentním oříznutím; a zjišťovat, kategorizovat, označovat a popisovat vizuální funkce v obrázcích. 
 
 > [!div class="nextstepaction"]
 > [Kurz rozhraní API pro počítačové zpracování obrazu v JavaScriptu](../Tutorials/javascript-tutorial.md)
+
+* Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).

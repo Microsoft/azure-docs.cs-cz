@@ -5,14 +5,14 @@ author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 04/14/2020
 ms.author: mimckitt
-ms.openlocfilehash: b1e5ad60041e9d3b902a06a4875206fa061c73e6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: ee6a25ac5a4cc7de8b8340afb186d170cc147a38
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81269903"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393789"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Škálovatautomatické upgrady bitových obrázků virtuálního počítače Azure
 
@@ -109,7 +109,7 @@ GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/M
 Jakmile je funkce zaregistrována pro vaše předplatné, dokončete proces přihlášení tak, že změnu rozšíříte do poskytovatele výpočetních prostředků.
 
 ```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-10-01`
+POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -168,7 +168,7 @@ Chcete-li nakonfigurovat automatický upgrade bitové kopie operačního systém
 Následující příklad popisuje, jak nastavit automatické upgrady operačního systému na modelu škálovací sady:
 
 ```
-PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2018-10-01`
+PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2019-12-01`
 ```
 
 ```json
@@ -247,7 +247,7 @@ Můžete zkontrolovat historii nejnovější upgrade operačního systému prov�
 Následující příklad používá [rozhraní REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) ke kontrole stavu škálovací sady s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```
-GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2018-10-01`
+GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
 ```
 
 Volání GET vrátí vlastnosti podobné následujícímu příkladu výstupu:
@@ -307,7 +307,7 @@ Můžete získat dostupné verze bitových označení pro automatické upgrady o
 
 ### <a name="rest-api"></a>REST API
 ```
-GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2018-10-01`
+GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -332,7 +332,7 @@ Pro konkrétní případy, kdy nechcete čekat na orchestrator použít nejnově
 Pomocí volání rozhraní API [pro upgrade operačního systému spuštění](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) postupného upgradu přesuňte všechny instance škálovací sady virtuálních strojů na nejnovější dostupnou verzi operačního systému image. Instance, které jsou již spuštěna nejnovější dostupnou verzi operačního systému nejsou ovlivněny. Následující příklad podrobně popisuje, jak můžete spustit postupný upgrade operačního systému na škálovací sadě s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```
-POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell

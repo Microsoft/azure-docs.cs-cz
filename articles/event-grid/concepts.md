@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265061"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393467"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty v Azure Event Grid
 
@@ -35,7 +35,7 @@ Vydavatel je uživatel nebo organizace, která se rozhodne odeslat události do 
 
 Zdroj události je místo, kde dojde k události. Každý zdroj události souvisí s jedním nebo více typy událostí. Například Azure Storage je zdroj události pro události vytvořené objektem blob. IoT Hub je zdroj události pro události vytvořené zařízením. Vaše aplikace je zdroj události pro vlastní události, které definujete. Za odesílání událostí do Event Gridu zodpovídají zdroje událostí.
 
-Informace o implementaci některého z podporovaných zdrojů Event Grid najdete [v tématu Zdroje událostí v Azure Event Grid](event-sources.md).
+Informace o implementaci některého z podporovaných zdrojů Event Grid najdete [v tématu Zdroje událostí v Azure Event Grid](overview.md#event-sources).
 
 ## <a name="topics"></a>Témata
 

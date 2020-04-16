@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2579748d9c68512e51fe46ec70084c30d06953bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9dc4dce5a7af49529924881321b1a5080293a585
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278763"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405617"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení hybridního pracovníka runbooku pro Linux
 
@@ -30,9 +30,27 @@ Funkce Hybridní pracovní prostředí runbooku podporuje následující distrib
 * Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS a 18.04 (x86/x64)
 * SUSE Linux Enterprise Server 11 a 12 (x86/x64)
 
+## <a name="supported-runbook-types"></a>Podporované typy runbooků
+
+Linux hybridní runbook pracovníků nepodporují úplnou sadu typů runbooků v Azure Automation.
+
+Následující typy runbooků fungují na hybridním pracovním hardwaru Linuxu:
+
+* Python 2
+* PowerShell
+
+  > [!NOTE]
+  > Sady Runbook powershellu vyžadují, aby se powershellové jádro nainstalovalo do počítače s Linuxem. Informace o jeho instalaci najdete [v tématu Instalace powershellového jádra na Linuxu.](/powershell/scripting/install/installing-powershell-core-on-linux)
+
+Následující typy runbooků nefungují na hybridním pracovním hardwaru Linuxu:
+
+* Pracovní postup PowerShellu
+* Grafický
+* Grafický pracovní postup prostředí PowerShell
+
 ## <a name="installing-a-linux-hybrid-runbook-worker"></a>Instalace hybridního pracovníka runbooku pro Linux
 
-Chcete-li nainstalovat a nakonfigurovat hybridní pracovník runbooku v počítači s Linuxem, postupujte podle jednoduchého procesu ruční instalace a konfigurace role. Vyžaduje povolení **řešení Automation Hybrid Worker** v pracovním prostoru Azure Log Analytics a pak spuštění sady příkazů k registraci počítače jako pracovníka a jeho přidání do skupiny.
+Chcete-li nainstalovat a nakonfigurovat hybridní pracovník sady Runbook v počítači s Linuxem, postupujte podle jednoduchého ručního procesu. Vyžaduje povolení řešení Automation Hybrid Worker v pracovním prostoru Azure Log Analytics a pak spuštění sady příkazů k registraci počítače jako pracovníka a jeho přidání do skupiny.
 
 Minimální požadavky pro linuxového hybridního pracovníka runbooku jsou:
 
@@ -56,9 +74,9 @@ Minimální požadavky pro linuxového hybridního pracovníka runbooku jsou:
 
 Než budete pokračovat, poznamenejte si pracovní prostor Log Analytics, se kterým je váš účet Automation propojen. Všimněte si také primárního klíče pro váš účet Automation. Oba typy můžete najít na webu Azure Portal tak, že vyberete svůj účet Automation, vyberete **pracovní prostor** pro ID pracovního prostoru a vyberete **klíče** pro primární klíč. Informace o portech a adresách, které potřebujete pro pracovníka hybridního runbooku, naleznete [v tématu Konfigurace sítě](automation-hybrid-runbook-worker.md#network-planning).
 
-1. Povolte řešení **Automation Hybrid Worker** v Azure pomocí jedné z následujících metod:
+1. Povolte řešení Automation Hybrid Worker v Azure pomocí jedné z následujících metod:
 
-   * Přidejte řešení **Automation Hybrid Worker** do svého předplatného pomocí postupu na webu Přidat řešení [protokolů Azure Monitor do pracovního prostoru](../log-analytics/log-analytics-add-solutions.md).
+   * Přidejte řešení Automation Hybrid Worker do svého předplatného pomocí postupu na [webu Přidat řešení protokolů Azure Monitor do pracovního prostoru](../log-analytics/log-analytics-add-solutions.md).
    * Spusťte následující rutinu:
 
         ```azurepowershell-interactive
@@ -79,36 +97,18 @@ Než budete pokračovat, poznamenejte si pracovní prostor Log Analytics, se kte
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
    ```
 
-1. Po dokončení příkazu se na stránce **Hybridní pracovní skupiny** na portálu Azure zobrazí nová skupina a počet členů. Pokud se jedná o existující skupinu, počet členů se zintážceje. Skupinu můžete vybrat ze seznamu na stránce **Hybridní pracovní skupiny** a vybrat dlaždici **Hybridní pracovníci.** Na stránce **Hybridní pracovníci** se zobrazí každý člen skupiny uvedený.
+1. Po dokončení příkazu se na stránce Hybridní pracovní skupiny na portálu Azure zobrazí nová skupina a počet členů. Pokud se jedná o existující skupinu, počet členů se zintážceje. Skupinu můžete vybrat ze seznamu na stránce Hybridní pracovní skupiny a vybrat dlaždici **Hybridní pracovníci.** Na stránce Hybridní pracovníci se zobrazí každý člen skupiny uvedený.
 
 > [!NOTE]
-> Pokud používáte rozšíření virtuálního počítače Azure Monitor pro Linux `autoUpgradeMinorVersion` pro virtuální počítač Azure doporučujeme nastavit na false, protože verze automatické inovace může způsobit problémy hybrid Runbook Worker. Informace o ručním upgradu rozšíření najdete v [tématu nasazení příkazového příkazu k webu Azure ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
+> Pokud používáte rozšíření virtuálního počítače Azure Monitor pro Linux `autoUpgradeMinorVersion` pro virtuální počítač Azure doporučujeme nastavit na false, protože verze automatické inovace může způsobit problémy hybridní runbook worker. Informace o ručním upgradu rozšíření najdete v [tématu nasazení příkazového příkazu k webu Azure](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
 
 ## <a name="turning-off-signature-validation"></a>Vypnutí ověřování podpisu
 
-Ve výchozím nastavení vyžadují pracovníci hybridního runbooku Linuxu ověření podpisu. Pokud spustíte nepodepsaný runbook proti pracovníkovi, zobrazí se chyba "Ověření podpisu se nezdařilo.". Chcete-li ověření podpisu vypnout, spusťte následující příkaz. Nahraďte druhý parametr ID pracovního prostoru analýzy protokolů.
+Ve výchozím nastavení vyžadují pracovníci hybridního runbooku Linuxu ověření podpisu. Pokud spustíte nepodepsaný runbook proti pracovníkovi, zobrazí se `Signature validation failed` chyba. Chcete-li ověření podpisu vypnout, spusťte následující příkaz. Nahraďte druhý parametr ID pracovního prostoru Analýzy protokolů.
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
  ```
-
-## <a name="supported-runbook-types"></a>Podporované typy runbooků
-
-Linux hybridní runbook pracovníků nepodporují úplnou sadu typů runbooků v Azure Automation.
-
-Následující typy runbooků fungují na hybridním pracovním hardwaru Linuxu:
-
-* Python 2
-* PowerShell
-
-  > [!NOTE]
-  > Sady Runbook powershellu vyžadují, aby se powershellové jádro nainstalovalo do počítače s Linuxem. Informace o jeho instalaci najdete [v tématu Instalace powershellového jádra na Linuxu.](/powershell/scripting/install/installing-powershell-core-on-linux)
-
-Následující typy runbooků nefungují na hybridním pracovním hardwaru Linuxu:
-
-* Pracovní postup PowerShellu
-* Grafický
-* Grafický pracovní postup prostředí PowerShell
 
 ## <a name="next-steps"></a>Další kroky
 

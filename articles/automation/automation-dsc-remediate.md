@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: dfe62c54bfb10d70f1dbf19daec90eec68e66431
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: cc5884e1f70bdccee4e7a113e6e3ee2d6604b50a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383160"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406085"
 ---
 # <a name="remediate-noncompliant-dsc-servers"></a>Náprava nekompatibilních serverů DSC
 
@@ -37,7 +37,8 @@ Update-DscConfiguration -Wait -Verbose
 
 Podobná funkce není v současné době k dispozici pro servery Linux.
 Jedinou možností je zopakovat proces registrace.
-Uzly Azure můžete opravit posun z portálu Azure nebo pomocí rutin modulu Az. Podrobnosti o tomto procesu jsou popsány v [onboardingových počítačích pro správu pomocí konfigurace stavu automatizace Azure](automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal).
+
+Uzly Azure můžete opravit posun z portálu Azure nebo pomocí rutin modulu Az. Podrobnosti o tomto procesu jsou popsány v [onboardingových počítačích pro správu pomocí konfigurace stavu automatizace Azure](automation-dsc-onboarding.md#onboard-vms-by-using-the-azure-portal).
 U hybridních uzlů můžete opravit posun pomocí zahrnutých skriptů Pythonu.
 Viz [PowerShell DSC pro linuxové repo](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
 

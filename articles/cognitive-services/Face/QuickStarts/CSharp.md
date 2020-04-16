@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0be98ac60e11b3e21a864aa4ca18fcac2c7f014c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 69d3f1a7f0c455275a212401110459abb1b8d8d0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053404"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403408"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Úvodní příručka: Detekce tváří v obraze pomocí rozhraní API PRO ODPOČINEK tváří a C #
 
@@ -244,7 +244,7 @@ Do třídy **Program** přidejte následující metodu. Tato metoda formátuje v
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-Úspěšná odpověď zobrazí data obličeje ve snadno čitelném formátu JSON. Například:
+Úspěšná odpověď zobrazí data obličeje ve snadno čitelném formátu JSON. Příklad:
 
 ```json
 [

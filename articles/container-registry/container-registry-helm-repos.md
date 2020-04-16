@@ -3,12 +3,12 @@ title: Uložit grafy helmu
 description: Zjistěte, jak ukládat grafy Helm pro vaše aplikace Kubernetes pomocí úložišť v registru kontejnerů Azure
 ms.topic: article
 ms.date: 03/20/2020
-ms.openlocfilehash: 6304486ac493e235ed74f26ab4be4f843ef52513
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f1a68258b758380a66b63e3c3137f1d460d288c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131484"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399379"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Nabízení a vytahováno grafy Helm do registru kontejnerů Azure
 
@@ -77,18 +77,21 @@ helm create hello-world
 Jako základní příklad změňte `templates` adresář do složky a nejprve odstraňte obsah:
 
 ```console
+cd hello-world/templates
 rm -rf *
 ```
 
 Ve `templates` složce vytvořte `configmap.yaml` soubor s následujícím obsahem:
 
-```yml
+```console
+cat <<EOF > configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: hello-world-configmap
 data:
   myvalue: "Hello World"
+EOF
 ```
 
 Další informace o vytváření a spouštění tohoto příkladu najdete v [tématu Začínáme](https://helm.sh/docs/chart_template_guide/getting_started/) v dokumentech helmu.
@@ -175,7 +178,7 @@ Výstup se podobá tomuto:
 }
 ```
 
-Spusťte příkaz [az acr repository show-manifests,][az-acr-repository-show-manifests] abyste viděli podrobnosti o grafu uloženém v úložišti. Například:
+Spusťte příkaz [az acr repository show-manifests,][az-acr-repository-show-manifests] abyste viděli podrobnosti o grafu uloženém v úložišti. Příklad:
 
 ```azurecli
 az acr repository show-manifests \
@@ -243,7 +246,7 @@ version: 0.1.0
 
 ### <a name="install-helm-chart"></a>Instalace grafu helmu
 
-Spusťte `helm install` instalaci grafu Helm, který jste vytáhli do místní mezipaměti a exportovali. Zadejte název verze, například *myhelmtest*, nebo předajte `--generate-name` parametr. Například:
+Spusťte `helm install` instalaci grafu Helm, který jste vytáhli do místní mezipaměti a exportovali. Zadejte název verze, například *myhelmtest*, nebo předajte `--generate-name` parametr. Příklad:
 
 ```console
 helm install myhelmtest ./hello-world

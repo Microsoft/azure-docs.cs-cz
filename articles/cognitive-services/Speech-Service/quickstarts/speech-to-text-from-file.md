@@ -3,20 +3,20 @@ title: 'Úvodní příručka: Rozpoznávání řeči ze zvukového souboru – s
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete sadu Speech SDK k rozpoznání řeči ze zvukového souboru.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: da6094cd654652625a2ebab303c72fb16fb49b6b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0480177bd504052804c9aa833f18d827f688f661
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77119478"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400610"
 ---
 # <a name="quickstart-recognize-speech-from-an-audio-file"></a>Úvodní příručka: Rozpoznání řeči ze zvukového souboru
 

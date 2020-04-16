@@ -1,20 +1,20 @@
 ---
-title: Schéma událostí skupiny prostředků Sítě událostí Azure
+title: Skupina prostředků Azure jako zdroj mřížky událostí
 description: Popisuje vlastnosti, které jsou k dispozici pro události skupiny prostředků s Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561689"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393251"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Schéma událostí služby Azure Event Grid pro skupiny prostředků
+# <a name="azure-resource-group-as-an-event-grid-source"></a>Skupina prostředků Azure jako zdroj mřížky událostí
 
 Tento článek obsahuje vlastnosti a schéma pro události skupiny prostředků.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
 
@@ -28,9 +28,10 @@ Chcete-li programově zpracovávat události, můžete `operationName` události
 
 Předmět události je ID prostředku, který je cílem operace. Chcete-li filtrovat události pro prostředek, zadejte toto ID prostředku při vytváření předplatného události.  Chcete-li filtrovat podle typu prostředku, použijte hodnotu v následujícím formátu:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Seznam ukázkových skriptů a kurzů naleznete v tématu [Zdroj událostí skupiny prostředků](event-sources.md#resource-groups).
 
-## <a name="available-event-types"></a>Dostupné typy událostí
+## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
+
+### <a name="available-event-types"></a>Dostupné typy událostí
 
 Skupiny prostředků vyzařují události správy ze Správce prostředků Azure, například když se vytvoří virtuální počítač nebo se odstraní účet úložiště.
 
@@ -46,7 +47,7 @@ Skupiny prostředků vyzařují události správy ze Správce prostředků Azure
 | Microsoft.Resources.ResourceWriteFailure | Je aktivována při vytvoření nebo aktualizaci operace se nezdaří. |
 | Microsoft.Resources.ResourceWriteSuccess | Je aktivována při úspěšném vytvoření nebo aktualizaci operace. |
 
-## <a name="example-event"></a>Příklad události
+### <a name="example-event"></a>Příklad události
 
 Následující příklad ukazuje schéma události **ResourceWriteSuccess.** Stejné schéma se používá pro **události ResourceWriteFailure** a **ResourceWriteCancel** s různými hodnotami pro `eventType`.
 
@@ -230,7 +231,7 @@ Následující příklad ukazuje schéma události **ResourceActionSuccess.** St
 }]
 ```
 
-## <a name="event-properties"></a>Vlastnosti události
+### <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující data nejvyšší úrovně:
 
@@ -259,6 +260,16 @@ Datový objekt má následující vlastnosti:
 | status | řetězec | Stav operace. |
 | subscriptionId | řetězec | ID předplatného prostředku. |
 | tenantId | řetězec | ID klienta prostředku. |
+
+## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
+|Nadpis  |Popis  |
+|---------|---------|
+| [Kurz: sledování změn virtuálních strojů pomocí Azure Event Grid a Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) | Aplikace logiky monitoruje změny ve virtuálním počítači a odesílá e-maily o těchto změnách. |
+| [Nastavení příkazu k příkazu Azure: přihlášení k odběru událostí pro skupinu prostředků](./scripts/event-grid-cli-resource-group.md)| Ukázkový skript, který se přihlásí k odběru událostí pro skupinu prostředků. Odesílá události webhooku. |
+| [Azure CLI: Přihlásit se k odběru událostí pro skupinu prostředků a filtrovat prostředek](./scripts/event-grid-cli-resource-group-filter.md) | Ukázkový skript, který se přihlásí k odběru událostí pro skupinu prostředků a filtruje události pro jeden prostředek. |
+| [PowerShell: přihlášení k odběru událostí pro skupinu prostředků](./scripts/event-grid-powershell-resource-group.md) | Ukázkový skript, který se přihlásí k odběru událostí pro skupinu prostředků. Odesílá události webhooku. |
+| [PowerShell: Přihlášení k odběru událostí pro skupinu prostředků a filtrování prostředků](./scripts/event-grid-powershell-resource-group-filter.md) | Ukázkový skript, který se přihlásí k odběru událostí pro skupinu prostředků a filtruje události pro jeden prostředek. |
+| [Šablona Správce prostředků: odběr prostředků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Přihlásí se k odběru událostí pro předplatné Azure nebo skupinu prostředků. Odesílá události webhooku. |
 
 ## <a name="next-steps"></a>Další kroky
 

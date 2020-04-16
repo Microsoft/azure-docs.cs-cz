@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f66347727ad3c1b8eaf1f0e023abe1f2eeefcacb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978028"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403726"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Kurz: Použití vlastního vidění se zařízením IoT k nahlášení vizuálních stavů
 
-Tato ukázková aplikace ukazuje, jak pomocí vlastního vidění trénovat zařízení s kamerou ke zjišťování vizuálních stavů. Tento scénář zjišťování můžete spustit na zařízení IoT pomocí modelu ONNX exportovaného ze služby Custom Vision.
+Tato ukázková aplikace ukazuje, jak pomocí vlastního vidění trénovat zařízení s kamerou ke zjišťování vizuálních stavů. Tento scénář zjišťování můžete spustit na zařízení IoT pomocí exportovaného modelu ONNX.
 
-Vizuální stav popisuje obsah obrázku: prázdnou místnost nebo místnost s lidmi, prázdnou příjezdovou cestu nebo příjezdovou cestu s nákladním vozidlem a tak dále. Na obrázku níže můžete vidět aplikaci, která detekuje, kdy je před kamerou umístěn banán nebo jablko.
+Vizuální stav popisuje obsah obrázku: prázdnou místnost nebo místnost s lidmi, prázdnou příjezdovou cestu s nákladním vozidlem a tak dále. Na obrázku níže můžete vidět aplikaci, která detekuje, kdy je před kamerou umístěn banán nebo jablko.
 
 ![Animace uživatelského rozhraní označující ovoce před kamerou](./media/iot-visual-alerts-tutorial/scoring.gif)
 
@@ -92,7 +92,7 @@ Chcete-li nastavit model, musíte aplikaci umístit do stavu **Zachycení tréni
 * Pokud aplikaci používáte na počítači, použijte tlačítko v pravém horním rohu uhlavního nastavení.
 * Pokud aplikaci spouštěte na zařízení IoT, zavolejte metodu `EnterLearningMode` na zařízení prostřednictvím ioT hubu. Můžete volat prostřednictvím položky zařízení v nabídce Služby IoT Hub na webu Azure Portal nebo pomocí nástroje, jako je [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
  
-Když aplikace vstoupí do stavu **Pořizování tréninkových obrázků,** zachytí přibližně dva obrázky každou sekundu, dokud nedosáhne cílového počtu obrázků. Ve výchozím nastavení se jedná o 30 bitových kopií, ale tento `EnterLearningMode` parametr můžete nastavit předáním požadovaného čísla jako argumentu metodě IoT Hub. 
+Když aplikace vstoupí do stavu **Pořizování tréninkových obrázků,** zachytí přibližně dva obrázky každou sekundu, dokud nedosáhne cílového počtu obrázků. Ve výchozím nastavení cíl je 30 bitových kopií, ale můžete nastavit tento `EnterLearningMode` parametr předáním požadované číslo jako argument metody IoT Hub. 
 
 Zatímco aplikace zachytává obrázky, musíte vystavit fotoaparát typům vizuálních stavů, které chcete detekovat (například prázdná místnost, místnost s lidmi, prázdný stůl, stůl s vozíkem s nácážkami a tak dále).
 

@@ -13,14 +13,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f758b779e7c4935feab2424be16b829db8e46b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440323"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399516"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Plánované spouštění a zastavování prostředí Azure-SSIS Integration Runtime
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Tento článek popisuje, jak naplánovat spuštění a zastavení Azure-SSIS Integrace Runtime (IR) pomocí Azure Data Factory (ADF). Azure-SSIS IR je výpočetní prostředek ADF určený pro provádění balíčků služby SQL Server Integration Services (SSIS). Spuštění azure-SSIS IR má náklady s ním spojené. Proto obvykle chcete spustit infračervený přenos pouze v případě, že potřebujete spustit balíčky SSIS v Azure a zastavit infračervený přenos, když už ho nepotřebujete. Pomocí uživatelského rozhraní (UI) (ADF) /app nebo Azure PowerShell [můžete ručně spustit nebo zastavit infračervený přenos).](manage-azure-ssis-integration-runtime.md)
 
 Případně můžete vytvořit webové aktivity v kanálech ADF pro spuštění nebo zastavení infračerveného serveru podle plánu, například spuštění v dopoledních hodinách před spuštěním denníúlohy ETL a zastavení v odpoledních hodinách po dokončení.  Můžete také zřetězit aktivitu balíčku SSIS mezi dvěma webovými aktivitami, které spouštějí a zastavují infračervený přenos, takže infračervený přenos se spustí nebo zastaví na vyžádání, právě včas před nebo po spuštění balíčku. Další informace o spuštění aktivity balíčku SSIS naleznete [v tématu Spuštění balíčku SSIS pomocí spuštění aktivity balíčku SSIS v článku kanálu ADF.](how-to-invoke-ssis-package-ssis-activity.md)
@@ -41,7 +44,7 @@ Po vytvoření a testování těchto kanálů můžete vytvořit aktivační ud�
 
 Můžete například vytvořit dvě aktivační události, první je naplánováno spuštění denně v 6:00 a přidružené k první kanál, zatímco druhý je naplánováno spustit denně v 6 hodin a přidružené k druhému kanálu.  Tímto způsobem máte období mezi 6:00 a 18:00 každý den, kdy je spuštěna infračervená infračervená, připravena ke spuštění denní úlohy ETL.  
 
-Pokud vytvoříte třetí aktivační událost, která je naplánována na spuštění denně o půlnoci a přidružená ke třetímu kanálu, bude tento kanál spuštěn každý den o půlnoci, spustí infračervený přenos těsně před spuštěním balíčku, následně provede balíček a okamžitě provede balíček a okamžitě zastavení infračerveného přenosu těsně po spuštění balíčku, takže vaše infračervený přenos nebude spuštěn idlyčně.
+Pokud vytvoříte třetí aktivační událost, která je naplánována na spuštění denně o půlnoci a přidružená ke třetímu kanálu, bude tento kanál spuštěn každý den o půlnoci, spustí infračervený přenos těsně před spuštěním balíčku, následně spustí váš balíček a okamžitě zastaví infračervený přenos těsně po spuštění balíčku, takže infračervený přenos nebude spuštěn idly.
 
 ### <a name="create-your-adf"></a>Vytvořte si ADF
 
@@ -160,7 +163,7 @@ Teď, když vaše kanály fungují podle očekávání, můžete vytvořit aktiv
     4. V **části Opakování**zadejte kadenci aktivační události. V následujícím příkladu je **jednou Daily.** 
     5. V **části Konec**vyberte možnost Žádný **konec** nebo zadejte koncové datum a čas po výběru **možnosti Datum**. 
     6. Výběrem **možnosti Aktivována** aktivujete aktivační událost ihned po publikování celého nastavení ADF. 
-    7. Vyberte **další**.
+    7. Vyberte **Další**.
 
    ![Aktivační událost -> Nové/Upravit](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     

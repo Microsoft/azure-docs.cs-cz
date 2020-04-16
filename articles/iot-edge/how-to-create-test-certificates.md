@@ -4,16 +4,16 @@ description: Vytvořte testovací certifikáty a zjistěte, jak je nainstalovat 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5afb9b7a6ba1ffb99df064c9f92780dc820b2e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 364846f6cef196f6cefa7872af48f262b387db4f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535982"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393825"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Vytvoření ukázkových certifikátů pro testování funkcí zařízení IoT Edge
 
@@ -247,8 +247,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 
 Název, který předáte tomuto příkazu, bude ID zařízení pro zařízení IoT Edge v centru IoT Hub.
 
-Nový příkaz identity zařízení vytvoří několik souborů certifikátů a klíčů, včetně dvou, které budete používat při vytváření individuální registrace v DPS a instalaci runtime IoT Edge:
+Nový příkaz identity zařízení vytvoří několik souborů certifikátů a klíčů, včetně tří, které budete používat při vytváření individuální registrace v DPS a instalaci runtime IoT Edge:
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
@@ -262,8 +263,9 @@ Vytvořte certifikát identity zařízení IoT Edge a soukromý klíč pomocí n
 
 Název, který předáte tomuto příkazu, bude ID zařízení pro zařízení IoT Edge v centru IoT Hub.
 
-Skript vytvoří několik souborů certifikátů a klíčů, včetně dvou, které budete používat při vytváření individuálníregistrace v DPS a instalaci runtime IoT Edge:
+Skript vytvoří několik souborů certifikátů a klíčů, včetně tří, které budete používat při vytváření individuálníregistrace v DPS a instalaci runtime IoT Edge:
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 
@@ -290,7 +292,7 @@ Vaše zařízení IoT také potřebuje kopii svých certifikátů zařízení, a
 
 1. Přejděte do pracovního adresáře, který obsahuje skripty pro generování certifikátů a kořenový certifikát certifikační autority.
 
-2. Vytvořte dva certifikáty (primární a sekundární) pro zařízení pro příjem dat. Snadno se používá konvence pojmenování je vytvoření certifikátů s názvem zařízení IoT a pak primární nebo sekundární popisek. Například:
+2. Vytvořte dva certifikáty (primární a sekundární) pro zařízení pro příjem dat. Snadno se používá konvence pojmenování je vytvoření certifikátů s názvem zařízení IoT a pak primární nebo sekundární popisek. Příklad:
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -320,7 +322,7 @@ Vaše zařízení IoT také potřebuje kopii svých certifikátů zařízení, a
 
 1. Přejděte do pracovního adresáře, který obsahuje skripty pro generování certifikátů a kořenový certifikát certifikační autority.
 
-2. Vytvořte dva certifikáty (primární a sekundární) pro zařízení pro příjem dat. Snadno se používá konvence pojmenování je vytvoření certifikátů s názvem zařízení IoT a pak primární nebo sekundární popisek. Například:
+2. Vytvořte dva certifikáty (primární a sekundární) pro zařízení pro příjem dat. Snadno se používá konvence pojmenování je vytvoření certifikátů s názvem zařízení IoT a pak primární nebo sekundární popisek. Příklad:
 
    ```bash
    ./certGen.sh create_device_certificate "<device name>-primary"

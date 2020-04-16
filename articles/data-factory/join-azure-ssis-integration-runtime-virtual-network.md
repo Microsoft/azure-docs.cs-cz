@@ -11,14 +11,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: e94eef3072b9636c8022a5949b05519c1554cb9e
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: cf13dbe17738ca1ae658c73bb0092a219b4823d1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585795"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415905"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Při použití služby SQL Server Integration Services (SSIS) v Azure Data Factory byste měli připojit runtime integrace Azure-SSIS (IR) do virtuální sítě Azure v následujících scénářích:
 
@@ -336,7 +338,7 @@ Na portálu nakonfigurujte virtuální síť Azure Resource Manageru, než se k 
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují uživatelské nastavení datové továrny. 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 1. Vyberte **Další služby**. Filtrovat a vybrat **virtuální sítě**. 
 
@@ -366,7 +368,7 @@ Než se pokusíte připojit infračervený přenos Azure-SSIS, nakonfigurujte kl
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují uživatelské nastavení datové továrny. 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 1. Vyberte **Další služby**. Filtrovat a vybrat **virtuální sítě (klasické)**. 
 

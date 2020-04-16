@@ -11,15 +11,17 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: d6252b7a0ecce553bc3a1519055375fd4cd034f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 3aabf68b6763e5815a03021cb02683d509c26190
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336192"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415059"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro runtime integrace Azure-SSIS
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Vlastní nastavení modulu Runtime integrace služby Azure-SQL Server Integration Services (Azure-SSIS IR) poskytuje rozhraní pro přidání vlastních kroků během instalace nebo rekonfigurace infračerveného zařízení Azure-SSIS. 
 
@@ -32,7 +34,7 @@ Vlastní nastavení na infračerveném počítači Azure-SSIS můžete provést 
 Můžete nainstalovat bezplatné, nelicencované komponenty a placené licencované komponenty s expresními a standardními vlastními nastaveními. Pokud jste nezávislý dodavatel softwaru (ISV), přečtěte [si informace o vývoji placených nebo licencovaných komponent pro zařízení Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md).
 
 > [!IMPORTANT]
-> Vzhledem k tomu, že uzly řady v2 zařízení Azure-SSIS IR nejsou vhodné pro vlastní nastavení, použijte místo toho uzly řady v3. Pokud již používáte uzly řady v2, přepněte na uzly řady v3 co nejdříve.
+> Chcete-li těžit z budoucích vylepšení, doporučujeme použít v3 nebo novější řady uzlů pro Azure-SSIS IR s vlastním nastavením.
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
@@ -72,7 +74,7 @@ Chcete-li inindové zařízení Azure-SSIS inpřizpůsobit, potřebujete násled
 
    a. V části **(Místní a připojené)** klikněte pravým tlačítkem na **Účty úložiště**a pak vyberte **Připojit k úložišti Azure**.
 
-      ![Připojení k úložišti Azure](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
+      ![Připojení ke službě Azure Storage](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
    b. Vyberte **Použít název a klíč účtu úložiště a**pak vyberte **Další**.
 

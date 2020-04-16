@@ -7,22 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c433d99fd96e99d418fd5500c1075e68dfb1742c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6714a0c4b967d80ad683ef023b5811423bdcb022
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053585"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403456"
 ---
 # <a name="what-is-the-azure-face-service"></a>Co je služba Azure Face?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Služba Azure Cognitive Services Face poskytuje algoritmy, které se používají ke zjišťování, rozpoznávání a analýze lidských tváří v obrazech. Schopnost zpracovávat informace o lidské tváři je důležitá v mnoha různých softwarových scénářích. Příkladem scénářů jsou zabezpečení, přirozené uživatelské rozhraní, analýza a správa obsahu obrázků, mobilní aplikace a robotika.
+Služba Azure Cognitive Services Face poskytuje algoritmy, které detekují, rozpoznají a analyzují lidské tváře v obrazech. Schopnost zpracovávat informace o lidské tváři je důležitá v mnoha různých softwarových scénářích. Příklady scénářů zahrnují zabezpečení, přirozené uživatelské rozhraní, analýzu a správu obsahu obrázků, mobilní aplikace a robotiku.
 
-Služba Face poskytuje několik různých funkcí. Každá funkce je popsána v následujících částech. Čtěte dál a dozvíte se o nich více.
+Služba Plocha poskytuje několik různých funkcí, z nichž každá je popsána v následujících částech.
 
 ## <a name="face-detection"></a>Rozpoznávání tváře
 
@@ -69,7 +69,7 @@ Po vytvoření a trénování databáze můžete provést identifikaci proti sku
 
 Další informace o identifikaci osoby najdete v průvodci [koncepty rozpoznávání tváří](concepts/face-recognition.md) nebo v referenční dokumentaci [identify API.](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)
 
-## <a name="use-containers"></a>Použití kontejnerů
+## <a name="containers"></a>Containers
 
 [Pomocí kontejneru Tváří](face-how-to-install-containers.md) můžete rozpoznat, rozpoznat a identifikovat tváře instalací standardizovaného kontejneru Dockeru blíže k vašim datům.
 

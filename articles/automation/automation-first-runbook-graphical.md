@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6bd360b2075c337e3ed3d69d84368d16571a9335
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcef0574e16e0b4d28755716c32670b00c65af14
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536050"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406091"
 ---
 # <a name="my-first-graphical-runbook"></a>Můj první grafický runbook
 
@@ -100,7 +100,7 @@ Vytvořený soubor Runbook je stále v režimu konceptu. Abyste ho mohli spustit
 1. Klikněte na **Všechny protokoly** a otevřete podokno Datové proudy, které patří k úloze runbooku. Měli byste `Hello World` vidět pouze ve výstupním datovém proudu. 
 
     Všimněte si, že podokno Datové proudy můžete zobrazit další datové proudy pro úlohu runbook, jako je například Verbose a Error datové proudy, pokud runbook zapíše do nich.
-1. Zavřete podokno Datové proudy a podokno úloh a vraťte se na stránku **MyFirstRunbook-Graphical.**
+1. Zavřete podokno Datové proudy a podokno úloh a vraťte se na stránku MyFirstRunbook-Graphical.
 1. Chcete-li zobrazit všechny úlohy pro runbook, vyberte **úlohy v** části **Zdroje**. Na stránce Úlohy jsou uvedeny všechny úlohy vytvořené v aplikaci Runbook. Měli byste vidět pouze jednu úlohu uvedenou, protože jste ji spustit pouze jednou.
 1. Kliknutím na název úlohy otevřete stejné podokno úloh, které jste si prohlíželi při spuštění runbooku. Toto podokno slouží k zobrazení podrobností o libovolné úloze vytvořené pro runbook.
 
@@ -126,7 +126,7 @@ Teď, když máte proměnnou pro uložení ID předplatného, můžete nakonfigu
 >[!NOTE]
 >Pro sady Runbook `Add-AzAccount` `Add-AzureRMAccount` prostředí PowerShell `Connect-AzAccount`a jsou aliasy pro . Všimněte si, že tyto aliasy nejsou k dispozici pro grafické sady Runbook. Grafická kniha runbook `Connect-AzAccount`může používat pouze samostatně.
 
-1. Přejděte do runbooku a na stránce **MyFirstRunbook-Graphical** vyberte **Upravit.**
+1. Přejděte do runbooku a na stránce MyFirstRunbook-Graphical vyberte **Upravit.**
 1. Už ten `Write Hello World to output` záznam nepotřebuješ. Stačí kliknout na tři tečky a vybrat **odstranit**.
 1. V ovládacím prvku Knihovna rozbalte **položky DATOVÝCH ZDROJŮ**a potom **položku Připojení**. Přidat `AzureRunAsConnection` na plátno výběrem **přidat na plátno**.
 1. Přejmenovat `AzureRunAsConnection` `Get Run As Connection`na .
@@ -185,7 +185,7 @@ Teď musíte přidat `Start-AzVM` aktivitu ke spuštění virtuálního počíta
 
 Runbook aktuálně spustí virtuální počítač ve skupině prostředků, `Start-AzVM` kterou jste zadali pro rutinu. Runbook bude užitečnější, pokud při spuštění runbooku zadáte název i skupinu prostředků. Přidáme vstupní parametry do runbooku, abychom tuto funkci poskytli.
 
-1. Otevřete grafický editor kliknutím na **upravit** v podokně **MyFirstRunbook-Graphical.**
+1. Otevřete grafický editor kliknutím na **upravit** na stránce MyFirstRunbook-Graphical.
 1. Vyberte **Vstup a výstup** a pak **Přidejte vstup** otevřete podokno Vstupní parametr knihy Runbook.
 1. V zadaných polích proveďte následující nastavení a klepněte na tlačítko **OK**.
    * **Name** -- `VMName`zadejte .
@@ -243,7 +243,7 @@ Nyní můžete upravit runbook tak, aby se pokusí spustit pouze virtuální ho,
 1. U `Write-Output` prvního ovládacího prvku klikněte na **Parametry** a změňte hodnotu **Popisek** na **Upozornit spuštění virtuálního soudu**.
 1. V **případě objektu InputObject**změňte **zdroj dat** na výraz Prostředí **PowerShell**a zadejte výraz `$VMName successfully started.`.
 1. U druhého `Write-Output` ovládacího prvku klikněte na **Parametry** a změňte hodnotu **Label** na **Upozornit spuštění virtuálního počítače se nezdařilo**.
-1. V **případě objektu InputObject**změňte **zdroj dat** na výraz Prostředí **PowerShell**a zadejte výraz `$VMName could not start.`.
+1. V **případě objektu InputObject**změňte **zdroj dat** na výraz Prostředí **PowerShell**a zadejte výraz `$VMName could not start`.
 1. Vytvořte `Start-AzVM` odkazy `Notify VM Started` `Notify VM Start Failed`z do a .
 1. Vyberte odkaz `Notify VM Started` na a změňte **použít podmínku** na hodnotu true.
 1. Do **výrazu**Podmínka `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true`zadejte . Tento `Write-Output` ovládací prvek se nyní spustí pouze v případě, že virtuální ho spouští úspěšně.
@@ -259,3 +259,5 @@ Nyní můžete upravit runbook tak, aby se pokusí spustit pouze virtuální ho,
 * Další informace o vytváření grafických funkcí najdete [v tématu Vytváření grafikva v Azure Automation](automation-graphical-authoring-intro.md).
 * První kroky s powershellovými runbooky najdete v článku [Můj první powershellový runbook](automation-first-runbook-textual-powershell.md).
 * Pokud chcete začít s runbooky pracovního postupu prostředí PowerShell, [přečtěte si první runbook pracovního postupu Prostředí PowerShell](automation-first-runbook-textual.md).
+* Odkaz na rutinu prostředí PowerShell naleznete v tématu [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

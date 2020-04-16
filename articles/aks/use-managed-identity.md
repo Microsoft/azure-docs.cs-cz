@@ -5,18 +5,18 @@ services: container-service
 author: saudas
 manager: saudas
 ms.topic: article
-ms.date: 03/10/2019
+ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 85efc6d9d203ca06c5f7566376993b4c13950788
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a150e2f197f24db5da331195290d11ad925c47e
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369974"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392638"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes Service
 
-V současné době cluster služby Azure Kubernetes (AKS) (konkrétně zprostředkovatel cloudu Kubernetes) vyžaduje *instanční objekt* pro vytváření dalších prostředků, jako jsou nástroje pro vyrovnávání zatížení a spravované disky v Azure. Buď musíte poskytnout instanční objekt nebo AKS vytvoří jeden vaším jménem. Instanční objekty mají obvykle datum vypršení platnosti. Clustery nakonec dosáhnou stavu, ve kterém musí být instanční objekt obnoven, aby cluster fungoval. Správa instančních objektů zvyšuje složitost.
+V současné době vyžaduje cluster služby Azure Kubernetes (AKS) (konkrétně zprostředkovatel cloudu Kubernetes) a identitu k vytvoření dalších prostředků, jako jsou nástroje pro vyrovnávání zatížení a spravované disky v Azure, tato identita může být buď *spravovaná identita,* nebo *instanční objekt služby*. Pokud používáte [instanční objekt](kubernetes-service-principal.md), musíte zadat jeden nebo AKS vytvoří jeden vaším jménem. Pokud používáte spravovanou identitu, bude to automaticky vytvořeno aks. Clustery používající instanční objekty nakonec dosáhnou stavu, ve kterém musí být instanční objekt obnoven, aby cluster fungoval. Správa instančních objektů zvyšuje složitost, což je důvod, proč je jednodušší použít spravované identity místo. Stejné požadavky na oprávnění platí pro instanční objekty i spravované identity.
 
 *Spravované identity* jsou v podstatě obálka kolem instančních objektů a zjednodušit jejich správu. Další informace najdete v informacích o [spravovaných identitách pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 

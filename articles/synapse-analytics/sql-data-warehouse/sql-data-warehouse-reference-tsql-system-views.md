@@ -11,12 +11,12 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 104b377d9a1318a7320ea382580aaeedf9ac25f9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d673c5afcaece9b1cfe50d800ea9eeca96532ae8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745154"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411622"
 ---
 # <a name="system-views-supported-in-synapse-sql-pool"></a>Systémová zobrazení podporovaná ve fondu SYNAPse SQL
 
@@ -150,16 +150,16 @@ Následující dmvs jsou použitelné pro fond SYNApse SQL, ale musí být prove
 * [sys.types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-synapse-sql-pool"></a>Sql Server DMVs k dispozici v fondu SYNAPse SQL
+## <a name="sql-server-dmvs-available-in-sql-pool"></a>Sql Server DMVs k dispozici ve fondu SQL
 
-Synapse SQL fond zveřejňuje mnoho zobrazení dynamické správy SQL Server (DMVs). Tato zobrazení při dotazování ve fondu Synapse SQL, hlásí stav databáze SQL spuštěné na distribucích.
+Fond SQL zveřejňuje mnoho zobrazení dynamické správy serveru SQL Server (DMVs). Tato zobrazení při dotazování ve fondu SQL hlásí stav databází SQL spuštěných na distribucích.
 
 Synapse SQL fond a paralelní datový sklad (PDW) používají stejné zobrazení systému. Každý DMV má sloupec s názvem pdw_node_id, což je identifikátor pro výpočetní uzel.
 
 > [!NOTE]
 > Chcete-li použít tato zobrazení, vložte do názvu "pdw_nodes_", jak je znázorněno v následující tabulce:
 
-| Název DMV ve fondu SYNAPSE SQL | Článek transakt-SQL serveru SQL|
+| Název DMV ve fondu SQL | Článek transakt-SQL serveru SQL|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -221,9 +221,9 @@ Synapse SQL fond a paralelní datový sklad (PDW) používají stejné zobrazen�
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-synapse-sql-pool"></a>SQL Server 2016 PolyBase DMVs k dispozici ve fondu SYNAPse SQL
+## <a name="sql-server-2016-polybase-dmvs-available-in-sql-pool"></a>PolyBase polybase SQL Server 2016 jsou k dispozici ve fondu SQL
 
-Následující dmvs jsou použitelné pro fond SYNApse SQL, ale musí být provedeny připojením k **hlavní** databázi.
+Následující dmvs jsou použitelné pro fond SQL, ale musí být provedeny připojením k **hlavní** databázi.
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

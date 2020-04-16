@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 27503defa23b2a35e767156139228aa2e177652f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255324"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405185"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co monitor umonitoruje?
 Tento článek popisuje různé aplikace a služby, které jsou monitorovány azure monitoru. 
@@ -205,7 +205,6 @@ Další řešení jsou k dispozici pro sledování různých aplikací a služeb
 | [Hodnocení na vyžádání](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Vyhodnoťte a optimalizujte dostupnost, zabezpečení a výkon místních, hybridních a cloudových technologických prostředí Microsoftu. |
 | [Kontrola stavu SQL](insights/sql-assessment.md) | Vyhodnoťte rizika a stav prostředí serveru SQL Server.  |
 | [Linková data](insights/wire-data.md) | Konsolidovaná data o síti a výkonu shromážděná z počítačů připojených k Systému Windows a počítačů s Linuxem s agentem Log Analytics. |
-
 
 ## <a name="third-party-integration"></a>Integrace třetích stran
 

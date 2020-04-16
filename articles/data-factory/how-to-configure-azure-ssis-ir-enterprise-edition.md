@@ -10,14 +10,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 8096da955da0266f3727197f21d67c33d099aa4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0bedde8431ce713f0cc7185d0ec607d49b48ef1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74922645"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414960"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Zřízení edice Enterprise pro runtime integrace Azure-SSIS
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Enterprise Edition prostředí Azure-SSIS Integration Runtime umožňuje používat následující pokročilé a prémiové funkce:
 -   Změnit součásti sběru dat (CDC)

@@ -5,29 +5,29 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272328"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390302"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizace dotazů Apache Hivu v Azure HDInsightu
 
-V Azure HDInsight existuje několik typů clusterů a technologií, které můžou spouštět dotazy Apache Hive. Při vytváření clusteru HDInsight zvolte příslušný typ clusteru, který vám pomůže optimalizovat výkon pro vaše potřeby úloh.
+V Azure HDInsight existuje několik typů clusterů a technologií, které můžou spouštět dotazy Apache Hive. Zvolte příslušný typ clusteru, který vám pomůže optimalizovat výkon pro vaše potřeby pracovního vytížení.
 
-Chcete-li například optimalizovat pro interaktivní dotazy ad hoc, zvolte typ clusteru **interaktivních dotazů.** Zvolte typ clusteru Apache **Hadoop** pro optimalizaci pro dotazy Hive používané jako dávkový proces. **Typy** clusterů Spark a **HBase** můžou taky spouštět dotazy Hive. Další informace o spouštění dotazů Hive na různých typech clusterů HDInsight najdete v tématu [Co je Apache Hive a HiveQL na Azure HDInsight?](hadoop/hdinsight-use-hive.md)
+Chcete-li například optimalizovat pro `ad hoc`interaktivní dotazy, zvolte typ clusteru **interaktivních dotazů.** Zvolte typ clusteru Apache **Hadoop** pro optimalizaci pro dotazy Hive používané jako dávkový proces. **Typy** clusterů Spark a **HBase** můžou taky spouštět dotazy Hive. Další informace o spouštění dotazů Hive na různých typech clusterů HDInsight najdete v tématu [Co je Apache Hive a HiveQL na Azure HDInsight?](hadoop/hdinsight-use-hive.md)
 
 Clustery HDInsight typu clusteru Hadoop nejsou ve výchozím nastavení optimalizovány pro výkon. Tento článek popisuje některé nejběžnější metody optimalizace výkonu Hive, které můžete použít na vaše dotazy.
 
 ## <a name="scale-out-worker-nodes"></a>Horizontální navýšení kapacity pracovních uzlů
 
-Zvýšení počtu pracovních uzlů v clusteru HDInsight umožňuje práci využívat více mapovačů a reduktorů, které mají být spuštěny paralelně. Existují dva způsoby, jak zvýšit kapacitu v HDInsight:
+Zvýšení počtu pracovních uzlů v clusteru HDInsight umožňuje práci používat více mapovačů a reduktorů, které mají být spuštěny paralelně. Existují dva způsoby, jak zvýšit kapacitu v HDInsight:
 
-* V době, kdy vytvoříte cluster, můžete zadat počet pracovních uzlů pomocí portálu Azure, Azure PowerShell nebo rozhraní příkazového řádku.  Další informace najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Následující snímek obrazovky ukazuje konfiguraci pracovního uzlu na webu Azure Portal:
+* Při vytváření clusteru můžete určit počet pracovních uzlů pomocí portálu Azure, Azure PowerShellu nebo rozhraní příkazového řádku.  Další informace najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Následující snímek obrazovky ukazuje konfiguraci pracovního uzlu na webu Azure Portal:
   
     ![Uzly velikosti clusteru Portálu Azure](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
@@ -45,10 +45,10 @@ Další informace o škálování HDInsightu najdete v [tématu Škálování cl
 
 Tez je rychlejší, protože:
 
-* **Spusťte řízený acyklický graf (DAG) jako jednu úlohu v modulu MapReduce**. Dag vyžaduje, aby každá sada mapovačů následovala jedna sada reduktorů. To způsobí, že více MapReduce úlohy, které mají být spun off pro každý dotaz Hive. Tez nemá takové omezení a může zpracovat komplexní DAG jako jednu úlohu, čímž se minimalizuje režie při spuštění úlohy.
+* **Spusťte řízený acyklický graf (DAG) jako jednu úlohu v modulu MapReduce**. Dag vyžaduje, aby každá sada mapovačů následovala jedna sada reduktorů. Tento požadavek způsobí, že více MapReduce úlohy, které mají být spun off pro každý dotaz Hive. Tez nemá takové omezení a může zpracovat komplexní DAG jako jednu úlohu, která minimalizuje počáteční nároky na spuštění úlohy.
 * **Zabraňuje zbytečným zápisům**. Více úloh se používají ke zpracování stejného dotazu Hive v Modulu MapReduce. Výstup každé úlohy MapReduce je zapsán do HDFS pro zprostředkující data. Vzhledem k tomu, že Tez minimalizuje počet úloh pro každý dotaz Hive, je schopen vyhnout se zbytečným zápisům.
 * **Minimalizuje zpoždění při spuštění**. Tez je lépe schopen minimalizovat zpoždění start-up snížením počtu mapovačů, které potřebuje ke spuštění a také zlepšením optimalizace v celém textu.
-* **Opakovaně používá nádoby**. Kdykoli je to možné, Tez je schopen znovu použít kontejnery, aby bylo zajištěno, že latence z důvodu spuštění kontejnerů je snížena.
+* **Opakovaně používá nádoby**. Kdykoli je to možné, Tez znovu použije kontejnery, aby zajistil, že latence od spuštění kontejnerů je snížena.
 * **Techniky průběžné optimalizace**. Tradičně optimalizace byla provedena během fáze kompilace. Nicméně další informace o vstupy je k dispozici, které umožňují lepší optimalizaci za běhu. Tez používá techniky kontinuální optimalizace, které mu umožňují optimalizovat plán dále do fáze runtime.
 
 Další informace o těchto konceptech naleznete v [tématu Apache TEZ](https://tez.apache.org/).
@@ -69,8 +69,8 @@ Dělení hive je implementováno reorganizací nezpracovaných dat do nových ad
 
 Některé aspekty dělení:
 
-* **Nepod oddíl** - Dělení na sloupce s pouze několik hodnot může způsobit několik oddílů. Například dělení na pohlaví vytvoří pouze dva oddíly, které mají být vytvořeny (muž a žena), a tím pouze snížit latenci maximálně o polovinu.
-* **Nepřes oddíl** - Na druhé straně extrému vytvoření oddílu na sloupec s jedinečnou hodnotou (například userid) způsobí více oddílů. Přes oddíl způsobuje velké napětí na název uzlu clusteru, protože má zpracovat velký počet adresářů.
+* **Nepod oddíl** - dělení na sloupce s pouze několik hodnot může způsobit několik oddílů. Například dělení na pohlaví vytvoří pouze dva oddíly, které mají být vytvořeny (muž a žena), takže snížit latenci maximálně o polovinu.
+* **Nepřekažovat oddíl** - Na druhé straně extrému vytvoření oddílu na sloupec s jedinečnou hodnotou (například userid) způsobí více oddílů. Přes oddíl způsobuje velké napětí na název uzlu clusteru, protože má zpracovat velký počet adresářů.
 * **Vyhněte se zkosení dat** – zvolte klíč dělení moudře tak, aby všechny oddíly byly rovnoměrné velikosti. Například dělení na *stav* sloupec může zkreslit distribuci dat. Vzhledem k tomu, že stát Kalifornie má populaci téměř 30x více než Vermont, velikost oddílu je potenciálně zkosená a výkon se může výrazně lišit.
 
 Chcete-li vytvořit tabulku oddílů, použijte *klauzuli Partitioned By:*
@@ -122,7 +122,7 @@ Další informace naleznete v [tématu Partitioned Tables](https://cwiki.apache.
 
 ## <a name="use-the-orcfile-format"></a>Použití formátu ORCFile
 
-Hive podporuje různé formáty souborů. Například:
+Hive podporuje různé formáty souborů. Příklad:
 
 * **Text**: výchozí formát souboru a pracuje s většinou scénářů.
 * **Avro**: funguje dobře pro scénáře interoperability.
@@ -148,7 +148,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-Dále vložíte data do tabulky ORC z pracovní tabulky. Například:
+Dále vložíte data do tabulky ORC z pracovní tabulky. Příklad:
 
 ```sql
 INSERT INTO TABLE lineitem_orc
@@ -198,5 +198,5 @@ Existuje více optimalizačních metod, které můžete zvážit, například:
 V tomto článku jste se dozvěděli několik běžných metod optimalizace dotazů Hive. Další informace naleznete v následujících článcích:
 
 * [Použití Apache Hive v HDInsight](hadoop/hdinsight-use-hive.md)
-* [Analýza dat zpoždění letu pomocí interaktivního dotazu v HDInsightu](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Analýza dat zpoždění letu pomocí interaktivního dotazu v HDInsightu](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Analyzujte data z Twitteru pomocí Apache Hive v HDInsightu](hdinsight-analyze-twitter-data-linux.md)

@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 2a634c81273c26722d53610a13e362e5e453f7e9
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 97c8f8a5bb2111264e9459a7d2128c1ab7c2503d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380113"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414431"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Vytvoření aktivační události, která spustí kanál v přeskakujícím okně
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Tento článek obsahuje kroky k vytvoření, spuštění a sledování aktivační události omílání okna. Obecné informace o aktivačních událostech a podporovaných typech naleznete v [tématu Pipeline execution and triggers](concepts-pipeline-execution-triggers.md).
 
 Aktivační události pro přeskakující okno jsou typem aktivačních událostí, které se aktivuje v pravidelných časových intervalech od určeného počátečního okamžiku a které zachovávají stav. Přeskakující okna jsou řada nepřekrývajících se souvislých časových intervalů s pevnou velikostí. Aktivační událost omílání okna má vztah 1:1 s kanálem a může odkazovat pouze na singulární kanál.
@@ -229,5 +231,5 @@ Co se snaží monitorovat spuštění aktivačních událostí a spuštění kan
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobné informace o aktivačních událostech naleznete v [tématu Pipeline execution and triggers](concepts-pipeline-execution-triggers.md#triggers).
+* Podrobné informace o aktivačních událostech naleznete v [tématu Pipeline execution and triggers](concepts-pipeline-execution-triggers.md#trigger-execution).
 * [Vytvoření závislosti aktivační události pro přeskakující okno](tumbling-window-trigger-dependency.md)

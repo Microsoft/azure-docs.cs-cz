@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 5a9917010b7301bf70c3bebf68c35d82f4839e0f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 074a28af8c80c109dbe97306900e8f00618e435a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409043"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411683"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -41,7 +41,7 @@ Azure SQL Database je založen na architektuře SQL Server Database Engine, kter
 - Rychlé obnovení databáze (na základě snímků souborů) v minutách, nikoli v hodinách nebo dnech (nikoli o velikosti datové operace)
 - Vyšší celkový výkon díky vyšší propustnostprotokolu a rychlejším časům potvrzení transakcí bez ohledu na objemy dat
 - Rychlé horizontální navýšení kapacity – můžete zřídit jeden nebo více uzlů jen pro čtení pro snižování zátěže čtení a pro použití jako pohotovostní režimy
-- Rychlé škálování – můžete v konstantním čase škálovat výpočetní prostředky tak, aby vyhovovaly velkým úlohám podle potřeby a pak škálovat výpočetní prostředky zpět dolů, když je to nepotřebujete.
+- Rychlé škálování – můžete v konstantním čase vertikálně navýšit kapacitu výpočetních prostředků tak, aby vyhovovaly velkým úlohám v případě potřeby, a pak škálovat výpočetní prostředky zpět dolů, když to není potřeba.
 
 Úroveň služby Hyperscale odstraňuje mnoho praktických omezení tradičně vidět v cloudových databázích. Kde většina ostatních databází jsou omezeny prostředky, které jsou k dispozici v jednom uzlu, databáze ve vrstvě služby Hyperscale nemají žádná taková omezení. Díky flexibilní úložné architektuře se úložiště podle potřeby rozrůstá. Ve skutečnosti hyperškálovací databáze nejsou vytvořeny s definovanou maximální velikostí. Databáze Hyperscale se podle potřeby zvětšuje – a fakturuje se vám pouze kapacita, kterou používáte. Pro úlohy náročné na čtení vrstvy služby Hyperscale poskytuje rychlé škálování zřazením další chod repliky pro čtení podle potřeby pro snižování zátěže čtení úloh.
 
@@ -72,7 +72,7 @@ Další informace o velikosti výpočetních prostředků pro úroveň služby H
 
 - **Skladování**:
 
-  Při konfiguraci databáze Hyperscale není nutné zadávat maximální velikost dat. Ve vrstvě hyperškálování se vám bude účtovat úložiště pro vaši databázi na základě skutečného přidělení. Úložiště se automaticky přidělí mezi 40 GB a 100 TB, v 10 GB přírůstcích o 10 GB. V případě potřeby může růst více datových souborů současně. Databáze Hyperscale je vytvořena s počáteční velikostí 10 GB a začne růst o 10 GB každých 10 minut, dokud nedosáhne velikosti 40 GB.
+  Při konfiguraci databáze Hyperscale není nutné zadávat maximální velikost dat. Ve vrstvě hyperškálování se vám bude účtovat úložiště pro vaši databázi na základě skutečného přidělení. Úložiště se automaticky přiděluje mezi 40 GB a 100 TB v krocích po 10 GB. V případě potřeby může růst více datových souborů současně. Databáze Hyperscale je vytvořena s počáteční velikostí 10 GB a začne růst o 10 GB každých 10 minut, dokud nedosáhne velikosti 40 GB.
 
 Další informace o cenách hyperškálování najdete v tématu [Azure SQL Database Pricing](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -156,7 +156,7 @@ Soubor SLA hyperškálování najdete v článku [SLA pro Azure SQL Database](ht
 
 ### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Obnovení hyperškálovací databáze do jiné zeměpisné polohy
 Pokud potřebujete obnovit databázi Azure SQL Database Hyperscale DB do jiné oblasti, než je ta, ve které je aktuálně hostovaná, jako součást operace zotavení po havárii nebo procházení, přemístění nebo z jakéhokoli jiného důvodu, primární metodou je geografické obnovení databáze.  To zahrnuje přesně stejné kroky jako to, co byste použili k obnovení jakékoli jiné AZURE SQL DB do jiné oblasti:
-1. Pokud tam ještě nemáte příslušný server, vytvořte v cílové oblasti databázový server SQL.  Tento server by měl být vlastněn stejným předplatným jako původní (zdrojový) server.
+1. Pokud tam ještě nemáte příslušný server, vytvořte v cílové oblasti databázový server Azure SQL.  Tento server by měl být vlastněn stejným předplatným jako původní (zdrojový) server.
 2. Postupujte podle pokynů v tématu [geografického obnovení](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) stránky o obnovení databází Azure SQL z automatického zálohování.
 
 > [!NOTE]
@@ -204,14 +204,13 @@ Jedná se o aktuální omezení úrovně služby Hyperscale od GA.  Aktivně pra
 
 | Problém | Popis |
 | :---- | :--------- |
-| Podokno Spravovat zálohy pro logický server nezobrazuje databáze Hyperscale, které budou filtrovány ze serveru SQL.  | Hyperscale má samostatnou metodu pro správu záloh a jako takové dlouhodobé uchovávání a bod v nastavení uchovávání záloh času neplatí / jsou zneplatněny. V souladu s tím hyperškálování databáze nezobrazí v podokně Spravovat zálohování. |
+| Podokno Spravovat zálohy pro logický server nezobrazuje databáze hyperškálování, budou filtrovány ze zobrazení.  | Hyperscale má samostatnou metodu pro správu záloh a jako takové dlouhodobé uchovávání a bod v nastavení uchovávání záloh času neplatí / jsou zneplatněny. V souladu s tím hyperškálování databáze nezobrazí v podokně Spravovat zálohování. |
 | Obnovení k určitému bodu v čase | Databázi Hyperscale můžete obnovit do databáze, která není hyperškálovat, v rámci období uchování databáze bez stupně hyperškálování. Databázi, která není hyperškálovat, nelze obnovit do databáze Hyperscale.|
 | Pokud databáze obsahuje jeden nebo více datových souborů větších než 1 TB, migrace se nezdaří | V některých případech může být možné tento problém vyřešit zmenšením velké soubory být menší než 1 TB. Pokud migrace databáze používá během procesu migrace, ujistěte se, že žádný soubor dostane větší než 1 TB. Velikost databázových souborů můžete určit pomocí následujícího dotazu. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | MI | Spravovanou instanci Azure SQL Database není aktuálně podporovaná s databázemi Hyperscale. |
 | Elastické fondy |  Elastické fondy nejsou aktuálně podporovány pomocí hyperškálování databáze SQL.|
 | Migrace do hyperškálování je v současné době jednosměrná operace. | Jakmile je databáze migrována do hyperškálování, nelze ji migrovat přímo na úroveň služby jinénež Hyperscale. V současné době je jediným způsobem, jak migrovat databázi z Hyperscale do jiného než hyperškálování, export ovat a importovat pomocí souboru BACPAC nebo jiných technologií přesunu dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.)|
 | Migrace databází s trvalými objekty v paměti | Hyperscale podporuje pouze netrvalé objekty v paměti (typy tabulek, nativní sps a funkce).  Trvalé tabulky v paměti a další objekty musí být vynechány a znovu vytvořeny jako objekty bez paměti před migrací databáze na úroveň služby Hyperscale.|
-| Sledování změn | Sledování změn je aktuálně ve verzi Public Preview a lze je povolit v nových nebo existujících databázích Hyperscale. |
 | Geografická replikace  | Geografickou replikaci pro Hyperscale databáze Azure SQL zatím nelze nakonfigurovat. |
 | Kopírování databáze | K vytvoření nové databáze v Azure SQL Hyperscale zatím nelze použít kopírování databáze. |
 | Integrace TDE/AKV | Transparentní šifrování databáze pomocí trezoru klíčů Azure (běžně označované jako Bring-Your-Own-Key nebo BYOK) ještě není podporováno pro Azure SQL Database Hyperscale, ale TDE s service managed keys je plně podporována. |

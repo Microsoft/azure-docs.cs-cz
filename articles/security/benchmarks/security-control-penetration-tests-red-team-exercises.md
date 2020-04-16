@@ -1,38 +1,36 @@
 ---
 title: Azure Security Control – penetrační testy a cvičení červeného týmu
-description: Testy průniku bezpečnostní kontroly a cvičení červeného týmu
+description: Testy penetrace řízení zabezpečení Azure a cvičení červeného týmu
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/14/2020
 ms.author: mbaldwin
-ms.custom: security-recommendations
-ms.openlocfilehash: 952103d517e03230cdfa4e7531e27bb2d5f53a07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: security-benchmark
+ms.openlocfilehash: fe9c672e53ea0f46328320daf75f65fd77f5db29
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934304"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408299"
 ---
 # <a name="security-control-penetration-tests-and-red-team-exercises"></a>Bezpečnostní kontrola: Penetrační testy a cvičení červeného týmu
 
 Otestujte celkovou sílu obrany organizace (technologie, procesy a lidé) simulací cílů a akcí útočníka.
 
-## <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Proveďte pravidelné penetrační testování prostředků Azure a zajistěte nápravu všech kritických zjištění zabezpečení do 60 dnů
+## <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Provádění pravidelného penetračního testování prostředků Azure a zajištění nápravy všech důležitých zjištění zabezpečení
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 11.1 | 20.1-20.8 | Sdílená |
+| 11.1 | 20.1, 20.2, 20.3, 20.4, 20.5, 20.6, 20.7, 20.8 | Sdílená |
 
-Dodržujte pravidla společnosti Microsoft a ujistěte se, že vaše penetrační testy neporušují zásady společnosti Microsoft:
+Postupujte podle pravidel společnosti Microsoft zapojení a ujistěte se, že vaše penetrační testy nejsou v rozporu se zásadami společnosti Microsoft. Použijte strategii společnosti Microsoft a provádění červených týmů a testování průniku živých webů proti cloudové infrastruktuře, službám a aplikacím spravovanému společností Microsoft.
 
-https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+- [Pravidla penetračního testování zapojení](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-Další informace o strategii společnosti Microsoft a provádění červených týmů a testování průniku živých webů proti cloudové infrastruktuře, službám a aplikacím spravovanému společností Microsoft naleznete zde:
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [ovládacích prvcích zabezpečení Azure](overview.md)
+- Návrat k [přehledu srovnávacího testu zabezpečení Azure](overview.md)

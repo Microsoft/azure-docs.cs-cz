@@ -6,18 +6,21 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 4545a75cc2082c21dcb87986eba819ebe39adf7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 10/10/2019
+ms.openlocfilehash: 63843230b3d4a521df858b00c8e5c887e8f53a7a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246341"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415581"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaná Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Tento článek vysvětluje různá výpočetní prostředí, která můžete použít ke zpracování nebo transformaci dat. Poskytuje také podrobnosti o různých konfiguracích (na vyžádání vs přinést vlastní) podporované Data Factory při konfiguraci propojených služeb propojení těchto výpočetních prostředí do datové továrny Azure.
 
 Následující tabulka obsahuje seznam výpočetních prostředí podporovaných data factory a aktivity, které můžete spustit na nich. 
@@ -36,13 +39,15 @@ Následující tabulka obsahuje seznam výpočetních prostředí podporovaných
 >  
 
 ## <a name="on-demand-hdinsight-compute-environment"></a>Výpočetní prostředí HDInsight na vyžádání
+
 V tomto typu konfigurace je výpočetní prostředí plně spravované službou Azure Data Factory. Je automaticky vytvořen službou Data Factory před odesláním úlohy ke zpracování dat a odebrána po dokončení úlohy. Můžete vytvořit propojenou službu pro výpočetní prostředí na vyžádání, nakonfigurovat ji a řídit podrobná nastavení pro provádění úloh, správu clusteru a zaváděcí akce.
 
 > [!NOTE]
 > Konfigurace na vyžádání je aktuálně podporovaná jenom pro clustery Azure HDInsight. Azure Databricks také podporuje úlohy na vyžádání pomocí clusterů úloh, další podrobnosti najdete v [propojené službě Azure databricks.](#azure-databricks-linked-service)
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Propojená služba Azure HDInsight na vyžádání
-Služba Azure Data Factory může automaticky vytvořit cluster HDInsight na vyžádání pro zpracování dat. Cluster je vytvořen ve stejné oblasti jako účet úložiště (vlastnost linkedServiceName v JSON) přidružený ke clusteru. Účet úložiště musí být účet úložiště pro obecné účely standardní Azure. 
+
+Služba Azure Data Factory může automaticky vytvořit cluster HDInsight na vyžádání pro zpracování dat. Cluster je vytvořen ve stejné oblasti jako účet úložiště (vlastnost linkedServiceName v JSON) přidružený ke clusteru. Účet úložiště musí být standardní účet azure storage pro obecné účely. 
 
 Všimněte si následujících **důležitých** bodů o propojené službě HDInsight na vyžádání:
 
@@ -55,6 +60,7 @@ Všimněte si následujících **důležitých** bodů o propojené službě HDI
 > Obvykle trvá **20 minut** nebo více zřídit cluster Azure HDInsight na vyžádání.
 
 ### <a name="example"></a>Příklad
+
 Následující JSON definuje linuxovou službu propojenou hdinsight na vyžádání. Služba Data Factory automaticky vytvoří cluster HDInsight **založený na Linuxu** pro zpracování požadované aktivity. 
 
 ```json
@@ -93,25 +99,24 @@ Následující JSON definuje linuxovou službu propojenou hdinsight na vyžádá
 > Cluster HDInsight vytvoří **výchozí kontejner** v úložišti objektů blob, které jste zadali v JSON **(linkedServiceName).** Při odstranění clusteru HDInsight neprovede odstranění tohoto kontejneru. Toto chování je záměrné. Díky propojené službě HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když je potřeba zpracovat určitý řez, pokud neexistuje aktivní cluster (**timeToLive**), a po dokončení zpracování se zase odstraní. 
 >
 > Při spuštění další aktivity uvidíte mnoho kontejnerů ve vašem úložišti objektů blob Azure. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. K odstranění kontejnerů ze služby Azure Blob Storage můžete použít nástroje, jako je třeba [Průzkumník úložišť od Microsoftu](https://storageexplorer.com/).
->
-> 
 
 ### <a name="properties"></a>Vlastnosti
+
 | Vlastnost                     | Popis                              | Požaduje se |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Vlastnost type by měla být nastavena na **HDInsightOnDemand**. | Ano      |
 | clusterSize                  | Počet uzlů pracovníka/dat v clusteru. Cluster HDInsight je vytvořen se 2 hlavníu uzly spolu s počtem pracovních uzlů, které zadáte pro tuto vlastnost. Uzly mají velikost Standard_D3, která má 4 jádra, takže cluster pracovních\*uzlů 4 zabírá 24 jader\*(4 4 = 16 jader pro pracovní uzly plus 2 4 = 8 jader pro hlavní uzly). Podrobnosti najdete [v tématu Nastavení clusterů v HDInsightu pomocí Hadoopu, Sparku, Kafky a dalších](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) podrobností. | Ano      |
-| linkedServiceName            | Propojená služba Azure Storage, kterou má cluster na vyžádání používat pro ukládání a zpracování dat. Cluster HDInsight se vytvoří ve stejné oblasti jako tento účet úložiště Azure. Pro Azure HDInsight platí omezení celkového počtu jader, která můžete v jednotlivých podporovaných oblastech Azure použít. Ujistěte se, že máte dostatek kvót jádra v této oblasti Azure ke splnění požadované clusterSize. Podrobnosti najdete v části [Nastavení clusterů v HDInsightu pomocí Hadoop, Spark, Kafka a dalších](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>V současné době nelze vytvořit cluster HDInsight na vyžádání, který používá Azure Data Lake Store jako úložiště. Pokud chcete uložit výsledná data ze zpracování HDInsight v Úložišti datových jezer Azure, použijte aktivitu kopírování ke kopírování dat z úložiště objektů blob Azure do Úložiště datových jezer Azure. </p> | Ano      |
+| linkedServiceName            | Propojená služba Azure Storage, kterou má cluster na vyžádání používat pro ukládání a zpracování dat. Cluster HDInsight se vytvoří ve stejné oblasti jako tento účet úložiště Azure. Pro Azure HDInsight platí omezení celkového počtu jader, která můžete v jednotlivých podporovaných oblastech Azure použít. Ujistěte se, že máte dostatek kvót jádra v této oblasti Azure ke splnění požadované clusterSize. Podrobnosti najdete v části [Nastavení clusterů v HDInsightu pomocí Hadoop, Spark, Kafka a dalších](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>V současné době nelze vytvořit cluster HDInsight na vyžádání, který používá Azure Data Lake Storage (Gen 2) jako úložiště. Pokud chcete uložit výsledná data ze zpracování HDInsight v úložišti Azure Data Lake Storage (Gen 2), použijte aktivitu kopírování ke kopírování dat z úložiště objektů blob Azure do úložiště Azure Data Lake Storage (Gen 2). </p> | Ano      |
 | clusterResourceGroup         | Cluster HDInsight je vytvořen v této skupině prostředků. | Ano      |
 | timetolive                   | Povolená doba nečinnosti clusteru HDInsight na vyžádání. Určuje, jak dlouho zůstane cluster HDInsight na vyžádání po dokončení spuštění aktivity naživu, pokud v clusteru nejsou žádné další aktivní úlohy. Minimální povolená hodnota je 5 minut (00:05:00).<br/><br/>Například pokud spuštění aktivity trvá 6 minut a timetolive je nastavena na 5 minut, cluster zůstane naživu po dobu 5 minut po 6 minut zpracování aktivity spustit. Pokud je spuštěna jiná aktivita s oknem 6 minut, je zpracována stejným clusterem.<br/><br/>Vytvoření clusteru HDInsight na vyžádání je nákladná operace (může chvíli trvat), takže toto nastavení použijte podle potřeby ke zlepšení výkonu datové továrny opětovným použitím clusteru HDInsight na vyžádání.<br/><br/>Pokud nastavíte hodnotu timetolive na hodnotu 0, cluster se odstraní, jakmile se spustí aktivita. Vzhledem k tomu, pokud nastavíte vysokou hodnotu, cluster může zůstat nečinný pro přihlášení pro některé účely řešení potíží, ale to může mít za následek vysoké náklady. Proto je důležité nastavit příslušnou hodnotu na základě vašich potřeb.<br/><br/>Pokud je správně nastavena hodnota vlastnosti timetolive, může více kanálů sdílet instanci clusteru HDInsight na vyžádání. | Ano      |
 | typ clusteru                  | Typ clusteru HDInsight, který má být vytvořen. Povolené hodnoty jsou "hadoop" a "jiskra". Pokud není zadán, výchozí hodnota je hadoop. Cluster s povoleným balíčkem podnikového zabezpečení nelze vytvořit na vyžádání, místo toho použijte [existující cluster / přineste vlastní výpočetní prostředky](#azure-hdinsight-linked-service). | Ne       |
 | version                      | Verze clusteru HDInsight. Pokud není zadán, používá aktuální HDInsight definované výchozí verze. | Ne       |
 | hostSubscriptionId           | ID předplatného Azure použité k vytvoření clusteru HDInsight. Pokud není zadán, použije ID předplatného vašeho přihlašovacího kontextu Azure. | Ne       |
-| clusterNamePrefix           | Předpona názvu clusteru HDI, časové razítko bude automaticky připojeno na konci názvu clusteru| Ne       |
+| clusterNamePrefix           | Předpona názvu clusteru HDI, časové razítko se automaticky připojí na konci názvu clusteru| Ne       |
 | sparkVersion                 | Verze jiskry, pokud je typ clusteru "Spark" | Ne       |
 | additionalLinkedServiceNames | Určuje další účty úložiště pro propojenou službu HDInsight, aby je služba Data Factory mohla zaregistrovat vaším jménem. Tyto účty úložiště musí být ve stejné oblasti jako cluster HDInsight, který je vytvořen ve stejné oblasti jako účet úložiště určený linkedServiceName. | Ne       |
 | osTyp                       | Typ operačního systému. Povolené hodnoty jsou: Linux a Windows (pouze pro HDInsight 3.3). Výchozí je Linux. | Ne       |
-| hcatalogLinkedServiceName    | Název propojené služby Azure SQL, která přejděte na databázi HCatalog. Cluster HDInsight na vyžádání se vytvoří pomocí databáze Azure SQL jako metastore. | Ne       |
+| hcatalogLinkedServiceName    | Název propojené služby Azure SQL, která přejděte na databázi HCatalog. Cluster HDInsight na vyžádání se vytvoří pomocí Azure SQL Database jako metastore. | Ne       |
 | connectVia                   | Prostředí Integrace Runtime, které se má použít k odeslání aktivit do této propojené služby HDInsight. Pro propojené služby HDInsight na vyžádání podporuje jenom prostředí Azure Integration Runtime. Pokud není zadán, používá výchozí Azure Integration Runtime. | Ne       |
 | clusterUserName                   | Uživatelské jméno pro přístup ke clusteru. | Ne       |
 | clusterPassword                   | Heslo v typu zabezpečeného řetězce pro přístup ke clusteru. | Ne       |
@@ -125,8 +130,6 @@ Následující JSON definuje linuxovou službu propojenou hdinsight na vyžádá
 >
 > [!IMPORTANT]
 > V současné době hdinsight propojené služby nepodporuje HBase, interaktivní dotaz (Hive LLAP), Storm. 
->
-> 
 
 #### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames Příklad JSON
 
@@ -291,7 +294,7 @@ Můžete vytvořit propojenou službu Azure HDInsight a zaregistrovat svůj vlas
 | clusterUri        | Identifikátor URI clusteru HDInsight.                            | Ano      |
 | uživatelské jméno          | Zadejte jméno uživatele, který se má použít k připojení k existujícímu clusteru HDInsight. | Ano      |
 | heslo          | Zadejte heslo pro uživatelský účet.                       | Ano      |
-| linkedServiceName | Název propojené služby Azure Storage, která odkazuje na úložiště objektů blob Azure používané clusterem HDInsight. <p>V současné době nelze zadat propojené služby Azure Data Lake Store pro tuto službu. Pokud má cluster HDInsight přístup k úložišti datových jezer, můžete přistupovat k datům v úložišti Azure Data Lake Store ze skriptů Hive/Pig. </p> | Ano      |
+| linkedServiceName | Název propojené služby Azure Storage, která odkazuje na úložiště objektů blob Azure používané clusterem HDInsight. <p>V současné době nelze zadat azure data lake storage (Gen 2) propojené služby pro tuto službu. Pokud má cluster HDInsight přístup k úložišti datových jezer, můžete přistupovat k datům v úložišti Azure Data Lake Storage (Gen 2) ze skriptů Hive/Pig. </p> | Ano      |
 | IsEspEnabled      | Zadejte hodnotu*true*, pokud je cluster HDInsight [povolen.](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture) Výchozí hodnota je '*false*'. | Ne       |
 | connectVia        | Prostředí Integrace Runtime, které se používá k odeslání aktivity do této propojené služby. Můžete použít Azure Integration Runtime nebo Self-hostované integrace Runtime. Pokud není zadán, používá výchozí Azure Integration Runtime. <br />Pro balíček zabezpečení rozlehlé sítě (ESP) s podporou hdinsight clusteru použít runtime integrace s vlastním hostitelem, který má zorné pole do clusteru nebo by měl být nasazen uvnitř stejné virtuální sítě jako cluster ESP HDInsight. | Ne       |
 
@@ -483,7 +486,7 @@ Vytvoříte propojenou službu **Azure Data Lake Analytics,** která propojí v�
 
 
 ## <a name="azure-databricks-linked-service"></a>Propojená služba Azure Databricks
-Můžete vytvořit **azure databricks propojené služby** pro registraci Databricks pracovního prostoru, který budete používat ke spuštění úlohy Databricks (poznámkový blok, jar, python). 
+Můžete vytvořit **azure databricks propojené služby** pro registraci Databricks pracovního prostoru, který používáte ke spuštění úlohdatabricks (poznámkový blok, jar, python). 
 > [!IMPORTANT]
 > Propojené služby Databricks podporují [fondy instancí](https://aka.ms/instance-pools). 
 
@@ -546,15 +549,19 @@ Můžete vytvořit **azure databricks propojené služby** pro registraci Databr
 
 
 ## <a name="azure-sql-database-linked-service"></a>Propojená služba Azure SQL Database
+
 Vytvoříte propojené služby Azure SQL a použít ji s [aktivitou uložené procedury](transform-data-using-stored-procedure.md) vyvolat uloženou proceduru z kanálu datové továrny. Podrobnosti o této propojené službě najdete v článku azure [sql connector.](connector-azure-sql-database.md#linked-service-properties)
 
 ## <a name="azure-sql-data-warehouse-linked-service"></a>Propojená služba Azure SQL Data Warehouse
+
 Vytvoříte propojenou službu Azure SQL Data Warehouse a použijete ji s [aktivitou uložené procedury](transform-data-using-stored-procedure.md) k vyvolání uložené procedury z kanálu datové továrny. Podrobnosti o této propojené službě najdete v článku [konektoru Azure SQL Data Warehouse Connector.](connector-azure-sql-data-warehouse.md#linked-service-properties)
 
 ## <a name="sql-server-linked-service"></a>Propojená služba SQL Server
+
 Vytvoříte propojenou službu sql serveru a použijete ji s [aktivitou uložené procedury](transform-data-using-stored-procedure.md) k vyvolání uložené procedury z kanálu data factory. Podrobnosti o této propojené službě naleznete v článku [konektoru serveru SQL Server.](connector-sql-server.md#linked-service-properties)
 
 ## <a name="azure-function-linked-service"></a>Propojená služba Azure Function
+
 Vytvoříte propojené služby Azure funkce a použít ji s [aktivitou Funkce Azure](control-flow-azure-function-activity.md) ke spuštění Funkce Azure v kanálu datové továrny. Návratový typ funkce Azure musí být `JObject`platný . (Mějte na paměti, *not* že `JObject` [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) není .) Jakýkoli návratový `JObject` typ jiný než selže a vyvolá chybu uživatele *Obsah odpovědi není platný JObject*.
 
 | **Vlastnost** | **Popis** | **Požadováno** |
@@ -565,4 +572,5 @@ Vytvoříte propojené služby Azure funkce a použít ji s [aktivitou Funkce Az
 |   |   |   |
 
 ## <a name="next-steps"></a>Další kroky
+
 Seznam transformačních aktivit podporovaných službou Azure Data Factory najdete v [tématu Transformace dat](transform-data.md).

@@ -1,25 +1,26 @@
 ---
-title: Schéma událostí Azure SignalR Azure
+title: Azure SingnalR jako zdroj mřížky událostí
 description: Popisuje vlastnosti, které jsou k dispozici pro události Azure SignalR s Azure Event Grid
 services: event-grid
-author: chenyl
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 06/11/2019
-ms.author: chenyl
-ms.openlocfilehash: 3b072ff2b680ad6d144c7441190ab2df9870f5d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: 730d1a7a053ab636c45313dd0c35a537434eb782
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67789069"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393399"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>Schéma událostí Azure Event Grid pro službu SignalR
 
-Tento článek obsahuje vlastnosti a schéma událostí služby SignalR.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma událostí služby SignalR.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md). Poskytuje také seznam rychlých spuštění a kurzů pro použití Azure SignalR jako zdroj událostí.
 
+## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
 
-## <a name="available-event-types"></a>Dostupné typy událostí
+### <a name="available-event-types"></a>Dostupné typy událostí
 
 Služba SignalR vydává následující typy událostí:
 
@@ -28,7 +29,7 @@ Služba SignalR vydává následující typy událostí:
 | Připojení Microsoft.SignalRService.ClientConnection | Je aktivována při připojení klienta. |
 | Microsoft.SignalRService.ClientConnectionOdpojeno | Je aktivována při odpojení připojení klienta. |
 
-## <a name="example-event"></a>Příklad události
+### <a name="example-event"></a>Příklad události
 
 Následující příklad ukazuje schéma události připojeného k připojení klienta: 
 
@@ -71,7 +72,7 @@ Schéma pro událost odpojeného připojení klienta je podobné:
 }]
 ```
 
-## <a name="event-properties"></a>Vlastnosti události
+### <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující data nejvyšší úrovně:
 
@@ -95,6 +96,12 @@ Datový objekt má následující vlastnosti:
 | connectionId | řetězec | Jedinečný identifikátor pro připojení klienta. |
 | userId | řetězec | Identifikátor uživatele definovaný v deklaraci. |
 | Errormessage | řetězec | Chyba, která způsobuje odpojení připojení. |
+
+## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
+|Nadpis | Popis |
+|---------|---------|
+| [Reakce na události služby Azure SignalR pomocí mřížky událostí](../azure-signalr/signalr-concept-event-grid-integration.md) | Přehled integrace služby Azure SignalR s gridem událostí. |
+| [Jak odeslat události služby Azure SignalR do mřížky událostí](../azure-signalr/signalr-howto-event-grid-integration.md) | Ukazuje, jak odeslat události služby Azure SignalR do aplikace prostřednictvím služby Event Grid. |
 
 ## <a name="next-steps"></a>Další kroky
 

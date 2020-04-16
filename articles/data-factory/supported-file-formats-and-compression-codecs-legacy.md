@@ -9,14 +9,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 423706c391e8d8c2c609798d9f50e5a22f5c39bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1f11a1ff25117c07e61475e7e83fc0c170cd552
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260680"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414653"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Podporované formáty souborů a kompresní kodeky v Azure Data Factory (starší verze)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 *Tento článek se týká následujících konektorů: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), File [System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)a [SFTP](connector-sftp.md).*
 
@@ -34,7 +36,7 @@ Pokud chcete číst z textového souboru nebo zapisovat do textového souboru, n
 | --- | --- | --- | --- |
 | columnDelimiter |Znak, který slouží k oddělení sloupců v souboru. Můžete zvážit použití vzácné horečnatého znaku, který v datech nemusí existovat. Zadejte například "\u0001", což představuje začátek nadpisu (SOH). |Je povolený jenom jeden znak. **Výchozí** hodnota je **čárka (,)**. <br/><br/>Chcete-li použít znak Unicode, naleznete znaky [Unicode,](https://en.wikipedia.org/wiki/List_of_Unicode_characters) abyste pro něj získali odpovídající kód. |Ne |
 | rowDelimiter |Znak, který slouží k oddělení řádků v souboru. |Je povolený jenom jeden znak. **Výchozí** hodnotou pro čtení může být libovolná z těchto hodnot: **[\r\n, \r, \n]** a pro zápis hodnota **\r\n**. |Ne |
-| escapeChar |Speciální znak, který slouží k potlačení oddělovače sloupců v obsahu vstupního souboru. <br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale chcete znak čárky použít v textu (příklad: Hello, world), můžete jako řídicí znak definovat $ a použít ve zdroji řetězec Hello$, world. |Ne |
+| escapeChar |Speciální znak, který slouží k potlačení oddělovače sloupců v obsahu vstupního souboru. <br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud máte čárku (',') jako oddělovač sloupců, ale chcete mít znak čárky v textu (příklad: "Hello, world"), můžete definovat '$' jako řídicí znak a použít řetězec "Hello$, world" ve zdroji. |Ne |
 | quoteChar |Znak, který slouží k uvození textového řetězce. Oddělovače sloupců a řádků uvnitř znaků uvozovek budou považované za součást hodnoty příslušného řetězce. Tato vlastnost se vztahuje na vstupní i výstupní datové sady.<br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale chcete znak čárky použít v textu (příklad: <Hello, world>), můžete jako znak uvozovek definovat " (dvojité uvozovky) a použít ve zdroji řetězec "Hello$, world". |Ne |
 | nullValue |Jeden nebo několik znaků, které se používají jako reprezentace hodnoty Null. |Jeden nebo několik znaků. **Výchozí** hodnoty jsou **\N a NULL** pro čtení a **\N** pro zápis. |Ne |
 | encodingName |Zadejte název kódování. |Platný název kódování. Další informace najdete v tématu [Vlastnost Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je **UTF-8**. |Ne |
@@ -443,7 +445,7 @@ Příklad: nastavená `_JAVA_OPTIONS` `-Xms256m -Xmx16g`proměnná s hodnotou . 
 
 | Dočasný datový typ datové továrny | Parket primitivní typ | Původní typ parket (deserializovat) | Původní typ parket (Serializovat) |
 |:--- |:--- |:--- |:--- |
-| Logická hodnota | Logická hodnota | Není dostupné. | Není dostupné. |
+| Logická hodnota | Logická hodnota | – | – |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -452,17 +454,17 @@ Příklad: nastavená `_JAVA_OPTIONS` `-Xms256m -Xmx16g`proměnná s hodnotou . 
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/Binární | UInt64 | Desetinné číslo |
-| Single | Plovoucí desetinná čárka | Není dostupné. | Není dostupné. |
-| Double | Double | Není dostupné. | Není dostupné. |
+| Single | Plovoucí desetinná čárka | – | – |
+| Double | Double | – | – |
 | Desetinné číslo | binární | Desetinné číslo | Desetinné číslo |
 | Řetězec | binární | Utf8 | Utf8 |
-| DateTime | Int96 | Není dostupné. | Není dostupné. |
-| TimeSpan | Int96 | Není dostupné. | Není dostupné. |
-| DateTimeOffset | Int96 | Není dostupné. | Není dostupné. |
-| Bytearray | binární | Není dostupné. | Není dostupné. |
+| DateTime | Int96 | – | – |
+| TimeSpan | Int96 | – | – |
+| DateTimeOffset | Int96 | – | – |
+| Bytearray | binární | – | – |
 | Identifikátor GUID | binární | Utf8 | Utf8 |
 | Char | binární | Utf8 | Utf8 |
-| Pole CharArray | Nepodporuje se | Není dostupné. | Není dostupné. |
+| Pole CharArray | Nepodporuje se | – | – |
 
 ## <a name="orc-format-legacy"></a><a name="orc-format"></a>Formát ORC (starší verze)
 
@@ -530,7 +532,7 @@ Pokud chcete analyzovat soubory Avro nebo zapisovat data ve formátu Avro, nasta
 }
 ```
 
-Pokud chcete formát Avro použít v tabulce Hive, najdete potřebné informace v [kurzu k Apache Hive](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
+Chcete-li použít formát Avro v tabulce Hive, můžete odkazovat na [výukový program Apache Hive](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
 
 Je třeba počítat s následujícím:
 

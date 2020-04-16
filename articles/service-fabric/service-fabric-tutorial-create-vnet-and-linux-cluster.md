@@ -4,12 +4,12 @@ description: Naučte se nasadit cluster Service Fabric s Linuxem do existující
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251790"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411013"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Nasazení clusteru Linux Service Fabric do virtuální sítě Azure
 
@@ -31,8 +31,17 @@ Následující postupy vytvoří cluster prostředků service fabric se sedmi uz
 
 Stáhněte si následující soubory šablon Resource Manageru:
 
+Pro Ubuntu 16.04 LTS:
+
 * [AzureDeploy.json][template]
 * [AzureDeploy.Parameters.json][parameters]
+
+Pro Ubuntu 18.04 LTS:
+
+* [AzureDeploy.json][template2]
+* [AzureDeploy.Parameters.json][parameters2]
+
+Rozdíl mezi dvěma šablonami je **vmImageSku** atribut je nastaven na "18.04-LTS" a každý uzel **je typeHandlerVersion** je nastavena na 1.1.
 
 Tato šablona nasazuje zabezpečený cluster sedmi virtuálních počítačů a tří typů uzlů do virtuální sítě.  Další ukázkové šablony najdete na [GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). Šablona [AzureDeploy.json][template] nasadí řadu prostředků včetně následujících.
 
@@ -42,7 +51,7 @@ V prostředku **Microsoft.ServiceFabric/clusters** se nasazuje cluster s Linuxem
 
 * tři typy uzlů
 * pět uzlů v typu primárního uzlu (konfigurovatelné v parametrech šablony), jeden uzel v každém z ostatních typů uzlů
-* operační systém: Ubuntu 16.04 LTS (možnost konfigurace v parametrech šablony)
+* OS: (Ubuntu 16.04 LTS / Ubuntu 18.04 LTS) (konfigurovatelné v parametrech šablony)
 * zabezpečení pomocí certifikátu (možnost konfigurace v parametrech šablony)
 * [služba DNS](service-fabric-dnsservice.md) je povolena
 * bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
@@ -70,7 +79,7 @@ Pokud jsou potřebné další porty aplikací, je třeba upravit prostředek Mic
 
 ## <a name="set-template-parameters"></a>Nastavení parametrů šablony
 
-Soubor s parametry [AzureDeploy.Parameters][parameters] deklaruje mnoho hodnot používaných pro nasazení clusteru a přidružených prostředků. Některé parametry, které možná budete muset upravit pro své nasazení:
+Soubor **AzureDeploy.Parameters** deklaruje mnoho hodnot použitých k nasazení clusteru a přidružených prostředků. Některé parametry, které možná budete muset upravit pro své nasazení:
 
 |Parametr|Příklad hodnoty|Poznámky|
 |---|---||
@@ -86,7 +95,7 @@ Soubor s parametry [AzureDeploy.Parameters][parameters] deklaruje mnoho hodnot p
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Nasazení virtuální sítě a clusteru
 
-Dále nastavte topologii sítě a nasaďte cluster Service Fabric. Šablona Resource Manageru [AzureDeploy.json][template] vytvoří virtuální síť a podsíť pro Service Fabric. Šablona také nasadí cluster s povoleným zabezpečením pomocí certifikátu.  Pro produkční clustery používejte certifikát clusteru od certifikační autority (CA). K zabezpečení testovacích clusterů můžete použít certifikát podepsaný svým držitelem.
+Dále nastavte topologii sítě a nasaďte cluster Service Fabric. Šablona Resource Manageru **AzureDeploy.json** vytvoří virtuální síť a podsíť pro Service Fabric. Šablona také nasadí cluster s povoleným zabezpečením pomocí certifikátu.  Pro produkční clustery používejte certifikát clusteru od certifikační autority (CA). K zabezpečení testovacích clusterů můžete použít certifikát podepsaný svým držitelem.
 
 Šablona v tomto článku nasazuje cluster, který používá kryptografický otisk certifikátu k identifikaci certifikátu clusteru.  Žádné dva certifikáty mohou mít stejný kryptografický otisk, což ztěžuje správu certifikátů. Přepnutí mno ženete nasazený cluster z použití kryptografických otisků certifikátů na běžné názvy certifikátů, což usnadňuje správu certifikátů.  Chcete-li zjistit, jak aktualizovat cluster tak, aby používal běžné názvy certifikátů pro správu certifikátů, přečtěte si [název změnit cluster na správu běžných názvů certifikátů](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
@@ -163,3 +172,5 @@ Přečtěte si, jak [škálovat cluster](service-fabric-tutorial-scale-cluster.m
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
+[template2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.json
+[parameters2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.Parameters.json

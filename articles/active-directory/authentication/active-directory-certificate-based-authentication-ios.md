@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a042897ecbe35935c1832a53f523eb0597ebafc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6fd8a0c3688e5056c7941d334da8caee9f21ba82
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654247"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407266"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Ověřování na základě certifikátu Azure Active Directory v systému iOS
 
@@ -27,7 +27,7 @@ Zařízení s iOS můžou při připojování k zařízením na základě certif
 
 Konfigurace této funkce eliminuje potřebu zadávat kombinaci uživatelského jména a hesla do určitých aplikací pošty a sady Microsoft Office v mobilním zařízení.
 
-Toto téma obsahuje požadavky a podporované scénáře pro konfiguraci CBA na zařízení se systémem iOS (Android) pro uživatele klientů v plánech Office 365 Enterprise, Business, Education, US Government, China a Germany.
+Toto téma obsahuje požadavky a podporované scénáře konfigurace CBA na iOS zařízení pro uživatele klientů v plánech Office 365 Enterprise, Business, Education, US Government, China a Germany.
 
 Tato funkce je dostupná ve verzi Preview v plánech Office 365 Us Government Defense a Federal.
 

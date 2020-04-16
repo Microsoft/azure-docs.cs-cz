@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6cb9dadc107c6907f1ccb28a876270e577f10395
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d60f1101fc858e9dcaa22162be97417544e13693
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74977297"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405040"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Úvodní příručka: Generování miniatury pomocí rozhraní API RENA počítačového vidění a cURL
 
@@ -28,23 +28,6 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 - Musíte mít [cURL](https://curl.haxx.se/windows).
 - Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč.
-
-## <a name="get-thumbnail-request"></a>Žádost Get Thumbnail
-
-Pomocí [metody Získat miniaturu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)můžete vygenerovat miniaturu obrázku.
-
-Pokud chcete spustit ukázku, postupujte takto:
-
-1. Zkopírujte do editoru následující kód.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. `<File>` nahraďte cestou a názvem souboru k uložení miniatury.
-1. V případě potřeby změňte adresu URL žádosti (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.1`), aby se použilo umístění, ze kterého jste získali klíče předplatného.
-1. Volitelně můžete změnit obrázek (`{\"url\":\"...`) pro analýzu.
-1. Na počítači s nainstalovaným cURL otevřete příkazové okno.
-1. Kód vložte do tohoto okna a spusťte příkaz.
-
->[!NOTE]
->Ve volání REST musíte použít stejné umístění, které jste použili k získání klíčů předplatného. Pokud jste například získali klíče předplatného z „westus“, nahraďte westcentralus v adrese URL uvedené níže umístěním westus.
 
 ## <a name="create-and-run-the-sample-command"></a>Vytvoření a spuštění ukázkového příkazu
 

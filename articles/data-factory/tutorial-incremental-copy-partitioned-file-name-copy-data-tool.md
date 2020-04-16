@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/17/2020
-ms.openlocfilehash: 50e82362f39da2d3f3ecfad2de1ed07b68f8a6a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cc089a1efc3f5960a8bca8a36063bb1019bbcc6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501659"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409394"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových souborů na základě názvu souboru rozděleného časem pomocí nástroje Kopírovat data
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 V tomto kurzu pomocí webu Azure Portal vytvoříte datovou továrnu. Potom použijete nástroj Kopírovat data k vytvoření kanálu, který postupně zkopíruje nové soubory na základě názvu souboru s časovým rozdělením z úložiště objektů Blob Azure do úložiště objektů Blob Azure.
 
@@ -99,7 +101,7 @@ Připravte úložiště objektů Blob pro kurz provedením těchto kroků.
 
     d. V části **Opakování**zadejte **1 hodin .**
 
-    e. Vyberte **další**.
+    e. Vyberte **Další**.
 
     Uživatelské rozhraní služby Data Factory vytvoří kanál se zadaným názvem úlohy.
 
@@ -139,7 +141,7 @@ Připravte úložiště objektů Blob pro kurz provedením těchto kroků.
 
     ![Zvolte výstupní soubor nebo složku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/output-file-name.png)
 
-    c. Klikněte na **Další**.
+    c. Klikněte na **Další**.
 
     ![Zvolte výstupní soubor nebo složku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/click-next-after-output-folder.png)
 7. Na stránce **Settings** (Nastavení) vyberte **Next** (Další).

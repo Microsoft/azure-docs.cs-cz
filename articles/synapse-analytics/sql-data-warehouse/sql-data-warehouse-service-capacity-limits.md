@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f35a5da15ca1a672046844282626a6cb7b8ecbdf
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583528"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414001"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Omezení kapacity Azure Synapse Analytics (dříve SQL DW)
 
@@ -27,7 +27,7 @@ Maximální povolené hodnoty pro různé součásti Azure Synapse.
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximální DWU pro jednu jednotku fondu SQL (datový sklad) | Gen1: DW6000<br></br>Gen2: DW30000c |
-| [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Výchozí DTU na server |54,000<br></br>Ve výchozím nastavení má každý server SQL (například myserver.database.windows.net) kvótu DTU 54 000, což umožňuje až DW5000c. Tato kvóta je jednoduše bezpečnostní omezení. Kvótu můžete zvýšit [vytvořením lístku podpory](sql-data-warehouse-get-started-create-support-ticket.md) a výběrem *kvóty* jako typu požadavku.  Chcete-li vypočítat potřeby DTU, vynásobte 7,5 celkovým potřebným DWU nebo vynásobte 9,5 celkovým potřebným cDWU. Například:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW5000c x 9,5 = 47 500 DTU.<br></br>Aktuální spotřebu DTU můžete zobrazit z možnosti serveru SQL na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. |
+| [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Výchozí DTU na server |54,000<br></br>Ve výchozím nastavení má každý server SQL (například myserver.database.windows.net) kvótu DTU 54 000, což umožňuje až DW5000c. Tato kvóta je jednoduše bezpečnostní omezení. Kvótu můžete zvýšit [vytvořením lístku podpory](sql-data-warehouse-get-started-create-support-ticket.md) a výběrem *kvóty* jako typu požadavku.  Chcete-li vypočítat potřeby DTU, vynásobte 7,5 celkovým potřebným DWU nebo vynásobte 9,5 celkovým potřebným cDWU. Příklad:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW5000c x 9,5 = 47 500 DTU.<br></br>Aktuální spotřebu DTU můžete zobrazit z možnosti serveru SQL na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. |
 | Připojení k databázi |Maximální počet souběžných otevřených relací |1024<br/><br/>Počet souběžných otevřených relací se bude lišit v závislosti na vybraném dwu. DWU600c a vyšší podporují maximálně 1024 otevřených relací. DWU500c a nižší podporují maximální limit souběžné otevřené relace 512. Všimněte si, že existují omezení počtu dotazů, které lze spustit souběžně. Při překročení limitu souběžnosti požadavek přejde do vnitřní fronty, kde čeká na zpracování. |
 | Připojení k databázi |Maximální paměť pro připravené příkazy |20 MB |
 | [Správa úloh](resource-classes-for-workload-management.md) |Maximální počet souběžných dotazů |128<br/><br/>  Spustí se maximálně 128 souběžných dotazů a zbývající dotazy budou zařazeny do fronty.<br/><br/>Počet souběžných dotazů může snížit, když jsou uživatelé přiřazeni k vyšším třídám prostředků nebo když je sníženo nastavení [jednotky datového skladu.](memory-concurrency-limits.md) Některé dotazy, jako jsou dotazy DMV, jsou vždy povoleny ke spuštění a nemají vliv na limit souběžných dotazů. Další podrobnosti o souběžném provádění dotazu naleznete v článku [maximální souběžnosti.](memory-concurrency-limits.md) |
@@ -42,7 +42,7 @@ Maximální povolené hodnoty pro různé součásti Azure Synapse.
 | Table |Maximální velikost |Neomezená velikost pro tabulky columnstore. <br>60 TB pro tabulky rowstore komprimované na disku. |
 | Table |Tabulky na databázi | 100 000 |
 | Table |Sloupce v tabulce |1024 sloupců |
-| Table |Bajty na sloupec |V závislosti na [datovém typu](sql-data-warehouse-tables-data-types.md)sloupce . U datových typů znaků může max limit uložit až 2 GB do úložiště mimo stránku (přetečení řádků).  Non-Unicode znaky, jako je char nebo varchar limit je 8000 v datové stránce, Unicode znaky, jako je nchar nebo nvarchar limit je 4000 v datové stránce.  Ke zvýšení výkonu použijte velikost úložiště datové stránky. |
+| Table |Bajty na sloupec |V závislosti na [datovém typu](sql-data-warehouse-tables-data-types.md)sloupce . Limit je 8000 pro char datové typy, 4000 pro nvarchar nebo 2 GB pro datové typy MAX. |
 | Table |Počet bajtů na řádek, definovaná velikost |8060 bajtů<br/><br/>Počet bajtů na řádek se vypočítá stejným způsobem jako pro SQL Server s kompresí stránky. Podobně jako SQL Server je podporováno úložiště přetečení řádků, které umožňuje **sloupce proměnné délky,** které mají být posunuty mimo řádek. Pokud jsou řádky proměnné délky posunuty mimo řádek, je v hlavním záznamu uložen pouze 24bajtový kořen. Další informace naleznete v [tématu Přetečení řádků data přesahující 8-KB](https://msdn.microsoft.com/library/ms186981.aspx). |
 | Table |Oddíly na tabulku |15 000<br/><br/>Pro vysoký výkon doporučujeme minimalizovat počet oddílů, které potřebujete, a zároveň podporovat vaše obchodní požadavky. S růstem počtu oddílů se zvyšuje režie pro operace jazyka definice dat (DDL) a jazyka dml (Data Manipulation Language) a způsobuje pomalejší výkon. |
 | Table |Znaky na hodnotu hranice oddílu. |4000 |
@@ -54,7 +54,7 @@ Maximální povolené hodnoty pro různé součásti Azure Synapse.
 | Statistika |Sloupce na objekt statistiky. |32 |
 | Statistika |Statistiky vytvořené ve sloupcích podle tabulky. |30,000 |
 | Uložené procedury |Maximální úrovně vnoření. |8 |
-| Zobrazit |Sloupce v zobrazení |1,024 |
+| Zobrazení |Sloupce v zobrazení |1,024 |
 ||||
 
 ## <a name="loads"></a>Načte

@@ -5,12 +5,12 @@ description: Zjistěte, jak zabezpečit provoz, který proudí do a z podů pomo
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 01ba9e7353b6783d1b4fd1649291a64405fd9382
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a2794f53407be3ce3d7e69caa8039c13217a0356
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886700"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392613"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečený provoz mezi pody pomocí síťových zásad ve službě Azure Kubernetes Service (AKS)
 
@@ -55,7 +55,7 @@ Obě implementace používají Linux *IPTables* k vynucení zadaných zásad. Z�
 | Podporované platformy                      | Linux                      | Linux                       |
 | Podporované možnosti sítě             | Azure CNI                  | Azure CNI a kubenet       |
 | Soulad se specifikací Kubernetes | Všechny podporované typy zásad |  Všechny podporované typy zásad |
-| Další funkce                      | Žádný                       | Rozšířený model zásad skládající se z globálních zásad sítě, globální síťové sady a koncového bodu hostitele. Další informace o `calicoctl` použití rozhraní se k dispozici pro správu těchto rozšířených funkcí naleznete v [tématu calicoctl user reference][calicoctl]. |
+| Další funkce                      | Žádná                       | Rozšířený model zásad skládající se z globálních zásad sítě, globální síťové sady a koncového bodu hostitele. Další informace o `calicoctl` použití rozhraní se k dispozici pro správu těchto rozšířených funkcí naleznete v [tématu calicoctl user reference][calicoctl]. |
 | Podpora                                  | S podporou týmu podpory Azure a inženýrství | Podpora komunity Calico. Další informace o další placené podpoře naleznete v [tématu Project Calico support options][calico-support]. |
 | Protokolování                                  | Přidaná / odstraněná pravidla v IPTables jsou přihlášena ke každému hostiteli pod */var/log/azure-npm.log* | Další informace naleznete [v protokolech komponent Calico][calico-logs] |
 
@@ -82,6 +82,8 @@ Následující ukázkový skript:
 * Přiřadí oprávnění *přispěvatele* pro objekt zabezpečení clusterové služby AKS ve virtuální síti.
 * Vytvoří cluster AKS v definované virtuální síti a povolí zásady sítě.
     * Používá se možnost zásad sítě *Azure.* Chcete-li místo toho použít Calico `--network-policy calico` jako možnost zásad sítě, použijte parametr. Poznámka: Calico lze použít `--network-plugin azure` `--network-plugin kubenet`s jedním nebo .
+
+Všimněte si, že místo použití instančního objektu, můžete použít spravovanou identitu pro oprávnění. Další informace naleznete v tématu [Použití spravovaných identit](use-managed-identity.md).
 
 Poskytněte vlastní bezpečné *SP_PASSWORD*. Proměnné *RESOURCE_GROUP_NAME* a *CLUSTER_NAME* můžete nahradit:
 

@@ -3,12 +3,12 @@ title: Nejčastější dotazy k migraci serveru Azure
 description: Získejte odpovědi na časté otázky týkající se migrace počítačů pomocí migrace serveru Azure.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 507cc8088bf54b1a4f4483673ec5332efcdd36c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc78d2087dcaad2922ca6b6d9c090a8decdb6e84
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127805"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393800"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace migrace serveru Azure: Běžné otázky
 
@@ -77,7 +77,7 @@ V současné době můžete migrovat 100 virtuálních ms na instanci serveru vC
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Jak můžu omezit replikaci při používání zařízení Azure Migrate pro replikaci vmware bez agenta?  
 
-Můžete omezení pomocí NetQosPolicy. Například:
+Můžete omezení pomocí NetQosPolicy. Příklad:
 
 AppNamePrefix pro použití v NetQosPolicy je "GatewayWindowsService.exe". Můžete vytvořit zásadu na zařízení Azure Migrate k omezení replikace provoz z zařízení vytvořením zásady, jako je tento:
  
@@ -92,6 +92,10 @@ Migrace počítačů tak, že je zacházíte jako s fyzickými servery, je užit
 - Chcete-li migrovat virtuální chod y Hyper-V nebo VMware, pokud z nějakého důvodu nemůžete použít standardní proces migrace pro migraci [Hyper-V](tutorial-migrate-hyper-v.md)nebo [VMware.](server-migrate-overview.md) Například pokud nepoužíváte vMware vCenter a používáte pouze hostitele ESXi.
 - Migrace virtuálních počítačů, které aktuálně běží v privátních cloudech do Azure
 - Pokud chcete migrovat virtuální počítače spuštěné ve veřejných cloudech, jako jsou Amazon Web Services (AWS) nebo Google Cloud Platform (GCP), do Azure.
+
+## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>Nasadil jsem dvě (nebo více) zařízení ke zjišťování virtuálních připojení na mém serveru vCenter. Však při pokusu o migraci virtuálních zařízení, vidím pouze virtuální chod odpovídající jeden z zařízení.
+
+I když to může být dobrý případ použití, v současné době nepodporujeme. Nasazení dvou (nebo více) zařízení ke zjištění stejné sady virtuálních her způsobí problém se službou, ve kterém vlastnictví virtuálních her udržuje přepínání mezi dvěma zařízeními. To je důvod, proč se virtuální maže zobrazují a mizí. V takových případech je nutné problém vyřešit a provést pevný interval.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Potřebuji k migraci virtuálních měn VMware vCenter?
 Chcete-li [migrovat virtuální počítačvsystému VMware](server-migrate-overview.md) pomocí migrace založené na agentech společnosti VMware nebo bez agentů, musí být hostitelé ESXi, na kterých jsou virtuální servery umístěny, spravováni serverem vCenter Server. Pokud nemáte vCenter Server, můžete migrovat virtuální chod VMware migrací jako fyzické servery. [Další informace](migrate-support-matrix-physical-migration.md).

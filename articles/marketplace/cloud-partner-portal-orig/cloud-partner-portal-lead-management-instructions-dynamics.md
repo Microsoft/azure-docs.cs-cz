@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
-ms.openlocfilehash: 524ae203a311d538431205bf8c6498de45aeb4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d64c8460f5653f28b96396025f29ea13af15c8c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280299"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416307"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurace správy potenciálních zákazníků pro aplikaci Dynamics CRM online
 
@@ -139,7 +139,7 @@ Posledním krokem je povolit uživateli, který jste vytvořili, zapsat zájemce
 
 ## <a name="wrap-up"></a>Zabalit
 
-Dokončete konfiguraci aplikace Dynamics CRM pro správu zájemců přidáním generovaných informací o účtu na portál partnerů cloudu. Například:
+Dokončete konfiguraci aplikace Dynamics CRM pro správu zájemců přidáním generovaných informací o účtu na portál partnerů cloudu. Příklad:
 
 -   **Id aplikace** **služby Azure Active Directory** - (příklad: *23456052-aaaa-bbbb-8662-1234df56788f),* **ID adresáře** (příklad: *12345678-8af1-4 asf-1234-12234d01db47*) a **aplikační klíč** (příklad: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*).
--   **Adresa URL Office 365** - **Url** *https://contoso.crm4.dynamics.com*(příklad: ), **Uživatelské jméno** (například *contoso\@contoso.onmicrosoft.com*) a **Heslo** (například *P\@ssw0rd*).
+-   **Adresa URL Office 365** - **Url** **`https://contoso.crm4.dynamics.com`**(příklad: **`contoso\@contoso.onmicrosoft.com`**), Uživatelské **jméno** (příklad: ) a **Heslo** (příklad: *\@P ssw0rd*).

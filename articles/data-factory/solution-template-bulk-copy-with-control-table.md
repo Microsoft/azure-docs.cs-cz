@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 3a42d7da21cfb2e3066fbdd81b27c82155d8456f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6d634d9a32ae1728e1122d863ddabd94f73ee27
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75439923"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414828"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Hromadná kopie z databáze s řídicí tabulkou
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Chcete-li zkopírovat data z datového skladu v Oracle Server, Netezza, Teradata nebo SQL Server do Azure SQL Data Warehouse, musíte načíst obrovské množství dat z více tabulek. Obvykle musí být data rozdělena do oddílů v každé tabulce, takže můžete načíst řádky s více vlákny paralelně z jedné tabulky. Tento článek popisuje šablonu, která se má použít v těchto scénářích.
 

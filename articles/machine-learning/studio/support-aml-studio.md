@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: 5529d09d71eb9f4ef1d9b4d8185cafb11f644bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d330235815b746a5bbdc7682622c0e238a3ab0ea
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501318"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411908"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Získejte podporu a školení pro Azure Machine Learning Studio (klasické)
 
@@ -27,7 +27,6 @@ Tento článek obsahuje informace o tom, jak se dozvědět více o Azure Machine
 Podívejte se na naše výukové zdroje:
 + [Návody a články s postupy](../studio/index.yml) 
 + [Videa pro vědu o datech pro začátečníky](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
-+ [Algoritmus cheat listy](../../synapse-analytics/sql-data-warehouse/cheat-sheet.md) 
 
 ## <a name="submit-doc-feedback"></a>Odeslat zpětnou vazbu dokumentu
 

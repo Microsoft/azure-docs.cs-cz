@@ -4,12 +4,12 @@ description: Dostupnost výpočetních prostředků a prostředků paměti pro s
 ms.topic: article
 ms.date: 02/19/2020
 ms.author: danlep
-ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c84ab7833f7c90d5d4b3c340c268fd9f75e20da9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247134"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399405"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro instance kontejnerů Azure v oblastech Azure
 
@@ -18,7 +18,7 @@ Tento článek podrobně popisuje dostupnost výpočetních, paměťových a úl
 Uvedené hodnoty jsou maximální dostupné prostředky pro nasazení [skupiny kontejnerů](container-instances-container-groups.md). Hodnoty jsou aktuální v době zveřejnění. 
 
 > [!NOTE]
-> Skupiny kontejnerů vytvořené v rámci těchto omezení prostředků závisí na dostupnosti v rámci oblasti nasazení. V případě velkého zatížení oblasti může při nasazování instancí docházet k selhání. Chcete-li zmírnit takové selhání nasazení, zkuste nasadit instance s nižším nastavením prostředků nebo zkuste nasazení později.
+> Skupiny kontejnerů vytvořené v rámci těchto omezení prostředků závisí na dostupnosti v rámci oblasti nasazení. V případě velkého zatížení oblasti může při nasazování instancí docházet k selhání. Chcete-li zmírnit takové selhání nasazení, zkuste nasadit instance s nižším nastavením prostředků nebo zkuste nasazení později nebo v jiné oblasti s dostupnými prostředky.
 
 Informace o kvótách a dalších omezeních ve vašich nasazeních najdete v [tématu Kvóty a limity pro instance kontejnerů Azure](container-instances-quotas.md).
 

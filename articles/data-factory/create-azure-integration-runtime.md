@@ -10,14 +10,16 @@ ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: cf3bb7e6733ef55a85d0b4ae26a4ce05059a8fb9
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887135"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414065"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak vytvořit a nakonfigurovat prostředí Azure Integration Runtime
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Integrační běh (IR) je výpočetní infrastruktura používaná Azure Data Factory k poskytování možností integrace dat v různých síťových prostředích. Další informace o infračerveném zápisu naleznete [v tématu Integration runtime](concepts-integration-runtime.md).
 
 Azure IR poskytuje plně spravované výpočetní prostředky pro nativně provádět přesun y dat a odesílání aktivit transformace dat do výpočetních služeb, jako je HDInsight. Hostuje se v prostředí Azure a podporuje připojení k prostředkům v prostředí veřejné sítě s veřejnými přístupnými koncovými body.

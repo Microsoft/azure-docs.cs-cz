@@ -15,12 +15,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e56d4d94e38e5095ef2223d0cc2875cbf1dcd46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64919122"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407020"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží se synchronizací objektů pomocí synchronizace Azure AD Connect
 Tento článek obsahuje postup řešení potíží se synchronizací objektů pomocí úlohy řešení potíží. Chcete-li zjistit, jak řešení potíží funguje ve službě Azure Active Directory (Azure AD) Connect, podívejte se na [toto krátké video](https://aka.ms/AADCTSVideo).
@@ -61,11 +61,6 @@ Zbývající část této části popisuje konkrétní výsledky, které jsou vr
 Když přípona UserPrincipalName (UPN)/Alternate Login ID není ověřena pomocí tenanta Azure AD, azure active directory nahradí přípony UPN s výchozím názvem domény "onmicrosoft.com".
 
 ![Azure AD nahradí UPN](media/tshoot-connect-objectsync/objsynch2.png)
-
-### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>Změna přípony HLAVNÍHO názvu uživatele z jedné federované domény do jiné federované domény
-Azure Active Directory neumožňuje synchronizaci UserPrincipalName (UPN) /Alternativní přihlášení ID příponu změnit z jedné federované domény do jiné federované domény. To platí pro domény, které jsou ověřeny s tenantem Azure AD a mají typ ověřování jako Federated.
-
-![Žádná synchronizace hlavního názvu uživatele z jedné federované domény do jiné](media/tshoot-connect-objectsync/objsynch3.png) 
 
 ### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Funkce DirSync klienta Azure AD Je zakázána
 Když je funkce DirSync klienta Azure AD "SynchronizeUpnForManagedUsers" zakázána, služba Azure Active Directory nepovoluje synchronizaci aktualizací uživatelského jména/alternativního přihlašovacího ID pro licencované uživatelské účty se spravovaným ověřováním.

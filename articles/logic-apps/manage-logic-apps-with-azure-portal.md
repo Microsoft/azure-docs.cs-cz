@@ -8,13 +8,13 @@ ms.author: ladolan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/06/2020
-ms.openlocfilehash: a35f34ed27299077dca78630511ea3c291caff60
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 04/13/2020
+ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804972"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415981"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Správa aplikací logiky na webu Azure Portal
 
@@ -177,6 +177,46 @@ Odstranění aplikace logiky ovlivní instance pracovního postupu těmito způs
    ![Potvrzení odstranění aplikací logiky](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
    Portál Azure zobrazuje oznámení na hlavním panelu nástrojů Azure, které potvrzuje, zda byla vaše operace úspěšná nebo neúspěšná.
+
+<a name="manage-logic-app-versions"></a>
+
+## <a name="manage-logic-app-versions"></a>Správa verzí aplikací logiky
+
+Portál Azure můžete použít pro správu verzí aplikací logiky. Můžete najít historii verzí aplikace logiky a propagovat předchozí verze.
+
+<a name="find-version-history"></a>
+
+### <a name="find-and-view-previous-versions"></a>Hledání a zobrazení předchozích verzí
+
+1. Na webu Azure Portal [najděte aplikaci logiky, kterou chcete spravovat](#find-logic-app).
+
+1. V nabídce aplikace logiky vyberte v části **Vývojové nástroje** **možnost Verze**.
+
+   ![V nabídce aplikace logiky vyberte "Verze" v části "Vývojové nástroje"](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+
+1. Vyberte **verzi** aplikace logiky, kterou chcete spravovat ze seznamu. Chcete-li seznam filtrovat, můžete do vyhledávacího řádku zadat identifikátor **verze.**
+
+1. Na stránce **Verze historie** se podrobnosti o předchozí verzi zobrazí v režimu jen pro čtení. Můžete vybrat mezi **návrhářem** aplikací logiky a režimy **zobrazení kódu.**
+
+   ![Stránka verze historie pro aplikaci logiky se zobrazením kódu a zobrazením návrháře aplikací logiky](./media/manage-logic-apps-with-azure-portal/history-version.png)
+
+<a name="promote-previous-versions"></a>
+
+### <a name="promote-previous-versions"></a>Povýšení předchozích verzí
+
+1. V historii verzí aplikace logiky [najděte a vyberte verzi, kterou chcete propagovat](#find-version-history).
+
+1. Na stránce **Verze historie** vyberte **Propagovat**.
+
+   ![Tlačítko Povýšit v historii verzí aplikace logiky](./media/manage-logic-apps-with-azure-portal/promote-button.png)
+
+1. Na stránce **Návrhář epo-aplikací,** která se otevře, upravte verzi, kterou propagujete podle potřeby. Můžete přepínat mezi režimy zobrazení **Návrhářa** a **Kódu.** Můžete také aktualizovat **parametry**, **šablony**a **konektory**.
+
+   ![Stránka Aplikace logiky pro propagaci předchozí verze](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+
+1. Chcete-li uložit všechny aktualizace a dokončit propagaci předchozí verze, vyberte **uložit**. (Chcete-li zrušit změny, vyberte **možnost Zahodit**.) 
+
+   Při [zobrazení historie verzí aplikace logiky](#find-version-history) znovu, povýšená verze se zobrazí v horní části seznamu a má nový identifikátor.
 
 ## <a name="next-steps"></a>Další kroky
 

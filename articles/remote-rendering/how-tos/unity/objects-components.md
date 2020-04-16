@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 872f0e60943a674e5febf269dcb5b09fd08d77c9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681152"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409856"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Interakce s herními objekty a komponentami Unity
 
@@ -121,5 +121,5 @@ if (cutplane != null)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení vzdáleného vykreslování pro jednotu](unity-setup.md)
+* [Nastavení Remote Renderingu pro Unity](unity-setup.md)
 * [Kurz: Práce se vzdálenými entitami v Unity](../../tutorials/unity/working-with-remote-entities.md)

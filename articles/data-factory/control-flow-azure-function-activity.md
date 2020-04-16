@@ -11,15 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77207021"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415313"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure ve Službě Azure Data Factory
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 Aktivita funkce Azure umožňuje spouštět [funkce Azure](../azure-functions/functions-overview.md) v kanálu datové továrny. Chcete-li spustit funkci Azure, musíte vytvořit připojení propojené služby a aktivitu, která určuje funkci Azure, kterou chcete spustit.
 
 Osmiminutový úvod a ukázku této funkce najdete v následujícím videu:

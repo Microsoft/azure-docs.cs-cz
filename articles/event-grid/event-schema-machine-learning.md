@@ -1,26 +1,26 @@
 ---
-title: Schéma událostí Azure Event Grid Machine Learning
+title: Azure Machine Learning jako zdroj gridu událostí
 description: Popisuje vlastnosti, které jsou k dispozici pro události pracovního prostoru machine learningu s Azure Event Grid
 services: event-grid
-author: jenns
+author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 10/18/2019
-ms.author: jenns
-ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79202140"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393281"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Schéma událostí Azure Event Grid pro Azure Machine Learning
+# <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning jako zdroj gridu událostí
 
 Tento článek obsahuje vlastnosti a schéma pro události pracovního prostoru strojového učení. Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
 
-Seznam ukázkových skriptů a kurzů najdete v tématu [Zdroj událostí AzureML](event-sources.md#azure-machine-learning).
+## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
 
-## <a name="available-event-types"></a>Dostupné typy událostí
+### <a name="available-event-types"></a>Dostupné typy událostí
 
 Azure Machine Learning vydává následující typy událostí:
 
@@ -32,7 +32,7 @@ Azure Machine Learning vydává následující typy událostí:
 | Microsoft.MachineLearningServices.DatasetDriftDetected | Je aktivována, když sledování driftu datové sady detekuje drift. |
 | Microsoft.MachineLearningServices.RunStatusZměněn | Je aktivována při změně stavu spuštění na "se nezdařilo". |
 
-## <a name="the-contents-of-an-event-response"></a>Obsah odpovědi na událost
+### <a name="the-contents-of-an-event-response"></a>Obsah odpovědi na událost
 
 Když je událost spuštěna, služba Event Grid odešle data o této události do koncového bodu přihlášení.
 
@@ -186,10 +186,7 @@ Tato část obsahuje příklad toho, jak by tato data vypadala pro každou udál
 }]
 ```
 
-
-
-
-## <a name="event-properties"></a>Vlastnosti události
+### <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující data nejvyšší úrovně:
 
@@ -260,6 +257,11 @@ Datový objekt má pro každý typ události následující vlastnosti:
 | RunTags | objekt | Značky dokončeného spuštění. |
 | RunProperties | objekt | Vlastnosti dokončené Run. |
 | RunStatus | řetězec | Stav spustit. |
+
+## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
+| Nadpis | Popis |
+| ----- | ----- |
+| [Využití událostí Azure Machine Learning](../machine-learning/concept-event-grid-integration.md) | Přehled integrace Azure Machine Learning s Event Grid. |
 
 ## <a name="next-steps"></a>Další kroky
 

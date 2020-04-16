@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1735daf66483df496141a642ac6633973aa0abf0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254349"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407546"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Udělení přístupu k datům do prostředí
 
@@ -27,8 +27,8 @@ Tento článek popisuje dva typy zásad přístupu Azure Time Series Insights Pr
 
 ## <a name="sign-in-to-time-series-insights"></a>Přihlaste se k přehledům time series
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
-1. Vyhledejte prostředí Time Series Insights. Zadejte `Time Series` **do** vyhledávacího pole. Ve výsledcích hledání vyberte **prostředí časové řady.**
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Vyhledejte prostředí Time Series Insights. Zadejte `Time Series` **do** vyhledávacího pole. Ve výsledcích hledání **vyberte prostředí časových řad.**
 1. Ze seznamu vyberte vaše prostředí Time Series Insights.
 
 ## <a name="grant-data-access"></a>Udělení přístupu k datům

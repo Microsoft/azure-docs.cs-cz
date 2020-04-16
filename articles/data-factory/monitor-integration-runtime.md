@@ -10,14 +10,17 @@ ms.date: 07/25/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d2ea5c0b7354867086fc0cce43732f2d73c53ab
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79261135"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398950"
 ---
-# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí Integration Runtime ve službě Azure Data Factory  
+# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí Integration Runtime ve službě Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+  
 **Integrační runtime** je výpočetní infrastruktura používaná Azure Data Factory k poskytování různých možností integrace dat v různých síťových prostředích. Data Factory nabízí tři typy integračních runů:
 
 - Prostředí Azure Integration Runtime
@@ -42,7 +45,7 @@ Následující tabulka obsahuje popis vlastností vrácených rutinou pro prost�
 
 | Vlastnost | Popis |
 -------- | ------------- | 
-| Name (Název) | Název runtime integrace Azure. |  
+| Název | Název runtime integrace Azure. |  
 | Stav | Stav runtime integrace Azure. | 
 | Umístění | Umístění runtime integrace Azure. Podrobnosti o umístění runtime integrace Azure najdete [v tématu Úvod do integrace runtime](concepts-integration-runtime.md). |
 | Název_datafactory | Název datové továrny, do které patří prostředí Integrace Azure. | 
@@ -69,7 +72,7 @@ V následující tabulce jsou uvedeny popisy vlastností monitorování pro **ka
 
 | Vlastnost | Popis | 
 | -------- | ----------- | 
-| Name (Název) | Název prostředí runtime integrace s vlastním hostitelem a uzlů, které jsou s ním spojené. Node je místní počítač se systémem Windows, který má na sobě nainstalovaný runtime integrace s vlastním hostitelem. |  
+| Název | Název prostředí runtime integrace s vlastním hostitelem a uzlů, které jsou s ním spojené. Node je místní počítač se systémem Windows, který má na sobě nainstalovaný runtime integrace s vlastním hostitelem. |  
 | Status | Stav celkového prostředí runtime integrace s vlastním hostitelem a každého uzlu. Příklad: Online/Offline/Limited/etc. Informace o těchto stavech naleznete v další části. | 
 | Version | Verze runtime integrace s vlastním hostitelem a každý uzel. Verze runtime integrace s vlastním hostitelem je určena na základě verze většiny uzlů ve skupině. Pokud existují uzly s různými verzemi v nastavení runtime integrace s vlastním hostitelem, pouze uzly se stejným číslem verze jako logické vlastní hostované integrace runtime fungovat správně. Ostatní jsou v omezeném režimu a je třeba je ručně aktualizovat (pouze v případě, že se automatická aktualizace nezdaří). | 
 | Dostupná paměť | Dostupná paměť v samostatném hostovaném uzlu runtime integrace. Tato hodnota je snímek téměř v reálném čase. | 
@@ -177,7 +180,7 @@ Modul runtime integrace Azure-SSIS je plně spravovaný cluster virtuálních po
 | Typ | Typ (spravované/hostované samostatně) vašeho runtime integrace Azure-SSIS. |
 | ResourceGroupName | Název skupiny prostředků Azure, ve kterém byly vytvořeny vaše továrna dat a runtime integrace Azure-SSIS. |
 | Název_datafactory | Název vaší datové továrny Azure. |
-| Name (Název) | Název runtime integrace Azure-SSIS. |
+| Název | Název runtime integrace Azure-SSIS. |
 | Popis | Popis runtime integrace Azure-SSIS. |
 
   

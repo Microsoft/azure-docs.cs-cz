@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/09/2020
-ms.openlocfilehash: d37b4648c0a37f16fe5c9d8794bd78417c5780ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd7844340553809e1429097a9dda70f6bdb3e075
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257882"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414193"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Kopírování funkcí optimalizace výkonu aktivity
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje funkce optimalizace výkonu aktivity kopírování, které můžete využít v Azure Data Factory.
 
@@ -134,7 +136,7 @@ Když aktivujete pracovní funkci, nejprve se data zkopírují ze zdrojového ú
 
 ![Fázovaná kopie](media/copy-activity-performance/staged-copy.png)
 
-Při aktivaci přesunu dat pomocí pracovního úložiště můžete určit, zda mají být data komprimována před přesunutím dat ze zdrojového úložiště dat do dočasného nebo pracovního úložiště dat a dekomprimována před přesunutím dat z mezidobí nebo pracovního úložiště dat úložiště dat do úložiště dat jímky.
+Při aktivaci přesunu dat pomocí pracovního úložiště můžete určit, zda mají být data komprimována před přesunutím dat ze zdrojového úložiště dat do dočasného nebo pracovního úložiště dat a dekomprimována před přesunutím dat z dočasného nebo pracovního úložiště dat do úložiště dat jímky.
 
 V současné době nelze kopírovat data mezi dvěma úložišti dat, která jsou připojena prostřednictvím různých samoobslužných irs, ani s ani bez fázované kopie. Pro takový scénář můžete nakonfigurovat dvě explicitně zřetězené aktivity kopírování ke kopírování ze zdroje do pracovní hodu pak z pracovní do jímky.
 
@@ -145,8 +147,8 @@ Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování a určete,
 | Vlastnost | Popis | Výchozí hodnota | Požaduje se |
 | --- | --- | --- | --- |
 | enableStaging |Určete, zda chcete kopírovat data prostřednictvím dočasného pracovního úložiště. |False |Ne |
-| linkedServiceName |Zadejte název propojené služby [AzureStorage,](connector-azure-blob-storage.md#linked-service-properties) která odkazuje na instanci úložiště, které používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem nelze použít k načtení dat do datového skladu SQL prostřednictvím PolyBase. Můžete jej použít ve všech ostatních scénářích. |Není dostupné. |Ano, pokud je **enableStaging** nastaven na hodnotu TRUE |
-| cesta |Zadejte cestu úložiště objektů blob, kterou chcete obsahovat fázovaná data. Pokud nezadáte cestu, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Cestu zadejte pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem nebo požadujete, aby dočasná data byla v určitém umístění. |Není dostupné. |Ne |
+| linkedServiceName |Zadejte název propojené služby [AzureStorage,](connector-azure-blob-storage.md#linked-service-properties) která odkazuje na instanci úložiště, které používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem nelze použít k načtení dat do datového skladu SQL prostřednictvím PolyBase. Můžete jej použít ve všech ostatních scénářích. |– |Ano, pokud je **enableStaging** nastaven na hodnotu TRUE |
+| cesta |Zadejte cestu úložiště objektů blob, kterou chcete obsahovat fázovaná data. Pokud nezadáte cestu, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Cestu zadejte pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem nebo požadujete, aby dočasná data byla v určitém umístění. |– |Ne |
 | povolitKomprese |Určuje, zda mají být data komprimována před zkopírováním do cílového umístění. Toto nastavení snižuje objem přenášených dat. |False |Ne |
 
 >[!NOTE]
@@ -187,7 +189,7 @@ Zde je ukázková definice aktivity kopírování s vlastnostmi popsanými v př
 Poplatky vám budou účtovány na základě dvou kroků: doba trvání kopírování a typ kopírování.
 
 * Když používáte pracovní během kopie cloudu, která kopíruje data z úložiště cloudových dat do jiného cloudového úložiště dat, obě fáze zmocněné runtimem integrace Azure, bude vám účtována [součet doby trvání kopírování pro krok 1 a krok 2] x [cena jednotky kopírování cloudu].
-* Když používáte pracovní během hybridní kopie, která kopíruje data z místního úložiště dat do cloudového úložiště dat, o jednu fázi posílenou runtimem integrace s vlastním hostitelem, bude vám účtována [doba trvání hybridní kopie] x [hybridní cena jednotky kopírování] + [doba trvání cloudové kopie] x [jednotková cena kopie cloudu].
+* Když používáte pracovní během hybridní kopie, která kopíruje data z místního úložiště dat do cloudového úložiště dat, o jednu fázi posílenou runtimem integrace s vlastním hostitelem, bude vám účtována [doba trvání hybridní kopie] x [hybridní cena kopie jednotky] + [doba trvání kopie cloudu] x [cena jednotky kopie cloudu].
 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na další články o aktivitách kopírování:

@@ -7,15 +7,14 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 0efccd2851885dad209d5548a76737c25777b891
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404052984cb99e37f7404a47f3ac374088d32d6c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372454"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393481"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Použití schématu CloudEvents v1.0 s mřížkou událostí
-
 Kromě [výchozího schématu událostí](event-schema.md)azure event grid nativně podporuje události v [implementaci JSON cloudevents v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) a [http protokolu vazby](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) je [otevřená specifikace](https://github.com/cloudevents/spec/blob/v1.0/spec.md) pro popis dat událostí.
 
 CloudEvents zjednodušuje interoperabilitu tím, že poskytuje společné schéma událostí pro publikování a využívání cloudových událostí. Toto schéma umožňuje jednotné nástroje, standardní způsoby směrování & zpracování událostí a univerzální způsoby deserializace schématu vnější události. Díky běžnému schématu můžete snadněji integrovat práci napříč platformami.

@@ -2,13 +2,13 @@
 title: Rozšířená témata upgradu aplikací
 description: Tento článek popisuje některá pokročilá témata týkající se upgradu aplikace Service Fabric.
 ms.topic: conceptual
-ms.date: 1/28/2020
-ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 03/11/2020
+ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422810"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414497"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Upgrade aplikace Service Fabric: Pokročilá témata
 
@@ -18,13 +18,13 @@ Pokud je nový typ služby přidán do publikované aplikace jako součást upgr
 
 Podobně typy služeb lze odebrat z aplikace jako součást upgradu. Všechny instance služby typu služby, které mají být odebrány, však musí být před pokračováním v upgradu odebrány (viz [Odebrání služby ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
 
-## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Vyhněte se výpadkům připojení během plánovaných výpadků služby bez stavů (náhled)
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Vyhněte se výpadkům připojení během plánovaných výpadků bezstavové služby
 
 Pro plánované prostojů bezstavové instance, jako je například upgrade aplikace/clusteru nebo deaktivace uzlu, může být připojení zrušena z důvodu vyřazení exponovaného koncového bodu po přejdeme instance, což má za následek vynucené uzavření připojení.
 
 Chcete-li tomu zabránit, nakonfigurujte funkci *RequestDrain* (preview) přidáním *doby trvání zpoždění zavření instance* v konfiguraci služby, abyste povolili vypouštění při přijímání požadavků z jiných služeb v rámci clusteru a používají reverzní proxy server nebo používají rozhraní API pro řešení s modelem oznámení pro aktualizaci koncových bodů. Tím je zajištěno, že koncový bod inzerovaný bezstavovou instancí je odebrán *před* začátkem zpoždění před zavřením instance. Toto zpoždění umožňuje existující požadavky řádně vyprázdnit před instance skutečně přejde dolů. Klienti jsou upozorněni na změnu koncového bodu funkcí zpětného volání v době spuštění zpoždění, aby mohli znovu vyřešit koncový bod a vyhnout se odesílání nových požadavků do instance, která se chystá dolů.
 
-### <a name="service-configuration"></a>Konfigurace služby
+### <a name="service-configuration"></a>Konfigurace služeb
 
 Existuje několik způsobů, jak nakonfigurovat zpoždění na straně služby.
 

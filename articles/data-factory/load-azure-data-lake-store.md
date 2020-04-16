@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.openlocfilehash: 1325910877d1e030b3bf4114e16d0f81ecea8cf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443978"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415849"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Načítání dat do Azure Data Lake Storage Gen1 pomocí Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) (dříve známé jako Azure Data Lake Store) je celopodnikové úložiště v měřítku velkých objemů dat pro analytické úlohy velkých objemů dat. Data Lake Storage Gen1 umožňuje zachytit data libovolné velikosti, typu a rychlosti přijím. Data jsou zachycena na jednom místě pro provozní a průzkumnou analýzu.
 
@@ -88,7 +90,7 @@ Tento článek ukazuje, jak pomocí nástroje Data Factory Copy Data tool _nač�
    
       ![Zadejte účet Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. Uvidíte nové připojení. Vyberte **další**.
+   4. Uvidíte nové připojení. Vyberte **Další**.
    
    ![Zadejte účet Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
@@ -108,7 +110,7 @@ Tento článek ukazuje, jak pomocí nástroje Data Factory Copy Data tool _nač�
 
    1. Vyberte svůj účet Data Lake Storage Gen1 pro **název účtu Data Lake Store**.
    2. Zadejte **tenanta**a vyberte Dokončit.
-   3. Vyberte **další**.
+   3. Vyberte **Další**.
    
    > [!IMPORTANT]
    > V tomto návodu použijete spravovanou identitu pro prostředky Azure k ověření účtu Data Lake Storage Gen1. Nezapomeňte udělit MSI správná oprávnění v Data Lake Storage Gen1 podle [následujících pokynů](connector-azure-data-lake-store.md#managed-identity).

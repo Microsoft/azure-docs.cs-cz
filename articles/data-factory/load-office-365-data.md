@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: cd2b530375beb3e8fa1f79e004f4f1ac7fd4d0bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443914"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415798"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Načítání dat z Office 365 pomocí Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tento článek ukazuje, jak používat data načítání Datové továrny _z Office 365 do úložiště objektů blob Azure_. Můžete postupovat podle podobných kroků ke kopírování dat do Azure Data Lake Gen1 nebo Gen2. Článek o kopírování dat z Office 365 obecně najdete článek o [konektoru Office](connector-office-365.md) 365.
 
@@ -97,7 +99,7 @@ Tento článek ukazuje, jak používat data načítání Datové továrny _z Off
 
 5. Přejděte na **kartu Připojení** v okně Vlastnosti. Vyberte **+ Nová** vedle textového pole Propojená služba.
 
-6. V okně Nová propojená služba zadejte jako název "AzureStorageLinkedService", v rozevíracím seznamu metod ověřování vyberte "Instanční objekt", vyplňte koncový bod služby, tenanta, ID instančního objektu a hlavní ho klíče služby a pak vyberte Uložit do propojené služby.  Tady [najdete,](connector-azure-blob-storage.md#service-principal-authentication) jak nastavit ověřování instančního objektu pro Azure Blob Storage.
+6. V okně Nová propojená služba zadejte jako název "AzureStorageLinkedService", vyberte "Instanční objekt služby" z rozevíracího seznamu metod ověřování, vyplňte koncový bod služby, tenanta, ID instančního objektu a hlavní ho klíče služby a pak vyberte Uložit, chcete-li nasadit propojenou službu.  Tady [najdete,](connector-azure-blob-storage.md#service-principal-authentication) jak nastavit ověřování instančního objektu pro Azure Blob Storage.
 
     ![Nová propojená služba objektů blob](./media/load-office-365-data/configure-blob-linked-service.png)
 

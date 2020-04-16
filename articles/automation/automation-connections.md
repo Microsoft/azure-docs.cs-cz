@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4840b135587ae776cfb80258ce513a48a79efa43
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 7a6fc2bd5cb6f5c7ae5bef9e9741fae92518d885
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383338"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392394"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Prostředky připojení ve službě Azure Automation
 
@@ -89,7 +89,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-Skript můžete použít k vytvoření datového zdroje připojení, protože při vytváření účtu Automation automaticky obsahuje několik `AzureServicePrincipal` globálních `AzureRunAsConnection` modulů ve výchozím nastavení spolu s typem připojení k vytvoření datového zdroje připojení. To je důležité mít na paměti, protože pokud se pokusíte vytvořit nový prostředek připojení pro připojení ke službě nebo aplikaci s jinou metodou ověřování, nezdaří se, protože typ připojení není již definován ve vašem účtu automation. Další informace o tom, jak vytvořit vlastní typ připojení pro vlastní nebo modul z [Galerie prostředí PowerShell](https://www.powershellgallery.com), najdete [v tématu Integrační moduly](automation-integration-modules.md)
+Skript můžete použít k vytvoření datového zdroje připojení, protože při vytváření účtu Automation automaticky obsahuje několik `AzureServicePrincipal` globálních `AzureRunAsConnection` modulů ve výchozím nastavení spolu s typem připojení k vytvoření datového zdroje připojení. To je důležité mít na paměti, protože pokud se pokusíte vytvořit nový prostředek připojení pro připojení ke službě nebo aplikaci s jinou metodou ověřování, nezdaří se, protože typ připojení není již definován ve vašem účtu automation. Další informace o tom, jak vytvořit vlastní typ připojení pro vlastní nebo modul z [Galerie prostředí PowerShell](https://www.powershellgallery.com), naleznete [v tématu Integration Modules](automation-integration-modules.md).
 
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Použití připojení v konfiguraci runbooku nebo DSC
 
@@ -113,7 +113,7 @@ Aktivitu `Get-AutomationConnection` přidáte do grafického programu Runbook kl
 
 ![přidat na plátno](media/automation-connections/connection-add-canvas.png)
 
-Následující obrázek ukazuje příklad použití připojení v grafické matné knize runbook. Toto je stejný příklad, který je uveden výše pro ověřování pomocí účtu Spustit jako s textovým runbookem. Tento příklad `Constant value` používá sadu `Get RunAs Connection` dat pro aktivitu, která používá objekt připojení pro ověřování. Propojení [kanálu](automation-graphical-authoring-intro.md#links-and-workflow) se zde `ServicePrincipalCertificate` používá, protože sada parametrů očekává jeden objekt.
+Následující obrázek ukazuje příklad použití připojení v grafické matné knize runbook. Toto je stejný příklad, jak je uvedeno výše pro ověřování pomocí účtu Spustit jako s textovým runbookem. Tento příklad `Constant value` používá sadu `Get RunAs Connection` dat pro aktivitu, která používá objekt připojení pro ověřování. Propojení [kanálu](automation-graphical-authoring-intro.md#links-and-workflow) se zde `ServicePrincipalCertificate` používá, protože sada parametrů očekává jeden objekt.
 
 ![získání připojení](media/automation-connections/automation-get-connection-object.png)
 

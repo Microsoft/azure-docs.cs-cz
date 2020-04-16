@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 6e2a90b8f81b9b945905ee98beb1686c54a62e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063764"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411144"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurace klíčů spravovaných zákazníky pro váš účet Azure Cosmos pomocí azure key vaultu
 
@@ -231,7 +231,7 @@ Není v současné době, ale klíče na úrovni kontejneru jsou zvažovány.
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Jak klíče spravované zákazníkem ovlivní zálohu?
 
-Azure Cosmos DB provádí [pravidelné a automatické zálohování](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) dat uložených ve vašem účtu. Tato operace zálohuje šifrovaná data. Chcete-li použít obnovenou zálohu, je vyžadován šifrovací klíč, který jste použili v době zálohování. To znamená, že nebylo provedeno žádné odvolání a verze klíče, která byla použita v době zálohování, bude stále povolena.
+Azure Cosmos DB provádí [pravidelné a automatické zálohování](./online-backup-and-restore.md) dat uložených ve vašem účtu. Tato operace zálohuje šifrovaná data. Chcete-li použít obnovenou zálohu, je vyžadován šifrovací klíč, který jste použili v době zálohování. To znamená, že nebylo provedeno žádné odvolání a verze klíče, která byla použita v době zálohování, bude stále povolena.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Jak lze odvolat šifrovací klíč?
 

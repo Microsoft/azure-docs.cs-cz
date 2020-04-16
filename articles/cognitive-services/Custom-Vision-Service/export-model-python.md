@@ -3,19 +3,19 @@ title: 'Kurz: Spuštění modelu TensorFlow v Pythonu – Custom Vision Service'
 titleSuffix: Azure Cognitive Services
 description: Spusťte model TensorFlow v Pythonu. Tento článek se vztahuje pouze na modely exportované z projektů klasifikace obrázků ve službě Vlastní vize.
 services: cognitive-services
-author: areddish
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/05/2019
-ms.author: areddish
-ms.openlocfilehash: d7e3eeeea6bb25b4cddaea1d04e86f23ab7e4f5f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: 6fcbd84b3cda4adace9c1229f5ed03c3dce68fc0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74969835"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404118"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Kurz: Spuštění modelu TensorFlow v Pythonu
 

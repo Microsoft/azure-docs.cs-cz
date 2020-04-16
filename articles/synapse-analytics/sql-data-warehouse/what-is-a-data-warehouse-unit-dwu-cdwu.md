@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742551"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408050"
 ---
 # <a name="data-warehouse-units-dwus"></a>Jednotky datového skladu (DWUs)
 
@@ -32,7 +32,7 @@ Změna úrovně služeb změní počet dlus, které jsou k dispozici v systému,
 
 Pro vyšší výkon můžete zvýšit počet jednotek datového skladu. Pro nižší výkon snižte jednotky datového skladu. Náklady na úložiště a výpočetní prostředky se účtují zvlášť, takže změna jednotek datového skladu nemá vliv na náklady na úložiště.
 
-Výkon jednotek datového skladu je založen na těchto metrikách pracovního vytížení:
+Výkon pro jednotky datového skladu je založen na těchto metrikách zatížení datového skladu:
 
 - Jak rychle standardní dotaz fondu SQL může prohledávat velký počet řádků a potom provést komplexní agregaci. Tato operace je náročná na vstupně-up a procesor.
 - Jak rychle může fond SQL ingestovat data z objektů Blobs azure storage nebo Azure Data Lake. Tato operace je náročná na síť a procesor.
@@ -46,21 +46,37 @@ Zvýšení DWUs:
 
 ## <a name="service-level-objective"></a>Service Level Objective (cíl úrovně služby)
 
+Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje úroveň nákladů a výkonu datového skladu. Úrovně služeb pro Gen2 se měří v jednotkách výpočetního datového skladu (cDWU), například DW2000c. Úrovně služeb Gen1 se měří v DW, například DW2000.
+
 Cíl úrovně služby (SLO) je nastavení škálovatelnosti, které určuje úroveň nákladů a výkonu fondu SQL. Úrovně služeb pro Fond Gen2 SQL se měří v jednotkách datového skladu (DWU), například DW2000c.
 
-V T-SQL nastavení SERVICE_OBJECTIVE určuje úroveň služby pro váš fond SQL.
+> [!NOTE]
+> Azure SQL Data Warehouse Gen2 nedávno přidal další škálovací funkce pro podporu výpočetních vrstev již od 100 cDWU. Existující datové sklady aktuálně na Gen1, které vyžadují nižší výpočetní vrstvy, teď můžou upgradovat na Gen2 v oblastech, které jsou momentálně dostupné bez dalších nákladů.  Pokud vaše oblast ještě není podporovaná, můžete přesto upgradovat na podporovanou oblast. Další informace naleznete v [tématu Upgrade na Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+
+V T-SQL nastavení SERVICE_OBJECTIVE určuje úroveň služby a úroveň výkonu pro váš fond SQL.
 
 ```sql
 CREATE DATABASE mySQLDW
-( EDITION = 'Datawarehouse'
+(Edition = 'Datawarehouse'
  ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
 
-## <a name="capacity-limits"></a>Omezení kapacity
+## <a name="performance-tiers-and-data-warehouse-units"></a>Úrovně výkonu a jednotky datového skladu
+
+Každá úroveň výkonu používá pro své jednotky datového skladu mírně odlišnou měrnou jednotku. Tento rozdíl se projeví na faktuře jako jednotka škálování přímo překládá k fakturaci.
+
+- Datové sklady Gen1 se měří v jednotkách datového skladu (DW.
+- Datové sklady Gen2 se měří ve výpočetních jednotkách datového skladu (cDWU).
+
+DwU i cDwu podporují škálování výpočetních prostředků nahoru nebo dolů a pozastavení výpočetních prostředků, když nepotřebujete použít datový sklad. Všechny tyto operace jsou na vyžádání. Gen2 používá místní diskovou mezipaměť na výpočetních uzlech ke zlepšení výkonu. Při škálování nebo pozastavení systému je zneplatněna mezipaměť, takže před dosažením optimálního výkonu je vyžadováno období zahřívání mezipaměti.  
 
 Každý server SQL (například myserver.database.windows.net) má kvótu [databázové transakční jednotky (DTU),](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) která umožňuje určitý počet jednotek datového skladu. Další informace naleznete v tématu [omezení kapacity správy úloh](sql-data-warehouse-service-capacity-limits.md#workload-management).
+
+## <a name="capacity-limits"></a>Omezení kapacity
+
+Každý server SQL (například myserver.database.windows.net) má kvótu [databázové transakční jednotky (DTU),](../../sql-database/sql-database-what-is-a-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) která umožňuje určitý počet jednotek datového skladu. Další informace naleznete v tématu [omezení kapacity správy úloh](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Kolik jednotek datového skladu potřebuji
 
@@ -115,21 +131,21 @@ Změna du-s:
 
 3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na **Ano** ji potvrďte nebo ji kliknutím na **Ne** zrušte.
 
-### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Chcete-li změnit dwu, použijte [Rutina Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell. Následující příklad nastaví cíl na úrovni služby dw1000c pro databázi MySQLDW, která je hostována na serveru MyServer.
+Chcete-li změnit dwu, použijte [Rutina Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell. Následující příklad nastaví cíl úrovně služby na DW1000 pro databázi MySQLDW, která je hostována na serveru MyServer.
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Další informace naleznete v [tématu Rutiny prostředí PowerShell pro SQL Data Warehouse](sql-data-warehouse-reference-powershell-cmdlets.md)
+Další informace naleznete v [tématu Rutiny prostředí PowerShell pro SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ### <a name="t-sql"></a>T-SQL
 
-S T-SQL můžete zobrazit aktuální nastavení DWU, změnit nastavení a zkontrolovat průběh.
+S T-SQL můžete zobrazit aktuální DWUsettings, změnit nastavení a zkontrolovat průběh.
 
 Změna du-s:
 
@@ -152,12 +168,12 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000c
+        "requestedServiceObjectiveName": DW1000
     }
 }
 ```
 
-Další příklady rozhraní REST API naleznete v tématu [REST API for SQL Data Warehouse](sql-data-warehouse-manage-compute-rest-api.md).
+Další příklady rozhraní REST API naleznete v tématu [REST API for SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="check-status-of-dwu-changes"></a>Zkontrolovat stav změn DWU
 
@@ -170,14 +186,13 @@ Nelze zkontrolovat stav databáze pro operace horizontálního navýšení kapac
 Kontrola stavu změn DWU:
 
 1. Připojte se k hlavní databázi přidružené k logickému serveru SQL Database.
+2. Odešlete následující dotaz ke kontrole stavu databáze.
 
-1. Odešlete následující dotaz ke kontrole stavu databáze.
-
-    ```sql
-    SELECT    *
-    FROM      sys.databases
-    ;
-    ```
+```sql
+SELECT    *
+FROM      sys.databases
+;
+```
 
 1. Odešlete následující dotaz ke kontrole stavu operace
 

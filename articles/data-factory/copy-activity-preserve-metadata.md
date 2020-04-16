@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: jingwang
-ms.openlocfilehash: b73cd73a18d286f221c7be2c624719e1d23d7c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5ce1b85394a7bb604841f7fb941bdebf12c0bca2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153824"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414155"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Zachování metadat a aklů pomocí aktivity kopírování v Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Když použijete aktivitu kopírování Azure Data Factory ke kopírování dat ze zdroje do jímky, v následujících scénářích můžete také zachovat metadata a akly podél.
 
@@ -146,4 +148,4 @@ Zde je příklad kopírování aktivity JSON `preserve`konfigurace (viz ):
 Podívejte se na další články aktivity kopírování:
 
 - [Kopírovat přehled aktivit](copy-activity-overview.md)
-- [Kopírovat výkon aktivity](copy-activity-performance.md)
+- [Výkon aktivity kopírování](copy-activity-performance.md)

@@ -4,14 +4,14 @@ description: Seznamte se s koncepty a technikami Azure Functions, které potřeb
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276618"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405355"
 ---
-# <a name="azure-functions-developers-guide"></a>Průvodce vývojáři funkcí Azure
+# <a name="azure-functions-developer-guide"></a>Příručka pro vývojáře v Azure Functions
 Ve funkcích Azure funkce, konkrétní funkce sdílet několik základních technických konceptů a komponent, bez ohledu na jazyk nebo vazbu, kterou používáte. Než přejdete do podrobností o učení, které jsou specifické pro daný jazyk nebo vazbu, přečtěte si tento přehled, který se vztahuje na všechny z nich.
 
 Tento článek předpokládá, že jste si už přečetli [přehled funkcí Azure](functions-overview.md).

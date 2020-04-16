@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 041b2133ed63a906d3fea3ab67890a0057151b9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59f9fecb3d949d9cdf48719e6329b066d9eb3fc5
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285261"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393522"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Příprava technických prostředků aplikace Azure
 
@@ -30,9 +30,9 @@ Projděte si následující dokumentaci k aplikacím Azure, která poskytuje ryc
 - [Principy šablon Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
 - Rychlá zprovoznění:
 
-  - [Šablony Azure pro rychlé zprovoznění](https://azure.microsoft.com/documentation/templates/)
+  - [Šablony Azure Quickstart](https://azure.microsoft.com/documentation/templates/)
   - [Šablony githubazure rychlých startů](https://github.com/azure/azure-quickstart-templates)
-  - [Publikování definice aplikace](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+  - [Publikování definice aplikace](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
   - [Nasazení aplikace katalogu služeb](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
   
@@ -68,7 +68,7 @@ Chcete-li spravovat aplikaci Azure, zvolte jedno nebo obě následující skript
 
 Doporučujeme přidat do vývojového prostředí následující nástroje:
 
-- [Průzkumník úložišť Azure](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 - [Visual Studio Code](https://code.visualstudio.com/) s následujícími rozšířeními:
 
   - Rozšíření: [Nástroje Azure Správce prostředků](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)

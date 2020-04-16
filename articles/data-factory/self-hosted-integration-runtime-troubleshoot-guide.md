@@ -7,14 +7,16 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
-ms.openlocfilehash: b8492e8934c782451fb77d5a0ff56b96c34c9a00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f298b331d53eb8bab67a6f99194065dc5f889236
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75439877"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414881"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Poradce při potížích s prostředím runtime vlastní hostované integrace
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek zkoumá běžné metody řešení potíží pro runtime integrace s vlastním hostitelem v Azure Data Factory.
 
@@ -80,9 +82,9 @@ Následuje očekávaná odpověď:
 
 > [!NOTE] 
 > Proxy úvahy:
-> * Zkontrolujte, zda je třeba server proxy umístit do seznamu Bezpečných příjemců. Pokud ano, ujistěte se, že [tyto domény](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) jsou v seznamu Bezpečných příjemců.
-> * Zkontrolujte, zda je certifikát TLS/SSL "wu2.frontend.clouddatahub.net/" na serveru proxy důvěryhodný.
-> * Pokud používáte ověřování služby Active Directory na serveru proxy, změňte účet služby na uživatelský účet, který má přístup k serveru proxy jako "Integrační runtime služba".
+> *    Zkontrolujte, zda je třeba server proxy umístit do seznamu Bezpečných příjemců. Pokud ano, ujistěte se, že [tyto domény](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) jsou v seznamu Bezpečných příjemců.
+> *    Zkontrolujte, zda je certifikát TLS/SSL "wu2.frontend.clouddatahub.net/" na serveru proxy důvěryhodný.
+> *    Pokud používáte ověřování služby Active Directory na serveru proxy, změňte účet služby na uživatelský účet, který má přístup k serveru proxy jako "Integrační runtime služba".
 
 ### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Chybová zpráva: Samoobslužný integrační runtime uzel/ logický kód SHIR je ve stavu Neaktivní/ "Spuštěno (omezeno)"
 
@@ -117,7 +119,7 @@ K tomuto chování dochází, když uzly nemohou komunikovat mezi sebou.
         
    ![Command-line error](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
         
-1.  Check whether the error log contains the following:
+1.    Check whether the error log contains the following:
 
     ```Error log: Cannot connect to worker manager: net.tcp://xxxxxx:8060/ExternalService.svc/ No DNS entries exist for host azranlcir01r1. No such host is known Exception detail: System.ServiceModel.EndpointNotFoundException: No DNS entries exist for host xxxxx. ---> System.Net.Sockets.SocketException: No such host is known at System.Net.Dns.GetAddrInfo(String name) at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6) at System.Net.Dns.GetHostEntry(String hostNameOrAddress) at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri) --- End of inner exception stack trace --- Server stack trace: at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri)```
     

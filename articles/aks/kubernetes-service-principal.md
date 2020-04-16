@@ -3,17 +3,17 @@ title: Instanční objekty pro službu Azure Kubernetes Service (AKS)
 description: Vytvoření a správa instančního objektu služby Azure Active Directory pro cluster ve službě Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: 523f08ddbf22e175af5b0604b04d4a2460ffd634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259419"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392728"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
-Pro interakci s rozhraními API Azure vyžaduje cluster AKS [instanční objekt služby Azure Active Directory (AD)][aad-service-principal]. Instanční objekt je potřeba k dynamickému vytváření a správě dalších prostředků Azure, jako je například nástroj pro vyrovnávání zatížení nebo registr kontejneru Azure (ACR).
+Pro interakci s rozhraními API Azure vyžaduje cluster AKS buď [instanční objekt služby Azure Active Directory (AD),][aad-service-principal] nebo [spravovanou identitu](use-managed-identity.md). Instanční objekt nebo spravovanou identitu je potřeba k dynamickému vytváření a správě dalších prostředků Azure, jako je například azure vyrovnávání zatížení nebo registr kontejnerů (ACR).
 
 Tento článek ukazuje, jak vytvořit a používat instanční objekt pro vaše clustery služby AKS.
 
@@ -95,7 +95,7 @@ V následujících částech jsou podrobně popsány běžné delegace, které j
 
 Pokud používáte Azure Container Registry (ACR) jako úložiště bitových kopií kontejneru, budete muset udělit oprávnění k instančnímu objektu pro cluster AKS ke čtení a vyžádat image. V současné době je doporučená konfigurace je použít [az aks vytvořit][az-aks-create] nebo [az aks aktualizovat][az-aks-update] příkaz pro integraci s registrem a přiřadit příslušnou roli pro instanční objekt. Podrobné kroky najdete v [tématu Ověření pomocí registru kontejnerů Azure ze služby Azure Kubernetes][aks-to-acr].
 
-### <a name="networking"></a>Síťové služby
+### <a name="networking"></a>Sítě
 
 Můžete použít rozšířené sítě, kde virtuální síť a podsítě nebo veřejné IP adresy jsou v jiné skupině prostředků. Přiřaďte jednu z následujících sad oprávnění role:
 
@@ -108,7 +108,7 @@ Můžete použít rozšířené sítě, kde virtuální síť a podsítě nebo v
   - *Microsoft.Network/publicIPAdresy/zápis*
 - Nebo přiřaďte integrovanou roli [síťového přispěvatele][rbac-network-contributor] v podsíti ve virtuální síti.
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 Možná budete muset získat přístup k existujícím diskovým prostředkům v jiné skupině prostředků. Přiřaďte jednu z následujících sad oprávnění role:
 

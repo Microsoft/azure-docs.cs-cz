@@ -3,19 +3,19 @@ title: Rychlý start Vytvoření třídění – vlastní služba Vision Service
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak pomocí webu Custom Vision vytvořit model klasifikace obrázků.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.author: anroth
-ms.openlocfilehash: b664a586398e297a00ea9cd8fe68dc65e6ade5c8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: 56bdaa324420bf274e7cda8ac1c6506e4bc9ad21
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170010"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404060"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Úvodní příručka: Jak vytvořit klasifikátor s vlastní vize
 

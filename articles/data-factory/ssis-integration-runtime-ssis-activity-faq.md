@@ -11,14 +11,16 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c85a652cde840336c51e1a5b5459f9dc591e0be
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187476"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414691"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Poradce při potížích s prováděním balíčků v době spuštění integrace SSIS
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tento článek obsahuje nejběžnější chyby, které můžete najít při provádění balíčků SQL Server Integration Services (SSIS) v modulu runtime integrace SSIS. Popisuje možné příčiny a akce k vyřešení chyb.
 
@@ -144,7 +146,7 @@ Zkontrolujte, zda je váš runtime integrace s vlastním hostitelem nainstalová
 
 Ujistěte se, že odpovídající zprostředkovatel používaný konektory OLE DB v balíčku jsou nainstalovány na počítači runtime integrace s vlastním hostitelem správně. Další podrobnosti naleznete na [adrese Configure Self-Hosted IR jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Chybová zpráva: "Pracovní chyba úlohy: ErrorCode: 2906, ErrorMessage: Spuštění balíčku se nezdařilo., Výstup: {"OperationErrorMessages": "Chyba: System.IO.FileLoadException: Nelze načíst soubor nebo sestavení 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35' nebo jedna z jeho závislostí. Definice manifestu lokalisně sestavení neodpovídá odkazu na sestavení." ..."
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Chybová zpráva: "Pracovní chyba úlohy: ErrorCode: 2906, ErrorMessage: Spuštění balíčku se nezdařilo., Výstup: {"OperationErrorMessages": "Chyba: System.IO.FileLoadException: Nelze načíst soubor nebo sestavení 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35' nebo jednu z jeho závislostí. Definice manifestu lokalisně sestavení neodpovídá odkazu na sestavení." ..."
 
 Jednou z možných příčin je, že váš vlastní hostovaný integrační runtime není správně nainstalován nebo upgradován. Navrhněte stažení a přeinstalaci nejnovějšího runtime integrace s vlastním hostitelem. Další podrobnosti naleznete na adrese [Vytvoření a konfigurace prostředí runtime integrace](create-self-hosted-integration-runtime.md#installation-best-practices) s vlastním hostitelem
 

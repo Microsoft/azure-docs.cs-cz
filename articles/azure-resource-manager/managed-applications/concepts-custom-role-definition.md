@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
-ms.openlocfilehash: 88e42fd9626276f6c77b46b33c138407f91d06ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75650757"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391831"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Artefakt vlastní definice role ve spravovaných aplikacích Azure
 
@@ -20,7 +20,7 @@ Tento článek obsahuje přehled artefaktu vlastní definice role a jeho možnos
 
 ## <a name="custom-role-definition-artifact"></a>Artefakt vlastní definice role
 
-Je třeba pojmenovat vlastní artefakt definice role customRoleDefinition.json. Umístěte jej na stejnou úroveň jako createUiDefinition.json a mainTemplate.json v balíčku .zip, který vytvoří definici spravované aplikace. Informace o tom, jak vytvořit balíček ZIP a publikovat definici spravované aplikace, najdete v [tématu Publikování definice spravované aplikace.](publish-managed-app-definition-quickstart.md)
+Je třeba pojmenovat vlastní artefakt definice role customRoleDefinition.json. Umístěte jej na stejnou úroveň jako createUiDefinition.json a mainTemplate.json v balíčku .zip, který vytvoří definici spravované aplikace. Informace o tom, jak vytvořit balíček ZIP a publikovat definici spravované aplikace, najdete v [tématu Publikování definice spravované aplikace.](publish-service-catalog-app.md)
 
 ## <a name="custom-role-definition-schema"></a>Schéma vlastní definice role
 

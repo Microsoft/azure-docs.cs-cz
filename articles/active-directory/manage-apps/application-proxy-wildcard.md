@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad2032497b4b01476389428f5a2ef4a3961a1c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481241"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406731"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými kódy v proxy serveru aplikace Azure Active Directory
 
@@ -116,7 +116,7 @@ Aplikace se zástupnými symboly je v [panelu MyApps](https://myapps.microsoft.c
 
 ### <a name="kerberos-constrained-delegation"></a>Delegování omezenou protokolem Kerberos
 
-Pro aplikace, které používají [delegování s omezenou hodnotou kerberos (KCD) jako metodu s přihlašování](application-proxy-configure-single-sign-on-with-kcd.md)k systému sdílení certifikátu , může hlavní seznam spn uvedený pro metodu s přihlašováním k systému ovou systému také vyžadovat zástupný znak. Například hlavní odkaz může `HTTP/*.adventure-works.com`být: . Stále musíte mít jednotlivé názvy SPN nakonfigurované `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`na serverech back-end (například ).
+Pro aplikace, které používají [delegování s omezenou hodnotou kerberos (KCD) jako metodu s přihlašování](application-proxy-configure-single-sign-on-with-kcd.md)k systému sdílení certifikátu , může hlavní seznam spn uvedený pro metodu s přihlašováním k systému ovou systému také vyžadovat zástupný znak. Například hlavní odkaz může `HTTP/*.adventure-works.com`být: . Stále musíte mít jednotlivé názvy SPN nakonfigurované `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`na serverech back-end (například ).
 
 ## <a name="scenario-1-general-wildcard-application"></a>Scénář 1: Obecná zástupná aplikace
 

@@ -2,13 +2,13 @@
 title: Pokyny pro spolehlivé kolekce
 description: Pokyny a doporučení pro použití service fabric spolehlivé kolekce v aplikaci Azure Service Fabric.
 ms.topic: conceptual
-ms.date: 12/10/2017
-ms.openlocfilehash: 37c734205877f9e0cb98ef2834462691e8e483d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/10/2020
+ms.openlocfilehash: db37067069b2a9eb08009eb6bb373f6fce1cafa9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645476"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398530"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Pokyny a doporučení pro spolehlivé kolekce ve službě Azure Fabric
 Tato část obsahuje pokyny pro použití spolehlivého správce stavu a spolehlivé kolekce. Cílem je pomoci uživatelům vyhnout se běžným nástrahám.
@@ -28,7 +28,7 @@ Pokyny jsou uspořádány jako jednoduchá doporučení s předponou s podmínka
 * Zvažte zachování položek (například TKey + TValue pro spolehlivý slovník) pod 80 kBytes: menší, tím lépe. To snižuje množství využití haldy velkých objektů, stejně jako požadavky na disk a síť vi. Často snižuje replikaci duplicitních dat při aktualizaci pouze jedné malé části hodnoty. Běžným způsobem, jak toho dosáhnout ve spolehlivém slovníku, je rozdělit řádky do více řádků.
 * Zvažte použití funkce zálohování a obnovení k zotavení po havárii.
 * Vyhněte se směšování operací jedné `GetCountAsync`entity `CreateEnumerableAsync`a operací s více subjekty (např. ) ve stejné transakci z důvodu různých úrovní izolace.
-* Zpracovat InvalidOperationException. Transakce uživatele může být přerušena systémem z různých důvodů. Například když správce spolehlivého stavu mění svou roli z primární nebo když dlouhotrvající transakce blokuje zkrácení transakční protokol. V takových případech může uživatel obdržet InvalidOperationException označující, že jejich transakce již byla ukončena. Za předpokladu, že ukončení transakce nebylo požadováno uživatelem, nejlepší způsob, jak zpracovat tuto výjimku, je zcizit transakci, zkontrolovat, zda byl signalizován token zrušení (nebo byla změněna role repliky) a pokud není vytvořit nový transakce a opakování.  
+* Zpracovat InvalidOperationException. Transakce uživatele může být přerušena systémem z různých důvodů. Například když správce spolehlivého stavu mění svou roli z primární nebo když dlouhotrvající transakce blokuje zkrácení transakční protokol. V takových případech může uživatel obdržet InvalidOperationException označující, že jejich transakce již byla ukončena. Za předpokladu, že ukončení transakce nebylo požadováno uživatelem, nejlepší způsob, jak zpracovat tuto výjimku, je vyřadit transakci, zkontrolovat, zda byl signalizován token zrušení (nebo byla změněna role repliky), a pokud není vytvořit novou transakci a opakovat akci.  
 
 Zde je několik věcí, které je třeba mít na paměti:
 
@@ -41,7 +41,19 @@ Zde je několik věcí, které je třeba mít na paměti:
   Čtení z Primární jsou vždy stabilní: nikdy nemůže být false postupoval.
 * Zabezpečení/ochrana osobních údajů utrchvaných vaší aplikací ve spolehlivém shromažďování je vaše rozhodnutí a podléhá ochraně poskytované vaší správou úložiště; Tj. Šifrování disku operačního systému lze použít k ochraně dat v klidovém stavu.  
 
-### <a name="next-steps"></a>Další kroky
+## <a name="volatile-reliable-collections"></a>Volatile spolehlivé kolekce
+Při rozhodování o použití volatile spolehlivé kolekce, zvažte následující:
+
+* ```ReliableDictionary```má volatilní podporu
+* ```ReliableQueue```má volatilní podporu
+* ```ReliableConcurrentQueue```nemá nestálou podporu
+* Trvalé služby nelze provést volatilní. Změna ```HasPersistedState``` příznaku ```false``` vyžaduje opětovné vytvoření celé služby od začátku
+* Nestálé služby nelze provést trvalé. Změna ```HasPersistedState``` příznaku ```true``` vyžaduje opětovné vytvoření celé služby od začátku
+* ```HasPersistedState```je konfigurace na úrovni služby. To znamená, že **všechny** kolekce budou buď trvalé nebo volatilní. Nelze kombinovat nestálé a trvalé kolekce.
+* Ztráta kvora volatilního oddílu má za následek úplnou ztrátu dat
+* Zálohování a obnovení není k dispozici pro nestálé služby
+
+## <a name="next-steps"></a>Další kroky
 * [Práce s Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Transakce a zámky](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Správa dat
@@ -50,5 +62,5 @@ Zde je několik věcí, které je třeba mít na paměti:
   * [Serializace a upgrade](service-fabric-application-upgrade-data-serialization.md)
   * [Spolehlivá konfigurace správce stavu](service-fabric-reliable-services-configuration.md)
 * Ostatní
-  * [Spolehlivý rychlý start služeb](service-fabric-reliable-services-quick-start.md)
+  * [Rychlý start spolehlivých služeb](service-fabric-reliable-services-quick-start.md)
   * [Odkaz pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: fafc5234da3e6dfecdae2c8b2e2ba80cbed20b5c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 29944311c2215ebcc46ff3752004092bdeb9a9c8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244797"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404399"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-python"></a>Úvodní příručka: Extrakce tištěného a ručně psaného textu pomocí rozhraní API PRO ZOBRAZENÍ počítače 2.0 a 2.1 a Pythonu
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Úvodní příručka: Extrakce tištěného a ručně psaného textu pomocí rozhraní API PRO ZPRACOVÁNÍ počítače a Pythonu
 
 V tomto rychlém startu extrahnete tištěný nebo ručně psaný text z obrázku pomocí rozhraní API REKONČOVÁNÍ Počítače. Pomocí metod [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) and Read [Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) můžete detekovat text v obraze a extrahovat rozpoznané znaky do strojově čitelného datového proudu znaků. Rozhraní API určí, který model rozpoznávání se má použít pro každý řádek textu, takže podporuje obrázky s vytištěným i ručně psaným textem.
 
-Ve srovnání s počítačovým viděním 2.0 a 2.1 poskytuje verze Computer Vision 3.0 Public Preview:
+Tato funkce je k dispozici v rozhraní API verze 2.1 i rozhraní API verze 3.0 Public Preview. Ve srovnání s v2.1 má rozhraní API 3.0:
 
-* ještě lepší přesnost
-* změněný výstupní formát
-* skóre spolehlivosti pro slova
-* podpora španělského i anglického jazyka s dodatečným jazykovým parametrem
+* Vylepšená přesnost
+* Skóre spolehlivosti slov
+* Podpora španělštiny a angličtiny `language` s dodatečným parametrem
+* Jiný výstupní formát
+
+Vyberte kartu níže pro verzi, kterou používáte.
 
 #### <a name="version-2"></a>[Verze 2](#tab/version-2)
 
@@ -833,7 +835,9 @@ plt.show()
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte aplikaci v Pythonu používající počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytváření chytře oříznutých miniatur, zjišťování, kategorizaci, označení a popis vizuálních prvků, včetně obličejů, v obrázku. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Dále prozkoumejte aplikaci Pythonu, která používá počítačové vidění k provádění optického rozpoznávání znaků (OCR); vytvářet miniatury s inteligentním oříznutím; a zjišťovat, kategorizovat, označovat a popisovat vizuální funkce v obrázcích.
 
 > [!div class="nextstepaction"]
 > [Kurz k rozhraní API pro počítačové zpracování obrazu a Pythonu](../Tutorials/PythonTutorial.md)
+
+* Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).

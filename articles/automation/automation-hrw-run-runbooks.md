@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 902734ddc7195d643c3aedb4054f57723d1a51c2
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: b65c72e0c65cf9aa84cb614478fbdf78258f3054
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632124"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405827"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spuštění runbooků v hybridním pracovníkovi runbooku
 
@@ -27,7 +27,7 @@ Při přístupu k prostředkům jiné než Azure nemohou runbooky spuštěné na
 
 ### <a name="runbook-authentication"></a>Ověřování pomocí runbooku
 
-Ve výchozím nastavení jsou sady Runbook spuštěny v místním počítači. V systému Windows jsou spuštěny v kontextu místního systémového účtu. Pro Linux, běží v kontextu speciálního uživatelského účtu **nxautomation**. V obou případech musí sady Runbook poskytovat vlastní ověřování prostředkům, ke kterým přistupují.
+Ve výchozím nastavení jsou sady Runbook spuštěny v místním počítači. V systému Windows jsou spuštěny v kontextu místního **systémového** účtu. Pro Linux, běží v kontextu speciálního uživatelského účtu **nxautomation**. V obou případech musí sady Runbook poskytovat vlastní ověřování prostředkům, ke kterým přistupují.
 
 Datové [zdroje pověření](automation-credentials.md) a [certifikátů](automation-certificates.md) v aplikaci Runbook můžete použít s rutinami, které umožňují zadat pověření, aby se aplikace runbook mohla ověřit na různé prostředky. Následující příklad ukazuje část runbooku, která restartuje počítač. Načte pověření z datového zdroje pověření a název počítače z proměnné ho `Restart-Computer` majetku a potom použije tyto hodnoty s rutinou.
 
@@ -84,7 +84,7 @@ Postupujte podle následujících kroků a použijte spravovanou identitu pro pr
 ```
 
 > [!NOTE]
-> `Connect-AzAccount -Identity`pracuje pro pracovníka hybridní sady Runbook pomocí systémově přiřazené identity a identity přiřazené jednomu uživateli. Pokud používáte více identit přiřazených uživatelem v pracovníkovi hybridního runbooku, `Connect-AzAccount` musí vaše runbook zadat parametr *AccountId* pro výběr konkrétní identity přiřazené uživateli.
+> `Connect-AzAccount -Identity`pracuje pro pracovníka hybridní sady Runbook pomocí systémově přiřazené identity a identity přiřazené jednomu uživateli. Pokud používáte více identit přiřazených uživatelem v pracovníkovi hybridního `AccountId` runbooku, musí vaše runbook zadat parametr pro `Connect-AzAccount` výběr konkrétní identity přiřazené uživateli.
 
 ### <a name="automation-run-as-account"></a><a name="runas-script"></a>Automatizace spustit jako účet
 
@@ -166,7 +166,7 @@ Dokončení přípravy účtu Spustit jako:
 
 1. Uložte runbook **Export-RunAsCertificateToHybridWorker** do počítače s příponou **PS1.**
 2. Importujte jej do účtu Automation.
-3. Upravte runbook a měňte hodnotu `Password` proměnné o vlastním hesle. 
+3. Upravte runbook a měňte hodnotu `Password` proměnné na vlastní heslo. 
 4. Publikujte runbook.
 5. Spusťte runbook a zaměřte se na skupinu Hybrid Runbook Worker, která spouští a ověřuje sady Runbook pomocí účtu Spustit jako. 
 6. Zkontrolujte datový proud úlohy, abyste zjistili, že hlásí pokus o import certifikátu do místního úložiště počítače a následuje s více řádky. Toto chování závisí na tom, kolik účtů automatizace definujete ve vašem předplatném a stupeň úspěchu ověřování.
@@ -185,14 +185,14 @@ Nezapomeňte, že úlohy pro hybridní pracovníky runbooku běží pod místní
 
 Když spustíte runbook na webu Azure Portal, zobrazí se vám možnost **Spustit na,** pro kterou můžete vybrat **Azure** nebo **Hybridní worker**. Pokud vyberete **hybridní pracovník**, můžete z rozevíracího seznamu vybrat skupinu Hybridní pracovník runbooku.
 
-Použijte `RunOn` parametr s `Start-AzureAutomationRunbook` rutinou. Následující příklad používá prostředí Windows PowerShell ke spuštění runbooku s názvem **Test-Runbook** ve skupině hybridních pracovníků runbooku s názvem MyHybridGroup.
+Použijte `RunOn` parametr s rutinou [Start-AzAutomationRunbook.](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) Následující příklad používá prostředí Windows PowerShell ke spuštění runbooku s názvem **Test-Runbook** ve skupině hybridních pracovníků runbooku s názvem MyHybridGroup.
 
 ```azurepowershell-interactive
-Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
+Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
 
 > [!NOTE]
-> Parametr `RunOn` byl přidán `Start-AzureAutomationRunbook` do verze 0.9.1 Microsoft Azure PowerShell. Pokud máte nainstalovanou starší verzi, měli byste [si stáhnout nejnovější verzi.](https://azure.microsoft.com/downloads/) Tuto verzi nainstalujte pouze na pracovní stanici, kde spouštíte runbook z prostředí PowerShell. Není nutné jej instalovat do počítače hybridního počítače runbook worker, pokud nemáte v úmyslu spustit runbooky z tohoto počítače.
+> Pokud máte nainstalovanou starší verzi powershellu, měli byste [si stáhnout nejnovější verzi prostředí PowerShell.](https://azure.microsoft.com/downloads/) Tuto verzi nainstalujte pouze na pracovní stanici, kde spouštíte runbook z prostředí PowerShell. Není nutné jej instalovat do počítače hybridního počítače runbook worker, pokud nemáte v úmyslu spustit runbooky z tohoto počítače.
 
 ## <a name="working-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>Práce s podepsanými runbooky na pracovníkovi hybridního srun windows
 
@@ -307,7 +307,7 @@ Po nakonfigurování ověření podpisu podepište runbook pomocí následujíc�
 gpg –-clear-sign <runbook name>
 ```
 
-Podepsaný soubor Runbook `<runbook name>.asc`se nazývá .
+Podepsaný soubor Runbook se nazývá ** <runbook name>.asc**.
 
 Podepsané runbooky teď můžete nahrát do Azure Automation a spustit jako běžný runbook.
 
@@ -317,3 +317,5 @@ Podepsané runbooky teď můžete nahrát do Azure Automation a spustit jako bě
 * Informace o tom, jak používat textový editor pro práci s runbooky PowerShellu v Azure Automation, najdete v [tématu Úprava runbooku v Azure Automation](automation-edit-textual-runbook.md).
 * Pokud vaše sady Runbook nedokončí úspěšně, přečtěte si průvodce odstraňováním potíží pro [selhání spuštění sady Runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 * Další informace o prostředí PowerShell, včetně jazykových odkazů a výukových modulů, najdete v dokumentu [PowerShell](https://docs.microsoft.com/powershell/scripting/overview).
+* Odkaz na rutinu prostředí PowerShell naleznete v tématu [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

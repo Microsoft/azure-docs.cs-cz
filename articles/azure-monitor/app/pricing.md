@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 0225484de06ae4e595f1dcbcdd520f4e0e4d53f5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271110"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405376"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro službu Application Insights
 
@@ -28,7 +28,7 @@ Ceny pro [Azure Application Insights][start] je model s **průběžným platbou*
 
 [Za vícestupňové webové testy](../../azure-monitor/app/availability-multistep.md) se účtuje příplatek. Vícekrokové webové testy jsou webové testy, které provádějí posloupnost akcí. Neexistuje žádný samostatný poplatek za *ping testy* jedné stránky. Telemetrie z ping testů a vícekrokových testů se účtuje stejně jako ostatní telemetrie z vaší aplikace.
 
-Možnost Application Insights [povolit výstrahy na vlastní dimenze metriky](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) můžete také generovat dodatečné náklady, protože to může mít za následek vytvoření další chod metriky předběžné agregace. [Další informace] o protokolech založené a předem agregované metriky v Application Insights a o [cenách](https://azure.microsoft.com/pricing/details/monitor/) pro vlastní metriky Azure Monitoru.
+Možnost Application Insights [povolit výstrahy na vlastní dimenze metriky](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) můžete také generovat dodatečné náklady, protože to může mít za následek vytvoření další chod metriky předběžné agregace. [Další informace](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics) o metrikách založených na protokolu a předem agregovaných metrikách v application insights a o [cenách](https://azure.microsoft.com/pricing/details/monitor/) za vlastní metriky Azure Monitoru.
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Odhad nákladů na správu aplikace
 
@@ -218,7 +218,9 @@ Chcete-li změnit uchovávání informací, přejděte ze zdroje Application Ins
 
 ![Nastavení denního limitu hlasitosti telemetrie](./media/pricing/pricing-005.png)
 
-Uchovávání lze také [nastavit programově pomocí prostředí PowerShell](powershell.md#set-the-data-retention) pomocí parametru. `retentionInDays` Pokud je uchování sníženo, existuje několik dní odkladu před odebráním nejstarších dat. Pokud nastavíte uchovávání dat na 30 dní, můžete aktivovat `immediatePurgeDataOn30Days` okamžité vymazání starších dat pomocí parametru, což může být užitečné pro scénáře související s dodržováním předpisů. Tato funkce vymazání je kontumačně zpřístupněna jenom prostřednictvím Správce prostředků Azure a měla by se používat s maximální opatrností. Denní čas obnovení limitu svazku dat lze nakonfigurovat `dailyQuotaResetTime` pomocí Správce prostředků Azure k nastavení parametru.
+Pokud je uchování sníženo, existuje několik dní odkladu před odebráním nejstarších dat.
+
+Uchovávání lze také [nastavit programově pomocí prostředí PowerShell](powershell.md#set-the-data-retention) pomocí parametru. `retentionInDays` Pokud nastavíte uchovávání dat na 30 dní, můžete aktivovat `immediatePurgeDataOn30Days` okamžité vymazání starších dat pomocí parametru, což může být užitečné pro scénáře související s dodržováním předpisů. Tato funkce vymazání je kontumačně zpřístupněna jenom prostřednictvím Správce prostředků Azure a měla by se používat s maximální opatrností. Denní čas obnovení limitu svazku dat lze nakonfigurovat `dailyQuotaResetTime` pomocí Správce prostředků Azure k nastavení parametru.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Poplatky za přenos dat pomocí přehledů aplikací
 

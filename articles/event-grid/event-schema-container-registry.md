@@ -1,25 +1,27 @@
 ---
-title: Schéma události registru kontejneru sítě událostí Azure
+title: Registr kontejnerů Azure jako zdroj mřížky událostí
 description: Popisuje vlastnosti, které jsou k dispozici pro události registru kontejneru s Azure Event Grid
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
-ms.topic: reference
-ms.date: 03/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60345460"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393367"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Schéma událostí sítě Azure pro registr kontejnerů
+# <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry jako zdroj mřížky událostí
 
 Tento článek obsahuje vlastnosti a schéma pro události registru kontejnerů.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
 
-## <a name="available-event-types"></a>Dostupné typy událostí
+## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
+
+### <a name="available-event-types"></a>Dostupné typy událostí
 
 Azure Container Registry vydává následující typy událostí:
 
@@ -30,7 +32,7 @@ Azure Container Registry vydává následující typy událostí:
 | Microsoft.ContainerRegistry.ChartPushed | Je aktivována při stisknutí grafu Helm. |
 | Microsoft.ContainerRegistry.ChartDeleted | Je aktivována při odstranění grafu Helm. |
 
-## <a name="example-event"></a>Příklad události
+### <a name="example-event"></a>Příklad události
 
 Následující příklad ukazuje schéma události posunuté obrázkem: 
 
@@ -151,7 +153,7 @@ Schéma pro událost odstraněné grafem je podobné schématu pro odstraněnou 
 }]
 ```
 
-## <a name="event-properties"></a>Vlastnosti události
+### <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující data nejvyšší úrovně:
 
@@ -198,6 +200,12 @@ Objekt požadavku má následující vlastnosti:
 | host | řetězec | Externě přístupný název hostitele instance registru, jak je určeno hlavičkou hostitele http na příchozí požadavky. |
 | method | řetězec | Metoda požadavku, která vygenerovala událost. |
 | Useragent | řetězec | Hlavička uživatelského agenta požadavku. |
+
+## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
+|Nadpis |Popis  |
+|---------|---------|
+| [Úvodní příručka: Odeslání událostí registru kontejneru](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ukazuje, jak používat Azure CLI k odesílání událostí registru kontejnerů. |
+
 
 ## <a name="next-steps"></a>Další kroky
 

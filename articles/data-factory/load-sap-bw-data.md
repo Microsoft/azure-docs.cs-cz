@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440151"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415839"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopírování dat z obchodního skladu SAP pomocí Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek ukazuje, jak pomocí Azure Data Factory kopírovat data z SAP Business Warehouse (BW) přes Open Hub do Azure Data Lake Storage Gen2. Podobný proces můžete použít ke kopírování dat do jiných [podporovaných úložišť dat jímky](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -68,7 +69,7 @@ Na webu Azure Portal přejděte k vaší datové továrně. Vyberte **Author & M
 
    3. Chcete-li ověřit nastavení, vyberte **Testovat připojení** a pak vyberte **Dokončit**.
 
-   4. Je vytvořeno nové připojení. Vyberte **další**.
+   4. Je vytvořeno nové připojení. Vyberte **Další**.
 
 5. Na stránce **Vybrat cíle otevření rozbočovače** projděte cíle otevřených rozbočovačů, které jsou dostupné ve vašem SAP BW. Vyberte OHD, ze kterých chcete kopírovat data, a pak vyberte **Další**.
 

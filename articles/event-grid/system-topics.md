@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 35025bf1592f1293b9326d643f76322b4af590c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501188"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393149"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systémová témata v Azure Event Grid
 Služba Azure Event Grid vytvoří systémová témata při vytvoření předplatného první události pro zdroj událostí Azure. V současné době Event Grid nevytváří systémová témata pro tematické zdroje, které byly vytvořeny před březnem, 15, 2020. Pro všechny zdroje tématu, které jste vytvořili k tomuto datu nebo po něm, event grid automaticky vytvoří systémová témata. Tento článek popisuje **systémová témata** ve službě Azure Event Grid.
@@ -38,5 +38,5 @@ Při pokusu o odstranění skupiny prostředků s účtem úložiště se zobraz
 ## <a name="next-steps"></a>Další kroky
 Viz následující články: 
 
-- [Vlastní témata](event-sources.md#custom-topics)
+- [Vlastní témata](custom-topics.md)
 - [Domény](event-domains.md)

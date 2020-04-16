@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: edb80c604951a140d21e3775eec3f1dc6d55af73
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421417"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414225"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopírování aktivity ve Službě Azure Data Factory
 
 > [!div class="op_single_selector" title1="Vyberte verzi Datové továrny, kterou používáte:"]
 > * [Verze 1](v1/data-factory-data-movement-activities.md)
 > * [Aktuální verze](copy-activity-overview.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V Azure Data Factory můžete použít aktivitu Kopírování ke kopírování dat mezi úložišti dat umístěnými místně a v cloudu. Po zkopírování dat můžete použít jiné aktivity k jejich další transformaci a analýze. Aktivitu Kopírovat můžete také použít k publikování výsledků transformace a analýzy pro business intelligence (BI) a spotřebu aplikací.
 
@@ -181,7 +183,7 @@ Informace o tom, jak aktivita kopírování mapuje zdrojová data do jímky, naj
 
 ## <a name="add-additional-columns-during-copy"></a>Přidání dalších sloupců během kopírování
 
-Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat přidání dalších datových sloupců, které chcete zkopírovat do jímky. Například:
+Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat přidání dalších datových sloupců, které chcete zkopírovat do jímky. Příklad:
 
 - Při kopírování ze zdroje založeného na souboru uložte relativní cestu k souboru jako další sloupec, který bude sledovat, ze kterého souboru data pocházejí.
 - Přidejte sloupec s výrazem ADF, který připojí systémové proměnné ADF, jako je id názvu kanálu/kanálu, nebo uloží jinou dynamickou hodnotu z výstupu aktivity upstream.

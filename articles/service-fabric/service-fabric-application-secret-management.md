@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259055"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414514"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Správa šifrovaných tajných klíčů v aplikacích Service Fabric
 Tato příručka vás provede kroky správy tajných kódů v aplikaci Service Fabric. Tajné klíče mohou být jakékoli citlivé informace, jako jsou řetězce připojení úložiště, hesla nebo jiné hodnoty, které by neměly být zpracovány ve formátu prostého textu.
@@ -57,6 +57,11 @@ Hlavní klíče by měly být také zahrnuty do aplikace Service Fabric zadání
   </Certificates>
 </ApplicationManifest>
 ```
+> [!NOTE]
+> Po aktivaci aplikace, která určuje SecretsCertificate, Service Fabric najde odpovídající certifikát a udělit identitu aplikace je spuštěna pod úplnými oprávněními k soukromému klíči certifikátu. Service Fabric bude také sledovat změny certifikátu a podle toho znovu použít oprávnění. Chcete-li zjistit změny pro certifikáty deklarované běžným názvem, service fabric spustí periodickou úlohu, která najde všechny odpovídající certifikáty a porovná je se seznamem kryptografických otisků v mezipaměti. Pokud je zjištěn nový kryptografický otisk, znamená to, že certifikát tohoto subjektu byl obnoven. Úloha se spouští jednou za minutu na každém uzlu clusteru.
+>
+> Zatímco SecretsCertificate umožňuje deklarace založené na předmětu, poznamenejte si, že šifrovaná nastavení jsou vázána na dvojici klíčů, která byla použita k šifrování nastavení na straně klienta. Je nutné zajistit, aby původní šifrovací certifikát (nebo ekvivalent) odpovídal deklaraci založené na subjektu a aby byl nainstalován, včetně odpovídajícího soukromého klíče, na každém uzlu clusteru, který by mohl být hostitelem aplikace. Všechny časově platné certifikáty odpovídající deklaraci založené na subjektu a sestavené ze stejnédvojice klíčů jako původní šifrovací certifikát jsou považovány za ekvivalentní.
+>
 
 ### <a name="inject-application-secrets-into-application-instances"></a>Vstříknutí tajných kódů aplikace do instancí aplikace
 V ideálním případě by nasazení do různých prostředí mělo být co nejautomatizovanější. Toho lze dosáhnout provedením tajného šifrování v prostředí sestavení a poskytnutím šifrovaných tajných kódů jako parametrů při vytváření instancí aplikace.

@@ -1,16 +1,16 @@
 ---
-title: Vytváření grafiky v azure automatizaci
+title: Vytváření grafiky v Azure Automation
 description: Vytváření grafiky umožňuje vytvářet runbooky pro Azure Automation bez práce s kódem. Tento článek obsahuje úvod do grafického vytváření a všechny podrobnosti potřebné k zahájení vytváření grafického runbooku.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 09afca7eaf385795baf9c4a3c94232622527e357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf8ced05066923c94e80628651d8983560601d69
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501049"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406055"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Vytváření grafiky v Azure Automation
 
@@ -263,7 +263,7 @@ Každý vstupní parametr je definován vlastnostmi v následující tabulce:
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Name (Název) | Povinná hodnota. Název parametru Název musí být jedinečný v rámci runbooku. Musí začínat písmenem a může obsahovat pouze písmena, číslice a podtržítka. Název nesmí obsahovat mezeru. |
+| Název | Povinná hodnota. Název parametru Název musí být jedinečný v rámci runbooku. Musí začínat písmenem a může obsahovat pouze písmena, číslice a podtržítka. Název nesmí obsahovat mezeru. |
 | Popis |Nepovinný parametr. Popis účelu vstupního parametru. |
 | Typ | Nepovinný parametr. Pro hodnotu parametru byl očekáván datový typ. Portál Azure poskytuje odpovídající ovládací prvek pro datový typ pro každý parametr při zobrazení výzvy pro vstup. Podporované typy parametrů jsou String, Int32, Int64, Decimal, Boolean, DateTime a Object. Pokud datový typ není vybrán, je výchozí String.|
 | Povinné | Nepovinný parametr. Nastavení, které určuje, zda musí být pro parametr poskytnuta hodnota. Pokud zvolíte `yes`, musí být při spuštění runbooku poskytnuta hodnota. Pokud zvolíte `no`, hodnota není vyžadována při spuštění runbooku a lze použít výchozí hodnotu. Runbook nelze spustit, pokud nezadáte hodnotu pro každý povinný parametr, který nemá výchozí hodnotu definována. |
@@ -395,7 +395,7 @@ Další aktivita `Connect-AzAccount`, přidá ověřený účet Spustit jako pro
 >[!NOTE]
 >Pro sady Runbook `Add-AzAccount` `Add-AzureRMAccount` prostředí PowerShell `Connect-AzAccount`a jsou aliasy pro . Všimněte si, že tyto aliasy nejsou k dispozici pro grafické sady Runbook. Grafická kniha runbook `Connect-AzAccount` může používat pouze samostatně.
 
-Pro pole parametrů **APPLICATIONID**, **CERTIFICATETHUMBPRINT**a **TENANTID**zadejte název vlastnosti cesty Pole, protože aktivita vyvede objekt s více vlastnostmi. V opačném případě při spuštění runbooku se nezdaří při pokusu o ověření. To je to, co potřebujete minimálně k ověření runbooku pomocí účtu Spustit jako.
+Pro pole parametrů **APPLICATIONID**, **CERTIFICATETHUMBPRINT**a **TENANTID**zadejte název vlastnosti cesty pole, protože aktivita vyvede objekt s více vlastnostmi. V opačném případě při spuštění runbooku se nezdaří při pokusu o ověření. To je to, co potřebujete minimálně k ověření runbooku pomocí účtu Spustit jako.
 
 Někteří předplatitelé vytvořit účet Automatizace pomocí [uživatelského účtu Azure AD](automation-create-aduser-account.md) pro správu klasické nasazení Azure nebo pro prostředky Azure Resource Manager. Chcete-li zachovat zpětnou kompatibilitu pro tyto předplatitele, `Add-AzureAccount` mechanismus ověřování pro použití v aplikaci Runbook je rutina s [datovým zdrojem pověření](automation-credentials.md). Prostředek představuje uživatele služby Active Directory s přístupem k účtu Azure.
 
@@ -441,3 +441,5 @@ Máte možnost vrátit se k publikované verzi sady Runbook. Tato operace zahod�
 * Informace o tom, jak začít s grafickými runbooky, najdete [v tématu Moje první grafická kniha runbook](automation-first-runbook-graphical.md).
 * Další informace o typech runbooků a jejich výhodách a omezeních najdete v [tématu Typy runbooků Azure Automation](automation-runbook-types.md).
 * Informace o tom, jak se ověřit pomocí účtu Automat spustit jako, najdete v [tématu Konfigurace účtu Azure Run As](automation-sec-configure-azure-runas-account.md).
+* Odkaz na rutinu prostředí PowerShell naleznete v tématu [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

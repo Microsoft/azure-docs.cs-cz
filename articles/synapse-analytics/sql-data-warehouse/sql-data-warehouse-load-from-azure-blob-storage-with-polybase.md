@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c93dab2f6086b10e1e8d75c4fc3334a95c3fcafa
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 118653efc8829ac5ef6287bb36fb5595cff1147b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633278"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416133"
 ---
-# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Načtení maloobchodních dat společnosti Contoso do datového skladu Synapse SQL
+# <a name="load-contoso-retail-data-to-synapse-sql"></a>Načtení maloobchodních dat společnosti Contoso do synapse SQL 
 
 V tomto kurzu se naučíte používat příkazy PolyBase a T-SQL k načtení dvou tabulek z maloobchodních dat Contoso do datového skladu Synapse SQL.
 
@@ -221,7 +221,7 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>Načtení dat do nových tabulek
 
-Chcete-li načíst data z úložiště objektů blob Azure do tabulky datového skladu, použijte příkaz [CREATE TABLE AS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Načítání pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md) využívá silně typované externí tabulky, které jste vytvořili. Chcete-li načíst data do nových tabulek, použijte jeden příkaz CTAS pro tabulku.
+Chcete-li načíst data z úložiště objektů blob Azure do tabulky datového skladu, použijte příkaz [CREATE TABLE AS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Načítání pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) využívá silně typované externí tabulky, které jste vytvořili. Chcete-li načíst data do nových tabulek, použijte jeden příkaz CTAS pro tabulku.
 
 CTAS vytvoří novou tabulku a naplní ji výsledky příkazu select. CTAS definuje novou tabulku mít stejné sloupce a datové typy jako výsledky příkazu select. Pokud vyberete všechny sloupce z externí tabulky, bude nová tabulka replikou sloupců a datových typů v externí tabulce.
 

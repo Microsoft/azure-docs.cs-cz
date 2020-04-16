@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6113759cc68d07af4c22edf03b3274d92dcbe780
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281761"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416297"
 ---
 # <a name="azure-application-marketplace-tab"></a>Karta Azure application Marketplace
 
@@ -28,11 +28,11 @@ Následující tabulka popisuje nastavení, která se mají použít pro vytvoř
 
 |      Pole         |    Popis    |
 |  ---------------   |  ---------------  |
-| **Název\***        | Název nabídky. To bude zobrazeno prominentně na trhu. Maximální délka je 50 znaků. |
+| **Nadpis\***        | Název nabídky. To bude zobrazeno prominentně na trhu. Maximální délka je 50 znaků. |
 | **Souhrn\***      | Krátké shrnutí nabídky. Maximální délka je 100 znaků.           |
 | **Dlouhý souhrn\*** | Delší shrnutí nabídky (i když by to mohlo být stejné jako shrnutí). Maximální délka je 256 znaků.           |
 | **Popis\***  | Popis nabídky. Maximální délka je 3000 znaků. Jednoduché formátování HTML je povoleno,&gt; &lt;včetně&gt; &lt; &lt;p&gt; &lt;,&gt; &lt;em&gt; , ul , li , ol a header tagy.  |
-| **Identifikátor marketingu\*** | Jedinečná adresa URL, kterou je třeba přidružit k této nabídce, obvykle zahrnuje název organizace a řešení, maximální délka 50 znaků. Vyberte si krátký, přívětivý marketingový identifikátor pro vaši službu. To bude použito v adresách URL tržiště pro tuto nabídku. Pokud je například vaše ID vydavatele "contoso" a váš marketingový identifikátor je "sampleApp", bude adresa URL vaší nabídky na Azure Marketplacehttps://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **Identifikátor marketingu\*** | Jedinečná adresa URL, kterou je třeba přidružit k této nabídce, obvykle zahrnuje název organizace a řešení, maximální délka 50 znaků. Vyberte si krátký, přívětivý marketingový identifikátor pro vaši službu. To bude použito v adresách URL tržiště pro tuto nabídku. Pokud je například vaše ID vydavatele "contoso" a váš marketingový identifikátor je "sampleApp", bude adresa URL vaší nabídky na Azure Marketplace`https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  
 | **Náhled ID předplatného\*** | Přidejte od jednoho do 100 identifikátorů předplatného pro předběžné recenzenty. Tato předplatná uvedená na seznamu bílých budou mít přístup k vaší nabídce, dokud bude dostupná ve verzi Preview po publikování, než začne být uvedena v provozu.          |
 | **Užitečné odkazy**    | Volitelně můžete uživatelům vaší nabídky poskytnout odkazy na různé zdroje, jako je podpora, dokumentace, fóra atd.  Doporučujeme přidat alespoň jeden odkaz do dokumentace.            |
 | **Doporučené kategorie (Max 5)\*** | Vyberte jednu až pět kategorií. Vybrané kategorie se používají k mapování vaší nabídky na kategorie produktů, které jsou dostupné na Azure Marketplace a Azure Portal. Zobrazí se na stránkách procházení a na stránce s podrobnostmi o produktu. |
@@ -50,7 +50,7 @@ Následující tabulka popisuje marketingové artefakty.
 |      Pole         |    Popis    |
 |  ---------------   |  ---------------  |
 | **Krátkodobé používání\***        | Malé logo: 40x40 pixelů ve formátu PNG     |
-| **Střednědobé používání\***       | Střední logo: 90x90 pixelů ve formátu PNG    |
+| **Medium\***       | Střední logo: 90x90 pixelů ve formátu PNG    |
 | **Dlouhodobé používání\***        | Velké logo: 115x115 pixelů ve formátu PNG   |
 | **Široký\***         | Široké logo: 255x115 pixelů ve formátu PNG    |
 | **Hrdina**           | Volitelné logo hrdiny: 815x290 pixelů ve formátu PNG. **Poznámka:** Ikonu hrdiny nelze po nahrání odstranit. |

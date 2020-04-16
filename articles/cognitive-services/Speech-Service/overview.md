@@ -3,19 +3,19 @@ title: Co je služba Speech?
 titleSuffix: Azure Cognitive Services
 description: Služba Řeč je sjednocení převodu řeči na text, převod textu na řeč a překladu řeči do jednoho předplatného Azure. Přidejte řeč do svých aplikací, nástrojů a zařízení pomocí sad Speech SDK, sad SDK pro řečová zařízení nebo rest API.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/12/2020
-ms.author: dapine
-ms.openlocfilehash: 353e66c2d4ebb288244866b12a32e9acb7c765e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 464e21caf3105b12f0fbf44dc2aa3674a252d3c6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371560"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81401024"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 

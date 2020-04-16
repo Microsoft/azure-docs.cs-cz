@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421039"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414146"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Poradce při potížích s výkonem aktivity kopírování
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak řešit problém s výkonem aktivity kopírování v Azure Data Factory. 
 
@@ -140,7 +142,7 @@ Pokud výkon kopírování nesplňuje vaše očekávání, chcete-li vyřešit j
 
   - Zkontrolujte, zda samoobslužné INFRAčerveného procesoru a využití paměti trend na portálu Azure -> vaše data factory -> přehled stránky. Zvažte [horizontální navýšení kapacity nebo vynětí ir,](create-self-hosted-integration-runtime.md#high-availability-and-scalability) pokud je využití procesoru vysoké nebo je nedostatek dostupné paměti.
 
-  - Pokud platí, přijměte osvědčený postup načítání dat specifických pro konektor. Například:
+  - Pokud platí, přijměte osvědčený postup načítání dat specifických pro konektor. Příklad:
 
     - Při kopírování dat z [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP Table](connector-sap-table.md#sap-table-as-source)a SAP [Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) povolte možnosti datového oddílu pro paralelní kopírování dat.
 

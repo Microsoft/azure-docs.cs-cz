@@ -7,18 +7,20 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 94f7277c1b741fb5ef6d2807fabbb266c0109415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68423bee6096357add9b5d4b107c984ac67c9cab
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086928"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81412971"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Přehled transformace toku dat mapování
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Níže je uveden seznam transformací aktuálně podporovaných v mapování toku dat. Klikněte na jednotlivé transformace se dozvíte jeho podrobnosti o konfiguraci.
 
-| Name (Název) | Kategorie | Popis |
+| Název | Kategorie | Popis |
 | ---- | -------- | ----------- |
 | [Agregace](data-flow-aggregate.md) | Modifikátor schématu | Definujte různé typy agregací, například SUMA, MIN, MAX a POČET seskupených podle existujících nebo vypočítaných sloupců. | 
 | [Změna řádku](data-flow-alter-row.md) | Modifikátor řádků | Nastavte zásady vložení, odstranění, aktualizace a upsert na řádcích. |
@@ -26,7 +28,7 @@ Níže je uveden seznam transformací aktuálně podporovaných v mapování tok
 | [Odvozený sloupec](data-flow-derived-column.md) | Modifikátor schématu | generovat nové sloupce nebo upravovat existující pole pomocí jazyka pro vyjádření toku dat. | 
 | [Existuje](data-flow-exists.md) | Více vstupů/výstupů | Zkontrolujte, zda vaše data existují v jiném zdroji nebo datovém proudu. | 
 | [Filtr](data-flow-filter.md) | Modifikátor řádků | Filtrujte řádek na základě podmínky. |
-| [Zploštit](data-flow-flatten.md) | Modifikátor schématu |  Vezměte hodnoty pole uvnitř hierarchických struktur, jako je například JSON, a rozbalte je do jednotlivých řádků. |
+| [Zploštění](data-flow-flatten.md) | Modifikátor schématu |  Vezměte hodnoty pole uvnitř hierarchických struktur, jako je například JSON, a rozbalte je do jednotlivých řádků. |
 | [Připojit](data-flow-join.md) | Více vstupů/výstupů |  Kombinujte data ze dvou zdrojů nebo datových proudů. |
 | [Vyhledávání](data-flow-lookup.md) | Více vstupů/výstupů | Referenční data z jiného zdroje. |
 | [Nová větev](data-flow-new-branch.md) | Více vstupů/výstupů | Použít více sad operací a transformací proti stejnému datovému proudu. |
@@ -36,6 +38,6 @@ Níže je uveden seznam transformací aktuálně podporovaných v mapování tok
 | [Seřadit](data-flow-sort.md) | Modifikátor řádků | Řazení příchozích řádků v aktuálním datovém proudu |
 | [Zdroj](data-flow-source.md) | - | Zdroj dat pro tok dat |
 | [Náhradní klíč](data-flow-surrogate-key.md) | Modifikátor schématu | Přidání zvyšující se hodnoty libovolného klíče, která není obchodní, |
-| [Sjednocení](data-flow-union.md) | Více vstupů/výstupů | Svisle kombinujte více datových proudů |
+| [Unie](data-flow-union.md) | Více vstupů/výstupů | Svisle kombinujte více datových proudů |
 | [Převést na řádky](data-flow-unpivot.md) | Modifikátor schématu | Převést sloupce na hodnoty řádků |
 | [Okno](data-flow-window.md) | Modifikátor schématu |  Definujte agregace sloupců ve vašich datových proudech na základě oken. |

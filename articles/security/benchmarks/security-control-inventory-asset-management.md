@@ -1,25 +1,24 @@
 ---
 title: Řízení zabezpečení Azure – správa inventáře a majetku
-description: Inventář kontroly zabezpečení a správa majetku
+description: Inventář a správa majetku azure security control
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/14/2020
 ms.author: mbaldwin
-ms.custom: security-recommendations
-ms.openlocfilehash: 2f24012a69a7673426644a8ded6162cd1021938e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: security-benchmark
+ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75930059"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408352"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Řízení zabezpečení: Správa zásob a majetku
 
-Doporučení pro správu inventáře a majetku se zaměřují na řešení problémů souvisejících s aktivní správou (inventář, sledování a oprava) všech prostředků Azure, takže přístup mají pouze autorizované prostředky a neautorizované a nespravované prostředky jsou identifikovány a odstraněny.
+Doporučení pro správu inventáře a majetku se zaměřují na řešení problémů souvisejících s aktivní správou (inventář, sledování a oprava) všech prostředků Azure, takže přístup budou mít pouze autorizované prostředky a že se identifikují a odeberou neautorizované a nespravované prostředky.
 
-## <a name="61-use-azure-asset-discovery"></a>6.1: Použití Azure Asset Discovery
+## <a name="61-use-automated-asset-discovery-solution"></a>6.1: Používejte automatizované řešení Asset Discovery
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
@@ -29,17 +28,11 @@ Pomocí Azure Resource Graph můžete v rámci předplatného dotazovat/zjišťo
 
 I když klasické prostředky Azure může být zjištěna prostřednictvím grafu prostředků, je vysoce doporučeno vytvářet a používat prostředky Azure Resource Manager do budoucna.
 
-Jak vytvářet dotazy pomocí Azure Resource Graph:
+- [Jak vytvářet dotazy pomocí Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
-https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+- [Jak zobrazit předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-Jak zobrazit předplatná Azure:
-
-https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
-
-Principy Azure RBAC:
-
-https://docs.microsoft.com/azure/role-based-access-control/overview
+- [Principy Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 ## <a name="62-maintain-asset-metadata"></a>6.2: Udržování metadat datových zdrojů
 
@@ -49,9 +42,7 @@ https://docs.microsoft.com/azure/role-based-access-control/overview
 
 Použijte značky pro prostředky Azure, které poskytují metadata k jejich logickému uspořádání do taxonomie.
 
-Jak vytvořit a používat značky:
-
-https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [Jak vytvořit a používat značky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 ## <a name="63-delete-unauthorized-azure-resources"></a>6.3: Odstranění neautorizovaných prostředků Azure
 
@@ -61,25 +52,19 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 V případě potřeby použijte značkování, skupiny pro správu a samostatná předplatná k uspořádání a sledování datových zdrojů. Pravidelně odsouhlasete zásoby a zajistěte, aby byly z předplatného včas odstraněny neoprávněné prostředky.
 
-Jak vytvořit další předplatná Azure:
+- [Jak vytvořit další předplatná Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
-https://docs.microsoft.com/azure/billing/billing-create-subscription
+- [Jak vytvořit skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
 
-Jak vytvořit skupiny pro správu:
+- [Jak vytvořit a používat značky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-https://docs.microsoft.com/azure/governance/management-groups/create
-
-Jak vytvořit a používat značky:
-
-https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
-
-## <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Udržovat soupis schválených prostředků Azure a softwarových titulů
+## <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4: Definování a udržování inventáře schválených prostředků Azure
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
 | 6.4 | 2.1 | Zákazník |
 
-Definujte schválené prostředky Azure a schválený software pro výpočetní prostředky.
+Vytvořte inventář schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky podle našich organizačních potřeb.
 
 ## <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Monitorování neschválených prostředků Azure
 
@@ -89,27 +74,21 @@ Definujte schválené prostředky Azure a schválený software pro výpočetní 
 
 Pomocí zásad Azure můžete omezit typ prostředků, které se dají vytvořit ve vašich předplatných.
 
-Pomocí Azure Resource Graph můžete dotazovat/zjišťovat prostředky v rámci jejich předplatného. &nbsp;Ujistěte se, že jsou schváleny všechny prostředky Azure v prostředí.
+Pomocí Azure Resource Graph můžete dotazovat/zjišťovat prostředky v rámci jejich předplatného.  Ujistěte se, že jsou schváleny všechny prostředky Azure v prostředí.
 
-Jak nakonfigurovat a spravovat zásady Azure:
+- [Jak nakonfigurovat a spravovat zásady Azure](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-Jak vytvářet dotazy pomocí Azure Graphu:
-
-https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+- [Jak vytvářet dotazy pomocí Azure Graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
 ## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Sledování neschválených softwarových aplikací v rámci výpočetních prostředků
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 6.6 | 2.3/2.4 | Zákazník |
+| 6.6 | 2.3, 2.4 | Zákazník |
 
 Pomocí inventáře virtuálních počítačů Azure můžete automatizovat shromažďování informací o veškerém softwaru ve virtuálních počítačích. Název softwaru, verze, vydavatel a čas aktualizace jsou dostupné na webu Azure Portal. Chcete-li získat přístup k instalaci data a další informace, povolte diagnostiku na úrovni hosta a převést protokoly událostí systému Windows do pracovního prostoru Log Analytics.
 
-Jak povolit inventář virtuálních strojů Azure:
-
-https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software
+- [Jak povolit inventář virtuálních strojů Azure](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
 
 ## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Odebrání neschválených prostředků Azure a softwarových aplikací
 
@@ -117,19 +96,13 @@ https://docs.microsoft.com/azure/automation/automation-tutorial-installed-softwa
 |--|--|--|
 | 6.7 | 2.5 | Zákazník |
 
-Pomocí nástroje Azure Security Center monitorování integrity souborů (sledování změn) a inventářvirtuálního počítače k identifikaci veškerého softwaru nainstalovaného ve virtuálních počítačích. Můžete implementovat vlastní proces pro odstranění neoprávněného softwaru. K identifikaci neschváleného softwaru můžete také použít řešení třetí strany.
+Pomocí nástroje Azure Security Center monitorování integrity souborů (sledování změn) a inventáře virtuálních počítačů k identifikaci veškerého softwaru nainstalovaného ve virtuálních počítačích. Můžete implementovat vlastní proces pro odstranění neoprávněného softwaru. K identifikaci neschváleného softwaru můžete také použít řešení třetí strany.
 
-Jak používat monitorování integrity souborů:
+- [Jak používat monitorování integrity souborů](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring)
 
-https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring
+- [Principy sledování změn Azure](https://docs.microsoft.com/azure/automation/change-tracking)
 
-Principy sledování změn Azure:
-
-https://docs.microsoft.com/azure/automation/change-tracking
-
-Jak povolit inventář virtuálních strojů Azure:
-
-https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software
+- [Jak povolit inventář virtuálních strojů Azure](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
 
 ## <a name="68-use-only-approved-applications"></a>6.8: Používejte pouze schválené aplikace
 
@@ -139,9 +112,7 @@ https://docs.microsoft.com/azure/automation/automation-tutorial-installed-softwa
 
 Pomocí adaptivních aplikačních ovládacích prvků Centra zabezpečení Azure zajistíte, že se spustí jenom autorizovaný software a všemu neoprávněnému softwaru bude zablokováno spuštění ve virtuálních počítačích Azure.
 
-Jak používat adaptivní aplikační ovládací prvky Centra zabezpečení Azure:
-
-https://docs.microsoft.com/azure/security-center/security-center-adaptive-application
+- [Jak používat adaptivní ovládací prvky aplikací Centra zabezpečení Azure](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
 ## <a name="69-use-only-approved-azure-services"></a>6.9: Používejte jenom schválené služby Azure
 
@@ -151,51 +122,43 @@ https://docs.microsoft.com/azure/security-center/security-center-adaptive-applic
 
 Pomocí zásad Azure můžete omezit služby, které můžete zřídit ve vašem prostředí.
 
-Jak nakonfigurovat a spravovat zásady Azure:
+- [Jak nakonfigurovat a spravovat zásady Azure](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Jak odepřít konkrétní typ prostředku pomocí zásad Azure](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
 
-Jak odepřít konkrétní typ prostředku pomocí zásad Azure:
-
-https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
-
-## <a name="610-implement-approved-application-list"></a>6.10: Implementace schváleného seznamu žádostí
+## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10: Udržovat soupis schválených softwarových titulů
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 6.1 | 2.7 | Zákazník |
+| 6.10 | 2.7 | Zákazník |
 
 Pomocí adaptivních aplikačních ovládacích prvků Centra zabezpečení Azure určete, na které typy souborů se pravidlo může nebo nemusí vztahovat.
 
 Implementujte řešení třetí strany, pokud to nesplňuje požadavek.
 
-Jak používat adaptivní aplikační ovládací prvky Centra zabezpečení Azure:
+- [Jak používat adaptivní ovládací prvky aplikací Centra zabezpečení Azure](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
-https://docs.microsoft.com/azure/security-center/security-center-adaptive-application
-
-## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6.11: Omezte možnost uživatelů komunikovat se Správcem prostředků Azure pomocí skriptů
+## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11: Omezení možnosti uživatelů komunikovat se Správcem prostředků Azure
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 6.11 | 2,8 | Zákazník |
+| 6.11 | 2.9 | Zákazník |
 
-Pomocí podmíněného přístupu Azure omezte možnost uživatelů &quot;pracovat&quot; se &quot;Správcem&quot; prostředků Azure konfigurací blokového přístupu pro aplikaci Microsoft Azure Management.
+Pomocí podmíněného přístupu Azure omezte možnost uživatelů pracovat se Správcem prostředků Azure konfigurací "Blokovat přístup" pro aplikaci Microsoft Azure Management.
 
-Jak nakonfigurovat podmíněný přístup pro blokování přístupu ke Správci prostředků Azure:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+- [Jak nakonfigurovat podmíněný přístup pro blokování přístupu ke Správci prostředků Azure](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
 
 ## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Omezení možnosti uživatelů spouštět skripty v rámci výpočetních prostředků
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 6.12 | 2,8 | Zákazník |
+| 6.12 | 2.9 | Zákazník |
 
-Pomocí konfigurace specifické pro operační systém nebo prostředky třetích stran omezit schopnost uživatelů spouštět skripty v rámci výpočetních prostředků Azure.
+V závislosti na typu skriptů můžete použít konfigurace specifické pro operační systém nebo prostředky třetích stran k omezení schopnosti uživatelů spouštět skripty v rámci výpočetních prostředků Azure.  Adaptivní aplikační aplikační ovládací prvky Azure Security Center můžete také využít k zajištění toho, aby se na virtuálních počítačích Azure neblokoval osvojte jenom autorizovaný software a všemu neoprávněnému softwaru.
 
-Například jak řídit spuštění skriptu prostředí PowerShell v prostředí ch od Windows:
+- [Jak řídit spuštění skriptu prostředí PowerShell v prostředí windows prostředí](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
+- [Jak používat adaptivní ovládací prvky aplikací Centra zabezpečení Azure](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
 ## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fyzicky nebo logicky oddělit vysoce rizikové aplikace
 
@@ -205,14 +168,11 @@ https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-e
 
 Software, který je vyžadován pro obchodní operace, ale může být pro organizaci vyšší riziko, by měl být izolován v rámci vlastního virtuálního počítače nebo virtuální sítě a dostatečně zabezpečen pomocí brány Azure Firewall nebo skupiny zabezpečení sítě.
 
-Jak vytvořit virtuální síť:
+- [Jak vytvořit virtuální síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-https://docs.microsoft.com/azure/virtual-network/quick-create-portal
+- [Jak vytvořit skupinu zabezpečení zabezpečení s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
-Jak vytvořit skupinu zabezpečení zabezpečení s konfigurací zabezpečení:
-
-https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na další ovládací prvek zabezpečení: [Zabezpečená konfigurace](security-control-secure-configuration.md)
+- Podívejte se na další ovládací prvek zabezpečení: [Zabezpečená konfigurace](security-control-secure-configuration.md)

@@ -10,18 +10,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: dd13a08b3c2f63baf509efbb730032edd4eba61a
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: b04ff409c95980a1569a2709a475dd8ec74d59b3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011544"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415488"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování a transformace dat v úložišti objektů Blob Azure pomocí Azure Data Factory
 
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-azure-blob-connector.md)
 > * [Aktuální verze](connector-azure-blob-storage.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do úložiště objektů blob Azure a pomocí toku dat k transformaci dat v úložišti objektů Blob Azure. Další informace o Azure Data Factory najdete v [úvodním článku](introduction.md).
 

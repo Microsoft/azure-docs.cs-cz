@@ -1,14 +1,14 @@
 ---
 title: Podporované typy prostředků Správce prostředků
 description: Zadejte seznam typů prostředků Správce prostředků podporovaných Azure Resource Graph a historie změn.
-ms.date: 04/06/2020
+ms.date: 04/15/2020
 ms.topic: reference
-ms.openlocfilehash: 85cab92981568f5ea3770e1102c3480ae4f3e638
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677050"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415142"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Referenční tabulka a typ prostředku Azure
 
@@ -392,7 +392,6 @@ Azure Resource Graph podporuje následující **typy prostředků** Azure [Resou
 - Microsoft.storagesyncint/storagesyncservices
 - Microsoft.storsimple/managers
 - Microsoft.streamanalytics/streamingJobs
-- Microsoft.support/supporttickets
 - microsoft.synapse/pracovní prostory
 - microsoft.synapse/workspaces/bigdatapools
 - Microsoft.synapse/workspaces/sqlpools

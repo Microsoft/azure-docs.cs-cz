@@ -5,18 +5,20 @@ description: Zjistěte, jak aktualizovat nebo resetovat instanční objekt nebo 
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 0203321af32bcc2ae70b726737b85870d08be86f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 8420771e32aa792aa79a07fdf4362ad0d9b45d48
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886751"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392633"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualizace nebo otočení přihlašovacích údajů pro službu Azure Kubernetes Service (AKS)
 
 Ve výchozím nastavení jsou clustery AKS vytvořeny s instančním objektem, který má dobu vypršení platnosti jeden rok. Pokud se blížíte datu vypršení platnosti, můžete obnovit pověření a prodloužit instanční objekt o další časové období. Pověření můžete také aktualizovat nebo otočit jako součást definované zásady zabezpečení. Tento článek podrobně popisuje, jak aktualizovat tato pověření pro cluster AKS.
 
-Je možné, že jste také [integrovali cluster AKS se službou Azure Active Directory][aad-integration]a použili ho jako poskytovatele ověřování pro váš cluster. V takovém případě budete mít vytvořené další 2 identity pro váš cluster, aplikaci AAD Server a klientskou aplikaci AAD, můžete také obnovit tato pověření. 
+Je možné, že jste také [integrovali cluster AKS se službou Azure Active Directory][aad-integration]a použili ho jako poskytovatele ověřování pro váš cluster. V takovém případě budete mít vytvořené další 2 identity pro váš cluster, aplikaci AAD Server a klientskou aplikaci AAD, můžete také obnovit tato pověření.
+
+Případně můžete použít spravovanou identitu pro oprávnění namísto instančního objektu. Spravované identity se snadněji spravují než instanční objekty a nevyžadují aktualizace ani střídání. Další informace naleznete v tématu [Použití spravovaných identit](use-managed-identity.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 

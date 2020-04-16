@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4f39ff5726c23db32c7b039335f406641ee090cb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754254"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411202"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurace privátního propojení Azure pro pracovní prostor Azure Machine Learning (preview)
 
@@ -47,8 +47,7 @@ Při nasazování šablony je nutné zadat následující informace:
 * Edice Pracovního prostoru (Základní nebo Podniková)
 * Pokud by měla být povolena vysoká důvěrnost nastavení pracovního prostoru
 * Pokud by mělo být povoleno šifrování pracovního prostoru pomocí klíče spravovaného zákazníkem a přidružené hodnoty pro klíč
-* Název virtuální sítě a podsíť
-* Název podsítě
+* Název virtuální sítě a podsítě, šablona vytvoří novou virtuální síť a podsíť
 
 Po odeslání šablony a dokončení zřizování bude skupina prostředků obsahující váš pracovní prostor obsahovat tři nové typy artefaktů související s privátním odkazem:
 

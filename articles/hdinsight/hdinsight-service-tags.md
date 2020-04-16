@@ -6,17 +6,17 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/10/2020
-ms.openlocfilehash: 34ec05a8362f5947cb61924b19c6b1a52e5d91a4
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437677"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410850"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Značky služeb NSG pro Azure HDInsight
 
-Značky služeb Azure HDInsight pro skupiny zabezpečení sítě (NSGs) jsou skupiny IP adres pro služby stavu a správy. Tyto skupiny pomáhají minimalizovat složitost při vytváření pravidel zabezpečení. [Značky služeb](../virtual-network/security-overview.md#service-tags) poskytují alternativní metodu umožňující povolit příchozí provoz z konkrétních adres IP bez zadání jednotlivých [adres IP správy](hdinsight-management-ip-addresses.md) ve vašich nevládních souborech.
+Značky služeb Azure HDInsight pro skupiny zabezpečení sítě (NSGs) jsou skupiny IP adres pro služby stavu a správy. Tyto skupiny pomáhají minimalizovat složitost při vytváření pravidel zabezpečení. [Značky služeb](../virtual-network/security-overview.md#service-tags) umožňují příchozí přenosy z konkrétních IP adres bez zadání jednotlivých [adres IP správy](hdinsight-management-ip-addresses.md) ve vašich nevládních souborech.
 
 Služba HDInsight spravuje tyto značky služeb. Nelze vytvořit vlastní výrobní značku ani upravit existující značku. Společnost Microsoft spravuje předpony adres, které odpovídají výrobnímu nebo toku, a automaticky aktualizuje výrobní číslo, jak se adresy mění.
 
@@ -46,13 +46,13 @@ Tato značka obsahuje IP adresy služeb stavu a správy pro všechny oblasti, kd
 
 ## <a name="use-regional-hdinsight-service-tags"></a>Použití regionálních značek služeb HDInsight
 
-Pokud možnost globální značky nebude fungovat, protože potřebujete více omezující oprávnění, můžete povolit pouze značky služeb, které jsou použitelné pro vaši oblast. V závislosti na oblasti, kde je vytvořen cluster, může existovat jedna, dvě nebo tři příslušné značky služeb.
+Pokud možnost globální značky nebude fungovat, protože potřebujete více omezující oprávnění, můžete povolit pouze značky služeb platné pro vaši oblast. V závislosti na oblasti, ve které je cluster vytvořen, může existovat více značek služeb.
 
 Chcete-li zjistit, které značky služeb chcete přidat pro vaši oblast, přečtěte si následující části článku.
 
 ### <a name="use-a-single-regional-service-tag"></a>Použití jednoho regionálního servisního tagu
 
-Pokud dáváte přednost použití značek místní služby a cluster se nachází v jedné z oblastí uvedených v této tabulce, stačí do skupiny zabezpečení sítě přidat pouze jednu místní značku služby.
+Pokud se váš cluster nachází v oblasti uvedené v této tabulce, stačí do skupiny pro zvýšení sítě přidat pouze jednu místní značku služby.
 
 | Země | Region (Oblast) | Značka služby |
 | ---- | ---- | ---- |
@@ -80,13 +80,13 @@ Pokud dáváte přednost použití značek místní služby a cluster se nacház
 
 ### <a name="use-multiple-regional-service-tags"></a>Použití více značek místních služeb
 
-Pokud dáváte přednost použití značek místní chod, ale oblast, kde je vytvořen cluster, nebyla uvedena v předchozí tabulce, je třeba povolit více značek místních služeb. Potřeba používat více než jeden je způsobenrozdíly v uspořádání poskytovatelů zdrojů pro různé regiony.
+Pokud oblast, kde byl vytvořen cluster, není uvedena v předchozí tabulce, je třeba povolit více značek místních služeb. Potřeba používat více než jeden je kvůli rozdílům v uspořádání poskytovatelů zdrojů pro různé regiony.
 
 Zbývající oblasti jsou rozděleny do skupin podle toho, které značky místních služeb používají.
 
 #### <a name="group-1"></a>Skupina 1
 
-Pokud je cluster vytvořen v jedné z oblastí v následující `HDInsight.WestUS` `HDInsight.EastUS` tabulce, povolte značky služeb a kromě uvedené místní značky služby. Oblasti v této části vyžadují tři značky služeb.
+Pokud je cluster vytvořen v jedné z oblastí v následující `HDInsight.WestUS` `HDInsight.EastUS`tabulce, povolte značky služeb a . Také místní značku služby uvedené. Oblasti v této části vyžadují tři značky služeb.
 
 Pokud je například cluster vytvořen `East US 2` v oblasti, budete muset do skupiny zabezpečení sítě přidat následující značky služeb:
 

@@ -3,14 +3,14 @@ title: Nasazení aplikace Service Fabric se systémem přiřazeným MI
 description: Tento článek ukazuje, jak přiřadit systémem přiřazenou spravovanou identitu k aplikaci Azure Service Fabric
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614821"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415660"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Nasazení aplikace Service Fabric se spravovanou identitou přiřazenou systémem (preview)
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Nasazení aplikace Service Fabric se spravovanou identitou přiřazenou systémem
 
 Chcete-li získat přístup k funkci spravované identity pro aplikace Azure Service Fabric, musíte nejprve povolit službu Token spravované identity v clusteru. Tato služba je zodpovědná za ověřování aplikací Service Fabric pomocí jejich spravovaných identit a za získání přístupových tokenů jejich jménem. Jakmile je služba povolena, můžete ji vidět v aplikaci Service Fabric Explorer v části **Systém** v levém podokně, spuštěné pod názvem **fabric:/System/ManagedIdentityTokenService** vedle jiných systémových služeb.
 

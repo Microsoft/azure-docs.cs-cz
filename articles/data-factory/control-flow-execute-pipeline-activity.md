@@ -11,15 +11,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440443"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415282"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Spuštění aktivity kanálu v Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný kanál.
+
+
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -255,6 +260,6 @@ Hlavní kanál předá tyto hodnoty do vyvolaný kanál, jak je znázorněno v n
 Podívejte se na další aktivity toku řízení podporované factory: 
 
 - [Aktivita For Each](control-flow-for-each-activity.md)
-- [Získat aktivitu metadat](control-flow-get-metadata-activity.md)
+- [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)

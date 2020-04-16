@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e6109a87750e588b12bfc9836c5db3db55420ec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40a715ea27be161f09dea59e57799b08406e8ca7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133799"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393761"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Image Red Hat Enterprise Linux (RHEL) dostupné v Azure
 Azure nabízí celou řadu ibi RHEL pro různé případy použití.
@@ -76,6 +76,9 @@ rhel-byos     |rým-lvm74| Lvm    | Linuxový agent | Obrázky RHEL 7.4 BYOS, kt
 |             |rým-lvm76| Lvm    | Linuxový agent | Obrázky RHEL 7.6 BYOS, které nejsou připojeny k žádnému zdroji aktualizací, nebudou účtovat prémii RHEL.
 |             |rým-lvm77| Lvm    | Linuxový agent | Obrázky RHEL 7.7 BYOS, které nejsou připojeny k žádnému zdroji aktualizací, nebudou účtovat prémii RHEL.
 |             |rým-lvm8 | Lvm    | Linuxový agent | Obrázky RHEL 8 BYOS (dílčí verze RHEL je zobrazena v hodnotě verze obrázku), která není připojena k žádnému zdroji aktualizací, nebude účtovat prémii RHEL.
+
+> [!NOTE]
+> Nabídka produktů RHEL-SAP-HANA je považována za konec životnosti red hatu. Stávající nasazení budou i nadále fungovat normálně, ale Red Hat doporučuje zákazníkům migrovat z reionací RHEL-SAP-HANA do bitových kopií RHEL-SAP-HA, které zahrnují úložiště SAP HANA a doplněk HA. Více informací o cloudových nabídkách SAP společnosti Red Hat naleznete [zde](https://access.redhat.com/articles/3751271).
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [inacích Red Hatu v Azure](./redhat-images.md).

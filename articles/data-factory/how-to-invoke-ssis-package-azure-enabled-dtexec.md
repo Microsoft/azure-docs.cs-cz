@@ -11,14 +11,17 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: 006d4fa9ed09170a423e796e893b817e079e861b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261923"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414327"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Spouštění balíčků služby SQL Server Integration Services pomocí nástroje Dtexec s podporou Azure
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Tento článek popisuje nástroj příkazového řádku dtexec (AzureDTExec). Používá se ke spuštění balíčků sql server integration services (SSIS) na Azure-SSIS Integration Runtime (IR) v Azure Data Factory.
 
 Tradiční nástroj dtexec je dodáván s SQL Server. Další informace naleznete v tématu [nástroj dtexec](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017). Často je vyvolána orchestrátory nebo plánovači třetích stran, jako je ActiveBatch a Control-M, ke spuštění balíčků SSIS místně. 

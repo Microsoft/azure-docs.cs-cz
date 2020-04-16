@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 706ab128af4379a56223ff65fb12f29d37b524f7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383279"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392123"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Zajistěte průběžné nasazení virtuálních počítačů pomocí konfigurace stavu automatizace a chocolatey
 
@@ -95,7 +95,7 @@ Přejděte na požadovaný prostředek a klikněte na tlačítko "Nasadit do Azu
 
 Další technika, která byla nedávno přidána na portál Azure, umožňuje vyžádat nové moduly nebo aktualizovat stávající moduly. Proklikejte se prostředkem účtu automatizace, dlaždicí Prostředky a nakonec dlaždicí Moduly. Ikona Galerie procházení umožňuje zobrazit seznam modulů v galerii, přejít k podrobnostem a nakonec importovat do účtu Automation. To je skvělý způsob, jak udržet vaše moduly aktuální čas od času. A funkce importu kontroluje závislosti s jinými moduly, aby bylo zajištěno, že se nic nesynchronizuje.
 
-Nebo je tu manuální přístup. Tento přístup se používá pouze jednou na prostředek, pokud jej nechcete později upgradovat. Další informace o vytváření integračních modulů Prostředí PowerShell najdete v [tématu Vytváření integračních modulů pro azure automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/).
+K dispozici je také ruční přístup, který se používá pouze jednou na prostředek, pokud jej nechcete později upgradovat. Další informace o vytváření integračních modulů Prostředí PowerShell najdete v [tématu Vytváření integračních modulů pro azure automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/).
 
 >[!NOTE]
 >Struktura složek modulu integrace prostředí PowerShell pro počítač se systémem Windows se trochu liší od struktury složek očekávané Azure Automation. 
@@ -121,7 +121,7 @@ Nebo je tu manuální přístup. Tento přístup se používá pouze jednou na p
     ```azurepowershell-interactive
     New-AzAutomationModule `
       -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-      -Name MODULE-NAME –ContentLink 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+      -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
 Zahrnutý příklad implementuje tyto kroky pro cChoco a xNetworking. 
@@ -196,18 +196,18 @@ Výsledkem těchto kroků je umístění nové konfigurace uzlu s názvem **ISVB
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>Krok 5: Vytvoření a údržba metadat balíčku
 
-Pro každý balíček, který vložíte do úložiště balíčků, potřebujete nuspec, který jej popisuje.
-Tento nuspec musí být zkompilován a uložen y na serveru NuGet. Tento proces je popsán [zde](https://docs.nuget.org/create/creating-and-publishing-a-package). Můžete použít MyGet.org jako server NuGet. Prodávají tuto službu, ale mají startér SKU, který je zdarma. Na NuGet.org najdete pokyny k instalaci vlastního serveru NuGet pro vaše soukromé balíčky.
+Pro každý balíček, který vložíte do úložiště balíčků, potřebujete Nuspec, který jej popisuje. Musí být zkompilován a uložen na serveru NuGet. Tento proces je popsán [zde](https://docs.nuget.org/create/creating-and-publishing-a-package). 
+
+Můžete použít **MyGet.org** jako server NuGet. Můžete si koupit tuto službu, ale ty je zdarma startér SKU. Na [NuGet](https://www.nuget.org/), najdete pokyny k instalaci vlastní NuGet server pro vaše soukromé balíčky.
 
 ## <a name="step-6-tie-it-all-together"></a>Krok 6: Spojte to všechno dohromady
 
-Pokaždé, když verze projde QA a je schválen pro nasazení, balíček je vytvořen a nuspec a nupkg jsou aktualizovány a nasazeny na server NuGet. Konfigurace (krok 4 výše) musí být také aktualizována, aby souhlasila s novým číslem verze. Potom musí být odeslány na server vyžádat a zkompilovány.
+Pokaždé, když verze projde QA a je schválen pro nasazení, balíček je vytvořen a nuspec a nupkg jsou aktualizovány a nasazeny na server NuGet. Konfigurace (krok 4) musí být také aktualizována, aby bylo možné souhlasit s novým číslem verze. Potom musí být odeslány na server vyžádat a zkompilovány.
 
 Od tohoto okamžiku je na virtuálních počítačích, které jsou závislé na této konfiguraci, aby vytáhly aktualizaci a nainstalovaly ji. Každá z těchto aktualizací je jednoduchá - jen řádek nebo dva PowerShell. Pro Azure DevOps některé z nich jsou zapouzdřené v sestavení úkoly, které lze zřetězit společně v sestavení. Tento [článek](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) obsahuje další podrobnosti. Toto [úložiště GitHub](https://github.com/Microsoft/vso-agent-tasks) podrobně popisuje dostupné úlohy sestavení.
 
 ## <a name="related-articles"></a>Související články
-* [Přehled dsc Azure Automation](automation-dsc-overview.md)
-* [Rutiny DSC azure automatizace](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
+* [Přehled DSC azure automatizace](automation-dsc-overview.md)
 * [Onboardingové stroje pro správu pomocí Azure Automation DSC](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>Další kroky

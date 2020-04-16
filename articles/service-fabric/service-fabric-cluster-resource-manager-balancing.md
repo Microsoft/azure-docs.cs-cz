@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79081688"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416272"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Vyvažování clusteru prostředků infrastruktury služby
 Správce prostředků clusteru Service Fabric podporuje změny dynamického zatížení, reaguje na přidání nebo odebrání uzlů nebo služeb. Také automaticky opravuje porušení omezení a proaktivně vyvažuje cluster. Ale jak často jsou tyto akce prováděny a co je spouští?
@@ -205,6 +205,7 @@ Správce prostředků clusteru automaticky zjistí, jaké služby spolu souvisej
 * Metriky jsou způsob, jakým je manger prostředků clusteru Service Fabric spravuje spotřebu a kapacitu v clusteru. Další informace o metrikách a jejich konfiguraci najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md)
 * Náklady na přesun je jedním ze způsobů, jak správci prostředků clusteru signalizovat, že přesun některých služeb je nákladnější než jiné. Další informace o nákladech na přesun naleznete v [tomto článku](service-fabric-cluster-resource-manager-movement-cost.md)
 * Správce prostředků clusteru má několik omezení, které můžete nakonfigurovat tak, aby zpomalily změny v clusteru. Obvykle nejsou nutné, ale pokud je potřebujete, můžete se o nich dozvědět [zde](service-fabric-cluster-resource-manager-advanced-throttling.md)
+* Správce prostředků clusteru dokáže rozpoznat a zpracovat podclustering (situace, která někdy nastane při použití omezení umístění a vyvažování). Chcete-li se dozvědět, jak může podclustering ovlivnit vyvažování a jak jej můžete zvládnout, podívejte se [zde](cluster-resource-manager-subclustering.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

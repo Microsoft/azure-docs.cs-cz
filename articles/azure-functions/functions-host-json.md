@@ -3,12 +3,12 @@ title: reference host.json pro Funkce Azure 2.x
 description: Referenční dokumentace pro soubor host.json Azure Functions s runtime v2.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 1a861d500f0b8cc31b8312d6c955916ab741b649
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878238"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405492"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Reference host.json pro Funkce Azure 2.x a novější 
 
@@ -141,7 +141,7 @@ Toto nastavení je podřízeným [protokolováním](#logging).
 Úplnou strukturu JSON naleznete v předchozím [příkladu souboru host.json](#sample-hostjson-file).
 
 > [!NOTE]
-> Protokol vzorkování může způsobit, že některé spuštění nezobrazí v okně application insights monitoru. Chcete-li se `samplingExcludedTypes: "Request"` vyhnout `applicationInsights` vzorkování protokolu, přidejte k hodnotě.
+> Protokol vzorkování může způsobit, že některé spuštění nezobrazí v okně application insights monitoru. Chcete-li se `excludedTypes: "Request"` vyhnout `samplingSettings` vzorkování protokolu, přidejte k hodnotě.
 
 | Vlastnost | Výchozí | Popis |
 | --------- | --------- | --------- | 
@@ -166,8 +166,8 @@ Toto nastavení je podřízeným [protokolováním](#logging).
 | minSamplingProcento | 0.1 | Jako procento vzorkování se liší, tato vlastnost určuje minimální povolené procento vzorkování. |
 | maxSamplingProcento | 0.1 | Jako procento vzorkování se liší, tato vlastnost určuje maximální povolené procento vzorkování. |
 | movingAverageRatio | 1.0 | Při výpočtu klouzavého průměru je hmotnost přiřazena k poslední hodnotě. Použijte hodnotu rovnou nebo menší než 1. Menší hodnoty, aby algoritmus méně reaktivní na náhlé změny. |
-| excludedTypy | null | Seznam typů oddělených středníkem, které nechcete vzorkovat. Rozpoznané typy jsou: Závislost, Událost, Výjimka, Zobrazení stránky, Požadavek, Trasování. Všechny instance zadaných typů jsou přenášeny; typy, které nejsou zadány, jsou vzorkovány. |
-| includedTypy | null | Seznam typů, které chcete vzorkovat, je sestředním střevem. prázdný seznam zahrnuje všechny typy. Typ uvedený `excludedTypes` v typech přepsání je zde uveden. Rozpoznané typy jsou: Závislost, Událost, Výjimka, Zobrazení stránky, Požadavek, Trasování. Všechny instance zadaných typů jsou přenášeny; typy, které nejsou zadány, jsou vzorkovány. |
+| excludedTypy | null | Seznam typů oddělených středníkem, které nechcete vzorkovat. Rozpoznané `Dependency`typy `Event` `Exception`jsou: , , `PageView`, `Request`, a `Trace`. Všechny instance zadaných typů jsou přenášeny; typy, které nejsou zadány, jsou vzorkovány. |
+| includedTypy | null | Seznam typů, které chcete vzorkovat, je sestředním střevem. prázdný seznam zahrnuje všechny typy. Typ uvedený `excludedTypes` v typech přepsání je zde uveden. Rozpoznané `Dependency`typy `Event` `Exception`jsou: , , `PageView`, `Request`, a `Trace`. Instance zadaných typů jsou vzorkovány; typy, které nejsou zadány nebo předpokládané jsou přenášeny bez vzorkování. |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights.httpAutoCollectionOptions
 

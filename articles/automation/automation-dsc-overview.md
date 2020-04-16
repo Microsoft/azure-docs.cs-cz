@@ -1,27 +1,27 @@
 ---
 title: Přehled konfigurace stavu automatizace Azure
-description: Přehled konfigurace stavu automatizace Azure (DSC), jeho termíny a známé problémy
+description: Tento článek je přehled konfigurace stavu automatizace Azure (DSC), jeho podmínky a jeho známé problémy.
 keywords: powershell dsc, požadovaná konfigurace stavu, powershell dsc azure
 services: automation
 ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 11/06/2018
+ms.date: 04/15/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 1166f5a1d7586c54255120a656b060c93f842fd9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383183"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406189"
 ---
 # <a name="state-configuration-overview"></a>Přehled konfigurace stavu
 
-Azure Automation State Configuration je služba Azure, která umožňuje psát, spravovat a kompilovat [konfigurace](/powershell/scripting/dsc/configurations/configurations)konfigurace konfigurace požadovaného stavu prostředí PowerShell (DSC). Služba také importuje [prostředky DSC](/powershell/scripting/dsc/resources/resources)a přiřazuje konfigurace cílovým uzlům, to vše v cloudu.
+Azure Automation State Configuration je služba Azure, která umožňuje psát, spravovat a kompilovat [konfigurace](/powershell/scripting/dsc/configurations/configurations)konfigurace konfigurace požadovaného stavu prostředí PowerShell (DSC). Služba také importuje [prostředky DSC](/powershell/scripting/dsc/resources/resources) a přiřazuje konfigurace cílovým uzlům, to vše v cloudu.
 
-## <a name="why-use-azure-automation-state-configuration"></a>Proč používat konfiguraci stavu automatizace Azure
+## <a name="why-use-azure-automation-state-configuration"></a>Proč používat Azure Automation State Configuration?
 
 Konfigurace stavu automatizace Azure poskytuje několik výhod oproti použití DSC mimo Azure.
 
@@ -29,17 +29,17 @@ Konfigurace stavu automatizace Azure poskytuje několik výhod oproti použití 
 
 Konfigurace stavu automatizace Azure poskytuje server pro vyžádat dsc podobný [službě DSC funkce systému Windows](/powershell/scripting/dsc/pull-server/pullserver). Cílové uzly mohou automaticky přijímat konfigurace, odpovídat požadovanému stavu a podávat zprávy o jejich dodržování předpisů. Integrovaný server pro vyžádat v Azure Automation eliminuje potřebu nastavit a udržovat vlastní server pro vyžádat. Azure Automation můžou cílit na virtuální nebo fyzické počítače s Windows nebo Linuxem v cloudu nebo v místním prostředí.
 
-### <a name="management-of-all-your-dsc-artifacts"></a>Správa všech artefaktů DSC
+### <a name="manage-all-your-dsc-artifacts"></a>Správa všech artefaktů DSC
 
 Konfigurace stavu automatizace Azure přináší stejnou vrstvu správy do [konfigurace požadovaného stavu prostředí PowerShell,](/powershell/scripting/dsc/overview/overview) jakou nabízí pro skriptování prostředí PowerShell. Z portálu Azure nebo z PowerShellu můžete spravovat všechny konfigurace, prostředky a cílové uzly DSC.
 
 ![Snímek obrazovky se stránkou Azure Automation](./media/automation-dsc-overview/azure-automation-blade.png)
 
-### <a name="import-of-reporting-data-into-azure-monitor-logs"></a>Import dat sestav do protokolů Azure Monitoru
+### <a name="import-reporting-data-into-azure-monitor-logs"></a>Import dat sestav do protokolů monitorování Azure
 
-Uzly, které jsou spravované pomocí konfigurace stavu Azure Automation, odesílají podrobná data o stavu vykazování na integrovaný server pro vyžádat. Konfiguraci stavu Azure Automation můžete nakonfigurovat tak, aby tato data odesílala do pracovního prostoru Analýzy protokolů. Viz [Předávání dat sestav stavu Azure Automation Configuration do protokolů Azure Monitor .](automation-dsc-diagnostics.md)
+Uzly, které jsou spravované pomocí konfigurace stavu Azure Automation, odesílají podrobná data o stavu vykazování na integrovaný server pro vyžádat. Konfiguraci stavu Azure Automation můžete nakonfigurovat tak, aby tato data odesílala do pracovního prostoru Analýzy protokolů. Další informace najdete v tématu [Předávání dat sestav stavu Azure Automation Configuration do protokolů monitorování Azure](automation-dsc-diagnostics.md).
 
-## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Požadavky pro použití konfigurace stavu automatizace Azure
+## <a name="prerequisites"></a>Požadavky
 
 Při použití konfigurace stavu automatizace Azure pro DSC zvažte následující požadavky.
 
@@ -57,13 +57,13 @@ U uzlů se systémem Windows jsou podporovány následující verze:
 - Windows 7
 
 >[!NOTE]
->Samostatná položka produktu [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) neobsahuje implementaci dsc. Proto ji nelze spravovat pomocí powershellu DSC nebo konfigurace stavu automatizace Azure.
+>Vzhledem k tomu, že samostatná položka produktu [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) neobsahuje implementaci DSC, nemůže být spravována powershellem DSC nebo konfigurací stavu automatizace Azure.
 
 Pro uzly se systémem Linux podporuje rozšíření DSC Linux všechny linuxové distribuce uvedené v části [Podporované linuxové distribuce](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions).
 
 ### <a name="dsc-requirements"></a>Požadavky DSC
 
-Pro všechny uzly Windows spuštěné v Azure, [WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) se nainstaluje během registrace. U uzlů se systémem Windows Server 2012 a Windows 7 je povolena [služba WinRM.](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency)
+Pro všechny uzly Windows spuštěné v Azure se během registrace [nainstaluje rozhraní Windows Management Framework 5.1.](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) U uzlů se systémem Windows Server 2012 a Windows 7 je povolena [služba WinRM.](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency)
 
 Pro všechny linuxové uzly běžící v Azure se [PowerShell DSC pro Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) nainstaluje během registrace.
 
@@ -76,20 +76,20 @@ Pokud jsou uzly umístěny v privátní síti, je vyžadován následující por
 * Globální URL americké vlády Virginie: ***.azure-automation.us**
 * Služba agenta: **https://\<\>workspaceId .agentsvc.azure-automation.net**
 
-Pokud používáte prostředky DSC, které komunikují mezi uzly, jako jsou [například prostředky WaitFor*](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), je také nutné povolit provoz mezi uzly. Informace o těchto požadavcích na síť naleznete v dokumentaci ke každému prostředku DSC.
+Pokud používáte prostředky DSC, které komunikují mezi uzly, jako jsou [například prostředky WaitFor*](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), je také nutné povolit komunikaci mezi uzly. Chcete-li porozumět těmto požadavkům na síť, naleznete v dokumentaci ke každému prostředku DSC.
 
 #### <a name="proxy-support"></a>Podpora pro proxy server
 
-Podpora proxy pro agenta DSC je k dispozici v systému Windows verze 1809 a novější. Tato možnost je povolena `ProxyURL` nastavením hodnot pro a `ProxyCredential` v [metakonfiguračním skriptu](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) používaném k registraci uzlů.
+Podpora proxy pro agenta DSC je k dispozici v systému Windows verze 1809 a novější. Tuto možnost povolíte nastavením `ProxyURL` `ProxyCredential` hodnot pro a v [metakonfiguračním skriptu,](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) který se používá k registraci uzlů.
 
 >[!NOTE]
->Konfigurace stavu automatizace Azure neposkytuje podporu proxy serveru DSC pro předchozí verze systému Windows.
+>Azure Automation State Configuration neposkytuje podporu proxy serveru DSC pro starší verze Windows.
 
-Pro linuxové uzly agent DSC `http_proxy` podporuje proxy server a používá proměnnou k určení adresy URL.
+Pro linuxové uzly podporuje agent DSC `http_proxy` proxy server a používá proměnnou k určení adresy URL.
 
 #### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Rozsahy a obor názvů konfigurace stavu Azure Automation
 
-Při definování výjimek doporučujeme používat níže uvedené adresy. Pro IP adresy si můžete stáhnout [rozsahy IP adres datového centra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor je aktualizován každý týden a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres.
+Při definování výjimek doporučujeme použít IP adresy uvedené v následující tabulce. Pro IP adresy si můžete stáhnout soubor XML [rozsahy IP datových center Microsoft Azure datacenter](https://www.microsoft.com/download/details.aspx?id=41653) ze služby Stažení softwaru. Tento soubor obsahuje aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres. Je aktualizován každý týden.
 
 Pokud máte účet Automation, který je definován pro konkrétní oblast, můžete omezit komunikaci na toto regionální datové centrum. V následující tabulce je uveden záznam DNS pro každou oblast:
 
@@ -109,21 +109,18 @@ Pokud máte účet Automation, který je definován pro konkrétní oblast, mů�
 | Spojené království – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
-Seznam adres IP oblasti namísto názvů oblastí si stáhněte soubor XML [IP adresy Datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653) ze služby Stažení softwaru.
-
 > [!NOTE]
 > V souboru XML ip adresy Datového centra Azure jsou uvedeny rozsahy IP adres, které se používají v datových centrech Microsoft Azure. Soubor obsahuje výpočetní, SQL a rozsahy úložiště.
 >
->Aktualizovaný soubor je zaúčtován každý týden. Soubor odráží aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres. Nové oblasti, které se zobrazí v souboru, se v datových centrech nepoužívají alespoň jeden týden. Je vhodné stáhnout nový soubor XML každý týden. Pak aktualizujte web, abyste správně identifikovali služby spuštěné v Azure. 
+>Aktualizovaný soubor je zaúčtován každý týden. Soubor odráží aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres. Nové oblasti, které se zobrazí v souboru, se v datových centrech nepoužívají alespoň jeden týden. Je vhodné stáhnout nový soubor XML každý týden. Potom můžete aktualizovat web správně identifikovat služby spuštěné v Azure. 
 
-Uživatelé Azure ExpressRoute by si měli uvědomit, že tento soubor se používá k aktualizaci reklamy protokolu BGP (Border Gateway Protocol) na místo Azure v prvním týdnu každého měsíce.
+Pokud jste uživatel Azure ExpressRoute, všimněte si, že tento soubor se používá k aktualizaci hraniční brány protokol (BGP) reklama prostoru Azure v prvním týdnu každého měsíce.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete začít používat DSC v konfiguraci stavu automatizace Azure, najdete [v tématu Začínáme s azure automation state configuration](automation-dsc-getting-started.md).
-- Další informace o tom, jak napalubě uzly, najdete [v tématu onboarding počítače pro správu pomocí konfigurace stavu automatizace Azure](automation-dsc-onboarding.md).
+- Pokud chcete začít používat DSC v konfiguraci stavu automatizace Azure, přečtěte si další informace [o tom, jak začít s konfigurací stavu automatizace Azure](automation-dsc-getting-started.md).
+- Další informace o tom, jak na palubě uzly, najdete [v tématu palubní počítače pro správu pomocí konfigurace stavu automatizace Azure](automation-dsc-onboarding.md).
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit k cílovým uzlům, najdete [v tématu Kompilace konfigurací v konfiguraci stavu automatizace Azure](automation-dsc-compile.md).
-- Odkaz na rutinu prostředí PowerShell naleznete v tématu [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- Odkaz na rutinu prostředí PowerShell naleznete v tématu [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
 - Informace o cenách najdete v [tématu Ceny konfigurace stavu Azure Automation](https://azure.microsoft.com/pricing/details/automation/).
-- Příklad použití konfigurace stavu azure automatizace v kanálu průběžného nasazení najdete v [tématu Průběžné nasazení pomocí konfigurace stavu azure automatizace a Chocolatey](automation-dsc-cd-chocolatey.md).
+- Příklad použití konfigurace stavu azure automatizace v kanálu průběžného nasazení najdete [v tématu průběžné nasazení do virtuálních počítačů pomocí konfigurace stavu automatizace Azure a Chocolatey](automation-dsc-cd-chocolatey.md).

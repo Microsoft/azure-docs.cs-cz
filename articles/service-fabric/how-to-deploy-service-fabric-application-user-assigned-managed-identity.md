@@ -3,14 +3,14 @@ title: Nasazení aplikace se spravovanou identitou přiřazenou uživatelem
 description: Tento článek ukazuje, jak nasadit aplikaci Service Fabric s uživatelem přiřazenou spravovanou identitou
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610331"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415628"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Nasazení aplikace Service Fabric s uživatelem přiřazenou spravovanou identitou (preview)
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Nasazení aplikace Service Fabric s uživatelem přiřazenou spravovanou identitou
 
 K nasazení aplikace Service Fabric se spravovanou identitou je potřeba aplikaci nasadit prostřednictvím Správce prostředků Azure, obvykle se šablonou Azure Resource Manager. Další informace o tom, jak nasadit aplikaci Service Fabric prostřednictvím Správce prostředků Azure, najdete v [tématu Správa aplikací a služeb jako prostředků Azure Resource Manager](service-fabric-application-arm-resource.md).
 

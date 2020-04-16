@@ -11,14 +11,16 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
-ms.openlocfilehash: 70367a38fbf7b59486e2eaaf6c05634aa7575869
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2359b378b1f54cf6e03218f819b3a7c5740ba596
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260706"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416395"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolení ověřování Azure Active Directory pro Azure-SSIS Integration Runtime
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tento článek ukazuje, jak povolit ověřování azure active directory (Azure AD) se spravovanou identitou pro vaši Azure Data Factory (ADF) a použít ji místo konvenčních metod ověřování (jako je ověřování SQL) k:
 
@@ -26,7 +28,7 @@ Tento článek ukazuje, jak povolit ověřování azure active directory (Azure 
 
 - Připojte se k různým prostředkům Azure při spouštění balíčků SSIS na Azure-SSIS IR.
 
-Další informace o spravované identitě pro váš podavač Služby ADF najdete v [tématu Správa identity pro data factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
+Další informace o spravované identitě pro váš podavač Služby ADF najdete v tématu [Spravovaná identita pro datatoutu](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
 >-  V tomto scénáři ověřování Azure AD se spravovanou identitou pro váš Podavač ADF se používá pouze při vytváření a následné spuštění operace vašeho SSIS Ir, který bude zase zřízení a připojení k SSISDB. Pro spuštění balíčku SSIS se vaše služba SSIS IR bude stále připojovat k SSISDB pomocí ověřování SQL s plně spravovanými účty, které jsou vytvořeny během zřizování SSISDB.
@@ -63,7 +65,7 @@ Můžete použít existující skupinu Azure AD nebo vytvořit novou pomocí Azu
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Přidejte do skupiny spravovanou identitu pro podavač ADF. Můžete sledovat článek [Spravované identiy pro Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) získat hlavní ID spravovaného objektu identity (například 765ad4ab-XXXX-XXXX-51ed985819dc, ale nepoužívejte ID spravované identity aplikace pro tento účel).
+3.  Přidejte do skupiny spravovanou identitu pro podavač ADF. Můžete sledovat článek [Spravovaná identita pro Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) získat hlavní ID spravovaného objektu identity (např. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale nepoužívejte ID spravované identity aplikace pro tento účel).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -198,7 +200,7 @@ Pokud chcete zřídit infračervený přenos Azure-SSIS pomocí PowerShellu, pos
 
 1.  Nainstalujte modul [Azure PowerShell.](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) 
 
-2.  Ve skriptu nenastavujte `CatalogAdminCredential` parametr. Například:
+2.  Ve skriptu nenastavujte `CatalogAdminCredential` parametr. Příklad:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

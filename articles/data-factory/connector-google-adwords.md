@@ -11,14 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.openlocfilehash: d536b706db85603624e0fa2362df7c537958f6f2
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 79e277cb3d512ee17da866a61e9d6d66a50cd902
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991599"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415027"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Kopírování dat ze služby Google AdWords pomocí Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 Tento článek popisuje, jak pomocí služby Kopírovat aktivitu v Azure Data Factory kopírovat data ze služby Google AdWords. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
 

@@ -2,13 +2,13 @@
 title: Definování více instancí vlastnosti
 description: Při vytváření vlastnosti na prostředku použijte operaci kopírování v šabloně Azure Resource Manager k větší iterátování.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: e86d38b0e5d2e39d54b3c419b6eebdcda74022db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258103"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391342"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Iterace vlastností v šablonách ARM
 
@@ -30,7 +30,9 @@ Prvek kopírování má následující obecný formát:
 ]
 ```
 
-V **části Název**zadejte název vlastnosti prostředku, kterou chcete vytvořit. Count **count** Vlastnost určuje počet iterací, které chcete pro vlastnost.
+V **části Název**zadejte název vlastnosti prostředku, kterou chcete vytvořit.
+
+Count **count** Vlastnost určuje počet iterací, které chcete pro vlastnost.
 
 Vlastnost **input** určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků vytvořených z hodnoty ve **vstupní** vlastnosti.
 
@@ -78,11 +80,7 @@ Následující příklad ukazuje, `copy` jak použít vlastnost dataDisks ve vir
 }
 ```
 
-Všimněte si, že při použití `copyIndex` uvnitř iterace vlastnosti, musíte zadat název iterace.
-
-> [!NOTE]
-> Iterace vlastnosti také podporuje argument posunu. Posun musí přijít za názvem iterace, například copyIndex('dataDisks', 1).
->
+Všimněte si, že při použití `copyIndex` uvnitř iterace vlastnosti, musíte zadat název iterace. Iterace vlastnosti také podporuje argument posunu. Posun musí přijít za názvem iterace, například copyIndex('dataDisks', 1).
 
 Správce prostředků rozšiřuje `copy` pole během nasazení. Název pole se stane názvem vlastnosti. Vstupní hodnoty se stanou vlastnostmi objektu. Nasazená šablona se stane:
 
@@ -111,6 +109,66 @@ Správce prostředků rozšiřuje `copy` pole během nasazení. Název pole se s
         }
       ],
       ...
+```
+
+Operace kopírování je užitečná při práci s maticemi, protože můžete iterate prostřednictvím každého prvku v poli. Pomocí `length` funkce v poli určete počet iterací a `copyIndex` načtěte aktuální index v poli.
+
+Následující ukázková šablona vytvoří skupinu převzetí služeb při selhání pro databáze, které jsou předány jako pole.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "primaryServerName": {
+            "type": "string"
+        },
+        "secondaryServerName": {
+            "type": "string"
+        },
+        "databaseNames": {
+            "type": "array",
+            "defaultValue": [
+                "mydb1",
+                "mydb2",
+                "mydb3"
+            ]
+        }
+    },
+    "variables": {
+        "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Sql/servers/failoverGroups",
+            "apiVersion": "2015-05-01-preview",
+            "name": "[variables('failoverName')]",
+            "properties": {
+                "readWriteEndpoint": {
+                    "failoverPolicy": "Automatic",
+                    "failoverWithDataLossGracePeriodMinutes": 60
+                },
+                "readOnlyEndpoint": {
+                    "failoverPolicy": "Disabled"
+                },
+                "partnerServers": [
+                    {
+                        "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
+                    }
+                ],
+                "copy": [
+                    {
+                        "name": "databases",
+                        "count": "[length(parameters('databaseNames'))]",
+                        "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {
+    }
+}
 ```
 
 Element copy je pole, takže můžete zadat více než jednu vlastnost prostředku.

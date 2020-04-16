@@ -11,25 +11,16 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8aaca40961b1294336b236305ecdffcc92c5a4d9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d69c8dd28b946df3fff500c31c7cdefa4767c0c4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742576"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408136"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Řešení potíží s připojením
 
 V tomto článku jsou uvedeny běžné techniky řešení potíží týkající se připojení k databázi SQL Analytics.
-
-- [Zkontrolujte dostupnost služby](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [Zkontrolujte pozastavené operace nebo operace škálování](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [Zkontrolujte nastavení brány firewall](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [Zkontrolujte nastavení virtuální sítě / koncového bodu služby](sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [Vyhledejte nejnovější ovladače](sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
-- [Zkontrolujte připojovací řetězec](sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
-- [Problémy s přerušovaným připojením](sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
-- [Běžné chybové zprávy](sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>Zkontrolujte dostupnost služby
 

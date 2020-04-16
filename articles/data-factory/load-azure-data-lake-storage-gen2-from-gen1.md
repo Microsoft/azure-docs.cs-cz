@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668854"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415827"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopírování dat z Azure Data Lake Storage Gen1 do Gen2 pomocí Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Lake Storage Gen2 je sada funkcí určených pro analýzu velkých objemů dat, která je integrovaná do [úložiště objektů blob Azure](../storage/blobs/storage-blobs-introduction.md). Můžete ji použít k rozhraní s daty pomocí paradigmat systému souborů a úložiště objektů.
 
@@ -65,7 +67,7 @@ Tento článek ukazuje, jak pomocí nástroje kopírování dat data data data z
 1. Na stránce **Začínáme** vyberte dlaždici **Kopírovat data** a spusťte nástroj pro kopírování dat. 
 
    ![Kopírovat dlaždici datového nástroje](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-tile.png)
-2. Na stránce **Vlastnosti** zadejte pro pole **Název úkolu** **příkaz CopyFromADLSGen1ToGen2.** Vyberte **další**.
+2. Na stránce **Vlastnosti** zadejte pro pole **Název úkolu** **příkaz CopyFromADLSGen1ToGen2.** Vyberte **Další**.
 
     ![Stránka Vlastnosti](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-properties-page.png)
 3. Na stránce **Zdrojové úložiště dat** vyberte **+ Vytvořit nové připojení**.
@@ -82,7 +84,7 @@ Tento článek ukazuje, jak pomocí nástroje kopírování dat data data data z
   
    b. Chcete-li ověřit nastavení, vyberte **možnost Testovat připojení.** Pak vyberte **Dokončit**.
   
-   c. Uvidíte, že bylo vytvořeno nové připojení. Vyberte **další**.
+   c. Uvidíte, že bylo vytvořeno nové připojení. Vyberte **Další**.
    
    > [!IMPORTANT]
    > V tomto návodu použijete spravovanou identitu pro prostředky Azure k ověření vašeho Azure Data Lake Storage Gen1. Chcete-li udělit spravované identitě správná oprávnění v Azure Data Lake Storage Gen1, postupujte [podle těchto pokynů](connector-azure-data-lake-store.md#managed-identity).
@@ -93,7 +95,7 @@ Tento článek ukazuje, jak pomocí nástroje kopírování dat data data data z
 
     ![Zvolte vstupní soubor nebo složku](./media/load-azure-data-lake-storage-gen2-from-gen1/choose-input-folder.png)
 
-7. Určete chování kopírování výběrem možností **Rekurzivně kopírovat soubory** a **Binární kopírování.** Vyberte **další**.
+7. Určete chování kopírování výběrem možností **Rekurzivně kopírovat soubory** a **Binární kopírování.** Vyberte **Další**.
 
     ![Určení výstupní složky](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     

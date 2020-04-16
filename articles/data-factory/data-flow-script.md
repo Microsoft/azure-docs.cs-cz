@@ -7,14 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
-ms.openlocfilehash: 251507c5740af69bd0818391dd2e8f857338b6cf
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313918"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413445"
 ---
 # <a name="data-flow-script-dfs"></a>Skript toku dat (DFS)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Skript toku dat (DFS) je základní metadata, podobně jako kódovací jazyk, který se používá ke spuštění transformace, které jsou zahrnuty v toku dat mapování. Každá transformace je reprezentována řadou vlastností, které poskytují potřebné informace pro správné spuštění úlohy. Skript je viditelný a upravitelný z ADF kliknutím na tlačítko "skript" na horní pásu karet prohlížeče.
 

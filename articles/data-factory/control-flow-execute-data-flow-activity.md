@@ -9,14 +9,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 03/16/2020
-ms.openlocfilehash: 115cb3e499117457629e130b6432a1cbc2224edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32088dd712cd0c70fc01de48add17a0b6a828dc8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79463046"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415333"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat ve Službě Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivita Tok dat slouží k transformaci a přesouvání dat prostřednictvím mapování datových toků. Pokud s toky dat teču nejste, přečtěte si části [Mapování toku dat](concepts-data-flow-overview.md)
 
@@ -159,10 +161,10 @@ Chcete-li získat počet řádků číst ze zdroje s názvem 'source1', který b
 
 Viz aktivity toku řízení podporované společností Data Factory: 
 
-- [Aktivita podmínky If](control-flow-if-condition-activity.md)
+- [Aktivita podmínky Když](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Aktivita For Each](control-flow-for-each-activity.md)
-- [Získat aktivitu metadat](control-flow-get-metadata-activity.md)
+- [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

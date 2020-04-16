@@ -5,12 +5,12 @@ description: Zjistěte, jak vytvořit a použít interní systém vyrovnávání
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 4decd66a558b031f1aaaf9c64556dae545ed05d3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 9c2966215d07c4ddf052d30a5757a2deee2e0b5c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668415"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392775"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použití interního zařízení pro vyrovnávání zatížení se službou Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,7 @@ Tento článek předpokládá, že máte existující cluster AKS. Pokud potřeb
 
 Potřebujete také nainstalované a nakonfigurované verze Azure CLI verze 2.0.59 nebo novější. Spuštěním `az --version` najděte verzi. Pokud potřebujete nainstalovat nebo upgradovat, přečtěte si informace [o instalaci příkazového příkazového příkazu k webu Azure][install-azure-cli].
 
-Pokud používáte existující podsíť nebo skupinu prostředků, potřebuje objekt zabezpečení clusterové služby AKS oprávnění ke správě síťových prostředků. Obecně přiřaďte roli *přispěvatele sítě* k instančnímu objektu v delegovaných prostředcích. Další informace o oprávněních najdete [v tématu Delegate AKS přístup k jiným prostředkům Azure][aks-sp].
+Pokud používáte existující podsíť nebo skupinu prostředků, potřebuje objekt zabezpečení clusterové služby AKS oprávnění ke správě síťových prostředků. Obecně přiřaďte roli *přispěvatele sítě* k instančnímu objektu v delegovaných prostředcích. Namísto instančního objektu můžete pro oprávnění použít systém přiřazenou spravovanou identitu. Další informace naleznete v tématu [Použití spravovaných identit](use-managed-identity.md). Další informace o oprávněních najdete [v tématu Delegate AKS přístup k jiným prostředkům Azure][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>Vytvořte interní nástroj pro vyrovnávání zatížení.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/11/2018
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae3ace24d6f33702c15a364b913f841d90fd8872
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654193"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407165"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Nejčastější dotazy týkající se správy hesel
 
@@ -235,7 +235,7 @@ Tyto nejčastější dotazy jsou rozděleny do následujících částí:
   >
 * **Otázka: Existuje rozhraní API pro přístup k datům pro resetování hesla nebo registraci?**
 
-  > **Odpověď:** Ano. Informace o tom, jak získat přístup k datovému proudu pro obnovení hesla, najdete v [tématu Informace o tom, jak programově přistupovat k událostem vykazování resetování hesla](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
+  > **Odpověď:** Ano. Informace o tom, jak získat přístup k datům sestav pro resetování hesla, najdete v [tématu Azure Log Analytics REST API Reference](/rest/api/loganalytics/).
   >
   >
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255506"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393700"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň přístupu
 
@@ -118,10 +118,10 @@ V následující tabulce je uvedeno porovnání úložiště objektů blob bloku
 |                                           | **Prémiový výkon**   | **Horká vrstva** | **Chladná úroveň**       | **Archivní vrstva**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Dostupnost**                          | 99,9 %                     | 99,9 %        | 99 %                 | Offline           |
-| **Dostupnost** <br> **(přístupy pro čtení RA-GRS)**  | Není dostupné.                       | 99,99 %       | 99,9 %               | Offline           |
+| **Dostupnost** <br> **(přístupy pro čtení RA-GRS)**  | –                       | 99,99 %       | 99,9 %               | Offline           |
 | **Poplatky za využití**                         | Vyšší náklady na úložiště, nižší náklady na přístup a transakce | Vyšší náklady na úložiště, nižší přístup a transakční náklady | Nižší náklady na úložiště, vyšší přístup a transakční náklady | Nejnižší náklady na úložiště, nejvyšší přístup a transakční náklady |
-| **Minimální velikost objektu**                   | Není dostupné.                       | Není dostupné.          | Není dostupné.                 | Není dostupné.               |
-| **Minimální doba uložení**              | Není dostupné.                       | Není dostupné.          | 30 dní<sup>1</sup> | 180 dnů
+| **Minimální velikost objektu**                   | –                       | –          | –                 | –               |
+| **Minimální doba uložení**              | –                       | –          | 30 dní<sup>1</sup> | 180 dnů
 | **Latence** <br> **(čas do prvního bajtu)** | Jednociferné milisekundy | milisekundy | milisekundy        | hodin<sup>2</sup> |
 
 <sup>1</sup> Objekty v chladné vrstvě na účtech GPv2 mají minimální dobu uchovávání 30 dnů. Účty úložiště objektů blob nemají minimální dobu uchovávání pro úroveň cool.
@@ -141,7 +141,7 @@ V této části jsou následující scénáře demonstrované pomocí portálu A
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Změna výchozí úrovně přístupu u účtu GPv2 nebo Blob Storage
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Na webu Azure Portal vyhledejte a vyberte **Všechny prostředky**.
 
@@ -169,7 +169,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Změna úrovně objektu blob v účtu úložiště GPv2 nebo Blob
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Na webu Azure Portal vyhledejte a vyberte **Všechny prostředky**.
 
@@ -199,7 +199,7 @@ $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountN
 $ctx = $storageAccount.Context
 
 #Select the blob from a container
-$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
 
 #Change the blob’s access tier to archive
 $blob.ICloudBlob.SetStandardBlobTier("Archive")
@@ -234,7 +234,7 @@ Ano. Atribut **Access Tier** nastavený na úrovni účtu je výchozí úroveň 
 
 **Můžu změnit výchozí úroveň přístupu svého účtu úložiště Blob nebo GPv2?**
 
-Ano, výchozí úroveň účtu můžete změnit nastavením atributu **úrovně Access** v účtu úložiště. Změna úrovně účtu platí pro všechny objekty uložené v účtu, které nemají explicitní sadu úrovní (například **Hot (odvodit)** nebo **Cool (odvodit)**). Přepínání úrovně účtu z horké na studenou vznikne operace zápisu (na 10 000) pro všechny objekty BLOB bez nastavené úrovně pouze v účtech GPv2 a přepínání z chladné na horké, vzniknou jak operace čtení (na 10 000), tak poplatky za načítání dat (za GB) pro všechny objekty BLOB v úložišti objektů BLOB a účty GPv2.
+Ano, výchozí úroveň účtu můžete změnit nastavením atributu **úrovně Access** v účtu úložiště. Změna úrovně účtu platí pro všechny objekty uložené v účtu, které nemají explicitní sadu úrovní (například **Hot (odvodit)** nebo **Cool (odvodit)**). Přepínání úrovně účtu z horké na studenou vznikne operace zápisu (za 10 000) pro všechny objekty BLOB bez nastavené úrovně pouze v účtech GPv2 a přepínání z chladné na horké, vzniknou jak operace čtení (za 10 000), tak poplatky za načítání dat (za GB) pro všechny objekty BLOB v úložišti objektů Blob a účtech GPv2.
 
 **Můžu u účtu nastavit výchozí úroveň přístupu na archivní?**
 

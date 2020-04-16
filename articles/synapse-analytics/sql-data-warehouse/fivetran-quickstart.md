@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b4742f48ee9ad0db60e21dd53c5c0f447c1ded67
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348925"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414272"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>Úvodní příručka: Fivetran s datovým skladem 
 
@@ -26,7 +26,7 @@ Tento rychlý start popisuje, jak nastavit nového uživatele Fivetran pro prác
 
 1. Najděte úplný název serveru a název databáze, který používáte pro připojení k datovému skladu.
     
-    Pokud potřebujete pomoc s vyhledáním těchto informací, přečtěte si téma [Připojení k datovému skladu](sql-data-warehouse-connect-overview.md).
+    Pokud potřebujete pomoc s vyhledáním těchto informací, přečtěte si téma [Připojení k datovému skladu](../sql/connect-overview.md).
 
 2. V průvodci nastavením zvolte, zda chcete databázi připojit přímo nebo pomocí tunelového propojení SSH.
 
@@ -75,9 +75,9 @@ Tento rychlý start popisuje, jak nastavit nového uživatele Fivetran pro prác
     Další informace naleznete o [omezení paměti a souběžnosti](memory-concurrency-limits.md) a [třídách prostředků](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
 
 
-## <a name="sign-in-to-fivetran"></a>Přihlášení k Fivetran
+## <a name="connect-from-fivetran"></a>Připojit z Fivetran
 
-Pokud se chcete přihlásit k Fivetranu, zadejte přihlašovací údaje, které používáte pro přístup k datovému skladu: 
+Chcete-li se připojit k datovému skladu ze svého účtu Fivetran, zadejte přihlašovací údaje, které používáte pro přístup k datovému skladu: 
 
 * Host (název serveru).
 * Port.

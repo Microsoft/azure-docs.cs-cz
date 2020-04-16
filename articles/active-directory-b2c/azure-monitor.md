@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78190054"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392876"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C pomocí Azure Monitoru
 
@@ -84,8 +84,8 @@ Chcete-li napalubě klienta Azure AD **(zákazník),** vytvořte [šablonu Azure
 
 Stáhněte si šablonu a soubory parametrů Azure Resource Manageru:
 
-- [rgDelegovánoResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegovánoResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 Dále aktualizujte soubor parametrů s hodnotami, které jste zaznamenali dříve. Následující fragment JSON ukazuje příklad souboru parametrů šablony Azure Resource Manageru. V `authorizations.value.roleDefinitionId`případě , použijte [předdefinovanou](../role-based-access-control/built-in-roles.md) hodnotu `b24988ac-6180-42a0-ab88-20f7382dd24c`role pro *roli přispěvatele*.
 
@@ -213,7 +213,7 @@ Nastavení diagnostiky definují, kam mají být odesílány protokoly a metriky
 
 - [Účet služby Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md)
 - [Řešení event hubů.](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-- [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Pracovní prostor služby Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md)
 
 Pokud jste tak ještě neučinili, vytvořte instanci zvoleného cílového typu ve skupině prostředků, kterou jste zadali v [šabloně Azure Resource Manager](#create-an-azure-resource-manager-template).
 
@@ -223,7 +223,7 @@ Jste připraveni [k vytvoření nastavení diagnostiky](../active-directory/repo
 
 Konfigurace nastavení monitorování pro protokoly aktivit Azure AD B2C:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Vyberte ikonu **Directory + Subscription** na panelu nástrojů portálu a pak vyberte adresář, který obsahuje vašeho klienta Azure AD B2C.
 1. Výběr **služby Azure Active Directory**
 1. V části **Monitorování** vyberte **Nastavení diagnostiky**.

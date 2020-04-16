@@ -12,14 +12,17 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 5f21623af9b89bbb020063dfb72f7b60e65a6ebe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e76fea87c60ae2b56cc15d5827be6e1b2b5a01
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927708"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399432"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>Spouštění balíčků SSIS v Azure z SSDT
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Tento článek popisuje funkci projektů Azure-Enabled SQL Server Integration Services (SSIS) na SQL Server Data Tools (SSDT), který umožňuje spouštět balíčky na Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF).  Pomocí této funkce můžete otestovat existující balíčky SSIS před výtahem & přesunout/migrovat je do Azure nebo vyvinout nové balíčky SSIS pro spuštění v Azure.
 
 Pomocí této funkce můžete vytvořit novou azure-SSIS IR nebo připojit existující k projektům SSIS a pak na něm spouštět balíčky.  Podporujeme spuštěné balíčky, které mají být nasazeny do katalogu SSIS (SSISDB) v modelu nasazení projektu a ty, které mají být nasazeny do souborových systémů / sdílených složek souborů /souborů Azure v modelu nasazení balíčku. 

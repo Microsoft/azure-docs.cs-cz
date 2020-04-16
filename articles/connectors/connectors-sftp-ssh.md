@@ -4,16 +4,16 @@ description: Automatizace úloh, které monitorují, vytvářejí, spravují, od
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/7/2020
+ms.date: 04/13/2020
 tags: connectors
-ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128412"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393640"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Sledování, vytváření a správa souborů SFTP pomocí Aplikací SSH a Azure Logic Apps
 
@@ -127,7 +127,7 @@ Pokud je váš soukromý klíč ve formátu PuTTY, který používá příponu n
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Například:
+   Příklad:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
@@ -146,6 +146,16 @@ Pokud je váš soukromý klíč ve formátu PuTTY, který používá příponu n
    ![Vyberte "Exportovat openssh klíč"](./media/connectors-sftp-ssh/export-openssh-key.png)
 
 1. Uložte soubor soukromého `.pem` klíče s příponou názvu souboru.
+
+## <a name="considerations"></a>Požadavky
+
+Tato část popisuje důležité informace o aktivační události a akce tohoto konektoru.
+
+<a name="create-file"></a>
+
+### <a name="create-file"></a>Vytvořit soubor
+
+Chcete-li vytvořit soubor na serveru SFTP, můžete použít akci **Vytvořit soubor** SFTP-SSH. Když tato akce vytvoří soubor, služba Logic Apps také automaticky zavolá server SFTP, aby získala metadata souboru. Pokud však přesunete nově vytvořený soubor před službou Logic Apps, která může `404` volat `'A reference was made to a file or folder which does not exist'`za účelem získání metadat, zobrazí se chybová zpráva . Chcete-li přeskočit čtení metadat souboru po vytvoření souboru, [přidejte a nastavte vlastnost **Získat všechna metadata souboru** na **hodnotu Ne**](#file-does-not-exist).
 
 <a name="connect"></a>
 
@@ -211,9 +221,27 @@ Tato aktivační událost spustí pracovní postup aplikace logiky při přidán
 
 <a name="get-content"></a>
 
-### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - Akce SSH: Získání obsahu pomocí cesty
+### <a name="sftp---ssh-action-get-file-content-using-path"></a>SFTP - Akce SSH: Získání obsahu souboru pomocí cesty
 
-Tato akce získá obsah ze souboru na serveru SFTP. Můžete například přidat aktivační událost z předchozího příkladu a podmínku, kterou musí splňovat obsah souboru. Pokud je podmínka pravdivá, akce, která získá obsah lze spustit.
+Tato akce získá obsah ze souboru na serveru SFTP zadáním cesty k souboru. Můžete například přidat aktivační událost z předchozího příkladu a podmínku, kterou musí splňovat obsah souboru. Pokud je podmínka pravdivá, akce, která získá obsah lze spustit.
+
+<a name="troubleshooting-errors"></a>
+
+## <a name="troubleshoot-errors"></a>Řešení chyb
+
+Tato část popisuje možná řešení běžných chyb nebo problémů.
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 chyba: "Byl proveden odkaz na soubor nebo složku, která neexistuje"
+
+K této chybě může dojít, když aplikace logiky vytvoří nový soubor na serveru SFTP prostřednictvím akce **Vytvořit soubor** SFTP-SSH, ale nově vytvořený soubor je okamžitě přesunut, než služba Logic Apps získá metadata souboru. Když vaše aplikace logiky spustí akci **Vytvořit soubor,** služba Logic Apps také automaticky zavolá server SFTP, aby získala metadata souboru. Pokud je však soubor přesunut, služba Logic Apps již nemůže `404` soubor najít, takže se zobrazí chybová zpráva.
+
+Pokud se nemůžete vyhnout nebo zpozdit přesunutí souboru, můžete přeskočit čtení metadat souboru po vytvoření souboru pomocí následujících kroků:
+
+1. V akci **Vytvořit soubor** otevřete seznam Přidat **nový parametr,** vyberte vlastnost **Získat všechna metadata souboru** a nastavte hodnotu na **hodnotu Ne**.
+
+1. Pokud budete později potřebovat tato metadata souboru, můžete použít akci **Získat metadata souboru.**
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 9f3a1c3455aadfbd243cdc6ab2920849c8558841
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756567"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414625"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -243,9 +243,9 @@ Azure Databricks se dá použít v kanálech Azure Machine Learning. Ve výchoz�
 
 ### <a name="encryption-in-transit"></a>Šifrování během přenosu
 
-TLS můžete použít k zabezpečení interní komunikace mezi mikroslužbami Azure Machine Learning a k zabezpečení externích volání do koncového bodu vyhodnocování. Veškerý přístup k úložišti Azure storage se také vyskytuje přes zabezpečený kanál.
+Azure Machine Learning používá TLS k zabezpečení interní komunikace mezi různými mikroslužbami Azure Machine Learning. Veškerý přístup k úložišti Azure storage se také vyskytuje přes zabezpečený kanál.
 
-Další informace najdete [v tématu Použití TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
+K zabezpečení externích volání koncového bodu vyhodnocování Azure Machine Learning používá TLS. Další informace najdete [v tématu Použití TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
 
 ### <a name="using-azure-key-vault"></a>Použití trezoru klíčů Azure
 

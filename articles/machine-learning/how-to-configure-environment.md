@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5f46f5af723e1245afbc6bca90d25ae9036d646
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472422"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399014"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace vývojového prostředí pro Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -201,7 +201,7 @@ Pokud používáte místní počítač (který může být také vzdálený virt
     pip install <new package>
     ```
 
-### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter notebooky
+### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Poznámkové bloky Jupyter
 
 Jupyter Notebooky jsou součástí [projektu Jupyter](https://jupyter.org/). Poskytují interaktivní kódování prostředí, kde můžete vytvářet dokumenty, které kombinují živý kód s narativní text a grafiku. Jupyter Notebooky jsou také skvělý způsob, jak sdílet své výsledky s ostatními, protože můžete uložit výstup oddílů kódu v dokumentu. Poznámkové bloky Jupyter můžete nainstalovat na různých platformách.
 
@@ -243,7 +243,7 @@ Povolení těchto součástí v prostředí poznámkového bloku Jupyter:
 
 1. Pokud chcete nakonfigurovat poznámkový blok Jupyter tak, aby používal pracovní prostor Azure Machine Learning, přejděte do části [Vytvořit konfigurační soubor pracovního prostoru.](#workspace)
 
-### <a name="visual-studio-code"></a><a id="vscode"></a>Kód visual studia
+### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
 Visual Studio Code je velmi populární editor kódu pro různé platformy, který podporuje rozsáhlou sadu programovacích jazyků a nástrojů prostřednictvím rozšíření dostupných na [trhu Visual Studio](https://marketplace.visualstudio.com/vscode). [Rozšíření Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) nainstaluje rozšíření [Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python) pro kódování ve všech typech prostředí Pythonu (virtuální, Anaconda atd.). Kromě toho poskytuje komfortní funkce pro práci s prostředky Azure Machine Learning a spuštění experimentů Azure Machine Learning vše bez opuštění Visual Studio Code.
 
@@ -288,7 +288,7 @@ Použijte tato nastavení:
 | Nastavení |Platí pro| Hodnota |
 |----|---|---|
 | Název clusteru |Vždy| název clusteru |
-| Modul runtime Databricks |Vždy|Runtime bez ML 6.0 (scala 2.11, jiskra 2.4.3) |
+| Modul runtime Databricks |Vždy|Doba runtime mimo ML 6.5 (scala 2.11, jiskra 2.4.3) |
 | Verze Pythonu |Vždy| 3 |
 | Pracovníků |Vždy| 2 nebo vyšší |
 | Typy virtuálních počítačů pracovních uzlů <br>(určuje maximální počet souběžných iterací) |Automatizované strojové učení<br>Pouze| Upřednostňovaný virtuální počítač optimalizovaný pro paměť |

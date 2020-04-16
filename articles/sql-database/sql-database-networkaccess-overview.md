@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945381"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414419"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Ovládací prvky přístupu k síti Azure SQL Database a Data Warehouse
 
@@ -59,10 +59,10 @@ Když je **nastavena na ON** Azure SQL Server umožňuje komunikaci ze všech pr
 V mnoha případech je nastavení **ON** tolerantnější než to, co většina zákazníků chce. Mohou chtít nastavit toto nastavení **na OFF** a nahradit jej více omezující pravidla brány firewall IP nebo pravidla brány firewall virtuální sítě. To má vliv na následující funkce, které běží na virtuálních počítačích v Azure, které nejsou součástí vaší virtuální sítě, a proto se připojují k databázi SQL prostřednictvím IP adresy Azure.
 
 ### <a name="import-export-service"></a>Import exportní služby
-Služba importu exportu nefunguje **Povolit službám Azure přístup k serveru** nastavený na VYPNUTO. Problém však můžete vyřešit [ručním spuštěním sqlpackage.exe z virtuálního počítače Azure nebo provedením exportu](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) přímo ve vašem kódu pomocí rozhraní DACFx API.
+Import export ní služba **nefunguje, když povolit přístup ke službám Azure** je **nastavena**na OFF . Problém však můžete vyřešit [ručním spuštěním sqlpackage.exe z virtuálního počítače Azure nebo provedením exportu](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) přímo ve vašem kódu pomocí rozhraní DACFx API.
 
 ### <a name="data-sync"></a>Synchronizace dat
-Chcete-li použít funkci synchronizace dat s **povolit službám Azure pro přístup k serveru** nastaveným na VYPNUTO, musíte vytvořit jednotlivé položky pravidel brány firewall pro přidání IP adres z [značky služby](sql-database-server-level-firewall-rule.md) **SQL** pro oblast hostující databázi **Hub.**
+Chcete-li použít funkci synchronizace dat s **možností Povolit přístup ke službám Azure** nastaveným na **hodnotu OFF**, je třeba vytvořit jednotlivé položky pravidel brány firewall pro přidání IP adres z [značky služby](sql-database-server-level-firewall-rule.md) **SQL** pro oblast hostující databázi **Hub.**
 Přidejte tato pravidla brány firewall na úrovni serveru do logických serverů hostujících databáze **Hub** i **Členské** databáze (které mohou být v různých oblastech)
 
 Ke generování IP adres odpovídajících značce SQL pro oblast Západní USA použijte následující skript Prostředí PowerShell.

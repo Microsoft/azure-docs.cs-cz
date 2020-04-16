@@ -1,19 +1,18 @@
 ---
 title: Ovládací prvek zabezpečení Azure – ochrana dat
-description: Ochrana dat zabezpečení
+description: Ochrana dat řízení zabezpečení Azure
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/14/2020
 ms.author: mbaldwin
-ms.custom: security-recommendations
-ms.openlocfilehash: 5482495f87e87e5d05d8adca6b053810a62dcb4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: security-benchmark
+ms.openlocfilehash: 035894c80e619851264aae91daa2d7852d156964
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934521"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408549"
 ---
 # <a name="security-control-data-protection"></a>Řízení zabezpečení: Ochrana dat
 
@@ -27,53 +26,33 @@ Doporučení pro ochranu dat se zaměřují na řešení problémů souvisejíc�
 
 Značky slouží ke sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
-Jak vytvořit a používat značky:
-
-https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [Jak vytvořit a používat značky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 ## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Izolovat systémy ukládající nebo zpracovávající citlivé informace
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 4.2 | 13.2 | Zákazník |
+| 4.2 | 13.2, 2.10 | Zákazník |
 
-Implementujte samostatné předplatná nebo skupiny pro správu pro vývoj, testování a výrobu. Prostředky by měly být odděleny virtuální sítí/podsítí, odpovídajícím způsobem označeny a zabezpečeny skupinou zabezpečení sítě zabezpečení sítě nebo bránou Azure Firewall. Zdroje, které ukládají nebo zpracovávají citlivé údaje, by měly být dostatečně izolovány. Pro virtuální počítače ukládání nebo zpracování citlivých dat, implementovat zásady a postupy, chcete-li je vypnout, když se nepoužívá.
+Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit pomocí řízení přístupu založeného na rolích služby Azure Active Directory. 
 
-Jak vytvořit další předplatná Azure:
+- [Jak vytvořit další předplatná Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
-https://docs.microsoft.com/azure/billing/billing-create-subscription
+- [Jak vytvořit skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
 
-Jak vytvořit skupiny pro správu:
-
-https://docs.microsoft.com/azure/governance/management-groups/create
-
-Jak vytvořit a používat značky:
-
-https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
-
-Jak vytvořit virtuální síť:
-
-https://docs.microsoft.com/azure/virtual-network/quick-create-portal
-
-Jak vytvořit skupinu zabezpečení zabezpečení s konfigurací zabezpečení:
-
-https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
-
-Jak nasadit Bránu Azure Firewall:
-
-https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
-
-Jak nakonfigurovat výstrahu nebo výstrahu a odmítnout pomocí Azure Firewall:
-
-https://docs.microsoft.com/azure/firewall/threat-intel
+- [Jak vytvářet a používat značky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 ## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Sledování a blokování neoprávněného přenosu citlivých informací
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 4.3 | 13.3 | Zákazník |
+| 4.3 | 13.3 | Sdílená |
 
-Nasaďte automatizovaný nástroj na obvody sítě, který monitoruje neoprávněný přenos citlivých informací a blokuje takové přenosy a zároveň upozorňuje odborníky na zabezpečení informací.
+Využijte řešení třetích stran z Azure Marketplace na hraničních obvodech sítě, které monitoruje neoprávněný přenos citlivých informací a blokuje takové přenosy a zároveň upozorňuje odborníky na zabezpečení informací.
+
+Pro základní platformu, která je spravována společností Microsoft, společnost Microsoft zachází s veškerým zákaznickým obsahem jako s citlivým a chrání před ztrátou a expozicí zákaznických dat. Aby byla zákaznická data v Azure stále zabezpečená, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a funkcí ochrany dat.
+
+- [Principy ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
 ## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Šifrování všech citlivých informací při přepravě
 
@@ -85,31 +64,27 @@ Nasaďte automatizovaný nástroj na obvody sítě, který monitoruje neoprávn�
 
 Postupujte podle doporučení Azure Security Center pro šifrování v klidovém stavu a šifrování při přenosu, pokud je to možné.
 
-Pochopte šifrování při přenosu s Azure:
-
-https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit
+- [Principy šifrování při přenosu s Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
 ## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Použití aktivního nástroje pro zjišťování k identifikaci citlivých dat
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 4.5 | 14.5 | Zákazník |
+| 4.5 | 14.5 | Sdílená |
 
-Pokud pro vaši konkrétní službu v Azure není k dispozici žádná funkce, použijte nástroj pro aktivní zjišťování třetí strany k identifikaci všech citlivých informací uložených, zpracovávaných nebo přenášených technologickými systémy organizace, včetně těch, které se nacházejí na místě, nebo na vzdáleného poskytovatele služeb a aktualizovat inventář citlivých informací organizace.
+Pokud pro vaši konkrétní službu v Azure není k dispozici žádná funkce, použijte nástroj pro aktivní zjišťování třetí strany k identifikaci všech citlivých informací uložených, zpracovávaných nebo přenášených technologickými systémy organizace, včetně těch, které se nacházejí na místě nebo u vzdáleného poskytovatele služeb, a aktualizujte inventář citlivých informací organizace.
 
 Azure Information Protection slouží k identifikaci citlivých informací v dokumentech Office 365.
 
 Azure SQL Information Protection vám pomůže s klasifikací a označováním informací uložených v databázích Azure SQL.
 
-Jak implementovat Azure SQL Data Discovery:
+- [Jak implementovat Azure SQL Data Discovery](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
 
-https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification
+- [Jak implementovat Azure Information Protection](https://docs.microsoft.com/azure/information-protection/deployment-roadmap)
 
-Jak implementovat Azure Information Protection:
+- [Principy ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-https://docs.microsoft.com/azure/information-protection/deployment-roadmap
-
-## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Použití Azure RBAC k řízení přístupu k prostředkům
+## <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Řízení přístupu na základě rolí k řízení přístupu k prostředkům
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
@@ -117,21 +92,19 @@ https://docs.microsoft.com/azure/information-protection/deployment-roadmap
 
 Azure AD RBAC slouží k řízení přístupu k datům a prostředkům, jinak použijte metody řízení přístupu specifické pro službu.
 
-Principy Azure RBAC:
-
-https://docs.microsoft.com/azure/role-based-access-control/overview
-
-Jak nakonfigurovat RBAC v Azure:
-
-https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+- [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Použití ochrany před ztrátou dat na hostiteli k vynucení kontroly přístupu
 
 | Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 4.7 | 14.7 | Zákazník |
+| 4.7 | 14.7 | Sdílená |
 
-Implementujte nástroj třetí strany, jako je například automatizované řešení zabránění ztrátám dat založené na hostiteli, k vynucení řízení přístupu k datům i v případě, že jsou data zkopírována ze systému.
+Pokud je to nutné pro dodržování předpisů na výpočetních prostředcích, implementujte nástroj třetí strany, jako je například automatizované řešení ochrany dat založené na hostiteli, k vynucení řízení přístupu k datům, i když jsou data zkopírována ze systému.
+
+Pro základní platformu, která je spravována společností Microsoft, společnost Microsoft považuje veškerý obsah zákazníků za citlivý a zachází velmi daleko, aby se ochránila před ztrátou a expozicí dat zákazníků. Aby byla zákaznická data v Azure stále zabezpečená, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a funkcí ochrany dat.
+
+- [Principy ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
 ## <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Šifrování citlivých informací v klidovém stavu
 
@@ -141,13 +114,9 @@ Implementujte nástroj třetí strany, jako je například automatizované řeš
 
 Šifrování používejte v klidovém stavu u všech prostředků Azure. Společnost Microsoft doporučuje povolit Azure spravovat šifrovací klíče, ale v některých případech máte možnost spravovat vlastní klíče. 
 
-Principy šifrování v klidovém stavu v Azure:
+- [Principy šifrování v klidovém stavu v Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 
-https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
-
-Konfigurace šifrovacích klíčů spravovaných zákazníkem:
-
-https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
+- [Konfigurace šifrovacích klíčů spravovaných zákazníkem](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
 
 ## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokolování a upozorňování na změny kritických prostředků Azure
 
@@ -157,10 +126,9 @@ https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
 Pomocí Azure Monitoru s protokolem aktivit Azure můžete vytvářet výstrahy, když dojde ke změnám v důležitých prostředcích Azure.
 
-Jak vytvořit výstrahy pro události protokolu aktivit Azure:
+- [Jak vytvořit výstrahy pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na další ovládací prvek zabezpečení: [Správa chyb zabezpečení](security-control-vulnerability-management.md)
+- Další ovládací prvek zabezpečení: [Správa ohrožení zabezpečení](security-control-vulnerability-management.md)

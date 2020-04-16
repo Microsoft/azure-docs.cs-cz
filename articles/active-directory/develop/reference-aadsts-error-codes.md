@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 40a7406ea91c95daad2f180b9d0f4620cdbbf454
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 87a962709638391887eaa275f059bf4ceae9218b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875924"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406977"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Chybové kódy ověřování azure a autorizace
 
@@ -27,6 +27,49 @@ Hledáte informace o kódech chyb AADSTS, které jsou vráceny ze služby token�
 > Tyto informace jsou předběžné a můžou se změnit. Máte dotaz nebo nemůžete najít, co hledáte? Vytvořte problém s GitHubem nebo si [přečtěte téma Podpora a možnosti nápovědy pro vývojáře,](active-directory-develop-help-support.md) kde se dozvíte o dalších způsobech, jak získat nápovědu a podporu.
 >
 > Tato dokumentace je k dispozici pro vývojáře a správce pokyny, ale by nikdy použít samotný klient. Kódy chyb se mohou kdykoli změnit, aby bylo možné poskytnout podrobnější chybové zprávy, které jsou určeny k pomoci vývojáři při vytváření jejich aplikace. Aplikace, které se závislost na text nebo čísla kódů chyb bude přerušena v průběhu času.
+
+## <a name="handling-error-codes-in-your-application"></a>Zpracování chybových kódů v aplikaci
+
+[Specifikace OAuth2.0](https://tools.ietf.org/html/rfc6749#section-5.2) poskytuje pokyny, jak zpracovat `error` chyby během ověřování pomocí části chyby odpovědi. 
+
+Zde je ukázková odpověď na chybu:
+
+```json
+{
+  "error": "invalid_scope",
+  "error_description": "AADSTS70011: The provided value for the input parameter 'scope' is not valid. The scope https://example.contoso.com/activity.read is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
+  "error_codes": [
+    70011
+  ],
+  "timestamp": "2016-01-09 02:02:12Z",
+  "trace_id": "255d1aef-8c98-452f-ac51-23d051240864",
+  "correlation_id": "fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7", 
+  "error_uri":"https://login.microsoftonline.com/error?code=70011"
+}
+```
+
+| Parametr         | Popis    |
+|-------------------|----------------|
+| `error`       | Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dochází, a měl by být použit k reakci na chyby. |
+| `error_description` | Konkrétní chybová zpráva, která může vývojáři pomoci identifikovat hlavní příčinu chyby ověřování. Nikdy nepoužívejte toto pole k reakci na chybu v kódu. |
+| `error_codes` | Seznam kódů chyb specifických pro STS, které mohou pomoci při diagnostice.  |
+| `timestamp`   | Čas, kdy došlo k chybě. |
+| `trace_id`    | Jedinečný identifikátor požadavku, který může pomoci při diagnostice. |
+| `correlation_id` | Jedinečný identifikátor požadavku, který může pomoci při diagnostice napříč součástmi. |
+| `error_uri` |  Odkaz na stránku vyhledávání chyb s dalšími informacemi o chybě.  To to je pouze pro vývojáře použití, neprezentovat ji uživatelům.  K dispozici pouze v případě, že systém vyhledávání chyb má další informace o chybě - ne všechny chyby mají další informace.|
+
+Pole `error` má několik možných hodnot - prohlédněte si odkazy na dokumentaci protokolu a specifikace OAuth 2.0, `authorization_pending` abyste se dozvěděli více o konkrétních chybách (například v [toku kódu zařízení)](v2-oauth2-device-code.md)a jak na ně reagovat.  Některé běžné jsou uvedeny zde:
+
+| Kód chyby         | Popis        | Akce klienta    |
+|--------------------|--------------------|------------------|
+| `invalid_request`  | Chyba protokolu, například chybějící požadovaný parametr. | Opravte a znovu odešlete požadavek.|
+| `invalid_grant`    | Některé autentizační materiály (ověřovací kód, obnovovací token, přístupový token, výzva PKCE) byly neplatné, neoddělitelné, chybějící nebo jinak nepoužitelné | Zkuste nový požadavek `/authorize` na koncový bod získat nový autorizační kód.  Zvažte kontrolu a ověření používání protokolů pomocí této aplikace. |
+| `unauthorized_client` | Ověřený klient není oprávněn používat tento typ udělení autorizace. | K tomu obvykle dochází, když klientská aplikace není registrovaná ve službě Azure AD nebo není přidána do klienta Azure AD uživatele. Aplikace může vyzvat uživatele s pokyny pro instalaci aplikace a její přidání do Služby Azure AD. |
+| `invalid_client` | Ověření klienta se nezdařilo.  | Pověření klienta nejsou platná. Chcete-li opravit, správce aplikace aktualizuje pověření.   |
+| `unsupported_grant_type` | Autorizační server nepodporuje typ udělení autorizace. | Změňte typ grantu v žádosti. K tomuto typu chyby by mělo dojít pouze během vývoje a být zjištěna během počátečního testování. |
+| `invalid_resource` | Cílový prostředek je neplatný, protože neexistuje, Azure AD ho nemůže najít nebo není správně nakonfigurovaný. | To znamená, že prostředek, pokud existuje, nebyl nakonfigurován v tenantovi. Aplikace může vyzvat uživatele s pokyny pro instalaci aplikace a její přidání do Služby Azure AD.  Během vývoje to obvykle označuje nesprávně nastavit testovacího klienta nebo překlep v názvu požadovaného oboru. |
+| `interaction_required` | Požadavek vyžaduje interakci uživatele. Je například vyžadován další krok ověřování. | Opakujte požadavek se stejným prostředkem, interagně, aby uživatel mohl dokončit všechny požadované problémy.  |
+| `temporarily_unavailable` | Server je dočasně příliš zaneprázdněn pro zpracování požadavku. | Opakujte požadavek. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděna z důvodu dočasné podmínky. |
 
 ## <a name="lookup-current-error-code-information"></a>Vyhledávání aktuálních informací o kódu chyby
 Kódy chyb a zprávy se mohou změnit.  Nejnovější informace naleznete na `https://login.microsoftonline.com/error` stránce a vyhledejte popisy chyb, opravy a některá navrhovaná řešení.  

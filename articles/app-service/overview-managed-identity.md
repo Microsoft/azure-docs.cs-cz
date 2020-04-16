@@ -3,24 +3,25 @@ title: Spravované identity
 description: Zjistěte, jak spravované identity fungují ve službě Azure App Service a Azure Functions, jak nakonfigurovat spravovanou identitu a vygenerovat token pro back-endový prostředek.
 author: mattchenderson
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/14/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 6e3169f2bfcba0a02af1490f875cbab8a14d02f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 875d2bbebdfa95c6d180979399d876eb2afc01b4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280024"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392525"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak používat spravované identity pro službu App Service a Funkce Azure
 
 > [!Important] 
 > Spravované identity pro služby App Service a Funkce Azure se nebudou chovat podle očekávání, pokud se vaše aplikace migruje mezi předplatnými/tenanty. Aplikace bude muset získat novou identitu, kterou lze provést zakázáním a opětovným povolením funkce. Viz [Odstranění identity](#remove) níže. Následné prostředky budou také muset mít aktualizované zásady přístupu, aby bylo nutné používat novou identitu.
 
-Toto téma ukazuje, jak vytvořit spravovanou identitu pro aplikace App Service a Azure Functions a jak ji použít k přístupu k dalším prostředkům. Spravovaná identita z Azure Active Directory (AAD) umožňuje vaší aplikaci snadný přístup k dalším prostředkům chráněným AAD, jako je Azure Key Vault. Identita je spravována platformou Azure a nevyžaduje, abyste zrozovávat nebo otáčet žádné tajné klíče. Další informace o spravovaných identitách ve službě AAD najdete v [tématu Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
+Toto téma ukazuje, jak vytvořit spravovanou identitu pro aplikace App Service a Azure Functions a jak ji použít k přístupu k dalším prostředkům. Spravovaná identita z Azure Active Directory (Azure AD) umožňuje vaší aplikaci snadný přístup k dalším prostředkům chráněným Azure AD, jako je Azure Key Vault. Identita je spravována platformou Azure a nevyžaduje, abyste zrozovávat nebo otáčet žádné tajné klíče. Další informace o spravovaných identitách ve službě Azure AD najdete v [tématu Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
-Vaší žádosti lze udělit dva typy identit: 
+Vaší žádosti lze udělit dva typy identit:
+
 - Systémem **přiřazená identita** je s vaší aplikací svázaná a pokud je vaše aplikace odstraněná, smaže se. Aplikace může mít pouze jednu identitu přiřazenou systému.
 - **Identita přiřazená uživatelem** je samostatný prostředek Azure, který se dá přiřadit k vaší aplikaci. Aplikace může mít více identit přiřazených uživatelem.
 
@@ -57,6 +58,7 @@ Následující kroky vás provedou vytvořením webové aplikace a přiřazením
     ```azurecli-interactive
     az login
     ```
+
 2. Vytvořte webovou aplikaci pomocí cli. Další příklady použití cli se službou aplikace najdete v [tématu ukázky funkce CLI služby App Service](../app-service/samples-cli.md):
 
     ```azurecli-interactive
@@ -84,10 +86,10 @@ Následující kroky vás provedou vytvořením webové aplikace a přiřazením
     ```azurepowershell-interactive
     # Create a resource group.
     New-AzResourceGroup -Name myResourceGroup -Location $location
-    
+
     # Create an App Service plan in Free tier.
     New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
-    
+
     # Create a web app.
     New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
@@ -103,18 +105,20 @@ Následující kroky vás provedou vytvořením webové aplikace a přiřazením
 Šablonu Azure Resource Manager umíte automatizovat nasazení prostředků Azure. Další informace o nasazení do služby App Service a funkce najdete [v tématu Automatizace nasazení prostředků ve službě App Service](../app-service/deploy-complex-application-predictably.md) a [Automatizace nasazení prostředků ve funkcích Azure](../azure-functions/functions-infrastructure-as-code.md).
 
 Libovolný prostředek `Microsoft.Web/sites` typu lze vytvořit s identitou zahrnutím následující vlastnosti do definice prostředku:
+
 ```json
 "identity": {
     "type": "SystemAssigned"
-}    
+}
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Aplikace může mít současně přiřazené i uživatelem přiřazené identity. V takovém případě `type` by byl majetek`SystemAssigned,UserAssigned`
 
 Přidání systémově přiřazeného typu říká Azure k vytvoření a správě identity pro vaši aplikaci.
 
 Webová aplikace může například vypadat takto:
+
 ```json
 {
     "apiVersion": "2016-08-01",
@@ -138,6 +142,7 @@ Webová aplikace může například vypadat takto:
 ```
 
 Po vytvoření má web následující další vlastnosti:
+
 ```json
 "identity": {
     "type": "SystemAssigned",
@@ -146,8 +151,7 @@ Po vytvoření má web následující další vlastnosti:
 }
 ```
 
-Vlastnost tenantId identifikuje, k jakému tenantovi AAD identita patří. PrincipalId je jedinečný identifikátor pro novou identitu aplikace. V rámci Služby AAD má instanční objekt stejného názvu, který jste přiřadili instanci služby App Service nebo Azure Functions.
-
+Vlastnost tenantId identifikuje, k čemu patří klient Azure AD. PrincipalId je jedinečný identifikátor pro novou identitu aplikace. V rámci Azure AD instanční objekt má stejný název, který jste přidali vaší app služby nebo Azure Functions instance.
 
 ## <a name="add-a-user-assigned-identity"></a>Přidání identity přiřazené uživateli
 
@@ -167,7 +171,7 @@ Nejprve budete muset vytvořit prostředek identity přiřazený uživateli.
 
 5. Na kartě **Uživatel přiřazený** klikněte na **Přidat**.
 
-6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na **Přidat**.
+6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na tlačítko **Add** (Přidat).
 
     ![Spravovaná identita ve službě App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -176,21 +180,23 @@ Nejprve budete muset vytvořit prostředek identity přiřazený uživateli.
 Šablonu Azure Resource Manager umíte automatizovat nasazení prostředků Azure. Další informace o nasazení do služby App Service a funkce najdete [v tématu Automatizace nasazení prostředků ve službě App Service](../app-service/deploy-complex-application-predictably.md) a [Automatizace nasazení prostředků ve funkcích Azure](../azure-functions/functions-infrastructure-as-code.md).
 
 Libovolný prostředek `Microsoft.Web/sites` typu lze vytvořit s identitou zahrnutím následujícího bloku `<RESOURCEID>` do definice prostředku a nahrazením ID prostředku požadované identity:
+
 ```json
 "identity": {
     "type": "UserAssigned",
     "userAssignedIdentities": {
         "<RESOURCEID>": {}
     }
-}    
+}
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Aplikace může mít současně přiřazené i uživatelem přiřazené identity. V takovém případě `type` by byl majetek`SystemAssigned,UserAssigned`
 
 Přidání typu přiřazeného uživateli říká Azure, aby používal uživatelem přiřazenou identitu zadanou pro vaši aplikaci.
 
 Webová aplikace může například vypadat takto:
+
 ```json
 {
     "apiVersion": "2016-08-01",
@@ -218,6 +224,7 @@ Webová aplikace může například vypadat takto:
 ```
 
 Po vytvoření má web následující další vlastnosti:
+
 ```json
 "identity": {
     "type": "UserAssigned",
@@ -230,12 +237,11 @@ Po vytvoření má web následující další vlastnosti:
 }
 ```
 
-PrincipalId je jedinečný identifikátor identity, která se používá pro správu AAD. ClientId je jedinečný identifikátor pro novou identitu aplikace, která se používá pro určení identity, která se má použít během volání za běhu.
-
+PrincipalId je jedinečný identifikátor pro identitu, která se používá pro správu Azure AD. ClientId je jedinečný identifikátor pro novou identitu aplikace, která se používá pro určení identity, která se má použít během volání za běhu.
 
 ## <a name="obtain-tokens-for-azure-resources"></a>Získání tokenů pro prostředky Azure
 
-Aplikace může používat svou spravovanou identitu k získání tokenů pro přístup k dalším prostředkům chráněným službou AAD, jako je například Azure Key Vault. Tyto tokeny představují aplikaci, která přistupuje k prostředku, a nikoli žádného konkrétního uživatele aplikace. 
+Aplikace může používat svou spravovanou identitu k získání tokenů pro přístup k dalším prostředkům chráněným službou Azure AD, jako je například Azure Key Vault. Tyto tokeny představují aplikaci, která přistupuje k prostředku, a nikoli žádného konkrétního uživatele aplikace. 
 
 Možná budete muset nakonfigurovat cílový prostředek, aby byl povolen přístup z vaší aplikace. Pokud například požadujete token pro přístup k trezoru klíčů, musíte se ujistit, že jste přidali zásady přístupu, které zahrnují identitu vaší aplikace. V opačném případě budou vaše volání do trezoru klíčů odmítnuta, i když obsahují token. Další informace o tom, které prostředky podporují tokeny Azure Active Directory, najdete v [tématu služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
@@ -248,56 +254,61 @@ Existuje jednoduchý protokol REST pro získání tokenu ve službě App Service
 
 Aplikace se spravovanou identitou má definovány dvě proměnné prostředí:
 
-- MSI_ENDPOINT - adresa URL místní služby tokenů.
-- MSI_SECRET - záhlaví, které pomáhá zmírnit útoky na požadavky na straně serveru (SSRF). Hodnota je otočena platformou.
+- IDENTITY_ENDPOINT - adresa URL místní služby tokenů.
+- IDENTITY_HEADER - záhlaví, které pomáhá zmírnit útoky na požadavky na straně serveru (SSRF). Hodnota je otočena platformou.
 
-**MSI_ENDPOINT** je místní adresa URL, ze které může vaše aplikace požadovat tokeny. Chcete-li získat token pro prostředek, vytvořte požadavek HTTP GET do tohoto koncového bodu, včetně následujících parametrů:
+IDENTITY_ENDPOINT **IDENTITY_ENDPOINT** je místní adresa URL, ze které může vaše aplikace požadovat tokeny. Chcete-li získat token pro prostředek, vytvořte požadavek HTTP GET do tohoto koncového bodu, včetně následujících parametrů:
 
-> |Název parametru|V|Popis|
-> |-----|-----|-----|
-> |prostředek|Dotaz|Identifikátor URI prostředku prostředku AAD prostředku, pro který by měl být získán token. Může se jedná o jednu ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředků.|
-> |verze-api|Dotaz|Verze rozhraní API tokenu, které má být použito. "2017-09-01" je v současné době jedinou podporovanou verzí.|
-> |Tajný kód|Hlavička|Hodnota proměnné prostředí MSI_SECRET. Tato hlavička se používá ke zmírnění útoků na serverové požadavky (SSRF).|
-> |Clientid|Dotaz|(Nepovinné, pokud není přiřazeno k uživateli) ID uživatelem přiřazené identity, která má být použita. Pokud je vynechána, používá se systémově přiřazená identita.|
+> | Název parametru    | V     | Popis                                                                                                                                                                                                                                                                                                                                |
+> |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+> | prostředek          | Dotaz  | Identifikátor URI prostředku azure ad prostředku, pro který by měl být získán token. Může se jedná o jednu ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředků.    |
+> | verze-api       | Dotaz  | Verze rozhraní API tokenu, které má být použito. Použijte prosím "2019-08-01" nebo novější.                                                                                                                                                                                                                                                                 |
+> | X-IDENTITY-HEADER | Hlavička | Hodnota proměnné prostředí IDENTITY_HEADER. Tato hlavička se používá ke zmírnění útoků na serverové požadavky (SSRF).                                                                                                                                                                                                    |
+> | client_id         | Dotaz  | (Nepovinné) ID klienta uživatelem přiřazené identity, která má být použita. Nelze použít na požadavek, `mi_res_id`který `object_id`obsahuje `principal_id`, , nebo . Pokud jsou vynechány`client_id`všechny `principal_id` `object_id`parametry `mi_res_id`ID ( , , , a ), použije se systémově přiřazená identita.                                             |
+> | Principal_id      | Dotaz  | (Nepovinné) ID jistiny uživatelepřiřazené identity, která má být použita. `object_id`je alias, který může být použit místo. Nelze použít na požadavek, který zahrnuje client_id, mi_res_id nebo object_id. Pokud jsou vynechány`client_id`všechny `principal_id` `object_id`parametry `mi_res_id`ID ( , , , a ), použije se systémově přiřazená identita. |
+> | mi_res_id         | Dotaz  | (Nepovinné) ID prostředku Azure uživatelem přiřazené identity, která má být použita. Nelze použít na požadavek, `client_id`který `object_id`obsahuje `principal_id`, , nebo . Pokud jsou vynechány`client_id`všechny `principal_id` `object_id`parametry `mi_res_id`ID ( , , , a ), použije se systémově přiřazená identita.                                      |
 
 > [!IMPORTANT]
-> Pokud se pokoušíte získat tokeny pro uživatelem přiřazené `clientid` identity, musíte zahrnout vlastnost. V opačném případě se služba tokenu pokusí získat token pro systémově přiřazenou identitu, která může nebo nemusí existovat.
+> Pokud se pokoušíte získat tokeny pro uživatelem přiřazené identity, musíte zahrnout jednu z volitelných vlastností. V opačném případě se služba tokenu pokusí získat token pro systémově přiřazenou identitu, která může nebo nemusí existovat.
 
 Úspěšná odpověď 200 OK zahrnuje tělo JSON s následujícími vlastnostmi:
 
-> |Název vlastnosti|Popis|
-> |-------------|----------|
-> |access_token|Požadovaný přístupový token. Volající webová služba může tento token použít k ověření přijímající webové služby.|
-> |expires_on|Čas, kdy vyprší platnost přístupového tokenu. Datum je reprezentováno jako počet sekund od 1970-01-01T0:0:0Z UTC až do doby vypršení platnosti. Tato hodnota se používá k určení životnosti tokenů uložených v mezipaměti.|
-> |prostředek|Identifikátor URI ID aplikace přijímající webové služby.|
-> |token_type|Označuje hodnotu typu tokenu. Jediný typ, který podporuje Azure AD je Nosič. Další informace o žetonech na doručitele naleznete v [rámci autorizace OAuth 2.0: Použití žetonu nosiče (RFC 6750).](https://www.rfc-editor.org/rfc/rfc6750.txt)|
+> | Název vlastnosti | Popis                                                                                                                                                                                                                                        |
+> |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+> | access_token  | Požadovaný přístupový token. Volající webová služba může tento token použít k ověření přijímající webové služby.                                                                                                                               |
+> | client_id     | ID klienta identity, která byla použita.                                                                                                                                                                                                       |
+> | expires_on    | Časový rozsah při vypršení platnosti přístupového tokenu. Datum je reprezentováno jako počet sekund od "1970-01-01T0:0:0Z UTC" `exp` (odpovídá deklaraci tokenu).                                                                                |
+> | not_before    | Časový rozsah, kdy se projeví přístupový token a může být přijat. Datum je reprezentováno jako počet sekund od "1970-01-01T0:0:0Z UTC" `nbf` (odpovídá deklaraci tokenu).                                                      |
+> | prostředek      | Prostředek, pro který byl požadován přístupový token, který odpovídá parametru `resource` řetězce dotazu požadavku.                                                                                                                               |
+> | token_type    | Označuje hodnotu typu tokenu. Jediný typ, který podporuje Azure AD je FBearer. Další informace o žetonech na doručitele naleznete v [rámci autorizace OAuth 2.0: Použití žetonu nosiče (RFC 6750).](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 
-Tato odpověď je stejná jako [odpověď pro požadavek přístupového tokenu služby AAD služby ke službě](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token).
+Tato odpověď je stejná jako [odpověď pro požadavek tokenu přístupu služby Azure AD služby ke službě](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
 > [!NOTE]
-> Proměnné prostředí jsou nastaveny při prvním spuštění procesu, takže po povolení spravované identity pro vaši aplikaci může `MSI_ENDPOINT` `MSI_SECRET` být nutné restartovat aplikaci nebo znovu nasadit její kód před a jsou k dispozici pro váš kód.
+> Starší verze tohoto protokolu, pomocí verze rozhraní API "2017-09-01", používala `secret` záhlaví namísto `X-IDENTITY-HEADER` a přijala `clientid` pouze vlastnost pro uživatele přiřazenou. Také vrátil `expires_on` ve formátu časového razítka. MSI_ENDPOINT lze použít jako alias pro IDENTITY_ENDPOINT a MSI_SECRET lze použít jako alias pro IDENTITY_HEADER.
 
 ### <a name="rest-protocol-examples"></a>Příklady protokolu REST
 
 Příklad požadavku může vypadat takto:
 
-```
-GET /MSI/token?resource=https://vault.azure.net&api-version=2017-09-01 HTTP/1.1
+```http
+GET /MSI/token?resource=https://vault.azure.net&api-version=2019-08-01 HTTP/1.1
 Host: localhost:4141
-Secret: 853b9a84-5bfa-4b22-a3f3-0b9a43d9ad8a
+X-IDENTITY-HEADER: 853b9a84-5bfa-4b22-a3f3-0b9a43d9ad8a
 ```
 
 A ukázková odpověď může vypadat takto:
 
-```
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
     "access_token": "eyJ0eXAi…",
-    "expires_on": "09/14/2017 00:00:00 PM +00:00",
+    "expires_on": "1586984735",
     "resource": "https://vault.azure.net",
-    "token_type": "Bearer"
+    "token_type": "Bearer",
+    "client_id": "5E29463D-71DA-4FE0-8E69-999B57DB23B0"
 }
 ```
 
@@ -313,21 +324,21 @@ private readonly HttpClient _client;
 // ...
 public async Task<HttpResponseMessage> GetToken(string resource)  {
     var request = new HttpRequestMessage(HttpMethod.Get, 
-        String.Format("{0}/?resource={1}&api-version=2017-09-01", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource));
-    request.Headers.Add("Secret", Environment.GetEnvironmentVariable("MSI_SECRET"));
+        String.Format("{0}/?resource={1}&api-version=2019-08-01", Environment.GetEnvironmentVariable("IDENTITY_ENDPOINT"), resource));
+    request.Headers.Add("X-IDENTITY-HEADER", Environment.GetEnvironmentVariable("IDENTITY_HEADER"));
     return await _client.SendAsync(request);
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
 const getToken = function(resource, cb) {
     let options = {
-        uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=2017-09-01`,
+        uri: `${process.env["IDENTITY_ENDPOINT"]}/?resource=${resource}&api-version=2019-08-01`,
         headers: {
-            'Secret': process.env["MSI_SECRET"]
+            'X-IDENTITY-HEADER': process.env["IDENTITY_HEADER"]
         }
     };
     rp(options)
@@ -341,12 +352,12 @@ const getToken = function(resource, cb) {
 import os
 import requests
 
-msi_endpoint = os.environ["MSI_ENDPOINT"]
-msi_secret = os.environ["MSI_SECRET"]
+identity_endpoint = os.environ["IDENTITY_ENDPOINT"]
+identity_header = os.environ["IDENTITY_HEADER"]
 
 def get_bearer_token(resource_uri):
-    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version=2017-09-01"
-    head_msi = {'Secret':msi_secret}
+    token_auth_uri = f"{identity_endpoint}?resource={resource_uri}&api-version=2019-08-01"
+    head_msi = {'X-IDENTITY-HEADER':identity_header}
 
     resp = requests.get(token_auth_uri, headers=head_msi)
     access_token = resp.json()['access_token']
@@ -358,8 +369,8 @@ def get_bearer_token(resource_uri):
 
 ```powershell
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
-$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=2017-09-01"
-$tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
+$tokenAuthURI = $env:IDENTITY_ENDPOINT + "?resource=$resourceURI&api-version=2019-08-01"
+$tokenResponse = Invoke-RestMethod -Method Get -Headers @{"X-IDENTITY-HEADER"="$env:IDENTITY_HEADER"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
 
@@ -423,7 +434,7 @@ Systémem přiřazenou identitu lze odebrat zakázáním funkce pomocí portálu
 }
 ```
 
-Odebráním systémově přiřazené identity tímto způsobem ji také odstraníte z aad. Systémem přiřazené identity jsou také automaticky odebrány z AAD při odstranění prostředku aplikace.
+Odebrání majedla systémovou identitu tímto způsobem také odstranit z Azure AD. Identity přiřazené systémem se také automaticky odeberou z Azure AD při odstranění prostředku aplikace.
 
 > [!NOTE]
 > K dispozici je také nastavení aplikace, které lze nastavit, WEBSITE_DISABLE_MSI, který pouze zakáže službu místnítoken. Však ponechá identitu na místě a nástroje budou stále zobrazovat spravovanou identitu jako "zapnuto" nebo "povoleno". V důsledku toho se použití tohoto nastavení nedoporučuje.

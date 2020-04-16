@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: a48c553f1c96b8777e0a591f428dca3f15d7d30e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: bdb2b31ee3abb30e6e7339f641b778ff5dc522b0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053641"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403797"
 ---
 # <a name="what-is-custom-vision"></a>Co je Custom Vision?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Klasifikátor obrázků je služba AI, která aplikuje popisky (které představují _třídy)_ na obrázky podle jejich vizuálních charakteristik. Na rozdíl od služby [Počítačové vidění](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) umožňuje vlastní vize určit štítky, které mají být aplikovány.
+Azure Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Klasifikátor obrázků je služba AI, která aplikuje popisky (které představují _třídy)_ na obrázky podle jejich vizuálních charakteristik. Na rozdíl od služby [Počítačové vidění](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) umožňuje vlastní vize určit popisky, které mají být aplikovány.
 
 ## <a name="what-it-does"></a>Co dělá
 

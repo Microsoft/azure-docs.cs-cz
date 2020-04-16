@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: f14cbef2ab568962601b3a407fa979e8f982598d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 508eac08284f91821223a78cafdfee7b4c9c540b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75483008"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410877"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Použití zprostředkovatele ID (preview) pro správu pověření
 
@@ -38,7 +38,7 @@ ID Broker umožňuje přihlásit se k clusterům ESP pomocí vícefaktorového o
 
 Chcete-li vytvořit cluster ESP s povoleným zprostředkovatelem ID, postupujte takto:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Postupujte podle základních kroků vytvoření clusteru ESP. Další informace naleznete [v tématu Vytvoření clusteru HDInsight pomocí esp](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 1. Vyberte **povolit zprostředkovatele HDInsight ID**.
 
@@ -55,6 +55,14 @@ Modul plug-in HDInsight [IntelliJ](https://docs.microsoft.com/azure/hdinsight/sp
 Po povolení služby ID Broker budete stále potřebovat hash hesel uložený ve scénářích Azure AD DS pro scénáře SSH s účty domény. Chcete-li SSH do virtuálního počítače připojovaného k doméně nebo ke spuštění příkazu, `kinit` musíte zadat heslo. 
 
 Ověřování SSH vyžaduje, aby byl hash k dispozici ve službě Azure AD DS. Pokud chcete použít SSH pouze pro scénáře správy, můžete vytvořit jeden účet pouze pro cloud a použít jej do clusteru SSH. Ostatní uživatelé mohou stále používat nástroje Ambari nebo HDInsight (například modul plug-in IntelliJ), aniž by měli k dispozici hash hesla ve službě Azure AD DS.
+
+## <a name="clinets-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clinets pomocí OAuth pro připojení k bráně HDInsight s nastavením ID Broker
+
+V nastavení zprostředkovatele ID vlastní aplikace a klienty připojení k bráně lze aktualizovat získat požadovaný token OAuth jako první. Podle kroků v tomto [dokumentu](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) můžete získat token s následujícími informacemi:
+
+*   OAuth zdroj uri:https://hib.azurehdinsight.net 
+* AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
+*   Oprávnění: (název: Cluster.ReadWrite, id:8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 ## <a name="next-steps"></a>Další kroky
 

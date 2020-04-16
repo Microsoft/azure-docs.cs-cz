@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772223"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408623"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů s povoleným šifrováním disku Azure do jiné oblasti Azure
 
 Tento článek popisuje, jak replikovat virtuální počítače Azure s povolenou Azure Disk Encryption (ADE), z jedné oblasti Azure do jiné.
 
 >[!NOTE]
-> Site Recovery aktuálně podporuje ADE, s azure active directory (AAD) pro virtuální počítače s operačními systémy Windows a Linux.  U počítačů se systémem ADE 1.1 (bez aad) musí virtuální počítače používat spravované disky. Virtuální počítače s nespravovanými disky nejsou podporované. Pokud přepnete z ADE 0.1 (s AAD) na 1.1 , budete muset zakázat replikaci a povolit replikaci pro virtuální ho dohledu po povolení 1.1.
+> Site Recovery aktuálně podporuje ADE, s azure active directory (AAD) pro virtuální počítače s operačními systémy Windows. Pro operační systémy Linux podporujeme ADE pouze bez AAD. Navíc pro počítače se systémem ADE 1.1 (bez AAD) musí virtuální počítače používat spravované disky. Virtuální počítače s nespravovanými disky nejsou podporované. Pokud přepnete z ADE 0.1 (s AAD) na 1.1 , budete muset zakázat replikaci a povolit replikaci pro virtuální ho dohledu po povolení 1.1.
 
 
 ## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>Požadovaná uživatelská oprávnění

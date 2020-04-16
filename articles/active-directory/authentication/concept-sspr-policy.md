@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fba4dae66b5adcea6cc33e61d8cf88946e29546e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f5987bee82dc22d3742cb5d87040930e5d2c52d
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051174"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393035"
 ---
 # <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Samoobslužné zásady a omezení pro resetování hesla ve službě Azure Active Directory
 
@@ -160,16 +160,6 @@ Chcete-li začít, [stáhněte a nainstalujte modul Azure AD PowerShell](https:/
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující články poskytují další informace o resetování hesla prostřednictvím služby Azure AD:
+Pokud chcete začít s programem Samoobslužné resetování hesla služby Samoobslužné [resetování služby Microsoft Active Directory, přečtěte si článek Možnost odemknutí účtu nebo obnovení hesla pomocí samoobslužného resetování hesla služby Azure Active Directory](tutorial-enable-sspr.md).
 
-* [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
-* [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
-* [Zaregistrujte se pro samoobslužné resetování hesla](../user-help/active-directory-passwords-reset-register.md).
-* [Máte dotaz k licencování?](concept-sspr-licensing.md)
-* [Jaká data používá SSPR a jaká data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
-* [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
-* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
-* [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
-* [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Myslím, že je něco rozbité. Jak lze vyřešit probléms sspr?](active-directory-passwords-troubleshoot.md)
-* [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
+Pokud máte vy nebo uživatelé problémy se službou SSPR, [přečtěte si článek Poradce při řešení samoobslužného resetování hesla](active-directory-passwords-troubleshoot.md)

@@ -1,16 +1,16 @@
 ---
 title: Použití spravované identity s aplikací
-description: Jak používat spravované identity v kódu aplikace Azure Service Fabric pro přístup ke službám Azure Services. Tato funkce je ve verzi Public Preview.
+description: Jak používat spravované identity v kódu aplikace Azure Service Fabric pro přístup ke službám Azure Services.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbdb1190ec3238a6accd34db3025e08c194d60b8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610314"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415618"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Jak využít spravovanou identitu aplikace Service Fabric pro přístup ke službám Azure (preview)
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Jak využít spravovanou identitu aplikace Service Fabric pro přístup ke službám Azure
 
 Aplikace Service Fabric můžou využít spravované identity k přístupu k dalším prostředkům Azure, které podporují ověřování na základě Azure Active Directory. Aplikace může získat [přístupový token](../active-directory/develop/developer-glossary.md#access-token) představující jeho identitu, který může být přiřazen k systému nebo uživateli, a použít jej jako token nosiče k ověření na jinou službu , označovanou také jako [chráněný server prostředků](../active-directory/develop/developer-glossary.md#resource-server). Token představuje identitu přiřazenou aplikaci Service Fabric a bude vydán pouze prostředkům Azure (včetně aplikací SF), které tuto identitu sdílejí. Podrobný popis spravovaných identit a také rozlišení mezi identitami přiřazenými systémem a identitami přiřazenými uživatelem naleznete v dokumentaci [k přehledu spravovaných](../active-directory/managed-identities-azure-resources/overview.md) identit. Budeme odkazovat na aplikaci Service Fabric s povolenou spravovanou identitou jako [klientskou aplikaci](../active-directory/develop/developer-glossary.md#client-application) v celém tomto článku.
 
@@ -24,19 +24,18 @@ Aplikace Service Fabric můžou využít spravované identity k přístupu k dal
 V clusterech povolených pro spravovanou identitu zpřístupňuje runtime Service Fabric koncový bod localhost, který aplikace mohou použít k získání přístupových tokenů. Koncový bod je k dispozici na každém uzlu clusteru a je přístupný všem entitám v tomto uzlu. Autorizovaní volající mohou získat přístupové tokeny voláním tohoto koncového bodu a předložením ověřovacího kódu. kód je generován runtime Service Fabric pro každou aktivaci odlišného balíčku kódu služby a je vázán na životnost procesu hostujícího tento balíček kódu služby.
 
 Konkrétně prostředí služby Service Fabric s podporou spravované identity bude nasazeno s následujícími proměnnými:
-- 'MSI_ENDPOINT': koncový bod localhost, kompletní s cestou, verzí rozhraní API a parametry odpovídajícími spravované identitě této služby
-- 'MSI_SECRET': ověřovací kód, který je neprůhledný řetězec a jednoznačně představuje službu na aktuálním uzlu
-
-> [!NOTE]
-> Názvy "MSI_ENDPOINT" a "MSI_SECRET" odkazují na předchozí označení spravovaných identit ("Identita spravované služby") a které je nyní zastaralé. Názvy jsou také konzistentní s ekvivalentní mise proměnných prostředí používané jinými službami Azure, které podporují spravované identity.
+- "IDENTITY_ENDPOINT": koncový bod localhost odpovídající spravované identitě služby
+- 'IDENTITY_HEADER': jedinečný ověřovací kód představující službu na aktuálním uzlu
+- 'IDENTITY_SERVER_THUMBPRINT' : Kryptografický otisk serveru identity spravovaného službou Fabric
 
 > [!IMPORTANT]
-> Kód žádosti by měl hodnotu proměnné prostředí "MSI_SECRET" považovat za citlivé údaje – neměla by být zaznamenávána ani jinak šířena. Ověřovací kód nemá žádnou hodnotu mimo místní uzel nebo po ukončení procesu hostujícího službu, ale představuje identitu služby Service Fabric, a proto by měl být zpracován se stejnými opatřeními jako samotný přístupový token.
+> Kód aplikace by měl hodnotu proměnné prostředí "IDENTITY_HEADER" považovat za citlivé údaje – neměla by být zaznamenávána ani jinak šířena. Ověřovací kód nemá žádnou hodnotu mimo místní uzel nebo po ukončení procesu hostujícího službu, ale představuje identitu služby Service Fabric, a proto by měl být zpracován se stejnými opatřeními jako samotný přístupový token.
 
 Chcete-li získat token, klient provede následující kroky:
-- vytvoří identifikátor URI zřetězením koncového bodu spravované identity (MSI_ENDPOINT hodnota) s verzí rozhraní API a prostředek (cílovou skupinu) požadovaný pro token
-- vytvoří požadavek HTTP GET pro zadaný identifikátor URI
-- přidá ověřovací kód (MSI_SECRET hodnotu) jako hlavičku do požadavku
+- vytvoří identifikátor URI zřetězením koncového bodu spravované identity (IDENTITY_ENDPOINT hodnota) s verzí rozhraní API a prostředek (cílovou skupinu) požadovaný pro token
+- vytvoří požadavek GET http(s) pro zadaný identifikátor URI
+- přidá příslušnou logiku ověření certifikátu serveru
+- přidá ověřovací kód (IDENTITY_HEADER hodnotu) jako hlavičku do požadavku
 - podá žádost
 
 Úspěšná odpověď bude obsahovat datovou část JSON představující výsledný přístupový token a také metadata popisující ji. Neúspěšná odpověď bude také obsahovat vysvětlení selhání. Další podrobnosti o zpracování chyb naleznete níže.
@@ -44,19 +43,22 @@ Chcete-li získat token, klient provede následující kroky:
 Přístupové tokeny budou ukládány service fabric na různých úrovních (uzel, cluster, služba zprostředkovatele prostředků), takže úspěšná odpověď nemusí nutně znamenat, že token byl vydán přímo v reakci na požadavek uživatelské aplikace. Tokeny budou uloženy do mezipaměti po dobu kratší než jejich životnost, a proto je zaručeno, že aplikace obdrží platný token. Doporučuje se, aby kód aplikace ukládá do mezipaměti sám všechny přístupové tokeny, které získá; klíč pro ukládání do mezipaměti by měl obsahovat (odvození) publika. 
 
 
+> [!NOTE]
+> Jediná přijatá verze rozhraní `2019-07-01-preview`API je v současné době a může se změnit.
+
 Žádost o vzorek:
 ```http
-GET 'http://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://keyvault.azure.com/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
+GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.net/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
 ```
 kde:
 
-| Element | Popis |
+| Prvek | Popis |
 | ------- | ----------- |
 | `GET` | Sloveso HTTP označující, že chcete načíst data z koncového bodu. V tomto případě přístupový token OAuth. | 
-| `http://localhost:2377/metadata/identity/oauth2/token` | Koncový bod spravované identity pro aplikace Service Fabric, poskytované prostřednictvím proměnné prostředí MSI_ENDPOINT. |
+| `https://localhost:2377/metadata/identity/oauth2/token` | Koncový bod spravované identity pro aplikace Service Fabric, poskytované prostřednictvím proměnné prostředí IDENTITY_ENDPOINT. |
 | `api-version` | Parametr řetězce dotazu určující verzi rozhraní API služby Token spravované identity; v současné době je `2019-07-01-preview`jedinou přijatou hodnotou a může se změnit. |
-| `resource` | Parametr řetězce dotazu označující identifikátor URI ID aplikace cílového prostředku. To se projeví `aud` jako (publikum) nárok vydaného tokenu. Tento příklad požaduje token pro přístup k trezoru klíčů Azure,\/jehož identifikátor URI ID aplikace je https: /keyvault.azure.com/. |
-| `Secret` | Pole hlavičky požadavku HTTP vyžadované službou Service Fabric Managed Identity Token Service Service Service Services k ověření volajícího. Tato hodnota je poskytována runtime SF prostřednictvím proměnné prostředí MSI_SECRET. |
+| `resource` | Parametr řetězce dotazu označující identifikátor URI ID aplikace cílového prostředku. To se projeví `aud` jako (publikum) nárok vydaného tokenu. Tento příklad požaduje token pro přístup k trezoru klíčů Azure,\/jehož identifikátor URI ID aplikace je https: /vault.azure.net/. |
+| `Secret` | Pole hlavičky požadavku HTTP vyžadované službou Service Fabric Managed Identity Token Service Service Service Services k ověření volajícího. Tato hodnota je poskytována runtime SF prostřednictvím proměnné prostředí IDENTITY_HEADER. |
 
 
 Odpověď vzorku:
@@ -67,12 +69,12 @@ Content-Type: application/json
     "token_type":  "Bearer",
     "access_token":  "eyJ0eXAiO...",
     "expires_on":  1565244611,
-    "resource":  "https://keyvault.azure.com/"
+    "resource":  "https://vault.azure.net/"
 }
 ```
 kde:
 
-| Element | Popis |
+| Prvek | Popis |
 | ------- | ----------- |
 | `token_type` | Typ tokenu; v tomto případě přístupový token "Nosič", což znamená, že prezentující ("nosič") tohoto tokenu je zamýšleným předmětem tokenu. |
 | `access_token` | Požadovaný přístupový token. Při volání zabezpečené rozhraní REST API je `Authorization` token vložen do pole hlavičky požadavku jako token "nosiče", což umožňuje rozhraní API k ověření volajícího. | 
@@ -124,20 +126,33 @@ namespace Azure.ServiceFabric.ManagedIdentity.Samples
         /// <returns>Access token</returns>
         public static async Task<string> AcquireAccessTokenAsync()
         {
-            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("MSI_ENDPOINT");
-            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("MSI_SECRET");
+            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("IDENTITY_ENDPOINT");
+            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("IDENTITY_HEADER");
+            var managedIdentityServerThumbprint = Environment.GetEnvironmentVariable("IDENTITY_SERVER_THUMBPRINT");
+            // Latest api version, 2019-07-01-preview is still supported.
+            var managedIdentityApiVersion = Environment.GetEnvironmentVariable("IDENTITY_API_VERSION");
             var managedIdentityAuthenticationHeader = "secret";
-            var managedIdentityApiVersion = "2019-07-01-preview";
             var resource = "https://management.azure.com/";
 
             var requestUri = $"{managedIdentityEndpoint}?api-version={managedIdentityApiVersion}&resource={HttpUtility.UrlEncode(resource)}";
 
             var requestMessage = new HttpRequestMessage(HttpMethod.Get, requestUri);
             requestMessage.Headers.Add(managedIdentityAuthenticationHeader, managedIdentityAuthenticationCode);
+            
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, certChain, policyErrors) =>
+            {
+                // Do any additional validation here
+                if (policyErrors == SslPolicyErrors.None)
+                {
+                    return true;
+                }
+                return 0 == string.Compare(cert.GetCertHashString(), managedIdentityServerThumbprint, StringComparison.OrdinalIgnoreCase);
+            };
 
             try
             {
-                var response = await new HttpClient().SendAsync(requestMessage)
+                var response = await new HttpClient(handler).SendAsync(requestMessage)
                     .ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
@@ -321,7 +336,7 @@ Pole Stavový kód v hlavičce odpovědi HTTP označuje stav úspěchu požadavk
 
 Pokud dojde k chybě, odpovídající tělo odpovědi HTTP obsahuje objekt JSON s podrobnostmi o chybě:
 
-| Element | Popis |
+| Prvek | Popis |
 | ------- | ----------- |
 | kód | Kód chyby |
 | correlationId | ID korelace, které lze použít pro ladění. |

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 17e474de9c221126d67cc2982ba11c6ff75e7aa3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c1d2c0e48394fbde1b595ae4b405d84f437dc5e4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668497"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392818"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití standardního vyvyčovávače zatížení skladových položk ve službě Azure Kubernetes Service (AKS)
 
@@ -32,7 +32,7 @@ Pokud se rozhodnete nainstalovat a používat příkaz cli místně, tento člá
 
 Tento článek předpokládá, že máte cluster AKS se *standardním* sku Azure Balancer. Pokud potřebujete cluster AKS, podívejte se na aks rychlý start [pomocí Azure CLI][aks-quickstart-cli] nebo [pomocí portálu Azure][aks-quickstart-portal].
 
-Objekt zabezpečení clusterové služby AKS potřebuje také oprávnění ke správě síťových prostředků, pokud používáte existující podsíť nebo skupinu prostředků. Obecně přiřaďte roli *přispěvatele sítě* k instančnímu objektu v delegovaných prostředcích. Další informace o oprávněních najdete [v tématu Delegate AKS přístup k jiným prostředkům Azure][aks-sp].
+Objekt zabezpečení clusterové služby AKS potřebuje také oprávnění ke správě síťových prostředků, pokud používáte existující podsíť nebo skupinu prostředků. Obecně přiřaďte roli *přispěvatele sítě* k instančnímu objektu v delegovaných prostředcích. Namísto instančního objektu můžete také použít systém přiřazenou spravovanou identitu pro oprávnění. Další informace naleznete v tématu [Použití spravovaných identit](use-managed-identity.md). Další informace o oprávněních najdete [v tématu Delegate AKS přístup k jiným prostředkům Azure][aks-sp].
 
 ### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Přechod ze základního účetního vytížení skladové položky na standardní skladovou položku
 
@@ -189,7 +189,7 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 Ukázkový výstup zobrazuje výchozí hodnotu pro *AlocatedOutboundPorts* a *IdleTimeoutInMinutes*. Hodnota 0 pro *přidělené odchozí porty* nastaví počet odchozích portů pomocí automatického přiřazení pro počet odchozích portů na základě velikosti fondu back-end. Například pokud cluster má 50 nebo méně uzlů, jsou přiděleny 1024 porty pro každý uzel.
 
-Zvažte změnu nastavení *přidělenéOutboundPorts* nebo *IdleTimeoutInMinutes,* pokud očekáváte, že čelit vyčerpání SNAT na základě výše uvedené výchozí konfigurace. Každá další IP adresa umožňuje 64 000 dalších portů pro přidělení, ale nástroj Pro vyrovnávání zatížení Azure Standard automaticky nezvýší porty na uzel při přidání dalších IP adres. Tyto hodnoty můžete změnit nastavením parametrů vyrovnávání zatížení a *výstupních portů* a *vyrovnávání zatížení-idle-timeout.* Například:
+Zvažte změnu nastavení *přidělenéOutboundPorts* nebo *IdleTimeoutInMinutes,* pokud očekáváte, že čelit vyčerpání SNAT na základě výše uvedené výchozí konfigurace. Každá další IP adresa umožňuje 64 000 dalších portů pro přidělení, ale nástroj Pro vyrovnávání zatížení Azure Standard automaticky nezvýší porty na uzel při přidání dalších IP adres. Tyto hodnoty můžete změnit nastavením parametrů vyrovnávání zatížení a *výstupních portů* a *vyrovnávání zatížení-idle-timeout.* Příklad:
 
 ```azurecli-interactive
 az aks update \
@@ -202,7 +202,7 @@ az aks update \
 > [!IMPORTANT]
 > Před přizpůsobením *přidělených outboundports* je nutné [vypočítat požadovanou kvótu,][calculate-required-quota] abyste se vyhnuli problémům s připojením nebo škálováním. Hodnota, kterou zadáte pro *přidělenéoutporty* musí být také násobkem 8.
 
-Při vytváření clusteru můžete také použít parametry *load-balancer-out-out-ips* a load *balancer-idle-timeout,* ale musíte také zadat buď *vyrovnávání zatížení spravované-odchozí-ip-count*, *vyrovnávání zatížení-odchozí-ips*nebo *vyrovnávání zatížení-odchozí-ip-prefixy.*  Například:
+Při vytváření clusteru můžete také použít parametry *load-balancer-out-out-ips* a load *balancer-idle-timeout,* ale musíte také zadat buď *vyrovnávání zatížení spravované-odchozí-ip-count*, *vyrovnávání zatížení-odchozí-ips*nebo *vyrovnávání zatížení-odchozí-ip-prefixy.*  Příklad:
 
 ```azurecli-interactive
 az aks create \

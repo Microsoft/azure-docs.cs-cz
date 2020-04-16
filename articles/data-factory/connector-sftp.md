@@ -12,18 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/02/2020
-ms.openlocfilehash: 06428d4a9c4a4178212d16d42b8b3adffb5c9718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6d29f73716b04699e0cd250396df7f7d744d4c4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250288"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415252"
 ---
 # <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>Kopírování dat ze serveru SFTP a na server SFTP pomocí Azure Data Factory
 
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-sftp-connector.md)
 > * [Aktuální verze](connector-sftp.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak kopírovat data ze serveru SFTP a na server SFTP. Další informace o Azure Data Factory najdete v [úvodním článku](introduction.md).
 
@@ -287,7 +288,7 @@ Následující vlastnosti jsou podporovány `storeSettings` pro SFTP v rámci na
 | type                     | Vlastnost type `storeSettings` pod musí být nastavena na **SftpWriteSettings**. | Ano      |
 | copyBehavior             | Definuje chování kopírování, když zdroj jsou soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>- PreserveHierarchy (výchozí)</b>: Zachová hierarchii souborů v cílové složce. Relativní cesta zdrojového souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>- Sloučení :</b>Všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>- MergeFiles</b>: Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru, je zadaným názvem sloučený název souboru. V opačném případě se jedná o název automaticky generovaného souboru. | Ne       |
 | maxConcurrentConnections | Počet připojení pro připojení k úložišti dat současně. Zadejte pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne       |
-| useTempFileRename | Určete, zda se má nahrát do dočasných souborů a přejmenovat, nebo přímo zapisovat do cílové složky nebo umístění souboru. Ve výchozím nastavení ADF nejprve zapisovat do dočasných souborů (y) pak do souboru přejmenovat po dokončení nahrávání, aby se 1) vyhnout konfliktu zápisu za následek poškozený soubor, pokud máte jiný proces zápisu do stejného souboru, a 2) zajistit původní verze souboru existuje během celý převod. Pokud server SFTP operaci přejmenování nepodporuje, zakažte tuto možnost a ujistěte se, že nemáte souběžný zápis do cílového souboru. Viz tip pro řešení potíží pod touto tabulkou. | Ne. Výchozí hodnota je true. |
+| useTempFileRename | Určete, zda se má nahrát do dočasných souborů a přejmenovat, nebo přímo zapisovat do cílové složky nebo umístění souboru. Ve výchozím nastavení ADF nejprve zapisovat do dočasných souborů (y) pak se soubor přejmenovat po dokončení nahrávání, aby se zabránilo konfliktu zápisu za následek poškozený soubor, pokud máte jiný proces zápis u stejného souboru, a 2) zajistit původní verze souboru existuje během celého přenosu. Pokud server SFTP operaci přejmenování nepodporuje, zakažte tuto možnost a ujistěte se, že nemáte souběžný zápis do cílového souboru. Viz tip pro řešení potíží pod touto tabulkou. | Ne. Výchozí hodnota je true. |
 | operationTimeout | Čekací doba před každým požadavkem na zápis na server SFTP časový mj. Výchozí hodnota je 60 min (01:00:00).|Ne |
 
 >[!TIP]

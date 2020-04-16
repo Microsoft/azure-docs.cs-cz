@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011102"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416217"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure Synapse Analytics
 
@@ -56,14 +56,14 @@ Co je třeba vzít v úvahu při zobrazování metrik a nastavení upozornění:
 
 Pro programové prostředí při sledování SQL Analytics přes T-SQL poskytuje služba sadu zobrazení dynamické správy (DMVs). Tato zobrazení jsou užitečné při aktivním řešení problémů a identifikaci kritických bodů výkonu s vaší úlohou.
 
-Chcete-li zobrazit seznam dmvs, které poskytuje SQL Analytics, naleznete v této [dokumentaci](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs).
+Chcete-li zobrazit seznam dmvs, které se vztahují k Synapse SQL, naleznete v této [dokumentaci](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs). 
 
-## <a name="metrics-and-diagnostics-logging"></a>Metriky a diagnostické protokolování
+## <a name="metrics-and-diagnostics-logging"></a>Metriky a diagnostické protokolování 
 
 Metriky i protokoly lze exportovat do Azure Monitor, konkrétně součást [protokoly Azure Monitor](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a lze programově přistupovat prostřednictvím [dotazů protokolu](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Latence protokolu pro SQL Analytics je asi 10-15 minut. Další podrobnosti o faktorech ovlivňujících latenci naleznete v následující dokumentaci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující návody popisují běžné scénáře a případy použití při monitorování a správě datového skladu:
+Následující návod popisuje běžné scénáře a případy použití při monitorování a správě datového skladu:
 
 - [Sledování úlohy datového skladu pomocí zařízení DMV](sql-data-warehouse-manage-monitor.md)

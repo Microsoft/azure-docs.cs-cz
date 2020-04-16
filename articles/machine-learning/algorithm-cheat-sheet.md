@@ -1,5 +1,5 @@
 ---
-title: Algoritmus strojového učení Cheat Sheet
+title: Algoritmus strojového učení Cheat Sheet - návrhář
 titleSuffix: Azure Machine Learning
 description: Tisknutelný algoritmus strojového učení Cheat Sheet vám pomůže vybrat správný algoritmus pro prediktivní model v Návrháři Azure Machine Learning.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: accc4766f25f5d58ba2f31c153fe1c5d23413170
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78328607"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399079"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Cheatový list algoritmu strojového učení pro návrháře Azure Machine Learning
 
-**Cheat sheet algoritmu s algoritmem strojového učení Azure** vám pomůže vybrat správný algoritmus pro model prediktivní analýzy.
+**Cheat sheet algoritmu s algoritmem strojového učení Azure** vám pomůže vybrat správný algoritmus od návrháře pro model prediktivní analýzy.
 
 Azure Machine Learning má velkou knihovnu algoritmů z ***klasifikace***, ***doporučující systémy***, ***clustering***, ***detekce anomálií***, ***regrese***a ***analýzy textu rodiny.*** Každý z nich je navržen tak, aby řešil jiný typ problému strojového učení.
 
@@ -38,7 +38,7 @@ Návrhy nabízené v tomto algoritmu tahák jsou přibližné pravidla-of-palec.
 
 Každý algoritmus strojového učení má svůj vlastní styl nebo indukční předpojatost. Pro konkrétní problém může být vhodné několik algoritmů a jeden algoritmus může být vhodnější než ostatní. Ale to není vždy možné vědět předem, který je nejvhodnější. V případech, jako jsou tyto, několik algoritmů jsou uvedeny společně v taháku. Vhodnou strategií by bylo vyzkoušet jeden algoritmus, a pokud výsledky ještě nejsou uspokojivé, zkuste ostatní. 
 
-Další informace o algoritmech v Azure Machine Learning, přejděte na [algoritmus a odkaz na modul](algorithm-module-reference/module-reference.md).
+Další informace o algoritmech v návrháři Azure Machine Learning najdete v [odkazu na algoritmus a modul](algorithm-module-reference/module-reference.md).
 
 ## <a name="kinds-of-machine-learning"></a>Druhy strojového učení
 

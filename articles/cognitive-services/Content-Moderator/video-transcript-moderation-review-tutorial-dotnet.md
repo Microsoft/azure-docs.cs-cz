@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 09569be88daa6295834e58da6b51656d0438bed4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270923"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404229"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videí a přepisů
 
@@ -227,7 +227,7 @@ Přepis zvuku z videa se vytvoří také při nastavení příznaku `GenerateVTT
 
 ## <a name="create-a-human-review"></a>Vytvoření lidské recenze
 
-Proces moderování vrátí seznam klíčových snímků z videa společně s přepisem zvukových stop. Dalším krokem je vytvoření kontroly v Nástroji pro kontrolu Content Moderatoru pro moderování prováděné lidmi. Po návratu k metodě `ProcessVideo()` v souboru `Program.cs` vidíte, že se volá metoda `CreateVideoReviewInContentModerator()`. Tato metoda je ve třídě `videoReviewApi`, která je v souboru `VideoReviewAPI.cs`, a je ukázaná tady.
+Proces moderování vrátí seznam klíčových snímků z videa společně s přepisem zvukových stop. Dalším krokem je vytvoření recenze v nástroji Content Moderator Review pro lidské moderátory. Po návratu k metodě `ProcessVideo()` v souboru `Program.cs` vidíte, že se volá metoda `CreateVideoReviewInContentModerator()`. Tato metoda je ve třídě `videoReviewApi`, která je v souboru `VideoReviewAPI.cs`, a je ukázaná tady.
 
 [!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
@@ -299,7 +299,7 @@ Nejprve inicializujte všechny proměnné a kolekce.
 
 ### <a name="parse-the-transcript-for-captions"></a>Analýza přepisu, která zjišťuje titulky
 
-Dále analyzujte přepis ve formátu WebVTT, jestli obsahuje titulky a časová razítka. Nástroj pro kontrolu zobrazí tyto titulky na kartě přepisu na obrazovce kontroly videa. Časová razítka se používají k synchronizaci titulků s odpovídajícími snímky videí.
+Dále analyzujte přepis ve formátu WebVTT, jestli obsahuje titulky a časová razítka. Nástroj revize zobrazí tyto titulky na kartě Přepis na obrazovce s recenzemi videa. Časová razítka se používají k synchronizaci titulků s odpovídajícími snímky videí.
 
 [!code-csharp[TextScreen2](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=528-567)]
 

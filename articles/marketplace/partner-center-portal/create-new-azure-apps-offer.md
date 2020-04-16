@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 260193b3c71e29a32e0589f50864ffcca2e9a67c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262260"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390351"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -58,7 +58,7 @@ Projděte si následující dokumentaci k aplikacím Azure, která poskytuje ryc
 
     * [Šablony Azure Quickstart](https://azure.microsoft.com/documentation/templates/)
     * [Šablony githubazure rychlých startů](https://github.com/azure/azure-quickstart-templates)
-    * [Publikování definice aplikace](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+    * [Publikování definice aplikace](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Nasazení aplikace katalogu služeb](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
 * Kurzy:
@@ -168,7 +168,7 @@ Pro každý jazyk/trh budete muset definovat podrobnosti tržiště (název nab�
 > [!NOTE]
 > Nabídka výpis obsah (například popis, dokumenty, screenshoty, podmínky použití, atd.) nemusí být v angličtině, pokud popis nabídky začíná frází, "Tato aplikace je k dispozici pouze v [non-anglický jazyk]." Je také přijatelné poskytnout *užitečnou adresu URL odkazu* pro nabízení obsahu v jiném jazyce, než který byl použit v obsahu nabídky.
 
-### <a name="name"></a>Name (Název)
+### <a name="name"></a>Název
 
 Jméno, které zde zadáte, se zákazníkům zobrazí jako název nabídky. Toto pole je předem vyplněno textem, který jste zadali pro **alias Nabídky** při vytváření nabídky, ale tuto hodnotu můžete změnit. Tento název může být chráněn ochrannou známkou (a můžete uvést ochranné známky nebo symboly autorských práv). Název nesmí mít více než 50 znaků a nesmí obsahovat žádné emodži.
 
@@ -308,7 +308,7 @@ Služby Azure Government zpracovávají data, která podléhají určitým vlád
 
 Na kartě **výpis plánu** se zobrazí informace o výpisu specifické pro plán, které se mohou lišit mezi různými plány pro stejnou nabídku.
 
-### <a name="name"></a>Name (Název)
+### <a name="name"></a>Název
 
 Předem vyplněný na základě vašeho jména, které jste přiřadili k plánu při jeho vytvoření.  Tento název se zobrazí jako název tohoto "Softwarového plánu" zobrazeného na trhu.  Může obsahovat až 100 znaků.
 

@@ -4,14 +4,14 @@ description: Přečtěte si o používání spravovaných identit pro Azure pomo
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6f3736bed4d3d59bce08d4df3ee0aa164a0a764
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76986746"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415100"
 ---
-# <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>Použití spravovaných identit pro Azure s service fabric (preview)
+# <a name="using-managed-identities-for-azure-with-service-fabric"></a>Použití spravovaných identit pro Azure pomocí service fabricu
 
 Běžnou výzvou při vytváření cloudových aplikací je, jak bezpečně spravovat přihlašovací údaje v kódu pro ověřování různých služeb bez jejich lokálního uložení na pracovní stanici pro vývojáře nebo ve správě zdrojového kódu. *Spravované identity pro Azure* tento problém vyřeší u všech vašich prostředků ve službě Azure Active Directory (Azure AD) tím, že jim poskytnete automaticky spravované identity v rámci Azure AD. Identitu služby můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, včetně trezoru klíčů, bez pověření uložených ve vašem kódu.
 
@@ -47,7 +47,7 @@ Spravované identity pro Service Fabric jsou podporovány jenom v clusterech Ser
 
 Systémem přiřazená identita aplikace je pro tuto aplikaci jedinečná. identita přiřazená uživatelem je samostatný prostředek, který může být přiřazen více aplikacím. V rámci aplikace lze jednu identitu (přiřazenou systémem nebo uživatelem) přiřadit k více službám aplikace, ale každé jednotlivé službě lze přiřadit pouze jednu identitu. Nakonec musí být službě přiřazena identita explicitně mít přístup k této funkci. Ve skutečnosti mapování identity aplikace na její základní služby umožňuje izolaci v aplikaci – služba může používat pouze identitu mapovanou na něj.  
 
-V současné době jsou pro tuto funkci náhledu podporovány následující scénáře:
+V současné době jsou pro tuto funkci podporovány následující scénáře:
 
 - Nasazení nové aplikace s jednou nebo více službami a jednou nebo více přiřazenými identitami
 
@@ -57,12 +57,7 @@ Následující scénáře nejsou podporovány nebo nejsou doporučeny. Všimnět
 
 - Odebrání nebo změna identit přiřazených aplikaci. Pokud je nutné provést změny, odešlete samostatná nasazení, abyste nejprve přidali nové přiřazení identity a potom odebrali dříve přiřazené. Odebrání identity z existující aplikace může mít nežádoucí účinky, včetně ponechání aplikace ve stavu, který nelze upgradovat. Je bezpečné odstranit aplikaci úplně, pokud je nutné odstranění identity; Tím odstraníte systémově přiřazenou identitu (pokud je tak toto definováno) přidružené k aplikaci a odebere se všechna přidružení k identitám přiřazeným uživateli přiřazeným k aplikaci.
 
-- Podpora service fabric pro spravované identity není v tuto chvíli integrována do [zprostředkovatele AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md); integrace bude dosaženo do konce období náhledu pro funkci spravované identity.
-
->
-> [!NOTE]
->
-> Tato funkce je ve verzi Preview. Může podléhat častým změnám a není vhodný pro nasazení v produkčním prostředí.
+- Podpora service fabric pro spravované identity není v tuto chvíli integrována do [zprostředkovatele AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md).
 
 ## <a name="next-steps"></a>Další kroky
 

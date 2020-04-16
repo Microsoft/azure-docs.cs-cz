@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 231b0d77dc441e70dc0ec8de313291bb6b4f9292
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aedb3df69821d1436b03b2eb1f12873b624d426e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79261395"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414175"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Kopírovat průvodce výkonem a škálovatelností aktivit
 
@@ -25,7 +25,9 @@ ms.locfileid: "79261395"
 > * [Verze 1](v1/data-factory-copy-activity-performance.md)
 > * [Aktuální verze](copy-activity-performance.md)
 
-Ať už chcete provést rozsáhlou migraci dat z datového jezera nebo podnikového datového skladu (EDW) do Azure, nebo chcete ingestovat data ve velkém měřítku do Azure pro analýzu velkých objemů dat, je důležité dosáhnout optimálního výkonu a Škálovatelnost.  Azure Data Factory poskytuje výkonný, odolný a nákladově efektivní mechanismus pro ingestování dat ve velkém měřítku, takže je skvělý pro datové inženýry, kteří chtějí vytvářet vysoce výkonné a škálovatelné kanály pro ingestování dat.
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Ať už chcete provést rozsáhlou migraci dat z datového jezera nebo podnikového datového skladu (EDW) do Azure, nebo chcete ingestovat data ve velkém měřítku do Azure pro analýzu velkých objemů dat, je důležité dosáhnout optimálního výkonu a škálovatelnosti.  Azure Data Factory poskytuje výkonný, odolný a nákladově efektivní mechanismus pro ingestování dat ve velkém měřítku, takže je skvělý pro datové inženýry, kteří chtějí vytvářet vysoce výkonné a škálovatelné kanály pro ingestování dat.
 
 Po přečtení tohoto článku budete moci odpovědět na následující otázky:
 

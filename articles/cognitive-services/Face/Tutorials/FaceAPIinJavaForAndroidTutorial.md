@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd986a7557f468b939aefe1da825c9834618047f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76165964"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402924"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Kurz: Vytvoření aplikace pro Android k rozpoznání a orámování tváří na obrázku
 
@@ -39,7 +39,7 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 - Klíč předplatného Face. Můžete získat bezplatný klíč zkušebního předplatného od [společnosti Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili ke službě Face a získali klíč. Potom [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec koncového `FACE_SUBSCRIPTION_KEY` klíče `FACE_ENDPOINT`a služby s názvem a , resp.
 - Libovolné vydání [Visual Studia 2015 nebo 2017](https://www.visualstudio.com/downloads/).
-- [Android Studio](https://developer.android.com/studio/) s úrovní rozhraní API 22 nebo novější (vyžadováno klientskou knihovnou Face).
+- [Android Studio](https://developer.android.com/studio/) s úrovní rozhraní API 22 nebo novější.
 
 ## <a name="create-the-android-studio-project"></a>Vytvoření projektu Android Studio
 
@@ -123,7 +123,7 @@ Spusťte aplikaci a vyhledejte obrázek, který obsahuje nějakou tvář. Počke
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili základní proces pro použití sady Face Java SDK a vytvořili aplikaci pro detekci a vytváření rámečků v obraze. Dále se dozvíte více o podrobnostech detekce obličeje.
+V tomto kurzu jste se naučili, jak pomocí sady Face Java SDK vytvořit aplikaci pro detekci a vytváření rámečků v obraze. Dále se dozvíte více o podrobnostech detekce obličeje.
 
 > [!div class="nextstepaction"]
 > [Postup při rozpoznávání tváří v obrázku](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

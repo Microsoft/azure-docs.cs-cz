@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 6e0c98cffef06fb6d6345fc2b23bbc22715909b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3432f981df3f666d6276eee4564ef33000faa6b1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370181"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410895"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány firewall
 
@@ -62,19 +62,19 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
 
     | Vlastnost|  Hodnota|
     |---|---|
-    |Name (Název)| FwAppPravidlo|
+    |Název| FwAppPravidlo|
     |Priorita|200|
     |Akce|Povolit|
 
     **Oddíl značek FQDN**
 
-    | Name (Název) | Zdrojová adresa | Značka FQDN | Poznámky |
+    | Název | Zdrojová adresa | Značka FQDN | Poznámky |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate a HDInsight | Vyžadováno pro služby HDI |
 
     **Oddíl cílové skupiny kvin**
 
-    | Name (Název) | Zdrojové adresy | Protokol:Port | Cílová fqdns | Poznámky |
+    | Název | Zdrojové adresy | Protokol:Port | Cílová fqdns | Poznámky |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Umožňuje aktivitu přihlášení systému Windows |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Umožňuje aktivitu přihlášení systému Windows |
@@ -96,13 +96,13 @@ Vytvořte síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
     | Vlastnost|  Hodnota|
     |---|---|
-    |Name (Název)| Pravidlo FwNet|
+    |Název| Pravidlo FwNet|
     |Priorita|200|
     |Akce|Povolit|
 
     **Oddíl Adresy IP**
 
-    | Name (Název) | Protocol (Protokol) | Zdrojové adresy | Cílové adresy | Cílové porty | Poznámky |
+    | Název | Protocol (Protokol) | Zdrojové adresy | Cílové adresy | Cílové porty | Poznámky |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Časová služba |
     | Rule_2 | Všechny | * | DC_IP_Address_1, DC_IP_Address_2 | * | Pokud používáte balíček zabezpečení rozlehlé sítě (ESP), přidejte do části Adresy IP síťové pravidlo, které umožňuje komunikaci se službou AAD-DS pro clustery ESP. IP adresy řadičů domény naleznete v části AAD-DS na portálu |
@@ -111,7 +111,7 @@ Vytvořte síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
     **Oddíl Značky servisu**
 
-    | Name (Název) | Protocol (Protokol) | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
+    | Název | Protocol (Protokol) | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Nakonfigurujte síťové pravidlo v části Značky služeb pro SQL, které vám umožní protokolovat a auditovat přenosy SQL, pokud jste nenakonfigurovali koncové body služby pro SQL Server v podsíti HDInsight, která obcvede bránu firewall. |
 
@@ -221,7 +221,7 @@ Předchozí pokyny vám pomohou nakonfigurovat Azure Firewall pro omezení odcho
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS závislosti
 
 > [!Important]
-> Níže uvedený seznam obsahuje pouze několik nejdůležitějších fqdn. V [tomto souboru](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)můžete získat úplný seznam plně kvalifikovaných adres pro konfiguraci služby NVA .
+> Níže uvedený seznam obsahuje pouze několik nejdůležitějších fqdn. Můžete získat další fQDNs (většinou Azure Storage a Azure Service Bus) pro konfiguraci vašeho nva [v tomto souboru](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json).
 
 | **Koncový bod**                                                          |
 |---|

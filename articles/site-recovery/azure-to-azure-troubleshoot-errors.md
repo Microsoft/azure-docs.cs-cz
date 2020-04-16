@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 243fea8fae071368a91bf482190442f15c372fc1
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271297"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390390"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Poradce při potížích s chybami replikace virtuálních počítačů Azure-to-Azure
 
@@ -404,21 +404,20 @@ Chcete-li povolit replikaci na virtuálním počítači, musí být jeho stav z�
 
 ### <a name="issue-1-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>Problém 1: Virtuální měsíč je připojený k síti, která už je namapovaná na cílovou síť.
 
-Pokud je zdrojový virtuální počítač součástí virtuální sítě a jiný virtuální počítač ze stejné virtuální sítě je již namapován se sítí v cílové skupině prostředků, rozevírací seznam výběru sítě není ve výchozím nastavení k dispozici (zobrazí se šedě).
+Pokud je zdrojový virtuální počítač během konfigurace zotavení po havárii součástí virtuální sítě a jiný virtuální počítač ze stejné virtuální sítě je již namapován pomocí sítě v cílové skupině prostředků, rozevírací seznam výběru sítě není ve výchozím nastavení k dispozici (zobrazí se šedě).
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="Seznam výběru sítě není k dispozici.":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>Problém 2: Dříve jste virtuální počítač chránili a pak jste zakázali replikaci.
 
-Zakázáníreplikace virtuálního virtuálního aplikace neodstraní mapování sítě. Mapování musí být odstraněno z trezoru služby Recovery Services, kde byl virtuální počítač chráněn. Přejděte na web **recovery services site** > **recovery infrastructure** > **infrastructure mapping**.
+Zakázáníreplikace virtuálního virtuálního aplikace neodstraní mapování sítě. Mapování musí být odstraněno z trezoru služby Recovery Services, kde byl virtuální počítač chráněn. Vyberte **trezor služby Recovery Services** a přejděte na **spravovat** > **infrastrukturu obnovení lokality** > **pro virtuální počítače** > Azure**Mapování sítě**.
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Odstranit mapování sítě.":::
 
-Cílovou síť, která byla nakonfigurována během nastavení zotavení po havárii, lze změnit po počátečním nastavení a po ochraně virtuálního počítače:
+Cílovou síť, která byla nakonfigurována během nastavení zotavení po havárii, lze změnit po počátečním nastavení a po chráněném virtuálním počítači. Chcete-li **změnit síťové mapování,** vyberte název sítě:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="Upravte mapování sítě.":::
 
-Změna mapování sítě ovlivní všechny chráněné virtuální počítače, které používají stejné mapování sítě.
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ nebo VSS (kód chyby 151025)
 

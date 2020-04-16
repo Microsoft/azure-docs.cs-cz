@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f8f21405a79a6fcf70adef9815ba06a229d6954d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886972"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393103"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -168,7 +168,7 @@ V následující tabulce jsou uvedeny předběžné přidělení portů SNAT pro
 | 801-1,000 | 32 |
 
 >[!NOTE]
-> Při použití standardního vytálení zatížení s [více front-endy](load-balancer-multivip-overview.md)každá front-endová IP adresa vynásobí počet dostupných portů SNAT v předchozí tabulce. Například back-endový fond 50 virtuálních počítačů se 2 pravidly vyrovnávání zatížení, každý se samostatnou ip adresou front-endu, použije 2048 (2x 1024) Porty SNAT na konfiguraci IP. Viz podrobnosti pro [více front-endů](#multife).
+> Při použití standardního vytálení zatížení s [více front-endy](load-balancer-multivip-overview.md)každá front-endová IP adresa vynásobí počet dostupných portů SNAT v předchozí tabulce. Například back-endový fond 50 virtuálních počítačů se 2 pravidly vyrovnávání zatížení, každý se samostatnou ip adresou front-endu, použije 2048 (2x 1024) Porty SNAT na pravidlo. Viz podrobnosti pro [více front-endů](#multife).
 
 Nezapomeňte, že počet portů SNAT k dispozici se nepřekládá přímo na počet toků. Jeden port SNAT lze znovu použít pro více jedinečných cílů. Porty jsou spotřebovány pouze v případě, že je nutné, aby toky jedinečné. Pokyny k návrhu a zmírnění naleznete v části o [tom, jak spravovat tento vyčerpatelný prostředek,](#snatexhaust) a v části, která popisuje [pat](#pat).
 

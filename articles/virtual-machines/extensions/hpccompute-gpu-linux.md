@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7f6653043d46925d6a4c35eedaf81224ea6c36d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250566"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415793"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladače GPU NVIDIA pro Linux
 
@@ -72,7 +72,7 @@ Následující JSON ukazuje schéma rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Name (Název) | Hodnota / Příklad | Typ dat |
+| Název | Hodnota / Příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft.HpcCompute | řetězec |
@@ -83,7 +83,7 @@ Následující JSON ukazuje schéma rozšíření.
 
 Všechna nastavení jsou volitelná. Výchozí chování je neaktualizovat jádro, pokud není požadováno pro instalaci ovladače, nainstalujte nejnovější podporovaný ovladač a cuda toolkit (podle potřeby).
 
-| Name (Název) | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
+| Název | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Aktualizace jádra, i když není vyžadována pro instalaci ovladače | false (nepravda) | pravda, nepravdivé | Boolean |
 | driverVersion | NV: Verze ovladače GRID<br> NC/ND: Verze sady nástrojů CUDA. Nejnovější ovladače pro vybranou CUDA jsou nainstalovány automaticky. | nejnovější | MŘÍŽKA: "430.30", "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | řetězec |
@@ -141,15 +141,15 @@ Set-AzVMExtension
 Následující příklad odráží výše uvedené příklady Azure Resource Manager a PowerShell a také přidá vlastní nastavení jako příklad pro instalaci ovladače, která není výchozí. Konkrétně aktualizuje jádro operačního systému a nainstaluje konkrétní ovladač verze cuda toolkit.
 
 ```azurecli
-az vm extension set `
-  --resource-group myResourceGroup `
-  --vm-name myVM `
-  --name NvidiaGpuDriverLinux `
-  --publisher Microsoft.HpcCompute `
-  --version 1.2 `
-  --settings '{ `
-    "updateOS": true, `
-    "driverVersion": "9.1.85", `
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.2 \
+  --settings '{ \
+    "updateOS": true, \
+    "driverVersion": "9.1.85", \
   }'
 ```
 

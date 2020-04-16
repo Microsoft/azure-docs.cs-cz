@@ -1,209 +1,215 @@
 ---
-title: 'Kurz: Integrace s power virtual agentem - QnA Maker'
-description: V tomto kurzu zlepšete kvalitu znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo zamítněte, přidejte bez odebrání nebo změny stávajících otázek.
+title: 'Kurz: Integrace s virtuálními agenty napájení - QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: V tomto kurzu zlepšete kvalitu znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo zamítněte nebo přidejte bez odebrání nebo změny stávajících otázek.
+services: cognitive-services
+author: diberry
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 03/11/2020
-ms.openlocfilehash: 283667c587e395a1d712f82f3385582b4c5c3227
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: diberry
+ms.openlocfilehash: 4557dee995c8a01067f7e6ad0e79bb7115b6ecdb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398874"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402814"
 ---
-# <a name="tutorial-add-knowledge-base-to-power-virtual-agent"></a>Kurz: Přidání znalostní báze do virtuálního agenta power
-Vytvořte a rozšiřte robota [Power Virtual Agent,](https://powervirtualagents.microsoft.com/) abyste poskytli odpovědi z vaší znalostní báze.
+# <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Kurz: Přidání znalostní báze do virtuálních agentů napájení
+Vytvořte a rozšiřte robota [Power Virtual Agents,](https://powervirtualagents.microsoft.com/) abyste poskytli odpovědi z vaší znalostní báze.
 
-**V tomto kurzu se dozvíte, jak:**
+V tomto kurzu se naučíte:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Vytvoření virtuálního agenta napájení
-> * Vytvořit záložní téma systému
-> * Přidání QnA Makeru jako akce k tématu jako tok Power Automate
+> * Vytvoření robota power virtual agents
+> * Vytvoření záložního tématu systému
+> * Přidání QnA Makeru jako akce k tématu jako toku power automatu
 > * Vytvoření řešení Power Automate
-> * Přidání toku power automatu do řešení
-> * Publikování virtuálního agenta napájení
-> * Test Power Virtual Agent, obdržíodpověď od znalostní báze QnA Maker
+> * Přidání toku power automatu do vašeho řešení
+> * Publikování virtuálních agentů napájení
+> * Otestujte virtuální agenty napájení a získejte odpověď od znalostní báze QnA Maker
 
-## <a name="integrate-a-power-virtual-agent-with-a-knowledge-base"></a>Integrace power virtual agenta se znalostní bází
+## <a name="integrate-an-agent-with-a-knowledge-base"></a>Integrace agenta se znalostní báze
 
-[Power Virtual Agents](https://powervirtualagents.microsoft.com/) umožňuje týmům snadno vytvářet výkonné roboty pomocí grafického rozhraní s průvodcem bez kódu bez potřeby datových vědců nebo vývojářů.
+[Power Virtual Agents](https://powervirtualagents.microsoft.com/) umožňuje týmům vytvářet výkonné roboty pomocí grafického rozhraní s průvodcem bez kódu. Nepotřebujete datové vědce ani vývojáře.
 
-Virtuální agent napájení je vytvořen s řadou témat (oblastí předmětu), aby bylo možné odpovědět na otázky uživatelů prováděním akcí. Pokud nelze najít odpověď, záložní systém může vrátit odpověď.
+Ve virtuálních agentech napájení vytvoříte agenta s řadou témat (oblastí předmětu), abyste odpověděli na otázky uživatelů prováděním akcí. Pokud nelze najít odpověď, záložní systém může vrátit odpověď.
 
-Nakonfigurujte agenta tak, aby odeslal otázku do znalostní báze jako součást akce tématu nebo jako součást cesty k tématu **System Fallback.** Oba používají stejný mechanismus akce pro připojení k vaší znalostní bázi a vrátit odpověď.
+Nakonfigurujte agenta tak, aby odeslal otázku do znalostní báze jako součást akce tématu nebo jako součást cesty k tématu *System Fallback.* Oba používají akci pro připojení k vaší znalostní bázi a vrátit odpověď.
 
-## <a name="power-automate-connects-to-generateanswer-action"></a>Power Automate se připojuje k akci GenerateAnswer
+## <a name="power-automate-connects-to-generateanswer-action"></a>Power Automate se `GenerateAnswer` připojuje k akci
 
-Chcete-li připojit agenta ke znalostní bázi, vytvořte akci pomocí power automatu. Power Automate poskytuje **tok**procesů , který se připojuje k rozhraní GenerateAnswer API qnA makeru.
+Chcete-li připojit agenta ke znalostní bázi, vytvořte akci pomocí power automatu. Power Automate poskytuje procesní tok, který se připojuje `GenerateAnswer` k rozhraní API QnA Maker.
 
-Jakmile je **tok** navržen a uložen, je k dispozici v řešení Power Automate **.**  Po přidání toku GenerateAnswer do řešení použijte toto řešení jako akci ve vašem agentovi.
+Po návrhu a uložení toku je k dispozici v řešení Power Automate. Použijte toto řešení jako akci ve vašem agentovi.
 
-## <a name="process-steps-to-connect-an-agent-to-your-knowledge-base"></a>Zpracovat kroky pro připojení agenta ke znalostní bázi
+## <a name="connect-an-agent-to-your-knowledge-base"></a>Připojení agenta ke znalostní bázi
 
-Následující kroky jsou uvedeny jako přehled, který vám pomůže pochopit, jak tyto kroky souvisejí s cílem připojení virtuálního agenta power-agenta ke znalostní bázi QnA Maker.
+Tady je přehled kroků pro připojení agenta ve virtuálních agentech power k znalostní bázi v QnA Makeru.
 
-Postup použití power virtual agenta s QnA Makerem:
-* Na portálu [QnA Maker](https://www.qnamaker.ai/)
-    * Vytváření a publikování znalostní báze
-    * Zkopírujte podrobnosti znalostní báze knowledge base včetně ID znalostní báze, klíče koncového bodu runtime a hostitele koncového bodu runtime.
-* Na portálu [Virtuální agent napájení](https://powerva.microsoft.com/)
-    * Téma sestavení agenta
-    * Volání akce (pro power automate flow)
-* Na portálu [Power Automate](https://us.flow.microsoft.com/)
-    * Vytvoření toku s konektorem na [generateanswer qnA makeru](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)
-        * QnA Maker publikoval informace o znalostní bázi
+* Na portálu [QnA Maker:](https://www.qnamaker.ai/)
+    * Sestavte a publikujte znalostní bázi.
+    * Zkopírujte podrobnosti znalostní báze, včetně ID, klíče koncového bodu runtime a hostitele koncového bodu runtime.
+* Na portálu [Power Virtual Agents:](https://powerva.microsoft.com/)
+    * Vytvořte téma agenta.
+    * Volání akce (pro tok power automatu).
+* Na portálu [Power Automate:](https://us.flow.microsoft.com/)
+    * Vytvořte tok s konektorem na [GenerateAnswer QnA Maker](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/).
+        * QnA Maker publikoval informace o znalostní bázi:
             * ID znalostní báze
             * Hostitel koncového bodu prostředku QnA Maker
             * Klíč koncového bodu prostředku QnA Maker
         * Vstup - uživatelský dotaz
         * Výstup - odpověď znalostní báze
-    * Vytvoření řešení a přidání toku
-* Návrat k virtuálnímu agentovi napájení
-    * Vybrat výstup řešení jako zprávu pro téma
+    * Vytvořte řešení a přidejte tok.
+* Návrat k virtuálním agentům:
+    * Vyberte výstup řešení jako zprávu pro téma.
 
 ## <a name="create-and-publish-a-knowledge-base"></a>Vytvoření a publikování znalostní báze
 
-1. Chcete-li vytvořit znalostní bázi, postupujte podle [rychlého startu.](../Quickstarts/create-publish-knowledge-base.md) Nevyplňuj poslední část a nevytvořte bota. Tento kurz je náhradou za poslední část rychlého startu, protože tento kurz používá virtuálního agenta napájení k vytvoření robota namísto robota Framework v rychlém startu.
+1. Chcete-li vytvořit znalostní bázi, postupujte podle [rychlého startu.](../Quickstarts/create-publish-knowledge-base.md) Nedokončujte poslední část, o vytvoření robota. Místo toho použijte tento kurz k vytvoření robota s virtuálními agenty napájení.
 
     > [!div class="mx-imgBorder"]
-    > ![Zadejte publikovaná nastavení znalostní báze, která najdete na stráncehttps://www.qnamaker.ai/) **Settings** na portálu [QnA Maker].(](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
+    > ![Snímek obrazovky s publikovaným nastavením znalostní báze](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
 
-    Tyto informace budete potřebovat pro [krok Power Automate](#create-power-automate-flow-to-connect-to-your-knowledge-base) ke konfiguraci připojení QnA Maker GenerateAnswer.
+    Zadejte publikovaná nastavení znalostní báze, která najdete na stránce **Nastavení** na portálu [QnA Maker.](https://www.qnamaker.ai/) Tyto informace budete potřebovat pro [krok Power Automate](#create-a-power-automate-flow-to-connect-to-your-knowledge-base) ke `GenerateAnswer` konfiguraci připojení QnA Maker.
 
-1. Na stránce **Nastavení** na portálu QnA Maker najdete klíč koncového bodu, hostitele koncového bodu a ID znalostní báze.
+1. Na portálu QnA Maker na stránce **Nastavení** najděte klíč koncového bodu, hostitele koncového bodu a ID znalostní báze.
 
-## <a name="create-power-virtual-agent"></a>Vytvoření virtuálního agenta napájení
+## <a name="create-an-agent-in-power-virtual-agents"></a>Vytvoření agenta ve virtuálních agentech napájení
 
-1. [Přihlaste se ke](https://go.microsoft.com/fwlink/?LinkId=2108000&clcid=0x409) virtuálnímu agentovi Power Virtual Agent pomocí školního nebo pracovního e-mailového účtu.
-1. Pokud je toto váš první bot, měli byste být na **domovské** stránce agenta. Pokud se nejedná o váš první Power Virtual Agent, vyberte bot z pravé ho nahoře navigace a vyberte **+ New Bot**.
+1. [Přihlaste se k virtuálním agentům napájení](https://go.microsoft.com/fwlink/?LinkId=2108000&clcid=0x409). Použijte svůj školní nebo pracovní e-mailový účet.
+1. Pokud je toto váš první bot, budete na **domovské** stránce agenta. Pokud to není váš první bot, vyberte bot z pravé horní části stránky, a vyberte **+ New Bot**.
 
     > [!div class="mx-imgBorder"]
-    > ![Zadejte publikovaná nastavení znalostní báze, která najdete na stráncehttps://www.qnamaker.ai/) **Settings** na portálu [QnA Maker].(](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-home.png)
+    > ![Snímek obrazovky domovské stránky Power Virtual Agents](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-home.png)
 
-## <a name="several-topics-are-provided-in-the-bot"></a>Několik témat jsou uvedeny v bot
+1. Zadejte publikovaná nastavení znalostní báze, která najdete na stránce **Nastavení** na portálu [QnA Maker.](https://www.qnamaker.ai/)
 
-Agent používá kolekci témat k zodpovězení otázek v oblasti předmětu. V tomto kurzu má agent mnoho témat, která jsou pro vás k dispozici, rozdělená do **témat uživatelských a** **systémových témat**.
+## <a name="topics-provided-in-the-bot"></a>Témata uvedená v bot
+
+Agent používá kolekci témat k zodpovězení otázek v oblasti předmětu. V tomto kurzu má agent mnoho témat, která jsou pro vás k dispozici, rozdělená do uživatelských témat a systémových témat.
 
 > [!div class="mx-imgBorder"]
-> ![Agent používá kolekci témat k zodpovězení otázek v oblasti předmětu. V tomto kurzu má agent mnoho témat rozdělených do témat **User Topics** a **System témata**.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topics-provided.png)
+> ![Snímek obrazovky s tématy poskytnutými v agentovi](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topics-provided.png)
 
 
-## <a name="create-power-virtual-agents-system-fallback-topic"></a>Vytvořit záložní téma systému systému power virtuálního agenta
+## <a name="create-the-system-fallback-topic"></a>Vytvoření záložního tématu systému
 
-Zatímco agent se může připojit k vaší znalostní bázi z libovolného tématu, tento kurz používá téma **Záložní** systém. Záložní téma se používá, když agent nemůže najít odpověď. Agent předá text uživatele rozhraní API GenerateAnswer společnosti QnA Maker, obdrží odpověď z vaší znalostní báze a zobrazí ji zpět uživateli jako zprávu.
+Přestože se agent může připojit k vaší znalostní bázi z libovolného tématu, tento kurz používá záložní téma *systému.* Záložní téma se používá, když agent nemůže najít odpověď. Agent předá text uživatele `GenerateAnswer` rozhraní API QnA Maker, obdrží odpověď z vaší znalostní báze a zobrazí ji uživateli jako zprávu.
 
-1. Na portálu [Power Virtual Agents](https://powerva.microsoft.com/#/) vyberte v pravém horním rohu navigace stránku **Nastavení.** Ikona pro tuto stránku je ozubené kolo. Vyberte **možnost Záložní systém**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Power Virtual agent položka nabídky pro záložní systém](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-system-fallback.png)
-
-1. V rozbalovacím okně **Nastavení** vyberte **+ Přidat** a přidejte téma Záložní systém.
+1. Na portálu [Power Virtual Agents](https://powerva.microsoft.com/#/) v pravém horním rohu vyberte **Nastavení** (ikona ozubeného kola). Pak vyberte **možnost Záložní systém**.
 
     > [!div class="mx-imgBorder"]
-    > ![V okně Nastavení přidejte záložní téma.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-add-fallback-topic.png)
+    > ![Snímek obrazovky s položkou nabídky Power Virtual Agents pro záložní systém](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-system-fallback.png)
 
-1. Po přidání tématu vyberte **Přejít na téma Záložní** a vytvořte téma Fallback na vývojovém plátně.
+1. Výběrem **možnosti + přidat** přidáte záložní téma systému.
+
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s přidáním záložního tématu](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-add-fallback-topic.png)
+
+1. Po přidání tématu vyberte **Přejít na téma Záložní** a vytvořte záložní téma na vývojovém plátně.
 
     > [!TIP]
-    > Pokud se potřebujete vrátit k tématu Fallback, je k dispozici v části **Témata** jako součást témat **systému.**
+    > Pokud se potřebujete vrátit k tématu záložní, je k dispozici v části **Témata** jako součást témat **systému.**
 
-## <a name="use-authoring-canvas-to-add-an-action"></a>Přidání akce pomocí vytváření plátna
+## <a name="use-the-authoring-canvas-to-add-an-action"></a>Přidání akce pomocí vývojového plátna
 
-Pomocí základní stránky pro vytváření virtuálních agentů power propojte téma Záložní k vaší znalostní bázi. Téma začíná **nerozpoznaným textem uživatele**. Přidejte akci, která předá tento text QnA Makeru, a pak zobrazí odpověď jako zprávu. Poslední krok zobrazení odpovědi je zpracována jako [samostatný krok](#add-solutions-flow-to-power-virtual-agent) dále v tomto kurzu.
+Pomocí základní stránky pro vytváření virtuálních agentů power propojte záložní téma se znalostní bází. Téma začíná nerozpoznaným textem uživatele. Přidejte akci, která předá tento text qnA makeru a pak zobrazí odpověď jako zprávu. Poslední krok zobrazení odpovědi je zpracován jako [samostatný krok](#add-your-solutions-flow-to-power-virtual-agents), dále v tomto kurzu.
 
 Tato část vytvoří tok konverzace záložní téma.
 
-1. Nová akce Záložní již může mít prvky toku konverzace. Odstraňte položku **Eskalovat** výběrem nabídky Možnosti.
+1. Nová záložní akce již může mít prvky toku konverzace. Odstraňte položku **Eskalovat** výběrem nabídky **Možnosti.**
 
     > [!div class="mx-imgBorder"]
-    > ![Zahájit záložní akci pomocí spouštěcích frází](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fallback-topic-delete-escalate.png)
+    > ![Snímek obrazovky s tématem záložního zdroje Power Virtual Agents](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fallback-topic-delete-escalate.png)
 
 1. Vyberte **+** konektor tekoucí z pole **Zpráva** a pak vyberte **Volat akci**.
 
     > [!div class="mx-imgBorder"]
-    > ![Volání akce](../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png)
+    > ![Snímek obrazovky s akcí Volání](../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png)
 
-1. Vyberte **Vytvořit tok**. Tento proces vás přenese na **power automate**, jiný portál založený na prohlížeči.
+1. Vyberte **Vytvořit tok**. Tento proces vás přenese na portál Power Automate.
 
     > [!div class="mx-imgBorder"]
-    > ![Volání akce](../media/how-to-integrate-power-virtual-agent/create-a-flow.png)
+    > ![Snímek obrazovky s vytvořením toku](../media/how-to-integrate-power-virtual-agent/create-a-flow.png)
 
-## <a name="create-power-automate-flow-to-connect-to-your-knowledge-base"></a>Vytvoření power automatu Flow pro připojení ke své znalostní bázi
+## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>Vytvoření toku power automatu pro připojení k vaší znalostní bázi
 
-Následující postup vytvoří tok **power automatu,** který:
-* přebírá text příchozího uživatele
-* odešle jej qna makeru
-* přiřadí nejvyšší odpověď qnA makeru proměnné
-* odešle proměnnou (horní odpověď) jako odpověď zpět vašemu agentovi
+Následující postup vytvoří tok power automatu, který:
+* Pořídí text příchozího uživatele a odešle jej do QnA Makeru.
+* Přiřadí nejvyšší odpověď qnA makeru proměnné a odešle proměnnou (horní odpověď) jako odpověď zpět vašemu agentovi.
 
 1. V **power automatu**je **šablona toku** spuštěna za vás. V položce toku **virtuálních agentů napájení** vyberte **Upravit** a nakonfigurujte vstupní proměnnou přicházející od agenta do znalostní báze. Vstupní proměnná založená na textu je textová otázka odeslaná uživatelem od vašeho agenta.
 
     > [!div class="mx-imgBorder"]
-    > ![Konfigurace vstupní proměnné jako textového řetězce](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable.png)
+    > ![Snímek obrazovky s možností Power Automate pro konfiguraci vstupní proměnné jako textového řetězce](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable.png)
 
-1. Přidejte textový vstup a `InputText` pojmenujte `IncomingUserQuestion`proměnnou s popisem . Toto pojmenování pomáhá odlišit vstupní text od výstupního textu, který vytvoříte později.
+1. Přidejte textový vstup a `InputText`pojmenujte proměnnou s popisem . `IncomingUserQuestion` Toto pojmenování pomáhá odlišit vstupní text od výstupního textu, který vytvoříte později.
 
     > [!div class="mx-imgBorder"]
-    > ![Přidejte textový vstup a pojmenujte proměnnou InputText s popisem "UserQuestion"](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable-name-and-description.png)
+    > ![Snímek obrazovky s možností Power Automate pro konfiguraci názvu a popisu vstupní proměnné](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable-name-and-description.png)
 
-1. Vyberte **+** konektor tekoucí z pole **Virtuální agenti napájení,** chcete-li vložit nový krok do toku (před **návratovou hodnotu (hodnoty) do virtuálního agenta napájení**), pak vyberte Přidat **akci**.
+1. Vyberte **+** konektor tekoucí z pole **Virtuální agenti napájení,** chcete-li vložit nový krok do toku (před **návratovou hodnotu (hodnoty) do virtuálního agenta napájení).** Pak vyberte **Přidat akci**.
 
 1. Vyhledejte `Qna` akce **QnA Maker** a pak vyberte **Generovat odpověď**.
 
     > [!div class="mx-imgBorder"]
-    > ![Vyhledejte akce "Qna", chcete-li najít akce **QnA Maker**, a pak vyberte možnost **Generovat odpověď**](../media/how-to-integrate-power-virtual-agent/generate-answer-action-selected.png)
+    > ![Snímek obrazovky generovat odpověď](../media/how-to-integrate-power-virtual-agent/generate-answer-action-selected.png)
 
-    Tři (3) požadovaná nastavení připojení pro QnA Maker se zobrazí v akci a nastavení otázky z virtuálního agenta napájení.
+    Požadované nastavení připojení pro QnA Maker se zobrazí v akci a nastavení otázky od agenta.
 
     > [!div class="mx-imgBorder"]
-    > ![Nastavení připojení pro QnA Maker se zobrazí v akci.](../media/how-to-integrate-power-virtual-agent/generate-answer-knowledge-base-settings.png)
+    > ![Snímek obrazovky s požadovaným nastavením připojení](../media/how-to-integrate-power-virtual-agent/generate-answer-knowledge-base-settings.png)
 
 1. Nakonfigurujte akci pomocí ID znalostní báze, hostitele koncového bodu a klíče koncového bodu. Ty najdete na stránce **Nastavení** vaší znalostní báze na portálu QnA Maker.
 
     > [!div class="mx-imgBorder"]
-    > ![Zadejte publikovaná nastavení znalostní báze, která najdete na stráncehttps://www.qnamaker.ai/) **Settings** na portálu [QnA Maker].(](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
+    > ![Snímek obrazovky s publikovaným nastavením znalostní báze](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
 
-1. Chcete-li **nakonfigurovat otázku**, vyberte textové pole a vyberte `InputText` jej ze seznamu.
+1. Chcete-li **nakonfigurovat otázku**, vyberte `InputText` textové pole a vyberte ze seznamu.
 
-1. Chcete-li do toku vložit **+** nový krok, vyberte spojnici toku z pole Generovat akci **odpovědi** a pak vyberte **Přidat akci**.
+1. Chcete-li do toku vložit **+** nový krok, vyberte spojnici toku z pole Generovat akci **odpovědi.** Pak vyberte **Přidat akci**.
 
-1. Chcete-li přidat proměnnou pro zachycení textu odpovědi vráceného `Initialize variable` z funkce GenerateAnswer, vyhledejte a vyberte akci.
+1. Chcete-li přidat proměnnou pro `GenerateAnswer`zachycení textu odpovědi `Initialize variable` vráceného z aplikace , vyhledejte a vyberte akci.
 
     Nastavte název proměnné na `OutgoingQnAAnswer`a vyberte typ jako **String**. Nenastavovat **hodnotu**.
 
     > [!div class="mx-imgBorder"]
-    > ![Nastavte název proměnné na "QnAAnswer" a vyberte typ jako **String**](../media/how-to-integrate-power-virtual-agent/initialize-output-variable-for-qna-answer.png)
+    > ![Snímek obrazovky s inicializací výstupní proměnné](../media/how-to-integrate-power-virtual-agent/initialize-output-variable-for-qna-answer.png)
 
-1. Chcete-li do toku vložit **+** nový krok, vyberte spojnici tekoucí z pole **Akce inicializovat a** pak vyberte **Přidat akci**.
+1. Chcete-li do toku vložit **+** nový krok, vyberte spojnici tekoucí z pole **Akce proměnné Inicializovat.** Pak vyberte **Přidat akci**.
 
-1. Chcete-li nastavit celou odpověď JSON znalostní báze na proměnnou, vyhledejte a vyberte`Apply to each` akci. Vyberte generateanswer `answers`.
+1. Chcete-li nastavit celou odpověď JSON znalostní báze na proměnnou, vyhledejte a vyberte`Apply to each` akci. Vyberte `GenerateAnswer` `answers`možnost .
 
 1. Chcete-li vrátit pouze horní odpověď, v jednom **poli Použít pro každé** pole vyberte Přidat **akci**. Vyhledejte a vyberte **nastavit proměnnou**.
 
-    V poli **Nastavit proměnnou** vyberte textové pole **pro Název**a ze seznamu vyberte **OutgoingQnAAnswer.**
+    V poli **Nastavit proměnnou** vyberte textové pole **Název**a ze seznamu vyberte **OutgoingQnAAnswer.**
 
-    Vyberte textové pole pro **Hodnotu**a ze seznamu vyberte Odpovědět na **odpověď.**
-
-    > [!div class="mx-imgBorder"]
-    > ![Nastavení názvu a hodnoty proměnné](../media/how-to-integrate-power-virtual-agent/power-automate-flow-apply-to-each-set-variable.png)
-
-1. Chcete-li proměnnou (a její hodnotu) vrátit, vyberte hodnotu Návrat na položku toku **virtuálního agenta napájení** a pak vyberte **Upravit**a **pak Přidat výstup**. Vyberte **textový** typ výstupu `FinalAnswer`a zadejte **název** souboru . Vyberte textové pole pro **hodnotu a**pak vyberte proměnnou. `OutgoingQnAAnswer`
+    Vyberte textové pole pro **Hodnotu**a ze seznamu vyberte Odpovědi na **odpověď.**
 
     > [!div class="mx-imgBorder"]
-    > ![Nastavení vrácené hodnoty](../media/how-to-integrate-power-virtual-agent/power-automate-flow-return-value.png)
+    > ![Snímek obrazovky s nastavením názvu a hodnoty proměnné](../media/how-to-integrate-power-virtual-agent/power-automate-flow-apply-to-each-set-variable.png)
 
-1. Chcete-li tok uložit, vyberte **Uložit.**
+1. Chcete-li proměnnou (a její hodnotu) vrátit, vyberte položku toku **virtuálního agenta.** Pak vyberte **Upravit** > **přidat výstup**. Vyberte typ **textového** výstupu **Title** a `FinalAnswer`zadejte název souboru . Vyberte textové pole pro **hodnotu** `OutgoingQnAAnswer` a pak vyberte proměnnou.
 
-## <a name="create-solution-and-add-flow"></a>Vytvoření řešení a přidání toku
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s nastavením vrácené hodnoty](../media/how-to-integrate-power-virtual-agent/power-automate-flow-return-value.png)
 
-Aby virtuální agent napájení mohl najít tok a připojit se k němu, musí být tok součástí řešení power automate.
+1. Uložte tok výběrem možnosti **Uložit**.
+
+## <a name="create-a-solution-and-add-the-flow"></a>Vytvoření řešení a přidání toku
+
+Aby agent mohl najít tok a připojit se k němu, musí být tok součástí řešení Power Automate.
 
 1. Ještě na portálu Power Automate vyberte **řešení** z navigace na levé straně.
 
 1. Vyberte **+ Nové řešení**.
 
-1. Zadejte zobrazovaný název. Seznam řešení zahrnuje všechna řešení ve vaší organizaci nebo škole. Zvolte konvenci pojmenování, která vám pomůže filtrovat pouze `jondoe-power-virtual-agent-qnamaker-fallback`řešení, jako je předpona e-mailu na název řešení: .
+1. Zadejte zobrazovaný název. Seznam řešení zahrnuje všechna řešení ve vaší organizaci nebo škole. Zvolte konvenci pojmenování, která vám pomůže filtrovat pouze vaše řešení. Můžete například předponu e-mailu na `jondoe-power-virtual-agent-qnamaker-fallback`název řešení: .
 
 1. Vyberte vydavatele ze seznamu voleb.
 
@@ -211,75 +217,75 @@ Aby virtuální agent napájení mohl najít tok a připojit se k němu, musí b
 
 1. Chcete-li proces dokončit, vyberte **vytvořit.**
 
-## <a name="add-flow-to-solution"></a>Přidání toku do řešení
+## <a name="add-your-flow-to-the-solution"></a>Přidejte svůj tok do řešení
 
 1. V seznamu řešení vyberte řešení, které jste právě vytvořili. Mělo by to být na prvním místě seznamu. Pokud tomu tak není, vyhledejte název e-mailu, který je součástí názvu řešení.
 
-1. V řešení vyberte **+ Přidat existující**, pak vyberte **Tok** ze seznamu.
+1. V řešení vyberte **+ Přidat existující**a pak ze seznamu vyberte **Tok.**
 
-1. Najděte svůj tok a pak vyberte **Přidat** a dokončete proces. Pokud existuje mnoho toků, podívejte se na **změněný** sloupec najít nejnovější tok.
+1. Najděte svůj tok a pak vyberte **Přidat,** abyste dokončili proces. Pokud existuje mnoho toků, podívejte se na **změněný** sloupec najít nejnovější tok.
 
-## <a name="add-solutions-flow-to-power-virtual-agent"></a>Přidání toku řešení do virtuálního agenta napájení
+## <a name="add-your-solutions-flow-to-power-virtual-agents"></a>Přidejte tok svého řešení do virtuálních agentů napájení
 
-1. Vraťte se na kartu prohlížeče s vaším power virtual agentem. Authoring plátno by mělo být stále otevřené.
+1. Vraťte se na kartu prohlížeče se svým agentem v Power Virtual Agents. Authoring plátno by mělo být stále otevřené.
 
-1. Vyberte **+** spojnici pod polem **Akce Zpráva,** chcete-li do toku vložit nový krok, a pak vyberte **Volat akci**.
+1. Chcete-li do toku vložit nový krok, vyberte v poli **Akce zpráva** spojnici. **+** Pak vyberte **Volat na akci**.
 
 1. V nové akci vyberte vstupní hodnotu **UnrecognizedTriggerPhrase**. To předá text z agenta toku.
 
     > [!div class="mx-imgBorder"]
-    > ![V nové akci vyberte vstupní hodnotu **UnrecognizedTriggerPhrase**.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-select-unrecognized-trigger-phrase.png)
+    > ![Snímek obrazovky s možností Power Virtual Agents pro výběr nerozpoznané spouštěcí fráze](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-select-unrecognized-trigger-phrase.png)
 
-1. Vyberte **+** spojnici pod polem **Akce,** chcete-li do toku vložit nový krok, a pak vyberte **Zobrazit zprávu**.
+1. Chcete-li do toku vložit **Action** nový krok, **+** vyberte pod polem Akce spojnici. Pak vyberte **Zobrazit zprávu**.
 
-1. Zadejte text `Your answer is:`zprávy a `FinalAnswer` vyberte jako kontextovou proměnnou pomocí funkce panelu nástrojů na místě.
+1. Zadejte text `Your answer is:`zprávy, . Vyberte `FinalAnswer` jako kontextovou proměnnou pomocí funkce panelu nástrojů na místě.
 
     > [!div class="mx-imgBorder"]
-    > ![Zadejte text zprávy a "FinalAnswer" z toku power automatu.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-show-message-final-answer.png)
+    > ![Snímek obrazovky s možností Power Virtual Agents pro zadání textu zprávy](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-show-message-final-answer.png)
 
-1. Vyberte **Uložit** z panelu nástrojů kontextu, chcete-li uložit detaily vývojového plátna pro téma.
+1. Na panelu nástrojů kontextu vyberte **Uložit**, chcete-li uložit detaily vývojové hoplátna pro téma.
 
-Konečné plátno je uvedeno níže.
-
-> [!div class="mx-imgBorder"]
-> ![Plátno konečného agenta](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
-
-## <a name="test-power-virtual-agent"></a>Virtuální agent testovacího výkonu
-
-1. V testovacím podokně přepněte **sledovat mezi tématy**. To vám umožní sledovat průběh mezi tématy, stejně jako v jednom tématu.
-
-1. Otestujte agenta zadáním textu uživatele v pořadí uvedeném níže. Authoring canvas hlásí úspěšné kroky se zeleným zaškrtnutím.
-
-|Pořadí otázek|Zkušební otázky|Účel|
-|--|--|--|
-|1|Dobrý den|Zahájit konverzaci|
-|2|Hodiny obchodu|Ukázkové téma - nakonfigurováno pro vás bez jakékoli další práce z vaší strany.|
-|3|Ano|V odpovědi na`Did that answer your question?`|
-|4|Vynikající|V odpovědi na`Please rate your experience.`|
-|5|Ano|V odpovědi na`Can I help with anything else?`|
-|6|Co je znalostní báze?|Tato otázka spustí záložní akci, která odešle text do znalostní báze odpovědět, pak se zobrazí odpověď. |
+Takhle vypadá plátno posledního agenta.
 
 > [!div class="mx-imgBorder"]
-> ![Plátno konečného agenta](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png)
+> ![Snímek obrazovky s plátnem konečného agenta](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
+
+## <a name="test-the-agent"></a>Otestujte agenta
+
+1. V testovacím podokně přepněte **sledovat mezi tématy**. To vám umožní sledovat průběh mezi tématy, stejně jako v rámci jednoho tématu.
+
+1. Otestujte agenta zadáním textu uživatele v následujícím pořadí. Authoring canvas hlásí úspěšné kroky se zeleným zaškrtnutím.
+
+    |Pořadí otázek|Zkušební otázky|Účel|
+    |--|--|--|
+    |1|Dobrý den|Zahájit konverzaci|
+    |2|Hodiny obchodu|Ukázkové téma. To je konfigurováno pro vás bez jakékoli další práce z vaší strany.|
+    |3|Ano|V odpovědi na`Did that answer your question?`|
+    |4|Vynikající|V odpovědi na`Please rate your experience.`|
+    |5|Ano|V odpovědi na`Can I help with anything else?`|
+    |6|Co je znalostní báze?|Tato otázka spustí záložní akci, která odešle text do znalostní báze odpovědět. Pak se zobrazí odpověď. |
+
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky s plátnem konečného agenta](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png)
 
 ## <a name="publish-your-bot"></a>Publikování svého robota
 
 Chcete-li agenta zpřístupnit všem členům vaší školy nebo organizace, musíte jej publikovat.
 
-1. Z navigace vlevo vyberte **Publikovat** a pak na stránce vyberte **Publikovat.**
+1. V navigaci vlevo vyberte **Publikovat**. Pak na stránce vyberte **Publikovat.**
 
-1. Zkuste svého robota na demo webové stránky, za předpokladu, jako odkaz pod **tlačítkem Publikovat** .
+1. Zkuste svého robota na demo webových stránkách (podívejte se na odkaz v části **Publikovat**).
 
     Otevře se nová webová stránka s vaším robotem. Zeptejte se bot stejnou zkušební otázku:`What is a knowledge base?`
 
     > [!div class="mx-imgBorder"]
-    > ![Plátno konečného agenta](../media/how-to-integrate-power-virtual-agent/demo-chat-bot.png)
+    > ![Snímek obrazovky s plátnem konečného agenta](../media/how-to-integrate-power-virtual-agent/demo-chat-bot.png)
 
 ## <a name="share-your-bot"></a>Podělte se o svého robota
 
-Chcete-li sdílet demo webové stránky, nakonfigurujte jej jako kanál.
+Chcete-li sdílet ukázkový web, nakonfigurujte jej jako kanál.
 
-1. Z levé navigace vyberte **Spravovat** **kanály.**
+1. V navigaci vlevo vyberte **Spravovat** > **kanály**.
 
 1. Ze seznamu kanálů vyberte **Ukázkový web.**
 

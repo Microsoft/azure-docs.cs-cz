@@ -7,14 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 196d917d31eb08af80587bba30d9f7e67bf8cbea
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: c28305cc55fcc561863670a15480782ce63e75b4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991701"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415517"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Vytváření výrazů v toku dat mapování
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 V mapování toku dat je mnoho vlastností transformace zadáno jako výrazy. Tyto výrazy se skládají z hodnot sloupců, parametrů, funkcí, operátorů a literál, které jsou vyhodnocovány na datový typ Spark za běhu.
 

@@ -1,40 +1,41 @@
 ---
-title: Možnosti a úvahy o obchodních transakcích marketplace | Azure
-description: Tento článek popisuje převodník ceny, fakturace, fakturace a výplaty úvahy pro typ nabídky.
-services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
+title: Možnosti obchodního trhu společnosti Microsoft
+description: Tento článek popisuje ceny, fakturaci, fakturaci a výplaty pro možnost obchodního trhu společnosti Microsoft.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: de93a3c48e0b0aceb447e54e11190f487d1aa2d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 768fa9ca2080fc9a58fb321e62d8d61a608f9564
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279823"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415263"
 ---
-# <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Aspekty a možnosti transakcí na komerčním marketplace
+# <a name="commercial-marketplace-transact-capabilities"></a>Možnosti provází obchodní trh
 
-Tento článek popisuje následující obchodní témata pro komerční trh
+Tento článek popisuje následující obchodní témata pro obchodní trh společnosti Microsoft:
 
-* Možnosti publikování na Marketplace
+* Odpovědnost za transakce za různé možnosti publikování
 * Transact obecný přehled
 * Transact fakturační modely
 * Požadavky na provádění
 
-## <a name="marketplace-publishing-options"></a>Možnosti publikování na Marketplace
+## <a name="transactions-by-publishing-option"></a>Transakce pomocí možnosti publikování
 
-Vydavatelům komerčního tržiště jsou k dispozici následující možnosti publikování.
+Vydavatel nebo společnost Microsoft je zodpovědná za správu transakcí softwarových licencí pro nabídky na komerčním trhu. Možnost publikování, kterou zvolíte pro vaši nabídku, určí, kdo transakci spravuje. Dostupnost a vysvětlení jednotlivých možností publikování najdete v tématu [Určení možnosti publikování.](./determine-your-listing-type.md#choose-a-publishing-option)
 
-### <a name="list--trial-publishing-options"></a>Seznam & možností publikování zkušební verze
+### <a name="list-trial-and-byol-publishing-options"></a>Možnosti publikování seznamu, zkušební verze a byol
 
-Vydavatelé mohou využít možnosti seznamu, zkušební verze a publikování BYOL pro účely propagačních a uživatelských akvizic. S těmito možnostmi se společnost Microsoft přímo neúčastní transakcí s licencemi na software vydavatele a neexistuje žádný související transakční poplatek. Vydavatelé jsou zodpovědní za podporu všech aspektů transakce s licencí na software, mimo jiné včetně: objednávky, plnění, měření, fakturace, fakturace, platby a inkasa. Díky možnostem seznamu a zkušebního publikování si vydavatelé ponechají 100 % licenčních poplatků za software vydavatelů vybraných od zákazníka. 
+Majitelé stránek s existujícími možnostmi obchodování si mohou vybrat možnosti publikování seznamu, zkušební verze a vlastní licence (BYOL) pro účely propagace a získávání uživatelů. S těmito možnostmi se společnost Microsoft přímo neúčastní transakcí s licencemi na software vydavatele a neexistuje žádný související transakční poplatek. Vydavatelé jsou zodpovědní za podporu všech aspektů transakce s licencí na software, mimo jiné včetně: objednávky, plnění, měření, fakturace, fakturace, platby a inkasa. Díky možnostem seznamu a zkušebního publikování si vydavatelé ponechají 100 % licenčních poplatků za software vydavatelů vybraných od zákazníka.
 
 ### <a name="transact-publishing-option"></a>Možnost publikování transact
 
-Kromě možností seznamu a zkušebního publikování je možnost publikování transact k dispozici vydavatelům. To využívá globálně dostupné možnosti obchodování společnosti Microsoft a umožňuje společnosti Microsoft hostovat transakce na trhu cloudu jménem vydavatele.
+Možnost publikování transact využívá možnosti obchodování microsoftu a poskytuje komplexní prostředí od zjišťování a hodnocení až po nákup a implementaci. Nabídky transactu se účtují proti stávajícímu předplatnému společnosti Microsoft nebo platební kartě, což společnosti Microsoft umožňuje hostovat transakce na trhu cloudu jménem vydavatele.
+
+Možnost transaktu zvolíte při vytváření nové nabídky v Partnerském centru. Na stránce **Nastavení nabídky** v části **Podrobnosti o instalaci**vyberte možnost Ano, chtěl bych prodávat prostřednictvím společnosti Microsoft a mít transakce hostitele společnosti Microsoft mým jménem. Tato možnost se zobrazí pouze v případě, že je pro typ nabídky k dispozici transakt.
 
 ## <a name="transact-general-overview"></a>Transact obecný přehled
 
@@ -42,43 +43,39 @@ Při použití možnosti publikování transact, Microsoft umožňuje prodej sof
 
 Možnost publikování Transact je aktuálně podporovaná pro následující typy nabídek: Virtuální počítače, Aplikace Azure a Aplikace SaaS.
 
-
-![[Transacting Enterprise Deals in Azure Marketplace]](./media/marketplace-publishers-guide/Transact-enterprise-deals.png)
-
 ### <a name="billing-infrastructure-costs"></a>Náklady na fakturační infrastrukturu
 
 **Pro virtuální počítače a aplikace Azure**
 
-U virtuálních počítačů a aplikací Azure se poplatky za využití infrastruktury Azure účtují podle předplatného Azure zákazníka.  Poplatky za využití infrastruktury jsou oceněny a prezentovány odděleně od licenčních poplatků poskytovatele softwaru na faktuře zákazníka.
+U virtuálních počítačů a aplikací Azure se poplatky za využití infrastruktury Azure účtují podle předplatného Azure zákazníka. Poplatky za využití infrastruktury jsou oceněny a prezentovány odděleně od licenčních poplatků poskytovatele softwaru na faktuře zákazníka.
 
 **Pro aplikace SaaS**
 
-U aplikací SaaS musí vydavatel účtovat poplatky za využití infrastruktury Azure a licenční poplatky za software jako jednu nákladovou položku.  Je pro zákazníka zastoupena jako paušální poplatek. Využití infrastruktury Azure se spravuje a účtuje přímo partnerovi.  Skutečné poplatky za využití infrastruktury nejsou zákazníkem vidět.  Vydavatelé se obvykle rozhodnou složit poplatky za využití infrastruktury Azure do cen softwarových licencí.  Licenční poplatky za software nejsou měřeny nebo na základě spotřeby.
+U aplikací SaaS musí vydavatel účtovat poplatky za využití infrastruktury Azure a licenční poplatky za software jako jednu nákladovou položku.  Je pro zákazníka zastoupena jako paušální poplatek. Využití infrastruktury Azure se spravuje a účtuje přímo partnerovi. Skutečné poplatky za využití infrastruktury nejsou zákazníkem vidět. Vydavatelé se obvykle rozhodnou složit poplatky za využití infrastruktury Azure do cen softwarových licencí. Licenční poplatky za software nejsou měřeny nebo na základě spotřeby.
 
 ## <a name="transact-billing-models"></a>Transact fakturační modely
 
 V závislosti na použité možnosti transakce mohou být licenční poplatky vydavatele na základě softwarových licencí prezentovány takto:  
 
-* Zdarma: Za softwarové licence se neplatí. 
+* Zdarma: Za softwarové licence se neplatí.
 
-* Přineste si vlastní licenci (BYOL): Veškeré příslušné poplatky za softwarové licence jsou spravovány přímo mezi vydavatelem a zákazníkem. Microsoft projíždí jenom poplatky za využití infrastruktury Azure. (Pouze virtuální počítače a aplikace Azure.)
+* Přineste si vlastní licenci (BYOL): Veškeré příslušné poplatky za softwarové licence jsou spravovány přímo mezi vydavatelem a zákazníkem. Microsoft projíždí jenom poplatky za využití infrastruktury Azure. To platí pouze pro virtuální počítače a aplikace Azure.
 
-* Průběžně: Licenční poplatky za software se prezentují jako cena za hodinu a za jádro (vCPU) na základě použité infrastruktury Azure. To platí jenom pro virtuální počítače a aplikace Azure.
+* Průběžně: Licenční poplatky za software se prezentují jako cena za hodinu a za jádro (vCPU) na základě použité infrastruktury Azure. To platí pouze pro virtuální počítače a aplikace Azure.
 
-* Ceny předplatného: Licenční poplatky za software jsou prezentovány jako měsíční nebo roční opakující se poplatek účtovaný jako paušální sazba nebo za sedadlo. To platí jenom pro aplikace SaaS a aplikace Azure – spravované aplikace.
+* Ceny předplatného: Licenční poplatky za software jsou prezentovány jako měsíční nebo roční opakující se poplatek účtovaný jako paušální sazba nebo za sedadlo. To platí pro aplikace SaaS a aplikace Azure – jenom spravované aplikace.
 
 * Zkušební verze bezplatného softwaru: Za softwarové licence se neúčtuje po dobu 30 dnů nebo 90 dní.
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>Ceny zdarma a přineste si vlastní licenci (BYOL)
 
-Při publikování nabídky transakcí zdarma nebo přineste vlastní licenci, společnost Microsoft nehraje roli při usnadňování prodejní transakce pro licenční poplatky za software. Stejně jako seznam a možnosti publikování zkušební verze, vydavatel udržuje 100% licenčních poplatků za software. 
+Při publikování nabídky transakcí zdarma nebo přineste vlastní licenci, společnost Microsoft nehraje roli při usnadňování prodejní transakce pro licenční poplatky za software. Stejně jako seznam a možnosti publikování zkušební verze, vydavatel udržuje 100% licenčních poplatků za software.
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Ceny průběžných plateb a předplatného (na webu)
 
 Při publikování nabídky transakcí s průběžnými platbami nebo předplatného poskytuje společnost Microsoft technologii a služby pro zpracování nákupů softwarových licencí, vrácení a vrácení poplatků. V tomto scénáři vydavatel opravňuje společnost Microsoft jednat jako agent pro tyto účely. Vydavatel umožňuje společnosti Microsoft usnadnit transakci licencování softwaru a zároveň zachovat jejich označení jako prodejce, poskytovatele, distributora a poskytovatele licence.
 
-Společnost Microsoft umožňuje zákazníkům objednávat, licencovat a používat software vydavatele v souladu s podmínkami komerčního webu Marketplace společnosti Microsoft i licenční smlouvy s koncovým uživatelem vydavatele. Vydavatelé musí při vytváření nabídky poskytnout licenční smlouvu s koncovým uživatelem nebo vybrat [standardní smlouvu.](https://docs.microsoft.com/azure/marketplace/standard-contract)
-
+Společnost Microsoft umožňuje zákazníkům objednávat, licencovat a používat software vydavatele v souladu s podmínkami komerčního webu Marketplace společnosti Microsoft i licenční smlouvy s koncovým uživatelem vydavatele. Vydavatelé musí při vytváření nabídky poskytnout licenční smlouvu s koncovým uživatelem nebo vybrat [standardní smlouvu.](./standard-contract.md)
 
 ### <a name="free-software-trials"></a>Bezplatné softwarové zkušební verze
 
@@ -204,7 +201,7 @@ Pokud jsou vybrány cenové modely s průběžným platbou nebo s průběžným 
 
 * Zákazníci obvykle nakupují pomocí smlouvy Enterprise nebo smlouvy s povolenými platbami s průběžnou platbou s povolenou kreditní kartou. Typ smlouvy určuje čas fakturace, fakturace, inkaso a výplaty.
 
->[!NOTE] 
+>[!NOTE]
 >Všechny přehledy a přehledy pro možnost publikování transgrafu jsou k dispozici prostřednictvím části Přehledy v části Portál pro partnery cloudnebo analytics v Centru partnerů.
 
 #### <a name="billing-questions-and-support"></a>Otázky k fakturaci a podpora
@@ -219,15 +216,14 @@ V této části jsou uvedeny požadavky na transakt pro různé typy nabídek.
 
 ### <a name="requirements-for-all-offer-types"></a>Požadavky na všechny typy nabídek
 
-- Pro možnost publikování převodu jsou vyžadovány informace o účtu Microsoft a finanční informace bez ohledu na cenový model nabídky.
-- Povinné finanční údaje zahrnují výplatní účet a daňový profil.
+* Pro možnost publikování převodu jsou vyžadovány informace o účtu Microsoft a finanční informace bez ohledu na cenový model nabídky.
+* Povinné finanční údaje zahrnují výplatní účet a daňový profil.
 
-Další informace o nastavení těchto účtů naleznete v tématu [Správa účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)).
-
+Další informace o nastavení těchto účtů naleznete v [tématu Správa účtu komerčního tržiště v Centru partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)).
 
 ### <a name="requirements-for-specific-offer-types"></a>Požadavky na konkrétní typy nabídek
 
-Možnost publikování transact je k dispozici pouze pro použití s následujícími typy nabídek marketplace: 
+Možnost publikování transact je k dispozici pouze pro použití s následujícími typy nabídek marketplace:
 
 **Virtuální počítač** 
 

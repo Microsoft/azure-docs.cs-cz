@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.openlocfilehash: f875d8f4603a8f51b8b8fed2438e6f3a30c87aeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad26fca94527864af10bb0051336c372ea65b3e0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931171"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413804"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Kopírování dat z SAP ECC pomocí Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat z komponenty SAP Enterprise Central Component (ECC). Další informace naleznete v [tématu Kopírování přehledu aktivit](copy-activity-overview.md).
 
@@ -146,7 +147,7 @@ V části aktivity kopírování jsou `source` podporovány následující vlast
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | `type` | Vlastnost `type` `source` části aktivity kopírování musí být `SapEccSource`nastavena na . | Ano |
-| `query` | Možnosti dotazu OData pro filtrování dat. Například:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Konektor SAP ECC zkopíruje data z kombinované adresy URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Další informace naleznete v tématu [Součásti adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
+| `query` | Možnosti dotazu OData pro filtrování dat. Příklad:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Konektor SAP ECC zkopíruje data z kombinované adresy URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Další informace naleznete v tématu [Součásti adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
 
 ### <a name="example"></a>Příklad
 

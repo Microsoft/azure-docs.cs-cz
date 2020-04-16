@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3a885f071c89ff6d9bb79d908b19c9451b4ed735
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 72a40363edf0e83eea26ee697ce992226da0db4f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383306"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392288"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -18,29 +18,28 @@ Tento článek ukazuje, jak vytvořit účet Azure Automation na webu Azure Port
 
 Pomocí účtu Automation můžete ověřovat sady Runbook správou prostředků ve Správci prostředků Azure nebo v klasickém modelu nasazení. Jeden účet Automation může spravovat prostředky napříč všemi oblastmi a předplatnými daného tenanta.
 
-Když na webu Azure Portal vytvoříte účet Automation, automaticky se vytvoří tyto účty:
+Když vytvoříte účet Automation na webu Azure Portal, automaticky se vytvoří účet **Spustit jako.** Tento účet provádí následující úkoly:
 
-* **Spustit jako účet**. Tento účet provádí následující úkoly:
-  * Vytvoří instanční objekt ve službě Azure Active Directory (Azure AD).
-  * Vytvoří certifikát.
-  * Přiřadí řízení přístupu na základě rolí přispěvatele (RBAC), které spravuje prostředky Azure Resource Manager pomocí runbooků.
+* Vytvoří instanční objekt ve službě Azure Active Directory (Azure AD).
+* Vytvoří certifikát.
+* Přiřadí řízení přístupu na základě rolí přispěvatele (RBAC), které spravuje prostředky Azure Resource Manager pomocí runbooků.
 
-S těmito účty vytvořenými pro vás můžete rychle začít vytvářet a nasazovat runbooky pro podporu vašich potřeb automatizace.
+S tímto účtem vytvořeným pro vás můžete rychle začít vytvářet a nasazovat runbooky pro podporu vašich potřeb automatizace.
 
 ## <a name="permissions-required-to-create-an-automation-account"></a>Oprávnění potřebná k vytvoření účtu automatizace
 
 Chcete-li vytvořit nebo aktualizovat účet automatizace a dokončit úkoly popsané v tomto článku, musíte mít následující oprávnění a oprávnění:
 
-* Chcete-li vytvořit účet Automatizace, musí být váš uživatelský účet Azure AD přidán do role s oprávněními ekvivalentními roli vlastníka pro **Microsoft. Zdroje automatizace.** Další informace najdete [v tématu Řízení přístupu na základě rolí v Azure Automation](automation-role-based-access-control.md).
+* Chcete-li vytvořit účet automatizace, musí být váš uživatelský účet Azure AD `Microsoft.Automation` přidán do role s oprávněními ekvivalentními roli vlastníka pro prostředky. Další informace najdete [v tématu Řízení přístupu na základě rolí v Azure Automation](automation-role-based-access-control.md).
 * Na webu Azure Portal můžete v části **Azure Active Directory** > **MANAGE** > **User settings**, pokud je registrace aplikací nastavené na **Ano**, mohou uživatelé bez oprávnění správce ve vašem tenantovi Azure AD [zaregistrovat aplikace služby Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). **App registrations** Pokud **je registrace aplikací** nastavena na **ne**, uživatel, který provádí tuto akci, musí být globálním správcem ve službě Azure AD.
 
-Pokud nejste členem instance služby Active Directory předplatného před přidáním do role globálního správce/spolusprávce předplatného, budete přidáni do služby Active Directory jako host. V tomto scénáři se zobrazí tato zpráva na stránce **Přidat účet automatizace:** "Nemáte oprávnění k vytvoření."
+Pokud nejste členem instance služby Active Directory předplatného před přidáním do role globálního správce/spolusprávce předplatného, budete přidáni do služby Active Directory jako host. V tomto scénáři se zobrazí tato zpráva v podokně Přidat účet automatizace:`You do not have permissions to create.`
 
-Pokud je uživatel nejprve přidán do role globálního správce/spolusprávce, můžete jej odebrat z instance služby Active Directory předplatného a potom je přečíst do úplné role uživatele ve službě Active Directory.
+Pokud je uživatel přidán nejprve do role globální správce/správce, můžete jej odebrat z instance služby Active Directory předplatného. Uživatele můžete přečíst do role Uživatel ve službě Active Directory.
 
 Ověření uživatelských rolí:
 
-1. Na webu Azure Portal přejděte do podokna **Azure Active Directory.**
+1. Na webu Azure Portal přejděte do podokna Azure Active Directory.
 1. Vyberte **Možnost Uživatelé a skupiny**.
 1. Vyberte **možnost Všichni uživatelé**.
 1. Po výběru konkrétního uživatele vyberte **profil**. Hodnota atributu **User type** pod profilem uživatele by neměla být **Guest**.
@@ -55,30 +54,34 @@ Pokud chcete na webu Azure Portal vytvořit účet Azure Automation, postupujte 
 
    ![Hledání a výběr automatizace & řízení na Azure Marketplace](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
 
-1. Na další obrazovce vyberte **Vytvořit**.
+1. Na další obrazovce vyberte **Vytvořit nový**.
 
    ![Přidat účet automatizace](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
    > [!NOTE]
-   > Pokud se v podokně **Přidat účet automatizace** zobrazí následující zpráva, váš účet není členem role Správci předplatného a spolusprávcem předplatného.
+   > Pokud se v podokně Přidat účet automatizace zobrazí následující zpráva, váš účet není členem role Správci předplatného a spolusprávcem předplatného.
    >
    > ![Upozornění na účet automatizace](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. V podokně **Přidat účet automatizace** zadejte do pole **Název** název nového účtu Automation. Tento název nelze po výběru změnit. *Názvy účtů automatizace jsou jedinečné pro oblast a skupinu prostředků. Názvy účtů automatizace, které byly odstraněny, nemusí být okamžitě k dispozici.*
-1. Pokud máte více než jedno předplatné, zadejte do pole **Odběr** předplatné, které chcete použít pro nový účet.
+1. V podokně Přidat účet automatizace zadejte název nového účtu Automation do pole **Název.** Po výběru nemůžete tento název změnit. 
+
+    > [!NOTE]
+    > Názvy účtů automatizace jsou jedinečné pro oblast a skupinu prostředků. Názvy odstraněných účtů automatizace nemusí být okamžitě k dispozici.
+
+1. Pokud máte více než jedno předplatné, použijte pole **Předplatné** k určení předplatného, které se má použít pro nový účet.
 1. Do **skupiny prostředků**zadejte nebo vyberte novou nebo existující skupinu prostředků.
 1. V **aplikaci Umístění**vyberte umístění datového centra Azure.
-1. Pro **možnost Vytvořit účet Azure Spustit jako** zkontrolujte, že je vybraná možnost **Ano,** a pak vyberte **Vytvořit**.
+1. U možnosti **Vytvořit účet Azure Run As** zkontrolujte, že je vybraná možnost **Ano,** a klikněte na **vytvořit**.
 
    > [!NOTE]
-   > Pokud se rozhodnete nevytvářet účet Spustit jako výběrem možnosti **Ne** pro **vytvoření účtu Azure Run As**, zobrazí se v podokně Přidat účet **automatizace** zpráva. I když se účet vytvoří na webu Azure Portal, účet nemá odpovídající ověřovací identitu v rámci předplatného klasického modelu nasazení nebo v adresářové službě předplatného Azure Resource Manager. Proto účet automatizace nemá přístup k prostředkům ve vašem předplatném. Tím zabráníte všem runbookům, které odkazují na tento účet, možnost ověření a provádění úloh proti prostředkům v těchto modelech nasazení.
+   > Pokud se rozhodnete nevytvářet účet Spustit jako výběrem možnosti **Ne** pro **vytvoření účtu Azure Run As**, zobrazí se v podokně Přidat účet automatizace zpráva. I když se účet vytvoří na webu Azure Portal, účet nemá odpovídající ověřovací identitu v rámci předplatného klasického modelu nasazení nebo v adresářové službě předplatného Azure Resource Manager. Proto účet automatizace nemá přístup k prostředkům ve vašem předplatném. Tím zabráníte všem runbookům, které odkazují na tento účet, možnost ověření a provádění úloh proti prostředkům v těchto modelech nasazení.
    >
    > ![Upozornění na účet automatizace](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
    >
    > Pokud není vytvořen instanční objekt, role přispěvatele není přiřazena.
    >
 
-1. Chcete-li sledovat průběh vytváření účtu automatizace, vyberte v nabídce **možnost Oznámení**.
+1. Chcete-li sledovat průběh vytváření účtu automatizace, vyberte **oznámení** v nabídce.
 
 ### <a name="resources-included"></a>Zahrnuté prostředky
 

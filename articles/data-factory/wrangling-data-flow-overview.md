@@ -7,14 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71df574602518fdc252d9d86859ed772a17be443
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77048361"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408985"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Co jsou toky dat?
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Organizace musí provádět přípravu dat a hašteření pro přesnou analýzu komplexních dat, která každým dnem rostou. Příprava dat je vyžadována, aby organizace mohly data používat v různých obchodních procesech a zkrátit dobu potřebnou k dosažení hodnoty.
 
@@ -42,7 +44,7 @@ Vizuálně naskenujte data způsobem bez kódu, abyste odstranili všechny odleh
 
 | Konektor | Formát dat | Typ ověřování |
 | -- | -- | --|
-| [Úložiště objektů blob Azure](connector-azure-blob-storage.md) | CSV, Parkety | Klíč účtu |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, Parkety | Klíč účtu |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Instanční objekt |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parkety | Klíč účtu, instanční objekt |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | Ověřování pomocí SQL |

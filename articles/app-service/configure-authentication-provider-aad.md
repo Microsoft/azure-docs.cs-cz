@@ -3,14 +3,14 @@ title: Konfigurace ověřování Azure AD
 description: Přečtěte si, jak nakonfigurovat ověřování Azure Active Directory jako poskytovatele identity pro vaši aplikaci App Service nebo Azure Functions.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632575"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392567"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace aplikace App Service nebo aplikace Azure Functions tak, aby používaly přihlášení Azure AD
 
@@ -19,8 +19,7 @@ ms.locfileid: "80632575"
 Tento článek ukazuje, jak nakonfigurovat Azure App Service nebo Azure Functions používat Azure Active Directory (Azure AD) jako zprostředkovatele ověřování.
 
 > [!NOTE]
-> V současné době [azure active directory v2.0](../active-directory/develop/v2-overview.md) (včetně [MSAL)](../active-directory/develop/msal-overview.md)není podporována pro Azure App Service a Azure functions. Zkontrolujte, zda neobsahuje aktualizace.
->
+> Expresní nastavení toku nastaví registraci aplikace AAD V1. Pokud chcete používat [službu Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) (včetně [MSAL](../active-directory/develop/msal-overview.md)), postupujte podle [pokročilých pokynů pro konfiguraci](#advanced).
 
 Při nastavování aplikace a ověřování postupujte podle těchto doporučených postupů:
 
@@ -101,7 +100,7 @@ Proveďte následující kroky:
     |Pole|Popis|
     |-|-|
     |ID klienta| Použijte **ID aplikace (klienta)** registrace aplikace. |
-    |Adresa URL vystavittele| Použijte `https://login.microsoftonline.com/<tenant-id>`a * \<nahraďte>id klienta* **ID adresáře (tenanta)** registrace aplikace. Tato hodnota se používá k přesměrování uživatelů na správného klienta Azure AD, stejně jako ke stažení příslušných metadat k určení příslušné klíče podpisu tokenu a hodnotu deklarace vystavitele tokenu například. |
+    |Adresa URL vystavittele| Použijte `https://login.microsoftonline.com/<tenant-id>/v2.0`a * \<nahraďte>id klienta* **ID adresáře (tenanta)** registrace aplikace. Tato hodnota se používá k přesměrování uživatelů na správného klienta Azure AD, stejně jako ke stažení příslušných metadat k určení příslušné klíče podpisu tokenu a hodnotu deklarace vystavitele tokenu například. Sekce `/v2.0` může být vynechána pro aplikace používající AAD v1. |
     |Tajný klíč klienta (volitelné)| Použijte tajný klíč klienta, který jste vygenerovali při registraci aplikace.|
     |Povolené cílové skupiny tokenů| Pokud se jedná o cloudovou nebo serverovou aplikaci a chcete povolit ověřovací tokeny z webové aplikace, přidejte identifikátor **URI ID aplikace** webové aplikace sem. Nakonfigurované **ID klienta** je *vždy* implicitně považováno za povolenou cílovou skupinu. |
 

@@ -4,12 +4,12 @@ description: Zjistěte, jak pomocí portálu Azure vytvořit cluster Služeb Azu
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 62d8fec4c5c3ff35fb46826cb7118946f66948b2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259115"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392583"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Vytvoření a konfigurace clusteru Služeb Azure Kubernetes (AKS) pro použití virtuálních uzlů na webu Azure Portal
 
@@ -89,7 +89,7 @@ Na stránce **Měřítko** vyberte *Povoleno v* části **Virtuální uzly**.
 
 ![Vytvoření clusteru AKS a povolení virtuálních uzlů](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-Ve výchozím nastavení se vytvoří zaregistrovaný objekt služby Azure Active Directory. Tento instanční objekt služby se používá pro komunikaci clusteru a integraci s jinými službami Azure.
+Ve výchozím nastavení se vytvoří zaregistrovaný objekt služby Azure Active Directory. Tento instanční objekt služby se používá pro komunikaci clusteru a integraci s jinými službami Azure. Případně můžete použít spravovanou identitu pro oprávnění namísto instančního objektu. Další informace naleznete v tématu [Použití spravovaných identit](use-managed-identity.md).
 
 Cluster je také nakonfigurován pro pokročilou síť. Virtuální uzly jsou nakonfigurované tak, aby používaly vlastní podsíť virtuální sítě Azure. Tato podsíť má delegovaná oprávnění k propojení prostředků Azure mezi clusterem AKS. Pokud ještě nemáte delegovanou podsíť, portál Azure vytvoří a nakonfiguruje virtuální síť Azure a podsíť pro použití s virtuálními uzly.
 

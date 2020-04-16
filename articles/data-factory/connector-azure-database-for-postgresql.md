@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/16/2019
-ms.openlocfilehash: 67d59e3f733efe5a248e6763f46402302496d437
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b85e72ae6698cd9fa018c940e158bfcf25279ed5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444374"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410469"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopírování dat do a z databáze Azure pro PostgreSQL pomocí Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí funkce aktivity kopírování v Azure Data Factory kopírovat data z Databáze Azure pro PostgreSQL. Vychází z [aktivity Kopírování v](copy-activity-overview.md) azure data factory článku, který představuje obecný přehled aktivity kopírování.
 

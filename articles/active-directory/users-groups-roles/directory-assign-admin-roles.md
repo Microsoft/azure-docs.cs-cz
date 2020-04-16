@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe8aa088538663ac3e64f5913ff031e6160b045
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: b3f284efd6a9a2fd83c8e2a8f9fb7a962c1cacc1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382640"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406463"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
-Pomocí služby Azure Active Directory (Azure AD) můžete určit omezené správce pro správu úloh identit v méně privilegovaných rolích. Správci mohou být přiřazeni k takovým účelům, jako je přidávání nebo změna uživatelů, přiřazování rolí pro správu, resetování uživatelských hesel, správa uživatelských licencí a správa názvů domén. Výchozí uživatelská oprávnění lze změnit jenom v uživatelských nastaveních ve službě Azure AD.
+Pomocí služby Azure Active Directory (Azure AD) můžete určit omezené správce pro správu úloh identit v méně privilegovaných rolích. Správci mohou být přiřazeni k takovým účelům, jako je přidávání nebo změna uživatelů, přiřazování rolí pro správu, resetování uživatelských hesel, správa uživatelských licencí a správa názvů domén. [Výchozí uživatelská oprávnění](../fundamentals/users-default-permissions.md) lze změnit jenom v uživatelských nastaveních ve službě Azure AD.
 
 ## <a name="limit-use-of-global-administrator"></a>Omezit použití globálního správce
 
@@ -276,6 +276,10 @@ Delegování oprávnění správce na podmnožiny uživatelů a použití zásad
 
 Tato role se dříve nazývala "Správce hesel" na [webu Azure Portal](https://portal.azure.com/). Název "Helpdesk Administrator" ve službě Azure AD teď odpovídá jeho názvu v Prostředí Azure AD PowerShell a rozhraní Microsoft Graph API.
 
+### <a name="hybrid-identity-administrator"></a>[Správce hybridní identity](#hybrid-identity-administrator-permissions)
+
+Uživatelé v této roli můžete povolit, konfigurovat a spravovat služby a nastavení související s povolením hybridní identity ve službě Azure AD. Tato role uděluje možnost nakonfigurovat Azure AD na jednu ze tří podporovaných metod ověřování, synchronizace hash hesla (PHS), předávací ověřování (PTA) nebo federace (AD FS nebo třetí strany federativní zprostředkovatel) a nasadit související místní infrastruktury, aby jim umožnila. Infrastruktura on-prem zahrnuje zřizování a agenty PTA. Tato role umožňuje povolit bezproblémové jednotné přihlašování (S-SSO) povolit bezproblémové ověřování na zařízeních, která nejsou se systémem Windows 10, nebo v počítačích s windows serverem 2016. Kromě toho tato role uděluje možnost zobrazit protokoly přihlášení a přístup ke stavu a analýzy pro účely monitorování a řešení potíží. 
+
 ### <a name="intune-administrator"></a>[Správce Intune](#intune-service-administrator-permissions)
 
 Uživatelé s touto rolí mají globální oprávnění v rámci služby Microsoft Intune Online, pokud je služba k dispozici. Kromě toho tato role obsahuje možnost spravovat uživatele a zařízení za účelem přidružení zásad, stejně jako vytvářet a spravovat skupiny. Další informace na [ovládací msa (RBAC) založené na rolích s Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control).
@@ -300,6 +304,10 @@ Uživatelé v této roli mohou sledovat všechna oznámení v Centru zpráv, vč
 ### <a name="message-center-reader"></a>[Čtečka Centra zpráv](#message-center-reader-permissions)
 
 Uživatelé v této roli můžou monitorovat oznámení a aktualizace stavu v [Centru zpráv Office 365](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) pro svou organizaci na konfigurovaných službách, jako je Exchange, Intune a Microsoft Teams. Čtenáři Centra zpráv dostávají týdenní e-mailové přehledy příspěvků, aktualizací a můžou sdílet příspěvky v Centru zpráv v Office 365. Ve službě Azure AD budou mít uživatelé přiřazení k této roli jenom přístup jen pro čtení ve službách Azure AD, jako jsou uživatelé a skupiny. Tato role nemá přístup k zobrazení, vytvoření nebo správě lístků podpory.
+
+### <a name="network-administrator"></a>[Správce sítě](#network-administrator-permissions)
+
+Uživatelé v této roli můžete zkontrolovat doporučení architektury obvodu sítě od společnosti Microsoft, které jsou založeny na síťové telemetrie z jejich umístění uživatelů. Výkon sítě pro Office 365 závisí na pečlivé architektuře perimetru podnikové sítě zákazníků, která je obecně specifická pro umístění uživatele. Tato role umožňuje úpravy zjištěných umístění uživatelů a konfiguraci síťových parametrů pro tato umístění pro usnadnění lepších měření telemetrie a doporučení návrhu. 
 
 ### <a name="office-apps-administrator"></a>[Správce aplikací Office](#office-apps-administrator-permissions)
 
@@ -331,6 +339,14 @@ Uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Power
 ### <a name="power-platform-administrator"></a>[Správce napájecí platformy](#power-platform-administrator-permissions)
 
 Uživatelé v této roli můžete vytvářet a spravovat všechny aspekty prostředí, PowerApps, toky, zásady prevence ztráty dat. Kromě toho uživatelé s touto rolí mají možnost spravovat lístky podpory a sledovat stav služby.
+
+### <a name="printer-administrator"></a>[Správce tiskárny](#printer-administrator-permissions)
+
+Uživatelé v této roli mohou registrovat tiskárny a spravovat všechny aspekty všech konfigurací tiskáren v řešení Microsoft Universal Print, včetně nastavení univerzálního tiskového konektoru. Mohou souhlasit se všemi delegovanými požadavky na oprávnění k tisku. Správci tiskáren mají také přístup k tiskovým sestavám.
+
+### <a name="printer-technician"></a>[Technik tiskárny](#printer-technician-permissions)
+
+Uživatelé s touto rolí mohou registrovat tiskárny a spravovat stav tiskárny v řešení Microsoft Universal Print. Mohou také číst všechny informace o konektoru. Klíčovým úkolem, který technik tiskárny nemůže provést, je nastavit uživatelská oprávnění pro tiskárny a tiskárny pro sdílení.
 
 ### <a name="privileged-authentication-administrator"></a>[Správce privilegovaného ověřování](#privileged-authentication-administrator-permissions)
 
@@ -998,6 +1014,7 @@ Může spravovat všechny aspekty produktu Exchange.
 | Microsoft.directory/groups/unified/members/update | Aktualizujte členství ve skupinách Office 365. |
 | Microsoft.directory/groups/unified/owners/update Microsoft.directory/groups/Unified/owners/update Microsoft.directory/groups/Unified/owners/update Microsoft. | Aktualizujte vlastnictví skupin Office 365. |
 | microsoft.office365.exchange/allEntities/allTasks | Spravujte všechny aspekty Exchange Online. |
+| microsoft.office365.network/performance/allProperties/read | Přečtěte si stránky o výkonu sítě v Centru pro správu M365. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Office 365. |
 | microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy využití Office 365. |
@@ -1076,6 +1093,7 @@ Dokáže přečíst vše, co globální správce může, ale nic neupravuje.
 | microsoft.office365.exchange/allEntities/read    | Přečtěte si všechny aspekty Exchange Online. |
 | microsoft.office365.messageCentrum/zprávy/čtení    | Čtení zpráv v aplikaci microsoft.office365.messageCenter |
 | microsoft.office365.messageCentrum/securityMessages/read    | Přečtěte si zabezpečeníZprávy v microsoft.office365.messageCenter. |
+| microsoft.office365.network/performance/allProperties/read | Přečtěte si stránky o výkonu sítě v Centru pro správu M365. |
 | microsoft.office365.protectionCentrum/allEntities/číst    | Přečtěte si všechny aspekty Centra ochrany Office 365. |
 | Microsoft.office365.securityComplianceCenter/allEntities/read    | Přečtěte si všechny standardní vlastnosti v microsoft.office365.securityComplianceCenter. |
 | microsoft.office365.usageReports/allEntities/read    | Přečtěte si sestavy využití Office 365. |
@@ -1132,6 +1150,50 @@ Může resetovat hesla pro jiné než správce a správce technické podpory.
 | Microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti všech prostředků na portálu microsoft.office365.webPortal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Office 365. |
+
+### <a name="hybrid-identity-administrator-permissions"></a>Oprávnění správce hybridní identity
+
+Povolte, nasazujte, konfigurujte, spravujte, monitorujte a vyřizujte problémy se službami zřizování a ověřování cloudu. 
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
+| microsoft.directory/applications/audience/update  | Aktualizujte vlastnost applications.audience ve službě Azure Active Directory. |
+| microsoft.directory/applications/authentication/update | Aktualizujte vlastnost applications.authentication ve službě Azure Active Directory.  |
+| Microsoft.directory/applications/basic/update | Aktualizujte základní vlastnosti aplikací ve službě Azure Active Directory. |
+| Microsoft.directory/applications/create | Vytvářejte aplikace ve službě Azure Active Directory. |
+| Microsoft.directory/applications/credentials/update | Aktualizujte vlastnost applications.credentials ve službě Azure Active Directory. |
+| microsoft.directory/applications/delete | Odstraňte aplikace ve službě Azure Active Directory. |
+| soubor microsoft.directory/applications/owners/update | Aktualizujte vlastnost applications.owners ve službě Azure Active Directory. |
+| soubor microsoft.directory/applications/permissions/update | Aktualizujte vlastnost applications.permissions ve službě Azure Active Directory. |
+| Soubor Microsoft.directory/applications/policies/update | Aktualizujte vlastnost applications.policies ve službě Azure Active Directory. |
+| Microsoft.directory/applicationTemplates/instance | Vytvořte instanci galerijních aplikací ze šablon aplikací. |
+| Microsoft.directory/auditLogs/allProperties/read | Přečtěte si všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs ve službě Azure Active Directory. |
+| Microsoft.directory/cloudProvisioning/allProperties/allTasks | Přečtěte si a nakonfigurujte všechny vlastnosti služby Azure AD Cloud Provisioning. |
+| Microsoft.directory/FederatedAuthentication/allProperties/allTasks | Spravujte všechny aspekty federovaných služeb služby Active Directory (ADFS) nebo poskytovatele federace třetích stran ve službě Azure AD. |
+| microsoft.directory/organization/dirSync/update | Aktualizujte vlastnost organization.dirSync ve službě Azure Active Directory. |
+| microsoft.directory/passwordHashSync/allProperties/allTasks | Spravujte všechny aspekty synchronizace hash hesel (PHS) ve službě Azure AD. |
+| Microsoft.directory/passThroughAuthentication/allProperties/allTasks | Spravujte všechny aspekty předávacího ověřování (PTA) ve službě Azure AD. |
+| microsoft.directory/seamlessSSO/allProperties/allTasks | Spravujte všechny aspekty bezproblémového jednotného přihlašování (SSO) ve službě Azure AD. |
+| Microsoft.directory/servicePrincipals/audience/update | Aktualizujte vlastnost servicePrincipals.audience ve službě Azure Active Directory. |
+| Microsoft.directory/servicePrincipals/authentication/update | Aktualizujte vlastnost servicePrincipals.authentication ve službě Azure Active Directory. |
+| Microsoft.directory/servicePrincipals/basic/update | Aktualizujte základní vlastnosti na servicePrincipals ve službě Azure Active Directory. |
+| Microsoft.directory/servicePrincipals/create | Vytvořte ve službě Azure Active Directory hlavní služby. |
+| Microsoft.directory/servicePrincipals/credentials/update | Aktualizujte vlastnost servicePrincipals.credentials ve službě Azure Active Directory. |
+| Microsoft.directory/servicePrincipals/delete | Odstraňte servicePrincipals ve službě Azure Active Directory. |
+| Microsoft.directory/servicePrincipals/owners/update | Aktualizujte vlastnost servicePrincipals.owners ve službě Azure Active Directory. |
+| Microsoft.directory/servicePrincipals/permissions/update | Aktualizujte vlastnost servicePrincipals.permissions ve službě Azure Active Directory. |
+| Microsoft.directory/servicePrincipals/policies/update | Aktualizujte vlastnost servicePrincipals.policies ve službě Azure Active Directory. |
+| Microsoft.directory/servicePrincipals/synchronizationJobs/manage | Spravujte všechny aspekty úloh synchronizace ve službě Azure AD. |
+| Microsoft.directory/servicePrincipals/synchronizationSchema/manage | Spravujte všechny aspekty schématu synchronizace ve službě Azure AD. |
+| Microsoft.directory/servicePrincipals/synchronizationCredentials/manage | Spravujte všechny aspekty přihlašovacích údajů synchronizace ve službě Azure AD. |
+| Microsoft.directory/servicePrincipals/tag/update | Aktualizujte vlastnost servicePrincipals.tag ve službě Azure Active Directory. |
+| microsoft.directory/signInReports/allProperties/read | Přečtěte si všechny vlastnosti (včetně privilegovaných vlastností) ve službě SignInReports ve službě Azure Active Directory. |
+| microsoft.office365.messageCentrum/zprávy/čtení | Čtení zpráv v aplikaci microsoft.office365.messageCenter |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte stav služby Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Office 365. |
+
 
 ### <a name="intune-service-administrator-permissions"></a>Oprávnění správce služby Intune
 
@@ -1246,6 +1308,19 @@ Můžou číst zprávy a aktualizace pro svou organizaci jenom v Centru zpráv O
 | Microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti všech prostředků na portálu microsoft.office365.webPortal. |
 | microsoft.office365.messageCentrum/zprávy/čtení | Čtení zpráv v aplikaci microsoft.office365.messageCenter |
 
+### <a name="network-administrator-permissions"></a>Oprávnění správce sítě
+Dokáže spravovat umístění v síti a kontrolovat přehledy o návrhu podnikové sítě pro microsoft 365 Software jako aplikace služby.
+
+> [!NOTE]
+> Tato role má další oprávnění mimo službu Azure Active Directory. Další informace naleznete výše v popisu role.
+>
+>
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.office365.network/performance/allProperties/read | Přečtěte si stránky o výkonu sítě v Centru pro správu M365.  |
+| microsoft.office365.network/locations/allProperties/allTasks | Čtení a konfigurace vlastností umístění v síti pro každé umístění. |
+
 ### <a name="office-apps-administrator-permissions"></a>Oprávnění správce aplikací Office Apps
 Můžete spravovat cloudové služby aplikací Office, včetně správy zásad a nastavení, a spravovat možnost výběru, zrušení výběru a publikování obsahu funkcí "co je nového" na zařízeních koncových uživatelů.
 
@@ -1261,6 +1336,7 @@ Můžete spravovat cloudové služby aplikací Office, včetně správy zásad a
 | microsoft.office365.messageCentrum/zprávy/čtení | Čtení zpráv v aplikaci microsoft.office365.messageCenter |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Office 365. |
+| microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy využití Office 365. |
 | microsoft.office365.userKomunikace/všechny entity/všechny úkoly | Přečtěte si a aktualizujte viditelnost zpráv What's New. |
 | Microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti všech prostředků na portálu microsoft.office365.webPortal. |
 
@@ -1377,6 +1453,34 @@ Můžete vytvářet a spravovat všechny aspekty Microsoft Dynamics 365, PowerAp
 | Microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti všech prostředků na portálu microsoft.office365.webPortal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Office 365. |
+
+### <a name="printer-administrator-permissions"></a>Oprávnění správce tiskárny
+
+Dokáže spravovat všechny aspekty tiskáren a konektorů tiskárny.
+
+> [!NOTE]
+> Tato role má další oprávnění mimo službu Azure Active Directory. Další informace naleznete výše v popisu role.
+>
+>
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.azure.print/allEntities/allProperties/allTasks | Vytvořte a odstraňte tiskárny a konektory a přečtěte a aktualizujte všechny vlastnosti v aplikaci Microsoft Print. |
+
+### <a name="printer-technician-permissions"></a>Oprávnění technika tiskárny
+
+Může registrovat a odregistrovat tiskárny a aktualizovat stav tiskárny.
+
+> [!NOTE]
+> Tato role má další oprávnění mimo službu Azure Active Directory. Další informace naleznete výše v popisu role.
+>
+>
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.azure.print/connectors/allProperties/read | Přečtěte si všechny vlastnosti konektorů v aplikaci Microsoft Print. |
+| microsoft.azure.print/printers/allProperties/read | Přečtěte si všechny vlastnosti tiskáren v aplikaci Microsoft Print. |
+| microsoft.azure.print/printers/basic/update | Aktualizace základních vlastností tiskáren v aplikaci Microsoft Print |
+| microsoft.azure.print/printers/register | Zaregistrujte tiskárny v aplikaci Microsoft Print. |
+| microsoft.azure.print/printers/unregister | Zrušení registrace tiskáren v aplikaci Microsoft Print |
 
 ### <a name="privileged-authentication-administrator-permissions"></a>Oprávnění správce privilegovaného ověřování
 
@@ -1565,6 +1669,7 @@ Může spravovat všechny aspekty služby SharePoint.
 | soubor microsoft.directory/groups/unified/delete | Odstranění skupin Office 365 |
 | Microsoft.directory/groups/unified/members/update | Aktualizujte členství ve skupinách Office 365. |
 | Microsoft.directory/groups/unified/owners/update Microsoft.directory/groups/Unified/owners/update Microsoft.directory/groups/Unified/owners/update Microsoft. | Aktualizujte vlastnictví skupin Office 365. |
+| microsoft.office365.network/performance/allProperties/read | Přečtěte si stránky o výkonu sítě v Centru pro správu M365. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte stav služby Office 365. |
 | microsoft.office365.sharepoint/allEntities/allTasks | Vytvořte a odstraňte všechny prostředky a přečtěte si a aktualizujte standardní vlastnosti v aplikaci Microsoft.office365.sharepoint. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Office 365. |
@@ -1630,6 +1735,8 @@ Můžete spravovat službu Microsoft Teams.
 
 | **Akce** | **Popis** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
 | Microsoft.directory/groups/hiddenMembers/read | Ve službě Azure Active Directory si přečtěte vlastnost groups.hiddenMembers. |
 | microsoft.directory/groups/unified/appRoleAssignments/update | Aktualizujte vlastnost groups.unified ve službě Azure Active Directory. |
 | microsoft.directory/groups/unified/basic/update | Aktualizujte základní vlastnosti skupin Office 365. |
@@ -1637,12 +1744,11 @@ Můžete spravovat službu Microsoft Teams.
 | soubor microsoft.directory/groups/unified/delete | Odstranění skupin Office 365 |
 | Microsoft.directory/groups/unified/members/update | Aktualizujte členství ve skupinách Office 365. |
 | Microsoft.directory/groups/unified/owners/update Microsoft.directory/groups/Unified/owners/update Microsoft.directory/groups/Unified/owners/update Microsoft. | Aktualizujte vlastnictví skupin Office 365. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Azure Service Health. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
-| Microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti všech prostředků na portálu microsoft.office365.webPortal. |
+| microsoft.office365.network/performance/allProperties/read | Přečtěte si stránky o výkonu sítě v Centru pro správu M365. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Office 365. |
 | microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy využití Office 365. |
+| Microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti všech prostředků na portálu microsoft.office365.webPortal. |
 
 ### <a name="user-administrator-permissions"></a>Oprávnění správce uživatelů
 Může spravovat všechny aspekty uživatelů a skupin, včetně resetování hesel pro omezené správce.
@@ -1719,18 +1825,22 @@ Globální čtečka | Globální čtečka | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Správce skupin | Správce skupin | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Pozvaní hosté | Hostující pozvač | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Správce technické podpory | Správce technické podpory | 729827e3-9c14-49f7-bb1b-9608f156bbb8
+Správce hybridní identity | Správce hybridní identity | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Správce služby Intune | Správce Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala Správce | Kaizala správce | 74ef975b-6605-40af-a5d2-b9539d836353
 Správce licencí | Správce licence | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Správce služby Lync | Správce Skypu pro firmy | 75941009-915a-4869-abe7-691bff18279e
 Čtečka ochrany osobních údajů Centra zpráv | Čtečka ochrany osobních údajů centra zpráv | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Čtečka Centra zpráv | Čtečka centra zpráv | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Správce sítě | Správce sítě | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Správce aplikací Office | Správce aplikací Office | 2b745bdf-0803-4d80-aa65-822c4493daac
 Podpora partnerské úrovně1 | Podpora partnerské úrovně1 | 4ba39ca4-527c-499a-b93d-d9b492c50246
 Podpora partnerské úrovně2 | Podpora partnerské úrovně2 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Správce hesel | Správce hesel | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Správce služby Power BI | Správce Power BI | a9ea8996-122f-4c74-9520-8edcd192826c
 Správce napájecí platformy | Správce napájecí platformy | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
+Správce tiskárny | Správce tiskárny | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f
+Technik tiskárny | Technik tiskárny | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477
 Správce privilegovaného ověřování | Správce privilegovaného ověřování | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 Správce privilegovaných rolí | Správce privilegovaných rolí | e8611ab8-c189-46e8-94e1-60213ab1f814
 Čtečka sestav | Čtečka sestav | 4a5d8f65-41da-4de4-8968-e035b65339cf

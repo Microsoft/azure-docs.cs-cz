@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: kevindaw
-ms.date: 03/06/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b4d247f151240da8c3f0d38bbd22e43e230a1b95
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d5e968e578428a16a0005149a409986015a1fc5c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668618"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393758"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Vytvoření a zřízení zařízení IoT Edge pomocí certifikátů X.509
 
@@ -44,6 +44,12 @@ Certifikát identity zařízení je listový certifikát, který se připojuje p
 Certifikáty identity zařízení se používají jenom pro zřizování zařízení IoT Edge a ověřování zařízení pomocí Služby Azure IoT Hub. Na rozdíl od certifikátů certifikační autority, které zařízení IoT Edge představuje modulům nebo listovým zařízením k ověření, se nejedná o podpisové certifikáty. Další informace najdete v [tématu Podrobnosti o využití certifikátu Azure IoT Edge](iot-edge-certs.md).
 
 Po vytvoření certifikátu identity zařízení byste měli mít dva soubory: soubor CER nebo PEM, který obsahuje veřejnou část certifikátu, a soubor CER nebo .pem se soukromým klíčem certifikátu. Pokud plánujete použít zápis skupiny v DPS, potřebujete také veřejnou část zprostředkujícího nebo kořenového certifikátu certifikační autority ve stejném řetězci důvěryhodnosti certifikátů.
+
+K nastavení automatického zřizování pomocí X.509 potřebujete následující soubory:
+
+* Certifikát identity zařízení a jeho certifikát soukromého klíče. Certifikát identity zařízení se nahraje do DPS, pokud vytvoříte individuální registraci. Soukromý klíč je předán do běhu IoT Edge.
+* Úplný řetězový certifikát, který by měl mít alespoň identitu zařízení a zprostředkující certifikáty v něm. Úplný řetězový certifikát je předán runtime IoT Edge.
+* Zprostředkující nebo kořenový certifikát certifikační autority z řetězu důvěryhodnosti certifikátů. Tento certifikát se nahraje do DPS, pokud vytvoříte skupinový zápis.
 
 ### <a name="use-test-certificates"></a>Použití testovacích certifikátů
 
@@ -86,7 +92,7 @@ Další informace o registracích ve službě Device Provisioning Service najdet
 
    * **Primární soubor Pem nebo CER certifikátu**: Nahrajte veřejný soubor z certifikátu identity zařízení. Pokud jste použili skripty ke generování testovacího certifikátu, zvolte následující soubor:
 
-      `<WRKDIR>/certs/iot-edge-device-identity-<name>-full-chain.cert.pem`
+      `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 
    * **ID zařízení ioT hubu**: Pokud chcete, zadejte ID zařízení. ID zařízení můžete použít k cílení na jednotlivé zařízení pro nasazení modulu. Pokud ID zařízení nezadáte, použije se běžný název (CN) v certifikátu X.509.
 
@@ -94,7 +100,7 @@ Další informace o registracích ve službě Device Provisioning Service najdet
 
    * **Vyberte služby IoT huby, kterým lze toto zařízení přiřadit:** Zvolte propojený rozbočovač IoT hub, ke kterému chcete zařízení připojit. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno jednomu z nich podle vybraných zásad přidělení.
 
-   * **Počáteční stav dvojčete zařízení:** Přidejte hodnotu značky, která se přidá do dvojčete zařízení, pokud chcete. Značky můžete použít k cílení skupin zařízení pro automatické nasazení. Například:
+   * **Počáteční stav dvojčete zařízení:** Přidejte hodnotu značky, která se přidá do dvojčete zařízení, pokud chcete. Značky můžete použít k cílení skupin zařízení pro automatické nasazení. Příklad:
 
       ```json
       {
@@ -179,7 +185,7 @@ Další informace o registracích ve službě Device Provisioning Service najdet
 
    * **Vyberte služby IoT huby, kterým lze toto zařízení přiřadit:** Zvolte propojený rozbočovač IoT hub, ke kterému chcete zařízení připojit. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno jednomu z nich podle vybraných zásad přidělení.
 
-   * **Počáteční stav dvojčete zařízení:** Přidejte hodnotu značky, která se přidá do dvojčete zařízení, pokud chcete. Značky můžete použít k cílení skupin zařízení pro automatické nasazení. Například:
+   * **Počáteční stav dvojčete zařízení:** Přidejte hodnotu značky, která se přidá do dvojčete zařízení, pokud chcete. Značky můžete použít k cílení skupin zařízení pro automatické nasazení. Příklad:
 
       ```json
       {
@@ -205,7 +211,7 @@ Zřizování X.509 pomocí DPS je podporováno jenom v ioT edge verze 1.0.9 nebo
 Při zřizování zařízení budete potřebovat následující informace:
 
 * Hodnota **oboru DPS ID.** Tuto hodnotu můžete načíst ze stránky přehledu instance DPS na webu Azure Portal.
-* Soubor certifikátu identity zařízení v zařízení.
+* Soubor řetězu certifikátu identity zařízení v zařízení.
 * Soubor klíče identity zařízení v zařízení.
 * Volitelné ID registrace (natažené z běžného názvu v certifikátu identity zařízení, pokud není zadáno).
 
@@ -215,9 +221,9 @@ Pomocí následujícího odkazu nainstalujte runtime Azure IoT Edge do zařízen
 
 [Instalace runtime Azure IoT Edge na Linux](how-to-install-iot-edge-linux.md)
 
-Přidáte-li certifikát X.509 a informace o klíči do souboru config.yaml, měly by být cesty poskytovány jako identifikátory URI souboru. Například:
+Přidáte-li certifikát X.509 a informace o klíči do souboru config.yaml, měly by být cesty poskytovány jako identifikátory URI souboru. Příklad:
 
-* `file:///<path>/identity_certificate.pem`
+* `file:///<path>/identity_certificate_chain.pem`
 * `file:///<path>/identity_key.pem`
 
 Oddíl v konfiguračním souboru pro automatické zřizování X.509 vypadá takto:
@@ -235,7 +241,7 @@ provisioning:
     identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
 ```
 
-Nahraďte zástupné `scope_id` `identity_cert`hodnoty `identity_pk` pro aplikaci , ID oboru z instance DPS a identifikátory URI na umístění certifikátu a klíčových souborů v zařízení. Pokud `registration_id` chcete, poskytněte zařízení nebo ponechte tento řádek zakomentovaný pro registraci zařízení s názvem kn.
+Nahraďte zástupné `scope_id` `identity_cert`hodnoty `identity_pk` pro aplikaci , ID oboru z instance DPS a identifikátory URI řetězcem certifikátů a umístěním klíčových souborů v zařízení. Pokud `registration_id` chcete, poskytněte zařízení nebo ponechte tento řádek zakomentovaný pro registraci zařízení s názvem kn.
 
 Po aktualizaci souboru config.yaml vždy restartujte bezpečnostního daemonu.
 
@@ -245,7 +251,7 @@ sudo systemctl restart iotedge
 
 ### <a name="windows-device"></a>Zařízení s Windows
 
-Nainstalujte runtime IoT Edge na zařízení, pro které jste vygenerovali certifikát identity a klíč identity. Nakonfigurujete runtime IoT Edge pro automatické, ne ruční zřizování.
+Nainstalujte runtime IoT Edge na zařízení, pro které jste vygenerovali řetězec certifikátů identit a klíč identity. Nakonfigurujete runtime IoT Edge pro automatické, ne ruční zřizování.
 
 Podrobnější informace o instalaci IoT Edge do Windows, včetně předpokladů a pokynů pro úlohy, jako je správa kontejnerů a aktualizace IoT Edge, najdete [v tématu Instalace runtime Azure IoT Edge v systému Windows](how-to-install-iot-edge-windows.md).
 
@@ -262,11 +268,11 @@ Podrobnější informace o instalaci IoT Edge do Windows, včetně předpokladů
 
 1. Příkaz **Initialize-IoTEdge** konfiguruje runtime IoT Edge ve vašem počítači. Příkaz výchozí ruční zřizování, `-Dps` pokud používáte příznak použít automatické zřizování.
 
-   Nahraďte zástupné `{scope_id}` `{identity cert path}`hodnoty `{identity key path}` pro , a příslušné hodnoty z instance DPS a cesty k souborům v zařízení. Chcete-li zadat ID registrace, `-RegistrationId {registration_id}` uveďte také, případně nahradit zástupný symbol.
+   Nahraďte zástupné `{scope_id}` `{identity cert chain path}`hodnoty `{identity key path}` pro , a příslušné hodnoty z instance DPS a cesty k souborům v zařízení. Chcete-li zadat ID registrace, `-RegistrationId {registration_id}` uveďte také, případně nahradit zástupný symbol.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
    ```
 
    >[!TIP]

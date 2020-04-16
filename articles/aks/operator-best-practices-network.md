@@ -5,12 +5,12 @@ description: Seznamte se s doporučenými postupy operátora clusteru pro prost�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: c8aee9967e09d2ae8bec3ee170756d8d22de0fe4
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1eed6f1f82a8a91b2335760e99ea6b895d15547e
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668211"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392715"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro připojení k síti a zabezpečení ve službě Azure Kubernetes Service (AKS)
 
@@ -43,7 +43,7 @@ Při použití sítě Azure CNI je prostředek virtuální sítě v samostatné 
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-Další informace o delegování hlavního serveru služeb AKS najdete v [tématu Delegování přístupu k jiným prostředkům Azure][sp-delegation].
+Další informace o delegování hlavního serveru služeb AKS najdete v [tématu Delegování přístupu k jiným prostředkům Azure][sp-delegation]. Namísto instančního objektu můžete také použít systém přiřazenou spravovanou identitu pro oprávnění. Další informace naleznete v tématu [Použití spravovaných identit](use-managed-identity.md).
 
 Jako každý uzel a pod přijímat vlastní IP adresu, naplánovat rozsahy adres pro podsítě AKS. Podsíť musí být dostatečně velká, aby poskytovala adresy IP pro každý uzel, pody a síťové prostředky, které nasazujete. Každý cluster AKS musí být umístěn ve své vlastní podsíti. Chcete-li povolit připojení k místním nebo partnerským sítím v Azure, nepoužívejte rozsahy IP adres, které se překrývají s existujícími síťovými prostředky. Existují výchozí omezení počtu podů, které každý uzel běží s kubenet a Azure CNI sítě. Ke zpracování horizontálních navýšení kapacity událostí nebo upgradů clusteru potřebujete také další adresy IP, které jsou k dispozici pro použití v přiřazené podsíti. Tento další adresní prostor je obzvláště důležitý, pokud používáte kontejnery Windows Server (aktuálně ve verzi Preview v AKS), protože tyto fondy uzlů vyžadují upgrade pro použití nejnovějších oprav zabezpečení. Další informace o uzlech systému Windows Server naleznete [v tématu Upgrade fondu uzlů v systému AKS][nodepool-upgrade].
 

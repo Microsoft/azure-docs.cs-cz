@@ -11,14 +11,15 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 6645c2672e15c562216b4347f779ef3634a2f124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2108f2f9098fe6da8ee4666b30605bed14164484
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130872"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414722"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu ve Službě Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Uživatelské rozhraní Azure Data Factory (UX) má dvě možnosti, které jsou k dispozici pro vizuální vytváření:
 
@@ -137,9 +138,9 @@ Obě metody otevřou konfigurační podokno nastavení úložiště.
 
 V konfiguračním podokně se zobrazí následující nastavení úložiště GitHub:
 
-| **Nastavení** | **Popis**  | **Hodnotu**  |
+| **Nastavení** | **Popis**  | **Hodnota**  |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHub |
+| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHubu |
 | **Použití GitHub u Enterprise** | Zaškrtávací políčko pro výběr GitHub Enterprise | nevybrané (výchozí) |
 | **Adresa URL githubu enterprise** | Kořenová adresa URL GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Například: https://github.mydomain.com. Povinné pouze v případě, že je vybrána možnost **Použít GitHub Enterprise.** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název účtu GitHub. Tento název naleznete v\/https: /github.com/{název účtu}/{název úložiště}. Přechod na tuto stránku vás vyzve k zadání přihlašovacích údajů GitHub OAuth do vašeho účtu GitHub. | `<your GitHub account name>` |
@@ -187,7 +188,7 @@ Až budete připraveni sloučit změny z větve funkcí do větve spolupráce, k
 
 ### <a name="configure-publishing-settings"></a>Konfigurace nastavení publikování
 
-Chcete-li nakonfigurovat větev publikování – tedy větev, `publish_config.json` ve které jsou uloženy šablony Správce prostředků – přidejte soubor do kořenové složky ve větvi spolupráce. Data Factory přečte tento soubor, vyhledá pole `publishBranch`a vytvoří novou větev (pokud ještě neexistuje) s poskytnutou hodnotou. Potom uloží všechny šablony Správce prostředků do zadaného umístění. Například:
+Chcete-li nakonfigurovat větev publikování – tedy větev, `publish_config.json` ve které jsou uloženy šablony Správce prostředků – přidejte soubor do kořenové složky ve větvi spolupráce. Data Factory přečte tento soubor, vyhledá pole `publishBranch`a vytvoří novou větev (pokud ještě neexistuje) s poskytnutou hodnotou. Potom uloží všechny šablony Správce prostředků do zadaného umístění. Příklad:
 
 ```json
 {
@@ -231,7 +232,7 @@ Boční podokno se otevře tam, kde potvrdíte, že větev publikování a čeka
 Obvykle nechcete, aby každý člen týmu mít oprávnění k aktualizaci továrny. Doporučujeme následující nastavení oprávnění:
 
 *   Všichni členové týmu by měli mít oprávnění ke čtení datové továrny.
-*   Do továrny by měla být povolena pouze vybraná sada osob. Chcete-li tak učinit, musí mít roli **přispěvatele data factory** v továrně. Další informace o oprávněních najdete v [tématu Role a oprávnění pro Azure Data Factory](concepts-roles-permissions.md).
+*   Do továrny by měla být povolena pouze vybraná sada osob. Chcete-li tak učinit, musí mít roli **přispěvatele data factory** na skupinu prostředků, ve které se továrna nachází. Další informace o oprávněních najdete v [tématu Role a oprávnění pro Azure Data Factory](concepts-roles-permissions.md).
    
 Doporučujeme nepovolit přímé vrácení se změnami do větve spolupráce. Toto omezení může pomoci zabránit chybám, protože každé vrácení se změnami projde procesem kontroly žádosti o přijetí uživatelům popsaným v [části Vytváření větví funkcí](source-control.md#creating-feature-branches).
 

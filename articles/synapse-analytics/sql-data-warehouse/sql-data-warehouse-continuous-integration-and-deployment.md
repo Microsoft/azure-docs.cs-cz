@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c5a326c07c8c2b0e5482361060c25c06d25643c1
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: ddd24eb510405d49465ca4e0e0f326f7260e2ed1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874139"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416232"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Průběžná integrace a zavádění datových skladů
 
@@ -46,7 +46,7 @@ V tomto okamžiku máte jednoduché prostředí, kde jakékoli vrácení se změ
 
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Průběžné nasazení s úlohou nasazení Datového skladu Azure SQL (nebo databáze)
 
-1. Přidejte nový úkol pomocí [úlohy nasazení databáze Azure SQL](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-sqldb?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) database a vyplňte požadovaná pole pro připojení k cílovému datovému skladu. Při spuštění této úlohy dacpac generované z předchozího procesu sestavení se nasadí do cílového datového skladu. Můžete také použít [úlohu nasazení Datového skladu Azure SQL](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment).
+1. Přidejte nový úkol pomocí [úlohy nasazení databáze Azure SQL](/devops/pipelines/targets/azure-sqldb?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) database a vyplňte požadovaná pole pro připojení k cílovému datovému skladu. Při spuštění této úlohy dacpac generované z předchozího procesu sestavení se nasadí do cílového datového skladu. Můžete také použít [úlohu nasazení Datového skladu Azure SQL](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment).
 
       ![Úloha nasazení](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Úloha nasazení")
 

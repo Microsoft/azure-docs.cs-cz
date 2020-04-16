@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b097ce3781a77a8c5e8a94b9c2bf0977f3efcfd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481326"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406836"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů proxy aplikací Azure AD
 
@@ -153,12 +153,17 @@ Chcete-li poskytnout zabezpečenou službu, konektory musí ověřit směrem ke 
 
 Použité certifikáty jsou specifické pro službu Proxy aplikace. Jsou vytvořeny během počáteční registrace a jsou automaticky obnovovány konektory každých pár měsíců.
 
+Po prvním úspěšném obnovení certifikátu nemá služba Azure AD Application Proxy Connector (Network Service) oprávnění k odebrání starého certifikátu z místního úložiště počítače. Pokud platnost certifikátu vypršela nebo jej služba již nebude používat, můžete jej bezpečně odstranit.
+
+Chcete-li se vyhnout problémům s obnovením certifikátu, ujistěte se, že je povolena síťová komunikace ze konektoru směrem k [zdokumentovaným cílům.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)
+
 Pokud konektor není připojen ke službě po dobu několika měsíců, jeho certifikáty mohou být zastaralé. V takovém případě odinstalujte a znovu nainstalujte konektor pro aktivaci registrace. Můžete spustit následující příkazy Prostředí PowerShell:
 
 ```
 Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
+Další informace o ověření certifikátu a řešení potíží naleznete v [tématu Ověření počítače a podpory back-endových součástí pro certifikát důvěryhodnosti proxy aplikace](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate).
 
 ## <a name="under-the-hood"></a>Pod pokličkou
 

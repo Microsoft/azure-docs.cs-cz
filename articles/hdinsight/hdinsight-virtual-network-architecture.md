@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272146"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390207"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura virtuální sítě Azure HDInsight
 
@@ -30,11 +30,11 @@ Clustery Azure HDInsight mají různé typy virtuálních počítačů nebo uzl�
 | R Uzel hraničního serveru | Hraniční uzel R Serveru představuje uzel, do kterého můžete spouštět ssh, a spouští aplikace, které jsou pak koordinovány tak, aby běžely napříč prostředky clusteru. Hraniční uzel se neúčastní analýzy dat v rámci clusteru. Tento uzel také hostuje server R Studio, který umožňuje spouštět aplikaci R pomocí prohlížeče. |
 | Uzel oblasti | Pro typ clusteru HBase uzel oblasti (označovaný také jako datový uzel) spouští server oblasti. Servery oblastí obsluhují a spravují část dat spravovaných společností HBase. Uzly oblasti lze přidat nebo odebrat z clusteru škálovat výpočetní schopnosti a spravovat náklady.|
 | Uzel Nimbus | Pro typ clusteru Storm uzel Nimbus poskytuje funkce podobné hlavní uzel. Uzel Nimbus přiřazuje úkoly ostatním uzlům v clusteru prostřednictvím Zookeeper, který koordinuje spuštění topologií Storm. |
-| Uzel supervizora | Pro typ clusteru Storm uzel supervizora provede pokyny poskytnuté uzlem Nimbus k provedení požadovaného zpracování. |
+| Uzel supervizora | Pro typ clusteru Storm uzel supervizora provede pokyny poskytnuté uzel Nimbus provést zpracování. |
 
 ## <a name="resource-naming-conventions"></a>Konvence pro pojmenování prostředků
 
-Při adresování uzlů v clusteru používejte plně kvalifikované názvy domén (FQDN). Pomocí rozhraní API [Ambari](hdinsight-hadoop-manage-ambari-rest-api.md)můžete získat soubory souborů FQDN pro různé typy uzlů v clusteru . 
+Při adresování uzlů v clusteru používejte plně kvalifikované názvy domén (FQDN). Pomocí rozhraní API [Ambari](hdinsight-hadoop-manage-ambari-rest-api.md)můžete získat soubory souborů FQDN pro různé typy uzlů v clusteru .
 
 Tyto hlavní protivně laděné `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`soubory budou ve formě .
 
@@ -48,9 +48,9 @@ Následující diagram znázorňuje umístění uzlů HDInsight a síťových pr
 
 ![Diagram entit HDInsight vytvořených ve vlastní virtuální netu Azure](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
-Výchozí prostředky, které se nacházejí při nasazení HDInsight u virtuální sítě Azure, zahrnují typy uzlů clusteru uvedené v předchozí tabulce a také síťová zařízení, která podporují komunikaci mezi virtuální sítí a externími sítěmi.
+Výchozí prostředky ve virtuální síti Azure zahrnují typy uzlů clusteru uvedené v předchozí tabulce. A síťová zařízení, která podporují komunikaci mezi virtuální sítí a vnějšími sítěmi.
 
-Následující tabulka shrnuje devět uzlů clusteru, které se vytvoří při nasazení HDInsight u vlastní virtuální sítě Azure.
+Následující tabulka shrnuje devět uzlů clusteru vytvořených při nasazení HDInsightu do vlastní virtuální sítě Azure.
 
 | Typ prostředku | Číslo k dispozici | Podrobnosti |
 | --- | --- | --- |
@@ -64,7 +64,7 @@ Následující síťové prostředky jsou automaticky vytvořeny uvnitř virtuá
 | Síťový prostředek | Číslo k dispozici | Podrobnosti |
 | --- | --- | --- |
 |Nástroj pro vyrovnávání zatížení | Tři | |
-|Síťová rozhraní | Devět | Tato hodnota je založena na normálním clusteru, kde každý uzel má své vlastní síťové rozhraní. Devět rozhraní jsou pro dva hlavní uzly, tři uzly zookeeper, dva uzly pracovníka a dva uzly brány uvedené v předchozí tabulce. |
+|Síťová rozhraní | Devět | Tato hodnota je založena na normálním clusteru, kde každý uzel má své vlastní síťové rozhraní. Devět rozhraní je pro: dva hlavní uzly, tři uzly zookeeper, dva uzly pracovníka a dva uzly brány uvedené v předchozí tabulce. |
 |Veřejné IP adresy | dva |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>Koncové body pro připojení k HDInsight
@@ -73,7 +73,7 @@ Ke svému clusteru HDInsight můžete přistupovat třemi způsoby:
 
 - Koncový bod HTTPS mimo virtuální `CLUSTERNAME.azurehdinsight.net`síť na adrese .
 - Koncový bod SSH pro přímé připojení k `CLUSTERNAME-ssh.azurehdinsight.net`headnode at .
-- Koncový bod HTTPS v `CLUSTERNAME-int.azurehdinsight.net`rámci virtuální sítě . Všimněte si "-int" v této adrese URL. Tento koncový bod se vyřeší na privátní IP adresu v této virtuální síti a není přístupný z veřejného internetu.
+- Koncový bod HTTPS v `CLUSTERNAME-int.azurehdinsight.net`rámci virtuální sítě . Všimněte`-int`si " " v této adrese URL. Tento koncový bod se vyřeší na privátní IP adresu v této virtuální síti a není přístupný z veřejného internetu.
 
 Tyto tři koncové body jsou přiřazeny vyrovnávání zatížení.
 

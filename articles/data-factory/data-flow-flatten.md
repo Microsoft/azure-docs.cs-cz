@@ -7,14 +7,16 @@ ms.review: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: b19aae8ab6730936a826f5bb069bfdb7d696cdfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246632"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413677"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Sloučení transformace v toku dat mapování
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Pomocí sloučení transformace můžete vzít hodnoty pole do hierarchických struktur, jako je například JSON, a rozbalit je do jednotlivých řádků. Tento proces se nazývá denormalizace.
 
@@ -66,7 +68,7 @@ Následující příklady zploštělé transformace naleznete na následujícím
 
 | Odvíjet podle | Zrušit kořenový adresář | Projekce |
 | --------- | ----------- | ---------- |
-| zboží.zákazníci | Žádný | jméno <br> odběratel = goods.customer |
+| zboží.zákazníci | Žádná | jméno <br> odběratel = goods.customer |
 
 #### <a name="output"></a>Výstup
 
@@ -84,7 +86,7 @@ Následující příklady zploštělé transformace naleznete na následujícím
 
 | Odvíjet podle | Zrušit kořenový adresář | Projekce |
 | --------- | ----------- | ---------- |
-| goods.orders.shipped.orderItems | Žádný | jméno <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> umístění = umístění |
+| goods.orders.shipped.orderItems | Žádná | jméno <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> umístění = umístění |
 
 #### <a name="output"></a>Výstup
 

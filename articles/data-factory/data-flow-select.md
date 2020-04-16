@@ -7,14 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/18/2020
-ms.openlocfilehash: cfa15f5424dcd5d52b03fb65afe051444127f5ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 498ce053e8a52897d9087091b92fa51a04e195a4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065240"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413258"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Výběr transformace v toku dat mapování
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Pomocí vybrané transformace můžete sloupce přejmenovat, přetáhnout nebo usadit. Tato transformace nemění data řádků, ale zvolí, které sloupce jsou šířeny po proudu. 
 

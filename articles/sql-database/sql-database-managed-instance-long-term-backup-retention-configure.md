@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 0af322d589efd48cc224c69cef8e96fb887d9868
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c9edbbf54696a817d0495f6890e0d796e482231f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384217"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393719"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Správa dlouhodobého uchovávání záloh služby Azure SQL Database (PowerShell)
 
@@ -34,7 +34,7 @@ V následujících částech se ukazuje, jak pomocí PowerShellu nakonfigurovat 
 Pro **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** and **Restore-AzSqlInstanceDatabase**budete muset mít jednu z následujících rolí:
 
 - Role vlastníka předplatného nebo
-- Role přispěvatele instance SManaged nebo
+- Role přispěvatele spravované instance nebo
 - Vlastní role s následujícími oprávněními:
 
    ```Microsoft.Sql/locations/longTermRetentionManagedInstanceBackups/read``` ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read```
@@ -48,7 +48,7 @@ Pro **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup**, budete muset mít j
    ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete```
 
 > [!NOTE]
-> Role Přispěvatel instance Smanaged nemá oprávnění k odstranění záloh LTR.
+> Role přispěvatele spravované instance nemá oprávnění k odstranění záloh LTR.
 
 Oprávnění RBAC mohou být udělena v *oboru předplatného* nebo *skupiny prostředků.* Pro přístup k zálohám LTR, které patří do vyřazené instance, musí být oprávnění uděleno v oboru *předplatného* této instance.
 

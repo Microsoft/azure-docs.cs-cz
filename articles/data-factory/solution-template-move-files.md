@@ -11,19 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b36eb2615e98ee8ea7751c836fd43e81a5a0f4e2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74941894"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414747"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Přesunutí souborů pomocí Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje šablonu řešení, kterou můžete použít k přesunutí souborů z jedné složky do druhé mezi obchody založenými na souborech. Jeden z běžných scénářů použití této šablony: Soubory jsou neustále vynechány do vstupní složky zdrojového úložiště. Vytvořením aktivační události plánu může kanál ADF pravidelně přesouvat tyto soubory ze zdroje do cílového úložiště.  Způsob, jakým kanál ADF dosahuje "přesunutí souborů", získává soubory ze složky pro přistávání, zkopíruje každý z nich do jiné složky v cílovém úložišti a poté je vymaže ze složky pro přistávání ve zdrojovém úložišti.
 
 > [!NOTE]
-> Uvědomte si, že tato šablona je určena k přesunutí souborů, nikoli k přesouvání složek.  Pokud chcete přesunout složku změnou datové sady tak, aby obsahovala pouze cestu ke složce, a potom pomocí aktivity kopírování a odstranění aktivity odkazna stejnou datovou sadu představující složku, musíte být velmi opatrní. Je to proto, že se musíte ujistit, že nebudou nové soubory přicházející do složky mezi operací kopírování a odstraněním. Pokud do složky přicházejí nové soubory v okamžiku, kdy vaše kopírovací aktivita právě dokončila úlohu kopírování, ale aktivita Odstranit nebyla zahlédnuta, je možné, že aktivita Delete odstraní tento nový příchozí soubor, který nebyl zkopírován do cíle odstraněním celé složky.
+> Uvědomte si, že tato šablona je určena k přesunutí souborů, nikoli k přesouvání složek.  Pokud chcete přesunout složku změnou datové sady tak, aby obsahovala pouze cestu ke složce, a potom pomocí aktivity kopírování a odstranění aktivity odkazna stejnou datovou sadu představující složku, musíte být velmi opatrní. Je to proto, že se musíte ujistit, že nebudou nové soubory přicházející do složky mezi operací kopírování a odstraněním. Pokud do složky přicházejí nové soubory v okamžiku, kdy vaše kopírovací činnost právě dokončila úlohu kopírování, ale aktivita Odstranit nebyla zahlédnuta, je možné, že aktivita Delete odstraní tento nový příchozí soubor, který ještě nebyl zkopírován do cíle odstraněním celé složky.
 
 ## <a name="about-this-solution-template"></a>O této šabloně řešení
 

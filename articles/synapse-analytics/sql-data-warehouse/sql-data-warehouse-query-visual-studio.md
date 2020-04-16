@@ -11,19 +11,19 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e986515a911cf1bbd88dfc73c56efcc6e81826d6
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351412"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416036"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Připojení k Azure Synapse Analytics pomocí Visual Studia a SSDT
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
@@ -35,7 +35,7 @@ Chcete-li použít tento kurz, potřebujete:
 
 * Existující fond SQL. Pokud chcete ho vytvořit, [přečtěte si](create-data-warehouse-portal.md)informace o vytvoření fondu SQL .
 * SSDT pro Visual Studio. Pokud máte Visual Studio, pravděpodobně již máte SSDT pro Visual Studio. Pokyny k instalaci a možnosti najdete v tématu věnovaném [instalaci sady Visual Studio a rozšíření SSDT](sql-data-warehouse-install-visual-studio.md).
-* Plně kvalifikovaný název serveru SQL. Chcete-li tyto informace najít, [přečtěte si](sql-data-warehouse-connect-overview.md)téma Připojení k fondu SQL .
+* Plně kvalifikovaný název serveru SQL. Chcete-li tyto informace najít, [přečtěte si](../sql/connect-overview.md)téma Připojení k fondu SQL .
 
 ## <a name="1-connect-to-your-sql-pool"></a>1. Připojení k fondu SQL
 1. Otevřete Visual Studio 2019.

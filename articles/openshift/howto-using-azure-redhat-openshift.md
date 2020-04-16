@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro, openshift, az aro, červený klobouk, cli
-ms.openlocfilehash: 9488ef593cf4ec8600dcb42ea4a2cefa4fcb1446
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: f909c5870be6e394e457ad8f44ea5a253054ffe6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998799"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398894"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Vytvoření, přístup a správa clusteru Azure Red Hat OpenShift 4.3
 
@@ -68,7 +68,19 @@ Rozšíření `az aro` umožňuje vytvářet, přistupovat a odstraňovat cluste
    aro                                0.3.0
    ...
    ```
-  
+
+### <a name="get-a-red-hat-pull-secret-optional"></a>Získejte Red Hat vytáhnout tajemství (volitelné)
+
+Tajný klíč red hat pull umožňuje clusteru přístup k registrům kontejnerů Red Hat a dalšímu obsahu. Použití tajného klíče pro vytažení je volitelné, ale doporučené.
+
+Chcete-li získat své tajemství tahu:
+
+1. Přejděte do části https://cloud.redhat.com/openshift/install/azure/aro-provisioned (Soubor > Nový > Jiné).
+1. Přihlaste se ke svému účtu Red Hat nebo si vytvořte nový účet Red Hat pomocí firemního e-mailu; podmínky.
+1. Vyberte **stáhnout stáhnout stáhnout tajný klíč**.
+
+Uložte soubor *pull-secret.txt* na bezpečném místě. soubor použijete při každém vytvoření clusteru.
+
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Vytvoření virtuální sítě obsahující dvě prázdné podsítě
 
 Následujícím postupem vytvořte virtuální síť obsahující dvě prázdné podsítě.
@@ -79,15 +91,7 @@ Následujícím postupem vytvořte virtuální síť obsahující dvě prázdné
    LOCATION=eastus        #the location of your cluster
    RESOURCEGROUP="v4-$LOCATION"    #the name of the resource group where you want to create your cluster
    CLUSTER=cluster        #the name of your cluster
-   PULL_SECRET="<optional-pull-secret>"
    ```
-   >[!NOTE]
-   > Volitelný tajný klíč pro vyžádat umožňuje clusteru přístup k registrům kontejnerů Red Hat spolu s dalším obsahem.
-   >
-   > Přístup k tajnému klíči pro vyžádat přejdete na https://cloud.redhat.com/openshift/install/azure/installer-provisioned položku Kopírovat tajný *klíč*a klepnete na něj .
-   >
-   > Budete se muset přihlásit ke svému účtu Red Hat nebo si vytvořit nový účet Red Hat pomocí firemního e-mailu a přijmout smluvní podmínky.
- 
 
 2. Vytvořte skupinu prostředků pro váš cluster.
 
@@ -143,7 +147,7 @@ az aro create \
   --worker-subnet "$CLUSTER-worker" \
   --cluster-resource-group "aro-$CLUSTER" \
   --domain "$CLUSTER" \
-  --pull-secret "$PULL_SECRET"
+  --pull-secret @pull-secret.txt
 ```
 
 >[!NOTE]

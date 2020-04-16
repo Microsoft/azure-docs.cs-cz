@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b24d7db679bb9cb9dacd5e1db8e6410b883548cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652184"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415695"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služeb Azure Cosmos DB
 
@@ -70,7 +70,7 @@ Svůj [účet Azure Cosmos](how-to-manage-database-account.md) můžete zřídit
 > [!NOTE]
 > Regionální převzetí služeb při selhání platí pouze pro účty zápisů v jedné oblasti. Víceregionální účty zápisu nevyžadují nebo mají žádná omezení pro změnu oblasti zápisu.
 
-Cosmos DB automaticky přebírá zálohy dat v pravidelných intervalech. Podrobnosti o intervalech uchovávání záloh a oknech najdete [v tématu Zálohování online a obnovení dat na vyžádání v Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).
+Cosmos DB automaticky přebírá zálohy dat v pravidelných intervalech. Podrobnosti o intervalech uchovávání záloh a oknech najdete [v tématu Zálohování online a obnovení dat na vyžádání v Azure Cosmos DB](online-backup-and-restore.md).
 
 ## <a name="per-account-limits"></a>Limity pro účet
 

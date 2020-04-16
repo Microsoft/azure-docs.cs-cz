@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: c24c7ce1d47a4734d79d7e17e9fb4b3a2d4d70e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fcfc7c15f94d7b569629e53534d731126172260
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064142"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399066"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Odkaz na modul & algoritmu pro návrháře Azure Machine Learning (preview)
 
@@ -24,7 +24,7 @@ Každý modul představuje sadu kódu, který lze spustit nezávisle a provádě
 
 Nápovědu k výběru algoritmů naleznete v tématu 
 * [Postup při výběru algoritmů](../how-to-select-algorithms.md)
-* [Cheatovací list algoritmu s algoritmem strojového učení Azure](../../synapse-analytics/sql-data-warehouse/cheat-sheet.md)
+* [Cheatovací list algoritmu s algoritmem strojového učení Azure](../algorithm-cheat-sheet.md)
 
 > [!TIP]
 > V libovolném kanálu v návrháři můžete získat informace o konkrétním modulu. Vyberte modul a v podokně **Rychlá nápověda** vyberte další odkaz **nápovědy.**
@@ -34,7 +34,7 @@ Nápovědu k výběru algoritmů naleznete v tématu
 
 | Funkce | Popis | Modul |
 | --- |--- | --- |
-| Vstup a výstup dat | Přesuňte data z cloudových zdrojů do kanálu. Zapište výsledky nebo zprostředkující data do Azure Storage, databáze SQL nebo Hive, při spuštění kanálu, nebo použijte cloudové úložiště k výměně dat mezi kanály.  | [Ruční zadávání dat](enter-data-manually.md) <br/> [Export dat](export-data.md) <br/> [Import dat](import-data.md) |
+| Vstup a výstup dat | Přesuňte data z cloudových zdrojů do kanálu. Zapište výsledky nebo zprostředkující data do Azure Storage, databáze SQL nebo Hive, při spuštění kanálu, nebo použijte cloudové úložiště k výměně dat mezi kanály.  | [Ruční zadávání dat](enter-data-manually.md) <br/> [Exportovat data](export-data.md) <br/> [Import dat](import-data.md) |
 | Transformace dat | Operace s daty, která jsou jedinečná pro strojové učení, jako je normalizace nebo binning dat, snížení dimenzionality a převod dat mezi různými formáty souborů.| [Přidání sloupců](add-columns.md) <br/> [Přidání řádků](add-rows.md) <br/> [Použití matematických operací](apply-math-operation.md) <br/> [Použití transformace SQL](apply-sql-transformation.md) <br/> [Vyčištění chybějících dat](clean-missing-data.md) <br/> [Oříznutí hodnot](clip-values.md) <br/> [Převod na C](convert-to-csv.md) <br/> [Převod na datovou sadu](convert-to-dataset.md) <br/> [Převod na hodnoty indikátoru](convert-to-indicator-values.md) <br/> [Úpravy metadat](edit-metadata.md) <br/> [Spojení dat](join-data.md) <br/> [Normalizace dat](normalize-data.md) <br/> [Rozdělení a ukázky](partition-and-sample.md)  <br/> [Odebrání duplicitních řádků](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Transformace pro výběr sloupců](select-columns-transform.md) <br/> [Výběr sloupců v datové sadě](select-columns-in-dataset.md) <br/> [Rozdělení dat](split-data.md) |
 | Výběr funkcí | Vyberte podmnožinu relevantních užitečných funkcí, které se použijí při vytváření analytického modelu. | [Výběr funkcí na základě filtrů](filter-based-feature-selection.md) <br/> [Důležitost funkce permutací](permutation-feature-importance.md) |
 | Statistické funkce | Poskytují širokou škálu statistických metod souvisejících s datovou vědou. | [Sumarizace dat](summarize-data.md)|

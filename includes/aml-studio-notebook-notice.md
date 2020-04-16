@@ -7,14 +7,14 @@ ms.custom: include file
 ms.topic: include
 author: peterclu
 ms.author: peterclu
-ms.date: 03/12/2020
-ms.openlocfilehash: 900eea5b7807b718274690bc34a32213bfe7ea7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 1ae0b4bda584e86bc3a25f6cd5181175fc7fa282
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204051"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411905"
 ---
 > [!NOTE]
-> Funkce Notebooky (preview) ve Studiu (klasika) bude ukončena 13. dubna bude karta Poznámkové bloky odebrána spolu se všemi uloženými poznámkovými bloky. Pokyny ke stažení poznámkových bloků naleznete v [tomto článku](../articles/machine-learning/studio/download-notebooks-data.md).
+> Funkce Poznámkové bloky (preview) byla *odebrána 13.* Odebrání karty Poznámkové bloky a souborů uživatelských poznámkových bloků se aktuálně zavádí do oblastí Azure po celém světě.
       
