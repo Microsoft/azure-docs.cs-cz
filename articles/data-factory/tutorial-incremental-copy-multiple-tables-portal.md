@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75439300"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419251"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Serveru do databáze Azure SQL
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načítá rozdílová data z několika tabulek v místním SQL Serveru do databáze Azure SQL.    
 
@@ -177,7 +179,7 @@ Spusťte následující dotaz a vytvořte dvě uložené procedury a dva datové
 
 Aby bylo možné cestu snadno začít, my přímo použít tyto uložené procedury předávání delta data v prostřednictvím proměnné tabulky a pak je sloučit do cílového úložiště. Buďte opatrní, že neočekává "velký" počet delta řádků (více než 100) které mají být uloženy v proměnné tabulky.  
 
-Pokud potřebujete sloučit velký počet řádků delta do cílového úložiště, doporučujeme použít aktivitu kopírování ke zkopírování všech dat delta do dočasné "pracovní" tabulky v cílovém úložišti a potom vytvořit vlastní uloženou proceduru bez použití tabulky proměnnou, která je sloučí z "pracovní" tabulky do "finálové" tabulky. 
+Pokud potřebujete sloučit velký počet řádků delta do cílového úložiště, doporučujeme použít aktivitu kopírování ke zkopírování všech rozdílových dat do dočasné "pracovní" tabulky v cílovém úložišti a potom nejprve vytvořit vlastní uloženou proceduru bez použití proměnné tabulky ke sloučení z "pracovní" tabulky do "konečné" tabulky. 
 
 
 ```sql
@@ -467,7 +469,7 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
     1. Vyberte **Importovat parametr**. 
     1. Zadejte následující hodnoty parametrů: 
 
-        | Name (Název) | Typ | Hodnota | 
+        | Název | Typ | Hodnota | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Řetězec | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
@@ -513,7 +515,7 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
 ## <a name="review-the-results"></a>Kontrola výsledků
 V SQL Server Management Studiu spusťte následující dotazy na cílovou databázi SQL a ověřte, že data byla ze zdrojových tabulek zkopírována do cílových tabulek: 
 
-**Dotazu** 
+**Dotaz** 
 ```sql
 select * from customer_table
 ```
@@ -530,7 +532,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**Dotazu**
+**Dotaz**
 
 ```sql
 select * from project_table
@@ -547,7 +549,7 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-**Dotazu**
+**Dotaz**
 
 ```sql
 select * from watermarktable
@@ -610,7 +612,7 @@ VALUES
 ## <a name="review-the-final-results"></a>Kontrola konečných výsledků
 V sql server management studio, spusťte následující dotazy proti cílové databázi SQL k ověření, že aktualizovaná/nová data byla zkopírována ze zdrojových tabulek do cílových tabulek. 
 
-**Dotazu** 
+**Dotaz** 
 ```sql
 select * from customer_table
 ```
@@ -629,7 +631,7 @@ PersonID    Name    LastModifytime
 
 Všimněte si nových hodnot položek **Name** a **LastModifytime** pro **PersonID** pro číslo 3. 
 
-**Dotazu**
+**Dotaz**
 
 ```sql
 select * from project_table
@@ -649,7 +651,7 @@ NewProject  2017-10-01 00:00:00.000
 
 Všimněte si, že do tabulky project_table byla přidána položka **NewProject**. 
 
-**Dotazu**
+**Dotaz**
 
 ```sql
 select * from watermarktable
