@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: 18a2e5118ab8ab30de5cc4dbf75342cc5275256c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.author: trbye
+ms.openlocfilehash: 57de7f1e7c37fec66cda666d3f144e52849a026f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656665"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400002"
 ---
 Při vývoji pro macOS jsou k dispozici tři sady SDK řeči.
 
@@ -20,7 +20,7 @@ Při vývoji pro macOS jsou k dispozici tři sady SDK řeči.
 > [!TIP]
 > Podrobnosti pomocí sady Objective-C Speech SDK s swiftem naleznete <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">v tématu Import objective-C do swiftu <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
-### <a name="system-requirements"></a>Požadavky na systém
+### <a name="system-requirements"></a>Systémové požadavky
 
 - MacOS verze 10.13 nebo novější
 

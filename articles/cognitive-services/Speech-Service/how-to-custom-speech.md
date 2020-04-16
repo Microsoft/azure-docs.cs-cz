@@ -3,19 +3,19 @@ title: Začínáme se službou Vlastní řeč – řeč
 titleSuffix: Azure Cognitive Services
 description: Vlastní řeč je sada online nástrojů, které vám umožní vyhodnotit a zlepšit přesnost řeči na text pro vaše aplikace, nástroje a produkty. Stačí začít, je několik testovacích zvukových souborů. Pomocí následujících odkazů začněte vytvářet vlastní prostředí převodu řeči na text.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: dapine
-ms.openlocfilehash: e30587ed4d09ba792516ebc7b16529a6ee5ac57c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918950"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402068"
 ---
 # <a name="what-is-custom-speech"></a>Co je vlastní řeč?
 
@@ -69,5 +69,5 @@ Chcete-li vytvořit první projekt, vyberte **možnost Řeč na text/Vlastní ř
 * [Příprava a testování dat](how-to-custom-speech-test-data.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
 * [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-* [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
+* [Vyzkoušejte svůj model](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)

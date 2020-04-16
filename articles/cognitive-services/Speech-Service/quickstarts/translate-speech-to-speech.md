@@ -3,20 +3,20 @@ title: 'Úvodní příručka: Překlad řeči na řeč - služba řeči'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete sadu Speech SDK k interaktivnímu překladu řeči z jednoho jazyka do textu v jiném jazyce.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8babb8b096f815bfd8d9da4c3e8040e650952544
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8dab2707761e2e11889dc6135c713840c81407cf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77119295"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400275"
 ---
 # <a name="quickstart-translate-speech-to-speech"></a>Úvodní příručka: Překlad řeči na řeč
 

@@ -3,20 +3,20 @@ title: 'Úvodní příručka: Spuštění sady SDK pro řečová zařízení ve 
 titleSuffix: Azure Cognitive Services
 description: Požadavky a pokyny pro začínání se sadou SDK s aplikací SDK pro zařízení pro rozpoznávání řeči se systémem Windows, Linux nebo Android.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/20/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: platforms-set-of-three
-ms.openlocfilehash: 598a40e0a76606a0fec8f8a029ac08c0d6e9696e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9303661efc65eb660093c01643073650f360f564
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77563224"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400103"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>Úvodní příručka: Spuštění ukázkové aplikace sady SDK pro řečová zařízení ve Windows, Linuxu nebo Androidu
 

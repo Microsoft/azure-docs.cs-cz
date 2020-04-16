@@ -3,19 +3,19 @@ title: Odkaz na rozhraní API pro převod textu na řeč (REST) – služba ře�
 titleSuffix: Azure Cognitive Services
 description: Přečtěte si, jak používat rozhraní REST API pro převod textu na řeč. V tomto článku se dozvíte o možnostech autorizace, možnostech dotazu, způsobu strukturování požadavku a přijetí odpovědi.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 977c6ec9aa1cd6a8b8a545d123c5308bb8c51651
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.author: trbye
+ms.openlocfilehash: 77bba9433052c00df671caf73198ff75356b1c9a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409011"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400159"
 ---
 # <a name="text-to-speech-rest-api"></a>Rozhraní REST API pro převod textu na řeč
 

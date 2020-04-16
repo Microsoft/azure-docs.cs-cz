@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73044103"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404265"
 ---
 # <a name="learn-image-moderation-concepts"></a>Naučte se koncepty moderování obrázků
 
@@ -139,9 +139,9 @@ Příklad výpisu:
     ....
     }
 
-## <a name="human-review-tool"></a>Nástroj pro kontrolu prováděnou lidmi
+## <a name="review-tool"></a>Nástroj pro revize
 
-Chcete-li zobrazit podrobnější případy, použijte [nástroj pro kontrolu](Review-Tool-User-Guide/human-in-the-loop.md) moderátora obsahu a jeho rozhraní API k zobrazení výsledků moderování a obsahu v recenzi pro vaše lidské moderátory. Zkontrolují strojově přiřazené značky a potvrdí svá konečná rozhodnutí.
+Chcete-li zobrazit podrobnější případy, použijte nástroj Content Moderator [Review](Review-Tool-User-Guide/human-in-the-loop.md) a jeho rozhraní API k zobrazení výsledků moderování a obsahu v recenzi pro vaše lidské moderátory. Zkontrolují strojově přiřazené značky a potvrdí svá konečná rozhodnutí.
 
 ![Kontrola obrázku lidskými moderátory](images/moderation-reviews-quickstart-dotnet.PNG)
 

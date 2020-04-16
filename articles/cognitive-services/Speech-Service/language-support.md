@@ -3,20 +3,20 @@ title: Jazyková podpora - Řečová služba
 titleSuffix: Azure Cognitive Services
 description: Služba Řeč podporuje mnoho jazyků pro převod řeči na text a převod textu na řeč spolu s překladem řeči. Tento článek obsahuje úplný seznam funkce jazykové podpory podle služeb.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.author: dapine
+ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: d01ab60790311649e424a98d5a08c6af0bca90f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a876349af2bd53a46737dda82961afe442bae05
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336039"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81401087"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Jazyková a hlasová podpora služby Speech
 

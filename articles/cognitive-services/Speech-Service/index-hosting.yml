@@ -5,28 +5,28 @@ metadata:
   title: Hostingová dokumentace – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/23/2020
-  ms.author: dapine
-  ms.openlocfilehash: c342b797dfe21fe4ffbd1bb9bc112e9726cdec42
-  ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+  ms.author: trbye
+  ms.openlocfilehash: 640c1b8e9c51059bc4c296ef93a4e6dd54ea7a42
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/01/2020
-  ms.locfileid: "80529477"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81401511"
 landingContent:
 - title: O hostování
   linkLists:
   - linkListType: concept
     links:
-    - text: Instalace a spuštění kontejnerů řeči
+    - text: Instalace a spuštění kontejnerů služby Speech
       url: speech-container-howto.md
-    - text: Řečové kontejnery s Kubernetes a Helmem
+    - text: Kontejnery služby Speech s Kubernetes a Helmem
       url: speech-container-howto-on-premises.md
-    - text: Kontejnery řeči v instancích kontejnerů Azure
+    - text: Kontejnery služby Speech ve službě Azure Container Instances
       url: deploy-speech-on-container-instances.md
 - title: Vytvořit a nakonfigurovat
   linkLists:
@@ -34,9 +34,9 @@ landingContent:
     links:
     - text: Vytvoření prostředku řeči Azure
       url: get-started.md#new-resource
-    - text: Konfigurace kontejnerů řeči
+    - text: Konfigurace kontejnerů služby Speech
       url: speech-container-configuration.md
-- title: Odkaz
+- title: Referenční informace
   linkLists:
   - linkListType: reference
     links:
@@ -44,5 +44,5 @@ landingContent:
       url: regions.md
     - text: Suverénní cloudy
       url: sovereign-clouds.md
-    - text: Nejčastější dotazy týkající se kontejnerů
+    - text: Nejčastější dotazy ke kontejnerům
       url: speech-container-faq.md

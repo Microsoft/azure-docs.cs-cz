@@ -4,15 +4,15 @@ description: Zjistěte, jak nakonfigurovat správce azure analysis services a u�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fa3a6fefce808e51c2ad1d9d18bf4766cdf689c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78273684"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406226"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
 
@@ -52,7 +52,7 @@ Pro zbývající úkoly použijete SQL Server Management Studio, které umožňu
 
 1. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services**.
 
-    ![Připojení](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Připojit](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. Do pole **Název serveru** v dialogovém okně **Připojit k serveru** vložte název serveru zkopírovaný z portálu. V poli **Ověřování** zvolte **Active Directory Universal s podporou vícefaktorového ověřování**, zadejte svůj uživatelský účet a klikněte na **Připojit**.
    
@@ -67,7 +67,7 @@ Pro zbývající úkoly použijete SQL Server Management Studio, které umožňu
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Přidání uživatelského účtu do role správce serveru
 
-V rámci tohoto úkolu přidáte do role správce serveru uživatelský nebo skupinový účet ze služby Azure AD. Pokud přidáváte skupinu zabezpečení, musí mít vlastnost `MailEnabled` nastavenou na hodnotu `True`.
+V rámci tohoto úkolu přidáte do role správce serveru uživatelský nebo skupinový účet ze služby Azure AD. Pokud přidáváte skupinu zabezpečení, musí mít vlastnost `MailEnabled` nastavenou na hodnotu `True`. Při zadávání skupiny podle `obj:groupid@tenantid`e-mailové adresy použijte .
 
 1. V **Průzkumníku objektů** klikněte pravým tlačítkem na název serveru a pak klikněte na **Vlastnosti**. 
 2. V okně **Analysis Server – vlastnosti** klikněte na **Zabezpečení** > **Přidat**.

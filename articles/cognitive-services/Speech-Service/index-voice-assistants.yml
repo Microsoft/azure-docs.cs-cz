@@ -5,18 +5,18 @@ metadata:
   title: Dokumentace k hlasovým asistentům – výukové lekce, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
-  ms.author: dapine
-  ms.openlocfilehash: 6ae919317269753cbc3c8bf5b0df11e19a47989f
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.author: trbye
+  ms.openlocfilehash: cbef289ebc79e20b928db684af01a4eaeb1c0ce8
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "79415151"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81401439"
 landingContent:
 - title: Hlasové asistenty
   linkLists:
@@ -42,19 +42,19 @@ landingContent:
       url: quickstart-custom-speech-commands-create-new.md
     - text: Vytvoření vlastního příkazu s parametry
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: Použití vlastních příkazů s vlastním hlasem
+    - text: Použití aplikace Vlastní příkazy se službou Vlastní hlas
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Použití vlastních příkazů se sadou Speech SDK
+    - text: Použití aplikace Vlastní příkazy se sadou Speech SDK
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Plnění příkazů od klienta
+    - text: Splnění příkazů z klienta
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Přidání ověření parametru
+    - text: Přidání ověření parametrů
       url: how-to-custom-speech-commands-validations.md
     - text: Přidání potvrzení
       url: how-to-custom-speech-commands-confirmations.md
-    - text: Přidání jednostupňové opravy
+    - text: Přidání opravy v jednom kroku
       url: how-to-custom-speech-commands-one-step-correction.md
 - title: Vyvíjejte s přímou přímou řečí
   linkLists:

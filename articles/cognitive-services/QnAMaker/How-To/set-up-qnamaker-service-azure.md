@@ -3,12 +3,12 @@ title: Nastavení služby QnA Maker - QnA Maker
 description: Před vytvořením jakékoli znalostní báze QnA Maker, musíte nejprve nastavit službu QnA Maker v Azure. Služba QnA Maker může nastavit kdokoli s autorizací k vytváření nových prostředků v rámci předplatného.
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 8ec57f441ba58227e45398c35c7931dc75fa658f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131707"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402990"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -89,7 +89,7 @@ Klíče koncového bodu lze spravovat z [portálu QnA Maker](https://qnamaker.ai
     >[!NOTE]
     >Aktualizujte si klíče, pokud si myslíte, že byly ohroženy. To může vyžadovat odpovídající změny klientské aplikace nebo kódu robota.
 
-### <a name="upgrade-qna-maker-sku"></a>Upgrade skladové položky výrobce QnA Maker
+## <a name="upgrade-qna-maker-sku"></a>Upgrade skladové položky výrobce QnA Maker
 
 Pokud chcete mít další otázky a odpovědi ve znalostní bázi, mimo aktuální úroveň, upgradujte cenovou úroveň služby QnA Maker.
 
@@ -103,7 +103,7 @@ Aktualizace skladové položky správy makeru QnA Maker:
 
     ![Ceny QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-### <a name="upgrade-app-service"></a>Upgrade App Service
+## <a name="upgrade-app-service"></a>Upgrade App Service
 
  Když vaše znalostní báze potřebuje obsluhovat další požadavky z klientské aplikace, upgradujte cenovou úroveň služby App Service.
 
@@ -113,7 +113,7 @@ Přejděte na prostředek služby App Service na webu Azure Portal a podle potř
 
 ![Měřítko služby QnA Maker App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-cognitive-search-service"></a>Upgrade služby Azure Cognitive Search
+## <a name="upgrade-the-azure-cognitive-search-service"></a>Upgrade služby Azure Cognitive Search
 
 Pokud máte v plánu mít mnoho znalostních bází, upgradujte cenovou úroveň služby Azure Cognitive Search.
 
@@ -197,7 +197,7 @@ Služba aplikace, která slouží běhu predikce QnA Maker pro publikovanou znal
 
 Chcete-li zachovat předpověď koncového bodu aplikace načtena i v případě, že není žádný provoz, nastavte nečinnosti vždy zapnutý.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte službu aplikace zdroje QnA Maker. Bude mít stejný název jako prostředek QnA Maker, ale bude mít jiný **typ** služby App Service.
 1. Najít **nastavení** pak vyberte **Konfigurace**.
 1. V podokně Konfigurace vyberte **Obecné nastavení**, pak najděte **Vždy zapnuto**a jako hodnotu vyberte **Zapnuto.**

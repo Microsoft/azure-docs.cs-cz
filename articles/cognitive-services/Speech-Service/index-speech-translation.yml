@@ -5,18 +5,18 @@ metadata:
   title: Dokumentace k překladu řeči – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 04/13/2020
-  ms.author: dapine
-  ms.openlocfilehash: 346965e4bd8384be93716894a52960b20539d1c3
-  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+  ms.author: trbye
+  ms.openlocfilehash: 5d5c1cdae695b68f45d55b51b76d88c2f93c50d1
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/13/2020
-  ms.locfileid: "81259034"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81401424"
 landingContent:
 - title: Překlad řeči
   linkLists:

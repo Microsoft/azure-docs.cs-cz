@@ -10,19 +10,25 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 6f8f892e7ca81881b0cc00e1708e3f05052c573c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a72e5055a3b0f858a732ec28eeab511b09dd450c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76264199"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400144"
 ---
 # <a name="scenario-availability"></a>Dostupnost scénáře
 
 Sada Speech SDK obsahuje mnoho scénářů v celé řadě programovacích jazyků a prostředí. Ne všechny scénáře jsou k dispozici ve všech programovacích jazycích nebo ve všech prostředích dosud. Níže je uvedena dostupnost každého scénáře.
 
 - **Rozpoznávání řeči (SR), seznam frází, záměr, překlad a místní kontejnery**
-  - Všechny programovací jazyky/prostředí, kde je odkaz se šipkami <img src="media/index/link.jpg" height="15" width="15"></img> v tabulce rychlého startu [zde](https://aka.ms/csspeech).
+  - C++/Windows & Linux & macOS
+  - C# (Framework & .NET Core)/Windows & UWP & Unity & Xamarin & Linux & macOS
+  - Java (Jre a Android)
+  - JavaScript (Brower a NodeJS)
+  - Python
+  - Swift
+  - Objective-C  
 - **Převod textu na řeč (TTS)**
   - C++/Windows & Linuxu
   - C#/Windows & UWP & Unity

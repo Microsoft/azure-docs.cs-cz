@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: 1f3864b28ba6f5bdbffe6601d059a21328d56a5e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.author: trbye
+ms.openlocfilehash: 7ce193c2c2f5e10a27550da68a4c2d2fdcd1db7f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656644"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400007"
 ---
 :::row:::
     :::column span="3":::
@@ -26,7 +26,7 @@ ms.locfileid: "80656644"
 > [!TIP]
 > Podrobnosti pomocí sady Objective-C Speech SDK s swiftem naleznete <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">v tématu Import objective-C do swiftu <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
-### <a name="system-requirements"></a>Požadavky na systém
+### <a name="system-requirements"></a>Systémové požadavky
 
 - MacOS verze 10.3 nebo novější
 - Cíl iOS 9.3 nebo novější

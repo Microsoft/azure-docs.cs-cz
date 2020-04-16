@@ -3,21 +3,21 @@ title: Příprava dat pro vlastní řeč – služba Řeč
 titleSuffix: Azure Cognitive Services
 description: Při testování přesnosti rozpoznávání řeči společnosti Microsoft nebo trénování vlastních modelů budete potřebovat zvuková a textová data. Na této stránce se zabýváme typy dat, jak je používat a spravovat.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: d6e377ca4f33c0160267b23daaaaef5e07c271bb
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398686"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402142"
 ---
-# <a name="prepare-data-for-custom-speech"></a>Příprava dat pro vlastní řeč
+# <a name="prepare-data-for-custom-speech"></a>Příprava dat pro službu Custom Speech
 
 Při testování přesnosti rozpoznávání řeči společnosti Microsoft nebo trénování vlastních modelů budete potřebovat zvuková a textová data. Na této stránce se zabýváme typy dat, jak je používat a spravovat.
 
@@ -98,7 +98,7 @@ Chcete-li měřit přesnost přesnosti řeči na text společnosti Microsoft př
 
 Chcete-li řešit problémy, jako je odstranění nebo nahrazení slova, je nutné značné množství dat ke zlepšení rozpoznávání. Obecně se doporučuje zadat přepisy slovo za slovem pro zhruba 10 až 1 000 hodin zvuku. Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. Každý řádek souboru s přepisem by měl obsahovat název jednoho zvukového souboru a za ním odpovídající přepis. Název souboru a přepis by měly být oddělené tabulátorem (\t).
 
-  Například:
+  Příklad:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -182,5 +182,5 @@ V následující tabulce zajistíte, že související datový soubor pro výslo
 
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
 * [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-* [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
+* [Vyzkoušejte svůj model](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: e41653e4644b09cc357510223e5ee86c3806ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74806109"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402184"
 ---
 # <a name="deploy-a-custom-model"></a>Nasazení vlastního modelu
 
@@ -42,12 +42,12 @@ Data protokolování jsou k dispozici ke stažení v části **Podrobnosti o > k
 
 ## <a name="next-steps"></a>Další kroky
 
-* Použití vlastního koncového bodu se sadou [Speech SDK](speech-sdk.md)
+* Zde se dozvíte, jak používat vlastní [model](how-to-specify-source-language.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
 * [Příprava a testování dat](how-to-custom-speech-test-data.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
 * [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-* [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
+* [Vyzkoušejte svůj model](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)

@@ -3,19 +3,19 @@ title: Převod převodu převodu textu na řeč, Python - služba řeči
 titleSuffix: Azure Cognitive Services
 description: V tomto článku se dozvíte, jak převést převod převodu převodu převodu textu na řeč pomocí Pythonu a rozhraní REST API pro převod textu na řeč. Ukázkový text obsažený v této příručce je strukturován jako jazyk s označením syntézy řeči (SSML). To vám umožní zvolit hlas a jazyk odpovědi na řeč.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
-ms.author: dapine
-ms.openlocfilehash: 6ea3f63bea0701dcd0f4b38f6584816d9a1bfbc7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: trbye
+ms.openlocfilehash: 171fdb033cba422d8ba580da3ab54db88ca20872
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258424"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400822"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Převod převodu převodu textu na řeč pomocí Pythonu
 

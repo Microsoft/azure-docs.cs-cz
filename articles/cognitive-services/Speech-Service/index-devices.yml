@@ -5,24 +5,24 @@ metadata:
   title: Dokumentace k řečovým zařízením – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
-  ms.author: dapine
-  ms.openlocfilehash: 5fc9e045162c03585f20e0b06a01524480070050
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.author: trbye
+  ms.openlocfilehash: 76bb63654778a08244e2207839e12812b7227dff
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "79415355"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81401370"
 landingContent:
 - title: O sadě SDK pro rozpoznávání řeči
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je sada SDK pro řečová zařízení?
+    - text: Co je sada Speech Devices SDK?
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
@@ -40,7 +40,7 @@ landingContent:
       url: speech-devices-sdk-microphone.md
     - text: Nastavení roobo v1 kit
       url: speech-devices-sdk-roobo-v1.md
-- title: Odkaz
+- title: Referenční informace
   linkLists:
   - linkListType: whats-new
     links:

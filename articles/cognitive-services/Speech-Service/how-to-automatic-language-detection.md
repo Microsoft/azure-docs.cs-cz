@@ -3,20 +3,20 @@ title: Jak používat automatickou detekci jazyka pro řeč na text
 titleSuffix: Azure Cognitive Services
 description: Sada Speech SDK podporuje automatickou detekci jazyka pro převod řeči na text. Při použití této funkce je poskytnutý zvuk porovnán s poskytnutým seznamem jazyků a je určena nejpravděpodobnější shoda. Vrácenou hodnotu lze poté použít k výběru jazykového modelu používaného pro převod řeči na text.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 5592fc3e50db892c6abb09fc2516b8e1c03f0f03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239608"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402204"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatická detekce jazyka pro převod řeči na text
 

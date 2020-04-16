@@ -1,25 +1,25 @@
 ---
 title: Moderování videa s lidskou recenzí - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: K moderování nevhodného obsahu používejte nástroje pro moderování videa s pomocí stroje a lidské kontroly
+description: Moderování videa s pomocí stroje a nástroje Revize k moderování nevhodného obsahu
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c031a890efc7fad7e5d9caefce3b0e66c515d90
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72754158"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404241"
 ---
 # <a name="video-moderation-with-human-review"></a>Moderování videa s lidskou recenzí
 
-Pomocí nástroje [pro moderování videa](video-moderation-api.md) s pomocí počítače moderátora obsahu a [nástroje pro lidskou kontrolu](Review-Tool-User-Guide/human-in-the-loop.md) můžete moderovat videa a přepisy pro obsah pro dospělé (explicitní) a pikantní (sugestivní) pro dosažení nejlepších výsledků pro vaši firmu.
+Pomocí nástroje pro [moderování](video-moderation-api.md) a [kontrolu](Review-Tool-User-Guide/human-in-the-loop.md) videa moderátora obsahu pro měření a kontrolu videa moderujte videa a přepisy pro dospělé (explicitní) a pikantní (sugestivní) obsah, abyste získali nejlepší výsledky pro vaši firmu.
 
 ## <a name="video-trained-classifier-preview"></a>Klasifikátor vyškolený pro video (náhled)
 

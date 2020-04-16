@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: dea6a1afaa2348fc5054bee20c534936dcafe5b5
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.author: trbye
+ms.openlocfilehash: 138a9ef9d483ca0d460bab7185d646669650f83e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656550"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400022"
 ---
 :::row:::
     :::column span="3":::
@@ -23,7 +23,7 @@ ms.locfileid: "80656550"
     :::column-end:::
 :::row-end:::
 
-### <a name="system-requirements"></a>Požadavky na systém
+### <a name="system-requirements"></a>Systémové požadavky
 
 Sada Speech SDK v systému Windows vyžaduje <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">sadu Microsoft Visual C++ Redistributable for Visual Studio 2019 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v systému.
 
@@ -39,7 +39,7 @@ Pro vstup mikrofonu musí být nainstalovány knihovny Media Foundation. Tyto kn
 
 Požadované soubory sady Speech SDK lze nasadit ve stejném adresáři jako aplikace. Tímto způsobem může vaše aplikace přímo přistupovat ke knihovnám. Ujistěte se, že jste vybrali správnou verzi (x86/x64), která odpovídá vaší aplikaci.
 
-| Name (Název)                                            | Funkce                                             |
+| Název                                            | Funkce                                             |
 |-------------------------------------------------|------------------------------------------------------|
 | `Microsoft.CognitiveServices.Speech.core.dll`   | Základní sada SDK, požadovaná pro nativní a spravované nasazení |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Požadováno pro spravované nasazení                      |
