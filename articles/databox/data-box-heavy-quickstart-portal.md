@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 70d5481c37777150927914042133286a77f53b89
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15140ef392d8108b59bf50c396e529dc15951232
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76514404"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410909"
 ---
 ::: zone target = "docs"
 
@@ -39,11 +39,7 @@ Než začnete, ujistěte se, že:
 
 ### <a name="for-service"></a>Služba
 
-Než začnete, ujistěte se, že:
-
-- Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
-- Pro službu Data Box používáte předplatné se [smlouvou Microsoft Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), předplatné [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) nebo předplatné [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
-- Máte u předplatného přístup vlastníka nebo přispěvatele, abyste mohli vytvořit objednávku Data Boxu Heavy.
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Zařízení
 
@@ -57,7 +53,6 @@ Než začnete, ujistěte se, že:
     - V případě kabelu s rychlostí 40 GB/s musí na konci kabelu na straně zařízení být QSFP+.
     - V případě kabelu s rychlostí 10 GB/s potřebujete kabel SFP+, který se na jednom konci připojí k přepínači s rychlostí 10 GB/s, s adaptérem QSFP+ na SFP+ (neboli adaptérem QSA) na druhém konci, který se připojí k zařízení.
 - Napájecí kabely jsou přiložené v zásobníku na zadní straně zařízení.
-
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

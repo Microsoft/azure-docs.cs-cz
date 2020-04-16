@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a418841d91ab6b8fe5457f3fd64d91306fe08dfe
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199326"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383115"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Vysvětlení uplatňování slevy za rezervaci na Azure Data Explorer
 
@@ -65,7 +65,7 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 Další informace o rezervacích Azure najdete v následujících článcích:
 
-* [Předplacení výpočetních prostředků Azure Data Exploreru s využitím rezervované kapacity Azure Data Exploreru](../../data-explorer/pricing-reserved-capacity.md)  
+* [Předplacení výpočetních prostředků Azure Data Exploreru s využitím rezervované kapacity Azure Data Exploreru](/azure/data-explorer/pricing-reserved-capacity)  
 * [Co jsou rezervace v Azure](save-compute-costs-reservations.md)  
 * [Správa rezervací Azure](manage-reserved-vm-instance.md)  
 * [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)

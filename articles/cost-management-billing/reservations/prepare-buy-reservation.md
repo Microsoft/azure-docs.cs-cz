@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: banders
-ms.openlocfilehash: 1f44b0a0e2278bfcfbbf7cde1a3605fe334eaa3f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 4ef0420eab8064343b54f2c0bf15a692b8bc038c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886513"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382819"
 ---
 # <a name="buy-a-reservation"></a>Nákup rezervace
 
@@ -67,7 +67,7 @@ Rezervace si můžete koupit prostřednictvím webu Azure Portal, rozhraní API,
 - [Azure Cache for Redis](../../azure-cache-for-redis/cache-reserved-pricing.md)
 - [Databáze Cosmos](../../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Databricks](prepay-databricks-reserved-capacity.md)
-- [Data Explorer](../../data-explorer/pricing-reserved-capacity.md)
+- [Data Explorer](/azure/data-explorer/pricing-reserved-capacity)
 - [Disk Storage](../../virtual-machines/linux/disks-reserved-capacity.md)
 - [Dedicated Host](../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md)
 - [Softwarové plány](../../virtual-machines/linux/prepay-suse-software-charges.md)
