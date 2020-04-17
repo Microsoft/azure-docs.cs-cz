@@ -80,7 +80,7 @@
       maintainContext: true
 - name: Zdroje a prostředky
   items:
-    - name: Podpora jazyků a oblastí
+    - name: Podpora jazyků
       href: language-support.md
     - name: Získání bezplatného přístupového klíče
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api'
