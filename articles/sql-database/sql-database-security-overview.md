@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 2a4c6dd3dd6f1bb2f15e31226086c73fb8e63521
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d08770d81ade2d976142b2ce1fd94dae044cf32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124834"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461391"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -46,7 +46,7 @@ Pravidla brány firewall IP udělují přístup k databázím na základě půvo
 > [!IMPORTANT]
 > Správa databází a databázových serverů v rámci Azure je řízena přiřazeními rolí vašeho uživatelského účtu portálu. Další informace o tomto článku najdete [v tématu řízení přístupu na základě rolí na webu Azure Portal](../role-based-access-control/overview.md).
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Ověřování je proces dokazování, že uživatel je tím, za koho se považuje. Azure SQL Database podporuje dva typy ověřování:
 
@@ -112,11 +112,11 @@ Například při použití ovladače ADO.NET to je provedeno prostřednictvím *
 
 [Transparentní šifrování dat (TDE) pro Azure SQL Database](transparent-data-encryption-azure-sql.md) přidává vrstvu zabezpečení, která pomáhá chránit data v klidovém stavu před neoprávněným nebo offline přístupem k nezpracovaným souborům nebo zálohám. Mezi běžné scénáře patří krádež datového centra nebo nezabezpečená likvidace hardwaru nebo médií, jako jsou diskové jednotky a záložní pásky.TDE šifruje celou databázi pomocí šifrovacího algoritmu AES, který nevyžaduje, aby vývojáři aplikací provázli jakékoli změny v existujících aplikacích.
 
-V Azure jsou všechny nově vytvořené databáze SQL ve výchozím nastavení zašifrovány a šifrovací klíč databáze je chráněn integrovaným certifikátem serveru.  Údržba a střídání certifikátů jsou spravovány službou a nevyžaduje žádný vstup od uživatele. Zákazníci, kteří dávají přednost převzetí kontroly nad šifrovacími klíči, mohou spravovat klíče v [úložišti klíčů Azure](../key-vault/key-vault-secure-your-key-vault.md).
+V Azure jsou všechny nově vytvořené databáze SQL ve výchozím nastavení zašifrovány a šifrovací klíč databáze je chráněn integrovaným certifikátem serveru.  Údržba a střídání certifikátů jsou spravovány službou a nevyžaduje žádný vstup od uživatele. Zákazníci, kteří dávají přednost převzetí kontroly nad šifrovacími klíči, mohou spravovat klíče v [úložišti klíčů Azure](../key-vault/general/secure-your-key-vault.md).
 
 ### <a name="key-management-with-azure-key-vault"></a>Správa klíčů pomocí azure key vaultu
 
-[Přineste si vlastní klíč](transparent-data-encryption-byok-azure-sql.md) (BYOK) podpora [pro transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) umožňuje zákazníkům převzít vlastnictví správy klíčů a rotace pomocí Azure [Key Vault](../key-vault/key-vault-secure-your-key-vault.md), Cloud-based Azure externí klíč management systému. Pokud je přístup databáze k trezoru klíčů odvolán, nelze databázi dešifrovat a číst do paměti. Azure Key Vault poskytuje centrální platformu pro správu klíčů, využívá úzce monitorované moduly hardwarového zabezpečení (HSM) a umožňuje oddělení povinností mezi správou klíčů a dat, které pomáhají splnit požadavky na dodržování předpisů zabezpečení.
+[Přineste si vlastní klíč](transparent-data-encryption-byok-azure-sql.md) (BYOK) podpora [pro transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) umožňuje zákazníkům převzít vlastnictví správy klíčů a rotace pomocí Azure [Key Vault](../key-vault/general/secure-your-key-vault.md), Cloud-based Azure externí klíč management systému. Pokud je přístup databáze k trezoru klíčů odvolán, nelze databázi dešifrovat a číst do paměti. Azure Key Vault poskytuje centrální platformu pro správu klíčů, využívá úzce monitorované moduly hardwarového zabezpečení (HSM) a umožňuje oddělení povinností mezi správou klíčů a dat, které pomáhají splnit požadavky na dodržování předpisů zabezpečení.
 
 ### <a name="always-encrypted-encryption-in-use"></a>Vždy šifrované (šifrování v provozu)
 

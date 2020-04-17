@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482315"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531096"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Trénování modelu rozpoznávání formulářů s popisky pomocí rozhraní REST API a Pythonu
 
@@ -40,7 +40,7 @@ Ujistěte se, že všechny školicí dokumenty jsou ve stejném formátu. Pokud 
 
 Chcete-li trénovat model pomocí označených dat, budete potřebovat následující soubory jako vstupy v podsložce. Níže se dozvíte, jak vytvořit tyto soubory.
 
-* **Zdrojové formuláře** – formuláře pro extrahování dat. Podporované typy jsou JPEG, PNG, BMP, PDF nebo TIFF.
+* **Zdrojové formuláře** – formuláře pro extrahování dat. Podporované typy jsou JPEG, PNG, PDF nebo TIFF.
 * **Soubory rozložení OCR** - Soubory JSON, které popisují velikosti a umístění veškerého čitelného textu v každém zdrojovém formuláři. Ke generování těchto dat použijete rozhraní API pro rozpoznávání formulářů. 
 * **Label files** - JSON files that describe data labels that a user has entered manually.
 
@@ -219,7 +219,7 @@ headers = {
     'Ocp-Apim-Subscription-Key': '<subsription key>',
 }
 
-body =  {
+body =     {
     "source": source,
     "sourceFilter": {
         "prefix": prefix,
@@ -455,7 +455,7 @@ Po dokončení procesu obdržíte odpověď `202 (Success)` s obsahem JSON v ná
                     "#/readResults/0/lines/8/words/1"
                   ]
                 },
-                ...     
+                ...        
               ]
             }
           ]

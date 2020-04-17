@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b5d46caa80f3f0aaeeb18bd919dafccf628c5faf
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384951"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461799"
 ---
 Když vytváříte virtuální počítač Azure, musíte vytvořit [virtuální síť](../articles/virtual-network/virtual-networks-overview.md) (VNet), nebo použít existující VNet. Také musíte rozhodnout, jak budou vaše virtuální počítače v síti VNet dostupné. Je důležité [plánovat před vytvořením prostředků](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) a dobře porozumět [omezením síťových prostředků](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
@@ -148,24 +148,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření interního n
 
 ### <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
 
-Při práci se sadami škálování virtuálních strojů a nástrojpro vyrovnávání zatížení je třeba vzít v úvahu následující:
-
-* **Škálovací sady virtuálních strojů nemohou používat stejný nástroj pro vyrovnávání zatížení**.
-* **Port Forwarding a příchozí pravidla NAT**:
-  * Každá škálovací sada virtuálního počítače musí mít pravidlo příchozího nat.
-  * Při použití škálovací sady virtuálních strojů v back-endovém fondu nástroje pro vyrovnávání zatížení se automaticky vytvoří výchozí příchozí pravidla NAT, je to záměrné.
-* **Pravidla vyrovnávání zatížení**:
-  * Při použití škálovací sady virtuálních strojů v back-endovém fondu nástroje pro vyrovnávání zatížení se automaticky vytvoří výchozí pravidlo vyrovnávání zatížení, je to záměrné.
-* **Odchozí pravidla**:
-  *  Chcete-li vytvořit odchozí pravidlo pro fond back-endu, na který je již odkazováno pravidlem vyrovnávání zatížení, musíte nejprve označit **"Vytvořit implicitní odchozí pravidla"** jako **Ne** na portálu při vytvoření pravidla vyrovnávání příchozího zatížení.
-
-  :::image type="content" source="./media/virtual-machines-common-network-overview/vmsslb.png" alt-text="Vytvoření pravidla vyrovnávání zatížení" border="true":::
-
-Následující metody lze použít k nasazení škálovací sady virtuálních strojů s existujícím nástrojem pro vyrovnávání zatížení Azure.
-
-* [Nakonfigurujte škálovací sadu virtuálních strojů pomocí existujícího nástroje Provynaci zatížení Azure pomocí portálu Azure](../articles/load-balancer/configure-vm-scale-set-portal.md).
-* [Nakonfigurujte škálovací sadu virtuálních strojů pomocí existujícího nástroje Provynaci zatížení Azure pomocí Azure PowerShellu](../articles/load-balancer/configure-vm-scale-set-powershell.md).
-* [Nakonfigurujte škálovací sadu virtuálních strojů pomocí existujícího nástroje pro vyrovnávání zatížení Azure pomocí rozhraní příkazového příkazového příkazu Kontu Azure](../articles/load-balancer/configure-vm-scale-set-cli.md).
+Další informace o nástroji pro vyrovnávání zatížení a škálovací sady virtuálních strojů najdete [v tématu Sítě pro škálovací sady virtuálních strojů Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking).
 
 ## <a name="vms"></a>Virtuální počítače
 

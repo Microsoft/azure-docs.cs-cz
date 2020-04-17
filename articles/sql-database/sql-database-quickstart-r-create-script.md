@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 5b2f8231952d25f5858f8e06a957f1056ecc3651
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: bb6cb6d86933166d2427788d697d9cd38cf04bf0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768494"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460167"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Úvodní příručka: Vytvoření a spuštění jednoduchých skriptů Jazyka R ve službách Azure SQL Database Machine Learning Services (preview)
 
@@ -30,11 +31,8 @@ V tomto rychlém startu vytvoříte a spustíte sadu skriptů R pomocí služby 
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Databáze Azure SQL](sql-database-single-database-get-started.md) s [pravidlem brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md)
-- [Služby strojového učení](sql-database-machine-learning-services-overview.md) s povolenou r. [Zaregistrovat verzi Preview](sql-database-machine-learning-services-overview.md#signup)
+- [Služby strojového učení](sql-database-machine-learning-services-overview.md) s povolenou r.
 - [Sql Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
-
-> [!NOTE]
-> Během veřejné verze Preview vás Microsoft připojí k vaší službě a umožní strojové učení pro vaši stávající nebo novou databázi.
 
 Tento příklad používá uloženou proceduru [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) k zabalení dobře formátovaného skriptu R.
 
@@ -81,7 +79,7 @@ print(c(c, d))
 
    Mělo by to vypadat nějak takhle.
 
-    **Results**
+    **Výsledky**
 
     ```text
     STDOUT message(s) from external script:
@@ -144,7 +142,7 @@ Prozatím použijeme výchozí vstupní a výstupní proměnné [sp_execute_exte
     FROM RTestData
     ```
 
-    **Results**
+    **Výsledky**
 
     ![Obsah tabulky RTestData](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
@@ -157,7 +155,7 @@ Prozatím použijeme výchozí vstupní a výstupní proměnné [sp_execute_exte
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    **Results**
+    **Výsledky**
 
     ![Výstup skriptu R, který vrací data z tabulky](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
@@ -191,7 +189,7 @@ Prozatím použijeme výchozí vstupní a výstupní proměnné [sp_execute_exte
     WITH RESULT SETS(([Col1] CHAR(20) NOT NULL));
     ```
 
-    **Results**
+    **Výsledky**
 
     ![Výsledky dotazu s použitím proměnné @script jako vstupu](./media/sql-database-quickstart-r-create-script/r-data-generated-output.png)
 
@@ -207,7 +205,7 @@ GO
 
 Funkce R `print` vrátí verzi do okna **Zprávy**. V příkladu výstupu níže, můžete vidět, že SQL Database v tomto případě má r verze 3.4.4 nainstalován.
 
-**Results**
+**Výsledky**
 
 ```text
 STDOUT message(s) from external script:
@@ -249,7 +247,7 @@ WITH result sets((
 
 Výstup je `installed.packages()` z v R a je vrácena jako sada výsledků.
 
-**Results**
+**Výsledky**
 
 ![Nainstalované balíčky v jazyce R](./media/sql-database-quickstart-r-create-script/r-installed-packages.png)
 

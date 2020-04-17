@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49b51a5f14f305afa915ec1d0fae42ca9ded6b1e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500284"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461663"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Doporučené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí služby Azure App Service
 
@@ -36,7 +36,7 @@ Služba App Service poskytuje službu OAuth 2.0 pro vašeho poskytovatele identi
 Omezení přístupu je nezbytné pro organizace, které chtějí vynutit zásady zabezpečení pro přístup k datům. Pomocí řízení přístupu na základě rolí (RBAC) můžete přiřadit oprávnění uživatelům, skupinám a aplikacím v určitém oboru, jako je například potřeba znát a nejméně oprávnění zásadzabezpečení. Další informace o udělení přístupu uživatelům k aplikacím naleznete v tématu [Co je řízení přístupu založené na rolích](/azure/role-based-access-control/overview).
 
 ## <a name="protect-your-keys"></a>Chraňte své klíče
-Nezáleží na tom, jak dobré je vaše zabezpečení, pokud ztratíte klíče předplatného. Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí trezoru klíčů můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat, . PFX soubory a hesla) pomocí klíčů, které jsou chráněny moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Trezor klíčů můžete také použít ke správě certifikátů TLS s automatickým obnovením. Další informace najdete v [tématu Co je Azure Key Vault.](../../key-vault/key-vault-overview.md)
+Nezáleží na tom, jak dobré je vaše zabezpečení, pokud ztratíte klíče předplatného. Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí trezoru klíčů můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat, . PFX soubory a hesla) pomocí klíčů, které jsou chráněny moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Trezor klíčů můžete také použít ke správě certifikátů TLS s automatickým obnovením. Další informace najdete v [tématu Co je Azure Key Vault.](../../key-vault/general/overview.md)
 
 ## <a name="restrict-incoming-source-ip-addresses"></a>Omezení příchozích zdrojových ADRES IP
 [Prostředí služby App Service má](../../app-service/environment/intro.md) funkci integrace virtuální sítě, která vám pomůže omezit příchozí zdrojové IP adresy prostřednictvím skupin zabezpečení sítě (NSGs). Pokud nejste obeznámeni s virtuálními sítěmi Azure (VNET), je to funkce, která vám umožní umístit mnoho prostředků Azure v síti, která není internet, směrovatelná, ke které řídíte přístup. Další informace najdete v [tématu Integrace aplikace s virtuální sítí Azure](../../app-service/web-sites-integrate-with-vnet.md).

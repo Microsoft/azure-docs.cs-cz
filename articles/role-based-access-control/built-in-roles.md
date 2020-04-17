@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 14ff86bc47ab6de55d840c4b986c99caf2d4e99c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545639"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482030"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -55,7 +55,7 @@ Následující tabulka obsahuje stručný popis a jedinečné ID každé předde
 > | [Přispěvatel zóny DNS](#dns-zone-contributor) | Umožňuje spravovat zóny DNS a sady záznamů v Azure DNS, ale neumožňuje řídit, kdo k nim má přístup. | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | [Přispěvatel sítě](#network-contributor) | Umožňuje spravovat sítě, ale ne přístup k nim. | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | [Přispěvatel dopravního manažera](#traffic-manager-contributor) | Umožňuje spravovat profily traffic manageru, ale neumožňuje řídit, kdo k nim má přístup. | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
-> | **Úložiště** |  |  |
+> | **Storage** |  |  |
 > | [Přispěvatel Avere](#avere-contributor) | Můžete vytvořit a spravovat avere vFXT clusteru. | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Operátor Avere](#avere-operator) | Používá se ke správě clusteru Avere vFXT. | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
 > | [Přispěvatel zálohy](#backup-contributor) | Umožňuje spravovat službu zálohování, ale nemůže vytvářet trezory a udělit přístup ostatním. | 5e467623-bb1f-42f4-a55d-6e525e11384b |
@@ -369,7 +369,7 @@ Umožňuje spravovat přístup uživatelů k prostředkům Azure.
 }
 ```
 
-## <a name="compute"></a>Služba Compute
+## <a name="compute"></a>Compute
 
 
 ### <a name="classic-virtual-machine-contributor"></a>Klasický přispěvatel virtuálního počítače
@@ -2071,6 +2071,7 @@ Umožňuje výpis a obnovení přístupových klíčů účtu úložiště.
 > | **Akce data** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Odstraňte objekt blob. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Vrátí objekt blob nebo seznam objektů BLOB. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action | Přesune objekt blob z jedné cesty na jinou. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Napište do objektu blob. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
@@ -2095,6 +2096,7 @@ Umožňuje výpis a obnovení přístupových klíčů účtu úložiště.
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
       ],
       "notDataActions": []
@@ -4099,6 +4101,7 @@ Přispěvatel log Analytics může číst všechna data monitorování a upravov
 > | Microsoft.ClassicCompute/virtualMachines/extensions/* |  |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Zobrazí seznam přístupových klíčů pro účty úložiště. |
 > | Microsoft.Compute/virtualMachines/extensions/* |  |
+> | Microsoft.HybridCompute/machines/extensions/write | Nainstaluje nebo aktualizuje rozšíření Azure Arc |
 > | Microsoft.Insights/alertRules/* | Vytváření a správa pravidel výstrah přehledů |
 > | Microsoft.Insights/diagnosticSettings/* | Vytvoří, aktualizuje nebo přečte diagnostické nastavení pro server Analysis Server. |
 > | Microsoft.OperationalInsights/* |  |
@@ -4130,6 +4133,7 @@ Přispěvatel log Analytics může číst všechna data monitorování a upravov
         "Microsoft.ClassicCompute/virtualMachines/extensions/*",
         "Microsoft.ClassicStorage/storageAccounts/listKeys/action",
         "Microsoft.Compute/virtualMachines/extensions/*",
+        "Microsoft.HybridCompute/machines/extensions/write",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Insights/diagnosticSettings/*",
         "Microsoft.OperationalInsights/*",
@@ -5515,6 +5519,7 @@ Přispěvatel Azure Sentinelu
 > | --- | --- |
 > | **Akce** |  |
 > | Microsoft.SecurityInsights/*/čt |  |
+> | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | Kontrola autorizace uživatele a licence |
 > | Microsoft.OperationalInsights/pracovní prostory/analytika/dotaz/akce | Hledat pomocí nového motoru. |
 > | Microsoft.OperationalInsights/pracovní prostory/*/čtení | Zobrazení analytických dat protokolu |
 > | Microsoft.OperationalInsights/pracovní prostory/LinkedServices/čt | Získejte propojené služby v daném pracovním prostoru. |
@@ -5548,6 +5553,7 @@ Přispěvatel Azure Sentinelu
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -5583,6 +5589,7 @@ Azure Sentinel respondér
 > | --- | --- |
 > | **Akce** |  |
 > | Microsoft.SecurityInsights/*/čt |  |
+> | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | Kontrola autorizace uživatele a licence |
 > | Microsoft.SecurityInsights/cases/* |  |
 > | Microsoft.SecurityInsights/incidenty/* |  |
 > | Microsoft.OperationalInsights/pracovní prostory/analytika/dotaz/akce | Hledat pomocí nového motoru. |
@@ -5618,6 +5625,7 @@ Azure Sentinel respondér
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",

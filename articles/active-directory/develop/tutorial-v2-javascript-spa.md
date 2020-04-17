@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ec47850ce4cccb6a891c7e5aef2644550bc3e39a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 4a6694a072231f98383c13e6a42aedf68f62ac93
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990952"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533781"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Přihlášení uživatelů a volání rozhraní Microsoft Graph API z jednostránkové aplikace JavaScript (SPA)
 
 Tato příručka ukazuje, jak může jednostránková aplikace JavaScriptu (SPA):
-- Přihlaste se k osobním účtům a pracovním a školním účtům 
+- Přihlaste se k osobním účtům a pracovním a školním účtům
 - Získání přístupového tokenu
 - Volání rozhraní Microsoft Graph API nebo jiných rozhraní API, která vyžadují přístupové tokeny z *koncového bodu platformy identit microsoftu*
 
@@ -68,7 +68,7 @@ Tato příručka používá následující knihovnu:
 
 ## <a name="create-your-project"></a>Vytvoření projektu
 
-Ujistěte se, že máte nainstalovaný [soubor Node.js,](https://nodejs.org/en/download/) a pak vytvořte složku pro hostování aplikace. Tam budeme implementovat jednoduchý [webový](https://expressjs.com/) server `index.html` Express sloužit váš soubor. 
+Ujistěte se, že máte nainstalovaný [soubor Node.js,](https://nodejs.org/en/download/) a pak vytvořte složku pro hostování aplikace. Tam budeme implementovat jednoduchý [webový](https://expressjs.com/) server `index.html` Express sloužit váš soubor.
 
 1. Nejprve pomocí integrovaného terminálu Visual Studio Code vyhledejte složku projektu a potom nainstalujte Express pomocí npm.
 
@@ -170,7 +170,7 @@ Nyní máte jednoduchý server sloužit vaše SPA. Zamýšlená struktura slože
 
        <!-- importing bootstrap.js and supporting js libraries -->
        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>  
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
        <!-- importing app scripts (load order is important) -->
@@ -188,7 +188,7 @@ Nyní máte jednoduchý server sloužit vaše SPA. Zamýšlená struktura slože
 
    > [!TIP]
    > Verzi souboru MSAL.js v předchozím skriptu můžete nahradit nejnovější verzí vydané v části [Verze msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
-   
+
 2. Nyní vytvořte soubor .js s názvem `ui.js`, který bude přistupovat a aktualizovat prvky DOM a přidat následující kód:
 
    ```JavaScript
@@ -304,7 +304,7 @@ Vytvořte nový soubor JS s názvem `authConfig.js`, který bude obsahovat param
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     }
-  };  
+  };
 
   // Add here scopes for id token to be used at MS Identity Platform endpoints.
   const loginRequest = {
@@ -350,7 +350,7 @@ Vytvořte nový soubor JS s názvem `authPopup.js`, který bude obsahovat logiku
    function signOut() {
      myMSALObj.logout();
    }
-   
+
    function callMSGraph(theUrl, accessToken, callback) {
        var xmlHttp = new XMLHttpRequest();
        xmlHttp.onreadystatechange = function () {
@@ -430,7 +430,7 @@ Metoda `acquireTokenSilent` zpracovává získávání tokenu a obnovení bez ja
 1. Aplikace mohou také vytvořit vizuální indikaci pro uživatele, že je vyžadováno interaktivní přihlášení, takže uživatel může vybrat `acquireTokenSilent` správný čas pro přihlášení, nebo aplikace může opakovat později. To se běžně používá, když uživatel může používat jiné funkce aplikace bez přerušení. Například může být neověřený obsah k dispozici v aplikaci. V takovém případě se uživatel může rozhodnout, kdy se chce přihlásit k přístupu k chráněnému prostředku nebo aktualizovat zastaralé informace.
 
 > [!NOTE]
-> Tento rychlý start `loginPopup` `acquireTokenPopup` používá metody a ve výchozím nastavení. Pokud používáte aplikaci Internet Explorer jako prohlížeč, doporučujeme použít `loginRedirect` a `acquireTokenRedirect` metody z důvodu [známého problému](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) souvisejícího se způsobem, jakým aplikace Internet Explorer zpracovává automaticky otevíraná okna. Pokud byste chtěli vidět, jak dosáhnout `Redirect methods`stejného výsledku pomocí , [viz](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js). 
+> Tento rychlý start `loginPopup` `acquireTokenPopup` používá metody a ve výchozím nastavení. Pokud používáte aplikaci Internet Explorer jako prohlížeč, doporučujeme použít `loginRedirect` a `acquireTokenRedirect` metody z důvodu [známého problému](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) souvisejícího se způsobem, jakým aplikace Internet Explorer zpracovává automaticky otevíraná okna. Pokud byste chtěli vidět, jak dosáhnout `Redirect methods`stejného výsledku pomocí , [viz](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js).
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>Volání rozhraní Microsoft Graph API pomocí tokenu, který jste právě získali
@@ -462,7 +462,7 @@ Metoda `acquireTokenSilent` zpracovává získávání tokenu a obnovení bez ja
      };
 
      console.log('request made to Graph API at: ' + new Date().toString());
-  
+
      fetch(endpoint, options)
        .then(response => response.json())
        .then(response => callback(response, endpoint))

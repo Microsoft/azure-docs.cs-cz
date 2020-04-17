@@ -3,12 +3,12 @@ title: Informace o zabezpečení aplikací Azure Service Fabric
 description: Přehled, jak bezpečně spouštět aplikace mikroslužeb na Service Fabric. Zjistěte, jak spouštět služby a spouštěcí skripty pod různými účty zabezpečení, ověřovat a autorizovat uživatele, spravovat tajné kódy aplikací, zabezpečit komunikaci se službami, používat bránu rozhraní API a zabezpečit data aplikací v klidovém stavu.
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: e9b4a1209838bdd5eee401b0defb01839b5cf684
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756237"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461425"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Zabezpečení aplikací a služeb Service Fabric
 Architektura mikroslužeb může přinést [mnoho výhod](service-fabric-overview-microservices.md). Správa zabezpečení mikroslužeb je však výzvou a liší se od správy zabezpečení tradičních monolitických aplikací. 
@@ -99,7 +99,7 @@ TO DO: Encrypt disks on Linux clusters?-->
 * [Informace o zabezpečení clusteru](service-fabric-cluster-security.md)
 
 <!-- Links -->
-[key-vault-get-started]:../key-vault/key-vault-overview.md
+[key-vault-get-started]:../key-vault/general/overview.md
 [config-package]: service-fabric-application-and-service-manifests.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 

@@ -3,12 +3,12 @@ title: Použití spravované identity s aplikací
 description: Jak používat spravované identity v kódu aplikace Azure Service Fabric pro přístup ke službám Azure Services.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: cbdb1190ec3238a6accd34db3025e08c194d60b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415618"
+ms.locfileid: "81461561"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Jak využít spravovanou identitu aplikace Service Fabric pro přístup ke službám Azure
 
@@ -41,10 +41,6 @@ Chcete-li získat token, klient provede následující kroky:
 Úspěšná odpověď bude obsahovat datovou část JSON představující výsledný přístupový token a také metadata popisující ji. Neúspěšná odpověď bude také obsahovat vysvětlení selhání. Další podrobnosti o zpracování chyb naleznete níže.
 
 Přístupové tokeny budou ukládány service fabric na různých úrovních (uzel, cluster, služba zprostředkovatele prostředků), takže úspěšná odpověď nemusí nutně znamenat, že token byl vydán přímo v reakci na požadavek uživatelské aplikace. Tokeny budou uloženy do mezipaměti po dobu kratší než jejich životnost, a proto je zaručeno, že aplikace obdrží platný token. Doporučuje se, aby kód aplikace ukládá do mezipaměti sám všechny přístupové tokeny, které získá; klíč pro ukládání do mezipaměti by měl obsahovat (odvození) publika. 
-
-
-> [!NOTE]
-> Jediná přijatá verze rozhraní `2019-07-01-preview`API je v současné době a může se změnit.
 
 Žádost o vzorek:
 ```http

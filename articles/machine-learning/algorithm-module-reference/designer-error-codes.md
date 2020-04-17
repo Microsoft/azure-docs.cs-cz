@@ -8,23 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/03/2019
-ms.openlocfilehash: cda499b81a61a5b78ca86a96372640e368f90357
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.date: 04/16/2020
+ms.openlocfilehash: cc04d11475568af92ba6a617a1eb6b2b51accb45
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80364194"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481666"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Výjimky a kódy chyb pro návrháře (náhled)
 
 Tento článek popisuje chybové zprávy a kódy výjimek v návrháři Azure Machine Learning (preview), které vám pomohou vyřešit vaše kanály strojového učení.
 
-Existují dva způsoby, jak získat úplný text chybové zprávy v návrháři:  
+Chybovou zprávu najdete v návrháři následujícíkroky:  
 
-- V pravém podokně klepněte na odkaz **Zobrazit výstupní protokol**a posuňte se dolů. Podrobná chybová zpráva se zobrazí v posledních dvou řádcích okna.  
-  
-- Vyberte modul, který má chybu, a klepněte na červené X. Zobrazí se pouze relevantní chybový text.
+- Vyberte vadný modul, přejděte na kartu **Výstupy + protokoly,** můžete najít podrobný protokol v souboru **70_driver_log.txt** v kategorii **azureml-logs.**
+
+- Pro podrobnou chybu modulu, můžete zkontrolovat v error_info.json v **module_statistics** kategorii.
+
+Následují chybové kódy modulů v návrháři.
 
 ## <a name="error-0001"></a>Chyba 0001  
  K výjimce dochází, pokud nebyl nalezen jeden nebo více zadaných sloupců sady dat.  
@@ -326,7 +328,7 @@ U sloupců, které chcete použít pro seskupení nebo kategorizaci, postupujte 
 ## <a name="error-0017"></a>Chyba 0017  
  K výjimce dochází, pokud vybraný sloupec používá datový typ, který není podporován aktuálním modulem.  
 
- Například se může zobrazit tato chyba v Azure Machine Learning, pokud výběr sloupců obsahuje sloupec s datovým typem, který nemůže být zpracován modulem, jako je například sloupec řetězce pro matematickou operaci nebo sloupec skóre, kde je sloupec kategorických funkcí Požadované.  
+ Například se může zobrazit tuto chybu v Azure Machine Learning, pokud výběr sloupce obsahuje sloupec s datovým typem, který nemůže být zpracován modulem, jako je například sloupec řetězce pro matematickou operaci nebo sloupec skóre, kde je vyžadován sloupec kategorických funkcí.  
 
 **Rozlišení:**
  1. Identifikujte sloupec, který je problém.
@@ -352,7 +354,7 @@ U sloupců, které chcete použít pro seskupení nebo kategorizaci, postupujte 
 ## <a name="error-0018"></a>Chyba 0018  
  Výjimka nastane, pokud vstupní datová sada není platná.  
 
-**Rozlišení:** Tato chyba v Azure Machine Learning se může zobrazit v mnoha kontextech, takže neexistuje jediné řešení. Obecně chyba označuje, že data poskytnutá jako vstup do modulu mají nesprávný počet sloupců nebo že datový typ neodpovídá požadavkům modulu. Například:  
+**Rozlišení:** Tato chyba v Azure Machine Learning se může zobrazit v mnoha kontextech, takže neexistuje jediné řešení. Obecně chyba označuje, že data poskytnutá jako vstup do modulu mají nesprávný počet sloupců nebo že datový typ neodpovídá požadavkům modulu. Příklad:  
 
 -   Modul vyžaduje sloupec popisku, ale žádný sloupec není označen jako popisek nebo jste ještě nevybrali sloupec popisku.  
   
@@ -433,7 +435,7 @@ U sloupců, které chcete použít pro seskupení nebo kategorizaci, postupujte 
 ## <a name="error-0022"></a>Chyba 0022  
  K výjimce dochází, pokud se počet vybraných sloupců ve vstupní datové sadě nerovná očekávanému počtu.  
 
- K této chybě v Azure Machine Learning může dojít, když modul nebo operace příjem dat vyžaduje určitý počet sloupců nebo vstupů a jste poskytli příliš málo nebo příliš mnoho sloupců nebo vstupů. Například:  
+ K této chybě v Azure Machine Learning může dojít, když modul nebo operace příjem dat vyžaduje určitý počet sloupců nebo vstupů a jste poskytli příliš málo nebo příliš mnoho sloupců nebo vstupů. Příklad:  
 
 -   Určíte sloupec s jedním popiskem nebo sloupec klíče a omylem vyberete více sloupců.  
   
@@ -656,7 +658,7 @@ Může se také stát, že sloupec popisek je k dispozici v datové sadě, ale n
 
 Matchbox doporučující má určité požadavky, které musí být splněny při použití funkce položky nebo uživatelské funkce.  Tato chyba označuje, že pro uživatele nebo položku, kterou jste zadali jako vstup, chybí vektor funkce. Ujistěte se, že vektor funkcí je k dispozici v datech pro každého uživatele nebo položku.  
 
- Pokud jste například vycvičili model doporučení pomocí funkcí, jako je věk, umístění nebo příjem uživatele, ale nyní chcete vytvořit skóre pro nové uživatele, kteří nebyli během školení spatřeni, musíte poskytnout nějakou ekvivalentní sadu funkcí (jmenovitě věk, umístění a hodnot příjmů) pro nové uživatele, aby pro ně bylo možné provést odpovídající předpovědi. 
+ Pokud jste například vyškolili model doporučení pomocí funkcí, jako je věk, umístění nebo příjem uživatele, ale nyní chcete vytvořit skóre pro nové uživatele, kteří nebyli během školení zobrazeni, musíte pro nové uživatele poskytnout odpovídající sadu funkcí (jmenovitě hodnoty věku, umístění a příjmu), aby pro ně bylo možné provést odpovídající předpovědi. 
 
  Pokud pro tyto uživatele nemáte žádné funkce, zvažte vytvoření příslušných funkcí v případě, že tyto funkce vygenerují příslušné funkce.  Pokud například nemáte hodnoty věku nebo příjmu jednotlivých uživatelů, můžete vygenerovat přibližné hodnoty, které se použijí pro skupinu uživatelů. 
 
@@ -1072,7 +1074,7 @@ Chybová zpráva z Hive je obvykle hlášena zpět do protokolu chyb, takže mů
 + Ověřte, zda dotaz funguje správně mimo Azure Machine Learning přihlášením ke konzoli Hive clusteru Hadoop a spuštěním dotazu.  
 + Zkuste umístit komentáře do skriptu Hive do samostatného řádku, na rozdíl od míchání spustitelných příkazů a komentářů do jednoho řádku.  
 
-### <a name="resources"></a>Prostředky
+### <a name="resources"></a>Zdroje a prostředky
 
 Nápovědu k dotazům Hive pro strojové učení naleznete v následujících článcích:
 

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299410"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461714"
 ---
 # <a name="design-secure-applications-on-azure"></a>Návrh zabezpečených aplikací v Azure
 V tomto článku uvádíme aktivity zabezpečení a ovládací prvky, které je třeba zvážit při navrhování aplikací pro cloud. Školicí prostředky spolu s bezpečnostníotázky a koncepty, které je třeba zvážit během požadavků a fází návrhu životního cyklu vývoje zabezpečení společnosti Microsoft [(SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) jsou zahrnuty. Cílem je pomoci vám definovat aktivity a služby Azure, které můžete použít k návrhu bezpečnější aplikace.
@@ -153,7 +153,7 @@ Modelování návrhu aplikace a výčet hrozeb [STRIDE](https://docs.google.com/
 
 | Hrozba | Vlastnost zabezpečení | Potenciální zmírnění platformy Azure |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Falšování identity               | Ověřování        | [Vyžadovat připojení HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Falšování identity               | Authentication        | [Vyžadovat připojení HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Falšování              | Integrita             | Ověřte certifikáty SSL/TLS. Aplikace, které používají SSL/TLS, musí plně ověřit certifikáty X.509 entit, ke kterým se připojují. Ke [správě certifikátů x509](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)použijte certifikáty Azure Key Vault . |
 | Odmítnutí            | Neodvolatelnost       | Povolte [monitorování a diagnostiku](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)Azure .|
 | Zpřístupnění informací | Důvěrnost       | Šifrujte citlivá data [v klidovém](../fundamentals/encryption-atrest.md) stavu a [při přenosu](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
@@ -242,7 +242,7 @@ Nejlepší způsob, jak se bránit proti tomuto druhu útoku, je požádat uživ
 
 Ztráta klíčů a přihlašovacích údajů je běžný problém. Jediná věc horší než ztráta klíčů a pověření je, že k nim získá přístup neoprávněná strana. Útočníci mohou využít automatizované a ruční techniky k vyhledání klíčů a tajných kódů, které jsou uloženy v úložištích kódu, jako je GitHub. Nevložte klíče a tajné klíče do těchto úložišť veřejného kódu nebo na jiný server.
 
-Klíče, certifikáty, tajné klíče a připojovací řetězce vždy vložte do řešení správy klíčů. Můžete použít centralizované řešení, ve kterém jsou klíče a tajné klíče uloženy v modulech hardwarového zabezpečení (HSM). Azure poskytuje hsm v cloudu s [Azure Key Vault](../../key-vault/key-vault-overview.md).
+Klíče, certifikáty, tajné klíče a připojovací řetězce vždy vložte do řešení správy klíčů. Můžete použít centralizované řešení, ve kterém jsou klíče a tajné klíče uloženy v modulech hardwarového zabezpečení (HSM). Azure poskytuje hsm v cloudu s [Azure Key Vault](../../key-vault/general/overview.md).
 
 Trezor klíčů je *tajné úložiště:* je to centralizovaná cloudová služba pro ukládání tajných kódů aplikací. Trezor klíčů udržuje vaše důvěrná data v bezpečí tím, že uchovává tajné kódy aplikací v jednom, centrálním umístění a poskytuje zabezpečený přístup, řízení oprávnění a protokolování přístupu.
 
@@ -273,11 +273,11 @@ Pokud jsou data uložena v databázi nebo pokud se přesouvají mezi umístění
 
 Některé věci by nikdy neměly být pevně zakódovány ve vašem softwaru. Některé příklady jsou názvy hostitelů nebo IP adresy, adresy URL, e-mailové adresy, uživatelská jména, hesla, klíče účtu úložiště a další kryptografické klíče. Zvažte implementaci požadavků na to, co může nebo nemůže být pevně zakódováno ve vašem kódu, včetně částí s komentáři v kódu.
 
-Když do kódu vložíte komentáře, ujistěte se, že neukládáte žádné citlivé informace. To zahrnuje vaši e-mailovou adresu, hesla, připojovací řetězce, informace o vaší aplikaci, které by znal pouze někdo ve vaší organizaci, a cokoli jiného, co by mohlo útočníkovi poskytnout výhodu při útoku na vaši aplikaci nebo organizaci. .
+Když do kódu vložíte komentáře, ujistěte se, že neukládáte žádné citlivé informace. To zahrnuje vaši e-mailovou adresu, hesla, připojovací řetězce, informace o vaší aplikaci, které by znal pouze někdo ve vaší organizaci, a cokoli jiného, co by mohlo útočníkovi poskytnout výhodu při útoku na vaši aplikaci nebo organizaci.
 
 V podstatě předpokládejme, že vše, co ve vašem vývojovém projektu bude veřejné znalosti, když je nasazen. Vyhněte se zahrnutí citlivých dat jakéhokoli druhu do projektu.
 
-Dříve jsme diskutovali [O Azure Key Vault](../../key-vault/key-vault-overview.md). Trezor klíčů můžete použít k ukládání tajných kódů, jako jsou klíče a hesla, namísto jejich pevného kódování. Když používáte Trezor klíčů v kombinaci se spravovanými identitami pro prostředky Azure, vaše webová aplikace Azure může snadno a bezpečně přistupovat k tajným konfiguračním hodnotám bez uložení tajných kódů ve vaší spravovací směřování nebo konfiguraci. Další informace najdete [v tématu Správa tajných klíčů v serverových aplikacích pomocí služby Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
+Dříve jsme diskutovali [O Azure Key Vault](../../key-vault/general/overview.md). Trezor klíčů můžete použít k ukládání tajných kódů, jako jsou klíče a hesla, namísto jejich pevného kódování. Když používáte Trezor klíčů v kombinaci se spravovanými identitami pro prostředky Azure, vaše webová aplikace Azure může snadno a bezpečně přistupovat k tajným konfiguračním hodnotám bez uložení tajných kódů ve vaší spravovací směřování nebo konfiguraci. Další informace najdete [v tématu Správa tajných klíčů v serverových aplikacích pomocí služby Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
 
 ### <a name="implement-fail-safe-measures"></a>Zavést bezpečnostní opatření
 

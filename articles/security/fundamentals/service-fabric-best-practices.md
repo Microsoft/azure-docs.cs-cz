@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549233"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461646"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Osvědčené postupy zabezpečení Azure Service Fabric
 Nasazení aplikace v Azure je rychlé, snadné a nákladově efektivní. Než nasadíte cloudovou aplikaci do produkčního prostředí, projděte si náš seznam základních a doporučených doporučených postupů pro implementaci zabezpečených clusterů ve vaší aplikaci.
@@ -155,7 +155,7 @@ Service Fabric používá certifikáty k zajištění ověřování a šifrován
 
 Service Fabric používá certifikáty X.509 k zabezpečení clusteru a k poskytování funkcí zabezpečení aplikací. Azure Key Vault se používá ke [správě certifikátů](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) pro clustery Service Fabric v Azure. Poskytovatel prostředků Azure, který vytvoří clustery, vytáhne certifikáty z trezoru klíčů. Zprostředkovatel pak nainstaluje certifikáty na virtuálnípočítače při nasazení clusteru v Azure.
 
-Existuje vztah certifikátu mezi [trezorem klíčů Azure](../../key-vault/key-vault-secure-your-key-vault.md), clusterem Service Fabric a poskytovatelem prostředků, který používá certifikáty. Po vytvoření clusteru jsou informace o vztahu certifikátu uloženy v trezoru klíčů.
+Existuje vztah certifikátu mezi [trezorem klíčů Azure](../../key-vault/general/secure-your-key-vault.md), clusterem Service Fabric a poskytovatelem prostředků, který používá certifikáty. Po vytvoření clusteru jsou informace o vztahu certifikátu uloženy v trezoru klíčů.
 
 K nastavení trezoru klíčů jsou dva základní kroky:
 1. Vytvořte skupinu prostředků speciálně pro trezor klíčů.
@@ -166,7 +166,7 @@ K nastavení trezoru klíčů jsou dva základní kroky:
 
     Trezor klíčů musí být povolen pro nasazení. Poskytovatel výpočetních prostředků pak může získat certifikáty z trezoru a nainstalovat je na instance virtuálních aplikací.
 
-Další informace o nastavení trezoru klíčů najdete v tématu [Co je Azure Key Vault?](../../key-vault/key-vault-overview.md).
+Další informace o nastavení trezoru klíčů najdete v tématu [Co je Azure Key Vault?](../../key-vault/general/overview.md).
 
 ## <a name="assign-users-to-roles"></a>Přiřazení uživatelů k rolím
 Po vytvoření aplikací představujících váš cluster přiřaďte uživatele k rolím, které service fabric podporuje: jen pro čtení a správce. Tyto role můžete přiřadit pomocí portálu Azure.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a4d7030f7a58a6252c6e596fc2c248163694a1e8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 0fb80b8a3fe9dd642b1574b35ff48b30272ce848
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880869"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533713"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Kurz: Vytvoření víceklientského daemonu, který používá koncový bod platformy identit y Microsoft
 
@@ -30,7 +30,7 @@ V tomto kurzu se dozvíte, jak používat platformu identit microsoftu pro pří
 
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
-Aplikace je vytvořena jako ASP.NET aplikace MVC. Používá middleware OWIN OpenID Connect pro přihlášení uživatelů.  
+Aplikace je vytvořena jako ASP.NET aplikace MVC. Používá middleware OWIN OpenID Connect pro přihlášení uživatelů.
 
 Komponenta "daemon" v této ukázce je řadič rozhraní API . `SyncController.cs` Při volání řadiče se natáhne seznam uživatelů v klienta Azure Active Directory zákazníka (Azure AD) z Microsoft Graphu. `SyncController.cs`je spuštěna voláním AJAX ve webové aplikaci. Používá [knihovnu ověřování Společnosti Microsoft (MSAL) pro rozhraní .NET](msal-overview.md) k získání přístupového tokenu pro aplikaci Microsoft Graph.
 
@@ -109,7 +109,7 @@ Pokud nechcete používat automatizaci, použijte kroky v následujících čás
    - V části **Přesměrovat identifikátor URI (volitelné)** vyberte v poli se seznamem **možnost Web** a zadejte následující identifikátory URI přesměrování:
        - **https://localhost:44316/**
        - **https://localhost:44316/Account/GrantPermissions**
-          
+
      Pokud existují více než dvě identifikátory URI přesměrování, budete je muset přidat z karty **Ověřování** později, po úspěšném vytvoření aplikace.
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Na stránce **Přehled** aplikace najděte hodnotu **ID aplikace (klienta)** a zaznamenejte ji na později. Budete ji potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt.
@@ -121,7 +121,7 @@ Pokud nechcete používat automatizaci, použijte kroky v následujících čás
 
    1. Zadejte popis klíče (například **tajný klíč aplikace**),
    1. Vyberte dobu trvání klíče **buď v 1 rok**, V 2 **roky**, nebo **nikdy nevyprší**.
-   1. Vyberte tlačítko **Přidat.** 
+   1. Vyberte tlačítko **Přidat.**
    1. Když se zobrazí hodnota klíče, zkopírujte ji a uložte na bezpečném místě. Tento klíč budete později potřebovat ke konfiguraci projektu v sadě Visual Studio. Nebude znovu zobrazena ani ji možné ji získat jiným způsobem.
 1. V seznamu stránek aplikace vyberte **oprávnění rozhraní API**. Potom:
    1. Vyberte tlačítko **Přidat oprávnění**.
@@ -174,21 +174,21 @@ Příslušný kód pro tuto ukázku je v následujících souborech:
 
 ## <a name="re-create-the-sample-app"></a>Opětovné vytvoření ukázkové aplikace
 
-1. V sadě Visual Studio vytvořte nový projekt **Visual C#** **ASP.NET webovou aplikaci (.NET Framework).** 
+1. V sadě Visual Studio vytvořte nový projekt **Visual C#** **ASP.NET webovou aplikaci (.NET Framework).**
 1. Na další obrazovce zvolte šablonu projektu **MVC.** Přidejte také odkazy na složky a základní odkazy pro **webové rozhraní API**, protože později přidáte řadič webového rozhraní API. Ponechte zvolený režim ověřování projektu jako výchozí: **Bez ověřování**.
-1. Vyberte projekt v okně **Průzkumník řešení** a vyberte klávesu **F4.** 
+1. Vyberte projekt v okně **Průzkumník řešení** a vyberte klávesu **F4.**
 1. Ve vlastnostech projektu nastavte **hodnotu SSL povoleno** na **hodnotu True**. Poznamenejte si informace v **adrese URL SSL**. Budete ji potřebovat při konfiguraci registrace této aplikace na webu Azure Portal.
-1. Přidejte následující ASP.NET middleware OWIN NuGet balíčky: 
+1. Přidejte následující ASP.NET middleware OWIN NuGet balíčky:
    - Adresář Microsoft.Owin.Security.ActiveDirectory
    - Microsoft.Owin.Security.Cookies
    - Microsoft.Owin.Host.SystemWeb
    - Rozšíření Microsoft.IdentityModel.Protocol.Extensions
    - Microsoft.Owin.Security.OpenIdConnect
-   - Microsoft.Identity.Client 
+   - Microsoft.Identity.Client
 1. Ve složce **App_Start:**
-   1. Vytvořte třídu s názvem **Startup.Auth.cs**. 
-   1. Odebrat **. App_Start** z názvu oboru názvů. 
-   1. Nahraďte kód pro třídu **Startup** kódem ze stejného souboru ukázkové aplikace.       
+   1. Vytvořte třídu s názvem **Startup.Auth.cs**.
+   1. Odebrat **. App_Start** z názvu oboru názvů.
+   1. Nahraďte kód pro třídu **Startup** kódem ze stejného souboru ukázkové aplikace.
    Ujistěte se, že vzít celou definici třídy. Definice se změní z **veřejné třídy Spuštění** na **veřejné částečné třídy Spuštění.**
 1. V **Startup.Auth.cs**vyřešte chybějící odkazy přidáním **pomocí** příkazů navržených aplikací Visual Studio IntelliSense.
 1. Klepněte pravým tlačítkem myši na projekt, vyberte **přidat**a pak vyberte **třídu**.
@@ -220,12 +220,12 @@ Tento projekt má webové aplikace a webové api projekty. Pokud je chcete nasad
 1. Po vytvoření webu ho najděte na **řídicím panelu** a vyberte ho, abyste otevřeli obrazovku **Přehled** služby aplikace.
 1. Na kartě **Přehled** služby aplikace stáhněte profil publikování tak, že vyberete odkaz **Získat profil publikování** a uložte ho. Můžete použít jiné mechanismy nasazení, jako je například nasazení ze správy zdrojového kódu.
 1. Přepněte do sady Visual Studio a potom:
-   1. Přejděte na projekt **dotnet-web-daemon-v2.** 
+   1. Přejděte na projekt **dotnet-web-daemon-v2.**
    1. Klikněte pravým tlačítkem myši na projekt v Průzkumníku řešení a pak vyberte **Publikovat**.
    1. Na dolním panelu vyberte **Importovat profil** a importujte profil publikování, který jste stáhli dříve.
 1. Vyberte **Konfigurovat**.
-1. Na kartě **Připojení** aktualizujte cílovou adresu URL tak, aby používá "https". Použijte například [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). Vyberte **další**.
-1. Na kartě **Nastavení** zkontrolujte, zda není zaškrtnuto **políčko Povolit organizační ověřování.**  
+1. Na kartě **Připojení** aktualizujte cílovou adresu URL tak, aby používá "https". Použijte například [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). Vyberte **Další**.
+1. Na kartě **Nastavení** zkontrolujte, zda není zaškrtnuto **políčko Povolit organizační ověřování.**
 1. Vyberte **Uložit**. Na hlavní obrazovce vyberte **Publikovat.**
 
 Visual Studio publikuje projekt a automaticky otevře prohlížeč na adresu URL projektu. Pokud se zobrazí výchozí webová stránka projektu, publikace byla úspěšná.

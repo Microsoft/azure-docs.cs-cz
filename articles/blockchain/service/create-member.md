@@ -4,12 +4,12 @@ description: Vytvořte člena služby Azure Blockchain Service pro konsorcium bl
 ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 4c3dabc6abdffd2fb08ece617545d8471955d130
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 7d29382cdedf7e35d186c73c9d32547e10fb10d6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529648"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460269"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Úvodní příručka: Vytvoření člena blockchainové služby Azure Blockchain pomocí portálu Azure
 
@@ -21,7 +21,7 @@ V tomto rychlém startu nasadíte nového člena blockchainu a konsorcia ve slu�
 
 Člen služby Azure Blockchain Je uzel blockchainu v privátní blockchainové síti konsorcia. Při zřizování člena můžete vytvořit nebo se připojit k síti konsorcia. Potřebujete alespoň jednoho člena pro síť konsorcia. Počet členů blockchainu, které účastníci potřebují, závisí na vašem scénáři. Účastníci konsorcia mohou mít jednoho nebo více členů blockchainu nebo mohou členy sdílet s ostatními účastníky. Další informace o konsorciích najdete v [tématu Konsorcium služby Azure Blockchain Service](consortium.md).
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
 1. Vyberte **blockchainovou** > **blockchainovou službu Blockchain (preview).**
 
@@ -34,9 +34,9 @@ V tomto rychlém startu nasadíte nového člena blockchainu a konsorcia ve slu�
     Region (Oblast) | Zvolte oblast, kterou chcete vytvořit člen. Všichni členové konsorcia musí být ve stejném umístění.
     Protocol (Protokol) | V současné době Azure Blockchain Service Preview podporuje protokol Kvora.
     Konsorcium | Pro nové konsorcium zadejte jedinečný název. Pokud se připojíte ke konsorciu prostřednictvím pozvánky, zvolte konsorcium, ke sdružení, ke sdružení, ke sdružení, ke sdružení. Další informace o konsorciích najdete v [tématu Konsorcium služby Azure Blockchain Service](consortium.md).
-    Name (Název) | Zvolte jedinečný název pro člena služby Azure Blockchain Service. Název člena blockchainu může obsahovat pouze malá písmena a čísla. Prvním znakem musí být písmeno. Hodnota musí být dlouhá 2 až 20 znaků.
+    Název | Zvolte jedinečný název pro člena služby Azure Blockchain Service. Název člena blockchainu může obsahovat pouze malá písmena a čísla. Prvním znakem musí být písmeno. Hodnota musí být dlouhá 2 až 20 znaků.
     Heslo členského účtu | Heslo členského účtu se používá k šifrování soukromého klíče pro účet Ethereum, který je vytvořen pro vašeho člena. Pro správu konsorcia se používá heslo členského účtu a členského účtu.
-    Ceny | Konfigurace uzlu a náklady na novou službu. Vyberte odkaz **Změnit,** chcete-li zvolit mezi **standardní** a **základní** úrovní. Úroveň *Basic* je určená pro vývoj, testování a testování konceptů. Použijte *úroveň Standard* pro nasazení výrobní třídy. Úroveň *Standard* byste měli použít také v případě, že používáte Správce dat Blockchain nebo odesíláte velký objem soukromých transakcí. Změna cenové úrovně mezi základní a standardní po vytvoření člena není podporována.
+    Ceny | Konfigurace uzlu a náklady na novou službu. Vyberte odkaz **Změnit,** chcete-li zvolit mezi **standardní** a **základní** úrovní. Vrstvu *Basic* použijte pro vývoj, testování a testování konceptů. Použijte *úroveň Standard* pro nasazení výrobní třídy. Úroveň *Standard* byste měli použít také v případě, že používáte Správce dat Blockchain nebo odesíláte velký objem soukromých transakcí. Změna cenové úrovně mezi základní a standardní po vytvoření člena není podporována.
     Heslo uzlu | Heslo pro výchozí uzel transakce člena. Heslo použijte pro základní ověřování při připojování k výchozímu koncovému bodu koncového uzlu výchozího transakčního uzlu člena blockchainu.
 
 1. Chcete-li ověřit nastavení, vyberte **Zkontrolovat + vytvořit.** Chcete-li službu zřídit, vyberte **možnost Vytvořit.** Zřizování trvá přibližně 10 minut.

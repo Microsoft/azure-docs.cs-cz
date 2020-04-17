@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 16fa33999a38b21fd2016c986dd2db81f7d84051
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 274e85a914ebec31a03f1149bc4467ea142e7255
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383752"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482113"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace zprostředkovatele prostředků Azure Resource Manager
 
@@ -2198,6 +2198,10 @@ Služba Azure: [Virtuální počítače](../virtual-machines/index.yml), [škál
 > | Akce | Microsoft.Compute/locations/logAnalytics/getThrottledRequests/action | Vytvořte protokoly pro zobrazení agregací požadavků s omezením seskupených podle ResourceName, OperationName nebo použité zásady omezení. |
 > |  | **umístění/operace** |  |
 > | Akce | Microsoft.Compute/locations/operations/read | Získá stav asynchronní operace |
+> |  | **locations/privateEndpointConnectionProxyAzureAsyncOperation** |  |
+> | Akce | Microsoft.Compute/locations/privateEndpointConnectionProxyAzureAsyncOperation/read | Získání stavu asynchronní operace proxy připojení privátního koncového bodu |
+> |  | **locations/privateEndpointConnectionProxyOperationResults** |  |
+> | Akce | Microsoft.Compute/locations/privateEndpointConnectionProxyOperationResults/read | Získání výsledků operace proxy připojení privátního koncového bodu |
 > |  | **umístění/vydavatelé** |  |
 > | Akce | Microsoft.Compute/locations/publishers/read | Získání vlastností vydavatele |
 > |  | **umístění/vydavatelé/artefakty/nabídky** |  |
@@ -2233,6 +2237,14 @@ Služba Azure: [Virtuální počítače](../virtual-machines/index.yml), [škál
 > | Akce | Microsoft.Compute/restorePointCollections/restorePoints/write | Vytvoří nový bod obnovení. |
 > | Akce | Microsoft.Compute/restorePointCollections/restorePoints/delete | Odstraní bod obnovení. |
 > | Akce | Microsoft.Compute/restorePointCollections/restorePoints/retrieveSasUris/action Microsoft.Compute/restorePointCollections/restorePoints/retrieveSasUris/action Microsoft.Compute/restorePointCollections/restorePoints/retrieveSasUris/action Microsoft. | Získání vlastností bodu obnovení spolu s identifikátory URI s objektem BLOB SAS |
+> |  | **sharedVMExtensions** |  |
+> | Akce | Microsoft.Compute/sharedVMExtensions/read | Získá vlastnosti rozšíření sdíleného virtuálního počítače |
+> | Akce | Microsoft.Compute/sharedVMExtensions/write | Vytvoří nové rozšíření sdíleného virtuálního uživatele nebo aktualizuje existující rozšíření |
+> | Akce | Microsoft.Compute/sharedVMExtensions/delete | Odstraní rozšíření sdíleného virtuálního uživatele. |
+> |  | **sharedVMExtensions/versions sharedVMExtensions/versions sharedVMExtensions/versions sharedV** |  |
+> | Akce | Microsoft.Compute/sharedVMExtensions/versions/read | Získá vlastnosti verze rozšíření sdíleného virtuálního počítače |
+> | Akce | Microsoft.Compute/sharedVMExtensions/versions/write | Vytvoří novou verzi rozšíření sdíleného virtuálního uživatele nebo aktualizuje stávající verzi. |
+> | Akce | Microsoft.Compute/sharedVMExtensions/versions/delete | Odstraní verzi rozšíření sdíleného virtuálního uživatele. |
 > |  | **sdílenéObrazy VM** |  |
 > | Akce | Microsoft.Compute/sharedVMImages/read | Získat vlastnosti SharedVMImage |
 > | Akce | Microsoft.Compute/sharedVMImages/write | Vytvoří nový SharedVMImage nebo aktualizuje existující |
@@ -2250,6 +2262,10 @@ Služba Azure: [Virtuální počítače](../virtual-machines/index.yml), [škál
 > | Akce | Microsoft.Compute/snapshots/delete | Odstranění snímku |
 > | Akce | Microsoft.Compute/snapshots/beginGetAccess/action | Získání identifikátoru URI identifikátoru SAS snímku pro přístup k objektům blob |
 > | Akce | Microsoft.Compute/snapshots/endGetAccess/action | Odvolat identifikátor URI snímkového objektu SAS |
+> |  | **sshPublicKeys** |  |
+> | Akce | Microsoft.Compute/sshPublicKeys/read | Získání vlastností veřejného klíče SSH |
+> | Akce | Microsoft.Compute/sshPublicKeys/write | Vytvoří nový veřejný klíč SSH nebo aktualizuje existující veřejný klíč SSH. |
+> | Akce | Microsoft.Compute/sshPublicKeys/delete | Odstraní veřejný klíč SSH. |
 > |  | **virtualMachines** |  |
 > | Akce | Microsoft.Compute/virtualMachines/read | Získání vlastností virtuálního počítače |
 > | Akce | Microsoft.Compute/virtualMachines/write | Vytvoří nový virtuální počítač nebo aktualizuje existující virtuální počítač. |
@@ -3934,6 +3950,83 @@ Služba Azure: [Azure Cosmos DB](../cosmos-db/index.yml)
 > | Akce | Microsoft.DocumentDB/databaseAccounts/getBackupPolicy/action | Získání zásad zálohování databázového účtu |
 > | Akce | Microsoft.DocumentDB/databaseAccounts/restore/action | Odeslání žádosti o obnovení |
 > | Akce | Microsoft.DocumentDB/databaseAccounts/backup/action | Odeslání požadavku na konfiguraci zálohování |
+> |  | **databaseAccounts/apis/databases** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/write | (Zastaralé. Použijte cesty prostředků bez segmentu apis/apis/' Vytvořte databázi. Platí pouze pro typy rozhraní API: 'sql', 'mongodb', 'gremlin'. |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/read | (Zastaralé. Použijte cesty prostředků bez segmentu apis/apis/' A Přečtěte si databázi nebo seznam všech databází. Platí pouze pro typy rozhraní API: 'sql', 'mongodb', 'gremlin'. |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/delete | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/' Odstraňte databázi. Platí pouze pro typy rozhraní API: 'sql', 'mongodb', 'gremlin'. |
+> |  | **databaseAccounts/apis/databases/collections** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/write | (Zastaralé. Použijte cesty prostředků bez segmentu apis/' Vytvořte nebo aktualizujte kolekci. Použitelné pouze pro typy ROZHRANÍ API: "mongodb". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/read | (Zastaralé. Použijte cesty prostředků bez segmentu apis/' Přečtěte si kolekci nebo seznam všech kolekcí. Použitelné pouze pro typy ROZHRANÍ API: "mongodb". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/delete | (Zastaralé. Použijte cesty prostředků bez segmentu apis/' Odstraňte kolekci. Použitelné pouze pro typy ROZHRANÍ API: "mongodb". |
+> |  | **databaseAccounts/apis/databases/collections/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Použitelné pouze pro typy ROZHRANÍ API: "mongodb". |
+> |  | **databaseAccounts/apis/databases/collections/settings** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/write | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' Aktualizujte propustnost kolekce. Použitelné pouze pro typy ROZHRANÍ API: "mongodb". Platí pouze pro typy nastavení: "propustnost". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' číst propustnost kolekce. Použitelné pouze pro typy ROZHRANÍ API: "mongodb". Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/databases/collections/settings/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Použitelné pouze pro typy ROZHRANÍ API: "mongodb". Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/databases/containers** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/write | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/' Vytvořte nebo aktualizujte kontejner. Platí pouze pro typy rozhraní API: 'sql'. |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/read | (Zastaralé. Použijte cesty prostředků bez segmentu apis/' Přečtěte si kontejner nebo seznam všech kontejnerů. Platí pouze pro typy rozhraní API: 'sql'. |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/delete | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/' Odstraňte kontejner. Platí pouze pro typy rozhraní API: 'sql'. |
+> |  | **databaseAccounts/apis/databases/containers/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: 'sql'. |
+> |  | **databaseAccounts/apis/databases/containers/settings** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/write | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/' Aktualizujte propustnost kontejneru. Platí pouze pro typy rozhraní API: 'sql'. Platí pouze pro typy nastavení: "propustnost". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/read | (Zastaralé. Použijte cesty prostředků bez segmentu apis/' Číst propustnost kontejneru. Platí pouze pro typy rozhraní API: 'sql'. Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/databases/containers/settings/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: 'sql'. Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/databases/graphs** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/write | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/Apis/' Vytvořte nebo aktualizujte graf. Platí pouze pro typy rozhraní API: "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/read | (Zastaralé. Použijte cesty zdrojů bez segmentu apis/apis/' A Přečtěte si graf nebo seznam všech grafů. Platí pouze pro typy rozhraní API: "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/delete | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/) Odstraňte graf. Platí pouze pro typy rozhraní API: "gremlin". |
+> |  | **databaseAccounts/apis/databases/graphs/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: "gremlin". |
+> |  | **databaseAccounts/apis/databases/graphs/settings** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/write | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/Apis/' Aktualizujte propustnost grafu. Platí pouze pro typy rozhraní API: "gremlin". Platí pouze pro typy nastavení: "propustnost". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/read | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/' Přečtěte si propustnost grafu. Platí pouze pro typy rozhraní API: "gremlin". Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/databases/graphs/settings/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: "gremlin". Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/databases/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: 'sql', 'mongodb', 'gremlin'. |
+> |  | **databaseAccounts/apis/databases/settings** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/write | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' Aktualizujte propustnost databáze. Platí pouze pro typy rozhraní API: 'sql', 'mongodb', 'gremlin'. Platí pouze pro typy nastavení: "propustnost". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' Číst propustnost databáze. Platí pouze pro typy rozhraní API: 'sql', 'mongodb', 'gremlin'. Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/databases/settings/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: 'sql', 'mongodb', 'gremlin'. Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/keyspaces** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/write | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' Vytvořte prostor klíčů. Platí pouze pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' Číst keyspace nebo seznam všech klíčových prostorů. Platí pouze pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/delete | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' Odstraňte klíčový prostor. Platí pouze pro typy rozhraní API: "cassandra". |
+> |  | **databaseAccounts/apis/keyspaces/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: "cassandra". |
+> |  | **databaseAccounts/apis/keyspaces/settings** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/write | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' Aktualizujte propustnost keyspace. Platí pouze pro typy rozhraní API: "cassandra". Platí pouze pro typy nastavení: "propustnost". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' Číst propustnost klíčového prostoru. Platí pouze pro typy rozhraní API: "cassandra". Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/keyspaces/settings/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: "cassandra". Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/keyspaces/tables** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/write | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/APIS/' Vytvořte nebo aktualizujte tabulku. Platí pouze pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/read | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/Přečtěte si tabulku nebo seznam všech tabulek. Platí pouze pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/delete | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/Delete. Platí pouze pro typy rozhraní API: "cassandra". |
+> |  | **databaseAccounts/apis/keyspaces/tables/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: "cassandra". |
+> |  | **databaseAccounts/apis/keyspaces/tables/settings** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/write | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/Apis/' Aktualizujte propustnost tabulky. Platí pouze pro typy rozhraní API: "cassandra". Platí pouze pro typy nastavení: "propustnost". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/read | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/' Přečtěte si propustnost tabulky. Platí pouze pro typy rozhraní API: "cassandra". Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/keyspaces/tables/settings/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: "cassandra". Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/tables** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/write | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/APIS/' Vytvořte nebo aktualizujte tabulku. Platí pouze pro typy rozhraní API: "tabulka". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/read | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/Přečtěte si tabulku nebo seznam všech tabulek. Platí pouze pro typy rozhraní API: "tabulka". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/delete | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/Delete. Platí pouze pro typy rozhraní API: "tabulka". |
+> |  | **databaseAccounts/apis/tables/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: "tabulka". |
+> |  | **databaseAccounts/apis/tables/settings** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/write | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/Apis/' Aktualizujte propustnost tabulky. Platí pouze pro typy rozhraní API: "tabulka". Platí pouze pro typy nastavení: "propustnost". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/read | (Zastaralé. Použijte cesty prostředků bez segmentu APIS/' Přečtěte si propustnost tabulky. Platí pouze pro typy rozhraní API: "tabulka". Platí pouze pro typy nastavení: "propustnost". |
+> |  | **databaseAccounts/apis/tables/settings/operationResults** |  |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/operationResults/read | (Zastaralé. Použijte cesty prostředků bez segmentu /apis/' pro čtení) Stav čtení asynchronní operace. Platí pouze pro typy rozhraní API: "tabulka". Platí pouze pro typy nastavení: "propustnost". |
 > |  | **databaseAccounts/cassandraKeyspaces** |  |
 > | Akce | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/write | Vytvořte prostor klíčů Cassandra. |
 > | Akce | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/read | Přečtěte si klíčovou plochu Cassandra nebo uveďte seznam všech klíčových prostorů Cassandra. |
@@ -5532,7 +5625,7 @@ Služba Azure: [Služba strojového učení](../machine-learning/index.yml)
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/zápis | Vytvoří nebo aktualizuje pracovní prostory služby Machine Learning Services |
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/odstranit | Odstraní pracovní prostory služby Machine Learning Services. |
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/listKeys/action | Seznam tajných kódů pracovního prostoru služby Machine Learning Services |
-> | Akce | Microsoft.MachineLearningServices/pracovní prostory/PrivateEndpointConnectionsApproval/action | Schválení nebo odmítnutí připojení k prostředku privátního koncového bodu zprostředkovatele Microsoft.Network |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/privateEndpointConnectionsApproval/action | Schválení nebo odmítnutí připojení k prostředku privátního koncového bodu zprostředkovatele Microsoft.Network |
 > |  | **pracovní prostory/výpočty** |  |
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/výpočty/čtení | Získá výpočetní prostředky v pracovním prostoru služby Machine Learning Services |
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/výpočty/zápis | Vytvoří nebo aktualizuje výpočetní prostředky v pracovním prostoru služby Machine Learning Services |
@@ -5542,10 +5635,90 @@ Služba Azure: [Služba strojového učení](../machine-learning/index.yml)
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/výpočty/start/akce | Spuštění výpočetních prostředků v pracovním prostoru Služby Strojového učení |
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/výpočty/stop/akce | Zastavení výpočetních prostředků v pracovním prostoru Služby strojového učení |
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/výpočty/restart/akce | Restartování výpočetních prostředků v pracovním prostoru Služby Machine Learning Services |
+> |  | **pracovní prostory/datové detektory** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datadriftdetectors/read | Získá detektory posunu dat v pracovním prostoru služby Strojového učení |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datadriftdetectors/write | Vytváří nebo aktualizuje detektory posunu dat v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datadriftdetectors/delete | Odstraní detektory posunu dat v pracovním prostoru služby Strojového učení |
+> |  | **pracovní prostory/datové sady/registrované** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/přečtené | Získá registrované datové sady v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/zápis | Vytvoří nebo aktualizuje registrované datové sady v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/odstranit | Odstraní registrované datové sady v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/datové sady/registrované/náhled** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/náhledové/přečtené | Získá náhled datové sady pro registrované datové sady v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/datové sady/registrované/profil** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/profil/čtení | Získá profily datových sad pro registrované datové sady v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/profil/zápis | Vytvoří nebo aktualizuje profily datových sad pro registrované datové sady v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/datové sady/registrované/schéma** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/schéma/čtení | Získá schéma datové sady pro registrované datové sady v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/datové sady/neregistrované** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/přečtené | Získá neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/zápis | Vytvoří nebo aktualizuje neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/odstranit | Odstraní neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/datové sady/neregistrované/náhled** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/náhled/čtení | Získá náhled datové sady pro neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/datové sady/neregistrované/profil** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/profil/čtení | Získá profily datových sad pro neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/profil/zápis | Vytvoří nebo aktualizuje profily datových sad pro neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/datové sady/neregistrované/schéma** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/schéma/čtení | Získá schéma datové sady pro neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/úložiště dat** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datastores/číst | Získá úložiště dat v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datastores/zápis | Vytvoří nebo aktualizuje úložiště dat v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/datastores/delete | Odstraní úložiště dat v pracovních prostorech služby Machine Learning Services |
+> |  | **pracovní prostory/koncové body/kanály** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/koncové body/kanály/čtení | Získá publikované kanály a koncové body kanálu v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/koncové body/kanály/zápis | Vytvoří nebo aktualizuje publikované kanály a koncové body kanálu v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/prostředí** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/prostředí/čtení | Získá prostředí v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/prostředí/readSecrets/action | Získá prostředí s tajnými kódy v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/prostředí/zápis | Vytváří nebo aktualizuje prostředí v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/prostředí/sestavení/akce | Buduje prostředí v pracovních prostorech služby Machine Learning Services |
 > |  | **pracovní prostory/eventGridFilters** |  |
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/eventGridFilters/číst | Získání filtru Mřížky událostí pro určitý pracovní prostor |
-> |  | **pracovní prostory/funkce** |  |
-> | Akce | Microsoft.MachineLearningServices/pracovní prostory/funkce/čtení | Získá všechny povolené funkce pro pracovní prostor služby Machine Learning Services. |
+> |  | **pracovní prostory/experimenty** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/experimenty/čtení | Získá experimenty v pracovních prostorech služby strojového učení |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/experimenty/zápis | Vytváří nebo aktualizuje experimenty v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/experimenty/odstranění | Odstraňuje experimenty v pracovních prostorech služby Machine Learning Services |
+> |  | **pracovní prostory/experimenty/běhy** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/experimenty/běhy/odeslání/akce | Vytvoří nebo aktualizuje skript běží v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/experimenty/běhy/čtení | Spustí se v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/experimenty/běhy/zápis | Vytváří nebo aktualizuje spuštění v pracovních prostorech služby Machine Learning Services |
+> |  | **pracovní prostory/popisování** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/označování/export/akce | Export popisků projektů označování v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/popisky/popisky** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/označení/štítky/čtení | Získá popisky popisků projektů v pracovním prostoru služby Strojového učení |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/označení/štítky/zápis | Vytvoří popisky projektů označování v pracovním prostoru služby Strojového učení |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/označení/popisky/odmítnout/akce | Odmítnout popisky projektů označování v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/označování/projekty** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/označování/projekty/čtení | Získá projekt označování v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/označování/projekty/zápis | Vytvoří nebo aktualizuje projekt označování v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/označování/projekty/odstranění | Odstraní projekt označování v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/označování/projekty/shrnutí** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/označení/projekty/shrnutí/čtení | Získá popisky souhrnu projektu v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/metadata/artefakty** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/metadata/artefakty/čtení | Získá artefakty v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/metadata/artefakty/zápis | Vytváří nebo aktualizuje artefakty v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/metadata/artefakty/odstranění | Odstraňuje artefakty v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/metadata/tajné klíče** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/metadata/tajné kódy/čtení | Získá tajné klíče v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/metadata/tajné kódy/zápis | Vytvoří nebo aktualizuje tajné klíče v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/metadata/tajné kódy/odstranit | Odstraní tajné kódy v pracovních prostorech služby Machine Learning Services |
+> |  | **pracovní prostory/metadata/snímky** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/metadata/snímky/čtení | Získá snímky v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/metadata/snímky/zápis | Vytvoří nebo aktualizuje snímky v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/metadata/snímky/odstranění | Odstraní snímky v pracovních prostorech služby Machine Learning Services |
+> |  | **pracovní prostory/modely** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/modely/čtení | Získá modely v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/modely/zápis | Vytváří nebo aktualizuje modely v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/modely/odstranění | Odstraní modely v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/modely/balíček/akce | Modely balíčků v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/moduly** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/moduly/čtení | Získá moduly v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/moduly/zápis | Vytvoří nebo aktualizuje modul v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/návrhy potrubí** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/pipelinedrafts/read | Získá koncepty kanálu v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/pipelinedrafts/write | Vytvoří nebo aktualizuje koncepty kanálu v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/pipelinedrafts/delete | Odstraní koncepty kanálu v pracovním prostoru služby Machine Learning Services |
 > |  | **pracovní prostory/privátníEndpointConnectionProxies** |  |
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/privateEndpointConnectionProxies/čt | Zobrazení stavu proxy připojení k prostředku privátního koncového bodu zprostředkovatele Microsoft.Network |
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/privateEndpointConnectionProxies/write | Změna stavu proxy připojení na prostředek privátního koncového bodu zprostředkovatele Microsoft.Network |
@@ -5557,104 +5730,17 @@ Služba Azure: [Služba strojového učení](../machine-learning/index.yml)
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/privateEndpointConnections/delete | Odstranění připojení k prostředku privátního koncového bodu zprostředkovatele Microsoft.Network |
 > |  | **pracovní prostory/privateLinkResources** |  |
 > | Akce | Microsoft.MachineLearningServices/pracovní prostory/privateLinkResources/čti | Získá dostupné prostředky soukromého propojení pro zadanou instanci pracovního prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/datové detektory** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datadriftdetectors/read | Získá detektory posunu dat v pracovním prostoru služby Strojového učení |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datadriftdetectors/write | Vytváří nebo aktualizuje detektory posunu dat v pracovních prostorech služby Machine Learning Services |
-> |  | **pracovní prostory/datové sady/registrované** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/přečtené | Získá registrované datové sady v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/zápis | Vytvoří nebo aktualizuje registrované datové sady v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/odstranit | Odstraní registrované datové sady v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/datové sady/registrované/náhled** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/náhledové/přečtené | Získá náhled datové sady pro registrované datové sady v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/datové sady/registrované/profil** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/profil/čtení | Získá profily datových sad pro registrované datové sady v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/profil/zápis | Vytvoří nebo aktualizuje profily datových sad pro registrované datové sady v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/datové sady/registrované/schéma** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/registrované/schéma/čtení | Získá schéma datové sady pro registrované datové sady v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/datové sady/neregistrované** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/přečtené | Získá neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/zápis | Vytvoří nebo aktualizuje neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/odstranit | Odstraní neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/datové sady/neregistrované/náhled** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/náhled/čtení | Získá náhled datové sady pro neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/datové sady/neregistrované/profil** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/profil/čtení | Získá profily datových sad pro neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/profil/zápis | Vytvoří nebo aktualizuje profily datových sad pro neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/datové sady/neregistrované/schéma** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datové sady/neregistrované/schéma/čtení | Získá schéma datové sady pro neregistrované datové sady v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/úložiště dat** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datastores/číst | Získá úložiště dat v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datastores/zápis | Vytvoří nebo aktualizuje úložiště dat v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/datastores/delete | Odstraní úložiště dat v pracovních prostorech služby Machine Learning Services |
-> |  | **pracovní prostory/koncové body/kanály** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/koncové body/kanály/čtení | Získá publikované kanály a koncové body kanálu v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/koncové body/kanály/zápis | Vytvoří nebo aktualizuje publikované kanály a koncové body kanálu v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/prostředí** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/prostředí/čtení | Získá prostředí v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/prostředí/readSecrets/action | Získá prostředí s tajnými kódy v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/prostředí/zápis | Vytváří nebo aktualizuje prostředí v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/prostředí/sestavení/akce | Buduje prostředí v pracovních prostorech služby Machine Learning Services |
-> |  | **pracovní prostory/experimenty** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/experimenty/čtení | Získá experimenty v pracovních prostorech služby strojového učení |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/experimenty/zápis | Vytváří nebo aktualizuje experimenty v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/experimenty/odstranění | Odstraňuje experimenty v pracovních prostorech služby Machine Learning Services |
-> |  | **pracovní prostory/experimenty/běhy** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/experimenty/běhy/čtení | Spustí se v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/experimenty/běhy/zápis | Vytváří nebo aktualizuje spuštění v pracovních prostorech služby Machine Learning Services |
-> |  | **pracovní prostory/experimenty/spuštění/skriptBěh** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/experimenty/běhy/skriptBěh/odeslat/akce | Vytvoří nebo aktualizuje skript běží v pracovních prostorech služby Machine Learning Services |
-> |  | **pracovní prostory/popisování** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/označování/export/akce | Export popisků projektů označování v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/popisky/popisky** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/označení/štítky/čtení | Získá popisky popisků projektů v pracovním prostoru služby Strojového učení |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/označení/štítky/zápis | Vytvoří popisky projektů označování v pracovním prostoru služby Strojového učení |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/označení/popisky/odmítnout/akce | Odmítnout popisky projektů označování v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/označování/projekty** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/označování/projekty/čtení | Získá projekt označování v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/označování/projekty/zápis | Vytvoří nebo aktualizuje projekt označování v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/označování/projekty/odstranění | Odstraní projekt označování v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/označování/projekty/shrnutí** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/označení/projekty/shrnutí/čtení | Získá popisky souhrnu projektu v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/metadata/artefakty** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/metadata/artefakty/čtení | Získá artefakty v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/metadata/artefakty/zápis | Vytváří nebo aktualizuje artefakty v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/metadata/artefakty/odstranění | Odstraňuje artefakty v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/metadata/tajné klíče** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/metadata/tajné kódy/čtení | Získá tajné klíče v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/metadata/tajné kódy/zápis | Vytvoří nebo aktualizuje tajné klíče v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/metadata/tajné kódy/odstranit | Odstraní tajné kódy v pracovních prostorech služby Machine Learning Services |
-> |  | **pracovní prostory/metadata/snímky** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/metadata/snímky/čtení | Získá snímky v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/metadata/snímky/zápis | Vytvoří nebo aktualizuje snímky v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/metadata/snímky/odstranění | Odstraní snímky v pracovních prostorech služby Machine Learning Services |
-> |  | **pracovní prostory/modely** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/modely/čtení | Získá modely v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/modely/zápis | Vytváří nebo aktualizuje modely v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/modely/odstranění | Odstraní modely v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/modely/balíček/akce | Modely balíčků v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/moduly** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/moduly/čtení | Získá moduly v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/moduly/zápis | Vytvoří nebo aktualizuje modul v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/návrhy potrubí** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/pipelinedrafts/read | Získá koncepty kanálu v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/pipelinedrafts/write | Vytvoří nebo aktualizuje koncepty kanálu v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/pipelinedrafts/delete | Odstraní koncepty kanálu v pracovním prostoru služby Machine Learning Services |
 > |  | **pracovní prostory/služby** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/čtení | Získá služby v pracovních prostorech služby machine learningu |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/služby/čtení | Získá služby v pracovních prostorech služby machine learningu |
 > |  | **pracovní prostory/služby/aci** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/aci/zápis | Vytvoří nebo aktualizuje služby ACI v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/aci/listkeys/akce | Seznam klíčů pro služby ACI v pracovním prostoru služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/aci/delete | Odstraní služby ACI v pracovním prostoru služby Machine Learning Services |
-> |  | **pracovní prostory/služby/aks/devtest** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/devtest/write | Vytvoří nebo aktualizuje devtest AKS služby v machine learningservices pracovních prostorů |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/devtest/listkeys/action | Seznam klíčů pro devtest služby AKS v pracovním prostoru služby Strojového učení |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/devtest/delete | Odstraní devtest AKS služby v pracovním prostoru služby Strojového učení |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/devtest/score/action | Skóre devtest AKS služby v Machine Learning Services Workspace (y) |
-> |  | **pracovní prostory/služby/aks/prod** |  |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/prod/write | Vytváří nebo aktualizuje služby AKS v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/prod/listkeys/akce | Seznam klíčů pro služby AKS v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/prod/delete | Odstraní služby AKS v pracovních prostorech služby Machine Learning Services |
-> | Akce DataAction | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/prod/score/action | Skóre prod AKS služby v Machine Learning Services Workspace (y) |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/služby/aci/zápis | Vytvoří nebo aktualizuje služby ACI v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/služby/aci/listkeys/akce | Seznam klíčů pro služby ACI v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/služby/aci/delete | Odstraní služby ACI v pracovním prostoru služby Machine Learning Services |
+> |  | **pracovní prostory/služby/aks** |  |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/zápis | Vytvoří nebo aktualizuje služby AKS v pracovních prostorech služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/listkeys/akce | Seznam klíčů pro služby AKS v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/delete | Odstraní služby AKS v pracovním prostoru služby Machine Learning Services |
+> | Akce | Microsoft.MachineLearningServices/pracovní prostory/služby/aks/skóre/akce | Skóre AKS služby v Machine Learning Services Workspace (y) |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -5740,6 +5826,10 @@ Služba Azure: [Mapy Azure](../azure-maps/index.yml)
 > | Akce | Microsoft.Maps/accounts/eventGridFilters/delete | Odstranění filtru Mřížky událostí |
 > | Akce | Microsoft.Maps/accounts/eventGridFilters/read | Získání filtru Mřížky událostí |
 > | Akce | Microsoft.Maps/accounts/eventGridFilters/write | Vytvoření nebo aktualizace filtru Mřížky událostí |
+> |  | **účty/privátníAtlasy** |  |
+> | Akce | Microsoft.Maps/accounts/privateAtlases/delete | Odstranění soukromého atlasu |
+> | Akce | Microsoft.Maps/accounts/privateAtlases/read | Získejte soukromý atlas |
+> | Akce | Microsoft.Maps/accounts/privateAtlases/write | Vytvoření nebo aktualizace soukromého atlasu |
 > |  | **Operace** |  |
 > | Akce | Microsoft.Maps/operations/read | Čtení operací zprostředkovatele |
 > |  | **účty/data** |  |
@@ -5998,6 +6088,10 @@ Služba Azure: [Prostorové kotvy Azure](../spatial-anchors/index.yml)
 > | Akce | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro Microsoft.MixedReality/spatialAnchorsAccounts |
 > |  | **spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions** |  |
 > | Akce | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions/read | Získá dostupné metriky pro Microsoft.MixedReality/spatialAnchorsAccounts |
+> |  | **Objekty porozumění účtům** |  |
+> | Akce DataAction | Microsoft.MixedReality/ObjectUnderstandingAccounts/ingest/action | Vytvořit úlohu ingestování modelu |
+> |  | **ObjectUnderstandingAccounts/ingestování** |  |
+> | Akce DataAction | Microsoft.MixedReality/ObjectUnderstandingAccounts/ingestování/čtení | Získat stav úlohy ingestování modelu |
 > |  | **Vzdálené účty renderingu** |  |
 > | Akce DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/convert/action | Zahájit převod majetku |
 > | Akce DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/action | Zahájení relací |
@@ -6069,6 +6163,10 @@ Služba Azure: [Soubory Azure NetApp](../azure-netapp-files/index.yml)
 > | Akce | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/read | Přečte záložní prostředek. |
 > | Akce | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/write | Zapíše záložní prostředek. |
 > | Akce | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/delete | Odstraní záložní prostředek. |
+> |  | **netAppAccounts/capacityPools/volumes/MountTargets** |  |
+> | Akce | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/MountTargets/read | Přečte zdroj cíle připojení. |
+> |  | **netAppAccounts/capacityPools/volumes/ReplicationStatus** |  |
+> | Akce | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/ReplicationStatus/read | Přečte stavy hromadné replikace. |
 > |  | **netAppAccounts/capacityPools/volumes/snapshots netAppAccounts/capacityPools/volumes/snapshots netAppAccounts/capacityPools/volumes/snapshots netApp** |  |
 > | Akce | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/read | Přečte prostředek snímku. |
 > | Akce | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write | Zapíše prostředek snímku. |
@@ -6341,6 +6439,8 @@ Služba Azure: [Virtuální síť](../virtual-network/index.yml), [Nástroj pro 
 > | Akce | Microsoft.Network/loadBalancers/delete | Odstraní vykladač zatížení. |
 > |  | **loadBalancers/backendAddressPools** |  |
 > | Akce | Microsoft.Network/loadBalancers/backendAddressPools/read | Získá definici back-endového fondu adres vykladače zatížení. |
+> | Akce | Microsoft.Network/loadBalancers/backendAddressPools/write | Vytvoří back-endový fond adres vykladačů zatížení nebo aktualizuje existující fond back-endových adres vykladačů zatížení. |
+> | Akce | Microsoft.Network/loadBalancers/backendAddressPools/delete | Odstraní fond back-endových adres vykladače zatížení. |
 > | Akce | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Připojí se k fondu back-endových adres vykladače vyrovnávání zatížení. Nelze upozornit. |
 > |  | **loadBalancers/frontendIPKonfigurace** |  |
 > | Akce | Microsoft.Network/loadBalancers/frontendIPKonfigurace/čtení | Získá definici konfigurace front-endové adresy IP nástroje pro vyrovnávání zatížení. |
@@ -6565,6 +6665,7 @@ Služba Azure: [Virtuální síť](../virtual-network/index.yml), [Nástroj pro 
 > | Akce | Microsoft.Network/privateEndpointRedirectMaps/read | Získá private endpoint redirectmap |
 > | Akce | Microsoft.Network/privateEndpointRedirectMaps/write | Vytvoří mapu přesměrování soukromého koncového bodu nebo aktualizuje existující mapu přesměrování privátního koncového bodu. |
 > |  | **privateEndpoints** |  |
+> | Akce | Microsoft.Network/privateEndpoints/pushPropertiesToResource/action | Operace pro nabízení aktualizací vlastností soukromého koncového bodu z klienta NRP |
 > | Akce | Microsoft.Network/privateEndpoints/read | Získá prostředek soukromého koncového bodu. |
 > | Akce | Microsoft.Network/privateEndpoints/write | Vytvoří nový soukromý koncový bod nebo aktualizuje existující soukromý koncový bod. |
 > | Akce | Microsoft.Network/privateEndpoints/delete | Odstraní prostředek privátníkoncový koncový bod. |
@@ -6606,6 +6707,13 @@ Služba Azure: [Virtuální síť](../virtual-network/index.yml), [Nástroj pro 
 > | Akce | Microsoft.Network/routeTables/routes/read | Získá definici trasy. |
 > | Akce | Microsoft.Network/routeTables/routes/write | Vytvoří trasu nebo aktualizuje existující trasu. |
 > | Akce | Microsoft.Network/routeTables/routes/delete | Odstraní definici trasy. |
+> |  | **securityPartnerProviders** |  |
+> | Akce | Microsoft.Network/securityPartnerProviders/read | Získá Zprostředkovatel evidence. |
+> | Akce | Microsoft.Network/securityPartnerProviders/write | Vytvoří zprostředkovatele zabezpečení nebo aktualizuje existujícího zprostředkovatele securitypartnerprovider |
+> | Akce | Microsoft.Network/securityPartnerProviders/validate/action | Ověří zprostředkovatele securitypartnerprovider |
+> | Akce | Microsoft.Network/securityPartnerProviders/updateReference/action | Aktualizace odkazů v zprostředkovateli SecurityPartnerProvider |
+> | Akce | Microsoft.Network/securityPartnerProviders/join/action | Připojí se k zprostředkovateli SecurityPartnerProvider. Nelze upozornit. |
+> | Akce | Microsoft.Network/securityPartnerProviders/delete | Odstraní zprostředkovatele securitypartnerprovider. |
 > |  | **serviceEndpointPolicies** |  |
 > | Akce | Microsoft.Network/serviceEndpointPolicies/read | Získá popis zásad koncového bodu služby. |
 > | Akce | Microsoft.Network/serviceEndpointPolicies/zápis | Vytvoří zásady koncového bodu služby nebo aktualizuje existující zásady koncového bodu služby. |
@@ -6678,6 +6786,7 @@ Služba Azure: [Virtuální síť](../virtual-network/index.yml), [Nástroj pro 
 > | Akce | Microsoft.Network/virtualNetworks/read | Získání definice virtuální sítě |
 > | Akce | Microsoft.Network/virtualNetworks/write | Vytvoří virtuální síť nebo aktualizuje existující virtuální síť. |
 > | Akce | Microsoft.Network/virtualNetworks/delete | Odstraní virtuální síť. |
+> | Akce | Microsoft.Network/virtualNetworks/joinLoadBalancer/action | Připojí nástroj pro vyrovnávání zatížení k virtuálním sítím. |
 > | Akce | Microsoft.Network/virtualNetworks/peer/action | Partneři virtuální sítě s jinou virtuální sítí |
 > | Akce | Microsoft.Network/virtualNetworks/join/action | Připojí se k virtuální síti. Nelze upozornit. |
 > | Akce | Microsoft.Network/virtualNetworks/BastionHosts/action | Získá bastion hostitele odkazy ve virtuální síti. |
@@ -7225,6 +7334,8 @@ Služba Azure: [Azure Monitor](../azure-monitor/index.yml)
 > | Akce | Microsoft.OperationalInsights/pracovní prostory/dotaz/AppDependencies/číst | Čtení dat z tabulky AppDependencies |
 > |  | **pracovní prostory/dotaz/Události aplikace** |  |
 > | Akce | Microsoft.OperationalInsights/pracovní prostory/dotaz/AppEvents/číst | Čtení dat z tabulky AppEvents |
+> |  | **pracovní prostory/dotaz/AppExceptions** |  |
+> | Akce | Microsoft.OperationalInsights/pracovní prostory/dotaz/AppExceptions/read | Čtení dat z tabulky AppExceptions |
 > |  | **pracovní prostory/dotaz/ApplicationInsights** |  |
 > | Akce | Microsoft.OperationalInsights/pracovní prostory/dotaz/ApplicationInsights/číst | Čtení dat z tabulky ApplicationInsights |
 > |  | **pracovní prostory/dotaz/AppMetrics** |  |
@@ -7693,6 +7804,18 @@ Služba Azure: [Azure Monitor](../azure-monitor/index.yml)
 > | Akce | Microsoft.OperationalInsights/workspaces/query/WUDOAggregatedStatus/read | Čtení dat z tabulky WUDOAggregatedStatus |
 > |  | **pracovní prostory/dotaz/WUDOStatus** |  |
 > | Akce | Microsoft.OperationalInsights/pracovní prostory/dotaz/WUDOStatus/číst | Čtení dat z tabulky WUDOStatus |
+> |  | **pracovní prostory/dotaz/WVDCheckpoints** |  |
+> | Akce | Microsoft.OperationalInsights/pracovní prostory/dotaz/WVDCheckpoints/čtení | Čtení dat z tabulky WVDCheckpoints |
+> |  | **pracovní prostory/dotaz/WVDConnections** |  |
+> | Akce | Microsoft.OperationalInsights/pracovní prostory/dotaz/WVDConnections/read | Čtení dat z tabulky WVDConnections |
+> |  | **pracovní prostory/dotaz/WVDErrors** |  |
+> | Akce | Microsoft.OperationalInsights/pracovní prostory/dotaz/WVDErrors/read | Čtení dat z tabulky WVDErrors |
+> |  | **pracovní prostory/dotaz/WVDFeeds** |  |
+> | Akce | Microsoft.OperationalInsights/pracovní prostory/dotaz/WVDFeeds/read | Čtení dat z tabulky WVDFeeds |
+> |  | **pracovní prostory/dotaz/WVDHostRegistrace** |  |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/WVDHostRegistrations/read | Čtení dat z tabulky WVDHostRegistrations |
+> |  | **pracovní prostory/dotaz/WVDManagement** |  |
+> | Akce | Microsoft.OperationalInsights/pracovní prostory/dotaz/WVDManagement/čtení | Čtení dat z tabulky WVDManagement |
 > |  | **pracovní prostory/pravidla** |  |
 > | Akce | microsoft.operationalinsights/workspaces/rules/read | Získejte všechna pravidla upozornění. |
 > |  | **pracovní prostory/uloženéVyhledávání** |  |
@@ -8492,6 +8615,7 @@ Služba Azure: [Azure Sentinel](../sentinel/index.yml)
 > | --- | --- | --- |
 > | Akce | Microsoft.SecurityInsights/registr/akce | Registruje předplatné Azure Sentinelu. |
 > | Akce | Microsoft.SecurityInsights/unregister/action | Zrušení registrace předplatného z Azure Sentinelu |
+> | Akce | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | Kontrola autorizace uživatele a licence |
 > |  | **Agregace** |  |
 > | Akce | Microsoft.SecurityInsights/Agregace/čtení | Získá agregované informace. |
 > |  | **alertRules** |  |
@@ -8785,7 +8909,7 @@ Služba Azure: [Spravované aplikace Azure](../azure-resource-manager/managed-ap
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
-Služba Azure: [Azure SQL Database](../sql-database/index.yml), SQL Data [Warehouse](../synapse-analytics/sql-data-warehouse/index.yml)
+Služba Azure: [Azure SQL Database](../sql-database/index.yml), SQL Data [Warehouse](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
@@ -9980,21 +10104,21 @@ Služba Azure: jádro
 > | Akce | Microsoft.Support/register/action | Registruje zprostředkovatele prostředků podpory |
 > | Akce | Microsoft.Support/checkNameAvailability/action | Zkontroluje, zda je tento název platný a není používán pro typ prostředku. |
 > |  | **výsledky operací** |  |
-> | Akce | Microsoft.Support/operationresults/read | Získat výsledek operace |
+> | Akce | Microsoft.Support/operationresults/read | Získá výsledek asynchronní operace |
 > |  | **Operace** |  |
-> | Akce | Microsoft.Support/operations/read | Zobrazí seznam operací dostupných u zprostředkovatele prostředků microsoft.support. |
+> | Akce | Microsoft.Support/operations/read | Zobrazí seznam všech operací dostupných u zprostředkovatele prostředků microsoft.support. |
 > |  | **operationsstatus** |  |
-> | Akce | Microsoft.Support/operationsstatus/read | Získání stavu operace |
+> | Akce | Microsoft.Support/operationsstatus/read | Získá stav asynchronní operace |
 > |  | **Služby** |  |
-> | Akce | Microsoft.Support/services/read | Získá seznam služeb Azure k dispozici pro podporu |
+> | Akce | Microsoft.Support/services/read | Zobrazí seznam jedné nebo všech služeb Azure dostupných pro podporu. |
 > |  | **služby/problémKlasifikace** |  |
-> | Akce | Microsoft.Support/services/problemClassifications/read | Získá seznam problému klasifikace k dispozici pro službu Azure |
+> | Akce | Microsoft.Support/services/problemClassifications/read | Uvádí jednu nebo všechny klasifikace problémů pro službu Azure. |
 > |  | **supportTickets** |  |
-> | Akce | Microsoft.Support/supportTickets/read | Získá seznam lístků podpory. |
-> | Akce | Microsoft.Support/supportTickets/write | Vytvoří lístek podpory asynchronně nebo aktualizuje. Můžete vytvořit lístek podpory pro technické problémy, problémy s fakturací nebo kvótami nebo problémy související se správou předplatného. Můžete aktualizovat závažnost a kontaktní údaje pro existující lístky podpory. |
+> | Akce | Microsoft.Support/supportTickets/read | Zobrazí seznam jedench nebo všech lístků podpory. |
+> | Akce | Microsoft.Support/supportTickets/write | Umožňuje vytvoření a aktualizaci lístku podpory |
 > |  | **supportTickets/communications** |  |
-> | Akce | Microsoft.Support/supportTickets/communications/read | Získá seznam komunikace lístku podpory |
-> | Akce | Microsoft.Support/supportTickets/communications/write | Vytvoří podporu Ticket komunikace |
+> | Akce | Microsoft.Support/supportTickets/communications/read | Zobrazí seznam jedné nebo všech sdělení o lístkůch podpory. |
+> | Akce | Microsoft.Support/supportTickets/communications/write | Přidá novou komunikaci do lístku podpory |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 

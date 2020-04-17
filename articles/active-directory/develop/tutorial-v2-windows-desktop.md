@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aa09d06af4706af3ae120f62a897c0bc632fb657
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: ba4afa31a1ed7b6e2ddf43787ca32a06e97455ce
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990935"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533764"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Volání rozhraní Microsoft Graph API z aplikace Pro Plochu Windows
 
 Tato příručka ukazuje, jak nativní aplikace Windows Desktop .NET (XAML) používá přístupový token k volání rozhraní Microsoft Graph API. Aplikace může také přistupovat k dalším rozhraním API, která vyžadují přístupové tokeny z platformy identit microsoftu pro vývojáře v2.0 koncového bodu. Tato platforma byla dříve pojmenována Azure AD.
 
-Po dokončení průvodce bude vaše aplikace moct volat chráněné rozhraní API, které používá osobní účty (včetně outlook.com, live.com a dalších). Aplikace bude také používat pracovní a školní účty od jakékoli společnosti nebo organizace, která používá Azure Active Directory.  
+Po dokončení průvodce bude vaše aplikace moct volat chráněné rozhraní API, které používá osobní účty (včetně outlook.com, live.com a dalších). Aplikace bude také používat pracovní a školní účty od jakékoli společnosti nebo organizace, která používá Azure Active Directory.
 
 > [!NOTE]
 > Průvodce vyžaduje Visual Studio 2015 Update 3, Visual Studio 2017 nebo Visual Studio 2019. Nemáte žádnou z těchto verzí? [Stáhněte si Visual Studio 2019 zdarma](https://www.visualstudio.com/downloads/).
@@ -34,7 +34,7 @@ Po dokončení průvodce bude vaše aplikace moct volat chráněné rozhraní AP
 
 ![Ukazuje, jak ukázková aplikace vygenerovaná tímto kurzem funguje](./media/active-directory-develop-guidedsetup-windesktop-intro/windesktophowitworks.svg)
 
-Ukázková aplikace, kterou vytvoříte pomocí této příručky, umožňuje aplikaci plochy systému Windows, která se dotazuje rozhraní Microsoft Graph API nebo webového rozhraní API, které přijímá tokeny z koncového bodu platformy identity společnosti Microsoft. V tomto scénáři přidáte token do požadavků HTTP prostřednictvím hlavičky Autorizace. Microsoft Authentication Library (MSAL) zpracovává získávání a obnovu tokenů.
+Ukázková aplikace, kterou vytvoříte pomocí této příručky, umožňuje aplikaci Plochy systému Windows, která se dotazuje rozhraní Microsoft Graph API nebo webového rozhraní API, které přijímá tokeny z koncového bodu platformy identity společnosti Microsoft. V tomto scénáři přidáte token do požadavků HTTP prostřednictvím hlavičky Autorizace. Microsoft Authentication Library (MSAL) zpracovává získávání a obnovu tokenů.
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Zpracování získávání tokenů pro přístup k chráněným webovým řešením API
 
@@ -77,7 +77,7 @@ Chcete-li vytvořit aplikaci, postupujte takto:
     Install-Package Microsoft.Identity.Client -Pre
     ```
 
-    > [!NOTE] 
+    > [!NOTE]
     > Tento příkaz nainstaluje knihovnu Microsoft Authentication Library. MSAL zpracovává získávání, ukládání do mezipaměti a aktualizace uživatelských tokenů, které se používají pro přístup k rozhraní API, které jsou chráněny službou Azure Active Directory v2.0
     >
 
@@ -136,7 +136,7 @@ V tomto kroku vytvoříte třídu pro zpracování interakce s MSAL, jako je nap
                 .Build();
         }
 
-        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
         // - the content of Tenant by the information about the accounts allowed to sign-in in your application:
@@ -156,7 +156,7 @@ V tomto kroku vytvoříte třídu pro zpracování interakce s MSAL, jako je nap
 
 ## <a name="create-the-application-ui"></a>Vytvoření uj.
 
-Tato část ukazuje, jak může aplikace dotazovat chráněný server back-end, například Microsoft Graph. 
+Tato část ukazuje, jak může aplikace dotazovat chráněný server back-end, například Microsoft Graph.
 
 Soubor *MainWindow.xaml* by měl být automaticky vytvořen jako součást šablony projektu. Otevřete tento soubor a nahraďte uzel * \<gridu aplikace>* následujícím kódem:
 
@@ -266,9 +266,9 @@ Metoda `AcquireTokenSilent` zpracovává token akvizice a obnovení bez jakékol
 
 Nakonec `AcquireTokenSilent` metoda se nezdaří. Důvodem selhání může být, že uživatel se odhlásil nebo změnil své heslo na jiném zařízení. Když MSAL zjistí, že problém lze vyřešit vyžadováním `MsalUiRequiredException` interaktivní akce, vyvolá výjimku. Aplikace může tuto výjimku zpracovat dvěma způsoby:
 
-* Může okamžitě zavolat `AcquireTokenInteractive` proti. Výsledkem tohoto volání je výzva k přihlášení uživatele. Tento vzor se obvykle používá v online aplikacích, kde není k dispozici offline obsah pro uživatele. Ukázka vygenerovaná tímto řízeným nastavením se řídí tímto vzorem, který můžete vidět v akci při prvním spuštění vzorku. 
+* Může okamžitě zavolat `AcquireTokenInteractive` proti. Výsledkem tohoto volání je výzva k přihlášení uživatele. Tento vzor se obvykle používá v online aplikacích, kde není k dispozici offline obsah pro uživatele. Ukázka vygenerovaná tímto řízeným nastavením se řídí tímto vzorem, který můžete vidět v akci při prvním spuštění vzorku.
 
-* Protože žádný uživatel nepoužil `PublicClientApp.Users.FirstOrDefault()` aplikaci, obsahuje `MsalUiRequiredException` hodnotu null a je vyvolána výjimka. 
+* Protože žádný uživatel nepoužil `PublicClientApp.Users.FirstOrDefault()` aplikaci, obsahuje `MsalUiRequiredException` hodnotu null a je vyvolána výjimka.
 
 * Kód v ukázce pak zpracovává `AcquireTokenInteractive`výjimku voláním , což má za následek výzvu uživatele k přihlášení.
 
@@ -322,7 +322,7 @@ Chcete-li uživatele odhlásit, přidejte `MainWindow.xaml.cs` do souboru násle
 /// </summary>
 private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 {
-    var accounts = await App.PublicClientApp.GetAccountsAsync(); 
+    var accounts = await App.PublicClientApp.GetAccountsAsync();
 
     if (accounts.Any())
     {

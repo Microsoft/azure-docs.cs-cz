@@ -12,23 +12,19 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: 2a2cd4bfc3d393543b41eea776f02723d94054b1
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: 46ca4661d06b52c861431a680a69297575ac99b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345830"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461408"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Služby strojového učení azure SQL database s r (preview)
 
 Machine Learning Services je funkce Azure SQL Database, která se používá pro provádění skriptů R v databázi. Tato funkce obsahuje balíčky Microsoft R pro vysoce výkonnou prediktivní analýzu a strojové učení. Relační data lze použít ve skriptech R prostřednictvím uložených procedur, skriptu T-SQL obsahujícího příkazy R nebo r kódu obsahujícího T-SQL.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
-> [!NOTE]
-> Náhled je k dispozici pro jednotlivé databáze a elastické fondy pomocí nákupního modelu založeného na virtuálních jádrech v úrovních **služeb pro obecné účely** a důležité **obchodní** služby. V této počáteční verzi preview není podporována úroveň služby **hyperškálování** a možnost nasazení **spravované instance.** V současné době je R jediným podporovaným jazykem. Python se momentálně nepodporuje.
->
-> Předběžná verze je v současné době k dispozici v následujících oblastech: Západní Evropa, Severní Evropa, Západní USA 2, Východní USA, Střední USA – jih, Střed usa sever, Kanada – střed, Jihovýchodní Asie, Indie – jih a Austrálie – jihovýchod.
 
 ## <a name="what-you-can-do-with-r"></a>Co můžete dělat s R
 

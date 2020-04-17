@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 4219bb471b92e7ddae72c50403f635498c90080d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f390aececdbf9a20f191279892c1856332f2aa8e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251686"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482099"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurace pokročilé ochrany před hrozbami pro Azure Storage
 
@@ -27,9 +27,7 @@ Služba ingestuje diagnostické protokoly požadavků na čtení, zápis a odstr
 
 ## <a name="availability"></a>Dostupnost
 
-Pokročilá ochrana před hrozbami pro Azure Storage je momentálně dostupná jenom pro [úložiště objektů Blob](https://azure.microsoft.com/services/storage/blobs/). 
-
-Tato služba je dostupná ve všech veřejných cloudech a cloudech vlády USA, ale žádné jiné suverénní nebo vládní oblasti cloudu Azure.
+Pokročilá ochrana před hrozbami pro Azure Storage je momentálně dostupná jenom pro [úložiště objektů Blob](https://azure.microsoft.com/services/storage/blobs/). Typy účtů, které podporují pokročilou ochranu před hrozbami, zahrnují účty úložiště pro obecné účely v2, objekt blob bloku a úložiště objektů Blob. Pokročilá ochrana před hrozbami je k dispozici ve všech veřejných cloudech a cloudech vlády USA, ale ne v jiných suverénních oblastech cloudu nebo cloudu Azure.
 
 Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na [stránce s cenami Centra zabezpečení Azure](https://azure.microsoft.com/pricing/details/security-center/).
 

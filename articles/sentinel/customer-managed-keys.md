@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: yelevin
-ms.openlocfilehash: bc2fa02925e7f5c671085eb87ca0431d3fca7691
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587953"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461629"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Nastavení klíče spravovaného zákazníkem Azure Sentinelu
 
@@ -60,11 +60,11 @@ Chcete-li zřídit CMK, postupujte takto: 
     > [!NOTE]
     >  Azure Key Vault musí být nakonfigurovaný jako obnovitelný k ochraně vašeho klíče a přístupu.
 
-1.  [Zapněte možnosti obnovení:](../key-vault/key-vault-best-practices.md#turn-on-recovery-options)
+1.  [Zapněte možnosti obnovení:](../key-vault/general/best-practices.md#turn-on-recovery-options)
 
-    -   Zkontrolujte, zda je zapnuto [měkké odstranění.](../key-vault/key-vault-ovw-soft-delete.md)
+    -   Zkontrolujte, zda je zapnuto [měkké odstranění.](../key-vault/general/overview-soft-delete.md)
 
-    -   Zapněte [ochranu proti pročištění,](../key-vault/key-vault-ovw-soft-delete.md#purge-protection) abyste se ochránili před vynuceným odstraněním tajného klíče/trezoru i po měkkém odstranění.
+    -   Zapněte [ochranu proti pročištění,](../key-vault/general/overview-soft-delete.md#purge-protection) abyste se ochránili před vynuceným odstraněním tajného klíče/trezoru i po měkkém odstranění.
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>KROK 2: Povolení CMK v pracovním prostoru Log Analytics
 

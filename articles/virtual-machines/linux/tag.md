@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: ''
 author: mmccrory
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ca0e17e5-d78e-42e6-9dad-c1e8f1c58027
 ms.service: virtual-machines-linux
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: 3dd46f0c1c1e36e0373311ce6dcbf5d2f155dacc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd4a93f4c0b2f052fe5c9890bee01e5da0dcead2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616276"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460949"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Jak označit virtuální počítač SIP v Azure
 Tento článek popisuje různé způsoby označení virtuálního počítače Linux u Azure prostřednictvím modelu nasazení Správce prostředků. Značky jsou uživatelem definované dvojice klíč/hodnota, které lze umístit přímo na prostředek nebo skupinu prostředků. Azure aktuálně podporuje až 50 značek na prostředek a skupinu prostředků. Značky mohou být umístěny na prostředek v době vytvoření nebo přidány do existujícího prostředku. Upozorňujeme, že značky jsou podporovány pro prostředky vytvořené pouze pomocí modelu nasazení Správce prostředků.

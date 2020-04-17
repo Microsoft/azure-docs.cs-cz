@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 89de6bf80d14ec77fe6b1f98b6e1d15c6e573fbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46a1db94d576174b837a40c646fcf9e082e339c8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756279"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461612"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Ověření spravované identity pomocí Služby Azure Active Directory pro přístup k prostředkům Služby Azure Service Bus
 [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce pro více azure, která umožňuje vytvořit zabezpečenou identitu přidruženou k nasazení, pod kterým běží kód aplikace. Tuto identitu pak můžete přidružit k rolím řízení přístupu, které udělují vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje.
@@ -75,7 +75,7 @@ Další informace o tom, jak jsou definovány předdefinované role, naleznete [
 ## <a name="enable-managed-identities-on-a-vm"></a>Povolení spravovaných identit na virtuálním počítači
 Než budete moct použít spravované identity pro prostředky Azure k autorizaci prostředků Service Bus z vašeho virtuálního počítače, musíte nejdřív povolit spravované identity pro prostředky Azure na virtuálním počítači. Informace o povolení spravovaných identit pro prostředky Azure najdete v jednom z těchto článků:
 
-- [Portál Azure](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [portál Azure](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Šablona Azure Resource Manageru](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -140,7 +140,7 @@ Chcete-li odesílat nebo přijímat zprávy, zadejte název oboru názvů a náz
 
 
 > [!NOTE]
-> - Spravovaná identita funguje jenom v prostředí Azure, ve službách App Services, virtuálních počítačích Azure a škálovacích sadách. Pro aplikace .NET knihovna Microsoft.Azure.Services.AppAuthentication, která se používá balíček Service Bus NuGet, poskytuje abstrakci nad tímto protokolem a podporuje prostředí místního vývoje. Tato knihovna také umožňuje testovat kód místně ve vývojovém počítači pomocí uživatelského účtu z Visual Studia, Azure CLI 2.0 nebo Integrované ověřování služby Active Directory. Další informace o možnostech místního vývoje v této knihovně najdete v [tématu Ověřování služeb azure key vault pomocí .NET](../key-vault/service-to-service-authentication.md).  
+> - Spravovaná identita funguje jenom v prostředí Azure, ve službách App Services, virtuálních počítačích Azure a škálovacích sadách. Pro aplikace .NET knihovna Microsoft.Azure.Services.AppAuthentication, která se používá balíček Service Bus NuGet, poskytuje abstrakci nad tímto protokolem a podporuje prostředí místního vývoje. Tato knihovna také umožňuje testovat kód místně ve vývojovém počítači pomocí uživatelského účtu z Visual Studia, Azure CLI 2.0 nebo Integrované ověřování služby Active Directory. Další informace o možnostech místního vývoje v této knihovně najdete v [tématu Ověřování služeb azure key vault pomocí .NET](../key-vault/general/service-to-service-authentication.md).  
 > 
 > - V současné době spravované identity nefungují s sloty pro nasazení služby App Service.
 

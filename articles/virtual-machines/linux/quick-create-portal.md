@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: quickstart
@@ -14,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bc1dd56cd024ee65e29f227f4ec11cde436e388d
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 7642257ef9b66889c7fb2ef585f63b02d30a425e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294782"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458994"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem na webu Azure Portal
 
@@ -34,7 +33,7 @@ K dokončení tohoto rychlého startu potřebujete pár klíčů SSH. Pokud už 
 Otevřete prostředí Bash a pomocí nástroje [ssh-keygen](https://www.ssh.com/ssh/keygen/) vytvořte pár klíčů SSH. Pokud na místním počítači nemáte prostředí Bash, můžete použít [Azure Cloud Shell](https://shell.azure.com/bash).
 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V nabídce v horní části stránky `>_` vyberte ikonu pro otevření Cloud Shellu.
 1. Ujistěte se, že CloudShell říká **Bash** v levém horním rohu. Pokud je tam napsáno PowerShell, v rozevíracím souboru vyberte **Bash** a vyberte **Potvrdit,** chcete-li změnit prostředí Bash.
 1. Chcete-li vytvořit klíč ssh, zadejte. `ssh-keygen -t rsa -b 2048` 

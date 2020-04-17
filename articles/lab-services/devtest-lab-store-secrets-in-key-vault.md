@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 29a4d20390575778ccdecde390c257ccf6a48eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ca36a7081aaf70ee2045ee7586184c89591df16
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720924"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461510"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Ukládání tajných kódů do trezoru klíčů v laboratořích Azure DevTest Labs
 Možná budete muset zadat komplexní tajný klíč při použití Azure DevTest Labs: heslo pro váš virtuální počítač s Windows, veřejný klíč SSH pro váš virtuální počítač s Linuxem nebo osobní přístupový token pro klonování úložiště Gitprostředprostřednictvím artefaktu. Tajemství jsou obvykle dlouhá a mají náhodné znaky. Proto jejich zadání může být složité a nepohodlné, zvláště pokud používáte stejné tajemství vícekrát.
 
-Chcete-li tento problém vyřešit a také uchovávat vaše tajemství na bezpečném místě, DevTest Labs podporuje ukládání tajných kódů v [trezoru klíčů Azure](../key-vault/key-vault-overview.md). Když uživatel uloží tajný klíč poprvé, služba DevTest Labs automaticky vytvoří trezor klíčů ve stejné skupině prostředků, která obsahuje testovací prostředí a uloží tajný klíč do trezoru klíčů. DevTest Labs vytvoří samostatný trezor klíčů pro každého uživatele. 
+Chcete-li tento problém vyřešit a také uchovávat vaše tajemství na bezpečném místě, DevTest Labs podporuje ukládání tajných kódů v [trezoru klíčů Azure](../key-vault/general/overview.md). Když uživatel uloží tajný klíč poprvé, služba DevTest Labs automaticky vytvoří trezor klíčů ve stejné skupině prostředků, která obsahuje testovací prostředí a uloží tajný klíč do trezoru klíčů. DevTest Labs vytvoří samostatný trezor klíčů pro každého uživatele. 
 
 Upozorňujeme, že uživatel testovacího prostředí bude muset nejprve vytvořit virtuální počítač testovacího prostředí, než bude moci vytvořit tajný klíč v trezoru klíčů. Důvodem je, že služba DevTest Lab potřebuje přidružit uživatele testovacího prostředí k platnému uživatelskému dokumentu, než mohou vytvářet a ukládat tajné klíče v trezoru klíčů. 
 

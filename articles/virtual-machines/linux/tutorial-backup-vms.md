@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6c8b29052b4ca1d3ccd6f1f9b6afba5177dbd6c8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066497"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460066"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Kurz: Zálohování a obnova souborů pro virtuální počítače s Linuxem v Azure
 
@@ -43,7 +42,7 @@ Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 ## <a name="create-a-backup"></a>Vytvoření zálohy
 Vytvořte plánované denní zálohování do trezoru služby Recovery Services:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **Virtuální počítače**. 
 3. V seznamu vyberte virtuální počítač, který chcete zálohovat.
 4. V okně virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. Otevře se okno **Povolit zálohování.**

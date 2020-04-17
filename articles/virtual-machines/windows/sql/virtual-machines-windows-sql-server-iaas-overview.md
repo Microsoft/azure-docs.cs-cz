@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4186a4ed369eb289360b74c0758e5ce3f7eca929
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75374288"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482158"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server na virtuálních počítačích Azure? (Windows)
 
@@ -38,6 +38,9 @@ Virtuální počítače Azure s SQL Serverem mohou používat [Automatické opra
 ## <a name="automated-backups"></a>Automatizované zálohy
 
 Virtuální počítače Azure s SQL Serverem mohou využívat výhod [automatizovaného zálohování](virtual-machines-windows-sql-automated-backup-v2.md), které pravidelně vytváří zálohy databáze do Blob Storage. Tento postup můžete použít také ručně. Další informace najdete v tématu [Použití služby Azure Storage pro zálohování a obnovování SQL Serveru](virtual-machines-windows-use-storage-sql-server-backup-restore.md).
+
+Azure také nabízí řešení zálohování podnikové třídy pro SQL Server spuštěný ve virtuálních počítačích Azure. Plně spravované řešení zálohování podporuje skupiny dostupnosti Always On, dlouhodobé uchovávání informací, obnovení v čase a centrální správu a monitorování. Další informace najdete v tématu [Zálohování Azure pro SQL Server ve virtuálním počítači Azure](https://docs.microsoft.com/azure/backup/backup-azure-sql-database).
+  
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 
@@ -132,13 +135,13 @@ Azure pro každou podporovanou kombinaci operačního systému, jeho verze a edi
 Program Zlepšování softwaru a služeb na základě zkušeností uživatelů (CEIP) je ve výchozím nastavení povolen. Ten pravidelně odesílá zprávy do Microsoftu s cílem přispět k vylepšování SQL Serveru. S programem CEIP není spojená žádná nutná úloha správy – za předpokladu, že ho nechcete po zřízení zakázat. Tento program můžete přizpůsobit nebo vypnout připojením k virtuálnímu počítači pomocí vzdálené plochy. Pak spusťte nástroj **pro zasílání zpráv o chybách a vytváření sestav využití SQL Serveru**. Podle pokynů zakažte generování sestav. Další informace o shromažďování dat najdete v [Prohlášení o zásadách ochrany osobních údajů pro SQL Server](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement).
 
 ## <a name="related-products-and-services"></a>Související produkty a služby
-### <a name="windows-virtual-machines"></a>Virtuální počítače s Windows
+### <a name="windows-virtual-machines"></a>Windows Virtual Machines
 * [Přehled služby Virtual Machines](../overview.md)
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 * [Úvod do Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Síťové služby
+### <a name="networking"></a>Sítě
 * [Přehled služby Virtual Network](../../../virtual-network/virtual-networks-overview.md)
 * [IP adresy v Azure](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](../portal-create-fqdn.md)

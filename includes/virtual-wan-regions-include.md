@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 757367e2b9773908b81ad35615a23b1b5c67aa3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c822e8af076f74e1bccc46b7a71717d9631de0a1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80116865"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461890"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>Oblasti Azure v geopolitické oblasti
 
@@ -42,5 +42,5 @@ Připojení VPN založené na lokalitě a architektura virtuální sítě WAN js
 |Geopolitická oblast | Oblast Azure|
 |---|---|
 | Cloud vlády USA | US Gov – Arizona, US Gov – Iowa, US Gov – Texas, US Gov – Virginie, US DoD – střed, US DoD – východ |
-| Čína – východ | Čína – východ, Čína – východ 2|
-| Čína – sever | Čína – sever, Čína – sever 2 |
+| Čína – východ | Čína východ2|
+| Čína – sever | Čína Sever2 |

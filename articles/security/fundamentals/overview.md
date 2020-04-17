@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a7957c7cbcfa511ea441d8c7bd4371f56ab87560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545976"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461680"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -288,14 +288,14 @@ Pro skupiny sítě nsg můžete povolit následující kategorie diagnostických
 ### <a name="security-center"></a>Security Center
 [Azure Security Center](../../security-center/security-center-intro.md) průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální slabá místa zabezpečení, vytvoří [doporučení,](../../security-center/security-center-recommendations.md) která vás provedou procesem konfigurace potřebných ovládacích prvků pro posílení a ochranu vašich prostředků.
 
-## <a name="compute"></a>Služba Compute
+## <a name="compute"></a>Compute
 Část obsahuje další informace týkající se klíčových funkcí v této oblasti a souhrnné informace o těchto funkcích.
 
 ### <a name="antimalware--antivirus"></a>Antimalwarový & Antivirus
 S Azure IaaS můžete používat antimalwarový software od dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro, McAfee a Kaspersky, k ochraně vašich virtuálních počítačů před škodlivými soubory, adwarem a dalšími hrozbami. [Microsoft Antimalware](antimalware.md) pro Cloud Services azure a virtuální počítače je funkce ochrany, která pomáhá identifikovat a odstranit viry, spyware a další škodlivý software. Microsoft Antimalware poskytuje konfigurovatelné výstrahy, když se známý škodlivý nebo nežádoucí software pokusí nainstalovat sám nebo spustit ve vašich systémech Azure. Microsoft Antimalware lze také nasadit pomocí Azure Security Center
 
 ### <a name="hardware-security-module"></a>Modul hardwarového zabezpečení
-Šifrování a ověřování nezlepšují zabezpečení, pokud nejsou chráněny samotné klíče. Můžete zjednodušit správu a zabezpečení důležitých tajných klíčů a klíčů jejich uložením v [azure key vault](../../key-vault/key-vault-overview.md). Trezor klíčů nabízí možnost ukládat klíče do hardwarových modulů zabezpečení (HSM) certifikovaných podle standardů FIPS 140-2 Level 2. Šifrovací klíče serveru SQL Server pro zálohování nebo [transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx) mohou být uloženy v trezoru klíčů s libovolnými klíči nebo tajnými klíči z vašich aplikací. Oprávnění a přístup k těmto chráněným položkám se spravují prostřednictvím [služby Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+Šifrování a ověřování nezlepšují zabezpečení, pokud nejsou chráněny samotné klíče. Můžete zjednodušit správu a zabezpečení důležitých tajných klíčů a klíčů jejich uložením v [azure key vault](../../key-vault/general/overview.md). Trezor klíčů nabízí možnost ukládat klíče do hardwarových modulů zabezpečení (HSM) certifikovaných podle standardů FIPS 140-2 Level 2. Šifrovací klíče serveru SQL Server pro zálohování nebo [transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx) mohou být uloženy v trezoru klíčů s libovolnými klíči nebo tajnými klíči z vašich aplikací. Oprávnění a přístup k těmto chráněným položkám se spravují prostřednictvím [služby Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
 ### <a name="virtual-machine-backup"></a>Zálohování virtuálního počítače
 [Azure Backup](../../backup/backup-overview.md) je řešení, které chrání data aplikací s nulovými kapitálovými investicemi a minimálními provozními náklady. Chyby aplikací mohou poškodit vaše data a lidské chyby mohou zavádět chyby do vašich aplikací, které mohou vést k problémům se zabezpečením. S Azure Backup jsou chráněné vaše virtuální počítače se systémem Windows a Linux.

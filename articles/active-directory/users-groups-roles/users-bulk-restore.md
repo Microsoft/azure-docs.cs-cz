@@ -1,11 +1,11 @@
 ---
-title: Hromadné obnovení odstraněných uživatelů (preview) na portálu Azure Active Directory | Dokumenty společnosti Microsoft
+title: Odstranění uživatelé hromadného obnovení na portálu Azure Active Directory | Dokumenty společnosti Microsoft
 description: Hromadné obnovení odstraněných uživatelů v Centru pro správu Azure AD ve službě Azure Active Directory
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/15/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75fe224491c2853f819a45db678e87849dc72d1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174268"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532699"
 ---
-# <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>Odstranění uživatelé (preview) hromadného obnovení ve službě Azure Active Directory
+# <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Odstranění uživatelé s hromadným obnovením ve službě Azure Active Directory
 
 Azure Active Directory (Azure AD) podporuje hromadné uživatelské operace vytváření a odstraňování, hromadné pozvání pro hosty a podporuje stahování seznamů uživatelů, skupin a členů skupiny.
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) podporuje hromadné uživatelské operace vytv
 
    ![Vyberte místní soubor CSV, do kterého uvedete seznam uživatelů, které chcete přidat.](./media/users-bulk-restore/upload-button.png)
 
-1. Na stránce **Hromadné obnovení (náhled)** vyhledejte v části **Upload souboru CSV**soubor. Když vyberete soubor a klepnete na **tlačítko Odeslat**, spustí se ověření souboru CSV.
+1. Na stránce **Hromadné obnovení** vyhledejte v části **Upload souboru CSV**soubor. Když vyberete soubor a klepnete na **tlačítko Odeslat**, spustí se ověření souboru CSV.
 1. Po ověření obsahu souboru se **soubor úspěšně nahraje**. Pokud se jedná o chyby, je nutné je před odesláním úlohy opravit.
 1. Když váš soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která obnoví uživatele.
 1. Po dokončení operace obnovení se zobrazí oznámení, že hromadná operace byla úspěšná.
@@ -45,9 +45,9 @@ Pokud dojde k chybám, můžete soubor výsledků stáhnout a zobrazit na strán
 
 ## <a name="check-status"></a>Zkontrolování stavu
 
-Stav všech nevyřízených hromadných požadavků můžete zobrazit na stránce **Výsledky hromadné operace (preview).**
+Stav všech nevyřízených hromadných požadavků můžete zobrazit na stránce **S výsledky hromadné operace.**
 
-   ![Kontrola stavu nahrávání na stránce Výsledky hromadných operací](./media/users-bulk-restore/bulk-center.png)
+[![](media/users-bulk-restore/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-restore/bulk-center.png#lightbox)
 
 Dále můžete zkontrolovat, zda uživatelé, které jste obnovili, existují v organizaci Azure AD buď na webu Azure Portal, nebo pomocí PowerShellu.
 

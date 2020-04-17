@@ -2,13 +2,13 @@
 title: Otázky týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate
 description: Získejte odpovědi na běžné otázky týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 7a63271811053ee2da79f134ac117559e31b0fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 700e5318b66cdf4993a17b1dae85fb43f75ab035
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460802"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529769"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýza zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -19,9 +19,16 @@ Tento článek odpovídá na běžné otázky týkající se zjišťování, hod
 - Otázky týkající se [migrace serveru](common-questions-server-migration.md)
 - Získejte odpovědi na otázky ve [fóru Migrace Azure](https://aka.ms/AzureMigrateForum)
 
+
+## <a name="what-geographies-are-supported-for-discovery-and-assessment-with-azure-migrate"></a>Jaké zeměpisné oblasti jsou podporované pro zjišťování a hodnocení pomocí Migrace Azure?
+
+Projděte si podporované zeměpisné oblasti pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
+
+
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Kolik virtuálních zařízení můžu zjistit pomocí zařízení?
 
 Pomocí jednoho zařízení můžete objevit až 10 000 virtuálních zařízení VMware, až 5 000 virtuálních virtuálních zařízení Hyper-V a až 250 fyzických serverů. Pokud máte více počítačů, přečtěte si o [škálování hodnocení Technologie Hyper-V](scale-hyper-v-assessment.md), [škálování hodnocení VMware](scale-vmware-assessment.md)nebo [škálování hodnocení fyzického serveru](scale-physical-assessment.md).
+
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>Velikost virtuálního počítače se změnila. Mohu znovu spustit hodnocení?
 

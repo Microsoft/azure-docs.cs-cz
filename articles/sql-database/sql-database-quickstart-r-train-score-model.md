@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: a54d418f668d8c7292c8332c1b14c4df45e59308
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3c88bdf141e7784837a89c8104574d97c93296dc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768464"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460150"
 ---
 # <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Úvodní příručka: Vytvoření a trénování prediktivního modelu v R se službami Machine Learning Services azure SQL database (preview)
 
@@ -30,11 +31,8 @@ V tomto rychlém startu vytvoříte a trénete prediktivní model pomocí R, ulo
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Databáze Azure SQL](sql-database-single-database-get-started.md) s [pravidlem brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md)
-- [Služby strojového učení](sql-database-machine-learning-services-overview.md) s povolenou r. [Zaregistrovat verzi Preview](sql-database-machine-learning-services-overview.md#signup)
+- [Služby strojového učení](sql-database-machine-learning-services-overview.md) s povolenou r.
 - [Sql Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
-
-> [!NOTE]
-> Během veřejné verze Preview vás Microsoft připojí k vaší službě a umožní strojové učení pro vaši stávající nebo novou databázi.
 
 Tento příklad používá jednoduchý regresní model k předvídání brzdné dráhy vozu na základě rychlosti pomocí datové sady **vozů,** která je součástí r.
 
@@ -169,7 +167,7 @@ VALUES (
     )
 ```
 
-**Results**
+**Výsledky**
 
 ![Natrénovaný model s dalším výstupem](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
@@ -237,7 +235,7 @@ Všimli jste si, že původní trénovací data končila rychlostí 25 MPH? Je t
                 ));
    ```
 
-   **Results**
+   **Výsledky**
 
    ![Sada výsledků dotazu pro předpověď brzdné dráhy](./media/sql-database-quickstart-r-train-score-model/r-predict-stopping-distance-resultset.png)
 

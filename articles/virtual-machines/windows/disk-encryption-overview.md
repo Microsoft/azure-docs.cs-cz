@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e00fee8841a2d5a817a00b942bfe0733a80b2cfc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b2fe7e4fbe4830567533053580880315ceface5d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546320"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458875"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Šifrování disku Azure pro virtuální počítače s Windows 
 
@@ -54,7 +54,7 @@ Chcete-li povolit azure disk encryption, virtuální počítače musí splňovat
   - Chcete-li získat token pro připojení k trezoru klíčů, musí být virtuální počítač \[s\]Windows schopen se připojit ke koncovému bodu Služby Azure Active Directory, login.microsoftonline.com .
   - Chcete-li zapsat šifrovací klíče do trezoru klíčů, musí být virtuální počítač se systémem Windows schopen se připojit ke koncovému bodu trezoru klíčů.
   - Virtuální počítač s Windows musí být moc schopen se připojit ke koncovému bodu úložiště Azure, který je hostitelem úložiště rozšíření Azure a účtu úložiště Azure, který hostuje soubory Virtuálního pevného disku.
-  -  Pokud vaše zásady zabezpečení omezují přístup z virtuálních počítačů Azure k Internetu, můžete vyřešit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo, které umožní odchozí připojení k IP adresám. Další informace naleznete v [tématu Azure Key Vault za bránou firewall](../../key-vault/key-vault-access-behind-firewall.md).    
+  -  Pokud vaše zásady zabezpečení omezují přístup z virtuálních počítačů Azure k Internetu, můžete vyřešit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo, které umožní odchozí připojení k IP adresám. Další informace naleznete v [tématu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).    
 
 
 ## <a name="group-policy-requirements"></a>Požadavky zásad skupiny

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 48e2ec7f853ce94263f4e843b529609d5376ed5b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8e6fd4955d6d68764895619efd968a957bcb5184
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424038"
+ms.locfileid: "81460592"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazovat se na soubory úložiště pomocí prostředků SQL na vyžádání (preview) v rámci Synapse SQL
 
@@ -141,7 +141,7 @@ Další informace naleznete v části Filepath v článku [Soubory specifické p
 
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Práce se složitými typy a vnořenými nebo opakovanými datovými strukturami
 
-Aby bylo možné pracovat s daty uloženými v vnořených nebo opakovaných datových typech, například v [parketových](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) souborech, přidalstarlight níže uvedená rozšíření.
+Chcete-li povolit plynulé prostředí při práci s daty uloženými v vnořených nebo opakovaných datových typech, například v [parketových](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) souborech, sql na vyžádání přidal níže uvedená rozšíření.
 
 #### <a name="project-nested-or-repeated-data"></a>Vnořená nebo opakovaná data projektu
 

@@ -3,12 +3,12 @@ title: Kurz – ukládání stavu Terraform v úložišti Azure Storage
 description: Úvod do ukládání terraform stavu ve službě Azure Storage.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 1cc475e5070b21a7ea96585f2183c07d258acdc5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c94c66969c517bd0e51117ab7c6ed6a889149518
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75708420"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459011"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Kurz: Ukládání stavu Terraform v úložišti Azure Storage
 
@@ -67,7 +67,7 @@ Vytvořte proměnnou `ARM_ACCESS_KEY` prostředí s názvem s hodnotou přístup
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Chcete-li dále chránit přístupový klíč účtu Azure Storage, uložte ho do azure key vaultu. Proměnnou prostředí lze potom nastavit pomocí příkazu podobného následujícímu. Další informace o Azure Key Vault najdete v [dokumentaci k úložišti klíčů Azure](../key-vault/quick-create-cli.md).
+Chcete-li dále chránit přístupový klíč účtu Azure Storage, uložte ho do azure key vaultu. Proměnnou prostředí lze potom nastavit pomocí příkazu podobného následujícímu. Další informace o Azure Key Vault najdete v [dokumentaci k úložišti klíčů Azure](../key-vault/secrets/quick-create-cli.md).
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)

@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 06d05d6d410af13bfbe85f3cb66523c1d48cb77c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1f3a24afb2238c2448cb19b3889467a1b1819724
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70195661"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460541"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Týmová analýza založená na virtuálních počítačích pro datové vědy a prostředí ai 
 [Virtuální počítač pro datové vědy](overview.md) (DSVM) poskytuje bohaté prostředí na platformě Azure s předem vytvořeným softwarem pro umělou inteligenci (AI) a analýzu dat.
@@ -40,10 +40,10 @@ Tato řada poskytuje pokyny a ukazatele pro každé z předchozích témat. Neza
 * [Zabezpečení sítě](https://docs.microsoft.com/azure/security/fundamentals/network-security)
 * [Monitorování](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) a [řízení](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [Protokolování a auditování](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
-* [Řízení přístupu založené na rolích](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Řízení přístupu na základě role](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Nastavení a vynucení zásad](../../governance/policy/overview.md)
 * [Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [Šifrování](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
+* [Šifrování](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview.md)
 * [Zjišťování a zásady správného řízení dat](https://docs.microsoft.com/azure/data-catalog/)
 
 A konečně, [Centrum architektury Azure](https://docs.microsoft.com/azure/architecture/) poskytuje podrobnou komplexní architekturu a modely pro vytváření a správu cloudové analytické infrastruktury.

@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/12/2019
-ms.openlocfilehash: a6b3b1d11242434088c138460d968f39d5273e4f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/15/2020
+ms.openlocfilehash: 4c510cae7ba5a952e6dc7f7cb7ae7591fe801560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418418"
+ms.locfileid: "81461289"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Posun schématu v toku dat mapování
 
@@ -30,6 +30,10 @@ Chcete-li se chránit před posunem schématu, je důležité mít zařízení v
 Azure Data Factory nativně podporuje flexibilní schémata, která se mění z provádění na spuštění, takže můžete vytvářet obecnou logiku transformace dat bez nutnosti překompilovat toky dat.
 
 Musíte provést architektonické rozhodnutí v toku dat přijmout posun schématu v celém toku. Když toto provést, můžete chránit před změnami schématu ze zdrojů. Vprůběhu toku dat však ztratíte časnou vazbu sloupců a typů. Azure Data Factory považuje drift schématu jako toky pozdní vazby, takže při vytváření transformací, unášené názvy sloupců nebude k dispozici v zobrazení schématu v celém toku.
+
+Toto video poskytuje úvod do některých složitých řešení, které můžete snadno vytvářet v adf s funkcí posunu schématu toku dat. V tomto příkladu vytvoříme opakovaně použitelné vzory založené na flexibilních schématech databáze:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tyx7]
 
 ## <a name="schema-drift-in-source"></a>Posun schématu ve zdroji
 

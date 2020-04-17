@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 03/20/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 795d21e05ade652b52c06d597ca4c5fef85e7245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ddb4b2cd465b5e9542d777d33b9bd8cb952becd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80152803"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531333"
 ---
-# <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového štítku
+# <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového nástroje pro popisování
 
 Nástroj pro rozpoznávání vzorků formuláře je aplikace, která poskytuje jednoduché uživatelské rozhraní (UI), které můžete použít k ručnímu označení formulářů (dokumentů) pro účely učení pod dohledem. V tomto článku vám poskytneme odkazy a pokyny, které vás naučí:
 
@@ -34,14 +34,14 @@ Nejrychlejší způsob, jak začít popisovat data, je spustit ukázkový nástr
 
 Než začneme, je důležité si uvědomit, že existují dva způsoby, jak nasadit nástroj pro označování ukázkových vzorků do instance kontejneru Azure (ACI). Obě možnosti se používají ke spuštění ukázkového štítkovacího nástroje s ACI: 
 
-* [Používání portálu Azure](#azure-portal)
+* [Použití webu Azure Portal](#azure-portal)
 * [Pomocí Azure CLI](#azure-cli)
 
 ### <a name="azure-portal"></a>portál Azure
 
 Podle těchto kroků vytvořte nový prostředek pomocí webu Azure Portal: 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/signin/index/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/signin/index/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Dále vyberte **Web App**. 
 
@@ -76,6 +76,7 @@ Podle těchto kroků vytvořte nový prostředek pomocí webu Azure Portal:
    * Uživatelské jméno (Volitelné) - Vytvořte uživatelské jméno. 
    * Heslo (volitelné) – Vytvořte si bezpečné heslo, které si zapamatujete.
    * Obrázek a značka - Nastavte tuto`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * Průběžné nasazení – nastavte tuto možnost **na zapnuto,** pokud chcete dostávat automatické aktualizace, když vývojový tým provede změny v nástroji pro popisování vzorků.
    * Příkaz Po spuštění – nastavte tuto položku na`./run.sh eula=accept`
 
    > [!div class="mx-imgBorder"]

@@ -8,14 +8,14 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 000659793707c860de881f150e6ce07e4506c602
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3d533080af373ca209a9b393d02d1606d7cb22d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064954"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461731"
 ---
-# <a name="open-a-support-ticket-for-azure-data-box"></a>Otevření lístku podpory pro Azure Data Box 
+# <a name="open-a-support-ticket-for-azure-data-box"></a>Otevření lístku podpory pro Azure Data Box
 
 Tento článek se vztahuje na Azure Data Box, Azure Data Box Heavy a Azure Data Box Disk, které všechny jsou spravované službou Azure Data Box. Pokud narazíte na nějaké problémy se službou Azure Data Box, můžete vytvořit žádost o službu pro technickou podporu. Tento článek vás provede:
 
@@ -27,21 +27,21 @@ Tento článek se vztahuje na Azure Data Box, Azure Data Box Heavy a Azure Data 
 Chcete-li vytvořit žádost o podporu, proveďte následující kroky:
 
 1. Přejděte do objednávky datové schránky nebo datové schránky. Přejděte do části **PODPORA + PORADCE PŘI POTÍŽÍCH** a potom klepněte na tlačítko Nová žádost o **podporu**.
-     
+
     ![Nová žádost o podporu](./media/data-box-disk-contact-microsoft-support/data-box-disk-support-request.png)
-   
+
 2. V **části Nová žádost o podporu**vyberte **položku Základy**. V **části Základy**postupujte takto:
-    
+
     1. V rozevíracím seznamu **Typ problému** vyberte **možnost Technické**.
     2. Zvolte **předplatné**.
     3. V části **Služba**zaškrtněte **políčko Všechny služby**. V rozevíracím seznamu vyberte **Datový schránka**. 
     4. Zadejte **plán podpory**.
-    5. Klikněte na **Další**.
+    5. Klikněte na **Další**.
 
         ![Základy](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
 3. V **části Nová žádost o podporu**vyberte možnost Problém kroku **2**. V **části Problém**postupujte takto:
-    
+
     1. Zvolte **závažnost** jako **C - Minimální dopad**. Podpora ji v případě potřeby aktualizuje.
     2. V rozevíracím seznamu vyberte **typ problém.**
     3. Na základě vybraného typu problému zvolte odpovídající **kategorii**.
@@ -49,7 +49,7 @@ Chcete-li vytvořit žádost o podporu, proveďte následující kroky:
     5. Zadejte počáteční datum a čas problému.
     6. Při **nahrávání souborů**klikněte na ikonu složky a procházejte další soubory, které chcete nahrát.
     7. Zkontrolujte **sdílení diagnostických informací**.
-    8. Klikněte na **Další**.
+    8. Klikněte na **Další**.
 
        ![Problém](./media/data-box-disk-contact-microsoft-support/data-box-disk-support2.png)
 
@@ -58,7 +58,7 @@ Chcete-li vytvořit žádost o podporu, proveďte následující kroky:
    1. V **možnostech Kontakt**uveďte preferovaný způsob kontaktu (telefon nebo e-mail) a jazyk. Doba odezvy je automaticky vybrána na základě plánu předplatného.
    2. V **kontaktních údajích**uveďte své jméno, e-mail, volitelný kontakt, zemi nebo oblast. Vyberte **možnost Uložit změny kontaktů pro budoucí žádosti o podporu**.
    3. Klikněte na **Vytvořit**.
-   
+
        ![Kontaktní informace](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
       Podpora společnosti Microsoft používá tyto informace k tomu, aby vás oslovila za účelem dalších informací, diagnostiky a řešení.
@@ -72,15 +72,14 @@ Po vytvoření lístku můžete spravovat lístek v celém jeho životním cyklu
 
 1. Chcete-li se dostat na stránku nápovědy a podpory, přejděte na **procházet > nápovědu + podporu**.
 
-    ![Správa žádostí o podporu](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)   
+    ![Správa žádostí o podporu](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)
 
 2. V **nápovědě + podpoře**se zobrazí tabulkový seznam **posledních žádostí o podporu** .
 
-    ![Správa žádostí o podporu](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png) 
+    ![Správa žádostí o podporu](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
 
 3. Vyberte a klikněte na žádost o podporu. Můžete zobrazit stav a podrobnosti pro tento požadavek. Chcete-li na tento požadavek navázat, klepněte na tlačítko **+ Nová zpráva.**
 
-   
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte [si, jak řešit problémy související s diskem datové schránky](data-box-disk-troubleshoot.md).

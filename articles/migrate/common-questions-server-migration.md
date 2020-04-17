@@ -3,12 +3,12 @@ title: Nejčastější dotazy k migraci serveru Azure
 description: Získejte odpovědi na časté otázky týkající se migrace počítačů pomocí migrace serveru Azure.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: cc78d2087dcaad2922ca6b6d9c090a8decdb6e84
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: bf33c276c721f3be16d75b964c2b223e90c2a560
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393800"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529790"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace migrace serveru Azure: Běžné otázky
 
@@ -18,6 +18,10 @@ Tento článek odpovídá na běžné otázky týkající se nástroje Migrace A
 - Otázky týkající se [zařízení Azure Migrate](common-questions-appliance.md)
 - Otázky týkající se [vizualizace zjišťování, hodnocení a závislosti](common-questions-discovery-assessment.md)
 - Získejte odpovědi na otázky ve [fóru Migrace Azure](https://aka.ms/AzureMigrateForum)
+
+## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Jaké geografické oblasti jsou podporované pro migraci pomocí migrace Azure?
+
+Projděte si podporované zeměpisné oblasti pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>Jak replikace VMware bez agenta funguje?
 

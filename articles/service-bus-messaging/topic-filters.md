@@ -3,22 +3,21 @@ title: Filtry tématu Azure Service Bus | Dokumenty společnosti Microsoft
 description: Tento článek vysvětluje, jak mohou odběratelé definovat, které zprávy chtějí přijímat z tématu zadáním filtrů.
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
-manager: timlt
+author: spelluru
 editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/27/2020
+ms.topic: conceptual
+ms.date: 04/16/2020
 ms.author: spelluru
-ms.openlocfilehash: b8ffbb16763bfe6485ebf2ab770f4537ddbc8569
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb6092b7ccb3d1a4214f8d26119d9dc50b0ed317
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774495"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482054"
 ---
 # <a name="topic-filters-and-actions"></a>Akce a filtry témat
 
@@ -30,13 +29,24 @@ Service Bus podporuje tři podmínky filtru:
 
 -   *Logické filtry* - **TrueFilter** a **FalseFilter** buď způsobit všechny příchozí zprávy **(true)** nebo žádný z příchozích zpráv (**false**) mají být vybrány pro odběr.
 
--   *SQL Filters* - **SqlFilter** obsahuje podmíněný výraz podobný SQL, který je vyhodnocen v zprostředkovateli proti vlastnostem definovaným uživatelem a vlastnostem systému příchozích zpráv. Všechny vlastnosti systému `sys.` musí být v podmíněném výrazu předponou. [Podmnožina jazyka SQL pro podmínky filtru](service-bus-messaging-sql-filter.md) testuje`EXISTS`existenci vlastností ( ),`IS NULL`stejně jako hodnoty null ( ), logické NOT/AND/OR, relační operátory, jednoduché číselné aritmetické a jednoduché porovnávání textových vzorů s `LIKE`.
+-   *SQL Filters* - **SqlFilter** obsahuje podmíněný výraz podobný SQL, který je vyhodnocen v zprostředkovateli proti vlastnostem definovaným uživatelem a vlastnostem systému příchozích zpráv. Všechny vlastnosti systému `sys.` musí být v podmíněném výrazu předponou. [Podmnožina jazyka SQL pro podmínky filtru](service-bus-messaging-sql-filter.md) testuje`EXISTS`existenci vlastností`IS NULL`( ), hodnot null ( ), logických NOT/AND/OR, relačních operátorů, jednoduché číselné aritmetiky a jednoduchého porovnávání textových vzorů s `LIKE`.
 
--   *Korelační filtry* - **CorrelationFilter** obsahuje sadu podmínek, které jsou porovnány s jedním nebo více příchozí zprávy uživatele a vlastnosti systému. Běžné použití je porovnat s **Vlastnost CorrelationId,** ale aplikace můžete také zvolit, aby **odpovídaly ContentType**, **Label**, **MessageId**, **ReplyTo**, **ReplyToSessionId**, **SessionId**, **To**a všechny vlastnosti definované uživatelem. Shoda existuje, pokud se hodnota příchozí zprávy pro vlastnost rovná hodnotě zadané ve filtru korelace. Pro řetězcové výrazy je porovnání rozlišováno malá a velká písmena. Při zadávání více vlastností shody je filtr kombinuje jako logickou podmínku AND, což znamená, že filtr odpovídá, musí se všechny podmínky shodovat.
+-   *Korelační filtry* - **CorrelationFilter** obsahuje sadu podmínek, které jsou porovnány s jedním nebo více příchozí zprávy uživatele a vlastnosti systému. Běžné použití je porovnat s **Vlastnost CorrelationId,** ale aplikace můžete také zvolit, aby odpovídaly následující vlastnosti:
 
-Všechny filtry vyhodnocují vlastnosti zprávy. Filtry nemohou vyhodnotit text zprávy.
+    - **Contenttype**
+     - **Popisek**
+     - **Messageid**
+     - **Odpovědět**
+     - **ReplyToSessionId**
+     - **Sessionid** 
+     - **Akce**
+     - všechny uživatelem definované vlastnosti. 
+     
+     Shoda existuje, pokud se hodnota příchozí zprávy pro vlastnost rovná hodnotě zadané ve filtru korelace. Pro řetězcové výrazy je porovnání rozlišováno malá a velká písmena. Při zadávání více vlastností shody je filtr kombinuje jako logickou podmínku AND, což znamená, že filtr odpovídá, musí se všechny podmínky shodovat.
 
-Komplexní pravidla filtru vyžadují kapacitu zpracování. Zejména použití pravidel filtru SQL má za následek nižší celkovou propustnost zpráv na úrovni předplatného, tématu a oboru názvů. Kdykoli je to možné, aplikace by měly zvolit filtry korelace přes filtry podobné SQL, protože jsou mnohem efektivnější při zpracování a proto mají menší dopad na propustnost.
+Všechny filtry vyhodnocují vlastnosti zprávy. Filtry nelze vyhodnotit text zprávy.
+
+Komplexní pravidla filtru vyžadují kapacitu zpracování. Zejména použití pravidel filtru SQL způsobit nižší celkovou propustnost zpráv na úrovni předplatného, tématu a oboru názvů. Kdykoli je to možné, aplikace by měly zvolit filtry korelace přes filtry podobné SQL, protože jsou mnohem efektivnější při zpracování a mají menší dopad na propustnost.
 
 ## <a name="actions"></a>Akce
 
@@ -52,10 +62,17 @@ Dělení používá filtry k distribuci zpráv mezi několik existujících pře
 
 Směrování používá filtry k distribuci zpráv mezi předplatnými témat předvídatelným způsobem, ale ne nutně výhradní. Ve spojení s funkcí [automatického předávání](service-bus-auto-forwarding.md) tématu filtry tématu lze použít k vytvoření složitých směrovacích grafů v rámci oboru názvů Service Bus pro distribuci zpráv v rámci oblasti Azure. Díky funkcím Azure nebo logicovým aplikacím Azure, které fungují jako most mezi obory názvů Azure Service Bus, můžete vytvářet složité globální topologie s přímou integrací do podnikových aplikací.
 
+
+> [!NOTE]
+> V současné době portál Azure neumožňuje zadat pravidla filtru pro předplatná. K definování pravidel předplatného můžete použít některou z podporovaných sad SDK nebo šablony Azure Resource Manager. 
+
 ## <a name="next-steps"></a>Další kroky
+Viz následující ukázky: 
 
-Další informace o zasílání zpráv služby Service Bus najdete v následujících tématech:
+- [.NET - Základní kurz odesílání a přijímání s filtry](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
+- [.NET - Filtry témat](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
+- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/samples/javascript/advanced/topicFilters.js)
+- [Typ skriptu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/samples/typescript/src/advanced/topicFilters.ts)
+- [Šablona Azure Resource Manageru](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
 
-* [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Syntaxe SQLFilter](service-bus-messaging-sql-filter.md)
-* [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+

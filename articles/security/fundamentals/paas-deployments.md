@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811473"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461697"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -74,7 +74,7 @@ Principy a vzory pro obvod sítě jsou k dispozici po celá desetiletí. Naproti
 Následují doporučené postupy pro správu obvodu identity.
 
 **Osvědčený postup:** Zabezpečte své klíče a přihlašovací údaje k zabezpečení nasazení PaaS.   
-**Podrobnosti**: Ztráta klíčů a přihlašovacích údajů je běžný problém. Můžete použít centralizované řešení, kde klíče a tajné klíče mohou být uloženy v modulech hardwarového zabezpečení (HSM). [Azure Key Vault](../../key-vault/key-vault-overview.md) chrání vaše klíče a tajné klíče šifrováním ověřovacích klíčů, klíčů účtů úložiště, šifrovacích klíčů dat, souborů Pfx a hesel pomocí klíčů chráněných bezpečnostními počítači.
+**Podrobnosti**: Ztráta klíčů a přihlašovacích údajů je běžný problém. Můžete použít centralizované řešení, kde klíče a tajné klíče mohou být uloženy v modulech hardwarového zabezpečení (HSM). [Azure Key Vault](../../key-vault/general/overview.md) chrání vaše klíče a tajné klíče šifrováním ověřovacích klíčů, klíčů účtů úložiště, šifrovacích klíčů dat, souborů Pfx a hesel pomocí klíčů chráněných bezpečnostními počítači.
 
 **Osvědčený postup**: Nevložte přihlašovací údaje a další tajné klíče do zdrojového kódu nebo GitHubu.   
 **Detail**: Jediná věc horší než ztráta klíčů a přihlašovacích údajů je mít neoprávněnou stranu získat přístup k nim. Útočníci mohou využít technologie bot k vyhledání klíčů a tajných kódů uložených v úložištích kódu, jako je GitHub. Nevložte klíč a tajné klíče do těchto úložišť veřejného kódu.

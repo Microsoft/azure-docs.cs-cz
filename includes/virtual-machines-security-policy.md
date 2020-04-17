@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 14a6703b3e256d33ab3b18e1821587cc3eb293db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1ec61bf18248ea56c8ee5e430a671af7f39d732
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79382227"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458658"
 ---
 Je důležité, aby váš virtuální počítač (VM) zabezpečené pro aplikace, které spustíte. Zabezpečení virtuálních počítačů může zahrnovat jednu nebo více služeb Azure a funkcí, které zahrnují zabezpečený přístup k vašim virtuálním počítačům a zabezpečené úložiště vašich dat. Tento článek obsahuje informace, které vám umožní zabezpečit virtuální počítač a aplikace.
 
@@ -39,7 +39,7 @@ Další informace o šifrování na straně serveru naleznete v článcích pro 
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Pro vylepšené zabezpečení a dodržování předpisů [virtuálních](../articles/virtual-machines/windows/encrypt-disks.md) počítačů s Windows a [Linuxem](../articles/virtual-machines/linux/disk-encryption-overview.md) můžou být virtuální disky v Azure šifrované. Virtuální disky na virtuálních počítačích se systémem Windows jsou šifrovány v klidovém stavu pomocí nástroje BitLocker. Virtuální disky na virtuálních počítačích s Linuxem jsou šifrované v klidovém stavu pomocí dm-crypt. 
+Pro vylepšené zabezpečení a dodržování předpisů [virtuálních](../articles/virtual-machines/windows/disk-encryption-overview.md) počítačů s Windows a [Linuxem](../articles/virtual-machines/linux/disk-encryption-overview.md) můžou být virtuální disky v Azure šifrované. Virtuální disky na virtuálních počítačích se systémem Windows jsou šifrovány v klidovém stavu pomocí nástroje BitLocker. Virtuální disky na virtuálních počítačích s Linuxem jsou šifrované v klidovém stavu pomocí dm-crypt. 
 
 Šifrování virtuálních disků v Azure se neúčtuje. Kryptografické klíče jsou uloženy v trezoru klíčů Azure pomocí softwarové ochrany nebo můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM) certifikovaných podle standardů FIPS 140-2 úrovně 2. Tyto kryptografické klíče se používají k šifrování a dešifrování virtuálních disků připojených k virtuálnímu počítači. Zachováte kontrolu nad těmito kryptografickými klíči a můžete auditovat jejich použití. Objekt zabezpečení služby Azure Active Directory poskytuje zabezpečený mechanismus pro vydávání těchto kryptografických klíčů, protože virtuální počítače jsou zapnuté a vypínaté.
 

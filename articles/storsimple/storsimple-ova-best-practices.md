@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544329"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460643"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Osvědčené postupy pro StorSimple Virtual Array
 
@@ -199,7 +199,7 @@ Při konfiguraci akreditivů pro svazky StorSimple použijte následující dopo
 ### <a name="data-security-and-encryption"></a>Zabezpečení a šifrování dat
 Vaše virtuální pole StorSimple má funkce zabezpečení dat a šifrování, které zajišťují důvěrnost a integritu vašich dat. Při použití těchto funkcí doporučujeme dodržovat tyto doporučené postupy: 
 
-* Před odesláním dat z virtuálního pole do cloudu definujte šifrovací klíč cloudového úložiště pro generování šifrování AES-256. Tento klíč není vyžadován, pokud jsou data zašifrována. Klíč lze generovat a uchovávat v bezpečí pomocí systému správy klíčů, jako je [například trezor klíčů Azure](../key-vault/key-vault-overview.md).
+* Před odesláním dat z virtuálního pole do cloudu definujte šifrovací klíč cloudového úložiště pro generování šifrování AES-256. Tento klíč není vyžadován, pokud jsou data zašifrována. Klíč lze generovat a uchovávat v bezpečí pomocí systému správy klíčů, jako je [například trezor klíčů Azure](../key-vault/general/overview.md).
 * Při konfiguraci účtu úložiště prostřednictvím služby StorSimple Manager se ujistěte, že povolíte režim TLS a vytvoříte zabezpečený kanál pro síťovou komunikaci mezi zařízením StorSimple a cloudem.
 * Pravidelně obnovujte klíče pro vaše účty úložiště (přístupem ke službě Azure Storage) tak, aby odpovídaly všem změnám v přístupu na základě změněného seznamu správců.
 * Data ve virtuálním poli se před odesláním do Azure komprimují a deduplikují. Nedoporučujeme používat službu role Odstranění duplicitních dat na hostiteli systému Windows Server.

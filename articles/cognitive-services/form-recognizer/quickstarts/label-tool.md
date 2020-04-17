@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0cfe58ab0d161019d5f53d9135c65db7beff2bb4
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 790e2a148385f9da54df82f597c2ca52124dc2be
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397998"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529841"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trénování modelu rozpoznávání formulářů pomocí popisků pomocí nástroje pro označování vzorků
 
@@ -49,7 +49,7 @@ Budete používat modul Docker ke spuštění ukázkového štítku. Podle těch
 
    Nainstalujte Docker do počítače podle příslušných pokynů pro váš operační systém: 
    * [Windows](https://docs.docker.com/docker-for-windows/)
-   * [Macos](https://docs.docker.com/docker-for-mac/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
 1. Získejte kontejner nástrojů pro `docker pull` označování vzorků pomocí příkazu.
@@ -104,7 +104,7 @@ Vyplňte pole následujícími hodnotami:
 V ukázkovém štítkovacím nástroji projekty ukládají konfigurace a nastavení. Vytvořte nový projekt a vyplňte pole následujícími hodnotami:
 
 * **Zobrazovaný název** - zobrazovaný název projektu
-* **Token zabezpečení** – některá nastavení projektu mohou obsahovat citlivé hodnoty, například klíče rozhraní API nebo jiné sdílené tajné klíče. Každý projekt vygeneruje token zabezpečení, který lze použít k šifrování nebo dešifrování citlivých nastavení projektu. Bezpečnostní žetony najdete v nastavení aplikace kliknutím na ikonu ozubeného kola v dolním rohu levého navigačního panelu.
+* **Token zabezpečení** – některá nastavení projektu mohou obsahovat citlivé hodnoty, například klíče rozhraní API nebo jiné sdílené tajné klíče. Každý projekt vygeneruje token zabezpečení, který lze použít k šifrování nebo dešifrování citlivých nastavení projektu. Bezpečnostní tokeny najdete v nastavení aplikace kliknutím na ikonu ozubeného kola v dolní části levého navigačního panelu.
 * **Zdrojpřipojení** – Azure blob storage připojení, které jste vytvořili v předchozím kroku, který chcete použít pro tento projekt.
 * **Cesta ke složce** – volitelné – pokud jsou zdrojové formuláře umístěny ve složce kontejneru objektů blob, zadejte název složky zde
 * **Identifikátor URI služby pro rozpoznávání** formulářů – adresa URL koncového bodu nástroje pro rozpoznávání formulářů.
@@ -130,9 +130,9 @@ Chcete-li získat informace o rozložení textu pro každý dokument, klepněte 
 Dále vytvoříte značky (popisky) a použijete je na textové prvky, které má model rozpoznat.
 
 1. Nejprve použijte podokno editoru značek k vytvoření značek, které chcete identifikovat.
-  1. Klepnutím **+** vytvoříte novou značku.
-  1. Zadejte název značky.
-  1. Stisknutím klávesy Enter značku uložte.
+   1. Klepnutím **+** vytvoříte novou značku.
+   1. Zadejte název značky.
+   1. Stisknutím klávesy Enter značku uložte.
 1. V hlavním editoru klepnutím a tažením vyberte jedno nebo více slov ze zvýrazněných textových prvků.
 1. Klikněte na značku, kterou chcete použít, nebo stiskněte odpovídající klávesu. Číselné klávesy jsou přiřazeny jako klávesové zkratky pro prvních 10 značek. Pořadí značek můžete nastavit pomocí ikon šipky nahoru a dolů v podokně editoru značek.
     > [!Tip]
@@ -144,15 +144,30 @@ Dále vytvoříte značky (popisky) a použijete je na textové prvky, které m�
     > * Nezahrnujte do označených&mdash;polí klíče pouze hodnoty.
     > * Data tabulky by měla být detekována automaticky a budou k dispozici v konečném výstupním souboru JSON. Pokud se však modelu nepodaří zjistit všechna data tabulky, můžete tato pole označit ručně také. Označte každou buňku v tabulce jiným popiskem. Pokud formuláře obsahují tabulky s různým počtem řádků, nezapomeňte označit alespoň jeden formulář s největší možnou tabulkou.
 
-
-Pomocí výše uvedených kroků označte pět formulářů a přejděte k dalšímu kroku.
-
 ![Hlavní okno editoru ukázkového štítkovacího nástroje](../media/label-tool/main-editor.png)
 
+Podle výše uvedených kroků označte alespoň pět formulářů.
+
+### <a name="specify-tag-value-types"></a>Určení typů hodnot tagů
+
+Volitelně můžete nastavit očekávaný datový typ pro každou značku. Otevřete místní nabídku napravo od značky a vyberte z nabídky typ. Tato funkce umožňuje algoritmu zjišťování provádět určité předpoklady, které zlepší přesnost detekce textu. Také zajišťuje, že zjištěné hodnoty budou vráceny ve standardizovaném formátu v konečném výstupu JSON. 
+
+> [!div class="mx-imgBorder"]
+> ![Výběr typu hodnoty nástrojem pro popisek vzorku](../media/whats-new/formre-value-type.png)
+
+V současné době jsou podporovány následující typy a varianty hodnot:
+* `string`
+    * výchozí, `no-whitespaces``alphanumeric`
+* `number`
+    * Výchozí`currency`
+* `date` 
+    * výchozí, `dmy` `mdy`, ,`ymd`
+* `time`
+* `integer`
 
 ## <a name="train-a-custom-model"></a>Trénování vlastního modelu
 
-Kliknutím na ikonu Vlak (vlak) v levém podokně otevřete stránku Školení. Poté klikněte na tlačítko **Vlak** a začněte trénovat model. Po dokončení procesu školení se zobrazí následující informace:
+Kliknutím na ikonu Vlak v levém podokně otevřete stránku Školení. Poté klikněte na tlačítko **Vlak** a začněte trénovat model. Po dokončení procesu školení se zobrazí následující informace:
 
 * **ID modelu** - ID modelu, který byl vytvořen a trénovaný. Každé volání školení vytvoří nový model s vlastním ID. Zkopírujte tento řetězec do zabezpečeného umístění. budete potřebovat, pokud chcete provést volání předpověď prostřednictvím rozhraní REST API.
 * **Průměrná přesnost** – průměrná přesnost modelu. Přesnost modelu můžete zlepšit dalším označením a dalším školením a vytvořením nového modelu. Doporučujeme začít označením pěti formulářů a přidáním dalších formulářů podle potřeby.
@@ -167,7 +182,7 @@ Po dokončení školení zkontrolujte hodnotu **Průměrná přesnost.** Pokud j
 
 ## <a name="analyze-a-form"></a>Analýza formuláře
 
-Klikněte na ikonu Předpovědět (obdélníky) vlevo a otestujte svůj model. Nahrajte dokument formuláře, který jste nepoužili v procesu školení. Potom klikněte na tlačítko **Předpovědět** vpravo, abyste získali předpovědi klíč/hodnota pro formulář. Nástroj použije značky v ohraničovacích polích a bude hlásit spolehlivost každé značky.
+Klikněte na ikonu Předpovědět (žárovka) vlevo a otestujte svůj model. Nahrajte dokument formuláře, který jste nepoužili v procesu školení. Potom klikněte na tlačítko **Předpovědět** vpravo, abyste získali předpovědi klíč/hodnota pro formulář. Nástroj použije značky v ohraničovacích polích a bude hlásit spolehlivost každé značky.
 
 > [!TIP]
 > Můžete také spustit analyzovat rozhraní API s voláním REST. Další informace o tom, jak to udělat, najdete [v tématu Trénování s popisky pomocí Pythonu](./python-labeled-data.md).

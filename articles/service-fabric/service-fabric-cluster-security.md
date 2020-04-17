@@ -4,12 +4,12 @@ description: Přečtěte si o scénářích zabezpečení pro cluster Azure Serv
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80753797"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461578"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scénáře zabezpečení clusteru Service Fabric
 
@@ -90,7 +90,7 @@ Při vytváření clusteru nastavte role správce a klienta uživatele. Přiřa�
 
 ## <a name="x509-certificates-and-service-fabric"></a>Certifikáty X.509 a servisní tkanina
 
-Digitální certifikáty X.509 se běžně používají k ověřování klientů a serverů. Používají se také k šifrování a digitálnímu podepisování zpráv. Service Fabric používá certifikáty X.509 k zabezpečení clusteru a poskytování funkcí zabezpečení aplikací. Další informace o digitálních certifikátech X.509 naleznete v [tématu Práce s certifikáty](https://msdn.microsoft.com/library/ms731899.aspx). Trezor [klíčů](../key-vault/key-vault-overview.md) slouží ke správě certifikátů pro clustery Service Fabric v Azure.
+Digitální certifikáty X.509 se běžně používají k ověřování klientů a serverů. Používají se také k šifrování a digitálnímu podepisování zpráv. Service Fabric používá certifikáty X.509 k zabezpečení clusteru a poskytování funkcí zabezpečení aplikací. Další informace o digitálních certifikátech X.509 naleznete v [tématu Práce s certifikáty](https://msdn.microsoft.com/library/ms731899.aspx). Trezor [klíčů](../key-vault/general/overview.md) slouží ke správě certifikátů pro clustery Service Fabric v Azure.
 
 Některé důležité věci, aby zvážila:
 

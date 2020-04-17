@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: eac195babebf300aa9770d35b7b98eba29c234cf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529425"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460983"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurace testovacího prostředí v Azure DevTest Labs tak, aby používala bránu vzdálené plochy
 V Azure DevTest Labs můžete nakonfigurovat bránu vzdálené plochy pro vaše testovací prostředí, abyste zajistili zabezpečený přístup k virtuálním počítačům testovacího prostředí( VM), aniž byste museli vystavit port RDP. Testovací prostředí poskytuje centrální místo pro uživatele testovacího prostředí pro zobrazení a připojení ke všem virtuálním počítačům, ke kterým mají přístup. Tlačítko **Připojit** na stránce **Virtuální počítač** vytvoří soubor RDP specifický pro počítač, který můžete otevřít pro připojení k počítači. Připojení testovacího prostředí k bráně vzdálené plochy můžete dále přizpůsobit a zabezpečit. 
@@ -64,7 +64,7 @@ Azure funkce zpracovává požadavek `https://{function-app-uri}/app/host/{lab-m
 ## <a name="configure-the-lab-to-use-token-authentication"></a>Konfigurace testovacího prostředí tak, aby používalo ověřování tokenů 
 Tato část ukazuje, jak nakonfigurovat testovací prostředí tak, aby používalo počítač brány vzdálené plochy, který podporuje ověřování tokenů. Tato část nepopisuje, jak nastavit samotnou farmu brány vzdálené plochy. Tyto informace naleznete v [části Ukázka pro vytvoření](#sample-to-create-a-remote-desktop-gateway) části brány vzdálené plochy na konci tohoto článku. 
 
-Před aktualizací nastavení testovacího prostředí uložte klíč potřebný k úspěšnému spuštění funkce a vrátit ověřovací token do trezoru klíčů testovacího prostředí. Hodnotu funkčního klíče můžete získat na stránce **Spravovat** pro funkci na webu Azure Portal. Další informace o uložení tajného klíče do trezoru klíčů naleznete v [tématu Přidání tajného klíče do trezoru klíčů](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault). Uložte název tajného klíče pro pozdější použití.
+Před aktualizací nastavení testovacího prostředí uložte klíč potřebný k úspěšnému spuštění funkce a vrátit ověřovací token do trezoru klíčů testovacího prostředí. Hodnotu funkčního klíče můžete získat na stránce **Spravovat** pro funkci na webu Azure Portal. Další informace o uložení tajného klíče do trezoru klíčů naleznete v [tématu Přidání tajného klíče do trezoru klíčů](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault). Uložte název tajného klíče pro pozdější použití.
 
 Pokud chcete najít ID trezoru klíčů testovacího prostředí, spusťte následující příkaz k příkazu Azure CLI: 
 
@@ -74,7 +74,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Nakonfigurujte testovací prostředí tak, aby používalo ověřování tokenů pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyberte **Všechny služby**a ze seznamu vyberte **DevTest Labs.**
 1. Ze seznamu testovacích prostředí vyberte **testovací prostředí**.
 1. Na stránce testovacího prostředí vyberte **Konfigurace a zásady**.

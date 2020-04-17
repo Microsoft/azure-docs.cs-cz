@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 80afbeb5668d43ac7bb0b12fadb88a93c68e0ddb
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 8708c458e1064e4b9ea7dc67f1a4d4fbce1547b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383714"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481950"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat ve více cloudových a místních databázích pomocí synchronizace dat SQL
 
@@ -134,6 +134,7 @@ Zřizování a zrušení zřizování během vytváření, aktualizace a odstra�
 - Ověřování azure active directory není podporováno.
 - Tabulky se stejným názvem, ale s různým schématem (například dbo.customers a sales.customers) nejsou podporovány.
 - Sloupce s uživatelem definovanými datovými typy nejsou podporovány.
+- Přesouvání serverů mezi různými předplatnými není podporováno. 
 
 #### <a name="unsupported-data-types"></a>Nepodporované datové typy
 

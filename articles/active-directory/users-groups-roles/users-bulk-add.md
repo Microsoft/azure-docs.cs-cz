@@ -1,11 +1,11 @@
 ---
-title: Hromadně vytvářet uživatele (preview) na portálu Azure Active Directory | Dokumenty společnosti Microsoft
+title: Hromadné vytváření uživatelů na portálu Azure Active Directory | Dokumenty společnosti Microsoft
 description: Hromadné přidání uživatelů v Centru pro správu Azure AD ve službě Azure Active Directory
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/30/2019
+ms.date: 04/16/2020
 ms.topic: article
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a10dfffa69652ee2b75053c04b97f6492c46811e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3a8b9cb9701288d24534ab08940f6dbd4a698ad
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174314"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532920"
 ---
-# <a name="bulk-create-users-preview-in-azure-active-directory"></a>Hromadně vytvářet uživatele (preview) ve službě Azure Active Directory
+# <a name="bulk-create-users-in-azure-active-directory"></a>Hromadné vytváření uživatelů ve službě Azure Active Directory
 
 Azure Active Directory (Azure AD) podporuje hromadné uživatelské operace vytváření a odstraňování, hromadné pozvání pro hosty a podporuje stahování seznamů uživatelů, skupin a členů skupiny.
 
@@ -40,7 +40,7 @@ Chcete-li hromadně vytvářet uživatele na portálu pro správu, musíte být 
 
    ![Soubor CSV obsahuje názvy a ID uživatelů k vytvoření](./media/users-bulk-add/add-csv-file.png)
 
-1. Na stránce **Hromadné vytvoření uživatele (Náhled)** v části Nahrání souboru CSV vyhledejte soubor. Když vyberete soubor a klepnete na **tlačítko Odeslat**, spustí se ověření souboru CSV.
+1. Na stránce **Hromadné vytvoření uživatele** vyhledejte v části Upload souboru CSV soubor. Když vyberete soubor a klepnete na **tlačítko Odeslat**, spustí se ověření souboru CSV.
 1. Po ověření obsahu souboru se **soubor úspěšně nahraje**. Pokud se jedná o chyby, je nutné je před odesláním úlohy opravit.
 1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která importuje nové uživatele.
 1. Po dokončení operace importu se zobrazí oznámení o stavu úlohy hromadné operace.
@@ -49,9 +49,9 @@ Pokud dojde k chybám, můžete soubor výsledků stáhnout a zobrazit na strán
 
 ## <a name="check-status"></a>Zkontrolování stavu
 
-Stav všech nevyřízených hromadných požadavků můžete zobrazit na stránce **Výsledky hromadné operace (preview).**
+Stav všech nevyřízených hromadných požadavků můžete zobrazit na stránce **S výsledky hromadné operace.**
 
-   ![Kontrola stavu nahrávání na stránce Výsledky hromadných operací](./media/users-bulk-add/bulk-center.png)
+   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
 
 Dále můžete zkontrolovat, zda uživatelé, které jste vytvořili, existují v organizaci Azure AD buď na webu Azure Portal, nebo pomocí PowerShellu.
 

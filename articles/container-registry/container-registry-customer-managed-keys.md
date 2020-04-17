@@ -4,18 +4,18 @@ description: Informace o šifrování po zbytek registru kontejnerů Azure a o �
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: fe0736f83db2ba5b872d50bcf1262ca423de9f09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5561998cf0b19698c8059a861a4014a171a7e7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498947"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461748"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>Šifrování pomocí klíčů spravovaných zákazníkem
 
 Když ukládáte ibi a další artefakty v registru kontejnerů Azure, Azure automaticky zašifruje obsah registru v klidovém stavu pomocí [klíčů spravovaných službou](../security/fundamentals/encryption-atrest.md#data-encryption-models). Výchozí šifrování můžete doplnit o další vrstvu šifrování pomocí klíče, který vytvoříte a spravujete v azure key vaultu. Tento článek vás provede kroky pomocí Azure CLI a portálu Azure.
 
-Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem je podporováno prostřednictvím integrace s [trezorem klíčů Azure](../key-vault/key-vault-overview.md). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít Azure Key Vault je API pro generování šifrovacích klíčů. Pomocí služby Azure Key Vault můžete také auditovat využití klíčů.
+Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem je podporováno prostřednictvím integrace s [trezorem klíčů Azure](../key-vault/general/overview.md). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít Azure Key Vault je API pro generování šifrovacích klíčů. Pomocí služby Azure Key Vault můžete také auditovat využití klíčů.
 
 Tato funkce je k dispozici ve vrstvě služby registru **kontejneru Premium.** Informace o vrstvách a limitech služby registru naleznete v tématu [Azure Container Registry SKU](container-registry-skus.md).
 
@@ -176,7 +176,7 @@ Vytvořte uživatelem přiřazenou [spravovanou identitu pro prostředky Azure](
 
 ### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
 
-Postup vytvoření trezoru klíčů najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z Azure Key Vault pomocí portálu Azure](../key-vault/quick-create-portal.md).
+Postup vytvoření trezoru klíčů najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z Azure Key Vault pomocí portálu Azure](../key-vault/secrets/quick-create-portal.md).
 
 Při vytváření trezoru klíčů pro klíč spravovaný zákazníkem musíte na kartě **Základy** povolit následující nastavení ochrany: **Ochrana proti odstranění a** **vymazání**. Tato nastavení pomáhají zabránit ztrátě dat způsobené náhodným odstraněním klíče nebo trezoru klíčů.
 
@@ -378,7 +378,7 @@ az acr encryption rotatekey \
 
 ## <a name="revoke-key"></a>Odvolat klíč
 
-Odvolat šifrovací klíč spravovaný zákazníkem změnou zásad přístupu v trezoru klíčů nebo odstraněním klíče. Pomocí příkazu [delete-policy pomocí příkazu az keyvault změňte][az-keyvault-delete-policy] zásady přístupu spravované identity používané registrem. Například:
+Odvolat šifrovací klíč spravovaný zákazníkem změnou zásad přístupu v trezoru klíčů nebo odstraněním klíče. Pomocí příkazu [delete-policy pomocí příkazu az keyvault změňte][az-keyvault-delete-policy] zásady přístupu spravované identity používané registrem. Příklad:
 
 ```azurecli
 az keyvault delete-policy \
@@ -392,7 +392,7 @@ Zrušení klíče účinně blokuje přístup ke všem datům registru, protože
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o [šifrování v klidovém stavu v Azure](../security/fundamentals/encryption-atrest.md).
-* Přečtěte si další informace o zásadách přístupu a [o zabezpečení přístupu k trezoru klíčů](../key-vault/key-vault-secure-your-key-vault.md).
+* Přečtěte si další informace o zásadách přístupu a [o zabezpečení přístupu k trezoru klíčů](../key-vault/general/secure-your-key-vault.md).
 * Pokud chcete poskytnout zpětnou vazbu ke klíčům spravovaným zákazníkem pro Azure Container Registry, navštivte [web ACR GitHub](https://aka.ms/acr/issues).
 
 

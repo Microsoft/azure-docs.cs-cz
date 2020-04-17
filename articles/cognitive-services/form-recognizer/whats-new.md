@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7f20244906581dd2869bbc7fcd997d5245540eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f8c66db491b93278fedf1378d3df86e7ce5fdbf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155167"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531078"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
@@ -25,48 +25,46 @@ Služba rozpoznávání formulářů je průběžně aktualizována. V tomto čl
 
 ## <a name="march-2020"></a>Březen 2020 
 
+### <a name="new-features"></a>Nové funkce
+
+* **Typy hodnot pro popisování** Nyní můžete určit typy hodnot, které označujete nástrojem pro označování vzorků nástroje pro rozpoznávání formulářů. V současné době jsou podporovány následující typy a varianty hodnot:
+  * `string`
+    * výchozí, `no-whitespaces``alphanumeric`
+  * `number`
+    * Výchozí`currency`
+  * `date` 
+    * výchozí, `dmy` `mdy`, ,`ymd`
+  * `time`
+  * `integer`
+
+  Informace o použití této funkce naleznete v průvodci [nástrojem vzorové popisky.](./quickstarts/label-tool.md#specify-tag-value-types)
+
+
+* **Vizualizace tabulky** Nástroj pro vzorové popisky nyní zobrazuje tabulky, které byly rozpoznány v dokumentu. To umožňuje zobrazit tabulky, které byly rozpoznány a extrahovány z dokumentu, před popiskem a analýzou. Tuto funkci lze zapnout/vypnout pomocí volby vrstev.
+
+  Toto je příklad rozpoznaných a extrahovaných tabulek:
+
+  > [!div class="mx-imgBorder"]
+  > ![Vizualizace tabulky pomocí nástroje pro popisek vzorku](./media/whats-new/formre-table-viz.png)
+
+    Extrahované tabulky jsou k dispozici ve `"pageResults"`výstupu JSON pod .
+
+  > [!IMPORTANT]
+  > Tabulky popisků nejsou podporovány. Pokud tabulky nejsou rozpoznány a extrahovány automaticky, můžete je označit pouze jako páry klíč/hodnota. Při popisování tabulek jako párů klíč/hodnota označte každou buňku jako jedinečnou hodnotu.
+
 ### <a name="extraction-enhancements"></a>Vylepšení extrakce
 
 Tato verze obsahuje vylepšení extrakce a vylepšení přesnosti, konkrétně schopnost označovat a extrahovat více párů klíč/hodnota ve stejném řádku textu. 
  
-### <a name="form-recognizer-sample-labeling-tool-is-now-open-source"></a>Nástroj pro rozpoznávání vzorků formuláře je nyní open-source
+### <a name="sample-labeling-tool-is-now-open-source"></a>Ukázkový nástroj pro popisování je nyní open source
 
-Nástroj pro rozpoznávání vzorků formuláře je nyní k dispozici jako projekt s otevřeným zdrojovým kódem. Můžete jej integrovat do svých řešení a provést změny specifické pro zákazníka, aby vyhovoval vašim potřebám.
+Nástroj pro vzorové popisky nástroje Pro rozpoznávání formulářů je nyní k dispozici jako projekt s otevřeným zdrojovým kódem. Můžete jej integrovat do svých řešení a provést změny specifické pro zákazníka, aby vyhovoval vašim potřebám.
 
-Další informace o nástroji pro ukázkové popisky nástroje pro rozpoznávání formulářů naleznete v dokumentaci dostupné na [GitHubu](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
-
-### <a name="labeling-value-types"></a>Označení typů hodnot
-
-Typy hodnot jsou nyní k dispozici pro použití s nástrojem pro rozpoznávání vzorků formuláře. Tyto typy hodnot jsou aktuálně podporovány: 
-
-* Řetězec
-* Číslo 
-* Integer
-* Datum 
-* Time
-
-Tento obrázek znázorňuje, jak vypadá výběr typu hodnoty v nástroji pro vzorové popisování nástroje pro rozpoznávání vzorků formuláře:
-
-> [!div class="mx-imgBorder"]
-> ![Výběr typu hodnoty nástrojem pro popisek vzorku](./media/whats-new/formre-value-type.png)
-
-Extrahovaná tabulka je k dispozici ve `pageResults`výstupu JSON v .
-
-### <a name="table-visualization"></a>Vizualizace tabulky 
-
-Nástroj pro rozpoznávání formulářů nyní zobrazuje tabulky, které byly rozpoznány v dokumentu. To umožňuje zobrazit tabulky, které byly rozpoznány a extrahovány z dokumentu, před popisem a analýzou pomocí nástroje pro rozpoznávání vzorků formuláře. Tuto funkci lze zapnout/vypnout pomocí volby vrstev. 
-
-Toto je příklad rozpoznaných a extrahovaných tabulek:
-
-> [!div class="mx-imgBorder"]
-> ![Vizualizace tabulky pomocí nástroje pro popisek vzorku](./media/whats-new/formre-table-viz.png)
-
-> [!IMPORTANT]
-> Tabulky popisků nejsou podporovány. Pokud tabulky nejsou rozpoznány a extrahovány automaticky, můžete je označit pouze jako páry klíč/hodnota. Při označování tabulek jako párů klíč/hodnota označte každou buňku jako hodnotu.
+Další informace o nástroji pro ukázkové popisky nástroje Rozpoznávání formulářů naleznete v dokumentaci dostupné na [GitHubu](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
 ### <a name="tls-12-enforcement"></a>Vynucení protokolu TLS 1.2
 
-* TLS 1.2 je nyní vynucena pro všechny požadavky HTTP pro tuto službu. Další informace najdete v [tématu Azure Cognitive Services security](../cognitive-services-security.md).
+TLS 1.2 je nyní vynucena pro všechny požadavky HTTP pro tuto službu. Další informace najdete v [tématu Azure Cognitive Services security](../cognitive-services-security.md).
 
 ## <a name="january-2020"></a>Leden 2020
 

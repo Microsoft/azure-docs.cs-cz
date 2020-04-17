@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6919849d28573ad7388a7f2e317d2b8433f35559
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5b7a060aa2313902e4644fdd15068e06816e3f58
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399456"
+ms.locfileid: "81529888"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -92,7 +92,7 @@ Další informace najdete v [referenční dokumentaci rozhraní REST API.](https
 
 Vstupní požadavky pro model příjmu se mírně liší.
 
-* Formát musí být JPEG, PNG, BMP, PDF (text nebo naskenovaný) nebo TIFF.
+* Formát musí být JPEG, PNG, PDF (text nebo naskenovaný) nebo TIFF.
 * Velikost souboru musí být menší než 20 MB.
 * Rozměry obrazu musí být mezi 50 x 50 pixelů a 10000 x 10000 pixelů.
 * Rozměry PDF musí být maximálně 17 x 17 palců, což odpovídá formátu papíru Legal nebo A3 a menší.

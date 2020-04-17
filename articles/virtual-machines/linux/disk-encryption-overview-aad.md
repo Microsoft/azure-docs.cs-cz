@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38fd7c8e14f58052912f68a277f194fd3866f2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 029743dbb44ab0ebb6ab8f695c0c966137c45107
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970583"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459793"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Šifrování disku Azure pomocí Azure AD (předchozí verze)
 
@@ -35,7 +35,7 @@ Chcete-li povolit funkci Šifrování disku Azure pomocí starší syntaxe param
   - Chcete-li získat token pro připojení k trezoru klíčů, musí být virtuální počítač IaaS schopen se připojit ke koncovému bodu Azure AD, \[login.microsoftonline.com\].
   - Chcete-li zapsat šifrovací klíče do trezoru klíčů, musí být virtuální počítač IaaS schopen se připojit ke koncovému bodu trezoru klíčů.
   - Virtuální počítač IaaS musí být schopen se připojit ke koncovému bodu úložiště Azure, který je hostitelem úložiště rozšíření Azure a účtu úložiště Azure, který hostuje soubory Virtuálního pevného disku.
-  -  Pokud vaše zásady zabezpečení omezují přístup z virtuálních počítačů Azure k internetu, můžete vyřešit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo, které umožní odchozí připojení k IP adresám. Další informace naleznete v [tématu Azure Key Vault za bránou firewall](../../key-vault/key-vault-access-behind-firewall.md).
+  -  Pokud vaše zásady zabezpečení omezují přístup z virtuálních počítačů Azure k internetu, můžete vyřešit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo, které umožní odchozí připojení k IP adresám. Další informace naleznete v [tématu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
   - Pokud je ve Windows tls 1.0 explicitně zakázán a verze .NET není aktualizována na 4.6 nebo vyšší, následující změna registru povolí šifrování disku Azure vybrat novější verzi TLS:
     
             [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]

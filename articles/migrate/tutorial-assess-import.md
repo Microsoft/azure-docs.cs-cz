@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 9e6b451901da00243c458c06d51ba19fb64c0fdc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115066"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530449"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Vyhodnocení serverů pomocí importovaných dat
 
@@ -68,12 +68,12 @@ Nastavení nového projektu Migrace Azure:
 5. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.
 6. V **části PODROBNOSTI PROJEKTU**zadejte název projektu a zeměpisnou polohu, ve které chcete projekt vytvořit. Další informace najdete tady:
 
-    - Zkontrolujte [podporované zeměpisné oblasti](migrate-support-matrix.md#supported-geographies). Zeměpisná oblast projektu slouží pouze k ukládání metadat shromážděných z místních virtuálních počítačů.
+    - Projděte si podporované zeměpisné oblasti pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
     - Při spouštění migrace můžete vybrat jakoukoli cílovou oblast.
 
     ![Vytvoření projektu migrace Azure](./media/tutorial-assess-import/migrate-project.png)
 
-7. Vyberte **další**.
+7. Vyberte **Další**.
 8. V **nástroji Pro výběr vyberte**možnost Migrace **Azure: Vyhodnocení serveru** > **Další**.
 
     ![Vytvoření vyhodnocení migrace Azure](./media/tutorial-assess-import/assessment-tool.png)

@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75437045"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461459"
 ---
 # <a name="expressroute-encryption"></a>Šifrování ExpressRoute
  
 ExpressRoute podporuje několik šifrovacích technologií k zajištění důvěrnosti a integrity dat procházet mezi vaší sítí a sítí společnosti Microsoft.
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>Nejčastější dotazy k šifrování z bodu do bodu podle macsec
-MACsec je [standard IEEE](https://1.ieee802.org/security/802-1ae/). Šifruje data na úrovni řízení přístupu k médiím (MAC) nebo síťové vrstvě 2. Pomocí nástroje MACsec můžete šifrovat fyzická propojení mezi síťovými zařízeními a síťovými zařízeními společnosti Microsoft, když se připojíte k microsoftu prostřednictvím [služby ExpressRoute Direct](expressroute-erdirect-about.md). MACsec je ve výchozím nastavení na portech ExpressRoute Direct zakázán. Můžete přinést vlastní klíč MACsec pro šifrování a uložit jej do [azure key vault](../key-vault/key-vault-overview.md). Vy rozhodujete, kdy klíč otočit. Další časté otázky najdete níže.
+MACsec je [standard IEEE](https://1.ieee802.org/security/802-1ae/). Šifruje data na úrovni řízení přístupu k médiím (MAC) nebo síťové vrstvě 2. Pomocí nástroje MACsec můžete šifrovat fyzická propojení mezi síťovými zařízeními a síťovými zařízeními společnosti Microsoft, když se připojíte k microsoftu prostřednictvím [služby ExpressRoute Direct](expressroute-erdirect-about.md). MACsec je ve výchozím nastavení na portech ExpressRoute Direct zakázán. Můžete přinést vlastní klíč MACsec pro šifrování a uložit jej do [azure key vault](../key-vault/general/overview.md). Vy rozhodujete, kdy klíč otočit. Další časté otázky najdete níže.
 ### <a name="can-i-enable-macsec-on-my-expressroute-circuit-provisioned-by-an-expressroute-provider"></a>Mohu povolit MACsec na okruhu ExpressRoute zřízeného poskytovatelem ExpressRoute?
 Ne. MACsec šifruje veškerý provoz na fyzickém spojení s klíčem vlastněným jednou entitou (tj. zákazníkem). Proto je k dispozici pouze na ExpressRoute Direct.
 ### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>Mohu zašifrovat některé obvody ExpressRoute na portech ExpressRoute Direct a ponechat ostatní obvody na stejných portech nezašifrované? 

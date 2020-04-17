@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: ce9919a0b0f614e427c12ee3e3fbda0be46470ea
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273303"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459164"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -721,10 +721,10 @@ Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžet
       + Podle konkrétních start_time a/nebo end_time bude vráceny pouze výsledky plánovaných spuštění;
       + Parametr "daily_latest_only" se zastaral.
     + Podpora načítání výstupů datového posunu založeného na datové sadě.
-  + **[azureml-explain-model](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml-explain-model**
     + Přejmenuje balíček AzureML-explain-model na AzureML-interpret, takže starý balíček pro zpětnou kompatibilitu pro tuto chvíli.
     + opravena chyba AutoML s nezpracovanými vysvětleními nastavenými na úlohu klasifikace namísto regrese ve výchozím nastavení při stahování z explanationclientu.
-    + Přidat podporu pro [ScoringExplainer,](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py) které mají být vytvořeny přímo pomocí [MimicWrapper](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic_wrapper.mimicwrapper)
+    + Přidat podporu pro [ScoringExplainer,](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py) které mají být vytvořeny přímo pomocí MimicWrapper
   + **[azureml-potrubí-jádro](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + Zlepšený výkon pro vytváření velkých kanálů.
   + **[azureml-train-core](https://docs.microsoft.com/python/api/azureml-train-core)**
@@ -798,7 +798,7 @@ Karta Experiment na [novém portálu pracovního prostoru](https://ml.azure.com)
     + Přidána další pole velikosti virtuálního počítače (disk operačního systému, počet GPU) do funkce [supported_vmsizes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-)
     + Přidána další pole do funkce [list_nodes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#list-nodes--) pro zobrazení spuštění, soukromé a veřejné IP adresy, portu atd.
     + Možnost zadat nové pole během [zřizování clusteru,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--) `--remotelogin_port_public_access` které lze nastavit na povoleno nebo zakázáno v závislosti na tom, zda chcete ponechat port SSH otevřený nebo zavřený v době vytvoření clusteru. Pokud jej nezadáte, služba bude chytře otevřít nebo zavřít port v závislosti na tom, zda nasazujete cluster u virtuální sítě.
-  + **[azureml-explain-model](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml-explain-model**
     + Vylepšená dokumentace pro výstupy vysvětlení ve scénáři klasifikace.
     + Přidána možnost nahrát předpokládané hodnoty y na vysvětlení příkladů hodnocení. Odemkne užitečnější vizualizace.
     + Přidána vlastnost explainer do MimicWrapper, aby bylo možné získat základní MimicExplainer.

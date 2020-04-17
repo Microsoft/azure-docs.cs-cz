@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb9d697c11427c7ebbf811f9cc05740347c74452
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9cd668fcac3751715fbe91c9aeff98583c9d03d5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417557"
+ms.locfileid: "81458909"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Šifrování disku Azure pomocí Azure AD (předchozí verze)
 
@@ -28,15 +28,16 @@ Tento článek doplňuje [Azure Disk Encryption pro virtuální počítače s Wi
   - Virtuální počítač IaaS musí být schopen se připojit ke koncovému bodu úložiště Azure, který je hostitelem úložiště rozšíření Azure a účtu úložiště Azure, který hostuje soubory Virtuálního pevného disku.
   -  Pokud vaše zásady zabezpečení omezují přístup z virtuálních počítačů Azure k Internetu, můžete vyřešit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo, které umožní odchozí připojení k IP adresám. Další informace naleznete v [tématu Azure Key Vault za bránou firewall](../../key-vault/key-vault-access-behind-firewall.md).
   - Zašifrovaný virtuální virtuální počítače musí být nakonfigurován tak, aby jako výchozí protokol používal protokol TLS 1.2. Pokud byl tls 1.0 explicitně zakázán a verze rozhraní .NET nebyla aktualizována na 4.6 nebo vyšší, následující změna registru umožní ADE vybrat novější verzi TLS:
-    
-        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-        "SystemDefaultTlsVersions"=dword:00000001
-        "SchUseStrongCrypto"=dword:00000001
 
-        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-        "SystemDefaultTlsVersions"=dword:00000001
-        "SchUseStrongCrypto"=dword:00000001` 
-     
+```console
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001` 
+```
 
 **Zásady skupiny:**
  - Řešení Azure Disk Encryption používá nástroj BitLocker externí ochranu klíčů pro virtuální počítače Windows IaaS. U domén ových virtuálních zařízení nenabízené žádné zásady skupiny, které vynucují chrániče čipu TPM. Informace o zásadách skupiny "Povolit nástroj BitLocker bez kompatibilního čipu TPM" naleznete v [tématu Odkaz na zásady skupiny nástroje BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).

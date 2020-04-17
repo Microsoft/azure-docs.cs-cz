@@ -3,12 +3,12 @@ title: Sledování změn delegování ve vašem správě klienta
 description: Přečtěte si, jak sledovat aktivitu delegování od klientů zákazníků až po správu klienta.
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 322580cc3d0246f7a34e28cdae94da57fda070b5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985146"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458807"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Sledování změn delegování ve vašem správě klienta
 
@@ -44,7 +44,7 @@ Vzhledem k tomu, že se jedná o širokou úroveň přístupu, doporučujeme př
 
 - [Vytvořte nový účet instančního objektu,](../../active-directory/develop/howto-create-service-principal-portal.md) který se použije pouze pro tuto funkci, místo toho, abyste tuto roli přiřadili existujícímu instančnímu objektu používanému pro jinou automatizaci.
 - Ujistěte se, že tento instanční objekt nemá přístup k žádné delegované prostředky zákazníka.
-- [Pomocí certifikátu jej můžete bezpečně ověřit](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) a bezpečně uložit v [trezoru klíčů Azure](../../key-vault/key-vault-best-practices.md).
+- [Pomocí certifikátu jej můžete bezpečně ověřit](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) a bezpečně uložit v [trezoru klíčů Azure](../../key-vault/general/best-practices.md).
 - Omezte uživatele, kteří mají přístup k jednání jménem instančního objektu.
 
 K provedení přiřazení kořenového oboru použijte jednu z následujících metod.

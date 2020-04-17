@@ -6,12 +6,12 @@ ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
-ms.openlocfilehash: f32db2a4dda0ceb69644b64a5c76155b448c5a28
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74687034"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532421"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Ukázky Prostředí PowerShell pro službu Azure App Service
 
@@ -27,7 +27,7 @@ Následující tabulka obsahuje odkazy na skripty PowerShellu vytvořené pomoc�
 | [Vytvoření aplikace a nasazení kódu do pracovního prostředí](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří aplikaci služby App Service s slotem pro nasazení pro změny pracovního kódu. |
 |**Konfigurace aplikace**||
 | [Mapování vlastní domény na aplikaci](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří aplikaci Služby aplikací a namapuje na ní vlastní název domény. |
-| [Vytvoření vytvoření vlastního certifikátu SSL s aplikací](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří aplikaci služby App Service a sváže s ní certifikát SSL vlastního názvu domény. |
+| [Svázání vlastního certifikátu TLS/SSL s aplikací](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří aplikaci služby App Service a sváže s ní certifikát TLS/SSL vlastního názvu domény. |
 |**Škálování aplikace**||
 | [Ruční škálování aplikace](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří aplikaci služby App Service a škáluje ji napříč 2 instancemi. |
 | [Škálování aplikace po celém světě s architekturou s vysokou dostupností](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří dvě aplikace služby App Service ve dvou různých zeměpisných oblastech a zpřístupní je prostřednictvím jednoho koncového bodu pomocí Azure Traffic Manageru. |

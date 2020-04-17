@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: ae3743530440c9df9094a0b9784922d2d6a3dfdf
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 753d606e1fc2dc966c970a210cf6fc5066d5ed83
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985401"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460133"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Nejčastější dotazy k šifrování disku Azure pro virtuální počítače s Linuxem
 
@@ -148,7 +148,9 @@ Azure Disk Encryption používá dešifrování výchozí aes-xts-plain64 s 256b
 Ne, data se nesmažou z datových jednotek, které už jsou šifrované pomocí Azure Disk Encryption. Podobně jako EncryptFormatAll nebyl re-šifrovat jednotku operačního systému, nebude znovu šifrovat již šifrované datové jednotky. Další informace naleznete v [kritériích EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).        
 
 ## <a name="is-xfs-filesystem-supported"></a>Je souborový systém XFS podporován?
-Svazky XFS jsou podporovány pro šifrování datového disku pouze pomocí encryptformatall. Tím se objem přeformátuje a všechna data tam budou vymazána dříve. Další informace naleznete v [kritériích EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).
+Šifrování disků operačního systému XFS je podporováno.
+
+Šifrování datových disků XFS je podporováno pouze v případě, že je použit parametr EncryptFormatAll. Tím se objem přeformátuje a všechna data tam budou vymazána dříve. Další informace naleznete v [kritériích EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Můžu zálohovat a obnovovat šifrovaný virtuální účet? 
 

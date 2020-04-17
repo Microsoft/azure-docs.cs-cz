@@ -3,12 +3,12 @@ title: Podrobnosti o struktuře definice politiky
 description: Popisuje, jak se definice zásad používají k vytváření konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 017878c4c47a5645ea8815580d2176c7a2ff5d66
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0a7c4e05270ff242fa97b253b27a5de92895368a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314018"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461000"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -89,7 +89,7 @@ V náhledu jsou aktuálně podporovány následující režimy zprostředkovatel
 - `Microsoft.ContainerService.Data`pro správu pravidel přijímacího řadiče ve [službě Azure Kubernetes Service](../../../aks/intro-kubernetes.md). Zásady používající tento režim zprostředkovatele prostředků **musí** používat efekt [EnforceRegoPolicy.](./effects.md#enforceregopolicy)
 - `Microsoft.Kubernetes.Data`pro správu samoobslužných clusterů AKS Engine Kubernetes v Azure.
   Zásady používající tento režim zprostředkovatele prostředků **musí** používat efekt [EnforceOPAConstraint.](./effects.md#enforceopaconstraint)
-- `Microsoft.KeyVault.Data`pro správu trezorů a certifikátů v [úložišti klíčů Azure](../../../key-vault/key-vault-overview.md).
+- `Microsoft.KeyVault.Data`pro správu trezorů a certifikátů v [úložišti klíčů Azure](../../../key-vault/general/overview.md).
 
 > [!NOTE]
 > Režimy zprostředkovatele prostředků podporují pouze definice integrovaných zásad a nepodporují iniciativy ve verzi Preview.
@@ -267,7 +267,7 @@ Při použití **shody** a **notMatch** podmínky, zadejte `#` tak, aby odpovíd
 
 V ** \[ \* \] ** hodnotě pole aliasu je každý prvek v poli vyhodnocován jednotlivě s logickými **a** mezi prvky. Další informace naleznete [v \[ \* tématu Vyhodnocení aliasu \] ](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
-### <a name="fields"></a>Fields (Pole)
+### <a name="fields"></a>Pole
 
 Podmínky jsou tvořeny pomocí polí. Pole odpovídá vlastnostem v datové části požadavku na zdroj a popisuje stav zdroje.
 

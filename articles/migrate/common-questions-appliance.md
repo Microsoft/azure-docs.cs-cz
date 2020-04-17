@@ -2,13 +2,13 @@
 title: Nejčastější dotazy k zařízení Azure Migrate
 description: Získejte odpovědi na běžné otázky týkající se zařízení Azure Migrate.
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437601"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529684"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Pro migraci Azure: Běžné otázky
 
@@ -31,6 +31,15 @@ Tady jsou další informace o zařízení Azure Migrate:
 
 [Další informace](migrate-appliance.md) o přístroji.
 
+## <a name="how-can-i-deploy-the-appliance"></a>Jak mohu přístroj nasadit?
+
+Přístroj lze nasadit takto:
+
+- Použití šablony pro virtuální počítače VMware a virtuální počítače Hyper-V (šablona OVA pro VMware nebo VHD pro technologie Hyper-V).
+- Pokud nechcete používat šablonu nebo jste ve službě Azure Government, můžete zařízení nasadit pro VMware nebo Hyper-V pomocí skriptu PowerShellu.
+- Pro fyzické servery vždy nasazujete zařízení pomocí skriptu.
+
+
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Jak se zařízení připojuje k Azure?
 
 Zařízení se může připojit přes internet nebo pomocí Azure ExpressRoute s veřejným partnerem microsoftu.
@@ -45,11 +54,8 @@ Při použití stažené šablony k vytvoření virtuálního počítače zaří
 
 ## <a name="what-network-connectivity-is-required"></a>Jaké připojení k síti je vyžadováno?
 
-Informace o požadavcích na připojení k síti pro zařízení Azure Migrate naleznete v následujících článcích:
 
-- **Hodnocení vmware:** [Přístup k adresám URL](migrate-appliance.md#url-access) a přístup k [portům](migrate-support-matrix-vmware.md#port-access)
-- **Migrace bez agentů VMware**: [Přístup k adresám URL](migrate-appliance.md#url-access) a přístup k [portům](migrate-support-matrix-vmware-migration.md#agentless-ports)
-- **Hodnocení Hyper-V:** [Přístup k url](migrate-appliance.md#url-access) a přístup k [portům](migrate-support-matrix-hyper-v.md#port-access)
+Zařízení potřebuje přístup k adresám URL Azure. [Prohlédněte si](migrate-appliance.md#url-access) seznam adres URL.
 
 ## <a name="what-data-does-the-appliance-collect"></a>Jaká data přístroj shromažďuje?
 

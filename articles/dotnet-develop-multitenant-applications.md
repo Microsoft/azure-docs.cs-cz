@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d3e267eab056589ed38c436620dd0db185291da1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77425897"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481839"
 ---
 # <a name="multitenant-applications-in-azure"></a>Multitenantové aplikace v Azure
 Víceklientská aplikace je sdílený prostředek, který umožňuje "uživatelům v samostatných tenantů" zobrazit aplikaci, jako by to bylo jejich vlastní. Typický scénář, který se hodí pro víceklientské aplikace je ten, ve kterém všichni uživatelé aplikace z různých klientů může chtít přizpůsobit uživatelské prostředí, ale jinak mají stejné základní obchodní požadavky. Příklady velkých víceklientských aplikací jsou Office 365, Outlook.com a visualstudio.com.
@@ -48,20 +48,20 @@ Azure poskytuje mnoho funkcí, které umožňují řešit klíčové problémy, 
 
 **Izolace**
 
-* Segmentovat klienty webových stránek podle záhlaví hostitelských stránek s komunikací SSL nebo bez ní
+* Segmentovat klienty webových stránek podle záhlaví hostitelských stránek s komunikací TLS nebo bez ní
 * Segmentovat klienty webových stránek podle parametrů dotazu
 * Webové služby v rolích pracovního procesu
   * Role pracovních procesů, které obvykle zpracovávají data v back-endu aplikace.
   * Webové role, které obvykle fungují jako front-end pro aplikace.
 
-**Úložiště**
+**Storage**
 
-Správa dat, jako je Azure SQL Database nebo Služby Azure Storage, jako je služba Table, která poskytuje služby pro ukládání velkého množství nestrukturovaných dat a služby Blob, která poskytuje služby pro ukládání velkého množství nestrukturovaného textu nebo binární data, jako je video, zvuk a obrázky.
+Správa dat, jako je Azure SQL Database nebo služby Azure Storage, jako je služba Table, která poskytuje služby pro ukládání velkého množství nestrukturovaných dat a služby Blob, která poskytuje služby pro ukládání velkého množství nestrukturovaného textu nebo binárních dat, jako je video, zvuk a obrázky.
 
 * Zabezpečení víceklientských dat v databázi SQL Database na klienta přihlášení SQL Serveru.
 * Pomocí Azure Tabulky pro prostředky aplikací zadáním zásadpřístupu na úrovni kontejneru, můžete mít možnost upravit oprávnění bez nutnosti vydávat nové adresy URL pro prostředky chráněné sdílenými přístupovými podpisy.
 * Fronty Azure pro aplikační prostředky Azure fronty se běžně používají k řízení zpracování jménem klientů, ale může být také použit k distribuci práce potřebné pro zřizování nebo správu.
-* Fronty služby Service Bus pro aplikační prostředky, které tlačí práci do sdílené služby, můžete použít jednu frontu, kde každý odesílatel klienta má pouze oprávnění (odvozené z deklarací vydaných ze služby ACS) k nabízení do této fronty, zatímco pouze příjemci ze služby mají oprávnění k vyprostit z fronty data pocházející z více klientů.
+* Fronty služby Service Bus pro aplikační prostředky, které tlačí práci do sdílené služby, můžete použít jednu frontu, kde každý odesílatel klienta má pouze oprávnění (odvozené z deklarací vydaných ze služby ACS) k nabízení do této fronty, zatímco pouze příjemci ze služby mají oprávnění k vytažení dat z fronty z více klientů.
 
 **Služby připojení a zabezpečení**
 
@@ -74,13 +74,13 @@ Azure poskytuje několik síťových služeb, které podporují ověřování a 
 * Virtuální síť Azure umožňuje zřizování a správu virtuálních privátních sítí (VNU) v Azure a také je bezpečně propojit s místní IT infrastrukturou.
 * Správce provozu virtuální sítě umožňuje vyvažovat příchozí provozy napříč několika hostovanými službami Azure bez ohledu na to, zda běží ve stejném datovém centru nebo v různých datových centrech po celém světě.
 * Azure Active Directory (Azure AD) je moderní služba založená na REST, která poskytuje možnosti správy identit a řízení přístupu pro vaše cloudové aplikace. Použití Azure AD pro prostředky aplikací poskytuje snadný způsob ověřování a autorizace uživatelů získat přístup k webovým aplikacím a službám a zároveň umožňuje funkce ověřování a autorizace, které mají být faktored z vašeho kódu.
-* Azure Service Bus poskytuje zabezpečené možnosti zasílání zpráv a toku dat pro distribuované a hybridní aplikace, jako je komunikace mezi hostovanými aplikacemi Azure a místními aplikacemi a službami, aniž by bylo nutné složité brány firewall a zabezpečení. Infrastruktury. Použití přenosu sběrnice pro prostředky aplikace pro přístup ke službám, které jsou vystaveny jako koncové body mohou patřit do tenanta (například hostované mimo systém, jako je například místní), nebo mohou být služby zřízené speciálně pro klienta (protože protože citlivá data specifická pro klienta se přes ně pohybují).
+* Azure Service Bus poskytuje zabezpečené zasílání zpráv a tok dat pro distribuované a hybridní aplikace, jako je komunikace mezi hostitelskými aplikacemi Azure a místními aplikacemi a službami, aniž by bylo nutné složité brány firewall a infrastruktury zabezpečení. Použití service bus relay pro aplikační prostředky pro přístup ke službám, které jsou vystaveny jako koncové body mohou patřit do tenanta (například hostované mimo systém, jako je například místní), nebo mohou být služby zřízené speciálně pro klienta (protože citlivá data specifická pro klienta cestuje přes ně).
 
 **Zřizování prostředků**
 
 Azure poskytuje řadu způsobů, jak zřídit nové klienty pro aplikaci. Pro víceklientské aplikace s velkým počtem klientů je obvykle nutné automatizovat tento proces povolením samoobslužného zřizování.
 
-* Role pracovního procesu umožňují zřídit a zrušit poskytování na prostředky tenanta (například když se nový klient zaregistruje nebo zruší), shromažďovat metriky pro použití měření a spravovat škálování podle určitého plánu nebo v reakci na překročení prahových hodnot výkonu klíče Ukazatele. Stejná role může být také použita k vysazení aktualizací a upgradů řešení.
+* Role pracovního procesu umožňují zřídit a zrušit poskytování na prostředky tenanta (například když se nový klient zaregistruje nebo zruší), shromažďovat metriky pro použití měření a spravovat škálování podle určitého plánu nebo v reakci na překročení prahových hodnot klíčových ukazatelů výkonu. Stejná role může být také použita k vysazení aktualizací a upgradů řešení.
 * Objekty BLOB Azure se můžou zřizovat výpočetní nebo předem inicializované prostředky úložiště pro nové klienty a zároveň poskytovat zásady přístupu na úrovni kontejnerů k ochraně balíčků výpočetních služeb, ibi obrazových míst virtuálního pevného disku a dalších prostředků.
 * Možnosti pro zřizování prostředků databáze SQL pro klienta zahrnují:
   

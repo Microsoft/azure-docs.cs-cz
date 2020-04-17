@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: c6455930f88d02e11cb0c45d29594ae40eaad9e3
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 82d8c8ca94f3d0f4289902ae40928ff507e2d1ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113297"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460660"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Synchronizace souborů Azure
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -63,9 +63,6 @@ Následující poznámky k verzi jsou pro verzi 10.0.0.0 agenta Azure File Sync 
 - Podpora přesunutí služby Synchronizace úložiště nebo účtu úložiště do jiného klienta Služby Azure Active Directory (AAD)
     - Azure File Sync teď podporuje přesunutí služby synchronizace úložiště nebo účtu úložiště do jiné skupiny prostředků, předplatného nebo klienta Azure AD.
     
-- Nástroj pro vyhodnocení nyní identifikuje soubory nebo adresáře, které končí tečkou
-    - [Nástroj hodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) byl aktualizován tak, aby identifikoval soubory nebo adresáře, které končí tečkou. Soubory nebo adresáře, které končí tečkou, nejsou aktuálně podporované Azure File Sync. Chcete-li použít aktualizovanou verzi [nástroje Vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet), nainstalujte nejnovější verzi [modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
- 
 - Různá vylepšení výkonu a spolehlivosti
     - Zjišťování změn ve sdílené složce Azure může selhat, pokud virtuální síť (VNET) a firewall pravidla jsou nakonfigurované na účtu úložiště.
     - Snížená spotřeba paměti spojená s odvoláním. 

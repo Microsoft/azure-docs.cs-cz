@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93f01b3c23e08e7f432841d8a77cbe3602bff1c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243195"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482138"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfigurace úložiště pro virtuální počítače SQL Serveru
 
@@ -56,7 +56,7 @@ Kromě toho máte možnost nastavit ukládání do mezipaměti pro disky. Virtu�
 
 Ukládání disků do mezipaměti pro premium SSD může být *pouze pro čtení*, *ReadWrite* nebo *Žádný*. 
 
-- Ukládání do mezipaměti *pouze pro čtení* je velmi výhodné pro datové soubory serveru SQL Server, které jsou uloženy v úložišti Premium. Ukládání do mezipaměti *pouze pro čtení* přináší nízkou latenci čtení, vysoké čtení VOPS a propustnost jako čtení se provádí z mezipaměti, která os v paměti virtuálního zařízení a místní SSD. Tato čtení jsou mnohem rychlejší než čtení z datového disku, který je z úložiště objektů blob Azure. Úložiště Premium nepočítá čtení podávané z mezipaměti do vstupně-diskových vstupně-sad a propustnost. Proto vaše použitelné je schopen dosáhnout vyšší celkové vipošany matný propustnost. 
+- Ukládání do mezipaměti *pouze pro čtení* je velmi výhodné pro datové soubory serveru SQL Server, které jsou uloženy v úložišti Premium. Ukládání do mezipaměti *pouze pro čtení* přináší nízkou latenci čtení, vysoké čtení VOPS a propustnost jako čtení se provádí z mezipaměti, která je v paměti virtuálního zařízení a místní SSD. Tato čtení jsou mnohem rychlejší než čtení z datového disku, který je z úložiště objektů blob Azure. Úložiště Premium nepočítá čtení podávané z mezipaměti do vstupně-diskových vstupně-sad a propustnost. Proto vaše použitelné je schopen dosáhnout vyšší celkové vipony a propustnost. 
 - *Žádná* konfigurace mezipaměti by měla být použita pro disky hostující soubor protokolu serveru SQL Server, protože soubor protokolu je zapsán postupně a nemá prospěch z ukládání do mezipaměti *Pouze pro čtení.* 
 - Ukládání do mezipaměti *readwrite* by nemělo být používáno k hostování souborů serveru SQL Server, protože SQL Server nepodporuje konzistenci dat s mezipamětí *ReadWrite.* Zapíše nehospodárné kapacity mezipaměti objektů *blob ReadOnly* a latence mírně zvýšit, pokud zápisy projít *jen pro čtení* vrstvy mezipaměti objektů blob. 
 
@@ -142,7 +142,7 @@ Následující tabulka popisuje tři dostupné možnosti typu pracovního vytí�
 
 | Typ pracovního vytížení | Popis | Optimalizace |
 | --- | --- | --- |
-| **Obecné** |Výchozí nastavení, které podporuje většinu úloh |Žádný |
+| **Obecné** |Výchozí nastavení, které podporuje většinu úloh |Žádná |
 | **Transakční zpracování** |Optimalizuje úložiště pro tradiční databázové úlohy OLTP |Trasovací vlajka 1117<br/>Trasovací vlajka 1118 |
 | **Datové sklady** |Optimalizuje úložiště pro analytické úlohy a úlohy vytváření sestav |Trasová vlajka 610<br/>Trasovací vlajka 1117 |
 

@@ -3,12 +3,12 @@ title: Podporované verze clusteru ve službě Azure Service Fabric
 description: Další informace o verzích clusteru v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: 1158266857f0864ed2f442edb100032c70063719
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: b76e498926492ce7acaa696dfe9a0299fb5573e0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385040"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460524"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze service fabric
 
@@ -37,10 +37,10 @@ V následující tabulce jsou uvedeny verze service fabric a jejich koncová dat
 | 6.3.* | 6.1.480.* |Menší nebo rovno verzi 3.2 |31. března 2019  |
 | 6.4.* | 6.2.301.* |Menší nebo rovno verzi 3.3 |15. září 2019 September 15, 2019 |
 | 6.5.* | 6.4.617.* |Menší nebo rovno verzi 3.4 |1. srpna 2020 |
-| 7.0.466.* | 6.4.664.* |Menší nebo rovno verzi 4.0|Aktuální verze, takže žádné koncové datum |
-| 7.0.466.* | 6.5.* |Menší nebo rovno verzi 4.0|Aktuální verze, takže žádné koncové datum |
-| 7.0.470.* | 7.0.466.* |Menší nebo rovno verzi 4.0 |Aktuální verze, takže žádné koncové datum |
-
+| 7.0.466.* | 6.4.664.* |Menší nebo rovno verzi 4.0|1. srpna 2020  |
+| 7.0.466.* | 6.5.* |Menší nebo rovno verzi 4.0|1. srpna 2020 |
+| 7.0.470.* | 7.0.466.* |Menší nebo rovno verzi 4.0 |1. srpna 2020  |
+| 7.1.409.* | 7.0.466.* |Menší nebo rovno verzi 4.0 |Aktuální verze, takže žádné koncové datum |
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
 V následující tabulce jsou uvedeny podporované operační systémy pro podporované verze service fabric.

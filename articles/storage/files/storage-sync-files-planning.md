@@ -7,21 +7,31 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8666f51b88d2a70a2cb27e3606f24010771c8017
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255116"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460697"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
-[Soubory Azure](storage-files-introduction.md) lze nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním sdílených složek Azure místně pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní věci, které je třeba zvážit při plánování nasazení. 
+
+:::row:::
+    :::column:::
+        [![Rozhovor a demo zavedení Azure File Sync - klikněte hrát!](./media/storage-sync-files-planning/azure-file-sync-interview-video-snapshot.png)](https://www.youtube.com/watch?v=nfWLO7F52-s)
+    :::column-end:::
+    :::column:::
+        Azure File Sync je služba, která umožňuje ukládat do mezipaměti několik sdílených složek Azure na místním Windows Serveru nebo cloudovém virtuálním počítači. 
+        
+        Tento článek vás seznámí s koncepty a funkcemi Azure File Sync. Až budete seznámeni s Azure File Sync, zvažte následující [průvodce nasazení synchronizace souborů Azure](storage-sync-files-deployment-guide.md) vyzkoušet tuto službu.        
+    :::column-end:::
+:::row-end:::
+
+Soubory se budou ukládat v cloudu ve [sdílených složkách Azure](storage-files-introduction.md). Sdílené složky Azure lze použít dvěma způsoby: přímým připojením těchto sdílených složek Azure bez serveru (SMB) nebo ukládáním sdílených složek Azure místně pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní aspekty, které je třeba zvážit při plánování nasazení. 
 
 - **Přímé připojení sdílené složky Azure**: Vzhledem k tomu, že soubory Azure poskytují přístup s smb, můžete připojit sdílené složky Azure místně nebo v cloudu pomocí standardního klienta SMB dostupného ve Windows, macOS a Linuxu. Vzhledem k tomu, že sdílené složky Azure jsou bez serveru, nasazení pro produkční scénáře nevyžaduje správu souborového serveru nebo zařízení NAS. To znamená, že nemusíte používat softwarové opravy ani vyměňovat fyzické disky. 
 
 - **Sdílení souborů Azure v mezipaměti místně pomocí Azure File Sync**: Azure File Sync umožňuje centralizovat sdílené složky vaší organizace v souborech Azure a současně zachovat flexibilitu, výkon a kompatibilitu místního souborového serveru. Azure File Sync transformuje místní (nebo cloudový) Windows Server do rychlé mezipaměti sdílené složky Azure. 
-
-Tento článek řeší především aspekty nasazení pro nasazení Azure File Sync. Pokud chcete naplánovat nasazení sdílených složek Azure, které mají být přímo připojeny místním nebo cloudovým klientem, přečtěte si část [Plánování nasazení souborů Azure](storage-files-planning.md).
 
 ## <a name="management-concepts"></a>Koncepce řízení
 Nasazení Azure File Sync má tři základní objekty správy:
@@ -234,7 +244,7 @@ I když změny provedené přímo ve sdílené složce Azure bude trvat déle sy
 > [!Important]  
 > K úspěšnému nasazení Azure File Sync není nutné připojit váš účet úložiště ke službě Active Directory. Jedná se o přísně volitelný krok, který umožňuje sdílené složce Azure vynutit místní akly, když uživatelé připojit sdílené složky Azure přímo.
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 Agent Synchronizace souborů Azure komunikuje s vaší službou synchronizace úložiště a sdílenou sponou souborů Azure pomocí protokolu Azure File Sync REST a protokolu FileREST, které vždy používají protokol HTTPS přes port 443. SMB se nikdy nepoužívá k nahrávání nebo stahování dat mezi windows serverem a sdílenou složkou Azure. Vzhledem k tomu, že většina organizací povoluje provoz https přes port 443, jako požadavek na návštěvu většiny webů se obvykle nevyžaduje konfigurace speciální sítě k nasazení Azure File Sync.
 
 Na základě zásad vaší organizace nebo jedinečných regulačních požadavků můžete vyžadovat restriktivnější komunikaci s Azure, a proto Azure File Sync poskytuje několik mechanismů pro konfiguraci sítí. Na základě vašich požadavků můžete:
@@ -256,11 +266,11 @@ Existují dvě strategie pro šifrování dat na Windows Server, které fungují
 
 Systém Windows Server poskytuje schránku doručené pošty nástroje BitLocker, aby zajistil šifrování pod systémem souborů. Nástroj BitLocker je pro Azure File Sync plně transparentní. Hlavním důvodem použití šifrovacího mechanismu, jako je nástroj BitLocker, je zabránit fyzické exfiltraci dat z místního datového centra někým, kdo krade disky, a zabránit bočnímu načtení neoprávněného operačního systému k provádění neautorizovaných čtení nebo zápisů do vašich dat. Další informace o nástrojem BitLocker naleznete v [tématu Přehled nástroje BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview).
 
-Produkty třetích stran, které fungují podobně jako nástroj BitLocker v tom, že sedí pod svazkem NTFS, by podobně měly pracovat plně transparentně s Azure File Sync. 
+Produkty jiných výrobců, které fungují podobně jako nástroj BitLocker v tom, že sedí pod svazkem NTFS, by podobně měly pracovat plně transparentně s Azure File Sync. 
 
 Další hlavní metodou šifrování dat je šifrování datového proudu souboru při uložení souboru aplikací. Některé aplikace mohou to nativně, ale to obvykle není tento případ. Příkladem metody šifrování datového proudu souboru je Azure Information Protection (AIP)/Azure Rights Management Services (Azure RMS)/Active Directory RMS. Hlavním důvodem použití šifrovacího mechanismu, jako je AIP/RMS, je zabránit exfiltraci dat ze sdílené položky lidmi, kteří je kopírují do alternativních umístění, jako je na flash disk nebo je podají e-mailem neoprávněným osobám. Když je datový proud souboru zašifrován jako součást formátu souboru, bude tento soubor nadále šifrován ve sdílené složce Azure. 
 
-Azure File Sync nespolupracuje se systémem souborů NTFS Encrypted File System (NTFS EFS) nebo šifrovacími řešeními třetích stran, která se nenachází nad systémem souborů, ale pod datovým proudem souboru. 
+Azure File Sync nespolupracuje se systémem souborů NTFS Encrypted File System (NTFS EFS) nebo šifrovacími řešeními jiných výrobců, která se nenachází nad systémem souborů, ale pod datovým proudem souboru. 
 
 ### <a name="encryption-in-transit"></a>Šifrování během přenosu
 Agent Azure File Sync komunikuje s vaší službou synchronizace úložiště a sdílenou sponou souborů Azure pomocí protokolu Azure File Sync REST a protokolu FileREST, které vždy používají protokol HTTPS přes port 443. Azure File Sync neodesílá nešifrované požadavky přes protokol HTTP. 
@@ -354,7 +364,7 @@ Interní antivirová řešení společnosti Microsoft, Windows Defender a System
 > [!Note]  
 > Dodavatelé antivirového softwaru mohou kontrolovat kompatibilitu mezi svým produktem a azure synchronizací souborů pomocí [sady Azure File Sync Antivirus Compatibility Test Suite](https://www.microsoft.com/download/details.aspx?id=58322), která je k dispozici ke stažení na webu Microsoft Download Center.
 
-## <a name="backup"></a>Zálohování 
+## <a name="backup"></a>Backup 
 Stejně jako antivirová řešení mohou záložní řešení způsobit odvolání vrstvených souborů. Doporučujeme použít cloudové řešení zálohování k zálohování sdílené složky Azure namísto místního zálohovacího produktu.
 
 Pokud používáte místní řešení zálohování, zálohy by měly být prováděny na serveru ve skupině synchronizace, která má zakázáno vrstvení cloudu. Při provádění obnovení použijte možnosti obnovení na úrovni svazku nebo souboru. Soubory obnovené pomocí možnosti obnovení na úrovni souboru budou synchronizovány se všemi koncovými body ve skupině synchronizace a existující soubory budou nahrazeny verzí obnovenou ze zálohy.  Obnovení na úrovni svazku nenahradí novější verze souborů ve sdílené složce Azure nebo jiných koncových bodech serveru.
@@ -373,4 +383,4 @@ Pokud používáte místní řešení zálohování, zálohy by měly být prov�
 * [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 * [Nasazení služby Soubory Azure](storage-files-deployment-guide.md)
 * [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
-* [Monitorování Synchronizace souborů Azure](storage-sync-files-monitoring.md)
+* [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)

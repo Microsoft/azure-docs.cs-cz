@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b51d0747a4ffa08bc230b33cd416986dda1e1908
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ac581b45f3aefe7a386f25c978bfc09adda4e39f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80154300"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460473"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači SIP v Azure pomocí certifikátů TLS/SSL uložených v trezoru klíčů
 K zabezpečení webových serverů lze k šifrování webového provozu použít zabezpečení transportní vrstvy (TLS), dříve označované jako SSL (Secure Sockets Layer), certifikát. Tyto certifikáty TLS/SSL lze uložit do azure key vaultu a umožňují bezpečné nasazení certifikátů do virtuálních počítačů linuxu (VM) v Azure. Co se v tomto kurzu naučíte:

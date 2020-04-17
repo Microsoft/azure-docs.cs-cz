@@ -759,14 +759,6 @@
           items:
             - name: 1. Dotazování dat
               href: tutorial-query-graph.md
-        - name: Referenční informace
-          items:
-            - name: Hlavičky odpovědi
-              href: gremlin-headers.md
-            - name: Omezení
-              href: gremlin-limits.md
-            - name: Kompatibilita
-              href: gremlin-compatibility.md
         - name: Návody
           items:
             - name: Modelování dat grafů
@@ -794,6 +786,14 @@
               href: powershell-samples-gremlin.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
               href: cli-samples-gremlin.md
+        - name: Referenční informace
+          items:
+            - name: Hlavičky odpovědi
+              href: gremlin-headers.md
+            - name: Omezení
+              href: gremlin-limits.md
+            - name: Kompatibilita
+              href: gremlin-compatibility.md
     - name: Rozhraní Table API
       items:
         - name: Přehled

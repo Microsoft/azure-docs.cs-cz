@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 43e626355feaf1e51fc840f82506c559a1859b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77621989"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459130"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat služby Azure Event Hubs v klidovém stavu pomocí portálu Azure
 Azure Event Hubs poskytuje šifrování dat v klidovém stavu pomocí šifrování služby Azure Storage Service (Azure SSE). Event Hubs spoléhá na Azure Storage pro ukládání dat a ve výchozím nastavení, všechna data, která jsou uložená s Azure Storage je šifrována pomocí klíčů spravovaných Microsoftem. 
@@ -26,9 +26,9 @@ Povolení funkce BYOK je proces jednorázového nastavení v oboru názvů.
 > [!NOTE]
 > Funkce BYOK je podporována [clustery s vyhrazenými clustery s jedním tenantem.](event-hubs-dedicated-overview.md) Nelze povolit pro standardní obory názvů Event Hubs.
 
-Azure Key Vault můžete použít ke správě klíčů a auditování využití klíčů. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít Azure Key Vault API ke generování klíčů. Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../key-vault/key-vault-overview.md)
+Azure Key Vault můžete použít ke správě klíčů a auditování využití klíčů. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít Azure Key Vault API ke generování klíčů. Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../key-vault/general/overview.md)
 
-Tento článek ukazuje, jak nakonfigurovat trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí portálu Azure. Informace o tom, jak vytvořit trezor klíčů pomocí webu Azure Portal, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z Azure Key Vault pomocí portálu Azure](../key-vault/quick-create-portal.md).
+Tento článek ukazuje, jak nakonfigurovat trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí portálu Azure. Informace o tom, jak vytvořit trezor klíčů pomocí webu Azure Portal, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z Azure Key Vault pomocí portálu Azure](../key-vault/secrets/quick-create-portal.md).
 
 > [!IMPORTANT]
 > Použití klíčů spravovaných zákazníkem s Azure Event Hubs vyžaduje, aby trezor klíčů měl nakonfigurované dvě požadované vlastnosti. Jsou to: **Obnovitelné odstranění** a **Nečistit**. Tyto vlastnosti jsou ve výchozím nastavení povolené při vytváření nového trezoru klíčů na webu Azure Portal. Pokud však potřebujete povolit tyto vlastnosti v existujícím trezoru klíčů, musíte použít buď PowerShell nebo Azure CLI.
@@ -44,9 +44,9 @@ Pokud chcete povolit klíče spravované zákazníky na webu Azure Portal, postu
     ![Povolit klíč spravovaný zákazníkem](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Nastavení trezoru klíčů s klíči
-Po povolení klíčů spravovaných zákazníkem je potřeba přidružit klíč spravovaný zákazníkem k oboru názvů Centra událostí Azure. Centra událostí podporuje jenom Azure Key Vault. Pokud povolíte **možnost Šifrování s klíčem spravovaným zákazníkem** v předchozí části, musíte mít klíč importován do úložiště klíčů Azure. Klíče musí mít také pro klíč nakonfigurovány **funkce Obnovitelné odstranění** a **Neodstraňovat.** Tato nastavení lze nakonfigurovat pomocí [prostředí PowerShell](../key-vault/key-vault-soft-delete-powershell.md) nebo [CLI](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection).
+Po povolení klíčů spravovaných zákazníkem je potřeba přidružit klíč spravovaný zákazníkem k oboru názvů Centra událostí Azure. Centra událostí podporuje jenom Azure Key Vault. Pokud povolíte **možnost Šifrování s klíčem spravovaným zákazníkem** v předchozí části, musíte mít klíč importován do úložiště klíčů Azure. Klíče musí mít také pro klíč nakonfigurovány **funkce Obnovitelné odstranění** a **Neodstraňovat.** Tato nastavení lze nakonfigurovat pomocí [prostředí PowerShell](../key-vault/general/soft-delete-powershell.md) nebo [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection).
 
-1. Chcete-li vytvořit nový trezor klíčů, postupujte podle [úvodního panelu Azure](../key-vault/key-vault-overview.md)Key Vault . Další informace o importu existujících klíčů naleznete [v tématu O klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md).
+1. Chcete-li vytvořit nový trezor klíčů, postupujte podle [úvodního panelu Azure](../key-vault/general/overview.md)Key Vault . Další informace o importu existujících klíčů naleznete [v tématu O klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md).
 1. Chcete-li při vytváření trezoru zapnout ochranu proti měkkému odstranění i vymazání, použijte příkaz [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) .
 
     ```azurecli-interactive
@@ -71,10 +71,10 @@ Po povolení klíčů spravovaných zákazníkem je potřeba přidružit klíč 
 
 
 ## <a name="rotate-your-encryption-keys"></a>Otočení šifrovacích klíčů
-Klíč v trezoru klíčů můžete otočit pomocí mechanismu střídání trezorů klíčů Azure. Další informace naleznete v [tématu Nastavení střídání klíčů a auditování](../key-vault/key-vault-key-rotation-log-monitoring.md). Data aktivace a vypršení platnosti lze také nastavit tak, aby automatizovala střídání klíčů. Služba Event Hubs rozpozná nové verze klíčů a začne je automaticky používat.
+Klíč v trezoru klíčů můžete otočit pomocí mechanismu střídání trezorů klíčů Azure. Další informace naleznete v [tématu Nastavení střídání klíčů a auditování](../key-vault/secrets/key-rotation-log-monitoring.md). Data aktivace a vypršení platnosti lze také nastavit tak, aby automatizovala střídání klíčů. Služba Event Hubs rozpozná nové verze klíčů a začne je automaticky používat.
 
 ## <a name="revoke-access-to-keys"></a>Odvolání přístupu ke klíčům
-Zrušením přístupu k šifrovacím klíčům se data z centra událostí nevymaže. Data však nelze přistupovat z oboru názvů Centra událostí. Šifrovací klíč můžete odvolat prostřednictvím zásad přístupu nebo odstraněním klíče. Přečtěte si další informace o zásadách přístupu a zabezpečení trezoru klíčů z [zabezpečeného přístupu k trezoru klíčů](../key-vault/key-vault-secure-your-key-vault.md).
+Zrušením přístupu k šifrovacím klíčům se data z centra událostí nevymaže. Data však nelze přistupovat z oboru názvů Centra událostí. Šifrovací klíč můžete odvolat prostřednictvím zásad přístupu nebo odstraněním klíče. Přečtěte si další informace o zásadách přístupu a zabezpečení trezoru klíčů z [zabezpečeného přístupu k trezoru klíčů](../key-vault/general/secure-your-key-vault.md).
 
 Po odvolání šifrovacího klíče se služba Event Hubs v šifrovaném oboru názvů stane nefunkční. Pokud je přístup ke klíči povolen nebo je obnoven klíč pro odstranění, služba Event Hubs vybere klíč, abyste měli přístup k datům z oboru názvů zašifrovaných center událostí.
 
@@ -99,7 +99,7 @@ Následujícím postupem povolte protokoly pro klíče spravované zákazníkem.
 ## <a name="log-schema"></a>Schéma protokolu 
 Všechny protokoly jsou uloženy ve formátu JavaScript Object Notation (JSON). Každá položka obsahuje řetězcová pole, která používají formát popsaný v následující tabulce. 
 
-| Name (Název) | Popis |
+| Název | Popis |
 | ---- | ----------- | 
 | Název_úkolu | Popis úlohy, která se nezdařila. |
 | ActivityId | Interní ID, které se používá pro sledování. |
@@ -423,7 +423,7 @@ Následují běžné chybové kódy, které je třeba vyhledat, když je povolen
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 - [Přehled centra událostí](event-hubs-about.md)
-- [Trezor klíčů – přehled](../key-vault/key-vault-overview.md)
+- [Trezor klíčů – přehled](../key-vault/general/overview.md)
 
 
 

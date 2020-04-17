@@ -1,11 +1,11 @@
 ---
-title: Stažení seznamu uživatelů (preview) na portálu Azure Active Directory | Dokumenty společnosti Microsoft
+title: Stažení seznamu uživatelů na portálu Azure Active Directory | Dokumenty společnosti Microsoft
 description: V Centru pro správu Azure ve Službě Azure Active Directory si hromadně stahujte záznamy uživatelů.
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 02/06/2020
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,20 +13,20 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b35163387ed4ce71f7a2019835a1d9fdbff3051
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063828"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532631"
 ---
-# <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Stažení seznamu uživatelů (preview) na portálu Azure Active Directory
+# <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Stažení seznamu uživatelů na portálu Azure Active Directory
 
 Azure Active Directory (Azure AD) podporuje operace hromadného importu (vytvoření) uživatelů.
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-Chcete-li stáhnout seznam uživatelů z Centra pro správu Azure AD, musíte být přihlášeni s uživatelem přiřazeným k jedné nebo více rolím správce na úrovni organizace ve službě Azure AD. Pozvaní hosté a vývojářaplikací nejsou považovány za role správce.
+Chcete-li stáhnout seznam uživatelů z Centra pro správu Azure AD, musíte být přihlášeni s uživatelem přiřazeným k jedné nebo více rolísprávce na úrovni organizace ve službě Azure AD (Správce uživatelů je minimální požadovaná role). Pozvaní hosté a vývojářaplikací nejsou považovány za role správce.
 
 ## <a name="to-download-a-list-of-users"></a>Stažení seznamu uživatelů
 
@@ -70,9 +70,9 @@ Chcete-li stáhnout seznam uživatelů z Centra pro správu Azure AD, musíte b�
 
 ## <a name="check-status"></a>Zkontrolování stavu
 
-Stav nevyřízených hromadných požadavků můžete zobrazit na stránce **Výsledky hromadné operace (preview).**
+Stav nevyřízených hromadných požadavků můžete zobrazit na stránce **S výsledky hromadné operace.**
 
-   ![Kontrola stavu nahrávání na stránce Výsledky hromadných operací](./media/users-bulk-download/bulk-center.png)
+[![](media/users-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>Limity služby hromadného stahování
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73838704"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459028"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Přesunutí účtu úložiště Azure do jiné oblasti
 
@@ -51,7 +51,7 @@ Tato šablona obsahuje nastavení, která popisují váš účet úložiště.
 
 Export šablony pomocí portálu Azure:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Všechny prostředky** a pak vyberte účet úložiště.
 
@@ -276,7 +276,7 @@ Odebrání účtu úložiště pomocí portálu Azure:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Chcete-li odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte příkaz [Remove-AzStorageAccount:](/powershell/module/az.resources/remove-azstorageaccount)
+Chcete-li odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte příkaz [Remove-AzStorageAccount:](/powershell/module/az.storage/remove-azstorageaccount)
 
 ```powershell
 Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storageAccount

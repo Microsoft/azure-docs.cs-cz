@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: f15a4605d28beaf97e877f337051a2ec13148a41
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 673c6e2ed0aedcc186baf8c7e1884dd537f9567d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80235768"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459844"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Co je Azure Stream Analytics?
 
@@ -49,9 +49,9 @@ Služba Azure Stream Analytics byla navržena jako snadno použitelná, flexibil
 
 ## <a name="ease-of-getting-started"></a>Snadný začátek
 
-Azure Stream Analytics se snadno spustí. Připojení k více zdrojům a propadům trvá pouze několik kliknutí a vytvoření kanálu od konce. Stream Analytics se můžou připojit k [Azure Event Hubs](/azure/event-hubs/) a Azure [IoT Hub](/azure/iot-hub/) pro streamování dat a také k [úložišti objektů blob Azure](/azure/storage/storage-introduction) k ingestování historických dat. Vstup úlohy může také obsahovat statická nebo pomalu se měnící referenční data z úložiště objektů blob Azure nebo [databáze SQL,](stream-analytics-use-reference-data.md#azure-sql-database) ke kterým se můžete připojit k streamování dat a provádět vyhledávací operace.
+Azure Stream Analytics se snadno spustí. Připojení k více zdrojům a propadům trvá pouze několik kliknutí a vytvoření kanálu od konce. Stream Analytics se můžou připojit k [Azure Event Hubs](/azure/event-hubs/) a Azure [IoT Hub](/azure/iot-hub/) pro streamování dat a také k [úložišti objektů blob Azure](/azure/storage/common/storage-introduction) k ingestování historických dat. Vstup úlohy může také obsahovat statická nebo pomalu se měnící referenční data z úložiště objektů blob Azure nebo [databáze SQL,](stream-analytics-use-reference-data.md#azure-sql-database) ke kterým se můžete připojit k streamování dat a provádět vyhledávací operace.
 
-Stream Analytics může směrovat výstup úlohy do mnoha úložných systémů, jako je [azure blob storage](/azure/storage/storage-introduction), [Azure SQL Database](/azure/sql-database/), Azure Data Lake [Store](/azure/data-lake-store/)a [Azure CosmosDB](/azure/cosmos-db/introduction). Dávkové analýzy můžete spustit na uloženém výstupu pomocí Azure HDInsight, nebo můžete výstup odeslat do jiné služby, jako jsou Centra událostí ke spotřebě nebo [Power BI](https://docs.microsoft.com/power-bi/) pro vizualizaci v reálném čase.
+Stream Analytics může směrovat výstup úlohy do mnoha úložných systémů, jako je [azure blob storage](/azure/storage/common/storage-introduction), [Azure SQL Database](/azure/sql-database/), Azure Data Lake [Store](/azure/data-lake-store/)a [Azure CosmosDB](/azure/cosmos-db/introduction). Dávkové analýzy můžete spustit na uloženém výstupu pomocí Azure HDInsight, nebo můžete výstup odeslat do jiné služby, jako jsou Centra událostí ke spotřebě nebo [Power BI](https://docs.microsoft.com/power-bi/) pro vizualizaci v reálném čase.
 
 Celý seznam výstupů Stream Analytics najdete [v tématu Principy výstupů z Azure Stream Analytics](stream-analytics-define-outputs.md).
 

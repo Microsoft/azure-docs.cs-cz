@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2a427eab107c70b19932b7b8ddc5a7fc531ef19a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9e946d7f4616799768711ee8c18584a2a8fcff2a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77615427"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482014"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Úvodní příručka: Vytvoření aplikace Unity HoloLens, která používá prostorové kotvy Azure
 
@@ -33,7 +33,7 @@ Dozvíte se, jak provést tyto akce:
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-- Potřebujete počítač se systémem Windows, ve kterém jsou <a href="https://unity3d.com/get-unity/download" target="_blank">nainstalovány Unity 2019.1 nebo 2019.2</a> nebo novější a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> nebo novější. Instalace sady Visual Studio musí zahrnovat **úlohu vývoje platformy Universal Windows** a součást **sady Windows 10 SDK (10.0.18362.0 nebo novější).** Musíte také nainstalovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> a Git <a href="https://git-lfs.github.com/">LFS</a>.
+- Potřebujete počítač se systémem Windows s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 nebo 2019.2</a> a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> nebo novější. Instalace sady Visual Studio musí zahrnovat **úlohu vývoje platformy Universal Windows** a součást **sady Windows 10 SDK (10.0.18362.0 nebo novější).** Musíte také nainstalovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> a Git <a href="https://git-lfs.github.com/">LFS</a>.
 - Potřebujete zařízení HoloLens, ve kterém je povolen [režim pro vývojáře.](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) [Aktualizace Windows 10 z října 2018](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (označovaná také jako RS5) musí být nainstalovaná v zařízení. Chcete-li aktualizovat na nejnovější verzi na HoloLens, otevřete aplikaci **Nastavení,** přejděte na **Aktualizovat & zabezpečení**a pak vyberte Vyhledat **aktualizace**.
 - Ve vaší aplikaci musíte povolit schopnost **Prostorové vnímání.** Toto nastavení je v části Nastavení nastavení **sestavení** > **Player Settings** > **Možnosti****publikování** > .
 - V aplikaci musíte povolit **virtuální realitu podporovanou** sadou **Windows Mixed Reality SDK**. Toto nastavení je v nastavení **nastavení** > sestavení**Nastavení** > přehrávače**XR Nastavení**.

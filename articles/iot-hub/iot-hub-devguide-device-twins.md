@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
-ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 251c9c9717bae1728bffa48827a45d4535d66c15
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79285237"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482078"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Principy a používání dvojčat zařízení v centru IoT Hub
 
@@ -58,7 +58,7 @@ Dvojče zařízení je dokument JSON, který obsahuje:
 
 * **Hlášené vlastnosti**. Používá se spolu s požadovanými vlastnostmi pro synchronizaci konfigurace zařízení nebo podmínek. Aplikace zařízení můžete nastavit hlášené vlastnosti a back-end řešení můžete číst a dotaz ovat.
 
-* **Vlastnosti identity zařízení**. Kořen dokumentu JSON dvojčete zařízení obsahuje vlastnosti jen pro čtení z odpovídající identity zařízení uložené v [registru identit](iot-hub-devguide-identity-registry.md).
+* **Vlastnosti identity zařízení**. Kořen dokumentu JSON dvojčete zařízení obsahuje vlastnosti jen pro čtení z odpovídající identity zařízení uložené v [registru identit](iot-hub-devguide-identity-registry.md). `connectionStateUpdatedTime` Vlastnosti `generationId` a nebudou zahrnuty.
 
 ![Snímek obrazovky s vlastnostmi dvojčete zařízení](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -119,7 +119,7 @@ V předchozím příkladu dvojčezařízení `batteryLevel` obsahuje vlastnost, 
 
 ### <a name="desired-property-example"></a>Příklad požadované vlastnosti
 
-V předchozím příkladu `telemetryConfig` dvojčete zařízení požadované a hlášené vlastnosti jsou používány back-end řešení a aplikace zařízení pro synchronizaci konfigurace telemetrie pro toto zařízení. Například:
+V předchozím příkladu `telemetryConfig` dvojčete zařízení požadované a hlášené vlastnosti jsou používány back-end řešení a aplikace zařízení pro synchronizaci konfigurace telemetrie pro toto zařízení. Příklad:
 
 1. Back-end řešení nastaví požadovanou vlastnost s požadovanou hodnotou konfigurace. Zde je část dokumentu s požadovanou sadou vlastností:
 
@@ -182,7 +182,7 @@ Back-end řešení pracuje na dvojčeti zařízení pomocí následujících ato
 
   - Vlastnosti
 
-    | Name (Název) | Hodnota |
+    | Název | Hodnota |
     | --- | --- |
     $content typu | application/json |
     $iothub doba zařazení do fronty |  Čas odeslání oznámení |
@@ -307,7 +307,7 @@ IoT Hub odmítne s chybou všechny `tags`operace, které `properties/desired`by 
 
 IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v objektu dvojčete zařízení požadované a hlášené vlastnosti. Časová razítka jsou v UTC a kódována ve `YYYY-MM-DDTHH:MM:SS.mmmZ`formátu [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) .
 
-Například:
+Příklad:
 
 ```json
 {

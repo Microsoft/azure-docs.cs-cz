@@ -8,16 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: 59b11d22f054a98fe176e4393843606bd01cc872
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 9ae486ee522982b116af58cfb7cbfbca66a7ef4a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879475"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458739"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Jak nastavit trezor klíčů pro virtuální počítače pomocí azure CLI
 
-V zásobníku Azure Resource Manager jsou tajné klíče nebo certifikáty modelovány jako prostředky poskytované trezorem klíčů. Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../../key-vault/key-vault-overview.md) Aby se trezor klíčů používal s virtuálními počítači Azure Resource Manager, musí být vlastnost *EnabledForDeployment* v trezoru klíčů nastavena na hodnotu true. Tento článek ukazuje, jak nastavit trezor klíčů pro použití s virtuálními počítači Azure (VM) pomocí azure CLI. 
+V zásobníku Azure Resource Manager jsou tajné klíče nebo certifikáty modelovány jako prostředky poskytované trezorem klíčů. Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../../key-vault/general/overview.md) Aby se trezor klíčů používal s virtuálními počítači Azure Resource Manager, musí být vlastnost *EnabledForDeployment* v trezoru klíčů nastavena na hodnotu true. Tento článek ukazuje, jak nastavit trezor klíčů pro použití s virtuálními počítači Azure (VM) pomocí azure CLI. 
 
 K provedení těchto kroků potřebujete nejnovější [azure cli](/cli/azure/install-az-cli2) nainstalované a přihlášené k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index).
 

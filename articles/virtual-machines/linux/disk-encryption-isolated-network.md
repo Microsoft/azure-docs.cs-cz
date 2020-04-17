@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa0dc204a017e2d40eb3952a9ede0755127f8de2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970666"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460116"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Šifrování disku Azure v izolované síti
 
@@ -43,7 +43,7 @@ Všechna použitá nastavení skupiny zabezpečení sítě musí koncovému bodu
 
 Pokud [používáte Azure Disk Encryption s Azure AD (předchozí verze)](disk-encryption-overview-aad.md), bude nutné [knihovnu Azure Active Directory](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) nainstalovat ručně pro všechny distribuce (kromě balíčků vhodných pro distro, jak [je uvedeno výše).](#package-management)
 
-Když je šifrování povoleno s [přihlašovacími údaji Azure AD](disk-encryption-linux-aad.md), cílový virtuální počítač musí povolit připojení ke koncovým bodům služby Azure Active Directory i koncovým bodům trezoru klíčů. Aktuální koncové body ověřování služby Azure Active Directory se udržují v oddílech 56 a 59 adres [URL office 365 a dokumentaci k rozsahům IP adres.](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) Pokyny k trezoru klíčů jsou k dispozici v dokumentaci o tom, jak získat přístup k [trezoru klíčů Azure za bránou firewall](../../key-vault/key-vault-access-behind-firewall.md).
+Když je šifrování povoleno s [přihlašovacími údaji Azure AD](disk-encryption-linux-aad.md), cílový virtuální počítač musí povolit připojení ke koncovým bodům služby Azure Active Directory i koncovým bodům trezoru klíčů. Aktuální koncové body ověřování služby Azure Active Directory se udržují v oddílech 56 a 59 adres [URL office 365 a dokumentaci k rozsahům IP adres.](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) Pokyny k trezoru klíčů jsou k dispozici v dokumentaci o tom, jak získat přístup k [trezoru klíčů Azure za bránou firewall](../../key-vault/general/access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure 
 

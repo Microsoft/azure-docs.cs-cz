@@ -5,15 +5,15 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/15/2020
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5b6389491fd91b716a05e7c57c98addb6352bd9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67440221"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461990"
 ---
 1. Stáhněte si rychlé starty sady SDK klienta pro následující platformy:
     
@@ -69,23 +69,13 @@ ms.locfileid: "67440221"
    - **Back-end Node.js**
     
      Pokud budete používat aplikaci Node.js quickstart, postupujte podle následujících pokynů.
-
-     1. Na webu Azure portal přejděte na **Snadné tabulky**, zobrazí se tato obrazovka.
-      
-        ![Jednoduché tabulky uzlů](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
-
-     2. Ujistěte se, že připojovací řetězec SQL je již přidán na kartě **Konfigurace.** Pak zaškrtněte políčko **Beru na vědomí, že to bude přepsat veškerý obsah webu** a klikněte na tlačítko Vytvořit **todoitem tabulky.**
      
-        ![Konfigurace jednoduchých tabulek uzlů](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
-
-     3. V **části Snadné tabulky**klepněte na tlačítko + **Přidat.**
-    
-        ![Tlačítko Přidat jednoduché tabulky uzlů](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
-
-     4. Vytvořte `TodoItem` tabulku s anonymním přístupem.
-      
-        ![Snadné tabulky uzlů přidat tabulku](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
-
+        1. Vytvořte nové rozhraní API – můžete buď provést změny přímo na webu Azure Portal, nebo upravit kód místně ve vývojovém prostředí a pak publikovat do Azure. Klikněte `App Service Editor (Preview)` na `Development Tools` pod nabídku, která poskytuje prostředí pro úpravy kódu aplikace v prohlížeči.
+        
+        2. Klikněte `Go` na a po otevření Editoru služby App Service máte plnou kontrolu nad zdrojovým kódem. Za předpokladu, že jste již nainstalovali balíček express a azure-mobile-apps s příkazem npm install, klikněte na složku API pod WEBROOT a vytvořte nebo upravte vlastní rozhraní API. Proveďte změny v souboru kódu a změny se automaticky uloží.
+        
+        3. Máte úplné řízení v Azure SQL Database slouží k ukládání dat aplikace. V databázi můžete snadno vytvářet nové tabulky.
+ 
    - **Back-end .NET**
     
         Pokud budete používat aplikaci rychlého spuštění .NET, postupujte podle následujících pokynů.

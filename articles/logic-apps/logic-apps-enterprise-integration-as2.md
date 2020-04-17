@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e7c34e42d0ab68a5dab9718075f02a85322ce6c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650554"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458824"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv AS2 pro podnikovou integraci B2B v aplikacích Azure Logic Apps s podnikovou integrací
 
@@ -61,7 +61,7 @@ Tento článek ukazuje, jak přidat akce kódování AS2 a dekódování do exis
 
 * Než budete moci použít konektor AS2, musíte vytvořit [smlouvu](../logic-apps/logic-apps-enterprise-integration-agreements.md) AS2 mezi svými obchodními partnery a uložit tuto smlouvu do svého integračního účtu.
 
-* Pokud používáte [Azure Key Vault](../key-vault/key-vault-overview.md) pro správu certifikátů, zkontrolujte, zda klíče trezoru umožňují operace **šifrování** a **dešifrování.** V opačném případě se nezdaří akce kódování a dekódování.
+* Pokud používáte [Azure Key Vault](../key-vault/general/overview.md) pro správu certifikátů, zkontrolujte, zda klíče trezoru umožňují operace **šifrování** a **dešifrování.** V opačném případě se nezdaří akce kódování a dekódování.
 
   Na webu Azure Portal přejděte ke klíči v trezoru klíčů, zkontrolujte **povolené operace**klíče a zkontrolujte, zda jsou vybrané operace **Šifrování** a **Dešifrování,** například:
 
@@ -88,7 +88,7 @@ Tento článek ukazuje, jak přidat akce kódování AS2 a dekódování do exis
    | **AS2 až** | Identifikátor příjemce zprávy, jak je uvedeno ve vaší dohodě AS2 |
    |||
 
-   Například:
+   Příklad:
 
    ![Vlastnosti kódování zpráv](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 

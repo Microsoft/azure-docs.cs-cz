@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d31cf3a4e024dc59b865d096cbd0829d50f61a1a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262812"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533951"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlášení uživatelů se sociální identitou
 
@@ -34,7 +34,7 @@ Tato stránka je pro MSAL 3.x. Pokud máte zájem o MSAL 2.x, naleznete [v téma
 Používá se jako `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}` příslušný orgán, kde:
 
 - `azureADB2CHostname`je název klienta Azure AD B2C plus `{your-tenant-name}.b2clogin.com`hostitele (například ),
-- `tenant`je úplný název klienta Azure AD B2C `{your-tenant-name}.onmicrosoft.com`(například) nebo identifikátoru GUID pro klienta, 
+- `tenant`je úplný název klienta Azure AD B2C `{your-tenant-name}.onmicrosoft.com`(například) nebo identifikátoru GUID pro klienta,
 - `policyName`název zásady nebo toku uživatele použít (například "b2c_1_susi" pro přihlášení nebo přihlášení).
 
 Další informace o autoritách Azure AD B2C naleznete v této [dokumentaci](/azure/active-directory-b2c/b2clogin).
@@ -78,7 +78,7 @@ textem:
 
 - `policy`jedním z předchozích řetězců (například). `PolicySignUpSignIn`
 - `ParentActivityOrWindow`je vyžadována pro Android (Aktivita) a volitelná pro jiné platformy, které podporují nadřazené ui, jako jsou windows v systému Windows a UIViewController v systému iOS. Další informace naleznete [zde v dialogovém okně ui](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow).
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)`je metoda, která vyhledá účet pro danou zásadu. Například:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)`je metoda, která vyhledá účet pro danou zásadu. Příklad:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -121,7 +121,7 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 ## <a name="resource-owner-password-credentials-ropc-with-azure-ad-b2c"></a>Přihlašovací údaje pro heslo vlastníka prostředků (ROPC) s Azure AD B2C
 Další podrobnosti o toku ROPC naleznete v této [dokumentaci](v2-oauth-ropc.md).
 
-Tento tok **se nedoporučuje,** protože vaše aplikace žádají uživatele o jeho heslo není zabezpečená. Další informace o tomto problému naleznete v [tomto článku](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
+Tento tok **se nedoporučuje,** protože vaše aplikace žádají uživatele o jeho heslo není zabezpečená. Další informace o tomto problému naleznete v [tomto článku](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/).
 
 Pomocí uživatelského jména / hesla se vzdáváte řady věcí:
 - Základní principy moderní identity: heslo se vyloví, přehraje. Protože máme koncept sdíleného tajemství, které může být zachyceno. To je nekompatibilní s bez hesla.
@@ -155,15 +155,15 @@ Pokud jste vývojář Azure AD B2C, který používá Google jako poskytovatele 
 
 Pokud se věci změní, poskytneme aktualizaci tohoto [problému.](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688)
 
-## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Ukládání do mezipaměti s Azure AD B2C v MSAL.Net 
+## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Ukládání do mezipaměti s Azure AD B2C v MSAL.Net
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Známý problém s Azure AD B2C
 
-MSAL.Net podporuje [mezipaměť tokenů](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet). Klíč mezipaměti tokenu je založen na deklaracích vrácených zprostředkovatelem identity. V současné době MSAL.Net potřebuje dva deklarace identity k vytvoření klíče mezipaměti tokenu:  
-- `tid`což je ID klienta Azure AD a 
-- `preferred_username` 
+MSAL.Net podporuje [mezipaměť tokenů](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet). Klíč mezipaměti tokenu je založen na deklaracích vrácených zprostředkovatelem identity. V současné době MSAL.Net potřebuje dva deklarace identity k vytvoření klíče mezipaměti tokenu:
+- `tid`což je ID klienta Azure AD a
+- `preferred_username`
 
-Obě tyto deklarace identity chybí v mnoha scénářích Azure AD B2C. 
+Obě tyto deklarace identity chybí v mnoha scénářích Azure AD B2C.
 
 Dopad na zákazníka je, že při pokusu o zobrazení pole uživatelského jména, jsou získáváte "Chybí z odpovědi tokenu" jako hodnotu? Pokud ano, je to proto, že Azure AD B2C nevrátí hodnotu v IdToken pro preferred_username z důvodu omezení s účty sociální ch a externí zprostředkovatelé identity (IdPs). Azure AD vrátí hodnotu pro preferred_username protože ví, kdo je uživatel, ale pro Azure AD B2C, protože uživatel můžete přihlásit pomocí místního účtu, Facebook, Google, GitHub preferred_username, atd. Chcete-li odblokovat MSAL z zavádění mezipaměti kompatibility s ADAL, rozhodli jsme se použít "Chybějící z odpovědi tokenu" na naší straně při práci s účty Azure AD B2C při IdToken vrátí nic pro preferred_username. MSAL musí vrátit hodnotu pro preferred_username zachovat kompatibilitu mezipaměti mezi knihovnami.
 
@@ -178,7 +178,7 @@ Případně můžete použít deklaraci identity, `tid` pokud používáte vlast
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Zmírnění pro "Chybějící z odpovědi tokenu"
 Jednou z možností je použít "jméno" tvrzení jako upřednostňované uživatelské jméno. Proces je uveden v tomto [B2C doc](../../active-directory-b2c/user-flow-overview.md) -> "Ve sloupci Nárok na vrácení zvolte deklarace identity, které chcete vrátit v tokenech autorizace odeslaných zpět do vaší aplikace po úspěšném prostředí pro úpravu profilu. Vyberte například Zobrazované jméno, PSČ."
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další kroky
 
 Další podrobnosti o získávání tokenů interaktivně s MSAL.NET pro aplikace Azure AD B2C jsou k dispozici v následující ukázce.
 

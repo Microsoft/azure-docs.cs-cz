@@ -1,17 +1,14 @@
 ---
 title: Nejčastější dotazy k migraci do Azure
 description: Získejte odpovědi na běžné otázky týkající se služby Migrace Azure.
-author: snehaamicrosoft
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: snehaa
-ms.openlocfilehash: c85c5c6e11beb0178139dad152f56f420b2ac26f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78926735"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530313"
 ---
 # <a name="azure-migrate-common-questions"></a>Migrace Azure: Běžné otázky
 
@@ -56,8 +53,7 @@ Vyberte si nástroj na základě toho, co chcete udělat:
 
 ## <a name="which-geographies-are-supported"></a>Které zeměpisné oblasti jsou podporovány?
 
-- **Virtuální počítače VMware**: Zkontrolujte podporované [geografické oblasti](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) Azure Migrate pro virtuální počítače VMware.
-- **Virtuální počítače Hyper-V**: Zkontrolujte podporované [geografické oblasti](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v) Azure pro virtuální počítače Hyper-V.
+Projděte si podporované zeměpisné oblasti pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
 
 ## <a name="how-do-i-get-started"></a>Jak mám začít?
 

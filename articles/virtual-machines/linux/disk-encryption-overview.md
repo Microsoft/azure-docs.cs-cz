@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d058ff5f9863642f73725db3472c942161447f25
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: fa7e085f723d4f4c411f52e045c9437d5cb293b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548440"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459776"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Šifrování disku Azure pro virtuální počítače s Linuxem 
 
@@ -105,7 +105,7 @@ Chcete-li povolit funkci Šifrování disku Azure, musí virtuální počítače
   - Chcete-li získat token pro připojení k trezoru klíčů, musí být virtuální počítač \[s\]Linuxem schopen se připojit ke koncovému bodu Služby Azure Active Directory, login.microsoftonline.com .
   - Chcete-li zapsat šifrovací klíče do trezoru klíčů, musí být virtuální počítač s Linuxem schopen se připojit ke koncovému bodu trezoru klíčů.
   - Virtuální počítač s Linuxem se musí moct připojit ke koncovému bodu úložiště Azure, který je hostitelem úložiště rozšíření Azure a účtu úložiště Azure, který hostuje soubory Virtuálního pevného disku.
-  -  Pokud vaše zásady zabezpečení omezují přístup z virtuálních počítačů Azure k Internetu, můžete vyřešit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo, které umožní odchozí připojení k IP adresám. Další informace naleznete v [tématu Azure Key Vault za bránou firewall](../../key-vault/key-vault-access-behind-firewall.md).  
+  -  Pokud vaše zásady zabezpečení omezují přístup z virtuálních počítačů Azure k Internetu, můžete vyřešit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo, které umožní odchozí připojení k IP adresám. Další informace naleznete v [tématu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).  
 
 ## <a name="encryption-key-storage-requirements"></a>Požadavky na úložiště šifrovacího klíče  
 

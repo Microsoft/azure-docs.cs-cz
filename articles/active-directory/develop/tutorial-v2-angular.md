@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ba7863d15ac0dfbebe6f14ef0d6f0daa93160b58
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 84d7be64e7157c35639fec19cb28fe787fe29b19
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380046"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533883"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Kurz: Přihlášení uživatelů a volání rozhraní Microsoft Graph API z jednostránkové aplikace s úhlem
 
@@ -39,7 +39,7 @@ Tento kurz ukazuje, jak může úhlová jednostránková aplikace (SPA):
 <!--start-collapse-->
 ### <a name="more-information"></a>Další informace
 
-Ukázková aplikace vytvořená v tomto kurzu umožňuje úhlové spa dotaz rozhraní Microsoft Graph API nebo webové rozhraní API, které přijímá tokeny z koncového bodu platformy identity Společnosti Microsoft. MSAL pro úhlové knihovny je obálka základní knihovny MSAL.js. Umožňuje aplikacím Angular (6+) ověřovat podnikové uživatele pomocí služby Microsoft Azure Active Directory, uživatelů účtů Microsoft a uživatelů sociální identity (například Facebook, Google a LinkedIn). Knihovna také umožňuje aplikacím získat přístup ke cloudovým službám Microsoftu nebo microsoft graphu.
+Ukázková aplikace vytvořená v tomto kurzu umožňuje úhlové spa dotaz ovat rozhraní Microsoft Graph API nebo webové rozhraní API, které přijímá tokeny z koncového bodu platformy identity Microsoftu. MSAL pro úhlové knihovny je obálka základní knihovny MSAL.js. Umožňuje aplikacím Angular (6+) ověřovat podnikové uživatele pomocí služby Microsoft Azure Active Directory, uživatelů účtů Microsoft a uživatelů sociální identity (například Facebook, Google a LinkedIn). Knihovna také umožňuje aplikacím získat přístup ke cloudovým službám Microsoftu nebo microsoft graphu.
 
 V tomto scénáři po přihlášení uživatele je požadován přístupový token a přidán do požadavků HTTP prostřednictvím hlavičky autorizace. Pořízení a obnovení tokenu zpracovává společnost MSAL.
 

@@ -10,12 +10,12 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8fe95a471df6ea86aad90f387088824c3c92bd3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32691e0ddcee3f5410b12f07a2fb80806345bc26
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460447"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460507"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Šifrování na straně klienta a trezor klíčů Azure s Javou pro úložiště Microsoft Azure
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -103,7 +103,7 @@ V dávkových operacích bude stejný KEK použit ve všech řádcích v této d
 > Chcete-li provést operace dotazu, je nutné zadat překládání klíčů, který je schopen přeložit všechny klíče v sadě výsledků. Pokud entitu obsaženou ve výsledku dotazu nelze přeložit zprostředkovateli, klientská knihovna vyvolá chybu. Pro každý dotaz, který provádí projekce na straně serveru, klientská knihovna přidá ve výchozím nastavení do vybraných sloupců speciální vlastnosti metadat šifrování (_ClientEncryptionMetadata1 a _ClientEncryptionMetadata2).
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí služby Azure Key Vault mohou uživatelé šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, klíče pro šifrování dat, . PFX soubory a hesla) pomocí klíčů, které jsou chráněny moduly hardwarového zabezpečení (HSM). Další informace najdete v článku [Co je Azure Key Vault](../../key-vault/key-vault-overview.md).
+Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí služby Azure Key Vault mohou uživatelé šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, klíče pro šifrování dat, . PFX soubory a hesla) pomocí klíčů, které jsou chráněny moduly hardwarového zabezpečení (HSM). Další informace najdete v článku [Co je Azure Key Vault](../../key-vault/general/overview.md).
 
 Klientská knihovna úložiště používá základní knihovnu úložiště klíčů k poskytování společného rámce pro správu klíčů v rámci celého Azure. Uživatelé také získat další výhody pomocí knihovny rozšíření trezoru klíčů. Knihovna rozšíření poskytuje užitečné funkce kolem jednoduchých a bezproblémových poskytovatelů místních a cloudových klíčů Symmetric/RSA, stejně jako s agregací a ukládáním do mezipaměti.
 
@@ -256,4 +256,4 @@ Všimněte si, že šifrování dat úložiště má za následek další režii
 * Stáhněte si balíčky Azure Key Vault Maven Library for Java Maven:
   * [Základní](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) balíček
   * [Balíček klienta](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)
-* Navštivte [dokumentaci k úložišti klíčů Azure](../../key-vault/key-vault-overview.md)
+* Navštivte [dokumentaci k úložišti klíčů Azure](../../key-vault/general/overview.md)
