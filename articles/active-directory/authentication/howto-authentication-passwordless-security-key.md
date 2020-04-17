@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653940"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450917"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolení přihlášení pomocí bezpečnostního klíče bez hesla (náhled)
 
@@ -48,11 +48,11 @@ Hybridní zařízení připojená k Azure AD musí spouštět Windows 10 Insider
 
 ### <a name="enable-the-combined-registration-experience"></a>Povolení kombinovaného registračního prostředí
 
-Registrační funkce pro metody ověřování bez hesla spoléhají na kombinovaný náhled registrace. Postupujte podle kroků v článku [Povolit kombinovanou registraci informací o zabezpečení (náhled)](howto-registration-mfa-sspr-combined.md), chcete-li povolit kombinovaný náhled registrace.
+Registrační funkce pro metody ověřování bez hesla spoléhají na kombinovanou registrační funkci. Postupujte podle kroků v článku [Povolit kombinovanou registraci informací o zabezpečení (náhled)](howto-registration-mfa-sspr-combined.md), chcete-li povolit kombinovanou registraci.
 
 ### <a name="enable-fido2-security-key-method"></a>Povolit metodu klíče zabezpečení FIDO2
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte na**zásadu metody ověřování** > **zabezpečení** >  **služby Azure Active Directory** > **(Preview).**
 1. V metodě **FIDO2 Security Key**zvolte následující možnosti:
    1. **Povolit** – ano nebo ne

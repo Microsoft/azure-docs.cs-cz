@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667348"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451121"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Plánování nasazení azure multi-factor authentication
 
@@ -144,7 +144,7 @@ Uživateli je odeslána textová zpráva obsahující ověřovací kód, uživat
 
 ## <a name="plan-registration-policy"></a>Zásady registrace plánu
 
-Správci musí určit, jak budou uživatelé registrovat své metody. Organizace by měly [povolit nové kombinované registrační prostředí](howto-registration-mfa-sspr-combined.md) pro Azure MFA a samoobslužné resetování hesla (SSPR). SSPR umožňuje uživatelům resetovat své heslo bezpečným způsobem pomocí stejných metod, které používají pro vícefaktorové ověřování. Doporučujeme tuto kombinovanou registraci, která je v současné době ve verzi Public Preview, protože je to skvělá zkušenost pro uživatele s možností registrace jednou pro obě služby. Povolení stejných metod pro samoobslužné právo a Azure MFA umožní uživatelům zaregistrovat používat obě funkce.
+Správci musí určit, jak budou uživatelé registrovat své metody. Organizace by měly [povolit nové kombinované registrační prostředí](howto-registration-mfa-sspr-combined.md) pro Azure MFA a samoobslužné resetování hesla (SSPR). SSPR umožňuje uživatelům resetovat své heslo bezpečným způsobem pomocí stejných metod, které používají pro vícefaktorové ověřování. Doporučujeme tuto kombinovanou registraci, protože je to skvělé prostředí pro uživatele, s možností registrace jednou pro obě služby. Povolení stejných metod pro samoobslužné právo a Azure MFA umožní uživatelům zaregistrovat používat obě funkce.
 
 ### <a name="registration-with-identity-protection"></a>Registrace s ochranou identity
 

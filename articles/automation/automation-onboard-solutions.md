@@ -1,18 +1,18 @@
 ---
-title: Začlenění řešení Update Management a Change Tracking do Azure Automation
+title: Řešení pro aktualizace, sledování změn a inventář e-do Azure Automation
 description: Zjistěte, jak začlenit řešení Update Management a Change Tracking do Azure Automation.
 services: automation
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 721157c333e381799ef08930c667c51a51a4fd6a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75421849"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457616"
 ---
-# <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Začlenění řešení Update Management a Change Tracking do Azure Automation
+# <a name="onboard-update-change-tracking-and-inventory-solutions-to-azure-automation"></a>Řešení pro aktualizace, sledování změn a inventář e-do Azure Automation
 
 V tomto kurzu zjistíte, jak automaticky začlenit řešení Update Management, Change Tracking a Inventory pro virtuální počítače do Azure Automation:
 
@@ -22,6 +22,9 @@ V tomto kurzu zjistíte, jak automaticky začlenit řešení Update Management, 
 > * Instalace a aktualizace modulů
 > * Import runbooku připojování
 > * Spuštění runbooku
+
+>[!NOTE]
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,79 +40,84 @@ Počítače můžete připojit několika způsoby – můžete připojit řešen
 
 ### <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
-Řešení Change Tracking a Inventory poskytují možnost na virtuálních počítačích [sledovat změny](automation-vm-change-tracking.md) a [inventář](automation-vm-inventory.md). V tomto kroku povolíte řešení na virtuálním počítači.
+Řešení sledování změn a inventáře umožňují [sledovat změny](automation-vm-change-tracking.md) a [inventář](automation-vm-inventory.md) na virtuálních počítačích. V tomto kroku povolíte řešení na virtuálním počítači.
 
-1. V nabídce vlevo vyberte **Účty Automation** a pak v seznamu vyberte svůj účet Automation.
-1. V části **SPRÁVA KONFIGURACE** vyberte **Inventory**.
-1. Vyberte stávající pracovní prostor služby Log Analytics nebo vytvořte nový. Klikněte na tlačítko **Povolit**.
+1. Na webu Azure Portal vyberte **Účty automatizace**a v seznamu vyberte účet automatizace.
+1. V části **Správa konfigurace**vyberte Možnost **Zásoby** .
+1. Vyberte existující pracovní prostor Log Analytics nebo vytvořte nový. 
+1. Klepněte na tlačítko **Povolit**.
 
-![Začlenění řešení Update Management](media/automation-onboard-solutions/inventory-onboard.png)
-
-Po oznámení dokončení začlenění řešení Change Tracking a Inventory klikněte v části **SPRÁVA KONFIGURACE** na **Update Management**.
+    ![Začlenění řešení Update Management](media/automation-onboard-solutions/inventory-onboard.png)
 
 ### <a name="enable-update-management"></a>Povolení řešení Update Management
 
 Řešení Update Management umožňuje spravovat aktualizace a opravy pro virtuální počítače Azure s Windows. Můžete vyhodnotit stav dostupných aktualizací, naplánovat instalaci požadovaných aktualizací a zkontrolovat výsledky nasazení za účelem ověření správného použití aktualizací ve virtuálních počítačích. V tomto kroku povolíte řešení pro svůj virtuální počítač.
 
-1. Ve svém účtu Automation v části **SPRÁVA AKTUALIZACÍ** vyberte **Update Management**.
-1. Vybraný pracovní prostor služby Log Analytics je stejný jako pracovní prostor použitý v předchozím kroku. Kliknutím na **Povolit** začleňte řešení Update Management.
+1. V účtu Automation vyberte v části **Správa aktualizací** položku Správa **aktualizací.**
+1. Vybraný pracovní prostor Analýzy protokolů je pracovní prostor použitý v předchozím kroku. Kliknutím na **Povolit** začleňte řešení Update Management. V průběhu instalace řešení Update Management se zobrazí modrý banner. 
 
-![Začlenění řešení Update Management](media/automation-onboard-solutions/update-onboard.png)
-
-V průběhu instalace řešení Update Management se zobrazí modrý banner. Po povolení řešení v části **SPRÁVA KONFIGURACE** vyberte **Change Tracking** a přejděte k dalšímu kroku.
+    ![Začlenění řešení Update Management](media/automation-onboard-solutions/update-onboard.png)
 
 ### <a name="select-azure-vm-to-be-managed"></a>Výběr virtuálního počítače pro správu
 
 Když jsou teď řešení povolená, můžete přidat virtuální počítač Azure, který se k těmto řešením připojí.
 
-1. Ve svém účtu Automation na stránce **Change Tracking** vyberte **+ Přidat virtuální počítač Azure** a přidejte svůj virtuální počítač.
+1. V části Správa konfigurace vyberte v části **Správa konfigurace**možnost **Sledování změn** . 
+2. Na stránce Sledování změn klikněte na **Přidat virtuální počítače Azure** a přidejte virtuální počítač.
 
-1. V seznamu vyberte svůj virtuální počítač a vyberte **Povolit**. Tato akce pro virtuální počítač povolí řešení Change Tracking a Inventory.
+3. Vyberte virtuální počítač ze seznamu a klikněte na **Povolit**. Tato akce umožňuje řešení sledování změn a zásob pro virtuální ho.
 
    ![Povolení řešení Update Management pro virtuální počítač](media/automation-onboard-solutions/enable-change-tracking.png)
 
-1. Po oznámení dokončení připojování virtuálního počítače ve svém účtu Automation v části **SPRÁVA AKTUALIZACÍ** vyberte **Update Management**.
+4. Po dokončení oznámení o připojení virtuálního počítači vyberte v části **Správa aktualizací** **možnost Správa aktualizací** .
 
-1. Vyberte **+ Přidat virtuální počítač Azure** a přidejte svůj virtuální počítač.
+5. Vyberte **Přidat virtuální počítače Azure** a přidejte virtuální počítač.
 
-1. V seznamu vyberte svůj virtuální počítač a vyberte **Povolit**. Tato akce pro virtuální počítač povolí řešení Update Management.
+6. V seznamu vyberte svůj virtuální počítač a vyberte **Povolit**. Tato akce umožňuje řešení správy aktualizací pro virtuální ho.
 
    ![Povolení řešení Update Management pro virtuální počítač](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Pokud nečekáte na dokončení jiného řešení, při povolení dalšího řešení se zobrazí zpráva s informací: *Instalace jiného řešení probíhá na tomto nebo jiném virtuálním počítači. Po dokončení této instalace je povoleno tlačítko Povolit a můžete požádat o instalaci řešení v tomto virtuálním počítači.*
+> Pokud nečekáte na dokončení jiného řešení, při povolení dalšího řešení se zobrazí zpráva:`Installation of another solution is in progress on this or a different virtual machine. When that installation completes the Enable button is enabled, and you can request installation of the solution on this virtual machine.`
 
 ## <a name="install-and-update-modules"></a>Instalace a aktualizace modulů
 
-Pro úspěšnou automatizaci připojování k řešení je potřeba provést aktualizaci na nejnovější moduly Azure a importovat modul `AzureRM.OperationalInsights`.
+Je nutné aktualizovat na nejnovější moduly Azure a importovat modul [Az.OperationalInsights,](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) aby bylo možné úspěšně automatizovat přiregistraci řešení.
 
 ## <a name="update-azure-modules"></a>Aktualizace modulů Azure
 
-Ve svém účtu Automation v části **SDÍLENÉ PROSTŘEDKY** vyberte **Moduly**. Vyberte **Aktualizovat moduly Azure** a aktualizujte moduly Azure na nejnovější verzi. Po zobrazení výzvy vyberte **Ano** a aktualizujte všechny existující moduly Azure na nejnovější verzi.
+1. V účtu Automation vyberte **moduly v** části **Sdílené prostředky**. 
+2. Vyberte **Aktualizovat moduly Azure** a aktualizujte moduly Azure na nejnovější verzi. 
+3. Kliknutím na **Ano** aktualizujte všechny existující moduly Azure na nejnovější verzi.
 
-![Aktualizace modulů](media/automation-onboard-solutions/update-modules.png)
+![Aktualizační](media/automation-onboard-solutions/update-modules.png) moduly A
 
-### <a name="install-azurermoperationalinsights-module"></a>Instalace modulu AzureRM.OperationalInsights
+### <a name="install-azoperationalinsights-module"></a>Instalace modulu Az.OperationalInsights
 
-Z **moduly** vyberte **procházet galerii** otevřete v galerii modulů. Vyhledejte modul AzureRM.OperationalInsights a importujte ho do účtu Automation.
+1. V účtu Automatizace vyberte **moduly v** části **Sdílené prostředky**. 
+2. Vyberte **Galerie procházení** a otevřete galerii modulů. 
+3. Vyhledejte Az.OperationalInsights a importujte tento modul do účtu Automatizace.
 
 ![Import modulu OperationalInsights](media/automation-onboard-solutions/import-operational-insights-module.png)
 
 ## <a name="import-the-onboarding-runbook"></a>Import runbooku připojování
 
-1. Ve svém účtu Automation v části **AUTOMATIZACE PROCESŮ** vyberte **Runbooky**.
+1. V účtu Automation vyberte **runbooky** v části **Automatizace procesů**.
 1. Vyberte **Procházet galerii**.
-1. Vyhledejte řešení **Update Management a Change Tracking**, klikněte na runbook a na stránce **Zobrazit zdroj** vyberte **Importovat**. Vyberte **OK** a importujte runbook do účtu Automation.
+1. Vyhledejte `update and change tracking`.
+3. Vyberte runbook a na stránce Zdroj zobrazení klikněte na **Importovat.** 
+4. Klepnutím na **tlačítko OK** importujte runbook do účtu Automation.
 
    ![Import runbooku připojování](media/automation-onboard-solutions/import-from-gallery.png)
 
-1. Na stránce **Runbook** vyberte **Upravit** a pak **Publikovat**. V dialogovém okně **Publikovat runbook** vyberte **Ano** a publikujte runbook.
+6. Na stránce Runbook klikněte na **Edit**, a pak vyberte **Publikovat**. 
+7. V podokně Publikovat runbook klikněte na **Ano** a publikujte ji.
 
 ## <a name="start-the-runbook"></a>Spuštění runbooku
 
-Abyste tento runbook mohli spustit, musíte mít k virtuálnímu počítači Azure připojené řešení Change Tracking nebo Update Management. Runbook vyžaduje existující virtuální počítač a skupinu prostředků s připojeným řešením kvůli parametrům.
+Chcete-li spustit tuto runbook, musíte mít na palubě buď řešení pro sledování změn, nebo aktualizovat řešení pro virtuální počítač Azure. Runbook vyžaduje existující virtuální počítač a skupinu prostředků s připojeným řešením kvůli parametrům.
 
-1. Otevřete runbook Enable-MultipleSolution.
+1. Otevřete runbook **Enable-MultipleSolution.**
 
    ![Několik runbooků řešení](media/automation-onboard-solutions/runbook-overview.png)
 
@@ -119,8 +127,8 @@ Abyste tento runbook mohli spustit, musíte mít k virtuálnímu počítači Azu
    * **VMRESOURCEGROUP** – Název skupiny prostředků pro virtuální počítače, které se mají připojit.
    * **SUBSCRIPTIONID** – Ponechte prázdné. ID předplatného nového virtuálního počítače, který se má připojit. Když tuto hodnotu necháte prázdnou, použije se předplatné pracovního prostoru. Když zadáte ID jiného předplatného, měli byste také přidat účet Spustit jako pro tento účet Automation jako přispěvatele tohoto předplatného.
    * **ALREADYONBOARDEDVM** – Název virtuálního počítače ručně připojeného k řešení Update Management nebo Change Tracking.
-   * **ALREADYONBOARDEDVMRESOURCEGROUP** – Název skupiny prostředků, které je virtuální počítač členem.
-   * **SOLUTIONTYPE** – Zadejte **Updates** nebo **ChangeTracking**
+   * **ALREADYONEDVMRESOURCEGROUP** - Název skupiny prostředků, do které patří virtuální počítač.
+   * **SOLUTIONTYPE** - Zadejte **aktualizace** nebo **ChangeTracking**.
 
    ![Parametry runbooku Enable-MultipleSolution](media/automation-onboard-solutions/runbook-parameters.png)
 
@@ -131,8 +139,8 @@ Abyste tento runbook mohli spustit, musíte mít k virtuálnímu počítači Azu
 
 Odebrání virtuálního virtuálního virtuálního montovazy ze správy aktualizací:
 
-* V pracovním prostoru Log Analytics odeberte virtuální počítač z `MicrosoftDefaultScopeConfig-Updates`uloženého hledání konfigurace oboru . Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
-* Odeberte [agenta Microsoft Monitoring](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+1. V pracovním prostoru Log Analytics odeberte virtuální počítač z `MicrosoftDefaultScopeConfig-Updates`uloženého hledání konfigurace oboru . Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
+2. Odeberte [agenta Log Analytics pro Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Analýzy protokolů pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Další kroky
 

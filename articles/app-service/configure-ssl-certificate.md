@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9f9fcc0b3d8dfe19961668e77da91bc9f14ff2d1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810587"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453893"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS/SSL ve službě Azure App Service
 
@@ -94,7 +94,7 @@ Pokud si zakoupíte certifikát služby App Service z Azure, Azure spravuje nás
 
 - Stará se o proces nákupu od GoDaddy.
 - Provede ověření domény certifikátu.
-- Udržuje certifikát v [azure key vault](../key-vault/key-vault-overview.md).
+- Udržuje certifikát v [azure key vault](../key-vault/general/overview.md).
 - Spravuje obnovení certifikátu (viz [Obnovit certifikát](#renew-certificate)).
 - Automaticky synchronizujte certifikát s importovanými kopiemi v aplikacích App Service.
 
@@ -115,7 +115,7 @@ Ke konfiguraci certifikátu použijte následující tabulku. Jakmile budete hot
 
 | Nastavení | Popis |
 |-|-|
-| Name (Název) | Popisný název certifikátu služby App Service. |
+| Název | Popisný název certifikátu služby App Service. |
 | Jméno hostitele domény Naked | Zde zadejte kořenovou doménu. Vydaný certifikát zabezpečuje kořenovou doménu *i* subdoménu. `www` V vydaném certifikátu obsahuje pole Běžný název kořenovou doménu a `www` pole Alternativní název subjektu obsahuje doménu. Chcete-li zabezpečit pouze subdoménu, zadejte zde plně kvalifikovaný `mysubdomain.contoso.com`název domény subdomény (například ).|
 | Předplatné | Předplatné, které bude obsahovat certifikát. |
 | Skupina prostředků | Skupina prostředků, která bude obsahovat certifikát. Můžete použít novou skupinu prostředků nebo vybrat například stejnou skupinu prostředků jako aplikaci App Service. |
@@ -136,12 +136,12 @@ Na stránce **Stav úložiště trezoru klíčů** klikněte na Úložiště **t
 
 | Nastavení | Popis |
 |-|-|
-| Name (Název) | Jedinečný název, který se skládá pro alfanumerické znaky a pomlčky. |
+| Název | Jedinečný název, který se skládá pro alfanumerické znaky a pomlčky. |
 | Skupina prostředků | Jako doporučení vyberte stejnou skupinu prostředků jako certifikát služby App Service. |
 | Umístění | Vyberte stejné umístění jako aplikace App Service. |
 | Cenová úroveň | Další informace naleznete v [tématu Azure Key Vault podrobnosti o cenách](https://azure.microsoft.com/pricing/details/key-vault/). |
-| Zásady přístupu| Definuje aplikace a povolený přístup k prostředkům trezoru. Můžete ji nakonfigurovat později podle kroků na [udělení přístupu několika aplikacím k trezoru klíčů](../key-vault/key-vault-group-permissions-for-apps.md). |
-| Přístup k virtuální síti | Omezte přístup trezoru k určitým virtuálním sítím Azure. Můžete ji nakonfigurovat později, podle kroků na [konfigurace brány firewall Azure Key Vault a virtuálních sítí](../key-vault/key-vault-network-security.md) |
+| Zásady přístupu| Definuje aplikace a povolený přístup k prostředkům trezoru. Můžete ji nakonfigurovat později podle kroků na [udělení přístupu několika aplikacím k trezoru klíčů](../key-vault/general/group-permissions-for-apps.md). |
+| Přístup k virtuální síti | Omezte přístup trezoru k určitým virtuálním sítím Azure. Můžete ji nakonfigurovat později, podle kroků na [konfigurace brány firewall Azure Key Vault a virtuálních sítí](../key-vault/general/network-security.md) |
 
 Po výběru trezoru zavřete stránku **Úložiště úložiště trezoru klíčů.** **Možnost Krok 1: Obchod** by měla zobrazovat zelenou značku zaškrtnutí pro úspěch. Ponechte stránku otevřenou pro další krok.
 

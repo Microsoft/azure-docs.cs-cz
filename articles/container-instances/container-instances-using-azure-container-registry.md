@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 50c209483a12adc3545b63fb66685e386d9ad10a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252136"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453519"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení do instancí kontejnerů Azure z registru kontejnerů Azure
 
@@ -36,7 +36,7 @@ V následující části vytvoříte trezor klíčů Azure a instanční objekt 
 
 ### <a name="create-key-vault"></a>Vytvoření trezoru klíčů
 
-Pokud ještě nemáte trezor ve službě [Azure Key Vault](../key-vault/key-vault-overview.md), vytvořte si ho v Azure CLI pomocí následujících příkazů.
+Pokud ještě nemáte trezor ve službě [Azure Key Vault](../key-vault/general/overview.md), vytvořte si ho v Azure CLI pomocí následujících příkazů.
 
 Aktualizujte `RES_GROUP` proměnnou názvem existující skupiny prostředků, ve které `ACR_NAME` chcete vytvořit trezor klíčů, a názvem registru kontejnerů. Pro stručnost příkazy v tomto článku předpokládají, že instance registru, trezoru klíčů a kontejneru jsou vytvořeny ve stejné skupině prostředků.
 

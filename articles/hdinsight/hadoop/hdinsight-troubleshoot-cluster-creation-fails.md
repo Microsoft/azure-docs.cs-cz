@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: a95c4d654650276c815c5b23fb2c6f8a6d06bc2e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 3af7515995a305f41fb9b9f85deb9107de51c622
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383453"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453485"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Poradce při potížích s chybami při vytváření clusteru pomocí Azure HDInsight
 
@@ -29,7 +29,7 @@ Následující problémy jsou nejčastější hlavní příčiny selhání vytv�
 
 ## <a name="permissions-issues"></a>Problémy s oprávněními
 
-Pokud používáte Azure Data Lake Storage Gen2 ```AmbariClusterCreationFailedErrorCode``` ```Internal server error occurred while processing the request. Please retry the request or contact support.```a obdržíte chybu , otevřete portál Azure, přejděte na svůj účet úložiště a v části Řízení přístupu (IAM) se ujistěte, že **datový přispěvatel objektu blob úložiště** nebo role Vlastník a **blob úložiště** má přiřazenpřístup **uživateli přiřazené spravované identitě** pro předplatné. Podrobné pokyny najdete v tématu [Nastavení oprávnění pro spravovanou identitu v účtu Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
+Pokud používáte Azure Data Lake Storage Gen2 `AmbariClusterCreationFailedErrorCode`a:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::zobrazí se chyba : " ", otevřete portál Azure, přejděte na svůj účet úložiště a v části Řízení přístupu (IAM) se ujistěte, že **datový přispěvatel objektu blob úložiště** nebo role Vlastník a **blob úložiště** má přiřazený přístup **uživateli přiřazené spravované identitě** pro předplatné. Podrobné pokyny najdete v tématu [Nastavení oprávnění pro spravovanou identitu v účtu Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
 
 Pokud používáte Azure Data Lake Storage Gen1, přečtěte si pokyny k nastavení a konfiguraci [zde](../hdinsight-hadoop-use-data-lake-store.md). Úložiště datového jezera Gen1 není podporováno pro clustery HBase a není podporováno ve verzi HDInsight verze 4.0.
 

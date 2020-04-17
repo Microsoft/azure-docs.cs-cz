@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 26093d051da8f2182a40f80837acbd9ef7dd008f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: be558c3e3a68ce6c194dcf98d8f5ff92c4c14edb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312069"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457820"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Ukončení tls s certifikáty trezoru klíčů
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) je úložiště tajných klíčů spravované platformou, které můžete použít k zabezpečení tajných kódů, klíčů a certifikátů TLS/SSL. Azure Application Gateway podporuje integraci s trezorem klíčů pro serverové certifikáty, které jsou připojené k naslouchací procesy s podporou PROTOKOLU HTTPS. Tato podpora je omezena na skladovou položku v2 aplikační brány.
+[Azure Key Vault](../key-vault/general/overview.md) je úložiště tajných klíčů spravované platformou, které můžete použít k zabezpečení tajných kódů, klíčů a certifikátů TLS/SSL. Azure Application Gateway podporuje integraci s trezorem klíčů pro serverové certifikáty, které jsou připojené k naslouchací procesy s podporou PROTOKOLU HTTPS. Tato podpora je omezena na skladovou položku v2 aplikační brány.
 
 Integrace trezoru klíčů nabízí dva modely pro ukončení TLS:
 

@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811436"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456494"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Použití klíčů spravovaných zákazníkem ve službě Azure Key Vault for Import/Export
 
 Azure Import/Export chrání klíče nástroje BitLocker používané k uzamčení jednotek pomocí šifrovacího klíče. Ve výchozím nastavení jsou klíče nástroje BitLocker šifrovány pomocí klíčů spravovaných společností Microsoft. Pro další kontrolu nad šifrovacíklíče, můžete také poskytnout klientspravované klíče.
 
-Klíče spravované zákazníkem musí být vytvořeny a uloženy v trezoru klíčů Azure. Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../../key-vault/key-vault-overview.md)
+Klíče spravované zákazníkem musí být vytvořeny a uloženy v trezoru klíčů Azure. Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../../key-vault/general/overview.md)
 
 Tento článek ukazuje, jak používat klíče spravované zákazníkem se službou Import/Export na [webu Azure Portal](https://portal.azure.com/).
 
@@ -33,12 +33,12 @@ Než začnete, ujistěte se, že:
     - [Vytvořte úlohu importu pro soubory](storage-import-export-data-to-files.md).
     - [Vytvoření úlohy exportu pro objekty BLOB](storage-import-export-data-from-blobs.md)
 
-2. Máte existující Azure Key Vault s klíčem v něm, který můžete použít k ochraně klíče Nástroje BitLocker. Informace o tom, jak vytvořit trezor klíčů pomocí webu Azure Portal, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z Azure Key Vault pomocí portálu Azure](../../key-vault/quick-create-portal.md).
+2. Máte existující Azure Key Vault s klíčem v něm, který můžete použít k ochraně klíče Nástroje BitLocker. Informace o tom, jak vytvořit trezor klíčů pomocí webu Azure Portal, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z Azure Key Vault pomocí portálu Azure](../../key-vault/secrets/quick-create-portal.md).
 
     - V existujícím trezoru klíčů jsou nastaveny **funkce Neodstranit** a **Neodstraňovat.** Tyto vlastnosti nejsou ve výchozím nastavení povoleny. Chcete-li tyto vlastnosti povolit, přečtěte si části s názvem **Povolení odstranění pomocí protokolu soft a** povolení ochrany proti **vymazání** v jednom z následujících článků:
 
-        - [Jak používat obnovitelné odstranění s Prostředím PowerShell](../../key-vault/key-vault-soft-delete-powershell.md).
-        - [Jak používat soft-delete s CLI](../../key-vault/key-vault-soft-delete-cli.md).
+        - [Jak používat obnovitelné odstranění s Prostředím PowerShell](../../key-vault/general/soft-delete-powershell.md).
+        - [Jak používat soft-delete s CLI](../../key-vault/general/soft-delete-cli.md).
     - Existující trezor klíčů by měl mít klíč RSA o velikosti 2048 nebo více. Další informace o klíčích najdete v **tématu Klíče trezoru klíčů** v [tématu O klíčích, tajných klíčích a certifikátech trezoru klíčů Azure](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
     - Trezor klíčů musí být ve stejné oblasti jako účet úložiště pro vaše data.  
     - Pokud nemáte existující trezor klíčů Azure, můžete jej také vytvořit vřádkem, jak je popsáno v následující části.

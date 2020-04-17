@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667139"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455440"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Řešení Azure Key Vault Analytics v Azure Monitoru
 
@@ -94,7 +94,7 @@ Po kliknutí na dlaždici **Key Vault Analytics** můžete zobrazit souhrny prot
     Na libovolné stránce hledání protokolu můžete zobrazit výsledky podle času, podrobných výsledků a historie hledání protokolu. Můžete také filtrovat podle omezujících vlastností a zúžit výsledky.
 
 ## <a name="azure-monitor-log-records"></a>Záznamy protokolu Azure Monitor
-Řešení Azure Key Vault analyzuje záznamy, které mají typ **KeyVaults,** které jsou shromažďovány z [protokolů AuditEvent](../../key-vault/key-vault-logging.md) v Diagnostice Azure.  Vlastnosti těchto záznamů jsou uvedeny v následující tabulce:  
+Řešení Azure Key Vault analyzuje záznamy, které mají typ **KeyVaults,** které jsou shromažďovány z [protokolů AuditEvent](../../key-vault/general/logging.md) v Diagnostice Azure.  Vlastnosti těchto záznamů jsou uvedeny v následující tabulce:  
 
 | Vlastnost | Popis |
 |:--- |:--- |
@@ -107,7 +107,7 @@ Po kliknutí na dlaždici **Key Vault Analytics** můžete zobrazit souhrny prot
 | `httpStatusCode_d` |Stavový kód HTTP vrácený požadavkem (například *200*) |
 | `id_s` |Jedinečné ID žádosti |
 | `identity_claim_appid_g` | IDENTIFIKÁTOR GUID pro ID aplikace |
-| `OperationName` |Název operace, jak je zdokumentováno v [protokolování trezoru klíčů Azure](../../key-vault/key-vault-logging.md) |
+| `OperationName` |Název operace, jak je zdokumentováno v [protokolování trezoru klíčů Azure](../../key-vault/general/logging.md) |
 | `OperationVersion` |Verze REST API požadovaná klientem (například *2015-06-01*) |
 | `requestUri_s` |Uri žádosti |
 | `Resource` |Název trezoru klíčů |

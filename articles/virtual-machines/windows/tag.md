@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: ''
 author: mmccrory
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 56d17f45-e4a7-4d84-8022-b40334ae49d2
 ms.service: virtual-machines-windows
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: b646b1a14d6cedcafa662192229daa570a0d2441
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f95c11f93ca2075eb2472ad5bb7360df7d69234
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616429"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456443"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak označit virtuální počítač s Windows v Azure
 Tento článek popisuje různé způsoby označení virtuálního počítače s Windows v Azure prostřednictvím modelu nasazení Správce prostředků. Značky jsou uživatelem definované dvojice klíč/hodnota, které lze umístit přímo na prostředek nebo skupinu prostředků. Azure aktuálně podporuje až 50 značek na prostředek a skupinu prostředků. Značky mohou být umístěny na prostředek v době vytvoření nebo přidány do existujícího prostředku. Upozorňujeme, že značky jsou podporovány pouze pro prostředky vytvořené prostřednictvím modelu nasazení Správce prostředků. Pokud chcete označit virtuální počítač s Linuxem, přečtěte [si, jak označit virtuální počítač Linuxu v Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

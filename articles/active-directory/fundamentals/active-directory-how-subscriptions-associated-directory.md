@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f44e9a1e43da2b9ce6c817898c1722fba715c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 104bf51fb03d88ab0e5efd25ebebb0e3060bc264
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262175"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457922"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do tenanta Azure Active Directory
 
@@ -85,7 +85,7 @@ Změna adresáře předplatného je operace na úrovni služby, takže nemá vli
 
 Po přidružení předplatného k jinému adresáři může být nutné provést následující úkoly, abyste obnovili operace:
 
-- Pokud máte nějaké trezory klíčů, musíte změnit ID klienta trezoru klíčů. Další informace naleznete [v tématu Změna ID klienta trezoru klíčů po přesunutí předplatného](../../key-vault/key-vault-subscription-move-fix.md).
+- Pokud máte nějaké trezory klíčů, musíte změnit ID klienta trezoru klíčů. Další informace naleznete [v tématu Změna ID klienta trezoru klíčů po přesunutí předplatného](../../key-vault/general/subscription-move-fix.md).
 
 - Pokud jste pro prostředky použili spravované identity přiřazené systémem, je nutné tyto identity znovu povolit. Pokud jste použili spravované identity přiřazené uživatelem, musíte tyto identity znovu vytvořit. Po opětovném povolení nebo opětovném vytvoření spravovaných identit je nutné znovu nastolit oprávnění přiřazená těmto identitám. Další informace najdete v tématu [Co je spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md).
 

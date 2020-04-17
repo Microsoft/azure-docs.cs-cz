@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: tfitzmac
 manager: gwallace
-editor: tysonn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
@@ -13,12 +12,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: fd7e7f14d076a6a9652e902c4dc0ec41665735ee
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d8cb1895c980fa9f84983ea8364cb2f0f5dcb982
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75981748"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456018"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Kurz: Další informace o správě virtuálních strojů windows s Azure PowerShellem
 
@@ -72,7 +71,7 @@ Pokud se zobrazí chyba **oznamující hlavní \<guid> neexistuje v adresáři**
 
 Obvykle tento postup zopakujete pro role *Přispěvatel sítě* a *Přispěvatel účtů úložiště*, abyste zajistili přiřazení uživatelů ke správě nasazených prostředků. V tomto článku můžete tyto kroky vynechat.
 
-## <a name="azure-policy"></a>Zásady Azure
+## <a name="azure-policy"></a>Azure Policy
 
 [Azure Policy](../../governance/policy/overview.md) pomáhá zajistit, aby všechny prostředky v předplatném splňovaly firemní standardy. Vaše předplatné už obsahuje několik definic zásad. Chcete-li zobrazit dostupné definice zásad, použijte příkaz [Get-AzPolicyDefinition:](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition)
 

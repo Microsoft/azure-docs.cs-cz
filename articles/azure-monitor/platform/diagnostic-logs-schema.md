@@ -4,12 +4,12 @@ description: Seznamte se s podporovanými službami a schématem událostí pro 
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 352310a6e489a96c38e85b16e9504d8eb9be38b1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380526"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457242"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Podporované služby, schémata a kategorie pro protokoly prostředků Azure
 
@@ -22,7 +22,7 @@ Kombinace typu prostředku (k dispozici `resourceId` ve vlastnosti) `category` a
 
 ## <a name="top-level-resource-logs-schema"></a>Schéma protokolů prostředků nejvyšší úrovně
 
-| Name (Název) | Požadováno/volitelné | Popis |
+| Název | Požadováno/volitelné | Popis |
 |---|---|---|
 | time | Požaduje se | Časové razítko (UTC) události. |
 | resourceId | Požaduje se | ID prostředku, který událost emitoval. Pro služby tenanta se jedná o formulář /tenants/tenant-id/providers/provider-name. |
@@ -66,7 +66,7 @@ Schéma pro protokoly diagnostiky prostředků se liší v závislosti na prost�
 | ExpressRoute | Schéma není k dispozici. |
 | Brána Azure Firewall | Schéma není k dispozici. |
 | IoT Hub | [Operace ioT hubu](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| Key Vault |[Protokolování trezoru klíčů Azure](../../key-vault/key-vault-logging.md) |
+| Key Vault |[Protokolování trezoru klíčů Azure](../../key-vault/general/logging.md) |
 | Kubernetes Service |[Azure Kubernetes protokolování](../../aks/view-master-logs.md#log-event-schema) |
 | Load Balancer |[Log Analytics pro Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Vlastní schéma sledování Logic Apps B2B](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |

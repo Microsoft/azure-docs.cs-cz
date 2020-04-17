@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 939798d5d9eb2843d7bbbbe74680342e4ce6ce95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ROBOTS: NOINDEX
+ms.openlocfilehash: ba78267b1c6dc8f0e1bd25bb8ecdb1d8d344d03e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60702448"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453110"
 ---
 # <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Psaní pokročilých funkcí R v Azure SQL Database pomocí služby Machine Learning Services (preview)
 
@@ -30,7 +31,7 @@ Tento článek popisuje, jak vložit R matematické a užitkové funkce v sql ul
 
 - Pokud nemáte předplatné Azure, [vytvořte si účet,](https://azure.microsoft.com/free/) než začnete.
 
-- Chcete-li spustit ukázkový kód v těchto cvičeních, musíte mít nejprve databázi Azure SQL se službami Machine Learning Services (s R) povolenou. Během veřejné verze Preview vás Microsoft připojí k vaší službě a umožní strojové učení pro vaši stávající nebo novou databázi. Postupujte podle kroků v [části Zaregistrujte se pro náhled](sql-database-machine-learning-services-overview.md#signup).
+- Chcete-li spustit ukázkový kód v těchto cvičeních, musíte mít nejprve [povolenou Azure SQL Database se službami machine learning (s R).](sql-database-machine-learning-services-overview.md)
 
 - Ujistěte se, že jste nainstalovali nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Skripty R můžete spustit pomocí jiných nástrojů pro správu databáze nebo dotazů, ale v tomto rychlém startu budete používat SSMS.
 

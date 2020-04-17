@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4c76bcbf945c63588f8471c10deca0b5982d3562
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e904f650c9fc11aab2dcb002ac68a9f19287940e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414237"
+ms.locfileid: "81449948"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy k různým rozhraním API ve službě Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Azure Cosmos DB má modul indexování agnostik schématu schopné automaticky i
 
 ### <a name="can-i-use-multiple-apis-to-access-my-data"></a>Můžu k přístupu ke svým datům použít více api?
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu s více modely. Kde vícemodelové prostředky Azure Cosmos DB podporuje více api a více datových modelů, různá api používají různé formáty dat pro úložiště a drátový protokol. Například SQL používá JSON, MongoDB používá BSON, Tabulka používá EDM, Cassandra používá CQL, Gremlin používá GraphSON. V důsledku toho doporučujeme používat stejné rozhraní API pro veškerý přístup k datům v daném účtu.
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu s více modely. Kde vícemodelové prostředky Azure Cosmos DB podporuje více api a více datových modelů, různá api používají různé formáty dat pro úložiště a drátový protokol. Například SQL používá JSON, MongoDB používá BSON, Tabulka používá EDM, Cassandra používá CQL, Gremlin používá formát JSON. V důsledku toho doporučujeme používat stejné rozhraní API pro veškerý přístup k datům v daném účtu.
 
 Každé rozhraní API pracuje nezávisle, s výjimkou Gremlin a SQL API, které jsou interoperabilní.
 

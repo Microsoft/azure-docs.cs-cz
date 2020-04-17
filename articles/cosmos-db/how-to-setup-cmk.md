@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f58887a056c8ca0cd175a44127556562338de38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411144"
+ms.locfileid: "81450028"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurace klíčů spravovaných zákazníky pro váš účet Azure Cosmos pomocí azure key vaultu
 
@@ -23,7 +23,7 @@ Data uložená ve vašem účtu Azure Cosmos se automaticky a bezproblémově š
 
 ![Vrstvy šifrování kolem zákaznických dat](./media/how-to-setup-cmk/cmk-intro.png)
 
-Klíče spravované zákazníkem je nutné uložit do [služby Azure Key Vault](../key-vault/key-vault-overview.md) a poskytnout klíč pro každý účet Azure Cosmos, který je povolený pomocí klíčů spravovaných zákazníky. Tento klíč se používá k šifrování všech dat uložených v tomto účtu.
+Klíče spravované zákazníkem je nutné uložit do [služby Azure Key Vault](../key-vault/general/overview.md) a poskytnout klíč pro každý účet Azure Cosmos, který je povolený pomocí klíčů spravovaných zákazníky. Tento klíč se používá k šifrování všech dat uložených v tomto účtu.
 
 > [!NOTE]
 > V současné době jsou klíče spravované zákazníkem k dispozici jenom pro nové účty Azure Cosmos. Měli byste je nakonfigurovat během vytváření účtu.
@@ -44,8 +44,8 @@ Použití klíčů spravovaných zákazníky s Azure Cosmos DB vyžaduje, abyste
 
 Informace o povolení těchto vlastností v existující instanci služby Azure Key Vault naleznete v části Povolení obnovitelného odstranění a Povolení ochrany proti vymazání v jednom z následujících článků:
 
-- [Jak používat obnovitelné odstranění s PowerShellem](../key-vault/key-vault-soft-delete-powershell.md)
-- [Jak používat obnovitelné odstranění pomocí azure cli](../key-vault/key-vault-soft-delete-cli.md)
+- [Jak používat obnovitelné odstranění s PowerShellem](../key-vault/general/soft-delete-powershell.md)
+- [Jak používat obnovitelné odstranění pomocí azure cli](../key-vault/general/soft-delete-cli.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Přidání zásad přístupu k instanci služby Azure Key Vault
 

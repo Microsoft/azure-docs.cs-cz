@@ -4,15 +4,15 @@ description: Zjistěte, jak spravovat databázové role a uživatele na serveru 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 51c01869e6152d8e9357644457df11f4fcf5ec5f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7e3cc2b9d35eafcb875efa167821a8e9ad80146
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273702"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454199"
 ---
 # <a name="manage-database-roles-and-users"></a>Správa databázových rolí a uživatelů
 
@@ -25,10 +25,9 @@ Oprávnění role zahrnují:
 *  **Proces** – uživatelé se mohou připojit k databázi a provádět je a provádět je a analyzovat data databáze modelu.
 *  **Čtení** – uživatelé mohou používat klientskou aplikaci pro připojení a analýzu dat databáze modelu.
 
-Při vytváření projektu tabulkového modelu vytvoříte role a přidáte uživatele nebo skupiny do těchto rolí pomocí Správce rolí v sadě Visual Studio s projekty analysis services. Při nasazení na server použijete k přidání nebo odebrání rolí a členů uživatelů rutiny Sql Server Management Studio (SSMS), [rutiny Prostředí PowerShell služby Analysis Services](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)nebo [jazyk tabulkového skriptování modelu](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL).
+Při vytváření projektu tabulkového modelu vytvoříte role a přidáte uživatele nebo skupiny do těchto rolí pomocí Správce rolí v sadě Visual Studio s projekty analysis services. Při nasazení na server můžete přidat nebo odebrat role a členy uživatele pomocí sql server management studio (SSMS), [rutiny Prostředí PowerShell služby Analysis Services](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)nebo [jazyk tabulkového skriptování modelu](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL).
 
-**Skupiny zabezpečení** musí mít `MailEnabled` [povolenou poštu](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) s vlastností nastavenou na `True`. Při zadávání skupiny podle `obj:groupid@tenantid`e-mailové adresy použijte .
-
+Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid`.
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Přidání nebo správa rolí a uživatelů v sadě Visual Studio  
   

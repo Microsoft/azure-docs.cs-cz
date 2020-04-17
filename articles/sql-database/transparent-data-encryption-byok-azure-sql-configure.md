@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 81927575b99604e71f7b0920bc3a448f7796f565
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b1c985eeec9af25ec576f4e2375c417dc376f95
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067193"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452753"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a CLI: Povolení transparentního šifrování dat pomocí klíče spravovaného zákazníkem z trezoru klíčů Azure
 
@@ -28,9 +28,9 @@ Tento článek vás provede, jak použít klíč z trezoru klíčů Azure pro tr
 - [Doporučeno, ale volitelné] Mít modul hardwarového zabezpečení (HSM) nebo místní úložiště klíčů pro vytvoření místní kopie materiálu klíče TDE Protector.
 - Azure PowerShell musí být nainstalovaný a spuštěný.
 - Vytvořte trezor klíčů Azure a klíč pro TDE.
-  - [Pokyny pro použití modulu hardwarového zabezpečení (HSM) a trezoru klíčů](../key-vault/key-vault-hsm-protected-keys.md)
+  - [Pokyny pro použití modulu hardwarového zabezpečení (HSM) a trezoru klíčů](../key-vault/keys/hsm-protected-keys.md)
     - Trezor klíčů musí mít následující vlastnost, která má být použita pro TDE:
-  - [ochrana proti odstranění a](../key-vault/key-vault-ovw-soft-delete.md) vymazání
+  - [ochrana proti odstranění a](../key-vault/general/overview-soft-delete.md) vymazání
 - Klíč musí mít následující atributy, které mají být použity pro TDE:
    - Bez data vypršení platnosti
    - Není zakázáno
@@ -40,7 +40,7 @@ Tento článek vás provede, jak použít klíč z trezoru klíčů Azure pro tr
 
 Pokyny k instalaci modulu Az najdete v tématu věnovaném [instalaci Azure PowerShellu](/powershell/azure/install-az-ps). Konkrétní rutiny najdete v tématu [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
 
-Podrobnosti o trezoru klíčů najdete v [pokynech prostředí PowerShell z trezoru klíčů](../key-vault/quick-create-powershell.md) a [jak používat obnovitelné odstranění trezoru klíčů pomocí prostředí PowerShell](../key-vault/key-vault-soft-delete-powershell.md).
+Podrobnosti o trezoru klíčů najdete v [pokynech prostředí PowerShell z trezoru klíčů](../key-vault/secrets/quick-create-powershell.md) a [jak používat obnovitelné odstranění trezoru klíčů pomocí prostředí PowerShell](../key-vault/general/soft-delete-powershell.md).
 
 > [!IMPORTANT]
 > Modul Správce prostředků Azure (RM) prostředí PowerShell je stále podporovaný službou Azure SQL Database, ale veškerý budoucí vývoj je pro modul Az.Sql. Modul AzureRM bude nadále dostávat opravy chyb nejméně do prosince 2020.  Argumenty pro příkazy v modulu Az a v modulech AzureRm jsou v podstatě identické. Další informace o jejich kompatibilitě [najdete v tématu Představení nového modulu Azure PowerShell Az](/powershell/azure/new-azureps-module-az).
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 Pokud chcete nainstalovat požadované rozhraní příkazového řádku verze 2.0 nebo novější a připojit se k předplatnému Azure, přečtěte si informace [o instalaci a konfiguraci rozhraní příkazového řádku Azure pro více platforem 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Podrobnosti o trezoru klíčů najdete v [tématech Správa trezoru klíčů pomocí příkazového příkazu CLI 2.0](../key-vault/key-vault-manage-with-cli2.md) a [Jak používat obnovitelné odstranění trezoru klíčů pomocí příkazového příkazu CLI](../key-vault/key-vault-soft-delete-cli.md).
+Podrobnosti o trezoru klíčů najdete v [tématech Správa trezoru klíčů pomocí příkazového příkazu CLI 2.0](../key-vault/general/manage-with-cli2.md) a [Jak používat obnovitelné odstranění trezoru klíčů pomocí příkazového příkazu CLI](../key-vault/general/soft-delete-cli.md).
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Přiřazení identity Azure AD k serveru
 

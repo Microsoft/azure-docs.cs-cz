@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f7eb63d0bbdce86f4a7195430dc15d6873e9f6e6
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 68341de82ae15df91477947664c500caaa96a09a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754314"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452719"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování spravovaných disků Azure na straně serveru
 
@@ -34,7 +34,7 @@ Ve výchozím nastavení používají spravované disky šifrovací klíče spra
 
 ## <a name="customer-managed-keys"></a>Klíče spravované zákazníkem
 
-Šifrování můžete spravovat na úrovni každého spravovaného disku pomocí vlastních klíčů. Šifrování na straně serveru pro spravované disky s klíči spravovanými zákazníky nabízí integrované prostředí s azure key vaultem. Můžete buď importovat [klíče RSA](../../key-vault/key-vault-hsm-protected-keys.md) do trezoru klíčů nebo generovat nové klíče RSA v úložišti klíčů Azure. 
+Šifrování můžete spravovat na úrovni každého spravovaného disku pomocí vlastních klíčů. Šifrování na straně serveru pro spravované disky s klíči spravovanými zákazníky nabízí integrované prostředí s azure key vaultem. Můžete buď importovat [klíče RSA](../../key-vault/keys/hsm-protected-keys.md) do trezoru klíčů nebo generovat nové klíče RSA v úložišti klíčů Azure. 
 
 Disky spravované Azure zpracovávají šifrování a dešifrování zcela transparentním způsobem pomocí [šifrování obálek](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique). Šifruje data pomocí šifrovacího klíče (DEK) založeného na [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256, který je zase chráněn pomocí vašich klíčů. Služba Storage generuje šifrovací klíče dat a šifruje je pomocí klíčů spravovaných zákazníkem pomocí šifrování RSA. Šifrování obálek umožňuje pravidelně otáčet (měnit) klíče podle zásad dodržování předpisů, aniž by to mělo vliv na vaše virtuální počítače. Při otočení klíčů služba Storage znovu šifruje šifrovací klíče dat pomocí nových klíčů spravovaných zákazníkem. 
 
@@ -238,7 +238,7 @@ az disk show -g yourResourceGroupName -n yourDiskName --query [encryption.type] 
 ## <a name="next-steps"></a>Další kroky
 
 - [Prozkoumejte šablony Azure Resource Manageru pro vytváření šifrovaných disků pomocí klíčů spravovaných zákazníky](https://github.com/ramankumarlive/manageddiskscmkpreview)
-- [Co je Azure Key Vault?](../../key-vault/key-vault-overview.md)
+- [Co je Azure Key Vault?](../../key-vault/general/overview.md)
 - [Replikace počítačů s disky s povolenými klíči spravovanými zákazníky](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
 - [Nastavení zotavení virtuálních počítačů VMware v oblasti havárií do Azure pomocí PowerShellu](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
 - [Nastavení zotavení po havárii na Azure for Hyper-V Virtuální počítače pomocí PowerShellu a Azure Resource Manageru](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

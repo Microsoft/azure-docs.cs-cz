@@ -10,18 +10,18 @@ ms.date: 03/19/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e7878cae7bc6aabf1db58bfd63338955b9e830d3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 192e58b101b824ca0cc0c732e02647838be6dc35
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478236"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456477"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníky pomocí služby Azure Key Vault pomocí portálu Azure
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Tento článek ukazuje, jak nakonfigurovat Azure Key Vault s klíči spravovanými zákazníky pomocí [portálu Azure](https://portal.azure.com/). Informace o tom, jak vytvořit trezor klíčů pomocí webu Azure Portal, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z Azure Key Vault pomocí portálu Azure](../../key-vault/quick-create-portal.md).
+Tento článek ukazuje, jak nakonfigurovat Azure Key Vault s klíči spravovanými zákazníky pomocí [portálu Azure](https://portal.azure.com/). Informace o tom, jak vytvořit trezor klíčů pomocí webu Azure Portal, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z Azure Key Vault pomocí portálu Azure](../../key-vault/secrets/quick-create-portal.md).
 
 ## <a name="configure-azure-key-vault"></a>Konfigurace Azure Key Vaultu
 
@@ -29,8 +29,8 @@ Použití klíčů spravovaných zákazníkem s šifrováním Azure Storage vyž
 
 Informace o povolení těchto vlastností v existujícím trezoru klíčů naleznete v částech s názvem **Povolení obnovitelného odstranění** a **povolení ochrany proti vymazání** v jednom z následujících článků:
 
-- [Jak používat obnovitelné odstranění s Prostředím PowerShell](../../key-vault/key-vault-soft-delete-powershell.md).
-- [Jak používat soft-delete s CLI](../../key-vault/key-vault-soft-delete-cli.md).
+- [Jak používat obnovitelné odstranění s Prostředím PowerShell](../../key-vault/general/soft-delete-powershell.md).
+- [Jak používat soft-delete s CLI](../../key-vault/general/soft-delete-cli.md).
 
 Šifrováním azure storage jsou podporované jenom 2048bitové klíče RSA a RSA-HSM. Další informace o klíčích najdete v **tématu Klíče trezoru klíčů** v [tématu O klíčích, tajných klíčích a certifikátech trezoru klíčů Azure](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 

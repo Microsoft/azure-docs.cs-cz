@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit funkci z příkazového řádku a pak publ
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1e3ce26894e9e89d196c068bd32245c8c891b2e2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: eb893491310850b141a0d68cb7a74041411843a9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255545"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457446"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Úvodní příručka: Vytvoření funkce v Azure, která reaguje na požadavky HTTP
 
@@ -222,9 +222,9 @@ Pomocí následujících příkazů Azure CLI k vytvoření těchto položek. Ka
 
 Pokud jste tak ještě neučinili, přihlaste se do Azure pomocí příkazu [az login:](/cli/azure/reference-index#az-login)
 
-    ```azurecli
-    az login
-    ```
+```azurecli
+az login
+```
     
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu `AzureFunctionsQuickstart-rg` prostředků `westeurope` s názvem v oblasti. (Skupinu prostředků a prostředky obvykle vytváříte v oblasti ve `az account list-locations` vašem okolí pomocí dostupné oblasti z příkazu.)
 

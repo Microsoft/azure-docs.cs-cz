@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f69a94e17155ff93510d09f666bce12f628274f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c8081bb8145a6654c168fb2d664e1666b32dc18
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295163"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457905"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Podmíněný přístup: Zabezpečení registrace bezpečnostních údajů
 
@@ -32,9 +32,9 @@ Následující zásady platí pro všechny vybrané uživatele, kteří se pokou
 1. V části **Přiřazení**vyberte **Položku Uživatelé a skupiny**a vyberte uživatele a skupiny, na které se má tato zásada vztahovat.
 
    > [!WARNING]
-   > Uživatelé musí být povolena pro [kombinovanou registraci náhled](../authentication/howto-registration-mfa-sspr-combined.md).
+   > Uživatelé musí být povolena pro [kombinovanou registraci](../authentication/howto-registration-mfa-sspr-combined.md).
 
-1. V části **Cloudové aplikace nebo akce**vyberte **Akce uživatele**a **zkontrolujte Zaregistrovat informace o zabezpečení (preview).**
+1. V části **Cloudové aplikace nebo akce**vyberte **Akce uživatele**, **zaškrtněte políčko Registrovat informace o zabezpečení**.
 1. V **podmínkách** > **Umístění**.
    1. Konfigurace **programu Ano**.
    1. Zahrnout **libovolné umístění**.

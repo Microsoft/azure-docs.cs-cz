@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 508eac08284f91821223a78cafdfee7b4c9c540b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fb82cec6874f8ef4f41897cc22939fe69ed02ec2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410877"
+ms.locfileid: "81457412"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Použití zprostředkovatele ID (preview) pro správu pověření
 
@@ -56,7 +56,7 @@ Po povolení služby ID Broker budete stále potřebovat hash hesel uložený ve
 
 Ověřování SSH vyžaduje, aby byl hash k dispozici ve službě Azure AD DS. Pokud chcete použít SSH pouze pro scénáře správy, můžete vytvořit jeden účet pouze pro cloud a použít jej do clusteru SSH. Ostatní uživatelé mohou stále používat nástroje Ambari nebo HDInsight (například modul plug-in IntelliJ), aniž by měli k dispozici hash hesla ve službě Azure AD DS.
 
-## <a name="clinets-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clinets pomocí OAuth pro připojení k bráně HDInsight s nastavením ID Broker
+## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Klienti používající OAuth pro připojení k bráně HDInsight s nastavením ID Broker
 
 V nastavení zprostředkovatele ID vlastní aplikace a klienty připojení k bráně lze aktualizovat získat požadovaný token OAuth jako první. Podle kroků v tomto [dokumentu](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) můžete získat token s následujícími informacemi:
 

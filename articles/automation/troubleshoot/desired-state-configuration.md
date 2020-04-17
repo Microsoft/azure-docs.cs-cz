@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aeffa0bb736f03403bf483b22775ef468bbcb2bd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f0034d06c852d4d71284093879a456d296d98715
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405468"
+ms.locfileid: "81457463"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Řešení problémů s konfigurací požadovaného stavu azure automation (DSC)
 
@@ -113,7 +113,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>Příčina
 
-Tento problém je způsoben chybný certifikát nebo vypršela jeho platnost.  Další informace naleznete v [tématu Vypršení platnosti certifikátu a jeho opětovné registrace](../automation-dsc-onboarding.md#re-register-a-node).
+Tento problém je způsoben chybný certifikát nebo vypršela jeho platnost.  Další informace naleznete v [tématu Vypršení platnosti certifikátu a jeho opětovné registrace](../automation-dsc-onboarding.md#re-registering-a-node).
 
 Tento problém může být také způsoben konfigurací proxy neumožňuje přístup k ***.azure-automation.net**. Další informace naleznete v [tématu Konfigurace privátních sítí](../automation-dsc-overview.md#network-planning). 
 
@@ -135,7 +135,7 @@ Za druhé odinstalujte rozšíření DSC z uzlu.
 
 Za třetí, odeberte všechny chybné nebo vypršela platnost certifikáty z uzlu.
 
-Na uzlu selhání z výzvy se zvýšenými oprávněními prostředí Powershell spusťte následující:
+Na uzlu se selháním z výzvy prostředí PowerShell se zvýšenými oprávněními spusťte následující:
 
 ```powershell
 $certs = @()
@@ -279,8 +279,8 @@ Zacházejte s uzly s křížovým odběrem, jako by se naněm nachází v samost
 
 Chcete-li uzel zaregistrovat, postupujte podle následujících kroků.
 
-* Windows – [fyzické/virtuální počítače s Windows v místním prostředí nebo v cloudu jiném než Azure/AWS](../automation-dsc-onboarding.md#onboard-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure).
-* Linux – [fyzické/virtuální linuxové počítače v místním prostředí nebo v jiném cloudu než v Azure](../automation-dsc-onboarding.md#onboard-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure).
+* Windows – [fyzické/virtuální počítače s Windows v místním prostředí nebo v cloudu jiném než Azure/AWS](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines).
+* Linux – [fyzické/virtuální linuxové počítače v místním prostředí nebo v jiném cloudu než v Azure](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines).
 
 ### <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>Scénář: Chybová zpráva – zřizování se nezdařilo.
 

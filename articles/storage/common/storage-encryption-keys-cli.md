@@ -10,18 +10,18 @@ ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea944d4cfa3006c33f1dee3dd8e6ee6088681aa7
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 796e3b3f46bc83b776826baf6e078c696eda543b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618650"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456767"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Konfigurace klíčů spravovaných zákazníky pomocí služby Azure Key Vault pomocí rozhraní Příkazového příkazu Azure
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Tento článek ukazuje, jak nakonfigurovat Azure Key Vault s klíči spravované zákazníky pomocí Rozhraní příkazového příkazového příkazu Azure. Informace o tom, jak vytvořit trezor klíčů pomocí příkazového příkazu k řešení Azure, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z trezoru klíčů Azure pomocí azure CLI](../../key-vault/quick-create-cli.md).
+Tento článek ukazuje, jak nakonfigurovat Azure Key Vault s klíči spravované zákazníky pomocí Rozhraní příkazového příkazového příkazu Azure. Informace o tom, jak vytvořit trezor klíčů pomocí příkazového příkazu k řešení Azure, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z trezoru klíčů Azure pomocí azure CLI](../../key-vault/secrets/quick-create-cli.md).
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Přiřazení identity k účtu úložiště
 
@@ -55,7 +55,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-Informace o povolení **funkce Obnovitelné odstranění** a **nečistit** v existujícím trezoru klíčů pomocí příkazového příkazu k použití příkazu Konstatování Azure najdete v části **povolení obnovitelného odstranění** a povolení ochrany proti **vymazání** v [tématu Jak používat obnovitelné odstranění pomocí příkazového příkazu příkazového příkazu](../../key-vault/key-vault-soft-delete-cli.md).
+Informace o povolení **funkce Obnovitelné odstranění** a **nečistit** v existujícím trezoru klíčů pomocí příkazového příkazu k použití příkazu Konstatování Azure najdete v části **povolení obnovitelného odstranění** a povolení ochrany proti **vymazání** v [tématu Jak používat obnovitelné odstranění pomocí příkazového příkazu příkazového příkazu](../../key-vault/general/soft-delete-cli.md).
 
 ## <a name="configure-the-key-vault-access-policy"></a>Konfigurace zásad přístupu k trezoru klíčů
 

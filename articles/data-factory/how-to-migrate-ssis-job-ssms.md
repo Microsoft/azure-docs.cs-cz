@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: ee51be1d994c3b81765266e95c48d321a2f43b14
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 6e357e98d6c5190c6dfef675dc1ab9cf30a717c1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80989438"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455083"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrace úloh agenta serveru SQL Server do adf s SSMS
 
@@ -35,7 +35,7 @@ Obecně platí, že pro vybrané úlohy agenta SQL s příslušnými typy kroků
 |Krok úlohy SSIS|Spustit aktivitu balíčku SSIS|<li> Název aktivity bude \<název kroku>. <li> Účet proxy použitý v kroku úlohy bude migrován jako ověřování této aktivity systémem Windows. <li> *Možnosti spuštění* s výjimkou *Použití 32bitového běhu definovaného* v kroku úlohy bude při migraci ignorováno. <li> *Ověření* definované v kroku úlohy bude při migraci ignorováno.|
 |schedule      |trigger plánu        |Název aktivační události plánu bude *generován pro \<>názvu plánu *. <br> <br> Níže uvedené možnosti v plánu úloh agenta SQL budou při migraci ignorovány: <li> Interval druhé úrovně. <li> *Automatické spuštění při spuštění agenta serveru SQL Server* <li> *Spusťte vždy, když se procesory stanou nečinnými* <li> *den v týdnu* a *víkendový den*<time zone> <br> Níže jsou uvedeny rozdíly po migraci plánu úloh agenta SQL na aktivační událost plánu ADF: <li> Následné spuštění spuštění plánu ADF je nezávislé na stavu spuštění předchozího spuštění. <li> Konfigurace opakování aktivační události plánu adf se liší od denní frekvence v úloze agenta SQL.|
 
-- generujte šablony Azure Resource Manager (ARM) v místní výstupní složce a nasaďte je přímo nebo později ručně do datové továrny. Další informace o šablonách Správce prostředků ADF naleznete v [tématu Typy prostředků Microsoft.DataFactory](https://docs.microsoft.com/azure/templates/microso.ft.datafactory/allversions).
+- generujte šablony Azure Resource Manager (ARM) v místní výstupní složce a nasaďte je přímo nebo později ručně do datové továrny. Další informace o šablonách Správce prostředků ADF naleznete v [tématu Typy prostředků Microsoft.DataFactory](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="prerequisites"></a>Požadavky
 

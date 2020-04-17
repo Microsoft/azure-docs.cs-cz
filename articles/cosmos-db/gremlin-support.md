@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 564e69e3cd852c6a0f8c20278d4742b77f064298
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 59c45497ea6d9fcb216c83060a858ee6c96f1151
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75499993"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81449965"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Podpora grafu Gremlin ve službě Azure Cosmos DB
 Azure Cosmos DB podporuje jazyk procházení grafu [Apache Tinkerpop,](https://tinkerpop.apache.org) známý jako [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). Pomocí jazyka Gremlin můžete vytvářet grafové entity (vrcholy a okraje), upravovat vlastnosti v rámci těchto entit, provádět dotazy a přechody a odstraňovat entity. 
@@ -23,7 +23,7 @@ V tomto článku poskytujeme rychlý návod Gremlin a výčet gremlin funkce, kt
 
 Následující tabulka ukazuje oblíbené ovladače Gremlin, které můžete použít vůči Azure Cosmos DB:
 
-| Stáhnout | Zdroj | Začínáme | Podporovaná verze konektoru |
+| Stáhnout | Zdroj | začínáme | Podporovaná verze konektoru |
 | --- | --- | --- | --- |
 | [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET na GitHubu](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Vytvoření grafu pomocí jazyka .NET](create-graph-dotnet.md) | 3.4.0-RC2 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Vytvoření grafu pomocí jazyka Java](create-graph-java.md) | 3.2.0 nebo novější |
@@ -46,11 +46,9 @@ V následující tabulce najdete přehled funkcí TinkerPop, které Azure Cosmos
 | Funkce okrajů | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Podporuje vytváření, úpravy a odstraňování okrajů. |
 | Funkce vlastností okrajů | Properties, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Podporuje vytváření, úpravy a odstraňování vlastností okrajů. |
 
-## <a name="gremlin-wire-format-graphson"></a>Přenosový formát Gremlinu: GraphSON
+## <a name="gremlin-wire-format"></a>Gremlin drát formát
 
-Při vracení výsledků z operací Gremlinu služba Azure Cosmos DB používá [formát GraphSON](https://tinkerpop.apache.org/docs/current/reference/#graphson). Azure Cosmos DB aktuálně podporuje verzi "GraphSONv2". GraphSON je standardní formát jazyka Gremlin pro reprezentaci vrcholů, okrajů a vlastností (vlastností s jednou i více hodnotami) pomocí formátu JSON.
-
-Následující fragment kódu například zobrazuje reprezentaci vrcholu *vráceného klientovi* ze služby Azure Cosmos DB ve formátu GraphSON. 
+Azure Cosmos DB používá formát JSON při vracení výsledků z operací Gremlin. Azure Cosmos DB aktuálně podporuje formát JSON. Například následující úryvek zobrazuje reprezentaci JSON vrcholu *vráceného klientovi* z Azure Cosmos DB:
 
 ```json
   {
@@ -89,7 +87,7 @@ Následující fragment kódu například zobrazuje reprezentaci vrcholu *vráce
   }
 ```
 
-Vlastnosti používané graphson pro vrcholy jsou popsány níže:
+Vlastnosti používané ve formátu JSON pro vrcholy jsou popsány níže:
 
 | Vlastnost | Popis | 
 | --- | --- | --- |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3491a54682e8f2b244c0400480a69e083335f5c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81008385"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454675"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure v klidovém stavu
 
@@ -163,7 +163,7 @@ Pro operace pomocí šifrovacích klíčů může být identitě služby udělen
 Chcete-li získat klíč pro použití při šifrování nebo dešifrování dat v klidovém stavu, identita služby, kterou bude spuštěna instance služby Resource Manager, protože musí mít klávesu UnwrapKey (chcete-li získat klíč pro dešifrování) a WrapKey (chcete-li vložit klíč do trezoru klíčů při vytváření nového klíče).
 
 >[!NOTE]
->Další podrobnosti o autorizaci trezoru klíčů najdete na stránce zabezpečeného trezoru klíčů v [dokumentaci k úložišti klíčů Azure](../../key-vault/key-vault-secure-your-key-vault.md).
+>Další podrobnosti o autorizaci trezoru klíčů najdete na stránce zabezpečeného trezoru klíčů v [dokumentaci k úložišti klíčů Azure](../../key-vault/general/secure-your-key-vault.md).
 
 **Výhody**
 
@@ -282,11 +282,11 @@ Podpora šifrování serveru je aktuálně poskytována prostřednictvím funkce
 | Azure Data Catalog               | Ano                | -                  | -                  |
 | Azure HDInsight                  | Ano                | Všechny                | -                  |
 | Přehledy aplikací Azure Monitor | Ano                | Ano                | -                  |
-| Azure Monitor Log Analytics | Ano                | Ano                | -                  |
+| Azure Monitor Log Analytics      | Ano                | Ano                | -                  |
 | Průzkumník dat Azure              | Ano                | Ano                | -                  |
 | Azure Data Factory               | Ano                | Ano                | -                  |
 | Azure Data Lake Store            | Ano                | Ano, RSA 2048-bit  | -                  |
-| **Containers**                   |                    |                    |                    |
+| **Kontejnery**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Ano                | Ano                | -                  |
 | Container Instances              | Ano                | Ano                | -                  |
 | Container Registry               | Ano                | Ano                | -                  |
@@ -294,11 +294,12 @@ Podpora šifrování serveru je aktuálně poskytována prostřednictvím funkce
 | Virtuální počítače                 | Ano                | Ano, RSA 2048-bit  | -                  |
 | Škálovací sada virtuálních strojů        | Ano                | Ano, RSA 2048-bit  | -                  |
 | SAP HANA                         | Ano                | Ano, RSA 2048-bit  | -                  |
-| App Service                      | Ano                | Ano                | -                  |
-| Automation                       | Ano                | Ano                | -                  |
-| Azure Portal                     | Ano                | Ano                | -                  |
+| App Service                      | Ano                | Ano\*\*            | -                  |
+| Automation                       | Ano                | Ano\*\*            | -                  |
+| Azure Functions                  | Ano                | Ano\*\*            | -                  |
+| Azure Portal                     | Ano                | Ano\*\*            | -                  |
 | Logic Apps                       | Ano                | Ano                | -                  |
-| Azure Managed Applications       | Ano                | Ano                | -                  |
+| Azure Managed Applications       | Ano                | Ano\*\*            | -                  |
 | Service Bus                      | Ano                | Ano                | -                  |
 | Site Recovery                    | Ano                | Ano                | -                  |
 | **Databáze**                    |                    |                    |                    |
@@ -312,6 +313,7 @@ Podpora šifrování serveru je aktuálně poskytována prostřednictvím funkce
 | Table Storage                    | Ano                | Ano                | Ano                |
 | Azure Cosmos DB                  | Ano                | Ano                | -                  |
 | Azure Databricks                 | Ano                | Ano                | -                  |
+| Azure Database Migration Service | Ano                | –\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Ano                | -                  | Ano                |
 | Azure Repos                      | Ano                | -                  | Ano                |
@@ -344,6 +346,7 @@ Podpora šifrování serveru je aktuálně poskytována prostřednictvím funkce
 | Synchronizace souborů                        | Ano                | Ano, RSA 2048-bit  | -                  |
 | Queue Storage                    | Ano                | Ano                | Ano                |
 | Avere vFXT                       | Ano                | -                  | -                  |
+| Azure Cache for Redis            | Ano                | –\*              | -                  |
 | Azure NetApp Files               | Ano                | Ano                | -                  |
 | Archiv služby Storage                  | Ano                | Ano, RSA 2048-bit  | -                  |
 | StorSimple                       | Ano                | Ano, RSA 2048-bit  | Ano                |
@@ -352,6 +355,8 @@ Podpora šifrování serveru je aktuálně poskytována prostřednictvím funkce
 | Data Box Edge                    | Ano                | Ano                | -                  |
 
 \*Tato služba neuchovává data. Přechodné mezipaměti, pokud existují, jsou šifrovány pomocí klíče společnosti Microsoft.
+
+\*\*Tato služba podporuje ukládání dat do vlastního trezoru klíčů, účtu úložiště nebo jiné služby pro zachování dat, která již podporuje šifrování na straně serveru pomocí klíče spravovaného zákazníkem.
 
 ## <a name="conclusion"></a>Závěr
 

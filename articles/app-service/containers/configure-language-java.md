@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 970701606811cbd61a9bfebe39ff82cdc91d5693
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4f6de807628704051cdddf74bcefbed678f8fcd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80245833"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457888"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace linuxové aplikace v jazyce Java pro Azure App Service
 
@@ -230,7 +230,7 @@ Postupujte podle pokynů v [secure vlastní název DNS s vazbou SSL ve službě 
 
 ### <a name="use-keyvault-references"></a>Použití odkazů KeyVault
 
-[Azure KeyVault](../../key-vault/key-vault-overview.md) poskytuje centralizovanou správu tajných klíčů se zásadami přístupu a historií auditu. Můžete ukládat tajné klíče (například hesla nebo připojovací řetězce) v KeyVault a přístup k těmto tajným kódům ve vaší aplikaci prostřednictvím proměnných prostředí.
+[Azure KeyVault](../../key-vault/general/overview.md) poskytuje centralizovanou správu tajných klíčů se zásadami přístupu a historií auditu. Můžete ukládat tajné klíče (například hesla nebo připojovací řetězce) v KeyVault a přístup k těmto tajným kódům ve vaší aplikaci prostřednictvím proměnných prostředí.
 
 Nejprve postupujte podle pokynů pro [udělení přístupu aplikace k trezoru klíčů](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) a [vytvoření odkazu keyvault na váš tajný klíč v nastavení aplikace](../app-service-key-vault-references.md#reference-syntax). Můžete ověřit, že odkaz řeší na tajný klíč vytištěním proměnné prostředí při vzdáleném přístupu k terminálu služby App Service.
 
@@ -244,7 +244,7 @@ Další konfigurace může být nezbytná pro šifrování připojení JDBC s ce
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
-- [Mysql](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+- [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
 - [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
 
@@ -324,7 +324,7 @@ App Service Linux směruje příchozí požadavky na port 80, takže vaše aplik
 
 Tyto pokyny platí pro všechna připojení databáze. Zástupné symboly budete muset vyplnit názvem třídy ovladače vybrané databáze a souborem JAR. Za předpokladu, je tabulka s názvy tříd a ovladače ke stažení pro běžné databáze.
 
-| Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
+| databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "Nezávislé na platformě") |

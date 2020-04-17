@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eb885d0e965579b1ab2d66395f9f96eab0845bae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 46c59e8b4e60fbe17887ea0fc375b6da758ebf50
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266497"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457395"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Vytvoření technických prostředků virtuálního počítače Azure
 
@@ -281,8 +281,8 @@ Následující proces zobecnizuje virtuální počítač s Linuxem a znovu jej n
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste zjistili potíže s vytvořením nového virtuálního pevného disku založeného na Azure, přečtěte [si téma Běžné problémy při vytváření virtuálního pevného disku](https://aka.ms/AzureVM_VHDCreationFAQ).
+Pokud jste zjistili potíže s vytvořením nového virtuálního pevného disku založeného na Azure, přečtěte [si téma Běžné problémy při vytváření virtuálního pevného disku](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues).
 
 V opačném případě:
 
-* [Certifikujte image virtuálního počítače](https://aks.ms/CertifyVMimage) vysvětluje, jak otestovat a odeslat image virtuálního počítače pro certifikaci Azure Marketplace, včetně toho, kde získat *nástroj Certifikace Test Tool pro Azure Certified* a jak ho použít k certifikaci image virtuálního počítače.
+* [Certifikujte image virtuálního počítače](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri) vysvětluje, jak otestovat a odeslat image virtuálního počítače pro certifikaci Azure Marketplace, včetně toho, kde získat *nástroj Certifikace Test Tool pro Azure Certified* a jak ho použít k certifikaci image virtuálního počítače.

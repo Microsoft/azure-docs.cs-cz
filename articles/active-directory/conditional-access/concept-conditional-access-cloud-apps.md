@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69bdd2d6825427597e9030a03aae7d219361ba25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671952"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457293"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: Cloudové aplikace nebo akce
 
@@ -120,7 +120,7 @@ Kromě aplikací Microsoftu můžou správci přidat do zásad podmíněného p�
 
 ## <a name="user-actions"></a>Akce uživatele
 
-Akce uživatele jsou úkoly, které může provádět uživatel. Jedinou aktuálně podporovanou akcí je **Registrace informací o zabezpečení (preview),** která umožňuje zásadám podmíněného přístupu vynutit, když se uživatelé, kteří mají povolenou kombinovanou registraci, pokusí zaregistrovat své informace o zabezpečení. Více informací naleznete v článku [Kombinovaná registrace bezpečnostních informací (preview).](../authentication/concept-registration-mfa-sspr-combined.md)
+Akce uživatele jsou úkoly, které může provádět uživatel. Jedinou aktuálně podporovanou akcí je **Registrace informací o zabezpečení**, která umožňuje vynucení zásad podmíněného přístupu, když se uživatelé, kteří mají povolenou kombinovanou registraci, pokusí zaregistrovat své informace o zabezpečení. Více informací naleznete v článku [Kombinovaná registrace bezpečnostních informací](../authentication/concept-registration-mfa-sspr-combined.md).
 
 ## <a name="next-steps"></a>Další kroky
 

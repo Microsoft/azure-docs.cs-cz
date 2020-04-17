@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 006c780aeb3db813c8fdfb5da0b5c13fc4dcfebc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1d08581c5d29fc41fb33541d766af7cece88cdc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067420"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451665"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Vždy šifrované: Ochrana citlivých dat a ukládání šifrovacích klíčů v trezoru klíčů Azure
 
@@ -55,7 +55,7 @@ Pokud chcete získat *ID a* *klíč*aplikace , postupujte podle pokynů při [vy
 
 Teď, když je vaše klientská aplikace nakonfigurovaná a máte ID aplikace, je čas vytvořit trezor klíčů a nakonfigurovat jeho zásady přístupu, abyste vy i vaše aplikace měli přístup k tajným kódům trezoru (vždy šifrované klíče). Oprávnění *vytvořit*, *získat*, *seznam*, *podepsat*, *ověřit*, *wrapKey*a *rozbalitklíč* jsou vyžadována pro vytvoření nového hlavního klíče sloupce a pro nastavení šifrování pomocí aplikace SQL Server Management Studio.
 
-Trezor klíčů můžete rychle vytvořit spuštěním následujícího skriptu. Podrobné vysvětlení těchto příkazů a další informace o vytváření a konfiguraci trezoru klíčů naleznete v tématu [Co je Azure Key Vault?](../key-vault/key-vault-overview.md).
+Trezor klíčů můžete rychle vytvořit spuštěním následujícího skriptu. Podrobné vysvětlení těchto příkazů a další informace o vytváření a konfiguraci trezoru klíčů naleznete v tématu [Co je Azure Key Vault?](../key-vault/general/overview.md).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -106,7 +106,7 @@ az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwr
 
 ## <a name="create-a-blank-sql-database"></a>Vytvoření prázdné databáze SQL
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte na vytvoření**databáze databází** >  **prostředků** > **SQL Database**.
 3. Vytvořte **prázdnou** databázi s názvem **Klinika** na novém nebo existujícím serveru. Podrobné pokyny k vytvoření databáze na webu Azure Portal najdete v [tématu Vaše první databáze Azure SQL](sql-database-single-database-get-started.md).
 
@@ -172,7 +172,7 @@ Kliknutím na **Další** na stránce **Úvod** otevřete stránku **Výběr slo
 
 Šifrujte informace **o SSN** a **Date pro** každého pacienta. Sloupec SSN bude používat deterministické šifrování, které podporuje vyhledávání rovnosti, spojení a seskupení podle. Sloupec Datum narození bude používat randomizované šifrování, které nepodporuje operace.
 
-Nastavte **typ šifrování** pro sloupec SSN na **deterministický** a sloupec Datum narození na **Randomizovaný**. Klikněte na **Další**.
+Nastavte **typ šifrování** pro sloupec SSN na **deterministický** a sloupec Datum narození na **Randomizovaný**. Klikněte na **Další**.
 
 ![Šifrování sloupců](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
@@ -184,7 +184,7 @@ Tento kurz ukazuje, jak ukládat klíče v azure key vault.
 
 1. Vyberte **Azure Key Vault**.
 2. V rozevíracím seznamu vyberte požadovaný trezor klíčů.
-3. Klikněte na **Další**.
+3. Klikněte na **Další**.
 
 ![Konfigurace hlavního klíče](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 

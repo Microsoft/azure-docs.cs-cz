@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57378005bd668fa9c0f2aea70c411bbf911130db
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278672"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457650"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Palubní řešení správy aktualizací, sledování změn a zásob
 
@@ -18,7 +18,7 @@ Azure Automation poskytuje řešení pro správu aktualizací zabezpečení oper
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure na adrese https://portal.azure.com.
+Přihlaste se https://portal.azure.comk Azure na adrese .
 
 ## <a name="enable-solutions"></a>Povolení řešení
 
@@ -61,7 +61,7 @@ Když je počítač přidán do řešení Pro správu aktualizací nebo sledová
 
 Přejděte do pracovního prostoru Log Analytics a v části **Obecné**vyberte **Uložená hledání** . Dvě uložená hledání používaná těmito řešeními jsou uvedena v následující tabulce:
 
-|Name (Název)     |Kategorie  |Alias  |
+|Název     |Kategorie  |Alias  |
 |---------|---------|---------|
 |Skupina MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |Skupina MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
@@ -82,7 +82,7 @@ Klikněte na **+ Přidat virtuální počítače Azure**, vyberte jeden nebo ví
 
 Počítače, které nejsou v Azure, je třeba přidat ručně. V části Účet automatizace vyberte v části **Správa konfigurace**nebo Správa aktualizací v části **Správa aktualizací**vyberte možnost **Inventář** nebo **sledování změn** nebo Správa **aktualizací** .
 
-Klikněte na **Přidat počítač, který není azure**. Tato akce otevře nové okno prohlížeče s [pokyny, jak nainstalovat a nakonfigurovat microsoft monitoring agent v počítači,](../azure-monitor/platform/log-analytics-agent.md) takže počítač může začít hlášení řešení. Pokud zapisujete počítač, který je aktuálně spravován operačním manažerem System Center, není vyžadován nový agent, informace o pracovním prostoru se zadávají do existujícího agenta.
+Klikněte na **Přidat počítač, který není azure**. Tato akce otevře nové okno prohlížeče s [pokyny k instalaci a konfiguraci agenta Analýzy protokolů pro systém Windows](../azure-monitor/platform/log-analytics-agent.md) tak, aby počítač mohl začít vykazovat do řešení. Pokud zapisujete počítač, který je aktuálně spravován správcem operací system centra, není vyžadován nový agent a informace o pracovním prostoru se zadávají do existujícího agenta.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Palubní stroje v pracovním prostoru
 
@@ -112,7 +112,7 @@ Následující řešení jsou závislá na pracovním prostoru Log Analytics:
 
 * [Update Management](automation-update-management.md)
 * [Sledování změn](automation-change-tracking.md)
-* [Spuštění/zastavení virtuálních počítačů mimo špičku](automation-solution-vm-management.md)
+* [Spuštění/zastavení virtuálních montovek mimo pracovní dobu](automation-solution-vm-management.md)
 
 Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete svůj účet odpojit přímo z portálu Azure.  Než budete pokračovat, musíte nejprve odstranit dříve uvedená řešení, jinak bude tento proces znemožněn. Projděte si článek konkrétního řešení, které jste importovali, abyste pochopili kroky potřebné k jeho odebrání.
 
@@ -150,7 +150,7 @@ Případně můžete také odpojit pracovní prostor od účtu Automation z prac
 Odebrání virtuálního virtuálního virtuálního montovazy ze správy aktualizací:
 
 * V pracovním prostoru Log Analytics odeberte virtuální počítač z `MicrosoftDefaultScopeConfig-Updates`uloženého hledání konfigurace oboru . Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
-* Odeberte [agenta Microsoft Monitoring](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* Odeberte [agenta Log Analytics pro Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Analýzy protokolů pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Další kroky
 

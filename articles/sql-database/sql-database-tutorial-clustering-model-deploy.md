@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: d67f007ac91d4830557a2cae646698b130b02314
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: ef478246108d40a0c97d7dab03ecf1e5b474410b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345789"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452889"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Nasazení modelu clusteringu v R se službami Machine Learning Services Azure SQL Database Machine Learning Services (preview)
 
@@ -38,8 +39,6 @@ V tomto článku se dozvíte, jak:
 V [první části](sql-database-tutorial-clustering-model-prepare-data.md)jste se naučili, jak připravit data z databáze Azure SQL k provádění clustering.
 
 V [druhé části](sql-database-tutorial-clustering-model-build.md)jste se naučili, jak vytvořit a trénovat model clusteringu K-Means v R.
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 

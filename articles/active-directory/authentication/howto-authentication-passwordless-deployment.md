@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582479"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451427"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Plánování nasazení ověřování bez hesla ve službě Azure Active Directory
 
@@ -67,7 +67,7 @@ Organizace musí před zahájením nasazení bez hesla splňovat následující 
 
 | Požadavek | Aplikace Authenticator | Bezpečnostní klíče FIDO2 |
 | --- | --- | --- |
-| [Kombinovaná registrace pro azure vícefaktorové ověřování a samoobslužné resetování hesla (SSPR)](howto-registration-mfa-sspr-combined.md) je povolená (funkce preview) | √ | √ |
+| [Kombinovaná registrace pro azure vícefaktorové ověřování a samoobslužné resetování hesla (SSPR)](howto-registration-mfa-sspr-combined.md) je povolená | √ | √ |
 | [Uživatelé můžou provádět vícefaktorové ověřování Azure](howto-mfa-getstarted.md) | √ | √ |
 | [Uživatelé se zaregistrovali pro azure vícefaktorové ověřování a samodotykové ověřování](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [Uživatelé zaregistrovali svá mobilní zařízení do služby Azure Active Directory](../devices/overview.md) | √ |   |

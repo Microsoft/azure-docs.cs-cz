@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 23dc784586e85b8cbdc816ac5f4d54556fc1ffb7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768517"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456987"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Úvodní příručka: Použití r se službami strojového učení k dotazování na databázi Azure SQL (preview)
 
@@ -30,22 +31,19 @@ V tomto rychlém startu použijete R se službami strojového učení k připoje
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Databáze Azure SQL](sql-database-single-database-get-started.md)
-- [Služby strojového učení](sql-database-machine-learning-services-overview.md) s povolenou r. [Zaregistrovat verzi Preview](sql-database-machine-learning-services-overview.md#signup)
+- [Služby strojového učení](sql-database-machine-learning-services-overview.md) s povolenou r.
 - [Sql Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
 > Skripty v tomto článku jsou zapsány k použití databáze **Adventure Works.**
 
-> [!NOTE]
-> Během verze Public Preview vás Společnost Microsoft zavede do sítě a povolí strojové učení pro vaši stávající nebo novou databázi, ale možnost nasazení spravované instance není momentálně podporována.
-
-Machine Learning Services s R je funkce databáze Azure SQL, která se používá pro spouštění skriptů R v databázi. Další informace naleznete v [projektu R](https://www.r-project.org/).
+Machine Learning Services s R je funkce Azure SQL Database používá pro provádění skriptů R v databázi. Další informace naleznete v [projektu R](https://www.r-project.org/).
 
 ## <a name="get-sql-server-connection-information"></a>Získání informací o připojení k serveru SQL
 
 Získejte informace o připojení, které potřebujete k připojení k databázi Azure SQL. Pro nadcházející postupy budete potřebovat úplný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databází SQL** nebo **instancí spravovaných SQL.**
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1e4470ce5ac69390cf8d361577b9ebf0013e4e51
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 861c7ffa647c8d2f37b32c359253ca991eeb314f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405791"
+ms.locfileid: "81457701"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředků v datovém centru nebo cloudu pomocí hybridního runbookworkeru
 
@@ -68,7 +68,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 ```
 
 > [!NOTE]
-> Tento kód neodebere agenta monitorování společnosti Microsoft z počítače. Odebere pouze funkce a konfiguraci role hybridního pracovníka runbooku.
+> Tento kód neodebere agenta Analýzy protokolů pro Linux z počítače. Odebere pouze funkce a konfiguraci role hybridního pracovníka runbooku.
 
 ## <a name="remove-a-hybrid-worker-group"></a>Odebrání skupiny Hybrid Worker
 
@@ -89,7 +89,7 @@ Chcete-li odebrat skupinu hybridních pracovníků runbooku, musíte nejprve ode
 
 ### <a name="hybrid-worker-role"></a>Role hybridního pracovníka
 
-Aby se pracovník hybridního runbooku mohl připojit a zaregistrovat se k Azure Automation a zaregistrovat se u něj, musí mít přístup k číslu portu a adresám URL, které jsou popsány v této části. Tento přístup je nahoře na [porty a adresy URL potřebné pro Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) pro připojení k protokolům Azure Monitor.
+Aby se pracovník hybridního runbooku mohl připojit a zaregistrovat se k Azure Automation a zaregistrovat se u něj, musí mít přístup k číslu portu a adresám URL, které jsou popsány v této části. Tento přístup je nahoře na [porty a adresy URL požadované pro agenta Log Analytics](../azure-monitor/platform/agent-windows.md) pro připojení k protokolům Azure Monitor.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b275239c19584bc11472711a32972aa3ebea1ab
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278685"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457531"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Koncepty pracovního postupu windows powershellu pro runbooky automatizace
 
@@ -20,9 +20,12 @@ Pracovní postup je pořadí naprogramovaných, propojených kroků, které prov
 
 Úplné podrobnosti o tématech v tomto článku naleznete v [tématu Začínáme s pracovním postupem prostředí Windows PowerShell](https://technet.microsoft.com/library/jj134242.aspx).
 
+>[!NOTE]
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](automation-update-azure-modules.md).
+
 ## <a name="basic-structure-of-a-workflow"></a>Základní struktura pracovního postupu
 
-Prvním krokem k převodu skriptu prostředí PowerShell na pracovní postup Prostředí PowerShell je jeho uzavření s klíčovým slovem **Workflow.**  Pracovní postup začíná klíčovým slovem **Workflow** následovaným textem skriptu uzavřeného ve složených závorkách. Název pracovního postupu se řídí klíčovým slovem **Pracovní postup,** jak je znázorněno v následující syntaxi:
+Prvním krokem k převodu skriptu prostředí PowerShell na pracovní `Workflow` postup prostředí PowerShell je jeho uzavření s klíčovým slovem.  Pracovní postup začíná `Workflow` klíčovým slovem následovaným textem skriptu uzavřeného ve složených závorkách. Název pracovního postupu se `Workflow` řídí klíčovým slovem znázorněno v následující syntaxi:
 
 ```powershell
 Workflow Test-Workflow
@@ -33,7 +36,7 @@ Workflow Test-Workflow
 
 Název pracovního postupu se musí shodovat s názvem runbooku automatizace. Pokud se soubor Runbook importuje, musí se název souboru shodovat s názvem pracovního postupu a musí končit v *souboru PS1*.
 
-Chcete-li do pracovního postupu přidat parametry, použijte klíčové slovo **Param** stejně jako ke skriptu.
+Chcete-li do pracovního postupu `Param` přidat parametry, použijte klíčové slovo stejně jako ve skriptu.
 
 ## <a name="code-changes"></a>Změny kódu
 
@@ -99,7 +102,7 @@ Workflow Stop-MyService
 
 ## <a name="inlinescript"></a>Vložený skript
 
-Aktivita **InlineScript** je užitečná, když potřebujete spustit jeden nebo více příkazů jako tradiční skript prostředí PowerShell namísto pracovního postupu Prostředí PowerShell.  Přesto jsou příkazy v pracovním postupu odesílány ke zpracování do programovacího modelu Windows Workflow Foundation, příkazy v bloku InlineScript jsou zpracovány prostředím Windows PowerShell.
+Aktivita`InlineScript` je užitečná, když potřebujete spustit jeden nebo více příkazů jako tradiční skript prostředí PowerShell namísto pracovního postupu Prostředí PowerShell.  Přesto jsou příkazy v pracovním postupu odesílány ke zpracování do programovacího modelu Windows Workflow Foundation, příkazy v bloku InlineScript jsou zpracovány prostředím Windows PowerShell.
 
 InlineScript používá následující syntaxi uvedenou níže.
 
@@ -154,7 +157,7 @@ Další informace o používání jazyka InlineScript naleznete v [tématu Spuš
 
 Jednou z výhod pracovních postupů prostředí Windows PowerShell je schopnost provádět sadu příkazů paralelně namísto postupně jako v případě typického skriptu.
 
-Klíčové slovo **Parallel** můžete použít k vytvoření bloku skriptu s více příkazy, které běží souběžně. To používá následující syntaxi uvedenou níže. V tomto případě Activity1 a Activity2 začíná ve stejnou dobu. Activity3 spustí až po activity1 a Activity2 byly dokončeny.
+Pomocí klíčového `Parallel` slova můžete vytvořit blok skriptu s více příkazy, které běží souběžně. To používá následující syntaxi uvedenou níže. V tomto případě Activity1 a Activity2 začíná ve stejnou dobu. Activity3 spustí až po activity1 a Activity2 byly dokončeny.
 
 ```powershell
 Parallel
@@ -189,7 +192,7 @@ Workflow Copy-Files
 }
 ```
 
-Můžete použít **ForEach -Parallel** konstrukce ke zpracování příkazů pro každou položku v kolekci současně. Položky v kolekci jsou zpracovávány paralelně, zatímco příkazy v bloku skriptu se spouštějí postupně. To používá následující syntaxi uvedenou níže. V tomto případě Activity1 začíná současně pro všechny položky v kolekci. Pro každou položku Activity2 začíná po Activity1 je dokončena. Activity3 spustí pouze po Activity1 a Activity2 byly dokončeny pro všechny položky. Používáme `ThrottleLimit` parametr k omezení paralelismu. Příliš vysoká `ThrottleLimit` může způsobit problémy. Ideální hodnota parametru `ThrottleLimit` závisí na mnoha faktorech ve vašem prostředí. Měli byste zkusit začít s nízkou hodnotou a zkuste různé rostoucí hodnoty, dokud nenajdete ten, který pracuje pro vaši konkrétní situaci.
+`ForEach -Parallel` Konstrukce můžete použít ke zpracování příkazů pro každou položku v kolekci současně. Položky v kolekci jsou zpracovávány paralelně, zatímco příkazy v bloku skriptu se spouštějí postupně. To používá následující syntaxi uvedenou níže. V tomto případě Activity1 začíná současně pro všechny položky v kolekci. Pro každou položku Activity2 začíná po Activity1 je dokončena. Activity3 spustí pouze po Activity1 a Activity2 byly dokončeny pro všechny položky. Používáme `ThrottleLimit` parametr k omezení paralelismu. Příliš vysoká `ThrottleLimit` může způsobit problémy. Ideální hodnota parametru `ThrottleLimit` závisí na mnoha faktorech ve vašem prostředí. Měli byste zkusit začít s nízkou hodnotou a zkuste různé rostoucí hodnoty, dokud nenajdete ten, který pracuje pro vaši konkrétní situaci.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -222,7 +225,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Kontrolní body
 
-*Kontrolní bod* je snímek aktuálního stavu pracovního postupu, který obsahuje aktuální hodnotu pro proměnné a veškerý výstup generovaný do tohoto bodu. Pokud pracovní postup skončí omylem nebo je pozastaven, při příštím spuštění se spustí z posledního kontrolního bodu namísto začátku pracovního postupu.  Kontrolní bod můžete nastavit v pracovním postupu pomocí aktivity **pracovního postupu kontrolního bodu.** Azure Automation má funkci nazvanou [spravedlivé sdílení](automation-runbook-execution.md#fair-share), kde je uvolněna všechna runbook, která běží po dobu 3 hodin, aby bylo možné spustit jiné sady Runbook. Nakonec uvolněná runbook bude znovu načtena a když je, bude pokračovat v provádění z posledního kontrolního bodu v runbooku. Chcete-li zaručit, že sada Runbook bude nakonec dokončena, je nutné přidat kontrolní body v intervalech, které běží méně než 3 hodiny. Pokud při každém spuštění je přidán nový kontrolní bod a pokud se runbook vyřazuje po 3 hodinách z důvodu chyby, bude runbook obnoven a to po neomezenou dobu.
+*Kontrolní bod* je snímek aktuálního stavu pracovního postupu, který obsahuje aktuální hodnotu pro proměnné a veškerý výstup generovaný do tohoto bodu. Pokud pracovní postup skončí omylem nebo je pozastaven, při příštím spuštění se spustí z posledního kontrolního bodu namísto začátku pracovního postupu.  Můžete nastavit kontrolní bod v `Checkpoint-Workflow` pracovním postupu s aktivitou. Azure Automation má funkci nazvanou [spravedlivé sdílení](automation-runbook-execution.md#fair-share), kde je uvolněna všechna runbook, která běží po dobu 3 hodin, aby bylo možné spustit jiné sady Runbook. Nakonec uvolněná runbook bude znovu načtena a když je, bude pokračovat v provádění z posledního kontrolního bodu v runbooku. Chcete-li zaručit, že sada Runbook bude nakonec dokončena, je nutné přidat kontrolní body v intervalech, které běží méně než 3 hodiny. Pokud při každém spuštění je přidán nový kontrolní bod a pokud se runbook vyřazuje po 3 hodinách z důvodu chyby, bude runbook obnoven a to po neomezenou dobu.
 
 V následujícím ukázkovém kódu dojde k výjimce po Activity2 způsobuje ukončení pracovního postupu. Při spuštění pracovního postupu znovu spustí spuštěním Activity2 protože to bylo těsně po poslední sadu kontrolního bodu.
 
@@ -254,36 +257,37 @@ Workflow Copy-Files
 }
 ```
 
-Vzhledem k tomu, že pověření uživatelského jména nejsou trvalé po volání [aktivity pozastavit pracovní postup](https://technet.microsoft.com/library/jj733586.aspx) nebo po posledním kontrolním bodu, je třeba nastavit pověření na hodnotu null a potom je znovu načíst z úložiště datových zdrojů po **pozastavení pracovního postupu** nebo kontrolního bodu je volána.  V opačném případě se může zobrazit následující chybová zpráva: *Úlohu pracovního postupu nelze obnovit, protože data trvalosti nelze uložit úplně nebo byla poškozena uložená data trvalosti. Je nutné restartovat pracovní postup.*
+Vzhledem k tomu, že pověření uživatelského jména nejsou trvalé po volání [aktivity pozastavit pracovní postup](https://technet.microsoft.com/library/jj733586.aspx) nebo po posledním kontrolním bodu, je třeba nastavit pověření na hodnotu null a potom je znovu načíst z úložiště majetku po `Suspend-Workflow` nebo kontrolní bod je volána.  V opačném případě se může zobrazit následující chybová zpráva:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 Následující stejný kód ukazuje, jak to zpracovat ve vašich runbookech pracovního postupu prostředí PowerShell.
 
 ```powershell
 workflow CreateTestVms
 {
-    $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-    $null = Connect-AzureRmAccount -Credential $Cred
+    $Cred = Get-AzAutomationCredential -Name "MyCredential"
+    $null = Connect-AzAccount -Credential $Cred
 
-    $VmsToCreate = Get-AzureAutomationVariable -Name "VmsToCreate"
+    $VmsToCreate = Get-AzAutomationVariable -Name "VmsToCreate"
 
     foreach ($VmName in $VmsToCreate)
         {
         # Do work first to create the VM (code not shown)
 
         # Now add the VM
-        New-AzureRmVm -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
+        New-AzVM -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
 
         # Checkpoint so that VM creation is not repeated if workflow suspends
         $Cred = $null
         Checkpoint-Workflow
-        $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-        $null = Connect-AzureRmAccount -Credential $Cred
+        $Cred = Get-AzAutomationCredential -Name "MyCredential"
+        $null = Connect-AzAccount -Credential $Cred
         }
 }
 ```
 
-> [!IMPORTANT]
-> **Add-AzureRmAccount** je teď alias pro **Connect-AzureRMAccount**. Při hledání položek knihovny, pokud nevidíte **Connect-AzureRMAccount**, můžete použít **Add-AzureRmAccount**nebo můžete aktualizovat moduly ve vašem účtu automatizace.
+> [!NOTE]
+> Pro negrafické sady Runbook `Add-AzAccount` `Add-AzureRMAccount` prostředí PowerShell a jsou aliasy pro [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Můžete použít tyto rutiny nebo můžete [aktualizovat moduly](automation-update-azure-modules.md) v účtu Automation na nejnovější verze. Možná budete muset aktualizovat moduly, i když jste právě vytvořili nový účet Automatizace.
+
 
 To není nutné, pokud ověřujete pomocí účtu Spustit jako nakonfigurovaného s instančním objektem.
 

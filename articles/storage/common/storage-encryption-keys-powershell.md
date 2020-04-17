@@ -10,18 +10,18 @@ ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f24c89a53af5e618d64b78d6001040190c1f339c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: bfc2e256396904456a7ee0fd8b6173c00a5f53d7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618332"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456392"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>Konfigurace klíčů spravovaných zákazníkem pomocí služby Azure Key Vault pomocí PowerShellu
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Tento článek ukazuje, jak nakonfigurovat Azure Key Vault s klíči spravované zákazníky pomocí PowerShellu. Informace o tom, jak vytvořit trezor klíčů pomocí příkazového příkazu k řešení Azure, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z azure key vaultu pomocí PowerShellu](../../key-vault/quick-create-powershell.md).
+Tento článek ukazuje, jak nakonfigurovat Azure Key Vault s klíči spravované zákazníky pomocí PowerShellu. Informace o tom, jak vytvořit trezor klíčů pomocí příkazového příkazu k řešení Azure, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z azure key vaultu pomocí PowerShellu](../../key-vault/secrets/quick-create-powershell.md).
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Přiřazení identity k účtu úložiště
 
@@ -51,7 +51,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-Informace o povolení **funkce Obnovitelné odstranění** a **nečistit** v existujícím trezoru klíčů pomocí prostředí PowerShell naleznete v částech s názvem **Povolení obnovitelného odstranění** a Povolení ochrany proti **vymazání** v [tématu Použití obnovitelného odstranění s prostředím PowerShell](../../key-vault/key-vault-soft-delete-powershell.md).
+Informace o povolení **funkce Obnovitelné odstranění** a **nečistit** v existujícím trezoru klíčů pomocí prostředí PowerShell naleznete v částech s názvem **Povolení obnovitelného odstranění** a Povolení ochrany proti **vymazání** v [tématu Použití obnovitelného odstranění s prostředím PowerShell](../../key-vault/general/soft-delete-powershell.md).
 
 ## <a name="configure-the-key-vault-access-policy"></a>Konfigurace zásad přístupu k trezoru klíčů
 

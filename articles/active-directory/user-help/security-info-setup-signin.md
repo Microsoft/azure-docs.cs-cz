@@ -1,24 +1,24 @@
 ---
-title: Nastavení bezpečnostních údajů (preview) z výzvy k přihlášení – Azure AD
-description: Jak nastavit bezpečnostní údaje (náhled) pro pracovní nebo školní účet, až se zobrazí výzva z přihlašovací stránky vaší organizace.
+title: Nastavení bezpečnostních údajů z výzvy k přihlášení – Azure AD
+description: Jak nastavit bezpečnostní údaje pro pracovní nebo školní účet po zobrazení výzvy z přihlašovací stránky vaší organizace.
 services: active-directory
 author: curtand
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 08/05/2019
+ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: c216dbfef99422fc49fde774dc57d5cbcc9f879a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77063981"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454400"
 ---
-# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>Nastavení bezpečnostních údajů (preview) z výzvy k přihlášení
+# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Nastavení bezpečnostních údajů z výzvy k přihlášení
 
 Pokud se zobrazí výzva k nastavení bezpečnostních údajů ihned po přihlášení k pracovnímu nebo školnímu účtu, můžete postupovat podle těchto kroků.
 
@@ -122,7 +122,7 @@ Podle těchto kroků nastavte bezpečnostní údaje pracovního nebo školního 
 Některé aplikace, například Outlook 2010, nepodporují dvoustupňové ověření. Tento nedostatek podpory znamená, že pokud ve vaší organizaci používáte dvoustupňové ověření, aplikace nebude fungovat. Chcete-li tento problém vyřešit, můžete vytvořit automaticky generované heslo pro použití s každou aplikací bez prohlížeče, odděleně od normálního hesla.
 
 >[!Note]
->Pokud tuto možnost v průvodci nevidíte, znamená to, že ji správce nenastavil. Pokud to není nastavené, ale víte, že potřebujete používat hesla aplikací, můžete postupovat podle pokynů v části [Nastavení hesel aplikací na stránce Bezpečnostní údaje (náhled).](security-info-app-passwords.md)
+>Pokud tuto možnost v průvodci nevidíte, znamená to, že ji správce nenastavil. Pokud to není nastavené, ale víte, že potřebujete používat hesla aplikací, můžete postupovat podle pokynů v části [Nastavení hesel aplikací na stránce Bezpečnostní údaje](security-info-app-passwords.md).
 
 Při používání hesel aplikací je důležité mít na paměti:
 

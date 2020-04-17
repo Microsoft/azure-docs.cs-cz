@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: abff2f16d9559f015417711820a993badd636f7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ebbdda39f019f374f8e5abe951d0180c0dd453f6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133079"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457871"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro aplikační bránu
 
@@ -102,7 +102,7 @@ Pro aplikační bránu jsou k dispozici následující metriky:
 
 - **Neúspěšné požadavky**
 
-  Počet neúspěšných požadavků, které aplikace gateway obsluhovala. Počet požadavků lze dále filtrovat tak, aby zobrazoval počet za každou/konkrétní kombinaci nastavení back-endového fondu-http.
+  Počet požadavků, které aplikační brána obsluhovala s kódy chyb serveru 5xx. To zahrnuje kódy 5xx, které jsou generovány z aplikační brány, stejně jako kódy 5xx, které jsou generovány z back-endu. Počet požadavků lze dále filtrovat tak, aby zobrazoval počet za každou/konkrétní kombinaci nastavení back-endového fondu-http.
    
 - **Jednotky s pevnou fakturovatelnou kapacitou**
 
@@ -162,7 +162,7 @@ Pro aplikační bránu jsou k dispozici následující metriky:
 
 - **Neúspěšné požadavky**
 
-  Počet neúspěšných požadavků, které aplikace gateway obsluhovala. Počet požadavků lze dále filtrovat tak, aby zobrazoval počet za každou/konkrétní kombinaci nastavení back-endového fondu-http.
+  Počet požadavků, které aplikační brána obsluhovala s kódy chyb serveru 5xx. To zahrnuje kódy 5xx, které jsou generovány z aplikační brány, stejně jako kódy 5xx, které jsou generovány z back-endu. Počet požadavků lze dále filtrovat tak, aby zobrazoval počet za každou/konkrétní kombinaci nastavení back-endového fondu-http.
 
 - **Stav odpovědi**
 

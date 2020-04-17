@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 50c0980800bbc9b2951bf9107114c1a4d9265558
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521277"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454658"
 ---
 # <a name="manage-storage-account-access-keys"></a>Správa přístupových klíčů účtu úložiště
 
@@ -31,8 +31,8 @@ Společnost Microsoft doporučuje používat Azure Key Vault ke správě příst
 
 Společnost Microsoft doporučuje ke správě a otočení přístupových klíčů používat azure key vault. Vaše aplikace může bezpečně přistupovat k vašim klíčům v trezoru klíčů, takže se můžete vyhnout jejich ukládání s kódem aplikace. Další informace o použití trezoru klíčů pro správu klíčů naleznete v následujících článcích:
 
-- [Správa klíčů účtů úložiště pomocí Azure Key Vault a PowerShellu](../../key-vault/key-vault-overview-storage-keys-powershell.md)
-- [Správa klíčů účtů úložiště pomocí azure key vaultu a azure cli](../../key-vault/key-vault-ovw-storage-keys.md)
+- [Správa klíčů účtů úložiště pomocí Azure Key Vault a PowerShellu](../../key-vault/secrets/overview-storage-keys-powershell.md)
+- [Správa klíčů účtů úložiště pomocí azure key vaultu a azure cli](../../key-vault/secrets/overview-storage-keys.md)
 
 ## <a name="manually-rotate-access-keys"></a>Ruční otočení přístupových kláves
 
@@ -58,4 +58,4 @@ Chcete-li otočit přístupové klíče účtu, musí být uživatel správcem s
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled účtu úložiště Azure](storage-account-overview.md)
-- [Vytvoření účtu úložiště](storage-account-create.md)
+- [vytvořit účet úložiště](storage-account-create.md)

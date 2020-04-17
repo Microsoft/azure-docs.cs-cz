@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 2241b69e36e3b17475dba115b8d2ae94fe2189a7
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: abe7d5ed1d4ba1308abde04aee32a3ea222456b8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345851"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452872"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Příprava dat k provádění clusteringu v R se službami Azure SQL Database Machine Learning Services (preview)
 
@@ -43,13 +44,11 @@ V [druhé části](sql-database-tutorial-clustering-model-build.md)se dozvíte, 
 
 V [části třetí](sql-database-tutorial-clustering-model-deploy.md)se dozvíte, jak vytvořit uloženou proceduru v databázi Azure SQL, která může provádět clustering v R na základě nových dat.
 
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – Pokud nemáte předplatné Azure, [vytvořte si účet,](https://azure.microsoft.com/free/) než začnete.
 
-* Azure SQL Database Server s povolenou službou Machine Learning Services – Během veřejné verze Preview vás Microsoft začlení a povolí strojové učení pro vaše stávající nebo nové databáze. Postupujte podle kroků v [části Zaregistrujte se pro náhled](sql-database-machine-learning-services-overview.md#signup).
+* [Azure SQL Database se službami strojového učení (s povolenou R).](sql-database-machine-learning-services-overview.md)
 
 * RevoScaleR balíček - Viz [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) pro možnosti instalace tohoto balíčku místně.
 
@@ -59,7 +58,7 @@ V [části třetí](sql-database-tutorial-clustering-model-deploy.md)se dozvíte
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="import-the-sample-database"></a>Import ukázkové databáze
 

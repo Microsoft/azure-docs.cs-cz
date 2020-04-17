@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: fa3a6fefce808e51c2ad1d9d18bf4766cdf689c3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406226"
+ms.locfileid: "81454250"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
 
@@ -67,7 +67,7 @@ Pro zbývající úkoly použijete SQL Server Management Studio, které umožňu
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Přidání uživatelského účtu do role správce serveru
 
-V rámci tohoto úkolu přidáte do role správce serveru uživatelský nebo skupinový účet ze služby Azure AD. Pokud přidáváte skupinu zabezpečení, musí mít vlastnost `MailEnabled` nastavenou na hodnotu `True`. Při zadávání skupiny podle `obj:groupid@tenantid`e-mailové adresy použijte .
+V rámci tohoto úkolu přidáte do role správce serveru uživatelský nebo skupinový účet ze služby Azure AD. Pokud zadáváte skupinu `obj:groupid@tenantid`zabezpečení, použijte .
 
 1. V **Průzkumníku objektů** klikněte pravým tlačítkem na název serveru a pak klikněte na **Vlastnosti**. 
 2. V okně **Analysis Server – vlastnosti** klikněte na **Zabezpečení** > **Přidat**.

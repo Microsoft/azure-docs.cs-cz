@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 787809e4132defa101bb82659e8af1a2d9f1b9b6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897691"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453773"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
@@ -128,7 +128,7 @@ V *souboru Web.config*pracujete z horní části souboru a proveďte následují
 - Najděte volaným připojovacím `MyDbConnection` řetězcem a nahraďte jeho `connectionString` hodnotu písmenem `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`. Nahraďte _ \<>_ názvu serveru a _ \<>názvu db_ názvem názvem serveru a názvem databáze.
 
 > [!NOTE]
-> Zprostředkovatel SqlAuthenticationProvider, který jste právě zaregistrovali, je založen na knihovně AppAuthentication, kterou jste nainstalovali dříve. Ve výchozím nastavení používá systémově přiřazenou identitu. Chcete-li využít identitu přiřazenou uživateli, budete muset zadat další konfiguraci. Přečtěte si [podporu připojovacího řetězce](../key-vault/service-to-service-authentication.md#connection-string-support) pro knihovnu AppAuthentication.
+> Zprostředkovatel SqlAuthenticationProvider, který jste právě zaregistrovali, je založen na knihovně AppAuthentication, kterou jste nainstalovali dříve. Ve výchozím nastavení používá systémově přiřazenou identitu. Chcete-li využít identitu přiřazenou uživateli, budete muset zadat další konfiguraci. Přečtěte si [podporu připojovacího řetězce](../key-vault/general/service-to-service-authentication.md#connection-string-support) pro knihovnu AppAuthentication.
 
 To je každá věc, kterou potřebujete pro připojení k databázi SQL. Při ladění ve Visual Studiu používá váš kód uživatele Azure AD, který jste nakonfigurovali v [nastavení sady Visual Studio](#set-up-visual-studio). Server SQL Database nastavíte později, aby bylo možné připojení ze spravované identity aplikace App Service.
 

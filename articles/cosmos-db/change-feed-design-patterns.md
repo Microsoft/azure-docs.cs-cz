@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 7e6981fb57421846b491693bb6195ecef31a3773
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986301"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450347"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Změna návrhových vzorů informačního kanálu v Azure Cosmos DB
 
@@ -99,7 +99,7 @@ Zvažte například maloobchodní aplikaci pomocí návrhového vzoru zdroje ud�
 
 1. Zákazník přidá položku A do nákupního košíku
 2. Zákazník přidá položku B do nákupního košíku
-3. Zákazník přidá odebere položku A ze svého nákupního košíku
+3. Zákazník odebere položku A ze svého nákupního košíku
 4. Zákazník se odhlásí a obsah nákupního košíku je odeslán
 
 Pro každého zákazníka je zachováno zhmotněné zobrazení aktuálního obsahu nákupního košíku. Tato aplikace musí zajistit, že tyto události jsou zpracovány v pořadí, ve kterém k nim dochází. Pokud by například pokladna košíku měla být zpracována před odebráním položky A, je pravděpodobné, že by zákazník nechal odeslat položku A, na rozdíl od požadované položky B. Aby bylo zaručeno, že tyto čtyři události jsou zpracovány v pořadí jejich výskytu, by měly spadat do stejné hodnoty klíče oddílu. Pokud vyberete **uživatelské jméno** (každý zákazník má jedinečné uživatelské jméno) jako klíč oddílu, můžete zaručit, že tyto události se zobrazí v kanálu změn ve stejném pořadí, ve kterém jsou zapsány do Azure Cosmos DB.

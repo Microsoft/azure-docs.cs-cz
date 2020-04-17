@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 52f4347fa545df88f11878709b4061662d5faffe
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0985b37280e3cd363ba1728a5ec33b0012611ab2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345767"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452923"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Vytvoření prediktivního modelu v R se službami Azure SQL Database Machine Learning Services (preview)
 
@@ -36,8 +37,6 @@ V tomto článku se dozvíte, jak:
 V [první části](sql-database-tutorial-predictive-model-prepare-data.md)jste se naučili importovat ukázkovou databázi a potom připravit data, která mají být použita pro trénování prediktivního modelu v R.
 
 V [části tři](sql-database-tutorial-predictive-model-deploy.md)se dozvíte, jak uložit model v databázi a potom vytvořit uložené procedury ze skriptů R, které jste vyvinuli v částech jedna a dvě. Uložené procedury budou spuštěny v databázi SQL, aby se předpovědi založené na nových datech.
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 

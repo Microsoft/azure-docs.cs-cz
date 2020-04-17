@@ -6,32 +6,32 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280336"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453723"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Použití odkazů trezoru klíčů pro službu App Service a funkce Azure
 
-Toto téma ukazuje, jak pracovat s tajnými klíči z Azure Key Vault ve vaší aplikaci App Service nebo Azure Functions bez nutnosti jakýchkoli změn kódu. [Azure Key Vault](../key-vault/key-vault-overview.md) je služba, která poskytuje centralizovanou správu tajných klíčů s plnou kontrolou nad zásadami přístupu a historií auditu.
+Toto téma ukazuje, jak pracovat s tajnými klíči z Azure Key Vault ve vaší aplikaci App Service nebo Azure Functions bez nutnosti jakýchkoli změn kódu. [Azure Key Vault](../key-vault/general/overview.md) je služba, která poskytuje centralizovanou správu tajných klíčů s plnou kontrolou nad zásadami přístupu a historií auditu.
 
 ## <a name="granting-your-app-access-to-key-vault"></a>Udělení přístupu aplikace k trezoru klíčů
 
 Abyste mohli číst tajné klíče z trezoru klíčů, musíte mít vytvořený trezor a udělit aplikaci oprávnění k přístupu k němu.
 
-1. Vytvořte trezor klíčů podle [rychlého startu trezoru klíčů](../key-vault/quick-create-cli.md).
+1. Vytvořte trezor klíčů podle [rychlého startu trezoru klíčů](../key-vault/secrets/quick-create-cli.md).
 
 1. Vytvořte [systémem přiřazenou spravovanou identitu](overview-managed-identity.md) pro vaši aplikaci.
 
    > [!NOTE] 
    > Odkazy na úložiště klíčů aktuálně podporují pouze spravované identity přiřazené systémem. Uživatelem přiřazené identity nelze použít.
 
-1. Vytvořte [zásadu přístupu v trezoru klíčů](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikace, kterou jste vytvořili dříve. Povolte oprávnění tajného klíče "Získat" pro tuto zásadu. Nekonfigurujte "autorizovanou aplikaci" nebo `applicationId` nastavení, protože to není kompatibilní se spravovanou identitou.
+1. Vytvořte [zásadu přístupu v trezoru klíčů](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikace, kterou jste vytvořili dříve. Povolte oprávnění tajného klíče "Získat" pro tuto zásadu. Nekonfigurujte "autorizovanou aplikaci" nebo `applicationId` nastavení, protože to není kompatibilní se spravovanou identitou.
 
     > [!NOTE]
-    > Odkazy trezoru klíčů nejsou v současné době schopny vyřešit tajné klíče uložené v trezoru klíčů s [omezeními sítě](../key-vault/key-vault-overview-vnet-service-endpoints.md).
+    > Odkazy trezoru klíčů nejsou v současné době schopny vyřešit tajné klíče uložené v trezoru klíčů s [omezeními sítě](../key-vault/general/overview-vnet-service-endpoints.md).
 
 ## <a name="reference-syntax"></a>Syntaxe odkazu
 

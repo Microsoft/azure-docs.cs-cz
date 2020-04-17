@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 0bb3abc7b7102da55c9ededcadd7a301f74065ab
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: e81cca3e20d5b6c050489e80b91d013d5e934cce
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349326"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453195"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Práce s daty R a SQL ve službě Azure SQL Database Machine Learning Services (preview)
 
@@ -37,7 +38,7 @@ Mezi běžné problémy, se kterými se můžete setkat, patří:
 
 - Pokud nemáte předplatné Azure, [vytvořte si účet,](https://azure.microsoft.com/free/) než začnete.
 
-- Chcete-li spustit ukázkový kód v těchto cvičeních, musíte mít nejprve databázi Azure SQL se službami Machine Learning Services (s R) povolenou. Během veřejné verze Preview vás Microsoft připojí k vaší službě a umožní strojové učení pro vaši stávající nebo novou databázi. Postupujte podle kroků v [části Zaregistrujte se pro náhled](sql-database-machine-learning-services-overview.md#signup).
+- Chcete-li spustit ukázkový kód v těchto cvičeních, musíte mít nejprve [povolenou Azure SQL Database se službami machine learning (s R).](sql-database-machine-learning-services-overview.md)
 
 - Ujistěte se, že jste nainstalovali nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Skripty R můžete spustit pomocí jiných nástrojů pro správu databáze nebo dotazů, ale v tomto rychlém startu budete používat SSMS.
 
@@ -165,7 +166,7 @@ WITH RESULT SETS((
 
 Pod obálkami je sloupec tří hodnot převeden na matici s jedním sloupcem. Vzhledem k tomu, že matice je pouze `y` zvláštní případ pole v R, pole je implicitně přinutí k matici s jedním sloupcem, aby se oba argumenty v souladu.
 
-**Results**
+**Výsledky**
 
 |Sloupec 1|Sloupec 2|Kol3|Kol4|
 |---|---|---|---|
@@ -188,7 +189,7 @@ WITH RESULT SETS(([Col1] INT));
 
 Nyní R vrátí jednu hodnotu jako výsledek.
 
-**Results**
+**Výsledky**
     
 |Sloupec 1|
 |---|
@@ -218,7 +219,7 @@ WITH RESULT SETS((
 
 Chcete-li vyplnit datový rámec, R opakuje prvky načtené z RTestData tolikrát, kolikrát je potřeba, aby odpovídaly počtu prvků v poli `df1`.
 
-**Results**
+**Výsledky**
     
 |*Sloupec 2*|*Kol3*|
 |----|----|
@@ -279,7 +280,7 @@ Pokud se zobrazí chyba, budete pravděpodobně muset provést některé úpravy
 
 Po získání dotazu pracovní, zkontrolujte `str` výsledky funkce zobrazíte, jak R zachází se vstupními daty.
 
-**Results**
+**Výsledky**
 
 ```text
 STDOUT message(s) from external script: 'data.frame':    37 obs. of  3 variables:

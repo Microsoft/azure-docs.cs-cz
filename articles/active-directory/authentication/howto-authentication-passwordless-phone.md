@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 853e7143834a340b870b71ef1a287dab136e2783
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654057"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450968"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (preview)
 
@@ -41,7 +41,7 @@ Místo zobrazení výzvy k zadání hesla po zadání uživatelského jména se 
 
 ### <a name="enable-the-combined-registration-experience"></a>Povolení kombinovaného registračního prostředí
 
-Registrační funkce pro metody ověřování bez hesla spoléhají na kombinovaný náhled registrace. Postupujte podle kroků v článku [Povolit kombinovanou registraci informací o zabezpečení (náhled)](howto-registration-mfa-sspr-combined.md), chcete-li povolit kombinovaný náhled registrace.
+Registrační funkce pro metody ověřování bez hesla spoléhají na kombinovanou registrační funkci. Postupujte podle kroků v článku [Povolit kombinovanou registraci informací o zabezpečení](howto-registration-mfa-sspr-combined.md), chcete-li povolit kombinovanou registraci.
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Povolení metod ověřování pomocí telefonického přihlášení bez hesla
 

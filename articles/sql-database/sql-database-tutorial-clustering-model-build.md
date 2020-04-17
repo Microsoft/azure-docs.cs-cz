@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 0a73a2bc3fa76c945cf699133a41b38a9983a234
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: ebea6117420ee6de67025dfd4cfba71e905cb9ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345815"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453093"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Vytvoření modelu clusteringu v R se službami Azure SQL Database Machine Learning Services (preview)
 
@@ -36,8 +37,6 @@ V tomto článku se dozvíte, jak:
 V [první části](sql-database-tutorial-clustering-model-prepare-data.md)jste se naučili, jak připravit data z databáze Azure SQL k provádění clustering.
 
 V [části třetí](sql-database-tutorial-clustering-model-deploy.md)se dozvíte, jak vytvořit uloženou proceduru v databázi Azure SQL, která může provádět clustering v R na základě nových dat.
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 

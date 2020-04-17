@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 94b351ddb18ca596f47e8ef40cff8229c838d7bd
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: f369eb54dc92a29ba122a8a645262dc085b1ed36
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239209"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80930051"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Kurz: Vytvoření certifikátu podepsaného svým držitelem (Preview) pomocí skriptů nasazení
 
@@ -48,13 +48,12 @@ K dokončení tohoto článku potřebujete:
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Pomocí následujícího skriptu prostředí PowerShell získáte ID zadáním názvu skupiny prostředků a názvu identity.
+  Pomocí následujícího skriptu příkazového příkazu získat ID zadáním názvu skupiny prostředků a název identity.
 
-  ```azurepowershell-interactive
-  $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
-  $idName = Read-Host -Prompt "Enter the name of the managed identity"
-
-  $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
+  ```azurecli-interactive
+  echo "Enter the Resource Group name:" &&
+  read resourceGroupName &&
+  az identity list -g $resourceGroupName
   ```
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
@@ -317,7 +316,7 @@ Výsledek spuštění skriptu nasazení je uložen v prostředcích skriptu nasa
 
 ## <a name="debug-the-failed-script"></a>Ladění neúspěšného skriptu
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Jedná se o název projektu s **rg** připojen. Zobrazí se dva další prostředky ve skupině prostředků. Tyto prostředky jsou označovány jako *prostředky skriptu nasazení*.
 
     ![Prostředky skriptu nasazení šablony Správce prostředků Správce prostředků](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

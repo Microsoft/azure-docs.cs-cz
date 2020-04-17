@@ -1,31 +1,26 @@
 ---
 title: Poradce při potížích s kombinovanou registrací – Služba Azure Active Directory
-description: Poradce při potížích s vícefaktorovým ověřováním Azure AD a samoobslužnou kombinovanou registrací hesla (preview)
+description: Poradce při potížích s vícefaktorovým ověřováním Azure AD a kombinovanou registrací samoobslužného hesla
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74847384"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450934"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>Poradce při potížích s kombinovanou registrací bezpečnostních informací (preview)
+# <a name="troubleshooting-combined-security-information-registration"></a>Poradce při potížích s kombinovanou registrací informací o zabezpečení
 
 Informace v tomto článku jsou určeny k průvodcování správci, kteří řeší problémy hlášené uživateli kombinované registrace.
-
-|     |
-| --- |
-| Kombinovaná registrace informací o zabezpečení pro azure multi-factor authentication a samoobslužné resetování hesla Azure Active Directory (Azure AD) je veřejná funkce preview Azure AD. Další informace o náhledech najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
@@ -150,16 +145,16 @@ V okně Prostředí PowerShell spusťte následující příkaz a zařazuj umís
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-preview-experience"></a>Zakázání náhledu
+### <a name="disable-the-updated-experience"></a>Zakázání aktualizovaného prostředí
 
-Chcete-li uživatelům zakázat prostředí náhledu, proveďte následující kroky:
+Chcete-li uživatelům zakázat aktualizované prostředí, proveďte následující kroky:
 
 1. Přihlaste se k portálu Azure jako správce uživatele.
 2. Přejděte na nastavení uživatele **služby Azure Active** > **Directory:** > **Správa nastavení funkcí náhledu přístupového panelu**.
 3. V části **Uživatelé mohou používat funkce náhledu pro registraci a správu bezpečnostních údajů**, nastavte volič na **žádný**a pak vyberte **Uložit**.
 
-Uživatelé již nebudou vyzváni k registraci pomocí prostředí náhledu.
+Uživatelé již nebudou vyzváni k registraci pomocí aktualizovaného prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o verzi Public Preview kombinované registrace pro samoobslužné resetování hesla a azure multifaktorové ověřování](concept-registration-mfa-sspr-combined.md)
+* [Další informace o kombinované registraci samoobslužného resetování hesla a azure multifaktorové ověřování](concept-registration-mfa-sspr-combined.md)

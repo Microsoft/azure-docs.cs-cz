@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 8552fc8555207c5b6ca59bbd0da0fdebaae2e87b
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 3b4362e4c5e69efddfbc99ef0f98ad3c5966165c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546112"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450867"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Postup: Přizpůsobení prohlížečů a zobrazení WebViews pro iOS/macOS
 
@@ -75,9 +75,9 @@ Prohlížeč, který používáte, má vliv na prostředí s přistajeno, proto�
 | Technologie    | Typ prohlížeče  | dostupnost iOS | dostupnost v systému macOS | Sdílí soubory cookie a další údaje  | Dostupnost msal | Jednotné přihlašování |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
 | [Relace aswebauthenticationsession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Systém | iOS12 a více | macOS 10.15 a více | Ano | iOS a macOS 10.15+ | w/ Instance Safari
-| [Relace ověřování sf](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systém | iOS11 a více | Není dostupné. | Ano | Jenom iOS |  w/ Instance Safari
-| [Řadič SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systém | iOS11 a více | Není dostupné. | Ne | Jenom iOS | Ne**
-| **Řadič SFSafariViewController** | Systém | iOS10 | Není dostupné. | Ano | Jenom iOS |  w/ Instance Safari
+| [Relace ověřování sf](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systém | iOS11 a více | – | Ano | Jenom iOS |  w/ Instance Safari
+| [Řadič SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systém | iOS11 a více | – | Ne | Jenom iOS | Ne**
+| **Řadič SFSafariViewController** | Systém | iOS10 | – | Ano | Jenom iOS |  w/ Instance Safari
 | **Zobrazení WKWebView**  | V aplikaci | iOS8 a více | macOS 10.10 a více | Ne | iOS a macOS | Ne**
 
 ** Aby služby SSO fungovaly, je třeba mezi aplikacemi sdílet tokeny. To vyžaduje mezipaměť tokenů nebo zprostředkovatelskou aplikaci, například Microsoft Authenticator pro iOS.
@@ -96,13 +96,13 @@ Každý požadavek lze nakonfigurovat tak, aby `MSALInteractiveTokenParameters.w
 
 Navíc MSAL podporuje předávání vlastní `WKWebView` nastavením `MSALInteractiveTokenParameters.webviewParameters.customWebView` vlastnosti.
 
-Například:
+Příklad:
 
 Objective-C
 ```objc
 UIViewController *myParentController = ...;
 WKWebView *myCustomWebView = ...;
-MSALWebviewParameters *webViewParameters = [[MSALWebviewParameters alloc] initWithParentViewController:myParentController];
+MSALWebviewParameters *webViewParameters = [[MSALWebviewParameters alloc] initWithAuthPresentationViewController:myParentController];
 webViewParameters.webviewType = MSALWebviewTypeWKWebView;
 webViewParameters.customWebview = myCustomWebView;
 MSALInteractiveTokenParameters *interactiveParameters = [[MSALInteractiveTokenParameters alloc] initWithScopes:@[@"myscope"] webviewParameters:webViewParameters];
@@ -113,7 +113,7 @@ Swift
 ```swift
 let myParentController: UIViewController = ...
 let myCustomWebView: WKWebView = ...
-let webViewParameters = MSALWebviewParameters(parentViewController: myParentController)
+let webViewParameters = MSALWebviewParameters(authPresentationViewController: myParentController)
 webViewParameters.webviewType = MSALWebviewType.wkWebView
 webViewParameters.customWebview = myCustomWebView
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: ["myscope"], webviewParameters: webViewParameters)

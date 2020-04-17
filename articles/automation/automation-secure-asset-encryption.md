@@ -1,5 +1,5 @@
 ---
-title: Šifrování zabezpečených prostředků v Azure Automation
+title: Šifrování zabezpečených prostředků ve službě Azure Automation
 description: Azure Automation chrání zabezpečené prostředky pomocí několika úrovní šifrování. Ve výchozím nastavení se šifrování provádí pomocí klíčů spravovaných společností Microsoft. Zákazníci mohou nakonfigurovat své účty automatizace tak, aby k šifrování používaly klíče spravované zákazníkem. Tento článek popisuje podrobnosti o obou režimech šifrování a jak můžete přepínat mezi těmito dvěma.
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a82d2b6d9521ba7dd5e7b194c26ff8fe5a100871
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547759"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457480"
 ---
-# <a name="encrypt-secure-assets-in-azure-automation"></a>Šifrování zabezpečených prostředků v Azure Automation
+# <a name="encrypt-secure-assets-in-azure-automation"></a>Šifrování zabezpečených prostředků ve službě Azure Automation
 
 Zabezpečené datové zdroje v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou chráněné v Azure Automation pomocí několika úrovní šifrování. Na základě klíče nejvyšší úrovně použitého pro šifrování existují dva modely pro šifrování:
 -    Použití klíčů spravovaných společností Microsoft
@@ -32,7 +32,7 @@ Každý zabezpečený prostředek je šifrovaný a uložený v Azure Automation 
 
 Šifrování zabezpečených datových zdrojů pro svůj účet Automation můžete spravovat pomocí vlastních klíčů. Když zadáte klíč spravovaný zákazníkem na úrovni účtu Automation, tento klíč se používá k ochraně a řízení přístupu k šifrovacímu klíči účtu pro účet Automation. To se zase používá k šifrování a dešifrování všech zabezpečených datových zdrojů. Klíče spravované zákazníkem nabízejí větší flexibilitu při vytváření, otáčení, zakázání a odvolání ovládacích prvků přístupu. Můžete také auditovat šifrovací klíče používané k ochraně zabezpečených datových zdrojů.
 
-K ukládání klíčů spravovaných zákazníky použijte Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít Azure Key Vault API ke generování klíčů.  Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../key-vault/key-vault-overview.md)
+K ukládání klíčů spravovaných zákazníky použijte Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít Azure Key Vault API ke generování klíčů.  Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../key-vault/general/overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Povolení klíčů spravovaných zákazníkem pro účet automatizace
 
@@ -192,7 +192,7 @@ Pokud chcete odvolat přístup ke klíčům spravovaným zákazníkem, použijte
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je Azure Key Vault?](../key-vault/key-vault-overview.md)
+- [Co je Azure Key Vault?](../key-vault/general/overview.md)
 
 - [Prostředky certifikátů ve službě Azure Automation](shared-resources/certificates.md)
 

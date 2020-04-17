@@ -12,12 +12,13 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: 533e2b9e50a92cce1419da521d8cebc4955e4df6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ROBOTS: NOINDEX
+ms.openlocfilehash: 34ba75b6126024c9cd43d6fe474f7c1b62dd990f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74462109"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453145"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Klíčové rozdíly mezi službami Machine Learning Services v Azure SQL Database (preview) a SQL Serveru
 
@@ -31,7 +32,7 @@ SQL Server má podporu pro R a Python prostřednictvím [rozhraní rozšiřiteln
 
 - R je jediný podporovaný jazyk v databázi SQL. Python se momentálně nepodporuje.
 - Verze R je 3.4.4.
-- Není třeba konfigurovat `external scripts enabled` přes `sp_configure`. Po [registraci](sql-database-machine-learning-services-overview.md#signup)je pro databázi SQL povoleno strojové učení.
+- Není třeba konfigurovat `external scripts enabled` přes `sp_configure`.
 
 ## <a name="package-management"></a>Správa balíčků
 

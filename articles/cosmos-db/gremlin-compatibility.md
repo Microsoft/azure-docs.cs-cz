@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 581bc813ca27067b1f27ab9866a45df3084dbbcc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989a033a843b861c34dc9dbdbced50399f8e5cd7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75644728"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81449880"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Kompatibilita s Azure Cosmos DB Gremlin
 Azure Cosmos DB Graph modul úzce sleduje [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) traversal kroky specifikace, ale existují rozdíly.
@@ -35,7 +35,7 @@ Azure Cosmos DB Graph modul úzce sleduje [Apache TinkerPop](https://tinkerpop.a
 
 * ***Neprimitivní typy JSON*** nejsou podporovány. Použijte `string` `number`, `true` / `false` nebo typy. `null`hodnoty nejsou podporovány. 
 
-* ***Serializátor GraphSONv3*** není aktuálně podporován. V `GraphSONv2` konfiguraci připojení použijte třídy Serializer, Reader a Writer.
+* ***Serializátor GraphSONv3*** není aktuálně podporován. V `GraphSONv2` konfiguraci připojení použijte třídy Serializer, Reader a Writer. Výsledky vrácené rozhraním API Azure Cosmos DB Gremlin nemají stejný formát jako formát GraphSON. 
 
 * **Lambda výrazy a funkce** nejsou aktuálně podporovány. To zahrnuje `.map{<expression>}`, `.by{<expression>}`, `.filter{<expression>}` a funkce. Další informace a informace o tom, jak je přepsat pomocí gremlinové kroky, najdete v [tématu Poznámka k Lambdasovi](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
 

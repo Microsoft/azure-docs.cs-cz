@@ -9,12 +9,12 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f105eac0f6f21ea3358340a4e2aaec7d1f1a95ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 569c989e8876bb7213d1469c7a70da99aa0b1e9c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190549"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455338"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Ovládací prvky zabezpečení pro virtuální počítače s Windows
 
@@ -22,7 +22,7 @@ Tento článek dokumentuje ovládací prvky zabezpečení integrované do virtu�
 
 [!INCLUDE [Security controls header](../../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Network (Síť)
+## <a name="network"></a>Síť
 
 | Ovládací prvek zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
@@ -43,17 +43,17 @@ Tento článek dokumentuje ovládací prvky zabezpečení integrované do virtu�
 
 | Ovládací prvek zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Ověřování| Ano |  |
+| Authentication| Ano |  |
 | Autorizace| Ano |  |
 
 ## <a name="data-protection"></a>Ochrana dat
 
 | Ovládací prvek zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování na straně serveru v klidovém stavu: Klíče spravované společností Microsoft | Ano | Viz [Šifrování virtuálních disků na virtuálním počítači s Windows](/azure/virtual-machines/windows/encrypt-disks). |
+| Šifrování na straně serveru v klidovém stavu: Klíče spravované společností Microsoft | Ano | Viz [Šifrování virtuálních disků na virtuálním počítači s Windows](/azure/virtual-machines/windows/disk-encryption-overview). |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování ve virtuální síti a šifrování virtuální sítě)| Ano | Virtuální počítače Azure podporují šifrování [ExpressRoute](/azure/expressroute) a Virtuální sítě. Viz [Šifrování na cestě ve virtuálních discích](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Šifrování na straně serveru v klidovém stavu: klíče spravované zákazníkem (BYOK) | Ano | Klíče spravované zákazníkem je podporovaný scénář šifrování Azure; viz [Přehled šifrování Azure](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
-| Šifrování na úrovni sloupců (Azure Data Services)| Není dostupné. | |
+| Šifrování na úrovni sloupců (Azure Data Services)| – | |
 | Zašifrovaná volání rozhraní API| Ano | Prostřednictvím protokolů HTTPS a TLS. |
 
 

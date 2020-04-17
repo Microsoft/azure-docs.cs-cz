@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 179a2120714460c955d1fd3e345ebcd963ae564d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475215"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453553"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace aplikace Windows Java pro azure app service
 
@@ -187,7 +187,7 @@ Postupujte podle pokynů v [secure vlastní název DNS s vazbou TLS ve službě 
 
 ### <a name="use-keyvault-references"></a>Použití odkazů KeyVault
 
-[Azure KeyVault](../key-vault/key-vault-overview.md) poskytuje centralizovanou správu tajných klíčů se zásadami přístupu a historií auditu. Můžete ukládat tajné klíče (například hesla nebo připojovací řetězce) v KeyVault a přístup k těmto tajným kódům ve vaší aplikaci prostřednictvím proměnných prostředí.
+[Azure KeyVault](../key-vault/general/overview.md) poskytuje centralizovanou správu tajných klíčů se zásadami přístupu a historií auditu. Můžete ukládat tajné klíče (například hesla nebo připojovací řetězce) v KeyVault a přístup k těmto tajným kódům ve vaší aplikaci prostřednictvím proměnných prostředí.
 
 Nejprve postupujte podle pokynů pro [udělení přístupu aplikace k trezoru klíčů](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) a [vytvoření odkazu keyvault na váš tajný klíč v nastavení aplikace](app-service-key-vault-references.md#reference-syntax). Můžete ověřit, že odkaz řeší na tajný klíč vytištěním proměnné prostředí při vzdáleném přístupu k terminálu služby App Service.
 
