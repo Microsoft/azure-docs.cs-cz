@@ -1,0 +1,137 @@
+- name: Obecné
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Azure Key Vault?
+      href: overview.md
+- name: Kurzy
+  items:
+    - name: Virtuální počítač Azure
+      items:
+        - name: Používání služby Azure Key Vault s virtuálním počítačem s Windows v .NET
+          href: tutorial-net-windows-virtual-machine.md
+        - name: Používání služby Azure Key Vault s virtuálním počítačem s Windows v Pythonu
+          href: tutorial-python-windows-virtual-machine.md
+    - name: Používání služby Azure Key Vault s webovou aplikací v .NET
+      href: tutorial-net-create-vault-azure-web-app.md
+- name: Koncepty
+  items:
+    - name: Základní koncepty
+      href: basic-concepts.md
+    - name: Zabezpečení
+      items:
+        - name: Zabezpečení služby Azure Key Vault
+          href: overview-security.md
+        - name: Osvědčené postupy při používání služby Key Vault –⁠ Azure Key Vault
+          href: best-practices.md
+        - name: Světy zabezpečení služby Azure Key Vault
+          href: overview-security-worlds.md
+        - name: Zabezpečení sítě
+          href: network-security.md
+        - name: Zabezpečený přístup k trezoru klíčů –⁠ Azure Key Vault
+          href: secure-your-key-vault.md
+        - name: Standardní hodnoty zabezpečení Azure pro službu Key Vault
+          href: security-baseline.md
+        - name: Doporučení k zabezpečení služby Azure Key Vault
+          href: security-recommendations.md
+    - name: Oznámení (Preview)
+      items:
+        - name: Monitorování pomocí služby Azure Event Grid (Preview)
+          href: event-grid-overview.md
+    - name: Obnovitelné odstranění
+      items:
+        - name: Obnovitelné odstranění ve službě Azure Key Vault
+          href: overview-soft-delete.md
+    - name: 'Ověřování, požadavky a odpovědi'
+      href: authentication-requests-and-responses.md
+    - name: Pokyny k omezování služby Azure Key Vault
+      href: overview-throttling.md
+    - name: Koncové body služby Azure Key Vault pro virtuální síť –⁠ Azure Key Vault
+      href: overview-vnet-service-endpoints.md
+- name: Návody
+  items:
+    - name: Ověření
+      items:
+        - name: Použití spravované identity služby App Service
+          href: managed-identity.md
+        - name: Použití zásad řízení přístupu
+          href: group-permissions-for-apps.md
+    - name: Vývoj
+      items:
+        - name: Průvodce vývojáře pro službu Azure Key Vault
+          href: developers-guide.md
+        - name: Uložení tajných kódů webové aplikace
+          href: vs-secure-secret-appsettings.md
+        - name: Ověřování služba-služba s využitím .NET
+          href: service-to-service-authentication.md
+        - name: Používání připojené služby Key Vault
+          href: vs-key-vault-add-connected-service.md
+    - name: Monitorování a řízení
+      items:
+        - name: Integrace služby Azure Key Vault se službou Azure Policy
+          href: azure-policy.md
+        - name: Protokolování v Azure Key Vaultu
+          href: logging.md
+        - name: Příjem oznámení prostřednictvím služeb Azure Event Grid a Logic Apps
+          href: event-grid-logicapps.md
+        - name: Příjem oznámení prostřednictvím služeb Azure Event Grid a Azure Automation
+          href: event-grid-tutorial.md
+    - name: Zabezpečení
+      items:
+        - name: Integrace se službou Azure Private Link
+          href: private-link-service.md
+        - name: Přístup ke službě Key Vault za bránou firewall –⁠ Azure Key Vault
+          href: access-behind-firewall.md
+    - name: Obnovitelné odstranění
+      items:
+        - name: Použití obnovitelného odstranění v rozhraní příkazového řádku
+          href: soft-delete-cli.md
+        - name: Použití obnovitelného odstranění v PowerShellu
+          href: soft-delete-powershell.md
+    - name: Řešení potíží
+      items:
+        - name: Změna ID tenanta trezoru klíčů po přesunu předplatného
+          href: subscription-move-fix.md
+- name: Referenční informace
+  items:
+    - name: Kódy chyb rozhraní REST API –⁠ Azure Key Vault
+      href: rest-error-codes.md
+    - name: Běžné parametry a záhlaví
+      href: common-parameters-and-headers.md
+    - name: Azure PowerShell
+      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
+- name: Zdroje a prostředky
+  items:
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-key-vault
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: Dostupnost v oblastech
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: Smlouvy o úrovni služeb (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: Omezení služby
+      href: ../general/service-limits.md
+    - name: Stav služby
+      href: 'https://azure.microsoft.com/status/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: Blog
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: Zpětná vazba k produktu
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

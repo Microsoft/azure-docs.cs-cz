@@ -39,6 +39,8 @@
       href: analysis-services-connect.md
     - name: Vysoká dostupnost
       href: analysis-services-bcdr.md
+    - name: Dlouhotrvající operace
+      href: analysis-services-long-operations.md
     - name: Podporované zdroje dat
       href: analysis-services-datasource.md
 - name: Postupy

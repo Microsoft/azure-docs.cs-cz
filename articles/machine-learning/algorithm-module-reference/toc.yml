@@ -152,5 +152,9 @@
       href: pca-based-anomaly-detection.md
     - name: Trénování modelu detekce anomálií
       href: train-anomaly-detection-model.md
+- name: Webová služba
+  items:
+    - name: Vstup/výstup webové služby
+      href: web-service-input-output.md
 - name: Chyby modulů a řešení potíží
   href: designer-error-codes.md

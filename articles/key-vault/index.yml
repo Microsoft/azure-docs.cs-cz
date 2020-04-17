@@ -1,96 +1,102 @@
-### YamlMime:Landing
-title: Dokumentace ke službě Azure Key Vault
+### YamlMime:Hub
+title: Azure Key Vault
 summary: Naučte se využívat službu Key Vault k vytváření a správě klíčů, kterí zajišťují přístup k vašim cloudovým prostředků, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací
+brand: azure
 metadata:
   title: Dokumentace ke službě Azure Key Vault
   description: Naučte se využívat službu Key Vault k vytváření a správě klíčů, kterí zajišťují přístup k vašim cloudovým prostředků, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací
   services: key-vault
   ms.service: key-vault
-  ms.topic: landing-page
+  ms.subservice: na
+  ms.topic: hub-page
+  ms.collection: na
   author: msmbaldwin
   ms.author: mbaldwin
-  manager: rkarlin
-  ms.date: 09/19/2019
-  ms.openlocfilehash: cbd1ca9ead64bfda8401876ec54487f767363d3c
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.date: 04/07/2020
+  ms.openlocfilehash: e969d71be3c8f77607e69205c24d6c980c9943a2
+  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "71299776"
-landingContent:
-- title: Informace o službě Azure Key Vault
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81536263"
+highlightedContent:
+  items:
+  - title: Seznámení se službou Azure Key Vault
+    itemType: overview
+    url: ./general/overview.md
+  - title: Základní koncepty
+    itemType: overview
+    url: ./general/basic-concepts.md
+  - title: Obnovitelné odstranění
+    itemType: overview
+    url: ./general/overview-soft-delete.md
+  - title: Protokolování
+    itemType: overview
+    url: ./general/logging.md
+  - title: Throttling
+    itemType: overview
+    url: ./general/overview-throttling.md
+  - title: Doporučení k zabezpečení
+    itemType: overview
+    url: ./general/security-recommendations.md
+conceptualContent:
+  items:
+  - title: Certifikáty
     links:
-    - text: Co je Azure Key Vault?
-      url: key-vault-overview.md
-  - linkListType: concept
+    - url: ./certificates/about-certificates.md
+      itemType: overview
+      text: Informace o certifikátech
+    - url: ./certificates/quick-create-portal.md
+      itemType: quickstart
+      text: Nastavení a načtení certifikátu ze služby Azure Key Vault pomocí webu Azure Portal
+    - url: ./certificates/certificate-scenarios.md
+      itemType: overview
+      text: Začínáme s certifikáty služby Key Vault
+    - url: ./certificates/create-certificate-scenarios.md
+      itemType: overview
+      text: Monitorování a správa vytvoření certifikátu
+    footerLink:
+      url: ./certificates/index.yml
+      text: Další informace
+  - title: Klíče
     links:
-    - text: Základní koncepty
-      url: basic-concepts.md
-    - text: Obnovitelné odstranění
-      url: key-vault-ovw-soft-delete.md
-    - text: Omezování
-      url: key-vault-ovw-throttling.md
-- title: Začínáme
-  linkLists:
-  - linkListType: quickstart
+    - url: ./keys/about-keys.md
+      itemType: overview
+      text: Informace o klíčích
+    - url: ./keys/quick-create-portal.md
+      itemType: quickstart
+      text: Nastavení a načtení klíče ze služby Azure Key Vault pomocí webu Azure Portal
+    - url: ./keys/hsm-protected-keys.md
+      itemType: tutorial
+      text: Import klíčů chráněných modulem HSM do služby Key Vault
+    - url: ./keys/hsm-protected-keys-vendor-agnostic-byok.md
+      itemType: overview
+      text: Import klíčů chráněných modulem HSM bez ohledu na dodavatele
+    footerLink:
+      url: ./keys/index.yml
+      text: Další informace
+  - title: Tajné kódy
     links:
-    - text: Azure CLI
-      url: quick-create-cli.md
-    - text: Azure Powershell
-      url: quick-create-powershell.md
-    - text: Portál
-      url: quick-create-portal.md
-    - text: .NET
-      url: quick-create-net.md
-    - text: Node.js
-      url: quick-create-node.md
-- title: Kurzy
-  linkLists:
-  - linkListType: tutorial
+    - url: ./secrets/about-secrets.md
+      itemType: overview
+      text: Informace o tajných kódech
+    - url: ./secrets/quick-create-portal.md
+      itemType: quickstart
+      text: Nastavení a načtení tajného kódu ze služby Azure Key Vault pomocí webu Azure Portal
+    - url: ./secrets/tutorial-rotation.md
+      itemType: tutorial
+      text: Obměna tajných kódů pro jednouživatelské prostředky
+    footerLink:
+      url: ./secrets/index.yml
+      text: Další informace
+  - title: Správa klíčů úložiště
     links:
-    - text: Key Vault z webové aplikace
-      url: tutorial-net-create-vault-azure-web-app.md
-    - text: Key Vault s virtuálním počítačem Azure s Linuxem
-      url: tutorial-net-linux-virtual-machine.md
-    - text: Key Vault s virtuálním počítačem Azure s Windows
-      url: tutorial-net-windows-virtual-machine.md
-    - text: Key Vault s Pythonem – Linux
-      url: tutorial-python-linux-virtual-machine.md
-    - text: Key Vault s Pythonem – Windows
-      url: tutorial-python-windows-virtual-machine.md
-- title: Key Vault a klíče úložiště
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Správa klíčů účtu úložiště pomocí Azure CLI
-      url: key-vault-ovw-storage-keys.md
-    - text: Správa klíčů účtu úložiště pomocí Azure PowerShellu
-      url: key-vault-overview-storage-keys-powershell.md
-    - text: Načtení tokenů SAS v kódu
-      url: storage-keys-sas-tokens-code.md
-- title: Integrace aplikace Key Vault
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Průvodce vývojáře
-      url: key-vault-developers-guide.md
-    - text: Použití spravované identity k získání přístupu ke službě Key Vault
-      url: managed-identity.md
-  - linkListType: tutorial
-    links:
-    - text: Použití služby Key Vault s webovou aplikací Azure v .NET
-      url: tutorial-net-create-vault-azure-web-app.md
-  - linkListType: reference
-    links:
-    - text: Ověřování, požadavky a odpovědi
-      url: authentication-requests-and-responses.md
-    - text: Reference k rozhraní REST API služby Key Vault
-      url: /rest/api/keyvault/
-- title: Microsoft Learn
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: Správa tajných kódů ve vašich serverových aplikacích s využitím služby Azure Key Vault
-      url: /learn/modules/manage-secrets-with-azure-key-vault/
+    - url: ./secrets/overview-storage-keys.md
+      itemType: overview
+      text: Klíče úložiště –⁠ Rozhraní příkazového řádku
+    - url: ./secrets/overview-storage-keys-powershell.md
+      itemType: overview
+      text: Klíče úložiště –⁠ PowerShell
+    - url: ./secrets/storage-keys-sas-tokens-code.md
+      itemType: overview
+      text: Načtení tokenů SAS v kódu

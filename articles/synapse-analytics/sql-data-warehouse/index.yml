@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Synapse Analytics (dříve Azure SQL Data Warehouse)
+title: Azure Synapse Analytics
 summary: Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku.
 metadata:
   title: Azure Synapse Analytics
@@ -11,28 +11,40 @@ metadata:
   ms.collection: collection
   author: julieMSFT
   ms.author: jrasnick
-  ms.date: 10/03/2019
-  ms.openlocfilehash: 16855697c61bb4b919d4f7dcaa752d3a17f6dbef
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.date: 04/15/2020
+  ms.openlocfilehash: ea895ce94ed3b1fde574a1753981ac58adcb72b3
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998833"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81414250"
 landingContent:
-- title: Informace o službě Azure Synapse Analytics
+- title: Informace o službě Azure Synapse Analytics (dříve Azure SQL Data Warehouse)
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je Azure Synapse?
+    - text: Co je Azure Synapse? (dříve Azure SQL Data Warehouse)
       url: sql-data-warehouse-overview-what-is.md
+    - text: Tipy a osvědčené postupy
+      url: cheat-sheet.md
   - linkListType: architecture
     links:
     - text: Architektura služby Azure Synapse
       url: massively-parallel-processing-mpp-architecture.md
-    - text: Tipy a osvědčené postupy
-      url: cheat-sheet.md
     - text: Referenční architektura
       url: https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/data/enterprise-bi-synapse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+- title: Informace o službě Azure Synapse Analytics (pracovní prostor ve verzi Preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Synapse (pracovní prostor ve verzi Preview)
+      url: ../overview-what-is.md
+    - text: Tipy a osvědčené postupy
+      url: ../overview-cheat-sheet.md
+    - text: Nejčastější dotazy
+      url: ../overview-faq.md
+    - text: Poznámky k verzi
+      url: ../release-notes.md
 - title: Začínáme
   linkLists:
   - linkListType: deploy
@@ -63,12 +75,8 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Osvědčené postupy
-      url: sql-data-warehouse-best-practices.md
     - text: Optimalizace uspořádaného clusterovaného indexu columnstore
       url: performance-tuning-ordered-cci.md
-    - text: Použití materializovaných zobrazení pro optimalizaci úloh
-      url: performance-tuning-materialized-views.md
   - linkListType: how-to-guide
     links:
     - text: Analýza úloh
@@ -99,5 +107,5 @@ landingContent:
   linkLists:
   - linkListType: video
     links:
-    - text: Sledovat nejnovější videa k datovým skladům
+    - text: Podívejte se na nejnovější videa o Synapse SQL
       url: sql-data-warehouse-videos.md

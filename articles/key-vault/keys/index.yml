@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: Dokumentace ke klíčům
+summary: Azure Key Vault umožňuje uživatelům a aplikacím Microsoft Azure ukládat a používat klíče. Podporuje několik typů klíčů a algoritmů a umožňuje použití modulů hardwarového zabezpečení (HSM) pro klíče s vysokou hodnotou.
+metadata:
+  title: Klíče
+  description: Azure Key Vault umožňuje uživatelům a aplikacím Microsoft Azure ukládat a používat klíče. Podporuje několik typů klíčů a algoritmů a umožňuje použití modulů hardwarového zabezpečení (HSM) pro klíče s vysokou hodnotou.
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: keys
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/07/2020
+  ms.openlocfilehash: d5394200164d4f254ceca7a18035df95cc401747
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81423356"
+landingContent:
+- title: Klíče
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou klíče služby Key Vault?
+      url: about-keys.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: Portál
+      url: quick-create-portal.md
+    - text: Python
+      url: quick-create-python.md
+- title: Kurzy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Import klíčů chráněných modulem HSM do služby Key Vault
+      url: hsm-protected-keys.md
+    - text: Import klíčů chráněných modulem HSM bez ohledu na dodavatele
+      url: hsm-protected-keys-vendor-agnostic-byok.md
+- title: Další informace o službě Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled služby Key Vault
+      url: ../general/overview.md
+    - text: Základní koncepty
+      url: ../general/basic-concepts.md
+    - text: Přehled obnovitelného odstranění
+      url: ../general/overview-soft-delete.md
+    - text: Přehled zabezpečení
+      url: ../general/overview-security.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Správa tajných kódů ve vašich serverových aplikacích s využitím služby Azure Key Vault
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

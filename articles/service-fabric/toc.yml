@@ -133,6 +133,8 @@
           href: service-fabric-cluster-security.md
         - name: Integrované ovládací prvky zabezpečení
           href: service-fabric-security-controls.md
+        - name: Ověřování pomocí certifikátů v Service Fabric
+          href: cluster-security-certificates.md
     - name: Terminologie
       href: service-fabric-technical-overview.md
     - name: Sestavování aplikací
@@ -145,6 +147,8 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (Preview)
               href: service-fabric-docker-compose.md
+            - name: Sondy
+              href: probes-codepackage.md
         - name: Reliable Services
           items:
             - name: Přehled Reliable Services
@@ -264,6 +268,10 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: Zálohování oddílu na vyžádání
               href: service-fabric-backup-restore-service-ondemand-backup.md
+        - name: Balíčky kódu inicializátoru
+          href: initializer-codepackages.md
+        - name: Spuštění až do konce
+          href: run-to-completion.md
     - name: Clustery
       items:
         - name: Přehled clusterů
@@ -316,6 +324,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Vyvážení clusteru
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: Subclustering
+              href: cluster-resource-manager-subclustering.md
             - name: Throttling
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Přesun služeb
@@ -354,7 +364,7 @@
       href: service-fabric-api-management-overview.md
     - name: Model prostředků aplikace
       href: service-fabric-concept-resource-model.md
-    - name: Spravovaná identita (Preview)
+    - name: Spravovaná identita
       href: concepts-managed-identity.md
     - name: Konfigurace přihlašovacích údajů úložiště kontejnerů
       href: configure-container-repository-credentials.md
@@ -751,7 +761,7 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: Řešení potíží s místním clusterem
           href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: Použití spravované identity pro aplikace Service Fabric (Preview)
+    - name: Použití spravované identity pro aplikace Service Fabric
       items:
         - name: Nastavení clusteru
           items:

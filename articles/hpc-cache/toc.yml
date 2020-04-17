@@ -10,7 +10,7 @@
       href: hpc-cache-namespace.md
 - name: Návody
   items:
-    - name: Předpoklady
+    - name: Požadavky
       href: hpc-cache-prereqs.md
     - name: Vytvoření mezipaměti
       href: hpc-cache-create.md
@@ -36,6 +36,8 @@
       href: hpc-cache-mount.md
     - name: Správa mezipaměti
       href: hpc-cache-manage.md
+    - name: Konfigurace volitelných nastavení
+      href: configuration.md
 - name: Zdroje a prostředky
   items:
     - name: Otevření lístku podpory
@@ -46,5 +48,7 @@
       href: troubleshoot-nas.md
     - name: Zotavení z oblastního výpadku
       href: hpc-region-recovery.md
+    - name: Použití šifrovacích klíčů spravovaných zákazníkem
+      href: customer-keys.md
     - name: Použití Azure NetApp Files se službou Azure HPC Cache
       href: hpc-cache-netapp.md

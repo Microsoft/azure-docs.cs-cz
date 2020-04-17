@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/30/2020
+ms.date: 04/10/2020
 ms.author: banders
-ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b1986a4cb59e0f276ba59eb99acfb459b48615d8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475257"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262079"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Jak zabránit neočekávaným poplatkům pomocí fakturace a řízení nákladů v Azure
 
@@ -193,6 +193,17 @@ Faktura za Azure obsahuje agregované poplatky za měsíc podle jednotlivých _m
 Soubor CSV s informacemi o využití můžete filtrovat podle _názvu měřiče_, který se zobrazuje na faktuře, kterou chcete analyzovat, a zobrazit tak všechny řádkové položky vztahující se k danému měřiči. _ID instance_ u řádkové položky odpovídá skutečnému prostředku Azure, který je za poplatek zodpovědný.
 
 Jakmile daný prostředek identifikujete, můžete pomocí analýzy nákladů ve službě Azure Cost Management pokračovat v analýze nákladů souvisejících s tímto prostředkem. Další informace o používání analýzy nákladů najdete v tématu [Začínáme s analýzou nákladů](../costs/quick-acm-cost-analysis.md).
+
+### <a name="review-invoiced-charges-in-cost-analysis"></a>Kontrola fakturovaných poplatků při analýze nákladů
+
+Pokud si chcete prohlédnout podrobnosti o vaší faktuře na webu Azure Portal, přejděte k analýze nákladů pro rozsah přidružený k faktuře, kterou analyzujete. Vyberte **Podrobnosti o faktuře**. V podrobnostech o faktuře jsou uvedené stejné poplatky jako na faktuře.
+
+[![Příklad znázorňující výběr možnosti Podrobnosti o faktuře](./media/getting-started/invoice-details.png)](./media/getting-started/invoice-details.png#lightbox)
+
+Při prohlížení podrobností o faktuře můžete určit službu, která má neočekávané náklady, a zjistit, které prostředky jsou přímo přidružené k prostředku v analýze nákladů. Pokud například chcete analyzovat poplatky za službu Virtual Machines, přejděte k zobrazení **Kumulované náklady**. Potom nastavte úroveň podrobností na **denní**, vyfiltrujte poplatky **Název služby: Virtual Machines** a seskupte je podle **prostředku**.
+
+[![Příklad znázorňující kumulované náklady pro virtuální počítače](./media/getting-started/virtual-machines.png)](./media/getting-started/virtual-machines.png#lightbox)
+
 
 ### <a name="identify-spikes-in-cost-over-time"></a>Identifikace špiček v nákladech v průběhu času
 

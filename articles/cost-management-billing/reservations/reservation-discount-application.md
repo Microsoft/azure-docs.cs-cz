@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: fb6e7e3fe3b7b45b503dca66dc5b039a9eceb689
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5781ade7b2f3cfc7514208861de025cc84944fcd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135483"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380635"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>Jak se uplatňuje sleva za rezervaci
 
@@ -39,7 +39,7 @@ Když zakoupíte rezervaci, může se sleva uplatnit na jiné instance s atribut
 Plány služby:
 
 - Rezervované instance virtuálních počítačů: Pokud zakoupíte rezervaci a vyberete možnost **optimalizace pro flexibilní velikost instance**, bude pokrytí slevou záviset na tom, jakou velikost virtuálního počítače zvolíte. Rezervace se může vztahovat na velikosti virtuálních počítačů ve stejné skupině velikostí. Další informace najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
-- Rezervovaná kapacita služby Azure Storage: Rezervovanou kapacitu pro účty služby Azure Storage úrovně Standard si můžete zakoupit v jednotkách 100 TiB nebo 1 PiB za měsíc. Rezervovaná kapacita služby Azure Storage je dostupná ve všech oblastech pro všechny úrovně přístupu (horkou, studenou i archivní) a pro jakoukoli možnost replikace (LRS, GRS nebo ZRS).
+- Rezervovaná kapacita služby Azure Storage: Rezervovanou kapacitu pro účty služby Azure Storage úrovně Standard si můžete zakoupit v jednotkách 100 TiB nebo 1 PiB za měsíc. Informace o tom, které oblasti podporují rezervovanou kapacitu služby Azure Storage, najdete v tématu věnovaném [cenám objektů blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/). Rezervovaná kapacita služby Azure Storage je dostupná pro všechny úrovně přístupu (horkou, studenou i archivní) a pro libovolnou konfiguraci replikace (LRS, GRS nebo ZRS).
 - Rezervovaná kapacita služby SQL Database: Pokrytí slevou závisí na úrovni výkonu, kterou zvolíte. Další informace najdete ve [vysvětlení způsobu uplatnění slevy za rezervaci Azure](understand-reservation-charges.md).
 - Rezervovaná kapacita služby Azure Cosmos DB: Pokrytí slevou závisí na zřízené propustnosti. Další informace najdete ve [vysvětlení způsobu uplatnění slevy za rezervaci služby Azure Cosmos DB](understand-cosmosdb-reservation-charges.md).
 

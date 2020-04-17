@@ -1,0 +1,68 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Key Vault
+summary: Naučte se využívat službu Key Vault k vytváření a správě klíčů, kterí zajišťují přístup k vašim cloudovým prostředků, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací
+metadata:
+  title: Dokumentace ke službě Azure Key Vault
+  description: Naučte se využívat službu Key Vault k vytváření a správě klíčů, kterí zajišťují přístup k vašim cloudovým prostředků, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 5be853f9e1f9778eb767aa93497c546cb35fa0df
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81422400"
+landingContent:
+- title: Informace o službě Azure Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Key Vault?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Základní koncepty
+      url: basic-concepts.md
+    - text: Obnovitelné odstranění
+      url: overview-soft-delete.md
+    - text: Throttling
+      url: overview-throttling.md
+- title: Kurzy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Key Vault z webové aplikace
+      url: tutorial-net-create-vault-azure-web-app.md
+    - text: Key Vault s virtuálním počítačem Azure s Windows
+      url: tutorial-net-windows-virtual-machine.md
+    - text: Key Vault s Pythonem – Windows
+      url: tutorial-python-windows-virtual-machine.md
+- title: Zabezpečení
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Zabezpečení služby Key Vault
+      url: secure-your-key-vault.md
+    - text: Doporučení zabezpečení
+      url: security-recommendations.md
+    - text: Standardní hodnoty zabezpečení
+      url: security-baseline.md
+  - linkListType: tutorial
+    links:
+    - text: Použití privátního propojení
+      url: private-link-service.md
+    - text: Použití spravované identity
+      url: managed-identity.md
+    - text: Použití zásad přístupu
+      url: group-permissions-for-apps.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Správa tajných kódů ve vašich serverových aplikacích s využitím služby Azure Key Vault
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

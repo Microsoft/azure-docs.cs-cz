@@ -581,6 +581,8 @@
       items:
         - name: Spouštění balíčků služby SSIS v Azure z SSDT
           href: how-to-invoke-ssis-package-ssdt.md
+        - name: Spouštění balíčků služby SSIS pomocí agenta spravované instance Azure SQL
+          href: how-to-invoke-ssis-package-managed-instance-agent.md
         - name: Spouštění balíčků služby SSIS pomocí dtexec s podporou Azure
           href: how-to-invoke-ssis-package-azure-enabled-dtexec.md
         - name: Spouštění balíčků služby SSIS s aktivitami spuštění balíčku SSIS

@@ -24,6 +24,10 @@
       href: active-directory-passwords-reset-register.md
     - name: Resetování hesla
       href: active-directory-passwords-update-your-own-password.md
+- name: Nápověda k portálu Moji zaměstnanci
+  items:
+    - name: Správa uživatelů na portálu Moji zaměstnanci
+      href: my-staff-team-manager.md
 - name: Nápověda k aplikaci Microsoft Authenticator
   items:
     - name: Co je aplikace Microsoft Authenticator?

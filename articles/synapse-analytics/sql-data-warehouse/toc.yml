@@ -1,13 +1,13 @@
-- name: Dokumentace ke službě Azure Synapse Analytics
+- name: Azure Synapse (SQL DW)
   href: index.yml
+- name: Přepnutí na Azure Synapse (pracovní prostory ve verzi Preview)
+  href: ../overview-what-is.md
 - name: Přehled
   items:
     - name: Co je Azure Synapse Analytics?
       href: sql-data-warehouse-overview-what-is.md
     - name: Architektura služby Azure Synapse Analytics
       href: massively-parallel-processing-mpp-architecture.md
-    - name: Jednotky datového skladu
-      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: Tahák
       href: cheat-sheet.md
     - name: Osvědčené postupy

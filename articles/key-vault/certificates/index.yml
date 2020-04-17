@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: Certifikáty
+summary: Azure Key Vault umožňuje uživatelům a aplikacím Microsoft Azure ukládat a používat certifikáty, které jsou postavené na klíčích a tajných kódech a přidávají funkci automatického prodlužování platnosti.
+metadata:
+  title: Dokumentace ke službě Azure Key Vault –⁠ Certifikáty
+  description: Azure Key Vault umožňuje uživatelům a aplikacím Microsoft Azure ukládat a používat certifikáty, které jsou postavené na klíčích a tajných kódech a přidávají funkci automatického prodlužování platnosti.
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: certificates
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/07/2020
+  ms.openlocfilehash: 78963c02d35d93b4756c12f948c5ba214fb23e90
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81423526"
+landingContent:
+- title: Certifikáty
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou certifikáty služby Key Vault?
+      url: about-certificates.md
+    - text: Začínáme s certifikáty služby Key Vault
+      url: certificate-scenarios.md
+    - text: Metody vytvoření certifikátu
+      url: create-certificate.md
+    - text: Monitorování a správa vytvoření certifikátu
+      url: create-certificate-scenarios.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: Portál
+      url: quick-create-portal.md
+    - text: Python
+      url: quick-create-python.md
+    - text: Import certifikátu ve službě Key Vault
+      url: tutorial-import-certificate.md
+- title: Další informace o službě Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled služby Key Vault
+      url: ../general/overview.md
+    - text: Základní koncepty
+      url: ../general/basic-concepts.md
+    - text: Přehled obnovitelného odstranění
+      url: ../general/overview-soft-delete.md
+    - text: Přehled zabezpečení
+      url: ../general/overview-security.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Správa tajných kódů ve vašich serverových aplikacích s využitím služby Azure Key Vault
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

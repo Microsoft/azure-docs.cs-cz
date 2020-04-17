@@ -7,7 +7,7 @@
           items:
             - name: Co je Data Box?
               href: data-box-overview.md
-        - name: Šablony Rychlý start
+        - name: Rychlé starty
           expanded: true
           items:
             - name: Nastavení – Azure Portal
@@ -70,6 +70,8 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: Z úložiště HDFS
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: Do služby Azure Backup
+                  href: ../backup/offline-backup-azure-data-box.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
             - name: Řešení potíží
               items:
                 - name: Problémy Data Boxu
@@ -82,7 +84,7 @@
           items:
             - name: Co je disk Data Box?
               href: data-box-disk-overview.md
-        - name: Šablony Rychlý start
+        - name: Rychlé starty
           expanded: true
           items:
             - name: Nastavení – Azure Portal
@@ -131,7 +133,7 @@
           items:
             - name: Co je Data Box Heavy?
               href: data-box-heavy-overview.md
-        - name: Šablony Rychlý start
+        - name: Rychlé starty
           items:
             - name: Nastavení – Azure Portal
               href: data-box-heavy-quickstart-portal.md

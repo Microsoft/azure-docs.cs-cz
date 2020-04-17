@@ -15,23 +15,23 @@
   items:
     - name: Události úložiště
       items:
+        - name: Portál
+          href: blob-event-quickstart-portal.md
         - name: Azure CLI
           href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: Azure PowerShell
           href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: Portál
-          href: blob-event-quickstart-portal.md
         - name: Šablona ARM
           displayName: Resource Manager
           href: blob-event-quickstart-template.md
     - name: Vlastní události
       items:
+        - name: Portál
+          href: custom-event-quickstart-portal.md
         - name: Azure CLI
           href: custom-event-quickstart.md
         - name: PowerShell
           href: custom-event-quickstart-powershell.md
-        - name: Portál
-          href: custom-event-quickstart-portal.md
     - name: Azure Functions jako obslužná rutina události
       href: custom-event-to-function.md
     - name: Úložiště fronty jako obslužná rutina události
@@ -96,10 +96,63 @@
       href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
 - name: Koncepty
   items:
-    - name: Koncepty Event Grid
+    - name: Terminologie služby Event Grid
       href: concepts.md
+    - name: Vlastní témata
+      href: custom-topics.md
     - name: Systémová témata
-      href: system-topics.md
+      items:
+        - name: Přehled systémových témat
+          href: system-topics.md
+        - name: Zdroje událostí
+          items:
+            - name: Azure App Configuration
+              href: event-schema-app-configuration.md
+            - name: Azure Blob Storage
+              href: event-schema-blob-storage.md
+            - name: Azure Container Registry
+              href: event-schema-container-registry.md
+            - name: Azure Event Hubs
+              href: event-schema-event-hubs.md
+            - name: Azure IoT Hub
+              href: event-schema-iot-hub.md
+            - name: Azure Key Vault
+              href: event-schema-key-vault.md
+            - name: Azure Machine Learning
+              href: event-schema-machine-learning.md
+            - name: Azure Maps
+              href: event-schema-azure-maps.md
+            - name: Azure Media Services
+              href: event-schema-media-services.md
+            - name: Skupiny prostředků Azure
+              href: event-schema-resource-groups.md
+            - name: Azure Service Bus
+              href: event-schema-service-bus.md
+            - name: Azure SignalR
+              href: event-schema-azure-signalr.md
+            - name: Předplatná Azure
+              href: event-schema-subscriptions.md
+    - name: Domény událostí
+      href: event-domains.md
+    - name: Formáty schématu událostí
+      items:
+        - name: Schéma událostí služby Event Grid
+          href: event-schema.md
+        - name: Schéma cloudových událostí
+          href: cloud-event-schema.md
+    - name: Obslužné rutiny událostí
+      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
+      href: event-handlers.md
+    - name: Doručování událostí
+      items:
+        - name: Filtrování událostí
+          href: event-filtering.md
+        - name: Doručování a opakované pokusy
+          href: delivery-and-retry.md
+    - name: Zotavení po havárii
+      items:
+        - name: Geografické zotavení po havárii
+          href: geo-disaster-recovery.md
     - name: Zabezpečení
       items:
         - name: Authentication
@@ -108,20 +161,6 @@
           href: security-authorization.md
         - name: Zabezpečení sítě
           href: network-security.md
-    - name: Doručování a opakované pokusy
-      href: delivery-and-retry.md
-    - name: Filtrování událostí
-      href: event-filtering.md
-    - name: Domény událostí
-      href: event-domains.md
-    - name: Zdroje událostí
-      displayName: 'Azure subscriptions, Container registry, Custom topics, Event Hubs, IoT Hub, Key Vault, Media Services, Resource groups, Service Bus, Storage, Maps, App Configuration, Signal R, Machine Learning'
-      href: event-sources.md
-    - name: Obslužné rutiny událostí
-      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
-      href: event-handlers.md
-    - name: Geografické zotavení po havárii
-      href: geo-disaster-recovery.md
 - name: Návody
   items:
     - name: Konfigurace privátních koncových bodů (Preview)
@@ -140,8 +179,6 @@
       href: manage-event-delivery.md
     - name: Události filtru
       href: how-to-filter-events.md
-    - name: Monitorování doručování událostí
-      href: monitor-event-delivery.md
     - name: Dotazování na odběry událostí
       href: query-event-subscriptions.md
     - name: Přihlášení k odběru prostřednictvím portálu
@@ -154,10 +191,14 @@
       href: how-to-event-domains.md
     - name: Implementace převzetí služeb při selhání na straně klienta
       href: custom-disaster-recovery.md
-    - name: Řešení chyb
-      href: troubleshoot-errors.md
-    - name: Povolení diagnostických protokolů pro téma
-      href: enable-diagnostic-logs-topic.md
+    - name: Řešení potíží
+      items:
+        - name: Povolení diagnostických protokolů pro téma
+          href: enable-diagnostic-logs-topic.md
+        - name: Řešení chyb
+          href: troubleshoot-errors.md
+        - name: Monitorování doručování událostí
+          href: monitor-event-delivery.md
 - name: Referenční informace
   items:
     - name: Azure CLI
@@ -176,35 +217,6 @@
       href: /javascript/api/overview/azure/eventgrid
     - name: Schéma předplatného
       href: subscription-creation-schema.md
-    - name: Schéma událostí
-      href: event-schema.md
-      items:
-        - name: Předplatná Azure
-          href: event-schema-subscriptions.md
-        - name: Blob Storage
-          href: event-schema-blob-storage.md
-        - name: Container Registry
-          href: event-schema-container-registry.md
-        - name: Event Hubs
-          href: event-schema-event-hubs.md
-        - name: IoT Hub
-          href: event-schema-iot-hub.md
-        - name: Key Vault
-          href: event-schema-key-vault.md
-        - name: Media Services
-          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: Skupiny prostředků
-          href: event-schema-resource-groups.md
-        - name: Service Bus
-          href: event-schema-service-bus.md
-        - name: Azure Maps
-          href: event-schema-azure-maps.md
-        - name: App Configuration
-          href: event-schema-app-configuration.md
-        - name: Azure SignalR
-          href: event-schema-azure-signalr.md
-        - name: Azure Machine Learning
-          href: event-schema-machine-learning.md
     - name: Prostředky šablon
       items:
         - name: Odběry událostí

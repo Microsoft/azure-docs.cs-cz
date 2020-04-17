@@ -22,22 +22,16 @@
   items:
     - name: Metody ověřování
       href: concept-authentication-methods.md
-    - name: Ověřování bez hesla
-      href: concept-authentication-passwordless.md
-    - name: Registrace informací o zabezpečení
-      href: concept-registration-mfa-sspr-combined.md
-    - name: Resetování hesla
+    - name: Samoobslužné resetování hesla
       items:
         - name: Jak funguje resetování hesel
           href: concept-sspr-howitworks.md
-        - name: Možnosti resetování hesel
-          href: concept-sspr-customization.md
-        - name: Zásady resetování hesel
-          href: concept-sspr-policy.md
-        - name: Jaká licence budu potřebovat?
-          href: concept-sspr-licensing.md
         - name: Místní integrace
           href: concept-sspr-writeback.md
+        - name: Zásady
+          href: concept-sspr-policy.md
+        - name: Licence
+          href: concept-sspr-licensing.md
     - name: Multi-Factor Authentication
       items:
         - name: Jak funguje MFA
@@ -50,12 +44,16 @@
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
         - name: Nejčastější dotazy
           href: multi-factor-authentication-faq.md
-    - name: Ochrana hesel Azure AD
+    - name: Ověřování bez hesla
+      href: concept-authentication-passwordless.md
+    - name: Ochrana hesel
       items:
         - name: Eliminace slabých hesel v cloudu
           href: concept-password-ban-bad.md
         - name: Eliminace slabých hesel v místním prostředí
           href: concept-password-ban-bad-on-premises.md
+    - name: Registrace informací o zabezpečení
+      href: concept-registration-mfa-sspr-combined.md
     - name: Odolné řízení přístupu
       href: concept-resilient-controls.md
 - name: Návody
@@ -64,6 +62,8 @@
       items:
         - name: Průvodce nasazením
           href: howto-sspr-deployment.md
+        - name: Možnosti uživatelského přizpůsobení
+          href: howto-sspr-customization.md
         - name: Předběžná registrace dat ověřování
           href: howto-sspr-authenticationdata.md
         - name: Klienti SSPR pro Windows
@@ -100,28 +100,6 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: Síť VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: Registrace informací o zabezpečení
-      items:
-        - name: Povolení kombinované registrace
-          href: howto-registration-mfa-sspr-combined.md
-        - name: Řešení potíží s kombinovanou registrací
-          href: howto-registration-mfa-sspr-combined-troubleshoot.md
-    - name: Ochrana hesel Azure AD
-      items:
-        - name: Plánování a nasazení v místním prostředí
-          href: howto-password-ban-bad-on-premises-deploy.md
-        - name: Povolení a konfigurace v místním prostředí
-          href: howto-password-ban-bad-on-premises-operations.md
-        - name: Monitorování místních nasazení
-          href: howto-password-ban-bad-on-premises-monitor.md
-        - name: Řešení potíží s místními nasazeními
-          href: howto-password-ban-bad-on-premises-troubleshoot.md
-        - name: Nejčastější dotazy k místnímu prostředí
-          href: howto-password-ban-bad-on-premises-faq.md
-        - name: Historie verzí místního agenta
-          href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Inteligentní uzamykání Azure AD
-      href: howto-password-smart-lockout.md
     - name: Bez hesla
       items:
         - name: Nasazování bez hesel
@@ -138,16 +116,38 @@
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello pro firmy
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+    - name: Registrace informací o zabezpečení
+      items:
+        - name: Povolení kombinované registrace
+          href: howto-registration-mfa-sspr-combined.md
+        - name: Řešení potíží s kombinovanou registrací
+          href: howto-registration-mfa-sspr-combined-troubleshoot.md
+    - name: Ochrana místních hesel
+      items:
+        - name: Plánování a nasazení
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: Povolení a konfigurace
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: Monitorování
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: Řešení potíží
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: Nejčastější dotazy
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: Historie verzí agenta
+          href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Použití ověření na základě SMS (Preview)
       href: howto-authentication-sms-signin.md
+    - name: Inteligentní uzamykání Azure AD
+      href: howto-password-smart-lockout.md
     - name: Ověřování pomocí certifikátů
       items:
         - name: Začínáme s ověřováním pomocí certifikátů
           href: active-directory-certificate-based-authentication-get-started.md
           items:
-            - name: CBA na zařízeních s Androidem
+            - name: Použití na zařízeních s Androidem
               href: active-directory-certificate-based-authentication-android.md
-            - name: CBA na zařízeních s iOS
+            - name: Použití na zařízeních s iOS
               href: active-directory-certificate-based-authentication-ios.md
     - name: Vytváření sestav
       items:

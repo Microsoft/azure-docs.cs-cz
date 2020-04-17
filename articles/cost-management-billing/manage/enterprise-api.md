@@ -5,14 +5,14 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 04/14/2020
 ms.author: banders
-ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202909"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383169"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky
 Rozhraní API pro generování sestav umožňují podnikovým zákazníkům Azure programově předávat data o spotřebě a fakturaci do upřednostňovaných nástrojů pro analýzu dat. Podnikoví zákazníci uzavřeli s Azure [smlouvu Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), ve které si vyjednali určité peněžní závazky a která jim poskytuje přístup k vlastním cenám prostředků Azure.
@@ -41,7 +41,7 @@ Pro níže popsaná rozhraní API je [tady](https://consumption.azure.com/swagge
 * **Podrobnosti o rezervované instanci:** [Rozhraní API Podrobnosti o rezervované instanci](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) vrací informace o využití nákupů rezervovaných instancí. [Rozhraní API Podrobnosti o rezervované instanci](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) uvádí provedené fakturační transakce.
 
 ## <a name="data-freshness"></a>Aktuálnost dat
-Na dotazy na všechna výše uvedená rozhraní API se vrací značky ETag. Změna značky ETag znamená, že došlo k aktualizaci dat.  V následných voláních stejného rozhraní API pomocí stejných parametrů předejte v hlavičce požadavku HTTP získanou značku ETag s klíčem „If-None-Match“. Pokud už se data dál neaktualizovala, bude mít odpověď stavový kód „NotModified“ a nevrátí se žádná data. Pokud došlo ke změně značky ETag, vrátí rozhraní API celou datovou sadu za požadované období.
+Na dotazy na všechna výše uvedená rozhraní API se vrací značky ETag. Změna značky ETag znamená, že došlo k aktualizaci dat.  V následných voláních stejného rozhraní API s využitím stejných parametrů předejte v hlavičce požadavku HTTP získanou značku ETag s klíčem „If-None-Match“. Pokud už se data dál neaktualizovala, bude mít odpověď stavový kód „NotModified“ a nevrátí se žádná data. Pokud došlo ke změně značky ETag, vrátí rozhraní API celou datovou sadu za požadované období.
 
 ## <a name="helper-apis"></a>Pomocná rozhraní API
  **Seznam fakturačních období:** [Rozhraní API Fakturační období](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) vrací seznam fakturačních období, která obsahují data o spotřebě pro danou smlouvu, a to v obráceném chronologickém pořadí. Každé období obsahuje vlastnost ukazující na trasu rozhraní API pro čtyři sady dat: BalanceSummary, UsageDetails, MarketplaceCharges a PriceSheet.
@@ -51,7 +51,9 @@ Na dotazy na všechna výše uvedená rozhraní API se vrací značky ETag. Změ
 |Stavový kód odpovědi|Zpráva|Popis|
 |-|-|-|
 |200| OK|Bez chyby|
+|400| Chybný požadavek| Neplatné parametry – rozsahy dat, čísla smluv EA atd.|
 |401| Neautorizováno| Klíč rozhraní API se nedá najít, je neplatný, vypršela jeho platnost atd.|
 |404| Neaktivní| Nenašel se koncový bod sestavy.|
-|400| Chybný požadavek| Neplatné parametry – rozsahy dat, čísla smluv EA atd.|
-|500| Chyba serveru| Neočekávaná chyba při zpracování požadavku|
+|429 | TooManyRequests | Požadavek se omezil. Po uplynutí časového limitu zadaného v hlavičce <code>x-ms-ratelimit-microsoft.consumption-retry-after</code> zkuste operaci zopakovat.|
+|500| Chyba serveru| Neočekávaná chyba při zpracování žádosti|
+| 503 | ServiceUnavailable | Služba je dočasně nedostupná. Po uplynutí časového limitu zadaného v hlavičce <code>Retry-After</code> zkuste operaci zopakovat.|

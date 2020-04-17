@@ -3,16 +3,16 @@ title: Běžné způsoby analýzy nákladů ve službě Azure Cost Management
 description: Tento článek vysvětluje, jak získat potřebné výsledky prostřednictvím běžných způsobů analýzy nákladů ve službě Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: a333cad51e6fc089e7e6994c7b89210b12686cd5
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520880"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261484"
 ---
 # <a name="common-cost-analysis-uses"></a>Běžné způsoby analýzy nákladů
 
@@ -27,6 +27,17 @@ Tím, že si zobrazíte náklady podle služeb Azure, budete schopni lépe poroz
 1. Zobrazení změňte na možnost **Tabulka**.
 
 [![Rozpis nákladů podle služeb Azure](./media/cost-analysis-common-uses/breakdown-by-service.png)](./media/cost-analysis-common-uses/breakdown-by-service.png#lightbox)
+
+## <a name="review-invoiced-charges-in-cost-analysis"></a>Kontrola fakturovaných poplatků při analýze nákladů
+
+Pokud si chcete prohlédnout podrobnosti o vaší faktuře na webu Azure Portal, přejděte k analýze nákladů pro rozsah přidružený k faktuře, kterou analyzujete. Vyberte **Podrobnosti o faktuře**. V podrobnostech o faktuře jsou uvedené stejné poplatky jako na faktuře.
+
+[![Příklad znázorňující výběr možnosti Podrobnosti o faktuře](./media/cost-analysis-common-uses/invoice-details.png)](./media/cost-analysis-common-uses/invoice-details.png#lightbox)
+
+Při prohlížení podrobností o faktuře můžete určit službu, která má neočekávané náklady, a zjistit, které prostředky jsou přímo přidružené k prostředku v analýze nákladů. Pokud například chcete analyzovat poplatky za službu Virtual Machines, přejděte k zobrazení **Kumulované náklady**. Potom nastavte úroveň podrobností na **denní**, vyfiltrujte poplatky **Název služby: Virtual Machines** a seskupte je podle **prostředku**.
+
+[![Příklad znázorňující kumulované náklady pro virtuální počítače](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
+
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Zobrazení rozpisu nákladů podle prostředků Azure
 
