@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 317ca55adb9f680dc93343a185395abad08889da
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 2ab5697ceff612e65174fdb7f9ef6137e2c8b9a5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881311"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537062"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Webová aplikace, která se přihlašuje k uživatelům: Přihlášení a odhlášení
 
@@ -205,7 +205,7 @@ Až se uživatel přihlásí k vaší aplikaci, budete mu chtít povolit odhlá�
 ## <a name="sign-out"></a>Odhlášení
 
 Odhlášení z webové aplikace zahrnuje více než odebrání informací o přihlášeném účtu ze stavu webové aplikace.
-Webová aplikace musí také přesměrovat uživatele na `logout` koncový bod platformy identit microsoftu, aby se odhlásit. 
+Webová aplikace musí také přesměrovat uživatele na `logout` koncový bod platformy identit microsoftu, aby se odhlásit.
 
 Když vaše webová aplikace přesměruje uživatele do koncového `logout` bodu, tento koncový bod vymaže relaci uživatele z prohlížeče. Pokud vaše aplikace nepřejde `logout` do koncového bodu, uživatel se znovu ověří do vaší aplikace, aniž by znovu zadal své přihlašovací údaje. Důvodem je, že budou mít platnou relaci jednotného přihlášení s koncovým bodem platformy identit y Microsoft.
 
@@ -306,7 +306,7 @@ V rychlém startu Pythonu je tlačítko pro odhlášení umístěno v souboru [t
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Microsoft Identity Python Web App</h1>
+    <h1>Microsoft Identity Python web app</h1>
     Welcome {{ user.get("name") }}!
     <li><a href='/graphcall'>Call Microsoft Graph API</a></li>
     <li><a href="/logout">Logout</a></li>

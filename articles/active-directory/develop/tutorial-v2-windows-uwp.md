@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 205f4a27a7903bc5a1da3fc12e3d4a02b23f58cf
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 0dc70aa67a1414c08ec70e2e034f4ab12b194c0a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990918"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535940"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace platformy Universal Windows (XAML)
 
@@ -48,7 +48,7 @@ Tato příručka používá následující balíček NuGet:
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
-Tato část obsahuje podrobné pokyny k integraci aplikace XAML (Windows Desktop Desktop) s přihlášením se společností Microsoft. Potom aplikace může dotaz webových rozhraní API, které vyžadují token, jako je například rozhraní MICROSOFT Graph API.
+Tato část obsahuje podrobné pokyny k integraci aplikace XAML (Windows Desktop Desktop) s přihlášením se společností Microsoft. Potom aplikace může dotaz ovat webová rozhraní API, která vyžadují token, jako je například rozhraní MICROSOFT Graph API.
 
 Tato příručka vytvoří aplikaci, která zobrazí tlačítko, které se dotazuje rozhraní GRAPH API a tlačítko pro odhlášení. Zobrazí také textová pole, která obsahují výsledky volání.
 
@@ -118,7 +118,7 @@ Tato část ukazuje, jak pomocí msal získat token pro rozhraní API Microsoft 
         //Set the scope for API call to user.read
         string[] scopes = new string[] { "user.read" };
 
-        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
         // - the content of Tenant with the information about the accounts allowed to sign in in your application:
@@ -126,9 +126,9 @@ Tato část ukazuje, jak pomocí msal získat token pro rozhraní API Microsoft 
         //   - for any Work or School accounts, use organizations
         //   - for any Work or School accounts, or Microsoft personal account, use common
         //   - for Microsoft Personal account, use consumers
-        private const string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";        
+        private const string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";
 
-        public IPublicClientApplication PublicClientApp { get; } 
+        public IPublicClientApplication PublicClientApp { get; }
 
         public MainPage()
         {
@@ -153,8 +153,8 @@ Tato část ukazuje, jak pomocí msal získat token pro rozhraní API Microsoft 
          ResultText.Text = string.Empty;
          TokenInfoText.Text = string.Empty;
 
-         // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.            
-         IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false); 
+         // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.
+         IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
          IAccount firstAccount = accounts.FirstOrDefault();
 
          try
@@ -239,7 +239,7 @@ Do *MainPage.xaml.cs*přidejte následující novou metodu :
        {
            var request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Get, url);
            // Add the token in Authorization header
-           request.Headers.Authorization = 
+           request.Headers.Authorization =
              new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
            response = await httpClient.SendAsync(request);
            var content = await response.Content.ReadAsStringAsync();

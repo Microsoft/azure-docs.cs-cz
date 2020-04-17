@@ -3,12 +3,12 @@ title: Monitorování živé webové aplikace v ASP.NET pomocí Azure Applicatio
 description: Monitorování výkonu webu bez opětovného nasazení. Funguje s ASP.NET webových aplikací hostovaných místně nebo ve virtuálních počítačích.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670045"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536824"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrument webové aplikace za běhu s Application Insights Codeless Attach
 
@@ -314,7 +314,7 @@ Pro aplikace již instrumentované v době kompilace:
 
 Zobrazení telemetrických dat:
 
-* [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití
+* [Zkoumání metrik](../../azure-monitor/platform/metrics-charts.md) pro monitorování výkonu a využití
 * [Prohledávání událostí a protokolů][diagnostic] pro diagnostiku problémů
 * [Analýzy](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy
 

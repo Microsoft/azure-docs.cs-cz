@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482339"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537640"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu služby App Service
 
@@ -32,7 +32,7 @@ _Cenová úroveň_ plánu služby App Service určuje, jaké funkce služby App 
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Každá úroveň také poskytuje konkrétní podmnožinu funkcí služby App Service. Mezi tyto funkce patří vlastní domény a certifikáty SSL, automatické škálování, sloty pro nasazení, zálohy, integrace Traffic Manageru a další. Čím vyšší je úroveň, tím více funkcí je k dispozici. Chcete-li zjistit, které funkce jsou podporovány v každé cenové úrovni, najdete v [tématu Podrobnosti o plánu služby App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
+Každá úroveň také poskytuje konkrétní podmnožinu funkcí služby App Service. Mezi tyto funkce patří vlastní domény a certifikáty TLS/SSL, automatické škálování, sloty pro nasazení, zálohy, integrace Traffic Manageru a další. Čím vyšší je úroveň, tím více funkcí je k dispozici. Chcete-li zjistit, které funkce jsou podporovány v každé cenové úrovni, najdete v [tématu Podrobnosti o plánu služby App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
 <a name="new-pricing-tier-premiumv2"></a>
 
@@ -71,11 +71,11 @@ S výjimkou úrovně **Free,** plán služby App Service nese hodinové poplatky
 - Ve vyhrazených výpočetních úrovních **(Basic**, **Standard**, **Premium**, **PremiumV2**) definuje plán služby App Service počet instancí virtuálních aplikací, na které se aplikace přizpůsobují, takže _každá instance virtuálního počítače_ v plánu služby App Service má hodinový poplatek. Tyto instance virtuálních aplikací se účtují stejně bez ohledu na to, kolik aplikací na nich běží. Chcete-li se vyhnout [neočekávaným poplatkům,](app-service-plan-manage.md#delete)přečtěte si informace o vyčištění plánu služby App Service .
 - V **izolované** vrstvě prostředí app service definuje počet izolovaných pracovníků, kteří spouštějí vaše aplikace a _každý pracovník_ se účtuje každou hodinu. Kromě toho je hodinový základní poplatek za spuštění samotného prostředí služby App Service.
 
-Za používání funkcí služby App Service, které máte k dispozici (konfigurace vlastních domén, certifikátů SSL, slotů pro nasazení, záloh atd.), se vám neúčtují poplatky. Výjimky jsou:
+Za používání funkcí služby App Service, které máte k dispozici (konfigurace vlastních domén, certifikátů TLS/SSL, slotů pro nasazení, záloh atd.), se vám neúčtují poplatky. Výjimky jsou:
 
 - Domény služby App Service – platíte při nákupu v Azure a při jeho obnově každý rok.
 - Certifikáty služby App Service – platíte při nákupu v Azure a při jeho obnově každý rok.
-- Připojení SSL založená na protokolu IP – za každé připojení SSL založené na protokolu IP se účtuje hodinový poplatek, ale některé úrovně **Standard** nebo vyšší poskytují jedno připojení SSL založené na protokolu IP zdarma. Připojení SSL založené na SNI jsou zdarma.
+- Připojení TLS založená na PROTOKOLU IP – za každé připojení TLS založené na protokolu IP se účtuje hodinový poplatek, ale některé úrovně **Standard** nebo vyšší poskytují jedno připojení TLS založené na PROTOKOLU IP zdarma. Připojení TLS na bázi SNI jsou zdarma.
 
 > [!NOTE]
 > Pokud integrujete službu App Service s jinou službou Azure, možná budete muset zvážit poplatky z těchto dalších služeb. Pokud například pomocí Azure Traffic Manageru geograficky škálujete aplikaci, Azure Traffic Manager vám také účtuje poplatky na základě vašeho využití. Informace o odhadu nákladů na křížové služby v Azure najdete v [tématu Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/). 
@@ -86,7 +86,7 @@ Za používání funkcí služby App Service, které máte k dispozici (konfigur
 
 Kapacitu plánu služby App Service je možné kdykoli vertikálně navýšit nebo snížit. Je to stejně jednoduché jako změna cenové úrovně plánu. Nejprve si můžete zvolit nižší cenovou úroveň a později kapacitu vertikálně navýšit, když budete potřebovat další funkce služby App Service.
 
-Můžete například začít testovat webovou aplikaci v plánu **bezplatné** služby App Service a nic neplatit. Pokud chcete do webové aplikace přidat [vlastní název DNS,](app-service-web-tutorial-custom-domain.md) stačí škálovat plán na **sdílenou** úroveň. Později, když chcete [vytvořit vazbu SSL](configure-ssl-bindings.md), škálovat plán až na úroveň **Basic.** Pokud chcete mít [pracovní prostředí](deploy-staging-slots.md), škálovat na úroveň **Standard.** Když potřebujete více jader, paměti nebo úložiště, navažte na větší velikost virtuálního počítače ve stejné vrstvě.
+Můžete například začít testovat webovou aplikaci v plánu **bezplatné** služby App Service a nic neplatit. Pokud chcete do webové aplikace přidat [vlastní název DNS,](app-service-web-tutorial-custom-domain.md) stačí škálovat plán na **sdílenou** úroveň. Později, když chcete [vytvořit vazbu TLS](configure-ssl-bindings.md), škálovat plán až na úroveň **Basic.** Pokud chcete mít [pracovní prostředí](deploy-staging-slots.md), škálovat na úroveň **Standard.** Když potřebujete více jader, paměti nebo úložiště, navažte na větší velikost virtuálního počítače ve stejné vrstvě.
 
 Totéž funguje v opačném směru. Když máte pocit, že už nepotřebujete možnosti nebo funkce vyšší úrovně, můžete se škálovat na nižší úroveň, což vám ušetří peníze.
 

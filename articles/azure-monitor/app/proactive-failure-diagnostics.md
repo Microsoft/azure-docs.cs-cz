@@ -4,12 +4,12 @@ description: Upozorní vás na neobvyklé změny v rychlosti neúspěšných po�
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1bce3ab86748d8247a72da3bd70e0f2e8155dbf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671745"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536807"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní detekce – anomálie selhání
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) vás automaticky upozorní téměř v reálném čase, pokud vaše webová aplikace zažije abnormální nárůst míry neúspěšných požadavků. Detekuje neobvyklé zvýšení rychlosti požadavků HTTP nebo volání závislostí, které jsou hlášeny jako neúspěšné. U požadavků mají neúspěšné požadavky obvykle kódy odpovědí 400 nebo vyšší. Aby chomáč a diagnostikovat problém, analýza charakteristik selhání a související ch dat aplikace je k dispozici v podrobnostech výstrahy. K dispozici jsou také odkazy na portál Application Insights pro další diagnostiku. Funkce nepotřebuje žádné nastavení ani konfiguraci, protože používá algoritmy strojového učení k předvídání normální míry selhání.
@@ -353,7 +353,7 @@ Inteligentní detekce anomálií selhání doplňuje další podobné, ale odli�
 ## <a name="next-steps"></a>Další kroky
 Tyto diagnostické nástroje vám pomohou zkontrolovat data z vaší aplikace:
 
-* [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md)
+* [Průzkumník metrik](../../azure-monitor/platform/metrics-charts.md)
 * [Průzkumník hledání](../../azure-monitor/app/diagnostic-search.md)
 * [Analytics – výkonný dotazovací jazyk](../../azure-monitor/log-query/get-started-portal.md)
 

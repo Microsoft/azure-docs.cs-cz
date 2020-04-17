@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5241089ff3cc7826216fcadd6fd94116ee4a2c89
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ac630c4901c126ed883adbdc7efb03f36372e6ff
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309435"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535872"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma identit Microsoftu a tok autorizačního kódu OAuth 2.0
 
@@ -232,11 +232,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>Aktualizace přístupového tokenu
 
-Access_tokens jsou krátkodobé a je nutné je aktualizovat po vypršení jejich platnosti, chcete-li pokračovat v přístupu k prostředkům. Můžete tak učinit odesláním `POST` jiného `/token` požadavku do koncového `refresh_token` bodu, `code`tentokrát poskytuje místo .  Obnovovací tokeny jsou platné pro všechna oprávnění, pro která váš klient již získal `scope=mail.read` souhlas – proto lze aktualizovat `scope=api://contoso.com/api/UseResource`token vydaný na žádost pro lze požádat o nový přístupový token pro .  
+Access_tokens jsou krátkodobé a je nutné je aktualizovat po vypršení jejich platnosti, chcete-li pokračovat v přístupu k prostředkům. Můžete tak učinit odesláním `POST` jiného `/token` požadavku do koncového `refresh_token` bodu, `code`tentokrát poskytuje místo .  Obnovovací tokeny jsou platné pro všechna oprávnění, pro která váš klient již získal `scope=mail.read` souhlas – proto lze aktualizovat `scope=api://contoso.com/api/UseResource`token vydaný na žádost pro lze požádat o nový přístupový token pro .
 
-Obnovovací tokeny nemají zadané doby životnosti. Obvykle životnost impoziumů obnovovacítokeny jsou obvykle poměrně dlouhé. V některých případech však platnost tokenů aktualizace vyprší, jsou odvolány nebo postrádají dostatečná oprávnění pro požadovanou akci. Vaše aplikace musí očekávat a zpracovávat [chyby vrácené koncovým bodem vystavování tokenu](#error-codes-for-token-endpoint-errors) správně. 
+Obnovovací tokeny nemají zadané doby životnosti. Obvykle životnost impoziumů obnovovacítokeny jsou obvykle poměrně dlouhé. V některých případech však platnost tokenů aktualizace vyprší, jsou odvolány nebo postrádají dostatečná oprávnění pro požadovanou akci. Vaše aplikace musí očekávat a zpracovávat [chyby vrácené koncovým bodem vystavování tokenu](#error-codes-for-token-endpoint-errors) správně.
 
-Přestože obnovovací tokeny nejsou odvolány při použití k získání nových přístupových tokenů, očekává se, že zahodíte starý obnovovací token. [OAuth 2.0 spec](https://tools.ietf.org/html/rfc6749#section-6) říká: "Autorizační server může vydat nový obnovovací token, v takovém případě musí klient zahodit starý obnovovací token a nahradit jej novým obnovovacím tokenem. Autorizační server může odvolat starý obnovovací token po vydání nového obnovovacího tokenu klientovi."  
+Přestože obnovovací tokeny nejsou odvolány při použití k získání nových přístupových tokenů, očekává se, že zahodíte starý obnovovací token. [OAuth 2.0 spec](https://tools.ietf.org/html/rfc6749#section-6) říká: "Autorizační server může vydat nový obnovovací token, v takovém případě musí klient zahodit starý obnovovací token a nahradit jej novým obnovovacím tokenem. Autorizační server může odvolat starý obnovovací token po vydání nového obnovovacího tokenu klientovi."
 
 ```
 // Line breaks for legibility only
@@ -254,7 +254,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > Zkuste provést tento požadavek v Pošťák! (Nezapomeňte vyměnit `refresh_token`) [Zkuste spustit tento požadavek v Pošťáku. ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-> 
+>
 
 | Parametr     |                | Popis        |
 |---------------|----------------|--------------------|

@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: e414e5cb7ad9097eb815240f83d9f529f839b6b4
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883997"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534597"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Zpracování změn souborů cookie SameSite v prohlížeči Chrome
 
@@ -53,8 +53,8 @@ V následující tabulce jsou uvedeny žádosti o přijetí změn, které fungov
 
 | Ukázka | Žádost o přijetí změn |
 | ------ | ------------ |
-|  [ASP.NET základní webová aplikace přírůstkové kurz](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [Stejné soubory cookie webu opravit #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
-|  [ASP.NET ukázka webové aplikace MVC](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [Stejný #35 opravy souborů cookie webu](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
+|  [Přírůstkový kurz ASP.NET webové aplikace Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [Stejné soubory cookie webu opravit #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
+|  [ukázka ASP.NET webové aplikace MVC](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [Stejný #35 opravy souborů cookie webu](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
 |  [active-directory-dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2)  |  [Stejné #28 opravy souborů cookie webu](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2/pull/28)  |
 
 podrobnosti o tom, jak zacházet se soubory cookie SameSite v ASP.NET a ASP.NET Core, naleznete také:

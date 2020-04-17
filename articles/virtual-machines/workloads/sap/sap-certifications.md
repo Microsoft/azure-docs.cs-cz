@@ -13,19 +13,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: 43fc2e9369b9d11b1ac0205beddea01b633fb633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e803da238ebdd728e772a15b0f29ae36d401a699
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598370"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536399"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Certifikace a konfigurace SAP spuštěné v Microsoft Azure
 
-SAP a Microsoft mají dlouhou historii spolupráce v silném partnerství, které má vzájemné výhody pro své zákazníky. Společnost Microsoft neustále aktualizuje svou platformu a odesílá do sapu nové podrobnosti o certifikaci, aby zajistila, že Microsoft Azure je nejlepší platformou pro spuštění úloh SAP. Následující tabulky popisují podporované konfigurace Azure a seznam rostoucích certifikací SAP. 
+SAP a Microsoft mají dlouhou historii spolupráce v silném partnerství, které má vzájemné výhody pro své zákazníky. Společnost Microsoft neustále aktualizuje svou platformu a odesílá do sapu nové podrobnosti o certifikaci, aby zajistila, že Microsoft Azure je nejlepší platformou pro spuštění úloh SAP. Následující tabulky popisují podporované konfigurace Azure a seznam rostoucích certifikací SAP. Tento seznam je přehledový seznam, který by se mohl tu a tam odchýlit od oficiálních seznamů SAP. Jak se dostat k podrobným datům, je zdokumentováno v článku [Jaký software SAP je podporován pro nasazení Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)
 
 ## <a name="sap-hana-certifications"></a>Certifikace SAP HANA
 Odkazy:
@@ -52,10 +52,10 @@ Odkazy:
 
 | Sap produkt | Hostovaný operační systém | RDBMS | Typy virtuálních počítačů |
 | --- | --- | --- | --- |
-| SAP Business Suite Software | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (pouze Windows a Oracle Linux), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 na DS15_v2, GS1 až GS5, D2s_v3 D64s_v3, D2as_v4 do D64as_v4, E2s_v3 do E64s_v3, E2as_v4 do E64as_v4, M64s, M128s, M128s, M64ls, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP Business Vše v jednom | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (pouze Windows a Oracle Linux), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 na DS15_v2, GS1 až GS5, D2s_v3 D64s_v3, D2as_v4 do D64as_v4, E2s_v3 do E64s_v3, E2as_v4 do E64as_v4, M64s, M128s, M128s, M64ls, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP BusinessObjects BI | Windows |Není dostupné. |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 na DS15_v2, GS1 až GS5, D2s_v3 D64s_v3, D2as_v4 do D64as_v4, E2s_v3 do E64s_v3, E2as_v4 do E64as_v4, M64s, M128s, M128s, M64ls, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (pouze Windows a Oracle Linux), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 na DS15_v2, GS1 až GS5, D2s_v3 D64s_v3, D2as_v4 do D64as_v4, E2s_v3 do E64s_v3, E2as_v4 do E64as_v4, M64s, M128s, M128s, M64ls, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
+| SAP Business Suite Software | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (pouze Windows a Oracle Linux), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 na DS15_v2, GS1 až GS5, D2s_v3 do D64s_v3, D2as_v4 do D64as_v4, E2s_v3 do E64s_v3, E2as_v4 až E64as_v4, M64s, M128s, M128ms, M64ls, M32ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2 M416ms_v2 |
+| SAP Business Vše v jednom | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (pouze Windows a Oracle Linux), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 na DS15_v2, GS1 až GS5, D2s_v3 do D64s_v3, D2as_v4 do D64as_v4, E2s_v3 do E64s_v3, E2as_v4 až E64as_v4, M64s, M128s, M128ms, M64ls, M32ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2 M416ms_v2 |
+| SAP BusinessObjects BI | Windows |– |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 na DS15_v2, GS1 až GS5, D2s_v3 do D64s_v3, D2as_v4 do D64as_v4, E2s_v3 do E64s_v3, E2as_v4 až E64as_v4, M64s, M128s, M128ms, M64ls, M32ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2 M416ms_v2 |
+| SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (pouze Windows a Oracle Linux), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 na DS15_v2, GS1 až GS5, D2s_v3 do D64s_v3, D2as_v4 do D64as_v4, E2s_v3 do E64s_v3, E2as_v4 až E64as_v4, M64s, M128s, M128ms, M64ls, M32ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2 M416ms_v2 |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Další úlohy SAP podporované v Azure
 
@@ -65,4 +65,6 @@ Odkazy:
 | SAP BPC 10.01 MS SP08 | Windows a Linux | | Všechny typy virtuálních počítačů s certifikací NetWeaver<br /> #2451795 poznámky SAP |
 | Platforma SAP Business Objects BI | Windows a Linux | | #2145537 poznámky SAP |
 | Datové služby SAP 4.2 | | | SAP Poznámka #2288344 |
-| SAP Hybris Obchodní platforma 5.x a 6.x | Windows | SQL Server, Oracle | Všechny typy virtuálních počítačů certifikované společností NetWeaver<br /> [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |
+| Obchodní platforma SAP Hybris  | Windows | SQL Server, Oracle | Všechny typy virtuálních počítačů certifikované společností NetWeaver <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| Obchodní platforma SAP Hybris  | SLES 12 nebo novější | SAP HANA | Všechny typy virtuálních počítačů certifikované společností NetWeaver <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| Obchodní platforma SAP Hybris  | RHEL 7 nebo novější | SAP HANA | Všechny typy virtuálních počítačů certifikované společností NetWeaver <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ab342dba5c8be2ff3793c0eb36926969b3e364e5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655660"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537283"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Požadavky pro azure hpc mezipaměť
 
@@ -20,9 +20,6 @@ Než použijete portál Azure k vytvoření nové mezipaměti Azure HPC, ujistě
 ## <a name="azure-subscription"></a>Předplatné Azure
 
 Doporučujeme placené předplatné.
-
-> [!NOTE]
-> Během prvních několika měsíců vydání GA tým Azure HPC Cache musí přidat vaše předplatné do seznamu přístupu, než ho bude možné použít k vytvoření instance mezipaměti. Tento postup pomáhá zajistit, aby každý zákazník získal vysoce kvalitní odezvu ze svých mezipamětí. Vyplňte [tento formulář](https://aka.ms/onboard-hpc-cache) a požádejte o přístup.
 
 ## <a name="network-infrastructure"></a>Síťová infrastruktura
 
@@ -84,11 +81,11 @@ Chcete-li vytvořit kompatibilní účet úložiště, použijte tato nastavení
 * Přístupová úroveň (výchozí): **Hot**
 
 Je vhodné používat účet úložiště ve stejném umístění jako vaše mezipaměť.
-<!-- clarify location - same region or same resource group or same virtual network? -->
 
 Také musíte udělit aplikaci mezipaměti přístup k účtu úložiště Azure, jak je uvedeno v [oprávnění](#permissions), výše. Postupujte podle postupu v [přidat cíle úložiště,](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) aby mezipaměti požadované role přístupu. Pokud nejste vlastníkem účtu úložiště, aby vlastník provést tento krok.
 
 ### <a name="nfs-storage-requirements"></a>Požadavky na úložiště systému systému systému
+<!-- linked from configuration.md -->
 
 Pokud používáte systém úložiště systému souborů NFS (například místní hardwarový systém NAS), ujistěte se, že splňuje tyto požadavky. Možná budete muset spolupracovat se správci sítě nebo správci brány firewall pro váš úložný systém (nebo datové centrum) k ověření těchto nastavení.
 

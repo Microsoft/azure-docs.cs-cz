@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: bfbae282f9c383c19aae84a70dfc53f754bd9367
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4976be485a9b7609c6e8d23f6b897092217663fc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77592607"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535668"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s událostmi řízeným zpracováním na pozadí pomocí sady Azure WebJobs SDK
 
@@ -37,28 +37,31 @@ Tento článek ukazuje, jak nasadit WebJobs jako konzolovou aplikaci .NET Core. 
 
 ## <a name="webjobs-nuget-packages"></a>Balíčky WebJobs NuGet
 
-1. Nainstalujte nejnovější stabilní 3.x `Microsoft.Azure.WebJobs.Extensions` verzi balíčku NuGet, který obsahuje `Microsoft.Azure.WebJobs`.
+1. Nainstalujte nejnovější stabilní verzi [ `Microsoft.Azure.WebJobs.Extensions` 3.x balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/), která obsahuje `Microsoft.Azure.WebJobs`.
 
-     Zde je příkaz **Konzola správce balíčků** pro verzi 3.0.2:
+     Tady je příkaz **Konzola správce balíčků:**
 
      ```powershell
-     Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.2
+     Install-Package Microsoft.Azure.WebJobs.Extensions -version <3_X_VERSION>
      ```
+
+    V tomto příkazu nahraďte `<3_X_VERSION>` podporovanou verzí balíčku. 
 
 ## <a name="create-the-host"></a>Vytvoření hostitele
 
 Hostitel je runtime kontejner pro funkce, které naslouchá aktivační události a volání funkcí. Následující kroky vytvořit hostitele, [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost)který implementuje , což je obecný hostitel v ASP.NET jádra.
 
-1. V *Program.cs*přidejte příkaz: `using`
+1. V *Program.cs*přidejte tyto `using` příkazy:
 
     ```cs
+    using System.Threading.Tasks;
     using Microsoft.Extensions.Hosting;
     ```
 
 1. Nahraďte metodu `Main` následujícím kódem:
 
     ```cs
-    static void Main(string[] args)
+    static async Task Main()
     {
         var builder = new HostBuilder();
         builder.ConfigureWebJobs(b =>
@@ -68,7 +71,7 @@ Hostitel je runtime kontejner pro funkce, které naslouchá aktivační událost
         var host = builder.Build();
         using (host)
         {
-            host.Run();
+            await host.RunAsync();
         }
     }
     ```
@@ -79,12 +82,12 @@ V ASP.NET Core jsou konfigurace hostitele nastaveny [`HostBuilder`](/dotnet/api/
 
 V této části nastavíte protokolování konzoly, která používá [ASP.NET core protokolování rozhraní](/aspnet/core/fundamentals/logging).
 
-1. Nainstalujte nejnovější stabilní `Microsoft.Extensions.Logging.Console` verzi balíčku NuGet, který obsahuje `Microsoft.Extensions.Logging`.
+1. Nainstalujte nejnovější stabilní verzi [ `Microsoft.Extensions.Logging.Console` balíčku NuGet](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/), který obsahuje `Microsoft.Extensions.Logging`.
 
-   Zde je příkaz **Konzola správce balíčků** pro verzi 2.2.0:
+   Tady je příkaz **Konzola správce balíčků:**
 
    ```powershell
-   Install-Package Microsoft.Extensions.Logging.Console -version 2.2.0
+   Install-Package Microsoft.Extensions.Logging.Console -version <3_X_VERSION>
    ```
 
 1. V *Program.cs*přidejte příkaz: `using`
@@ -92,6 +95,8 @@ V této části nastavíte protokolování konzoly, která používá [ASP.NET c
    ```cs
    using Microsoft.Extensions.Logging;
    ```
+
+    V tomto příkazu nahraďte `<3_X_VERSION>` podporovanou verzí balíčku 3.x.
 
 1. Volání [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) metody [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)na . Metoda [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) přidá protokolování konzoly do konfigurace.
 
@@ -105,7 +110,7 @@ V této části nastavíte protokolování konzoly, která používá [ASP.NET c
     Metoda `Main` nyní vypadá takto:
 
     ```cs
-    static void Main(string[] args)
+    static async Task Main()
     {
         var builder = new HostBuilder();
         builder.ConfigureWebJobs(b =>
@@ -119,7 +124,7 @@ V této části nastavíte protokolování konzoly, která používá [ASP.NET c
         var host = builder.Build();
         using (host)
         {
-            host.Run();
+            await host.RunAsync();
         }
     }
     ```
@@ -137,11 +142,13 @@ Počínaje verzí 3.x je nutné explicitně nainstalovat rozšíření vazby úl
 
 1. Nainstalujte nejnovější stabilní verzi balíčku [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet verze 3.x. 
 
-    Zde je příkaz **Konzola správce balíčků** pro verzi 3.0.4:
+    Tady je příkaz **Konzola správce balíčků:**
 
     ```powershell
-    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.4
+    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version <3_X_VERSION>
     ```
+    
+    V tomto příkazu nahraďte `<3_X_VERSION>` podporovanou verzí balíčku. 
 
 2. V `ConfigureWebJobs` metodě rozšíření `AddAzureStorage` volání metody [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) na instanci inicializovat rozšíření úložiště. V tomto okamžiku `ConfigureWebJobs` metoda vypadá jako následující příklad:
 
@@ -158,22 +165,22 @@ Počínaje verzí 3.x je nutné explicitně nainstalovat rozšíření vazby úl
 1. Klepněte pravým tlačítkem myši na projekt, vyberte **Přidat** > **novou položku...**, zvolte **Třídu**, pojmenujte nový soubor třídy C# *Functions.cs*a vyberte **Přidat**.
 
 1. V Functions.cs nahraďte vygenerovanou šablonu následujícím kódem:
-
-   ```cs
-   using Microsoft.Azure.WebJobs;
-   using Microsoft.Extensions.Logging;
-
-   namespace WebJobsSDKSample
-   {
-       public class Functions
-       {
-           public static void ProcessQueueMessage([QueueTrigger("queue")] string message, ILogger logger)
-           {
-               logger.LogInformation(message);
-           }
-       }
-   }
-   ```
+    
+    ```cs
+    using Microsoft.Azure.WebJobs;
+    using Microsoft.Extensions.Logging;
+    
+    namespace WebJobsSDKSample
+    {
+        public class Functions
+        {
+            public static void ProcessQueueMessage([QueueTrigger("queue")] string message, ILogger logger)
+            {
+                logger.LogInformation(message);
+            }
+        }
+    }
+    ```
 
    Atribut `QueueTrigger` říká, že runtime volá tuto funkci, když je nová `queue`zpráva zapsána ve frontě Azure Storage s názvem . Obsah zprávy fronty jsou k dispozici kódu metody `message` v parametru. Tělo metody je místo, kde zpracováváte data aktivační události. V tomto příkladu kód pouze protokoluje zprávu.
 
@@ -320,13 +327,13 @@ V této části můžete provést následující úkoly nastavit protokolování
 
 1. Do pole **Připojovací řetězce** přidejte následující položku.
 
-   |Name (Název)  |připojovací řetězec  |Typ databáze|
+   |Název  |připojovací řetězec  |Typ databáze|
    |---------|---------|------|
    |AzureWebJobsStorage | {Připojovací řetězec úložiště, který jste zkopírovali dříve}.|Vlastní|
 
 1. Pokud pole **Nastavení aplikace** nemá klíč instrumentace Application Insights, přidejte ten, který jste zkopírovali dříve. (Instrumentace klíč již může být tam, v závislosti na tom, jak jste vytvořili aplikaci App Service.)
 
-   |Name (Název)  |Hodnota  |
+   |Název  |Hodnota  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentační klíč} |
 
@@ -351,21 +358,22 @@ V této části můžete provést následující úkoly nastavit protokolování
 
 Chcete-li využít využití protokolování [Application Insights,](../azure-monitor/app/app-insights-overview.md) aktualizujte kód protokolování takto:
 
-* Přidejte zprostředkovatele protokolování Application Insights s výchozím [filtrováním](webjobs-sdk-how-to.md#log-filtering); všechny informace a protokoly vyšší úrovně přejde do konzole a Application Insights při spuštění místně.
+* Přidejte zprostředkovatele protokolování Application Insights s výchozím [filtrováním](webjobs-sdk-how-to.md#log-filtering). Při spuštění místně, všechny informace a protokoly vyšší úrovně jsou zapsány do konzole a Application Insights.
 * Vložte objekt [LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) do `using` bloku, abyste zajistili, že výstup protokolu je vyprázdněn při ukončení hostitele.
 
-1. Nainstalujte nejnovější stabilní verzi 3.x balíčku NuGet pro `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`zprostředkovatele protokolování Application Insights: .
+1. Nainstalujte nejnovější stabilní verzi [ `Microsoft.Azure.WebJobs.Logging.ApplicationInsights` 3.x balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/).
 
-   Zde je příkaz **Konzola správce balíčků** pro verzi 3.0.2:
+   Tady je příkaz **Konzola správce balíčků:**
 
    ```powershell
-   Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version 3.0.2
+   Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <3_X_VERSION>
    ```
+    V tomto příkazu nahraďte `<3_X_VERSION>` podporovanou verzí balíčku.
 
 1. Otevřete *Program.cs* a nahraďte kód v metodě `Main` následujícím kódem:
 
     ```cs
-    static void Main(string[] args)
+    static async Task Main()
     {
         var builder = new HostBuilder();
         builder.UseEnvironment(EnvironmentName.Development);
@@ -388,7 +396,7 @@ Chcete-li využít využití protokolování [Application Insights,](../azure-mo
         var host = builder.Build();
         using (host)
         {
-            host.Run();
+            await host.RunAsync();
         }
     }
     ```

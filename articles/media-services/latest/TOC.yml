@@ -98,6 +98,7 @@
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
         - name: Testované místní kodéry pro kódování v reálném čase
+          displayName: recommended
           href: recommended-on-premises-live-encoders.md
         - name: Posun času a funkce Live-to-VOD
           displayName: 'archive, dvr'

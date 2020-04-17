@@ -8,12 +8,12 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae359e5210a9a11c33dd3ff9b474e28aa2548c57
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75889336"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536960"
 ---
 # <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Poradce při potížích při zařazování správy aktualizací, sledování změn a inventáře
 
@@ -72,7 +72,7 @@ Tato chyba je způsobena nesprávnými nebo chybějícími oprávněními ve vir
 
 #### <a name="resolution"></a>Řešení
 
-Ujistěte se, že máte správná oprávnění k připojení virtuálního počítače. Zkontrolujte [oprávnění potřebná k nasazení počítačů](../automation-role-based-access-control.md#onboarding) a pokuste se znovu zadat řešení. Pokud se zobrazí `The solution cannot be enabled on this VM because the permission to read the workspace is missing`chyba , `Microsoft.OperationalInsights/workspaces/read` ujistěte se, že máte oprávnění k nalezení, pokud je virtuální počítač na palubě do pracovního prostoru.
+Ujistěte se, že máte správná oprávnění k připojení virtuálního počítače. Zkontrolujte [oprávnění potřebná k nasazení počítačů](../automation-role-based-access-control.md#onboarding-permissions) a pokuste se znovu zadat řešení. Pokud se zobrazí `The solution cannot be enabled on this VM because the permission to read the workspace is missing`chyba , ujistěte se, že máte `Microsoft.OperationalInsights/workspaces/read` oprávnění k nalezení, pokud je virtuální počítač na palubě do pracovního prostoru.
 
 ### <a name="scenario-onboarding-fails-with-the-message---failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scénář: Registrace se nezdaří se zprávou – nepodařilo se nakonfigurovat účet automatizace pro protokolování diagnostiky.
 
@@ -162,7 +162,7 @@ Po odebrání řešení můžete pracovní prostor odpojit. Je důležité vyči
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Při nasazování řešení se nasazují různé související prostředky. Jedním z těchto prostředků je Microsoft Monitoring Agent Rozšíření nebo Log Analytics agent pro Linux. Jedná se o rozšíření virtuálních strojů nainstalovaná agentem hosta virtuálního počítače, který je zodpovědný za komunikaci s nakonfigurovaným pracovním prostorem Log Analytics za účelem pozdější koordinace stahování binárních souborů a dalších souborů, které řešení, na které se zapisujete, závisí, jakmile začne s exekucí.
+Při nasazování řešení se nasazují různé související prostředky. Jedním z těchto prostředků je Microsoft Monitoring Agent Rozšíření nebo Log Analytics agent pro Linux. Jedná se o rozšíření virtuálních strojů nainstalovaná agentem hosta virtuálního počítače, který je zodpovědný za komunikaci s nakonfigurovaným pracovním prostorem Log Analytics za účelem pozdější koordinace stahování binárních souborů a dalších souborů, na kterých závisí řešení, na které jste onboarding závisí, jakmile začne spouštět.
 Obvykle se nejprve dozvíte o agentovi MMA nebo Log Analytics pro selhání instalace Linuxu z oznámení, které se zobrazí v centru Oznámení. Kliknutím na toto oznámení získáte další informace o konkrétním selhání. Navigace k prostředku skupiny prostředků a potom na nasazení elementu v něm také obsahuje podrobnosti o selhání nasazení, ke kterým došlo.
 Instalace agenta MMA nebo Log Analytics pro Linux může selhat z různých důvodů a kroky k řešení těchto chyb se liší v závislosti na problému. Postupujte podle konkrétních kroků pro řešení potíží.
 

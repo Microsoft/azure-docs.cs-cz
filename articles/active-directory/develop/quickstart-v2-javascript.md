@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: ac134dce5ad739d1d81ef0c62a6bfb04468cafff
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 1d22f66ad5f7adf5bb8196c3e72a2a343f4558b0
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991105"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536093"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Úvodní příručka: Přihlášení uživatelů a získání přístupového tokenu v javascriptovém spa
 
@@ -39,7 +39,7 @@ V tomto rychlém startu se pomocí ukázky kódu dozvíte, jak může jednostrá
 > 1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet poskytuje přístup k více než jednomu tenantovi, vyberte účet v pravém horním rohu a nastavte relaci portálu na tenanta Azure Active Directory (Azure AD), který chcete použít.
 > 1. Přejděte na nové [podokno Registrace aplikací azure.](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)
-> 1. Zadejte název své aplikace. 
+> 1. Zadejte název své aplikace.
 > 1. V části **Podporované typy účtů**vyberte Účty ve všech **organizačních adresářích a osobních účtech Microsoft**.
 > 1. Vyberte **Zaregistrovat**.
 > 1. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
@@ -99,7 +99,7 @@ V tomto rychlém startu se pomocí ukázky kódu dozvíte, jak může jednostrá
 >      cacheLocation: "sessionStorage", // This configures where your cache will be stored
 >      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
 >    }
->  };  
+>  };
 >
 >```
 
@@ -122,10 +122,10 @@ V tomto rychlém startu se pomocí ukázky kódu dozvíte, jak může jednostrá
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: Aplikace je nakonfigurovaná a připravená ke spuštění
-> Nakonfigurovali jsme váš projekt s hodnotami vlastností vaší aplikace. 
+> Nakonfigurovali jsme váš projekt s hodnotami vlastností vaší aplikace.
 
 > [!div renderon="docs"]
-> 
+>
 > Potom, stále ve stejné složce, upravte soubor *graphConfig.js* a nastavte `graphMeEndpoint` `graphMeEndpoint` `apiConfig` objekt a pro.
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
@@ -199,7 +199,7 @@ Kód rychlého startu také ukazuje, jak inicializovat knihovnu MSAL:
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     }
-  };  
+  };
 
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```

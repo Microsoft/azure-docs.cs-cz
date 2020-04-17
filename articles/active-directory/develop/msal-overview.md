@@ -1,7 +1,7 @@
 ---
 title: Další informace o MSAL | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft Authentication Library (MSAL) umožňuje vývojářům aplikací získat tokeny za účelem volání zabezpečených webových rozhraní API. Tato webová rozhraní API mohou být Microsoft Graph, jiné rozhraní API společnosti Microsoft, webová rozhraní API jiných výrobců nebo vlastní webové rozhraní API. MSAL podporuje více architektur aplikací a platforem.
+description: Microsoft Authentication Library (MSAL) umožňuje vývojářům aplikací získat tokeny za účelem volání zabezpečených webových rozhraní API. Tato webová rozhraní API mohou být Microsoft Graph, další rozhraní API společnosti Microsoft, webová rozhraní API jiných výrobců nebo vlastní webové rozhraní API. MSAL podporuje více architektur aplikací a platforem.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c20d93c70484dc7ea800898da4309af2699c718e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c5117e59f7856c3bd572bbea297a836b5ad589
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085733"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536212"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Přehled knihovny ověřování společnosti Microsoft (MSAL)
-Microsoft Authentication Library (MSAL) umožňuje vývojářům získat [tokeny](developer-glossary.md#security-token) z koncového bodu platformy identit microsoftu pro přístup k zabezpečeným webovým rozhraním API. Tato webová rozhraní API mohou být Microsoft Graph, jiné rozhraní API společnosti Microsoft, webová rozhraní API jiných výrobců nebo vlastní webové rozhraní API. MSAL je k dispozici pro .NET, JavaScript, Android a iOS, které podporují mnoho různých architektur aplikací a platforem.
+Microsoft Authentication Library (MSAL) umožňuje vývojářům získat [tokeny](developer-glossary.md#security-token) z koncového bodu platformy identit microsoftu pro přístup k zabezpečeným webovým rozhraním API. Tato webová rozhraní API mohou být Microsoft Graph, další rozhraní API společnosti Microsoft, webová rozhraní API jiných výrobců nebo vlastní webové rozhraní API. MSAL je k dispozici pro .NET, JavaScript, Android a iOS, které podporují mnoho různých architektur aplikací a platforem.
 
 MSAL poskytuje mnoho způsobů, jak získat tokeny, s konzistentní rozhraní API pro řadu platforem. Použití msal poskytuje následující výhody:
 

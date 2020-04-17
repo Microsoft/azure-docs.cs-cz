@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0866db6b549bc940d2e73bccfc77b8fad19abd51
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4a361f384167fa522278b9c84a7927e938c12cb8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273218"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534801"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů úloh SAP
 
@@ -110,6 +110,8 @@ Informace o integraci služeb Azure do komponent SAP najdete v tématu:
 
 
 ## <a name="change-log"></a>Protokol změn
+
+- 04/16/2020: Přidánsap HANA jako podporovaná platforma DBMS pro SAP (Hybris) Commerce Platform v článcích [Jaký software SAP je podporován pro nasazení Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) a [certifikace a konfigurace SAP spuštěné v Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/13/2020: Opravte přesná čísla verzí SAP ASE v [nasazení DBMS virtuálních počítačů SAP ASE Azure pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
 - 04/07/2020: Změna nastavení [kardiostimulátoru na SLES v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro objasnění pokynů cloud-netconfig-azure
 - 04/06/2020: Změny v [sap HANA horizontální navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Soubory na SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) a v [SAP HANA horizontální navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp soubory na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) odebrat odkazy na NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf) (nahrazenTR-4746 ) [TR-4746](https://www.netapp.com/us/media/tr-4746.pdf)

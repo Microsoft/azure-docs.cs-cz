@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255129"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536424"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Škálovatelnost a cíle výkonnosti služby Azure Files
 
@@ -51,8 +51,7 @@ Viz oddíl [cíle škálování účtu úložiště Azure](#azure-storage-accoun
 ### <a name="file-share-and-file-scale-targets"></a>Cíle sdílení souborů a škálování souborů
 
 > [!NOTE]
-> Standardní sdílené složky větší než 5 TiB mají určitá omezení a regionální omezení.
-> Seznam omezení, místní informace a pokyny k povolení těchto větších velikostí sdílené složky naleznete v části [Onboard to larger file shares](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) v příručce pro plánování.
+> Standardní sdílené složky větší než 5 TiB mají určitá omezení. Seznam omezení a pokyny umožňující větší velikosti sdílené složky naleznete v příručce plánování v části [povolit větší sdílené složky ve standardních sdílených složek.](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -66,7 +65,7 @@ Azure File Sync byl navržen s cílem neomezené využití, ale neomezené využ
 
 ### <a name="azure-file-sync-performance-metrics"></a>Metriky výkonu v Synchronizaci souborů Azure
 
-Vzhledem k tomu, že agent Azure File Sync běží na počítači se systémem Windows Server, který se připojuje ke sdíleným položkám souborů Azure, závisí efektivní výkon synchronizace na řadě faktorů ve vaší infrastruktuře: Windows Server a základní konfigurace disku, šířka pásma sítě mezi serverem a úložištěm Azure, velikostí souboru, celkovou velikostí datové sady a aktivitou v datové sadě. Vzhledem k tomu, že Azure File Sync funguje na úrovni souborů, výkonové charakteristiky řešení založené na synchronizaci souborů Azure se lépe měří v počtu objektů (souborů a adresářů) zpracovaných za sekundu.
+Vzhledem k tomu, že agent Azure File Sync běží na počítači se systémem Windows Server, který se připojuje ke sdíleným položkám souborů Azure, závisí efektivní výkon synchronizace na řadě faktorů ve vaší infrastruktuře: Windows Server a základní konfigurace disku, šířka pásma sítě mezi serverem a úložištěm Azure, velikost souboru, celková velikost datové sady a aktivita v datové sadě. Vzhledem k tomu, že Azure File Sync funguje na úrovni souborů, výkonové charakteristiky řešení založené na synchronizaci souborů Azure se lépe měří v počtu objektů (souborů a adresářů) zpracovaných za sekundu.
 
 Pro Azure File Sync je výkon důležitý ve dvou fázích:
 
@@ -80,7 +79,7 @@ Chcete-li naplánovat nasazení pro každou z fází, níže jsou níže zjišt�
 | Procesor | 64 virtuálních jader s 64 mib l3 cache |
 | Memory (Paměť) | 128 GiB |
 | Disk | Disky SAS s raidem 10 s bateriovou zpětnou mezipaměťí |
-| Network (Síť) | Síť 1 Gb/s |
+| Síť | Síť 1 Gb/s |
 | Úloha | Souborový server pro obecné účely|
 
 | Počáteční jednorázové zřizování  |  |

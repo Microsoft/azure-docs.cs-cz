@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5f18e9365b09f06c1bd4f25a8efe909cc308dad
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979477"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537011"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení řešení správy aktualizací, sledování změn a inventáře na více virtuálních počítačích
 
@@ -33,7 +33,7 @@ Pomocí zaškrtávacích políček vyberte virtuální počítače, které chcet
 Na panelu příkazů klepněte na **položku Služby** a vyberte možnost **Sledování změn**, **Inventář**nebo **Správa aktualizací**.
 
 > [!NOTE]
-> **Sledování změn** a **zásoby** používají stejné řešení, pokud je povolena jedna druhá, je povolena také.
+> Sledování změn a zásoby používají stejné řešení. Pokud je jeden povolen, druhý je povolen také.
 
 Následující obrázek je určen pro správu aktualizací. Sledování změn a zásoby mají stejné rozložení a chování.
 
@@ -72,7 +72,7 @@ Následující řešení jsou závislá na pracovním prostoru Log Analytics:
 
 * [Update Management](automation-update-management.md)
 * [Sledování změn](automation-change-tracking.md)
-* [Spuštění/zastavení virtuálních počítačů mimo špičku](automation-solution-vm-management.md)
+* [Spuštění/zastavení virtuálních montovek mimo pracovní dobu](automation-solution-vm-management.md)
 
 Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete svůj účet odpojit přímo z portálu Azure. Než budete pokračovat, musíte nejprve odstranit dříve uvedená řešení, jinak bude tento proces znemožněn. Projděte si článek konkrétního řešení, které jste importovali, abyste pochopili kroky potřebné k jeho odebrání.
 
@@ -107,13 +107,13 @@ Případně můžete také odpojit pracovní prostor od účtu Automation z prac
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Při připojování více počítačů mohou existovat počítače, které se zobrazují jako **Nelze povolit**. Existují různé důvody, proč některé počítače nemusí být povolena. Následující části ukazují možné důvody pro **nelze povolit** stav na virtuálním počítači při pokusu o připojení.
+Při nástupu do více počítačů mohou existovat `Cannot enable`stroje, které se zobrazují jako . Existují různé důvody, proč některé počítače nemusí být povolena. Následující části ukazují možné `Cannot enable` důvody pro stav na virtuálním počítači při pokusu o připojení.
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Sestavy virtuálních virtuálních montovek do jiného pracovního prostoru: '\<název_pracovního_\>  Změnit konfiguraci tak, aby ji používala k povolení
 
 **Příčina**: Tato chyba ukazuje, že virtuální počítač, který se pokoušíte napalubě sestavy do jiného pracovního prostoru.
 
-**Řešení:** Kliknutím na **použít jako konfiguraci** můžete změnit cílový pracovní prostor Automatizační účet a Log Analytics.
+**Řešení:** Kliknutím na **použít jako konfiguraci** změníte cílový účet automatizace a pracovní prostor Analýzy protokolů.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Sestavy virtuálních aplikací do pracovního prostoru, který není v tomto předplatném k dispozici
 
@@ -148,7 +148,7 @@ Při připojování více počítačů mohou existovat počítače, které se zo
 Odebrání virtuálního virtuálního virtuálního montovazy ze správy aktualizací:
 
 * V pracovním prostoru Log Analytics odeberte virtuální počítač z `MicrosoftDefaultScopeConfig-Updates`uloženého hledání konfigurace oboru . Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
-* Odeberte [agenta Microsoft Monitoring](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* Odeberte [agenta Log Analytics pro Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Analýzy protokolů pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Další kroky
 

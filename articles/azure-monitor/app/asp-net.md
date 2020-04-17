@@ -3,12 +3,12 @@ title: Nastavení analýzy webových aplikací pro ASP.NET pomocí Azure Applica
 description: Nakonfigurujte nástroje pro analýzu výkonu, dostupnosti a chování uživatelů pro váš ASP.NET web, hostovaný místně nebo v Azure.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdd5b1131a0d2d3e2f53840d21cedce1577fde03
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665914"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536892"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -93,7 +93,7 @@ Portál otevře zobrazení telemetrie z vaší aplikace.
 Po kliknutí na kteroukoli dlaždici nebo graf se zobrazí podrobnější údaje.
 
 ## <a name="step-4-publish-your-app"></a>Krok 4: Publikování aplikace
-Publikování aplikace na serveru služby IIS nebo do Azure. Sledujte [Živé vysílání metrik](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) a ověřte, zda vše běží hladce.
+Publikování aplikace na serveru služby IIS nebo do Azure. Sledujte [Živé vysílání metrik](../../azure-monitor/app/live-stream.md) a ověřte, zda vše běží hladce.
 
 Vaše telemetrie se hromadí na portálu Application Insights, kde můžete sledovat metriky, prohledávat telemetrii. Výkonný [dotazovací jazyk Kusto](/azure/kusto/query/) můžete také použít k analýze využití a výkonu nebo k vyhledání konkrétních událostí.
 
@@ -145,6 +145,6 @@ K dispozici jsou i alternativní témata, na která se v případě zájmu můž
 * [Inteligentní diagnostika:](../../azure-monitor/app/proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
 * [Upozornění na metriky](../../azure-monitor/app/alerts.md): Nastavte výstrahy, které vás upozorní, pokud metrika překročí prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
 
-### <a name="automation"></a>Automatizace
+### <a name="automation"></a>Automation
 
 * [Automatizace vytvoření prostředku Application Insights](../../azure-monitor/app/powershell.md)

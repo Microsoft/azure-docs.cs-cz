@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
-ms.date: 03/24/2020
-ms.openlocfilehash: a4df99c45b27ad662133010422cae2e30e36e584
-ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+ms.date: 04/15/2020
+ms.openlocfilehash: c213b0089af0af295d44afd38bbc5c17b6db159d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80247261"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535226"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Kurz: Vytvoření kanálu dat od konce pro odvození přehledů o prodeji v Azure HDInsight
 
@@ -27,23 +27,28 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Azure CLI. Viz [Instalace příkazového příkazového příkazu k Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Vypodávací příkazové konto Azure – alespoň verze 2.2.0. Viz [Instalace příkazového příkazového příkazu k Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+* jq, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
 * Člen [předdefinované role Azure – vlastník](../role-based-access-control/built-in-roles.md).
 
-* [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331) pro vizualizaci obchodních přehledů na konci tohoto kurzu.
+* Pokud pomocí prostředí PowerShell aktivujete kanál Data Factory, budete potřebovat [modul Az](https://docs.microsoft.com/powershell/azure/overview).
+
+* [Power BI Desktop](https://aka.ms/pbiSingleInstaller) pro vizualizaci obchodních přehledů na konci tohoto kurzu.
 
 ## <a name="create-resources"></a>Vytvoření prostředků
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>Klonování úložiště pomocí skriptů a dat
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k předplatnému Azure. Pokud máte v plánu používat Azure Cloud Shell, pak vyberte **Try it** v pravém horním rohu bloku kódu. Jinak zadejte následující příkaz:
 
-1. Otevřete Azure Cloud Shell z horního řádku nabídek. Pokud vás Cloud Shell vyzve, vyberte předplatné pro vytvoření sdílené složky.
+    ```azurecli-interactive
+    az login
 
-   ![Otevření služby Azure Cloud Shell](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
-
-1. V rozevírací nabídce **Vybrat prostředí** zvolte **Bash**.
+    # If you have multiple subscriptions, set the one to use
+    # az account set --subscription "SUBSCRIPTIONID"
+    ```
 
 1. Ujistěte se, že jste členem [vlastníka](../role-based-access-control/built-in-roles.md)role Azure . Nahraďte `user@contoso.com` svůj účet a zadejte příkaz:
 
@@ -55,29 +60,7 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
     Pokud není vrácen žádný záznam, nejste členem a nebudete moci dokončit tento kurz.
 
-1. Seznam vašich předplatných zadávajících příkaz:
-
-    ```azurecli
-    az account list --output table
-    ```
-
-    Všimněte si ID předplatného, které budete používat pro tento projekt.
-
-1. Nastavte předplatné, které budete používat pro tento projekt. Nahraďte `SUBSCRIPTIONID` skutečnou hodnotou a zadejte příkaz.
-
-    ```azurecli
-    subscriptionID="SUBSCRIPTIONID"
-    az account set --subscription $subscriptionID
-    ```
-
-1. Vytvořte novou skupinu zdrojů pro projekt. Nahraďte `RESOURCEGROUP` požadovanýnázev a zadejte příkaz.
-
-    ```azurecli
-    resourceGroup="RESOURCEGROUP"
-    az group create --name $resourceGroup --location westus
-    ```
-
-1. Stáhněte si data a skripty pro tento kurz z [úložiště ETL eTL přehledy prodeje HDInsight](https://github.com/Azure-Samples/hdinsight-sales-insights-etl).  Zadejte následující příkaz:
+1. Stáhněte si data a skripty pro tento kurz z [úložiště ETL eTL přehledy prodeje HDInsight](https://github.com/Azure-Samples/hdinsight-sales-insights-etl). Zadejte následující příkaz:
 
     ```bash
     git clone https://github.com/Azure-Samples/hdinsight-sales-insights-etl.git
@@ -98,11 +81,19 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
     chmod +x scripts/*.sh
     ````
 
-1. Spusťte skript. Nahraďte `RESOURCE_GROUP_NAME` a `LOCATION` s příslušnými hodnotami, zadejte příkaz:
+1. Nastavte proměnnou pro skupinu prostředků. Nahraďte `RESOURCE_GROUP_NAME` název existující nebo nové skupiny prostředků a zadejte příkaz:
 
     ```bash
-    ./scripts/resources.sh RESOURCE_GROUP_NAME LOCATION
+    resourceGroup="RESOURCE_GROUP_NAME"
     ```
+
+1. Spusťte skript. Nahraďte `LOCATION` požadovanou hodnotou a zadejte příkaz:
+
+    ```bash
+    ./scripts/resources.sh $resourceGroup LOCATION
+    ```
+
+    Pokud si nejste jisti, kterou oblast určit, můžete načíst seznam podporovaných oblastí pro vaše předplatné pomocí příkazu [az seznam účtů.](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations)
 
     Příkaz nasadí následující prostředky:
 
@@ -115,49 +106,26 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 Vytvoření clusteru může trvat přibližně 20 minut.
 
-Skript `resources.sh` obsahuje následující příkazy. Není nutné, abyste tyto příkazy spouštěli, pokud jste již provedli skript v předchozím kroku.
-
-* `az group deployment create`- Tento příkaz používá šablonu`resourcestemplate.json`Správce prostředků Azure ( ) k vytvoření zadaných prostředků s požadovanou konfigurací.
-
-    ```azurecli
-    az group deployment create --name ResourcesDeployment \
-        --resource-group $resourceGroup \
-        --template-file resourcestemplate.json \
-        --parameters "@resourceparameters.json"
-    ```
-
-* `az storage blob upload-batch`- Tento příkaz nahraje soubory .csv dat prodeje do nově vytvořeného účtu úložiště objektů Blob pomocí tohoto příkazu:
-
-    ```azurecli
-    az storage blob upload-batch -d rawdata \
-        --account-name <BLOB STORAGE NAME> -s ./ --pattern *.csv
-    ```
-
-Výchozí heslo pro přístup SSH ke `Thisisapassword1`clusterům je . Chcete-li změnit heslo, přejděte `resourcesparameters.json` do souboru a `sparksshPassword` `sparkClusterLoginPassword`změňte heslo pro parametry , `llapClusterLoginPassword`, a `llapsshPassword` parametry.
+Výchozí heslo pro přístup SSH ke `Thisisapassword1`clusterům je . Chcete-li změnit heslo, přejděte `./templates/resourcesparameters_remainder.json` do souboru a `sparksshPassword` `sparkClusterLoginPassword`změňte heslo pro parametry , `llapClusterLoginPassword`, a `llapsshPassword` parametry.
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>Ověření nasazení a shromažďování informací o prostředcích
 
-1. Pokud chcete zkontrolovat stav vašeho nasazení, přejděte do skupiny prostředků na webu Azure Portal. V části **Nastavení** **vyberte Možnost Nasazení** . Vyberte název nasazení `ResourcesDeployment`. Zde můžete zobrazit prostředky, které byly úspěšně nasazeny a prostředky, které jsou stále v průběhu.
+1. Pokud chcete zkontrolovat stav vašeho nasazení, přejděte do skupiny prostředků na webu Azure Portal. V části **Nastavení**vyberte **Nasazení**a potom v nasazení. Zde můžete zobrazit prostředky, které byly úspěšně nasazeny a prostředky, které jsou stále v průběhu.
 
 1. Chcete-li zobrazit názvy clusterů, zadejte následující příkaz:
 
-    ```azurecli
-    sparkCluster=$(az hdinsight list \
-        --resource-group $resourceGroup \
-        --query "[?contains(name,'spark')].{clusterName:name}" -o tsv)
+    ```bash
+    sparkClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.sparkClusterName.value')
+    llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
 
-    llapCluster=$(az hdinsight list \
-        --resource-group $resourceGroup \
-        --query "[?contains(name,'llap')].{clusterName:name}" -o tsv)
-
-    echo $sparkCluster
-    echo $llapCluster
+    echo "Spark Cluster" $sparkClusterName
+    echo "LLAP cluster" $llapClusterName
     ```
 
 1. Chcete-li zobrazit účet úložiště Azure a přístupový klíč, zadejte následující příkaz:
 
     ```azurecli
-    blobStorageName=$(cat resourcesoutputs.json | jq -r '.properties.outputs.blobStorageName.value')
+    blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
 
     blobKey=$(az storage account keys list \
         --account-name $blobStorageName \
@@ -171,7 +139,7 @@ Výchozí heslo pro přístup SSH ke `Thisisapassword1`clusterům je . Chcete-li
 1. Chcete-li zobrazit účet Data Lake Storage Gen2 a přístupový klíč, zadejte následující příkaz:
 
     ```azurecli
-    ADLSGen2StorageName=$(cat resourcesoutputs.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
+    ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
 
     adlsKey=$(az storage account keys list \
         --account-name $ADLSGen2StorageName \
@@ -191,10 +159,13 @@ Tato továrna na data bude mít jeden kanál se dvěma aktivitami:
 * První aktivita zkopíruje data z úložiště objektů blob Azure do účtu úložiště Storage 2 data Lake, aby napodobila ingestování dat.
 * Druhá aktivita změní data v clusteru Spark. Skript transformuje data odebráním nežádoucích sloupců. Také připojí nový sloupec, který vypočítá výnosy, které generuje jedna transakce.
 
-Pokud chcete nastavit kanál Azure Data Factory, spusťte následující příkaz:
+Pokud chcete nastavit kanál Azure Data Factory, spusťte následující příkaz.  Pořád bys měl `hdinsight-sales-insights-etl` být v adresáři.
 
 ```bash
-./scripts/adf.sh
+blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
+ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
+
+./scripts/adf.sh $resourceGroup $ADLSGen2StorageName $blobStorageName
 ```
 
 Tento skript dělá následující věci:
@@ -205,35 +176,47 @@ Tento skript dělá následující věci:
 1. Získá klíče úložiště pro účty úložiště datového jezera Gen2 a úložiště objektů blob.
 1. Vytvoří další nasazení prostředků k vytvoření kanálu Azure Data Factory, s jeho přidružené propojené služby a aktivity. Předá klíče úložiště jako parametry do souboru šablony tak, aby propojené služby mohly správně přistupovat k účtům úložiště.
 
-Kanál Data Factory se nasazuje pomocí následujícího příkazu:
-
-```azurecli-interactive
-az group deployment create --name ADFDeployment \
-    --resource-group $resourceGroup \
-    --template-file adftemplate.json \
-    --parameters "@adfparameters.json"
-```
-
 ## <a name="run-the-data-pipeline"></a>Spuštění datového kanálu
 
 ### <a name="trigger-the-data-factory-activities"></a>Aktivace aktivit datové továrny
 
 První aktivita v kanálu Data Factory, kterou jste vytvořili, přesune data z úložiště objektů Blob do gen2 úložiště datového jezera. Druhá aktivita použije transformace Spark na data a uloží transformované soubory .csv do nového umístění. Dokončení celého kanálu může trvat několik minut.
 
+Chcete-li načíst název Data Factory, zadejte následující příkaz:
+
+```azurecli
+cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
+```
+
 Chcete-li spustit potrubí, můžete buď:
 
-* Aktivuj kanály Data Factory v PowerShellu. Nahraďte `DataFactoryName` skutečným názvem Data Factory a spusťte následující příkazy:
+* Aktivuj kanál Data Factory v PowerShellu. `RESOURCEGROUP`Nahraďte `DataFactoryName` a s příslušnými hodnotami spusťte následující příkazy:
 
     ```powershell
-    Invoke-AzDataFactoryV2Pipeline -DataFactory DataFactoryName -PipelineName "CopyPipeline_k8z"
-    Invoke-AzDataFactoryV2Pipeline -DataFactory DataFactoryName -PipelineName "sparkTransformPipeline"
+    # If you have multiple subscriptions, set the one to use
+    # Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
+
+    $resourceGroup="RESOURCEGROUP"
+    $dataFactory="DataFactoryName"
+
+    $pipeline =Invoke-AzDataFactoryV2Pipeline `
+        -ResourceGroupName $resourceGroup `
+        -DataFactory $dataFactory `
+        -PipelineName "IngestAndTransform"
+
+    Get-AzDataFactoryV2PipelineRun `
+        -ResourceGroupName $resourceGroup  `
+        -DataFactoryName $dataFactory `
+        -PipelineRunId $pipeline
     ```
+
+    Podle potřeby `Get-AzDataFactoryV2PipelineRun` znovu spusťte ke sledování průběhu.
 
     Nebo
 
-* Otevřete datovou továrnu a vyberte **Autor & monitor**. Aktivujte kanál kopírování a potom kanál Spark z portálu. Informace o spouštění kanálů prostřednictvím portálu najdete v tématu [Vytváření clusterů Apache Hadoop na vyžádání v HDInsight u Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
+* Otevřete datovou továrnu a vyberte **Autor & monitor**. Aktivuj `IngestAndTransform` kanál z portálu. Informace o spouštění kanálů prostřednictvím portálu najdete v tématu [Vytváření clusterů Apache Hadoop na vyžádání v HDInsight u Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
 
-Chcete-li ověřit, zda byly spuštěny kanály, můžete provést některý z následujících kroků:
+Chcete-li ověřit, zda byl kanál spuštěn, můžete provést některý z následujících kroků:
 
 * Přejděte do části **Monitor** v datové továrně prostřednictvím portálu.
 * V Průzkumníkovi azure storage najdete účet úložiště Storage Gen 2 úložiště datového jezera. Přejděte `files` do systému souborů a `transformed` potom přejděte do složky a zkontrolujte její obsah, abyste zjistili, zda byl kanál úspěšný.
@@ -242,37 +225,48 @@ Další způsoby transformace dat pomocí hdinsightu najdete v [tomto článku o
 
 ### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>Vytvoření tabulky v clusteru interaktivních dotazů pro zobrazení dat v Power BI
 
-1. Zkopírujte `query.hql` soubor do clusteru LLAP pomocí protokolu SCP. Nahraďte `LLAPCLUSTERNAME` skutečným názvem a zadejte příkaz:
+1. Zkopírujte `query.hql` soubor do clusteru LLAP pomocí protokolu SCP. Zadejte příkaz:
 
     ```bash
-    scp scripts/query.hql sshuser@LLAPCLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
+    llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
+    scp scripts/query.hql sshuser@$llapClusterName-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-2. Pomocí SSH pro přístup ke clusteru LLAP. Nahraďte `LLAPCLUSTERNAME` skutečným názvem a zadejte příkaz. Pokud jste `resourcesparameters.json` soubor nezměnili, je `Thisisapassword1`heslo .
+    Připomenutí: Výchozí heslo `Thisisapassword1`je .
+
+1. Pomocí SSH pro přístup ke clusteru LLAP. Zadejte příkaz:
 
     ```bash
-    ssh sshuser@LLAPCLUSTERNAME-ssh.azurehdinsight.net
+    ssh sshuser@$llapClusterName-ssh.azurehdinsight.net
     ```
 
-3. Ke spuštění skriptu použijte následující příkaz:
+1. Ke spuštění skriptu použijte následující příkaz:
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f query.hql
     ```
 
-Tento skript vytvoří spravovanou tabulku v clusteru interaktivních dotazů, ke které máte přístup z Power BI.
+    Tento skript vytvoří spravovanou tabulku v clusteru interaktivních dotazů, ke které máte přístup z Power BI.
 
 ### <a name="create-a-power-bi-dashboard-from-sales-data"></a>Vytvoření řídicího panelu Power BI z dat o prodeji
 
 1. Otevřete Power BI Desktop.
-1. Vyberte **Načíst data**.
-1. Vyhledejte **cluster interaktivních dotazů HDInsight**.
-1. Vložte identifikátor URI pro cluster. Měla by mít formát `https://LLAPCLUSTERNAME.azurehdinsight.net`.
 
-   Zadejte `default` databázi.
-1. Zadejte uživatelské jméno a heslo, které používáte pro přístup ke clusteru.
+1. V nabídce přejděte na **Získat data** > **Více...**  > Interaktivní dotaz **Azure** > **HDInsight**.
 
-Po načtení dat můžete experimentovat s řídicím panelem, který chcete vytvořit. Podívejte se na následující odkazy, které vám pomohou začít s řídicími panely Power BI:
+1. Vyberte **Connect** (Připojit).
+
+1. Z dialogového okna **Interaktivní dotaz HDInsight:**
+    1. Do textového pole **Server** zadejte název clusteru LLAP ve formátu `https://LLAPCLUSTERNAME.azurehdinsight.net`.
+    1. Do **database** textového pole `default`databáze zadejte .
+    1. Vyberte **OK**.
+
+1. Z dialogového okna **AzureHive:**
+    1. Do textového pole Uživatelské `admin` **jméno** zadejte .
+    1. Do **Password** textového pole `Thisisapassword1`Heslo zadejte .
+    1. Vyberte **Connect** (Připojit).
+
+1. Z **navigátoru** `sales`vyberte `sales_raw` a/nebo zobrazte náhled dat. Po načtení dat můžete experimentovat s řídicím panelem, který chcete vytvořit. Podívejte se na následující odkazy, které vám pomohou začít s řídicími panely Power BI:
 
 * [Úvod do řídicích panelů pro návrháře Power BI](https://docs.microsoft.com/power-bi/service-dashboards)
 * [Kurz: Začínáme se službou Power BI](https://docs.microsoft.com/power-bi/service-get-started)
@@ -281,9 +275,18 @@ Po načtení dat můžete experimentovat s řídicím panelem, který chcete vyt
 
 Pokud nebudete nadále používat tuto aplikaci, odstraňte všechny prostředky pomocí následujícího příkazu, abyste za ně nebyli účtováni.
 
-```azurecli-interactive
-az group delete -n $resourceGroup
-```
+1. Chcete-li skupinu prostředků odebrat, zadejte příkaz:
+
+    ```azurecli
+    az group delete -n $resourceGroup
+    ```
+
+1. Chcete-li odebrat instanční objekt, zadejte příkazy:
+
+    ```azurecli
+    servicePrincipal=$(cat serviceprincipal.json | jq -r '.name')
+    az ad sp delete --id $servicePrincipal
+    ```
 
 ## <a name="next-steps"></a>Další kroky
 

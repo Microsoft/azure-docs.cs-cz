@@ -3,12 +3,12 @@ title: Export pomocí Stream Analytics z Azure Application Insights | Dokumenty 
 description: Stream Analytics může průběžně transformovat, filtrovat a směrovat data, která exportujete z Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664010"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536875"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Zpracování exportovaných dat z přehledů aplikací pomocí služby Stream Analytics
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideální nástroj pro zpracování dat [exportovaných z Application Insights](export-telemetry.md). Stream Analytics může přitahovat data z různých zdrojů. Může transformovat a filtrovat data a pak je směrovat do různých jímek.
@@ -55,7 +55,7 @@ Nepřetržitý export vždy vydezkuje data do účtu Azure Storage, takže nejd�
 
     ![Výběr typů událostí](./media/export-stream-analytics/080.png)
 
-1. Nechte některá data hromadit. Sednout si a nechat lidi používat vaši žádost na chvíli. Telemetrie přijde a uvidíte statistické grafy v [průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md) a jednotlivé události v [diagnostickévyhledávání](../../azure-monitor/app/diagnostic-search.md). 
+1. Nechte některá data hromadit. Sednout si a nechat lidi používat vaši žádost na chvíli. Telemetrie přijde a uvidíte statistické grafy v [průzkumníku metrik](../../azure-monitor/platform/metrics-charts.md) a jednotlivé události v [diagnostickévyhledávání](../../azure-monitor/app/diagnostic-search.md). 
    
     A také se data exportují do vašeho úložiště. 
 2. Zkontrolujte exportovaná data. Ve Visual Studiu zvolte **Zobrazit / Průzkumníka Cloudu**a otevřete Azure / Storage. (Pokud nemáte tuto možnost nabídky, musíte nainstalovat sadu Azure SDK: Otevřete dialogové okno Nový projekt a otevřete Visual C# / Cloud / Get Microsoft Azure SDK pro .NET.)

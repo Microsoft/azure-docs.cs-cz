@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262890"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534461"
 ---
 # <a name="application-configuration-options"></a>Možnosti konfigurace aplikace
 
@@ -106,11 +106,11 @@ Identifikátor URI přesměrování je identifikátor URI, do který poskytovate
 ### <a name="redirect-uri-for-public-client-apps"></a>Přesměrovat identifikátor URI pro aplikace veřejných klientů
 
 Pokud jste vývojář aplikací pro veřejné klienty, který používá MSAL:
-- Chcete je používat `.WithDefaultRedirectUri()` v aplikacích pro stolní počítače nebo UPW (MSAL.NET 4.1+). Tato metoda nastaví vlastnost uri přesměrování veřejné klientské aplikace na výchozí doporučenou uri přesměrování pro veřejné klientské aplikace. 
+- Chcete je používat `.WithDefaultRedirectUri()` v aplikacích pro stolní počítače nebo UPW (MSAL.NET 4.1+). Tato metoda nastaví vlastnost uri přesměrování veřejné klientské aplikace na výchozí doporučenou uri přesměrování pro veřejné klientské aplikace.
 
-  Platforma  | Identifikátor URI pro přesměrování  
+  Platforma  | Identifikátor URI pro přesměrování
   ---------  | --------------
-  Aplikace pro stolní počítače (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+  Aplikace pro stolní počítače (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient`
   UWP | hodnotu `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`. To umožňuje s přihlašování s prohlížečem nastavením hodnoty na výsledek WebAuthenticationBroker.GetCurrentApplicationCallbackUri(), které je třeba zaregistrovat
   .NET Core | `https://localhost`. To umožňuje uživateli používat systémový prohlížeč pro interaktivní ověřování, protože rozhraní .NET Core nemá uživatelské rozhraní pro vložené webové zobrazení v tuto chvíli.
 
@@ -138,7 +138,7 @@ U aplikací pro daemon není nutné zadávat identifikátor URI přesměrování
 
 Tato možnost určuje tajný klíč klienta pro důvěrnou klientskou aplikaci. Tento tajný klíč (heslo aplikace) poskytuje portál pro registraci aplikací nebo je poskytován službě Azure AD během registrace aplikace pomocí PowerShell AzureAD, PowerShell AzureRM nebo Azure CLI.
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Ostatní možnosti konfigurace umožňují protokolování a odstraňování potíží. Podrobnosti o jejich použití najdete v článku [Protokolování.](msal-logging.md)
 

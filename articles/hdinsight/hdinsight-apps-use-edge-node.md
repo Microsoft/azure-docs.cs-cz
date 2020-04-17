@@ -1,56 +1,58 @@
 ---
 title: Použití prázdných hraničních uzlů v clusterech Apache Hadoop v Azure HDInsight
-description: Jak přidat prázdný uzel okraje do clusteru HDInsight, který lze použít jako klient, a potom testovat/hostovat aplikace HDInsight.
+description: Jak přidat prázdný uzel okraje do clusteru HDInsight. Používá se jako klient a pak testujte nebo hostujte aplikace HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 01/27/2020
-ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: f6dea00bf3b3e8a58f42da8fd8ad59ccec2dea72
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272601"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537793"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Použití prázdných hraničních uzlů v clusterech Apache Hadoop v HDInsightu
 
-Přečtěte si, jak přidat prázdný hraniční uzel do clusteru HDInsight. Prázdný hraniční uzel je virtuální počítač Linuxu se stejnými klientskými nástroji nainstalovanými a nakonfigurovanými jako v hlavových uzlech, ale bez spuštěných služeb [Apache Hadoop.](https://hadoop.apache.org/) Hraniční uzel můžete použít pro přístup ke clusteru, testování klientských aplikací a hostování klientských aplikací.
+Přečtěte si, jak přidat prázdný hraniční uzel do clusteru HDInsight. Prázdný hraniční uzel je virtuální počítač Linuxu se stejnými klientskými nástroji nainstalovanými a nakonfigurovanými jako v hlavových uzlech. Ale bez spuštěných služeb [Apache Hadoop.](./hadoop/apache-hadoop-introduction.md) Hraniční uzel můžete použít pro přístup ke clusteru, testování klientských aplikací a hostování klientských aplikací.
 
 Prázdný uzel hrany můžete přidat do existujícího clusteru HDInsight do nového clusteru při vytváření clusteru. Přidání prázdného hraničního uzlu se provádí pomocí šablony Azure Resource Manager.  Následující ukázka ukazuje, jak se to provádí pomocí šablony:
 
-    "resources": [
-        {
-            "name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
-            "type": "Microsoft.HDInsight/clusters/applications",
-            "apiVersion": "2015-03-01-preview",
-            "dependsOn": [ "[concat('Microsoft.HDInsight/clusters/',parameters('clusterName'))]" ],
-            "properties": {
-                "marketPlaceIdentifier": "EmptyNode",
-                "computeProfile": {
-                    "roles": [{
-                        "name": "edgenode",
-                        "targetInstanceCount": 1,
-                        "hardwareProfile": {
-                            "vmSize": "{}"
-                        }
-                    }]
-                },
-                "installScriptActions": [{
-                    "name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
-                    "uri": "[parameters('installScriptAction')]",
-                    "roles": ["edgenode"]
-                }],
-                "uninstallScriptActions": [],
-                "httpsEndpoints": [],
-                "applicationType": "CustomApplication"
-            }
+```json
+"resources": [
+    {
+        "name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
+        "type": "Microsoft.HDInsight/clusters/applications",
+        "apiVersion": "2015-03-01-preview",
+        "dependsOn": [ "[concat('Microsoft.HDInsight/clusters/',parameters('clusterName'))]" ],
+        "properties": {
+            "marketPlaceIdentifier": "EmptyNode",
+            "computeProfile": {
+                "roles": [{
+                    "name": "edgenode",
+                    "targetInstanceCount": 1,
+                    "hardwareProfile": {
+                        "vmSize": "{}"
+                    }
+                }]
+            },
+            "installScriptActions": [{
+                "name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
+                "uri": "[parameters('installScriptAction')]",
+                "roles": ["edgenode"]
+            }],
+            "uninstallScriptActions": [],
+            "httpsEndpoints": [],
+            "applicationType": "CustomApplication"
         }
-    ],
+    }
+],
+```
 
-Jak je znázorněno v ukázce, můžete volitelně volat [akci skriptu](hdinsight-hadoop-customize-cluster-linux.md) k provedení další konfigurace, jako je například instalace [Apache Hue](hdinsight-hadoop-hue-linux.md) v hraničním uzlu. Skript akce skriptu musí být veřejně přístupné na webu.  Například pokud je skript uložený ve službě Azure Storage, použijte veřejné kontejnery nebo veřejné objekty BLOB.
+Jak je znázorněno v ukázce, můžete volitelně volat [akci skriptu](hdinsight-hadoop-customize-cluster-linux.md) pro další konfiguraci. Například instalace [Apache Hue](hdinsight-hadoop-hue-linux.md) v hraničním uzlu. Skript akce skriptu musí být veřejně přístupné na webu.  Například pokud je skript uložený ve službě Azure Storage, použijte veřejné kontejnery nebo veřejné objekty BLOB.
 
 Velikost virtuálního počítače hraničního uzlu musí splňovat požadavky na velikost virtuálního počítače clusteru CLUSTERU HDInsight. Doporučené velikosti virtuálních portů pracovních uzlů najdete v tématu [Vytvoření clusterů Apache Hadoop v HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-type).
 
@@ -69,7 +71,7 @@ Po vytvoření hraničního uzlu se můžete připojit k hraničnímu uzlu pomoc
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Přidání hraničního uzlu do existujícího clusteru
 
-V této části použijete šablonu Správce prostředků k přidání hraničního uzlu do existujícího clusteru HDInsight.  Šablonu Správce prostředků najdete na [GitHubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Šablona Správce prostředků volá akci https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.shskriptu umístěnou na adrese . Skript neprovádí žádné akce.  Je to demonstrovat volání skriptakce ze šablony Správce prostředků.
+V této části použijete šablonu Správce prostředků k přidání hraničního uzlu do existujícího clusteru HDInsight.  Šablonu Správce prostředků najdete na [GitHubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Šablona Správce prostředků volá akci https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.shskriptu umístěnou na adrese . Skript nedělá žádné akce.  Je to demonstrovat volání skriptakce ze šablony Správce prostředků.
 
 1. Vyberte následující bitovou kopii, kterou chcete přihlásit do Azure a otevřete šablonu Azure Resource Manager na webu Azure Portal.
 
@@ -91,7 +93,7 @@ V této části použijete šablonu Správce prostředků k přidání hraničn�
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Přidání hraničního uzlu při vytváření clusteru
 
-V této části použijete šablonu Správce prostředků k vytvoření clusteru HDInsight s hraničním uzlem.  Šablonu Správce prostředků najdete v [galerii šablon rychlého startu Azure](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Šablona Správce prostředků volá akci https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.shskriptu umístěnou na adrese . Skript neprovádí žádné akce.  Je to demonstrovat volání skriptakce ze šablony Správce prostředků.
+V této části použijete šablonu Správce prostředků k vytvoření clusteru HDInsight s hraničním uzlem.  Šablonu Správce prostředků najdete v [galerii šablon rychlého startu Azure](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Šablona Správce prostředků volá akci https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.shskriptu umístěnou na adrese . Skript nedělá žádné akce.  Je to demonstrovat volání skriptakce ze šablony Správce prostředků.
 
 1. Pokud cluster HDInsight ještě nemáte, vytvořte ho.  Viz [Začínáme používat Hadoop v HDInsightu](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -119,7 +121,7 @@ V této části použijete šablonu Správce prostředků k vytvoření clusteru
 
 ## <a name="add-multiple-edge-nodes"></a>Přidání více uzlů okrajů
 
-Do clusteru HDInsight můžete přidat více hraničních uzlů.  Konfiguraci více hraničních uzlů lze provést jenom pomocí šablon Azure Resource Manager.  Viz ukázka šablony na začátku tohoto článku.  Je třeba aktualizovat **targetInstanceCount** tak, aby odráželpočet hraničních uzlů, které chcete vytvořit.
+Do clusteru HDInsight můžete přidat více hraničních uzlů.  Konfiguraci více hraničních uzlů lze provést jenom pomocí šablon Azure Resource Manager.  Viz ukázka šablony na začátku tohoto článku.  Aktualizujte **targetInstanceCount** tak, aby odrážel počet hraničních uzlů, které chcete vytvořit.
 
 ## <a name="access-an-edge-node"></a>Přístup k hraničnímu uzlu
 

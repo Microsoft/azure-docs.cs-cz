@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: 2929b94a2cb624b96649292714fe93dea09a2085
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7ba845e79074313f0ccf2c066ba016bd72d46efe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886496"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534563"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Průvodce migrací ADAL to MSAL pro Javu
 
@@ -109,7 +109,8 @@ PublicClientApplication app = PublicClientApplication.builder(CLIENT_ID) // Clie
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
-Vrátí `IAuthenticationResult` přístupový token a id token, zatímco váš nový obnovovací token je uložen v mezipaměti. Aplikace bude nyní také obsahovat iÚčet:
+Vrátí `IAuthenticationResult` přístupový token a id token, zatímco váš nový obnovovací token je uložen v mezipaměti.
+Aplikace bude nyní také obsahovat iÚčet:
 
 ```java
 Set<IAccount> accounts =  app.getAccounts().join();
@@ -118,6 +119,6 @@ Set<IAccount> accounts =  app.getAccounts().join();
 Chcete-li použít tokeny, které jsou nyní v mezipaměti, volejte:
 
 ```java
-SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build(); 
+SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build();
 IAuthenticationResult result = app.acquireToken(parameters);
 ```

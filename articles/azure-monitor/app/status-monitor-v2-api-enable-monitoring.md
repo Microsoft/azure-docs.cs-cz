@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 8bbdc96a49fffc91f80d24a9eb0926766f86ee16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5d66c5c21f7491e3bdc6bb70f693c3b98bf62dd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671303"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536739"
 ---
 # <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Rozhraní API agenta Application Insights: Enable-ApplicationInsightsMonitoring
 
@@ -66,10 +66,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ## <a name="parameters"></a>Parametry
 
 ### <a name="-instrumentationkey"></a>-InstrumentationKey
-**Požadované.** Tento parametr slouží k zadání jediného klíče instrumentace pro všechny aplikace v cílovém počítači.
+**Povinná hodnota.** Tento parametr slouží k zadání jediného klíče instrumentace pro všechny aplikace v cílovém počítači.
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Požadované.** Tento parametr slouží k zadání více instrumentačních klíčů a mapování instrumentačních klíčů používaných každou aplikací.
+**Povinná hodnota.** Tento parametr slouží k zadání více instrumentačních klíčů a mapování instrumentačních klíčů používaných každou aplikací.
 Nastavením `MachineFilter`můžete vytvořit jeden instalační skript pro několik počítačů .
 
 > [!IMPORTANT]
@@ -147,7 +147,7 @@ Successfully enabled Application Insights Status Monitor
 ## <a name="next-steps"></a>Další kroky
 
   Zobrazení telemetrických dat:
- - [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) a sledujte výkon a využití.
+ - [Prozkoumejte metriky](../../azure-monitor/platform/metrics-charts.md) a sledujte výkon a využití.
 - [Hledat události a protokoly](../../azure-monitor/app/diagnostic-search.md) diagnostikovat problémy.
 - Pro pokročilejší dotazy [použijte službu Analytics.](../../azure-monitor/app/analytics.md)
 - [Vytvořte řídicí panely](../../azure-monitor/app/overview-dashboard.md).

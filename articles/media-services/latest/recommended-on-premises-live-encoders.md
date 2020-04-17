@@ -6,15 +6,15 @@ keywords: kódování;kodéry;média
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 5e16f1fb948ddb435c5002c16125b36fa61d50a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbd2929e245fa5fc01245e7bd02e537db8d5ef36
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336246"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536331"
 ---
 # <a name="tested-on-premises-live-streaming-encoders"></a>Testované místní kodéry živého streamování
 
@@ -58,7 +58,6 @@ Při streamování přes RTMPS zkontrolujte nastavení brány firewall nebo prox
 - Telestream Wirecast S (podporuje se pouze RTMP)
 - Teradek Slice 756
 - TriCaster 8000
-- Tricaster Mini HD-4
 - VMIX
 - xStream
 - [Ffmpeg](https://www.ffmpeg.org)

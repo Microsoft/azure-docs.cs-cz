@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 4332755c1ee47cd648f048768307846f02503e20
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0a41165a77ff5f98a6a0bb408da62cb6c4cb35f8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407046"
+ms.locfileid: "81536076"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Úvodní příručka: Získání tokenu a volání rozhraní Microsoft Graph API pomocí identity konzolové aplikace
 
@@ -50,7 +50,7 @@ Tento rychlý start vyžaduje [.NET Core 2.2](https://www.microsoft.com/net/down
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 > 1. Přejděte na platformu identit Microsoftpro vývojáře [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
 > 1. Vyberte **možnost Nová registrace**.
-> 1. Po zobrazení stránky **Registrovat přihlášku** zadejte registrační údaje vaší žádosti. 
+> 1. Po zobrazení stránky **Registrovat přihlášku** zadejte registrační údaje vaší žádosti.
 > 1. V části **Název** zadejte smysluplný název aplikace, který se zobrazí `Daemon-console`uživatelům aplikace, například , a pak vyberte **Registrovat** a vytvořte aplikaci.
 > 1. Po registraci vyberte nabídku **Certifikáty & tajných kódů.**
 > 1. V části **Tajné klíče klienta**vyberte **možnost + Nový tajný klíč klienta**. Pojmenujte ho a vyberte **Přidat**. Zkopírujte tajný klíč na bezpečném místě. Budete potřebovat k použití ve vašem kódu.
@@ -60,7 +60,7 @@ Tento rychlý start vyžaduje [.NET Core 2.2](https://www.microsoft.com/net/down
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Stažení a konfigurace aplikace quickstart
-> 
+>
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
 > Pro ukázku kódu pro tento rychlý start pracovat, musíte vytvořit tajný klíč klienta a přidat rozhraní **User.Read.All** rozhraní api rozhraní graph.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -82,14 +82,14 @@ Tento rychlý start vyžaduje [.NET Core 2.2](https://www.microsoft.com/net/down
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
-    
+
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Nakonfigurujte si projekt sady Visual Studio
-> 
+>
 > 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
 > 1. Otevřete řešení v sadě Visual Studio - **1-Call-MSGraph\daemon-console.sln** (volitelné).
 > 1. Upravte **soubor appsettings.json** a `ClientId`nahraďte hodnoty polí `Tenant` a `ClientSecret` následujícími hodnotami:
-> 
+>
 >    ```json
 >    "Tenant": "Enter_the_Tenant_Id_Here",
 >    "ClientId": "Enter_the_Application_Id_Here",

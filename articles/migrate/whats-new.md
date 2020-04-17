@@ -2,18 +2,20 @@
 title: Co je nového v Azure Migrate
 description: Přečtěte si, co je nové a poslední aktualizace ve službě Migrace Azure.
 ms.topic: overview
-ms.date: 03/22/2020
+ms.date: 04/16/2020
 ms.custom: mvc
-ms.openlocfilehash: 9767f3ea31b57d23c8a6772ff5eb6500f7550802
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1b0221f497ae7bbf84f163eef1ddb862d8de2951
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80127595"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535243"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
 [Migrace Azure](migrate-services-overview.md) vám pomůže zjišťovat, vyhodnocovat a migrovat místní servery, aplikace a data do cloudu Microsoft Azure. Tento článek shrnuje nové verze a funkce v Azure Migrate.
+
+
 
 ## <a name="update-march-2020"></a>Aktualizace (březen 2020)
 
@@ -58,7 +60,7 @@ Aktuální verze Azure Migrate (vydané v červenci 2019) poskytuje řadu novýc
 
 ## <a name="azure-migrate-previous-version"></a>Azure migrovat předchozí verzi
 
-Pokud jste používali předchozí verzi Azure Migrate (bylo podporováno jenom hodnocení místních virtuálních počítačích VMware), měli byste teď používat aktuální verzi. V předchozí verzi už nemůžete vytvářet nové projekty Migrace Azure ani provádět nové zjišťování. Stále můžete přistupovat k existujícím projektům. Chcete-li to provést na webu Azure Portal > **Všechny služby**, **vyhledejte Azure Migrate**. V oznámeních migrace Azure je odkaz pro přístup ke starým projektům Migrace Azure.
+Pokud používáte předchozí verzi Azure Migrate (bylo podporované jenom místní virtuální počítače VMware), měli byste teď použít aktuální verzi. V předchozí verzi už nemůžete vytvářet nové projekty Migrace Azure ani provádět nové zjišťování. Stále můžete přistupovat k existujícím projektům. Chcete-li to provést na webu Azure Portal > **Všechny služby**, **vyhledejte Azure Migrate**. V oznámeních migrace Azure je odkaz pro přístup ke starým projektům Migrace Azure.
 
 
 

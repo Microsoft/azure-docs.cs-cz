@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 3fbc4e683c2b0e72c3a084a59793dbf9eb4b658c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cecafd9209b095270e9a06ca59ffef162326efc2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657405"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537997"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -118,8 +118,6 @@ Vyplňte tyto hodnoty pro každou cestu oboru názvů:
 
 * **Cesta virtuálního oboru názvů** – Nastavte cestu k souboru směřující ke klientovi pro tento cíl úložiště. Další informace o funkci virtuálního oboru názvů najdete v [části Konfigurace agregovaného oboru](hpc-cache-namespace.md) názvů.
 
-<!--  The virtual path should start with a slash ``/``. -->
-
 * **Cesta exportu nfs** - Zadejte cestu k exportu nfs.
 
 * **Cesta podadresáře** - Chcete-li připojit určitý podadresář exportu, zadejte jej sem. Pokud ne, ponechte toto pole prázdné.
@@ -151,9 +149,9 @@ Tato tabulka shrnuje rozdíly v modelu použití:
 
 | Model použití | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění zpětného zápisu |
 | ---- | ---- | ---- | ---- |
-| Přečtěte si těžké, řídké zápisy | Čtení | Never (Nikdy) | Žádný |
+| Přečtěte si těžké, řídké zápisy | Čtení | Never (Nikdy) | Žádná |
 | Více než 15% píše | Čtení/zápis | Never (Nikdy) | 1 hodina |
-| Klienti obejít mezipaměť | Čtení | 30 sekund | Žádný |
+| Klienti obejít mezipaměť | Čtení | 30 sekund | Žádná |
 
 ## <a name="next-steps"></a>Další kroky
 

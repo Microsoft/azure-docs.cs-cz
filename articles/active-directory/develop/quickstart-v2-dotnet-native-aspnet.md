@@ -1,5 +1,5 @@
 ---
-title: Volání webového rozhraní API ASP.NET chráněného platformou identit microsoftu
+title: Volání webového rozhraní API ASP.NET chráněného platformou identit Microsoftu
 description: V tomto rychlém startu se dozvíte, jak volat ASP.NET webové rozhraní API chráněné platformou identit microsoftu z aplikace WPF (Windows Desktop). WPF klient ověřuje uživatele, požaduje přístupový token a volá webové rozhraní API.
 services: active-directory
 author: jmprieur
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 582afef8929da2ba75aab70c1ed0fa9e57fd3f19
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76703469"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536144"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Úvodní příručka: Volání webového rozhraní API ASP.NET chráněného platformou identit microsoftu
+# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Úvodní příručka: Volání webového rozhraní API ASP.NET chráněného platformou identit Microsoftu
 
-V tomto rychlém startu vystavit webové rozhraní API a chránit tak, aby pouze ověřený uživatel přístup k němu. Tato ukázka ukazuje, jak vystavit webové rozhraní API pro ASP.NET, aby mohlo přijímat tokeny vydané osobními účty (včetně outlook.com, live.com a dalších) a také pracovní a školní účty od jakékoli společnosti nebo organizace, která je integrována s identitou Microsoftu Platforma.
+V tomto rychlém startu vystavit webové rozhraní API a chránit tak, aby pouze ověřený uživatel přístup k němu. Tato ukázka ukazuje, jak vystavit ASP.NET webové rozhraní API, aby mohlo přijímat tokeny vydané osobními účty (včetně outlook.com, live.com a dalších) a také pracovní a školní účty od jakékoli společnosti nebo organizace, která je integrována s platformou identit Microsoftu.
 
 Ukázka také obsahuje klienta aplikace WPF (Windows Desktop), který ukazuje, jak můžete požádat o přístupový token pro přístup k webovému rozhraní API.
 
@@ -69,13 +69,13 @@ Pokud chcete aplikace zaregistrovat ručně, jako první krok budete muset:
      - pro použití **názvu oboru**`access_as_user`
      - Ujistěte se, že je vybrána možnost **Správci a uživatelé** pro **kdo může souhlasit**
      - v typu **zobrazovaného názvu souhlasu správce**`Access TodoListService as a user`
-     - v typu **popisu souhlasu správce**`Accesses the TodoListService Web API as a user`
+     - v typu **popisu souhlasu správce**`Accesses the TodoListService web API as a user`
      - v typu **zobrazovaného názvu uživatelského souhlasu**`Access TodoListService as a user`
-     - v typu **popisu souhlasu uživatele**`Accesses the TodoListService Web API as a user`
+     - v typu **popisu souhlasu uživatele**`Accesses the TodoListService web API as a user`
      - Zachovat **stav** jako **povolený**
      - Vybrat **přidat obor**
 
-### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Konfigurace projektu služby tak, aby odpovídal registrovanému webovému rozhraní API 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Konfigurace projektu služby tak, aby odpovídal registrovanému webovému rozhraní API
 
 1. Otevřete řešení v sadě Visual Studio a potom otevřete soubor **Web.config** pod kořenem projektu **TodoListService.**
 1. Nahraďte `ida:ClientId` hodnotu parametru **ID klienta (ID aplikace)** z aplikace, kterou jste právě zaregistrovali na portálu registrace aplikací.
@@ -86,7 +86,7 @@ Pokud chcete aplikace zaregistrovat ručně, jako první krok budete muset:
 
    > Poznámka: Ujistěte se, že používá následující formát:
    >
-   > `api://{TodoListService-Application-ID}/access_as_user` 
+   > `api://{TodoListService-Application-ID}/access_as_user`
    >
    >(kde {TodoListService-Application-ID} je identifikátor GUID představující ID aplikace pro vaši službu TodoListService).
 
@@ -126,7 +126,7 @@ V tomto kroku nakonfigurujete projekt *TodoListClient* registrací nové aplikac
 
 ## <a name="pre-authorize-your-client-application"></a>Předběžná autorizace klientské aplikace
 
-Jedním ze způsobů, jak umožnit uživatelům z jiných adresářů přístup k webovému rozhraní API, je *předběžné autorizace* klientských aplikací pro přístup k webovému rozhraní API přidáním ID aplikací z klientských aplikací do seznamu *předautorizovaných* aplikací pro webové rozhraní API. Přidáním předem autorizovaného klienta nebudete vyžadovat, aby uživatel souhlasil s používáním webového rozhraní API. Chcete-li webovou aplikaci předem autorizovat, postupujte podle následujících kroků:
+Jedním ze způsobů, jak umožnit uživatelům z jiných adresářů přístup k webovému rozhraní API, je *předběžné autorizace* klientských aplikací pro přístup k webovému rozhraní API přidáním ID aplikací z klientských aplikací v seznamu *předautorizovaných* aplikací pro webové rozhraní API. Přidáním předem autorizovaného klienta nebudete od uživatele vyžadovat souhlas s používáním webového rozhraní API. Chcete-li webovou aplikaci předem autorizovat, postupujte podle následujících kroků:
 
 1. Vraťte se na *portál registrace aplikace* a otevřete vlastnosti **služby TodoListService**.
 1. V části **Vystavit rozhraní API** klikněte na Přidat **klientskou aplikaci** v části *Autorizované klientské aplikace.*
@@ -141,7 +141,7 @@ Jedním ze způsobů, jak umožnit uživatelům z jiných adresářů přístup 
 
 ## <a name="optional-restrict-sign-in-access-to-your-application"></a>Volitelné: Omezení přístupu k přihlášení k aplikaci
 
-Ve výchozím nastavení při stahování této ukázky kódu a konfiguraci aplikace tak, aby používala koncový bod Azure Active Directory v2 podle předchozích kroků, osobní účty – jako outlook.com, live.com a další – i pracovní nebo školní účty z libovolného organizace, které jsou integrované s Azure AD můžete požádat o tokeny a přístup k webovérozhraní API. 
+Ve výchozím nastavení při stažení této ukázky kódu a nakonfigurovat aplikaci tak, aby používala koncový bod Azure Active Directory v2 podle předchozích kroků, osobní účty – jako outlook.com, live.com a další – stejně jako pracovní nebo školní účty od všech organizací, které jsou integrované s Azure AD můžete požádat o tokeny a přístup k webové rozhraní API.
 
 Chcete-li omezit, kdo se může přihlásit k vaší aplikaci, použijte jednu z možností:
 

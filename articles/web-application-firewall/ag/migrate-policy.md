@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: 1fac524af4b69f8e35934840643c6d3ad99fe1cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74174600"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536620"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Migrace zásad brány firewall webových aplikací pomocí Azure PowerShellu
 
@@ -28,6 +28,13 @@ Ke spuštění skriptu pro migraci použijte následující kroky:
 2. Zkopírujte skript do okna prostředí cloudu a spusťte jej.
 3. Skript požádá o ID předplatného, název skupiny prostředků, název aplikační brány, ke které je přidružena konfigurace WAF, a název nové zásady WAF, které chcete vytvořit. Jakmile zadáte tyto vstupy, skript se spustí a vytvoří nové zásady WAF
 4. Přidružte nové zásady WAF k bráně aplikace. Přejděte na zásadu WAF na portálu a vyberte kartu **Přidružené aplikační brány.** **Associate an Application Gateway**
+
+> [!NOTE]
+> Skript nedokončí migraci, pokud existují následující podmínky:
+> - Celé pravidlo je zakázáno. Chcete-li dokončit migraci, ujistěte se, že není zakázána celá skupina pravidel.
+> - Vyloučení položky s *rovná se libovolný* operátor. Chcete-li dokončit migraci, ujistěte se, že *položky* vyloučení s Rovná se Všechny operátor není k dispozici.
+>
+> Další informace naleznete v tématu *ValidateInput* funkce ve skriptu.
 
 ```azurepowershell-interactive
 <#PSScriptInfo

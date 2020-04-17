@@ -2,14 +2,14 @@
 title: Příprava virtuálních počítačů VMware na vyhodnocení/migraci pomocí Migrace Azure
 description: Zjistěte, jak se připravit na vyhodnocení/migraci virtuálních počítačích VMware pomocí Migrace Azure.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 9f0729a3ddb2d8196a855557a6b8587940563984
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619433"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535260"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware na vyhodnocení a migraci do Azure
 
@@ -123,7 +123,7 @@ Azure Migrate potřebuje přístup k serveru vCenter, aby bylo účelem zjišťo
 Před nastavením zařízení Azure Migrate a počátečním hodnocením v dalším kurzu se připravte na nasazení zařízení.
 
 1. [Ověřit](migrate-appliance.md#appliance---vmware) Požadavky na zařízení migrace Azure.
-2. [Zkontrolujte](migrate-appliance.md#url-access) adresy URL Azure, ke kterým bude zařízení potřebovat přístup. Pokud používáte bránu firewall nebo proxy server založený na adrese URL, ujistěte se, že umožňuje přístup k požadovaným adresám URL.
+2. Zkontrolujte adresy URL Azure, ke kterým bude zařízení potřebovat přístup ve [veřejných](migrate-appliance.md#public-cloud-urls) a [vládních](migrate-appliance.md#government-cloud-urls) cloudech.
 3. [Zkontrolujte data,](migrate-appliance.md#collected-data---vmware) která zařízení shromažďuje během zjišťování a hodnocení.
 4. [Poznamenejte si](migrate-support-matrix-vmware.md#port-access) požadavky na přístup k portu pro zařízení.
 
@@ -138,7 +138,8 @@ Projděte si požadavky na [migraci](server-migrate-overview.md) virtuálních m
 2. [Zkontrolujte oprávnění,](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) která Azure Migrate potřebuje pro přístup k serveru vCenter.
 3. [Recenze](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) Požadavky na virtuální mích VMware.
 4. [Projděte si](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) požadavky na zařízení Migrace Azure.
-5. [Poznamenejte](migrate-appliance.md#url-access) si požadavky na přístup k adrese URL a [port.](migrate-support-matrix-vmware-migration.md#agentless-ports)
+5. Všimněte si přístupu url požadovaného pro [veřejné](migrate-appliance.md#public-cloud-urls) a [vládní](migrate-appliance.md#government-cloud-urls) cloudy.
+6. Zkontrolujte požadavky na [přístup k portům.](migrate-support-matrix-vmware-migration.md#agentless-ports)
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>Příprava na migraci v systému VMware založené na agentech
 
@@ -150,7 +151,8 @@ Projděte si požadavky na [migraci](server-migrate-overview.md) virtuálních m
 3. Migrace založená na agentovi používá replikační zařízení:
     - [Zkontrolujte](migrate-replication-appliance.md#appliance-requirements) požadavky na nasazení pro zařízení replikace.
     - [Přečtěte si možnosti](migrate-replication-appliance.md#mysql-installation) instalace MySQL na zařízení.
-    - Zkontrolujte požadavky na [adresu URL](migrate-replication-appliance.md#url-access) a přístup k [portu](migrate-replication-appliance.md#port-access) pro zařízení replikace.
+    - Poznamenejte si požadovaný přístup k [adrese](migrate-replication-appliance.md#url-access)URL .
+    - Zkontrolujte požadavky na [přístup k portu](migrate-replication-appliance.md#port-access) pro zařízení replikace.
     
 ## <a name="next-steps"></a>Další kroky
 

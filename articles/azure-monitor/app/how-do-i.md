@@ -3,12 +3,12 @@ title: Jak mohu ... v přehledech aplikací Azure | Dokumenty společnosti Micro
 description: Nejčastější dotazy v přehledech aplikací.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 5b65087c361911f0714723c315e0b7f7e9bb74e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663853"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536858"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
 ## <a name="get-an-email-when-"></a>Získejte e-mail, když ...
@@ -45,7 +45,7 @@ Vzhledem k tomu, že výstrahy mají dva stavy, musíte odeslat nízkou hodnotu,
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-Vytvořte graf v [průzkumníku metrik,](../../azure-monitor/app/metrics-explorer.md) abyste viděli budík:
+Vytvořte graf v [průzkumníku metrik,](../../azure-monitor/platform/metrics-charts.md) abyste viděli budík:
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -82,7 +82,7 @@ Některé body ke zvážení:
 
 ## <a name="visualize-data"></a>Vizualizace dat
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Řídicí panel s metrikami z více aplikací
-* V [Průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md)přizpůsobte graf a uložte ho jako oblíbenou. Připněte ji na řídicí panel Azure.
+* V [Průzkumníku metrik](../../azure-monitor/platform/metrics-charts.md)přizpůsobte graf a uložte ho jako oblíbenou. Připněte ji na řídicí panel Azure.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Řídicí panel s daty z jiných zdrojů a přehledy aplikací
 * [Export telemetrie do Power BI](../../azure-monitor/app/export-power-bi.md ).
@@ -159,5 +159,5 @@ Mezi metriky, které můžete zobrazit v průzkumníku metrik, jsou sada číta�
 * **Unix server** - [Instalace sbírat](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Zobrazení více čítačů výkonu
-* Nejprve [přidejte nový graf](../../azure-monitor/app/metrics-explorer.md) a zjistěte, zda je čítač v základní sadě, kterou nabízíme.
+* Nejprve [přidejte nový graf](../../azure-monitor/platform/metrics-charts.md) a zjistěte, zda je čítač v základní sadě, kterou nabízíme.
 * Pokud ne, [přidejte čítač do sady shromážděné modulem čítače výkonu](../../azure-monitor/app/performance-counters.md).

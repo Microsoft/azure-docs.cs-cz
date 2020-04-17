@@ -3,12 +3,12 @@ title: Naučte se auditovat obsah virtuálních počítačů
 description: Zjistěte, jak zásady Azure používají agenta konfigurace hosta k auditování nastavení uvnitř virtuálních počítačů.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4a2989badc099a199bf21f7e020ca8e6256ddaf0
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: e4899f6b3108cabb4e9cdd36e4b2bc5cd2f1cbd4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113429"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538031"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Principy konfigurace hosta zásad Azure
 
@@ -52,14 +52,14 @@ Výsledky jsou odesílány poskytovateli prostředků konfigurace hosta po dokon
 
 V následující tabulce je uveden seznam podporovaných operačních systémů v ibi Azure:
 
-|Vydavatel|Name (Název)|Verze|
+|Vydavatel|Název|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |Kredativ|Debian|8, 9|
 |Microsoft|Windows Server|Datacentrum 2012, Datacentrum 2012 R2, Datacentrum 2016, Datacentrum 2019|
 |Microsoft|Klient Windows|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7|
+|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7, 7.8|
 |Suse|SLES|12 AKTUALIZACE SP3|
 
 ### <a name="unsupported-client-types"></a>Nepodporované typy klientů

@@ -3,12 +3,12 @@ title: Nastavení pořadí nasazení pro prostředky
 description: Popisuje, jak nastavit jeden prostředek jako závislý na jiném prostředku během nasazení, aby bylo zajištěno, že prostředky jsou nasazeny ve správném pořadí.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: f11f79df875492a568a76f494dfffb4a163f64cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153280"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535464"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Definování pořadí pro nasazení prostředků v šablonách ARM
 
@@ -18,7 +18,7 @@ Resource Manager vyhodnocuje závislosti mezi prostředky a provádí nasazení 
 
 ## <a name="dependson"></a>dependsOn
 
-V rámci šablony dependsOn element umožňuje definovat jeden prostředek jako závislé na jednom nebo více prostředků. Jeho hodnota je seznam názvů prostředků oddělený čárkami. Seznam může obsahovat prostředky, které jsou [podmíněně nasazeny](conditional-resource-deployment.md). Když se podmíněný prostředek nenasadí, Azure Resource Manager ho automaticky odebere z požadovaných závislostí.
+V rámci šablony dependsOn element umožňuje definovat jeden prostředek jako závislé na jednom nebo více prostředků. Jeho hodnota je json pole řetězců, z nichž každý je název prostředku. Pole může obsahovat prostředky, které jsou [podmíněně nasazeny](conditional-resource-deployment.md). Když se podmíněný prostředek nenasadí, Azure Resource Manager ho automaticky odebere z požadovaných závislostí.
 
 Následující příklad ukazuje škálovací sadu virtuálních počítačů, která závisí na nástrojpro vyrovnávání zatížení, virtuální síti a smyčce, která vytváří více účtů úložiště. Tyto další prostředky nejsou uvedeny v následujícím příkladu, ale musely by existovat jinde v šabloně.
 

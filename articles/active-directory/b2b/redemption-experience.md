@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043e0f3a0ff2c1c642c63a387c571b575f77cf7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0645807aa40557c163643f1393c310668518f9be
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050833"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535127"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Využití pozvánky ke spolupráci služby Azure Active Directory B2B
 
@@ -52,6 +52,36 @@ Existují některé případy, kdy je e-mail s pozvánkou doporučen přes pří
  - V některých případě nemusí mít pozvaný objekt uživatele e-mailovou adresu z důvodu konfliktu s objektem kontaktu (například objekt kontaktu aplikace Outlook). V takovém případě musí uživatel kliknout na adresu URL pro využití v e-mailu s pozvánkou.
  - Uživatel se může přihlásit pomocí aliasu e-mailové adresy, která byla pozvána. (Alias je další e-mailová adresa přidružená k e-mailovému účtu.) V takovém případě musí uživatel kliknout na adresu URL pro využití v e-mailu s pozvánkou.
 
+## <a name="invitation-redemption-flow"></a>Tok uplatnění pozvánky
+
+Když uživatel klikne na odkaz **Přijmout pozvánku** v [e-mailu s pozvánkou](invitation-email-elements.md), Azure AD pozvánku automaticky uplatní na základě toku využití, jak je znázorněno níže:
+
+![Snímek obrazovky s diagramem toku využití](media/redemption-experience/invitation-redemption-flow.png)
+
+1. Proces uplatnění zkontroluje, zda má uživatel existující osobní [účet Microsoft (MSA).](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)
+
+2. Pokud správce povolil [přímou federaci](direct-federation.md), Azure AD zkontroluje, jestli přípona domény uživatele odpovídá doméně nakonfigurovaného poskytovatele identity SAML/WS-Fed, a přesměruje uživatele na předem nakonfigurovaného zprostředkovatele identity.
+
+3. Pokud správce povolil [federaci Google](google-federation.md), Azure AD zkontroluje, jestli je přípona domény uživatele gmail.com nebo googlemail.com a přesměruje uživatele na Google.
+
+4. Azure AD provádí zjišťování na základě uživatele k určení, pokud uživatel existuje v [existujícím tenantovi Azure AD](what-is-b2b.md#easily-add-guest-users-in-the-azure-ad-portal).
+
+5. Jakmile je identifikován **domovský adresář** uživatele, je uživatel odeslán odpovídajícímu poskytovateli identity k přihlášení.  
+
+6. Pokud se krokům 1 až 4 nepodaří najít domovský adresář pro pozvaného uživatele, Azure AD určuje, zda zvoucí tenant povolil funkci [E-mail s jednorázovým přístupovým kódem (OTP)](one-time-passcode.md) pro hosty.
+
+7. Pokud [je povolen jednorázový přístupový kód e-mailem pro hosty](one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode), je uživateli prostřednictvím pozvaných e-mailů odeslán přístupový kód. Uživatel načte a zadá tento přístupový kód na přihlašovací stránce Azure AD.
+
+8. Pokud je jednorázový přístupový kód pro hosty zakázán, Azure AD zkontroluje příponu domény podle seznamu domén příjemce spravovaného společností Microsoft. Pokud se doména shoduje s libovolnou doménou v seznamu domén příjemce, bude uživatel vyzván k vytvoření osobního účtu Microsoft. Pokud ne, uživatel je vyzván k vytvoření [samoobslužného účtu Azure AD](../users-groups-roles/directory-self-service-signup.md) (virální účet).
+
+9. Azure AD se pokusí vytvořit samoobslužný účet Azure AD (virální účet) ověřením přístupu k e-mailu. Ověření účtu se provádí odesláním kódu do e-mailu a mít uživatele načíst a odeslat do Azure AD. Pokud je však klient pozvaného uživatele federován nebo pokud je pole AllowEmailVerifiedUsers v tenantovi pozvaného uživatele nastaveno na hodnotu false, uživatel nemůže dokončit uplatnění a tok má za následek chybu. Další informace naleznete [v části Poradce při potížích se službou Azure Active Directory B2B collaboration](troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption).
+
+10. Uživatel je vyzván k vytvoření osobního účtu Microsoft (MSA).
+
+11. Po ověření na správné poskytovatele identity, uživatel je přesměrován do Služby Azure AD k dokončení [prostředí souhlasu](redemption-experience.md#consent-experience-for-the-guest).  
+
+Pro uplatnění just-in-time (JIT), kde je uplatnění prostřednictvím propojení aplikace klienta, kroky 8 až 10 nejsou k dispozici. Pokud uživatel dosáhne kroku 6 a funkce Jednorázového hesla E-mail není povolena, zobrazí se chybová zpráva a nemůže pozvánku uplatnit. Chcete-li tomu zabránit, správci by měli buď [povolit jednorázový přístupový kód E-mail,](one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode) nebo zajistit, aby uživatel kliknul na odkaz s pozvánkou.
+
 ## <a name="consent-experience-for-the-guest"></a>Zkušenosti se souhlasem hosta
 
 Když se host poprvé přihlásí k přístupu k prostředkům v partnerské organizaci, provede se následujícími stránkami. 
@@ -67,8 +97,7 @@ Když se host poprvé přihlásí k přístupu k prostředkům v partnerské org
 
    ![Snímek obrazovky s novými podmínkami použití](media/redemption-experience/terms-of-use-accept.png) 
 
-   > [!NOTE]
-   > Podmínky použití můžete nakonfigurovat v části **Správa** >  [organizačních](../governance/active-directory-tou.md) **vztahů** > **Podmínky použití**.
+   Podmínky použití můžete nakonfigurovat v části **Správa** >  [organizačních](../governance/active-directory-tou.md) **vztahů** > **Podmínky použití**.
 
 3. Pokud není uvedeno jinak, host je přesměrován na přístupový panel Aplikace, který uvádí aplikace, ke kterým má host přístup.
 

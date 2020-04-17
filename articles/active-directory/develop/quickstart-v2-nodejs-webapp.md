@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4aa0cce83f9adc8c648656899ec6dc12d498e26b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77160444"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536059"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Úvodní příručka: Přidání přihlášení pomocí OpenID Connect do webové aplikace Node.js
 
@@ -30,7 +30,7 @@ Chcete-li spustit tuto ukázku, budete potřebovat:
 
 * Účet [Microsoft](https://www.outlook.com) nebo [vývojářská aplikace Office 365](/office/developer-program/office-365-developer-program)
 
-## <a name="register-your-application"></a>Registrace vaší aplikace 
+## <a name="register-your-application"></a>Registrace vaší aplikace
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 1. Pokud je váš účet k dispozici ve více než jednom tenantovi Azure AD:
     - Vyberte svůj profil z nabídky v pravém horním rohu stránky a potom **přepněte adresář**.
@@ -78,7 +78,7 @@ Z prostředí nebo příkazového řádku:
 
 Z kořenového adresáře projektu spusťte příkaz:
 
-`$ npm install`  
+`$ npm install`
 
 ## <a name="configure-the-application"></a>Konfigurace aplikace
 

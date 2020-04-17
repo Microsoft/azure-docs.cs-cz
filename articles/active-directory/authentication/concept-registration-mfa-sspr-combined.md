@@ -1,26 +1,31 @@
 ---
 title: Kombinovaná registrace pro SSPR a MFA – Azure Active Directory
-description: Azure AD Vícefaktorové ověřování a samoobslužná registrace hesla (preview)
+description: Azure AD Vícefaktorové ověřování a samoobslužné registrace hesla
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26656b6dafd91d47c05c2d1f923e53f4ba790cf8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 48350bf8f0ffb8681d95f6f42f9aa93256395f9a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309919"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534682"
 ---
-# <a name="combined-security-information-registration-preview"></a>Kombinovaná registrace bezpečnostních informací (preview)
+# <a name="combined-security-information-registration-overview"></a>Přehled registrace kombinovaných bezpečnostních informací
 
 Před kombinovanou registrací uživatelé zaregistrovali metody ověřování pro Azure Multi-Factor Authentication a samoobslužné resetování hesla (SSPR) samostatně. Lidé byli zmateni, že podobné metody byly použity pro multi-factor ověřování a SSPR, ale museli se zaregistrovat pro obě funkce. Nyní, s kombinovanou registrací, se uživatelé mohou zaregistrovat jednou a získat výhody multifaktorového ověřování a samodotykového ověřování.
+
+Tento článek popisuje, co je kombinovaná registrace zabezpečení. Chcete-li začít s kombinovanou registrací zabezpečení, přečtěte si následující článek:
+
+> [!div class="nextstepaction"]
+> [Povolit kombinovanou registraci zabezpečení](howto-registration-mfa-sspr-combined.md)
 
 ![Můj profil zobrazující registrované bezpečnostní údaje pro uživatele](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
@@ -28,16 +33,10 @@ Před povolením nového prostředí si přečtěte tuto dokumentaci zaměřenou
 
 Azure AD kombinovaná registrace informací o zabezpečení není momentálně k dispozici pro národní cloudy, jako je Azure US Government, Azure Germany nebo Azure China 21Vianet.
 
-|     |
-| --- |
-| Kombinovaná registrace informací o zabezpečení pro vícefaktorové ověřování a samoobslužné resetování hesla služby Azure Active Directory (Azure AD) je funkce veřejného náhledu azure ad. Další informace o náhledech najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
-
 > [!IMPORTANT]
 > Uživatelé, kteří jsou povoleny pro původní náhled a rozšířené kombinované registrace prostředí uvidí nové chování. Uživatelům, kteří jsou povoleni pro obě prostředí, se zobrazí pouze nové prostředí Můj profil. Nový můj profil je v souladu s vzhledem kombinované registrace a poskytuje uživatelům bezproblémový zážitek. Uživatelé mohou zobrazit můj [https://myprofile.microsoft.com](https://myprofile.microsoft.com)profil tak, že přejdou na .
-
-> [!NOTE] 
-> Při pokusu o přístup k možnosti Informace o zabezpečení se může vyskytnou chybová zpráva. Například "Omlouváme se, nemůžeme vás přihlásit". V takovém případě potvrďte, že nemáte žádný objekt zásad konfigurace nebo skupiny, který blokuje soubory cookie třetích stran ve webovém prohlížeči. 
+>
+> Při pokusu o přístup k možnosti Informace o zabezpečení se může vyskytnou chybová zpráva. Například "Omlouváme se, nemůžeme vás přihlásit". V takovém případě potvrďte, že nemáte žádný objekt zásad konfigurace nebo skupiny, který blokuje soubory cookie třetích stran ve webovém prohlížeči.
 
 Stránky Můj profil jsou lokalizovány na základě nastavení jazyka počítače přistupujícího ke stránce. Společnost Microsoft ukládá nejnovější jazyk používaný v mezipaměti prohlížeče, takže následné pokusy o přístup ke stránkám se budou nadále vykreslovat v posledním použitém jazyce. Pokud vymažete mezipaměť, stránky se znovu vykreslí. Pokud chcete vynutit určitý jazyk, `?lng=<language>` můžete přidat na konec `<language>` adresy URL, kde je kód jazyka, který chcete vykreslit.
 
@@ -77,7 +76,6 @@ Jak budeme i nadále přidávat další metody ověřování do Azure AD, tyto m
 Existují dva režimy kombinované registrace: přerušení a správa.
 
 - **Režim přerušení** je prostředí podobné průvodci, které se uživatelům zobrazí při registraci nebo aktualizaci bezpečnostních údajů při přihlášení.
-
 - **Režim správy** je součástí uživatelského profilu a umožňuje uživatelům spravovat jejich bezpečnostní údaje.
 
 Pro oba režimy uživatelé, kteří dříve zaregistrovali metodu, kterou lze použít pro vícefaktorové ověřování, budou muset před přístupem ke svým bezpečnostním údajům provést vícefaktorové ověřování.
@@ -139,14 +137,8 @@ Uživatel, který dříve nastavil alespoň jednu metodu, kterou lze použít [h
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vynucení opětovné registrace metod ověřování uživatelem](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
+Chcete-li začít, podívejte se do kurzů, které [umožňují samoobslužné resetování hesla](tutorial-enable-sspr.md) a [povolují azure multifaktorové ověřování](tutorial-enable-azure-mfa.md).
 
-[Povolení kombinované registrace v tenantovi](howto-registration-mfa-sspr-combined.md)
+Zjistěte, jak [povolit kombinovanou registraci ve vašem tenantovi](howto-registration-mfa-sspr-combined.md) nebo [vynutit uživatelům znovu zaregistrovat metody ověřování](howto-mfa-userdevicesettings.md#manage-user-authentication-options).
 
-[Vykazování využití služby SSPR a mfa a přehledů](howto-authentication-methods-usage-insights.md)
-
-[Dostupné metody pro vícefaktorové ověřování a samodotykové ověřování](concept-authentication-methods.md)
-
-[Konfigurace samoobslužného resetování hesla](howto-sspr-deployment.md)
-
-[Konfigurace Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+Můžete také zkontrolovat [dostupné metody pro Azure Multi-Factor Authentication a SSPR](concept-authentication-methods.md).

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: da260074fc69fac9e98d3698bb2d40fdf80d7118
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57d6a2024cd6fd979426ca5de5e261f110f6156f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77252038"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537946"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Správa mezipaměti z webu Azure Portal
 
@@ -88,13 +88,6 @@ Při odstranění mezipaměti nejsou ovlivněny svazky back-endového úložišt
 > Azure HPC Cache automaticky nezapisuje změněná data z mezipaměti do back-endových úložných systémů před odstraněním mezipaměti.
 >
 > Chcete-li se ujistit, že všechna data v mezipaměti byla zapsána do dlouhodobého úložiště, [zastavte ji](#stop-the-cache) před odstraněním. Ujistěte se, že zobrazuje stav **Zastaveno** před kliknutím na tlačítko odstranit.
-<!--... written to long-term storage, follow this procedure:
->
-> 1. [Remove](hpc-cache-edit-storage.md#remove-a-storage-target) each storage target from the Azure HPC Cache by using the delete button on the Storage targets page. The system automatically writes any changed data from the cache to the back-end storage system before removing the target.
-> 1. Wait for the storage target to be completely removed. The process can take an hour or longer if there is a lot of data to write from the cache. When it is done, a portal notification says that the delete operation was successful, and the storage target disappears from the list.
-> 1. After all affected storage targets have been deleted, it is safe to delete the cache.
->
-> Alternatively, you can use the [flush](#flush-cached-data) option to save cached data, but there is a small risk of losing work if a client writes a change to the cache after the flush completes but before the cache instance is destroyed.-->
 
 ## <a name="cache-metrics-and-monitoring"></a>Metriky mezipaměti a monitorování
 
@@ -106,6 +99,5 @@ Tyto grafy jsou součástí integrovaných nástrojů Azure pro monitorování a
 
 ## <a name="next-steps"></a>Další kroky
 
-<!-- * Learn more about metrics and statistics for hpc cache -->
 * Další informace o [metrikách azure a nástrojích statistik](../azure-monitor/index.yml)
 * Získání [nápovědy k azure hpc meziporám](hpc-cache-support-ticket.md)

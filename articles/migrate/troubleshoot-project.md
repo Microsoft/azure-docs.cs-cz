@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: 3b8c2f6ec33965317d2aaa23a36b6becff11a54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75725725"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535396"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Řešení problémů s projekty Azure Migrate
 
@@ -32,7 +32,7 @@ Nalezení existujícího projektu Migrace Azure závisí na tom, jestli použív
 
 ## <a name="cant-find-a-geography"></a>Nelze najít geografii
 
-Projekt Migrace Azure můžete vytvořit v [podporovaných zeměpisných oblastech](migrate-support-matrix.md#supported-geographies). Všimněte si, že geografie projektu se používá k ukládání metadat zjištěného počítače. Počítače můžete vyhodnotit nebo migrovat i v jiných umístěních.
+Projekt Migrace Azure můžete vytvořit v podporovaných zeměpisných oblastech pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
 
 ## <a name="what-are-vm-limits"></a>Co jsou limity virtuálních mís?
 

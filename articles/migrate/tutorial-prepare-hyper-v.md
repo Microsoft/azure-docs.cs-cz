@@ -2,14 +2,14 @@
 title: Příprava virtuálních počítačů Hyper-V na vyhodnocení a migraci pomocí migrace Azure
 description: Zjistěte, jak se připravit na vyhodnocení/migraci virtuálních počítačích Hyper-V pomocí Migrace Azure.
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: e86e634812e9f2782a003a11b48cfecf91d95359
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436231"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535294"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na vyhodnocení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -19,7 +19,7 @@ Tento článek popisuje, jak se připravit na vyhodnocení místních virtuáln�
 Tento kurz je první z řady, která ukazuje, jak posoudit a migrovat hypervirtuální počítače do Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Příprava Azure. Nastavte oprávnění pro svůj účet Azure a prostředky pro práci s Azure Migrate.
+> * Připravte Azure. Nastavte oprávnění pro svůj účet Azure a prostředky pro práci s Azure Migrate.
 > * Připravte místní hostitele Hyper-V a virtuální chod y pro vyhodnocení serveru. Můžete připravit pomocí konfiguračního skriptu nebo ručně.
 > * Připravte se na nasazení zařízení Azure Migrate. Zařízení se používá ke zjišťování a vyhodnocovat místní virtuální počítač.
 > * Připravte místní hostitele Hyper-V a virtuální chody pro migraci serveru.
@@ -214,9 +214,11 @@ Při nastavování spotřebiče dokončete nastavení CredSSP [povolením přís
 Před nastavením zařízení Azure Migrate a počátečním hodnocením v dalším kurzu se připravte na nasazení zařízení.
 
 1. [Ověřte](migrate-appliance.md#appliance---hyper-v) požadavky na spotřebič.
-2. [Zkontrolujte](migrate-appliance.md#url-access) adresy URL Azure, ke kterým bude zařízení potřebovat přístup.
+2. Zkontrolujte adresy URL Azure, ke kterým bude zařízení potřebovat přístup ve [veřejných](migrate-appliance.md#public-cloud-urls) a [vládních](migrate-appliance.md#government-cloud-urls) cloudech. Pokud používáte bránu firewall nebo proxy server založený na adrese URL, ujistěte se, že umožňuje přístup k požadovaným adresám URL.
 3. Zkontrolujte data, která bude zařízení shromažďovat během zjišťování a hodnocení.
-4. [Poznamenejte si](migrate-appliance.md#collected-data---hyper-v) požadavky na přístup k portu pro zařízení.
+4. [Zkontrolujte](migrate-appliance.md#collected-data---hyper-v) požadavky na přístup k portu pro zařízení.
+
+
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>Příprava na migraci hyperv

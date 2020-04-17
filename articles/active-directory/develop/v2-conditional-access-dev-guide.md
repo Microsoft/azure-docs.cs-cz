@@ -13,12 +13,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: e8c890a6daf2411b09162ab0072aed594820b936
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: aae1b8aa27363e8f1d3c72d3934146c47b0cf2c9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886343"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535889"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře podmíněného přístupu azure služby Active Directory
 
@@ -59,12 +59,12 @@ V závislosti na scénáři může podnikový zákazník kdykoli použít a odeb
 
 Některé scénáře vyžadují změny kódu pro zpracování podmíněného přístupu, zatímco jiné fungují tak, jak jsou. Zde je několik scénářů pomocí podmíněného přístupu k provedení vícefaktorového ověřování, které poskytuje určitý přehled o rozdílu.
 
-* Vytváříte aplikaci pro iOS s jedním tenantem a používáte zásady podmíněného přístupu. Aplikace se přihlásí k uživateli a nepožádá o přístup k rozhraní API. Když se uživatel přihlásí, zásada je automaticky vyvolána a uživatel potřebuje provést vícefaktorové ověřování (MFA). 
+* Vytváříte aplikaci pro iOS s jedním tenantem a používáte zásady podmíněného přístupu. Aplikace se přihlásí k uživateli a nepožádá o přístup k rozhraní API. Když se uživatel přihlásí, zásada je automaticky vyvolána a uživatel potřebuje provést vícefaktorové ověřování (MFA).
 * Vytváříte nativní aplikaci, která používá službu střední vrstvy pro přístup k rozhraní API pro příjem dat. Podnikový zákazník ve společnosti používající tuto aplikaci použije zásady pro rozhraní API pro příjem dat. Když se koncový uživatel přihlásí, nativní aplikace požádá o přístup ke střední vrstvě a odešle token. Střední vrstva provádí jménem toku požádat o přístup k rozhraní API pro příjem dat. V tomto okamžiku je "výzva" nároky prezentována střední vrstvě. Střední vrstva odešle výzvu zpět do nativní aplikace, která musí splňovat zásady podmíněného přístupu.
 
 #### <a name="microsoft-graph"></a>Microsoft Graph
 
-Microsoft Graph má zvláštní aspekty při vytváření aplikací v prostředích podmíněného přístupu. Obecně platí, že mechanismy podmíněného přístupu se chovají stejně, ale zásady, které se uživatelům zobrazí, budou založeny na podkladových datech, která vaše aplikace požaduje z grafu. 
+Microsoft Graph má zvláštní aspekty při vytváření aplikací v prostředích podmíněného přístupu. Obecně platí, že mechanismy podmíněného přístupu se chovají stejně, ale zásady, které se uživatelům zobrazí, budou založeny na podkladových datech, která vaše aplikace požaduje z grafu.
 
 Konkrétně všechny obory Microsoft Graph představují některé datové sady, které mohou jednotlivě použít zásady. Vzhledem k tomu, že zásady podmíněného přístupu jsou přiřazeny konkrétní datové sady, Azure AD bude vynucovat zásady podmíněného přístupu na základě dat za Graph – spíše než graph sám.
 
@@ -74,13 +74,13 @@ Pokud například aplikace požaduje následující obory aplikace Microsoft Gra
 scopes="Bookings.Read.All Mail.Read"
 ```
 
-Aplikace může očekávat, že jejich uživatelé splní všechny zásady stanovené na rezervacích a výměně. Některé obory mohou mapovat na více datových sad, pokud uděluje přístup. 
+Aplikace může očekávat, že jejich uživatelé splní všechny zásady stanovené na rezervacích a výměně. Některé obory mohou mapovat na více datových sad, pokud uděluje přístup.
 
 ### <a name="complying-with-a-conditional-access-policy"></a>Dodržování zásad podmíněného přístupu
 
 Pro několik různých topologie aplikace zásady podmíněného přístupu se vyhodnotí při vytvoření relace. Jako zásady podmíněného přístupu pracuje na rozlišovací schopnost aplikací a služeb, bod, ve kterém je vyvolána závisí do značné míry na scénáři, který se snažíte dosáhnout.
 
-Když se vaše aplikace pokusí o přístup ke službě pomocí zásad podmíněného přístupu, může se vyskytnat výzva podmíněného přístupu. Tato výzva je zakódována v parametru, `claims` který přichází v odpovědi z Azure AD. Zde je příklad tohoto parametru výzvy: 
+Když se vaše aplikace pokusí o přístup ke službě pomocí zásad podmíněného přístupu, může se vyskytnat výzva podmíněného přístupu. Tato výzva je zakódována v parametru, `claims` který přichází v odpovědi z Azure AD. Zde je příklad tohoto parametru výzvy:
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -106,7 +106,7 @@ V následujících částech se popisují běžné scénáře, které jsou slož
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scénář: Aplikace provádějící tok jménem
 
-V tomto scénáři procházíme případ, ve kterém nativní aplikace volá webovou službu nebo rozhraní API. Na druhé straně tato služba provádí tok "jménem" volat navazující služby. V našem případě jsme použili zásady podmíněného přístupu na příjem služby (Web API 2) a používáme nativní aplikaci, nikoli server/daemon aplikace. 
+V tomto scénáři procházíme případ, ve kterém nativní aplikace volá webovou službu nebo rozhraní API. Na druhé straně tato služba provádí tok "jménem" volat navazující služby. V našem případě jsme použili zásady podmíněného přístupu na příjem služby (Web API 2) a používáme nativní aplikaci, nikoli server/daemon aplikace.
 
 ![Aplikace provádějící vývojový diagram](./media/v2-conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -175,7 +175,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Naše aplikace potřebuje `error=interaction_required`zachytit . Aplikace pak můžete `acquireTokenPopup()` použít `acquireTokenRedirect()` buď nebo na stejný prostředek. Uživatel je nucen provést vícefaktorové ověřování. Poté, co uživatel dokončí vícefaktorové ověřování, aplikace je vydán nový přístupový token pro požadovaný prostředek.
 
-Chcete-li vyzkoušet tento scénář, podívejte se na naše [JS SPA In-behalf-of ukázky kódu](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access). Tato ukázka kódu používá zásady podmíněného přístupu a webové rozhraní API, které jste zaregistrovali dříve u js spa k předvedení tohoto scénáře. Ukazuje, jak správně zpracovat výzvu deklarací identity a získat přístupový token, který lze použít pro webové rozhraní API. Případně můžete provést obecný [vzorek kódu Angular.js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) pro navádění na úhlovém spa
+Chcete-li vyzkoušet tento scénář, podívejte se na naše [JS SPA In-behalf-of ukázky kódu](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access). Tato ukázka kódu používá zásady podmíněného přístupu a webové rozhraní API, které jste zaregistrovali dříve u js spa k předvedení tohoto scénáře. Ukazuje, jak správně zpracovat výzvu deklarací identity a získat přístupový token, který lze použít pro vaše webové rozhraní API. Případně můžete provést obecný [vzorek kódu Angular.js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) pro navádění na úhlovém spa
 
 ## <a name="see-also"></a>Viz také
 

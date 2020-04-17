@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 04/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1caa80469504d52d3103fb2776fb3e7210971690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024394"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536314"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Vytváření prostředků Time Series Insights pomocí šablon Azure Resource Manager
 
@@ -43,7 +43,7 @@ Time Series Insights podporuje následující zdroje:
 
 ## <a name="specify-deployment-template-and-parameters"></a>Určení šablony nasazení a parametrů
 
-Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure Resource Manageru, která vytvoří prostředí Time Series Insights, podřízený zdroj událostí nakonfigurovaný tak, aby využíval události z centra událostí, a zásady přístupu, které udělují přístup k údajů prostředí. Pokud není zadáno existující centrum událostí, bude vytvořeno s nasazením.
+Následující postup popisuje, jak pomocí prostředí PowerShell nasadit šablonu Azure Resource Manager, která vytvoří prostředí Time Series Insights, podřízený zdroj událostí nakonfigurovaný tak, aby využíval události z centra událostí, a přístupové zásady, které udělují přístup k datům prostředí. Pokud není zadáno existující centrum událostí, bude vytvořeno s nasazením.
 
 1. Nainstalujte Azure PowerShell podle pokynů v [začínáme s Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
@@ -148,7 +148,7 @@ Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure R
 
 1. Vytvořte novou skupinu prostředků, pokud neexistuje.
 
-   * Pokud nemáte existující skupinu prostředků, vytvořte novou skupinu prostředků pomocí příkazu **New-AzResourceGroup.** Zadejte název skupiny prostředků a umístění, které chcete použít. Například:
+   * Pokud nemáte existující skupinu prostředků, vytvořte novou skupinu prostředků pomocí příkazu **New-AzResourceGroup.** Zadejte název skupiny prostředků a umístění, které chcete použít. Příklad:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"

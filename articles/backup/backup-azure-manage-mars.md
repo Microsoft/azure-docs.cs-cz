@@ -4,12 +4,12 @@ description: Zjistěte, jak spravovat a monitorovat zálohy agentů Microsoft Az
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: c11d73edd32c197aac2cec58eeb1cc20e5c6a339
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404341c8324d9e127e8d8e6bc8083926c0d3106f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673250"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537351"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agentů služby Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
@@ -90,7 +90,7 @@ Existují dva způsoby, jak zastavit zálohování souborů a složek:
 
 - **Zastavte ochranu a uchovávejte záložní data**.
   - Tato možnost zastaví všechny budoucí úlohy zálohování z ochrany.
-  - Služba Azure Backup si zachová body obnovení, které byly zálohovány na základě zásad uchovávání informací.
+  - Služba Azure Backup zachová všechny existující body obnovení po neomezenou dobu. Body obnovení nebudou kontrolovány na vypršení platnosti, dokud nebude obnovena ochrana.
   - Zálohovaná data pro body obnovení, jejichž platnost nevypršela, budou moci obnovit.
   - Pokud se rozhodnete obnovit ochranu, můžete použít možnost *Znovu povolit plán zálohování.* Poté by se údaje uchovaly na základě nových zásad uchovávání informací.
 - **Zastavte ochranu a odstraňte záložní data**.

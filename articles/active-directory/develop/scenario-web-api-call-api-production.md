@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d557c70c09824f3aead41a654dc92c4ec46e9238
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 078ed3e5f3a19bfa4350f9edea858b717c69e3f8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885051"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537147"
 ---
 # <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Webové rozhraní API, které volá webová rozhraní API: Přechod do produkčního prostředí
 
@@ -30,4 +30,4 @@ Teď, když znáte základy volání webových rozhraní API z vlastního webov�
 
 | Ukázka | Platforma | Popis |
 |--------|----------|-------------|
-| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2.2 Web API, desktop (WPF) | ASP.NET webové rozhraní API Core 2.2 volá Microsoft Graph, který voláte z aplikace WPF pomocí platformy identit microsoftu (v2.0). |
+| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2.2 webové rozhraní API, desktop (WPF) | ASP.NET webové rozhraní API Core 2.2 volá Microsoft Graph, který voláte z aplikace WPF pomocí platformy identit microsoftu (v2.0). |

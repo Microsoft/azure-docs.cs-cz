@@ -2,13 +2,13 @@
 title: Podpora migrace technologie Hyper-V v migraci Azure
 description: Přečtěte si o podpoře migrace hyper-V pomocí Migrace Azure.
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 8ec0b72cac75518ac938faa202b28d055409e8dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245821"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538184"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Matice podpory pro migraci Hyper-V
 
@@ -23,18 +23,44 @@ Můžete vybrat až 10 virtuálních můzí najednou pro replikaci. Pokud chcete
 
 | **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
-| **Nasazení**       | Hostitel Hyper-V může být samostatný nebo nasazený v clusteru. <br/>Software pro replikaci Azure Migrate (zprostředkovatel replikace Hyper-V) se musí nainstalovat na hostitele Hyper-V.|
+| **Nasazení**       | Hostitel Hyper-V může být samostatný nebo nasazený v clusteru. <br/>Software pro replikaci Azure Migrate (zprostředkovatel replikace Hyper-V) se instaluje na hostitelích Hyper-V.|
 | **Oprávnění**           | Potřebujete oprávnění správce pro hostitele Hyper-V. |
 | **Hostitelský operační systém** | Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2. |
-| **Přístup k adrese URL** | Software poskytovatele replikace na hostitelích Technologie Hyper-V bude potřebovat přístup k těmto adresám URL:<br/><br/> - login.microsoftonline.com: Řízení přístupu a správa identit pomocí služby Active Directory.<br/><br/> - *.backup.windowsazure.com: Přenos a koordinace replikací dat. Migrujte adresy URL služeb.<br/><br/> - *.blob.core.windows.net: Nahrajte data do účtů úložiště.<br/><br/> - dc.services.visualstudio.com: Nahrajte protokoly aplikací používané pro interní monitorování.<br/><br/> - time.windows.com: Ověřuje synchronizaci času mezi systémem a globálním časem.
 | **Přístup k portu** |  Odchozí připojení na portu HTTPS 443 pro odesílání dat replikace virtuálního počítače.
+
+### <a name="url-access-public-cloud"></a>Přístup k adresám URL (veřejný cloud)
+
+Software poskytovatele replikace na hostitelích Technologie Hyper-V bude potřebovat přístup k těmto adresám URL.
+
+**Adresa URL** | **Podrobnosti**
+--- | ---
+login.microsoftonline.com | Řízení přístupu a správa identit pomocí služby Active Directory.
+backup.windowsazure.com | Přenos a koordinace replikačních dat.
+*.hypervrecoverymanager.windowsazure.com | Používá se pro migraci.
+*.blob.core.windows.net | Nahrajte data do účtů úložiště. 
+dc.services.visualstudio.com | Nahrajte protokoly aplikací používané pro interní monitorování.
+time.windows.com | Ověří synchronizaci času mezi systémem a globálním časem.
+
+### <a name="url-access-azure-government"></a>Přístup k adresám URL (Azure Government)
+
+Software poskytovatele replikace na hostitelích Technologie Hyper-V bude potřebovat přístup k těmto adresám URL.
+
+**Adresa URL** | **Podrobnosti**
+--- | ---
+login.microsoftonline.us | Řízení přístupu a správa identit pomocí služby Active Directory.
+backup.windowsazure.us | Přenos a koordinace replikačních dat.
+*.hypervrecoverymanager.windowsazure.us | Používá se pro migraci.
+*.blob.core.usgovcloudapi.net | Nahrajte data do účtů úložiště.
+dc.services.visualstudio.com | Nahrajte protokoly aplikací používané pro interní monitorování.
+time.nist.gov | Ověří synchronizaci času mezi systémem a globálním časem.
+
 
 ## <a name="hyper-v-vms"></a>Virtuální počítače Hyper-V
 
 | **Podpora**                  | **Podrobnosti**               
 | :----------------------------- | :------------------- |
 | **Operační systém** | Všechny operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux,](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) které azure podporuje. |
-| **Požadované změny pro Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je můžou běžet v Azure. Před migrací je třeba provést úpravy ručně. Příslušné články obsahují pokyny, jak to udělat. |
+| **Požadované změny pro Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je můžou běžet v Azure. Před migrací proveďte úpravy ručně. Příslušné články obsahují pokyny, jak to udělat. |
 | **Linux boot**                 | Pokud /boot je na vyhrazeném oddílu, by měl být umístěn na disku operačního systému a nesmí být rozloženy na více disků.<br/> Pokud /boot je součástí kořenového (/) oddílu, pak '/' oddíl by měl být na disku operačního systému a ne span jiné disky. |
 | **UEFI bota**                  | Migrovaný virtuální počítač v Azure se automaticky převede na spouštěcí virtuální počítač systému BIOS. Virtuální ms by měl být spuštěn windows server 2012 a novější pouze. Disk operačního systému by měl mít až pět oddílů nebo méně a velikost disku operačního systému by měla být menší než 300 GB.
   |
@@ -48,7 +74,7 @@ Můžete vybrat až 10 virtuálních můzí najednou pro replikaci. Pokud chcete
 | **Cílový disk**                | Můžete migrovat na virtuální počítače Azure se spravovanými disky jenom. |
 | **IPv6** | Není podporováno.
 | **Spojení nic** | Není podporováno.
-| **Obnovení webu Azure** | Pokud je virtuální počítač povolený pro replikaci pomocí Azure Site Recovery, nemůžete se replikovat pomocí migrace migrace serveru Azure.
+| **Azure Site Recovery** | Pokud je virtuální počítač povolený pro replikaci pomocí Azure Site Recovery, nemůžete se replikovat pomocí migrace migrace serveru Azure.
 | **Porty** | Odchozí připojení na portu HTTPS 443 pro odesílání dat replikace virtuálního počítače.
 
 ## <a name="azure-vm-requirements"></a>Požadavky na virtuální počítač Azure

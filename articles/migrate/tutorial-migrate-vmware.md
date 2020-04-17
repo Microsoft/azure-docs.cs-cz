@@ -2,14 +2,14 @@
 title: Migrace migrace virtuálních počítačů VMware bez agentů migrace serveru Azure
 description: Zjistěte, jak spustit migraci virtuálních počítačů VMware bez agenta pomocí migrace Azure.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 825d6ff16a1f51fa476541ee10fea5f8a1c2972e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4612c9b0ea2ef8d53b0c04f47628f3789705d833
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78304204"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535311"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrace virtuálních počítačů VMware do Azure (bez agentů)
 
@@ -55,9 +55,12 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Přidání nástroje migrace serveru Azure
 
-Pokud jste nepostupovali podle druhého kurzu k posouzení virtuálních počítačích VMware, musíte [podle těchto pokynů](how-to-add-tool-first-time.md) nastavit projekt Migrace Azure a vyberte nástroj migrace serveru Azure. 
+Přidejte nástroj Migrace:Migrace serveru Azure.
 
-Pokud jste postupovali podle druhého kurzu a už máte nastavenprojekt Migrace Azure, přidejte nástroj migrace serveru Azure takto:
+- Pokud jste postupovali podle druhého kurzu [k posouzení Virtuální chod VMware](/tutorial-assess-vmware.md), můžete pokračovat a přidat nástroj.
+- Pokud jste nepostupovali podle druhého kurzu, [postupujte podle těchto pokynů](how-to-add-tool-first-time.md) k nastavení projektu Migrace Azure.  Nástroj Migrace:migrace serveru Azure při vytváření projektu přidáte.
+
+Pokud máte nastavený projekt, přidejte nástroj takto:
 
 1. V projektu Migrace Azure klikněte na **Přehled**. 
 2. V **polezit, posoudit a migrace serverů**klepněte na tlačítko Posoudit a **migrovat servery**.
@@ -74,15 +77,14 @@ Pokud jste postupovali podle druhého kurzu a už máte nastavenprojekt Migrace 
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Nastavení zařízení Azure Migrate
 
-Migrace serveru Azure migrace běží zjednodušené zařízení Virtuální počítač VMware. Zařízení provádí zjišťování virtuálních počítačích a odesílá metadata virtuálního počítače a data o výkonu migraci serveru Azure. Stejné zařízení používá také nástroj Azure Migrate Server Assessment.
+Migrace serveru Azure migrace běží zjednodušené zařízení Virtuální počítač VMware. Zařízení provádí zjišťování virtuálních počítačích a odesílá metadata virtuálního počítače a data o výkonu do migrace Azure:Server Migration. Stejné zařízení se používá také nástroj Azure Migrate:Server Assessment k provádění migrace virtuálních počítačů VMware bez agenta.
 
-Pokud jste postupovali podle druhého kurzu k posouzení virtuálních měn VMware, již jste nastavili zařízení během tohoto kurzu. Pokud jste nepostupovali podle tohoto kurzu, musíte nyní nastavit zařízení. Chcete-li to provést, můžete: 
+- Pokud jste postupovali [podle kurzu k posouzení virtuálních měn VMware](tutorial-assess-vmware.md), jste již nastavili zařízení během tohoto kurzu.
+- Pokud jste nedodrželi tento kurz, můžete nastavit zařízení nyní pomocí jedné z těchto metod:
+    - [Nastavení](how-to-set-up-appliance-vmware.md) virtuálního počítače VMware pomocí stažené šablony OVA.
+    - Nastavení na virtuálním počítači VMware nebo fyzickém počítači se skriptem instalačního programu prostředí PowerShell. [Tato metoda](deploy-appliance-script.md) by se měla použít, pokud nemůžete nastavit virtuální počítač pomocí šablony OVA, nebo pokud jste ve vládě Azure.
 
-- Stáhněte soubor šablony OVA a importujte jej do serveru vCenter.
-- Vytvořte zařízení a zkontrolujte, zda se může připojit k Azure Migrate Server Assessment. 
-- Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí projektu Azure Migrate.
-
-Přístroj nastavíte podle pokynů v [tomto článku.](how-to-set-up-appliance-vmware.md)
+Po vytvoření zařízení zkontrolujte, zda se může připojit k Azure Migrate:Server Assessment, poprvé ho nakonfigurovat a zaregistrovat v projektu Azure Migrate.
 
 
 ## <a name="prepare-vms-for-migration"></a>Příprava virtuálních počítačů na migraci

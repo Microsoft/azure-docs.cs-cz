@@ -12,14 +12,14 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: d5b2ef57af112169fb39e0da7a60b095698ff504
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299826"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536178"
 ---
-# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Obory pro webové rozhraní API přijímající tokeny v1.0
+# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Obory pro webové rozhraní API, které přijímá tokeny v1.0
 
 Oprávnění OAuth2 jsou obory oprávnění, které azure active directory (Azure AD) pro vývojáře (v1.0) webové rozhraní API (prostředek) aplikace zpřístupňuje klientských aplikací. Tyto obory oprávnění mohou být uděleny klientským aplikacím během souhlasu. Podívejte se `oauth2Permissions` na část o manifestu [aplikace Azure Active Directory .](reference-app-manifest.md#manifest-reference)
 

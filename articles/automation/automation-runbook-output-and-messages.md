@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 457b2d2211ea1ba5fa36cec4b7e9a214f5bcad77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92b6378b00e12f618d07798b5ce789cbd9971544
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367087"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535532"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Výstup sady Runbook a zprávy v Azure Automation
 
@@ -21,7 +21,7 @@ Následující tabulka stručně popisuje každý datový proud s jeho chování
 | Datový proud | Popis | Publikováno | Test |
 |:--- |:--- |:--- |:--- |
 | Chyba |Chybová zpráva určená pro uživatele. Na rozdíl od výjimky, runbook pokračuje po chybové zprávě ve výchozím nastavení. |Zapsáno do historie práce |Zobrazeno v podokně Výstup testu |
-| Ladění |Zprávy určené pro interaktivního uživatele. Neměl by se používat v runbookech. |Není zapsáno do historie práce |Nezobrazuje se v podokně Výstup testu |
+| Ladit |Zprávy určené pro interaktivního uživatele. Neměl by se používat v runbookech. |Není zapsáno do historie práce |Nezobrazuje se v podokně Výstup testu |
 | Výstup |Objekty, které mají zpracovávat jiné Runbooky. |Zapsáno do historie práce |Zobrazeno v podokně Výstup testu |
 | Průběh |Záznamy automaticky generované před a po každé aktivitě v Runbooku. Runbook by se neměl pokoušet vytvořit vlastní záznamy průběhu, protože jsou určeny pro interaktivního uživatele. |Zapsat do historie úloh pouze v případě, že je pro runbook zapnuto protokolování průběhu |Nezobrazuje se v podokně Výstup testu |
 | Verbose |Zprávy, které poskytují obecné nebo ladicí informace. |Zapsat do historie úloh pouze v případě, že je pro runbook zapnuto podrobné protokolování |Zobrazeno v podokně `VerbosePreference` Výstup testu pouze v případě, že je proměnná nastavena na Pokračovat v sadě Runbook |
@@ -240,7 +240,7 @@ Pokud však tyto informace nepotřebujete ke sledování průběhu řešení pot
 **Povolení trasování na úrovni aktivity:**
 
 1. Na webu Azure Portal otevřete účet Automation.
-2. Vyberte **Runbookv** části **Automatizace procesů,** chcete-li otevřít seznam runbooků.
+2. Vyberte **Runbooky** v části **Automatizace procesů,** chcete-li otevřít seznam runbooků.
 3. Na stránce Runbook vyberte grafickou runbook ze seznamu runbooků.
 4. V části **Nastavení**klepněte na **položku Protokolování a trasování**.
 5. Na stránce Protokolování a trasování v části **Protokolovat podrobné záznamy**povolte podrobné protokolování klepnutím **na tlačítko Zapnuto.**
@@ -253,7 +253,7 @@ Pokud však tyto informace nepotřebujete ke sledování průběhu řešení pot
 Azure Automation můžete odesílat stav úlohy runbooku a toky úloh do pracovního prostoru Log Analytics. Azure Monitor podporuje protokoly, které umožňují:
 
 * Získejte přehled o svých úlohách automatizace.
-* Aktivujte e-mail nebo výstrahu na základě stavu úlohy runbooku, například se nezdařilo nebo pozastaveno.
+* Aktivujte e-mail nebo výstrahu na základě stavu úlohy runbooku, například Se nezdařilo nebo Pozastaveno.
 * Pište pokročilé dotazy napříč datovými proudy úloh.
 * Korelujte úlohy napříč účty automatizace.
 * Vizualizujte historii úloh.

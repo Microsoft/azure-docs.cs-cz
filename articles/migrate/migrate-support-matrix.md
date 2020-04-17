@@ -4,12 +4,12 @@ description: Obsahuje souhrn nastavení podpory a omezení pro službu Azure Mig
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: raynew
-ms.openlocfilehash: bf719f9179384ec3dca99d2429f569ef209b5daa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f766bf95bb7e26d942e7dde3f315bbef6d5dc5c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127703"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535192"
 ---
 # <a name="azure-migrate-support-matrix"></a>Matice podpory migrace Azure
 
@@ -30,7 +30,7 @@ Tabulka shrnuje podporované scénáře zjišťování, hodnocení a migrace.
 
 Zvláštní podpora nástrojů je shrnuta v tabulce.
 
-**Nástroj** | **Posoudit** | **Migrovat** 
+**Nástroj** | **Posoudit** | **Migrace** 
 --- | --- | ---
 Vyhodnocení serveru migrace Azure | Vyhodnoťte [virtuální mandy VMware](tutorial-prepare-vmware.md), [virtuální zařízení Hyper-V](tutorial-prepare-hyper-v.md)a fyzické [servery](tutorial-prepare-physical.md). |  Není k dispozici (NA)
 Migrace serverů Azure Migrate | Není k dispozici | Migrace [virtuálních měn VMware](tutorial-migrate-vmware.md), [virtuálních zařízení Hyper-V](tutorial-migrate-hyper-v.md)a [fyzických serverů](tutorial-migrate-physical-virtual-machines.md).
@@ -69,13 +69,12 @@ Vytvoření projektu migrace Azure | Váš účet Azure potřebuje oprávnění 
 Registrace zařízení Azure Migrate| Azure Migrate používá zjednodušené [zařízení Azure Migrate](migrate-appliance.md) k posouzení počítačů s Azure Migrate Server Assessment a ke spuštění migrace virtuálních počítačů VMware bez [agenta](server-migrate-overview.md) s migrací serveru Azure. Toto zařízení zjišťuje počítače a odesílá metadata a data o výkonu do Migrace Azure.<br/><br/> Během registrace jsou poskytovatelé registru (Microsoft.OffAzure, Microsoft.Migrate a Microsoft.KeyVault) registrováni s předplatným zvoleným v zařízení, takže předplatné spolupracuje s poskytovatelem prostředků. Chcete-li se zaregistrovat, potřebujete přístup přispěvatele nebo vlastníka k předplatnému.<br/><br/> **VMware**– během registrace azure migrate vytvoří dvě aplikace Azure Active Directory (Azure AD). První aplikace komunikuje mezi agenty zařízení a službou Azure Migrate. Aplikace nemá oprávnění k volání azure správy prostředků nebo mají přístup RBAC pro prostředky. Druhá aplikace přistupuje k trezoru klíčů Azure vytvořenév rámci předplatného uživatele pouze pro migraci VMware bez agenta. Při migraci bez agenta azure migrate vytvoří trezor klíčů pro správu přístupových klíčů k účtu úložiště replikace ve vašem předplatném. Má přístup RBAC na Azure Key Vault (v tenantovi zákazníka) při zjišťování je zahájeno ze zařízení.<br/><br/> **Hyper-V**-Během onboardingu. Azure Migrate vytvoří jednu aplikaci Azure AD. Aplikace komunikuje mezi agenty zařízení a službou Azure Migrate. Aplikace nemá oprávnění k volání azure správy prostředků nebo mají přístup RBAC pro prostředky. | Nastavení pro [servery VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)nebo [fyzické servery](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance).
 Vytvoření trezoru klíčů pro migraci bez agentů společnosti VMware | Chcete-li migrovat virtuální počítače VMware s migrací serveru Azure bez agenta bez agenta, Azure Migrate vytvoří trezor klíčů pro správu přístupových klíčů k účtu úložiště replikace ve vašem předplatném. Chcete-li vytvořit úschovnu, nastavte oprávnění (vlastník nebo přispěvatel a správce přístupu uživatelů) ve skupině prostředků, ve které se nachází projekt Migrace Azure. | [Nastavte](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) oprávnění.
 
-## <a name="supported-geographies"></a>Podporované zeměpisné oblasti
+## <a name="supported-geographies-public-cloud"></a>Podporované zeměpisné oblasti (veřejný cloud)
 
-Projekt Migrace Azure můžete vytvořit v několika zeměpisných oblastech. I když můžete vytvářet projekty pouze v těchto zeměpisných oblastech, můžete vyhodnotit nebo migrovat počítače pro jiná cílová umístění. Zeměpis projektu se používá pouze k ukládání zjištěných metadat.
+Projekt Migrace Azure můžete vytvořit v řadě zeměpisných oblastí ve veřejném cloudu. I když můžete vytvářet projekty pouze v těchto zeměpisných oblastech, můžete vyhodnotit nebo migrovat počítače pro jiná cílová umístění. Zeměpis projektu se používá pouze k ukládání zjištěných metadat.
 
 **Geografie** | **Umístění úložiště metadat**
 --- | ---
-Azure Government | USA (Gov) – Virginia
 Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
 Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
 Brazílie | Brazílie – jih
@@ -89,9 +88,13 @@ Spojené království | Spojené království – jih nebo Velká Británie – 
 Spojené státy | Střední USA nebo západní USA 2
 
 
- > [!NOTE]
- > Podpora Azure Government je momentálně dostupná jenom pro [starší verzi](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) Azure Migrate.
+## <a name="supported-geographies-azure-government"></a>Podporované zeměpisné oblasti (Azure Government)
 
+**Úkol** | **Geografie** | **Podrobnosti**
+--- | --- | ---
+Vytvoření projektu | Spojené státy | Metadata jsou uložena v US Gov Arizona, US Gov Virginia
+Cílové posouzení | Spojené státy | Cílové oblasti: US Gov Arizona, US Gov Virginia/US Gov Texas
+Cílová replikace | Spojené státy | Cílové oblasti: US DoD Central, US DoD East, US Gov Arizona, US Gov Iowa, US Gov Texas, US Gov Virginia
 
 
 ## <a name="vmware-assessment-and-migration"></a>Hodnocení a migrace společnosti VMware

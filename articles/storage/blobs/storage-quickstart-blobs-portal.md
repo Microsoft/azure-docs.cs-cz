@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 04/16/2020
 ms.author: tamram
-ms.openlocfilehash: 3ceeb878121782ea3664e1ed62d5d632b606f08e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061395"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535161"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí webu Azure Portal
 
@@ -39,27 +39,25 @@ Při vytváření kontejneru na webu Azure Portal použijte tento postup:
 
 ## <a name="upload-a-block-blob"></a>Nahrání objektu blob bloku
 
-Objekty blob bloku se skládají z bloků dat sestavených do objektu blob. Většina scénářů využívajících Blob Storage zahrnuje objekty blob bloku. Objekty blob bloku jsou ideální pro ukládání textových a binárních dat v cloudu, jako jsou soubory, image a videa. Tento rychlý start ukazuje, jak pracovat s objekty blob bloku. 
+Objekty blob bloku se skládají z bloků dat sestavených do objektu blob. Většina scénářů využívajících Blob Storage zahrnuje objekty blob bloku. Objekty blob bloku jsou ideální pro ukládání textových a binárních dat v cloudu, jako jsou soubory, image a videa. Tento rychlý start ukazuje, jak pracovat s objekty blob bloku.
 
 Pokud chcete do nového kontejneru na webu Azure Portal nahrát objekt blob bloku, použijte tento postup:
 
 1. Na webu Azure Portal přejděte do kontejneru, který jste vytvořili v předchozí části.
-2. Vyberte tento kontejner. Zobrazí se seznam objektů blob, které obsahuje. Protože je tento kontejner nový, nebude ještě obsahovat žádné objekty blob.
-3. Výběrem tlačítka **Nahrát** otevřete okno pro nahrávání
-4. Procházení místního systému souborů a vyhledání souboru, který chcete nahrát jako objekt blob bloku
-     
+1. Vyberte tento kontejner. Zobrazí se seznam objektů blob, které obsahuje. Tento kontejner je nový, takže ještě nebude obsahovat žádné objekty BLOB.
+1. Výběrem tlačítka **Nahrát** otevřete okno pro nahrávání a procházejte místní systém souborů a vyhledejte soubor, který chcete nahrát jako objekt blob bloku. Volitelně můžete rozšířit upřesňující oddíl a nakonfigurovat další nastavení pro operaci nahrávání.
+
     ![Snímek obrazovky ukazující, jak nahrát objekt blob z místního disku](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. Volitelně můžete rozšířit upřesňující oddíl a definovat další nastavení, jako je typ ověřování, úroveň přístupu nebo cesta virtuální složky.
-6. Výběrem tlačítka **Nahrát,** chcete-li potvrzení nahrávání
-7. Tímto způsobem můžete nahrát libovolný počet objektů blob. Uvidíte, že nové objekty blob jsou teď zařazené v kontejneru.
+1. Kliknutím na tlačítko **Nahrát** nahrajete objekt blob.
+1. Tímto způsobem můžete nahrát libovolný počet objektů blob. Uvidíte, že nové objekty blob jsou teď zařazené v kontejneru.
 
 ## <a name="download-a-block-blob"></a>Stažení objektu blob bloku
 
 Objekt blob bloku si můžete si stáhnout a zobrazit v prohlížeči nebo uložit do místního systému souborů. Pokud chcete stáhnout objekt blob bloku, postupujte takto:
 
-1. Přejděte k seznamu objektů blob, které jste nahráli v předchozí části. 
-2. Klikněte pravým tlačítkem na objekt blob, který chcete stáhnout, a vyberte **Stáhnout**. 
+1. Přejděte k seznamu objektů blob, které jste nahráli v předchozí části.
+1. Klikněte pravým tlačítkem na objekt blob, který chcete stáhnout, a vyberte **Stáhnout**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -68,9 +66,9 @@ Pokud chcete odebrat prostředky, které jste vytvořili v tomto rychlém startu
 Odstranění kontejneru:
 
 1. Na webu Azure Portal přejděte k seznamu kontejnerů ve vašem účtu úložiště.
-2. Vyberte kontejner, který chcete odstranit.
-3. Vyberte tlačítko **Další** (**...**) a pak **Odstranit**.
-4. Potvrďte, že chcete kontejner skutečně odstranit.
+1. Vyberte kontejner, který chcete odstranit.
+1. Vyberte tlačítko **Další** (**...**) a pak **Odstranit**.
+1. Potvrďte, že chcete kontejner skutečně odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -78,4 +76,3 @@ V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním di
 
 > [!div class="nextstepaction"]
 > [Operace s úložištěm objektů blob – postupy](storage-dotnet-how-to-use-blobs.md)
-

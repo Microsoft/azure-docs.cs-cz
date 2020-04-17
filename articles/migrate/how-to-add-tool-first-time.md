@@ -1,17 +1,14 @@
 ---
 title: Přidání nástroje pro hodnocení/migraci v Azure Migrate
 description: Popisuje, jak vytvořit projekt Migrace Azure a přidat nástroj pro hodnocení a migraci.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 319d97d96bd054aed90079777e2ff83d0e308e5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 04/16/2020
+ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185938"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537725"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>První přidání nástroje pro vyhodnocení/migraci
 
@@ -23,7 +20,7 @@ Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodn
 Nastavte nový projekt Azure Migrate v rámci předplatného Azure a přidejte nástroj.
 
 - Projekt migrace Azure se používá k ukládání metadat zjišťování, hodnocení a migrace shromážděných z prostředí, které vyhodnocujete nebo migrujete. 
-- V projektu můžete sledovat zjištěné datové zdroje a organizovat hodnocení a migraci.
+- V projektu můžete sledovat zjištěné datové zdroje, organizovat hodnocení a migraci.
 
 1. Na webu Azure Portal v části **Všechny služby** vyhledejte **Azure Migrate**.
 2. V části **Služby** vyberte **Azure Migrate**.
@@ -37,28 +34,14 @@ Nastavte nový projekt Azure Migrate v rámci předplatného Azure a přidejte n
 
 1. V části **Zjistit, posoudit a migrovat servery** klikněte na **Přidat nástroje**.
 2. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.
-3. V **poli Podrobnosti projektu**zadejte název projektu a zeměpisnou polohu, ve které chcete projekt vytvořit. 
+3. V **poli Podrobnosti projektu**zadejte název projektu a zeměpisnou polohu, ve které chcete projekt vytvořit.  Zkontrolujte podporované zeměpisné oblasti pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
 
     ![Vytvoření projektu migrace Azure](./media/how-to-add-tool-first-time/migrate-project.png)
 
-    Můžete vytvořit projekt Migrace Azure v některé z těchto zeměpisných oblastí.
+    - Zeměpisné umístění vybrané pro tento projekt slouží jen k uložení metadat získaných z místních virtuálních počítačů. Můžete vybrat libovolnou cílovou oblast pro skutečnou migraci.
+    - Pokud potřebujete nasadit projekt v rámci určité oblasti v zeměpisné oblasti, použijte následující rozhraní API k vytvoření projektu. Zadejte ID předplatného, název skupiny prostředků a název projektu spolu s umístěním. Zkontrolujte zeměpisné oblasti nebo oblasti pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
 
-   **Geografie** | **Oblast umístění úložiště**
-    --- | ---
-    Asie   | Jihovýchodní Asie nebo východní Asie
-    Evropa | Severní Evropa nebo Západní Evropa
-    Japonsko  | Japonsko – východ nebo Západ
-    Spojené království | Spojené království – jih nebo Velká Británie – západ
-    Spojené státy | Střední USA nebo západní USA 2
-    Kanada | Střední Kanada
-    Indie  | Indie Střední nebo Indie Jih
-    Austrálie | Austrálie Jihovýchod
-
-    Zeměpisné umístění vybrané pro tento projekt slouží jen k uložení metadat získaných z místních virtuálních počítačů. Můžete vybrat libovolnou cílovou oblast pro skutečnou migraci.
-
-    Pokud chcete určit konkrétní oblast v rámci zeměpisné oblasti pro nasazení projektu migrace a jeho přidružené prostředky (omezení zásad ve vašem předplatném může povolit nasazení prostředků Azure pouze pro konkrétní oblast Azure), můžete použít níže uvedené rozhraní API k použití níže uvedeného rozhraní API vytvořit projekt migrace. Zadejte ID předplatného, název skupiny prostředků, migrovat název projektu spolu s umístěním (všechny oblasti Azure uvedené v tabulce, kde se nasadí Azure Migrate.)
-
-    `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
+        `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
 
 
 4. Klepněte na **tlačítko Další**a přidejte nástroj pro hodnocení nebo migraci.
@@ -68,7 +51,7 @@ Nastavte nový projekt Azure Migrate v rámci předplatného Azure a přidejte n
 
 5. V **nástroji pro výběr hodnocení**přidejte nástroj pro hodnocení. Pokud nástroj pro hodnocení nepotřebujete, vyberte **Přeskočit přidání nástroje pro hodnocení pro tuto chvíli** > **Další**. 
 2. V **nástroji Pro výběr migrace**přidejte podle potřeby nástroj pro migraci. Pokud nástroj pro migraci právě teď nepotřebujete, vyberte **Přeskočit přidání nástroje pro migraci pro tuto chvíli** > **Další**.
-3. V **části Revize + přidat nástroje**zkontrolujte nastavení a klepněte na tlačítko Přidat **nástroje**.
+3. V **části Revize + přidat nástroje**zkontrolujte nastavení a klepněte na přidat **nástroje**.
 
 Po vytvoření projektu můžete vybrat další nástroje pro hodnocení a migraci serverů a úloh, databází a webových aplikací.
 

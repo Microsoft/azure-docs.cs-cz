@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: e78f822a88b093992f065a509c2250e6a5c0dec2
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5252fdbbaf425662fc9725e618f8fc450b435722
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885561"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534648"
 ---
 # <a name="authentication-basics"></a>Základy ověřování
 
@@ -70,26 +70,26 @@ Deklarace se skládá z párů klíč hodnota, které poskytují informace, jako
 
 Podrobnější informace o deklaraci pohledávky najdete [v tématu přístupové tokeny](access-tokens.md) a [tokeny ID](id-tokens.md).
 
-Je na aplikaci, pro kterou byl generován token, webové aplikace, která přihlášena uživatele nebo webové rozhraní API, které je voláno, k ověření tokenu. Token je podepsán serverem tokenů zabezpečení (STS) se soukromým klíčem. STS publikuje odpovídající veřejný klíč. Chcete-li ověřit token, aplikace ověří podpis pomocí veřejného klíče STS k ověření, že podpis byl vytvořen pomocí soukromého klíče.
+Je to na aplikaci, pro kterou byl generován token, webové aplikace, která přihlášena uživatele nebo webové rozhraní API, které je voláno, k ověření tokenu. Token je podepsán serverem tokenů zabezpečení (STS) se soukromým klíčem. STS publikuje odpovídající veřejný klíč. Chcete-li ověřit token, aplikace ověří podpis pomocí veřejného klíče STS k ověření, že podpis byl vytvořen pomocí soukromého klíče.
 
 Tokeny jsou platné pouze po omezenou dobu. Služby STS obvykle poskytuje dvojici tokenů: přístupový token pro přístup k aplikaci nebo chráněnému prostředku a obnovovací token používaný k aktualizaci přístupového tokenu, když se přístupový token blíží vypršení platnosti.
 
-Přístupové tokeny jsou předány webovému rozhraní `Authorization` API jako nosný token v záhlaví. Aplikace může poskytnout obnovovací token pro STS a pokud přístup uživatele k aplikaci nebyl odvolán, získá zpět nový přístupový token a nový obnovovací token. Takhle se řeší scénář, že někdo opustí podnik. Když STS obdrží obnovovací token, nebude vydávat jiný platný přístupový token, pokud uživatel již není autorizován.
+Přístupové tokeny jsou předány do webového `Authorization` rozhraní API jako nosný token v záhlaví. Aplikace může poskytnout obnovovací token pro STS a pokud přístup uživatele k aplikaci nebyl odvolán, získá zpět nový přístupový token a nový obnovovací token. Takhle se řeší scénář, že někdo opustí podnik. Když STS obdrží obnovovací token, nebude vydávat jiný platný přístupový token, pokud uživatel již není autorizován.
 
 ### <a name="how-each-flow-emits-tokens-and-codes"></a>Jak každý tok vyzařuje tokeny a kódy
 
 V závislosti na tom, jak je váš klient sestaven, může použít jeden (nebo několik) toků ověřování podporovaných službou Azure AD. Tyto toky můžete vytvářet různé tokeny (id_tokens, obnovovací tokeny, přístupové tokeny) a také autorizační kódy a vyžadují různé tokeny, aby fungovaly. Tento graf poskytuje přehled:
 
-|Tok | Vyžaduje | id_token | přístupový token | obnovovací token | autorizační kód | 
+|Tok | Vyžaduje | id_token | přístupový token | obnovovací token | autorizační kód |
 |-----|----------|----------|--------------|---------------|--------------------|
-|[Tok autorizačního kódu](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Tok autorizačního kódu](v2-oauth2-auth-code-flow.md) | | x | x | x | x|
 |[Implicitní tok](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybridní TOK OIDC](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[Obnovení uplatnění tokenu](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | obnovovací token | x | x | x| |
 |[Tok On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) | přístupový token| x| x| x| |
 |[Přihlašovací údaje klienta](v2-oauth2-client-creds-grant-flow.md) | | | x (pouze aplikace)| | |
 
-Tokeny vydané prostřednictvím implicitního režimu mají omezení délky kvůli předání `response_mode` `query` zpět `fragment`do prohlížeče prostřednictvím adresy URL (kde je nebo ).  Některé prohlížeče mají limit na velikost url, které mohou být uvedeny v panelu prohlížeče a selhání, když je příliš dlouhá.  Proto tyto tokeny nemají `groups` `wids` nebo deklarace identity. 
+Tokeny vydané prostřednictvím implicitního režimu mají omezení délky kvůli předání `response_mode` `query` zpět `fragment`do prohlížeče prostřednictvím adresy URL (kde je nebo ).  Některé prohlížeče mají limit na velikost url, které mohou být uvedeny v panelu prohlížeče a selhání, když je příliš dlouhá.  Proto tyto tokeny nemají `groups` `wids` nebo deklarace identity.
 
 Teď, když máte přehled o základech, přečtěte si o pochopení modelu aplikace identity a rozhraní API, zjistěte, jak funguje zřizování ve službě Azure AD a získejte odkazy na podrobné informace o běžných scénářích, které Azure AD podporuje.
 
@@ -126,7 +126,7 @@ Souhlas je proces vlastníka prostředku udělujícího autorizaci klientské ap
 
 V platformě identit y Microsoft [objekt aplikace](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-object) popisuje aplikaci. V době nasazení platforma identit microsoftu používá objekt aplikace jako podrobný plán k vytvoření [instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#service-principal-object), který představuje konkrétní instanci aplikace v rámci adresáře nebo klienta. Instanční objekt definuje, co aplikace může ve skutečnosti dělat v konkrétním cílovém adresáři, kdo ji může používat, k jakým prostředkům má přístup a tak dále. Platforma identit společnosti Microsoft vytvoří instanční objekt z objektu aplikace prostřednictvím **souhlasu**.
 
-Následující diagram znázorňuje zjednodušený tok zřizování platformy identit microsoftu řízený souhlasem. Zobrazuje dva klienty: A a B. Tenant A vlastní aplikaci. Tenant B je vytváření instancí aplikace prostřednictvím instančního objektu.  
+Následující diagram znázorňuje zjednodušený tok zřizování platformy identit microsoftu řízený souhlasem. Zobrazuje dva klienty: A a B. Tenant A vlastní aplikaci. Tenant B je vytváření instancí aplikace prostřednictvím instančního objektu.
 
 ![Zjednodušený tok zřizování s využitím souhlasu](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
@@ -160,7 +160,7 @@ Následující sekvenční diagram shrnuje tuto interakci:
 
 ### <a name="how-a-web-app-determines-if-the-user-is-authenticated"></a>Jak webová aplikace určuje, zda je uživatel ověřen
 
-Vývojáři webových aplikací mohou určit, zda všechny nebo pouze určité stránky vyžadují ověření. Například v ASP.NET/ASP.NET Core, to se `[Authorize]` provádí přidáním atributu k akcím kontroleru. 
+Vývojáři webových aplikací mohou určit, zda všechny nebo pouze určité stránky vyžadují ověření. Například v ASP.NET/ASP.NET Core, to se `[Authorize]` provádí přidáním atributu k akcím kontroleru.
 
 Tento atribut způsobí, že ASP.NET zkontrolovat přítomnost souboru cookie relace obsahujícího identitu uživatele. Pokud soubor cookie není k dispozici, ASP.NET přesměruje ověřování na zadaného zprostředkovatele identity. Pokud je poskytovatelem identity Azure AD, webová `https://login.microsoftonline.com`aplikace přesměruje ověřování na , který zobrazí přihlašovací dialogové okno.
 

@@ -1,17 +1,15 @@
 ---
 title: Nastavení zařízení Azure Migrate pro fyzické servery
 description: Zjistěte, jak nastavit zařízení Azure Migrate pro posouzení fyzického serveru.
-author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598166"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538269"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Nastavení zařízení pro fyzické servery
 
@@ -49,11 +47,24 @@ Stáhněte si zip soubor pro zařízení.
 Před nasazením zkontrolujte, zda je soubor zip zabezpečený.
 
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
-2. Spuštěním následujícího příkazu vygenerujte hash pro virtuální pevný disk.
+2. Spusťte následující příkaz pro generování hash pro soubor zip:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  Pro nejnovější verzi zařízení by se vygenerovaná hash měla shodovat s těmito [nastaveními](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security).
+    - Příklad využití pro veřejný cloud:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - Příklad využití pro vládní cloud:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  Ověřte hodnoty hash:
+ 
+    - Pro veřejný cloud (pro nejnovější verzi zařízení):
 
+        **Algoritmus** | **Hodnota hash**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e6de7b9f475b6542beef114b20bfdac3c
+
+    - Pro azure government (pro nejnovější verzi zařízení):
+
+        **Algoritmus** | **Hodnota hash**
+          --- | ---
+          MD5 | f81c155fc4a1409901caea948713913f
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Spuštění skriptu instalačního programu Azure Migrate
@@ -69,23 +80,23 @@ Instalační skript provádí následující akce:
 
 Spusťte skript takto:
 
-1. Extrahujte soubor zip do složky na serveru, která bude hostitelem zařízení.
+1. Extrahujte soubor zip do složky na serveru, která bude hostitelem zařízení.  Ujistěte se, že nespustíte skript na počítači na existujícízařízení Azure Migrate.
 2. Spusťte prostředí PowerShell na výše uvedeném serveru s oprávněním správce (se zvýšenými oprávněními).
 3. Změňte adresář prostředí PowerShell na složku, do které byl obsah extrahován ze staženého zipového souboru.
 4. Spusťte skript s názvem **AzureMigrateInstaller.ps1** spuštěním následujícího příkazu:
-    ```
-    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
-    ```
-Skript spustí webové aplikace zařízení po úspěšném dokončení.
 
-V případě jakýchkoli problémů můžete získat přístup k protokolům skriptů na adrese C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log pro řešení potíží.
+    - Pro veřejný cloud:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
+    - Pro Azure Government:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 
-> [!NOTE]
-> Nespouštějte instalační skript Azure Migrate na existujícím zařízení Azure Migrate.
+    Skript spustí webové aplikace zařízení po úspěšném dokončení.
+
+Pokud narazíte na nějaké problémy, můžete získat přístup k protokolům skriptů na adrese C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log pro řešení potíží.
+
+
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že virtuální počítač zařízení se může připojit k požadovaným [adresám URL Azure](migrate-appliance.md#url-access).
+Ujistěte se, že virtuální počítač zařízení se může připojit k adresám URL Azure pro [veřejné](migrate-appliance.md#public-cloud-urls) a [vládní](migrate-appliance.md#government-cloud-urls) cloudy.
 
 ## <a name="configure-the-appliance"></a>Konfigurace zařízení
 
@@ -120,7 +131,7 @@ Přístroj nastavte poprvé.
 Připojte se z zařízení k fyzickým serverům a spusťte zjišťování.
 
 1. Kliknutím na **Přidat pověření** určete přihlašovací údaje účtu, které bude zařízení používat ke zjišťování serverů.  
-2. Zadejte **operační systém**, popisný název pověření, uživatelské **jméno** a **heslo** a klepněte na tlačítko **Přidat**.
+2. Zadejte **operační systém**, popisný název pověření a uživatelské jméno a heslo. Pak klikněte na **Přidat**.
 Můžete přidat jednu sadu pověření pro servery Windows a Linux.
 4. Klepněte na tlačítko **Přidat server**a zadejte podrobnosti o serveru – adresa FQDN/IP a popisný název pověření (jedna položka na řádek) pro připojení k serveru.
 3. Klikněte na **Validate** (Ověřit). Po ověření je zobrazen seznam serverů, které lze zjistit.

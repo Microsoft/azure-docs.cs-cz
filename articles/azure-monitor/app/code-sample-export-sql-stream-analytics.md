@@ -3,12 +3,12 @@ title: Export do SQL z Přehledů aplikací Azure | Dokumenty společnosti Micro
 description: Průběžně exportujte data Application Insights do SQL pomocí Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663671"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536909"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do SQL z přehledů aplikací pomocí Stream Analytics
 Tento článek ukazuje, jak přesunout telemetrická data z [Azure Application Insights][start] do databáze Azure SQL pomocí [průběžného exportu][export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -61,7 +61,7 @@ Nepřetržitý export vždy vydezkuje data do účtu Azure Storage, takže nejd�
     ![Výběr typů událostí](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Nechte některá data hromadit. Sednout si a nechat lidi používat vaši žádost na chvíli. Telemetrie přijde a uvidíte statistické grafy v [průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md) a jednotlivé události v [diagnostickévyhledávání](../../azure-monitor/app/diagnostic-search.md). 
+1. Nechte některá data hromadit. Sednout si a nechat lidi používat vaši žádost na chvíli. Telemetrie přijde a uvidíte statistické grafy v [průzkumníku metrik](../../azure-monitor/platform/metrics-charts.md) a jednotlivé události v [diagnostickévyhledávání](../../azure-monitor/app/diagnostic-search.md). 
    
     A také se data exportují do vašeho úložiště. 
 2. Zkontrolujte exportovaná data, buď na portálu – zvolte **Procházet**, vyberte účet úložiště a potom **kontejnery** – nebo v sadě Visual Studio. Ve Visual Studiu zvolte **Zobrazit / Průzkumníka Cloudu**a otevřete Azure / Storage. (Pokud nemáte tuto možnost nabídky, musíte nainstalovat sadu Azure SDK: Otevřete dialogové okno Nový projekt a otevřete Visual C# / Cloud / Get Microsoft Azure SDK pro .NET.)
@@ -240,7 +240,7 @@ Po několika minutách se vraťte k nástrojům pro správu serveru SQL Server a
 
 
 ## <a name="related-articles"></a>Související články
-* [Export do PowerBI pomocí Stream Analytics](../../azure-monitor/app/export-power-bi.md )
+* [Export do Power BI pomocí Stream Analýzy](../../azure-monitor/app/export-power-bi.md )
 * [Podrobný odkaz datového modelu pro typy vlastností a hodnoty.](../../azure-monitor/app/export-data-model.md)
 * [Nepřetržitý export v přehledech aplikací](../../azure-monitor/app/export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
@@ -249,7 +249,7 @@ Po několika minutách se vraťte k nástrojům pro správu serveru SQL Server a
 
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
 

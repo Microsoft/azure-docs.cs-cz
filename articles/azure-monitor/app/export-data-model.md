@@ -3,17 +3,17 @@ title: Datový model Přehledy aplikací Azure | Dokumenty společnosti Microsof
 description: Popisuje vlastnosti exportované z průběžného exportu v JSON a používané jako filtry.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663871"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536841"
 ---
 # <a name="application-insights-export-data-model"></a>Exportní datový model přehledů aplikací
 V této tabulce jsou uvedeny vlastnosti telemetrie odeslané z sad SDK [application insights](../../azure-monitor/app/app-insights-overview.md) na portál.
 Tyto vlastnosti se zobrazí ve výstupu dat z [průběžného exportu](export-telemetry.md).
-Zobrazují se také ve filtrech vlastností v [Průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md) a [diagnostickém vyhledávání](../../azure-monitor/app/diagnostic-search.md).
+Zobrazují se také ve filtrech vlastností v [Průzkumníku metrik](../../azure-monitor/platform/metrics-charts.md) a [diagnostickém vyhledávání](../../azure-monitor/app/diagnostic-search.md).
 
 Body k poznámce:
 
@@ -127,16 +127,16 @@ Všechny typy telemetrie jsou doprovázeny kontextovou částí. Ne všechna tat
 | context.device.roleName |řetězec | |
 | context.device.screenResolution |řetězec | |
 | context.device.type |řetězec |PC, Prohlížeč, ... |
-| context.location |objekt |Odvozeno od clientip. |
-| context.location.city |řetězec |Odvozeno od clientip, je-li známo |
+| context.location |objekt |Odvozeno `clientip`od . |
+| context.location.city |řetězec |Odvozeno `clientip`od , je-li známo |
 | context.location.clientip |řetězec |Poslední osmiúhelník je anonymizován na 0. |
 | context.location.continent |řetězec | |
 | context.location.country |řetězec | |
 | context.location.province |řetězec |Stát nebo provincie |
-| context.operation.id |řetězec |Položky, které mají stejné id operace jsou zobrazeny jako související položky na portálu. Obvykle id požadavku. |
+| context.operation.id |řetězec |Položky, které `operation id` mají stejné, jsou zobrazeny jako související položky na portálu. Obvykle `request id`. |
 | context.operation.name |řetězec |url nebo název požadavku |
 | context.operation.parentId |řetězec |Umožňuje vnořené související položky. |
-| context.session.id |řetězec |Id skupiny operací ze stejného zdroje. Doba 30 minut bez operace signalizuje konec relace. |
+| context.session.id |řetězec |`Id`skupiny operací ze stejného zdroje. Doba 30 minut bez operace signalizuje konec relace. |
 | context.session.isFirst |Boolean | |
 | context.user.accountAcquisitionDate |řetězec | |
 | context.user.accountId |řetězec | |
@@ -147,7 +147,7 @@ Všechny typy telemetrie jsou doprovázeny kontextovou částí. Ne všechna tat
 | context.user.isAuthenticated |Boolean | |
 | context.user.storeRegion |řetězec | |
 | internal.data.documentVersion |řetězec | |
-| internal.data.id |řetězec | Jedinečné id, které je přiřazeno při požití položky do přehledů aplikací |
+| internal.data.id |řetězec | `Unique id`který je přiřazen při požití položky do Application Insights |
 
 ## <a name="events"></a>Události
 Vlastní události generované [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
@@ -173,7 +173,7 @@ Hlásí [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na serveru a v
 | basicException [0] failedUserCodeAssembly |řetězec | |
 | basicException [0] handledAt |řetězec | |
 | basicException [0] hasFullStack |Boolean | |
-| basicException [0] id |řetězec | |
+| basicException [0]`id` |řetězec | |
 | metoda basicException [0] |řetězec | |
 | zpráva basicException [0] |řetězec |Zpráva o výjimce. Maximální délka 10k. |
 | basicException [0] outerExceptionMessage |řetězec | |
@@ -210,7 +210,7 @@ Odesláno TrackDependency. Slouží k hlášení výkonu a využití [volání z
 | remoteDependency [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4&gt; = 25 %. |
 | remoteDependency [0] dependencyTypeName |řetězec |HTTP, SQL, ... |
 | remoteDependency [0] durationMetric.value |číslo |Čas od volání do dokončení odpovědi závislostí |
-| remoteDependency [0] id |řetězec | |
+| remoteDependency [0]`id` |řetězec | |
 | název remoteDependency [0] |řetězec |Adresu url. Maximální délka 250. |
 | remoteDependency [0] resultCode |řetězec |ze závislosti HTTP |
 | remoteDependency [0] úspěch |Boolean | |
@@ -227,7 +227,7 @@ Odesláno [trackrequest](../../azure-monitor/app/api-custom-events-metrics.md#tr
 | --- | --- | --- |
 | požadavek [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například: 4&gt; = 25 %. |
 | request [0] durationMetric.value |číslo |Čas od žádosti do odpovědi. 1e7 == 1s |
-| požadavek [0] id |řetězec |Id operace |
+| požadavek [0]`id` |řetězec |`Operation id` |
 | název požadavku [0] |řetězec |GET/POST + url základna.  Maximální délka 250 |
 | request [0] responseCode |celé číslo |Odpověď HTTP odeslaná klientovi |
 | požadavek [0] úspěch |Boolean |Výchozí == (responseCode &lt; 400) |
@@ -292,7 +292,7 @@ Generováno TrackMetric().
 
 Hodnota metriky se nachází v souboru context.custom.metrics[0]
 
-Například:
+Příklad:
 
     {
      "metric": [ ],
@@ -318,7 +318,7 @@ Například:
     }
 
 ## <a name="about-metric-values"></a>O hodnotách metrik
-Hodnoty metrik, v přehledech metrik i jinde, jsou hlášeny se standardní strukturou objektu. Například:
+Hodnoty metrik, v přehledech metrik i jinde, jsou hlášeny se standardní strukturou objektu. Příklad:
 
       "durationMetric": {
         "name": "contoso.org",

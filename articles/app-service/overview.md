@@ -5,18 +5,18 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 01/04/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b385136183fba5d1e64db3763453d2f4b23d4d96
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f8449c516bce3f3ab949e88808f73c7240995f99
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045173"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535634"
 ---
 # <a name="app-service-overview"></a>Přehled služby App Service
 
 *Azure App Service* je služba založená na protokolu HTTP pro hostování webových aplikací, rest api a mobilní back-endy. Můžete vyvíjet ve svém oblíbeném jazyce, ať už jde o .NET, .NET Core, Javu, Ruby, Node.js, PHP nebo Python. Aplikace běží a škálují s lehkostí v prostředích se systémem Windows i Linux. Informace o prostředích založených na Linuxu najdete v tématu [App Service v Linuxu](containers/app-service-linux-intro.md). 
 
-Služba App Service do vaší aplikace nejen přidává výkon Microsoft Azure, jako je zabezpečení, vyrovnávání zatížení, automatické škálování a automatizovaná správa. Můžete také využívat její možnosti DevOps, jako jsou průběžné nasazování z Azure DevOps, GitHubu, Docker Hubu a dalších zdrojů, správa balíčků, přípravná prostředí, vlastní doména a certifikáty SSL. 
+Služba App Service do vaší aplikace nejen přidává výkon Microsoft Azure, jako je zabezpečení, vyrovnávání zatížení, automatické škálování a automatizovaná správa. Můžete také využít jeho funkce DevOps, jako je například průběžné nasazení z Azure DevOps, GitHub, Docker Hub a dalších zdrojů, správa balíčků, pracovní prostředí, vlastní domény a tls/ssl certifikáty. 
 
 Se službou App Service platíte jenom za výpočetní prostředky Azure, které využijete. Výpočetní prostředky, které používáte, jsou určeny _plánem služby App Service,_ na kterých spouštěte aplikace. Další informace najdete v [tématu Přehled plánů služby Azure App Service](overview-hosting-plans.md).
 

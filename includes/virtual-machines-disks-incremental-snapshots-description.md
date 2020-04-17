@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4d2c0a02a48c0e04b501f136f66c28b3f532e2a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83c391c0d92f8d4a0ed4b44bc3a90273db51b412
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79486023"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81539491"
 ---
 Přírůstkové snímky jsou zálohy bodu v čase pro spravované disky, které se při pořízení skládají pouze ze všech změn od posledního snímku. Při pokusu o stažení nebo jiné použití přírůstkového snímku se použije celý virtuální pevný disk. Tato nová funkce pro snímky spravovaného disku potenciálně umožňuje, aby byly nákladově efektivnější, protože pokud se rozhodnete, není třeba ukládat celý disk s každým jednotlivým snímek. Stejně jako běžné snímky, přírůstkové snímky lze použít k vytvoření úplného spravovaného disku nebo k vytvoření pravidelného snímku.
 
@@ -22,3 +22,5 @@ Existuje několik rozdílů mezi přírůstkový snímek a pravidelný snímek. 
 Přírůstkové snímky také nabízejí možnost rozdílu, k dispozici pouze spravované disky. Umožňují získat změny mezi dvěma přírůstkovými snímky stejných spravovaných disků až na úroveň bloku. Tuto možnost můžete použít ke snížení nároku na data při kopírování snímků napříč oblastmi.  Můžete například stáhnout první přírůstkový snímek jako základní objekt blob v jiné oblasti. Pro následné přírůstkové snímky můžete zkopírovat pouze změny od posledního snímku do základního objektu blob. Po zkopírování změn můžete pořizovat snímky na základní objekt blob, které představují vaše bod v čase zálohování disku v jiné oblasti. Disk můžete obnovit buď ze základního objektu blob, nebo ze snímku na základním objektu blob v jiné oblasti.
 
 :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-description/incremental-snapshot-diagram.png" alt-text="Diagram znázorňující přírůstkové snímky zkopírované napříč oblastmi. Snímky provádět různá volání rozhraní API, dokud nakonec tvoří objekty BLOB stránky na každý snímek.":::
+
+Použitou velikost snímků najdete v [sestavě využití Azure](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). Například pokud je použitá velikost dat snímku 10 GiB, denní **sestava** využití zobrazí 10 GiB/(31 dní) = 0,3226 jako spotřebované množství.

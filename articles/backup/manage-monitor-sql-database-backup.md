@@ -3,12 +3,12 @@ title: Správa a monitorování db s SQL Server na virtuálním počítači Azur
 description: Tento článek popisuje, jak spravovat a monitorovat databáze SQL Serveru, které běží na virtuálním počítači Azure.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 4daf068e97a08d1a611ef64cb64569cacd5d7420
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74172161"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537300"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a monitorování zálohovaných databází SQL Serveru
 
@@ -38,7 +38,7 @@ Vzhledem k tomu, že zálohy protokolu dochází každých 15 minut, monitorová
 
 Sledování výstrah zálohování databáze:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Na řídicím panelu trezoru vyberte **Výstrahy a události**.
 
@@ -59,7 +59,7 @@ Pokud se rozhodnete ponechat body obnovení, mějte na paměti tyto podrobnosti:
 
 - Všechny body obnovení zůstanou neporušené navždy, veškeré prořezávání se zastaví při zastavení ochrany s uchováním dat.
 - Bude se vám účtovat chráněná instance a spotřebované úložiště. Další informace najdete v tématu [Azure Backup pricing](https://azure.microsoft.com/pricing/details/backup/).
-- Pokud odstraníte zdroj dat bez zastavení zálohování, nové zálohy se nezdaří.
+- Pokud odstraníte zdroj dat bez zastavení zálohování, nové zálohy se nezdaří. Platnost starých bodů obnovení vyprší podle zásad, ale jeden poslední bod obnovení bude vždy zachován, dokud nezastavíte zálohy a neodstraníte data.
 
 Ukončení ochrany databáze:
 

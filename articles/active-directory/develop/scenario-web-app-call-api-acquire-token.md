@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 196d941c5c3b18b737f7a11c25ebbb9eab91be1e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 1069b4288f8253ccb9a7774b3144d10d85dcdd36
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885034"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537096"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webová aplikace, která volá webová api: Získání tokenu pro aplikaci
 
@@ -63,7 +63,7 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-Chcete-li lépe pochopit kód potřebný pro tento scénář, naleznete ve fázi 2 ([2-1-Web App volání Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) krok [ms-identity-aspnetcore-webapp-tutorial.](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)
+Chcete-li lépe porozumět kódu potřebnému pro tento scénář, podívejte se na krok fáze 2 ([2-1-Web app Calls Microsoft Graph)](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph) [v kurzu kurzu ms-identity-aspnetcore-webapp-tutorial.](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)
 
 Existují i jiné složité varianty, jako například:
 

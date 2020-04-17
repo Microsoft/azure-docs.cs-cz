@@ -12,12 +12,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5596f5f40e293a7bd11ac6a5f900e05c0b8d3b0e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 15578b6adc19eb3513e0d7e1d3d2c400c9170250
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883130"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535974"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Ukázky kódu platformy identity Microsoftu (koncový bod v2.0)
 
@@ -53,7 +53,7 @@ Následující ukázky ilustrují webové aplikace, které přihlašují uživat
 
 | Platforma | Pouze znaky u uživatelů | Přihlášení uživatelů a volání Microsoft Graphu |
 | -------- | ------------------- | --------------------------------- |
-| ![Tento obrázek znázorňuje logo ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET jádro 2.2 | [ASP.NET základní webapp přihlášení uživatelé tutorial](https://aka.ms/aspnetcore-webapp-sign-in) | Stejná ukázka v ASP.NET Core Web App volá fázi [Microsoft Graphu](https://aka.ms/aspnetcore-webapp-call-msgraph) |
+| ![Tento obrázek znázorňuje logo ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET jádro 2.2 | [ASP.NET základní webapp přihlášení uživatelé tutorial](https://aka.ms/aspnetcore-webapp-sign-in) | Stejná ukázka ve [webové aplikaci ASP.NET Core volá](https://aka.ms/aspnetcore-webapp-call-msgraph) fázi Microsoft Graphu |
 | ![Tento obrázek znázorňuje logo ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [rychlý start ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-omezené-obory-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Tento obrázek znázorňuje logo Javy](media/sample-v2-code/logo_java.png)  |                   | [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Tento obrázek znázorňuje logo Pythonu](media/sample-v2-code/logo_python.png)  |                   | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |

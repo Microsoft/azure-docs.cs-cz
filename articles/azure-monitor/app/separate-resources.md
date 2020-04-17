@@ -3,12 +3,12 @@ title: Oddělení telemetrie v Přehledech aplikací Azure
 description: Přímé telemetrie do různých prostředků pro vývoj, testování a výrobní razítka.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 3580d162f4b3955a04ffcd0f13933221bfef3b65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671456"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536773"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Oddělení telemetrie od vývoje, testování a výroby
 
@@ -34,7 +34,7 @@ Chcete-li usnadnit změnu ikey jako kód přesune mezi fázemi výroby, nastavte
 
 Nastavte klíč v metodě inicializace, například global.aspx.cs ve službě ASP.NET:
 
-*C #*
+*C#*
 
     protected void Application_Start()
     {
@@ -69,7 +69,7 @@ V [portal.azure.com](https://portal.azure.com)přidejte prostředek Application 
 
 ![Klikněte na tlačítko Nový, Application Insights](./media/separate-resources/01-new.png)
 
-* **Typ aplikace** ovlivňuje to, co vidíte na okně přehledu a vlastnosti dostupné v [průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md). Pokud typ aplikace nevidíte, vyberte jeden z webových typů webových stránek.
+* **Typ aplikace** ovlivňuje to, co vidíte na okně přehledu a vlastnosti dostupné v [průzkumníku metrik](../../azure-monitor/platform/metrics-charts.md). Pokud typ aplikace nevidíte, vyberte jeden z webových typů webových stránek.
 * **Skupina prostředků** je pohodlí pro správu vlastností, jako je [řízení přístupu](../../azure-monitor/app/resources-roles-access-control.md). Pro vývoj, testování a výrobu můžete použít samostatné skupiny prostředků.
 * **Předplatné** je váš platební účet v Azure.
 * **Místo,** kde uchováváme vaše údaje. V současné době jej nelze změnit. 
@@ -89,7 +89,7 @@ Potřebujete instrumentační klíče všech prostředků, do kterých bude apli
 ## <a name="filter-on-build-number"></a>Filtrování čísla sestavení
 Když publikujete novou verzi aplikace, budete chtít oddělit telemetrii od různých sestavení.
 
-Můžete nastavit vlastnost Verze aplikace, abyste mohli filtrovat výsledky [hledání](../../azure-monitor/app/diagnostic-search.md) a [průzkumníka metrik.](../../azure-monitor/app/metrics-explorer.md)
+Můžete nastavit vlastnost Verze aplikace, abyste mohli filtrovat výsledky [hledání](../../azure-monitor/app/diagnostic-search.md) a [průzkumníka metrik.](../../azure-monitor/platform/metrics-charts.md)
 
 ![Filtrování vlastnosti](./media/separate-resources/050-filter.png)
 
@@ -139,7 +139,7 @@ Pokud chcete sledovat verzi aplikace, ujistěte se, že proces Microsoft Build E
     </PropertyGroup>
 ```
 
-Pokud obsahuje informace o sestavení, webový modul Application Insights automaticky přidá položku **Verze aplikace** jako vlastnost pro každý předmět telemetrie. Díky tomu můžete při provádění [diagnostických hledání](../../azure-monitor/app/diagnostic-search.md) nebo při [zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) filtrovat podle verze.
+Pokud obsahuje informace o sestavení, webový modul Application Insights automaticky přidá položku **Verze aplikace** jako vlastnost pro každý předmět telemetrie. Díky tomu můžete při provádění [diagnostických hledání](../../azure-monitor/app/diagnostic-search.md) nebo při [zkoumání metrik](../../azure-monitor/platform/metrics-charts.md) filtrovat podle verze.
 
 Všimněte si však, že číslo verze sestavení je generováno pouze microsoft build engine, nikoli vývojářsestavení z visual studia.
 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1fd22772e72cba4cce3f9fa2751dc0df0e15bb9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77602936"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535594"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak použít sadu Azure WebJobs SDK k událostmi řízenému zpracování na pozadí
 
@@ -155,14 +155,14 @@ Automatické aktivační události volají funkci v reakci na událost. Vezměme
 ```cs
 public static void Run(
     [QueueTrigger("myqueue-items")] string myQueueItem,
-    [Blob("samples-workitems/{myQueueItem}", FileAccess.Read)] Stream myBlob,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
     ILogger log)
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
 ```
 
-Atribut `QueueTrigger` říká, že za běhu chcete volat funkci `myqueue-items` vždy, když se ve frontě objeví zpráva fronty. Atribut `Blob` říká, že za běhu chcete použít zprávu fronty ke čtení objektu blob v kontejneru *ukázkových pracovních položek.* Obsah zprávy fronty, předaný funkci v `myQueueItem` parametru, je název objektu blob.
+Atribut `QueueTrigger` říká, že za běhu chcete volat funkci `myqueue-items` vždy, když se ve frontě objeví zpráva fronty. Atribut `Blob` říká, že za běhu chcete použít zprávu fronty ke čtení objektu blob v kontejneru *ukázkových pracovních položek.* Název položky objektu blob v kontejneru `samples-workitems` se získá přímo`{queueTrigger}`z aktivační události fronty jako výraz vazby ( ).
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
@@ -824,12 +824,12 @@ Každý protokol vytvořený `ILogger` instancí `Category` `Level`má přidruž
 |LogLevel    |kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladění       | 1 |
+|Ladit       | 1 |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
 |Kritická    | 5 |
-|Žádný        | 6 |
+|Žádná        | 6 |
 
 Můžete nezávisle filtrovat každou kategorii [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)na konkrétní . Například můžete chtít zobrazit všechny protokoly pro zpracování `Error` aktivační události objektu blob, ale pouze a vyšší pro všechno ostatní.
 

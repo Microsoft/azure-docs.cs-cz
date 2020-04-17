@@ -3,21 +3,25 @@ title: Nastavení zařízení Azure Migrate pro technologie Hyper-V
 description: Zjistěte, jak nastavit zařízení Migrace Azure pro vyhodnocení a migraci virtuálních počítačů Hyper-V.
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 80db2c1d4f5482604ca1507174b127c150f76044
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77c13a3a8c87d116bd0863324d28669185c53c84
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336802"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538286"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Nastavení zařízení pro virtuální aplikace Hyper-V
 
-Tento článek popisuje, jak nastavit zařízení Migrace Azure pro vyhodnocení virtuálních počítačích Hyper-V pomocí nástroje [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool)
+V tomto článku nastavte zařízení Azure Migrate pro vyhodnocení virtuálních počítačích Hyper-V pomocí nástroje [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool)
 
 [Zařízení Migrace Azure](migrate-appliance.md) je zjednodušené zařízení používané Azure Migrate:Server Assessment/Migration ke zjištění místních virtuálních počítačů Hyper-V a odesílání dat metadat a výkonu virtuálního počítače do Azure.
 
-Zařízení Azure Migrate pro vyhodnocení virtuálních počítačů Hyper-V můžete nastavit pomocí šablony virtuálního pevného disku, kterou stáhnete, nebo pomocí instalačního skriptu Prostředí PowerShell. Tento článek popisuje, jak nastavit zařízení pomocí šablony virtuálního pevného disku. Chcete-li nastavit zařízení pomocí skriptu, postupujte podle pokynů v [tomto článku](deploy-appliance-script.md).
+Zařízení můžete nasadit pomocí několika metod:
 
+- Nastavení na virtuálním počítači Hyper-V pomocí staženého virtuálního pevného disku. Toto je metoda popsaná v tomto článku.
+- Nastavení na virtuálním počítači Hyper-V nebo fyzickém počítači pomocí instalačního skriptu prostředí PowerShell. [Tato metoda](deploy-appliance-script.md) by se měla použít, pokud nemůžete nastavit virtuální počítač pomocí virtuálního pevného disku, nebo pokud jste ve službě Azure Government.
+
+Po vytvoření zařízení zkontrolujte, zda se může připojit k Azure Migrate:Server Assessment, poprvé ho nakonfigurovat a zaregistrovat v projektu Azure Migrate.
 
 ## <a name="appliance-deployment-vhd"></a>Nasazení zařízení (VHD)
 
@@ -64,8 +68,8 @@ Importujte stažený soubor a vytvořte virtuální ho.
 3. V **části Vyhledat složku**zadejte složku obsahující extrahovaný virtuální pevný disk. Pak klikněte na **Další**.
 1. V **povolte virtuální počítač**klepněte na tlačítko **Další**.
 2. V **části Zvolit typ importu**klikněte na Kopírovat virtuální počítač **(vytvořit nové jedinečné ID).** Pak klikněte na **Další**.
-3. V **části Zvolte cíl**ponechte výchozí nastavení. Klikněte na **Další**.
-4. Ve **složkách úložiště**ponechejte výchozí nastavení. Klikněte na **Další**.
+3. V **části Zvolte cíl**ponechte výchozí nastavení. Klikněte na **Další**.
+4. Ve **složkách úložiště**ponechejte výchozí nastavení. Klikněte na **Další**.
 5. V **části Zvolit síť**zadejte virtuální přepínač, který bude virtuální počítač používat. Přepínač potřebuje připojení k internetu k odesílání dat do Azure.
 6. V **souhrnu**zkontrolujte nastavení. Klikněte na **Dokončit**.
 7. Ve Správci technologie Hyper-V > **virtuální počítače**spusťte virtuální počítač.
@@ -73,7 +77,7 @@ Importujte stažený soubor a vytvořte virtuální ho.
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že virtuální počítač zařízení se může připojit k [adresám URL Azure](migrate-appliance.md#url-access).
+Ujistěte se, že virtuální počítač zařízení se může připojit k adresám URL Azure pro [veřejné](migrate-appliance.md#public-cloud-urls) a [vládní](migrate-appliance.md#government-cloud-urls) cloudy.
 
 ## <a name="configure-the-appliance"></a>Konfigurace zařízení
 

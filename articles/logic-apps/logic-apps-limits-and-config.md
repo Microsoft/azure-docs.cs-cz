@@ -3,15 +3,15 @@ title: Omezení a konfigurace
 description: Omezení služeb, jako je doba trvání, propustnost a kapacita, plus hodnoty konfigurace, jako jsou IP adresy, které je třeba povolit, pro aplikace Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/12/2020
-ms.openlocfilehash: 4359c5581d14f4a918a49cf2b91ac58561ea93d3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/17/2020
+ms.openlocfilehash: 40950be2e5caeb17d20086720a7b65c15147c2f5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257449"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535107"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -23,7 +23,7 @@ Tento článek popisuje omezení a podrobnosti konfigurace pro vytváření a sp
 
 Tady jsou limity pro definici jedné aplikace logiky:
 
-| Name (Název) | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
 | Akce na pracovní postup | 500 | Chcete-li toto omezení rozšířit, můžete podle potřeby přidat vnořené pracovní postupy. |
 | Povolená hloubka vnoření pro akce | 8 | Chcete-li toto omezení rozšířit, můžete podle potřeby přidat vnořené pracovní postupy. |
@@ -45,7 +45,7 @@ Tady jsou limity pro definici jedné aplikace logiky:
 
 Tady jsou limity pro spuštění jedné aplikace logiky:
 
-| Name (Název) | Limit pro více klientů | Limit prostředí integrační ch služeb | Poznámky |
+| Název | Limit pro více klientů | Limit prostředí integrační ch služeb | Poznámky |
 |------|--------------------|---------------------------------------|-------|
 | Doba trvání spuštění | 90 dnů | 366 dní | Doba trvání spuštění se vypočítá pomocí počátečního času spuštění a limitu určeného *v době zahájení* nastavením pracovního [**postupu, spuštěním uchovávání historie ve dnech**](#change-duration). <p><p>Chcete-li změnit výchozí limit, který je 90 dní, [přečtěte si](#change-duration)informace o době trvání běhu změn . |
 | Spuštění uchování v úložišti | 90 dnů | 366 dní | Uchovávání spuštění se vypočítá pomocí počátečního času spuštění a limitu, který je zadán *v aktuálním čase* nastavením pracovního [**postupu, spustit uchovávání historie ve dnech**](#change-retention). Bez ohledu na to, zda je spuštění dokončeno nebo časový rozsah, výpočet uchovávání informací vždy používá čas zahájení spuštění. Pokud doba trvání spuštění překročí *aktuální* limit uchovávání informací, je spuštění odebráno z historie spuštění. <p><p>Pokud toto nastavení změníte, aktuální limit se vždy použije pro výpočet uchovávání informací bez ohledu na předchozí limit. Pokud například snížíte limit uchovávání informací z 90 dnů na 30 dní, bude z historie spuštění odebráno spuštění, které je staré 60 dní. Pokud produmíte dobu uchovávání z 30 dnů na 60 dní, běh, který je 20 dní starý pobyty v historii spuštění po dobu dalších 40 dnů. <p><p>Pokud chcete změnit výchozí limit, který je 90 dní, [přečtěte si informace o změně uchovávání spuštění v úložišti](#change-retention). |
@@ -82,7 +82,7 @@ Chcete-li změnit výchozí limit pro dobu trvání spuštění a spustit uchov�
 
 Tady jsou limity pro spuštění jedné aplikace logiky:
 
-| Name (Název) | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
 | Souběžnost aktivační události | - Neomezené, když je vypnuto řízení souběžnosti <p><p>- 25 je výchozí limit při řízení souběžnosti je zapnuta, které nelze vrátit po povolení souběžnosti. Můžete změnit výchozí hodnotu mezi 1 a 50 včetně. | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které lze spustit současně nebo paralelně. <p><p>**Poznámka:** Je-li souběžnost zapnuta, limit SplitOn se sníží na 100 položek pro [debatní pole](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Pokud chcete změnit výchozí limit na hodnotu mezi 1 a 50 inkluzívně, přečtěte si následující informace [o omezení souběžnosti aktivační](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) události nebo instance aktivační [události](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maximální počet čekání | - Bez souběžnosti je minimální počet čekajících běhů 1, zatímco maximální počet je 50. <p><p>- S souběžnosti, minimální počet čekajících spuštění je 10 plus počet souběžných spuštění (aktivační událost souběžnosti). Maximální počet můžete změnit na 100 včetně. | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které můžete čekat na spuštění, když vaše aplikace logiky je již spuštěna maximální souběžné instance. <p><p>Pokud chcete změnit výchozí limit, přečtěte si informace [o omezení počtu přečkání čekání](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
@@ -100,7 +100,7 @@ Tady jsou limity pro definici jedné aplikace logiky:
 
 ### <a name="multi-tenant-logic-apps-service"></a>Služba Logic Apps pro více klientů
 
-| Name (Název) | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
 | Akce: Popravy za 5 minut | Výchozí limit je 100 000, ale maximální limit je 300 000. | Pokud chcete změnit výchozí limit, [přečtěte si informace o spuštění aplikace logiky v režimu "vysoká propustnost"](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), který je ve verzi Preview. Nebo můžete distribuovat úlohy napříč více než jednu aplikaci logiky podle potřeby. |
 | Akce: Souběžná odchozí volání | ~2500 | Můžete snížit počet souběžných požadavků nebo podle potřeby zkrátit dobu trvání. |
@@ -112,9 +112,9 @@ Tady jsou limity pro definici jedné aplikace logiky:
 
 ### <a name="integration-service-environment-ise"></a>Prostředí integračních služeb (ISE)
 
-Tady jsou limity propustnostpro prémiovou skladovou položku:
+Tady jsou limity propustnost pro [sku prémiové služby ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
 
-| Name (Název) | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 |------|-------|-------|
 | Limit spuštění základní jednotky | Když kapacita infrastruktury dosáhne 80 % | Poskytuje přibližně 4 000 spuštění akce za minutu, což je ~160 milionů spuštění akcí za měsíc. | |
 | Limit spuštění jednotky škálování | Když kapacita infrastruktury dosáhne 80 % | Každá jednotka škálování může poskytovat přibližně 2 000 dalších spuštění akce za minutu, což je o cca 80 milionů více spuštění akce za měsíc. | |
@@ -124,8 +124,7 @@ Tady jsou limity propustnostpro prémiovou skladovou položku:
 Chcete-li přejít nad tyto limity v normálním zpracování nebo spustit zátěžové testování, které by mohly jít nad tyto limity, [obraťte](mailto://logicappsemail@microsoft.com) se na tým Logic Apps o pomoc s vašimi požadavky.
 
 > [!NOTE]
-> Skladová [položka vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) nemá žádná publikovaná omezení, protože tato skladová položka nemá žádnou smlouvu o úrovni služeb (SLA) ani možnosti pro škálování.
-> Tuto skladovou položku použijte pouze pro experimentování, vývoj a testování, nikoli pro testování výroby nebo výkonu.
+> [Skladová položka ISE vývojáře ise](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) nemá žádná publikovaná omezení, žádné možnosti pro škálování a žádná smlouva o úrovni služeb (SLA). Tuto skladovou položku použijte pouze pro experimentování, vývoj a testování, nikoli pro testování výroby nebo výkonu.
 
 <a name="gateway-limits"></a>
 
@@ -143,7 +142,7 @@ Zde jsou limity pro jedno odchozí nebo příchozí volání HTTP:
 
 Některé operace konektoru provádět asynchronní volání nebo naslouchat požadavky webhooku, takže časový limit pro tyto operace může být delší než tato omezení. Další informace naleznete v technických podrobnostech pro konkrétní spojnici a také [aktivační události a akce pracovního postupu](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
-| Name (Název) | Limit pro více klientů | Limit prostředí integrační ch služeb | Poznámky |
+| Název | Limit pro více klientů | Limit prostředí integrační ch služeb | Poznámky |
 |------|--------------------|---------------------------------------|-------|
 | Požadavek na odchozí | 120 sekund <br>(2 minuty) | 240 sekund <br>(4 minuty) | Příklady odchozích požadavků zahrnují volání pomocí aktivačních událostí PROTOKOLU HTTP. <p><p>**Tip**: Pro delší spuštěné operace použijte [asynchronní vzorek dotazování](../logic-apps/logic-apps-create-api-app.md#async-pattern) nebo [do smyčky](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
 | Příchozí požadavek | 120 sekund <br>(2 minuty) | 240 sekund <br>(4 minuty) | Příklady příchozích požadavků zahrnují volání přijatá aktivačními událostmi požadavku a aktivační události webhooku. <p><p>**Poznámka:** Pro původní volající získat odpověď, všechny kroky v odpovědi musí dokončit v rámci limitu, pokud zavoláte jinou aplikaci logiky jako vnořený pracovní postup. Další informace najdete v tématu [Volání, aktivační událost nebo hnízdit aplikace logiky](../logic-apps/logic-apps-http-endpoint.md). |
@@ -153,7 +152,7 @@ Některé operace konektoru provádět asynchronní volání nebo naslouchat po�
 
 #### <a name="message-size"></a>Velikost zpráv
 
-| Name (Název) | Limit pro více klientů | Limit prostředí integrační ch služeb | Poznámky |
+| Název | Limit pro více klientů | Limit prostředí integrační ch služeb | Poznámky |
 |------|--------------------|---------------------------------------|-------|
 | Velikost zpráv | 100 MB | 200 MB | Konektory s popiskem ISE používají limit ISE, nikoli limity konektorů než ISE. <p><p>Chcete-li tento limit obejít, [přečtěte si](../logic-apps/logic-apps-handle-large-messages.md)téma Zpracování velkých zpráv s bloků . Některé konektory a rozhraní API však nemusí podporovat bloků nebo dokonce výchozí limit. |
 | Velikost zprávy s bloků | 1 GB | 5 GB | Toto omezení platí pro akce, které buď nativně podporují bloků nebo umožňují povolit bloků v jejich konfiguraci za běhu. <p><p>Pro prostředí služby integrace modul logic apps podporuje toto omezení, ale konektory mají své vlastní omezení bloků až do limitu motoru, například naleznete v [tématu Azure Blob Storage odkaz na rozhraní API](https://docs.microsoft.com/connectors/azureblob/). Další informace o bloků, naleznete [v tématu Zpracování velkých zpráv s bloků](../logic-apps/logic-apps-handle-large-messages.md). |
@@ -161,7 +160,7 @@ Některé operace konektoru provádět asynchronní volání nebo naslouchat po�
 
 #### <a name="character-limits"></a>Omezení znaků
 
-| Name (Název) | Poznámky |
+| Název | Poznámky |
 |------|-------|
 | Omezení pro vyhodnocení výrazu | 131 072 znaků | `@concat()`Výrazy `@base64()` `@string()` , nemohou být delší než toto omezení. |
 | Požadavek na limit znaků adresy URL | 16 384 znaků |
@@ -171,7 +170,7 @@ Některé operace konektoru provádět asynchronní volání nebo naslouchat po�
 
 #### <a name="retry-policy"></a>Zásady opakování
 
-| Name (Název) | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
 | Opakované pokusy | 90 | Výchozí hodnota je 4. Chcete-li změnit výchozí hodnotu, použijte [parametr zásad opakování](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 | Maximální zpoždění při opakování | 1 den | Chcete-li změnit výchozí hodnotu, použijte [parametr zásad opakování](../logic-apps/logic-apps-workflow-actions-triggers.md). |
@@ -184,7 +183,7 @@ Některé operace konektoru provádět asynchronní volání nebo naslouchat po�
 
 Tady jsou omezení pro vlastní konektory, které můžete vytvořit z webových rozhraní API.
 
-| Name (Název) | Limit pro více klientů | Limit prostředí integrační ch služeb | Poznámky |
+| Název | Limit pro více klientů | Limit prostředí integrační ch služeb | Poznámky |
 |------|--------------------|---------------------------------------|-------|
 | Počet vlastních konektorů | 1 000 na předplatné Azure | 1 000 na předplatné Azure ||
 | Počet požadavků za minutu pro vlastní konektor | 500 požadavků za minutu na připojení | 2 000 požadavků za minutu na *vlastní konektor* ||
@@ -194,7 +193,7 @@ Tady jsou omezení pro vlastní konektory, které můžete vytvořit z webových
 
 ## <a name="managed-identities"></a>Spravované identity
 
-| Name (Název) | Omezení |
+| Název | Omezení |
 |------|-------|
 | Spravované identity podle aplikace logiky | Systémově přiřazená identita nebo 1 identita přiřazená uživatelem |
 | Počet aplikací logiky, které mají spravovanou identitu v předplatném Azure podle oblasti | 250 |
@@ -270,7 +269,7 @@ Cenové sazby najdete v tématu [Logic Apps pricing](https://azure.microsoft.com
 
 Zde jsou omezení velikosti zprávy, které platí pro protokoly B2B:
 
-| Name (Název) | Limit pro více klientů | Limit prostředí integrační ch služeb | Poznámky |
+| Název | Limit pro více klientů | Limit prostředí integrační ch služeb | Poznámky |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 - 100 MB<br>v1 - 50 MB | v2 - 200 MB <br>v1 - 50 MB | Platí pro dekódování a kódování |
 | X12 | 50 MB | 50 MB | Platí pro dekódování a kódování |
@@ -281,12 +280,9 @@ Zde jsou omezení velikosti zprávy, které platí pro protokoly B2B:
 
 ## <a name="disabling-or-deleting-logic-apps"></a>Zakázání nebo odstranění aplikací logiky
 
-Když zakážete aplikaci logiky, žádné nové spuštění jsou instance.
-Všechna probíhající a čekající spuštění pokračují až do dokončení, což může nějakou dobu trvat.
+Když zakážete aplikaci logiky, žádné nové spuštění jsou instance. Všechna probíhající a čekající spuštění pokračují až do dokončení, což může nějakou dobu trvat.
 
-Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance spuštění.
-Všechna probíhající a čekající spuštění se zruší.
-Pokud máte tisíce spuštění, jejich zrušení může trvat značnou dobu.
+Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance spuštění. Všechna probíhající a čekající spuštění se zruší. Pokud máte tisíce spuštění, jejich zrušení může trvat značnou dobu.
 
 <a name="configuration"></a>
 
@@ -300,17 +296,17 @@ IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volán�
 > * **LogicAppsManagement**: Představuje vstupní IP adresa předpony pro službu Logic Apps.
 > * **LogicApps**: Představuje předpony odchozí IP adresy pro službu Logic Apps.
 
+* Pro [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)pevné nebo vyhrazené IP adresy nejsou k dispozici pro [vlastní konektory](../logic-apps/custom-connector-overview.md) a [spravované konektory](../connectors/apis-list.md#managed-api-connectors), například Azure Storage, SQL Server, Office 365 Outlook a tak dále.
+
 * Chcete-li podporovat volání, která vaše aplikace logiky přímo provést pomocí [HTTP](../connectors/connectors-native-http.md), [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)a další požadavky HTTP, nastavte bránu firewall se všemi [příchozí](#inbound) *a* [odchozí](#outbound) IP adresy, které jsou používány službou Logic Apps, na základě oblastí, kde existují aplikace logiky. Tyto adresy se zobrazují pod nadpisy **Příchozí** a **Odchozí** v této části a jsou seřazeny podle oblasti.
 
-* Chcete-li podporovat volání, která provádějí [konektory spravované společností Microsoft,](../connectors/apis-list.md) nastavte bránu firewall se *všemi* [odchozími](#outbound) IP adresami používanými těmito konektory na základě oblastí, kde existují vaše aplikace logiky. Tyto adresy se zobrazují pod nadpisem **Odchozí** v této části a jsou seřazeny podle oblasti.
+* Chcete-li podporovat volání, která [spravované konektory](../connectors/apis-list.md#managed-api-connectors) provést, nastavte bránu firewall se *všemi* [odchozí](#outbound) IP adresy používané těmito konektory, na základě oblastí, kde existují aplikace logiky. Tyto adresy se zobrazují pod nadpisem **Odchozí** v této části a jsou seřazeny podle oblasti.
 
 * Chcete-li povolit komunikaci pro aplikace logiky, které běží v prostředí služby integrace (ISE), ujistěte se, že [otevřete tyto porty](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
 
 * Pokud vaše aplikace logiky mají problémy s přístupem k účtům úložiště Azure, které používají [brány firewall a pravidla brány firewall](../storage/common/storage-network-security.md), máte různé [možnosti povolení přístupu](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
 
   Aplikace logiky například nemají přímý přístup k účtům úložiště, které používají pravidla brány firewall a existují ve stejné oblasti. Pokud však povolíte [odchozí IP adresy pro spravované konektory ve vaší oblasti](../logic-apps/logic-apps-limits-and-config.md#outbound), vaše aplikace logiky mají přístup k účtům úložiště, které se nacházejí v jiné oblasti, s výjimkou případů, kdy používáte konektory Azure Table Storage nebo Azure Queue Storage. Chcete-li získat přístup k úložišti table storage nebo front, můžete místo toho použít aktivační událost a akce protokolu HTTP. Další možnosti najdete v [tématu Přístup k účtům úložiště za bránovými firewally](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
-
-* Pro vlastní konektory Azure [Government](../azure-government/documentation-government-overview.md)a [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)nejsou pevné nebo vyhrazené IP adresy k dispozici.
 
 <a name="inbound"></a>
 

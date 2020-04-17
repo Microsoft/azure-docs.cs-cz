@@ -1,16 +1,17 @@
 ---
-title: Posouzení virtuálních počítačů VMware pro migraci do Azure
+title: Posouzení virtuálních počítačů VMware pomocí vyhodnocení serveru Azure Migrate
 description: Popisuje, jak posoudit místní virtuální počítače VMware pro migraci do Azure pomocí Azure Migrate Server Assessment.
 ms.topic: tutorial
-ms.date: 03/23/2019
-ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.custom: mvc
+ms.openlocfilehash: bd9e6b5923207297b1aa70a67052a7796b901781
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548750"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535362"
 ---
-# <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů VMware pomocí azure migrate server assessment
+# <a name="assess-vmware-vms-with-server-assessment"></a>Vyhodnocení virtuálních počítačů VMware (vyhodnocení serveru)
 
 Tento článek ukazuje, jak posoudit místní virtuální počítače VMware pomocí nástroje [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool)
 
@@ -48,13 +49,11 @@ Nastavte nový projekt Migrace Azure takto:
 
 1. V **možnosti Začínáme**vyberte **Přidat nástroje**.
 1. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.     
-1. V **části Podrobnosti projektu**zadejte název projektu a zeměpisnou polohu, ve které chcete projekt vytvořit. Podporovány jsou Asie, Evropa, Velká Británie a Spojené státy.
-
-   Zeměpisná oblast projektu slouží pouze k ukládání metadat shromážděných z místních virtuálních počítačů. Při spouštění migrace můžete vybrat jakoukoli cílovou oblast.
+1. V **části Podrobnosti projektu**zadejte název projektu a zeměpisnou polohu, ve které chcete projekt vytvořit. Zkontrolujte podporované zeměpisné oblasti pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
 
    ![Pole pro název projektu a oblast](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. Vyberte **další**.
+1. Vyberte **Další**.
 1. V **nástroji Pro výběr vyberte**možnost Migrace **Azure: Vyhodnocení serveru** > **Další**.
 
    ![Výběr pro nástroj hodnocení serveru](./media/tutorial-assess-vmware/assessment-tool.png)
@@ -65,12 +64,12 @@ Nastavte nový projekt Migrace Azure takto:
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Nastavení zařízení Azure Migrate
 
-Azure Migrate:Vyhodnocení serveru používá zjednodušené zařízení Azure Migrate. Zařízení provádí zjišťování virtuálních počítačích a odesílá metadata virtuálního počítače a data o výkonu do Migrace Azure.
-- Zařízení lze nastavit na virtuálním počítači VMware pomocí stažené šablony OVA. Případně můžete nastavit zařízení na virtuálním počítači nebo fyzickém počítači pomocí instalačního skriptu prostředí PowerShell.
-- Tento kurz používá šablonu OVA. Pokud chcete nastavit zařízení pomocí skriptu, přečtěte si [tento článek.](deploy-appliance-script.md)
+Azure Migrate:Vyhodnocení serveru používá zjednodušené zařízení Azure Migrate. Zařízení provádí zjišťování virtuálních počítačích a odesílá metadata virtuálního počítače a data o výkonu do Migrace Azure. Přístroj lze nastavit mnoha způsoby.
+
+- Nastavení virtuálního počítače VMware pomocí stažené šablony OVA. Toto je metoda použitá v tomto kurzu.
+- Nastavení na virtuálním počítači VMware nebo fyzickém počítači se skriptem instalačního programu prostředí PowerShell. [Tato metoda](deploy-appliance-script.md) by se měla použít, pokud nemůžete nastavit virtuální počítač pomocí šablony OVA, nebo pokud jste v Azure Government.
 
 Po vytvoření zařízení zkontrolujte, zda se může připojit k Azure Migrate:Server Assessment, poprvé ho nakonfigurovat a zaregistrovat v projektu Azure Migrate.
-
 
 
 ### <a name="download-the-ova-template"></a>Stažení šablony OVA
@@ -115,9 +114,9 @@ Importujte stažený soubor a vytvořte virtuální hospo-
 1. V **mapování sítě**určete síť, ke které se bude virtuální montovna připojovat. Síť potřebuje připojení k internetu k odesílání metadat do Azure Migrate Server Assessment.
 1. Zkontrolujte a potvrďte nastavení a pak vyberte **Dokončit**.
 
-### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
+## <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že virtuální počítač zařízení se může připojit k [adresám URL Azure](migrate-appliance.md#url-access).
+Ujistěte se, že virtuální počítač zařízení se může připojit k adresám URL Azure pro [veřejné](migrate-appliance.md#public-cloud-urls) a [vládní](migrate-appliance.md#government-cloud-urls) cloudy.
 
 ### <a name="configure-the-appliance"></a>Konfigurace zařízení
 
@@ -136,7 +135,7 @@ Přístroj nastavte poprvé.
    - **Připojení**: Aplikace zkontroluje, zda má virtuální uživatel přístup k internetu. Pokud virtuální virtuální server používá proxy server:
      - Vyberte **nastavení proxy serveru**a zadejte adresu http://ProxyIPAddress http://ProxyFQDNproxy a port naslouchání ve formuláři nebo .
      - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
-     - Všimněte si, že je podporován pouze proxy server HTTP.
+     - Podporuje se jen proxy protokolu HTTP.
    - **Synchronizace času**: Čas na zařízení by měl být synchronizován s časem na internetu, aby zjišťování fungovalo správně.
    - **Aktualizace instalace**: Zařízení zajišťuje instalaci nejnovějších aktualizací.
    - **Instalace vDDK**: Zařízení zkontroluje, zda je nainstalována sada VMWare vSphere Virtual Disk Development Kit (VDDK). Pokud není nainstalován, stáhněte si vddk 6.7 ze společnosti VMware a extrahujte stažený obsah zipu do určeného umístění na zařízení.
@@ -167,7 +166,7 @@ Zařízení se musí připojit k serveru vCenter, aby zjistilo údaje o konfigur
     - Pokud chcete obor zjišťování na konkrétní objekty VMware (vCenter Server datových center, clustery, složky clusterů, hostitelé, složka hostitelů nebo jednotlivé virtuální počítače.), přečtěte si pokyny v [tomto článku](set-discovery-scope.md) omezit účet používaný Azure Migrate.
 
 3. Vyberte **Ověřit připojení,** abyste se ujistili, že se zařízení může připojit k serveru vCenter.
-4. V **části Zjišťování aplikací a závislostí na virtuálních počítačích**volitelně klikněte na Přidat **pověření**a určete operační systém, pro který jsou pověření relevantní, a uživatelské jméno a heslo pověření. Potom klepněte na tlačítko **Přidat**..
+4. V **části Zjišťování aplikací a závislostí na virtuálních počítačích**volitelně klikněte na Přidat **pověření**a určete operační systém, pro který jsou pověření relevantní, a uživatelské jméno a heslo pověření. Pak klikněte na **Přidat**.
 
     - Volitelně zde přidáte pověření, pokud jste vytvořili účet, který chcete použít pro [funkci zjišťování aplikace](how-to-discover-applications.md)nebo funkci [analýzy závislostí bez agenta](how-to-create-group-machine-dependencies-agentless.md).
     - Pokud tyto funkce nepoužíváte, můžete toto nastavení přeskočit.
@@ -255,7 +254,7 @@ Agregované náklady na úložiště pro vyměřenou skupinu jsou rozděleny na 
 
 ### <a name="review-confidence-rating"></a>Kontrola hodnocení spolehlivosti
 
-Azure Migrate Server Assessment přiřazuje hodnocení spolehlivosti hodnocení založené na výkonu, od 1 hvězdičky (nejnižší) do 5 hvězdiček (nejvyšší).
+Azure Migrate Server Assessment přiřadí hodnocení spolehlivosti hodnocení založené na výkonu, od jedné hvězdy (nejnižší) do pěti hvězdiček (nejvyšší).
 
 ![Hodnocení spolehlivosti](./media/tutorial-assess-vmware/confidence-rating.png)
 

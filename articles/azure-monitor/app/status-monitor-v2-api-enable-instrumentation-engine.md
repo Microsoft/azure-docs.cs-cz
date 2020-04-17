@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: b3f298ac31cc584cd16553186359c87f69f27aad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70102395b94c89d4ce0edfddeda1df0be0e2f216
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671349"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536756"
 ---
 # <a name="application-insights-agent-api-enable-instrumentationengine"></a>Rozhraní API agenta aplikačních přehledů: Enable-InstrumentationEngine
 
@@ -62,7 +62,7 @@ Configuring registry for instrumentation engine...
 ## <a name="next-steps"></a>Další kroky
 
   Zobrazení telemetrických dat:
- - [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) a sledujte výkon a využití.
+ - [Prozkoumejte metriky](../../azure-monitor/platform/metrics-charts.md) a sledujte výkon a využití.
 - [Hledat události a protokoly](../../azure-monitor/app/diagnostic-search.md) diagnostikovat problémy.
 - Pro pokročilejší dotazy používejte [analýzy.](../../azure-monitor/app/analytics.md)
 - [Vytvořte řídicí panely](../../azure-monitor/app/overview-dashboard.md).

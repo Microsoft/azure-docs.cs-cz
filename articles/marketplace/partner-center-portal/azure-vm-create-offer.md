@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383804"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536654"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Vytvoření nabídky virtuálního počítače Azure
 
@@ -174,7 +174,7 @@ Tato stránka umožňuje definovat podrobnosti nabídky, jako je název nabídky
 
 ### <a name="marketplace-details"></a>Podrobnosti o tržišti
 
-#### <a name="name"></a>Name (Název)
+#### <a name="name"></a>Název
 
 Jméno, které zde zadáte, se zákazníkům zobrazí jako název nabídky. Toto pole je předvyplněno textem, který jste zadali do pole **Alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -239,7 +239,7 @@ Poskytněte web podpory, kde se zákazníci mohou dostat k vašemu týmu podpory
 
 Poskytněte partnerům společnosti Microsoft kontaktní informace, které budou používat, když zákazníci otevřou lístek podpory. Tato zpráva nebude uvedena na trhu.
 
-- Name (Název)
+- Název
 - E-mail
 - Telefon
 
@@ -247,7 +247,7 @@ Poskytněte partnerům společnosti Microsoft kontaktní informace, které budou
 
 Poskytněte společnosti Microsoft kontaktní informace, které bude používat v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tato zpráva nebude uvedena na trhu.
 
-- Name (Název)
+- Název
 - E-mail
 - Telefon
 
@@ -296,7 +296,7 @@ Před pokračováním k další části možnost Uložit pracovní verzi vyberte
 
 ## <a name="plan-overview"></a>Přehled plánu
 
-V partnerském centru můžete v rámci stejné nabídky zadat různé možnosti plánu. Tyto plány byly dříve označovány jako SKU. Nabídka vyžaduje alespoň jeden plán, který se může lišit, pokud jde o okruh uživatelů zpeněžení, cloudy Azure, funkce nebo image virtuálních počítačových služeb.
+V partnerském centru můžete v rámci stejné nabídky zadat různé možnosti plánu. Tyto plány byly dříve označovány jako SKU. Nabídka vyžaduje alespoň jeden plán, který se může lišit, pokud jde o okruh uživatelů zpeněžení, oblasti Azure, funkce nebo image virtuálních počítače.
 
 Po vytvoření plánů se na kartě **Přehled plánu** zobrazí:
 
@@ -326,7 +326,7 @@ Vyberte **Vytvořit**.
 
 ### <a name="plan-setup"></a>Plánování nastavení
 
-Nastavte konfiguraci vysoké úrovně pro typ plánu, zda opakovaně používá technickou konfiguraci z jiného plánu a v jakých cloudech by měl být plán k dispozici. Výběry zde určují, která pole se zobrazí na jiných kartách pro stejný plán.
+Nastavte konfiguraci vysoké úrovně pro typ plánu, zda opakovaně používá technickou konfiguraci z jiného plánu a ve kterých oblastech Azure by měl být k dispozici. Výběry zde určují, která pole se zobrazí na jiných kartách pro stejný plán.
 
 #### <a name="reuse-technical-configuration"></a>Opětovné použití technické konfigurace
 
@@ -335,24 +335,24 @@ Pokud máte více než jeden plán stejného typu a balíčky jsou identické me
 > [!NOTE]
 > Při opakovaném použití technické konfigurace z jiného plánu zmizí z tohoto plánu celá karta **Technická konfigurace.** Pro tento plán budou použity také technické podrobnosti o konfiguraci z jiného plánu, včetně všech aktualizací, které provedete v budoucnu. Toto nastavení nelze po publikování tohoto plánu změnit.
 
-#### <a name="cloud-availability"></a>Dostupnost cloudu
+#### <a name="azure-regions"></a>Oblast Azure
 
-Váš plán musí být k dispozici alespoň v jednom cloudu.
+Váš plán musí být k dispozici alespoň v jedné oblasti Azure.
 
-Vyberte možnost **Azure Global,** chcete-li svůj plán zpřístupnit zákazníkům ve všech veřejných oblastech Azure, které mají integraci komerčního tržiště. Podrobnosti naleznete [v tématu Geografická dostupnost a podpora měny](https://aka.ms/AzureGovCurrencies).
+Vyberte možnost **Azure Global,** chcete-li svůj plán zpřístupnit zákazníkům ve všech veřejných oblastech Azure, které mají integraci komerčního tržiště. Podrobnosti naleznete [v tématu Geografická dostupnost a podpora měny](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Vyberte možnost **Azure Government Cloud,** abyste svůj plán zpřístupnili v [Azure Government Cloud](https://aka.ms/WhatIsAzureGovernment). jedná se o vládní komunitní cloud s kontrolovaným přístupem pro zákazníky z amerických federálních, státních, místních nebo kmenových agentur, stejně jako o partnery způsobilé sloužit těmto subjektům. Jako vydavatel jste zodpovědní za veškeré kontroly dodržování předpisů, bezpečnostní opatření a osvědčené postupy, které budou sloužit této cloudové komunitě. Azure Government používá fyzicky izolovaná datová centra a sítě (umístěné jenom v USA).
+Vyberte možnost **Azure Government,** chcete-li svůj plán zpřístupnit v oblasti [Azure Government.](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) Tato oblast poskytuje kontrolovaný přístup zákazníkům z amerických federálních, státních, místních nebo kmenových subjektů, stejně jako partnerům, kteří jsou způsobilí k jejich poskytování. Vy jako vydavatel nesete odpovědnost za veškeré kontroly dodržování předpisů, bezpečnostní opatření a osvědčené postupy. Azure Government používá fyzicky izolovaná datová centra a sítě (umístěné jenom v USA).
 
-Před publikováním na [Azure Government](https://aka.ms/azuregovpublish)otestujte a ověřte svůj plán v prostředí, protože některé koncové body se mohou lišit. Pokud chcete plán nastavit a otestovat, požádejte o zkušební účet ze [zkušební verze Microsoft Azure Government](https://aka.ms/AzureGovernmentTrial).
+Před publikováním na [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)otestujte a ověřte svůj plán v prostředí, protože některé koncové body se mohou lišit. Pokud chcete plán nastavit a otestovat, požádejte o zkušební účet ze [zkušební verze Microsoft Azure Government](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 > [!NOTE]
-> Po publikování plánu a jeho dostupnosti v konkrétním cloudu ho nemůžete odebrat.
+> Po publikování plánu a k dispozici v určité oblasti Azure, nelze odebrat tuto oblast.
 
-#### <a name="azure-government-cloud-certifications"></a>Certifikace Azure Government Cloud
+#### <a name="azure-government-certifications"></a>Certifikace Azure Government
 
-Tato možnost se zobrazí jenom v případě, že azure **government cloud** je vybraná v části **Dostupnost cloudu**.
+Tato možnost se zobrazí jenom v případě, že vyberete **Azure Government** v oblastech **Azure**.
 
-Služby Azure Government zpracovávají data, na která se vztahují určité vládní předpisy a požadavky. Například FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 a CJIS. Chcete-li zvýšit povědomí o certifikacích těchto programů, můžete poskytnout až 100 odkazů, které je popisují. Mohou to být buď odkazy na váš zápis přímo v programu, nebo odkazy na popisy vašeho dodržování na vašich webových stránkách. Tyto odkazy viditelné pouze pro zákazníky Azure Government Cloud.
+Služby Azure Government zpracovávají data, na která se vztahují určité vládní předpisy a požadavky. Například FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 a CJIS. Chcete-li zvýšit povědomí o certifikacích těchto programů, můžete poskytnout až 100 odkazů, které je popisují. Mohou to být buď odkazy na váš zápis přímo v programu, nebo odkazy na popisy vašeho dodržování na vašich webových stránkách. Tyto odkazy viditelné jenom pro zákazníky Azure Government.
 
 Před pokračováním vyberte **Uložit pracovní verzi.**
 
@@ -384,7 +384,7 @@ Na této kartě nakonfigurujete následující:
 
 #### <a name="markets"></a>Trhy
 
-Každý plán musí být k dispozici alespoň na jednom trhu. Zaškrtněte políčko pro každé místo na trhu, kde by měl být tento plán k dispozici pro nákup (uživatelé na těchto trzích mohou nabídku stále nasadit do všech oblastí Azure pro vybrané cloudy). Tlačítko **Vypovězení daně** zobrazuje země, ve kterých společnost Microsoft vaším jménem u. Publikování do Číny je omezeno na plány, které jsou buď **zdarma,** nebo **přineste si vlastní licenci** (BYOL).
+Každý plán musí být k dispozici alespoň na jednom trhu. Zaškrtněte políčko pro každé místo na trhu, kde by měl být tento plán k dispozici pro nákup (uživatelé na těchto trzích mohou nabídku stále nasadit do všech oblastí Azure vybraných v **[nastavení plánu).](#plan-setup)** Tlačítko **Vypovězení daně** zobrazuje země, ve kterých společnost Microsoft vaším jménem u. Publikování do Číny je omezeno na plány, které jsou buď **zdarma,** nebo **přineste si vlastní licenci** (BYOL).
 
 Pokud jste již nastavili ceny pro svůj plán v amerických dolarech (USD) a přidali další umístění na trhu, cena nového trhu bude vypočtena podle aktuálních směnných kurzů. Před publikováním vždy zkontrolujte cenu pro každý trh. Po uložení změn zkontrolujte ceny pomocí odkazu **Vývozní ceny (xlsx).**
 

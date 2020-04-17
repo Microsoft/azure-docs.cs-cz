@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: dfca2b1311f1b55f19d5709f7c9ca7c3e366769c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76695734"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533985"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v národním cloudovém prostředí
 
@@ -62,16 +62,16 @@ Pomocí MSAL.NET můžete přihlásit uživatele, získat tokeny a volat rozhran
 Následující kurzy ukazují, jak vytvořit webovou aplikaci .NET Core 2.2 MVC. Aplikace používá OpenID Connect k přihlášení uživatelů pomocí pracovního a školního účtu v organizaci, která patří do národního cloudu.
 
 - Pokud chcete přihlásit uživatele a získat tokeny, postupujte podle tohoto kurzu: [Vytvoření ASP.NET uživatelů přihlášení na základní web v suverénních cloudech pomocí platformy microsoft identit .](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform)
-- Chcete-li volat rozhraní Microsoft Graph API, postupujte podle tohoto kurzu: [Pomocí platformy identit microsoftu volat rozhraní Microsoft Graph API z ASP.NET Core 2.x Web App, jménem uživatele přihlášení pomocí jejich práce a školní účet v Microsoft National Cloud](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
+- Chcete-li volat rozhraní Microsoft Graph API, postupujte podle tohoto kurzu: [Pomocí platformy identit microsoftu volat rozhraní Microsoft Graph API z webové aplikace ASP.NET Core 2.x jménem uživatele, který se přihlašuje pomocí svého pracovního a školního účtu v Microsoft National Cloud](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
 
-## <a name="javascript"></a>[Javascript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Povolení aplikace MSAL.js pro suverénní cloudy:
 
 ### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.us/).
-    
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.us/).
+
    Pokud chcete najít koncové body portálu Azure pro jiné národní cloudy, najdete v [tématu koncové body registrace aplikací](authentication-national-cloud.md#app-registration-endpoints).
 
 1. Pokud váš účet umožňuje přístup k více než jednomu tenantovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného klienta Azure AD.
@@ -126,12 +126,12 @@ V tomto kódu:
 - `Enter_the_Tenant_Info_Here`je nastavena na jednu z následujících možností:
     - Pokud vaše aplikace podporuje **účty v tomto organizačním adresáři**, nahraďte tuto hodnotu ID klienta nebo názvem klienta (například contoso.microsoft.com).
     - Pokud vaše aplikace podporuje **účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu . `organizations`
-    
+
     Pokud jde o hledání koncových bodů ověřování pro všechny národní cloudy, najdete v [tématu koncové body ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 
     > [!NOTE]
     > Osobní účty Microsoft nejsou podporovány v národních cloudech.
-  
+
 - `graphEndpoint`je koncový bod microsoft graphu pro cloud Microsoft pro vládu USA.
 
    Pokud chcete najít koncové body Microsoft Graphu pro všechny národní cloudy, přečtěte si [informace o koncových bodech Microsoft Graphu v národních cloudech](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
@@ -149,16 +149,16 @@ Povolení aplikace MSAL Python pro suverénní cloudy:
     ```json
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
-    
+
 - Volání microsoft graphu vyžaduje konkrétní adresu URL koncového bodu grafu, která závisí na tom, který cloud používáte. Chcete-li najít koncové body aplikace Microsoft Graph pro všechny národní cloudy, naleznete [v kořenových koncových bodech služby Microsoft Graph a Graph Explorer](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
     Tady je příklad koncového bodu grafu s rozsahem:
-    
+
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
     "scope": "User.Read"
     ```
-    
+
 ## <a name="java"></a>[Java](#tab/java)
 
 Povolení aplikace MSAL pro Java pro suverénní cloudy:
@@ -194,12 +194,12 @@ MSALAADAuthority *aadAuthority =
                                                    audienceType:MSALAzureADMultipleOrgsAudience
                                                       rawTenant:nil
                                                           error:nil];
-                                                          
+
 MSALPublicClientApplicationConfig *config =
                 [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
                                                                 redirectUri:@"<your-redirect-uri-here>"
                                                                   authority:aadAuthority];
-                                                                  
+
 NSError *applicationError = nil;
 MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
@@ -213,7 +213,7 @@ Například pokud chcete, aby vaše aplikace byla víceklientskou aplikací v n�
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
-        
+
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: c76b14e4f08ec930159498da4a35fdad0341929e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eaba4bf7760e150f2477ee743c797f94784b8506
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278503"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535498"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení správy aktualizací v Azure
 
@@ -127,7 +127,7 @@ Virtuální počítače, které byly vytvořeny z image Red Hat Enterprise Linux
 
 ## <a name="permissions"></a>Oprávnění
 
-Chcete-li vytvořit a spravovat nasazení aktualizací, potřebujete určitá oprávnění. Informace o těchto oprávněních naleznete v [tématu Přístup založený na rolích – správa aktualizací](automation-role-based-access-control.md#update-management).
+Chcete-li vytvořit a spravovat nasazení aktualizací, potřebujete určitá oprávnění. Informace o těchto oprávněních naleznete v [tématu Přístup založený na rolích – správa aktualizací](automation-role-based-access-control.md#update-management-permissions).
 
 ## <a name="solution-components"></a>Součásti řešení
 
@@ -214,7 +214,7 @@ V následujících tabulkách jsou uvedeny klasifikace aktualizací ve správě 
 |Balíčky funkcí     | Nové funkce produktu, které jsou distribuovány mimo vydání produktu.        |
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které jsou použity v aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|Nástroje     | Nástroj nebo funkce, která pomáhá dokončit jeden nebo více úkolů.        |
+|nástroje     | Nástroj nebo funkce, která pomáhá dokončit jeden nebo více úkolů.        |
 |Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 ### <a name="linux"></a><a name="linux-2"></a>Linux

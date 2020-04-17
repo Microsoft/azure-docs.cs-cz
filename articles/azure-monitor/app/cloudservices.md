@@ -3,12 +3,12 @@ title: Přehledy aplikací pro cloudové služby Azure | Dokumenty společnosti 
 description: Efektivní sledování webových rolí a rolí pracovních procesů s využitím Application Insights
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276189"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537589"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Přehledy aplikací pro cloudové služby Azure
 [Application Insights můžou][start] sledovat [dostupnost,](https://azure.microsoft.com/services/cloud-services/) výkon, selhání a využití aplikací Azure díky kombinaci dat z sad SDK application insights s [daty Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
@@ -31,7 +31,7 @@ Tato možnost instrumentuje vaši aplikaci za běhu a poskytuje vám veškerou t
 
 Pokud je tato možnost vše, co potřebujete, máte hotovo. 
 
-Dalším krokem je [zobrazení metrik z aplikace](../../azure-monitor/app/metrics-explorer.md)a [dotazování na data pomocí služby Analytics](../../azure-monitor/app/analytics.md). 
+Dalším krokem je [zobrazení metrik z aplikace](../../azure-monitor/platform/metrics-charts.md)a [dotazování na data pomocí služby Analytics](../../azure-monitor/app/analytics.md). 
 
 Chcete-li sledovat výkon v prohlížeči, můžete také nastavit [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) a [přidat kód na webové stránky](../../azure-monitor/app/javascript.md).
 
@@ -165,7 +165,7 @@ Tento krok je potřeba pouze v případě, že chcete zachytit úplné dotazy SQ
 
 1. Otevřete prostředky Application Insights, které jste vytvořili.
 
-   Jednotlivé datové body jsou zobrazeny ve [vyhledávání][diagnostic]a agregovaná data jsou zobrazena v [Průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md).
+   Jednotlivé datové body jsou zobrazeny ve [vyhledávání][diagnostic]a agregovaná data jsou zobrazena v [Průzkumníku metrik](../../azure-monitor/platform/metrics-charts.md).
 
 1. Přidejte další telemetrii (viz další části) a pak publikujte aplikaci, abyste získali živou diagnostiku a zpětnou vazbu od využití. 
 
@@ -184,7 +184,7 @@ Informace o [diagnostice Azure](https://docs.microsoft.com/azure/monitoring-and-
 * Protokoly událostí systému Windows se zobrazují jako trasování a vlastní události.
 * Protokoly aplikací, protokoly trasování událostí pro Windows a veškeré protokoly infrastruktury diagnostiky se zobrazují jako trasování.
 
-Chcete-li zobrazit čítače výkonu a počty událostí, otevřete [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md) a přidejte následující graf:
+Chcete-li zobrazit čítače výkonu a počty událostí, otevřete [Průzkumník metrik](../../azure-monitor/platform/metrics-charts.md) a přidejte následující graf:
 
 ![Data diagnostiky Azure](./media/cloudservices/23-wad.png)
 

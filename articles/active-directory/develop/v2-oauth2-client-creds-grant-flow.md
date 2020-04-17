@@ -12,12 +12,12 @@ ms.date: 12/17/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c6113490cf7d754a9e45638e4a0bfa588f1942ca
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6021348160b338bc3a153764968f6c846a644cd1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309417"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535855"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Platforma identit microsoftu a tok pověření klienta OAuth 2.0
 
@@ -70,7 +70,7 @@ Pokud chcete ve své aplikaci používat oprávnění k aplikacím, postupujte p
 
 
 > [!NOTE]
-> Při ověřování jako aplikace, na rozdíl od uživatele, nelze použít "delegovaná oprávnění" (obory, které jsou uděleny uživatelem).  Musíte použít "oprávnění aplikace", označované také jako "role", které jsou uděleny správcem pro aplikaci (nebo prostřednictvím předběžné autorizace webového rozhraní API).    
+> Při ověřování jako aplikace, na rozdíl od uživatele, nelze použít "delegovaná oprávnění" (obory, které jsou uděleny uživatelem).  Musíte použít "oprávnění aplikace", označované také jako "role", které jsou uděleny správcem pro aplikaci (nebo prostřednictvím předběžné autorizace webového rozhraní API).
 
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Vyžádání oprávnění na portálu pro registraci aplikací
@@ -169,7 +169,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 ```
 
 ```
-// Replace {tenant} with your tenant! 
+// Replace {tenant} with your tenant!
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 

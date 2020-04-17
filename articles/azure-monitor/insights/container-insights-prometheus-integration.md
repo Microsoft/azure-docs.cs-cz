@@ -2,13 +2,13 @@
 title: Konfigurace Azure Monitor u kontejnerů Prometheus Integrace | Dokumenty společnosti Microsoft
 description: Tento článek popisuje, jak můžete nakonfigurovat Azure Monitor pro kontejnery agent a škrábání metriky z Prometheus s clusteru Kubernetes.
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: b774bf042778ca9118a7bc9f051655b200d87659
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: 7fcf52cceb69834f68f8e4ce7a2674972a6430fd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931422"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537368"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurace škrábání metrik Prometheus pomocí Azure Monitoru pro kontejnery
 
@@ -22,7 +22,6 @@ ms.locfileid: "75931422"
 Škrábání metrik Prometheus je podporováno clustery Kubernetes hostovanými na:
 
 - Azure Kubernetes Service (AKS)
-- Azure Container Instances
 - Azure Stack nebo místní
 - Azure Red Hat OpenShift
 

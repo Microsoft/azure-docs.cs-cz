@@ -3,12 +3,12 @@ title: Zařízení pro replikaci Azure Migrate
 description: Přečtěte si o zařízení replikace Azure Migrate pro migraci v systému VMWare založené na agentovi.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245860"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535209"
 ---
 # <a name="replication-appliance"></a>Zařízení pro replikaci
 
@@ -28,8 +28,11 @@ Zařízení replikace se nasadí při nastavování migrace virtuálních zaří
 
 **Použití** | **Podrobnosti**
 --- |  ---
-Migrace založená na agentech virtuálních vm vsystému VMware | Šablonu OVA si stáhnete z centra Migrace Azure a importujete na server vCenter a vytvoříte virtuální počítač zařízení.
-Migrace založená na agentovi fyzikálního počítače | Pokud nemáte infrastrukturu VMware nebo pokud nemůžete vytvořit virtuální počítač VMware pomocí šablony OVA, stáhněte si instalační program softwaru z centra Migrace Azure a spusťte ho k nastavení počítače zařízení.
+**Migrace založená na agentech virtuálních vm vsystému VMware** | Šablonu OVA si stáhnete z centra Migrace Azure a importujete na server vCenter a vytvoříte virtuální počítač zařízení.
+**Migrace založená na agentovi fyzikálního počítače** | Pokud nemáte infrastrukturu VMware nebo pokud nemůžete vytvořit virtuální počítač VMware pomocí šablony OVA, stáhněte si instalační program softwaru z centra Migrace Azure a spusťte ho k nastavení počítače zařízení.
+
+> [!NOTE]
+> Pokud nasazujete ve službě Azure Government, použijte instalační soubor k nasazení zařízení replikace.
 
 ## <a name="appliance-requirements"></a>Požadavky na spotřebiče
 
@@ -74,7 +77,7 @@ Stažení a instalace v Azure Migrate | Když nainstalujete zařízení a zobraz
 
 ## <a name="url-access"></a>Přístup k adrese URL
 
-Zařízení pro replikaci potřebuje přístup k těmto adresám URL.
+Zařízení pro replikaci potřebuje přístup k těmto adresám URL ve veřejném cloudu Azure.
 
 **Adresa URL** | **Podrobnosti**
 --- | ---
@@ -84,10 +87,26 @@ Zařízení pro replikaci potřebuje přístup k těmto adresám URL.
 \*.hypervrecoverymanager.windowsazure.com | Používá se pro operace správy replikace a koordinaci
 https:\//management.azure.com | Používá se pro operace správy replikace a koordinaci
 *.services.visualstudio.com | Používá se pro telemetrické účely (je volitelný)
-time.nist.gov | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
 time.windows.com | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Nastavení OVF vyžaduje přístup k těmto adresám URL. Používají se pro řízení přístupu a správu identit službou Azure Active Directory.
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Chcete-li dokončit MySQL ke stažení
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Nastavení zařízení vyžaduje přístup k těmto adresám URL. Používají se pro řízení přístupu a správu identit službou Azure Active Directory.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Chcete-li dokončit MySQL ke stažení. V několika oblastech může být stahování přesměrováno na adresu URL CDN. Ujistěte se, že adresa URL CDN je v případě potřeby povolena také.
+
+
+## <a name="azure-government-url-access"></a>Přístup k adresám URL Azure Government
+
+Zařízení pro replikaci potřebuje přístup k těmto adresám URL v Azure Government.
+
+**Adresa URL** | **Podrobnosti**
+--- | ---
+\*.backup.windowsazure.us | Používá se pro replikovaný přenos dat a koordinaci
+\*.store.core.windows.net | Používá se pro replikovaný přenos dat a koordinaci
+\*.blob.core.windows.net | Slouží k přístupu k účtu úložiště, který ukládá replikovaná data.
+\*.hypervrecoverymanager.windowsazure.us | Používá se pro operace správy replikace a koordinaci
+https:\//management.usgovcloudapi.net | Používá se pro operace správy replikace a koordinaci
+*.services.visualstudio.com | Používá se pro telemetrické účely (je volitelný)
+time.nist.gov | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Nastavení zařízení s OVA potřebuje přístup k těmto adresám URL. Používají se pro řízení přístupu a správu identit službou Azure Active Directory.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Chcete-li dokončit MySQL ke stažení. V několika oblastech může být stahování přesměrováno na adresu URL CDN. Ujistěte se, že adresa URL CDN je v případě potřeby povolena také.
 
 ## <a name="port-access"></a>Přístup k portu
 

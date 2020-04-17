@@ -3,12 +3,12 @@ title: Matice podpory pro Azure Backup
 description: Obsahuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 120882b15dcf9f27c280984ff6d0df31e38ebb73
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878948"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537317"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -90,7 +90,7 @@ Azure Backup nepodporuje automatické nastavení hodin pro letní čas pro zálo
 
 Podpora odstranění duplicit disku je následující:
 
-- Odstranění duplicit disku je podporováno místně, pokud používáte dpm nebo mabs k zálohování virtuálních počítačů Hyper-V se systémem Windows. Windows Server provádí odstranění duplicit (na úrovni hostitele) na virtuálních pevných discích (VHD), které jsou připojené k virtuálnímu počítači jako úložiště záloh.
+- Odstranění duplicit disku je podporováno místně, pokud používáte dpm nebo MABS k zálohování virtuálních počítačů Hyper-V se systémem Windows. Windows Server provádí odstranění duplicit (na úrovni hostitele) na virtuálních pevných discích (VHD), které jsou připojené k virtuálnímu počítači jako úložiště záloh.
 - Odstranění duplicit není v Azure podporováno pro žádnou součást Zálohování. Když se dpm a MABS nasazují v Azure, disky úložiště připojené k virtuálnímu počítači nelze deduplikovat.
 
 ## <a name="security-and-encryption-support"></a>Podpora zabezpečení a šifrování

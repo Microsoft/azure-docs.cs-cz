@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0aaa13ff4d3331378cc17cd0cde29be43822397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56341affee721b3ee6676da401e03dbbca84e597
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460785"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538235"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Jaký software SAP je podporován pro nasazení Azure
 Tento článek popisuje, jak můžete zjistit, jaký software SAP je podporován pro nasazení Azure a jaké jsou nezbytné verze operačního systému nebo verze DBMS.
@@ -34,7 +34,7 @@ Vyhodnocení, zda je podporován aktuální software SAP a jaké verze Operačn�
 
 
 ## <a name="general-restrictions-for-sap-workload"></a>Obecná omezení pro pracovní vytížení SAP
-Služby Azure IaaS, které se můžou používat pro úlohy SAP, jsou omezené na hardware x86-64 nebo x64. Neexistuje žádné nabídky založené na procesoru Sparc nebo Napájení, které se vztahují na zatížení SAP. Zákazníci, kteří běží na svých aplikacích v operačních systémech proprietárních hardwarovým architekturám, jako jsou sálové počítače IBM nebo AS400, nebo kde se používají operační systémy HP-UX, Solaris nebo AIX, musí změnit své aplikace SAP včetně DBMS na jednu z následující operační systémy:
+Služby Azure IaaS, které se můžou používat pro úlohy SAP, jsou omezené na hardware x86-64 nebo x64. Neexistuje žádné nabídky založené na procesoru Sparc nebo Napájení, které se vztahují na zatížení SAP. Zákazníci, kteří běží na svých aplikacích v operačních systémech proprietárních hardwarovým architekturám, jako jsou sálové počítače IBM nebo AS400, nebo kde se používají operační systémy HP-UX, Solaris nebo AIX, musí změnit své aplikace SAP včetně DBMS na jeden z následujících operačních systémů:
 
 - Windows server 64bit pro platformu x86-64
 - SUSE linux 64bit pro platformu x86-64
@@ -111,20 +111,20 @@ Jak víte, konkrétní hana verze můžete spustit na cílené infrastruktury Az
 
 
 ## <a name="certified-azure-vms-and-hana-large-instance-units-and-business-transaction-throughput"></a>Certifikované virtuální počítače Azure a jednotky velkých instancí HANA a propustnost obchodních transakcí
-Kromě vyhodnocení podporovaných verzí operačního systému, vydání DBMS a závislých verzí softwaru SAP pro jednotky infrastruktury Azure musíte tyto jednotky kvalifikovat podle propustností obchodních transakcí, která je vyjádřena v jednotce "SAP" Sap. Všechny velikosti SAP závisí na výpočtech SAPS. Při vyhodnocování stávajících systémů SAP můžete obvykle s pomocí poskytovatele infrastruktury vypočítat SAPS jednotek. Pro vrstvu DBMS i pro aplikační vrstvu. V ostatních případech, kdy je vytvořena nová funkce, může cvičení velikosti se systémem SAP odhalit požadovaná čísla SAPS pro aplikační vrstvu a vrstvu DBMS. Jako poskytovatel infrastruktury je společnost Microsoft povinna poskytnout propustnost SAP charakterizaci různých jednotek, které jsou certifikovány netweaver em a/nebo HANA.
+Kromě vyhodnocení podporovaných verzí operačního systému, vydání DBMS a závislých verzí softwaru SAP pro jednotky infrastruktury Azure musíte tyto jednotky kvalifikovat podle propustností obchodních transakcí, což je vyjádřeno v jednotce "SAP" od SAP. Všechny velikosti SAP závisí na výpočtech SAPS. Při vyhodnocování stávajících systémů SAP můžete obvykle s pomocí poskytovatele infrastruktury vypočítat SAPS jednotek. Pro vrstvu DBMS i pro aplikační vrstvu. V ostatních případech, kdy je vytvořena nová funkce, může cvičení velikosti se systémem SAP odhalit požadovaná čísla SAPS pro aplikační vrstvu a vrstvu DBMS. Jako poskytovatel infrastruktury je společnost Microsoft povinna poskytnout propustnost SAP charakterizaci různých jednotek, které jsou certifikovány netweaver em a/nebo HANA.
 
 Pro virtuální počítače Azure jsou tato čísla propustností SAPS popsána v [poznámce podpory SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533). Pro jednotky velké instance Azure HANA jsou čísla propustnostsaps popsána v [poznámce podpory SAP #2316233](https://launchpad.support.sap.com/#/notes/2316233)
 
 Podíváme-li se do [poznámky podpory SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533), platí následující poznámky:
 
-- **Pro virtuální počítače Azure řady M řady A Mv2 series se platí různé minimální verze operačního systému než pro jiné typy virtuálních počítačů Azure**. Požadavek na novější verze operačního systému je založen na změnách, které museli různí dodavatelé operačních systémů poskytnout ve verzích operačního systému, aby povolili své operační systémy spuštěné na konkrétních typech virtuálních počítačů Azure nebo optimalizovali výkon a propustnost úloh SAP na těchto typech virtuálních počítačů
+- **Pro virtuální počítače Azure řady M řady A Mv2 series se platí různé minimální verze operačního systému než pro jiné typy virtuálních počítačů Azure**. Požadavek na novější verze operačního systému je založen na změnách, které museli různí dodavatelé operačních systémů poskytnout ve verzích operačního systému, aby buď povolili své operační systémy spuštěné na konkrétních typech virtuálních počítačů Azure, nebo optimalizovali výkon a propustnost úloh SAP na těchto typech virtuálních počítačů.
 - Existují dvě tabulky, které určují různé typy virtuálních počítačů. Druhá tabulka určuje propustnost SAPS pro typy virtuálních počítačů Azure, které podporují jenom standardní úložiště Azure. Nasazení systému DBMS na jednotkách určených v druhé tabulce poznámky není podporováno.
 
 
 ## <a name="other-sap-products-supported-on-azure"></a>Další produkty SAP podporované v Azure
 Obecně se předpokládá, že se stavem hyperškálování cloudů, jako je Azure, by většina softwaru SAP měla běžet bez funkčních problémů v Azure. Nicméně a naproti vizualizaci privátního cloudu SAP stále vyjadřuje podporu pro různé produkty SAP výslovně pro různé poskytovatele cloudu hyerpscale. V důsledku toho existují různé poznámky podpory SAP označující podporu pro Azure pro různé produkty SAP. 
 
-Pro platformu Business Objects BI [#2145537 poznámka o podpoře SAP](https://launchpad.support.sap.com/#/notes/2145537) obsahuje seznam produktů SAP Business Objects podporovaných v Azure. Pokud existují otázky týkající se součástí nebo kombinací verzí softwaru a verzí operačního systému, které se zdají být uvedeny nebo podporovány a které jsou novější než minimální uvedené verze, musíte otevřít žádost o podporu SAP proti komponentě, na kterou se zeptáte podporu.
+Pro platformu Business Objects BI [#2145537 poznámka o podpoře SAP](https://launchpad.support.sap.com/#/notes/2145537) obsahuje seznam produktů SAP Business Objects podporovaných v Azure. Pokud existují otázky týkající se součástí nebo kombinací verzí softwaru a verzí operačního systému, které se zdají být uvedeny nebo podporovány a které jsou novější než minimální uvedené verze, musíte otevřít žádost o podporu SAP proti součásti, o kterou se zeptáte na podporu.
 
 Pro datové služby podnikových objektů [poznámka o podpoře SAP #22288344](https://launchpad.support.sap.com/#/notes/2288344) vysvětluje minimální podporu datových služeb SAP spuštěných v Azure. 
 
@@ -135,7 +135,12 @@ Podpora SAP Datahub/Vora ve službách Azure Kubernetes Services (AKS) je podrob
 
 Podpora sap BPC 10.1 SP08 je popsána v [poznámce podpory SAP #2451795](https://launchpad.support.sap.com/#/notes/2451795)
 
-Podpora sap hybris commerce platformy 5.x a 6.x v Azure je podrobně popsána na [Wiki Hybris](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud)
+Podpora platformy SAP Hybris Commerce v Azure je podrobně popsána na [Wiki Hybris](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud). Jako podporované DBMS pro SAP Hybris Commerce Platform, uvádí jako:
+
+- SQL Server a Oracle na platformě operačního systému Windows. Platí stejné minimální verze jako pro SAP NetWeaver. Podrobnosti [najdete v poznámce podpory SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- SAP HANA na Red Hat a SUSE Linux. Sap HANA certifikované typy virtuálních počítačů jsou povinné jako dokumentované dříve v [tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support). Obchodní platforma SAP (Hybris) je považována za pracovní zátěž OLTP
+
+
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -3,12 +3,12 @@ title: Rozhraní API Přehledů aplikací pro vlastní události a metriky | Dok
 description: Vložte několik řádků kódu do aplikace, webové stránky nebo služby zařízení nebo stolního počítače, abyste sledovali problémy s používáním a diagnostikovali.
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d6cb2f5ab418e8d3b5935fef535565ccf55a3906
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585866"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536943"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
 
@@ -107,7 +107,7 @@ V projektech Node.js `new applicationInsights.TelemetryClient(instrumentationKey
 
 ## <a name="trackevent"></a>Událost TrackEvent
 
-V Application Insights vlastní *událost* je datový bod, který můžete zobrazit v [Průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md) jako agregovaný počet a diagnostické [vyhledávání](../../azure-monitor/app/diagnostic-search.md) jako jednotlivé výskyty. (Nesouvisí s MVC nebo jiné framework "události.")
+V Application Insights vlastní *událost* je datový bod, který můžete zobrazit v [Průzkumníku metrik](../../azure-monitor/platform/metrics-charts.md) jako agregovaný počet a diagnostické [vyhledávání](../../azure-monitor/app/diagnostic-search.md) jako jednotlivé výskyty. (Nesouvisí s MVC nebo jiné framework "události.")
 
 Vložte `TrackEvent` volání do kódu počítat různé události. Jak často si uživatelé vybírají určitou funkci, jak často dosahují určitých cílů nebo jak často dělají určité typy chyb.
 
@@ -443,7 +443,7 @@ requests
 
 Odesílat výjimky do Application Insights:
 
-* Chcete-li [je počítat](../../azure-monitor/app/metrics-explorer.md), jako údaj o četnosti problému.
+* Chcete-li [je počítat](../../azure-monitor/platform/metrics-charts.md), jako údaj o četnosti problému.
 * Zkoumat [jednotlivé výskyty](../../azure-monitor/app/diagnostic-search.md).
 
 Sestavy obsahují trasování zásobníku.
@@ -521,7 +521,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Většina důležitých informací zásobníku je již extrahována do `details` samostatných proměnných, ale můžete rozdělit strukturu, abyste získali další. Vzhledem k tomu, že tato struktura je dynamická, měli byste přetypovat výsledek na očekávaný typ. Například:
+Většina důležitých informací zásobníku je již extrahována do `details` samostatných proměnných, ale můžete rozdělit strukturu, abyste získali další. Vzhledem k tomu, že tato struktura je dynamická, měli byste přetypovat výsledek na očekávaný typ. Příklad:
 
 ```kusto
 exceptions
@@ -584,7 +584,7 @@ Obsah zprávy můžete vyhledávat, ale (na rozdíl od hodnot vlastností) na n�
 Limit velikosti `message` na je mnohem vyšší než limit na vlastnosti.
 Výhodou TrackTrace je, že můžete umístit relativně dlouhá data ve zprávě. Například můžete kódovat data POST tam.  
 
-Kromě toho můžete ke zprávě přidat úroveň závažnosti. A stejně jako ostatní telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledávat různé sady trasování. Například:
+Kromě toho můžete ke zprávě přidat úroveň závažnosti. A stejně jako ostatní telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledávat různé sady trasování. Příklad:
 
 *C#*
 
@@ -774,7 +774,7 @@ Pokud vaše aplikace seskupuje uživatele na účty, můžete také předat iden
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-V [Průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md)můžete vytvořit graf, který počítá **účty Uživatelé, Ověřené**a **Uživatelské .**
+V [Průzkumníku metrik](../../azure-monitor/platform/metrics-charts.md)můžete vytvořit graf, který počítá **účty Uživatelé, Ověřené**a **Uživatelské .**
 
 Můžete také [vyhledávat](../../azure-monitor/app/diagnostic-search.md) datové body klienta s konkrétními uživatelskými jmény a účty.
 
@@ -1147,7 +1147,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetrieKontext
 
-TelemetryClient má Vlastnost Context, která obsahuje hodnoty, které jsou odesílány spolu se všemi daty telemetrie. Obvykle jsou nastaveny standardními moduly telemetrie, ale můžete je také nastavit sami. Například:
+TelemetryClient má Vlastnost Context, která obsahuje hodnoty, které jsou odesílány spolu se všemi daty telemetrie. Obvykle jsou nastaveny standardními moduly telemetrie, ale můžete je také nastavit sami. Příklad:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

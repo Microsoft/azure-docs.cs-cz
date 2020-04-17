@@ -2,13 +2,13 @@
 title: Podpora migrace VMware v Azure Migrate
 description: Přečtěte si o podpoře migrace virtuálních počítačů VMware v Azure Migrate.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.date: 04/15/2020
+ms.openlocfilehash: eee16b244ae4f9d517bdd42a0b7f37b1494ac480
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313999"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538133"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci voblasti VMware
 
@@ -64,10 +64,12 @@ Projděte si [tento článek](server-migrate-overview.md) a zjistěte, kterou me
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>Zařízení migrace Bez agenta AZUA 
-Migrace bez agenta používá zařízení Azure Migrate, které je nasazené na virtuálním počítači VMware.
+
+Migrace bez agenta používá [zařízení Azure Migrate](migrate-appliance.md). Zařízení můžete nasadit jako virtuální hod VMWare pomocí šablony OVA, importované na server vCenter nebo pomocí [skriptu prostředí PowerShell](deploy-appliance-script.md).
 
 - Seznamte se s [požadavky na zařízení](migrate-appliance.md#appliance---vmware) pro společnost VMware.
-- Přečtěte si o [adresách URL,](migrate-appliance.md#url-access) ke kterým zařízení potřebuje přístup.
+- Přečtěte si o adresách URL, ke kterým zařízení potřebuje přístup ve [veřejných](migrate-appliance.md#public-cloud-urls) a [vládních](migrate-appliance.md#government-cloud-urls) cloudech.
+- Ve službě Azure Government je nutné nasadit zařízení pomocí skriptu.
 
 ## <a name="agentless-ports"></a>Porty bez agentů
 
@@ -123,7 +125,8 @@ Když nastavíte zařízení pro replikaci pomocí šablony OVA uvedené v centr
 
 - Seznamte se s [požadavky na zařízení replikace](migrate-replication-appliance.md#appliance-requirements) pro společnost VMware.
 - MySQL musí být nainstalován na zařízení. Informace o [možnostech instalace](migrate-replication-appliance.md#mysql-installation).
-- Přečtěte si o [adresách URL](migrate-replication-appliance.md#url-access) a [portech,](migrate-replication-appliance.md#port-access) ke kterým musí replikační zařízení přistupovat.
+- Přečtěte si o adresách URL, ke kterým musí replikační zařízení přistupovat ve [veřejných](migrate-replication-appliance.md#url-access) a [vládních](migrate-replication-appliance.md#azure-government-url-access) cloudech.
+- Zkontrolujte [porty,](migrate-replication-appliance.md#port-access) ke kterým musí zařízení replikace přistupovat.
 
 ## <a name="agent-based-ports"></a>Porty založené na agentovi
 

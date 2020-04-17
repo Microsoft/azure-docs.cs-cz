@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Obsahuje přehled zařízení Azure Migrate používaného při hodnocení serveru a migraci.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437590"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538218"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -24,6 +24,17 @@ Zařízení Migrace Azure se používá v následujících scénářích.
 **Migrace bez agentů virtuálního vavu VMware** | Migrace Azure:Migrace serveru | Objevte virtuální mise VMware <br/><br/> Replikujte virtuální virtuální maje v v oblasti VMware s migrací bez agenta.
 **Vyhodnocení virtuálního aplikace Hyper-V** | Migrace Azure:Vyhodnocení serveru | Objevte virtuální aplikace Hyper-V<br/><br/> Shromažďujte metadata počítače a metadata výkonu pro hodnocení.
 **Fyzikální hodnocení stroje** |  Migrace Azure:Vyhodnocení serveru |  Zjišťujte fyzické servery (nebo virtuální servery, které považujete za fyzické servery).<br/><br/> Shromažďujte metadata počítače a metadata výkonu pro hodnocení.
+
+## <a name="deployment-methods"></a>Metody nasazení
+
+Zařízení lze nasadit pomocí několika metod:
+
+- Zařízení lze nasadit pomocí šablony pro virtuální počítače VMware a virtuální počítače Hyper-V (šablona OVA pro VMware nebo Virtuální pevný disk pro technologie Hyper-V).
+- Pokud nechcete používat šablonu, můžete nasadit zařízení pro VMware nebo Hyper-V pomocí skriptu PowerShell.
+- Ve službě Azure Government byste měli zařízení nasadit pomocí skriptu.
+- Pro fyzické servery vždy nasazujete zařízení pomocí skriptu.
+- Odkazy ke stažení jsou k dispozici v níže uvedených tabulkách.
+
 
 ## <a name="appliance---vmware"></a>Spotřebič - VMware 
 
@@ -67,7 +78,7 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro vmwar
 **Požadavek** | **Fyzické** 
 --- | ---
 **Součásti spotřebičů** | Přístroj má následující součásti: <br/><br/> - **Aplikace pro správu**: Jedná se o webovou aplikaci pro vstup uživatele během nasazení zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromažďuje data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent hodnocení**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: Aktualizuje součásti zařízení (běží každých 24 hodin).
-**Podporované nasazení** | Nasazení jako vyhrazený fyzický počítač nebo virtuální počítač pomocí instalačního skriptu prostředí PowerShell.
+**Podporované nasazení** | Nasazení jako vyhrazený fyzický počítač nebo virtuální počítač pomocí instalačního skriptu prostředí PowerShell. Skript je k dispozici ke stažení z portálu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu lze přidružit libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může objevit až 250 fyzických serverů.
 **Skript PowerShellu** | Stáhněte si skript (AzureMigrateInstaller.ps1) do složky zip z portálu. [Další informace](tutorial-assess-physical.md#set-up-the-appliance). Případně [si můžete stáhnout přímo](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> Velikost stahování je 59,7 MB.
@@ -78,8 +89,10 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro vmwar
 
 Zařízení Azure Migrate potřebuje připojení k internetu.
 
-- Když zařízení nasadíte, Azure Migrate probere kontrolu připojení k adresám URL shrnutým v následující tabulce.
+- Když zařízení nasadíte, Azure Migrate zkontroluje připojení k požadovaným adresám URL.
 - Pokud používáte proxy server založený na adrese URL pro připojení k internetu, musíte povolit přístup k těmto adresám URL a ujistěte se, že proxy server vyřeší všechny záznamy CNAME přijaté při vyhlížení adres URL.
+
+### <a name="public-cloud-urls"></a>Adresy URL veřejného cloudu
 
 **Adresa URL** | **Podrobnosti**  
 --- | --- |
@@ -95,6 +108,25 @@ download.microsoft.com/download | Povolit stahování ze stažení společnosti 
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Připojte se k adresám URL služby Azure Migrate.
 *.hypervrecoverymanager.windowsazure.com | **Používá se pro migraci bez agentů VMware**<br/><br/> Připojte se k adresám URL služby Azure Migrate.
 *.blob.core.windows.net |  **Používá se pro migraci bez agentů VMware**<br/><br/>Nahrajte data do úložiště pro migraci.
+
+### <a name="government-cloud-urls"></a>Adresy URL vládního cloudu
+
+**Adresa URL** | **Podrobnosti**  
+--- | --- |
+*.portal.azure.us  | Přejděte na Azure Portal.
+graph.windows.net | Přihlaste se ke svému předplatnému Azure.
+login.microsoftonline.us  | Vytvořte aplikace Azure Active Directory (AD), aby zařízení mohlo komunikovat s Azure Migrate.
+management.usgovcloudapi.net | Vytvořte aplikace Azure AD pro zařízení pro komunikaci se službou Azure Migrate.
+dc.services.visualstudio.com | Nahrajte protokoly aplikací používané pro interní monitorování.
+*.vault.usgovcloudapi.net | Správa tajných kódů v trezoru klíčů Azure.
+aka.ms/* | Povolit přístup k aka odkazy. Používá se pro aktualizace zařízení Azure Migrate.
+download.microsoft.com/download | Povolit stahování ze stažení společnosti Microsoft.
+*.servicebus.usgovcloudapi.net  | Komunikace mezi zařízením a službou Azure Migrate.
+*.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Připojte se k adresám URL služby Azure Migrate.
+*.hypervrecoverymanager.windowsazure.us | **Používá se pro migraci bez agentů VMware**<br/><br/> Připojte se k adresám URL služby Azure Migrate.
+*.blob.core.usgovcloudapi.net  |  **Používá se pro migraci bez agentů VMware**<br/><br/>Nahrajte data do úložiště pro migraci.
+*.applicationinsights.us | Používá agent brány na zařízení pro přístup ke koncovému bodu Application Insights pro diagnostické monitorování.
+
 
 
 
@@ -144,7 +176,7 @@ Adresy IPv6 | Vm. Guest.Net
 Propustnost čtení (MB za sekundu) | net.received.average
 Propustnost zápisu (MB za sekundu) | net.transmitted.average
 **Podrobnosti cesty zásob** | 
-Name (Název) | Kontejner. GetType(). Jméno
+Název | Kontejner. GetType(). Jméno
 Typ podřízeného objektu | Kontejner. ChildType
 Referenční údaje | Kontejner. MoRef
 Podrobnosti nadřazeného objekt | Kontejner.Nadřazený

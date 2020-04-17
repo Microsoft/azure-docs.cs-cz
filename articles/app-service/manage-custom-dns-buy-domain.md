@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259276"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535702"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro Azure App Service
 
@@ -137,7 +137,7 @@ Vybrané názvy **hostitelů** se zobrazí také na stránce Vlastní domény v 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> Popisek **Není zabezpečený** pro vaši vlastní doménu znamená, že ještě není vázán na certifikát SSL a jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény obdrží chybu nebo upozornění v závislosti na prohlížeči. Pokud chcete nakonfigurovat vazbu SSL, přečtěte si informace [o zabezpečení vlastního názvu DNS s vazbou SSL ve službě Azure App Service](configure-ssl-bindings.md).
+> Popisek **Není zabezpečený** pro vaši vlastní doménu znamená, že ještě není vázán na certifikát TLS/SSL a jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény se v závislosti na prohlížeči zobrazí chybou nebo upozorněním. Pokud chcete nakonfigurovat vazbu TLS, přečtěte si informace [o zabezpečení vlastního názvu DNS s vazbou TLS/SSL ve službě Azure App Service](configure-ssl-bindings.md).
 >
 
 Chcete-li otestovat názvy hostitelů, přejděte na uvedené názvy hostitelů v prohlížeči. V příkladu na předchozím snímku obrazovky zkuste přecházet na _kontoso.net_ a _www\.kontoso.net_.
@@ -168,7 +168,7 @@ Ujistěte se, že vaše zakoupená doména je uvedená v části **Domény služ
 Vyberte **Přidat název hostitele**.
 
 ### <a name="configure-hostname"></a>Konfigurovat název hostitele
-V dialogovém okně **Přidat název hostitele** zadejte plně kvalifikovaný název domény služby App Service domain nebo jakékoli subdomény. Například:
+V dialogovém okně **Přidat název hostitele** zadejte plně kvalifikovaný název domény služby App Service domain nebo jakékoli subdomény. Příklad:
 
 - kontoso.net
 - www\.kontoso.net

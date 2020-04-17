@@ -6,12 +6,12 @@ ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 5a6dbda59495fccb6b9d53440f408fd4750925b5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 250f51c9f028dd55d8327259e35b82b0c392c1f6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75421673"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536994"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Vytvoření runbooku Azure Automation
 
@@ -21,27 +21,27 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure na adrese https://portal.azure.com.
+Přihlaste se https://portal.azure.comk Azure na adrese .
 
-## <a name="create-runbook"></a>Vytvoření runbooku
+## <a name="create-the-runbook"></a>Vytvoření runbooku
 
 Nejprve vytvořte runbook. Ukázkový runbook vytvářený v tomto rychlém startu ve výchozím nastavení vypisuje `Hello World`.
 
 1. Otevřete váš účet služby Automation.
 
-1. V části **AUTOMATIZACE PROCESŮ** klikněte na **Runbooky**. Zobrazí se seznam runbooků.
+1. V části **Automatizace procesů**klepněte na **položku Runbook** . Zobrazí se seznam runbooků.
 
-1. Klikněte na tlačítko **Vytvořit runbook,** které se nachází v horní části seznamu.
+1. V horní části seznamu klikněte na **Vytvořit runbook.**
 
-1. Jako **Název** runbooku zadejte Hello World a jako **Typ runbooku** vyberte **PowerShell**. Klikněte na **Vytvořit**.
+1. Zadejte `Hello-World` název runbooku do pole **Název** a vyberte **PowerShell** pro pole **Typ runbooku.** 
 
    ![Zadání informací o runbooku Automation na stránce](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. Runbook se vytvoří a otevře se stránka **Upravit powershellový runbook**.
+1. Klikněte na **Vytvořit**. Runbook se vytvoří a otevře se stránka Upravit powershellový runbook.
 
     ![Vytvoření skriptu PowerShellu v editoru runbooků](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
-1. Zadejte nebo zkopírujte a vložte následující kód do podokna úprav. Tento kód vytvoří volitelný vstupní parametr Name (Název) s výchozí hodnotou World a vypíše řetězec, který používá tuto vstupní hodnotu:
+1. Zadejte nebo zkopírujte a vložte následující kód do podokna úprav. Vytvoří volitelný vstupní parametr `Name` volaný `World`s výchozí hodnotou aplikace a vyvede řetězec, který používá tuto vstupní hodnotu:
 
    ```powershell-interactive
    param
@@ -53,23 +53,23 @@ Nejprve vytvořte runbook. Ukázkový runbook vytvářený v tomto rychlém star
    "Hello $Name!"
    ```
 
-1. Klikněte na **Uložit** a uložte koncept tohoto runbooku.
+1. Kliknutím na **Uložit** uložte koncept kopie runbooku.
 
     ![Vytvoření skriptu PowerShellu v editoru runbooků](./media/automation-quickstart-create-runbook/automation-edit-runbook.png)
 
 ## <a name="test-the-runbook"></a>Otestování runbooku
 
-Po vytvoření runbooku ho otestujete, abyste ověřili, že funguje.
+Po vytvoření sady Runbook je nutné otestovat runbook k ověření, že funguje.
 
-1. Kliknutím na **Testovací podokno** otevřete stránku **Test**.
+1. Kliknutím na **Testovací podokno** otevřete testovací podokno.
 
 1. Zadejte nějakou hodnotu parametru **Name** (Název) a klikněte na **Spustit**. Spustí se testovací úloha a zobrazí se stav úlohy a výstup.
 
     ![Testovací úloha Runbooku](./media/automation-quickstart-create-runbook/automation-test-runbook.png)
 
-1. Kliknutím na **X** v pravém horním rohu zavřete stránku **Test**. V automaticky otevřeném okně vyberte **OK**.
+1. Zavřete podokno Test kliknutím na **X** v pravém horním rohu. V automaticky otevřeném okně vyberte **OK**.
 
-1. Na stránce **Upravit powershellový runbook** klikněte na **Publikovat** a publikujte runbook jako oficiální verzi runbooku v tomto účtu.
+1. Na stránce Upravit powershellový runbook klikněte na **Publikovat** a publikujte runbook jako oficiální verzi runbooku v tomto účtu.
 
    ![Testovací úloha Runbooku](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
 
@@ -77,15 +77,15 @@ Po vytvoření runbooku ho otestujete, abyste ověřili, že funguje.
 
 Po publikování runbooku se zobrazí stránka s přehledem.
 
-1. Na stránce s přehledem runbooku kliknutím na **Spustit** otevřete stránku konfigurace **Spustit runbook** pro tento runbook.
+1. Na stránce s přehledem runbooku kliknutím na **Spustit** otevřete stránku konfigurace Spustit runbook pro tento runbook.
 
    ![Testovací úloha Runbooku](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png)
 
-1. Parametr **Name** (Název) nechte prázdný, aby se použila výchozí hodnota, a klikněte na **OK**. Úloha runbooku se odešle a zobrazí se stránka úlohy.
+1. Parametr **Name** (Název) nechte prázdný, aby se použila výchozí hodnota, a klikněte na **OK**. Úloha runbooku je odeslána a zobrazí se stránka Úloha.
 
    ![Testovací úloha Runbooku](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
-1. Až bude **Stav úlohy** hlásit **Spuštěno** nebo **Dokončeno**, kliknutím na **Výstup** otevřete podokno **Výstup** a zobrazte výstup runbooku.
+1. Pokud je `Running` stav `Completed`úlohy nebo , klepnutím na **tlačítko Výstup** otevřete podokno Výstup a zobrazte výstup knihy Runbook.
 
    ![Testovací úloha Runbooku](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 

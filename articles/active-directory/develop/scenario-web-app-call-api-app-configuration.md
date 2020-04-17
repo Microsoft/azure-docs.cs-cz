@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b0f60e13ca4bc5115f9a49885c3c659ad1147fcc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7f05d33b43df85c49a0c92b60157e2a6448325ac
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881889"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537130"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webová aplikace, která volá webová api: konfigurace kódu
 
@@ -253,7 +253,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 ### <a name="the-tokenacquisitionbuildconfidentialclientapplication-method"></a>Metoda TokenAcquisition.BuildConfidentialClientApplication
 
-V ASP.NET Core, vytváření důvěrné klientské aplikace `HttpContext`používá informace, které jsou v . Přidružené `HttpContext` s požadavkem je přístupný `CurrentHttpContext` pomocí vlastnosti. `HttpContext`má informace o adrese URL webové aplikace a o přihlášeném uživateli (v ). `ClaimsPrincipal` 
+V ASP.NET Core, vytváření důvěrné klientské aplikace `HttpContext`používá informace, které jsou v . Přidružené `HttpContext` s požadavkem je přístupný `CurrentHttpContext` pomocí vlastnosti. `HttpContext`má informace o adrese URL webové aplikace a o přihlášeném uživateli (v ). `ClaimsPrincipal`
 
 Metoda `BuildConfidentialClientApplication` také používá konfiguraci ASP.NET Core. Konfigurace má část "AzureAD" a je také vázána na oba následující prvky:
 

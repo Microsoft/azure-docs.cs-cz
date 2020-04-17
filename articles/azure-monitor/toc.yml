@@ -318,8 +318,6 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: Definice metrik založených na protokolech
               href: platform/app-insights-metrics.md
-            - name: Klasický průzkumník metrik
-              href: app/metrics-explorer.md
         - name: Search
           href: app/diagnostic-search.md
         - name: Profiler

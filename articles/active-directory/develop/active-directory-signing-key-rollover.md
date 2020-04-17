@@ -12,12 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3585cfa7ea6f0d8afc61e899f9641d415a2e354
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161184"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537232"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Přechod podpisového klíče ve službě Azure Active Directory
 Tento článek popisuje, co potřebujete vědět o veřejných klíčích, které se používají ve službě Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče převrátit v pravidelných intervalech, a v případě nouze, by mohla být převrácena okamžitě. Všechny aplikace, které používají Azure AD by měl být schopen programově zpracovat proces přechodu na klíče nebo vytvořit proces pravidelné ruční přechodu. Pokračujte ve čtení, abyste pochopili, jak klávesy fungují, jak posoudit dopad přechodu na aplikaci a jak aktualizovat aplikaci nebo vytvořit proces pravidelného ručního přechodu pro zpracování efektu přechodu klíčů v případě potřeby.
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Webové aplikace chránící prostředky a vytvořené pomocí Sady Visual Studio 2012
-Pokud vaše aplikace byla postavena v Sadě Visual Studio 2012, pravděpodobně jste ke konfiguraci aplikace použili nástroj Identity and Access Tool. Je také pravděpodobné, že používáte [ověřování registru názvů vydavatelů (VINR).](https://msdn.microsoft.com/library/dn205067.aspx) VINR je zodpovědný za udržování informací o důvěryhodných zprostředkovatelů identit (Azure AD) a klíče používané k ověření tokeny vydané jimi. VINR také usnadňuje automatickou aktualizaci klíčových informací uložených v souboru Web.config stažením nejnovějšího dokumentu federačních metadat přidruženého k vašemu adresáři, kontrolou, zda je konfigurace zastaralá s nejnovějším dokumentem, a aktualizaci aplikace tak, aby podle potřeby používala nový klíč.
+Pokud vaše aplikace byla postavena v Sadě Visual Studio 2012, pravděpodobně jste ke konfiguraci aplikace použili nástroj Identity and Access Tool. Je také pravděpodobné, že používáte [ověřování registru názvů vydavatelů (VINR).](https://msdn.microsoft.com/library/dn205067.aspx) VINR je zodpovědný za udržování informací o důvěryhodných zprostředkovatelů identit (Azure AD) a klíče používané k ověření tokeny vydané jimi. VINR také usnadňuje automatickou aktualizaci klíčových informací uložených v souboru Web.config stažením nejnovějšího dokumentu federačních metadat přidruženého k adresáři, kontrolou, zda je konfigurace s nejnovějším dokumentem zastaralá, a aktualizací aplikace tak, aby podle potřeby používala nový klíč.
 
 Pokud jste vytvořili aplikaci pomocí některého z ukázek kódu nebo návoddokumentace poskytované společností Microsoft, logika přechodu klíčů je již zahrnuta v projektu. Všimněte si, že níže uvedený kód již v projektu existuje. Pokud vaše aplikace ještě nemá tuto logiku, postupujte podle následujících kroků a přidejte ji a ověřte, zda funguje správně.
 
@@ -299,7 +299,7 @@ Pokyny k aktualizaci konfigurace pomocí Nástroje FedUtil:
 4. Chcete-li dokončit proces aktualizace, klepněte na tlačítko **Dokončit.**
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Webové aplikace / API chráníprostředky pomocí jiných knihoven nebo ručně implementují některý z podporovaných protokolů
-Pokud používáte jinou knihovnu nebo ručně implementovali některý z podporovaných protokolů, budete muset zkontrolovat knihovnu nebo implementaci, abyste se ujistili, že klíč je načítán z dokumentu zjišťování OpenID Connect nebo z metadat federace Dokumentu. Jedním ze způsobů, jak to zkontrolovat, je provést vyhledávání v kódu nebo v kódu knihovny pro všechny hovory do dokumentu zjišťování OpenID nebo dokumentu metadat federace.
+Pokud používáte jinou knihovnu nebo ručně implementovali některý z podporovaných protokolů, budete muset zkontrolovat knihovnu nebo implementaci, abyste se ujistili, že klíč je načten z dokumentu zjišťování OpenID Connect nebo z dokumentu metadat federace. Jedním ze způsobů, jak to zkontrolovat, je provést vyhledávání v kódu nebo v kódu knihovny pro všechny hovory do dokumentu zjišťování OpenID nebo dokumentu metadat federace.
 
 Pokud je klíč uložen někde nebo pevně zakódován ve vaší aplikaci, můžete ručně načíst klíč a odpovídajícím způsobem jej aktualizovat provedením ručního přechodu podle pokynů na konci tohoto pokynů. **Důrazně doporučujeme, abyste vylepšili aplikaci pro podporu automatického přechodu** pomocí některého z přístupů osnovy v tomto článku, aby se zabránilo budoucí narušení a režie, pokud Azure AD zvyšuje jeho kadence přechodu nebo má nouzové out-of-band rollover.
 
@@ -308,4 +308,3 @@ Můžete ověřit, zda vaše aplikace podporuje automatické převrácení klí�
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Jak provést ruční přechod, pokud vaše aplikace nepodporuje automatický přechod
 Pokud vaše aplikace **nepodporuje** automatické převrácení, budete muset vytvořit proces, který pravidelně monitoruje podpisové klíče Azure AD a provede ruční přechod odpovídajícím způsobem. [Toto úložiště GitHub](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) obsahuje skripty a pokyny, jak to udělat.
-

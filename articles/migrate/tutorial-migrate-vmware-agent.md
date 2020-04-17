@@ -4,18 +4,16 @@ description: Zjistěte, jak spustit migraci virtuálních počítačů VMware na
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6855c3e81aece0358146608b6cf179fb923c54c8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238437"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535328"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrace virtuálních počítačů VMware do Azure (na základě agenta)
 
 Tento článek ukazuje, jak migrovat místní virtuální počítače VMware do Azure pomocí migrace na základě agenta pomocí nástroje migrace serveru Azure.
-
-[Azure Migrate](migrate-services-overview.md) poskytuje centrální rozbočovač pro sledování zjišťování, hodnocení a migrace místních aplikací a úloh a instancí virtuálních zařízení AWS/GCP do Azure. Centrum poskytuje nástroje pro migraci Azure pro hodnocení a migraci, stejně jako nabídky nezávislého dodavatele softwaru (ISV) třetích stran.
 
 
 V tomto kurzu se naučíte:
@@ -78,7 +76,7 @@ Pokud jste již spustit hodnocení s Azure Migrate Server Assessment, můžete p
 Pokud jste nespustili hodnocení, musíte nastavit oprávnění Azure před migrací pomocí migrace serveru Azure.
 
 - **Vytvoření projektu**: Váš účet Azure potřebuje oprávnění k vytvoření projektu Migrace Azure. 
-- **Registrace replikačního zařízení Azure Migrate**: Zařízení pro replikaci vytvoří a zaregistruje aplikaci Azure Active Directory ve vašem účtu Azure. Je třeba delegovat oprávnění pro toto.
+- **Registrace replikačního zařízení Azure Migrate**: Zařízení pro replikaci vytvoří a zaregistruje aplikaci Azure Active Directory ve vašem účtu Azure. Delegujte oprávnění pro toto.
 - **Vytvoření trezoru klíčů**: Chcete-li migrovat virtuální počítače VMware pomocí migrace serveru Azure, Azure Migrate vytvoří trezor klíčů ve skupině prostředků pro správu přístupových klíčů k účtu úložiště replikace ve vašem předplatném. Chcete-li vytvořit úschovnu, potřebujete oprávnění přiřazení role ve skupině prostředků, ve které se nachází projekt Migrace Azure. 
 
 
@@ -148,7 +146,7 @@ Vytvořte účet následujícím způsobem:
 **Úkol** | **Role/oprávnění** | **Podrobnosti**
 --- | --- | ---
 **Zjišťování virtuálních počítačů** | Alespoň uživatel jen pro čtení<br/><br/> Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte roli **Žádný přístup** s **objektem Propagate podřízenému** objektu, podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální připojení a sítě).
-**Úplná replikace, převzetí služeb při selhání a navrácení služeb po obnovení** |  Vytvořte roli (Azure_Site_Recovery) s požadovanými oprávněními a pak ji přiřaďte uživateli nebo skupině VMware.<br/><br/> Objekt datového centra –> Rozšířit na podřízený objekt, role=Azure_Site_Recovery<br/><br/> Úložiště dat –> Přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, aktualizovat soubory virtuálního počítače<br/><br/> Síť –> Přiřazení sítě<br/><br/> Prostředek –> Přiřadit virtuální počítač k fondu prostředků, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač<br/><br/> Úlohy –> Vytvořit úlohu, aktualizovat úlohu<br/><br/> Virtuální počítač –> Konfigurace<br/><br/> Virtuální počítač –> Interakce –> zodpovědět dotazy, připojení zařízení, konfigurovat disk CD, konfigurovat disketu, vypnout, zapnout, instalace nástrojů VMware<br/><br/> Virtuální počítač –> Inventář –> Vytvořit, zaregistrovat, zrušit registraci<br/><br/> Virtuální počítač –> Zřizování –> Povolit stažení virtuálního počítače, povolit nahrávání souborů virtuálního počítače<br/><br/> Virtuální počítač –> Snímky –> Odebrat snímky | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte roli **Žádný přístup** s **objektem Propagate podřízenému** objektu, podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální připojení a sítě).
+**Úplná replikace, převzetí služeb při selhání a navrácení služeb po obnovení** |  Vytvořte roli (Azure_Site_Recovery) s požadovanými oprávněními a pak ji přiřaďte uživateli nebo skupině VMware.<br/><br/> Objekt datového centra –> Rozšířit na podřízený objekt, role=Azure_Site_Recovery<br/><br/> Úložiště dat –> Přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, aktualizovat soubory virtuálního počítače<br/><br/> Síť –> Přiřazení sítě<br/><br/> Prostředek –> Přiřadit virtuální počítač k fondu prostředků, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač<br/><br/> Úlohy –> Vytvořit úlohu, aktualizovat úlohu<br/><br/> Virtuální počítač –> Konfigurace<br/><br/> Virtuální počítač –> Interakce –> zodpovědět dotazy, připojení zařízení, konfigurovat disk CD, konfigurovat disketu, vypnout, zapnout, instalace nástrojů VMware<br/><br/> Virtuální počítač –> Inventář –> Vytvořit, zaregistrovat, zrušit registraci<br/><br/> Virtuální počítač –> Zřizování –> Povolit stažení virtuálního počítače, povolit nahrávání souborů virtuálního počítače<br/><br/> Virtuální počítač –> Snímky –> Odebrat snímky | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte roli **Žádný přístup** s **objektem Propagate podřízenému** objektu, podřízeným objektům (hostitelé vSphere, datastores, VMsa, nd sítě).
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Příprava účtu pro instalaci služby Mobility
 
@@ -191,26 +189,18 @@ Pokud jste nepostupovali podle kurzu k vyhodnocení virtuálních počítačů V
 3. V části **Přehled** klikněte na **Posoudit a migrovat servery**.
 4. V části **Zjistit, vyhodnoťte a migrujte servery**na **možnost Posoudit a migrovat servery**.
 
-    ![Zjišťování a posuzování serverů](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
+    ! [Objevte a vyhodnocujte servery] (./media/tutorial-migrate-vmware-agent/assess-migrate.png
 
 1. V části **Zjistit, posoudit a migrovat servery** klikněte na **Přidat nástroje**.
 2. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.
-3. V **části Podrobnosti projektu**zadejte název projektu a zeměpisnou polohu, ve kterých chcete projekt vytvořit, a klepněte na tlačítko **Další.**
+3. V části **Podrobnosti o projektu** zadejte název projektu a zeměpisnou oblast, ve které chcete projekt vytvořit, a klikněte na **Další**. Zkontrolujte podporované zeměpisné oblasti pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
 
     ![Vytvoření projektu migrace Azure](./media/tutorial-migrate-vmware-agent/migrate-project.png)
 
-    Můžete vytvořit projekt Migrace Azure v některé z těchto zeměpisných oblastí.
 
-    **Geografie** | **Oblasti**
-    --- | ---
-    Asie | Jihovýchodní Asie
-    Evropa | Severní Evropa nebo Západní Evropa
-    Spojené státy | Východní USA nebo západní střední USA
-
-    Zeměpisné umístění vybrané pro tento projekt slouží jen k uložení metadat získaných z místních virtuálních počítačů. Můžete vybrat libovolnou cílovou oblast pro skutečnou migraci.
 4. V **nástroji pro výběr hodnocení**vyberte přeskočit přidání nástroje pro hodnocení pro tuto **chvíli** > **Další**.
 5. V **nástroji Pro výběr migrace**vyberte Možnost Migrace **Azure: Migrace** > serveru**Další**.
-6. V **části Revize + přidání nástrojů**zkontrolujte nastavení a klikněte na Přidat **nástroje.**
+6. V části **Zkontrolovat a přidat nástroje** zkontrolujte nastavení a klikněte na **Přidat nástroje**.
 7. Po přidání nástroje se zobrazí v**nástrojích**Migrace projektu Azure > **servery** > .
 
 ## <a name="set-up-the-replication-appliance"></a>Nastavení zařízení pro replikaci
@@ -221,7 +211,10 @@ Prvním krokem migrace je nastavení zařízení replikace. Zařízení pro repl
 - **Procesní server**: Procesový server funguje jako replikační brána. Přijímá data replikace; optimalizuje ji pomocí ukládání do mezipaměti, komprese a šifrování a odesílá ji do účtu úložiště mezipaměti v Azure. Procesní server také nainstaluje agenta služby Mobility service na virtuální chod, které chcete replikovat, a provede automatické zjišťování místních virtuálních počítačích VMware.
 
 
-Chcete-li nastavit zařízení pro replikaci, stáhněte si připravenou šablonu Open Virtualization Application (OVA). Importujete šablonu do vmware a vytvořte virtuální počítače zařízení replikace. 
+Zařízení pro replikaci můžete nastavit několika způsoby.
+
+- Nastavte si stažené open virtualizační aplikace (OVA) šablony. Importujete šablonu do vmware a vytvořte virtuální počítače zařízení replikace. Toto je metoda použitá v tomto kurzu.
+- Nastavte skript.
 
 ### <a name="download-the-replication-appliance-template"></a>Stažení šablony replikačního zařízení
 

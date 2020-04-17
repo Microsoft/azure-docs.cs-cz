@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 93ab8f613e5634b2eabe7c02189e223d3dfbb0a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0cb5991b381acc9a0ec36113d0e15a7731b5074d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671269"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537487"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>Rozhraní API agenta Application Insights: Get-ApplicationInsightsMonitoringConfig
 
@@ -49,7 +49,7 @@ Filters:
 ## <a name="next-steps"></a>Další kroky
 
   Zobrazení telemetrických dat:
- - [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) a sledujte výkon a využití.
+ - [Prozkoumejte metriky](../../azure-monitor/platform/metrics-charts.md) a sledujte výkon a využití.
 - [Hledat události a protokoly](../../azure-monitor/app/diagnostic-search.md) diagnostikovat problémy.
 - Pro pokročilejší dotazy používejte [analýzy.](../../azure-monitor/app/analytics.md)
 - [Vytvořte řídicí panely](../../azure-monitor/app/overview-dashboard.md).

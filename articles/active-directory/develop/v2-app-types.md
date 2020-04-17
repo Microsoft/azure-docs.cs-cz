@@ -12,12 +12,12 @@ ms.date: 04/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 143a2ec0bfbcc6997eb6d8b2599b848a509ee773
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: bdbda8bed38819ca2b4d2fb1ef3d9bf591269890
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309493"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535906"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro platformu identit Microsoftu
 
@@ -80,11 +80,11 @@ Identitu uživatele můžete zajistit ověřením tokenu ID veřejným podpisov�
 
 Chcete-li zobrazit tento scénář v akci, zkuste jeden z ukázky kódu přihlášení webové aplikace v [části začínáme platformy identit Microsoftu.](v2-overview.md#getting-started)
 
-Kromě jednoduchého přihlášení může být nutné, aby aplikace webového serveru měla přístup k jiné webové službě, například k rozhraní REST API. V tomto případě se aplikace webového serveru zabývá kombinovaným tokem OpenID Connect a OAuth 2.0 pomocí [toku autorizačního kódu OAuth 2.0](active-directory-v2-protocols.md). Další informace o tomto scénáři [načtete o tom, jak začít s webovými aplikacemi a webovými webovými api](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+Kromě jednoduchého přihlášení může být nutné, aby aplikace webového serveru měla přístup k jiné webové službě, například k rozhraní REST API. V tomto případě se aplikace webového serveru zabývá kombinovaným tokem OpenID Connect a OAuth 2.0 pomocí [toku autorizačního kódu OAuth 2.0](active-directory-v2-protocols.md). Další informace o tomto scénáři [načtete o tom, jak začít s webovými aplikacemi a webovými api](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
 
 ## <a name="web-apis"></a>Webová rozhraní API
 
-Koncový bod platformy identit Microsoftu můžete použít k zabezpečení webových služeb, jako je například webové rozhraní RESTful vaší aplikace. Webová api lze implementovat v mnoha platformách a jazycích. Můžou být taky implementovat pomocí aktivačních událostí HTTP ve funkcích Azure. Místo tokenů ID a souborů cookie relace používá webové rozhraní API přístupový token OAuth 2.0 k zabezpečení dat a ověřování příchozích požadavků. Volající webového rozhraní API připojí přístupový token v hlavičce autorizace požadavku HTTP, například takto:
+Koncový bod platformy identit Microsoftu můžete použít k zabezpečení webových služeb, jako je například webové rozhraní API RESTful vaší aplikace. Webová api lze implementovat v mnoha platformách a jazycích. Můžou být taky implementovat pomocí aktivačních událostí HTTP ve funkcích Azure. Místo tokenů ID a souborů cookie relace používá webové rozhraní API přístupový token OAuth 2.0 k zabezpečení dat a ověřování příchozích požadavků. Volající webového rozhraní API připojí přístupový token v hlavičce autorizace požadavku HTTP, například takto:
 
 ```HTTP
 GET /api/items HTTP/1.1
@@ -96,7 +96,7 @@ Accept: application/json
 
 Webové rozhraní API používá přístupový token k ověření identity volajícího rozhraní API a k extrahování informací o volajícím z deklarací, které jsou kódovány v přístupovém tokenu. Další podrobnosti o různých typech tokenů používaných v koncovém bodě platformy identity Microsoft jsou k dispozici v odkazu na [přístupový token](access-tokens.md) a [odkaz id_token.](id-tokens.md)
 
-Webové rozhraní API může uživatelům poskytnout možnost vyjádřit se k odhlášení nebo odhlášení z konkrétních funkcí nebo dat vystavením oprávnění, označovaných také jako [obory](v2-permissions-and-consent.md). Aby volající aplikace získala oprávnění k oboru, musí uživatel souhlasit s oborem během toku. Koncový bod platformy identit microsoftu požádá uživatele o oprávnění a pak zaznamená oprávnění ve všech přístupových tokenech, které webové rozhraní API obdrží. Webové rozhraní API ověří přístupové tokeny, které obdrží při každém volání, a provede kontroly autorizace.
+Webové rozhraní API může uživatelům poskytnout možnost vyjádřit se k odhlášení nebo odhlášení z konkrétních funkcí nebo dat vystavením oprávnění, označovaných také jako [obory](v2-permissions-and-consent.md). Aby volající aplikace získala oprávnění k oboru, musí uživatel souhlasit s oborem během toku. Koncový bod platformy identit y Microsoft požádá uživatele o oprávnění a pak zaznamená oprávnění ve všech přístupových tokenech, které webové rozhraní API obdrží. Webové rozhraní API ověří přístupové tokeny, které obdrží při každém volání, a provede kontroly autorizace.
 
 Webové rozhraní API může přijímat přístupové tokeny ze všech typů aplikací, včetně aplikací webového serveru, aplikací pro stolní počítače a mobilních zařízení, jednostránkových aplikací, daemonů na straně serveru a dokonce i dalších webových rozhraní API. Tok vysoké úrovně pro webové rozhraní API vypadá takto:
 
@@ -116,7 +116,7 @@ V tomto toku aplikace obdrží autorizační kód z koncového bodu platformy id
 
 ## <a name="daemons-and-server-side-apps"></a>Daemons a aplikace na straně serveru
 
-Aplikace, které mají dlouhotrvající procesy nebo které pracují bez interakce s uživatelem, také potřebují způsob přístupu k zabezpečeným prostředkům, jako jsou webová rozhraní API. Tyto aplikace můžete ověřit a získat tokeny pomocí identity aplikace, nikoli delegované identity uživatele, s tokpověření klienta OAuth 2.0. Identitu aplikace můžete prokázat pomocí tajného klíče klienta nebo certifikátu. Další informace naleznete v tématu [.NET Core daemon console aplikace pomocí platformy microsoft identity .](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
+Aplikace, které mají dlouhotrvající procesy nebo které pracují bez interakce s uživatelem, také potřebují způsob, jak získat přístup k zabezpečeným prostředkům, jako jsou webová rozhraní API. Tyto aplikace můžete ověřit a získat tokeny pomocí identity aplikace, nikoli delegované identity uživatele, s tokpověření klienta OAuth 2.0. Identitu aplikace můžete prokázat pomocí tajného klíče klienta nebo certifikátu. Další informace naleznete v tématu [.NET Core daemon console aplikace pomocí platformy microsoft identity .](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
 
 V tomto toku aplikace interaguje přímo s koncovým `/token` bodem získat přístup:
 

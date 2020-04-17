@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 625b7fc8d49c91a9f2b1c09e1add72993e828d43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 27e3f0ef7539f3fb875c087ff7d1351916877d19
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597784"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536473"
 ---
-Standardní sdílené složky s limitem kapacity 100 TiB jsou dostupné globálně ve všech oblastech Azure, s výjimkou:
+Standardní sdílené složky s kapacitou 100 TiB mají určitá omezení.
 
-- Místně redundantní úložiště: Všechny oblasti, s výjimkou Jižní Afriky – sever, Jižní Afrika – západ, Německo – západ – střed a Německo – sever.
-- Zónové redundantní úložiště: Podporováno pro všechny oblasti, kde je podporováno redundantní úložiště zóny, s výjimkou Japonska – východ, severní Evropa, Jižní Afrika – sever.
-- Geograficky redundantní/geozone redundantní úložiště: Není podporováno.
+- V současné době jsou podporovány pouze místně redundantní úložiště (LRS) a zónové redundantní úložiště (ZRS) účty.
+- Jakmile povolíte velké sdílené složky, nelze převést účty úložiště na geograficky redundantní úložiště (GRS) nebo geograficky redundantní úložiště (GZRS).
+- Jakmile povolíte velké sdílené složky, nemůžete je zakázat.

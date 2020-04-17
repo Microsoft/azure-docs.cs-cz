@@ -1,6 +1,6 @@
 ---
 title: Přidání přihlášení se společností Microsoft do webové aplikace Python platformy Microsoft pro identity | Azure
-description: Zjistěte, jak implementovat Microsoft Sign-In na Python Web App pomocí OAuth2
+description: Zjistěte, jak implementovat přihlášení Microsoftu do webové aplikace Pythonu pomocí OAuth2
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 0affae56ef6998efe4bb370287ff3688f83f3878
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: c0220a226b2095a4ec54bc3469abee08b8b29f4c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873952"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536025"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Úvodní příručka: Přidání přihlášení s Microsoftem do webové aplikace Pythonu
 

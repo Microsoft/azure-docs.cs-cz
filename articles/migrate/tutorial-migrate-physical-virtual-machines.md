@@ -2,14 +2,14 @@
 title: Migrujte počítače jako fyzický server do Azure pomocí Migrace Azure.
 description: Tento článek popisuje, jak migrovat fyzické počítače do Azure pomocí Migrace Azure.
 ms.topic: tutorial
-ms.date: 02/03/2020
+ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 51ce45b091fe2d8845963953c2c50cd7be618f58
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 1824fc6c7cbc0fd0390770027f4a15d9130139de
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80298006"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535379"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrace počítačů jako fyzických serverů do Azure
 
@@ -22,12 +22,10 @@ Tento článek ukazuje, jak migrovat počítače jako fyzické servery do Azure 
 - Migrovat virtuální servery běžící ve veřejných cloudech, jako jsou Amazon Web Services (AWS) nebo Google Cloud Platform (GCP).
 
 
-[Azure Migrate](migrate-services-overview.md) poskytuje centrální rozbočovač pro sledování zjišťování, hodnocení a migrace místních aplikací a úloh a cloudových instancí virtuálních počítačů do Azure. Centrum poskytuje nástroje pro migraci Azure pro hodnocení a migraci, stejně jako nabídky nezávislého dodavatele softwaru (ISV) třetích stran.
+Tento kurz je třetí v řadě, která ukazuje, jak posoudit a migrovat fyzické servery do Azure. V tomto kurzu se naučíte:
 
-
-V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Připravte Azure na migraci pomocí nástroje migrace serveru Azure.
+> * Připravte se na používání Azure s migrací:migrace serveru Azure.
 > * Zkontrolujte požadavky na počítače, které chcete migrovat, a připravte počítač pro replikační zařízení Azure Migrate, které se používá ke zjišťování a migraci počítačů do Azure.
 > * Přidejte nástroj migrace serveru Azure v centru Migrace Azure.
 > * Nastavte zařízení replikace.
@@ -46,21 +44,20 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
-1. [Zkontrolujte](migrate-architecture.md) architekturu migrace.
-2. Ujistěte se, že je vašemu účtu Azure přiřazena role Přispěvatel virtuálního počítače, abyste měli oprávnění k:
+[Zkontrolujte](migrate-architecture.md) architekturu migrace.
 
-    - Vytvoření virtuálního počítače ve vybrané skupině prostředků
-    - Vytvoření virtuálního počítače ve vybrané virtuální síti
-    - Zapisovat na spravovaný disk Azure. 
 
-3. [Nastavte síť Azure](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Když se replikujete do Azure, virtuální počítače Azure se vytvoří a připojí k síti Azure, kterou zadáte při nastavování migrace.
 
 
 ## <a name="prepare-azure"></a>Příprava Azure
 
-Před migrací migrace serveru Azure nastavte oprávnění Azure.
+Připravte Azure na migraci pomocí migrace serveru.
 
-- **Vytvoření projektu**: Váš účet Azure potřebuje oprávnění k vytvoření projektu Migrace Azure. 
+**Úkol** | **Podrobnosti**
+--- | ---
+**Vytvoření projektu migrace Azure** | Váš účet Azure potřebuje oprávnění Contributer nebo Owner k vytvoření projektu.
+**Ověření oprávnění pro svůj účet Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápisu na spravovaný disk Azure.
+
 
 ### <a name="assign-permissions-to-create-project"></a>Přiřazení oprávnění k vytvoření projektu
 
@@ -70,32 +67,51 @@ Před migrací migrace serveru Azure nastavte oprávnění Azure.
     - Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem předplatného.
     - Pokud nejste vlastníkem předplatného, spolupracujte s vlastníkem a přiřaďte roli.
 
+
+### <a name="assign-azure-account-permissions"></a>Přiřazení oprávnění účtu Azure
+
+Přiřaďte roli přispěvatele virtuálního počítače k účtu Azure. To poskytuje oprávnění k:
+
+    - Vytvoření virtuálního počítače ve vybrané skupině prostředků
+    - Vytvoření virtuálního počítače ve vybrané virtuální síti
+    - Zapisovat na spravovaný disk Azure. 
+
+### <a name="create-an-azure-network"></a>Vytvoření sítě Azure
+
+[Nastavte](../virtual-network/manage-virtual-network.md#create-a-virtual-network) virtuální síť Azure (VNet). Když se replikujete do Azure, virtuální počítače Azure se vytvoří a připojí k virtuální síti Azure, kterou zadáte při nastavování migrace.
+
 ## <a name="prepare-for-migration"></a>Příprava migrace
+
+Chcete-li se připravit na migraci fyzického serveru, je třeba ověřit nastavení fyzického serveru a připravit se na nasazení zařízení pro replikaci.
 
 ### <a name="check-machine-requirements-for-migration"></a>Zkontrolujte požadavky na počítač pro migraci
 
 Ujistěte se, že počítače splňují požadavky na migraci do Azure. 
 
 > [!NOTE]
-> Migrace založená na agentovi s migrací serveru Azure, má stejnou architekturu replikace jako funkce zotavení po havárii založená na agentovi služby Azure Site Recovery a některé použité součásti sdílejí stejný základ kódu. Některé požadavky mohou odkazovat na dokumentaci site recovery.
+> Při migraci fyzických počítačů používá migrace Azure:Server Migration stejnou architekturu replikace jako zotavení po havárii založené na agentovi ve službě Azure Site Recovery a některé součásti sdílejí stejný základ kódu. Některý obsah může odkazovat na dokumentaci site recovery.
 
 1. [Ověřte](migrate-support-matrix-physical-migration.md#physical-server-requirements) požadavky na fyzický server.
-2. Ověřte nastavení virtuálních počítače. Místní počítače, které replikujete do Azure, musí splňovat [požadavky na virtuální počítače Azure](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
+2. Ověřte, že místní počítače, které replikujete do Azure, splňují [požadavky virtuálních počítačů Azure](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>Příprava počítače pro zařízení pro replikaci
 
-Migrace serveru Azure používá k replikaci počítačů do Azure zařízení replikace. Zařízení replikace spouští následující součásti.
+Migrace Azure:Migrace serveru používá k replikaci počítačů do Azure zařízení replikace. Zařízení replikace spouští následující součásti.
 
 - **Konfigurační server**: Konfigurační server koordinuje komunikaci mezi místním a Azure a spravuje replikaci dat.
 - **Procesní server**: Procesový server funguje jako replikační brána. Přijímá data replikace; optimalizuje ji pomocí ukládání do mezipaměti, komprese a šifrování a odesílá ji do účtu úložiště mezipaměti v Azure. 
 
-Než začnete, musíte připravit počítač se systémem Windows Server 2016 pro hostování zařízení pro replikaci. Stroj by měl [tyto požadavky](migrate-replication-appliance.md)splňovat . Přístroj by neměl být instalován na zdrojovém počítači, který chcete chránit.
+Připravte se na nasazení zařízení takto:
 
+- Připravíte počítač pro hostování zařízení replikace. [Zkontrolujte](migrate-replication-appliance.md#appliance-requirements) požadavky na stroj. Zařízení by nemělo být nainstalováno na zdrojovém počítači, který chcete replikovat.
+- Replikační zařízení používá MySQL. Přečtěte si [možnosti](migrate-replication-appliance.md#mysql-installation) instalace MySQL na zařízení.
+- Zkontrolujte adresy URL Azure požadované pro zařízení replikace pro přístup k [veřejným](migrate-replication-appliance.md#url-access) a [vládním](migrate-replication-appliance.md#azure-government-url-access) cloudům.
+- Zkontrolujte požadavky na přístup [port] (migrate-replication-appliance.md#port-access) pro zařízení replikace.
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>Přidání nástroje migrace serveru Azure
+## <a name="add-the-server-migration-tool"></a>Přidání nástroje pro migraci serveru
 
-Nastavte projekt Migrace Azure a pak do něj přidejte nástroj migrace serveru Azure.
+Nastavte projekt Migrace Azure a pak do něj přidejte nástroj migrace serveru.
 
 1. Na webu Azure Portal v části **Všechny služby** vyhledejte **Azure Migrate**.
 2. V části **Služby** vyberte **Azure Migrate**.
@@ -106,19 +122,10 @@ Nastavte projekt Migrace Azure a pak do něj přidejte nástroj migrace serveru 
 
 5. V části **Zjistit, posoudit a migrovat servery** klikněte na **Přidat nástroje**.
 6. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.
-7. V **části Podrobnosti projektu**zadejte název projektu a zeměpisnou polohu, ve kterých chcete projekt vytvořit, a klepněte na tlačítko **Další.**
+7. V části **Podrobnosti o projektu** zadejte název projektu a zeměpisnou oblast, ve které chcete projekt vytvořit, a klikněte na **Další**. Zkontrolujte podporované zeměpisné oblasti pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
 
     ![Vytvoření projektu migrace Azure](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
 
-    Můžete vytvořit projekt Migrace Azure v některé z těchto zeměpisných oblastí.
-
-    **Geografie** | **Oblasti**
-    --- | ---
-    Asie | Jihovýchodní Asie
-    Evropa | Severní Evropa nebo Západní Evropa
-    Spojené státy | Východní USA nebo západní střední USA
-
-    Zeměpisné umístění vybrané pro tento projekt slouží jen k uložení metadat získaných z místních virtuálních počítačů. Můžete vybrat libovolnou cílovou oblast pro skutečnou migraci.
 8. V **nástroji pro výběr hodnocení**vyberte přeskočit přidání nástroje pro hodnocení pro tuto **chvíli** > **Další**.
 9. V **nástroji Pro výběr migrace**vyberte Možnost Migrace **Azure: Migrace** > serveru**Další**.
 10. V části **Zkontrolovat a přidat nástroje** zkontrolujte nastavení a klikněte na **Přidat nástroje**.
@@ -126,7 +133,7 @@ Nastavte projekt Migrace Azure a pak do něj přidejte nástroj migrace serveru 
 
 ## <a name="set-up-the-replication-appliance"></a>Nastavení zařízení pro replikaci
 
-Prvním krokem migrace je nastavení zařízení replikace. Stáhněte si instalační soubor pro zařízení a spusťte jej na [počítači, který jste připravili](#prepare-a-machine-for-the-replication-appliance). Po instalaci zařízení jej zaregistrujete pomocí migrace serveru Azure.
+Prvním krokem migrace je nastavení zařízení replikace. Chcete-li nastavit zařízení pro fyzickou migraci serveru, stáhněte soubor instalačního programu pro zařízení a spusťte jej na [počítači, který jste připravili](#prepare-a-machine-for-the-replication-appliance). Po instalaci zařízení jej zaregistrujete pomocí migrace serveru Azure.
 
 
 ### <a name="download-the-replication-appliance-installer"></a>Stažení instalačního programu replikačního zařízení
@@ -317,7 +324,7 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 3. V **migrovat** > **Vypnout virtuální počítače a provést plánovanou migraci bez ztráty dat**vyberte **Ano** > **OK**.
     - Pokud virtuální počítač nechcete vypnout, vyberte **Ne**.
 
-    Poznámka: Pro migraci fyzického serveru je doporučením snížit aplikaci jako součást okna migrace (nedovolte, aby aplikace přijaly žádná připojení) a poté zahájit migraci (Server musí být spuštěn, takže zbývající změny synchronizovat) před dokončením migrace.
+    Poznámka: Pro migraci fyzického serveru je doporučeno snížit aplikaci jako součást okna migrace (nedovolte, aby aplikace přijaly žádná připojení) a potom zahájit migraci (Server musí být spuštěn, takže zbývající změny lze synchronizovat) před dokončením migrace.
 
 4. Pro virtuální počítač se spustí úloha migrace. Tuto úlohu můžete sledovat pomocí oznámení Azure.
 5. Po dokončení úlohy můžete virtuální počítač zobrazit a spravovat na stránce **Virtuální počítače**.

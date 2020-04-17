@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76a96d36387f55889b65f16ea1ca6ec07359c377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5bf3a6df9d7292c18a93737fb7dea5d8c91f984
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502428"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536475"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) lze nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním sdílených složek Azure místně pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní věci, které je třeba zvážit při plánování nasazení. 
@@ -28,7 +28,7 @@ Tento článek řeší především aspekty nasazení pro nasazení sdílené sl
 
 Při nasazování sdílených složek Azure do účtů úložiště doporučujeme:
 
-- Jenom nasazování sdílených složek Azure do účtů úložiště s jinými sdílenými složkami souborů Azure. I když účty úložiště GPv2 umožňují mít účty úložiště pro smíšené účely, protože prostředky úložiště, jako jsou sdílené složky Azure a kontejnery objektů blob, sdílejí limity účtu úložiště, směšování prostředků dohromady může ztížit řešení potíží problémy s výkonem později. 
+- Jenom nasazování sdílených složek Azure do účtů úložiště s jinými sdílenými složkami souborů Azure. I když účty úložiště GPv2 umožňují mít účty úložiště pro smíšené účely, protože prostředky úložiště, jako jsou sdílené složky Azure a kontejnery objektů blob, sdílejí limity účtu úložiště, směšování prostředků dohromady může ztížit řešení problémů s výkonem později. 
 
 - Při nasazování sdílených složek Azure je třeba věnovat pozornost omezením viops účtu úložiště. V ideálním případě byste mapovat sdílení souborů 1:1 s účty úložiště, ale to nemusí být vždy možné z důvodu různých omezení a omezení, a to jak z vaší organizace, tak z Azure. Pokud není možné mít pouze jednu sdílenou složku nasazenou v jednom účtu úložiště, zvažte, které sdílené složky budou vysoce aktivní a které sdílené složky budou méně aktivní, aby se zajistilo, že nejžhavější sdílené složky nebudou vloženy do stejného účtu úložiště společně.
 
@@ -36,20 +36,20 @@ Při nasazování sdílených složek Azure do účtů úložiště doporučujem
 
 ## <a name="identity"></a>Identita
 Chcete-li získat přístup ke sdílené složce Azure, musí být uživatel sdílené složky ověřen a musí mít oprávnění k přístupu ke sdílené položce. To se provádí na základě identity uživatele, který přistupuje ke sdílené složce. Soubory Azure se integrují se třemi hlavními poskytovateli identit:
-- **Služba Active Directory vlastněná zákazníkem** (preview): Účty úložiště Azure lze připojit k službě Windows Server Active Directory vlastněné zákazníkem, stejně jako souborový server Windows Serveru nebo zařízení NAS. Váš řadič domény služby Active Directory lze nasadit místně, ve virtuálním počítači Azure nebo dokonce jako virtuální počítač v jiném poskytovateli cloudu; Azure Files je agnostik, kde je hostovaný řadič domény. Jakmile je účet úložiště připojen k doméně, může koncový uživatel připojit sdílenou složku s uživatelským účtem, se kterým se přihlásil ke svému počítači. Ověřování pomocí služby AD používá ověřovací protokol Kerberos.
-- **Azure Active Directory Domain Services (Azure AD DS):** Azure AD DS poskytuje řadič domény Active Directory spravovaný společností Microsoft, který se dá použít pro prostředky Azure. Doména spojující váš účet úložiště s Azure AD DS poskytuje podobné výhody pro doménu, která se k němu připojuje ke službě Active Directory vlastněné zákazníkem. Tato možnost nasazení je nejužitečnější pro scénáře výtahu a směny aplikací, které vyžadují oprávnění založené na službě AD. Vzhledem k tomu, že Azure AD DS poskytuje ověřování na základě služby AD, tato možnost také používá ověřovací protokol Kerberos.
+- **Místní služba Active Directory Domain Services (AD DS nebo místní služba AD DS)** (preview): Účty úložiště Azure lze doovat k službě Active Directory Domain Services vlastněnou zákazníkem, stejně jako souborový server Ses nebo zařízení NAS. Můžete nasadit řadič domény místně, ve virtuálním počítači Azure nebo dokonce jako virtuální počítač v jiném poskytovateli cloudu; Soubory Azure je agnostik, kde je hostovaný řadič domény. Jakmile je účet úložiště připojen k doméně, může koncový uživatel připojit sdílenou složku s uživatelským účtem, se kterým se přihlásil ke svému počítači. Ověřování pomocí služby AD používá ověřovací protokol Kerberos.
+- **Azure Active Directory Domain Services (Azure AD DS):** Azure AD DS poskytuje řadič domény spravované Microsoftem, který se dá použít pro prostředky Azure. Doména spojující váš účet úložiště s Azure AD DS poskytuje podobné výhody pro doménu, která se k němu připojuje ke službě Active Directory vlastněné zákazníkem. Tato možnost nasazení je nejužitečnější pro scénáře výtahu a směny aplikací, které vyžadují oprávnění založené na službě AD. Vzhledem k tomu, že Azure AD DS poskytuje ověřování na základě služby AD, tato možnost také používá ověřovací protokol Kerberos.
 - **Klíč účtu úložiště Azure**: Sdílené složky Azure se dají taky namontovat pomocí klíče účtu úložiště Azure. Chcete-li připojit sdílení souborů tímto způsobem, název účtu úložiště se používá jako uživatelské jméno a klíč účtu úložiště se používá jako heslo. Použití klíče účtu úložiště k připojení sdílené složky Azure je efektivně operace správce, protože připojená sdílená složka bude mít úplná oprávnění ke všem souborům a složkám ve sdílené složce, i když mají seznamy ACL. Při použití klíče účtu úložiště k připojení přes SMB se používá ověřovací protokol NTLMv2.
 
 Pro zákazníky, kteří migrují z místních souborových serverů nebo vytvářejí nové sdílené složky v Azure Files, které mají chovat jako souborové servery Windows nebo zařízení NAS, je doporučená možnost domény spojující váš účet úložiště se **službou Active Directory vlastněnou zákazníkem.** Další informace o připojení účtu úložiště k službě Active Directory vlastněné zákazníkem najdete v [tématu Přehled služby Azure Files Active Directory](storage-files-active-directory-overview.md).
 
 Pokud máte v úmyslu použít klíč účtu úložiště pro přístup ke sdíleným položkám souborů Azure, doporučujeme použít koncové body služby, jak je popsáno v části [Sítě.](#networking)
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 Sdílené složky Azure jsou přístupné odkudkoli prostřednictvím veřejného koncového bodu účtu úložiště. To znamená, že ověřené požadavky, jako jsou požadavky autorizované přihlašovací identitou uživatele, mohou bezpečně pocházet z Azure nebo mimo něj. V mnoha zákaznických prostředích se nezdaří počáteční připojení sdílené složky Azure na vaší místní pracovní stanici, i když připojení z virtuálních počítačů Azure jsou úspěšná. Důvodem je to, že mnoho organizací a poskytovatelů internetových služeb (ISP) blokuje port, který smb používá ke komunikaci, port 445. Souhrn poskytovatelů internetových služeb, kteří umožňují nebo neumožňují přístup z portu 445, najdete na webu [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
 Chcete-li odblokovat přístup ke sdílené složce Azure, máte dvě hlavní možnosti:
 
-- Odblokujte port 445 pro místní síť vaší organizace. Sdílené složky Azure lze přistupovat pouze externě prostřednictvím veřejného koncového bodu pomocí protokolů bezpečné ho internetu, jako je SMB 3.0 a FileREST API. Toto je nejjednodušší způsob, jak získat přístup ke sdílené složce Azure z místního prostředí, protože nevyžaduje pokročilou konfiguraci sítě nad rámec změny pravidel odchozího portu vaší organizace, ale doporučujeme odebrat starší a zastaralé verze SMB protokolu, konkrétně SMB 1.0. Informace o tom naleznete v [tématech Zabezpečení systému Windows/Windows Server](storage-how-to-use-files-windows.md#securing-windowswindows-server) a [Zabezpečení Linuxu](storage-how-to-use-files-linux.md#securing-linux).
+- Odblokujte port 445 pro místní síť vaší organizace. Sdílené složky Azure lze přistupovat pouze externě prostřednictvím veřejného koncového bodu pomocí protokolů bezpečné ho internetu, jako je SMB 3.0 a FileREST API. Toto je nejjednodušší způsob, jak získat přístup ke sdílené složce Azure z místního prostředí, protože nevyžaduje pokročilou konfiguraci sítě nad rámec změny pravidel odchozího portu vaší organizace, ale doporučujeme odebrat starší a zastaralé verze protokolu SMB, konkrétně SMB 1.0. Informace o tom naleznete v [tématech Zabezpečení systému Windows/Windows Server](storage-how-to-use-files-windows.md#securing-windowswindows-server) a [Zabezpečení Linuxu](storage-how-to-use-files-linux.md#securing-linux).
 
 - Přístup ke sdíleným položkům Azure prostřednictvím připojení ExpressRoute nebo VPN. Při přístupu ke sdílené složce Azure prostřednictvím síťového tunelového propojení můžete připojit sdílenou složku Azure jako místní sdílenou složku, protože provoz SMB neprochází hranicemi vaší organizace.   
 
@@ -153,7 +153,7 @@ Nové sdílené složky začínají plným počtem kreditů v jeho prasklém kbe
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Povolit standardní sdílené složky span až 100 TiB
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
-#### <a name="regional-availability"></a>Regionální dostupnost
+#### <a name="limitations"></a>Omezení
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="redundancy"></a>Redundance

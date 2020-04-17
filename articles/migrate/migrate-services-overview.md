@@ -2,14 +2,14 @@
 title: Informace o službě Azure Migrate
 description: Přečtěte si o službě Migrace Azure.
 ms.topic: overview
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: a9723f15d496393d27bdd227ec1121a7878b37e0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aa999b874b6e8b0075ab905a72ff04f03cb39ac7
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80127747"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537895"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -40,6 +40,9 @@ Centrum Migrace Azure obsahuje tyto nástroje.
 **Movere** | Posoudit servery. | [Přečtěte si další informace](#movere) o Movere.
 **Pomocník pro migraci webových aplikací** | Vyhodnoťte a migrujte místní webové aplikace do Azure. |  Pomocí Pomocníka pro migraci služby Azure App Service můžete posoudit místní weby pro migraci do služby Azure App Service.<br/><br/> Pomocí Pomocníka pro migraci webových aplikací .NET a PHP do Azure. [Přečtěte si další informace](https://appmigration.microsoft.com/) o Pomocníkovi pro migraci služby Azure App Service.
 **Azure Data Box** | Offline migrace dat. | Pomocí produktů Azure Data Box můžete přesunout velké množství dat do Azure offline. [Další informace](https://docs.microsoft.com/azure/databox/).
+
+> [!NOTE]
+> Pokud jste ve službě Azure Government, externí integrované nástroje a nabídky neveřejných virtuálních i nepřístupnících nelze odesílat data do projektů Migrace Azure. Nástroje můžete používat nezávisle.
 
 ## <a name="isv-integration"></a>Integrace isv
 
@@ -94,7 +97,7 @@ V centru Migrace Azure vyberete nástroj, který chcete použít pro hodnocení 
 
 Movere je platforma SaaS, která zvyšuje business intelligence tím, že přesně prezentuje celá IT prostředí během jednoho dne. S růstem, změnou a digitální optimalizací organizací poskytuje řešení podnikům jistotu, kterou potřebují k tomu, aby měly viditelnost a kontrolu nad svým prostředím bez ohledu na platformu, aplikaci nebo zeměpisnou oblast. Movere byl [získán](https://azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools/) společností Microsoft a již se neprodává jako samostatná nabídka.  Movere je k dispozici prostřednictvím programů Microsoft Solution Assessment a Cloud Economics. [Přečtěte si další informace](https://www.movere.io) o Movere. 
 
-Doporučujeme vám, abyste se také podívali na Azure Migrate, naši integrovanou službu migrace. Azure Migrate poskytuje centrální rozbočovač pro zjednodušení migrace do cloudu. Centrum nabízí komplexní podporu pro různé úlohy, včetně fyzických a virtuálních serverů, databází a aplikací. Viditelnost od konce usnadňuje sledování průběhu zjišťování, hodnocení a migrace. Azure Migrate má také rozsáhlou škálu funkcí, včetně zjišťování virtuálních a fyzických serverů, správné velikosti založené na výkonu, plánování nákladů, hodnocení na základě importu a aplikací bez agentů. analýzy závislostí. Pokud hledáte odbornou pomoc, která vám pomůže začít, má Microsoft kvalifikovaného [poskytovatele spravovaných služeb Azure Expert Managed Service Provider,](https://azure.microsoft.com/partners) který vás provede na cestě. Podívejte se na [web Migrace Azure](https://azure.microsoft.com/services/azure-migrate/). 
+Doporučujeme vám, abyste se také podívali na Azure Migrate, naši integrovanou službu migrace. Azure Migrate poskytuje centrální rozbočovač pro zjednodušení migrace do cloudu. Centrum nabízí komplexní podporu pro různé úlohy, včetně fyzických a virtuálních serverů, databází a aplikací. Viditelnost od konce usnadňuje sledování průběhu zjišťování, hodnocení a migrace. Azure Migrate má také rozsáhlou škálu funkcí, včetně zjišťování virtuálních a fyzických serverů, správné velikosti založené na výkonu, plánování nákladů, hodnocení na základě importu a analýzy závislostí aplikací bez agentů. Pokud hledáte odbornou pomoc, která vám pomůže začít, má Microsoft kvalifikovaného [poskytovatele spravovaných služeb Azure Expert Managed Service Provider,](https://azure.microsoft.com/partners) který vás provede na cestě. Podívejte se na [web Migrace Azure](https://azure.microsoft.com/services/azure-migrate/). 
  
 
 ## <a name="azure-migrate-versions"></a>Verze migrace Azure

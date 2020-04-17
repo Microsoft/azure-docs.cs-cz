@@ -3,17 +3,17 @@ title: Cenová & fakturační model
 description: Přehled o tom, jak funguje model cen a fakturace pro Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: kevinlam1
-ms.author: klam
+author: jonfancey
+ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270456"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536229"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro aplikace Azure Logic Apps
 
@@ -23,50 +23,55 @@ ms.locfileid: "79270456"
 
 ## <a name="consumption-pricing-model"></a>Cenový model spotřeby
 
-U nových aplikací logiky, které běží ve veřejné nebo "globální" službě Azure Logic Apps, platíte jenom za to, co používáte. Tyto aplikace logiky používají plán a cenový model založený na spotřebě. Ve vaší aplikaci logiky každý krok je akce a Azure Logic Apps měří všechny akce, které běží ve vaší aplikaci logiky.
+Pro nové aplikace logiky, které běží ve veřejné, "globální", víceklientské služby Azure Logic Apps, platíte jenom za to, co používáte. Tyto aplikace logiky používají plán a cenový model založený na spotřebě. Ve vaší aplikaci logiky každý krok je akce a Azure Logic Apps měří všechny akce, které běží ve vaší aplikaci logiky.
 
 Akce zahrnují například:
 
-* Aktivační události, což jsou speciální akce. Všechny aplikace logiky vyžadují aktivační událost jako první krok.
+* [Aktivační události](#triggers), což jsou speciální akce. Všechny aplikace logiky vyžadují aktivační událost jako první krok.
+
 * ["Předdefinované" nebo nativní akce,](../connectors/apis-list.md#built-in) jako je HTTP, volání funkcí Azure a správa rozhraní API a tak dále
+
 * Volání [spravovaných konektorů,](../connectors/apis-list.md#managed-connectors) jako je Outlook 365, Dropbox a tak dále
-* Řízení kroků toku, jako jsou smyčky, podmíněné příkazy a tak dále
+
+* [Řízení akcí pracovního postupu,](../connectors/apis-list.md#control-workflow) jako jsou smyčky, podmíněné příkazy a tak dále
 
 [Standardní konektory](../connectors/apis-list.md#managed-connectors) se nabíjejí za [standardní cenu konektoru](https://azure.microsoft.com/pricing/details/logic-apps). Obecně dostupné [podnikové konektory](../connectors/apis-list.md#managed-connectors) se účtují podle ceny [konektoru Enterprise](https://azure.microsoft.com/pricing/details/logic-apps), zatímco konektory Public Preview Enterprise se účtují [za standardní cenu konektoru](https://azure.microsoft.com/pricing/details/logic-apps).
 
-Přečtěte si další informace o tom, jak funguje fakturace pro [aktivační události](#triggers) a [akce](#actions).
+Přečtěte si další informace o tom, jak fakturace funguje na [úrovních aktivačních událostí](#triggers) a [akcí.](#actions) Nebo informace o omezeních najdete v [tématu Omezení a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md).
 
 <a name="fixed-pricing"></a>
 
 ## <a name="fixed-pricing-model"></a>Pevný cenový model
 
-[ *Prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) poskytuje izolovaný způsob, jak vytvářet a spouštět aplikace logiky, které mají přístup k prostředkům ve virtuální síti Azure. U nových aplikací logiky, které běží uvnitř služby ISE, platíte [pevnou měsíční cenu](https://azure.microsoft.com/pricing/details/logic-apps) za tyto funkce:
+[ *Prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) poskytuje izolovaný způsob, jak vytvářet a spouštět aplikace logiky, které mají přístup k prostředkům ve virtuální síti Azure. Aplikace logiky, které běží v ISE nevznikají náklady na uchovávání dat. Při vytváření ise a pouze při vytváření můžete zvolit [úroveň ISE nebo "Skladovou jednotku"](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), které mají různé [cenové sazby](https://azure.microsoft.com/pricing/details/logic-apps):
+
+* **Prémiové pojistné** ISE: Základní jednotka této skladové jednotky má pevnou kapacitu, ale pokud potřebujete větší propustnost, můžete [přidat další jednotky škálování](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) během vytváření ISE nebo později. Omezení služby ISE najdete v [tématu Limity a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise).
+
+* **Vývojář** ISE: Tato skladová položka nemá žádné možnosti pro škálování, žádná smlouva o úrovni služeb (SLA) a žádná publikovaná omezení. Tuto skladovou položku použijte pouze pro experimentování, vývoj a testování, nikoli pro testování výroby nebo výkonu.
+
+Za aplikace logiky, které vytvoříte a spustíte v systému ISE, zaplatíte [pevnou měsíční cenu](https://azure.microsoft.com/pricing/details/logic-apps) za tyto funkce:
 
 * [Integrované](../connectors/apis-list.md#built-in) aktivační události a akce
 
   V rámci služby ISE integrované aktivační události a akce zobrazují popisek **Core** a běží ve stejné službě ISE jako vaše aplikace logiky.
 
-* [Standardní](../connectors/apis-list.md#managed-connectors) konektory a [podnikové](../connectors/apis-list.md#enterprise-connectors) konektory (tolik připojení Enterprise, kolik chcete)
+* [Standardní](../connectors/apis-list.md#managed-connectors) konektory a [podnikové](../connectors/apis-list.md#enterprise-connectors) konektory, které umožňují mít libovolný počet připojení enterprise
 
-   Standardní a podnikové konektory, které zobrazují popisek **ISE,** běží ve stejné službě ISE jako aplikace logiky. Konektory, které nezobrazují popisek ISE spustit v globální službě Logic Apps. Pevné měsíční ceny platí také pro konektory, které běží v globální službě, když je používáte s aplikacemi logiky, které běží v ISE.
+   Standardní a podnikové konektory, které zobrazují popisek **ISE,** běží ve stejné službě ISE jako aplikace logiky. Konektory, které nezobrazují popisek ISE spustit ve veřejné, "globální", víceklientské služby Logic Apps. Pevné měsíční ceny platí také pro konektory, které běží ve službě s více tenanty, když je používáte s aplikacemi logiky, které běží v ISE.
 
 * [Využití integračního účtu](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) bez dalších nákladů na základě vaší [skladové položky ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
 
-  * **Prémiová skladová položka:** Jeden účet pro integraci [úrovně Standard](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
+  * **Prémiové pojistné** Skladová položka ISE: Jeden účet pro integraci [úrovně Standard](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
 
-  * **Vývojářská skladová položka**: Jeden účet integrace [úrovně Free](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
+  * **Vývojář** SKU ISE: Jeden účet pro integraci [úrovně Free](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
 
   Každá skladová položka ISE je omezena na 5 účtů celkové integrace. Za příplatek můžete mít více účtů integrace na základě sku služby ISE:
 
-  * **Prémiová skladová položka**: Až čtyři další standardní účty. Žádné bezplatné nebo základní účty.
+  * **Prémiové pojistné** Skladová položka ISE: Až čtyři další standardní účty. Žádné bezplatné nebo základní účty.
 
-  * **Vývojářská skladová položka**: Buď až 4 další standardní účty, nebo až 5 celkových standardních účtů. Žádné základní účty.
+  * **Vývojář** Skladová položka ISE: Buď až 4 další standardní účty, nebo až 5 celkových standardních účtů. Žádné základní účty.
 
-  Další informace o omezeníúčtů integrace naleznete [v tématu Omezení a konfigurace aplikací logiky](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Další informace o [úrovních účtů integrace a jejich cenovém modelu](#integration-accounts) najdete dále v tomto tématu.
-
-Pokud zvolíte sku premium ISE, základní jednotka má pevnou kapacitu. Pokud potřebujete větší propustnost, můžete [přidat další jednotky škálování](../logic-apps/ise-manage-integration-service-environment.md#add-capacity), buď během vytváření, nebo po něm. Vývojářská skladová položka ISE nemá možnost přidávat další jednotky škálování. Aplikace logiky, které běží v ISE nevznikají náklady na uchovávání dat.
-
-Cenové sazby najdete v tématu [Logic Apps pricing](https://azure.microsoft.com/pricing/details/logic-apps).
+  Další informace o omezeníúčtů integrace najdete v [tématu Omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Další informace o [úrovních účtů integrace a jejich cenovém modelu](#integration-accounts) najdete dále v tomto tématu.
 
 <a name="connectors"></a>
 

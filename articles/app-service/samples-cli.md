@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 0b3acb1b421962cde7d90398f42bdfeefda578e3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74971498"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535617"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Ukázky příkazového příkazového příkazu pro službu Azure App Service
 
@@ -28,7 +28,7 @@ Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure
 | [Vytvoření aplikace ASP.NET Core v kontejneru Dockeru](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří aplikaci služby App Service na Linuxu a načte image Dockeru z Docker Hubu. |
 |**Konfigurace aplikace**||
 | [Mapování vlastní domény na aplikaci](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří aplikaci Služby aplikací a namapuje na ní vlastní název domény. |
-| [Vytvoření vytvoření vlastního certifikátu SSL s aplikací](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří aplikaci služby App Service a sváže s ní certifikát SSL vlastního názvu domény. |
+| [Svázání vlastního certifikátu TLS/SSL s aplikací](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří aplikaci služby App Service a sváže s ní certifikát TLS/SSL vlastního názvu domény. |
 |**Škálování aplikace**||
 | [Ruční škálování aplikace](./scripts/cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří aplikaci služby App Service a škáluje ji napříč 2 instancemi. |
 | [Škálování aplikace po celém světě s architekturou s vysokou dostupností](./scripts/cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří dvě aplikace služby App Service ve dvou různých zeměpisných oblastech a zpřístupní je prostřednictvím jednoho koncového bodu pomocí Azure Traffic Manageru. |

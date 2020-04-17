@@ -13,12 +13,12 @@ ms.date: 11/13/2019
 ms.author: rayluo
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2593cc856afb98cf5186c4e33032c5e9151614f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c6edd0b3cfd6620f04553f9f6dfe89f1c7b7024
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76704387"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536195"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>Serializace vlastní mezipaměti tokenů v jazyce MSAL pro Python
 
@@ -26,7 +26,7 @@ V MSAL Python, mezipaměti tokenu v paměti, která přetrvává po dobu trván�
 
 Serializace mezipaměti tokenů, takže různé relace vaší aplikace k ní mají přístup, není k dispozici "po vybalení z krabice". Je to proto, že MSAL Python lze použít v typech aplikací, které nemají přístup k systému souborů – jako jsou webové aplikace. Chcete-li mít trvalé mezipaměti tokenů v aplikaci MSAL Python, musíte zadat vlastní serializaci mezipaměti tokenů.
 
-Strategie serializace mezipaměti tokenů se liší v závislosti na tom, zda píšete veřejnou klientskou aplikaci (Desktop) nebo důvěrnou klientskou aplikaci (Web App, Webové rozhraní API nebo aplikace Daemon).
+Strategie serializace mezipaměti tokenů se liší v závislosti na tom, zda píšete veřejnou klientskou aplikaci (Desktop) nebo důvěrnou klientskou aplikaci (webová aplikace, webové rozhraní API nebo aplikace pro daemon).
 
 ## <a name="token-cache-for-a-public-client-application"></a>Mezipaměť tokenů pro veřejnou klientskou aplikaci
 

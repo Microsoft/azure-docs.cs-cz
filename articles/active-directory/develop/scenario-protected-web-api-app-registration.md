@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2cdf3ff45a400d4b8d0b2605bf7ddc364aff1fe6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 997dd98d35b74effe5d195f9a781fa0935286ee9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882382"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537215"
 ---
 # <a name="protected-web-api-app-registration"></a>Chráněné webové rozhraní API: Registrace aplikací
 
@@ -82,9 +82,9 @@ Obory se také zobrazují v okně souhlasu, které se zobrazí uživatelům vaš
     - Vyberte **název oboru** a zadejte **access_as_user**.
     - Vyberte **Kdo může souhlasit** a ujistěte se, že jsou **vybraní správci a uživatelé.**
     - Vyberte **zobrazovaný název souhlasu správce** a **zadejte přístup TodoListService jako uživatel**.
-    - Vyberte **popis souhlasu správce** a zadejte **přístupy webového rozhraní TodoListService jako uživatele**.
+    - Vyberte **popis souhlasu správce** a zadejte **přístupy webového rozhraní API TodoListService jako uživatele**.
     - Vyberte **zobrazovaný název souhlasu uživatele** a **zadejte přístup K todoListService jako uživatel**.
-    - Vyberte **popis souhlasu uživatele** a zadejte **přístupy webového rozhraní TodoListService jako uživatele**.
+    - Vyberte **popis souhlasu uživatele** a zadejte **přístupy webového rozhraní API TodoListService jako uživatele**.
     - Ponechte hodnotu **Stavu** nastavenou na **Povoleno**.
  1. Vyberte **přidat obor**.
 

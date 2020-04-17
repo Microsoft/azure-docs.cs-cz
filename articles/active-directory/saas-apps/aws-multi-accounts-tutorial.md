@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/03/2020
+ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a6ab13dea1a1db96cbb2f2ac70b9779eca60591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5310c999cc44f0cf35f129751da7472031e6c57a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885241"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537079"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Kurz: Integrace Azure Active Directory s Amazon Web Services (AWS) (starší kurz)
 
@@ -37,7 +37,7 @@ Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure
 ![Amazon Web Services (AWS) v seznamu výsledků](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
-> Vezměte prosím na vědomí, že připojení jedné aplikace AWS ke všem vašim účtům AWS není naším doporučeným přístupem. Místo toho doporučujeme použít [tento](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) přístup ke konfiguraci více instancí účtu AWS na více instancí aplikací AWS ve službě Azure AD. [Tento](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) přístup byste měli použít pouze v případě, že máte v něm velmi menší počet účtů AWS a rolí. [tento](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) model není škálovatelný jako účty AWS a role uvnitř těchto účtů roste. Také [tento](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) přístup nepoužívá funkce importu rolí AWS pomocí Azure AD zřizování uživatelů a tak budete muset ručně přidat nebo aktualizovat nebo odstranit role. Další omezení [tohoto](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) přístupu naleznete v níže uvedených podrobnostech.
+> Vezměte prosím na vědomí, že připojení jedné aplikace AWS ke všem vašim účtům AWS není naším doporučeným přístupem. Místo toho doporučujeme použít [tento](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) přístup ke konfiguraci více instancí účtu AWS na více instancí aplikací AWS ve službě Azure AD. Tento přístup byste měli použít pouze v případě, že máte velmi menší počet účtů AWS a rolí v něm, tento model není škálovatelný jako účty AWS a role uvnitř těchto účtů roste. Také tento přístup nepoužívá funkce importu rolí AWS pomocí Azure AD zřizování uživatelů a tak budete muset ručně přidat nebo aktualizovat nebo odstranit role. Další omezení tohoto přístupu naleznete v níže uvedených podrobnostech.
 
 **Vezměte prosím na vědomí, že tento přístup nedoporučujeme používat z následujících důvodů:**
 
@@ -126,7 +126,7 @@ V této části povolíte jednotné přihlašování Azure AD na webu Azure Port
 
 6. V části **Deklarace identity uživatelů** v dialogovém okně **Atributy uživatele** nakonfigurujte atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Name (Název)  | Atribut zdroje  | Obor názvů |
+    | Název  | Atribut zdroje  | Obor názvů |
     | --------------- | --------------- | --------------- |
     | Název roleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
     | Role            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|

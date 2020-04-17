@@ -3,12 +3,12 @@ title: Hodnocení v azure migrate server hodnocení
 description: Informace o hodnoceních v Azure Migrate Server Assessment
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: ae55686f0152d9c2b170ae1b34d7493ed7ac8d94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1f32eea0ec6a8a4877fd1dc134344cfe68dcaba
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127778"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537759"
 ---
 # <a name="assessments-in-azure-migrateserver-assessment"></a>Hodnocení v Azure Migrate:Vyhodnocení serveru
 
@@ -17,6 +17,9 @@ Tento článek obsahuje přehled hodnocení v nástroji [Azure Migrate:Server As
 ## <a name="whats-an-assessment"></a>Co je to hodnocení?
 
 Posouzení pomocí nástroje Hodnocení serveru měří připravenost a odhaduje dopad migrace místních serverů do Azure.
+
+> [!NOTE]
+> Ve službě Azure Government zkontrolujte podporovaná umístění [cílového](migrate-support-matrix.md#supported-geographies-azure-government) hodnocení. Všimněte si, že doporučení velikosti virtuálních počítače v hodnocení bude používat řady virtuálních počítače speciálně pro oblasti Government Cloud. [Další informace](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) o typech virtuálních počítačů.
 
 ## <a name="types-of-assessments"></a>Druhy hodnocení
 
@@ -77,7 +80,7 @@ Pokud zařízení používáte k zjišťování, data o výkonu pro nastavení v
     - Hodnota 95. percentilu zajišťuje, že ignorujete všechny odlehlé hodnoty, které mohou být zahrnuty, pokud vyberete 99.
     - Pokud chcete vybrat využití ve špičce pro období a nechcete zmeškat žádné odlehlé hodnoty, měli byste vybrat 99 percentil pro využití percentilu.
 
-5. Tato hodnota je vynásobena faktorem komfortu pro získání efektivních dat využití výkonu pro každou metriku (využití procesoru, využití paměti, vodvicí disk (čtení a zápis), propustnost disku (čtení a zápis) a propustnost sítě (dovnitř a ven), že zařízení shromažďuje.
+5. Tato hodnota je vynásobena faktorem pohodlí získat efektivní využití výkonu data pro každou metriku (využití procesoru, využití paměti, videa videa disků (čtení a zápis), propustnost disku (čtení a zápis) a propustnost sítě (dovnitř a ven), které zařízení shromažďuje.
 
 
 
@@ -98,7 +101,7 @@ Zde je to, co zahrnuto v hodnocení v hodnocení serveru.
 
 **Vlastnost** | **Podrobnosti**
 --- | ---
-**Cílové umístění** | Umístění, do kterého chcete migrovat. Server Assessment aktuálně podporuje tyto cílové oblasti Azure:<br/><br/> Austrálie – východ, Austrálie – jihovýchod, Brazílie jih, Kanada – střed, Kanada – východ, střední Indie, střední USA, Čína – východ, Čína – sever, východní Asie, východní USA, východní USA2, Německo – střed, Německo – severovýchod, Japonsko – východ, Japonsko – západ, Korea – střed, Korea – jih, sever Střední USA, Severní Evropa, Jižní Střed USA, Jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Velká Británie – západ, US Gov Arizona, US Gov Texas, US Gov Virginia, West Central US, West Europe, West India, West US a West US2.
+**Cílové umístění** | Umístění, do kterého chcete migrovat. Server Assessment aktuálně podporuje tyto cílové oblasti Azure:<br/><br/> Austrálie – východ, Austrálie – jihovýchod, Brazílie jih, Kanada – střed, Kanada – východ, střední Indie, střední USA, Čína – východ, Čína – sever, východní Asie, východní USA, východní USA2, Německo – střed, Německo – severovýchod, Japonsko – východ, Japonsko – západ, Korea – jih, severní střed USA, severní Evropa, jižní střed USA, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Velká Británie – západ, americká vláda Arizona, USA– Usa– Usa– Usa– Usa– Usa– Usa – Guvernér Usa– Usa– Usa – Guvernér , Západní střed USA, Západní Evropa, Západní Indie, Západní USA a Západní US2.
 *Cílový disk úložiště (velikost stejně jako velikost)** | Typ disků, které se mají používat pro úložiště v Azure. <br/><br/> Zadejte cílový disk úložiště jako spravovaný prémiový, standardní spravovaný disk SSD nebo standardní pevný disk.
 **Cílový disk úložiště (velikost založená na výkonu)** | Zadejte typ cílového úložného disku jako automatického, prémiově spravovaného, standardního spravovaného pevného disku nebo standardního spravovaného ssd disku.<br/><br/> **Automatické**: Doporučení disku je založeno na údajích o výkonu disků (vstupní ch a výstupní operace za sekundu (IOPS) a propustnost).<br/><br/>**Premium/standard**: Hodnocení doporučuje disk ovou položku v rámci vybraného typu úložiště.<br/><br/> Pokud chcete dosáhnout jedné instance SLA virtuálního počítače 99,9 %, zvažte použití prémiových spravovaných disků. Tím je zajištěno, že všechny disky v hodnocení jsou doporučeny jako disky spravované prémií.<br/><br/> Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
 **Rezervované instance (RIs)** | Zadejte [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/) v Azure, aby odhady nákladů v posouzení braly v úvahu slevy RI.<br/><br/> ReIs jsou v současné době podporované jenom pro nabídky s průběžným platbami v Azure Migrate.
@@ -107,7 +110,7 @@ Zde je to, co zahrnuto v hodnocení v hodnocení serveru.
 **Percentilové využití** | Používá se s velikosti založené na výkonu. Určuje hodnotu percentilu vzorku výkonu, který má být použit pro správné velikosti. 
 **Řada virtuálních počítačů** | Zadejte řadu virtuálních počítačových virtuálních počítače Azure, které chcete zvážit pro správné velikosti. Například pokud nemáte produkční prostředí, které potřebuje virtuální počítače řady A v Azure, můžete vyloučit řady A ze seznamu nebo řady.
 **Faktor komfortu** | Vyrovnávací paměť použitá při hodnocení. Použito nad daty využití počítače pro virtuální počítače (procesor, paměť, disk a síť). Zodpovídá problémy, jako je sezónní využití, krátká historie výkonu a pravděpodobné zvýšení budoucího využití.<br/><br/> Například 10jádrový virtuální virtuální ms s 20 % využití obvykle vede k virtuálnímu virtuálnímu virtuálnímu virtuálnímu virtuálnímu provozu se dvěma jádry. S faktorem pohodlí 2,0x je výsledkem čtyřjádrový virtuální virtuální mon....
-**Nabízejí** | Zobrazí [nabídku Azure,](https://azure.microsoft.com/support/legal/offer-details/) ve které jste zaregistrovaní. Vyhodnocení serveru odpovídajícím způsobem odhadne náklady.
+**Nabídka** | Zobrazí [nabídku Azure,](https://azure.microsoft.com/support/legal/offer-details/) ve které jste zaregistrovaní. Vyhodnocení serveru odpovídajícím způsobem odhadne náklady.
 **Měna** | Fakturace měny pro váš účet.
 **Sleva (%)** | Zobrazí seznam všech slev specifických pro předplatné, které obdržíte nad nabídku Azure. Výchozí nastavení je 0 %.
 **Doba provozu virtuálního počítače** | Pokud virtuální počítače Azure neběží 24 hodin denně, 7 dní v týdnu, můžete určit dobu trvání (dny za měsíc a hodiny za den), které se spustí. Odhady nákladů jsou zpracovány odpovídajícím způsobem.<br/><br/> Výchozí hodnota je 31 dní v měsíci a 24 hodin denně.
@@ -136,7 +139,7 @@ Vyhodnocení serveru zkontroluje následující vlastnosti místního virtuáln�
 **Cores** | Počet jader v počítačích musí být rovna nebo menší než maximální počet jader (128) podporovaných pro virtuální počítač Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využitá jádra pro porovnání. Pokud je v nastavení hodnocení specifikován faktor komfortu, počet využitých jader se vynásobí faktorem komfortu.<br/><br/> Pokud neexistuje žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraven, pokud je menší nebo rovno limitům.
 **Paměti** | Velikost paměti počítače musí být rovna nebo menší než maximální paměti (3892 gigabajtů [GB] v řadě Azure M Standard_M128m&nbsp;<sup>2</sup>) povolené pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využité paměti pro porovnání. Je-li zadán komfortní faktor, využitá paměť se vynásobí faktorem komfortu.<br/><br/> Pokud neexistuje žádná historie, přidělená paměť se používá bez použití faktoru pohodlí.<br/><br/> | Připraven, pokud v mezích.
 **Disk úložiště** | Přidělená velikost disku musí být 32 TB nebo méně. Přestože Azure podporuje disky o velikosti 64 TB s disky Ultra SSD, Azure Migrate: Server Assessment aktuálně kontroluje 32 TB jako omezení velikosti disku, protože ještě nepodporuje Ultra SSD. <br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disku operačního systému. | Připraven, pokud v mezích.
-**Síťové služby** | K počítači musí být připojeno 32 nebo méně síťových rozhraní. | Připraven, pokud v mezích.
+**Sítě** | K počítači musí být připojeno 32 nebo méně síťových rozhraní. | Připraven, pokud v mezích.
 
 ### <a name="guest-operating-system"></a>Hostovaný operační systém
 Spolu s vlastnostmi virtuálního počítače, vyhodnocení serveru se dívá na hostovanéoperační systém počítačů k určení, zda lze spustit v Azure.
@@ -182,7 +185,7 @@ Po zařízení je označenjako připravený pro Azure, vyhodnocení serveru umo�
 Pokud používáte velikost i na základě výkonu, vyhodnocení serveru, které doporučení pro stanovení velikosti provádí takto:
 
 - Vyhodnocení serveru bere v úvahu historii výkonu počítače k identifikaci velikosti virtuálního počítače a typu disku v Azure.
-- Pokud byly servery importovány pomocí souboru CSV, použijí se zadané hodnoty. Tato metoda je užitečná zejména v případě, že jste přerozděleny místní počítač, využití je ve skutečnosti nízká a chcete správně velikost virtuálního počítače v Azure ušetřit náklady. 
+- Pokud byly servery importovány pomocí souboru CSV, použijí se zadané hodnoty. Tato metoda je užitečná zejména v případě, že jste přerozděleny místní počítač, využití je nízká a chcete správně velikost virtuálního počítače v Azure ušetřit náklady. 
 - Pokud nechcete používat data o výkonu, obnovte kritéria velikosti tak, aby byla místní, jak je popsáno v předchozí části.
 
 #### <a name="calculate-storage-sizing"></a>Výpočet velikosti úložiště

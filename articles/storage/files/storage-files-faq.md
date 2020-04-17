@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 82c516eeac6d3e88ca7b6ac1c97ebb638ba27979
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 01b5f87c2557e2195573b90766ee45e001798cca
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383911"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537691"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Azure Files](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardního [protokolu Server Message Block (SMB).](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) Sdílené složky Azure můžete připevnit souběžně v cloudových nebo místních nasazeních Windows, Linuxu a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows Server pomocí Azure File Sync pro rychlý přístup v blízkosti místa, kde se data používají.
@@ -164,7 +164,7 @@ Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí S
 * <a id="ad-support"></a>
 **Jsou soubory Azure podporované ověřováním a řízením přístupu na základě identity?**  
     
-    Ano, Soubory Azure podporují ověřování a řízení přístupu založené na identitách. Můžete zvolit jeden ze dvou způsobů použití řízení přístupu založeného na identitě: Active Directory (AD) (preview) nebo Azure Active Directory Domain Services (Azure AD DS) (GA). Služba AD podporuje ověřování pomocí počítačů spojených s doménou Služby AD, ať už místně nebo v Azure, pro přístup ke sdíleným položkám Azure přes SMB. Ověřování Azure AD DS přes SMB pro soubory Azure umožňuje virtuálním počítačem Windows s připojením k doméně Azure AD DS přístup ke sdíleným složkám, adresářům a souborům pomocí přihlašovacích údajů Azure AD. Další podrobnosti najdete [v tématu Přehled podpory ověřování na základě identity souborů Azure pro přístup SMB](storage-files-active-directory-overview.md). 
+    Ano, Soubory Azure podporují ověřování a řízení přístupu založené na identitách. Můžete zvolit jeden ze dvou způsobů použití řízení přístupu založeného na identitě: místní služby Active Directory Domain Services (preview) nebo Azure Active Directory Domain Services (Azure AD DS). Místní služba Active Directory Domain Services (AD DS) podporuje ověřování pomocí počítačů spojených s doménou služby AD DS, ať už místně nebo v Azure, pro přístup ke sdíleným položkám Azure přes SMB. Ověřování Azure AD DS přes SMB pro soubory Azure umožňuje virtuálním počítačem Windows s připojením k doméně Azure AD DS přístup ke sdíleným složkám, adresářům a souborům pomocí přihlašovacích údajů Azure AD. Další podrobnosti najdete [v tématu Přehled podpory ověřování na základě identity souborů Azure pro přístup SMB](storage-files-active-directory-overview.md). 
 
     Soubory Azure nabízí dva další způsoby správy řízení přístupu:
 
@@ -185,30 +185,30 @@ Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí S
     Ano, podporujeme rozhraní REST API, která při použití rozhraní REST API [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (nebo novější) REST API získají, nastaví nebo zkopírují seznamy AcL ntfs pro adresáře nebo soubory.
 
 * <a id="ad-vm-subscription"></a>
-**Můžu přistupovat k souborům Azure pomocí přihlašovacích údajů Azure AD z virtuálního počítače v rámci jiného předplatného?**
+**Můžu přistupovat ke sdíleným složekm Azure pomocí přihlašovacích údajů Azure AD z virtuálního počítače pod jiným předplatným?**
 
-    Pokud je předplatné, pod kterým se nasadí sdílená složka, přidružené ke stejnému tenantovi Azure AD jako nasazení služby Azure AD Domain Services, ke kterému je virtuální počítač připojen k virtuálnímu počítači, pak můžete přistupovat k souborům Azure pomocí stejných přihlašovacích údajů Azure AD. Omezení je uložena není na předplatné, ale na přidružené azure ad tenanta.
+    Pokud je předplatné, pod kterým se nasadí sdílená složka, přidružené ke stejnému tenantovi Azure AD jako nasazení Azure AD DS, ke kterému je virtuální počítač připojen k virtuálnímu počítači, můžete pak přistupovat ke sdíleným složekm Azure pomocí stejných přihlašovacích údajů Azure AD. Omezení je uložena není na předplatné, ale na přidružené azure ad tenanta.
     
 * <a id="ad-support-subscription"></a>
-**Můžu povolit azure files Azure AD DS nebo ověřování služby AD s klientem Azure AD, který se liší od primárního klienta, ke kterému je sdílená složka přidružena?**
+**Můžu povolit azure ad ds nebo místní ověřování služby AD DS pro sdílené složky Azure pomocí klienta Azure AD, který se liší od primárního tenanta sdílené složky Azure?**
 
-    Ne, Azure Files podporuje jenom azure ad ds nebo ad integrace s tenantem Azure AD, který se nachází ve stejném předplatném jako sdílená složka. K tenantovi Azure AD lze přidružit jenom jedno předplatné. Toto omezení platí pro metody ověřování Azure AD DS i AD. Při použití služby AD pro ověřování musí být pověření služby AD synchronizováno se službou Azure AD, ke které je účet úložiště přidružen.
+    Ne, Azure Files podporuje jenom Azure AD DS nebo místní integraci služby AD DS s tenantem Azure AD, který se nachází ve stejném předplatném jako sdílená složka. K tenantovi Azure AD lze přidružit jenom jedno předplatné. Toto omezení platí pro azure a ds a místní metody ověřování služby AD DS. Při použití místní služby AD DS pro [ověřování, pověření služby AD DS musí být synchronizovány s Azure AD,](../../active-directory/hybrid/how-to-connect-install-roadmap.md) že účet úložiště je přidružen.
 
 * <a id="ad-linux-vms"></a>
-**Podporuje Azure Files Azure AD DS nebo Ověřování služby AD virtuální počítače s Linuxem?**
+**Podporuje Azure AD DS nebo místní ověřování služby AD DS pro sdílené složky Azure virtuální počítače s Linuxem?**
 
     Ne, ověřování z virtuálních počítačů s Linuxem není podporované.
 
 * <a id="ad-aad-smb-afs"></a>
-**Můžu využít azure files azure ad ds ověřování nebo ověřování ve službě Active Directory (AD) ve sdílených složkách spravovaných službou Azure File Sync?**
+**Podporují sdílené složky spravované službou Azure File Sync ověřování Azure AD DS nebo místní ověřování služby AD DS (preview)?**
 
-    Ano, můžete povolit ověřování Azure AD DS nebo AD ve sdílené složce spravované synchronizací souborů Azure. Změny seznamů ACL adresáře nebo souboru NTFS na místních souborových serverech budou vrstvené na soubory Azure a naopak.
+    Ano, můžete povolit azure ad ds nebo místní ověřování služby AD DS ve sdílené složce spravované službou Azure File Sync. Změny seznamů ACL adresáře nebo souboru NTFS na místních souborových serverech budou vrstvené na soubory Azure a naopak.
 
 * <a id="ad-aad-smb-files"></a>
-**Jak můžu zkontrolovat, jestli jsem povolil ad ověřování v účtu úložiště a v informacích o doméně služby AD?**
+**Jak mohu zkontrolovat, zda jsem povolil ověřování služby AD DS v účtu úložiště a načíst informace o doméně?**
 
-    Můžete odkazovat na pokyny [zde](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account) uvedené ověřit, pokud Azure Files AD Ověřování je povolena na vašem účtu úložiště a načíst informace o doméně služby AD.
-
+    Pokyny naleznete [zde](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account).
+    
 * <a id="encryption-at-rest"></a>
 **Jak zajistím, aby byla moje sdílená složka Azure zašifrovaná v klidovém stavu?**  
 
@@ -241,15 +241,15 @@ Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí S
     Ne, ověřování z virtuálních počítačů s Linuxem není podporované.
 
 * <a id="ad-multiple-forest"></a>
-**Podporuje ověřování Azure Files AD integraci s prostředím služby AD pomocí více doménových struktur?**    
+**Podporuje místní ověřování ve službě AD DS pro sdílené složky Azure integraci s prostředím služby AD DS pomocí více doménových struktur?**    
 
-    Ověřování Azure Files AD se integruje jenom s doménovou doménou služby AD, na kterou je účet úložiště registrovaný. Pro podporu ověřování z jiné doménové struktury služby AD musí být vaše prostředí správně nakonfigurováno. Způsob registrace souborů Azure do služby domény služby AD je většinou stejný jako běžný souborový server, kde ve službě AD vytvoří identitu (přihlašovací účet počítače nebo služby) pro ověřování. Jediným rozdílem je, že registrovaný hlavní název služby účtu úložiště končí "file.core.windows.net", který neodpovídá příponě domény. Obraťte se na správce domény a zjistěte, zda je nutná nějaká aktualizace zásad směrování DNS, která by umožnila ověřování více doménových domén z důvodu jiné přípony domény.
+    Azure Files místní ověřování služby AD DS se integruje jenom s doménovou doménovou doménou, ke které je účet úložiště registrovaný. Pro podporu ověřování z jiné doménové struktury musí být vaše prostředí správně nakonfigurováno důvěryhodné zabezpečení doménové struktury. Způsob, jakým se soubory Azure registrují ve službě AD DS téměř stejně jako běžný souborový server, kde vytvoří identitu (přihlašovací účet počítače nebo služby) ve službě AD DS pro ověřování. Jediným rozdílem je, že registrovaný hlavní název služby účtu úložiště končí "file.core.windows.net", který neodpovídá příponě domény. Obraťte se na správce domény a zjistěte, zda je nutná nějaká aktualizace zásad směrování DNS, která by umožnila ověřování více doménových domén z důvodu jiné přípony domény.
 
 * <a id=""></a>
-**Jaké oblasti jsou dostupné pro ověřování azure soubory ad (preview)?**
+**Jaké oblasti jsou dostupné pro ověřování (preview) souborů Azure Files AD DS?**
 
-    Podrobnosti najdete [v místní dostupnosti služby AD.](storage-files-identity-auth-active-directory-enable.md#regional-availability)
-
+    Podrobnosti najdete [v místní dostupnosti služby AD DS.](storage-files-identity-auth-active-directory-enable.md#regional-availability)
+    
 * <a id="ad-aad-smb-afs"></a>
 **Můžu využít ověřování azure souborů ad (AD) ve sdílených složkách spravovaných službou Azure File Sync?**
 

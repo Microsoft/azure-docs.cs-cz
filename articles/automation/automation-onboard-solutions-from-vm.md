@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f33f829b6cb86cb01c848e5fc48e1618a3e00a2c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299518"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537028"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Palubní řešení správy aktualizací, sledování změn a inventáře z virtuálního počítače Azure
 
@@ -24,34 +24,34 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 Nejprve povolte jedno nebo všechny tři řešení na vašem virtuálním počítači:
 
-1. Na [portálu Azure](https://portal.azure.com)vyberte v levém podokně **virtuální počítače** nebo na **domovské** stránce vyberte **Virtuální počítače.**
+1. Na [portálu Azure](https://portal.azure.com)vyberte **Virtuální počítače** nebo vyhledejte a vyberte **Virtuální počítače** na domovské stránce.
 2. Vyberte virtuální hod, pro který chcete povolit řešení.
-3. Na stránce Virtuální počítač v části **Operace**vyberte **Položku Správa aktualizací**, **Inventář**nebo **Sledování změn**. Virtuální počítač může existovat v libovolné oblasti bez ohledu na umístění vašeho účtu automatizace. Při registraci řešení z virtuálního počítači, `Microsoft.OperationalInsights/workspaces/read` musíte mít oprávnění k určení, pokud je virtuální počítač na palubě do pracovního prostoru. Další informace o dalších oprávněních, která jsou požadována, naleznete [v tématu oprávnění potřebná pro palubní počítače](automation-role-based-access-control.md#onboarding).
+3. Na stránce Virtuální počítač v části **Operace**vyberte **Položku Správa aktualizací**, **Inventář**nebo **Sledování změn**. Virtuální počítač může existovat v libovolné oblasti, bez ohledu na umístění vašeho účtu automatizace. Při registraci řešení z virtuálního počítači, `Microsoft.OperationalInsights/workspaces/read` musíte mít oprávnění k určení, pokud je virtuální počítač na palubě do pracovního prostoru. Další informace o dalších oprávněních, která jsou požadována, naleznete [v tématu oprávnění potřebná pro palubní počítače](automation-role-based-access-control.md#onboarding-permissions). Informace o tom, jak zavést více počítačů najednou, najdete [v tématu Řešení pro správu aktualizací, sledování změn a zásoby](automation-onboard-solutions-from-automation-account.md).
 
-Informace o tom, jak zavést více počítačů najednou, najdete [v tématu Řešení pro správu aktualizací, sledování změn a zásoby](automation-onboard-solutions-from-automation-account.md).
-
-Vyberte pracovní prostor Azure Log Analytics a účet Automatizace a pak vyberte **Povolit,** chcete-li povolit řešení. Povolení řešení trvá přibližně 15 minut.
+4. Vyberte pracovní prostor Azure Log Analytics a účet Automatizace a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
 ![Na palubě řešení správy aktualizací](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-Přejděte na jiná řešení a pak vyberte **Povolit**. Rozevírací seznamy pracovního prostoru Analýzy protokolů a účtu Automatizace jsou zakázány, protože tato řešení používají stejný účet pracovního prostoru a automatizace jako dříve povolené řešení.
+5. Přejděte na jiná řešení a pak vyberte **Povolit**. Rozevírací seznamy pracovního prostoru Analýzy protokolů a účtu Automatizace jsou zakázány, protože tato řešení používají stejný účet pracovního prostoru a automatizace jako dříve povolené řešení.
 
 > [!NOTE]
-> **Sledování změn** a **zásoby** používají stejné řešení. Pokud je jedno z těchto řešení povoleno, druhé je také povoleno.
+> Sledování změn a zásoby používají stejné řešení. Pokud je jedno z těchto řešení povoleno, druhé je také povoleno.
 
 ## <a name="scope-configuration"></a>Konfigurace oboru
 
-Každé řešení používá konfiguraci oboru v pracovním prostoru k cílení na počítače, které řešení získají. Konfigurace oboru je skupina jednoho nebo více uložených hledání, které se používají k omezení rozsahu řešení na konkrétní počítače. Chcete-li získat přístup ke konfiguracím oboru, vyberte v části **Související prostředky**v části Související prostředky **položku Pracovní prostor**. V pracovním prostoru vyberte v části **Zdroje dat pracovního prostoru** **položku Konfigurace oboru**.
+Každé řešení používá konfiguraci oboru v pracovním prostoru k cílení na počítače, které řešení získají. Konfigurace oboru je skupina jednoho nebo více uložených hledání, které se používají k omezení rozsahu řešení na konkrétní počítače. Přístup k konfiguracím oboru:
 
-Pokud vybraný pracovní prostor ještě nemá řešení správa aktualizací nebo sledování změn, vytvoří se následující konfigurace oboru:
+1. V účtu Automation vyberte v části **Související prostředky** **položku Pracovní prostor**. 
+2. V pracovním prostoru vyberte v části **Zdroje dat pracovního prostoru** **položku Konfigurace oboru**.
+3. Pokud vybraný pracovní prostor ještě nemá řešení Správa aktualizací nebo Sledování změn, vytvoří se následující konfigurace oboru:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+    * `MicrosoftDefaultScopeConfig-ChangeTracking`
+    * `MicrosoftDefaultScopeConfig-Updates`
 
-* **Aktualizace MicrosoftDefaultScopeConfig**
+    Pokud vybraný pracovní prostor již řešení má, řešení není znovu nasazeno a konfigurace oboru se nepřidá.
 
-Pokud vybraný pracovní prostor již řešení má, řešení není znovu nasazeno a konfigurace oboru se nepřidá.
-
-Vyberte tři tečky (**...**) v libovolné konfiguraci a pak vyberte **Upravit**. V podokně **Upravit konfigurace oboru** vyberte **Vybrat skupiny počítačů**. Podokno **Skupiny počítačů** zobrazuje uložená hledání, která se používají k vytvoření konfigurace oboru.
+4. Vyberte tři tečky (**...**) v libovolné konfiguraci a klepněte na tlačítko **Upravit**. 
+5. V podokně **Upravit konfigurace oboru** vyberte **Vybrat skupiny počítačů**. Podokno **Skupiny počítačů** zobrazuje uložená hledání, která se používají k vytvoření konfigurace oboru.
 
 ## <a name="saved-searches"></a>Uložená hledání
 
@@ -59,7 +59,7 @@ Když je počítač přidán do řešení Správa aktualizací, Sledování změ
 
 Přejděte do svého pracovního prostoru. V části **Obecné**vyberte **Uložená hledání**. Dvě uložená hledání, která jsou používána těmito řešeními, jsou uvedena v následující tabulce:
 
-|Name (Název)     |Kategorie  |Alias  |
+|Název     |Kategorie  |Alias  |
 |---------|---------|---------|
 |Skupina MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |Skupina MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
@@ -74,7 +74,7 @@ Následující řešení jsou závislá na pracovním prostoru Log Analytics:
 
 * [Update Management](automation-update-management.md)
 * [Sledování změn](automation-change-tracking.md)
-* [Spuštění/zastavení virtuálních počítačů mimo špičku](automation-solution-vm-management.md)
+* [Spuštění/zastavení virtuálních montovek mimo pracovní dobu](automation-solution-vm-management.md)
 
 Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete svůj účet odpojit přímo z portálu Azure.  Než budete pokračovat, musíte nejprve odstranit dříve uvedená řešení, jinak bude tento proces znemožněn. Projděte si článek konkrétního řešení, které jste importovali, abyste pochopili kroky potřebné k jeho odebrání.
 
@@ -83,7 +83,7 @@ Po odebrání těchto řešení můžete provést následující kroky k odpojen
 > [!NOTE]
 > Některá řešení, včetně dřívějších verzí řešení monitorování Azure SQL může mít vytvořené prostředky automatizace a může být také nutné odebrat před odpojením pracovního prostoru.
 
-1. Na webu Azure Portal otevřete účet Automation a na stránce Účet automatizace vyberte **Propojený pracovní prostor** v části Související **prostředky** na levé straně.
+1. Na portálu Azure otevřete účet Automation a v části **Související prostředky** na levé straně vyberte Propojený **pracovní prostor.**
 
 2. Na stránce Odpojit od propojení pracovního prostoru klikněte na **Zrušit propojení pracovního prostoru**.
 
@@ -112,7 +112,7 @@ Případně můžete také odpojit pracovní prostor od účtu Automation z prac
 Odebrání virtuálního virtuálního virtuálního montovazy ze správy aktualizací:
 
 * V pracovním prostoru Log Analytics odeberte virtuální počítač z `MicrosoftDefaultScopeConfig-Updates`uloženého hledání konfigurace oboru . Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
-* Odeberte [agenta Microsoft Monitoring](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* Odeberte [agenta Log Analytics pro Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Analýzy protokolů pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Další kroky
 

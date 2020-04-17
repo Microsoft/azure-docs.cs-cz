@@ -4,14 +4,14 @@ description: Tipy, jak se vyhnout chybám konfigurace a dalším problémům, kt
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: c88ffb9e87bc0688cc87b816efaa8e101e23407c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a24530810a448a713c01efbc8933b9f22d15b3b
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77652084"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536365"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Poradce při potížích s konfigurací naserveru NAS a cílovými problémy úložiště systému NFS
 
@@ -63,6 +63,9 @@ Různé systémy úložiště používají různé metody, které umožňují te
 
 Pokud používáte pravidla exportu, nezapomeňte, že mezipaměť může používat více různých IP adres z podsítě mezipaměti. Povolit přístup z celého rozsahu možných adres IP podsítě.
 
+> [!NOTE]
+> Ve výchozím nastavení Azure HPC Cache squashes root přístup. Podrobnosti najdete v části [Konfigurace dalších nastavení mezipaměti.](configuration.md#configure-root-squash)
+
 Spolupracujte s dodavatelem úložiště NAS a povolte správnou úroveň přístupu pro mezipaměť.
 
 ### <a name="allow-root-access-on-directory-paths"></a>Povolit kořenový přístup na cesty adresářů
@@ -100,7 +103,7 @@ Pokud je to možné, použijte klienta Linux ze stejné virtuální sítě jako 
 Pokud tento příkaz neuvádí exporty, bude mít mezipaměť potíže s připojením k vašemu úložnému systému. Spolupracujte s dodavatelem NAS a povolte exportní zápis.
 
 ## <a name="adjust-vpn-packet-size-restrictions"></a>Úprava omezení velikosti paketů VPN
-<!-- link in prereqs article -->
+<!-- link in prereqs article and configuration article -->
 
 Pokud máte VPN mezi mezipamětí a zařízením NAS, může vpn blokovat plnohodnotné 1500bajtové ethernetové pakety. Tento problém může mít, pokud velké výměny mezi NAS a Azure HPC Cache instance nedokončí, ale menší aktualizace fungovat podle očekávání.
 
@@ -128,7 +131,11 @@ Neexistuje jednoduchý způsob, jak zjistit, zda váš systém má tento problé
   1480 bytes from 10.54.54.11: icmp_seq=1 ttl=64 time=2.06 ms
   ```
 
-  Pokud příkaz ping selže s 1472 bajty, možná budete muset nakonfigurovat upínání MSS v síti VPN, aby vzdálený systém správně zjistil maximální velikost rámce. Další informace najdete v dokumentaci k [parametrům brány VPN APsec/IKE.](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)
+  Pokud příkaz ping selže s 1472 bajtů, pravděpodobně dojde k problému s velikostí paketu.
+
+Chcete-li problém vyřešit, možná budete muset nakonfigurovat upínání MSS v síti VPN, aby vzdálený systém správně zjistil maximální velikost rámce. Další informace najdete v dokumentaci k [parametrům brány VPN APsec/IKE.](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)
+
+V některých případech může pomoci změna nastavení MTU pro mezipaměť Azure HPC na 1400. Pokud však omezíte mtu v mezipaměti, musíte také omezit nastavení MTU pro klienty a back-endové úložné systémy, které interagují s mezipamětí. Podrobnosti najdete v [části Konfigurace dalších nastavení mezipaměti Azure HPC.](configuration.md#adjust-mtu-value)
 
 ## <a name="check-for-acl-security-style"></a>Kontrola stylu zabezpečení acl
 

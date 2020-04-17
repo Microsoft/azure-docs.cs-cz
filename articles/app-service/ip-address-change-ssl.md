@@ -4,12 +4,12 @@ description: Pokud se vaše IP adresa SSL změní, přečtěte si, co dělat, ab
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
-ms.openlocfilehash: 34f35eb67cada6066e35227fcd6a0eaf425ac007
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672395"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535719"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Jak se připravit na změnu IP adresy SSL
 
@@ -25,7 +25,7 @@ Pokud jste obdrželi oznámení, že se mění IP adresa SSL vaší aplikace Azu
 
 4.  V záhlaví **Nastavení** klikněte v levém navigačním panelu na **nastavení SSL.**
 
-1. V části SSL vyberte záznam názvu hostitele. V editoru, který se otevře, zvolte **ssl ssl** v rozevírací nabídce **SSL Type** a klepněte na tlačítko **Přidat vazbu**. Když se zobrazí zpráva o úspěchu operace, byla uvolněna existující adresa IP.
+1. V části Vazby TLS/SSL vyberte jmenovce hostitele. V editoru, který se otevře, zvolte **ssl ssl** v rozevírací nabídce **SSL Type** a klepněte na tlačítko **Přidat vazbu**. Když se zobrazí zpráva o úspěchu operace, byla uvolněna existující adresa IP.
 
 6.  V části **SSL vazby** znovu vyberte stejný název hostitele s certifikátem. V editoru, který se otevře, tentokrát zvolte **protokol SSL založený na protokolu IP** v rozevírací nabídce Typ **SSL** a klepněte na tlačítko **Přidat vazbu**. Když se zobrazí zpráva o úspěchu operace, jste získali novou IP adresu.
 
@@ -45,4 +45,4 @@ Pokud jste obdrželi oznámení, že se mění IP adresa SSL vaší aplikace Azu
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek vysvětluje, jak se připravit na změnu IP adresy, která byla iniciována Azure. Další informace o IP adresách ve službě Azure App Service najdete v tématu [ADRESY SSL a SSL IP ve službě Azure App Service](overview-inbound-outbound-ips.md).
+Tento článek vysvětluje, jak se připravit na změnu IP adresy, která byla iniciována Azure. Další informace o IP adresách ve službě Azure App Service najdete v tématu [Příchozí a odchozí IP adresy ve službě Azure App Service](overview-inbound-outbound-ips.md).

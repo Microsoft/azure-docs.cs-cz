@@ -12,18 +12,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a6c9ccb3dc29865c790e5d8cc9cfc35e68f5561d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b0114bb5d545755fe59c49605d6def341d2275
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886139"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535770"
 ---
 # <a name="supported-account-types"></a>Podporované typy účtu
 
 Tento článek vysvětluje, jaké typy účtů (někdy pojmenované cílové skupiny) jsou podporovány v aplikacích.
 
-<!-- This section can be in an include for many of the scenarios (SPA, Web App signing-in users, protecting a Web API, Desktop (depending on the flows), Mobile -->
+<!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
 ## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Podporované typy účtů v aplikacích platformy Microsoft Identity
 
@@ -44,7 +44,7 @@ Ve veřejném cloudu Microsoft Azure může většina typů aplikací přihlašo
 
 Některé typy účtů nelze použít s určitými toky ověřování. Například v aplikacích pro stolní počítače, UPW nebo v aplikacích daemonu:
 
-- Aplikace Daemon lze použít pouze s organizacemi Azure Active Directory. Nemá smysl pokoušet se používat aplikace pro daemon k manipulaci s osobními účty Microsoft (souhlas správce nebude nikdy udělen).  
+- Aplikace Daemon lze použít pouze s organizacemi Azure Active Directory. Nemá smysl pokoušet se používat aplikace pro daemon k manipulaci s osobními účty Microsoft (souhlas správce nebude nikdy udělen).
 - Integrovaný tok ověřování systému Windows můžete používat pouze s pracovními nebo školními účty (ve vaší organizaci nebo v jakékoli organizaci). Integrované ověřování windows funguje s účty domény a vyžaduje, aby se počítače připojily k doméně nebo k připojily Azure AD. Tento tok nemá smysl pro osobní účty Microsoft.
 - [Udělení hesla vlastníka prostředku](./v2-oauth-ropc.md) (uživatelské jméno/heslo) nelze použít s osobními účty Microsoft. Osobní účty Microsoft ve skutečnosti vyžadují, aby uživatel souhlasil s přístupem k osobním prostředkům při každé relaci přihlášení. To je důvod, proč toto chování není kompatibilní s neinteraktivní toky.
 - Tok kódu zařízení ještě nefunguje s osobními účty Microsoft.

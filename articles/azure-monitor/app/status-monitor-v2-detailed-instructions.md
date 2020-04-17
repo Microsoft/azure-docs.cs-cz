@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: cd5ca5039b537859d5b31c901ed1f93877ecb629
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a0eb83b4b056230e8e7ef103f220b216fceb9e9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275721"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537453"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Agent přehledů aplikací (dříve pojmenovaný Sledování stavu v2): Podrobné pokyny
 
@@ -227,7 +227,7 @@ Podrobný popis použití této rutiny naleznete v [odkazu rozhraní API.](statu
 
  Zobrazení telemetrických dat:
 
-- [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) a sledujte výkon a využití.
+- [Prozkoumejte metriky](../../azure-monitor/platform/metrics-charts.md) a sledujte výkon a využití.
 - [Hledat události a protokoly](../../azure-monitor/app/diagnostic-search.md) diagnostikovat problémy.
 - Pro pokročilejší dotazy [použijte službu Analytics.](../../azure-monitor/app/analytics.md)
 - [Vytvořte řídicí panely](../../azure-monitor/app/overview-dashboard.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: ecbed58eabd2e835d8fa202916829d1da91210e7
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 3c6cb6303734b5336b3e9a7646e5eb3310d0f236
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991054"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536042"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Úvodní příručka: Získání tokenu a volání rozhraní Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace
 
@@ -55,7 +55,7 @@ Chcete-li spustit tuto ukázku, potřebujete:
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 > 1. Přejděte na platformu identit Microsoftpro vývojáře [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
 > 1. Vyberte **možnost Nová registrace**.
-> 1. Po zobrazení stránky **Registrovat přihlášku** zadejte registrační údaje vaší žádosti. 
+> 1. Po zobrazení stránky **Registrovat přihlášku** zadejte registrační údaje vaší žádosti.
 > 1. V části **Název** zadejte smysluplný název aplikace, který se zobrazí `Daemon-console`uživatelům aplikace, například , a pak vyberte **Registrovat** a vytvořte aplikaci.
 > 1. Po registraci vyberte nabídku **Certifikáty & tajných kódů.**
 > 1. V části **Tajné klíče klienta**vyberte **možnost + Nový tajný klíč klienta**. Pojmenujte ho a vyberte **Přidat**. Zkopírujte tajný klíč na bezpečném místě. Budete potřebovat k použití ve vašem kódu.
@@ -65,7 +65,7 @@ Chcete-li spustit tuto ukázku, potřebujete:
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Stažení a konfigurace aplikace quickstart
-> 
+>
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
 > Pro ukázku kódu pro tento rychlý start pracovat, musíte vytvořit tajný klíč klienta a přidat rozhraní **User.Read.All** rozhraní api rozhraní graph.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -89,7 +89,7 @@ Chcete-li spustit tuto ukázku, potřebujete:
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-python-project"></a>Krok 3: Konfigurace projektu Pythonu
-> 
+>
 > 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
 > 1. Přejděte do podsložky **1-Call-MsGraph-WithSecret"**.
 > 1. Upravte **parametry.json** a nahraďte `client_id`hodnoty `secret` polí `authority`, a tímto fragmentem:
@@ -106,7 +106,7 @@ Chcete-li spustit tuto ukázku, potřebujete:
 >
 > > [!TIP]
 > > Pokud chcete najít hodnoty **ID aplikace (klienta),** **ID adresáře (tenanta),** přejděte na stránku **Přehled** aplikace na webu Azure Portal. Chcete-li vygenerovat nový klíč, přejděte na stránku **Certifikáty & tajných kódů.**
-    
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>Krok 3: Souhlas správce
 

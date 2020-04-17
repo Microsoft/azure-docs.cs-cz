@@ -4,14 +4,14 @@ description: Popisuje Azure HPC Cache, řešení akcelerátoru přístupu k soub
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/15/2020
+ms.author: v-erkel
+ms.openlocfilehash: 084c33874b474fc1789df93e088d3cec4263eac9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241189"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536637"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Co je Azure HPC Cache?
 
@@ -49,22 +49,20 @@ Nasazení mezipaměti HPC Azure může pomoci urychlit výpočty kvantitativní 
 
 Azure HPC Cache je k dispozici v těchto oblastech Azure:
 
+| Severní Amerika      | Evropa         | Asie            | Austrálie      |
+|--------------------|----------------|-----------------|----------------|
+| USA – východ            | Severní Evropa   | Jižní Korea – střed   | Austrálie – východ |
+| USA – východ 2          | Západní Evropa    | Jihovýchodní Asie  |               |
+| USA – středojih | | | |
+| USA – západ 2        | | | |
+
+[Funkce klíčů spravovaných zákazníkem](customer-keys.md) je podporována pouze v těchto oblastech:
+
 * USA – východ
-* USA – východ 2
-* Severní Evropa
-* Západní Evropa
-* Jihovýchodní Asie
-* Sydney
+* USA – středojih
 * USA – západ 2
-* Jižní Korea – střed
 
 Nejnovější informace o dostupnosti najdete na [stránce produktu Azure HPC Cache.](https://azure.microsoft.com/services/hpc-cache)
-
-## <a name="service-availability"></a>Dostupnost služeb
-
-Musíte požádat o přístup pro každé předplatné, které budete používat s Azure HPC Cache. Toto omezení pomáhá zajistit kvalitu služeb v prvních měsících obecné dostupnosti.
-
-Požádat o přístup vyplněním [tohoto formuláře](https://aka.ms/onboard-hpc-cache). Po přidání předplatného do seznamu přístupů můžete vytvořit mezipaměti.
 
 ## <a name="next-steps"></a>Další kroky
 

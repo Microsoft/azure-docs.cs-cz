@@ -1,6 +1,6 @@
 ---
 title: Přidání přihlášení se společností Microsoft k ASP.NET základních webových aplikací – platforma identit Microsoftu | Azure
-description: Zjistěte, jak implementovat přihlášení k Microsoftu v ASP.NET Core Web App pomocí OpenID Connect
+description: Přečtěte si, jak implementovat přihlášení k Microsoftu ve webové aplikaci ASP.NET Core pomocí OpenID Connect
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ac53a6cf6953255f51a6b586703147c5ce2338b6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a34264870ce812da5d7e7c790a1482d90b33d06a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407158"
+ms.locfileid: "81536161"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Úvodní příručka: Přidání přihlášení s Microsoftem do webové aplikace ASP.NET Core
 V tomto rychlém startu se pomocí ukázky kódu dozvíte, jak ASP.NET webová aplikace Core může přihlašovat osobní účty (hotmail.com, outlook.com, ostatní) a pracovní a školní účty z libovolné instance Služby Azure Active Directory (Azure AD). (Viz [jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
@@ -71,15 +71,15 @@ V tomto rychlém startu se pomocí ukázky kódu dozvíte, jak ASP.NET webová a
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: Aplikace je nakonfigurovaná a připravená ke spuštění
-> Nakonfigurovali jsme váš projekt s hodnotami vlastností vaší aplikace a je připravený ke spuštění. 
+> Nakonfigurovali jsme váš projekt s hodnotami vlastností vaší aplikace a je připravený ke spuštění.
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Krok 3: Spuštění projektu sady Visual Studio
 > 1. Extrahovat soubor ZIP do místní složky v kořenové složce – například **C:\Azure-Samples**
-> 1. Otevření řešení v sadě Visual Studio 
-> 1. Upravte soubor **appsettings.json.** Vyhledejte `ClientId` a aktualizujte hodnotu `ClientId` **id aplikace (klienta)** aplikace, kterou jste zaregistrovali. 
+> 1. Otevření řešení v sadě Visual Studio
+> 1. Upravte soubor **appsettings.json.** Vyhledejte `ClientId` a aktualizujte hodnotu `ClientId` **id aplikace (klienta)** aplikace, kterou jste zaregistrovali.
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -141,7 +141,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Metoda `AddAuthentication` konfiguruje službu pro přidání ověřování založeného na souborech cookie, které se používá ve scénářích prohlížeče a k nastavení výzvy na OpenID Connect. 
+Metoda `AddAuthentication` konfiguruje službu pro přidání ověřování založeného na souborech cookie, které se používá ve scénářích prohlížeče a k nastavení výzvy na OpenID Connect.
 
 Řádek obsahující `.AddAzureAd` přidá microsoft identity platformy ověřování do aplikace. Je pak nakonfigurován pro přihlášení pomocí koncového bodu platformy identity Microsoftu.
 
@@ -167,4 +167,4 @@ Pomocí atributu můžete chránit metody `[Authorize]` řadiče nebo řadiče. 
 Podívejte se na úložiště GitHub pro tento kurz ASP.NET Core pro další informace, včetně pokynů, jak přidat ověřování do zbrusu nové webové aplikace ASP.NET, jak volat Microsoft Graph a další rozhraní API Microsoft, jak volat vlastní rozhraní API, jak přidat autorizaci, jak přihlásit uživatele v národních cloudech nebo se sociálními identitami a dalšími :
 
 > [!div class="nextstepaction"]
-> [kurz ASP.NET Základní webová aplikace](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [ASP.NET kurz webové aplikace Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

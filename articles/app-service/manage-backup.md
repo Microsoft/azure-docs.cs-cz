@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b812ae10b3462dbeff05c8a67e7ebb725281e7e8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259328"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535753"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce Zálohování a obnovení ve [službě Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně nebo podle plánu. Zálohy můžete nakonfigurovat tak, aby byly zachovány až na dobu neurčitou. Aplikaci můžete obnovit do snímku předchozího stavu přepsáním existující aplikace nebo obnovením do jiné aplikace.
@@ -28,7 +28,7 @@ Služba App Service můžete zálohovat následující informace do účtu úlo�
 
 Následující databázová řešení jsou podporována funkcí zálohování: 
 
-- [Databáze SQL](https://azure.microsoft.com/services/sql-database/)
+- [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
 - [MySQL v aplikaci](https://azure.microsoft.com/blog/mysql-in-app-preview-app-service/)
@@ -44,8 +44,8 @@ Následující databázová řešení jsou podporována funkcí zálohování:
 * Funkce Zálohování a obnovení vyžaduje, aby plán služby App Service byl na úrovni **Standard** nebo **Premium.** Další informace o škálování vašeho plánu služby App Service pro použití vyšší vrstvy najdete v [tématu Vertika navýšit kapacitu aplikace v Azure](manage-scale-up.md). **Úroveň Premium** umožňuje větší počet denních záloh než úroveň **Standard.**
 * Potřebujete účet úložiště Azure a kontejner ve stejném předplatném jako aplikace, kterou chcete zálohovat. Další informace o účtech úložiště Azure najdete v tématu [Přehled účtu úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 * Zálohy mohou mít až 10 GB obsahu aplikací a databází. Pokud velikost zálohy překročí tento limit, zobrazí se chyba.
-* Zálohy SSL povoleno Azure Database pro MySQL není podporována. Pokud je záloha nakonfigurována, získáte neúspěšné zálohy.
-* Zálohy Databáze Azure pro PostgreSQL s povolenou protokolem SSL není podporováno. Pokud je záloha nakonfigurována, získáte neúspěšné zálohy.
+* Zálohy databáze Azure pro MySQL s povolenou tls není podporována. Pokud je záloha nakonfigurována, získáte neúspěšné zálohy.
+* Zálohy databáze Azure pro PostgreSQL s povolenou tls není podporováno. Pokud je záloha nakonfigurována, získáte neúspěšné zálohy.
 * In-app MySQL databáze jsou automaticky zálohovány bez jakékoli konfigurace. Pokud provedete ruční nastavení pro databáze MySQL v aplikaci, jako je například přidání připojovacích řetězců, zálohy nemusí fungovat správně.
 * Použití účtu úložiště s povolenou bránou firewall jako cíle pro zálohování není podporováno. Pokud je záloha nakonfigurována, získáte neúspěšné zálohy.
 
@@ -164,7 +164,7 @@ Správu zálohování můžete automatizovat pomocí skriptů pomocí [rozhraní
 Ukázky viz:
 
 - [Ukázky Azure CLI](samples-cli.md)
-- [Ukázky Azure PowerShellu](samples-powershell.md)
+- [Ukázky prostředí Azure PowerShell](samples-powershell.md)
 
 <a name="nextsteps"></a>
 

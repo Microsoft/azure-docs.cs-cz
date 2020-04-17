@@ -2,21 +2,26 @@
 title: Nastavení zařízení Azure Migrate pro VMware
 description: Zjistěte, jak nastavit zařízení Azure Migrate pro posouzení a migraci virtuálních počítačích VMware.
 ms.topic: article
-ms.date: 03/23/2020
-ms.openlocfilehash: 7a7d0007d2824abc781411f9529f9fa4ac89e55c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336794"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538252"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Nastavení zařízení pro virtuální zařízení VMware
 
-Tento článek popisuje, jak nastavit zařízení Migrace Azure pro vyhodnocení pomocí nástroje [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) a pro migraci bez agenta pomocí nástroje [Migrace:Server Azure.](migrate-services-overview.md#azure-migrate-server-migration-tool)
+V tomto článku nastavte zařízení Azure Migrate pro vyhodnocení pomocí nástroje [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) a migrace bez agenta pomocí nástroje [Migrace:server Azure.](migrate-services-overview.md#azure-migrate-server-migration-tool)
 
 [Zařízení Migrace Azure](migrate-appliance.md) je zjednodušené zařízení používané Azure Migrate:Server Assessment a Migrace serveru ke zjišťování místních virtuálních měn VMware, odesílání dat metadat a výkonu virtuálního počítače do Azure a replikace virtuálních měn VMware během migrace bez agenta.
 
-Zařízení Azure Migrate pro vyhodnocení virtuálního počítače VMware můžete nastavit pomocí šablony OVA, kterou stáhnete, nebo pomocí instalačního skriptu Prostředí PowerShell. Tento článek popisuje, jak nastavit zařízení pomocí šablony OVA. Chcete-li nastavit zařízení pomocí skriptu, postupujte podle pokynů v [tomto článku](deploy-appliance-script.md).
+Zařízení můžete nasadit pomocí několika metod:
+
+- Nastavení virtuálního počítače VMware pomocí stažené šablony OVA. Toto je metoda popsaná v tomto článku.
+- Nastavení na virtuálním počítači VMware nebo fyzickém počítači se skriptem instalačního programu prostředí PowerShell. [Tato metoda](deploy-appliance-script.md) by se měla použít, pokud nemůžete nastavit virtuální počítač pomocí šablony OVA, nebo pokud jste ve vládě Azure.
+
+Po vytvoření zařízení zkontrolujte, zda se může připojit k Azure Migrate:Server Assessment, poprvé ho nakonfigurovat a zaregistrovat v projektu Azure Migrate.
 
 
 ## <a name="appliance-deployment-ova"></a>Nasazení zařízení (OVA)
@@ -62,9 +67,9 @@ Importujte stažený soubor a vytvořte virtuální hod.
 9. Zkontrolujte a ověřte všechna nastavení a pak klikněte na **Finish** (Dokončit).
 
 
-### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
+## <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že virtuální počítač zařízení se může připojit k [adresám URL Azure](migrate-appliance.md#url-access).
+Ujistěte se, že virtuální počítač zařízení se může připojit k adresám URL Azure pro [veřejné](migrate-appliance.md#public-cloud-urls) a [vládní](migrate-appliance.md#government-cloud-urls) cloudy.
 
 
 ## <a name="configure-the-appliance"></a>Konfigurace zařízení
@@ -119,7 +124,7 @@ Pro zjišťování aplikací, rolí a funkcí a vizualizaci závislostí virtuá
 2. Vyberte **možnost Operační systém**.
 3. Zadejte popisný název pověření.
 4. V **poli Uživatelské jméno** a **heslo**zadejte účet, který má alespoň přístup hosta na virtuálních počítačích.
-5. Klikněte na **Přidat**.
+5. Klikněte na tlačítko **Add** (Přidat).
 
 Po zadání pověření vCenter Serveru a virtuálního počítače (volitelné), klepněte na tlačítko **Uložit a spustit zjišťování** zahájit zjišťování místního prostředí.
 
