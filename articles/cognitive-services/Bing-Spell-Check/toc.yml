@@ -7,7 +7,7 @@
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: REST API
       expanded: true
@@ -42,7 +42,7 @@
       href: concepts/sending-requests.md
     - name: Použití rozhraní API pro kontrolu pravopisu Bingu
       href: concepts/using-spell-check.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Spell+Check'
@@ -72,7 +72,7 @@
     - name: Analýzy pro rozhraní API pro kontrolu pravopisu Bingu
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: Podpora jazyků a oblastí
+    - name: Podpora jazyků
       href: language-support.md
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'

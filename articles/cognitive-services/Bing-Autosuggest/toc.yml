@@ -79,7 +79,7 @@
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
     - name: Vyzkoušejte si to!
       href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
-    - name: Podpora jazyků a oblastí
+    - name: Podpora jazyků
       href: language-support.md
     - name: Analýzy pro rozhraní API pro automatické návrhy Bingu
       maintainContext: true

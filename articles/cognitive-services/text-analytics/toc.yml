@@ -9,7 +9,7 @@
       href: text-analytics-user-scenarios.md
     - name: Co je nového
       href: whats-new.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Klientská knihovna
@@ -48,7 +48,7 @@
   items:
     - name: Typy pojmenovaných entit
       href: named-entity-types.md
-    - name: Podpora jazyků a oblastí
+    - name: Podpora jazyků
       href: language-support.md
     - name: Posuny textu
       href: concepts/text-offsets.md

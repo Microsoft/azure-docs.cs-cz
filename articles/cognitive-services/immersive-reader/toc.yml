@@ -4,7 +4,7 @@
   items:
     - name: Co je Asistivní čtečka?
       href: Overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: 'Pomocí C#'
@@ -42,6 +42,6 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Podpora jazyků
-      href: 'https://aka.ms/ltlangsupport'
+      href: language-support.md
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

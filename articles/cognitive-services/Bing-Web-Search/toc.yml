@@ -7,7 +7,7 @@
       expanded: true
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Rozhraní REST API
       items:
@@ -33,7 +33,7 @@
   items:
     - name: Sestavení jednostránkové webové aplikace
       href: tutorial-bing-web-search-single-page-app.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky REST
       href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples'
@@ -69,7 +69,7 @@
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v5-reference'
     - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
     - name: Sady SDK
       items:
@@ -95,7 +95,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/'
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Podpora jazyků a oblastí
+    - name: Podpora jazyků
       href: language-support.md
     - name: Analýzy pro rozhraní API Bingu pro vyhledávání na webu
       href: bing-web-stats.md

@@ -7,7 +7,7 @@
       href: overview.md
     - name: Co je nového
       href: whats-new.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expaned: true
   items:
     - name: Použití ukázkového nástroje pro popisování
@@ -80,5 +80,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionální dostupnost
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+    - name: Podpora jazyků
+      href: language-support.md
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

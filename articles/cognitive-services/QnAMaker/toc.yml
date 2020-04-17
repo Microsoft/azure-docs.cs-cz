@@ -147,7 +147,7 @@
               href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: Referenční informace
   items:
-    - name: Jazyky
+    - name: Podpora jazyků
       href: Overview/language-support.md
     - name: Omezení
       href: limits.md

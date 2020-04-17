@@ -8,7 +8,7 @@
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření instance vlastního vyhledávání
@@ -33,7 +33,7 @@
   items:
     - name: Vytvoření webové stránky pro vlastní vyhledávání
       href: ./tutorials/custom-search-web-page.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
@@ -108,7 +108,7 @@
       href: 'https://aka.ms/bingcustomsearchtryit'
     - name: Koncový bod Vlastního vyhledávání Bingu
       href: endpoint-custom.md
-    - name: Podpora jazyků a oblastí
+    - name: Podpora jazyků
       href: language-support.md
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

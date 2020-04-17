@@ -6,7 +6,7 @@
       items:
         - name: Co je Translator Text API?
           href: translator-info-overview.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Přeložení textu
           href: quickstart-translate.md
@@ -48,7 +48,7 @@
           href: dynamic-dictionary.md
         - name: Překlad přes brány firewall
           href: firewalls.md
-    - name: Ukázky
+    - name: ukázky
       items:
         - name: 'C#'
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp'
@@ -98,7 +98,7 @@
           href: 'https://aka.ms/TranslatorGitHub'
         - name: Nejčastější dotazy
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: Podpora jazyků a oblastí
+        - name: Podpora jazyků
           href: language-support.md
         - name: Ceny
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
@@ -116,7 +116,7 @@
       items:
         - name: Co je Custom Translator?
           href: custom-translator/overview.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Vytvoření vlastního modelu
           href: custom-translator/quickstart-build-deploy-custom-model.md
