@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ff9191c0994d4e26da69e1c4ceaf7ef6c93e9960
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: c737ccf83dae0cc4b198b9cd708a55b988e6593b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81253148"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457939"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Šifrování Azure Storage pro data v klidovém stavu
 
@@ -54,7 +54,7 @@ Následující tabulka porovnává možnosti správy klíčů pro šifrování A
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je Azure Key Vault?](../../key-vault/key-vault-overview.md)
+- [Co je Azure Key Vault?](../../key-vault/general/overview.md)
 - [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage na webu Azure Portal](storage-encryption-keys-portal.md)
 - [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage v PowerShellu](storage-encryption-keys-powershell.md)
 - [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage v Azure CLI](storage-encryption-keys-cli.md)

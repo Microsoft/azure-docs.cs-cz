@@ -3,16 +3,16 @@ title: Tajný klíč trezoru klíčů se šablonou
 description: Ukazuje, jak předat tajný klíč z trezoru klíčů jako parametr během nasazení.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 08b4042c6bad83f13ebaea0f46046ea7707fd868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460190"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458262"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití trezoru klíčů Azure k předání hodnoty zabezpečeného parametru během nasazení
 
-Místo umístění zabezpečené hodnoty (například hesla) přímo do šablony nebo souboru parametrů můžete hodnotu během nasazení načíst z [trezoru klíčů Azure.](../../key-vault/key-vault-overview.md) Hodnotu načtete odkazem na trezor klíčů a tajný klíč v souboru parametrů. Hodnota není nikdy vystavena, protože odkazujete pouze na id trezoru klíčů. Trezor klíčů může existovat v jiném předplatném než skupina prostředků, do které nasazujete.
+Místo umístění zabezpečené hodnoty (například hesla) přímo do šablony nebo souboru parametrů můžete hodnotu během nasazení načíst z [trezoru klíčů Azure.](../../key-vault/general/overview.md) Hodnotu načtete odkazem na trezor klíčů a tajný klíč v souboru parametrů. Hodnota není nikdy vystavena, protože odkazujete pouze na id trezoru klíčů. Trezor klíčů může existovat v jiném předplatném než skupina prostředků, do které nasazujete.
 
 Tento článek se zaměřuje na scénář předávání citlivé hodnoty v jako parametr šablony. Nezahrnuje scénář nastavení vlastnosti virtuálního počítače na adresu URL certifikátu v trezoru klíčů. Šablonu pro rychlý start tohoto scénáře najdete [v tématu Instalace certifikátu z azure key vaultu na virtuálním počítači](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows).
 
@@ -91,11 +91,11 @@ Set-AzKeyVaultAccessPolicy `
 
 Další informace o vytváření trezorů klíčů a přidávání tajných kódů naleznete v tématu:
 
-- [Nastavení a načtení tajného klíče pomocí funkce cli](../../key-vault/quick-create-cli.md)
-- [Nastavení a načtení tajného klíče pomocí powershellu](../../key-vault/quick-create-powershell.md)
-- [Nastavení a načtení tajného klíče pomocí portálu](../../key-vault/quick-create-portal.md)
-- [Nastavení a načtení tajného klíče pomocí rozhraní .NET](../../key-vault/quick-create-net.md)
-- [Nastavení a načtení tajného klíče pomocí souboru Node.js](../../key-vault/quick-create-node.md)
+- [Nastavení a načtení tajného klíče pomocí funkce cli](../../key-vault/secrets/quick-create-cli.md)
+- [Nastavení a načtení tajného klíče pomocí powershellu](../../key-vault/secrets/quick-create-powershell.md)
+- [Nastavení a načtení tajného klíče pomocí portálu](../../key-vault/secrets/quick-create-portal.md)
+- [Nastavení a načtení tajného klíče pomocí rozhraní .NET](../../key-vault/secrets/quick-create-net.md)
+- [Nastavení a načtení tajného klíče pomocí souboru Node.js](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>Udělit přístup k tajným kódům
 
@@ -375,5 +375,5 @@ Následující šablona dynamicky vytvoří ID trezoru klíčů a předá ho jak
 
 ## <a name="next-steps"></a>Další kroky
 
-- Obecné informace o trezorech klíčů najdete v tématu [Co je Azure Key Vault?](../../key-vault/key-vault-overview.md).
+- Obecné informace o trezorech klíčů najdete v tématu [Co je Azure Key Vault?](../../key-vault/general/overview.md).
 - Úplné příklady odkazování na klíče klíčů naleznete v [příkladech trezoru klíčů](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

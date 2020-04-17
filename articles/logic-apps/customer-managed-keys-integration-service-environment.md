@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127645"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458433"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Nastavení klíčů spravovaných zákazníky pro šifrování dat v klidovém stavu pro prostředí integračních služeb (ISEs) v Aplikacích Azure Logic Apps
 
 Azure Logic Apps spoléhá na Azure Storage pro ukládání a automatické [šifrování dat v klidovém stavu](../storage/common/storage-service-encryption.md). Toto šifrování chrání vaše data a pomáhá vám plnit závazky organizace v oblasti zabezpečení a dodržování předpisů. Ve výchozím nastavení azure storage používá klíče spravované Microsoftem k šifrování dat. Další informace o tom, jak funguje šifrování Azure Storage, najdete [v tématu šifrování Azure Storage pro data v klidovém stavu](../storage/common/storage-service-encryption.md) a [Šifrování dat Azure v klidovém stavu](../security/fundamentals/encryption-atrest.md).
 
-Když vytvoříte [prostředí integrační služby (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) pro hostování aplikací logiky a chcete mít větší kontrolu nad šifrovacími klíči používanými službou Azure Storage, můžete nastavit, používat a spravovat svůj vlastní klíč pomocí [azure key vaultu](../key-vault/key-vault-overview.md). Tato funkce se také označuje jako "Přineste si vlastní klíč" (BYOK) a váš klíč se nazývá "klíč spravovaný zákazníkem".
+Když vytvoříte [prostředí integrační služby (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) pro hostování aplikací logiky a chcete mít větší kontrolu nad šifrovacími klíči používanými službou Azure Storage, můžete nastavit, používat a spravovat svůj vlastní klíč pomocí [azure key vaultu](../key-vault/general/overview.md). Tato funkce se také označuje jako "Přineste si vlastní klíč" (BYOK) a váš klíč se nazývá "klíč spravovaný zákazníkem".
 
 Toto téma ukazuje, jak nastavit a zadat vlastní šifrovací klíč, který chcete použít při vytváření služby ISE pomocí rozhraní API REST logic apps. Obecné kroky k vytvoření rozhraní ISE prostřednictvím rozhraní REST API logic apps najdete v [tématu Vytvoření prostředí služby integrace (ISE) pomocí rozhraní API REST Logic Apps](../logic-apps/create-integration-service-environment-rest-api.md).
 
@@ -39,7 +39,7 @@ Toto téma ukazuje, jak nastavit a zadat vlastní šifrovací klíč, který chc
 
 * Trezor klíčů Azure, který má povolené vlastnosti **Obnovitelné odstranění** a **Nevyčistit**
 
-  Další informace o povolení těchto vlastností naleznete v [tématu Azure Key Vault software-delete přehled](../key-vault/key-vault-ovw-soft-delete.md) a [konfigurace klíčů spravovaných zákazníkem s Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Pokud s Azure Key Vault teče tezaury, přečtěte si, [jak vytvořit trezor klíčů](../key-vault/quick-create-portal.md#create-a-vault) pomocí portálu Azure nebo pomocí příkazu Azure PowerShell, [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault).
+  Další informace o povolení těchto vlastností naleznete v [tématu Azure Key Vault software-delete přehled](../key-vault/general/overview-soft-delete.md) a [konfigurace klíčů spravovaných zákazníkem s Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Pokud s Azure Key Vault teče tezaury, přečtěte si, [jak vytvořit trezor klíčů](../key-vault/secrets/quick-create-portal.md#create-a-vault) pomocí portálu Azure nebo pomocí příkazu Azure PowerShell, [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault).
 
 * V trezoru klíčů klíč, který je vytvořen s těmito hodnotami vlastností:
 
@@ -225,8 +225,8 @@ Pro tuto úlohu můžete použít buď příkaz Azure PowerShell [Set-AzKeyVault
 
    1. Až skončíte s podoknem **zásad aplikace Access,** vyberte **Uložit**.
 
-Další informace naleznete [v tématu Provide Key Vault authentication with a managed identity](../key-vault/managed-identity.md#grant-your-app-access-to-key-vault).
+Další informace naleznete [v tématu Provide Key Vault authentication with a managed identity](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [Azure Key Vault](../key-vault/key-vault-overview.md)
+* Další informace o [Azure Key Vault](../key-vault/general/overview.md)

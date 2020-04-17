@@ -3,12 +3,12 @@ title: 'Ukázka podrobného plánu ISO 27001: Sdílené služby – přehled'
 description: 'Přehled a architektura ukázky podrobného plánu ISO 27001: Sdílené služby Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly ISO 27001.'
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 5a18af942e1d1088b681712f7035f57d354ecb19
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381569"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458450"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Přehled ukázky podrobného plánu ISO 27001: Sdílené služby
 
@@ -34,7 +34,7 @@ Toto prostředí je tvořené několika službami Azure, které se využívají 
   - Jumpbox nebo hostitele typu bašta (bastion host) používaného pro účely správy, který je přístupný jenom přes službu [Azure Firewall](../../../../firewall/overview.md) nasazenou v podsíti stacku příchozího přenosu dat
   - Dva virtuální počítače, na kterých běží Active Directory Domain Services (ADDS) a DNS, které jsou přístupné jenom přes tento jumpbox a které se dají nakonfigurovat jenom pro replikaci AD přes VPN nebo připojení [ExpressRoute](../../../../expressroute/expressroute-introduction.md) (nejsou nasazené v rámci podrobného plánu)
   - Použití [Azure Net Watcheru](../../../../network-watcher/network-watcher-monitoring-overview.md) a standardní ochrany před útoky DDoS
-- Instance služby [Azure Key Vault](../../../../key-vault/key-vault-overview.md), která slouží k hostování tajných kódů používaných pro virtuální počítače nasazené v prostředí sdílených služeb
+- Instance služby [Azure Key Vault](../../../../key-vault/general/overview.md), která slouží k hostování tajných kódů používaných pro virtuální počítače nasazené v prostředí sdílených služeb
 
 Všechny tyto prvky dodržují prověřené postupy publikované v článku zaměřeném na [Centrum architektury Azure – referenční architektury](/azure/architecture/reference-architectures/).
 

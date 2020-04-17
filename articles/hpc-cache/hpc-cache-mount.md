@@ -4,14 +4,14 @@ description: Jak připojit klienty ke službě Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.author: rohogue
-ms.openlocfilehash: f176e30cfaf9a52e4f58091b7fc76098a4c88a48
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 04/15/2020
+ms.author: v-erkel
+ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657362"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458345"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Připojení mezipaměti Azure HPC
 
@@ -45,51 +45,65 @@ Nainstalujte příslušný linuxový nástrojový software pro podporu příkazu
 
 ### <a name="create-a-local-path"></a>Vytvoření místní cesty
 
-Vytvořte cestu k místnímu adresáři pro každého klienta pro připojení ke mezipaměti. Vytvořte cestu pro každý cíl úložiště, který chcete připojit.
+Vytvořte cestu k místnímu adresáři pro každého klienta pro připojení ke mezipaměti. Vytvořte cestu pro každou cestu oboru názvů, kterou chcete připojit.
 
 Příklad: `sudo mkdir -p /mnt/hpc-cache-1/target3`
 
+Stránka [Připojit pokyny](#use-the-mount-instructions-utility) na webu Azure portal obsahuje příkaz prototypu, který můžete zkopírovat.
+
+Když připojíte klientský počítač k mezipaměti, přidružíte tuto cestu k cestě virtuálního oboru názvů, která představuje export cíle úložiště. Vytvořte adresáře pro každou cestu virtuálního oboru názvů, kterou bude klient používat.
+
 ## <a name="use-the-mount-instructions-utility"></a>Použití nástroje pokyny pro montáž
 
-Otevřete stránku **Pokyny pro připojení** v části **Konfigurovat** zobrazení mezipaměti na webu Azure Portal.
+Pomocí stránky **Pokyny pro připojení** na webu Azure Portal můžete vytvořit příkaz připojit. Otevřete stránku z části **Konfigurovat** zobrazení mezipaměti na portálu.
+
+Před použitím příkazu na straně klienta se ujistěte, že klient splňuje požadavky `mount` a má software potřebný k použití příkazu NFS, jak je popsáno výše v [části Příprava klientů](#prepare-clients).
 
 ![Snímek obrazovky s instancí mezipaměti Azure HPC na portálu s načtenou stránkou Pokyny pro konfiguraci > připojení](media/mount-instructions.png)
 
-Stránka příkazů připojení obsahuje informace o procesu připojení klienta a požadavky a pole, která můžete použít k vytvoření příkazu připojit.
+Chcete-li vytvořit příkaz připojení, postupujte podle tohoto postupu.
 
-Chcete-li použít tuto stránku, postupujte takto:
+1. Přizpůsobte pole **Cesta klienta.** Toto pole uvádí příklad příkazu, který můžete použít k vytvoření místní cesty na straně klienta. Klient přistupuje k obsahu z mezipaměti Azure HPC místně v tomto adresáři.
 
-<!--1.  In step one of **Mounting your file system**, enter the path that the client will use to access the Azure HPC Cache storage target.
+   Klepněte na pole a upravte příkaz tak, aby obsahoval požadovaný název adresáře. Název se zobrazí na konci řetězce za`sudo mkdir -p`
 
-   * This path is local to the client.
-   * After you provide the directory name, the field populates with a command you can copy. Use this command on the client directly or in a setup script to create the directory path on the client VM. -->
+   ![Snímek obrazovky s polem cesty klienta s kurzorem umístěným na konci](media/mount-edit-client.png)
 
-1. Zkontrolujte požadavky klienta a nainstalujte nástroje potřebné `mount` k použití příkazu NFS, jak je popsáno výše v [části Příprava klientů](#prepare-clients).
+   Po dokončení úprav pole se příkaz připojení v dolní části stránky aktualizuje novou cestou klienta.
 
-1. První krok **připojení systému souborů**<!-- label will change --> poskytuje příklad příkazu pro vytvoření místní cesty na straně klienta. Toto je cesta, kterou klient použije pro přístup k obsahu z mezipaměti Azure HPC.
+1. Ze seznamu zvolte **adresu připojení mezipaměti.** V této nabídce jsou uvedeny všechny [přípojné body klienta mezipaměti](#find-mount-command-components).
 
-   Poznamenejte si název cesty, abyste jej mohli v případě potřeby upravit v příkazu.
+   Vyvažte zatížení klienta napříč všemi dostupnými adresami připojení pro lepší výkon mezipaměti.
 
-1. V kroku dva vyberte jednu z dostupných IP adres. Zde jsou uvedeny všechny [připojné body klienta](#find-mount-command-components) mezipaměti. Ujistěte se, že máte systém pro vyvážení zatížení mezi všemi ADRESAMI IP.
+   ![snímek obrazovky s polem adresy připojení mezipaměti s voličem zobrazujícím tři IP adresy, ze kterých si můžete vybrat](media/mount-select-ip.png)
 
-1. Pole v kroku tři se automaticky naplní příkazem pro připojení prototypu. Kliknutím na symbol kopírování na pravé straně pole ho automaticky zkopírujete do schránky.
+1. Zvolte **cestu virtuálního oboru názvů,** která se má použít pro klienta. Tyto cesty odkazují na exporty v back-endovém úložném systému.
 
-   > [!NOTE]
-   > Před použitím zkontrolujte příkaz kopírování. Možná budete muset přizpůsobit cestu připojení klienta a cílovou cestu virtuálního oboru názvů úložiště, které ještě nelze v tomto rozhraní vybrat. Měli byste také aktualizovat možnosti příkazu připojit tak, aby odrážely [doporučené možnosti](#mount-command-options) níže. Nápovědu načláneknete [na principsyntaxi příkazu připojení.](#understand-mount-command-syntax)
+   ![snímek obrazovky s polem cesty oboru názvů s otevřeným voličem](media/mount-select-target.png)
 
-1. Pomocí zkopírovaného příkazu připojení (v případě potřeby s úpravami) v klientském počítači jej připojte k cíli úložiště v mezipaměti Azure HPC. Příkaz můžete vydat přímo z příkazového řádku klienta nebo jej zahrnout do skriptu nebo šablony nastavení klienta.
+   Cesty virtuálního oboru názvů můžete zobrazit a změnit na stránce portálu Cíle úložiště. Přečtěte si [článek Přidání cílů úložiště,](hpc-cache-add-storage.md) abyste viděli, jak na to.
+
+   Další informace o agregované funkci oboru názvů azure hpc cache najdete v části [Plánování agregovaného oboru názvů](hpc-cache-namespace.md).
+
+1. **Příkazové** pole Připojení v kroku tři se automaticky naplní přizpůsobeným příkazem připojení, který používá adresu připojení, cestu virtuálního oboru názvů a cestu klienta, kterou nastavíte v předchozích polích.
+
+   Kliknutím na symbol kopírování na pravé straně pole ho automaticky zkopírujete do schránky.
+
+   ![snímek obrazovky s polem cesty oboru názvů s otevřeným voličem](media/mount-command-copy.png)
+
+1. Pomocí zkopírovaného příkazu připojení v klientském počítači jej připojte ke mezipaměti Azure HPC. Příkaz můžete vydat přímo z příkazového řádku klienta nebo jej zahrnout do skriptu nebo šablony nastavení klienta.
 
 ## <a name="understand-mount-command-syntax"></a>Principy syntaxe příkazu připojení
 
 Příkaz mount má následující tvar:
 
-> sudo mount *cache_mount_address*:/*namespace_path* *local_path* {*možnosti*}
+> sudo mount {*options*} *cache_mount_address*:/*namespace_path* *local_path*
 
 Příklad:
 
 ```bash
 root@test-client:/tmp# mkdir hpccache
-root@test-client:/tmp# sudo mount 10.0.0.28:/blob-demo-0722 ./hpccache/ -o hard,proto=tcp,mountproto=tcp,retry=30
+root@test-client:/tmp# sudo mount -o hard,proto=tcp,mountproto=tcp,retry=30 10.0.0.28:/blob-demo-0722 hpccache
 root@test-client:/tmp#
 ```
 
@@ -110,16 +124,16 @@ Pro robustní připojení klienta předejte v příkazu připojení tato nastave
 
 ### <a name="find-mount-command-components"></a>Najít komponenty příkazu připojit
 
-Pokud chcete vytvořit příkaz pro připojení bez použití stránky **Pokyny pro připojení,** můžete najít adresy připojení na stránce **Přehled** mezipaměti a cesty virtuálního oboru názvů na stránce **Cíle úložiště.**
+Pokud chcete vytvořit příkaz pro připojení bez použití stránky **Pokyny pro připojení,** můžete najít adresy připojení na stránce **Přehled** mezipaměti a cesty virtuálního oboru názvů na cílové stránce **úložiště.**
 
 ![Snímek obrazovky s přehledem stránky instance Azure HPC Cache se zvýrazněním kolem seznamu přípojných adres v pravém dolním](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE]
 > Adresy připojení mezipaměti odpovídají síťovým rozhraním uvnitř podsítě mezipaměti. Ve skupině prostředků jsou tyto síťové karty `-cluster-nic-` uvedeny s názvy končícími a číslem. Tato rozhraní neměňte ani neodstraňujte, jinak bude mezipaměť nedostupná.
 
-Cesty virtuálního oboru názvů jsou zobrazeny na stránce **Cíle úložiště.** Kliknutím na konkrétní cílový název úložiště zobrazíte jeho podrobnosti, včetně agregovaných cest oboru názvů, které jsou k němu přidruženy.
+Cesty virtuálního oboru názvů jsou zobrazeny na stránce podrobností každého cíle úložiště. Kliknutím na konkrétní cílový název úložiště zobrazíte jeho podrobnosti, včetně agregovaných cest oboru názvů, které jsou k němu přidruženy.
 
-![Snímek obrazovky s cílovým panelem úložiště mezipaměti s polem zvýraznění kolem položky ve sloupci Cesta v tabulce](media/hpc-cache-view-namespace-paths.png)
+![snímek obrazovky s podrobnou stránkou cíle úložiště (záhlaví "Aktualizovat cíl úložiště"). Kolem položky ve sloupci Cesta virtuálního oboru názvů v tabulce je pole zvýraznění.](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="next-steps"></a>Další kroky
 

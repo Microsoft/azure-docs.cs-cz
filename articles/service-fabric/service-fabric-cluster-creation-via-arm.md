@@ -3,17 +3,17 @@ title: Vytvoření clusteru Azure Service Fabric
 description: Zjistěte, jak nastavit zabezpečený cluster Service Fabric v Azure pomocí Správce prostředků Azure.  Cluster můžete vytvořit pomocí výchozí šablony nebo vlastní šablony clusteru.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 8cf14230f3abd37d91f1ec369f597ee594876100
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624116"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458296"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Vytvoření clusteru Service Fabric pomocí Správce prostředků Azure 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Portál Azure](service-fabric-cluster-creation-via-portal.md)
+> * [portál Azure](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -251,7 +251,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>Použití ukazatele na tajný klíč nahraný do trezoru klíčů
 
-Chcete-li použít existující trezor klíčů, musí být povolen trezor klíčů [pro nasazení,](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI) aby poskytovatel výpočetních prostředků mohl získat certifikáty a nainstalovat jej do uzlů clusteru.
+Chcete-li použít existující trezor klíčů, musí být povolen trezor klíčů [pro nasazení,](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI) aby poskytovatel výpočetních prostředků mohl získat certifikáty a nainstalovat jej do uzlů clusteru.
 
 Nasazení clusteru pomocí PowerShellu:
 

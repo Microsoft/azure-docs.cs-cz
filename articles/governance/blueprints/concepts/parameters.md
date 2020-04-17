@@ -3,12 +3,12 @@ title: Použití parametrů k vytváření dynamických podrobných plánů
 description: Přečtěte si o statických a dynamických parametrech a o tom, jak je používat k vytváření zabezpečených a dynamických podrobných plánů.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383619"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458484"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických podrobných plánů prostřednictvím parametrů
 
@@ -41,7 +41,7 @@ Pokud přiřazení podrobného plánu používá **uživatelem přiřazenou spra
 > [!IMPORTANT]
 > V obou případech musí mít trezor klíčů **povolení přístupu ke Správci prostředků Azure pro nasazení šablon** nakonfigurované na stránce zásad **přístupu.** Pokyny k povolení této funkce naleznete v tématu [Trezor klíčů – povolení nasazení šablony](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment).
 
-Další informace o azure key vault, najdete v [tématu Key Vault Přehled](../../../key-vault/key-vault-overview.md).
+Další informace o azure key vault, najdete v [tématu Key Vault Přehled](../../../key-vault/general/overview.md).
 
 ## <a name="parameter-types"></a>Typy parametrů
 
@@ -234,8 +234,8 @@ Nastavení **dynamických parametrů** během přiřazení se provádí zadání
 ## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na seznam [funkcí podrobného plánu](../reference/blueprint-functions.md).
-- Přečtěte si o [životním cyklu podrobného plánu](lifecycle.md).
-- Naučte se přizpůsobit [pořadí sekvencování podrobných plánů](sequencing-order.md).
-- Zjistěte, jak využít [zamykání prostředků podrobného plánu](resource-locking.md).
-- Přečtěte si, jak [aktualizovat existující přiřazení](../how-to/update-existing-assignments.md).
-- Vyřešte problémy během přiřazení podrobného plánu s [obecným řešením potíží](../troubleshoot/general.md).
+- Další informace o [životním cyklu podrobného plánu](lifecycle.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
+- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

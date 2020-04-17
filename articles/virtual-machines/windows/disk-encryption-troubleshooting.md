@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d4e76f4d02b0287770243bfddf995a19f90d232
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fafe4a9ef78a92595eaae942fa5d7cbeb2c07189
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73749446"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458208"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží s šifrováním disku Azure
 
@@ -35,7 +35,7 @@ Všechna použitá nastavení skupiny zabezpečení sítě musí koncovému bodu
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault za bránou firewall
 
-Když je šifrování povoleno s [přihlašovacími údaji Azure AD](disk-encryption-windows-aad.md#), cílový virtuální počítač musí povolit připojení ke koncovým bodům služby Azure Active Directory i koncovým bodům trezoru klíčů. Aktuální koncové body ověřování služby Azure Active Directory se udržují v oddílech 56 a 59 adres [URL office 365 a dokumentaci k rozsahům IP adres.](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) Pokyny k trezoru klíčů jsou k dispozici v dokumentaci o tom, jak získat přístup k [trezoru klíčů Azure za bránou firewall](../../key-vault/key-vault-access-behind-firewall.md).
+Když je šifrování povoleno s [přihlašovacími údaji Azure AD](disk-encryption-windows-aad.md#), cílový virtuální počítač musí povolit připojení ke koncovým bodům služby Azure Active Directory i koncovým bodům trezoru klíčů. Aktuální koncové body ověřování služby Azure Active Directory se udržují v oddílech 56 a 59 adres [URL office 365 a dokumentaci k rozsahům IP adres.](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) Pokyny k trezoru klíčů jsou k dispozici v dokumentaci o tom, jak získat přístup k [trezoru klíčů Azure za bránou firewall](../../key-vault/general/access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure 
 Virtuální počítač musí mít přístup ke koncovému bodu [služby Metadat instance Azure,](../windows/instance-metadata-service.md) který`169.254.169.254`používá známou nesměrovatelnou IP adresu ( ), ke které lze přistupovat pouze z virtuálního počítače.  Konfigurace serveru proxy, které mění místní přenos protokolu HTTP na tuto adresu (například přidání hlavičky X-Forwarded-For), nejsou podporovány.
@@ -63,7 +63,7 @@ Chcete-li tento problém vyřešit, zkopírujte následující čtyři soubory z
 
 1. Pomocí programu DiskPart zkontrolujte svazky a pokračujte.  
 
-Například:
+Příklad:
 
 ```
 DISKPART> list vol

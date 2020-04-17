@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 36b7b81a18c8725929ab5676b844e1ee319e287f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393317"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458245"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault jako zdroj mřížky událostí
 
@@ -80,18 +80,18 @@ Událost má následující data nejvyšší úrovně:
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
 |Nadpis  |Popis  |
 |---------|---------|
-| [Monitorování událostí trezoru klíčů pomocí Azure Event Grid](../key-vault/event-grid-overview.md) | Přehled integrace trezoru klíčů s mřížkou událostí. |
-| [Kurz: Vytváření a sledování událostí trezoru klíčů pomocí mřížky událostí](../key-vault/event-grid-tutorial.md) | Přečtěte si, jak nastavit oznámení mřížky událostí pro trezor klíčů. |
+| [Monitorování událostí trezoru klíčů pomocí Azure Event Grid](../key-vault/general/event-grid-overview.md) | Přehled integrace trezoru klíčů s mřížkou událostí. |
+| [Kurz: Vytváření a sledování událostí trezoru klíčů pomocí mřížky událostí](../key-vault/general/event-grid-tutorial.md) | Přečtěte si, jak nastavit oznámení mřížky událostí pro trezor klíčů. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * Úvod do Služby Azure Event Grid najdete v tématu [Co je event grid?](overview.md).
 * Další informace o tom, jak vytvořit předplatné Služby Event Grid, najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).
-* Další informace o integraci trezoru klíčů s mřížkou událostí najdete v [tématu Sledování trezoru klíčů pomocí Azure Event Grid (preview).](../key-vault/event-grid-overview.md)
-* Kurz o integraci trezoru klíčů s událostí gridu najdete v tématu [Příjem a reagovat na oznámení trezoru klíčů s Azure Event Grid (preview)](../key-vault/event-grid-tutorial.md).
+* Další informace o integraci trezoru klíčů s mřížkou událostí najdete v [tématu Sledování trezoru klíčů pomocí Azure Event Grid (preview).](../key-vault/general/event-grid-overview.md)
+* Kurz o integraci trezoru klíčů s událostí gridu najdete v tématu [Příjem a reagovat na oznámení trezoru klíčů s Azure Event Grid (preview)](../key-vault/general/event-grid-tutorial.md).
 * Další pokyny pro trezor klíčů a azure automation najdete v těchto tématech:
-    - [Co je Azure Key Vault?](../key-vault/key-vault-overview.md)
-    - [Monitorování trezoru klíčů pomocí Azure Event Grid (preview)](../key-vault/event-grid-overview.md)
-    - [Příjem a reakce na oznámení trezoru klíčů pomocí Azure Event Grid (preview)](../key-vault/event-grid-tutorial.md)
+    - [Co je Azure Key Vault?](../key-vault/general/overview.md)
+    - [Monitorování trezoru klíčů pomocí Azure Event Grid (preview)](../key-vault/general/event-grid-overview.md)
+    - [Příjem a reakce na oznámení trezoru klíčů pomocí Azure Event Grid (preview)](../key-vault/general/event-grid-tutorial.md)
     - [Azure Automation – přehled](../automation/index.yml)

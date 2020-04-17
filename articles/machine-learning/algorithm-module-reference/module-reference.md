@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: peterclu
-ms.author: peterlu
-ms.date: 02/22/2020
-ms.openlocfilehash: 7fcfc7c15f94d7b569629e53534d731126172260
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+author: likebupt
+ms.author: keli19
+ms.date: 04/13/2020
+ms.openlocfilehash: c46c21b5662b924552f850f226a12c7350b4625a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399066"
+ms.locfileid: "81458194"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Odkaz na modul & algoritmu pro návrháře Azure Machine Learning (preview)
 
@@ -59,6 +59,10 @@ Nápovědu k výběru algoritmů naleznete v tématu
 | Doporučení | Sestavení modelů doporučení. | [Vyhodnocení doporučovacího systému](evaluate-recommender.md) <br/> [Určení skóre doporučovacího systému SVD](score-svd-recommender.md) <br/> [Trénování doporučovacího systému SVD](train-SVD-recommender.md) |
 | Detekce anomálií | Vytvářejte modely detekce anomálií. | [Detekce anomálií založených na PCA](pca-based-anomaly-detection.md) <br/> [Model detekce anomálií vlaku](train-anomaly-detection-model.md) |
 
+
+## <a name="web-service"></a>Webová služba
+
+Seznamte se s [moduly webových služeb,](web-service-input-output.md) které jsou nezbytné pro odvození v reálném čase v návrháři Azure Machine Learning.
 
 ## <a name="error-messages"></a>Chybové zprávy
 

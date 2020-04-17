@@ -3,12 +3,12 @@ title: Vytvoření clusteru služby Service Fabric na webu Azure Portal
 description: Zjistěte, jak nastavit zabezpečený cluster Service Fabric v Azure pomocí portálu Azure a trezoru klíčů Azure.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: e0cd3d5e5a37720134a5bce596bba211b375f19d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754105"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458313"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvoření clusteru Service Fabric v Azure pomocí portálu Azure
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Vytvoření produkčního clusteru pro potřeby vaší aplikace zahrnuje určit�
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Hledání prostředku clusteru Service Fabric
 
-Přihlaste se k [portálu Azure][azure-portal].
+Přihlaste se k webu [Azure Portal][azure-portal].
 Kliknutím **na Vytvořit prostředek** přidejte novou šablonu zdroje. Vyhledejte šablonu clusteru Service Fabric na **webu Marketplace** v části **Vše**.
 V seznamu vyberte **cluster Service Fabric** Cluster.
 
@@ -204,7 +204,7 @@ V tomto okamžiku máte zabezpečený cluster pomocí certifikátů pro ověřov
 <!-- Links -->
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [azure-portal]: https://portal.azure.com/
-[key-vault-get-started]: ../key-vault/key-vault-overview.md
+[key-vault-get-started]: ../key-vault/general/overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md

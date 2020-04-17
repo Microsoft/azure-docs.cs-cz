@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: f434ad6e19c89f248fec948c0a049fabb0f7c476
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248434"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458279"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Přístup k tajným klíčům trezoru klíčů při nasazování spravovaných aplikací Azure
 
-Když potřebujete předat zabezpečenou hodnotu (jako heslo) jako parametr během nasazení, můžete načíst hodnotu z [trezoru klíčů Azure](../../key-vault/key-vault-overview.md). Chcete-li získat přístup k trezoru klíčů při nasazování spravovaných aplikací, musíte udělit přístup k instančnímu objektu **zprostředkovatele prostředků zařízení.** Služba Spravované aplikace používá tuto identitu ke spuštění operací. Chcete-li úspěšně načíst hodnotu z trezoru klíčů během nasazení, musí mít instanční objekt přístup k trezoru klíčů.
+Když potřebujete předat zabezpečenou hodnotu (jako heslo) jako parametr během nasazení, můžete načíst hodnotu z [trezoru klíčů Azure](../../key-vault/general/overview.md). Chcete-li získat přístup k trezoru klíčů při nasazování spravovaných aplikací, musíte udělit přístup k instančnímu objektu **zprostředkovatele prostředků zařízení.** Služba Spravované aplikace používá tuto identitu ke spuštění operací. Chcete-li úspěšně načíst hodnotu z trezoru klíčů během nasazení, musí mít instanční objekt přístup k trezoru klíčů.
 
 Tento článek popisuje, jak nakonfigurovat trezor klíčů pro práci se spravovanými aplikacemi.
 
