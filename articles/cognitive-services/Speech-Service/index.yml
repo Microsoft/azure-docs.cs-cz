@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 4b9b447ce06e0316cf229fc9a064bfded7411abf
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: 3535f1cb5f8901c0da629e7d2ef4f2a045d714f2
+  ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81401393"
+  ms.lasthandoff: 04/17/2020
+  ms.locfileid: "81604920"
 highlightedContent:
   items:
   - title: Co je služba Speech?
@@ -37,43 +37,43 @@ conceptualContent:
   items:
   - title: Převod řeči na text
     links:
-    - itemType: how-to-guide
-      text: Základy rozpoznávání řeči
-      url: speech-to-text-basics.md
     - itemType: quickstart
       text: Rozpoznávání řeči z mikrofonu
       url: quickstarts/speech-to-text-from-microphone.md
     - itemType: quickstart
       text: Rozpoznávání řeči ze zvukového souboru
       url: quickstarts/speech-to-text-from-file.md
+    - itemType: how-to-guide
+      text: Základy rozpoznávání řeči
+      url: speech-to-text-basics.md
     footerLink:
       text: Další informace
       url: index-speech-to-text.yml
   - title: Převod textu na řeč
     links:
-    - itemType: how-to-guide
-      text: Základy syntézy řeči
-      url: text-to-speech-basics.md
     - itemType: quickstart
       text: Syntéza řeči do reproduktoru
       url: quickstarts/text-to-speech.md
     - itemType: quickstart
       text: Syntéza řeči do zvukového souboru
       url: quickstarts/text-to-speech-audio-file.md
+    - itemType: how-to-guide
+      text: Základy syntézy řeči
+      url: text-to-speech-basics.md
     footerLink:
       text: Další informace
       url: index-text-to-speech.yml
   - title: Překlad řeči
     links:
-    - itemType: how-to-guide
-      text: Základy překladu řeči
-      url: speech-translation-basics.md
     - itemType: quickstart
       text: Překlad řeči na text
       url: quickstarts/translate-speech-to-text.md
     - itemType: quickstart
       text: Překlad řeči do několika cílových jazyků
       url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - itemType: how-to-guide
+      text: Základy překladu řeči
+      url: speech-translation-basics.md
     footerLink:
       text: Další informace
       url: index-speech-translation.yml
