@@ -7,43 +7,35 @@
       href: home.md
     - name: Co je nového
       href: whats-new.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
-    - name: Použití webového portálu
+    - name: Sestavení klasifikátoru
       items:
-        - name: Sestavení klasifikátoru
+        - name: Použití webového portálu
           href: getting-started-build-a-classifier.md
-        - name: Sestavení detektoru objektů
-          href: get-started-build-detector.md
-    - name: S využitím .NET SDK
-      items:
-        - name: Klasifikace obrázků
+        - name: S využitím .NET SDK
           href: csharp-tutorial.md
-        - name: Detekce objektů
-          href: csharp-tutorial-od.md
-    - name: Používání sady Python SDK
-      items:
-        - name: Klasifikace obrázků
+        - name: Používání sady Python SDK
           href: python-tutorial.md
-        - name: Detekce objektů
-          href: python-tutorial-od.md
-    - name: Používání sady Java SDK
-      items:
-        - name: Klasifikace obrázků
+        - name: Používání sady Java SDK
           href: java-tutorial.md
-        - name: Detekce objektů
-          href: java-tutorial-od.md
-    - name: Použití Node.js SDK
-      items:
-        - name: Klasifikace obrázků
+        - name: Použití Node.js SDK
           href: node-tutorial.md
-        - name: Detekce objektů
-          href: node-tutorial-object-detection.md
-    - name: Použití sady Go SDK
-      items:
-        - name: Klasifikace obrázků
+        - name: Použití sady Go SDK
           href: go-tutorial.md
-        - name: Detekce objektů
+    - name: Sestavení detektoru objektů
+      items:
+        - name: Použití webového portálu
+          href: get-started-build-detector.md
+        - name: S využitím .NET SDK
+          href: csharp-tutorial-od.md
+        - name: Používání sady Python SDK
+          href: python-tutorial-od.md
+        - name: Používání sady Java SDK
+          href: java-tutorial-od.md
+        - name: Použití Node.js SDK
+          href: node-tutorial-object-detection.md
+        - name: Použití sady Go SDK
           href: go-tutorial-object-detection.md
 - name: Kurzy
   items:
@@ -99,7 +91,7 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: Zdroje a prostředky
   items:
-    - name: Ukázky
+    - name: ukázky
       href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'
     - name: Omezení a kvóty
       href: limits-and-quotas.md
