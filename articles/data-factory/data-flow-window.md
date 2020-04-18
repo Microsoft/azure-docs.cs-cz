@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 67e966e3b3dd274e993797ed37e17c5490d632c0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416491"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606225"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Transformace okna Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Window transformace je místo, kde budete definovat agregace na základě okna sloupců v datových proudech. V Tvůrce výrazů můžete definovat různé typy agregací, které jsou založeny na datech nebo časových oknech (klauzule SQL OVER), jako je olovo, mas, ntile, cumedist, rank atd.). Nové pole bude generováno ve výstupu, který zahrnuje tyto agregace. Můžete také zahrnout volitelná pole podle skupiny.
 

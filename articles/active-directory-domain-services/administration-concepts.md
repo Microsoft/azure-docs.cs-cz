@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba281ffb30801e0ae10cab10ceb95c0a3bffde2d
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264229"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640023"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Koncepty správy pro uživatelské účty, hesla a správu ve službě Azure Active Directory Domain Services
 
@@ -48,7 +48,7 @@ Další informace o rozdílech v použití zásad hesel v závislosti na zdroji 
 
 K ověření uživatelů ve spravované doméně potřebuje služba Azure AD DS hodnotu hash hesel ve formátu, který je vhodný pro nt lan manager (NTLM) a ověřování protokolem Kerberos. Azure AD negeneruje ani ukládat hesla hashe ve formátu, který je vyžadován pro ověřování NTLM nebo Kerberos, dokud nepovolíte Azure AD DS pro vašeho tenanta. Z bezpečnostních důvodů Azure AD také neukládá žádné přihlašovací údaje hesla ve formě prostého textu. Azure AD proto nemůže automaticky generovat tyto hashe ntlm nebo kerberos hesla na základě existujících přihlašovacích údajů uživatelů.
 
-Pro uživatelské účty pouze pro cloud uživatelé musí změnit svá hesla, než budou moci používat Azure AD DS. Tento proces změny hesla způsobí, že hodnot hash hesel pro ověřování protokolů Kerberos a NTLM se vygenerují a uloží ve službě Azure AD.
+Pro uživatelské účty pouze pro cloud uživatelé musí změnit svá hesla, než budou moci používat Azure AD DS. Tento proces změny hesla způsobí, že hodnot hash hesel pro ověřování protokolů Kerberos a NTLM se vygenerují a uloží ve službě Azure AD. Účet není synchronizován z Azure AD do Azure AD DS, dokud se nezmění heslo.
 
 Pro uživatele synchronizované z místního prostředí služby AD DS pomocí služby Azure AD Connect [povolte synchronizaci hodnot hashe hesel][hybrid-phs].
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 471b26ebc4bd4aecb814ec43c7eba56e3d764fa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16f9080487af95e7de5c5f8c91fd5c8d356b7bde
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402493"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618073"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Použití rozšíření CLI pro Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,11 +35,30 @@ Příkaz příkazpříkaz není náhradou za azure machine learning sdk. Jedná 
 
 * Chcete-li použít příkazové příkazové příkazové příkazy, musíte mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušejte [bezplatnou nebo placenou verzi Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+* Chcete-li použít příkazy příkazu příkazu příkazu příkazového příkazu v tomto dokumentu z **místního prostředí**, potřebujete [příkazové příkazové příkazy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+    Pokud používáte [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/), cli je přístupná prostřednictvím prohlížeče a žije v cloudu.
 
 ## <a name="full-reference-docs"></a>Úplné referenční dokumenty
 
 Najděte [úplné referenční dokumenty pro rozšíření azure-cli-ml azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest).
+
+## <a name="connect-the-cli-to-your-azure-subscription"></a>Připojení příkazového příkazového příkazu k předplatnému Azure
+
+> [!IMPORTANT]
+> Pokud používáte Azure Cloud Shell, můžete tuto část přeskočit. Cloudové prostředí vás automaticky ověří pomocí účtu, který se přihlásíte k předplatnému Azure.
+
+Existuje několik způsobů, jak můžete ověřit na vaše předplatné Azure z cli. Nejzákladnější je interaktivní ověření pomocí prohlížeče. Chcete-li se interaktivně ověřit, otevřete příkazový řádek nebo terminál a použijte následující příkaz:
+
+```azurecli-interactive
+az login
+```
+
+Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je třeba otevřít prohlížeč a postupovat podle pokynů na příkazovém řádku. Pokyny zahrnují procházení [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadání autorizačního kódu.
+
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+
+Další způsoby ověřování najdete [v tématu Přihlášení pomocí azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
 ## <a name="install-the-extension"></a>Instalace rozšíření
 

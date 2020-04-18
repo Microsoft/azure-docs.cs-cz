@@ -4,15 +4,15 @@ description: Integrujte aplikaci ve službě Azure App Service s virtuálními s
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cb5747c6780da134dfb2f5ab088348b848c5f04a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4866397af244ffb3c6aa9c7547b0a9413b10ccfd
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312822"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604867"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s virtuální sítí Azure
 
@@ -41,8 +41,6 @@ Služba Azure App Service má dvě varianty:
     ![Vybrat klasickou virtuální síť][3]
 
 Během integrace se aplikace restartuje. Po dokončení integrace uvidíte podrobnosti o virtuální síti, do které jste integrovaní.
-
-Po integrované aplikace s vaší virtuální sítě, používá stejný server DNS, že vaše virtuální síť je nakonfigurovaný s, pokud je Azure DNS privátní zóny. V současné době nelze použít integraci virtuální sítě s Privátními zónami Azure DNS.
 
 ## <a name="regional-vnet-integration"></a>Regionální integrace virtuální sítě
 
@@ -200,3 +198,4 @@ Pro integraci virtuální sítě požadovanou bránou můžete integrovat služb
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
 [VNETRouteTables]: https://docs.microsoft.com/azure/virtual-network/manage-route-table/
 [installCLI]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest/
+[privateendpoints]: networking/private-endpoint.md

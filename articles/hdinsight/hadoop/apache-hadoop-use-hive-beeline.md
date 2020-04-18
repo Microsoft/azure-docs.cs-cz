@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: 426294f20dd51538920182a0e7a2915f6a47ba54
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 04/17/2020
+ms.openlocfilehash: 10e53b6b7b79e7d4581a1843b70b3d02778e8df5
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383557"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617794"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití klienta Apache Beeline s Apache Hivem
 
@@ -40,7 +40,8 @@ Při připojování z klienta k HDInsight přes virtuální síť Azure, musíte
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-<a name="replace-headnode-fqdn-with-the-fully-qualified-domain-name-of-a-cluster-headnode-to-find-the-fully-qualified-domain-name-of-a-headnode-use-the-information-in-the-manage-hdinsight-using-the-apache-ambari-rest-api-document"></a>Nahraďte `<headnode-FQDN>` plně kvalifikovanýnázev domény hlavového uzlu clusteru. Chcete-li najít plně kvalifikovaný název domény headnode, použijte informace v spravovat HDInsight pomocí dokumentu [Apache Ambari REST API.](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)
+Nahraďte `<headnode-FQDN>` plně kvalifikovanýnázev domény hlavového uzlu clusteru. Chcete-li najít plně kvalifikovaný název domény headnode, použijte informace v spravovat HDInsight pomocí dokumentu [Apache Ambari REST API.](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)
+
 ---
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Cluster balíčků HDInsight Enterprise Security Package (ESP) pomocí protokolu Kerberos
@@ -84,11 +85,11 @@ Soukromé koncové body odkazují na základní vyrovnávání zatížení, ke k
 
 ### <a name="use-beeline-with-apache-spark"></a>Použití Beeline s Apache Spark
 
-Apache Spark poskytuje vlastní implementaci HiveServer2, která je někdy označována jako Spark Thrift server. Tato služba používá Spark SQL k řešení dotazů namísto Hive a může poskytovat lepší výkon v závislosti na dotazu.
+Apache Spark poskytuje vlastní implementaci HiveServer2, která je někdy označována jako Spark Thrift server. Tato služba používá Spark SQL k řešení dotazů namísto Hive. A může poskytnout lepší výkon v závislosti na dotazu.
 
 #### <a name="through-public-or-private-endpoints"></a>Prostřednictvím veřejných nebo soukromých koncových bodů
 
-Použitý připojovací řetězec se mírně liší. Místo toho, `httpPath=/hive2` aby `httpPath/sparkhive2`obsahovala je to . Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` přihlašovacím účtem clusteru pro váš cluster. Pro clustery ESP použijte úplný hlavní název user@domain.comjednotky (například). Nahraďte `password` heslem přihlašovacího účtu clusteru.
+Použitý připojovací řetězec se mírně liší. Místo toho, `httpPath=/hive2` aby `httpPath/sparkhive2`obsahoval a používá . Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` přihlašovacím účtem clusteru pro váš cluster. Pro clustery ESP použijte úplný hlavní název user@domain.comjednotky (například). Nahraďte `password` heslem přihlašovacího účtu clusteru.
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -118,7 +119,7 @@ Při připojování přímo z hlavního uzlu clusteru nebo z prostředku uvnitř
 
 * Cluster Hadoop na HDInsight. Viz [Začínáme s HDInsight na Linuxu](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Všimněte si [schématu IDENTIFIKÁTORU URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusteru. Například `wasb://` pro Azure `abfs://` Storage, pro Azure Data `adl://` Lake Storage Gen2 nebo pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený `wasbs://`zabezpečený přenos, je identifikátor URI . Další informace naleznete v tématu [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* Všimněte si schématu IDENTIFIKÁTORU URI pro primární úložiště clusteru. Například `wasb://` pro Azure `abfs://` Storage, pro Azure Data `adl://` Lake Storage Gen2 nebo pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený `wasbs://`zabezpečený přenos, je identifikátor URI . Další informace naleznete v tématu [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
 * Možnost 1: Klient SSH. Další informace naleznete [v tématu Připojení k HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Většina kroků v tomto dokumentu předpokládá, že používáte Beeline z relace SSH do clusteru.
 
@@ -177,7 +178,7 @@ Tento příklad je založen na použití klienta Beeline z připojení SSH.
 
     Tyto informace popisují sloupce v tabulce.
 
-5. Zadejte následující příkazy k vytvoření tabulky s názvem **log4jLogs** pomocí ukázkových dat dodaných s clusterem HDInsight: (Podle potřeby revidovat na základě [schématu URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme).)
+5. Zadejte následující příkazy k vytvoření tabulky s názvem **log4jLogs** pomocí ukázkových dat dodaných s clusterem HDInsight: (Podle potřeby revidovat na základě schématu URI.)
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -244,7 +245,7 @@ Tento příklad je založen na použití klienta Beeline z připojení SSH.
 
 ## <a name="run-a-hiveql-file"></a>Spuštění souboru HiveQL
 
-Toto je pokračování z předchozího příkladu. Pomocí následujících kroků vytvořte soubor a spusťte jej pomocí funkce Beeline.
+Tento příklad je pokračování z předchozího příkladu. Pomocí následujících kroků vytvořte soubor a spusťte jej pomocí funkce Beeline.
 
 1. Pomocí následujícího příkazu vytvořte soubor s názvem **query.hql**:
 
@@ -300,7 +301,7 @@ Toto je pokračování z předchozího příkladu. Pomocí následujících krok
 
 ## <a name="install-beeline-client"></a>Instalace klienta beeline
 
-Přestože je Beeline součástí hlavního uzlu clusteru HDInsight, můžete ji nainstalovat do místního počítače.  Níže uvedené kroky k instalaci Beeline na místním počítači jsou založeny na [Windows Subsystem pro Linux](https://docs.microsoft.com/windows/wsl/install-win10).
+Přestože je Beeline součástí hlavních uzlů, můžete ji nainstalovat místně.  Kroky instalace místního počítače jsou založeny na [podsystému Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10).
 
 1. Aktualizujte seznamy balíčků. Do prostředí bash zadejte následující příkaz:
 
@@ -316,7 +317,7 @@ Přestože je Beeline součástí hlavního uzlu clusteru HDInsight, můžete ji
         sudo apt install openjdk-11-jre-headless
         ```
 
-    1. Otevřete soubor bashrc (obvykle se nachází `nano ~/.bashrc`v ~/.bashrc): .
+    1. Otevřete soubor bashrc (často nalezený v `nano ~/.bashrc`~/.bashrc): .
 
     1. Pozměňte spis bashrc. Na konec souboru přidejte následující řádek:
 

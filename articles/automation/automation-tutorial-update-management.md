@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 888dc99162551482afc715f1a793614d2c866384
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 62c661f75aef77117a61be7e802562e6dde17ba5
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677038"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604681"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -40,13 +40,13 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
-Po povolení správy aktualizací se otevře stránka **Správa aktualizací.** Pokud jsou některé aktualizace označeny jako chybějící, zobrazí se na kartě **Chybějící aktualizace** seznam chybějících aktualizací.
+Po povolení správy aktualizací se otevře stránka Správa aktualizací. Pokud jsou některé aktualizace označeny jako chybějící, zobrazí se na kartě **Chybějící aktualizace** seznam chybějících aktualizací.
 
 V části **Odkaz Informace**vyberte odkaz na aktualizaci a otevřete článek podpory pro aktualizaci. Můžete se dozvědět důležité informace o aktualizaci.
 
 ![Zobrazení stavu aktualizace](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
-Kliknutím na libovolné jiné místo v aktualizaci otevřete podokno **hledání protokolu** pro vybranou aktualizaci. Dotaz pro prohledávání protokolu je předdefinovaný pro tuto konkrétní aktualizaci. Tento dotaz můžete upravit nebo vytvořit vlastní dotaz a zobrazit podrobné informace o aktualizacích nasazených nebo chybějících ve vašem prostředí.
+Kliknutím na libovolné jiné místo v aktualizaci otevřete podokno hledání protokolu pro vybranou aktualizaci. Dotaz pro prohledávání protokolu je předdefinovaný pro tuto konkrétní aktualizaci. Tento dotaz můžete upravit nebo vytvořit vlastní dotaz a zobrazit podrobné informace o aktualizacích nasazených nebo chybějících ve vašem prostředí.
 
 ![Zobrazení stavu aktualizace](./media/automation-tutorial-update-management/logsearch.png)
 
@@ -58,7 +58,7 @@ V tomto kroku se naučíte nastavit výstrahu, abyste věděli o stavu nasazení
 
 V účtu Automation přejděte v části **Výstrahy** v části **Sledování**a klikněte na **nové pravidlo výstrah**.
 
-Váš účet automatizace je již vybrán jako prostředek. Pokud ji chcete změnit, klepněte na **tlačítko Vybrat**. Na stránce **Vybrat prostředek** zvolte **Automatizační účty** z rozevírací nabídky Filtr podle typu **prostředku.** Vyberte účet Automation a klepněte na tlačítko **Hotovo**.
+Váš účet automatizace je již vybrán jako prostředek. Pokud ji chcete změnit, klepněte na **tlačítko Vybrat**. Na stránce Vybrat prostředek zvolte **Automatizační účty** z rozevírací nabídky **Filtr podle typu prostředku.** Vyberte účet Automation a klepněte na tlačítko **Hotovo**.
 
 Klepnutím na tlačítko **Přidat podmínku** vyberte signál, který je vhodný pro nasazení aktualizace. V následující tabulce jsou uvedeny podrobnosti o dvou dostupných signálech.
 
@@ -85,11 +85,11 @@ Do pole **Název skupiny akcí** zadejte název výstrahy a krátký název. Spr
 
 V části **Akce**zadejte název akce, například **E-mailové oznámení**. V **případě typu akce**vyberte možnost **E-mail/SMS/Push/Voice**. V **části Podrobnosti**vyberte **možnost Upravit podrobnosti**.
 
-V podokně **E-mailové/SMS/nabízené/hlasové oznámení** zadejte název. Zaškrtněte políčko **E-mail** a zadejte platnou e-mailovou adresu.
+V podokně E-mailové/SMS/nabízené/hlasové oznámení zadejte název. Zaškrtněte políčko **E-mail** a zadejte platnou e-mailovou adresu.
 
 ![Konfigurace e-mailové skupiny akcí](./media/automation-tutorial-update-management/configure-email-action-group.png)
 
-V podokně **E-mail/SMS/Push/Hlas** klepněte na **tlačítko OK**. V podokně **Přidat skupinu akcí** klepněte na tlačítko **OK**.
+V podokně E-mail/SMS/Push/Hlas klepněte na **tlačítko OK**. V podokně Přidat skupinu akcí klepněte na tlačítko **OK**.
 
 Chcete-li přizpůsobit předmět e-mailu s výstrahami, vyberte v části **Vytvořit pravidlo**v části **Přizpůsobit akce** **předmět e-mailu**. Jakmile budete hotovi, vyberte **Vytvořit pravidlo upozornění**. Výstraha vás upozorní, když je nasazení aktualizace úspěšné a které počítače byly součástí spuštění nasazení aktualizace.
 
@@ -118,12 +118,12 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
    |Operační systém  |Typ  |
    |---------|---------|
-   |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>Nástroje</br>Aktualizace<br>Ovladač        |
+   |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>nástroje</br>Aktualizace<br>Ovladač        |
    |Linux     | Důležité aktualizace a aktualizace zabezpečení</br>Další aktualizace       |
 
    Popis typů klasifikace naleznete v tématu [Aktualizace klasifikací](automation-view-update-assessments.md#update-classifications).
 
-* **Aktualizace zahrnout/vyloučit** - Otevře stránku Zahrnout nebo vyloučit. Aktualizace, které mají být zahrnuty nebo vyloučeny, jsou na samostatných kartách zadáním čísel ID článku KB. Při zadávání jednoho nebo více čísel ID je třeba odebrat nebo zrušit kontrolu všech klasifikací s nasazením aktualizace. Tím zajistíte, že žádné další aktualizace jsou zahrnuty v balíčku aktualizace při zadávání ID aktualizace.
+* **Aktualizace zahrnout/vyloučit** - Otevře stránku Zahrnout nebo vyloučit. Aktualizace, které mají být zahrnuty nebo vyloučeny, jsou na samostatných kartách zadáním čísel ID článku KB. Při zadávání jednoho nebo více čísel ID je třeba odebrat nebo zrušit zaškrtnutí všech klasifikací s nasazením aktualizace. Tím zajistíte, že žádné další aktualizace jsou zahrnuty v balíčku aktualizace při zadávání ID aktualizace.
 
 > [!NOTE]
 > Je důležité vědět, že vyloučení přepsat inkluze. Pokud například definujete pravidlo `*`vyloučení aplikace , správa aktualizací nenainstaluje žádné opravy ani balíčky, protože jsou všechny vyloučeny. Vyloučené záplaty se stále zobrazují jako chybějící ze stroje. Pro počítače s Linuxem, pokud zahrnete balíček, který má závislý balíček, který byl vyloučen, správa aktualizací nenainstaluje hlavní balíček.
@@ -132,7 +132,7 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 > Nelze zadat aktualizace, které byly nahrazeny pro zahrnutí s nasazením aktualizace.
 >
 
-* **Nastavení plánu:** Otevře se podokno **Nastavení plánu**. Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
+* **Nastavení plánu:** Otevře se podokno Nastavení plánu. Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
 
    Můžete také určit, jestli nasazení proběhne jednou, nebo nastavit plán opakování. V části **Opakování** vyberte **Jednou**. Ponechejte výchozí hodnotu jako 1 den a klepněte na tlačítko **OK**. Tyto položky nastavují opakovaný plán.
 

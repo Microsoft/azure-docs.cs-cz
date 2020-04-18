@@ -1,35 +1,32 @@
 ---
 title: Ověřování na základě certifikátů v systému iOS – Azure Active Directory
-description: Informace o podporovaných scénářích a požadavcích na konfiguraci ověřování na základě certifikátů v řešeních se zařízeními se systémem iOS
+description: Informace o podporovaných scénářích a požadavcích na konfiguraci ověřování na základě certifikátů pro Azure Active Directory v řešeních se zařízeními se systémem iOS
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 04/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd8a0c3688e5056c7941d334da8caee9f21ba82
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 76c5e18a0bf84e96476eafd7ff35398049f1a492
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407266"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639633"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Ověřování na základě certifikátu Azure Active Directory v systému iOS
 
-Zařízení s iOS můžou při připojování k zařízením na základě certifikátu (CBA) k ověřování ve službě Azure Active Directory pomocí klientského certifikátu na svém zařízení používat ověřování na základě certifikátu (CBA):
+Chcete-li zlepšit zabezpečení, mohou zařízení iOS používat ověřování na základě certifikátu (CBA) k ověření ve službě Azure Active Directory (Azure AD) pomocí klientského certifikátu na svém zařízení při připojování k následujícím aplikacím nebo službám:
 
 * Mobilní aplikace Office, jako je Microsoft Outlook a Microsoft Word
 * Klienti Exchange ActiveSync (EAS)
 
-Konfigurace této funkce eliminuje potřebu zadávat kombinaci uživatelského jména a hesla do určitých aplikací pošty a sady Microsoft Office v mobilním zařízení.
+Použití certifikátů eliminuje potřebu zadávat kombinaci uživatelského jména a hesla do určitých aplikací pošty a sady Microsoft Office v mobilním zařízení.
 
-Toto téma obsahuje požadavky a podporované scénáře konfigurace CBA na iOS zařízení pro uživatele klientů v plánech Office 365 Enterprise, Business, Education, US Government, China a Germany.
-
-Tato funkce je dostupná ve verzi Preview v plánech Office 365 Us Government Defense a Federal.
+Tento článek podrobně popisuje požadavky a podporované scénáře pro konfiguraci CBA na zařízení se systémem iOS. CBA pro iOS je dostupná ve veřejných cloudech Azure, Microsoft Government Cloud, Microsoft Cloud Germany a Microsoft Azure China 21Vianet.
 
 ## <a name="microsoft-mobile-applications-support"></a>Podpora mobilních aplikací společnosti Microsoft
 
@@ -48,38 +45,48 @@ Tato funkce je dostupná ve verzi Preview v plánech Office 365 Us Government De
 
 ## <a name="requirements"></a>Požadavky
 
-Verze operačního systému zařízení musí být iOS 9 a vyšší
+Chcete-li používat CBA s iOS, platí následující požadavky a aspekty:
 
-Federační server musí být nakonfigurován.
+* Verze operačního systému zařízení musí být iOS 9 nebo vyšší.
+* Microsoft Authenticator je vyžadován pro aplikace Office v systému iOS.
+* V řetězci klíčů macOS, který obsahuje ověřovací adresu URL serveru ADFS, musí být vytvořena předvolba identity. Další informace najdete [v tématu Vytvoření předvolby identity v přístupu ke klíčence na Macu](https://support.apple.com/guide/keychain-access/create-an-identity-preference-kyca6343b6c9/mac).
 
-Microsoft Authenticator je vyžadován pro aplikace Office v systému iOS.
+Platí následující požadavky a důležité informace služby ADF (Active Directory Federation Services):
 
-Aby služba Azure Active Directory mohla odvolat klientský certifikát, musí mít token ADFS následující deklarace identity:
+* Server ADFS musí být povolen pro ověřování certifikátů a používat federované ověřování.
+* Certifikát musí používat rozšířené použití klíče (EKU) a obsahovat hlavní název uživatele v *alternativním názvu subjektu (hlavní název NT).*
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`(Sériové číslo klientského certifikátu)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`(Řetězec pro vystavitele klientského certifikátu)
+## <a name="configure-adfs"></a>Konfigurace služby ADF
 
-Azure Active Directory přidá tyto deklarace identity do obnovovacího tokenu, pokud jsou k dispozici v tokenu ADFS (nebo jiném tokenu SAML). Pokud je třeba ověřit obnovovací token, tyto informace se používají ke kontrole odvolání.
+Aby služba Azure AD odvolala klientský certifikát, musí mít token ADFS následující deklarace identity. Azure AD přidá tyto deklarace identity do obnovovacího tokenu, pokud jsou k dispozici v tokenu ADFS (nebo jakýkoli jiný token SAML). Pokud je třeba ověřit obnovovací token, tyto informace se používají ke kontrole odvolání:
 
-Jako osvědčený postup byste měli aktualizovat chybové stránky služby ADFS vaší organizace následujícími informacemi:
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`- přidejte sériové číslo vašeho klientského certifikátu
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`- přidejte řetězec pro vystavitele vašeho klientského certifikátu
 
-* Požadavek na instalaci microsoft authenticatoru v systému iOS
+Osvědčeným postupem je také aktualizovat chybové stránky služby ADFS vaší organizace následujícími informacemi:
+
+* Požadavek na instalaci Microsoft Authenticator v systému iOS.
 * Pokyny k získání uživatelského certifikátu.
 
-Další informace naleznete [v tématu Přizpůsobení přihlašovacích stránek ve sestavě AD FS](https://technet.microsoft.com/library/dn280950.aspx).
+Další informace naleznete [v tématu Přizpůsobení přihlašovací stránky ad FS](https://technet.microsoft.com/library/dn280950.aspx).
 
-Některé aplikace Office (s povoleným moderním ověřováním) odesílají do Azure AD ve své žádosti*výzvu=přihlášení.* Ve výchozím nastavení Azure AD překládá '*prompt=login*' v požadavku na ADFS jako '*wauth=usernamepassworduri*' (požádá ADFS k tomu U / P Auth) a '*wfresh = 0*' (požádá ADFS ignorovat stav přihlašovaného k as a provést nové ověřování). Pokud chcete povolit ověřování na základě certifikátu pro tyto aplikace, je třeba upravit výchozí chování Azure AD. Stačí nastavit '*PromptLoginBehavior*' v nastavení federované domény na '*Zakázáno*'.
-K provedení tohoto úkolu můžete použít rutinu [MSOLDomainFederationSettings:](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+## <a name="use-modern-authentication-with-office-apps"></a>Použití moderního ověřování s aplikacemi Office
 
-`Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
+Některé aplikace Office s `prompt=login` povoleným moderním ověřováním se ve své žádosti odesílají do Azure AD. Ve výchozím nastavení Azure `prompt=login` AD překládá v `wauth=usernamepassworduri` požadavku na ADFS jako (požádá ADFS dělat U / P Auth) a `wfresh=0` (požádá ADFS ignorovat stav přihlašovaného pomocí něj a provést nové ověřování). Pokud chcete povolit ověřování na základě certifikátu pro tyto aplikace, upravte výchozí chování Azure AD.
 
-## <a name="exchange-activesync-clients-support"></a>Podpora klientů Exchange ActiveSync
+Chcete-li aktualizovat výchozí chování, nastavte v nastavení federované domény hodnotu*PromptLoginBehavior*na *hodnotu Zakázáno*. K provedení této úlohy můžete použít rutinu [MSOLDomainFederationSettings,](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) jak je znázorněno v následujícím příkladu:
 
-V iOS 9 nebo novějším je nativní poštovní klient iOS podporován. Chcete-li zjistit, zda je tato funkce podporována, obraťte se na vývojáře aplikace u všech ostatních aplikací Exchange ActiveSync.
+```powershell
+Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled
+```
+
+## <a name="support-for-exchange-activesync-clients"></a>Podpora pro klienty Exchange ActiveSync
+
+V iOS 9 nebo novějším je nativní poštovní klient iOS podporován. Chcete-li zjistit, zda je tato funkce podporována pro všechny ostatní aplikace Exchange ActiveSync, obraťte se na vývojáře aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete ve svém prostředí nakonfigurovat ověřování na základě certifikátů, přečtěte si pokyny v tématu [Začínáme s ověřováním na základě certifikátu v systému Android.](../authentication/active-directory-certificate-based-authentication-get-started.md)
+Pokyny najdete v tématu [Začínáme s ověřováním na základě certifikátů.](active-directory-certificate-based-authentication-get-started.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 00f6a5f88a66f0a19943ff3a2c722ae1a9938e9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550393"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604724"
 ---
 # <a name="how-to-query-logs-from-startstop-vms-solution"></a>Jak dotazovat protokoly z řešení Start/Stop virtuálních her
 
@@ -62,7 +62,7 @@ Při každém hledání protokolu, který vrací záznamy kategorií **JobLogs**
 
 V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy úloh shromážděné tímto řešením.
 
-|Dotaz | Popis|
+|Dotazy | Popis|
 |----------|----------|
 |Najít úlohy pro ScheduledStartStop_Parent runbooku, které byly úspěšně dokončeny | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Najít úlohy pro ScheduledStartStop_Parent runbooku, které nebyly úspěšně dokončeny | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
@@ -71,4 +71,4 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 ## <a name="next-steps"></a>Další kroky
 
-Řešení Start/Stop virtuálních počítače mimo pracovní dobu neobsahuje předdefinovanou sadu výstrah. Zkontrolujte [vytvořit výstrahy protokolu](../azure-monitor/platform/alerts-log.md) pomocí Azure Monitor se dozvíte, jak vytvořit úlohy se nezdařilo výstrahy pro podporu devOps nebo provozní procesy a postupy.
+**Spuštění a zastavení virtuálních počítače během mimo pracovní dobu** řešení neobsahuje předdefinovanou sadu výstrah. Zkontrolujte [vytvořit výstrahy protokolu](../azure-monitor/platform/alerts-log.md) pomocí Azure Monitor se dozvíte, jak vytvořit úlohy se nezdařilo výstrahy pro podporu devOps nebo provozní procesy a postupy.

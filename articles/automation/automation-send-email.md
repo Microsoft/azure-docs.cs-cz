@@ -5,24 +5,25 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: f12b5c158025db89dcc64a3be03b263f95a3a64c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d4b35458c76da82b33dfcb530cfdc71ee3da3bb6
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261354"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604784"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Kurz: Odeslání e-mailu z runbooku Azure Automation
 
-Pomocí PowerShellu můžete odeslat e-mail z runbooku pomocí [SendGrid.](https://sendgrid.com/solutions) Tento kurz vám ukáže, jak vytvořit opakovaně použitelný runbook, který odešle e-mail pomocí klíče rozhraní API uloženého v [Azure KeyVault](/azure/key-vault/).
-
-V tomto kurzu se naučíte:
+Pomocí PowerShellu můžete odeslat e-mail z runbooku pomocí [SendGrid.](https://sendgrid.com/solutions) V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
-> * Vytvoření Azure KeyVault
-> * Uložení klíče rozhraní API SendGrid do úložiště KeyVault
-> * Vytvoření runbooku, který načte klíč rozhraní API a odešle e-mail
+> * Vytvořte trezor klíčů Azure.
+> * Uložte `SendGrid` klíč rozhraní API do trezoru klíčů.
+> * Vytvořte opakovaně použitelný runbook, který načte klíč rozhraní API a odešle e-mail pomocí klíče rozhraní API uloženého v [úložišti klíčů Azure](/azure/key-vault/).
+
+>[!NOTE]
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,9 +33,9 @@ K dokončení tohoto kurzu potřebujete následující:
 * [Vytvořte účet SendGrid](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account).
 * [Účet automatizace](automation-offering-get-started.md) s moduly **Az** a [spustit jako připojení](automation-create-runas-account.md), ukládat a spouštět runbook.
 
-## <a name="create-an-azure-keyvault"></a>Vytvoření Azure KeyVault
+## <a name="create-an-azure-key-vault"></a>Vytvoření služby Azure Key Vault
 
-Azure KeyVault můžete vytvořit pomocí následujícího skriptu Prostředí PowerShell. Nahraďte hodnoty proměnných hodnotami specifickými pro vaše prostředí. Pomocí vloženého prostředí Azure Cloud Shell použijte pomocí tlačítka <kbd>Try It,</kbd> které se nachází v pravém horním rohu bloku kódu. Kód můžete také zkopírovat a spustit místně, pokud máte na místním počítači nainstalovaný [modul Azure PowerShell.](/powershell/azure/install-az-ps)
+Trezor klíčů Azure můžete vytvořit pomocí následujícího skriptu Prostředí PowerShell. Nahraďte hodnoty proměnných hodnotami specifickými pro vaše prostředí. Pomocí vloženého prostředí Azure Cloud Shell použijte pomocí tlačítka **Try It,** které se nachází v pravém horním rohu bloku kódu. Kód můžete také zkopírovat a spustit místně, pokud máte na místním počítači nainstalovaný [modul Azure PowerShell.](/powershell/azure/install-az-ps)
 
 > [!NOTE]
 > Chcete-li načíst klíč rozhraní API, použijte kroky nalezené v části [Najít klíč rozhraní API SendGrid](/azure/sendgrid-dotnet-how-to-send-email#to-find-your-sendgrid-api-key).
@@ -64,30 +65,30 @@ $resourceId = $newKeyVault.ResourceId
 $Secret = ConvertTo-SecureString -String $SendGridAPIKey -AsPlainText -Force
 Set-AzKeyVaultSecret -VaultName $VaultName -Name 'SendGridAPIKey' -SecretValue $Secret
 
-# Grant access to the KeyVault to the Automation RunAs account.
+# Grant access to the Key Vault to the Automation Run As account.
 $connection = Get-AzAutomationConnection -ResourceGroupName $KeyVaultResourceGroupName -AutomationAccountName $AutomationAccountName -Name AzureRunAsConnection
 $appID = $connection.FieldDefinitionValues.ApplicationId
 Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -PermissionsToSecrets Set, Get
 ```
 
-Další způsoby vytvoření azure keyvault a uložení tajného klíče naleznete v [tématu KeyVault Quickstarts](/azure/key-vault/).
+Další způsoby vytvoření trezoru klíčů Azure a uložení tajného klíče naleznete v [tématu Key Vault Quickstarts](/azure/key-vault/).
 
 ## <a name="import-required-modules-to-your-automation-account"></a>Import požadovaných modulů do účtu Automation
 
-Chcete-li používat Azure KeyVault v rámci sady Runbook, váš účet Automation bude potřebovat následující moduly:
+Chcete-li používat Azure Key Vault v rámci sady Runbook, váš účet automatizace potřebuje následující moduly:
 
-* [Az.Profil](https://www.powershellgallery.com/packages/Az.Profile).
-* [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault).
+* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
-Klikněte <kbd>na Nasadit do Azure Automation</kbd> na kartě Azure Automation v části Možnosti instalace. Tato akce otevře portál Azure. Na stránce Import vyberte účet automatizace a klepněte na tlačítko <kbd>OK</kbd>.
+Klikněte **na Nasadit do Azure Automation** na kartě Azure Automation v části **Možnosti instalace**. Tato akce otevře portál Azure. Na stránce Import vyberte účet Automatizace a klepněte na tlačítko **OK**.
 
 Další metody pro přidání požadovaných modulů naleznete [v tématu Import Modules](/azure/automation/shared-resources/modules#importing-modules).
 
 ## <a name="create-the-runbook-to-send-an-email"></a>Vytvoření runbooku pro odeslání e-mailu
 
-Po vytvoření keyvault a uloženy SendGrid API klíč, je čas vytvořit runbook, který načte klíč rozhraní API a odeslat e-mail.
+Po vytvoření trezoru klíčů a `SendGrid` uložení klíče rozhraní API je čas vytvořit runbook, který načte klíč rozhraní API a odešle e-mail.
 
-Tento runbook používá účet AzureRunAsConnection [Run As](automation-create-runas-account.md) k ověření pomocí Azure k načtení tajného klíče z Azure KeyVault.
+Tento runbook `AzureRunAsConnection` používá jako [účet Spustit jako](automation-create-runas-account.md) k ověření pomocí Azure k načtení tajného klíče z Azure Key Vault.
 
 Tento příklad slouží k vytvoření runbooku s názvem **Send-GridMailMessage**. Můžete upravit skript Prostředí PowerShell a znovu jej použít pro různé scénáře.
 
@@ -98,7 +99,7 @@ Tento příklad slouží k vytvoření runbooku s názvem **Send-GridMailMessage
    ![Vytvořit runbook](./media/automation-send-email/automation-send-email-runbook.png)
 5. Runbook se vytvoří a otevře se stránka **Upravit powershellový runbook**.
    ![Úprava runbooku](./media/automation-send-email/automation-send-email-edit.png)
-6. Zkopírujte následující příklad PowerShellu na stránku **Úpravy.** Ujistěte `$VaultName` se, že je název, který jste zadali při vytváření KeyVault.
+6. Zkopírujte následující příklad PowerShellu na stránku **Úpravy.** Ujistěte `$VaultName` se, že je název, který jste zadali při vytváření trezoru klíčů.
 
     ```powershell-interactive
     Param(
@@ -156,12 +157,12 @@ Pokud se testovací e-mail zpočátku nezobrazují, zkontrolujte složky **Nevy�
 
 Pokud už runbook nepotřebujete, odstraňte ho. Provedete to tak, že v seznamu runbooků vyberete příslušný runbook a kliknete na **Odstranit**.
 
-Odstraňte trezor klíčů pomocí rutiny [Remove-AzureRMKeyVault.](/powershell/module/azurerm.keyvault/remove-azurermkeyvault?view=azurermps)
+Odstraňte trezor klíčů pomocí rutiny [Remove-AzKeyVault.](https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0)
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"
 $ResourceGroupName = "<your ResourceGroup name>"
-Remove-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
+Remove-AzKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 ```
 
 ## <a name="next-steps"></a>Další kroky

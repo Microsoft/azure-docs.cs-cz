@@ -553,8 +553,6 @@
           href: data-factory-service-identity.md
     - name: Monitorování a správa
       items:
-        - name: Vizuální monitorování
-          href: monitor-visually.md
         - name: Monitorování pomocí služby Azure Monitor
           href: monitor-using-azure-monitor.md
         - name: Monitorování pomocí sad SDK

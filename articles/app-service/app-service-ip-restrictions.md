@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a02c099871ce9748f4c5f604900a7c4d57bb96b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473519"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639274"
 ---
-# <a name="azure-app-service-access-restrictions"></a>Omezení přístupu k službě Azure App Service #
+# <a name="azure-app-service-access-restrictions"></a>Omezení přístupu k službě Azure App Service
 
 Omezení přístupu umožňují definovat seznam povolených a povolaných položek seřazené s prioritou, který řídí přístup k síti k vaší aplikaci. Seznam může obsahovat IP adresy nebo podsítě virtuální sítě Azure. Pokud existuje jedna nebo více položek, je pak implicitní "odepřít vše", který existuje na konci seznamu.
 
@@ -74,7 +74,7 @@ Pokud chcete pravidlo odstranit, **klikněte** na ... na pravidlo a potom klikn�
 
 ![odstranit pravidlo omezení přístupu](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
-## <a name="blocking-a-single-ip-address"></a>Blokování jedné adresy IP ##
+## <a name="blocking-a-single-ip-address"></a>Blokování jedné IP adresy ##
 
 Při přidávání prvního pravidla omezení IP služba přidá explicitní **pravidlo Odepřít vše** s prioritou 2147483647. V praxi bude explicitně **pravidlo Odepřít vše** naposledy spuštěno a zablokuje přístup k libovolné adrese IP, která není explicitně povolena pomocí pravidla **Povolit.**
 
@@ -125,12 +125,12 @@ Syntaxe JSON pro předchozí příklad je:
 }
 ```
 
-## <a name="azure-function-app-access-restrictions"></a>Omezení přístupu k aplikacím Azure Function App
+## <a name="azure-functions-access-restrictions"></a>Omezení přístupu k funkcím Azure
 
-Omezení přístupu jsou k dispozici také pro aplikace funkcí se stejnými funkcemi jako plány služby App Service. Povolení omezení přístupu zakáže editor kódu portálu pro všechny nepovolené IP adresy.
+Omezení přístupu jsou k dispozici také pro funkční aplikace se stejnými funkcemi jako plány služby App Service. Povolení omezení přístupu zakáže editor kódu portálu pro všechny nepovolené IP adresy.
 
 ## <a name="next-steps"></a>Další kroky
-[Omezení přístupu pro aplikace Azure Function Apps](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+[Omezení přístupu pro funkce Azure](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [Integrace aplikační brány s koncovými body služby](networking/app-gateway-with-service-endpoints.md)
 

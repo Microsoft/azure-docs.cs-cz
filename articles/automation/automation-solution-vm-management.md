@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbcd4ea174d4b6a2a45495c32f178ed1bd01bbe0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261342"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604710"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění a zastavení virtuálních počítačů během mimopracovní ho řešení v Azure Automation
 
@@ -106,7 +106,7 @@ Všechny nadřazené sady Runbook obsahují `WhatIf` parametr. Při nastavení t
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | Objekt VM <br> Akce výstrahy <br> WebHookURI | Volána z nadřazeného runbooku. Tento soubor Runbook vytváří výstrahy pro základě prostředků pro scénář automatického zastavení.|
 |AutoStop_CreateAlert_Parent | Seznam VMList<br> WhatIf: Pravda nebo nepravda  | Vytvoří nebo aktualizuje pravidla výstrah Azure na virtuálních počítačích v cílovépředplatné nebo skupiny prostředků. <br> `VMList`je seznam virtuálních vitéodů oddělený čárkami. Například, `vm1, vm2, vm3`.<br> `WhatIf`umožňuje ověření logiky sady Runbook bez spuštění.|
-|AutoStop_Disable | Žádný | Zakáže automatické zastavení výstrah a výchozí plán.|
+|AutoStop_Disable | Žádná | Zakáže automatické zastavení výstrah a výchozí plán.|
 |AutoStop_VM_Child | WebHookData | Volána z nadřazeného runbooku. Pravidla výstrah volání tohoto runbooku zastavit klasický virtuální hod.|
 |AutoStop_VM_Child_ARM | WebHookData |Volána z nadřazeného runbooku. Pravidla výstrah volání tohoto runbooku zastavit virtuální ho.  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Akce: Spuštění nebo zastavení<br> Seznam VMList  | Provádí spuštění nebo zastavení akce v klasické skupině virtuálních virtuálních připojení pomocí cloudových služeb. |
@@ -225,11 +225,11 @@ Chcete-li odstranit řešení:
 
 1. Vyhledejte a vyberte **pracovní prostory Analýzy protokolů**.
 
-2. Na stránce **Pracovní prostory Analýzy protokolů** vyberte pracovní prostor.
+2. Na stránce pracovního prostoru Log Analytics vyberte pracovní prostor.
 
 3. Z nabídky na stránce nastavení pracovního prostoru vyberte **Odstranit.**
 
-4. Pokud nechcete zachovat součásti účtu Azure Automation, můžete je odstranit ručně. Viz [Součásti řešení](#solution-components).
+4. Pokud nechcete zachovat [součásti řešení](#solution-components)účtu Azure Automation , můžete je ručně odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 

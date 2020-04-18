@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
-ms.openlocfilehash: 94ac75c4165b11e343ce5c31480a511ebf978a36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67838782"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640550"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojení Raspberry Pi k Azure IoT Hub (C)
 
@@ -160,7 +160,7 @@ Po úspěšném připojení BME280 k raspberry pi by to mělo být jako pod obr�
 
 ### <a name="connect-pi-to-the-network"></a>Připojení Pi k síti
 
-Zapněte Pi pomocí kabelu micro USB a napájecího zdroje. Pomocí ethernetového kabelu připojte Pi k kabelové síti nebo postupujte [podle pokynů nadace Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/) pro připojení Pi k bezdrátové síti. Po úspěšném připojení pi k síti je třeba poznamenat [IP adresu vašeho Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
+Zapněte Pi pomocí kabelu micro USB a napájecího zdroje. Pomocí ethernetového kabelu připojte Pi k kabelové síti nebo postupujte [podle pokynů nadace Raspberry Pi Foundation](https://www.raspberrypi.org/documentation/configuration/wireless/) pro připojení Pi k bezdrátové síti. Po úspěšném připojení pi k síti je třeba poznamenat [IP adresu vašeho Pi](https://www.raspberrypi.org/documentation/remote-access/ip-address.md).
 
 ![Připojení k kabelové síti](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 

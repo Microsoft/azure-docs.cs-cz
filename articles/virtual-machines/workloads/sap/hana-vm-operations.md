@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07c8f84f2e37abd87953d8e4cb20b37258b25fda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c4f3ec2727d06528eab788a2a24a6190fe26533
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920462"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606150"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operace v Azure
 Tento dokument obsahuje pokyny pro konfiguraci infrastruktury Azure a provoz systémů SAP HANA, které se nasazují na nativních virtuálních počítačích (VM) Azure. Dokument také obsahuje informace o konfiguraci pro sap hana horizontální navýšení kapacity pro skladovou položku virtuálního počítače M128s. Tento dokument není určen k nahrazení standardní dokumentace SAP, která obsahuje následující obsah:
 
 - [Průvodce správou SAP](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/330e5550b09d4f0f8b6cceb14a64cd22.html)
 - [Instalační příručky SAP](https://service.sap.com/instguides)
-- [Poznámky SAP](https://sservice.sap.com/notes)
+- [Poznámky SAP](https://service.sap.com/notes)
 
 ## <a name="prerequisites"></a>Požadavky
 Chcete-li použít tuto příručku, potřebujete základní znalosti následujících součástí Azure:
@@ -101,7 +101,7 @@ Pro nasazení, která jsou trvalé, ale je potřeba vytvořit architekturu sít�
 
 
 >[!NOTE]
->Provoz, který toky mezi virtuální sítí rozbočovače a virtuální sítě pro paprsky pomocí [partnerského vztahu virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) je předmětem dalších [nákladů](https://azure.microsoft.com/pricing/details/virtual-network/). Na základě těchto nákladů možná budete muset zvážit kompromisy mezi spuštěním přísného návrhu sítě hubu a paprskem a spuštěním více [bran Azure ExpressRoute,](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) které se připojíte k "paprskům", abyste obejili partnerský vztah virtuální sítě. Brány Azure ExpressRoute však také zavádějí další [náklady.](https://azure.microsoft.com/pricing/details/vpn-gateway/) Můžete také setkat s dodatečnými náklady na software jiných výrobců, který používáte pro protokolování síťového provozu, auditování a monitorování. V závislosti na nákladech na výměnu dat prostřednictvím partnerského vztahu virtuální sítě na jedné straně a nákladů vytvořených dalšími bránami Azure ExpressRoute a dalšími softwarovými licencemi se můžete rozhodnout pro mikrosegmentaci v rámci jedné virtuální sítě pomocí podsítí jako jednotky izolace místo virtuálních sítí.
+>Provoz, který toky mezi virtuální sítí rozbočovače a virtuální sítě pro paprsky pomocí [partnerského vztahu virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) je předmětem dalších [nákladů](https://azure.microsoft.com/pricing/details/virtual-network/). Na základě těchto nákladů možná budete muset zvážit kompromisy mezi spuštěním přísného návrhu sítě hubu a paprskem a spuštěním více [bran Azure ExpressRoute,](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) které se připojíte k "paprskům", abyste obejili partnerský vztah virtuální sítě. Brány Azure ExpressRoute však také zavádějí další [náklady.](https://azure.microsoft.com/pricing/details/vpn-gateway/) Můžete také setkat s dodatečnými náklady na software jiných výrobců, který používáte pro protokolování síťového provozu, auditování a monitorování. V závislosti na nákladech na výměnu dat prostřednictvím partnerského vztahu virtuální sítě na jedné straně a nákladů vytvořených dalšími bránami Azure ExpressRoute a dalšími softwarovými licencemi se můžete rozhodnout pro mikrosegmentaci v rámci jedné virtuální sítě pomocí podsítí jako jednotky izolace namísto virtuálních sítí.
 
 
 Přehled různých metod pro přiřazování IP adres najdete v tématu [typy IP adres a metody přidělení v Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 

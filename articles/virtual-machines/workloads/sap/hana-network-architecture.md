@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33684a6292d7e51c04f6bacc7c49ee5986dbec10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3bc87b183803c0854542d6925af7429b593d2af
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502397"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605174"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Architektura sítě SAP HANA (velké instance)
 
@@ -86,7 +86,7 @@ Chcete-li poskytnout deterministickou latenci sítě mezi virtuálními počíta
 Chcete-li snížit latenci, ExpressRoute Rychlá cesta se zavedla a vydala v květnu 2019 pro konkrétní připojení hana velkých instancí do virtuálních sítí Azure, které jsou hostitelem virtuálních počítačů aplikace SAP. Hlavní rozdíl řešení, které bylo zavedeno tak daleko, je, že toky dat mezi virtuálními počítači a velkými instancemi HANA již nejsou směrovány přes bránu ExpressRoute. Místo toho virtuální počítače přiřazené v podsítích virtuální sítě Azure přímo komunikují s vyhrazeným směrovačem enterprise edge. 
 
 > [!IMPORTANT] 
-> Funkce ExpressRoute Rychlá cesta vyžaduje, aby podsítě se spuštěnou virtuálními počítači aplikace SAP byly ve stejné virtuální síti Azure, která se připojila k velkým instancím HANA. Virtuální počítače umístěné ve virtuálních sítích Azure, které jsou partnerské společnosti s virtuální sítí Azure připojené přímo k jednotkám velké instance HANA, nemají prospěch z rychlé cesty ExpressRoute. V důsledku toho se získávají typické návrhy virtuálních sítí rozbočovače a paprsků, kde se obvody ExpressRoute připojují k centrální virtuální síti a virtuální sítě obsahující aplikační vrstvu SAP (paprsky) jsou peered, optimalizace ExpressRoute Fast Cesta nebude fungovat. V addtion ExpressRoute Rychlá cesta nepodporuje uživatelem definovaná pravidla směrování (UDR) dnes. Další informace naleznete v tématech [Brána virtuální sítě ExpressRoute a FastPath](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways). 
+> Funkce ExpressRoute Rychlá cesta vyžaduje, aby podsítě se spuštěnou virtuálními počítači aplikace SAP byly ve stejné virtuální síti Azure, která se připojila k velkým instancím HANA. Virtuální počítače umístěné ve virtuálních sítích Azure, které jsou partnerské společnosti s virtuální sítí Azure připojené přímo k jednotkám velké instance HANA, nemají prospěch z rychlé cesty ExpressRoute. V důsledku toho se připojují typické návrhy virtuálních sítí rozbočovače a paprsků, kde se obvody ExpressRoute připojují k virtuální síti rozbočovače a virtuální sítě obsahující aplikační vrstvu SAP (paprsky) nebudou fungovat. V addtion ExpressRoute Rychlá cesta nepodporuje uživatelem definovaná pravidla směrování (UDR) dnes. Další informace naleznete v tématech [Brána virtuální sítě ExpressRoute a FastPath](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways). 
 
 
 Další podrobnosti o konfiguraci rychlé cesty ExpressRoute načtěte v dokumentu [Připojení virtuální sítě k velkým instancím HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route).    
@@ -151,7 +151,7 @@ V těchto scénářích lze povolit přenositelné směrování třemi způsoby:
 - Použití [pravidel IPTables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) ve virtuálním počítači s Operačním systémem Linux k povolení směrování mezi místními umístěními a jednotkami velké instance HANA nebo mezi jednotkami velké instance HANA v různých oblastech. Virtuální počítač se systémem IPTables musí být nasazen ve virtuální síti Azure, která se připojuje k velké instance HANA a k místnímu. Virtuální ho je možné odpovídajícím způsobem velikosti tak, aby propustnost sítě virtuálního připojení je dostatečná pro očekávaný síťový provoz. Podrobnosti o šířce pásma virtuálních počítačů najdete v článku [Velikosti virtuálních počítačů s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) by bylo jiné řešení umožňující přímý provoz mezi místními a HANA velké instance jednotek. 
 
-Veškerý provoz těchto řešení by byl směrován přes virtuální síť Azure a jako takový by mohl být navíc omezen měkkými zařízeními používanými nebo skupinami zabezpečení sítě Azure, takže se určité IP adresy nebo IP adresy pohybují od místní může být blokován nebo explicitně povolen přístup k velkým instancím HANA. 
+Veškerý provoz těchto řešení by byl směrován prostřednictvím virtuální sítě Azure a jako takový by provoz mohl být navíc omezen měkkými zařízeními používanými nebo skupinami zabezpečení sítě Azure, takže určité IP adresy nebo rozsahy IP adres z místního prostředí by mohly být blokovány nebo explicitně povolen přístup k velkým instancím HANA. 
 
 > [!NOTE]  
 > Uvědomte si, že implementace a podpora vlastních řešení zahrnujících síťová zařízení jiných výrobců nebo iptables není poskytována společností Microsoft. Podporu musí poskytovat dodavatel použité součásti nebo integrátor. 
@@ -182,7 +182,7 @@ Další podrobnosti o povolení globálního dosahu ExpressRoute načtěte v dok
 Hana Large Instance *nemá* přímé připojení k internetu. Toto omezení může například omezit možnost registrace bitové kopie operačního systému přímo u dodavatele operačního systému. Možná budete muset pracovat s místním serverem SUSE Linux Enterprise Server Subscription Management Tool nebo S Red Hat Enterprise Linux Subscription Manager.
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>Šifrování dat mezi virtuálními aplikacemi a rozsáhlou instancí HANA
-Data přenášená mezi rozsáhlou instancí HANA a virtuálními aplikacemi nejsou šifrovaná. Čistě pro výměnu mezi hana DBMS straně a JDBC/ODBC-založené aplikace, můžete však povolit šifrování provozu. Další informace naleznete v [této dokumentaci od společnosti SAP](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false).
+Data přenášená mezi rozsáhlou instancí HANA a virtuálními aplikacemi nejsou šifrovaná. Čistě pro výměnu mezi hana DBMS straně a JDBC/ODBC-založené aplikace, můžete však povolit šifrování provozu. Další informace naleznete v [této dokumentaci od společnosti SAP](https://help.sap.com/viewer/102d9916bf77407ea3942fef93a47da8/1.0.11/en-US/dbd3d887bb571014bf05ca887f897b99.html).
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>Použití jednotek velké instance HANA ve více oblastech
 

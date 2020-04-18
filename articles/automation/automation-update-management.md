@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: eaba4bf7760e150f2477ee743c797f94784b8506
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 9bdc8cf97513854cf6a92ffd078febca6302d35c
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535498"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617407"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení správy aktualizací v Azure
 
-Řešení správy aktualizací v Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače s Windows a Linuxem v Azure, v místních prostředích a v jiných cloudových prostředích. Můžete rychle posoudit stav dostupných aktualizací na všech počítačích agentů a spravovat proces instalace požadovaných aktualizací pro servery.
+Řešení správy **aktualizací** v Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače s Windows a Linuxem v Azure, v místních prostředích a v jiných cloudových prostředích. Můžete rychle posoudit stav dostupných aktualizací na všech počítačích agentů a spravovat proces instalace požadovaných aktualizací pro servery.
 
 Službu Správa aktualizací pro virtuální počítače (VM) můžete povolit pomocí následujících metod:
 
@@ -22,14 +22,14 @@ Službu Správa aktualizací pro virtuální počítače (VM) můžete povolit p
 
 - Pro jeden virtuální počítač Azure ze stránky virtuálního počítače na webu Azure Portal. Tento scénář je k dispozici pro [virtuální počítače s Linuxem](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) a [Windows.](../virtual-machines/windows/tutorial-config-management.md#enable-update-management)
 
-- Pro [více virtuálních počítačů Azure](manage-update-multi.md) jejich výběrem ze stránky Virtuální **počítače** na webu Azure Portal. 
+- Pro [více virtuálních počítačů Azure](manage-update-multi.md) jejich výběrem ze stránky Virtuální počítače na webu Azure Portal. 
 
 > [!NOTE]
-> Řešení správy aktualizací vyžaduje propojení pracovního prostoru Log Analytics s vaším účtem Automation. Konečný seznam podporovaných oblastí najdete v [tématu mapování pracovního prostoru Azure](./how-to/region-mappings.md). Mapování oblasti nemají vliv na možnost spravovat virtuální počítače v samostatné oblasti od vašeho účtu automatizace.
+> **Řešení správy aktualizací** vyžaduje propojení pracovního prostoru Log Analytics s vaším účtem Automation. Konečný seznam podporovaných oblastí najdete v [tématu mapování pracovního prostoru Azure](./how-to/region-mappings.md). Mapování oblasti nemají vliv na možnost spravovat virtuální počítače v samostatné oblasti od vašeho účtu automatizace.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-K dispozici je šablona Azure [Resource Manager,](automation-update-management-deploy-template.md) která umožňuje nasadit řešení správy aktualizací do nového nebo stávajícího účtu Automation a pracovního prostoru Log Analytics ve vašem předplatném.
+K dispozici je šablona Azure [Resource Manager,](automation-update-management-deploy-template.md) která vám pomůže nasadit **řešení správy aktualizací** do nového nebo stávajícího účtu Automation a pracovního prostoru Log Analytics ve vašem předplatném.
 
 ## <a name="solution-overview"></a>Přehled řešení
 
@@ -137,7 +137,7 @@ Chcete-li vytvořit a spravovat nasazení aktualizací, potřebujete určitá op
 
 Po povolení tohoto řešení je každý počítač se systémem Windows, který je přímo připojen k pracovnímu prostoru Log Analytics, automaticky nakonfigurován jako hybridní pracovník sady Runbook pro podporu sad Runbook, které jsou součástí tohoto řešení.
 
-Každý počítač se systémem Windows, který je spravován řešením, je uveden v podokně **Hybridní pracovní skupiny** jako **hybridní pracovní skupina systému** pro účet automatizace. Řešení používají *hostname FQDN_GUID* konvence pojmenování. Na tyto skupiny nelze cílit pomocí runbooků ve vašem účtu. Pokud se pokusíte, pokus se nezdaří. Tyto skupiny jsou určeny pouze pro podporu tohoto řešení pro správu.
+Každý počítač se systémem Windows, který je spravován řešením, je uveden v podokně Hybridní pracovní skupiny jako hybridní pracovní skupina systému pro účet automatizace. Řešení používají `Hostname FQDN_GUID` konvence pojmenování. Na tyto skupiny nelze cílit pomocí runbooků ve vašem účtu. Pokud se pokusíte, pokus se nezdaří. Tyto skupiny jsou určeny pouze pro podporu tohoto řešení pro správu.
 
 Počítač se systémem Windows můžete přidat do skupiny Hybridní pracovní doba runbooku ve vašem účtu Automation pro podporu runbooků automatizace, pokud používáte stejný účet pro řešení i členství ve skupině Hybridní runbook Worker. Tato funkce byla přidána ve verzi 7.2.12024.0 hybridního pracovníka runbooku.
 
@@ -150,12 +150,12 @@ Pokud je vaše skupina pro správu nástroje Operations Manager system center [p
 * Aktualizace sady pro správu nasazení
 
 > [!NOTE]
-> Pokud máte skupinu pro správu Nástroje pro správu nástroje Operations Manager 1807 nebo 2019 připojenou k pracovnímu prostoru Analýzy protokolů s agenty nakonfigurovanými ve skupině pro správu pro shromažďování dat protokolu, je třeba přepsat následující pravidlo, abyste je mohli spravovat pomocí správy aktualizací: Přepsat parametr **IsAutoRegistrationEnabled** a nastavit na **hodnotu True** v pravidle **Microsoft.IntelligencePacks.Automation.HybridAgent.Init.**
+> Pokud máte skupinu pro správu Nástroje pro správu nástroje Operations Manager 1807 nebo 2019 připojenou k pracovnímu `IsAutoRegistrationEnabled` prostoru Log Analytics s agenty nakonfigurovanými ve skupině pro správu ke shromažďování dat protokolu, musíte přepsat parametr a nastavit jej na hodnotu True v pravidle **Microsoft.IntelligencePacks.AzureAutomations.HybridAgent.Init.**
 
 Další informace o aktualizaci sad Management Pack řešení naleznete v [tématu Připojení nástroje Operations Manager k protokolům Azure Monitor .](../azure-monitor/platform/om-agents.md)
 
 > [!NOTE]
-> Pro počítače s agentem Operations Manger, které mají být plně spravovány službou Update Management, musí být agent aktualizován na agenta Log Analytics pro Windows nebo Linux. Informace o aktualizaci agenta naleznete v tématu [Jak upgradovat agenta nástroje Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). V prostředích, která používají nástroj Operations Manager, musíte používat nástroj System Center Operations Manager 2012 R2 UR 14 nebo novější.
+> Aby byly počítače s agentem Operations Manger plně spravovány službou Update Management, musí být agent aktualizován na agenta Log Analytics pro Systém Windows nebo agenta Analýzy protokolů pro Linux. Informace o aktualizaci agenta naleznete v tématu [Jak upgradovat agenta nástroje Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). V prostředích, která používají nástroj Operations Manager, musíte používat nástroj System Center Operations Manager 2012 R2 UR 14 nebo novější.
 
 ## <a name="data-collection"></a>Shromažďování dat
 
@@ -249,13 +249,9 @@ Správa aktualizací spoléhá na místně nakonfigurované úložiště aktuali
 Chcete-li začít aktualizovat systémy, musíte povolit řešení správy aktualizací. Níže jsou uvedeny doporučené a podporované metody pro na palubě řešení:
 
 - [Z virtuálního počítače](automation-onboard-solutions-from-vm.md)
-
 - [Z procházení více strojů](automation-onboard-solutions-from-browse.md)
-
 - [Z vašeho účtu Automation](automation-onboard-solutions-from-automation-account.md)
-
 - [S runbookem Azure Automation](automation-onboard-solutions.md)
-
 - [Se šablonou Azure Resource Manager](automation-update-management-deploy-template.md)
 
 ## <a name="next-steps"></a>Další kroky

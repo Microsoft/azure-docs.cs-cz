@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c74bea8aa1a8e2f9de47b501f9afd9540cfc61b9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 79d8cb4b09ef547bf1c0b01f48872ddcb4f964ee
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422911"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616542"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu
 
@@ -275,7 +275,7 @@ Chcete-li při vytváření trezoru zapnout ochranu proti měkkému odstranění
 New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection
 ```
 
-Chcete-li přidat ochranu proti vymazání existujícího úložiště (které již má povolené obnovitelné odstranění), použijte rutiny [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0), [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0)a [Set-AzResource:](/powershell/module/az.resources/set-azresource?view=azps-1.5.0)
+Chcete-li přidat ochranu proti vymazání existujícího úložiště (které již má povoleno obnovitelné odstranění), použijte rutiny [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0), [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0)a [Set-AzResource:](/powershell/module/az.resources/set-azresource?view=azps-1.5.0)
 
 ```
 ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 89d397574c423e28bcbb0fec5ddd45959a737a93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e91bc9c994a48b335c3ccb7373a9f4f5dc6d1e8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659879"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605091"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Vytvoření pracovního prostoru Analýzy protokolů pomocí Azure CLI 2.0
 
@@ -106,7 +106,7 @@ Následující parametry nastavují výchozí hodnotu:
     }
     ```
 
-2. Upravte šablonu tak, aby vyhovovala vašim požadavkům. Projděte si odkaz na [šablonu microsoft.operationalinsights/pracovní prostory,](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) abyste zjistili, jaké vlastnosti a hodnoty jsou podporovány.
+2. Upravte šablonu tak, aby vyhovovala vašim požadavkům. Projděte si odkaz na [šablonu microsoft.operationalinsights/pracovní prostory,](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) abyste zjistili, jaké vlastnosti a hodnoty jsou podporovány.
 3. Uložte tento soubor jako **deploylaworkspacetemplate.json** do místní složky.   
 4. Jste připraveni k nasazení této šablony. Ze složky obsahující šablonu použijte následující příkazy. Až se zobrazí výzva k zadání názvu pracovního prostoru, zadejte název, který je globálně jedinečný ve všech předplatných Azure.
 

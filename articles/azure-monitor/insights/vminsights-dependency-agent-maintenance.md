@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/12/2020
-ms.openlocfilehash: c55bee9880c4134f2e304a7fc5176225477fe5f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: 01dd8422658aa0c8982733e48782efd27c1bf5be
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480755"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617841"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Jak upgradovat agenta Azure Monitor pro závislost virtuálních počítače
 
@@ -60,7 +60,7 @@ Nejnovější verzi agenta windows si můžete stáhnout [zde](https://aka.ms/de
 
 Upgrade z předchozích verzí agenta závislostí v Systému Linux je podporován a prováděn podle stejného příkazu jako nová instalace.
 
-Nejnovější verzi agenta windows si můžete stáhnout [zde](https://aka.ms/dependencyagentlinux).
+Zde si můžete stáhnout nejnovější verzi linuxového [agenta zde](https://aka.ms/dependencyagentlinux).
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 

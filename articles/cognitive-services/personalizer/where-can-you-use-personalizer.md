@@ -3,18 +3,18 @@ title: Kde a jak používat - Personalizace
 description: Personalizátor lze použít v každé situaci, kdy vaše aplikace může vybrat správnou položku, akci nebo produkt k zobrazení - s cílem zlepšit zážitek, dosáhnout lepších obchodních výsledků nebo zvýšit produktivitu.
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c562d7a1853736204a7a03262547e083bd85fb75
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219321"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617680"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>Kde a jak používat personalista
 
 Použijte personalizátor v každé situaci, kdy vaše aplikace potřebuje vybrat správnou akci (obsah) pro zobrazení - s cílem zlepšit zážitek, dosáhnout lepších obchodních výsledků nebo zvýšit produktivitu.
 
-Personalizátor používá strojové učení k výběru akce (obsahu), která má uživateli zobrazit. Výběr se může výrazně lišit v závislosti na množství, kvalitě a distribuci dat odeslaných do služby.
+Personalizátor používá výztuže učení vybrat, která akce (obsah) ukázat uživatele. Výběr se může výrazně lišit v závislosti na množství, kvalitě a distribuci dat odeslaných do služby.
 
 ## <a name="example-use-cases-for-personalizer"></a>Příklad případů použití pro personalizace
 
@@ -44,7 +44,7 @@ Personalista můžete použít v situacích, kdy se setkáte nebo můžete imple
 |Denní data|Je tu dost událostí, aby zůstali na vrcholu optimální personalizace, pokud problém driftuje v průběhu času (například preference ve zprávách nebo módě). Personalizák se přizpůsobí neustálým změnám v reálném světě, ale výsledky nebudou optimální, pokud nebude dostatek událostí a dat, ze kterých se můžete učit, abyste objevili nové vzory a usadili se na nových vzorcích. Měli byste zvolit případ použití, který se stane dost často. Zvažte hledání případů použití, které se dějí nejméně 500krát denně.|
 |Historická data|Aplikace může uchovávat data dostatečně dlouho a shromažďovat historii alespoň 100 000 interakcí. To umožňuje personalista shromažďovat dostatek dat k provádění offline hodnocení a optimalizace zásad.|
 
-**Nepoužívejte personalizace,** kde personalizované chování není něco, co lze zjistit u všech uživatelů. Například použití personalistu k navržení první objednávky pizzy ze seznamu 20 možných položek nabídky je užitečné, ale který kontakt, který má volat ze seznamu kontaktů uživatelů, když vyžaduje pomoc s péčí o děti (například "Babička"), není něco, co je přizpůsobitelné v rámci vaší uživatelské základny.
+**Nepoužívejte personalizace,** kde personalizované chování není něco, co lze zjistit u všech uživatelů. Například použití personalistu k navržení první objednávky pizzy ze seznamu 20 možných položek nabídky je užitečné, ale kontakt, který má volat ze seznamu kontaktů uživatelů, když vyžaduje pomoc s péčí o děti (například "Babička"), není něco, co je přizpůsobitelné v celé uživatelské základně.
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>Jak používat personalizace ve webové aplikaci
 
@@ -91,7 +91,7 @@ Běžné použití je vzít výstup modulu doporučení (například top 20 prod
 
 ## <a name="adding-content-safeguards-to-your-application"></a>Přidání zabezpečení obsahu do aplikace
 
-Pokud vaše aplikace umožňuje velké odchylky v obsahu zobrazeném uživatelům a některé z těchto obsahů mohou být pro některé uživatele nebezpečné nebo nevhodné, měli byste plánovat předem, abyste se ujistili, že jsou zavedena správná ochranná opatření, která zabrání uživatelům v tom, aby viděli nepřijatelné Obsah. Nejlepší způsob zavedení ochranných opatření je:
+Pokud vaše aplikace umožňuje velké odchylky v obsahu zobrazeném uživatelům a některé z těchto obsahů mohou být pro některé uživatele nebezpečné nebo nevhodné, měli byste plánovat předem, abyste se ujistili, že jsou zavedena správná ochranná opatření, která uživatelům zabrání v zobrazení nepřijatelného obsahu. Nejlepší způsob zavedení ochranných opatření je:
     * Získejte seznam akcí k hodnocení.
     * Odfiltrujte ty, které nejsou životaschopné pro publikum.
     * Pouze pořadí těchto životaschopných akcí.

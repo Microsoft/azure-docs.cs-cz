@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e610bf94dfdee4e2765e4fae4259f18a9f1036b5
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408837"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639980"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Důležité informace o návrhu virtuální sítě a možnosti konfigurace pro služby Azure AD Domain Services
 
@@ -109,10 +109,11 @@ Následující pravidla skupiny zabezpečení sítě jsou vyžadovány pro Azure
 | 443         | TCP      | Služby AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Synchronizace s klientem Azure AD. |
 | 3389        | TCP      | CorpNetSaw                         | Všechny         | Povolit  | Ano      | Správa vaší domény. |
 | 5986        | TCP      | Služby AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Správa vaší domény. |
-| 636         | TCP      | Všechny                                | Všechny         | Povolit  | Ne       | Povoleno pouze při konfiguraci zabezpečeného protokolu LDAP (LDAPS). |
 
 > [!WARNING]
 > Tyto síťové prostředky a konfigurace neupravujte ručně. Když přidružíte nesprávně nakonfigurovanou skupinu zabezpečení sítě nebo uživatelem definovanou směrovací tabulku k podsíti, ve které se nasazuje služba Azure AD DS, můžete narušit schopnost společnosti Microsoft obsluhovat a spravovat doménu. Synchronizace mezi klientem Azure AD a spravovanou doménou Azure AD DS je také narušena.
+>
+> Pokud používáte zabezpečené protokol LDAP, můžete v případě potřeby přidat požadované pravidlo tcp portu 636, které umožní externí přenos. Přidáním tohoto pravidla neumístíte pravidla skupiny zabezpečení sítě do nepodporovaného stavu. Další informace naleznete v [tématu Uzamčení zabezpečeného přístupu LDAP přes internet](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 >
 > Výchozí pravidla pro *AllowVnetInBound*, *AllowAzureLoadBalancerInBound*, *DenyAllInBound*, *AllowVnetOutBound*, *AllowInternetOutBound*a *DenyAllOutBound* existují také pro skupinu zabezpečení sítě. Tato výchozí pravidla neupravujte ani neodstraňujte.
 >

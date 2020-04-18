@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 02/27/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 7c02cdf772b06f7070071aa7ba35c59b019187cc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f524a1e1db426b9b9dafb2fb95d77538a34b04ec
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78301722"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605463"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Úvodní příručka: Vytvoření databáze Azure Cosmos a kontejneru pomocí šablony Azure Resource Manager
 
@@ -53,7 +53,7 @@ Další ukázky šablon Azure Cosmos DB najdete v [galerii šablon rychlého sta
 
 1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří účet Azure Cosmos, databázi a kontejner.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json)
 
 2. Vyberte nebo zadejte následující hodnoty.
 
@@ -83,7 +83,7 @@ Portál Azure se používá k nasazení šablony. Kromě portálu Azure můžete
 
 Můžete buď použít portál Azure ke kontrole účtu Azure Cosmos, databáze a kontejneru nebo použít následující Azure CLI nebo Azure PowerShell skript uvést tajný klíč vytvořený.
 
-# <a name="cli"></a>[Cli](#tab/CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter your Azure Cosmos account name:" &&
@@ -108,7 +108,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 Pokud máte v plánu pokračovat v práci s následnými a kurzy, můžete chtít ponechat tyto prostředky na místě.
 Když už není potřeba, odstraňte skupinu prostředků, která odstraní účet Azure Cosmos a související prostředky. Odstranění skupiny prostředků pomocí Azure CLI nebo Azure Powershellu:
 
-# <a name="cli"></a>[Cli](#tab/CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&

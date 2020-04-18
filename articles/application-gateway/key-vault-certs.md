@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: be558c3e3a68ce6c194dcf98d8f5ff92c4c14edb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457820"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617512"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Ukončení tls s certifikáty trezoru klíčů
 
@@ -47,7 +47,10 @@ Integrace aplikační brány s trezorem klíčů vyžaduje proces konfigurace ve
 
 1. **Konfigurace trezoru klíčů**
 
-   Potom importujte existující certifikát nebo vytvořte nový v trezoru klíčů. Certifikát budou používat aplikace, které běží prostřednictvím aplikační brány. V tomto kroku můžete také použít tajný klíč trezoru klíčů, který je uložen jako základní 64kódovaný soubor PFX bez hesla. Doporučujeme použít typ certifikátu z důvodu funkce automatického obnovení, která je k dispozici s objekty typu certifikátu v trezoru klíčů. Po vytvoření certifikátu nebo tajného klíče definujete v trezoru klíčů zásady přístupu, které umožní *udělení* identity k tajnému klíči.
+   Potom importujte existující certifikát nebo vytvořte nový v trezoru klíčů. Certifikát budou používat aplikace, které běží prostřednictvím aplikační brány. V tomto kroku můžete také použít tajný klíč trezoru klíčů, který je uložen jako soubor PFX kódovaný bez hesla, base-64. Doporučujeme použít typ certifikátu z důvodu funkce automatického obnovení, která je k dispozici s objekty typu certifikátu v trezoru klíčů. Po vytvoření certifikátu nebo tajného klíče definujete v trezoru klíčů zásady přístupu, které umožní *udělení* identity k tajnému klíči.
+   
+   > [!NOTE]
+   > Pokud nasadíte aplikační bránu pomocí šablony ARM, buď pomocí Azure CLI nebo PowerShell, nebo prostřednictvím aplikace Azure nasazené z portálu Azure, musí **být**certifikát SSL uložený v trezoru klíčů jako soubor PFX kódovaný základní 64. Také je nutné provést kroky v [použití trezoru klíčů Azure předat hodnotu zabezpečeného parametru během nasazení](../azure-resource-manager/templates/key-vault-parameter.md). Je obzvláště důležité nastavit `enabledForTemplateDeployment` `true`.
 
 1. **Nakonfigurujte aplikační bránu**
 

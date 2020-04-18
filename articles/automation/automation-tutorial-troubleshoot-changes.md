@@ -7,16 +7,16 @@ keywords: change, tracking, automation
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 89f5e00c75b6b85c9a14de02504136907cde62b5
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75420635"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604693"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 
-V tomto kurzu zjistíte, jak řešit potíže se změnami na virtuálním počítači Azure. Když povolíte řešení Change Tracking, můžete sledovat změny softwaru, souborů, linuxových procesů démon, služeb systému Windows a klíčů registru Windows na vašich počítačích.
+V tomto kurzu zjistíte, jak řešit potíže se změnami na virtuálním počítači Azure. Povolením funkce Sledování změn můžete sledovat změny v softwaru, souborech, daemonech Linuxu, službách systému Windows a klíčích registru systému Windows v počítačích.
 Identifikace těchto změn konfigurace vám může pomoct přesně určit provozní problémy v celém prostředí.
 
 Co se v tomto kurzu naučíte:
@@ -44,18 +44,20 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
-Pro účely tohoto kurzu je nejprve potřeba povolit pro váš virtuální počítač řešení Change Tracking a Inventory. Pokud jste už dříve pro virtuální počítač povolili jiné řešení automatizace, tento krok není nezbytný.
+Nejprve je třeba povolit sledování změn a inventář pro váš virtuální počítač pro tento kurz. Pokud jste už dříve pro virtuální počítač povolili jiné řešení automatizace, tento krok není nezbytný.
 
-1. V nabídce vlevo vyberte **Virtuální počítače** a ze seznamu vyberte virtuální počítač.
-1. V levé nabídce klikněte v části **OPERACE** na **položku Zásoby**. Otevře se stránka řešení **Change Tracking**.
+1. V levé nabídce vyberte **Virtuální počítače** a vyberte virtuální počítač ze seznamu.
+1. V levé nabídce vyberte **položku Zásoby v** části **Operace**. Otevře se stránka Zásoby.
 
-![Povolení změny](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) Otevře se obrazovka řešení **Change Tracking**. Nakonfigurujte umístění, pracovní prostor analýzy protokolů a účet Automatizace, který chcete použít, a klepněte na tlačítko **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
+![Povolit změnu](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
+
+Nakonfigurujte umístění, pracovní prostor analýzy protokolů a účet Automatizace, který chcete použít, a klepněte na tlačítko **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Inventory.
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
 
-Během připojování se virtuální počítač zřídí s agentem Microsoft Monitoring Agent (MMA) a procesem hybrid worker.
-Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
+Během registrace se virtuální počítač zřizován s agentem Log Analytics pro Windows a hybridním pracovníkem runbooku.
+Agent se používá ke komunikaci s virtuálním počítačem a získání informací o nainstalovaném softwaru.
 
 Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče.
 Po povolení řešení se informace o nainstalovaném softwaru a změnách na virtuálním počítači točtou do protokolů Azure Monitoru.
@@ -66,8 +68,8 @@ Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 ## <a name="using-change-tracking-in-azure-monitor-logs"></a>Použití sledování změn v protokolech Azure Monitoru
 
 Sledování změn generuje data protokolu, která se odesílá do protokolů Azure Monitor.
-Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Change Tracking** vyberte **Log Analytics**.
-Data řešení Change Tracking se ukládají jako typ **ConfigurationChange** (Změna konfigurace).
+Chcete-li prohledávat protokoly spuštěním dotazů, vyberte **Log Analytics** v horní části stránky Sledování změn.
+Data sledování změn jsou `ConfigurationChange`uložena pod typem .
 Následující ukázka dotazu Log Analytics vrátí všechny zastavené služby systému Windows.
 
 ```loganalytics
@@ -81,19 +83,18 @@ Další informace o spouštění a prohledávání souborů protokolu v protokol
 
 Change Tracking poskytuje možnost sledovat změny konfigurace na vašem virtuálním počítači. Následující kroky ukazují, jak nakonfigurovat sledování klíčů registru a souborů.
 
-Pokud chcete zvolit, jaké soubory a klíče registru se mají shromažďovat a sledovat, vyberte **Upravit nastavení** v horní části stránky **Change Tracking**.
+Pokud chcete zvolit, jaké soubory a klíče registru se mají shromažďovat a sledovat, vyberte **Upravit nastavení** v horní části stránky Change Tracking.
 
 > [!NOTE]
 > Řešení Inventory i Change Tracking používají stejná nastavení shromažďování a nastavení se konfigurují na úrovni pracovního prostoru.
 
-V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému Windows, soubory Windows nebo soubory Linuxu, které chcete sledovat, jak je uvedeno v dalších třech částech.
+Na stránce Konfigurace pracovního prostoru přidejte klíče registru systému Windows, soubory systému Windows nebo soubory Linuxu, které chcete sledovat, jak je uvedeno v následujících třech částech.
 
 ### <a name="add-a-windows-registry-key"></a>Přidání klíče registru systému Windows
 
-1. Na kartě **Registr systému Windows** vyberte **Přidat**.
-    Otevře se okno **Přidat registr systému Windows pro řešení Change Tracking**.
+1. Na kartě **Registr systému Windows** vyberte **Přidat**. 
 
-1. V okně **Přidat registr systému Windows pro řešení Change Tracking** zadejte informace o klíči, který se má sledovat, a klikněte na **Uložit**.
+1. Na stránce Přidat registr systému Windows pro sledování změn zadejte informace o klíči ke sledování a klepněte na tlačítko **Uložit.**
 
 |Vlastnost  |Popis  |
 |---------|---------|
@@ -104,9 +105,9 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 
 ### <a name="add-a-windows-file"></a>Přidání souboru Windows
 
-1. Na kartě **Soubory Windows** vyberte **Přidat**. Otevře se okno **Přidat soubor Windows pro řešení Change Tracking**.
+1. Na kartě **Soubory Windows** vyberte **Přidat**. 
 
-1. V okně **Přidat soubor Windows pro řešení Change Tracking** zadejte informace o souboru nebo adresáři, který se má sledovat, a klikněte na **Uložit**.
+1. Na stránce Přidat soubor systému Windows pro sledování změn zadejte informace o souboru nebo adresáři, který chcete sledovat, a klepněte na **tlačítko Uložit.**
 
 |Vlastnost  |Popis  |
 |---------|---------|
@@ -119,9 +120,9 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 
 ### <a name="add-a-linux-file"></a>Přidání souboru Linuxu
 
-1. Na kartě **Soubory Linuxu** vyberte **Přidat**. Otevře se okno **Přidat soubor Linuxu pro řešení Change Tracking**.
+1. Na kartě **Soubory Linuxu** vyberte **Přidat**. 
 
-1. V okně **Přidat soubor Linuxu pro řešení Change Tracking** zadejte informace o souboru nebo adresáři, který se má sledovat, a klikněte na **Uložit**.
+1. Na stránce Přidat linuxový soubor pro sledování změn zadejte informace o souboru nebo adresáři, který chcete sledovat, a klepněte na tlačítko **Uložit**.
 
 |Vlastnost  |Popis  |
 |---------|---------|
@@ -133,24 +134,24 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
 |Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignorovat** – Ignoruje symbolické odkazy a nezahrnuje odkazované soubory ani adresáře.<br>**Sledovat** – Během rekurze sleduje symbolické odkazy a zahrnuje i odkazované soubory a adresáře.<br>**Spravovat** – Sleduje symbolické odkazy a umožňuje zpracování vráceného obsahu.      |
-|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
+|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: True nebo False.|
 
    > [!NOTE]
-   > Možnost Spravovat se nedoporučuje. Načítání obsahu souborů se nepodporuje.
+   > Možnost **Spravovat odkazy** se nedoporučuje. Načítání obsahu souborů se nepodporuje.
 
 ## <a name="enable-activity-log-connection"></a>Povolení připojení protokolu aktivit
 
-Na stránce **Change Tracking** na vašem virtuálním počítači vyberte **Správa připojení protokolu aktivit**. Tato úloha otevře stránku **Protokol aktivit Azure**. Vyberte **Připojit** a propojte řešení Change Tracking s protokolem aktivit Azure pro váš virtuální počítač.
+Na stránce Change Tracking na vašem virtuálním počítači vyberte **Správa připojení protokolu aktivit**. Tato úloha otevře stránku Protokol aktivit Azure. Kliknutím na **Připojit** se připojíte ke sledování změn do protokolu aktivit Azure pro váš virtuální počítač.
 
-Když je toto nastavení povolené, přejděte na stránku **Přehled** vašeho virtuálního počítače a výběrem **Zastavit** virtuální počítač zastavte. Po zobrazení výzvy vyberte **Ano** a zastavte virtuální počítač. Až bude přidělení vašeho virtuálního počítače zrušeno, vyberte **Spustit** a restartujte ho.
+Když je toto nastavení povolené, přejděte na stránku Přehled vašeho virtuálního počítače a výběrem **Zastavit** virtuální počítač zastavte. Po zobrazení výzvy vyberte **Ano** a zastavte virtuální počítač. Až bude přidělení vašeho virtuálního počítače zrušeno, vyberte **Spustit** a restartujte ho.
 
-Zastavení a spuštění virtuálního počítače zapíše tuto událost do jeho protokolu aktivit Vraťte se na stránku **Change Tracking**. Vyberte **Události** v dolní části stránky. Po chvíli se události zobrazí v grafu a tabulce. Podobně jako v předchozím kroku je možné každou událost vybrat a zobrazit o ní podrobné informace.
+Zastavení a spuštění virtuálního počítače zapíše tuto událost do jeho protokolu aktivit Vraťte se na stránku Change Tracking. Vyberte **Události** v dolní části stránky. Po chvíli se události zobrazí v grafu a tabulce. Podobně jako v předchozím kroku je možné každou událost vybrat a zobrazit o ní podrobné informace.
 
 ![Zobrazení podrobnosti o změnách na portálu](./media/automation-tutorial-troubleshoot-changes/viewevents.png)
 
 ## <a name="view-changes"></a>Zobrazení změn
 
-Jakmile budou řešení Change Tracking a Inventory povolená, můžete zobrazit výsledky na stránce **Change Tracking**.
+Jakmile budou řešení Change Tracking a Inventory povolená, můžete zobrazit výsledky na stránce Change Tracking.
 
 Ve vašem virtuálním počítači v části **OPERACE** vyberte **Change Tracking**.
 
@@ -165,7 +166,7 @@ Na kartě **Události** zobrazuje tabulka připojené události protokolu aktivi
 
 Ve výsledcích vidíte, že došlo k několika změnám systému, včetně změn služeb a softwaru. Pomocí filtrů v horní části stránky můžete výsledky filtrovat podle **typu změny** nebo časového rozsahu.
 
-Vyberte nějakou změnu **WindowsServices** (Služby pro Windows), tím se otevře okno **Podrobnosti o změně**. Okno s podrobnostmi o změně zobrazuje podrobnosti o změně spolu s hodnotami před a po změně. V tomto případě se služba Ochrana softwaru zastavila.
+Vyberte změnu **služby WindowsServices.** Tento výběr otevře stránku Změnit podrobnosti zobrazující podrobnosti o změně a hodnotách před a po změně. V tomto případě se služba Ochrana softwaru zastavila.
 
 ![Zobrazení podrobnosti o změnách na portálu](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
@@ -175,11 +176,11 @@ Zobrazení změn na webu Azure Portal může být užitečné, ale užitečněj�
 
 Pokud chcete přidat upozornění na zastavení služby, přejděte na webu Azure Portal do části **Monitorování**. Pak v části **Sdílené služby** vyberte **Upozornění** a klikněte na **+ Nové pravidlo upozornění**.
 
-Chcete-li vybrat zdroj, klepněte na **tlačítko Vybrat.** Na stránce **Vybrat prostředek** vyberte **log analytics** z rozevíracího přehledu **Filtr podle typu prostředku.** Vyberte váš pracovní prostor služby Log Analytics a pak vyberte **Hotovo**.
+Chcete-li vybrat zdroj, klepněte na **tlačítko Vybrat.** Na stránce Vybrat prostředek vyberte **Log Analytics** z rozevírací nabídky **Filtr podle typu prostředku.** Vyberte váš pracovní prostor služby Log Analytics a pak vyberte **Hotovo**.
 
 ![Výběr prostředku](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-Klepněte na tlačítko **Přidat podmínku**, na stránce **Konfigurovat logiku signálu** v tabulce vyberte **vlastní hledání protokolu**. Do textového pole Vyhledávací dotaz zadejte následující dotaz:
+Klepněte na tlačítko **Přidat podmínku**, na stránce Konfigurovat logiku signálu v tabulce vyberte **vlastní hledání protokolu**. Do textového pole Vyhledávací dotaz zadejte následující dotaz:
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -201,7 +202,7 @@ V části **Akce** zadejte název akce, například **Odeslání e-mailu správc
 
 ![Přidání skupiny akcí](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
 
-V podokně **E-mailové/SMS/nabízené/hlasové oznámení** zadejte název. Zaškrtněte políčko **E-mail** a zadejte platnou e-mailovou adresu. Klikněte na **OK** na stránce **E-mailové/SMS/nabízené/hlasové oznámení** a pak klikněte na **OK** na stránce **Přidat skupinu akcí**.
+V podokně E-mailové/SMS/nabízené/hlasové oznámení zadejte název. Zaškrtněte políčko **E-mail** a zadejte platnou e-mailovou adresu. V podokně klikněte na **OK** a potom na stránce Přidat skupinu akcí klikněte na **OK.**
 
 Pokud chcete upravit předmět e-mailového upozornění, na stránce **Vytvořit pravidlo** v části **Přizpůsobit akce** vyberte **Předmět e-mailu**. Jakmile budete hotovi, vyberte **Vytvořit pravidlo upozornění**. Pravidlo vás upozorní na úspěšné nasazení aktualizací a poskytne informace o tom, které počítače byly součástí dané hromadné postupné aktualizace.
 

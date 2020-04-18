@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9e1f62dcdb122726fc1c08b7bea4e4c214ce7906
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1cf1750924ab8ea8afff6ac788683565433866b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933368"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618011"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Integrované kognitivní dovednosti pro zpracování textu a obrazu během indexování (Azure Cognitive Search)
 
@@ -23,6 +23,8 @@ V tomto článku se dozvíte o kognitivní dovednosti poskytované s Azure Cogni
 > Při rozšiřování oboru zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI budete muset [připojit fakturovatelný prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky narůstají při volání API ve službách Cognitive Services a pro extrakci image jako součást fáze prolomení dokumentů v Azure Cognitive Search. Za extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
 > Provádění vestavěných dovedností se účtuje za stávající [cenu průběžných plateb služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsané na [stránce s cenami Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+>
+> [Funkce přírůstkového obohacení (náhledu)](cognitive-search-incremental-indexing-conceptual.md) umožňuje poskytnout mezipaměť, která umožňuje indexeru efektivnější při spouštění pouze kognitivních dovedností, které jsou nezbytné, pokud v budoucnu změníte své dovednosti, což vám ušetří čas a peníze.
 
 
 ## <a name="built-in-skills"></a>Integrované dovednosti

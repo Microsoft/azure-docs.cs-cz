@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 81e46f53c0afc69c927918daa0488c4835d60805
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477984"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605023"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager
 
@@ -40,7 +40,7 @@ V následující tabulce je uvedena verze rozhraní API pro prostředky použit�
 | Prostředek | Typ prostředku | Verze rozhraní API |
 |:---|:---|:---|
 | Pracovní prostor   | pracovní prostory    | 2017-03-15-náhled |
-| Hledat      | uloženoVyhledávání | 2015-03-20 |
+| Search      | uloženoVyhledávání | 2015-03-20 |
 | Zdroj dat | Datasources   | 2015-11-01-náhled |
 | Řešení    | Řešení     | 2015-11-01-náhled |
 
@@ -153,7 +153,7 @@ Pro rezervaci kapacity definujete vybranou rezervaci kapacity pro `CapacityReser
    >* "jméno": "CapacityReservation",
    >* "capacityReservationLevel": 100
 
-2. Upravte šablonu tak, aby vyhovovala vašim požadavkům. Zvažte vytvoření [souboru parametrů Správce prostředků](../../azure-resource-manager/templates/parameter-files.md) namísto předávání parametrů jako vsazených hodnot. Projděte si odkaz na [šablonu microsoft.operationalinsights/pracovní prostory,](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) abyste zjistili, jaké vlastnosti a hodnoty jsou podporovány. 
+2. Upravte šablonu tak, aby vyhovovala vašim požadavkům. Zvažte vytvoření [souboru parametrů Správce prostředků](../../azure-resource-manager/templates/parameter-files.md) namísto předávání parametrů jako vsazených hodnot. Projděte si odkaz na [šablonu microsoft.operationalinsights/pracovní prostory,](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) abyste zjistili, jaké vlastnosti a hodnoty jsou podporovány. 
 
 3. Uložte tento soubor jako **deploylaworkspacetemplate.json** do místní složky.
 

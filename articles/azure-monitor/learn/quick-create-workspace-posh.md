@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: a2765aaf36aa5f7e541e0ee7fb3178246d2cca5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3547062f100eeb4dfa741a0566d737a0eac776a0
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659894"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605096"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Vytvoření pracovního prostoru Analýzy protokolů s Azure PowerShellem
 
@@ -108,7 +108,7 @@ Následující parametry nastavují výchozí hodnotu:
     }
     ```
 
-2. Upravte šablonu tak, aby vyhovovala vašim požadavkům. Projděte si odkaz na [šablonu microsoft.operationalinsights/pracovní prostory,](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) abyste zjistili, jaké vlastnosti a hodnoty jsou podporovány. 
+2. Upravte šablonu tak, aby vyhovovala vašim požadavkům. Projděte si odkaz na [šablonu microsoft.operationalinsights/pracovní prostory,](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) abyste zjistili, jaké vlastnosti a hodnoty jsou podporovány. 
 3. Uložte tento soubor jako **deploylaworkspacetemplate.json** do místní složky.   
 4. Jste připraveni k nasazení této šablony. Ze složky obsahující šablonu použijte následující příkazy. Až se zobrazí výzva k zadání názvu pracovního prostoru, zadejte název, který je globálně jedinečný ve všech předplatných Azure.
 

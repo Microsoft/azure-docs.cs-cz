@@ -4,17 +4,17 @@ description: Seznamte se s funkcemi požadavků na zákaznická data v Azure Tim
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 02/14/2020
+ms.date: 04/17/2020
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 64660e497bb1765b649e00b07fdb5db8c05910f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3578710bf066e7745215d8efacafd2cf6c005eac
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368697"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640493"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Souhrn funkcí požadavků na zákaznická data
 

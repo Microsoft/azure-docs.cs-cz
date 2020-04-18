@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2bd9b4f46e28a28f99045319d8ac606cdcee7216
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53dfe07ebd4925c96290db140b6e613c38eef564
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536781"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617342"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení pracovníka hybridní hotonové ho schodišti Windows
 
@@ -144,7 +144,7 @@ Ve výsledcích hledání byste měli vidět záznamy prezenčního signálu pro
 K dokončení instalace a instalace agenta použijte následující kroky.
 
 1. Povolte řešení pro palubní počítač agenta. Viz [Palubní stroje v pracovním prostoru](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace).
-2. Ověřte, zda agent správně stáhl řešení automatizace. Měl by mít složku s názvem **AzureAutomationFiles** v **C:\Program Files\Microsoft Monitoring Agent\Agent**. 
+2. Ověřte, zda agent správně stáhl řešení automatizace. 
 3. Chcete-li potvrdit verzi hybridního pracovníka sady Runbook, přejděte na **c:\programové soubory\agenta monitorování společnosti Microsoft\agenta\AzureAutomation** a poznamenejte si podsložku **verze.**
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>Krok 4 – Instalace prostředí sady Runbook a připojení k Azure Automation

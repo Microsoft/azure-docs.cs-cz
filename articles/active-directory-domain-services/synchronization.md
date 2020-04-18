@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38ed48df4d681543cc30daccf46b98635d973b89
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944420"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639915"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Synchronizace objektů a přihlašovacích údajů ve spravované doméně služby Azure AD Domain Services
 
@@ -31,6 +31,8 @@ Následující diagram znázorňuje, jak funguje synchronizace mezi Azure AD DS,
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Synchronizace z Azure AD na Azure AD DS
 
 Uživatelské účty, členství ve skupinách a hash přihlašovacích údajů jsou synchronizovány jedním způsobem z Azure AD do Azure AD DS. Tento proces synchronizace je automatický. Tento proces synchronizace není nutné konfigurovat, monitorovat ani spravovat. Počáteční synchronizace může trvat několik hodin na několik dní, v závislosti na počtu objektů v adresáři Azure AD. Po dokončení počáteční synchronizace se změny provedené ve službě Azure AD, jako jsou změny hesla nebo atributů, automaticky synchronizují do služby Azure AD DS.
+
+Když se uživatel vytvoří ve službě Azure AD, nejsou synchronizovány s Azure AD DS, dokud nezmění své heslo ve službě Azure AD. Tento proces změny hesla způsobí, že hodnot hash hesel pro ověřování protokolů Kerberos a NTLM se vygenerují a uloží ve službě Azure AD. K úspěšnému ověření uživatele ve službě Azure AD DS jsou potřeba hashe hesla.
 
 Proces synchronizace je jedním ze způsobů / jednosměrný podle návrhu. Neexistuje žádná zpětná synchronizace změn z Azure AD DS zpět do Služby Azure AD. Spravovaná doména Azure AD DS je do značné míry jen pro čtení s výjimkou vlastních vou, které můžete vytvořit. V rámci spravované domény Azure AD DS nelze provádět změny atributů uživatelů, uživatelských hesel nebo členství ve skupinách.
 
@@ -134,7 +136,7 @@ Když povolíte Azure AD DS, jsou vyžadovány starší nastavení hash hesla pr
 
 Starší nastavení hashe hesla se pak synchronizují ze služby Azure AD do řadičů domény pro spravovanou doménu Azure AD DS. Disky pro tyto spravované řadiče domény ve službě Azure AD DS jsou šifrované v klidovém stavu. Tato hash hesel jsou uložena a zabezpečena v těchto řadičích domény podobná způsobu ukládání a zabezpečení hesel v místním prostředí služby AD DS.
 
-Pro prostředí Azure AD pouze pro cloud [uživatelé musí resetovat nebo změnit své heslo,](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) aby se požadované zabezpečení hesel vygenerovalo a ukládaly ve službě Azure AD. Pro všechny cloudové uživatelské účet vytvořený ve službě Azure AD po povolení služby Azure AD Domain Services se vygenerují a ukládají ve formátech kompatibilních s protokoly NTLM a Kerberos. Tyto nové účty není nutné resetovat nebo měnit své heslo generovat starší heslo hashe.
+Pro prostředí Azure AD pouze pro cloud [uživatelé musí resetovat nebo změnit své heslo,](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) aby se požadované zabezpečení hesel vygenerovalo a ukládaly ve službě Azure AD. Pro všechny cloudové uživatelské účet vytvořený ve službě Azure AD po povolení služby Azure AD Domain Services se vygenerují a ukládají ve formátech kompatibilních s protokoly NTLM a Kerberos. Všechny uživatelské účty v cloudu musí změnit své heslo před jejich synchronizací do Služby Azure AD DS.
 
 Pro hybridní uživatelské účty synchronizované z místního prostředí služby AD DS pomocí služby Azure AD Connect je nutné [nakonfigurovat službu Azure AD Connect tak, aby synchronizovala hodnothasy hesel ve formátech kompatibilních s protokoly NTLM a Kerberos](tutorial-configure-password-hash-sync.md).
 

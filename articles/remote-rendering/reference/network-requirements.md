@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 73bbfad4c0535fa00b1aa53764eb52acb83124f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680372"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617876"
 ---
 # <a name="network-requirements"></a>Síťové požadavky
 
@@ -28,6 +28,9 @@ Přesné požadavky na síť závisí na konkrétním případu použití, jako 
 * S **dobrou sílu signálu Wi-Fi** je zásadní. Pokud je to možné, držte se blízko přístupového bodu Wi-Fi a vyhněte se překážkám mezi klientským zařízením a přístupovými body.
 * Ujistěte se, že se vždy připojíte k **nejbližšímu datovému centru Azure** pro vaši [oblast](regions.md). Čím blíže je datové centrum, tím nižší je latence sítě, což má obrovský vliv na stabilitu hologramu.
 
+> [!NOTE]
+> Následná šířka pásma je většinou spotřebována video streamem, který je rozdělen mezi informace o barvě a hloubce (oba 60 Hz, stereo).
+
 ## <a name="network-performance-tests"></a>Testy výkonu sítě
 
 Pokud chcete získat počáteční pochopení toho, zda je kvalita připojení k síti dostatečná ke spuštění vzdáleného vykreslování Azure, existují existující online nástroje, které můžete použít. Důrazně doporučujeme spustit tyto online nástroje z přiměřeně výkonného přenosného počítače připojeného ke stejné síti Wi-Fi jako zařízení, na které plánujete spustit klientskou aplikaci Vzdálené vykreslování Azure. Výsledky získané spuštěním testů na mobilním telefonu nebo HoloLens2 jsou obvykle méně užitečné, protože se ukázalo, že vykazují významné rozdíly na zařízeních s nízkým výkonem. Umístění, ve kterém umístíte přenosný počítač by měl být zhruba na stejném místě, na kterém očekáváte, že budete používat zařízení, které spouští klientskou aplikaci Azure Remote Rendering.
@@ -39,7 +42,7 @@ Vyberte server, který je vám nejblíže, a spusťte test. Zatímco server nebu
    * **Minimální požadavek na** vzdálené vykreslování Azure: Přibližně 40 Mb/s za datovým proudem a 5 Mb/s proti proudu.
    * **Doporučeno** pro vzdálené vykreslování Azure: Přibližně 100 Mb/s po proudu a 10 Mb/s proti proudu.
 Doporučujeme spustit test vícekrát a při nejhorších výsledcích.
-1. **Použijte nástroj, jako je www.azurespeed.com, který měří latenci datových center Azure**. Vyberte datové centrum Azure podporované vzdáleným vykreslováním Azure, které je vám nejblíže (viz [podporované oblasti](regions.md)) a spusťte **test latence**. Pokud se zobrazí odchylka v číslech, která vidíte, dejte výsledky nějaký čas na stabilizaci.
+1. **Použijte nástroj, jako je www.azurespeed.com, který měří latenci datových center Azure**. Vyberte datové centrum Azure podporované vzdáleným vykreslováním Azure, které je vám nejblíže (viz [podporované oblasti)](regions.md)a spusťte **test latence**. Pokud se zobrazí odchylka v číslech, která vidíte, dejte výsledky nějaký čas na stabilizaci.
    * **Minimální požadavek** na vzdálené vykreslování Azure: Latence by měla být konzistentně menší než 100 ms.
    * **Doporučeno** pro vzdálené vykreslování Azure: Latence by měla být konzistentně menší než 70 ms.
 

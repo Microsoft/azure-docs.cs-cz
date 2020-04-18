@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ee4b6b4247ac1a5c988d8b455fd1d8a2bff889a9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ce311d2deaf0eec76ef0dec3ea279a387d14fd22
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80135997"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81637124"
 ---
 <a name="HOLTop"></a>
 
@@ -84,7 +84,7 @@ Pokud používáte IDE sady Visual Studio, klientská knihovna je k dispozici ja
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce sady Computer Vision .NET SDK.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 | [Klient ComputerVision](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | Tato třída je potřebná pro všechny funkce počítačového vidění. Můžete vytvořit konkretizovat s informacemi o předplatném a použít jej k většině operací image.|
 |[Rozšíření klienta ComputerVisionExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| Tato třída obsahuje další metody pro **ComputerVisionClient**.|
@@ -133,6 +133,12 @@ Ve třídě **Program** uložte odkaz na adresu URL obrázku, který chcete anal
 Definujte novou metodu pro analýzu obrazu. Přidejte níže uvedený kód, který určuje vizuální funkce, které chcete extrahovat v analýze. Úplný seznam naleznete v výčtu **[VisualFeatureTypes.](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)**
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_visualfeatures)]
+
+Vložte některý z následujících bloků kódu do metody **AnalyzeImageUrl** k implementaci jejich funkcí. Nezapomeňte přidat uzavírací závorku na konci.
+
+```csharp
+}
+```
 
 ### <a name="analyze"></a>Analýza
 

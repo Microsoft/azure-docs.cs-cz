@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9e1bff3d25a978b5159d8e6ab8ab2453df77ca3
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116761"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640520"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Plánování kanálů strojového učení pomocí Azure Machine Learning SDK pro Python
 
@@ -98,6 +98,10 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 ### <a name="optional-arguments-when-creating-a-schedule"></a>Volitelné argumenty při vytváření plánu
 
 Kromě argumentů popsaných dříve můžete nastavit `status` argument `"Disabled"` pro vytvoření neaktivního plánu. Nakonec `continue_on_step_failure` umožňuje předat logickou hodnotu, která přepíše výchozí chování selhání kanálu.
+
+### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>Použití aplikací Azure Logic Apps pro složitější pracovní postupy
+
+Azure Logic Apps podporuje složitější pracovní postupy a je mnohem více široce integrované než kanály Azure Machine Learning. Další informace najdete [v tématu Aktivace spuštění kanálu Machine Learning z aplikace logiky.](how-to-trigger-published-pipeline.md)
 
 ## <a name="view-your-scheduled-pipelines"></a>Zobrazení naplánovaných kanálů
 

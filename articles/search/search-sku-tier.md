@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: f103db1d0de7a9d538f56b8ade331dc856b26bce
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: eb11a5cc2deef372ca91c23a8b9c82e17143c85b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547023"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617714"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Cognitive Search
 
@@ -89,6 +89,8 @@ Pro [obohacení umělou aicí](cognitive-search-concept-intro.md)byste měli nap
 | Praskání dokumentů, extrakce obrazu | Fakturováno podle počtu obrázků extrahovaných z vašich dokumentů. V [konfiguraci indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) **imageAction** je parametr, který aktivuje extrakci obrazu. Pokud **imageAction** je nastavena na "none" (výchozí), nebudou účtovány za extrakci obrazu. Rychlost extrakce image je zdokumentována na stránce [s podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/search/) pro Azure Cognitive Search.|
 | [Předdefinované kognitivní dovednosti](cognitive-search-predefined-skills.md) | Fakturováno stejným tempem, jako kdybyste úkol provedli přímo pomocí služeb Cognitive Services. |
 | Vlastní dovednosti | Vlastní dovednost je funkce, které poskytujete. Náklady na použití vlastní dovednosti závisí zcela na tom, zda vlastní kód volá jiné služby účtované podle objemu dat. |
+
+[Funkce přírůstkového obohacení (náhledu)](cognitive-search-incremental-indexing-conceptual.md) umožňuje poskytnout mezipaměť, která umožňuje indexeru efektivnější při spouštění pouze kognitivních dovedností, které jsou nezbytné, pokud v budoucnu změníte své dovednosti, což vám ušetří čas a peníze.
 
 <a name="search-units"></a>
 

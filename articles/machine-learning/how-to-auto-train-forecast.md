@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: d4e36c0d3838af85768453496a51ecd295c22b93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be3046a343e14be4a527363751081ba3f2593cd3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79081841"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605890"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické trénování modelu prognózy časových řad
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -205,12 +205,7 @@ fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 
 Použijte nejlepší iteraci modelu k prognóze hodnot pro testovací datovou sadu.
 
-```python
-predict_labels = fitted_model.predict(test_data)
-actual_labels = test_labels.flatten()
-```
-
-Alternativně můžete použít `forecast()` funkci namísto `predict()`, která umožní specifikace, kdy by měly být spouštěny předpovědi. V následujícím příkladu nejprve nahradíte všechny hodnoty v `y_pred` s `NaN`. Předpokládaný původ bude v tomto případě na konci údajů o školení, `predict()`jako by tomu bylo obvykle při použití . Pokud jste však nahradili pouze `y_pred` `NaN`druhou polovinu s , funkce by ponechala číselné `NaN` hodnoty v první polovině beze změny, ale předpověděla hodnoty v druhé polovině. Funkce vrátí předpokládané hodnoty i zarovnané prvky.
+Funkce `forecast()` by měla být `predict()`použita místo , to umožní specifikace, kdy předpovědi by měla začít. V následujícím příkladu nejprve nahradíte všechny hodnoty v `y_pred` s `NaN`. Předpokládaný původ bude v tomto případě na konci údajů o školení, `predict()`jako by tomu bylo obvykle při použití . Pokud jste však nahradili pouze `y_pred` `NaN`druhou polovinu s , funkce by ponechala číselné `NaN` hodnoty v první polovině beze změny, ale předpověděla hodnoty v druhé polovině. Funkce vrátí předpokládané hodnoty i zarovnané prvky.
 
 Parametr ve `forecast_destination` `forecast()` funkci můžete také použít k prognóze hodnot až do zadaného data.
 

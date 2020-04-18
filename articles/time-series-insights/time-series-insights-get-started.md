@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 04/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2c946c49884ef0de6843028976d4ec00ccfbcdfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459c6afc775aa0df43d6f9285191c4c7e1b8cb8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934854"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81602362"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Vytvoření nového prostředí Time Series Insights na webu Azure Portal
 
@@ -28,7 +28,7 @@ Time Series Insights vám umožní začít vizualizovat a dotazovat data toku do
 
 Chcete-li vytvořit prostředí, postupujte takto:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyberte tlačítko **+ Vytvořit zdroj.**
 
@@ -39,9 +39,9 @@ Chcete-li vytvořit prostředí, postupujte takto:
 1. Na stránce **Přehledy časových řad** vyberte **Vytvořit**.
 
 1. Vyplňte požadované parametry. Následující tabulka vysvětluje každý parametr:
-   
+
    [![Vytvoření skupiny prostředků Time Series Insights](media/time-series-insights-get-started/tsi-configure-and-create.png)](media/time-series-insights-get-started/tsi-configure-and-create.png#lightbox)
-   
+
    Nastavení|Navrhovaná hodnota|Popis
    ---|---|---
    Název prostředí | Jedinečný název | Tento název představuje prostředí v [průzkumníku časových řad](https://insights.timeseries.azure.com)
@@ -49,7 +49,7 @@ Chcete-li vytvořit prostředí, postupujte takto:
    Skupina prostředků | Vytvoření nového nebo použití existujícího | Skupina prostředků je kolekce společně používaných prostředků Azure. Můžete zvolit existující skupinu prostředků, například tu, která obsahuje centrum událostí nebo IoT Hub. Nebo můžete vytvořit nový, pokud tento zdroj nesouvisí s jinými zdroji.
    Umístění | Nejbližší zdroj události | Pokud možno zvolte stejné umístění datového centra, které obsahuje data zdroje událostí, ve snaze vyhnout se přidaným nákladům na šířku pásma napříč oblastmi a mezi zónami a přidané latenci při přesunu dat mimo oblast.
    Cenová úroveň | S1 | Vyberte potřebnou propustnost. Chcete-li nejnižší náklady a kapacitu startéru, vyberte Možnost S1.
-   Kapacita | 1 | Kapacita je násobitel se vztahuje na rychlost příchozího přenosu dat, kapacitu úložiště a náklady spojené s vybranou skladovou položkou.  Kapacitu prostředí můžete po vytvoření změnit. Pro nejnižší náklady vyberte kapacitu 1. 
+   Kapacita | 1 | Kapacita je násobitel se vztahuje na rychlost příchozího přenosu dat, kapacitu úložiště a náklady spojené s vybranou skladovou položkou.  Kapacitu prostředí můžete po vytvoření změnit. Pro nejnižší náklady vyberte kapacitu 1.
   
 1. Vyberte **Vytvořit,** chcete-li zahájit proces zřizování. Může to trvat několik minut.
 

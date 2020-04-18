@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 04/16/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76844768"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605803"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Úvodní příručka: Směrování událostí úložiště objektů blob do koncového bodu webu pomocí portálu Azure
 
@@ -32,30 +32,50 @@ Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
 1. Pokud chcete úložiště objektů blob, vyberte **Vytvořit prostředek**. 
 
-   ![Vytvoření prostředku](./media/blob-event-quickstart-portal/create-resource.png)
-
 1. Výběrem **Úložiště** vyfiltrujte dostupné možnosti a vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
 
    ![Výběr úložiště](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Pokud se chcete přihlásit k odběru událostí, vytvořte si účet úložiště pro obecné účely verze 2 nebo účet úložiště objektů blob. Další informace najdete v článku o [vytvoření účtu úložiště](../storage/common/storage-account-create.md).
+   Pokud se chcete přihlásit k odběru událostí, vytvořte si účet úložiště pro obecné účely verze 2 nebo účet úložiště objektů blob.
+   
+1. Na stránce **Vytvořit účet úložiště** postupujte takto:
+    1. Vyberte své předplatné Azure. 
+    2. Pro **skupinu prostředků**vytvořte novou skupinu prostředků nebo vyberte existující skupinu. 
+    3. Zadejte název účtu úložiště. 
+    4. Vyberte **Zkontrolovat a vytvořit**. 
 
-   ![Počáteční kroky](./media/blob-event-quickstart-portal/provide-blob-values.png)
+       ![Počáteční kroky](./media/blob-event-quickstart-portal/provide-blob-values.png)    
+    5. Na stránce **Revize + vytvoření** zkontrolujte nastavení a vyberte **Vytvořit**. 
 
->[!NOTE]
-> Pouze účty úložiště druhu **StorageV2 (pro obecné účely v2)** a Integrace událostí podpory **BlobStorage.** **Úložiště (genral účel v1)** *nepodporuje* integraci s Event Grid.
+        >[!NOTE]
+        > Pouze účty úložiště druhu **StorageV2 (pro obecné účely v2)** a Integrace událostí podpory **BlobStorage.** **Úložiště (genral účel v1)** *nepodporuje* integraci s Event Grid.
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
 Před přihlášením k odběru událostí úložiště objektů blob vytvoříme koncový bod pro zprávy události. Koncový bod obvykle provede akce na základě dat události. Pro zjednodušení tohoto rychlého startu nasadíte [předem připravenou webovou aplikaci](https://github.com/Azure-Samples/azure-event-grid-viewer), která zobrazuje zprávy události. Nasazené řešení zahrnuje plán služby App Service, webovou aplikaci App Service a zdrojový kód z GitHubu.
 
-1. Vyberte **Nasadit do Azure** a nasaďte řešení do svého předplatného. Na webu Azure Portal zadejte hodnoty pro parametry.
+1. Vyberte **Nasadit do Azure** a nasaďte řešení do svého předplatného. 
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+2. Na stránce **Vlastní nasazení** postupujte takto: 
+    1. Ve **skupině Prostředků**vyberte skupinu prostředků, kterou jste vytvořili při vytváření účtu úložiště. Bude pro vás jednodušší vyčistit po dokončení kurzu odstraněním skupiny prostředků.  
+    2. Do **pole Název webu**zadejte název webové aplikace.
+    3. Do **pole Název plánu hostování**zadejte název plánu služby App Service, který chcete použít pro hostování webové aplikace.
+    4. Zaškrtněte **políčko, protože souhlasím s výše uvedenými podmínkami**. 
+    5. Vyberte **Koupit**. 
 
-1. Dokončení nasazení může trvat několik minut. Po úspěšném nasazení si webovou aplikaci prohlédněte, abyste se ujistili, že funguje. Ve webovém prohlížeči přejděte na: `https://<your-site-name>.azurewebsites.net`
+       ![Parametry nasazení](./media/blob-event-quickstart-portal/template-deploy-parameters.png)
+1. Dokončení nasazení může trvat několik minut. Vyberte Výstrahy (ikona zvonku) na portálu a pak vyberte **Přejít na skupinu prostředků**. 
 
-1. Zobrazí se web, na který se však zatím neodeslaly žádné události.
+    ![Výstraha – přechod na skupinu prostředků](./media/blob-event-quickstart-portal/navigate-resource-group.png)
+4. Na stránce **Skupina prostředků** vyberte v seznamu prostředků webovou aplikaci, kterou jste vytvořili. V tomto seznamu se také zobrazí plán služby App Service a účet úložiště. 
+
+    ![Vybrat web](./media/blob-event-quickstart-portal/resource-group-resources.png)
+5. Na stránce **App Service** pro webovou aplikaci vyberte adresu URL pro přechod na web. Adresa URL by měla `https://<your-site-name>.azurewebsites.net`být v tomto formátu: .
+    
+    ![Přechod na web](./media/blob-event-quickstart-portal/web-site.png)
+
+6. Potvrďte, že se web zobrazují, ale zatím na něj nebyly zveřejněny žádné události.
 
    ![Zobrazení nového webu](./media/blob-event-quickstart-portal/view-site.png)
 
@@ -65,15 +85,20 @@ Před přihlášením k odběru událostí úložiště objektů blob vytvořím
 
 K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat a kam má tyto události odesílat.
 
-1. Na portálu vyberte své úložiště objektů blob a pak vyberte **Události**.
-
-   ![Výběr událostí](./media/blob-event-quickstart-portal/select-events.png)
-
-1. Pokud chcete do aplikace prohlížeče odesílat události, použijte jako koncový bod webhook. Vyberte **Další možnosti** a **Webhook**.
+1. Na portálu přejděte na účet Azure Storage, který jste vytvořili dříve. V levé nabídce vyberte **Všechny prostředky** a vyberte účet úložiště. 
+2. Na stránce **Účet úložiště** vyberte **Události** v levé nabídce.
+1. Vyberte **Další možnosti** a **Webhook**. Události odesíláte do aplikace prohlížeče pomocí webového háčku pro koncový bod. 
 
    ![Výběr webhooku](./media/blob-event-quickstart-portal/select-web-hook.png)
+3. Na stránce **Vytvořit odběr událostí** postupujte takto: 
+    1. Zadejte **název** předplatného události.
+    2. Vyberte **webový hák** pro **typ koncového bodu**. 
 
-1. Odběr událostí obsahuje předem vyplněné hodnoty pro vaše úložiště objektů blob. Jako koncový bod webhooku zadejte adresu URL vaší webové aplikace a do adresy URL domovské stránky přidejte `api/updates`. Zadejte název vašeho předplatného. Až budete hotovi, vyberte **Vytvořit**.
+       ![Vybrat typ koncového bodu webového háčku](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
+4. V **části Koncový bod**klikněte na Vybrat koncový **bod**, `api/updates` zadejte adresu URL webové `https://spegridsite.azurewebsites.net/api/updates`aplikace a přidejte ji na adresu URL domovské stránky (například: ) a pak vyberte **Potvrdit výběr**.
+
+   ![Potvrdit výběr koncového bodu](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
+5. Teď na stránce **Vytvořit odběr událostí** vyberte **Vytvořit** a vytvořte odběr události. 
 
    ![Výběr protokolů](./media/blob-event-quickstart-portal/create-subscription.png)
 
@@ -87,11 +112,11 @@ Nyní aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje z
 
 Událost pro úložiště objektů blob aktivujete nahráním souboru. Soubor nemusí obsahovat žádný konkrétní obsah. V tomto článku se předpokládá, že máte soubor testfile.txt, ale můžete použít jakýkoli soubor.
 
-1. Jako úložiště objektů blob vyberte **Objekty blob**.
+1. Na webu Azure Portal přejděte na účet úložiště objektů Blob a na stránce **Přehled** vyberte **Kontejnery.**
 
    ![Výběr objektů blob](./media/blob-event-quickstart-portal/select-blobs.png)
 
-1. Vyberte **+ Kontejner**. Zadejte název kontejneru a použijte jakoukoli úroveň přístupu.
+1. Vyberte **+ Kontejner**. Pojmenujte kontejner a použijte libovolnou úroveň přístupu a vyberte **Vytvořit**. 
 
    ![Přidání kontejneru](./media/blob-event-quickstart-portal/add-container.png)
 
@@ -99,39 +124,15 @@ Událost pro úložiště objektů blob aktivujete nahráním souboru. Soubor ne
 
    ![Výběr kontejneru](./media/blob-event-quickstart-portal/select-container.png)
 
-1. Pokud chcete nahrát soubor, vyberte **Nahrát**.
+1. Pokud chcete nahrát soubor, vyberte **Nahrát**. Na stránce **Nahrát objekt blob** projděte a vyberte soubor, který chcete nahrát pro testování, a pak na této stránce vyberte **Nahrát.** 
 
    ![Výběr nahrání](./media/blob-event-quickstart-portal/upload-file.png)
 
 1. Přejděte k testovacímu souboru a nahrajte ho.
 
-1. Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Zpráva je ve formátu JSON a obsahuje pole s jednou nebo více událostmi. V následujícím příkladu zpráva JSON obsahuje pole s jednou událostí. Zobrazte svou webovou aplikaci a všimněte si, že se přijala událost vytvoření objektu blob. 
+1. Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Zpráva je ve formátu JSON a obsahuje pole s jednou nebo více událostmi. V následujícím příkladu zpráva JSON obsahuje pole s jednou událostí. Zobrazte webovou aplikaci a všimněte si, že byla přijata událost **vytvořená objektem blob.** 
 
-   ```json
-   [{
-    "topic": "/subscriptions/{subscription-id}/resourceGroups/eventgroup/providers/Microsoft.Storage/storageAccounts/demoblob0625",
-    "subject": "/blobServices/default/containers/eventcontainer/blobs/testfile.txt",
-    "eventType": "Microsoft.Storage.BlobCreated",
-    "eventTime": "2018-06-25T22:50:41.1823131Z",
-    "id": "89a2f9da-c01e-00bb-13d6-0c599506e4e3",
-    "data": {
-      "api": "PutBlockList",
-      "clientRequestId": "41341a9b-e977-4a91-9000-c64125039047",
-      "requestId": "89a2f9da-c01e-00bb-13d6-0c5995000000",
-      "eTag": "0x8D5DAEE13C8F9ED",
-      "contentType": "text/plain",
-      "contentLength": 4,
-      "blobType": "BlockBlob",
-      "url": "https://demoblob0625.blob.core.windows.net/eventcontainer/testfile.txt",
-      "sequencer": "00000000000000000000000000001C24000000000004712b",
-      "storageDiagnostics": {
-        "batchId": "ef633252-32fd-464b-8f5a-0d10d68885e6"
-      }
-    },
-    "dataVersion": "",
-    "metadataVersion": "1"
-   }]
-   ```
+   ![Událost vytvořená objektem blob](./media/blob-event-quickstart-portal/blob-created-event.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

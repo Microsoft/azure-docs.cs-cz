@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7ee219ae5ace0f0da398cc542f410d3c895c8bd4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ac7e721a863414cf0617177885e0ff1c9e9a35d4
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679982"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617871"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -38,7 +38,7 @@ Existují dva důvody, proč server může odmítnout připojení k **kodeku nen
 
 Nejprve se ujistěte, že jste nainstalovali **rozšíření HEVC Video Extensions,** jak je uvedeno v části [Software](../overview/system-requirements.md#software) v požadavcích na systém.
 
-Pokud stále dochází k problémům, ujistěte se, že grafická karta podporuje H265 a máte nainstalován nejnovější grafický ovladač. Informace o konkrétních dodavatelích naleznete v části [Vývojový počítač](../overview/system-requirements.md#development-pc) v části Systémové požadavky.
+Pokud stále dochází k problémům, ujistěte se, že grafická karta podporuje H265 a máte nainstalován nejnovější grafický ovladač. Informace o dodavateli naleznete v části [Vývojový počítač](../overview/system-requirements.md#development-pc) v části Systémové požadavky.
 
 **Kodek je nainstalován, ale nelze jej použít:**
 
@@ -76,6 +76,14 @@ Kvalita videa může být ohrožena buď kvalitou sítě, nebo chybějícím vid
 
 * Postup identifikace problémů se sítí naleznete v následujících [postupech](#unstable-holograms).
 * Podívejte se na [systémové požadavky](../overview/system-requirements.md#development-pc) pro instalaci nejnovějšího grafického ovladače.
+
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Video nahrané pomocí MRC neodráží kvalitu živého zážitku
+
+Video lze nahrát na Hololens přes [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers). Výsledné video má však horší kvalitu než živá zkušenost ze dvou důvodů:
+* Snímková frekvence videa je omezena na 30 Hz oproti 60 Hz.
+* Video obrázky neprocházejí [pozdní fázi reprojection](../overview/features/late-stage-reprojection.md) zpracování krok, takže video se zdá být choppier.
+
+Obě jsou inherentní omezení nahrávací techniky.
 
 ## <a name="black-screen-after-successful-model-loading"></a>Černá obrazovka po úspěšném načtení modelu
 

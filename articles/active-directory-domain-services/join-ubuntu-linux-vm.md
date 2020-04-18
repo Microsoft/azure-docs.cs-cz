@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 95373ab8ff78c5bcb856e6d7e6d67d8525cd3f7e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 74af841b777494744c72ed219bacd3b3835d41ac
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655123"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617553"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Připojení virtuálního počítače Ubuntu Linux ke spravované doméně služby Azure AD Domain Services
 
@@ -154,6 +154,12 @@ Successfully enrolled machine in realm
 ```
 
 Pokud váš virtuální počítač nemůže úspěšně dokončit proces připojení k doméně, ujistěte se, že skupina zabezpečení sítě virtuálního počítače umožňuje odchozí přenosprotokolu Kerberos na portu TCP + UDP 464 do podsítě virtuální sítě pro spravovanou doménu Azure AD DS.
+
+Pokud jste obdrželi chybu *Nespecifikované selhání GSS.  Menší kód může poskytnout další informace (Server nebyl nalezen v databázi Kerberos)*, otevřete `[libdefaults]` soubor */etc/krb5.conf* a přidejte následující kód do sekce a zkuste to znovu:
+
+```console
+rdns=false
+```
 
 ## <a name="update-the-sssd-configuration"></a>Aktualizace konfigurace SSSD
 

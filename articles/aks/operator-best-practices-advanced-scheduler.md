@@ -5,12 +5,12 @@ description: Seznamte se s doporučenými postupy operátora clusteru pro použ�
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 47b2d78f7dc831c4314c4215f5e0a9e17f75f0dc
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668366"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617523"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Doporučené postupy pro pokročilé funkce plánovače ve službě Azure Kubernetes Service (AKS)
 
@@ -134,7 +134,7 @@ Další informace o používání selektorů uzlů naleznete v tématu [Přiřaz
 
 Volič uzlů je základní způsob, jak přiřadit pody k danému uzlu. Větší flexibilita je k dispozici pomocí *spřažení uzlů*. S afinitou uzlů definujete, co se stane, když pod nelze spárovat s uzlem. Můžete *požadovat, aby* plánovač Kubernetes odpovídá pod s označeným hostitelem. Nebo můžete *dát přednost* shodě, ale povolit pod, které mají být naplánovány na jiném hostiteli, pokud není shoda je k dispozici.
 
-Následující příklad nastaví spřažení uzlu na *requiredDuringSchedulingIgnoredDuringExecution*. Tato spřažení vyžaduje Kubernetes plán použít uzel s odpovídající popisek. Pokud není k dispozici žádný uzel, pod musí čekat na plánování pokračovat. Chcete-li povolit pod naplánovat na jiném uzlu, můžete místo toho nastavit hodnotu *preferredDuringScheduledIgnoreDuringExecution*:
+Následující příklad nastaví spřažení uzlu na *requiredDuringSchedulingIgnoredDuringExecution*. Tato spřažení vyžaduje Kubernetes plán použít uzel s odpovídající popisek. Pokud není k dispozici žádný uzel, pod musí čekat na plánování pokračovat. Chcete-li povolit pod, který má být naplánován na jiný uzel, můžete místo toho nastavit hodnotu *preferredDuringSchedulingIgnoreDuringExecution*:
 
 ```yaml
 kind: Pod

@@ -13,22 +13,22 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 2b1b708618c60153b8dbce69b26d832fa18b25aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476599"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605187"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači SIP v Azure
-Virtuální počítače (VM) Linuxu v Azure se obvykle spravují z příkazového řádku pomocí zabezpečeného připojení prostředí (SSH). Pokud je v Linuxu nový nebo pro rychlé scénáře řešení potíží, může být použití vzdálené plochy jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat prostředí plochy ([xfce](https://www.xfce.org)) a vzdálenou plochu[(xrdp)](https://www.xrdp.org)pro virtuální počítač s Linuxem pomocí modelu nasazení Resource Manageru.
+Virtuální počítače (VM) Linuxu v Azure se obvykle spravují z příkazového řádku pomocí zabezpečeného připojení prostředí (SSH). Pokud je v Linuxu nový nebo pro rychlé scénáře řešení potíží, může být použití vzdálené plochy jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat prostředí plochy ([xfce](https://www.xfce.org)) a vzdálenou plochu[(xrdp)](http://xrdp.org)pro virtuální počítač s Linuxem pomocí modelu nasazení Resource Manageru.
 
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek vyžaduje existující ubuntu 18.04 LTS virtuální počítač v Azure. Pokud potřebujete vytvořit virtuální hod, použijte jednu z následujících metod:
 
 - [Cli Azure](quick-create-cli.md)
-- [Azure Portal](quick-create-portal.md)
+- [Portál Azure](quick-create-portal.md)
 
 
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Instalace desktopového prostředí na virtuální počítač s Linuxem

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262482"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604617"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra úloh v odolných funkcích (funkce Azure)
 
@@ -35,7 +35,13 @@ Všechny tyto prostředky se vytvoří automaticky ve výchozím účtu Úloži�
 
 ## <a name="task-hub-names"></a>Názvy rozbočovačů úloh
 
-Centra úloh jsou označena názvem, který je deklarován v souboru *host.json,* jak je znázorněno v následujícím příkladu:
+Centra úloh jsou označena názvem, který odpovídá těmto pravidlům:
+
+* Obsahuje pouze alfanumerické znaky.
+* Začíná písmenem
+* Má minimální délku 3 znaky, maximální délku 45 znaků.
+
+Název centra úloh je deklarován v souboru *host.json,* jak je znázorněno v následujícím příkladu:
 
 ### <a name="hostjson-functions-20"></a>host.json (Funkce 2.0)
 
@@ -121,7 +127,7 @@ public static async Task<HttpResponseMessage> Run(
 > [!NOTE]
 > Předchozí příklad Jazyka C# je pro trvalé funkce 2.x. Pro trvalé funkce 1.x, `DurableOrchestrationContext` musíte `IDurableOrchestrationContext`použít místo . Další informace o rozdílech mezi verzemi naleznete v článku [verze durable functions.](durable-functions-versions.md)
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Vlastnost centra úloh `function.json` v souboru je nastavena pomocí nastavení aplikace:
 

@@ -3,12 +3,12 @@ title: Nasazení prostředků do předplatného
 description: Popisuje, jak vytvořit skupinu prostředků v šabloně Azure Resource Manager. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 65cc220d32d1e1149b7026fc438f5e34262511dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bec29a07653ff5ad7d1e2f8317246049e127c8c
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131962"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605008"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -23,11 +23,11 @@ Na úrovni předplatného můžete nasadit následující typy prostředků:
 * [Rozpočty](/azure/templates/microsoft.consumption/budgets)
 * [nasazení](/azure/templates/microsoft.resources/deployments) – pro vnořené šablony, které se nasazují do skupin prostředků.
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
-* [peerAsns](/azure/templates/microsoft.peering/peerasns)
+* [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [náprava](/azure/templates/microsoft.policyinsights/remediations)
+* [náprava](/azure/templates/microsoft.policyinsights/2019-07-01/remediations)
 * [skupiny prostředků](/azure/templates/microsoft.resources/resourcegroups)
 * [roleÚkoly](/azure/templates/microsoft.authorization/roleassignments)
 * [definice rolí](/azure/templates/microsoft.authorization/roledefinitions)

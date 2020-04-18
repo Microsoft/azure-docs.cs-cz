@@ -3,12 +3,12 @@ title: Jak vytvořit zásady konfigurace hosta pro Linux
 description: Přečtěte si, jak vytvořit zásady Azure Zásady konfigurace pro Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f93aafc8f2c016218b1b7fea82558ea6ba4b4ff8
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 65e0082f87f05104e9a57ff0342cd3d2950b63e8
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365397"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617928"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Jak vytvořit zásady konfigurace hosta pro Linux
 
@@ -89,7 +89,7 @@ supports:
     - os-family: unix
 ```
 
-Uložte tento soubor `linux-path` do složky pojmenované v adresáři projektu.
+Uložte tento `inspec.yml` soubor s `linux-path` názvem do složky pojmenované v adresáři projektu.
 
 Dále vytvořte soubor Ruby s abstrakcí jazyka InSpec, která slouží k auditu počítače.
 
@@ -99,7 +99,7 @@ describe file('/tmp') do
 end
 ```
 
-Uložte tento soubor do `controls` nové `linux-path` složky pojmenované uvnitř adresáře.
+Uložte tento `linux-path.rb` soubor s názvem `controls` do `linux-path` nové složky pojmenované uvnitř adresáře.
 
 Nakonec vytvořte konfiguraci, importujte modul prostředku `ChefInSpecResource` **GuestConfiguration** a pomocí prostředku nastavte název profilu InSpec.
 

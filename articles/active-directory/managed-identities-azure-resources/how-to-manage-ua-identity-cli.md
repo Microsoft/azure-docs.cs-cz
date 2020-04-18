@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266582"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639760"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Vytvoření, vypsat nebo odstranit spravovanou identitu přiřazenou uživatelem pomocí rozhraní příkazového příkazu Azure
 
@@ -37,6 +37,12 @@ V tomto článku se dozvíte, jak vytvořit, seznam a odstranit uživatelem při
     - Azure [Cloud Shell](../../cloud-shell/overview.md) použijte z webu Azure Portal (viz další část).
     - Pomocí vloženého prostředí Azure Cloud Shell použijte pomocí tlačítka "Try It", které se nachází v pravém horním rohu každého bloku kódu.
     - [Nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 nebo novější), pokud dáváte přednost použití místní konzoly příkazového příkazu. Přihlaste se `az login`k Azure pomocí účtu, který je přidružený k předplatnému Azure, pod kterým chcete nasadit spravovanou identitu přiřazenou uživatelem.
+
+
+> [!NOTE]
+> Chcete-li změnit uživatelská oprávnění při použití hlavního povinného použití hlavního nastavení příkazu k obsluze aplikace pomocí rozhraní příkazového příkazu, musíte poskytnout další oprávnění instančního objektu v rozhraní API grafu Azure AD, protože části rozhraní příkazového příkazu provádějí požadavky GET proti rozhraní API grafu. V opačném případě může dojít k přijetí zprávy "Nedostatečná oprávnění k dokončení operace". K tomu budete muset přejít do registrace aplikace ve službě Azure Active Directory, vyberte aplikaci, klikněte na oprávnění rozhraní API, přejděte dolů a vyberte Azure Active Directory Graph. Odtud vyberte oprávnění aplikace a přidejte příslušná oprávnění. 
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

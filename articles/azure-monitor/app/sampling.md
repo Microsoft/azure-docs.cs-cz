@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5e888e0606b7a9bcd9a7a94c28455d705c5f1bec
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6e930b0dc610f74e1a341b2f57f4c211a85a49d3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255477"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605029"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -310,7 +310,7 @@ Ve výchozím nastavení není v agentovi Java a sadě SDK povoleno žádné vzo
 
 #### <a name="configuring-java-agent"></a>Konfigurace agenta Jazyka Java
 
-1. Stáhnout [applicationinsights-agent-3.0.0-PREVIEW.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar)
+1. Stáhnout [applicationinsights-agent-3.0.0-PREVIEW.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
 
 1. Chcete-li povolit vzorkování, přidejte `ApplicationInsights.json` do souboru následující:
 

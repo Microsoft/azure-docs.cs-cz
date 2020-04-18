@@ -1,5 +1,5 @@
 ---
-title: Doporučení zabezpečení pro azure key vault
+title: Doporučení k zabezpečení služby Azure Key Vault
 description: Doporučení zabezpečení pro Azure Key Vault. Provádění těchto pokynů vám pomůže splnit vaše bezpečnostní povinnosti, jak je popsáno v našem modelu sdílené odpovědnosti
 services: key-vault
 author: msmbaldwin
@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: b7bd85508851df7c7a664862b02141bf4d3bea1f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0da1a3019124f62aba6a959ce9104c85bd85d3fc
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429847"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616487"
 ---
-# <a name="security-recommendations-for-azure-key-vault"></a>Doporučení zabezpečení pro azure key vault
+# <a name="security-recommendations-for-azure-key-vault"></a>Doporučení k zabezpečení služby Azure Key Vault
 
 Tento článek obsahuje doporučení zabezpečení pro Azure Key Vault. Implementace těchto doporučení vám pomůže splnit vaše bezpečnostní povinnosti, jak je popsáno v našem modelu sdílené odpovědnosti. Další informace o tom, co společnost Microsoft dělá pro plnění povinností poskytovatele služeb, našlápne [na sdílené odpovědnosti za cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
 

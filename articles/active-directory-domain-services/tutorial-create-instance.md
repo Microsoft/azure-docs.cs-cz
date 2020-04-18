@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 1bd5248e0a6a6c7c569c85e8c1af3e30f8b7f9e4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7652bacdebec19f8a5d55874cfb903e8748cef4d
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474227"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639705"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Kurz: Vytvoření a konfigurace instance služby Azure Active Directory Domain Services
 
@@ -157,7 +157,7 @@ Kroky generování a ukládání těchto hesel hash se liší pro uživatelské 
 > [!TIP]
 > Pokud váš klient Azure AD obsahuje kombinaci uživatelů a uživatelů pouze pro cloud z vašeho místního ad, je třeba provést obě sady kroků.
 
-Pro uživatelské účty pouze pro cloud uživatelé musí změnit svá hesla, než budou moci používat Azure AD DS. Tento proces změny hesla způsobí, že hodnot hash hesel pro ověřování protokolů Kerberos a NTLM se vygenerují a uloží ve službě Azure AD. Můžete buď vyprší platnost hesla pro všechny uživatele v tenantovi, kteří potřebují používat Azure AD DS, který vynutí změnu hesla při příštím přihlášení, nebo pokyn, aby ručně změnit svá hesla. V tomto kurzu ručně změníme uživatelské heslo.
+Pro uživatelské účty pouze pro cloud uživatelé musí změnit svá hesla, než budou moci používat Azure AD DS. Tento proces změny hesla způsobí, že hodnot hash hesel pro ověřování protokolů Kerberos a NTLM se vygenerují a uloží ve službě Azure AD. Účet není synchronizován z Azure AD do Azure AD DS, dokud se nezmění heslo. Buď vyprší platnost hesla pro všechny uživatele cloudu v tenantovi, kteří potřebují používat Azure AD DS, který vynutí změnu hesla při příštím přihlášení, nebo pokyn uživatelům cloudu ručně změnit svá hesla. V tomto kurzu ručně změníme uživatelské heslo.
 
 Než bude uživatel moci resetovat své heslo, musí být klient Azure AD [nakonfigurovaný pro samoobslužné resetování hesla][configure-sspr].
 

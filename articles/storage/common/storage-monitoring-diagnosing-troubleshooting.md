@@ -8,20 +8,20 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255961"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605068"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
 
 ## <a name="overview"></a>Přehled
-Diagnostika a řešení problémů v distribuované aplikaci hostované v cloudovém prostředí může být složitější než v tradičních prostředích. Aplikace lze nasadit v infrastruktuře PaaS nebo IaaS, místně, na mobilním zařízení nebo v nějaké kombinaci těchto prostředí. Síťový provoz vaší aplikace může obvykle procházet veřejnými a soukromými sítěmi a vaše aplikace může kromě jiných úložišť, jako jsou relační úložiště, jako jsou tabulky úložiště Microsoft Azure, objekty BLOB, Fronty nebo Soubory, používat více technologií úložiště Microsoft Azure. a databáze dokumentů.
+Diagnostika a řešení problémů v distribuované aplikaci hostované v cloudovém prostředí může být složitější než v tradičních prostředích. Aplikace lze nasadit v infrastruktuře PaaS nebo IaaS, místně, na mobilním zařízení nebo v nějaké kombinaci těchto prostředí. Síťový provoz vaší aplikace může obvykle procházet veřejnými a soukromými sítěmi a vaše aplikace může kromě jiných úložišť, jako jsou relační a dokumentové databáze, používat více technologií úložiště Microsoft Azure, objektů Blob, Frontnebo Souborů.
 
-Chcete-li tyto aplikace úspěšně spravovat, měli byste je proaktivně sledovat a pochopit, jak diagnostikovat a řešit všechny aspekty těchto aplikací a jejich závislé technologie. Jako uživatel služeb Azure Storage byste měli průběžně sledovat služby úložiště, které vaše aplikace používá pro jakékoli neočekávané změny v chování (například pomalejší než obvykle doby odezvy) a protokolování použít ke shromažďování podrobnějších dat a analýze problému Hloubka. Diagnostické informace, které získáte z monitorování i protokolování vám pomůže určit hlavní příčinu problému, se kterým se vaše aplikace setkala. Potom můžete problém vyřešit a určit příslušné kroky, které můžete provést k jeho nápravě. Azure Storage je základní služba Azure a tvoří důležitou součást většiny řešení, která zákazníci nasazují do infrastruktury Azure. Azure Storage obsahuje funkce pro zjednodušení monitorování, diagnostiky a řešení problémů s úložištěm ve vašich cloudových aplikacích.
+Chcete-li tyto aplikace úspěšně spravovat, měli byste je proaktivně sledovat a pochopit, jak diagnostikovat a řešit všechny aspekty těchto aplikací a jejich závislé technologie. Jako uživatel služeb Azure Storage byste měli průběžně sledovat služby úložiště, které vaše aplikace používá pro jakékoli neočekávané změny v chování (například pomalejší než obvykle doby odezvy) a protokolování použít ke shromažďování podrobnějších dat a k analýze problému do hloubky. Diagnostické informace, které získáte z monitorování i protokolování vám pomůže určit hlavní příčinu problému, se kterým se vaše aplikace setkala. Potom můžete problém vyřešit a určit příslušné kroky, které můžete provést k jeho nápravě. Azure Storage je základní služba Azure a tvoří důležitou součást většiny řešení, která zákazníci nasazují do infrastruktury Azure. Azure Storage obsahuje funkce pro zjednodušení monitorování, diagnostiky a řešení problémů s úložištěm ve vašich cloudových aplikacích.
 
 > [!NOTE]
 > Soubory Azure v tuto chvíli nepodporuje protokolování.
@@ -140,7 +140,7 @@ Metriky úložiště pouze ukládá metriky kapacity pro službu objektů blob, 
 Nápovědu k odhadu velikosti různých objektů úložiště, jako jsou objekty BLOB, najdete v příspěvku blogu [Principy fakturace úložiště Azure – šířky pásma, transakcí a kapacity](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Dostupnost monitorování
-Dostupnost služeb úložiště ve vašem účtu úložiště byste měli sledovat sledováním hodnoty ve **sloupci Dostupnost** v tabulkách metrik hodinové nebo minutové – **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$ MetricsCapacityBlob**. Sloupec **Dostupnost** obsahuje procentuální hodnotu, která označuje dostupnost služby nebo operace rozhraní API reprezentované řádek **(RowKey** ukazuje, pokud řádek obsahuje metriky pro službu jako celek nebo pro konkrétní operaci rozhraní API).
+Dostupnost služeb úložiště ve vašem účtu úložiště byste měli sledovat sledováním hodnoty ve **sloupci Dostupnost** v tabulkách metrik hodinové nebo minutové – **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. Sloupec **Dostupnost** obsahuje procentuální hodnotu, která označuje dostupnost služby nebo operace rozhraní API reprezentované řádek **(RowKey** ukazuje, pokud řádek obsahuje metriky pro službu jako celek nebo pro konkrétní operaci rozhraní API).
 
 Jakákoli hodnota menší než 100 % označuje, že některé požadavky na úložiště selhávají. Můžete zjistit, proč se jejich selhání kontrolou další sloupce v datech metriky, které ukazují počet požadavků s různými typy chyb, jako je **například ServerTimeoutError**. Měli byste očekávat, že **dostupnost** dočasně klesne pod 100 % z důvodů, jako jsou přechodné časové oposy serveru, zatímco služba přesune oddíly na lepší požadavek na vyrovnávání zatížení; logika opakování v klientské aplikaci by měla zpracovávat takové občasné podmínky. V článku [Protokolované operace a zprávy o stavu služby Storage Analytics](https://msdn.microsoft.com/library/azure/hh343260.aspx) uvádí typy transakcí, které metriky úložiště zahrnují do výpočtu **dostupnosti.**
 
@@ -396,7 +396,7 @@ Další informace o použití technologie Wireshark k řešení problémů se s�
 Další informace o použití nástroje Microsoft Message Analyzer k řešení problémů se sítí naleznete v[tématu " Dodatek 3: Použití nástroje Microsoft Message Analyzer k zachycení síťového provozu]" .
 
 ### <a name="metrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>Metrika ukazuje vysokou hodnotu AverageServerLatency.
-V případě vysoké **AverageServerLatency** pro požadavky na stahování objektů blob, měli byste použít protokoly protokoly protokolů protokolování úložiště zobrazíte, pokud existují opakované požadavky na stejný objekt blob (nebo sadu objektů BLOB). Pro požadavky na nahrávání objektů blob byste měli zjistit, jakou velikost bloku klient používá (například bloky menší než 64 k velikosti mohou mít za následek režii, pokud čtení nejsou také v blos menší než 64 K) a pokud více klientů nahrává bloky do stejného objektu blob Paralelní. Měli byste také zkontrolovat metriky za minutu pro špičky v počtu požadavků, které mají za následek překročení cílů škálovatelnosti za sekundu: viz také "[Metriky ukazují zvýšení PercentTimeoutError]."
+V případě vysoké **AverageServerLatency** pro požadavky na stahování objektů blob, měli byste použít protokoly protokoly protokolů protokolování úložiště zobrazíte, pokud existují opakované požadavky na stejný objekt blob (nebo sadu objektů BLOB). Pro požadavky na nahrávání objektů blob byste měli zjistit, jakou velikost bloku klient používá (například bloky menší než 64 k Velikostmůže mít za následek režii, pokud čtení jsou také v méně než 64 kB bloky) a pokud více klientů jsou nahrávání bloků do stejného objektu blob paralelně. Měli byste také zkontrolovat metriky za minutu pro špičky v počtu požadavků, které mají za následek překročení cílů škálovatelnosti za sekundu: viz také "[Metriky ukazují zvýšení PercentTimeoutError]."
 
 Pokud vidíte vysoké **AverageServerLatency** pro požadavky na stahování objektů blob při opakovaných požadavcích na stejný objekt blob nebo sadu objektů BLOB, měli byste zvážit ukládání těchto objektů BLOB pomocí Azure Cache nebo Sítě pro doručování obsahu Azure (CDN). Pro odesílání požadavků můžete zlepšit propustnost pomocí větší velikostbloku. Pro dotazy na tabulky je také možné implementovat ukládání do mezipaměti na straně klienta u klientů, kteří provádějí stejné operace dotazu a kde se data často nemění.
 
@@ -458,7 +458,7 @@ Metrika **PercentTimeoutError** je agregace následujících metrik: **ClientTim
 
 Časové výčasové opony serveru jsou způsobeny chybou na serveru. K časovým limitům klienta dochází, protože operace na serveru překročila časový limit určený klientem. například klient pomocí knihovny klienta úložiště můžete nastavit časový čas pro operaci pomocí **ServerTimeout** vlastnost **QueueRequestOptions třídy.**
 
-Časové výtky serveru označují problém se službou úložiště, který vyžaduje další šetření. Pomocí metrik můžete zjistit, zda jsou dosažení omezení škálovatelnosti pro službu a identifikovat všechny špičky v provozu, které mohou být příčinou tohoto problému. Pokud je problém přerušovaný, může to být způsobeno aktivitou vyrovnávání zatížení ve službě. Pokud je problém trvalý a není způsoben vaší aplikace bít omezení škálovatelnosti služby, měli byste vyvolat problém podpory. U časových časových období klienta se musíte rozhodnout, zda je časový čas nastaven na příslušnou hodnotu v klientovi a změnit hodnotu časového času nastavenou v klientovi nebo zjistit, jak můžete zlepšit výkon operací ve službě úložiště, například optimalizací dotazy v tabulce nebo zmenšení velikosti zpráv.
+Časové výtky serveru označují problém se službou úložiště, který vyžaduje další šetření. Pomocí metrik můžete zjistit, zda jsou dosažení omezení škálovatelnosti pro službu a identifikovat všechny špičky v provozu, které mohou být příčinou tohoto problému. Pokud je problém přerušovaný, může to být způsobeno aktivitou vyrovnávání zatížení ve službě. Pokud je problém trvalý a není způsoben vaší aplikace bít omezení škálovatelnosti služby, měli byste vyvolat problém podpory. Pro časové opony klienta, musíte rozhodnout, zda časový čas je nastavena na příslušnou hodnotu v klientovi a změnit hodnotu časového času nastavenou v klientovi nebo prozkoumat, jak můžete zlepšit výkon operací ve službě úložiště, například optimalizací dotazů na tabulka nebo zmenšením velikosti zpráv.
 
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>Metrika ukazuje zvýšení u PercentNetworkError.
 Metriky ukazují zvýšení **PercentNetworkError** pro jednu ze služeb úložiště. Metrika **PercentNetworkError** je agregace následujících metrik: **NetworkError**, **AnonymousNetworkError**a **SASNetworkError**. K nim dochází, když služba úložiště zjistí chybu sítě, když klient provede požadavek na úložiště.
@@ -516,24 +516,24 @@ Záznamy protokolu:
 
 | ID požadavku | Text operace |
 | --- | --- |
-| 07b26a5d-... |Spuštění synchronního https://domemaildist.blob.core.windows.net/azuremmblobcontainerpožadavku na soubor . |
+| 07b26a5d-... |Spuštění synchronního `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`požadavku na soubor . |
 | 07b26a5d-... |StringToSign = HLAVA............ x-ms-client-request-id:07b26a5d-.... x-ms-date:Út, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |Čekání na odpověď. |
 | 07b26a5d-... |Byla přijata odpověď. Stavový kód = 200, ID požadavku = eeead849-... Content-MD5 = , &quot;ETag = 0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |Hlavičky odpovědí byly úspěšně zpracovány a pokračovaly ve zbytku operace. |
 | 07b26a5d-... |Stahování těla odezvy. |
 | 07b26a5d-... |Operace byla úspěšně dokončena. |
-| 07b26a5d-... |Spuštění synchronního https://domemaildist.blob.core.windows.net/azuremmblobcontainerpožadavku na soubor . |
+| 07b26a5d-... |Spuštění synchronního `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`požadavku na soubor . |
 | 07b26a5d-... |StringToSign = ODSTRANIT............ x-ms-client-request-id:07b26a5d-.... x-ms-date:Út, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |Čekání na odpověď. |
 | 07b26a5d-... |Byla přijata odpověď. Stavový kód = 202, ID požadavku = 6ab2a4cf-..., Content-MD5 = , ETag = . |
 | 07b26a5d-... |Hlavičky odpovědí byly úspěšně zpracovány a pokračovaly ve zbytku operace. |
 | 07b26a5d-... |Stahování těla odezvy. |
 | 07b26a5d-... |Operace byla úspěšně dokončena. |
-| e2d06d78-... |Spuštění asynchronního https://domemaildist.blob.core.windows.net/azuremmblobcontainerpožadavku na soubor .</td> |
+| e2d06d78-... |Spuštění asynchronního `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`požadavku na soubor .</td> |
 | e2d06d78-... |StringToSign = HLAVA............ x-ms-client-request-id:e2d06d78-.... x-ms-date:Út, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Čekání na odpověď. |
-| de8b1c3c-... |Spuštění synchronního https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txtpožadavku na soubor . |
+| de8b1c3c-... |Spuštění synchronního `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt`požadavku na soubor . |
 | de8b1c3c-... |StringToSign = PUT... 64.qCmF+TQLPhq/YYK50mP9ZQ=........ x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-.... x-ms-date:Út, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |Příprava na zápis dat požadavku. |
 | e2d06d78-... |Výjimka vyvolána při čekání na odpověď: Vzdálený server vrátil chybu: (404) Nebyl nalezen.. |
@@ -541,7 +541,7 @@ Záznamy protokolu:
 | e2d06d78-... |Hlavičky odpovědí byly úspěšně zpracovány a pokračovaly ve zbytku operace. |
 | e2d06d78-... |Stahování těla odezvy. |
 | e2d06d78-... |Operace byla úspěšně dokončena. |
-| e2d06d78-... |Spuštění asynchronního https://domemaildist.blob.core.windows.net/azuremmblobcontainerpožadavku na soubor . |
+| e2d06d78-... |Spuštění asynchronního `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`požadavku na soubor . |
 | e2d06d78-... |StringToSign = PUT... 0.........x-ms-client-request-id:e2d06d78-.... x-ms-date:Út, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Čekání na odpověď. |
 | de8b1c3c-... |Zápis dat požadavku. |
@@ -562,15 +562,15 @@ Pokud se klientská aplikace pokusí použít klíč SAS, který neobsahuje pot�
 
 V následující tabulce je uvedena ukázková zpráva protokolu na straně serveru ze souboru protokolu protokolování úložiště:
 
-| Name (Název) | Hodnota |
+| Název | Hodnota |
 | --- | --- |
 | Požadavek na počáteční čas | 2014-05-30T06:17:48.4473697Z |
 | Typ operace     | GetBlobProperties            |
 | Stav požadavku     | Chyba autorizace SAS        |
-| Stavový kód HTTP   | 404                          |
+| Stavový kód HTTP   | 404                            |
 | Typ ověřování| Sas                          |
 | Typ služby       | Objekt blob                         |
-| Adresa URL požadavku        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
+| Adresa URL požadavku         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
 | &nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&&;sig=XXXXX api-version=2014-02-14 |
 | Hlavička ID požadavku  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | ID požadavku klienta  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
@@ -650,7 +650,7 @@ Je důležité si uvědomit, že tyto operace byly úspěšně dokončeny, a pro
 Seznam běžných kódů chyb rozhraní REST API, které služby úložiště vracejí, najdete na stránce [Běžné kódy chyb rozhraní REST API](https://msdn.microsoft.com/library/azure/dd179357.aspx).
 
 ### <a name="capacity-metrics-show-an-unexpected-increase-in-storage-capacity-usage"></a><a name="capacity-metrics-show-an-unexpected-increase"></a>Metriky kapacity ukazují neočekávané zvýšení využití kapacity úložiště
-Pokud se v účtu úložiště zobrazí náhlé a neočekávané změny využití kapacity, můžete důvody prozkoumat tak, že se nejprve podíváte na metriky dostupnosti. Například zvýšení počtu neúspěšných požadavků na odstranění může vést ke zvýšení množství úložiště objektů blob, které používáte jako operace čištění specifické pro aplikaci, které jste očekávali, že uvolníte místo, nemusí fungovat podle očekávání (například , protože tokeny SAS používané k uvolnění místa vypršely).
+Pokud se v účtu úložiště zobrazí náhlé a neočekávané změny využití kapacity, můžete důvody prozkoumat tak, že se nejprve podíváte na metriky dostupnosti. Například zvýšení počtu neúspěšných požadavků na odstranění může vést ke zvýšení množství úložiště objektů blob, které používáte jako operace čištění specifické pro aplikaci, které jste očekávali, že uvolníte místo, nemusí fungovat podle očekávání (například proto, že tokeny SAS používané k uvolnění místa vypršely).
 
 ### <a name="your-issue-arises-from-using-the-storage-emulator-for-development-or-test"></a><a name="your-issue-arises-from-using-the-storage-emulator"></a>Váš problém vzniká použitím emulátoru úložiště pro vývoj nebo testování
 Obvykle používáte emulátor úložiště během vývoje a testování, abyste se vyhnuli požadavku na účet úložiště Azure. Běžné problémy, které mohou nastat při použití emulátoru úložiště jsou:
@@ -698,7 +698,7 @@ Pokud předchozí části řešení potíží neobsahují problém, který máte
 
 * Zkontrolujte metriky a zjistěte, zda došlo k nějaké změně z očekávaného chování základní linie. Z metriky můžete zjistit, zda je problém přechodné nebo trvalé a které operace úložiště problém ovlivňuje.
 * Informace o metrikách můžete použít k vyhledávání v datech protokolu na straně serveru, kde naleznete podrobnější informace o všech chybách, ke kterým dochází. Tyto informace vám mohou pomoci s řešením potíží a vyřešením problému.
-* Pokud informace v protokolech na straně serveru nejsou dostatečné k úspěšnému řešení problému, můžete použít protokoly klientské knihovny úložiště ke zkoumání chování klientské aplikace a nástrojů, jako je Fiddler, Wireshark a Microsoft Analyzátor zpráv prozkoumat vaši síť.
+* Pokud informace v protokolech na straně serveru není dostatečná k řešení problému úspěšně, můžete použít protokoly klientské knihovny úložiště klienta prozkoumat chování klientské aplikace a nástroje, jako je Šumař, Wireshark a Microsoft Message Analyzer prozkoumat vaši síť.
 
 Další informace o používání šumavy naleznete v[tématu " Dodatek 1: Použití šumavy k zachycení přenosu HTTP a HTTPS]" .
 
@@ -707,7 +707,7 @@ Další informace o používání technologie Wireshark naleznete v tématu "[Do
 Další informace o použití nástroje Microsoft Message Analyzer naleznete v[tématu " Dodatek 3: Použití nástroje Microsoft Message Analyzer k zachycení síťového provozu]" .
 
 ## <a name="appendices"></a><a name="appendices"></a>Dodatky
-Dodatky popisují několik nástrojů, které můžete považovat za užitečné při diagnostice a řešení problémů s Azure Storage (a dalšími službami). Tyto nástroje nejsou součástí Služby Azure Storage a některé jsou produkty třetích stran. Nástroje popsané v těchto přílohách se proto nevztahují na žádnou smlouvu o podpoře, kterou můžete mít s Microsoft Azure nebo Azure Storage, a proto byste měli v rámci procesu hodnocení prozkoumat možnosti licencování a podpory, které jsou k dispozici v poskytovatelů těchto nástrojů.
+Dodatky popisují několik nástrojů, které můžete považovat za užitečné při diagnostice a řešení problémů s Azure Storage (a dalšími službami). Tyto nástroje nejsou součástí Služby Azure Storage a některé jsou produkty třetích stran. Jako takové nástroje popsané v těchto přílohách nejsou zahrnuty do žádné smlouvy o podpoře, kterou můžete mít s Microsoft Azure nebo Azure Storage, a proto jako součást procesu hodnocení byste měli prozkoumat možnosti licencování a podpory, které jsou k dispozici od poskytovatelů těchto nástrojů.
 
 ### <a name="appendix-1-using-fiddler-to-capture-http-and-https-traffic"></a><a name="appendix-1"></a>Dodatek 1: Použití Šumař zachytit HTTP a HTTPS provozu
 [Fiddler](https://www.telerik.com/fiddler) je užitečný nástroj pro analýzu přenosu HTTP a HTTPS mezi klientskou aplikací a službou úložiště Azure, kterou používáte.
@@ -814,7 +814,7 @@ Další informace naleznete na what [is application insights](../../azure-monito
 Další informace o analýzách ve Službě Azure Storage najdete v těchto zdrojích informací:
 
 * [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)
-* [Analýza úložiště](storage-analytics.md)
+* [Analýzy úložiště](storage-analytics.md)
 * [Metriky analýzy úložiště](storage-analytics-metrics.md)
 * [Schéma tabulky metrik analýzy úložiště](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [Protokoly analýzy úložiště](storage-analytics-logging.md)

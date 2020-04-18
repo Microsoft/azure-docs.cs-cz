@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: 8e73ef75b3313656b45d29270d9996c3ad17c630
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8156c563573183e51e06650914117f8787922e93
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538065"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603682"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatické opravy instancí pro škálovací sady virtuálních počítačů Azure
 
@@ -90,6 +90,8 @@ Pokud je funkce [ukončit oznámení](./virtual-machine-scale-sets-terminate-not
 ## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>Povolení zásad automatických oprav při vytváření nové škálovací sady
 
 Chcete-li povolit zásady automatických oprav při vytváření nové škálovací sady, ujistěte se, že jsou splněny všechny [požadavky](#requirements-for-using-automatic-instance-repairs) na přihlášení k této funkci. Koncový bod aplikace by měl být správně nakonfigurován pro instance škálovací sady, aby se zabránilo spuštění nechtěných oprav při konfiguraci koncového bodu. U nově vytvořených škálovacích sad se všechny opravy instancí provádějí až po uplynutí doby odkladu. Chcete-li povolit automatickou opravu instance v škálovací sadě, použijte objekt *automaticRepairsPolicy* v modelu škálovací sady virtuálních počítačů.
+
+Tuto [šablonu rychlého startu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-automatic-repairs-slb-health-probe) můžete také použít k nasazení škálovací sady virtuálních počítačů se sondou stavu nástroje pro vyrovnávání zatížení a automatickými opravami instancí, které jsou povoleny s dobou odkladu 30 minut.
 
 ### <a name="azure-portal"></a>portál Azure
  

@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 03/25/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 707b03d46615f3acfa0797d1dc0865d53ef75dc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f599ee3303ab907c319d1f8cf3da3e427a4c4c0b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282116"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639664"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Co jsou spravované identity pro prostředky Azure?
 
@@ -51,8 +51,12 @@ Existují dva typy spravovaných identit:
 - **Spravovaná identita přiřazená uživatelem** se vytváří jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure. Životní cyklus identity přiřazené uživatelem se spravuje nezávisle na životním cyklu instancí služeb Azure, ke kterým je přiřazená.
 
 Interně spravované identity jsou instanční objekty zvláštního typu, které jsou uzamčeny pro jenom s prostředky Azure. Při odstranění spravované identity je automaticky odebrán odpovídající instanční objekt.
+Při vytvoření identity přiřazené uživatelem nebo při systémové přiřazené identitě také poskytovatel prostředků spravované identity (MSRP) vydá certifikát interně k této identitě. 
 
-Váš kód může spravovanou identitu použít k vyžádání přístupových tokenů pro služby, které podporují ověřování Azure AD. Azure zajistí vracení přístupových údajů, které instance služby používá.
+Váš kód může spravovanou identitu použít k vyžádání přístupových tokenů pro služby, které podporují ověřování Azure AD. Azure zajistí vracení přístupových údajů, které instance služby používá. 
+
+## <a name="credential-rotation"></a>Otočení pověření
+Střídání přihlašovacích údajů řídí poskytovatel prostředků, který je hostitelem prostředku Azure. Výchozí otočení pověření dochází každých 46 dní. Je na poskytovateli prostředků, aby zavolal nová pověření, aby mohl čekat déle než 46 dní.
 
 Následující diagram ukazuje fungování identit spravovaných služeb s virtuálními počítači Azure:
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7003899b59e409a785c3a50e89aae6674e377b4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bfee19e9cfd1def71ebad82c2210ffc10146c896
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264086"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639747"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení mapování atributů pro aplikace SaaS pro uživatele ve službě Azure Active Directory
 
@@ -143,7 +143,10 @@ Scim RFC definuje základní uživatelské a skupinové schéma a zároveň umo�
    4. Vyberte **Upravit seznam atributů pro Název aplikace**.
    5. V dolní části seznamu atributů zadejte informace o vlastním atributu do uvedených polí. Pak vyberte **Přidat atribut**.
 
-Pro aplikace SCIM musí název atributu postupovat podle vzoru uvedeného v následujícím příkladu. "CustomExtensionName" a "CustomAttribute" lze přizpůsobit podle požadavků aplikace, například: urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute nebo urn:ietf:params:scim:schemas:extension: CustomExtensionName:2.0:User.CustomAttributeName:value
+Pro aplikace SCIM musí název atributu postupovat podle vzoru uvedeného v následujícím příkladu. "CustomExtensionName" a "CustomAttribute" lze přizpůsobit podle požadavků vaší aplikace, například:  
+ * urn:ietf:params:scim:schémata:rozšíření:CustomExtensionName:2.0:Uživatel:Vlastní atribut 
+ * urn:ietf:params:scim:schémata:rozšíření:2.0:CustomExtensionName:CustomAttribute  
+ * urn:ietf:params:scim:schémata:rozšíření:CustomExtensionName:2.0:User.CustomAttributeName:value
 
 Tyto pokyny platí pouze pro aplikace s podporou TECHNOLOGIE SCIM. Aplikace jako ServiceNow a Salesforce nejsou integrované s Azure AD pomocí SCIM, a proto nevyžadují tento konkrétní obor názvů při přidávání vlastního atributu.
 
@@ -313,7 +316,7 @@ Výběr této možnosti účinně vynutí resynchronizaci všech uživatelů, kd
 - Aktualizace mapování atributů má vliv na výkon cyklu synchronizace. Aktualizace konfigurace mapování atributů vyžaduje, aby byly znovu vyhodnoceny všechny spravované objekty.
 - Doporučeným osvědčeným postupem je minimální počet po sobě jdoucích změn mapování atributů.
 - Přidání atributu fotografie, který má být zřízen do aplikace, není dnes podporováno, protože nemůžete určit formát pro synchronizaci fotografie. Můžete požádat o tuto funkci na [uživatelském hlasu](https://feedback.azure.com/forums/169401-azure-active-directory)
-- Atribut IsSoftDeleted je často součástí výchozímapování pro aplikaci. IsSoftdeleted může být pravda, v jednom ze čtyř scénářů (uživatel je mimo rozsah z důvodu, že je nepřiřazený z aplikace, uživatel je mimo rozsah z důvodu nesplnění filtru oborů, uživatel byl měkký odstraněn v Azure AD nebo vlastnost AccountEnabled je nastavena na false uživateli). 
+- Atribut IsSoftDeleted je často součástí výchozímapování pro aplikaci. IsSoftdeleted může být pravda, v jednom ze čtyř scénářů (uživatel je mimo rozsah z důvodu, že je unassigned z aplikace, uživatel je mimo rozsah z důvodu není splnění filtru oborů, uživatel byl měkký odstraněn v Azure AD nebo vlastnost AccountEnabled je nastavena na false na uživatele). 
 - Zřizování Azure AD nepodporuje zřizování nulových hodnot
 
 ## <a name="next-steps"></a>Další kroky

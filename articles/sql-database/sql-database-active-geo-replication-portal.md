@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59616fb217b28a8c47d9a5d13e2f4c1b9a8f6bb3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256429"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605229"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database na webu Azure Portal a zahájení převzetí služeb při selhání
 
@@ -67,7 +67,7 @@ Sekundární databázi lze přepnout tak, aby se stala primární.
 
 1. Na [webu Azure Portal](https://portal.azure.com)přejděte na primární databázi v partnerství geografické replikace.
 2. V okně Databáze SQL vyberte možnost**Geografická replikace všech** **nastavení** > .
-3. V seznamu **SEKUNDÁRNÍ POLOŽKY** vyberte databázi, kterou chcete stát novou primární, a klepněte na tlačítko **Převzetí služeb při selhání**.
+3. V seznamu **SEKUNDÁRNÍ CHYBY** vyberte databázi, kterou chcete stát novou primární a klepněte na příkaz **Vynucené převzetí služeb při selhání**.
 
     ![Zabezpečení před selháním](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Chcete-li zahájit převzetí služeb při selhání, klepněte na tlačítko **Ano.**

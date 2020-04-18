@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c52f2df34faf441ab70b48b11bbc393ebcecb65
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297188"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617608"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Koncové body služby volání přes HTTP nebo HTTPS z Azure Logic Apps
 
@@ -59,7 +59,7 @@ Tento článek ukazuje, jak přidat aktivační událost HTTP nebo akci do praco
 
 Tato předdefinovaná aktivační událost provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v Návrháři aplikací logiky.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v Návrháři aplikací logiky.
 
 1. Pod vyhledávacím polem návrháře vyberte **Předdefinované**. Do vyhledávacího pole `http` zadejte jako filtr. V seznamu **Aktivační události** vyberte aktivační událost **HTTP.**
 
@@ -88,7 +88,7 @@ Tato předdefinovaná aktivační událost provede volání HTTP na zadanou adre
 
 Tato předdefinovaná akce provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Otevřete aplikaci logiky v Návrháři aplikací logiky.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v Návrháři aplikací logiky.
 
    Tento příklad používá aktivační událost HTTP jako první krok.
 
@@ -140,8 +140,8 @@ Předpokládejme například, že máte aplikaci logiky, která odešle požadav
 Zde je stejný příklad, který ukazuje definici JSON akce HTTP v definici základního pracovního postupu:
 
 ```json
-{
-   "HTTP_action": {
+"HTTP_action": {
+   "inputs": {
       "body": {
          "$content-type": "multipart/form-data",
          "$multipart": [

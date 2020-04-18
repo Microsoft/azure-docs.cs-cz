@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7c1ad2581d025a9259c5cb2a84e4237f938fc892
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419218"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81637141"
 ---
 Chcete-li vytvořit a spravovat virtuální počítače Azure (VMs) konzistentním způsobem ve velkém měřítku, některé formy automatizace je obvykle žádoucí. Existuje mnoho nástrojů a řešení, které vám umožní automatizovat kompletní životní cyklus nasazení a správy infrastruktury Azure. Tento článek představuje některé nástroje pro automatizaci infrastruktury, které můžete použít v Azure. Tyto nástroje se běžně vejdou do jednoho z následujících přístupů:
 
@@ -125,7 +125,7 @@ Další informace:
 
 
 ## <a name="jenkins"></a>Jenkins
-[Jenkins](https://www.jenkins.io) je server průběžné integrace, který pomáhá nasazovat a testovat aplikace a vytvářet automatizované kanály pro doručování kódu. Existují stovky pluginů pro rozšíření základní platformy Jenkins a můžete také integrovat s mnoha dalšími produkty a řešeními prostřednictvím webhooků. Jenkinse můžete nainstalovat ručně na virtuální počítač Azure, spustit Jenkinse z kontejneru Dockeru nebo použít předem vytvořenou image Azure Marketplace.
+[Jenkins](https://jenkins.io) je server průběžné integrace, který pomáhá nasazovat a testovat aplikace a vytvářet automatizované kanály pro doručování kódu. Existují stovky pluginů pro rozšíření základní platformy Jenkins a můžete také integrovat s mnoha dalšími produkty a řešeními prostřednictvím webhooků. Jenkinse můžete nainstalovat ručně na virtuální počítač Azure, spustit Jenkinse z kontejneru Dockeru nebo použít předem vytvořenou image Azure Marketplace.
 
 Naučte se:
 

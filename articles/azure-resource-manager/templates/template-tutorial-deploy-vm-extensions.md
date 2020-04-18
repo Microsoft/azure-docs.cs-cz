@@ -2,15 +2,15 @@
 title: Nasazení rozšíření virtuálních počítače pomocí šablony
 description: Zjistěte, jak nasazovat rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru.
 author: mumian
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7397e9387fe3354a926ed607a9132ab6ddc7e785
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 280b4a9775346c719e82d1fef4162fa6ea666798
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477595"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616879"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Kurz: Nasazení rozšíření virtuálních strojů pomocí šablon ARM
 
@@ -23,7 +23,6 @@ Tento kurz se zabývá následujícími úkony:
 > * Otevření šablony rychlého startu
 > * Úprava šablony
 > * Nasazení šablony
-> * Ověření nasazení
 
 Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
@@ -42,29 +41,34 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="prepare-a-powershell-script"></a>Příprava skriptu PowerShellu
 
-Skript PowerShellu s následujícím obsahem je sdílen z [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1):
+Můžete použít vslaný skript PowerShellu nebo soubor skriptu.  Tento kurz ukazuje, jak používat soubor skriptu. Skript PowerShellu s následujícím obsahem je sdílen z [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1):
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Pokud se rozhodnete publikovat soubor do vlastního umístění, `fileUri` je nutné aktualizovat prvek v šabloně dále v kurzu.
+Pokud se rozhodnete publikovat soubor do vlastního `fileUri` umístění, aktualizujte prvek v šabloně dále v kurzu.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony rychlého startu
 
 Azure Quickstart Templates je úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
 
 1. V kódu sady Visual Studio vyberte **Soubor** > **otevřít soubor**.
-1. Do pole **Název souboru** vložte následující adresu URL:https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+1. Do pole **Název souboru** vložte následující adresu URL:
+
+    ```url
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    ```
 
 1. Chcete-li soubor otevřít, vyberte **otevřít**.
     Šablona definuje pět zdrojů:
 
-   * **Microsoft.Storage/storageAccounts**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * **Microsoft.Network/publicIPAdresy**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * **Microsoft.Network/virtualNetworks**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * **Microsoft.Network/networkInterfaces**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * **Microsoft.Compute/virtualMachines**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAdresy**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Soubor Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
      Je užitečné získat některé základní znalosti šablony před přizpůsobením.
 
@@ -77,7 +81,7 @@ Ke stávající šabloně s následujícím obsahem přidejte prostředek rozš�
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "apiVersion": "2018-06-01",
+  "apiVersion": "2019-12-01",
   "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
   "location": "[parameters('location')]",
   "dependsOn": [
@@ -105,6 +109,14 @@ Další informace o této definici prostředků naleznete v [odkazu na rozšíř
 * **fileUris**: Umístění, kde jsou uloženy soubory skriptu. Pokud se rozhodnete nepoužívat zadaný umístění, je třeba aktualizovat hodnoty.
 * **commandToExecute**: Tento příkaz vyvolá skript.
 
+Chcete-li použít vsazený skript, odeberte **příkaz fileUris**a aktualizujte **příkazToExecute** na:
+
+```powershell
+powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
+```
+
+Tento vložkový skript také aktualizovat iisstart.html obsah.
+
 Je také nutné otevřít port HTTP, abyste měli přístup k webovému serveru.
 
 1. V šabloně najdete **pravidla zabezpečení.**
@@ -130,10 +142,13 @@ Je také nutné otevřít port HTTP, abyste měli přístup k webovému serveru.
 
 Postup nasazení naleznete v části "Nasazení šablony" [v kurzu: Vytvoření šablon ARM se závislými prostředky](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Doporučujeme použít vygenerované heslo pro účet správce virtuálního počítače. Viz část [Požadavky](#prerequisites) tohoto článku.
 
-## <a name="verify-the-deployment"></a>Ověření nasazení
+Z prostředí Cloud Shell spusťte následující příkaz pro načtení veřejné IP adresy virtuálního počítačů:
 
-1. Na webu Azure Portal vyberte virtuální počítač.
-1. V přehledu virtuálního počítačů zkopírujte IP adresu tak, že vyberete **Kliknutím zkopírujete**a pak ji vložte na kartu prohlížeče. Otevře se výchozí úvodní stránka Internetové informační služby (IIS):
+```azurepowershell
+(Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName).IpAddress
+```
+
+Vložte adresu IP do webového prohlížeče. Otevře se výchozí úvodní stránka Internetové informační služby (IIS):
 
 ![Uvítací stránka Internetové informační služby](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 

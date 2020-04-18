@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 40a715ea27be161f09dea59e57799b08406e8ca7
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393761"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605482"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Image Red Hat Enterprise Linux (RHEL) dostupné v Azure
 Azure nabízí celou řadu ibi RHEL pro různé případy použití.
@@ -47,8 +47,12 @@ RHEL          | 6.7      | Syrové    | Linuxový agent |
 |             | 7.6      | Syrové    | Linuxový agent | K úložištím EUS je standardně připojenod května 2019.
 |             | 76-gen2  | Syrové    | Linuxový agent | Ve výchozím nastavení připojeno k úložištím EUS.
 |             | 7.7      | Lvm    | Linuxový agent | Ve výchozím nastavení připojeno k úložištím EUS.
-|             | 8        | Lvm    | Linuxový agent | Rhel 8.x rodina obrázků
-|             | 8 gen2   | Lvm    | Linuxový agent | Hyper-V Generace 2 - RHEL 8.x rodina obrazů.
+|             | 8-LVM    | Lvm    | Linuxový agent | RHEL 8.x rodina obrazů. Připojeno k běžným úložištím.
+|             | 8-lvm-gen2| Lvm    | Linuxový agent | Hyper-V Generace 2 - RHEL 8.x rodina obrazů. Připojeno k běžným úložištím.
+|             | 8        | Lvm    | Linuxový agent | Rhel 8.0 obrázky
+|             | 8 gen2   | Lvm    | Linuxový agent | Hyper-V Generace 2 - RHEL 8.0 obrázky.
+|             | 8.1      | Lvm    | Linuxový agent | RHEL 8.1. V současné době připojen k běžným repozitářům.
+|             | 81gen2   | Lvm    | Linuxový agent | Hyper-V Generace 2 - RHEL 8.1 obrázky. V současné době připojen k běžným repozitářům.
 RHEL-SAP      | 7.4      | Lvm    | Linuxový agent | RHEL 7.4 pro SAP HANA a obchodní aplikace. Připojeno k úložištím E4S, bude účtovat prémii za SAP a RHEL, stejně jako základní výpočetní poplatek.
 |             | 74sap-gen2| Lvm    | Linuxový agent | RHEL 7.4 pro SAP HANA a obchodní aplikace. Generace 2 image. Připojeno k úložištím E4S, bude účtovat prémii za SAP a RHEL, stejně jako základní výpočetní poplatek.
 |             | 7,5       | Lvm    | Linuxový agent | RHEL 7.5 pro SAP HANA a obchodní aplikace. Připojeno k úložištím E4S, bude účtovat prémii za SAP a RHEL, stejně jako základní výpočetní poplatek.

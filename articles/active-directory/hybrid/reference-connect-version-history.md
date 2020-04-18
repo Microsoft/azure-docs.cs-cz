@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/03/2020
+ms.date: 04/17/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2e3f8da4a05feedb8c1ab585fabcc74edbc71a
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 815d3afe68003f56a5748584b322b731ef5a3dc7
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998752"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639648"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky se vztahují na všechny cílové skupiny.
@@ -55,6 +55,15 @@ Ne všechny verze Azure AD Connect budou k dispozici pro automatický upgrade. S
 
 ### <a name="fixed-issues"></a>Oprava potíží
 Toto sestavení opravy hotfix opravuje problém s sestavením 1.5.18.0, pokud máte povolenou funkci filtrování skupiny a používáte mS-DS-ConsistencyGuid jako zdrojovou kotvu.
+
+> [!IMPORTANT]
+> Pokud používáte mS-DS-ConsistencyGuid jako zdrojovou kotvu a naklonovali jste pravidlo synchronizace **spojení se službou AD – skupina** a plánujete upgrade, proveďte v rámci upgradu následující kroky:
+> 1. Během upgradu odškrtnete možnost **Spustit proces synchronizace po dokončení konfigurace**.
+> 2. Upravte pravidlo synchronizace klonovaného spojení a přidejte následující dvě transformace:
+>     - Nastavte přímý `objectGUID` `sourceAnchorBinary`tok do .
+>     - Nastavte `ConvertToBase64([objectGUID])` tok `sourceAnchor`výrazu na .     
+> 3. Povolte plánovač `Set-ADSyncScheduler -SyncCycleEnabled $true`pomocí .
+
 
 ## <a name="15180"></a>1.5.18.0
 
@@ -528,7 +537,7 @@ Uzamkněte přístup k účtu ad DS implementací následujících změn oprávn
 *   Odeberte všechny ace na konkrétní objekt, s výjimkou ACE specifické pro SELF. Chceme zachovat výchozí oprávnění neporušená, pokud jde o SELF.
 *   Přiřaďte tato konkrétní oprávnění:
 
-Typ     | Name (Název)                          | Access               | Platí pro
+Typ     | Název                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
 Povolit    | SYSTEM                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |

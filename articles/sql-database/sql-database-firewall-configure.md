@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: af88fdf3378a6290c773c658ea6dd3469d7c92cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531273"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606097"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Pravidla brány firewall IP azure SQL Database a Azure SQL Data Warehouse
 
@@ -101,7 +101,7 @@ Pokud se počítač pokusí připojit k databázovému serveru z Internetu, brá
 
 ### <a name="connections-from-inside-azure"></a>Připojení zevnitř Azure
 
-Aby se aplikace hostované v Azure mohly připojit k serveru SQL, musí být povolená připojení Azure. Když se aplikace z Azure pokusí připojit k databázovému serveru, brána firewall ověří, že jsou povolena připojení Azure. Nastavení brány firewall, které má počáteční a koncové IP adresy rovno *0.0.0.0* označuje, že připojení Azure jsou povolena. To lze zapnout přímo z okna Portálu Azure nastavením pravidel brány firewall, stejně jako přepnutím **povolit služby Azure a prostředky pro přístup k tomuto serveru** **na ON** v nastavení brány firewall a **virtuální sítě.** Pokud připojení není povoleno, požadavek nedosáhne serveru SQL Database.
+Aby se aplikace hostované v Azure mohly připojit k serveru SQL, musí být povolená připojení Azure. Když se aplikace z Azure pokusí připojit k databázovému serveru, brána firewall ověří, že jsou povolena připojení Azure. To lze zapnout přímo z okna Portálu Azure nastavením pravidel brány firewall, stejně jako přepnutím **povolit služby Azure a prostředky pro přístup k tomuto serveru** **na ON** v nastavení brány firewall a **virtuální sítě.** Pokud připojení není povoleno, požadavek nedosáhne serveru SQL Database.
 
 > [!IMPORTANT]
 > Tato možnost nakonfiguruje bránu firewall tak, aby umožňovala všechna připojení z Azure, včetně připojení z předplatných jiných zákazníků. Pokud vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup pouze oprávněným uživatelům.
@@ -152,8 +152,8 @@ Otevře se stránka s přehledem serveru. Zobrazuje plně kvalifikovaný název 
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Server |Zobrazí aktuální pravidla brány firewall IP na úrovni serveru. |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Server |Vytvoří nebo aktualizuje pravidla brány firewall IP na úrovni serveru. |
 | [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |Server |Odebere pravidla brány firewall IP na úrovni serveru. |
-| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Databáze |Zobrazí aktuální pravidla brány firewall IP na úrovni databáze. |
-| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Databáze |Vytvoří nebo aktualizuje pravidla brány firewall IP na úrovni databáze. |
+| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |databáze |Zobrazí aktuální pravidla brány firewall IP na úrovni databáze. |
+| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |databáze |Vytvoří nebo aktualizuje pravidla brány firewall IP na úrovni databáze. |
 | [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |Databáze |Odebere pravidla brány firewall IP na úrovni databáze. |
 
 Následující příklad zkontroluje existující pravidla, povolí rozsah ADRES IP na serveru *Contoso*a odstraní pravidlo brány firewall IP:

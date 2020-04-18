@@ -3,12 +3,12 @@ title: Monitorování aplikací java v libovolném prostředí – Azure Monitor
 description: Monitorování výkonu aplikací pro aplikace Java spuštěné v libovolném prostředí bez instrumentace aplikace. Distribuované trasování a mapa aplikací.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 5a62be45320523ee0577d56eb557a4f87a58a1cc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5706d5a74bd6850a237f7418b1a86a8e9c7762e1
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886853"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604581"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java bezkódové aplikace monitorování Azure Monitor Application Insights - public preview
 
@@ -24,11 +24,11 @@ Stále můžete odeslat vlastní telemetrie z vaší aplikace. Agent 3.0 bude sl
 
 **1. Stáhněte si agenta**
 
-Stáhnout [applicationinsights-agent-3.0.0-PREVIEW.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar)
+Stáhnout [applicationinsights-agent-3.0.0-PREVIEW.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
 
 **2. Namiřte JVM na agenta**
 
-Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.2.jar` do vaší aplikace JVM args
+Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` do vaší aplikace JVM args
 
 Typické JVM args patří `-Xmx512m` a `-XX:+UseG1GC`. Takže pokud víte, kam je přidat, pak už víte, kam to přidat.
 
@@ -37,7 +37,14 @@ Další pomoc s konfigurací jvm args aplikace naleznete v [tématu 3.0 Preview:
 **3. Najeďte agenta na prostředek Application Insights.**
 
 Pokud ještě nemáte prostředek Application Insights, můžete vytvořit nový pomocí kroků v [průvodci vytvářením prostředků](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
-Vytvořte konfigurační soubor s názvem `ApplicationInsights.json` `applicationinsights-agent-3.0.0-PREVIEW.2.jar`a umístěte jej do stejného adresáře jako s následujícím obsahem:
+
+Nasměrujte agenta na prostředek Application Insights nastavením proměnné prostředí:
+
+```
+APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
+```
+
+Nebo vytvořením konfiguračního souboru s `ApplicationInsights.json` `applicationinsights-agent-3.0.0-PREVIEW.3.jar`názvem a jeho umístěním do stejného adresáře jako s následujícím obsahem:
 
 ```json
 {

@@ -2,13 +2,13 @@
 title: Definování více instancí výstupní hodnoty
 description: Při vracení hodnoty z nasazení použijte operaci kopírování v šabloně Správce prostředků Azure k větší iterace.
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 3889260d02f438274c80e99e99136515499443e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/17/2020
+ms.openlocfilehash: 0315af2f083285c4704b08fec608341b6f0b2231
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153382"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617828"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Výstupní iterace v šablonách ARM
 
@@ -21,12 +21,10 @@ Můžete také použít kopii s [prostředky](copy-resources.md), [vlastnostmi v
 Prvek kopírování má následující obecný formát:
 
 ```json
-"copy": [
-  {
-    "count": <number-of-iterations>,
-    "input": <values-for-the-variable>
-  }
-]
+"copy": {
+  "count": <number-of-iterations>,
+  "input": <values-for-the-output>
+}
 ```
 
 Vlastnost **count** určuje počet iterací, které chcete pro výstupní hodnotu.

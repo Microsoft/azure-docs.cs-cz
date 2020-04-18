@@ -1,5 +1,5 @@
 ---
-title: Obnovitelné odstranění azure key vaultu | Dokumenty společnosti Microsoft
+title: Azure Key Vault obnovitelné odstranění | Dokumenty společnosti Microsoft
 description: Obnovitelné odstranění v azure key vault umožňuje obnovit odstraněné trezory klíčů a objekty trezoru klíčů, jako jsou klíče, tajné klíče a certifikáty.
 ms.service: key-vault
 ms.subservice: general
@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 6185f0d84f27b6be89e797fc7cfb22940d8c6401
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: be4f124863da39cc9f6a61ebe054d451b438e8c3
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81432096"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617749"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Přehled obnovitelného odstranění ve službě Azure Key Vault
 
@@ -38,7 +38,7 @@ Azure Key Vaults jsou sledované prostředky spravované Správcem prostředků 
 
 Pokud je povoleno obnovitelné odstranění, prostředky označené jako odstraněné prostředky jsou zachovány po zadanou dobu (ve výchozím nastavení 90 dní). Služba dále poskytuje mechanismus pro obnovení odstraněného objektu, v podstatě vrácení odstranění.
 
-Při vytváření nového trezoru klíčů je ve výchozím nastavení zapnuto obnovitelné odstranění. Trezor klíčů můžete vytvořit bez obnovitelného odstranění prostřednictvím [azure cli](soft-delete-cli.md) nebo [Azure Powershellu](soft-delete-powershell.md). Po povolení obnovitelného odstranění v trezoru klíčů nelze jej zakázat.
+Při vytváření nového trezoru klíčů je ve výchozím nastavení zapnuto obnovitelné odstranění. Trezor klíčů můžete vytvořit bez obnovitelného odstranění prostřednictvím [azure cli](soft-delete-cli.md) nebo [Azure PowerShell](soft-delete-powershell.md). Po povolení obnovitelného odstranění v trezoru klíčů nelze jej zakázat.
 
 Výchozí doba uchovávání je 90 dní, ale během vytváření trezoru klíčů je možné nastavit interval zásad uchovávání informací na hodnotu od 7 do 90 dnů prostřednictvím portálu Azure. Zásady uchovávání ochrany proti vymazání používá stejný interval. Po nastavení nelze změnit interval zásad uchovávání informací.
 
@@ -46,7 +46,7 @@ Název trezoru klíčů, který byl odstraněn, nelze znovu použít, dokud nepo
 
 ### <a name="purge-protection"></a>Ochrana proti pročištění 
 
-Ochrana proti vymazání je volitelné chování trezoru klíčů a **ve výchozím nastavení není povolena**. To může být zapnuto přes [CLI](soft-delete-cli.md#enabling-purge-protection) nebo [Powershell](soft-delete-powershell.md#enabling-purge-protection).
+Ochrana proti vymazání je volitelné chování trezoru klíčů a **ve výchozím nastavení není povolena**. To může být zapnuto přes [CLI](soft-delete-cli.md#enabling-purge-protection) nebo [PowerShell](soft-delete-powershell.md#enabling-purge-protection).
 
 Pokud je zapnutá ochrana proti vymazání, nelze trezor nebo objekt v odstraněném stavu vymazat, dokud nepomine doba uchování. Úložiště s obnovitelnými odstraněními a objekty lze stále obnovit a zajistit tak, že budou dodrženy zásady uchovávání informací. 
 
@@ -58,7 +58,7 @@ Trvalé odstranění, vymazání, trezor klíčů je možné prostřednictvím o
 
 Výjimkou jsou:
 - Pokud bylo předplatné Azure označeno jako *nepopsatelné*. V takovém případě může provést skutečné odstranění pouze služba a provede tak jako naplánovaný proces. 
-- Pokud je v samotném trezoru povolen příznak --enable-purge-protection. V takovém případě bude trezor klíčů čekat 90 dní od doby, kdy byl původní tajný objekt označen k odstranění, aby byl objekt trvale odstraněn.
+- Pokud `--enable-purge-protection flag` je povoleno v samotném trezoru. V takovém případě bude trezor klíčů čekat 90 dní od doby, kdy byl původní tajný objekt označen k odstranění, aby byl objekt trvale odstraněn.
 
 ### <a name="key-vault-recovery"></a>Obnovení trezoru klíčů
 
@@ -72,7 +72,7 @@ Současně trezor klíčů naplánuje odstranění podkladových dat odpovídaj�
 
 ### <a name="soft-delete-retention-period"></a>Doba uchovávání s měkkým odstraněním
 
-Obnovitelné odstraněné zdroje jsou uchovávány po stanovenou dobu, 90 dní. Během intervalu uchovávání měkkých smazání platí následující:
+Zdroje s měkkým odstraněním jsou uchovávány po stanovenou dobu, 90 dní. Během intervalu uchovávání měkkých smazání platí následující:
 
 - Můžete uvést všechny trezory klíčů a objekty trezoru klíčů ve stavu obnovitelného odstranění pro vaše předplatné, stejně jako přístup k odstranění a obnovení informace o nich.
     - Odstraněné trezory mohou vypsat pouze uživatelé se zvláštními oprávněními. Doporučujeme, aby naši uživatelé vytvořili vlastní roli s těmito zvláštními oprávněními pro zpracování odstraněných trezorů.

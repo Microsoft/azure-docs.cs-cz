@@ -5,38 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 2/11/2020
+ms.date: 04/13/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77166440"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603428"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Kurz: Hromadné pozvání uživatelů spolupráce Azure AD B2B (preview)
-
-|     |
-| --- |
-| Tento článek popisuje funkci veřejného náhledu služby Azure Active Directory. Další informace o náhledech najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
-
-> [!NOTE]
-> Od 12/22/2019 byla funkce Hromadné pozvání uživatelů (Preview) dočasně zakázána.
-> V současné době není žádné známé datum, kdy bude tato funkce znovu povolena na webu Azure Portal. Pokud chcete pozvat uživatele typu Host hromadně pomocí PowerShellu, přečtěte si [kurz hromadnépozvánky B2B](bulk-invite-powershell.md) nebo [kód B2B a ukázky prostředí PowerShell](code-samples.md).
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: Hromadné pozvání uživatelů spolupráce B2B služby Azure AD
 
 Pokud k práci se svými externími partnery používáte spolupráci B2B služby Azure Active Directory (Azure AD), můžete do organizace pozvat více uživatelů typu host najednou. V tomto kurzu se dozvíte, jak pomocí portálu Azure odesílat hromadné pozvánky externím uživatelům. Konkrétně provedete následující:
 
 > [!div class="checklist"]
-> * Použití **hromadného pozvání uživatelů (Preview)** k přípravě souboru s hodnotou oddělenou čárkami (.csv) s informacemi o uživateli a předvolbami pozvánek
+> * Použití **hromadných pozvat uživatele** k přípravě souboru s hodnotou oddělenou čárkami (.csv) s informacemi o uživateli a předvolbami pozvánek
 > * Nahrání souboru .csv do služby Azure AD
 > * Ověříte, že jsou uživatelé v adresáři přidaní.
 
-Pokud azure active directory nemáte, vytvořte si před zahájením [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 
+Pokud azure active directory nemáte, vytvořte si před zahájením [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -47,7 +38,7 @@ Potřebujete alespoň dva testovací e-mailové účty, na které můžete pozv�
 1. Přihlaste se k portálu Azure pomocí účtu, který je správcem uživatele v organizaci.
 2. V navigačním podokně vyberte **Azure Active Directory**.
 3. V části **Správa**vyberte**možnost Hromadná pozvánka** **uživatelů** > .
-4. Na stránce **Hromadné pozvání uživatelů (Náhled)** vyberte **Stáhnout,** chcete-li získat platný soubor .csv s vlastnostmi pozvánky.
+4. Na stránce **Hromadné pozvání uživatelů** vyberte **Stáhnout,** chcete-li získat platný soubor .csv s vlastnostmi pozvánky.
 
     ![Tlačítko hromadného pozvání ke stažení](media/tutorial-bulk-invite/bulk-invite-button.png)
 
@@ -63,10 +54,10 @@ Potřebujete alespoň dva testovací e-mailové účty, na které můžete pozv�
    > Ve **zprávě s přizpůsobenou pozvánkou** nepoužívejte čárky, protože zabrání úspěšné mu zanalýzy zprávy.
 
 6. Uložte soubor.
-7. Na stránce **Hromadné pozvání uživatelů (Preview)** v části **Nahrání souboru CSV**vyhledejte soubor. Když vyberete soubor, spustí se ověření souboru .csv. 
+7. Na stránce **Hromadné pozvání uživatelů** vyhledejte v části Upload **souboru CSV**soubor. Když vyberete soubor, spustí se ověření souboru .csv. 
 8. Po ověření obsahu souboru se **soubor úspěšně nahraje**. Pokud se jedná o chyby, je nutné je před odesláním úlohy opravit.
 9. Když váš soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která přidá pozvánky. 
-10. Chcete-li zobrazit stav úlohy, vyberte **možnost Kliknutím sem zobrazíte stav jednotlivých operací**. Nebo můžete vybrat **výsledky hromadné operace (náhled)** v části **Aktivita.** Podrobnosti o jednotlivých řádkových položkách v rámci hromadné operace vyberte hodnoty ve sloupcích **#Úspěch**, **Počet neúspěšných**nebo **Celkový počet požadavků.** Pokud došlo k chybám, budou uvedeny důvody selhání.
+10. Chcete-li zobrazit stav úlohy, vyberte **možnost Kliknutím sem zobrazíte stav jednotlivých operací**. Nebo můžete vybrat **výsledky hromadné operace** v části **Aktivita.** Podrobnosti o jednotlivých řádkových položkách v rámci hromadné operace vyberte hodnoty ve sloupcích **#Úspěch**, **Počet neúspěšných**nebo **Celkový počet požadavků.** Pokud došlo k chybám, budou uvedeny důvody selhání.
 
     ![Příklad výsledků hromadných operací](media/tutorial-bulk-invite/bulk-operation-results.png)
 

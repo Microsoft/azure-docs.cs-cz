@@ -4,12 +4,12 @@ description: Shrnuje podporu pro zotavení po havárii virtuálních počítač�
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 3e66d71011937c3e22c6f1537bcd448d4aa3bbf3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673806"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605508"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálního počítače Azure mezi oblastmi Azure
 
@@ -154,7 +154,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.29 | Podporována jsou 
 
 **Vydat** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 a 15 SP1 | 9.32 | Podporována jsou všechna [jádra SUSE 15 a 15.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)</br></br> 4.12.14-5.5-azure až 4.12.14-8.22-azure |
+SUSE Linux Enterprise Server 15 a 15 SP1 | 9.32 | Podporována jsou všechna jádra SUSE 15 a 15.</br></br> 4.12.14-5.5-azure až 4.12.14-8.22-azure |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikované počítače - Linux souborový systém / hostovací úložiště
 

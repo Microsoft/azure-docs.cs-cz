@@ -4,12 +4,12 @@ description: Přečtěte si, jak vyvolat obchodní procesy z aplikace App Servic
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 44f2dfb83e96e1d8fa31ee1acf350193b954dbd8
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892850"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604854"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Kurz: Odeslání e-mailu a vyvolání dalších obchodních procesů ze služby App Service
 
@@ -199,7 +199,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Tento kód je napsán pro jednoduchost demonstrace. V praxi není konkretizovat `HttpClient` objekt pro každý požadavek. Postupujte podle pokynů na [Use IHttpClientFactory implementovat odolné požadavky HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient -http-requests).
+> Tento kód je napsán pro jednoduchost demonstrace. V praxi není konkretizovat `HttpClient` objekt pro každý požadavek. Postupujte podle pokynů na [použití IHttpClientFactory k implementaci odolných požadavků HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests).
 
 Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace ASP.NET core a SQL Database ve službě Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md), můžete ho použít k odeslání potvrzení e-mailu v akci [Vytvořit](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)po přidání `Todo` položky.
 

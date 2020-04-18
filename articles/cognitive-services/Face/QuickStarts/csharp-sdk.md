@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 5e0073bd14744338ff28c9c45193f126a1bba717
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d9b10341f971c0e8177043126ff8fbd4df078b86
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403030"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604991"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Úvodní příručka: Face klientská knihovna pro rozhraní .NET
 
@@ -126,17 +126,19 @@ Pravděpodobně budete chtít volat tuto metodu v metodě. `Main`
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_client)]
 
-## <a name="detect-faces-in-an-image"></a>Rozpoznávání tváří na obrázku
+### <a name="declare-helper-fields"></a>Deklarovat pomocná pole
 
-V kořenovém adresáři třídy definujte následující řetězec adresy URL. Tato adresa URL odkazuje na sadu ukázkových obrázků.
+Následující pole jsou potřeba pro několik operací plochy, které přidáte později. V kořenovém adresáři třídy definujte následující řetězec adresy URL. Tato adresa URL odkazuje na složku ukázkových obrázků.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
 
-Volitelně můžete zvolit, který model AI se má použít k extrahování dat z detekovaných ploch. Informace o těchto možnostech naleznete [v tématu Určení modelu rozpoznávání.](../Face-API-How-to-Topics/specify-recognition-model.md)
+Definujte řetězce, které odkazují na různé typy modelů rozpoznávání. Později budete moci určit, který model rozpoznávání chcete použít pro detekci obličeje. Informace o těchto možnostech naleznete [v tématu Určení modelu rozpoznávání.](../Face-API-How-to-Topics/specify-recognition-model.md)
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-Konečná operace Detect bude mít objekt **[FaceClient,](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** adresu URL obrázku a model rozpoznávání.
+## <a name="detect-faces-in-an-image"></a>Rozpoznávání tváří na obrázku
+
+Přidejte následující volání metody do **hlavní** metody. Dále definujete metodu. Konečná operace Detect bude mít objekt **[FaceClient,](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** adresu URL obrázku a model rozpoznávání.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
@@ -174,25 +176,21 @@ Následující kód vytiskne podrobnosti shody do konzoly:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar_print)]
 
-## <a name="create-and-train-a-person-group"></a>Vytvoření a trénování skupiny osob
+## <a name="identify-a-face"></a>Identifikace obličeje
+
+Operace Identifikovat pořídí obrázek osoby (nebo více osob) a vyhledá identitu každé tváře v obrázku. Porovnává každou detekoci tvář **persongroup**, databáze různých osob **objekty,** jejichž rysy obličeje jsou známy. Chcete-li provést operaci Identifikovat, musíte nejprve vytvořit a trénovat **persongroup**
+
+### <a name="create-and-train-a-person-group"></a>Vytvoření a trénování skupiny osob
 
 Následující kód vytvoří **PersonGroup** se šesti různými **person** objekty. Spojuje každou **osobu** se sadou příkladů a pak trénuje, aby rozpoznala každou osobu podle jejich obličejových charakteristik. **Objekty Person** a **PersonGroup** se používají v operacích Ověřit, Identifikovat a Seskupit.
 
-Pokud jste tak ještě neučinili, definujte následující řetězec adresy URL v kořenovém adresáři vaší třídy. To ukazuje na sadu ukázkových obrazů.
-
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
-
-Kód dále v této části určí model rozpoznávání extrahovat data z ploch a následující úryvek vytvoří odkazy na dostupné modely. Viz [Určení modelu rozpoznávání](../Face-API-How-to-Topics/specify-recognition-model.md) pro informace o modelech rozpoznávání.
-
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
-
-### <a name="create-persongroup"></a>Vytvořit skupinu osob
+#### <a name="create-persongroup"></a>Vytvořit skupinu osob
 
 Deklarujte proměnnou řetězce v kořenovém adresáři vaší třídy, která bude představovat ID **Skupiny osob,** kterou vytvoříte.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_declare)]
 
-V nové metodě přidejte následující kód. Tento kód přidruží jména osob s jejich ukázkové obrázky.
+V nové metodě přidejte následující kód. Tato metoda provede operaci Identifikovat. První blok kódu přidruží jména osob s jejich ukázkové obrázky.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_files)]
 
@@ -200,20 +198,13 @@ Dále přidejte následující kód pro vytvoření objektu **Person** pro každ
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_create)]
 
-### <a name="train-persongroup"></a>Vlak PersonGroup
+#### <a name="train-persongroup"></a>Vlak PersonGroup
 
 Jakmile extrahujete data o obličeji z obrázků a seřadíte je do různých objektů **Person,** musíte skupinu **PersonGroup** trénovat k identifikaci vizuálních prvků přidružených ke každému z jejích objektů **Person.** Následující kód volá metodu asynchronního **trainu** a vyvolá výsledky a tiskne stav do konzoly.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_train)]
 
 Tato skupina **Osoba** a její přidružené objekty **Person** jsou nyní připraveny k použití v operacích Ověření, Identifikace nebo Skupina.
-
-## <a name="identify-a-face"></a>Identifikace obličeje
-
-Operace Identifikovat pořídí obrázek osoby (nebo více osob) a vyhledá identitu každé tváře v obrázku. Porovnává každou detekoci tvář **persongroup**, databáze různých osob **objekty,** jejichž rysy obličeje jsou známy.
-
-> [!IMPORTANT]
-> Chcete-li spustit tento příklad, musíte nejprve spustit kód v [vytvořit a trénování skupiny osob](#create-and-train-a-person-group). Proměnné použité v tomto&mdash;`client` `url`oddíle `RECOGNITION_MODEL1` &mdash;, a musí být také k dispozici zde.
 
 ### <a name="get-a-test-image"></a>Získání testovacího obrázku
 
@@ -225,7 +216,7 @@ Následující kód pořídí zdrojový obraz a vytvoří seznam všech tváří
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify_sources)]
 
-Další fragment kódu volá operaci Identifikace a vytiskne výsledky do konzoly. Zde se služba pokusí porovnat každou tvář ze zdrojového obrázku **s osobou** v dané **skupině PersonGroup**.
+Další fragment kódu volá operaci **IdentifyAsync** a vytiskne výsledky do konzoly. Zde se služba pokusí porovnat každou tvář ze zdrojového obrázku **s osobou** v dané **skupině PersonGroup**. Tím se uzavře metoda Identify.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify)]
 

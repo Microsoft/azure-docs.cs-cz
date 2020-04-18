@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
-ms.openlocfilehash: 6f0310f13ab23b5b3d4fba649d0faf0da4dad5b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413145"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606299"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Transformace náhradního klíče v toku dat mapování 
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Transformace náhradního klíče slouží k přidání přírůstkové hodnoty klíče do každého řádku dat. To je užitečné při navrhování tabulek dimenzí v analytickém datovém modelu schématu hvězd. Ve schématu hvězdičky vyžaduje každý člen v tabulkách dimenze jedinečný klíč, který není obchodním klíčem.
 

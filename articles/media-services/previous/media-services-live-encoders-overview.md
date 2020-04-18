@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 71a31228602ef161158eaa05c80d50f65de98a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82fa5968d004bd4460f2c05ec944f6e568508675
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133267"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641133"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Jak nakonfigurovat místní kodéry při použití Azure Media Services k vytváření datových proudů s více přenosovými rychlostmi
 Toto téma uvádí místní živé kodéry, které můžete použít k zachycení živých událostí a odeslání jednoho datového toku živého datového proudu do kanálů AMS (které jsou povoleno živé kódování) pro další zpracování. Toto téma také odkazuje na kurzy, které ukazují, jak konfigurovat uvedené kodéry.
@@ -32,9 +32,6 @@ Informace o konfiguraci [kodéru kodéru kodére Haivision KB](https://www.haivi
 
 ## <a name="telestream-wirecast"></a>Telestream Wirecast
 Informace o konfiguraci kodéru [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) pro odesílání jednoho datového proudu datového toku do kanálu AMS naleznete v [tématu Konfigurace wirecastu](media-services-configure-wirecast-live-encoder.md).
-
-## <a name="newtek-tricaster"></a>NewTek TriCaster
-Informace o konfiguraci [kodéru Tricaster](https://newtek.com/products/tricaster-40.html) pro odesílání jednoho datového toku živého datového proudu do kanálu AMS naleznete v [tématu Konfigurace trikastru](media-services-configure-tricaster-live-encoder.md).
 
 ## <a name="elemental-live"></a>Elemental Live
 Další informace naleznete v tématu [Elemental Live](https://www.elementaltechnologies.com/products/elemental-live).

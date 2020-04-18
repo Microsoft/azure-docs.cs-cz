@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: ccompy
-ms.openlocfilehash: 7f2b011b2de5af0e4ace9cbeb4399911d8e83b7f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312828"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604882"
 ---
 Použití místní integrace virtuální sítě umožňuje vaší aplikaci přístup:
 
@@ -19,7 +19,7 @@ Použití místní integrace virtuální sítě umožňuje vaší aplikaci pří
 * Prostředky napříč připojeními Azure ExpressRoute.
 * Prostředky ve virtuální síti, do které jste integrovaní.
 * Prostředky napříč partnerskými připojeními, která zahrnují připojení Azure ExpressRoute.
-* Privátní koncové body – poznámka: DNS musí být spravované samostatně, nikoli pomocí privátních zón Azure DNS.
+* Soukromé koncové body 
 
 Když používáte integraci virtuální sítě s virtuálními sítěmi ve stejné oblasti, můžete použít následující síťové funkce Azure:
 
@@ -50,7 +50,7 @@ Existují určitá omezení s použitím integrace virtuální sítě s virtuál
 * Můžete integrovat jenom s virtuálními sítěmi ve stejném předplatném jako aplikace.
 * Můžete mít jenom jednu regionální integraci virtuální sítě podle plánu služby App Service. Více aplikací ve stejném plánu služby App Service můžete použít stejnou virtuální síť.
 * Nemůžete změnit předplatné aplikace nebo plánu, když je aplikace, která používá místní integraci virtuální sítě.
-* Vaše aplikace nemůže vyřešit adresy v privátních zónách Azure DNS.
+* Vaše aplikace nemůže vyřešit adresy v privátních zónách Azure DNS bez změn konfigurace
 
 Pro každou instanci plánu se používá jedna adresa. Pokud změníte velikost aplikace na pět instancí, použije se pět adres. Vzhledem k tomu, že velikost podsítě nelze po přiřazení změnit, musíte použít podsíť, která je dostatečně velká, aby vyhovovala všem měřítkům, na které vaše aplikace může dosáhnout. Doporučená velikost je A /26 s 64 adresami. A /26 s 64 adresami pojme plán Premium s 30 instancemi. Při škálování plánu nahoru nebo dolů, budete potřebovat dvakrát tolik adres na krátkou dobu.
 
@@ -83,9 +83,22 @@ Pokud chcete směrovat všechny odchozí přenosy místně, můžete použít sm
 
 Trasy protokolu Brána ohraničení (BGP) také ovlivňují provoz aplikace. Pokud máte trasy BGP z něčeho jako brána ExpressRoute, bude ovlivněn odchozí provoz aplikace. Ve výchozím nastavení trasy Protokolu BGP ovlivňují pouze cílový provoz RFC1918. Pokud je WEBSITE_VNET_ROUTE_ALL nastavena na 1, všechny odchozí provozy mohou být ovlivněny trasy BGP.
 
+### <a name="azure-dns-private-zones"></a>Privátní zóny Azure DNS 
+
+Po integraci aplikace s vaší virtuální sítí používá stejný server DNS, se kterým je virtuální síť nakonfigurovaná. Ve výchozím nastavení nebude vaše aplikace fungovat s privátními zónami Azure DNS. Chcete-li pracovat s privátními zónami Azure DNS, musíte přidat následující nastavení aplikace:
+
+1. WEBSITE_DNS_SERVER s hodnotou 168,63,129,16 
+1. WEBSITE_VNET_ROUTE_ALL s hodnotou 1
+
+Tato nastavení budou odesílat všechny odchozí hovory z vaší aplikace do virtuální sítě a navíc umožní vaší aplikaci používat privátní zóny Azure DNS.
+
+### <a name="private-endpoints"></a>Soukromé koncové body
+
+Pokud chcete volat [privátní koncové body][privateendpoints], pak je potřeba buď integrovat s Privátní zóny Azure DNS nebo spravovat privátní koncový bod na serveru DNS používá vaše aplikace. 
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 
 <!--Links-->
 [VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

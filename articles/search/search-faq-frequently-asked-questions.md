@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262447"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618039"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search – nejčastější dotazy (nejčastější dotazy)
 
@@ -82,6 +82,14 @@ Většina vyhledávacích dotazů se zástupnými symboly, jako je předpona, p�
 Ve výchozím nastavení jsou výsledky hledání hodnoceny na základě [statistických vlastností odpovídajících termínů](search-lucene-query-architecture.md#stage-4-scoring)a v sadě výsledků jsou seřazeny od nejvyšší ho diody až nízké. Některé typy dotazů (zástupný znak, předpona, regulární výraz) však vždy přispívají konstantnískóre celkové skóre dokumentu. Toto chování je záměrné. Azure Cognitive Search ukládá konstantní skóre povolit shody nalezené prostřednictvím rozšíření dotazu, které mají být zahrnuty do výsledků, aniž by to ovlivnilo pořadí.
 
 Předpokládejme například, že vstup "tour*" ve vyhledávání zástupných symbolů vytváří shody na "tours", "tourettes" a "tourmaline". Vzhledem k povaze těchto výsledků neexistuje způsob, jak rozumně vyvodit, které podmínky jsou cennější než jiné. Z tohoto důvodu ignorujeme četnost termínů při vyhodnocování výsledků v dotazech typů zástupných, prefix a regulární výraz. Výsledky hledání založené na částečném vstupu jsou uvedeny konstantní skóre, aby se zabránilo zaujatost vůči potenciálně neočekávané shody.
+
+## <a name="skillset-operations"></a>Operace sady dovedností
+
+### <a name="are-there-any-tips-or-tricks-to-reduce-cognitive-services-charges-on-ingestion"></a>Existují nějaké tipy nebo triky, jak snížit poplatky za kognitivní služby při požití?
+
+Je pochopitelné, že nechcete provádět vestavěné dovednosti nebo vlastní dovednosti více, než je naprosto nezbytné, zvláště pokud máte co do činění s miliony dokumentů ke zpracování. S ohledem na to jsme přidali možnosti "přírůstkového obohacení" do provádění dovedností. V podstatě můžete zadat umístění mezipaměti (připojovací řetězec úložiště objektů blob), který se použije k uložení výstupu "zprostředkující" kroky obohacení.  To umožňuje obohacování kanálu být inteligentní a použít pouze obohacení, které jsou nezbytné při úpravě skillset. To samozřejmě také ušetří čas indexování, protože kanál bude efektivnější.
+
+Další informace o [přírůstkovém obohacení](cognitive-search-incremental-indexing-conceptual.md)
 
 ## <a name="design-patterns"></a>Způsoby návrhu
 

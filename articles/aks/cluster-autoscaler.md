@@ -4,12 +4,12 @@ description: Zjistěte, jak pomocí automatického škálování clusteru automa
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2baa64779713d0bac063e1d2c06107ba2ab291fb
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596245"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617545"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatické škálování clusteru tak, aby splňoval požadavky aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -117,6 +117,7 @@ Podrobnější podrobnosti automatického škálování clusteru můžete také 
 | změna velikosti dolů-nepřipravený čas          | Jak dlouho by měl být nepřipravený uzel nepotřebný, než bude způsobilý pro zmenšení         | 20 minut    |
 | prahová hodnota pro sazby | Úroveň využití uzlu, definovaná jako součet požadovaných zdrojů dělených kapacitou, pod kterou lze uzel považovat za zmenšení kapacity | 0,5 |
 | max-graceful-termination-sec     | Maximální počet sekund, po které automatický škálovač clusteru čeká na ukončení podu při pokusu o zmenšení stupně platnosti uzlu. | 600 sekund   |
+| balance-similar-node-groups | Zjištění podobných fondů uzlů a vyrovnání počtu uzlů mezi nimi | false (nepravda) |
 
 > [!IMPORTANT]
 > Profil automatického škálování clusteru ovlivňuje všechny fondy uzlů, které používají automatický škálovací systém clusteru. Nelze nastavit profil automatického škálování na fond uzlů.
@@ -144,7 +145,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Pokud povolíte automatické škálování clusteru ve fondech uzlů v clusteru, budou tyto clustery také používat profil automatického škálování clusteru. Například:
+Pokud povolíte automatické škálování clusteru ve fondech uzlů v clusteru, budou tyto clustery také používat profil automatického škálování clusteru. Příklad:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -161,7 +162,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>Nastavení profilu automatického škálování clusteru při vytváření clusteru AKS
 
-Při vytváření clusteru můžete také použít parametr *profilu clusteru autoscaler.* Například:
+Při vytváření clusteru můžete také použít parametr *profilu clusteru autoscaler.* Příklad:
 
 ```azurecli-interactive
 az aks create \

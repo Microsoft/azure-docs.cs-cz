@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f5ff48f4d5a658a1bbb4e6b9fb4b3f0f3fb190f
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083225"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81602687"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrace úloh pomocí roztažené sítě vrstvy 2
 
@@ -73,7 +73,7 @@ Další informace naleznete [v tématu Virtuální privátní sítě](https://do
 
 ### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>Místní síť, kde je nasazen samostatný klient ESG (L2 VPN)
 
-| **Položka** | **Hodnotu** |
+| **Položka** | **Hodnota** |
 |------------|-----------------|
 | Název sítě | MGMT_NET_VLAN469 |
 | Vlan | 469 |
@@ -83,14 +83,14 @@ Další informace naleznete [v tématu Virtuální privátní sítě](https://do
 
 ### <a name="on-premises-network-to-be-stretched"></a>Místní síť, která má být roztažena
 
-| **Položka** | **Hodnotu** |
+| **Položka** | **Hodnota** |
 |------------|-----------------|
 | Vlan | 472 |
 | CIDR| 10.250.3.0/24 |
 
 ### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Schéma IP privátního cloudu pro směrovač NSX-T Tier0 (l2 VPN serve)
 
-| **Položka** | **Hodnotu** |
+| **Položka** | **Hodnota** |
 |------------|-----------------|
 | Rozhraní zpětné smyčky | 192.168.254.254/32 |
 | Rozhraní tunelového propojení | 5.5.5.1/29 |
@@ -99,7 +99,7 @@ Další informace naleznete [v tématu Virtuální privátní sítě](https://do
 
 ### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Privátní cloudová síť, která má být mapována na roztaženou síť
 
-| **Položka** | **Hodnotu** |
+| **Položka** | **Hodnota** |
 |------------|-----------------|
 | Vlan | 712 |
 | CIDR| 10.200.15.0/24 |
@@ -108,7 +108,7 @@ Další informace naleznete [v tématu Virtuální privátní sítě](https://do
 
 Následující kroky ukazují, jak načíst ID logického směrovače instance logického směrovače Tier0 DR pro služby IPsec a L2VPN. ID logického směrovače je potřeba později při implementaci L2VPN.
 
-1. Přihlaste se k NSX-T Manager https://*nsx-t-manager-ip-adresa* a vyberte **síťové** > **směrovače** > **Provider-LR** > **Přehled**. V **režimu vysoké dostupnosti**vyberte **možnost Aktivní pohotovostní režim**. Tato akce otevře rozbalovací okno, které zobrazuje virtuální počítač Edge, na kterém je aktuálně aktivní směrovač Tier0.
+1. Přihlaste se ke `https://*nsx-t-manager-ip-address*` Správci NSX-T a vyberte přehled**zprostředkovatele** >  **síťových** > **směrovačů** > - LR .**Overview** V **režimu vysoké dostupnosti**vyberte **možnost Aktivní pohotovostní režim**. Tato akce otevře rozbalovací okno, které zobrazuje virtuální počítač Edge, na kterém je aktuálně aktivní směrovač Tier0.
 
     ![Výběr aktivního pohotovostního režimu](media/l2vpn-fetch01.png)
 
@@ -154,11 +154,11 @@ Chcete-li vytvořit síť VPN založenou na směrování IPsec mezi směrovačem
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Inzerujte IP adresu rozhraní zpětné smyčky do sítě podložení
 
-1. Vytvořte nulovou trasu pro síť rozhraní zpětné smyčky. Přihlaste se ke Správci NSX-T a vyberte**Routers** > možnost Zprostředkovatel**směrování** > **sítí-LR** >  **Networking** > **Směrovací** > **statické trasy**. Klikněte na **Přidat**. V **části Síť**zadejte ip adresu rozhraní zpětné smyčky. V **poli Další směrování**klepněte na tlačítko **Přidat**, zadejte hodnotu Null pro další směrování a ponechte výchozí hodnotu 1 pro vzdálenost správce.
+1. Vytvořte nulovou trasu pro síť rozhraní zpětné smyčky. Přihlaste se ke Správci NSX-T a vyberte**Routers** > možnost Zprostředkovatel**směrování** > **sítí-LR** >  **Networking** > **Směrovací** > **statické trasy**. Klikněte na tlačítko **Add** (Přidat). V **části Síť**zadejte ip adresu rozhraní zpětné smyčky. V **poli Další směrování**klepněte na tlačítko **Přidat**, zadejte hodnotu Null pro další směrování a ponechte výchozí hodnotu 1 pro vzdálenost správce.
 
     ![Přidat statickou trasu](media/l2vpn-routing-security01.png)
 
-2. Vytvořte seznam předponek IP. Přihlaste se ke Správci NSX-T a vyberte **možnost Zprostředkovatel síťových** > **směrovačů-LR** > **Provider-LR** > **Routing** > **Seznamy** > **předponek PROTOKOLU IP**. Klikněte na **Přidat**. Zadejte název pro identifikaci seznamu. U **předpon**klepněte dvakrát na **Přidat.** V prvním řádku zadejte '0.0.0.0/0' pro **síť** a 'Odepřít' pro **akci**. Na druhém řádku vyberte **any** for **Network** a **Permit** for **Action**.
+2. Vytvořte seznam předponek IP. Přihlaste se ke Správci NSX-T a vyberte **možnost Zprostředkovatel síťových** > **směrovačů-LR** > **Provider-LR** > **Routing** > **Seznamy** > **předponek PROTOKOLU IP**. Klikněte na tlačítko **Add** (Přidat). Zadejte název pro identifikaci seznamu. U **předpon**klepněte dvakrát na **Přidat.** V prvním řádku zadejte '0.0.0.0/0' pro **síť** a 'Odepřít' pro **akci**. Na druhém řádku vyberte **any** for **Network** a **Permit** for **Action**.
 3. Připojte seznam předpony IP k oběma sousedům Protokolu BGP (TOR). Připojení seznamu předpony IP k sousednímu zařízení Protokolu BGP zabrání tomu, aby byla výchozí trasa inzerována v protokolu BGP přepínačům TOR. Však všechny ostatní trasy, která zahrnuje nulovou trasu bude inzerovat ip adresu rozhraní zpětné smyčky přepínače.
 
     ![Vytvořit seznam předpon IP](media/l2vpn-routing-security02.png)
@@ -180,7 +180,7 @@ IP adresy zvolené pro rozhraní zpětné smyčky a tunelového propojení použ
 ```
 Loopback interface ip : 192.168.254.254/32
 Tunnel interface subnet : 5.5.5.0/29
-Logical-router ID : UUID of Tier0 DR logical router obtained in section “Steps to fetch Logical-Router ID needed for L2VPN”
+Logical-router ID : UUID of Tier0 DR logical router obtained in section "Steps to fetch Logical-Router ID needed for L2VPN"
 Logical-switch ID(Stretch) : UUID of Stretch Logical Switch obtained earlier
 IPSec Service ID :
 IKE profile ID :
@@ -356,7 +356,7 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 
 Pro následující příkaz POST je ID služby L2VPN ID ID, které jste právě získali, a ID relace IPsec VPN je ID získané v předchozí části.
 
-``` 
+```    
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 
 {
@@ -428,7 +428,7 @@ Před nasazením ověřte, zda místní pravidla brány firewall povolují pří
 
     ![Stažení samostatného klienta NSX Edge](media/l2vpn-deploy-client01.png)
 
-2. Přejděte do složky se všemi extrahovanými soubory. Vyberte všechny vmdks (NSX-l2t-client-large.mf a NSX-l2t-client-large.ovf pro velké velikosti zařízení nebo NSX-l2t-client-Xlarge.mf a NSX-l2t-client-Xlarge.ovf pro extra velké velikosti zařízení). Klikněte na **Další**.
+2. Přejděte do složky se všemi extrahovanými soubory. Vyberte všechny vmdks (NSX-l2t-client-large.mf a NSX-l2t-client-large.ovf pro velké velikosti zařízení nebo NSX-l2t-client-Xlarge.mf a NSX-l2t-client-Xlarge.ovf pro extra velké velikosti zařízení). Klikněte na **Další**.
 
     ![Vybrat](media/l2vpn-deploy-client02.png) ![šablonu Vybrat šablonu](media/l2vpn-deploy-client03.png)
 
@@ -440,7 +440,7 @@ Před nasazením ověřte, zda místní pravidla brány firewall povolují pří
 
     ![Vybrat úložiště dat](media/l2vpn-deploy-client06.png)
 
-5. Vyberte správné skupiny portů pro rozhraní Trunk (Trunk PG), Public (Uplink PG) a HA (Uplink PG) pro samostatného klienta NSX-T. Klikněte na **Další**.
+5. Vyberte správné skupiny portů pro rozhraní Trunk (Trunk PG), Public (Uplink PG) a HA (Uplink PG) pro samostatného klienta NSX-T. Klikněte na **Další**.
 
     ![Výběr skupin portů](media/l2vpn-deploy-client07.png)
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94699f2153fa8d1df3ab85c184f32792c7ae0b59
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428872"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606011"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru Synapse (náhled)
 
@@ -51,8 +51,8 @@ Vytvořte a naplňte tři skupiny zabezpečení pro pracovní prostor:
 - **WS1\_WSAdmins** – pro uživatele, kteří potřebují úplnou kontrolu nad pracovním prostorem
 - **WS1\_SparkAdmins** – pro ty uživatele, kteří potřebují úplnou kontrolu nad aspekty Spark pracovního prostoru
 - **WS1\_SQLAdmins** – pro uživatele, kteří potřebují úplnou kontrolu nad aspekty SQL pracovního prostoru
-- Přidání **správců\_WS1** do **služby WS1\_SQLAdmins**
-- Přidání **správců\_WS1** do **služby WS1\_SparkAdmins**
+- Přidání **ws1\_wsadminů** do **ws1\_SQLAdmins**
+- Přidání **ws1\_wsadminů** do **ws1\_sparku**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>KROK 2: Příprava účtu Data Lake Storage Gen2
 
@@ -89,7 +89,7 @@ Pracovní prostor Synapse potřebuje přístup k STG1 a CNT1, aby mohl spouště
 - Otevření portálu Azure
 - Vyhledat STG1
 - Přejít na CNT1
-- Ujistěte se, že MSI pro WS1 je přiřazena k roli **přispěvatele dat objektů blob Azure** na CNT1
+- Ujistěte se, že MSI (identita spravované služby) pro WS1 je přiřazena k roli **přispěvatele dat objektů blob Azure** na CNT1
   - Pokud ji nevidíte přiřazenou, přiřaďte ji.
   - MSI má stejný název jako pracovní prostor. V tomto případě by &quot;to&quot;bylo WS1 .
 

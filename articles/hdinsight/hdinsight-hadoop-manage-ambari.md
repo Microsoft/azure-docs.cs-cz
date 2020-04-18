@@ -1,25 +1,25 @@
 ---
 title: Sledování a správa Azure HDInsight pomocí webového uživatelského rozhraní Ambari
-description: Přečtěte si, jak pomocí Ambari monitorovat a spravovat clustery HDInsight založené na Linuxu. V tomto dokumentu se dozvíte, jak používat webové uživatelské rozhraní Ambari, které je součástí clusterů HDInsight.
+description: Přečtěte si, jak pomocí rozhraní Apache Ambari monitorovat a spravovat clustery HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/05/2020
-ms.openlocfilehash: bf780897317d41c7da85140f64313546cf5c31d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: 2ed3d6b1088315b580ab8ddc4f12d8d61434ec53
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064692"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606554"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari zjednodušuje správu a monitorování clusteru Apache Hadoop tím, že poskytuje snadno použitelné webové uživatelské rozhraní a REST API. Ambari je součástí clusterů HDInsight a používá se ke sledování clusteru a provádění změn konfigurace.
+Apache Ambari zjednodušuje správu a monitorování clusteru Apache Hadoop. Toto zjednodušení se provádí poskytnutím snadno použitelné webové uživatelské rozhraní a ROZHRANÍ REST API. Ambari je součástí clusterů HDInsight a používá se ke sledování clusteru a provádění změn konfigurace.
 
 V tomto dokumentu se dozvíte, jak používat webové uživatelské rozhraní Ambari s clusterem HDInsight.
 
@@ -82,7 +82,7 @@ Skupiny můžete spravovat pomocí nabídky **Akce** a výběrem **možnosti Spr
 
 ![Apache Ambari spravovat skupiny výstrah](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-Můžete také spravovat metody výstrah a vytvářet upozornění z nabídky **Akce** výběrem __možnosti Spravovat oznámení__. Zobrazí se všechna aktuální oznámení. Můžete také vytvořit oznámení zde. Oznámení lze odesílat prostřednictvím **e-mailu** nebo **protokolu SNMP,** pokud dojde k určitým kombinacím výstraha/závažnost. Můžete například odeslat e-mailovou zprávu, pokud je některá výstraha ve výchozí skupině **YARN** nastavena na **hodnotu Kritická**.
+Můžete spravovat metody výstrah a vytvářet oznámení výstrah z nabídky **Akce** výběrem __možnosti Spravovat oznámení__. Zobrazí se všechna aktuální oznámení. Vytvořte oznámení odtud. Oznámení lze odesílat prostřednictvím **e-mailu** nebo **protokolu SNMP,** pokud dojde k určitým kombinacím výstraha/závažnost. Můžete například odeslat e-mailovou zprávu, pokud je některá výstraha ve výchozí skupině **YARN** nastavena na **hodnotu Kritická**.
 
 ![Apache Ambari vytvořit upozornění](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
@@ -119,10 +119,10 @@ Výběr služby zobrazí podrobnější informace o službě.
 
 #### <a name="quick-links"></a>Rychlé odkazy
 
-Některé služby zobrazují odkaz **Rychlé odkazy** v horní části stránky. To lze použít pro přístup k webovým unám specifickým pro službu, například:
+Některé služby zobrazují odkaz **Rychlé odkazy** v horní části stránky. Tento odkaz lze použít pro přístup k webovým unám specifickým pro službu, například:
 
 * **Historie úloh** – mapaZmenit historii úloh.
-* **Správce prostředků** - uj.
+* **Správce prostředků** - UI Správce prostředků příze.
 * **NameNode** - Hadoop Distributed File System (HDFS) NameNode UI.
 * **Oozie Web UI** - Oozie uživatelské hod.
 
@@ -161,7 +161,7 @@ Na stránce **Hosts** jsou uvedeni všichni hostitelé v clusteru. Chcete-li spr
     |Zapnutí režimu údržby|Potlačí výstrahy pro hostitele. Tento režim by měl být povolen, pokud provádíte akce, které generují výstrahy. Například zastavení a spuštění služby.|
     |Vypnutí režimu údržby|Vrátí hostitele k normálnímu upozorňování.|
     |Zastavit|Zastaví DataNode nebo NodeManagers na hostiteli.|
-    |Start|Spustí DataNode nebo NodeManagers na hostiteli.|
+    |Spustit|Spustí DataNode nebo NodeManagers na hostiteli.|
     |Restartování|Zastaví a spustí DataNode nebo NodeManagers na hostiteli.|
     |Vyřazení|Odebere hostitele z clusteru. **Tuto akci nepoužívejte v clusterech HDInsight.**|
     |Opětovné uvedení do provozu|Přidá do clusteru dříve vyřazeného hostitele. **Tuto akci nepoužívejte v clusterech HDInsight.**|
@@ -179,7 +179,7 @@ Zatímco tlačítko **Akce** můžete restartovat všechny služby, často chcet
 
 1. Na stránce **Řídicí panel** nebo **Služby** vyberte službu.
 
-2. V horní části karty **Souhrn** použijte tlačítko **Akce servisu** a vyberte akci, kterou chcete provést. Tím se služba restartuje ve všech uzlech.
+2. V horní části karty **Souhrn** použijte tlačítko **Akce servisu** a vyberte akci, kterou chcete provést. Tato akce restartuje službu ve všech uzlech.
 
     ![Apache Ambari individuální servisní akce](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
@@ -211,10 +211,12 @@ Ambari Zobrazení umožňují vývojářům připojit prvky uživatelského rozh
 
 ## <a name="unsupported-operations"></a>Nepodporované operace
 
-Následující operace Ambari nejsou podporovány na HDInsight:
+Následující operace Ambari nejsou v HDInsightu podporovány:
 
-* __Přesunutí služby kolektoru metrik__. Při zobrazení informací o službě Sběratel metriky je jednou z akcí dostupných v nabídce Akce __služby kolektor přesunout metriky__. To není podporováno s HDInsight.
+* __Přesunutí služby kolektoru metrik__. Při zobrazení informací o službě Sběratel metriky je jednou z akcí dostupných v nabídce Akce __služby kolektor přesunout metriky__. Tato akce není podporována pomocí HDInsight.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak používat [rozhraní APACHE Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) s HDInsight.
+* [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) s HDInsight.
+* [Použití Apache Ambari k optimalizaci konfigurací clusterů HDInsight](./hdinsight-changing-configs-via-ambari.md)
+* [Škálování clusterů Azure HDInsight](./hdinsight-scaling-best-practices.md)

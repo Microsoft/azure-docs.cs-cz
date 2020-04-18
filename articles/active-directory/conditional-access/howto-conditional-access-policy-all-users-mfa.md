@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3e7b1a656c92e37a709b57dae463f6644003e42
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 60d0ad0a1c0a1b4d13ce4d386df22406a8ab8e51
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755187"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617620"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Podmíněný přístup: Vyžadovat vícefaktorové povolení pro všechny uživatele
 
@@ -41,7 +41,7 @@ Organizace mohou mít mnoho cloudových aplikací v provozu. Ne všechny tyto ap
 
 ## <a name="create-a-conditional-access-policy"></a>Vytvoření zásad podmíněného přístupu
 
-Následující kroky pomohou vytvořit zásadu podmíněného přístupu, která bude vyžadovat, aby tyto přiřazené role správy prováděly vícefaktorové ověřování.
+Následující kroky pomohou vytvořit zásady podmíněného přístupu, které budou vyžadovat, aby všichni uživatelé prováděli vícefaktorové ověřování.
 
 1. Přihlaste se k **portálu Azure** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Přejděte na azure **active directory** > **zabezpečení** > podmíněný**přístup**.

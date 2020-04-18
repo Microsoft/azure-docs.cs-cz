@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7360798f2f95184145a856babf501e3080cbaaf4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 87347cfea0e45d3498c48f07578523a20d5a13e2
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76274191"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641087"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure PowerShellu
 
@@ -112,7 +112,7 @@ New-AzImage `
  
 ## <a name="create-vms-from-the-image"></a>Vytvoření virtuálních počítačů z image
 
-Když teď máte image, můžete z ní vytvořit jeden nebo více nových virtuálních počítačů. Vytvoření virtuálního počítače z vlastní image je podobné vytvoření virtuálního počítače pomocí image pořízené na Marketplace. Při použití image pořízené na Marketplace je nutné zadat informace o image, poskytovateli image, nabídce, SKU a verzi. Pomocí zjednodušené sady parametrů pro rutinu [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) stačí zadat název vlastní bitové kopie, pokud je ve stejné skupině prostředků. 
+Když teď máte image, můžete z ní vytvořit jeden nebo více nových virtuálních počítačů. Vytvoření virtuálního počítače z vlastní image je podobné vytvoření virtuálního počítače pomocí image pořízené na Marketplace. Při použití image pořízené na Marketplace je nutné zadat informace o image, poskytovateli image, nabídce, SKU a verzi. Pomocí zjednodušené sady parametrů pro rutinu [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) stačí zadat název vlastní bitové kopie, pokud je ve stejné skupině prostředků. Pokud máte v plánu vytvořit virtuální hod v jiné skupině prostředků, zadejte ID prostředku image pro parametr -ImageName.
 
 Tento příklad vytvoří virtuální ho disponuje s názvem *myVMfromImage* z image *myImage* v *myResourceGroup*.
 

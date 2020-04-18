@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/28/2020
-ms.openlocfilehash: 39d1f15b771168b618bfbc4951f2036a8b95b027
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8420cba043e7fc9285b473b877f0ff10212e9fda
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418452"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605329"
 ---
 # <a name="what-are-mapping-data-flows"></a>Co jsou toky dat mapování?
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Mapování toků dat jsou vizuálně navržené transformace dat v Azure Data Factory. Toky dat umožňují technikům dat vyvíjet logiku grafické transformace dat bez psaní kódu. Výsledné toky dat se spouštějí jako aktivity v rámci kanálů Azure Data Factory, které používají clustery Apache Spark s horizontálním navýšením kapacity. Aktivity toku dat lze zapojit prostřednictvím stávajících možností plánování, řízení, toku a monitorování datového toku.
 

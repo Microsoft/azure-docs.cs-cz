@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c98cd5d3d4d76f9455e4c036aa32a4ead20cfff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671711"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640978"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET základní webové aplikace Azure Pro Linux s profilerem Application Insights
 
@@ -168,10 +168,6 @@ Výstup by měl být podobný následujícímu příkladu:
 
     ![Zobrazení trasování profileru](./media/profiler-aspnetcore-linux/view-traces.png)
 
-## <a name="known-issues"></a>Známé problémy
-
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Tlačítko Profil nyní nefunguje pro Linux Profiler
-Linuxová verze profileru App Insights ještě nepodporuje profilování na vyžádání pomocí tlačítka profil nyní.
 
 
 ## <a name="next-steps"></a>Další kroky

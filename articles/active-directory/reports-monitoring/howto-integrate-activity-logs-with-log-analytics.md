@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d0ef55f6f5117ffa77052118155afea716125a4
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266439"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639731"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrace protokolů Azure AD s protokoly Azure Monitor
 
@@ -60,9 +60,13 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 * Uživatele, který je *globálním správcem* nebo *správcem zabezpečení* pro tohoto tenanta Azure AD.
 * Pracovní prostor Analýzy protokolů ve vašem předplatném Azure. Přečtěte si, jak [vytvořit pracovní prostor Analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 
+## <a name="licensing-requirements"></a>Licenční požadavky
+
+Použití této funkce vyžaduje licenci Azure AD Premium P1 nebo P2. Pokud chcete najít správnou licenci pro vaše požadavky, přečtěte si [porovnání obecně dostupných funkcí edic Free, Basic a Premium](https://azure.microsoft.com/pricing/details/active-directory/).
+
 ## <a name="send-logs-to-azure-monitor"></a>Odesílání protokolů do Služby Azure Monitor
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 2. Vyberte -> Nastavení **diagnostiky služby Azure Active Directory** > **Diagnostic settings**Přidat**diagnostické nastavení**. Můžete také vybrat **nastavení exportu** na stránce **Protokoly auditu** nebo **Přihlášení** a dostat se na stránku konfigurace nastavení diagnostiky.  
     

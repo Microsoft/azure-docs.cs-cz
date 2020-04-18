@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284119"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605898"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Volání funkcí Azure z Azure Logic Apps
 
@@ -101,7 +101,9 @@ Teď, když jste vytvořili funkci Azure, postupujte podle pokynů, jak [přidat
 
 ## <a name="create-functions-inside-logic-apps"></a>Vytváření funkcí uvnitř aplikací logiky
 
-Než můžete vytvořit funkci Azure od uvnitř aplikace logiky pomocí návrháře aplikace logiky, musíte nejprve mít aplikaci funkce Azure, což je kontejner pro vaše funkce. Pokud nemáte aplikaci funkcí, vytvořte tuto aplikaci funkce jako první. Viz [Vytvoření první funkce na webu Azure Portal](../azure-functions/functions-create-first-azure-function.md).
+Funkce Azure můžete vytvářet přímo z pracovního postupu aplikace logiky pomocí integrované akce Funkce Azure v Návrháři aplikací logiky, ale tuto metodu můžete použít jenom pro funkce Azure napsané v JavaScriptu. Pro ostatní jazyky můžete vytvářet funkce Azure prostřednictvím prostředí Azure Functions na webu Azure Portal. Další informace najdete [v tématu Vytvoření první funkce na webu Azure Portal](../azure-functions/functions-create-first-azure-function.md).
+
+Ale než můžete vytvořit libovolnou funkci Azure, musíte už mít aplikaci funkce Azure, což je kontejner pro vaše funkce. Pokud nemáte aplikaci funkcí, vytvořte tuto aplikaci funkce jako první. Viz [Vytvoření první funkce na webu Azure Portal](../azure-functions/functions-create-first-azure-function.md).
 
 1. Na [webu Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v Návrháři aplikací logiky.
 
@@ -125,7 +127,7 @@ Než můžete vytvořit funkci Azure od uvnitř aplikace logiky pomocí návrhá
 
    1. V poli **Kód** přidejte kód do šablony funkce, včetně odpovědi a datové části, které chcete vrátit do aplikace logiky po dokončení spuštění funkce. Až to budete mít, vyberte **Vytvořit**.
 
-   Například:
+   Příklad:
 
    ![Definujte svou funkci](./media/logic-apps-azure-functions/add-code-function-definition.png)
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 04/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d9544b1f4dd5ecbf66493f26c373c5502dce68a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 466b063253ee49ab58c2685f359b4bb8a4079532
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81451073"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639674"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Povolení kombinované registrace informací o zabezpečení ve službě Azure Active Directory
 
@@ -47,34 +47,34 @@ Pokud jste v aplikaci Internet Explorer nakonfigurovali seznam přiřazení webu
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>Zásady podmíněného přístupu pro kombinovanou registraci
 
-Zabezpečení, kdy a jak se uživatelé registrují pro azure vícefaktorové ověřování a samoobslužné resetování hesla je teď možné s akcemi uživatelů v zásadách podmíněného přístupu. Tato funkce je k dispozici organizacím, které povolily [kombinovanou funkci registrace](../authentication/concept-registration-mfa-sspr-combined.md). Tato funkce může být povolena v organizacích, kde chtějí, aby se uživatelé registrovali pro Azure Multi-Factor Authentication a SSPR z centrálního umístění, jako je důvěryhodné umístění v síti během registrace hr. Další informace o vytváření důvěryhodných umístění v podmíněném přístupu najdete v článku [Jaká je podmínka umístění v podmíněném přístupu služby Azure Active Directory?](../conditional-access/location-condition.md#named-locations)
+Zabezpečení, kdy a jak se uživatelé registrují pro azure vícefaktorové ověřování a samoobslužné resetování hesla je teď možné s akcemi uživatelů v zásadách podmíněného přístupu. Tato funkce je k dispozici organizacím, které povolily [kombinovanou funkci registrace](../authentication/concept-registration-mfa-sspr-combined.md). Tato funkce může být povolena v organizacích, kde chtějí, aby se uživatelé registrovali pro Azure Multi-Factor Authentication a SSPR z centrálního umístění, jako je důvěryhodné umístění v síti během registrace hr.
+
+Další informace o vytváření důvěryhodných umístění v podmíněném přístupu najdete v článku [Jaká je podmínka umístění v podmíněném přístupu služby Azure Active Directory?](../conditional-access/location-condition.md#named-locations)
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Vytvoření zásady, která vyžaduje registraci z důvěryhodného umístění
 
-Následující zásady platí pro všechny vybrané uživatele, kteří se pokoušejí zaregistrovat pomocí kombinovaného registračního prostředí, a zablokují přístup, pokud se nepřipojují z umístění označeného jako důvěryhodná síť.
-
-![Vytvoření zásady certifikační autority pro řízení registrace bezpečnostních údajů](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
+Následující zásady platí pro všechny vybrané uživatele, kteří se pokoušejí zaregistrovat pomocí kombinovaného registračního prostředí, a blokuje přístup, pokud se nepřipojují z umístění označeného jako důvěryhodná síť.
 
 1. Na **webu Azure Portal**přejděte na Azure **Active Directory** > **Security** > **Conditional Access** .
-1. Vyberte **Nová zásada**.
-1. V pojmenujete název této zásady. Například **kombinovaná registrace bezpečnostních informací v důvěryhodných sítích**
-1. V části **Přiřazení**klikněte na **Uživatelé a skupiny**a vyberte uživatele a skupiny, na které se má tato zásada vztahovat.
+1. Vybrat **+ Nové zásady**
+1. Zadejte název této zásady, *například Kombinovanou registraci informací o zabezpečení v důvěryhodných sítích*.
+1. V části **Přiřazení** vyberte **Uživatelé a skupiny**. Vyberte uživatele a skupiny, na které se má tato zásada vztahovat, a vyberte **Hotovo**.
 
    > [!WARNING]
-   > Uživatelům musí být [povolena kombinovaná registrace](../authentication/howto-registration-mfa-sspr-combined.md).
+   > Uživatelé musí mít povolenou kombinovanou registraci.
 
-1. V části **Cloudové aplikace nebo akce**vyberte **Akce uživatele**, **zaškrtněte políčko Registrovat informace o zabezpečení (preview).**
-1. V **podmínkách** > **Umístění**
+1. V části **Cloudové aplikace nebo akce**vyberte **Akce uživatele**. Zkontrolujte **informace o zabezpečení registru**a vyberte možnost **Hotovo**.
+
+    ![Vytvoření zásad podmíněného přístupu pro řízení registrace bezpečnostních údajů](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
+
+1. V **části Umístění podmínek** > **Locations**nakonfigurujte následující možnosti:
    1. Konfigurovat **ano**
    1. Zahrnout **libovolné místo**
    1. Vyloučit **všechna důvěryhodná umístění**
-   1. Klikněte na **tlačítko Hotovo** v okně Umístění
-   1. Klikněte na **tlačítko Hotovo** na okně Podmínky
-1. V části **Udělení ovládacích prvků** > **přístupu**
-   1. Klikněte na **Blokovat přístup.**
-   1. Pak klikněte na **Vybrat**
+1. V okně *Umístění* vyberte **Hotovo** a pak v okně *Podmínky* vyberte **Hotovo.**
+1. V části **Access controls** > **Grant**zvolte **Block access**, pak **Vyberte**
 1. Nastavit **zásadu povolit** na **zapnuto**
-1. Pak klikněte na **Vytvořit**
+1. Chcete-li zásadu dokončit, vyberte **Vytvořit**
 
 ## <a name="next-steps"></a>Další kroky
 

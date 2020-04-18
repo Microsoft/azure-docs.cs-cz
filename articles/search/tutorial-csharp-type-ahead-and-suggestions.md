@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 03/12/2020
-ms.openlocfilehash: 4391b565b684b74258b9c71da88600d4628b5c6f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/15/2020
+ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259761"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641079"
 ---
 # <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>Kurz C#: Přidání automatického dokončování a návrhů – Azure Cognitive Search
 
-Přečtěte si, jak implementovat automatické dokončování (dotazy typu dopředné a navrhované dokumenty), když uživatel začne psát do vyhledávacího pole. V tomto kurzu se zobrazí automaticky dokončené dotazy a návrhy výsledky samostatně, pak ukázat způsob jejich kombinování vytvořit bohatší uživatelské prostředí. Uživatel může mít pouze zadat dva nebo tři znaky najít všechny výsledky, které jsou k dispozici.
+Přečtěte si, jak implementovat automatické dokončování (dotazy typu dopředné a navrhované dokumenty), když uživatel začne psát do vyhledávacího pole. V tomto kurzu se zobrazí automaticky dokončené dotazy a návrhy výsledky samostatně a pak společně. Uživatel může mít pouze zadat dva nebo tři znaky najít všechny výsledky, které jsou k dispozici.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -36,15 +36,13 @@ Případně si můžete stáhnout a spustit řešení pro tento konkrétní kurz
 
 Začněme s nejjednodušším případem, kdy nabízíte alternativy uživateli: rozevírací seznam návrhů.
 
-1. V souboru index.cshtml změňte příkaz **TextBoxFor** na následující.
+1. V souboru index.cshtml `@id` změna **příkazu TextBoxFor** na **azureautosuggest**.
 
     ```cs
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-    Klíčem je, že jsme nastavili ID vyhledávacího pole na **azureautosuggest**.
-
-2. Po tomto příkazu zadejte po uzávěrce ** &lt;/div&gt;** tento skript.
+2. Po tomto příkazu zadejte po uzávěrce ** &lt;/div&gt;** tento skript. Tento skript využívá [widget automatického dokončování](https://api.jqueryui.com/autocomplete/) z open-source knihovny jQuery UI k prezentaci rozevíracího seznamu navrhovaných výsledků. 
 
     ```javascript
     <script>
@@ -59,13 +57,11 @@ Začněme s nejjednodušším případem, kdy nabízíte alternativy uživateli:
     </script>
     ```
 
-    Tento skript jsme připojili k vyhledávacímu poli pomocí stejného ID. K aktivaci hledání je také zapotřebí minimálně dva znaky a v domovském řadiči nazýváme akce **Navrhnout** se dvěma parametry dotazu: zvýraznění a **přibližné**znaky , které jsou v této instanci **nastaveny** na hodnotu false.
+    ID "azureautosuggest" spojuje výše uvedený skript do vyhledávacího pole. Zdrojová možnost widgetu je nastavena na metodu Suggest, která volá rozhraní Suggest API se dvěma parametry dotazu: **zvýraznění** a **přibližné**, obě nastavené na hodnotu false v této instanci. K aktivaci hledání jsou také zapotřebí minimálně dva znaky.
 
-### <a name="add-references-to-jquery-scripts-to-the-view"></a>Přidání odkazů na skripty jquery do zobrazení
+### <a name="add-references-to-jquery-scripts-to-the-view"></a>Přidání odkazů na skripty jQuery do zobrazení
 
-Funkce automatického dokončování s názvem ve výše uvedeném skriptu není něco, co musíme napsat sami, protože je k dispozici v knihovně jquery. 
-
-1. Chcete-li získat přístup ke &lt;&gt; knihovně jquery, změňte hlavní část souboru zobrazení na následující kód.
+1. Chcete-li získat přístup ke &lt;&gt; knihovně jQuery, změňte hlavní část souboru zobrazení na následující kód:
 
     ```cs
     <head>
@@ -80,7 +76,7 @@ Funkce automatického dokončování s názvem ve výše uvedeném skriptu není
     </head>
     ```
 
-2. Musíme také odstranit, nebo komentář ven, řádek odkazující jquery v souboru _Layout.cshtml (ve složce **Zobrazení / Sdílené).** Vyhledejte následující řádky a zakomentujte první řádek skriptu, jak je znázorněno na obrázku. Tato změna zabraňuje kolizování odkazy na jquery.
+2. Protože zavádíme nový odkaz jQuery, musíme také odstranit nebo zakomentovat výchozí odkaz jQuery v souboru _Layout.cshtml (ve složce **Zobrazení / Sdílené).** Vyhledejte následující řádky a zakomentujte první řádek skriptu, jak je znázorněno na obrázku. Tato změna zabraňuje kolidování odkazy na jQuery.
 
     ```html
     <environment include="Development">
@@ -90,7 +86,7 @@ Funkce automatického dokončování s názvem ve výše uvedeném skriptu není
     </environment>
     ```
 
-    Nyní můžeme použít předdefinované funkce automatického dokončování jquery.
+    Nyní můžeme použít předdefinované funkce automatického dokončování jQuery.
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>Přidání akce Navrhnout do ovladače
 
@@ -114,7 +110,8 @@ Funkce automatického dokončování s názvem ve výše uvedeném skriptu není
                 parameters.HighlightPostTag = "</b>";
             }
 
-            // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
+            // Only one suggester can be specified per index. It is defined in the index schema.
+            // The name of the suggester is set when the suggester is specified by other API calls.
             // The suggester for the hotel database is called "sg", and simply searches the hotel name.
             DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", parameters);
 
@@ -128,7 +125,7 @@ Funkce automatického dokončování s názvem ve výše uvedeném skriptu není
 
     Parametr **Top** určuje, kolik výsledků má být vráceno (pokud není zadáno, výchozí hodnota je 5). _Návrhovač_ je určen v indexu Azure, který se provádí při nastavení dat, a nikoli klientskou aplikací, jako je tento kurz. V tomto případě se návrhový člen nazývá "sg" a prohledá pole **Název_** 
 
-    Přibližné párování umožňuje "téměř mine", které mají být zahrnuty do výstupu. Pokud je parametr **highlights** nastaven na hodnotu true, budou do výstupu přidány tučné značky HTML. Tyto dva parametry nastavíme na hodnotu true v další části.
+    Přibližné shody umožňuje "téměř mine", které mají být zahrnuty do výstupu, až do jedné vzdálenosti úprav. Pokud je parametr **highlights** nastaven na hodnotu true, budou do výstupu přidány tučné značky HTML. Tyto dva parametry nastavíme na hodnotu true v další části.
 
 2. Můžete získat některé syntaktické chyby. Pokud ano, přidejte následující dva **příkazy using** do horní části souboru.
 
@@ -151,7 +148,7 @@ Funkce automatického dokončování s názvem ve výše uvedeném skriptu není
 
 ## <a name="add-highlighting-to-the-suggestions"></a>Přidání zvýraznění k návrhům
 
-Můžeme zlepšit vzhled návrhů pro uživatele trochu, nastavením **zdůrazňuje** parametr true. Nejprve však musíme přidat nějaký kód do zobrazení pro zobrazení tučného textu.
+Můžeme zlepšit vzhled návrhů pro uživatele nastavením parametru **highlights** na true. Nejprve však musíme přidat nějaký kód do zobrazení pro zobrazení tučného textu.
 
 1. V zobrazení (index.cshtml) přidejte následující skript za **skript azureautosuggest,** který jste zadali výše.
 
@@ -194,11 +191,11 @@ Můžeme zlepšit vzhled návrhů pro uživatele trochu, nastavením **zdůrazň
 
 4. Logika použitá ve výše uvedeném skriptu pro zvýraznění není spolehlivá. Pokud zadáte termín, který se zobrazí dvakrát ve stejném názvu, tučně výsledky nejsou úplně to, co byste chtěli. Zkuste zadat "mo".
 
-    Jednou z otázek, vývojář musí odpovědět, je, když je skript pracuje "dost dobře", a kdy by měl y jeho vtípky být řešeny. Nebudeme brát zvýraznění žádné další v tomto tutoriálu, ale najít přesný algoritmus je něco, co je třeba zvážit, pokud s dalším zvýrazněním.
+    Jednou z otázek, vývojář musí odpovědět, je, když je skript pracuje "dost dobře", a kdy by měl y jeho vtípky být řešeny. Nebudeme brát zvýraznění žádné další v tomto tutoriálu, ale najít přesný algoritmus je něco, co je třeba zvážit, pokud zvýraznění není efektivní pro vaše data. Další informace naleznete v tématu [Zvýraznění zásahu](search-pagination-page-layout.md#hit-highlighting).
 
-## <a name="add-autocompletion"></a>Přidat automatické dokončování
+## <a name="add-autocomplete"></a>Přidání automatického dokončování
 
-Další variantou, která se mírně liší od návrhů, je automatické dokončování (někdy nazývané "typ dopředu"). Opět začneme s nejjednodušší implementací, než se přesuneme na zlepšení uživatelského prostředí.
+Další variantou, která se mírně liší od návrhů, je automatické dokončování (někdy nazývané "typ dopředu"), který dokončí termín dotazu. Opět začneme s nejjednodušší implementací, než zlepšíme uživatelské prostředí.
 
 1. Podle předchozích skriptů zadejte do zobrazení následující skript.
 
@@ -246,7 +243,7 @@ Další variantou, která se mírně liší od návrhů, je automatické dokonč
 
     Všimněte si, že používáme stejnou funkci *návrhu,* nazvanou "sg", při hledání automatického dokončování, jak jsme to udělali pro návrhy (takže se snažíme pouze automaticky dokončovat názvy hotelů).
 
-    Existuje řada nastavení **režimu automatického dokončování** a používáme **OneTermWithContext**. Popis rozsahu možností najdete tady v části [Automatické dokončování Azure.](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
+    Existuje řada nastavení **režimu automatického dokončování** a používáme **OneTermWithContext**. Popis dalších možností naleznete v [rozhraní API pro automatické dokončování.](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
 
 4. Spusťte aplikaci. Všimněte si, jak rozsah možností zobrazených v rozevíracím seznamu jsou jednotlivá slova. Zkuste psát slova začínající na "re". Všimněte si, jak se počet možností snižuje, jak jsou zadána další písmena.
 
@@ -256,7 +253,7 @@ Další variantou, která se mírně liší od návrhů, je automatické dokonč
 
 ## <a name="combine-autocompletion-and-suggestions"></a>Zkombinujte automatické dokončování a návrhy
 
-Kombinace automatického dokončování a návrhů je nejsložitější z našich možností a pravděpodobně poskytuje nejlepší uživatelský zážitek. Co chceme, je zobrazit, v souladu s textem, který je zadáván, první volbou Azure Cognitive Search pro automatické dokončení textu. Také chceme řadu návrhů jako rozevírací seznam.
+Kombinace automatického dokončování a návrhů je nejsložitější z našich možností a pravděpodobně poskytuje nejlepší uživatelský zážitek. Co chceme, je zobrazit, v souladu s textem, který je zadáván, je první volbou Azure Cognitive Search pro automatické dokončení textu. Také chceme řadu návrhů jako rozevírací seznam.
 
 Existují knihovny, které nabízejí tuto funkci - často volal "inline automatické dokončování" nebo podobný název. Tuto funkci však nativně implementujeme, abyste viděli, co se děje. Chystáme se začít pracovat na řadiči nejprve v tomto příkladu.
 

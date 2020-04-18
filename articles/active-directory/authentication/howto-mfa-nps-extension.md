@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c8606f0b7ab47d624ec66c8cda539e571cec6ce
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393055"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617661"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS se službou Multi-Factor Authentication
 
@@ -142,6 +142,14 @@ Pomocí následujících kroků můžete spustit testovací účet:
 1. Přihlaste [https://aka.ms/mfasetup](https://aka.ms/mfasetup) se k testovacímu účtu.
 2. Podle pokynů nastavte metodu ověření.
 3. [Vytvořte zásadu podmíněného přístupu,](howto-mfa-getstarted.md#create-conditional-access-policy) která bude vyžadovat vícefaktorové ověřování pro testovací účet.
+
+> [!IMPORTANT]
+>
+> Ujistěte se, že uživatelé úspěšně zaregistrovali pro Azure Multi-Factor Authentication. Pokud uživatelé dříve zaregistrovali pouze pro samoobslužné resetování hesla (SSPR), *StrongAuthenticationMethods* je povolena pro jejich účet. Azure Multi-Factor Authentication je vynuceno při *strongAuthenticationMethods* je nakonfigurován, i v případě, že uživatel registrovány pouze pro samodotykové ho disponu.
+>
+> Kombinovaná registrace zabezpečení může být povolena, která konfiguruje samoobslužné ověřování a Azure Vícefaktorové ověřování současně. Další informace naleznete v [tématu Enable combined security information registration in Azure Active Directory](howto-registration-mfa-sspr-combined.md).
+>
+> Můžete také [vynutit uživatelům znovu zaregistrovat metody ověřování,](howto-mfa-userdevicesettings.md#manage-user-authentication-options) pokud dříve povolili pouze samodotykové nařízení .
 
 ## <a name="install-the-nps-extension"></a>Instalace rozšíření NPS
 

@@ -13,16 +13,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 39f758b779e7c4935feab2424be16b829db8e46b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 50ff0afe13b5b098fbc8d9fbeefba295a6217192
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399516"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606074"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Plánované spouštění a zastavování prostředí Azure-SSIS Integration Runtime
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak naplánovat spuštění a zastavení Azure-SSIS Integrace Runtime (IR) pomocí Azure Data Factory (ADF). Azure-SSIS IR je výpočetní prostředek ADF určený pro provádění balíčků služby SQL Server Integration Services (SSIS). Spuštění azure-SSIS IR má náklady s ním spojené. Proto obvykle chcete spustit infračervený přenos pouze v případě, že potřebujete spustit balíčky SSIS v Azure a zastavit infračervený přenos, když už ho nepotřebujete. Pomocí uživatelského rozhraní (UI) (ADF) /app nebo Azure PowerShell [můžete ručně spustit nebo zastavit infračervený přenos).](manage-azure-ssis-integration-runtime.md)
 

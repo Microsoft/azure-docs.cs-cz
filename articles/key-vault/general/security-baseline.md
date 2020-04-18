@@ -1,20 +1,20 @@
 ---
-title: Směrný plán zabezpečení Azure pro trezor klíčů
-description: Směrný plán zabezpečení Azure pro trezor klíčů
+title: Standardní hodnoty zabezpečení Azure pro službu Key Vault
+description: Standardní hodnoty zabezpečení Azure pro službu Key Vault
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cb908c4b105324e0866d53463ecd3a8a59e7e651
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 46fa0160dd8b37e89cdd77ba8acdae294fddbefe
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429886"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616897"
 ---
-# <a name="azure-security-baseline-for-key-vault"></a>Směrný plán zabezpečení Azure pro trezor klíčů
+# <a name="azure-security-baseline-for-key-vault"></a>Standardní hodnoty zabezpečení Azure pro službu Key Vault
 
 Směrný plán zabezpečení Azure pro trezor klíčů obsahuje doporučení, která vám pomohou zlepšit stav zabezpečení vašeho nasazení.
 
@@ -1001,7 +1001,7 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11: Bezpečná správa tajných kódů Azure
 
-**Pokyny:** Pomocí identity spravované služby ve spojení s Azure Key Vault zjednodušit a zabezpečit správu tajných služeb pro vaše cloudové aplikace. Ujistěte se, že je povoleno obnovitelné odstranění azure key vaultu.
+**Pokyny:** Pomocí identity spravované služby ve spojení s Azure Key Vault zjednodušit a zabezpečit správu tajných služeb pro vaše cloudové aplikace. Ujistěte se, že azure key vault obnovitelné odstranění je povolena.
 
 Jak integrovat s Azure Spravované identity:
 
@@ -1175,7 +1175,7 @@ Jak obnovit tajné klíče trezoru klíčů:https://docs.microsoft.com/powershel
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zajištění ochrany záloh a klíčů spravovaných zákazníkem
 
-**Pokyny:** Ujistěte se, že je pro azure key vault povoleno obnovitelné odstranění. Obnovitelné odstranění umožňuje obnovení odstraněných trezorů klíčů a objektů úschovny, jako jsou klíče, tajné klíče a certifikáty. 
+**Pokyny:** Ujistěte se, že je povoleno obnovitelné odstranění pro Azure Key Vault. Obnovitelné odstranění umožňuje obnovení odstraněných trezorů klíčů a objektů úschovny, jako jsou klíče, tajné klíče a certifikáty. 
 
 Jak používat azure key vault je obnovitelné odstranění: 
 

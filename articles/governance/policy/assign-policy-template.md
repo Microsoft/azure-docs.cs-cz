@@ -4,12 +4,12 @@ description: V tomto rychlém startu použijete šablonu Správce prostředků k
 ms.date: 03/16/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 9f9998c407c39d11615a5997549a363a276b9e10
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ae6b2d151baaa904215639276c7fb74766810c6a
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471400"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606599"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Úvodní příručka: Vytvoření přiřazení zásad k identifikaci nekompatibilních prostředků pomocí šablony Správce prostředků
 
@@ -41,13 +41,13 @@ Zdroj definovaný v šabloně je:
 > [!NOTE]
 > Služba Azure Policy je zdarma. Další informace najdete [v tématu Přehled zásad Azure](./overview.md).
 
-1. Vyberte následující obrázek, který chcete přihlásit na portál Azure a otevřít šablonu:
+1. Vyberte následující obrázek, přihlaste se k webu Azure Portal a otevřete šablonu:
 
-   [![Nasazení šablony zásad do Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![Nasazení šablony zásad do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. Vyberte nebo zadejte následující hodnoty:
 
-   | Name (Název) | Hodnota |
+   | Název | Hodnota |
    |------|-------|
    | Předplatné | Vyberte své předplatné Azure. |
    | Skupina prostředků | Vyberte **Vytvořit nový**, zadejte název a pak vyberte **OK**. Na snímku obrazovky je název skupiny prostředků _\<myPolicyquickstart\>Date v MMDD rg_. |

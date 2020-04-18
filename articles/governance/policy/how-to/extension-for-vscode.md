@@ -3,12 +3,12 @@ title: Rozšíření zásad Azure pro kód Visual Studia
 description: Přečtěte si, jak pomocí rozšíření zásad Azure pro kód Visual Studia vyhledat aliasy Správce prostředků.
 ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e31af652f2746adbf0eda386bdb178c752f5f84
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264671"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641022"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Použití rozšíření zásad Azure pro kód Visual Studia
 
@@ -121,7 +121,7 @@ Zákazníci se stovkami nebo tisíci prostředků v jednom předplatném mohou u
 
 ## <a name="discover-aliases-for-resource-properties"></a>Zjišťování aliasů pro vlastnosti prostředků
 
-Když je vybraný prostředek, ať už prostřednictvím vyhledávacího rozhraní nebo jeho výběrem v zobrazení stromu, rozšíření Zásad Azure otevře soubor JSON představující tento prostředek a všechny jeho hodnoty vlastností Resource Manager.
+Když je vybrán prostředek, ať už prostřednictvím vyhledávacího rozhraní nebo jeho výběrem v zobrazení stromu, rozšíření Zásad azure otevře soubor JSON představující tento prostředek a všechny jeho hodnoty vlastností Správce prostředků.
 
 Po otevření prostředku se na jenom nad názvem nebo hodnotou správce prostředků zobrazí alias Zásad azure, pokud existuje. V tomto příkladu je `Microsoft.Compute/virtualMachines` prostředek typ prostředku a vlastnost **properties.storageProfile.imageReference.offer** je nad. Najetím je zobrazeny odpovídající aliasy.
 
