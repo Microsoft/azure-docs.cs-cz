@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969318"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641716"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Možnosti překladu názvů DNS pro virtuální počítače s Linuxem v Azure
 Azure poskytuje překlad názvů DNS ve výchozím nastavení pro všechny virtuální počítače, které jsou v jedné virtuální síti. Vlastní řešení překladu názvů DNS můžete implementovat konfigurací vlastních služeb DNS na virtuálních počítačích, které Azure hostuje. Následující scénáře by vám měly pomoci vybrat ten, který funguje pro vaši situaci.
@@ -97,7 +97,7 @@ Chcete-li zkontrolovat aktuální nastavení na virtuálním počítači Linux, 
 Soubor resolv.conf je automaticky generován a neměl by být upravován. Konkrétní kroky, které přidávají řádek "možnosti", se liší podle rozdělení:
 
 **Ubuntu** (používá resolvconf)
-1. Přidejte řádek možností do '/etc/resolveconf/resolv.conf.d/head'.
+1. Přidejte řádek možností do '/etc/resolvconf/resolv.conf.d/head'.
 2. Spusťte 'resolvconf -u' aktualizovat.
 
 **SUSE** (používá netconf)

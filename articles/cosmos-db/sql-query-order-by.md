@@ -4,18 +4,18 @@ description: Další informace o klauzuli SQL ORDER BY pro Azure Cosmos DB. Pou�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/17/2020
 ms.author: tisande
-ms.openlocfilehash: b88184be39a41ec42f8fb304a7511073f645f1cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77188736"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641396"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Klauzule ORDER BY v Azure Cosmos DB
 
-Volitelná klauzule ORDER BY určuje pořadí řazení výsledků vrácených dotazem.
+Volitelná `ORDER BY` klauzule určuje pořadí řazení výsledků vrácených dotazem.
 
 ## <a name="syntax"></a>Syntaxe
   
@@ -31,9 +31,9 @@ ORDER BY <sort_specification>
   
    Určuje vlastnost nebo výraz, na kterém se má seřadit sadu výsledků dotazu. Sloupec řazení lze zadat jako název nebo alias vlastnosti.  
   
-   Lze zadat více vlastností. Názvy vlastností musí být jedinečné. Posloupnost vlastností řazení v klauzuli ORDER BY definuje organizaci seřazené sady výsledků. To znamená, že sada výsledků je seřazena podle první vlastnosti a pak je seřazený seznam podle druhé vlastnosti a tak dále.  
+   Lze zadat více vlastností. Názvy vlastností musí být jedinečné. Posloupnost vlastností řazení `ORDER BY` v klauzuli definuje organizaci seřazené sady výsledků. To znamená, že sada výsledků je seřazena podle první vlastnosti a pak je seřazený seznam podle druhé vlastnosti a tak dále.  
   
-   Názvy vlastností odkazované v klauzuli ORDER BY musí odpovídat vlastnosti ve výběrovém seznamu nebo vlastnosti definované v kolekci zadané v klauzuli FROM bez jakýchkoli nejasností.  
+   Názvy vlastností odkazované v `ORDER BY` klauzuli musí odpovídat vlastnosti v seznamu select nebo `FROM` vlastnosti definované v kolekci zadané v klauzuli bez jakýchkoli nejasností.  
   
 - `<sort_expression>`  
   
@@ -45,7 +45,7 @@ ORDER BY <sort_specification>
   
 - `ASC | DESC`  
   
-   Určuje, že hodnoty v zadaném sloupci by měly být seřazeny vzestupně nebo sestupně. ASC seřadí od nejnižší hodnoty k nejvyšší hodnotě. DESC seřadí od nejvyšší hodnoty na nejnižší hodnotu. ASC je výchozí pořadí řazení. Hodnoty Null jsou považovány za nejnižší možné hodnoty.  
+   Určuje, že hodnoty v zadaném sloupci by měly být seřazeny vzestupně nebo sestupně. `ASC`seřadí od nejnižší hodnoty k nejvyšší hodnotě. `DESC`seřadí od nejvyšší hodnoty po nejnižší hodnotu. `ASC`je výchozí pořadí řazení. Hodnoty Null jsou považovány za nejnižší možné hodnoty.  
   
 ## <a name="remarks"></a>Poznámky  
   
@@ -152,7 +152,7 @@ Výsledky zahrnují pouze dokument, který `lastName`má definovaný :
     ]
 ```
 
-Pokud aktualizujeme zásady indexování kontejneru tak, `lastName`aby explicitně zahrnovaly cestu pro , zahrneme do výsledků dotazu dokumenty s nedefinovanou vlastností řazení. Je nutné explicitně definovat cestu vést k této skalární hodnotu (a ne za ní). Znak v `?` definici cesty v zásadách indexování byste měli použít `lastName` k zajištění explicitního indexování vlastnosti a žádné další vnořené cesty za ní.
+Pokud aktualizujeme zásady indexování kontejneru tak, `lastName`aby explicitně zahrnovaly cestu pro , zahrneme do výsledků dotazu dokumenty s nedefinovanou vlastností řazení. Je nutné explicitně definovat cestu vést k této skalární hodnotu (a ne za ní). Znak v `?` definici cesty v zásadách indexování byste měli použít `lastName` k zajištění explicitního indexování vlastnosti a žádné další vnořené cesty za ní. Pokud `Order By` dotaz používá [složený index](index-policy.md#composite-indexes), výsledky budou vždy obsahovat dokumenty s nedefinovanou vlastností řazení ve výsledcích dotazu.
 
 Zde je ukázka indexování zásady, která umožňuje `lastName` mít dokumenty s nedefinované zobrazí ve výsledcích dotazu:
 

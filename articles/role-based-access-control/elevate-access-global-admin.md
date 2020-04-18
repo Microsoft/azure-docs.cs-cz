@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/03/2019
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18490ec7c3cfde33cef186b753e2adc809f854c6
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137464"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641357"
 ---
-# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Zvýšení přístupu ke správě všech předplatných a skupin pro správu Azure
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Zvýšení úrovně přístupu pro správu všech předplatných Azure a skupin pro správu
 
 Jako globální správce ve službě Azure Active Directory (Azure AD) nemusíte mít ve svém adresáři přístup ke všem předplatným a skupinám pro správu. Tento článek popisuje způsoby, jak můžete zvýšit přístup ke všem předplatným a skupinám pro správu.
 
@@ -30,7 +30,7 @@ Jako globální správce ve službě Azure Active Directory (Azure AD) nemusíte
 
 ## <a name="why-would-you-need-to-elevate-your-access"></a>Proč bys měl zvýšit přístup?
 
-Pokud jste globální správce, může nastat následující akce:
+Pokud jste globální správce, může nastat doba, kdy budete chtít provést následující akce:
 
 - Opětovné získání přístupu k předplatnému nebo skupině pro správu Azure, když uživatel ztratí přístup
 - udělit sobě nebo jinému uživateli přístup k předplatnému Azure nebo skupině pro správu,
@@ -55,9 +55,7 @@ Podle těchto kroků zvýšit přístup pro globálního správce pomocí portá
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com) nebo [centru pro správu Azure Active Directory](https://aad.portal.azure.com) jako globální správce.
 
-1. Vyhledejte a vyberte **Azure Active Directory**.
-
-   ![Vyberte Službu Azure Active Directory – snímek obrazovky](./media/elevate-access-global-admin/search-for-azure-active-directory.png)
+1. Otevřete **službu Azure Active Directory**.
 
 1. V části **Manage**vyberte **Vlastnosti**.
 
@@ -98,7 +96,7 @@ Chcete-li odebrat přiřazení role Správce`/`přístupu uživatelů v kořenov
 
 1. Nastavte **správu přístupu pro prostředky Azure** přepnout zpět na **ne**. Vzhledem k tomu, že se jedná o nastavení pro jednotlivé uživatele, musíte být přihlášeni jako stejný uživatel, který byl použit ke zvýšení oprávnění.
 
-    Pokud se pokusíte odebrat přiřazení role Správce uživatelského přístupu v podokně řízení přístupu (IAM), zobrazí se následující zpráva. Chcete-li odebrat přiřazení role, musíte nastavit přepínač zpět na **Ne** nebo použít Azure PowerShell, Azure CLI nebo ROZHRANÍ API REST.
+    Pokud se pokusíte odebrat přiřazení role Správce uživatelského přístupu v podokně řízení přístupu (IAM), zobrazí se následující zpráva. Chcete-li odebrat přiřazení role, musíte nastavit přepínač zpět na **Ne** nebo použít Azure PowerShell, Azure CLI nebo rozhraní REST API.
 
     ![Odebrání přiřazení rolí s kořenovým oborem](./media/elevate-access-global-admin/iam-root-remove.png)
 
@@ -233,7 +231,7 @@ Můžete vypsat všechna přiřazení odepření pro`/`uživatele v kořenovém 
 
 ### <a name="remove-elevated-access"></a>Odebrání přístupu se zvýšenými oprávněními
 
-Při volání `elevateAccess`vytvoříte přiřazení role pro sebe, abyste mohli odvolat tato oprávnění, která potřebujete k odebrání`/`přiřazení role Správce přístupu uživatelů pro sebe v kořenovém oboru ( )
+Při volání `elevateAccess`vytvoříte přiřazení role pro sebe, abyste odvolali tato oprávnění, která potřebujete k odebrání`/`přiřazení role Správce přístupu uživatelů pro sebe v kořenovém oboru ( ).
 
 1. Volání [get roleDefinitions](/rest/api/authorization/roledefinitions/get) kde `roleName` se rovná správce přístupu uživatele k určení ID názvu role správce přístupu uživatele.
 

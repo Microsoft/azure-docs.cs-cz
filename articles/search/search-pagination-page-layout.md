@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 451e83fa6ab547536a4cfd85304930e749a8247f
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998394"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641620"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Cognitive Search
 
@@ -108,10 +108,22 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     }
 ```
 
-> [!IMPORTANT]
-> Služby vytvořené po 15.7.2020 budou poskytovat různé zvýraznění zkušenosti. Služby vytvořené před tímto datem se nezmění v jejich chování zvýraznění. S touto změnou budou vráceny pouze fráze, které odpovídají úplné frázi dotaz. Také bude možné určit velikost fragmentu vrácené pro zvýraznění.
->
-> Při psaní klientského kódu, který implementuje zvýraznění přístupů, uvědomte si tuto změnu. Všimněte si, že to nebude mít vliv na vás, pokud nevytvoříte zcela novou vyhledávací službu.
+### <a name="new-behavior-starting-july-15"></a>Nové chování (od 15. července)
+
+Služby vytvořené po 15.7.2020 budou poskytovat různé zvýraznění zkušenosti. Služby vytvořené před tímto datem se nezmění v jejich chování zvýraznění. 
+
+S novým chováním:
+
+* Budou vráceny pouze fráze, které odpovídají úplné frázi dotazu. Dotaz "Super Bowl" vrátí zdůrazňuje, jako je tento:
+
+    ```html
+    '<em>super bowl</em> is super awesome with a bowl of chips'
+    ```
+  Všimněte si, že termín *mísa žetonů* nemá žádné zvýraznění, protože neodpovídá úplné frázi.
+  
+* Bude možné určit velikost fragmentu vrácené pro zvýraznění. Velikost fragmentu je určena jako počet znaků (maximálně 1000 znaků).
+
+Při psaní klientského kódu, který implementuje zvýraznění přístupů, uvědomte si tuto změnu. Všimněte si, že to nebude mít vliv na vás, pokud nevytvoříte zcela novou vyhledávací službu.
 
 ## <a name="next-steps"></a>Další kroky
 

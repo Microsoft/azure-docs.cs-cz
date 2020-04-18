@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 44d6776a367a5cb1eeb86c955f083598d417aba6
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475241"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641668"
 ---
 # <a name="azure-media-services-concepts"></a>Koncepty Mediálních služeb Azure 
 
@@ -111,7 +111,7 @@ Informace o podporovaných kododrech naleznete v tématu [Kodéry](media-service
 ## <a name="live-streaming"></a>Živé streamování
 Ve službě Azure Media Services kanál představuje kanál pro zpracování živého streamování obsahu. Kanál přijímá živé vstupní proudy jedním ze dvou způsobů:
 
-* Místní živý kodér odesílá do kanálu vícebitové rtmp nebo plynulé streamování (fragmentované MP4). Můžete použít následující živé kodéry, které vypracovává plynulé streamování s více přenosovými rychlostmi: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco a Elemental. Následující živé kodéry výstup RTMP: Adobe Flash Live Encoder, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision a Tricaster kodéry. Ingestované datové proudy procházejí kanály bez dalšího překódování a kódování. Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* Místní živý kodér odesílá do kanálu vícebitové rtmp nebo plynulé streamování (fragmentované MP4). Můžete použít následující živé kodéry, které vypracovává plynulé streamování s více přenosovými rychlostmi: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco a Elemental. Následující živé kodéry výstup RTMP: Adobe Flash Live Encoder, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision kodéry. Ingestované datové proudy procházejí kanály bez dalšího překódování a kódování. Služba Media Services doručí datový proud zákazníkům na vyžádání.
 * Jeden datový proud datového toku (v jednom z následujících formátů: RTMP nebo plynulé streamování (fragmentované MP4)) je odeslán do kanálu, který je povolen pro živé kódování pomocí služby Media Services. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
 ### <a name="channel"></a>Channel
@@ -190,7 +190,7 @@ Postupné stahování umožňuje začít přehrávat média před stažením cel
 >[!NOTE]
 >Pokud chcete, aby byly šifrované datové zdroje k dispozici pro postupné stahování, je nutné je dešifrovat.
 
-Chcete-li uživatelům poskytnout adresy URL postupného stahování, musíte nejprve vytvořit lokátor OnDemandOrigin. Vytvořenílokátoru, vám dává základní cestu k majetku. Poté je třeba připojit název souboru MP4. Například:
+Chcete-li uživatelům poskytnout adresy URL postupného stahování, musíte nejprve vytvořit lokátor OnDemandOrigin. Vytvořenílokátoru, vám dává základní cestu k majetku. Poté je třeba připojit název souboru MP4. Příklad:
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 

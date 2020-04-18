@@ -4,16 +4,16 @@ description: Zjistěte, jak se připravit na vyhodnocení/migraci virtuálních 
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: e86e634812e9f2782a003a11b48cfecf91d95359
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535294"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641638"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na vyhodnocení a migraci virtuálních počítačů Hyper-V do Azure
 
-Tento článek popisuje, jak se připravit na vyhodnocení místních virtuálních počítačů Hyper-V pomocí Azure Migrate:Server Assessment (migrate-services-overview.md#azure-migrate-server-assessment-tool) a migraci virtuálních počítačů Hyper-V s [migrací Azure:Migrace serveru](migrate-services-overview.md#azure-migrate-server-migration-tool).
+Tento článek popisuje, jak se připravit na vyhodnocení místních virtuálních počítačů Hyper-V pomocí [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool)a migrace virtuálních počítačů Hyper-V s [migrací:serverem Azure](migrate-services-overview.md#azure-migrate-server-migration-tool).
 
 
 Tento kurz je první z řady, která ukazuje, jak posoudit a migrovat hypervirtuální počítače do Azure. V tomto kurzu se naučíte:
@@ -139,7 +139,7 @@ Spusťte skript takto:
 
 Hodnoty hash jsou:
 
-| **Hodnota hash** | **Hodnotu** |
+| **Hodnota hash** | **Hodnota** |
 | --- | --- |
 | **MD5** | 0ef418f31915d01f896ac42a80dc414e |
 | **ŠA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |

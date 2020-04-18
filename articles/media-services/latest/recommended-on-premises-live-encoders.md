@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: bbd2929e245fa5fc01245e7bd02e537db8d5ef36
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0676b6b183c64dcd0fb15b87de48a4afed3a0011
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536331"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641809"
 ---
 # <a name="tested-on-premises-live-streaming-encoders"></a>Testované místní kodéry živého streamování
 
@@ -57,7 +57,6 @@ Při streamování přes RTMPS zkontrolujte nastavení brány firewall nebo prox
 - Telestream Wirecast (verze 13.0.2 nebo vyšší z důvodu požadavku TLS 1.2)
 - Telestream Wirecast S (podporuje se pouze RTMP)
 - Teradek Slice 756
-- TriCaster 8000
 - VMIX
 - xStream
 - [Ffmpeg](https://www.ffmpeg.org)

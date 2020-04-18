@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: e4e4ac1b0a867130dd7b9e276db52e1ca1e72976
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 777ea7cc29679a3819e94d39913f167ea1cb3453
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062132"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641378"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Principy definic rolí pro prostředky Azure
 
 Pokud se snažíte pochopit, jak role funguje, nebo pokud vytváříte vlastní [roli pro prostředky Azure](custom-roles.md), je užitečné pochopit, jak jsou definovány role. Tento článek popisuje podrobnosti definice rolí a poskytuje některé příklady.
 
-## <a name="role-definition-structure"></a>Struktura definice role
+## <a name="role-definition"></a>Definice role
 
-*Definice role* je kolekce oprávnění. Někdy jí jednoduše říká *role*. Definice role poskytuje seznam operací, které je možné provádět, například čtení, zápis a odstranění. Může také obsahovat seznam operací, které není možné provádět, nebo operací souvisejících s podkladovými daty. Definice role má následující strukturu:
+*Definice role* je kolekce oprávnění. Někdy jí jednoduše říká *role*. Definice role poskytuje seznam operací, které je možné provádět, například čtení, zápis a odstranění. Může také obsahovat seznam operací, které není možné provádět, nebo operací souvisejících s podkladovými daty. Definice role má následující vlastnosti:
 
 ```
 Name
@@ -41,6 +41,20 @@ DataActions []
 NotDataActions []
 AssignableScopes []
 ```
+
+| Vlastnost | Popis |
+| --- | --- |
+| `Name` | Zobrazovaný název role. |
+| `Id` | Jedinečné ID role. |
+| `IsCustom` | Označuje, zda se jedná o vlastní roli. Nastaveno `true` na pro vlastní role. |
+| `Description` | Popis role. |
+| `Actions` | Pole řetězců, které určuje operace správy, které role umožňuje provádět. |
+| `NotActions` | Pole řetězců, které určuje operace správy, které jsou `Actions`vyloučeny z povolené . |
+| `DataActions` | Pole řetězců, které určuje datové operace, které role umožňuje provádět na data v rámci tohoto objektu. |
+| `NotDataActions` | Pole řetězců, které určuje datové operace, které jsou `DataActions`vyloučeny z povolené . |
+| `AssignableScopes` | Pole řetězců, které určuje obory, které je role k dispozici pro přiřazení. |
+
+### <a name="operations-format"></a>Provozní formát
 
 Operace jsou určeny pomocí řetězců, které mají následující formát:
 
@@ -55,6 +69,8 @@ Operace jsou určeny pomocí řetězců, které mají následující formát:
 | `write` | Umožňuje operace zápisu (PUT nebo PATCH). |
 | `action` | Umožňuje vlastní operace, jako je restartování virtuálních počítačů (POST). |
 | `delete` | Povolí operace odstranění (DELETE). |
+
+### <a name="role-definition-example"></a>Příklad definice role
 
 Tady je definice role [přispěvatele](built-in-roles.md#contributor) ve formátu JSON. Zástupný znak operace (`*`) ve sloupci `Actions` označuje, že objekt zabezpečení přiřazený k této roli může provádět všechny akce – neboli (jinými slovy) může spravovat vše. Zahrnuje to i akce definované v budoucnosti v souvislosti s tím, jak Azure přidává nové typy prostředků. Operace ve sloupci `NotActions` se odčítají od operací ve sloupci `Actions`. V případě role [Contributor](built-in-roles.md#contributor) (Přispěvatel) se prostřednictvím `NotActions` odebere schopnost role spravovat přístup k prostředkům a také přiřazovat přístup k prostředkům.
 
@@ -92,7 +108,7 @@ Přístup ke správě není zděděn do vašich dat za předpokladu, že metoda 
 
 Dříve nebylo pro operace s daty použito řízení přístupu založené na rolích. Autorizace pro datové operace se lišila mezi poskytovateli prostředků. Stejný model autorizace řízení přístupu založený na rolích, který se používá pro operace správy, byl rozšířen na datové operace.
 
-Pro podporu datových operací byly do struktury definice role přidány nové vlastnosti dat. Operace s daty se definují pomocí vlastností `DataActions` a `NotDataActions`. Přidáním těchto vlastností dat je zachováno oddělení mezi správou a daty. Zabrání se tak tomu, aby aktuální přiřazení role pomocí zástupných znaků (`*`) nepředvídaně umožnilo přístup k datům. Tady jsou některé datové operace, které je možné zadat pomocí vlastností `DataActions` a `NotDataActions`:
+Pro podporu datových operací byly do definice role přidány nové vlastnosti dat. Operace s daty se definují pomocí vlastností `DataActions` a `NotDataActions`. Přidáním těchto vlastností dat je zachováno oddělení mezi správou a daty. Zabrání se tak tomu, aby aktuální přiřazení role pomocí zástupných znaků (`*`) nepředvídaně umožnilo přístup k datům. Tady jsou některé datové operace, které je možné zadat pomocí vlastností `DataActions` a `NotDataActions`:
 
 - Čtení seznamu objektů blob v kontejneru
 - Zápis objektu blob úložiště v kontejneru
@@ -163,7 +179,7 @@ Chcete-li zobrazit a pracovat s datovými operacemi, musíte mít správné verz
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 nebo novější |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 nebo novější |
 | [Azure pro rozhraní .NET](/dotnet/azure/) | 2.8.0-náhled nebo novější |
-| [Azure SDK pro Go](/azure/go/azure-sdk-go-install) | 15.0.0 nebo novější |
+| [Azure SDK for Go](/azure/go/azure-sdk-go-install) | 15.0.0 nebo novější |
 | [Azure pro Javu](/java/azure/) | 1.9.0 nebo novější |
 | [Azure pro Python](/azure/python/) | 0.40.0 nebo novější |
 | [Azure SDK pro Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 nebo novější |
