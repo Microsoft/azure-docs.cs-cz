@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 0cfe651a91cc16e7d4b58af67dac29fe5106a48c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 1414d86577e5aa17cb42762403b3767948c1e30c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986679"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81642898"
 ---
 <a name="HOLTop"></a>
 
@@ -61,7 +61,7 @@ npm init
 Nainstalujte `@azure/ai-text-analytics` balíčky NPM:
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.3
+npm install --save @azure/ai-text-analytics@1.0.0-preview.4
 ```
 
 > [!TIP]
@@ -88,7 +88,7 @@ Vytvořte soubor `index.js` s názvem a přidejte následující:
 ```javascript
 "use strict";
 
-const { TextAnalyticsClient, TextAnalyticsApiKeyCredential } = require("@azure/ai-text-analytics");
+const { TextAnalyticsClient, AzureKeyCredential } = require("@azure/ai-text-analytics");
 ```
 
 #### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
@@ -121,7 +121,7 @@ Objekt odpovědi je seznam obsahující informace o analýze pro každý dokumen
 
 * [Ověřování klienta](#client-authentication)
 * [Analýza mínění](#sentiment-analysis) 
-* [Detekce jazyka](#language-detection)
+* [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner)
 * [Propojení entit](#entity-linking)
 * [Extrakce klíčových frází](#key-phrase-extraction)
@@ -133,7 +133,7 @@ Objekt odpovědi je seznam obsahující informace o analýze pro každý dokumen
 Vytvořte `TextAnalyticsClient` nový objekt s klíčem a koncovým bodem jako parametry.
 
 ```javascript
-const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new TextAnalyticsApiKeyCredential(key));
+const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCredential(key));
 ```
 
 #### <a name="version-21"></a>[Verze 2.1](#tab/version-2)
@@ -266,7 +266,6 @@ Document ID: 3 , Language: Chinese_Simplified
 
 > [!NOTE]
 > Ve `3.0-preview`verzi :
-> * Ner obsahuje samostatné metody pro zjišťování osobních údajů. 
 > * Propojení entit je samostatný požadavek než NER.
 
 Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Volání metody klienta `recognizeEntities()` a `RecognizeEntitiesResult` získat objekt. Iterate prostřednictvím seznamu výsledků a vytisknout název entity, typ, podtyp, posun, délka a skóre.
@@ -318,40 +317,6 @@ Document ID: 1
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
         Score: 0.31
-```
-
-## <a name="using-ner-to-detect-personal-information"></a>Použití funkce NER ke zjišťování osobních informací
-
-Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Volání metody klienta `recognizePiiEntities()` a `EntitiesBatchResult` získat objekt. Iterate prostřednictvím seznamu výsledků a vytisknout název entity, typ, podtyp, posun, délka a skóre.
-
-
-```javascript
-async function entityPiiRecognition(client){
-
-    const entityPiiInput = [
-        "Insurance policy for SSN on file 123-12-1234 is here by approved."
-    ];
-    const entityPiiResults = await client.recognizePiiEntities(entityPiiInput);
-
-    entityPiiResults.forEach(document => {
-        console.log(`Document ID: ${document.id}`);
-        document.entities.forEach(entity => {
-            console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tScore: ${entity.score}`);
-        });
-    });
-}
-entityPiiRecognition(textAnalyticsClient);
-```
-
-Spusťte `node index.js` kód v okně konzole.
-
-### <a name="output"></a>Výstup
-
-```console
-Document ID: 0
-        Name: 123-12-1234       Category: U.S. Social Security Number (SSN)     Subcategory: N/A
-        Score: 0.85
 ```
 
 ## <a name="entity-linking"></a>Entity Linking
