@@ -1,0 +1,48 @@
+- name: Přehled
+  items:
+    - name: Přehled Azure Media Playeru
+      href: azure-media-player-overview.md
+    - name: "Poznámky k\_verzi"
+      href: azure-media-player-release-notes.md
+    - name: Protokol změn
+      href: azure-media-player-changelog.md
+- name: Rychlé starty
+  items:
+    - name: Rychlé zprovoznění Azure Media Playeru
+      href: azure-media-player-quickstart.md
+- name: Kurzy
+  items:
+    - name: Kompletní nastavení Azure Media Playeru
+      href: azure-media-player-full-setup.md
+- name: Koncepty
+  items:
+    - name: Technologie přehrávání
+      href: azure-media-player-playback-technology.md
+    - name: Chráněný obsah
+      href: azure-media-player-protected-content.md
+    - name: Seznam funkcí
+      href: azure-media-player-feature-list.md
+    - name: Přepisovač adres URL
+      href: azure-media-player-url-rewriter.md
+    - name: Přístupnost
+      href: azure-media-player-accessibility.md
+    - name: Moduly plug-in pro zápis
+      href: azure-media-player-writing-plugins.md
+    - name: Galerie modulů plug-in
+      href: azure-media-player-plugin-gallery.md
+    - name: Lokalizace
+      href: azure-media-player-localization.md
+- name: Referenční informace
+  items:
+    - name: ukázky
+      href: 'https://github.com/Azure-Samples/azure-media-player-samples'
+    - name: Rozhraní API
+      href: 'https://docs.microsoft.com/en-us/javascript/api/azuremediaplayer/?view=azure-node-latest'
+    - name: Metody rozhraní API
+      href: azure-media-player-api-methods.md
+    - name: Možnosti
+      href: azure-media-player-options.md
+    - name: Kódy chyb
+      href: azure-media-player-error-codes.md
+    - name: Známé problémy
+      href: azure-media-player-known-issues.md

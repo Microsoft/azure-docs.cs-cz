@@ -96,14 +96,16 @@
       href: how-to-assess.md
     - name: Nasazení zařízení Azure Migrate
       items:
-        - name: Nasazení zařízení pro VMware (OVA)
+        - name: Nasazení zařízení se šablonou (VMware)
           href: how-to-set-up-appliance-vmware.md
-        - name: Nasazení zařízení pro Hyper-V (VHD)
+        - name: Nasazení zařízení se šablonou (Hyper-V)
           href: how-to-set-up-appliance-hyper-v.md
-        - name: Nasazení zařízení pro VMware/Hyper-V (skript)
+        - name: Nasazení zařízení se skriptem (VMware/Hyper-V)
           href: deploy-appliance-script.md
         - name: Nasazení zařízení pro fyzické servery
           href: how-to-set-up-appliance-physical.md
+        - name: Nasazení zařízení ve službě Azure Government
+          href: deploy-appliance-script-government.md
     - name: Omezení rozsahu zjišťování pro virtuální počítače VMware
       href: set-discovery-scope.md
     - name: Zjišťování aplikací/rolí/funkcí

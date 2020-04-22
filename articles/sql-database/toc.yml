@@ -119,7 +119,11 @@
             - name: Zjišťování a klasifikace dat
               href: sql-database-data-discovery-and-classification.md
             - name: Posouzení ohrožení zabezpečení
-              href: sql-vulnerability-assessment.md
+              items:
+                - name: Posouzení ohrožení zabezpečení
+                  href: sql-vulnerability-assessment.md
+                - name: Ukládání kontrol ohrožení zabezpečení za branami firewall a virtuálními sítěmi
+                  href: sql-database-vulnerability-assessment-storage.md
             - name: Rozšířená ochrana před internetovými útoky
               href: sql-database-threat-detection-overview.md
             - name: Atributy zabezpečení

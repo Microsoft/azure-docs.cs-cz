@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Onboarding Azure Sentinelu
@@ -87,7 +87,7 @@
             - name: Řešení založená na CEF
               href: connect-common-event-format.md
               items:
-                - name: KROK 1 Nasazení agenta
+                - name: KROK 1 Nasazení modulu pro předávání protokolů
                   href: connect-cef-agent.md
                 - name: KROK 2 Konfigurace řešení zabezpečení
                   href: connect-cef-solution-config.md

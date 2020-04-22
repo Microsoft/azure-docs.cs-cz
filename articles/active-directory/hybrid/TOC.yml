@@ -208,6 +208,8 @@
           href: how-to-connect-pta-quick-start.md
         - name: Nejčastější dotazy k předávacímu ověřování
           href: how-to-connect-pta-faq.md
+        - name: Zákaz PTA s využitím Azure AD Connectu a nastavení Nekonfigurovat
+          href: how-to-connect-pta-disable-do-not-configure.md
     - name: Správa federačních služeb
       items:
         - name: Správa federace s využitím služby Azure AD Connect

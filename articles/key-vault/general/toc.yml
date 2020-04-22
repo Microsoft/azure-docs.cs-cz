@@ -2,8 +2,10 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je Azure Key Vault?
+    - name: Informace o službě Azure Key Vault
       href: overview.md
+    - name: 'Informace o klíčích, tajných kódech a certifikátech'
+      href: about-keys-secrets-certificates.md
 - name: Kurzy
   items:
     - name: Virtuální počítač Azure
@@ -68,6 +70,8 @@
           href: vs-key-vault-add-connected-service.md
     - name: Monitorování a řízení
       items:
+        - name: Konfigurace monitorování a upozorňování pro Azure Key Vault
+          href: alert.md
         - name: Integrace služby Azure Key Vault se službou Azure Policy
           href: azure-policy.md
         - name: Protokolování v Azure Key Vaultu

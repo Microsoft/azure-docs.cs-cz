@@ -102,6 +102,8 @@
               href: hdinsight-hadoop-customize-cluster-linux.md
             - name: Vývoj akcí skriptů
               href: hdinsight-hadoop-script-actions-linux.md
+            - name: Podpora opensourcového softwaru
+              href: open-source-software.md
             - name: Přidání knihoven Apache Hivu
               href: hdinsight-hadoop-add-hive-libraries.md
             - name: Použití Hue
@@ -210,6 +212,10 @@
               href: ./hdinsight-key-scenarios-to-monitor.md
             - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
               href: ./hdinsight-cluster-availability.md
+        - name: Řešení potíží
+          items:
+            - name: Řešení potíží s akcemi skriptů
+              href: ./troubleshoot-script-action.md
     - name: Referenční informace
       items:
         - name: Azure PowerShell
@@ -878,6 +884,8 @@
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: Architektura virtuálních sítí HDInsight
           href: ./hdinsight-virtual-network-architecture.md
+        - name: Protokol TLS (Transport Layer Security)
+          href: ./transport-layer-security.md
         - name: Plánování virtuálních sítí pro HDInsight
           href: ./hdinsight-plan-virtual-network-deployment.md
         - name: Požadované IP adresy pro skupiny zabezpečení sítě a UDR
