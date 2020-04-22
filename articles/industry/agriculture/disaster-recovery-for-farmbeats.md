@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: d64735e683ba1133e7d381a68611d204c4068026
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313077"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683895"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Zotavení po havárii pro FarmBeats
 
@@ -28,7 +28,7 @@ Následující části obsahují informace o tom, jak můžete nakonfigurovat ob
 
 FarmBeats ukládá data ve třech službách Azure první strany, což jsou **Azure storage**, **Cosmos DB** a Time Series **Insights**. Pomocí následujících kroků povolte redundanci dat pro tyto služby do spárované oblasti Azure:
 
-1.  **Azure Storage** – postupujte podle těchto pokynů a povolte redundanci dat pro každý účet úložiště v nasazení FarmBbeats.
+1.  **Azure Storage** – postupujte podle těchto pokynů a povolte redundanci dat pro každý účet úložiště v nasazení FarmBeats.
 2.  **Azure Cosmos DB** – postupujte podle těchto pokynů a povolte redundanci dat pro účet Cosmos DB, které nasazuje vaše FarmBeats.
 3.  **Azure Time Series Insights (TSI)** – TSI momentálně nenabízí redundanci dat. Chcete-li obnovit data Time Series Insights, přejděte na svého partnera pro senzory a počasí a znovu je převeďte do nasazení FarmBeats.
 

@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78f45d9e1ca5b8237779fe096154c83749aa08fe
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1f0b0c0a7b666aed56ad24625c80c0a57683b998
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428430"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683259"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Přidání a správa skupin v administrativních jednotkách ve službě Azure Active Directory
 
 Ve službě Azure Active Directory (Azure AD) můžete přidat skupiny do jednotky pro správu (AU) pro podrobnější rozsah správy řízení.
 
-Postup přípravy na použití powershellu a microsoft graphu pro správu administrativních jednotek naleznete [v tématu Začínáme](roles-admin-units-manage.md#getting-started).
+Postup přípravy na použití powershellu a microsoft graphu pro správu administrativních jednotek naleznete [v tématu Začínáme](roles-admin-units-manage.md#get-started).
 
 ## <a name="add-groups-to-an-au"></a>Přidání skupin do AU
 

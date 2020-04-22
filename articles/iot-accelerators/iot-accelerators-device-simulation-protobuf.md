@@ -6,15 +6,17 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom:
+- mvc
+- amqp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: bc08cd5183bcaac6cb77ccb0938b07893f082862
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250212"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683995"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serializace telemetrie pomocí vyrovnávacích pamětí protokolu
 
@@ -174,7 +176,7 @@ pokud máte **soubor proto,** dalším krokem je generovat třídy potřebné ke
 
 1. [Stažení kompilátoru Protobuf z GitHubu](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. Spusťte kompilátor a určete zdrojový adresář, cílový adresář a název **proto** souboru. Například:
+1. Spusťte kompilátor a určete zdrojový adresář, cílový adresář a název **proto** souboru. Příklad:
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
@@ -206,7 +208,7 @@ Otevřete soubor **WebService\appsettings.ini** a upravte nastavení následují
 
 Ve výchozím nastavení se nové soubory JSON a JS nového modelu zařízení nezkopírují do integrovaného řešení. Musíte je explicitně zahrnout.
 
-Přidejte položku do souboru **services\services.csproj** pro každý soubor, který chcete zahrnout. Například:
+Přidejte položku do souboru **services\services.csproj** pro každý soubor, který chcete zahrnout. Příklad:
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">

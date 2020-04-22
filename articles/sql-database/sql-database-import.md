@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 05698596f966f879da1affc58af0122d08d519ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7db3f6f50745526876ef2ca6e3253f1931420f0f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256234"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683250"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Úvodní příručka: Import souboru BACPAC do databáze v Azure SQL Database
 
@@ -144,7 +144,8 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 ## <a name="limitations"></a>Omezení
 
-Import do databáze v elastickém fondu není podporován. Můžete importovat data do jedné databáze a potom přesunout databázi do elastického fondu.
+- Import do databáze v elastickém fondu není podporován. Můžete importovat data do jedné databáze a potom přesunout databázi do elastického fondu.
+- Import export ní služba nefunguje, když povolit přístup ke službám Azure je nastavena na OFF. Problém však můžete vyřešit ručním spuštěním sqlpackage.exe z virtuálního počítače Azure nebo provedením exportu přímo ve vašem kódu pomocí rozhraní DACFx API.
 
 ## <a name="import-using-wizards"></a>Import pomocí průvodců
 

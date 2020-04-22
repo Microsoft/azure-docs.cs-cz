@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c748df10e432e3bebbce0dc8cb39dd2101d52e2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60382069"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680040"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Naplnění Azure AD UserPrincipalName
 
@@ -93,7 +93,7 @@ Místní objekt uživatele:
 - mailNickName &lt;: není nastaveno&gt;
 - proxyAdresy :SMTP:us1@contoso.com{ }
 - Mail:us2@contoso.com
-- userPrincipalName us3@contoso.com: '
+- Userprincipalname:us3@contoso.com
 
 Poprvé synchronizovat objekt uživatele do klienta Azure AD
 - Nastavte atribut Azure AD MailNickName na primární předponu adresy SMTP.

@@ -3,12 +3,12 @@ title: Otázky týkající se zjišťování, hodnocení a analýzy závislostí
 description: Získejte odpovědi na běžné otázky týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 700e5318b66cdf4993a17b1dae85fb43f75ab035
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529769"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681905"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýza zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -28,6 +28,10 @@ Projděte si podporované zeměpisné oblasti pro [veřejné](migrate-support-ma
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Kolik virtuálních zařízení můžu zjistit pomocí zařízení?
 
 Pomocí jednoho zařízení můžete objevit až 10 000 virtuálních zařízení VMware, až 5 000 virtuálních virtuálních zařízení Hyper-V a až 250 fyzických serverů. Pokud máte více počítačů, přečtěte si o [škálování hodnocení Technologie Hyper-V](scale-hyper-v-assessment.md), [škálování hodnocení VMware](scale-vmware-assessment.md)nebo [škálování hodnocení fyzického serveru](scale-physical-assessment.md).
+
+## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Ve službě Azure Government nevidím některé typy virtuálních počítačů.
+
+Typy virtuálních počítačů podporované pro hodnocení a migraci závisí na dostupnosti v umístění Azure Government. Typy virtuálních počítačů ve službě Azure Government můžete [zkontrolovat a porovnat.](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines)
 
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>Velikost virtuálního počítače se změnila. Mohu znovu spustit hodnocení?
@@ -87,7 +91,7 @@ Hodnocení založená na importu jsou hodnocení vytvořená pomocí počítač�
 Vizualizace závislostí vám může pomoci posoudit skupiny virtuálních aplikací, které mají být migrovány s větší spolehlivostí. Vizualizace závislostí křížově kontroluje závislosti počítače před spuštěním hodnocení. Pomáhá zajistit, že nic nezůstane pozadu, a pomáhá vyhnout se neočekávaným výpadkům při migraci do Azure. Azure Migrate používá řešení mapy služeb v Azure Monitoru k povolení vizualizace závislostí. [Další informace](concepts-dependency-visualization.md).
 
 > [!NOTE]
-> Vizualizace závislostí není ve službě Azure Government dostupná.
+> Analýza závislostí založená na agentovi není ve službě Azure Government dostupná. Můžete použít analýzu závislostí bez agenta
 
 ## <a name="whats-the-difference-between-agent-based-and-agentless"></a>Jaký je rozdíl mezi agentem a bez agentů?
 

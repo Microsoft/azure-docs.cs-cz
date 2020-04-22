@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5a80c6e3bd8cf647590ed757c042ef3301e27b4a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 34ed6d043f713aa55bfe464c48d4332364df805d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743515"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680384"
 ---
 # <a name="secure-your-restful-services"></a>Zabezpečte své služby RESTful 
 
@@ -43,7 +43,7 @@ Základní ověřování HTTP je definováno v [jazyce RFC 2617](https://tools.i
 
 Chcete-li nakonfigurovat technický profil rozhraní REST API pomocí základního ověřování HTTP, vytvořte následující kryptografické klíče pro uložení uživatelského jména a hesla:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD B2C. V horní nabídce vyberte filtr **Directory + předplatné** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte **rozhraní Identity Experience Framework**.
@@ -132,7 +132,7 @@ Pokud v neprodukčních prostředích ještě nemáte certifikát, můžete pou�
 
 ### <a name="add-a-client-certificate-policy-key"></a>Přidání klíče zásad klientského certifikátu
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD B2C. V horní nabídce vyberte filtr **Directory + předplatné** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte **rozhraní Identity Experience Framework**.
@@ -211,11 +211,19 @@ Deklarace poskytuje dočasné úložiště dat během provádění zásad Azure 
 1. Otevřete soubor přípon zásad. Například <em> `SocialAndLocalAccounts/` </em>.
 1. Vyhledejte element [BuildingBlocks.](buildingblocks.md) Pokud prvek neexistuje, přidejte jej.
 1. Vyhledejte [ClaimsSchema](claimsschema.md) element. Pokud prvek neexistuje, přidejte jej.
-1. Přidejte město bearerToken do **ClaimsSchema** element.  
+1. Přidejte následující deklarace identity do prvku **ClaimsSchema.**  
 
 ```xml
 <ClaimType Id="bearerToken">
-  <DisplayName>bearer token</DisplayName>
+  <DisplayName>Bearer token</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+<ClaimType Id="grant_type">
+  <DisplayName>Grant type</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+<ClaimType Id="scope">
+  <DisplayName>scope</DisplayName>
   <DataType>string</DataType>
 </ClaimType>
 ```
@@ -306,7 +314,7 @@ Po přidání výše uvedených výstřižků by měl váš technický profil vy
 
 Vytvořte klíč zásad pro uložení hodnoty tokenu nosiče.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD B2C. V horní nabídce vyberte filtr **Directory + předplatné** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte **rozhraní Identity Experience Framework**.

@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0f42f075f5d3be4486157334403bfa7d3f1aa80c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632174"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682880"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které můžete dělat na virtuálním počítači s datovými vědami windows
 
@@ -817,7 +817,7 @@ Pro přístup k Azure Cosmos DB z DSVM použijte následující nezbytné kroky:
 1. Sada Azure Cosmos DB Python SDK je už nainstalovaná v modulu DSVM. Chcete-li jej ```pip install pydocumentdb --upgrade``` aktualizovat, spusťte jej z příkazového řádku.
 2. Vytvořte účet ADb Azure Cosmos a databázi z [webu Azure Portal](https://portal.azure.com).
 3. Stáhněte si nástroj pro migraci dat Azure Cosmos DB ze [služby Stažení softwaru a](https://www.microsoft.com/download/details.aspx?id=53595) extrahujte je do adresáře podle vašeho výběru.
-4. Importujte data JSON (data sopky) uložená ve [veřejném objektu blob](https://cahandson.blob.core.windows.net/samples/volcano.json) do azure cosmos db s následujícími parametry příkazů do nástroje pro migraci. (Použijte dtui.exe z adresáře, do kterého jste nainstalovali Nástroj pro migraci dat Azure Cosmos DB.) Zadejte zdrojové a cílové umístění s těmito parametry:
+4. Importujte data JSON (data sopky) uložená ve [veřejném objektu blob](https://dotnet.microsoft.com/) do azure cosmos db s následujícími parametry příkazů do nástroje pro migraci. (Použijte dtui.exe z adresáře, do kterého jste nainstalovali Nástroj pro migraci dat Azure Cosmos DB.) Zadejte zdrojové a cílové umístění s těmito parametry:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 

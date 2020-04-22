@@ -8,18 +8,18 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e1cb1bec6273fa79315b9439bec1412622ebfe28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 610bac5c08d7f3aa3c93e273bc6573a08ca1239f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774299"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680764"
 ---
 Následující příklad ukazuje, jak vytvořit přímý partnerský vztah 10 Gb/s v Seattlu.
 
-Pomocí rutiny prostředí PowerShell **New-AzPeeringDirectConnectionObject** vytvořte directconnections, která mají být použita v novém požadavku partnerského vztahu.
+Pomocí rutiny prostředí PowerShell **New-AzPeeringDirectConnectionObject** vytvořte objekty DirectConnection, které mají být použity v novém požadavku partnerského vztahu.
 
-Níže je uveden příklad pro vytvoření rozhraní DirectConnection:
+Tento příklad ukazuje, jak vytvořit objekt DirectConnection.
 
 ```powershell
 $connection1 = New-AzPeeringDirectConnectionObject `
@@ -32,9 +32,9 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> For <index> $peeringLocation[<index>] ve výše uvedeném příkladu by měl odpovídat umístění partnerského vztahu podle vašeho výběru
+> Hodnota pro <index> **$peeringLocation[]** <index> v předchozím příkladu by měla odpovídat umístění partnerského vztahu podle vašeho výběru.
 
-Vytvořte další připojení v případě, že potřebujete redundanci v daném umístění partnerského vztahu:
+Vytvořte další připojení v případě, že potřebujete redundanci v daném umístění partnerského vztahu.
 
 ```powershell
 $connection2 = New-AzPeeringDirectConnectionObject `
@@ -46,7 +46,7 @@ $connection2 = New-AzPeeringDirectConnectionObject `
     -BandwidthInMbps 10000
 ```
 
-Pomocí rutiny prostředí PowerShell **New-AzPeering** vytvořte nový přímý partnerský vztah. Tento příkaz vyžaduje ID prostředku ASN, které lze načíst, jak je uvedeno níže.
+Pomocí rutiny prostředí PowerShell **New-AzPeering** vytvořte nový přímý partnerský vztah. Tento příkaz vyžaduje ID prostředku ASN, které lze načíst, jak je uvedeno zde.
 
 
 ```powershell
@@ -60,7 +60,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-Níže je uveden příklad odpovědi při úspěšném zpracování požadavku:
+Tento příklad ukazuje odpověď při úspěšném zpracování požadavku.
 
 ```powershell
 
@@ -78,4 +78,4 @@ Níže je uveden příklad odpovědi při úspěšném zpracování požadavku:
     Tags                 : {}
 
 ```
-Všimněte si, že místo **{subscriptionId}** ve výstupu výše se zobrazí skutečné ID předplatného.
+Všimněte si, že místo **{subscriptionId}** v tomto výstupu se zobrazí skutečné ID předplatného.

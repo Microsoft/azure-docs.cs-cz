@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 958dcd441d35b5c28746ff79a0b341e5aa7383a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 6f33f49be74419a8f0cd31d973d64798f5d76a2c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214016"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683007"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Sledování výkonu Azure SQL Database pomocí zobrazení dynamické správy
 
@@ -604,7 +604,7 @@ Následující příklad ukazuje různé způsoby, jak můžete použít zobraze
 
 3. Pomocí těchto informací o průměrné a maximální hodnoty jednotlivých metrik prostředků můžete posoudit, jak dobře vaše úloha zapadá do výpočetní velikosti, kterou jste zvolili. Průměrné hodnoty ze **souboru sys.resource_stats** obvykle poskytují dobrý směrný plán pro použití proti cílové velikosti. Měla by to být vaše primární měřicí tyčinka. Například můžete používat úroveň služby Standard s výpočetní velikostí S2. Procento průměrného použití pro čtení a zápisy procesoru a vstupně-odpovědí je nižší než 40 procent, průměrný počet pracovníků je nižší než 50 a průměrný počet relací je nižší než 200. Vaše úloha se může vejít do výpočetní velikosti S1. Je snadné zjistit, zda vaše databáze zapadá do omezení pracovního procesu a relace. Chcete-li zjistit, zda databáze zapadá do nižší výpočetní velikosti s ohledem na procesor, čte a zapisuje, vydělte číslo DTU nižší výpočetní velikost číslem DTU aktuální výpočetní velikost a pak vynásobte výsledek 100:
 
-    ```S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40```
+    `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
     Výsledkem je relativní rozdíl výkonu mezi dvěma výpočetními velikostmi v procentech. Pokud vaše využití prostředků nepřekročí tuto částku, vaše úloha se může vejít do nižší výpočetní velikosti. Je však třeba podívat se na všechny rozsahy hodnoty použití prostředků a určit podle procenta, jak často by se zatížení databáze vešlo do nižší výpočetní velikosti. Následující dotaz vyvodí procento přizpůsobení na dimenzi prostředku na základě prahové hodnoty 40 procent, kterou jsme vypočítali v tomto příkladu:
 

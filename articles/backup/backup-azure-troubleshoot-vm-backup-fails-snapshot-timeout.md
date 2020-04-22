@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248018"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677413"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Poradce při potížích s azure backup selhání: problémy s agentem nebo rozšíření
 
@@ -142,6 +142,13 @@ Pokud plánovaná operace zálohování trvá déle a je v konfliktu s další k
 
 Tato chyba je hlášena z virtuálního ms IaaS. Chcete-li zjistit hlavní příčinu problému, přejděte do nastavení trezoru služby Recovery Services. V části **Monitorování** vyberte **Možnost Zálohovací úlohy,** kterou chcete filtrovat a zobrazit stav. Kliknutím na **Možnost Selhání** zkontrolujte podrobnosti základní chybové zprávy. Provést další akce podle doporučení na stránce s podrobnostmi o chybě.
 
+## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent – zálohování se nezdařilo: Tento virtuální počítač není (aktivně) chráněn službou Azure Backup
+
+**Kód chyby**: UserErrorBcmDatasourceNotPresent <br>
+**Chybová zpráva**: Zálohování se nezdařilo: Tento virtuální počítač není (aktivně) chráněn službou Azure Backup.
+
+Zkontrolujte, jestli je daný virtuální počítač aktivně (není ve stavu pozastavení) chráněný službou Azure Backup. Chcete-li tento problém překonat, ujistěte se, že virtuální počítač je aktivní a opakujte operaci.
+
 ## <a name="causes-and-solutions"></a>Příčiny a řešení
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent je nainstalovaný ve virtuálním virtuálním mísu, ale neodpovídá (pro virtuální aplikace Windows)
@@ -211,7 +218,7 @@ Následující podmínky mohou způsobit selhání úlohy snímku:
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrání zámku ze skupiny prostředků bodu obnovení
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte na **možnost Všechny zdroje**, vyberte skupinu`<Geo>``<number>`prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_ _ .
 3. V části **Nastavení** vyberte **Zámky,** chcete-li zámky zobrazit.
 4. Chcete-li zámek odebrat, vyberte tři tečky a klepněte na **tlačítko Odstranit**.
@@ -240,7 +247,7 @@ Po odebrání zámku spusťte zálohování na vyžádání. Tato akce zajistí 
 
 Chcete-li ručně vymazat kolekci bodů obnovení, která není vymazána z důvodu uzamčení ve skupině prostředků, vyzkoušejte následující kroky:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce **Hub** klikněte na **Všechny prostředky**,`<Geo>`vyberte skupinu prostředků s následujícím formátem AzureBackupRG_ _`<number>` kde se virtuální počítač nachází.
 
     ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/resource-group.png)

@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Obsahuje přehled zařízení Azure Migrate používaného při hodnocení serveru a migraci.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1c21f06e674871aefde1ae952a459db16feeb717
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538218"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676341"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -125,7 +125,7 @@ download.microsoft.com/download | Povolit stahování ze stažení společnosti 
 *.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Připojte se k adresám URL služby Azure Migrate.
 *.hypervrecoverymanager.windowsazure.us | **Používá se pro migraci bez agentů VMware**<br/><br/> Připojte se k adresám URL služby Azure Migrate.
 *.blob.core.usgovcloudapi.net  |  **Používá se pro migraci bez agentů VMware**<br/><br/>Nahrajte data do úložiště pro migraci.
-*.applicationinsights.us | Používá agent brány na zařízení pro přístup ke koncovému bodu Application Insights pro diagnostické monitorování.
+*.applicationinsights.us | Nahrajte protokoly aplikací používané pro interní monitorování.
 
 
 

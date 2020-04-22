@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 882d428d7a8a9b56408aaa68964fa1e36c7cc7c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80bcf0d5d37a44cee2aab38161abac619542204a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277302"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684322"
 ---
 # <a name="containers-offer-publishing-guide"></a>Průvodce publikováním nabídek kontejnerů
 
@@ -41,9 +41,9 @@ Společnost Microsoft v současné době podporuje bezplatné licenční modely 
 
 Pokud jste tak ještě neučinili, 
 
-- [Zaregistrujte se](https://azuremarketplace.microsoft.com/sell) na trhu.
+- [Přečtěte si](https://azuremarketplace.microsoft.com/sell) informace o tržišti.
 
-Pokud jste zaregistrováni a vytváříte novou nabídku nebo pracujete na stávající nabídce,
+Chcete-li se zaregistrovat v Partnerském centru, začněte vytvářet novou nabídku nebo pracovat na existující nabídce:
 
-- [Přihlaste se na portál cloudových partnerů](https://cloudpartner.azure.com) a vytvořte nebo dokončete svou nabídku.
-- Další informace naleznete v [tématu Kontejnery.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer)
+- [Chcete-li](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) vytvořit nebo dokončit svou nabídku, přihlaste se do Centra partnerů.
+- Další informace najdete [v tématu vytvoření nabídky kontejnerů Azure.](./partner-center-portal/create-azure-container-offer.md)

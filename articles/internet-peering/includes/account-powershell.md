@@ -8,30 +8,30 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 3a5f7157ef8f3645dd03ec93684238dd8bbc067e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: beffb2babefd86c2807e21e9337cba66f42fcfc2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774221"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678502"
 ---
-Před zahájením konfigurace nainstalujte a importujte požadované moduly. K instalaci modulů v prostředí PowerShell budete potřebovat oprávnění správce.
+Než začnete s konfigurací, nainstalujte a importujte požadované moduly. K instalaci modulů v prostředí PowerShell potřebujete oprávnění správce.
 
-1. Instalace a import modulu Az
+1. Nainstalujte a importujte modul Az.
     ```powershell
     Install-Module Az -AllowClobber
     Import-Module Az
     ```
-1. Instalace a import modulu Az.Peering
+1. Nainstalujte a importujte modul Az.Peering.
     ```powershell
     Install-Module -Name Az.Peering -AllowClobber
     Import-Module Az.Peering
     ```
-1. Ověřte, zda jsou moduly importovány jemně pomocí níže uvedeného příkazu.
+1. Pomocí tohoto příkazu ověřte, zda jsou moduly importovány správně:
     ```powershell
     Get-Module
     ```
-1. Přihlaste se ke svému účtu Azure pomocí následujícího příkazu.
+1. Přihlaste se ke svému účtu Azure pomocí tohoto příkazu:
     ```powershell
     Connect-AzAccount
     ```
@@ -46,7 +46,7 @@ Před zahájením konfigurace nainstalujte a importujte požadované moduly. K i
     New-AzResourceGroup -Name "PeeringResourceGroup" -Location "Central US"
     ```
 > [!IMPORTANT]
-> Pokud jste ještě nepřidružili asn a předplatné, postupujte podle pokynů pro [přidružený partner peer ASN](../howto-subscription-association-powershell.md). To je nutné požádat o partnerský vztah.
+> Pokud jste ještě nepřidružili asn a předplatné, postupujte podle pokynů v [přidružené masce ASN](../howto-subscription-association-powershell.md). Tato akce je nutné požádat o partnerský vztah.
 
 > [!NOTE]
 > Umístění skupiny prostředků je nezávislé na umístění, kde se rozhodnete nastavit partnerský vztah.

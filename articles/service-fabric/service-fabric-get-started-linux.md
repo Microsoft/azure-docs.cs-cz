@@ -3,12 +3,12 @@ title: Nastavení vývojového prostředí na Linuxu
 description: Nainstalujte modul runtime a sadu SDK a vytvořte místní vývojový cluster v Linuxu. Po dokončení této instalace a nastavení budete moci sestavovat aplikace.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309122"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682628"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -265,7 +265,7 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 
 2. Chcete-li nainstalovat modul plug-in Service Fabric, vyberte **možnost Nápověda** > **k instalaci nového softwaru**.
 
-3. Do pole **Work with** (Pracovat s) zadejte **https://dl.microsoft.com/eclipse**.
+3. Do pole **Práce s** zadejte **https:\//dl.microsoft.com/eclipse**.
 
 4. Vyberte **Přidat**.
 

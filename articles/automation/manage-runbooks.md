@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 29ac9239b8dc87b1ed12fc8333bf5201fe8fa204
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a1229ee389b41625554fb2869089b08a3cb9cb6d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617129"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676515"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
 
@@ -28,7 +28,7 @@ Nový runbook můžete vytvořit v Azure Automation pomocí jednoho z portálů 
 1. Na webu Azure Portal otevřete účet Automation.
 2. V rozbočovači vyberte **Runbooky** v části **Automatizace procesů,** abyste otevřeli seznam runbooků.
 3. Klepněte **na tlačítko Vytvořit runbook**.
-4. Zadejte název sady Runbook a vyberte jeho [typ](automation-runbook-types.md). Název runbooku musí začínat písmenem a může obsahovat písmena, čísla, podtržítka a pomlčky.
+4. Zadejte název sady Runbook a vyberte její [typ](automation-runbook-types.md). Název runbooku musí začínat písmenem a může obsahovat písmena, čísla, podtržítka a pomlčky.
 5. Kliknutím na **Vytvořit** vytvořte runbook a otevřete editor.
 
 ### <a name="create-a-runbook-with-powershell"></a>Vytvoření runbooku s PowerShellem
@@ -46,13 +46,13 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 Novou runbook v Azure Automation můžete vytvořit importem skriptu PowerShellu nebo pracovního postupu PowerShellu (**.ps1**), exportovanégrafické sady runbook (**.graphrunbook**) nebo skriptu Python2 (**.py**).  Je nutné zadat [typ sady Runbook,](automation-runbook-types.md) který je vytvořen během importu, s přihlédnutím k následujícím aspektům.
 
-* Soubor **PS1,** který neobsahuje pracovní postup, lze importovat do [sady Runbook prostředí PowerShell](automation-runbook-types.md#powershell-runbooks) nebo [do sady Runbook workflow prostředí PowerShell](automation-runbook-types.md#powershell-workflow-runbooks). Pokud ji importujete do sady runbook pracovního postupu prostředí PowerShell, převede se na pracovní postup. V takovém případě jsou komentáře zahrnuty do runbooku k popisu změn, které byly provedeny.
+* Soubor **PS1,** který neobsahuje pracovní postup, můžete importovat do [sady Runbook prostředí PowerShell](automation-runbook-types.md#powershell-runbooks) nebo [sady Runbook workflow prostředí PowerShell](automation-runbook-types.md#powershell-workflow-runbooks). Pokud ji importujete do sady runbook pracovního postupu prostředí PowerShell, převede se na pracovní postup. V takovém případě jsou komentáře zahrnuty do runbooku k popisu změn, které byly provedeny.
 
-* Soubor **PS1** obsahující pracovní postup prostředí PowerShell lze importovat pouze do [sady runbook workflow prostředí PowerShell](automation-runbook-types.md#powershell-workflow-runbooks). Pokud soubor obsahuje více pracovních postupů prostředí PowerShell, import se nezdaří. Každý pracovní postup je nutné uložit do vlastního souboru a importovat každý zvlášť.
+* Do [sady runbook pracovního postupu prostředí PowerShell](automation-runbook-types.md#powershell-workflow-runbooks)můžete importovat pouze soubor **PS1** obsahující pracovní postup prostředí PowerShell . Pokud soubor obsahuje více pracovních postupů prostředí PowerShell, import se nezdaří. Každý pracovní postup je nutné uložit do vlastního souboru a importovat každý zvlášť.
 
-* Soubor **PS1** obsahující pracovní postup prostředí PowerShell by neměl být importován do [sady Runbook prostředí PowerShell](automation-runbook-types.md#powershell-runbooks), protože jej skriptovací stroj Prostředí PowerShell nedokáže rozpoznat.
+* Neimportujte soubor **PS1** obsahující pracovní postup prostředí PowerShell do [sady Runbook prostředí PowerShell](automation-runbook-types.md#powershell-runbooks), protože jej skriptovací stroj Prostředí PowerShell nedokáže rozpoznat.
 
-* Soubor **Graphrunbook** lze importovat pouze do [novégrafické sady Runbook](automation-runbook-types.md#graphical-runbooks). Všimněte si, že můžete vytvořit pouze grafické runbook ze souboru **.graphrunbook.**
+* Soubor **Graphrunbook** lze importovat pouze do nové [grafické sady Runbook](automation-runbook-types.md#graphical-runbooks). Všimněte si, že můžete vytvořit pouze grafické runbook ze souboru **.graphrunbook.**
 
 ### <a name="import-a-runbook-from-a-file-with-the-azure-portal"></a>Import runbooku ze souboru pomocí portálu Azure
 

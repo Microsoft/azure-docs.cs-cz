@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: feaa0c22ec98d170a65e5c9bee119ba3904a95cf
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: cc7a8df80e719173c7818055ab8771ddd7f73691
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673726"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682775"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytvoření datových sad Azure Machine Learning
 
@@ -119,7 +119,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Přežil|Pclass|Name (Název)|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Jízdné|Kabiny|Pustil
+| |PassengerId|Přežil|Pclass|Název|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Jízdné|Kabiny|Pustil
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund, pan Owen Harris|male (muž)|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings, paní John Bradley (Florence Briggs Th...|female (žena)|38.0|1|0|PC 17599|71.2833|C85|C
@@ -164,7 +164,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 V TabularDatasets můžete zadat časové razítko ze sloupce v datech nebo odkudkoli, kde jsou uložena data vzoru cesty, abyste povolili vlastnost časové řady. Tato specifikace umožňuje snadné a efektivní filtrování podle času.
 
-Pomocí [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) metody na`TabularDataset` třídě můžete zadat sloupec časového razítka a povolit filtrování podle času. Další informace naleznete v [tématu Tabular time series-related API demo s daty o počasí NOAA](https://aka.ms/azureml-tsd-notebook).
+Pomocí [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) metody na`TabularDataset` třídě můžete zadat sloupec časového razítka a povolit filtrování podle času. Další informace naleznete v [tématu Tabular time series-related API demo s daty o počasí NOAA](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb).
 
 ```Python
 # create a TabularDataset with time series trait

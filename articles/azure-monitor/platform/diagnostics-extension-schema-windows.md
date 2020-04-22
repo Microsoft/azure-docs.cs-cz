@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274707"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676429"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schéma rozšíření diagnostiky systému Windows
 Rozšíření Azure Diagnostics je agent ve službě Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh výpočetních prostředků Azure. Tento článek podrobně popisuje schéma používané pro konfiguraci rozšíření diagnostiky na virtuálních počítačích s Windows a dalších výpočetních prostředků.
@@ -223,9 +223,8 @@ Prvek nejvyšší úrovně diagnostického konfiguračního souboru.
 
 |Podřízený element|Popis|  
 |-------------------|-----------------|  
-|**Datasource**|Protokoly událostí systému Windows ke shromažďování. Povinný atribut:<br /><br /> **Name** - Dotaz XPath popisující události systému Windows, které mají být shromažďovány. Například:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Chcete-li shromáždit všechny události, zadejte "*"|  
-
-
+|**Datasource**|Protokoly událostí systému Windows ke shromažďování. Povinný atribut:<br /><br /> **Name** - Dotaz XPath popisující události systému Windows, které mají být shromažďovány. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Chcete-li shromáždit všechny události, zadejte "*" |
+|**Propadů** | Přidáno v 1.5. Nepovinný parametr. Odkazuje na umístění jímky také odeslat diagnostická data pro všechny podřízené prvky, které podporují jímky. Příklad jímky je Application Insights nebo Event Hubs.|  
 
 
 ## <a name="logs-element"></a>Element protokolů  
@@ -271,7 +270,7 @@ Prvek nejvyšší úrovně diagnostického konfiguračního souboru.
 |---------------|----------|-----------------|  
 |**Jméno**|řetězec|Řetězec identifikující název pořezaní.|  
 
-|Element|Typ|Popis|  
+|Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
 |**Application Insights**|řetězec|Používá se pouze při odesílání dat do Application Insights. Obsahují klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
 |**Kanály**|řetězec|Jeden pro každé další filtrování, které stream, který jste|  
@@ -283,7 +282,7 @@ Prvek nejvyšší úrovně diagnostického konfiguračního souboru.
 
  Definuje filtry pro datové proudy dat protokolu procházející jímky.  
 
-|Element|Typ|Popis|  
+|Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
 |**Kanál**|řetězec|Viz popis jinde na této stránce.|  
 

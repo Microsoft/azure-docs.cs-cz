@@ -6,15 +6,18 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
-ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- mvc
+- amqp
+- mqtt
+ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61449018"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683827"
 ---
 # <a name="create-an-advanced-device-model"></a>Vytvoření pokročilého modelu zařízení
 
@@ -169,7 +172,7 @@ Pole uvedená ve schématu mohou být následujících typů:
 
 ### <a name="supported-methods"></a>Podporované metody
 
-Simulovaná zařízení mohou také reagovat na volání metod, v takovém případě spustí určitou logiku a poskytnou určitou odpověď. Podobně jako simulace je logika metody uložena v souboru JavaScript a může pracovat se stavem zařízení. Například:
+Simulovaná zařízení mohou také reagovat na volání metod, v takovém případě spustí určitou logiku a poskytnou určitou odpověď. Podobně jako simulace je logika metody uložena v souboru JavaScript a může pracovat se stavem zařízení. Příklad:
 
 ```json
 "CloudToDeviceMethods": {
@@ -259,7 +262,7 @@ Soubory JavaScriptu musí mít **hlavní** funkci, která přijímá dva paramet
     * **deviceModel**. Například **Výtah**.
 * Objekt **stavu,** který je hodnota vrácená funkcí v předchozím volání. Tento stav zařízení je udržován a slouží ke generování telemetrických zpráv.
 
-**Hlavní** funkce vrátí nový stav zařízení. Například:
+**Hlavní** funkce vrátí nový stav zařízení. Příklad:
 
 ```JavaScript
 function main(context, state) {

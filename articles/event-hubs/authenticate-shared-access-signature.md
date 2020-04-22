@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521324"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676357"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Ověření přístupu k prostředkům Centra událostí pomocí sdílených přístupových podpisů (SAS)
 Sdílený přístupový podpis (SAS) umožňuje podrobnou kontrolu nad typem přístupu, který udělíte klientům, kteří mají sdílený přístupový podpis. Zde jsou některé ovládací prvky, které můžete nastavit v SAS: 
@@ -22,7 +22,7 @@ Sdílený přístupový podpis (SAS) umožňuje podrobnou kontrolu nad typem př
 - Oprávnění udělená SAS. Například SAS pro obor názvů Event Hubs může udělit oprávnění k naslouchání, ale ne oprávnění k odeslání.
 - Data mohou do centra událostí odesílat pouze klienti, kteří představují platná pověření.
 - Klient se nemůže vydávat za jiného klienta.
-- Rouge klientmůže být blokován odesílání dat do centra událostí.
+- Neautorizovaný klient může být blokován odesílání dat do centra událostí.
 
 Tento článek popisuje ověřování přístupu k prostředkům Centra událostí pomocí SAS. Informace o **autorizaci přístupu** k prostředkům Centra událostí pomocí SAS naleznete v [tomto článku](authorize-access-shared-access-signature.md). 
 

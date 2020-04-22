@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: ad1fcb67704e79f5aef62a59604e47f477804405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68385714"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680724"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Vzdálené monitorování ioT a oznámení pomocí aplikací Azure Logic Apps, které propojují vaše centrum IoT a poštovní schránku
 
@@ -22,7 +22,7 @@ ms.locfileid: "68385714"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) vám pomůže organizovat pracovní postupy napříč místními a cloudovými službami, jedním nebo více podniky a různými protokoly. Aplikace logiky začíná aktivační událost, která je pak následuje jedna nebo více akcí, které lze sekvencovat pomocí integrovaných ovládacích prvků, jako jsou podmínky a iterátory. Díky této flexibilitě je aplikace Logic Apps ideálním řešením IoT pro scénáře monitorování IoT. Například příchod telemetrických dat ze zařízení v koncovém bodě služby IoT Hub může zahájit pracovní postupy aplikace logiky pro ukládání dat do objektu blob služby Azure Storage, odesílat e-mailová upozornění s upozorněním na anomálie dat, naplánovat návštěvu technika, pokud zařízení hlásí chybu a tak dále.
+[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) vám pomůže organizovat pracovní postupy napříč místními a cloudovými službami, jedním nebo více podniky a různými protokoly. Aplikace logiky začíná aktivační událost, která je pak následuje jedna nebo více akcí, které lze sekvencovat pomocí integrovaných ovládacích prvků, jako jsou podmínky a iterátory. Díky této flexibilitě je aplikace Logic Apps ideálním řešením IoT pro scénáře monitorování IoT. Například příchod telemetrických dat ze zařízení v koncovém bodě služby IoT Hub může zahájit pracovní postupy aplikace logiky pro ukládání dat do objektu blob služby Azure Storage, odesílat e-mailová upozornění, aby varovali před anomáliemi dat, naplánovat návštěvu technika, pokud zařízení hlásí chybu a tak dále.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
@@ -212,7 +212,7 @@ V předchozí části nastavíte službu IoT hub tak, aby směrovala zprávy obs
       Získejte informace o smtp pro [Služby Hotmail/Outlook.com](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970), [Gmail](https://support.google.com/a/answer/176600?hl=en)a [Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html).
 
       > [!NOTE]
-      > K navázání připojení může být nutné zakázat ssl. Pokud se jedná o tento případ a chcete znovu povolit SSL po navázání připojení, naleznete volitelný krok na konci této části.
+      > Možná budete muset zakázat TLS/SSL k navázání připojení. Pokud se jedná o tento případ a chcete znovu povolit TLS po navázání připojení, naleznete volitelný krok na konci této části.
 
    1. V rozevíracím seznamu **Přidat nový parametr** v kroku **Odeslat e-mail** vyberte **Z**, **Do**, **Předmět** a **Tělo**. Kliknutím nebo klepnutím na libovolné místo na obrazovce zavřete výběrové pole.
 
@@ -224,7 +224,7 @@ V předchozí části nastavíte službu IoT hub tak, aby směrovala zprávy obs
 
    1. Chcete-li uložit připojení SMTP, vyberte **možnost Uložit.**
 
-1. (Nepovinné) Pokud jste museli zakázat ssl, abyste navázali spojení s poskytovatelem e-mailu a chcete ho znovu povolit, postupujte takto:
+1. (Nepovinné) Pokud jste museli zakázat tls, abyste navázali spojení s poskytovatelem e-mailu a chcete ho znovu povolit, postupujte takto:
 
    1. V podokně **aplikace Logika** vyberte v části **Vývojové nástroje**připojení **rozhraní API**.
 

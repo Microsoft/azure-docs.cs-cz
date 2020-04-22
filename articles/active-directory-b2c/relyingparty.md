@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/03/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 221ed3169fff78a2721e91023036593570fbd723
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 733a33881fe3acc962aeda4b05a1b01be4e148ca
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637790"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680360"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -44,7 +44,7 @@ Následující příklad ukazuje prvek **RelyingParty** v souboru zásad *B2C_1A
   <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
-      <SingleSignOn Scope="TrustFramework" KeepAliveInDays="7"/>
+      <SingleSignOn Scope="Tenant" KeepAliveInDays="7"/>
       <SessionExpiryType>Rolling</SessionExpiryType>
       <SessionExpiryInSeconds>300</SessionExpiryInSeconds>
       <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="your-application-insights-key" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
@@ -74,7 +74,7 @@ Následující příklad ukazuje prvek **RelyingParty** v souboru zásad *B2C_1A
 
 Volitelný prvek **RelyingParty** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Výchozí cesta uživatele | 1:1 | Výchozí cesta uživatele pro aplikaci RP. |
 | UserJourneyBehaviors | 0:1 | Rozsah chování cesty uživatele. |
@@ -110,7 +110,7 @@ Element **DefaultUserJourney** obsahuje následující atribut:
 
 Prvek **UserJourneyBehaviors** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Jednotné označení | 0:1 | Rozsah chování relace jednotného přihlašování (SSO) cesty uživatele. |
 | Typ ukončení platnosti relace |0:1 | Chování ověřování relace. Možné `Rolling` hodnoty: `Absolute`nebo . Hodnota `Rolling` (výchozí) označuje, že uživatel zůstává přihlášen tak dlouho, dokud je uživatel neustále aktivní v aplikaci. Hodnota `Absolute` označuje, že uživatel je nucen znovu ověřit po uplynutí časového období určeného životností relace aplikace. |
@@ -155,7 +155,7 @@ Následující příklad předá `campaignId` parametr s `hawaii` názvem s hodn
 
 Element **ContentDefinitionParameters** obsahuje následující prvek:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0:n | Řetězec, který obsahuje dvojici hodnot klíče, která je připojena k řetězci dotazu identifikátoru URI načtení definice obsahu. |
 
@@ -163,7 +163,7 @@ Element **ContentDefinitionParameter** obsahuje následující atribut:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Name (Název) | Ano | Název dvojice hodnot klíče. |
+| Název | Ano | Název dvojice hodnot klíče. |
 
 Další informace najdete [v tématu Konfigurace rozhraní s dynamickým obsahem pomocí vlastních zásad](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
 
@@ -177,7 +177,7 @@ Prvek **TechnicalProfile** obsahuje následující atribut:
 
 **TechnicalProfile** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Řetězec, který obsahuje název technického profilu. |
 | Popis | 0:1 | Řetězec, který obsahuje popis technického profilu. |
@@ -190,13 +190,13 @@ Element **Protocol** obsahuje následující atribut:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Name (Název) | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné `OpenIdConnect` hodnoty: `SAML2`nebo . Hodnota `OpenIdConnect` představuje standard protokolu OpenID Connect 1.0 podle specifikace nadace OpenID. Představuje `SAML2` standard protokolu SAML 2.0 podle specifikace OASIS. |
+| Název | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné `OpenIdConnect` hodnoty: `SAML2`nebo . Hodnota `OpenIdConnect` představuje standard protokolu OpenID Connect 1.0 podle specifikace nadace OpenID. Představuje `SAML2` standard protokolu SAML 2.0 podle specifikace OASIS. |
 
 ## <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** Element obsahuje následující prvek:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Výstupní nárok | 0:n | Název typu očekávané deklarace v podporovaném seznamu pro zásadu, ke které se předávající strana přihlásí. Toto tvrzení slouží jako výstup pro technický profil. |
 

@@ -12,19 +12,16 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: fa42bf65ea5f4469f714dda4331d3cb66156d187
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ebec4cb6bbbac5b331eb2eb4145716e16e7320fa
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535790"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677689"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Platforma identit Microsoftu a protokol OpenID Connect
 
 OpenID Connect je ověřovací protokol založený na OAuth 2.0, který můžete použít k bezpečnému přihlášení uživatele k webové aplikaci. Když používáte implementaci OpenID Connect koncového bodu platformy identit y platformy Microsoft, můžete přidat přístup k přihlášení a rozhraní API k webovým aplikacím. Tento článek ukazuje, jak to udělat nezávisle na jazyku a popisuje, jak odesílat a přijímat zprávy HTTP bez použití knihoven s otevřeným zdrojovým kódem společnosti Microsoft.
-
-> [!NOTE]
-> Koncový bod platformy identit Microsoftu nepodporuje všechny scénáře a funkce azure active directory (Azure AD). Chcete-li zjistit, zda byste měli používat koncový bod platformy identit společnosti Microsoft, přečtěte si o [omezení platformy identit společnosti Microsoft](active-directory-v2-limitations.md).
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozšiřuje *autorizační* protokol OAuth 2.0 na použití jako *ověřovací* protokol, takže můžete provést jednotné přihlášení pomocí OAuth. OpenID Connect zavádí koncept *Tokenu ID*, což je token zabezpečení, který umožňuje klientovi ověřit identitu uživatele. Token ID také získá základní informace o profilu o uživateli. Vzhledem k tomu, že OpenID Connect rozšiřuje OAuth 2.0, aplikace mohou bezpečně získat *přístupové tokeny*, které lze použít pro přístup k prostředkům, které jsou zabezpečeny [autorizačním serverem](active-directory-v2-protocols.md#the-basics). Koncový bod platformy identit Microsoftu také umožňuje aplikacím třetích stran, které jsou registrované ve službě Azure AD, vydávat přístupové tokeny pro zabezpečené prostředky, jako jsou webová rozhraní API. Další informace o tom, jak nastavit aplikaci pro vydávání přístupových tokenů, najdete v [tématu Jak zaregistrovat aplikaci s koncovým bodem platformy identit microsoftu](quickstart-register-app.md). Doporučujeme používat OpenID Connect, pokud vytváříte [webovou aplikaci,](v2-app-types.md#web-apps) která je hostovaná na serveru a přístupná prostřednictvím prohlížeče.
 

@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b946ab6157ba63213a4c140221d36f231aa62f0d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7fb2bbcdd5f84e3637a108d0753566d3a9de7fd0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535838"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677746"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Platforma identit Microsoftu a implicitní tok grantů
 
@@ -32,9 +32,6 @@ Pro tyto aplikace (Angular, Ember.js, React.js a tak dále), platforma identit y
 Tento článek popisuje, jak programovat přímo proti protokolu ve vaší aplikaci.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny ověřování společnosti Microsoft (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Také se podívejte na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
 
 Pokud však nechcete používat knihovnu v jednostránkové aplikaci a odesílat zprávy protokolu sami, postupujte podle následujících obecných kroků.
-
-> [!NOTE]
-> Ne všechny scénáře a funkce Služby Azure Active Directory (Azure AD) jsou podporované koncovým bodem platformy identit Microsoftu. Chcete-li zjistit, zda byste měli používat koncový bod platformy identit společnosti Microsoft, přečtěte si o [omezení platformy identit společnosti Microsoft](active-directory-v2-limitations.md).
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>Vhodné scénáře pro implicitní grant OAuth2
 

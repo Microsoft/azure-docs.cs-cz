@@ -1,24 +1,24 @@
 ---
-title: Přehled sady Runbook SDK azure automation grpahical
-description: Tento článek popisuje, jak používat grafickou sadu Runbook Azure Automation SDK
+title: Použití sady Azure Automation grafické sady Runbook SDK
+description: Tento článek popisuje, jak používat grafickou sadku Runbook SDK Azure Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: d4dcf6681ade977847c204dd1237f7cd7a67775e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21f6ff8078d5a1db88b2fde33c9063a56b3ee43a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75418247"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682903"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Použití sady Azure Automation Graphical runbook SDK
+# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Použití sady Azure Automation grafické sady Runbook SDK
 
-[Grafické sady Runbook](automation-graphical-authoring-intro.md) jsou sady Runbook, které pomáhají spravovat složitosti základního kódu pracovního postupu prostředí Windows PowerShell nebo PowerShell. Sada Microsoft Azure Automation Graphical Authoring SDK umožňuje vývojářům vytvářet a upravovat grafické sady Runbook pro použití se službou Azure Automation. Následující fragmenty kódu ukazují základní tok vytváření grafického runbooku z vašeho kódu.
+[Grafické sady Runbook](automation-graphical-authoring-intro.md) pomáhají spravovat složitosti základního kódu pracovního postupu prostředí Windows PowerShell nebo PowerShell. Sada SDK pro vytváření grafických sad Microsoft Azure Automation umožňuje vývojářům vytvářet a upravovat grafické sady Runbook pro použití s Azure Automation. Tento článek popisuje základní kroky při vytváření grafického runbooku z vašeho kódu.
 
-## <a name="pre-requisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadavky
 
-Chcete-li začít, importujte balíček `Microsoft.Azure.Automation.GraphicalRunbook.Model` do projektu.
+Importujte `Microsoft.Azure.Automation.GraphicalRunbook.Model` balíček do projektu.
 
 ## <a name="create-a-runbook-object-instance"></a>Vytvoření instance objektu runbooku
 
@@ -89,7 +89,7 @@ var initializeRunbookVariable = runbook.AddActivity(
  });
 ```
 
-Aktivity jsou implementovány následujícími třídami v oboru `Orchestrator.GraphRunbook.Model` názvů:
+Aktivity jsou implementovány následujícími třídami v oboru `Orchestrator.GraphRunbook.Model` názvů.
 
 |Třída  |Aktivita  |
 |---------|---------|
@@ -99,9 +99,9 @@ Aktivity jsou implementovány následujícími třídami v oboru `Orchestrator.G
 |WorkflowScriptActivity     | Spustí blok kódu pracovního postupu prostředí PowerShell nebo PowerShell (v závislosti na typu runbooku) v kontextu runbooku. Jedná se o výkonný nástroj, ale nepoužívejte jej nadměrně: uI zobrazí tento blok skriptu jako text; Spuštění motoru bude považovat zadaný blok jako černé pole a nebude provádět žádné pokusy o analýzu jeho obsahu, s výjimkou základní kontroly syntaxe. Pokud potřebujete vyvolat pouze jeden příkaz PowerShellu, upřednostňujte CommandActivity.        |
 
 > [!NOTE]
-> Neodvoděte své vlastní aktivity z poskytnutých tříd: Azure Automation nebude moct používat runbooky s vlastními typy aktivit.
+> Neodvodvozujte vlastní aktivity z poskytnutých tříd. Azure Automation nelze použít runbooky s vlastní typy aktivit.
 
-Parametry CommandActivity a InvokeRunbookActivity musí být poskytnuty jako popisovače hodnot, nikoli jako přímé hodnoty. Popisovače hodnot určují, jak mají být vytvářeny skutečné hodnoty parametrů. V současné době jsou k dispozici následující popisovače hodnot:
+Je nutné `CommandActivity` `InvokeRunbookActivity` zadat a parametry jako popisovače hodnot, nikoli přímé hodnoty. Popisovače hodnot určují způsob vytvoření skutečných hodnot parametrů. V současné době jsou k dispozici následující popisovače hodnot:
 
 
 |Popisovač  |Definice  |
@@ -115,7 +115,7 @@ Parametry CommandActivity a InvokeRunbookActivity musí být poskytnuty jako pop
 |Popisovač hodnoty PowerShellExpressionValue     | Určuje volný výraz prostředí PowerShell, který bude vyhodnocen těsně před vyvoláním aktivity.  <br/>Jedná se o výkonný nástroj, ale nepoužívejte jej nadměrně: uI zobrazí tento výraz jako text; Spuštění motoru bude považovat zadaný blok jako černé pole a nebude provádět žádné pokusy o analýzu jeho obsahu, s výjimkou základní kontroly syntaxe. Pokud je to možné, upřednostňujte konkrétnější popisovače hodnot.      |
 
 > [!NOTE]
-> Neodvodvozujte vlastní popisovače hodnot z poskytnutých tříd: Azure Automation nebude moct používat runbooky s typy vlastních hodnot.
+> Neodvodvozujte vlastní popisovače hodnot z poskytnutých tříd. Azure Automation nelze použít runbooky s typy vlastních typů popisovačů hodnot.
 
 Vytvořte instance propojení spojujícíaktivity a přidejte je do runbooku:
 
@@ -136,10 +136,9 @@ Slouží `Orchestrator.GraphRunbook.Model.Serialization.RunbookSerializer` k ser
 var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
-Tento řetězec lze uložit do souboru s příponou **.graphrunbook** a tento soubor lze importovat do Azure Automation.
+Tento řetězec můžete uložit do souboru s příponou **.graphrunbook.** Odpovídající runbook lze importovat do Azure Automation.
 Serializovaný formát se může v budoucích `Orchestrator.GraphRunbook.Model.dll`verzích aplikace změnit. Slibujeme zpětnou kompatibilitu: jakýkoli runbook `Orchestrator.GraphRunbook.Model.dll` serializovaný se starší verzí lze rekonstruovat libovolnou novější verzí. Kompatibilita vpřed není zaručena: sada Runbook serializovaná s novější verzí nemusí být rekonstruovatelná staršími verzemi.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o grafických runbookech v Azure Automation najdete v [tématu Úvod pro vytváření grafických authoring](automation-graphical-authoring-intro.md)
-
+Další informace o grafických runbookech v Azure Automation najdete v [tématu Úvod pro vytváření grafických chodů](automation-graphical-authoring-intro.md).

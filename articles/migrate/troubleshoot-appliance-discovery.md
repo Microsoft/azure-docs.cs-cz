@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9fbf55fbe16d958bf10541894159dade26668bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336729"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677330"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Poradce při potížích s zařízením a zjišťováním migrace Azure
 
@@ -41,6 +41,15 @@ K tomu může dojít, pokud je zařízení za proxy serverem.
 - Ujistěte se, že jste zadali autorizační pověření, pokud je proxy server potřebuje.
 - Pokud k řízení odchozího připojení používáte proxy firewall založený na adrese URL, přidejte tyto adresy URL do seznamu [povolených](migrate-appliance.md#url-access) adres.
 - Pokud používáte zachycující proxy pro připojení k Internetu, importujte proxy certifikát na virtuální počítač zařízení pomocí [těchto kroků](https://docs.microsoft.com/azure/migrate/concepts-collector).
+
+## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Z webové aplikace zařízení se nelze přihlásit do Azure
+
+Pokud k přihlášení do Azure používáte nesprávný účet Azure, zobrazí se chyba "Omlouváme se, ale máme potíže s přihlášením". K této chybě dochází z několika důvodů:
+
+- Pokud se přihlásíte do webové aplikace zařízení pro veřejný cloud, pomocí přihlašovacích údajů uživatelského účtu pro portál cloud vlády.
+- Pokud se přihlásíte do webové aplikace zařízení pro vládní cloud pomocí přihlašovacích údajů uživatelského účtu pro portál privátního cloudu.
+
+Ujistěte se, že používáte správná pověření.
 
 ##  <a name="datetime-synchronization-error"></a>Chyba synchronizace data a času
 

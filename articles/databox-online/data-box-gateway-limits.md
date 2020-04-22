@@ -8,17 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641d7410e414be2adae2a83840c90a680aedd2fc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60755194"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683360"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Limity brány datové schránky Azure
 
 Zvažte tato omezení při nasazování a provozu řešení brány Microsoft Azure Data Box Gateway. 
-
 
 ## <a name="data-box-gateway-service-limits"></a>Limity služeb brány datové schránky
 
@@ -30,7 +29,7 @@ Následující tabulka popisuje omezení pro zařízení Brány datové schránk
 
 | Popis | Hodnota |
 |---|---|
-|Ne. souborů na zařízení |100 milionů <br> Limit je ~ 25 milionů souborů za každé 2 TB místa na disku s maximálním limitem na 100 milionů |
+|Ne. souborů na zařízení |100 milionů <br> Pro každých 25 milionů souborů, které jsou přidávány (s maximálním limitem na 100 milionů), měli byste přidat 2 TB místa na disku, 8 GB paměti RAM a 4 jádra procesoru. |
 |Ne. sdílených složek na zařízení |24 |
 |Ne. sdílených složek na kontejner úložiště Azure |1 |
 |Maximální velikost souboru zapsaná do sdílené složky|U virtuálního zařízení o velikosti 2 TB je maximální velikost souboru 500 GB. <br> Maximální velikost souboru se zvětší s velikostí datového disku v předchozím poměru, dokud nedosáhne maximálně 5 TB. |

@@ -1,6 +1,6 @@
 ---
-title: Diagnostika pracovníka hybridního runbooku Windows – správa aktualizací Azure
-description: Zjistěte, jak řešit a řešit problémy s workerem hybridního runbooku Azure Automation v systému Windows, který podporuje správu aktualizací.
+title: Řešení potíží s problémy s agentem aktualizace systému Windows ve správě aktualizací Azure Automation
+description: Zjistěte, jak řešit a řešit problémy s agentem aktualizací systému Windows pomocí řešení správy aktualizací.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: ec35d11eba59ea21947e2c3cd5286bababa4eabb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76153850"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678977"
 ---
-# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Principy a řešení stavu pracovníků hybridní sady Runbook systému Windows ve správě aktualizací
+# <a name="troubleshoot-windows-update-agent-issues"></a>Poradce při potížích s agentem aktualizace systému Windows
 
-Může existovat mnoho důvodů, proč se váš počítač nezobrazuje **připravenve** správě aktualizací. Ve správě aktualizací můžete zkontrolovat stav agenta pracovníka hybridní sady Runbook a určit základní problém. Tento článek popisuje, jak spustit poradce při potížích pro počítače Azure z webu Azure Portal a počítačů, které nejsou Azure, ve [scénáři offline](#troubleshoot-offline).
+Může existovat mnoho důvodů, proč se váš počítač nezobrazuje jako připravený (v pořádku) ve správě aktualizací. Ve správě aktualizací můžete zkontrolovat stav agenta pracovníka hybridní sady Runbook a určit základní problém. Tento článek popisuje, jak spustit poradce při potížích pro počítače Azure z webu Azure Portal a počítačů, které nejsou Azure, ve [scénáři offline](#troubleshoot-offline).
 
-Následující seznam jsou tři stavy připravenosti, ve kterých může být počítač:
+Níže jsou uvedeny tři stavy připravenosti pro stroj:
 
-* **Připraveno** – hybridní runbook worker je nasazen a naposledy byl viděn před méně než 1 hodinou.
-* **Odpojeno** - Hybridní runbook worker je nasazen a byl naposledy viděn před více než 1 hodinou.
-* **Není nakonfigurováno** – Hybridní pracovník runbooku nebyl nalezen nebo nedokončil registrace.
+* Připraveno – hybridní runbook worker je nasazen a naposledy byl viděn před méně než 1 hodinou.
+* Odpojeno - Hybridní runbook worker je nasazen a byl naposledy viděn před více než 1 hodinou.
+* Není nakonfigurováno – Hybridní pracovník runbooku nebyl nalezen nebo nedokončil registrace.
 
 > [!NOTE]
 > Může být mírné zpoždění mezi co se zobrazí portál Azure a aktuální stav počítače.
 
 ## <a name="start-the-troubleshooter"></a>Spuštění poradce při potížích
 
-U počítačů Azure kliknutím na odkaz **Poradce při potížích** ve sloupci **Připravenost na agenta aktualizace** na portálu se spustí stránka Agent pro řešení potíží s **aktualizací.** Pro počítače než Azure odkaz přejdete na tento článek. Podívejte se na [offline pokyny](#troubleshoot-offline) k řešení potíží s počítačem, který není Azure.
+U počítačů Azure kliknutím na odkaz **Poradce při potížích** ve sloupci **Připravenost na agenta aktualizace** na portálu se spustí stránka Agent pro řešení potíží s aktualizací. Pro počítače než Azure odkaz přejdete na tento článek. Podívejte se na [offline pokyny](#troubleshoot-offline) k řešení potíží s počítačem, který není Azure.
 
 ![Aktualizovat seznam správy virtuálních počítačů](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > Chcete-li zkontrolovat stav hybridního pracovníka runbooku, musí být spuštěný virtuální ho diář. Pokud virtuální počítače není spuštěn, zobrazí **se tlačítko Spustit virtuální ho.**
 
-Na stránce **Poradce při potížích s agentem aktualizace** vyberte spustit **kontroly** a spusťte poradce při potížích. Poradce při potížích používá [spustit příkaz](../../virtual-machines/windows/run-command.md) ke spuštění skriptu v počítači k ověření závislostí. Po dokončení poradce při potížích vrátí výsledek kontroly.
+Na stránce Poradce při potížích s agentem aktualizace vyberte **spustit kontroly** a spusťte poradce při potížích. Poradce při potížích používá [spustit příkaz](../../virtual-machines/windows/run-command.md) ke spuštění skriptu v počítači k ověření závislostí. Po dokončení poradce při potížích vrátí výsledek kontroly.
 
 ![Stránka Poradce při potížích s agentem aktualizace](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -86,15 +86,13 @@ Konfigurace proxy a brány firewall musí agentovi hybrid runbook worker umožni
 
 ### <a name="monitoring-agent-service-status"></a>Stav služby agenta monitorování
 
-Tato kontrola určuje, zda `HealthService`je v počítači spuštěn agent microsoft monitoring.
+Tato kontrola určuje, zda je v`healthservice`počítači spuštěn agent Analýzy protokolů pro systém Windows ( ). Další informace o řešení potíží se službou najdete v [tématu Agent analýzy protokolů pro Systém Windows není spuštěn](hybrid-runbook-worker.md#mma-not-running).
 
-Další informace o řešení potíží se službou naleznete v [tématu Microsoft Monitoring Agent není spuštěn](hybrid-runbook-worker.md#mma-not-running).
-
-Informace o přeinstalaci agenta sledování společnosti Microsoft naleznete v [tématu Instalace a konfigurace agenta sledování společnosti Microsoft](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+Informace o přeinstalaci agenta Log Analytics pro Systém Windows naleznete v [tématu Instalace a konfigurace agenta Log Analytics pro systém Windows](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
 ### <a name="monitoring-agent-service-events"></a>Události služby agenta monitorování
 
-Tato kontrola určuje, `4502` zda se všechny události zobrazí v protokolu Azure Operations Manager na počítači v posledních 24 hodinách.
+Tato kontrola určuje, zda se v protokolu Nástroje pro provoz služby Azure Operations Manager v posledních 24 hodinách zobrazí všechny události 4502.
 
 Další informace o této události naleznete v [průvodci řešením potíží](hybrid-runbook-worker.md#event-4502) pro tuto událost.
 
@@ -167,9 +165,9 @@ RuleName                    : Monitoring Agent service status
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : HealthService must be running on the machine
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service (HealthService) is not running
+CheckResultMessage          : Log Analytics for Windows service (HealthService) is not running
 CheckResultMessageId        : MonitoringAgentServiceRunningCheck.Failed
-CheckResultMessageArguments : {Microsoft Monitoring Agent, HealthService}
+CheckResultMessageArguments : {Log Analytics agent for Windows, HealthService}
 
 RuleId                      : MonitoringAgentServiceEventsCheck
 RuleGroupId                 : servicehealth
@@ -177,9 +175,9 @@ RuleName                    : Monitoring Agent service events
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : Event Log must not have event 4502 logged in the past 24 hours
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service Event Log (Operations Manager) does not exist on the machine
+CheckResultMessage          : Log Analytics agent for Windows service Event Log (Operations Manager) does not exist on the machine
 CheckResultMessageId        : MonitoringAgentServiceEventsCheck.Failed.NoLog
-CheckResultMessageArguments : {Microsoft Monitoring Agent, Operations Manager, 4502}
+CheckResultMessageArguments : {Log Analytics agent for Windows, Operations Manager, 4502}
 
 RuleId                      : CryptoRsaMachineKeysFolderAccessCheck
 RuleGroupId                 : permissions

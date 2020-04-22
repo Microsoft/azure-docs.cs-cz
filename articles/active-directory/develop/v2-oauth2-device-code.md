@@ -13,21 +13,18 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9186f633b773a243a84692c30ddc2c2261fb69ba
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 2a39dbb3676df5ed916203bdcbbc51d5a0da32a4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309404"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677838"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Platforma identit Microsoftu a tok autorizace zařízení OAuth 2.0
 
-Platforma identit společnosti Microsoft podporuje [udělení autorizace zařízení](https://tools.ietf.org/html/rfc8628), které umožňuje uživatelům přihlásit se k zařízením s omezenými vstupy, jako je inteligentní televize, zařízení IoT nebo tiskárna.  Chcete-li povolit tento tok, zařízení má uživatel navštívit webovou stránku ve svém prohlížeči na jiném zařízení pro přihlášení.  Jakmile se uživatel přihlásí, zařízení může podle potřeby získat přístupové tokeny a aktualizovat tokeny.  
+Platforma identit společnosti Microsoft podporuje [udělení autorizace zařízení](https://tools.ietf.org/html/rfc8628), které umožňuje uživatelům přihlásit se k zařízením s omezenými vstupy, jako je inteligentní televize, zařízení IoT nebo tiskárna.  Chcete-li povolit tento tok, zařízení má uživatel navštívit webovou stránku ve svém prohlížeči na jiném zařízení pro přihlášení.  Jakmile se uživatel přihlásí, zařízení může podle potřeby získat přístupové tokeny a aktualizovat tokeny.
 
 Tento článek popisuje, jak programovat přímo proti protokolu ve vaší aplikaci.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny ověřování společnosti Microsoft (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Také se podívejte na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
-
-> [!NOTE]
-> Koncový bod platformy identit Microsoftu nepodporuje všechny scénáře a funkce služby Azure Active Directory. Chcete-li zjistit, zda byste měli používat koncový bod platformy identit společnosti Microsoft, přečtěte si o [omezení platformy identit společnosti Microsoft](active-directory-v2-limitations.md).
 
 ## <a name="protocol-diagram"></a>Protokolový diagram
 
@@ -62,7 +59,7 @@ scope=user.read%20openid%20profile
 
 ### <a name="device-authorization-response"></a>Odpověď na autorizaci zařízení
 
-Úspěšnou odpovědí bude objekt JSON obsahující požadované informace, které uživateli umožní přihlásit se.  
+Úspěšnou odpovědí bude objekt JSON obsahující požadované informace, které uživateli umožní přihlásit se.
 
 | Parametr | Formát | Popis |
 | ---              | --- | --- |
@@ -80,11 +77,11 @@ scope=user.read%20openid%20profile
 
 Po obdržení `user_code` `verification_uri`a , klient zobrazí tyto uživateli, pokyn k přihlášení pomocí svého mobilního telefonu nebo PC prohlížeče.
 
-Pokud se uživatel ověří pomocí osobního účtu (na /common nebo /consumers), bude požádán o opětovné přihlášení, aby bylo možné přenést stav ověřování do zařízení.  Budou také požádáni o poskytnutí souhlasu, aby se ujistili, že jsou si vědomi udělených oprávnění.  To se nevztahuje na pracovní nebo školní účty používané k ověření. 
+Pokud se uživatel ověří pomocí osobního účtu (na /common nebo /consumers), bude požádán o opětovné přihlášení, aby bylo možné přenést stav ověřování do zařízení.  Budou také požádáni o poskytnutí souhlasu, aby se ujistili, že jsou si vědomi udělených oprávnění.  To se nevztahuje na pracovní nebo školní účty používané k ověření.
 
 Zatímco uživatel je ověřování na `verification_uri`, klient by `/token` měl být dotazování koncový `device_code`bod pro požadovaný token pomocí .
 
-``` 
+```
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 
@@ -95,21 +92,21 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 | Parametr | Požaduje se | Popis|
 | -------- | -------- | ---------- |
-| `tenant`  | Požaduje se | Stejný alias klienta nebo klienta použitý v počáteční masce požadavku. | 
+| `tenant`  | Požaduje se | Stejný alias klienta nebo klienta použitý v počáteční masce požadavku. |
 | `grant_type` | Požaduje se | Musí být`urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | Požaduje se | Musí odpovídat `client_id` použité v počáteční požadavku. |
 | `device_code`| Požaduje se | Vráceno `device_code` v žádosti o autorizaci zařízení.  |
 
 ### <a name="expected-errors"></a>Očekávané chyby
 
-Tok kódu zařízení je protokol dotazování, takže váš klient musí očekávat, že obdrží chyby před dokončením ověřování uživatelem.  
+Tok kódu zařízení je protokol dotazování, takže váš klient musí očekávat, že obdrží chyby před dokončením ověřování uživatelem.
 
 | Chyba | Popis | Akce klienta |
 | ------ | ----------- | -------------|
 | `authorization_pending` | Uživatel nedokončil ověřování, ale nezrušil tok. | Opakujte požadavek `interval` po nejméně sekundách. |
 | `authorization_declined` | Koncový uživatel zamítl žádost o autorizaci.| Zastavte dotazování a vraťte se do neověřeného stavu.  |
 | `bad_verification_code`| Odeslaný `device_code` ke `/token` koncovému bodu nebyl rozpoznán. | Ověřte, zda klient `device_code` odesílá správné v požadavku. |
-| `expired_token` | Uplynulo `expires_in` alespoň několik sekund a ověřování již `device_code`není možné s tímto . | Zastavte dotazování a vraťte se do neověřeného stavu. |   
+| `expired_token` | Uplynulo `expires_in` alespoň několik sekund a ověřování již `device_code`není možné s tímto . | Zastavte dotazování a vraťte se do neověřeného stavu. |
 
 ### <a name="successful-authentication-response"></a>Úspěšná odpověď na ověření
 
@@ -135,4 +132,4 @@ Tok kódu zařízení je protokol dotazování, takže váš klient musí oček�
 | `id_token`   | JWT | Vydáno, pokud `scope` původní parametr `openid` zahrnoval obor.  |
 | `refresh_token` | Neprůhledný řetězec | Vydáno, pokud `scope` je `offline_access`zahrnut původní parametr .  |
 
-Obnovovací token můžete použít k získání nových přístupových tokenů a obnovovacích tokenů pomocí stejného toku zdokumentovaného v [dokumentaci toku kódu OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  
+Obnovovací token můžete použít k získání nových přístupových tokenů a obnovovacích tokenů pomocí stejného toku zdokumentovaného v [dokumentaci toku kódu OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).

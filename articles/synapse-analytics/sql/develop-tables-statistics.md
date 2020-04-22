@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 798fec4dacb33a9f16de319062baf12adaffdbd0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428742"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676940"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistiky v Synapse SQL
 
@@ -163,13 +163,15 @@ Chcete-li vytvořit statistiku ve sloupci, zadejte název objektu statistiky a n
 Tato syntaxe používá všechny výchozí možnosti. Ve výchozím nastavení fond SQL vzorky **20 procent** tabulky při vytváření statistiky.
 
 ```sql
-CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
+CREATE STATISTICS [statistics_name]
+    ON [schema_name].[table_name]([column_name]);
 ```
 
 Příklad:
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1);
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1);
 ```
 
 #### <a name="create-single-column-statistics-by-examining-every-row"></a>Vytvoření statistiky s jedním sloupcem prozkoumáním každého řádku
@@ -177,13 +179,17 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 Výchozí vzorkovací frekvence 20 procent je dostatečná pro většinu situací. Můžete však upravit vzorkovací frekvenci. Chcete-li ochutnat celou tabulku, použijte tuto syntaxi:
 
 ```sql
-CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
+CREATE STATISTICS [statistics_name]
+    ON [schema_name].[table_name]([column_name])
+    WITH FULLSCAN;
 ```
 
 Příklad:
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1)
+    WITH FULLSCAN;
 ```
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>Vytvoření jednosloupcové statistiky zadáním velikosti vzorku
@@ -191,7 +197,9 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 Další možností, kterou máte, je určit velikost vzorku jako procento:
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1)
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 #### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>Vytvoření statistiky s jedním sloupcem pouze u některých řádků
@@ -203,7 +211,9 @@ Filtrované statistiky můžete například použít při dotazování na určit
 Tento příklad vytvoří statistiky na rozsah hodnot. Hodnoty lze snadno definovat tak, aby odpovídaly rozsahu hodnot v oddílu.
 
 ```sql
-CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
+CREATE STATISTICS stats_col1
+    ON table1(col1)
+    WHERE col1 > '2000101' AND col1 < '20001231';
 ```
 
 > [!NOTE]
@@ -214,7 +224,10 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 Můžete také kombinovat možnosti dohromady. Následující příklad vytvoří objekt filtrované statistiky s vlastní velikostí vzorku:
 
 ```sql
-CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS stats_col1
+    ON table1 (col1)
+    WHERE col1 > '2000101' AND col1 < '20001231'
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 Úplný odkaz naleznete v tématu [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
@@ -229,7 +242,10 @@ Chcete-li vytvořit objekt statistiky s více sloupci, použijte předchozí př
 V tomto příkladu je histogram na *kategorii produktu\_*. Statistiky mezi sloupci se počítají podle *kategorie\_produktu* a sub_category *produktu\_*:
 
 ```sql
-CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS stats_2cols
+    ON table1 (product_category, product_sub_category)
+    WHERE product_category > '2000101' AND product_category < '20001231'
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 Vzhledem k tomu, že existuje korelace mezi *kategorií produktu\_* a dílčí *\_\_kategorií produktu*, může být objekt statistiky s více sloupci užitečný, pokud jsou tyto sloupce přístupné současně.
@@ -263,7 +279,7 @@ Následující příklad vám pomůže začít s návrhem databáze. Neváhejte 
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
-(   @create_type    tinyint -- 1 default 2 Fullscan 3 Sample
+(   @create_type    tinyint -- 1 default, 2 Fullscan, 3 Sample
 ,   @sample_pct     tinyint
 )
 AS
@@ -470,8 +486,8 @@ JOIN    sys.stats_columns   AS sc ON    st.[stats_id]       = sc.[stats_id]
 JOIN    sys.columns         AS co ON    sc.[column_id]      = co.[column_id]
                             AND         sc.[object_id]      = co.[object_id]
 JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
-JOIN    sys.tables          AS tb ON  co.[object_id]        = tb.[object_id]
-JOIN    sys.schemas         AS sm ON  tb.[schema_id]        = sm.[schema_id]
+JOIN    sys.tables          AS tb ON    co.[object_id]      = tb.[object_id]
+JOIN    sys.schemas         AS sm ON    tb.[schema_id]      = sm.[schema_id]
 WHERE   1=1
 AND     st.[user_created] = 1
 ;
@@ -506,18 +522,20 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 Pokud vás zajímají pouze některé části, `WITH` použijte klauzuli a určete, které části chcete zobrazit:
 
 ```sql
-DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
+DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
+    WITH stat_header, histogram, density_vector
 ```
 
 Příklad:
 
 ```sql
-DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
+DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
+    WITH histogram, density_vector
 ```
 
 ### <a name="dbcc-show_statistics-differences"></a>DbCC SHOW_STATISTICS() rozdíly
 
-DBCC SHOW_STATISTICS() je více přísně implementována ve fondu SQL ve srovnání s SQL Server:
+`DBCC SHOW_STATISTICS()`je více přísně implementována ve fondu SQL ve srovnání s SQL Server:
 
 - Nezdokumentované funkce nejsou podporovány.
 - Nemůžu použít Stats_stream.
@@ -602,7 +620,7 @@ sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 
 Argumenty: @stmt [ = N'statement_text' - Určuje příkaz Transact-SQL, který vrátí hodnoty sloupců, které se použijí pro statistiku. TableSAMPLE můžete použít k určení vzorků dat, která mají být použita. Pokud není zadán soubor TABLESAMPLE, bude použit soubor FULLSCAN.
 
-```sql
+```syntaxsql
 <tablesample_clause> ::= TABLESAMPLE ( sample_number PERCENT )
 ```
 
@@ -744,14 +762,18 @@ Vzorek nelze použít s možností FULLSCAN.
 #### <a name="create-single-column-statistics-by-examining-every-row"></a>Vytvoření statistiky s jedním sloupcem prozkoumáním každého řádku
 
 ```sql
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH FULLSCAN, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH FULLSCAN, NORECOMPUTE
 ```
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>Vytvoření jednosloupcové statistiky zadáním velikosti vzorku
 
 ```sql
 -- following sample creates statistics with sampling 20%
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH SAMPLE 5 percent, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH SAMPLE 5 percent, NORECOMPUTE
 ```
 
 ### <a name="examples-update-statistics"></a>Příklady: Aktualizovat statistiky
@@ -765,7 +787,9 @@ DROP STATISTICS census_external_table.sState
 A vytvářet statistiky:
 
 ```sql
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH FULLSCAN, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH FULLSCAN, NORECOMPUTE
 ```
 
 ## <a name="next-steps"></a>Další kroky

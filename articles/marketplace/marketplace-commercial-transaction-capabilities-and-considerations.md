@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 768fa9ca2080fc9a58fb321e62d8d61a608f9564
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7a0f0b96f8140118f1c74ecbd4368aac49d7ece6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415263"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684296"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti provází obchodní trh
 
@@ -202,11 +202,11 @@ Pokud jsou vybrány cenové modely s průběžným platbou nebo s průběžným 
 * Zákazníci obvykle nakupují pomocí smlouvy Enterprise nebo smlouvy s povolenými platbami s průběžnou platbou s povolenou kreditní kartou. Typ smlouvy určuje čas fakturace, fakturace, inkaso a výplaty.
 
 >[!NOTE]
->Všechny přehledy a přehledy pro možnost publikování transgrafu jsou k dispozici prostřednictvím části Přehledy v části Portál pro partnery cloudnebo analytics v Centru partnerů.
+>Všechny přehledy a přehledy pro možnost publikování transgrafu jsou k dispozici prostřednictvím sekce Analytics v Centru partnerů.
 
 #### <a name="billing-questions-and-support"></a>Otázky k fakturaci a podpora
 
-Další informace a právní zásady najdete ve [smlouvě s vydavatelem](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf) (k dispozici na portálu partnerů cloudu).
+Další informace a právní zásady naleznete ve [smlouvě s vydavatelem](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (k dispozici v Centru partnerů).
 
 Chcete-li získat pomoc s dotazy týkajícími se fakturace, obraťte se na [podporu vydavatele komerčního trhu](https://aka.ms/marketplacepublishersupport).
 

@@ -8,24 +8,24 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 03c67ccf88a8c73fe04f062c6af9520115c185a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2609a069872ec55ac9068fadcbb3f312d68a630
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774260"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680784"
 ---
 Tato část popisuje, jak provádět následující operace změny pro přímý partnerský vztah:
 
-* Přidání připojení přímého partnerského vztahu
-* Odebrání připojení přímého partnerského vztahu
+* Přidejte přímá připojení partnerského vztahu.
+* Odeberte přímá připojení partnerského vztahu.
 * Upgrade nebo downgrade šířku pásma na aktivní připojení.
-* Přidejte relaci IPv4/IPv6 u aktivních připojení.
-* Odebrání relace IPv4/IPv6 u aktivních připojení.
+* Přidejte relace IPv4 nebo IPv6 v aktivních připojeních.
+* Odeberte relace IPv4 nebo IPv6 u aktivních připojení.
 
 ### <a name="add-direct-peering-connections"></a>Přidání připojení přímého partnerského vztahu
 
-Níže uvedený příklad popisuje, jak přidat připojení k existujícímu přímému partnerského vztahu
+Tento příklad popisuje, jak přidat připojení k existujícímu přímému partnerského vztahu.
 
 ```powershell
 
@@ -46,7 +46,7 @@ $directPeering | Update-AzPeering
 
 ### <a name="remove-direct-peering-connections"></a>Odebrání připojení přímého partnerského vztahu
 
-Odebrání připojení není v prostředí PowerShell aktuálně podporováno. Obraťte se na [partnerský vztah společnosti Microsoft](mailto:peeringexperience@microsoft.com).
+Odebrání připojení není v prostředí PowerShell u powershellu aktuálně podporováno. Další informace získáte od [společnosti Microsoft peeringu](mailto:peeringexperience@microsoft.com).
 
 <!--
 ```powershell
@@ -58,7 +58,7 @@ $directPeering | Update-AzPeering
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Upgrade nebo snížení šířky pásma u aktivních připojení
 
-Níže uvedený příklad popisuje, jak přidat 10 Gb/s k existujícímu přímému připojení.
+Tento příklad popisuje, jak přidat 10 Gb/s k existujícímu přímému připojení.
 
 ```powershell
 
@@ -68,9 +68,9 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>Přidejte relaci IPv4/IPv6 u aktivních připojení.
+### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>Přidání relací IPv4 nebo IPv6 v aktivních připojeních
 
-Níže uvedený příklad popisuje, jak přidat relaci IPv6 k existujícímu přímému připojení pouze s relací IPv4. 
+Tento příklad popisuje, jak přidat relaci IPv6 na existující přímé připojení pouze s relací IPv4. 
 
 ```powershell
 
@@ -80,6 +80,6 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Odebrání relace IPv4/IPv6 u aktivních připojení.
+### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>Odebrání relací IPv4 nebo IPv6 u aktivních připojení
 
-Odebrání relace IPv4/IPv6 z existujícího připojení není v prostředí PowerShell aktuálně podporováno. Obraťte se na [partnerský vztah společnosti Microsoft](mailto:peeringexperience@microsoft.com).
+Odebrání relace IPv4 nebo IPv6 z existujícího připojení není aktuálně podporováno v prostředí PowerShell. Další informace získáte od [společnosti Microsoft peeringu](mailto:peeringexperience@microsoft.com).

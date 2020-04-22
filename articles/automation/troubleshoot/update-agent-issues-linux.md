@@ -1,6 +1,6 @@
 ---
-title: Diagnostika linuxového hybridního pracovníka runbooku – správa aktualizací Azure
-description: Zjistěte, jak řešit a řešit problémy s workerem hybridního runbooku Azure Automation v Linuxu, který podporuje správu aktualizací.
+title: Řešení potíží s problémy s agentem aktualizací Linuxu ve správě aktualizací Azure Automation
+description: Zjistěte, jak řešit a řešit problémy s agentem aktualizací Systému Windows pro Linux pomocí řešení správy aktualizací.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bba1c7e89a9c3bb1c9aa1567e36dd71a40f14636
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278295"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679063"
 ---
-# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Pochopení a vyřešení stavu linuxového hybridního počítače Runbook Worker pro správu aktualizací
+# <a name="troubleshoot-linux-update-agent-issues"></a>Poradce při potížích s agentem aktualizace Linuxu
 
-Může existovat mnoho důvodů, proč se váš počítač nezobrazuje **připravenve** správě aktualizací. Ve správě aktualizací můžete zkontrolovat stav agenta pracovníka hybridní sady Runbook a určit základní problém. Tento článek popisuje, jak spustit poradce při potížích pro počítače Azure z webu Azure Portal a počítačů, které nejsou Azure, ve [scénáři offline](#troubleshoot-offline).
+Může existovat mnoho důvodů, proč se váš počítač nezobrazuje jako připravený (v pořádku) ve správě aktualizací. Ve správě aktualizací můžete zkontrolovat stav agenta pracovníka hybridní sady Runbook a určit základní problém. Tento článek popisuje, jak spustit poradce při potížích pro počítače Azure z webu Azure Portal a počítačů, které nejsou Azure, ve [scénáři offline](#troubleshoot-offline). 
 
 Následující seznam jsou tři stavy připravenosti, ve kterých může být počítač:
 
-* **Připraveno** – hybridní runbook worker je nasazen a naposledy byl viděn před méně než 1 hodinou.
-* **Odpojeno** - Hybridní runbook worker je nasazen a byl naposledy viděn před více než 1 hodinou.
-* **Není nakonfigurováno** – Hybridní pracovník runbooku nebyl nalezen nebo nedokončil registrace.
+* Připraveno – hybridní runbook worker je nasazen a naposledy byl viděn před méně než 1 hodinou.
+* Odpojeno - Hybridní runbook worker je nasazen a byl naposledy viděn před více než 1 hodinou.
+* Není nakonfigurováno – Hybridní pracovník runbooku nebyl nalezen nebo nedokončil registrace.
 
 > [!NOTE]
 > Může být mírné zpoždění mezi co se zobrazí portál Azure a aktuální stav počítače.
 
 ## <a name="start-the-troubleshooter"></a>Spuštění poradce při potížích
 
-U počítačů Azure kliknutím na odkaz **Poradce při potížích** ve sloupci **Připravenost na agenta aktualizace** na portálu se spustí stránka Agent pro řešení potíží s **aktualizací.** Pro počítače než Azure odkaz přejdete na tento článek. Podívejte se na offline pokyny k řešení potíží s počítačem, který není Azure.
+U počítačů Azure kliknutím na odkaz **Poradce při potížích** ve sloupci **Připravenost na agenta aktualizace** na portálu se spustí stránka Agent pro řešení potíží s aktualizací. Pro počítače než Azure odkaz přejdete na tento článek. Podívejte se na offline pokyny k řešení potíží s počítačem, který není Azure.
 
 ![stránka se seznamem virtuálního videa](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> Kontroly vyžadují spuštění virtuálního soudu. Pokud virtuální hod není spuštěn, zobrazí se tlačítko pro **spuštění virtuálního virtuálního provozu**.
+> Kontroly vyžadují spuštění virtuálního soudu. Pokud virtuální hod není spuštěn, zobrazí se tlačítko **Spustit virtuální ho.**
 
-Na stránce **Poradce při potížích s agentem aktualizace** spusťte poradce při potížích klepnutím na tlačítko Spustit **kontroly**. Poradce při potížích používá [příkaz Spustit](../../virtual-machines/linux/run-command.md) ke spuštění skriptu v počítači k ověření závislostí. Po dokončení poradce při potížích vrátí výsledek kontroly.
+Na stránce Poradce při potížích s agentem aktualizace spusťte poradce při potížích klepnutím na **tlačítko Spustit kontroly**. Poradce při potížích používá [příkaz Spustit](../../virtual-machines/linux/run-command.md) ke spuštění skriptu v počítači k ověření závislostí. Po dokončení poradce při potížích vrátí výsledek kontroly.
 
 ![Stránka Poradce při potížích](../media/update-agent-issues-linux/troubleshoot-page.png)
 

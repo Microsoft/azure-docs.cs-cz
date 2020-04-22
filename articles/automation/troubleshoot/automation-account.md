@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s účtem automatizace
+title: Řešení potíží s účtem služby Automation
 description: Přečtěte si, jak řešit a řešit problémy s účtem Azure.
 services: automation
 author: mgoedtel
@@ -8,14 +8,14 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c66b1728144b8517f6ac444059b3a8def956c6e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b5e7171ac679384966e9dce79425cd1fa881c53
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80301002"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679385"
 ---
-# <a name="automation-account-troubleshooting"></a>Řešení potíží s účtem automatizace
+# <a name="troubleshoot-the-automation-account"></a>Poradce při potížích s účtem automatizace
 
 Tento článek popisuje řešení problémů, se kterými se můžete setkat při použití účtu Automation. V následujících částech jsou zvýrazněny konkrétní chybové zprávy a možná řešení pro každou z nich. Obecné informace o účtech Automation najdete [v tématu Vytvoření účtu Azure](../automation-quickstart-create-account.md).
 
@@ -45,11 +45,11 @@ Pokud chcete zaregistrovat zprostředkovatele prostředků automatizace, postupu
 
 4. Ze seznamu poskytovatelů prostředků ověřte, zda je poskytovatel prostředků **Microsoft.Automation** registrován.
 
-5. Pokud není uvedena, zaregistrujte poskytovatele **Microsoft.Automation** podle pokynů na [řešení chyb pro registraci poskytovatele prostředků](/azure/azure-resource-manager/resource-manager-register-provider-errors).
+5. Pokud zprostředkovatel není uveden, zaregistrujte jej, jak je popsáno v [vyřešit chyby pro registraci poskytovatele prostředků](/azure/azure-resource-manager/resource-manager-register-provider-errors).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste problém neuviděli nebo se vám nepodaří problém vyřešit, vyzkoušejte další podporu jedním z následujících kanálů:
+Pokud problém nevidíte výše nebo nemůžete problém vyřešit, vyzkoušejte další podporu jedním z následujících kanálů:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure .](https://azure.microsoft.com/support/forums/)
 * Spojte [@AzureSupport](https://twitter.com/azuresupport)se s oficiálním účtem Microsoft Azure a vylepšete tak zákaznickou zkušenost propojením komunity Azure se správnými prostředky: odpověďmi, podporou a odborníky.

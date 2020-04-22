@@ -4,12 +4,12 @@ description: Tento článek obsahuje přehled správy aplikace Azure Service Fab
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 69c10b0e9d3b7c29122c8432ab1e4bc06d3a3120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481112"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682630"
 ---
 # <a name="service-fabric-application-resource-model"></a>Model prostředků aplikace Service Fabric
 
@@ -99,7 +99,7 @@ Ukázková aplikace obsahuje [šablony Azure Resource Manageru, které](https://
 | applicationTypeVersion | Verze typu aplikace         | 1.0.0                                                        | Musí odpovídat applicationManifest.xml                 |
 | Název_služby            | Název služby         | Hlasování ~ Hlasovací Web                                             | Musí být ve formátu ApplicationName~ServiceType            |
 | název_služby serviceTypeName        | Název typu služby                | VotingWeb                                                    | Musí odpovídat souboru ServiceManifest.xml.                 |
-| appPackageUrl          | Adresa URL úložiště objektů blob aplikace     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Adresa URL balíčku aplikace v úložišti objektů blob (postup nastavení adresy URL je popsán dále v článku) |
+| appPackageUrl          | Adresa URL úložiště objektů blob aplikace     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Adresa URL balíčku aplikace v úložišti objektů blob (postup nastavení adresy URL je popsán dále v článku) |
 
 ```json
 {

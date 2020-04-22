@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích se správou aktualizací Azure
-description: Zjistěte, jak řešit a řešit problémy s řešením správy aktualizací v Azure.
+title: Poradce při potížích se správou aktualizací Azure Automation
+description: Zjistěte, jak řešit a řešit problémy s řešením správy aktualizací v Azure Automation.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,22 +8,22 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c9ff05591c98fda8be39e32f26da484f56e0831b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984619"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678922"
 ---
-# <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží se správou aktualizací
+# <a name="troubleshoot-issues-with-the-update-management-solution"></a>Řešení problémů s řešením správy aktualizací
 
-Tento článek popisuje řešení problémů, které se mohou sejít při používání správy aktualizací.
+Tento článek popisuje problémy, které můžete narazit při použití řešení správy aktualizací. Existuje poradce při potížích s agentem pro agenta hybridního runbookworkeru k určení základního problému. Další informace o poradci při potížích [najdete v tématu Poradce při potížích s agentem aktualizace systému Windows](update-agent-issues.md) a [Poradce při potížích s agentem aktualizace Linuxu](update-agent-issues-linux.md). Další problémy s přizapisováním najdete [v tématu Poradce při potížích s řešením .](onboarding.md)
 
-Existuje poradce při potížích s agentem pro agenta hybridního pracovníka k určení základního problému. Další informace o poradci při potížích najdete [v tématu Poradce při potížích s agentem aktualizace](update-agent-issues.md). Pro všechny ostatní problémy použijte následující pokyny pro řešení potíží.
+>[!NOTE]
+>Pokud při připojování řešení na virtuálním počítači (VM) zjistíte **problémy,** zkontrolujte protokol Nástroje pro řízení **provozu** v části Protokoly aplikací a služeb v místním počítači. Vyhledejte události s ID události 4502 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`a podrobnosti o události, které obsahují .
 
-Pokud při připojování řešení na virtuálním počítači (VM) zjistíte **problémy,** zkontrolujte protokol Nástroje pro řízení **provozu** v části Protokoly aplikací a služeb v místním počítači. Vyhledejte události s ID události 4502 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`a podrobnosti o události, které obsahují .
-
-V následující části jsou zvýrazněny konkrétní chybové zprávy a možná řešení pro každou z nich. Další problémy s přizapisováním najdete [v tématu Poradce při potížích s řešením .](onboarding.md)
+>[!NOTE]
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](../automation-update-azure-modules.md).
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Scénář: Zobrazí se chyba "Nepodařilo se povolit řešení aktualizace"
 
@@ -299,7 +299,7 @@ K této chybě může dojít z následujících důvodů:
 
 * Existuje duplicitní název počítače s různými ID zdrojového počítače. K tomuto scénáři dochází, když je virtuální počítač s konkrétním názvem počítače vytvořen v různých skupinách prostředků a hlásí se stejnému pracovnímu prostoru logistického agenta v předplatném.
 
-* Image virtuálního počítače, která je na palubě, může pocházet z klonovaného počítače, který nebyl připraven s nainstalovaným systémem Příprava (sysprep) s nainstalovaným agentem Microsoft Monitoring Agent (MMA).
+* Image virtuálního počítače, která je na palubě může pocházet z klonovaného počítače, který nebyl připraven s příprava systému (sysprep) s agentem Log Analytics pro systém Windows nainstalován.
 
 ### <a name="resolution"></a>Řešení
 
@@ -351,17 +351,16 @@ K této chybě dochází při vytvoření nasazení aktualizace, která má virt
 
 ### <a name="resolution"></a>Řešení
 
-Pomocí následujícího řešení naplánujete tyto položky. Rutinu [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) s parametrem `ForUpdate` můžete použít k vytvoření plánu. Potom použijte rutinu [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-) a předaj te počítače `NonAzureComputer` v druhém tenantovi parametru. Následující příklad ukazuje, jak to provést:
+Pomocí následujícího řešení naplánujete tyto položky. Rutinu [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) s parametrem `ForUpdateConfiguration` můžete použít k vytvoření plánu. Potom použijte rutinu [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) a předaj te počítačům v druhém tenantovi parametru. `NonAzureComputer` Následující příklad ukazuje, jak to provést:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
 
 $startTime = ([DateTime]::Now).AddMinutes(10)
 
-$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+$s = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdateConfiguration
 
-New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
 ## <a name="scenario-unexplained-reboots"></a><a name="node-reboots"></a>Scénář: Nevysvětlitelné restartování
@@ -614,7 +613,7 @@ KB2267602 je [aktualizace definice programu Windows Defender](https://www.micros
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste problém nezjistili nebo nemůžete problém vyřešit, vyzkoušejte další podporu jedním z následujících kanálů.
+Pokud problém nevidíte nebo se vám nepodaří problém vyřešit, zkuste další podporu použít jedním z následujících kanálů.
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure .](https://azure.microsoft.com/support/forums/)
 * Spojte [@AzureSupport](https://twitter.com/azuresupport)se s oficiálním účtem Microsoft Azure a vylepšete tak zákaznickou zkušenost.

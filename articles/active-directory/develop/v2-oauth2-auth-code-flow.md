@@ -12,21 +12,18 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ac630c4901c126ed883adbdc7efb03f36372e6ff
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: e5e462c52c8b06af6da5081f84a082138cd53a3f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535872"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677945"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma identit Microsoftu a tok autorizačního kódu OAuth 2.0
 
 Udělení autorizačního kódu OAuth 2.0 lze použít v aplikacích nainstalovaných v zařízení k získání přístupu k chráněným prostředkům, jako jsou webová rozhraní API. Pomocí implementace platformy Microsoft identity oOUth 2.0 můžete přidat přihlášení a přístup k rozhraní API pro vaše mobilní a desktopové aplikace. Tato příručka je jazykově nezávislá a popisuje, jak odesílat a přijímat zprávy HTTP bez použití libovolné [knihovny ověřování s otevřeným zdrojovým kódem Azure](reference-v2-libraries.md).
 
 Tento článek popisuje, jak programovat přímo proti protokolu ve vaší aplikaci.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny ověřování společnosti Microsoft (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Také se podívejte na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
-
-> [!NOTE]
-> Ne všechny scénáře Azure Active Directory & funkce jsou podporovány koncovým bodem platformy identit Microsoftu. Chcete-li zjistit, zda byste měli používat koncový bod platformy identit společnosti Microsoft, přečtěte si o [omezení platformy identit společnosti Microsoft](active-directory-v2-limitations.md).
 
 Tok autorizačního kódu OAuth 2.0 je popsán v [bodu 4.1 specifikace OAuth 2.0](https://tools.ietf.org/html/rfc6749). Používá se k ověřování a autorizaci ve většině typů aplikací, včetně [webových aplikací](v2-app-types.md#web-apps) a [nativně nainstalovaných aplikací](v2-app-types.md#mobile-and-native-apps). Tok umožňuje aplikacím bezpečně získat access_tokens, které lze použít pro přístup k prostředkům zabezpečeným koncovým bodem platformy identit Microsoftu.
 

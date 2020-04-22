@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků Azure umožňuje prostředí pro správu mezi tenanty.
-ms.date: 04/06/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 66e2b2f7fbbae5940b576ead22a416625af3c058
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 107350cdab90751e918d4c7845776464b43abbdd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418506"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682817"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -72,6 +72,14 @@ Většinu úkolů a služeb lze provádět v delegovaných prostředcích např�
 - Analýza protokolů: Dotazujte data ze vzdálených klientských prostorů ve více klientech
 - Vytvářejte výstrahy v klientech zákazníků, které aktivují automatizaci, jako jsou runbooky Azure Automation nebo Azure Functions, v tenantovi poskytovatele služeb prostřednictvím webhooků
 
+[Sítě Azure](../../networking/networking-overview.md):
+
+- Nasazení a správa [virtuální ch nástavby Azure (VNet)](../../virtual-network/index.yml) a karet virtuálních síťových rozhraní (vNICs) v rámci klientských klientů zákazníků
+- Nasazení a konfigurace [brány Azure Firewall](../../firewall/overview.md) k ochraně prostředků virtuální sítě zákazníků
+- Správa služeb připojení, jako je [Azure Virtual WAN](../../virtual-wan/virtual-wan-about.md), [ExpressRoute](../../expressroute/expressroute-introduction.md)a [BRÁNY VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) pro zákazníky
+- Použití služby Azure Lighthouse k podpoře klíčových scénářů pro [program Azure Networking MSP](../../networking/networking-partners-msp.md)
+
+
 [Zásady Azure](../../governance/policy/index.yml):
 
 - Snímky dodržování předpisů zobrazují podrobnosti o přiřazených zásadách v rámci delegovaných předplatných
@@ -121,10 +129,6 @@ Většinu úkolů a služeb lze provádět v delegovaných prostředcích např�
 - Řešení potíží s virtuálními počítači Azure v klientech zákazníků pomocí diagnostiky spouštění
 - Přístup k virtuálním mům se sériovou konzolou v klientech zákazníků
 - Všimněte si, že službu Azure Active Directory nelze použít pro vzdálené přihlášení k virtuálnímu počítači a nelze integrovat virtuální počítač s trezorem klíčů pro hesla, tajné klíče nebo kryptografické klíče pro šifrování disku.
-
-[Virtuální síť Azure](../../virtual-network/index.yml):
-
-- Nasazení a správa virtuálních sítí a karet virtuálních síťových rozhraní (vNICs) v rámci klientských klientů zákazníků
 
 Žádosti o podporu:
 

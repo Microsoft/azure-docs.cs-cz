@@ -8,38 +8,38 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 2e8938f270ed175c687d975b0b248275ad92f8e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e50f53c65c330265d3d9ec1b1804a7910b632b1d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75775079"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678821"
 ---
-1. Přejděte do **skupin y prostředků** a klikněte na vybranou skupinu prostředků při vytváření prostředku **partnerského vztahu.** Pole *Filtr* můžete použít, pokud máte příliš mnoho skupin zdrojů.
+1. Přejděte do **skupin prostředků**a vyberte skupinu prostředků, kterou jste vybrali při vytváření prostředku **partnerského vztahu.** Pokud máte příliš mnoho skupin prostředků, použijte pole **Filtr.**
 
     > [!div class="mx-imgBorder"]
-    > ![Skupina prostředků partnerského vztahu](../media/setup-direct-get-resourcegroup.png)
+    > ![Skupiny prostředků](../media/setup-direct-get-resourcegroup.png)
 
-1. Klikněte na prostředek **partnerského vztahu,** který jste vytvořili.
+1. Vyberte prostředek **partnerského vztahu,** který jste vytvořili.
 
     > [!div class="mx-imgBorder"]
     > ![Zobrazení prostředku partnerského vztahu](../media/setup-direct-get-open.png)
 
-1. Stránka **Přehled** zobrazuje informace na vysoké úrovni. Dodržujte níže zvýrazněné informace.
+1. Stránka **Přehled** zobrazuje informace na vysoké úrovni, jak je znázorněno zde.
 
     > [!div class="mx-imgBorder"]
-    > ![Zobrazení prostředku partnerského vztahu](../media/setup-direct-get-overview.png)
+    > ![Podokno Přehled zdrojů partnerského vztahu](../media/setup-direct-get-overview.png)
 
-1. Na levé straně klikněte na **informace ASN** pro zobrazení odeslaných informací při vytváření PeerAsn
-
-    > [!div class="mx-imgBorder"]
-    > ![Zobrazení prostředku partnerského vztahu](../media/setup-direct-get-asninfo.png)
-
-1. Vlevo klikněte na **Připojení**. V horní části sledujte souhrn partnerských kontaktů mezi asn a microsoftem v různých zařízeních v rámci metra. Můžete také dospět k souhrnu připojení ze stránky **Přehled** kliknutím na **Připojení** v prostředním podokně, jak je zvýrazněno výše.
+1. Vlevo vyberte **informace ASN,** chcete-li zobrazit informace odeslané při vytvoření peerasn.
 
     > [!div class="mx-imgBorder"]
-    > ![Zobrazení prostředku partnerského vztahu](../media/setup-direct-get-connectionssummary.png)
+    > ![Informace asn zdroje partnerského vztahu](../media/setup-direct-get-asninfo.png)
 
-    * **Stav připojení** odpovídá stavu nastavení připojení partnerského vztahu. Stavy zobrazené v tomto poli postupujte podle diagramu stavu zobrazeného v [návodu k přímému partnerského vztahu](../walkthrough-direct-all.md)
-    * **Stav relace Protokolu IPv4** a **Stav relace IPv6** odpovídají stavům relace Protokolu BGP protokolu IPv4 a IPv6.  
-    * Když vyberete řádek v horní části, část ***Připojení*** v dolní části zobrazí podrobnosti pro každé připojení. Kliknutím na značky se šipkami rozbalíte ***pododdíly Konfigurace***, ***Adresa IPv4*** a ***Adresa IPv6***
+1. Vlevo vyberte **Možnost Připojení**. V horní části obrazovky se zobrazí souhrn partnerských připojení mezi asn a microsoft, v různých zařízeních v rámci metra. K souhrnu připojení můžete přistupovat také ze stránky **Přehled** tak, že vyberete **připojení** uprostřed podokna, jak je znázorněno.
+
+    > [!div class="mx-imgBorder"]
+    > ![Připojení prostředků partnerského vztahu](../media/setup-direct-get-connectionssummary.png)
+
+    * **Stav připojení** odpovídá stavu nastavení připojení partnerského vztahu. Stavy zobrazené v tomto poli postupujte podle diagramu stavu zobrazeného v [návodu k přímému partnerského vztahu](../walkthrough-direct-all.md).
+    * **Stav relace Protokolu IPv4** a **Stav relace IPv6** odpovídají stavům relace Protokolu BGP protokolu IPv4 a IPv6. 
+    * Když vyberete řádek v horní části obrazovky, v části **Připojení** v dolní části se zobrazí podrobnosti pro každé připojení. Výběrem šipek rozbalte **položku Konfigurace**, **Adresa IPv4**a **Adresa IPv6**.

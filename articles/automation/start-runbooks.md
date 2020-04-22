@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 71dd83db02537ed12dc2e711127e32d90603af6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f2c0dda952959db3bffba6016f48b986016c19e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252646"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679451"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Spuštění runbooku ve službě Azure Automation
 
@@ -18,7 +18,7 @@ Následující tabulka vám pomůže určit metodu spuštění sady Runbook v Az
 
 | **Metoda** | **Vlastnosti** |
 | --- | --- |
-| [Portál Azure](#start-a-runbook-with-the-azure-portal) |<li>Nejjednodušší metoda s interaktivním uživatelským rozhraním.<br> <li>Formulář pro poskytnutí jednoduchých hodnot parametrů.<br> <li>Snadno sledovat stav úlohy.<br> <li>Přístup ověřený pomocí přihlášení do Azure. |
+| [portál Azure](#start-a-runbook-with-the-azure-portal) |<li>Nejjednodušší metoda s interaktivním uživatelským rozhraním.<br> <li>Formulář pro poskytnutí jednoduchých hodnot parametrů.<br> <li>Snadno sledovat stav úlohy.<br> <li>Přístup ověřený pomocí přihlášení do Azure. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Volání z příkazového řádku pomocí rutin prostředí Windows PowerShell<br> <li>Může být součástí automatizovaného řešení s více kroky.<br> <li>Požadavek je ověřen pomocí certifikátu nebo uživatelského objektu /instančního objektu OAuth.<br> <li>Poskytněte jednoduché a složité hodnoty parametrů.<br> <li>Sledovat stav úlohy.<br> <li>Klient je vyžadován pro podporu rutin prostředí PowerShell. |
 | [Rozhraní API azure automatizace](/rest/api/automation/) |<li>Nejflexibilnější metoda, ale také nejsložitější.<br> <li>Volání z libovolného vlastního kódu, který může vytvářet požadavky HTTP.<br> <li>Požadavek ověřený pomocí certifikátu nebo oauth user instanční ho .<br> <li>Poskytněte jednoduché a složité hodnoty parametrů. *Pokud voláte runbook Pythonu pomocí rozhraní API, musí být serializována datová část JSON.*<br> <li>Sledovat stav úlohy. |
 | [Webhooky](automation-webhooks.md) |<li>Spusťte runbook z jednoho požadavku HTTP.<br> <li>Ověřeno pomocí tokenu zabezpečení v adrese URL.<br> <li>Klient nemůže přepsat hodnoty parametrů zadané při vytvoření webhooku. Runbook můžete definovat jeden parametr, který je naplněn podrobnosti požadavku HTTP.<br> <li>Žádná možnost sledovat stav úlohy prostřednictvím adresy URL webhooku. |
@@ -30,47 +30,8 @@ Následující obrázek znázorňuje podrobný postup v životním cyklu runbook
 
 ![Architektura runbooku](media/automation-starting-runbook/runbooks-architecture.png)
 
-## <a name="start-a-runbook-with-the-azure-portal"></a>Spuštění runbooku s portálem Azure
-
-1. Na webu Azure Portal vyberte **Automatizace** a klikněte na název účtu automatizace.
-2. V nabídce Hub vyberte **Runbook .**
-3. Na stránce **Runbook** vyberte runbook a klikněte na **Start**.
-4. Pokud má runbook parametry, budete vyzváni k zadání hodnot s textovým polem pro každý parametr. Další informace o parametrech naleznete v tématu [Parametry knihy Runbook](#runbook-parameters).
-5. Na stránce **Úloha** můžete zobrazit stav úlohy runbooku.
-
-## <a name="start-a-runbook-with-powershell"></a>Spuštění runbooku s PowerShellem
-
-Pomocí sady [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) můžete spustit runbook s prostředím Windows PowerShell. Následující ukázkový kód spustí Runbook s názvem Test-Runbook.
-
-```azurepowershell-interactive
-Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
-```
-
-Start-AzureRmAutomationRunbook vrátí objekt úlohy, který můžete použít ke sledování jeho stavu po spuštění sady Runbook. Potom můžete použít tento objekt úlohy s [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) k určení stavu úlohy a [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) získat jeho výstup. Následující vzorový kód spustí Runbook s názvem Test-Runbook, počká na jeho dokončení a potom zobrazí jeho výstup.
-
-```azurepowershell-interactive
-$runbookName = "Test-Runbook"
-$ResourceGroup = "ResourceGroup01"
-$AutomationAcct = "MyAutomationAccount"
-
-$job = Start-AzureRmAutomationRunbook –AutomationAccountName $AutomationAcct -Name $runbookName -ResourceGroupName $ResourceGroup
-
-$doLoop = $true
-While ($doLoop) {
-   $job = Get-AzureRmAutomationJob –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup
-   $status = $job.Status
-   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
-}
-
-Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
-```
-
-Pokud runbook vyžaduje parametry, musíte je zadat jako [hodnotitelnou hodnotu hash .](https://technet.microsoft.com/library/hh847780.aspx) Klíč hodnoty hashtable musí odpovídat názvu parametru a hodnota je hodnota parametru. Následující příklad ukazuje spuštění Runbooku se dvěma řetězcovými parametry s názvy FirstName a LastName, celočíselným parametrem s názvem RepeatCount a logickým parametrem s názvem Show. Další informace o parametrech najdete v tématu [Parametry runbooku](#runbook-parameters) níže.
-
-```azurepowershell-interactive
-$params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
-Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -ResourceGroupName "ResourceGroup01" –Parameters $params
-```
+>[!NOTE]
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="runbook-parameters"></a>Parametry runbooku
 
@@ -153,9 +114,7 @@ Smith
 
 ### <a name="credentials"></a>Přihlašovací údaje
 
-Pokud je parametrem datový typ **PSCredential**, můžete zadat název [datového prostředku](automation-credentials.md)Azure Automation . Runbook načte pověření s názvem, který zadáte.
-
-Zkuste použít následující testovací Runbook, který přijme parametr s názvem credential.
+Pokud je parametrem `PSCredential`datový typ , můžete zadat název [datového prostředku](automation-credentials.md)Azure Automation . Runbook načte pověření s názvem, který zadáte. Následující testovací kniha Runbook přijímá `credential`parametr nazvaný .
 
 ```powershell
 Workflow Test-Parameters
@@ -167,20 +126,62 @@ Workflow Test-Parameters
 }
 ```
 
-Následující text lze použít pro parametr uživatele za předpokladu, že existuje datový zdroj pověření s názvem *Moje pověření*.
+Následující text lze použít pro parametr uživatele za předpokladu, že byl použit `My Credential`datový zdroj pověření .
 
 ```input
 My Credential
 ```
 
-Za předpokladu, že uživatelské jméno v pověření bylo *jsmith*, výsledkem je následující výstup:
+Za předpokladu, že uživatelské `jsmith`jméno v pověření je , zobrazí se následující výstup.
 
 ```output
 jsmith
 ```
 
+## <a name="start-a-runbook-with-the-azure-portal"></a>Spuštění runbooku s portálem Azure
+
+1. Na webu Azure Portal vyberte **Automatizace** a klikněte na název účtu Automation.
+2. V nabídce Hub vyberte **Runbook .**
+3. Na stránce Runbook vyberte runbook a klikněte na **Start**.
+4. Pokud má runbook parametry, budete vyzváni k zadání hodnot s textovým polem pro každý parametr. Další informace o parametrech naleznete v tématu [Parametry knihy Runbook](#runbook-parameters).
+5. V podokně Úlohy můžete zobrazit stav úlohy runbooku.
+
+## <a name="start-a-runbook-with-powershell"></a>Spuštění runbooku s PowerShellem
+
+Pomocí knihy [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) můžete spustit runbook s prostředím Windows PowerShell. Následující ukázkový kód spustí runbook s názvem **Test-Runbook**.
+
+```azurepowershell-interactive
+Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
+```
+
+`Start-AzAutomationRunbook`vrátí objekt úlohy, který můžete použít ke sledování stavu po spuštění runbooku. Potom můžete použít tento objekt úlohy s [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) k určení stavu úlohy a [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0) načíst jeho výstup. Následující příklad spustí runbook s názvem **Test-Runbook**, čeká, až bude dokončena a potom zobrazí jeho výstup.
+
+```azurepowershell-interactive
+$runbookName = "Test-Runbook"
+$ResourceGroup = "ResourceGroup01"
+$AutomationAcct = "MyAutomationAccount"
+
+$job = Start-AzAutomationRunbook –AutomationAccountName $AutomationAcct -Name $runbookName -ResourceGroupName $ResourceGroup
+
+$doLoop = $true
+While ($doLoop) {
+   $job = Get-AzAutomationJob –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup
+   $status = $job.Status
+   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
+}
+
+Get-AzAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
+```
+
+Pokud runbook vyžaduje parametry, musíte je zadat jako [hodnotitelnou hodnotu hash .](https://technet.microsoft.com/library/hh847780.aspx) Klíč hodnoty hashtable musí odpovídat názvu parametru a hodnota je hodnota parametru. Následující příklad ukazuje spuštění Runbooku se dvěma řetězcovými parametry s názvy FirstName a LastName, celočíselným parametrem s názvem RepeatCount a logickým parametrem s názvem Show. Další informace o parametrech naleznete v tématu [Parametry knihy Runbook](#runbook-parameters).
+
+```azurepowershell-interactive
+$params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
+Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -ResourceGroupName "ResourceGroup01" –Parameters $params
+```
+
 ## <a name="next-steps"></a>Další kroky
 
-* Architektura sady Runbook v aktuálním článku poskytuje podrobný přehled runbooků, které spravují prostředky v Azure a místně pomocí hybridního pracovníka runbooku. Další informace o provádění runbooků Automatizace v datovém centru najdete [v hybridních pracovnících runbooku](automation-hybrid-runbook-worker.md).
+* Další informace o provádění runbooků Automatizace v datovém centru najdete [v hybridních pracovnících runbooku](automation-hybrid-runbook-worker.md).
 * Další informace o vytváření modulárních runbooků, které mají používat jiné sady Runbook pro specifické nebo běžné funkce, naleznete v [tématu Child Runbook](automation-child-runbooks.md).
 * Další informace o prostředí PowerShell, včetně jazykových odkazů a výukových modulů, najdete v dokumentu [PowerShell](https://docs.microsoft.com/powershell/scripting/overview).

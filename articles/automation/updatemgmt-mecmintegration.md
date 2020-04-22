@@ -1,5 +1,5 @@
 ---
-title: Použití azure správy aktualizací s klienty Configuration Manageru
+title: Použití správy aktualizací Azure Automation s klienty Configuration Manageru
 description: Tento článek vám pomůže nakonfigurovat nástroj Microsoft Endpoint Configuration Manager s tímto řešením pro nasazení aktualizací softwaru pro klienty ConfigMgr.
 services: automation
 ms.subservice: update-management
@@ -7,18 +7,18 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: f0ca836e3b53c3cce755d45b50fe168073f0bbaa
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 32a077c476d9669c3f32bd4040fdc8ff90156c19
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81618721"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678735"
 ---
 # <a name="deploy-updates-to-microsoft-endpoint-configuration-manager-clients-with-update-management"></a>Nasazení aktualizací klientům nástroje Microsoft Endpoint Configuration Manager pomocí správy aktualizací
 
 Zákazníci, kteří investovali do nástroje Microsoft Endpoint Configuration Manager pro správu počítačů, serverů a mobilních zařízení, se také spoléhají na svou sílu a vyspělost při správě aktualizací softwaru v rámci cyklu správy aktualizací softwaru (SUM).
 
-Spravované servery Windows můžete vykazovat a aktualizovat vytvořením a předstagingním nasazením aktualizací softwaru ve Správci konfigurace a získat podrobný stav dokončených nasazení aktualizací pomocí [řešení správy aktualizací](automation-update-management.md). Pokud nástroj Configuration Manager používáte pro vytváření sestav dodržování předpisů aktualizací, ale ne pro správu nasazení aktualizací se servery windows, můžete pokračovat v podávání zpráv nástroji Configuration Manager, zatímco aktualizace zabezpečení jsou spravovány pomocí řešení správy aktualizací.
+Spravované servery Windows můžete vykazovat a aktualizovat vytvořením a předstagingním nasazením aktualizací softwaru ve Správci konfigurace a získat podrobný stav dokončených nasazení aktualizací pomocí [služby Správa aktualizací](automation-update-management.md). Pokud nástroj Configuration Manager používáte pro vytváření sestav dodržování předpisů aktualizací, ale ne pro správu nasazení aktualizací se servery windows, můžete pokračovat v podávání zpráv nástroji Configuration Manager, zatímco aktualizace zabezpečení jsou spravovány pomocí řešení správy aktualizací.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,7 +37,7 @@ Pokud budete nadále spravovat nasazení aktualizace z Configuration Manageru, p
 
 1. Vytvořte nasazení aktualizací softwaru z lokality nejvyšší úrovně v hierarchii nástroje Configuration Manager pomocí postupu popsaného v části [Nasazení aktualizací softwaru](https://docs.microsoft.com/configmgr/sum/deploy-use/deploy-software-updates). Jediným nastavením, které se musí nakonfigurovat jinak než u standardního nasazení, je možnost **Neinstalovat softwarové aktualizace**, která řídí řízení chování balíčku pro nasazení při stahování. Toto chování je spravováno řešením správy aktualizací vytvořením naplánovaného nasazení aktualizace v dalším kroku.
 
-1. V Azure Automation vyberte **Správa aktualizací**. Vytvořte nové nasazení podle kroků popsaných v [části Vytvoření nasazení aktualizace](automation-tutorial-update-management.md#schedule-an-update-deployment) a v rozevíracím seznamu **Typ** vyberte **příslušnou** kolekci nástroje Configuration Manager. Mějte na paměti následující důležité body: a. Pokud je okno údržby definováno ve vybrané kolekci zařízení Nástroje configuration manageru, členové kolekce ho respektují namísto nastavení **Doba trvání** definovanév naplánovaném nasazení.
+1. V Azure Automation vyberte **Správa aktualizací**. Vytvořte nové nasazení podle kroků popsaných v [části Vytvoření nasazení aktualizace](automation-tutorial-update-management.md#schedule-an-update-deployment) a v rozevíracím seznamu **Typ** vyberte **importované skupiny** a vyberte příslušnou kolekci nástroje Configuration Manager. Mějte na paměti následující důležité body: a. Pokud je okno údržby definováno ve vybrané kolekci zařízení Nástroje configuration manageru, členové kolekce ho respektují namísto nastavení **Doba trvání** definovanév naplánovaném nasazení.
     b. Členové cílové kolekce musí mít připojení k Internetu (přímé, prostřednictvím proxy serveru nebo prostřednictvím brány Log Analytics).
 
 Po dokončení nasazení aktualizace prostřednictvím Azure Automation budou cílové počítače, které jsou členy vybrané skupiny počítačů, instalovat aktualizace v naplánovaný čas z mezipaměti místního klienta. Můžete si [zobrazit stav nasazení aktualizací](automation-tutorial-update-management.md#view-results-of-an-update-deployment) a monitorovat výsledky nasazení.

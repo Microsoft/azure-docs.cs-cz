@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77157852"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682042"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k rozhraní API služby Azure Media Services s využitím ověřování Azure AD  
 
@@ -79,7 +79,7 @@ V předchozím diagramu čísla představují tok požadavků v chronologickém 
        Informace o tenantovi se můžou načítat z webu Azure Portal. Umístěte kurzor na jméno přihlášeného uživatele v pravém horním rohu.
    * Identifikátor URI prostředku mediálních služeb. 
 
-       Tento identifikátor URI je stejný pro účty mediálních služeb, https://rest.media.azure.net)které jsou ve stejném prostředí Azure (například .
+       Tento identifikátor URI je stejný pro účty mediálních služeb, které\/jsou ve stejném prostředí Azure (například https: /rest.media.azure.net).
 
    * Media Services (nativní) ID klienta aplikace.
    * Identifikátor URI přesměrovává aplikace Media Services (nativní)
@@ -121,7 +121,7 @@ Na předchozím obrázku představují čísla tok požadavků v chronologickém
        Informace o tenantovi se můžou načítat z webu Azure Portal. Umístěte kurzor na jméno přihlášeného uživatele v pravém horním rohu.
    * Identifikátor URI prostředku mediálních služeb. 
 
-       Tento identifikátor URI je stejný pro účty mediálních služeb, které https://rest.media.azure.net)jsou umístěny ve stejném prostředí Azure (například .
+       Tento identifikátor URI je stejný pro účty mediálních služeb, které jsou\/umístěny ve stejném prostředí Azure (například https: /rest.media.azure.net).
 
    * Identifikátor URI prostředků pro službu REST Media Services.
 
@@ -139,7 +139,7 @@ Další informace o tom, jak používat ověřování Azure AD ke komunikaci s p
 
 Pokud nepoužíváte sadku SDK klienta Media Services .NET, musíte ručně vytvořit požadavek na token Azure AD pomocí parametrů popsaných v kroku 1. Další informace najdete v [tématu Jak pomocí knihovny ověřování Azure AD získat token Azure AD](../../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Výjimka: "Vzdálený server vrátil chybu: (401) Neautorizováno."
 

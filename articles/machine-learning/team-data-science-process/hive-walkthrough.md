@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283417"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677460"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Proces vědecké ho procesu týmových dat v akci: Použijte clustery Azure HDInsight Hadoop
 V tomto návodu používáme [proces vědecké analýzy týmových dat (TDSP)](overview.md) v komplexním scénáři. Používáme [cluster Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, zkoumání a inženýrských funkcí dat z veřejně dostupné datové sady [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) a k down-sample data. Chcete-li zpracovat binární a vícetřídní klasifikace a regresní prediktivní úkoly, vytváříme modely dat s Azure Machine Learning. 
@@ -721,7 +721,7 @@ Chcete-li vydat dotazy Hive v modulu [Import dat][import-data] strojového učen
 
 Zde jsou některé podrobnosti o modulu [Import dat][import-data] a parametry pro vstup:
 
-**Identifikátor URI serveru HCatalog**: Pokud je název clusteru **abc123**, použijte: https://abc123.azurehdinsight.net.
+**Identifikátor URI serveru HCatalog**: Pokud je název clusteru\/ **abc123**, použijte: https: /abc123.azurehdinsight.net.
 
 **Název uživatelského účtu Hadoop**: Uživatelské jméno zvolené pro cluster (nikoli uživatelské jméno vzdáleného přístupu).
 

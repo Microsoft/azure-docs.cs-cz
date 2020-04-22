@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s řešením pro správu Azure Automation
-description: Zjistěte, jak řešit chyby při zařazování pomocí řešení Správa aktualizací, Sledování změn a Inventář
+title: Řešení potíží s registrací řešení pro správu Azure Automation
+description: Přečtěte si, jak řešit chyby při zapisování řešení.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,24 +8,24 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ae359e5210a9a11c33dd3ff9b474e28aa2548c57
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: da5152b459f54cbaae5ec168f103f23a237edebd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536960"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679237"
 ---
-# <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Poradce při potížích při zařazování správy aktualizací, sledování změn a inventáře
+# <a name="troubleshoot-solution-onboarding"></a>Poradce při potížích s připisováním řešení
 
-Při řešeních registrace, jako je správa aktualizací nebo sledování změn a inventář, se může vyskytnut počet chyb. Tento článek popisuje různé chyby, které mohou nastat a jak je vyřešit.
+Při zapisování řešení správy aktualizací nebo řešení sledování změn a zásob se mohou zobrazit chyby. Tento článek popisuje různé chyby, které mohou nastat a jak je vyřešit.
 
 ## <a name="known-issues"></a>Známé problémy
 
-### <a name="scenario-renaming-a-registered-node-requires-unregister--register-again"></a><a name="node-rename"></a>Scénář: Přejmenování registrovaného uzlu vyžaduje znovu zrušit registraci / registraci.
+### <a name="scenario-renaming-a-registered-node-requires-unregister-or-register-again"></a><a name="node-rename"></a>Scénář: Přejmenování registrovaného uzlu vyžaduje zrušení registrace nebo opětovné registrace.
 
 #### <a name="issue"></a>Problém
 
-Uzel je registrován na Azure Automation a potom se změní název počítače operačního systému.  Sestavy z uzlu se nadále zobrazují s původním názvem.
+Uzel je zaregistrován na Azure Automation a potom se změní název počítače operačního systému. Sestavy z uzlu se nadále zobrazují s původním názvem.
 
 #### <a name="cause"></a>Příčina
 
@@ -33,14 +33,13 @@ Přejmenování registrovaných uzlů neaktualizuje název uzlu v Azure Automati
 
 #### <a name="resolution"></a>Řešení
 
-Zrušení registrace uzlu z konfigurace stavu azure automatizace a pak jej znovu zaregistrovat.  Zprávy publikované do služby před tímto časem již nebudou k dispozici.
-
+Zrušení registrace uzlu z konfigurace stavu azure automatizace a pak jej znovu zaregistrovat. Zprávy publikované do služby před tímto časem již nebudou k dispozici.
 
 ### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>Scénář: Opětovné podepisování certifikátů přes proxy server https není podporováno.
 
 #### <a name="issue"></a>Problém
 
-Zákazníci hlásili, že při připojení prostřednictvím proxy řešení, které ukončí přenoshttps a pak znovu šifruje provoz pomocí nového certifikátu, služba neumožňuje připojení.
+Při připojování prostřednictvím proxy řešení, které ukončí provoz HTTPS a potom znovu zašifruje provoz pomocí nového certifikátu, služba neumožňuje připojení.
 
 #### <a name="cause"></a>Příčina
 
@@ -48,7 +47,7 @@ Azure Automation nepodporuje znovu podpisové certifikáty používané k šifro
 
 #### <a name="resolution"></a>Řešení
 
-Pro tento problém neexistuje alternativní řešení.
+V současné době neexistuje žádné řešení tohoto problému.
 
 ## <a name="general-errors"></a>Obecné chyby
 
@@ -68,13 +67,13 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba je způsobena nesprávnými nebo chybějícími oprávněními ve virtuálním počítači, pracovním prostoru nebo pro uživatele.
+Tato chyba je způsobena nesprávnými nebo chybějícími oprávněními na virtuálním počítači nebo pracovním prostoru nebo pro uživatele.
 
 #### <a name="resolution"></a>Řešení
 
-Ujistěte se, že máte správná oprávnění k připojení virtuálního počítače. Zkontrolujte [oprávnění potřebná k nasazení počítačů](../automation-role-based-access-control.md#onboarding-permissions) a pokuste se znovu zadat řešení. Pokud se zobrazí `The solution cannot be enabled on this VM because the permission to read the workspace is missing`chyba , ujistěte se, že máte `Microsoft.OperationalInsights/workspaces/read` oprávnění k nalezení, pokud je virtuální počítač na palubě do pracovního prostoru.
+Ujistěte se, že máte správná [oprávnění potřebná pro palubní počítače](../automation-role-based-access-control.md#onboarding-permissions) a zkuste znovu zadat řešení. Pokud se zobrazí `The solution cannot be enabled on this VM because the permission to read the workspace is missing`chyba , ujistěte se, že máte `Microsoft.OperationalInsights/workspaces/read` oprávnění k nalezení, pokud je virtuální počítač na palubě do pracovního prostoru.
 
-### <a name="scenario-onboarding-fails-with-the-message---failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scénář: Registrace se nezdaří se zprávou – nepodařilo se nakonfigurovat účet automatizace pro protokolování diagnostiky.
+### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scénář: Registrace se nezdaří se zprávou: Nepodařilo se nakonfigurovat účet automatizace pro protokolování diagnostiky.
 
 #### <a name="issue"></a>Problém
 
@@ -86,7 +85,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba může být způsobena, pokud cenová úroveň neodpovídá fakturačnímu modelu předplatného. Další informace najdete [v tématu Sledování využití a odhadovaných nákladů ve službě Azure Monitor](https://aka.ms/PricingTierWarning).
+Tato chyba může být způsobena, pokud cenová úroveň neodpovídá fakturačnímu modelu předplatného. Viz [Sledování využití a odhadované náklady ve službě Azure Monitor](https://aka.ms/PricingTierWarning).
 
 #### <a name="resolution"></a>Řešení
 
@@ -96,37 +95,36 @@ Vytvořte pracovní prostor Log Analytics ručně a opakujte proces registrace a
 
 #### <a name="issue"></a>Problém
 
-Tento kód chyby znamená, že uložený dotaz skupiny vyhledávacích počítačů použitý k cílení na řešení nebyl správně formátován. 
+Tento kód chyby znamená, že uložený dotaz skupiny vyhledávacích počítačů použitý k cílení na řešení není správně formátován. 
 
 #### <a name="cause"></a>Příčina
 
-Pravděpodobně jste změnili dotaz nebo byl změněn systémem.
+Je možné, že jste změnili dotaz nebo jej systém změnil.
 
 #### <a name="resolution"></a>Řešení
 
-Můžete odstranit dotaz pro toto řešení a reonboard řešení, které znovu vytvoří dotaz. Dotaz najdete v pracovním prostoru v části **Uložená hledání**. Název dotazu je **MicrosoftDefaultComputerGroup**a kategorie dotazu je název řešení přidruženého k tomuto dotazu. Pokud je povoleno více řešení, **microsoftdefaultcomputergroup** se zobrazí vícekrát v části **Uložená hledání**.
+Můžete odstranit dotaz pro řešení a potom znovu zadejte řešení, které znovu vytvoří dotaz. Dotaz najdete v pracovním prostoru v části **Uložená hledání**. Název dotazu je **MicrosoftDefaultComputerGroup**a kategorie dotazu je název přidruženého řešení. Pokud je povoleno více řešení, dotaz **MicrosoftDefaultComputerGroup** se v části **Uložená hledání**zobrazí vícekrát .
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Scénář: PolicyViolation
 
 #### <a name="issue"></a>Problém
 
-Tento kód chyby znamená, že nasazení se nezdařilo z důvodu porušení jedné nebo více zásad.
+Tento kód chyby označuje, že nasazení se nezdařilo z důvodu porušení jedné nebo více zásad.
 
 #### <a name="cause"></a>Příčina 
 
-Zásada je na místě, která blokuje dokončení operace.
+Zásada blokuje dokončení operace.
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li úspěšně nasadit řešení, je třeba zvážit změnu uvedené zásady. Vzhledem k tomu, že existuje mnoho různých typů zásad, které lze definovat, konkrétní požadované změny závisí na zásadách, které jsou porušeny. Pokud byla například definována zásada pro skupinu prostředků, která odepřela oprávnění ke změně obsahu určitých typů prostředků v rámci této skupiny prostředků, můžete například provést některou z následujících akcí:
+Chcete-li úspěšně nasadit řešení, musíte zvážit změnu uvedené zásady. Vzhledem k tomu, že existuje mnoho různých typů zásad, které lze definovat, požadované změny závisí na zásadách, které jsou porušeny. Pokud je například definována zásada pro skupinu prostředků, která odepře oprávnění ke změně obsahu některých obsažených prostředků, můžete zvolit jednu z těchto oprav:
 
 * Odeberte zásady úplně.
-* Pokuste se nastoupit do jiné skupiny prostředků.
-* Revidovat zásady, například takto:
-  * Opětovné zacílení zásady na konkrétní prostředek (například na konkrétní účet automatizace).
-  * Přehodnoce sady prostředků, které byly zásady nakonfigurovány tak, aby je odepřela.
+* Pokuste se zavést řešení do jiné skupiny prostředků.
+* Znovu zacilte zásadu na konkrétní prostředek, například na účet automatizace.
+* Revidovat sadu prostředků, které je nakonfigurován zásady odepřít.
 
-Zkontrolujte oznámení v pravém horním rohu portálu Azure nebo přejděte do skupiny prostředků, která obsahuje váš účet automatizace a vyberte **nasazení** v části **Nastavení,** chcete-li zobrazit neúspěšné nasazení. Další informace o azure [zásadách](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)najdete na webu: Přehled zásad Azure .
+Zkontrolujte oznámení v pravém horním rohu portálu Azure nebo přejděte do skupiny prostředků, která obsahuje váš účet Automation a vyberte **nasazení** v části **Nastavení,** chcete-li zobrazit neúspěšné nasazení. Další informace o zásadách Azure najdete v [tématu Přehled zásad Azure](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>Scénář: Chyby při pokusu o odpojení pracovního prostoru
 
@@ -140,37 +138,33 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Příčina
 
-K této chybě dochází, pokud máte stále aktivní řešení v pracovním prostoru Log Analytics, která závisí na propojení vašeho účtu automation a log analytics.
+K této chybě dochází, pokud máte stále aktivní řešení v pracovním prostoru Log Analytics, která závisí na vašem účtu Automation a pracovním prostoru Log Analytics, který je propojen.
 
 ### <a name="resolution"></a>Řešení
 
-Chcete-li tento problém vyřešit, budete muset z pracovního prostoru odebrat následující řešení, pokud je používáte:
+Pokud je používáte, odeberte z pracovního prostoru následující řešení:
 
 * Update Management
-* Sledování změn
+* Change Tracking a Inventory
 * Spuštění/zastavení virtuálních počítačů mimo špičku
 
-Po odebrání řešení můžete pracovní prostor odpojit. Je důležité vyčistit všechny existující artefakty z těchto řešení z vašeho pracovního prostoru a účet automatizace také.  
+Po odebrání řešení můžete pracovní prostor odpojit. Je důležité vyčistit všechny existující artefakty z těchto řešení z vašeho pracovního prostoru a vašeho účtu automation 
 
-* Update Management
-  * Odebrání nasazení aktualizací (plánů) z účtu automatizace
-* Spuštění/zastavení virtuálních počítačů mimo špičku
-  * Odstraňte všechny zámky na součásti řešení v účtu automatizace v části **Zámky** > **nastavení**.
-  * Další kroky k odebrání spuštění a zastavení virtuálních mích během mimo pracovní dobu řešení, viz [Odebrání spuštění a zastavení virtuálního virtuálního mísa během mimo pracovní dobu řešení](../automation-solution-vm-management.md#remove-the-solution).
+* V případě správy aktualizací odeberte z účtu automatizace nasazení aktualizací (plány).
+* Pro spuštění a zastavení virtuálních počítačů během mimo pracovní dobu odeberte všechny zámky na součásti řešení v účtu automatizace v části**Zámky** **nastavení** > . Viz [Odebrání spuštění a zastavení virtuálních měn během mimopracovní ho řešení](../automation-solution-vm-management.md#remove-the-solution).
 
-## <a name="mma-extension-failures"></a><a name="mma-extension-failures"></a>Selhání rozšíření MMA
+## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Protokol Analytics pro selhání rozšíření systému Windows
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Při nasazování řešení se nasazují různé související prostředky. Jedním z těchto prostředků je Microsoft Monitoring Agent Rozšíření nebo Log Analytics agent pro Linux. Jedná se o rozšíření virtuálních strojů nainstalovaná agentem hosta virtuálního počítače, který je zodpovědný za komunikaci s nakonfigurovaným pracovním prostorem Log Analytics za účelem pozdější koordinace stahování binárních souborů a dalších souborů, na kterých závisí řešení, na které jste onboarding závisí, jakmile začne spouštět.
-Obvykle se nejprve dozvíte o agentovi MMA nebo Log Analytics pro selhání instalace Linuxu z oznámení, které se zobrazí v centru Oznámení. Kliknutím na toto oznámení získáte další informace o konkrétním selhání. Navigace k prostředku skupiny prostředků a potom na nasazení elementu v něm také obsahuje podrobnosti o selhání nasazení, ke kterým došlo.
-Instalace agenta MMA nebo Log Analytics pro Linux může selhat z různých důvodů a kroky k řešení těchto chyb se liší v závislosti na problému. Postupujte podle konkrétních kroků pro řešení potíží.
+Instalace agenta Log Analytics pro rozšíření systému Windows může selhat z různých důvodů. Následující část popisuje problémy s přiřazováním, které mohou způsobit chyby během nasazení agenta Log Analytics pro rozšíření systému Windows.
 
-Následující část popisuje různé problémy, které můžete narazit při zapisování, které způsobují selhání v nasazení rozšíření MMA.
+>[!NOTE]
+>Agent Log Analytics pro Windows je název, který se aktuálně používá v Azure Automation pro Microsoft Monitoring Agent (MMA).
 
 ### <a name="scenario-an-exception-occurred-during-a-webclient-request"></a><a name="webclient-exception"></a>Scénář: Během požadavku webového klienta došlo k výjimce.
 
-Rozšíření MMA ve virtuálním počítači nemůže komunikovat s externími prostředky a nasazení se nezdaří.
+Log Analytics pro Windows rozšíření na virtuálním počítači není schopen komunikovat s externími prostředky a nasazení se nezdaří.
 
 #### <a name="issue"></a>Problém
 
@@ -188,8 +182,7 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 Některé potenciální příčiny této chyby jsou:
 
-* Ve virtuálním počítače je nakonfigurovaný proxy server, který povoluje jenom konkrétní porty.
-
+* Proxy server nakonfigurovaný ve virtuálním počítače povoluje jenom konkrétní porty.
 * Nastavení brány firewall zablokovalo přístup k požadovaným portům a adresám.
 
 #### <a name="resolution"></a>Řešení
@@ -198,7 +191,7 @@ Ujistěte se, že máte správné porty a adresy otevřené pro komunikaci. Sezn
 
 ### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>Scénář: Instalace se nezdařila z důvodu přechodných problémů s prostředím.
 
-Instalace rozšíření Microsoft Monitoring Agent se nezdařila během nasazení z důvodu jiné instalace nebo akce blokující instalaci
+Instalace rozšíření Log Analytics pro systém Windows se nezdařila během nasazení z důvodu jiné instalace nebo akce blokující instalaci
 
 #### <a name="issue"></a>Problém
 
@@ -220,20 +213,20 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 
 Některé potenciální příčiny této chyby jsou:
 
-* Probíhá další instalace
-* Systém se spustí restartovat během nasazení šablony
+* Probíhá jiná instalace.
+* Systém se spustí restartovat během nasazení šablony.
 
 #### <a name="resolution"></a>Řešení
 
-Tato chyba je přechodná chyba v přírodě. Opakujte nasazení k instalaci rozšíření.
+Tato chyba je přechodné povahy. Opakujte nasazení k instalaci rozšíření.
 
 ### <a name="scenario-installation-timeout"></a><a name="installation-timeout"></a>Scénář: Časový limit instalace
 
-Instalace rozšíření MMA nebyla dokončena z důvodu časového oddlužení.
+Instalace log Analytics pro windows rozšíření nebylo dokončeno z důvodu časového odčasového časového roku.
 
 #### <a name="issue"></a>Problém
 
-Následující příklad je chybová zpráva, která může být vrácena:
+Následuje příklad chybové zprávy, která může být vrácena:
 
 ```error
 Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent, version 1.0.11081.4) with exception Command C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.11081.4\MMAExtensionInstall.exe of Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent has exited with Exit code: 15614
@@ -241,16 +234,16 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 #### <a name="cause"></a>Příčina
 
-K této chybě dochází, protože virtuální počítač je pod velkým zatížením během instalace.
+K tomuto typu chyby dochází, protože virtuální měnový virtuální míchaný je během instalace pod velkým zatížením.
 
 ### <a name="resolution"></a>Řešení
 
-Pokuste se nainstalovat rozšíření MMA, když je virtuální měna pod nižším zatížením.
+Pokuste se nainstalovat agenta Log Analytics pro rozšíření Systému Windows, když je virtuální měna pod nižším zatížením.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
+Pokud problém nevidíte výše nebo nemůžete problém vyřešit, vyzkoušejte další podporu jedním z následujících kanálů:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s – oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí propojením komunity Azure se správnými prostředky: odpověďmi, podporou a odborníky.
-* Pokud potřebujete další pomoc, můžete nastolet incident podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.
+* Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure .](https://azure.microsoft.com/support/forums/)
+* Spojte [@AzureSupport](https://twitter.com/azuresupport)se s oficiálním účtem Microsoft Azure a vylepšete tak zákaznickou zkušenost propojením komunity Azure se správnými prostředky: odpověďmi, podporou a odborníky.
+* Soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.

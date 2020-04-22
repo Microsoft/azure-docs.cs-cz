@@ -7,25 +7,23 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/24/2020
-ms.openlocfilehash: 888f24e13ce67c878592068927383dd8cbfefa60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 4f2e8b2a691a6b17b5ed075745d556db4e330535
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623092"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682464"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Použití Apache Sparku ke čtení a zápisu dat Apache HBase
 
-Apache HBase je obvykle dotazován buď s jeho low-level API (skenuje, dostane a staví) nebo se syntaxí SQL pomocí Apache Phoenix. Apache také poskytuje Apache Spark HBase Connector, což je pohodlná a výkonná alternativa k dotazování a úpravám dat uložených společností HBase.
+Apache HBase je obvykle dotazován buď s jeho low-level API (skenuje, dostane a staví) nebo se syntaxí SQL pomocí Apache Phoenix. Apache také poskytuje Apache Spark HBase Konektor. Konektor je pohodlná a výkonná alternativa k dotazování a úpravám dat uložených společností HBase.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Dva samostatné clustery HDInsight nasazené ve stejné [virtuální síti](./hdinsight-plan-virtual-network-deployment.md). Jedna HBase a jedna Spark s nainstalovanou alespoň Spark 2.1 (HDInsight 3.6). Další informace najdete [v tématu Vytváření clusterů založených na Linuxu ve službě HDInsight pomocí portálu Azure](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* Klient SSH. Další informace naleznete [v tématu Připojení k HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-* [Schéma URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. Toto schéma by bylo wasb:// pro Azure Blob Storage, abfs:// pro Azure Data Lake Storage Gen2 nebo adl:// pro Azure Data Lake Storage Gen1. Pokud je pro úložiště objektů BLOB povolen `wasbs://`zabezpečený přenos, identifikátor URI bude .  Viz také [bezpečný přenos](../storage/common/storage-require-secure-transfer.md).
+* Schéma URI pro primární úložiště clusterů. Toto schéma by bylo wasb:// `abfs://` pro Azure Blob Storage, pro Azure Data Lake Storage Gen2 nebo adl:// pro Azure Data Lake Storage Gen1. Pokud je pro úložiště objektů BLOB povolen `wasbs://`zabezpečený přenos, identifikátor URI bude .  Viz také [bezpečný přenos](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Celkový proces
 
@@ -152,7 +150,7 @@ V tomto kroku definujete objekt katalogu, který mapuje schéma z Apache Spark n
     |}""".stripMargin
     ```
 
-    Kód provádí následující akce:  
+    Kód provádí následující úkony:  
 
      a. Definujte schéma katalogu pro tabulku HBase s názvem `Contacts`.  
      b. Identifikujte řádek jako `key`a namapujte názvy sloupců použité v Spark na rodinu sloupců, název sloupce a typ sloupce, jak je použit v HBase.  

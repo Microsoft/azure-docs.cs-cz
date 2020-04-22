@@ -1,24 +1,24 @@
 ---
-title: Standardní smlouva | Azure
+title: Standardní smlouva | Azure Marketplace
 description: Standardní kontrakt pro Azure Marketplace a AppSource
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 00a83a1b3005043f317ed49cafa735540cd21793
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284955"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681451"
 ---
 # <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standardní smlouva pro komerční trh společnosti Microsoft
 
 Aby se zjednodušil proces zásobování zákazníků a snížila se právní složitost pro dodavatele softwaru, nabízí společnost Microsoft standardní smlouvu pro komerční tržiště společnosti Microsoft, která usnadňuje transakce na trhu. Namísto vytváření vlastních smluvních podmínek se vydavatelé komerčního trhu mohou rozhodnout nabízet svůj software podle standardní smlouvy, kterou zákazníci potřebují pouze jednou projet a přijmout. Standardní smlouvu naleznete zde: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178).
 
-Podmínky nabídky jsou definovány při vytváření nabídky v Partnerském centru nebo na portálu partnerů cloudu. Místo poskytování vlastních smluvních podmínek můžete zvolit použití standardní smlouvy pro komerční tržiště společnosti Microsoft.
+Podmínky nabídky jsou definovány při vytváření nabídky v Partnerském centru. Místo poskytování vlastních smluvních podmínek můžete zvolit použití standardní smlouvy pro komerční tržiště společnosti Microsoft.
 
 >[!Note]
 >Jakmile publikujete nabídku pomocí smlouvy Standard pro komerční tržiště společnosti Microsoft, nebudete moci používat vlastní smluvní podmínky. Je to "nebo" scénář. Buď nabízíte své řešení podle standardní *smlouvy, nebo* vlastních podmínek. Chcete-li změnit podmínky standardní smlouvy, můžete tak učinit prostřednictvím standardních změn smlouvy.
@@ -36,7 +36,7 @@ Existují dva druhy změn k dispozici pro komerční trh vydavatelů:
 >[!Note]
 >Tyto dva typy změn zásobníku na sebe. Zákazníci, na které se zaměňují s vlastními změnami, dostanou také univerzální změnu standardní smlouvy během nákupu.
 
-Standardní kontrakt pro komerční trh Microsoftu můžete využít pro následující typy nabídek: Azure Applications (šablony řešení a spravované aplikace), virtuální počítače, kontejnery, kontejnerové aplikace, moduly IoT Edge a SaaS. .
+Standardní kontrakt pro komerční trh Microsoftu můžete využít pro následující typy nabídek: Azure Applications (šablony řešení a spravované aplikace), virtuální počítače, kontejnery, kontejnerové aplikace, moduly IoT Edge a SaaS.
 
 ## <a name="customer-experience"></a>Zákaznická zkušenost
 

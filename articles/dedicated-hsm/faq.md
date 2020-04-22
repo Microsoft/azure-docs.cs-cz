@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0cb7957008308425d91abb3e0f828cc40301736
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064933"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683315"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -40,7 +40,7 @@ Společnost Microsoft spolupracuje se společností Gemalto na poskytování slu
 
 ### <a name="q-what-is-an-hsm-used-for"></a>Otázka: K čemu se používá objekt hsm?
 
-Soubory hestlačítek se používají pro ukládání kryptografických klíčů, které se používají pro kryptografické funkce, jako je ssl (vrstva zabezpečeného soketu), šifrování dat, infrastruktura infrastruktury veřejných klíčů (infrastruktura veřejných klíčů), drioda (správa digitálních práv) a podepisování dokumentů.
+Soubory hesm slouží k ukládání kryptografických klíčů, které se používají pro kryptografické funkce, jako je tls (zabezpečení transportní vrstvy), šifrování dat, infrastruktura infrastruktury veřejných klíčů (infrastruktura veřejných klíčů), DRM (správa digitálních práv) a podepisování dokumentů.
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>Otázka: Jak funguje vyhrazený modul hardwarového zabezpečení?
 
@@ -69,6 +69,7 @@ Od konce března 2019 je vyhrazený modul hardwarového zabezpečení k dispozic
 * USA – východ
 * USA – východ 2
 * USA – západ
+* USA – západ 2
 * USA – středojih
 * Jihovýchodní Asie
 * Východní Asie
@@ -84,6 +85,10 @@ Od konce března 2019 je vyhrazený modul hardwarového zabezpečení k dispozic
 * Kanada – východ
 * Austrálie – východ
 * Austrálie – jihovýchod
+* Švýcarsko Sever
+* Švýcarsko Západ
+* USA (Gov) – Virginia
+* USA (Gov) – Texas
 
 ## <a name="interoperability"></a>Interoperabilita
 
@@ -132,13 +137,13 @@ Ano. Podívejte se na průvodce migrací Gemalto.
 
 ### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>Otázka: Jak se rozhodnu, jestli použít Azure Key Vault nebo Azure Dedicated HSM?
 
-Azure Dedicated HSM je vhodnou volbou pro podniky, které migrují do místních aplikací Azure, které používají moduly hardwarového zabezpečení. Vyhrazené moduly hardwarového zabezpečení představují možnost migrovat aplikaci s minimálními změnami. Pokud se kryptografické operace provádějí v kódu aplikace spuštěném ve virtuálním počítači Azure nebo webové aplikaci, můžou používat vyhrazený modul hardwarového zabezpečení. Obecně platí, že software zabalený do smršťování běžící v modelech IaaS (infrastruktura jako služba), které podporují moduly hardwarového zabezpečení jako úložiště klíčů, můžete použít modul y DSM, například bránu aplikace nebo správce provozu pro bezklíčový protokol SSL, ADCS (Služba Active Directory Certificate Services) nebo podobné nástroje Infrastruktury veřejných klíčů, nástroje nebo aplikace používané pro podepisování dokumentů, podepisování kódu nebo SQL Server (IaaS) nakonfigurovaný pomocí tde (transparentní šifrování databáze) s hlavním klíčem v modulu hardwarového zabezpečení pomocí zprostředkovatele EKM (rozšiřitelného klíče). Azure Key Vault je vhodný pro aplikace "born-in-cloud" nebo pro šifrování v klidovém stavu, kde jsou zákaznická data zpracovávána scénáři PaaS (platforma jako služba) nebo SaaS (Software jako služba), jako je klíč zákazníků Office 365, Azure Information Protection , Azure Disk Encryption, Azure Data Lake Store šifrování s klíčem spravovaným zákazníkem, šifrování Azure Storage s klíčem spravovaným zákazníkem a Azure SQL s klíčem spravovaným zákazníkem.
+Azure Dedicated HSM je vhodnou volbou pro podniky, které migrují do místních aplikací Azure, které používají moduly hardwarového zabezpečení. Vyhrazené moduly hardwarového zabezpečení představují možnost migrovat aplikaci s minimálními změnami. Pokud se kryptografické operace provádějí v kódu aplikace spuštěném ve virtuálním počítači Azure nebo webové aplikaci, můžou používat vyhrazený modul hardwarového zabezpečení. Obecně platí, že software zabalený do smršťování běžící v modelech IaaS (infrastruktura jako služba), které podporují moduly hardwarového zabezpečení jako úložiště klíčů, můžete použít modul y DEdicate HSM, například bránu aplikace nebo správce provozu pro bezklíčové technologie TLS, ADCS (Active Directory Certificate Services) nebo podobné nástroje Infrastruktury veřejných klíčů, nástroje nebo aplikace používané pro podepisování dokumentů, podepisování kódu nebo SQL Server (IaaS) nakonfigurovaný pomocí tde (transparentní šifrování databáze) s hlavním klíčem v modulu hardwarového zabezpečení pomocí zprostředkovatele EKM (rozšiřitelného klíče). Azure Key Vault je vhodný pro aplikace "born-in-cloud" nebo pro šifrování v klidovém stavu, kde zákaznická data zpracovávají scénáře PaaS (platforma jako služba) nebo SaaS (Software jako služba), jako je klíč zákazníka Office 365, Ochrana informací Azure, Šifrování disku Azure, šifrování Azure Data Lake Store s klíčem spravovaným zákazníkem, šifrování úložiště Azure se spravovaným klíčem zákazníkem a Azure SQL s klíčem spravovaným zákazníkem.
 
 ### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>Otázka: Jaké scénáře použití nejlépe vyhovují vyhrazenému modulu hardwarového zabezpečení Azure?
 
 Azure Dedicated HSM je nejvhodnější pro scénáře migrace. To znamená, že pokud migrujete místní aplikace do Azure, které už používají servery zabezpečení zabezpečení. To poskytuje možnost nízké tření pro migraci do Azure s minimálními změnami v aplikaci. Pokud se kryptografické operace provádějí v kódu aplikace spuštěném ve virtuálním počítači Azure nebo webové aplikaci, lze použít vyhrazený modul hardwarového zabezpečení. Obecně platí, že software zabalený do zmenšení spuštěný v modelech IaaS (infrastruktura jako služba), který podporuje servery hsm jako úložiště klíčů, může používat vyskladnění hsm, například:
 
-* Aplikační brána nebo správce provozu pro bezklíčové SSL
+* Aplikační brána nebo správce provozu pro bezklíčové TLS
 * ADCS (služba ADCCertificate Services)
 * Podobné nástroje PKI
 * Nástroje/aplikace používané pro podepisování dokumentů

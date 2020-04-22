@@ -5,31 +5,28 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9a3c88ea0c3e656adf0f8c514b418cfc07c9590
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335772"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676448"
 ---
-# <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
+# <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Správa aktualizací pro několik virtuálních počítačů Azure
 
-Řešení správy aktualizací můžete použít ke správě aktualizací a oprav pro virtuální počítače se systémem Windows a Linux. Z účtu [Azure Automation](automation-offering-get-started.md) můžete:
+Azure Automation Update Management můžete použít ke správě aktualizací a oprav pro vaše virtuální počítače s Windows a Linuxem. Z účtu [Azure Automation](automation-offering-get-started.md) můžete:
 
-- Palubní virtuální počítače
-- Posouzení stavu dostupných aktualizací
+- Připojit virtuální počítače
+- Vyhodnotit stav dostupných aktualizací
 - Naplánovat instalaci požadovaných aktualizací
 - Zkontrolujte výsledky nasazení a ověřte, zda byly aktualizace úspěšně použity pro všechny virtuální počítače, pro které je povolena správa aktualizací.
 
+Další informace o systémových požadavcích na správu aktualizací naleznete v [tématu Požadavky klienta správy aktualizací](automation-update-management.md#clients).
+
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li používat službu Správa aktualizací, potřebujete:
-
-- Virtuální počítač nebo počítač s nainstalovaným jedním z podporovaných operačních systémů.
-
-- Přístup k úložišti aktualizací pro virtuální počítače s Linuxem na palubě řešení.
-
-Další informace o systémových požadavcích na správu aktualizací naleznete v [tématu Požadavky klienta správy aktualizací](automation-update-management.md#clients).
+* Virtuální počítač nebo počítač s nainstalovaným jedním z podporovaných operačních systémů.
+* Přístup k úložišti aktualizací pro virtuální počítače s Linuxem na palubě správy aktualizací.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Povolení správy aktualizací pro virtuální počítače Azure
 
@@ -53,25 +50,23 @@ Agent Log Analytics pro Windows a Linux musí být nainstalován na virtuálníc
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Zobrazení počítačů připojených k účtu automation
 
-Po povolení správy aktualizací pro počítače můžete zobrazit informace o počítači výběrem **možnosti Počítače**. Můžete zobrazit informace o *názvu počítače*, stavu *dodržování předpisů*, *prostředí*, *typu operačního systému*, *nainstalovaných důležitých aktualizacích a aktualizacích zabezpečení*, *dalších nainstalovaných aktualizacích*a *připravenosti agenta aktualizace* pro počítače.
+Po povolení správy aktualizací pro počítače můžete zobrazit informace o počítači výběrem **možnosti Počítače**. Můžete zobrazit informace o názvu počítače, stavu dodržování předpisů, prostředí, typu operačního systému, nainstalovaných důležitých aktualizacích a aktualizacích zabezpečení, dalších nainstalovaných aktualizacích a připravenosti agenta aktualizace pro vaše počítače.
 
   ![Zobrazení karty Počítače](./media/manage-update-multi/update-computers-tab.png)
 
-Počítače, které byly nedávno povoleny pro správu aktualizací, pravděpodobně ještě nebyly vyhodnoceny. Stav stavu dodržování předpisů pro tyto počítače **není hodnocen**. Tady je seznam možných hodnot pro stav dodržování předpisů:
+Počítače, které byly nedávno povoleny pro správu aktualizací, pravděpodobně ještě nebyly vyhodnoceny. Stav dodržování předpisů pro `Not assessed`tyto počítače je . Tady je seznam možných hodnot pro stav dodržování předpisů:
 
-- **Kompatibilní**: Počítače, které nechybí důležité nebo aktualizace zabezpečení.
+- `Compliant`: Počítače, kterým nechybí důležité nebo aktualizace zabezpečení.
+- `Non-compliant`: Počítače, kterým chybí alespoň jedna kritická aktualizace nebo aktualizace zabezpečení.
+- `Not assessed`: Data vyhodnocení aktualizace nebyla přijata z počítače v očekávaném časovém rámci. U počítačů s Linuxem je očekávaný časový rámec poslední hodinu. Pro počítače se systémem Windows očekávaný časový rámec je posledních 12 hodin.
 
-- **Nekompatibilní**: Počítače, u kterých chybí alespoň jedna kritická aktualizace nebo aktualizace zabezpečení.
-
-- **Nehodnoceno**: Data hodnocení aktualizace nebyla přijata z počítače v očekávaném časovém rámci. Pro počítače s Linuxem je časový rámec očekávání za poslední hodinu. U počítačů se systémem Windows je očekávaný časový rámec za posledních 12 hodin.
-
-Chcete-li zobrazit stav agenta, vyberte odkaz ve sloupci **Připravenost agenta aktualizace.** Výběrem této možnosti se otevře podokno **Hybridní pracovník** a zobrazí se stav hybridního pracovníka. Následující obrázek znázorňuje příklad agenta, který nebyl delší dobu připojen ke správě aktualizací:
+Chcete-li zobrazit stav agenta, vyberte odkaz ve sloupci **Připravenost agenta aktualizace.** Výběrem této možnosti se otevře podokno Hybridní pracovník a zobrazí se stav hybridního pracovníka. Následující obrázek znázorňuje příklad agenta, který nebyl delší dobu připojen ke správě aktualizací:
 
 ![Zobrazení karty Počítače](./media/manage-update-multi/update-agent-broken.png)
 
 ## <a name="view-an-update-assessment"></a>Zobrazení posouzení aktualizací
 
-Po povolení řešení Update Management se otevře podokno **Správa aktualizací**. Na kartě **Chybějící aktualizace** můžete zobrazit seznam chybějících aktualizací.
+Po povolení správy aktualizací se otevře podokno Správa aktualizací. Na kartě **Chybějící aktualizace** můžete zobrazit seznam chybějících aktualizací.
 
 ## <a name="collect-data"></a>Shromažďování dat
 
@@ -129,10 +124,10 @@ V podokně **nasazení Nové aktualizace** zadejte následující informace:
   - Balíčky funkcí
   - Aktualizace Service Pack
   - Aktualizace definic
-  - Nástroje
+  - nástroje
   - Aktualizace
 
-- **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku **Zahrnout nebo vyloučit**. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o tom, jak je zpracována zahrnutí, naleznete [v tématu Plánování nasazení aktualizace](automation-tutorial-update-management.md#schedule-an-update-deployment).
+- **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku Zahrnout nebo vyloučit. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o tom, jak je zpracována zahrnutí, naleznete [v tématu Plánování nasazení aktualizace](automation-tutorial-update-management.md#schedule-an-update-deployment).
 
 > [!NOTE]
 > Je důležité vědět, že vyloučení přepsat inkluze. Pokud například definujete pravidlo `*`vyloučení aplikace , nebudou nainstalovány žádné opravy ani balíčky, protože jsou všechny vyloučeny. Vyloučené záplaty se stále zobrazují jako chybějící ze stroje. Pro linuxové počítače, pokud je balíček součástí balení, ale má závislý balíček, který byl vyloučen, balíček není nainstalován.
@@ -176,11 +171,11 @@ Pokud u jedné nebo více aktualizací v nasazení dojde k chybě, stav je **Č�
 
 Pokud chcete zobrazit řídicí panel pro nasazení aktualizace, vyberte dokončené nasazení.
 
-Podokno **Výsledky aktualizace** zobrazuje celkový počet aktualizací a výsledky nasazení pro virtuální počítač. Tabulka vpravo poskytuje podrobný rozpis jednotlivých aktualizací a výsledků instalace. Výsledkem instalace může být jedna z následujících hodnot:
+Podokno Výsledky aktualizace zobrazuje celkový počet aktualizací a výsledky nasazení pro virtuální počítač. Tabulka vpravo poskytuje podrobný rozpis jednotlivých aktualizací a výsledků instalace. Výsledkem instalace může být jedna z následujících hodnot:
 
-- **Nepokusil :** Aktualizace nebyla nainstalována, protože na základě definovaného časového okna údržby nebyl k dispozici dostatek času.
-- **Úspěšné**: Aktualizace byla úspěšná.
-- **Nezdařilo**se: Aktualizace se nezdařila.
+- `Not attempted`: Aktualizace nebyla nainstalována, protože na základě definovaného časového okna bylo k dispozici dostatek času.
+- `Succeeded`: Aktualizace byla úspěšná.
+- `Failed`: Aktualizace se nezdařila.
 
 Výběrem možnosti **Všechny protokoly** zobrazíte všechny položky protokolu, které toto nasazení vytvořilo.
 

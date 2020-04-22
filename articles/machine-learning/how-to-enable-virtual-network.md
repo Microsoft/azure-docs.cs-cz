@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: 1f3c9f86072eeedbc999946d0f846fbc3b41f94d
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: f94136ca6bfcb7e33415f2f44fdf4c44ef9f6a6f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641760"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682798"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečené úlohy experimentování a odvození Azure ML v rámci virtuální sítě Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -140,12 +140,13 @@ Pokud chcete použít výpočetní instanci Azure Machine Learning nebo výpoče
 > * Pokud jsou účty úložiště Azure pro pracovní prostor také zabezpečené ve virtuální síti, musí být ve stejné virtuální síti jako výpočetní instance nebo clusterAzure Machine Learning. 
 
 > [!TIP]
-> Výpočetní instance machine learningu nebo cluster automaticky přiděluje další síťové prostředky ve skupině prostředků, která obsahuje virtuální síť. Pro každou výpočetní instanci nebo cluster služba přiděluje následující prostředky:
+> Výpočetní instance machine learningu nebo cluster automaticky přiděluje další síťové prostředky __ve skupině prostředků, která obsahuje virtuální síť__. Pro každou výpočetní instanci nebo cluster služba přiděluje následující prostředky:
 > 
 > * Jedna skupina zabezpečení sítě
 > * Jedna veřejná IP adresa
 > * Jeden odvykač zatížení
 > 
+> V případě clusterů jsou tyto prostředky odstraněny (a znovu vytvořeny) pokaždé, když se cluster škáluje na 0 uzlů, ale pro instanci jsou prostředky drženy, dokud není instance zcela odstraněna (zastavení neodebere prostředky). 
 > Pro tyto prostředky platí omezení [kvót prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) předplatného.
 
 

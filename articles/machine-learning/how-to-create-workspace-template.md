@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 457979837b1c56eb85fc19c9a1fce5dc7df8c23b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b802a9c9df7e7f0c44ea66ee0061efb517b80050
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481995"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682762"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -81,7 +81,9 @@ Následující ukázková šablona ukazuje, jak vytvořit pracovní prostor se t
 
 * Povolit nastavení vysoké důvěrnosti pracovního prostoru
 * Povolení šifrování pro pracovní prostor
-* Používá existující trezor klíčů Azure.
+* Používá existující Azure Key Vault k načtení klíčů spravovaných zákazníkem.
+
+Další informace naleznete [v tématu Šifrování v klidovém stavu](concept-enterprise-security.md#encryption-at-rest).
 
 ```json
 {
@@ -121,7 +123,7 @@ Následující ukázková šablona ukazuje, jak vytvořit pracovní prostor se t
         "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
       }
     },
-    "hbi_workspace":{
+    "high_confidentiality":{
       "type": "string",
       "defaultValue": "false",
       "allowedValues": [
@@ -256,27 +258,31 @@ Následující ukázková šablona ukazuje, jak vytvořit pracovní prostor se t
                     "keyIdentifier": "[parameters('resource_cmk_uri')]"
                   }
             },
-        "hbiWorkspace": "[parameters('hbi_workspace')]"
+        "hbiWorkspace": "[parameters('high_confidentiality')]"
       }
     }
   ]
 }
 ```
 
-Chcete-li získat ID trezoru klíčů a identifikátor URI klíče, který tato šablona potřebuje, můžete použít azure CLI. Následující příkaz je příkladem použití příkazového příkazu Azure k získání ID prostředku trezoru klíčů a identifikátoru URI:
+Chcete-li získat ID trezoru klíčů a identifikátor URI klíče, který tato šablona potřebuje, můžete použít azure CLI. Následující příkaz získá ID trezoru klíčů:
 
 ```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id, properties.vaultUri]"
+az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
 ```
 
-Tento příkaz vrátí hodnotu podobnou následujícímu textu. První hodnota je ID a druhá je IDENTIFIKÁTOR:
+Tento příkaz vrátí hodnotu podobnou . `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`
 
-```text
-[
-  "/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault",
-  "https://mykeyvault.vault.azure.net/"
-]
+Chcete-li získat identifikátor URI pro klíč spravovaný zákazníkem, použijte následující příkaz:
+
+```azurecli-interactive
+az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 ```
+
+Tento příkaz vrátí hodnotu podobnou . `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`
+
+> [!IMPORTANT]
+> Po vytvoření pracovního prostoru nelze změnit nastavení důvěrných dat, šifrování, ID trezoru klíčů nebo identifikátorů klíčů. Chcete-li tyto hodnoty změnit, musíte vytvořit nový pracovní prostor pomocí nových hodnot.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
@@ -318,7 +324,7 @@ az group deployment create \
 
 Další informace najdete [v tématu Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md) a [nasazení privátní šablony Správce prostředků s tokenem SAS a Azure CLI](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="resource-provider-errors"></a>Chyby zprostředkovatele prostředků
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7eb01f3997ac4ab2e439c00f07990c51ec3e3d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdf0cbfb91332d60516432a7a67fb10404d89113
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370353"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683852"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro automatické zřizování uživatelů
 
@@ -281,6 +281,7 @@ V tomto kroku udělíte skupině zabezpečení domény oprávnění zásad zabez
     ![Zásady zabezpečení domény](./media/workday-inbound-tutorial/wd_isu_06.png "Zásady zabezpečení domény")  
 2. V textovém poli **Doména** vyhledejte následující domény a přidejte je do filtru jeden po druhém.  
    * *Zřizování externích účtů*
+   * *Data pracovníka: Pracovníci*
    * *Data pracovníka: Sestavy veřejných pracovníků*
    * *Osobní údaje: Pracovní kontaktní informace*
    * *Údaje o pracovníkovi: Všechny pozice*
@@ -312,6 +313,7 @@ V tomto kroku udělíte skupině zabezpečení domény oprávnění zásad zabez
    | ---------- | ---------- |
    | Získat a dát | Data pracovníka: Sestavy veřejných pracovníků |
    | Získat a dát | Osobní údaje: Pracovní kontaktní informace |
+   | Získat | Data pracovníka: Pracovníci |
    | Získat | Údaje o pracovníkovi: Všechny pozice |
    | Získat | Údaje o pracovníkovi: Aktuální informace o personálním obsazení |
    | Získat | Data pracovníka: Obchodní hlava na profilu pracovníka |
@@ -451,11 +453,15 @@ V tomto kroku navážeme připojení k Workday a Active Directory na webu Azure 
 
 1. Dokončete oddíl **Pověření správce** takto:
 
-   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integrace Workday s připojeným názvem domény klienta. Mělo by to vypadat jako: **uživatelské jméno\@tenant_name**
+   * **Pracovní jméno :** Zadejte uživatelské jméno účtu systému integrace Workday s připojeným názvem domény klienta. Mělo by to vypadat jako: **uživatelské jméno\@tenant_name**
 
-   * **Admin heslo -** Zadejte heslo účtu systému integrace Workday
+   * **Heslo pracovního dne –** Zadejte heslo účtu systému integrace Workday
 
-   * **Adresa URL klienta –** Zadejte adresu URL koncového bodu webových služeb Workday pro vašeho tenanta. Tato hodnota by https://wd3-impl-services1.workday.com/ccx/service/contoso4měla vypadat takto: , kde *contoso4* je nahrazen správný název klienta a *wd3-impl* je nahrazen řetězec správné prostředí.
+   * **Adresa URL rozhraní API pro webové služby Workday –** Zadejte adresu URL koncového bodu webových služeb Workday pro vašeho tenanta. Tato hodnota by https://wd3-impl-services1.workday.com/ccx/service/contoso4měla vypadat takto: , kde *contoso4* je nahrazen správný název klienta a *wd3-impl* je nahrazen řetězec správné prostředí.
+
+     > [!NOTE]
+     > Ve výchozím nastavení aplikace používá pracovní denní webové služby v21.1, pokud v adrese URL nejsou zadány žádné informace o verzi. Chcete-li použít konkrétní verzi rozhraní WORKday Web Services API, použijte formát adresy URL:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > Příklad: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
 
    * **Doménová struktura služby Active Directory -** "Název" domény služby Active Directory, jak je registrovánu u agenta. Pomocí rozevíracího souboru vyberte cílovou doménu pro zřizování. Tato hodnota je obvykle řetězec jako: *contoso.com*
 
@@ -607,11 +613,16 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
 
 8. Dokončete oddíl **Pověření správce** takto:
 
-   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integrace Workday s připojeným názvem domény klienta. By měl vypadat něco jako:username@contoso4
+   * **Pracovní jméno :** Zadejte uživatelské jméno účtu systému integrace Workday s připojeným názvem domény klienta. By měl vypadat něco jako:username@contoso4
 
-   * **Admin heslo -** Zadejte heslo účtu systému integrace Workday
+   * **Heslo pracovního dne –** Zadejte heslo účtu systému integrace Workday
 
-   * **Adresa URL klienta –** Zadejte adresu URL koncového bodu webových služeb Workday pro vašeho tenanta. Tato hodnota by https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resourcesměla vypadat takto: , kde *contoso4* je nahrazen správný název klienta a *wd3-impl* je nahrazen řetězec správné prostředí. Pokud tato adresa URL není známa, obraťte se na svého partnera pro integraci workday nebo zástupce podpory a určete správnou adresu URL, kterou chcete použít.
+   * **Adresa URL rozhraní API pro webové služby Workday –** Zadejte adresu URL koncového bodu webových služeb Workday pro vašeho tenanta. Tato hodnota by https://wd3-impl-services1.workday.com/ccx/service/contoso4měla vypadat takto: , kde *contoso4* je nahrazen správný název klienta a *wd3-impl* je nahrazen řetězec správné prostředí. Pokud tato adresa URL není známa, obraťte se na svého partnera pro integraci workday nebo zástupce podpory a určete správnou adresu URL, kterou chcete použít.
+
+     > [!NOTE]
+     > Ve výchozím nastavení aplikace používá pracovní denní webové služby v21.1, pokud v adrese URL nejsou zadány žádné informace o verzi. Chcete-li použít konkrétní verzi rozhraní WORKday Web Services API, použijte formát adresy URL:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > Příklad: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+
 
    * **E-mail s oznámením –** Zadejte svou e-mailovou adresu a zaškrtněte políčko Odeslat e-mail, pokud dojde k selhání.
 
@@ -807,9 +818,13 @@ Tato funkce není aktuálně podporována. Doporučeným zástupným zástupem j
 
 Řešení aktuálně používá následující pracovní pole API:
 
-* Get_Workers (v21.1) pro načítání informací o pracovníkovi
-* Maintain_Contact_Information (v26.1) pro funkci zpětný zápis pracovního e-mailu
-* Update_Workday_Account (v31.2) pro funkci zpětného zápisu uživatelského jména
+* Formát **adresy URL rozhraní API služby Workday Web Services** použitý v části Pověření **správce** určuje verzi rozhraní API používanou pro Get_Workers
+  * Pokud je formát adresy\#\#\#\#\.URL: https:// pracovní den\.com/ccx/service/tenantName , použije se rozhraní API v21.1. 
+  * Pokud je formát adresy\#\#\#\#\.URL: https:// pracovní den\.com/ccx/service/tenantName/Human\_Resources , použije se rozhraní API v21.1. 
+  * Pokud je formát adresy\#\#\#\#\.URL: https://\.workday\_com/ccx/service/tenantName/Human Resources/v\# \# \. \# , použije se zadaná verze rozhraní API. (Příklad: pokud je zadán v34.0, pak se používá.)  
+   
+* Funkce zpětného zápisu e-mailu do pracovního dne používá Maintain_Contact_Information (v26.1) 
+* Funkce zpětného zápisu uživatelského jména workday používá Update_Workday_Account (v31.2) 
 
 #### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>Můžu nakonfigurovat svého tenanta HCM workday se dvěma tenanty Azure AD?
 
@@ -1135,7 +1150,7 @@ Když kliknete na některý ze záznamů protokolu auditu, otevře se stránka *
 
   Pokud se objeví problémy s výrazy mapování atributů nebo příchozí data Workday má problémy (například: prázdná nebo nulová hodnota pro požadované atributy), pak budete pozorovat selhání v této fázi s ErrorCode poskytující podrobnosti o selhání.
 
-* Záznam **exportu ad:** Tento záznam protokolu zobrazuje výsledek operace vytvoření účtu ad spolu s hodnotami atributů, které byly v procesu nastaveny. Pomocí informací v části *Další podrobnosti* záznamu protokolu můžete řešit problémy s operací vytvoření účtu. Příklad záznamu je uveden níže spolu s odkazy na způsob interpretace jednotlivých polí. V části "Další podrobnosti" je "EventName" nastavenna na "EntryExportAdd", "JoiningProperty" je nastavena na hodnotu odpovídající ID atribut, "SourceAnchor" je nastavena na WorkdayID (WID) spojené se záznamem a "TargetAnchor" je nastavena na hodnota atributu AD "ObjectGuid" nově vytvořeného uživatele. 
+* Záznam **exportu ad:** Tento záznam protokolu zobrazuje výsledek operace vytvoření účtu ad spolu s hodnotami atributů, které byly v procesu nastaveny. Pomocí informací v části *Další podrobnosti* záznamu protokolu můžete řešit problémy s operací vytvoření účtu. Příklad záznamu je uveden níže spolu s odkazy na způsob interpretace jednotlivých polí. V části "Další podrobnosti" "Název_události" je nastavena na "EntryExportAdd", "JoiningProperty" je nastavena na hodnotu odpovídající ID atribut, "SourceAnchor" je nastavena na WorkdayID (WID) spojené se záznamem a "TargetAnchor" je nastavena na hodnotu atributu AD "ObjectGuid" nově vytvořeného uživatele. 
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot AD account creation issues
@@ -1352,7 +1367,7 @@ Viz článek [Export a import konfigurace zřizování](../app-provisioning/expo
 
 ## <a name="managing-personal-data"></a>Správa osobních údajů
 
-Řešení zřizování workday pro službu Active Directory vyžaduje instalaci zřizovacího agenta na místní server windows a tento agent vytvoří protokoly v protokolu událostí systému Windows, které mohou obsahovat osobní údaje v závislosti na atributu Workday to AD Mapování. Chcete-li splnit povinnosti ochrany osobních údajů uživatelů, můžete zajistit, že žádná data budou zachována v protokolech událostí po 48 hodinách nastavením naplánované úlohy systému Windows pro vymazání protokolu událostí.
+Řešení zřizování workday pro službu Active Directory vyžaduje instalaci zřizovacího agenta na místní server systému Windows a tento agent vytvoří protokoly v protokolu událostí systému Windows, které mohou obsahovat osobní údaje v závislosti na mapování atributů Workday to AD. Chcete-li splnit povinnosti ochrany osobních údajů uživatelů, můžete zajistit, že žádná data budou zachována v protokolech událostí po 48 hodinách nastavením naplánované úlohy systému Windows pro vymazání protokolu událostí.
 
 Zřizování Azure AD spadá do kategorie **zpracování dat** klasifikace GDPR. Jako kanál zpracovatele dat poskytuje služba služby zpracování dat klíčovým partnerům a koncovým spotřebitelům. Služba zřizování Azure AD negeneruje uživatelská data a nemá žádnou nezávislou kontrolu nad tím, jaká osobní data se shromažďují a jak se používají. Načítání dat, agregace, analýza a vytváření sestav ve službě zřizování Azure AD jsou založeny na existujících podnikových datech.
 

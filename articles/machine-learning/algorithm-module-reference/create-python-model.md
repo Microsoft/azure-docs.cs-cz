@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 929938bba9c9512ecfd663a540cf4a7ebbf68e2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8be0882452dc120f538394a5481769e26e3fa15
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371813"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682808"
 ---
 # <a name="create-python-model-module"></a>Vytvořit modul Modelu Pythonu
 
@@ -31,13 +31,21 @@ Po vytvoření modelu můžete použít [Model Train](train-model.md) k trénov�
 ## <a name="configure-the-module"></a>Konfigurace modulu
 
 Použití tohoto modulu vyžaduje středně pokročilé nebo odborné znalosti Pythonu. Modul podporuje použití všech studentů, který je součástí balíčků Pythonu, které jsou už nainstalované v Azure Machine Learning. Podívejte se na předinstalovaný seznam balíčků Pythonu v [aplikaci Execute Python Script](execute-python-script.md).
-  
 
+> [!NOTE]
+> Při psaní skriptu buďte velmi opatrní a ujistěte se, že nedochází k žádné chybě syntaxe, například při použití nedeklarovaného objektu nebo neimportovaného modulu.
+
+> [!NOTE]
+Zvláštní pozornost také věnujte seznamu předinstalovaných modulů v [aplikaci Execute Python Script](execute-python-script.md). Importujte pouze předinstalované moduly. Prosím, neinstalujte další balíčky, jako je "pip install xgboost" v tomto skriptu, jinak chyby budou vyvolány při čtení modelů v down-stream modulů.
+  
 Tento článek ukazuje, jak používat **vytvořit model Pythonu** s jednoduchým kanálem. Zde je diagram potrubí:
 
 ![Diagram vytvoření modelu Pythonu](./media/module/create-python-model.png)
 
 1. Vyberte **Vytvořit model Pythonu**a upravte skript, abyste implementovali proces modelování nebo správy dat. Model můžete založit na jakémkoli studentovi, který je součástí balíčku Pythonu v prostředí Azure Machine Learning.
+
+> [!NOTE]
+> Věnujte prosím zvláštní pozornost komentářům v ukázkovém kódu skriptu a ujistěte se, že váš skript přísně dodržuje požadavek, včetně názvu třídy, metod a podpisu metody. Porušení povede k výjimkám. 
 
    Následující ukázkový kód klasifikátoru Dvoutřídy Naive Bayes používá populární balíček *sklearn:*
 
@@ -50,7 +58,9 @@ Tento článek ukazuje, jak používat **vytvořit model Pythonu** s jednoduchý
        # predict: which generates prediction result, the input argument and the prediction result MUST be pandas DataFrame.
    # The signatures (method names and argument names) of all these methods MUST be exactly the same as the following example.
 
-
+   # Please do not install extra packages such as "pip install xgboost" in this script,
+   # otherwise errors will be raised when reading models in down-stream modules.
+   
    import pandas as pd
    from sklearn.naive_bayes import GaussianNB
 
@@ -61,10 +71,15 @@ Tento článek ukazuje, jak používat **vytvořit model Pythonu** s jednoduchý
            self.feature_column_names = list()
 
        def train(self, df_train, df_label):
+           # self.feature_column_names records the column names used for training.
+           # It is recommended to set this attribute before training so that the
+           # feature columns used in predict and train methods have the same names.
            self.feature_column_names = df_train.columns.tolist()
            self.model.fit(df_train, df_label)
 
        def predict(self, df):
+           # The feature columns used for prediction MUST have the same names as the ones for training.
+           # The name of score column ("Scored Labels" in this case) MUST be different from any other columns in input data.
            return pd.DataFrame(
                {'Scored Labels': self.model.predict(df[self.feature_column_names]), 
                 'probabilities': self.model.predict_proba(df[self.feature_column_names])[:, 1]}

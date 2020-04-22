@@ -1,18 +1,18 @@
 ---
-title: Moduly Azure IoT Edge
+title: Moduly Azure Marketplace IoT Edge
 description: Nabídka modulu IoT Edge na Azure Marketplace pro vydavatele aplikací a služeb.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/22/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: aadbf33914f919e393a5ec88cf6fc0a6103911b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286145"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684344"
 ---
 # <a name="iot-edge-modules"></a>Moduly IoT Edge
 
@@ -58,7 +58,7 @@ Všechny podmínky smluv a zásad Microsoft Azure Marketplace platí pro nabídk
 
 Pokud chcete publikovat modul IoT Edge na Azure Marketplace, musíte splnit následující předpoklady:
 
-- Přístup k portálu partnerů cloudu (CPP). Další informace najdete v [tématu Azure Marketplace a AppSource publikování průvodce](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+- Přístup do partnerského centra. Další informace najdete v [tématu Azure Marketplace a AppSource publikování průvodce](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
 - Hostujte svůj modul IoT Edge v registru kontejnerů Azure. 
 - Připravte si metadata modulu IoT Edge, například (nevyčerpávající seznam): 
     - Název
@@ -71,19 +71,19 @@ Pokud chcete publikovat modul IoT Edge na Azure Marketplace, musíte splnit nás
 
 **Technické požadavky**
 
-Primární technické požadavky na modul IoT Edge, aby získal certifikaci a publikování na Azure Marketplace, jsou podrobně popsány v [technických prostředcích modulu Příprava modulu IoT Edge](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets).  
+Primární technické požadavky na modul IoT Edge, aby získal certifikaci a publikování na Azure Marketplace, jsou podrobně popsány v [technických prostředcích modulu Příprava modulu IoT Edge](./partner-center-portal/create-iot-edge-module-asset.md).
 
 ## <a name="documentation-and-resources"></a>Dokumentace a zdroje
 
-[Vytvořte nabídku modulu IoT Edge](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) – kroky pro publikování nové nabídky modulu IoT Edge pomocí portálu pro publikování na cloudu.
+[Vytvořte nabídku modulu IoT Edge](./partner-center-portal/azure-iot-edge-module-creation.md) – kroky pro publikování nové nabídky modulu IoT Edge v Centru partnerů.
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud jste tak ještě neučinili,
 
-- [Zaregistrujte se](https://azuremarketplace.microsoft.com/sell) na trhu.
+- [Přečtěte si](https://azuremarketplace.microsoft.com/sell) informace o tržišti.
 
-Pokud jste zaregistrováni a vytváříte novou nabídku nebo pracujete na stávající nabídce,
+Chcete-li se zaregistrovat v Partnerském centru a začít vytvářet novou nabídku nebo pracovat na existující nabídce,
 
-- Přihlaste se na [portál cloudových partnerů](https://cloudpartner.azure.com/) a vytvořte nebo dokončete svou nabídku.
-- Informace o tom, jak publikovat nabídku modulu IoT Edge, najdete v článku Přehled publikování nabídky nabídky modulu [IoT](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts) Edge.
+- Chcete-li vytvořit nebo dokončit svou nabídku, přihlaste se do [Centra partnerů.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
+- Informace o tom, jak publikovat nabídku modulu IoT Edge, najdete [v tématu vytvoření nabídky modulu IoT Edge.](./partner-center-portal/azure-iot-edge-module-creation.md)

@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti o struktuře přiřazení zásad
 description: Popisuje definici přiřazení zásad, kterou zásady Azure používají ke propojení definic a parametrů zásad s prostředky pro vyhodnocení.
-ms.date: 09/23/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265295"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683222"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
 
@@ -20,6 +20,7 @@ JSON slouží k vytvoření přiřazení zásad. Přiřazení zásad obsahuje pr
 - description
 - zprostředkovatele identity
 - režim vynucení
+- vyloučené obory
 - definice zásad
 - parameters
 
@@ -34,6 +35,7 @@ Například následující JSON zobrazuje přiřazení zásad v režimu _DoNotEn
             "assignedBy": "Cloud Center of Excellence"
         },
         "enforcementMode": "DoNotEnforce",
+        "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
         "parameters": {
             "prefix": {
@@ -65,6 +67,10 @@ Tato vlastnost má následující hodnoty:
 |Zakázáno |Donotenforce |řetězec |Ano |Ne | Efekt zásad není vynucenběhem vytváření nebo aktualizace prostředků. |
 
 Pokud **enforcementMode** není zadán v definici zásady nebo iniciativy, použije se hodnota _Default._ [Nápravné úlohy](../how-to/remediate-resources.md) lze spustit pro [deployIfNotExists zásady,](./effects.md#deployifnotexists) i když **enforcementMode** je nastavena na _DoNotEnforce_.
+
+## <a name="excluded-scopes"></a>Vyloučené obory
+
+**Rozsah** přiřazení zahrnuje všechny podřízené kontejnery prostředků a podřízené prostředky. Pokud podřízený prostředek kontejner nebo podřízený prostředek by neměl mít definici použít, každý může být vyloučen z hodnocení nastavením **notScopes**. Tato vlastnost je pole povolit vyloučení jednoho nebo více kontejnerů prostředků nebo prostředků z vyhodnocení. **notScopes** lze přidat nebo aktualizovat po vytvoření počátečního přiřazení.
 
 ## <a name="policy-definition-id"></a>ID definice zásad
 

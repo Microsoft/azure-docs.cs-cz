@@ -8,23 +8,23 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 86e1a9cce1864ce259fe07b6949be2e32be242a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12d169697a35af446392843eb57e6ec3a5508e45
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774416"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678690"
 ---
-Následující operace úprav jsou podporovány pro partnerský vztah serveru Exchange
-1. Přidání připojení partnerského vztahu exchange
-1. Odebrání připojení partnerského vztahu serveru Exchange
-1. Přidejte relaci IPv4/IPv6 u aktivních připojení.
-1. Odebrání relace IPv4/IPv6 u aktivních připojení.
+Pro partnerský vztah serveru Exchange jsou podporovány následující operace úprav:
+* Přidejte připojení partnerského vztahu serveru Exchange.
+* Odeberte připojení partnerského vztahu serveru Exchange.
+* Přidejte relaci IPv4 nebo IPv6 u aktivních připojení.
+* Odeberte relaci IPv4 nebo IPv6 u aktivních připojení.
 
 
 ### <a name="add-exchange-peering-connections"></a>Přidání připojení partnerského vztahu exchange
 
-Následující příklad popisuje, jak přidat připojení k existujícímu partnerského vztahu serveru Exchange.
+Tento příklad popisuje, jak přidat připojení k existujícímu partnerského vztahu serveru Exchange.
 
 ```powershell
 
@@ -45,7 +45,7 @@ $exchangePeering | Update-AzPeering
 
 ### <a name="remove-exchange-peering-connections"></a>Odebrání připojení partnerského vztahu serveru Exchange
 
-Následující příklad popisuje, jak odebrat připojení k existujícímu partnerského vztahu serveru Exchange.
+Tento příklad popisuje, jak odebrat připojení k existujícímu partnerského vztahu serveru Exchange.
 
 ```powershell
 
@@ -73,7 +73,7 @@ Tags              : {}
 
 ```
 
-V níže uvedeném příkazu místo 0 zadejte číslo indexu pro připojení, které chcete odebrat.
+V následujícím příkazu zadejte místo 0 číslo indexu pro připojení, které chcete odebrat.
 
 ```powershell
 
@@ -85,9 +85,9 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>Přidání relace IPv4/IPv6 u aktivních připojení
+### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>Přidání relace IPv4 nebo IPv6 u aktivních připojení
 
-Níže uvedený příklad popisuje, jak přidat relaci IPv6 do existujícího připojení exchange.
+Tento příklad popisuje, jak přidat relaci IPv6 k existujícímu připojení serveru Exchange.
 
 ```powershell
 
@@ -99,6 +99,6 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Odebrání relace IPv4/IPv6 u aktivních připojení
+### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>Odebrání relace IPv4 nebo IPv6 u aktivních připojení
 
-Odebrání relace IPv4/IPv6 z existujícího připojení není v prostředí PowerShell aktuálně podporováno. Obraťte se na [partnerský vztah společnosti Microsoft](mailto:peeringexperience@microsoft.com).
+Odebrání relace IPv4 nebo IPv6 z existujícího připojení není aktuálně podporováno v prostředí PowerShell. Další informace získáte od [společnosti Microsoft peeringu](mailto:peeringexperience@microsoft.com).

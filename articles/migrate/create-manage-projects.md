@@ -2,13 +2,13 @@
 title: Vytváření a správa projektů Azure Migrate
 description: Hledání, vytváření, správa a odstraňování projektů v Azure Migrate.
 ms.topic: how-to
-ms.date: 02/17/2020
-ms.openlocfilehash: a49595f0580e71048239d5c5d8f4d1a66e24fe6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269637"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676396"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Vytváření a správa projektů Azure Migrate
 
@@ -23,7 +23,7 @@ Při prvním nastavení Migrace Azure vytvoříte projekt a přidáte nástroj p
 
 Pokud už máte projekt Migrace Azure a chcete vytvořit další projekt, postupujte takto:  
 
-1. Na [webu Azure Portal](https://portal.azure.com)vyhledejte **Azure Migrate**.
+1. Na [veřejném portálu Azure](https://portal.azure.com) nebo [Azure Government](https://portal.azure.us)vyhledejte Azure **Migrate**.
 2. Na řídicím panelu Azure Migrate > **servery**vyberte **změnu** v pravém horním rohu.
 
    ![Změna projektu migrace Azure](./media/create-manage-projects/switch-project.png)

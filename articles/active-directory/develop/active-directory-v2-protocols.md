@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bc635addc2a5cd7d3c698f6885bec0399e28743a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e94bdd6e79ff13d8ba736e140538bae74091f727
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309659"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680094"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Protokoly OAuth 2.0 a OpenID Connect na platformě identit Microsoftu
 
 Koncový bod platformy identit microsoftu pro identity-as-a-service s oborovými standardními protokoly, OpenID Connect a OAuth 2.0. Zatímco služba je kompatibilní se standardy, může být jemné rozdíly mezi jakékoli dvě implementace těchto protokolů. Informace zde budou užitečné, pokud se rozhodnete napsat kód přímým odesíláním a zpracováním požadavků HTTP nebo použít knihovnu s otevřeným zdrojovým kódem třetí strany, nikoli pomocí jedné z našich [open-source knihoven](reference-v2-libraries.md).
-
-> [!NOTE]
-> Ne všechny scénáře a funkce Azure AD jsou podporovány koncovým bodem platformy identit y Microsoft. Chcete-li zjistit, zda byste měli používat koncový bod platformy identit společnosti Microsoft, přečtěte si o [omezení platformy identit společnosti Microsoft](active-directory-v2-limitations.md).
 
 ## <a name="the-basics"></a>Základy
 
@@ -68,7 +65,7 @@ Kde `{tenant}` může trvat jednu ze čtyř různých hodnot:
 Pokud se chcete dozvědět, jak s těmito koncovými body pracovat, vyberte konkrétní typ aplikace v části [Protokoly](#protocols) a další informace najdete na odkazech.
 
 > [!TIP]
-> Každá aplikace registrovaná ve službě Azure AD může používat koncový bod platformy identit y Microsoft, i když se nepřihlašují k osobním účtům.  Tímto způsobem můžete migrovat existující aplikace na platformu identit microsoftu a [MSAL](reference-v2-libraries.md) bez opětovného vytvoření aplikace.  
+> Každá aplikace registrovaná ve službě Azure AD může používat koncový bod platformy identit y Microsoft, i když se nepřihlašují k osobním účtům.  Tímto způsobem můžete migrovat existující aplikace na platformu identit microsoftu a [MSAL](reference-v2-libraries.md) bez opětovného vytvoření aplikace.
 
 ## <a name="tokens"></a>Tokeny
 

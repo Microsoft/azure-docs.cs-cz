@@ -8,42 +8,42 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e3e87e59f5b3c95051d9ee53e4b8d87afe9d9ba8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e06b5261ca6923e158c818d236a30cf6ebff189b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774559"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680924"
 ---
-Tato část popisuje, jak provádět následující operace změny pro přímý partnerský vztah:
+Tato část popisuje, jak provést následující operace změny pro přímý partnerský vztah.
 
 ### <a name="add-exchange-peering-connections"></a>Přidání připojení partnerského vztahu exchange
 
-1. Klikněte na tlačítko **+ Přidat připojení** nahoře a nakonfigurujte nové připojení partnerského vztahu.
+1. Vyberte tlačítko **+ Přidat připojení** a nakonfigurujte nové připojení partnerského vztahu.
     > [!div class="mx-imgBorder"]
     > ![Zobrazení prostředku partnerského vztahu](../media/setup-exchange-modify-addconnection.png)
-1. Vyplňte formulář **Připojení partnerského vztahu serveru Exchange** a klepněte na tlačítko **Uložit**. Nápovědu ke konfiguraci připojení partnerského vztahu naleznete výše uvedené kroky v části Vytvoření a zřízení přímého partnerského vztahu.
+1. Vyplňte formulář **Připojení partnerského vztahu serveru Exchange** a vyberte **Uložit**. Nápovědu ke konfiguraci připojení partnerského vztahu najdete v krocích v části Vytvoření a zřízení přímého partnerského vztahu.
     > [!div class="mx-imgBorder"]
-    > ![Zobrazení prostředku partnerského vztahu](../media/setup-exchange-modify-savenewconnection.png)
+    > ![Formulář připojení partnerského vztahu serveru Exchange](../media/setup-exchange-modify-savenewconnection.png)
 
 ### <a name="remove-exchange-peering-connections"></a>Odebrání připojení partnerského vztahu serveru Exchange
 
-1. Klikněte na peering připojení, které chcete odstranit a pak klikněte na **...**  >  **Tlačítko odstranit připojení.**
+1. Vyberte připojení partnerského vztahu, které chcete odstranit, a pak vyberte **...**  >  **Odstranit připojení**.
     > [!div class="mx-imgBorder"]
-    > ![Odstranění připojení partnerského vztahu](../media/setup-exchange-modify-deleteconnection.png)
-1. Zadejte ID zdroje do pole **Potvrdit odstranění,** jak je znázorněno ve zvýrazněných polích, a klepněte na **Odstranit**.
+    > ![Tlačítko Odstranit připojení](../media/setup-exchange-modify-deleteconnection.png)
+1. Do pole **Potvrdit odstranění** zadejte ID prostředku a vyberte **Odstranit**.
     > [!div class="mx-imgBorder"]
-    > ![Připojení partnerského vztahu DeleteConfirm](../media/setup-exchange-modify-deleteconnectionconfirm.png)
+    > ![Odstranit potvrzení](../media/setup-exchange-modify-deleteconnectionconfirm.png)
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>Přidání relace IPv4/IPv6 u aktivních připojení
+### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>Přidání relace IPv4 nebo IPv6 u aktivních připojení
 
-1. Klikněte na peering připojení, které chcete upravit a pak klikněte na **...**  >  **Tlačítko Upravit připojení.**
+1. Vyberte připojení partnerského vztahu, které chcete upravit, a pak vyberte **...**  >  **Upravit připojení**.
     > [!div class="mx-imgBorder"]
-    > ![Úprava připojení partnerského vztahu](../media/setup-exchange-modify-editconnection.png)
-1. Přidejte **adresu IPv4** nebo informace o **adrese IPv6** a klepněte na tlačítko **Uložit**.
+    > ![Tlačítko Upravit připojení](../media/setup-exchange-modify-editconnection.png)
+1. Přidejte **adresu IPv4** nebo informace o **adrese IPv6** a vyberte **Uložit**.
     > [!div class="mx-imgBorder"]
-    > ![Změnit připojení partnerského vztahu](../media/setup-exchange-modify-editconnectionsettings.png)
+    > ![Změny připojení partnerského vztahu](../media/setup-exchange-modify-editconnectionsettings.png)
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Odebrání relace IPv4/IPv6 u aktivních připojení
+### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>Odebrání relace IPv4 nebo IPv6 u aktivních připojení
 
-Odebrání relace IPv4/IPv6 z existujícího připojení není aktuálně podporováno na portálu. Obraťte se na [partnerský vztah společnosti Microsoft](mailto:peeringexperience@microsoft.com).
+Odebrání relace IPv4 nebo IPv6 z existujícího připojení není aktuálně podporováno na portálu. Další informace získáte od [společnosti Microsoft peeringu](mailto:peeringexperience@microsoft.com).

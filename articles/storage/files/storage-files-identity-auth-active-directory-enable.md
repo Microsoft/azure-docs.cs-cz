@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/20/2020
 ms.author: rogarana
-ms.openlocfilehash: 8d1e1262c592f0120b191e18a5c16b97b887a6a2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 44debc299054568769bfbe6cfc089cc528594274
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536522"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677078"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Povolení místního ověřování služby Active Directory Domain Services přes SMB pro sdílené složky Azure
 
@@ -68,11 +68,7 @@ Než povolíte ověřování ve službě AD DS pro sdílené složky Azure, ujis
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Ověřování souborů Azure pomocí služby AD DS (preview) je dostupné ve [většině veřejných oblastí](https://azure.microsoft.com/global-infrastructure/regions/).
-
-Ověřování souborů Azure pomocí místní služby AD DS není k dispozici v:
-- USA – západ
-
+Azure Files authentication with AD DS (preview) je dostupné ve [všech veřejných oblastech a oblastech Azure Gov](https://azure.microsoft.com/global-infrastructure/locations/).
 
 ## <a name="workflow-overview"></a>Přehled pracovního postupu
 
@@ -84,13 +80,13 @@ Dále postupujte podle následujících kroků a nastavte soubory Azure pro ově
 
 1. Povolte ověřování Azure Files AD DS na vašem účtu úložiště. 
 
-1. Přiřaďte přístupová oprávnění pro sdílenou složku identitě Azure AD (uživateli, skupině nebo instančnímu objektu), která je synchronizovaná s cílovou identitou služby AD. 
+2. Přiřaďte přístupová oprávnění pro sdílenou složku identitě Azure AD (uživateli, skupině nebo instančnímu objektu), která je synchronizovaná s cílovou identitou služby AD. 
 
-1. Konfigurace seznamů ACL přes SMB pro adresáře a soubory. 
+3. Konfigurace seznamů ACL přes SMB pro adresáře a soubory. 
  
-1. Připojení sdílené složky Azure do virtuálního počítače připojovaného k vašemu systému AD DS. 
+4. Připojení sdílené složky Azure do virtuálního počítače připojovaného k vašemu systému AD DS. 
 
-1. Aktualizujte heslo identity účtu úložiště ve službě AD DS.
+5. Aktualizujte heslo identity účtu úložiště ve službě AD DS.
 
 Následující diagram znázorňuje pracovní postup od konce pro povolení ověřování Azure AD přes SMB pro sdílené složky Azure. 
 

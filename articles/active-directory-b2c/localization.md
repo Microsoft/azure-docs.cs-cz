@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e73eae4d66f4ff94a48dfa27e258f8ba8ef87633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94ff7ddda41f2df2634d927a7dbf8a5a0d4fc1d8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126755"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681418"
 ---
 # <a name="localization"></a>Lokalizace
 
@@ -45,7 +45,7 @@ ms.locfileid: "79126755"
 
 **Lokalizační** element obsahuje následující elementy XML.
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Podporované jazyky | 1:n | Seznam podporovaných jazyků. |
 | Lokalizované zdroje | 0:n | Seznam lokalizovaných prostředků. |
@@ -63,7 +63,7 @@ Prvek **SupportedLanguages** obsahuje následující atributy:
 
 Prvek **SupportedLanguages** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Podporovaný jazyk | 1:n | Zobrazí obsah, který odpovídá jazykové značce podle rfc 5646 – značek pro identifikaci jazyků. |
 
@@ -77,7 +77,7 @@ Prvek **LocalizedResources** obsahuje následující atributy:
 
 Prvek **LocalizedResources** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Lokalizované kolekce | 0:n | Definuje celé kolekce v různých kulturách. Kolekce může mít různý počet položek a různé řetězce pro různé jazykové verze. Příklady kolekcí zahrnují výčty, které se zobrazují v typech deklarací. Například seznam zemí nebo oblastí se uživateli zobrazí v rozevíracím seznamu. |
 | Lokalizované řetězce | 0:n | Definuje všechny řetězce, s výjimkou řetězce, které se zobrazí v kolekcích, v různých kulturách. |
@@ -86,7 +86,7 @@ Prvek **LocalizedResources** obsahuje následující prvky:
 
 The **LocalizedCollections** Element obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Lokalizovaná kolekce | 1:n | Seznam podporovaných jazyků. |
 
@@ -102,7 +102,7 @@ Prvek **LocalizedCollection** obsahuje následující atributy:
 
 Prvek **LocalizedCollection** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Položka | 0:n | Definuje dostupnou možnost pro uživatele vybrat pro deklaraci v uživatelském rozhraní, jako je například hodnota v rozevírací masce. |
 
@@ -138,7 +138,7 @@ Následující příklad ukazuje použití **LocalizedCollections** element. Obs
 
 Prvek **LocalizedStrings** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Lokalizovaný řetězec | 1:n | Lokalizovaný řetězec. |
 
@@ -146,65 +146,190 @@ Prvek **LocalizedString** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| ElementType | Ano | Odkaz na prvek typu deklarace nebo prvek uživatelského rozhraní v zásadě. `ClaimType`Možné hodnoty: `UxElement` `ErrorMessage`, `Predicate`, `GetLocalizedStringsTransformationClaimType`, , nebo . Hodnota `ClaimType` se používá k lokalizaci jednoho z atributů deklarace, jak je uvedeno v StringId. Hodnota `UxElement` se používá k lokalizaci jednoho z prvků uživatelského rozhraní, jak je uvedeno v StringId. Hodnota `ErrorMessage` se používá k lokalizaci jedné ze systémových chybových zpráv, jak je uvedeno v StringId. Hodnota `Predicate` se používá k lokalizaci jedné z [predikátových](predicates.md) chybových zpráv, jak je uvedeno v StringId. Hodnota `InputValidation` se používá k lokalizaci jedné z chybových zpráv skupiny [PredikateValidation,](predicates.md) jak je zadáno v StringId. Hodnota `GetLocalizedStringsTransformationClaimType` se používá ke kopírování lokalizovaných řetězců do deklarací. Další informace naleznete v tématu [GetLocalizedStringsTransformation deklarace identity transformace](string-transformations.md#getlocalizedstringstransformation)  | 
+| ElementType | Ano | Možné hodnoty: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [Predicate](#predicate), [InputValidation](#inputvalidation)nebo [UxElement](#uxelement).   | 
 | ElementId | Ano | Pokud **elementType** je `ClaimType` `Predicate`nastavena `InputValidation`na , nebo , tento prvek obsahuje odkaz na typ deklarace již definována v ClaimsSchema části. |
 | Id řetězce | Ano | Pokud **elementType** je `ClaimType`nastavena na , tento prvek obsahuje odkaz na atribut typu deklarace. Možné `DisplayName`hodnoty: `AdminHelpText`, `PatternHelpText`, nebo . Hodnota `DisplayName` se používá k nastavení zobrazovaný název deklarace. Hodnota `AdminHelpText` se používá k nastavení textového názvu nápovědy uživatele deklarace. Hodnota `PatternHelpText` se používá k nastavení textu nápovědy vzoru deklarací. Pokud je hodnota `UxElement` **ElementType** nastavena na , obsahuje tento prvek odkaz na atribut prvku uživatelského rozhraní. Pokud je funkce `ErrorMessage` **ElementType** nastavena na , určuje tento prvek identifikátor chybové zprávy. Úplný seznam identifikátorů naleznete v `UxElement` [tématu ID řetězce lokalizace.](localization-string-ids.md)|
 
+## <a name="elementtype"></a>ElementType
 
-Následující příklad ukazuje lokalizovanou registrační stránku. První tři hodnoty **LocalizedString** nastavují atribut deklarace. Třetí změní hodnotu tlačítka continue. Poslední změní chybovou zprávu.
+ElementType odkaz na typ deklarace, transformace deklarace nebo prvek uživatelského rozhraní v zásadách, které mají být lokalizovány.
 
-```XML
-<LocalizedResources Id="api.selfasserted.en">
-  <LocalizedStrings>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
-  </LocalizedStrings>
-</LocalizedResources>
-```
+| Prvek lokalizovat | ElementType | ElementId |Id řetězce |
+| --------- | -------- | ----------- |----------- |
+| Název zprostředkovatele identity |`ClaimsProvider`| | ID prvku ClaimsExchange|
+| Atributy typu deklarace|`ClaimType`|Název typu deklarace| Atribut deklarace, která má být lokalizována. Možné `AdminHelpText`hodnoty: `DisplayName` `PatternHelpText`, `UserHelpText`, a .|
+|Chybová zpráva|`ErrorMessage`||ID chybové zprávy |
+|Zkopíruje lokalizované řetězce do deklarací identity.|`GetLocalizedStringsTra nsformationClaimType`||Název výstupní deklarace|
+|Zpráva uživatele predikátu|`Predicate`|Název predikátu| Atribut predikátu, který má být lokalizován. Možné hodnoty: `HelpText`.|
+|Zpráva uživatele predikátu skupiny|`InputValidation`|ID predikatevalidation elementu.|ID predikátgroup elementu. Skupina predikátu musí být podřízenou podřízenou prvkem ověření predikátu, jak je definován v ElementId.|
+|Prvky uživatelského rozhraní |`UxElement` | | ID prvku uživatelského rozhraní, který má být lokalizován.|
 
-Následující příklad ukazuje lokalizovaný **UserHelpText** **predikátu** `IsLengthBetween8And64`s ID . A lokalizovaný **UserHelpText** **PredikateGroup** `CharacterClasses` s ID **PredicateValidation** s ID `StrongPassword`.
+## <a name="examples"></a>Příklady
 
-```XML
-<PredicateValidation Id="StrongPassword">
-  <PredicateGroups>
-    ...
-    <PredicateGroup Id="CharacterClasses">
-    ...
-    </PredicateGroup>
-  </PredicateGroups>
-</PredicateValidation>
+### <a name="claimsprovider"></a>Zprostředkovatel pohledávek
 
-...
+Hodnota ClaimsProvider se používá k lokalizaci jednoho z zobrazovaných názvů zprostředkovatelů deklarací. 
 
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
+```xml
+<OrchestrationStep Order="2" Type="ClaimsExchange">
   ...
-</Predicate>
-...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
+  </ClaimsExchanges>
+</OrchestrationStep>
 
-
-<LocalizedString ElementType="InputValidation" ElementId="StrongPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
-
-<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>
 ```
 
-## <a name="set-up-localization"></a>Nastavit lokalizaci
+Následující příklad ukazuje, jak lokalizovat zobrazovaný název zprostředkovatelů deklarací.
 
-Tento článek ukazuje, jak podporovat více národních prostředí nebo jazyků v zásadách pro cesty uživatelů. Lokalizace vyžaduje tři kroky: nastavení explicitního seznamu podporovaných jazyků, poskytnutí řetězců a kolekcí specifických pro jazyk a úprava definice obsahu stránky.
+```xml
+<LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
+<LocalizedString ElementType="ClaimsProvider" StringId="GoogleExchange">Google</LocalizedString>
+<LocalizedString ElementType="ClaimsProvider" StringId="LinkedInExchange">LinkedIn</LocalizedString>
+```
 
-### <a name="set-up-the-explicit-list-of-supported-languages"></a>Nastavení explicitního seznamu podporovaných jazyků
+### <a name="claimtype"></a>Typ deklarace pohledávky
 
-Pod **elementem BuildingBlocks** přidejte prvek **Lokalizace** se seznamem podporovaných jazyků. Následující příklad ukazuje, jak definovat podporu lokalizace pro angličtinu (výchozí) a španělštinu:
+Hodnota ClaimType se používá k lokalizaci jednoho z atributů deklarace. 
+
+```xml
+<ClaimType Id="email">
+  <DisplayName>Email Address</DisplayName>
+  <DataType>string</DataType>
+  <UserHelpText>Email address that can be used to contact you.</UserHelpText>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
+```
+
+Následující příklad ukazuje, jak lokalizovat atributy DisplayName, UserHelpText a PatternHelpText typu deklarace e-mailu.
 
 ```XML
-<Localization Enabled="true">
-  <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
-    <SupportedLanguage>en</SupportedLanguage>
-    <SupportedLanguage>es</SupportedLanguage>
-  </SupportedLanguages>
-</Localization>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
+```
+
+### <a name="errormessage"></a>Errormessage
+
+Hodnota ErrorMessage se používá k lokalizaci jedné ze systémových chybových zpráv. 
+
+```xml
+<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
+  <Metadata>
+    <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+    <Item Key="UserMessageIfClaimsPrincipalAlreadyExists">You are already registered, please press the back button and sign in instead.</Item>
+  </Metadata>
+  ...
+</TechnicalProfile>
+```
+
+Následující příklad ukazuje, jak lokalizovat chybovou zprávu UserMessageIfClaimsPrincipalAlreadyExists.
+
+
+```XML
+<LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
+```
+
+### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType
+
+Hodnota GetLocalizedStringsTransformationClaimType se používá ke kopírování lokalizovaných řetězců do deklarací. Další informace naleznete v tématu [GetLocalizedStringsTransformation deklarace identity transformace](string-transformations.md#getlocalizedstringstransformation)
+
+
+```xml
+<ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
+    <OutputClaim ClaimTypeReferenceId="message" TransformationClaimType="email_message" />
+    <OutputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="email_code" />
+    <OutputClaim ClaimTypeReferenceId="signature" TransformationClaimType="email_signature" />
+   </OutputClaims>
+</ClaimsTransformation>
+```
+
+Následující příklad ukazuje, jak lokalizovat výstupní deklarace getlocalizedStringsTransformation deklarace transformace.
+
+```xml
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for verifying your account!</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
+```
+
+### <a name="predicate"></a>Predikátu
+
+Hodnota Predikátu se používá k lokalizaci jedné z chybových zpráv [predikátu.](predicates.md) 
+
+```xml
+<Predicates>
+  <Predicate Id="LengthRange" Method="IsLengthRange"  HelpText="The password must be between 6 and 64 characters.">
+    <Parameters>
+      <Parameter Id="Minimum">6</Parameter>
+      <Parameter Id="Maximum">64</Parameter>
+    </Parameters>
+  </Predicate>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
+    <Parameters>
+      <Parameter Id="CharacterSet">a-z</Parameter>
+    </Parameters>
+  </Predicate>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
+    <Parameters>
+      <Parameter Id="CharacterSet">A-Z</Parameter>
+    </Parameters>
+  </Predicate>
+</Predicates>
+```
+
+Následující příklad ukazuje, jak lokalizovat predikáty textu nápovědy.
+
+```xml
+<LocalizedString ElementType="Predicate" ElementId="LengthRange" StringId="HelpText">The password must be between 6 and 64 characters.</LocalizedString>
+<LocalizedString ElementType="Predicate" ElementId="Lowercase" StringId="HelpText">a lowercase letter</LocalizedString>
+<LocalizedString ElementType="Predicate" ElementId="Uppercase" StringId="HelpText">an uppercase letter</LocalizedString>
+```
+
+### <a name="inputvalidation"></a>Ověření vstupu
+
+Hodnota InputValidation se používá k lokalizaci jedné z chybových zpráv skupiny [PredikateValidation.](predicates.md) 
+
+```xml
+<PredicateValidations>
+  <PredicateValidation Id="CustomPassword">
+    <PredicateGroups>
+      <PredicateGroup Id="LengthGroup">
+        <PredicateReferences MatchAtLeast="1">
+          <PredicateReference Id="LengthRange" />
+        </PredicateReferences>
+      </PredicateGroup>
+      <PredicateGroup Id="CharacterClasses">
+        <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
+        <PredicateReferences MatchAtLeast="3">
+          <PredicateReference Id="Lowercase" />
+          <PredicateReference Id="Uppercase" />
+          <PredicateReference Id="Number" />
+          <PredicateReference Id="Symbol" />
+        </PredicateReferences>
+      </PredicateGroup>
+    </PredicateGroups>
+  </PredicateValidation>
+</PredicateValidations>
+```
+
+Následující příklad ukazuje, jak lokalizovat text nápovědy skupiny ověření predikátu.
+
+```XML
+<LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
+```
+
+### <a name="uxelement"></a>Prvek Ux
+
+Hodnota UxElement se používá k lokalizaci jednoho z prvků uživatelského rozhraní. Následující příklad ukazuje, jak lokalizovat tlačítka continue a cancel.
+
+```XML
+<LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
+<LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 369e3bcf4e5913f4a3ff82206d1e24a206db3f34
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604710"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681298"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění a zastavení virtuálních počítačů během mimopracovní ho řešení v Azure Automation
 
@@ -120,7 +120,7 @@ Všechny nadřazené sady Runbook obsahují `WhatIf` parametr. Při nastavení t
 V následující tabulce jsou uvedeny proměnné vytvořené v účtu automatizace. Upravujte pouze proměnné `External`s předponou . Změna proměnných s `Internal` předponou způsobuje nežádoucí účinky.
 
 > [!NOTE]
-> Omezení názvu virtuálního počítače a skupiny prostředků jsou z velké části výsledkem velikosti proměnné.
+> Omezení názvu virtuálního počítače a skupiny prostředků jsou z velké části výsledkem velikosti proměnné. Viz [Proměnná prostředky v Azure Automation](https://docs.microsoft.com/azure/automation/shared-resources/variables).
 
 |Proměnná | Popis|
 |---------|------------|
@@ -159,8 +159,8 @@ Nepovolujte všechny plány, protože by to mohlo způsobit překrývající se 
 |Schedule_AutoStop_CreateAlert_Parent | Každých 8 hodin | Spustí **AutoStop_CreateAlert_Parent** runbookkaždý 8 hodin, což zase zastaví hodnoty `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames`založené `External_ExcludeVMNames` na virtuálních mích v , a proměnné. Případně můžete zadat seznam virtuálních vod oddělených čárkami `VMList` pomocí parametru.|
 |Scheduled_StopVM | Uživatelem definované, denně | Spustí **ScheduledStopStart_Parent** runbook s `Stop` parametrem každý den v zadaném čase.Automaticky zastaví všechny virtuální uživatele, které splňují pravidla definovaná proměnnými prostředky.Povolte související plán **Naplánovaný StartVM**.|
 |Scheduled_StartVM | Uživatelem definované, denně | Spustí **ScheduledStopStart_Parent** runbook s hodnotou parametru `Start` každý den v určený čas. Automaticky spustí všechny virtuální uživatele, které splňují pravidla definovaná proměnnými aktivy.Povolte související plán **Scheduled-StopVM**.|
-|Sekvenční-StopVM | 1:00 (UTC), každý pátek | Spustí Sequenced_Parent runbook s hodnotou parametru `Stop` každý pátek v určený čas.Postupně (vzestupně) zastaví všechny virtuální uživatele se značkou **SequenceStop** definované příslušné proměnné. Další informace o hodnotách značek a proměnných datových zdrojů najdete v části Runbook.Povolte související plán **Sequenced-StartVM**.|
-|Sekvenční-StartVM | 13:00 (UTC), každé pondělí | Spustí **SequencedStopStart_Parent** runbook s hodnotou parametru `Start` každé pondělí v určený čas. Postupně (sestupně) spustí všechny virtuální uživatele s tag **sequencestart** definované příslušné proměnné. Další informace o hodnotách značek a proměnných datových zdrojů najdete v tématu [Runbook](#runbooks). Povolte související plán **Sequenced-StopVM**.
+|Sekvenční-StopVM | 1:00 (UTC), každý pátek | Spustí **Sequenced_StopStop_Parent** runbook s hodnotou parametru `Stop` každý pátek v určený čas.Postupně (vzestupně) zastaví všechny virtuální uživatele se značkou **SequenceStop** definované příslušné proměnné. Další informace o hodnotách značek a proměnných datových zdrojů najdete v [tématu Runbook](#runbooks).Povolte související plán **Sequenced-StartVM**.|
+|Sekvenční-StartVM | 13:00 (UTC), každé pondělí | Spustí **SequencedStopStart_Parent** runbook s hodnotou parametru `Start` každé pondělí v určený čas. Postupně (sestupně) spustí všechny virtuální uživatele s tag **sequencestart** definované příslušné proměnné. Další informace o hodnotách značek a proměnných datových zdrojů najdete v [tématu Runbook](#runbooks). Povolte související plán **Sequenced-StopVM**.
 
 ## <a name="use-of-the-solution-with-classic-vms"></a>Použití řešení s klasickými virtuálními aplikacemi
 

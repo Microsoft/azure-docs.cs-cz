@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: ac7e721a863414cf0617177885e0ff1c9e9a35d4
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617871"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681856"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -101,6 +101,35 @@ Pokud tyto dva kroky nepomohly, je nutné zjistit, zda jsou snímky videa klient
 **Model není uvnitř pohledu frustum:**
 
 V mnoha případech je model zobrazen správně, ale nachází se mimo frustum fotoaparátu. Častým důvodem je, že model byl exportován s daleko mimostředovým čepem, takže je oříznut vzdálenou ořezovou rovinou fotoaparátu. Pomáhá dotaz modelu ohraničovací rámeček programově a vizualizovat pole s Unity jako řádek pole nebo vytisknout jeho hodnoty do protokolu ladění.
+
+Kromě toho proces převodu generuje [výstupní soubor json](../how-tos/conversion/get-information.md) spolu s převedeným modelem. Chcete-li ladit problémy s umístěním `boundingBox` modelu, stojí za to podívat se na položku v [části outputStatistics](../how-tos/conversion/get-information.md#the-outputstatistics-section):
+
+```JSON
+{
+    ...
+    "outputStatistics": {
+        ...
+        "boundingBox": {
+            "min": [
+                -43.52,
+                -61.775,
+                -79.6416
+            ],
+            "max": [
+                43.52,
+                61.775,
+                79.6416
+            ]
+        }
+    }
+}
+```
+
+Ohraničovací rámeček `min` je `max` popsán jako a pozice v 3D prostoru, v metrech. Takže souřadnice 1000.0 znamená, že je 1 kilometr od počátku.
+
+S tímto ohraničovacím rámečkem mohou být dva problémy, které vedou k neviditelné geometrii:
+* **Pole může být daleko od středu**, takže objekt je oříznut úplně kvůli daleko rovina výstřižek. Hodnoty `boundingBox` v tomto případě bude `min = [-2000, -5,-5], max = [-1990, 5,5]`vypadat takto: , pomocí velké posun na ose x jako příklad zde. Chcete-li tento typ problému `recenterToOrigin` vyřešit, povolte tuto možnost v [konfiguraci převodu modelu](../how-tos/conversion/configure-model-conversion.md).
+* **Box může být vystředěný, ale řádově příliš velký**. To znamená, že i když kamera začíná ve středu modelu, jeho geometrie je oříznuta ve všech směrech. Typické `boundingBox` hodnoty v tomto případě `min = [-1000,-1000,-1000], max = [1000,1000,1000]`by vypadat takto: . Důvodem pro tento typ problému je obvykle neshoda měřítka jednotky. Chcete-li kompenzovat, zadejte [hodnotu měřítka během převodu](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) nebo označte zdrojový model se správnými jednotkami. Změna měřítka lze také použít na kořenový uzel při načítání modelu za běhu.
 
 **Kanál vykreslení Unity neobsahuje vykreslovací háčky:**
 

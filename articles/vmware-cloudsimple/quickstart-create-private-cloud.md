@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7460490dbd45862f4269d25e3910373700ec9a03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10831c0dc39fa241a43541850afae39593ae033b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564716"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678271"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Úvodní příručka – konfigurace prostředí privátního cloudu
 
@@ -26,7 +26,7 @@ Zkontrolujte [požadavky sítě](cloudsimple-network-checklist.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-private-cloud"></a>Vytvoření privátního cloudu
 
@@ -159,8 +159,8 @@ Teď se můžete přihlásit k vCenter nastavit virtuální počítače a zásad
     ![Spuštění klienta vSphere](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Vyberte svého preferovaného klienta vSphere pro přístup k vCenter a přihlaste se pomocí svého uživatelského jména a hesla.  Výchozí hodnoty jsou:
-    * Uživatelské jméno: **CloudOwner\@cloudsimple.local**
-    * Heslo: **CloudSimple123!**  
+    * Uživatelské jméno:`CloudOwner@cloudsimple.local`
+    * Heslo: `CloudSimple123!`
 
 Obrazovky vCenter v dalších postupech jsou z klienta vSphere (HTML5).
 

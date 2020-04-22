@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7a91f61302b5944e69f71c3cfee2f41cd87b809f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 947286a7238e3ddf2aebe66c6ea87e0e1cf8a853
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309382"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677717"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Platforma identit y Microsoft a OAuth 2.0 On-Behalf-Of flow
 
@@ -27,9 +27,7 @@ OAuth 2.0 On-Behalf-Of flow (OBO) slouží případ použití, kdy aplikace vyvo
 Tento článek popisuje, jak programovat přímo proti protokolu ve vaší aplikaci.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny ověřování společnosti Microsoft (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Také se podívejte na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
 
 > [!NOTE]
->
-> - Koncový bod platformy identit microsoftu nepodporuje všechny scénáře a funkce. Chcete-li zjistit, zda byste měli používat koncový bod platformy identit společnosti Microsoft, přečtěte si o [omezení platformy identit společnosti Microsoft](active-directory-v2-limitations.md). 
-> - Od května 2018 některé implicitní `id_token` toky odvozené nelze použít pro tok OBO. Jednostránkové aplikace (SPA) by měl předat **přístupový** token pro střední vrstvy důvěrné klienta provádět toky OBO místo. Další informace o tom, kteří klienti mohou provádět volání OBO, naleznete v [tématu omezení](#client-limitations).
+> Od května 2018 některé implicitní `id_token` toky odvozené nelze použít pro tok OBO. Jednostránkové aplikace (SPA) by měl předat **přístupový** token pro střední vrstvy důvěrné klienta provádět toky OBO místo. Další informace o tom, kteří klienti mohou provádět volání OBO, naleznete v [tématu omezení](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Protokolový diagram
 
@@ -186,10 +184,10 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Získání souhlasu pro aplikaci střední vrstvy
 
-V závislosti na architektuře nebo použití vaší aplikace můžete zvážit různé strategie pro zajištění, že tok Objektu Pro bo je úspěšný. Ve všech případech je konečným cílem zajistit, aby byl udělen správný souhlas, aby klientská aplikace mohla volat aplikaci střední vrstvy a aplikace střední vrstvy má oprávnění k volání prostředku back-endu. 
+V závislosti na architektuře nebo použití vaší aplikace můžete zvážit různé strategie pro zajištění, že tok Objektu Pro bo je úspěšný. Ve všech případech je konečným cílem zajistit, aby byl udělen správný souhlas, aby klientská aplikace mohla volat aplikaci střední vrstvy a aplikace střední vrstvy má oprávnění k volání prostředku back-endu.
 
 > [!NOTE]
-> Dříve systém účtů Microsoft (osobní účty) nepodporoval pole "Známá klientská aplikace" ani nemohl zobrazit kombinovaný souhlas.  To bylo přidáno a všechny aplikace v platformě identit microsoftu můžete použít známý přístup klientské aplikace pro gettign souhlas pro volání OBO. 
+> Dříve systém účtů Microsoft (osobní účty) nepodporoval pole "Známá klientská aplikace" ani nemohl zobrazit kombinovaný souhlas.  To bylo přidáno a všechny aplikace v platformě identit microsoftu můžete použít známý přístup klientské aplikace pro gettign souhlas pro volání OBO.
 
 ### <a name="default-and-combined-consent"></a>/.výchozí a kombinovaný souhlas
 

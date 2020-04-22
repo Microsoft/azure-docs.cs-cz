@@ -8,14 +8,14 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 86d768db7a31c634bdaca6c93f633c7bbaf10a65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dbaa0b5fc87cb5393b323b8a9b7a38b72efe9518
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774286"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680780"
 ---
-Rutina prostředí PowerShell **Get-AzPeeringLocation** vrátí seznam umístění partnerského vztahu s povinným parametrem `Kind`, který použijete v pozdějších krocích:
+Rutina prostředí PowerShell **Get-AzPeeringLocation** vrátí seznam umístění partnerského `Kind`vztahu s povinným parametrem , který použijete v pozdějších krocích.
 
 ```powershell
 Get-AzPeeringLocation -Kind Direct
@@ -28,9 +28,9 @@ Umístění přímého partnerského vztahu obsahují následující pole:
 * PeeringDBFacilityLink
 * Šířka pásmaNabídky
 
-Ověřte, zda se k dispozici v požadovaném partnerském vztahu pomocí [PeeringDB](https://wwww.peeringdb.com).
+Ověřte, zda jste přítomni v požadovaném partnerském vztahu, odkazem na [PeeringDB](https://wwww.peeringdb.com).
 
-Níže je uveden příklad, který ukazuje, jak použít Seattle jako umístění partnerského vztahu k vytvoření přímého partnerského vztahu:
+Tento příklad ukazuje, jak použít Seattle jako umístění partnerského vztahu k vytvoření přímého partnerského vztahu.
 
 ```powershell
 $peeringLocations = Get-AzPeeringLocation -Kind Direct

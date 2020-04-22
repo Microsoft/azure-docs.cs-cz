@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/14/2020
-ms.openlocfilehash: d62d05cdbda86af3c3a38757877624e87f6d1719
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 1bd71a4fb150d544125703679cf0fa0b8951e1eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383758"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684141"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření komerčního účtu marketplace v Partnerském centru
 
@@ -164,7 +164,7 @@ Organizace může mít k účtu Commercial Marketplace přidruženo více vydava
 
 Jiný uživatel ze stejného klienta Služby Azure Active Directory může přidat nového vydavatele podle následujících kroků:
 
-1. Zahajte tok registrace v centru [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/account/v3/enrollment/introduction/azureisv).
+1. Zahajte tok registrace v centru [Microsoft Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership).
 2. Vyberte **Přihlásit se pomocí pracovního účtu** a zadejte svou pracovní e-mailovou adresu.
 3. Vyberte tlačítko **Přidat vydavatele.**
 4. Zvolte ID MPN, které chcete přidružit k vydavateli.

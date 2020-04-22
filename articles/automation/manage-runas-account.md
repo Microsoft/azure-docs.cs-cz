@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 341db4ffa5b2e0641572f2c9dc011e91fac6a1e9
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 8d2c2f1e7ee10153108e54649ceba45b927b0cd2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617321"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676633"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa azure automatizace spustit jako účty
 
@@ -19,7 +19,7 @@ Spouštět jako účty v Azure Automation poskytují ověřování pro správu p
 Instanční objekt pro spustit jako účet nemá oprávnění ke čtení Azure AD ve výchozím nastavení. Pokud chcete přidat oprávnění ke čtení nebo správě Azure AD, budete muset udělit oprávnění na instanční objekt v rámci **oprávnění rozhraní API**. Další informace najdete v tématu [Přidání oprávnění k přístupu k webovým apim](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
 >[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](automation-update-azure-modules.md).
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="types-of-run-as-accounts"></a>Typy účtů Spustit jako
 
@@ -63,12 +63,12 @@ Chcete-li vytvořit nebo aktualizovat účet Spustit jako, musíte mít určitá
 
 |Úkol|Rutina  |Minimální oprávnění  |Kde nastavíte oprávnění|
 |---|---------|---------|---|
-|Vytvoření aplikace Azure AD|[Nová aplikace AzAD](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication?view=azps-3.5.0)     | Role vývojáře aplikací<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > registrace aplikací > Azure |
-|Přidejte pověření do aplikace.|[Nové azadapppověření](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential?view=azps-3.5.0)     | Správce aplikace nebo globální správce<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > registrace aplikací > Azure|
-|Vytvoření a získání instančního objektu služby Azure AD|[Nový-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-3.5.0)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal?view=azps-3.5.0)     | Správce aplikace nebo globální správce<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > registrace aplikací > Azure|
-|Přiřazení nebo získání role RBAC pro zadaný objekt zabezpečení|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment?view=azps-3.5.0)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment?view=azps-3.5.0)      | Správce nebo vlastník přístupu uživatelů nebo máte následující oprávnění:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Předplatné](../role-based-access-control/role-assignments-portal.md)</br>Předplatná domů \<>\> > název předplatného – řízení přístupu (IAM)|
-|Vytvoření nebo odebrání certifikátu automatizace|[Nový certifikát AzAutomation](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.5.0)</br>[Odebrat azautomationcertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate?view=azps-3.5.0)     | Přispěvatel ve skupině prostředků         |Skupina prostředků účtu automatizace|
-|Vytvoření nebo odebrání připojení automatizace|[Nové připojení AzAutomation](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.5.0)</br>[Odebrat připojení AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection?view=azps-3.5.0)|Přispěvatel ve skupině prostředků |Skupina prostředků účtu automatizace|
+|Vytvoření aplikace Azure AD|[Nová aplikace AzAD](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | Role vývojáře aplikací<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > registrace aplikací > Azure |
+|Přidejte pověření do aplikace.|[Nové azadapppověření](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | Správce aplikace nebo globální správce<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > registrace aplikací > Azure|
+|Vytvoření a získání instančního objektu služby Azure AD|[Nový-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | Správce aplikace nebo globální správce<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > registrace aplikací > Azure|
+|Přiřazení nebo získání role RBAC pro zadaný objekt zabezpečení|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Správce nebo vlastník přístupu uživatelů nebo máte následující oprávnění:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Předplatné](../role-based-access-control/role-assignments-portal.md)</br>Předplatná domů \<>\> > název předplatného – řízení přístupu (IAM)|
+|Vytvoření nebo odebrání certifikátu automatizace|[Nový certifikát AzAutomation](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Odebrat azautomationcertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate)     | Přispěvatel ve skupině prostředků         |Skupina prostředků účtu automatizace|
+|Vytvoření nebo odebrání připojení automatizace|[Nové připojení AzAutomation](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection)</br>[Odebrat připojení AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection)|Přispěvatel ve skupině prostředků |Skupina prostředků účtu automatizace|
 
 <sup>1</sup> Uživatelé, kteří nejsou správci ve vašem tenantovi Azure AD, [můžou zaregistrovat aplikace AD,](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) pokud uživatelé klienta Azure AD **můžou zaregistrovat aplikace** na stránce Nastavení uživatele, je nastavená na **Ano**. Pokud je nastavení registrace aplikace **Ne**, musí být uživatel provádějící tuto akci definován v této tabulce.
 

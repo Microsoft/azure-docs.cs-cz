@@ -12,12 +12,12 @@ ms.date: 12/17/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6021348160b338bc3a153764968f6c846a644cd1
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f559dc0da8680a6cd3243b5ee12c3145244c9c2c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535855"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677871"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Platforma identit microsoftu a tok pověření klienta OAuth 2.0
 
@@ -26,9 +26,6 @@ Můžete použít [odejmuta pověření klienta OAuth 2.0](https://tools.ietf.or
 Tento článek popisuje, jak programovat přímo proti protokolu ve vaší aplikaci. Pokud je to možné, doporučujeme místo toho použít podporované knihovny ověřování společnosti Microsoft (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Také se podívejte na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
 
 Pověření klienta OAuth 2.0 udělit tok umožňuje webové službě (důvěrný klient) používat vlastní pověření, namísto zosobnění uživatele, k ověření při volání jiné webové služby. V tomto scénáři klient je obvykle webové služby střední vrstvy, daemon služby nebo webové stránky. Pro vyšší úroveň záruky platforma identit microsoftu také umožňuje volající službě používat certifikát (namísto sdíleného tajného klíče) jako pověření.
-
-> [!NOTE]
-> Koncový bod platformy identit Microsoftu nepodporuje všechny scénáře a funkce Azure AD. Chcete-li zjistit, zda byste měli používat koncový bod platformy identit společnosti Microsoft, přečtěte si o [omezení platformy identit společnosti Microsoft](active-directory-v2-limitations.md).
 
 V typičtější *třínohý OAuth*klientská aplikace je uděleno oprávnění k přístupu k prostředku jménem konkrétního uživatele. Oprávnění je delegováno uživatelem do aplikace, obvykle během procesu [souhlasu.](v2-permissions-and-consent.md) Však v klientské pověření (*dvounohý OAuth*) toku, oprávnění jsou udělena přímo do samotné aplikace. Když aplikace představuje token pro prostředek, prostředek vynucuje, že samotná aplikace má oprávnění k provedení akce a ne uživatele.
 

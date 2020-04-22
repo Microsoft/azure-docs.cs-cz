@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5a6c85ebed7271655745de45694542fb359836e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be3a7a3ce4ce3a06398436058ea5d4d935ef5a5c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188406"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678092"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení pomocí účtu Azure Active Directory pomocí vlastních zásad ve službě Azure Active Directory B2C
 
@@ -28,40 +28,8 @@ Tento článek ukazuje, jak povolit přihlášení pro uživatele z organizace A
 
 Dokončete kroky v [části Začínáme s vlastními zásadami ve službě Azure Active Directory B2C](custom-policy-get-started.md).
 
-## <a name="register-an-application"></a>Registrace aplikace
 
-Chcete-li povolit přihlášení pro uživatele z konkrétní organizace Azure AD, musíte zaregistrovat aplikaci v rámci klienta Azure AD organizace.
-
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-1. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD organizace (například contoso.com). V horní nabídce vyberte **filtr Directory + subscription** a pak zvolte adresář, který obsahuje vašeho klienta Azure AD.
-1. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak **vyhledejte**a vyberte registrace aplikací .
-1. Vyberte **možnost Nová registrace**.
-1. Zadejte **název** aplikace. Například, `Azure AD B2C App`.
-1. Přijměte výchozí výběr **účtů v tomto organizačním adresáři pouze** pro tuto aplikaci.
-1. Pro **identifikátor URI přesměrování**přijměte hodnotu **webu**a zadejte následující `your-B2C-tenant-name` adresu URL ve všech malých písmenech, kde je nahrazen názvem klienta Azure AD B2C.
-
-    ```
-    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
-    ```
-
-    Například, `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
-
-1. Vyberte **Zaregistrovat**. Zaznamenejte **ID aplikace (klienta)** pro pozdější krok.
-1. Vyberte **certifikáty & tajných kódů**a potom vyberte **Nový tajný klíč klienta**.
-1. Zadejte **popis** tajného klíče, vyberte vypršení platnosti a pak vyberte **Přidat**. Zaznamenejte **hodnotu** tajného klíče pro pozdější krok.
-
-## <a name="configuring-optional-claims"></a>Konfigurace volitelných deklarací identity
-
-Pokud chcete získat `family_name` deklarace identity `given_name` z Azure AD, můžete nakonfigurovat volitelné deklarace identity pro vaši aplikaci v unovém rozhraní portálu Azure nebo manifestu aplikace. Další informace najdete v tématu [Jak poskytovat volitelné deklarace identity do aplikace Azure AD](../active-directory/develop/active-directory-optional-claims.md).
-
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
-1. V části **Spravovat** vyberte **Registrace aplikací**.
-1. V seznamu vyberte aplikaci, pro kterou chcete konfigurovat volitelné deklarace identity.
-1. V části **Spravovat** vyberte **konfigurace tokenu (náhled).**
-1. Vyberte **Přidat volitelnou deklaraci .**
-1. Vyberte typ tokenu, který chcete konfigurovat.
-1. Vyberte volitelné deklarace identity, které chcete přidat.
-1. Klikněte na **Přidat**.
+[!INCLUDE [active-directory-b2c-identity-provider-azure-ad](../../includes/active-directory-b2c-identity-provider-azure-ad.md)]
 
 ## <a name="create-a-policy-key"></a>Vytvoření klíče zásad
 

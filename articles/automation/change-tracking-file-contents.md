@@ -1,16 +1,16 @@
 ---
 title: Zobrazení změn obsahu souborů pomocí Azure Automation
-description: Pomocí funkce změny obsahu souboru funkce Sledování změn můžete zobrazit obsah souboru, který se změnil.
+description: Pomocí funkce změny obsahu souboru funkce Sledování změn zobrazíte obsah souboru, který se změnil.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57c3c2c7a0c923921c727ccea7839940457bc1ee
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75418814"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682999"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Zobrazení obsahu souboru, který je sledován pomocí funkce Sledování změn
 
@@ -22,7 +22,7 @@ Sledování obsahu souboru umožňuje zobrazit obsah souboru před a po změně,
 
 * Použitý účet úložiště může mít připojený pouze 1 účet automatizace.
 
-* [Sledování změn](automation-change-tracking.md) je povoleno ve vašem účtu automation.
+* [Sledování změn](automation-change-tracking.md) je povoleno ve vašem účtu Automatizace.
 
 ## <a name="enable-file-content-tracking"></a>Povolení sledování obsahu souborů
 
@@ -44,19 +44,19 @@ Sledování obsahu souboru umožňuje zobrazit obsah souboru před a po změně,
 
 Následující kroky vás provedou zapnutím sledování změn pro soubor:
 
-1. Na stránce **Upravit nastavení** funkce **Sledování změn**vyberte kartu **Soubory systému Windows** nebo Soubory **Linuxu** a klepněte na **přidat.**
+1. Na stránce Upravit nastavení **sledování změn**vyberte buď **soubory Systému Windows,** nebo kartu **Soubory Linuxu** a klepněte na **tlačítko Přidat.**
 
-1. Vyplňte informace o cestě k souboru a v části **Nahrát obsah souboru**vyberte Možnost **Nahrát** obsah souboru pro všechna nastavení . Toto nastavení povoluje sledování obsahu souborů pouze pro tuto cestu k souboru.
+1. Vyplňte informace o cestě k souboru a v části Nahrát obsah souboru vyberte Možnost **Nahrát obsah souboru pro všechna nastavení**. Toto nastavení povoluje sledování obsahu souborů pouze pro tuto cestu k souboru.
 
    ![přidání linuxového souboru](./media/change-tracking-file-contents/add-linux-file.png)
 
 ## <a name="viewing-the-contents-of-a-tracked-file"></a>Zobrazení obsahu sledovaného souboru
 
-1. Jakmile byla zjištěna změna pro soubor nebo soubor v cestě, zobrazí se na portálu. Vyberte změnu souboru ze seznamu změn. Zobrazí se podokno **Změnit podrobnosti.**
+1. Jakmile byla zjištěna změna pro soubor nebo soubor v cestě, zobrazí se na portálu. Vyberte změnu souboru ze seznamu změn. Zobrazí se podokno Změnit podrobnosti.
 
    ![změny seznamu](./media/change-tracking-file-contents/change-list.png)
 
-1. Na stránce **Změnit podrobnosti** se zobrazí standard před a za informacemi o souboru, v levém horním rohu klikněte na **Zobrazit změny obsahu souboru** a zobrazte obsah souboru.
+1. V podokně Změnit podrobnosti se zobrazí standard před a za informacemi o souboru. Vyberte **Zobrazit změny obsahu souboru,** chcete-li zobrazit obsah souboru.
 
    ![změna podrobností](./media/change-tracking-file-contents/change-details.png)
 

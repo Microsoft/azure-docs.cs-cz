@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246042"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678167"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Vlastní zásady ve službě Azure Active Directory B2C
 
@@ -43,7 +43,9 @@ Používají se tyto tři typy souborů zásad:
 - **Přípony –** obsahuje jedinečné změny konfigurace pro vašeho tenanta.
 - **Předávající strana (RP) soubor** - jeden soubor zaměřený na úkol, který je vyvolán přímo aplikací nebo službou (také známý jako předávající strana). Každý jedinečný úkol vyžaduje vlastní RP a v závislosti na požadavcích na branding může být číslo "celkový počet aplikací x celkový počet případů použití".
 
-Toky uživatelů v Azure AD B2C postupujte podle vzoru tří souborů zobrazených výše, ale vývojář uvidí jenom soubor RP, zatímco portál Azure provede změny na pozadí souboru rozšíření.
+Toky uživatelů v Azure AD B2C postupujte podle vzoru souboru znázorněného výše, ale vývojář uvidí jenom soubor RP, zatímco portál Azure provede změny na pozadí souboru rozšíření.
+
+Přestože existují tři typy souborů zásad, nejste omezeni pouze na tři soubory. Je možné, že máte více souborů každého typu souboru. Pokud například nechcete provádět změny v souboru přípona, můžete vytvořit soubor Extensions2 pro další rozšíření souboru Přípony.
 
 ## <a name="custom-policy-core-concepts"></a>Základní koncepty vlastních zásad
 
@@ -55,7 +57,7 @@ Služba správy identit a přístupu zákazníka (CIAM) v Azure zahrnuje:
 
 Azure AD B2C spolupracuje s poskytovateli identit, uživateli, jinými systémy a s adresářem místního uživatele v pořadí k dosažení úlohy identity. Přihlaste se například k uživateli, zaregistrujte nového uživatele nebo obnovte heslo. Rozhraní identity experience framework a zásady (také nazývané cesta uživatele nebo zásady architektury důvěryhodnosti) vytváří důvěryhodnost více stran a explicitně definuje aktéry, akce, protokoly a posloupnost kroků k dokončení.
 
-Rozhraní Identity Experience Framework je plně konfigurovatelná cloudová platforma Azure založená na zásadách, která organizuje důvěryhodnost mezi entitami ve standardních formátech protokolu, jako je OpenID Connect, OAuth, SAML a několik nestandardních, například REST Výměny deklarací systému a systému založené na rozhraní API. Rámec vytváří uživatelsky přívětivé prostředí s bílým popiskem, které podporují html a css.
+Rozhraní Identity Experience Framework je plně konfigurovatelná cloudová platforma Azure založená na zásadách, která orchestruje vztahy důvěryhodnosti mezi entitami ve standardních formátech protokolů, jako je OpenID Connect, OAuth, SAML a několik nestandardních, například výměny deklarací systému mezi systémem rest API. Rámec vytváří uživatelsky přívětivé prostředí s bílým popiskem, které podporují html a css.
 
 Vlastní zásada je vyjádřena jako jeden nebo více souborů ve formátu XML, které odkazují na sebe navzájem v hierarchickém řetězu. Elementy XML definují schéma deklarací identity, transformace deklarací identity, definice obsahu, zprostředkovatele deklarací identity, technické profily a kroky orchestrace cesty uživatele, mimo jiné prvky. Vlastní zásady jsou přístupné jako jeden nebo několik souborů XML, které jsou spouštěny rozhraním Identity Experience Framework při vyvolání předávající stranou. Vývojáři konfigurující vlastní zásady musí pečlivě definovat důvěryhodné vztahy tak, aby zahrnovaly koncové body metadat, definice výměny přesných deklarací identity a podle potřeby nakonfigurovaly tajné klíče, klíče a certifikáty podle potřeby každého poskytovatele identity.
 

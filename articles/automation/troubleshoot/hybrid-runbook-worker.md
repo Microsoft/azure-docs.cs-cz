@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží – hybridní pracovníci runbooku Azure Automation
+title: Řešení potíží s hybridními pracovníky runbooku Azure Automation
 description: Tento článek obsahuje informace pro řešení potíží s hybridními pracovníky sady Runbook Azure Automation.
 services: automation
 ms.service: automation
@@ -9,20 +9,23 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 2b3bf6706e977bdb6915335dee59da3c250e7895
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637858"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679332"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Poradce při potížích s hybridními pracovníky runbooku
 
 Tento článek obsahuje informace o řešení problémů s hybridními pracovníky runbooku.
 
+>[!NOTE]
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](../automation-update-azure-modules.md).
+
 ## <a name="general"></a>Obecné
 
-Hybridní pracovník runbooku závisí na agentovi, který bude komunikovat s vaším účtem Automation a zaregistrovat pracovníka, přijímat úlohy runbooku a vykazovat stav. Pro systém Windows je tento agent agent analýzy protokolů pro systém Windows, označovaný také jako agent monitorování společnosti Microsoft (MMA). Pro Linux je to agent Log Analytics pro Linux.
+Hybridní pracovník runbooku závisí na agentovi, který bude komunikovat s vaším účtem Automation a zaregistrovat pracovníka, přijímat úlohy runbooku a vykazovat stav. Pro systém Windows je tento agent agentem Analýzy protokolů pro systém Windows. Pro Linux je to agent Log Analytics pro Linux.
 
 ### <a name="scenario-runbook-execution-fails"></a><a name="runbook-execution-fails"></a>Scénář: Spuštění runbooku se nezdaří
 
@@ -41,10 +44,8 @@ Runbook je pozastavena krátce poté, co se pokusí spustit třikrát. Existují
 Možné příčiny jsou následující:
 
 * Sady Runbook se nemohou ověřit pomocí místních prostředků.
-
 * Hybridní pracovník je za proxy nebo firewallem.
-
-* Počítač nakonfigurovaný ke spuštění funkce Hybridní modul runbook worker nesplňuje minimální požadavky na hardware.
+* Počítač nakonfigurovaný pro spuštění hybridního pracovníka sady Runbook nesplňuje minimální požadavky na hardware.
 
 #### <a name="resolution"></a>Řešení
 
@@ -103,20 +104,20 @@ Spusťte pracovní počítač a pak ho znovu zaregistrujte pomocí Azure Automat
 Spuštění runbooku spuštěné v hybridním pracovníkovi runbooku se nezdaří s následující chybovou zprávou.
 
 ```error
-Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
+Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
 At line:3 char:1
-+ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
++ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
+    + CategoryInfo          : CloseError: (:) [Connect-AzAccount], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand
 ```
 #### <a name="cause"></a>Příčina
 
-K této chybě dochází, když se pokusíte použít [účet Spustit jako](../manage-runas-account.md) v runbooku, který běží na hybridní množiny runbooku, kde není k dispozici certifikát Spustit jako účet. Hybridní pracovníci runbooku nemají ve výchozím nastavení datový zdroj certifikátu místně, což je vyžadováno účtem Spustit jako, aby správně fungoval.
+K této chybě dochází, když se pokusíte použít [účet Spustit jako](../manage-runas-account.md) v runbooku, který běží na hybridní množiny runbooku, kde není k dispozici certifikát spustit jako účet. Hybridní pracovníci runbooku nemají ve výchozím nastavení datový zdroj certifikátu místně. Účet Spustit jako vyžaduje, aby tento prostředek fungoval správně.
 
 #### <a name="resolution"></a>Řešení
 
-Pokud je váš hybridní runbook worker virtuální počítač Azure, můžete místo toho použít [spravované identity pro prostředky Azure.](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) Tento scénář zjednodušuje ověřování tím, že umožňuje ověření prostředků Azure pomocí spravované identity virtuálního počítače Azure namísto účtu Spustit jako. Pokud je hybridní pracovník sady Runbook místní počítač, je třeba nainstalovat certifikát účtu Spustit jako do počítače. Informace o instalaci certifikátu naleznete v postupech spuštění sady Runbook PowerShell Export-RunAsCertificateToHybridWorker ve [spuštěných runbookech na hybridním pracovníkovi sady Runbook](../automation-hrw-run-runbooks.md).
+Pokud je váš hybridní runbook worker virtuální počítač Azure, můžete místo toho použít [spravované identity pro prostředky Azure.](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) Tento scénář zjednodušuje ověřování tím, že umožňuje ověření prostředků Azure pomocí spravované identity virtuálního počítače Azure namísto účtu Spustit jako. Pokud je hybridní pracovník sady Runbook místní počítač, je třeba nainstalovat certifikát účtu Spustit jako do počítače. Informace o instalaci certifikátu naleznete v postupech spuštění sady Runbook PowerShell **Export-RunAsCertificateToHybridWorker** ve [spuštěných runbookech na hybridním pracovníkovi sady Runbook](../automation-hrw-run-runbooks.md).
 
 ### <a name="scenario-error-403-during-registration-of-hybrid-runbook-worker"></a><a name="error-403-on-registration"></a>Scénář: Chyba 403 při registraci hybridního pracovníka runbooku
 
@@ -193,15 +194,15 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 Pracovník hybridního runbooku systému Windows závisí na [agentovi Analýzy protokolů pro systém Windows,](../../azure-monitor/platform/log-analytics-agent.md) který bude komunikovat s vaším účtem Automation a zaregistrovat pracovníka, přijímat úlohy runbooku a vykazovat stav. Pokud registrace pracovníka selže, tato část obsahuje některé možné důvody.
 
-### <a name="scenario-the-microsoft-monitoring-agent-isnt-running"></a><a name="mma-not-running"></a>Scénář: Agent monitorování společnosti Microsoft není spuštěn
+### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>Scénář: Agent analýzy protokolů pro systém Windows není spuštěn
 
 #### <a name="issue"></a>Problém
 
-Služba `healthservice` není spuštěna v počítači hybrid Runbook Worker.
+Není `healthservice` spuštěn v počítači hybridní runbook pracovního automatu.
 
 #### <a name="cause"></a>Příčina
 
-Pokud služba Microsoft Monitoring Agent není spuštěná, hybridní pracovník runbooku nemůže komunikovat s Azure Automation.
+Pokud služba Log Analytics pro Windows není spuštěná, hybridní pracovník runbooku nemůže komunikovat s Azure Automation.
 
 #### <a name="resolution"></a>Řešení
 
@@ -272,7 +273,7 @@ Tento problém může být způsoben poškozenou mezipamětí na hybridní praco
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li tento problém vyřešit, přihlaste se k hybridnímu pracovníkovi runbooku a spusťte následující skript. Tento skript zastaví agenta sledování společnosti Microsoft, odebere jeho mezipaměť a restartuje službu. Tato akce vynutí hybridní runbook worker znovu stáhnout jeho konfiguraci z Azure Automation.
+Chcete-li tento problém vyřešit, přihlaste se k hybridnímu pracovníkovi runbooku a spusťte následující skript. Tento skript zastaví agenta Analýzy protokolů pro systém Windows, odebere jeho mezipaměť a restartuje službu. Tato akce vynutí hybridní runbook worker znovu stáhnout jeho konfiguraci z Azure Automation.
 
 ```powershell
 Stop-Service -Name HealthService
@@ -304,8 +305,8 @@ Chcete-li tento problém vyřešit, odeberte následující klíč registru, res
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
+Pokud problém nevidíte výše nebo nemůžete problém vyřešit, vyzkoušejte další podporu jedním z následujících kanálů:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure .](https://azure.microsoft.com/support/forums/)
-* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s – oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí propojením komunity Azure se správnými prostředky: odpověďmi, podporou a odborníky.
-* Pokud potřebujete další pomoc, můžete nastolet incident podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.
+* Spojte [@AzureSupport](https://twitter.com/azuresupport)se s oficiálním účtem Microsoft Azure a vylepšete tak zákaznickou zkušenost propojením komunity Azure se správnými prostředky: odpověďmi, podporou a odborníky.
+* Soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.

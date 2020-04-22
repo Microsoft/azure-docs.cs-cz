@@ -4,15 +4,15 @@ description: Zjistěte, jak se připojit k serveru Analysis Services v Azure a z
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2875959a833134131fa6db6d51df0c2b47a39377
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411319"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676648"
 ---
 # <a name="connecting-to-servers"></a>Připojení k serverům
 
@@ -23,6 +23,9 @@ Tento článek popisuje připojení k serveru pomocí aplikací pro modelování
 [Získejte nejnovější klientské knihovny](analysis-services-data-providers.md)
 
 Všechna připojení k serveru, bez ohledu na typ, vyžadují aktualizované knihovny klientů AMO, ADOMD.NET a OLEDB pro připojení k serveru Analysis Services a připojení k němu. Pro SSMS, Visual Studio, Excel 2016 a novější a Power BI se nejnovější klientské knihovny nainstalované nebo aktualizované měsíčními verzemi. V některých případech je však možné, že aplikace nemusí mít nejnovější. Například když zásady zpoždění aktualizace nebo Aktualizace Office 365 jsou na odložené kanálu.
+
+> [!NOTE]
+> Klientské knihovny se nemohou připojit ke službě Azure Analysis Services prostřednictvím proxy serverů, které vyžadují uživatelské jméno a heslo. 
 
 ## <a name="server-name"></a>Název serveru
 

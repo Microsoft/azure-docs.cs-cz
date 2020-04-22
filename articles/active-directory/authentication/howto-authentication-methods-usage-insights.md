@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1730939de399cacd13c62988259904ba84ee78ff
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654144"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680193"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Využití metod ověřování & přehledy (náhled)
 
@@ -65,7 +65,7 @@ Kliknutím na **uživatele registrované**, **Uživatelé povoleno**, nebo **Už
 
 Sestava podrobností o registraci zobrazuje pro každého uživatele následující informace:
 
-- Name (Název)
+- Název
 - Uživatelské jméno
 - Stav registrace (vše, registrováno, není registrováno)
 - Stav Povolená (Vše, Povoleno, Nepovoleno)
@@ -80,7 +80,7 @@ Kliknutím na grafy Registrace nebo Resetuje se dostanete k podrobnostem resetu.
 
 Sestava podrobností o obnovení zobrazuje události registrace a obnovení za posledních 30 dní, včetně:
 
-- Name (Název)
+- Název
 - Uživatelské jméno
 - Funkce (vše, registrace, reset)
 - Metoda ověřování (oznámení aplikace, kód aplikace, telefonní hovor, volání do Office, SMS, e-mail, bezpečnostní otázky)
@@ -93,6 +93,8 @@ Pomocí ovládacích prvků v horní části seznamu můžete vyhledat uživatel
 Údaje uvedené v těchto zprávách budou zpožděny až o 60 minut. Na webu Azure Portal existuje pole "Poslední aktualizace", které identifikuje, jak poslední jsou vaše data.
 
 Data o využití a přehledech nejsou náhradou za sestavy aktivit azure vícefaktorového ověřování nebo informace obsažené v sestavě přihlášení Azure AD.
+
+Sestavu nelze aktuálně filtrovat, aby bylo možné vyloučit externí uživatele.
 
 ## <a name="next-steps"></a>Další kroky
 

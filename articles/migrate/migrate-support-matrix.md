@@ -2,14 +2,14 @@
 title: Matice podpory migrace Azure
 description: Obsahuje souhrn nastavení podpory a omezení pro službu Azure Migrate.
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: 0f766bf95bb7e26d942e7dde3f315bbef6d5dc5c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 44a971894f53a3f31c068b3c3ed4912bc7e00dab
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535192"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680697"
 ---
 # <a name="azure-migrate-support-matrix"></a>Matice podpory migrace Azure
 
@@ -25,6 +25,8 @@ Tabulka shrnuje podporované scénáře zjišťování, hodnocení a migrace.
 **Místní hodnocení** | Vyhodnoťte místní úlohy a data spuštěná na virtuálních počítačích VMware, virtuálních počítačích Hyper-V a fyzických serverech. Vyhodnoťte pomocí Azure Migrate Server Assessment a Microsoft Data Migration Assistant (DMA), stejně jako další nástroje a nabídky neodvýrobci neřídit si je.
 **Místní migrace do Azure** | Migrujte úlohy a data spuštěná na fyzických serverech, virtuálních počítačích VMware, virtuálních počítačích Hyper-V, fyzických serverech a cloudových virtuálních počítačích do Azure. Migrujte pomocí Azure Migrate Server Assessment a Azure Database Migration Service (DMS) a dalších nástrojů a nabídek neřídit si neřídit isv.
 
+> [!NOTE]
+> V současné době nástroje isv nelze odesílat data do Azure Migrate v Azure Government. Můžete použít integrované nástroje Společnosti Microsoft nebo používat partnerské nástroje nezávisle.
 
 ## <a name="supported-tools"></a>Podporované nástroje
 
@@ -93,7 +95,7 @@ Spojené státy | Střední USA nebo západní USA 2
 **Úkol** | **Geografie** | **Podrobnosti**
 --- | --- | ---
 Vytvoření projektu | Spojené státy | Metadata jsou uložena v US Gov Arizona, US Gov Virginia
-Cílové posouzení | Spojené státy | Cílové oblasti: US Gov Arizona, US Gov Virginia/US Gov Texas
+Cílové posouzení | Spojené státy | Cílové oblasti: US Gov Arizona, US Gov Virginia, US Gov Texas
 Cílová replikace | Spojené státy | Cílové oblasti: US DoD Central, US DoD East, US Gov Arizona, US Gov Iowa, US Gov Texas, US Gov Virginia
 
 

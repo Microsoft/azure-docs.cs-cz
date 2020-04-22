@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760806"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677606"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Proces vědecké ho procesu týmových dat v akci – použití clusteru Azure HDInsight Hadoop v datové sadě o velikosti 1 TB
 
@@ -434,7 +434,7 @@ Pro modul **Import dat** jsou hodnoty parametrů, které jsou uvedeny v grafice,
 
 1. Zvolte "Dotaz hive" pro **zdroj dat**
 2. V poli **dotaz databáze Hive** stačí jednoduchý\_SELECT\_*\_FROM\_<název databáze.název tabulky> - stačí.
-3. **Identifikátor URI serveru HCATALOG**: Pokud je váš cluster "abc", je to jednoduše:https://abc.azurehdinsight.net
+3. **Identifikátor URI serveru HCATALOG**: Pokud je váš cluster "abc", pak je to jednoduše: https:\//abc.azurehdinsight.net
 4. **Název uživatelského účtu Hadoop**: Uživatelské jméno zvolené v době uvedení clusteru do provozu. (NE Uživatelské jméno vzdáleného přístupu!)
 5. **Heslo uživatelského účtu Hadoop**: Heslo pro uživatelské jméno zvolené v době uvedení clusteru do provozu. (NE heslo pro vzdálený přístup!)
 6. **Umístění výstupních dat**: Zvolte "Azure"

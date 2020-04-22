@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e27550ecc5b42c2bf0d947690da09e13d88ea4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91451ff3024a9a5019b3982b0e4471e2c4d80c74
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128030"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683915"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Delegovaný přístup ve Windows Virtual Desktop
 
@@ -37,8 +37,8 @@ Delegovaný přístup k virtuální ploše systému Windows podporuje následuj�
 Delegovaný přístup ve virtuální ploše systému Windows má několik předdefinovaných definic rolí, které můžete přiřadit uživatelům a instančním objektům.
 
 * Vlastník RDS může spravovat vše, včetně přístupu k prostředkům.
-* Přispěvatel RDS může spravovat vše kromě přístupu k prostředkům.
-* Rds Reader může zobrazit vše, ale nemůže provádět žádné změny.
+* Přispěvatel RDS může spravovat všechno, ale nemá přístup k prostředkům.
+* Čtečka RDS může zobrazit vše, ale nemůže provádět žádné změny.
 * Operátor RDS může zobrazit diagnostické aktivity.
 
 ## <a name="powershell-cmdlets-for-role-assignments"></a>Rutiny prostředí PowerShell pro přiřazení rolí

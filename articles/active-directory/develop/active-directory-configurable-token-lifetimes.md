@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4138c4ae24ae599d4058c9fd06c33b69657fe38
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263176"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680074"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životnosti tokenů ve službě Azure Active Directory (Preview)
 
@@ -102,7 +102,7 @@ Zásada životnosti tokenu je typ objektu zásad, který obsahuje pravidla živo
 | Maximální neaktivní čas obnovovacího tokenu (vydan pro důvěrné klienty) |Obnovovací tokeny (vydané pro důvěrné klienty) |90 dnů |
 | Maximální věk obnovovacího tokenu (vydanpro důvěrné klienty) |Obnovovací tokeny (vydané pro důvěrné klienty) |Dokud nebyla odvolána |
 
-* <sup>1.</sup> Federovaní uživatelé, kteří nemají dostatečné informace o odvolání, zahrnují všechny uživatele, kteří nemají synchronizován atribut LastPasswordChangeTimestamp. Těmto uživatelům je poskytnut tento krátký maximální věk, protože služba AAD nemůže ověřit, kdy zrušit tokeny, které jsou vázány na staré pověření (například heslo, které bylo změněno) a musí se častěji vracet se změnami, aby bylo zajištěno, že uživatel a přidružené tokeny jsou stále v dobrém pořádku Stálého. Chcete-li zlepšit toto prostředí, musí správci tenanta zajistit, aby synchronizovali atribut LastPasswordChangeTimestamp (to lze nastavit u objektu uživatele pomocí prostředí Powershell nebo prostřednictvím aplikace AADSync).
+* <sup>1.</sup> Federovaní uživatelé, kteří nemají dostatečné informace o odvolání, zahrnují všechny uživatele, kteří nemají synchronizován atribut LastPasswordChangeTimestamp. Tito uživatelé jsou uvedeny tento krátký maximální stáří, protože AAD není schopen ověřit, kdy odvolat tokeny, které jsou vázány na staré pověření (například heslo, které bylo změněno) a musí vrátit se změnami častěji zajistit, že uživatel a přidružené tokeny jsou stále v dobrém stavu. Chcete-li zlepšit toto prostředí, musí správci tenanta zajistit, aby synchronizovali atribut LastPasswordChangeTimestamp (to lze nastavit u objektu uživatele pomocí prostředí Powershell nebo prostřednictvím aplikace AADSync).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Hodnocení politiky a stanovení priorit
 Můžete vytvořit a pak přiřadit zásady životnosti tokenu konkrétní aplikaci, vaší organizaci a instančním objektům. Pro konkrétní aplikaci může platit více zásad. Zásady životnosti tokenu, které se projeví, se řídí těmito pravidly:
@@ -243,19 +243,25 @@ V tomto příkladu vytvoříte zásadu, která umožňuje přihlášení uživat
         }')
         ```
 
-    2. Chcete-li vytvořit zásadu, spusťte následující příkaz:
+    1. Chcete-li vytvořit zásadu, spusťte následující příkaz:
 
         ```powershell
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3. Chcete-li zobrazit nové zásady a získat **zásady ObjectId**, spusťte následující příkaz:
+    1. Chcete-li odstranit všechny prázdné znaky, spusťte následující příkaz:
+
+        ```powershell
+        Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
+        ```
+
+    1. Chcete-li zobrazit nové zásady a získat **zásady ObjectId**, spusťte následující příkaz:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Aktualizujte zásadu.
+1. Aktualizujte zásadu.
 
     Můžete se rozhodnout, že první zásady nastavené v tomto příkladu nejsou tak přísné, jak vyžaduje vaše služba. Chcete-li nastavit platnost jednofaktorového obnovovacího tokenu za dva dny, spusťte následující příkaz:
 
@@ -277,13 +283,13 @@ V tomto příkladu vytvoříte zásadu, která vyžaduje, aby se uživatelé ov�
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. Chcete-li zobrazit novou zásadu a získat zásadu **ObjectId**, spusťte následující příkaz:
+    1. Chcete-li zobrazit novou zásadu a získat zásadu **ObjectId**, spusťte následující příkaz:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat **ObjectId** instančního objektu.
+1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat **ObjectId** instančního objektu.
 
     1. Pomocí rutiny [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) zobrazíte všechny instanční objekty vaší organizace nebo jeden instanční objekt.
         ```powershell
@@ -291,7 +297,7 @@ V tomto příkladu vytvoříte zásadu, která vyžaduje, aby se uživatelé ov�
         $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
         ```
 
-    2. Pokud máte instanční objekt, spusťte následující příkaz:
+    1. Pokud máte instanční objekt, spusťte následující příkaz:
         ```powershell
         # Assign policy to a service principal
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
@@ -308,13 +314,13 @@ V tomto příkladu vytvoříte zásadu, která vyžaduje, aby se uživatelé ov�
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. Chcete-li zobrazit novou zásadu, spusťte následující příkaz:
+    1. Chcete-li zobrazit novou zásadu, spusťte následující příkaz:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Přiřaďte zásady k webovému rozhraní API. Také je nutné získat **ObjectId** vaší aplikace. Pomocí rutiny [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) vyhledejte objekt **ObjectId**aplikace nebo použijte [portál Azure](https://portal.azure.com/).
+1. Přiřaďte zásady k webovému rozhraní API. Také je nutné získat **ObjectId** vaší aplikace. Pomocí rutiny [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) vyhledejte objekt **ObjectId**aplikace nebo použijte [portál Azure](https://portal.azure.com/).
 
     Získejte **ObjectId** aplikace a přiřadit zásady:
 
@@ -337,19 +343,19 @@ V tomto příkladu vytvoříte několik zásad, které se dozvíte, jak funguje 
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    2. Chcete-li zobrazit novou zásadu, spusťte následující příkaz:
+    1. Chcete-li zobrazit novou zásadu, spusťte následující příkaz:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Přiřaďte zásadu instančnímu objektu.
+1. Přiřaďte zásadu instančnímu objektu.
 
     Nyní máte zásady, které platí pro celou organizaci. Můžete chtít zachovat tuto 30denní zásadu pro konkrétní instanční objekt, ale změnit výchozí zásady organizace na horní limit "do odvolání".
 
     1. Chcete-li zobrazit všechny instanční objekty vaší organizace, použijte rutinu [Get-AzureADServicePrincipal.](/powershell/module/azuread/get-azureadserviceprincipal)
 
-    2. Pokud máte instanční objekt, spusťte následující příkaz:
+    1. Pokud máte instanční objekt, spusťte následující příkaz:
 
         ```powershell
         # Get ID of the service principal
@@ -359,13 +365,13 @@ V tomto příkladu vytvoříte několik zásad, které se dozvíte, jak funguje 
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. Nastavte `IsOrganizationDefault` příznak na false:
+1. Nastavte `IsOrganizationDefault` příznak na false:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
     ```
 
-4. Vytvořte novou výchozí zásadu organizace:
+1. Vytvořte novou výchozí zásadu organizace:
 
     ```powershell
     New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"

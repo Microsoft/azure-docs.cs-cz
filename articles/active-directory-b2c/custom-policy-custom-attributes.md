@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bc5204518cb6e801ba661aecd5498a501122225f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5990f79891a9cbc0d18c3499691a3d7ef309a73
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473655"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678258"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: Povolení vlastních atributů ve vlastních zásadách profilu
 
@@ -46,7 +46,7 @@ Vlastnost *rozšíření*termínů , *vlastní atribut*a *vlastní deklarace odk
 
 ## <a name="get-the-application-properties"></a>Získání vlastností aplikace
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **Directory + subscription** a pak vyberte adresář, který obsahuje vašeho klienta Azure AD B2C.
 1. V levé nabídce vyberte **Azure AD B2C**. Nebo vyberte **Všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (preview)** a pak vyberte **Všechny aplikace**.
@@ -75,13 +75,13 @@ Chcete-li povolit vlastní atributy v zásadách, zadejte **ID aplikace** a **ID
             <Item Key="ApplicationObjectId"></Item>
           </Metadata>
         </TechnicalProfile>
-      <TechnicalProfiles> 
+      </TechnicalProfiles> 
     </ClaimsProvider>
     ```
 
 ## <a name="upload-your-custom-policy"></a>Nahrání vlastních zásad
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD výběrem directory **+ předplatné** filtr v horní nabídce a výběrem adresáře, který obsahuje vašeho klienta Azure AD B2C.
 3. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak **vyhledejte**a vyberte registrace aplikací .
 4. Vyberte **rozhraní Identity Experience Framework**.
@@ -96,7 +96,7 @@ Stejné atributy rozšíření jsou sdíleny mezi předdefinované a vlastní z�
 
 Tyto atributy můžete vytvořit pomocí portálu ui před nebo po jejich použití ve vlastních zásadách. Postupujte podle pokynů, jak [definovat vlastní atributy ve službě Azure Active Directory B2C](user-flow-custom-attributes.md). Při vytváření **atributu loyaltyId** na portálu, musíte odkazovat na něj takto:
 
-|Name (Název)     |Používá se v |
+|Název     |Používá se v |
 |---------|---------|
 |`extension_loyaltyId`  | Vlastní zásady|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|
