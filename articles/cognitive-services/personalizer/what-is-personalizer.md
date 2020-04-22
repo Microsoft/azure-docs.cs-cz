@@ -1,21 +1,14 @@
 ---
 title: Co je služba Personalizace?
-titleSuffix: Azure Cognitive Services
 description: Personalizátor je cloudová služba rozhraní API, která vám umožní vybrat nejlepší prostředí, které se zobrazí vašim uživatelům, a učit se z jejich chování v reálném čase.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
 ms.topic: overview
-ms.date: 01/21/2020
-ms.author: diberry
-ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/20/2020
+ms.openlocfilehash: 3ae425479d764c0a6bf6c63bdd54a964c48af8b6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520981"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687267"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -102,5 +95,5 @@ Vzhledem k tomu, že personalista používá kolektivní informace téměř v re
 * [Informace o funkcích a akcích pro žádost o hodnost](concepts-features.md)
 * [Informace o určení skóre žádosti o odměnu](concept-rewards.md)
 * [Rychlý start](sdk-learning-loop.md)
-* [Tutorial](tutorial-use-azure-notebook-generate-loop-data.md)
+* [Tutoriál](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Použití interaktivní ukázky](https://personalizationdemo.azurewebsites.net/)

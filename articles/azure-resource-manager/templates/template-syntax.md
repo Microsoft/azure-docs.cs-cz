@@ -2,13 +2,13 @@
 title: Struktura šablony a syntaxe
 description: Popisuje strukturu a vlastnosti šablon Azure Resource Manager pomocí deklarativní syntaxe JSON.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 4e8334e4ddfaee52c5d1aa68fb8689fcde0a6cbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 60d800eb5251fb3454ba60a67bd109261c6ff9d4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79459986"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687867"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Principy struktury a syntaxe šablon ARM
 
@@ -130,7 +130,7 @@ Informace o `copy` použití k vytvoření několika hodnot pro proměnnou nalez
 
 Příklady použití proměnných najdete [v tématu Proměnné v šabloně Správce prostředků Azure](template-variables.md).
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 V šabloně můžete vytvářet vlastní funkce. Tyto funkce jsou k dispozici pro použití v šabloně. Obvykle definujete složité výrazy, které nechcete opakovat v celé šabloně. Uživatelem definované funkce vytvoříte z výrazů a [funkcí,](template-functions.md) které jsou podporovány v šablonách.
 
@@ -293,7 +293,7 @@ Máte několik možností pro přidání komentářů a metadat do šablony.
 Pro vložkové komentáře `//` můžete `/* ... */` použít buď nebo ale tato syntaxe nefunguje se všemi nástroji. Editor šablon portálu nelze použít k práci na šablonách s vložkovými komentáři. Pokud přidáte tento styl komentáře, ujistěte se, že nástroje, které používáte podporu vsazené komentáře JSON.
 
 > [!NOTE]
-> Chcete-li nasadit šablony s komentáři pomocí `--handle-extended-json-format` azure cli, musíte použít přepínač.
+> Chcete-li nasadit šablony s komentáři pomocí azure cli s verzí `--handle-extended-json-format` 2.3.0 nebo starší, musíte použít přepínač.
 
 ```json
 {
@@ -404,7 +404,7 @@ Do uživatelem definovaných funkcí nelze přidat objekt metadat.
   ],
 ```
 
-Chcete-li nasadit šablony s víceřádkovými řetězci pomocí `--handle-extended-json-format` azure cli, musíte použít přepínač.
+Chcete-li nasadit šablony s víceřádkovými řetězci pomocí azure cli s verzí `--handle-extended-json-format` 2.3.0 nebo starší, musíte použít přepínač.
 
 ## <a name="next-steps"></a>Další kroky
 

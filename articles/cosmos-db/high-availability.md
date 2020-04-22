@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak Azure Cosmos DB poskytuje vysokou dost
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 2afeae937d56a84c39167ad55a57c86f2623e52d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 0a67360ab840b7897c85a382dfc3965bd27f6a3e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382706"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688059"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Zajištění vysoké dostupnosti pomocí Azure Cosmos DB
 
@@ -97,6 +97,8 @@ Tato funkce je dostupná v následujících oblastech Azure:
 - Západní Evropa
 
 - USA – západ 2
+
+- Austrálie – východ
 
 > [!NOTE]
 > Povolení zón dostupnosti pro jeden účet Azure Cosmos v jedné oblasti bude mít za následek poplatky, které jsou rovnocenné přidání další oblasti do vašeho účtu. Podrobnosti o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) a náklady na více oblastí v článcích [Azure Cosmos DB.](optimize-cost-regions.md)

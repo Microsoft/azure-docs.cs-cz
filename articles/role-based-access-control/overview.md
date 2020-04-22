@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ec9734974971ac89ad54934f43c70f8805b6a013
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 4a1db200b88d0eabde967961d956cdd2854e828d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641789"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686473"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě role (RBAC) u prostředků Azure?
 
@@ -35,14 +35,6 @@ Tady je několik příkladů toho, co vám RBAC umožňuje:
 - Skupině DBA můžete povolit správu databází SQL v předplatném.
 - Uživateli můžete povolit správu všech prostředků ve skupině prostředků, například virtuálních počítačů, webů a podsítí.
 - Aplikaci můžete povolit přístup ke všem prostředkům ve skupině prostředků.
-
-## <a name="best-practice-for-using-rbac"></a>Osvědčený postup pro použití RBAC
-
-Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce. Místo toho, abyste všem uživatelům udělili neomezená oprávnění v předplatném nebo prostředcích Azure, můžete povolit pouze určité akce v určitém oboru.
-
-Osvědčeným postupem při plánování strategie řízení přístupu je udělit uživatelům nejnižší úroveň oprávnění, kterou k práci potřebují. Následující diagram ukazuje navrhovaný způsob používání RBAC.
-
-![RBAC a nejnižší úroveň oprávnění](./media/overview/rbac-least-privilege.png)
 
 ## <a name="how-rbac-works"></a>Jak RBAC funguje
 

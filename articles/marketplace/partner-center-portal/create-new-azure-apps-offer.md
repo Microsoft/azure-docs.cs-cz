@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390351"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730619"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -293,7 +293,7 @@ Tento plán musí být k dispozici alespoň v jednom cloudu.
 
 Vyberte možnost **Veřejné Azure,** aby vaše řešení bylo možné nasadit zákazníkům ve všech veřejných oblastech Azure, které mají integraci Marketplace.  Přečtěte si další informace o [geografické dostupnosti](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Vyberte možnost **Azure Government Cloud,** aby bylo možné vaše řešení nasadit v [Azure Government Cloud](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome), což je cloud vládní komunity s řízeným přístupem pro zákazníky z amerického federálního, státního, místního nebo kmenového a partnerů, kteří mohou těmto entitám poskytovat služby.  Vy jako vydavatel nesete odpovědnost za veškeré kontroly dodržování předpisů, bezpečnostní opatření a osvědčené postupy, které budou sloužit této cloudové komunitě.  Azure Government používá fyzicky izolovaná datová centra a sítě (umístěné jenom v USA).  Před publikováním na [Azure Government](https://aka.ms/azuregovpublish), Microsoft doporučuje otestovat a ověřit vaše řešení v prostředí, protože některé koncové body se mohou lišit. Chcete-li zinscenovat a otestovat řešení, požádejte o zkušební účet z tohoto [odkazu](https://azure.microsoft.com/global-infrastructure/government/request/).
+Vyberte možnost **Azure Government Cloud,** aby bylo možné vaše řešení nasadit v [Azure Government Cloud](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome), což je cloud vládní komunity s řízeným přístupem pro zákazníky z amerického federálního, státního, místního nebo kmenového a partnerů, kteří mohou těmto entitám poskytovat služby.  Vy jako vydavatel nesete odpovědnost za veškeré kontroly dodržování předpisů, bezpečnostní opatření a osvědčené postupy, které budou sloužit této cloudové komunitě.  Azure Government používá fyzicky izolovaná datová centra a sítě (umístěné jenom v USA).  Před publikováním na [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), Microsoft doporučuje otestovat a ověřit vaše řešení v prostředí, protože některé koncové body se mohou lišit. Chcete-li zinscenovat a otestovat řešení, požádejte o zkušební účet z tohoto [odkazu](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 >[!Note]
 >Jakmile je plán publikován jako dostupný v konkrétním cloudu, tento cloud nelze odebrat.

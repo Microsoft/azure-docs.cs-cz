@@ -6,24 +6,23 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: dbd0313c3edca8c5a875572fe52d7ec751ba65e8
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 8e473a5692c3fa2be3b0f2d823d2a36ba768d661
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641986"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731361"
 ---
-# <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Nasazení aplikací Azure Spring Cloud pomocí IntelliJ
+# <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Použití IntelliJ k nasazování aplikací Azure Spring Cloudu
 Modul plug-in IntelliJ pro Azure Spring Cloud podporuje nasazení aplikací z IntelliJ IDEA.  
 
 ## <a name="prerequisites"></a>Požadavky
 * [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
 * [Maven 3.5.0+](https://maven.apache.org/download.cgi)
-* [IntelliJ IDEA Community Edition, verze [2020.1]](https://www.jetbrains.com/idea/download/#section=windows)
-* Nebo: IntelliJ IDEA Ultimate Edition, verze [2020.1]
+* [IntelliJ IDEA, Community/Ultimate Edition, verze 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>Instalace modulu plug-in
-Sadu nástrojů Azure Toolkit for IntelliJ IDEA 3.35.0 můžete z **uj.**
+Sadu nástrojů Azure Toolkit for IntelliJ IDEA 3.35.0 **Plugins** můžete přidat z uj.
 
 1. Spusťte IntelliJ.  Pokud jste dříve otevřeli projekt, zavřete projekt a zobrazte uvítací dialog. Vyberte **Konfigurovat** z odkazu vpravo dole a pak klepnutím na **tlačítko Moduly plug-in** otevřete dialogové okno konfigurace modulu plug-in a vyberte **Instalovat moduly plug-in z disku**.
 
@@ -52,15 +51,15 @@ Následující postupy nasadit hello world aplikace pomocí IntelliJ IDEA.
     ![Importovat projekt](media/spring-cloud-intellij-howto/import-project-1.png)
 
 ## <a name="deploy-to-azure-spring-cloud"></a>Nasazení do Azure Spring Cloud
-Abyste se mohli nasadit do Azure, musíte se přihlásit pomocí svého účtu Azure a zvolit předplatné.  Podrobnosti o přihlášení najdete v [tématu Instalace a přihlášení](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in).
+Abyste se mohli nasadit do Azure, musíte se přihlásit pomocí svého účtu Azure a zvolit předplatné.  Podrobnosti o přihlášení najdete v [tématu Instalace a přihlášení](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. Klikněte pravým tlačítkem myši na projekt v Průzkumníku projektu IntelliJ a vyberte **Nasazení Azure** -> **do Azure Spring Cloud**.
+1. Klikněte pravým tlačítkem myši na projekt v Průzkumníku projektu IntelliJ a vyberte **Azure** -> **Deploy to Azure Spring Cloud**.
 
     ![Nasazení do Azure 1](media/spring-cloud-intellij-howto/deploy-to-azure-1.png)
 
 1. Přijměte název aplikace v poli **Název.** **Název** odkazuje na konfiguraci, nikoli název aplikace. Uživatelé obvykle nemusí měnit.
 1. Přijměte identifikátor z projektu pro **artefakt**.
-1. Vyberte **Aplikace:**, pak klikněte na **Vytvořit aplikaci...**.
+1. Vyberte **Aplikace:** klikněte na **Vytvořit aplikaci...**.
 
     ![Nasazení do Azure 2](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
 
@@ -98,6 +97,6 @@ Chcete-li získat protokoly:
 
     ![Výstup protokolu streamování](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
-## <a name="see-also"></a>Viz také
-* [Vytvoření webové aplikace Hello World pro Azure App Service s využitím IntelliJ](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)
-* [Příprava aplikace Java Spring pro nasazení v Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment) 
+## <a name="next-steps"></a>Další kroky
+* [Příprava jarní aplikace pro Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [Další informace o Azure Toolkit pro IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)

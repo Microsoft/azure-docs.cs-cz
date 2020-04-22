@@ -3,12 +3,12 @@ title: Kurz – zálohování databází SERVERU SQL Server do Azure
 description: V tomto kurzu se dozvíte, jak zálohovat databázi SQL Serveru spuštěnou na virtuálním počítači Azure do trezoru služby Obnovení zálohování Azure.
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: 3216404b04647e2fb5f15beb09b9a4ccd6648bba
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f1d76fe0dfa428688714b8383c3974ac63195681
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74171885"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680736"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Zálohování databáze SERVERU SQL Server ve virtuálním počítači Azure
 
@@ -64,7 +64,7 @@ Vyhněte se následujícím názvům databází:
 * Zavřít hranatá závorka ']'
 * Názvy databází začínající na 'F:\'
 
-Máme aliasing pro azure tabulka nepodporované znaky, ale doporučujeme jim vyhnout. [Další informace](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+Máme aliasing pro azure tabulka nepodporované znaky, ale doporučujeme jim vyhnout. [Další informace](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

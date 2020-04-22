@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: 5bf405840de54c4e2399ee73e723201acca9e6bc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 04/20/2020
+ms.openlocfilehash: 76fcdb52df88be2c4033140f4bc71b28424d7f38
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657036"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687799"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML ve službě Azure HDInsight
 
@@ -23,7 +23,7 @@ Ml Services na HDInsight poskytuje nejnovější funkce pro analýzu založenou 
 
 Hraniční uzel poskytuje vhodné místo pro připojení ke clusteru a spuštění skriptů R. Hraniční uzel umožňuje spouštět paralelizované distribuované funkce ScaleR napříč jádry serveru. Můžete je také spustit přes uzly clusteru pomocí ScaleR hadoop mapy snížit. Můžete také použít apache spark výpočetní kontexty.
 
-Modely nebo předpovědi, které jsou výsledkem analýzy lze stáhnout pro místní použití. Můžou být také zprovozněny jinde v Azure. Zejména prostřednictvím [Azure Machine Learning Studio (klasické)](https://studio.azureml.net)a webové [služby](../../machine-learning/studio/deploy-a-machine-learning-web-service.md).
+Modely nebo předpovědi, které jsou výsledkem analýzy lze stáhnout pro místní použití. Můžou být `operationalized` taky jinde v Azure. Zejména prostřednictvím [Azure Machine Learning Studio (klasické)](https://studio.azureml.net)a webové [služby](../../machine-learning/studio/deploy-a-machine-learning-web-service.md).
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Začínáme se službami ML na HDInsightu
 
@@ -63,16 +63,16 @@ Následující funkce jsou zahrnuty ve službách ML na HDInsight.
 | R-povoleno | [R balíčky](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) pro řešení napsaná v R, s open source distribuce R a run-time infrastruktury pro spuštění skriptu. |
 | S podporou Pythonu | [Moduly Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) pro řešení napsaná v Pythonu s open source distribucí Pythonu a run-time infrastrukturou pro spouštění skriptů.
 | [Předem vycvičené modely](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Pro vizuální analýzu a analýzu mínění textu připraveno k vyhodzení dat, která zadáte. |
-| [Nasazení a využití](r-server-operationalize.md) | Zprovoznit server a nasadit řešení jako webovou službu. |
+| [Nasazení a využití](r-server-operationalize.md) | `Operationalize`serveru a nasazovat řešení jako webovou službu. |
 | [Vzdálené spuštění](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Spusťte vzdálené relace v clusteru služby ML v síti z klientské pracovní stanice. |
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>Možnosti ukládání dat pro služby ML na HDInsightu
 
-Výchozí úložiště pro systém souborů HDFS může být účet Azure Storage nebo Azure Data Lake Storage. Odeslaná data do úložiště clusteru během analýzy jsou trvalá. Data jsou k dispozici i po odstranění clusteru. Různé nástroje mohou zpracovat přenos dat do úložiště. Nástroje zahrnují nástroj pro nahrávání na portálu pro účet úložiště a nástroj [AzCopy.](../../storage/common/storage-use-azcopy.md)
+Výchozí úložiště pro systém souborů HDFS může být účet Azure Storage nebo Azure Data Lake Storage. Odeslaná data do úložiště clusteru během analýzy jsou trvalá. Data jsou k dispozici i po odstranění clusteru. Různé nástroje mohou zpracovat přenos dat do úložiště. Nástroje zahrnují nástroj pro nahrávání na portálu pro účet úložiště a nástroj AzCopy.
 
 Můžete povolit přístup k dalším úložištím objektů blob a datových jezer během vytváření clusteru. Nejste omezeni možností primárního úložiště, která se používá.  Další informace o používání více účtů úložiště najdete v článku [Možnosti úložiště Azure pro služby ML na webu HDInsight.](./r-server-storage.md)
 
-[Soubory Azure](../../storage/files/storage-how-to-use-files-linux.md) můžete také použít jako možnost úložiště pro použití na hraničním uzlu. Azure Files umožňuje sdílené složky vytvořené v Azure Storage do systému souborů Linuxu. Další informace najdete v [tématu Možnosti úložiště Azure pro služby ML na HDInsight](r-server-storage.md).
+Soubory Azure můžete také použít jako možnost úložiště pro použití na hraničním uzlu. Azure Files umožňuje sdílené složky vytvořené v Azure Storage do systému souborů Linuxu. Další informace najdete v [tématu Možnosti úložiště Azure pro služby ML na HDInsight](r-server-storage.md).
 
 ## <a name="access-ml-services-edge-node"></a>Hraniční uzel služby Access ML Services
 
@@ -82,9 +82,9 @@ K serveru Microsoft ML server na hraničním uzlu se můžete připojit pomocí 
 
 Vaše R skripty můžete použít některý z 8000 + open source R balíčky. Můžete také použít paralelizované a distribuované rutiny z knihovny ScaleR. Skripty spuštěné na hraničním uzlu jsou spuštěny v rámci překladače R v tomto uzlu. S výjimkou kroků, které volají funkce ScaleR s mapovým redukcem (RxHadoopMR) nebo sítosem (RxSpark) výpočetním kontextem. Funkce spustit distribuovaným způsobem napříč datovými uzly, které jsou přidruženy k datům. Další informace o možnostech kontextu naleznete v [tématu Možnosti kontextu výpočetního kontextu pro služby ML ve službě HDInsight](r-server-compute-contexts.md).
 
-## <a name="operationalize-a-model"></a>Zprovoznění modelu
+## <a name="operationalize-a-model"></a>`Operationalize`model
 
-Po dokončení modelování dat můžete zprovoznit model a vytvořit předpovědi pro nová data z Azure nebo místně. Tento proces se označuje jako vyhodnocování. Vyhodnocování se dá dělat v HDInsightu, Azure Machine Learningu nebo místně.
+Po dokončení modelování dat `operationalize` model pro předpověď pro nová data z Azure nebo místně. Tento proces se označuje jako vyhodnocování. Vyhodnocování se dá dělat v HDInsightu, Azure Machine Learningu nebo místně.
 
 ### <a name="score-in-hdinsight"></a>Skóre v HDInsight
 
@@ -96,7 +96,7 @@ Pokud chcete skóre pomocí Azure Machine Learning, použijte open source balí�
 
 ### <a name="score-on-premises"></a>Skóre v místním prostředí
 
-Chcete-li skóre v místním po vytvoření modelu: serializovat model v R, stáhnout, de-serializovat, pak jej použít pro vyhodnocování nových dat. Nová data můžete získat pomocí přístupu popsaného výše v [části Skóre v HDInsight](#score-in-hdinsight) nebo pomocí [webových služeb](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
+Chcete-li skóre v místním po vytvoření modelu: serializovat model v R, stáhnout, de-serializovat, pak jej použít pro vyhodnocování nových dat. Nová data můžete získat pomocí přístupu popsaného výše v části Skóre v HDInsight nebo pomocí [webových služeb](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
 
 ## <a name="maintain-the-cluster"></a>Udržovat cluster
 
@@ -130,7 +130,7 @@ Spuštění úloh může zpomalit během údržby. Nicméně, měly by ještě b
 
 Hraniční uzel Linuxu clusteru HDInsight je vstupní zónou pro analýzu založenou na R. Nejnovější verze HDInsight poskytují ide RStudio Server na základě prohlížeče na hraničním uzlu. RStudio Server je produktivnější než konzola R pro vývoj a provádění.
 
-IDE plochy může přistupovat ke clusteru prostřednictvím vzdáleného výpočetního kontextu MapReduce nebo Spark. Mezi možnosti patří: [Microsoft R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS), RStudio a Walware Eclipse-založené [StatET](http://www.walware.de/goto/statet).
+IDE plochy může přistupovat ke clusteru prostřednictvím vzdáleného výpočetního kontextu MapReduce nebo Spark. Mezi možnosti patří: [Microsoft R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS), RStudio a Walware Eclipse-založené StatET.
 
 Přístup ke konzole R na hraničním uzlu zadáním **R** na příkazovém řádku. Při použití rozhraní konzoly je vhodné vyvinout skript R v textovém editoru. Potom vyjměte a vložte části skriptu do konzoly R podle potřeby.
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 46c59e8b4e60fbe17887ea0fc375b6da758ebf50
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4d2d33f9d83132147b5b257ffcd6d659f272b8ec
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457395"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730719"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Vytvoření technických prostředků virtuálního počítače Azure
 
@@ -109,7 +109,7 @@ Následujícím postupem vytvořte základní image virtuálního počítače na
 
 Azure začne zřizování virtuálního počítače, který jste zadali. Jeho průběh můžete sledovat výběrem karty **Virtuální počítače** vlevo. Po vytvoření se stav změní na **Spuštěno**.
 
-Pokud narazíte na potíže s vytvářením nového virtuálního pevného disku založeného na Azure, přečtěte si [téma Běžné problémy při vytváření virtuálního pevného disku (časté otázky).](https://aka.ms/VHDcreationIssues)
+Pokud narazíte na potíže s vytvářením nového virtuálního pevného disku založeného na Azure, přečtěte si [téma Běžné problémy při vytváření virtuálního pevného disku (časté otázky).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)
 
 ### <a name="connect-to-your-azure-vm"></a>Připojení k virtuálnímu počítači Azure
 

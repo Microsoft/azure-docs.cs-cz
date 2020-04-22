@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: jushiman
-ms.openlocfilehash: 410ae93ea109e5757ccb5b65d353a600574dd595
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 5855c53a73ac94985f34f229fbe5ab77067ef17d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010473"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680419"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal
 
@@ -40,7 +40,7 @@ Nejprve vytvořte veřejný standardní vyrovnávání zatížení pomocí port�
     | ---| ---|
     | Předplatné  | Vyberte své předplatné.    |    
     | Skupina prostředků | Vyberte **Vytvořit nový** a do textového pole zadejte *myVMSSResourceGroup.*|
-    | Name (Název)           | *myLoadBalancer*         |
+    | Název           | *myLoadBalancer*         |
     | Region (Oblast)         | Vyberte **USA – východ**.       |
     | Typ          | Vyberte **Možnost Veřejné**.       |
     | Skladová jednotka (SKU)           | Vyberte **standardní**.       |
@@ -59,7 +59,7 @@ Nejprve vytvořte veřejný standardní vyrovnávání zatížení pomocí port�
 1. Do vyhledávacího pole **zadejte sadu měřítka.** Ve výsledcích vyberte v části **Marketplace** **škálovací sady virtuálních strojů**. Otevře se stránka Vytvořit **nastavení měřítka virtuálního počítače.** 
 1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a pak ve Skupině prostředků vyberte **Vytvořit nový**. Zadejte *název myVMSSResourceGroup* a pak vyberte **OK** . 
 1. Jako název škálovací sady zadejte *myScaleSet.*
-1. V **oblasti**vyberte oblast, která je blízko k vám oblasti.
+1. V **oblasti**vyberte oblast, která se nachází v blízkosti vaší oblasti.
 1. Ponechte výchozí hodnotu **virtuálních virtuálních montovek ScaleSet** pro **Orchestrator**.
 1. Vyberte obrázek tržiště pro **obrázek**. V tomto příkladu jsme zvolili *Ubuntu Server 18.04 LTS*.
 1. Zadejte požadované uživatelské jméno a vyberte upřednostňovaný typ ověřování.

@@ -8,12 +8,12 @@ ms.author: spelluru
 ms.date: 03/31/2020
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: d90bf8efab28624672dcedb5bf53d45052dd9123
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: b4d9dc51451a06b2c87ddce78547655b51c6fabd
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605124"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729628"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Průvodce vývojáři Apache Kafka pro Azure Event Hubs
 Tento článek obsahuje odkazy na články, které popisují, jak integrovat vaše aplikace Apache Kafka s Azure Event Hubs. 
@@ -21,7 +21,7 @@ Tento článek obsahuje odkazy na články, které popisují, jak integrovat va�
 ## <a name="overview"></a>Přehled
 Event Hubs poskytuje koncový bod Kafka, který může být použit pro vaše stávající aplikace založené na Kafka jako alternativu ke spuštění vlastního clusteru Kafka. Event Hubs podporuje protokol Apache Kafka 1.0 a novější a pracuje s vašimi stávajícími aplikacemi Kafka, včetně MirrorMakeru. Další informace najdete [v tématu Event Hubs for Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 
-## <a name="quickstarts"></a>Rychlé starty
+## <a name="quickstarts"></a>Rychlý start
 Rychlé starty najdete na GitHubu a v této sadě obsahu, která vám pomůže rychle rozjet centra událostí pro Kafku.
 
 ### <a name="quickstarts-in-github"></a>Rychlé starty v GitHubu
@@ -47,7 +47,7 @@ Podívejte se na rychlý start: [Streamování dat pomocí centra událostí pom
 ### <a name="tutorials-in-github"></a>Výukové programy na GitHubu
 Podívejte se na následující výukové programy na GitHubu:
 
-| Kurz | Popis | 
+| Tutoriál | Popis | 
 | ------------------------- | ----------- | 
 | [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | Tento kurz ukazuje, jak připojit Streamy Akka k centru událostí s podporou Kafka bez změny klientů protokolu nebo spuštění vlastních clusterů. Existují dva samostatné výukové programy používající programovací jazyky **Java** a **Scala.** | 
 | [Připojit](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Tento dokument vás provede integrací Kafka Connect s Azure Event Hubs a nasazením základních konektorů FileStreamSource a FileStreamSink. Zatímco tyto konektory nejsou určeny pro produkční použití, ukazují komplexní scénář Připojení Kafka, kde se Centra událostí Azure maskují jako zprostředkovatele Kafka.| 
@@ -75,7 +75,7 @@ Podívejte se na následující návody v naší dokumentaci:
 | [Připojení Apache Flinku k centru událostí](event-hubs-kafka-flink-tutorial.md) | Ukazuje, jak připojit Apache Flink k centru událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. |
 | [Integrace Apache Kafka Connect s centrem událostí (Preview)](event-hubs-kafka-connect-tutorial.md) | Provede vás integrací kafka connect s centrem událostí a nasazením základních konektorů FileStreamSource a FileStreamSink. |
 | [Připojení Akka Streams k centru událostí](event-hubs-kafka-akka-streams-tutorial.md) | Ukazuje, jak připojit Akka Streams k centru událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. |
-| [Použití startéru jarního startu pro Apache Kafka s Azure Event Hubs](/azure/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Ukazuje, jak nakonfigurovat java-založené Spring Cloud Stream Binder vytvořené pomocí jarní spuštění Inicializátor používat Apache Kafka s Azure Event Hubs. |
+| [Použití startéru jarního startu pro Apache Kafka s Azure Event Hubs](/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Ukazuje, jak nakonfigurovat java-založené Spring Cloud Stream Binder vytvořené pomocí jarní spuštění Inicializátor používat Apache Kafka s Azure Event Hubs. |
 
 ## <a name="next-steps"></a>Další kroky
 Projděte si ukázky v [azure-event-hubs-for-kafka v azure-event-hubs-for-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) v rámci složek rychlého startu a kurzů.

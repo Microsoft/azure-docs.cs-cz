@@ -6,14 +6,14 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 678dc8b058d0ae0694dafeb4222b2fc9f10ecda7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a930dfb38007349155581424d03ee7b3e7a6b46
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288695"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730207"
 ---
-# <a name="payout-reporting"></a>Výplatní hlášení
+# <a name="payout-reporting"></a>Generování sestav plateb
 
 [**Souhrn výplaty**](https://docs.microsoft.com/windows/uwp/publish/payout-summary) zobrazuje podrobnosti o penězích, které jste vydělali u společnosti Microsoft. Také vám dá vědět, kdy budete dostávat platby a kolik vám bude zaplaceno.
 
@@ -175,4 +175,4 @@ Tato možnost poskytuje stažení jednotlivých řádkových položek příjmů,
 
 ## <a name="billing-questions-and-support"></a>Otázky k fakturaci a podpora
 
-Chcete-li získat pomoc s dotazy týkajícími se fakturace, obraťte se na [podporu vydavatele komerčního trhu](https://aka.ms/marketplacepublishersupport).
+Chcete-li získat pomoc s dotazy týkajícími se fakturace, obraťte se na [podporu vydavatele komerčního trhu](https://partner.microsoft.com/support/v2/?stage=1).

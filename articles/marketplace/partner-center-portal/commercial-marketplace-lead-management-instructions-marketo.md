@@ -2,17 +2,17 @@
 title: Konfigurace správy potenciálních zákazníků v Marketu | Azure Marketplace
 description: Konfigurace správy potenciálních zákazníků pro zákazníky marketu pro Azure Marketplace.
 author: qianw211
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 04eae529efcf9509d8cd43a7629bb0b76b593cd0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 90f42954fd4d7324a7684795fca6ec302411790c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252426"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731103"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Konfigurace správy potenciálních zákazníků v Marketu
 
@@ -21,16 +21,21 @@ Tento článek popisuje, jak nastavit systém Marketo CRM pro zpracování prode
 ## <a name="set-up-your-marketo-crm-system"></a>Nastavení systému Marketo CRM
 
 1. Přihlaste se do Marketo.
+
 2. Vyberte **návrhstudia**.
+
     ![Marketo Design Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
 3.  Vyberte **Nový formulář**.
+
     ![Marketo nová forma](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
 4.  Vyplňte požadovaná pole v novém formuláři a pak vyberte **Vytvořit**.
+
     ![Marketo vytvořit novou formu](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
 5.  V části Podrobnosti pole vyberte **Dokončit**.
+
     ![Marketo dokončovací formulář](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
 6.  Schválit a zavřít.
@@ -41,7 +46,7 @@ Tento článek popisuje, jak nastavit systém Marketo CRM pro zpracování prode
 
 8. Kód pro vložení Marketo zobrazí kód podobný následujícímu příkladu.
 
-    ```
+    ```html
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
     ```
@@ -60,9 +65,10 @@ Tento článek popisuje, jak nastavit systém Marketo CRM pro zpracování prode
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Nakonfigurujte svou nabídku pro odesílání potenciálních zákazníků do Marketo
 
-Až budete připraveni nakonfigurovat informace o správě zájemců pro vaši nabídku na portálu pro publikování, postupujte podle následujících kroků: 
+Až budete připraveni nakonfigurovat informace o správě zájemců pro vaši nabídku na portálu pro publikování, postupujte takto: 
 
 1. Přejděte na stránku **Nastavení nabídky** pro vaši nabídku.
+
 1. V části Správa zájemců vyberte **Připojit.** 
 
     ![Správa potenciálních zákazníků - Připojení](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
@@ -73,12 +79,13 @@ Až budete připraveni nakonfigurovat informace o správě zájemců pro vaši n
 
 4. Zadejte **ID serveru**, **ID účtu munching**a **ID formuláře**.
 
-    >[!Note]
-    >Před přijetím zájemců o nabídku je nutné dokončit konfiguraci zbývající nabídky a publikovat ji. 
+    > [!Note]
+    > Před přijetím zájemců o nabídku je nutné dokončit konfiguraci zbývající nabídky a publikovat ji. 
 
 5. **Kontaktní e-mail** – Poskytněte e-maily lidem ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Můžete poskytnout více e-mailů tím, že je oddělíte středníkem.
+
 6. Vyberte **OK**.
 
-Chcete-li se ujistit, že jste se úspěšně připojili k cíli zájemce, klikněte na tlačítko ověřit. Pokud bude úspěšná, budete mít testovacího zájemce v cíli zájemce.
+   Chcete-li se ujistit, že jste se úspěšně připojili k cíli zájemce, klikněte na tlačítko ověřit. Pokud bude úspěšná, budete mít testovacího zájemce v cíli zájemce.
 
-![Podrobnosti připojení](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)
+   ![Podrobnosti připojení](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

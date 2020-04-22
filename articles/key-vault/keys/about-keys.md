@@ -10,80 +10,34 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1c12135ec6e5a0f4de1fdd46134a056447d3c331
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3d89275e1418035fed8aad3ffddd8def2c1d59ce
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424234"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686063"
 ---
 # <a name="about-azure-key-vault-keys"></a>O klíčích trezoru klíčů Azure
 
-Azure Key Vault umožňuje aplikacím a uživatelům Microsoft Azure ukládat a používat klíče. Podporuje více typů klíčů a algoritmů a umožňuje použití modulů hardwarového zabezpečení (HSM) pro klíče s vysokou hodnotou. 
+Azure Key Vault podporuje více typů klíčů a algoritmů a umožňuje použití modulů hardwarového zabezpečení (HSM) pro klíče s vysokou hodnotou.
 
-Obecnější informace o trezoru klíčů najdete v tématu [Co je Azure Key Vault?](/azure/key-vault/key-vault-overview)
+Kryptografické klíče v trezoru klíčů jsou reprezentovány jako objekty json webového klíče [JWK]. Specifikace JavaScript Object Notation (JSON) a JavaScript Object Signing and Encryption (JOSE) jsou:
 
-## <a name="azure-key-vault"></a>Azure Key Vault
+-   [Webový klíč JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [Webové šifrování JSON (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
+-   [Webové algoritmy JSON (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
+-   [Webový podpis JSON (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-Následující části nabízejí obecné informace platné v rámci implementace služby Trezor klíčů.
+Základní specifikace JWK/JWA jsou také rozšířeny tak, aby umožňovalo typy klíčů jedinečné pro implementaci trezoru klíčů. Například import klíčů pomocí balení specifického pro dodavatele hsm umožňuje bezpečnou přepravu klíčů, které lze použít pouze v hsmech trezoru klíčů. 
 
-### <a name="supporting-standards"></a>Podpůrné standardy
-
-Důležitými základními informacemi jsou specifikace JavaScript object notace (JSON) a JavaScript Object Signing and Encryption (JOSE).  
-
--   [Webový klíč JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)  
--   [Webové šifrování JSON (JWE)](https://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-40)  
--   [Webové algoritmy JSON (JWA)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
--   [Webový podpis JSON (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
-
-### <a name="data-types"></a>Typy dat
-
-Klíče, šifrování a podepisování naleznete ve specifikacích JOSE pro příslušné datové typy.  
-
--   **algoritmus** - podporovaný algoritmus pro klíčovou operaci, například RSA1_5  
--   **ciphertext-value** - šifrovací textové oktety, kódované pomocí Base64URL  
--   **digest-value** - výstup algoritmu hash, kódovaný pomocí Base64URL  
--   **typ klíče** - jeden z podporovaných typů klíčů, například RSA (Rivest-Shamir-Adleman).  
--   **hodnota prostého textu** - oktety ve formátu prostého textu, kódované pomocí base64URL  
--   **podpis-hodnota** - výstup podpisového algoritmu, kódovaný pomocí Base64URL  
--   **base64URL** - základní 64URL [RFC4648] kódovaná binární hodnota  
--   **logická** - buď pravdivá nebo nepravdivá  
--   **Identita** – identita z Azure Active Directory (Azure AD).  
--   **IntDate** - desetinná hodnota JSON představující počet sekund od 1970-01-01T0:0:0Z UTC až do zadaného data a času UTC. Podrobnosti o datu/časech obecně a zejména u UTC viz RFC3339.  
-
-### <a name="objects-identifiers-and-versioning"></a>Objekty, identifikátory a správa verzí
-
-Objekty uložené v trezoru klíčů jsou verzí při každém vytvoření nové instance objektu. Každé verzi je přiřazen jedinečný identifikátor a adresa URL. Při prvním vytvoření objektu je mu přidělen jedinečný identifikátor verze a je označen jako aktuální verze objektu. Vytvoření nové instance se stejným názvem objektu dává novému objektu jedinečný identifikátor verze, což způsobuje, že se stane aktuální verzí.  
-
-Objekty v trezoru klíčů lze adresovat pomocí aktuálního identifikátoru nebo identifikátoru specifického pro verzi. Například vzhledem ke klíči s názvem `MasterKey`, provádění operací s aktuálním identifikátorem způsobí, že systém použije nejnovější dostupnou verzi. Provádění operací s identifikátorem specifickým pro verzi způsobí, že systém použije tuto konkrétní verzi objektu.  
-
-Objekty jsou jednoznačně identifikovány v trezoru klíčů pomocí adresy URL. Žádné dva objekty v systému mají stejnou adresu URL, bez ohledu na geografické umístění. Úplná adresa URL objektu se nazývá Identifikátor objektu. Adresa URL se skládá z předpony, která identifikuje trezor klíčů, typ objektu, uživatelem poskytnutý název objektu a verzi objektu. Název objektu je malá a velká písmena a neměnné. Identifikátory, které neobsahují verzi objektu, se označují jako základní identifikátory.  
-
-Další informace naleznete v [tématu Ověřování, požadavky a odpovědi](../general/authentication-requests-and-responses.md)
-
-Identifikátor objektu má následující obecný formát:  
-
-`https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
-
-Kde:  
-
-|||  
-|-|-|  
-|`keyvault-name`|Název trezoru klíčů ve službě Microsoft Azure Key Vault.<br /><br /> Názvy trezorů klíčů jsou vybrány uživatelem a jsou globálně jedinečné.<br /><br /> Název trezoru klíčů musí být řetězec 3-24 znaků, který obsahuje pouze 0-9, a-z, A-Z a -.|  
-|`object-type`|Typ objektu, "klíče" nebo "tajné klíče".|  
-|`object-name`|A `object-name` je uživatel zadaný název pro a musí být jedinečný v trezoru klíčů. Název musí být řetězec znaků 1-127, který obsahuje pouze 0-9, a-z, A-Z a -.|  
-|`object-version`|A `object-version` je systémem generovaný, 32 znakový řetězec identifikátor, který se volitelně používá k adresování jedinečnou verzi objektu.|  
-
-## <a name="key-vault-keys"></a>Klíče trezoru klíčů
-
-### <a name="keys-and-key-types"></a>Klíče a typy klíčů
-
-Kryptografické klíče v trezoru klíčů jsou reprezentovány jako objekty json webového klíče [JWK]. Základní specifikace JWK/JWA jsou také rozšířeny tak, aby umožňovalo typy klíčů jedinečné pro implementaci trezoru klíčů. Například import klíčů pomocí balení specifického pro dodavatele hsm umožňuje bezpečnou přepravu klíčů, které lze použít pouze v hsmech trezoru klíčů.  
+Azure Key Vault podporuje měkké i pevné klíče:
 
 - **"Měkké" klíče**: Klíč zpracovaný v softwaru trezorem klíčů, ale je šifrován v klidovém stavu pomocí systémového klíče, který je v objektu hesm. Klienti mohou importovat existující klíč RSA nebo EC (Elliptic Curve) nebo požadovat, aby trezor klíčů byl generován.
 - **"Pevné" klíče**: Klíč zpracovaný v modulu hardwarového zabezpečení (Hardware Security Module). Tyto klíče jsou chráněny v jednom ze světů zabezpečení hsm úložiště klíčů (existuje jeden svět zabezpečení na zeměpisné oblasti pro udržení izolace). Klienti mohou importovat klíč RSA nebo ES v měkké formě nebo exportem z kompatibilního zařízení hardwarového zabezpečení. Klienti mohou také požádat trezor klíčů o vygenerování klíče. Tento typ klíče přidá atribut key_hsm do získání JWK pro přenos materiálu klíče HSM.
 
-     Další informace o geografických hranicích najdete v [tématu Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
+Další informace o geografických hranicích najdete v [tématu Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
+
+## <a name="cryptographic-protection"></a>Kryptografická ochrana
 
 Trezor klíčů podporuje pouze klávesy RSA a Elliptic Curve. 
 
@@ -94,9 +48,7 @@ Trezor klíčů podporuje pouze klávesy RSA a Elliptic Curve.
 
 Key Vault podporuje RSA klíče o velikostech 2048, 3072 a 4096. Trezor klíčů podporuje typy klíčů elliptic Curve P-256, P-384, P-521 a P-256K (SECP256K1).
 
-### <a name="cryptographic-protection"></a>Kryptografická ochrana
-
-Kryptografické moduly, které trezor klíčů používá, ať už moduly hesm nebo software, jsou ověřeny fips (Federal Information Processing Standards). Nemusíte dělat nic zvláštního pro spuštění v režimu FIPS. Klíče **vytvořené** nebo **importované** jako chráněné pomocí hsm jsou zpracovány uvnitř objektu hsm, ověřené na FIPS 140-2 úroveň 2. Klíče **vytvořené** nebo **importované** jako softwarově chráněné jsou zpracovány uvnitř kryptografických modulů ověřených na FIPS 140-2 Level 1. Další informace naleznete v [tématu Klíče a typy klíčů](#keys-and-key-types).
+Kryptografické moduly, které trezor klíčů používá, ať už moduly hesm nebo software, jsou ověřeny fips (Federal Information Processing Standards). Nemusíte dělat nic zvláštního pro spuštění v režimu FIPS. Klíče **vytvořené** nebo **importované** jako chráněné pomocí hsm jsou zpracovány uvnitř objektu hsm, ověřené na FIPS 140-2 úroveň 2. Klíče **vytvořené** nebo **importované** jako softwarově chráněné jsou zpracovány uvnitř kryptografických modulů ověřených na FIPS 140-2 Level 1.
 
 ###  <a name="ec-algorithms"></a>Algoritmy ES
  Následující identifikátory algoritmu jsou podporovány pomocí kláves EC a EC-HSM v trezoru klíčů. 
@@ -114,7 +66,6 @@ Kryptografické moduly, které trezor klíčů používá, ať už moduly hesm n
 -   **ES256K** - ECDSA pro digesty SHA-256 a klíče vytvořené pomocí křivky P-256K. Tento algoritmus čeká na standardizaci.
 -   **ES384** - ECDSA pro digesty SHA-384 a klíče vytvořené křivkou P-384. Tento algoritmus je popsán na [rfc7518](https://tools.ietf.org/html/rfc7518).
 -   **ES512** - ECDSA pro digesty SHA-512 a klíče vytvořené pomocí křivky P-521. Tento algoritmus je popsán na [rfc7518](https://tools.ietf.org/html/rfc7518).
-
 
 ###  <a name="rsa-algorithms"></a>RSA algoritmy  
  Následující identifikátory algoritmu jsou podporovány pomocí klíčů RSA a RSA-HSM v trezoru klíčů.  
@@ -134,7 +85,7 @@ Kryptografické moduly, které trezor klíčů používá, ať už moduly hesm n
 -   **RS512** - RSASSA-PKCS-v1_5 pomocí SHA-512. Zadaná hodnota digest u aplikace musí být vypočítána pomocí SHA-512 a musí mít délku 64 bajtů.  
 -   **RSNULL** - Viz [RFC2437], specializovaný případ použití povolit určité scénáře TLS.  
 
-###  <a name="key-operations"></a>Klíčové operace
+##  <a name="key-operations"></a>Klíčové operace
 
 Trezor klíčů podporuje následující operace s klíčovými objekty:  
 
@@ -164,7 +115,7 @@ Uživatelé mohou omezit všechny kryptografické operace, které podporuje trez
 
 Další informace o objektech JWK naleznete v tématu [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41).  
 
-###  <a name="key-attributes"></a>Klíčové atributy
+## <a name="key-attributes"></a>Klíčové atributy
 
 Vedle nastavení týkajících se klíčů samotných je možné ještě zadat následující atributy. V požadavku JSON jsou vyžadovány klíčové slovo atributy a složená závorky {' '}, i když nejsou zadány žádné atributy.  
 
@@ -177,24 +128,24 @@ Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi, kt
 - *vytvořeno*: IntDate, volitelné. Vytvořený *created* atribut označuje, kdy byla tato verze klíče vytvořena. Hodnota je null pro klíče vytvořené před přidáním tohoto atributu. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
 - *aktualizováno*: IntDate, volitelné. *Aktualizovaný* atribut označuje, kdy byla tato verze klíče aktualizována. Hodnota je null pro klíče, které byly naposledy aktualizovány před přidáním tohoto atributu. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
 
-Další informace o IntDate a dalších datových typech najdete [v tématu Datové typy](#data-types)  
+Další informace o intdate a dalších datových typech naleznete v tématu [O klíčích, tajných klíčích a certifikátech: [Datové typy](../general/about-keys-secrets-certificates.md#data-types).
 
-#### <a name="date-time-controlled-operations"></a>Řízené operace podle data a času
+### <a name="date-time-controlled-operations"></a>Řízené operace podle data a času
 
 Dosud neplatné klíče s prošlou platností mimo okno *nbf* / *exp* budou fungovat pro **dešifrování**, **rozbalení**a **ověření** operací (nevrátí 403, Zakázáno). Důvodem pro použití dosud neplatného stavu je umožnit testování klíče před použitím výroby. Důvodem pro použití stavu vypršela je povolit operace obnovení na data, která byla vytvořena, když byl platný klíč. Přístup ke klíči můžete také zakázat pomocí zásad trezoru klíčů nebo aktualizací *atributu povoleného* klíče na **hodnotu false**.
 
-Další informace o datových typech naleznete v [tématu Datové typy](#data-types).
+Další informace o datových typech naleznete v [tématu Datové typy](../general/about-keys-secrets-certificates.md#data-types).
 
 Další informace o dalších možných atributech naleznete v [json webovém klíči (JWK).](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)
 
-### <a name="key-tags"></a>Klíčové značky
+## <a name="key-tags"></a>Klíčové značky
 
 Můžete zadat další metadata specifická pro aplikaci ve formě značek. Trezor klíčů podporuje až 15 značek, z nichž každá může mít název 256 znaků a hodnotu 256 znaků.  
 
 >[!Note]
 >Značky jsou čitelné volajícím, pokud mají *seznam* nebo *získat* oprávnění k tomuto typu objektu (klíče, tajné klíče nebo certifikáty).
 
-###  <a name="key-access-control"></a>Řízení přístupu ke klíčům
+##  <a name="key-access-control"></a>Řízení přístupu ke klíčům
 
 Řízení přístupu ke klíčům spravovaným trezorem klíčů je k dispozici na úrovni trezoru klíčů, který funguje jako kontejner klíčů. Zásady řízení přístupu pro klíče se liší od zásadřízení přístupu pro tajné klíče ve stejném trezoru klíčů. Uživatelé mohou vytvořit jeden nebo více trezorů pro uložení klíčů a jsou povinni udržovat scénář odpovídající segmentace a správu klíčů. Řízení přístupu pro klíče je nezávislé na řízení přístupu pro tajné klíče.  
 
@@ -224,7 +175,11 @@ Následující oprávnění mohou být udělena na základě uživatele / instan
 
 Další informace o práci s klíči naleznete [v tématu Klíčové operace v odkazu rozhraní REST ROZHRANÍ KEY Vault REST .](/rest/api/keyvault) Informace o vytváření oprávnění naleznete v [tématu Trezory – Vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a Úložiště – Aktualizovat [zásady přístupu](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
+- [Informace o službě Key Vault](../general/overview.md)
+- [Klíče, tajné klíče a certifikáty](../general/about-keys-secrets-certificates.md)
+- [Informace o tajných kódech](../secrets/about-secrets.md)
+- [Informace o certifikátech](../certificates/about-certificates.md)
 - [Ověřování, požadavky a odpovědi](../general/authentication-requests-and-responses.md)
 - [Průvodce vývojáře pro Key Vault](../general/developers-guide.md)

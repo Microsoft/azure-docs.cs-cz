@@ -4,14 +4,14 @@ description: Přidání příznaků funkcí do aplikací spring boot a jejich sp
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 04/13/2020
+ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: 398005b37660cfa68936a0c8b3a3d90da8160e49
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e6dc51250987e0282530209ffa13e52d6e75aa9c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309075"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687369"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Úvodní příručka: Přidání příznaků funkcí do aplikace Spring Boot
 
@@ -55,9 +55,9 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
 
 1. Po extrahování souborů v místním systému je aplikace Spring Boot připravena k úpravám. Vyhledejte *pom.xml* v kořenovém adresáři aplikace.
 
-1. Otevřete soubor *pom.xml* v textovém editoru `<dependencies>`a do seznamu .:
+1. Otevřete soubor *pom.xml* v textovém editoru `<dependencies>`a přidejte následující do seznamu :
 
-### <a name="spring-cloud-11x"></a>Jarní mrak 1.1.x
+    **Jarní mrak 1.1.x**
 
     ```xml
     <dependency>
@@ -76,7 +76,7 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
     </dependency>
     ```
 
-### <a name="spring-cloud-12x"></a>Jarní mrak 1.2.x
+    **Jarní mrak 1.2.x**
 
     ```xml
     <dependency>

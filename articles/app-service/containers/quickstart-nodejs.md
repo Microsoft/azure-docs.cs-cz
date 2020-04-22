@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
-ms.openlocfilehash: fb79f4b87d8ddc5303fea834c81329315401464a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 08a246b07effb8d5f3e2473a4d7959882cf43235
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74688970"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687936"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Vytvoření aplikace Node.js v Azure
 
@@ -31,7 +31,7 @@ Po instalaci rozšíření se přihlaste ke svému účtu Azure. Na panelu aktiv
 
 ![přihlášení do Azure](./media/quickstart-nodejs/sign-in.png)
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se zobrazí chyba **"Nelze najít předplatné s názvem [ID předplatného]"**, může to být proto, že jste za proxy serverem a nemůžete dosáhnout rozhraní AZURE API. Konfigurace `HTTP_PROXY` `HTTPS_PROXY` a proměnné prostředí s informacemi `export`o proxy serveru v terminálu pomocí .
 
@@ -134,7 +134,7 @@ V průzkumníku **AZURE APP SERVICE** vyberte modrou šipku nahoru a nasadíte a
 
 Po dokončení nasazení vyberte v řádku **procházet web** a zobrazte čerstvě nasazenou webovou aplikaci.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se zobrazí chyba **"Nemáte oprávnění k zobrazení tohoto adresáře nebo stránky."**, pak se pravděpodobně nepodařilo správně spustit aplikaci. Přejděte k další části a zobrazte výstup protokolu, abyste našli a opravili chybu. Pokud to nemůžete opravit, kontaktujte nás výběrem tlačítka **I narazil na tlačítko problému** níže. Rádi vám pomůžeme!
 
@@ -159,12 +159,12 @@ Po zobrazení výzvy zvolte povolení protokolování a restartování aplikace.
 
 Po několika sekundách se zobrazí zpráva oznamující, že jste připojeni ke službě streamování protokolů. Několikrát stránku aktualizujte, abyste viděli větší aktivitu.
 
-    ```bash
-    2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
-    2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
-    2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
-    2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
-    ```
+<pre>
+2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
+2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
+2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
+2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
+</pre>
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
@@ -175,7 +175,7 @@ Gratulujeme, úspěšně jste dokončili tento rychlý start!
 
 Dále se podívejte na další rozšíření Azure.
 
-* [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
+* [Databáze Cosmos](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 * [Nástroje Dockeru](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 * [Nástroje azure cli](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)

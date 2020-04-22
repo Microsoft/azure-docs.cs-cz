@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: da324e1e1a40e515cac4b26d6c9f8661f344e1d7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262022"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687609"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Nejčastější dotazy ke komerčnímu marketplace Microsoftu
 
@@ -46,7 +46,7 @@ Azure Marketplace nabízí technická řešení a služby od Microsoftu a partne
 
 **Jak na Azure Marketplace začnu?**
 
-Širokou škálu podnikových aplikací a řešení, které jsou certifikované a optimalizované pro spouštění v Azure, najdete na [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps). Azure Marketplace je taky přístupné přes [portál Azure] při [**vytváření prostředku**](https://portal.azure.com/#create/hub).
+Širokou škálu podnikových aplikací a řešení, které jsou certifikované a optimalizované pro spouštění v Azure, najdete na [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps). Azure Marketplace je taky přístupné prostřednictvím [portálu Azure] při [**vytváření prostředku**](https://portal.azure.com/#create/hub).
 
 **Jaké jsou hlavní výhody Azure Marketplace?**
 
@@ -57,7 +57,7 @@ Na Azure Marketplace můžou zákazníci objevovat technické aplikace vytvořen
 Nabídky Azure Marketplace lze zakoupit prostřednictvím:
 
 * [Webová prodejna](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Portál Azure portal][Azure]
+* [Portál Azure] [Portál Azure]
 * [Rozhraní příkazového řádku Azure (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -127,7 +127,7 @@ Předplatné Azure je součástí cen řešení nezávislých dodavatelů softwa
 
 + *Na uživatele:* Předplatné SaaS lze oceňovat na základě pro jednotlivé uživatele, které se účtují měsíčně nebo ročně. 
 
-Podrobnosti o cenách specifických pro nabídku najdete na stránce podrobností o řešení na [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) webu Azure [portal]nebo v jeho rámci .
+Podrobnosti o cenách specifických pro nabídku najdete na stránce podrobností o řešení na [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) [portálu Azure] nebo v jeho rámci.
 
 > [!Note]
 > S výjimkou měsíčních poplatků se poplatky za využití Azure vztahují na všechny cenové modely, pokud není uvedeno jinak.
@@ -180,9 +180,9 @@ Ne. Vydavatel, který vlastní řešení na Azure Marketplace, může nastavit c
 
 **Kde si můžu zobrazit podrobnosti o předplatném Azure Marketplace a fakturační údaje?**
 
-MOSP – [Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (web direct) zákazníci mohou zobrazit podrobnosti o nákupu Marketplace na kartě Faktury v části Správa nákladů a fakturace na webu Azure [Portal].
+MOSP – [Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (web direct) zákazníci mohou zobrazit podrobnosti o nákupu Marketplace na kartě Faktury v části Správa nákladů a fakturace na [portálu Azure].
 
-Zákazníci se smlouvou Enterprise (EA) si můžou zobrazit podrobnosti o nákupu na Marketplace na kartě Faktury v části Správa nákladů a fakturace na [webu Azure Portal].
+Zákazníci s podnikovou smlouvou (EA) si můžou zobrazit podrobnosti o nákupu na Marketplace na kartě Faktury v části Správa nákladů a fakturace na portálu [Azure Portal].
 
 Partneři poskytovatele cloudových řešení (CSP) mohou zobrazit podrobnosti o nákupu marketplace pro každého zákazníka v Centru partnerů na kartě Historie objednávek po výběru společnosti v zobrazení Zákazníci.
 
@@ -208,7 +208,7 @@ Chcete-li migrovat další služby zakoupené z Azure Marketplace do předplatn�
 
 **Jak zjistím, kolik z nákupu na Azure Marketplace jsem použil?**
 
-Odhadované informace o využití najdete na [webu Azure Portal]. Tyto odhadované informace o využití nemusí zahrnovat nedávné činnosti a mohou být založeny na odhadech odvozených z minulé spotřeby. Během verze Public Preview nemusí být tato funkce k dispozici pro všechny nákupy a může se lišit v závislosti na typu produktu.
+Odhadované informace o využití najdete na [portálu Azure]. Tyto odhadované informace o využití nemusí zahrnovat nedávné činnosti a mohou být založeny na odhadech odvozených z minulé spotřeby. Během verze Public Preview nemusí být tato funkce k dispozici pro všechny nákupy a může se lišit v závislosti na typu produktu.
 
 ### <a name="customer-support"></a>Zákaznická podpora
 
@@ -307,7 +307,7 @@ Při nahrávání řešení List, Trial nebo BYOL (Bring Your Own License) prost
 
 **Existují nějaké transakční poplatky za nákupy přes Azure Marketplace?**
 
-Když je licence řešení zakoupena přes Azure Marketplace, výnosy za softwarovou licenci se rozdělí mezi vydavatele a Microsoft.  To se provádí v souladu s podmínkami ve [smlouvě s vydavatelem marketplace](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf). Řešení s vydavateli BYOL (Bring Your Own License) navíc nevznikají transakčnípoplatky.
+Když je licence řešení zakoupena přes Azure Marketplace, výnosy za softwarovou licenci se rozdělí mezi vydavatele a Microsoft.  To se provádí v souladu s podmínkami ve [smlouvě s vydavatelem marketplace](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt). Řešení s vydavateli BYOL (Bring Your Own License) navíc nevznikají transakčnípoplatky.
 
 **Co je standardní smlouva?**
 
@@ -335,7 +335,7 @@ Zájemci jsou zákazníci, kteří nasazují vaše produkty z Webu Marketplace. 
 
 **Kde mohu získat pomoc s nastavením cíle pro potenciální zákazníky?**
 
-Další informace najdete v dokumentaci k získání potenciálních [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) zákazníků v [centru partnerských](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) center nebo odešlete lístek podpory výběrem typu nabídky a správy potenciálních zákazníků.
+Další informace najdete v dokumentaci k získání potenciálních [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) zákazníků v [centru partnerských](./partner-center-portal/commercial-marketplace-get-customer-leads.md) center nebo odešlete lístek podpory výběrem typu nabídky a správy potenciálních zákazníků.
 
 **Je nutné nakonfigurovat cíl zájemce, aby se nabídka publikovala na Marketplace?**
 
@@ -343,7 +343,7 @@ Ano, pokud publikujete službu **Kontaktujte mě**, **aplikaci SaaS**nebo **nab�
 
 **Jak mohu potvrdit, že konfigurace zájemce je správná?**
 
-Po dokončení nabídky a nastavení cíle zájemce může být výpis správně publikován v [Partnerském centru](https://cloudpartner.azure.com/). Před zahájením vysílání výpisu můžete ověřit, zda nastavení konfigurace zájemce funguje správně.  Odešlete testovacího zájemce do cíle zájemce nakonfigurovaného v nabídce.
+Po dokončení nabídky a nastavení cíle zájemce může být výpis správně publikován v [Partnerském centru](https://partner.microsoft.com/). Před zahájením vysílání výpisu můžete ověřit, zda nastavení konfigurace zájemce funguje správně.  Odešlete testovacího zájemce do cíle zájemce nakonfigurovaného v nabídce.
 
 **Z jakých zemí nebo oblastí jsou Azure Marketplace k dispozici pro vydavatele k prodeji?**
 
@@ -353,13 +353,13 @@ Vydavatelé se sídlem v následujících zemích nebo oblastech mohou v součas
 
 *Virtuální počítač & aplikací Azure:*
 
-1. Přihlaste se do [Centra partnerů](https://cloudpartner.azure.com/).
+1. Přihlaste se do [Centra partnerů](https://partner.microsoft.com/).
 1. Nabídku vyberte na kartě **Všechny nabídky.**
 1. V podokně na levé straně obrazovky vyberte kartu **SKU.**
 1. Vyberte skladovou položku pro odstranění a klepněte na tlačítko **odstranit** pro tuto skladovou položku.
 1. [Znovu publikujte](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) nabídku na Azure Marketplace.
 
-Další informace naleznete v [tématu Odstranění nabídky](./cloud-partner-portal/manage-offers/cpp-delete-offer.md).
+Další informace naleznete v [tématu aktualizace nabídky](./partner-center-portal/update-existing-offer.md).
 
 *Webové aplikace (aplikace SaaS, doplňky) & poradenské služby:*
 
@@ -392,7 +392,7 @@ Další informace o našich výhodách a způsobech růstu vašeho podnikání n
 
 **Kde jsou řešení Azure Marketplace propagovaná v rámci webových služeb Microsoftu?**
 
-Řešení Azure Marketplace jsou dostupná na webu Microsoft [Azure Portal]a [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Cloudoví vývojáři a IT profesionálové používající Azure mají při každém přihlášení vystavení partnerským řešením. Podmnožina partnerských řešení se také prezentuje a otáčí na [domovské stránce Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) a na stránce řešení [Azure](https://azure.microsoft.com/solutions/).
+Řešení Azure Marketplace jsou dostupná na [webu](https://azuremarketplace.microsoft.com/marketplace/)Microsoft [Azure Portal] a Azure Marketplace . Cloudoví vývojáři a IT profesionálové používající Azure mají při každém přihlášení vystavení partnerským řešením. Podmnožina partnerských řešení se také prezentuje a otáčí na [domovské stránce Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) a na stránce řešení [Azure](https://azure.microsoft.com/solutions/).
 
 ### <a name="billing-and-payments"></a>Fakturace a platby
 
@@ -474,6 +474,3 @@ Ano, na vaši žádost prostřednictvím lístku podpory zpracuje společnost Mi
 ## <a name="next-steps"></a>Další kroky
 
 Navštivte stránku [s průvodcem vydavatelem komerčního trhu.](/azure/marketplace/marketplace-publishers-guide)
-
-
-[portál Azure]: https://portal.azure.com

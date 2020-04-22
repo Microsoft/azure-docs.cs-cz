@@ -1,21 +1,21 @@
 ---
-title: Průvodce technickým publikováním aplikací Azure Marketplace SaaS
+title: Průvodce publikováním aplikací Azure Marketplace SaaS
 description: Podrobný průvodce a publikování kontrolních seznamů pro publikování aplikací SaaS na Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: keithcharlie
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: kevidal
-ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.author: dsindona
+ms.openlocfilehash: 1bc2feb4d8f3f103802bd823c66cd3f54ac5d74a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544285"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687544"
 ---
-# <a name="saas-applications-offer-publishing-guide"></a>Průvodce publikováním nabídek aplikací SaaS
+# <a name="saas-applications-offer-publishing-guide"></a>SaaS aplikace Nabídka Publishing Guide
 
 Aplikace SaaS lze publikovat na trhu se třemi různými výzvami k akci: "Kontaktujte mě", "Zkuste to teď" a "Get it Now." Tato příručka vysvětluje tyto tři možnosti, včetně požadavků pro každou z nich. 
 
@@ -110,8 +110,8 @@ Certifikujte integraci Azure AD několika různými způsoby v závislosti na to
 **Pro víceklientské aplikace:**  
 
 Pokud už azure ad podporujete, postupujte takto:
-1.  Registrace aplikace na webu Azure Portal
-2.  Povolte funkci podpory více klienta ve službě Azure AD, abyste získali zkušební prostředí s jedním kliknutím. Konkrétnější informace naleznete [zde](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
+1.    Registrace aplikace na webu Azure Portal
+2.    Povolte funkci podpory více klienta ve službě Azure AD, abyste získali zkušební prostředí s jedním kliknutím. Konkrétnější informace naleznete [zde](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
 
 Pokud s azure ad federovaným přiřazovaným přihlašovaným zabezpečením tečune, postupujte takto: 
 1.  Registrace aplikace na webu Azure Portal
@@ -144,9 +144,9 @@ Společnost Microsoft je hostitelem obchodní transakce. Společnost Microsoft �
 ## <a name="next-steps"></a>Další kroky
 Pokud jste tak ještě neučinili,
 
-- [Zaregistrujte se](https://azuremarketplace.microsoft.com/sell) na trhu.
+* [Přečtěte si](https://azuremarketplace.microsoft.com/sell) informace o tržišti.
 
-Pokud jste zaregistrováni a vytváříte novou nabídku nebo pracujete na stávající nabídce,
+Chcete-li se zaregistrovat v Partnerském centru, začněte vytvářet novou nabídku nebo pracovat na existující nabídce:
 
-- [Přihlaste se na portál cloudových partnerů](https://cloudpartner.azure.com) a vytvořte nebo dokončete svou nabídku.
-- Další informace najdete v [nabídce aplikace Azure SaaS.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)
+* [Chcete-li](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) vytvořit nebo dokončit svou nabídku, přihlaste se do Centra partnerů.
+* Další informace najdete [v tématu vytvoření nabídky aplikace SaaS.](./partner-center-portal/create-new-saas-offer.md)

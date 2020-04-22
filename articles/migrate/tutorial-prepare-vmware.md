@@ -2,14 +2,14 @@
 title: Příprava virtuálních počítačů VMware na vyhodnocení/migraci pomocí Migrace Azure
 description: Zjistěte, jak se připravit na vyhodnocení/migraci virtuálních počítačích VMware pomocí Migrace Azure.
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 9f0729a3ddb2d8196a855557a6b8587940563984
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a3f9716d6302c41f139d9a2a8b1f994b79afd199
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535260"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677286"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware na vyhodnocení a migraci do Azure
 
@@ -151,7 +151,7 @@ Projděte si požadavky na [migraci](server-migrate-overview.md) virtuálních m
 3. Migrace založená na agentovi používá replikační zařízení:
     - [Zkontrolujte](migrate-replication-appliance.md#appliance-requirements) požadavky na nasazení pro zařízení replikace.
     - [Přečtěte si možnosti](migrate-replication-appliance.md#mysql-installation) instalace MySQL na zařízení.
-    - Poznamenejte si požadovaný přístup k [adrese](migrate-replication-appliance.md#url-access)URL .
+    - Všimněte si přístupu url požadovaného pro [veřejné](migrate-replication-appliance.md#url-access) a [vládní](migrate-replication-appliance.md#azure-government-url-access) cloudy.
     - Zkontrolujte požadavky na [přístup k portu](migrate-replication-appliance.md#port-access) pro zařízení replikace.
     
 ## <a name="next-steps"></a>Další kroky

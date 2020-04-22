@@ -10,16 +10,17 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 3bb0b9fb8b268c3e036ffb365eb8d5b80a241269
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77372020"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732099"
 ---
 Pomocí knihovny klienta předpověď jazykové ho jazyka (LUIS) pro rozhraní .NET:
 
 * Získejte předpověď podle slotu
+* Predikce podle verze
 
 [Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [Ukázky knihovního kódu původu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime) | [Predikce runtime balíčku (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) | [C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
 
@@ -27,10 +28,7 @@ Pomocí knihovny klienta předpověď jazykové ho jazyka (LUIS) pro rozhraní .
 
 * Účet portálu language understanding (LUIS) – [vytvořte si účet zdarma](https://www.luis.ai)
 * Aktuální verze rozhraní [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
-
-Hledáte další dokumentaci?
-
- * [Referenční dokumentace sady SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)
+* ID aplikace LUIS – použijte veřejné IOT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`ID aplikace . Uživatelský dotaz použitý v kódu rychlého startu je specifický pro tuto aplikaci.
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -61,7 +59,7 @@ export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
 
 Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změny projevily.
 
-#### <a name="macos"></a>[Macos](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 Upravte `.bash_profile`aplikaci a přidejte proměnnou prostředí:
 

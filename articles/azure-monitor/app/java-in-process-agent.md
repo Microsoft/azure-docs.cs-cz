@@ -3,12 +3,12 @@ title: Monitorování aplikací java v libovolném prostředí – Azure Monitor
 description: Monitorování výkonu aplikací pro aplikace Java spuštěné v libovolném prostředí bez instrumentace aplikace. Distribuované trasování a mapa aplikací.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 5706d5a74bd6850a237f7418b1a86a8e9c7762e1
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604581"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687717"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java bezkódové aplikace monitorování Azure Monitor Application Insights - public preview
 
@@ -32,7 +32,7 @@ Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` do va
 
 Typické JVM args patří `-Xmx512m` a `-XX:+UseG1GC`. Takže pokud víte, kam je přidat, pak už víte, kam to přidat.
 
-Další pomoc s konfigurací jvm args aplikace naleznete v [tématu 3.0 Preview: Tipy pro aktualizaci vašeho JVM args](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args).
+Další pomoc s konfigurací jvm args aplikace naleznete v [tématu 3.0 Preview: Tipy pro aktualizaci vašeho JVM args](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments).
 
 **3. Najeďte agenta na prostředek Application Insights.**
 
@@ -80,7 +80,7 @@ V `ApplicationInsights.json` souboru můžete navíc nakonfigurovat:
 * HTTP Proxy
 * Vlastní diagnostika
 
-Podrobnosti naleznete v náhledu [3.0: Možnosti konfigurace](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Configuration-Options).
+Podrobnosti naleznete v náhledu [3.0: Možnosti konfigurace](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Automaticky shromažďované požadavky, závislosti, protokoly a metriky
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0b6bf4c6a54e2f187a5751d267720f356e0c30ff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1ccfb1b008a7e3e48f56b1af62087d303522ed73
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424395"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676729"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Úvodní příručka: Vytvoření pracovního prostoru Azure Synapse Analytics (preview)
 
@@ -54,7 +54,7 @@ Přihlášení k [portálu Azure](https://portal.azure.com/)
     - Ručně zadané pomocí názvu účtu
 
     > [!IMPORTANT]
-    > Pracovní prostor Azure Synapse musí být schopen číst a zapisovat do vybraného účtu ADLS Gen2.
+    > Pracovní prostor Azure Synapse musí být schopen číst a zapisovat do vybraného účtu ADLS Gen2. Kromě toho pro všechny účty úložiště, které propojíte jako primární účet úložiště, musíte mít povoleno **hierarchické obory názvů** při vytváření účtu úložiště.
     >
     > Pod výběrovými poli ADLS Gen2 je poznámka, že spravované identitě pracovního prostoru bude přiřazena role **přispěvatele dat objektů blob Storaqe** ve vybraném systému souborů Gen2 úložiště datového jezera, který mu uděluje úplný přístup.
 

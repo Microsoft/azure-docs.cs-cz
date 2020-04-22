@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6aea537ebff4ae61e00861e6cafe742a7feb165e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186773"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729719"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection deklarace identity transformace
 
@@ -159,4 +159,38 @@ Následující příklad zkontroluje, `roles` zda typ deklarace stringCollection
 - Výstupní nároky:
     - **outputClaim**: "true"
 
+## <a name="stringcollectioncontainsclaim"></a>Deklarace stringCollectionContainsClaim
 
+Zkontroluje, zda typ deklarace StringCollection obsahuje hodnotu deklarace.
+
+| Položka | TransformationClaimType | Typ dat | Poznámky |
+| ---- | ----------------------- | --------- | ----- |
+| Vstupní deklarace |  – kolekce | Stringcollection | Typ deklarace, který má být prohledán. |
+| Vstupní deklarace | položka|řetězec| Typ deklarace, který obsahuje hodnotu pro vyhledávání.|
+|Parametr Input|Ignorecase|řetězec|Určuje, zda má toto porovnání ignorovat případ porovnávaných řetězců.|
+| Výstupní nárok | outputClaim | Boolean | ClaimType, který je vytvořen po této ClaimsTransformation byla vyvolána. Logický indikátor, pokud kolekce obsahuje takový řetězec |
+
+Následující příklad zkontroluje, `roles` zda typ deklarace `role` stringCollection obsahuje hodnotu typu deklarace.
+
+```XML
+<ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />
+    <InputClaim ClaimTypeReferenceId="role" TransformationClaimType="item" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="ignoreCase" DataType="string" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="hasAccess" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation> 
+```
+
+- Vstupní deklarace:
+    - **kolekce**: ["čtenář", "autor", "admin"]
+    - **položka**: "Admin"
+- Vstupní parametry:
+    - **ignoreCase**: "true"
+- Výstupní nároky:
+    - **outputClaim**: "true"

@@ -11,14 +11,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 55a7c6e505d6d0c43319280bf7199805b108cd77
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9334cd0fa54212eac937742215f9c2e704a8bd9c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425081"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688023"
 ---
-# <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
+# <a name="about-azure-key-vault"></a>Informace o službě Azure Key Vault
 
 Azure Key Vault pomáhá vyřešit následující problémy:
 
@@ -80,4 +80,7 @@ Samotná služba Key Vault se může integrovat s účty úložiště, centry ud
 
 ## <a name="next-steps"></a>Další kroky
 
+- Další informace o [klíčích, tajných kódech a certifikátech](about-keys-secrets-certificates.md)
 - [Rychlý start: Vytvoření služby Azure Key Vault pomocí rozhraní příkazového řádku](../secrets/quick-create-cli.md)
+- [Ověřování, požadavky a odpovědi](../general/authentication-requests-and-responses.md)
+- [Průvodce vývojáře pro Key Vault](../general/developers-guide.md)

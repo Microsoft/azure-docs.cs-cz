@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 3a7254cc9de89a297811792b4dd64b4b669ba8e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271236"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729996"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Odesílání zpráv z cloudu na zařízení z centra IoT hub
 
@@ -96,7 +97,7 @@ Tělo je serializované pole záznamů JSON, z nichž každý má následující
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Časové razítko, které označuje, kdy došlo k výsledku zprávy (například centrum obdrželo zprávu o zpětné vazbě nebo původní zprávu vypršela) |
 | OriginalMessageId  | *MessageId* zprávy cloud-to-device, ke kterému se tyto informace o zpětné vazbě vztahují |
-| Statuscode         | Požadovaný řetězec používaný ve zprávách zpětné vazby, které jsou generovány centrem IoT hub: <br/> *Úspěch* <br/> *Vypršela* <br/> *DeliveryCountExceeded* <br/> *Rejected* <br/> *Vymazány* |
+| Statuscode         | Požadovaný řetězec používaný ve zprávách zpětné vazby, které jsou generovány centrem IoT hub: <br/> *Úspěch* <br/> *Platnost vypršela* <br/> *DeliveryCountExceeded* <br/> *Rejected* <br/> *Vymazány* |
 | Popis        | Řetězcové hodnoty pro *statuscode* |
 | DeviceId           | *DeviceId* cílového zařízení zprávy cloud-to-device, ke kterému se vztahuje tato část zpětné vazby |
 | DeviceGenerationId | *DeviceGenerationId* cílového zařízení zprávy cloud-to-device, ke kterému se vztahuje tato část zpětné vazby |

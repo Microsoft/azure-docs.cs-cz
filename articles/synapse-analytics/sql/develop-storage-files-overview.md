@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8e6fd4955d6d68764895619efd968a957bcb5184
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460592"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676675"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazovat se na soubory úložiště pomocí prostředků SQL na vyžádání (preview) v rámci Synapse SQL
 
@@ -62,7 +62,7 @@ Příklady použití naleznete ve [složkách dotazu a více souborech.](query-f
 
 Chcete-li zadat dotaz na zdrojová data parket, použijte FORMÁT = "PARKETy"
 
-```sql
+```syntaxsql
 OPENROWSET
 (
     { BULK 'data_file' ,
@@ -121,7 +121,6 @@ Vynecháním with klauzule z OPENROWSET prohlášení, můžete pokyn služby au
 ```sql
 OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
-
 ```
 
 ### <a name="filename-function"></a>Funkce Název souboru
@@ -163,7 +162,7 @@ Chcete-li získat přístup k vnořeným prvkům z vnořeného sloupce, napřík
 
 Příklad fragmentu syntaxe je následující:
 
-```sql
+```syntaxsql
     OPENROWSET
     (   BULK 'unstructured_data_path' ,
         FORMAT = 'PARQUET' )
@@ -197,7 +196,7 @@ Chcete-li získat přístup k neskalárním prvkům z opakovaného sloupce, pou�
 
 Viz fragment syntaxe níže:
 
-```sql
+```syntaxsql
     SELECT
        { JSON_VALUE (column_name, path_to_sub_element), }
        { JSON_QUERY (column_name [ , path_to_sub_element ]), )
@@ -215,9 +214,9 @@ Ukázky dotazů pro přístup k prvkům z opakovaných sloupců najdete v člán
 Další informace o tom, jak dotazovat různé typy souborů a vytvářet a používat zobrazení, naleznete v následujících článcích:
 
 - [Dotaz na jeden soubor CSV](query-single-csv-file.md)
-- [Soubory parket dotazu](query-parquet-files.md)
-- [Dotaz na soubory JSON](query-json-files.md)
-- [Typy vnořených par dotazů](query-parquet-nested-types.md)
+- [Dotazování souborů Parquet](query-parquet-files.md)
+- [Dotazování souborů JSON](query-json-files.md)
+- [Dotazování vnořených typů Parquet](query-parquet-nested-types.md)
 - [Složky dotazů a více souborů CSV](query-folders-multiple-csv-files.md)
 - [Použití metadat souborů v dotazech](query-specific-files.md)
 - [Vytváření a používání zobrazení](create-use-views.md)

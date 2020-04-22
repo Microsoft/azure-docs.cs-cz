@@ -3,7 +3,7 @@ title: Návrh a implementace databáze Oracle v Azure | Dokumenty společnosti M
 description: Navrhujte a implementujte databázi Oracle ve vašem prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: mimckitt
+author: BorisB2015
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: mimckitt
-ms.openlocfilehash: 41e1720dfeaa98a9d0bc2227c58083ce769b06e0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: borisb
+ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263399"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687539"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
@@ -50,7 +50,7 @@ V následující tabulce jsou uvedeny některé rozdíly mezi místní implement
 > | **Skupina zabezpečení** |Nástroje pro omezení IP/portů |[Skupina zabezpečení sítě (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 > | **Odolnost** |MTBF (střední doba mezi poruchami) |MTTR (střední doba do zotavení)|
 > | **Plánovaná údržba** |Opravy/upgrady|[Skupiny dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (opravy/upgrady spravované Azure) |
-> | **Zdrojů** |Vyhrazená  |Sdíleno s ostatními klienty|
+> | **Prostředek** |Vyhrazená  |Sdíleno s ostatními klienty|
 > | **Oblasti** |Datová centra |[Párování oblastí](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
 > | **Storage** |SAN/fyzické disky |[Spravované úložiště Azure](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Měřítko** |Svislé měřítko |Horizontální škálování|

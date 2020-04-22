@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 84d7be64e7157c35639fec19cb28fe787fe29b19
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: c3c12f78118734c31641b90e6fcb8469ddda30b0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533883"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678011"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Kurz: Přihlášení uživatelů a volání rozhraní Microsoft Graph API z jednostránkové aplikace s úhlem
 
@@ -53,10 +53,6 @@ Tento kurz používá následující knihovnu:
 |Knihovna|Popis|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Knihovna ověřování Microsoft pro trojúhelníkový obal jazyka JavaScript|
-
-> [!NOTE]
-> *Msal.js* cílí na koncový bod platformy identit microsoftu, který umožňuje osobním účtům, pracovním účtům a školním účtům přihlašovat se a získávat tokeny. Koncový bod platformy identit y Microsoft má [určitá omezení](../azuread-dev/azure-ad-endpoint-comparison.md#limitations).
-> Chcete-li porozumět rozdílům mezi koncovými body v1.0 a v2.0, přečtěte [si příručku pro porovnání koncových bodů](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 Zdrojový kód knihovny MSAL.js najdete v úložišti [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) na GitHubu.
 

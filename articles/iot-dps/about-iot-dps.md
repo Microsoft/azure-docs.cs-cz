@@ -8,12 +8,15 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: e564660b502a950021ba4e4754ff5c210dfd477f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241175"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683296"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Zřizování zařízení pomocí služby Azure IoT Hub Device Provisioning Service
 Microsoft Azure poskytuje bohatou sadu integrovaných veřejných cloudových služeb pro všechny potřeby vašeho řešení IoT. Služba DPS (Device Provisioning Service) služby IoT Hub je pomocná služba pro Službu IoT Hub, která umožňuje zřizování s nulovým dotykem a just-in-time do správného centra IoT hub bez nutnosti lidského zásahu. DPS umožňuje zřizování milionů zařízení bezpečným a škálovatelným způsobem.
@@ -23,7 +26,7 @@ Existuje mnoho scénářů zřizování, ve kterých DPS je vynikající volbou 
 
 * Plně automatizované zřizování do jednoho řešení IoT bez nutnosti pevně kódovat informace o připojení ke službě IoT Hub v továrně (počáteční nastavení)
 * Zařízení pro vyrovnávání zatížení ve více rozbočovačích
-* Připojování zařízení k řešení IoT jejich vlastníka na základě dat o prodejních transakcích (víceklientská architektura)
+* Připojení zařízení k řešení IoT jejich vlastníka na základě dat prodejních transakcí (multitenancy)
 * Připojování zařízení ke konkrétnímu řešení IoT v závislosti na případu použití (izolace řešení)
 * Připojování zařízení k centru IoT s nejnižší latencí (geografické horizontální dělení)
 * Opětovné zřizování na základě změny v zařízení

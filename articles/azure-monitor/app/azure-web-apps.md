@@ -3,12 +3,13 @@ title: Sledování výkonu služeb azure aplikací | Dokumenty společnosti Micr
 description: Monitorování výkonu aplikací pro služby aplikací Azure. Doba načítání a odezvy grafu, informace o závislostech a nastavení výstrah na výkon.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom: fasttrack-edit
+ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437196"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729796"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -55,15 +56,16 @@ Monitorování aplikací pro hostované aplikace Azure App Services můžete pov
 2. Po určení, který prostředek použít, můžete zvolit, jak chcete, aby přehledy aplikací shromažďovaly data podle platformy pro vaši aplikaci. ASP.NET monitorování aplikací je ve výchozím nastavení se dvěma různými úrovněmi kolekce.
 
     ![Výběr možností podle platformy](./media/azure-web-apps/choose-options-new.png)
-
-   * Úroveň **kolekce** .NET Basic nabízí základní funkce APM s jednou instancí.
-
-   * Doporučená úroveň **kolekce** .NET:
-       * Přidá trendy využití procesoru, paměti a vstupně-va.
-       * Koreluje mikroslužby přes hranice požadavku a závislosti.
-       * Shromažďuje trendy využití a umožňuje korelaci z výsledků dostupnosti na transakce.
-       * Shromažďuje výjimky neošetřené hostitelským procesem.
-       * Zlepšuje přesnost metrik APM při zatížení při použití vzorkování.
+ 
+ Níže je uveden souhrn údajů shromážděných pro každou trasu:
+        
+|  | Základní kolekce rozhraní .NET | Doporučená kolekce .NET |
+| --- | --- | --- |
+| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Ano |Ano |
+| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Ano |Ano |
+| Shromažďování výjimek nezpracovaných hostitelským procesem | Ano |Ano |
+| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Ano |Ano |
+| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (pouze možnosti APM s jednou instancí) |Ano |
 
 3. Chcete-li nakonfigurovat nastavení, jako je vzorkování, které jste mohli dříve ovládat prostřednictvím souboru applicationinsights.config, můžete nyní pracovat se stejnými nastaveními prostřednictvím nastavení aplikace s odpovídající předponou. 
 
@@ -347,7 +349,7 @@ Počínaje verzí 2.8.9 se používá předinstalované rozšíření lokality. 
 
 Pokud je upgrade proveden z verze před verzí 2.5.1, zkontrolujte, zda jsou dll applicationInsigths odebrány ze složky přihrádky [aplikace, viz postup řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Níže je náš podrobný průvodce odstraňováním potíží pro monitorování založené na rozšíření/agentovi pro aplikace založené na rozhraní .NET a .NET Core spuštěné ve službě Azure App Services.
 

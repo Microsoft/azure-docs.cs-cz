@@ -3,7 +3,7 @@ title: Integrace Microsoft Azure s infrastrukturou Oracle Cloud Infrastructure |
 description: Seznamte se s řešeními, která integrují aplikace Oracle spuštěné v Microsoft Azure s databázemi v řešení Oracle Cloud Infrastructure (OCI).
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: BorisB2015
 manager: gwallace
 tags: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
-ms.author: mimckitt
+ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: 178fb805f4bfc0762ce7e4a320752e5afa00cef5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: e70eedcfcdf548965b79e4a48a3a8bfa643f0396
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271858"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687429"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Aplikační řešení Oracle integrující Microsoft Azure a Oracle Cloud Infrastructure
 

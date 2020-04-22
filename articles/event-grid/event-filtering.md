@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1bb3760ae73a9eaeee3cde957cc94841ebdf29
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70390177"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731945"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy filtrování událostí pro odběry služby Event Grid
 
@@ -59,7 +59,7 @@ Chcete-li filtrovat podle hodnot v datových polích a zadat operátor porovnán
 
 * typ operátoru - typ porovnání.
 * klíč – Pole v datech události, které používáte pro filtrování. Může to být číslo, logická hodnota nebo řetězec.
-* hodnota nebo hodnoty - hodnota nebo hodnoty, které chcete porovnat s klíčem.
+* hodnoty - Hodnota nebo hodnoty, které mají být porovnány s klíčem.
 
 Pokud zadáte jeden filtr s více hodnotami, provede se operace **OR,** takže hodnota klíčového pole musí být jednou z těchto hodnot. Zde naleznete příklad:
 

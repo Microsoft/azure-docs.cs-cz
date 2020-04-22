@@ -4,12 +4,12 @@ description: Poradce při potížích s instalací, registrací serveru Azure Ba
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: deff49a7d00a335c396a6fa36d3846ef353331c5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7a1cac63ba6497b8580c83fe2b666b020701283a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421300"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688036"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -62,7 +62,7 @@ Doporučujeme provést níže uvedené ověření, než začnete řešit potíž
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Vytlačování agentů na chráněné servery | Operace agenta se nezdařila z důvodu chyby \<komunikace se službou Koordinátor agenta DPM na> ServerName. | **Pokud doporučená akce uvedená v produktu nefunguje, proveďte následující kroky**: <ul><li> Pokud připojujete počítač z nedůvěryhodné domény, postupujte [takto](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019). <br> (NEBO) </li><li> Pokud připojujete počítač z důvěryhodné domény, odstraňte potíže pomocí kroků popsaných v [tomto blogu](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>(NEBO)</li><li> Zkuste zakázat antivirový program jako krok řešení potíží. Pokud se problém vyřeší, upravte nastavení antivirového programu, jak je navrženo v [tomto článku](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)).</li></ul> |
+| Vytlačování agentů na chráněné servery | Operace agenta se nezdařila z důvodu chyby \<komunikace se službou Koordinátor agenta DPM na> ServerName. | **Pokud doporučená akce uvedená v produktu nefunguje, proveďte následující kroky**: <ul><li> Pokud připojujete počítač z nedůvěryhodné domény, postupujte [takto](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019). <br> (NEBO) </li><li> Pokud připojujete počítač z důvěryhodné domény, odstraňte potíže pomocí kroků popsaných v [tomto blogu](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>(NEBO)</li><li> Zkuste zakázat antivirový program jako krok řešení potíží. Pokud se problém vyřeší, upravte nastavení antivirového programu, jak je navrženo v [tomto článku](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019).</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Instalační program nemohl aktualizovat metadata registru
 
@@ -96,7 +96,7 @@ Doporučujeme provést níže uvedené ověření, než začnete řešit potíž
 | Backup | Pokud zálohujete pouze stav systému, ověřte, zda je v chráněném počítači dostatek volného místa pro uložení zálohy stavu systému. | <ol><li>Ověřte, zda je v chráněném počítači nainstalována aplikace Zálohování serveru.</li><li>Ověřte, zda je v chráněném počítači dostatek místa pro stav systému. Nejjednodušší způsob, jak to ověřit, je přejít do chráněného počítače, otevřít program Zálohování serveru, proklikat výběry a vybrat bmr. UI pak řekne, kolik místa je potřeba. Otevřete > plán**místního** > **zálohování** **WSB** > **Vyberte možnost Konfigurace konfigurace** > **full serveru** (zobrazí se velikost). Tuto velikost použijte pro ověření.</li></ol>
 | Backup | Selhání zálohování pro BMR | Pokud je velikost BMR velká, přesuňte některé soubory aplikace na jednotku operačního systému a opakujte akci. |
 | Backup | Možnost znovu chránit virtuální počítač VMware na novém microsoft azure zálohovacím serveru se nezobrazuje jako dostupná k přidání. | Vlastnosti vmware jsou zaměřeny na starou, vyřazenou instanci microsoft azure backup serveru. Řešení tohoto problému:<br><ol><li>V programu VCenter (ekvivalent SC-VMM) přejděte na kartu **Souhrn** a potom na **vlastní atributy**.</li>  <li>Odstraňte starý název serveru Microsoft Azure Backup Server z hodnoty **DPMServer.**</li>  <li>Vraťte se na nový microsoft azure backup server a upravte PG.  Po zaškrtnutí tlačítka **Aktualizovat** se virtuální ho dohledu zobrazí se zaškrtávacím políčkem, které je k dispozici pro přidání do ochrany.</li></ol> |
-| Backup | Při přístupu k souborům/sdíleným složkám došlo k chybě | Zkuste upravit nastavení antivirového programu, jak je navrženo v tomto článku [Spusťte antivirový software na serveru DPM](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)).|
+| Backup | Při přístupu k souborům/sdíleným složkám došlo k chybě | Zkuste upravit nastavení antivirového programu, jak je navrženo v tomto článku [Spusťte antivirový software na serveru DPM](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019).|
 
 ## <a name="change-passphrase"></a>Změna přístupové fráze
 

@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: dea0f9a038958ea747147a179020545f2f6922a2
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/17/2020
+ms.openlocfilehash: 18099e853aa44e4434a14d7ea913f968593021ec
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605348"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687901"
 ---
 # <a name="monitor-data-flows"></a>Sledování toků dat
 
@@ -32,6 +32,10 @@ Zobrazí se také statistiky na této úrovni, včetně časů spuštění a sta
 Pokud se zobrazí zobrazení monitorování grafického uzlu, zobrazí se zjednodušená verze grafu toku dat pouze zjednodušená.
 
 ![Monitorování toku dat](media/data-flow/mon003.png "Sledování toku dat")
+
+Zde je video přehled sledování výkonu toků dat z obrazovky sledování ADF:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4u4mH]
 
 ## <a name="view-data-flow-execution-plans"></a>Zobrazit plány provádění toku dat
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25eb93a01c59225b6d9e64db5d08b954adb4f8ab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 6325d5555b01373b148dce69731ec64896d6e1fd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424066"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680497"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Jak používat OPENROWSET s SQL na vyžádání (preview)
 
@@ -26,7 +26,7 @@ OPENROWSET není aktuálně podporován ve fondu SQL.
 
 ## <a name="syntax"></a>Syntaxe
 
-```
+```syntaxsql
 --OPENROWSET syntax for reading Parquet files
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , 
@@ -60,36 +60,39 @@ Máte dvě možnosti pro vstupní soubory, které obsahují cílová data pro do
 
 - 'PARKETy' - Binární soubor ve formátu parket 
 
-"unstructured_data_path"
+**"unstructured_data_path"**
 
-Unstructured_data_path, která vytváří cestu k datům, je strukturována takto: "<storage_account_path>/<storage_path>"<prefix> 
+Unstructured_data_path, která vytváří cestu k datům, je strukturována takto:  
+"\<prefix\<>://\<storage_account_path>/ storage_path>"
  
  
  Níže najdete příslušné cesty účtu úložiště, které budou propojeny s konkrétním externím zdrojem dat. 
 
-| Externí zdroj dat       | Předpona | Cesta k účtu úložiště                                |
-| -------------------------- | ------ | --------------------------------------------------- |
-| Azure Blob Storage         | HTTPS  | <storage_account>.blob.core.windows.net             |
-| Azure Data Lake Store Gen1 | HTTPS  | <storage_account>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | HTTPS  | <storage_account>.dfs.core.windows.net              |
+| Externí zdroj dat       | Předpona | Cesta k účtu úložiště                                 |
+| -------------------------- | ------ | ---------------------------------------------------- |
+| Azure Blob Storage         | HTTPS  | \<storage_account>.blob.core.windows.net             |
+| Azure Data Lake Store Gen1 | HTTPS  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Store Gen2 | HTTPS  | \<storage_account>.dfs.core.windows.net              |
+||||
 
- "<storage_path>" 
+"storage_path\<>"
 
  Určuje cestu v úložišti, která odkazuje na složku nebo soubor, který chcete číst. Pokud cesta odkazuje na kontejner nebo složku, budou všechny soubory číst z tohoto konkrétního kontejneru nebo složky. Soubory v podsložkách nebudou zahrnuty. 
  
  Zástupné znaky můžete použít k cílení na více souborů nebo složek. Použití více nepo sobě jdoucích zástupných znaků je povoleno.
-Níže je uveden příklad, který čte všechny soubory *csv* počínaje *plnění* zehttps://sqlondemandstorage.blob.core.windows.net/csv/populationvšech složek začínající */csv/population*: '*/population*.csv'
+Níže je uveden příklad, který čte všechny soubory *csv* počínaje *plnění* ze všech složek *začínajících /csv/population*:  
+`https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Pokud zadáte unstructured_data_path jako složku, dotaz NA vyžádání sql načte soubory z této složky. 
 
 > [!NOTE]
 > Na rozdíl od Hadoop a PolyBase SQL na vyžádání nevrací podsložky. Také na rozdíl od Hadoop a PloyBase, SQL na vyžádání vrátí soubory, pro které název souboru začíná podtržení (_) nebo tečka (.).
 
-V níže uvedeném příkladu,https://mystorageaccount.dfs.core.windows.net/webdata/pokud unstructured_data_path=' ', dotaz SQL na vyžádání vrátí řádky z mydata.txt a _hidden.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěny v podsložce.
+V níže uvedeném příkladu, pokud unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`, dotaz SQL na vyžádání vrátí řádky z mydata.txt a _hidden.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěny v podsložce.
 
 ![Rekurzivní data pro externí tabulky](./media/develop-openrowset/folder-traversal.png)
 
-[S ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]
+`[WITH ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]`
 
 Klauzule WITH umožňuje zadat sloupce, které chcete číst ze souborů.
 
@@ -113,7 +116,8 @@ WITH (
     --[population] bigint
 )
 ```
-<bulk_options>
+
+**\<bulk_options>**
 
 FIELDTERMINATOR ='field_terminator'
 

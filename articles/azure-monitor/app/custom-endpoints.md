@@ -3,20 +3,25 @@ title: Přehledy aplikací Azure přepsat výchozí koncové body sady SDK
 description: Upravte výchozí koncové body SDK azure monitoru pro oblasti, jako je Azure Government.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: b4ab05c7ee815b385ffb2d1ff9e621063d744dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b43bd13c73f77c6292e2062db88d68a20e5bf480
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298325"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729532"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Přehledy aplikací přepsání výchozích koncových bodů
 
 Chcete-li odesílat data z Application Insights do určitých oblastí, budete muset přepsat výchozí adresy koncového bodu. Každá sada SDK vyžaduje mírně odlišné úpravy, které jsou popsány v tomto článku. Tyto změny vyžadují úpravu ukázkového kódu a `QuickPulse_Endpoint_Address`nahrazení `TelemetryChannel_Endpoint_Address`zástupných hodnot pro , , a `Profile_Query_Endpoint_address` skutečné adresy koncového bodu pro konkrétní oblast. Konec tohoto článku obsahuje odkazy na adresy koncového bodu pro oblasti, kde je požadována tato konfigurace.
 
+> [!NOTE]
+> [Připojovací řetězce](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) jsou novou upřednostňovanou metodou nastavení vlastních koncových bodů v rámci application insights.
+
+---
+
 ## <a name="sdk-code-changes"></a>Změny kódu sady SDK
 
-### <a name="net-with-applicationinsightsconfig"></a>Rozhraní .NET s souborem applicationinsights.config
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > Soubor applicationinsights.config je automaticky přepsán při každém provedení upgradu sady SDK. Po provedení upgradu sady SDK nezapomeňte znovu zadat hodnoty koncového bodu specifické pro oblast.
@@ -41,7 +46,7 @@ Chcete-li odesílat data z Application Insights do určitých oblastí, budete m
 </ApplicationInsights>
 ```
 
-### <a name="aspnet-core"></a>ASP.NET Core
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 Upravte soubor appsettings.json v projektu následujícím způsobem a upravte hlavní koncový bod:
 
@@ -68,6 +73,8 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
     //Place in the ConfigureServices method. Place this before services.AddApplicationInsightsTelemetry("instrumentation key"); if it's present
 ```
+
+# <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
 ### <a name="azure-functions-v2x"></a>Funkce Azure v2.x
 
@@ -120,7 +127,7 @@ namespace Example
 }
 ```
 
-### <a name="java"></a>Java
+# <a name="java"></a>[Java](#tab/java)
 
 Upravte soubor applicationinsights.xml a změňte výchozí adresu koncového bodu.
 
@@ -155,7 +162,7 @@ Upravte `application.properties` soubor a přidejte:
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,7 +181,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 ```javascript
 <script type="text/javascript">
@@ -187,9 +194,11 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 </script>
 ```
 
-### <a name="python"></a>Python
+# <a name="python"></a>[Python](#tab/python)
 
 Pokyny pro úpravu koncového bodu ingestování pro opencensus-python SDK naleznete v [opencensus-python repo.](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)
+
+---
 
 ## <a name="regions-that-require-endpoint-modification"></a>Oblasti, které vyžadují změnu koncového bodu
 

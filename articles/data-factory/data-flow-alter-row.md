@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 77c58bb8dfa7d21b108d2aa63e90142f66877fb7
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/20/2020
+ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606509"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729143"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Změna transformace řádků v toku dat mapování
 
@@ -48,10 +48,12 @@ Pro zásady změnit řádek pracovat datový proud musí zapisovat do databáze 
 
 ![Změnit propad řádku](media/data-flow/alter-row2.png "Změnit propad řádku")
 
- Výchozí chování je povolit pouze vloží. Chcete-li povolit aktualizace, upserts nebo odstraní, zaškrtněte políčko v jímce odpovídající této podmínce. Pokud aktualizace, upserts nebo odstranění jsou povoleny, je nutné zadat, které klíčové sloupce v jímce, aby odpovídaly na.
+Výchozí chování je povolit pouze vloží. Chcete-li povolit aktualizace, upserts nebo odstraní, zaškrtněte políčko v jímce odpovídající této podmínce. Pokud aktualizace, upserts nebo odstranění jsou povoleny, je nutné zadat, které klíčové sloupce v jímce, aby odpovídaly na.
 
 > [!NOTE]
 > Pokud vloží, aktualizace nebo upserts upravit schéma cílové tabulky v jímce, tok dat se nezdaří. Chcete-li upravit cílové schéma v databázi, zvolte **Znovu vytvořit tabulku** jako akci tabulky. Tím se přetáhne a znovu vytvoříte tabulku s novou definicí schématu.
+
+Transformace jímky vyžaduje jeden klíč nebo řadu klíčů pro jedinečnou identifikaci řádku v cílové databázi. Pro jímky SQL nastavte klíče na kartě nastavení jímky. Pro CosmosDB nastavte klíč oddílu v nastavení a také nastavte systémové pole CosmosDB "id" v mapování jímky. Pro CosmosDB je povinné zahrnout sloupec systému "id" pro aktualizace, upserts a odstraní.
 
 ## <a name="data-flow-script"></a>Skript toku dat
 

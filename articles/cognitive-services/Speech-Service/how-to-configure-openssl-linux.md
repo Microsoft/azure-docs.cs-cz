@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78331140"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683168"
 ---
 # <a name="configure-openssl-for-linux"></a>Konfigurace OpenSSL pro Linux
 
@@ -40,16 +40,18 @@ Zkontrolujte, `certs` zda je podadresář v openssldir. Ve výše uvedeném př�
 ## <a name="examples"></a>Příklady
 
 - OPENSSLDIR `/opt/ssl`je . Existuje `certs` podadresář s `.crt` `.pem` mnoha nebo soubory.
-Nastavte proměnnou `SSL_CERT_DIR` prostředí `/opt/ssl/certs` tak, aby ukazovala na před spuštěním programu, který používá sadu Speech SDK. Například:
+Nastavte proměnnou `SSL_CERT_DIR` prostředí `/opt/ssl/certs` tak, aby ukazovala na před spuštěním programu, který používá sadu Speech SDK. Příklad:
 ```bash
 export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
 - OPENSSLDIR `/etc/pki/tls` je (jako na systémech založených na RHEL/CentOS). Existuje `certs` podadresář se souborem sady `ca-bundle.crt`certifikátů, například .
-Před spuštěním programu, který používá sadu Speech SDK, nastavte proměnnou `SSL_CERT_FILE` prostředí tak, aby ukazovala na tento soubor. Například:
+Před spuštěním programu, který používá sadu Speech SDK, nastavte proměnnou `SSL_CERT_FILE` prostředí tak, aby ukazovala na tento soubor. Příklad:
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
+> [!NOTE]
+> Je také třeba poznamenat, že některé distribuce Linuxu nemají tmp nebo TMPDIR proměnné prostředí definovány. To způsobí, že sada Speech SDK stáhnout seznam odvolaných certifikátů (CRL) pokaždé, spíše než ukládání crl do mezipaměti na disk pro opakované použití, dokud nevyprší jejich platnost. Chcete-li zlepšit počáteční výkon připojení, můžete [vytvořit proměnnou prostředí s názvem TMPDIR a nastavit ji na cestu zvoleného dočasného adresáře.](https://help.ubuntu.com/community/EnvironmentVariables)
 
 ## <a name="next-steps"></a>Další kroky
 

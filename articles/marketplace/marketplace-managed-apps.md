@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 38323ecfee69460b16542a3e004513f6a7389c41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56281ff8faba6b4b950334e2b0018d48c8e7aeb3
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288406"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687561"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure Aplikace: Průvodce publikováním nabídek spravovaných aplikací
 
@@ -34,7 +34,7 @@ Použijte aplikaci Azure: typ nabídky spravované aplikace, když jsou vyžadov
 |---------|---------|
 |Nasazené do předplatného Azure zákazníka | Spravované aplikace musí být nasazeny v předplatném zákazníka a mohou být spravovány třetí stranou. | 
 |Fakturace a měření    |  Prostředky se zřídí v předplatném Azure zákazníka. Virtuální počítače s průběžnými platbami (PAYGO) budou se zákazníkem obchodovány prostřednictvím Microsoftu, které se budou účtovat prostřednictvím předplatného Azure (PAYGO) zákazníka. <br> V případě vlastní licence, zatímco společnost Microsoft bude účtovat náklady na infrastrukturu vzniklé v rámci předplatného zákazníka, provedete převod licenčních poplatků za software přímo zákazníkovi.        |
-|Virtuální pevný disk kompatibilní s Azure (VHD)    |   Virtuální počítače musí být postavené na Windows nebo Linuxu.<ul> <ul> <li>Další informace o vytváření virtuálního pevného disku Linuxu najdete v [tématu Linux distribuce schválila v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Další informace o vytvoření virtuálního pevného disku systému Windows naleznete [v tématu Vytvoření virtuálního pevného disku kompatibilního s Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |
+|Virtuální pevný disk kompatibilní s Azure (VHD)    |   Virtuální počítače musí být postavené na Windows nebo Linuxu.<ul> <ul> <li>Další informace o vytváření virtuálního pevného disku Linuxu najdete v [tématu Linux distribuce schválila v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Další informace o vytvoření virtuálního pevného disku systému Windows najdete [v tématu vytvoření nabídky aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md).</li> </ul> |
 
 >[!NOTE]
 > Spravované aplikace musí být nasaditelné prostřednictvím webu Marketplace. Pokud se jedná o komunikaci se zákazníky, měli byste se po povolení sdílení zájemců ooslovit se zájemci.  
@@ -43,10 +43,12 @@ Použijte aplikaci Azure: typ nabídky spravované aplikace, když jsou vyžadov
 >Přihlášení partnerského kanálu zprostředkovatelů cloudových řešení (CSP) je nyní k dispozici.  Další informace o marketingu vaší nabídky prostřednictvím partnerských kanálů Microsoft CSP najdete v tématu [Poskytovatelé cloudových řešení.](./cloud-solution-providers.md)
 
 ## <a name="next-steps"></a>Další kroky
+
 Pokud jste tak ještě neučinili, 
 
-- [Zaregistrujte se](https://azuremarketplace.microsoft.com/sell) na trhu.
+- [Přečtěte si](https://azuremarketplace.microsoft.com/sell) informace o tržišti.
 
-Pokud jste zaregistrováni a vytváříte novou nabídku nebo pracujete na stávající nabídce,
+Chcete-li se zaregistrovat v Partnerském centru, začněte vytvářet novou nabídku nebo pracovat na existující nabídce:
 
-- [Přihlaste se k portálu cloudových partnerů](https://cloudpartner.azure.com) a vytvořte nebo dokončete svou nabídku.
+- [Chcete-li](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) vytvořit nebo dokončit svou nabídku, přihlaste se do Centra partnerů.
+- Další informace najdete [v tématu vytvoření nabídky aplikací Azure.](./partner-center-portal/create-new-azure-apps-offer.md)

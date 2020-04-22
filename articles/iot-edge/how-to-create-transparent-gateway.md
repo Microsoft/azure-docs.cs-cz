@@ -8,12 +8,15 @@ ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3b3aeff595671c5f924d01599b572b6b938ef09d
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: e563e67b5e951b43e5782f8c845c8ec46ff3e9bb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666668"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687165"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení IoT Edge tak, aby fungovalo jako transparentní brána
 
@@ -66,7 +69,7 @@ Pokud je modul **edgeAgent** spuštěn bez modulu **edgeHub,** použijte násled
 
 3. Vyberte **možnost Nastavit moduly**.
 
-4. Vyberte **další**.
+4. Vyberte **Další**.
 
 5. Na stránce **Zadat trasy** byste měli mít výchozí trasu, která odesílá všechny zprávy ze všech modulů do centra IoT Hub. Pokud tomu tak není, přidejte následující kód a vyberte **Next** (Další).
 

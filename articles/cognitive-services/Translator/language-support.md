@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77206119"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684831"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Jazyková a regionální podpora rozhraní Translator Text API
 
@@ -63,6 +63,7 @@ Překladač text api podporuje následující jazyky pro překlad textu na text.
 |Francouzština|    `fr`    |   Neuronové|
 |Němčina|    `de`    |   Neuronové|
 |Řečtina| `el`    |   Neuronové|
+|Gudžarátština|  `gu`    |   Neuronové|
 |Haitská kreolština|    `ht`        |Statistické|
 |Hebrejština |`he`   |Neuronové
 |Hindština| `hi`    |   Neuronové|
@@ -85,6 +86,7 @@ Překladač text api podporuje následující jazyky pro překlad textu na text.
 |Malajalámština| `ml` | Neuronové
 |Maltština|   `mt`    |   Statistické|
 |Maorština| `mi`  | Neuronové|
+|Maráthština| `mr`  | Neuronové|
 |Norština| `nb`    |   Neuronové|
 |Perština|   `fa`    |   Neuronové|
 |Polština|    `pl`    |   Neuronové|

@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 34de5f59e96a37282063741a1664f512697c167b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288712"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687503"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Průvodce publikováním nabídek virtuálních strojů
 
@@ -53,7 +53,7 @@ Typ nabídky virtuálního počítače použijte při nasazení virtuálního za
 | Požadavek | Podrobnosti |  
 |:--- |:--- | 
 | Fakturace a měření | Váš virtuální počítač musí podporovat měsíční fakturaci BYOL nebo průběžných plateb. |  
-| Virtuální pevný disk kompatibilní s Azure (VHD) | Virtuální počítače musí být postavené na Windows nebo Linuxu. <ul> <li>Další informace o vytváření virtuálního pevného disku Linuxu najdete v [tématu Linux distribuce schválila v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Další informace o vytvoření virtuálního pevného disku systému Windows naleznete [v tématu Vytvoření virtuálního pevného disku kompatibilního s Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |  
+| Virtuální pevný disk kompatibilní s Azure (VHD) | Virtuální počítače musí být postavené na Windows nebo Linuxu. <ul> <li>Další informace o vytváření virtuálního pevného disku Linuxu najdete v [tématu Linux distribuce schválila v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Další informace o vytvoření virtuálního pevného disku systému Windows naleznete [v tématu Vytvoření virtuálního pevného disku kompatibilního s Azure](./partner-center-portal/azure-vm-create-offer.md).</li> </ul> |  
 
 >[!Note]
 >Přihlášení partnerského kanálu zprostředkovatelů cloudových řešení (CSP) je nyní k dispozici.  Další informace o marketingu vaší nabídky prostřednictvím partnerských kanálů Microsoft CSP najdete v tématu [Poskytovatelé cloudových řešení.](./cloud-solution-providers.md)
@@ -62,9 +62,9 @@ Typ nabídky virtuálního počítače použijte při nasazení virtuálního za
 
 Pokud jste tak ještě neučinili, 
 
-- [Zaregistrujte se](https://azuremarketplace.microsoft.com/sell) na trhu.
+- [Přečtěte si](https://azuremarketplace.microsoft.com/sell) informace o tržišti.
 
 Pokud jste zaregistrováni a vytváříte novou nabídku nebo pracujete na stávající nabídce,
 
-- [Přihlaste se na portál cloudových partnerů](https://cloudpartner.azure.com) a vytvořte nebo dokončete svou nabídku.
-- Další informace najdete v [tématu Nabídka virtuálních strojů.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer)
+- [Chcete-li](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) vytvořit nebo dokončit svou nabídku, přihlaste se do Centra partnerů.
+- Další informace najdete [v tématu vytvoření nabídky virtuálních strojů.](./partner-center-portal/azure-vm-create-offer.md)

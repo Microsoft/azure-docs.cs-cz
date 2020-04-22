@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: e17a76d5a017400287644ad2da46caa5b6636654
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3979be6f49f4ad01a6092fc0d5aa767d342c4642
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262294"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730494"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Migrace účtu z portálu partnerů cloudu do partnerského centra
 
@@ -47,7 +47,7 @@ Kliknutím na banner zahájíte proces migrace účtu. Očekává se, že zadát
 
 Společnosti, které chtějí spolupracovat se společností Microsoft, se musí připojit k programu Microsoft Partner Network (MPN) a získat id mpn. Pokud jste již členem programu Microsoft Partner Network a máte ID MPN, mějte informace po ruce, jak je budete potřebovat během procesu aktivace účtu.  
 
-Pokud nejste členem programu Microsoft Partner Network, můžete [se připojit zde](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/en-us/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) a získat id mpn. Poznamenejte si své ID MPN, protože ho budete muset zadat během procesu aktivace účtu.
+Pokud nejste členem programu Microsoft Partner Network, můžete [se připojit zde](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) a získat id mpn. Poznamenejte si své ID MPN, protože ho budete muset zadat během procesu aktivace účtu.
 
 Další informace o programu Microsoft Partner Network najdete [v tématu Připojení k síti partnerů společnosti Microsoft](https://partner.microsoft.com/en-US/membership) na partnerském webu. Další informace o výhodách neinstalačního programu společnosti Microsoft naleznete v centru [ISV Resource Hub](https://partner.microsoft.com/isv-resource-hub).  
 
@@ -61,7 +61,7 @@ Konkrétní informace o tom, co je třeba udělat do **15.10.2019** pro vaše na
 > To se nevztahuje na nabídky Dynamics 365 Business Central.  
 
 1. Pokud byl váš účet členství v programu MPN původně vytvořen v Centru členství partnera (PMC), přihlaste se do [Centra partnerů](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) a ověřte, zda byl váš účet migrován. Pokud se zobrazí obrazovka s profilem s id MPN, můžete pokračovat. Pokud ne, musíte zahájit migraci účtu podle pokynů v [Centru členství partnera](https://partners.microsoft.com/partnerprogram/Welcome.aspx). Pokud potřebujete pomoc, navštivte [podporu](https://partner.microsoft.com/support?issueid=100-0077).
-2. Přejděte na [stránku přehledu komerčního tržiště v Centru partnerů](https://partner.microsoft.com/dashboard/commercial-marketplace/overview). Pokud se v levém navigačním podokně zobrazí "Komerční tržiště", jste zaregistrovaní a měli byste pokračovat dalším krokem. Pokud ne, [zaregistrujte se na komerčním trhu](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) nyní.
+2. Přejděte na [stránku přehledu komerčního tržiště v Centru partnerů](https://partner.microsoft.com/dashboard/commercial-marketplace/overview). Pokud se v levém navigačním podokně zobrazí "Komerční tržiště", jste zaregistrovaní a měli byste pokračovat dalším krokem. Pokud ne, [zaregistrujte se na komerčním trhu](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) nyní.
 3. Potvrďte, že vaše nabídky jsou v AppSource [vyhledáním nabídek](https://appsource.microsoft.com/). Pokud vaše nabídky jsou již v AppSource, pokračujte dalším krokem. Pro jakoukoli nabídku, která není v AppSource, vytvořte [novou nabídku Dynamics 365 Customer Engagement](create-new-customer-engagement-offer.md) nebo novou [nabídku Dynamics 365 Operations](create-new-operations-offer.md).
 4. Na stránce Smlouvy s [Partnerským](https://partner.microsoft.com/dashboard/account/agreements)centrem zkontrolujte a přijměte **dodatek k isv podnikových aplikací**.
 5. V [nastavení účtu](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)Partnerského centra zkontrolujte, zda jsou fakturační údaje úplné.
@@ -73,10 +73,10 @@ Konkrétní informace o tom, co je třeba udělat do **15.10.2019** pro vaše na
 
 ## <a name="additional-resources"></a>Další zdroje
 
-Připojte se k [týdennímu komunitnímu volání dynamics ISV](https://aka.ms/DynamicsISV-CommunityCall) o podporu a aktualizace.
+Získejte pomoc od odborníků a kolegů ve fórech a objevte blogy, webináře, videa, události a další obsah v [aplikaci Microsoft Dynamics CRM](https://community.dynamics.com/crm?wa=wsignin1.0).
 
-Pokud potřebujete pomoc s publikováním, certifikací nebo správou nabídek na marketplace, [odešlete lístek podpory](https://aka.ms/MarketplacePublisherSupport).
+Pokud potřebujete pomoc s publikováním, certifikací nebo správou nabídek na marketplace, [odešlete lístek podpory](https://partner.microsoft.com/support/v2/?stage=1).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-step"></a>Další krok
 
 - [Správa účtu komerčního tržiště v Partnerském centru](./manage-account.md)

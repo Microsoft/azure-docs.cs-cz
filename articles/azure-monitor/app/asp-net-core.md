@@ -3,12 +3,12 @@ title: Přehledy aplikací Azure pro základní ASP.NET aplikace | Dokumenty spo
 description: Sledujte ASP.NET webových aplikacích Core dostupnost, výkon a využití.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: d6a0e507022452f1491e71651ba3bc8db3d1c090
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a9a81d76df7f14fb99b8521e7bfa2edff6c9e9e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284785"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687377"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Přehledy aplikací pro ASP.NET základní aplikace
 
@@ -103,7 +103,7 @@ Příklad, který zde použijeme, je aplikace `netcoreapp2.2` [MVC,](https://doc
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Například:
+    Příklad:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -162,11 +162,11 @@ Předchozí kroky jsou dostatečné k tomu, abyste začali shromažďovat teleme
     
 Alternativně k `FullScript` použití `ScriptBody` je k dispozici počínaje SDK v2.14. Tuto možnost použijte, pokud `<script>` potřebujete určit značku pro nastavení zásad zabezpečení obsahu:
 
-    ```cshtml
-        <script> // apply custom changes to this script tag.
-            @Html.Raw(JavaScriptSnippet.ScriptBody)
-        </script>
-    ```
+```cshtml
+ <script> // apply custom changes to this script tag.
+     @Html.Raw(JavaScriptSnippet.ScriptBody)
+ </script>
+```
 
 Názvy `.cshtml` souborů, na které se odkazuje dříve, pocházejí z výchozí šablony aplikace MVC. Nakonec pokud chcete správně povolit monitorování na straně klienta pro vaši aplikaci, `<head>` fragment jazyka JavaScript se musí zobrazit v části každé stránky aplikace, kterou chcete sledovat. Tohoto cíle pro tuto šablonu aplikace můžete dosáhnout přidáním `_Layout.cshtml`fragmentu javascriptu do aplikace . 
 

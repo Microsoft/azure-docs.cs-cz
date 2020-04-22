@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9cfedd322db721156584844e949724ab2d104968
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 013281db2821c99f6942edd1322f4978e100c144
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78199797"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729857"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Úvodní příručka: Klientská knihovna úložiště fronty Azure v12 pro Javu
 
@@ -366,6 +366,6 @@ V tomto rychlém startu jste se naučili, jak vytvořit frontu a přidat do ní 
 Kurzy, ukázky, rychlé spuštění a další dokumentaci naleznete na adrese:
 
 > [!div class="nextstepaction"]
-> [Azure pro cloudové vývojáře v Javě](https://docs.microsoft.com/azure/java/)
+> [Azure pro cloudové vývojáře v Javě](https://docs.microsoft.com/azure/developer/java/)
 
 * Chcete-li zobrazit další ukázkové aplikace úložiště fronty Azure, pokračujte na [ukázky knihovny klienta Azure Queue storage SDK v12 Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue).

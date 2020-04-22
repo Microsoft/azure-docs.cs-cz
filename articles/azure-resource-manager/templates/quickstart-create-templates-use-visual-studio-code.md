@@ -2,15 +2,15 @@
 title: Vytvořit šablonu – kód Visual Studia
 description: Při práci na šablonách Resource Manageru můžete použít Visual Studio Code a rozšíření Nástroje Azure Resource Manageru.
 author: neilpeterson
-ms.date: 03/27/2019
+ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 4b1ecbf3a1f6083261e87537e20d52e755b77424
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: cd107db5220a96d75092a94736e060ae46672926
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81640867"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686616"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Úvodní příručka: Vytvoření šablon Azure Resource Manager u kódu Sady Visual Studio
 
@@ -118,7 +118,7 @@ Aktualizujte hodnotu na vhodné, uložte soubor a přejděte zpět do šablony. 
 
 Otevřete integrovaný terminál kódu `ctrl`  +  ```` ` ```` Visual Studia pomocí kombinace kláves a použijte k nasazení šablony buď rozhraní příkazového příkazu Azure nebo modulu Azure PowerShell.
 
-# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli
 az group create --name arm-vscode --location eastus
@@ -139,7 +139,7 @@ New-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile ./azur
 
 Když už prostředky Azure nejsou potřeba, použijte modul Azure CLI nebo Azure PowerShell k odstranění skupiny prostředků rychlého startu.
 
-# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli
 az group delete --name arm-vscode

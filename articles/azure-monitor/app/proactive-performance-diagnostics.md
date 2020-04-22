@@ -4,12 +4,12 @@ description: Application Insights provádí inteligentní analýzu telemetrie ap
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671728"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687695"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní detekce – anomálie výkonu
 
@@ -71,7 +71,7 @@ E-maily o anomáliích výkonu inteligentních zjišťování jsou omezeny na je
 
   * Ještě ne, ale můžete:
     * [Nastavte výstrahy,](../../azure-monitor/app/alerts.md) které informují o tom, kdy metrika překročí prahovou hodnotu.
-    * [Exportujte telemetrii](../../azure-monitor/app/export-telemetry.md) do [databáze](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) nebo [do PowerBI](../../azure-monitor/app/export-power-bi.md ), kde ji můžete analyzovat sami.
+    * [Exportujte telemetrii](../../azure-monitor/app/export-telemetry.md) do [databáze](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) nebo [do Power BI](../../azure-monitor/app/export-power-bi.md ), kde ji můžete analyzovat sami.
 * *Jak často se analýza provádí?*
 
   * Denně spouštěme analýzu telemetrie z předchozího dne (celý den v časovém pásmu UTC).
@@ -125,11 +125,11 @@ Oznámení o snížení doby odezvy vám řekne:
   * Trasování profileru, které vám pomohou zobrazit, kde je čas operace strávený (propojení je k dispozici, pokud byly pro tuto operaci během doby zjišťování shromážděny příklady trasování profileru). 
   * Sestavy výkonu v Průzkumníku metrik, kde můžete pro tuto operaci rozdělit a odkreslovat časový rozsah nebo filtry.
   * Vyhledejte toto volání a zobrazte konkrétní vlastnosti volání.
-  * Zprávy o selhání – pokud počet > 1 to znamená, že v této operaci došlo k chybám, které mohly přispět ke snížení výkonu.
+  * Zprávy o selhání – pokud počet > 1 to znamená, že došlo k chybám v této operaci, které mohly přispět ke snížení výkonu.
 
 ## <a name="dependency-duration-degradation"></a>Degradace doby trvání závislosti
 
-Moderní aplikace stále více a více přijmout mikro služby design přístup, který v mnoha případech vede k vysoké spolehlivosti na externí služby. Například, pokud vaše aplikace závisí na některé datové platformy, nebo i když si vytvořit vlastní bot služby budete pravděpodobně relé na některé kognitivní služby poskytovatele, aby vaše roboty komunikovat v lidštější způsoby a některé služby úložiště dat pro robota vytáhnout odpovědi Z.  
+Moderní aplikace stále více a více přijímají přístup k návrhu mikroslužeb, což v mnoha případech vede k vysoké spolehlivosti externích služeb. Například pokud vaše aplikace závisí na některé datové platformy, nebo i když si vytvořit vlastní bot služby budete pravděpodobně relé na některé kognitivní služby poskytovatele umožnit roboty komunikovat v lidštější způsoby a některé služby úložiště dat pro robota vytáhnout odpovědi z.  
 
 Příklad oznámení o snížení závislosti:
 
@@ -174,8 +174,8 @@ Upravte časový rozsah a filtry a prozkoumejte telemetrii.
 Tyto diagnostické nástroje vám pomohou zkontrolovat telemetrii z vaší aplikace:
 
 * [Profiler](profiler.md) 
-* [Ladicí program snímků](../../azure-monitor/app/snapshot-debugger.md)
-* [Analýza](../../azure-monitor/log-query/get-started-portal.md)
+* [Ladicí program snímku](../../azure-monitor/app/snapshot-debugger.md)
+* [Analýzy](../../azure-monitor/log-query/get-started-portal.md)
 * [Analytics inteligentní diagnostika](../../azure-monitor/app/analytics.md)
 
 Inteligentní detekce jsou zcela automatické. Ale možná byste chtěli nastavit nějaké další upozornění?

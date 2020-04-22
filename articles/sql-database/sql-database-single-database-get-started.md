@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
-ms.date: 03/10/2020
-ms.openlocfilehash: 638adaac699bb7aa2774f5cbd37dc8394a2baee3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/19/2020
+ms.openlocfilehash: b06c255f94b4d539c7c85e318238b10629cbb907
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240517"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685155"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Úvodní příručka: Vytvoření jediné databáze Azure SQL Database
 
@@ -67,7 +67,7 @@ Udržujte skupinu prostředků, server a jednu databázi, abyste přešli k dal�
 
 Po dokončení používání těchto prostředků můžete odstranit skupinu prostředků, kterou jste vytvořili, která také odstraní server a jednu databázi v něm.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+### <a name="portal"></a>[Portál](#tab/azure-portal)
 
 Odstranění **myResourceGroup** a všech jejích prostředků pomocí portálu Azure:
 
@@ -75,7 +75,7 @@ Odstranění **myResourceGroup** a všech jejích prostředků pomocí portálu 
 1. Na stránce skupiny prostředků vyberte **Odstranit skupinu prostředků**.
 1. V části **Zadejte název skupiny prostředků**zadejte *myResourceGroup*a vyberte **Odstranit**.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz y Azure CLI pomocí názvu vaší skupiny prostředků:
 
@@ -83,15 +83,16 @@ Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusť
 az group delete --name <your resource group>
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Chcete-li odstranit skupinu prostředků a všechny její prostředky, spusťte pomocí názvu skupiny prostředků následující rutinu prostředí PowerShell:
 
- ```azurepowershell-interactive
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group>
 ```
 
 ---
+
 ## <a name="next-steps"></a>Další kroky
 
 [Připojte databázi a zařazujte se tak](sql-database-connect-query.md) pomocí různých nástrojů a jazyků:

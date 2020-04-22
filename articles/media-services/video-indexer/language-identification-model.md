@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: ba1521581316d559eb4e67bafba0061c31cc666b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272946"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687127"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatická identifikace mluveného jazyka pomocí modelu identifikace jazyka
 
 Video Indexer podporuje automatickou identifikaci jazyka (LID), což je proces automatické identifikace mluveného jazyka ze zvuku a odeslání mediálního souboru, který má být přepsán v dominantním identifikovaném jazyce. 
 
-V současné době LID podporuje: angličtina, španělština, francouzština, němčina, italština, mandarinské chines, japonština, ruština a portugalština (brazilská). 
+V současné době LID podporuje: angličtina, španělština, francouzština, němčina, italština, mandarínská čínština, japonština, ruština a portugalština (brazilská). 
 
 Přečtěte si níže uvedenou část [Pokyny a omezení.](#guidelines-and-limitations)
 

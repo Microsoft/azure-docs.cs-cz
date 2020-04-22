@@ -10,12 +10,12 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 05e668ff5b0ec19c5e380cf6bfee4b6e46900b2f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9c15e4217c5331346c5a95329bae7e2a4f0e0841
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77371857"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732085"
 ---
 Pomocí runtime klientské knihovny Jazyka (LANGUAGE Understanding) pro soubor Node.js můžete:
 
@@ -28,6 +28,7 @@ Pomocí runtime klientské knihovny Jazyka (LANGUAGE Understanding) pro soubor N
 
 * Prostředek runtime language understanding: [Vytvoření na webu Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
 * [Node.js](https://nodejs.org)
+* ID aplikace LUIS – použijte veřejné IOT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`ID aplikace . Uživatelský dotaz použitý v kódu rychlého startu je specifický pro tuto aplikaci.
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -37,9 +38,9 @@ Získejte [klíč runtime](../luis-how-to-azure-subscription.md) vytvořením pr
 
 [!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
-### <a name="create-a-new-javascript-nodejs-file"></a>Vytvoření nového souboru javascriptu (Node.js)
+### <a name="create-a-new-javascript-nodejs-file"></a>Vytvoření nového souboru JavaScriptu (Node.js)
 
-Vytvořte nový soubor javascriptu v preferovaném editoru nebo ide s názvem `luis_prediction.js`.
+Vytvořte nový soubor JavaScript u preferovaného `luis_prediction.js`editoru nebo ide s názvem .
 
 ### <a name="install-the-npm-library-for-the-luis-runtime"></a>Instalace knihovny NPM pro zaběhu LUIS
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75911916"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688095"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Použití nástrojů Azure IoT tools for Visual Studio Code for Azure IoT Hub management
 
@@ -47,8 +47,8 @@ Spouštějte nástroje Azure IoT pro kód Visual Studia s různými možnostmi s
 
 * Aktivní předplatné Azure.
 * Azure IoT hub v rámci vašeho předplatného.
-* [Kód visual studia](https://code.visualstudio.com/)
-* [Nástroje Azure IoT pro kód VS](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo [otevřete tento odkaz v kódu Visual Studia](vscode:extension/vsciot-vscode.azure-iot-tools).
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Nástroje Azure IoT pro kód VS](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo zkopírujte tuto`vscode:extension/vsciot-vscode.azure-iot-tools`adresu URL a vložte ji do okna prohlížeče: .
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Přihlášení pro přístup k centru IoT hub
 

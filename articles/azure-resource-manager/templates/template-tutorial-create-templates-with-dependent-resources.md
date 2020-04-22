@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bbe973f5c701f55705fe197f56f5f8ab1d9e8c68
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e589fa8ae5627746ec1f04e2098a7b592f00dc24
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260727"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684941"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Kurz: Vytvoření šablon ARM se závislými prostředky
 
@@ -96,11 +96,11 @@ Při zkoumání šablony v této části zkuste zodpovědět tyto otázky:
 
     ![Visual Studio Code Azure Resource Manager šablony virtuální sítě dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    Element DependsOn umožňuje definovat jeden prostředek jako závislý na jednom nebo více prostředcích. Element DependsOn umožňuje definovat jeden prostředek jako závislý na jednom nebo více prostředcích.  Tento prostředek závisí na jednom dalším prostředku:
+    Element DependsOn umožňuje definovat jeden prostředek jako závislý na jednom nebo více prostředcích. Tento prostředek závisí na jednom dalším prostředku:
 
     * `Microsoft.Network/networkSecurityGroups`
 
-1. Rozbalte padesát prostředků. Typ prostředku je `Microsoft.Network/networkInterfaces`. Prostředek závisí na dvou dalších prostředcích:
+1. Rozbalte pátý prostředek. Typ prostředku je `Microsoft.Network/networkInterfaces`. Prostředek závisí na dvou dalších prostředcích:
 
     * `Microsoft.Network/publicIPAddresses`
     * `Microsoft.Network/virtualNetworks`
@@ -163,7 +163,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
-3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
+3. Vyberte název skupiny prostředků. Ve skupině prostředků se zobrazí celkem šest prostředků.
 4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
 
 ## <a name="next-steps"></a>Další kroky

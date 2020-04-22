@@ -2,20 +2,30 @@
 title: Co je nového v Azure Migrate
 description: Přečtěte si, co je nové a poslední aktualizace ve službě Migrace Azure.
 ms.topic: overview
-ms.date: 04/16/2020
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 1b0221f497ae7bbf84f163eef1ddb862d8de2951
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ba85b0a4ed30320099388ccb48dd91ad6445efd5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535243"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677246"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
 [Migrace Azure](migrate-services-overview.md) vám pomůže zjišťovat, vyhodnocovat a migrovat místní servery, aplikace a data do cloudu Microsoft Azure. Tento článek shrnuje nové verze a funkce v Azure Migrate.
 
 
+## <a name="update-april-2020"></a>Aktualizace (duben 2020)
+
+Azure Migrate podporuje nasazení v Azure Government. 
+
+- Můžete zjistit a vyhodnotit virtuální chod v zařízení VMware, virtuální chod y Hyper-V a fyzické servery.
+- Virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery můžete migrovat do Azure.
+- Pro migraci vmware můžete použít migraci bez agenta nebo na základě agenta. [Další informace](server-migrate-overview.md).
+- [Zkontrolujte](migrate-support-matrix.md#supported-geographies-azure-government) podporované zeměpisné oblasti a oblasti pro Azure Government.
+- [Analýza závislostí založená na agentovi](concepts-dependency-visualization.md#agent-based-analysis) není ve službě Azure Government podporovaná.
+- Funkce ve verzi Preview jsou podporované v Azure Government, konkrétně [analýza závislostí bez agentů](concepts-dependency-visualization.md#agentless-analysis)a zjišťování [aplikací](how-to-discover-applications.md).
 
 ## <a name="update-march-2020"></a>Aktualizace (březen 2020)
 

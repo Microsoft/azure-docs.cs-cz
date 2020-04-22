@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 9bea9e375e00d6fc0f6c33aa1bcc766773db2059
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 1c7156da171a101f04db9f83df587f5b8bc71e8f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81269937"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687101"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -70,8 +70,8 @@ V následujícím seznamu jsou uvedeny přehledy, které můžete z videí nač�
 
 ### <a name="audio-insights"></a>Přehledy zvuku
 
-* **Přepis zvuku**: Převádí řeč na text ve 12 jazycích a umožňuje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, mandarínština, japonština, arabština, ruština, brazilská portugalština, hindština a korejština.
-* **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, mandarínština, japonština, ruština a brazilská portugalština. Pokud jazyk nelze identifikovat s důvěrou, Video Indexer předpokládá, že mluvený jazyk je angličtina. Další informace naleznete v [tématu Model identifikace jazyka](language-identification-model.md).
+* **Přepis zvuku**: Převádí řeč na text ve 12 jazycích a umožňuje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, mandarínská čínština, japonština, arabština, ruština, brazilská portugalština, hindština a korejština.
+* **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, mandarínská čínština, japonština, ruština a brazilská portugalština. Pokud jazyk nelze identifikovat s důvěrou, Video Indexer předpokládá, že mluvený jazyk je angličtina. Další informace naleznete v [tématu Model identifikace jazyka](language-identification-model.md).
 * **Vícejazyčná identifikace a přepis řeči** (náhled): Automaticky identifikuje mluvený jazyk v různých segmentech od zvuku. Odešle každý segment mediálního souboru k přepisu a pak zkombinuje přepis zpět do jednoho jednotného přepisu. Další informace naleznete v tématu [Automaticky identifikovat a přepsat vícejazyčný obsah](multi-language-identification-transcription.md).
 * **Tvorba titulků**: Vytvoří titulky ve třech formátech: VTT, TTML, SRT.
 * **Zpracování dvou kanálů**: Auto detekuje samostatný přepis a sloučí se na jednu časovou osu.

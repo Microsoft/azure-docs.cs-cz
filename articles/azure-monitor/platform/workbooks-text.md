@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c5fb585d0eb6aeb7866c2ab04b324ee31fe903ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658045"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687326"
 ---
 # <a name="workbook-text-parameters"></a>Parametry textu sešitu
 
@@ -59,6 +59,8 @@ Takto bude sešit vypadat v režimu čtení.
 
     ![Obrázek znázorňující textový parametr odkazovaný v KQL](./media/workbooks-text/text-reference.png)
 
+> [!NOTE]
+> Ve výše uvedeném příkladu `{SlowRequestThreshold}` představuje hodnotu celé číslo. Pokud jste byli dotazování `{ComputerName}` na řetězec, jako byste museli upravit `"{ComputerName}"` kusto dotaz přidat uvozovky v pořadí pro pole parametru přijmout vstup bez uvozovek.
 
 ## <a name="setting-default-values"></a>Nastavení výchozích hodnot
 1. Začněte s prázdným sešitem v režimu úprav.

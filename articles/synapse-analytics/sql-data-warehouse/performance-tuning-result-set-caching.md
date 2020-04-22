@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 42f8f51545f643e1ed9e1a23c9445f6e216fdabe
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: eadbe13269ce1259b4560af117f5b15b3b294151
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273405"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730592"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Ladění výkonu s využitím ukládání sad výsledků do mezipaměti
 
@@ -42,10 +42,11 @@ Po zapnutí ukládání do mezipaměti sady výsledků pro databázi jsou výsle
 - Dotazy pomocí uživatelem definovaných funkcí
 - Dotazy pomocí tabulek s povoleným zabezpečením na úrovni řádků nebo na úrovni sloupců
 - Dotazy vracející data s velikostí řádku větší než 64 kB
+- Dotazy vracející velké množství dat (>10 GB) 
 
 > [!IMPORTANT]
 > Operace k vytvoření mezipaměti sady výsledků a načtení dat z mezipaměti probíhají na řídicím uzlu instance fondu SQL Synapse.
-> Pokud je ukládání do mezipaměti sady výsledků zapnuto, může spuštění dotazů, které vrací sadu velkých výsledků (například >1 milion řádků), způsobit vysoké využití procesoru v řídicím uzlu a zpomalit celkovou odpověď na dotaz instance.  Tyto dotazy se běžně používají během zkoumání dat nebo etl operace. Aby se zabránilo zpětí řídicíuzel a způsobit problém s výkonem, uživatelé by měli vypnout sadu výsledků ukládání do mezipaměti v databázi před spuštěním těchto typů dotazů.  
+> Při ukládání do mezipaměti sady výsledků je zapnuto, spuštění dotazů, které vracejí sadu velkých výsledků (například >1 GB), může způsobit vysoké omezení v uzlu ovládacího prvku a zpomalit celkovou odpověď na dotaz na instanci.  Tyto dotazy se běžně používají během zkoumání dat nebo etl operace. Aby se zabránilo zpětí řídicíuzel a způsobit problém s výkonem, uživatelé by měli vypnout sadu výsledků ukládání do mezipaměti v databázi před spuštěním těchto typů dotazů.  
 
 Spusťte tento dotaz po dobu, kterou pro dotaz zaberou operace ukládání do mezipaměti sady výsledků:
 

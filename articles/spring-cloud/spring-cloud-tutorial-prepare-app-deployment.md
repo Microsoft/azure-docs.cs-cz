@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 025dbc56fb46ef5b6225d35564b8e4ac3c82e6e3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414468"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731180"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava aplikace Java Spring pro nasazení v Azure Spring Cloud
 
@@ -27,7 +27,7 @@ Tento článek vysvětluje požadované závislosti a jak je přidat do souboru 
 
 V Azure Spring Cloudu můžou běžet jenom jarní/java aplikace.
 
-Azure Spring Cloud podporuje Java 8 i Java 11. Hostitelské prostředí obsahuje nejnovější verzi Azul Zulu OpenJDK pro Azure. Další informace o Azul Zulu OpenJDK pro Azure najdete [v tématu Instalace JDK](https://docs.microsoft.com/azure/java/jdk/java-jdk-install).
+Azure Spring Cloud podporuje Java 8 i Java 11. Hostitelské prostředí obsahuje nejnovější verzi Azul Zulu OpenJDK pro Azure. Další informace o Azul Zulu OpenJDK pro Azure najdete [v tématu Instalace JDK](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Verze Spring Boot a Spring Cloud
 

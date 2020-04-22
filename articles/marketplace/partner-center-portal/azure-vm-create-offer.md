@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536654"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731267"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Vytvoření nabídky virtuálního počítače Azure
 
@@ -34,19 +34,19 @@ Publikování na Azure Marketplace má následující výhody:
 
 ### <a name="before-you-begin"></a>Než začnete
 
-Pokud jste tak ještě neučinili, přečtěte si [průvodce publikováním nabídek virtuálních strojů](https://aka.ms/Virtualmachineofferpublishingguide) a tento materiál virtuálního počítače Azure:
+Pokud jste tak ještě neučinili, přečtěte si [průvodce publikováním nabídek virtuálních strojů](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) a tento materiál virtuálního počítače Azure:
 
 - Úvodní příručky
   - [Šablony Azure Quickstart](https://azure.microsoft.com/resources/templates/)
   - [Šablony githubazure rychlých startů](https://github.com/azure/azure-quickstart-templates)
 - Kurzy
-  - [Virtuální počítače s Linuxem](https://aka.ms/LinuxVMtutorial)
-  - [Virtuální počítače s Windows](https://aka.ms/windowsvms)
-- ukázky
-  - [Ukázky azure cli pro virtuální počítače s Linuxem](https://aka.ms/linuxclisamples)
-  - [Virtuální počítače Azure PowerShell pro Linux](https://aka.ms/linuxpowershellsamples)
-  - [Ukázky nastavení příkazového příkazu Azure pro virtuální počítače s Windows](https://aka.ms/windowsclisamples)
-  - [Azure PowerShell pro virtuální počítače s Windows](https://aka.ms/windowspowershellvmsamples)
+  - [Virtuální počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+  - [Virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+- Ukázky
+  - [Ukázky azure cli pro virtuální počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
+  - [Virtuální počítače Azure PowerShell pro Linux](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
+  - [Ukázky nastavení příkazového příkazu Azure pro virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
+  - [Azure PowerShell pro virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>Základy technických znalostí
 
@@ -66,7 +66,7 @@ Než budete moci vytvořit nabídku virtuálních automatů Azure, musíte mít 
 2. V levém panelu nav vyberte **Komerční tržiště**a pak **Přehled**.
 3. Na stránce **Přehled** vyberte **+ Nová nabídka**a potom virtuální počítač **Azure**. Zobrazí se dialogové okno **Nová nabídka.**
 
-![Ilustruje stránku Přehled v Centru partnerů s vybraným tlačítkem Nová nabídka a nabídkou virtuálního počítače Azure.](media/avm-create7.png)
+    ![Ilustruje stránku Přehled v Centru partnerů s vybraným tlačítkem Nová nabídka a nabídkou virtuálního počítače Azure.](media/avm-create7.png)
 
 ## <a name="offer-id-and-alias"></a>ID nabídky a alias
 
@@ -91,7 +91,7 @@ Chcete-li povolit testovací jednotku, zaškrtněte **políčko Povolit testovac
 Další prostředky testovací jednotky:
 
 - [Osvědčené technické postupy](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Marketingové osvědčené postupy](https://aka.ms/TestDriveMarketingBestPractices)
+- [Marketingové osvědčené postupy](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Přehled testovacích jednotek](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF (ujistěte se, že vaše blokování automaticky otevíraných míst je vypnuté).
 
 ### <a name="lead-management"></a>Správa potenciálních zákazníků
@@ -99,12 +99,12 @@ Další prostředky testovací jednotky:
 Při publikování nabídky na komerčním trhu pomocí Partnerského centra ji připojte k systému řízení vztahů se zákazníky (CRM). To vám umožní získat kontaktní informace zákazníků, jakmile někdo projeví zájem o váš produkt nebo jej používá. Připojení k CRM je nutné, pokud povolíte **test drive** (viz předchozí část), jinak je to volitelné.
 
 1. Vyberte cíl zájemců, kam chcete, abychom posílali potenciální zákazníky. Partnerské centrum podporuje následující crm systémy:
-    - [Dynamics 365](https://aka.ms/Dyn365LeadMgmt) pro zapojení zákazníků
-    - [Marketo](https://aka.ms/LeadMgmtMarketo)
-    - [Salesforce](https://aka.ms/LeadMgmtSalesforce)
+    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) pro zapojení zákazníků
+    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
+    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > Pokud váš CRM systém není uveden výše, použijte [Azure Table](https://aka.ms/AzureTableLeadMgmt) nebo [Https Endpoint](https://aka.ms/LeadMgmtHTTPS) k ukládání dat potenciálních zákazníků. Potom exportujte data do systému CRM.
+    > Pokud váš CRM systém není uveden výše, použijte [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) nebo [Https Endpoint](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) k ukládání dat potenciálních zákazníků. Potom exportujte data do systému CRM.
 
 2. Při publikování v Partnerském centru propojte svou nabídku s cílem zájemce.
 3. Zkontrolujte, zda je správně nakonfigurováno připojení k cíli zájemce. Po publikování v Centru partnerů ověříme připojení a pošleme vám testovacího zájemce. Zatímco zobrazíte náhled nabídky před tím, než se začne prohlížet, můžete také otestovat připojení zájemců tím, že se pokusíte nasadit nabídku sami v prostředí náhledu.
@@ -274,7 +274,7 @@ Přidejte až pět snímků obrazovky, které ukazují, jak vaše nabídka fungu
 
 Přidejte až pět videí, která ukazují vaši nabídku. Ty by měly být hostovány na externí video služby. Zadejte název každého videa, webovou adresu a miniaturu obrázku PNG videa o rozměrech 1280 x 720 pixelů.
 
-Další zdroje informací o výpisech z marketplace najdete v [tématu Doporučené postupy pro nabídky marketplace](https://aka.ms/LdMgmtOfferListingBestPractices).
+Další zdroje informací o výpisech z marketplace najdete v [tématu Doporučené postupy pro nabídky marketplace](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
 
 Před pokračováním vyberte **Uložit pracovní verzi.**
 
@@ -554,4 +554,4 @@ Tyto příklady ukazují, jak se nabídka zobrazí na Azure Marketplace.
 
 ## <a name="next-step"></a>Další krok
 
-- [Aktualizace stávající nabídky na komerčním trhu](https://aka.ms/UpdateOfferCM)
+- [Aktualizace stávající nabídky na komerčním trhu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

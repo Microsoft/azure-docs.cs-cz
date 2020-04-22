@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: a1ec89dfd2dda91a10f2cc00b6ca4d9d7abbf032
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252602"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731144"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Potenciální zákazníci vaší nabídky na marketplace
 
@@ -96,7 +96,7 @@ Informace o zákazníkovi jsou odesílány prostřednictvím více polí. Násle
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Kde mohu získat pomoc s nastavením cíle pro potenciální zákazníky?
 
-Dokumentaci najdete [zde](#connect-to-your-crm-system) nebo odešlete lístek podpory prostřednictvím aka.ms/marketplacepublishersupport pak vyberte **"vytvoření nabídky"** → **typ nabídky** → **"konfigurace správy potenciálních zákazníků".**
+Dokumentaci najdete [zde](#connect-to-your-crm-system) nebo odešlete lístek podpory https://partner.microsoft.com/support/v2/?stage=1 a pak vyberte **"vytvoření nabídky"** → typ **nabídky** → **"konfigurace správy potenciálních zákazníků".**
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>Je nutné nakonfigurovat cíl zájemce, abych mohl zveřejnit nabídku na trhu?
 
@@ -133,7 +133,7 @@ Cíl zájemců o objekt blob Azure už není podporovaný, takže vám chybí v�
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Obdržel(a) jsem e-mail od marketplace, proč nemohu najít zájemce v crm?
 
-Je možné, že e-mailová doména koncového uživatele pochází z .edu. Z důvodu ochrany osobních údajů nepředáváme soukromé identifikovatelné informace z domény .edu. Odešlete lístek podpory prostřednictvím aka.ms/marketplacepublishersupport.
+Je možné, že e-mailová doména koncového uživatele pochází z .edu. Z důvodu ochrany osobních údajů nepředáváme soukromé identifikovatelné informace z domény .edu. Odešlete lístek https://partner.microsoft.com/support/v2/?stage=1podpory prostřednictvím .
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Nakonfiguroval jsem Azure Table jako cíl pro potenciální zákazníky, jak můžu zobrazit zájemce?
 

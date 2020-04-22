@@ -1,18 +1,18 @@
 ---
-title: Prostředky připojení ve službě Azure Automation
+title: Správa připojení v Azure Automation
 description: Prostředky připojení v Azure Automation obsahují informace potřebné pro připojení k externí službě nebo aplikaci z runbooku nebo konfigurace DSC. Tento článek vysvětluje podrobnosti o připojení a jak s nimi pracovat v textové i grafické authoring.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1ce59322b0cbfaf5a4f7b31371f0d0929a3a3ab
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 90d4ec1bbfd0d76ffedf1505c9147376e3947c3c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457718"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729055"
 ---
-# <a name="connection-assets-in-azure-automation"></a>Prostředky připojení ve službě Azure Automation
+# <a name="manage-connections-in-azure-automation"></a>Správa připojení v Azure Automation
 
 Prostředek připojení automatizace obsahuje informace potřebné pro připojení k externí službě nebo aplikaci z konfigurace runbooku nebo DSC. To může zahrnovat informace potřebné pro ověřování, jako je uživatelské jméno a heslo kromě informací o připojení, jako je například adresa URL nebo port. Hodnota připojení je zachování všech vlastností pro připojení k určité aplikaci v jednom prostředku na rozdíl od vytváření více proměnných. Uživatel může upravit hodnoty pro připojení na jednom místě a můžete předat název připojení do runbooku nebo Konfigurace DSC v jednom parametru. Vlastnosti pro připojení lze přistupovat v konfiguraci runbook `Get-AutomationConnection` nebo DSC s aktivitou.
 

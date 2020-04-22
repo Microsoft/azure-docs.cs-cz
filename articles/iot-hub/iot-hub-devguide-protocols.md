@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284626"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729112"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Reference - výběr komunikačního protokolu
 
@@ -39,7 +42,7 @@ Při výběru protokolu pro komunikaci na straně zařízení zvažte následuj�
 
 * **Vzor cloud-to-device**. Protokol HTTPS nemá efektivní způsob, jak implementovat nabízenou nabídku serveru. V důsledku toho, když používáte protokol HTTPS, zařízení dotazování IoT Hub pro zprávy z cloudu na zařízení. Tento přístup je neefektivní pro zařízení i IoT Hub. Podle aktuálních pokynů HTTPS by každé zařízení mělo dotazovat na zprávy každých 25 minut nebo více. MQTT a AMQP server podpory push při příjmu zpráv z cloudu na zařízení. Umožňují okamžité nabízení zpráv z ioT hubu do zařízení. Pokud je problém latence doručení, MQTT nebo AMQP jsou nejlepší protokoly použít. Pro zřídka připojená zařízení funguje také protokol HTTPS.
 
-* **Polní brány**. Při použití MQTT a HTTPS nelze připojit více zařízení (každé s vlastní pověření pro zařízení) pomocí stejného připojení TLS. Pro [scénáře brány pole,](iot-hub-devguide-endpoints.md#field-gateways) které vyžadují jedno připojení TLS mezi bránou pole a službou IoT Hub pro každé připojené zařízení, jsou tyto protokoly neoptimální.
+* **Polní brány**. MQTT a HTTPS podporují pouze jednu identitu zařízení (ID zařízení plus pověření) na připojení TLS. Z tohoto důvodu tyto protokoly nejsou podporovány pro [scénáře brány pole,](iot-hub-devguide-endpoints.md#field-gateways) které vyžadují multiplexní zprávy pomocí více identit zařízení přes jeden nebo fond upstream připojení k centru IoT Hub. Tyto brány mohou používat protokol, který podporuje více identit zařízení na připojení, jako je AMQP, pro jejich upstream provozu.
 
 * **Zařízení s nízkými zdroji**. Knihovny MQTT a HTTPS mají menší nároky než knihovny AMQP. V důsledku toho, pokud zařízení má omezené prostředky (například méně než 1 MB paměti RAM), tyto protokoly mohou být pouze implementace protokolu k dispozici.
 

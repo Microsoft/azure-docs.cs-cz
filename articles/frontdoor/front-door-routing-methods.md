@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 69ef68dafc2385eb5614179c3d04265250383104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7dd00d28ecfe844094677e0ae19f4fd359d97d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471536"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687811"
 ---
 # <a name="front-door-routing-methods"></a>Metody směrování předních dveří
 
@@ -27,7 +27,7 @@ V předních dveřích jsou k dispozici čtyři hlavní koncepty dopravních tra
 * ** [Latence](#latency):** Směrování založené na latenci zajišťuje, že požadavky jsou odesílány do back-endů s nejnižší latencí přijatelných v rozsahu citlivosti. V podstatě jsou vaše požadavky uživatelů odesílány do "nejbližší" sady back-endů s ohledem na latenci sítě.
 * ** [Priorita](#priority):** Priority můžete přiřadit různým back-endům, pokud chcete použít primární back-end služby pro veškerý provoz, a poskytnout zálohy v případě, že primární nebo záložní back-endy nejsou k dispozici.
 * ** [Vážený](#weighted):** Váhy můžete přiřadit různým back-endům, pokud chcete distribuovat provoz mezi sadu back-endů, a to buď rovnoměrně, nebo podle koeficientů hmotnosti.
-* **Spřažení relace:** Spřažení relací pro front-endové hostitele nebo domény můžete nakonfigurovat, pokud chcete, aby následné požadavky od uživatele byly odeslány do stejného back-endu, dokud je relace uživatele stále aktivní a instance back-endu stále hlásí stav na základě sond stavu. 
+* ** [Spřažení relace](#affinity):** Spřažení relací pro front-endové hostitele nebo domény můžete nakonfigurovat, pokud chcete, aby následné požadavky od uživatele byly odeslány do stejného back-endu, dokud je relace uživatele stále aktivní a instance back-endu stále hlásí stav na základě sond stavu. 
 
 Všechny konfigurace služby Front Door zahrnují monitorování stavu back-endu a automatické okamžité globální převzetí služeb při selhání. Další informace naleznete v tématu [Monitorování back-endu předních dveří](front-door-health-probes.md). Přední dveře lze nakonfigurovat tak, aby fungovaly na základě jedné metody směrování, a v závislosti na potřebách aplikace můžete použít více nebo všechny tyto metody směrování v kombinaci k vytvoření optimální topologie směrování.
 
@@ -71,7 +71,7 @@ Vážená metoda umožňuje některé užitečné scénáře:
 * **Cloud-bursting pro další kapacitu:** Rychle rozšířit místní nasazení do cloudu tím, že ho za přední dveře. Když potřebujete další kapacitu v cloudu, můžete přidat nebo povolit další back-endy a určit, jaká část provozu bude pro každý back-end.
 
 ## <a name="session-affinity"></a><a name = "affinity"></a>Spřažení relace
-Ve výchozím nastavení bez spřažení relací front door předává požadavky pocházející ze stejného klienta do různých back-endů na základě konfigurace vyrovnávání zatížení, zejména proto, že se změní latence různých back-endů nebo pokud se změní různé požadavky od stejného uživatel přistane na jiném prostředí předních dveří. Pro některé stavové aplikace nebo v určitých jiných scénářích je však žádoucí, aby další požadavky od stejného uživatele přicházely do stejného back-endu, který zpracoval počáteční požadavek. Funkce spřažení relací na základě souborů cookie je užitečná v případě, že chcete zachovat uživatelskou relaci na stejném back-endu. Pomocí front door spravované cookies, Azure Front Door můžete přímé následné provoz z relace uživatele do stejného back-endu pro zpracování tak dlouho, dokud back-end je v pořádku a relace uživatele nevypršela. 
+Ve výchozím nastavení bez spřažení relace front door předá požadavky pocházející ze stejného klienta do různých back-endů na základě konfigurace vyrovnávání zatížení, zejména proto, že se změní latence různých back-endů nebo pokud různé požadavky od stejného uživatele přistane v jiném prostředí front door. Pro některé stavové aplikace nebo v určitých jiných scénářích je však žádoucí, aby další požadavky od stejného uživatele přicházely do stejného back-endu, který zpracoval počáteční požadavek. Funkce spřažení relací na základě souborů cookie je užitečná v případě, že chcete zachovat uživatelskou relaci na stejném back-endu. Pomocí front door spravované cookies, Azure Front Door můžete přímé následné provoz z relace uživatele do stejného back-endu pro zpracování tak dlouho, dokud back-end je v pořádku a relace uživatele nevypršela. 
 
 Spřažení relací je možné povolit na úrovni hostitele front-endu, to znamená pro všechny nakonfigurované domény (nebo subdomény). Po povolení přidá služba Front Door k relaci uživatele soubor cookie. Spřažení relací na základě souborů cookie umožňuje službě Front Door identifikovat různé uživatele i v případě, že jsou skryti za stejnou IP adresou. Díky tomu je možné rovnoměrněji distribuovat provoz mezi různé back-endy.
 

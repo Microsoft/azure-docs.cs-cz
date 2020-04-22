@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2020
+ms.date: 04/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 40d291ee17f1fdaf819d70daade735e152df8f71
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: bc8ec6cf4845eb100af5dcd80101f17102d2b7ac
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548526"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682142"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Odesílání událostí do a přijímání událostí z Centra událostí Azure – .NET Core (Azure.Messaging.EventHubs) 
 Tento rychlý start ukazuje, jak odesílat události do centra událostí a přijímat je z centra událostí pomocí **knihovny Azure.Messaging.EventHubs** .NET Core. 
@@ -202,11 +202,13 @@ V tomto rychlém startu použijete Azure Storage jako úložiště kontrolních 
 1. Nyní přidejte do třídy následující metody obslužné rutiny událostí a chyb. 
 
     ```csharp
-        static Task ProcessEventHandler(ProcessEventArgs eventArgs)
-        { 
+        static async Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
             // Write the body of the event to the console window
-            Console.WriteLine("\tReceived event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray())); 
-            return Task.CompletedTask; 
+            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+
+            // Update checkpoint in the blob storage so that the app receives only new events the next time it's run
+            await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);
         }
 
         static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)

@@ -8,14 +8,14 @@ manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: c156d5f1242674adc53a2a813e9b2c140221ecfb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 85b966a9423fa6c8b2dc9e97cab1e24d9756caa4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245306"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687342"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Úvodní příručka: Vytvoření aplikace Java Spring s konfigurací aplikací Azure
 
@@ -143,25 +143,25 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
 1. Vytvořte nový `bootstrap.properties` soubor pojmenovaný v adresáři prostředků aplikace a přidejte do něj následující řádky. Nahraďte ukázkové hodnoty příslušnými vlastnostmi pro váš obchod SKonfigurací aplikací.
 
     ```CLI
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string=${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. Nastavte proměnnou prostředí s názvem **APP_CONFIGURATION_CONNECTION_STRING**a nastavte ji na přístupový klíč do obchodu konfigurace aplikací. Na příkazovém řádku spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
     ```cmd
-        setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
+    setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
     ```
 
     Pokud používáte prostředí Windows PowerShell, spusťte následující příkaz:
 
     ```azurepowershell
-        $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
+    $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
     ```
 
     Pokud používáte macOS nebo Linux, spusťte následující příkaz:
 
     ```cmd
-        export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
+    export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Sestavení a spuštění aplikace místně

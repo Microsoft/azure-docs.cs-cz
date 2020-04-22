@@ -8,13 +8,16 @@ services: iot-hub
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: dkshir
-ms.custom: security-recommendations
-ms.openlocfilehash: 0ada9a520a5be56444a1c3e746a68dbcf9275686
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- security-recommendations
+- amqp
+- mqtt
+ms.openlocfilehash: 5dd09988d37982c41b761688492bd2dc3642b2db
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74048459"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81728986"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Doporučení zabezpečení pro nasazení Azure Internet of Things (IoT)
 
@@ -48,7 +51,7 @@ Některá doporučení zahrnutá v tomto článku můžete automaticky sledovat 
 | Zabezpečená komunikace se zařízením | IoT Hub zabezpečuje připojení k zařízením pomocí standardu TLS (Transport Layer Security), který podporuje verze 1.2 a 1.0. Pro zajištění maximální bezpečnosti použijte [TLS 1.2.](https://tools.ietf.org/html/rfc5246) | - |
 | Zabezpečená komunikace se službami | IoT Hub poskytuje koncové body pro připojení k back-endovým službám, jako je [Azure Storage](/azure/storage/) nebo [Event Hubs,](/azure/event-hubs) které používají jenom protokol TLS, a žádný koncový bod není vystaven na nešifrovaném kanálu. Jakmile tato data dosáhnou těchto back-endových služeb pro úložiště nebo analýzu, ujistěte se, že používáte vhodné metody zabezpečení a šifrování pro tuto službu a chráníte citlivé informace v back-endu. | - |
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 
 | Doporučení | Komentáře | Podporováno ASC |
 |-|----|--|

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 82fa5968d004bd4460f2c05ec944f6e568508675
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 5a17f98d69cb2196f92e19b66fc23dcd89bce188
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641133"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687148"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Jak nakonfigurovat místní kodéry při použití Azure Media Services k vytváření datových proudů s více přenosovými rychlostmi
 Toto téma uvádí místní živé kodéry, které můžete použít k zachycení živých událostí a odeslání jednoho datového toku živého datového proudu do kanálů AMS (které jsou povoleno živé kódování) pro další zpracování. Toto téma také odkazuje na kurzy, které ukazují, jak konfigurovat uvedené kodéry.
@@ -34,7 +34,7 @@ Informace o konfiguraci [kodéru kodéru kodére Haivision KB](https://www.haivi
 Informace o konfiguraci kodéru [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) pro odesílání jednoho datového proudu datového toku do kanálu AMS naleznete v [tématu Konfigurace wirecastu](media-services-configure-wirecast-live-encoder.md).
 
 ## <a name="elemental-live"></a>Elemental Live
-Další informace naleznete v tématu [Elemental Live](https://www.elementaltechnologies.com/products/elemental-live).
+Další informace naleznete v tématu [Elemental Live](https://www.elemental.com/products/aws-elemental-appliances-software/#elemental-live).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

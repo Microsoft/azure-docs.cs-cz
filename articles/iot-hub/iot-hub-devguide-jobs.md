@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 147dd0f454bd85673bcba5cd6148c5da9716c580
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65409059"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730109"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Plánování úloh na několika zařízeních
 
@@ -185,7 +186,7 @@ V následujícím seznamu jsou uvedeny vlastnosti a odpovídající popisy, kter
 | **Typ** |Typy pracovních míst: |
 | | **scheduleUpdateTwin**: Úloha použitá k aktualizaci sady požadovaných vlastností nebo značek. |
 | | **scheduleDeviceMethod**: Úloha použitá k vyvolání metody zařízení na sadě dvojčat zařízení. |
-| **status** |Aktuální stav úlohy. Možné hodnoty stavu: |
+| **Stav** |Aktuální stav úlohy. Možné hodnoty stavu: |
 | | **Čeká na vyřízení**: Naplánováno a čeká na vyzvednutí službou práce. |
 | | **naplánováno**: Naplánováno na čas v budoucnu. |
 | | **běh**: Aktuálně aktivní úloha. |
