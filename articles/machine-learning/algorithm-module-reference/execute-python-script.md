@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 0f86d1ad03062797764af6a0d49beacaa3458a8f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365555"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684733"
 ---
 # <a name="execute-python-script-module"></a>Spuštění modulu Skript Pythonu
 
@@ -164,7 +164,7 @@ Následující příklad ukazuje, jak nahrát soubor obrázku v modulu **Spustit
 # imports up here can be used to
 import pandas as pd
 
-# The entry point function can contain up to two input arguments:
+# The entry point function must have two input arguments:
 #   Param<dataframe1>: a pandas.DataFrame
 #   Param<dataframe2>: a pandas.DataFrame
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -217,10 +217,17 @@ Modul **Execute Python Script** obsahuje ukázkový kód Pythonu, který můžet
 
 5. Do textového pole **skriptu Pythonu** zadejte nebo vložte platný skript Pythonu.
 
+    > [!NOTE]
+    > Při psaní skriptu buďte velmi opatrní a ujistěte se, že nedochází k žádné chybě syntaxe, například při použití nedeklarovaného objektu nebo neimportovaného modulu. Zvláštní pozornost také věnujte předinstalovanému seznamu modulů. Chcete-li importovat moduly, které nejsou uvedeny, nainstalujte odpovídající balíčky do skriptu, například
+    >  ``` Python
+    > import os
+    > os.system(f"pip install scikit-misc")
+    > ```
+    
     Textové pole **skriptu Pythonu** je předem vyplněno některými pokyny v komentářích a ukázkovým kódem pro přístup k datům a výstup. Tento kód je nutné upravit nebo nahradit. Ujistěte se, že postupujte podle pythonských konvencí o odsazení a caseingu.
 
     + Skript musí obsahovat `azureml_main` funkci pojmenovanou jako vstupní bod pro tento modul.
-    + Funkce vstupního bodu může obsahovat až `Param<dataframe1>` dva vstupní argumenty: a`Param<dataframe2>`
+    + Funkce vstupního bodu musí mít `Param<dataframe1>` dva `Param<dataframe2>`vstupní argumenty: a , i když tyto argumenty nejsou použity ve skriptu.
     + Zip soubory připojené k třetímu vstupnímu portu jsou `.\Script Bundle`rozbaleny a uloženy `sys.path`v adresáři , který je také přidán do Pythonu . 
 
     Pokud tedy soubor ZIP `mymodule.py`obsahuje , `import mymodule`importujte jej pomocí aplikace .

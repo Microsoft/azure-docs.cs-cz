@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/12/2019
 ms.author: dsindona
-ms.openlocfilehash: 8e5165d000ee98212b3fd76091ffbd030b6b787f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fde249f22342ed2a0c50f5fdda3bde9dc2cde183
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281540"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685724"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Propagace vašeho podnikání s Microsoftem
 
@@ -36,6 +36,6 @@ Chcete-li propagovat nabídku nebo aplikaci a získat přístup k dalším výho
 
 Další informace o službách MARKETPLACE GTM najdete v [informacích o službách Go-to-market](https://partner.microsoft.com/reach-customers/gtm).
 
-Přihlaste se k [portálu cloudových partnerů](https://cloudpartner.azure.com) a vytvořte a nakonfigurujte svou nabídku.
+[Přihlaste](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) se do Centra partnerů a vytvořte nebo dokončete svou nabídku.
 
 ---

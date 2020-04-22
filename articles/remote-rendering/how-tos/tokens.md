@@ -1,18 +1,18 @@
 ---
-title: Získání přístupových tokenů služby
+title: Získání přístupových tokenů služeb
 description: Popisuje, jak vytvořit tokeny pro přístup k arr REST API
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 001a77734a8cedf08c5523380c1cbd00dce89f40
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681191"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687070"
 ---
-# <a name="get-service-access-tokens"></a>Získání přístupových tokenů služby
+# <a name="get-service-access-tokens"></a>Získání přístupových tokenů služeb
 
 Přístup k apim ARR REST je udělen pouze oprávněným uživatelům. Chcete-li prokázat autorizaci, musíte odeslat *přístupový token* spolu s požadavky REST. Tyto tokeny jsou vydávány *službou secure token* (STS) výměnou za klíč účtu. Tokeny mají **životnost 24 hodin,** a proto mohou být vydány uživatelům, aniž by jim plný přístup ke službě.
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak vytvořit takový přístupový token.
 
 ## <a name="token-service-rest-api"></a>Rozhraní REST SLUŽBY TOKEN
 
-Chcete-li vytvořit přístupové tokeny, *služba zabezpečeného tokenu* poskytuje jedno rozhraní REST API. Adresa URL služby ARR [https://sts.mixedreality.azure.com](https://sts.mixedreality.azure.com)STS je .
+Chcete-li vytvořit přístupové tokeny, *služba zabezpečeného tokenu* poskytuje jedno rozhraní REST API. Adresa URL služby ARR STS\/je https: /sts.mixedreality.azure.com.
 
 ### <a name="get-token-request"></a>Požadavek na získání tokenu
 
@@ -67,6 +67,6 @@ Skript pouze vytiskne token na výstup, odkud můžete zkopírovat & vložit. Pr
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Příklad skriptů prostředí PowerShell](../samples/powershell-example-scripts.md)
+* [Ukázkové skripty PowerShellu](../samples/powershell-example-scripts.md)
 * [Azure Front-end API](../how-tos/frontend-apis.md)
 * [Rozhraní REST API pro správu relací](../how-tos/session-rest-api.md)

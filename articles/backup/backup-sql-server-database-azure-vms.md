@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak zálohovat databáze SQL Serveru 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 887f15deed74330cf132e0574d166c074d2c7cad
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273329"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685714"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -112,7 +112,7 @@ Vyhněte se použití následujících prvků v názvech databází:
 * Středník ';'
 * Lomítko přemítka '/'
 
-Aliasing je k dispozici pro nepodporované znaky, ale doporučujeme jim vyhnout. Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+Aliasing je k dispozici pro nepodporované znaky, ale doporučujeme jim vyhnout. Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 >[!NOTE]
 >Operace **Konfigurovat ochranu** pro databáze se speciálními znaky, jako je "+" nebo "&" v jejich názvu není podporována. Můžete změnit název databáze nebo povolit **automatickou ochranu**, která může tyto databáze úspěšně chránit.

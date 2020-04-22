@@ -1,39 +1,39 @@
 ---
-title: Převod staršího partnerského vztahu Exchange na prostředek Azure pomocí PowerShellu
+title: Převést starší partnerský vztah Exchange na prostředek Azure pomocí PowerShellu
 titleSuffix: Azure
-description: Převod staršího partnerského vztahu Exchange na prostředek Azure pomocí PowerShellu
+description: Převést starší partnerský vztah Exchange na prostředek Azure pomocí PowerShellu
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: aa11f329cf0a0cb27d58b940b42731a2ec41c272
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eedf87548d62e05d4940911ed3dcd821077acb27
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75775391"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686779"
 ---
-# <a name="convert-a-legacy-exchange-peering-to-azure-resource-using-powershell"></a>Převod staršího partnerského vztahu Exchange na prostředek Azure pomocí PowerShellu
+# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>Převést starší partnerský vztah Exchange na prostředek Azure pomocí PowerShellu
 
 Tento článek popisuje, jak převést existující starší partnerský vztah Exchange na prostředek Azure pomocí rutin prostředí PowerShell.
 
-Pokud chcete, můžete tuto příručku dokončit pomocí [portálu](howto-legacy-exchange-portal.md).
+Pokud chcete, můžete tuto příručku dokončit pomocí [portálu](howto-legacy-exchange-portal.md)Azure .
 
 ## <a name="before-you-begin"></a>Než začnete
-* Před zahájením konfigurace [zkontrolujte požadavky](prerequisites.md) a [partnerský vztah serveru Exchange.](walkthrough-exchange-all.md)
+* Před zahájením konfigurace zkontrolujte [požadavky](prerequisites.md) a [návod partnerského vztahu serveru Exchange.](walkthrough-exchange-all.md)
 
-### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShellem
+### <a name="work-with-azure-powershell"></a>Práce s Azure PowerShellem
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>Převod starší verze peeringu typu Exchange na prostředek Azure
+## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>Převést starší partnerský vztah Exchange na prostředek Azure
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Přihlaste se ke svému účtu Azure a vyberte předplatné.
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
 ### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>Získání staršího partnerského vztahu exchange pro převod
-Níže je uveden příklad získání staršího partnerského vztahu Exchange v umístění partnerského vztahu v Seattlu:
+Tento příklad ukazuje, jak získat starší partnerský vztah Exchange v umístění partnerského vztahu v Seattlu:
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering -Kind Exchange -PeeringLocation "Seattle"
@@ -58,7 +58,7 @@ Odpověď vypadá podobně jako v následujícím příkladu:
 ```
 
 ### <a name="convert-legacy-peering"></a>Převést starší partnerský vztah
-Příkaz Pod můžete použít k převodu staršího partnerského vztahu Exchange na prostředek Azure:
+Tento příkaz lze použít k převodu staršího partnerského vztahu Exchange na prostředek Azure:
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -69,9 +69,10 @@ $legacyPeering[0] | New-AzPeering `
 
 &nbsp;
 > [!IMPORTANT] 
-> Všimněte si, že při převodu staršípartnerský vztah na prostředek Azure, změny nejsou podporovány&nbsp;
+> Když převedete starší partnerský vztah na prostředek Azure, úpravy nejsou podporované.
+&nbsp;
 
-Níže je příklad odpovědi po úspěšném dokončení zřizování od konce:
+Tento příklad odpovědi ukazuje, když bylo úspěšně dokončeno zřizování od konce:
 
 ```powershell
     Name                     : SeattleExchangePeering
@@ -96,7 +97,7 @@ Podrobné popisy všech parametrů můžete získat spuštěním následujícíh
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
-Další informace naleznete v [nejčastějších dotazech k internetovému partnerovi](faqs.md)
+Další informace naleznete v tématech Nejčastější dotazy [k internetovému partnerovi](faqs.md).
 
 ## <a name="next-steps"></a>Další kroky
 

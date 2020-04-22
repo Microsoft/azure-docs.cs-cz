@@ -1,6 +1,6 @@
 ---
-title: Licencování sady Microsoft® Sada portů klienta pro plynulé streamování
-description: Přečtěte si, jak licencovat sadu Microsoft® Smooth Streaming Client Porting Kit.
+title: Licencování&reg; sady Microsoft Smooth Streaming Client Porting Kit
+description: Přečtěte si, jak&reg; licencovat sadu Microsoft Smooth Streaming Client Porting Kit.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 59ac3ab2e70bfa00f19bae7e551780f2b2bb8ccb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096713"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686902"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencování sady Microsoft® Sada portů klienta pro plynulé streamování 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licencování&reg; sady Microsoft Smooth Streaming Client Porting Kit 
 ## <a name="overview"></a>Přehled
 Microsoft Smooth Streaming Client Porting Kit **(Zkráceně SSPK)** je implementace klienta Smooth Streaming, která je optimalizována tak, aby pomohla výrobcům vestavěných zařízení, kabelovým a mobilním operátorům, poskytovatelům služeb obsahu, výrobcům mobilních telefonů, nezávislým dodavatelům softwaru (ISV) a poskytovatelům řešení pro vytváření produktů a služeb pro streamování adaptivního obsahu ve formátu Smooth Streaming. SSPK je implementace bezproblémového klienta Smooth Streaming, která je závislá na zařízení a platformě, kterou může držitel licence přenést na libovolné zařízení a platformu. 
 
@@ -55,13 +55,13 @@ Microsoft Smooth Streaming Client Porting Kit je k dispozici držitelům licenc�
 * Pro výrobce zařízení nebo nedržitelé nešíření, kteří potřebují distribuční práva pro konečné produkty klienta pro hladké streamování koncovým uživatelům, by měla být spuštěna licence ke konečnému produktu Microsoft Smooth Streaming Client Porting **Kit.**
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Microsoft Smooth Streaming Client Porting Kit Prozatímní licence produktu
-V rámci této licence nabízí společnost Microsoft sadu Smooth Streaming Client Porting Kit a nezbytná práva duševního vlastnictví k vývoji a distribuci dočasných produktů pro klienty hladkého streamování jiným držitelům licencí sady Pro portování klienta pro hladký streamování, kteří distribuovat produkty Smooth Streaming Client Final Products.
+V rámci této licence nabízí společnost Microsoft sadu Smooth Streaming Client Porting Kit a nezbytná práva duševního vlastnictví k vývoji a distribuci dočasných produktů klienta pro hladké streamování jiným držitelům licencí na zařízení sady Smooth Streaming Client Porting Kit, kteří distribuují konečné produkty klienta smooth streaming.
 
 #### <a name="fee-structure"></a>Struktura poplatků
 Americký jednorázový licenční poplatek ve výši 50 000 USD poskytuje přístup k portovací kitu Klienta pro plynulé streamování. 
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Microsoft Smooth Streaming Client Porting Kit Final Product License
-V rámci této licence nabízí společnost Microsoft všechna potřebná práva duševního vlastnictví k získání dočasných produktů klienta Smooth Streaming od jiných držitelů licencí na portování klienta pro hladký streamování a k distribuci společnosti s označením Smooth Streaming Client Final Produkty pro koncové uživatele.
+V rámci této licence společnost Microsoft nabízí všechna potřebná práva duševního vlastnictví k získání dočasných produktů klienta Smooth Streaming od jiných držitelů licencí na porty klienta pro hladký streamování a k distribuci koncových produktů klienta Smooth Streaming client koncovým produktům značky Smooth Streaming.
 
 #### <a name="fee-structure"></a>Struktura poplatků
 Konečný produkt klienta Smooth Streaming je nabízen v rámci licenčního modelu, jak je tomu v:
@@ -73,7 +73,7 @@ Konečný produkt klienta Smooth Streaming je nabízen v rámci licenčního mod
 ## <a name="licensing-procedure-and-sspk-access"></a>Licenční řízení a přístup s spk
 E-mail [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) pro všechny licenční dotazy.
 
-[Distribuční portál SSPK](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) je přístupný registrovaným dočasným držitelům licencí.
+Distribuční portál SSPK je přístupný registrovaným dočasným držitelům licencí.
 
 Prozatímní a konečné SSPK nabyvatelové mohou předložit technické otázky . [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)
 

@@ -1,14 +1,14 @@
 ---
 title: Podporované typy prostředků Správce prostředků
 description: Zadejte seznam typů prostředků Správce prostředků podporovaných Azure Resource Graph a historie změn.
-ms.date: 04/15/2020
+ms.date: 04/20/2020
 ms.topic: reference
-ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 99a10e084f8ae24156c447f7abca31a8ef977720
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415142"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685484"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Referenční tabulka a typ prostředku Azure
 
@@ -50,7 +50,11 @@ Azure Resource Graph podporuje následující **typy prostředků** Azure [Resou
 - livearena.broadcast/služby
 - mailjet.email/služby
 - Microsoft.aad/domainservices
+- microsoft.aadiam/privatelinkforazuread
 - microsoft.aadiam/tenants
+- Microsoft.aisupercomputer/účty
+- Microsoft.aisupercomputer/účty/pracovní skupiny
+- Microsoft.aisupercomputer/accounts/jobgroups/jobs microsoft.aisupercomputer/accounts/jobgroups/jobs Microsoft.aisupercomputer/accounts/jobgroups/jobs Microsoft.
 - Microsoft.alertsmanagement/actionrules
 - Microsoft.alertsmanagement/smartdetectoralertrules
 - Microsoft.analysisServices/servers
@@ -63,6 +67,7 @@ Azure Resource Graph podporuje následující **typy prostředků** Azure [Resou
 - microsoft.automation/automationaccounts/runbook
 - Microsoft.azconfig/configurationstores
 - adresáře microsoft.azureactivedirectory/b2c
+- microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
 - clustery microsoft.azuredata/sqlbigdataclusters
@@ -351,6 +356,7 @@ Azure Resource Graph podporuje následující **typy prostředků** Azure [Resou
 - microsoft.remoteapp/collections
 - Microsoft.resourcegraph/queries Microsoft.resourcegraph/queries Microsoft.resourcegraph/queries Microsoft.
 - Microsoft.resources/deploymentscripts
+- microsoft.resources/templatespecs
 - Microsoft.saas/aplikace
 - Microsoft.scheduler/jobcollections
 - Microsoft.search/searchservices
@@ -405,6 +411,7 @@ Azure Resource Graph podporuje následující **typy prostředků** Azure [Resou
 - microsoft.visualstudio/účet
 - microsoft.visualstudio/účet/rozšíření
 - microsoft.visualstudio/účet/projekt
+- Microsoft.vmware/arczones
 - Microsoft.vmwarecloudjednoduché/vyhrazené cloudnodes
 - Microsoft.vmwarecloudsimple/dedicatedcloudservices
 - Microsoft.vmwarecloudsimple/virtualmachines
@@ -454,7 +461,6 @@ Azure Resource Graph podporuje následující **typy prostředků** Azure [Resou
 
 ## <a name="securityresources"></a>zdroje zabezpečení
 
-- hodnocenímetadat
 - microsoft.security/assessments
 - microsoft.security/assessments/subassessments Microsoft.security/assessments
 - microsoft.security/pricings

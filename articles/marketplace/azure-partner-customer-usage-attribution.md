@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 5fec72ce5f86c1bee9ec0e978e458f5be454c8e3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e061baa8e7eb73bae0a78f4215f0d48610e85fcb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256565"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686732"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Přiřazení partnera a využití zákazníků na komerčním trhu
 
@@ -31,7 +31,7 @@ Přiřazení využití zákazníka podporuje tři možnosti nasazení:
 >
 >- Přiřazení využití zákazníka je pro nová nasazení a NEPODPORUJE označování existujících prostředků, které již byly nasazeny.
 >
->- Přiřazení využití zákazníků je vyžadováno pro nabídky [aplikací Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer) publikované na Azure Marketplace.
+>- Přiřazení využití zákazníků je vyžadováno pro nabídky [aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md) publikované na Azure Marketplace.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -83,7 +83,7 @@ Mnoho partnerských řešení se nasazuje pomocí šablon Azure Resource Manager
 > [!NOTE]
 > Další informace o vytváření a publikování šablon řešení naleznete v tématu
 > * [Vytvořte a nasaďte svou první šablonu Správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
->* [Nabídka aplikací Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer).
+>* [Nabídka aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md).
 >* Video: [Vytváření šablon řešení a spravovaných aplikací pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 678af1855baf52efa727444236de8a1724a7d0b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9a3c10687b92d946fccb282f2eda4af637cf2ab
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79078480"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686773"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Trénování modelů s Azure Machine Learning pomocí odhadu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -80,7 +80,7 @@ print(run.get_portal_url())
 >
 > Chcete-li vytvořit artefakty během trénování (například soubory modelu, kontrolní `./outputs` body, datové soubory nebo vykreslené obrázky), zapište je do složky.
 >
-> Podobně můžete zapsat všechny protokoly z trénovacího běhu do `./logs` složky. Chcete-li využít [integrace Tentenzonboard](https://aka.ms/aml-notebook-tb) azure machine learningu, ujistěte se, že do této složky napíšete protokoly TensorBoard. Během spuštění budete moci spustit TensorBoard a streamovat tyto protokoly.  Později budete také moci obnovit protokoly z některého z předchozích spuštění.
+> Podobně můžete zapsat všechny protokoly z trénovacího běhu do `./logs` složky. Chcete-li využít [integrace Tentenzonboard](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) azure machine learningu, ujistěte se, že do této složky napíšete protokoly TensorBoard. Během spuštění budete moci spustit TensorBoard a streamovat tyto protokoly.  Později budete také moci obnovit protokoly z některého z předchozích spuštění.
 >
 > Chcete-li například stáhnout soubor zapsaný do složky *výstupy* do místního počítače po vzdáleném trénovacím spuštění:`run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 

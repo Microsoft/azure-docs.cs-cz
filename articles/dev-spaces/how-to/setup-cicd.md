@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Zjistěte, jak nastavit průběžnou integraci a průběžné nasazování pomocí Azure DevOps s Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75438450"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685635"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Použití CI/CD s Azure Dev Spaces
 
@@ -99,7 +99,7 @@ Nyní máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webfr
 1. Pro **výchozí verzi**zvolte **Nejnovější z výchozí větve kanálu sestavení se značkami**.
 1. Ponechte **značky** prázdné.
 1. Nastavte **alias** Source `drop`na . Hodnota **aliasu Zdroje** je používána předdefinovanými úlohami vydání, takže musí být nastavena.
-1. Klikněte na **Přidat**.
+1. Klikněte na tlačítko **Add** (Přidat).
 1. Nyní klikněte na ikonu blesku na nově vytvořeném `drop` zdroji artefaktů, jak je znázorněno níže:
 
     ![Uvolnění nastavení nepřetržitého nasazení artefaktů](../media/common/release-artifact-cd-setup.png)
@@ -131,7 +131,7 @@ Nyní začne proces automatizovaného vydávání, který nasazuje grafy *myweba
 Vydání se provádí po dokončení všech úkolů.
 
 > [!TIP]
-> Pokud se vydání nezdaří s chybovou zprávou, jako *je UPGRADE SE NEZDAŘILO: časový čas čekání na podmínku*, zkuste zkontrolovat pody v [clusteru pomocí řídicího panelu Kubernetes](../../aks/kubernetes-dashboard.md). Pokud se zobrazí pody se nedaří spustit s chybové zprávy, jako *je nepodařilo vytáhnout image "azdsexample.azurecr.io/mywebapi:122": rpc chyba: kód = Neznámý desc = Chyba odpověď od daemon: Získat https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: neoprávněné: ověřování povinné*, může to být proto, že váš cluster nebyl autorizován k vyprosit z vašeho registru kontejnerů Azure. Ujistěte se, že jste dokončili [autorizovat clusterAKS navádět z předpokladu registru kontejnerů Azure.](../../aks/cluster-container-registry-integration.md)
+> Pokud se vydání nezdaří s chybovou zprávou, jako *je UPGRADE SE NEZDAŘILO: časový čas čekání na podmínku*, zkuste zkontrolovat pody v [clusteru pomocí řídicího panelu Kubernetes](../../aks/kubernetes-dashboard.md). Pokud se zobrazí pody se nedaří spustit s chybové zprávy, jako *je nepodařilo vytáhnout image "azdsexample.azurecr.io/mywebapi:122": rpc\/chyba: kód = Neznámý desc = Chyba odpověď od daemon: Získat https: /azdsexample.azurecr.io/v2/mywebapi/manifests/122: neoprávněné: ověřování povinné*, může to být proto, že váš cluster nebyl oprávněn k vyprosit z vašeho registru kontejnerů Azure. Ujistěte se, že jste dokončili [autorizovat clusterAKS navádět z předpokladu registru kontejnerů Azure.](../../aks/cluster-container-registry-integration.md)
 
 Nyní máte plně automatizovaný kanál CI/CD pro vaši githubovou rozprašovací aplikaci Dev Spaces. Pokaždé, když potvrdíte a push kód, bude kanál sestavení sestavení a push *mywebapi* a *webfrontend* obrázky do vlastní instance ACR. Kanál pro uvolnění pak nasadí graf Helm pro každou aplikaci do _vývojového_ prostoru v clusteru s podporou funkce Dev Spaces.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0b602660142f70fb1442977b22fce2bc1bb275cd
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: e429dce497411305964cb1ec5298228dc4093b1f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481932"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685958"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Prozkoumejte data v úložišti objektů blob Azure pomocí pand
 
@@ -37,6 +37,7 @@ Chcete-li prozkoumat a manipulovat s datovou sadou, musí být nejprve stažena 
 
     ```python
     from azure.storage.blob import BlockBlobService
+    import pandas as pd
     import tables
 
     STORAGEACCOUNTNAME= <storage_account_name>

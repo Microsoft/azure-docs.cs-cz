@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 0b855584ef6efef574e8264f3cead79000a51b13
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1125bafa43ce1752c58d1cce0bba66a6bbd32c32
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81432005"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685418"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Správa klíčů účtů úložiště pomocí trezoru klíčů a nastavení příkazového příkazového příkazu Azure
 
@@ -71,13 +71,23 @@ az login
 Pomocí příkazu vytvoření role Azure CLI [az](/cli/azure/role/assignment?view=azure-cli-latest) můžete udělit přístup k úložišti úložiště. Zadejte příkaz následující hodnoty parametrů:
 
 - `--role`: Předaj roli RBAC "Role operátora klíče klienta úložiště". Tato role omezuje rozsah přístupu na váš účet úložiště. Pro klasický účet úložiště, předat "Classic Account Key Key Service Role" místo.
-- `--assignee-object-id`: Předajte hodnotu "93c27d83-f79b-4cb2-8dd4-4aa716542e74", což je ID objektu pro trezor klíčů ve veřejném cloudu Azure. (Pokud chcete získat ID objektu pro trezor klíčů v cloudu Azure Government, přečtěte si informace [o ID hlavního povinného servisu](#service-principal-application-id).)
+- `--assignee`: Předajhttps://vault.azure.nette hodnotu " ", což je adresa URL pro trezor klíčů ve veřejném cloudu Azure. (Pro Azure Goverment cloud použít '--asingee-object-id' místo toho, viz [ID hlavního povinného servisu](#service-principal-application-id).)
 - `--scope`: Předejte ID prostředku účtu úložiště, `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`které je ve formuláři . Pokud chcete najít ID předplatného, použijte příkaz [az az](/cli/azure/account?view=azure-cli-latest#az-account-list) Azure CLI. chcete-li najít název účtu úložiště a skupinu prostředků účtu úložiště, použijte příkaz [seznamu az účtu az](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) Azure CLI.
 
 ```azurecli-interactive
-az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
+az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
+### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Udělit svému uživatelskému účtu oprávnění k účtům spravovaného úložiště
 
+Pomocí rutiny azure CLI [az keyvault-set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) můžete aktualizovat zásady přístupu trezoru klíčů a udělit uživatelský účet oprávnění účtu úložiště.
+
+```azurecli-interactive
+# Give your user principal access to all storage account permissions, on your Key Vault instance
+
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage-permissions get list delete set update regeneratekey getsas listsas deletesas setsas recover backup restore purge
+```
+
+Upozorňujeme, že oprávnění pro účty úložiště nejsou dostupná na stránce Zásady přístupu na webu Azure Portal.
 ### <a name="create-a-key-vault-managed-storage-account"></a>Create a Key Vault Managed storage account
 
  Vytvořte účet spravovaného úložiště úložiště trezoru klíčů pomocí příkazu úložiště Azure CLI [az keyvault.](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) Nastavte regenerační dobu 90 dnů. Po 90 dnech trezor key `key1` regeneruje a zamění aktivní klíč z `key2` aplikace `key1`. `key1`je pak označen jako aktivní klíč. Zadejte příkaz následující hodnoty parametrů:

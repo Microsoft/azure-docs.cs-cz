@@ -3,12 +3,12 @@ title: Povolení spravované identity ve skupině kontejnerů
 description: Zjistěte, jak povolit spravovanou identitu v instanci kontejneru Azure, které se můžou ověřovat pomocí jiných služeb Azure.
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 003055d5021dd8ad7c3bab6d2900298ffd13b222
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19d2ab22eea15278c7753046f9222c7856fbf5ef
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76901926"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685644"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Jak používat spravované identity s instancemi kontejneru Azure
 
@@ -189,7 +189,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Nyní použijte přístupový token k ověření trezoru klíčů a čtení tajného klíče. Nezapomeňte nahradit název trezoru klíčů v adrese URL (*https://mykeyvault.vault.azure.net/...*):
+Nyní použijte přístupový token k ověření trezoru klíčů a čtení tajného klíče. Nezapomeňte nahradit název trezoru klíčů v adrese URL (*https:\//mykeyvault.vault.azure.net/...*):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

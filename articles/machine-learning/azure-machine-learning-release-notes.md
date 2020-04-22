@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2739e960c4bc6d35ac9ad757e80ed620e5dc04f8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459164"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684646"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -825,7 +825,7 @@ Karta Experiment na [novém portálu pracovního prostoru](https://ml.azure.com)
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Azure Machine Learning SDK pro Python v1.0.62
 
 + **Nové funkce**
-  + Představil `timeseries` vlastnost na TabularDataset. Tato vlastnost umožňuje snadné filtrování časových razítek na datech TabularDataset, jako je například převzetí všech dat mezi rozsahem času nebo nejnovějšími daty. Chcete-li se `timeseries` o tom dozvědět vlastnost https://aka.ms/azureml-data na TabularDataset, navštivte dokumentaci nebo https://aka.ms/azureml-tsd-notebook příklad poznámkového bloku.
+  + Představil `timeseries` vlastnost na TabularDataset. Tato vlastnost umožňuje snadné filtrování časových razítek na datech TabularDataset, jako je například převzetí všech dat mezi rozsahem času nebo nejnovějšími daty. Chcete-li se `timeseries` o tom dozvědět vlastnost https://aka.ms/azureml-data na TabularDataset, navštivte dokumentaci nebo https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb příklad poznámkového bloku.
   + Povolené školení s TabularDataset a FileDataset. https://aka.ms/dataset-tutorial Navštivte prosím ukázkový poznámkový blok.
 
   + **azureml-train-core**
@@ -1339,7 +1339,7 @@ Vrátili jsme změnu, která zlepšila výkon, protože způsobovala problémy n
 + **Funkce náhledu**
     + Integrace se sledováním [MLflow](https://mlflow.org) 1.0.0 prostřednictvím balíčku azureml-mlflow[(ukázkové poznámkové bloky).](https://aka.ms/azureml-mlflow-examples)
     + Odeslat Jupyter notebook jako běh. [Referenční dokumentace rozhraní API](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
-    + Public Preview of [Data Drift Detector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) prostřednictvím balíčku azureml-contrib-datadrift[(ukázkové poznámkové bloky).](https://aka.ms/azureml-datadrift-example) Datový drift je jedním z hlavních důvodů, proč přesnost modelu v průběhu času snižuje. Stává se to, když se data obsluhovaná k modelu v produkčním prostředí liší od dat, na kterých byl model trénován. Detektor driftu AML data pomáhá zákazníkům sledovat posun dat a odesílá výstrahu vždy, když je detekován posun.
+    + Public Preview of [Data Drift Detector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) prostřednictvím balíčku azureml-contrib-datadrift[(ukázkové poznámkové bloky).](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/monitor-models/data-drift) Datový drift je jedním z hlavních důvodů, proč přesnost modelu v průběhu času snižuje. Stává se to, když se data obsluhovaná k modelu v produkčním prostředí liší od dat, na kterých byl model trénován. Detektor driftu AML data pomáhá zákazníkům sledovat posun dat a odesílá výstrahu vždy, když je detekován posun.
 
 + **Změny způsobující chyby**
 

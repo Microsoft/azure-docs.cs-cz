@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 730e478622da8cd90af1c559e4d0c6fd04151cca
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811239"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686795"
 ---
 # <a name="develop-a-secure-web-app"></a>Vývoj zabezpečené webové aplikace
 
@@ -104,7 +104,7 @@ Tato aplikace používá:
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) pro nasazení.
 - [Docker Hub](https://hub.docker.com/) jako registr kontejnerů.
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 ### <a name="network"></a>Síť
 
@@ -803,7 +803,7 @@ Na webu Azure Portal nakonfigurujte aplikaci tak, aby používala požadovaná p
 Po přidání konfigurace Azure AD a tajných kódů do trezoru klíčů, uživatelé mohou být ověřeny do aplikace pomocí azure oauth ověřování.
 V kódu aplikace to zpracovává Azure Active Directory Authentication Library (ADAL).
 
-Poté, co jsou tajné klíče v trezoru klíčů a aplikace má přístup k tajným kódůmhttps://GATEWAY_HASH.cloudapp.net)a databázi, aplikační služba může být dosaženo prostřednictvím adresy URL aplikace brány ( , které můžete získat z jeho blade.
+Poté, co jsou tajné klíče v trezoru klíčů a aplikace má přístup k tajným kódům a\/databázi, aplikační služba může být dosaženo prostřednictvím adresy URL aplikace brány (https: /GATEWAY_HASH.cloudapp.net), které můžete získat z jeho blade.
 
 Pokud při přihlášení k Azure AD, zobrazí se chyba, která říká, že "Uživatel není registrován v adresáři, který se pokoušíte přihlásit do" je třeba přidat uživatele. Chcete-li přidat uživatele, přejděte na kartu **Uživatelé** ve službě Azure AD a přidejte uživatele ručně zadáním jeho podrobností nebo pozváním uživatele zadáním jeho e-mailové adresy jako uživatele typu Host do služby Azure AD v okně **Pozvat hosta.**
 
@@ -978,7 +978,7 @@ Po opravě některých chyb kódu nalezených pomocí nástrojů linting máte v
 
 ### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Hledání a oprava slabých míst v závislostech aplikací
 
-Chcete-li najít a opravit závislosti aplikací, můžete použít [kontrolu závislostí oWASP](https://www.owasp.org/index.php/OWASP_Dependency_Check).
+Chcete-li najít a opravit závislosti aplikací, můžete použít [kontrolu závislostí oWASP](https://owasp.org/www-project-dependency-check/).
 
 Bezpečnost je podobná aplikace, která kontroluje závislosti. Najdete ji na [GitHubu](https://github.com/pyupio/safety). Bezpečnostní kontrola chyb zabezpečení nalezených ve známých databázích zranitelnosti.
 

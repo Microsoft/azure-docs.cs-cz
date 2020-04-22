@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Services - vaše výhody komerčního trhu | Azure
+title: Go-To-Market Services - vaše výhody komerčního trhu | Azure Marketplace
 description: Služby go-to-market – prostředky společnosti Microsoft, které mohou vydavatelé používat, jsou popsány v této části.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/08/2020
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: d34fb989e7f656df93faae63ef4dc42ed0fe5abe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5c8b2f5cb03c7e1777137100547fbbbaf107f0b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286230"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684542"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního trhu
 
@@ -24,7 +24,7 @@ Když se svou nabídkou pustíte do provozu, tým programu Marketplace Rewards v
 
 Odměny Marketplace jsou navrženy tak, aby vás podporovaly v konkrétní fázi růstu, počínaje osvětovými aktivitami, které vám pomohou získat vaše první zákazníky. Jak rostete na trhu, odemknete nové výhody, které vám pomohou převést zákazníky a uzavřít obchody. 
 
-Program vytváří pozitivní zpětnou vazbu: výhody v každé fázi růstu jsou navrženy tak, aby pokročily do další fáze, což vám umožní rozvíjet vaše podnikání zákazníkům společnosti Microsoft, s polem společnosti Microsoft a prostřednictvím kanálu společnosti Microsoft využitím komerčního trhu jako vaší platformy. 
+Program vytváří pozitivní zpětnou vazbu: výhody v každé fázi růstu jsou navrženy tak, aby vás postoupily do další fáze, což vám umožní rozšířit vaše podnikání na zákazníky společnosti Microsoft, s polem společnosti Microsoft a prostřednictvím kanálu společnosti Microsoft využitím komerčního trhu jako platformy. 
 
 Vaše výhody jsou rozlišeny podle toho, zda je vaše nabídka [Seznam, Zkušební verze nebo Transact](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option).
 
@@ -44,7 +44,7 @@ Postup, jak začít, jsou snadné:
 2. Tým osloví "vlastníka" nebo "primární kontakt" na nabídku tržiště. Osvědčeným postupem je zadávat jednotlivce nebo alias, který pravidelně kontrolujete: zprávy odesílané aliasům, například info@company.com často se ztrácejí.
 
 >[!Note]
->Pokud je vaše nabídka aktivní déle než čtyři týdny a neobdrželi jste zprávu, zkontrolujte v rámci organizace, kdo je vlastníkem dané nabídky, a to buď na webu Cloud Partner Portal, nebo v Centru partnerů. Měli by mít komunikaci a další kroky. <br> <br> Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete https://aka.ms/marketplacepublishersupportzvýšit lístek podpory na adrese .
+>Pokud je vaše nabídka aktivní déle než čtyři týdny a neobdrželi jste zprávu, zkontrolujte v rámci organizace, kdo je vlastníkem dané nabídky, a to v partnerském centru. Měli by mít komunikaci a další kroky. <br> <br> Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete https://aka.ms/marketplacepublishersupportzvýšit lístek podpory na adrese .
 
 Rozsah aktivit, které máte k dispozici, se rozšiřuje s tím, jak rostete své nabídky na trhu. Všechny zápisy obdrží základní úroveň optimalizačních doporučení a propagace jako součást samoobslužného e-mailu o zdrojích a osvědčených postupech.
 
@@ -96,7 +96,7 @@ Společnost Microsoft si vyhrazuje právo odvolat a ukončit výhody programu Ma
 * nezákonnou činnost prostřednictvím jejich uvedení na trhu.
 * jsou vyřazeny z komerčního trhu. 
 * používat svou nabídku k zobrazování marketingového nebo jiného obsahu, který porušuje zákony o autorských právech nebo ochranných známkách.
-* porušovat zásady [sponzorského programu Azure](https://azure.microsoft.com/offers/ms-azr-0036p/), mimo jiné včetně využití sponzorského financování Azure pro vlastní interní operace nebo těžbu bitcoinu. 
+* porušovat zásady [sponzorského programu Azure](https://azure.microsoft.com/offers/ms-azr-0036p/), mimo jiné včetně využití sponzorského financování Azure pro vlastní interní operace nebo těžbu Bitcoinu. 
 
 ### <a name="offer-availability"></a>Dostupnost nabídky
 
@@ -106,9 +106,7 @@ Transakce, u kterých se prokáže, že jsou podvodné, se nezapočítávají do
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste svou nabídku vytvořili na [portálu cloudových partnerů](https://cloudpartner.azure.com), přihlaste se a vytvořte nebo nakonfigurujte svou nabídku.
-
-Pokud jste nabídku vytvořili v [Centru partnerů](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview), přihlaste se a vytvořte nebo nakonfigurujte nabídku.
+Pokud jste nabídku vytvořili v [Centru partnerů](https://partner.microsoft.com/dashboard/commercial-marketplace/overview), přihlaste se a vytvořte nebo nakonfigurujte nabídku.
 
 Projděte si [samoobslužné zdroje, které máte k dispozici](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 

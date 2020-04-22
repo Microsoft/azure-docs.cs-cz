@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9d98660230e0ab9f4edcd9a7af8a3797106dd17a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255648"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685752"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
 V tomto článku uvádíme aktivity zabezpečení a ovládací prvky, které je třeba zvážit při vývoji aplikací pro cloud. Bezpečnostní otázky a koncepty, které je třeba zvážit během fází implementace a ověřování životního cyklu vývoje zabezpečení společnosti Microsoft [(SDL),](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) jsou zahrnuty. Cílem je pomoci vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
@@ -44,7 +44,7 @@ Azure Marketplace nabízí [vývojářské nástroje,](https://azuremarketplace.
 
 ### <a name="validate-and-sanitize-every-input-for-your-application"></a>Ověření a dezinfekce každého vstupu pro vaši aplikaci
 
-Považovat všechny vstupy za nedůvěryhodné, aby byla vaše aplikace chráněna před nejčastějšími chybami zabezpečení webových aplikací. Nedůvěryhodná data jsou prostředkem pro vstřikovací útoky. Vstup pro vaši aplikaci obsahuje parametry v adrese URL, vstup od uživatele, data z databáze nebo z rozhraní API a vše, co je předánv tom, že uživatel může potenciálně manipulovat. Aplikace by měla [ověřit,](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs) že data jsou syntakticky a sémanticky platná, než aplikace data jakýmkoli způsobem použije (včetně zobrazení zpět uživateli).
+Považovat všechny vstupy za nedůvěryhodné, aby byla vaše aplikace chráněna před nejčastějšími chybami zabezpečení webových aplikací. Nedůvěryhodná data jsou prostředkem pro vstřikovací útoky. Vstup pro vaši aplikaci obsahuje parametry v adrese URL, vstup od uživatele, data z databáze nebo z rozhraní API a vše, co je předánv tom, že uživatel může potenciálně manipulovat. Aplikace by měla [ověřit,](https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs) že data jsou syntakticky a sémanticky platná, než aplikace data jakýmkoli způsobem použije (včetně zobrazení zpět uživateli).
 
 Ověřte vstup v rané fázi toku dat, abyste zajistili, že do pracovního postupu vstoupí pouze správně vytvořená data. Nechcete, aby poškozená data přetrvávala v databázi nebo spouštěla selhání v podřízené součásti.
 

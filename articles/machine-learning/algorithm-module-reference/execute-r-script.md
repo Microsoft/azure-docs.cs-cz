@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: f038293b48956ac89314e426df3f5dc491954df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064206"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684710"
 ---
 # <a name="execute-r-script"></a>Spouštění skriptů R
 
@@ -44,7 +44,10 @@ azureml_main <- function(dataframe1, dataframe2){
 ```
 
 ## <a name="installing-r-packages"></a>Instalace balíčků R
-Chcete-li nainstalovat další `install.packages()` balíčky R, použijte metodu. Nezapomeňte zadat úložiště CRAN. Balíčky jsou nainstalovány pro každý modul **Spouštění jazyka R** script a nejsou sdíleny mezi ostatními moduly **skriptu Execute R.**
+Chcete-li nainstalovat další `install.packages()` balíčky R, použijte metodu. Balíčky jsou nainstalovány pro každý modul **Spouštění jazyka R** script a nejsou sdíleny mezi ostatními moduly **skriptu Execute R.**
+
+> [!NOTE]
+> Při instalaci balíčků, jako je například`install.packages("zoo",repos = "http://cran.us.r-project.org")`
 
 Tato ukázka ukazuje, jak nainstalovat Zoo:
 ```R
@@ -52,7 +55,13 @@ Tato ukázka ukazuje, jak nainstalovat Zoo:
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
@@ -77,7 +86,13 @@ Následující příklad ukazuje, jak nahrát soubor obrázku ve **skriptu Spust
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
@@ -124,6 +139,12 @@ Datové sady uložené v návrháři jsou automaticky převedeny na datový rám
 
 1. Do textového pole **skriptu R** zadejte nebo vložte platný skript R.
 
+    > [!NOTE]
+    > Při psaní skriptu buďte velmi opatrní a ujistěte se, že nedochází k žádné chybě syntaxe, například k použití nedeklarované proměnné nebo neimportovaného modulu nebo funkce. Zvláštní pozornost také věnujte předinstalovanému seznamu balíčků na konci tohoto dokumentu. Chcete-li používat balíčky, které nejsou uvedeny, nainstalujte je do skriptu, například`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    
+    > [!NOTE]
+    > Funkce závislé na knihovně X11, například Zobrazení, nejsou podporovány, protože knihovna X11 není předinstalovaná.
+    
     Abychom vám pomohli začít, je textové pole **Skript Jazyka R** předem vyplněno ukázkovým kódem, který můžete upravit nebo nahradit.
     
     ```R
@@ -131,7 +152,13 @@ Datové sady uložené v návrháři jsou automaticky převedeny na datový rám
     # The script MUST contain a function named azureml_main
     # which is the entry point for this module.
 
-    # The entry point function can contain up to two input arguments:
+    # Please note that functions dependant on X11 library
+    # such as "View" are not supported because X11 library
+    # is not pre-installed.
+    
+    # The entry point function MUST have two input arguments.
+    # If the input port is not connected, the corresponding
+    # dataframe argument will be null.
     #   Param<dataframe1>: a R DataFrame
     #   Param<dataframe2>: a R DataFrame
     azureml_main <- function(dataframe1, dataframe2){
@@ -148,8 +175,8 @@ Datové sady uložené v návrháři jsou automaticky převedeny na datový rám
 
  * Skript musí obsahovat `azureml_main`funkci s názvem , která je vstupním bodem pro tento modul.
 
- * Funkce vstupního bodu může obsahovat až `Param<dataframe1>` dva vstupní argumenty: a`Param<dataframe2>`
- 
+ * Funkce vstupního bodu musí mít `Param<dataframe1>` dva `Param<dataframe2>`vstupní argumenty: a , i když tyto dva argumenty nejsou použity ve funkci.
+
    > [!NOTE]
     > Data předaná modulu **Execute R** `dataframe1` Script `dataframe2`se odvolává jako a , `dataset1`která `dataset2`se liší od návrháře Azure Machine Learning (odkaz na návrháře jako , ). Zkontrolujte, zda jsou vstupní data ve skriptu správně odkazována.  
  
@@ -195,7 +222,14 @@ Následující ukázka ukazuje, jak škálovat a normalizovat vstupní data:
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
-# The entry point function can contain up to two input arguments:
+
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){

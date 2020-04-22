@@ -1,18 +1,18 @@
 ---
-title: Služby go-to-market - marketingové osvědčené postupy | Azure
+title: Služby go-to-market - marketingové osvědčené postupy | Azure Marketplace
 description: Služby go-to-market – tato část popisuje doporučené marketingové postupy pro vydavatele Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 6/24/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 2926752884576bcf3a7a15d68eecb6f1248f7e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e874343b5bb38928ae2fc429d901d8f7ec163580
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286264"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684585"
 ---
 # <a name="marketing-best-practices"></a>Marketingové osvědčené postupy
 
@@ -22,6 +22,6 @@ Optimalizovaný seznam marketplace a kampaně na trhu vám mohou pomoci urychlit
 
 Další informace o službách MARKETPLACE GTM najdete v [informacích o službách Go-to-market](https://partner.microsoft.com/reach-customers/gtm).
 
-Přihlaste se k [portálu cloudových partnerů](https://cloudpartner.azure.com) a vytvořte a nakonfigurujte svou nabídku.
+Chcete-li vytvořit a nakonfigurovat nabídku, přihlaste se do [Centra partnerů.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
 
 ---

@@ -3,12 +3,12 @@ title: Import a export podrobných plánů pomocí PowerShellu
 description: Naučte se pracovat s definicemi podrobných plánů jako s kódem. Sdílejte, spravujte zdroj a spravujte je pomocí příkazů pro export a import.
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677140"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686834"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Import a export definic podrobných plánů pomocí PowerShellu
 
@@ -88,7 +88,7 @@ Kroky k exportu definice podrobného plánu jsou jednoduché. Export definice po
 
 Jakmile máte [exportovanou definici podrobného plánu](#export-your-blueprint-definition) nebo máte ručně vytvořenou definici podrobného plánu v [požadované struktuře složek](#folder-structure-of-a-blueprint-definition), můžete importovat tuto definici podrobného plánu do jiné skupiny pro správu nebo předplatného.
 
-Příklady předdefinovaných definic podrobných plánů najdete v [úložišti Azure Blueprint GitHub](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins).
+Příklady předdefinovaných definic podrobných plánů najdete v [úložišti Azure Blueprint GitHub](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins).
 
 - **Jméno** [povinné]
   - Určuje název nové definice podrobného plánu.
@@ -121,8 +121,8 @@ Informace o vytváření pokročilých definic podrobných plánů naleznete v n
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [životním cyklu podrobného plánu](../concepts/lifecycle.md).
-- Pochopit, jak používat [statické a dynamické parametry](../concepts/parameters.md).
-- Naučte se přizpůsobit [pořadí sekvencování podrobných plánů](../concepts/sequencing-order.md).
-- Zjistěte, jak využít [zamykání prostředků podrobného plánu](../concepts/resource-locking.md).
-- Vyřešte problémy během přiřazení podrobného plánu s [obecným řešením potíží](../troubleshoot/general.md).
+- Další informace o [životním cyklu podrobného plánu](../concepts/lifecycle.md)
+- Principy použití [statických a dynamických parametrů](../concepts/parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](../concepts/sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](../concepts/resource-locking.md)
+- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

@@ -16,24 +16,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 54ddf6818b95a4037188ab222501ddfa69b28149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587894"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686637"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Hledání hrozeb pomocí Azure Sentinelu
 
 Pokud jste vyšetřovatel, který chce být proaktivní při hledání bezpečnostních hrozeb, Azure Sentinel výkonné nástroje pro vyhledávání a vyhledávání dotazů pro vyhledávání bezpečnostních hrozeb ve zdrojích dat vaší organizace. Ale vaše systémy a bezpečnostní zařízení generovat hory dat, které může být obtížné analyzovat a filtrovat do smysluplné události. Aby se analytici zabezpečení mohli aktivně podívat na nové anomálie, které vaše aplikace zabezpečení nezjistily, integrované vyhledávací dotazy Azure Sentinelu vás navedou k tomu, abyste položili správné otázky k nalezení problémů v datech, která už máte v síti. 
 
-Například jeden vestavěný dotaz poskytuje data o nejvíce neobvyklých procesech spuštěných ve vaší infrastruktuře - nechcete, aby se výstraha o každém spuštění, mohou být zcela nevinní, ale můžete se na dotaz občas podívat, abyste zjistili, zda Je tu něco neobvyklého. 
+Například jeden vestavěný dotaz poskytuje data o nejvíce neobvyklých procesech spuštěných ve vaší infrastruktuře - nechcete, aby se výstraha o každém spuštění, může být zcela nevinná, ale můžete se na dotaz občas podívat, abyste zjistili, zda není něco neobvyklého. 
 
 
 
 S Azure Sentinel lov, můžete využít následující funkce:
 
-- Integrované dotazy: Úvodní stránka obsahuje předinstalované příklady dotazů, které vám pomohou začít a seznámit se s tabulkami a jazykem dotazu. Tyto vestavěné vyhledávací dotazy jsou vyvíjeny výzkumníky zabezpečení společnosti Microsoft průběžně, přidávají nové dotazy a dolaďují stávající dotazy, aby vám poskytly vstupní bod, aby hledaly nové detekce a zjistily, kde začít lovit nových útoků. 
+- Integrované dotazy: Úvodní stránka obsahuje předinstalované příklady dotazů, které vám pomohou začít a seznámit se s tabulkami a jazykem dotazu. Tyto integrované vyhledávací dotazy jsou vyvíjeny výzkumníky zabezpečení společnosti Microsoft průběžně, přidávání nových dotazů a dolaďování existujících dotazů, které vám poskytnou vstupní bod, abyste hledali nové detekce a zjistili, kde začít lovit začátky nových útoků. 
 
 - Výkonný dotazovací jazyk s technologiemi IntelliSense: Je postaven na dotazovacím jazyce, který vám poskytuje flexibilitu, kterou potřebujete k tomu, abyste lov i další úroveň.
 
@@ -54,7 +54,7 @@ S Azure Sentinel lov, můžete využít následující funkce:
 
 3. Proveďte rychlou kontrolu podkladového dotazu v podokně podrobností dotazu nebo kliknutím na **zobrazit výsledek dotazu** otevřete dotaz v Log Analytics. V dolní části zkontrolujte shody pro dotaz.
 
-4.  Klikněte na řádek a vyberte **Přidat záložku** pro přidání řádků, které mají být zkoumány - můžete to udělat pro cokoliv, co vypadá podezřele. 
+4.    Klikněte na řádek a vyberte **Přidat záložku** pro přidání řádků, které mají být zkoumány - můžete to udělat pro cokoliv, co vypadá podezřele. 
 
 5. Poté se vraťte na hlavní stránku **Hunting** a kliknutím na **záložky** zobekte všechny podezřelé aktivity. 
 
@@ -66,7 +66,7 @@ S Azure Sentinel lov, můžete využít následující funkce:
 
 ## <a name="query-language"></a>Dotazovací jazyk 
 
-Lov v Azure Sentinelu je založený na dotazovém jazyce Kusto. Další informace o dotazovacím jazyce a podporovaných operátorech naleznete v [tématu Reference pro dotaz .](https://docs.loganalytics.io/docs/Language-Reference/)
+Lov v Azure Sentinelu je založený na dotazovém jazyce Kusto. Další informace o dotazovacím jazyce a podporovaných operátorech naleznete v [tématu Reference pro dotaz .](/azure/azure-monitor/log-query/get-started-queries)
 
 ## <a name="public-hunting-query-github-repository"></a>Veřejné lovecký dotaz GitHub úložiště
 

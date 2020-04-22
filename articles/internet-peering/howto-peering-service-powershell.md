@@ -1,33 +1,33 @@
 ---
-title: Povolení služby partnerského vztahu v přímém partnerském vztahu pomocí Prostředí PowerShell
+title: Povolení služby Partnerského vztahu Azure v přímém partnerské mincovním vztahu pomocí PowerShellu
 titleSuffix: Azure
-description: Povolení služby partnerského vztahu v přímém partnerském vztahu pomocí Prostředí PowerShell
+description: Povolení služby Partnerského vztahu Azure v přímém partnerské mincovním vztahu pomocí PowerShellu
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: ac843fa5440f7ba085d33cd897bcd4a1722f77ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c029b822d00ce545e3623a6212421a55b2d1971f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774182"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686973"
 ---
-# <a name="enable-peering-service-on-a-direct-peering-using-powershell"></a>Povolení služby partnerského vztahu v přímém partnerském vztahu pomocí Prostředí PowerShell
+# <a name="enable-azure-peering-service-on-a-direct-peering-by-using-powershell"></a>Povolení služby Partnerského vztahu Azure v přímém partnerské mincovním vztahu pomocí PowerShellu
 
-Tento článek popisuje, jak povolit [službu partnerského vztahu](overview-peering-service.md) v přímém partnerské masce pomocí rutin prostředí PowerShell a modelu nasazení Správce prostředků.
+Tento článek popisuje, jak povolit [službu partnerského vztahu](overview-peering-service.md) Azure v přímém partnerské mincovním vztahu pomocí rutin Prostředí PowerShell a modelu nasazení Azure Resource Manageru.
 
-Pokud chcete, můžete tuto příručku dokončit pomocí [portálu](howto-peering-service-portal.md).
+Pokud chcete, můžete tuto příručku dokončit pomocí [portálu](howto-peering-service-portal.md)Azure .
 
 ## <a name="before-you-begin"></a>Než začnete
-* Před zahájením konfigurace [zkontrolujte požadavky.](prerequisites.md)
-* V předplatném zvolte přímý partnerský vztah, na kterém chcete povolit službu partnerského vztahu. Pokud ho nemáte, převeďte starší verzi přímého partnerského vztahu nebo vytvořte nový přímý partnerský vztah.
+* Před zahájením konfigurace zkontrolujte [požadavky.](prerequisites.md)
+* V předplatném zvolte přímý partnerský vztah, pro který chcete povolit službu partnerského vztahu. Pokud ho nemáte, převeďte starší verzi přímého partnerského vztahu nebo vytvořte nový přímý partnerský vztah:
     * Chcete-li převést starší přímý partnerský vztah, postupujte podle pokynů v [převést starší přímý partnerský vztah na prostředek Azure pomocí Prostředí PowerShell](howto-legacy-direct-powershell.md).
     * Chcete-li vytvořit nový přímý partnerský vztah, postupujte podle pokynů v části [Vytvoření nebo úprava přímého partnerského vztahu pomocí prostředí PowerShell](howto-direct-powershell.md).
 
-### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShellem
+### <a name="work-with-azure-powershell"></a>Práce s Azure PowerShellem
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
 ## <a name="enable-peering-service-on-a-direct-peering"></a>Povolení služby Peering Service u peeringu typu Direct
@@ -42,12 +42,12 @@ Po získání přímého partnerského vztahu v předchozím kroku jej povolte p
 
 ## <a name="modify-a-direct-peering-connection"></a>Úprava přímého připojení partnerského vztahu
 
-Pokud potřebujete změnit nastavení připojení, podívejte se na změnit oddíl **Přímé partnerské vztahu** v [části Vytvořit nebo upravit přímý partnerský vztah pomocí Prostředí PowerShell](howto-direct-powershell.md)
+Pokud potřebujete změnit nastavení připojení, přečtěte si část "Změnit přímý partnerský vztah" v [tématu Vytvoření nebo úprava přímého partnerského vztahu pomocí prostředí PowerShell](howto-direct-powershell.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření nebo úprava partnerského vztahu Exchange pomocí PowerShellu](howto-exchange-powershell.md)
-* [Převod staršího partnerského vztahu Exchange na prostředek Azure pomocí PowerShellu](howto-legacy-exchange-powershell.md)
+* [Převést starší partnerský vztah Exchange na prostředek Azure pomocí PowerShellu](howto-legacy-exchange-powershell.md)
 
 ## <a name="additional-resources"></a>Další zdroje
 Podrobné popisy všech parametrů můžete získat spuštěním následujícího příkazu:
@@ -56,4 +56,4 @@ Podrobné popisy všech parametrů můžete získat spuštěním následujícíh
 Get-Help Get-AzPeering -detailed
 ```
 
-Nejčastější dotazy najdete v [tématu Nejčastější dotazy ke službě Peering Service](service-faqs.md).
+Nejčastější dotazy naleznete v [nejčastějších dotazech](service-faqs.md)ke službě Partnerského vztahu .

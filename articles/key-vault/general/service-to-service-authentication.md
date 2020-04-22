@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: d6ac5961cbecf4e81c0b6bcc25c39aad42b18416
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429834"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686197"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služby azure key vault pomocí rozhraní .NET
 
@@ -88,7 +88,7 @@ Použití azure cli:
 
 1. Přihlaste se na portál Azure: *az přihlášení* pro přihlášení do Azure.
 
-1. Ověřte přístup zadáním *az účtu https://vault.azure.netget-access-token --resource *. Pokud se zobrazí chyba, zkontrolujte, zda je správně nainstalována správná verze rozhraní příkazového příkazu Azure.
+1. Ověřte přístup zadáním *az účtu get-access-token --resource https:\//vault.azure.net*. Pokud se zobrazí chyba, zkontrolujte, zda je správně nainstalována správná verze rozhraní příkazového příkazu Azure.
 
    Pokud rozhraní příkazového od ponesení příkazového odpovky do výchozího adresáře není nainstalováno, může se zobrazit hlášení chyb, které `AzureServiceTokenProvider` nemůže najít cestu pro rozhraní příkazového příkazové k dispozici azure. Pomocí proměnné prostředí **AzureCLIPath** definujte instalační složku Azure CLI. `AzureServiceTokenProvider`v případě potřeby přidá adresář zadaný v proměnné prostředí **AzureCLIPath** do proměnné prostředí **Path.**
 
@@ -242,7 +242,7 @@ Podporovány jsou následující možnosti:
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Instanční objekt | `AzureServiceTokenProvider`Používá certifikát k získání tokenu z Azure AD|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Instanční objekt |`AzureServiceTokenProvider`používá tajný klíč k získání tokenu z Azure AD. |
 
-## <a name="samples"></a>ukázky
+## <a name="samples"></a>Ukázky
 
 Chcete-li `Microsoft.Azure.Services.AppAuthentication` zobrazit knihovnu v akci, naleznete v následujících ukázkách kódu.
 

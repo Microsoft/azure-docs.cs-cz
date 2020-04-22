@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 987d04a4138c37d9073e5e9925f06c93d7ebb8e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 528c393983cb3d8d96dbcee9157e38ebc4f193f4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281574"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685393"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Poradenské služby pro Azure Marketplace a AppSource
 Poradenské služby na Azure Marketplace a AppSource poskytují partnerům Microsoftu cíl propojit zákazníky se službami, které podporují a rozšiřují jejich používání Azure a obchodních cílů. 
@@ -27,22 +27,22 @@ Prodejny tržiště jsou v souladu s cílovými skupinami a cloudovými produkty
 
 |         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
-|**Cílová skupina**   |**IT profesionálové a vývojáři cloudu**|**Podnikoví uživatelé / tvůrci rozhodnutí v oblasti podnikání**|
-|Relevance řešení     |Technické aplikace vytvořené nebo postavené na Azure|Obchodní aplikace, které využívají/ rozšiřují D365, Power BI, O365, Azure. (Aplikace dokončené doplňkem nebo doplňky)|
-|Možnosti publikování     |Kontaktujte mě, zkušební verze, transakt nebo služby pro Azure|Kontaktujte mě, zkušební verzi nebo služby pro Dynamics 365 a Power BI|
+|**Cílová skupina**      |**IT profesionálové a vývojáři cloudu**|**Podnikoví uživatelé / tvůrci rozhodnutí v oblasti podnikání**|
+|Relevance řešení      |Technické aplikace vytvořené nebo postavené na Azure|Obchodní aplikace, které využívají/ rozšiřují D365, Power BI, O365, Azure. (Aplikace dokončené doplňkem nebo doplňky)|
+|Možnosti publikování      |Kontaktujte mě, zkušební verze, transakt nebo služby pro Azure|Kontaktujte mě, zkušební verzi nebo služby pro Dynamics 365 a Power BI|
 |Zkušenosti s produktem      |Portál pro správu Azure|Dynamics 365, Office 365, Klientské aplikace Office| 
 |Ostatní      |Místní publikování prostřednictvím azure zásobníku, konzultační služby pro Azure, spravované služby pro Azure|Poradenské služby pro dynamiku a Power BI|
 
 Nabídky konzultačních služeb založené na Microsoft Dynamics 365, Power Apps a Power BI můžou být uvedeny na Webu Microsoft AppSource. Další informace naleznete v [tématu Pokyny pro poskytování výpisu konzultačních služeb Microsoft AppSource](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409).
 
-Nabídky konzultačních služeb a spravovaných služeb, které jsou založené na Microsoft Azure, se mohou uznat na Azure Marketplace. Další informace najdete v článcích o [publikování poradenské služby Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) a publikování nabídky [spravovaných služeb na Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
+Nabídky konzultačních služeb a spravovaných služeb, které jsou založené na Microsoft Azure, se mohou uznat na Azure Marketplace. Další informace najdete v článcích o [publikování poradenské služby Azure](./partner-center-portal/create-consulting-service-offer.md) a publikování nabídky [spravovaných služeb na Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
 
 > [!Note]
 > Poradenské služby na Azure Marketplace by měly využívat nabídky zaměřené na **technickou publikum se zaměřuje na *technická řešení a služby Azure.* ** Poradenské služby v AppSource by měly využívat nabídky zaměřené na jejich odborné znalosti při poskytování kvalitních řešení pro Dynamics 365, Power BI nebo Power Apps, aby vyjmenovaly své nabídky konzultačních služeb na AppSource
 > 
 > 
 > [!TIP]
-> Chcete-li publikovat do úložiště Azure Marketplace, provedete tento výběr výběrem "Azure" z rozbalovací nabídky Primární produkt na portálu partnerů cloudu. Chcete-li publikovat na AppSource, provedete tento výběr výběrem "Dynamics 365", "Power BI" nebo "Power Apps" z rozbalovací nabídky Primární produkt na portálu partnerů cloudu.
+> Chcete-li publikovat do úložiště Azure Marketplace, provedete tento výběr výběrem "Azure" z rozbalovací nabídky Primární produkt v Centru partnerů. Chcete-li publikovat na AppSource, provedete tento výběr výběrem "Dynamics 365", "Power BI" nebo "Power Apps" z rozbalovací nabídky Primární produkt v Centru partnerů.
 
 ## <a name="eligible-partners-and-supported-countriesregions"></a>Způsobilí partneři a podporované země/oblasti
 
@@ -87,13 +87,18 @@ Další zdroje a podpora:
 | Spojené království  |
 
 
-## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Jak se zaregistrovat pro poradenské služby na Azure Marketplace a AppSource
-Začněte [registrací](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) informací o vaší společnosti na trhu. Vydavatelé mohou odkazovat [na stát se vydavatelem na webu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), zobrazí úplný kontrolní seznam požadavků na registraci. 
+## <a name="how-to-register-for-consulting-services-in-commercial-marketplace"></a>Jak se zaregistrovat pro poradenské služby na komerčním trhu
 
-**Co očekávat po registraci** Tým onboardingu se během 1-3 pracovních dnů spojí s uvítacím e-mailem, který bude obsahovat přihlašovací údaje k portálu partnerů cloudu (CPP). [Portál partnerů cloudu](https://cloudpartner.azure.com) je portál s nabídkami, kde vydavatelé odesílají informace o výpisu a odeslání. 
+Začněte [registrací](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) informací o vaší společnosti na trhu. Vydavatelé mohou odkazovat [na stát se vydavatelem na webu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), zobrazí úplný kontrolní seznam požadavků na registraci. 
+
+<!---
+**What To Expect After Registration**
+The Onboarding Team will reach out in 1-3 business days with a welcome email, which will include your Cloud Partner Portal (CPP) login information. [Cloud Partner Portal](https://cloudpartner.azure.com) is the offer listing portal where publishers submit listing information and submissions. 
 
 >[!Note]
->Partneři se musí zaregistrovat pouze jednou, aby se stali vydavatelem. Jakmile obdržíte uvítací e-mail a přihlášení k portálu cloudových partnerů, vydavatelé se nemusí znovu registrovat, aby mohli publikovat různé typy zápisů. 
+>Partners only need to register once to become a publisher. Once you receive your welcome email and Partner Center login, publishers do not need to re-register in order to publish different listing types. 
+
+--->
 
 ## <a name="prepare-your-publishing-artifacts"></a>Příprava artefaktů publikování
 Před registrací můžete začít shromažďovat a připravovat obsah, který pomůže vašemu zápisu formulovat hodnotu vašeho služby a řešení pro vašeho cílového zákazníka. 
@@ -120,7 +125,7 @@ Před registrací můžete začít shromažďovat a připravovat obsah, který p
 ## <a name="publishing-process"></a>Proces publikování
 Uvedení nabídky konzultačních služeb na Azure Marketplace a AppSource zahrnuje následující fáze:
 
-1. **Výpis**: Začněte sepisovat nový výpis nabídky po přihlášení k účtu [cloudového partnerského portálu.](https://cloudpartner.azure.com) V rozevírací nabídce vyberte možnost "Nová nabídka" a "Poradenské služby". Zadejte svůj výpis artefakt a publikovat.
+1. **Výpis**: Začněte sepisovat nový výpis nabídky po přihlášení k účtu [Partnerského centra.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) V rozevírací nabídce vyberte možnost "Nová nabídka" a "Poradenské služby". Zadejte svůj výpis artefakt a publikovat.
 2. **Ověření**: Vaše žádost je zkontrolována, aby bylo zajištěno, že splňujete kritéria způsobilosti. Poté vám zašleme pokyny pro uvedení nabídky poradenských služeb. 
 3. **Odeslat**: Zadejte požadované informace, které jsou uvedeny v pokynech. Veškerý obsah a podpůrný materiál musí být předložen v angličtině. 
 4. **Recenze**: Náš marketingový a redakční tým zkontroluje váš příspěvek a optimalizuje jej pro čitelnost, gramatiku a efektivitu. 
@@ -165,7 +170,7 @@ Při kontrole popisů nabídek a souhrnů nabídek použije tým následující 
 |**Doklad koncepce**    |    Artikulovat, jaké technické změny, technické artefakty, nebo jiné artefakty zákazník může očekávat jako výsledky zapojení     | Optimalizujte shrnutí nabídky pomocí klíčových slov optimalizace pro vyhledávače        |
 |**Workshop**    |   V závislosti na zvolené době trvání nabídky uveďte podrobnou agendu denní, týdenní nebo měsíční. Artikulujte, jaké jsou studijní cíle nebo jiné výstupy z vaší dílny     |   Optimalizujte shrnutí nabídky pomocí klíčových slov optimalizace pro vyhledávače      |
 
-V rámci portálu partnerů cloudu můžete do svého zápisu přidat formátování pomocí [Markdownu](/contribute/markdown-reference). Jedná se o lehký designový jazyk, který vám pomůže přidat lesk do vašeho zápisu. 
+V Centru partnerů můžete do zápisu přidat formátování pomocí [funkce Markdown](/contribute/markdown-reference). Jedná se o lehký designový jazyk, který vám pomůže přidat lesk do vašeho zápisu. 
 
 **Ukázkové poznámky markdownu**
 * Přidat * na začátku a na konci kopie bloku - bez místa pro vytvoření kurzívy (Ex: *obsah)*
@@ -181,9 +186,9 @@ V rámci portálu partnerů cloudu můžete do svého zápisu přidat formátov�
 
 Pokud jste tak ještě neučinili, 
 
-- [Zaregistrujte se](https://azuremarketplace.microsoft.com/sell) na trhu.
+- [Přečtěte si](https://azuremarketplace.microsoft.com/sell) informace o tržišti.
 
-Pokud jste zaregistrováni a pracujete na portálu cloudových partnerů, 
+Chcete-li se zaregistrovat a začít pracovat v Partnerském centru, 
 
-- [Přihlaste se na portál cloudových partnerů](https://cloudpartner.azure.com) a vytvořte nebo dokončete svou nabídku.
-- Další informace najdete v [nabídce konzultačních služeb Azure a Dynamics 365.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)
+- [Chcete-li](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) vytvořit nebo dokončit svou nabídku, přihlaste se do Centra partnerů.
+- Další informace naleznete [v tématu vytvoření nabídky služeb Poradenství.](./partner-center-portal/create-consulting-service-offer.md)

@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 45855038e60dcdc3be4f98cfdceed69df5e8c946
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2f33fc8b1bdd15b53ad9130b5cc598dd6d5ee1a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286315"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684628"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Povolení uvedení na AppSource a Marketplace s využitím Azure Active Directory
 
@@ -34,12 +34,12 @@ Různé [možnosti výpisu a typy nabídek](https://docs.microsoft.com/azure/mar
 | **Typ nabídky**    | **Je vyžadováno přisychávací služby Azure AD?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | Kontaktujte mě | Zkušební verze | Testovací verze | Transact |
-| Virtuální počítač | Není dostupné. | Ne | Ne | Ne |
-| Aplikace Azure (šablona řešení)  | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. |
-| Spravované aplikace  | Není dostupné. | Není dostupné. | Není dostupné. | Ne |
+| Virtuální počítač | – | Ne | Ne | Ne |
+| Aplikace Azure (šablona řešení)  | – | – | – | – |
+| Spravované aplikace  | – | – | – | Ne |
 | SaaS  | Ne | Ano | Ano | Ano |
-| Kontejnery  | Není dostupné. | Není dostupné. | Není dostupné. | Ne |
-| Konzultační služby  | Ne | Není dostupné. | Není dostupné. | Není dostupné. |
+| Containers  | – | – | – | Ne |
+| Konzultační služby  | Ne | – | – | – |
 
 Další informace o technických požadavcích SaaS naleznete v [průvodci nabídkou publikování aplikací SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
@@ -87,5 +87,10 @@ Pomocí azure ad pro podporu jedné z následujících akcí:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Ujistěte se, že jste se [zaregistrovali na Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
-- Další informace o tom, jak vytvořit nebo dokončit nabídku, najdete v tématu [Jak vytvořit účet Centra pro partnery.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)
+Pokud jste tak ještě neučinili, 
+
+- [Přečtěte si](https://azuremarketplace.microsoft.com/sell) informace o tržišti.
+
+Chcete-li se zaregistrovat v Partnerském centru, začněte vytvářet novou nabídku nebo pracovat na existující nabídce:
+
+- [Chcete-li](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) vytvořit nebo dokončit svou nabídku, přihlaste se do Centra partnerů.

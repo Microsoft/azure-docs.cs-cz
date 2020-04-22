@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71199992"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686940"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Vytvoření a nasazení služby správy certifikátů OPC Vault
 
@@ -90,7 +90,7 @@ Po úspěšném nasazení můžete začít používat služby. Viz [Správa slu�
 
 Zde je uveden postup:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte do skupiny prostředků, ve které byla služba nasazena.
 3. Vyberte **Odstranit skupinu prostředků** a potvrďte tuto akci.
 4. Po krátké době jsou odstraněny všechny součásti nasazených služeb.
@@ -107,7 +107,7 @@ Použijte krátký a jednoduchý název skupiny prostředků. Název se také po
 
 ### <a name="website-name-already-in-use"></a>Název webu, který je již používán
 
-Je možné, že název webu je již používán. Je třeba použít jiný název skupiny prostředků. Názvy hostitelů, které skript https://resourcegroupname.azurewebsites.net nasazení https://resourgroupname-service.azurewebsites.netpoužívá, jsou: a .
+Je možné, že název webu je již používán. Je třeba použít jiný název skupiny prostředků. Názvy hostitelů, které používá skript\/nasazení, jsou:\/https: /resourcegroupname.azurewebsites.net a https: /resourgroupname-service.azurewebsites.net.
 Jiné názvy služeb jsou vytvořeny kombinací zapisovatelné hořkosti krátkých názvů a je nepravděpodobné, že by byly v konfliktu s jinými službami.
 
 ### <a name="azure-ad-registration"></a>Registrace v Azure AD 

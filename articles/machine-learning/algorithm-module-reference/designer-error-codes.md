@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: cc04d11475568af92ba6a617a1eb6b2b51accb45
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481666"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684700"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Výjimky a kódy chyb pro návrháře (náhled)
 
@@ -145,6 +145,7 @@ Následují chybové kódy modulů v návrháři.
 |Hodnota parametru {arg_name} by měla být menší nebo rovna hodnotě parametru {upper_boundary_parameter_name}.|
 |Parametr {arg_name} má hodnotu {actual_value}, která by měla být menší nebo rovna {upper_boundary}.|
 |Parametr {arg_name} hodnota {actual_value} by měl být menší nebo roven hodnotě parametru {upper_boundary_parameter_name} {upper_boundary}.|
+|Parametr {arg_name} hodnota {actual_value} by měl být menší nebo roven hodnotě {upper_boundary_meaning} {upper_boundary}.|
 
 
 ## <a name="error-0008"></a>Chyba 0008  
@@ -253,8 +254,8 @@ Pokud byl model trénován pomocí některého ze specializovaných školicích 
 
 |Typ modelu|Tréninkový modul| Bodovací modul|
 |----|----|----|
-|libovolný klasifikátor|[Model vlaku](train-model.md) |[Model skóre](score-model.md)|
-|jakýkoli regresní model|[Model vlaku](train-model.md) |[Model skóre](score-model.md)|
+|libovolný klasifikátor|[Trénování modelu](train-model.md) |[Určení skóre modelu](score-model.md)|
+|jakýkoli regresní model|[Trénování modelu](train-model.md) |[Určení skóre modelu](score-model.md)|
 
 <!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
 | anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|
@@ -271,6 +272,7 @@ Pokud byl model trénován pomocí některého ze specializovaných školicích 
 |Student neplatného typu je předán.|
 |Student {arg_name} má neplatný typ.|
 |Student {arg_name} má neplatný typ {learner_type}.|
+|Student neplatného typu je předán. Zpráva o výjimce: {exception_message}|
 
 
 ## <a name="error-0014"></a>Chyba 0014  
@@ -393,6 +395,7 @@ U sloupců, které chcete použít pro seskupení nebo kategorizaci, postupujte 
 |Hodnoty ve sloupci nejsou seřazeny.|
 |Hodnoty ve sloupci {col_index} nejsou seřazeny.|
 |Hodnoty ve sloupci {col_index} datové sady {dataset}nejsou seřazeny.|
+|Hodnoty v argumentu {arg_name} nejsou seřazeny v pořadí {sorting_order}.|
 
 
 ## <a name="error-0020"></a>Chyba 0020  
@@ -633,6 +636,7 @@ Může se také stát, že sloupec popisek je k dispozici v datové sadě, ale n
 |------------------------|
 |Argument musí být konečný.|
 |{arg_name} není konečný.|
+|Sloupec {column_name} obsahuje nekonečné hodnoty.|
 
 
 ## <a name="error-0034"></a>Chyba 0034  
@@ -1074,7 +1078,7 @@ Chybová zpráva z Hive je obvykle hlášena zpět do protokolu chyb, takže mů
 + Ověřte, zda dotaz funguje správně mimo Azure Machine Learning přihlášením ke konzoli Hive clusteru Hadoop a spuštěním dotazu.  
 + Zkuste umístit komentáře do skriptu Hive do samostatného řádku, na rozdíl od míchání spustitelných příkazů a komentářů do jednoho řádku.  
 
-### <a name="resources"></a>Zdroje a prostředky
+### <a name="resources"></a>Prostředky
 
 Nápovědu k dotazům Hive pro strojové učení naleznete v následujících článcích:
 
@@ -1492,6 +1496,18 @@ K této chybě může dojít také při předchozí operaci změní datovou sadu
 |------------------------------------------------------------|
 |Given TransformationDirectory je neplatný.|
 |Adresář Transformár "{arg_name} je neplatný. Důvod: {důvod}. Spusťte znovu trénovací experiment, který generuje soubor Transformace. Pokud byl tréninkový experiment odstraněn, vytvořte a uložte soubor Transformace.|
+|Adresář Transformár "{arg_name} je neplatný. Důvod: {důvod}. {troubleshoot_hint}|
+
+
+## <a name="error-0159"></a>Chyba 0159
+ K výjimce dochází, pokud je předán do adresáře modelu modulu neplatný. 
+
+|Zprávy o výjimky|
+|------------------------------------------------------------|
+|Daný ModelDirectory je neplatný.|
+|ModelDirectory {arg_name} je neplatný.|
+|ModelDirectory {arg_name} je neplatný. Důvod: {důvod}.|
+|ModelDirectory {arg_name} je neplatný. Důvod: {důvod}. {troubleshoot_hint}|
 
 
 ## <a name="error-1000"></a>Chyba 1000  

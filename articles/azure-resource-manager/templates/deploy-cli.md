@@ -2,13 +2,13 @@
 title: Nasazení prostředků pomocí azure cli a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure CLI. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 241b84bc7b8c0b213e74cd7ee5f3d7668fe0d808
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 8ee15699a085178add05137be895fe6b660b715b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282643"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685690"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon ARM a azure cli
 
@@ -168,7 +168,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Zpracování rozšířeného formátu JSON
 
-Chcete-li nasadit šablonu s víceřádkovými `--handle-extended-json-format` řetězci nebo komentáři, musíte použít přepínač.  Například:
+Chcete-li nasadit šablonu s víceřádkovými řetězci nebo komentáři pomocí azure cli s verzí 2.3.0 nebo starší, musíte použít `--handle-extended-json-format` přepínač.  Příklad:
 
 ```json
 {

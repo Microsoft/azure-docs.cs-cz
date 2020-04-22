@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Services - Jak se dostat vystupoval na trhu | Azure
+title: Go-To-Market Services - Jak se dostat vystupoval na trhu | Azure Marketplace
 description: Služby go-to-market – tato část popisuje, jak získat výpis, který se zobrazuje na Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 266070a6292e41af6ce1b4258774d20a9bd90312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286281"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684606"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Jak se dostat do AppSource a Azure Marketplace
 
@@ -38,7 +38,7 @@ Ke zlepšení skóre můžete provést následující položky akce:
 Doporučené nabídky aplikací fungují odděleně od vyhledávacího algoritmu.
 
 >[!Note]
->Pokud se vaše řešení ve výsledcích hledání nezobrazuje správně, najděte lístek podpory prostřednictvím nabídky Nápověda [na portálu partnerů cloudu](https://cloudpartner.azure.com/).
+>Pokud se vaše řešení ve výsledcích hledání nezobrazuje správně, najděte lístek podpory prostřednictvím nabídky Nápověda v [Centru partnerů](https://partner.microsoft.com/).
 
 Vaše podpora GTM také obsahuje úplnou knihovnu svépomocných šablon, webového obsahu, školení a nástrojů, které vám pomohou dále propagovat vaše zápisy a vaši firmu.
 
@@ -46,6 +46,6 @@ Vaše podpora GTM také obsahuje úplnou knihovnu svépomocných šablon, webov�
 
 Přečtěte si další informace o [výhodách komerčního trhu](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
-Přihlaste se k [portálu cloudových partnerů](https://cloudpartner.azure.com) a vytvořte a nakonfigurujte svou nabídku.
+Chcete-li vytvořit a nakonfigurovat nabídku, přihlaste se do [Centra partnerů.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
 
 ---
