@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: a94b51e49951948974b8f42f6c89cd3c84f95d65
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7a7210915920ed9ab2a5ddc47a27c2587895a57a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064280"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768264"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Komponenty a omezení pro vyrovnávání zatížení
 Azure Load Balancer obsahuje několik klíčových součástí pro jeho provoz.  Tyto komponenty můžete nakonfigurovat ve vašem předplatném prostřednictvím portálu Azure, Azure CLI nebo Azure PowerShell.  
@@ -95,7 +95,7 @@ Následující obrázek ukazuje distribuci na základě hodnoty hash:
 
     - pravidla vyrovnávání zatížení odvodí způsob naprogramování snatu. Pravidla vyrovnávání zatížení jsou specifická pro protokol. SNAT je specifický pro protokol a konfigurace by měla odrážet spíše to, než vytvořit vedlejší účinek.
 
-    - **Více frontendů** Pokud je k dispozici více front-endů, použijí se všechny front-endy a každý front-end vynásobí počet dostupných portů SNAT. Pokud chcete více portů SNAT, protože očekáváte nebo již dochází k vysoké poptávce po odchozích připojeních, můžete také přidat přírůstkové inventářportů SNAT konfigurací dalších front-endů, pravidel a back-endových fondů do stejného virtuálního počítače Zdroje.
+    - **Více frontendů** Pokud je k dispozici více front-endů, použijí se všechny front-endy a každý front-end vynásobí počet dostupných portů SNAT. Pokud chcete více portů SNAT, protože očekáváte nebo již dochází k vysoké poptávce po odchozích připojeních, můžete také přidat přírůstkové inventářportů SNAT konfigurací dalších frontendů, pravidel a back-endových fondů pro stejné prostředky virtuálního počítače.
 
     - **Řízení front-endu, který se používá pro odchozí** Můžete zvolit a řídit, pokud si nepřejete, aby byl pro odchozí připojení použit určitý front-end. Pokud chcete omezit odchozí připojení pouze pocházejí z určité adresy IP front-endu, můžete volitelně zakázat odchozí SNAT na pravidlo, které vyjadřuje odchozí mapování.
 
@@ -171,6 +171,8 @@ Vyrovnávání zatížení podporuje základní i standardní skuty. Tyto skuse 
 
 Kompletní scénář konfigurace se může mírně lišit v závislosti na skladové položky. Dokumentace nástroje pro vyrovnávání zatížení volá, když se článek vztahuje pouze na konkrétní skladovou položku. Porovnání a vysvětlení rozdílů najdete v následující tabulce. Další informace najdete [v tématu Přehled nástroje pro vyrovnávání zatížení Azure Standard](load-balancer-standard-overview.md).
 
+Informace o upgradu základního vykladače zatížení na standardní, naleznete [v tématu Upgrade základního vytácení zatížení](upgrade-basic-standard.md).
+
 >[!NOTE]
 > Společnost Microsoft doporučuje standardní vyrovnávání zatížení.
 Samostatné virtuální počítače, skupiny dostupnosti a škálovací sady virtuálních počítačů je možné připojit pouze k jedné skladové položce, nikdy k oběma. Vykladač zatížení a veřejná lokace IP adresy se musí shodovat při jejich použití s veřejnými IP adresami. Vyrovnávání zatížení a veřejné sloky IP nejsou proměnlivé.
@@ -207,6 +209,7 @@ Další informace naleznete v tématu [Limity pro vyrovnávání zatížení](ht
 
 ## <a name="next-steps"></a>Další kroky
 
+- Viz [Upgrade základního vykladače zatížení](upgrade-basic-standard.md) a upgrade základního vykladače zatížení na standardní vyvažovač evidenční stav zatížení.
 - Najdete [v tématu Vytvoření veřejného standardního systému vyrovnávání zatížení,](quickstart-load-balancer-standard-public-portal.md) abyste mohli začít používat systém Vyrovnávání zatížení: vytvořte ho, vytvořte virtuální servery s nainstalovaným vlastním rozšířením služby IIS a vyvážení zatížení webové aplikace mezi virtuálními zařízeními.
 - Další informace o [Azure Load Balancer](load-balancer-overview.md).
 - Informace o použití [standardního vykladače zatížení a zón dostupnosti](load-balancer-standard-availability-zones.md).

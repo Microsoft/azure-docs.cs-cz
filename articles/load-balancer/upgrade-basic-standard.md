@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: a4c8b029b199915cce9a417430e67675a03d327f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2d6f41756d87e43ac7db9e6a8670c453920c834
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659947"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770373"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Upgrade Azure Public Load Balancer
 [Azure Standard Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o skladové jednotce vykladače zatížení naleznete v [tabulce porovnání](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
@@ -21,7 +21,6 @@ Upgrade má tři fáze:
 
 1. Migrace konfigurace
 2. Přidání virtuálních měn do back-endových fondů standardního vyrovnávání zatížení
-3. Vytvoření odchozího pravidla pro vyrovnávání zatížení pro odchozí připojení
 
 Tento článek popisuje migraci konfigurace. Přidání virtuálních počítačů do back-endových fondů se může lišit v závislosti na konkrétním prostředí. Jsou však [k dispozici](#add-vms-to-backend-pools-of-standard-load-balancer)některá obecná doporučení na vysoké úrovni .
 
@@ -31,17 +30,18 @@ K dispozici je skript Azure PowerShell, který provádí následující akce:
 
 * Vytvoří standardní účetní čítič zatížení skladové položky ve skupině prostředků a umístění, které zadáte.
 * Bezproblémově zkopíruje konfigurace základního nástroje pro vyrovnávání zatížení skladových položk do nově vytvořeného standardního nástroje pro vyrovnávání zatížení.
+* Vytvoří výchozí odchozí pravidlo, které umožňuje odchozí připojení.
 
 ### <a name="caveatslimitations"></a>Upozornění\Omezení
 
-* Skript podporuje pouze upgrade veřejného vyvažovače zatížení. Pro interní základní vyrovnávání zatížení upgrade, vytvořte standardní interní vyrovnávání zatížení, pokud odchozí připojení není žádoucí, a vytvořit standardní interní vyrovnávání zatížení a standardní veřejný vyrovnávání zatížení je požadováno.
+* Skript podporuje pouze upgrade veřejného vyvažovače zatížení. Informace o interním základním vyrovnávání zatížení naleznete v [této stránce.](https://docs.microsoft.com/azure/load-balancer/upgrade-basicinternal-standard)
 * Standardní vyrovnávání zatížení má novou veřejnou adresu. Není možné přesunout IP adresy přidružené k existujícímu základnímu vytácení zatížení bez problémů do standardního vykladače zatížení, protože mají různé sku.
 * Pokud standardní vyrovnávání zatížení je vytvořen v jiné oblasti, nebudete moci přidružit virtuálních discích existující ve staré oblasti k nově vytvořené standardní vyrovnávání zatížení. Chcete-li toto omezení obejít, nezapomeňte vytvořit nový virtuální virtuální virtuální město v nové oblasti.
 * Pokud nástroj pro vyrovnávání zatížení nemá žádnou konfiguraci front-endu IP nebo back-endového fondu, pravděpodobně dosáhnete chyby při spuštění skriptu. Ujistěte se, že nejsou prázdné.
 
 ## <a name="download-the-script"></a>Stáhněte si skript
 
-Stáhněte si skript pro migraci z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0).
+Stáhněte si skript pro migraci z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/2.0).
 ## <a name="use-the-script"></a>Použití skriptu
 
 V závislosti na místním nastavení prostředí prostředí PowerShellu a předvolbách máte dvě možnosti:

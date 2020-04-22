@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: e5a96d2eb67937ce4eeaa1999d8168e7f5d3d926
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdb31f1a46d7f46b69e9e0ad47a77ba6b32a50a0
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130186"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770821"
 ---
-# <a name="release-notes"></a>Poznámky k verzi
+# <a name="release-notes"></a>Zpráva k vydání verze
 
 Tento článek obsahuje informace o **nejnovějších** aktualizacích verze Azure HDInsight. Informace o dřívějších verzích naleznete v [tématu ARCHIV POZNÁMEk k verzi HDInsight](hdinsight-release-notes-archive.md).
 
@@ -34,7 +34,7 @@ Tato verze platí pro HDInsight 3.6 a 4.0. Verze HDInsight je k dispozici pro v�
 ### <a name="tls-12-enforcement"></a>Vynucení protokolu TLS 1.2
 Zabezpečení transportní vrstvy (TLS) a SSL (Secure Sockets Layer) jsou kryptografické protokoly, které poskytují zabezpečení komunikace v počítačové síti. Další informace o [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0). HDInsight používá TLS 1.2 na veřejné koncové body HTTPs, ale TLS 1.1 je stále podporována pro zpětnou kompatibilitu. 
 
-V této verzi se zákazníci mohou přihlásit do TLS 1.2 pouze pro všechna připojení prostřednictvím koncového bodu veřejného clusteru. Pro podporu tohoto, nová vlastnost **minSupportedTlsVersion** je zavedena a lze zadat během vytváření clusteru. Pokud vlastnost není nastavena, cluster stále podporuje TLS 1.0, 1.1 a 1.2, což je stejné jako dnešní chování. Zákazníci mohou nastavit hodnotu této vlastnosti na "1.2", což znamená, že cluster podporuje pouze TLS 1.2 a vyšší. Další informace naleznete [v tématu Plánování virtuální sítě – Zabezpečení transportní vrstvy](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#transport-layer-security).
+V této verzi se zákazníci mohou přihlásit do TLS 1.2 pouze pro všechna připojení prostřednictvím koncového bodu veřejného clusteru. Pro podporu tohoto, nová vlastnost **minSupportedTlsVersion** je zavedena a lze zadat během vytváření clusteru. Pokud vlastnost není nastavena, cluster stále podporuje TLS 1.0, 1.1 a 1.2, což je stejné jako dnešní chování. Zákazníci mohou nastavit hodnotu této vlastnosti na "1.2", což znamená, že cluster podporuje pouze TLS 1.2 a vyšší. Další informace naleznete v tématu [Transport Layer Security](./transport-layer-security.md).
 
 ### <a name="bring-your-own-key-for-disk-encryption"></a>Přineste si vlastní klíč pro šifrování disku
 Všechny spravované disky ve službě HDInsight jsou chráněné šifrováním služby Azure Storage Service (SSE). Data na těchto discích jsou ve výchozím nastavení šifrována klíči spravovanými společností Microsoft. Počínaje touto verzí můžete přinést vlastní klíč (BYOK) pro šifrování disku a spravovat jej pomocí Azure Key Vault. Šifrování BYOK je konfigurace v jednom kroku během vytváření clusteru bez dalších nákladů. Stačí zaregistrovat HDInsight jako spravovanou identitu pomocí služby Azure Key Vault a při vytváření clusteru přidat šifrovací klíč. Další informace naleznete v [tématu Customer-managed key disk encryption](https://docs.microsoft.com/azure/hdinsight/disk-encryption).

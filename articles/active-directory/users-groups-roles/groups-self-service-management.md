@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52c37e293941a767621cf56ef75f8cc83b1925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 541deb5cf44ad5440e31641b673ed5da5b5d2b26
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297999"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768540"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Nastavení samoobslužné správy skupin ve službě Azure Active Directory 
 
@@ -33,7 +33,7 @@ Když se skupiny zabezpečení vytvoří na webu Azure Portal nebo pomocí Azure
 Skupiny vytvořené v | Výchozí chování skupiny zabezpečení | Výchozí chování skupiny Office 365
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](groups-settings-cmdlets.md) | Členy mohou přidávat pouze vlastníci.<br>Viditelné, ale není k dispozici pro připojení na přístupovém panelu | Otevřít pro připojení pro všechny uživatele
-[Portál Azure](https://portal.azure.com) | Členy mohou přidávat pouze vlastníci.<br>Viditelné, ale není k dispozici pro připojení na přístupovém panelu<br>Vlastník není přiřazen automaticky při vytváření skupiny | Otevřít pro připojení pro všechny uživatele
+[portál Azure](https://portal.azure.com) | Členy mohou přidávat pouze vlastníci.<br>Viditelné, ale není k dispozici pro připojení na přístupovém panelu<br>Vlastník není přiřazen automaticky při vytváření skupiny | Otevřít pro připojení pro všechny uživatele
 [Přístupový panel](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Otevřít pro připojení pro všechny uživatele<br>Možnosti členství lze změnit při vytvoření skupiny | Otevřít pro připojení pro všechny uživatele<br>Možnosti členství lze změnit při vytvoření skupiny
 
 ## <a name="self-service-group-management-scenarios"></a>Scénáře správy samoobslužné skupiny
@@ -55,6 +55,9 @@ Skupiny vytvořené v | Výchozí chování skupiny zabezpečení | Výchozí ch
 Můžete také použít **vlastníky, kteří mohou přiřadit členy jako vlastníky skupin na portálech Azure** a **vlastníci, kteří mohou přiřadit členy jako vlastníky skupin na portálech Azure,** abyste dosáhli podrobnější kontroly přístupu nad samoobslužnou správou skupin pro vaše uživatele.
 
 Když mohou uživatelé vytvářet skupiny, mohou všichni uživatelé ve vaší organizaci vytvářet nové skupiny a pak mohou jako výchozí vlastník přidávat členy do těchto skupin. Nelze určit jednotlivce, kteří mohou vytvářet vlastní skupiny. Můžete určit pouze jednotlivce pro vytvoření jiného člena skupiny jako vlastníka skupiny.
+
+> [!NOTE]
+> Licence Azure Active Directory Premium (P1 nebo P2) je vyžadována, aby uživatelé požádali o připojení ke skupině zabezpečení nebo skupině Office 365 a aby vlastníci schvalovali nebo odepírali žádosti o členství. Bez licence Služby Azure Active Directory Premium mohou uživatelé stále spravovat své skupiny na přístupovém panelu, ale nemohou vytvořit skupinu, která vyžaduje schválení vlastníka na přístupovém panelu, a nemohou požádat o připojení ke skupině. 
 
 ## <a name="next-steps"></a>Další kroky
 

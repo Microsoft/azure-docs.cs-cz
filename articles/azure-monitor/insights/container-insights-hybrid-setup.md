@@ -3,12 +3,12 @@ title: Konfigurace clusterů hybridních kubernetes pomocí Azure Monitoru pro k
 description: Tento článek popisuje, jak můžete nakonfigurovat Azure Monitor pro kontejnery pro monitorování clusterů Kubernetes hostovaných v Azure Stack nebo v jiném prostředí.
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 5a973e7e500906ebe833ec4cc6fd2fa8ee79c19e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6c2782fdd810403a793f6ef682d1112fadc22465
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255426"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769042"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurace hybridních clusterů Kubernetes pomocí Azure Monitoru pro kontejnery
 
@@ -241,6 +241,9 @@ Chcete-li nejprve identifikovat úplné ID prostředku pracovního `workspaceRes
 
 ## <a name="install-the-chart"></a>Instalace grafu
 
+>[!NOTE]
+>Následující příkazy platí pouze pro helmu verze 2. Použití parametru --name není použitelné u helmu verze 3.
+
 Chcete-li povolit graf HELM, postupujte takto:
 
 1. Přidejte úložiště grafů Azure do místního seznamu spuštěním následujícího příkazu:
@@ -279,7 +282,7 @@ Po úspěšném nasazení grafu můžete zkontrolovat data pro hybridní cluster
 >[!NOTE]
 >Latence ingestování je přibližně pět až deset minut od agenta k potvrzení v pracovním prostoru Azure Log Analytics. Stav clusteru zobrazit hodnotu **Žádná data** nebo **Neznámý,** dokud všechna požadovaná data monitorování je k dispozici ve službě Azure Monitor.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud při pokusu o povolení monitorování hybridního clusteru Kubernetes narazíte na chybu, zkopírujte skript prostředí PowerShell [TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) a uložte jej do složky v počítači. Tento skript je k dispozici pomoci zjistit a opravit problémy, které se vyskytly. Problémy, které je určen k detekci a pokus o opravu jsou následující:
 

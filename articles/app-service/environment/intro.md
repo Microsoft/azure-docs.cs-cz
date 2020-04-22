@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 9bc40e71c1da6eb60b62cd08c51df89a7f35af09
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 08a97f0f7b1a6a65feb7a2ec041001f2199ffdf7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057372"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770634"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Úvod do služby App Service Environment #
  
@@ -24,7 +24,7 @@ Azure App Service Environment je funkce služby Azure App Service, která poskyt
 * Webové aplikace pro Linux 
 * Kontejnery Dockeru
 * Mobilní aplikace
-* Funkce
+* Functions
 
 Služby App Service Environment (ASE) jsou vhodné pro úlohy aplikací, které mají tyto požadavky:
 
@@ -34,7 +34,7 @@ Služby App Service Environment (ASE) jsou vhodné pro úlohy aplikací, které 
 
 Zákazníci můžou vytvořit víc služeb ASE v jedné oblasti Azure nebo v několika oblastech Azure. Díky této flexibilitě jsou služby ASE ideální pro horizontální škálování nestavových aplikačních vrstev s podporou náročných úloh RPS.
 
-Služby ASE jsou izolované tak, aby spouštěly jenom aplikace jednoho zákazníka, a vždycky jsou nasazené ve virtuální síti. Zákazníci mají podrobnou kontrolu nad příchozími i odchozími přenosy v síti aplikací. Aplikace můžou prostřednictvím sítí VPN vytvářet vysokorychlostní zabezpečená připojení k místním firemním prostředkům.
+Ases hostitele aplikací pouze od jednoho zákazníka a to v jednom ze svých virtuálních sítí. Zákazníci mají podrobnou kontrolu nad příchozími i odchozími přenosy v síti aplikací. Aplikace můžou prostřednictvím sítí VPN vytvářet vysokorychlostní zabezpečená připojení k místním firemním prostředkům.
 
 * Služby ASE mají vlastní cenovou úroveň – přečtěte si, jak [izolovaná nabídka](https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment) pomáhá zajistit hyperškálovatelnost a zabezpečení.
 * Služby [App Service Environments v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) poskytují rámec pro zabezpečení aplikací v podsíti vaší sítě a také vaše vlastní nasazení služby Azure App Service.

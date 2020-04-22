@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 204b5dd4661b34aae8b76d65505a65e20f293f0f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115333"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767976"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -62,14 +62,11 @@ Nespravované disky virtuálních počítačů nejsou podporovány v účtech, k
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="file-system-support-in-sdks"></a>Podpora systému souborů v sadách SDK
+## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Podpora systému souborů v sadách SDK, PowerShellu a Azure CLI
 
-Získat a nastavit operace acl nejsou aktuálně rekurzivní.
-
-## <a name="file-system-support-in-powershell-and-azure-cli"></a>Podpora systému souborů v PowerShellu a Azure CLI
-
-- [Podpora powershellu](data-lake-storage-directory-file-acl-powershell.md) a [azure cli](data-lake-storage-directory-file-acl-cli.md) jsou ve verzi Public Preview.
 - Získat a nastavit operace acl nejsou aktuálně rekurzivní.
+- [Podpora vykreslování klišé Azure](data-lake-storage-directory-file-acl-cli.md) je ve verzi Public Preview.
+
 
 ## <a name="lifecycle-management-policies"></a>Zásady správy životního cyklu
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: e4489f7c810799ca8e89565fe698f398f942b089
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3b2819b33feba52c3b02f0e2104d4106bd04cbb
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251707"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770059"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Jak aktualizovat agenta Azure Linuxu na virtuálním počítači
 
@@ -29,6 +29,8 @@ Chcete-li aktualizovat azure [linuxového agenta](https://github.com/Azure/WALin
 - Připojení k tomuto virtuálnímu počítači SM systému Linux pomocí ssh.
 
 Vždy byste měli nejprve zkontrolovat balíček v úložišti distribuce Linuxu. Je možné, že balíček k dispozici nemusí být nejnovější verze, nicméně povolení automatické aktualizace zajistí, že Linux Agent bude vždy získat nejnovější aktualizaci. Pokud máte problémy s instalací od správců balíčků, měli byste vyhledat podporu od dodavatele distro.
+
+> ! [POZNÁMKA] Další informace najdete [v tématu Schválené distribuce Linuxu v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)
 
 ## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Minimální podpora agentů virtuálních strojů v Azure
 Než budete pokračovat, ověřte [minimální podporu verzí pro agenty virtuálních strojů v Azure.](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)

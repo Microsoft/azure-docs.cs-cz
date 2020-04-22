@@ -1,19 +1,19 @@
 ---
 title: Automatická správa zařízení ve velkém měřítku pomocí služby Azure IoT Hub (CLI) | Dokumenty společnosti Microsoft
 description: Automatické konfigurace Služby Azure IoT Hub slouží ke správě více zařízení nebo modulů IoT
-author: ChrisGMsft
+author: Philmea
 manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: chrisgre
-ms.openlocfilehash: 748f3e09fd03a6f37954c8dfaf4b6ae9144384bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: philmea
+ms.openlocfilehash: 76728b99f1e9309294079d4df88e563054e780e7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235601"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767568"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatická správa zařízení a modulů IoT pomocí rozhraní příkazového příkazu Azure
 
@@ -106,7 +106,7 @@ Tady jsou příklady dotazů na metriky:
 }
 ```
 
-Metriky pro moduly jsou také podobné dotazy pro zařízení, ale vyberete pro `moduleId` . `devices.modules` Například: 
+Metriky pro moduly jsou také podobné dotazy pro zařízení, ale vyberete pro `moduleId` . `devices.modules` Příklad: 
 
 ```json
 {

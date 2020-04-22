@@ -1,19 +1,19 @@
 ---
 title: Automatická správa zařízení ve velkém měřítku pomocí Azure IoT Hub | Dokumenty společnosti Microsoft
 description: Automatické konfigurace Služby Azure IoT Hub slouží ke správě více zařízení a modulů IoT
-author: ChrisGMsft
+author: Philmea
 manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: chrisgre
-ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: philmea
+ms.openlocfilehash: 1de7c34d8f8cbfa139212f29ca6be5d4eca64655
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271301"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767499"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatická správa zařízení a modulů IoT pomocí portálu Azure
 
@@ -106,7 +106,7 @@ Každá konfigurace může mít až pět vlastních metrik.
 
 2. Zadejte dotaz na **kritéria metriky**.  Dotaz je založen na vlastnostech ohlášených dvojčete zařízení.  Metrika představuje počet řádků vrácených dotazem.
 
-Například:
+Příklad:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -121,7 +121,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Pokud vytváříte metriku pro vytváření přehledů `moduleId` na `devices.modules`konfigurovaných modulech, vyberte z . Například:
+Pokud vytváříte metriku pro vytváření přehledů `moduleId` na `devices.modules`konfigurovaných modulech, vyberte z . Příklad:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules

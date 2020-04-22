@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6f22d5b2140e42f5f4b8ef5787d22b4be399c7e8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: e945fd77c2615e6f5213a9aa4fc996f0c4d2f3dd
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272521"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769987"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolení protokolování diagnostiky aplikací ve službě Azure App Service
 ## <a name="overview"></a>Přehled
@@ -39,6 +39,9 @@ Tento článek používá [portál Azure](https://portal.azure.com) a Azure CLI 
 
 ## <a name="enable-application-logging-windows"></a>Povolení protokolování aplikací (Windows)
 
+> [!NOTE]
+> Protokolování aplikací pro úložiště objektů blob můžete použít jenom účty úložiště ve stejné oblasti jako služba App Service
+
 Pokud chcete povolit protokolování aplikací pro aplikace pro Windows na [webu Azure Portal](https://portal.azure.com), přejděte do aplikace a vyberte **protokoly služby App Service**.
 
 Vyberte **Zapnuto** pro **protokolování aplikací (souborový systém)** nebo **protokolování aplikací (Blob)** nebo obojí. 
@@ -59,7 +62,7 @@ Vyberte **úroveň**nebo úroveň podrobností, které chcete protokolovat. V n�
 
 | Úroveň | Zahrnuté kategorie |
 |-|-|
-|**Disabled** (Zakázáno) | Žádný |
+|**Disabled** (Zakázáno) | Žádná |
 |**Chyba** | Chyba, kritická |
 |**Upozornění** | Varování, Chyba, Kritická|
 |**Informace** | Informace, Varování, Chyba, Kritická|

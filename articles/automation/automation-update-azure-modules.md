@@ -1,18 +1,18 @@
 ---
-title: Aktualizace modulů Azure v Azure Automation
+title: Aktualizace modulů Azure PowerShell u Azure Automation
 description: Tento článek popisuje, jak teď můžete aktualizovat běžné moduly Azure PowerShell u předpokladu, které ve výchozím nastavení v Azure Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ba926ccbb069c8620259514e0a64c56957529a0f
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: bb73b3d644e96f9596f887faaf62eb15f01956ab
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617478"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769674"
 ---
-# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Postup aktualizace modulů Azure PowerShellu ve službě Azure Automation
+# <a name="update-azure-powershell-modules-in-azure-automation"></a>Aktualizace modulů Azure PowerShell u Azure Automation
 
 Chcete-li aktualizovat moduly Azure v účtu Automation, musíte použít [runbook modulů Update Azure](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update), který je k dispozici jako open source. Pokud chcete začít používat runbook **Update-AutomationAzureModulesForAccount** k aktualizaci modulů Azure, stáhněte si ho z [úložiště modulů Runbook update Azure](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) na GitHubu. Potom jej můžete importovat do účtu Automation nebo jej spustit jako skript. Informace o tom, jak importovat runbook v účtu Automation, najdete v [tématu Import sady Runbook](manage-runbooks.md#importing-a-runbook).
 
@@ -37,7 +37,7 @@ Pokud vyvíjíte skripty místně, doporučujeme mít stejné verze modulu míst
 
 Níže jsou uvedeny některé důležité informace, které je třeba vzít v úvahu při použití tohoto článku k aktualizaci modulů Azure:
 
-* Runbook popsaný v tomto článku podporuje aktualizaci modulů Azure, AzureRM a Az ve výchozím nastavení. Další informace o aktualizaci modulů Az.Automation pomocí této sady runbook naleznete v [modulu Runbook readbooku Update Azure.](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) Při používání modulů Az v účtu Automation je třeba vzít v úvahu další důležité faktory. Další informace najdete [v tématu Používání modulů Az v účtu Automation](az-modules.md).
+* Runbook popsaný v tomto článku podporuje aktualizaci modulů Azure, AzureRM a Az ve výchozím nastavení. Další informace o aktualizaci modulů Az.Automation pomocí této sady runbook naleznete v [modulu Runbook readbooku Update Azure.](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) Při používání modulů Az v účtu Automation je třeba vzít v úvahu další důležité faktory. Další informace najdete [v tématu Správa modulů v Azure Automation](shared-resources/modules.md).
 
 * Před spuštěním tohoto runbooku se ujistěte, že váš účet Automation má vytvořené [přihlašovací údaje účtu Azure Run As.](manage-runas-account.md)
 

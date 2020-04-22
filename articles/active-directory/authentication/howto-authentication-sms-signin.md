@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b199854867c48906061cff65bad21e514456c911
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 845948d9aec28ee79a11fb11aaef4cfbf1b263fa
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81378701"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770553"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Konfigurace a povolení uživatelů pro ověřování pomocí služby Azure Active Directory (preview)
 
@@ -40,7 +40,8 @@ Chcete-li tento článek dokončit, potřebujete následující zdroje a oprávn
 * K povolení ověřování pomocí serveru SMS potřebujete oprávnění *globálního správce* v tenantovi Azure AD.
 * Každý uživatel, který je povolen v zásadách metody ověřování textových zpráv, musí mít licenci, i když ji nepoužívá. Každý povolený uživatel musí mít jednu z následujících licencí Azure AD nebo Microsoft 365:
     * [Azure AD Premium P1 nebo P2][azuread-licensing]
-    * [Microsoft 365 F1 nebo F3][m365-firstline-workers-licensing]
+    * [Microsoft 365 (M365) F1 nebo F3][m365-firstline-workers-licensing]
+    * [Podniková mobilita + zabezpečení (EMS) E3 nebo E5][ems-licensing] nebo [Microsoft 365 (M365) E3 nebo E5][m365-licensing]
 
 ## <a name="limitations"></a>Omezení
 
@@ -161,3 +162,5 @@ Další způsoby přihlášení k Azure AD bez hesla, jako je microsoft ověřov
 [office]: https://www.office.com
 [m365-firstline-workers-licensing]: https://www.microsoft.com/licensing/news/m365-firstline-workers
 [azuread-licensing]: https://azure.microsoft.com/pricing/details/active-directory/
+[ems-licensing]: https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing
+[m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 462a44f7766e0ec52ba7156d6de5ae5261e21376
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 0ecb7ee7f5c7c0ebaa87eb6b32eee1926d9e294d
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547362"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768955"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Použití služby Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě pak můžete připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure nazačátku s informacemi zde: [Azure Virtual Network Overview](../virtual-network/virtual-networks-overview.md).
@@ -108,7 +108,7 @@ Následuje seznam běžných problémů s chybnou konfigurací, ke kterým můž
 
 <a name="required-ports"> </a> Když je instance služby API Management hostována ve virtuální síti, používají se porty v následující tabulce.
 
-| Zdrojový / cílový port (porty) | Směr          | Transportní protokol |   [Značky služeb](../virtual-network/security-overview.md#service-tags) <br> Zdroj / cíl   | Účel (*)                                                 | Typ virtuální sítě |
+| Zdrojový / cílový port (porty) | Směr          | Transportní protokol |   [Značky služeb](../virtual-network/security-overview.md#service-tags) <br> Zdroj / cíl   | Účel\*( )                                                 | Typ virtuální sítě |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / [80], 443                  | Příchozí            | TCP                | INTERNET / VIRTUAL_NETWORK            | Klientská komunikace se správou API                      | Externí             |
 | * / 3443                     | Příchozí            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Koncový bod správy pro Portál Azure a Powershell         | Externí & interní  |
@@ -132,9 +132,7 @@ Následuje seznam běžných problémů s chybnou konfigurací, ke kterým můž
 
 + **Přístup k DNS**: Pro komunikaci se servery DNS je vyžadován odchozí přístup na portu 53. Pokud na druhém konci brány VPN existuje vlastní server DNS, musí být server DNS dostupný ze správy rozhraní API pro hostování podsítě.
 
-+ **Metriky a monitorování stavu:** Odchozí síťové připojení ke koncovým bodům Azure Monitoring, které řeší v následujících doménách:
-
-+ **Místní značky služeb**": Pravidla nsg umožňující odchozí připojení ke značkám služby Storage, SQL a EventHubs mohou používat místní verze těchto značek odpovídající oblasti obsahující instanci správy rozhraní API (například Storage.WestUS pro instanci správy rozhraní API v oblasti Západní USA). V nasazení s více oblastmi by skupina nsg v každé oblasti měla povolit provoz na značky služeb pro tuto oblast.
++ **Metriky a monitorování stavu**: Odchozí síťové připojení ke koncovým bodům Azure Monitoring, které se řeší v následujících doménách. Jak je znázorněno v tabulce, tyto adresy URL jsou reprezentovány pod značkou služby AzureMonitor pro použití se skupinami zabezpečení sítě.
 
     | Prostředí Azure | Koncové body                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -142,8 +140,10 @@ Následuje seznam běžných problémů s chybnou konfigurací, ke kterým můž
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com(**nové**)</li><li>shoebox2.metrics.nsatc.net(**zastaralá**)</li><li>prod3.metrics.microsoftmetrics.com(**nové**)</li><li>prod3.metrics.nsatc.net(**zastaralá**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
     | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com(**nové**)</li><li>shoebox2.metrics.nsatc.net(**zastaralá**)</li><li>prod3.metrics.microsoftmetrics.com(**nové**)</li><li>prod3.metrics.nsatc.net(**zastaralá**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
 
->[!IMPORTANT]
-> Změna clusterů výše s dns zone **.nsatc.net** na **.microsoftmetrics.com** je většinou DNS Change. Adresa IP clusteru se nezmění.
+  >[!IMPORTANT]
+  > Změna clusterů výše s dns zone **.nsatc.net** na **.microsoftmetrics.com** je většinou DNS Change. Adresa IP clusteru se nezmění.
+
++ **Místní značky služeb**: Pravidla nsg umožňující odchozí připojení ke značkám služby Storage, SQL a Event Hubs mohou používat místní verze těchto značek odpovídající oblasti obsahující instanci správy rozhraní API (například Storage.WestUS pro instanci správy rozhraní API v oblasti Západní USA). V nasazení s více oblastmi by skupina nsg v každé oblasti měla povolit provoz na značky služeb pro tuto oblast a primární oblast.
 
 + **SMTP Relay**: Odchozí síťové připojení pro přenos SMTP, `smtpi-co1.msn.com` `smtpi-ch1.msn.com`které `smtpi-db3.msn.com` `smtpi-sin.msn.com` řeší pod hostitelem , , a`ies.global.microsoft.com`
 
@@ -151,7 +151,7 @@ Následuje seznam běžných problémů s chybnou konfigurací, ke kterým můž
 
 + **Diagnostika portálu Azure**: Chcete-li povolit tok diagnostických protokolů z portálu Azure `dc.services.visualstudio.com` při použití rozšíření api management z vnitřní virtuální sítě, je vyžadován odchozí přístup na portu 443. To pomáhá při řešení problémů, kterým můžete čelit při použití rozšíření.
 
-+ **Vynutit tunelování provozu na on-prem firewall pomocí expresní trasy nebo síťové virtuální zařízení**: Společná konfigurace zákazníka je definovat vlastní výchozí trasu (0.0.0.0/0), která nutí veškerý provoz z delegované podsítě api správy tok přes místní bránu firewall nebo síťové virtuální zařízení. Tento tok provozu vždy přeruší připojení se správou rozhraní Azure API, protože odchozí provoz je blokován místně nebo na nanesené na adresu na nerozpoznatelnou sadu adres, které už nefungují s různými koncovými body Azure. Řešení vyžaduje, abyste udělali pár věcí:
++ **Vynutit tunelování provozu na místní bránu firewall pomocí expresní trasy nebo síťové virtuální zařízení**: Běžná konfigurace zákazníka je definovat vlastní výchozí trasu (0.0.0.0/0), která vynutí veškerý provoz z delegované podsítě api správy toku přes místní bránu firewall nebo síťové virtuální zařízení. Tento tok provozu vždy přeruší připojení se správou rozhraní Azure API, protože odchozí provoz je blokován místně nebo na nanesené na adresu na nerozpoznatelnou sadu adres, které už nefungují s různými koncovými body Azure. Řešení vyžaduje, abyste udělali pár věcí:
 
   * Povolte koncové body služby v podsíti, ve které je nasazena služba API Management. [Koncové body služby][ServiceEndpoints] je potřeba povolit pro Azure Sql, Azure Storage, Azure EventHub a Azure ServiceBus. Povolení koncových bodů přímo z delegované podsítě API pro tyto služby jim umožňuje používat páteřní síť Microsoft Azure poskytující optimální směrování pro provoz služeb. Pokud používáte koncové body služby s vynucenou tunelovou správou rozhraní Api, výše uvedený provoz služeb Azure není vynuceně tunelové propojení. Ostatní provoz závislostí služby správy rozhraní API je vynuceně tunelové propojení a nelze je ztratit nebo služba api management nebude fungovat správně.
     
@@ -163,7 +163,7 @@ Následuje seznam běžných problémů s chybnou konfigurací, ke kterým můž
       - SMTP relé
       - Vývojářský portál CAPTCHA
 
-## <a name="troubleshooting"></a><a name="troubleshooting"> </a>Řešení potíží
+## <a name="troubleshooting"></a><a name="troubleshooting"> </a>Poradce při potížích
 * **Počáteční instalace**: Pokud počáteční nasazení služby API Management do podsítě neproběhne úspěšně, doporučujeme nejprve nasadit virtuální počítač do stejné podsítě. Další vzdálená plocha do virtuálního počítače a ověření, že je připojení k jednomu z každého prostředku níže ve vašem předplatném Azure
     * Objekt blob úložiště Azure
     * Azure SQL Database

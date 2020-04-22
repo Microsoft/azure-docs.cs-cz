@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/25/2020
-ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 18774ae4a98b795846459251174ee47671aef39c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272263"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769888"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Plánování virtuální sítě pro Azure HDInsight
 
@@ -243,7 +243,7 @@ Pokud k řízení provozu používáte skupiny zabezpečení sítě nebo uživat
 
 ## <a name="required-ports"></a><a id="hdinsight-ports"></a>Požadované porty
 
-Pokud plánujete používat **bránu firewall** a přistupovat ke clusteru zvenčí na určitých portech, možná budete muset povolit provoz na těchto portech potřebných pro váš scénář. Ve výchozím nastavení není potřeba žádné speciální whitelisting portů tak dlouho, dokud azure management provoz vysvětlený v předchozí části je povoleno dosáhnout clusteru na portu 443.
+Pokud plánujete používat **bránu firewall** a přistupovat ke clusteru zvenčí na určitých portech, možná budete muset povolit provoz na těchto portech potřebných pro váš scénář. Ve výchozím nastavení není potřeba žádné speciální seznamy portů, pokud je povolen provoz správy Azure vysvětlený v předchozí části clusteru na portu 443.
 
 Seznam portů pro konkrétní služby najdete v [tématu Porty používané službami Apache Hadoop v dokumentu HDInsight.](hdinsight-hadoop-port-settings-for-services.md)
 
@@ -253,21 +253,10 @@ Další informace o pravidlech brány firewall pro virtuální zařízení nalez
 
 Když vytvoříte cluster HDInsight, vytvoří se také správce zatížení. Typ tohoto systému vyrovnávání zatížení je na [základní úrovni skladové položky](../load-balancer/concepts-limitations.md#skus), která má určitá omezení. Jedním z těchto omezení je, že pokud máte dvě virtuální sítě v různých oblastech, nelze se připojit k základním nástrojům pro vyrovnávání zatížení. Další informace najdete [v nejčastějších dotazech k virtuálním sítím: omezení globálního partnerského vztahu virtuálnísítě.](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 
-## <a name="transport-layer-security"></a>Zabezpečení transportní vrstvy
-
-Připojení ke clusteru prostřednictvím `https://<clustername>.azurehdinsight.net` koncového bodu veřejného clusteru jsou proxied prostřednictvím uzlů brány clusteru. Tato připojení jsou zabezpečena pomocí protokolu nazvaného TLS. Vynucení vyšších verzí protokolu TLS na branách zlepšuje zabezpečení těchto připojení. Další informace o tom, proč byste měli používat novější verze tls, naleznete [v tématu Řešení problému TLS 1.0](https://docs.microsoft.com/security/solving-tls1-problem).
-
-Ve výchozím nastavení clustery Azure HDInsight přijímají připojení TLS 1.2 na veřejných koncových bodech HTTPS a také starší verze pro zpětnou kompatibilitu. Minimální verzi TLS podporovanou na uzlech brány můžete řídit během vytváření clusteru pomocí portálu Azure nebo šablony správce prostředků. Pro portál vyberte verzi TLS na kartě **Zabezpečení + sítě** během vytváření clusteru. Pro šablonu správce prostředků v době nasazení použijte vlastnost **minSupportedTlsVersion.** Ukázkovou šablonu najdete v [tématu HDInsight minimální šablona rychlého startu TLS 1.2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Tato vlastnost podporuje tři hodnoty: "1.0", "1.1" a "1.2", které odpovídají TLS 1.0+, TLS 1.1+ a TLS 1.2+ v uvedeném pořadí.
-
-> [!IMPORTANT]
-> června 2020 bude Azure HDInsight vynucovat verze TLS 1.2 nebo novější pro všechna připojení HTTPS. Doporučujeme zajistit, aby všichni vaši klienti byli připraveni ke zpracování verzí TLS 1.2 nebo novějších verzí. Další informace najdete v [tématu Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
-
 ## <a name="next-steps"></a>Další kroky
 
 * Ukázky kódu a příklady vytváření virtuálních sítí Azure najdete v tématu [Vytváření virtuálních sítí pro clustery Azure HDInsight](hdinsight-create-virtual-network.md).
 * Příklad konfigurace HDInsightu pro připojení k místní síti najdete v tématu [Připojení HDInsightu k místní síti](./connect-on-premises-network.md).
-* Informace o konfiguraci clusterů Apache HBase ve virtuálních sítích Azure najdete v tématu [Vytváření clusterů Apache HBase na HDInsightu ve virtuální síti Azure](hbase/apache-hbase-provision-vnet.md).
-* Informace o konfiguraci geografické replikace Apache HBase najdete v tématu [Nastavení replikace clusteru Apache HBase ve virtuálních sítích Azure](hbase/apache-hbase-replication.md).
 * Další informace o virtuálních sítích Azure najdete v přehledu [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md).
 * Další informace o skupinách zabezpečení sítě naleznete v [tématu Skupiny zabezpečení sítě](../virtual-network/security-overview.md).
 * Další informace o uživatelem definovaných trasách naleznete v [tématu Uživatelem definované trasy a předávání IP](../virtual-network/virtual-networks-udr-overview.md)adres .

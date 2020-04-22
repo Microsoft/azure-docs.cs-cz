@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: a5f6ac76d509a0a63c2d641f91cd91cdb2e0d19d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 88392e4e61c28d4fe821c8176242246d10e52b23
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313811"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770900"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Vytváření clusterů založených na Linuxu ve službě HDInsight pomocí portálu Azure
 
@@ -94,7 +94,7 @@ Na kartě **Zabezpečení + sítě** zadejte následující informace:
 |Vlastnost |Popis |
 |---|---|
 |Balíček zabezpečení organizace|Volitelné: Zaškrtnutím políčka použijete **balíček Enterprise Security Package**. Další informace naleznete [v tématu Konfigurace clusteru HDInsight s balíčkem podnikového zabezpečení pomocí služby Azure Active Directory Domain Services](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).|
-|TLS|Volitelné: V rozevíracím seznamu vyberte verzi TLS. Další informace naleznete v tématu [Transport Layer Security](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security).|
+|TLS|Volitelné: V rozevíracím seznamu vyberte verzi TLS. Další informace naleznete v tématu [Transport Layer Security](./transport-layer-security.md).|
 |Virtuální síť|Volitelné: V rozevíracím seznamu vyberte existující virtuální síť a podsíť. Další informace najdete [v tématu Plánování nasazení virtuální sítě pro clustery Azure HDInsight](hdinsight-plan-virtual-network-deployment.md). Článek obsahuje specifické požadavky na konfiguraci pro virtuální síť.|
 |Nastavení šifrování disku|Volitelné: Zaškrtněte políčko, chcete-li použít šifrování. Další informace naleznete v [tématu Customer-managed key disk encryption](./disk-encryption.md).|
 |Proxy REST Kafka|Toto nastavení je k dispozici pouze pro cluster typu Kafka. Další informace naleznete [v tématu Použití serveru REST](./kafka/rest-proxy.md).|

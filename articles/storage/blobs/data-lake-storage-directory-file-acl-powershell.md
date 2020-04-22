@@ -1,27 +1,24 @@
 ---
-title: Azure Data Lake Storage Gen2 PowerShell pro soubory & Seznamy AC (preview)
+title: Azure Data Lake Storage Gen2 PowerShell pro soubory & Seznamy ACL
 description: Pomocí rutin prostředí PowerShell můžete spravovat adresáře a seznamy řízení přístupu k souborům a adresářům (ACL) v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
 services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: b59c68e3f2edc0fbe5eee3c3861a3e5116d4fac6
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 68ffe40f93be3d10666ebad2eaa153fc9dc9687f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262379"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768021"
 ---
-# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 (preview)
+# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
 Tento článek ukazuje, jak pomocí prostředí PowerShell vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
-
-> [!IMPORTANT]
-> Modul Prostředí PowerShell, který je součástí tohoto článku, je aktuálně ve verzi Public Preview.
 
 [Mapování Gen1 až Gen2](#gen1-gen2-map) | [Poskytnout zpětnou vazbu](https://github.com/Azure/azure-powershell/issues)
 
@@ -33,7 +30,7 @@ Tento článek ukazuje, jak pomocí prostředí PowerShell vytvářet a spravova
 > * Rozhraní .NET Framework je nainstalováno 4.7.2 nebo vyšší. Viz [Stažení rozhraní .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
 > * Verze `5.1` PowerShellu nebo vyšší.
 
-## <a name="install-powershell-modules"></a>Instalace modulů PowerShellu
+## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 
 1. Pomocí následujícího příkazu ověřte, zda je `5.1` nainstalovaná verze prostředí PowerShell nebo vyšší.    
 
@@ -43,16 +40,10 @@ Tento článek ukazuje, jak pomocí prostředí PowerShell vytvářet a spravova
     
    Pokud chcete upgradovat verzi PowerShellu, přečtěte si [část Upgrade existujícího Prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
     
-2. Nainstalujte nejnovější modul **PowershellGet.** Potom zavřete a znovu otevřete konzolu PowerShell.
+2. Nainstalujte modul **Az.Storage.**
 
    ```powershell
-   Install-Module PowerShellGet –Repository PSGallery –Force 
-   ```
-
-3. Nainstalujte modul **náhledu Az.Storage.**
-
-   ```powershell
-   Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force 
+   Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
    Další informace o instalaci modulů PowerShellu najdete [v tématu Instalace modulu Azure PowerShellu.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)

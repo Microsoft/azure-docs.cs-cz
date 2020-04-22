@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582804"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769750"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Poznámky k verzi Azure Media Services v3
 
@@ -35,7 +35,13 @@ Chcete-li mít aktuální informace o nejnovějším vývoji, tento článek obs
 > [Na portálu Azure](https://portal.azure.com/) můžete spravovat živé [události](live-events-outputs-concept.md)v3 , zobrazit [datové zdroje](assets-concept.md)v3 , získat informace o přístupu k virtuálním i matům. Pro všechny ostatní úlohy správy (například Transformace a úlohy) použijte [rozhraní REST API](https://aka.ms/ams-v3-rest-ref), ROZHRANÍ [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 Další informace naleznete v [tématu Migrace pokyny pro přechod z Media Services v2 v3](migrate-from-v2-to-v3.md#known-issues).
- 
+
+## <a name="april-2020"></a>Duben 2020
+
+### <a name="improvements-in-documentation"></a>Vylepšení dokumentace
+
+Dokumenty azure media playeru byly migrovány do [dokumentace k Azure](../azure-media-player/azure-media-player-overview.md).
+
 ## <a name="january-2020"></a>Leden 2020
 
 ### <a name="improvements-in-media-processors"></a>Vylepšení mediálních procesorů
@@ -361,4 +367,5 @@ Podívejte se na článek [komunity Mediálních služeb Azure](media-services-c
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled](media-services-overview.md)
+- [Aktualizace dokumentace služby Media Services v3](docs-release-notes.md)
 - [Poznámky k verzi Media Services v2](../previous/media-services-release-notes.md)

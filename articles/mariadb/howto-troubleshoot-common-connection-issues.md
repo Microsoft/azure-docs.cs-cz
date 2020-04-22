@@ -1,17 +1,17 @@
 ---
 title: Řešení problémů s připojením – Databáze Azure pro MariaDB
 description: Zjistěte, jak řešit problémy s připojením k Azure Database pro MariaDB, včetně přechodných chyb vyžadujících opakování, problémy s bránou firewall a výpadky.
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: d134bcd0c5f9bfde0fdb095122d54848873174be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6817807d0a85b1465beafc86045ea1e0dd8a31ec
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536356"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770344"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Řešení potíží s připojením ke službě Azure Database for MariaDB
 

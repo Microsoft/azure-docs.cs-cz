@@ -2,17 +2,17 @@
 title: Řešení problémů s připojením – Azure Database for MySQL
 description: Zjistěte, jak řešit problémy s připojením k Azure Database for MySQL, včetně přechodných chyb vyžadujících opakování, problémy s bránou firewall a výpadky.
 keywords: připojení mysql,připojovací řetězec,problémy s připojením,přechodná chyba,chyba připojení
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: a68f351276c47f623728a279ad551744c61b6d14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b22d47d177c4606396b0c8b2279301121c905ca2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063234"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768277"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Řešení potíží s připojením ke službě Azure Database for MySQL
 

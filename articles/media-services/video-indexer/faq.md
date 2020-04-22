@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: dd41596b6631bb63e1625325f8bec065b43881cd
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421388"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767211"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Nejčastější dotazy videoindexeru
 
@@ -43,7 +43,7 @@ Další informace a další funkce videoindexeru naleznete v [tématu Přehled](
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>Jak začít s video indexerem?
 
-Video Indexer obsahuje bezplatnou zkušební verzi nabízí, která vám poskytuje 600 minut ve webovém rozhraní a 2 400 minut prostřednictvím rozhraní API. Můžete [se přihlásit do webového rozhraní Video Indexer](https://www.videoindexer.ai/) a vyzkoušet si to sami pomocí libovolné webové identity a bez nutnosti nastavení předplatného Azure. 
+Video Indexer obsahuje bezplatnou zkušební verzi nabízí, která vám poskytuje 600 minut ve webovém rozhraní a 2 400 minut prostřednictvím rozhraní API. Můžete [se přihlásit do webového rozhraní Video Indexer](https://www.videoindexer.ai/) a vyzkoušet si to sami pomocí libovolné webové identity a bez nutnosti nastavení předplatného Azure. Postupujte podle [tohoto jednoduchého úvodu laboratoře](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md) získat lepší představu o tom, jak používat Video Indexer.
 
 Chcete-li indexovat videa a zvuk letí ve velkém měřítku, můžete připojit Video Indexer k placenépředplatné Microsoft Azure. Další informace o cenách naleznete na stránce [s cenami.](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)
 
@@ -61,9 +61,18 @@ Ne, Video Indexer poskytuje integraci více modelů strojového učení do jedno
 
 Video Indexer podporuje většinu běžných formátů médií. Další podrobnosti najdete v seznamu [standardních formátů Kodéru médií Azure.](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats)
 
-### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Jak nahrát médium do video indexeru?
+### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Jak nahraji mediální soubor do video indexeru a jaká jsou omezení?
 
-Na webovém portálu Video Indexer můžete nahrát mediální soubor pomocí dialogového okna pro nahrávání souborů nebo odkazem na adresu URL, která je přímo hostitelem zdrojového souboru (viz [příklad).](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4) Žádná adresa URL, která je hostitelem mediálního obsahu pomocí kódu iFrame nebo embed, nebude fungovat (viz [příklad](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). Rozhraní API video indexeru vyžaduje zadání vstupního souboru pomocí adresy URL nebo bajtového pole. Nahrávání přes adresu URL pomocí rozhraní API je omezeno na 10 GB, ale nemá časový limit. Další informace naleznete v tomto [návodu .](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)
+Na webovém portálu Video Indexer můžete nahrát mediální soubor pomocí dialogového okna pro nahrávání souborů nebo odkazem na adresu URL, která je přímo hostitelem zdrojového souboru (viz [příklad).](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4) Žádná adresa URL, která je hostitelem mediálního obsahu pomocí kódu iFrame nebo embed, nebude fungovat (viz [příklad](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). 
+
+Další informace naleznete v tomto [návodu .](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)
+
+#### <a name="limitations"></a>Omezení
+
+* Název videa nesmí přesáhnout 80 znaků.
+* Pokud nahrajete video pomocí bajtového pole, velikost videa je omezena na 2 GB (a 30 GB při použití adresy URL). 
+
+Úplný seznam naleznete v [tématu Nahrazování aspekty a omezení](upload-index-videos.md#uploading-considerations-and-limitations).
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Jak dlouho trvá video indexeru extrahovat poznatky z médií?
 
@@ -71,7 +80,7 @@ Doba potřebný k indexování souboru videa nebo zvuku, a to jak pomocí rozhra
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Mohu vytvořit přizpůsobené pracovní postupy pro automatizaci procesů pomocí videoindexeru?
 
-Ano, video indexer můžete integrovat do technologií bez serveru, jako jsou Logic Apps, Flow a [Azure Functions](https://azure.microsoft.com/services/functions/). Další podrobnosti o [aplikaci logiky](https://azure.microsoft.com/services/logic-apps/) a [toku](https://flow.microsoft.com/en-us/) konektory pro Video Indexer [zde](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/). 
+Ano, video indexer můžete integrovat do technologií bez serveru, jako jsou Logic Apps, Flow a [Azure Functions](https://azure.microsoft.com/services/functions/). Další podrobnosti o [aplikaci logiky](https://azure.microsoft.com/services/logic-apps/) a [toku](https://flow.microsoft.com/en-us/) konektory pro Video Indexer [zde](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/). Můžete vidět některé projekty automatizace provedené partnery v [ukrepu ukázek video indexeru.](https://github.com/Azure-Samples/media-services-video-indexer)
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>Ve kterých oblastech Azure je k dispozici indexer videa?
 
@@ -84,6 +93,12 @@ Ano. V Video Indexer můžete přizpůsobit některé z dostupných modelů, aby
 Například náš model Osoba podporuje out-of-the-box 1,000,000 tváře celebrity uznání, ale můžete také trénovat rozpoznat další tváře, které nejsou v této databázi. 
 
 Podrobnosti naleznete v článcích o přizpůsobení [modelů Osoba](customize-person-model-overview.md), [Značky](customize-brands-model-overview.md)a [Jazyk.](customize-language-model-overview.md) 
+
+###  <a name="can-i-edit-the-videos-in-my-library"></a>Mohu videa v knihovně upravovat?
+
+Ano. Stisknutím tlačítka **upravit video** ze zobrazení knihovny nebo tlačítka otevřít **v editoru** ze zobrazení přehrávače se dostanete na kartu **Projekty.** Můžete vytvořit nový projekt a přidat další videa z knihovny a společně je upravit, jakmile budete hotovi, můžete vykreslit video a stáhnout. 
+
+Pokud chcete získat přehled o novém videu, indexujte ho pomocí Video Indexeru a zobrazí se ve vaší knihovně s přehledy.
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Co je sla pro video indexer?
 

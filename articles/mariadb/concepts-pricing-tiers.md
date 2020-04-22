@@ -1,23 +1,23 @@
 ---
 title: Cenové úrovně – Azure Database for MariaDB
 description: Seznamte se s různými cenovými úrovněmi pro Azure Database for MariaDB, včetně výpočetních generací, typů úložišť, velikosti úložiště, virtuálních jader, paměti a období uchovávání záloh.
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 39af6850810fa471003cea27ed274972fb2ff046
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c057bebf94362b3b9e42db9d311e99f1e35c651
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528026"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770130"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Databáze Azure pro cenové úrovně MariaDB
 
 Databázi Azure pro server MariaDB můžete vytvořit v jedné ze tří různých cenových úrovní: Basic, General Purpose a Memory Optimized. Cenové úrovně se liší podle množství výpočetních prostředků ve virtuálních jádrech, které lze zřídit, paměti na virtuální jádro a technologie úložiště používané k ukládání dat. Všechny prostředky jsou zřízeny na úrovni serveru MariaDB. Server může mít jednu nebo více databází.
 
-|    | **Basic** | **Obecný účel** | **Optimalizováno pro paměť** |
+|    | **Základní** | **Obecný účel** | **Optimalizováno pro paměť** |
 |:---|:----------|:--------------------|:---------------------|
 | Výpočetní generace | Gen 5 |Gen 5 | Gen 5 |
 | virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,7 +29,7 @@ Chcete-li zvolit cenovou úroveň, použijte jako výchozí bod následující t
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Basic | Úlohy, které vyžadují lehký výpočetní a vstupně-v.I výkon. Příklady zahrnují servery používané pro vývoj nebo testování nebo malé měřítko zřídka používané aplikace. |
+| Základní | Úlohy, které vyžadují lehký výpočetní a vstupně-v.I výkon. Příklady zahrnují servery používané pro vývoj nebo testování nebo malé měřítko zřídka používané aplikace. |
 | Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou propustností vstupně-v.a. Příklady zahrnují servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
 | Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
 
@@ -39,11 +39,11 @@ Po vytvoření serveru lze počet virtuálních jader a cenové úrovně (s výj
 
 Výpočetní prostředky jsou k dispozici jako virtuální jádra, které představují logický procesor základního hardwaru. Logické procesory Gen 5 jsou založeny na procesorech Intel E5-2673 v4 (Broadwell) 2.3-GHz.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Úložiště, které zřídíte, je množství kapacity úložiště, které je k dispozici pro váš server Azure Database pro server MariaDB. Úložiště se používá pro databázové soubory, dočasné soubory, protokoly transakcí a protokoly serveru MariaDB. Celková velikost úložiště, které zřídíte, také definuje kapacitu vstupně-videa, která je k dispozici pro váš server.
 
-|    | **Basic** | **Obecný účel** | **Optimalizováno pro paměť** |
+|    | **Základní** | **Obecný účel** | **Optimalizováno pro paměť** |
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Úložiště pro všeobecné účely | Úložiště pro všeobecné účely |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
@@ -77,7 +77,7 @@ Například pokud jste zřídit 1000 GB úložiště a skutečné využití pře
 
 Nezapomeňte, že úložiště lze škálovat pouze nahoru, nikoli dolů.
 
-## <a name="backup"></a>Zálohování
+## <a name="backup"></a>Backup
 
 Služba automaticky přebírá zálohy serveru. Můžete vybrat dobu uchovávání od 7 do 35 dnů. Servery s optimalizací pro obecné účely a paměť se mohou rozhodnout, že budou mít geograficky redundantní úložiště pro zálohování. Další informace o zálohách v [článku koncepty](concepts-backup.md).
 

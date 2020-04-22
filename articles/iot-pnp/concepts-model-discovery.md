@@ -1,20 +1,20 @@
 ---
 title: Implementace zjišťování modelu náhledu IoT Plug and Play | Dokumenty společnosti Microsoft
 description: Jako vývojář řešení se dozvíte, jak můžete implementovat zjišťování modelu IoT Plug and Play ve vašem řešení.
-author: ChrisGMsft
-ms.author: chrisgre
+author: Philmea
+ms.author: philmea
 ms.date: 12/26/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 94e5e6fb826528aab1a358d44cb51bfcd6219032
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 74eb38269a3c7fbdc6d95554a8a8cef14eb0b787
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673563"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770473"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>Implementace zjišťování modelu Náhled technologie IoT Plug and Play v řešení IoT
 

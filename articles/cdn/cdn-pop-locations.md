@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2019
+ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 34d864c3902a1b9eb82be760259c08fb2e8c2ff9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 227aae23babbcd5d734a10821d9311f91532ea4e
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260220"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770983"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Pokrytí Azure CDN podle metra 
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "81260220"
 > 
 
 
-Tento článek uvádí aktuální metro s umístěními bodu přítomnosti (POP) seřazených podle oblasti pro produkty Sítě pro doručování obsahu Azure (CDN). Každý metro může obsahovat více než jeden POP. Například Azure CDN od Microsoftu má 130 POP v 80 metros. 
+Tento článek uvádí aktuální metro s umístěními bodu přítomnosti (POP) seřazených podle oblasti pro produkty Sítě pro doručování obsahu Azure (CDN). Každý metro může obsahovat více než jeden POP. Například Azure CDN od Microsoftu má 130 POP v 82 metros. 
 
 > [!IMPORTANT]
 > Umístění ve městě POP pro **Azure CDN z Akamai** nejsou jednotlivě zveřejněny.  
@@ -39,10 +39,10 @@ Tento článek uvádí aktuální metro s umístěními bodu přítomnosti (POP)
 | Region (Oblast) | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
 | Severní Amerika | Toronto, Kanada<br />Vancouver, Kanada<br />Montreal, Kanada<br />Querétaro, Mexiko<br />San Juan, Portoriko<br />Ashburn, VA, Spojené státy americké<br />Atlanta, GA, Spojené státy americké<br />Boston, MA, Spojené státy americké<br />Cheyenne, WY, Spojené státy americké<br />Chicago, IL, Spojené státy americké<br /> Dallas, TX, Spojené státy americké<br />Denver, CO, Spojené státy americké<br />Honolulu, HI, Spojené státy americké<br />Houston, TX, Spojené státy americké<br />Las Vegas, NV, Spojené státy americké<br />Los Angeles, Kalifornie, Spojené státy americké<br />Miami, FL, Spojené státy americké<br />New York, NY, Spojené státy americké<br />Newark, NJ, Spojené státy americké<br />Phoenix, AZ, Spojené státy americké<br />Portland, OR, Spojené státy americké<br />San Antonio, TX, Spojené státy americké<br />San Jose, KALIFORNIE, Spojené státy americké<br />Seattle, WA, Spojené státy americké | Guadalajara, Mexiko<br />Mexico City, Mexiko<br />Puebla, Mexiko<br />Querétaro, Mexiko<br />Atlanta, GA, Spojené státy americké<br />Boston, MA, Spojené státy americké<br />Chicago, IL, Spojené státy americké<br />Dallas, TX, Spojené státy americké<br />Denver, CO, Spojené státy americké<br />Detroit, MI, Spojené státy americké<br />Los Angeles, Kalifornie, Spojené státy americké<br />Miami, FL, Spojené státy americké<br />New York, NY, Spojené státy americké<br />Filadelfie, PA, Spojené státy americké<br />San Jose, KALIFORNIE, Spojené státy americké<br />Seattle, WA, Spojené státy americké<br />Washington, DC, Spojené státy americké | Kanada<br />Mexiko<br />USA |
-| Jižní Amerika | Campinas, Brazílie<br />Rio de Janeiro, Brazílie<br />Sao Paulo, Brazílie<br />Santiago, Chile | Buenos Aires, Argentina<br />Rio de Janeiro, Brazílie<br />São Paulo, Brazílie<br />Valparaíso, Chile<br />Barranquilla, Kolumbie<br />Medellin, Kolumbie<br />Quito, Ekvádor<br />Lima, Peru | Argentina<br />Brazílie<br />Chile<br />Columbia<br />Ekvádor<br />Peru<br />Uruguay |
+| Jižní Amerika | Campinas, Brazílie<br />Rio de Janeiro, Brazílie<br />Sao Paulo, Brazílie<br />Santiago, Chile | Buenos Aires, Argentina<br />Rio de Janeiro, Brazílie<br />São Paulo, Brazílie<br />Valparaíso, Chile<br />Bogota, Kolumbie<br />Barranquilla, Kolumbie<br />Medellin, Kolumbie<br />Quito, Ekvádor<br />Lima, Peru | Argentina<br />Brazílie<br />Chile<br />Columbia<br />Ekvádor<br />Peru<br />Uruguay |
 | Evropa | Vídeň, Rakousko<br />Brusel, Belgie<br />Sofia, Bulharsko<br />Záhřeb, Chorvatsko<br />Praha, Česká republika<br />Kodaň, Dánsko<br /> Helsinky, Finsko<br /> Oslo, Norsko<br />Marseille, Francie<br />Paříž, Francie<br />Berlin, Německo<br />Frankfurt, Německo<br />Atény, Řecko<br />Budapešť, Maďarsko<br />Dublin, Irsko<br />Milan, Itálie<br />Amsterdam, Nizozemsko<br />Varšava, Polsko<br />Lisabon, Portugalsko<br />Bukurešť, Rumunsko<br />Barcelona, Španělsko<br />Madrid, Španělsko<br />Stockholm, Švédsko<br />Curych, Švýcarsko<br />Londýn, Velká Británie<br />Manchester, Velká Británie | Vídeň, Rakousko<br />Kodaň, Dánsko<br />Helsinky, Finsko<br />Marseille, Francie<br />Paříž, Francie<br />Frankfurt, Německo<br />Milan, Itálie<br />Riga, Lotyšsko<br />Amsterdam, Nizozemsko<br />Varšava, Polsko<br />Madrid, Španělsko<br />Stockholm, Švédsko<br />Londýn, Velká Británie | Rakousko<br />Bulharsko<br />Dánsko<br />Finsko<br />Francie<br />Německo<br />Řecko<br />Irsko<br />Itálie<br />Nizozemsko<br />Polsko<br />Rusko<br />Španělsko<br />Švédsko<br />Švýcarsko<br />Spojené království |
 | Afrika | Kapské Město, Jihoafrická republika<br />Johannesburg, Jihoafrická republika<br />Lagos, Nigérie<br />Nairobi, Keňa | Johannesburg, Jihoafrická republika | Jižní Afrika |
-| Střední východ | Dubaj, Spojené arabské emiráty | Muscat, Omán<br />Fujirah, Spojené arabské emiráty | Katar<br />Spojené arabské emiráty |
+| Střední východ | Dubaj, Spojené arabské emiráty<br />Tel Aviv, Izrael<br />Istanbul, Turecko | Muscat, Omán<br />Fujirah, Spojené arabské emiráty | Katar<br />Spojené arabské emiráty |
 | Indie | Chennai, Indie<br />Hyderabad, Indie<br />Mumbai, Indie<br />Nové Dillí, Indie | Bengaluru (Bangalore), Indie<br />Chennai, Indie<br />Mumbai, Indie<br />Nové Dillí, Indie<br /> | Indie |
 | Asie | Hongkong<br />Osaka, Japonsko<br />Tokyo, Japonsko<br />Kuala Lumpur, Malajsie<br />Jakarta, Indonésie<br />Manila, Filipíny<br />Singapur<br />Busan, Jižní Korea<br />Soul, Jižní Korea<br />Tchaj-pej, Tchaj-wan<br />Bangkok, Thajsko<br />Saigon, Vietnam | Hongkong<br />Batam, Indonésie<br />Jakarta, Indonésie<br />Osaka, Japonsko<br />Tokyo, Japonsko<br />Singapur<br />Soul, Jižní Korea<br />Kaohsiung, Tchaj-wan<br />Tchaj-pej, Tchaj-wan | Hongkong<br />Indonésie<br />Izrael<br />Japonsko<br />Macau<br />Malajsie<br />Filipíny<br />Singapur<br />Jižní Korea<br />Tchaj-wan<br />Thajsko<br />Turecko<br />Vietnam |
 | Austrálie a Nový Zéland | Brisbane, Austrálie<br />Melbourne, Austrálie<br />Perth, Austrálie<br />Sydney, Austrálie<br />Auckland, Nový Zéland | Melbourne, Austrálie<br />Sydney, Austrálie<br />Auckland, Nový Zéland | Austrálie<br />Nový Zéland |

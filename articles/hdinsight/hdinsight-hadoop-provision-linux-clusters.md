@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 246ec08e9b4edb33fa49318b68cc4364534282b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bba71ab35920027cc7296e774936c3d1deb8f92
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064650"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770321"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů ve službě HDInsight se softwarem Apache Hadoop, Apache Spark, Apache Kafka a dalšími
 
@@ -32,11 +32,11 @@ V následující tabulce jsou uvedeny různé metody, které můžete použít k
 
 | Clustery vytvořené pomocí | Webový prohlížeč | Příkazový řádek | REST API | Sada SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Portál Azure](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [portál Azure](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
-| [Curl](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
+| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Šablony Azure Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 Tento článek vás provede nastavením na [webu Azure Portal](https://portal.azure.com), kde můžete vytvořit cluster HDInsight.
@@ -79,8 +79,8 @@ Azure HDInsight aktuálně poskytuje následující typy clusterů, každý se s
 | [Interaktivní dotaz](./interactive-query/apache-interactive-query-get-started.md) |Ukládání do mezipaměti v paměti pro interaktivní a rychlejší dotazy Hive |
 | [Kafka](kafka/apache-kafka-introduction.md) | Distribuovaná platforma pro streamování, kterou lze použít k vytváření datových kanálů a aplikací datových proudů datových kanálů a aplikací v reálném čase |
 | [Služby ML](r-server/r-server-overview.md) |Různé statistiky velkých objemů dat, prediktivní modelování a možnosti strojového učení |
-| [Jiskra](spark/apache-spark-overview.md) |Zpracování v paměti, interaktivní dotazy, zpracování mikrodávkového datového proudu |
-| [Bouře](storm/apache-storm-overview.md) |Zpracování událostí v reálném čase |
+| [Spark](spark/apache-spark-overview.md) |Zpracování v paměti, interaktivní dotazy, zpracování mikrodávkového datového proudu |
+| [Storm](storm/apache-storm-overview.md) |Zpracování událostí v reálném čase |
 
 #### <a name="version"></a>Version
 
@@ -104,9 +104,9 @@ Uživatelské jméno SSH má následující omezení:
 * Povolené speciální`_` znaky: a`@`
 * Znaky nejsou povoleny: #;."',\/:'!*?$(){}[]<>|&--=+%~^mezera
 * Maximální délka: 64
-* Vyhrazená jména: hadoop, uživatelé, oozie, úl, mapred, ambari-qa, zookeeper, tez, hdfs, sqoop, příze, hcat, ams, hbase, storm, správce, admin, uživatel, user1, test, user2, test1, user3, admin1, 1, 123, a, actuser, adm, admin2, aspnet, backup, konzole, David, David, David, host, John, majitel, kořen, server, SQL, podpora, support_388945a0, sys, test2, test3, user4, user5, jiskra
+* Vyhrazená jména: hadoop, uživatelé, oozie, úl, mapred, ambari-qa, zookeeper, tez, hdfs, sqoop, příze, hcat, ams, hbase, bouře, správce, admin, uživatel, user1, test, user2, test1, user3, admin1, 1, 123, a, actuser, adm, admin2, aspnet, backup, console, david, host, john, vlastník, kořen, server, SQL, podpora, support_388945a0, sys, test2, test3, user4, user5, jiskra
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 ![Nastavení úložiště clusteru: koncové body kompatibilní s HDFS](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
 
@@ -169,7 +169,7 @@ Další informace o vytváření clusteru HDInsight přilehlého k doméně najd
 
 ### <a name="tls"></a>TLS
 
-Další informace naleznete v tématu [Transport Layer Security](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security)
+Další informace naleznete v tématu [Transport Layer Security](./transport-layer-security.md)
 
 ### <a name="virtual-network"></a>Virtuální síť
 

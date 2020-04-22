@@ -7,16 +7,16 @@ manager: saudas
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 8a150e2f197f24db5da331195290d11ad925c47e
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 907aa83bc293aacd9920d8fd79a1b3184dd1d5dc
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392638"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767593"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes Service
 
-V současné době vyžaduje cluster služby Azure Kubernetes (AKS) (konkrétně zprostředkovatel cloudu Kubernetes) a identitu k vytvoření dalších prostředků, jako jsou nástroje pro vyrovnávání zatížení a spravované disky v Azure, tato identita může být buď *spravovaná identita,* nebo *instanční objekt služby*. Pokud používáte [instanční objekt](kubernetes-service-principal.md), musíte zadat jeden nebo AKS vytvoří jeden vaším jménem. Pokud používáte spravovanou identitu, bude to automaticky vytvořeno aks. Clustery používající instanční objekty nakonec dosáhnou stavu, ve kterém musí být instanční objekt obnoven, aby cluster fungoval. Správa instančních objektů zvyšuje složitost, což je důvod, proč je jednodušší použít spravované identity místo. Stejné požadavky na oprávnění platí pro instanční objekty i spravované identity.
+V současné době cluster služby Azure Kubernetes (AKS) (konkrétně poskytovatel cloudu Kubernetes) vyžaduje identitu k vytvoření dalších prostředků, jako jsou nástroje pro vyrovnávání zatížení a spravované disky v Azure, tato identita může být buď *spravovaná identita* nebo *instancíř.* Pokud používáte [instanční objekt](kubernetes-service-principal.md), musíte zadat jeden nebo AKS vytvoří jeden vaším jménem. Pokud používáte spravovanou identitu, bude to automaticky vytvořeno aks. Clustery používající instanční objekty nakonec dosáhnou stavu, ve kterém musí být instanční objekt obnoven, aby cluster fungoval. Správa instančních objektů zvyšuje složitost, což je důvod, proč je jednodušší použít spravované identity místo. Stejné požadavky na oprávnění platí pro instanční objekty i spravované identity.
 
 *Spravované identity* jsou v podstatě obálka kolem instančních objektů a zjednodušit jejich správu. Další informace najdete v informacích o [spravovaných identitách pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 

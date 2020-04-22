@@ -1,18 +1,18 @@
 ---
 title: Běžná rozhraní – Náhled ioT plug and play | Dokumenty společnosti Microsoft
 description: Popis běžných rozhraní pro vývojáře IoT Plug and Play
-author: ChrisGMsft
-ms.author: chrisgre
+author: Philmea
+ms.author: philmea
 ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c6ac90f917b9afc37b3a39d8da679fbcad091778
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5773ec2b3ea88fa9a507b7c1b0b84bb7ea305a94
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234708"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770491"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT Plug and Play Preview běžná rozhraní
 
@@ -20,7 +20,7 @@ Očekává se, že všechna zařízení IoT Plug and Play implementují někter�
 
 ## <a name="summary-of-common-interfaces"></a>Shrnutí společných rozhraní
 
-| Name (Název) | ID | Popis | Implementovaná sadou Azure IoT SDK | Musí být deklarována v modelu schopností. |
+| Název | ID | Popis | Implementovaná sadou Azure IoT SDK | Musí být deklarována v modelu schopností. |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | Informace o modelu | urn:azureiot:ModelDiscovery:ModelInformation:1 | Pro zařízení deklarovat ID modelu schopností a rozhraní. Vyžadováno pro všechna zařízení IoT Plug and Play. | Ano | Ne |
 | Informace o klientovi Digitální dvojče | urn:azureiot:Klient:SDKInformace:1 | Sada SDK klienta pro připojení zařízení k Azure. Vyžadováno pro [certifikaci](tutorial-build-device-certification.md) | Ano | Ne |
@@ -33,7 +33,7 @@ Očekává se, že všechna zařízení IoT Plug and Play implementují někter�
 
 ## <a name="retrieve-interface-definitions-from-the-public-repository"></a>Načtení definic rozhraní z veřejného úložiště
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 
 Rozšíření Azure IoT pro rozhraní příkazového řádku Azure můžete použít k načtení společných rozhraní z úložiště veřejného modelu.
 
@@ -60,5 +60,5 @@ az iot pnp capability-model show --model {ModelID}
 Nyní, když jste se dozvěděli o běžných rozhraních, zde jsou některé další zdroje:
 
 - [Definiční jazyk digitálního dvojčete (DTDL)](https://aka.ms/DTDL)
-- [Sady SDK pro zařízení jazyka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+- [Sada SDK pro zařízení jazyka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)

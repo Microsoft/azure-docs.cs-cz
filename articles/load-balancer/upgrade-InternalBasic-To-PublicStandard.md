@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659981"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770398"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgrade interního vytápěče zatížení Azure – je vyžadováno odchozí připojení
 [Azure Standard Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o skladové jednotce vykladače zatížení naleznete v [tabulce porovnání](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus). Vzhledem k tomu, že standardní interní vydělávač zatížení neposkytuje odchozí připojení, poskytujeme řešení pro vytvoření standardního veřejného vytáčíče zatížení.
@@ -21,8 +21,7 @@ Upgrade má čtyři fáze:
 
 1. Migrace konfigurace do standardního nástroje pro vyrovnávání veřejného zatížení
 2. Přidání virtuálních aplikací do back-endových fondů standardního veřejného vyvažovače zatížení
-3. Vytvoření odchozího pravidla v systému Vyrovnávání zatížení pro odchozí připojení
-4. Nastavení pravidel skupiny zabezpečení sítě pro podsítě/virtuální sítě, která by měla být zdržet se nebo do Internetu
+3. Nastavení pravidel skupiny zabezpečení sítě pro podsítě/virtuální sítě, která by měla být zdržet se nebo do Internetu
 
 Tento článek popisuje migraci konfigurace. Přidání virtuálních počítačů do back-endových fondů se může lišit v závislosti na konkrétním prostředí. Jsou však [k dispozici](#add-vms-to-backend-pools-of-standard-load-balancer)některá obecná doporučení na vysoké úrovni .
 
@@ -32,6 +31,7 @@ K dispozici je skript Azure PowerShell, který provádí následující akce:
 
 * Vytvoří standardní vyrovnávání veřejného zatížení skladové položky ve skupině prostředků a umístění, které zadáte.
 * Bezproblémově zkopíruje konfigurace základního nástroje pro vyrovnávání vnitřního zatížení skladové položky do nově vytvořeného standardního nástroje pro vyrovnávání veřejného zatížení.
+* Vytvoří odchozí pravidlo, které umožňuje připojení odchozího přenosu.
 
 ### <a name="caveatslimitations"></a>Upozornění\Omezení
 
@@ -42,7 +42,7 @@ K dispozici je skript Azure PowerShell, který provádí následující akce:
 
 ## <a name="download-the-script"></a>Stáhněte si skript
 
-Stáhněte si skript pro migraci z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0).
+Stáhněte si skript pro migraci z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0).
 ## <a name="use-the-script"></a>Použití skriptu
 
 V závislosti na místním nastavení prostředí prostředí PowerShellu a předvolbách máte dvě možnosti:

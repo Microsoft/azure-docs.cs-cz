@@ -1,24 +1,16 @@
 ---
-title: 'Úvodní příručka: Získejte záměr s prohlížečem - LUIS'
-titleSuffix: Azure Cognitive Services
+title: 'Úvodní příručka: Dotaz na předpověď pomocí prohlížeče – LUIS'
 description: V tomto rychlém startu použijte dostupnou veřejnou aplikaci LUIS k určení záměru uživatele z konverzačního textu v prohlížeči.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 02/03/2020
-ms.author: diberry
-ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/21/2020
+ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76987950"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769970"
 ---
-# <a name="quickstart-get-intent-with-a-browser"></a>Úvodní příručka: Získání záměru s prohlížečem
+# <a name="quickstart-query-prediction-runtime-with-user-text"></a>Úvodní příručka: Doba běhu předpovědi dotazu s textem uživatele
 
 Abyste porozuměli výsledkům koncového bodu předpovědí služby LUIS, zobrazte si výsledek předpovědi ve webovém prohlížeči.
 
@@ -26,13 +18,15 @@ Abyste porozuměli výsledkům koncového bodu předpovědí služby LUIS, zobra
 
 Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
 
-* Vlastní klíč pro vytváření nebo předpověď jazyka (LUIS), který lze získat z [portálu LUIS (Preview).](https://preview.luis.ai/) Pokud ještě nemáte předplatné na vytvoření klíče, můžete se zaregistrovat k [bezplatnému účtu](https://azure.microsoft.com/free/).
-* ID veřejné aplikace: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`.
+* Informace o prostředku pro jazykové porozumění (LUIS):
+    * **Predikční klíč** - který lze získat z [luis portálu](https://www.luis.ai/). Pokud ještě nemáte předplatné na vytvoření klíče, můžete se zaregistrovat k [bezplatnému účtu](https://azure.microsoft.com/free/).
+    * **Poddoména koncového bodu předpověď** – subdoména je také **název** prostředku LUIS.
+* ID aplikace LUIS – použijte veřejné IOT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`ID aplikace . Uživatelský dotaz použitý v kódu rychlého startu je specifický pro tuto aplikaci.
 
 ## <a name="use-the-browser-to-see-predictions"></a>Zobrazení předpovědí pomocí prohlížeče
 
 1. Otevřete webový prohlížeč.
-1. Použijte úplné adresy URL níže `YOUR-KEY` a nahraďte je vlastním klíčem Luis Authoring nebo Prediction. Požadavky jsou požadavky GET a zahrnují autorizaci pomocí klíče pro vytváření nebo předpověď luis jako parametr řetězce dotazu.
+1. Použijte úplné adresy URL níže `YOUR-KEY` a nahraďte je vlastním klíčem Luis Prediction. Požadavky jsou požadavky GET a zahrnují autorizaci s klíčem LUIS Prediction jako parametr řetězce dotazu.
 
     #### <a name="v3-prediction-request"></a>[Požadavek na předpověď V3](#tab/V3-1-1)
 
@@ -40,7 +34,7 @@ Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
     Formát adresy URL V3 pro požadavek **koncového** bodu GET (podle slotů) je:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY
     `
 
     #### <a name="v2-prediction-request"></a>[Požadavek na předpověď V2](#tab/V2-1-2)
@@ -48,7 +42,7 @@ Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
     Formát adresy URL V2 pro požadavek koncového bodu **GET** je:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-KEY&q=turn on all lights
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-LUIS-PREDICTION-KEY&q=turn on all lights
     `
 
 1. Vložte adresu URL do okna prohlížeče a stiskněte Enter. V prohlížeči se zobrazí výsledek JSON, který značí, že služba LUIS rozpoznala záměr `HomeAutomation.TurnOn` jako hlavní záměr a entitu `HomeAutomation.Operation` s hodnotou `on`.
@@ -104,7 +98,7 @@ Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
     Chcete-li zobrazit všechny záměry , přidat `show-all-intents=true` na konec řetězce **dotazu**:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY&show-all-intents=true
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&show-all-intents=true
     `
 
     ```JSON
@@ -137,7 +131,7 @@ Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
     Chcete-li zobrazit všechny záměry , přidat `verbose=true` na konec řetězce **dotazu**:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key={your-key}&verbose=true
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&verbose=true
     `
 
     ```json
@@ -173,12 +167,11 @@ Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
     }
     ```
 
-
-<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->
-
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
+Další informace:
+* [Koncový bod predikce V3](luis-migration-api-v3.md)
+* [Vlastní subdomény](../cognitive-services-custom-subdomains.md)
 
 > [!div class="nextstepaction"]
 > [Vytvoření aplikace na portálu LUIS](get-started-portal-build-app.md)

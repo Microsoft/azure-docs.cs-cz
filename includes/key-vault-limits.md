@@ -2,16 +2,16 @@
 author: rothja
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 2d16febd4676ca7ba763eb7bc6dcecda4608ebb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74224375"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768735"
 ---
-#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Klíčové transakce (maximální počet transakcí povolených za 10 sekund, na trezor na oblast<sup>1</sup>):
+### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Klíčové transakce (maximální počet transakcí povolených za 10 sekund, na trezor na oblast<sup>1</sup>):
 
 |Typ klíče|Klíč HSM<br>VYTVOŘIT klíč|Klíč HSM<br>Všechny ostatní transakce|Klíč softwaru<br>VYTVOŘIT klíč|Klíč softwaru<br>Všechny ostatní transakce|
 |:---|---:|---:|---:|---:|
@@ -34,7 +34,8 @@ ms.locfileid: "74224375"
 > - 125 RSA 4 096bitové transakce GET s klíčem hsm
 > - 124 TRANSAKCÍ GET s klíčem hsm RSA 4 096 bitů rsa a 8 transakcí GET s klíčem hsm RSA 2 048 bitů RSA
 
-#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Tajné klíče, klíče účtů spravovaného úložiště a transakce trezoru:
+### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Tajné klíče, klíče účtů spravovaného úložiště a transakce trezoru:
+
 | Typ transakcí | Maximální počet povolených transakcí za 10 sekund na úschovnu na oblast<sup>1</sup> |
 | --- | --- |
 | Všechny transakce |2 000 |
@@ -42,3 +43,10 @@ ms.locfileid: "74224375"
 Informace o tom, jak zpracovat omezení při překročení těchto omezení, naleznete v [tématu Azure Key Vault omezení pokyny](../articles/key-vault/key-vault-ovw-throttling.md).
 
 <sup>1</sup> Limit pro celý předplatné pro všechny typy transakcí je pětkrát na limit trezoru klíčů. Například transakce HSM ostatní na předplatné jsou omezeny na 5 000 transakcí za 10 sekund na odběr.
+
+### <a name="azure-private-link-integration"></a>Integrace Privátního spojení Azure
+
+| Prostředek | Omezení |
+| -------- | ----- |
+| Privátní koncové body na trezor klíčů | 64 |
+| Trezory klíčů s privátními koncovými body na předplatné | 64 |

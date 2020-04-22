@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/21/2019
 ms.author: spelluru
-ms.openlocfilehash: a0dbd92533703a56f1ec2478fab8944656129247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bb871119bece71c705ad9621a7c76c4b5ed0bc7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295511"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770240"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v devtest labs
 DevTest Labs umožňuje zadat artefakt, který se má přidat do virtuálního virtuálního soudu v době vytvoření virtuálního virtuálního aplikace nebo po vytvoření virtuálního soudu. Tento artefakt může být nástroj nebo aplikace, kterou chcete nainstalovat na virtuální počítač. Artefakty jsou definovány v souboru JSON načtenéz githubu nebo azure devops git úložiště.
@@ -52,20 +52,20 @@ Chcete-li přidat úložiště do testovacího prostředí, nejprve získejte kl
 4. Uložte adresu URL. Adresu URL použijete později.
 5. Chcete-li vytvořit osobní přístupový token, vyberte v rozevírací nabídce uživatelského účtu **položku Můj profil**.
 6. Na stránce s informacemi o profilu vyberte **možnost Zabezpečení**.
-7. Na kartě **Zabezpečení** vyberte **Přidat**.
-8. Na stránce **Vytvořit osobní přístupový token:**
-   1. Zadejte **popis** tokenu.
-   2. V seznamu **Platnost vyprší** vyberte **180 dní**.
-   3. V seznamu **Účty** vyberte **Všechny přístupné účty**.
-   4. Vyberte možnost **Všechny obory.**
-   5. Vyberte **Vytvořit token**.
+7. Na kartě **Bezpečnostní > osobní přístupové tokeny** vyberte **+ Nový token**.
+8. Na stránce **Vytvořit nový osobní přístupový token:**
+   1. Zadejte **název** tokenu.
+   2. V seznamu **Organizace** vyberte **Všechny přístupné organizace**.
+   3. V seznamu **Vypršení platnosti (UTC)** vyberte **90 dní**nebo vlastní definovanou dobu vypršení platnosti.
+   4. Vyberte možnost **Úplný přístup** pro obory.
+   5. Vyberte **Vytvořit**.
 9. Nový token se zobrazí v seznamu **tokenů osobního přístupu.** Vyberte **Kopírovat token**a uložte hodnotu tokenu pro pozdější použití.
 10. Pokračujte do části Připojit testovací prostředí k úložišti.
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 Tato část obsahuje kroky k přidání úložiště artefaktů do testovacího prostředí na webu Azure Portal.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Další služby**a ze seznamu služeb vyberte **DevTest Labs.**
 3. Ze seznamu testovacích prostředí vyberte testovací prostředí.
 4. V levé nabídce vyberte **Možnost Konfigurace a zásady.**

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 4042fc05f278915fe72bf8fc4e6afd69a5bbb4b9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537419"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770966"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Nasazení agenta Azure Monitor Application Insights pro místní servery
 
@@ -36,16 +36,16 @@ Agent Application Insights se https://www.powershellgallery.com/packages/Az.Appl
 - Podívejte se na [podrobné pokyny](status-monitor-v2-detailed-instructions.md) pro podrobný ponor o tom, jak začít.
 
 ## <a name="powershell-api-reference"></a>Odkaz na rozhraní API prostředí PowerShell
-- [Zakázat-ApplicationInsightsMonitoring](status-monitor-v2-api-disable-monitoring.md)
-- [Funkce Disable-InstrumentationEngine](status-monitor-v2-api-disable-instrumentation-engine.md)
-- [Enable-ApplicationInsightsMonitoring](status-monitor-v2-api-enable-monitoring.md)
-- [Enable-InstrumentationEngineEngine](status-monitor-v2-api-enable-instrumentation-engine.md)
-- [Get-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-get-config.md)
-- [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md)
-- [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
-- [Spuštění aplikaceInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
+- [Zakázat-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-applicationinsightsmonitoring)
+- [Funkce Disable-InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-instrumentationengine)
+- [Enable-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)
+- [Enable-InstrumentationEngineEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-instrumentationengine)
+- [Get-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringconfig)
+- [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus)
+- [Set-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#set-applicationinsightsmonitoringconfig)
+- [Spuštění aplikaceInsightsMonitoringTrace](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 - [Odstraňování potíží](status-monitor-v2-troubleshoot.md)
 - [Známé problémy](status-monitor-v2-troubleshoot.md#known-issues)
 
@@ -64,7 +64,7 @@ Každá z těchto možností je popsána v [podrobných pokynech](status-monitor
 
 - Jak ověřím, že povolení proběhlo úspěšně?
 
-  - Rutina [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) slouží k ověření, že povolení bylo úspěšné.
+  - Rutina [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus) slouží k ověření, že povolení bylo úspěšné.
   - Doporučujeme použít [live metriky](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) rychle zjistit, jestli vaše aplikace odesílá telemetrická data.
 
   - Pomocí [analýzy protokolů](../log-query/get-started-portal.md) můžete také vypsat všechny cloudové role, které aktuálně odesílají telemetrii:

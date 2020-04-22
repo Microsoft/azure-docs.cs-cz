@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/16/2020
+ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56341affee721b3ee6676da401e03dbbca84e597
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0cfc66789360f78c927dd157305074ed5ea6f32a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538235"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768439"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Jaký software SAP je podporován pro nasazení Azure
 Tento článek popisuje, jak můžete zjistit, jaký software SAP je podporován pro nasazení Azure a jaké jsou nezbytné verze operačního systému nebo verze DBMS.
@@ -139,6 +139,7 @@ Podpora platformy SAP Hybris Commerce v Azure je podrobně popsána na [Wiki Hyb
 
 - SQL Server a Oracle na platformě operačního systému Windows. Platí stejné minimální verze jako pro SAP NetWeaver. Podrobnosti [najdete v poznámce podpory SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 - SAP HANA na Red Hat a SUSE Linux. Sap HANA certifikované typy virtuálních počítačů jsou povinné jako dokumentované dříve v [tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support). Obchodní platforma SAP (Hybris) je považována za pracovní zátěž OLTP
+- SQL Azure DB od SAP (Hybris) Commerce Platform verze 1811
 
 
 

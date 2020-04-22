@@ -2,17 +2,17 @@
 title: Zpracování přechodných chyb připojení – Databáze Azure pro PostgreSQL – jeden server
 description: Zjistěte, jak zpracovat přechodné chyby připojení pro Azure Database for PostgreSQL – jeden server.
 keywords: postgresql připojení,připojovací řetězec,problémy s připojením,přechodná chyba,chyba připojení
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: fe5b772946bece165a4e09f170355dc7b595a48f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8138512dfc893f3523c5ad78a93aef1bcdedfe70
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74768839"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768035"
 ---
 # <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>Zpracování přechodných chyb připojení ke službě Azure Database for PostgreSQL – Jeden server
 

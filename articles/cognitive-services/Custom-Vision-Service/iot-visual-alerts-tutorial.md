@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: f66347727ad3c1b8eaf1f0e023abe1f2eeefcacb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403726"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769872"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Kurz: Použití vlastního vidění se zařízením IoT k nahlášení vizuálních stavů
 
 Tato ukázková aplikace ukazuje, jak pomocí vlastního vidění trénovat zařízení s kamerou ke zjišťování vizuálních stavů. Tento scénář zjišťování můžete spustit na zařízení IoT pomocí exportovaného modelu ONNX.
 
-Vizuální stav popisuje obsah obrázku: prázdnou místnost nebo místnost s lidmi, prázdnou příjezdovou cestu s nákladním vozidlem a tak dále. Na obrázku níže můžete vidět aplikaci, která detekuje, kdy je před kamerou umístěn banán nebo jablko.
+Vizuální stav popisuje obsah obrázku: prázdnou místnost nebo místnost s lidmi, prázdnou příjezdovou cestu nebo příjezdovou cestu s nákladním vozidlem a tak dále. Na obrázku níže můžete vidět aplikaci, která detekuje, kdy je před kamerou umístěn banán nebo jablko.
 
 ![Animace uživatelského rozhraní označující ovoce před kamerou](./media/iot-visual-alerts-tutorial/scoring.gif)
 

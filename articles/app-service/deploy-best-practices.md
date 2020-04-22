@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 14946a05f021a9b155fd9a9621f73bde980970fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75750461"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770697"
 ---
 # <a name="deployment-best-practices"></a>Doporučené postupy nasazení
 
@@ -37,6 +37,92 @@ Mechanismus nasazení je akce, která se používá k vložíní vytvořené apl
 
 Nástroje pro nasazení, jako jsou moduly plug-in Azure Pipelines, Jenkins a editor, používají jeden z těchto mechanismů nasazení.
 
+## <a name="use-deployment-slots"></a>Použití slotů pro nasazení
+
+Kdykoli je to možné, použijte [sloty nasazení](deploy-staging-slots.md) při nasazování nového produkčního sestavení. Když používáte úroveň Standard App Service Plan nebo lepší, můžete nasadit aplikaci do pracovního prostředí, ověřit změny a provést kouřové testy. Až budete připraveni, můžete vyměnit pracovní a produkční sloty. Operace prohození zahřeje potřebné instance pracovníka tak, aby odpovídaly vašemu výrobnímu měřítku, čímž eliminuje prostoje.
+
+### <a name="continuously-deploy-code"></a>Průběžně nasazovat kód
+
+Pokud váš projekt určil větve pro testování, QA a pracovní, pak každá z těchto větví by měla být průběžně nasazena do pracovního slotu. (Tento návrh se označuje jako [návrh Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).) To umožňuje zúčastněným stranám snadno posoudit a otestovat nasazenou větev. 
+
+Průběžné nasazení by nikdy nemělo být povoleno pro produkční slot. Místo toho by vaše výrobní větev (často hlavní) měla být nasazena do neprodukčního slotu. Až budete připraveni uvolnit základní větev, vyměňte ji do produkčního slotu. Přepnutí do produkčního prostředí – namísto nasazení do produkčního prostředí – zabraňuje prostojům a umožňuje vrátit změny zpět dalším prohozením. 
+
+![Vizuální použití slotu](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+
+### <a name="continuously-deploy-containers"></a>Průběžné nasazování kontejnerů
+
+Pro vlastní kontejnery z Dockeru nebo jiných registrů kontejnerů nasaďte bitovou kopii do pracovního slotu a přeměňte na produkční, abyste zabránili prostojům. Automatizace je složitější než nasazení kódu, protože je nutné posunout bitovou kopii do registru kontejneru a aktualizovat značku bitové kopie ve webové aplikaci.
+
+Pro každou větev, kterou chcete nasadit do patice, nastavte automatizaci tak, aby při každém potvrzení větve udělala následující kroky.
+
+1. **Vytvořte a označte bit ovou bitovou kopii**. Jako součást kanálu sestavení označte bitovou kopii id potvrzení git, časovým razítkem nebo jinými identifikovatelnými informacemi. Je nejlepší nepoužívat výchozí "nejnovější" značku. V opačném případě je obtížné trasovat zpět, jaký kód je aktuálně nasazen, což ztěžuje ladění.
+1. **Zatlačte na označený obrázek**. Jakmile je bitová kopie vytvořena a označena, kanál odešle bitovou kopii do našeho registru kontejnerů. V dalším kroku slot nasazení bude vyžádat tagované bitové kopie z registru kontejneru.
+1. **Aktualizujte slot pro nasazení novou značkou bitové kopie**. Po aktualizaci této vlastnosti se web automaticky restartuje a vytáhne novou bitovou kopii kontejneru.
+
+![Vizuální použití slotu](media/app-service-deploy-best-practices/slot_flow_container_diagram.png)
+
+Níže jsou uvedeny příklady pro běžné architektury automatizace.
+
+### <a name="use-azure-devops"></a>Použití Azure DevOps
+
+Služba App Service má [integrované průběžné doručování](deploy-continuous-deployment.md) kontejnerů prostřednictvím Centra nasazení. Přejděte do aplikace na [webu Azure Portal](https://portal.azure.com/) a v části **Nasazení**vyberte **Centrum nasazení** . Podle pokynů vyberte úložiště a pobočku. Tím nakonfigurujete kanál sestavení a vydání DevOps tak, aby automaticky vytvářel, označoval a nasazoval kontejner, když jsou nové revize odesílány do vybrané větve.
+
+### <a name="use-github-actions"></a>Použití akcí GitHubu
+
+Můžete také automatizovat nasazení kontejneru [pomocí akce GitHub](containers/deploy-container-github-action.md).  Níže uvedený soubor pracovního postupu vytvoří a označí kontejner s ID potvrzení, zasune jej do registru kontejnerů a aktualizuje zadanou patici webu novou značkou bitové kopie.
+
+```yaml
+name: Build and deploy a container image to Azure Web Apps
+
+on:
+  push:
+    branches:
+    - <your-branch-name>
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@master
+
+    -name: Authenticate using a Service Principal
+      uses: azure/actions/login@v1
+      with:
+        creds: ${{ secrets.AZURE_SP }}
+
+    - uses: azure/container-actions/docker-login@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push the image tagged with the git commit hash
+      run: |
+        docker build . -t contoso/demo:${{ github.sha }}
+        docker push contoso/demo:${{ github.sha }}
+
+    - name: Update image tag on the Azure Web App
+      uses: azure/webapps-container-deploy@v1
+      with:
+        app-name: '<your-webapp-name>'
+        slot-name: '<your-slot-name>'
+        images: 'contoso/demo:${{ github.sha }}'
+```
+
+### <a name="use-other-automation-providers"></a>Použití jiných poskytovatelů automatizace
+
+Kroky uvedené výše platí pro jiné automatizační nástroje, jako je CircleCI nebo Travis CI. Je však nutné použít Azure CLI k aktualizaci slotů nasazení s novými značkami bitové kopie v posledním kroku. Chcete-li použít rozhraní příkazového příkazu Azure ve skriptu automatizace, vygenerujte instanční objekt pomocí následujícího příkazu.
+
+```shell
+az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
+   --scopes /subscriptions/{subscription}/resourceGroups/{resource-group} \
+   --sdk-auth
+```
+
+Ve skriptu se `az login --service-principal`přihlaste pomocí a zadejte informace o objektu zabezpečení. Potom můžete `az webapp config container set` nastavit název kontejneru, značku, adresu URL registru a heslo registru. Níže jsou uvedeny některé užitečné odkazy pro vás k vytvoření kontejneru CI procesu.
+
+- [Jak se přihlásit do azure cli na Circle CI](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
+
 ## <a name="language-specific-considerations"></a>Důležité informace týkající se jazyka
 
 ### <a name="java"></a>Java
@@ -49,13 +135,9 @@ Ve výchozím nastavení Kudu provede kroky sestavení pro`npm install`aplikaci 
 
 ### <a name="net"></a>.NET 
 
-Ve výchozím nastavení Kudu provede kroky sestavení pro`dotnet build`vaši aplikaci .Net ( ). Pokud používáte službu sestavení, jako je Azure DevOps, pak sestavení Kudu je zbytečné. Chcete-li zakázat sestavení Kudu, `SCM_DO_BUILD_DURING_DEPLOYMENT`vytvořte nastavení `false`aplikace , s hodnotou .
+Ve výchozím nastavení Kudu provede kroky sestavení pro`dotnet build`vaši aplikaci .NET ( ). Pokud používáte službu sestavení, jako je Azure DevOps, pak sestavení Kudu je zbytečné. Chcete-li zakázat sestavení Kudu, `SCM_DO_BUILD_DURING_DEPLOYMENT`vytvořte nastavení `false`aplikace , s hodnotou .
 
 ## <a name="other-deployment-considerations"></a>Další důležité informace o nasazení
-
-### <a name="use-deployment-slots"></a>Použití slotů pro nasazení
-
-Kdykoli je to možné, použijte [sloty nasazení](deploy-staging-slots.md) při nasazování nového produkčního sestavení. Když používáte úroveň Standard App Service Plan nebo lepší, můžete nasadit aplikaci do pracovního prostředí, ověřit změny a provést kouřové testy. Až budete připraveni, můžete vyměnit pracovní a produkční sloty. Operace prohození zahřeje potřebné instance pracovníka tak, aby odpovídaly vašemu výrobnímu měřítku, čímž eliminuje prostoje. 
 
 ### <a name="local-cache"></a>Místní mezipaměť
 

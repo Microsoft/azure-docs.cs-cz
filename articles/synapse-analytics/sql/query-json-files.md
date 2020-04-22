@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1054328216d0517b3f450ba4fe08f3bef32d68f7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 645baf9102785d223fd1f23ae52a4609725f795b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81431719"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770810"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotaz na soubory JSON pomocí SQL na vyžádání (preview) v Azure Synapse Analytics
 
@@ -145,4 +145,4 @@ WHERE
 Další články v této sérii předvedou, jak:
 
 - [Dotazování složek a více souborů](query-folders-multiple-csv-files.md)
-- [Vytváření a používání zobrazení](create-use-views.md).
+- [Vytváření a používání zobrazení](create-use-views.md)

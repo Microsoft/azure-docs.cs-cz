@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b9bac14ff47107a4b39f12989685e2e510569ba2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf1db2d737de7004b5ab71c8e0e44d61d1da8c9
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72757079"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768517"
 ---
 # <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>Případy použití pro integrované analýzy s Azure Cosmos DB
 
@@ -37,7 +37,7 @@ S nativně integrované Apache Spark, Azure Cosmos DB poskytuje rychlý, jednodu
 
 V některých případech může být nutné odpovědět na otázky založené na datech jako v určitém okamžiku v čase nad událostmi dokončenými v minulosti. Chcete-li například získat počet stavů aktivit aplikace CRM k určitému datu. Pokud jste sestavu spustili před týdnem, počet stavů by byl podle stavů jednotlivých aktivit v tomto okamžiku. Spuštění stejné zprávy dnes vám dá počet činností, jejichž stavy jsou, jak jsou dnes, které se mohou změnit od minulého týdne, protože procházejí jejich životní cyklus od otevřeného k zavření. Takže je třeba podat zprávu o snímku v každé fázi životního cyklu případu.
 
-V tradičních scénářích datového skladu není koncept snímku možný, protože datové sklady nejsou navrženy tak, aby jej začlenili, a data poskytují pouze aktuální zobrazení toho, co se děje. S Azure Cosmos DB mají uživatelé možnost implementovat koncept cestování v čase, možnost dotazovat a spouštět analýzy dat retrospektivně a požádat o to, jak data vypadala v určitém časovém okamžiku v historii. To znamená, že uživatelé mohou snadno zobrazit aktuální i historické zobrazení dat a spustit analýzu na něm.
+S Azure Cosmos DB mají uživatelé možnost implementovat koncept cestování v čase, možnost dotazovat a spouštět analýzy dat retrospektivně a požádat o to, jak data vypadala v určitém časovém okamžiku v historii. To znamená, že uživatelé mohou snadno zobrazit aktuální i historické zobrazení dat a spustit analýzu na něm.
 
 ## <a name="globally-distributed-machine-learning-and-ai"></a>Globálně distribuované strojové učení a umělá ai
 

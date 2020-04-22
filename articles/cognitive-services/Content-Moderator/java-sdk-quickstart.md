@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5dd1c1bb2b321e617efc430ce48745c06a827305
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f86a54b53b73da9c798564d13d659844842e6f67
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76772452"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768701"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Úvodní příručka: Klientská knihovna Content Moderator pro Javu
 
@@ -89,13 +89,13 @@ mkdir -p src/main/java
 
 Poté vytvořte soubor s názvem *ContentModeratorQuickstart.java* v nové složce. Otevřete soubor v upřednostňovaném editoru nebo rozhraní IDE a nahoře importujte následující knihovny:
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
 
 ## <a name="object-model"></a>Objektový model
 
 Následující třídy zpracovávají některé hlavní funkce sady Content Moderator Java SDK.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Tato třída je potřebná pro všechny funkce Content Moderator. Můžete vytvořit konkretizovat s informacemi o předplatném a použít k vytvoření instance jiných tříd.|
 |[Moderování obrázku](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Tato třída poskytuje funkce pro analýzu obrázků pro obsah pro dospělé, osobní informace nebo lidské tváře.|
@@ -120,7 +120,7 @@ V `main` metodě aplikace vytvořte objekt [ContentModeratorClient](https://docs
 > [!NOTE]
 > Pokud jste vytvořili proměnnou prostředí po spuštění aplikace, budete muset zavřít a znovu otevřít editor, IDE nebo prostředí, které ji spustilo, abyste měli přístup k proměnné.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
 ## <a name="moderate-images"></a>Střední obrázky
 
@@ -137,42 +137,42 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Potom do souboru *ContentModeratorQuickstart.java* přidejte do třídy **ContentModeratorQuickstart** následující definici třídy. Tato vnitřní třída bude použita později v procesu moderování obrazu.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
 
 ### <a name="iterate-through-images"></a>Iterate prostřednictvím obrázků
 
 Dále přidejte následující kód na `main` konec metody. Nebo jej můžete přidat do samostatné metody, `main`která je volána z . Tento kód prochází každý řádek souboru _ImageFiles.txt._
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
 
 ### <a name="check-for-adultracy-content"></a>Kontrola obsahu pro dospělé/pikantní
 Tento řádek kódu kontroluje obrázek na dané adrese URL pro obsah pro dospělé nebo pikantní. Informace o těchto podmínkách naleznete v koncepční příručce moderování obrázků.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_ar)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_ar)]
 
 ### <a name="check-for-text"></a>Kontrola textu
 Tento řádek kódu kontroluje, zda obrázek nezkontroluje viditelný text.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_text)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_text)]
 
 ### <a name="check-for-faces"></a>Kontrola ploch
 Tento řádek kódu kontroluje obrázek pro lidské tváře.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_faces)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_faces)]
 
 Nakonec uložte vrácené `EvaluationData` informace v seznamu.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_storedata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_storedata)]
 
 ### <a name="print-results"></a>Tisk výsledků
 
 Po `while` smyčku přidejte následující kód, který vytiskne výsledky do konzoly a do výstupního *souboru, src/main/resources/ModeonOutput.json*.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 
 Zavřete `try` příkaz a `catch` přidejte příkaz k dokončení metody.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
@@ -205,4 +205,4 @@ V tomto rychlém startu jste se naučili používat knihovnu Java Content Modera
 >[Koncepty moderování obrázků](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Co je Azure Content Moderator?](./overview.md)
-* Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/blob/master/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java).
+* Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java).

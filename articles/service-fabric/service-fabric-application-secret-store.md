@@ -3,12 +3,12 @@ title: Úložiště centrálních tajných klíčů azure service fabric
 description: Tento článek popisuje, jak používat centrální úložiště tajných klíčů ve službě Azure Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589160"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770410"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Centrální úložiště tajných klíčů ve službě Azure Fabric 
 Tento článek popisuje, jak používat centrální úložiště tajných klíčů (CSS) v Azure Service Fabric k vytvoření tajných kódů v aplikacích Service Fabric. CSS je místní mezipaměť tajného úložiště, která uchovává citlivá data, jako je heslo, tokeny a klíče, šifrovaná v paměti.
@@ -47,31 +47,9 @@ Chcete-li povolit css, přidejte do konfigurace `fabricSettings` clusteru násle
      ]
 ```
 ## <a name="declare-a-secret-resource"></a>Deklarovat tajný zdroj
-Tajný prostředek můžete vytvořit pomocí šablony Azure Resource Manager nebo rozhraní REST API.
-
-### <a name="use-resource-manager"></a>Použít Správce prostředků
-
-Pomocí následující šablony můžete použít Správce prostředků k vytvoření tajného prostředku. Šablona vytvoří `supersecret` tajný zdroj, ale zatím není pro tajný prostředek nastavena žádná hodnota.
-
-
-```json
-   "resources": [
-      {
-        "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-          }
-        }
-      ]
-```
-
-### <a name="use-the-rest-api"></a>Použití rozhraní REST API
+Tajný prostředek můžete vytvořit pomocí rozhraní REST API.
+  > [!NOTE] 
+  > Pokud cluster používá ověřování systému Windows, je požadavek REST odeslán prostřednictvím nezabezpečeného kanálu HTTP. Doporučujeme použít cluster založený na X509 se zabezpečenými koncovými body.
 
 Chcete-li `supersecret` vytvořit tajný prostředek pomocí rozhraní REST `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`API, vytvořte požadavek PUT na program . K vytvoření tajného prostředku potřebujete certifikát clusteru nebo klientský certifikát správce.
 
@@ -81,48 +59,6 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 ```
 
 ## <a name="set-the-secret-value"></a>Nastavení tajné hodnoty
-
-### <a name="use-the-resource-manager-template"></a>Použití šablony Správce prostředků
-
-K vytvoření a nastavení tajné hodnoty použijte následující šablonu Správce prostředků. Tato šablona nastaví `supersecret` tajnou hodnotu tajného prostředku jako verzi `ver1`.
-```json
-  {
-  "parameters": {
-  "supersecret": {
-      "type": "string",
-      "metadata": {
-        "description": "supersecret value"
-      }
-   }
-  },
-  "resources": [
-    {
-      "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-        }
-    },
-    {
-      "apiVersion": "2018-07-01-preview",
-      "name": "supersecret/ver1",
-      "type": "Microsoft.ServiceFabricMesh/secrets/values",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "Microsoft.ServiceFabricMesh/secrets/supersecret"
-      ],
-      "properties": {
-        "value": "[parameters('supersecret')]"
-      }
-    }
-  ],
-  ```
-### <a name="use-the-rest-api"></a>Použití rozhraní REST API
 
 Pomocí následujícího skriptu můžete použít rozhraní REST API k nastavení tajné hodnoty.
 ```powershell

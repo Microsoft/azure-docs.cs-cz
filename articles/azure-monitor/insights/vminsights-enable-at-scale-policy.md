@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 7069f2cc96b8876f5514acfa4ba49274b61be46f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282932"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767256"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Povolení Azure Monitoru pro virtuální počítače pomocí zásad Azure
 
@@ -79,13 +79,13 @@ Povolení Azure Monitoru pro virtuální počítače pomocí Azure Policy ve va�
 - Přiřaďte iniciativu k oboru: skupině pro správu, předplatnému nebo skupině prostředků.
 - Zkontrolujte a najakte výsledky dodržování předpisů.
 
-Další informace o přiřazování zásad Azure najdete v [tématu Přehled zásad Azure](../../governance/policy/overview.md#policy-assignment) a zkontrolujte [přehled skupin pro správu,](../../governance/management-groups/overview.md) než budete pokračovat.
+Další informace o přiřazování zásad Azure najdete v [tématu Přehled zásad Azure](../../governance/policy/overview.md#assignments) a zkontrolujte [přehled skupin pro správu,](../../governance/management-groups/overview.md) než budete pokračovat.
 
 ### <a name="policies-for-azure-vms"></a>Zásady pro virtuální počítače Azure
 
 Definice zásad pro virtuální počítač Azure jsou uvedeny v následující tabulce.
 
-|Name (Název) |Popis |Typ |
+|Název |Popis |Typ |
 |-----|------------|-----|
 |Povolení Azure Monitoru pro virtuální počítače |Povolte Azure Monitor pro virtuální počítače v zadaném oboru (skupina pro správu, předplatné nebo skupina prostředků). Jako parametr převezme pracovní prostor Log Analytics. |Iniciativy |
 |Nasazení agenta závislostí auditu – image virtuálního počítače (OS) není uvedena |Hlásí virtuální chod jako nekompatibilní, pokud image virtuálního zařízení (OS) není definována v seznamu a agent není nainstalovaný. |Zásada |
@@ -99,7 +99,7 @@ Definice zásad pro virtuální počítač Azure jsou uvedeny v následující t
 
 Definice zásad pro škálovací sadu virtuálních strojů Azure jsou uvedeny v následující tabulce.
 
-|Name (Název) |Popis |Typ |
+|Název |Popis |Typ |
 |-----|------------|-----|
 |Povolení Azure Monitoru pro škálovací sady virtuálních strojů |Povolte Azure Monitor pro škálovací sady virtuálních strojů v zadaném oboru (skupina pro správu, předplatné nebo skupina prostředků). Jako parametr převezme pracovní prostor Log Analytics. Poznámka: Pokud je zásada upgradu škálovací sady nastavená na ruční, použijte rozšíření na všechny virtuální počítače v sadě voláním upgrade na ně. V zapisování/li střižové míchaná, klitova. `az vmss update-instances` |Iniciativy |
 |Nasazení agenta závislostí auditu ve škálovacích sadách virtuálních strojů – image virtuálního počítače (OS) není uveden |Sestavy škálování virtuálního počítače jako nekompatibilní, pokud image virtuálního počítače (OS) není definována v seznamu a agent není nainstalován. |Zásada |
@@ -111,7 +111,7 @@ Definice zásad pro škálovací sadu virtuálních strojů Azure jsou uvedeny v
 
 Samostatné zásady (nejsou součástí iniciativy) jsou popsány zde:
 
-|Name (Název) |Popis |Typ |
+|Název |Popis |Typ |
 |-----|------------|-----|
 |Pracovní prostor analýzy protokolu auditu pro virtuální hosti – neshoda sestavy |Sestavy virtuálních stránek jako nedodržující předpisy, pokud nejsou protokolování do pracovního prostoru Log Analytics zadané v zásadách nebo přiřazení iniciativy. |Zásada |
 
@@ -121,7 +121,7 @@ Pokud chcete vytvořit přiřazení zásad ze stránky **Pokrytí zásad Azure M
 
 Při přiřazení zásady nebo iniciativy může být oborem vybraným v přiřazení zde uvedený obor nebo jeho podmnožinou. Například jste pravděpodobně vytvořili přiřazení pro předplatné (obor zásady) a ne pro skupinu pro správu (obor pokrytí). V takovém případě procento pokrytí by znamenalo virtuální chody v oblasti zásad nebo iniciativy vydělené virtuálními sítěmi v rozsahu disponibility. V jiném případě jste pravděpodobně vyloučili některé virtuální uživatele nebo skupiny prostředků nebo předplatné z oboru zásad. Pokud je prázdná, znamená to, že zásada nebo iniciativa neexistuje nebo nemáte oprávnění. Informace jsou uvedeny v části **Stav přiřazení**.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Na webu Azure Portal vyberte **Monitor**. 
 

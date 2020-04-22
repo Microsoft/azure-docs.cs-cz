@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 04/21/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815d3afe68003f56a5748584b322b731ef5a3dc7
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 3a03a03557fbb2e71ff79ff42fd9d9c72cd5907c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639648"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770510"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky se vztahují na všechny cílové skupiny.
@@ -48,6 +48,14 @@ Ne všechny verze Azure AD Connect budou k dispozici pro automatický upgrade. S
 >
 >Další informace o upgradu služby Azure AD Connect na nejnovější verzi najdete v [tomto článku.](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
 
+## <a name="15220"></a>1.5.22.0
+
+### <a name="release-status"></a>Stav verze
+04/20/2020: Vydáno ke stažení
+
+### <a name="fixed-issues"></a>Oprava potíží
+Toto sestavení opravy hotfix opravuje problém v sestavení 1.5.20.0, pokud jste naklonovali pravidlo **In z ad - group join** a nenaklonovali pravidlo In z **ad - group common.**
+
 ## <a name="15200"></a>1.5.20.0
 
 ### <a name="release-status"></a>Stav verze
@@ -57,12 +65,13 @@ Ne všechny verze Azure AD Connect budou k dispozici pro automatický upgrade. S
 Toto sestavení opravy hotfix opravuje problém s sestavením 1.5.18.0, pokud máte povolenou funkci filtrování skupiny a používáte mS-DS-ConsistencyGuid jako zdrojovou kotvu.
 
 > [!IMPORTANT]
-> Pokud používáte mS-DS-ConsistencyGuid jako zdrojovou kotvu a naklonovali jste pravidlo synchronizace **spojení se službou AD – skupina** a plánujete upgrade, proveďte v rámci upgradu následující kroky:
+> Pokud jste naklonovali pravidlo synchronizace **In z ad – skupiny a** nenaklonovali jste pravidlo synchronizace In ze **služby AD – skupina Společné** synchronizace a plánujete upgrade, proveďte v rámci upgradu následující kroky:
 > 1. Během upgradu odškrtnete možnost **Spustit proces synchronizace po dokončení konfigurace**.
 > 2. Upravte pravidlo synchronizace klonovaného spojení a přidejte následující dvě transformace:
 >     - Nastavte přímý `objectGUID` `sourceAnchorBinary`tok do .
 >     - Nastavte `ConvertToBase64([objectGUID])` tok `sourceAnchor`výrazu na .     
 > 3. Povolte plánovač `Set-ADSyncScheduler -SyncCycleEnabled $true`pomocí .
+
 
 
 ## <a name="15180"></a>1.5.18.0

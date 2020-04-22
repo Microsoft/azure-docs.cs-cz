@@ -1,5 +1,5 @@
 ---
-title: Vysvětlení modelů a předpovědí strojového učení
+title: Interpretace & vysvětlit modely ML v Pythonu
 titleSuffix: Azure Machine Learning
 description: Zjistěte, jak získat vysvětlení, jak váš model strojového učení určuje důležitost funkce a dělá předpovědi při použití sady Azure Machine Learning SDK.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257195"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769807"
 ---
-# <a name="explain-machine-learning-models-and-predictions"></a>Vysvětlení modelů a předpovědí strojového učení
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Použití balíčku interpretability k vysvětlení modelů ML & předpovědi v Pythonu
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -41,10 +41,10 @@ Další informace o podporovaných technikách interpretace a modelech strojové
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Generovat hodnotu důležitosti funkce na vašem osobním počítači 
 Následující příklad ukazuje, jak používat balíček interpretability ve vašem osobním počítači bez kontaktování služeb Azure.
 
-1. Instalace `azureml-interpret` `azureml-interpret-contrib` a balíčky.
+1. Instalace `azureml-interpret` `azureml-contrib-interpret` a balíčky.
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 
 2. Trénování ukázkového modelu v místním notebooku Jupyter.

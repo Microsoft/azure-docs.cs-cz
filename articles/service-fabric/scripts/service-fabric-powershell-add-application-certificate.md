@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 61c22a3949008d61bbe3472f601d2d0dd597a0ac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d657ef8d28b36d93bc923036254e446c7be4c2c8
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77114337"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769525"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Přidání certifikátu aplikace do clusteru Service Fabric
 
@@ -48,9 +48,7 @@ $CertName= ""
 $CertPassword= ""
 $PathToPFX= ""
 
-$Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2 $PathToPFX, $CertPassword
-
-$bytes = [System.IO.File]::ReadAllBytes($ExistingPfxFilePath)
+$bytes = [System.IO.File]::ReadAllBytes($PathToPFX)
 $base64 = [System.Convert]::ToBase64String($bytes)
 $jsonBlob = @{
    data = $base64
@@ -74,7 +72,12 @@ $ResourceGroupName = ""
 $VMSSName = ""
 $CertStore = "My" # Update this with the store you want your certificate placed in, this is LocalMachine\My
 
+# If you have added your certificate to the keyvault certificates, use
 $CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl (Get-AzKeyVaultCertificate -VaultName $VaultName -Name $CertName).SecretId -CertificateStore $CertStore
+
+# Otherwise, if you have added your certificate to the keyvault secrets, use
+$CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl (Get-AzKeyVaultSecret -VaultName $VaultName -Name $CertName).Id -CertificateStore $CertStore
+
 $VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMSSName
 
 # If this KeyVault is already known by the virtual machine scale set, for example if the cluster certificate is deployed from this keyvault, use
@@ -98,7 +101,8 @@ Tento skript používá následující příkazy: Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [Nový-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | Vytvoří zásadu v paměti představující certifikát. |
-| [Přidat-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| Nasazuje zásady do trezoru klíčů. |
+| [Přidat-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| Nasazuje zásady do certifikátů trezoru klíčů. |
+| [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/Set-AzKeyVaultSecret)| Nasazuje zásady do tajných kódů trezoru klíčů. |
 | [Nový-AzVmssVaultConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | Vytvoří konfiguraci v paměti představující certifikát ve virtuálním míse. |
 | [Získat-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
 | [Přidat-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Přidá certifikát do definice škálovací sady virtuálních strojů v paměti. |

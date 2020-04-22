@@ -1,45 +1,46 @@
 ---
-title: Koncový bod HTTPS | Azure Marketplace
-description: Nakonfigurujte správu zájemců pro koncový bod HTTPS.
+title: Konfigurace správy zájemců pomocí koncového bodu HTTPS | Azure Marketplace
+description: Přečtěte si, jak pomocí koncového bodu HTTP zpracovávat potenciální zákazníky Microsoft AppSource a Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/24/2018
+ms.date: 04/21/2020
 ms.author: dsindona
-ms.openlocfilehash: cb6ef173e97a7c2bbd7d7cad5e5074b1f2d0f066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f56cc5aaad7d77ff8dc753115ef1becb08ddde73
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288593"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770186"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurace správy potenciálních zákazníků pomocí koncového bodu HTTPS
 
-Ke zpracování potenciálních zákazníků Azure Marketplace a AppSource můžete použít koncový bod HTTPS. Tito zájemci mohou být zapsáni do systému řízení vztahů se zákazníky (CRM) nebo odesláni jako e-mailové oznámení. Tento článek popisuje, jak nakonfigurovat správu zájemců pomocí služby automatizace [Microsoft Flow.](https://powerapps.microsoft.com/automate-processes/)
+Ke zpracování potenciálních zákazníků Microsoft AppSource a Azure Marketplace můžete použít koncový bod HTTPS. Tito zájemci mohou být zapsáni do systému řízení vztahů se zákazníky (CRM) nebo odesláni jako e-mailové oznámení. Tento článek popisuje, jak pomocí služby automatizace [Microsoft Power Automate](https://powerapps.microsoft.com/automate-processes/) ke konfiguraci správy zájemců.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Vytvoření toku pomocí Microsoft Flow
+## <a name="create-a-flow-using-microsoft-power-automate"></a>Vytvoření toku pomocí Microsoft Power Automate
 
-1. Otevřete webovou stránku [Flow.](https://flow.microsoft.com/) Vyberte **Přihlásit** se nebo **zvolte Registrace zdarma** a vytvořte si bezplatný účet Toku.
+1. Otevřete webovou stránku [Power Automate.](https://flow.microsoft.com/) Vyberte **Přihlásit** se nebo **zvolte Registrace zdarma** a vytvořte si bezplatný účet Toku.
 
-2. Přihlaste se a na řádku nabídek vyberte **Moje toky.**
+1. Přihlaste se a na řádku nabídek vyberte **Moje toky.**
+    > [!div class="mx-imgBorder"]
+    > ![Moje toky](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-    ![Moje toky](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
+1. V části **+ Nový**vyberte + Okamžité – **z prázdné**.
+    > [!div class="mx-imgBorder"]
+    > ![Vytvořit z prázdné](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-3. Vyberte **+ Vytvořit z prázdné**.
+1. Pojmenujte tok a potom v části **Zvolte způsob spuštění tohoto toku**vyberte **Při přijetí požadavku HTTP**.
 
-    ![Vytvořit z prázdné](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    > [!div class="mx-imgBorder"]
+    > ![Vyberte aktivační událost přijatého požadavku HTTP.](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-4. Vyberte **Vytvořit z prázdné**.
+1. Kliknutím na krok toku ho rozbalte.
 
-    ![Vytvořit z prázdné](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
+    > [!div class="mx-imgBorder"]
+    > ![Rozšíření kroku toku](./media/cloud-partner-portal-lead-management-instructions-https/expand-flow-step.png)
 
-5. Do pole Hledat konektory a aktivační události zadejte "request" pro **vyhledání** konektoru Požadavku.
-6. V části **Triggers**vyberte **Při přijetí požadavku HTTP**. 
-
-    ![Vyberte aktivační událost přijatého požadavku HTTP.](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
-
-7. Ke konfiguraci **schématu JSON tělo požadavku**použijte jeden z následujících kroků :
+1. Ke konfiguraci **schématu JSON tělo požadavku**použijte jednu z následujících metod :
 
    - Zkopírujte [schéma JSON](#json-schema) na konci tohoto článku do textového pole **Schéma Text požadavku JSON.**
    - Vyberte **K vygenerování schématu použijte ukázkovou datovou část**. V **textovém poli Enter nebo paste ukázkové datové části JSON** vložte do [příkladu JSON](#json-example). Chcete-li vytvořit schéma, **vyberte Hotovo.**
@@ -90,6 +91,7 @@ Ke zpracování potenciálních zákazníků Azure Marketplace a AppSource můž
    ![Přidání akce e-mailu](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
 
 5. Chcete-li dokončit tok, vyberte **uložit.**
+
 6. V požadavku je vytvořena adresa URL HTTP POST. Zkopírujte tuto adresu URL a použijte ji jako koncový bod HTTPS.
 
     ![Adresa URL příspěvku HTTP](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
@@ -100,7 +102,7 @@ Při konfiguraci informací o správě zájemců pro vaši nabídku vyberte **ko
 
 ![Přidat dynamický obsah](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-Při generování zájemců odesílá společnost Microsoft zájemce na tok, který se směruje na nakonfigurovaný systém CRM nebo e-mailovou adresu.
+Když jsou vygenerováni zájemci, odešle společnost Microsoft zájemce do toku power automatu, který se směruje na nakonfigurovaný systém CRM nebo e-mailovou adresu.
 
 ## <a name="json-schema-and-example"></a>Schéma JSON a příklad
 
@@ -124,6 +126,10 @@ Testovací příklad JSON používá následující schéma:
     },
     "LeadSource": {
       "id": "/properties/LeadSource",
+      "type": "string"
+    },
+    "Description": {
+      "id": "/properties/Description",
       "type": "string"
     },
     "UserDetails": {
@@ -165,23 +171,25 @@ Testovací příklad JSON používá následující schéma:
 }
 ```
 
-Můžete zkopírovat a upravit následující příklad JSON použít jako test v MS Flow.
+Můžete zkopírovat a upravit následující příklad JSON použít jako test v toku.
 
 ### <a name="json-example"></a>Příklad JSON
 
 ```json
 {
-"OfferTitle": "Test Microsoft",
-"LeadSource": "Test run through MS Flow",
-"UserDetails": {
-"Company": "Contoso",
-"Country": "USA",
-"Email": "someone@contoso.com",
-"FirstName": "Some",
-"LastName": "One",
-"Phone": "16175555555",
-"Title": "Esquire"
-}
+  "UserDetails": {
+    "FirstName": "Some",
+    "LastName": "One",
+    "Email": "someone@contoso.com",
+    "Phone": "16175555555",
+    "Country": "USA",
+    "Company": "Contoso",
+    "Title": "Esquire"
+ },
+  "LeadSource": "AzureMarketplace",
+  "ActionCode": "INS",
+  "OfferTitle": "Test Microsoft",
+  "Description": "Test run through Power Automate"
 }
 ```
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 47f686f810f62fe03a9b0217677c436f3b91782b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76167351"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767883"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -45,7 +45,6 @@ Austrálie – východ, Austrálie – jihovýchod, střední USA, východní As
 
 *Západní USA 2 je dočasně nedostupný jako umístění repliky mezi oblastmi.
 
-
 ### <a name="paired-regions"></a>Spárované oblasti
 Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení ve spárované oblasti Azure hlavního serveru. Pokud neznáte dvojici vaší oblasti, můžete se dozvědět více v [článku Spárované oblasti Azure](../best-practices-availability-paired-regions.md).
 
@@ -71,7 +70,7 @@ Přečtěte si, jak [vytvořit repliku pro čtení na webu Azure Portal](howto-r
 
 ## <a name="connect-to-a-replica"></a>Připojení k replice
 
-Při vytváření replika dědí pravidla brány firewall nebo koncový bod služby virtuální sítě hlavního serveru. Poté jsou tato pravidla nezávislá na hlavním serveru.
+Při vytváření replika zdědí pravidla brány firewall hlavního serveru. Poté jsou tato pravidla nezávislá na hlavním serveru.
 
 Replika zdědí účet správce z hlavního serveru. Všechny uživatelské účty na hlavním serveru jsou replikovány do replik pro čtení. Ke replice pro čtení se můžete připojit pouze pomocí uživatelských účtů, které jsou k dispozici na hlavním serveru.
 
@@ -124,7 +123,7 @@ Replika je vytvořena pomocí stejné konfigurace serveru jako předloha. Po vyt
 > [!IMPORTANT]
 > Před aktualizací konfigurace hlavního serveru na nové hodnoty aktualizujte konfiguraci repliky na stejné nebo vyšší hodnoty. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na hlavním serveru.
 
-Pravidla brány firewall, pravidla virtuální sítě a nastavení parametrů jsou zděděna z hlavního serveru do repliky při vytvoření repliky. Poté jsou pravidla repliky nezávislá.
+Pravidla brány firewall a nastavení parametrů jsou zděděna z hlavního serveru do repliky při vytvoření repliky. Poté jsou pravidla repliky nezávislá.
 
 ### <a name="stopped-replicas"></a>Zastavené repliky
 

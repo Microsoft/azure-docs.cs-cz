@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 1e2a837acef976b6b872c2d4002ee49d662ad594
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.date: 04/21/2020
+ms.openlocfilehash: 7eb2988628d60fa72c7d83b81a58a1e0fae5de33
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641330"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770099"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření návrhu umožňujícího automatické dokončování a navrhované výsledky v dotazu
 
-V Azure Cognitive Search je "hledání podle typu" povoleno prostřednictvím **návrhu** konstrukce přidané do [indexu vyhledávání](search-what-is-an-index.md). Návrhovač podporuje dvě možnosti: *automatické dokončování*, které doplňuje termín nebo *frázi, a návrhy,* které vracejí krátký seznam odpovídajících dokumentů.  
+V Azure Cognitive Search je "hledání podle typu" povoleno prostřednictvím **návrhu** konstrukce přidané do [indexu vyhledávání](search-what-is-an-index.md). Návrhovač podporuje dvě možnosti: *automatické dokončování*, které dokončí částečný vstup pro celý termín dotazu a *návrhy,* které vyzve proklikat na konkrétní shodu. Automatické dokončování vytvoří dotaz. Návrhy vytvářejí odpovídající dokument.
 
 Následující snímek obrazovky z [vytvoření první aplikace v C#](tutorial-csharp-type-ahead-and-suggestions.md) ilustruje obojí. Automatické dokončování předvídá potenciální termín, dokončení "tw" s "in". Návrhy jsou mini výsledky vyhledávání, kde pole, jako je název hotelu, představuje odpovídající dokument pro vyhledávání hotelů z indexu. U návrhů můžete pole, které poskytuje popisné informace, pole.
 
@@ -33,27 +33,36 @@ Podpora typu Hledání podle počtu můžete povolit pro pole pro pole typu. Mů
 
 ## <a name="what-is-a-suggester"></a>Co je to sugester?
 
-Návrhovač je datová struktura, která podporuje chování typu hledání podle chování uložením předpon pro párování s částečnými dotazy. Podobně jako tokenizované termíny jsou předpony uloženy v invertovaných indexech, jedno pro každé pole zadané v kolekci pole návrhu.
-
-Při vytváření předpon má návrhovač svůj vlastní řetězec analýzy, podobný řetězci používanému pro fulltextové vyhledávání. Na rozdíl od analýzy v fulltextovém vyhledávání však může návrhátor pracovat pouze přes pole, která používají standardní analyzátor Lucene (výchozí) nebo [analyzátor jazyka](index-add-language-analyzers.md). Pole, která používají [vlastní analyzátory](index-add-custom-analyzers.md) nebo [předdefinované analyzátory](index-add-custom-analyzers.md#predefined-analyzers-reference) (s výjimkou standardnílucene) jsou explicitně zakázány, aby se zabránilo špatné výsledky.
-
-> [!NOTE]
-> Pokud potřebujete obejít omezení analyzátoru, použijte pro stejný obsah dvě samostatná pole. To umožní jedno z polí mít návrh, zatímco druhé lze nastavit s vlastní konfigurací analyzátoru.
+Návrhovač je interní datová struktura, která podporuje chování typu hledání podle chování uložením předpon pro párování s částečnými dotazy. Stejně jako u tokenizovaných termínů jsou předpony uloženy v invertovaných indexech, jedno pro každé pole zadané v kolekci pole návrhu.
 
 ## <a name="define-a-suggester"></a>Definování návrhu
 
-Chcete-li vytvořit návrhovač, přidejte jeden do schématu [indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) a [nastavte každou vlastnost](#property-reference). V indexu můžete mít jeden návrhový (konkrétně jeden návrhový v kolekci suggesterů). Nejlepší čas k vytvoření návrhu je, když také definujete pole, které jej bude používat.
+Chcete-li vytvořit návrhovač, přidejte jeden do schématu [indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) a [nastavte každou vlastnost](#property-reference). Nejlepší čas k vytvoření návrhu je, když také definujete pole, které jej bude používat.
+
++ Použít pouze pole řetězce
+
++ Použijte výchozí standardní analyzátor Lucene (`"analyzer": null`) nebo [analyzátor jazyka](index-add-language-analyzers.md) `"analyzer": "en.Microsoft"`(například) v poli
 
 ### <a name="choose-fields"></a>Výběr polí
 
-Přestože návrhmác má několik vlastností, je především kolekce polí, pro které povolujete vyhledávání jako typ prostředí. Pro návrhy zejména zvolte pole, která nejlépe představují jeden výsledek. Názvy, názvy nebo jiná jedinečná pole, která rozlišují mezi více shodami, fungují nejlépe. Pokud se pole skládají z opakujících se hodnot, návrhy se skládají ze stejných výsledků a uživatel nebude vědět, na který z nich kliknout.
+Přestože návrhmá používá několik vlastností, je to především kolekce řetězcových polí, pro které povolujete prostředí typu hledání podle typu. Pro každý index existuje jeden návrhovač, takže seznam návrhovačů musí obsahovat všechna pole, která přispívají obsahem pro návrhy i automatické dokončování.
 
-Ujistěte se, že každé pole používá analyzátor, který provádí lexikální analýzu během indexování. Můžete použít buď výchozí standardní analyzátor`"analyzer": null`Lucene ( ) nebo `"analyzer": "en.Microsoft"` [analyzátor jazyka](index-add-language-analyzers.md) (například). 
+Automatické dokončování těží z většího fondu polí, ze kterých lze čerpat, protože další obsah má větší potenciál dokončení termínu.
 
-Volba analyzátoru určuje, jak jsou pole tokenizována a následně předpona. Například pro řetězec s pomlčkou, jako je "kontextově citlivý", použití analyzátoru jazyka bude mít za následek tyto kombinace tokenů: "kontext", "citlivé", "kontextově citlivé". Pokud byste použili standardní analyzátor Lucene, řetězec s pomlčkou by neexistoval.
+Návrhy, na druhé straně, produkují lepší výsledky, když vaše pole volba je selektivní. Nezapomeňte, že návrh je proxy pro vyhledávací dokument, takže budete chtít pole, která nejlépe představují jeden výsledek. Názvy, názvy nebo jiná jedinečná pole, která rozlišují mezi více shodami, fungují nejlépe. Pokud se pole skládají z opakujících se hodnot, návrhy se skládají ze stejných výsledků a uživatel nebude vědět, na který z nich kliknout.
 
-> [!TIP]
-> Zvažte použití [analyzovat textové rozhraní API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) pro přehled o tom, jak jsou termíny tokenizovány a následně předponou. Jakmile vytvoříte index, můžete vyzkoušet různé analyzátory na řetězci a zobrazit tokeny, které vydává.
+Chcete-li uspokojit obě prostředí hledání podle typu, přidejte všechna pole, která potřebujete pro automatické dokončování, ale potom použijte **$select**, **$top**, **$filter**a **searchFields** k řízení výsledků návrhů.
+
+### <a name="choose-analyzers"></a>Výběr analyzátorů
+
+Volba analyzátoru určuje, jak jsou pole tokenizována a následně předpona. Například pro řetězec s pomlčkou, jako je "kontextově citlivý", použití analyzátoru jazyka bude mít za následek tyto kombinace tokenů: "kontext", "citlivé", "kontextově citlivé". Pokud byste použili standardní analyzátor Lucene, řetězec s pomlčkou by neexistoval. 
+
+Při vyhodnocování analyzátorů zvažte použití [rozhraní Analyzovat textové rozhraní API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) pro přehled o tom, jak jsou termíny tokenizovány a následně předponou. Po vytvoření indexu můžete vyzkoušet různé analyzátory na řetězci pro zobrazení výstupu tokenu.
+
+Pole, která používají [vlastní analyzátory](index-add-custom-analyzers.md) nebo [předdefinované analyzátory](index-add-custom-analyzers.md#predefined-analyzers-reference) (s výjimkou standardnílucene) jsou explicitně zakázány, aby se zabránilo špatné výsledky.
+
+> [!NOTE]
+> Pokud potřebujete obejít omezení analyzátoru, například pokud potřebujete klíčové slovo nebo ngram analyzátor pro určité scénáře dotazu, měli byste použít dvě samostatná pole pro stejný obsah. To umožní jedno z polí mít návrh, zatímco druhé lze nastavit s vlastní konfigurací analyzátoru.
 
 ### <a name="when-to-create-a-suggester"></a>Kdy vytvořit návrhovače
 
@@ -161,7 +170,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
 
 ## <a name="next-steps"></a>Další kroky
 
-Doporučujeme následující příklad, abyste zjistili, jak jsou formulovány požadavky.
+Doporučujeme následující článek se dozvíte více o tom, jak žádosti formulace.
 
 > [!div class="nextstepaction"]
 > [Přidání automatického dokončování a návrhů do kódu klienta](search-autocomplete-tutorial.md) 

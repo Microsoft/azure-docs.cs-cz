@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/16/2020
+ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a361f384167fa522278b9c84a7927e938c12cb8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 3ce3311fd0538109dbe9ba5ae71a17dcfd4b8abe
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81534801"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769730"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů úloh SAP
 
@@ -111,6 +111,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v tématu:
 
 ## <a name="change-log"></a>Protokol změn
 
+- 04/21/2020: Přidáno SQL Azure DB jako podporované DBMS pro SAP (Hybris) Commerce Platform 1811 a novější v článcích [Jaký software SAP je podporován pro nasazení Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) a [certifikace a konfigurace SAP spuštěné v Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/16/2020: Přidánsap HANA jako podporovaná platforma DBMS pro SAP (Hybris) Commerce Platform v článcích [Jaký software SAP je podporován pro nasazení Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) a [certifikace a konfigurace SAP spuštěné v Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/13/2020: Opravte přesná čísla verzí SAP ASE v [nasazení DBMS virtuálních počítačů SAP ASE Azure pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
 - 04/07/2020: Změna nastavení [kardiostimulátoru na SLES v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro objasnění pokynů cloud-netconfig-azure

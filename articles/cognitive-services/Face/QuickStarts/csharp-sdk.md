@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: d9b10341f971c0e8177043126ff8fbd4df078b86
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 89ef221fce9aed3f9e2c948e89933b8650bb4b4b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604991"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769829"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Úvodní příručka: Face klientská knihovna pro rozhraní .NET
 
@@ -71,11 +71,11 @@ Build succeeded.
 
 V adresáři projektu otevřete *soubor Program.cs* v upřednostňovaném editoru nebo rozhraní IDE. Přidejte `using` následující direktivy:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_using)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_using)]
 
 V `Main` metodě aplikace vytvořte proměnné pro koncový bod a klíč azure vašeho prostředku.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_mainvars)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_mainvars)]
 
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
@@ -120,39 +120,39 @@ Níže uvedené fragmenty kódu ukazují, jak provést následující úkoly s k
 
 V nové metodě vytvořte instanci klienta pomocí koncového bodu a klíče. Vytvořte objekt **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** s klíčem a použijte ho s koncovým bodem k vytvoření objektu **[FaceClient.](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)**
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_auth)]
 
 Pravděpodobně budete chtít volat tuto metodu v metodě. `Main`
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_client)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_client)]
 
 ### <a name="declare-helper-fields"></a>Deklarovat pomocná pole
 
 Následující pole jsou potřeba pro několik operací plochy, které přidáte později. V kořenovém adresáři třídy definujte následující řetězec adresy URL. Tato adresa URL odkazuje na složku ukázkových obrázků.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_image_url)]
 
 Definujte řetězce, které odkazují na různé typy modelů rozpoznávání. Později budete moci určit, který model rozpoznávání chcete použít pro detekci obličeje. Informace o těchto možnostech naleznete [v tématu Určení modelu rozpoznávání.](../Face-API-How-to-Topics/specify-recognition-model.md)
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_models)]
 
 ## <a name="detect-faces-in-an-image"></a>Rozpoznávání tváří na obrázku
 
 Přidejte následující volání metody do **hlavní** metody. Dále definujete metodu. Konečná operace Detect bude mít objekt **[FaceClient,](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** adresu URL obrázku a model rozpoznávání.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_call)]
 
 ### <a name="get-detected-face-objects"></a>Nechat se detekovačit objekty obličeje
 
 V dalším bloku kódu `DetectFaceExtract` metoda detekuje tváře ve třech obrázcích na dané adrese URL a vytvoří seznam objektů **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** v paměti programu. Seznam hodnot **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** určuje, které prvky mají být extrahovány. 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect)]
 
 ### <a name="display-detected-face-data"></a>Zobrazit zjištěná data plochy
 
 Zbytek `DetectFaceExtract` metody analyzuje a vytiskne data atributů pro každou zjištěnou plochu. Každý atribut musí být zadán samostatně v původním volání rozhraní API pro detekci tváří (v seznamu **[FaceAttributeType).](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** Následující kód zpracovává každý atribut, ale pravděpodobně budete potřebovat použít pouze jeden nebo několik.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_parse)]
 
 ## <a name="find-similar-faces"></a>Vyhledání podobných tváří
 
@@ -162,19 +162,19 @@ Následující kód přebírá jednu zjištěnou tvář (zdroj) a prohledává s
 
 Nejprve definujte druhou metodu detekce obličeje. Před porovnáním je třeba rozpoznat plochy v obrázcích a tato metoda detekce je optimalizována pro operace porovnání. Neextrahuje podrobné atributy plochy jako ve výše uvedené části a používá jiný model rozpoznávání.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_face_detect_recognize)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_face_detect_recognize)]
 
 ### <a name="find-matches"></a>Najít shody
 
 Následující metoda detekuje plochy v sadě cílových obrazů a v jednom zdrojovém obrazu. Potom je porovná a najde všechny cílové obrázky, které jsou podobné zdrojovému obrazu.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar)]
 
 ### <a name="print-matches"></a>Tisk shod
 
 Následující kód vytiskne podrobnosti shody do konzoly:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar_print)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar_print)]
 
 ## <a name="identify-a-face"></a>Identifikace obličeje
 
@@ -188,21 +188,21 @@ Následující kód vytvoří **PersonGroup** se šesti různými **person** obj
 
 Deklarujte proměnnou řetězce v kořenovém adresáři vaší třídy, která bude představovat ID **Skupiny osob,** kterou vytvoříte.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_declare)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_declare)]
 
 V nové metodě přidejte následující kód. Tato metoda provede operaci Identifikovat. První blok kódu přidruží jména osob s jejich ukázkové obrázky.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_files)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_files)]
 
 Dále přidejte následující kód pro vytvoření objektu **Person** pro každou osobu ve Slovníku a přidejte data plochy z příslušných obrázků. Každý objekt **Person** je přidružen ke stejné **skupině PersonGroup** prostřednictvím svého jedinečného řetězce ID. Nezapomeňte předat proměnné `client`, `url`, `RECOGNITION_MODEL1` a do této metody.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_create)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_create)]
 
 #### <a name="train-persongroup"></a>Vlak PersonGroup
 
 Jakmile extrahujete data o obličeji z obrázků a seřadíte je do různých objektů **Person,** musíte skupinu **PersonGroup** trénovat k identifikaci vizuálních prvků přidružených ke každému z jejích objektů **Person.** Následující kód volá metodu asynchronního **trainu** a vyvolá výsledky a tiskne stav do konzoly.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_train)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_train)]
 
 Tato skupina **Osoba** a její přidružené objekty **Person** jsou nyní připraveny k použití v operacích Ověření, Identifikace nebo Skupina.
 
@@ -214,11 +214,11 @@ Všimněte si, že kód pro [Vytvořit a trénování skupiny osob](#create-and-
 
 Následující kód pořídí zdrojový obraz a vytvoří seznam všech tváří zjištěných v obraze. Jedná se o tváře, které budou identifikovány proti **PersonGroup**.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify_sources)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify_sources)]
 
 Další fragment kódu volá operaci **IdentifyAsync** a vytiskne výsledky do konzoly. Zde se služba pokusí porovnat každou tvář ze zdrojového obrázku **s osobou** v dané **skupině PersonGroup**. Tím se uzavře metoda Identify.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify)]
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Pořízení snímku pro migraci dat
 
@@ -232,17 +232,17 @@ Nejprve musíte mít druhé předplatné Azure s prostředkem Face; můžete to 
 
 Potom definujte následující proměnné `Main` v metodě programu. Budete muset vytvořit nové proměnné prostředí pro ID předplatného vašeho účtu Azure, stejně jako klíč, koncový bod a ID předplatného vašeho nového (cílového) účtu. 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
 
 V tomto příkladu deklarujte proměnnou pro ID cílové **skupiny PersonGroup**&mdash;objekt, který patří do nového předplatného, do kterého zkopírujete data.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
 
 ### <a name="authenticate-target-client"></a>Ověření cílového klienta
 
 Dále přidejte kód k ověření sekundárního předplatného Face.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_client)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_client)]
 
 ### <a name="use-a-snapshot"></a>Použití snímku
 
@@ -250,23 +250,23 @@ Zbývající operace snímek musí probíhat v rámci asynchronní metody.
 
 1. Prvním krokem je **pořízení** snímku, který uloží data tváře původního předplatného do dočasného umístění v cloudu. Tato metoda vrátí ID, které používáte k dotazování stav operace.
 
-    [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_take)]
+    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take)]
 
 1. Dále dotaz ID, dokud operace byla dokončena.
 
-    [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_take_wait)]
+    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take_wait)]
 
 1. Pak použijte **operaci použít** k zápisu dat obličeje do cílového předplatného. Tato metoda také vrátí hodnotu ID.
 
-    [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_apply)]
+    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
 
 1. Znovu dotaz nové ID, dokud operace byla dokončena.
 
-    [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_apply)]
+    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
 
 1. Nakonec dokončete blok try/catch a dokončete metodu.
 
-    [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_trycatch)]
+    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_trycatch)]
 
 V tomto okamžiku nový **Objekt PersonGroup** by měl mít stejná data jako původní a měl by být přístupný z vašeho nového (cílového) předplatného Azure Face.
 
@@ -287,15 +287,15 @@ Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, může
 
 Pokud jste v tomto rychlém startu **vytvořili skupinu persongroup** a chcete ji odstranit, spusťte v programu následující kód:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_delete)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_delete)]
 
 Definujte metodu odstranění pomocí následujícího kódu:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_deletepersongroup)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_deletepersongroup)]
 
 Navíc pokud jste migrovali data pomocí funkce Snímek v tomto rychlém startu, budete také muset odstranit **PersonGroup** uložené do cílového předplatného.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_target_persongroup_delete)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_target_persongroup_delete)]
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -305,4 +305,4 @@ V tomto rychlém startu jste se dozvěděli, jak používat knihovnu tváří pr
 > [Odkaz na rozhraní API pro obličej (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
 
 * [Co je služba Rozpoznávání tváře?](../overview.md)
-* Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs).
+* Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/Face/FaceQuickstart.cs).

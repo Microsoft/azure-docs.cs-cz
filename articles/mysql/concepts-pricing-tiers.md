@@ -1,23 +1,23 @@
 ---
 title: Cenové úrovně – Azure Database for MySQL
 description: Seznamte se s různými cenovými úrovněmi pro Azure Database for MySQL, včetně výpočetních generací, typů úložiště, velikosti úložiště, virtuálních jader, paměti a doby uchovávání záloh.
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: cf959112a2a717da1005be062dda3b83163d8d6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0123436eab2cdfa91066a2bd0652e16896ee838a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269442"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767845"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database pro cenové úrovně MySQL
 
 Databázi Azure pro mySQL server můžete vytvořit v jedné ze tří různých cenových úrovní: Základní, Obecné účely a Optimalizované pro paměť. Cenové úrovně se liší podle množství výpočetních prostředků ve virtuálních jádrech, které lze zřídit, paměti na virtuální jádro a technologie úložiště používané k ukládání dat. Všechny prostředky jsou zřízeny na úrovni serveru MySQL. Server může mít jednu nebo více databází.
 
-|    | **Basic** | **Obecný účel** | **Optimalizováno pro paměť** |
+|    | **Základní** | **Obecný účel** | **Optimalizováno pro paměť** |
 |:---|:----------|:--------------------|:---------------------|
 | Výpočetní generace | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,7 +29,7 @@ Chcete-li zvolit cenovou úroveň, použijte jako výchozí bod následující t
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Basic | Úlohy, které vyžadují lehký výpočetní a vstupně-v.I výkon. Příklady zahrnují servery používané pro vývoj nebo testování nebo malé měřítko zřídka používané aplikace. |
+| Základní | Úlohy, které vyžadují lehký výpočetní a vstupně-v.I výkon. Příklady zahrnují servery používané pro vývoj nebo testování nebo malé měřítko zřídka používané aplikace. |
 | Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou propustností vstupně-v.a. Příklady zahrnují servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
 | Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
 
@@ -39,11 +39,11 @@ Po vytvoření serveru lze počet virtuálních jader, generování hardwaru a c
 
 Výpočetní prostředky jsou k dispozici jako virtuální jádra, které představují logický procesor základního hardwaru. Čína – východ 1, Čína sever 1, US DoD Central a US DoD East využívají logické procesory Gen 4, které jsou založeny na 2,4GHz procesorech Intel E5-2673 v3 (Haswell). Všechny ostatní oblasti využívají logické procesory Gen 5, které jsou založeny na procesorech Intel E5-2673 v4 (Broadwell) 2.3-GHz.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Úložiště, které zřídíte, je velikost kapacity úložiště, která je dostupná pro váš azure database pro mysql server. Úložiště se používá pro databázové soubory, dočasné soubory, transakční protokoly a protokoly serveru MySQL. Celková velikost úložiště, které zřídíte, také definuje kapacitu vstupně-videa, která je k dispozici pro váš server.
 
-|    | **Basic** | **Obecný účel** | **Optimalizováno pro paměť** |
+|    | **Základní** | **Obecný účel** | **Optimalizováno pro paměť** |
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Úložiště pro všeobecné účely | Úložiště pro všeobecné účely |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 16 TB | 5 GB až 16 TB |
@@ -51,7 +51,7 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, které předs
 | IOPS | Proměnná |3 iOPS/GB<br/>Min 100 IOPS<br/>Maximální počet iopů 20 000 | 3 iOPS/GB<br/>Min 100 IOPS<br/>Maximální počet iopů 20 000 |
 
 > [!NOTE]
-> Úložiště až 16 TB a 20 000 IOPS je podporováno v následujících oblastech: Východní USA, Východní USA 2, Střední USA, Západní USA, Severní STŘED USA, Jižní Střed USA, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, Jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed , Korea South, Austrálie – východ, Austrálie – jihovýchod.
+> Úložiště až 16 TB a 20 000 IOPS je podporováno v následujících oblastech: Východní USA, Východní USA 2, Střední USA, Západní USA, Severní STŘED USA, Jižní Střed USA, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, Jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed, Korea – jih, Austrálie – východ, Austrálie – jihovýchod.
 >
 > Všechny ostatní oblasti podporují až 4 TB úložiště a až 6000 VOPS.
 >
@@ -83,7 +83,7 @@ Například pokud jste zřídit 1000 GB úložiště a skutečné využití pře
 
 Nezapomeňte, že úložiště lze škálovat pouze nahoru, nikoli dolů.
 
-## <a name="backup"></a>Zálohování
+## <a name="backup"></a>Backup
 
 Služba automaticky přebírá zálohy serveru. Můžete vybrat dobu uchovávání od 7 do 35 dnů. Servery s optimalizací pro obecné účely a paměť se mohou rozhodnout, že budou mít geograficky redundantní úložiště pro zálohování. Další informace o zálohách v [článku koncepty](concepts-backup.md).
 

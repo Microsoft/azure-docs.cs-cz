@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406731"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770302"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými kódy v proxy serveru aplikace Azure Active Directory
 
@@ -48,8 +48,6 @@ Aplikace se zástupnými znaky můžete publikovat, pokud jsou interní i extern
 Například: `http(s)://*.adventure-works.com`.
 
 Zatímco interní a externí adresy URL mohou používat různé domény, jako osvědčený postup by měly být stejné. Při publikování aplikace se zobrazí chyba, pokud jedna z adres URL nemá zástupný znak.
-
-Pokud máte další aplikace s různým nastavením konfigurace, je nutné publikovat tyto výjimky jako samostatné aplikace přepsat výchozí hodnoty nastavené pro zástupný znak. Aplikace bez zástupných symbolů mají vždy přednost před aplikacemi se zástupnými symboly. Z hlediska konfigurace se jedná o "jen" pravidelné aplikace.
 
 Vytvoření aplikace se zástupnými kódy je založeno na stejném [toku publikování aplikace,](application-proxy-add-on-premises-application.md) který je k dispozici pro všechny ostatní aplikace. Jediným rozdílem je, že do adres URL a potenciálně konfigurace přiřazování a přihrádky zahrnete zástupný znak.
 

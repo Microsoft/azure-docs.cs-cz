@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 81e46f53c0afc69c927918daa0488c4835d60805
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605023"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768130"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager
 
@@ -180,14 +180,15 @@ Následující ukázka šablony ukazuje, jak:
 
 1. Přidání řešení do pracovního prostoru
 2. Vytvořte uložená hledání. Chcete-li zajistit, aby nasazení nepřepsala uložená hledání náhodně, měla by být do prostředku "savedSearches" přidána vlastnost eTag, která by přepsala a zachovala idempotenci uložených vyhledávání.
-3. Vytvoření skupiny počítačů
-4. Povolení shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
-5. Sbírat čítače perf logického disku z počítačů se systémem Linux (% použité inody; Megabajty zdarma; % využitémísto; Přenosy disků/s; Čtení disku/s; Zápisy na disk/s)
-6. Shromažďování událostí syslogu z počítačů s Linuxem
-7. Shromažďování událostí chyb a upozornění z protokolu událostí aplikace z počítačů se systémem Windows
-8. Čítač výkonu Shromáždit dostupné paměti Mbytes z počítačů se systémem Windows
-9. Shromažďování protokolů služby IIS a protokolů událostí systému Windows napsaných diagnostikou Azure do účtu úložiště
-10. Shromažďování vlastních protokolů z počítače se systémem Windows
+3. Vytvořte uloženou funkci. ETag by měl být přidán k přepsání funkce a udržovat idempotence.
+4. Vytvoření skupiny počítačů
+5. Povolení shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
+6. Sbírat čítače perf logického disku z počítačů se systémem Linux (% použité inody; Megabajty zdarma; % využitémísto; Přenosy disků/s; Čtení disku/s; Zápisy na disk/s)
+7. Shromažďování událostí syslogu z počítačů s Linuxem
+8. Shromažďování událostí chyb a upozornění z protokolu událostí aplikace z počítačů se systémem Windows
+9. Čítač výkonu Shromáždit dostupné paměti Mbytes z počítačů se systémem Windows
+10. Shromažďování protokolů služby IIS a protokolů událostí systému Windows napsaných diagnostikou Azure do účtu úložiště
+11. Shromažďování vlastních protokolů z počítače se systémem Windows
 
 ```json
 {
@@ -228,35 +229,35 @@ Následující ukázka šablony ukazuje, jak:
       "type": "bool",
       "defaultValue": "[bool('false')]",
       "metadata": {
-        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
+        "description": "If set to true, changing retention to 30 days will immediately delete older data. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
     },
     "location": {
       "type": "string",
       "allowedValues": [
-        "australiacentral", 
-        "australiaeast", 
-        "australiasoutheast", 
+        "australiacentral",
+        "australiaeast",
+        "australiasoutheast",
         "brazilsouth",
-        "canadacentral", 
-        "centralindia", 
-        "centralus", 
-        "eastasia", 
-        "eastus", 
-        "eastus2", 
-        "francecentral", 
-        "japaneast", 
-        "koreacentral", 
-        "northcentralus", 
-        "northeurope", 
-        "southafricanorth", 
-        "southcentralus", 
-        "southeastasia", 
-        "uksouth", 
-        "ukwest", 
-        "westcentralus", 
-        "westeurope", 
-        "westus", 
+        "canadacentral",
+        "centralindia",
+        "centralus",
+        "eastasia",
+        "eastus",
+        "eastus2",
+        "francecentral",
+        "japaneast",
+        "koreacentral",
+        "northcentralus",
+        "northeurope",
+        "southafricanorth",
+        "southcentralus",
+        "southeastasia",
+        "uksouth",
+        "ukwest",
+        "westcentralus",
+        "westeurope",
+        "westus",
         "westus2"
       ],
       "metadata": {
@@ -264,38 +265,38 @@ Následující ukázka šablony ukazuje, jak:
       }
     },
     "applicationDiagnosticsStorageAccountName": {
-        "type": "string",
-        "metadata": {
-          "description": "Name of the storage account with Azure diagnostics output"
-        }
+      "type": "string",
+      "metadata": {
+        "description": "Name of the storage account with Azure diagnostics output"
+      }
     },
     "applicationDiagnosticsStorageAccountResourceGroup": {
-        "type": "string",
-        "metadata": {
-          "description": "The resource group name containing the storage account with Azure diagnostics output"
-        }
+      "type": "string",
+      "metadata": {
+        "description": "The resource group name containing the storage account with Azure diagnostics output"
+      }
     },
     "customLogName": {
-    "type": "string",
-    "metadata": {
-      "description": "The custom log name"
+      "type": "string",
+      "metadata": {
+        "description": "The custom log name"
       }
-     }
+    }
+  },
+  "variables": {
+    "Updates": {
+      "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "Updates"
     },
-    "variables": {
-      "Updates": {
-        "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "Updates"
-      },
-      "AntiMalware": {
-        "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "AntiMalware"
-      },
-      "SQLAssessment": {
-        "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "SQLAssessment"
-      },
-      "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
+    "AntiMalware": {
+      "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "AntiMalware"
+    },
+    "SQLAssessment": {
+      "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "SQLAssessment"
+    },
+    "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
   },
   "resources": [
     {
@@ -321,11 +322,31 @@ Následující ukázka šablony ukazuje, jak:
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "category": "VMSS",
             "eTag": "*",
+            "category": "VMSS",
             "displayName": "VMSS Instance Count",
             "query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
             "version": 1
+          }
+        },
+        {
+          "apiVersion": "2017-04-26-preview",
+          "name": "Cross workspace function",
+          "type": "savedSearches",
+            "dependsOn": [
+             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            ],
+            "properties": {
+              "etag": "*",
+              "displayName": "failedLogOnEvents",
+              "category": "Security",
+              "FunctionAlias": "failedlogonsecurityevents",
+              "query": "
+                union withsource=SourceWorkspace
+                workspace('workspace1').SecurityEvent,
+                workspace('workspace2').SecurityEvent,
+                workspace('workspace3').SecurityEvent,
+                | where EventID == 4625"
           }
         },
         {
@@ -519,8 +540,8 @@ Následující ukázka šablony ukazuje, jak:
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "containers": [ 
-              "wad-iis-logfiles" 
+            "containers": [
+              "wad-iis-logfiles"
             ],
             "tables": [
               "WADWindowsEventLogsTable"
@@ -616,7 +637,7 @@ Následující ukázka šablony ukazuje, jak:
       "type": "int",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').retentionInDays]"
     },
-    "immediatePurgeDataOn30Days": {  
+    "immediatePurgeDataOn30Days": {
       "type": "bool",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').features.immediatePurgeDataOn30Days]"
     },

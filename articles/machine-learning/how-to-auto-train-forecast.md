@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: be3046a343e14be4a527363751081ba3f2593cd3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9f80156f61ad82e5563f1c38764c81297f5979f2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605890"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767323"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické trénování modelu prognózy časových řad
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,13 +36,13 @@ Můžete [nakonfigurovat,](#config) jak daleko do budoucna by se prognóza měla
 
 Funkce extrahované z trénovacích dat hrají klíčovou roli. Automatizovaná technologie ML provádí standardní kroky předběžného zpracování a generuje další funkce časových řad, které zachycují sezónní efekty a maximalizují prediktivní přesnost.
 
-## <a name="time-series-and-deep-learning-models"></a>Modely časových řad a hloubkového učení
+## <a name="time-series-and-deep-learning-models"></a>Modely časových řad a hlubokého učení
 
 
 Automatizované ML poskytuje uživatelům nativní časové řady a hluboké učení modely jako součást systému doporučení. Mezi tyto studenty patří:
-+ Prorok
-+ Auto-ARIMA
-+ PrognózaTCN
++ Prorok (Náhled)
++ Auto-ARIMA (náhled)
++ ForecastTCN (náhled)
 
 Automatizované ml hluboké učení umožňuje předvídání univariate a multivariate časových řad dat.
 
@@ -51,7 +51,7 @@ Modely hlubokého učení mají tři vnitřní schopnosti:
 1. Podporují více vstupů a výstupů
 1. Mohou automaticky extrahovat vzorky ve vstupních datech, která se rozprostírají po dlouhých sekvencích.
 
-Vzhledem k větší data, hluboké učení modely, jako je například Microsoft ForecastTCN, můžete zlepšit skóre výsledného modelu. 
+Vzhledem k větší data, hluboké učení modely, jako je například Microsoft ForecastTCN, můžete zlepšit skóre výsledného modelu. Přečtěte si, jak [nakonfigurovat experiment pro hloubkové učení](#configure-a-dnn-enable-forecasting-experiment).
 
 Nativní časových řad studentů jsou také poskytovány jako součást automatizované ML. Prorok funguje nejlépe s časovými řadami, které mají silné sezónní účinky a několik sezón historických dat. Prophet je přesná & rychlá, robustní až odlehlé hodnoty, chybějící data a dramatické změny ve vašich časových řadách. 
 
@@ -181,6 +181,17 @@ Podrobné příklady pokročilé konfigurace prognóz y naleznete v [ukázkovýc
 > Podpora DNN pro prognózování v automatizovaném strojovém učení je ve verzi Preview a není podporována pro místní spuštění.
 
 Chcete-li využít názvy DN pro prognózování, `enable_dnn` budete muset nastavit parametr v automatickém použití konfigurace protokolu AutoMLConfig na hodnotu true. 
+
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             enable_dnn=True,
+                             ...
+                             **time_series_settings)
+```
+Další informace [o automatickém konfiguraci mlsu](#configure-and-run-experiment).
+
+Případně můžete vybrat možnost `Enable deep learning` ve studiu.
+![alternativní text](./media/how-to-auto-train-forecast/enable_dnn.png)
 
 Doporučujeme používat výpočetní cluster AML s virtuálními zařízeními GPU a alespoň dvěma uzly jako výpočetní cíl. Chcete-li poskytnout dostatek času pro školení DNN k dokončení, doporučujeme nastavit časový rozsah experimentu na minimálně několik hodin.
 Další informace o výpočetních formátech AML a velikostech virtuálních zařízení, které zahrnují gpu, najdete v [dokumentaci k výpočetním prostředkům AML](how-to-set-up-training-targets.md#amlcompute) a [o velikosti virtuálních strojů optimalizovaných pro GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).

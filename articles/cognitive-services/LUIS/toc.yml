@@ -156,8 +156,6 @@
         - name: Přidání popisovače
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
-        - name: Migrace na vytváření V3
-          href: luis-migration-authoring-entities.md
         - name: S využitím REST API
           items:
             - name: Programové sestavení aplikace s využitím Node.js
@@ -193,6 +191,8 @@
           displayName: 'import, export'
     - name: Publikování
       href: luis-how-to-publish-app.md
+    - name: Modul runtime předpovědi dotazů
+      href: luis-get-started-get-intent-from-browser.md
     - name: Správa aplikace
       items:
         - name: Prostředky Azure
@@ -216,11 +216,10 @@
       items:
         - name: Pro vývojáře
           href: developer-reference-resource.md
-        - name: Rozhraní API pro vytváření
-          href: luis-migration-api-authoring.md
-        - name: Migrace na API V3
+        - name: Migrace na rozhraní API pro vytváření V3
+          href: luis-migration-authoring-entities.md
+        - name: Migrace na rozhraní API pro předpověď V3
           href: luis-migration-api-v3.md
-          displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
         - name: Migrace na API V2
           href: luis-migration-api-v1-to-v2.md
     - name: Použití kontejnerů

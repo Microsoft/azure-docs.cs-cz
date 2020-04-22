@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 39edaa32b0695f4ab83206cd5701629f12295a0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: b2e8bec18f4f5df6fb78a3c31aa0956ec7333eb5
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527907"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770108"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Repliky pro čtení ve službě Azure Database for MariaDB
 
@@ -73,7 +73,7 @@ Přečtěte si, jak [vytvořit repliku pro čtení na webu Azure Portal](howto-r
 
 ## <a name="connect-to-a-replica"></a>Připojení k replice
 
-Při vytváření replika dědí pravidla brány firewall nebo koncový bod služby virtuální sítě hlavního serveru. Poté jsou tato pravidla nezávislá na hlavním serveru.
+Při vytváření replika zdědí pravidla brány firewall hlavního serveru. Poté jsou tato pravidla nezávislá na hlavním serveru.
 
 Replika zdědí účet správce z hlavního serveru. Všechny uživatelské účty na hlavním serveru jsou replikovány do replik pro čtení. Ke replice pro čtení se můžete připojit pouze pomocí uživatelských účtů, které jsou k dispozici na hlavním serveru.
 
@@ -126,7 +126,7 @@ Replika je vytvořena pomocí stejné konfigurace serveru jako předloha. Po vyt
 > [!IMPORTANT]
 > Před aktualizací konfigurace hlavního serveru na nové hodnoty aktualizujte konfiguraci repliky na stejné nebo vyšší hodnoty. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na hlavním serveru.
 
-Pravidla brány firewall, pravidla virtuální sítě a nastavení parametrů jsou zděděna z hlavního serveru do repliky při vytvoření repliky. Poté jsou pravidla repliky nezávislá.
+Pravidla brány firewall a nastavení parametrů jsou zděděna z hlavního serveru do repliky při vytvoření repliky. Poté jsou pravidla repliky nezávislá.
 
 ### <a name="stopped-replicas"></a>Zastavené repliky
 

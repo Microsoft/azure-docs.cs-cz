@@ -7,22 +7,25 @@ ms.author: mamccrea
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe666359b9ed2773f615ff496f4032bda5e74dc2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313871"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767767"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Úvodní příručka: Vytvoření úlohy Azure Stream Analytics v kódu Visual Studia (preview)
 
 Tento rychlý start ukazuje, jak vytvořit a spustit úlohu Azure Stream Analytics pomocí rozšíření Nástroje Azure StreamAnalytics pro kód Visual Studia. Ukázková úloha čte streamovaná data ze zařízení Azure IoT Hub. Definujete úlohu, která vypočítá průměrnou teplotu při překročení 27° a zapíše výsledné výstupní události do nového souboru v úložišti objektů blob.
 
+> [!NOTE]
+> Nástroje Visual Studio a Visual Studio Code nepodporují úlohy v oblastech Čína – východ, Čína – sever, Německo – střed a Německo – severovýchod.
+
 ## <a name="before-you-begin"></a>Než začnete
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k [portálu Azure](https://portal.azure.com/).
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 * Nainstalujte [kód sady Visual Studio](https://code.visualstudio.com/).
 
@@ -52,7 +55,7 @@ Tento rychlý start ukazuje, jak vytvořit a spustit úlohu Azure Stream Analyti
 
 Před definováním úlohy Stream Analytics byste měli připravit data, která jsou později nakonfigurována jako vstup úlohy. Chcete-li připravit vstupní data, která úloha vyžaduje, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
 
@@ -141,14 +144,6 @@ Před definováním úlohy Stream Analytics byste měli připravit data, která 
    HAVING Temperature > 27
    ```
 
-## <a name="test-the-query-locally-with-sample-data"></a>Testování dotazu místně pomocí ukázkových dat
-
-Před spuštěním dotazu v cloudu jej můžete otestovat místně pomocí místního ukázkového datového souboru nebo s daty zachycenými z živého vstupu a ověřit logiku dotazu.
-
-Postupujte podle pokynů v [test dotazů místně s ukázkovými daty](visual-studio-code-local-run.md) pro další podrobnosti.
-
- ![Testování s ukázkovými daty v kódu Sady Visual Studio](./media/vscode-local-run/localrun-localinput.gif)
-
 ## <a name="define-a-live-input"></a>Definování živého vstupu
 
 1. Klikněte pravým tlačítkem myši na složku **Vstupy** v projektu Stream Analytics. Pak vyberte **ASA: Přidat vstup** z kontextové nabídky.
@@ -175,7 +170,7 @@ Postupujte podle pokynů v [test dotazů místně s ukázkovými daty](visual-st
 
    |Nastavení|Navrhovaná hodnota|Popis|
    |-------|---------------|-----------|
-   |Name (Název)|Vstup|Zadejte název pro identifikaci vstupu úlohy.|
+   |Název|Vstup|Zadejte název pro identifikaci vstupu úlohy.|
    |IotHubNamespace|MyASAIoTHub|Zvolte nebo zadejte název centra IoT hub. Názvy služby IoT hub se automaticky detekují, pokud jsou vytvořeny ve stejném předplatném.|
    |SharedAccessPolicyName|iothubowner| |
 
@@ -207,7 +202,7 @@ Z **horního** řádku vyberte náhled dat v **ioTHub1.json.** Některá vstupn�
 
    |Nastavení|Navrhovaná hodnota|Popis|
    |-------|---------------|-----------|
-   |Name (Název)|Výstup| Zadejte název pro identifikaci výstupu úlohy.|
+   |Název|Výstup| Zadejte název pro identifikaci výstupu úlohy.|
    |Účet úložiště|asaquickstartstorage|Zvolte nebo zadejte název svého účtu úložiště. Názvy účtů úložiště se automaticky zjistí, pokud jsou vytvořeny ve stejném předplatném.|
    |Kontejner|container1|Vyberte existující kontejner, který jste vytvořili v účtu úložiště.|
    |Vzor cesty|output|Zadejte název cesty k souboru, která se vytvoří v rámci kontejneru.|
@@ -279,6 +274,8 @@ Pokud plánujete tuto úlohu v budoucnu používat, můžete ji zastavit a resta
 V tomto rychlém startu jste nasadili jednoduchou úlohu Stream Analytics pomocí kódu Visual Studia. Úlohy Stream Analytics můžete nasadit také pomocí [portálu Azure](stream-analytics-quick-create-portal.md), [PowerShellu](stream-analytics-quick-create-powershell.md)a [Visual Studia](stream-analytics-quick-create-vs.md).
 
 Další informace o nástrojích Azure Stream Analytics pro kód Visual Studia najdete v následujících článcích:
+
+* [Test Stream Analytics dotazy místně s ukázkovými daty pomocí kódu Sady Visual Studio](visual-studio-code-local-run.md)
 
 * [Testování úloh Azure Stream Analytics místně proti živému vstupu pomocí kódu Visual Studia](visual-studio-code-local-run-live-input.md)
 

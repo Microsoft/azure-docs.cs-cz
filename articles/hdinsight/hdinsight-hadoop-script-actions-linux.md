@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931693"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767553"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj akce skriptů s HDInsight
 
@@ -159,15 +159,15 @@ V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiš
 HDInsight protokoluje výstup skriptu, který je zapsán do STDOUT a STDERR. Tyto informace můžete zobrazit pomocí webového uživatelského uživatelského uživatelského panelu Ambari.
 
 > [!NOTE]  
-> Apache Ambari je k dispozici pouze v případě, že je cluster úspěšně vytvořen. Pokud při vytváření clusteru použijete akci skriptu a vytvoření se nezdaří, přečtěte si část O řešení potíží [Přizpůsobení clusterů HDInsight pomocí akce skriptu,](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) kde najdete další způsoby přístupu k protokolované informace.
+> Apache Ambari je k dispozici pouze v případě, že je cluster úspěšně vytvořen. Pokud při vytváření clusteru použijete akci skriptu a vytvoření se nezdaří, [přečtěte si článek Poradce při potížích s akcemi skriptu,](./troubleshoot-script-action.md) kde najdete další způsoby přístupu k protokolované informace.
 
-Většina nástrojů a instalačníbalíčky již zapisovat informace STDOUT a STDERR, ale můžete chtít přidat další protokolování. Chcete-li odeslat text `echo`do stdout, použijte . Například:
+Většina nástrojů a instalačníbalíčky již zapisovat informace STDOUT a STDERR, ale můžete chtít přidat další protokolování. Chcete-li odeslat text `echo`do stdout, použijte . Příklad:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Ve výchozím `echo` nastavení odešle řetězec STDOUT. Chcete-li jej nasměrovat `>&2` na `echo`STDERR, přidejte před . Například:
+Ve výchozím `echo` nastavení odešle řetězec STDOUT. Chcete-li jej nasměrovat `>&2` na `echo`STDERR, přidejte před . Příklad:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -175,7 +175,7 @@ Ve výchozím `echo` nastavení odešle řetězec STDOUT. Chcete-li jej nasměro
 
 To přesměruje informace zapsané do STDOUT na STDERR (2) místo. Další informace o přesměrování vi. [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)
 
-Další informace o zobrazení informací zaznamenaných pomocí akcí skriptů naleznete v [tématu Přizpůsobení clusterů HDInsight pomocí akce skriptu.](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
+Další informace o zobrazení informací zaznamenaných pomocí akcí skriptu naleznete v [tématu Poradce při potížích s akcemi skriptu](./troubleshoot-script-action.md).
 
 ### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>Uložení souborů jako ASCII s koncovkami řádků LF
 
@@ -324,7 +324,7 @@ Další informace o použití jednotlivých metod naleznete v tématu [Použití
 
 Společnost Microsoft poskytuje ukázkové skripty pro instalaci součástí v clusteru HDInsight. Viz [Instalace a použití hue na clusterech HDInsight](hdinsight-hadoop-hue-linux.md) jako ukázková akce skriptu.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Níže jsou uvedeny chyby, se kterými se můžete sejít při používání skriptů, které jste vyvinuli:
 

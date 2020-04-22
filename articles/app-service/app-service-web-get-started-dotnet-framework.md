@@ -3,14 +3,14 @@ title: 'Úvodní příručka: Vytvoření aplikace c# ASP.NET'
 description: Zjistěte, jak spouštět webové aplikace ve službě Azure App Service nasazením výchozí šablony webové aplikace C# ASP.NET z Visual Studia.
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
-ms.date: 10/21/2019
+ms.date: 04/21/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 4688cc358ec6ff792be58254b0607f5416422a21
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 47a5cf2586b8146a68772962c60dc0dbdbb7e2fe
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80047657"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768878"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Framework v Azure
 
@@ -55,7 +55,7 @@ Vytvořte ASP.NET webovou aplikaci takto:
 
 1. V **Průzkumníku řešení**klepněte pravým tlačítkem myši na projekt **myFirstAzureWebApp** a vyberte **publikovat**.
 
-1. Zvolte **App Service** a pak **změňte vytvořit profil** publikovat . **Publish**
+1. Zvolte **Služba App Service** a vyberte Vytvořit **profil**.
 
    ![Publikování ze stránky přehledu projektu](./media/app-service-web-get-started-dotnet-framework/publish-app-framework-vs2019.png)
 
@@ -82,23 +82,25 @@ Vytvořte ASP.NET webovou aplikaci takto:
 
    | Nastavení | Navrhovaná hodnota | Popis |
    |-|-|-|
-   |Plán služby App Service| myAppServicePlan | Název plánu služby App Service. |
+   | Plán Hosting| myAppServicePlan | Název plánu služby App Service. |
    | Umístění | Západní Evropa | Datacentrum, které je hostitelem webové aplikace. |
    | Velikost | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
 
    ![Vytvoření plánu služby App Service](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
 
-1. V **části Název**zadejte jedinečný název aplikace, `a-z` `A-Z`který `0-9`obsahuje `-`pouze platné znaky , jsou , , a . Můžete přijmout automaticky generovaný jedinečný název. Adresa URL webové aplikace je `http://<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace.
+1. V **části Název**zadejte jedinečný název aplikace, `a-z` `A-Z`který `0-9`obsahuje `-`pouze platné znaky , jsou , , a . Můžete přijmout automaticky generovaný jedinečný název. Adresa URL webové aplikace je `http://<app-name>.azurewebsites.net`, kde `<app-name>` je název vaší aplikace.
 
 2. Výběrem možnosti **Vytvořit** spustíte vytváření prostředků Azure.
 
    ![Konfigurace názvu aplikace](./media/app-service-web-get-started-dotnet-framework/web-app-name-framework-vs2019.png)
 
-Průvodce po dokončení publikuje webovou aplikaci ASP.NET do služby Azure a pak aplikaci spustí ve výchozím prohlížeči.
+    Po dokončení průvodce se vytvoří prostředky Azure a budete připraveni publikovat.
 
-![Publikovaná webová aplikace ASP.NET v Azure](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
+3. Na stránce **Publikovat** klikněte na **Publikovat**. Visual Studio vytvoří, balíčky a publikuje aplikaci do Azure a pak spustí aplikaci ve výchozím prohlížeči.
 
-Název aplikace zadaný na nové stránce **Vytvoření nové služby** aplikace `http://<app_name>.azurewebsites.net`se používá jako předpona adresy URL ve formátu .
+    ![Publikovaná webová aplikace ASP.NET v Azure](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
+
+Název aplikace zadaný na nové stránce **Vytvoření nové služby** aplikace `http://<app-name>.azurewebsites.net`se používá jako předpona adresy URL ve formátu .
 
 **Blahopřejeme!** Vaše ASP.NET webová aplikace běží živě ve službě Azure App Service.
 
@@ -117,9 +119,9 @@ Název aplikace zadaný na nové stránce **Vytvoření nové služby** aplikace
 
 1. Opětovné nasazení do služby Azure provedete tak, že v **Průzkumníku řešení** kliknete pravým tlačítkem na projekt **myFirstAzureWebApp** a vyberete **Publikovat**. Potom vyberte **Publikovat**.
 
-Po dokončení publikování spustí Visual Studio prohlížeč na adrese URL webové aplikace.
+    Po dokončení publikování spustí Visual Studio prohlížeč na adrese URL webové aplikace.
 
-![Aktualizovaná webová aplikace ASP.NET v Azure](./media/app-service-web-get-started-dotnet-framework/updated-azure-web-app.png)
+    ![Aktualizovaná webová aplikace ASP.NET v Azure](./media/app-service-web-get-started-dotnet-framework/updated-azure-web-app.png)
 
 ## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 

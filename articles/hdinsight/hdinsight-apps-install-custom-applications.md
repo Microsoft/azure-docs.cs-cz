@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 8fe9e551a4ca7dea8f53e0f8c2975ca3d88c48f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b25e9d860f118c1b044b13e01a80aaf7a24963cf
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366253"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768245"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace vlastních aplikací Apache Hadoop na Azure HDInsight
 
@@ -77,7 +77,7 @@ Pro **Hue**můžete použít následující kroky:
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyberte cluster, do kterého jste aplikaci nainstalovali.
 1. V nabídce **Nastavení** vyberte **Aplikace**.
 1. **Chcete-li** zobrazit vlastnosti, vyberte ze seznamu odstín.  
@@ -119,13 +119,13 @@ Pokud se instalace aplikace nezdařila, zobrazí se chybové zprávy a informace
 
 * Apache Ambari Web UI: If the install script was the cause of the failure, use Ambari Web UI to check full logs about the install scripts.
 
-    Další informace naleznete v tématu [Poradce při potížích](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
+    Další informace naleznete [v tématu Poradce při potížích s akcemi skriptu](./troubleshoot-script-action.md).
 
 ## <a name="remove-hdinsight-applications"></a>Odstranění aplikací HDInsight
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyberte cluster, do kterého jste aplikaci nainstalovali.
 1. V nabídce **Nastavení** vyberte **Aplikace**.
 1. Klikněte pravým tlačítkem myši na aplikaci, kterou chcete odebrat, a pak vyberte **odstranit**.

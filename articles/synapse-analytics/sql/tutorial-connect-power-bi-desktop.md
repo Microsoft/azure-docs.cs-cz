@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0df8ac495b6aca81e46dffc248019483b1c82202
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e0ac6ccde2443a7b374d9eb85f6f960af79c69dc
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422449"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769481"
 ---
 # <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>Kurz: Připojení SQL na vyžádání (preview) k Power BI Desktopu & vytvoření sestavy
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 >
 > - Vytvořit demo databázi
 > - Vytvořit zobrazení použité pro sestavu
-> - Připojení k Power BI Desktopu
+> - Připojení k aplikaci Power BI Desktop
 > - Vytvořit sestavu na základě zobrazení
 
 ## <a name="prerequisites"></a>Požadavky
@@ -51,7 +51,7 @@ Vytvořte demo databázi (a v případě potřeby přetáhněte existující dat
 
 ```sql
 -- Drop database if it exists
-IF EXISTS (SELECT * FROM sys.sysdatabases WHERE name = 'Demo')
+IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Demo')
 BEGIN
     DROP DATABASE Demo
 END;

@@ -8,14 +8,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom:
+- mvc
+- mqtt
 ms.date: 06/21/2019
-ms.openlocfilehash: f542c07456d60572dc70692a1ab0111acc9103f5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b1ee14afcf46dfbedfb9d696b6a0add22ccd39cc
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78675569"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769120"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Úvodní příručka: Odeslání telemetrie ze zařízení do centra IoT hub a čtení pomocí back-endové aplikace (.NET)
 
