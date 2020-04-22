@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 9ccfaa57b8e8fdea325bed908ffe8815b09d0d15
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 86fc5d4845e746604c1ba69f661d1b9ea9d8dca4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257789"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732318"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace s centrem IoT pomocí protokolu MQTT
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: fbfc8cc29a1584dbc9f7e4ff0b73513d85950f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd7582877a74aa998de3a6d0a0f38e56c3c3af91
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281387"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733121"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Podpora programu Commercial Marketplace v Partnerském centru
 
@@ -40,7 +40,7 @@ Společnost Microsoft poskytuje podporu pro širokou škálu produktů a služeb
 
 5. Vyberte **[komunitní fórum partnerů Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** a zodpovíte své dotazy využitím znalostí ostatních vydavatelů společnosti Microsoft. 
 
-6. Vyberte **[Další nápovědu](https://aka.ms/marketplacepublishersupport)** k otevření **lístku žádosti o novou podporu.**  
+6. Vyberte **[Další nápovědu](https://partner.microsoft.com/support/v2/?stage=1)** k otevření **lístku žádosti o novou podporu.**  
 
 ## <a name="how-to-open-a-support-ticket"></a>Jak otevřít lístek podpory
 

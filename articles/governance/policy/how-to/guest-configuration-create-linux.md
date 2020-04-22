@@ -3,12 +3,12 @@ title: Jak vytvořit zásady konfigurace hosta pro Linux
 description: Přečtěte si, jak vytvořit zásady Azure Zásady konfigurace pro Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 65e0082f87f05104e9a57ff0342cd3d2950b63e8
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 24442a89d55e34f9ce9697c2f6a32cfc740bcd85
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617928"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758958"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Jak vytvořit zásady konfigurace hosta pro Linux
 
@@ -24,6 +24,11 @@ Pomocí následujících akcí vytvořte vlastní konfiguraci pro ověření sta
 
 > [!IMPORTANT]
 > Vlastní zásady s konfigurací hosta je funkce náhledu.
+>
+> Rozšíření Konfigurace hosta je nutné k provádění auditů ve virtuálních počítačích Azure.
+> Chcete-li rozšíření nasadit ve velkém měřítku, přiřaďte následující definice zásad:
+>   - Nasadit požadavky pro povolení zásad konfigurace hosta na virtuálních počítačích se systémem Windows.
+>   - Nasaďte požadavky a povolte zásady konfigurace hosta na virtuálních počítačích s Linuxem.
 
 ## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 
@@ -101,7 +106,7 @@ end
 
 Uložte tento `linux-path.rb` soubor s názvem `controls` do `linux-path` nové složky pojmenované uvnitř adresáře.
 
-Nakonec vytvořte konfiguraci, importujte modul prostředku `ChefInSpecResource` **GuestConfiguration** a pomocí prostředku nastavte název profilu InSpec.
+Nakonec vytvořte konfiguraci, importujte modul prostředků **PSDesiredStateConfiguration** a zkompilujte konfiguraci.
 
 ```powershell
 # Define the configuration and import GuestConfiguration
@@ -119,10 +124,15 @@ Configuration AuditFilePathExists
 }
 
 # Compile the configuration to create the MOF files
+import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
+Uložte tento `config.ps1` soubor s názvem do složky projektu. Spusťte jej v `./config.ps1` prostředí PowerShell spuštěním v terminálu. Bude vytvořen nový soubor mof.
+
 Příkaz `Node AuditFilePathExists` není technicky vyžadován, ale vytvoří soubor `AuditFilePathExists.mof` s názvem `localhost.mof`spíše než výchozí . S .mof název souboru postupujte podle konfigurace usnadňuje uspořádání mnoho souborů při provozu ve velkém měřítku.
+
+
 
 Nyní byste měli mít strukturu projektu, jak je uvedeno níže:
 
@@ -150,8 +160,8 @@ Spusťte následující příkaz a vytvořte balíček pomocí konfigurace uvede
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditFilePathExists' `
-  -Configuration './Config/AuditFilePathExists.mof'
-  -ChefProfilePath './'
+  -Configuration './Config/AuditFilePathExists.mof' `
+  -ChefInSpecProfilePath './'
 ```
 
 Po vytvoření balíčku konfigurace, ale před publikováním do Azure, můžete otestovat balíček z pracovní stanice nebo CI/CD prostředí. Rutina GuestConfiguration `Test-GuestConfigurationPackage` obsahuje ve vývojovém prostředí stejného agenta, jak se používá v počítačích Azure. Pomocí tohoto řešení můžete provést testování integrace místně před uvolněním do fakturovaných cloudových prostředí.
@@ -168,7 +178,7 @@ Chcete-li otestovat balíček vytvořený předchozím krokem, spusťte následu
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage `
-  -Path ./AuditFilePathExists.zip
+  -Path ./AuditFilePathExists/AuditFilePathExists.zip
 ```
 
 Rutina také podporuje vstup z kanálu Prostředí PowerShell. Potrubí výstup `New-GuestConfigurationPackage` rutiny na `Test-GuestConfigurationPackage` rutinu.

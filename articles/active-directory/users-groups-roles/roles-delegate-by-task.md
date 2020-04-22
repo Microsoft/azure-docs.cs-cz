@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ac44661dd5a52ba19a3b2dd461aabec1ec250bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd24650c9bf0c4de155b5bfc8723cfa1fef01548
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284870"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81755413"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce podle úlohy správce ve službě Azure Active Directory
 
@@ -72,13 +72,13 @@ Konfigurace brandingu společnosti | Globální správce |
 ---- | --------------------- | ----------------
 Konfigurace vlastností společnosti | Globální správce | 
 
-## <a name="connect"></a>Připojení
+## <a name="connect"></a>Připojit
 
 Úkol | Nejméně privilegovaná role | Další role
 ---- | --------------------- | ----------------
-Ověření průchodu | Globální správce | 
-Číst celou konfiguraci | Globální čtečka | 
-Bezproblémové jednotné přihlašování | Globální správce | 
+Ověření průchodu | Správce hybridní identity | 
+Číst celou konfiguraci | Globální čtečka | Správce hybridní identity |
+Bezproblémové jednotné přihlašování | Správce hybridní identity | 
 
 ## <a name="connect-health"></a>Stav připojení
 
@@ -346,7 +346,7 @@ Aktualizace uživatelských nastavení | Globální správce |
 
 Úkol | Nejméně privilegovaná role | Další role
 ---- | --------------------- | ----------------
-Odeslat lístek podpory | Správce služeb | Správce aplikací, Správce ochrany informací Azure, Správce fakturace, Správce cloudových aplikací, Správce dodržování předpisů, Správce dynamics 365, Správce desktopové analýzy, Správce serveru Exchange, Heslo Správce, Správce Intune, Správce Skypu pro firmy, Správce Power BI, Správce privilegovaného ověřování, Správce SharePointu, Správce komunikace teams, Správce teams, Správce uživatelů, Správce uživatelů, Správce analýzy pracoviště
+Odeslat lístek podpory | Správce služeb | Správce aplikací, Správce ochrany informací Azure, Správce fakturace, Správce cloudových aplikací, Správce dodržování předpisů, Správce dynamics 365, Správce desktopové analýzy, Správce exchange, Správce hesel, Správce Intune, Správce Skypu pro firmy, Správce Power BI, Správce privilegovaného ověřování, Správce služby SharePoint, Správce komunikace teams, Správce teams, Správce uživatelů, Správce analýzy na pracovišti
 
 ## <a name="next-steps"></a>Další kroky
 

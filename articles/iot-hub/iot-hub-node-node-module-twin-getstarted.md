@@ -9,19 +9,20 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: bf80925a2dc5c6d06ba14fe1c0d72a2fc1f88d51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 8e1599b1bd5db5e410e8bbd76fffbe0beb5f066e
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73953866"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732307"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Začínáme s identitou modulu IoT Hub a dvojčetem modulu (Node.js)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Identity modulů a dvojčata modulů](iot-hub-devguide-module-twins.md) se podobají identitě zařízení a dvojčeti zařízení služby Azure IoT Hub, ale poskytují větší úroveň členitosti. Zatímco identita zařízení a dvojče zařízení služby Azure IoT Hub umožňují back-endové aplikaci konfigurovat zařízení a poskytují vhled do stavu zařízení, identita modulu a dvojče modulu poskytují tyto možnosti pro jednotlivé součásti zařízení. Na způsobilých zařízeních s několika součástmi, jako jsou zařízení s operačním systémem nebo zařízení s firmwarem, to umožňuje izolovanou konfiguraci a vhled do stavu jednotlivých součástí.
+> [Identity modulů a dvojčata modulů](iot-hub-devguide-module-twins.md) se podobají identitě zařízení a dvojčeti zařízení služby Azure IoT Hub, ale poskytují větší úroveň členitosti. Zatímco identita zařízení Azure IoT Hub a dvojče zařízení umožňují back-endové aplikaci konfigurovat zařízení a poskytuje přehled o podmínkách zařízení, identita modulu a dvojče modulu poskytují tyto funkce pro jednotlivé součásti zařízení. Na způsobilých zařízeních s několika součástmi, jako jsou zařízení s operačním systémem nebo zařízení s firmwarem, to umožňuje izolovanou konfiguraci a vhled do stavu jednotlivých součástí.
 
 Na konci tohoto kurzu máte dvě aplikace Node.js:
 

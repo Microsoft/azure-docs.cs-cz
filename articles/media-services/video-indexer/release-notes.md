@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5aa7abf7aafc14e71af5618cec892ef9f843d88a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933863"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733070"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi videoindexeru Azure Media Services
 
@@ -29,6 +29,20 @@ Chcete-li mít aktuální informace o nejnovějším vývoji, tento článek obs
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="april-2020"></a>Duben 2020
+
+### <a name="new-widget-parameters-capabilities"></a>Nové možnosti parametrů widgetu
+
+Widget **Přehledy** obsahuje nové `language` `control`parametry: a .
+
+Widget **Přehrávač** má `locale` nový parametr. Jazyk `locale` `language` hráče i parametry ovládají.
+
+Další informace naleznete v části [typy widgetů.](video-indexer-embed-widgets.md#widget-types) 
+
+## <a name="new-player-skin"></a>Nový hráč kůže
+
+Nový hráč kůže zahájena s aktualizovaným designem.
 
 ## <a name="january-2020"></a>Leden 2020
  
@@ -46,7 +60,7 @@ Nový Video Indexer GitHub s různými projekty, začíná průvodce a ukázky k
  
 ### <a name="swagger-update"></a>Swagger aktualizace
 
-Video Indexer jednotné **ověřování** a **operace** do jednoho [Video Indexer OpenAPI specifikace (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). Develpers můžete najít API v [Video Indexer Developer Portal](https://api-portal.videoindexer.ai/).
+Video Indexer jednotné **ověřování** a **operace** do jednoho [Video Indexer OpenAPI specifikace (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). Vývojáři mohou najít rozhraní API na [portálu pro vývojáře video indexeru](https://api-portal.videoindexer.ai/).
 
 ## <a name="december-2019"></a>Prosinec 2019
 

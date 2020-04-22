@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fef1afb9748fd6f2f59b972c451d95ae1204ef70
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 8bda712523faa90f32a12fe7eecce27dccf3a55c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011629"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756636"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Směrný plán zabezpečení Azure pro dávku
 
@@ -712,7 +712,7 @@ Volitelně, pokud máte předplatné Rapid7, Qualys nebo jiné platformy pro spr
 
 I když klasické prostředky Azure může být zjištěna prostřednictvím grafu prostředků, je vysoce doporučeno vytvářet a používat prostředky Azure Resource Manager (ARM) do budoucna.
 
-Jak vytvářet dotazy pomocí Azure Graphu:
+Jak vytvářet dotazy pomocí Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -899,7 +899,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7.3: Udržovat zabezpečené konfigurace pro všechny prostředky Azure
 
-**Pokyny:** Pomocí zásad Azure [odepřít] a [nasadit, pokud neexistují] vynutit zabezpečené nastavení pro prostředky Azure související s vaším dávkovým účtem a fondy (jako jsou virtuální sítě, podsítě, Azure Firewalls, Účty azure storage atd.). Aliasy zásad Azure můžete použít z následujících oborů názvů k vytvoření vlastních zásad:
+**Pokyny:** Pomocí zásad Azure [odepřít] a [nasadit, pokud neexistují] vynutit zabezpečené nastavení pro prostředky Azure související s vaším dávkovým účtem a fondy (jako jsou virtuální sítě, podsítě, Azure Firewalls, Účty azure storage atd.). Vlastní zásady můžete použít aliasy Zásad Azure z následujících oborů názvů:
 
 - Microsoft.Batch
 

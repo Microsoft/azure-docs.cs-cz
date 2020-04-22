@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 3e1cf95d3c6ac8918e9e7e5593d687ee2d398810
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 08575164334db965a9e5592b761a06205208de9e
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886615"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732772"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Úvodní příručka: Vytvoření projektu Azure Functions pomocí kódu Visual Studia
 
@@ -22,7 +22,7 @@ K dispozici je také verze tohoto článku [založená na cli.](functions-create
 
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Pokud VS Kód není váš preferovaný vývojový nástroj, podívejte se na naše podobné návody pro Devlopers Java pomocí [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [Gradle](/azure/azure-functions/functions-create-first-java-gradle) a [IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions).
+> Pokud VS Code není váš preferovaný vývojový nástroj, podívejte se na naše podobné návody pro vývojáře Java pomocí [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [Gradle](/azure/azure-functions/functions-create-first-java-gradle) a [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions).
 ::: zone-end  
 
 ## <a name="configure-your-environment"></a>Konfigurace prostředí

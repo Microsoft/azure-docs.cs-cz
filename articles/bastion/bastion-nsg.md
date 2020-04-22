@@ -5,14 +5,14 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: charwen
-ms.openlocfilehash: 15abee4688a2f6aefa2b08ad2b8eee6622d56be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0188f9bc1c7c0e8d7fed9f590d078085b175614f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087271"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732200"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Práce s přístupem k nsg a baštou Azure
 
@@ -32,9 +32,9 @@ V tomto diagramu:
 
 Tato část ukazuje síťový provoz mezi uživatelem a Azure Bastion a až k cílové virtuální počítače ve vaší virtuální síti:
 
-### <a name="azurebastionsubnet"></a>AzureBastionSubnet
+### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure Bastion se nasadí speciálně na AzureBastionSubnet.
+Azure Bastion se nasazuje speciálně do ***AzureBastionSubnet***.
 
 * **Přenos příchozího přenosu dat:**
 
@@ -46,19 +46,11 @@ Azure Bastion se nasadí speciálně na AzureBastionSubnet.
    * **Odchozí provoz na cílové virtuální chod:** Azure Bastion dosáhne cílové virtuální počítače přes privátní IP. Skupiny sítě nsg musí povolit odchozí přenosy do jiných cílových podsítí virtuálních bylin pro port 3389 a 22.
    * **Odchozí provoz do jiných veřejných koncových bodů v Azure:** Azure Bastion musí být možné připojení k různým veřejným koncovým bodům v rámci Azure (například pro ukládání protokolů diagnostiky a protokolů měření). Z tohoto důvodu Azure Bastion potřebuje odchozí na 443 na značku služby **AzureCloud.**
 
-* **Cílová podsíť virtuálních mís:** Toto je podsíť, která obsahuje cílový virtuální počítač, který chcete RDP/SSH.
+### <a name="target-vm-subnet"></a>Cílová podsíť virtuálních mís
+Toto je podsíť, která obsahuje cílový virtuální počítač, který chcete RDP/SSH.
 
    * **Příchozí přenosy z Azure Bastion:** Azure Bastion dosáhne cílového virtuálního počítače přes privátní IP. Porty RDP/SSH (porty 3389/22) je třeba otevřít na straně cílového virtuálního počítači přes privátní IP adresu. Jako osvědčený postup můžete přidat rozsah IP adres podsítě Azure Bastion v tomto pravidle, aby bylo možné otevřít tyto porty na cílových virtuálních počítačích v cílové podsíti virtuálních počítačů.
 
-## <a name="apply-nsgs-to-azurebastionsubnet"></a><a name="apply"></a>Použití skupin nsg pro AzureBastionSubnet
-
-Pokud vytvoříte a použijete skupinu zabezpečení sítě pro ***AzureBastionSubnet***, ujistěte se, že jste do souboru zabezpečení sítě přidali následující pravidla. Pokud tato pravidla nepřidáte, vytvoření/aktualizace sítě zabezpečení sítě se nezdaří:
-
-* **Připojení k řídicí rovině:** Příchozí na 443 z GatewayManager
-* **Protokolování diagnostiky a další:** Odchozí na 443 na AzureCloud. Místní značky v rámci této značky služby ještě nejsou podporovány.
-* **Cílový virtuální virtuální virtuální ms:** Odchozí pro 3389 a 22 do virtualnetwork
-
-Příklad pravidla nsg je k dispozici pro odkaz v této [šabloně rychlého startu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg).
 
 ## <a name="next-steps"></a>Další kroky
 

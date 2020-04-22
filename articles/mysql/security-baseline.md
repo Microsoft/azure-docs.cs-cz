@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cffefb294aaeeb4d66358ceae72c98becd04cc58
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3e79d6efcbb72b73dedb5b8dfdf965736e7de3e4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261954"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757217"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Základ zabezpečení Azure pro Azure Database for MySQL
 
@@ -650,7 +650,7 @@ Pokrytí funkcí pro služby Azure PaaS v Azure Security Center:https://docs.mic
 
 **Pokyny:** Pomocí Azure Resource Graph dotaz a zjistit všechny prostředky (včetně Azure Database for MySQL instance) v rámci předplatného. Ujistěte se, že máte příslušná (číst) oprávnění ve vašem tenantovi a jsou schopni vytvořit výčet všech předplatných Azure, stejně jako prostředky v rámci vašich předplatných.
 
-Jak vytvářet dotazy pomocí Azure Graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Jak zobrazit předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 

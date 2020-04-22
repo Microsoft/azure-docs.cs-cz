@@ -3,18 +3,17 @@ title: Platba předem za softwarové plány – rezervace Azure
 description: Zjistěte, jak si můžete předplatit softwarové plány, abyste ušetřili peníze za vaše náklady na platby za vaše peníze.
 author: bandersmsft
 manager: yashesvi
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757235"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759283"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Předplacení softwarových plánů Azure
 

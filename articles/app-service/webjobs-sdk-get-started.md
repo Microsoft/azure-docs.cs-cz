@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4976be485a9b7609c6e8d23f6b897092217663fc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 4ee724ec66d5fb474f8c8a9a967cc7235fef5e85
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535668"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732624"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s událostmi řízeným zpracováním na pozadí pomocí sady Azure WebJobs SDK
 
@@ -134,7 +134,7 @@ V této části nastavíte protokolování konzoly, která používá [ASP.NET c
     * Zakáže [protokolování řídicího panelu](https://github.com/Azure/azure-webjobs-sdk/wiki/Queues#logs). Řídicí panel je starší nástroj pro monitorování a protokolování řídicího panelu se nedoporučuje pro scénáře výroby s vysokou propustností.
     * Přidá zprostředkovatele konzoly s výchozím [filtrováním](webjobs-sdk-how-to.md#log-filtering).
 
-Teď můžete přidat funkci, která se aktivuje zprávy přicházející do [fronty Služby Azure Storage](../azure-functions/functions-bindings-storage-queue.md).
+Teď můžete přidat funkci, která se aktivuje zprávy přicházející do fronty Azure Storage.
 
 ## <a name="install-the-storage-binding-extension"></a>Instalace rozšíření vazby služby Storage
 
@@ -184,7 +184,7 @@ Počínaje verzí 3.x je nutné explicitně nainstalovat rozšíření vazby úl
 
    Atribut `QueueTrigger` říká, že runtime volá tuto funkci, když je nová `queue`zpráva zapsána ve frontě Azure Storage s názvem . Obsah zprávy fronty jsou k dispozici kódu metody `message` v parametru. Tělo metody je místo, kde zpracováváte data aktivační události. V tomto příkladu kód pouze protokoluje zprávu.
 
-   Parametr `message` nemusí být řetězec. Můžete také vytvořit vazbu na objekt JSON, bajtové pole nebo objekt [CloudQueueMessage.](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) [Viz Využití aktivační události fronty](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Každý typ vazby (například fronty, objekty BLOB nebo tabulky) má jinou sadu typů parametrů, které můžete vázat.
+   Parametr `message` nemusí být řetězec. Můžete také vytvořit vazbu na objekt JSON, bajtové pole nebo objekt [CloudQueueMessage.](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) [Viz Využití aktivační události fronty](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage). Každý typ vazby (například fronty, objekty BLOB nebo tabulky) má jinou sadu typů parametrů, které můžete vázat.
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -280,7 +280,7 @@ V této části vytvoříte a spustíte projekt místně a spustíte funkci vytv
 
    Vzhledem k `QueueTrigger` tomu, `ProcessQueueMessage` že jste použili atribut ve funkci, za běhu Sady WeJobs SDK naslouchá zprávy fronty při spuštění. Najde novou zprávu fronty ve frontě s názvem *fronta* a zavolá funkci.
 
-   Z důvodu [dotazování fronty exponenciální backoff](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm), může trvat až 2 minuty za běhu najít zprávu a vyvolat funkci. Tuto čekací dobu lze zkrátit spuštěním v [režimu vývoje](webjobs-sdk-how-to.md#host-development-settings).
+   Z důvodu [dotazování fronty exponenciální backoff](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm), může trvat až 2 minuty za běhu najít zprávu a vyvolat funkci. Tuto čekací dobu lze zkrátit spuštěním v [režimu vývoje](webjobs-sdk-how-to.md#host-development-settings).
 
    Výstup konzoly vypadá takto:
 
@@ -444,7 +444,7 @@ Během nasazení vytvoříte instanci služby aplikace, ve které chcete spoušt
 1. Aktualizujte stránku **Fronty** a nová zpráva zmizí, protože byla zpracována funkcí spuštěnou v Azure.
 
    > [!TIP]
-   > Při testování v Azure, použijte režim vývoje, aby [zajistily,](webjobs-sdk-how-to.md#host-development-settings) že funkce aktivační událost fronty je vyvolána hned a vyhnout se zpoždění z důvodu [fronty dotazování exponenciální backoff](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm).
+   > Při testování v Azure, použijte režim vývoje, aby [zajistily,](webjobs-sdk-how-to.md#host-development-settings) že funkce aktivační událost fronty je vyvolána hned a vyhnout se zpoždění z důvodu [fronty dotazování exponenciální backoff](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm).
 
 ### <a name="view-logs-in-application-insights"></a>Zobrazení protokolů v přehledech aplikací
 

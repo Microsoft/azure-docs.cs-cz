@@ -1,26 +1,19 @@
 ---
 title: Použití interního překladu názvů virtuálních počítačů pro virtuální počítače s azure CLI
-description: Jak vytvořit karty virtuálního síťového rozhraní a použít interní překlad názvů DNS pro virtuální počítače v Azure pomocí rozhraní příkazového řádku Azure
-services: virtual-machines-linux
-documentationcenter: ''
+description: Jak vytvořit karty virtuálního síťového rozhraní a použít interní překlad názvů DNS pro virtuální počítače v Azure pomocí rozhraní příkazového řádku Azure.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: networking
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: acfdfd4edf90b90998a913fa0c6479bedf0028b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07a78e4987a844627824ac5034046cf6a393ad8d
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034748"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757842"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Vytvoření karet rozhraní virtuální sítě a použití interního překladu názvů DNS pro virtuální počítače v Azure
 

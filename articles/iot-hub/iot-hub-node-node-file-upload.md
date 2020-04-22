@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: db3da5ff2d7e8b6fa493f5338fac93df0d1a7fe2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: af9743233a61e8e6d816b362d35e6a38735df35b
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110893"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732251"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Nahrávání souborů ze zařízení do cloudu pomocí služby IoT Hub (Node.js)
 
@@ -26,7 +27,7 @@ Tento kurz vychází z kódu v kurzu Odesílat zprávy z cloudu na zařízení p
 
 * Pomocí oznámení o nahrání souboru centra IoT Hub aktivujte zpracování souboru v back-endu aplikace.
 
-[Odeslat telemetrii ze zařízení do rychlého startu služby IoT hub](quickstart-send-telemetry-node.md) demonstruje základní funkce zasílání zpráv mezi zařízeními a cloudy služby IoT Hub. V některých případech však nelze snadno mapovat data, která vaše zařízení odesílají do relativně malých zpráv zařízení cloud, které služba IoT Hub přijímá. Například:
+[Odeslat telemetrii ze zařízení do rychlého startu služby IoT hub](quickstart-send-telemetry-node.md) demonstruje základní funkce zasílání zpráv mezi zařízeními a cloudy služby IoT Hub. V některých případech však nelze snadno mapovat data, která vaše zařízení odesílají do relativně malých zpráv zařízení cloud, které služba IoT Hub přijímá. Příklad:
 
 * Velké soubory, které obsahují obrázky
 * Videa

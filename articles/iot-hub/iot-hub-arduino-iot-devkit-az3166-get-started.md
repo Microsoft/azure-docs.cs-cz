@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 0c7566df870b3c41b1f1dd7d4a4129ff9d9d9407
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.custom: mqtt
+ms.openlocfilehash: 1c6af4f44cd16405d1ef12ae909085220b0d072d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481735"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733585"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Připojení IoT DevKit AZ3166 k Azure IoT Hub
 
@@ -175,7 +176,7 @@ Podle následujících kroků připravte vývojové prostředí pro DevKit:
 
     ![Instalace nástrojů Azure IoT](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
-    Nebo použijte tuto přímou adresu URL:`vscode:extension/vsciot-vscode.azure-iot-tools`
+    Nebo zkopírujte a vložte tuto adresu URL do okna prohlížeče:`vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
     > Rozšiřující balíček nástrojů Azure IoT obsahuje pracovní [plocha zařízení Azure IoT Workbench,](https://aka.ms/iot-workbench) která se používá k vývoji a ladění na různých zařízeních IoT devkit. [Rozšíření Azure IoT Hub](https://aka.ms/iot-toolkit), které je součástí rozšíření nástroje Azure IoT, se používá ke správě a interakci s Azure IoT Hubs.

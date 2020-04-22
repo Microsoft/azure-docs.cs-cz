@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 04/20/2020
 ms.author: diberry
-ms.openlocfilehash: 1bd7a2bb6d3393aca397686a2817f1dcd5f89a38
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d59b7ebd1376d0bee10482cfe5faac1c53d1bde0
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76987758"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733287"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
 * [Visual Studio Kód](https://code.visualstudio.com/) nebo vaše oblíbené IDE
-* ID veřejné aplikace:`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* ID aplikace LUIS – použijte veřejné IOT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`ID aplikace . Uživatelský dotaz použitý v kódu rychlého startu je specifický pro tuto aplikaci.
 
 ## <a name="create-luis-runtime-key-for-predictions"></a>Vytvořit klíč runtime LUIS pro předpovědi
 
@@ -29,7 +29,7 @@ ms.locfileid: "76987758"
 
     |Nastavení|Hodnota|
     |--|--|
-    |Name (Název)|Požadovaný název (2-64 znaků)|
+    |Název|Požadovaný název (2-64 znaků)|
     |Předplatné|Vybrat příslušné předplatné|
     |Umístění|Vyberte libovolné blízké a dostupné místo|
     |Cenová úroveň|`F0`- minimální cenová úroveň|

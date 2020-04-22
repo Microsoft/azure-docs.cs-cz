@@ -1,25 +1,18 @@
 ---
-title: Kvóty virtuálních procesorů pro Azure
+title: Kvóty virtuálních procesorů
 description: Přečtěte si o kvótách virtuálních procesorů pro Azure.
-keywords: ''
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: c194dbeb0183e64535342f8aaf9a770a93b3e332
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f8d181194328725c2e7c02f6e73752cf568ef4e
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75896186"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759181"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Kvóty virtuálních procesorů pro virtuální počítače
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: acacba591c9b895f1bd6abfbab5d3d4a4c858d12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08107874598a68fb5ce2a1a8a98b6a81d7b94d4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472771"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756790"
 ---
 # <a name="string-claims-transformations"></a>Řetězcové deklarace identity transformace
 
@@ -369,7 +369,7 @@ Zkopíruje lokalizované řetězce do deklarací.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| Výstupní nárok | Název lokalizovaného řetězce | řetězec | Seznam typů deklarací, které jsou vytvořeny po uplatnění této transformace deklarací. |
+| Výstupní nárok | Název lokalizovaného řetězce | řetězec | Seznam typů deklarací, které jsou vytvořeny po této transformace deklarací byla vyvolána. |
 
 Chcete-li použít GetLocalizedStringsTransformation deklarace transformace:
 
@@ -615,13 +615,17 @@ Zkontroluje, zda `claimToMatch` `matchTo` řetězec deklarace identity a vstupn�
 | inputClaim | claimToMatch | řetězec | Typ deklarace, který je třeba porovnat. |
 | Parametr Input | matchTo | řetězec | Regulární výraz, který má odpovídat. |
 | Parametr Input | outputClaimIfMatched | řetězec | Hodnota, která má být nastavena, pokud jsou řetězce stejné. |
+| Parametr Input | extractGroups | Boolean | [Nepovinné] Určuje, zda má shoda Regex extrahovat hodnoty skupin. Možné hodnoty: `true` `false` , nebo (výchozí). | 
 | Výstupní nárok | outputClaim | řetězec | Pokud je regulární výraz shodovat, tato výstupní deklarace obsahuje hodnotu vstupního parametru. `outputClaimIfMatched` Nebo null, pokud žádná shoda. |
 | Výstupní nárok | regexCompareResultClaim | Boolean | Typ deklarace výsledku výsledku, který má `true` `false` být nastaven jako výsledek shody nebo na základě výsledku vyrovnání, odpovídá. |
+| Výstupní nárok| Název pohledávky| řetězec | Pokud extractGroups vstupní parametr nastaven na hodnotu true, seznam typů deklarací identity, které jsou vytvořeny po této transformace deklarace identity byla vyvolána. Název claimType musí odpovídat názvu skupiny Regex. | 
 
-Například zkontroluje, zda je zadaný telefonní číslo platný, na základě vzoru regulárního výrazu telefonního čísla.
+### <a name="example-1"></a>Příklad 1
+
+Na základě vzoru regulárního výrazu telefonního čísla zkontroluje, zda je zadaný telefonní číslo platný.
 
 ```XML
-<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
   </InputClaims>
@@ -636,8 +640,6 @@ Například zkontroluje, zda je zadaný telefonní číslo platný, na základě
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad
-
 - Vstupní deklarace:
     - **claimToMatch**: "64854114520"
 - Vstupní parametry:
@@ -647,6 +649,39 @@ Například zkontroluje, zda je zadaný telefonní číslo platný, na základě
     - **outputClaim**: "isPhone"
     - **regexCompareResultClaim**: true
 
+### <a name="example-2"></a>Příklad 2
+
+Zkontroluje, zda je zadaná e-mailová adresa platná, a vrátí e-mailový alias.
+
+```XML
+<ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="(?&lt;mailAlias&gt;.*)@(.*)$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isEmail" />
+    <InputParameter Id="extractGroups" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isEmailString" TransformationClaimType="regexCompareResultClaim" />
+    <OutputClaim ClaimTypeReferenceId="mailAlias" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- Vstupní deklarace:
+    - **claimToMatch**:emily@contoso.com"
+- Vstupní parametry:
+    - **matchTo**:`(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**: "isEmail"
+    - **extractGroups**: true
+- Výstupní nároky:
+    - **outputClaim**: "isEmail"
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: emily
+    
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 Zkontroluje, zda `matchTo` řetězec deklarace identity a vstupní parametr jsou `stringMatchMsg` `stringMatchMsgCode` stejné a nastaví výstupní deklarace s hodnotou `true` přítomné v a vstupní parametry, spolu s porovnat deklarace výstupu výsledku, který má být nastaven jako nebo `false` na základě výsledku porovnání.

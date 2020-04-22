@@ -3,12 +3,12 @@ title: Naučte se auditovat obsah virtuálních počítačů
 description: Zjistěte, jak zásady Azure používají agenta konfigurace hosta k auditování nastavení uvnitř virtuálních počítačů.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4899f6b3108cabb4e9cdd36e4b2bc5cd2f1cbd4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1721c0f1ca7c084d636278aabc96f8dac3293038
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538031"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759078"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Principy konfigurace hosta zásad Azure
 
@@ -20,19 +20,25 @@ Kromě auditování a [nápravy](../how-to/remediate-resources.md) prostředků 
 
 V tuto chvíli většina zásad Azure Zásady konfigurace konfigurace pouze nastavení auditování uvnitř počítače. Nepoužívají konfigurace. Výjimkou je jedna předdefinovaná [zásada uvedená níže](#applying-configurations-using-guest-configuration).
 
+## <a name="resource-provider"></a>Poskytovatel prostředků
+
+Před použitím konfigurace hosta je nutné zaregistrovat poskytovatele prostředků. Poskytovatel prostředků je registrován automaticky, pokud se přiřazení zásadkonfigurace hosta provádí prostřednictvím portálu. Můžete ručně zaregistrovat prostřednictvím [portálu](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)nebo [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli).
+
 ## <a name="extension-and-client"></a>Rozšíření a klient
 
 Chcete-li auditovat nastavení uvnitř počítače, je povoleno [rozšíření virtuálního počítače.](../../../virtual-machines/extensions/overview.md) Rozšíření stáhne příslušné přiřazení zásad a odpovídající definici konfigurace.
+
+> [!Important]
+> Rozšíření Konfigurace hosta je nutné k provádění auditů ve virtuálních počítačích Azure.
+> Chcete-li rozšíření nasadit ve velkém měřítku, přiřaďte následující definice zásad:
+>   - Nasadit požadavky pro povolení zásad konfigurace hosta na virtuálních počítačích se systémem Windows.
+>   - Nasaďte požadavky a povolte zásady konfigurace hosta na virtuálních počítačích s Linuxem.
 
 ### <a name="limits-set-on-the-extension"></a>Limity nastavené na rozšíření
 
 Chcete-li omezit rozšíření z dopadu na aplikace spuštěné uvnitř počítače, konfigurace hosta není povoleno překročit více než 5 % procesoru. Toto omezení existuje pro předdefinované i vlastní definice.
 
-## <a name="register-guest-configuration-resource-provider"></a>Registrace zprostředkovatele prostředků konfigurace hosta
-
-Před použitím konfigurace hosta je nutné zaregistrovat poskytovatele prostředků. Zaregistrovat se můžete prostřednictvím [portálu](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure PowerShellu](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)nebo [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli). Poskytovatel prostředků je registrován automaticky, pokud se přiřazení zásadkonfigurace hosta provádí prostřednictvím portálu.
-
-## <a name="validation-tools"></a>Nástroje pro ověřování pravosti
+### <a name="validation-tools"></a>Nástroje pro ověřování pravosti
 
 V rámci počítače klient konfigurace hosta používá místní nástroje ke spuštění auditu.
 
@@ -50,17 +56,17 @@ Výsledky jsou odesílány poskytovateli prostředků konfigurace hosta po dokon
 
 ## <a name="supported-client-types"></a>Podporované typy klientů
 
-V následující tabulce je uveden seznam podporovaných operačních systémů v ibi Azure:
+Zásady konfigurace hosta zahrnují nové verze. Starší verze operačních systémů dostupných na webu Azure Marketplace jsou vyloučeny, pokud není kompatibilní agent konfigurace hosta. V následující tabulce je uveden seznam podporovaných operačních systémů v ibi Azure:
 
 |Vydavatel|Název|Verze|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04, 16.04, 18.04|
-|Kredativ|Debian|8, 9|
-|Microsoft|Windows Server|Datacentrum 2012, Datacentrum 2012 R2, Datacentrum 2016, Datacentrum 2019|
+|Canonical|Ubuntu Server|14.04 a novější|
+|Kredativ|Debian|8 a novější|
+|Microsoft|Windows Server|2012 a později|
 |Microsoft|Klient Windows|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7, 7.8|
-|Suse|SLES|12 AKTUALIZACE SP3|
+|OpenLogic|CentOS|7.3 a novější|
+|Red Hat|Red Hat Enterprise Linux|7.4 a novější|
+|Suse|SLES|12 SP3 a novější|
 
 ### <a name="unsupported-client-types"></a>Nepodporované typy klientů
 

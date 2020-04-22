@@ -1,25 +1,18 @@
 ---
 title: Plánované události pro virtuální počítače s Linuxem v Azure
 description: Naplánujte události pomocí služby Azure Metadata Service pro vaše virtuální počítače s Linuxem.
-services: virtual-machines-windows, virtual-machines-linux, cloud-services
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: b3b9914d0e5162f8f8f41b929d7bdfef68f85ad9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: ee600d7524af27a0e9e2ce0176e7bd4d1f60bc3b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263314"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758553"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Služba metadat Azure: Naplánované události pro virtuální počítače s Linuxem
 
@@ -132,7 +125,7 @@ V případě, že jsou naplánované události, odpověď obsahuje pole událost
 | Eventid | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | Typ události | Vliv na tuto událost způsobí. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánováno pozastavit na několik sekund. Připojení procesoru a sítě může být pozastaveno, ale nemá žádný vliv na paměť nebo otevřené soubory.<li>`Reboot`: Virtuální počítač je naplánováno restartování (netrvalá paměť je ztracena). <li>`Redeploy`: Virtuální počítač je naplánováno přesunout do jiného uzlu (dočasné disky jsou ztraceny). <li>`Preempt`: Virtuální stroj Spot se odstraňuje (dočasné disky jsou ztraceny). <li> `Terminate`: Virtuální počítač je naplánováno na odstranění. |
 | ResourceType | Typ prostředku, který tato událost ovlivňuje. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
-| Zdroje a prostředky| Seznam zdrojů, které tato událost ovlivňuje. Je zaručeno, že seznam bude obsahovat počítače maximálně z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Prostředky| Seznam zdrojů, které tato událost ovlivňuje. Je zaručeno, že seznam bude obsahovat počítače maximálně z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Stav této události. <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánováno spustit po `NotBefore` čase určeném ve vlastnosti.<li>`Started`: Tato událost byla zahájena.</ul> Není `Completed` nikdy uveden žádný nebo podobný stav. Událost již není vrácena po dokončení události.
 | Není před| Doba, po které může tato událost začít. <br><br> Příklad: <br><ul><li> Po, 19 Zář 2016 18:29:47 GMT  |
 

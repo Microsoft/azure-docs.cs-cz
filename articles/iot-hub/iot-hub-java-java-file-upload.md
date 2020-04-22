@@ -9,12 +9,15 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: fcc2013f67c6e91182979a9bcab683894088a1d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: f0753827fe5f7f2b866726683d4cb1f205da4599
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284522"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732471"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Nahrávání souborů ze zařízení do cloudu pomocí služby IoT Hub (Java)
 
@@ -26,7 +29,7 @@ Tento kurz vychází z kódu v kurzu Odesílat zprávy z cloudu na zařízení p
 
 * Pomocí oznámení o nahrání souboru centra IoT Hub aktivujte zpracování souboru v back-endu aplikace.
 
-[Odeslání telemetrie ze zařízení do rychlého startu služby IoT hub](quickstart-send-telemetry-java.md) a odesílání zpráv z cloudu na zařízení pomocí kurzu [služby IoT Hub](iot-hub-java-java-c2d.md) zobrazují základní funkce zasílání zpráv mezi zařízeními a cloud-to-zařízení služby IoT Hub. Kurz [Konfigurace směrování zpráv pomocí služby IoT Hub](tutorial-routing.md) popisuje způsob spolehlivého ukládání zpráv mezi zařízeními v úložišti objektů blob Azure. V některých případech však nelze snadno mapovat data, která vaše zařízení odesílají do relativně malých zpráv zařízení cloud, které služba IoT Hub přijímá. Například:
+[Odeslání telemetrie ze zařízení do rychlého startu služby IoT hub](quickstart-send-telemetry-java.md) a odesílání zpráv z cloudu na zařízení pomocí kurzu [služby IoT Hub](iot-hub-java-java-c2d.md) zobrazují základní funkce zasílání zpráv mezi zařízeními a cloud-to-zařízení služby IoT Hub. Kurz [Konfigurace směrování zpráv pomocí služby IoT Hub](tutorial-routing.md) popisuje způsob spolehlivého ukládání zpráv mezi zařízeními v úložišti objektů blob Azure. V některých případech však nelze snadno mapovat data, která vaše zařízení odesílají do relativně malých zpráv zařízení cloud, které služba IoT Hub přijímá. Příklad:
 
 * Velké soubory, které obsahují obrázky
 * Videa

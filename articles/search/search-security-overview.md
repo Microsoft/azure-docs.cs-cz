@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: fe7d076fab6a70736843fc644cd56bef44a55df2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/21/2020
+ms.openlocfilehash: 4db9624fbc71e48fcc10ae1d9a1d700d301248a2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415128"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759548"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Zabezpečení a ochrana osobních údajů v Azure Cognitive Search
 
@@ -40,7 +40,7 @@ Dodržování standardů se vztahuje na obecně dostupné funkce. Funkce náhled
 
 | Vrstva zabezpečení | Popis |
 |----------------|-------------|
-| Šifrování během přenosu <br>(HTTPS/SSL/TLS) | Azure Cognitive Search naslouchá na portu HTTPS 443. Napříč platformou se připojení ke službám Azure šifrují. <br/><br/>Všechny interakce Azure Cognitive Search mezi klientem a službami jsou schopné SSL/TLS 1.2.  Nezapomeňte použít TLSv1.2 pro připojení SSL k vaší službě.|
+| Šifrování během přenosu <br>(HTTPS/SSL/TLS) | Azure Cognitive Search naslouchá na portu HTTPS 443. Napříč platformou se připojení ke službám Azure šifrují. <br/><br/>Všechny interakce Azure cognitive search mezi klienty používají šifrování SSL/TLS 1.2. Starší verze (1.0 nebo 1.1) nejsou podporovány.|
 | Šifrování v klidovém stavu <br>Spravované klíče společnosti Microsoft | Šifrování je plně internalizovánv procesu indexování, bez měřitelné dopad na indexování čas dokončení nebo velikost indexu. Dochází automaticky na všechny indexování, včetně přírůstkové aktualizace indexu, který není plně šifrována (vytvořené před lednem 2018).<br><br>Interně je šifrování založené na [šifrování služby Azure Storage Service](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)pomocí 256bitového šifrování [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Šifrování je interní azure cognitive search, s certifikáty a šifrovací klíče spravované interně společností Microsoft a univerzálně aplikované. Šifrování nelze zapnout ani vypnout, spravovat nebo nahradit vlastní klíče ani zobrazovat nastavení šifrování na portálu nebo programově.<br><br>Šifrování v klidovém stavu bylo oznámeno v lednu 24, 2018 a platí pro všechny úrovně služeb, včetně volné úrovně, ve všech oblastech. Pro úplné šifrování indexy vytvořené před tímto datem musí být vynechány a znovu sestaveny, aby k šifrování došlo. V opačném případě jsou šifrována pouze nová data přidaná po 24.|
 | Šifrování v klidovém stavu <br>Klíče spravované zákazníkem | Šifrování pomocí klíčů spravovaných zákazníkem je nyní obecně dostupné pro vyhledávací služby vytvořené v lednu 2019 nebo po něm. Není podporována u bezplatných (sdílených) služeb.<br><br>Indexy Azure Cognitive Search a mapy synonym teď můžou být šifrované v klidovém stavu pomocí klíčů spravovaných zákazníky v azure key vaultu. Další informace najdete [v tématu Správa šifrovacích klíčů v Azure Cognitive Search](search-security-manage-encryption-keys.md).<br><br>Tato funkce nenahrazuje výchozí šifrování v klidovém stavu, ale spíše se používá kromě něj.<br><br>Povolením této funkce se zvýší velikost indexu a sníží výkon dotazu. Na základě pozorování k dnešnímu dni můžete očekávat zvýšení o 30%-60% v době dotazu, i když skutečný výkon se bude lišit v závislosti na definici indexu a typy dotazů. Z důvodu tohoto dopadu na výkon doporučujeme povolit tuto funkci pouze na indexy, které skutečně vyžadují.
 
@@ -92,7 +92,7 @@ Přístup správce a vývojáře k indexům je nediferencovaný: oba potřebují
 
 U víceklientské řešení, která vyžadují hranice zabezpečení na úrovni indexu, tato řešení obvykle zahrnují střední vrstvu, kterou zákazníci používají ke zpracování izolace indexu. Další informace o případu použití více klientů naleznete v [tématu Návrhové vzory pro víceklientské aplikace SaaS a Azure Cognitive Search](search-modeling-multitenant-saas-applications.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 ### <a name="admin-access"></a>Přístup správce
 

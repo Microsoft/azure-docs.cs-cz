@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 0fa1b58547e0260ec5486003cf4cb85d855de33a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310216"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756663"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Monitorování připojení zařízení s využitím Azure CLI
 
-*Toto téma se týká tvůrců a správců.*
+*Toto téma se týká vývojářů zařízení a tvůrců řešení.*
 
 Pomocí rozšíření Azure CLI IoT zobrazíte zprávy, které vaše zařízení odesílají do služby IoT Central, a sledujte změny v dvojčeti zařízení. Tento nástroj můžete použít k ladění a sledování připojení zařízení a diagnostikovat problémy se zprávami zařízení, které nedosahují cloudu nebo zařízení, která nereagují na změny dvojčat.
 
@@ -79,4 +79,4 @@ az iot central device-twin show --app-id <app-id> --device-id <device-id>
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili používat IoT Central Explorer, je dalším krokem prozkoumat [správu zařízení IoT Central](howto-manage-devices.md).
+Pokud jste vývojář zařízení, dalším krokem je přečíst si o [připojení zařízení v Azure IoT Central](./concepts-get-connected.md).

@@ -1,5 +1,5 @@
 ---
-title: Prostředky proměnných ve službě Azure Automation
+title: Správa proměnných v Azure Automation
 description: Proměnné prostředky jsou hodnoty, které jsou k dispozici pro všechny sady Runbook a Konfigurace DSC v Azure Automation.  Tento článek vysvětluje podrobnosti o proměnných a jak s nimi pracovat v textovéi a grafické authoring.
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d4a4a92feb3e1b400c0f40076148f7898c4bdef1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4778e9b2c0d3b442b214966ab69810d2f42b70b8
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365824"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732760"
 ---
-# <a name="variable-assets-in-azure-automation"></a>Prostředky proměnných ve službě Azure Automation
+# <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
 
 Proměnné datové zdroje jsou hodnoty, které jsou k dispozici pro všechny sady Runbook a Konfigurace DSC v účtu automatizace. Můžete je spravovat z portálu Azure, z Prostředí PowerShell, v rámci sady Runbook nebo v konfiguraci DSC.
 
@@ -45,11 +45,14 @@ Při vytváření proměnné s portálem Azure, musíte zadat datový typ z roze
 * Logická hodnota
 * Null
 
-Proměnná není omezena na určený datový typ. Chcete-li zadat hodnotu jiného typu, musíte proměnnou nastavit pomocí prostředí Windows PowerShell. Pokud zadáváte `Not defined`, hodnota proměnné je nastavena na Hodnotu Null a je nutné nastavit hodnotu rutinou [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) nebo aktivitou. `Set-AutomationVariable`
+Proměnná není omezena na určený datový typ. Chcete-li zadat hodnotu jiného typu, musíte proměnnou nastavit pomocí prostředí Windows PowerShell. Pokud zadáváte `Not defined`, hodnota proměnné je nastavena na Hodnotu Null. Je nutné nastavit hodnotu pomocí rutiny [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) nebo aktivity. `Set-AutomationVariable`
 
 Nemůžete použít portál Azure k vytvoření nebo změně hodnoty pro komplexní typ proměnné. Můžete však zadat hodnotu libovolného typu pomocí prostředí Windows PowerShell. Komplexní typy jsou načteny jako [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
 
 Více hodnot můžete uložit do jedné proměnné vytvořením pole nebo hodnoty hash a uložením do proměnné.
+
+>[!NOTE]
+>Proměnné názvu virtuálního zařízení mohou mít maximálně 80 znaků. Proměnné skupiny prostředků mohou mít maximálně 90 znaků. Viz [Pravidla pojmenování a omezení pro prostředky Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules).
 
 ## <a name="powershell-cmdlets-that-create-and-manage-variable-assets"></a>Rutiny prostředí PowerShell, které vytvářejí a spravují proměnné datové zdroje
 
@@ -140,7 +143,7 @@ $vmIpAddress = $vmValue.IpAddress
 
 ### <a name="create-and-use-a-variable-in-a-runbook-or-dsc-configuration"></a>Vytvoření a použití proměnné v konfiguraci runbooku nebo DSC
 
-Jediný způsob, jak vytvořit novou proměnnou z konfigurace sady Runbook `New-AzAutomationVariable` nebo DSC, je použití rutiny nebo jejího ekvivalentu modulu AzureRM. Skript používá tuto rutinu k nastavení počáteční hodnoty proměnné. Skript pak může načíst `Get-AzAutomationVariable`hodnotu pomocí aplikace . Pokud je hodnota jednoduchý typ, stejný typ je načten. Pokud se jedná o komplexní `PSCustomObject` typ, je načten typ.
+Jediný způsob, jak vytvořit novou proměnnou z konfigurace sady Runbook `New-AzAutomationVariable` nebo DSC, je použít rutinu nebo její ekvivalent modulu AzureRM. Skript používá tuto rutinu k nastavení počáteční hodnoty proměnné. Skript pak může načíst `Get-AzAutomationVariable`hodnotu pomocí aplikace . Pokud je hodnota jednoduchý typ, stejný typ je načten. Pokud se jedná o komplexní `PSCustomObject` typ, je načten typ.
 
 >[!NOTE]
 >Jediný způsob, jak načíst šifrovanou hodnotu, je použití aktivity `Get-AutomationVariable` v konfiguraci runbooku nebo DSC. 

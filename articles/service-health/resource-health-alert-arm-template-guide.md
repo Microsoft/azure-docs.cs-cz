@@ -3,12 +3,12 @@ title: Šablona pro vytváření výstrah stavu prostředků
 description: Vytvářejte výstrahy programově, které vás upozorní, když vaše prostředky Azure nebudou k dispozici.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: c01934cc88dc29d0503abfafc203ab0f04bf1761
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062897"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759013"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace výstrah stavu prostředků pomocí šablon Správce prostředků
 
@@ -228,6 +228,9 @@ Můžete chtít být upozorněni pouze v případě, že prostředek přestane b
 ```
 
 Pokud chcete být upozorněni na všechny čtyři fáze událostí stavu, můžete tuto podmínku odebrat `status` společně a výstraha vás upozorní bez ohledu na vlastnost.
+
+> [!NOTE]
+> Každý oddíl anyOf by měl obsahovat pouze jednu hodnotu typu pole.
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Úprava výstrah stavu prostředků tak, aby se zabránilo "neznámým" událostem
 

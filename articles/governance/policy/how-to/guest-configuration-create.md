@@ -3,12 +3,12 @@ title: Jak vytvořit zásady konfigurace hosta pro Windows
 description: Přečtěte si, jak vytvořit zásady Azure Zásady konfigurace pro Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b06aa0a70bfa17d67da9c6af447138f8bb9e712
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313982"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757411"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Jak vytvořit zásady konfigurace hosta pro Windows
 
@@ -25,6 +25,11 @@ Pomocí následujících akcí vytvořte vlastní konfiguraci pro ověření sta
 
 > [!IMPORTANT]
 > Vlastní zásady s konfigurací hosta je funkce náhledu.
+>
+> Rozšíření Konfigurace hosta je nutné k provádění auditů ve virtuálních počítačích Azure.
+> Chcete-li rozšíření nasadit ve velkém měřítku, přiřaďte následující definice zásad:
+>   - Nasadit požadavky pro povolení zásad konfigurace hosta na virtuálních počítačích se systémem Windows.
+>   - Nasaďte požadavky a povolte zásady konfigurace hosta na virtuálních počítačích s Linuxem.
 
 ## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 
@@ -176,8 +181,10 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker -out ./Config
+AuditBitLocker ./Config
 ```
+
+Uložte tento `config.ps1` soubor s názvem do složky projektu. Spusťte jej v `./config.ps1` prostředí PowerShell spuštěním v terminálu. Bude vytvořen nový soubor mof.
 
 Příkaz `Node AuditBitlocker` není technicky vyžadován, ale vytvoří soubor `AuditBitlocker.mof` s názvem `localhost.mof`spíše než výchozí . S .mof název souboru postupujte podle konfigurace usnadňuje uspořádání mnoho souborů při provozu ve velkém měřítku.
 

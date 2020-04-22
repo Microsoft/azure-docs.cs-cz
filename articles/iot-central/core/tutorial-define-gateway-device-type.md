@@ -9,16 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79298831"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758129"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení brány IoT ve vaší aplikaci Azure IoT Central
 
-Tento kurz ukazuje, jak jako tvůrce používat šablonu zařízení brány k definování zařízení brány v aplikaci IoT Central. Potom nakonfigurujete několik podřizovaných zařízení, která se připojují k aplikaci IoT Central prostřednictvím zařízení brány. 
+*Tento článek se vztahuje na tvůrce řešení a vývojáře zařízení.*
+
+Tento kurz ukazuje, jako tvůrce řešení, jak používat šablonu zařízení brány k definování zařízení brány v aplikaci IoT Central. Potom nakonfigurujete několik podřizovaných zařízení, která se připojují k aplikaci IoT Central prostřednictvím zařízení brány. 
 
 V tomto kurzu vytvoříte šablonu zařízení brány **inteligentní budovy.** Zařízení **brány inteligentní budovy** má vztahy s jinými zařízeními pro příjem dat.
 
@@ -105,8 +107,8 @@ Přidání vlastností cloudu do šablony **zařízení brány Smart Building.**
 
     | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádný          | Datum   |
-    | Jméno zákazníka     | Žádný          | Řetězec |
+    | Last Service Date (Datum poslední údržby) | Žádná          | Datum   |
+    | Jméno zákazníka     | Žádná          | Řetězec |
 
 2. Vyberte **Uložit**.
 
@@ -207,7 +209,7 @@ V tomto kurzu jste se naučili:
 > [!NOTE]
 > Generování kódu založené na kódu VS není aktuálně podporováno pro zařízení brány modelovaná v IoT Central.
 
-Dále můžete:
+Dále se jako vývojář zařízení můžete dozvědět, jak:
 
 > [!div class="nextstepaction"]
-> [Připojení zařízení](tutorial-connect-device.md)
+> [Přidání zařízení Azure IoT Edge do aplikace Azure IoT Central](tutorial-add-edge-as-leaf-device.md)

@@ -8,14 +8,19 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8178e585ecb7b1cdfd5e530f3d3406b7397f0968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: f37b070c74abd8511fc597f9b159312d91281083
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476045"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759109"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení k Azure IoT Central
+
+*Tento článek se vztahuje na operátory a vývojáře zařízení.*
 
 Tento článek popisuje možnosti pro připojení zařízení k aplikaci Azure IoT Central.
 
@@ -265,7 +270,8 @@ Všechna data vyměňovaná mezi zařízeními a vaším Azure IoT Central jsou 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se dozvěděli o připojení zařízení v Azure IoT Central, tady jsou navrhované další kroky:
+Pokud jste vývojář zařízení, některé navrhované další kroky jsou:
 
-- [Příprava a připojení zařízení DevKit](howto-connect-devkit.md)
-- [C SDK: Zřizování zařízení klienta SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- Zjistěte, jak [monitorovat připojení zařízení pomocí rozhraní příkazového příkazu Azure](./howto-monitor-devices-azure-cli.md)
+- Přečtěte si, jak [definovat nový typ zařízení IoT v aplikaci Azure IoT Central](./howto-set-up-template.md)
+- Přečtěte si o [zařízeních Azure IoT Edge a Azure IoT Central](./concepts-iot-edge.md)

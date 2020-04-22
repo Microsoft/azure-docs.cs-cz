@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6f93d74653aab78e48e613ddf9252a0876548b95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a99f261e1a834705d081e8197e4ae627cf1cb9f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157666"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756643"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení IoT v aplikaci Azure IoT Central
+
+*Tento článek se vztahuje na tvůrce řešení a vývojáře zařízení.*
 
 Šablona zařízení je podrobný plán, který definuje charakteristiky a chování typu zařízení, které se připojuje k aplikaci Azure IoT Central.
 
@@ -117,7 +119,7 @@ V následující tabulce jsou uvedena nastavení konfigurace pro funkci telemetr
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název pro hodnotu telemetrie použitou na řídicích panelech a formulářích. |
-| Name (Název) | Název pole ve zprávě telemetrie. IoT Central generuje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Název | Název pole ve zprávě telemetrie. IoT Central generuje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
 | Typ funkce | Telemetrie. |
 | Sémantický typ | Sémantický typ telemetrie, například teplota, stav nebo událost. Volba sémantického typu určuje, která z následujících polí jsou k dispozici. |
 | Schéma | Datový typ telemetrie, například double, řetězec nebo vektor. Dostupné volby jsou určeny sémantickým typem. Schéma není k dispozici pro sémantické typy událostí a stavu. |
@@ -137,7 +139,7 @@ V následující tabulce jsou uvedena nastavení konfigurace pro schopnost vlast
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti použité na řídicích panelech a formulářích. |
-| Name (Název) | Název vlastnosti IoT Central generuje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Název | Název vlastnosti IoT Central generuje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
 | Typ funkce | Vlastnost. |
 | Sémantický typ | Sémantický typ vlastnosti, například teplota, stav nebo událost. Volba sémantického typu určuje, která z následujících polí jsou k dispozici. |
 | Schéma | Datový typ vlastnosti, například double, string nebo vector. Dostupné volby jsou určeny sémantickým typem. Schéma není k dispozici pro sémantické typy událostí a stavu. |
@@ -158,7 +160,7 @@ V následující tabulce jsou uvedena nastavení konfigurace funkce příkazu:
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název příkazu použitého na řídicích panelech a formulářích. |
-| Name (Název) | Název příkazu. IoT Central generuje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Název | Název příkazu. IoT Central generuje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
 | Typ funkce | Příkaz. |
 | Příkaz | `SynchronousExecutionType`. |
 | Poznámka | Jakékoli komentáře k funkci příkazu. |
@@ -181,7 +183,7 @@ V následující tabulce jsou uvedena nastavení konfigurace vlastnosti cloudu:
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti cloudu použitý na řídicích panelech a formulářích. |
-| Name (Název) | Název vlastnosti cloud. IoT Central generuje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Název | Název vlastnosti cloud. IoT Central generuje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
 | Sémantický typ | Sémantický typ vlastnosti, například teplota, stav nebo událost. Volba sémantického typu určuje, která z následujících polí jsou k dispozici. |
 | Schéma | Datový typ cloudové vlastnosti, například double, string nebo vector. Dostupné volby jsou určeny sémantickým typem. |
 
@@ -253,18 +255,6 @@ Pokud chcete šablonu zařízení publikovat, přejděte k šabloně zařízení
 
 Po publikování šablony zařízení může operátor přejít na stránku **Zařízení** a přidat skutečná nebo simulovaná zařízení, která používají šablonu vašeho zařízení. Šablonu zařízení můžete při provádění změn dále upravovat a ukládat. Pokud chcete tyto změny posunout do operátoru, abyste je viděli na stránce **Zařízení,** musíte pokaždé vybrat **Publikovat.**
 
-
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili:
-
-* Vytvořte novou šablonu zařízení IoT.
-* Vytvořte vlastnosti cloudu.
-* Vytvořte vlastní nastavení.
-* Definujte vizualizaci pro telemetrii zařízení.
-* Publikujte šablonu zařízení.
-
-Dále můžete:
-
-> [!div class="nextstepaction"]
-> [Připojení zařízení](howto-connect-devkit.md)
+Pokud jste vývojář zařízení, je dalším krokem přečíst si informace o [správě verzí šablon zařízení](./howto-version-device-template.md).

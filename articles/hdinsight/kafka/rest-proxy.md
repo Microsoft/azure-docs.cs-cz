@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6bf34f8fb15bf8fddb1ba398ed678d5c98b8c84f
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 265e15713f8159e370ef22a197ffe931200a88f7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667789"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758999"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interakce s clustery Apache Kafka v Azure HDInsight pomocí proxy REST
 
@@ -74,7 +74,7 @@ Pro požadavky koncového bodu proxy REST by klientské aplikace měly získat t
 Níže uvedený kód pythonu můžete použít k interakci s proxy rest v clusteru Kafka. Chcete-li použít ukázku kódu, postupujte takto:
 
 1. Uložte ukázkový kód do počítače s nainstalovaným Pythonem.
-1. Nainstalujte požadované závislosti pythonu spuštěním `pip3 install adal` a `pip install msrestazure`.
+1. Nainstalujte požadované závislosti pythonu spuštěním `pip3 install msal`.
 1. Upravte část kódu **Konfigurace těchto vlastností** a aktualizace následujících vlastností pro vaše prostředí:
 
     |Vlastnost |Popis |
@@ -84,7 +84,7 @@ Níže uvedený kód pythonu můžete použít k interakci s proxy rest v cluste
     |Tajný klíč klienta|Tajný klíč pro aplikaci, kterou jste zaregistrovali ve skupině zabezpečení.|
     |Kafkarest_endpoint|Tuto hodnotu získáte z karty **Vlastnosti** v přehledu clusteru, jak je popsáno v [části nasazení](#create-a-kafka-cluster-with-rest-proxy-enabled). Mělo by být v následujícím formátu –`https://<clustername>-kafkarest.azurehdinsight.net`|
 
-1. Z příkazového řádku spusťte soubor pythonu spuštěním`python <filename.py>`
+1. Z příkazového řádku spusťte soubor pythonu spuštěním`sudo python3 <filename.py>`
 
 Tento kód provádí následující akci:
 
@@ -95,13 +95,9 @@ Další informace o získání tokenů OAuth v pythonu naleznete v [tématu Pyth
 
 ```python
 #Required python packages
-#pip3 install adal
-#pip install msrestazure
+#pip3 install msal
 
-import adal
-from msrestazure.azure_active_directory import AdalAuthentication
-from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD
-import requests
+import msal
 
 #--------------------------Configure these properties-------------------------------#
 # Tenant ID for your Azure Subscription
@@ -114,19 +110,24 @@ client_secret = 'password'
 kafkarest_endpoint = "https://<clustername>-kafkarest.azurehdinsight.net"
 #--------------------------Configure these properties-------------------------------#
 
-#getting token
-login_endpoint = AZURE_PUBLIC_CLOUD.endpoints.active_directory
-resource = "https://hib.azurehdinsight.net"
-context = adal.AuthenticationContext(login_endpoint + '/' + tenant_id)
+# Scope
+scope = 'https://hib.azurehdinsight.net/.default'
+#Authority
+authority = 'https://login.microsoftonline.com/' + tenant_id
 
-token = context.acquire_token_with_client_credentials(
-    resource,
-    client_id,
-    client_secret)
+# Create a preferably long-lived app instance which maintains a token cache.
+app = msal.ConfidentialClientApplication(
+    client_id , client_secret, authority,
+    #cache - For details on how look at this example: https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py
+    )
 
-accessToken = 'Bearer ' + token['accessToken']
+# The pattern to acquire a token looks like this.
+result = None
 
-print(accessToken)
+result = app.acquire_token_for_client(scopes=[scope])
+
+print(result)
+accessToken = result['access_token']
 
 # relative url
 getstatus = "/v1/metadata/topics"
@@ -137,10 +138,10 @@ response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
 ```
 
-Níže najdete další ukázku, jak získat token z proxy serveru Azure for REST pomocí příkazu curl. Všimněte si, `resource=https://hib.azurehdinsight.net` že potřebujeme zadaný při získávání tokenu.
+Níže najdete další ukázku, jak získat token z proxy serveru Azure for REST pomocí příkazu curl. **Všimněte si, `scope=https://hib.azurehdinsight.net/.default` že potřebujeme zadaný při získávání tokenu.**
 
 ```cmd
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&resource=https://hib.azurehdinsight.net' 'https://login.microsoftonline.com/<tenantid>/oauth2/token'
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&scope=https://hib.azurehdinsight.net/.default' 'https://login.microsoftonline.com/<tenantid>/oauth2/v2.0/token'
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: bf74784998de6bbad6310c48c24d6353512bff13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c60cf4b90b089d271c0ccd91031420efe9017b1e
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77027731"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758158"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Kurz: Přidání zařízení Azure IoT Edge do aplikace Azure IoT Central
+
+*Tento článek se vztahuje na tvůrce řešení a vývojáře zařízení.*
 
 Tento kurz ukazuje, jak nakonfigurovat a přidat zařízení Azure IoT Edge do aplikace Azure IoT Central. Kurz používá virtuální počítač (VM) s podporou IoT Edge z Azure Marketplace k simulaci zařízení IoT Edge. Zařízení IoT Edge používá modul, který generuje simulovanou telemetrii prostředí. Telemetrická data se zobrazí na řídicím panelu v aplikaci IoT Central.
 
@@ -262,9 +264,9 @@ Na stránce **Moduly** se zobrazuje stav modulů IoT Edge:
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili pracovat se zařízeními IoT Edge a spravovat je v IoT Central, tady je další doporučený krok:
+Jako vývojář zařízení, teď, když jste se naučili pracovat a spravovat zařízení IoT Edge v IoT Central, je dalším krokem číst:
 
 <!-- Next how-tos in the sequence -->
 
 > [!div class="nextstepaction"]
-> [Konfigurace transparentní brány](../../iot-edge/how-to-create-transparent-gateway.md)
+> [Připojení k Azure IoT Central](./concepts-get-connected.md)

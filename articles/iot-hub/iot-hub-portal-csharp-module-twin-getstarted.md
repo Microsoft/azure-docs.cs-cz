@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 289c269100eb6ab672bb8d60562c1fa77d8d091a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954605"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759781"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Začínáme s identitou modulu a dvojčetem modulu služby IoT Hub pomocí portálu a zařízení .NET
 
@@ -94,7 +95,7 @@ Identita modulu a dvojče modulu jsou ve verzi Public Preview. Je k dispozici po
 
 Potřebujete připojovací řetězec modulu pro konzolovou aplikaci. Postupujte následovně:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Přejděte do svého centra IoT hub a vyberte **zařízení IoT**. Otevřete **myFirstDevice** a uvidíte, že **myFirstModule** byl úspěšně vytvořen.
 

@@ -1,24 +1,21 @@
 ---
-title: Vytváření sdílených ibi virtuálních virtuálních počítačů Azure pro Linux pomocí portálu
-description: Přečtěte si, jak pomocí portálu Azure vytvářet a sdílet image virtuálních strojů.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
+title: Vytváření sdílených ibi virtuálních počítačů Azure Linux pomocí portálu
+description: Přečtěte si, jak pomocí portálu Azure vytvářet a sdílet ibionty virtuálních automatů na Linuxu.
 author: cynthn
-manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: 44df85a94ad26d3abcd48f01c31e7aa093c1123f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: akjosh
+ms.openlocfilehash: 74c87d589f1c50551ac5685fe0fa126a82bffbde
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978692"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758428"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Vytvoření Galerie sdílených bitových obrázků Azure pomocí portálu
 

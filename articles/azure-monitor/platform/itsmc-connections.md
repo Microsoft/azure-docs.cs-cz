@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: eb3b09c6f349024d30d68a6c970770e2a78924ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9441e7bb970508df4c002897ab726d6e683fa848
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132319"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733347"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů/služeb ITSM pomocí konektoru pro správu služeb IT
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi produktem nebo službou ITSM a konektorem ITSMC (IT Service Management Connector) v Log Analytics pro centrální správu pracovních položek. Další informace o ITSMC naleznete v [tématu Přehled](../../azure-monitor/platform/itsmc-overview.md).
@@ -194,7 +194,15 @@ Ujistěte se, že jsou splněny následující požadavky:
     - [Nastavit OAuth pro Istanbul](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavit OAuth pro Helsinky](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavte OAuth pro Ženevu](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-
+> [!NOTE]
+> Jako součást definice "Nastavit OAuth" doporučujeme:
+>
+> 1) **Aktualizujte životnost obnovovacího tokenu na 90 dní (7 776 000 sekund):** Jako součást [Nastavit OAuth](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) ve fázi 2: [Vytvořte koncový bod pro klienty pro přístup k instanci](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0) Po definici koncového bodu v ServiceNow okno hledání systému OAuth->aplikační ho registru vyberte název OAuth, který byl definován a aktualizovat pole "Aktualizovat token Lifespan" na 7,776,000.
+> Na konci klikněte na aktualizaci.
+> 2) **Doporučujeme vytvořit vnitřní postup, aby se zajistilo, že spojení zůstane naživu:** Podle "Aktualizovat token životnost" aktualizovat token. Ujistěte se, že provést následující operace před obnovení token očekávané doby vypršení platnosti (Několik dní před "Obnovovat token životnost" doporučujeme):
+>
+>>  1) [Dokončení procesu ruční synchronizace pro konfiguraci konektoru ITSM](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+ >> 2) Odvolat na starý obnovovací token, protože se nedoporučuje zachovat staré klíče z bezpečnostních důvodů. V ServiceNow okno hledat "System OAuth"->"Spravovat tokeny" a vyberte starý token ze seznamu podle názvu OAuth a datum vypršení platnosti. Klikněte na "Odvolat přístup"->"Odvolat.
 
 - Nainstalujte uživatelskou aplikaci pro integraci Microsoft Log Analytics (aplikace ServiceNow). [Další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Vytvořte roli uživatele integrace pro nainstalovanou uživatelskou aplikaci. Informace o tom, jak vytvořit roli integračního [uživatele,](#create-integration-user-role-in-servicenow-app)naleznete zde .

@@ -6,22 +6,25 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 21dbd4128cad7df11aeb713286d868879a58519b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5e654fe5d31a225a855da8477e073ceeb1a68634
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75431529"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767236"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Úvodní příručka: Vytvoření úlohy Azure Stream Analytics pomocí Visual Studia
 
 V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analytics pomocí Azure Stream Analytics Tools for Visual Studio. Ukázková úloha čte streamovaná data ze zařízení služby IoT Hub. Definujete úlohu, která vypočítá průměrnou teplotu při překročení 27° a zapíše výsledné výstupní události do nového souboru v úložišti objektů blob.
 
+> [!NOTE]
+> Nástroje Visual Studio a Visual Studio Code nepodporují úlohy v oblastech Čína – východ, Čína – sever, Německo – střed a Německo – severovýchod.
+
 ## <a name="before-you-begin"></a>Než začnete
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k [portálu Azure](https://portal.azure.com/).
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 * Nainstalujte Visual Studio 2019, Visual Studio 2015 nebo Visual Studio 2013 Update 4. Podporují se edice Enterprise (Ultimate nebo Premium), Professional a Community. Edice Express se nepodporuje.
 
@@ -31,7 +34,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analy
 
 Před definováním úlohy Stream Analytics byste měli připravit data, která jsou později nakonfigurována jako vstup úlohy. Chcete-li připravit vstupní data vyžadovaná úlohou, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
 

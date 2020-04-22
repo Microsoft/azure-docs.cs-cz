@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 1d8085c6056cb0d2541999c3e9c249cde3da8834
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641258"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758110"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Přidání automatického dokončování a návrhů do klientských aplikací
 
@@ -22,7 +22,7 @@ Hledání podle typu je běžná technika pro zlepšení produktivity dotazů in
 K implementaci těchto prostředí v Azure Cognitive Search, budete potřebovat:
 
 + *Návrhovač* na zadní straně.
-+ *Dotaz* určující automatické dokončování nebo rozhraní API návrhů v žádosti.
++ *Dotaz* určující [automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) nebo [rozhraní API návrhů](https://docs.microsoft.com/rest/api/searchservice/suggestions) v žádosti.
 + *Ovládací prvek ui* pro zpracování interakcí jako typ vyhledávání v klientské aplikaci. Pro tento účel doporučujeme použít existující knihovnu JavaScriptu.
 
 V Azure Cognitive Search se automaticky vyplněné dotazy a navrhované výsledky načítají z indexu vyhledávání z vybraných polí, která jste zaregistrovali u návrhovače. Návrhovač je součástí indexu a určuje, která pole budou poskytovat obsah, který buď dokončí dotaz, navrhne výsledek, nebo provede obojí. Při vytvoření a načtení indexu je vytvořena datová struktura sugesteru interně pro uložení předpon používaných pro párování s částečnými dotazy. Pro návrhy, výběr vhodných polí, které jsou jedinečné, nebo alespoň ne opakující se, je nezbytné pro zážitek. Další informace naleznete [v tématu Vytvoření návrhu](index-add-suggesters.md).
@@ -31,7 +31,7 @@ Zbývající část tohoto článku je zaměřena na dotazy a kód klienta. Pou�
 
 ## <a name="set-up-a-request"></a>Nastavení požadavku
 
-Mezi prvky požadavku patří rozhraní API ([Automatické dokončování REST](https://docs.microsoft.com/rest/api/searchservice/autocomplete) nebo [Návrh REST](https://docs.microsoft.com/rest/api/searchservice/suggestions)), částečný dotaz a návrh.
+Mezi prvky požadavku patří jedno z rozhraní API typu hledání, částečný dotaz a návrhová zařízení. Následující skript ilustruje součásti požadavku pomocí rozhraní REST API automatického dokončování jako příklad.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
@@ -49,7 +49,7 @@ Api neukládají požadavky na minimální délku částečného dotazu; to mů�
 
 Shody jsou na začátku termínu kdekoli ve vstupním řetězci. Vzhledem k tomu, "rychlé hnědé lišky", jak automatické dokončování a návrhy budou odpovídat na částečné verze "", "rychlé", "hnědé", nebo "liška", ale ne na částečné infix termíny jako "rown" nebo "vůl". Kromě toho každá shoda nastavuje prostor pro následné rozšíření. Částečný dotaz "quick br" se bude shodovat s "rychlým hnědým" nebo "rychlým chlebem", ale ani "hnědý" nebo "chléb" by se sám o sobě neshodoval, pokud jim nepředchází "rychlý".
 
-### <a name="apis"></a>Rozhraní API
+### <a name="apis-for-search-as-you-type"></a>Api pro hledání jako typ
 
 Postupujte podle těchto odkazů pro referenční stránky sady REST a .NET SDK:
 
@@ -64,12 +64,13 @@ Odpovědi na automatické dokončování a návrhy jsou to, co můžete očekáv
 
 Odpovědi jsou utvářeny parametry na požadavku. V případě automatického [**dokončování nastavte režim automatického dokončování,**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) abyste zjistili, zda k dokončování textu dojde v jednom nebo dvou termínech. U návrhů určuje pole, které zvolíte, obsah odpovědi.
 
-Chcete-li dále upřesnit odpověď, zahrnout další parametry na požadavek. Následující parametry platí pro automatické dokončování i návrhy.
+U návrhů byste měli dále upřesnit odpověď, abyste se vyhnuli duplicitám nebo tomu, co se zdá být nesouvisejícími výsledky. Chcete-li řídit výsledky, zahrnout další parametry na požadavek. Následující parametry platí pro automatické dokončování i návrhy, ale jsou možná více nezbytné pro návrhy, zejména pokud návrhobsahuje více polí.
 
 | Parametr | Využití |
 |-----------|-------|
-| **$select** | Pokud máte více **zdrojových polí**, použijte **$select** `$select=GameTitle`a zvolte, které pole přispívá hodnotami ( ). |
-| **$filter** | Použít kritéria shody na`$filter=ActionAdventure`sadu výsledků ( ). |
+| **$select** | Pokud máte více **zdrojOvých Polí** v návrhu, použijte **$select** `$select=GameTitle`a zvolte, které pole přispívá hodnotami ( ). |
+| **hledatPole** | Omezí dotaz na určitá pole. |
+| **$filter** | Použít kritéria shody na`$filter=Category eq 'ActionAdventure'`sadu výsledků ( ). |
 | **$top** | Omezte výsledky na`$top=5`konkrétní číslo ( ).|
 
 ## <a name="add-user-interaction-code"></a>Přidání kódu interakce uživatele
@@ -149,6 +150,8 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
     // Call suggest API and return results
     SuggestParameters sp = new SuggestParameters()
     {
+        Select = HotelName,
+        SearchFields = HotelName,
         UseFuzzyMatching = fuzzy,
         Top = 5
     };

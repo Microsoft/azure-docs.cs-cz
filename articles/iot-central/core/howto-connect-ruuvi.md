@@ -10,14 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: e8d1c4a605e8db2e9753bb80c9712dd6c2be7b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158222"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758954"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Připojení senzoru RuuviTag k aplikaci Azure IoT Central
+
+*Tento článek se vztahuje na tvůrce řešení a vývojáře zařízení.*
 
 Tento článek popisuje, jak jako tvůrce řešení můžete připojit senzor RuuviTag k aplikaci Microsoft Azure IoT Central.
 
@@ -74,4 +76,7 @@ Chcete-li vytvořit simulované RuuviTag:
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak připojit RuuviTag k vaší aplikaci Azure IoT Central, je dalším krokem naučit se [přizpůsobit aplikaci IoT Central](../retail/tutorial-in-store-analytics-customize-dashboard-pnp.md) k vytvoření komplexního řešení.
+Pokud jste vývojář zařízení, některé navrhované další kroky jsou:
+
+- Přečtěte si o [připojení zařízení v Azure IoT Central](./concepts-get-connected.md)
+- Zjistěte, jak [monitorovat připojení zařízení pomocí rozhraní příkazového příkazu Azure](./howto-monitor-devices-azure-cli.md)

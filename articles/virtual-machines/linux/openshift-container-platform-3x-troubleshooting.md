@@ -1,25 +1,21 @@
 ---
 title: Poradce při potížích s nasazením platformy OpenShift Container Platform 3.11 v Azure
 description: Poradce při potížích s nasazením platformy OpenShift Container Platform 3.11 v Azure.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: mdotson
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: bd83a1ca731d81edb76a3c1bc07113ce96adb9ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90fd3680cfdc4ecd1dcb0ce33b63f8d76dd8bfae
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066588"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759468"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Poradce při potížích s nasazením platformy OpenShift Container Platform 3.11 v Azure
 

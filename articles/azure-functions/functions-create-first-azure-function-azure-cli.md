@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit funkci z příkazového řádku a pak publ
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: eb893491310850b141a0d68cb7a74041411843a9
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 547acb42be6a0c89dbc315031c46192b5c9a4a0d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457446"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732814"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Úvodní příručka: Vytvoření funkce v Azure, která reaguje na požadavky HTTP
 
@@ -21,7 +21,7 @@ K dispozici je také [visual studio verze tohoto článku.](functions-create-fir
 
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Pokud Maven není váš preferovaný vývojový nástroj, podívejte se na naše podobné návody pro devlopery Java pomocí [Gradle](/azure/azure-functions/functions-create-first-java-gradle), [IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions) a [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
+> Pokud Maven není váš preferovaný vývojový nástroj, podívejte se na naše podobné návody pro vývojáře Java pomocí [Gradle](/azure/azure-functions/functions-create-first-java-gradle), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]

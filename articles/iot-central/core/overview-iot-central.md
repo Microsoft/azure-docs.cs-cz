@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 6c50e5892aca37bac47e68a9ae17435611c99817
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ffaab22efb2f6969f03720abba4a7afc6387021a
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80157462"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758220"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
@@ -197,7 +197,7 @@ Každé předplatné Azure má výchozí kvóty, které by mohly mít vliv na ro
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte přehled o IoT Central, tady jsou navrhované další kroky:
+Teď, když máte přehled o IoT Central, tady jsou některé navrhované další kroky:
 
 - Seznamte se s [dostupnými technologiemi a službami Azure pro vytváření řešení IoT](../../iot-fundamentals/iot-services-and-technologies.md).
 - Seznamte se s [uživatelským rozhraním Azure IoT Central](overview-iot-central-tour.md).
@@ -205,3 +205,5 @@ Teď, když máte přehled o IoT Central, tady jsou navrhované další kroky:
 - Další informace o [technologii IoT Plug and Play (preview).](../../iot-pnp/overview-iot-plug-and-play.md)
 - Přečtěte si, jak [připojit zařízení Azure IoT Edge](./tutorial-add-edge-as-leaf-device.md).
 - Další informace o [technologiích a službách Azure IoT](../../iot-fundamentals/iot-services-and-technologies.md).
+
+Pokud jste vývojář zařízení a chcete se ponořit do nějakého kódu, dalším krokem je [vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](./tutorial-connect-device-nodejs.md).

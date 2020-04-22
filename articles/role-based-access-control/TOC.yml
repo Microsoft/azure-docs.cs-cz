@@ -7,7 +7,7 @@
       href: overview.md
     - name: Vysvětlení různých rolí
       href: rbac-and-directory-admin-roles.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Zobrazení přístupu pro uživatele
       href: check-access.md
@@ -28,8 +28,8 @@
       href: tutorial-custom-role-cli.md
 - name: Koncepty
   items:
-    - name: PIM pro prostředky Azure
-      href: pim-azure-resource.md
+    - name: Osvědčené postupy
+      href: best-practices.md
     - name: Podmíněný přístup pro správu Azure
       href: conditional-access-azure-management.md
 - name: Návody
@@ -102,7 +102,7 @@
       href: resource-provider-operations.md
     - name: Omezení RBAC
       href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI
       href: /cli/azure/role?view=azure-cli-latest

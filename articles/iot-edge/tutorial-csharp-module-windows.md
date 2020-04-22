@@ -8,13 +8,15 @@ ms.author: kgremban
 ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 4fa3fb17f4eace8d389738fb46267a097610f175
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom:
+- mvc
+- amqp
+ms.openlocfilehash: b71db71ac61e0dcd65a2546b2164610e618dab18
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76760415"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733510"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: Vývoj modulu C# IoT Edge pro zařízení se systémem Windows
 
@@ -67,7 +69,7 @@ Nástroje Azure IoT Edge poskytují šablony projektů pro všechny podporované
 
 1. Spusťte Visual Studio 2019 a vyberte **Vytvořit nový projekt**.
 
-2. Vyhledejte **IoT Edge** a zvolte projekt **Azure IoT Edge (Windows amd64).** Klikněte na **Další**.
+2. Vyhledejte **IoT Edge** a zvolte projekt **Azure IoT Edge (Windows amd64).** Klikněte na **Další**.
 
    ![Vytvoření nového projektu Azure IoT Edge](./media/tutorial-csharp-module-windows/new-project.png)
 
@@ -93,7 +95,7 @@ Manifest nasazení sdílí pověření pro registr kontejnerů s runtime IoT Edg
 
 1. V průzkumníku řešení Visual Studio otevřete soubor **deployment.template.json.**
 
-2. Najděte vlastnost **registryCredentials** v $edgeAgent požadované vlastnosti. Adresa registru by měla být automaticky vyplněna z informací, které jste zadali při vytváření projektu, a pole uživatelského jména a hesla by měla obsahovat názvy proměnných. Například:
+2. Najděte vlastnost **registryCredentials** v $edgeAgent požadované vlastnosti. Adresa registru by měla být automaticky vyplněna z informací, které jste zadali při vytváření projektu, a pole uživatelského jména a hesla by měla obsahovat názvy proměnných. Příklad:
 
    ```json
    "registryCredentials": {

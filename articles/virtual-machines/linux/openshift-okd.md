@@ -1,25 +1,20 @@
 ---
 title: Nasazení OKD v Azure
 description: Nasaďte OKD v Azure.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: joraio
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: 6ecae09b0efbc0e35e591b31dbb54fb49ce101b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7d251370aefdfadc0b77a67f6dad1be2dcb9e9a
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74035407"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759447"
 ---
 # <a name="deploy-okd-in-azure"></a>Nasazení OKD v Azure
 

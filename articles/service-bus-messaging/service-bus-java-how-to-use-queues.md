@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ac6bc8f78bd3d526e68dba3e81825a28a9ac47f7
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 184ffd39281ea27d8596bc37a9f89fd22acfb1ba
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294132"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732173"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Úvodní příručka: K odesílání a přijímání zpráv pomocí front Azure Service Bus s Javou
 
@@ -43,7 +43,7 @@ V tomto kurzu se dozvíte, jak vytvořit java aplikace pro odesílání zpráv a
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití služby Service Bus
 Ujistěte se, že jste nainstalovali [Azure SDK pro Java][Azure SDK for Java] před sestavením této ukázky. 
 
-Pokud používáte Eclipse, můžete nainstalovat [sadu nástrojů Azure Toolkit pro Eclipse,][Azure Toolkit for Eclipse] která zahrnuje sadu Azure SDK pro Javu. Potom můžete do projektu přidat **knihovny Microsoft Azure pro Jazyk Java.** Pokud používáte IntelliJ, [přečtěte si informace o instalaci sady Nástrojů Azure pro IntelliJ](/azure/java/intellij/azure-toolkit-for-intellij-installation). 
+Pokud používáte Eclipse, můžete nainstalovat [sadu nástrojů Azure Toolkit pro Eclipse,][Azure Toolkit for Eclipse] která zahrnuje sadu Azure SDK pro Javu. Potom můžete do projektu přidat **knihovny Microsoft Azure pro Jazyk Java.** Pokud používáte IntelliJ, [přečtěte si informace o instalaci sady Nástrojů Azure pro IntelliJ](/azure/developer/java/toolkit-for-intellij/installation). 
 
 ![Přidání knihoven Microsoft Azure pro Jazyk Java do projektu Eclipse](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
@@ -184,7 +184,7 @@ Následující příklad ukazuje, jak mohou být zprávy přijímány a zpracov�
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Zpracování pádů aplikace a nečitelných zpráv
 Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce není schopen zpracovat zprávu z nějakého důvodu, pak může volat **abandon()** metoda na objektu klienta s tokenem zámku přijaté zprávy získané prostřednictvím **getLockToken()**. To způsobí, že Service Bus zprávu odemkne ve frontě a zpřístupní ji pro další přijetí, buďto stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
 
-K dispozici je také časový limit přidružený ke zprávě zamčené ve frontě a pokud aplikace nezpracuje zprávu před vypršením časového limitu uzamčení (například pokud dojde k chybě aplikace), pak service bus automaticky odemkne zprávu a provede ji k dispozici k tomu, aby byly znovu přijaty.
+K dispozici je také časový limit přidružený ke zprávě zamčené ve frontě a pokud aplikace nepodaří zpracovat zprávu před vypršením časového limitu uzamčení (například pokud dojde k chybě aplikace), pak Service Bus automaticky odemkne zprávu a zpřístupní ji k přijetí znovu.
 
 V případě, že aplikace dojde k chybě po zpracování zprávy, ale před **complete()** požadavek je vydán, pak zpráva je znovu doručena do aplikace při restartování. Tomu se často říká *Zpracování nejméně jednou* – to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích se může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. Toho je často dosaženo pomocí **getMessageId** metodu zprávy, která zůstává konstantní napříč pokusy o doručení.
 
@@ -196,7 +196,7 @@ Teď, když jste se naučili základy front service bus, najdete [v tématu Fron
 
 Další informace naleznete ve [Středisku pro vývojáře Java](https://azure.microsoft.com/develop/java/).
 
-[Azure SDK for Java]: /azure/java/java-sdk-azure-get-started
+[Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
 [Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage

@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
-ms.openlocfilehash: a1918a99efcdcc5764140093ad422f7887ca3c88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 9010ff582f05e81e17e280e20f180ceccf0e746f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954704"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733207"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Vývoj pro omezená zařízení pomocí sady Azure IoT C SDK
 
@@ -82,5 +85,5 @@ Další sada rozhraní API bez indexu _LL_ se nazývá vrstva pohodlí, kde se p
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o architektuře Azure IoT C SDK:
--   [Zdrojový kód Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c/)
--   [Azure IoT zařízení SDK pro zavedení C](iot-hub-device-sdk-c-intro.md)
+-    [Zdrojový kód Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c/)
+-    [Azure IoT zařízení SDK pro zavedení C](iot-hub-device-sdk-c-intro.md)

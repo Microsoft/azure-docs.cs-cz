@@ -2,17 +2,17 @@
 title: Šifrování spravovaných disků Azure na straně serveru – azure cli
 description: Azure Storage chrání vaše data šifrováním v klidovém stavu, než je uchovává do clusterů úložiště. Pro šifrování spravovaných disků se můžete spolehnout na klíče spravované společností Microsoft nebo můžete pomocí klíčů spravovaných zákazníkem spravovat šifrování pomocí vlastních klíčů.
 author: roygara
-ms.date: 04/02/2020
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 68341de82ae15df91477947664c500caaa96a09a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 151c84424e33233cd48414875230a63df598d8e2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452719"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757428"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování spravovaných disků Azure na straně serveru
 
@@ -72,7 +72,7 @@ Prozatím mají klíče spravované zákazníkem následující omezení:
 
 - Pokud je tato funkce pro disk povolena, nelze ji zakázat.
     Pokud to potřebujete obejít, musíte [zkopírovat všechna data](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk) na zcela jiný spravovaný disk, který nepoužívá klíče spravované zákazníkem.
-- Podporovány jsou pouze ["měkké" a "tvrdé" RSA klíče](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) velikosti 2048, žádné jiné klíče nebo velikosti.
+- Podporovány jsou pouze ["měkké" a "tvrdé" RSA klíče](../../key-vault/keys/about-keys.md) velikosti 2048, žádné jiné klíče nebo velikosti.
 - Disky vytvořené z vlastních bitových kopií, které jsou šifrovány pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem, musí být šifrovány pomocí stejných klíčů spravovaných zákazníkem a musí být ve stejném předplatném.
 - Snímky vytvořené z disků, které jsou šifrovány pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem, musí být šifrovány stejnými klíči spravovanými zákazníky.
 - Vlastní bitové kopie šifrované pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem nelze použít ve sdílené galerii obrázků.
@@ -81,7 +81,7 @@ Prozatím mají klíče spravované zákazníkem následující omezení:
 - Pokud k vytvoření sady šifrování disku použijete portál Azure, nemůžete prozatím použít snímky.
 - Spravované disky zašifrované pomocí klíčů spravovaných zákazníkem nelze šifrovat také pomocí Azure Disk Encryption.
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Nastavení trezoru klíčů Azure a sady DiskEncryptionSet
 
 1. Ujistěte se, že jste nainstalovali nejnovější [azure cli](/cli/azure/install-az-cli2) a přihlášeni k účtu Azure s [az přihlášení](/cli/azure/reference-index).

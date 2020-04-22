@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 179a2120714460c955d1fd3e345ebcd963ae564d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: cebe5564767ee345c1aea96b6ac54b9398c3e9a3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81453553"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733033"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace aplikace Windows Java pro azure app service
 
@@ -318,7 +318,7 @@ Podporovaná java development kit (JDK) podporovaná Sadou Azure je [Zulu,](http
 
 Hlavní aktualizace verzí budou k dispozici prostřednictvím nových možností runtime ve službě Azure App Service pro Windows. Zákazníci aktualizují tyto novější verze javy konfigurací jejich nasazení služby App Service a jsou zodpovědní za testování a zajištění hlavní aktualizace splňuje jejich potřeby.
 
-Podporované sady JDK jsou automaticky čtvrtletně opraveny v lednu, dubnu, červenci a říjnu každého roku. Další informace o Javě v Azure najdete v [tomto dokumentu podpory](https://docs.microsoft.com/azure/java/jdk/).
+Podporované sady JDK jsou automaticky čtvrtletně opraveny v lednu, dubnu, červenci a říjnu každého roku. Další informace o Javě v Azure najdete v [tomto dokumentu podpory](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 ### <a name="security-updates"></a>Aktualizace zabezpečení
 

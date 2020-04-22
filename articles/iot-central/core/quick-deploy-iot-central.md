@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 0ed32a4c1272c23c9500b35e05c383eac6dea185
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998952"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758144"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Vytvoření aplikace Azure IoT Central
 
@@ -59,7 +59,11 @@ Vytvoření nové aplikace Azure IoT Central ze šablony **vlastní aplikace:**
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili aplikaci IoT Central. Další navrhovaný krok:
+V tomto rychlém startu jste vytvořili aplikaci IoT Central. Tady je navrhovaný další krok, abyste se dál učili o IoT Central:
 
 > [!div class="nextstepaction"]
 > [Přidání simulovaného zařízení do aplikace IoT Central](./quick-create-simulated-device.md)
+
+Pokud jste vývojář zařízení a chcete se ponořit do nějakého kódu, je dalším krokem:
+> [!div class="nextstepaction"]
+> [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](./tutorial-connect-device-nodejs.md)

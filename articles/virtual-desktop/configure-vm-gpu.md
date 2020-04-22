@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 941a1ff23668a3202028e8b693b57d902095b3b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b675a78041b68210fa7583510582783c506c720
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78384819"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767042"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurace akcelerace grafických procesorů (GPU) pro virtuální plochu windows
 
@@ -88,7 +88,7 @@ Chcete-li ověřit, zda vzdálená plocha používá kódování s akcelerací G
 
 ## <a name="next-steps"></a>Další kroky
 
-Tyto pokyny by vás měly zprovoznit s akceleracegpu na jednom hostitelském virtuálním počítači relace. Některé další důležité informace pro povolení akcelerace GPU ve větším hostitelském fondu:
+Tyto pokyny by vás měly zprovoznit s akcelerací GPU na jednom hostiteli relace (jeden virtuální počítač). Některé další důležité informace pro povolení akcelerace GPU ve větším hostitelském fondu:
 
 * Zvažte použití [rozšíření virtuálního zařízení](/azure/virtual-machines/extensions/overview) pro zjednodušení instalace a aktualizací ovladačů napříč řadou virtuálních aplikací. Použijte [rozšíření ovladače GPU NVIDIA](/azure/virtual-machines/extensions/hpccompute-gpu-windows) pro virtuální zařízení s grafickými procesory NVIDIA a použijte rozšíření ovladače GPU AMD (již brzy) pro virtuální zařízení s grafickými procesory AMD.
 * Zvažte použití zásad skupiny služby Active Directory ke zjednodušení konfigurace zásad skupiny na příčce několika virtuálních počítačů. Informace o nasazení zásad skupiny v doméně služby Active Directory naleznete v [tématu Práce s objekty zásad skupiny](https://go.microsoft.com/fwlink/p/?LinkId=620889).

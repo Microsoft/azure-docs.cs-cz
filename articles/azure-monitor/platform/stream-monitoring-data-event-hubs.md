@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 08177165439ff7d3205e31757e5d1e28759a9836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32bc90cc069ac82641c3aa7692c900c60db7ba87
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274187"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733102"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Streamování dat monitorování Azure do centra událostí
 Azure Monitor poskytuje kompletní kompletní řešení monitorování zásobníku pro aplikace a služby v Azure, v jiných cloudech a místně. Kromě použití Azure Monitor pro analýzu dat a jejich využití pro různé scénáře monitorování, budete muset odeslat do jiných nástrojů monitorování ve vašem prostředí. Nejúčinnější metodou pro streamování dat monitorování do externích nástrojů ve většině případů je použití [Azure Event Hubs](/azure/event-hubs/). Tento článek obsahuje stručný popis, jak můžete streamovat data monitorování z různých zdrojů do centra událostí a odkazy na podrobné pokyny.
@@ -56,7 +56,7 @@ Směrování dat monitorování do centra událostí pomocí Azure Monitoru umo�
 | ArcSight | Ne | Inteligentní konektor ArcSight Azure Event Hub je k dispozici jako součást [kolekce inteligentních konektorů ArcSight](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
 | Server syslogu | Ne | Pokud chcete streamovat data Azure Monitor přímo na server syslogu, můžete použít [řešení založené na funkci Azure](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 | LogRytmus | Ne| Pokyny k nastavení LogRhythm pro sběr protokolů z centra událostí jsou k dispozici [zde](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
-|Logz.io | Ano | Další informace najdete [v tématu Začínáme s monitorováním a protokolováním pomocí Logz.io pro java aplikace spuštěné v Azure.](https://docs.microsoft.com/azure/java/java-get-started-with-logzio)
+|Logz.io | Ano | Další informace najdete [v tématu Začínáme s monitorováním a protokolováním pomocí Logz.io pro java aplikace spuštěné v Azure.](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b42c2a414333e7ed262441321a808fc45425fc3b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187589"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756755"
 ---
 # <a name="json-claims-transformations"></a>JSON nároky transformace
 
@@ -223,6 +223,39 @@ V následujícím příkladu deklarace transformace `id` extrahuje prvek z dat J
 - Výstupní nároky:
     - **extrahovaný nárok**: 6353399
 
+## <a name="getsingleitemfromjson"></a>GetSingleItemFromJson
+
+Získá první prvek z dat JSON.
+
+| Položka | TransformationClaimType | Typ dat | Poznámky |
+| ---- | ----------------------- | --------- | ----- |
+| Vstupní deklarace | inputJson | řetězec | ClaimTypes, které jsou používány transformace deklarací získat položku z dat JSON. |
+| Výstupní nárok | key | řetězec | První klíč prvku v JSON. |
+| Výstupní nárok | value | řetězec | První hodnota prvku v JSON. |
+
+V následujícím příkladu deklarace transformace extrahuje první prvek (křestní název) z dat JSON.
+
+```XML
+<ClaimsTransformation Id="GetGivenNameFromResponse" TransformationMethod="GetSingleItemFromJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="json" TransformationClaimType="inputJson" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="givenNameKey" TransformationClaimType="key" />
+    <OutputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="value" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Příklad
+
+- Vstupní deklarace:
+  - **inputJson**: {"givenName": "Emilty", "lastName": "Smith"}
+- Výstupní nároky:
+  - **klíč**: givenName
+  - **hodnota**: Emilty
+
+
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
 Získá první prvek z datového pole JSON.
@@ -294,3 +327,5 @@ Výstupní nárok:
   }
 }
 ```
+
+

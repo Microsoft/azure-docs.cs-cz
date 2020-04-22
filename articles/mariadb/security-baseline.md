@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bca9c0e4c0695b6180775051d8b018930f8b808f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 9df0de443e28e0eea3224e42178eddd46108ea64
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256463"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759175"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Směrný plán zabezpečení Azure pro databázi Azure pro MariaDB
 
@@ -620,7 +620,7 @@ Jak vytvořit výstrahy pro události protokolu aktivit Azure:https://docs.micro
 
 **Pokyny:** Pomocí Azure Resource Graph dotaz a zjistit všechny prostředky (včetně Azure Database for MariaDB server) v rámci předplatného. Ujistěte se, že máte příslušná (číst) oprávnění ve vašem tenantovi a jsou schopni vytvořit výčet všech předplatných Azure, stejně jako prostředky v rámci vašich předplatných.
 
-Jak vytvářet dotazy pomocí Azure Graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Jak zobrazit předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 

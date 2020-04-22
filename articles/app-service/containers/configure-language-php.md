@@ -4,12 +4,12 @@ description: Přečtěte si, jak pro vaši aplikaci nakonfigurovat předem sesta
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e87466f810dc4ebf767c36ad74c358cbf6069e5
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255834"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758878"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurace aplikace Linux PHP pro Azure App Service
 
@@ -86,7 +86,7 @@ Výchozí obrázek PHP pro App Service používá Apache a neumožňuje vám př
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
-    RewriteRule ^.*$ /public/$1 [NC,L,QSA]
+    RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
 </IfModule>
 ```
 
@@ -116,7 +116,7 @@ Pokud potřebujete provést změny v instalaci PHP, můžete změnit některou z
 
 Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [direktivy php.ini](https://www.php.net/manual/ini.list.php)), přidejte soubor *HTAccess* do kořenového adresáře aplikace.
 
-Do souboru *.htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Například:
+Do souboru *.htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Příklad:
 
 ```
 php_value upload_max_filesize 1000M
@@ -193,12 +193,12 @@ Změny se projeví tak, že aplikaci uvátáte.
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Když se pracovní aplikace PHP ve službě App Service chová jinak nebo má chyby, zkuste toto:
 
 - [Přístup k datovému proudu protokolu](#access-diagnostic-logs).
-- Otestujte aplikaci místně v produkčním režimu. Služba App Service spouští aplikace Node.js v produkčním režimu, takže se musíte ujistit, že váš projekt funguje podle očekávání v produkčním režimu místně. Například:
+- Otestujte aplikaci místně v produkčním režimu. Služba App Service spouští aplikace Node.js v produkčním režimu, takže se musíte ujistit, že váš projekt funguje podle očekávání v produkčním režimu místně. Příklad:
     - V závislosti na souboru *composer.json*mohou být`require` pro `require-dev`produkční režim (vs.) nainstalovány různé balíčky.
     - Některé webové architektury mohou nasadit statické soubory odlišně v produkčním režimu.
     - Některé webové architektury mohou při spuštění v produkčním režimu používat vlastní spouštěcí skripty.

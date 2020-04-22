@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 0bdede482b79c82e6e05b1429cb7c17399bc2277
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396069"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756605"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací ve vlastních zásadách služby Azure Active Directory B2C
 
@@ -66,16 +66,16 @@ V následujících částech jsou k dispozici překladače deklarací.
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |Parametr `acr_values` řetězce dotazu. | Není dostupné. |
+| {OIDC:AuthenticationContextReferences} |Parametr `acr_values` řetězce dotazu. | – |
 | {OIDC:Id klienta} |Parametr `client_id` řetězce dotazu. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |Parametr `domain_hint` řetězce dotazu. | facebook.com |
 | {OIDC:LoginHint} |  Parametr `login_hint` řetězce dotazu. | someone@contoso.com |
-| {OIDC:MaxAge} | Hodnota `max_age` | Není dostupné. |
+| {OIDC:MaxAge} | Hodnota `max_age` | – |
 | {OIDC:Nonce} |Parametr `Nonce` řetězce dotazu. | výchozí Nonce |
 | {OIDC:Heslo}| Pověření [vlastníka prostředku hesla toku](ropc-custom.md) uživatele heslo.| heslo1| 
 | {OIDC:Výzva} | Parametr `prompt` řetězce dotazu. | přihlášení |
 | {OIDC:PřesměrovatUri} |Parametr `redirect_uri` řetězce dotazu. | https://jwt.ms |
-| {OIDC:Zdroj} |Parametr `resource` řetězce dotazu. | Není dostupné. |
+| {OIDC:Zdroj} |Parametr `resource` řetězce dotazu. | – |
 | {OIDC:Obor} |Parametr `scope` řetězce dotazu. | Openid |
 | {OIDC:Uživatelské jméno}| Přihlašovací [údaje vlastníka prostředku tok](ropc-custom.md) uživatelské jméno uživatele.| emily@contoso.com| 
 
@@ -90,7 +90,14 @@ V následujících částech jsou k dispozici překladače deklarací.
 | {Kontext:ADRESA IPAddress} | IP adresa uživatele. | 11.111.111.11 |
 | {Kontext:KMSI} | Označuje, zda je zaškrtnuto políčko [Ponechat přihlášenou.](custom-policy-keep-me-signed-in.md) |  true |
 
-### <a name="non-protocol-parameters"></a>Neprotokolové parametry
+### <a name="claims"></a>Deklarace identity 
+
+| Deklarovat | Popis | Příklad |
+| ----- | ----------- | --------|
+| {Deklarace:typ deklarace identity} | Identifikátor typu deklarace identity, který je již definován v části ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad.  Například: `{Claim:displayName}`, `{Claim:objectId}`nebo . | Hodnota typu deklarace.|
+
+
+### <a name="oauth2-key-value-parameters"></a>Parametry hodnoty klíče OAuth2
 
 Libovolný název parametru zahrnutý jako součást požadavku OIDC nebo OAuth2 lze namapovat na deklaraci v cestě uživatele. Požadavek z aplikace může například obsahovat parametr řetězce `app_session` `loyalty_number`dotazu s názvem , nebo libovolný vlastní řetězec dotazu.
 
@@ -99,13 +106,13 @@ Libovolný název parametru zahrnutý jako součást požadavku OIDC nebo OAuth2
 | {OAUTH-KV:campaignId} | Parametr řetězce dotazu. | Hawaii |
 | {OAUTH-KV:app_session} | Parametr řetězce dotazu. | A3C5R |
 | {OAUTH-KV:loyalty_number} | Parametr řetězce dotazu. | 1 234 |
-| {OAUTH-KV:libovolný vlastní řetězec dotazu} | Parametr řetězce dotazu. | Není dostupné. |
+| {OAUTH-KV:libovolný vlastní řetězec dotazu} | Parametr řetězce dotazu. | – |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | Přístupový token. | Není dostupné. |
+| {oauth2:access_token} | Přístupový token. | – |
 
 
 ### <a name="saml"></a>SAML
@@ -118,12 +125,13 @@ Libovolný název parametru zahrnutý jako součást požadavku OIDC nebo OAuth2
 | {SAML:Povolitvytvoření} | Hodnota `AllowCreate` atributu `NameIDPolicy` z prvku požadavku SAML. | True |
 | {SAML:ForceAuthn} | Hodnota `ForceAuthN` atributu `AuthnRequest` z prvku požadavku SAML. | True |
 | {SAML:Název zprostředkovatele} | Hodnota `ProviderName` atributu `AuthnRequest` z prvku požadavku SAML.| Contoso.com |
+| {SAML:RelayState} | Parametr `RelayState` řetězce dotazu.| 
 
 ## <a name="using-claim-resolvers"></a>Použití překladačů deklarací
 
 Překladače deklarací identity můžete použít s následujícími prvky:
 
-| Položka | Element | Nastavení |
+| Položka | Prvek | Nastavení |
 | ----- | ----------------------- | --------|
 |Technický profil Application Insights |`InputClaim` | |
 |Technický profil [služby Azure Active Directory](active-directory-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|

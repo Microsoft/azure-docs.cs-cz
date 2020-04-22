@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/10/2019
   ms.author: aahi
-  ms.openlocfilehash: 82755c42ecc46c2d6bcc7ec3362f43a594923693
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 26632aebbd6cddd1463064b397a2f42071a5d518
+  ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "79415932"
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "81757298"
 landingContent:
 - title: Informace o rozhraní API Detektoru anomálií
   linkLists:
@@ -49,9 +49,11 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Pomocí C#
-      url: quickstarts/detect-data-anomalies-csharp-sdk.md
+      url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: Pomocí JavaScriptu
+      url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-javascript
     - text: Pomocí Pythonu
-      url: quickstarts/detect-data-anomalies-python-sdk.md
+      url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-python
   - linkListType: tutorial
     links:
     - text: Vizualizace anomálií s využitím dávkového zjišťování a Power BI
@@ -110,7 +112,7 @@ landingContent:
       url: https://go.microsoft.com/fwlink/?linkid=2089915
     - text: Node.js SDK
       url: https://go.microsoft.com/fwlink/?linkid=2090788
-    - text: Azure Powershell
+    - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure CLI
       url: /cli/azure/cognitiveservices#az-cognitiveservices-list

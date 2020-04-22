@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a22808b1d7ab2b2451f50470e8da3770d07407a5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.custom: amqp
+ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985656"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759646"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Nastavení zabezpečení X.509 ve službě Azure IoT Hub
 
@@ -86,7 +87,7 @@ Chcete-li ověřit zařízení X.509, musíte zařízení nejprve podepsat certi
 
 Dále vám ukážeme, jak vytvořit aplikaci C#, která simuluje zařízení X.509 registrované pro váš iot hub. Do vašeho rozbočovače vám zašleme hodnoty teploty a vlhkosti ze simulovaného zařízení. V tomto kurzu vytvoříme pouze aplikaci zařízení. Je ponecháno jako cvičení pro čtenáře k vytvoření aplikace služby IoT Hub, která odešle odpověď na události odeslané tímto simulovaným zařízením. Aplikace C# předpokládá, že jste postupovali podle kroků v [části Správa testovacích certifikátů certifikační autority pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
-1. Otevřete Visual Studio, vyberte **Vytvořit nový projekt**a pak zvolte šablonu projektu **Konzola aplikace (.NET Framework).** Vyberte **další**.
+1. Otevřete Visual Studio, vyberte **Vytvořit nový projekt**a pak zvolte šablonu projektu **Konzola aplikace (.NET Framework).** Vyberte **Další**.
 
 1. V **části Konfigurace nového projektu**pojmenujte projekt *SimulateX509Device*a pak vyberte **Vytvořit**.
 

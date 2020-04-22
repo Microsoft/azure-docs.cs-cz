@@ -9,12 +9,15 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: 8071ddbc5f6073598daf0a08d359ccd19ccd1e4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: a1e0e3623692321e5c69e4b9c5a26ff82a1c47a0
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110805"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732345"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>Odesílání zpráv z cloudu na zařízení pomocí služby IoT Hub (Node.js)
 

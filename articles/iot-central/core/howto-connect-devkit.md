@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 0a393ae8629f1742002344ee717a6719269a6722
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158548"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756812"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení zařízení MXChip IoT DevKit k aplikaci Azure IoT Central
+
+*Tento článek se vztahuje na vývojáře zařízení.*
 
 Tento článek ukazuje, jak připojit zařízení MXChip IoT DevKit (DevKit) k aplikaci Azure IoT Central. Zařízení používá certifikovaný model IoT Plug and Play (preview) pro zařízení DevKit ke konfiguraci připojení k IoT Central.
 
@@ -104,4 +106,7 @@ Chcete-li kód zkontrolovat nebo upravit a zkompilovat, přejděte na [ukázky k
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak připojit zařízení DevKit k aplikaci Azure IoT Central, je dalším doporučeným krokem naučit se [nastavit vlastní šablonu zařízení](./howto-set-up-template.md) pro vlastní zařízení IoT.
+Pokud jste vývojář zařízení, některé navrhované další kroky jsou:
+
+- Přečtěte si o [připojení zařízení v Azure IoT Central](./concepts-get-connected.md)
+- Zjistěte, jak [monitorovat připojení zařízení pomocí rozhraní příkazového příkazu Azure](./howto-monitor-devices-azure-cli.md)

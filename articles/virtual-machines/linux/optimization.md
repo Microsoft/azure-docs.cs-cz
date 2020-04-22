@@ -1,26 +1,19 @@
 ---
 title: Optimalizace virtuálního počítače s Linuxem v Azure
 description: Naučte se několik optimalizačních tipů, abyste měli jistotu, že jste nastavili virtuální počítač s Linuxem pro optimální výkon v Azure
-keywords: linux virtuální stroj, virtuální stroj linux, ubuntu virtuální stroj
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 8baa30c8-d40e-41ac-93d0-74e96fe18d4c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 0ff901e7d53e0814ab064867be6185709e9b6a20
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 87776c14e45ff4bb3cce6661323d74a1315c8ab2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452345"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757101"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytvoření virtuálního počítače (VM) Linux uděláte snadno z příkazového řádku nebo z portálu. V tomto kurzu se můžete ujistit, že jste ho nastavili tak, aby optimalizoval její výkon na platformě Microsoft Azure. Toto téma používá Ubuntu Server VM, ale můžete také vytvořit linuxový virtuální stroj pomocí [vlastních obrázků jako šablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  

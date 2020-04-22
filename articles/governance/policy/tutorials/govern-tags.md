@@ -1,19 +1,19 @@
 ---
 title: 'Kurz: Správa zásad správného řízení značek'
 description: V tomto kurzu použijete efekt Upravit zásad azure k vytvoření a vynucení modelu zásad správného řízení značek na nových a stávajících prostředcích.
-ms.date: 11/25/2019
+ms.date: 04/21/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6319bbde2fdc8f78e2743dd5f1565c8680433fea
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75965985"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759063"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Kurz: Správa zásad ování značek pomocí zásad Azure
 
 [Značky](../../../azure-resource-manager/management/tag-resources.md) jsou klíčovou součástí uspořádání prostředků Azure do taxonomie. Při dodržování [doporučených postupů pro správu značek](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)mohou být značky základem pro použití vašich obchodních zásad pomocí zásad Azure nebo [sledování nákladů pomocí správy nákladů](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources).
-Bez ohledu na to, jak nebo proč používáte značky, je důležité, abyste tyto značky mohli rychle přidávat, měnit a odebírat ve svých prostředcích Azure.
+Bez ohledu na to, jak nebo proč používáte značky, je důležité, abyste tyto značky mohli rychle přidávat, měnit a odebírat ve svých prostředcích Azure. Informace o tom, jestli váš prostředek Azure podporuje označování, najdete v [tématu Podpora značek](../../../azure-resource-manager/management/tag-support.md).
 
 Efekt [Úpravy](../concepts/effects.md#modify) zásad Azure je navržený tak, aby pomáhal ve správné úpravě značek bez ohledu na to, v jaké fázi zásad správného řízení prostředků se nacházíte. **Upravit** pomáhá, když:
 

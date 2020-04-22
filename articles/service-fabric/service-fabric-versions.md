@@ -2,13 +2,13 @@
 title: Podporované verze clusteru ve službě Azure Service Fabric
 description: Další informace o verzích clusteru v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
-ms.date: 03/02/2020
-ms.openlocfilehash: b76e498926492ce7acaa696dfe9a0299fb5573e0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 04/20/2020
+ms.openlocfilehash: b68314a116b0d9da8baf5f61eeffeef2b30835c4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460524"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732883"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze service fabric
 
@@ -41,6 +41,7 @@ V následující tabulce jsou uvedeny verze service fabric a jejich koncová dat
 | 7.0.466.* | 6.5.* |Menší nebo rovno verzi 4.0|1. srpna 2020 |
 | 7.0.470.* | 7.0.466.* |Menší nebo rovno verzi 4.0 |1. srpna 2020  |
 | 7.1.409.* | 7.0.466.* |Menší nebo rovno verzi 4.0 |Aktuální verze, takže žádné koncové datum |
+
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
 V následující tabulce jsou uvedeny podporované operační systémy pro podporované verze service fabric.
@@ -106,3 +107,4 @@ V následující tabulce jsou uvedeny názvy verzí service fabric a odpovídaj�
 | 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
 | 7,0 CU3 | 7.0.466.9590 | 7.0.465.1 |
 | 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |

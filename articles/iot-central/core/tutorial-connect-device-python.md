@@ -7,16 +7,18 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 493dcd71905970434dd2ab2997cfebd17b8e47ff
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891590"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758182"
 ---
-# <a name="tutorial-create-and-connect-a-python-client-application-to-your-azure-iot-central-application-python"></a>Kurz: Vytvoření a připojení klientské aplikace Pythonu k aplikaci Azure IoT Central (Python)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Kurz: Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Python)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
+
+*Tento článek se vztahuje na tvůrce řešení a vývojáře zařízení.*
 
 Tento kurz ukazuje, jak jako vývojář zařízení připojit klientskou aplikaci Pythonu k vaší aplikaci Azure IoT Central. Aplikace Python simuluje chování zařízení senzoru prostředí. Ukázkový _model schopností zařízení_ se používá k vytvoření šablony _zařízení_ v ioT central. Do šablony zařízení přidáte zobrazení, která operátorovi umožní pracovat se zařízením.
 
@@ -303,7 +305,12 @@ Můžete vidět, jak zařízení reaguje na příkazy a aktualizace vlastností:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modelech funkcí zařízení a o tom, jak vytvořit vlastní šablony zařízení, najdete v návodu:
+Jako vývojář zařízení, teď, když jste se naučili základy, jak vytvořit zařízení pomocí Node.js, některé navrhované další kroky jsou:
+
+- Zjistěte, jak připojit skutečné zařízení k IoT Central v [článku Připojit zařízení MXChip IoT DevKit k aplikaci Azure IoT Central.](./howto-connect-devkit.md)
+- Další informace o tom, jak zaregistrovat zařízení pomocí IoT Central a jak IoT Central zabezpečuje připojení zařízení, najdete na článek [Připojení k Azure IoT Central.](./concepts-get-connected.md)
+
+Pokud chcete raději pokračovat v sadě výukových programů IoT Central a dozvědět se další informace o vytváření řešení IoT Central, podívejte se na:
 
 > [!div class="nextstepaction"]
-> [Definování nového typu zařízení IoT](./howto-set-up-template.md)
+> [Vytvoření šablony zařízení brány](./tutorial-define-gateway-device-type.md)

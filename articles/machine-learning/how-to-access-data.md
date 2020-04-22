@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 4a2102f442fc176762b7d5d69f7b367a94633ef5
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383446"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758791"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení ke službám úložiště Azure
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -99,7 +99,7 @@ V levém podokně vyberte **Účty úložiště** a vyberte účet úložiště,
 * Pokud chcete použít hlavní položky služby, jako je ID klienta a ID klienta, přejděte na **registrace aplikací** a vyberte, kterou aplikaci chcete použít. Jeho odpovídající **přehled** stránka bude obsahovat tyto položky.
 
 > [!IMPORTANT]
-> Pokud je váš účet úložiště ve virtuální síti, je podporováno pouze vytváření objektů Blob, sdílené složky, datových úložišť ADLS Gen 1 a ADLS Gen 2 **prostřednictvím sady SDK.** Chcete-li pracovnímu prostoru udělit přístup `grant_workspace_access` k `True`účtu úložiště, nastavte parametr na .
+> Pokud je váš účet úložiště ve virtuální síti, je podporováno pouze vytváření úložišť dat **prostřednictvím sady SDK.**
 
 Následující příklady ukazují, jak zaregistrovat kontejner objektů blob Azure, sdílenou složku Azure a Azure Data Lake Storage Generation 2 jako úložiště dat. Další služby skladování naleznete v [referenční `register_azure_*` dokumentaci pro příslušné metody](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods).
 
@@ -121,6 +121,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
                                                          account_name=account_name,
                                                          account_key=account_key)
 ```
+Pokud je kontejner objektů blob `skip_validation=True` ve [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)virtuální síti, nastavte pomocí .
 
 #### <a name="file-share"></a>Sdílená složka
 
@@ -140,6 +141,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      account_name=account_name,
                                                      account_key=account_key)
 ```
+Pokud je sdílená složka ve `skip_validation=True` [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)virtuální síti, nastavte pomocí aplikace . 
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage Generace 2
 

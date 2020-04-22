@@ -5,19 +5,19 @@ author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 5e18e035bd237fd489b715986e58d7ede726348d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 34aab24bf39e387715cfa5783b801d45ed488750
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886598"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732728"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Vytvoření a publikování funkce do Azure pomocí Javy a Gradle
 
 Tento článek ukazuje, jak vytvořit a publikovat projekt funkce Java do funkce Azure pomocí nástroje příkazového řádku Gradle. Až budete hotovi, kód vaší funkce se spustí v Azure v [plánu hostování bez serveru](functions-scale.md#consumption-plan) a aktivuje se požadavek HTTP. 
 
 > [!NOTE]
-> Pokud Gradle není váš preferovaný vývojový nástroj, podívejte se na naše podobné výukové programy pro devlopery Java pomocí [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions) a [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
+> Pokud Gradle není váš preferovaný vývojový nástroj, podívejte se na naše podobné návody pro vývojáře Java pomocí [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -173,4 +173,4 @@ Vytvořili jste projekt funkcí jazyka Java s funkcí spouštěnou protokolem HT
 
 
 [Azure CLI]: /cli/azure
-[Portál Azure]: https://portal.azure.com
+[portál Azure]: https://portal.azure.com

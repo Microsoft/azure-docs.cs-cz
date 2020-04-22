@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd2706b6a6880d7c9454619e1315b2b5b5404561
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e927b398bd95160e02ee915eb98ea3cb78d68fe
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80244269"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758688"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Základ zabezpečení Azure pro Cosmos DB
 
@@ -638,7 +638,7 @@ Podporované funkce dostupné v Azure Security Center:https://docs.microsoft.com
 
 I když klasické prostředky Azure může být zjištěna prostřednictvím grafu prostředků, je vysoce doporučeno vytvářet a používat prostředky Azure Resource Manager do budoucna.
 
-Jak vytvářet dotazy pomocí Azure Graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Jak zobrazit předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 

@@ -9,12 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: b379f158672a9df3056acb09c63c392869a53283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 14472e84d425bf03a3c6a0c2dc558d4b8225caec
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77108706"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733397"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Nahrávání souborů ze zařízení do cloudu pomocí služby IoT Hub (.NET)
 
@@ -26,7 +27,7 @@ Tento kurz vychází z kódu v kurzu Odesílat zprávy cloud zařízení pomocí
 
 * Pomocí oznámení o nahrání souboru centra IoT Hub aktivujte zpracování souboru v back-endu aplikace.
 
-[Odeslání telemetrie ze zařízení do rychlého startu služby IoT hub](quickstart-send-telemetry-dotnet.md) a odesílání zpráv z cloudu na zařízení pomocí kurzu [služby IoT Hub](iot-hub-csharp-csharp-c2d.md) zobrazují základní funkce zasílání zpráv mezi zařízeními a cloud-to-zařízení služby IoT Hub. Kurz [Konfigurace směrování zpráv pomocí služby IoT Hub](tutorial-routing.md) popisuje způsob spolehlivého ukládání zpráv mezi zařízeními a cloudy v úložišti objektů Blob Microsoft Azure. V některých případech však nelze snadno mapovat data, která vaše zařízení odesílají do relativně malých zpráv zařízení ke cloudu, které služba IoT Hub přijímá. Například:
+[Odeslání telemetrie ze zařízení do rychlého startu služby IoT hub](quickstart-send-telemetry-dotnet.md) a odesílání zpráv z cloudu na zařízení pomocí kurzu [služby IoT Hub](iot-hub-csharp-csharp-c2d.md) zobrazují základní funkce zasílání zpráv mezi zařízeními a cloud-to-zařízení služby IoT Hub. Kurz [Konfigurace směrování zpráv pomocí služby IoT Hub](tutorial-routing.md) popisuje způsob spolehlivého ukládání zpráv mezi zařízeními a cloudy v úložišti objektů Blob Microsoft Azure. V některých případech však nelze snadno mapovat data, která vaše zařízení odesílají do relativně malých zpráv zařízení ke cloudu, které služba IoT Hub přijímá. Příklad:
 
 * Velké soubory, které obsahují obrázky
 

@@ -2,18 +2,18 @@
 title: Spouštění skriptů prostředí v virtuálním počítači SIO v Azure
 description: Toto téma popisuje, jak spouštět skripty ve virtuálním počítači Azure Linux pomocí funkce Spustit příkaz
 services: automation
-ms.service: automation
+ms.service: virtual-machines
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 21787854590d3ca0be2cbd6e9d167de33482c787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80fc33a93d4d83dad1e687b176b39728fc7e8807
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72597884"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758600"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Spouštění skriptů prostředí ve vašem virtuálním počítači s Linuxem pomocí příkazu Spustit
 

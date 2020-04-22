@@ -6,14 +6,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 4f65421a6457d4bf4d438ce9d035d46476829da2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414361"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732686"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Zpracování řádků chyb zkrácení SQL v tocích dat mapování datové továrny dat
 
@@ -30,6 +30,9 @@ Běžným scénářem v Datové továrně při použití mapování toků dat je
     ![Tok filmových dat 1](media/data-flow/error4.png)
     
 3. Problém je v tom, že název filmu se nevejde do sloupce jímky, který pojme pouze 5 znaků. Při spuštění tohoto toku dat se zobrazí chyba, jako je tato:```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
+
+Toto video vás provede příkladem nastavení logiky zpracování chyb ve vašem toku dat:
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4uOHj]
 
 ## <a name="how-to-design-around-this-condition"></a>Jak navrhnout kolem této podmínky
 

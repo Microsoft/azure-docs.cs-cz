@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bb77d1a09cb2692765c4c834ce617d13465d4d67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37c7bc99881c8d1106c8464cfe18c9e63b8a1b02
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157564"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756733"
 ---
 # <a name="create-a-new-device-template-version"></a>Vytvoření nové verze šablony zařízení
 
-
+*Tento článek se vztahuje na tvůrce řešení a vývojáře zařízení.*
 
 Azure IoT Central umožňuje rychlý vývoj aplikací IoT. Návrhy šablon zařízení můžete rychle itorovat přidáním, úpravami nebo odstraněním možností, zobrazení a vlastních nastavení zařízení. Po publikování šablony zařízení se model schopností zařízení zobrazí jako **Publikováno** s ikonami zámku vedle modelu. Chcete-li provést změny v modelu schopností zařízení, budete muset vytvořit novou verzi šablony zařízení. Mezitím vlastnosti cloudu, vlastní nastavení a zobrazení lze kdykoli upravit bez nutnosti verze šablony zařízení. Po uložení některé z těchto změn můžete publikovat šablonu zařízení a zpřístupnit tak nejnovější změny, které může operátor zobrazit v Průzkumníkovi zařízení.
 
@@ -81,7 +81,4 @@ Můžete vytvořit více verzí šablony zařízení. V průběhu času budete m
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili používat verze šablon zařízení v aplikaci Azure IoT Central, tady je další krok:
-
-> [!div class="nextstepaction"]
-> [Jak vytvořit pravidla telemetrie](tutorial-create-telemetry-rules.md)
+Pokud jste vývojář zařízení, dalším krokem je přečíst si o [zařízeních Azure IoT Edge a Azure IoT Central](./concepts-iot-edge.md).

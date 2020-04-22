@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a1fd22772e72cba4cce3f9fa2751dc0df0e15bb9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535594"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758887"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak použít sadu Azure WebJobs SDK k událostmi řízenému zpracování na pozadí
 
@@ -279,7 +279,7 @@ Tyto aktivační události a vazby typy jsou zahrnuty ve verzi 2. *x* `Microsoft
 
 * Blob Storage
 * Queue Storage
-* Úložiště Table
+* Table Storage
 
 Chcete-li použít jiné typy aktivační události a vazby, `Use<binding>` nainstalujte `JobHostConfiguration` balíček NuGet, který je obsahuje, a volání metody na objektu. Chcete-li například použít aktivační událost `Microsoft.Azure.WebJobs.Extensions` Timer, `UseTimers` nainstalujte a zavolejte metodu, `Main` jak je znázorněno zde:
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-Další podrobnosti najdete v článku [vazby Centra událostí.](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings)
+Další podrobnosti najdete v článku [vazby Centra událostí.](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json)
 
 ### <a name="queue-storage-trigger-configuration"></a>Konfigurace aktivační události úložiště fronty
 

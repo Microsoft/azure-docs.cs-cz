@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
-ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: a1d74085090a3e20764d7b6fee84ffca52d5cb74
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271080"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732431"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá diagnostika potíží
 
@@ -540,7 +541,7 @@ Azure IoT Hub označuje stav na místní úrovni. Pokud místní výpadek ovlivn
 
 Chcete-li zkontrolovat stav vašich center IoT, postupujte takto:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Přejděte na**stav zdroje** **stavu** > služby .
 

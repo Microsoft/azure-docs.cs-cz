@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 544b1108a3c79da50969f7fdd33cfb9af373d854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: d8552391e8e8c389a44174595305b8f28224a833
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110865"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732539"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Odesílání zpráv z cloudu na zařízení pomocí služby IoT Hub (iOS)
 

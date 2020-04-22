@@ -4,12 +4,12 @@ description: V tomto kurzu zjistíte, jak do webové front-end služby ASP.NET C
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: b88ecd8d169e7402d149481c22bae95e632efe26
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 2b867a65fa11e14cdc3fc3e5c269686fa4d559de
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605290"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757177"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-endové služby webového rozhraní API ASP.NET Core využívající Kestrel
 
@@ -41,7 +41,7 @@ V této sérii kurzů se naučíte:
 Než začnete s tímto kurzem:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/) verze 15.5 nebo novější s **úlohami vývoje Azure pro vývoj** a ASP.NET a vývoj **webových** aplikací.
+* [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/) verze 16.5 nebo novější s vývojovými a **ASP.NET a webovými úlohami** **Azure.**
 * [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Získání certifikátu nebo vytvoření certifikátu podepsaného svým držitelem pro vývoj

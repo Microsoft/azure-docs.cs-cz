@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: b99bd20b9b9e18bbc09edd5bb49f34147ccfaabd
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: b825ed513f530733d7552e32206c12422a956b14
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390251"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81766936"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -84,7 +84,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Dallas, Frankfurt, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
 | **[VE SPOLEČNOSTI TOKYO](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | Podporuje se | Podporuje se | Tokio2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Podporuje se | Podporuje se | Tokio |
-| **[BCX](https://www.bcx.co.za/solutions)** |Podporuje se |Podporuje se |Kapské město|
+| **[BCX](https://www.bcx.co.za/solutions)** |Podporuje se |Podporuje se |Kapské město, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Podporuje se |Podporuje se |Montreal, Toronto, Quebec City |
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Podporuje se |Podporuje se |Amsterdam, Hong Kong SAR, Johannesburg, Londýn, Newport (Wales), Sao Paulo, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Podporuje se |Podporuje se |Miami |
@@ -279,7 +279,7 @@ Pokud jste vzdálení a nemáte připojení optických vláken nebo chcete prozk
 | **[RETN](https://retn.net/services/cloud-connect/)** | Equinix | Amsterdam |
 | **Rogers** | Cologix, Equinix | Montreal, Toronto |
 | **[Spektrum Enterprise](https://enterprise.spectrum.com/services/cloud/cloud-connect.html)** | Equinix | Chicago, Dallas, Los Angeles, New York, Silicon Valley | 
-| **[Tamares Telecom](https://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | Londýn | 
+| **[Tamares Telecom](http://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | Londýn | 
 | **[TDC Erhverv](https://tdc.dk/Produkter/cloudaccessplus)** | Equinix | Amsterdam | 
 | **[Telecom Italia Sparkle](https://www.tisparkle.com/our-platform/corporate-platform/sparkle-cloud-connect#catalogue)**| Equinix | Amsterdam |
 | **[Telekom Deutschland GmbH](https://cloud.telekom.de/de/infrastruktur/managed-it-services/managed-hybrid-infrastructure-mit-microsoft-azure)** | Interxion | Amsterdam, Frankfurt |

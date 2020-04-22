@@ -3,12 +3,12 @@ title: reference host.json pro Funkce Azure 2.x
 description: Referenční dokumentace pro soubor host.json Azure Functions s runtime v2.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405492"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758850"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Reference host.json pro Funkce Azure 2.x a novější 
 
@@ -216,7 +216,7 @@ Nastavení konfigurace lze nalézt v [vazbách pro trvalé funkce](durable/durab
 
 ## <a name="eventhub"></a>eventHub
 
-Nastavení konfigurace lze nalézt v [aktivační události event hubu a vazby](functions-bindings-event-hubs-output.md#host-json). 
+Nastavení konfigurace lze nalézt v [aktivační události event hubu a vazby](functions-bindings-event-hubs-trigger.md#host-json). 
 
 ## <a name="extensions"></a>Rozšíření
 

@@ -1,23 +1,19 @@
 ---
 title: Přehled virtuálních počítačích s Linuxem v Azure
 description: Přehled virtuálních počítačů s Linuxem v Azure.
-services: virtual-machines-linux
-documentationcenter: virtual-machines-linux
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines-linux
 ms.topic: overview
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 69a9722436aea1cf794e6e3f3ce02ec79180cff3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 83676850a58da4e4bd3c549d9d0c6ac25ae20f83
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80159468"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759424"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuální počítače s Linuxem v Azure
 
@@ -105,12 +101,12 @@ Azure podporuje [cloud-init na](https://cloud-init.io/) většině Distros Linux
 
 * [Použití cloud-init na virtuálních počítačích Azure s Linuxem](using-cloud-init.md)
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 * [Úvod do Microsoft Azure Storage](../../storage/common/storage-introduction.md)
 * [Přidání disku do virtuálního počítače s Linuxem pomocí Azure CLI](add-disk.md)
 * [Postup připojení datového disku k virtuálnímu počítači s Linuxem na webu Azure Portal](attach-disk-portal.md)
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 * [Přehled virtuální sítě](../../virtual-network/virtual-networks-overview.md)
 * [IP adresy v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Otevření portů k virtuálnímu počítači s Linuxem v Azure](nsg-quickstart.md)

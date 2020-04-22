@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 93a5bcd77bb4f42d9099cc1ddb1b5c3130c19059
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 2ddb9a9c205135707d7d96beb106074baa1ce324
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010133"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758260"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Základ zabezpečení Azure pro HDInsight
 
@@ -704,7 +704,7 @@ Volitelně pokud máte předplatné rapid7, Qualys nebo jiné platformy pro spr�
 
 Jak nainstalovat Rapid7 Agent ručně:
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/install
 
 Jak nainstalovat Qualys Agent ručně:
 
@@ -774,7 +774,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-li
 
 I když klasické prostředky Azure může být zjištěna prostřednictvím grafu prostředků, je vysoce doporučeno vytvářet a používat prostředky Azure Resource Manager do budoucna.
 
-Jak vytvářet dotazy pomocí Azure Graphu:
+Jak vytvářet dotazy pomocí Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 

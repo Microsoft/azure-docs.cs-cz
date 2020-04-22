@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0e5a683c95e213a0fc37ec4f559e89abfecf034a
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312469"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758907"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se brány aplikace
 
@@ -72,7 +72,7 @@ Pro skladovou položku v2 otevřete veřejný prostředek IP a vyberte **možnos
 
 *Časový limit keep-alive* určuje, jak dlouho bude aplikační brána čekat, až klient odešle další požadavek HTTP na trvalé připojení, než jej znovu použije nebo zavře. *Časový limit nečinnosti protokolu TCP* určuje, jak dlouho je připojení TCP v případě žádné aktivity otevřeno. 
 
-*Časový limit Keep-Alive* v aplikační bráně v1 SKU je 120 sekund a ve sku v2 je to 75 sekund. *Časový limit nečinnosti protokolu TCP* je výchozí 4 minutna front-endové virtuální IP adresy (VIP) v1 a v2 skladové položky aplikační brány. 
+*Časový limit Keep-Alive* v aplikační bráně v1 SKU je 120 sekund a ve sku v2 je to 75 sekund. *Časový limit nečinnosti protokolu TCP* je výchozí 4 minutna front-endové virtuální IP adresy (VIP) v1 a v2 skladové položky aplikační brány. Tyto hodnoty nelze změnit.
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Mění se název IP nebo DNS po dobu životnosti aplikační brány?
 

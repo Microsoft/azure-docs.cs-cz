@@ -2,18 +2,17 @@
 title: Spouštění skriptů ve virtuálním počítači Azure Linux
 description: Toto téma popisuje, jak spouštět skripty ve virtuálním počítači.
 services: automation
-ms.service: automation
+ms.service: virtual-machines-linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: article
-manager: carmonm
-ms.openlocfilehash: 6175ae4263aee0ecdca5b1d768438ad20352375c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9dbfb3e76fe1c0e80dd8020b79f4edd6d32a24a3
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67477022"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758595"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Spouštění skriptů ve vašem virtuálním počítači s Linuxem
 
@@ -29,7 +28,7 @@ Rozšíření [vlastní skript se](../extensions/custom-script-linux.md) použí
 * Spusťte skript PowerShell u počítačů se systémem Windows a skript Bash v počítačích s Linuxem.
 * Užitečné pro konfiguraci po nasazení, instalaci softwaru a další úlohy konfigurace nebo správy.
 
-## <a name="run-command"></a>Spusťte příkaz .
+## <a name="run-command"></a>Spustit, příkaz
 
 Funkce [Spustit příkaz](run-command.md) umožňuje správu virtuálních strojů a aplikací a odstraňování potíží pomocí skriptů a je k dispozici i v případě, že počítač není dostupný, například pokud brána firewall hosta nemá otevřený port RDP nebo SSH.
 
@@ -68,7 +67,7 @@ Funkce [Spustit příkaz](run-command.md) umožňuje správu virtuálních stroj
 
 Přečtěte si další informace o různých funkcích, které jsou k dispozici pro spouštění skriptů a příkazů v rámci virtuálních počítačů.
 
-* [Rozšíření vlastního skriptu](../extensions/custom-script-linux.md)
-* [Spustit příkaz](run-command.md)
+* [Rozšíření vlastních skriptů](../extensions/custom-script-linux.md)
+* [Spuštění příkazu](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
 * [Sériová konzola](serial-console.md)

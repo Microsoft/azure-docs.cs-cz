@@ -3,12 +3,12 @@ title: reference host.json pro funkce Azure 1.x
 description: Referenční dokumentace pro soubor host.json Azure Functions s runtime v1.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 2b00e2343e0959e07b195e2e98c6719a1893b8c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277047"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757515"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>reference host.json pro funkce Azure 1.x
 
@@ -148,9 +148,7 @@ Nastavení konfigurace pro [aktivační událost Azure Cosmos DB a vazby](functi
 
 ## <a name="eventhub"></a>eventHub
 
-Nastavení konfigurace pro [aktivační události centra událostí a vazby](functions-bindings-event-hubs.md).
-
-[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
+Nastavení konfigurace pro [aktivační události centra událostí a vazby](functions-bindings-event-hubs-trigger.md#functions-1x).
 
 ## <a name="functions"></a> – funkce
 

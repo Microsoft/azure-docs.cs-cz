@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6b56b748ef31bcfd33893e55d3ea5f8d9851a3ff
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: c4eddf68e964b412e7270319630f41fc4d802241
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674472"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733144"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Vytvoření nabídky modulu IoT Edge
 
@@ -54,7 +54,7 @@ Po zadání těchto dvou hodnot vyberte **Vytvořit** před pokračováním na d
 
 Na stránce **Přehled nabídky** se zobrazí vizuální znázornění kroků potřebných k publikování této nabídky (dokončené i nadcházející) a jak dlouho by mělo trvat dokončení každého kroku.
 
-Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě výběru, který provedete. Například:
+Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě výběru, který provedete. Příklad:
 
 - Pokud je nabídka konceptem - [Odstranit koncept nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Pokud je nabídka živá - [Přestaňte nabídku prodávat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -132,7 +132,7 @@ Zde definujete podrobnosti nabídky, které se zobrazují na trhu. To zahrnuje n
 > [!NOTE]
 > Podrobnosti nabídky nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [neanglickém jazyce]." Je také v pořádku poskytnout užitečný odkaz pro nabízení obsahu v jazyce, který se liší od jazyka použitého v podrobnostech nabídky.
 
-### <a name="name"></a>Name (Název)
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název nabídky. Toto pole je předvyplněno textem, který jste zadali do pole **Alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -161,7 +161,7 @@ Do popisu uveďte jednu nebo více z následujících věcí:
 - Příležitosti k nákupu v aplikaci
 - Veškerá požadovaná zveřejnění
 
-Nabídky modulů IoT Edge musí obsahovat odstavec s minimálními hardwarovými požadavky v dolní části popisu. Například:
+Nabídky modulů IoT Edge musí obsahovat odstavec s minimálními hardwarovými požadavky v dolní části popisu. Příklad:
 
 *Minimální požadavky na hardware: Linux x64 a arm32 OS, 1 GB paměti RAM, 500 Mb úložiště*
 
@@ -322,9 +322,9 @@ Tato karta umožňuje nakonfigurovat, ve kterých cloudech je plán k dispozici.
 
 Váš plán musí být dostupný alespoň v jednom cloudu pomocí Azure IoT Hub.
 
-Vyberte možnost **Azure Global,** aby váš plán mohli používat zákazníci ve všech globálních oblastech Azure, kteří používají tržiště. Podrobnosti naleznete [v tématu Geografická dostupnost a podpora měny](https://aka.ms/AzureGovCurrencies).
+Vyberte možnost **Azure Global,** aby váš plán mohli používat zákazníci ve všech globálních oblastech Azure, kteří používají tržiště. Podrobnosti naleznete [v tématu Geografická dostupnost a podpora měny](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Tady vyberte možnost [Azure Government Cloud,](https://aka.ms/WhatIsAzureGovernment) aby se vaše řešení zobrazilo. Jedná se o vládní komunitní cloud s kontrolovaným přístupem pro zákazníky z amerických federálních, státních a místních nebo kmenových vládních agentur, stejně jako partnery, kteří jsou způsobilí jim sloužit. Jako vydavatel jste zodpovědní za veškeré kontroly dodržování předpisů, bezpečnostní opatření a osvědčené postupy pro tuto cloudovou komunitu. Azure Government používá fyzicky izolovaná datová centra a sítě (umístěné jenom v USA). Před [publikováním](https://aka.ms/azuregovpublish) na Azure Government, otestujte a potvrďte řešení v této oblasti, protože výsledky se mohou lišit. Chcete-li zinscenovat a otestovat řešení, požádejte o zkušební účet z [testovací verze Microsoft Azure Government](https://aka.ms/AzureGovernmentTrial).
+Tady vyberte možnost [Azure Government Cloud,](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) aby se vaše řešení zobrazilo. Jedná se o vládní komunitní cloud s kontrolovaným přístupem pro zákazníky z amerických federálních, státních a místních nebo kmenových vládních agentur, stejně jako partnery, kteří jsou způsobilí jim sloužit. Jako vydavatel jste zodpovědní za veškeré kontroly dodržování předpisů, bezpečnostní opatření a osvědčené postupy pro tuto cloudovou komunitu. Azure Government používá fyzicky izolovaná datová centra a sítě (umístěné jenom v USA). Před [publikováním](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) na Azure Government, otestujte a potvrďte řešení v této oblasti, protože výsledky se mohou lišit. Chcete-li zinscenovat a otestovat řešení, požádejte o zkušební účet z [testovací verze Microsoft Azure Government](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 > [!NOTE]
 > Po publikování plánu a jeho dostupnosti v konkrétním cloudu ho nemůžete odebrat.
@@ -378,11 +378,11 @@ Toto pole se běžně používá, když:
 
 ## <a name="technical-configuration"></a>Technická konfigurace
 
-Typ nabídky **modulu IoT Edge** je specifický typ kontejneru, který běží na zařízení IoT Edge. Na kartě **Technická konfigurace** poskytnete referenční informace pro úložiště bitových bitových údajů kontejneru v [registru kontejnerů Azure](https://aka.ms/ContainerRegistry)spolu s nastavením konfigurace, které zákazníkům umožní snadno používat modul.
+Typ nabídky **modulu IoT Edge** je specifický typ kontejneru, který běží na zařízení IoT Edge. Na kartě **Technická konfigurace** poskytnete referenční informace pro úložiště bitových bitových údajů kontejneru v [registru kontejnerů Azure](https://azure.microsoft.com/services/container-registry/)spolu s nastavením konfigurace, které zákazníkům umožní snadno používat modul.
 
 Po publikování nabídky se vaše image kontejneru IoT Edge zkopíruje na Azure Marketplace v konkrétním registru veřejných kontejnerů. Všechny požadavky od uživatelů Azure o použití vašeho modulu se obsluhují z registru veřejných kontejnerů Azure Marketplace, ne z vašeho registru privátního kontejneru.
 
-Můžete cílit na více platforem a poskytnout několik verzí image kontejneru modulu pomocí značek. Další informace o značkách a správě verzí najdete [v tématu Příprava technických prostředků modulu IoT Edge](https://aka.ms/AzureIoTTechAsset).
+Můžete cílit na více platforem a poskytnout několik verzí image kontejneru modulu pomocí značek. Další informace o značkách a správě verzí najdete [v tématu Příprava technických prostředků modulu IoT Edge](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset).
 
 ### <a name="image-repository-details"></a>Podrobnosti o úložišti obrázků
 
@@ -392,25 +392,25 @@ Na kartě **Podrobnosti úložiště obrázků** zadáte následující informac
 
 **ID předplatného Azure**: Zadejte ID předplatného, kde se hlásí využití prostředků a služby se účtují pro registr kontejnerů Azure, který zahrnuje image kontejneru. Toto ID najdete na [stránce Předplatná](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure Portal.
 
-**Název skupiny prostředků Azure**: Zadejte název [skupiny prostředků,](https://aka.ms/ResourceManagerAzurePortal) který obsahuje registr kontejnerů Azure s image kontejneru. Skupina prostředků musí být přístupná v ID předplatného (výše). Název najdete na stránce [Skupiny prostředků](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) na webu Azure Portal.
+**Název skupiny prostředků Azure**: Zadejte název [skupiny prostředků,](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) který obsahuje registr kontejnerů Azure s image kontejneru. Skupina prostředků musí být přístupná v ID předplatného (výše). Název najdete na stránce [Skupiny prostředků](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) na webu Azure Portal.
 
-**Název registru kontejneru Azure**: Zadejte název [registru kontejnerů Azure,](https://aka.ms/DockerContainerRegistriesAzure) který má image kontejneru. Registr kontejnerů musí být k dispozici ve skupině prostředků Azure, kterou jste zadali dříve. Zadejte pouze název registru, nikoli úplný název přihlašovacího serveru. Ujistěte se, že vynechat **azurecr.io** z názvu. Název registru najdete na [stránce Registry kontejnerů](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) na webu Azure Portal.
+**Název registru kontejneru Azure**: Zadejte název [registru kontejnerů Azure,](https://docs.microsoft.com/azure/container-registry/container-registry-intro) který má image kontejneru. Registr kontejnerů musí být k dispozici ve skupině prostředků Azure, kterou jste zadali dříve. Zadejte pouze název registru, nikoli úplný název přihlašovacího serveru. Ujistěte se, že vynechat **azurecr.io** z názvu. Název registru najdete na [stránce Registry kontejnerů](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) na webu Azure Portal.
 
-**Uživatelské jméno správce pro registr kontejnerů Azure**: Zadejte [uživatelské jméno správce](https://aka.ms/AdminAccountContainerRegistry) přidružené k registru kontejnerů Azure, který má vaši image kontejneru. Uživatelské jméno a heslo jsou vyžadovány k zajištění přístupu vaší společnosti k registru. Chcete-li získat uživatelské jméno správce a heslo, nastavte vlastnost **s povolenou správcem** na **hodnotu True** pomocí rozhraní Příkazového řádku Azure (CLI). **Volitelně** můžete nastavit uživatele správce na **Povolit** na webu Azure Portal.
+**Uživatelské jméno správce pro registr kontejnerů Azure**: Zadejte [uživatelské jméno správce](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) přidružené k registru kontejnerů Azure, který má vaši image kontejneru. Uživatelské jméno a heslo jsou vyžadovány k zajištění přístupu vaší společnosti k registru. Chcete-li získat uživatelské jméno správce a heslo, nastavte vlastnost **s povolenou správcem** na **hodnotu True** pomocí rozhraní Příkazového řádku Azure (CLI). **Volitelně** můžete nastavit uživatele správce na **Povolit** na webu Azure Portal.
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="Ilustruje dialogové okno Aktualizovat registr kontejneru.":::
 
-**Heslo pro registr kontejnerů Azure**: Zadejte heslo pro uživatelské jméno správce, které je přidružené k registru kontejnerů Azure a má image kontejneru. Uživatelské jméno a heslo jsou vyžadovány k zajištění přístupu vaší společnosti k registru. Heslo můžete získat z portálu Azure tak, že přejdete na > **klíče přístupu k** **registru kontejneru**nebo pomocí příkazu Azure CLI pomocí [příkazu show.](https://aka.ms/azacrcredentialshow)
+**Heslo pro registr kontejnerů Azure**: Zadejte heslo pro uživatelské jméno správce, které je přidružené k registru kontejnerů Azure a má image kontejneru. Uživatelské jméno a heslo jsou vyžadovány k zajištění přístupu vaší společnosti k registru. Heslo můžete získat z portálu Azure tak, že přejdete na > **klíče přístupu k** **registru kontejneru**nebo pomocí příkazu Azure CLI pomocí [příkazu show.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Ilustruje obrazovku přístupových kláves na webu Azure Portal.":::
 
-**Název úložiště v registru kontejnerů Azure**. Zadejte název úložiště registru kontejnerů Azure, který má vaši bitovou kopii. Název úložiště zadáte při nabízení bitové kopie do registru. Název úložiště najdete na stránce [Registry](https://aka.ms/ContainerRegistry) > **Registry.** Další informace najdete [v tématu Zobrazení úložišť registru kontejnerů na webu Azure Portal](https://aka.ms/ContainerRegistryRepositoriesAzure). Všimněte si, že po nastavení názvu jej nelze změnit. Pro každou nabídku ve vašem účtu použijte jedinečný název.
+**Název úložiště v registru kontejnerů Azure**. Zadejte název úložiště registru kontejnerů Azure, který má vaši bitovou kopii. Název úložiště zadáte při nabízení bitové kopie do registru. Název úložiště najdete na stránce [Registry](https://azure.microsoft.com/services/container-registry/) > **Registry.** Další informace najdete [v tématu Zobrazení úložišť registru kontejnerů na webu Azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories). Všimněte si, že po nastavení názvu jej nelze změnit. Pro každou nabídku ve vašem účtu použijte jedinečný název.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Značky obrázků pro nové verze vaší nabídky
 
 Zákazníci musí být schopni automaticky získat aktualizace z Azure Marketplace při publikování aktualizace. Pokud se nechtějí aktualizovat, musí být schopni zůstat na konkrétní verzi obrázku. Můžete to provést přidáním nových značek obrázků pokaždé, když provedete aktualizaci obrázku.
 
-**Značka obrázku**. Toto pole musí obsahovat **nejnovější** značku, která odkazuje na nejnovější verzi obrázku na všech podporovaných platformách. Musí také obsahovat značku verze (například počínaje xx.xx.xx, kde xx je číslo). Zákazníci by měli používat [značky manifestu](https://aka.ms/GitHubmanifest-tool) k cílení na více platforem. Všechny značky odkazované značkou manifestu musí být také přidány, abychom je mohli nahrát. Všechny značky manifestu (s výjimkou nejnovější značky) musí začínat buď X.Y- nebo X.Y.Z- kde X, Y a Z jsou celá čísla. Pokud například nejnovější značka odkazuje na 1.0.1-linux-x64, 1.0.1-linux-arm32 a 1.0.1-windows-arm32, je třeba do tohoto pole přidat těchto šest značek. Podrobnosti o značkách a správě verzí najdete [v tématu Příprava technických prostředků modulu IoT Edge.](https://aka.ms/PrepareIoTEdgeModTechAssets)
+**Značka obrázku**. Toto pole musí obsahovat **nejnovější** značku, která odkazuje na nejnovější verzi obrázku na všech podporovaných platformách. Musí také obsahovat značku verze (například počínaje xx.xx.xx, kde xx je číslo). Zákazníci by měli používat [značky manifestu](https://github.com/estesp/manifest-tool) k cílení na více platforem. Všechny značky odkazované značkou manifestu musí být také přidány, abychom je mohli nahrát. Všechny značky manifestu (s výjimkou nejnovější značky) musí začínat buď X.Y- nebo X.Y.Z- kde X, Y a Z jsou celá čísla. Pokud například nejnovější značka odkazuje na 1.0.1-linux-x64, 1.0.1-linux-arm32 a 1.0.1-windows-arm32, je třeba do tohoto pole přidat těchto šest značek. Podrobnosti o značkách a správě verzí najdete [v tématu Příprava technických prostředků modulu IoT Edge.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)
 
 ### <a name="default-deployment-settings-optional"></a>Výchozí nastavení nasazení (volitelné)
 
@@ -418,7 +418,7 @@ Definujte nejběžnější nastavení pro nasazení modulu IoT Edge. Optimalizuj
 
 **Výchozí trasy**. IoT Edge Hub spravuje komunikaci mezi moduly, službou IoT Hub a zařízeními. Můžete nastavit trasy pro vstup a výstup dat mezi moduly a službou IoT Hub, což vám poskytuje flexibilitu při odesílání zpráv tam, kam potřebují, bez nutnosti dalších služeb pro zpracování zpráv nebo psaní dalšího kódu. Trasy jsou konstruovány pomocí dvojic název/hodnota. Můžete definovat až pět výchozích názvů tras, každý o výšce až 512 znaků.
 
-Ujistěte se, že v hodnotě trasy používáte správnou [syntaxi postupu](https://aka.ms/DeclareRoutesAzureIoT) (obvykle definovanou jako FROM/message/* INTO $upstream). To znamená, že všechny zprávy odeslané libovolnými moduly přejdou do vašeho centra IoT Hub. Chcete-li odkazovat na modul, použijte jeho výchozí název modulu, který bude název **nabídky**, bez mezer nebo speciálních znaků. Chcete-li odkazovat na další moduly, které ještě nejsou známy, použijte <FROM_MODULE_NAME> konvence, aby vaši zákazníci věděli, že je třeba tyto informace aktualizovat. Podrobnosti o trasách IoT Edge najdete [v tématu Deklarování tras](https://aka.ms/DeclareRoutesAzureIoT).
+Ujistěte se, že v hodnotě trasy používáte správnou [syntaxi postupu](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) (obvykle definovanou jako FROM/message/* INTO $upstream). To znamená, že všechny zprávy odeslané libovolnými moduly přejdou do vašeho centra IoT Hub. Chcete-li odkazovat na modul, použijte jeho výchozí název modulu, který bude název **nabídky**, bez mezer nebo speciálních znaků. Chcete-li odkazovat na další moduly, které ještě nejsou známy, použijte <FROM_MODULE_NAME> konvence, aby vaši zákazníci věděli, že je třeba tyto informace aktualizovat. Podrobnosti o trasách IoT Edge najdete [v tématu Deklarování tras](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes).
 
 Pokud například modul ContosoModule naslouchá vstupům na ContosoInput a výstupních datech na ContosoOutput, má smysl definovat následující dvě výchozí trasy:
 
@@ -427,7 +427,7 @@ Pokud například modul ContosoModule naslouchá vstupům na ContosoInput a výs
 - Název #2: FromContosoModuleToCloud
 - Hodnota #2: FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-**Výchozí modul twin požadované vlastnosti**. Dvojče modulu je dokument JSON v centru IoT Hub, který ukládá informace o stavu instance modulu, včetně požadovaných vlastností. Požadované vlastnosti se používají spolu s vykazošovacími vlastnostmi k synchronizaci konfigurace modulu nebo podmínek. Back-end řešení může nastavit požadované vlastnosti a modul je může číst. Modul může také přijímat oznámení o změně v požadovaných vlastnostech. Požadované vlastnosti jsou vytvořeny pomocí až pěti párů název/hodnota a každá výchozí hodnota musí být menší než 512 znaků. Můžete definovat až pět požadovaných vlastností dvojčete name/value. Hodnoty twin požadované vlastnosti musí být platný JSON, non-uvozené, bez polí s maximální vnořené hierarchie čtyř úrovní. Ve scénáři, kde parametr požadovaný pro výchozí hodnotu nedává smysl (například IP adresa serveru zákazníka), můžete přidat parametr jako výchozí hodnotu. Další informace o vlastnostech požadovaných dvěma dvojčaty naleznete v [tématu Definování nebo aktualizace požadovaných vlastností](https://aka.ms/DefineUpdateProperties).
+**Výchozí modul twin požadované vlastnosti**. Dvojče modulu je dokument JSON v centru IoT Hub, který ukládá informace o stavu instance modulu, včetně požadovaných vlastností. Požadované vlastnosti se používají spolu s vykazošovacími vlastnostmi k synchronizaci konfigurace modulu nebo podmínek. Back-end řešení může nastavit požadované vlastnosti a modul je může číst. Modul může také přijímat oznámení o změně v požadovaných vlastnostech. Požadované vlastnosti jsou vytvořeny pomocí až pěti párů název/hodnota a každá výchozí hodnota musí být menší než 512 znaků. Můžete definovat až pět požadovaných vlastností dvojčete name/value. Hodnoty twin požadované vlastnosti musí být platný JSON, non-uvozené, bez polí s maximální vnořené hierarchie čtyř úrovní. Ve scénáři, kde parametr požadovaný pro výchozí hodnotu nedává smysl (například IP adresa serveru zákazníka), můžete přidat parametr jako výchozí hodnotu. Další informace o vlastnostech požadovaných dvěma dvojčaty naleznete v [tématu Definování nebo aktualizace požadovaných vlastností](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties).
 
 Pokud například modul podporuje dynamicky konfigurovatelnou obnovovací frekvenci pomocí požadovaných vlastností twin, má smysl definovat následující výchozí požadovanou vlastnost dvojčete:
 
@@ -441,7 +441,7 @@ Pokud například modul vyžaduje přijetí podmínek použití před spuštěn�
 - Název #1: ACCEPT_EULA
 - Hodnota #1: Y
 
-**Výchozí možnosti vytvoření kontejneru**. Možnosti vytváření kontejneru nasměrovat vytvoření kontejneru modulu IoT Edge Docker. IoT Edge podporuje možnosti vytvoření kontejneru modulu Docker u motoru. Zobrazit všechny možnosti na [seznam kontejnerů.](https://aka.ms/ContainerList) Pole možnosti vytvoření musí být platné JSON, bez uvozených znaků a menší než 512 znaků.
+**Výchozí možnosti vytvoření kontejneru**. Možnosti vytváření kontejneru nasměrovat vytvoření kontejneru modulu IoT Edge Docker. IoT Edge podporuje možnosti vytvoření kontejneru modulu Docker u motoru. Zobrazit všechny možnosti na [seznam kontejnerů.](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList) Pole možnosti vytvoření musí být platné JSON, bez uvozených znaků a menší než 512 znaků.
 
 Pokud například modul vyžaduje vazbu portu, definujte následující možnosti vytvoření:
 

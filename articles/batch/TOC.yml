@@ -85,8 +85,6 @@
           href: batch-aad-auth-management.md
         - name: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
           href: credential-access-key-vault.md
-    - name: Použití balíčků aplikací
-      href: batch-application-packages.md
     - name: Kopírování souborů a aplikací do uzlů fondu
       items:
         - name: Kopírování aplikací a dat do uzlů fondu

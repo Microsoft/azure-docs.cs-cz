@@ -10,12 +10,8 @@
   items:
     - name: Klientská knihovna
       items:
-        - name: 'Pomocí C#'
-          href: quickstarts/detect-data-anomalies-csharp-sdk.md
-        - name: Pomocí Pythonu
-          href: quickstarts/detect-data-anomalies-python-sdk.md
-        - name: Pomocí Node.js
-          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+        - name: Klientské knihovny Detektoru anomálií
+          href: ./quickstarts/client-libraries.md
     - name: REST API
       items:
         - name: 'Pomocí C#'

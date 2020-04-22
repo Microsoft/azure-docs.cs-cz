@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c348a172b16e12334d33cf2718609694147fdce3
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674524"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732678"
 ---
 # <a name="power-bi-app-creation-overview"></a>Přehled vytvoření aplikace Power BI
 
@@ -51,7 +51,7 @@ Prohlédněte si níže uvedené odkazy, které poskytují šablony, tipy a uká
 
 - [Vytvoření aplikace Power BI](https://docs.microsoft.com/power-bi/service-template-apps-create)
 - [Tipy pro vytváření aplikace Power BI](https://docs.microsoft.com/power-bi/service-template-apps-tips)
-- [ukázky](https://docs.microsoft.com/power-bi/service-template-apps-samples)
+- [Ukázky](https://docs.microsoft.com/power-bi/service-template-apps-samples)
 
 ## <a name="requirements"></a>Požadavky
 
@@ -69,7 +69,7 @@ Aplikaci Power BI můžete vytvářet jenom v prostředí [Power BI.](https://po
 2. Vytvořte a otestujte aplikaci v Power BI.
 3. Když obdržíte webovou adresu pro instalaci aplikace, přidejte ji na stránku **Technická konfigurace** v Centru partnerů.
 
-Po vytvoření a testování aplikace v Power BI uložte webovou adresu pro instalaci aplikace, protože ji budete potřebovat k [vytvoření nabídky aplikace Pro Power BI](https://aka.ms/AzureCreatePBIServiceApp).
+Po vytvoření a testování aplikace v Power BI uložte webovou adresu pro instalaci aplikace, protože ji budete potřebovat k [vytvoření nabídky aplikace Pro Power BI](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer).
 
 ### <a name="business-requirements"></a>Obchodní požadavky
 
@@ -81,4 +81,4 @@ Obchodní požadavky zahrnují procesní, smluvní a právní povinnosti. Musít
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření nabídky aplikace Power BI v Partnerském centru](https://aka.ms/AzureCreatePBIServiceApp)
+- [Vytvoření nabídky aplikace Power BI v Partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

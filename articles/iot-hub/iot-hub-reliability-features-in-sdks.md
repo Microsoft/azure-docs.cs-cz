@@ -7,12 +7,15 @@ ms.author: robinsh
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-ms.openlocfilehash: 1ca7219824a00a5af0bed7d42da75fc06ce2010d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: a645ab1fa4a1be3ec8e939452a1457e84bbafe15
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284444"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759674"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Správa připojení a spolehlivého zasílání zpráv pomocí sad SDK zařízení Azure IoT Hub
 
@@ -28,7 +31,7 @@ Podrobnosti implementace se mohou lišit podle jazyka. Další informace nalezne
 
 * [C/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
 
-* [Sada SDK rozhraní .NET](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
+* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
 
 * [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 
@@ -123,7 +126,7 @@ Ukázky kódu v jiných jazycích naleznete v následujících implementačních
 
 * [C/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
 
-* [Sada SDK rozhraní .NET](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
+* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
 
 * [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 

@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: bed6736fda0c1815964f9017adb1e6fffa9335d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110687"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759606"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Monitorování, diagnostika a řešení potíží s odpojením pomocí služby Azure IoT Hub
 
@@ -27,7 +28,7 @@ Azure Monitor slouží k získání výstrah a zápisu protokolů při odpojení
 
 Chcete-li protokolovat události připojení zařízení a chyby, zapněte diagnostiku pro IoT Hub. Doporučujeme zapnout tyto protokoly co nejdříve, protože pokud diagnostické protokoly nejsou povoleny, když dojde k odpojení zařízení, nebudete mít žádné informace k řešení problému.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Přejděte do svého centra IoT hub.
 
@@ -47,7 +48,7 @@ Další informace najdete [v tématu Sledování stavu služby Azure IoT Hub a d
 
 Chcete-li dostávat upozornění při odpojení zařízení, nakonfigurujte výstrahy v metrike **Připojená zařízení (náhled).**
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Přejděte do svého centra IoT hub.
 
@@ -69,7 +70,7 @@ Chcete-li zjistit odpojení *podle zařízení,* například když potřebujete 
 
 Když zapnete diagnostické protokoly a výstrahy pro připojená zařízení, zobrazí se upozornění, když dojde k chybám. Tato část popisuje, jak hledat běžné problémy, když obdržíte výstrahu. Následující kroky předpokládají, že jste nastavili protokoly Azure Monitoru pro diagnostické protokoly.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Přejděte do svého centra IoT hub.
 

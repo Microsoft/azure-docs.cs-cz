@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 10fc822f9f36512405dd4e3b5aba6270b53e163f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1c7e18214ec175b8b21d25643098631a044da19c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549028"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758314"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Směrný plán zabezpečení Azure pro centra událostí
 
@@ -335,7 +335,7 @@ Jak používat zásady Azure:https://docs.microsoft.com/azure/governance/policy/
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Použití jednotného přihlašování (SSO) s Azure Active Directory
 
-**Pokyny:** Microsoft Azure poskytuje integrovanou správu řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (AD). Klíčovou výhodou používání Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2.0 z platformy Microsoft Identity. Název prostředku pro vyžádání https://eventhubs.azure.net/tokenu je . Azure AD ověřuje intezuru zabezpečení (uživatele, skupiny nebo instančního objektu) spuštěné aplikace. Pokud je ověření úspěšné, Azure AD vrátí přístupový token do aplikace a aplikace pak můžete použít přístupový token k autorizaci požadavku na prostředky Azure Event Hubs.
+**Pokyny:** Microsoft Azure poskytuje integrovanou správu řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (AD). Klíčovou výhodou používání Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2.0 z platformy Microsoft Identity. Název prostředku pro vyžádání tokenu\/je https: /eventhubs.azure.net/. Azure AD ověřuje intezuru zabezpečení (uživatele, skupiny nebo instančního objektu) spuštěné aplikace. Pokud je ověření úspěšné, Azure AD vrátí přístupový token do aplikace a aplikace pak můžete použít přístupový token k autorizaci požadavku na prostředky Azure Event Hubs.
 
 Jak ověřit aplikaci pomocí Azure AD pro přístup k prostředkům Centra událostí:https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
@@ -631,7 +631,7 @@ Jak vytvořit výstrahy pro události protokolu aktivit Azure:https://docs.micro
 
 **Pokyny:** Pomocí Azure Resource Graph můžete dotazovat a zjišťovat všechny prostředky (včetně oborů názvů Centra událostí Azure) v rámci vašeho předplatného. Ujistěte se, že máte příslušná (číst) oprávnění ve vašem tenantovi a jsou schopni vytvořit výčet všech předplatných Azure, stejně jako prostředky v rámci vašich předplatných.
 
-Jak vytvářet dotazy pomocí Azure Graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Jak zobrazit předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 04/12/2020
-ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 25fdb0aefacbdd9c2630a69981a67821ac155786
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260853"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758808"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Konfigurace klíče spravované ho zákazníkem Azure Monitor 
 
@@ -281,7 +281,7 @@ Aktualizujte prostředek *clusteru* KeyVaultProperties podrobnostmi o identifik�
 
 **Aktualizace**
 
-Tento požadavek správce prostředků je asynchronní operace.
+Tento požadavek Správce prostředků je asynchronní operace při aktualizaci podrobnosti identifikátor klíče, zatímco je synchronní při aktualizaci capacity value.
 
 > [!Warning]
 > V aktualizaci prostředků *clusteru* je nutné zadat celé tělo, které zahrnuje *identitu*, *sku*, *KeyVaultProperties* a *umístění*. Chybějící podrobnosti *KeyVaultProperties* odeberou identifikátor klíče z prostředku *clusteru* a způsobí [odvolání klíče](#cmk-kek-revocation).
@@ -314,7 +314,7 @@ Content-type: application/json
 **Reakce**
 
 200 OK a záhlaví.
-Trvá šíření identifikátor klíče několik minut k dokončení. Stav zřizování můžete zkontrolovat dvěma způsoby:
+Trvá šíření identifikátor klíče několik minut k dokončení. Stav aktualizace můžete zkontrolovat dvěma způsoby:
 1. Zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
 2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na vlastnosti *KeyVaultProperties.* Vaše nedávno aktualizované údaje o identifikátoru klíče by se měly vrátit v odpovědi.
 
@@ -436,13 +436,13 @@ Všechna data jsou přístupná po operaci otočení klíče, včetně dat poži
 
 - Maximální počet prostředků *clusteru* na jedno předplatné je omezen na 2
 
-- Přidružení prostředků *clusteru* do pracovního prostoru by mělo být přeneseno pouze po ověření, že zřizování clusteru ADX bylo splněno. Data odeslaná před tímto zřizováním budou zrušena a nebudou obnovitelná.
+- Přidružení prostředků *clusteru* do pracovního prostoru by mělo být přeneseno pouze po ověření, že zřizování clusteru ADX bylo dokončeno. Data odeslaná do vašeho pracovního prostoru před dokončením zřizování budou zrušena a nebude obnovitelná.
 
 - Cmk šifrování platí pro nově pozůstalá data po konfiguraci CMK. Data, která byla ingestována před konfigurací CMK, zůstávají zašifrována pomocí klíče společnosti Microsoft. Můžete dotazovat data pomohou před a po konfiguraci CMK bez problémů.
 
-- Jakmile je pracovní prostor přidružen k prostředku *clusteru,* nelze jej odkupit od prostředku *clusteru,* protože data jsou šifrovaná pomocí vašeho klíče a nejsou přístupná bez vašeho KEK v trezoru klíčů Azure.
+- Při rozhodování o tom, že cmk není pro konkrétní pracovní prostor vyžadován, můžete zrušit přidružení pracovního prostoru k prostředku *clusteru.* Nová ingestovaná data po operaci zrušení přidružení jsou uložena ve sdíleném úložišti Log Analytics, jako tomu bylo před přidružením k prostředku *clusteru.* Můžete dotazovat data přijatá před a po zrušení přidružení bez problémů, pokud je prostředek *clusteru* zřízen a nakonfigurován s platným klíčem trezoru klíčů.
 
-- Trezor klíčů Azure musí být nakonfigurován jako obnovitelný. Tyto vlastnosti nejsou ve výchozím nastavení povoleny a měly by být nakonfigurovány pomocí rozhraní příkazu příkazu příkazu cli a prostředí PowerShell:
+- Trezor klíčů Azure musí být nakonfigurován jako obnovitelný. Tyto vlastnosti nejsou ve výchozím nastavení povoleny a měly by být nakonfigurovány pomocí rozhraní příkazu příkazu příkazu příkazu příkazu příkazového příkazu nebo prostředí PowerShell:
 
   - [Měkké odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) musí být zapnuto.
   - [Ochrana proti vymazání](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) by měla být zapnuta, aby se chránila před vymazáním síly tajného trezoru / trezoru i po měkkém odstranění
@@ -470,6 +470,8 @@ Všechna data jsou přístupná po operaci otočení klíče, včetně dat poži
 
 - Pokud se pokusíte odstranit prostředek *clusteru,* který je přidružen k pracovnímu prostoru, operace odstranění se nezdaří.
 
+- Pokud se při vytváření prostředku *clusteru* zobrazí chyba konfliktu – je možné, že jste odstranili prostředek *clusteru* za posledních 14 dní a je v období obnovitelného odstranění. Název *prostředku clusteru* zůstane rezervován během období slabého odstranění a nelze vytvořit nový cluster s tímto názvem. Název je uvolněn po období obnovitelného odstranění, kdy je prostředek *clusteru* trvale odstraněn.
+
 - Získejte všechny prostředky *clusteru* pro skupinu prostředků:
 
   ```rst
@@ -488,6 +490,11 @@ Všechna data jsou přístupná po operaci otočení klíče, včetně dat poži
           "tenantId": "tenant-id",
           "principalId": "principal-Id"
         },
+        "sku": {
+          "name": "capacityReservation",
+          "capacity": 1000,
+          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+          },
         "properties": {
            "KeyVaultProperties": {
               KeyVaultUri: "https://key-vault-name.vault.azure.net",
@@ -517,8 +524,10 @@ Všechna data jsou přístupná po operaci otočení klíče, včetně dat poži
   **Reakce**
     
   Stejná odpověď jako pro '*prostředky clusteru* pro skupinu prostředků', ale v oboru předplatného.
-    
-- Odstranit prostředek *clusteru* – operace obnovitelného odstranění se provádí, aby bylo možné obnovit prostředek clusteru, data a přidružené pracovní prostory do 14 dnů, ať už bylo odstranění náhodné nebo úmyslné. Název *prostředku clusteru* zůstane rezervován během období slabého odstranění a nelze vytvořit nový cluster s tímto názvem. Po období obnovitelného odstranění jsou prostředky *clusteru* a data neobnovitelná. Přidružené pracovní prostory jsou de-associated z prostředku *clusteru* a nová data se ingestuje do sdíleného úložiště a šifrované s klíčem Microsoft.
+
+- Aktualizace *rezervace kapacity* v prostředku *clusteru* – když se změní svazek dat do přidružených pracovních prostorů a chcete aktualizovat úroveň rezervace kapacity pro účely fakturace, postupujte podle [prostředku *aktualizačního clusteru* ](#update-cluster-resource-with-key-identifier-details) a zadejte novou hodnotu kapacity. Úroveň rezervace kapacity se může pohybovat v rozmezí od 1 000 do 2 000 GB za den a v krocích po 100. Chcete-li dosáhnout úrovně vyšší než 2 000 GB za den, obraťte se na kontakt společnosti Microsoft a povolte jej.
+
+- Odstranit prostředek *clusteru* – operace obnovitelného odstranění se provádí, aby bylo možné obnovit prostředek *clusteru* včetně jeho dat do 14 dnů, bez ohledu na to, zda bylo odstranění náhodné nebo úmyslné. Název *prostředku clusteru* zůstane rezervován během období slabého odstranění a nelze vytvořit nový cluster s tímto názvem. Po období slabého odstranění je uvolněn název prostředku *clusteru,* prostředek *clusteru* a data jsou trvale odstraněny a nelze je obnovit. Všechny přidružené pracovní prostor získá de-associated z prostředku *clusteru* na operaci odstranění. Nová ingovaná data jsou uložena ve sdíleném úložišti Log Analytics a zašifrována pomocí klíče Microsoft. Operace depřidružené pracovní prostory je asynchronní.
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -529,8 +538,7 @@ Všechna data jsou přístupná po operaci otočení klíče, včetně dat poži
 
   200 OK
 
-- Obnovte prostředek *clusteru* a data – během období obnovitelného odstranění vytvořte prostředek *clusteru* se stejným názvem a ve stejném předplatném, skupině prostředků a oblasti. Chcete-li obnovit prostředek *clusteru,* postupujte podle kroku Vytvořit prostředek ** *clusteru.* **
-
+- Obnovení prostředku *clusteru* a dat – prostředek *clusteru,* který byl odstraněn v posledních 14 dnech, je ve stavu obnovitelného odstranění a lze jej obnovit. To je prováděno ručně skupinou produktů v současné době. Pro žádosti o obnovení použijte svůj kanál Společnosti Microsoft.
 
 ## <a name="appendix"></a>Příloha
 

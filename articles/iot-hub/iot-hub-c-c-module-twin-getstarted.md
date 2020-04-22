@@ -8,19 +8,22 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 095f6c6ab8395c4ab314fbe948cbc1fbd32cd510
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 3cd4277603b96dd1aa07682dd01a6d0e9c61bd82
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76719139"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733458"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Začínáme s identitou modulu IoT Hub a dvojčetem modulu (C)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Identity modulů a dvojčata modulů](iot-hub-devguide-module-twins.md) se podobají identitě zařízení a dvojčeti zařízení služby Azure IoT Hub, ale poskytují větší úroveň členitosti. Zatímco identita zařízení a dvojče zařízení služby Azure IoT Hub umožňují back-endové aplikaci konfigurovat zařízení a poskytují vhled do stavu zařízení, identita modulu a dvojče modulu poskytují tyto možnosti pro jednotlivé součásti zařízení. Na způsobilých zařízeních s několika součástmi, jako jsou zařízení s operačním systémem nebo zařízení s firmwarem, to umožňuje izolovanou konfiguraci a vhled do stavu jednotlivých součástí.
+> [Identity modulů a dvojčata modulů](iot-hub-devguide-module-twins.md) se podobají identitě zařízení a dvojčeti zařízení služby Azure IoT Hub, ale poskytují větší úroveň členitosti. Zatímco identita zařízení Azure IoT Hub a dvojče zařízení umožňují back-endové aplikaci konfigurovat zařízení a poskytuje přehled o podmínkách zařízení, identita modulu a dvojče modulu poskytují tyto funkce pro jednotlivé součásti zařízení. Na způsobilých zařízeních s několika součástmi, jako jsou zařízení s operačním systémem nebo zařízení s firmwarem, to umožňuje izolovanou konfiguraci a vhled do stavu jednotlivých součástí.
 
 Na konci tohoto kurzu máte dvě aplikace C:
 

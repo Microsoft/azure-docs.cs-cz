@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5724a9e4308f05a82df84ae6a7d5602747f5a140
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500294"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757374"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek obsahuje sadu provozních doporučených postupů pro ochranu dat, aplikací a dalších prostředků v Azure.
@@ -108,7 +108,7 @@ Zde jsou některé osvědčené postupy pro prevenci, detekci a reakci na hrozby
 **Podrobnosti**: Prozkoumejte funkce a možnosti [Azure Sentinelu](/azure/sentinel/overview) a porovnejte je s možnostmi toho, co aktuálně používáte místně. Zvažte přijetí Azure Sentinelu, pokud splňuje požadavky SIEM vaší organizace.
 
 **Osvědčený postup**: Najděte nejzávažnější chyby zabezpečení, abyste mohli upřednostnit vyšetřování.   
-**Podrobnosti**: Zkontrolujte [zabezpečené skóre Azure](../../security-center/security-center-secure-score.md) a podívejte se na doporučení vyplývající z zásad a iniciativ Azure integrovaných v Azure Security Center. Tato doporučení pomáhají řešit hlavní rizika, jako jsou aktualizace zabezpečení, ochrana koncových bodů, šifrování, konfigurace zabezpečení, chybějící WAF, virtuální počítače připojené k internetu a mnoho dalších.
+**Podrobnosti**: Zkontrolujte [zabezpečené skóre Azure](../../security-center/secure-score-security-controls.md) a podívejte se na doporučení vyplývající z zásad a iniciativ Azure integrovaných v Azure Security Center. Tato doporučení pomáhají řešit hlavní rizika, jako jsou aktualizace zabezpečení, ochrana koncových bodů, šifrování, konfigurace zabezpečení, chybějící WAF, virtuální počítače připojené k internetu a mnoho dalších.
 
 Zabezpečené skóre, které je založeno na ovládacích prvcích Centra pro zabezpečení Internetu (CIS), umožňuje porovnat zabezpečení Azure vaší organizace s externími zdroji. Externí ověření pomáhá ověřit a obohatit strategii zabezpečení vašeho týmu.
 
@@ -116,7 +116,7 @@ Zabezpečené skóre, které je založeno na ovládacích prvcích Centra pro za
 **Podrobnosti**: Postupujte podle [bezpečnostních doporučení](../../security-center/security-center-recommendations.md) v centru zabezpečení počínaje, s nejvyšší prioritou položek.
 
 **Osvědčený postup:** Integrace výstrah Centra zabezpečení do řešení pro správu informací o zabezpečení a událostí (SIEM).   
-**Podrobnosti**: Většina organizací se siem použít jako centrální clearinghouse pro výstrahy zabezpečení, které vyžadují odpověď analytika. Zpracované události vytvořené Security Center jsou publikovány do protokolu aktivit Azure, jeden z protokolů dostupných prostřednictvím Azure Monitor. Azure Monitor nabízí konsolidovaný kanál pro směrování libovolného data monitorování do nástroje SIEM. Pokyny naleznete [v tématu Integrace řešení zabezpečení v Centru zabezpečení.](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) Pokud používáte Azure Sentinel, přečtěte [si informace o připojení Centra zabezpečení Azure](../../sentinel/connect-azure-security-center.md).
+**Podrobnosti**: Většina organizací se siem použít jako centrální clearinghouse pro výstrahy zabezpečení, které vyžadují odpověď analytika. Zpracované události vytvořené Security Center jsou publikovány do protokolu aktivit Azure, jeden z protokolů dostupných prostřednictvím Azure Monitor. Azure Monitor nabízí konsolidovaný kanál pro směrování libovolného data monitorování do nástroje SIEM. Pokyny naleznete [v tématu Výstrahy zabezpečení exportu a doporučení.](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs) Pokud používáte Azure Sentinel, přečtěte [si informace o připojení Centra zabezpečení Azure](../../sentinel/connect-azure-security-center.md).
 
 **Osvědčený postup:** Integrace protokolů Azure s siem.   
 **Detail**: Pomocí [Azure Monitoru shromažďujte a exportujte data](/azure/azure-monitor/overview#integrate-and-export-data). Tento postup je rozhodující pro povolení vyšetřování incidentů zabezpečení a uchovávání protokolu online je omezené. Pokud používáte Azure Sentinel, přečtěte si informace [o připojení zdrojů dat](../../sentinel/connect-data-sources.md).

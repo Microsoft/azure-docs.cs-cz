@@ -10,15 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: d52366684d772f91b53a1ab385b51ae4f11f0a5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158332"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758245"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Připojení zařízení brány Rigado Cascade 500 k aplikaci Azure IoT Central
 
+*Tento článek se vztahuje na tvůrce řešení a vývojáře zařízení.*
 
 Tento článek popisuje, jak můžete jako tvůrce řešení připojit zařízení brány Rigado Cascade 500 k aplikaci Microsoft Azure IoT Central. 
 
@@ -70,4 +71,7 @@ Nyní jste připraveni používat zařízení C500 ve vaší aplikaci IoT Centra
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak připojit Rigado Cascade 500 k vaší aplikaci Azure IoT Central, je dalším doporučeným krokem naučit se, jak [vytvořit analytickou aplikaci v obchodě](../retail/tutorial-in-store-analytics-create-app-pnp.md) pro vytvoření komplexního řešení. 
+Pokud jste vývojář zařízení, některé navrhované další kroky jsou:
+
+- Přečtěte si o [připojení zařízení v Azure IoT Central](./concepts-get-connected.md)
+- Zjistěte, jak [monitorovat připojení zařízení pomocí rozhraní příkazového příkazu Azure](./howto-monitor-devices-azure-cli.md)
