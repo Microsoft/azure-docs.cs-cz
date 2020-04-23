@@ -13,12 +13,12 @@ ms.locfileid: "67133775"
 ---
 > [!IMPORTANT]
 >
-> Pomocí této funkce Azure z `AzureRM` PowerShellu vyžaduje nainstalovaný modul. Jedná se o starší modul, který je k dispozici pouze pro prostředí Windows PowerShell 5.1, který již nepřijímá nové funkce.
-> `Az` Moduly `AzureRM` a __nejsou__ kompatibilní při instalaci pro stejné verze prostředí PowerShell.
+> Použití této funkce Azure z PowerShellu vyžaduje `AzureRM` , aby byl nainstalovaný modul. Toto je starší modul, který je dostupný jenom pro Windows PowerShell 5,1, který už nepřijímá nové funkce.
+> Moduly `Az` a `AzureRM` __nejsou kompatibilní,__ Pokud jsou nainstalované pro stejné verze prostředí PowerShell.
 > Pokud potřebujete obě verze:
 >
-> 1. [Odinstalujte modul Az](/powershell/azure/uninstall-az-ps) z relace prostředí PowerShell 5.1.
-> 2. [Nainstalujte modul AzureRM](/powershell/azure/azurerm/install-azurerm-ps) z relace PowerShellu 5.1.
-> 3. [Stáhněte a nainstalujte PowerShell Core 6.x nebo novější .](/powershell/scripting/install/installing-powershell-core-on-windows)
-> 4. [Nainstalujte modul Az](/powershell/azure/install-az-ps) do relace core prostředí PowerShell.
+> 1. [Odinstalujte modul AZ Module](/powershell/azure/uninstall-az-ps) z relace powershellu 5,1.
+> 2. [Nainstalujte modul AzureRM](/powershell/azure/azurerm/install-azurerm-ps) z relace powershellu 5,1.
+> 3. [Stáhněte a nainstalujte PowerShell Core 6. x nebo novější](/powershell/scripting/install/installing-powershell-core-on-windows).
+> 4. [Nainstalujte modul AZ Module](/powershell/azure/install-az-ps) do relace PowerShellu Core.
 

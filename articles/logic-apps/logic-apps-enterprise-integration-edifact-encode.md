@@ -1,96 +1,100 @@
 ---
 title: Kódování zpráv EDIFACT
-description: Ověření EDI a generování XML pomocí kodéru zpráv EDIFACT pro aplikace Azure Logic Apps s podnikovou integrací Pack
+description: Ověření EDI a generování XML pomocí kodéru zpráv EDIFACT pro Azure Logic Apps s Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 257cbd0b1a68ddd2b16235e6f8dec5d5b0eb10e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74790656"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106521"
 ---
-# <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Kódování zpráv EDIFACT pro aplikace Azure Logic Apps pomocí sady Enterprise Integration Pack
+# <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Kódovat zprávy EDIFACT pro Azure Logic Apps s Enterprise Integration Pack
 
-Pomocí konektoru zpráv Encode EDIFACT můžete ověřit vlastnosti EDI a specifické pro partnera, vygenerovat dokument XML pro každou sadu transakcí a požádat o technické potvrzení, funkční potvrzení nebo obojí.
-Chcete-li použít tento konektor, musíte přidat konektor do existující aktivační události v aplikaci logiky.
+Pomocí konektoru zpráv EDIFACT pro kódování můžete ověřit vlastnosti EDI a partner, generovat dokument XML pro každou sadu transakcí a požádat o technickou potvrzení, funkční potvrzení nebo obojí.
+Pokud chcete použít tento konektor, musíte přidat konektor k existující triggeru ve vaší aplikaci logiky.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Zde jsou položky, které potřebujete:
+Tady jsou položky, které potřebujete:
 
-* Účet Azure; můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free)
-* [Účet integrace,](logic-apps-enterprise-integration-create-integration-account.md) který už je definovaný a přidružený k vašemu předplatnému Azure. Chcete-li použít konektor zprávy Encode EDIFACT, musíte mít účet integrace. 
-* Alespoň dva [partneři,](logic-apps-enterprise-integration-partners.md) kteří jsou již definováni ve vašem integračním účtu
-* [Dohoda EDIFACT,](logic-apps-enterprise-integration-edifact.md) která je již definována ve vašem integračním účtu
+* Účet Azure; Můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free) .
+* [Účet pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , který je už definovaný a přidružený k vašemu předplatnému Azure. K používání konektoru zpráv EDIFACT pro kódování musíte mít účet pro integraci. 
+* Alespoň dva [partneři](logic-apps-enterprise-integration-partners.md) , kteří jsou již definováni v účtu integrace
+* [Smlouva EDIFACT](logic-apps-enterprise-integration-edifact.md) , která je už definovaná v účtu integrace
 
 ## <a name="encode-edifact-messages"></a>Kódování zpráv EDIFACT
 
+> [!IMPORTANT]
+> Konektor EDIFACT podporuje pouze znaky UTF-8.
+> Pokud výstup obsahuje neočekávané znaky, ověřte, zda zprávy EDIFACT používají znakovou sadu UTF-8.
+
 1. [Vytvořte aplikaci logiky](quickstart-create-first-logic-app-workflow.md).
 
-2. Konektor zprávy Encode EDIFACT nemá aktivační události, takže je nutné přidat aktivační událost pro spuštění aplikace logiky, jako je aktivační událost požadavku. V Návrháři aplikace logiky přidejte aktivační událost a pak přidejte akci do aplikace logiky.
+2. Konektor zpráv EDIFACT ve službě encode neobsahuje aktivační události, takže musíte přidat Trigger pro spuštění aplikace logiky, jako je Trigger žádosti. V návrháři aplikace logiky přidejte Trigger a pak přidejte akci do aplikace logiky.
 
-3.  Do vyhledávacího pole zadejte jako filtr "EDIFACT". Vyberte buď **Ecode EDIFACT Message podle názvu smlouvy** nebo **Encode do EDIFACT zprávy podle identit**.
+3.  Do vyhledávacího pole zadejte "EDIFACT" jako filtr. Vyberte buď možnost **KÓDOVAT EDIFACT zpráva podle názvu smlouvy** , nebo **zakódovat pro EDIFACT zprávy podle identity**.
    
-    ![hledat EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
+    ![Hledat EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
-3. Pokud jste dříve nevytvořili žádná připojení ke svému účtu integrace, budete vyzváni k vytvoření tohoto připojení nyní. Pojmenujte připojení a vyberte účet integrace, který chcete připojit.
+3. Pokud jste dříve nevytvořili žádná připojení k účtu pro integraci, budete vyzváni k vytvoření tohoto připojení nyní. Zadejte název připojení a vyberte účet pro integraci, který chcete připojit.
 
-    ![vytvoření připojení integračního účtu](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage1.png)  
+    ![vytvořit připojení k účtu Integration](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage1.png)  
 
     Jsou vyžadovány vlastnosti s hvězdičkou.
 
     | Vlastnost | Podrobnosti |
     | --- | --- |
     | Název připojení * |Zadejte libovolný název připojení. |
-    | Integrační účet * |Zadejte název účtu integrace. Ujistěte se, že váš účet integrace a aplikace logiky jsou ve stejném umístění Azure. |
+    | Účet pro integraci * |Zadejte název účtu pro integraci. Ujistěte se, že váš účet pro integraci a aplikace logiky jsou ve stejném umístění Azure. |
 
-5.  Po dokončení by měly vypadat podobně jako v tomto příkladu podrobnosti o připojení. Chcete-li dokončit vytváření připojení, zvolte **Vytvořit**.
+5.  Až budete hotovi, vaše podrobnosti o připojení by měly vypadat podobně jako v tomto příkladu. Chcete-li dokončit vytváření připojení, klikněte na tlačítko **vytvořit**.
 
-    ![podrobnosti o připojení účtu integrace](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
+    ![podrobnosti připojení účtu pro integraci](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
 
-    Vaše připojení je nyní vytvořeno.
+    Připojení je nyní vytvořeno.
 
-    ![vytvořeno připojení účtu integrace](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage4.png)
+    ![vytvořilo se připojení k účtu pro integraci.](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage4.png)
 
-#### <a name="encode-edifact-message-by-agreement-name"></a>Zakódovat zprávu EDIFACT podle názvu smlouvy
+#### <a name="encode-edifact-message-by-agreement-name"></a>Kódovat zprávu EDIFACT podle názvu smlouvy
 
-Pokud jste se rozhodli kódovat zprávy EDIFACT podle názvu smlouvy, otevřete seznam **Název smlouvy EDIFACT,** zadejte nebo vyberte název smlouvy EDIFACT. Zadejte zprávu XML, kterou chcete zakódovat.
+Pokud se rozhodnete ke kódování zpráv EDIFACT podle názvu smlouvy, otevřete seznam **EDIFACT smlouvy** , zadejte nebo vyberte název smlouvy EDIFACT. Zadejte zprávu XML, která se má zakódovat.
 
-![Zadejte název smlouvy EDIFACT a zprávu XML pro kódování.](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
+![Zadejte název smlouvy EDIFACT a zprávu XML ke kódování.](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 
-#### <a name="encode-edifact-message-by-identities"></a>Kódování zprávy EDIFACT podle identit
+#### <a name="encode-edifact-message-by-identities"></a>Kódovat zprávy EDIFACT podle identit
 
-Pokud se rozhodnete kódovat zprávy EDIFACT podle identit, zadejte identifikátor odesílatele, kvalifikátor odesílatele, identifikátor příjemce a kvalifikátor příjemce, jak je nakonfigurován o smlouvě EDIFACT. Vyberte zprávu XML, kterou chcete zakódovat.
+Pokud se rozhodnete zakódovat zprávy EDIFACT podle identity, zadejte identifikátor odesilatele, kvalifikátor odesílatele, identifikátor přijímače a kvalifikátor přijímače podle konfigurace ve vaší smlouvě EDIFACT. Vyberte zprávu XML, která se má zakódovat.
 
-![Poskytněte identity odesílateli a příjemci, vyberte zprávu XML, kterou chcete kódovat](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
+![Zadejte identity pro odesílatele a přijímače, vyberte zprávu XML ke kódování.](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
-## <a name="edifact-encode-details"></a>EDIFACT Kódovat detaily
+## <a name="edifact-encode-details"></a>EDIFACT kódování podrobností
 
-Konektor Encode EDIFACT provádí tyto úkoly: 
+Konektor pro kódování EDIFACT provádí tyto úlohy: 
 
-* Vyřešte smlouvu tak, že se kvalifikátor odesílatele & identifikátor a kvalifikátor příjemce a identifikátor
-* Serializuje výměnu EDI a převádí zprávy kódované XML do sad transakcí EDI v výměně.
-* Použije segmenty záhlaví a segmenty přívěsu sady transakcí.
-* Generuje kontrolní číslo výměny, číslo řízení skupiny a řídicí číslo sady transakcí pro každou odchozí výměnu.
-* Nahrazuje oddělovače v datech datové části.
-* Ověří EDI a vlastnosti specifické pro partnera.
-  * Ověření schématu datových prvků sady transakcí proti schématu zprávy.
-  * Ověření EDI provedené u datových prvků sady transakcí.
-  * Rozšířené ověření provedené u datových prvků sady transakcí
+* Vyřešte smlouvu tak, že porovnáte kvalifikátor odesílatele & identifikátor a kvalifikátor a identifikátor příjemce.
+* Serializace výměny EDI a převádí zprávy kódované XML na sady transakcí EDI ve výměně.
+* Použije záhlaví sady transakcí a segmenty přípojných vozidel.
+* Vygeneruje řídicí číslo výměny, řídicí číslo skupiny a řídicí číslo sady transakcí pro každý odchozí výměnu.
+* Nahradí oddělovače v datech datové části.
+* Ověří vlastnosti EDI a pro konkrétní partnery.
+  * Ověřování schématu datových prvků pro transakci sady pro schéma zprávy
+  * Ověřování EDI bylo provedeno v datových prvcích sady transakcí.
+  * Rozšířené ověřování provedeno v datových prvcích sady transakcí
 * Generuje dokument XML pro každou sadu transakcí.
-* Požaduje technické a/nebo funkční potvrzení (pokud je nakonfigurováno).
-  * Jako technické potvrzení zpráva CONTRL označuje přijetí výměny.
-  * Jako funkční potvrzení zpráva CONTRL označuje přijetí nebo odmítnutí přijaté výměny, skupiny nebo zprávy se seznamem chyb nebo nepodporovaných funkcí
+* Požaduje technické nebo funkční potvrzení (Pokud je nakonfigurované).
+  * V rámci technického potvrzení zpráva CONTRL indikuje příjem výměny.
+  * V rámci funkčního potvrzení zpráva CONTRL označuje přijetí nebo zamítnutí přijatého přenosu, skupiny nebo zprávy se seznamem chyb nebo nepodporovaných funkcí.
 
 ## <a name="view-swagger-file"></a>Zobrazit soubor Swagger
-Podrobnosti s naparováním pro konektor EDIFACT naleznete v tématu [EDIFACT](/connectors/edifact/).
+Podrobnosti o Swagger pro konektor EDIFACT najdete v tématu [EDIFACT](/connectors/edifact/).
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o balíčku Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Další informace o balíčku Enterprise Integration Pack") 
+[Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informace o Enterprise Integration Pack") 
 

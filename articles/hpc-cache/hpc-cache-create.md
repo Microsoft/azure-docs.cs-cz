@@ -1,100 +1,100 @@
 ---
-title: Vytvoření mezipaměti Azure HPC
-description: Jak vytvořit instanci mezipaměti Azure HPC
+title: Vytvoření mezipaměti prostředí Azure HPC
+description: Vytvoření instance mezipaměti prostředí Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: befbe2435a518b82cf5a3ab12e6129aa3ce5c22b
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: efa9037b345cdfc5f165e9c5e0c1831ea97b52ed
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537966"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106487"
 ---
-# <a name="create-an-azure-hpc-cache"></a>Vytvoření mezipaměti Azure HPC
+# <a name="create-an-azure-hpc-cache"></a>Vytvoření mezipaměti prostředí Azure HPC
 
-K vytvoření mezipaměti použijte portál Azure.
+K vytvoření mezipaměti použijte Azure Portal.
 
-![snímek obrazovky s přehledem mezipaměti na Webu Azure Portal s tlačítkem Vytvořit dole](media/hpc-cache-home-page.png)
+![snímek obrazovky s přehledem mezipaměti v Azure Portal s tlačítkem vytvořit v dolní části](media/hpc-cache-home-page.png)
 
-## <a name="define-basic-details"></a>Definování základních podrobností
+## <a name="define-basic-details"></a>Definovat základní podrobnosti
 
-![snímek obrazovky se stránkou s podrobnostmi o projektu na webu Azure Portal](media/hpc-cache-create-basics.png)
+![snímek stránky s podrobnostmi projektu v Azure Portal](media/hpc-cache-create-basics.png)
 
-V **části Podrobnosti projektu**vyberte předplatný a skupinu prostředků, která bude hostovat mezipaměť.
+V části **Project Details (podrobnosti projektu**) vyberte předplatné a skupinu prostředků, které budou hostovat mezipaměť. Ujistěte se, že je odběr v seznamu [přístupu](hpc-cache-prereqs.md#azure-subscription) .
 
-V **části Podrobnosti o službě**nastavte název mezipaměti a tyto další atributy:
+V části **Podrobnosti o službě**nastavte název mezipaměti a tyto ostatní atributy:
 
 * Umístění – vyberte jednu z [podporovaných oblastí](hpc-cache-overview.md#region-availability).
-* Virtuální síť – můžete vybrat existující nebo vytvořit novou virtuální síť.
-* Podsíť – zvolte nebo vytvořte podsíť s alespoň 64 IP adresami (/24), která se použije jenom pro tuto instanci mezipaměti Azure HPC.
+* Virtuální síť – můžete vybrat existující virtuální síť nebo vytvořit novou.
+* Podsíť – vyberte nebo vytvořte podsíť s aspoň 64 IP adresami (/24), která se použije jenom pro tuto instanci mezipaměti Azure HPC.
 
-## <a name="set-cache-capacity"></a>Nastavení kapacity mezipaměti
+## <a name="set-cache-capacity"></a>Nastavit kapacitu mezipaměti
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
 
-Na stránce **Mezipaměť** je nutné nastavit kapacitu mezipaměti. Zde nastavené hodnoty určují, kolik dat může vaše mezipaměť uchovat a jak rychle může obsluhovat požadavky klientů.
+Na stránce **mezipaměť** musíte nastavit kapacitu mezipaměti. Nastavené hodnoty určují, kolik dat vaše mezipaměť může uchovávat a jak rychle může obsluhovat požadavky klientů.
 
-Kapacita také ovlivňuje náklady mezipaměti.
+Kapacita má vliv také na náklady na mezipaměť.
 
-Zvolte kapacitu nastavením těchto dvou hodnot:
+Určete kapacitu nastavením těchto dvou hodnot:
 
-* Maximální rychlost přenosu dat pro mezipaměť (propustnost) v GB/s
-* Velikost úložiště přiděleného pro data uložená v mezipaměti v TB
+* Maximální rychlost přenosu dat pro mezipaměť (propustnost), v GB/s
+* Velikost úložiště přidělená pro data uložená v mezipaměti v TB
 
-Zvolte jednu z dostupných hodnot propustnosti a velikosti úložiště mezipaměti.
+Vyberte jednu z dostupných hodnot propustnosti a velikosti úložiště mezipaměti.
 
-Mějte na paměti, že skutečná rychlost přenosu dat závisí na zatížení, rychlosti sítě a typu cílů úložiště. Hodnoty, které zvolíte, nastaví maximální propustnost pro celý systém mezipaměti, ale některé z těchto hodnot se používají pro režijní úlohy. Pokud například klient požaduje soubor, který ještě není uložený v mezipaměti, nebo pokud je soubor označen jako zastaralý, vaše mezipaměť používá část své propustnosti k jeho načtení z back-endového úložiště.
+Pamatujte, že skutečná rychlost přenosu dat závisí na zatížení, rychlosti sítě a typu cílů úložiště. Hodnoty, které zvolíte, nastaví maximální propustnost pro celý systém mezipaměti, ale některé z nich se použijí pro úlohy s režijními náklady. Pokud třeba klient požaduje soubor, který už není uložený v mezipaměti, nebo pokud je soubor označený jako zastaralý, mezipaměť použije určitou propustnost k načtení z back-endu úložiště.
 
-Azure HPC Cache spravuje, které soubory jsou uloženy do mezipaměti a předinstalovány, aby se maximalizovaly míry přístupů do mezipaměti. Obsah mezipaměti je průběžně vyhodnocován a soubory jsou přesunuty do dlouhodobého úložiště, pokud jsou méně často přístupné. Zvolte velikost úložiště mezipaměti, která může pohodlně pojmout aktivní sadu pracovních souborů s dalším prostorem pro metadata a další režii.
+Azure HPC cache spravuje, které soubory jsou uložené do mezipaměti a předem se načítají, aby se maximalizovala míra přístupů do mezipaměti. Obsah mezipaměti se průběžně vyhodnocuje a soubory se přesunou do dlouhodobého úložiště, když se k nim méně často přistupuje. Vyberte velikost úložiště mezipaměti, která může pohodlně uchovávat aktivní sadu pracovních souborů a další místo pro metadata a další režii.
 
-![snímek obrazovky stránky pro změna velikosti mezipaměti](media/hpc-cache-create-capacity.png)
+![snímek stránky s nastavením velikosti mezipaměti](media/hpc-cache-create-capacity.png)
 
-## <a name="enable-azure-key-vault-encryption-optional"></a>Povolení šifrování Azure Key Vault (volitelné)
+## <a name="enable-azure-key-vault-encryption-optional"></a>Povolit šifrování Azure Key Vault (volitelné)
 
-Pokud se vaše mezipaměť nachází v oblasti, která podporuje šifrovací klíče spravované zákazníkem, zobrazí se stránka **Klíče šifrování disku** mezi kartami **Mezipaměť** a **Značky.** Od doby zveřejnění je tato možnost podporována ve východních USA, středních usa a 2 .
+Pokud je vaše mezipaměť v oblasti, která podporuje šifrovací klíče spravované zákazníkem, zobrazí se stránka **klíče šifrování disku** mezi kartami **mezipaměti** a **značky** . V době publikování je tato možnost podporovaná v Východní USA, Střed USA – jih a Západní USA 2.
 
-Pokud chcete spravovat šifrovací klíče používané s úložištěm mezipaměti, zadejte informace o azure key vaultu na stránce **šifrovací klíče disku.** Trezor klíčů musí být ve stejné oblasti a ve stejném předplatném jako mezipaměť.
+Pokud chcete spravovat šifrovací klíče používané v úložišti mezipaměti, zadejte Azure Key Vault informace na stránce **klíče pro šifrování disku** . Trezor klíčů musí být ve stejné oblasti a ve stejném předplatném jako mezipaměť.
 
-Tuto část můžete přeskočit, pokud nepotřebujete klíče spravované zákazníkem. Azure ve výchozím nastavení šifruje data pomocí klíčů spravovaných microsoftem. Další informace najdete v [šifrování úložiště Azure.](../storage/common/storage-service-encryption.md)
+Pokud nepotřebujete klíče spravované zákazníky, můžete tuto část přeskočit. Azure ve výchozím nastavení šifruje data pomocí klíčů spravovaných Microsoftem. Další informace najdete v tématu [šifrování služby Azure Storage](../storage/common/storage-service-encryption.md) .
 
 > [!NOTE]
 >
-> * Po vytvoření mezipaměti nelze přepínat mezi klíči spravovanými společností Microsoft a klíči spravovanými zákazníky.
-> * Po vytvoření mezipaměti je nutné ji autorizovat pro přístup k trezoru klíčů. Chcete-li zapnout šifrování, klepněte na tlačítko **Povolit šifrování** na stránce **Přehled** mezipaměti. Tento krok udělejte do 90 minut od vytvoření mezipaměti.
-> * Disky mezipaměti jsou vytvořeny po této autorizaci. To znamená, že počáteční doba vytvoření mezipaměti je krátká, ale mezipaměť nebude připravena k použití po dobu deseti minut nebo déle po autorizaci přístupu.
+> * Po vytvoření mezipaměti nemůžete měnit klíče spravované společností Microsoft ani klíče spravované zákazníkem.
+> * Po vytvoření je mezipaměť nutné autorizovat pro přístup k trezoru klíčů. Kliknutím na tlačítko **Povolit šifrování** na stránce **Přehled** mezipaměti zapněte šifrování. Proveďte tento krok během 90 minut od vytvoření mezipaměti.
+> * Po této autorizaci se vytvoří disky mezipaměti. To znamená, že počáteční čas vytvoření mezipaměti je krátký, ale mezipaměť nebude připravena k použití po dobu 10 minut nebo více po autorizaci přístupu.
 
-Úplné vysvětlení procesu šifrování klíče spravovaného zákazníkem načtete [použití šifrovacích klíčů spravovaných zákazníkem pro azure hpc cache](customer-keys.md).
+Úplné vysvětlení procesu šifrování klíčů spravovaných zákazníkem najdete v článku [použití šifrovacích klíčů spravovaných zákazníkem pro mezipaměť HPC Azure](customer-keys.md).
 
-![snímek obrazovky stránky šifrovacích klíčů s vybranými poli "zákazníkem spravovanými" a klíčovými poli úschovny](media/create-encryption.png)
+![snímek stránky šifrovacích klíčů se zvoleným polem spravované zákazníky a poli trezoru klíčů](media/create-encryption.png)
 
-Vyberte **Zákazník se podařilo** zvolit šifrování klíče spravované zákazníkem. Zobrazí se pole specifikace trezoru klíčů. Vyberte trezor klíčů Azure, který chcete použít, a pak vyberte klíč a verzi, která se má použít pro tuto mezipaměť. Klíč musí být 2048bitový klíč RSA. Na této stránce můžete vytvořit novou trezor klíčů, klíč nebo verzi klíče.
+Vyberte **zákazníka spravované** pro výběr šifrování klíče spravovaného zákazníkem. Zobrazí se pole Specifikace trezoru klíčů. Vyberte Azure Key Vault, který chcete použít, a pak vyberte klíč a verzi, které chcete použít pro tuto mezipaměť. Klíč musí být 2048 klíč RSA. Z této stránky můžete vytvořit nový trezor klíčů, klíč nebo verzi klíče.
 
-Po vytvoření mezipaměti je nutné ji autorizovat k použití služby trezoru klíčů. Podrobnosti [načlánekpočte autorizovat šifrování azure trezoru klíčů z mezipaměti.](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)
+Po vytvoření mezipaměti ji musíte autorizovat, aby používala službu trezoru klíčů. Podrobnosti najdete [v tématu autorizace Azure Key Vault šifrování z mezipaměti](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) .
 
-## <a name="add-resource-tags-optional"></a>Přidání značek prostředků (volitelné)
+## <a name="add-resource-tags-optional"></a>Přidat značky prostředků (volitelné)
 
-Stránka **Značky** umožňuje přidat [značky prostředků](https://go.microsoft.com/fwlink/?linkid=873112) do instance mezipaměti Azure HPC.
+Stránka **značky** umožňuje přidat [značky prostředků](https://go.microsoft.com/fwlink/?linkid=873112) do instance mezipaměti prostředí Azure HPC.
 
 ## <a name="finish-creating-the-cache"></a>Dokončení vytváření mezipaměti
 
-Po konfiguraci nové mezipaměti klikněte na kartu **Revize + vytvoření.** Portál ověřuje vaše výběry a umožňuje zkontrolovat vaše volby. Pokud je vše v pořádku, klepněte na tlačítko **Vytvořit**.
+Po konfiguraci nové mezipaměti klikněte na kartu **Revize + vytvořit** . Portál ověří vaše výběry a umožní vám zkontrolovat své volby. Pokud je vše správné, klikněte na **vytvořit**.
 
-Vytvoření mezipaměti trvá přibližně 10 minut. Průběh můžete sledovat na panelu oznámení na portálu Azure.
+Vytvoření mezipaměti trvá přibližně 10 minut. Průběh můžete sledovat na panelu oznámení Azure Portal.
 
-![snímek obrazovky se stránkami vytváření mezipaměti "nasazení probíhá" a "oznámení" na portálu](media/hpc-cache-deploy-status.png)
+![snímek obrazovky se stránkou nasazení v mezipaměti a stránkami oznámení na portálu](media/hpc-cache-deploy-status.png)
 
 Po dokončení vytváření se zobrazí oznámení s odkazem na novou instanci mezipaměti Azure HPC a mezipaměť se zobrazí v seznamu **prostředků** vašeho předplatného.
 
-![snímek obrazovky s instancí Azure HPC Cache na webu Azure Portal](media/hpc-cache-new-overview.png)
+![snímek obrazovky instance mezipaměti HPC Azure v Azure Portal](media/hpc-cache-new-overview.png)
 
 > [!NOTE]
-> Pokud vaše mezipaměť používá šifrovací klíče spravované zákazníkem, může se před dokončením změny stavu nasazení zobrazit v seznamu prostředků. Jakmile je stav mezipaměti **Čekání na klíč,** můžete [jej autorizovat](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) k použití trezoru klíčů.
+> Pokud vaše mezipaměť používá šifrovací klíče spravované zákazníkem, může se mezipaměť zobrazit v seznamu prostředků předtím, než se stav nasazení změní na dokončeno. Jakmile je stav mezipaměti **čekat na klíč** , můžete [ho autorizovat](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) k použití trezoru klíčů.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po zobrazení mezipaměti v seznamu **Zdroje** můžete přejít k dalšímu kroku.
+Po zobrazení mezipaměti v seznamu **prostředky** můžete přejít k dalšímu kroku.
 
-* [Definujte cíle úložiště,](hpc-cache-add-storage.md) které budou mít přístup k vašim zdrojům dat v mezipaměti.
-* Pokud používáte šifrovací klíče spravované zákazníkem, musíte k dokončení nastavení mezipaměti [autorizovat šifrování azure key vaultu](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) ze stránky s přehledem mezipaměti. Před přidáním úložiště je nutné provést tento krok. Přečtěte si pro podrobnosti [článek Použití šifrovacích klíčů spravovaných zákazníkem.](customer-keys.md)
+* [Definujte cíle úložiště](hpc-cache-add-storage.md) , které umožní vaší mezipaměti přístup ke zdrojům dat.
+* Pokud používáte šifrovací klíče spravované zákazníkem, musíte [autorizovat Azure Key Vault šifrování](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) ze stránky přehled mezipaměti a dokončit tak nastavení mezipaměti. Než budete moct přidat úložiště, musíte provést tento krok. Podrobnosti najdete v tématu [použití šifrovacích klíčů spravovaných zákazníkem](customer-keys.md) .

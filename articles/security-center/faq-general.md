@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy k Centru zabezpečení Azure – obecné otázky
-description: Nejčastější obecné otázky týkající se Azure Security Center, produktu, který vám pomůže předcházet hrozbám, zjišťovat je a reagovat na ně.
+title: Nejčastější dotazy týkající se Azure Security Center – obecné otázky
+description: Nejčastější dotazy týkající se Azure Security Center, produktu, který pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,84 +13,84 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 54263a8be900ed381d8450b460e5cf9e6117ac54
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: e2cc04be5a79009f92e275f9de46df60a8e23c8b
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436124"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106572"
 ---
-# <a name="faq---general-questions-about-azure-security-center"></a>Nejčastější dotazy – obecné dotazy týkající se Azure Security Center
+# <a name="faq---general-questions-about-azure-security-center"></a>Nejčastější dotazy – obecné otázky týkající se Azure Security Center
 
 ## <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
-Azure Security Center vám pomůže předcházet, zjišťovat a reagovat na hrozby se zvýšeným přehledem a kontrolou zabezpečení vašich prostředků. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
+Azure Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně tím, že zvyšuje přehled o zabezpečení vašich prostředků a kontrolu nad nimi. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
 
-Security Center používá agenta Log Analytics ke shromažďování a ukládání dat. Podrobné podrobnosti najdete v [tématu Shromažďování dat v Azure Security Center](security-center-enable-data-collection.md).
+Security Center používá agenta Log Analytics ke shromažďování a ukládání dat. Podrobné informace najdete v tématu [shromažďování dat v Azure Security Center](security-center-enable-data-collection.md).
 
 
-## <a name="how-do-i-get-azure-security-center"></a>Jak získám Azure Security Center?
-Azure Security Center je povolené s předplatným Microsoft Azure a přístupné z [portálu Azure](https://azure.microsoft.com/features/azure-portal/). Chcete-li k němu získat přístup, [přihlaste se k portálu](https://portal.azure.com), vyberte **procházet**a přejděte na **Centrum zabezpečení**.
+## <a name="how-do-i-get-azure-security-center"></a>Návody získat Azure Security Center?
+Azure Security Center je povolená u vašeho předplatného Microsoft Azure a ke kterému se dostanete z [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Pokud k němu chcete získat přístup, [Přihlaste se k portálu](https://portal.azure.com), vyberte **Procházet**a přejděte na **Security Center**.
 
 
 ## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Které prostředky Azure monitoruje Azure Security Center?
-Azure Security Center monitoruje následující prostředky Azure:
+Azure Security Center sleduje následující prostředky Azure:
 
-* Virtuální počítače (virtuální počítače) (včetně [cloudových služeb)](../cloud-services/cloud-services-choose-me.md)
+* Virtuální počítače (včetně [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Škálovací sady virtuálních počítačů
 * Virtuální sítě Azure
-* Kontejnery
+* Containers
 * Služba Azure SQL
 * Účet služby Azure Storage
-* Azure Web Apps (v [prostředí služby App Service)](../app-service/environment/intro.md)
-* Partnerská řešení integrovaná s vaším předplatným Azure, jako je brána firewall webových aplikací na virtuálních počítačích a prostředí app service
+* Azure Web Apps (v [App Service Environment](../app-service/environment/intro.md))
+* Partnerská řešení integrovaná s vaším předplatným Azure, například firewall webových aplikací na virtuálních počítačích a na App Service Environment
 
-Kromě toho můžete služby Azure Security Center monitorovat také pomocí Azure Security Center. Počítače [se systémem Windows](./quick-onboard-windows-computer.md) i [linuxové počítače](./quick-onboard-linux-computer.md) jsou podporovány.
+Kromě toho je možné monitorovat také počítače mimo Azure (včetně místních) pomocí Azure Security Center. Podporují se [počítače s Windows](./quick-onboard-windows-computer.md) i počítače se systémem [Linux](./quick-onboard-linux-computer.md) .
 
 
-## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Jak můžu zobrazit aktuální stav zabezpečení mých prostředků Azure?
-Stránka **Přehled Centra zabezpečení** zobrazuje celkový stav zabezpečení vašeho prostředí rozdělené podle výpočetních prostředků, sítí, dat úložiště & a aplikací. Každý typ prostředku má indikátor zobrazující identifikované chyby zabezpečení. Kliknutím na každou dlaždici se zobrazí seznam problémů se zabezpečením zjištěných centrem zabezpečení spolu s inventářem prostředků ve vašem předplatném.
+## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Jak se můžu podívat na aktuální stav zabezpečení prostředků Azure?
+Na stránce **přehled Security Center** se zobrazuje celkové stav zabezpečení vašeho prostředí v členění podle COMPUTE, sítě, & úložiště dat a aplikací. Každý typ prostředku má indikátor ukazující zjištěné chyby zabezpečení. Kliknutím na každou dlaždici se zobrazí seznam problémů se zabezpečením, které identifikoval Security Center, spolu s inventářem prostředků ve vašem předplatném.
 
 
 
 ## <a name="what-is-a-security-policy"></a>Co je zásada zabezpečení?
-Zásady zabezpečení definuje sadu ovládacích prvků, které jsou doporučeny pro prostředky v rámci zadaného předplatného. V Azure Security Center definujete zásady pro vaše předplatná Azure podle požadavků na zabezpečení vaší společnosti a typu aplikací nebo citlivosti dat v každém předplatném.
+Zásady zabezpečení definují sadu ovládacích prvků, které jsou doporučeny pro prostředky v rámci zadaného předplatného. V Azure Security Center definujete zásady pro vaše předplatná Azure podle požadavků na zabezpečení vaší společnosti a typu aplikací nebo citlivosti dat v jednotlivých předplatných.
 
-Zásady zabezpečení povolené v Azure Security Center řídit doporučení zabezpečení a monitorování. Další informace o zásadách zabezpečení najdete [v tématu Monitorování stavu zabezpečení v Centru zabezpečení Azure](security-center-monitoring.md).
-
-
-## <a name="who-can-modify-a-security-policy"></a>Kdo může změnit zásady zabezpečení?
-Chcete-li změnit zásady zabezpečení, musíte být správcem zabezpečení nebo vlastníkem nebo přispěvatelem tohoto předplatného.
-
-Informace o konfiguraci zásad zabezpečení najdete v tématu [Nastavení zásad zabezpečení v Centru zabezpečení Azure](tutorial-security-policy.md).
+Zásady zabezpečení, které jsou povolené v Azure Security Center, doporučení zabezpečení a monitorování. Další informace o zásadách zabezpečení najdete v tématu [monitorování stavu zabezpečení v Azure Security Center](security-center-monitoring.md).
 
 
-## <a name="what-is-a-security-recommendation"></a>Co je bezpečnostní doporučení?
-Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Pokud jsou identifikovány potenciální chyby zabezpečení, jsou vytvořena doporučení. Doporučení vás provedou procesem konfigurace potřebného ovládacího prvku. Můžete například:
+## <a name="who-can-modify-a-security-policy"></a>Kdo může upravit zásady zabezpečení?
+Pokud chcete upravit zásady zabezpečení, musíte být správcem zabezpečení nebo vlastníkem nebo přispěvatelem daného předplatného.
 
-* Zřizování antimalwaru za účelem identifikace a odstranění škodlivého softwaru
-* [Skupiny zabezpečení sítě](../virtual-network/security-overview.md) a pravidla pro řízení provozu na virtuálních počítačích
-* Zřizování brány firewall webových aplikací, které pomáhá bránit se útokům zaměřeným na vaše webové aplikace
+Informace o tom, jak nakonfigurovat zásady zabezpečení, najdete [v tématu Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md).
+
+
+## <a name="what-is-a-security-recommendation"></a>Co je to doporučení zabezpečení?
+Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když se identifikují potenciální slabá místa zabezpečení, vytvoří se doporučení. Doporučení vás provede procesem konfigurace potřebného ovládacího prvku. Můžete například:
+
+* Zřizování ochrany proti malwaru, které vám pomůžou identifikovat a odebrat škodlivý software
+* [Skupiny zabezpečení sítě](../virtual-network/security-overview.md) a pravidla pro řízení provozu do virtuálních počítačů
+* Zřizování firewallu webových aplikací, které vám pomůžou chránit před útoky zaměřenými na vaše webové aplikace
 * Nasazení chybějících aktualizací systému
 * Adresování konfigurací operačního systému, které neodpovídají doporučeným standardním hodnotám
 
-Zobrazí se zde pouze doporučení, která jsou povolena v zásadách zabezpečení.
+Tady se zobrazí jenom doporučení, která jsou povolená v zásadách zabezpečení.
 
 
 
-## <a name="what-triggers-a-security-alert"></a>Co spustí výstrahu zabezpečení?
-Azure Security Center automaticky shromažďuje, analyzuje a pojipuje data protokolu z vašich prostředků Azure, sítě a partnerských řešení, jako je antimalwarový a bránfirewall. Při zjištění ohrožení zabezpečení se vytvoří výstraha zabezpečení. Příklady zahrnují zjišťování následujících situací:
+## <a name="what-triggers-a-security-alert"></a>Co aktivuje výstrahu zabezpečení?
+Azure Security Center automaticky shromažďuje, analyzuje a uchovává data protokolu z vašich prostředků Azure, sítě a partnerských řešení, jako jsou antimalware a brány firewall. Při zjištění ohrožení zabezpečení se vytvoří výstraha zabezpečení. Příklady zahrnují zjišťování následujících situací:
 
 * Ohrožené virtuální počítače, které komunikují se známými IP adresami se zlými úmysly
-* Pokročilý malware zjištěný pomocí zasílání zpráv o chybách systému Windows
+* Byl zjištěn rozšířený malware pomocí zasílání zpráv o chybách systému Windows.
 * Útoky hrubou silou na virtuální počítače
-* Výstrahy zabezpečení z integrovaných partnerských řešení zabezpečení, jako je antimalwar nebo brány firewall webových aplikací
+* Výstrahy zabezpečení z integrovaných řešení zabezpečení partnerů, jako jsou například anti-malware nebo brány firewall webových aplikací
 
 
 ## <a name="why-did-secure-score-values-change"></a>Proč se hodnoty zabezpečeného skóre změnily? <a name="secure-score-faq"></a>
-Od února 2019 security center upravilo skóre několika doporučení, aby lépe odpovídalo jejich závažnosti. V důsledku této úpravy může dojít ke změnám v celkových hodnotách skóre zabezpečení.  Další informace o zabezpečeném skóre naleznete v [tématu Výpočet zabezpečeného skóre](security-center-secure-score.md).
+Od února 2019 Security Center upraveno skóre několika doporučení, aby lépe vyhovoval jejich závažnosti. Výsledkem této úpravy můžou být změny v celkových hodnotách bezpečného skóre.  Další informace o zabezpečeném skóre najdete v tématu [Secure skore Calculation](security-center-secure-score.md).
 
 
-## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Jaký je rozdíl mezi zjištěnými a upozornit na hrozby Microsoft Security Response Center versus Azure Security Center?
-Centrum Microsoft Security Response Center (MSRC) provádí vybrané monitorování zabezpečení sítě a infrastruktury Azure a přijímá zprávy o hrozbách a stížnosti na zneužití od třetích stran. Když MSRC uvědomí, že k zákaznickým datům má přístup nezákonná nebo neautorizovaná strana nebo že používání Azure zákazníkem nedodržuje podmínky přijatelného použití, upozorní to správce bezpečnostních incidentů zákazníka. K oznámení obvykle dochází odesláním e-mailu bezpečnostním kontaktům určeným v Centru zabezpečení Azure nebo vlastníkovi předplatného Azure, pokud není zadán kontakt zabezpečení.
+## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Jaký je rozdíl mezi zjištěnými hrozbami a výstrahou z centra zabezpečení Microsoft Security Center oproti Azure Security Center?
+Microsoft Security Response Center (MSRC) provádí výběr sledování zabezpečení sítě a infrastruktury Azure a přijímá analýzy hrozeb a stížnosti na zneužití od třetích stran. Když bude MSRC vědět, že k zákaznickým datům došlo v nezákonné nebo neoprávněné osobě nebo že její používání Azure nedodržuje podmínky přijatelného použití, správce incidentů zabezpečení ho upozorní zákazníka. K oznámení obvykle dochází odesláním e-mailu do kontaktů zabezpečení uvedených v Azure Security Center nebo vlastníka předplatného Azure, pokud není zadán kontakt zabezpečení.
 
-Security Center je služba Azure, která nepřetržitě monitoruje prostředí Azure zákazníka a používá analýzy k automatickému rozpoznání široké škály potenciálně škodlivých aktivit. Tato detekce jsou vykreslovány jako výstrahy zabezpečení na řídicím panelu Centra zabezpečení.
+Security Center je služba Azure, která nepřetržitě monitoruje prostředí Azure zákazníka a používá analýzu k automatické detekci široké škály potenciálně škodlivých aktivit. Tyto detekce jsou v řídicím panelu Security Center Surface výstrah zabezpečení.

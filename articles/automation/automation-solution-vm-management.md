@@ -5,25 +5,27 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0331678b50d2448013556ab0694d0ca87045c3a3
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 10c66ba175484d8b95f26ef9330753151a92969b
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82096912"
+ms.locfileid: "82106028"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v řešení mimo špičku v Azure Automation
 
 **Spuštění nebo zastavení virtuálních počítačů v době mimo** špičku spouští nebo zastavuje vaše virtuální počítače Azure. Spouští nebo zastavuje počítače na uživatelem definovaných plánech, poskytuje přehledy prostřednictvím protokolů Azure Monitor a odesílá volitelné e-maily pomocí [skupin akcí](../azure-monitor/platform/action-groups.md). Řešení podporuje pro většinu scénářů Azure Resource Manager i klasické virtuální počítače. 
 
-Toto řešení poskytuje decentralizovanou možnost automatizace s nízkými náklady pro uživatele, kteří chtějí optimalizovat náklady na virtuální počítače. V tomto řešení můžete:
+Toto řešení spustí virtuální počítače pomocí rutiny [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) . Pro zastavování virtuálních počítačů používá [stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) .
+
+> [!NOTE]
+> **Virtuální počítače spustit/zastavit v době mimo špičku** byly aktualizovány tak, aby podporovaly nejnovější verze modulů Azure, které jsou k dispozici.
+
+Řešení poskytuje decentralizovanou možnost automatizace s nízkými náklady pro uživatele, kteří chtějí optimalizovat náklady na virtuální počítače. V tomto řešení můžete:
 
 - [Naplánujte spouštění a zastavování virtuálních počítačů](automation-solution-vm-management-config.md#schedule).
 - Naplánování spouštění a zastavování virtuálních počítačů ve vzestupném pořadí [pomocí značek Azure](automation-solution-vm-management-config.md#tags) (není podporováno pro klasické virtuální počítače).
 - Zastavovat virtuální počítače na základě [nízkého využití procesoru](automation-solution-vm-management-config.md#cpuutil).
-
-> [!NOTE]
-> **Virtuální počítače spustit/zastavit v době mimo špičku** byly aktualizovány tak, aby podporovaly nejnovější verze modulů Azure, které jsou k dispozici.
 
 Toto jsou omezení s aktuálním řešením:
 

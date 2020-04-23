@@ -1,124 +1,124 @@
 ---
-title: Povolení ověřování služby Active Directory přes SMB pro soubory Azure
-description: Zjistěte, jak povolit ověřování na základě identity přes SMB pro sdílené složky Azure prostřednictvím služby Active Directory. Virtuální počítače windows (VM) spojené s doménou pak můžou přistupovat ke sdíleným spodám azure pomocí přihlašovacích údajů služby AD.
+title: Povolení ověřování služby Active Directory přes protokol SMB pro soubory Azure
+description: Naučte se, jak povolit ověřování na základě identity přes SMB pro sdílené složky Azure prostřednictvím služby Active Directory. Virtuální počítače s Windows připojené k doméně potom můžou přistupovat ke sdíleným složkám Azure pomocí přihlašovacích údajů služby AD.
 author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: rogarana
-ms.openlocfilehash: 44debc299054568769bfbe6cfc089cc528594274
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: b2dd501344e1ea799db58ea749395aaed05d05f8
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677078"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106542"
 ---
-# <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Povolení místního ověřování služby Active Directory Domain Services přes SMB pro sdílené složky Azure
+# <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Povolit místní Active Directory Domain Services ověřování pomocí protokolu SMB pro sdílené složky Azure
 
-[Soubory Azure](storage-files-introduction.md) podporují ověřování na základě identity přes blok zpráv serveru (SMB) prostřednictvím dvou typů doménových služeb: Azure Active Directory Domain Services (Azure AD DS) a místní služby Active Directory Domain Services (AD DS) (preview). Tento článek se zaměřuje na nově zavedenou (předběžnou) podporu využití služby Active Directory Domain Service pro ověřování sdílených složek Azure. Pokud máte zájem o povolení ověřování Azure AD DS (GA) pro sdílené složky Azure, podívejte se na [náš článek na toto téma](storage-files-identity-auth-active-directory-domain-service-enable.md).
+[Služba soubory](storage-files-introduction.md) Azure podporuje ověřování na základě identity přes protokol SMB (Server Message Block) prostřednictvím dvou typů doménových služeb: Azure Active Directory Domain Services (Azure služba AD DS) a místní Active Directory Domain Services (služba AD DS) (verze Preview). Tento článek se zaměřuje na nově zavedenou podporu (ve verzi Preview) využití služby Doména služby Active Directory pro ověřování do sdílených složek Azure. Pokud vás zajímá povolení ověřování Azure služba AD DS (GA) pro sdílené složky Azure, přečtěte si [náš článek na předmětu](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
 > [!NOTE]
-> Sdílené složky Azure podporují jenom ověřování proti jedné službě domény, buď službě Azure Active Directory Domain Service (Azure AD DS) nebo místní službě Active Directory Domain Services (AD DS). 
+> Sdílené složky Azure podporují pouze ověřování v rámci jedné doménové služby, buď Azure Active Directory Domain Service (Azure služba AD DS), nebo místní Active Directory Domain Services (služba AD DS). 
 >
-> Identity služby AD DS používané pro ověřování sdílení souborů Azure musí být synchronizovány do Azure AD. Synchronizace hodnot hash hesel je volitelná. 
+> Služba AD DS identit, které se používají pro ověřování sdílené složky Azure, musí být synchronizované do Azure AD. Synchronizace hodnot hash hesel je volitelná. 
 > 
-> Místní ověřování služby AD DS nepodporuje ověřování proti účtům počítačů vytvořeným ve službě AD DS. 
+> Ověřování pomocí místních služba AD DS nepodporuje ověřování u účtů počítačů vytvořených v služba AD DS. 
 > 
-> Místní ověřování služby AD DS lze podporovat pouze v jedné doménové struktuře služby AD, kde je účet úložiště registrován. Ke sdíleným souborům Azure můžete přistupovat jenom s přihlašovacími údaji služby AD DS z jedné doménové struktury ve výchozím nastavení. Pokud potřebujete získat přístup ke sdílené složce Azure z jiné doménové struktury, ujistěte se, že máte nakonfigurovaný správný vztah důvěryhodnosti doménové struktury, najdete podrobnosti v [tématu Nejčastější](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) dotazy.  
+> Ověřování pomocí místních služba AD DS se dá podporovat jenom pro jednu doménovou strukturu služby Active Directory, ve které je účet úložiště zaregistrovaný. Ve výchozím nastavení můžete přistupovat ke sdíleným složkám Azure jenom s přihlašovacími údaji služba AD DS z jedné doménové struktury. Pokud potřebujete mít přístup ke sdílené složce Azure z jiné doménové struktury, ujistěte se, že máte nakonfigurovanou správnou důvěryhodnost doménové struktury. Podrobnosti najdete v [části Nejčastější dotazy](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) .  
 > 
-> Ověřování služby AD DS pro přístup SMB a trvalosti přístupu a cl je podporováno pro sdílené složky Azure spravované službou Azure File Sync.
+> Pro sdílené složky Azure spravované pomocí Azure File Sync je podporovaná služba AD DS ověřování pro přístup SMB a trvalost seznamů ACL.
 >
-> Soubory Azure podporují ověřování protokolem Kerberos pomocí služby AD s šifrováním RC4-HMAC. Šifrování Protokolu AES Kerberos ještě není podporováno.
+> Soubory Azure podporují ověřování pomocí protokolu Kerberos se službou AD s šifrováním RC4-HMAC. Šifrování AES Kerberos ještě není podporované.
 
-Když povolíte sdílené složky služby AD DS pro Azure prostřednictvím protokolu SMB, vaše počítače spojené se službou AD DS můžou připojit sdílené složky Azure pomocí vašich stávajících přihlašovacích údajů služby AD. Tuto funkci lze povolit s prostředím služby AD DS hostovaným v počítačích on-prem nebo hostovaným v Azure.
+Když povolíte služba AD DS pro sdílené složky Azure přes protokol SMB, počítače připojené k služba AD DS můžou připojit sdílené složky Azure pomocí stávajících přihlašovacích údajů služby AD. Tato funkce se dá povolit u prostředí služba AD DS hostovaného buď v premch počítačích, nebo hostovaných v Azure.
 
-Identity používané pro přístup ke sdíleným složkám Azure musí být synchronizovány do Azure AD k vynucení oprávnění souboru na úrovni sdílení prostřednictvím modelu [řízení přístupu na základě rolí (RBAC).](../../role-based-access-control/overview.md) [Seznamy DACL ve stylu systému Windows](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) na souborech nebo adresářích přenesených z existujících souborových serverů budou zachovány a vynuceny. Tato funkce nabízí bezproblémovou integraci s podnikovým prostředím AD DS. Při nahrazení souborových serverů na předplacených souborech sdílenými složkami Azure mohou stávající uživatelé přistupovat ke sdíleným spodám souborů Azure ze svých aktuálních klientů pomocí jednotného přihlašování bez jakékoli změny přihlašovacích údajů, které se používají.  
+Identity používané pro přístup ke sdíleným složkám Azure se musí synchronizovat s Azure AD, aby se vynutila oprávnění k souborům na úrovni sdílené složky prostřednictvím modelu [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) . Pro soubory nebo adresáře přenesené z existujících souborových serverů se zachovají a vynutily [volitelné seznamy stylů Windows](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) . Tato funkce nabízí bezproblémovou integraci s podnikovým služba AD DSm prostředím. Při nahrazení Prem souborové servery pomocí sdílených složek Azure mají stávající uživatelé přístup ke sdíleným složkám Azure ze svých současných klientů s jednotným přihlašováním bez jakýchkoli změn v přihlašovacích údajích, které se používají.  
 
 > [!NOTE]
 > Abychom vám pomohli nastavit ověřování Azure Files AD pro některé běžné případy použití, publikovali jsme [dvě videa](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos) s podrobnými pokyny:
-> - Nahrazení místních souborových serverů soubory Azure (včetně nastavení na privátní propojení pro soubory a ověřování služby AD)
-> - Použití souborů Azure jako kontejneru profilu pro Virtuální plochu Windows (včetně nastavení ověřování a služby AD a konfigurace FsLogix)
+> - Výměna místních souborových serverů se soubory Azure (včetně nastavení na privátním odkazu pro soubory a ověřování AD)
+> - Používání služby soubory Azure jako kontejneru profilů pro virtuální počítače s Windows (včetně nastavení ověřování AD a konfigurace FsLogix)
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Požadované součásti 
 
-Než povolíte ověřování ve službě AD DS pro sdílené složky Azure, ujistěte se, že jste splnili následující požadavky: 
+Než povolíte služba AD DS ověřování sdílených složek Azure, ujistěte se, že jste dokončili následující požadavky: 
 
-- Vyberte nebo vytvořte prostředí služby AD DS a [synchronizujte ho se službou Azure AD](../../active-directory/hybrid/how-to-connect-install-roadmap.md). 
+- Vyberte nebo vytvořte prostředí služba AD DS a [synchronizujte ho s Azure AD](../../active-directory/hybrid/how-to-connect-install-roadmap.md). 
 
-    Tuto funkci můžete povolit v novém nebo existujícím místním prostředí ad ds. Identity používané pro přístup musí být synchronizovány do Služby Azure AD. Klient Azure AD a sdílené složky, ke které přistupujete, musí být přidruženy ke stejnému předplatnému. 
+    Tuto funkci můžete povolit na novém nebo existujícím místním služba AD DS prostředí. Identity používané pro přístup se musí synchronizovat do Azure AD. Tenant služby Azure AD a sdílená složka, ke kterým přistupujete, musí být přidruženy ke stejnému předplatnému. 
 
-    Chcete-li nastavit prostředí domény služby AD, přečtěte si [informace o přehledu služby Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview). Pokud jste nesynchronizovali ad do azure ad, postupujte podle pokynů v [Azure AD Connect a Azure AD Connect plán instalace stavu](../../active-directory/hybrid/how-to-connect-install-roadmap.md) pro konfiguraci a nastavení Azure AD Connect. 
+    Pokud chcete nastavit prostředí domény služby Active Directory, přečtěte si [téma přehled Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview). Pokud jste službu AD nesynchronizoval do služby Azure AD, postupujte podle pokynů v části [Azure AD Connect a Azure AD Connect Health Průvodce instalací](../../active-directory/hybrid/how-to-connect-install-roadmap.md) a nakonfigurujte a nastavte Azure AD Connect. 
 
-- Připojení k místní počítač nebo virtuální počítač Azure k místnímu službu AD DS. 
+- Připojte se k místnímu počítači nebo VIRTUÁLNÍmu počítači Azure k místnímu služba AD DS. 
 
-    Chcete-li získat přístup ke sdílené složce pomocí přihlašovacích údajů služby AD z počítače nebo virtuálního počítače, musí být vaše zařízení připojeno k doméně služby AD DS. Informace o připojení k doméně naleznete v části [Připojení počítače k doméně](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain). 
+    Pro přístup ke sdílené složce pomocí přihlašovacích údajů služby AD z počítače nebo virtuálního počítače musí být zařízení připojené k doméně služba AD DS. Informace o tom, jak připojit k doméně, najdete v tématu [připojení počítače k doméně](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain). 
 
-- Vyberte nebo vytvořte účet úložiště Azure v [podporované oblasti](#regional-availability). 
+- V [podporované oblasti](#regional-availability)vyberte nebo vytvořte účet úložiště Azure. 
 
-    Ujistěte se, že účet úložiště obsahující sdílené složky není ještě nakonfigurovaný pro ověřování Azure AD DS. Pokud azure files Azure AD DS ověřování je povolená na účtu úložiště, je třeba zakázat před změnou používat místní Služby AD DS. To znamená, že existující aklů nakonfigurovaných v prostředí Azure AD DS bude nutné překonfigurovat pro správné vynucení oprávnění.
+    Ujistěte se, že účet úložiště obsahující vaše sdílené složky ještě není nakonfigurovaný pro ověřování Azure služba AD DS. Pokud je v účtu úložiště povolené Azure Files Azure služba AD DS Authentication, musí být před změnou na použití v místním služba AD DS zakázané. To znamená, že existující seznamy ACL, které jsou nakonfigurované v prostředí Azure služba AD DS, bude nutné překonfigurovat pro správné vynucení oprávnění.
     
-    Informace o vytváření nové sdílené složky najdete [v tématu Vytvoření sdílené složky v Azure Files](storage-how-to-create-file-share.md).
+    Informace o vytvoření nové sdílené složky najdete v tématu [Vytvoření sdílené složky ve službě soubory Azure](storage-how-to-create-file-share.md).
     
-    Pro optimální výkon doporučujeme nasadit účet úložiště ve stejné oblasti jako virtuální hod, ze kterého plánujete přístup ke sdílené položce. 
+    Pro zajištění optimálního výkonu doporučujeme nasadit účet úložiště ve stejné oblasti jako virtuální počítač, ze kterého plánujete přístup ke sdílené složce. 
 
-- Ověřte připojení připojení připojením sdílených složek Azure pomocí klíče účtu úložiště. 
+- Ověřte připojení pomocí klíče účtu úložiště připojením sdílených složek Azure. 
 
-    Chcete-li ověřit, zda je zařízení a sdílená složka správně nakonfigurováno, zkuste sdílenou složku nastavovat pomocí klíče účtu úložiště. Další informace najdete [v tématu Použití sdílené složky Azure s Windows](storage-how-to-use-files-windows.md).
+    Pokud chcete ověřit, že vaše zařízení a sdílená složka jsou správně nakonfigurované, zkuste připojit [sdílenou složku](storage-how-to-use-files-windows.md) pomocí klíče účtu úložiště. Pokud dochází k problémům s připojením k souborům Azure, přečtěte si prosím [Nástroj pro řešení potíží, který jsme publikovali pro chyby připojení k souborům Azure ve Windows](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5). Poskytujeme také [pokyny](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) pro řešení scénářů při zablokování portu 445. 
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Azure Files authentication with AD DS (preview) je dostupné ve [všech veřejných oblastech a oblastech Azure Gov](https://azure.microsoft.com/global-infrastructure/locations/).
+Ověřování pomocí souborů Azure s služba AD DS (Preview) je dostupné ve [všech veřejných oblastech a oblastech Azure gov](https://azure.microsoft.com/global-infrastructure/locations/).
 
 ## <a name="workflow-overview"></a>Přehled pracovního postupu
 
-Než povolíte ověřování služby AD DS přes SMB pro sdílené složky Azure, doporučujeme přečíst a dokončit část [požadavků.](#prerequisites) Požadavky ověřují, že vaše prostředí Služby AD, Azure AD a Azure Storage jsou správně nakonfigurované. 
+Než povolíte služba AD DS ověřování pomocí protokolu SMB pro sdílené složky Azure, doporučujeme, abyste si přečetli a dokončili část [požadavků](#prerequisites) . Požadavky ověří, že jsou správně nakonfigurovaná vaše prostředí AD, Azure AD a Azure Storage. 
 
-Pokud plánujete povolit všechny konfigurace sítě ve sdílené složce, doporučujeme nejprve vyhodnotit [pozornost sítě](https://docs.microsoft.com/azure/storage/files/storage-files-networking-overview) a před povolením ověřování služby AD DS nejprve dokončit související konfiguraci.
+Pokud máte v plánu povolit pro sdílenou složku všechny síťové konfigurace, doporučujeme, abyste před povolením služba AD DS ověřování vyhodnotili [posouzení sítě](https://docs.microsoft.com/azure/storage/files/storage-files-networking-overview) a nejprve dokončíte související konfiguraci.
 
-Dále postupujte podle následujících kroků a nastavte soubory Azure pro ověřování ve službě AD: 
+Potom postupujte podle následujících kroků a nastavte Azure Files pro ověřování AD: 
 
-1. Povolte ověřování Azure Files AD DS na vašem účtu úložiště. 
+1. Povolte Azure Files služba AD DS ověřování v účtu úložiště. 
 
-2. Přiřaďte přístupová oprávnění pro sdílenou složku identitě Azure AD (uživateli, skupině nebo instančnímu objektu), která je synchronizovaná s cílovou identitou služby AD. 
+2. Přiřazení oprávnění k přístupu ke sdílené složce identitě služby Azure AD (uživatel, skupina nebo instanční objekt), která je synchronizovaná s cílovou identitou AD. 
 
-3. Konfigurace seznamů ACL přes SMB pro adresáře a soubory. 
+3. Nakonfigurujte seznamy ACL přes protokol SMB pro adresáře a soubory. 
  
-4. Připojení sdílené složky Azure do virtuálního počítače připojovaného k vašemu systému AD DS. 
+4. Připojte sdílenou složku Azure k VIRTUÁLNÍmu počítači připojenému k vašemu služba AD DS. 
 
-5. Aktualizujte heslo identity účtu úložiště ve službě AD DS.
+5. Aktualizujte heslo identity účtu úložiště v služba AD DS.
 
-Následující diagram znázorňuje pracovní postup od konce pro povolení ověřování Azure AD přes SMB pro sdílené složky Azure. 
+Následující diagram znázorňuje kompletní pracovní postup pro povolení ověřování Azure AD přes protokol SMB pro sdílené složky Azure. 
 
-![Diagram pracovního postupu ad souborů](media/storage-files-active-directory-domain-services-enable/diagram-files-ad.png)
+![Diagram souborů pracovního postupu služby AD](media/storage-files-active-directory-domain-services-enable/diagram-files-ad.png)
 
 > [!NOTE]
-> Ověřování služby AD DS přes sdílené složky SMB pro sdílené složky Azure je podporováno jenom na počítačích nebo virtuálních počítačích spuštěných ve verzích operačního systému novějších než Windows 7 nebo Windows Server 2008 R2. 
+> Služba AD DS ověřování pomocí protokolu SMB pro sdílené složky Azure je podporované jenom na počítačích nebo virtuálních počítačích, na kterých běží novější verze operačních systémů než Windows 7 nebo Windows Server 2008 R2. 
 
-## <a name="1-enable-ad-authentication-for-your-account"></a>1. Povolení ověřování služby AD pro váš účet 
+## <a name="1-enable-ad-authentication-for-your-account"></a>1. Povolte pro svůj účet ověřování AD. 
 
-Chcete-li povolit ověřování služby AD DS přes SMB pro sdílené složky Azure, musíte nejprve zaregistrovat účet úložiště ve službě AD DS a potom nastavit požadované vlastnosti domény v účtu úložiště. Pokud je funkce povolena v účtu úložiště, platí pro všechny nové a existující sdílené složky v účtu. Slouží `join-AzStorageAccountForAuth` k povolení funkce. Podrobný popis pracovního postupu od konce najdete ve skriptu v této části. 
+Pokud chcete povolit služba AD DS ověřování pomocí protokolu SMB pro sdílené složky Azure, musíte nejdřív zaregistrovat účet úložiště pomocí služba AD DS a pak nastavit požadované vlastnosti domény v účtu úložiště. Když je tato funkce povolená v účtu úložiště, platí pro všechny nové a existující sdílené složky v účtu. Použijte `join-AzStorageAccountForAuth` k povolení této funkce. Podrobný popis kompletního a koncového pracovního postupu najdete ve skriptu uvnitř této části. 
 
 > [!IMPORTANT]
-> Rutina `Join-AzStorageAccountForAuth` provede změny prostředí AD. Přečtěte si následující vysvětlení, abyste lépe pochopili, co dělá, abyste zajistili, že máte správná oprávnění ke spuštění příkazu a že použité změny jsou v souladu se zásadami dodržování předpisů a zabezpečení. 
+> `Join-AzStorageAccountForAuth` Rutina provede změny v prostředí služby Active Directory. Přečtěte si následující vysvětlení, abyste lépe pochopili, co dělá, abyste měli jistotu, že máte správná oprávnění ke spuštění příkazu a že provedené změny odpovídají zásadám dodržování předpisů a zabezpečení. 
 
-Rutina `Join-AzStorageAccountForAuth` provede ekvivalent připojení domény offline jménem uvedeného účtu úložiště. Skript používá rutinu k vytvoření účtu v doméně služby AD, buď [účtu počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí) nebo [přihlašovacího účtu služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts). Pokud se rozhodnete provést ručně, měli byste vybrat účet, který nejlépe vyhovuje vašemu prostředí.
+`Join-AzStorageAccountForAuth` Rutina provede ekvivalent offline připojení k doméně jménem uvedeného účtu úložiště. Skript pomocí rutiny vytvoří účet ve vaší doméně služby Active Directory, buď [účet počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí), nebo [účet přihlášení služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts). Pokud se rozhodnete tuto možnost provést ručně, měli byste vybrat účet, který nejlépe vyhovuje vašemu prostředí.
 
-Účet služby AD DS vytvořený rutinou představuje účet úložiště v doméně služby AD. Pokud je účet služby AD DS vytvořen v rámci organizační jednotky (OU), která vynucuje vypršení platnosti hesla, je nutné heslo aktualizovat před dosažením maximálního stáří hesla. Pokud se nepodaří aktualizovat heslo účtu, bude mít za následek selhání ověřování při přístupu ke sdíleným položkám souborů Azure. Informace o aktualizaci hesla naleznete v [tématu Aktualizace hesla účtu služby AD DS](#5-update-the-password-of-your-storage-account-identity-in-ad-ds).
+Účet služba AD DS vytvořený rutinou představuje účet úložiště v doméně služby AD. Pokud je účet služba AD DS vytvořen v rámci organizační jednotky (OU), která vynutila vypršení platnosti hesla, je nutné aktualizovat heslo před maximálním stářím hesla. Při neúspěšném pokusu o aktualizaci hesla účtu dojde k selhání ověřování při přístupu ke sdíleným složkám Azure. Informace o tom, jak aktualizovat heslo, najdete v tématu [aktualizace hesla účtu služba AD DS](#5-update-the-password-of-your-storage-account-identity-in-ad-ds).
 
-Můžete použít následující skript k provedení registrace a povolení funkce nebo alternativně můžete ručně provádět operace, které by skript. Tyto operace jsou popsány v části následující skript. Nemusíte dělat obojí.
+K provedení registrace a povolení funkce můžete použít následující skript, případně můžete ručně provést operace, které by měl skript. Tyto operace jsou popsány v části následující po tomto skriptu. Nemusíte dělat obojí.
 
-### <a name="11-script-prerequisites"></a>1.1 Požadavky skriptu
-- [Stažení a rozepnout modul AzFilesHybrid](https://github.com/Azure-Samples/azure-files-samples/releases)
-- Nainstalujte a spusťte modul v zařízení, které je doménou připojenou k místnímu systému AD DS s pověřeními služby AD DS, která mají oprávnění k vytvoření přihlašovacího účtu služby nebo účtu počítače v cílové službě AD.
--  Spusťte skript pomocí místního pověření služby AD DS, které se synchronizuje s vaším Azure AD. Místní pověření služby AD DS musí mít buď vlastníka účtu úložiště, nebo oprávnění role RBAC přispěvatele.
-- Ujistěte se, že váš účet úložiště je v [podporované oblasti](#regional-availability).
+### <a name="11-script-prerequisites"></a>požadavky na skripty 1,1
+- [Stažení a extrahování modulu AzFilesHybrid](https://github.com/Azure-Samples/azure-files-samples/releases)
+- Nainstalujte a spusťte modul v zařízení, které je připojené k místnímu počítači, služba AD DS služba AD DS přihlašovací údaje, které mají oprávnění k vytvoření přihlašovacího účtu služby nebo účtu počítače v cílové službě AD.
+-  Spusťte skript pomocí místního služba AD DS přihlašovacích údajů, které se synchronizují s vaší službou Azure AD. Přihlašovací údaje pro místní služba AD DS musí mít oprávnění role správce účtu úložiště nebo role RBAC pro přispěvatele.
+- Ujistěte se, že je váš účet úložiště v [podporované oblasti](#regional-availability).
 
-### <a name="12-domain-join-your-storage-account"></a>1.2 Doména se připojí k účtu úložiště
-Nezapomeňte nahradit zástupné hodnoty vlastními v níže uvedených parametrech, než je provedete v prostředí PowerShell.
+### <a name="12-domain-join-your-storage-account"></a>1,2 doména připojení k vašemu účtu úložiště
+Nezapomeňte nahradit hodnoty zástupných symbolů vlastními v parametrech níže, než je spustíte v PowerShellu.
 > [!IMPORTANT]
-> Rutina připojení k doméně vytvoří účet služby AD představující účet úložiště (sdílenou složku) ve službě AD. Můžete se zaregistrovat jako účet počítače nebo přihlašovací účet služby, podrobnosti najdete v [častých dotazech.](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) U účtů počítačů je ve společnosti AD nastavenvýchozí věk vypršení platnosti hesla po 30 dnech. Podobně přihlašovací účet služby může mít výchozí stáří vypršení platnosti hesla nastavené v doméně služby AD nebo organizační jednotce (OU).
-> U obou typů účtů důrazně doporučujeme zkontrolovat, jaký je věk vypršení platnosti hesla nakonfigurovaný ve vašem prostředí služby AD, a před dosažením maximálního stáří hesla plánujete [aktualizovat heslo identity účtu úložiště ve službách AD](#5-update-the-password-of-your-storage-account-identity-in-ad-ds) účtu služby AD. Pokud se nepodaří aktualizovat heslo účtu služby AD, dojde k selhání ověřování při přístupu ke sdíleným položkám azure. Můžete zvážit [vytvoření nové organizační jednotky služby AD (OU) ve službě AD](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) a odpovídajícím způsobem zakázat zásady vypršení platnosti hesla u [účtů počítačů](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) nebo přihlašovacích účtů služeb. 
+> Rutina připojení k doméně vytvoří účet služby AD, který bude představovat účet úložiště (sdílená složka) ve službě AD. Můžete se rozhodnout, že se zaregistrujete jako účet počítače nebo přihlašovací účet služby. Podrobnosti najdete v [části Nejčastější dotazy](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) . V případě účtů počítačů je ve službě AD po dobu 30 dnů nastavena výchozí doba platnosti hesla. Podobně platí, že přihlašovací účet služby může mít nastavené stáří vypršení platnosti hesla na doméně služby AD nebo organizační jednotce (OU).
+> U obou typů účtů důrazně doporučujeme, abyste zkontrolovali, jaký je stáří vypršení platnosti hesla nakonfigurované ve vašem prostředí služby AD, a plánujete [aktualizovat heslo své identity účtu úložiště ve službě AD](#5-update-the-password-of-your-storage-account-identity-in-ad-ds) účtu služby AD níže před maximálním stářím hesla. Neúspěšné aktualizace hesla účtu služby AD způsobí selhání ověřování při přístupu ke sdíleným složkám Azure. Můžete zvážit [Vytvoření nové organizační jednotky AD (OU) ve službě AD](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) a zakázat zásady vypršení platnosti hesla na účtech [počítačů](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) nebo účtů přihlášení služby. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -157,28 +157,28 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ```
 
-Následující popis shrnuje všechny `Join-AzStorageAccountForAuth` akce provedené při spuštění rutiny. Pokud nechcete příkaz používat, můžete tyto kroky provést ručně:
+Následující popis shrnuje všechny akce prováděné při spuštění `Join-AzStorageAccountForAuth` rutiny. Tyto kroky můžete provést ručně, pokud raději nechcete použít příkaz:
 
 > [!NOTE]
-> Pokud jste již výše `Join-AzStorageAccountForAuth` uvedený skript úspěšně provedli, přejděte k další části "1.3 Potvrďte, že je funkce povolena". Není nutné provádět níže uvedené operace znovu.
+> Pokud jste už dříve úspěšně spustili `Join-AzStorageAccountForAuth` skript, přečtěte si další část "1,3" potvrďte, že je funkce povolená. Níže uvedené operace není nutné provádět znovu.
 
-#### <a name="a-checking-environment"></a>a. Kontrola prostředí
+#### <a name="a-checking-environment"></a>a. Kontroluje se prostředí.
 
-Nejprve skript zkontroluje vaše prostředí. Konkrétně zkontroluje, zda je [nainstalováno prostředí Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) a zda je prostředí spouštěno s oprávněními správce. Pak zkontroluje, zda je nainstalován [modul Az.Storage 1.11.1-preview,](https://www.powershellgallery.com/packages/Az.Storage/1.11.1-preview) a nainstaluje jej, pokud tomu tak není. Pokud tyto kontroly projdou, zkontroluje váš ad DS, aby zjistil, zda existuje účet [počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí) nebo [přihlašovací účet služby,](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) který již byl vytvořen s SPN / UPN jako "cifs/ vaše úložiště-účet-name-here.file.core.windows.net". Pokud účet neexistuje, vytvoří jej tak, jak je popsáno v části b níže.
+Nejprve skript zkontroluje vaše prostředí. Konkrétně kontroluje, zda je [Služba Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) nainstalována a zda je prostředí spuštěno s oprávněními správce. Pak zkontroluje, jestli je nainstalovaný [modul AZ. Storage 1.11.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/1.11.1-preview) , a pokud není, nainstaluje ho. Pokud Kontrola proběhne úspěšně, zkontrolujte služba AD DS a ověřte, zda se jedná o [účet počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí) nebo [účet přihlášení služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) , který již byl vytvořen pomocí hlavního názvu služby (SPN) nebo hlavního názvu uživatele (UPN), a to jako "CIFS/Your-Storage-Account-Name-tady. File. Core. Windows. NET". Pokud účet neexistuje, vytvoří se, jak je popsáno v části b níže.
 
-#### <a name="b-creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>b. Ruční vytvoření identity představující účet úložiště ve vaší ad
+#### <a name="b-creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>b. Ruční vytvoření identity představující účet úložiště ve službě AD
 
-Chcete-li tento účet vytvořit ručně, vytvořte nový klíč `New-AzStorageAccountKey -KeyName kerb1`protokolu Kerberos pro váš účet úložiště pomocí aplikace . Potom použijte tento klíč Kerberos jako heslo pro váš účet. Tento klíč se používá pouze během nastavení a nelze jej použít pro žádné operace ovládacího prvku nebo roviny dat proti účtu úložiště.
+Pokud chcete tento účet vytvořit ručně, vytvořte nový klíč Kerberos pro svůj účet úložiště pomocí `New-AzStorageAccountKey -KeyName kerb1`. Pak použijte tento klíč Kerberos jako heslo pro váš účet. Tento klíč se používá jenom během nastavení a nedá se použít pro žádné operace ovládacího prvku nebo datové roviny na účtu úložiště.
 
-Jakmile budete mít tento klíč, vytvořte buď službu nebo účet počítače pod ou. Použijte následující specifikaci: HLAVNÍ název služby: "cifs/your-storage-account-name-here.file.core.windows.net" Heslo: Klíč Kerberos pro váš účet úložiště.
+Jakmile budete mít tento klíč, vytvořte v rámci své organizační jednotky účet služby nebo počítače. Použijte následující specifikaci: název SPN: "CIFS/Your-Storage-Account-Name-sem. File. Core. Windows. NET" Password: klíč Kerberos pro váš účet úložiště.
 
-Pokud vaše hlavní cena vynucuje vypršení platnosti hesla, je nutné aktualizovat heslo před maximální stáří hesla, aby se zabránilo selhání ověřování při přístupu ke sdíleným položkám souborů Azure. Podrobnosti najdete [v tématu Aktualizace hesla identity účtu úložiště ve službě AD DS.](#5-update-the-password-of-your-storage-account-identity-in-ad-ds)
+Pokud vaše organizační jednotka vynutila vypršení platnosti hesla, musíte aktualizovat heslo před maximálním stářím hesla, aby nedocházelo k chybám ověřování při přístupu ke sdíleným složkám Azure. Podrobnosti najdete [v tématu aktualizace hesla identity účtu úložiště v služba AD DS](#5-update-the-password-of-your-storage-account-identity-in-ad-ds) .
 
-Zachovat SID nově vytvořeného účtu, budete potřebovat pro další krok. Identita, kterou jste vytvořili, které představují účet úložiště není nutné synchronizovat do Služby Azure AD.
+Ponechte si identifikátor SID nově vytvořeného účtu, budete ho potřebovat pro další krok. Identita, kterou jste vytvořili, která představuje účet úložiště, nemusí být synchronizovaná s Azure AD.
 
 ##### <a name="c-enable-the-feature-on-your-storage-account"></a>c. Povolení funkce v účtu úložiště
 
-Skript by pak povolit funkci na vašem účtu úložiště. Chcete-li provést toto nastavení ručně, zadejte některé podrobnosti konfigurace vlastností domény v následujícím příkazu a spusťte je. Sid účtu úložiště požadovaný v následujícím příkazu je SID identity, kterou jste vytvořili ve službě AD DS v [předchozí části](#b-creating-an-identity-representing-the-storage-account-in-your-ad-manually).
+Skript pak tuto funkci povolí v účtu úložiště. Chcete-li provést tuto instalaci ručně, zadejte v následujícím příkazu některé podrobnosti konfigurace pro vlastnosti domény a potom spusťte příkaz. Identifikátor SID účtu úložiště vyžadovaný v následujícím příkazu je identifikátor SID identity, kterou jste vytvořili v služba AD DS v [předchozí části](#b-creating-an-identity-representing-the-storage-account-in-your-ad-manually).
 
 ```PowerShell
 # Set the feature flag on the target storage account and provide the required AD domain information
@@ -195,9 +195,9 @@ Set-AzStorageAccount `
 ```
 
 
-### <a name="13-confirm-that-the-feature-is-enabled"></a>1.3 Zkontrolujte, zda je tato funkce povolena
+### <a name="13-confirm-that-the-feature-is-enabled"></a>1,3 Potvrďte, že je funkce povolená.
 
-Můžete zkontrolovat, zda je tato funkce povolena ve vašem účtu úložiště, můžete použít následující skript:
+Můžete zkontrolovat, jestli je funkce ve vašem účtu úložiště povolená, můžete použít následující skript:
 
 ```PowerShell
 # Get the target storage account
@@ -212,17 +212,17 @@ $storageAccount.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 ```
 
-Nyní jste tuto funkci úspěšně povolili v účtu úložiště. Nyní, když je funkce povolena, je třeba provést další kroky k použití této funkce.
+Teď jste úspěšně povolili funkci v účtu úložiště. Teď, když je funkce povolená, je potřeba provést další kroky, abyste mohli tuto funkci používat.
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-Nyní jste úspěšně povolili ověřování služby AD DS přes SMB a přiřadili vlastní roli, která poskytuje přístup ke sdílené složce Azure s identitou služby AD DS. Chcete-li udělit přístup ke sdílené složce dalším uživatelům, postupujte podle pokynů v části [Přiřadit přístupová oprávnění](#2-assign-access-permissions-to-an-identity) k použití identity a [konfigurace oprávnění ntfs přes](#3-configure-ntfs-permissions-over-smb) oddíly SMB.
+Nyní jste úspěšně povolili služba AD DS ověřování přes protokol SMB a přiřadili jste vlastní roli, která poskytuje přístup ke sdílené složce Azure s identitou služba AD DS. Pokud chcete ostatním uživatelům udělit přístup ke sdílené složce, postupujte podle pokynů v tématu [Přiřazení přístupových oprávnění](#2-assign-access-permissions-to-an-identity) k používání identity a [Konfigurace oprávnění NTFS v](#3-configure-ntfs-permissions-over-smb) oddílech SMB.
 
-## <a name="5-update-the-password-of-your-storage-account-identity-in-ad-ds"></a>5. Aktualizace hesla identity účtu úložiště ve službách AD DS
+## <a name="5-update-the-password-of-your-storage-account-identity-in-ad-ds"></a>5. aktualizujte heslo identity účtu úložiště v služba AD DS
 
-Pokud jste zaregistrovali identitu/účet služby AD DS představující váš účet úložiště pod ou, která vynucuje dobu vypršení platnosti hesla, musíte heslo otočit před maximálním stářím hesla. Pokud se nepodaří aktualizovat heslo účtu služby AD DS, bude mít za následek selhání ověřování pro přístup ke sdíleným položkám Azure.  
+Pokud jste zaregistrovali služba AD DS identitu nebo účet představující účet úložiště v rámci organizační jednotky, která vynutila dobu vypršení platnosti hesla, musíte heslo před maximálním stářím hesla otočit. Neúspěšná aktualizace hesla služba AD DS účtu způsobí selhání ověřování pro přístup ke sdíleným složkám Azure.  
 
-Chcete-li aktivovat střídání hesla, můžete spustit `Update-AzStorageAccountADObjectPassword` příkaz z modulu AzFilesHybrid. Rutina provádí akce podobné střídání klíčů účtu úložiště. Získá druhý klíč Protokolu Kerberos účtu úložiště a použije jej k aktualizaci hesla registrovaného účtu ve službě AD DS. Poté regeneruje cílový klíč Protokolu Kerberos účtu úložiště a aktualizuje heslo registrovaného účtu ve službě AD DS. Tuto rutinu je nutné spustit v místním prostředí spojeného s doménou služby AD DS.
+Pokud chcete aktivovat otočení hesla, můžete spustit `Update-AzStorageAccountADObjectPassword` příkaz z modulu AzFilesHybrid. Rutina provede akce podobné rotaci klíče účtu úložiště. Získá druhý klíč protokolu Kerberos účtu úložiště a použije ho k aktualizaci hesla registrovaného účtu v služba AD DS. Pak znovu vygeneruje cílový klíč Kerberos účtu úložiště a aktualizuje heslo zaregistrovaného účtu v služba AD DS. Tuto rutinu musíte spustit v prostředí připojeném k místní služba AD DS doméně.
 
 ```PowerShell
 # Update the password of the AD DS account registered for the storage account
@@ -234,7 +234,7 @@ Update-AzStorageAccountADObjectPassword `
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o souborech Azure a o tom, jak používat službu AD přes SMB, najdete v těchto prostředcích:
+Další informace o službě soubory Azure a o tom, jak používat službu AD prostřednictvím protokolu SMB, najdete v těchto zdrojích:
 
-- [Přehled podpory ověřování na základě identity souborů Azure pro přístup SMB](storage-files-active-directory-overview.md)
+- [Přehled podpory ověřování na základě identity souborů Azure pro přístup přes protokol SMB](storage-files-active-directory-overview.md)
 - [Nejčastější dotazy](storage-files-faq.md)
