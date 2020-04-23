@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 82094fadf7b11d97b0e9e74d9ba897baed16ee01
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 655194a1335ae258e27dff2c75a370578253794a
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874275"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605873"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a správa rozpočtů Azure
 
@@ -185,7 +185,7 @@ Pomocí šablony Azure Resource Manageru můžete vytvořit rozpočet. Šablona 
 
 Vyberte následující obrázek, přihlaste se k webu Azure Portal a otevřete šablonu:
 
-[![Nasazení šablony pro vytvoření rozpočtu do Azure](./media/tutorial-acm-create-budgets/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
+[![Nasazení šablony pro vytvoření rozpočtu do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
 
 Pokud chcete zobrazit seznam všech parametrů šablony a jejich popisů, projděte si šablonu [pro vytvoření rozpočtu](https://azure.microsoft.com/resources/templates/create-budget/).
 
