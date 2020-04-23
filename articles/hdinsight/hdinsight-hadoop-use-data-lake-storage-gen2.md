@@ -1,6 +1,6 @@
 ---
 title: Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight
-description: Přečtěte si, jak používat Azure Data Lake Storage Gen2 s clustery Azure HDInsight.
+description: Naučte se používat Azure Data Lake Storage Gen2 s clustery Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -17,33 +17,33 @@ ms.locfileid: "79272289"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
-Azure Data Lake Storage Gen2 je služba cloudového úložiště určená pro analýzu velkých objemů dat, která je postavená na úložišti objektů Blob Azure. Data Lake Storage Gen2 kombinuje možnosti úložiště objektů blob Azure a Azure Data Lake Storage Gen1. Výsledná služba nabízí funkce z Azure Data Lake Storage Gen1, jako je sémantiku systému souborů, zabezpečení na úrovni adresářů a souborů a škálovatelnost, spolu s levným, vrstveným úložištěm, vysokou dostupností a možnostmi zotavení po havárii z úložiště objektů blob Azure.
+Azure Data Lake Storage Gen2 je cloudová služba úložiště vyhrazená pro analýzy velkých objemů dat, která je založená na službě Azure Blob Storage. Data Lake Storage Gen2 kombinuje možnosti služby Azure Blob Storage a Azure Data Lake Storage Gen1. Výsledná služba nabízí funkce z Azure Data Lake Storage Gen1, jako jsou sémantika systému souborů, zabezpečení na úrovni adresáře a souborů a škálovatelnost, společně s nízkými náklady, vrstvené úložiště, vysokou dostupností a možnostmi zotavení po havárii ze služby Azure Blob Storage.
 
-## <a name="data-lake-storage-gen2-availability"></a>Dostupnost úložiště datového jezera Gen2
+## <a name="data-lake-storage-gen2-availability"></a>Dostupnost Data Lake Storage Gen2
 
-Data Lake Storage Gen2 je k dispozici jako možnost úložiště pro téměř všechny typy clusterů Azure HDInsight jako výchozí i další účet úložiště. HBase však může mít pouze jeden účet Data Lake Storage Gen2.
+Data Lake Storage Gen2 je k dispozici jako možnost úložiště pro téměř všechny typy clusterů Azure HDInsight jako výchozí i pro další účet úložiště. HBA ale můžou mít jenom jeden Data Lake Storage Gen2 účet.
 
-Úplné porovnání možností vytváření clusteru pomocí data lake storage gen2 najdete [v tématu Porovnání možností úložiště pro použití s clustery Azure HDInsight](hdinsight-hadoop-compare-storage-options.md).
+Úplné porovnání možností vytváření clusteru pomocí Data Lake Storage Gen2 najdete v tématu [porovnání možností úložiště pro použití s clustery Azure HDInsight](hdinsight-hadoop-compare-storage-options.md).
 
 > [!Note]  
-> Po výběru Data Lake Storage Gen2 jako **typ primárního úložiště**, nelze vybrat data lake storage Gen1 účet jako další úložiště.
+> Po výběru Data Lake Storage Gen2 jako **primárního typu úložiště**nemůžete vybrat data Lake Storage Gen1 účet jako další úložiště.
 
-## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-portal"></a>Vytvoření clusteru pomocí portálu Data Lake Storage Gen2 prostřednictvím portálu Azure
+## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-portal"></a>Vytvoření clusteru s Data Lake Storage Gen2 přes Azure Portal
 
-Chcete-li vytvořit cluster HDInsight, který používá data lake storage Gen2 pro úložiště, postupujte takto a nakonfigurujte účet Data Lake Storage Gen2.
+Pokud chcete vytvořit cluster HDInsight, který používá Data Lake Storage Gen2 pro úložiště, postupujte podle těchto kroků a nakonfigurujte účet Data Lake Storage Gen2.
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
-Pokud ještě nemáte, vytvořte spravovanou identitu přiřazenou uživateli.
+Vytvořte spravovanou identitu přiřazenou uživatelem, pokud ji ještě nemáte.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-1. V levém horním rohu **klikněte na Vytvořit zdroj**.
-1. Do vyhledávacího pole zadejte **přiřazený uživatel** a klepněte na **položku Přiřazená spravovaná identita uživatele**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. V levém horním rohu klikněte na **vytvořit prostředek**.
+1. Do vyhledávacího pole zadejte **přiřazený uživatel** a klikněte na položku **spravovaná identita přiřazená uživateli**.
 1. Klikněte na **Vytvořit**.
 1. Zadejte název spravované identity, vyberte správné předplatné, skupinu prostředků a umístění.
 1. Klikněte na **Vytvořit**.
 
-Další informace o tom, jak spravované identity fungují ve Službě Azure HDInsight, najdete [v tématu Spravované identity v Azure HDInsight](hdinsight-managed-identities.md).
+Další informace o tom, jak spravované identity fungují ve službě Azure HDInsight, najdete v tématu [spravované identity ve službě Azure HDInsight](hdinsight-managed-identities.md).
 
 ![Vytvoření spravované identity přiřazené uživatelem](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
@@ -51,72 +51,72 @@ Další informace o tom, jak spravované identity fungují ve Službě Azure HDI
 
 Vytvořte účet úložiště Azure Data Lake Storage Gen2.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-1. V levém horním rohu **klikněte na Vytvořit zdroj**.
-1. Do vyhledávacího pole zadejte **úložiště** a klikněte na **Účet úložiště**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. V levém horním rohu klikněte na **vytvořit prostředek**.
+1. Do vyhledávacího pole zadejte **Storage** a klikněte na **účet úložiště**.
 1. Klikněte na **Vytvořit**.
-1. Na obrazovce **Vytvořit účet úložiště:**
+1. Na obrazovce **vytvořit účet úložiště** :
     1. Vyberte správné předplatné a skupinu prostředků.
-    1. Zadejte název účtu Data Lake Storage Gen2. Další informace o konvencích pojmenování účtů úložiště najdete [v tématu Konvence pojmenování prostředků Azure](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).
-    1. Klikněte na kartu **Upřesnit.**
-    1. V části **Data Lake Storage Gen2**klepněte na Možnost **Povoleno** vedle **hierarchického oboru názvů** .
+    1. Zadejte název účtu Data Lake Storage Gen2. Další informace o zásadách vytváření názvů účtů úložiště najdete v tématu zásady [vytváření názvů pro prostředky Azure](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).
+    1. Klikněte na kartu **Upřesnit** .
+    1. V části **Data Lake Storage Gen2**klikněte na **povoleno** vedle **hierarchického oboru názvů** .
     1. Klikněte na **Zkontrolovat a vytvořit**.
-    1. Klikněte na **Vytvořit.**
+    1. Klikněte na **vytvořit** .
 
-Další informace o dalších možnostech při vytváření účtu úložiště najdete v [tématu Úvodní příručka: Vytvoření účtu úložiště Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+Další informace o dalších možnostech při vytváření účtu úložiště najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
-![Snímek obrazovky s vytvořením účtu úložiště na webu Azure Portal](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
+![Snímek obrazovky, který ukazuje vytvoření účtu úložiště v Azure Portal](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
 
-### <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>Nastavení oprávnění pro spravovanou identitu v účtu Data Lake Storage Gen2
+### <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>Nastavení oprávnění pro spravovanou identitu na účtu Data Lake Storage Gen2
 
-Přiřaďte spravovanou identitu roli **Vlastník dat objektu blob úložiště** v účtu úložiště.
+Přiřaďte spravovanou identitu k roli **vlastníka dat objektů BLOB úložiště** v účtu úložiště.
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na účet úložiště.
-1. Vyberte svůj účet úložiště a pak vyberte **Řízení přístupu (IAM),** chcete-li zobrazit nastavení řízení přístupu pro účet. Výběrem karty **Přiřazení rolí** zobrazíte seznam přiřazení rolí.
+1. V [Azure Portal](https://portal.azure.com)přejít na účet úložiště.
+1. Vyberte svůj účet úložiště a pak vyberte **řízení přístupu (IAM)** a zobrazte nastavení řízení přístupu pro tento účet. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
 
     ![Snímek obrazovky s nastavením řízení přístupu k úložišti](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
 
-1. Chcete-li přidat novou roli, vyberte tlačítko **+ Přidat přiřazení role.**
-1. V okně **Přidat přiřazení role** vyberte roli Vlastník dat **objektu blob úložiště.** Potom vyberte předplatné, které má spravovanou identitu a účet úložiště. Dále vyhledejte uživatelem přiřazenou spravovanou identitu, kterou jste vytvořili dříve. Nakonec vyberte spravovanou identitu a bude uvedena v části **Vybrané členy**.
+1. Kliknutím na tlačítko **+ Přidat přiřazení role** přidejte novou roli.
+1. V okně **Přidat přiřazení role** vyberte roli **vlastníka dat objektu BLOB úložiště** . Pak vyberte předplatné, které má spravovanou identitu a účet úložiště. V dalším kroku vyhledejte uživatelem přiřazenou spravovanou identitu, kterou jste předtím vytvořili. Nakonec vyberte spravovanou identitu a zobrazí se v seznamu **Vybrané členy**.
 
-    ![Snímek obrazovky znázorňující přiřazení role RBAC](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
+    ![Snímek obrazovky ukazující, jak přiřadit roli RBAC](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
-1. Vyberte **Uložit**. Vybraná identita přiřazená uživateli je nyní uvedena pod vybranou rolí.
-1. Po dokončení tohoto počátečního nastavení můžete vytvořit cluster prostřednictvím portálu. Cluster musí být ve stejné oblasti Azure jako účet úložiště. Na kartě **Úložiště** v nabídce vytvoření clusteru vyberte následující možnosti:
+1. Vyberte **Uložit**. Uživatelem přiřazená identita, kterou jste vybrali, je teď uvedená v seznamu vybraná role.
+1. Po dokončení tohoto počátečního nastavení můžete cluster vytvořit prostřednictvím portálu. Cluster musí být ve stejné oblasti Azure jako účet úložiště. Na kartě **úložiště** v nabídce vytvoření clusteru vyberte následující možnosti:
 
-    * V **případě typu Primární úložiště**vyberte Azure Data Lake Storage **Gen2**.
-    * V části **Účet primárního úložiště**vyhledejte a vyberte nově vytvořený účet úložiště Data Lake Storage Gen2.
+    * Jako **typ primárního úložiště**vyberte **Azure Data Lake Storage Gen2**.
+    * V části **primární účet úložiště**vyhledejte a vyberte nově vytvořený účet úložiště data Lake Storage Gen2.
 
-    * V části **Identita**vyberte nově vytvořenou spravovanou identitu přiřazenou uživateli.
+    * V části **Identita**vyberte nově vytvořenou spravovanou identitu přiřazenou uživatelem.
 
-        ![Nastavení úložiště pro používání Data Lake Storage Gen2 s Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
+        ![Nastavení úložiště pro použití Data Lake Storage Gen2 se službou Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
 
     > [!NOTE]
-    > * Chcete-li přidat sekundární účet Data Lake Storage Gen2, na úrovni účtu úložiště jednoduše přiřaďte spravovanou identitu vytvořenou dříve k novému účtu úložiště Data Lake Storage Gen2, který chcete přidat. Upozorňujeme, že přidání sekundárního účtu Data Lake Storage Gen2 prostřednictvím okna "Další účty úložiště" na HDInsight není podporováno.
-    > * Ra-GRS nebo RA-ZRS můžete povolit na účtu úložiště Azure, který používá HDInsight. Vytvoření clusteru proti sekundárnímu koncovému bodu RA-GRS nebo RA-ZRS však není podporováno.
+    > * Pokud chcete přidat sekundární Data Lake Storage Gen2 účet, na úrovni účtu úložiště jednoduše přiřaďte spravovanou identitu vytvořenou dříve k novému účtu úložiště Data Lake Storage Gen2, který chcete přidat. Doporučujeme přidat sekundární Data Lake Storage Gen2 účet přes okno další účty úložiště ve službě HDInsight se nepodporuje.
+    > * V účtu Azure Storage, který používá HDInsight, můžete povolit RA-GRS nebo RA-ZRS. Vytvoření clusteru se sekundárním koncovým bodem RA-GRS nebo RA-ZRS se ale nepodporuje.
 
 
-## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Vytvoření clusteru pomocí služby Data Lake Storage Gen2 prostřednictvím příkazového příkazového příkazového příkazu Azure
+## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Vytvoření clusteru s Data Lake Storage Gen2 prostřednictvím Azure CLI
 
-Můžete [si stáhnout ukázkový soubor šablony](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) a [stáhnout ukázkový soubor parametrů](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Před použitím šablony a fragmentu kódu vypolynání k vypouchovanému kódem Azure níže nahraďte následující zástupné symboly jejich správnými hodnotami:
+Můžete [stáhnout ukázkový soubor šablony](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) a [stáhnout ukázkový soubor parametrů](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Než použijete šablonu a fragment kódu Azure CLI níže, nahraďte následující zástupné symboly jejich správnými hodnotami:
 
 | Zástupný symbol | Popis |
 |---|---|
 | `<SUBSCRIPTION_ID>` | ID vašeho předplatného Azure |
-| `<RESOURCEGROUPNAME>` | Skupina prostředků, kde chcete vytvořit nový účet clusteru a úložiště. |
-| `<MANAGEDIDENTITYNAME>` | Název spravované identity, která bude mít oprávnění na vašem účtu Azure Data Lake Storage Gen2. |
+| `<RESOURCEGROUPNAME>` | Skupina prostředků, ve které chcete vytvořit nový cluster a účet úložiště. |
+| `<MANAGEDIDENTITYNAME>` | Název spravované identity, kterému budou udělena oprávnění k vašemu Azure Data Lake Storage Gen2 účtu. |
 | `<STORAGEACCOUNTNAME>` | Nový účet Azure Data Lake Storage Gen2, který se vytvoří. |
 | `<CLUSTERNAME>` | Název clusteru HDInsight. |
-| `<PASSWORD>` | Zvolené heslo pro přihlášení ke clusteru pomocí SSH, stejně jako řídicí panel Ambari. |
+| `<PASSWORD>` | Vaše zvolené heslo pro přihlášení ke clusteru pomocí SSH a řídicího panelu Ambari |
 
-Fragment kódu níže provede následující počáteční kroky:
+Níže uvedený fragment kódu provede následující úvodní kroky:
 
-1. Přihlásí se ke svému účtu Azure.
-1. Nastaví aktivní předplatné, kde budou provedeny operace vytvoření.
+1. Přihlásí se k účtu Azure.
+1. Nastaví aktivní předplatné, ve kterém se budou provádět operace vytvoření.
 1. Vytvoří novou skupinu prostředků pro nové aktivity nasazení.
-1. Vytvoří spravovanou identitu přiřazenou uživatelem.
-1. Přidá rozšíření k azure cli používat funkce pro úložiště datových jezer Gen2.
-1. Vytvoří nový účet Data Lake Storage `--hierarchical-namespace true` Gen2 pomocí příznaku.
+1. Vytvoří uživatelem přiřazenou spravovanou identitu.
+1. Přidá do Azure CLI rozšíření pro použití funkcí pro Data Lake Storage Gen2.
+1. Vytvoří nový účet Data Lake Storage Gen2 pomocí `--hierarchical-namespace true` příznaku.
 
 ```azurecli
 az login
@@ -136,9 +136,9 @@ az storage account create --name <STORAGEACCOUNTNAME> \
     --kind StorageV2 --hierarchical-namespace true
 ```
 
-Dále se přihlaste k portálu. Přidejte novou uživatelem přiřazenou spravovanou identitu do role **přispěvatele dat objektů blob úložiště** v účtu úložiště, jak je popsáno v kroku 3 v části [Použití portálu Azure](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Potom se přihlaste k portálu. Přidejte do role **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště novou spravovanou identitu přiřazenou uživatelem, jak je popsáno v kroku 3 tématu [použití Azure Portal](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
-Po přiřazení role pro spravovanou identitu přiřazenou uživateli nasadíte šablonu pomocí následujícího fragmentu kódu.
+Po přiřazení role pro spravovanou identitu přiřazenou uživateli nasaďte šablonu pomocí následujícího fragmentu kódu.
 
 ```azurecli
 az group deployment create --name HDInsightADLSGen2Deployment \
@@ -147,37 +147,37 @@ az group deployment create --name HDInsightADLSGen2Deployment \
     --parameters parameters.json
 ```
 
-## <a name="create-a-cluster-with-data-lake-storage-gen2-through-azure-powershell"></a>Vytvoření clusteru pomocí služby Data Lake Storage Gen2 prostřednictvím Azure PowerShellu
+## <a name="create-a-cluster-with-data-lake-storage-gen2-through-azure-powershell"></a>Vytvoření clusteru pomocí Data Lake Storage Gen2 přes Azure PowerShell
 
-Použití PowerShellu k vytvoření clusteru HDInsight pomocí Azure Data Lake Storage Gen2 není momentálně podporované.
+Použití PowerShellu k vytvoření clusteru HDInsight s Azure Data Lake Storage Gen2 není aktuálně podporováno.
 
-## <a name="access-control-for-data-lake-storage-gen2-in-hdinsight"></a>Řízení přístupu pro Úložiště datových jezer Gen2 v HDInsightu
+## <a name="access-control-for-data-lake-storage-gen2-in-hdinsight"></a>Řízení přístupu pro Data Lake Storage Gen2 ve službě HDInsight
 
-### <a name="what-kinds-of-permissions-does-data-lake-storage-gen2-support"></a>Jaké typy oprávnění podporuje Data Lake Storage Gen2?
+### <a name="what-kinds-of-permissions-does-data-lake-storage-gen2-support"></a>Jaké druhy oprávnění podporuje Data Lake Storage Gen2 podporu?
 
-Data Lake Storage Gen2 používá model řízení přístupu, který podporuje jak řízení přístupu na základě rolí (RBAC) a POSIX podobné seznamy řízení přístupu (ACLs). Data Lake Storage Gen1 podporuje seznamy řízení přístupu pouze pro řízení přístupu k datům.
+Data Lake Storage Gen2 používá model řízení přístupu, který podporuje řízení přístupu na základě role (RBAC) a seznamy řízení přístupu (ACL) typu POSIX. Data Lake Storage Gen1 podporuje seznamy řízení přístupu pouze pro řízení přístupu k datům.
 
-RBAC používá přiřazení rolí efektivně použít sady oprávnění pro uživatele, skupiny a instanční objekty pro prostředky Azure. Tyto prostředky Azure jsou obvykle omezené na prostředky nejvyšší úrovně (například účty Azure Storage). Pro Azure Storage a také Data Lake Storage Gen2, tento mechanismus byl rozšířen na prostředek systému souborů.
+RBAC pomocí přiřazení rolí efektivně aplikuje sady oprávnění pro uživatele, skupiny a instanční objekty pro prostředky Azure. Tyto prostředky Azure jsou obvykle omezené na prostředky nejvyšší úrovně (například účty Azure Storage). Pro Azure Storage a také Data Lake Storage Gen2 tento mechanismus byl rozšířen na prostředek systému souborů.
 
- Další informace o oprávněních k souborům pomocí RBAC naleznete v [tématu Řízení přístupu na základě rolí Azure (RBAC).](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)
+ Další informace o oprávněních k souborům pomocí RBAC najdete v tématu [řízení přístupu na základě role (RBAC) v Azure](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
 
-Další informace o oprávněních k souborům pomocí seznamů ACl naleznete v [tématu Access control lists on files and s.](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)
+Další informace o oprávněních k souborům pomocí seznamů řízení přístupu najdete v tématu [seznam řízení přístupu pro soubory a adresáře](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 
-### <a name="how-do-i-control-access-to-my-data-in-data-lake-storage-gen2"></a>Jak můžu řídit přístup ke svým datům v aplikaci Data Lake Storage Gen2?
+### <a name="how-do-i-control-access-to-my-data-in-data-lake-storage-gen2"></a>Návody řízení přístupu k datům v Data Lake Storage Gen2?
 
-Schopnost vašeho clusteru HDInsight přistupovat k souborům v aplikaci Data Lake Storage Gen2 je řízena pomocí spravovaných identit. Spravovaná identita je identita registrovaná ve službě Azure Active Directory (Azure AD), jejíž přihlašovací údaje spravuje Azure. Se spravovanými identitami nemusíte registrovat instanční objekty ve službě Azure AD ani udržovat přihlašovací údaje, jako jsou certifikáty.
+Schopnost clusteru HDInsight přistupovat k souborům v Data Lake Storage Gen2 je řízena prostřednictvím spravovaných identit. Spravovaná identita je identita registrovaná v Azure Active Directory (Azure AD), jejíž přihlašovací údaje jsou spravované v Azure. U spravovaných identit nemusíte registrovat instanční objekty ve službě Azure AD ani uchovávat přihlašovací údaje, jako jsou certifikáty.
 
-Služby Azure mají dva typy spravovaných identit: systémově přiřazené a přiřazené uživatelem. HDInsight používá uživatelem přiřazené spravované identity pro přístup k datově jezeru Storage Gen2. Spravovaná identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure.
+Služby Azure mají dva typy spravovaných identit: přiřazeno systémem a přiřazeno uživateli. HDInsight používá pro přístup k Data Lake Storage Gen2 spravované identity přiřazené uživatelem. Spravovaná identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure.
 
-Životní cyklus identity přiřazené uživatelem se spravuje nezávisle na životním cyklu instancí služeb Azure, ke kterým je přiřazená. Další informace o spravovaných identitách najdete [v tématu Jak fungují spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work).
+Životní cyklus identity přiřazené uživatelem se spravuje nezávisle na životním cyklu instancí služeb Azure, ke kterým je přiřazená. Další informace o spravovaných identitách najdete v tématu [Jak fungují spravované identity prostředků Azure?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work).
 
-### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>Jak nastavím oprávnění pro uživatele Azure AD k dotazování dat v Gen2 úložiště datového jezera pomocí Hive nebo jiných služeb?
+### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>Návody nastavení oprávnění pro uživatele Azure AD k dotazování na data v Data Lake Storage Gen2 pomocí podregistru nebo jiných služeb?
 
-Chcete-li nastavit oprávnění pro uživatele k dotazování dat, použijte skupiny zabezpečení Azure AD jako přiřazené objektu zabezpečení v seznamu ACL. Nepřiřazujte přímo oprávnění k přístupu k souborům jednotlivým uživatelům nebo instančním objektům. Při použití skupiny zabezpečení Azure AD řídit tok oprávnění, můžete přidat a odebrat uživatele nebo instanční objekty bez opětovného použití Seznamů ACL pro celou strukturu adresáře. Jenom je třeba přidat nebo odebrat uživatele z příslušné skupiny zabezpečení Azure AD. Seznamy ACL nejsou zděděny, takže opětovné použití seznamů ACL vyžaduje aktualizaci seznamu ACL v každém souboru a podadresáři.
+Pokud chcete nastavit oprávnění pro uživatele k dotazování na data, použijte skupiny zabezpečení Azure AD jako přiřazený objekt zabezpečení v seznamech ACL. Nepřiřazujte přímo jednotlivým uživatelům nebo instančním objektům oprávnění k přístupu k souborům. Když používáte skupiny zabezpečení Azure AD k řízení toku oprávnění, můžete přidávat a odebírat uživatele nebo instanční objekty bez nutnosti znovu použít seznamy ACL pro celou adresářovou strukturu. Stačí přidat nebo odebrat uživatele z příslušné skupiny zabezpečení Azure AD. Seznamy ACL nejsou zděděné, takže při opakovaném použití seznamů ACL je potřeba aktualizovat seznam ACL u všech souborů a podadresářů.
 
 ## <a name="access-files-from-the-cluster"></a>Přístup k souborům z clusteru
 
-Existuje několik způsobů, jak získat přístup k souborům v datovém úložišti Data Lake Storage Gen2 z clusteru HDInsight.
+Existuje několik způsobů, jak můžete přistupovat k souborům v Data Lake Storage Gen2 z clusteru HDInsight.
 
 * **Pomocí plně kvalifikovaného názvu**. S tímto přístupem zadáváte úplnou cestu k souboru, ke kterému chcete získat přístup.
 
@@ -185,7 +185,7 @@ Existuje několik způsobů, jak získat přístup k souborům v datovém úlož
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **Pomocí zkráceného formátu cesty**. Pomocí tohoto přístupu nahradíte cestu až ke kořenovému adresáři clusteru:
+* **Pomocí zkráceného formátu cesty**. Pomocí tohoto přístupu nahradíte cestu až ke kořenu clusteru:
 
     ```
     abfs:///<file.path>/
@@ -199,17 +199,17 @@ Existuje několik způsobů, jak získat přístup k souborům v datovém úlož
 
 ### <a name="data-access-examples"></a>Příklady přístupu k datům
 
-Příklady jsou založeny na [ssh připojení](./hdinsight-hadoop-linux-use-ssh-unix.md) k hlavnímu uzlu clusteru. Příklady používají všechna tři schémata URI. Nahraďte `CONTAINERNAME` a `STORAGEACCOUNT` s příslušnými hodnotami
+Příklady jsou založené na [připojení SSH](./hdinsight-hadoop-linux-use-ssh-unix.md) k hlavnímu uzlu clusteru. V příkladech se používají všechna tři schémata identifikátoru URI. Nahradit `CONTAINERNAME` a `STORAGEACCOUNT` za relevantní hodnoty
 
-#### <a name="a-few-hdfs-commands"></a>Několik příkazů hdfs
+#### <a name="a-few-hdfs-commands"></a>Několik příkazů HDFS
 
-1. Vytvořte soubor v místním úložišti.
+1. Vytvoří soubor v místním úložišti.
 
     ```bash
     touch testFile.txt
     ```
 
-1. Vytvořte adresáře v clusterovém úložišti.
+1. Vytvořte adresáře v úložišti clusteru.
 
     ```bash
     hdfs dfs -mkdir abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
@@ -217,7 +217,7 @@ Příklady jsou založeny na [ssh připojení](./hdinsight-hadoop-linux-use-ssh-
     hdfs dfs -mkdir /sampledata3/
     ```
 
-1. Zkopírujte data z místního úložiště do clusterového úložiště.
+1. Kopírovat data z místního úložiště do úložiště clusteru.
 
     ```bash
     hdfs dfs -copyFromLocal testFile.txt  abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
@@ -225,7 +225,7 @@ Příklady jsou založeny na [ssh připojení](./hdinsight-hadoop-linux-use-ssh-
     hdfs dfs -copyFromLocal testFile.txt  /sampledata3/
     ```
 
-1. Seznam obsahu adresáře v úložišti clusteru.
+1. Vypíše obsah adresáře v úložišti clusteru.
 
     ```bash
     hdfs dfs -ls abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
@@ -233,9 +233,9 @@ Příklady jsou založeny na [ssh připojení](./hdinsight-hadoop-linux-use-ssh-
     hdfs dfs -ls /sampledata3/
     ```
 
-#### <a name="creating-a-hive-table"></a>Vytvoření tabulky Podregistru
+#### <a name="creating-a-hive-table"></a>Vytvoření tabulky podregistru
 
-Pro ilustrativní účely jsou zobrazena tři umístění souborů. Pro skutečné spuštění použijte pouze `LOCATION` jednu z položek.
+Pro ilustrativní účely se zobrazí tři umístění souborů. Pro skutečné provedení použijte jenom jednu z `LOCATION` položek.
 
 ```hql
 DROP TABLE myTable;
@@ -256,6 +256,6 @@ LOCATION '/example/data/';
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Integrace Azure HDInsight s náhledem Data Lake Storage Gen2 – ACL a aktualizace zabezpečení](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
-* [Úvod do úložiště datových jezer Azure Gen2](../storage/blobs/data-lake-storage-introduction.md)
-* [Kurz: Extrahování, transformace a načítání dat pomocí interaktivního dotazu v Azure HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [Integrace Azure HDInsight s Data Lake Storage Gen2 Preview – seznam ACL a aktualizace zabezpečení](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
+* [Úvod do Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
+* [Kurz: extrakce, transformace a načtení dat pomocí interaktivního dotazu ve službě Azure HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

@@ -16,5 +16,5 @@ ms.lasthandoff: 04/16/2020
 ms.locfileid: "81411905"
 ---
 > [!NOTE]
-> Funkce Poznámkové bloky (preview) byla *odebrána 13.* Odebrání karty Poznámkové bloky a souborů uživatelských poznámkových bloků se aktuálně zavádí do oblastí Azure po celém světě.
+> Funkce poznámkových bloků (Preview) byla odebrána od *dubna 13 2020*. Odebrání karty poznámkových bloků a uživatelských souborů poznámkového bloku se v současné době zavádí do oblastí Azure po celém světě.
       

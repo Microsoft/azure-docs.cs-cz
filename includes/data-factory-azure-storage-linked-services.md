@@ -12,16 +12,16 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "75468626"
 ---
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-**Propojená služba Azure Storage** umožňuje propojit účet úložiště Azure s továrně dat Azure pomocí **klíče účtu**, který poskytuje datové továrně globální přístup k Úložišti Azure. Následující tabulka obsahuje popis prvků JSON specifických pro propojenou službu Azure Storage.
+**Propojená služba Azure Storage** umožňuje propojit účet Azure Storage s objektem pro vytváření dat Azure pomocí **klíče účtu**, který poskytuje datovou továrnu s globálním přístupem k Azure Storage. Následující tabulka uvádí popis pro prvky JSON specifické pro Azure Storage propojenou službu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type |Vlastnost type musí být nastavena na: **AzureStorage.** |Ano |
+| type |Vlastnost Type musí být nastavená na: **AzureStorage** . |Ano |
 | připojovací řetězec |Zadejte informace potřebné pro připojení k úložišti Azure pro vlastnost connectionString. |Ano |
 
-Informace o tom, jak načíst přístupové klíče účtu úložiště, najdete v [tématu Správa přístupových klíčů účtu úložiště](../articles/storage/common/storage-account-keys-manage.md).
+Informace o tom, jak načíst přístupové klíče účtu úložiště, najdete v tématu [Správa přístupových](../articles/storage/common/storage-account-keys-manage.md)klíčů účtu úložiště.
 
-**Příklad:**  
+**Případě**  
 
 ```json
 {
@@ -35,24 +35,24 @@ Informace o tom, jak načíst přístupové klíče účtu úložiště, najdete
 }
 ```
 
-### <a name="azure-storage-sas-linked-service"></a>Propojená služba Azure Storage Sas
-Sdílený přístupový podpis (SAS) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. Umožňuje udělit klientovi omezená oprávnění k objektům v účtu úložiště po určitou dobu a se zadanou sadou oprávnění, aniž byste museli sdílet přístupové klíče účtu. SAS je identifikátor URI, který ve svých parametrech dotazu zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště. Pro přístup k prostředkům úložiště s SAS, klient potřebuje pouze předat v SAS příslušného konstruktoru nebo metody. Další informace o SAS najdete [v tématu udělení omezeného přístupu k prostředkům Úložiště Azure pomocí sdílených přístupových podpisů (SAS).](../articles/storage/common/storage-sas-overview.md)
+### <a name="azure-storage-sas-linked-service"></a>Azure Storage propojená služba SAS
+Sdílený přístupový podpis (SAS) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. Umožňuje klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po určitou dobu a se zadanou sadou oprávnění bez nutnosti sdílení přístupových klíčů k účtu. SAS je identifikátor URI, který v parametrech dotazu zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště. Chcete-li získat přístup k prostředkům úložiště pomocí SAS, klient musí předat SAS pouze příslušnému konstruktoru nebo metodě. Další informace o SAS najdete v tématu [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](../articles/storage/common/storage-sas-overview.md).
 
 > [!IMPORTANT]
-> Azure Data Factory teď podporuje **jenom službu SAS,** ale ne účet SAS. Všimněte si, že adresa URL SAS generable z portálu Azure nebo Průzkumníka úložiště je účet SAS, který není podporován.
+> Azure Data Factory teď podporuje jenom **SAS služby** , ale ne účet SAS. Všimněte si, že adresa URL SAS generable z Azure Portal nebo Průzkumník služby Storage je SAS účtu, který není podporovaný.
 
 > [!TIP]
-> Můžete spustit pod příkazy Prostředí PowerShell generovat služby SAS pro váš účet úložiště (nahradit zástupné symboly a udělit potřebná oprávnění):`$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> Můžete provést následující příkazy prostředí PowerShell a vygenerovat pro svůj účet úložiště SAS služby (nahradíte držitele místa a udělí potřebné oprávnění):`$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-Propojená služba Azure Storage SAS umožňuje propojit účet úložiště Azure s totodatovou továrně dat Azure pomocí sdíleného přístupového podpisu (SAS). Poskytuje datové továrny s omezený/časově vázaný přístup ke všem/konkrétní prostředky (objekt blob/kontejner) v úložišti. Následující tabulka obsahuje popis prvků JSON specifických pro propojenou službu Azure Storage SAS. 
+Propojená služba Azure Storage SAS umožňuje propojit účet Azure Storage s datovou továrnou Azure pomocí sdíleného přístupového podpisu (SAS). Poskytuje datovou továrnu s omezeným/časově vázaným přístupem ke všem/konkrétním prostředkům (objektům blob nebo kontejneru) v úložišti. Následující tabulka uvádí popis pro prvky JSON specifické pro Azure Storage propojenou službu SAS. 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type |Vlastnost type musí být nastavena na: **AzureStorageSas** |Ano |
-| sasUri |Zadejte identifikátor URI sdíleného přístupového podpisu pro prostředky úložiště Azure, jako je objekt blob, kontejner nebo tabulka.  |Ano |
+| type |Vlastnost Type musí být nastavená na: **AzureStorageSas** . |Ano |
+| sasUri |Zadejte identifikátor URI sdíleného přístupového podpisu k prostředkům Azure Storage, jako je například objekt blob, kontejner nebo tabulka.  |Ano |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -68,7 +68,7 @@ Propojená služba Azure Storage SAS umožňuje propojit účet úložiště Azu
 
 Při vytváření **identifikátoru URI SAS**zvažte následující:  
 
-* Nastavte příslušná **oprávnění** pro čtení a zápis u objektů na základě toho, jak se propojená služba (čtení, zápis, čtení a zápis) používá ve vaší datové továrně.
-* Nastavte **dobu expirace** odpovídajícím způsobem. Ujistěte se, že přístup k objektům Služby Azure Storage nevyprší během aktivní období kanálu.
-* Uri by měl být vytvořen na pravé úrovni kontejneru/objektu blob nebo tabulky na základě potřeby. Identifikátor SAS Uri pro objekt blob Azure umožňuje službě Data Factory přístup k tomuto konkrétnímu objektu blob. Identifikátor SAS Uri pro kontejner objektů blob Azure umožňuje službě Data Factory iterate prostřednictvím objektů BLOB v tomto kontejneru. Pokud potřebujete později poskytnout přístup k více/méně objektům nebo aktualizovat identifikátor URI SAS, nezapomeňte aktualizovat propojenou službu pomocí nového identifikátoru URI.   
+* Nastavte vhodná **oprávnění** ke čtení a zápisu pro objekty na základě způsobu, jakým se ve vaší datové továrně používá propojená služba (čtení, zápis, čtení a zápis).
+* Nastavte odpovídající **čas vypršení platnosti** . Ujistěte se, že v aktivním období kanálu není vypršet přístup k Azure Storage objektům.
+* Identifikátor URI by měl být vytvořen na pravé úrovni kontejneru nebo objektu BLOB nebo tabulky podle potřeby. Identifikátor URI SAS pro objekt blob Azure umožňuje službě Data Factory získat přístup k tomuto konkrétnímu objektu BLOB. Identifikátor URI SAS pro kontejner objektů BLOB v Azure umožňuje službě Data Factory iterovat objekty BLOB v tomto kontejneru. Pokud potřebujete poskytnout přístup více nebo méně objektů později nebo aktualizovat identifikátor URI SAS, nezapomeňte aktualizovat propojenou službu novým identifikátorem URI.   
 

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření závislostí úkolů pro spouštění úloh – Azure Batch
-description: Vytvořte úkoly, které závisí na dokončení dalších úkolů pro zpracování stylu MapReduce a podobných úloh velkých objemů dat v Azure Batch.
+title: Vytvoření závislostí úloh pro spouštění úloh – Azure Batch
+description: Vytvořte úkoly, které závisí na dokončení dalších úloh pro zpracování MapReduce stylu a podobných úloh velkých objemů dat v Azure Batch.
 services: batch
 documentationcenter: .net
 author: LauraBrenner
@@ -21,26 +21,26 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022898"
 ---
-# <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Vytvoření závislostí mezi úkoly pro spouštění úloh závislých na jiných úkolech
+# <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Vytváření závislostí úloh pro spouštění úloh, které jsou závislé na jiných úkolech
 
-Závislosti mezi úkoly můžete definovat a spustit úlohu nebo sadu úkolů až po dokončení nadřazeného úkolu. Některé scénáře, kde jsou užitečné závislosti mezi úkoly patří:
+Můžete definovat závislosti úkolů pro spuštění úlohy nebo sady úkolů až po dokončení nadřazené úlohy. Mezi scénáře, kdy jsou užitečné závislosti úloh, patří:
 
-* MapReduce-styl úlohy v cloudu.
-* Úlohy, jejichž úlohy zpracování dat mohou být vyjádřeny jako řízený acyklický graf (DAG).
-* Procesy předběžného vykreslování a následného vykreslování, kde musí být každá úloha dokončena před zahájením další úlohy.
-* Všechny ostatní úlohy, ve kterých navazující úkoly závisí na výstupu upstream úkoly.
+* MapReduce úlohy ve stylu v cloudu.
+* Úlohy, jejichž úlohy zpracování dat lze vyjádřit jako orientovaný acyklického graf (DAG).
+* Procesy před vykreslením a následným vykreslením, kde každý úkol musí být dokončen před zahájením další úlohy.
+* Jakákoli jiná úloha, ve které jsou podřízené úlohy závislé na výstupu nadřazených úloh.
 
-Pomocí závislostí dávkových úkolů můžete vytvořit úkoly, které jsou naplánovány pro spuštění na výpočetních uzlech po dokončení jednoho nebo více nadřazených úloh. Můžete například vytvořit úlohu, která vykreslí každý snímek 3D filmu se samostatnými paralelními úkoly. Poslední úkol – "úloha sloučení" – sloučí vykreslené snímky do celého filmu až po úspěšném vykreslení všech snímků.
+Pomocí závislostí úkolů služby Batch můžete vytvořit úlohy, u kterých je naplánováno spouštění na výpočetních uzlech po dokončení jedné nebo více nadřazených úloh. Můžete například vytvořit úlohu, která vykreslí každý snímek 3D videa s oddělenými paralelními úkoly. Finální úkol – "úloha sloučení" – sloučí vykreslené snímky do kompletního filmu až po úspěšném vykreslení všech rámců.
 
-Ve výchozím nastavení jsou závislé úlohy naplánovány k provedení až po úspěšném dokončení nadřazené úlohy. Můžete určit akci závislosti, která přepíše výchozí chování a spustí úlohy, když se nadřazená úloha nezdaří. Podrobnosti najdete v části [Akce závislostí.](#dependency-actions)  
+Ve výchozím nastavení jsou závislé úlohy naplánované pro provádění pouze po úspěšném dokončení nadřazené úlohy. Můžete zadat akci závislosti, která přepíše výchozí chování a spustí úlohy, pokud dojde k chybě nadřazené úlohy. Podrobnosti najdete v části [Akce závislosti](#dependency-actions) .  
 
-Můžete vytvořit úkoly, které závisí na jiných úkolech ve vztahu 1:1 nebo 1:N. Můžete také vytvořit závislost rozsahu, kde úkol závisí na dokončení skupiny úkolů v rámci zadaného rozsahu ID úkolů. Tyto tři základní scénáře můžete zkombinovat a vytvořit tak relace N:N.
+Můžete vytvořit úkoly, které jsou závislé na jiných úkolech v relaci 1:1 nebo 1: n. Můžete také vytvořit závislost rozsahu, kde úloha závisí na dokončení skupiny úkolů v rámci zadaného rozsahu ID úloh. Tyto tři základní scénáře můžete kombinovat a vytvořit tak relace m:n.
 
-## <a name="task-dependencies-with-batch-net"></a>Závislosti úloh s dávkou .NET
-V tomto článku popisujeme, jak nakonfigurovat závislosti mezi úkoly pomocí knihovny [Batch .NET.][net_msdn] Nejprve vám ukážeme, jak [povolit závislost na úlohách](#enable-task-dependencies) a potom ukážeme, jak [nakonfigurovat úkol se závislostmi](#create-dependent-tasks). Popisujeme také, jak určit akci závislosti pro spuštění závislých úloh, pokud se nadřazený systém nezdaří. Nakonec budeme diskutovat o [scénářích závislostí,](#dependency-scenarios) které podporuje Batch.
+## <a name="task-dependencies-with-batch-net"></a>Závislosti úkolů pomocí batch .NET
+V tomto článku se zabýváme konfigurací závislostí úloh pomocí knihovny [Batch .NET][net_msdn] . Nejprve vám ukážeme, jak [Povolit závislosti úkolů](#enable-task-dependencies) na vašich úlohách, a pak Ukázat, jak [nakonfigurovat úlohu se závislostmi](#create-dependent-tasks). Také popíšeme, jak zadat akci závislosti pro spuštění závislých úloh, pokud nadřazený objekt neproběhne úspěšně. Nakonec se podíváme na [scénáře závislosti](#dependency-scenarios) , které tato dávková podpora podporuje.
 
-## <a name="enable-task-dependencies"></a>Povolení závislostí mezi úkoly
-Chcete-li použít závislosti úloh v aplikaci Batch, musíte nejprve nakonfigurovat úlohu tak, aby používala závislosti mezi úkoly. V aplikaci Batch .NET povolte v [cloudové práci][net_cloudjob] `true`nastavením [vlastnosti UsesTaskDependencies][net_usestaskdependencies] na:
+## <a name="enable-task-dependencies"></a>Povolit závislosti úkolů
+Chcete-li použít závislosti úkolů v aplikaci Batch, je nutné nejprve nakonfigurovat úlohu, aby používala závislosti úkolů. V rozhraní Batch .NET ho povolte na [vlastnosti cloudjob][net_cloudjob] nastavením jeho vlastnosti [UsesTaskDependencies][net_usestaskdependencies] na `true`:
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -50,10 +50,10 @@ CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
 unboundJob.UsesTaskDependencies = true;
 ```
 
-V předchozím fragmentu kódu je "batchClient" instancí třídy [BatchClient.][net_batchclient]
+V předchozím fragmentu kódu je "batchClient" instancí třídy [batchClient][net_batchclient] .
 
-## <a name="create-dependent-tasks"></a>Vytvoření závislých úkolů
-Chcete-li vytvořit úkol, který závisí na dokončení jednoho nebo více nadřazených úkolů, můžete určit, že úkol "závisí na" ostatní úkoly. V části Batch .NET nakonfigurujte [cloudtask][net_cloudtask]. [DependsOn][net_dependson] vlastnost s instancí [TaskDependencies třídy:][net_taskdependencies]
+## <a name="create-dependent-tasks"></a>Vytváření závislých úloh
+Chcete-li vytvořit úkol, který závisí na dokončení jedné nebo více nadřazených úloh, můžete určit, že úkol závisí na dalších úkolech. V rozhraní Batch .NET nakonfigurujte [CloudTask][net_cloudtask]. Vlastnost [DependsOn][net_dependson] s instancí třídy [TaskDependencies][net_taskdependencies] :
 
 ```csharp
 // Task 'Flowers' depends on completion of both 'Rain' and 'Sun'
@@ -64,29 +64,29 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 },
 ```
 
-Tento fragment kódu vytvoří závislý úkol s ID úkolu "Květiny". Úkol "Květiny" závisí na úkolech "Déšť" a "Slunce". Úloha "Květiny" bude naplánováno spuštění na výpočetní uzel pouze po úkoly "Déšť" a "Slunce" byly úspěšně dokončeny.
+Tento fragment kódu vytvoří závislý úkol s ID úlohy "květiny". Úloha "květiny" závisí na úkolech "deště" a "Sun". Úloha "květiny" bude naplánována na výpočetní uzel až po úspěšném dokončení úloh "deště" a "Sun".
 
 > [!NOTE]
-> Ve výchozím nastavení je úloha považována za úspěšně dokončenou, pokud je ve **stavu dokončení** a jeho **ukončovací kód** je `0`. V batch .NET to znamená [CloudTask][net_cloudtask]. [Hodnota][net_taskstate] vlastnosti `Completed` State a [CloudTask TaskExecutionInformation][net_taskexecutioninformation]. [Hodnota][net_exitcode] vlastnosti `0`ExitCode je . Postup, jak to změnit, naleznete v části [Akce závislostí.](#dependency-actions)
+> Ve výchozím nastavení se úkol považuje za úspěšně dokončený, když je ve stavu **dokončeno** a jeho **ukončovací kód** je `0`. V dávce .NET to znamená [CloudTask][net_cloudtask]. Hodnota vlastnosti [State][net_taskstate] `Completed` a CloudTask [TaskExecutionInformation][net_taskexecutioninformation]. Hodnota vlastnosti [ExitCode][net_exitcode] je `0`. Informace o tom, jak to změnit, najdete v části [Akce závislosti](#dependency-actions) .
 > 
 > 
 
-## <a name="dependency-scenarios"></a>Scénáře závislostí
-Existují tři základní scénáře závislostí úkolů, které můžete použít v Azure Batch: one-to-one, one-to-one a task ID závislost. Ty lze kombinovat poskytnout čtvrtý scénář, N:N.
+## <a name="dependency-scenarios"></a>Scénáře závislosti
+Existují tři základní scénáře závislosti úloh, které můžete použít v Azure Batch: 1:1, 1:1 a rozsah ID úlohy. Je možné je kombinovat tak, aby poskytovaly čtvrtý scénář, mnoho až mnoho.
 
-| Scénář&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Příklad |  |
+| Případě&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Příklad |  |
 |:---:| --- | --- |
-|  [Relace jednoho k jednomu jinému](#one-to-one) |*taskB* závisí na *taskA* <p/> *taskB* nebude naplánováno k provedení, dokud *taskA* úspěšně nedokončí |![Diagram: závislost mezi úkoly 1:1][1] |
-|  [1:N](#one-to-many) |*taskC* závisí jak na *taskA,* tak na *taskB* <p/> *taskC* nebude naplánováno k provedení, dokud *taskA* a *taskB* úspěšně dokončeny |![Diagram: závislost mezi úkoly 1:N][2] |
-|  [Rozsah ID id úkolu](#task-id-range) |*taskD* závisí na řadě úkolů <p/> *taskD* nebude naplánováno k provedení, dokud nebudou úspěšně dokončeny úkoly s ID *1* až *10.* |![Diagram: Závislost rozsahu id úkolu][3] |
+|  [Relace jednoho k jednomu jinému](#one-to-one) |*úkolb* závisí na *úloze* <p/> *úkolb* nebude naplánováno na spuštění, dokud se *úloha* ' úspěšně nedokončila. |![Diagram: závislost mezi jednotlivými úkoly][1] |
+|  [1: n](#one-to-many) |*úkolc* závisí na *úloze* a na *úkolb* <p/> *úkolc* nebude naplánováno na spuštění, dokud se úspěšně nedokončí *úlohy Task* a *úkolb* . |![Diagram: závislost úlohy 1: n][2] |
+|  [Rozsah ID úlohy](#task-id-range) |*úkoly* jsou závislé na rozsahu úkolů. <p/> *úlohy* nebudou naplánovány na provádění, dokud nebudou úspěšně dokončeny úlohy s ID *1* až *10* . |![Diagram: závislost rozsahu ID úkolu][3] |
 
 > [!TIP]
-> Můžete vytvořit relace **N:N,** například kde úkoly C, D, E a F závisí na úkolech A a B. To je užitečné, například v paralelizovaných scénářích předběžného zpracování, kde vaše podřízené úkoly závisí na výstupu více upstream úloh.
+> Můžete vytvořit relace **m:n** , například kde úkoly C, D, E a F jsou závislé na úkolech a a B. To je užitečné, například v paralelních scénářích předběžného zpracování, kde se vaše podřízené úlohy liší v závislosti na výstupu více nadřazených úloh.
 > 
-> V příkladech v této části se závislá úloha spustí až po úspěšném dokončení nadřazených úloh. Toto chování je výchozí chování pro závislé úlohy. Závislý úkol můžete spustit po selhání nadřazené úlohy zadáním akce závislosti, která přepíše výchozí chování. Podrobnosti najdete v části [Akce závislostí.](#dependency-actions)
+> V příkladech v této části se závislá úloha spustí až po úspěšném dokončení nadřazených úloh. Toto chování je výchozím chováním závislé úlohy. Závislý úkol můžete spustit po chybě nadřazené úlohy zadáním akce závislosti pro přepsání výchozího chování. Podrobnosti najdete v části [Akce závislosti](#dependency-actions) .
 
 ### <a name="one-to-one"></a>Relace jednoho k jednomu jinému
-Ve vztahu 1:1 závisí úkol na úspěšném dokončení jednoho nadřazeného úkolu. Chcete-li vytvořit závislost, zadejte jedno ID úkolu [taskdependencies][net_taskdependencies]. [OnId][net_onid] statickou metodu při naplnění [DependsOn][net_dependson] vlastnost [CloudTask][net_cloudtask].
+V relaci 1:1 závisí úkol na úspěšném dokončení jedné nadřazené úlohy. Pokud chcete vytvořit závislost, poskytněte [TaskDependencies][net_taskdependencies]jedno ID úlohy. [OnId][net_onid] statická metoda, když naplníte vlastnost [DependsOn][net_dependson] třídy [CloudTask][net_cloudtask].
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -99,8 +99,8 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 },
 ```
 
-### <a name="one-to-many"></a>1:N
-Ve vztahu 1:N závisí úkol na dokončení více nadřazených úkolů. Chcete-li vytvořit závislost, zadejte kolekci ID úloh [taskdependencies][net_taskdependencies]. [OnIds][net_onids] statickou metodu při naplnění [DependsOn][net_dependson] vlastnost [CloudTask][net_cloudtask].
+### <a name="one-to-many"></a>1: n
+V relaci 1: n závisí úkol na dokončení více nadřazených úkolů. Chcete-li vytvořit závislost, poskytněte [TaskDependencies][net_taskdependencies]kolekci ID úloh. [OnIds][net_onids] statická metoda, když naplníte vlastnost [DependsOn][net_dependson] třídy [CloudTask][net_cloudtask].
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -115,16 +115,16 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 },
 ``` 
 
-### <a name="task-id-range"></a>Rozsah ID id úkolu
-V závislosti na řadě nadřazených úkolů závisí úkol na dokončení úkolů, jejichž ID leží v rozsahu.
-Chcete-li vytvořit závislost, zadejte ID prvního a posledního úkolu v rozsahu [taskdependencies][net_taskdependencies]. [OnIdRange][net_onidrange] statickou metodu při naplnění [DependsOn][net_dependson] vlastnost [CloudTask][net_cloudtask].
+### <a name="task-id-range"></a>Rozsah ID úlohy
+V závislosti na rozsahu nadřazených úkolů závisí úkol na dokončení úloh, jejichž ID leží v rámci určitého rozsahu.
+Chcete-li vytvořit závislost, zadejte ID první a poslední úlohy v rozsahu pro [TaskDependencies][net_taskdependencies]. [OnIdRange][net_onidrange] statická metoda, když naplníte vlastnost [DependsOn][net_dependson] třídy [CloudTask][net_cloudtask].
 
 > [!IMPORTANT]
-> Při použití rozsahů ID úkolů pro vaše závislosti budou rozsahem vybrány pouze úkoly s ID představujícími celé hodnoty. Takže rozsah `1..10` vybere `3` úkoly `7`a `5flamingoes`, ale ne . 
+> Pokud pro závislosti použijete rozsah ID úkolu, budou rozsahem vybrány pouze úlohy s ID reprezentujícími celočíselné hodnoty. Rozsah `1..10` pak bude vybírat úlohy `3` `7`, ale ne. `5flamingoes` 
 > 
-> Počáteční nuly nejsou významné při vyhodnocování závislostí rozsahu, takže úkoly s identifikátory `4`řetězce a `04` `004` všechny budou *v* rozsahu a všechny budou považovány za úkol `4`, takže první, který dokončí, uspokojí závislost.
+> Úvodní nuly nejsou významné při vyhodnocování závislostí rozsahu, takže úkoly s `4`identifikátory řetězců `04` a `004` budou všechny *v* rozsahu a všechny budou považovány za úlohu `4`, takže první z nich bude vyhovovat závislosti.
 > 
-> Každý úkol v rozsahu musí splňovat závislost, buď úspěšné dokončení nebo dokončení s chybou, která je mapována na akci závislosti **nastavenou**na Satisfy . Podrobnosti najdete v části [Akce závislostí.](#dependency-actions)
+> Každý úkol v rozsahu musí splňovat závislosti, a to buď pomocí úspěšného dokončení, nebo dokončením selhání namapovaného na akci závislosti nastavenou na hodnotu **vyhovující**. Podrobnosti najdete v části [Akce závislosti](#dependency-actions) .
 >
 >
 
@@ -146,28 +146,28 @@ new CloudTask("4", "cmd.exe /c echo 4")
 },
 ```
 
-## <a name="dependency-actions"></a>Akce závislostí
+## <a name="dependency-actions"></a>Akce závislosti
 
-Ve výchozím nastavení se závislý úkol nebo sada úkolů spustí až po úspěšném dokončení nadřazeného úkolu. V některých případech můžete chtít spustit závislé úlohy i v případě, že nadřazený úkol selže. Výchozí chování můžete přepsat zadáním akce závislosti. Akce závislosti určuje, zda je závislý úkol způsobilý ke spuštění na základě úspěchu nebo neúspěchu nadřazené úlohy. 
+Ve výchozím nastavení se závislý úkol nebo sada úkolů spustí až po úspěšném dokončení nadřazené úlohy. V některých scénářích můžete chtít spustit závislé úlohy i v případě, že dojde k chybě nadřazené úlohy. Výchozí chování můžete přepsat zadáním akce závislosti. Akce závislosti určuje, jestli má být závislý úkol spuštěný, na základě úspěchu nebo neúspěchu nadřazené úlohy. 
 
-Předpokládejme například, že závislý úkol čeká na data z dokončení upstream úkolu. Pokud se úloha upstream nezdaří, může být závislá úloha stále možné spustit pomocí starších dat. V takovém případě může akce závislosti určit, že závislý úkol je způsobilý ke spuštění i přes selhání nadřazené úlohy.
+Předpokládejme například, že závislý úkol čeká na data od dokončení nadřazeného úkolu. Pokud je nadřazený úkol neúspěšný, může být stále možné spustit závislý úkol s použitím starších dat. V takovém případě akce závislosti může určit, že je závislý úkol spuštěný bez ohledu na selhání nadřazené úlohy.
 
-Akce závislosti je založena na výstupní podmínce nadřazeného úkolu. Můžete určit akci závislosti pro některou z následujících podmínek ukončení. pro .NET, naleznete [ExitConditions][net_exitconditions] třídy podrobnosti:
+Akce závislosti vychází z podmínky ukončení pro nadřazenou úlohu. Akci závislosti můžete zadat pro některou z následujících podmínek ukončení. v případě rozhraní .NET si přečtěte podrobnosti o třídě [ExitConditions][net_exitconditions] :
 
-- Dojde-li k chybě předběžného zpracování.
-- Dojde-li k chybě odeslání souboru. Pokud se úloha ukončí s ukončovacím kódem, který byl zadán pomocí **exitCodes** nebo **exitCodeRanges**, a pak narazí na chybu odeslání souboru, má přednost akce určená ukončovacím kódem.
-- Když se úloha ukončí s ukončovacím kódem definovaným vlastností **ExitCodes.**
-- Když se úloha ukončí s ukončovacím kódem, který spadá do rozsahu určeného vlastností **ExitCodeRanges.**
-- Výchozí případ, pokud se úloha ukončí s ukončovacím kódem, který není definován **programy ExitCodes** nebo **ExitCodeRanges**, nebo pokud je úloha ukončena s chybou předběžného zpracování a vlastnost **ÍProcessingError** není nastavena nebo pokud úloha selže s chybou odeslání souboru a vlastnost **FileUploadError** není nastavena. 
+- Když dojde k chybě předběžného zpracování.
+- Když dojde k chybě nahrávání souboru. Pokud se úloha ukončí s ukončovacím kódem, který byl zadán prostřednictvím **exitCodes** nebo **exitCodeRanges**, a poté dojde k chybě odeslání souboru, má přednost akce určená ukončovacím kódem.
+- Když se úloha ukončí s ukončovacím kódem definovaným vlastností **ExitCodes** .
+- Když se úloha ukončí s ukončovacím kódem, který spadá do rozsahu zadaného vlastností **ExitCodeRanges** .
+- Výchozí případ, pokud se úloha ukončí s ukončovacím kódem, který není definován pomocí **ExitCodes** nebo **ExitCodeRanges**, nebo pokud se úloha ukončí s chybou předběžného zpracování a vlastnost **PreProcessingError** není nastavena, nebo pokud úloha selhala s chybou při nahrávání souboru a vlastnost **FileUploadError** není nastavena. 
 
-Chcete-li v rozhraní .NET určit akci závislosti, nastavte [možnost IZP][net_exitoptions]. [Vlastnost DependencyAction][net_dependencyaction] pro podmínku ukončení. Vlastnost **DependencyAction** přebírá jednu ze dvou hodnot:
+Chcete-li zadat akci závislosti v rozhraní .NET, nastavte [ExitOptions][net_exitoptions]. Vlastnost [DependencyAction][net_dependencyaction] pro podmínku Exit. Vlastnost **DependencyAction** přebírá jednu ze dvou hodnot:
 
-- Nastavení **vlastnosti DependencyAction** na **Satisfy** označuje, že závislé úkoly jsou způsobilé ke spuštění, pokud se nadřazený úkol ukončí se zadanou chybou.
-- Nastavení **Vlastnost DependencyAction** na **Block** označuje, že závislé úkoly nejsou způsobilé ke spuštění.
+- Nastavení vlastnosti **DependencyAction** na hodnotu **vyhovuje** znamená, že závislé úlohy mají nárok na spuštění v případě, že nadřazená úloha skončí se zadanou chybou.
+- Nastavením vlastnosti **DependencyAction** na **Block (blokovat** ) se zobrazí, že závislé úlohy nemají nárok na spuštění.
 
-Výchozí nastavení **vlastnosti DependencyAction** je **Satisfy** for exit code 0 a **Block** for all other exit conditions.
+Výchozí nastavení pro vlastnost **DependencyAction** je **vyhovující** pro ukončovací kód 0 a **blokuje** všechny ostatní podmínky ukončení.
 
-Následující fragment kódu nastaví vlastnost **DependencyAction** pro nadřazený úkol. Pokud se nadřazená úloha ukončí s chybou předběžného zpracování nebo se zadanými kódy chyb, je závislý úkol blokován. Pokud nadřazený úkol ukončí s jinou nenulovou chybu, závislý úkol je možné spustit.
+Následující fragment kódu nastaví vlastnost **DependencyAction** pro nadřazenou úlohu. Pokud se nadřazený úkol ukončí s chybou předběžného zpracování nebo se zadanými kódy chyb, je závislý úkol zablokovaný. Pokud se nadřazená úloha ukončí s jakoukoli jinou nenulovou chybou, bude se na závislý úkol spouštět.
 
 ```csharp
 // Task A is the parent task.
@@ -203,18 +203,18 @@ new CloudTask("B", "cmd.exe /c echo B")
 ```
 
 ## <a name="code-sample"></a>Ukázka kódu
-Ukázkový projekt [TaskDependencies][github_taskdependencies] je jedním z [ukázek kódu Azure Batch][github_samples] na GitHubu. Toto řešení sady Visual Studio ukazuje:
+Vzorový projekt [TaskDependencies][github_taskdependencies] je jednou z [Azure Batch ukázek kódu][github_samples] na GitHubu. Toto řešení sady Visual Studio ukazuje:
 
-- Jak povolit závislost na úkolu
-- Jak vytvořit úkoly, které závisí na jiných úkolech
-- Jak provést tyto úlohy ve fondu výpočetních uzlů.
+- Postup povolení závislosti úloh na úloze
+- Vytvoření úloh, které jsou závislé na jiných úkolech
+- Jak spouštět tyto úlohy ve fondu výpočetních uzlů.
 
 ## <a name="next-steps"></a>Další kroky
 ### <a name="application-deployment"></a>Nasazení aplikací
-Funkce [balíčků aplikací](batch-application-packages.md) Batch poskytuje snadný způsob nasazení i verze aplikací, které vaše úlohy provádějí na výpočetních uzlech.
+Funkce [balíčků aplikací](batch-application-packages.md) služby Batch poskytuje snadný způsob nasazení a verze aplikací, které vaše úkoly spouštějí na výpočetních uzlech.
 
-### <a name="installing-applications-and-staging-data"></a>Instalace aplikací a přípravná data
-Přehled metod pro přípravu uzlů ke spuštění úloh najdete v článku [Instalace aplikací a přípravných dat na výpočetních uzlech Batch][forum_post] ve fóru Azure Batch. Tento příspěvek, napsaný jedním z členů týmu Azure Batch, je dobrým základním nátěrem různých způsobů kopírování aplikací, vstupních dat úloh a dalších souborů do výpočetních uzlů.
+### <a name="installing-applications-and-staging-data"></a>Instalace aplikací a pracovních dat
+Přehled metod pro přípravu vašich uzlů ke spouštění úkolů najdete v tématu [instalace aplikací a přípravných dat na výpočetních uzlech služby Batch][forum_post] na Azure Batch fóru. V rámci jednoho z Azure Batch členů týmu je tento příspěvek dobrým aspektem různých způsobů kopírování aplikací, vstupních dat úkolů a dalších souborů do výpočetních uzlů.
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
@@ -237,5 +237,5 @@ Přehled metod pro přípravu uzlů ke spuštění úloh najdete v článku [Ins
 [net_taskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskdependencies.aspx
 
 [1]: ./media/batch-task-dependency/01_one_to_one.png "Diagram: závislost 1:1"
-[2]: ./media/batch-task-dependency/02_one_to_many.png "Diagram: závislost 1:N"
-[3]: ./media/batch-task-dependency/03_task_id_range.png "Diagram: závislost na rozsahu id úkolu"
+[2]: ./media/batch-task-dependency/02_one_to_many.png "Diagram: závislost 1: n"
+[3]: ./media/batch-task-dependency/03_task_id_range.png "Diagram: závislost rozsahu ID úkolu"

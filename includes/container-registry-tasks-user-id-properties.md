@@ -15,7 +15,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "68642082"
 ---
-Ve výstupu příkazu `identity` se v části `UserAssigned` zobrazí identita typu nastavená v úloze:
+Ve výstupu příkazu se v `identity` části zobrazuje identita typu `UserAssigned` nastavená v úloze:
 
 ```console
 [...]

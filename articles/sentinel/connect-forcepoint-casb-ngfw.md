@@ -1,6 +1,6 @@
 ---
-title: Připojení produktů Forcepoint k Azure Sentinelu| Dokumenty společnosti Microsoft
-description: Přečtěte si, jak připojit produkty Forcepoint k Azure Sentinelu.
+title: Připojení produktů Forcepoint ke službě Azure Sentinel | Microsoft Docs
+description: Naučte se připojit produkty Forcepoint k Sentinel Azure.
 services: sentinel
 author: yelevin
 editor: ''
@@ -19,41 +19,41 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588225"
 ---
-# <a name="connect-your-forcepoint-products-to-azure-sentinel"></a>Připojení produktů Forcepoint k Azure Sentinelu
+# <a name="connect-your-forcepoint-products-to-azure-sentinel"></a>Připojení produktů Forcepoint ke službě Azure Sentinel
 
 > [!IMPORTANT]
-> Datový konektor produktů Forcepoint v Azure Sentinelu je aktuálně ve verzi Public Preview. Tato funkce je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Datový konektor pro Forcepoint Products v Azure Sentinel je aktuálně ve verzi Public Preview. Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-Tento článek vysvětluje, jak připojit vaše produkty Forcepoint k Azure Sentinelu. 
+Tento článek vysvětluje, jak připojit produkty Forcepoint ke službě Azure Sentinel. 
 
-Datové konektory Forcepoint umožňují připojit protokoly Forcepoint Cloud Access Security Broker a Forcepoint Next Generation Firewall s Azure Sentinelem. Tímto způsobem můžete automaticky exportovat uživatelem definované protokoly do Azure Sentinelu v reálném čase. Konektor poskytuje obohacený přehled o uživatelských aktivitách zaznamenaných produkty Forcepoint. Umožňuje také další korelaci s daty z úloh Azure a dalších informačních kanálů a zlepšuje možnosti monitorování pomocí sešitů v Azure Sentinelu.
+Konektory Forcepoint data vám umožňují propojit protokoly brány firewall pro Forcepoint Cloud Access a Forcepoint nové generace pomocí služby Azure Sentinel. Tímto způsobem můžete automaticky exportovat uživatelsky definované protokoly do Azure Sentinel v reálném čase. Konektor poskytuje obohacený přehled o aktivitách uživatelů zaznamenaných produkty Forcepoint. Umožňuje taky další korelaci s daty z úloh Azure a dalších informačních kanálů a vylepšuje možnosti monitorování pomocí sešitů v rámci Azure Sentinel.
 
 > [!NOTE]
-> Data se budou ukládat v geografickém umístění pracovního prostoru, ve kterém používáte Azure Sentinel.
+> Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
 
 
-## <a name="forward-forcepoint-product-logs-to-the-syslog-agent"></a>Forward Forcepoint protokoly produktů agentovi Syslog 
+## <a name="forward-forcepoint-product-logs-to-the-syslog-agent"></a>Dopředné protokoly produktů do agenta syslog Forcepoint 
 
-Nakonfigurujte produkt Forcepoint tak, aby přesměrovává zprávy Syslogve formátu CEF do pracovního prostoru Azure prostřednictvím agenta Syslog.
+Nakonfigurujte Forcepoint produkt tak, aby předal zprávy syslog ve formátu CEF do pracovního prostoru Azure prostřednictvím agenta syslog.
 
-1. Nastavte produkt Forcepoint na integraci Azure Sentinelu, jak je popsáno v následujících instalačních průvodcích:
- - [Forcepoint CASB Průvodce integrací](https://frcpnt.com/casb-sentinel)
- - [Forcepoint NGFW Integrace Průvodce](https://frcpnt.com/ngfw-sentinel)
+1. Nastavte Forcepoint produkt na integraci služby Azure Sentinel, jak je popsáno v následujících příručkách pro instalaci:
+ - [Průvodce integrací CASB pro Forcepoint](https://frcpnt.com/casb-sentinel)
+ - [Průvodce integrací NGFW pro Forcepoint](https://frcpnt.com/ngfw-sentinel)
 
-2. Vyhledejte CommonSecurityLog použít příslušné schéma v Log Analytics s DeviceVendor název obsahuje 'Forcepoint'. 
+2. Vyhledejte CommonSecurityLog a použijte příslušné schéma v Log Analytics s DeviceVendor názvem Forcepoint. 
 
-3. Pokračovat krokem [3: Ověřit připojení](connect-cef-verify.md).
+3. Pokračujte [krokem 3: ověření připojení](connect-cef-verify.md).
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste se dozvěděli, jak připojit produkty Forcepoint k Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
+V tomto dokumentu jste se dozvěděli, jak připojit produkty Forcepoint ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 
-- Přečtěte [si, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 
-- Začínáme [s detekcí hrozeb pomocí Azure Sentinelu](tutorial-detect-threats-built-in.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 
-- Ke sledování dat [použijte sešity.](tutorial-monitor-your-data.md)
+- [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.

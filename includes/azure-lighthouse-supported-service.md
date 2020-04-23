@@ -16,4 +16,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "76846029"
 ---
 > [!NOTE]
-> Tato služba podporuje [azure delegované správy prostředků](../articles/lighthouse/concepts/azure-delegated-resource-management.md), který umožňuje poskytovatelům služeb přihlásit se k vlastnímu tenantovi ke správě předplatných a skupin prostředků, které zákazníci delegovali. Další informace najdete v [tématu Azure Lighthouse](../articles/lighthouse/overview.md).
+> Tato služba podporuje [správu delegovaných prostředků Azure](../articles/lighthouse/concepts/azure-delegated-resource-management.md), která umožňuje poskytovatelům služeb přihlašovat se ke svému vlastnímu tenantovi ke správě předplatných a skupin prostředků, které zákazníci delegovani. Další informace najdete v tématu [Azure Lighthouse](../articles/lighthouse/overview.md).

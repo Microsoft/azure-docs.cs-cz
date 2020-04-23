@@ -1,6 +1,6 @@
 ---
-title: Nasazení virtuálních počítačů SIP do vyhrazených hostitelů pomocí cli
-description: Nasazujte virtuální počítače do vyhrazených hostitelů pomocí příkazového příkazového příkazu k azure.
+title: Nasazení virtuálních počítačů Linux na vyhrazené hostitele pomocí rozhraní příkazového řádku
+description: Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,22 +13,22 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127695"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Nasazení virtuálních počítačů do vyhrazených hostitelů pomocí příkazového příkazového příkazu Azure
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI
  
 
-Tento článek vás provede, jak vytvořit [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů.This article guides through you through how to create a Azure dedicated host to host your virtual machines (VMs). 
+Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
-Ujistěte se, že jste nainstalovali Azure CLI verze 2.0.70 `az login`nebo novější a přihlášení k účtu Azure pomocí . 
+Ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.70 nebo novější a přihlásili jste se k účtu `az login`Azure pomocí. 
 
 
 ## <a name="limitations"></a>Omezení
 
-- Škálovací sady virtuálních strojů nejsou aktuálně podporovány na vyhrazených hostitelích.
-- Velikosti a typy hardwaru, které jsou k dispozici pro vyhrazené hostitele, se liší podle oblasti. Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
+- Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
+- Typy velikosti a hardwaru, které jsou dostupné pro vyhrazené hostitele, se v jednotlivých oblastech liší. Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
  
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků 
-Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí vytvoření skupiny az. Následující příklad vytvoří skupinu prostředků s názvem *myDHResourceGroup* v umístění *usa – východ.*
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí AZ Group Create. Následující příklad vytvoří skupinu prostředků s názvem *myDHResourceGroup* v umístění *východní USA* .
 
 ```bash
 az group create --name myDHResourceGroup --location eastus 
@@ -36,15 +36,15 @@ az group create --name myDHResourceGroup --location eastus
  
 ## <a name="create-a-host-group"></a>Vytvoření skupiny hostitelů 
 
-**Skupina hostitelů** je prostředek, který představuje kolekci vyhrazených hostitelů. Vytvoříte skupinu hostitelů v oblasti a zóně dostupnosti a přidáte do ní hostitele. Při plánování vysoké dostupnosti, existují další možnosti. S vyhrazenými hostiteli můžete použít jednu nebo obě následující možnosti: 
-- Rozsah mezi více zónami dostupnosti. V takovém případě musíte mít skupinu hostitelů v každé zóně, kterou chcete použít.
-- Rozsah mezi více domén ách selhání, které jsou mapovány na fyzické regály. 
+**Skupina hostitelů** je prostředek, který představuje kolekci vyhrazených hostitelů. Vytvoříte skupinu hostitelů v oblasti a zóně dostupnosti a přidáte do ní hostitele. Při plánování vysoké dostupnosti jsou k dispozici další možnosti. U vyhrazených hostitelů můžete použít jednu z následujících možností: 
+- Rozsah napříč několika zónami dostupnosti. V takovém případě je nutné mít skupinu hostitelů v každé z zón, které chcete použít.
+- Rozložit napříč několika doménami selhání, které jsou namapované na fyzické racky. 
  
-V obou případech je třeba zadat počet domén selhání pro vaši skupinu hostitelů. Pokud nechcete, aby se ve skupině promítají domény selhání, použijte počet domén selhání 1. 
+V obou případech je nutné zadat počet domén selhání pro skupinu hostitelů. Pokud nechcete rozsah domén selhání ve skupině, použijte počet domén selhání 1. 
 
-Můžete se také rozhodnout použít zóny dostupnosti i domény selhání. 
+Můžete se také rozhodnout použít jak zóny dostupnosti, tak i domény selhání. 
 
-V tomto příkladu použijeme [vytvoření skupiny hostitelů az vm](/cli/azure/vm/host/group#az-vm-host-group-create) k vytvoření skupiny hostitelů pomocí zón dostupnosti i domén selhání. 
+V tomto příkladu použijeme příkaz [AZ VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) k vytvoření skupiny hostitelů pomocí zón dostupnosti i domén selhání. 
 
 ```bash
 az vm host group create \
@@ -56,7 +56,7 @@ az vm host group create \
 
 ### <a name="other-examples"></a>Další příklady
 
-Skupinu [hostitelů az vm](/cli/azure/vm/host/group#az-vm-host-group-create) můžete také použít k vytvoření skupiny hostitelů v zóně dostupnosti 1 (a bez domén selhání).
+Pomocí [AZ VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) můžete také vytvořit skupinu hostitelů v zóně dostupnosti 1 (a žádné domény selhání).
 
 ```bash
 az vm host group create \
@@ -66,7 +66,7 @@ az vm host group create \
    --platform-fault-domain-count 1 
 ```
  
-Následující používá [az vm skupiny hostitelů vytvořit](/cli/azure/vm/host/group#az-vm-host-group-create) skupinu hostitelů pomocí domén selhání pouze (pro použití v oblastech, kde nejsou podporovány zóny dostupnosti). 
+Následující: pomocí [AZ VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) vytvoří skupinu hostitelů jenom pomocí domén selhání (bude se používat jenom v oblastech, kde se zóny dostupnosti nepodporují). 
 
 ```bash
 az vm host group create \
@@ -77,11 +77,11 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Vytvoření hostitele 
 
-Nyní vytvoříme vyhrazeného hostitele ve skupině hostitelů. Kromě názvu hostitele je nutné zadat skladovou položku pro hostitele. Skladová položka hostitele zachycuje podporovanou řadu virtuálních počítače a generaci hardwaru pro vašeho vyhrazeného hostitele.  
+Nyní vytvoříme vyhrazeného hostitele ve skupině hostitelů. Kromě názvu pro hostitele je nutné zadat SKU pro hostitele. SKU hostitele zachytí podporovanou řadu virtuálních počítačů a také generování hardwaru pro vyhrazeného hostitele.  
 
-Další informace o hostitelských skum a cenách najdete v [tématu Ceny vyhrazeného hostitele Azure](https://aka.ms/ADHPricing).
+Další informace o SKU a cenách hostitelů najdete v tématu [ceny za vyhrazené hostitele Azure](https://aka.ms/ADHPricing).
 
-K vytvoření hostitele [použijte vytvoření hostitele az vm.](/cli/azure/vm/host#az-vm-host-create) Pokud pro skupinu hostitelů nastavíte počet domén selhání, budete vyzváni k zadání domény selhání pro hostitele.  
+Pomocí [AZ VM Host Create](/cli/azure/vm/host#az-vm-host-create) Vytvořte hostitele. Pokud pro skupinu hostitelů nastavíte počet domén selhání, budete požádáni o zadání domény selhání pro hostitele.  
 
 ```bash
 az vm host create \
@@ -95,7 +95,7 @@ az vm host create \
 
  
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače 
-Vytvořte virtuální počítač v rámci vyhrazeného hostitele pomocí [az vm create](/cli/azure/vm#az-vm-create). Pokud jste při vytváření skupiny hostitelů zadali zónu dostupnosti, musíte při vytváření virtuálního počítače použít stejnou zónu.
+Pomocí [AZ VM Create](/cli/azure/vm#az-vm-create)vytvořte virtuální počítač v rámci vyhrazeného hostitele. Pokud jste při vytváření skupiny hostitelů zadali zónu dostupnosti, budete při vytváření virtuálního počítače muset použít stejnou zónu.
 
 ```bash
 az vm create \
@@ -111,12 +111,12 @@ az vm create \
 ```
  
 > [!WARNING]
-> Pokud vytvoříte virtuální počítač na hostiteli, který nemá dostatek prostředků, virtuální počítač se vytvoří ve stavu SELHÁNÍ. 
+> Pokud vytvoříte virtuální počítač na hostiteli, který nemá dostatek prostředků, vytvoří se virtuální počítač ve stavu selhání. 
 
 
-## <a name="check-the-status-of-the-host"></a>Kontrola stavu hostitele
+## <a name="check-the-status-of-the-host"></a>Zkontroluje stav hostitele.
 
-Můžete zkontrolovat stav hostitele a kolik virtuálních počítačů, které můžete stále nasadit do hostitele pomocí [az vm hostitele get-instance view](/cli/azure/vm/host#az-vm-host-get-instance-view).
+Můžete kontrolovat stav hostitele a počet virtuálních počítačů, které můžete nasadit do hostitele pomocí funkce [AZ VM Host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view).
 
 ```bash
 az vm host get-instance-view \
@@ -124,7 +124,7 @@ az vm host get-instance-view \
    --host-group myHostGroup \
    --name myHost
 ```
- Výstup bude vypadat podobně jako tento:
+ Výstup bude vypadat nějak takto:
  
 ```json
 {
@@ -223,15 +223,15 @@ az vm host get-instance-view \
 ```
  
 ## <a name="export-as-a-template"></a>Exportovat jako šablonu 
-Šablonu můžete exportovat, pokud nyní chcete vytvořit další vývojové prostředí se stejnými parametry nebo produkční prostředí, které odpovídá. Správce prostředků používá šablony JSON, které definují všechny parametry pro vaše prostředí. Vytvoření celé prostředí odkazem na tuto šablonu JSON. Šablony JSON můžete vytvořit ručně nebo exportovat existující prostředí a vytvořit šablonu JSON za vás. K exportu skupiny prostředků použijte [export skupiny az.](/cli/azure/group#az-group-export)
+Šablonu můžete exportovat, pokud teď chcete vytvořit další vývojové prostředí se stejnými parametry nebo produkčním prostředím, které odpovídá tomuto. Správce prostředků používá šablony JSON, které definují všechny parametry vašeho prostředí. Můžete sestavit celá prostředí odkazem na tuto šablonu JSON. Můžete vytvořit šablony JSON ručně nebo exportovat existující prostředí a vytvořit šablonu JSON. K exportu skupiny prostředků použijte [AZ Group export](/cli/azure/group#az-group-export) .
 
 ```bash
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-Tento příkaz `myDHResourceGroup.json` vytvoří soubor v aktuálním pracovním adresáři. Při vytváření prostředí z této šablony budete vyzváni ke všem názvům prostředků. Tyto názvy můžete naplnit v `--include-parameter-default-value` souboru `az group export` šablony přidáním parametru do příkazu. Upravte šablonu JSON a určete názvy prostředků nebo vytvořte soubor parameters.json, který určuje názvy prostředků.
+Tento příkaz vytvoří `myDHResourceGroup.json` soubor v aktuálním pracovním adresáři. Když z této šablony vytvoříte prostředí, zobrazí se výzva k zadání všech názvů prostředků. Tyto názvy můžete vyplnit v souboru šablony přidáním `--include-parameter-default-value` parametru do `az group export` příkazu. Upravte šablonu JSON tak, aby určovala názvy prostředků, nebo vytvořte soubor Parameters. JSON, který určuje názvy prostředků.
  
-Chcete-li vytvořit prostředí ze šablony, použijte [vytvoření nasazení skupiny AZ](/cli/azure/group/deployment#az-group-deployment-create).
+Pokud chcete vytvořit prostředí ze šablony, použijte příkaz [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create).
 
 ```bash
 az group deployment create \ 
@@ -242,27 +242,27 @@ az group deployment create \
 
 ## <a name="clean-up"></a>Vyčištění 
 
-Poplatky za vyhrazené hostitele se vám účtují i v případě, že se nenasazují žádné virtuální počítače. Měli byste odstranit všechny hostitele, které právě nepoužíváte k úspoře nákladů.  
+Účtují se vám poplatky za vaše vyhrazené hostitele i v případě, že nejsou nasazené žádné virtuální počítače. Měli byste odstranit všechny hostitele, na které aktuálně nepoužíváte, abyste ušetřili náklady.  
 
-Hostitele můžete odstranit pouze v případě, že už nejsou virtuální počítače, které by ho používaly. Odstraňte virtuální mích pomocí [az vm delete](/cli/azure/vm#az-vm-delete).
+Hostitele můžete odstranit jenom v případě, že ho nepoužívá žádný virtuální počítač. Odstraňte virtuální počítače pomocí [AZ VM Delete](/cli/azure/vm#az-vm-delete).
 
 ```bash
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
-Po odstranění virtuálních ms můžete odstranit hostitele pomocí [odstranění hostitele az vm](/cli/azure/vm/host#az-vm-host-delete).
+Po odstranění virtuálních počítačů můžete hostitele odstranit pomocí [AZ VM Host Delete](/cli/azure/vm/host#az-vm-host-delete).
 
 ```bash
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
-Po odstranění všech hostitelů můžete skupinu hostitelů odstranit pomocí [odstranění skupiny hostitelů AZ VM](/cli/azure/vm/host/group#az-vm-host-group-delete).  
+Po odstranění všech hostitelů můžete skupinu hostitelů odstranit pomocí [AZ VM Host Group Delete](/cli/azure/vm/host/group#az-vm-host-group-delete).  
  
 ```bash
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  
 ```
  
-Můžete také odstranit celou skupinu prostředků v jednom příkazu. Tím odstraníte všechny prostředky vytvořené ve skupině, včetně všech virtuálních uživatelů, hostitelů a skupin hostitelů.
+Celou skupinu prostředků můžete také odstranit v jednom příkazu. Tím se odstraní všechny prostředky vytvořené ve skupině včetně všech virtuálních počítačů, hostitelů a skupin hostitelů.
  
 ```bash
 az group delete -n myDHResourceGroup 
@@ -270,8 +270,8 @@ az group delete -n myDHResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace naleznete v přehledu [vyhrazených hostitelů.](dedicated-hosts.md)
+- Další informace najdete v tématu Přehled [vyhrazených hostitelů](dedicated-hosts.md) .
 
-- Vyhrazené hostitele můžete také vytvořit pomocí [portálu Azure](dedicated-hosts-portal.md).
+- Můžete také vytvořit vyhrazené hostitele pomocí [Azure Portal](dedicated-hosts-portal.md).
 
-- Zde je [nalezena](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)ukázková šablona , která používá zóny i domény selhání pro maximální odolnost proti chybám v oblasti.
+- [Zde](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)najdete ukázkovou šablonu, která pro maximální odolnost v oblasti používá zóny i domény selhání.

@@ -1,6 +1,6 @@
 ---
 title: Schémata pro výstrahy Azure Security Center
-description: Tento článek popisuje různá schémata používaná centrem zabezpečení Azure pro výstrahy zabezpečení.
+description: Tento článek popisuje různá schémata používaná nástrojem Azure Security Center pro výstrahy zabezpečení.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -21,34 +21,34 @@ ms.locfileid: "80062947"
 ---
 # <a name="security-alerts-schemas"></a>Schémata výstrah zabezpečení
 
-Uživatelé standardní vrstvy Azure Security Center obdrží výstrahy zabezpečení, když Security Center detekuje hrozby pro jejich prostředky.
+Uživatelé Azure Security Center úrovně Standard obdrží výstrahy zabezpečení, když Security Center detekuje hrozby jejich prostředků.
 
-Tyto výstrahy zabezpečení můžete zobrazit na stránkách **Ochrany před hrozbami** centra zabezpečení Azure nebo prostřednictvím externích nástrojů, jako jsou:
+Tyto výstrahy zabezpečení můžete zobrazit na stránkách **ochrany před internetovými útoky** v Azure Security Center nebo prostřednictvím externích nástrojů, jako jsou:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) – Siem nativní pro cloud společnosti Microsoft. Sentinel Konektor získá výstrahy z Azure Security Center a odešle je do [pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) pro Azure Sentinel.
-- Siem y třetích stran – pomocí nástrojů [pro průběžný export](continuous-export.md) Centra zabezpečení odesílejte data do [centra událostí Azure](https://docs.microsoft.com/azure/event-hubs/). Pak integrujte data centra událostí s siem třetí strany.
-- [Rozhraní REST API](https://docs.microsoft.com/rest/api/securitycenter/) – pokud používáte rozhraní REST API pro přístup k výstrahám, podívejte se na [dokumentaci k rozhraní API online upozornění](https://docs.microsoft.com/rest/api/securitycenter/alerts).
+- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) – cloudová nativní Siem Microsoftu Konektor Sentinel získá výstrahy od Azure Security Center a pošle je do [pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) pro Sentinel Azure.
+- Systémů Siem třetí strany – slouží k posílání dat do [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)pomocí nástrojů [průběžného exportu](continuous-export.md) Security Center. Potom Integrujte data centra událostí s SIEM třetí strany.
+- [REST API](https://docs.microsoft.com/rest/api/securitycenter/) – pokud používáte REST API k přístupu k výstrahám, přečtěte si [dokumentaci k rozhraní API pro online výstrahy](https://docs.microsoft.com/rest/api/securitycenter/alerts).
 
-Pokud používáte jakékoli programové metody využívat výstrahy, budete potřebovat správné schéma najít pole, která jsou pro vás relevantní. Také pokud exportujete do centra událostí nebo se pokoušíte aktivovat automatizaci pracovního postupu s obecnými konektory HTTP, použijte schémata ke správnému analýzu objektů JSON.
+Pokud používáte nějaké programové metody pro využívání výstrah, budete potřebovat správné schéma, abyste našli pole, která jsou pro vás důležitá. Pokud exportujete do centra událostí nebo se pokoušíte aktivovat automatizaci pracovního postupu pomocí obecných konektorů HTTP, použijte schémata k správné analýze objektů JSON.
 
 >[!IMPORTANT]
-> Schéma se mírně liší pro každý z těchto scénářů, takže nezapomeňte vybrat příslušnou kartu níže.
+> Schéma se u každého z těchto scénářů mírně liší, proto se ujistěte, že jste vybrali příslušnou kartu.
 
 
 ## <a name="the-schemas"></a>Schémata 
 
 
-### <a name="workflow-automation-and-continuous-export-to-event-hub"></a>[Automatizace pracovních postupů a nepřetržitý export do centra událostí](#tab/schema-continuousexport)
+### <a name="workflow-automation-and-continuous-export-to-event-hub"></a>[Automatizace pracovního postupu a průběžný export do centra událostí](#tab/schema-continuousexport)
 
-### <a name="sample-json-for-alerts-sent-to-logic-apps-event-hub-and-third-party-siems"></a>Ukázka json pro výstrahy odeslané do logic aplikací, Centra událostí a siem třetích stran
+### <a name="sample-json-for-alerts-sent-to-logic-apps-event-hub-and-third-party-siems"></a>Ukázkový JSON pro výstrahy odeslané do Logic Apps, centra událostí a systémů Siem třetích stran
 
-Níže najdete schéma událostí výstrah předaných:
+Níže najdete schéma událostí výstrah předaných do:
 
-- Instance aplikace Azure Logic App, které byly nakonfigurované v automatizaci pracovního postupu Centra zabezpečení
-- Azure Event Hub pomocí funkce průběžného exportu Centra zabezpečení
+- Instance aplikace logiky Azure, které byly nakonfigurovány v automatizaci pracovního postupu Security Center
+- Azure Event hub s využitím funkce průběžného exportu Security Center
 
-Další informace o funkci automatizace pracovního postupu naleznete v [tématu Automatizace odpovědí na výstrahy a doporučení](workflow-automation.md).
-Další informace o průběžném exportu naleznete v [tématu Výstrahy a doporučení pro export](continuous-export.md).
+Další informace o funkci automatizace pracovních postupů najdete v tématu [automatizace odpovědí na výstrahy a doporučení](workflow-automation.md).
+Další informace o průběžném exportu najdete v tématu [Export výstrah a doporučení](continuous-export.md).
 
 [!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
 
@@ -57,11 +57,11 @@ Další informace o průběžném exportu naleznete v [tématu Výstrahy a dopor
 
 ### <a name="azure-sentinel-and-log-analytics-workspaces"></a>[Pracovní prostory Azure Sentinel a Log Analytics](#tab/schema-sentinel)
 
-Sentinel Konektor získá výstrahy z Azure Security Center a odešle je do pracovního prostoru Analýzy protokolů pro Azure Sentinel. 
+Konektor Sentinel získá výstrahy od Azure Security Center a pošle je do pracovního prostoru Log Analytics pro Sentinel Azure. 
 
-Chcete-li vytvořit případ Sentinel nebo incident pomocí výstrah Centra zabezpečení, budete potřebovat schéma pro níže uvedené výstrahy. 
+K vytvoření případu nebo incidentu Sentinel pomocí výstrah Security Center budete potřebovat schéma pro tyto výstrahy zobrazené níže. 
 
-Další informace o Azure [Sentinelu najdete v dokumentaci](https://docs.microsoft.com/azure/sentinel/).
+Další informace o Sentinel Azure najdete v [dokumentaci](https://docs.microsoft.com/azure/sentinel/).
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
@@ -70,14 +70,14 @@ Další informace o Azure [Sentinelu najdete v dokumentaci](https://docs.microso
 
 ### <a name="azure-activity-log"></a>[Protokol aktivit Azure](#tab/schema-activitylog)
 
-Azure Security Center audity generované výstrahy zabezpečení jako události v protokolu aktivit Azure.
+Azure Security Center audity vygenerovaly výstrahy zabezpečení jako události v protokolu aktivit Azure.
 
-Události výstrah zabezpečení můžete zobrazit v protokolu aktivit tak, že vyhledáte událost Aktivovat výstrahu, jak je znázorněno:
+Události výstrahy zabezpečení v protokolu aktivit můžete zobrazit tak, že vyhledáte událost aktivovat výstrahu, jak je znázorněno níže:
 
-[![Hledání události Aktivovat výstrahu v protokolu aktivit](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
+[![Hledání protokolu aktivit pro událost aktivace výstrahy](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
 
 
-### <a name="sample-json-for-alerts-sent-to-azure-activity-log"></a>Ukázka JSON pro výstrahy odeslané do protokolu aktivit Azure
+### <a name="sample-json-for-alerts-sent-to-azure-activity-log"></a>Ukázkový JSON pro výstrahy odeslané do protokolu aktivit Azure
 
 ```json
 {
@@ -142,49 +142,49 @@ Události výstrah zabezpečení můžete zobrazit v protokolu aktivit tak, že 
 
 |Pole|Popis|
 |----|----|
-|**Kanály**|Konstanta, "Operace"|
-|**correlationId**|ID výstrahy Centra zabezpečení Azure|
-|**Popis**|Popis výstrahy|
-|**eventDataId**|Viz correlationId|
-|**Eventname**|Dílčí pole value a localizedValue obsahují zobrazovaný název výstrahy.|
-|**Kategorie**|Dílčí pole value a localizedValue jsou konstantní - "Zabezpečení"|
+|**barev**|Konstanta, "operace"|
+|**correlationId**|ID výstrahy Azure Security Center|
+|**název**|Popis výstrahy|
+|**eventDataId**|Zobrazit ID korelace|
+|**eventName**|Podpole Value a localizedValue obsahují zobrazované jméno výstrahy.|
+|**kategorií**|Podpole Value a localizedValue jsou konstanta-"Security".|
 |**eventTimestamp**|Časové razítko UTC pro vygenerování výstrahy|
-|**Id**|ID úplného upozornění|
-|**Úrovni**|Konstanta, "Informační"|
-|**operationId**|Viz correlationId|
-|**název_operace**|Pole hodnoty je konstantní - "Microsoft.Security/locations/alerts/activate/action" a lokalizovaná hodnota bude "Aktivovat výstrahu" (může být potenciálně lokalizována par uživatelského národního prostředí)|
+|**účet**|Plně kvalifikované ID výstrahy|
+|**obsah**|Konstanta, "informativní"|
+|**operationId**|Zobrazit ID korelace|
+|**operationName**|Pole hodnota je konstanta-"Microsoft. Security/Locations/Alerts/Activate/Action", a lokalizovaná hodnota bude "aktivovat výstrahu" (může být potenciálně lokalizována do národního prostředí uživatele).|
 |**resourceGroupName**|Bude obsahovat název skupiny prostředků.|
-|**název_prostředku_prostředku_prostředku_prostředku**|Dílčí pole value a localizedValue jsou konstantní - Microsoft.Security|
-|**resourceType**|Dílčí pole value a localizedValue jsou konstantní - "Microsoft.Security/locations/alerts"|
-|**Resourceid**|Plně kvalifikované ID prostředků Azure|
-|**status**|Dílčí pole value a localizedValue jsou konstantní - "Aktivní"|
-|**subStatus**|Dílčí pole value a localizedValue jsou prázdná.|
+|**resourceProviderName**|Dílčí pole Value a localizedValue jsou konstanta-"Microsoft. Security".|
+|**resourceType**|Podpole hodnoty a localizedValue jsou konstanta – "Microsoft. Security/Locations/Alerts"|
+|**Prostředku**|Plně kvalifikované ID prostředku Azure|
+|**stav**|Podpole hodnoty a localizedValue jsou konstanta – "aktivní".|
+|**subStatus**|Podpole hodnoty a localizedValue jsou prázdná.|
 |**submissionTimestamp**|Časové razítko UTC odeslání události do protokolu aktivit|
-|**subscriptionId**|ID předplatného ohroženého prostředku|
-|**Vlastnosti**|JSON pytel dalších vlastností týkajících se výstrahy. Ty se mohou změnit z jedné výstrahy na druhou, ale ve všech výstrahách se zobrazí následující pole:<br>- závažnost: Závažnost útoku<br>- compromisedEntity: Název ohroženého prostředku<br>- nápravná opatření: Řada nápravných opatření, která mají být přijata<br>- záměr: Záměr smrtícího řetězce výstrahy. Možné záměry jsou popsány v [tabulce Záměry.](alerts-reference.md#intentions)|
-|**souvisejícíudálosti**|Konstanta - prázdné pole|
+|**subscriptionId**|ID předplatného napadeného prostředku|
+|**vlastnosti**|Kontejner JSON dalších vlastností, které se týkají výstrahy. Ty se můžou změnit z jedné výstrahy na druhou, ale v následujících polích se zobrazí všechny výstrahy:<br>-závažnost: závažnost útoku<br>-compromisedEntity: název napadeného prostředku<br>-remediationSteps: pole nápravných kroků, které mají být provedeny<br>-záměr: záměr s dezaktivačním řetězem výstrahy. Možné záměry jsou zdokumentovány v [tabulce záměry](alerts-reference.md#intentions)|
+|**relatedEvents**|Konstantní prázdné pole|
 |||
 
 
 
 
 
-### <a name="ms-graph-api"></a>[Rozhraní API ms grafu](#tab/schema-graphapi)
+### <a name="ms-graph-api"></a>[MS Graph API](#tab/schema-graphapi)
 
-Microsoft Graph je brána k datům a inteligenci v Microsoftu 365. Poskytuje jednotný model programovatelnosti, který můžete použít pro přístup k obrovskémnožství dat v Office 365, Windows 10 a Enterprise Mobility + Security. Využijte velké množství dat v Microsoft Graphu k vytváření aplikací pro organizace a spotřebitele, kteří komunikují s miliony uživatelů.
+Microsoft Graph je brána k datům a inteligentním Microsoft 365. Nabízí jednotný model programovatelnosti, který můžete použít pro přístup k obrovskému množství dat v Office 365, Windows 10 a Enterprise Mobility + Security. Využijte spoustu dat v Microsoft Graph k sestavování aplikací pro organizace a zákazníky, kteří komunikují s miliony uživatelů.
 
-Schéma a reprezentace JSON pro výstrahy zabezpečení odeslané do grafu MS jsou k dispozici v [dokumentaci k aplikaci Microsoft Graph](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0).
+Schéma a reprezentace JSON pro výstrahy zabezpečení odeslané do služby MS Graph jsou k dispozici v [dokumentaci Microsoft Graph](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0).
 
 ---
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek popisuje schémata, která nástroje Azure Security Center pro ochranu před hrozbami používají při odesílání informací o výstrahách zabezpečení.
+Tento článek popisuje schémata, která Azure Security Center nástroje ochrany před hrozbami, které se používají při odesílání informací o výstrahách zabezpečení.
 
-Další informace o způsobech přístupu k výstrahám zabezpečení mimo Centrum zabezpečení naleznete na následujících stránkách:
+Další informace o způsobech přístupu k výstrahám zabezpečení z vnějších Security Center najdete na následujících stránkách:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) – SIEM nativní pro cloud společnosti Microsoft
-- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) – plně spravovaná služba microsoftu pro přijímaní dat v reálném čase
-- [Funkce nepřetržitého exportu](continuous-export.md) centra zabezpečení
-- [Pracovní prostory Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) – Azure Monitor ukládá data protokolu do pracovního prostoru Log Analytics, kontejneru, který obsahuje data a informace o konfiguraci
+- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) – cloudová nativní Siem Microsoftu
+- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) – plně spravovaná služba pro přijímání dat v reálném čase od Microsoftu
+- [Funkce průběžného exportu](continuous-export.md) Security Center
+- [Log Analytics pracovní prostory](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) – Azure monitor ukládá data protokolu v pracovním prostoru Log Analytics, kontejneru, který obsahuje informace o datech a konfiguraci.

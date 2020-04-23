@@ -1,7 +1,7 @@
 ---
-title: 'Známé problémy: Migrace z Databáze Oracle do Databáze Azure pro PostgreSQL'
+title: 'Známé problémy: migrace z Oracle na Azure Database for PostgreSQL'
 titleSuffix: Azure Database Migration Service
-description: Seznamte se se známými problémy a omezeními migrace pomocí online migrací z Oracle do Azure Database for PostgreSQL-Single server pomocí služby Migrace databáze Azure.
+description: Přečtěte si o známých problémech a omezeních migrace u online migrací od Oracle až po Azure Database for PostgreSQL k jednomu serveru pomocí Azure Database Migration Service.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -19,26 +19,26 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80235246"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Známé problémy/omezení migrace díky online migracím z Oracle do Azure DB pro server PostgreSQL-Single
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Známé problémy/omezení migrace pro online migrace z Oracle do Azure DB pro PostgreSQL – jeden server
 
-Známé problémy a omezení související s online migrací z Oracle do Azure Database pro server PostgreSQL-Single jsou popsány v následujících částech.
+Známé problémy a omezení související s online migracemi od Oracle do Azure Database for PostgreSQL-Single server jsou popsány v následujících částech.
 
 ## <a name="oracle-versions-supported-as-a-source-database"></a>Verze Oracle podporované jako zdrojová databáze
 
-Služba Migrace databáze Azure podporuje připojení k:
+Azure Database Migration Service podporuje připojení k:
 
 - Oracle verze 10g, 11g a 12c.
 - Oracle Enterprise, Standard, Express a Personal Edition.
 
-Služba migrace databáze Azure nepodporuje připojení k databázím kontejnerů s více klienty (CDB).
+Azure Database Migration Service nepodporuje připojení k databázím kontejnerů s více klienty (CDBs).
 
-## <a name="postgresql-versions-supported-as-a-target-database"></a>PostgreSQL verze podporované jako cílová databáze
+## <a name="postgresql-versions-supported-as-a-target-database"></a>Verze PostgreSQL podporované jako cílová databáze
 
-Služba Migrace databáze Azure podporuje migrace do databáze Azure pro server PostgreSQL-Single verze 9.5, 9.6, 10 a 11. See the article [Supported PostgreSQL database versions](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions) for current information on version support in Azure Database for PostgreSQL-Single server.
+Azure Database Migration Service podporuje migrace do Azure Database for PostgreSQL s jednou serverem verze 9,5, 9,6, 10 a 11. Aktuální informace o podpoře verzí v Azure Database for PostgreSQL-jednom serveru najdete v článku [podporované verze databáze PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions) .
 
-## <a name="datatype-limitations"></a>Omezení datových typů
+## <a name="datatype-limitations"></a>Omezení datového typu
 
-Následující datové typy **nebudou** migrovány:
+Následující typy DataType **nebudou** migrovány:
 
 - BFILE
 - ROWID
@@ -47,26 +47,26 @@ Následující datové typy **nebudou** migrovány:
 - ANYDATA
 - SDO_GEOMETRY
 - Vnořené tabulky
-- Uživatelem definované datové typy
+- Uživatelsky definované datové typy
 - Poznámky
 - Virtuální sloupce
-- Zhmotněné pohledy na základě sloupce ROWID
+- Materializovaná zobrazení založená na sloupci ROWID
 
-Prázdné sloupce BLOB/CLOB jsou také mapovány na hodnotu NULL v cíli.
+Prázdné sloupce objektů BLOB a datový typ CLOB jsou také mapovány na hodnotu NULL v cíli.
 
-## <a name="lob-limitations"></a>OMEZENÍ LOB
+## <a name="lob-limitations"></a>Omezení LOB
 
-- Pokud je povolen režim LOB omezené velikosti, prázdné loby na zdroji Oracle jsou replikovány jako hodnoty NULL.
-- Názvy dlouhých objektů (více než 30 bajtů) nejsou podporovány.
-- Data ve sloupci LONG a LONG RAW nesmí překročit 64 kS. Všechna data nad 64 kk budou zkrácena.
-- Pouze v oracle 12 nejsou podporovány žádné změny sloupců LOB (migrovány).
-- UPDATEs na XMLTYPE a LOB sloupce nejsou podporovány (migrovány).
+- Pokud je povolený režim LOB s omezeným rozsahem, budou se prázdné objekty LOBs s ve zdroji Oracle replikovat jako hodnoty NULL.
+- Dlouhé názvy objektů (víc než 30 bajtů) nejsou podporované.
+- Data v DLOUHÝch a DLOUHÝch nezpracovaných sloupcích nemůžou překročit 64 KB. Všechna data nad 64 KB budou zkrácena.
+- Pouze v Oracle 12 nejsou žádné změny ve sloupcích LOB podporovány (migrováno).
+- Aktualizace sloupců XMLTYPE a LOB nejsou podporovány (migrováno).
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
-- Zákazníci musí používat SYSDBA pro připojení k Oracle.
-- Změny dat vyplývající z operací oddílu/dílčího oddílu (PŘIDAT, DROP, EXCHANGE a Zkrátit) nebudou migrovány a mohou způsobit následující chyby:
-  - Pro operace ADD aktualizace a odstranění na přidaná data může vrátit "0 řádků ovlivněna" upozornění.
-  - Pro operace DROP a Zkrátit nové vloží může mít za následek chyby "duplicitní".
-  - Pro operace EXCHANGE může dojít k upozornění "0 řádků" a "duplicitní" chyby.
-- Tabulky, jejichž názvy obsahují apostrofy nelze replikovat.
+- Zákazníci musí použít SYSDBA k připojení k Oracle.
+- Změny dat vyplývající z operací oddílů a dílčího oddílu (přidání, vyřazení, výměna a ZKRÁCENí) nebudou migrovány a mohou způsobit následující chyby:
+  - U přidání operací může aktualizace a odstranění u přidaných dat vracet upozornění "0 řádků, které jsou ovlivněny".
+  - U operací DROP a ZKRÁCENí může nová vložení způsobit chyby "duplicity".
+  - V případě operací systému EXCHANGE může dojít k chybám "0 řádků", upozornění i duplicitám.
+- Tabulky, jejichž názvy obsahují apostrofy, nelze replikovat.

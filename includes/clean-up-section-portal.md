@@ -15,8 +15,8 @@ ms.locfileid: "73471573"
 
 V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud předpokládáte, že už tyto prostředky nebudete potřebovat, můžete je odstranit tak, že odstraníte skupinu prostředků.
  
-Na nabídce portálu Azure nebo **na domovské** stránce vyberte **skupiny prostředků**a na stránce **Skupiny prostředků** vyberte **myResourceGroup**.
+V nabídce Azure Portal nebo na **domovské** stránce vyberte **skupiny prostředků**a na stránce **skupiny prostředků** vyberte **myResourceGroup**.
 
-Na stránce **myResourceGroup** zkontrolujte, zda jsou uvedené prostředky ty, které chcete odstranit.
+Na stránce **myResourceGroup** se ujistěte, že uvedené prostředky jsou ty, které chcete odstranit.
 
 Vyberte **Odstranit**, do textového pole zadejte **myResourceGroup** a potom vyberte **Odstranit**.

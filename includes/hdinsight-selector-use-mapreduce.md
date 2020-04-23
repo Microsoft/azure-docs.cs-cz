@@ -13,10 +13,10 @@ ms.locfileid: "67175134"
 ---
 > [!div class="op_single_selector"]
 > * [Přehled](../articles/hdinsight/hadoop/hdinsight-use-mapreduce.md)
-> * [Ssh](../articles/hdinsight/hadoop/apache-hadoop-use-mapreduce-ssh.md)
+> * [SSH](../articles/hdinsight/hadoop/apache-hadoop-use-mapreduce-ssh.md)
 > * [Curl](../articles/hdinsight/hadoop/apache-hadoop-use-mapreduce-curl.md)
-> * [PowerShell](../articles/hdinsight/hadoop/apache-hadoop-use-mapreduce-powershell.md)
-> * [Sada SDK rozhraní .NET](../articles/hdinsight/hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md)
+> * [Prostředí](../articles/hdinsight/hadoop/apache-hadoop-use-mapreduce-powershell.md)
+> * [.NET SDK](../articles/hdinsight/hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md)
 > * [Vzdálená plocha](../articles/hdinsight/hadoop/apache-hadoop-use-mapreduce-remote-desktop.md)
 > 
 > 

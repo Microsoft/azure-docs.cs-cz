@@ -1,6 +1,6 @@
 ---
-title: 'Vytvoření první aplikace Service Fabric v C #'
-description: Úvod k vytvoření aplikace Microsoft Azure Service Fabric s bezstavové a stavové služby.
+title: 'Vytvoření první aplikace Service Fabric v jazyce C #'
+description: Úvod k vytvoření aplikace Microsoft Azure Service Fabric se stavovou a stavovou službou.
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
@@ -17,39 +17,39 @@ ms.locfileid: "77083767"
 > * [C# v systému Windows](service-fabric-reliable-services-quick-start.md)
 > * [Java v Linuxu](service-fabric-reliable-services-quick-start-java.md)
 
-Aplikace Azure Service Fabric obsahuje jednu nebo více služeb, které spouštějí váš kód. Tato příručka ukazuje, jak vytvořit bezstavové a stavové aplikace Service Fabric se [spolehlivými službami](service-fabric-reliable-services-introduction.md).  
+Aplikace Azure Service Fabric obsahuje jednu nebo více služeb, které spouštějí váš kód. V této příručce se dozvíte, jak vytvořit bezstavové a stavové Service Fabric aplikace pomocí [Reliable Services](service-fabric-reliable-services-introduction.md).  
 
 ## <a name="basic-concepts"></a>Základní koncepty
 
-Chcete-li začít se spolehlivými službami, stačí pochopit několik základních pojmů:
+Abyste mohli začít s Reliable Services, stačí pochopit jenom několik základních konceptů:
 
-* **Typ služby**: Toto je implementace služby. Je definovántřídou, kterou napíšete, která rozšiřuje `StatelessService` a všechny další kód nebo závislosti v něm použité, spolu s názvem a číslem verze.
-* **Named service instance**: Chcete-li spustit službu, vytvořte pojmenované instance typu služby, podobně jako vytváříte instance objektů typu třídy. Instance služby má název ve formě identifikátoru URI pomocí "fabric:/" například "fabric:/MyApp/MyService".
-* **Hostitel služby**: Pojmenované instance služby, které vytvoříte, musí být spuštěny uvnitř hostitelského procesu. Hostitel služby je pouze proces, kde lze spustit instance služby.
-* **Registrace služby**: Registrace spojuje vše dohromady. Typ služby musí být registrován s runtime Service Fabric v hostiteli služby, aby service fabric mohl vytvářet instance, které mají být spuštěny.  
+* **Typ služby**: Toto je vaše implementace služby. Je definována třídou, kterou napíšete, `StatelessService` která rozšiřuje a jakýkoli jiný kód nebo závislosti, společně s názvem a číslem verze.
+* **Instance pojmenované služby**: Pokud chcete službu spustit, vytvoříte pojmenované instance typu služby, podobně jako při vytváření instancí objektů typu třídy. Instance služby má název ve formě identifikátoru URI s použitím "Fabric:/". schéma, jako je například Fabric:/MyApp/Mojesluzba.
+* **Hostitel služby**: pojmenované instance služby, které vytvoříte, musí běžet v hostitelském procesu. Hostitel služby je jenom proces, ve kterém se můžou spouštět instance služby.
+* **Registrace služby**: registrace přináší všechno dohromady. Typ služby musí být zaregistrován s modulem runtime Service Fabric v hostiteli služby, aby mohl Service Fabric vytvářet instance pro spuštění.  
 
 ## <a name="create-a-stateless-service"></a>Vytvoření bezstavové služby
 
-Bezstavová služba je typ služby, která je v současné době normou v cloudových aplikacích. Je považován za bezstavové, protože služba sama o sobě neobsahuje data, která je třeba uložit spolehlivě nebo vysoce dostupné. Pokud se instance služby bez stavů vypne, dojde ke ztrátě všech vnitřních stavů. V tomto typu služby musí být stav trvalý do externího úložiště, jako jsou tabulky Azure nebo databáze SQL, aby byl vysoce dostupný a spolehlivý.
+Bezstavová služba je typ služby, která je aktuálně normou v cloudových aplikacích. Je považována za bezstavovou, protože samotná služba neobsahuje data, která je třeba spolehlivě ukládat nebo mít vysokou dostupnost. Pokud dojde k výpadku instance nestavové služby, dojde ke ztrátě všech vnitřních stavů. V tomto typu služby musí být stav uložený v externím úložišti, jako jsou tabulky Azure nebo databáze SQL, aby byl vysoce dostupný a spolehlivý.
 
-Spusťte Visual Studio 2017 nebo Visual Studio 2019 jako správce a vytvořte nový projekt aplikace Service Fabric s názvem *HelloWorld*:
+Spusťte Visual Studio 2017 nebo Visual Studio 2019 jako správce a vytvořte nový projekt Service Fabric aplikace s názvem *HelloWorld*:
 
-![Vytvoření nové aplikace Service Fabric pomocí dialogového okna Nový projekt](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
+![Pomocí dialogového okna Nový projekt můžete vytvořit novou Service Fabric aplikaci.](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-Potom vytvořte bezstavový projekt služby pomocí **rozhraní .NET Core 2.0** s názvem *HelloWorldStateless*:
+Pak vytvořte projekt nestavové služby pomocí **.NET Core 2,0** s názvem *HelloWorldStateless*:
 
-![V druhém dialogovém okně vytvořte projekt bezstavové služby](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
+![V druhém dialogovém okně vytvořte projekt služby bez stavu.](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
-Vaše řešení nyní obsahuje dva projekty:
+Vaše řešení teď obsahuje dva projekty:
 
-* *HelloWorld*. Toto je *aplikační* projekt, který obsahuje vaše *služby*. Obsahuje také manifest aplikace, který popisuje aplikaci, stejně jako řadu skriptů prostředí PowerShell, které vám pomohou nasadit aplikaci.
-* *HelloWorldStateless*. Toto je projekt služby. Obsahuje implementaci bezstavové služby.
+* *HelloWorld*. Toto je projekt *aplikace* , který obsahuje vaše *služby*. Obsahuje také manifest aplikace, který popisuje aplikaci, a také několik skriptů prostředí PowerShell, které vám pomůžou nasadit aplikaci.
+* *HelloWorldStateless*. Toto je projekt služby. Obsahuje nestavovou implementaci služby.
 
 ## <a name="implement-the-service"></a>Implementace služby
 
-Otevřete soubor **HelloWorldStateless.cs** v projektu servisu. V Service Fabric služby můžete spustit libovolnou obchodní logiku. Rozhraní API služby poskytuje dva vstupní body pro váš kód:
+Otevřete soubor **HelloWorldStateless.cs** v projektu služby. V Service Fabric může služba spustit libovolnou obchodní logiku. Rozhraní API služby poskytuje dva vstupní body pro váš kód:
 
-* Metoda otevřeného vstupního bodu nazvaná *RunAsync*, kde můžete začít s pouštět všechny úlohy, včetně dlouhotrvajících výpočetních úloh.
+* Otevřená metoda vstupního bodu s názvem *RunAsync*, kde můžete začít spouštět jakékoli úlohy, včetně dlouhotrvajících výpočetních úloh.
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -58,7 +58,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-* Vstupní bod komunikace, do kterého můžete připojit příchozí zásobník, například ASP.NET Core. Toto je místo, kde můžete začít přijímat požadavky od uživatelů a dalších služeb.
+* Vstupní bod komunikace, ve kterém můžete připojit svůj komunikační zásobník dle výběru, například ASP.NET Core. Tady můžete začít přijímat žádosti od uživatelů a dalších služeb.
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -67,13 +67,13 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-V tomto kurzu se zaměříme na metodu vstupního `RunAsync()` bodu. Toto je místo, kde můžete okamžitě spustit kód.
-Šablona projektu obsahuje ukázkovou implementaci tohoto `RunAsync()` přírůstku postupného počtu.
+V tomto kurzu se zaměříme na metodu `RunAsync()` vstupního bodu. Tady můžete hned začít s kódem.
+Šablona projektu obsahuje ukázkovou implementaci `RunAsync()` , která zvýší počet kumulovaných hodnot.
 
 > [!NOTE]
-> Podrobnosti o tom, jak pracovat s komunikačním zásobníkem, najdete [v tématu Komunikace služby s ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
+> Podrobnosti o tom, jak pracovat s komunikačním zásobníkem, najdete v tématu [komunikace služby s ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) .
 
-### <a name="runasync"></a>Synchronizace runasync
+### <a name="runasync"></a>RunAsync
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -94,40 +94,40 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-Platforma volá tuto metodu, když je umístěna instance služby a připravena ke spuštění. Pro službu bez stavů, to jednoduše znamená, když je otevřena instance služby. Token zrušení je k dispozici pro koordinaci, když je třeba zavřít instanci služby. V Service Fabric tento otevřený/zavřít cyklus instance služby může dojít mnohokrát po dobu životnosti služby jako celku. K tomu může dojít z různých důvodů, včetně:
+Platforma volá tuto metodu, když je umístěna instance služby a je připravena k provedení. Pro bezstavovou službu, která jednoduše znamená, že je otevřená instance služby. Token zrušení se poskytuje ke koordinaci, když je potřeba uzavřít instanci služby. V Service Fabric může tento cyklus otevření nebo ukončení instance služby probíhat mnohokrát po celou dobu životnosti služby. K tomu může dojít z různých důvodů, včetně:
 
-* Systém přesune instance služby pro vyrovnávání prostředků.
-* V kódu dochází k chybám.
-* Aplikace nebo systém je inovován.
-* Základní hardware dochází k výpadku.
+* Systém přesune vaše instance služby pro vyrovnávání prostředků.
+* Ve vašem kódu dojde k chybám.
+* Aplikace nebo systém se upgraduje.
+* Dojde k výpadku základního hardwaru.
 
-Tato orchestrace je spravována systémem, aby vaše služba byla vysoce dostupná a správně vyvážená.
+Tato orchestrace je spravovaná systémem, aby byla vaše služba vysoce dostupná a správně vyvážená.
 
-`RunAsync()`by neměla blokovat synchronně. Implementace RunAsync by měla vrátit Task nebo čekat na všechny dlouhotrvající nebo blokovací operace povolit modul runtime pokračovat. Poznámka: `while(true)` ve smyčce v předchozím příkladu `await Task.Delay()` task-returning se používá. Pokud vaše úloha musí blokovat synchronně, měli `Task.Run()` byste `RunAsync` naplánovat nový úkol s ve vaší implementaci.
+`RunAsync()`nemělo by se blokovat synchronně. Vaše implementace RunAsync by měla vrátit úlohu nebo očekávat jakékoli dlouhotrvající nebo blokující operace, aby bylo možné pokračovat v běhu. Poznámka ve `while(true)` smyčce v předchozím příkladu se používá vrácení `await Task.Delay()` úlohy. Pokud vaše úloha musí blokovat synchronně, měli byste naplánovat novou úlohu `Task.Run()` v rámci vaší `RunAsync` implementace.
 
-Zrušení úlohy je kooperativní úsilí řízené zadaným tokenem zrušení. Systém bude čekat na ukončení úlohy (úspěšným dokončením, zrušením nebo chybou), než se přesune dál. Je důležité ctít zrušení token, dokončit jakoukoli `RunAsync()` práci a ukončit co nejrychleji, když systém požaduje zrušení.
+Zrušení úloh je úsilí v družstvu, které provádí poskytnutý token zrušení. Systém bude čekat na ukončení úlohy (po úspěšném dokončení, zrušení nebo chybě), než se přesune. Je důležité přijmout token zrušení, dokončit práci a skončit `RunAsync()` co nejrychleji, když systém požaduje zrušení.
 
-V tomto příkladu bezstavové služby je počet uložen v místní proměnné. Ale protože se jedná o bezstavovou službu, hodnota, která je uložena existuje pouze pro aktuální životní cyklus jeho instance služby. Při přesunu nebo restartování služby dojde ke ztrátě hodnoty.
+V tomto příkladu služby bez stavu je počet uložený v místní proměnné. Vzhledem k tomu, že se jedná o bezstavovou službu, hodnota, která je uložena, je určena pouze pro aktuální životní cyklus své instance služby. Při přesunu nebo restartu služby dojde ke ztrátě hodnoty.
 
 ## <a name="create-a-stateful-service"></a>Vytvoření stavové služby
 
-Service Fabric zavádí nový druh služby, která je stavová. Stavová služba může spolehlivě udržovat stav v rámci samotné služby, která je umístěna společně s kódem, který ji používá. Stav je vysoce k dispozici Service Fabric bez nutnosti zachovat stav do externího úložiště.
+Service Fabric zavádí nový druh služby, která je stavová. Stavová služba může udržovat stav spolehlivě v rámci samotné služby, společně umístěná pomocí kódu, který je používá. Stav je vysoce dostupný pomocí Service Fabric bez nutnosti zachovat stav do externího úložiště.
 
-Chcete-li převést hodnotu čítače z bezstavové na vysoce dostupné a trvalé, i když se služba přesune nebo restartuje, potřebujete stavovou službu.
+Chcete-li převést hodnotu čítače ze stavu bez stavů na vysokou dostupnost a trvalé, i když se služba přesune nebo restartuje, budete potřebovat stavovou službu.
 
-In the same *HelloWorld* application, you can add a new service by right-clicking on the Services references in the application project and selecting **Add -> New Service Fabric Service**.
+Ve stejné aplikaci *HelloWorld* můžete přidat novou službu tak, že kliknete pravým tlačítkem na odkazy na služby v projektu aplikace a vyberete **Add-> New Service Fabric Service**.
 
 ![Přidání služby do aplikace Service Fabric](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-Vyberte **.NET Core 2.0 -> stavové služby** a pojmenujte ji *HelloWorldStateful*. Klikněte na tlačítko **OK**.
+Vyberte **.NET Core 2,0-> stavová služba** a pojmenujte ji *HelloWorldStateful*. Klikněte na tlačítko **OK**.
 
-![Vytvoření nové stavové služby Service Fabric pomocí dialogového okna Nový projekt](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
+![Pomocí dialogového okna Nový projekt můžete vytvořit novou stavovou službu Service Fabric.](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
-Vaše aplikace by nyní měla mít dvě služby: bezstavovou službu *HelloWorldStateless* a stavovou službu *HelloWorldStateful*.
+Vaše aplikace by teď měla mít dvě služby: bezstavovou službu *HelloWorldStateless* a stavovou službu *HelloWorldStateful*.
 
-Stavová služba má stejné vstupní body jako bezstavová služba. Hlavním rozdílem je dostupnost *zprostředkovatele stavu,* který může spolehlivě ukládat stav. Service Fabric je dodáván s implementací zprostředkovatele stavu s názvem [Spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md), která umožňuje vytvářet replikované datové struktury prostřednictvím správce spolehlivého stavu. Stavová spolehlivá služba používá tohoto poskytovatele stavu ve výchozím nastavení.
+Stavová služba má stejné vstupní body jako Bezstavová služba. Hlavním rozdílem je dostupnost *zprostředkovatele stavu* , který může spolehlivě ukládat stav. Service Fabric obsahuje implementaci poskytovatele stavu nazvanou [Reliable Collections](service-fabric-reliable-services-reliable-collections.md), která umožňuje vytvářet replikované datové struktury prostřednictvím Správce spolehlivého stavu. Stavová služba Reliable využívá tohoto poskytovatele stavu ve výchozím nastavení.
 
-Otevřete **HelloWorldStateful.cs** v *HelloWorldStateful*, který obsahuje následující metodu RunAsync:
+Otevřete **HelloWorldStateful.cs** v *HelloWorldStateful*, které obsahuje následující RunAsync metodu:
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -159,26 +159,26 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
     }
 ```
 
-### <a name="runasync"></a>Synchronizace runasync
+### <a name="runasync"></a>RunAsync
 
-`RunAsync()`funguje podobně ve stavových a bezstavových službách. Však ve stavu služby `RunAsync()`platformy provádí další práci vaším jménem před tím, než provede . Tato práce může zahrnovat zajištění, že spolehlivé správce stavu a spolehlivé kolekce jsou připraveny k použití.
+`RunAsync()`funguje podobně jako stavová a Bezstavová služba. Ve stavové službě ale platforma před spuštěním provede další práci vaším jménem `RunAsync()`. Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
 
-### <a name="reliable-collections-and-the-reliable-state-manager"></a>Spolehlivé kolekce a spolehlivý správce stavu
+### <a name="reliable-collections-and-the-reliable-state-manager"></a>Spolehlivé kolekce a správce spolehlivého stavu
 
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) je implementace slovníku, který můžete použít ke spolehlivému ukládání stavu ve službě. Pomocí service fabric a spolehlivé kolekce, můžete ukládat data přímo ve vaší službě bez nutnosti externí trvalé úložiště. Spolehlivé kolekce, aby vaše data vysoce dostupné. Service Fabric toho dosáhne vytvořením a správou více *replik služby* za vás. Poskytuje také rozhraní API, které abstrahuje pryč složitosti správy těchto replik a jejich přechody stavu.
+[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) je slovníková implementace, kterou můžete použít k spolehlivému ukládání stavu ve službě. Pomocí Service Fabric a spolehlivých kolekcí můžete přímo ukládat data do vaší služby, aniž by bylo nutné externí trvalé úložiště. Spolehlivé kolekce zajistí vysokou dostupnost vašich dat. Service Fabric toho dosahuje vytvořením a správou více *replik* vaší služby za vás. Poskytuje také rozhraní API, které abstrakce zjednodušuje správu těchto replik a jejich přechodů na stav.
 
-Spolehlivé kolekce můžete uložit libovolný typ .NET, včetně vlastní typy, s několika upozornění:
+Spolehlivé kolekce můžou ukládat jakýkoli typ .NET, včetně vašich vlastních typů, s několika upozorněními:
 
-* Service Fabric umožňuje váš stav vysoce dostupné *replikací* stavu mezi uzly a spolehlivé kolekce ukládat data na místní disk na každé replice. To znamená, že vše, co je uloženo v spolehlivé kolekce musí být *serializovatelné*. Ve výchozím nastavení spolehlivé kolekce použít [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) pro serializaci, takže je důležité se ujistit, že vaše typy jsou [podporovány serializátorem smlouvy dat](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) při použití výchozíserializátor.
-* Objekty jsou replikovány pro vysokou dostupnost při potvrzení transakcí na spolehlivé kolekce. Objekty uložené v spolehlivé kolekce jsou uloženy v místní paměti ve vaší službě. To znamená, že máte místní odkaz na objekt.
+* Service Fabric zajistí, aby byl stav vysoce dostupný při *replikaci* do všech uzlů, a spolehlivé kolekce ukládají vaše data na místní disk v každé replice. To znamená, že všechno, co je uloženo ve spolehlivých kolekcích, musí být *serializovatelný*. Ve výchozím nastavení používají spolehlivé kolekce [kontrakt DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) pro serializaci, takže je důležité zajistit, aby byly vaše typy [podporovány serializátorem kontraktu dat](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) při použití výchozího serializátoru.
+* Objekty jsou při potvrzení transakcí u spolehlivých kolekcí replikovány pro zajištění vysoké dostupnosti. Objekty uložené ve spolehlivých kolekcích jsou v rámci služby uchovávány v místní paměti. To znamená, že máte místní odkaz na objekt.
   
-   Je důležité, abyste nemutovali místní instance těchto objektů bez provedení operace aktualizace spolehlivé kolekce v transakci. Důvodem je, že změny místních instancí objektů nebudou replikovány automaticky. Je nutné znovu vložit objekt zpět do slovníku nebo použít jednu z metod *aktualizace* ve slovníku.
+   Je důležité, abyste nemuseli provádět místní instance těchto objektů bez provedení operace aktualizace pro spolehlivou kolekci v transakci. Důvodem je to, že změny místních instancí objektů nebudou replikovány automaticky. Objekt je nutné znovu vložit zpět do slovníku nebo použít jednu z metod *aktualizace* ve slovníku.
 
-Správce spolehlivého stavu spravuje spolehlivé kolekce za vás. Můžete jednoduše požádat správce spolehlivého stavu o spolehlivou sbírku podle jména kdykoli a na jakémkoli místě ve vaší službě. Správce spolehlivého stavu zajišťuje, že získáte odkaz zpět. Nedoporučujeme ukládat odkazy na spolehlivé instance kolekce v proměnných nebo vlastnostech členů třídy. Zvláštní pozornost je třeba dbát na to, aby byl odkaz nastaven na instanci po celou dobu životního cyklu služby. Správce spolehlivého stavu zpracovává tuto práci za vás a je optimalizován pro opakované návštěvy.
+Správce Reliable State spravuje spolehlivé kolekce za vás. Správce spolehlivého stavu můžete jednoduše požádat o spolehlivé shromažďování dat podle názvu kdykoli a na jakémkoli místě ve vaší službě. Správce Reliable State zajišťuje, že získáte odkaz zpátky. Nedoporučujeme ukládat odkazy na spolehlivé instance kolekcí v proměnných členů třídy nebo vlastnostech. Aby se zajistilo, že odkaz bude v životním cyklu služby neustále nastavený na instanci, musí být podniknuta zvláštní péče. Reliable State Manager zpracovává tuto práci za vás a je optimalizovaná pro opakované návštěvy.
 
 ### <a name="transactional-and-asynchronous-operations"></a>Transakční a asynchronní operace
 
@@ -193,26 +193,26 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Spolehlivé kolekce mají mnoho stejné operace, které jejich `System.Collections.Generic` a `System.Collections.Concurrent` protějšky dělat, s výjimkou jazyka integrovaný dotaz (LINQ). Operace na spolehlivé kolekce jsou asynchronní. Důvodem je, že operace zápisu se spolehlivými kolekcemi provádějí vstupně-vanové operace k replikaci a zachování dat na disk.
+Spolehlivé kolekce obsahují mnohé ze stejných operací, které dělají `System.Collections.Generic` jejich `System.Collections.Concurrent` protějšky, s výjimkou jazyka LINQ (Language Integrated Query). Operace na spolehlivých kolekcích jsou asynchronní. Důvodem je to, že operace zápisu s spolehlivými kolekcemi provádějí vstupně-výstupní operace pro replikaci a uchovávání dat na disk.
 
-Spolehlivé operace kolekce jsou *transakční*, takže můžete udržovat stav konzistentní ve více spolehlivé kolekce a operace. Například můžete dequeue pracovní položky ze spolehlivé fronty, provést operaci na něm a uložit výsledek ve spolehlivém slovníku, to vše v rámci jedné transakce. To je považováno za atomické operace a zaručuje, že celá operace bude úspěšná nebo celá operace se vrátí zpět. Pokud dojde k chybě po vyřazení položky z fronty, ale před uložením výsledku, celá transakce je vrácena zpět a položka zůstane ve frontě pro zpracování.
+Spolehlivé operace shromažďování dat jsou *transakční*, takže můžete udržovat stav konzistentní napříč několika spolehlivými kolekcemi a operacemi. Můžete například vyřadit pracovní položku ze spolehlivé fronty, provést na ní operaci a výsledek uložit ve spolehlivém slovníku, který je v rámci jedné transakce. Tato možnost se považuje za atomickou operaci a zaručuje, že celá operace bude úspěšná nebo se vrátí celá operace. Pokud dojde k chybě po vyřazení položky z fronty, ale před uložením výsledku, je celá transakce vrácena zpět a položka zůstane ve frontě ke zpracování.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
-Nyní se vracíme do aplikace *HelloWorld.* Nyní můžete vytvářet a nasazovat služby. Po stisknutí **klávesy F5**bude aplikace vytvořena a nasazena do místního clusteru.
+Nyní se vrátíme do aplikace *HelloWorld* . Nyní můžete vytvářet a nasazovat vaše služby. Po stisknutí klávesy **F5**bude vaše aplikace sestavena a nasazena do místního clusteru.
 
-Po spuštění služby můžete zobrazit generované události trasování událostí pro Windows (ETW) v okně **diagnostické události.** Všimněte si, že zobrazené události jsou z bezstavové služby a stavové služby v aplikaci. Datový proud můžete pozastavit kliknutím na tlačítko **Pozastavit.** Potom můžete prozkoumat podrobnosti zprávy rozbalením této zprávy.
+Po spuštění služeb můžete v okně **diagnostické události** zobrazit generované události trasování událostí pro Windows (ETW). Všimněte si, že zobrazené události jsou ze stavové služby a stavové služby v aplikaci. Datový proud můžete pozastavit kliknutím na tlačítko **pozastavit** . Můžete si prohlédnout podrobnosti zprávy rozbalením této zprávy.
 
 > [!NOTE]
-> Před spuštěním aplikace se ujistěte, že máte spuštěný cluster místního vývoje. Informace o nastavení místního prostředí najdete v [příručce Začínáme.](service-fabric-get-started.md)
+> Před spuštěním aplikace se ujistěte, že máte spuštěný místní vývojový cluster. Informace o nastavení místního prostředí najdete v [příručce Začínáme](service-fabric-get-started.md) .
 > 
 > 
 
-![Zobrazení diagnostických událostí v sadě Visual Studio](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
+![Zobrazení diagnostických událostí v aplikaci Visual Studio](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
 ## <a name="next-steps"></a>Další kroky
-[Ladění aplikace Service Fabric v sadě Visual Studio](service-fabric-debugging-your-application.md)
+[Ladění aplikace Service Fabric v aplikaci Visual Studio](service-fabric-debugging-your-application.md)
 
-[Začínáme: Služby Service Fabric Web API se samoobslužným hostingem OWIN](service-fabric-reliable-services-communication-webapi.md)
+[Začínáme: Service Fabric služby webového rozhraní API pomocí samoobslužného hostování OWIN](service-fabric-reliable-services-communication-webapi.md)
 
 [Další informace o spolehlivých kolekcích](service-fabric-reliable-services-reliable-collections.md)
 
@@ -220,5 +220,5 @@ Po spuštění služby můžete zobrazit generované události trasování udál
 
 [Upgrade aplikací](service-fabric-application-upgrade.md)
 
-[Odkaz pro vývojáře pro spolehlivé služby](https://msdn.microsoft.com/library/azure/dn706529.aspx)
+[Referenční příručka pro vývojáře pro Reliable Services](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 

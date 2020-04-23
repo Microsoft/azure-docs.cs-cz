@@ -19,7 +19,7 @@ ms.locfileid: "67174712"
 3. V části **Podrobnosti konfiguračního serveru** zadejte IP adresu konfiguračního serveru a přístupové heslo.
 
    ![Přidání procesového serveru 2](./media/site-recovery-add-process-server/ps-page-2.png)
-4. V **nastavení Internetu**určete, jak se zprostředkovatel spuštěný na konfiguračním serveru připojuje k obnovení webu Azure přes Internet.
+4. V části **nastavení Internetu**určete, jak se zprostředkovatel, který běží na konfiguračním serveru, připojí k Azure Site Recovery přes Internet.
 
    ![Přidání procesového serveru 3](./media/site-recovery-add-process-server/ps-page-3.png)
 

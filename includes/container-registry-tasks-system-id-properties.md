@@ -15,7 +15,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "77112332"
 ---
-Ve výstupu příkazu `identity` se v části `SystemAssigned` zobrazí identita typu nastavená v úloze. Je `principalId` id hlavního úkolu identity úkolu:
+Ve výstupu příkazu ukazuje `identity` oddíl identitu typu `SystemAssigned` nastavenou v úloze. `principalId` Je hlavní ID identity úlohy:
 
 ```console
 [...]
@@ -28,7 +28,7 @@ Ve výstupu příkazu `identity` se v části `SystemAssigned` zobrazí identita
   "location": "eastus",
 [...]
 ``` 
-Pomocí příkazu [az acr task show][az-acr-task-show] uložte principalId v proměnné, chcete-li použít v pozdějších příkazech. Název úkolu a registru nahraďte následujícím příkazem:
+Pomocí příkazu [AZ ACR Task show][az-acr-task-show] uložte principalId do proměnné pro použití v pozdějších příkazech. V následujícím příkazu nahraďte název svého úkolu a registru:
 
 ```azurecli
 principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)

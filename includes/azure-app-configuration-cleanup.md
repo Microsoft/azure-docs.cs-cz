@@ -15,17 +15,17 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "76961566"
 ---
-Pokud máte v plánu pokračovat k dalšímu kurzu, zachovat prostředky, které jste vytvořili v tomto rychlém startu, pro které je můžete znovu použít.
+Pokud máte v plánu pokračovat k dalšímu kurzu, ponechte prostředky, které jste vytvořili v tomto rychlém startu, pro to, abyste je mohli znovu použít.
 
-Pokud jste hotovi s ukázkovou aplikací rychlého startu, odstraňte prostředky Azure, které jste vytvořili v tomto rychlém startu, abyste se vyhnuli poplatkům.
+Pokud jste hotovi s ukázkovou aplikací pro rychlé zprovoznění, odstraňte prostředky Azure, které jste vytvořili v tomto rychlém startu, abyste předešli poplatkům.
 
 > [!IMPORTANT]
-> Odstranění skupiny prostředků je nevratné. Skupina prostředků a všechny prostředky v ní jsou trvale odstraněny. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky uvnitř skupiny prostředků, která obsahuje prostředky, které chcete zachovat, odstraňte jednotlivé prostředky jednotlivě z příslušného podokna namísto odstranění skupiny prostředků.
+> Odstranění skupiny prostředků je nevratné. Skupina prostředků a všechny prostředky v ní se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky v rámci skupiny prostředků, která obsahuje prostředky, které chcete zachovat, odstraňte všechny prostředky jednotlivě z příslušného podokna, místo aby se odstranila skupina prostředků.
 
-1. Přihlaste se k [portálu Azure a](https://portal.azure.com)vyberte **skupiny prostředků**.
-1. Do pole **Filtr podle názvu** zadejte název skupiny prostředků. 
-1. V seznamu výsledků vyberte skupinu prostředků a klepnutím pravým tlačítkem myši na řádek nebo pomocí tlačítka **se třemi tečkami** (**...**) otevřete místní nabídku.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte **skupiny prostředků**.
+1. Do pole **filtrovat podle názvu** zadejte název vaší skupiny prostředků. 
+1. V seznamu výsledků vyberte skupinu prostředků a buď klikněte pravým tlačítkem myši na řádek nebo použijte tlačítko se **třemi tečkami** (**...**) a otevřete místní nabídku.
 1. Vyberte **Odstranit skupinu prostředků**.
-1. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název skupiny prostředků, kterou chcete potvrdit, a vyberte **Odstranit**.
+1. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků, který chcete potvrdit, a vyberte **Odstranit**.
 
-Po několika okamžicích se odstraní skupina prostředků a všechny její prostředky.
+Po chvíli se odstraní skupina prostředků a všechny její prostředky.

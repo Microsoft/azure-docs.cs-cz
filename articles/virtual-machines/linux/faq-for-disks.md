@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy týkající se disků
-description: Nejčastější dotazy týkající se disků virtuálních počítačů Azure IaaS pro Linux a prémiových disků (spravovaných i nespravovaných)
+title: Nejčastější dotazy k diskům
+description: Nejčastější dotazy k diskům virtuálních počítačů Azure IaaS Linux a diskům úrovně Premium (spravované a nespravované)
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual

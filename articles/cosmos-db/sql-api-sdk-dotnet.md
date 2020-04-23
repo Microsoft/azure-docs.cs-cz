@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: ROZHRANÍ SQL .NET API, sada SDK & prostředky'
-description: Přečtěte si vše o rozhraní SQL .NET API a SDK, včetně dat vydání, dat vyřazení a změn provedených mezi jednotlivými verzemi sady Azure Cosmos DB .NET SDK.
+title: 'Azure Cosmos DB: rozhraní SQL .NET API, sady SDK & prostředků'
+description: Přečtěte si všechno o rozhraních API a sadě SDK pro SQL .NET, včetně dat vydání, data odchodu a změn provedených mezi jednotlivými verzemi Azure Cosmos DB .NET SDK.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -15,35 +15,35 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "72177742"
 ---
-# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní SQL API: Poznámky ke stažení a vydání
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro SQL API: stažení a poznámky k verzi
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Standard](sql-api-sdk-dotnet-standard.md)
-> * [Informační kanál o změně .NET](sql-api-sdk-dotnet-changefeed.md)
+> * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Odpočinku](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Hromadný vykonavatel - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Hromadný vykonavatel - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Hromadný prováděcí modul – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-|**SDK ke stažení**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
+|**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**ukázky**|[Ukázky kódu .NET](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
-|**Začínáme**|[Začínáme s sadou Azure Cosmos DB .NET SDK](sql-api-get-started.md)|
-|**Kurz webové aplikace**|[Vývoj webových aplikací s Azure Cosmos DB](sql-api-dotnet-application.md)|
-|**Aktuální podporovaný rámec**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
+|**Ukázky**|[Ukázky kódu .NET](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
+|**Začínáme**|[Začínáme s Azure Cosmos DB .NET SDK](sql-api-get-started.md)|
+|**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-dotnet-application.md)|
+|**Aktuální podporovaná architektura**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
 > [!NOTE]
-> Pokud používáte rozhraní .NET Framework, přečtěte si nejnovější verzi 3.x sady [.NET SDK](sql-api-sdk-dotnet-standard.md), která cílí na standard .NET. 
+> Pokud používáte .NET Framework, přečtěte si nejnovější verzi 3. x sady [.NET SDK](sql-api-sdk-dotnet-standard.md), která cílí na .NET Standard. 
 
 [!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v2/changelog.md)]
 
@@ -52,5 +52,5 @@ ms.locfileid: "72177742"
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také
-Další informace o Službě Cosmos DB najdete na stránce [služby Microsoft Azure Cosmos DB.](https://azure.microsoft.com/services/cosmos-db/) 
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) . 
 

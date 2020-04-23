@@ -1,6 +1,6 @@
 ---
-title: Vizualizace protokolů a metrik azure kognitivního vyhledávání pomocí Power BI
-description: Vizualizace protokolů a metrik azure kognitivního vyhledávání pomocí Power BI
+title: Vizualizace protokolů a metrik služby Azure Kognitivní hledání pomocí Power BI
+description: Vizualizace protokolů a metrik služby Azure Kognitivní hledání pomocí Power BI
 manager: eladz
 author: MarkHeff
 ms.author: maheff
@@ -14,89 +14,89 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650134"
 ---
-# <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Vizualizace protokolů a metrik azure kognitivního vyhledávání pomocí Power BI
-[Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) umožňuje ukládat protokoly operací a metriky služeb o vaší vyhledávací službě v účtu Azure Storage. Tato stránka obsahuje pokyny, jak si můžete tyto informace vizualizovat prostřednictvím aplikace Šablony Power BI. Aplikace poskytuje podrobné informace o vyhledávací službě, včetně informací o metrikách Vyhledávání, Indexování, Provoz a Služba.
+# <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Vizualizace protokolů a metrik služby Azure Kognitivní hledání pomocí Power BI
+[Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-what-is-azure-search) umožňuje ukládat protokoly operací a metriky služeb o vaší vyhledávací službě v účtu Azure Storage. Tato stránka poskytuje pokyny k vizualizaci těchto informací prostřednictvím aplikace Power BI Template. Aplikace poskytuje podrobné přehledy o vaší vyhledávací službě, včetně informací o vyhledávání, indexování, operacích a metrikách služeb.
 
-Najdete si aplikaci Power BI Template App **Azure Cognitive Search: Analyzovat protokoly a metriky** na [trhu aplikací Power BI](https://appsource.microsoft.com/marketplace/apps).
+Můžete najít Power BI App template **kognitivní hledání Azure: Analýza protokolů a metrik** na [tržišti aplikací pro Power BI](https://appsource.microsoft.com/marketplace/apps).
 
 ## <a name="how-to-get-started-with-the-app"></a>Jak začít s aplikací
-1. Povolte protokolování diagnostiky pro vyhledávací službu:
-    1. Vytvoření nebo identifikace existujícího [účtu Úložiště Azure,](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) kde můžete protokoly archivovat
-    1. Přejděte na službu Azure Cognitive Search na webu Azure Portal
-    1. V části Monitorování v levém sloupci vyberte **Nastavení diagnostiky.**
+1. Povolit protokolování diagnostiky pro vaši vyhledávací službu:
+    1. Umožňuje vytvořit nebo identifikovat existující [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , do kterého můžete archivovat protokoly.
+    1. Přejděte do služby Azure Kognitivní hledání v Azure Portal
+    1. V části monitorování v levém sloupci vyberte **nastavení diagnostiky** .
 
         ![](media/search-monitor-logs-powerbi/diagnostic-settings.png)
 
-    1. Vybrat **+ Přidat diagnostické nastavení**
-    1. Zkontrolujte **archivovat účet úložiště**, zadejte informace o účtu úložiště a zkontrolujte **OperationLogs** a **AllMetrics**
+    1. Vybrat **+ Přidat nastavení diagnostiky**
+    1. Zaregistrujte se **do účtu úložiště**, zadejte informace o svém účtu úložiště a pak ověřte **OperationLogs** a **AllMetrics** .
 
         ![](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
-    1. Vyberte **Uložit**.
+    1. Vybrat **Uložit**
 
-1. Po povolení protokolování můžete pomocí vyhledávací služby spustit generování protokolů a metrik. Trvá až hodinu, než se kontejnery zobrazí v úložišti objektů Blob s těmito protokoly. Zobrazí se kontejner **evidence-protokoly-operationlogs** pro protokoly vyhledávacího provozu a kontejner **insights-metrics-pt1m** pro metriky.
+1. Po povolení protokolování můžete pomocí vyhledávací služby začít generovat protokoly a metriky. Může to trvat až hodinu, než se kontejnery zobrazí v úložišti objektů BLOB v těchto protokolech. Zobrazí se kontejner **Insights-logs-operationlogs** pro protokoly pro vyhledávání a kontejner Insights- **Metrics-pt1m** pro metriky.
 
-1. Najděte aplikaci Azure Cognitive Search Power BI na [trhu aplikací Power BI](https://appsource.microsoft.com/marketplace/apps) a nainstalujte ji do nového pracovního prostoru nebo do existujícího pracovního prostoru. Aplikace se nazývá **Azure Cognitive Search: Analyzovat protokoly a metriky**.
+1. Najděte aplikaci Azure Kognitivní hledání Power BI na [webu tržiště aplikací pro Power BI](https://appsource.microsoft.com/marketplace/apps) a nainstalujte ji do nového nebo existujícího pracovního prostoru. Aplikace se nazývá **Azure kognitivní hledání: Analýza protokolů a metrik**.
 
 1. Po instalaci aplikace vyberte aplikaci ze seznamu aplikací v Power BI.
 
     ![](media/search-monitor-logs-powerbi/azure-search-app-tile.png)
 
-1. Vyberte **Připojit,** chcete-li připojit data.
+1. Vyberte **připojit** a připojte data.
 
     ![](media/search-monitor-logs-powerbi/get-started-with-your-new-app.png)
 
-1. Zadejte název účtu úložiště, který obsahuje protokoly a metriky. Ve výchozím nastavení se aplikace bude zabývat daty za posledních 10 dní, ale tuto hodnotu lze změnit pomocí parametru **Dny.**
+1. Zadejte název účtu úložiště, který obsahuje vaše protokoly a metriky. Ve výchozím nastavení se aplikace bude považovat za posledních 10 dnů, ale tato hodnota se dá změnit s parametrem **dny** .
 
     ![](media/search-monitor-logs-powerbi/connect-to-storage-account.png)
 
-1. Jako metodu ověřování vyberte **Klíč** a zadejte klíč účtu úložiště. Jako úroveň ochrany osobních údajů vyberte **Soukromé.** Klikněte na Přihlásit se a zahajte proces načítání.
+1. Jako metodu ověřování vyberte **klíč** a zadejte svůj klíč účtu úložiště. Jako úroveň ochrany osobních údajů vyberte **soukromá** . Klikněte na Přihlásit se a zahajte proces načítání.
 
     ![](media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png)
 
-1. Počkejte na aktualizaci dat. To může nějakou dobu trvat v závislosti na tom, kolik dat máte. Můžete zjistit, zda jsou data stále aktualizována na základě níže uvedeného indikátoru.
+1. Počkejte, až se data aktualizují. To může nějakou dobu trvat v závislosti na tom, kolik dat máte. Můžete zjistit, zda se data stále aktualizují na základě níže uvedeného indikátoru.
 
     ![](media/search-monitor-logs-powerbi/workspace-view-refreshing.png)
 
-1. Po dokončení aktualizace dat vyberte **Azure Cognitive Search Report** pro zobrazení sestavy.
+1. Po dokončení aktualizace dat vyberte **sestavu Azure kognitivní hledání** a zobrazte sestavu.
 
     ![](media/search-monitor-logs-powerbi/workspace-view-select-report.png)
 
-1. Po otevření sestavy nezapomeňte stránku aktualizovat tak, aby se otevřela s vašimi daty.
+1. Po otevření sestavy nezapomeňte stránku aktualizovat, aby se otevírala s daty.
 
     ![](media/search-monitor-logs-powerbi/powerbi-search.png)
 
 ## <a name="how-to-change-the-app-parameters"></a>Jak změnit parametry aplikace
-Pokud chcete vizualizovat data z jiného účtu úložiště nebo změnit počet dní dat na dotaz, změňte parametry **Days** a **StorageAccount** pomocí následujících kroků.
+Pokud chcete vizualizovat data z jiného účtu úložiště nebo změnit počet dnů, na které se má dotaz zadat dotaz, změňte parametry **dnů** a **StorageAccount** podle následujících kroků.
 
-1. Přejděte do svých aplikací Power BI, najděte aplikaci Azure Cognitive Search a vyberte tlačítko **Upravit aplikaci,** abyste si pracovní prostor zobrazili.
+1. Přejděte do aplikací Power BI, Najděte aplikaci Azure Kognitivní hledání a kliknutím na tlačítko **Upravit aplikaci** zobrazíte pracovní prostor.
 
     ![](media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png)
 
-1. Z voleb Datové sady vyberte **Nastavení.**
+1. V možnostech datové sady vyberte **Nastavení** .
 
     ![](media/search-monitor-logs-powerbi/workspace-view-select-settings.png)
 
-1. Na kartě Datové sady změňte hodnoty parametrů a vyberte **Použít**. Pokud dojde k problému s připojením, aktualizujte přihlašovací údaje zdroje dat na stejné stránce.
+1. Na kartě datové sady změňte hodnoty parametrů a vyberte **použít**. Pokud dojde k potížím s připojením, aktualizujte přihlašovací údaje ke zdroji dat na stejné stránce.
 
-1. Přejděte zpět do pracovního prostoru a z možností Datové sady **vyberte Aktualizovat nyní.**
+1. Přejděte zpátky do pracovního prostoru a vyberte **aktualizovat hned** z možností datové sady.
 
     ![](media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png)
 
-1. Otevřete sestavu a zobrazte aktualizovaná data. Chcete-li zobrazit nejnovější data, může být také nutné sestavu aktualizovat.
+1. Otevřete sestavu pro zobrazení aktualizovaných dat. Je také možné, že budete muset aktualizovat sestavu, aby se zobrazila nejnovější data.
 
-## <a name="troubleshooting"></a>Řešení potíží
-Pokud zjistíte, že vaše data nevidíte, postupujte takto:
+## <a name="troubleshooting"></a>Poradce při potížích
+Pokud zjistíte, že se data nezobrazí, postupujte podle těchto kroků pro řešení potíží:
 
-1. Otevřete sestavu a aktualizujte stránku, abyste měli jistotu, že si prohlížíte nejnovější data. V sestavě je možnost aktualizovat data. Tuto možnost vyberte, chcete-li získat nejnovější data.
+1. Otevřete sestavu a aktualizujte stránku, abyste měli jistotu, že si prohlížíte nejnovější data. V sestavě je možnost aktualizovat data. Tuto možnost vyberte, pokud chcete získat nejnovější data.
 
-1. Ujistěte se, že název účtu úložiště a přístupový klíč, který jste zadali, jsou správné. Název účtu úložiště by měl odpovídat účtu nakonfigurovanému pomocí protokolů vyhledávací služby.
+1. Ujistěte se, že zadaný název účtu úložiště a přístupový klíč jsou správné. Název účtu úložiště by měl odpovídat účtu nakonfigurovanému s protokoly služby Search.
 
-1. Zkontrolujte, zda váš účet úložiště obsahuje kontejnery **přehledy-protokoly-operationlogs** a **insights-metrics-pt1m** a každý kontejner má data. Protokoly a metriky budou v několika vrstvách složek.
+1. Ujistěte se, že váš účet úložiště obsahuje kontejnery **Insights-logs-operationlogs** a **Insights-Metrics-pt1m** a každý kontejner obsahuje data. Protokoly a metriky budou v rámci několika vrstev složek.
 
-1. Zkontrolujte, zda je datová sada stále osvěžující. Indikátor stavu aktualizace je zobrazen v kroku 8 výše. Pokud se stále aktualizuje, počkejte na dokončení aktualizace, chcete-li sestavu otevřít a aktualizovat.
+1. Zkontrolujte, jestli se datová sada ještě neaktualizovala. Indikátor stavu aktualizace se zobrazí v kroku 8 výše. Pokud se stále aktualizuje, počkejte, až se aktualizace dokončí, aby se tato sestava otevřela a aktualizovala.
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o Azure Cognitive Search](https://docs.microsoft.com/azure/search/)
+[Další informace o Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/)
 
 [Co je Power BI?](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
 

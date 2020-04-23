@@ -1,6 +1,6 @@
 ---
-title: Striim rychlý start
-description: Rychle můžete začít se Striimem a Azure SQL Data Warehouse.
+title: Rychlé spuštění Striim
+description: Striim a Azure SQL Data Warehouse vám umožní rychle začít.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -18,51 +18,51 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "80349942"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Průvodce instalací striim Azure SQL DW Marketplace
+# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Průvodce instalací nabídky Striim Azure SQL DW Marketplace
 
-Tento rychlý start předpokládá, že již máte již existující instanci SQL Data Warehouse.
+V tomto rychlém startu se předpokládá, že už máte již existující instanci SQL Data Warehouse.
 
-Vyhledejte striim na Azure Marketplace a vyberte možnost Striim for Data Integration to SQL Data Warehouse (Staged) 
+Vyhledejte v Azure Marketplace Striim a vyberte možnost Striim pro integraci dat do SQL Data Warehouse (dvoufázové). 
 
-![Instalace Striim][install]
+![Nainstalovat Striim][install]
 
-Konfigurace virtuálního počítače Striim se zadanými vlastnostmi, přičemž si můžete zaznapat název clusteru Striim, heslo a heslo správce.
+Konfigurace virtuálního počítače s Striim pomocí zadaných vlastností, který označuje název clusteru Striim, heslo a heslo správce
 
-![Konfigurace striimu][configure]
+![Konfigurace Striim][configure]
 
-Po nasazení klikněte \<na název virtuálního počítače>-masternode na webu Azure Portal, klikněte na Připojit a zkopírujte přihlášení pomocí místního účtu virtuálního počítače. 
+Po nasazení klikněte v Azure Portal \<na název virtuálního počítače>-masternode, klikněte na připojit a zkopírujte přihlašovací údaje pomocí místního účtu virtuálního počítače. 
 
-![Připojení striimu k datovému skladu SQL][connect]
+![Připojení Striim k SQL Data Warehouse][connect]
 
-Stáhněte sqljdbc42.jar <https://www.microsoft.com/en-us/download/details.aspx?id=54671> z místního počítače. 
+Stáhněte si sqljdbc42. jar z <https://www.microsoft.com/en-us/download/details.aspx?id=54671> webu do místního počítače. 
 
-Otevřete okno příkazového řádku a změňte adresáře na místo, kde jste stáhli nádobu JDBC. SCP jar soubor do vašeho Virtuálního počítače Striim, získání adresy a hesla z portálu Azure
+Otevřete okno příkazového řádku a změňte adresáře na místo, kam jste stáhli JDBC jar. Zascp soubor JAR na virtuální počítač s Striim a získá adresu a heslo z Azure Portal
 
-![Kopírování souboru jar do virtuálního počítače][copy-jar]
+![Kopírovat soubor JAR do virtuálního počítače][copy-jar]
 
-Otevřete jiné okno příkazového řádku nebo použijte nástroj ssh pro ssh do clusteru Striim
+Otevření jiného okna příkazového řádku nebo použití nástroje SSH k SSH do clusteru Striim
 
 ![SSH do clusteru][ssh]
 
-Proveďte následující příkazy přesunout jdbc jar soubor do adresáře Lib Striim a spusťte a zastavte server.
+Spusťte následující příkazy pro přesunutí souboru jar JDBC do adresáře lib Striim a spusťte a zastavte Server.
 
-   1. sudo su
-   2. cd /tmp
-   3. mv sqljdbc42.jar /opt/striim/lib
-   4. systemctl stop striim-node systemctl stop
-   5. systemctl stop striim-dbms systemctl stop striim-dbms systemctl stop striim-dbms systemct
-   6. systemctl start striim-dbms systemctl start striim-dbms systemctl start striim-dbms systemct
-   7. systemctl start striim-node systemctl start
+   1. sudo Su
+   2. adresáře/TMP CD
+   3. MV sqljdbc42. jar/opt/striim/lib
+   4. systemctl zastavit striim-Node
+   5. systemctl zastavit striim – DBMS
+   6. systemctl Start striim – DBMS
+   7. systemctl Start striim-Node
 
 ![Spuštění clusteru Striim][start-striim]
 
-Nyní otevřete svůj oblíbený \<prohlížeč a přejděte na DNS Name>:9080
+Teď otevřete oblíbený prohlížeč a přejděte na \<název DNS>:9080
 
-![Přechod na přihlašovací obrazovku][navigate]
+![Přejít na přihlašovací obrazovku][navigate]
 
-Přihlaste se pomocí uživatelského jména a hesla, které jste nastavili na webu Azure Portal, a vyberte preferovaného průvodce, abyste mohli začít, nebo přejděte na stránku Aplikace a začněte používat uživatelské rozhraní přetažení.
+Přihlaste se pomocí uživatelského jména a hesla, které jste nastavili v Azure Portal, vyberte preferovaného průvodce, abyste mohli začít, nebo přejít na stránku aplikace a začněte používat uživatelské rozhraní přetažení.
 
-![Přihlášení pomocí pověření serveru][login]
+![Přihlášení pomocí přihlašovacích údajů serveru][login]
 
 
 

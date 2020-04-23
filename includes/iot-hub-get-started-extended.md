@@ -21,9 +21,9 @@ Použijete další nástroje a služby Azure. Jakmile budete mít připojené za
 
 | Scénář                                                   | Nástroj nebo služba Azure              |
 |----------------------------------------------------------- |------------------------------------|
-| [Správa zpráv IoT Hub](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | Rozšíření služby VS Code Azure IoT Hub|
-| [Správa zařízení IoT](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Azure CLI a rozšíření IoT    |
-| [Správa zařízení IoT](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | Rozšíření služby VS Code Azure IoT Hub|
+| [Správa zpráv IoT Hub](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code rozšíření Azure IoT Hub|
+| [Správa zařízení IoT](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Rozhraní příkazového řádku Azure a rozšíření IoT    |
+| [Správa zařízení IoT](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS Code rozšíření Azure IoT Hub|
 | [Uložení zpráv IoT Hub do úložiště Azure](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure Table Storage                |
 | [Vizualizace dat ze snímačů](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
 | [Vizualizace dat ze snímačů](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure Web Apps                     |

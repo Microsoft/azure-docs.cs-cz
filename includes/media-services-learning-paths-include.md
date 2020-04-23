@@ -13,7 +13,7 @@ ms.locfileid: "69014677"
 ---
 ### <a name="media-services-v3-latest"></a>Media Services v3 (nejnovější)
 
-Podívejte se na nejnovější verzi Azure Media Services! 
+Podívejte se na nejnovější verzi Azure Media Services. 
 
 * [Přehled](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
 * [Koncepty](https://docs.microsoft.com/azure/media-services/latest/concepts-overview)
@@ -24,5 +24,5 @@ Podívejte se na nejnovější verzi Azure Media Services!
 
 * [Přehled](https://docs.microsoft.com/azure/media-services/previous/media-services-overview)
 * [Vytvoření účtu](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-create-account)
-* [Doručujte na vyžádání](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
-* [Dodávat živě](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)
+* [Doručení na vyžádání](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
+* [Doručovat živě](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)

@@ -19,33 +19,33 @@ ms.locfileid: "79538828"
 
 |Pole|Popis|
 |----|----|
-|**Název_výstrahy**|Zobrazovaný název výstrahy|
-|**Typ výstrahy**|jedinečný identifikátor výstrahy|
-|**Úroveň spolehlivosti**|(Nepovinné) Úroveň spolehlivosti tohoto upozornění (vysoká/nízká)|
-|**Skóre spolehlivosti**|(Nepovinné) Číselný indikátor spolehlivosti výstrahy zabezpečení|
+|**AlertName**|Zobrazované jméno výstrahy|
+|**AlertType**|Jedinečný identifikátor výstrahy|
+|**ConfidenceLevel**|Volitelné Úroveň spolehlivosti této výstrahy (vysoká/nízká)|
+|**ConfidenceScore**|Volitelné Číselný indikátor spolehlivosti výstrahy zabezpečení|
 |**Popis**|Text popisu výstrahy|
-|**Displayname**|Zobrazovaný název výstrahy|
-|**Endtime**|Čas ukončení dopadu výstrahy (čas poslední události přispívající k výstraze)|
-|**Entity**|Seznam entit souvisejících s výstrahou. Tento seznam může obsahovat směs entit různých typů|
-|**Rozšířené odkazy**|(Nepovinné) Taška pro všechny odkazy související s výstrahou. Tato taška může obsahovat směs odkazů pro různé typy|
-|**ExtendedProperties**|Sáček dalších polí, která jsou relevantní pro výstrahu|
-|**IsIncident**|Určuje, zda se jedná o incident nebo pravidelnou výstrahu. Incident je výstraha zabezpečení, která agreguje více výstrah do jednoho incidentu zabezpečení.|
-|**ProcessingEndTime**|Časové razítko utc, ve kterém byla výstraha vytvořena|
-|**ProductComponentName**|(Nepovinné) Název součásti uvnitř produktu, který vygeneroval výstrahu.|
-|**Productname**|konstanta ("Azure Security Center")|
-|**Providername**|Nepoužité|
-|**Remediasteps**|Ruční akce položky, které mají být podnikána k nápravě ohrožení zabezpečení|
-|**ResourceId**|Úplný identifikátor ohroženého zdroje|
-|**Závažnost**|Závažnost výstrahy (Vysoká/Střední/Nízká/Informační)|
-|**SourceComputerId**|jedinečný identifikátor GUID pro ohrožený server (pokud je výstraha generována na serveru)|
-|**SourceSystem**|Nepoužité|
-|**Starttime**|Čas spuštění záznamu nárazu (čas první události přispívající k výstraze)|
-|**Id systému výstrah**|Jedinečný identifikátor této instance výstrahy zabezpečení|
-|**TenantId**|identifikátor nadřazeného klienta služby Azure Active directory předplatného, pod kterým je naskenovaný prostředek umístěn|
-|**TimeGenerated**|Časové razítko UTC, na kterém došlo k vyhodnocení (doba skenování centra zabezpečení) (totožné s DIČ)|
-|**Typ**|konstanta ("Výstraha zabezpečení")|
-|**Název_dodavatele**|Název dodavatele, který výstrahu poskytl (např.|
-|**VendorOriginalId**|Nepoužité|
-|**Skupina prostředků pracovního prostoru**|v případě, že výstraha je generována na virtuálnípočítač, server, virtuální počítač škálovací sada nebo app service instance, která hlásí do pracovního prostoru, obsahuje název skupiny prostředků pracovního prostoru, který|
-|**Id předplatného pracovního prostoru**|v případě, že výstraha je generována na virtuálnípočítač, server, škálování virtuálních počítačů set nebo app service instance, která hlásí do pracovního prostoru, obsahuje, že odběr pracovního prostoruId|
+|**DisplayName**|Zobrazované jméno výstrahy|
+|**EndTime**|Koncový čas dopadu výstrahy (čas poslední události přispívající k výstraze)|
+|**Entity**|Seznam entit souvisejících s výstrahou. Tento seznam může obsahovat kombinaci entit různých typů.|
+|**ExtendedLinks**|Volitelné Penalta pro všechny odkazy související s výstrahou. Tento kontejner může obsahovat kombinaci odkazů pro různé typy.|
+|**ExtendedProperties**|Kontejner dalších polí, která jsou relevantní pro danou výstrahu.|
+|**Incident**|Určuje, zda je výstraha incidentem nebo běžnou výstrahou. Incident je výstraha zabezpečení, která agreguje více výstrah do jednoho incidentu zabezpečení.|
+|**ProcessingEndTime**|Časové razítko UTC, ve kterém se výstraha vytvořila|
+|**ProductComponentName**|Volitelné Název součásti v rámci produktu, který výstrahu vygeneroval.|
+|**NázevVýrobku**|konstanta (' Azure Security Center ')|
+|**ProviderName**|nepoužívané|
+|**RemediationSteps**|Položky ručních akcí, které je potřeba provést k nápravě bezpečnostní hrozby|
+|**ResourceId**|Úplný identifikátor ovlivněného prostředku|
+|**Závažnost**|Závažnost výstrahy (vysoká/střední/nízká/informativní)|
+|**SourceComputerId**|Jedinečný identifikátor GUID pro ovlivněný Server (Pokud je výstraha vygenerována na serveru)|
+|**SourceSystem**|nepoužívané|
+|**Spuštění**|Počáteční čas dopadu výstrahy (čas první události přispívající k výstraze)|
+|**SystemAlertId**|Jedinečný identifikátor této instance výstrahy zabezpečení|
+|**TenantId**|identifikátor nadřazeného tenanta služby Azure Active Directory předplatného, pod kterým se nachází kontrolovaný prostředek|
+|**TimeGenerated**|Časové razítko UTC, na kterém došlo k posouzení (Security Center čas kontroly) (shodné s DiscoveredTimeUTC)|
+|**Typ**|konstanta (' SecurityAlert ')|
+|**Dodavatel**|Název dodavatele, který poskytl výstrahu (např. Microsoft)|
+|**VendorOriginalId**|nepoužívané|
+|**WorkspaceResourceGroup**|v případě, že se výstraha vygenerovala na virtuálním počítači, serveru, sadě škálování virtuálního počítače nebo App Service instance, která hlásí do pracovního prostoru, obsahuje název skupiny prostředků v pracovním prostoru.|
+|**WorkspaceSubscriptionId**|v případě, že je výstraha vygenerována na virtuálním počítači, serveru, sadě škálování virtuálního počítače nebo App Service instance, která hlásí do pracovního prostoru, obsahuje ID předplatného pracovního prostoru|
 |||

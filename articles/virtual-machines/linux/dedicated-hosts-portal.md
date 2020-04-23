@@ -1,6 +1,6 @@
 ---
-title: Nasazení vyhrazených hostitelů Azure pomocí portálu Azure
-description: Nasazujte virtuální počítače do vyhrazených hostitelů pomocí portálu Azure.
+title: Nasazení vyhrazených hostitelů Azure pomocí Azure Portal
+description: Nasaďte virtuální počítače na vyhrazené hostitele pomocí Azure Portal.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
@@ -14,9 +14,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79086750"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Nasazení virtuálních hostitelů do vyhrazených hostitelů pomocí portálu
+# <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí portálu
 
-Tento článek vás provede, jak vytvořit [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů.This article guides through you through how to create a Azure dedicated host to host your virtual machines (VMs). 
+Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
 [!INCLUDE [virtual-machines-common-dedicated-hosts-portal](../../../includes/virtual-machines-common-dedicated-hosts-portal.md)]
 
@@ -24,49 +24,49 @@ Tento článek vás provede, jak vytvořit [vyhrazeného hostitele](dedicated-ho
 
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 1. Ve vyhledávacím poli nad seznamem prostředků Azure Marketplace vyhledejte a vyberte **Ubuntu Server 16.04 LTS** od společnosti Canonical a pak zvolte **Vytvořit**.
-1. Na kartě **Základy** v části **Podrobnosti o projektu**zkontrolujte, zda je vybráno správné předplatné, a pak vyberte *myDedicatedHostsRG* jako **skupinu prostředků**. 
+1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) Zkontrolujte, že je vybrané správné předplatné, a pak jako **skupinu prostředků**vyberte *myDedicatedHostsRG* . 
 1. V části **Podrobnosti o instancích** jako **Název virtuálního počítače** zadejte *myVM* a u možnosti **Umístění** zvolte *USA – východ*.
-1. V **části Možnosti dostupnosti** vyberte **zónu dostupnost**, vyberte v rozevíracím souboru *1.*
-1. Pro velikost vyberte **Změnit velikost**. V seznamu dostupných velikostí vyberte jednu z řady Esv3, například **Standard E2s v3**. Chcete-li zobrazit všechny dostupné velikosti, může být nutné filtr vymazat.
+1. V části **Možnosti dostupnosti** vyberte **zóna dostupnosti**, v rozevíracím seznamu vyberte *1* .
+1. V poli Velikost vyberte **změnit velikost**. V seznamu dostupných velikostí vyberte jednu z Esv3 řad, jako je **Standard E2s V3**. Možná budete muset filtr vymazat, aby se zobrazily všechny dostupné velikosti.
 1. V části **Účet správce** vyberte **Veřejný klíč SSH**, zadejte své uživatelské jméno a potom do textového pole vložte svůj veřejný klíč. Ve veřejném klíči odeberte počáteční a koncové prázdné znaky.
 
     ![Účet správce](./media/quick-create-portal/administrator-account.png)
 
-1. V části >  **Pravidla příchozího portu****Veřejná příchozí porty**zvolte **Povolit vybrané porty** a pak v rozevíracím souboru vyberte **SSH (22).** 
-1. V horní části stránky vyberte kartu **Upřesnit** a v části **Host** vyberte *myHostGroup* pro **skupinu Host** a *myHost* pro **hostitele**. 
+1. V části **příchozí pravidla** > portů**veřejné příchozí porty**zvolte **Povolit vybrané porty** a v rozevíracím seznamu vyberte **SSH (22)** . 
+1. V horní části stránky vyberte kartu **Upřesnit** a v části **hostitel** vyberte *MyHostGroup* pro **skupinu hostitelů** a *myHost* pro **hostitele**. 
     ![Vybrat skupinu hostitelů a hostitele](./media/dedicated-hosts-portal/advanced.png)
 1. Zbytek ponechte ve výchozím nastavení a potom v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
-1. Až se zobrazí zpráva, že ověření proběhlo, vyberte **Vytvořit**.
+1. Když se zobrazí zpráva, že ověření proběhlo úspěšně, vyberte **vytvořit**.
 
 Nasazení virtuálního počítače bude několik minut trvat.
 
-## <a name="add-an-existing-vm"></a>Přidání existujícího virtuálního virtuálního montovna 
+## <a name="add-an-existing-vm"></a>Přidat existující virtuální počítač 
 
-Ukončující virtuální ho do vyhrazeného hostitele můžete přidat, ale virtuální modul musí být nejprve Stop\Deallocated. Než přesunete virtuální ho důťák na vyhrazeného hostitele, ujistěte se, že je podporovaná konfigurace virtuálního počítače:
+Do vyhrazeného hostitele můžete přidat opuštěný virtuální počítač, ale virtuální počítač musí být nejdřív Stop\Deallocated.. Před přesunutím virtuálního počítače na vyhrazeného hostitele se ujistěte, že je konfigurace virtuálních počítačů podporovaná:
 
-- Velikost virtuálního počítače musí být ve stejné rodině velikosti jako vyhrazený hostitel. Například pokud váš vyhrazený hostitel je DSv3, pak velikost virtuálního počítače může být Standard_D4s_v3, ale nemůže to být Standard_A4_v2. 
-- Virtuální modul musí být umístěn ve stejné oblasti jako vyhrazený hostitel.
-- Virtuální virtuální ms nemůže být součástí skupiny umístění bezkontaktní. Před přesunutím do vyhrazeného hostitele odeberte virtuální ho ze skupiny umístění bezkontaktní komunikace. Další informace najdete [v tématu Přesunutí virtuálního virtuálního ms ze skupiny umístění bez kontaktních míst.](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
-- Virtuální virtuální měsíč nemůže být v sadě dostupnosti.
-- Pokud je virtuální virtuální soud v zóně dostupnosti, musí se jednat o stejnou zónu dostupnosti jako hostitelská skupina. Nastavení zóny dostupnosti pro virtuální počítače a skupinu hostitelů se musí shodovat.
+- Velikost virtuálního počítače musí být ve stejné rodině velikostí jako vyhrazený hostitel. Pokud je například vyhrazený hostitel DSv3, může být velikost virtuálního počítače Standard_D4s_v3, ale nemůžete ho Standard_A4_v2. 
+- Virtuální počítač musí být umístěný ve stejné oblasti jako vyhrazený hostitel.
+- Virtuální počítač nemůže být součástí skupiny umístění blízkosti. Odeberte virtuální počítač ze skupiny umístění blízkosti, než ho přesunete na vyhrazeného hostitele. Další informace najdete v tématu [přesun virtuálního počítače ze skupiny umístění do blízkosti](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group) .
+- Virtuální počítač nemůže být ve skupině dostupnosti.
+- Pokud je virtuální počítač v zóně dostupnosti, musí se jednat o stejnou zónu dostupnosti jako skupina hostitelů. Nastavení zóny dostupnosti pro virtuální počítač a skupinu hostitelů se musí shodovat.
 
-Přesuňte virtuální ho na vyhrazeného hostitele pomocí [portálu](https://portal.azure.com).
+Přesuňte virtuální počítač na vyhrazeného hostitele pomocí [portálu](https://portal.azure.com).
 
-1. Otevřete stránku virtuálního virtuálního soudu.
-1. Vyberte **Zastavit,** chcete-li zastavit\navrátit virtuální ho.
-1. V levé nabídce vyberte **Konfigurace.**
-1. V rozevíracích nabídkách vyberte skupinu hostitelů a hostitele.
-1. Až budete hotovi, vhorní části stránky vyberte **Uložit.**
-1. Po přidání virtuálního virtuálního zařízení do hostitele vyberte **přehled** z levé nabídky.
-1. V horní části stránky vyberte **Start** restartovat virtuální počítač.
+1. Otevřete stránku pro virtuální počítač.
+1. Vyberte **zastavit** , aby se virtuální počítač stop\deallocate.
+1. V nabídce vlevo vyberte **Konfigurace** .
+1. Z rozevíracích nabídek vyberte skupinu hostitelů a hostitele.
+1. Po dokončení vyberte **Uložit** v horní části stránky.
+1. Po přidání virtuálního počítače do hostitele vyberte v nabídce vlevo možnost **Přehled** .
+1. V horní části stránky vyberte **Spustit** a restartujte virtuální počítač.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace naleznete v přehledu [vyhrazených hostitelů.](dedicated-hosts.md)
+- Další informace najdete v tématu Přehled [vyhrazených hostitelů](dedicated-hosts.md) .
 
-- Zde je [nalezena](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)ukázková šablona , která používá zóny i domény selhání pro maximální odolnost proti chybám v oblasti.
+- [Zde](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)najdete ukázkovou šablonu, která pro maximální odolnost v oblasti používá zóny i domény selhání.
 
-- Můžete také nasadit vyhrazeného hostitele pomocí [příkazového příkazu k příkazu Azure](dedicated-hosts-cli.md).
+- Vyhrazeného hostitele můžete nasadit taky pomocí [Azure CLI](dedicated-hosts-cli.md).
 
 
 

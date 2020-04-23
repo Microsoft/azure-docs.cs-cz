@@ -12,9 +12,9 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "77911780"
 ---
 > [!IMPORTANT]
-> Klasické virtuální měvince budou vyřazeny 1. března 2023.
+> Klasické virtuální počítače budou vyřazeny od 1. března 2023.
 >
-> Pokud používáte prostředky IaaS z ASM, dokončete migraci do 1.3.2023. Doporučujeme vám provést přechod dříve a využít výhod mnoha vylepšení funkcí ve Správci prostředků Azure.
+> Pokud používáte prostředky IaaS z ASM, dokončete prosím migraci do 1. března 2023. Doporučujeme, abyste tento přepínač provedli dřív, abyste mohli využít řadu vylepšení funkcí v Azure Resource Manager.
 >
-> Další informace najdete [v tématu Migrace prostředků IaaS do Správce prostředků Azure do 1 března 2023](../articles/virtual-machines/classic-vm-deprecation.md).
+> Další informace najdete v tématu [migrace prostředků IaaS do Azure Resource Manager do 1. března 2023](../articles/virtual-machines/classic-vm-deprecation.md).
 > 

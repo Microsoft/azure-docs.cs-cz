@@ -17,13 +17,13 @@ ms.locfileid: "77112273"
 ---
 ### <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
 
-Vytvořte identitu s názvem *myACRTasksId* ve vašem předplatném pomocí příkazu [az identity create.][az-identity-create] Můžete použít stejnou skupinu prostředků, kterou jste použili dříve k vytvoření registru kontejneru nebo jiného.
+Pomocí příkazu [AZ identity Create][az-identity-create] vytvořte v předplatném identitu s názvem *myACRTasksId* . Stejnou skupinu prostředků, kterou jste použili dříve, můžete použít k vytvoření registru kontejnerů nebo jiné.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRTasksId
 ```
 
-Chcete-li nakonfigurovat identitu přiřazenou uživateli v následujících krocích, použijte příkaz [az identity show][az-identity-show] k uložení ID prostředku identity, ID objektu zabezpečení a ID klienta v proměnných.
+Pokud chcete nakonfigurovat identitu přiřazenou uživatelem v následujících krocích, pomocí příkazu [AZ identity show][az-identity-show] uložte ID prostředku identity, ID objektu zabezpečení a ID klienta v proměnných.
 
 ```azurecli
 # Get resource ID of the user-assigned identity

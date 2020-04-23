@@ -1,6 +1,6 @@
 ---
-title: Integrace protokolů s ArcSight pomocí Azure Monitoru | Dokumenty společnosti Microsoft
-description: Zjistěte, jak integrovat protokoly služby Azure Active Directory s ArcSight pomocí Služby Azure Monitor
+title: Integrace protokolů s ArcSight pomocí Azure Monitor | Microsoft Docs
+description: Informace o tom, jak integrovat protokoly Azure Active Directory s využitím ArcSight pomocí Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -24,39 +24,39 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "75608376"
 ---
-# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrace protokolů služby Azure Active Directory s ArcSight pomocí Služby Azure Monitor
+# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrace protokolů Azure Active Directory s využitím ArcSight pomocí Azure Monitor
 
-[Micro Focus ArcSight](https://software.microfocus.com/products/siem-security-information-event-management/overview) je řešení pro správu informací o zabezpečení a událostí (SIEM), které vám pomůže detekovat bezpečnostní hrozby na vaší platformě a reagovat na ně. Teď můžete směrovat protokoly Azure Active Directory (Azure AD) do ArcSight pomocí Azure Monitor pomocí konektoru ArcSight pro Azure AD. Tato funkce umožňuje sledovat klienta pro ohrožení zabezpečení pomocí ArcSight.  
+[Micro Focus ArcSight](https://software.microfocus.com/products/siem-security-information-event-management/overview) je řešení zabezpečení a Správa událostí (Siem), které pomáhá detekovat bezpečnostní hrozby ve vaší platformě a reagovat na ně. Nyní můžete směrovat protokoly Azure Active Directory (Azure AD) do ArcSight pomocí Azure Monitor pomocí konektoru ArcSight pro Azure AD. Tato funkce umožňuje monitorovat svého tenanta kvůli ohrožení zabezpečení pomocí ArcSight.  
 
-V tomto článku se dozvíte, jak směrovat protokoly Azure AD do ArcSight pomocí Azure Monitoru. 
+V tomto článku se dozvíte, jak směrovat protokoly Azure AD do ArcSight pomocí Azure Monitor. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
-* Centrum událostí Azure, které obsahuje protokoly aktivit Azure AD. Přečtěte si, jak [streamovat protokoly aktivit do centra událostí](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
-* Nakonfigurovaná instance ArcSight Syslog NG Daemon SmartConnector (SmartConnector) nebo ArcSight Load Balancer. Pokud jsou události odeslány arcsight vyrovnávání zatížení, jsou následně odeslány do SmartConnector pomocí vyrovnávání zatížení.
+* Centrum událostí Azure, které obsahuje protokoly aktivit služby Azure AD. Naučte se, jak [streamovat protokoly aktivit do centra událostí](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Nakonfigurovaná instance ArcSight syslog NG démon SmartConnector (SmartConnector) nebo ArcSight Load Balancer. Pokud jsou události odesílány do ArcSight Load Balancer, jsou v důsledku Load Balancer odesílány do SmartConnector.
 
-Stáhněte a otevřete [průvodce konfigurací pro ArcSight SmartConnector pro Centrum událostí Azure Monitor](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292). Tato příručka obsahuje kroky, které potřebujete k instalaci a konfiguraci ArcSight SmartConnector pro Azure Monitor. 
+Stáhněte si a otevřete [Průvodce konfigurací pro ArcSight SmartConnector pro centrum událostí Azure monitor](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292). Tato příručka obsahuje kroky potřebné k instalaci a konfiguraci ArcSight SmartConnector pro Azure Monitor. 
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>Integrace protokolů Azure AD s ArcSight
 
-1. Nejprve proveďte kroky v části **Požadavky** v průvodci konfigurací. Tato část obsahuje následující kroky:
-    * Nastavte uživatelská oprávnění v Azure, abyste zajistili, že je uživatel s rolí **vlastníka** k nasazení a konfiguraci konektoru.
-    * Otevřete porty na serveru pomocí Syslog NG Daemon SmartConnector, aby byl přístupný z Azure. 
-    * Nasazení spouští skript prostředí Windows PowerShell, takže je nutné povolit PowerShell upouštět skripty v počítači, ve kterém chcete nasadit konektor.
+1. Nejdřív proveďte kroky v části **požadavky** Průvodce konfigurací. Tato část obsahuje následující kroky:
+    * Nastavte oprávnění uživatele v Azure, aby bylo zajištěno, že bude mít uživatel s rolí **vlastníka** nasadit a nakonfigurovat konektor.
+    * Otevřete porty na serveru pomocí protokolu syslog NG daemon SmartConnector, aby byl dostupný z Azure. 
+    * Nasazení spustí skript Windows PowerShellu, takže musíte povolit PowerShell, aby se skripty spouštěly na počítači, na kterém chcete konektor nasadit.
 
-2. Postupujte podle pokynů v části **Nasazení konektoru** v průvodci konfigurací k nasazení konektoru. Tato část vás provede stažením a extrahováním konektoru, konfigurací vlastností aplikace a spuštěním skriptu nasazení z extrahované složky. 
+2. K nasazení konektoru použijte postup v části **nasazení konektoru** v Průvodci konfigurací. V této části se dozvíte, jak stáhnout a extrahovat konektor, nakonfigurovat vlastnosti aplikace a spustit skript nasazení z extrahované složky. 
 
-3. Pomocí kroků v **ověření nasazení v Azure** se ujistěte, že je konektor nastavený a funguje správně. Zkontrolujte:
-    * Požadované funkce Azure se vytvoří ve vašem předplatném Azure.
-    * Protokoly Azure AD jsou vyponožené do správného cíle. 
-    * Nastavení aplikace z vašeho nasazení se trvalé v nastavení aplikací v aplikacích Azure Function Apps. 
-    * Nová skupina prostředků pro ArcSight se vytvoří v Azure, s aplikací Azure AD pro konektor ArcSight a účty úložiště obsahující mapované soubory ve formátu CEF.
+3. Použijte postup v části **Ověření nasazení v Azure** , abyste se ujistili, že je konektor nastavený a funguje správně. Zkontrolujte:
+    * Ve vašem předplatném Azure se vytvoří požadované funkce Azure.
+    * Protokoly služby Azure AD se streamují do správného cíle. 
+    * Nastavení aplikace z vašeho nasazení je trvalé v nastavení aplikace ve službě Azure Function Apps. 
+    * V Azure se vytvoří nová skupina prostředků pro ArcSight s aplikací Azure AD pro konektor ArcSight a účty úložiště obsahující mapované soubory ve formátu CEF.
 
-4. Nakonec dokončete kroky po nasazení v **konfiguraci po nasazení** v průvodci konfigurací konfigurace. Tato část vysvětluje, jak provést další konfiguraci, pokud jste na plán služby App Service zabránit nečinnosti aplikací funkce po uplynutí časového limitu, konfigurace streamování diagnostických protokolů z centra událostí a aktualizace SysLog NG Daemon SmartConnector keystore certifikát k přidružení k nově vytvořenému účtu úložiště.
+4. Nakonec proveďte kroky po nasazení v Průvodci konfigurací **po nasazení** . V této části se dozvíte, jak provést další konfiguraci, pokud jste v plánu App Service, abyste zabránili nečinnosti aplikací Function App po uplynutí časového limitu, nakonfigurujete streamování diagnostických protokolů z centra událostí a aktualizujete certifikát úložiště klíčů SysLog NG démona SmartConnector a přidružíte ho k nově vytvořenému účtu úložiště.
 
-5. Průvodce konfigurací také vysvětluje, jak přizpůsobit vlastnosti konektoru v Azure a jak upgradovat a odinstalovat konektor. K dispozici je také část o zlepšení výkonu, včetně upgradu na [plán spotřeby Azure](https://azure.microsoft.com/pricing/details/functions) a konfigurace ArcSight nástroj pro vyrovnávání zatížení, pokud je zatížení událostí větší než to, co zvládne jeden Syslog NG Daemon SmartConnector.
+5. Průvodce konfigurací také vysvětluje, jak přizpůsobit vlastnosti konektoru v Azure a jak upgradovat a odinstalovat konektor. K dispozici je také část týkající se vylepšení výkonu, včetně upgradu na [plán spotřeby Azure](https://azure.microsoft.com/pricing/details/functions) a konfigurace ArcSight Load Balancer, pokud je zatížení události větší než v případě, že je možné vyřadit z jednoho procesu syslog ng SmartConnector.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Průvodce konfigurací pro ArcSight SmartConnector pro Centrum událostí Azure Monitor](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)
+[Průvodce konfigurací pro ArcSight SmartConnector pro centrum událostí Azure Monitor](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)

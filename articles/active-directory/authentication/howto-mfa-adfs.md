@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení prostředků pomocí Azure MFA a ADFS – Azure Active Directory
+title: Zabezpečení prostředků pomocí Azure MFA a AD FS – Azure Active Directory
 description: Toto je stránka vícefaktorového ověřování Azure, která popisuje, jak začít s vícefaktorovým ověřováním Azure a službami AD FS v cloudu.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -27,14 +27,14 @@ Pokud je vaše organizace federovaná pomocí služby Azure Active Directory, k 
 K zabezpečení cloudových prostředků nastavte pravidlo deklarace identity tak, aby služba Active Directory Federation Services vyslala deklaraci identity multipleauthn, když uživatel úspěšně provede dvoustupňové ověření. Tato deklarace identity se předá Azure AD. Postupujte takto:
 
 1. Otevřete správu služby AD FS.
-2. Vlevo vyberte **Přepínající vztahy důvěryhodnosti stran .**
+2. Na levé **straně vyberte vztahy důvěryhodnosti předávající strany**.
 3. Klikněte pravým tlačítkem na **Platforma identit Microsoft Office 365** a vyberte **Upravit pravidla deklarací identity**.
 
    ![Konzola ADFS – vztahy důvěryhodnosti předávající strany](./media/howto-mfa-adfs/trustedip1.png)
 
 4. V pravidlech transformace vystavení klikněte na **Přidat pravidlo**.
 
-   ![Úpravy pravidel transformace vystavování](./media/howto-mfa-adfs/trustedip2.png)
+   ![Úprava pravidel transformace vystavení](./media/howto-mfa-adfs/trustedip2.png)
 
 5. V Průvodci přidáním pravidla – deklarace identity transformace vyberte v rozevíracím seznamu **Předávat nebo filtrovat příchozí deklarace** a klikněte na **Další**.
 
@@ -57,16 +57,16 @@ Tento příklad používá Office 365 pro naše trusty přijímající strany.
 První věc, kterou je potřeba udělat, je konfigurace deklarací identity služby AD FS. Vytvořte dvě pravidla deklarace identity: jedno pro typ deklarace identity uvnitř podnikové sítě a druhé pro zachování přihlášení uživatelů.
 
 1. Otevřete správu služby AD FS.
-2. Vlevo vyberte **Přepínající vztahy důvěryhodnosti stran .**
-3. Klikněte pravým tlačítkem na **platformu Microsoft Office 365 Identity Platform** a vyberte **Upravit pravidla deklarace identity...** 
-   Konzola Služby ADFS – upravit pravidla ![deklarací](./media/howto-mfa-adfs/trustedip1.png)
-4. V článku Pravidla transformace vystavování klikněte na **Přidat pravidlo.** 
-   Přidání pravidla ![deklarace](./media/howto-mfa-adfs/trustedip2.png)
+2. Na levé **straně vyberte vztahy důvěryhodnosti předávající strany**.
+3. Klikněte pravým tlačítkem na **systém Microsoft Office 365 Identity Platform** a vyberte **upravit pravidla deklarací identity...** 
+   Konzola ADFS – úprava pravidel ![deklarací identity](./media/howto-mfa-adfs/trustedip1.png)
+4. V pravidla transformace vystavení klikněte na **Přidat pravidlo.** 
+    ![](./media/howto-mfa-adfs/trustedip2.png)
 5. V Průvodci přidáním pravidla – deklarace identity transformace vyberte v rozevíracím seznamu **Předávat nebo filtrovat příchozí deklarace** a klikněte na **Další**.
    ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfa-adfs/trustedip3.png)
 6. Do pole vedle názvu pravidla deklarace identity zadejte název pravidla. Příklad: InsideCorpNet.
 7. V rozevíracím seznamu vedle Typ příchozí deklarace vyberte **Uvnitř podnikové sítě**.
-   ![Přidání deklarace uvnitř podnikové sítě](./media/howto-mfa-adfs/trustedip4.png)
+   ![Přidávání v rámci deklarace identity podnikové sítě](./media/howto-mfa-adfs/trustedip4.png)
 8. Klikněte na **Finish** (Dokončit).
 9. V pravidlech transformace vystavení klikněte na **Přidat pravidlo**.
 10. V Průvodci přidáním pravidla – deklarace identity transformace vyberte **Odesílat deklarace pomocí vlastního pravidla** v rozevíracím seznamu a klikněte na **Další**.
@@ -75,7 +75,7 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![Vytvoření vlastní deklarace, která udrží uživatele přihlášené](./media/howto-mfa-adfs/trustedip5.png)
+    ![Vytvořit vlastní deklaraci identity, aby se uživatelé mohli přihlásili](./media/howto-mfa-adfs/trustedip5.png)
 13. Klikněte na **Finish** (Dokončit).
 14. Klikněte na **Použít**.
 15. Klikněte na **OK**.
@@ -85,13 +85,13 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 
 Teď, když máme vytvořené deklarace identity, můžeme nakonfigurovat důvěryhodné IP adresy.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-2. Vyberte **azure active directory** > **zabezpečení** > **podmíněný přístup** > **pojmenované umístění**.
-3. V okně **Podmíněný přístup – pojmenované umístění** vyberte Konfigurovat důvěryhodné IP adresy **vícefaktorové povolení.**
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Vyberte **Azure Active Directory** > **zabezpečení** > **podmíněný přístup** > **pojmenované umístění**.
+3. V okně **podmíněný přístup – pojmenovaná umístění** vyberte **Konfigurovat důvěryhodné IP adresy MFA** .
 
-   ![Podmíněný přístup Azure AD s názvem umístění Konfigurace důvěryhodných IP serverů MFA](./media/howto-mfa-adfs/trustedip6.png)
+   ![Podmíněný přístup služby Azure AD konfigurace důvěryhodných IP adres MFA](./media/howto-mfa-adfs/trustedip6.png)
 
 4. Na stránce Nastavení služby v části **Důvěryhodné IP adresy** vyberte **Pro žádosti od federovaných uživatelů v mém intranetu přeskočit vícefaktorové ověřování**.  
-5. Klepněte na **tlačítko Uložit**.
+5. Klikněte na **Uložit**.
 
 A to je vše! Od tohoto okamžiku musí federovaní uživatelé služeb Office 365 využívat MFA pouze pokud deklarace identity pochází z oblasti mimo podnikového intranetu.

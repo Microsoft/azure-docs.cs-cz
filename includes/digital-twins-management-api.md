@@ -16,13 +16,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "75692517"
 ---
-V níže uvedených `YOUR_MANAGEMENT_API_URL` příkladech odkazuje na identifikátor URI v oblasti api pro digitální dvojčata:
+V níže uvedených příkladech `YOUR_MANAGEMENT_API_URL` odkazuje na identifikátor URI digitálních vláken rozhraní API:
 
 ```URL
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0
 ```
 
-| Name (Název) | Nahradit hodnotou |
+| Název | Nahradit hodnotou |
 | --- | --- |
-| YOUR_INSTANCE_NAME | Název instance Azure Digital Twins |
-| YOUR_LOCATION | Oblast, na které je vaše instance hostována |
+| YOUR_INSTANCE_NAME | Název instance digitálního vlákna Azure |
+| YOUR_LOCATION | Oblast, ve které je vaše instance hostována |

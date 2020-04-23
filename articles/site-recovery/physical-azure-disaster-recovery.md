@@ -1,6 +1,6 @@
 ---
 title: Nastavení zotavení po havárii fyzických místních serverů pomocí Azure Site Recovery
-description: Zjistěte, jak nastavit zotavení po havárii do Azure pro místní servery Windows a Linux pomocí služby Azure Site Recovery.
+description: Naučte se, jak nastavit zotavení po havárii do Azure pro místní servery s Windows a Linux pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -18,29 +18,29 @@ ms.locfileid: "79257924"
 
 Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii zotavení po havárii tím, že spravuje a orchestruje replikaci, převzetí služeb při selhání a navrácení služeb po obnovení pro místní počítače a virtuální počítače Azure.
 
-Tento kurz ukazuje, jak nastavit zotavení po havárii místních fyzických serverů Windows a Linux do Azure. V tomto kurzu se naučíte:
+V tomto kurzu se dozvíte, jak nastavit zotavení po havárii místních fyzických serverů s Windows a Linux do Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nastavení požadavků na Azure a místní chod
+> * Nastavení požadavků na Azure a místní požadavky
 > * Vytvoření trezoru služby Recovery Services pro Site Recovery 
-> * Nastavení prostředí zdrojové a cílové replikace
+> * Nastavení prostředí pro replikaci zdrojového a cílového umístění
 > * Vytvoření zásady replikace
 > * Povolení replikace pro server
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pro absolvování tohoto kurzu potřebujete:
 
-- Ujistěte se, že rozumíte [architektuře a součástem](physical-azure-architecture.md) pro tento scénář.
+- Ujistěte se, že rozumíte [architektuře a komponentám](physical-azure-architecture.md) pro tento scénář.
 - Zkontrolujte [požadavky na podporu](vmware-physical-secondary-support-matrix.md) pro všechny komponenty.
-- Ujistěte se, že servery, které chcete replikovat, splňují [požadavky virtuálních zařízení Azure](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
-- Příprava Azure. Potřebujete předplatné Azure, virtuální síť Azure a účet úložiště.
-- Připravte si účet pro automatickou instalaci služby Mobility na každém serveru, který chcete replikovat.
+- Ujistěte se, že servery, které chcete replikovat, jsou v rozporu s [požadavky na virtuální počítače Azure](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
+- Připravte Azure. Potřebujete předplatné Azure, virtuální síť Azure a účet úložiště.
+- Připravte účet na automatickou instalaci služby mobility na každý server, který chcete replikovat.
 
-Než začnete, všimněte si, že:
+Než začnete, mějte na paměti, že:
 
-- Po převzetí služeb při selhání do Azure, fyzické servery nelze selhat zpět do místních fyzických počítačů. Můžete jenom navrácení služeb po selhání virtuálních měn VMware. 
-- Tento kurz nastaví zotavení po havárii fyzického serveru do Azure s nejjednodušším nastavením. Pokud se chcete dozvědět více o dalších možnostech, přečtěte si naše návody:
+- Po převzetí služeb při selhání do Azure se fyzické servery nemůžou navrátit do místních fyzických počítačů. Navrácení služeb po obnovení do virtuálních počítačů VMware je možné. 
+- V tomto kurzu se v Azure nastaví zotavení po havárii fyzického serveru do Azure s nejjednodušším nastavením. Pokud se chcete dozvědět o dalších možnostech, přečtěte si naše příručky:
     - Nastavte [zdroj replikace](physical-azure-set-up-source.md), včetně konfiguračního serveru Site Recovery.
     - Nastavení [cíle replikace](physical-azure-set-up-target.md)
     - Konfigurace [zásady replikace](vmware-azure-set-up-replication.md) a [povolení replikace](vmware-azure-enable-replication.md)
@@ -48,18 +48,18 @@ Než začnete, všimněte si, že:
 
 ### <a name="set-up-an-azure-account"></a>Nastavení účtu Azure
 
-Pořízení [účtu](https://azure.microsoft.com/)Microsoft Azure .
+Získejte účet Microsoft [Azure](https://azure.microsoft.com/).
 
 - Můžete začít s [bezplatnou zkušební verzí](https://azure.microsoft.com/pricing/free-trial/).
-- Přečtěte si informace o [cenách site recovery](site-recovery-faq.md#pricing)a získejte [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/site-recovery/).
-- Zjistěte, které [oblasti jsou podporovány](https://azure.microsoft.com/pricing/details/site-recovery/) pro obnovení webu.
+- Přečtěte si o [cenách Site Recovery](site-recovery-faq.md#pricing)a získejte [podrobné informace o cenách](https://azure.microsoft.com/pricing/details/site-recovery/).
+- Zjistěte, které [oblasti jsou podporované](https://azure.microsoft.com/pricing/details/site-recovery/) pro Site Recovery.
 
 ### <a name="verify-azure-account-permissions"></a>Ověření oprávnění účtu Azure
 
-Ujistěte se, že váš účet Azure má oprávnění pro replikaci virtuálních počítačů do Azure.
+Ujistěte se, že váš účet Azure má oprávnění k replikaci virtuálních počítačů do Azure.
 
-- Zkontrolujte [oprávnění,](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) která potřebujete k replikaci počítačů do Azure.
-- Ověřte a upravte přístupová oprávnění [založená na rolích.](../role-based-access-control/role-assignments-portal.md) 
+- Zkontrolujte [oprávnění](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) , která potřebujete k replikaci počítačů do Azure.
+- Ověřte a upravte oprávnění [pro přístup na základě rolí](../role-based-access-control/role-assignments-portal.md) . 
 
 
 
@@ -67,26 +67,26 @@ Ujistěte se, že váš účet Azure má oprávnění pro replikaci virtuálníc
 
 Nastavte [síť Azure](../virtual-network/quick-create-portal.md).
 
-- Virtuální počítače Azure se umístí do této sítě, když se vytvoří po převzetí služeb při selhání.
-- Síť by měla být ve stejné oblasti jako trezor služby Recovery Services.
+- Virtuální počítače Azure jsou umístěné v této síti, když se vytvoří po převzetí služeb při selhání.
+- Síť by měla být ve stejné oblasti jako úložiště Recovery Services.
 
 
 ## <a name="set-up-an-azure-storage-account"></a>Nastavení účtu úložiště Azure
 
 Nastavte [účet úložiště Azure](../storage/common/storage-account-create.md).
 
-- Site Recovery replikuje místní počítače do úložiště Azure. Virtuální počítače Azure se vytvoří z úložiště po převzetí služeb při selhání dojde.
+- Site Recovery replikuje místní počítače do služby Azure Storage. Virtuální počítače Azure se vytvoří z úložiště po převzetí služeb při selhání.
 - Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
 
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Příprava účtu pro instalaci služby Mobility
 
-Služba Mobility musí být nainstalována na každém serveru, který chcete replikovat. Site Recovery nainstaluje tuto službu automaticky, když povolíte replikaci serveru. Chcete-li nainstalovat automaticky, je třeba připravit účet, který site recovery bude používat pro přístup k serveru.
+Na každém serveru, který chcete replikovat, musí být nainstalovaná služba mobility. Site Recovery tuto službu nainstaluje automaticky, když povolíte replikaci pro server. K automatické instalaci musíte připravit účet, který Site Recovery použít pro přístup k serveru.
 
-- Můžete použít doménu nebo místní účet
-- Pokud u virtuálních měn windows nepoužíváte účet domény, zakažte řízení vzdáleného přístupu uživatelů v místním počítači. Chcete-li to provést, přidejte do registru **v HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**položku DWORD **LocalAccountTokenFilterPolicy**s hodnotou 1.
-- Chcete-li přidat položku registru a zakázat nastavení z příkazového příkazového příkazu, zadejte:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
-- Pro Linux by měl být účet kořenna zdrojovém serveru Linux.
+- Můžete použít doménový nebo místní účet.
+- Pokud v případě virtuálních počítačů s Windows nepoužíváte doménový účet, zakažte na místním počítači vzdálené řízení přístupu uživatele. To provedete tak, že v registru v části **HKEY_LOCAL_MACHINE \software\microsoft\windows\currentversion\policies\system**přidáte položku typu DWORD **LocalAccountTokenFilterPolicy**s hodnotou 1.
+- Chcete-li přidat položku registru pro zakázání nastavení z rozhraní příkazového řádku, zadejte:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- Pro Linux by měl být účet rootem na zdrojovém serveru Linux.
 
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
@@ -95,54 +95,54 @@ Služba Mobility musí být nainstalována na každém serveru, který chcete re
 
 ## <a name="select-a-protection-goal"></a>Výběr cíle ochrany
 
-Vyberte, co chcete replikovat, a replikujte ji.
+Vyberte, co se má replikovat, a proveďte jejich replikaci do.
 
 1. Klikněte na **Trezory služby Recovery Services** > trezor.
-2. V nabídce Zdroje klikněte na **položku Site Recovery** > **Prepare Infrastructure** > **Protection .**
-3. V **cíli Ochrana**vyberte možnost **Azure** > **Není virtualizovaná/Jiná**.
+2. V nabídce prostředek klikněte na **Site Recovery** > **připravit** > **cíl ochrany**infrastruktury.
+3. V **cíli ochrany**vyberte možnost **To Azure** > **nevirtualizovaný/jiný**Azure.
 
 ## <a name="set-up-the-source-environment"></a>Nastavení zdrojového prostředí
 
-Nastavte konfigurační server, zaregistrujte ho v trezoru a zjišťujte virtuální počítače.
+Nastavte konfigurační server, zaregistrujte ho v trezoru a vyhledejte virtuální počítače.
 
-1. Klikněte na **Site Recovery** > **Připravt infrastructure** > **Source**.
-2. Pokud konfigurační server nemáte, klepněte na tlačítko **+Konfigurační server**.
-3. V **části Přidat server**zkontrolujte, zda se **konfigurační server** zobrazuje v části Typ **serveru**.
-4. Stáhněte instalační soubor sjednoceného instalačního programu pro obnovení webu.
-5. Stáhněte registrační klíč trezoru. Potřebujete to při spuštění sjednoceného nastavení. Klíč je platný pět dní od jeho vygenerování.
+1. Klikněte na **Site Recovery** > **připravit** > **zdroj**infrastruktury.
+2. Pokud nemáte konfigurační server, klikněte na **+ konfigurační server**.
+3. V nástroji **Přidat server**ověřte, že se **konfigurační server** zobrazuje v **typu serveru**.
+4. Stáhněte instalační soubor sjednocené instalace Site Recovery.
+5. Stáhněte registrační klíč trezoru. Budete ho potřebovat při spuštění sjednocené instalace. Klíč je platný pět dní od jeho vygenerování.
 
    ![Nastavení zdroje](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
-### <a name="register-the-configuration-server-in-the-vault"></a>Registrace konfiguračního serveru v úschovně
+### <a name="register-the-configuration-server-in-the-vault"></a>Registrace konfiguračního serveru v trezoru
 
-Než začnete, postupujte takto: 
+Než začnete, udělejte toto: 
 
-#### <a name="verify-time-accuracy"></a>Ověření přesnosti času
-V počítači konfiguračního serveru zkontrolujte, zda jsou systémové hodiny synchronizovány s [časovým serverem](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Mělo by se to shodovat. Pokud je to 15 minut vpředu nebo vzadu, nastavení může selhat.
+#### <a name="verify-time-accuracy"></a>Ověřit časovou přesnost
+Na počítači konfiguračního serveru se ujistěte, že jsou systémové hodiny synchronizované s [časovým serverem](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Měla by odpovídat. Pokud je v popředí nebo na pozadí 15 minut, instalace může selhat.
 
-#### <a name="verify-connectivity"></a>Ověření připojení
+#### <a name="verify-connectivity"></a>Ověřit připojení
 Ujistěte se, že počítač má přístup k těmto adresám URL na základě vašeho prostředí: 
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
-Pravidla brány firewall založené na IP adresách by měla umožňovat komunikaci se všemi adresami URL Azure, které jsou uvedeny výše přes port HTTPS (443). Chcete-li zjednodušit a omezit rozsahy IP adres, doporučujeme provést filtrování adres URL.
+Pravidla brány firewall založená na IP adrese by měla umožňovat komunikaci se všemi adresami URL Azure, které jsou uvedené výše přes port HTTPS (443). Pro zjednodušení a omezení rozsahu IP adres doporučujeme, abyste provedli filtrování adres URL.
 
-- **Komerční IP adresy** – povolte [rozsahy IP adres datového centra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)a port HTTPS (443). Povolte rozsahy IP adres pro oblast Azure vašeho předplatného pro podporu adres URL Služby AAD, Zálohování, Replikace a Úložiště.  
-- **Ip adresy pro státní správu** – povolte [rozsahy IP adres Datového centra Azure vlády](https://www.microsoft.com/en-us/download/details.aspx?id=57063)a port HTTPS (443) pro všechny oblasti USGov (Virginie, Texas, Arizona a Iowa) pro podporu adres URL AAD, Zálohování, Replikace a Úložiště.  
+- **Komerční IP adresy** – povolte [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)a port HTTPS (443). Povolte rozsahy IP adres pro oblast Azure svého předplatného, aby se podporovaly adresy URL AAD, zálohy, replikace a úložiště.  
+- **IP adresy státní správy** – povoluje [rozsahy IP adres datového centra Azure Government](https://www.microsoft.com/en-us/download/details.aspx?id=57063)a port HTTPS (443) pro všechny oblasti USGov () – Virginia, Texas, Arizona a Iowa) pro podporu AAD, zálohování, replikace a adres URL úložiště.  
 
 #### <a name="run-setup"></a>Spuštění instalace
-Spusťte sjednocené nastavení jako místního správce a nainstalujte konfigurační server. Procesní server a hlavní cílový server jsou také nainstalovány ve výchozím nastavení na konfiguračním serveru.
+Chcete-li nainstalovat konfigurační server, spusťte sjednocené nastavení jako místní správce. Procesový Server a hlavní cílový server jsou také nainstalovány ve výchozím nastavení na konfiguračním serveru.
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Po dokončení registrace se konfigurační server zobrazí na stránce **Nastavení** > **serverů** v úschovně.
+Po dokončení registrace se konfigurační server zobrazí na stránce **Nastavení** > **serverů** v trezoru.
 
 ## <a name="set-up-the-target-environment"></a>Nastavení cílového prostředí
 
 Vyberte a zkontrolujte cílové prostředky.
 
-1. Klikněte na **Připravit cíl infrastruktury** > **Target**a vyberte předplatné Azure, které chcete použít.
+1. Klikněte na **připravit** > **cíl**infrastruktury a vyberte předplatné Azure, které chcete použít.
 2. Zadejte cílový model nasazení.
 3. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure.
 
@@ -151,40 +151,40 @@ Vyberte a zkontrolujte cílové prostředky.
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
-1. Chcete-li vytvořit novou zásadu replikace, klepněte na položku**Zásady replikace infrastruktury** >  **obnovení lokality** > **+Zásady replikace**.
+1. Pokud chcete vytvořit novou zásadu replikace, klikněte **na Site Recovery** > **zásady** > replikace infrastruktury**a zásady replikace**.
 2. V části **Vytvoření zásad replikace** zadejte název zásady.
-3. V části **Prahová hodnota cíle bodu obnovení** (RPO) zadejte omezení cíle bodu obnovení. Tato hodnota určuje, jak často jsou vytvářeny body obnovení dat. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
+3. V části **Prahová hodnota cíle bodu obnovení** (RPO) zadejte omezení cíle bodu obnovení. Tato hodnota určuje, jak často se budou vytvářet body obnovení dat. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
 4. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý je interval uchovávání dat pro jednotlivé body obnovení. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu. Pro počítače replikované do úložiště úrovně Premium se podporuje uchování po dobu až 24 hodin. V případě úložiště úrovně Standard je to 72 hodin.
-5. V **četnosti snímků konzistentních s aplikací**určete, jak často (v minutách) budou vytvořeny body obnovení obsahující snímky konzistentní s aplikací. Kliknutím na tlačítko **OK** vytvořte zásadu.
+5. V nastavení **frekvence snímků konzistentní vzhledem k aplikacím**určete, jak často (v minutách) se mají vytvářet body obnovení obsahující snímky konzistentní vzhledem k aplikacím. Kliknutím na tlačítko **OK** vytvořte zásadu.
 
     ![Zásady replikace](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
-Tato zásada se automaticky přidruží ke konfiguračnímu serveru. Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud je například zásada replikace **zásadou opakování,** vytvoří se zásada navrácení služeb po **selhání, která by nabyla na znovunavrácení služeb** po selhání. Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.
+Tato zásada se automaticky přidruží ke konfiguračnímu serveru. Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud je například zásada replikace zásadou pro **replikaci** , vytvoří se zásady navrácení služeb **po obnovení.** Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.
 
 ## <a name="enable-replication"></a>Povolení replikace
 
 Povolte replikaci pro každý server.
 
-- Obnovení sítě nainstaluje službu Mobility, pokud je povolena replikace.
-- Povolíte-li replikaci serveru, může trvat 15 minut nebo déle, než se změny projeví a zobrazí se na portálu.
+- Site Recovery nainstaluje službu mobility, když je povolená replikace.
+- Pokud povolíte replikaci pro server, může trvat 15 minut nebo déle, než se změny projeví a objeví se na portálu.
 
-1. Klepněte na **položku Replikovat** > **zdroj**aplikace .
+1. Klikněte na **replikovat** > **zdroj**aplikace.
 2. V části **Zdroj** vyberte konfigurační server.
-3. V **pole Typ stroje**vyberte fyzické **stroje**.
-4. Vyberte procesní server (konfigurační server). Pak klikněte na **OK**.
-5. V **targetu**vyberte předplatné a skupinu prostředků, ve které chcete po převzetí služeb při selhání vytvořit virtuální počítače Azure. Zvolte model nasazení, který chcete použít v Azure (klasická správa prostředků nebo správa prostředků).
+3. V **typ počítače**vyberte **fyzické počítače**.
+4. Vyberte procesový Server (konfigurační server). Pak klikněte na **OK**.
+5. V části **cíl**vyberte předplatné a skupinu prostředků, ve které chcete vytvořit virtuální počítače Azure po převzetí služeb při selhání. Vyberte model nasazení, který chcete použít v Azure (Classic nebo Správa prostředků).
 6. Vyberte účet úložiště Azure, který chcete použít pro replikaci dat. 
 7. Vyberte síť Azure a podsíť, ke kterým se připojí virtuální počítače Azure, když se po převzetí služeb při selhání vytvoří.
-8. Chcete-li použít nastavení sítě pro všechny počítače, které vyberete pro ochranu, vyberte **možnost Konfigurovat nyní pro vybrané počítače**. Chcete-li vybrat síť Azure pro každý počítač, **vyberte možnost Konfigurovat později.** 
-9. Ve **fyzické matné a**klepněte na tlačítko **+Fyzický počítač**. Zadejte název a adresu IP. Vyberte operační systém počítače, který chcete replikovat. Trvá několik minut, než budou servery objeveny a uvedeny. 
-10. V **části Vlastnosti** > **Konfigurace vlastností**vyberte účet, který bude zpracovávaný server používat k automatické instalaci služby Mobility do počítače.
-11. V >  **nastavení replikace**Konfigurace nastavení**replikace**ověřte, zda je vybrána správná zásada replikace. 
-12. Klepněte na tlačítko **Povolit replikaci**. Průběh úlohy **Povolit ochranu** můžete sledovat v části**Úlohy** > **obnovení webu** **nastavení** > . Po spuštění úlohy **Finalize Protection** je počítač připraven k převzetí služeb při selhání.
+8. Vyberte **nakonfigurovat pro vybrané počítače**a použijte nastavení sítě pro všechny počítače, které vyberete pro ochranu. Vyberte **Konfigurovat později** a vyberte síť Azure na jeden počítač. 
+9. Na **fyzických počítačích**klikněte na **+ fyzický počítač**. Zadejte název a IP adresu. Vyberte operační systém počítače, který chcete replikovat. Zjištění a vypsání serverů trvá několik minut. 
+10. V části **vlastnosti** > **Konfigurace vlastností**vyberte účet, který bude procesový Server používat k automatické instalaci služby mobility na počítači.
+11. V **Nastavení** > replikace**nakonfigurujte nastavení replikace**a ověřte, jestli je vybraná správná zásada replikace. 
+12. Klikněte na **Povolit replikaci**. Průběh úlohy **Povolení ochrany** můžete sledovat v části **Nastavení** > **úlohy** > **Site Recovery úlohy**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený na převzetí služeb při selhání.
 
 
-Chcete-li sledovat servery, které přidáte, můžete zkontrolovat čas posledního zjištění v **konfiguračních serverech** > **Poslední kontakt na**. Chcete-li přidat počítače bez čekání na naplánovaný čas zjišťování, zvýrazněte konfigurační server (neklikejte na něj) a klepněte na tlačítko **Aktualizovat**.
+Chcete-li monitorovat servery, které jste přidali, můžete zjistit čas poslední zjištěné konfigurace v části **konfigurační servery** > **Poslední kontakt na**. Chcete-li přidat počítače bez čekání na naplánovaný čas zjišťování, zvýrazněte konfigurační server (neklikejte na něj) a klikněte na tlačítko **aktualizovat**.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Spusťte cvičení zotavení po havárii](tutorial-dr-drill-azure.md).
+[Spusťte postup zotavení po havárii](tutorial-dr-drill-azure.md).

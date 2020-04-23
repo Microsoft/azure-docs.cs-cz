@@ -1,6 +1,6 @@
 ---
-title: Úvod k dalšímu směrování v Azure Network Watcher | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje přehled funkce dalšího směrování sledování sítě.
+title: Seznámení s dalším segmentem směrování v Azure Network Watcher | Microsoft Docs
+description: Tento článek poskytuje přehled Network Watcher možnosti dalšího směrování.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -19,13 +19,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844054"
 ---
-# <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Diagnostikovat problémy se směrováním virtuálních strojů pomocí dalšího směrování
+# <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Použití dalšího směrování k diagnostice problémů s směrováním virtuálních počítačů
 
-Provoz z virtuálního počítače (VM) se odesílá do cíle na základě efektivních tras spojených se síťovým rozhraním (NIC). Další směrování získá další typ směrování a IP adresu paketu z konkrétního virtuálního počítačů a nic. Znalost dalšího směrování vám pomůže určit, zda je provoz směrován do zamýšleného cíle nebo zda je provoz odesílán nikam. Nesprávná konfigurace tras, kde je provoz směrován do místního umístění nebo virtuálního zařízení, může vést k problémům s připojením. Další směrování také vrátí směrovací tabulku přidruženou k dalšímu směrování. Pokud je trasa definována jako uživatelem definovaná trasa, je tato trasa vrácena. V opačném případě vrátí další funkce směrování **systémovou trasu**.
+Provoz z virtuálního počítače se pošle do cíle na základě efektivních tras přidružených k síťovému rozhraní (NIC). Další segment směrování Získá typ dalšího segmentu směrování a IP adresu paketu z konkrétního virtuálního počítače a síťové karty. Znalost dalšího směrování vám pomůže určit, jestli se má provoz směrovat do zamýšleného cíle, nebo jestli se provoz posílá nikde. Nesprávná konfigurace tras, kde je přenos směrován do místního umístění nebo virtuální zařízení, může vést k problémům s připojením. Další segment směrování také vrátí směrovací tabulku přidruženou k dalšímu segmentu směrování. Pokud je trasa definovaná jako trasa definovaná uživatelem, tato trasa se vrátí. V opačném případě funkce Next Hop vrátí **systémovou trasu**.
 
-![další přehled směrování](./media/network-watcher-next-hop-overview/figure1.png)
+![Přehled dalšího segmentu směrování](./media/network-watcher-next-hop-overview/figure1.png)
 
-Další směrování, které může být vráceno další možností směrování, je následující:
+Další segmenty, které může vrátit funkce dalšího směrování, jsou následující:
 
 * Internet
 * VirtualAppliance
@@ -34,10 +34,10 @@ Další směrování, které může být vráceno další možností směrován�
 * VirtualNetworkPeering
 * VirtualNetworkServiceEndpoint 
 * MicrosoftEdge
-* Žádný
+* Žádná
 
-Další informace o jednotlivých typech směrování naleznete v [tématu Přehled směrování](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+Další informace o jednotlivých typech dalších segmentů směrování najdete v tématu [Přehled směrování](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="next-steps"></a>Další kroky
 
-To learn how to use next hop to diagnose VM network routing problems, see Diagnose VM network routing problems using the [Azure portal](diagnose-vm-network-routing-problem.md), [PowerShell](diagnose-vm-network-routing-problem-powershell.md), or the [Azure CLI](diagnose-vm-network-routing-problem-cli.md).
+Další informace o tom, jak pomocí dalšího směrování diagnostikovat problémy se směrováním sítě virtuálních počítačů, najdete v tématu Diagnostika problémů s směrováním sítě virtuálních počítačů pomocí [Azure Portal](diagnose-vm-network-routing-problem.md), [PowerShellu](diagnose-vm-network-routing-problem-powershell.md)nebo rozhraní příkazového [řádku Azure](diagnose-vm-network-routing-problem-cli.md).

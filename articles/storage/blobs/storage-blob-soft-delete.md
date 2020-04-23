@@ -1,6 +1,6 @@
 ---
-title: Obnovitelné odstranění pro objekty BLOB úložiště Azure | Dokumenty společnosti Microsoft
-description: Azure Storage now offers soft delete for blob objects so that you can more easily recover your data when it is erroneously modified or deleted by an application or other storage account user.
+title: Obnovitelné odstranění pro objekty blob Azure Storage | Microsoft Docs
+description: Azure Storage teď nabízí obnovitelné odstranění objektů blob, abyste mohli snadněji obnovit data, když je omylem změnil nebo odstranila aplikace nebo jiný uživatel účtu úložiště.
 services: storage
 author: tamram
 ms.service: storage
@@ -17,94 +17,94 @@ ms.locfileid: "80234291"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Obnovitelné odstranění objektů blob služby Azure Storage
 
-Azure Storage now offers soft delete for blob objects so that you can more easily recover your data when it is erroneously modified or deleted by an application or other storage account user.
+Azure Storage teď nabízí obnovitelné odstranění objektů blob, abyste mohli snadněji obnovit data, když je omylem změnil nebo odstranila aplikace nebo jiný uživatel účtu úložiště.
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-soft-delete-works"></a>Jak funguje obnovitelné odstranění
 
-Pokud je povoleno, měkké odstranění umožňuje uložit a obnovit data při odstranění objektů blob nebo snímků objektů blob. Tato ochrana se vztahuje na data objektu blob, která se vymaže v důsledku přepsání.
+Když se tato možnost povolí, obnovitelné odstranění vám umožní ukládat a obnovovat data při odstraňování objektů BLOB nebo snímků objektů BLOB. Tato ochrana se rozšiřuje na data objektů blob, která se vymažou jako výsledek přepsání.
 
-Když jsou data odstraněna, přejde do obnovitelného odstraněného stavu namísto trvalého vymazání. Když je zapnuto měkké odstranění a přepíšete data, je generován měkký odstraněný snímek, který uloží stav přepsaných dat. Obnovitelné odstraněné objekty jsou neviditelné, pokud nejsou výslovně uvedeny. Můžete nakonfigurovat dobu, po kterou bude možné obnovitelně odstraněná data obnovit, než jejich platnost trvale vyprší.
+Při odstranění dat se místo trvalého vymazání přepne na stav neodstraněno. Když je obnovitelné odstranění zapnuté a přepíšete data, vygeneruje se měkký odstraněný snímek, který uloží stav přepsaných dat. Měkké odstraněné objekty jsou neviditelné, pokud nejsou výslovně uvedeny. Můžete nakonfigurovat dobu, po kterou bude možné obnovitelně odstraněná data obnovit, než jejich platnost trvale vyprší.
 
-Obnovitelné odstranění je zpětně kompatibilní, takže nemusíte provádět žádné změny v aplikacích, abyste mohli využít ochrany, kterou tato funkce poskytuje. Obnovení [dat](#recovery) však zavádí nové **rozhraní API undelete blob.**
+Obnovitelné odstranění je zpětně kompatibilní, takže nemusíte dělat žádné změny v aplikacích, abyste mohli využít výhod ochrany, kterou tato funkce nabízí. [Obnovení dat](#recovery) ale zavádí nové **neodstranitelné rozhraní API objektů BLOB** .
 
 ### <a name="configuration-settings"></a>Nastavení konfigurace
 
-Při vytváření nového účtu je obnovitelné odstranění ve výchozím nastavení vypnuto. Obnovitelné odstranění je ve výchozím nastavení vypnuto také pro existující účty úložiště. Funkci můžete kdykoli během životnosti účtu úložiště zapnout a vypnout.
+Při vytváření nového účtu je měkké odstranění ve výchozím nastavení vypnuté. U stávajících účtů úložiště je ve výchozím nastavení vypnuté i obnovitelné odstranění. Tuto funkci můžete kdykoli kdykoli během životnosti účtu úložiště zapnout nebo vypnout.
 
-Stále budete mít přístup a obnovit obnovitelná odstraněná data, když je funkce vypnutá, za předpokladu, že měkká odstraněná data byla uložena, když byla tato funkce dříve zapnuta. Když zapnete měkké odstranění, musíte také nakonfigurovat dobu uchování.
+I když je tato funkce vypnutá, budete mít přístup k odstraněným datům a budete je moct obnovit. za předpokladu, že se při dříve zapnuté funkci uložila dočasná Odstraněná data. Když zapnete obnovitelné odstranění, musíte také nakonfigurovat dobu uchovávání.
 
-Doba uchování označuje dobu, po kterou jsou data smazaná softwarem uložena a k dispozici pro obnovení. Pro objekty BLOB a snímky objektů blob, které jsou explicitně odstraněny, doba uchovávání hodin se spustí při odstranění dat. Pro obnovitelné odstraněné snímky generované funkcí obnovitelného odstranění při přepsání dat se hodiny spustí při generování snímku. V současné době můžete uchovávat smazaná data pro obnovitelné smazané údaje po dobu 1 až 365 dnů.
+Doba uchování označuje dobu, po kterou jsou data Odstraněná po uložení a dostupná pro obnovení. Pro objekty BLOB a snímky objektů blob, které se explicitně odstraní, se po odstranění dat začnou spouštět hodiny doby uchovávání. U neřízených odstraněných snímků generovaných funkcí tichého odstranění při přepisování dat se čas spustí při vygenerování snímku. V současné době můžete Odstraněná data uchovávat po dobu 1 až 365 dnů.
 
-Dobu uchovávání měkkých odstranění můžete kdykoli změnit. Aktualizované období uchovávání se bude vztahovat pouze na nově smazané údaje. Dříve odstraněná data vyprší na základě doby uchování, která byla nakonfigurována při odstranění dat. Pokus o odstranění obnovitelného odstraněného objektu neovlivní jeho dobu vypršení platnosti.
+Dobu uchování obnovitelného odstranění můžete kdykoli změnit. Aktualizovaná doba uchovávání se bude vztahovat jenom na nově Odstraněná data. Vyprší platnost dříve odstraněných dat na základě doby uchování, která byla konfigurována při odstranění těchto dat. Pokus o odstranění nepodmíněného odstraněného objektu nebude mít vliv na jeho čas vypršení platnosti.
 
 ### <a name="saving-deleted-data"></a>Ukládání odstraněných dat
 
-Obnovitelné odstranění zachová vaše data v mnoha případech, kdy jsou odstraněny nebo přepsány snímky objektů blob nebo objektů blob.
+Obnovitelné odstranění zachová data v mnoha případech, kdy jsou objekty blob nebo snímky objektů BLOB odstraněny nebo přepsány.
 
-Při přepsání objektu blob pomocí **Objektu blob Put**, **Put Block**, Put **Block List**nebo Kopírovat **objekt blob** je automaticky generován snímek stavu objektu blob před operací zápisu. Tento snímek je snímek obnovitelné odstraněné; je neviditelný, pokud nejsou explicitně uvedeny obnovitelné odstraněné objekty. Informace o tom, jak zobrazit seznam nematických odstraněných objektů, najdete v části [Obnovení.](#recovery)
+Když je objekt BLOB přepsaný pomocí funkce **Put BLOB**, **Put**, **Put list**nebo **copy objektu** blob, je snímek stavu objektu BLOB před operací zápisu automaticky vygenerován. Tento snímek je neměkký odstraněný snímek; není viditelná, pokud nejsou explicitně odstraněné objekty výslovně uvedeny. V části věnované [obnovení](#recovery) se dozvíte, jak zobrazit seznam neodstraněných objektů.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
-*Měkká odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Novější písemná data se zobrazují pod staršími daty. Při přepsání B0 s B1, je generován měkký odstraněný snímek B0. Při přepsání B1 s B2, je generován měkký odstraněný snímek B1.*
+*Měkké Odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Další data napsaná v poslední době se zobrazí pod staršími daty. Když se B0 přepíše pomocí B1, vygeneruje se měkký odstraněný snímek B0. Když je B1 přepsána v B2, je vygenerována měkký odstraněný snímek B1.*
 
 > [!NOTE]  
-> Obnovitelné odstranění poskytuje pouze ochranu proti přepsání operací kopírování, pokud je zapnuto pro účet cílového objektu blob.
+> Obnovitelné odstranění nabízí pouze přepis ochrany při operacích kopírování, pokud je zapnutý pro účet cílového objektu BLOB.
 
 > [!NOTE]  
-> Obnovitelné odstranění neposkytuje ochranu proti přepsání objektů BLOB v archivní vrstvě. Pokud je objekt blob v archivu přepsán novým objektem blob v libovolné vrstvě, přepsaný objekt blob trvale vyprší.
+> Obnovitelné odstranění neumožňuje přepsat ochranu objektů BLOB v archivní úrovni. Pokud je objekt BLOB v archivu přepsaný novým objektem blob na jakékoli úrovni, přepsanému objektu BLOB se trvale vyprší platnost.
 
-Při **odstranění objektu blob** je volána na snímek, tento snímek je označen jako obnovitelné odstraněn. Nový snímek není generován.
+Při volání metody **Delete BLOB** pro snímek je tento snímek označený jako měkký odstraněný. Nový snímek se nevygeneruje.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-*Měkká odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Novější písemná data se zobrazují pod staršími daty. Při **volání objektu blob snímek** B0 se stane snímek a B1 je aktivní stav objektu blob. Při odstranění snímku B0 je označen jako obnovitelné odstranění.*
+*Měkké Odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Další data napsaná v poslední době se zobrazí pod staršími daty. Když se zavolá **objekt BLOB snímku** , B0 se vytvoří jako snímek a B1 je aktivním stavem objektu BLOB. Po odstranění snímku B0 je označen jako měkký odstraněný.*
 
-Při **odstranění objektu blob** se nazývá na základní objekt blob (jakýkoli objekt blob, který není sám snímek), tento objekt blob je označen jako obnovitelné odstraněn. V souladu s předchozím chováním volání **odstranit objekt blob** na objekt blob, který má aktivní snímky vrátí chybu. Volání **odstranit objekt blob** na objekt blob s obnovitelné odstraněné snímky nevrátí chybu. Stále můžete odstranit objekt blob a všechny jeho snímky v jedné operaci, když je zapnuto měkké odstranění. Tím označíte základní objekt blob a snímky jako obnovitelné odstranění.
+Když se **objekt BLOB pro odstranění** volá u základního objektu BLOB (jakýkoli objekt blob, který není sám snímkem), tento objekt BLOB je označený jako měkký odstraněný. V souladu s předchozím chováním volání funkce **Odstranit objekt BLOB** u objektu blob, který má aktivní snímky, vrátí chybu. Volání metody **Delete BLOB** u objektu BLOB s nejemnými odstraněnou snímků nevrátí chybu. Můžete přesto odstranit objekt BLOB a všechny jeho snímky v rámci jedné operace, když je zapnuté obnovitelné odstranění. Tím se vyznačuje základní objekt BLOB a snímky jako obnovitelné.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-*Měkká odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Novější písemná data se zobrazují pod staršími daty. Zde odstranit volání **objektu blob** se provádí k odstranění B2 a všechny přidružené snímky. Aktivní objekt blob, B2 a všechny přidružené snímky jsou označeny jako obnovitelné odstraněné.*
+*Měkké Odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Další data napsaná v poslední době se zobrazí pod staršími daty. Zde je provedeno volání **objektu BLOB Delete** pro odstranění B2 a všech přidružených snímků. Aktivní objekt blob, B2 a všechny přidružené snímky jsou označené jako měkké odstraněné.*
 
 > [!NOTE]  
-> Při přepsání obnovitelného odstraněného objektu blob se automaticky vygeneruje neodstraněný odstraněný snímek stavu objektu blob před operací zápisu. Nový objekt blob zdědí vrstvu přepsaného objektu blob.
+> Po přepsání nepodmíněného odstraněného objektu BLOB se automaticky vygeneruje měkký odstraněný snímek stavu objektu BLOB před operací zápisu. Nový objekt BLOB zdědí úroveň přepsaného objektu BLOB.
 
-Obnovitelné odstranění neukládá data v případě odstranění kontejneru nebo účtu, ani při přepsání metadat objektu blob a vlastností objektů blob. Chcete-li chránit účet úložiště před chybným odstraněním, můžete nakonfigurovat zámek pomocí Správce prostředků Azure. Další informace najdete v článku Správce prostředků Azure [Uzamknout prostředky, abyste zabránili neočekávaným změnám.](../../azure-resource-manager/management/lock-resources.md)
+Obnovitelné odstranění neukládá vaše data v případě, že dojde k odstranění kontejneru nebo účtu, ani když jsou metadata objektů BLOB a vlastnosti objektů BLOB přepsána. K ochraně účtu úložiště před chybným odstraněním můžete nakonfigurovat zámek pomocí Azure Resource Manager. Další informace o tom, [Jak zabránit neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md) , najdete v článku o Azure Resource Manager uzamčení prostředků.
 
-Následující tabulka podrobně popisuje očekávané chování při zapnutém softwarovém odstranění:
+Následující tabulka podrobně popisuje očekávané chování při zapnutí obnovitelného odstranění:
 
-| Operace rozhraní REST API | Typ prostředku | Popis | Změna chování |
+| Operace REST API | Typ prostředku | Popis | Změna chování |
 |--------------------|---------------|-------------|--------------------|
-| [Odstranit](/rest/api/storagerp/StorageAccounts/Delete) | Účet | Odstraní účet úložiště, včetně všech kontejnerů a objektů BLOB, které obsahuje.                           | Žádná změna. Kontejnery a objekty BLOB v odstraněném účtu nelze obnovit. |
-| [Odstranění kontejneru](/rest/api/storageservices/delete-container) | Kontejner | Odstraní kontejner, včetně všech objektů BLOB, které obsahuje. | Žádná změna. Objekty BLOB v odstraněném kontejneru nelze obnovit. |
-| [Vložení objektu blob](/rest/api/storageservices/put-blob) | Objekty BLOB pro blokování, připojení a stránku | Vytvoří nový objekt blob nebo nahradí existující objekt blob v kontejneru | Pokud se používá k nahrazení existující objekt blob, snímek stavu objektu blob před voláním se automaticky vygeneruje. To platí také pro dříve obnovitelné odstraněné objekt blob, pokud a pouze v případě, že je nahrazen objektem blob stejného typu (Blok, Připojit nebo Page). Pokud je nahrazen objektem blob jiného typu, všechna existující obnovitelné odstraněná data trvale vyprší. |
-| [Odstranění objektu blob](/rest/api/storageservices/delete-blob) | Objekty BLOB pro blokování, připojení a stránku | Označí snímek objektu blob nebo objektu blob k odstranění. Objekt blob nebo snímek je později odstraněn během uvolňování paměti | Pokud se používá k odstranění snímku objektu blob, tento snímek je označen jako obnovitelné odstraněné. Pokud se používá k odstranění objektu blob, tento objekt blob je označen jako obnovitelné odstranění. |
-| [Zkopírování objektu blob](/rest/api/storageservices/copy-blob) | Objekty BLOB pro blokování, připojení a stránku | Zkopíruje zdrojový objekt blob do cílového objektu blob ve stejném účtu úložiště nebo v jiném účtu úložiště. | Pokud se používá k nahrazení existující objekt blob, snímek stavu objektu blob před voláním se automaticky vygeneruje. To platí také pro dříve obnovitelné odstraněné objekt blob, pokud a pouze v případě, že je nahrazen objektem blob stejného typu (Blok, Připojit nebo Page). Pokud je nahrazen objektem blob jiného typu, všechna existující obnovitelné odstraněná data trvale vyprší. |
-| [Umístit blok](/rest/api/storageservices/put-block) | Objekty blob bloku | Vytvoří nový blok, který má být potvrzen jako součást objektu blob bloku. | Pokud se používá k potvrzení bloku do objektu blob, který je aktivní, neexistuje žádná změna. Pokud se používá k potvrzení bloku do objektu blob, který je obnovitelné odstraněn, vytvoří se nový objekt blob a snímek se automaticky vygeneruje, aby zachytil stav obnovitelného odstraněného objektu blob. |
-| [Seznam blokovaných položek](/rest/api/storageservices/put-block-list) | Objekty blob bloku | Potvrdí objekt blob zadáním sady ID bloků, které tvoří objekt blob bloku. | Pokud se používá k nahrazení existující objekt blob, snímek stavu objektu blob před voláním se automaticky vygeneruje. To platí také pro dříve obnovitelné odstraněné objekt blob, pokud a pouze v případě, že je objekt blob bloku. Pokud je nahrazen objektem blob jiného typu, všechna existující obnovitelné odstraněná data trvale vyprší. |
-| [Umístit stránku](/rest/api/storageservices/put-page) | Objekty blob stránky | Zapíše rozsah stránek do objektu blob stránky. | Žádná změna. Data objektu blob stránky, která jsou přepsána nebo vymazána pomocí této operace, nejsou uložena a nelze je obnovit. |
-| [Připojit blok](/rest/api/storageservices/append-block) | Doplňovací objekty blob | Zapíše blok dat na konec objektu blob připojit | Žádná změna. |
-| [Nastavení vlastností objektu blob](/rest/api/storageservices/set-blob-properties) | Objekty BLOB pro blokování, připojení a stránku | Nastaví hodnoty pro vlastnosti systému definované pro objekt blob. | Žádná změna. Přepsané vlastnosti objektu blob nelze obnovit. |
-| [Nastavení metadat objektu blob](/rest/api/storageservices/set-blob-metadata) | Objekty BLOB pro blokování, připojení a stránku | Nastaví uživatelem definovaná metadata pro zadaný objekt blob jako jeden nebo více párů název-hodnota. | Žádná změna. Přepsání metadat blob nelze obnovit. |
+| [Odstranit](/rest/api/storagerp/StorageAccounts/Delete) | Účet | Odstraní účet úložiště, včetně všech kontejnerů a objektů blob, které obsahuje.                           | Žádná změna. Kontejnery a objekty BLOB v odstraněném účtu nejde obnovit. |
+| [Odstranění kontejneru](/rest/api/storageservices/delete-container) | Kontejner | Odstraní kontejner včetně všech objektů blob, které obsahuje. | Žádná změna. Objekty BLOB v odstraněném kontejneru nejsou obnovitelné. |
+| [Vložení objektu blob](/rest/api/storageservices/put-blob) | Blokování, připojení a objekty blob stránky | Vytvoří nový objekt BLOB nebo nahradí existující objekt BLOB v rámci kontejneru. | Pokud se použije k nahrazení existujícího objektu blob, automaticky se vygeneruje snímek stavu objektu BLOB před voláním. To platí také pro dříve odstraněné objekty blob, pokud jsou nahrazeny objektem BLOB stejného typu (blok, připojit nebo stránka). Pokud je nahrazen objektem BLOB jiného typu, všechna existující dočasná Odstraněná data budou trvale vypršet. |
+| [Odstranění objektu blob](/rest/api/storageservices/delete-blob) | Blokování, připojení a objekty blob stránky | Označí objekt BLOB nebo snímek objektu BLOB pro odstranění. Objekt BLOB nebo snímek se později odstraní během uvolňování paměti. | Pokud se použije k odstranění snímku objektu blob, bude tento snímek označený jako měkký odstraněný. Při použití k odstranění objektu BLOB je tento objekt BLOB označený jako měkký odstraněný. |
+| [Zkopírování objektu blob](/rest/api/storageservices/copy-blob) | Blokování, připojení a objekty blob stránky | Zkopíruje zdrojový objekt blob do cílového objektu BLOB ve stejném účtu úložiště nebo v jiném účtu úložiště. | Pokud se použije k nahrazení existujícího objektu blob, automaticky se vygeneruje snímek stavu objektu BLOB před voláním. To platí také pro dříve odstraněné objekty blob, pokud jsou nahrazeny objektem BLOB stejného typu (blok, připojit nebo stránka). Pokud je nahrazen objektem BLOB jiného typu, všechna existující dočasná Odstraněná data budou trvale vypršet. |
+| [Blok vložení](/rest/api/storageservices/put-block) | Objekty blob bloku | Vytvoří nový blok, který bude potvrzen jako součást objektu blob bloku. | Pokud se použije k potvrzení bloku do objektu blob, který je aktivní, nedošlo k žádné změně. Pokud se použije k potvrzení bloku do objektu blob, který se dočasná odstraní, vytvoří se nový objekt BLOB a automaticky se vygeneruje snímek, který zachytí stav podmíněného odstraněného objektu BLOB. |
+| [Seznam blokovaných umístění](/rest/api/storageservices/put-block-list) | Objekty blob bloku | Potvrdí objekt BLOB zadáním sady identifikátorů ID bloků, které tvoří objekt blob bloku. | Pokud se použije k nahrazení existujícího objektu blob, automaticky se vygeneruje snímek stavu objektu BLOB před voláním. To platí i pro dřív odstraněný objekt blob, pokud je a jenom v případě, že se jedná o objekt blob bloku. Pokud je nahrazen objektem BLOB jiného typu, všechna existující dočasná Odstraněná data budou trvale vypršet. |
+| [Vložit stránku](/rest/api/storageservices/put-page) | Objekty blob stránky | Zapisuje rozsah stránek do objektu blob stránky. | Žádná změna. Data objektu blob stránky, která jsou přepsána nebo vymazána pomocí této operace, nejsou uložena a nelze je obnovit. |
+| [Připojit blok](/rest/api/storageservices/append-block) | Doplňovací objekty blob | Zapisuje blok dat na konec doplňovacího objektu BLOB. | Žádná změna. |
+| [Nastavení vlastností objektu BLOB](/rest/api/storageservices/set-blob-properties) | Blokování, připojení a objekty blob stránky | Nastaví hodnoty vlastností systému definované pro objekt BLOB. | Žádná změna. Přepsané vlastnosti objektu BLOB nelze obnovit. |
+| [Nastavení metadat objektu BLOB](/rest/api/storageservices/set-blob-metadata) | Blokování, připojení a objekty blob stránky | Nastaví uživatelsky definovaná metadata pro zadaný objekt BLOB jako jednu nebo více párů název-hodnota. | Žádná změna. Přepsaná metadata objektu BLOB nelze obnovit. |
 
-Je důležité si všimnout, že volání "Put Page" přepsat nebo vymazat rozsahy objektu blob stránky nebude automaticky generovat snímky. Disky virtuálních počítačů jsou zálohovány objekty BLOB stránky a k zápisu dat použijte **put page.**
+Je důležité si všimnout, že volání "Put Page" na přepsání nebo vymazání rozsahů objektu blob stránky negeneruje automaticky snímky. Disky virtuálních počítačů se zálohují objekty blob stránky a používají **stránku Put** k zápisu dat.
 
 ### <a name="recovery"></a>Obnovení
 
-Volání operace [Undelete Blob](/rest/api/storageservices/undelete-blob) na obnovitelné mablob odstraněné obnoví ji a všechny přidružené obnovitelné odstraněné snímky jako aktivní. Volání `Undelete Blob` operace na aktivní základní objekt blob obnoví všechny přidružené obnovitelné odstraněné snímky jako aktivní. Když jsou snímky obnoveny jako aktivní, vypadají jako snímky generované uživatelem; nepřepíší základní objekt blob.
+Volání operace obnovení [objektu BLOB](/rest/api/storageservices/undelete-blob) na neodstraněném základním objektu BLOB obnoví a všechny přidružené měkké odstraněné snímky jako aktivní. Volání `Undelete Blob` operace na aktivním základním objektu BLOB obnoví všechny přidružené měkké odstraněné snímky jako aktivní. Když se snímky obnovují jako aktivní, vypadají jako uživatelem generované snímky; nepřepisují základní objekt BLOB.
 
-Chcete-li obnovit objekt blob na konkrétní `Undelete Blob` měkký odstraněný snímek, můžete volat na základní objekt blob. Potom můžete zkopírovat snímek přes objekt blob nyní aktivní. Snímek můžete také zkopírovat do nového objektu blob.
+Chcete-li obnovit objekt blob na konkrétní měkký odstraněný snímek, můžete zavolat `Undelete Blob` na základní objekt BLOB. Pak můžete snímek zkopírovat přes objekt BLOB nyní – aktivní. Snímek můžete také zkopírovat do nového objektu BLOB.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-*Měkká odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Novější písemná data se zobrazují pod staršími daty. Zde **undelete blob** se nazývá na objekt blob B, čímž se obnoví základní objekt blob, B1 a všechny přidružené snímky, zde pouze B0, jako aktivní. Ve druhém kroku b0 je zkopírován přes základní objekt blob. Tato operace kopírování generuje obnovitelné odstraněný snímek B1.*
+*Měkké Odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Další data napsaná v poslední době se zobrazí pod staršími daty. V tomto případě se v objektu BLOB B volá příkaz **Undelete BLOB** , který obnovuje základní objekt blob, B1 a všechny přidružené snímky, a to jenom B0 jako aktivní. V druhém kroku se B0 zkopíruje přes základní objekt BLOB. Tato operace kopírování vygeneruje měkký odstraněný snímek B1.*
 
-Chcete-li zobrazit obnovitelné odstraněné objekty BLOB a snímky objektů BLOB, můžete zahrnout odstraněná data do **objektů BLOB seznamu**. Můžete zobrazit pouze obnovitelné odstraněné základní objekty BLOB nebo zahrnout také obnovitelné odstraněné snímky objektů blob. U všech dat smazaných z měkkého hesla můžete zobrazit čas, kdy byla data odstraněna, a také počet dní před trvalým vypršením platnosti dat.
+Pokud chcete zobrazit nepodmíněné odstraněné objekty BLOB a snímky objektů blob, můžete se rozhodnout zahrnout Odstraněná data do **seznamu objektů BLOB**. Můžete si vybrat, že se mají zobrazovat jenom obnovitelné odstraněné základní objekty blob, nebo taky zahrnout obnovitelné odstraněné snímky objektů BLOB. Pro všechna tichá Odstraněná data můžete zobrazit čas odstranění dat a počet dní, než budou data trvale vypršet.
 
 ### <a name="example"></a>Příklad
 
-Následuje výstup konzoly skriptu .NET, který nahrává, přepisuje, snímky, odstraňuje a obnovuje objekt blob s názvem *HelloWorld,* když je zapnuto měkké odstranění:
+Následuje výstup konzoly skriptu .NET, který nahrává, Přepisuje, snímuje, odstraňuje a obnovuje objekt BLOB s názvem *Hello* , pokud je obnovitelné odstranění zapnuté:
 
 ```bash
 Upload:
@@ -136,81 +136,81 @@ Copy a snapshot over the base blob:
 - HelloWorld (is soft deleted: False, is snapshot: False)
 ```
 
-Viz [další kroky](#next-steps) části ukazatel na aplikaci, která vyrábí tento výstup.
+V části [Další kroky](#next-steps) najdete ukazatel na aplikaci, která vytvořila tento výstup.
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
-Všechna data smazaná z měkkého úložiště se účtují stejnou rychlostí jako aktivní data. Za data, která jsou trvale odstraněna po nakonfigurované době uchovávání, vám nebudou účtovány poplatky. Pro hlubší prokliky a jak se jim účtují poplatky, viz [Principy, jak snímky časově rozrůstají poplatky](storage-blob-snapshots.md).
+Všechna tichá Odstraněná data se účtují stejnou sazbou jako aktivní data. Neúčtují se vám poplatky za data, která se po nakonfigurované době uchování trvale odstraní. Pro hlubší podrobně na snímky a jejich navýšení poplatků vám [pomůžou pochopit, jak se na snímcích účtují poplatky](storage-blob-snapshots.md).
 
-Transakce související s automatickým generováním snímků se vám nebudou účtovat. Transakce **undelete blob** se vám budou účtovat ve sazbě pro operace zápisu.
+Neúčtují se vám transakce týkající se automatického generování snímků. V případě operací zápisu se vám budou účtovat transakce **neodstraněného objektu BLOB** .
 
-Další podrobnosti o cenách azure blob storage obecně, podívejte se na [stránku ceny úložiště objektů blob Azure](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Další podrobnosti o cenách pro Azure Blob Storage obecně najdete na stránce s cenami za [azure BLOB Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-Když zpočátku zapnete měkké odstranění, doporučujeme použít malou dobu uchovávání, abyste lépe pochopili, jak tato funkce ovlivní vaši fakturu.
+Při prvotním zapnutí obnovitelného odstranění doporučujeme, abyste lépe porozuměli tomu, jak bude tato funkce mít na vyúčtování vliv.
 
 ## <a name="get-started"></a>Začínáme
 
-Následující kroky ukazují, jak začít pomocí obnovitelného odstranění.
+Následující kroky ukazují, jak začít s obnovitelné odstraněním.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Povolte obnovitelné odstranění objektů BLOB na vašem účtu úložiště pomocí portálu Azure:
+Povolit obnovitelné odstranění pro objekty BLOB v účtu úložiště pomocí Azure Portal:
 
-1. Na [webu Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště. 
+1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště. 
 
-2. Přejděte na možnost **Ochrana dat** v části Služba **objektů blob**.
+2. Přejděte do možnosti **Ochrana dat** v části **BLOB Service**.
 
-3. V části **Blob soft delete** klikněte na **Povoleno.**
+3. Klikněte na **Povolit** v části **BLOB – obnovitelné odstranění** .
 
-4. Zadejte počet dní, které si chcete *zachovat v* části **Zásady uchovávání informací.**
+4. Zadejte počet dní, po které chcete *zachovat* v části **zásady uchovávání informací** .
 
-5. Zvolte tlačítko **Uložit,** chcete-li potvrdit nastavení ochrany dat.
+5. Kliknutím na tlačítko **Uložit** potvrďte nastavení ochrany dat.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
-Chcete-li zobrazit obnovitelné odstraněné objekty BLOB, zaškrtněte políčko **Zobrazit odstraněné objekty BLOB.**
+Chcete-li zobrazit obnovitelné odstraněné objekty blob, zaškrtněte políčko **Zobrazit odstraněné objekty blob** .
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
-Chcete-li zobrazit obnovitelné odstraněné snímky pro daný objekt blob, vyberte objekt blob a klepněte na tlačítko **Zobrazit snímky**.
+Pokud chcete pro daný objekt BLOB zobrazit obnovitelné odstraněné snímky, vyberte objekt BLOB a pak klikněte na **Zobrazit snímky**.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
-Ujistěte se, že je zaškrtnuté políčko **Zobrazit odstraněné snímky.**
+Ujistěte se, že je zaškrtnuté políčko **Zobrazit odstraněné snímky** .
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
 
-Po kliknutí na obnovitelné odstraněné objekt blob nebo snímek, všimněte si nové vlastnosti objektu blob. Označují, kdy byl objekt odstraněn a kolik dní zbývá, dokud trvale vyprší platnost snímku objektu blob nebo objektu blob. Pokud měkký odstraněný objekt není snímek, budete mít také možnost jej obnovit.
+Když kliknete na měkký odstraněný objekt BLOB nebo snímek, Všimněte si, že se zobrazí nové vlastnosti objektu BLOB. Označují, že se objekt odstranil, a kolik dní zbývá, dokud platnost snímku objektu BLOB nebo objektu BLOB neproběhne trvale. Pokud neměkký odstraněný objekt není snímkem, budete mít také možnost ho zrušit.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-properties.png)
 
-Nezapomeňte, že zrušení odstranění objektu blob také odevní všechny přidružené snímky. Chcete-li obnovit obnovitelné odstraněné snímky pro aktivní objekt blob, klikněte na objekt blob a vyberte **Zrušit odstranění všech snímků**.
+Pamatujte, že zrušení odstranění objektu BLOB také zruší odstranění všech přidružených snímků. Chcete-li obnovit odstraněné obnovitelné snímky pro aktivní objekt blob, klikněte na objekt BLOB a vyberte možnost zrušit **odstranění všech snímků**.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
-Po zrušení snímky objektu blob, můžete klepnout na **tlačítko Zvýšit** zkopírovat snímek přes objekt blob kořenového adresáře, a tím obnovení objektu blob na snímek.
+Po obnovení snímků objektu blob můžete kliknutím na **zvýšit úroveň** zkopírovat snímek přes kořenový objekt blob, čímž se obnoví objekt blob do snímku.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Chcete-li povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektu blob. Následující příklad umožňuje obnovitelné odstranění pro podmnožinu účtů v předplatném:
+Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů BLOB. Následující příklad povoluje obnovitelné odstranění pro podmnožinu účtů v rámci předplatného:
 
 ```powershell
 Set-AzContext -Subscription "<subscription-name>"
 $MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
 $MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
-Pomocí následujícího příkazu můžete ověřit, zda bylo měkké odstranění zapnuto:
+Pomocí následujícího příkazu můžete ověřit, zda bylo toto obnovitelné odstranění zapnuté:
 
 ```powershell
 $MatchingAccounts | $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context | Select-Object -ExpandProperty DeleteRetentionPolicy
 ```
 
-Chcete-li obnovit objekty BLOB, které byly omylem odstraněny, volejte Undelete na těchto objektech BLOB. Nezapomeňte, že volání **undelete blob**, na aktivní i obnovitelné odstraněné objekty BLOB, obnoví všechny přidružené obnovitelné odstraněné snímky jako aktivní. Následující příklad volá Undelete na všechny obnovitelné odstraněné a aktivní objekty BLOB v kontejneru:
+Chcete-li obnovit objekty blob, které byly omylem odstraněny, zavolejte u těchto objektů BLOB příkaz redelete. Nezapomeňte, že volání **Undelete BLOB**, jak u aktivních, tak i u objektů BLOB s odstraněnými objekty, obnoví všechny přidružené obnovitelné snímky odstraněné jako aktivní. Následující příklad volá Undelete u všech provizorních odstraněných a aktivních objektů BLOB v kontejneru:
 
 ```powershell
 # Create a context by specifying storage account name and key
@@ -223,22 +223,22 @@ $Blobs.ICloudBlob.Properties
 # Undelete the blobs
 $Blobs.ICloudBlob.Undelete()
 ```
-Chcete-li najít aktuální zásady uchovávání informací s měkkým odstraněním, použijte následující příkaz:
+Chcete-li najít aktuální zásady uchovávání informací o tichém odstranění, použijte následující příkaz:
 
 ```azurepowershell-interactive
    $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-# <a name="cli"></a>[Cli](#tab/azure-CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-CLI)
 
-Chcete-li povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektu blob:
+Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů BLOB:
 
 ```azurecli-interactive
 az storage blob service-properties delete-policy update --days-retained 7  --account-name mystorageaccount --enable true
 ```
 
-Chcete-li ověřit, zda je měkké odstranění zapnuto, použijte následující příkaz: 
+Chcete-li ověřit, zda je funkce obnovitelné odstranění zapnutá, použijte následující příkaz: 
 
 ```azurecli-interactive
 az storage blob service-properties delete-policy show --account-name mystorageaccount 
@@ -246,7 +246,7 @@ az storage blob service-properties delete-policy show --account-name mystorageac
 
 # <a name="python"></a>[Python](#tab/python)
 
-Chcete-li povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektu blob:
+Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů BLOB:
 
 ```python
 # Make the requisite imports
@@ -264,7 +264,7 @@ block_blob_service.set_blob_service_properties(
 
 # <a name="net"></a>[.NET](#tab/net)
 
-Chcete-li povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektu blob:
+Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů BLOB:
 
 ```csharp
 // Get the blob client's service property settings
@@ -278,7 +278,7 @@ serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
 blobClient.SetServiceProperties(serviceProperties);
 ```
 
-Chcete-li obnovit objekty BLOB, které byly omylem odstraněny, volejte Undelete na těchto objektech BLOB. Nezapomeňte, že volání **undelete blob**, na aktivní i obnovitelné odstraněné objekty BLOB, obnoví všechny přidružené obnovitelné odstraněné snímky jako aktivní. Následující příklad volá Undelete na všechny obnovitelné odstraněné a aktivní objekty BLOB v kontejneru:
+Chcete-li obnovit objekty blob, které byly omylem odstraněny, zavolejte u těchto objektů BLOB příkaz redelete. Nezapomeňte, že volání **Undelete BLOB**, jak u aktivních, tak i u objektů BLOB s odstraněnými objekty, obnoví všechny přidružené obnovitelné snímky odstraněné jako aktivní. Následující příklad volá Undelete u všech provizorních odstraněných a aktivních objektů BLOB v kontejneru:
 
 ```csharp
 // Recover all blobs in a container
@@ -288,7 +288,7 @@ foreach (CloudBlob blob in container.ListBlobs(useFlatBlobListing: true, blobLis
 }
 ```
 
-Chcete-li obnovit konkrétní verzi objektu blob, nejprve volání Undelete na objekt blob, pak zkopírujte požadovaný snímek přes objekt blob. Následující příklad obnoví objekt blob bloku na jeho naposledy generovaný snímek:
+Chcete-li provést obnovení na konkrétní verzi objektu blob, nejdříve zavolejte příkaz Undelete u objektu BLOB a potom zkopírujte požadovaný snímek do objektu BLOB. Následující příklad obnoví objekt blob bloku na jeho naposledy vygenerovaný snímek:
 
 ```csharp
 // Undelete
@@ -306,70 +306,70 @@ blockBlob.StartCopy(copySource);
 
 ---
 
-## <a name="special-considerations"></a>Zvláštní aspekty
+## <a name="special-considerations"></a>Zvláštní požadavky
 
-Pokud existuje možnost, že vaše data omylem změní nebo odstraní aplikace nebo jiný uživatel účtu úložiště, doporučujeme zapnout obnovitelné odstranění. Povolení obnovitelného odstranění pro často přepsaná data může mít za následek zvýšení poplatků za kapacitu úložiště a zvýšenou latenci při výpisu objektů BLOB. Tyto dodatečné náklady a latenci můžete zmírnit uložením často přepsaných dat v samostatném účtu úložiště, kde je zakázáno odstranění pomocí programu Soft Delete. 
+Pokud existuje možnost, že vaše data budou omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště, doporučuje se zapnutí obnovitelného odstranění. Povolení obnovitelného odstranění často přepsaných dat může mít za následek zvýšené poplatky za kapacitu úložiště a vyšší latenci při výpisu objektů BLOB. Tyto dodatečné náklady a latence můžete zmírnit uložením často přepsaných dat do samostatného účtu úložiště, kde je deaktivované obnovitelné odstranění. 
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-### <a name="for-which-storage-services-can-i-use-soft-delete"></a>Pro které služby úložiště mohu použít obnovitelné odstranění?
+### <a name="for-which-storage-services-can-i-use-soft-delete"></a>Pro které služby úložiště je možné použít obnovitelné odstranění?
 
-V současné době je obnovitelné odstranění k dispozici jenom pro úložiště objektů blob (objekt).
+V současné době je obnovitelné odstranění k dispozici pouze pro úložiště objektů BLOB (Object).
 
 ### <a name="is-soft-delete-available-for-all-storage-account-types"></a>Je obnovitelné odstranění k dispozici pro všechny typy účtů úložiště?
 
-Ano, obnovitelné odstranění je k dispozici pro účty úložiště objektů Blob i pro objekty BLOB v účtech úložiště pro obecné účely (GPv1 i GPv2). Podporovány jsou standardní i prémiové typy účtů. Obnovitelné odstranění je k dispozici pro nespravované disky, což jsou objekty BLOB stránky pod kryty. Obnovitelné odstranění není k dispozici pro spravované disky.
+Ano, obnovitelné odstranění je k dispozici pro účty úložiště BLOB a také pro objekty BLOB v účtech úložiště pro obecné účely (GPv1 a GPv2). Podporují se účty typu Standard a Premium. Obnovitelné odstranění je k dispozici pro nespravované disky, které jsou objekty blob stránky v rámci pokrývání. Obnovitelné odstranění není pro spravované disky k dispozici.
 
-### <a name="is-soft-delete-available-for-all-storage-tiers"></a>Je obnovitelné odstranění k dispozici pro všechny vrstvy úložiště?
+### <a name="is-soft-delete-available-for-all-storage-tiers"></a>Je obnovitelné odstranění k dispozici pro všechny úrovně úložiště?
 
-Ano, obnovitelné odstranění je k dispozici pro všechny úrovně úložiště, včetně horkých, chladných a archivních. Obnovitelné odstranění však neposkytuje ochranu proti přepsání objektů BLOB v archivní vrstvě.
+Ano, obnovitelné odstranění je k dispozici pro všechny úrovně úložiště, včetně horké, studené a archivní. Obnovitelné odstranění ale neumožňuje přepsat ochranu objektů BLOB v archivní úrovni.
 
-### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>Můžu použít rozhraní API úrovně objektů blob nastavit k objektům BLOB s měkkými odstraněnými snímky?
+### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>Můžu použít nastavení rozhraní API vrstev objektů BLOB pro objekty blob vrstvy se měkkými odstraněnou snímků?
 
-Ano. Obnovitelné odstraněné snímky zůstanou v původní vrstvě, ale základní objekt blob se přesune do nové vrstvy. 
+Ano. Měkké odstraněné snímky zůstanou v původní úrovni, ale základní objekt BLOB se přesune na novou úroveň. 
 
-### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>Účty úložiště Premium mají limit na snímek objektu blob 100. Započítávají se do tohoto limitu obnovitelné odstraněné snímky?
+### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>Účty úložiště úrovně Premium mají omezení počtu snímků objektů blob na 100. Počítá se z tohoto limitu měkké odstraněné snímky?
 
-Ne, obnovitelné odstraněné snímky se do tohoto limitu nezapočítávají.
+Ne, měkké odstraněné snímky se nepočítají směrem k tomuto limitu.
 
-### <a name="can-i-turn-on-soft-delete-for-existing-storage-accounts"></a>Můžu pro existující účty úložiště zapnout obnovitelné odstranění?
+### <a name="can-i-turn-on-soft-delete-for-existing-storage-accounts"></a>Můžu u stávajících účtů úložiště zapnout obnovitelné odstranění?
 
-Ano, obnovitelné odstranění lze konfigurovat pro existující i nové účty úložiště.
+Ano, obnovitelné odstranění lze konfigurovat pro stávající i nové účty úložiště.
 
-### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Pokud odstraním celý účet nebo kontejner se zapnutým měkkým odstraněním, uloží se všechny přidružené objekty BLOB?
+### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Když odstraním celý účet nebo kontejner se zapnutým obnovitelném odstraněním, budou se všechny přidružené objekty blob ukládat?
 
-Ne, pokud odstraníte celý účet nebo kontejner, všechny přidružené objekty BLOB budou trvale odstraněny. Další informace o ochraně účtu úložiště před náhodným odstraněním naleznete v [tématu Uzamčení prostředků, které mají zabránit neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
+Ne. Pokud odstraníte celý účet nebo kontejner, všechny přidružené objekty BLOB se trvale odstraní. Další informace o ochraně účtu úložiště před náhodným odstraněním najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
 
-### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Mohu zobrazit metriky kapacity pro odstraněná data?
+### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Můžu zobrazit metriky kapacity pro Odstraněná data?
 
-Měkká odstraněná data jsou součástí celkové kapacity účtu úložiště. Další informace o sledování a sledování kapacity úložiště najdete v [tématu Storage Analytics](../common/storage-analytics.md).
+Dočasná Odstraněná data jsou součástí celkové kapacity účtu úložiště. Další informace o sledování a sledování kapacity úložiště najdete v tématu [Analýza úložiště](../common/storage-analytics.md).
 
-### <a name="if-i-turn-off-soft-delete-will-i-still-be-able-to-access-soft-deleted-data"></a>Pokud soft delete vypnu, budu mít stále přístup k smazaným smazaným datům?
+### <a name="if-i-turn-off-soft-delete-will-i-still-be-able-to-access-soft-deleted-data"></a>Když odstraním obnovitelné odstranění, budu mít pořád přístup k Tichě odstraněným datům?
 
-Ano, budete mít stále přístup a obnovit neprošlá obnovitelná odstraněná data, pokud je vypnuto obnovitelné odstranění.
+Ano, budete mít i nadále přístup k neplatným odstraněným datům a jejich obnovení, pokud je obnovitelné odstranění vypnuto.
 
-### <a name="can-i-read-and-copy-out-soft-deleted-snapshots-of-my-blob"></a>Můžu číst a kopírovat obnovitelné smazané snímky objektu blob?  
+### <a name="can-i-read-and-copy-out-soft-deleted-snapshots-of-my-blob"></a>Můžu číst a kopírovat obnovitelné odstraněné snímky objektu BLOB?  
 
-Ano, ale nejprve musíte zavolat Undelete na objekt blob.
+Ano, ale v objektu BLOB musíte nejdřív zavolat příkaz Undelete.
 
-### <a name="is-soft-delete-available-for-all-blob-types"></a>Je obnovitelné odstranění dostupné pro všechny typy objektů blob?
+### <a name="is-soft-delete-available-for-all-blob-types"></a>Je obnovitelné odstranění k dispozici pro všechny typy objektů BLOB?
 
-Ano, obnovitelné odstranění je k dispozici pro objekty BLOB bloku, objekty BLOB a objekty BLOB stránky.
+Ano, obnovitelné odstranění je k dispozici pro objekty blob bloku, doplňovací objekty BLOB a objekty blob stránky.
 
-### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>Je pro disky virtuálních počítačů k dispozici obnovitelné odstranění?  
+### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>Je obnovitelné odstranění k dispozici pro disky virtuálních počítačů?  
 
-Obnovitelné odstranění je k dispozici pro prémiové i standardní nespravované disky, což jsou objekty BLOB stránky pod kryty. Obnovitelné odstranění vám pomůže obnovit pouze data odstraněná operacemi **Odstranění objektu blob**, **Objekt blob ,** Put Block **List**, **Blok put** a Kopírování **objektů blob.** Data přepsána voláním put **page** nelze obnovit.
+Obnovitelné odstranění je k dispozici pro nespravované disky úrovně Premium i Standard, což jsou objekty blob stránky v rámci pokrývání. Obnovitelné odstranění vám pomůže jenom obnovit data odstraněná z operací **Odstranit objekt BLOB**, **Vložit objekt BLOB**, **umístit seznam blokovaných**objektů, **Vložit blok** a **Kopírovat objekt BLOB** . Data přepsaná voláním **stránky Put** nelze obnovit.
 
-Virtuální počítač Azure zapisuje na nespravovaný disk pomocí volání **put page**, takže použití funkce obnovitelnéodstranění k zrušení zápisu na nespravovaný disk z virtuálního počítače Azure není podporovaný scénář.
+Virtuální počítač Azure se zapisuje na nespravovaný disk pomocí volání na **stránku Put**, takže pomocí obnovitelného odstranění vrátíte zpátky zápisy na nespravovaný disk z virtuálního počítače Azure, není podporovaný scénář.
 
-### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>Musím změnit stávající aplikace, aby bylo použití obnovitelného odstranění?
+### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>Potřebuji změnit moje existující aplikace, aby používaly obnovitelné odstranění?
 
-Je možné využít obnovitelné odstranění bez ohledu na verzi rozhraní API, kterou používáte. Chcete-li však vypsat a obnovit obnovitelné odstraněné objekty BLOB a snímky objektů BLOB, budete muset použít verzi 2017-07-29 [rozhraní REST API služby storage](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) nebo vyšší. Společnost Microsoft doporučuje vždy používat nejnovější verzi rozhraní Azure Storage API.
+Je možné využít obnovitelné odstranění bez ohledu na verzi rozhraní API, kterou používáte. Pokud ale chcete vypsat a obnovit obnovitelné odstraněné objekty BLOB a snímky objektů blob, budete muset použít REST API nebo novější verze 2017-07-29 [služby Storage](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) . Microsoft doporučuje vždy používat nejnovější verzi rozhraní Azure Storage API.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Ukázkový kód rozhraní .NET](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
+* [Vzorový kód .NET](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
 * [Rozhraní REST API služby Blob Service](/rest/api/storageservices/blob-service-rest-api)
-* [Replikace úložiště Azure](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Navrhování vysoce dostupných aplikací pomocí RA-GRS](../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Převzetí služeb při selhání účtu zotavení po havárii a úložiště (preview) ve službě Azure Storage](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Replikace Azure Storage](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Návrh aplikací s vysokou dostupností pomocí RA-GRS](../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Zotavení po havárii a převzetí služeb při selhání účtu úložiště (Preview) v Azure Storage](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

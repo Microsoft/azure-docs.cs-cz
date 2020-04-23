@@ -1,7 +1,7 @@
 ---
-title: Místní profilování cloudové služby v emulátoru výpočetního prostředí | Dokumenty společnosti Microsoft
+title: Místní profilování cloudové služby v emulátoru služby COMPUTE | Microsoft Docs
 services: cloud-services
-description: Prozkoumejte problémy s výkonem v cloudových službách pomocí profileru Visual Studia
+description: Vyšetřete problémy s výkonem v cloudových službách pomocí profileru sady Visual Studio
 documentationcenter: ''
 author: mikejo
 manager: jillfra
@@ -21,28 +21,28 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "70094109"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Testování výkonu cloudové služby místně v emulátoru výpočetního prostředí Azure pomocí profileru Visual Studio
-Pro testování výkonu cloudových služeb jsou k dispozici různé nástroje a techniky.
-Když publikujete cloudovou službu do Azure, můžete nechat Visual Studio shromažďovat data profilování a pak je analyzovat místně, jak je popsáno v [profilování aplikace Azure][1].
-Diagnostiku můžete také použít ke sledování různých čítačů výkonu, jak je popsáno v [části Použití čítačů výkonu v Azure][2].
-Můžete také chtít profil ovat aplikaci místně v emulátoru výpočetního prostředí před nasazením do cloudu.
+# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Místní testování výkonu cloudové služby v emulátoru služby COMPUTE Azure pomocí profileru sady Visual Studio
+K dispozici je celá řada nástrojů a technik pro testování výkonu Cloud Services.
+Když publikujete cloudovou službu do Azure, můžete mít Visual Studio shromažďovat data profilace a pak je analyzovat místně, jak je popsáno v [profilování aplikace Azure][1].
+Pomocí diagnostiky můžete také sledovat nejrůznější čítače výkonu, jak je popsáno v tématu [použití čítačů výkonu v Azure][2].
+Můžete také chtít profilovat aplikaci místně v emulátoru služby COMPUTE, než ji nasadíte do cloudu.
 
-Tento článek popisuje metodu vzorkování procesoru profilování, které lze provést místně v emulátoru. Vzorkování procesoru je metoda profilování, která není příliš rušivá. V určeném intervalu vzorkování profileru pořídí snímek zásobníku volání. Data jsou shromažďována po určitou dobu a zobrazena v sestavě. Tato metoda profilování inklinuje k označení, kde ve výpočtově náročné aplikace většina práce procesoru se provádí.  To vám dává možnost zaměřit se na "horké cesty", kde vaše aplikace tráví nejvíce času.
+Tento článek se věnuje metodě profilování vzorkování procesoru, která se dá provést místně v emulátoru. Vzorkování procesoru je metoda profilování, která není velmi rušivá. V rámci určeného intervalu vzorkování vybere Profiler snímek zásobníku volání. Data se shromažďují v časovém intervalu a zobrazují se v sestavě. Tato metoda profilace představuje v úmyslu označovat, kde je většina práce s PROCESORem náročná na výpočetní výkon.  Díky tomu se můžete soustředit na "horkou cestu", kde je vaše aplikace nejvíc vytráví.
 
-## <a name="1-configure-visual-studio-for-profiling"></a>1: Konfigurace sady Visual Studio pro profilování
-Nejprve existuje několik možností konfigurace sady Visual Studio, které mohou být užitečné při profilování. Chcete-li pochopit profilování sestavy, budete potřebovat symboly (.pdb soubory) pro vaši aplikaci a také symboly pro systémové knihovny. Budete chtít, aby se ujistil, že odkaz na dostupné symbol servery. Chcete-li to provést, v nabídce **Nástroje** v sadě Visual Studio zvolte **Možnosti**, pak zvolte **Ladění**a potom **Symboly**. Zkontrolujte, zda je seznam serverů Microsoft Symbol Servers v seznamu **Umístění souboru symbolů (.pdb).**  Můžete také https://referencesource.microsoft.com/symbolsodkazovat , které mohou mít další soubory symbolů.
+## <a name="1-configure-visual-studio-for-profiling"></a>1: konfigurace sady Visual Studio pro profilaci
+Nejdřív je několik možností konfigurace sady Visual Studio, které mohou být užitečné při profilaci. Chcete-li mít smysl sestav profilace, budete potřebovat symboly (soubory PDB) pro vaši aplikaci a také symboly pro systémové knihovny. Budete chtít, abyste se ujistili, že budete odkazovat na dostupné servery symbolů. To provedete tak, že v nabídce **nástroje** v aplikaci Visual Studio kliknete na možnost **Možnosti**a pak na položku **ladění**a **symboly**. Ujistěte se, že jsou servery symbolů společnosti Microsoft uvedeny v části **umístění souborů symbolů (. pdb)**.  Můžete také odkazovat https://referencesource.microsoft.com/symbolsna, které mohou mít další soubory symbolů.
 
-![Volby symbolu][4]
+![Možnosti symbolu][4]
 
-V případě potřeby můžete zjednodušit sestavy, které generuje profiler nastavením pouze můj kód. Pokud je povolen pouze můj kód, jsou zásobníky volání funkcí zjednodušeny tak, aby volání zcela interní knihovny a rozhraní .NET Framework jsou skryty ze sestav. V nabídce **Nástroje** zvolte **Možnosti**. Potom rozbalte uzel **Nástroje výkonu** a zvolte **Obecné**. Zaškrtněte políčko **Povolit pouze můj kód pro sestavy profileru**.
+V případě potřeby můžete zjednodušit sestavy vygenerované profilerem nastavením Pouze můj kód. Když je povoleno Pouze můj kód, zásobníky volání funkce jsou zjednodušeny, aby se v sestavách zavolaly výhradně interní knihovny a .NET Framework jsou skryté. V nabídce **nástroje** klikněte na příkaz **Možnosti**. Pak rozbalte uzel **nástroje výkonu** a zvolte **Obecné**. Zaškrtněte políčko **povolit pouze můj kód pro sestavy profileru**.
 
-![Možnosti pouze můj kód][17]
+![Možnosti Pouze můj kód][17]
 
-Tyto pokyny můžete použít s existujícím projektem nebo s novým projektem.  Pokud vytvoříte nový projekt vyzkoušet níže popsané techniky, zvolte c# **Azure Cloud Service** projektu a vyberte **webovou roli** a roli **pracovního procesu**.
+Tyto pokyny můžete použít spolu s existujícím projektem nebo s novým projektem.  Pokud vytvoříte nový projekt k vyzkoušení níže popsaných postupů, zvolte projekt **cloudové služby Azure** v C# a vyberte **webovou roli** a **roli pracovního procesu**.
 
-![Role projektu Cloudové služby Azure][5]
+![Role projektu cloudové služby Azure][5]
 
-Například pro účely, přidejte nějaký kód do projektu, který trvá hodně času a ukazuje některé zjevné problémy s výkonem. Do projektu role pracovníka například přidejte následující kód:
+Pro účely tohoto příkladu přidejte do projektu nějaký kód, který vybere spoustu času a demonstruje nějaký zjevné problémy s výkonem. Přidejte například následující kód do projektu role pracovního procesu:
 
 ```csharp
 public class Concatenator
@@ -60,7 +60,7 @@ public class Concatenator
 }
 ```
 
-Volání tohoto kódu z metody RunAsync v třídě odvozené od odvozenou role role pracovního procesu. (Ignorujte upozornění na metodu spuštěnou synchronně.)
+Tento kód zavolejte z metody RunAsync v odvozené třídě role pracovního procesu RoleEntryPoint. (Ignorovat upozornění na metodu spuštěnou synchronně.)
 
 ```csharp
 private async Task RunAsync(CancellationToken cancellationToken)
@@ -74,23 +74,23 @@ private async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-Vytvořte a spusťte cloudovou službu místně bez ladění (Ctrl+F5) s konfigurací řešení nastavenou na **release**. Tím je zajištěno, že všechny soubory a složky jsou vytvořeny pro spuštění aplikace místně a zajišťuje, že jsou spuštěny všechny emulátory. Spusťte rozhraní emulátoru výpočetního prostředí z hlavního panelu a ověřte, že role pracovního procesu je spuštěná.
+Sestavte a spusťte cloudovou službu místně bez ladění (CTRL + F5) s konfigurací řešení nastavenou na **release**. Tím se zajistí, že se všechny soubory a složky vytvoří pro místní spuštění aplikace, a zajistí se, že se spustí všechny emulátory. Spusťte z hlavního panelu uživatelské rozhraní emulátoru výpočtů a ověřte, jestli je spuštěná vaše role pracovního procesu.
 
-## <a name="2-attach-to-a-process"></a>2: Připojení k procesu
-Namísto profilování aplikace spuštěním z ide sady Visual Studio 2010 je nutné připojit profiler ke spuštěnému procesu. 
+## <a name="2-attach-to-a-process"></a>2: připojení k procesu
+Namísto profilování aplikace spuštěním z rozhraní IDE sady Visual Studio 2010 je nutné připojit profiler ke spuštěnému procesu. 
 
-Chcete-li připojit profiler k procesu, v nabídce **Analyzovat** zvolte **Profiler** a **Připojit/Odpojit**.
+K připojení profileru k procesu klikněte v nabídce **analyzovat** na možnost **Profiler** a **připojit nebo odpojit**.
 
-![Připojit profil, volba][6]
+![Možnost připojení profilu][6]
 
-Pro roli pracovního procesu vyhledejte proces WaWorkerHost.exe.
+V případě role pracovního procesu vyhledejte proces WaWorkerHost. exe.
 
-![Proces WaWorkerHost][7]
+![WaWorkerHost proces][7]
 
-Pokud je složka projektu na síťové jednotce, profiler vás požádá o poskytnutí jiného umístění pro uložení sestav profilování.
+Pokud je složka projektu na síťové jednotce, Profiler vás vyzve k zadání jiného umístění pro uložení sestav profilace.
 
- Můžete také připojit k webové roli připojením k WaIISHost.exe.
-Pokud existuje více procesů role pracovní ho v aplikaci, je třeba použít processID k jejich rozlišení. Můžete dotaz processID programově přístup Process objektu. Například pokud přidáte tento kód run metoda RoleEntryPoint odvozené třídy v roli, můžete se podívat na protokol v umělá součást imupátoru výpočetního prostředí vědět, jaký proces se připojit k.
+ Můžete se také připojit k webové roli připojením k WaIISHost. exe.
+Pokud je v aplikaci více procesů role pracovního procesu, je nutné použít rozhraní processID k jejich rozlišení. Můžete zadat dotaz na processID programově pomocí přístupu k objektu procesu. Například pokud přidáte tento kód do metody Run třídy odvozené od RoleEntryPoint v roli, můžete si prohlédnout protokol v uživatelském rozhraní emulátoru COMPUTE a zjistit, ke kterému procesu se chcete připojit.
 
 ```csharp
 var process = System.Diagnostics.Process.GetCurrentProcess();
@@ -98,39 +98,39 @@ var message = String.Format("Process ID: {0}", process.Id);
 Trace.WriteLine(message, "Information");
 ```
 
-Chcete-li zobrazit protokol, spusťte ui compute emulátor.
+Chcete-li zobrazit protokol, spusťte uživatelské rozhraní emulátoru výpočtů.
 
-![Spuštění hlavního nastavení výpočetního emulátoru][8]
+![Spuštění uživatelského rozhraní emulátoru COMPUTE][8]
 
-Open the worker role log console window in the Compute Emulator UI by clicking on the console window's title bar. ID procesu se zobrazí v protokolu.
+Kliknutím na záhlaví okna konzoly v uživatelském rozhraní emulátoru výpočtů otevřete okno konzoly protokolu role pracovního procesu. V protokolu můžete zobrazit ID procesu.
 
-![Zobrazení ID procesu][9]
+![Zobrazit ID procesu][9]
 
-Jeden, který jste připojili, proveďte kroky v ui aplikace (v případě potřeby) k reprodukci scénáře.
+K tomu, abyste mohli scénář reprodukováni, proveďte kroky v uživatelském rozhraní vaší aplikace (v případě potřeby).
 
-Chcete-li profilování ukončit, zvolte odkaz **Zastavit profilování.**
+Pokud chcete profilaci zastavit, klikněte na odkaz **zastavit profilaci** .
 
-![Zastavit profilování, volba][10]
+![Zastavit možnost profilace][10]
 
-## <a name="3-view-performance-reports"></a>3: Zobrazení zpráv o výkonu
-Zobrazí se zpráva o výkonu aplikace.
+## <a name="3-view-performance-reports"></a>3: zobrazení sestav výkonu
+Zobrazí se sestava výkonu aplikace.
 
-V tomto okamžiku profiler zastaví provádění, uloží data do souboru .vsp a zobrazí sestavu, která zobrazuje analýzu těchto dat.
+V tomto okamžiku Profiler zastaví provádění, uloží data do souboru. vsp a zobrazí sestavu, která zobrazuje analýzu těchto dat.
 
 ![Sestava profileru][11]
 
-Pokud se v aktivní cestě zobrazí soubor String.wstrcpy, kliknutím na možnost Jen můj kód změňte zobrazení tak, aby zobrazovalo pouze uživatelský kód.  Pokud vidíte String.Concat, zkuste stisknout tlačítko Zobrazit vše kód.
+Pokud se zobrazí řetězec. wstrcpy v kritické cestě, klikněte na Pouze můj kód a změňte zobrazení tak, aby se zobrazilo pouze kód uživatele.  Pokud se zobrazí řetězec. Concat, zkuste stisknout tlačítko Zobrazit veškerý kód.
 
-Měli byste vidět Concatenate metoda a String.Concat zabírají velkou část doby provádění.
+Měla by se zobrazit metoda zřetězení a řetězec. Concat zabírá velkou část doby spuštění.
 
-![Analýza zprávy][12]
+![Analýza sestavy][12]
 
-Pokud jste v tomto článku přidali kód zřetězení řetězců, mělo by se zobrazit upozornění v seznamu úkolů. Může se také zobrazit upozornění, že existuje nadměrné množství uvolňování paměti, což je způsobeno počtem řetězců, které jsou vytvořeny a uvolněny.
+Pokud jste přidali kód pro zřetězení řetězců v tomto článku, mělo by se zobrazit upozornění v Seznam úkolů. Může se zobrazit také upozornění, že existuje nadměrné množství uvolňování paměti, které je způsobeno počtem vytvořených a uvolněných řetězců.
 
 ![Upozornění výkonu][14]
 
-## <a name="4-make-changes-and-compare-performance"></a>4: Provádět změny a porovnávat výkon
-Můžete také porovnat výkon před a po změně kódu.  Zastavte spuštěný proces a upravte kód, který nahradí operaci zřetězení řetězce pomocí StringBuilder:
+## <a name="4-make-changes-and-compare-performance"></a>4: provedení změn a porovnání výkonu
+Můžete také porovnat výkon před a po změně kódu.  Zastavte běžící proces a upravte kód tak, aby nahradil operaci zřetězení řetězce s použitím StringBuilder:
 
 ```csharp
 public static string Concatenate(int number)
@@ -145,26 +145,26 @@ public static string Concatenate(int number)
 }
 ```
 
-Proveďte další spuštění výkonu a porovnejte výkon. Pokud jsou spuštěny v Průzkumníku výkonu ve stejné relaci, stačí vybrat obě sestavy, otevřít místní nabídku a zvolit **Porovnat sestavy výkonu**. Pokud chcete porovnat s běh v jiné relaci výkonu, otevřete nabídku **Analyzovat** a zvolte **Porovnat zprávy o výkonu**. Určete oba soubory v zobrazeném dialogovém okně.
+Spusťte jiný výkon a pak porovnejte výkon. V Prohlížeč výkonu, pokud jsou běhy ve stejné relaci, stačí vybrat obě sestavy, otevřít místní nabídku a zvolit **Porovnat sestavy výkonu**. Pokud chcete porovnat s běhm v jiné relaci výkonu, otevřete nabídku **analyzovat** a vyberte možnost **Porovnat sestavy výkonu**. V dialogovém okně, které se zobrazí, zadejte oba soubory.
 
-![Možnost Porovnat sestavy výkonu][15]
+![Compare – možnost sestav výkonu][15]
 
-Zprávy zvýrazňují rozdíly mezi těmito dvěma spuštěními.
+Sestavy zvýrazňují rozdíly mezi dvěma spuštěními.
 
-![Srovnávací sestava][16]
+![Sestava porovnání][16]
 
-Blahopřejeme! Začal jsi s profilerem.
+Blahopřejeme! V profileru jste začali pracovat.
 
-## <a name="troubleshooting"></a>Řešení potíží
-* Ujistěte se, že profilování sestavení verze a začít bez ladění.
-* Pokud není v nabídce Profiler povolena možnost Připojit nebo odpojit, spusťte Průvodce výkonem.
-* Pomocí uhlavního nastavení výpočetního emulátoru zobrazte stav aplikace. 
-* Pokud máte problémy se spouštěním aplikací v emulátoru nebo připojením profileru, vypněte výpočetní emulátor a restartujte jej. Pokud to problém nevyřeší, zkuste restartovat počítač. K tomuto problému může dojít, pokud používáte výpočetní emulátor pozastavit a odebrat spuštěná nasazení.
-* Pokud jste použili některý z příkazů profilování z příkazového řádku, zejména globální nastavení, ujistěte se, že VSPerfClrEnv /globaloff byla volána a že VsPerfMon.exe byla ukončena.
-* Pokud při vzorkování, zobrazí se zpráva "PRF0025: Nebyla shromážděna žádná data", zkontrolujte, zda proces, který jste připojili k má aktivitu procesoru. Aplikace, které neprovádějí žádnou výpočetní práci, nemusí vytvářet žádná data vzorkování.  Je také možné, že proces byl ukončen před odběrvzorků bylo provedeno. Zkontrolujte, zda metoda Run pro roli, kterou profilujete, nekončí.
+## <a name="troubleshooting"></a>Poradce při potížích
+* Nezapomeňte profilovat sestavení pro vydání a spustit bez ladění.
+* Pokud v nabídce profileru není povolená možnost připojit/odpojit, spusťte Průvodce výkonem.
+* K zobrazení stavu aplikace použijte uživatelské rozhraní emulátoru Compute. 
+* Pokud máte problémy se spouštěním aplikací v emulátoru nebo připojením profileru, vypněte emulátor COMPUTE a restartujte ho. Pokud se tím problém nevyřeší, zkuste restartovat. K tomuto problému může dojít, pokud použijete emulátor služby COMPUTE k pozastavení a odebrání spuštěných nasazení.
+* Pokud jste použili některý z příkazů profilace z příkazového řádku, zejména globální nastavení, ujistěte se, že byla volána možnost VSPerfClrEnv/globaloff a že se VsPerfMon. exe vypnul.
+* Pokud se při vzorkování zobrazí zpráva "PRF0025: nebyla shromážděna žádná data", zkontrolujte, že proces, ke kterému jste připojeni, má aktivitu CPU. Aplikace, které nemají žádnou výpočetní práci, nemusí vydávat žádná data vzorkování.  Je také možné, že byl proces ukončen před dokončením vzorkování. Zkontrolujte, že metoda Run pro roli, kterou vytváříte, nekončí.
 
 ## <a name="next-steps"></a>Další kroky
-Instrumentace binárních souborů Azure v emulátoru není v profileru Sady Visual Studio podporována, ale pokud chcete otestovat přidělení paměti, můžete tuto možnost zvolit při profilování. Můžete také zvolit profilování souběžnosti, které vám pomůže určit, zda vlákna plýtvají časem konkurenčními o zámky, nebo profilování interakce vrstvy, což vám pomůže sledovat problémy s výkonem při interakci mezi vrstvami aplikace, většina často mezi datovou vrstvou a rolí pracovního procesu.  Můžete zobrazit databázové dotazy, které vaše aplikace generuje, a použít data profilování ke zlepšení vašeho používání databáze. Informace o profilování interakce na úrovni najdete v návodu k příspěvku [blogu: Pomocí profileru interakce úrovně v systému Visual Studio Team System 2010][3].
+Instrumentace binárních souborů Azure v emulátoru není v profileru sady Visual Studio podporována, ale pokud chcete otestovat přidělení paměti, můžete zvolit tuto možnost při profilaci. Můžete také zvolit profilaci souběžného zpracování, která vám pomůže určit, zda vlákna mají ztrácet čas nebo profilaci interakce vrstev, což vám pomůže sledovat problémy s výkonem při interakci mezi úrovněmi aplikace, nejčastěji mezi datovou vrstvou a rolí pracovního procesu.  Můžete zobrazit databázové dotazy, které vaše aplikace vygeneruje, a použít data profilace ke zlepšení využití databáze. Informace o profilování interakce vrstev najdete v návodu na blogovém příspěvku [: použití profileru interakce vrstev v aplikaci Visual Studio Team System 2010][3].
 
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
 [2]: https://msdn.microsoft.com/library/azure/hh411542.aspx

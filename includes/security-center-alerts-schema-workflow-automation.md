@@ -60,23 +60,23 @@ ms.locfileid: "80272672"
 
 |Pole|Datový typ|Popis|
 |----|----|----|
-|**Název_zobrazení výstrah**|Řetězec|Zobrazovaný název výstrahy.|
-|**Typ výstrahy**|Řetězec|Typ výstrahy. Výstrahy stejného typu by měly mít stejnou hodnotu. Toto pole je zadaný řetězec představující typ výstrahy a nikoli instance výstrahy. Všechny instance výstrahy ze stejné logiky detekce/analýzy by měly mít stejnou hodnotu pro typ výstrahy.|
-|**Kompromitovaná entita**|Řetězec|Zobrazovaný název prostředku, který se nejvíce vztahuje k této výstraze.|
-|**Popis**|Řetězec|Popis výstrahy.|
-|**EndTimeUtc**|DateTime|Čas poslední události nebo aktivity zahrnuté ve výstraze.  Pole by mělo být řetězec, který odpovídá formátu ISO8601, včetně informací o časovém pásmu UTC.|
-|**Entity**|IEnumerable (IEntity)|Seznam entit souvisejících s výstrahou. Tento seznam může obsahovat směs entit různých typů. Typ entit může být libovolný z typů definovaných v části Entity. Entity, které nejsou v seznamu níže, mohou být také odeslány, ale není zaručeno, že budou zpracovány (výstraha neselže ověření s novými typy entit).|
-|**ExtendedProperties**|Slovník (řetězec,řetězec)|Zprostředkovatelé zde mohou (volitelně) zahrnovat vlastní pole.|
-|**Záměr**|Výčet|Záměr související s řetězem zabití za výstrahou. Seznam podporovaných hodnot a vysvětlení podporovaných záměrů řetězce ochrany zabezpečení azure security center najdete [v tématu Záměry](../articles/security-center/alerts-reference.md#intentions).<br/>Toto pole může mít více hodnot (oddělených čárkou).|
-|**IsIncident**|Logická hodnota|Toto pole určuje, zda se jedná o incident (složené seskupení několika výstrah) nebo jednu výstrahu. Výchozí hodnota pro pole je "false" (což znamená, že se jedná o jednu výstrahu).|
-|**ProcessingEndTime**|DateTime|Čas, kdy byla výstraha dostupná koncovému uživateli v původním produktu, který výstrahu držel.|
-|**Productname**|Řetězec|Název produktu, který tuto výstrahu publikoval (Azure Security Center, Azure ATP, Microsoft Defender ATP, O365 ATP, MCAS a tak dále).|
-|**Remediasteps**|Seznamu<String>|Ruční položky akcí, které je třeba provést k nápravě výstrahy.|
-|**ResourceIdentifiers**|Seznam (identifikátory prostředků)|Identifikátory prostředků pro tuto výstrahu, které lze použít k nasměrování výstrahy na správnou skupinu expozice produktu (tenant, pracovní prostor, předplatné atd.). Může existovat více identifikátorů různého typu na výstrahu.|
-|**Závažnost**|Výčet|Závažnost výstrahy podle oznámení zprostředkovatele. Možné hodnoty: Informační, Nízká, Střední a Vysoká.|
-|**StartTimeUtc**|DateTime|Čas první události nebo aktivity zahrnuté ve výstraze. Pole by mělo být řetězec, který odpovídá formátu ISO8601, včetně informací o časovém pásmu UTC.|
-|**Stav**|Výčet|Stav životního cyklu výstrahy.<br/>Podporované stavy jsou: Nový, Vyřešeno, Zamítnuto, Neznámé.<br/>Výstraha, která určuje jinou hodnotu než podporované možnosti, má přiřazen stav Neznámý.<br/>Výstraha, která neurčuje hodnotu, má přiřazen stav Nový.|
-|**Id systému výstrah**|Řetězec|Identifikátor výstrahy.|
-|**TimeGenerated**|DateTime|Čas, kdy byla výstraha vygenerována poskytovatelem výstrahy. Pokud není hlášena interními poskytovateli výstrah, může se produkt rozhodnout přiřadit čas, kdy byl přijat ke zpracování produktem.  Pole by mělo být řetězec, který odpovídá formátu ISO8601, včetně informací o časovém pásmu UTC.|
-|**Název_dodavatele**|Řetězec|Název dodavatele, který vyvolá výstrahu.|
+|**AlertDisplayName**|Řetězec|Zobrazovaný název výstrahy.|
+|**AlertType**|Řetězec|Typ výstrahy Výstrahy stejného typu by měly mít stejnou hodnotu. Toto pole je řetězec s klíčem, který představuje typ výstrahy, nikoli instanci výstrahy. Všechny instance výstrahy ze stejné logiky detekce a analytiky by měly mít stejnou hodnotu jako typ výstrahy.|
+|**CompromisedEntity**|Řetězec|Zobrazovaný název prostředku, který se nejvíce týká této výstrahy.|
+|**Popis**|Řetězec|Popis výstrahy|
+|**EndTimeUtc**|DateTime|Čas poslední události nebo aktivity obsažené v upozornění.  Pole by měl být řetězec, který odpovídá formátu ISO8601, včetně informací o časovém pásmu UTC.|
+|**Entity**|IEnumerable (IEntity)|Seznam entit souvisejících s výstrahou. Tento seznam může obsahovat různé entity různých typů. Typ entity může být libovolný z typů definovaných v části Entities. Entity, které nejsou v seznamu níže, je možné také odeslat, ale není zaručeno, že budou zpracovány (výstraha nebude při ověřování u nových typů entit neúspěšná).|
+|**ExtendedProperties**|Dictionary (String; String)|Poskytovatelé můžou (volitelně) zahrnovat vlastní pole.|
+|**Úmysl**|Výčet|Záměr související s dezaktivačním řetězem za výstrahou. Seznam podporovaných hodnot a vysvětlení podporovaných záměrů dezaktivačního řetězu Azure Security Center naleznete v tématu [záměry](../articles/security-center/alerts-reference.md#intentions).<br/>Toto pole může obsahovat více hodnot (oddělených čárkami).|
+|**Incident**|Logická hodnota|Toto pole určuje, zda je výstraha incidentem (složené seskupení několika výstrah) nebo jedinou výstrahou. Výchozí hodnota pro pole je false (to znamená, že se jedná o jedinou výstrahu).|
+|**ProcessingEndTime**|DateTime|Čas, kdy byla výstraha přístupná koncovému uživateli v původním produktu, který tuto výstrahu zachovává.|
+|**NázevVýrobku**|Řetězec|Název produktu, který publikoval toto upozornění (Azure Security Center, služby Azure ATP, ATP v programu Microsoft Defender, O365 ATP, MCAS atd.).|
+|**RemediationSteps**|Seznamu<String>|Položky ručních akcí, které se mají provést k nápravě výstrahy|
+|**ResourceIdentifiers**|Seznam (identifikátory prostředků)|Identifikátory prostředků pro tuto výstrahu, které se dají použít k přesměrování výstrahy do správné skupiny expozice produktů (tenant, pracovní prostor, předplatné atd.). Pro každou výstrahu může existovat více identifikátorů různého typu.|
+|**Závažnost**|Výčet|Závažnost výstrahy, jak je hlášena zprostředkovatelem. Možné hodnoty: informativní, nízká, střední a vysoká.|
+|**StartTimeUtc**|DateTime|Čas první události nebo aktivity obsažené v upozornění. Pole by měl být řetězec, který odpovídá formátu ISO8601, včetně informací o časovém pásmu UTC.|
+|**Stav**|Výčet|Stav životního cyklu výstrahy.<br/>Podporované stavy jsou: nové, vyřešené, chybějící, neznámé.<br/>Výstraha, která určuje jinou hodnotu než podporované možnosti, má přiřazen stav "Neznámý".<br/>Výstraha, která neurčuje hodnotu, má přiřazen stav New.|
+|**SystemAlertId**|Řetězec|Identifikátor výstrahy.|
+|**TimeGenerated**|DateTime|Čas, kdy byla výstraha vygenerována poskytovatelem výstrahy. Pokud nehlásí interní zprostředkovatelé výstrah, produkt se může rozhodnout přiřadit čas, který byl přijat pro zpracování produktem.  Pole by měl být řetězec, který odpovídá formátu ISO8601, včetně informací o časovém pásmu UTC.|
+|**Dodavatel**|Řetězec|Název dodavatele, který vyvolá výstrahu.|
 |||
