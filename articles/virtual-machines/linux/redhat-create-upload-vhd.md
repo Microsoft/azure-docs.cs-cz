@@ -8,19 +8,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: 625dd1c8051d7949987d0dd19ee8a08347eedf14
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 4140f9f07a0fd653c8e0370d017cbae7effd0a07
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758636"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084307"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure
 V tomto článku se dozvíte, jak připravit virtuální počítač Red Hat Enterprise Linux (RHEL) pro použití v Azure. Verze RHEL, které jsou zahrnuty v tomto článku jsou 6.7+ a 7.1+. Hypervisory pro přípravu, které jsou zahrnuty v tomto článku jsou Hyper-V, virtuální počítač založený na jádru (KVM) a VMware. Další informace o požadavcích na způsobilost pro účast v programu Red Hat pro cloud ový přístup najdete v [tématu Red Hat's Cloud Access website](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) and [Running RHEL on Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Způsoby automatizace vytváření ibi obrazů RHEL najdete v [azure image builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Příprava virtuálního počítače na bázi Red Hat od správce Technologie Hyper-V
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadované součásti
 Tato část předpokládá, že jste již získali soubor ISO z webu Red Hat a nainstalovali obraz RHEL na virtuální pevný disk (VHD). Další podrobnosti o použití správce technologie Hyper-V k instalaci bitové kopie operačního systému naleznete [v tématu Instalace role Technologie Hyper-V a Konfigurace virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
 
 **Poznámky k instalaci RHEL**
@@ -202,7 +202,7 @@ Tato část předpokládá, že jste již získali soubor ISO z webu Red Hat a n
 
 1. Spusťte následující příkazy, abyste deprovision zanatii virtuálního počítače a připravit ho na zřizování v Azure:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 
@@ -326,7 +326,7 @@ Tato část předpokládá, že jste již získali soubor ISO z webu Red Hat a n
 
 1. Spusťte následující příkazy, abyste deprovision zanatii virtuálního počítače a připravit ho na zřizování v Azure:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # waagent -force -deprovision
 
@@ -477,7 +477,7 @@ Tato část předpokládá, že jste již získali soubor ISO z webu Red Hat a n
 
 1. Spusťte následující příkazy, abyste deprovision zanatii virtuálního počítače a připravit ho na zřizování v Azure:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 
@@ -517,7 +517,7 @@ Tato část předpokládá, že jste již získali soubor ISO z webu Red Hat a n
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>Příprava virtuálního počítače se systémem Red Hat od společnosti VMware
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadované součásti
 Tato část předpokládá, že jste již nainstalovali virtuální počítač RHEL ve společnosti VMware. Podrobnosti o instalaci operačního systému ve společnosti VMware naleznete v [příručce k instalaci hostovaného operačního systému VMware](https://partnerweb.vmware.com/GOSIG/home.html).
 
 * Při instalaci operačního systému Linux doporučujeme použít standardní oddíly spíše než LVM, což je často výchozí pro mnoho instalací. Tím se zabrání lvm název konflikty s klonovaným virtuálním počítačem, zejména v případě, že disk operačního systému někdy musí být připojen k jinému virtuálnímu počítači pro řešení potíží. LVM nebo RAID lze použít na datových discích, pokud je to preferováno.
@@ -608,7 +608,7 @@ Tato část předpokládá, že jste již nainstalovali virtuální počítač R
 
 1. Spusťte následující příkazy, abyste deprovision zanatii virtuálního počítače a připravit ho na zřizování v Azure:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 
@@ -724,7 +724,7 @@ Tato část předpokládá, že jste již nainstalovali virtuální počítač R
 
 1. Spusťte následující příkazy, abyste deprovision zanatii virtuálního počítače a připravit ho na zřizování v Azure:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 

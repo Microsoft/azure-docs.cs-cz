@@ -1,15 +1,15 @@
 ---
 title: Průběžná integrace s využitím Azure Pipelines
 description: Zjistěte, jak průběžně vytvářet, testovat a nasazovat šablony Azure Resource Manageru.
-ms.date: 03/13/2020
+ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255069"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084324"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: Průběžná integrace šablon Azure Resource Manageru s Azure Pipelines
 
@@ -33,7 +33,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 K dokončení tohoto článku potřebujete:
 
@@ -57,11 +57,7 @@ Pokud nemáte účet GitHub, [přečtěte si téma Požadavky](#prerequisites).
 
 1. Vyberte **Nové**, zelené tlačítko.
 1. Do **názvu úložiště**zadejte název úložiště.  Například **AzureRmPipeline-repo**. Nezapomeňte nahradit některý z **AzureRmPipeline** s názvem projektu. Můžete vybrat **veřejné** nebo **soukromé** pro procházení tohoto kurzu. A pak vyberte **Vytvořit úložiště**.
-1. Poznamenejte si adresu URL. Adresa URL úložiště má následující formát:
-
-    ```url
-    https://github.com/[YourAccountName]/[YourRepositoryName]
-    ```
+1. Poznamenejte si adresu URL. Adresa URL úložiště je následující formát - ** https://github.com/[YourAccountName]/[YourRepositoryName]**.
 
 Toto úložiště se označuje jako *vzdálené úložiště*. Každý z vývojářů stejného projektu může klonovat své vlastní *místní úložiště*a sloučit změny do vzdáleného úložiště.
 

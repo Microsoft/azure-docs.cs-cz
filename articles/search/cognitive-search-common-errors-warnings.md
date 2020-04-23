@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed10e998ea05b6687190b1f87095f8bc28265905
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671979"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086604"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení potíží s běžnými chybami a upozorněními indexeru v Azure Cognitive Search
 
@@ -91,6 +91,8 @@ Indexer nebyl schopen spustit dovednost v skillset.
 
 ## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>Chyba: Nelze spustit dovednost, protože požadavek webového rozhraní API se nezdařil.
 Spuštění dovednosti se nezdařilo, protože volání webového rozhraní API se nezdařilo. Obvykle tato třída selhání dochází při použití vlastní dovednosti, v takovém případě budete muset ladit vlastní kód k vyřešení problému. Pokud místo toho selhání pochází z předdefinované dovednosti, naleznete v chybové zprávě nápovědu k řešení problému.
+
+Při ladění tohoto problému, ujistěte se, že dávat pozor na všechna [upozornění vstup dovednosti](#warning-skill-input-was-invalid) pro tuto dovednost. Koncový bod webového rozhraní API může selhávat, protože indexer udává neočekávaný vstup.
 
 <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"/>
 

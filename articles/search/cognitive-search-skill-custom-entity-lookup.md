@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369773"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085735"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Kognitivní dovednosti vyhledávání vlastních entit (náhled)
 
@@ -29,7 +29,7 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 ## <a name="data-limits"></a>Omezení dat
 + Maximální podporovaná velikost vstupního záznamu je 256 MB. Pokud potřebujete rozdělit data před odesláním do vlastní entity vyhledávání dovednost, zvažte použití [dovednosti Rozdělení textu](cognitive-search-skill-textsplit.md).
-+ Maximální podporovaná tabulka definic entit je 10 MB, pokud je k dispozici pomocí parametru *entitiesDefitionUri.* 
++ Maximální podporovaná tabulka definic entit je 10 MB, pokud je k dispozici pomocí parametru *entitiesDefinitionUri.* 
 + Pokud entity jsou definovány v řádku, pomocí *inlineEntitiesDefinition* parametr, maximální podporovaná velikost je 10 KB.
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
@@ -63,13 +63,13 @@ U parametrů se rozlišují malá a velká písmena.
 
 Existují 3 různé způsoby, jak poskytnout seznam vlastních entit do dovednosti vlastní vyhledávání entit. Seznam můžete zadat v . CSV soubor, a . JSON nebo jako vrozenou definici jako součást definice dovednosti.  
 
-Pokud je definiční soubor . CSV nebo . JSON, cesta souboru musí být poskytnuta jako součást *entitiesDefitionUri* parametr. V tomto případě je soubor stažen jednou na začátku každého spuštění indexeru. Soubor musí být přístupné tak dlouho, dokud indexer je určen ke spuštění. Soubor musí být také zakódován UTF-8.
+Pokud je definiční soubor . CSV nebo . JSON, cesta souboru musí být poskytnuta jako součást *entitiesDefinitionUri* parametr. V tomto případě je soubor stažen jednou na začátku každého spuštění indexeru. Soubor musí být přístupné tak dlouho, dokud indexer je určen ke spuštění. Soubor musí být také zakódován UTF-8.
 
 Pokud je definice uvedena vřádku, měla by být poskytnuta jako vřadná jako obsah parametru dovednosti *inlineEntitiesDefinition.* 
 
 ### <a name="csv-format"></a>Formát CSV
 
-Můžete zadat definici vlastníentity hledat v souboru hodnota oddělená čárkami (CSV) poskytnutím cesty k souboru a nastavením v *entitiesDefitionUri* skill parametr. Cesta by měla být v umístění https. Definiční soubor může mít velikost až 10 MB.
+Můžete zadat definici vlastní entity hledat v souboru hodnota oddělená čárkami (CSV) poskytnutím cesty k souboru a nastavením v *entitiesDefinitionUri* skill parametr. Cesta by měla být v umístění https. Definiční soubor může mít velikost až 10 MB.
 
 Formát CSV je jednoduchý. Každý řádek představuje jedinečnou entitu, jak je znázorněno níže:
 
@@ -85,7 +85,7 @@ V tomto případě existují tři entity, které mohou být vráceny jako entity
 
 Můžete také zadat definici vlastních entit, které chcete vyhledat v souboru JSON. Formát JSON poskytuje trochu větší flexibilitu, protože umožňuje definovat odpovídající pravidla pro období. Můžete například určit vzdálenost přibližné shody (vzdálenost Damerau-Levenshtein) pro každý termín nebo zda má být shoda rozlišována malá a velká písmena nebo ne. 
 
- Stejně jako u souborů CSV, musíte poskytnout cestu k souboru JSON a nastavit jej v *entitiesDefitionUri* skill parametr. Cesta by měla být v umístění https. Definiční soubor může mít velikost až 10 MB.
+ Stejně jako u souborů CSV, je třeba zadat cestu k souboru JSON a nastavit jej v *entitiesDefinitionUri* skill parametr. Cesta by měla být v umístění https. Definiční soubor může mít velikost až 10 MB.
 
 Nejzákladnější definice seznamu vlastních entit JSON může být seznam entit, které se mají shodovat:
 

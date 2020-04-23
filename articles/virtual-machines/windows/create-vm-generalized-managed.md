@@ -1,24 +1,18 @@
 ---
 title: Vytvoření virtuálního počítače ze spravované image v Azure
-description: Vytvořte virtuální počítač s Windows z generalizované spravované image pomocí Azure PowerShellu nebo na webu Azure Portal v modelu nasazení Správce prostředků.
-services: virtual-machines-windows
-documentationcenter: ''
+description: Vytvořte virtuální počítač s Windows z generalizované spravované image pomocí Azure PowerShellu nebo portálu.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: de59edc2e2c702993efd6187a590264d9aac16a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74841927"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086313"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Vytvoření virtuálního počítače ze spravované image
 

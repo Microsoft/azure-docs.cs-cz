@@ -2,13 +2,13 @@
 title: Funkce šablony - datum
 description: Popisuje funkce, které se mají použít v šabloně Azure Resource Manager pro práci s daty.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 75234a142b9f2fbe61c337bfeb378b47534bac79
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986275"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084783"
 ---
 # <a name="date-functions-for-arm-templates"></a>Funkce data pro šablony ARM
 
@@ -21,7 +21,7 @@ Správce prostředků poskytuje následující funkce pro práci s daty v šablo
 
 `dateTimeAdd(base, duration, [format])`
 
-Přidá dobu trvání času k základní hodnotě datatime.
+Přidá dobu trvání času k základní hodnotě. Očekává se formát ISO 8601.
 
 ### <a name="parameters"></a>Parametry
 
@@ -74,7 +74,7 @@ Následující ukázková šablona ukazuje různé způsoby přidávání časov
 
 Při nasazení předchozí šablony se základním časem `2020-04-07 14:53:14Z`, výstup je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | add3Roky | Řetězec | 4/7/2023 14:53:14 |
 | odečíst9Days | Řetězec | 3/29/2020 14:53:14 |
@@ -201,7 +201,7 @@ Následující ukázková šablona zobrazuje různé formáty pro hodnotu dateti
 
 Výstup z předchozího příkladu se liší pro každé nasazení, ale bude podobný:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | utcOutput | řetězec | 20190305T175318Z |
 | utcShortOutput | řetězec | 03/05/2019 |

@@ -1,5 +1,5 @@
 ---
-title: Explanability v automatizovaném strojovém učení
+title: Vysvětlitelnost v automatizovaném ML
 titleSuffix: Azure Machine Learning
 description: Zjistěte, jak získat vysvětlení, jak váš automatizovaný model ML určuje důležitost funkce a dělá předpovědi při použití sady Azure Machine Learning SDK.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257160"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086415"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretovatelnost: modelová vysvětlení v automatizovaném strojovém učení
 
@@ -30,7 +30,7 @@ V tomto článku získáte informace o těchto tématech:
 - Povolte vizualizace, které vám pomohou zobrazit vzory v datech a vysvětleních.
 - Implementujte interpretabilitu během odvození nebo vyhodnocování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Funkce interpretace. Spuštěním `pip install azureml-interpret azureml-contrib-interpret` získáte potřebné balíčky.
 - Znalost vytváření automatizovaných experimentů ML. Další informace o tom, jak používat Azure Machine Learning SDK, dokončete tento [regresní model kurzu](tutorial-auto-train-models.md) nebo se podívejte, jak [nakonfigurovat automatizované experimenty ML](how-to-configure-auto-train.md).

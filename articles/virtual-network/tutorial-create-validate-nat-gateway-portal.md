@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 7c26487018b9632b5780dcd7c56ab36f286f8cac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ceadbb4297ad0c5ce28470dd75b3f3496c9c5152
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80060000"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084739"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí portálu Azure a testování služby NAT
 
@@ -29,7 +29,7 @@ Pokud dáváte přednost, můžete provést tyto kroky pomocí [Azure CLI](tutor
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>Příprava zdroje pro odchozí provoz
 
@@ -46,9 +46,9 @@ V této části budete muset nahradit následující parametry v krocích s ní�
 | **\<>název skupiny prostředků**  | myResourceGroupNAT |
 | **\<>názvů virtuálních sítí** | myVNetsource          |
 | **\<>názvu oblasti**          | USA – východ 2      |
-| **\<>adresního prostoru IPv4**   | 192.168.0.0\16          |
+| **\<>adresního prostoru IPv4**   | 192.168.0.0/16          |
 | **\<>názvu podsítě**          | mySubnetsource        |
-| **\<>rozsah emitované sítě** | 192.168.0.0\24          |
+| **\<>rozsah emitované sítě** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -104,7 +104,7 @@ V této části je podrobně uvedeno, jak můžete vytvořit a nakonfigurovat n�
     | ------- | ----- |
     | Verze IP | Vyberte **IPv4**.
     | Skladová jednotka (SKU) | Vyberte **standardní**.
-    | Name (Název) | Zadejte **myPublicIPsource**. |
+    | Název | Zadejte **myPublicIPsource**. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **položku myResourceGroupNAT**. |
     | Umístění | Vyberte **USA – východ 2**.|
@@ -169,9 +169,9 @@ V této části budete muset nahradit následující parametry v krocích s ní�
 | **\<>název skupiny prostředků**  | myResourceGroupNAT |
 | **\<>názvů virtuálních sítí** | myVNetdestination          |
 | **\<>názvu oblasti**          | USA – východ 2      |
-| **\<>adresního prostoru IPv4**   | 192.168.0.0\16          |
+| **\<>adresního prostoru IPv4**   | 192.168.0.0/16          |
 | **\<>názvu podsítě**          | mySubnetdestination        |
-| **\<>rozsah emitované sítě** | 192.168.0.0\24          |
+| **\<>rozsah emitované sítě** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 

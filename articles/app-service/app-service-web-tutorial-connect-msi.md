@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: 787809e4132defa101bb82659e8af1a2d9f1b9b6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b66874cf95ed29d9be0a2d1ea397704131c7b21d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81453773"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085428"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
@@ -41,7 +41,7 @@ Co se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Tento článek pokračuje tam, kde jste skončili v [kurzu: Vytvoření aplikace ASP.NET v Azure s databází SQL](app-service-web-tutorial-dotnet-sqldatabase.md) nebo [kurz: Vytvoření aplikace ASP.NET Core a SQL Database ve službě Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md). Pokud jste tak dosud neučinili, postupujte nejprve podle jednoho ze dvou kurzů. Případně můžete přizpůsobit kroky pro vlastní aplikaci .NET s databází SQL.
 
@@ -205,14 +205,14 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 
 Zde je příklad výstupu:
 
-```json
+<pre>
 {
   "additionalProperties": {},
   "principalId": "21dfa71c-9e6f-4d17-9e90-1d28801c9735",
   "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
   "type": "SystemAssigned"
 }
-```
+</pre>
 
 ### <a name="grant-permissions-to-managed-identity"></a>Udělení oprávnění spravované identitě
 

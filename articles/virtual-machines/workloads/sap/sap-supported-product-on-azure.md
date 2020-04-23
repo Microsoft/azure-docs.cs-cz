@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cfc66789360f78c927dd157305074ed5ea6f32a
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768439"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086126"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Jaký software SAP je podporován pro nasazení Azure
 Tento článek popisuje, jak můžete zjistit, jaký software SAP je podporován pro nasazení Azure a jaké jsou nezbytné verze operačního systému nebo verze DBMS.
@@ -135,7 +135,7 @@ Podpora SAP Datahub/Vora ve službách Azure Kubernetes Services (AKS) je podrob
 
 Podpora sap BPC 10.1 SP08 je popsána v [poznámce podpory SAP #2451795](https://launchpad.support.sap.com/#/notes/2451795)
 
-Podpora platformy SAP Hybris Commerce v Azure je podrobně popsána na [Wiki Hybris](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud). Jako podporované DBMS pro SAP Hybris Commerce Platform, uvádí jako:
+Podpora platformy SAP Hybris Commerce v Azure je podrobně popsána v [dokumentaci k Hybris](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html). Jako podporované DBMS pro SAP Hybris Commerce Platform, uvádí jako:
 
 - SQL Server a Oracle na platformě operačního systému Windows. Platí stejné minimální verze jako pro SAP NetWeaver. Podrobnosti [najdete v poznámce podpory SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 - SAP HANA na Red Hat a SUSE Linux. Sap HANA certifikované typy virtuálních počítačů jsou povinné jako dokumentované dříve v [tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support). Obchodní platforma SAP (Hybris) je považována za pracovní zátěž OLTP

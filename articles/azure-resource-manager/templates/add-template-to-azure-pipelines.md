@@ -3,12 +3,12 @@ title: CI/CD s Azure Pipelines a šablonami
 description: Popisuje, jak nastavit průběžnou integraci v Azure Pipelines pomocí projektů nasazení Skupiny prostředků Azure ve Visual Studiu k nasazení šablon Správce prostředků.
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 7617bf47595fce7baa533b0f7cc94a1803ddd349
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153450"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084647"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrace šablon ARM s Azure Pipelines
 
@@ -28,7 +28,7 @@ Tento článek předpokládá, že váš projekt Visual Studio a organizace Azur
 
 * Máte organizaci Azure DevOps. Pokud ho nemáte, [vytvořte si ho zdarma](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Pokud váš tým už má organizaci Azure DevOps, ujistěte se, že jste správcem projektu Azure DevOps, který chcete použít.
 
-* Nakonfigurovali jste [připojení služby](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) k předplatnému Azure. Úlohy v kanálu spustit pod identitou instančního objektu. Postup vytvoření připojení naleznete v [tématu Vytvoření projektu DevOps](template-tutorial-use-azure-pipelines.md#create-a-devops-project).
+* Nakonfigurovali jste [připojení služby](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) k předplatnému Azure. Úlohy v kanálu spustit pod identitou instančního objektu. Postup vytvoření připojení naleznete v [tématu Vytvoření projektu DevOps](deployment-tutorial-pipeline.md#create-a-devops-project).
 
 * Máte projekt Visual Studio, který byl vytvořen ze startovací šablony **skupiny prostředků Azure.** Informace o vytváření tohoto typu projektu najdete [v tématu vytváření a nasazování skupin prostředků Azure prostřednictvím sady Visual Studio](create-visual-studio-deployment-project.md).
 
@@ -261,4 +261,4 @@ Můžete vybrat aktuálně spuštěný kanál a zobrazit podrobnosti o úkolech.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobný proces používání Azure Pipelines se šablonami ARM najdete [v tématu Kurz: Průběžná integrace šablon ARM s Azure Pipelines](template-tutorial-use-azure-pipelines.md).
+Podrobný proces používání Azure Pipelines se šablonami ARM najdete [v tématu Kurz: Průběžná integrace šablon Azure Resource Manageru s Azure Pipelines](deployment-tutorial-pipeline.md).

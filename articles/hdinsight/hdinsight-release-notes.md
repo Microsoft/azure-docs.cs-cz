@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: cdb31f1a46d7f46b69e9e0ad47a77ba6b32a50a0
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 04/22/2020
+ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770821"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084885"
 ---
-# <a name="release-notes"></a>Zpráva k vydání verze
+# <a name="release-notes"></a>Poznámky k verzi
 
 Tento článek obsahuje informace o **nejnovějších** aktualizacích verze Azure HDInsight. Informace o dřívějších verzích naleznete v [tématu ARCHIV POZNÁMEk k verzi HDInsight](hdinsight-release-notes-archive.md).
 
@@ -66,14 +66,3 @@ HDInsight pokračuje ve zlepšování spolehlivosti a výkonu clusteru.
 ## <a name="component-version-change"></a>Změna verze komponenty
 Pro tuto verzi nebyla žádná změna verze komponenty. Aktuální verze komponent pro HDInsight 4.0 ad HDInsight 3.6 najdete zde.
 
-## <a name="known-issues"></a>Známé problémy
-
-března 2020 někteří zákazníci Azure HDInsight v západní Evropě nebo severní Evropě obdrželi chybová oznámení při vytváření nebo škálování hdinsight clusterů v těchto oblastech. Chyby související s tímto problémem zahrnují:
-
-- Při zpracování požadavku došlo k vnitřní chybě serveru. Opakujte žádost nebo kontaktujte podporu.
-- Nejméně jedna operace nasazení prostředků se nezdařila. Podrobnosti naleznete v seznamu operací nasazení. Podrobnosti https://aka.ms/DeployOperations o použití naleznete v části
-- Id předplatného\<uživatele '\>ID předplatného ' nemá jádra vlevo vytvořit prostředek '\<název clusteru>' . Povinné: \<\>X , K dispozici: 0.
-
-Inženýři jsou si vědomi tohoto problému a aktivně vyšetřují.
-
-Další nápovědu vytvořte [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

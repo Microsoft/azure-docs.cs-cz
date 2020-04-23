@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b6b6d10165eed331c397e17a18e382b095e1f74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a5bc947c3ea414f197df9cfcdd5f233e4654cbc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79216750"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085021"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Kurz: Použití odkazů na trezor klíčů v aplikaci Java Spring
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte konfigurační klíč aplikace, který odkazuje na hodnotu uloženou v trezoru klíčů.
 > * Přístup k hodnotě tohoto klíče z aplikace Java Spring.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
 * Podporovaná [java development kit (JDK)](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
@@ -82,7 +82,7 @@ Chcete-li do trezoru přidat tajný klíč, musíte provést pouze několik dal�
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidání odkazu trezoru klíčů do konfigurace aplikace
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **Všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**.
 
@@ -140,6 +140,14 @@ Chcete-li do trezoru přidat tajný klíč, musíte provést pouze několik dal�
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Aktualizace kódu pro použití odkazu trezoru klíčů
 
+1. Vytvořte proměnnou prostředí nazvanou **APP_CONFIGURATION_ENDPOINT**. Nastavte jeho hodnotu na koncový bod pro úložiště konfigurace aplikací. Koncový bod najdete na **okně Přístupové klíče** na webu Azure Portal.
+
+1. Otevřete *soubor bootstrap.properties* ve složce *prostředků.* Aktualizujte tento soubor tak, aby používal koncový bod Konfigurace aplikace, nikoli připojovací řetězec.
+
+    ```properties
+    spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
+    ```
+
 1. Otevřete *soubor MessageProperties.java*. Přidejte novou proměnnou s názvem *keyVaultMessage*:
 
     ```java
@@ -166,7 +174,7 @@ Chcete-li do trezoru přidat tajný klíč, musíte provést pouze několik dal�
 1. Vytvořte nový soubor s názvem *AzureCredentials.java* a přidejte níže uvedený kód.
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import com.azure.core.credential.TokenCredential;
     import com.azure.identity.EnvironmentCredentialBuilder;
@@ -195,7 +203,7 @@ Chcete-li do trezoru přidat tajný klíč, musíte provést pouze několik dal�
 1. Vytvořte nový soubor s názvem *AppConfiguration.java*. A přidejte kód níže.
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
@@ -214,7 +222,7 @@ Chcete-li do trezoru přidat tajný klíč, musíte provést pouze několik dal�
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
-    com.example.AppConfiguration
+    com.example.demo.AppConfiguration
     ```
 
 1. Sestavte si aplikaci Spring Boot s Maven a spusťte ji, například:

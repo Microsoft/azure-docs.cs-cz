@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 9de9739efce13fc96bf550759eb0ef68d732af1e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 673155706c3b7d44b41562c2dc8ce24a94ac6a58
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77212691"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083627"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Table API pomocí Pythonu a Azure Cosmos DB
 
@@ -27,7 +27,7 @@ ms.locfileid: "77212691"
 
 V tomto rychlém startu vytvoříte a spravujete účet rozhraní API azure cosmos DB table api z webu Azure portal a z Visual Studia s aplikací Pythonu naklonotou z GitHubu. Azure Cosmos DB je vícemodelová databázová služba, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, hodnot klíče a grafů s možností globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) `https://localhost:8081` s identifikátorem URI a klíč `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)s úlohami **vývoje Azure** a **Pythonu** vybranými během instalace. 
@@ -72,6 +72,8 @@ Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a
     ```
 
 3. Potom otevřete soubor řešení v sadě Visual Studio. 
+
+> ! To je v pořádku. Podrobnější návod podobného kódu najdete v článku ukázkový článek [rozhraní API tabulky Cosmos DB.](table-storage-how-to-use-python.md)
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 

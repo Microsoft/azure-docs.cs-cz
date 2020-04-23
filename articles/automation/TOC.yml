@@ -134,7 +134,7 @@
           href: source-control-integration.md
     - name: Správa konfigurace
       items:
-        - name: Správa služby State Configuration (DSC)
+        - name: Konfigurace stavu (DSC)
           items:
             - name: Přehled
               href: automation-dsc-overview.md
@@ -156,7 +156,7 @@
               href: automation-dsc-diagnostics.md
             - name: Řešení potíží s DSC
               href: troubleshoot/desired-state-configuration.md
-        - name: Správa řešení Change Tracking a Inventory
+        - name: Change Tracking a Inventory
           items:
             - name: Přehled
               href: change-tracking.md

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a6c9eb354bce09a5f652895f4af34df1f6750bec
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2609ff908b3c2f872cb63d3dcd7dcd481d316484
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80045743"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085854"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Kurz: Vytvoření vlastní bitové kopie a spuštění v aplikaci App Service ze soukromého registru
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -123,7 +123,7 @@ az acr credential show --name <azure-container-registry-name>
 
 Výstup odhaluje dvě hesla spolu s uživatelským jménem.
 
-```json
+<pre>
 {
   "passwords": [
     {
@@ -135,9 +135,9 @@ Výstup odhaluje dvě hesla spolu s uživatelským jménem.
       "value": "{password}"
     }
   ],
-  "username": "<registry-username>"
+  "username": "&lt;registry-username&gt;"
 }
-```
+</pre>
 
 Z okna místního terminálu se přihlaste `docker login` k registru kontejnerů Azure pomocí příkazu, jak je znázorněno v následujícím příkladu. Nahraďte * \<>* a uživatelské * \<ho názvu registru azure-container-registry>* hodnotami pro váš registr. Po zobrazení výzvy zadejte jedno z hesel z předchozího kroku.
 
@@ -149,7 +149,7 @@ Potvrďte, že přihlášení proběhne úspěšně.
 
 ### <a name="push-image-to-azure-container-registry"></a>Nahrání image do služby Azure Container Registry
 
-Označte místní bitovou kopii pro registr kontejnerů Azure. Například:
+Označte místní bitovou kopii pro registr kontejnerů Azure. Příklad:
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
@@ -168,11 +168,11 @@ az acr repository list -n <azure-container-registry-name>
 
 Měli byste získat následující výstup.
 
-```json
+<pre>
 [
   "mydockerimage"
 ]
-```
+</pre>
 
 ### <a name="create-app-service-plan"></a>Vytvoření plánu služby App Service
 
@@ -188,7 +188,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujícímu příkladu:
 
-```json
+<pre>
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -196,12 +196,12 @@ Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujíc
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app-name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git",
+  "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git",
   "enabled": true,
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Konfigurace přihlašovacích údajů registru ve webové aplikaci
 

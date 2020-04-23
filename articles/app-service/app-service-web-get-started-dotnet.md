@@ -3,14 +3,14 @@ title: 'Úvodní příručka: Vytvoření aplikace C# ASP.NET Core'
 description: Zjistěte, jak spouštět webové aplikace ve službě Azure App Service nasazením výchozí šablony webové aplikace C# ASP.NET Core z Visual Studia.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: be7c4a2fb65f913bc97617af1a0f21ee8fcca714
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6c7ab1290033792cf356c4882811670011df5efe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313280"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086041"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Úvodní příručka: Vytvoření webové aplikace ASP.NET Core v Azure
 
@@ -18,7 +18,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a nasadit první ASP.NET webo
 
 Po dokončení budete mít skupinu prostředků Azure skládající se z hostování služby App Service a služby App Service s nasazenou webovou aplikací.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
 - Tento rychlý start nasazuje aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v .NET Core ve službě App Service v Linuxu](./containers/quickstart-dotnetcore.md).
@@ -81,7 +81,7 @@ Chcete-li vytvořit službu App Service a publikovat webovou aplikaci, postupujt
    | -------- | --------------- | ----------- |
    | **Plán hostování**  | *myFirstAzureWebAppPlan* | Název plánu služby App Service. |
    | **Umístění**      | *Západní Evropa* | Datacentrum, které je hostitelem webové aplikace. |
-   | **Velikost**          | *Zdarma* | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
+   | **Velikost**          | *Free* | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
    
    ![Vytvořit nový hostingový plán](./media/app-service-web-get-started-dotnet/create-new-hosting-plan-vs2019.png)
 
@@ -107,7 +107,7 @@ Podle následujících kroků aktualizujte a znovu nasaďte webovou aplikaci:
 
 1. V **Průzkumníku řešení**otevřete v rámci projektu **stránku** > **Index.cshtml**.
 
-1. Dvě značky `<div>` nahraďte následujícím kódem:
+1. Nahraďte `<div>` celou značku následujícím kódem:
 
    ```HTML
    <div class="jumbotron">

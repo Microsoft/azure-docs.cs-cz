@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18
-ms.date: 03/11/2020
-ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/22/2020
+ms.openlocfilehash: 5fa25f54faecbc7caf130ffeb0d24c3d8fef7e09
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79117220"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084800"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Apache Sparku se systémem Apache Kafka ve službě HDInsight
 
@@ -29,13 +29,13 @@ V tomto kurzu se naučíte:
 
 Až budete hotovi s kroky v tomto dokumentu, nezapomeňte odstranit clustery, aby se zabránilo nadměrné poplatky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * jq, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
 * Seznamte se s používáním [jupyterových notebooků](https://jupyter.org/) se Sparkem na HDInsightu. Další informace najdete v tématu [Načítání dat a spouštění dotazů pomocí Apache Spark v dokumentu HDInsight.](spark/apache-spark-load-data-run-query.md)
 
-* Znalost programovacího jazyku [Scala](https://www.scala-lang.org/). Kód použitý v tomto kurzu je napsaný v jazyce Scala.
+* Znalost programovacího jazyku Scala. Kód použitý v tomto kurzu je napsaný v jazyce Scala.
 
 * Znalost vytváření témat Kafka. Další informace najdete v dokumentu [apache kafka na hdinsight rychlý start](kafka/apache-kafka-get-started.md) dokumentu.
 
@@ -48,7 +48,7 @@ Až budete hotovi s kroky v tomto dokumentu, nezapomeňte odstranit clustery, ab
 
 ## <a name="structured-streaming-with-apache-kafka"></a>Strukturované streamování s Apache Kafka
 
-Strukturované streamování Sparku je modul pro zpracování datových proudů založený na modulu Spark SQL. Při použití strukturovaného streamování můžete psát streamovací dotazy stejným způsobem jako dávkové dotazy.
+Strukturované streamování Sparku je modul pro zpracování datových proudů založený na modulu Spark SQL. Při použití strukturovaného streamování můžete psát dotazy streamování stejným způsobem, jakým píšete dávkové dotazy.
 
 Následující fragmenty kódu ukazují čtení ze systému Kafka a uložení do souboru. První z nich je dávková operace, zatímco druhá je operace streamování:
 
@@ -277,7 +277,7 @@ Tento příklad ukazuje, jak používat Strukturované streamování Spark s Kaf
     println("Schema declared")
     ```
 
-1. Vyberte data a spusťte datový proud. Následující příkaz ukazuje, jak načíst data z kafka pomocí dávkového dotazu a potom zapsat výsledky do HDFS v clusteru Spark. V tomto příkladu načte `select` zprávu (pole hodnoty) z Kafka a použije schéma na něj. Data jsou pak zapsána do HDFS (WASB nebo ADL) ve formátu parket. Zadejte příkaz do další buňky Jupyter.
+1. Vyberte data a spusťte datový proud. Následující příkaz ukazuje, jak načíst data z Kafka pomocí dávkového dotazu. A pak napište výsledky do HDFS v clusteru Spark. V tomto příkladu načte `select` zprávu (pole hodnoty) z Kafka a použije schéma na něj. Data jsou pak zapsána do HDFS (WASB nebo ADL) ve formátu parket. Zadejte příkaz do další buňky Jupyter.
 
     ```scala
     // Read a batch from Kafka
@@ -316,7 +316,7 @@ Tento příklad ukazuje, jak používat Strukturované streamování Spark s Kaf
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, můžete odstranit skupinu prostředků. Odstraněním skupiny prostředků odstraníte také přidružený cluster HDInsight a všechny další prostředky, které jsou k příslušné skupině prostředků přidružené.
+Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, můžete odstranit skupinu prostředků. Odstraněním skupiny prostředků také odstraníte přidružený cluster HDInsight. A všechny ostatní prostředky přidružené ke skupině prostředků.
 
 Odebrání skupiny prostředků pomocí webu Azure Portal:
 
@@ -331,7 +331,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili používat [Apache Spark Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) k zápisu a čtení dat z Apache [Kafka](./kafka/apache-kafka-introduction.md) na HDInsight. Pomocí následujícího odkazu se dozvíte, jak používat [Apache Storm](./storm/apache-storm-overview.md) s Kafkou.
+V tomto kurzu jste se naučili používat apache spark strukturované streamování. Chcete-li psát a číst data z Apache Kafka na HDInsight. Pomocí následujícího odkazu se dozvíte, jak používat Apache Storm s Kafkou.
 
 > [!div class="nextstepaction"]
 > [Použijte Apache Storm s Apache Kafka](hdinsight-apache-storm-with-kafka.md)

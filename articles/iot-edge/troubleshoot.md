@@ -4,19 +4,19 @@ description: Tento článek slouží k získání standardních diagnostických 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/20/2019
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3529d6a67c6c8c19c053fe3170298658e90b4a54
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 2e15dffac73b4a50b1ef9288feaeb6073dea91e0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729273"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086517"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -40,20 +40,19 @@ Prvním krokem při řešení potíží s ioT `check` Edge by mělo být použit
   iotedge check
   ```
 
-Typy kontrol prováděné nástrojem lze klasifikovat jako:
+Nástroj pro odstraňování potíží spouští mnoho kontrol, které jsou seřazeny do těchto tří kategorií:
 
 * Kontroly konfigurace: Zkoumá podrobnosti, které by mohly zabránit zařízení Edge připojení ke cloudu, včetně problémů s *config.yaml* a modul kontejneru.
 * Kontroly připojení: Ověří, že modul runtime IoT Edge může přistupovat k portům na hostitelském zařízení a všechny součásti IoT Edge se můžou připojit k centru IoT Hub.
 * Kontroly připravenosti výroby: Vyhledá doporučené doporučené postupy výroby, jako jsou certifikáty certifikační autority (CA) stavu zařízení a konfigurace souboru protokolu modulu.
 
-Úplný seznam diagnostických kontrol naleznete [v tématu Předdefinované funkce řešení potíží](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
+Informace o každé diagnostické kontrole tohoto nástroje spustí, včetně toho, co dělat, pokud se zobrazí chyba nebo upozornění, naleznete v [tématu kontroly odstraňování potíží ioT Edge](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
 
 ## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>Shromažďování informací o ladění pomocí příkazu iotedge 'support-bundle'
 
 Když potřebujete shromáždit protokoly ze zařízení IoT Edge, nejpohodlnější `support-bundle` maješ-li se použít příkaz. Ve výchozím nastavení tento příkaz shromažďuje modul, Správce zabezpečení IoT Edge a protokoly modulu kontejneru, výstup JSON "iotedge Check" a další užitečné informace o ladění. Komprimuje je do jednoho souboru pro snadné sdílení. Příkaz `support-bundle` je k dispozici ve [verzi 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) a novější.
 
 Spusťte `support-bundle` příkaz `--since` s příznakem a určete, jak dlouho od minulosti chcete získat protokoly. Například `6h` získá protokoly od posledních `6d` 6 hodin, od `6m` posledních 6 dnů, od posledních 6 minut a tak dále. Zahrňte `--help` příznak, chcete-li zobrazit úplný seznam možností.
-
 
 * Na Linuxu:
 

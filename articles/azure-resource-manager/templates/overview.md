@@ -3,12 +3,12 @@ title: Přehled šablon
 description: Popisuje výhody použití šablon Azure Resource Manager pro nasazení prostředků.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885731"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086330"
 ---
 # <a name="what-are-arm-templates"></a>Co je šablona ARM?
 
@@ -50,7 +50,7 @@ Pokud se pokoušíte rozhodnout mezi použitím šablon ARM a jedné z dalších
 
 * **Podrobné plány nasazení**: Podrobné [plány](../../governance/blueprints/overview.md) poskytované společností Microsoft můžete využít ke splnění regulačních a standardů dodržování předpisů. Tyto podrobné plány zahrnují předem vytvořené šablony pro různé architektury.
 
-* **Integrace CI/CD**: Šablony můžete integrovat do nástrojů průběžné integrace a průběžného nasazování (CI/CD), které mohou automatizovat kanály verzí pro rychlé a spolehlivé aktualizace aplikací a infrastruktury. Pomocí úlohy šablony Azure DevOps a Resource Manager můžete pomocí Azure Pipelines nepřetržitě vytvářet a nasazovat projekty šablon ARM. Další informace najdete [v tématu Projekt VS s kanály](add-template-to-azure-pipelines.md) a [průběžnou integraci s Azure Pipelines](template-tutorial-use-azure-pipelines.md).
+* **Integrace CI/CD**: Šablony můžete integrovat do nástrojů průběžné integrace a průběžného nasazování (CI/CD), které mohou automatizovat kanály verzí pro rychlé a spolehlivé aktualizace aplikací a infrastruktury. Pomocí úlohy šablony Azure DevOps a Resource Manager můžete pomocí Azure Pipelines nepřetržitě vytvářet a nasazovat projekty šablon ARM. Další informace najdete [v tématu Projekt VS s kanály](add-template-to-azure-pipelines.md) a [kurz: Průběžná integrace šablon Azure Resource Manager u Azure Pipelines](./deployment-tutorial-pipeline.md).
 
 * **Exportovatelný kód**: Šablonu pro existující skupinu prostředků můžete získat buď exportem aktuálního stavu skupiny prostředků, nebo zobrazením šablony použité pro konkrétní nasazení. Zobrazení [vyexportované šablony](export-template-portal.md) vám pomůže blíže se seznámit se syntaxí šablony.
 

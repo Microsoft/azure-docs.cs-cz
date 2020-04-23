@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 39e3521339947263161979033406fb39e397373f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61fbaf37577efdab0b147d437ae78fc4df0764cb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348978"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084953"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Aktivační událost úložiště objektů blob Azure pro funkce Azure
 
@@ -103,7 +103,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje vazbu aktivační události objektu blob v souboru *function.json* a [kód Jazyka JavaScript,](functions-reference-node.md) který vazbu používá. Funkce zapíše protokol při přidání nebo aktualizaci `samples-workitems` objektu blob v kontejneru.
 
@@ -256,7 +256,7 @@ V [knihovnách tříd Jazyka C#](functions-dotnet-class-library.md)použijte ke 
 
 Atributy nejsou podporovány skriptem jazyka C#.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány javascriptem.
 
@@ -294,7 +294,7 @@ Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nas
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Přístup k datům objektu blob pomocí `context.bindings.<NAME>` where where `<NAME>` odpovídá hodnotě definované v *souboru function.json*.
 
@@ -360,7 +360,7 @@ Pokud je objekt blob pojmenován `name` * {20140101}-soundfile.mp3*, hodnota pro
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = function (context, myBlob) {
@@ -391,7 +391,7 @@ Azure Functions ukládá příjmy z objektů blob v kontejneru s názvem *azure-
 * Název objektu blob
 * ETag (identifikátor verze objektu blob, například: "0x8D1DC6E70A277EF")
 
-Chcete-li vynutit opětovné zpracování objektu blob, odstraňte příjemka objektu blob pro tento objekt blob z kontejneru *azure-webjobs-hosts* ručně. Při opětovném zpracování nemusí dojít okamžitě, je zaručeno, že dojde později v čase.
+Chcete-li vynutit opětovné zpracování objektu blob, odstraňte příjemka objektu blob pro tento objekt blob z kontejneru *azure-webjobs-hosts* ručně. Při opětovném zpracování nemusí dojít okamžitě, je zaručeno, že dojde později v čase. Chcete-li znovu okamžitě, *scaninfo* objekt blob v *azure-webjobs-hosts/blobscaninfo* lze aktualizovat. Všechny objekty BLOB s posledním `LatestScan` upraveným časovým razítkem po vlastnosti budou znovu zkontrolovány.
 
 ## <a name="poison-blobs"></a>Jedovaté kuličky
 

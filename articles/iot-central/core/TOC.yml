@@ -132,7 +132,7 @@
     - name: Šablony oborových aplikací
       items:
         - name: Maloobchod
-          href: ../retail/overview-iot-central-retail-pnp.md
+          href: ../retail/overview-iot-central-retail.md
         - name: Energetický sektor
           href: ../energy/overview-iot-central-energy.md
         - name: Státní správa

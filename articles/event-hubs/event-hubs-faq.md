@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: d2d74a90d6712089cff681381e11b1caec9d469d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283663"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086364"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Nejčastější dotazy centra event hubů
 
@@ -182,7 +182,7 @@ Při testování byla použita následující kritéria:
 Výsledky poskytují představu o tom, čeho lze dosáhnout pomocí vyhrazeného clusteru Event Hubs. Kromě toho vyhradit clusteru je dodáván s event huby zachycení povoleno pro vaše mikro dávky a dlouhodobé uchovávání scénářů.
 
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Jak vytvořím vyhrazený cluster centra událostí?
-Vyhrazený cluster centra událostí vytvoříte odesláním [žádosti o podporu zvýšení kvóty](https://portal.azure.com/#create/Microsoft.Support) nebo kontaktováním [týmu Event Hubs](mailto:askeventhubs@microsoft.com). Obvykle trvá asi dva týdny, než se cluster nasadí a předá, aby ho mohl použít. Tento proces je dočasný, dokud se nezpřístupní kompletní samoobslužné služby prostřednictvím portálu Azure nebo šablon Azure Resource Manager, jejichž nasazení clusteru trvá přibližně dvě hodiny.
+Vyhrazený cluster centra událostí vytvoříte odesláním [žádosti o podporu zvýšení kvóty](https://portal.azure.com/#create/Microsoft.Support) nebo kontaktováním [týmu Event Hubs](mailto:askeventhubs@microsoft.com). Obvykle trvá asi dva týdny, než se cluster nasadí a předá, aby ho mohl použít. Tento proces je dočasný, dokud se prostřednictvím portálu Azure nezpřístupní úplná samoobslužná služba.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

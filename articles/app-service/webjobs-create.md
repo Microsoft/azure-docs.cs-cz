@@ -6,21 +6,21 @@ ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
-ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
+ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279140"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085140"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí webových úloh ve službě Azure App Service
 
 Tento článek ukazuje, jak nasadit WebJobs pomocí [portálu Azure](https://portal.azure.com) k nahrání spustitelného souboru nebo skriptu. Informace o vývoji a nasazování webových úloh pomocí sady Visual Studio naleznete v [tématu Deploy WebJobs using Visual Studio](webjobs-dotnet-deploy-vs.md).
 
 ## <a name="overview"></a>Přehled
-WebJobs je funkce [služby Azure App Service,](index.yml) která umožňuje spouštět program nebo skript ve stejném kontextu jako webová aplikace, aplikace rozhraní API nebo mobilní aplikace. Použití webových úloh neplatí žádné další náklady.
+WebJobs je funkce [služby Azure App Service,](index.yml) která umožňuje spustit program nebo skript ve stejné instanci jako webová aplikace, aplikace rozhraní API nebo mobilní aplikace. Použití webových úloh neplatí žádné další náklady.
 
 > [!IMPORTANT]
 > WebJobs ještě není podporovánpro app service na Linuxu.

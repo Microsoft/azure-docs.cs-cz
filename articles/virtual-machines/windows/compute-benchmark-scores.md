@@ -1,26 +1,20 @@
 ---
 title: Výpočetní skóre benchmarku pro virtuální počítače Azure s Windows
 description: Porovnejte skóre výpočetních testů SPECint pro virtuální počítače Azure se systémem Windows Server.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 69ae72ec-e8be-4e46-a8f0-e744aebb5cc2
 ms.service: virtual-machines-windows
+ms.subservice: sizes
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 14e2cdd5d4a1662e86a055165fdd15a38d29225b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea6bca1367d4b34aa54b65e92e7cbfdd02642f4c
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651045"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086228"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Výpočetní srovnávací testy pro virtuální počítače s Windows
 Následující srovnávací testy SPECInt ukazují výpočetní výkon pro vybrané virtuální počítače Azure se systémem Windows Server. Skóre výpočetních testů jsou k dispozici také pro [virtuální počítače s Linuxem](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

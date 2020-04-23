@@ -1,15 +1,15 @@
 ---
 title: Vytváření, vytváření & nasazení kurzů inteligentních smluv – Služba Azure Blockchain Service
 description: Kurz o tom, jak používat Azure Blockchain Development Kit pro rozšíření Ethereum v kódu Visual Studio k vytvoření, sestavení a nasazení inteligentní smlouvy ve službě Azure Blockchain.
-ms.date: 12/06/2019
+ms.date: 04/22/2020
 ms.topic: tutorial
-ms.reviewer: chrisseg
-ms.openlocfilehash: 5b901ab904425a22d2fe9643ffa75a4e978efa88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.reviewer: caleteet
+ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74972816"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086653"
 ---
 # <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Kurz: Vytváření, vytváření a nasazování inteligentních kontraktů ve službě Azure Blockchain Service
 
@@ -24,10 +24,10 @@ Azure Blockchain Development Kit pro ethereum používáte k:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Kompletní [úvodní příručka: Připojení k síti konsorcia Azure Blockchain Service pomocí kódu Visual Studia](connect-vscode.md)
-* [Kód visual studia](https://code.visualstudio.com/Download)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure Blockchain Development Kit pro rozšíření Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js 10.15.x nebo vyšší](https://nodejs.org/download)
 * [Git 2.10.x nebo vyšší](https://git-scm.com)
@@ -41,7 +41,7 @@ V systému Windows je pro modul node-gyp vyžadován nainstalovaný kompilátor 
 * Pokud je nainstalován visual studio 2019, nastavte cestu nástroje sestavení MS pro npm. Například `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`.
 * V opačném případě nainstalujte samostatné nástroje `npm install --global windows-build-tools` sestavení VS pomocí ve zvýšeném *spuštění jako příkazového* prostředí správce.
 
-Další informace o node-gyp najdete v [úložišti node-gyp na GitHubu](https://github.com/node-gyp).
+Další informace o node-gyp najdete v [úložišti node-gyp na GitHubu](https://github.com/nodejs/node-gyp).
 
 ## <a name="create-a-smart-contract"></a>Vytvoření inteligentní smlouvy
 

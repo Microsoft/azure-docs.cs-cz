@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 4a8b3cf47235e061e5dbcc08a409fce84d421771
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562203"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084987"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do služby App Service pomocí akcí GitHubu
 
@@ -27,7 +27,7 @@ Pro pracovní postup služby Azure App Service má soubor tři části:
 
 |Sekce  |Úlohy  |
 |---------|---------|
-|**Ověřování** | 1. Definovat instanční objekt <br /> 2. Vytvoření tajného klíče GitHubu |
+|**Authentication** | 1. Definovat instanční objekt <br /> 2. Vytvoření tajného klíče GitHubu |
 |**Sestavení** | 1. Nastavení životního prostředí <br /> 2. Vytvoření webové aplikace |
 |**Nasadit** | 1. Nasazení webové aplikace |
 
@@ -62,7 +62,7 @@ Můžete také použít přihlašovací údaje na úrovni aplikace, tj. Postupuj
 4. Nyní v souboru pracovního `.github/workflows/workflow.yml` postupu ve vaší `publish-profile` větvi: nahraďte tajný klíč pro vstup akce nasazení Azure Web Appu.
     
     ```yaml
-        - uses: azure/webapps-deploy@v1
+        - uses: azure/webapps-deploy@v2
           with:
             creds: ${{ secrets.azureWebAppPublishProfile }}
     ```
@@ -79,12 +79,12 @@ Nastavení prostředí lze provést pomocí jedné z akcí nastavení.
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**     | `actions/setup-java` |
-|**Javascript** | `actions/setup-node` |
+|**JavaScript** | `actions/setup-node` |
 |**Python**     | `actions/setup-python` |
 
 Následující příklady ukazují část pracovního postupu, která nastavuje prostředí pro různé podporované jazyky:
 
-**Javascript**
+**JavaScript**
 
 ```yaml
     - name: Setup Node 10.x
@@ -127,7 +127,7 @@ To závisí na jazyku a pro jazyky podporované službou Azure App Service, tato
 
 Následující příklady ukazují část pracovního postupu, který vytváří webovou aplikaci v různých podporovaných jazycích.
 
-**Javascript**
+**JavaScript**
 
 ```yaml
     - name: 'Run npm'
@@ -182,7 +182,7 @@ Následující příklady ukazují část pracovního postupu, který vytváří
 ```
 ## <a name="deploy-to-app-service"></a>Nasazení do App Service
 
-Pokud chcete nasadit kód do aplikace `azure/webapps-deploy@v1 ` App Service, použijte akci. Tato akce má čtyři parametry:
+Pokud chcete nasadit kód do aplikace `azure/webapps-deploy@v2` App Service, použijte akci. Tato akce má čtyři parametry:
 
 | **Parametr**  | **Vysvětlení**  |
 |---------|---------|
@@ -219,7 +219,7 @@ jobs:
         npm run test --if-present
        
     - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v1
+          uses: azure/webapps-deploy@v2
           with: 
             app-name: node-rn
             publish-profile: ${{ secrets.azureWebAppPublishProfile }}
@@ -258,7 +258,7 @@ jobs:
         npm run test --if-present
                
     # deploy web app using Azure credentials
-    - uses: azure/webapps-deploy@v1
+    - uses: azure/webapps-deploy@v2
       with:
         app-name: 'node-rn'
 

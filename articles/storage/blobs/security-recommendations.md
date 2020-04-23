@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 0ceef2561d84a1fa491ab9577e1eac789b62bef7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 0b32f7e8fa2ec0d1d28f2fd42147e140d2d03341
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454624"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086109"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Doporučení zabezpečení pro úložiště objektů Blob
 
@@ -57,6 +57,7 @@ Azure Security Center pravidelně analyzuje stav zabezpečení prostředků Azur
 | Povolení pravidel brány firewall | Nakonfigurujte pravidla brány firewall tak, aby byl přístup k účtu úložiště omezen na požadavky, které pocházejí ze zadaných IP adres nebo rozsahů, nebo ze seznamu podsítí ve virtuální síti Azure (Virtuální síť). Další informace o konfiguraci pravidel brány firewall naleznete v tématu [Azure File Sync proxy a nastavení brány firewall](../files/storage-sync-files-firewall-and-proxy.md). | - |
 | Povolení přístupu důvěryhodných služeb Společnosti Microsoft k účtu úložiště | Zapnutí pravidel brány firewall pro váš účet úložiště blokuje příchozí požadavky na data ve výchozím nastavení, pokud požadavky pocházejí ze služby pracující v rámci virtuální sítě (VNet) Azure nebo z povolených veřejných IP adres. Mezi blokované požadavky patří požadavky z jiných služeb Azure, z portálu Azure, ze služeb protokolování a metrik a tak dále. Žádosti z jiných služeb Azure můžete povolit přidáním výjimky, která umožní důvěryhodným službám Microsoftu přístup k účtu úložiště. Další informace o přidání výjimky pro důvěryhodné služby Microsoftu najdete v [tématu Azure File Sync proxy a nastavení brány firewall](../files/storage-sync-files-firewall-and-proxy.md).| - |
 | Použití privátních koncových bodů | Privátní koncový bod přiřadí privátní IP adresu z vaší virtuální sítě Azure (VNet) k účtu úložiště. Zabezpečuje veškerý provoz mezi vaší virtuální sítí a účtem úložiště přes privátní odkaz. Další informace o privátní koncové body, najdete v [tématu připojení soukromě k účtu úložiště pomocí Azure Private Endpoint](../../private-link/create-private-endpoint-storage-portal.md). | - |
+| Použití značek služby Virtuální sítě | Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres zahrnuté v servisním štítku a automaticky aktualizuje výrobní číslo jako adresy změnit. Další informace o značkách služeb podporovaných službou Azure Storage najdete v [tématu Přehled značek služeb Azure](../../virtual-network/service-tags-overview.md). Kurz, který ukazuje, jak používat značky služeb k vytvoření pravidel odchozí sítě, najdete v [tématu Omezení přístupu k prostředkům PaaS](../../virtual-network/tutorial-restrict-network-access-to-resources.md). | - |
 | Omezit přístup k síti na určité sítě | Omezení přístupu k síti na sítě hostující klienty vyžadující přístup snižuje vystavení prostředků síťovým útokům. | [Ano](../../security-center/security-center-sql-service-recommendations.md) |
 
 ## <a name="loggingmonitoring"></a>Protokolování/monitorování
@@ -67,5 +68,5 @@ Azure Security Center pravidelně analyzuje stav zabezpečení prostředků Azur
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dokumentace k zabezpečení Azure](https://docs.microsoft.com//azure/security/)
+- [Dokumentace zabezpečení Azure](https://docs.microsoft.com//azure/security/)
 - [Zabezpečte vývojovou dokumentaci](https://docs.microsoft.com/azure/security/develop/).

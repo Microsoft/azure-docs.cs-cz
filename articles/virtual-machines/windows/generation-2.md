@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 239e339d1870060d95d6c7e7b602be7d61af5f77
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
-ms.translationtype: HT
+ms.openlocfilehash: 53806a1a627c7ae6bc3470aa387be0982df914fa
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869642"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082254"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora pro virtuální počítače generace 2 v Azure
 
@@ -28,7 +28,7 @@ Virtuální virtuální zařízení generace 2 používají novou spouštěcí a
 Virtuální počítače generace 1 jsou podporované všemi velikostmi virtuálních zařízení v Azure (s výjimkou virtuálních počítačích řady Mv2). Azure teď nabízí podporu generace 2 pro následující vybrané řady virtuálních počítače:
 
 * [Řada B](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [Řada DC](../dcv2-series.md)
+* [Řada DCsv2](../dcv2-series.md)
 * [Řada DSv2](../dv2-dsv2-series.md) a [Dsv3](../dv3-dsv3-series.md)
 * [Řada Dasv4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
 * [Řada Esv3](../ev3-esv3-series.md)

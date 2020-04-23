@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: c6a3ac701442fb30e471bcc2c8f317e3988980f7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 24e622f76e604d7c0c48e2f3c354e3b4aa64e549
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261971"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084902"
 ---
 # <a name="microsoft-commercial-marketplace-roadmap"></a>Plán obchodního trhu společnosti Microsoft
 
@@ -33,7 +33,7 @@ Jakmile je schopnost živá, bude odstraněna z plánu. Funkce, které byly při
 * [Standardní kontrakt](https://aka.ms/standardcontract)
 * [Rozhraní API plnění SaaS](https://aka.ms/saasapiv2)
 * [Marketplace Geos a měny](https://aka.ms/marketplacegeos)
-* [Seller Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
+* [Seller Insights](./partner-center-portal/analytics.md)
 * [Microsoft Build Marketplace Blog](https://aka.ms/marketplacebuildblog)
 * [Marketplace května Aktualizace Blog](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
 * Centrum partnerů: Vytvoření migrace[účtu správy](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) /  [účtu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [z cpp](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)

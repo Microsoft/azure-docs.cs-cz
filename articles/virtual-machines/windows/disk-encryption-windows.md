@@ -2,17 +2,18 @@
 title: Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 description: Tento článek obsahuje pokyny k povolení šifrování disku Microsoft Azure pro virtuální počítače s Windows pro různé scénáře
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7b6e667df95d9279ad5c44caa4ba33a17909935
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: deb2860c8d027a0a258c4a962fe33d6f516e10dc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113156"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085639"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 

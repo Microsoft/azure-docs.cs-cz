@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 7db3f6f50745526876ef2ca6e3253f1931420f0f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 4fe8eb0b363fc95ac5913e66884a2ed8f3d225a6
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683250"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086483"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Úvodní příručka: Import souboru BACPAC do databáze v Azure SQL Database
 
@@ -61,7 +61,7 @@ Migrace databáze do [spravované instance](sql-database-managed-instance.md) ze
 
 ## <a name="using-sqlpackage"></a>Použití balíčku SqlPackage
 
-Informace o importu databáze serveru SQL Server pomocí nástroje příkazového řádku [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) naleznete [v tématu import parametrů a vlastností](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage má nejnovější [sql server management studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a SQL Server datové nástroje pro Visual [Studio](https://msdn.microsoft.com/library/mt204009.aspx). Můžete si také stáhnout nejnovější [sqlpackage](https://www.microsoft.com/download/details.aspx?id=53876) ze služby Stažení softwaru společnosti Microsoft.
+Informace o importu databáze serveru SQL Server pomocí nástroje příkazového řádku [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) naleznete [v tématu import parametrů a vlastností](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). [Sql Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Datové nástroje pro Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) patří SqlPackage. Můžete si také stáhnout nejnovější [sqlpackage](https://www.microsoft.com/download/details.aspx?id=53876) ze služby Stažení softwaru společnosti Microsoft.
 
 Pro škálování a výkon doporučujeme použít SqlPackage ve většině produkčních prostředí, nikoli pomocí portálu Azure. Blog týmu zákaznického zpravodaje serveru SQL `BACPAC` Server o migraci pomocí souborů najdete v [tématu migrace z SQL Serveru do databáze Azure SQL pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 

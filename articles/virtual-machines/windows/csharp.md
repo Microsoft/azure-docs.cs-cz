@@ -1,24 +1,18 @@
 ---
 title: 'Vytvoření a správa virtuálního počítače Azure pomocí C #'
 description: Pomocí C# a Azure Resource Manager nasadit virtuální počítač a všechny jeho podpůrné prostředky.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 9b873ce9e9b203c6999f93adc8fcd96de3dbf362
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 07c66b2955f3df1ffae1a0cb0c2b0888bdc790e9
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452056"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082879"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Vytváření a správa virtuálních aplikací Windows v Azure pomocí C # #
 

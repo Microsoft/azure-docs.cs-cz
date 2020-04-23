@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 8bb56db9eed962ac8f8202c61a7446527c15dfc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e16453cc2a6044c4b153bd1556d85545ff9625
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060895"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086608"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Doporučení zabezpečení pro úložiště fronty
 
@@ -29,7 +29,7 @@ Azure Security Center pravidelně analyzuje stav zabezpečení prostředků Azur
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
-| Použití modelu nasazení Azure Resource Manageru | Vytvořte nové účty úložiště pomocí modelu nasazení Azure Resource Manager pro důležitá vylepšení zabezpečení, včetně vynikajícího řízení přístupu (RBAC) a auditování, nasazení a zásad správného řízení na základě Správce prostředků, přístupu ke spravovaným identitám, přístupu k Azure Key Vault pro tajné klíče a ověřování a autorizace na základě Azure AD pro přístup k datům a prostředkům Azure Storage. Pokud je to možné, migrujte existující účty úložiště, které používají klasický model nasazení k použití Správce prostředků Azure. Další informace o Azure Resource Manager, najdete [v tématu Přehled Správce prostředků Azure](/azure/azure-resource-manager/resource-group-overview). | - |
+| Použití modelu nasazení Azure Resource Manageru | Vytvořte nové účty úložiště pomocí modelu nasazení Azure Resource Manager pro důležitá vylepšení zabezpečení, včetně vynikajícího řízení přístupu (RBAC) a auditování, nasazení a zásad správného řízení na základě Správce prostředků, přístupu ke spravovaným identitám, přístupu k tajným kódům azure key vaultu a ověřování a autorizace azure ad pro přístup k datům a prostředkům Azure Storage. Pokud je to možné, migrujte existující účty úložiště, které používají klasický model nasazení k použití Správce prostředků Azure. Další informace o Azure Resource Manager, najdete [v tématu Přehled Správce prostředků Azure](/azure/azure-resource-manager/resource-group-overview). | - |
 | Povolení možnosti **Zabezpečení přenosu na** všech účtech úložiště | Pokud povolíte možnost **Zabezpečené přenos požadované,** všechny požadavky proti účtu úložiště musí probíhat přes zabezpečené připojení. Všechny požadavky provedené přes protokol HTTP se nezdaří. Další informace najdete [v tématu Require secure transfer in Azure Storage](../common/storage-require-secure-transfer.md). | [Ano](../../security-center/security-center-sql-service-recommendations.md) |
 | Povolení pokročilé ochrany před hrozbami pro všechny účty úložiště | Pokročilá ochrana před hrozbami pro Azure Storage poskytuje další vrstvu inteligence zabezpečení, která detekuje neobvyklé a potenciálně škodlivé pokusy o přístup nebo zneužití účtů úložiště. Výstrahy zabezpečení se aktivují v Centru zabezpečení Azure, když dojde k anomáliím v aktivitě a jsou také odesílány e-mailem správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeními, jak vyšetřovat a napravou hrozeb. Další informace najdete [v tématu Pokročilá ochrana před hrozbami pro Azure Storage](../common/storage-advanced-threat-protection.md). | [Ano](../../security-center/security-center-sql-service-recommendations.md) |
 | Omezení tokenů sdíleného přístupového podpisu (SAS) pouze na připojení HTTPS | Vyžadování protokolu HTTPS, když klient používá token SAS pro přístup k datům fronty, pomáhá minimalizovat riziko odposlechu. Další informace najdete v tématu [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md). | - |
@@ -46,13 +46,14 @@ Azure Security Center pravidelně analyzuje stav zabezpečení prostředků Azur
 | Mít plán odvolání na místě pro všechny SAS, které vydáváte klientům | Pokud je sas ohrožena, budete chtít odvolat, že SAS co nejdříve. Chcete-li odvolat uživatelské delegování SAS, odvolejte klíč delegování uživatele, abyste rychle zrušili platnost všech podpisů přidružených k tomuto klíči. Chcete-li odvolat službu SAS, která je přidružena k uložené zásadě přístupu, můžete odstranit uložené zásady přístupu, přejmenovat zásadu nebo změnit dobu vypršení platnosti na čas, který je v minulosti. Další informace najdete v tématu [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md).  | - |
 | Pokud služba SAS není přidružena k uloženým zásadám přístupu, nastavte dobu vypršení platnosti na jednu hodinu nebo méně | Službu SAS, která není přidružena k uložené zásady přístupu nelze odvolat. Z tohoto důvodu se doporučuje omezit dobu vypršení platnosti tak, aby sas je platný po dobu jedné hodiny nebo méně. | - |
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
 | Povolení pravidel brány firewall | Nakonfigurujte pravidla brány firewall tak, aby byl přístup k účtu úložiště omezen na požadavky, které pocházejí ze zadaných IP adres nebo rozsahů, nebo ze seznamu podsítí ve virtuální síti Azure (Virtuální síť). Další informace o konfiguraci pravidel brány firewall naleznete v tématu [Azure File Sync proxy a nastavení brány firewall](../files/storage-sync-files-firewall-and-proxy.md). | - |
 | Povolení přístupu důvěryhodných služeb Společnosti Microsoft k účtu úložiště | Zapnutí pravidel brány firewall pro váš účet úložiště blokuje příchozí požadavky na data ve výchozím nastavení, pokud požadavky pocházejí ze služby pracující v rámci virtuální sítě (VNet) Azure nebo z povolených veřejných IP adres. Mezi blokované požadavky patří požadavky z jiných služeb Azure, z portálu Azure, ze služeb protokolování a metrik a tak dále. Žádosti z jiných služeb Azure můžete povolit přidáním výjimky, která umožní důvěryhodným službám Microsoftu přístup k účtu úložiště. Další informace o přidání výjimky pro důvěryhodné služby Microsoftu najdete v [tématu Azure File Sync proxy a nastavení brány firewall](../files/storage-sync-files-firewall-and-proxy.md).| - |
-| Použití soukromých koncových bodů | Privátní koncový bod přiřadí privátní IP adresu z vaší virtuální sítě Azure (VNet) k účtu úložiště. Zabezpečuje veškerý provoz mezi vaší virtuální sítí a účtem úložiště přes privátní odkaz. Další informace o privátní koncové body, najdete v [tématu připojení soukromě k účtu úložiště pomocí Azure Private Endpoint](../../private-link/create-private-endpoint-storage-portal.md). | - |
+| Použití privátních koncových bodů | Privátní koncový bod přiřadí privátní IP adresu z vaší virtuální sítě Azure (VNet) k účtu úložiště. Zabezpečuje veškerý provoz mezi vaší virtuální sítí a účtem úložiště přes privátní odkaz. Další informace o privátní koncové body, najdete v [tématu připojení soukromě k účtu úložiště pomocí Azure Private Endpoint](../../private-link/create-private-endpoint-storage-portal.md). | - |
+| Použití značek služby Virtuální sítě | Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres zahrnuté v servisním štítku a automaticky aktualizuje výrobní číslo jako adresy změnit. Další informace o značkách služeb podporovaných službou Azure Storage najdete v [tématu Přehled značek služeb Azure](../../virtual-network/service-tags-overview.md). Kurz, který ukazuje, jak používat značky služeb k vytvoření pravidel odchozí sítě, najdete v [tématu Omezení přístupu k prostředkům PaaS](../../virtual-network/tutorial-restrict-network-access-to-resources.md). | - |
 | Omezit přístup k síti na určité sítě | Omezení přístupu k síti na sítě hostující klienty vyžadující přístup snižuje vystavení prostředků síťovým útokům. | [Ano](../../security-center/security-center-sql-service-recommendations.md) |
 
 ## <a name="loggingmonitoring"></a>Protokolování/monitorování

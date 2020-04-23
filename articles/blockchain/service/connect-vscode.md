@@ -1,15 +1,15 @@
 ---
 title: Připojení ke službě Azure Blockchain Service pomocí kódu Visual Studia
 description: Připojení k síti konsorcia Azure Blockchain Service pomocí rozšíření Azure Blockchain Development Kit for Ethereum v kódu Visual Studio
-ms.date: 03/26/2020
+ms.date: 04/22/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
-ms.openlocfilehash: 269a3e419186daddf1e6a41a54e52e688f4bc7e3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8b502966317c5d07e89de4ae70ff72b899e963e6
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348588"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084834"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Úvodní příručka: Připojení k síti konsorcia Azure Blockchain Service pomocí kódu Visual Studia
 
@@ -17,10 +17,10 @@ V tomto rychlém startu nainstalujete a použijete rozšíření Azure Blockchai
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Kompletní [úvodní příručka: Vytvoření člena blockchainu pomocí portálu Azure](create-member.md) nebo [úvodního startu: Vytvoření člena blockchainu služby Azure Blockchain pomocí Azure CLI](create-member-cli.md)
-* [Kód visual studia](https://code.visualstudio.com/Download)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure Blockchain Development Kit pro rozšíření Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js 10.15.x nebo vyšší](https://nodejs.org)
 * [Git 2.10.x nebo vyšší](https://git-scm.com)
@@ -34,7 +34,7 @@ V systému Windows je pro modul node-gyp vyžadován nainstalovaný kompilátor 
 * Pokud je nainstalován visual studio 2019, nastavte cestu nástroje sestavení MS pro npm. Například `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`.
 * V opačném případě nainstalujte samostatné nástroje `npm install --global windows-build-tools` sestavení VS pomocí ve zvýšeném *spuštění jako příkazového* prostředí správce.
 
-Další informace o node-gyp najdete v [úložišti node-gyp na GitHubu](https://github.com/node-gyp).
+Další informace o node-gyp najdete v [úložišti node-gyp na GitHubu](https://github.com/nodejs/node-gyp).
 
 ### <a name="verify-azure-blockchain-development-kit-environment"></a>Ověření prostředí Azure Blockchain Development Kit
 

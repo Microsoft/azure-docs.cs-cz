@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 04/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3f284efd6a9a2fd83c8e2a8f9fb7a962c1cacc1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4ac49209fb1debca604a6aeb8ad3993ff898c331
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406463"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082998"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -52,17 +52,18 @@ K dispozici jsou následující role správce:
 Uživatelé v této roli mohou vytvářet a spravovat všechny aspekty podnikových aplikací, registrací aplikací a nastavení proxy serveru aplikace. Všimněte si, že uživatelé přiřazené k této roli nejsou přidány jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
 
 Správci aplikací mohou spravovat pověření aplikace, která jim umožňují zosobnit aplikaci. Uživatelé přiřazení k této roli tedy mohou spravovat přihlašovací údaje aplikace pouze těch aplikací, které nejsou přiřazeny k žádným rolím Azure AD, nebo těm, které jsou přiřazeny jenom k následujícím rolím správce:
+
 * Správce aplikace
 * Vývojář aplikace
 * Správce cloudové aplikace
 * Čtečky adresářů
 
-Pokud je aplikace přiřazena k jiné roli, která není uvedena výše, správce aplikace nemůže spravovat pověření této aplikace. 
- 
+Pokud je aplikace přiřazena k jiné roli, která není uvedena výše, správce aplikace nemůže spravovat pověření této aplikace.
+
 Tato role také uděluje možnost _souhlasu s_ delegovanými oprávněními a oprávněními aplikací, s výjimkou oprávnění k rozhraní Microsoft Graph API.
 
 > [!IMPORTANT]
-> Tato výjimka znamená, že můžete stále souhlasit s oprávněními pro _jiné_ aplikace (například aplikace třetích stran nebo aplikace, které jste zaregistrovali), ale ne oprávnění pro samotné azure ad. Stále můžete _požádat o_ tato oprávnění jako součást registrace aplikace, ale _udělení_ (tj. souhlas) tato oprávnění vyžaduje správce Azure AD. To znamená, že uživatel se zlými úmysly nemůže snadno zvýšit svá oprávnění, například vytvořením a souhlasem s aplikací, která může zapisovat do celého adresáře, a prostřednictvím oprávnění této aplikace se mohou zvýšit a stát se globálním správcem.
+> Tato výjimka znamená, že můžete stále souhlasit s oprávněními pro _jiné_ aplikace (například aplikace jiného než Microsoft nebo aplikace, které jste zaregistrovali), ale ne oprávnění pro samotné Azure AD. Stále můžete _požádat o_ tato oprávnění jako součást registrace aplikace, ale _udělení_ (to znamená souhlas) tato oprávnění vyžaduje správce Azure AD. To znamená, že uživatel se zlými úmysly nemůže snadno zvýšit svá oprávnění, například vytvořením a souhlasem s aplikací, která může zapisovat do celého adresáře, a prostřednictvím oprávnění této aplikace se mohou zvýšit a stát se globálním správcem.
 
 ### <a name="application-developer"></a>[Vývojář aplikace](#application-developer-permissions)
 
@@ -70,13 +71,15 @@ Uživatelé v této roli mohou vytvářet registrace aplikací, pokud je nastave
 
 ### <a name="authentication-administrator"></a>[Správce ověřování](#authentication-administrator-permissions)
 
-Role správce ověřování je aktuálně ve verzi Public Preview. Uživatelé s touto rolí mohou nastavit nebo obnovit pověření bez hesla a mohou aktualizovat hesla pro všechny uživatele. Správci ověřování mohou požadovat, aby se uživatelé znovu zaregistrovali podle existujících pověření bez hesla (například Vícefaktorové ověřování nebo FIDO) a odvolat **zapamatovat si vícefaktorové ověřování v zařízení**, což vyzve k vícefaktorové ověřování při příštím přihlášení uživatelů, kteří nejsou správci nebo mají přiřazeny pouze následující role:
+Uživatelé s touto rolí mohou pro některé uživatele nastavit nebo obnovit pověření bez hesla a mohou aktualizovat hesla pro všechny uživatele. Správci ověřování mohou vyžadovat, aby se uživatelé, kteří nejsou správci nebo kteří byli přiřazeni k některým rolím, znovu zaregistrovali proti existujícím pověřením bez hesla (například Vícefaktorové ověřování nebo FIDO) a mohou také odvolat **zapamatování vícefaktorové ověřování v zařízení**, což při příštím přihlášení vyzve k vícefaktorišti. Tyto akce platí pouze pro uživatele, kteří nejsou správci nebo kterým je přiřazena jedna nebo více z následujících rolí:
 
 * Správce ověřování
 * Čtečky adresářů
 * Pozvaní hosté
 * Čtečka Centra zpráv
 * Čtečka sestav
+
+Role [správce privilegovaného ověřování](#privileged-authentication-administrator) má oprávnění, která může vynutit opětovnou registraci a vícefaktorové ověřování pro všechny uživatele.
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžete změnit přihlašovací údaje pro uživatele, kteří mohou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i vně služby Azure Active Directory. Změna pověření uživatele může znamenat možnost převzít identitu a oprávnění tohoto uživatele. Příklad:
@@ -128,6 +131,7 @@ Může dělat nákupy, spravovat předplatná, spravovat lístky žádostí o po
 Uživatelé v této roli mají stejná oprávnění jako role Správce aplikace, s výjimkou možnosti spravovat proxy aplikace. Tato role umožňuje vytvářet a spravovat všechny aspekty podnikových aplikací a registrací aplikací. Tato role také uděluje možnost souhlasu s delegovanými oprávněními a oprávněními aplikací s výjimkou rozhraní Microsoft Graph API. Uživatelé přiřazení k této roli nejsou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
 
 Správci cloudových aplikací mohou spravovat pověření aplikace, která jim umožňují zosobnit aplikaci. Uživatelé přiřazení k této roli tedy mohou spravovat přihlašovací údaje aplikace pouze těch aplikací, které nejsou přiřazeny k žádným rolím Azure AD, nebo těm, které jsou přiřazeny jenom k následujícím rolím správce:
+
 * Vývojář aplikace
 * Správce cloudové aplikace
 * Čtečky adresářů
@@ -284,7 +288,7 @@ Uživatelé v této roli můžete povolit, konfigurovat a spravovat služby a na
 
 Uživatelé s touto rolí mají globální oprávnění v rámci služby Microsoft Intune Online, pokud je služba k dispozici. Kromě toho tato role obsahuje možnost spravovat uživatele a zařízení za účelem přidružení zásad, stejně jako vytvářet a spravovat skupiny. Další informace na [ovládací msa (RBAC) založené na rolích s Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control).
 
-Tato role může vytvořit a spravovat všechny skupiny zabezpečení. Správce Intune však nemá práva správce ke skupinám Office. To znamená, že správce nemůže aktualizovat vlastníky nebo členství ve všech skupinách Office v tenantovi. Může však spravovat skupinu Office, kterou vytvoří a která je součástí jeho oprávnění pro koncového uživatele. Takže všechny skupiny office (není skupina zabezpečení), které on / ona vytvoří by měly být započítány do jeho / její kvóta 250.
+Tato role může vytvořit a spravovat všechny skupiny zabezpečení. Správce Intune však nemá práva správce ke skupinám Office. To znamená, že správce nemůže aktualizovat vlastníky nebo členství ve všech skupinách Office v tenantovi. Může však spravovat skupinu Office, kterou vytvoří a která je součástí jeho oprávnění pro koncovéuživatele. Takže všechny skupiny office (není skupina zabezpečení), které on / ona vytvoří by měly být započítány do jeho / její kvóta 250.
 
 > [!NOTE]
 > V rozhraní Microsoft Graph API a Prostředí Azure AD PowerShell je tato role označena jako "Správce služby Intune ". Je to "Správce Intune" na [webu Azure Portal](https://portal.azure.com).
@@ -350,7 +354,13 @@ Uživatelé s touto rolí mohou registrovat tiskárny a spravovat stav tiskárny
 
 ### <a name="privileged-authentication-administrator"></a>[Správce privilegovaného ověřování](#privileged-authentication-administrator-permissions)
 
-Uživatelé s touto rolí mohou nastavit nebo obnovit pověření bez hesla pro všechny uživatele, včetně globálních správců, a mohou aktualizovat hesla pro všechny uživatele. Správci privilegovaného ověřování mohou přinutit uživatele, aby se znovu zaregistrovali proti existujícím pověřením bez hesla (např.
+Uživatelé s touto rolí mohou nastavit nebo obnovit pověření bez hesla pro všechny uživatele, včetně globálních správců, a mohou aktualizovat hesla pro všechny uživatele. Správci privilegovaného ověřování mohou přinutit uživatele, aby se znovu zaregistrovali proti existujícím pověřením bez hesla (například MFA nebo FIDO) a odvolat "pamatovat vícefaktorové ověřování v zařízení", což vyzve k vícefaktorové ověřování při příštím přihlášení všech uživatelů. Role [správce ověřování](#authentication-administrator) může vynutit opětovnou registraci a vícefaktorové ověřování pouze pro uživatele, kteří nejsou správci a uživatelé přiřazeni k následujícím rolím Azure AD:
+
+* Správce ověřování
+* Čtečky adresářů
+* Pozvaní hosté
+* Čtečka Centra zpráv
+* Čtečka sestav
 
 ### <a name="privileged-role-administrator"></a>[Správce privilegovaných rolí](#privileged-role-administrator-permissions)
 

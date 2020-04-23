@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: b-juche
-ms.openlocfilehash: d28f5469174a2659869ebb01ef01653b7190e30e
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: a73da39dafcc8be78fbe1c023693ffa4a19aa1d3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772077"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085004"
 ---
-# <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Výhody používání souborů Azure NetApp s databází Oracle Database
+# <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Výhody použití Azure NetApp Files s Oracle Database
 
 Systém Oracle Direct NFS (dNFS) umožňuje zvýšit výkon než vlastní ovladač systému souborů NFS operačního systému. Tento článek vysvětluje technologii a poskytuje porovnání výkonu mezi dNFS a tradiční klient nfs (kernel nfs). Také ukazuje výhody a snadnost použití dNFS se soubory Azure NetApp.  
 
@@ -39,7 +39,7 @@ Naproti tomu oracle dNFS zlepšuje výkon tím, že vyrovnává zatížení sí�
 
 [Nejčastější dotazy k řešení Oracle pro rozhraní Direct NFS](http://www.orafaq.com/wiki/Direct_NFS) ukazují, že služba Oracle dNFS je optimalizovaným klientem služby NFS. Poskytuje rychlý a škálovatelný přístup k úložišti NFS, které se nachází na úložných zařízeních NAS (přístupných přes Protokol TCP/IP). dNFS je integrován do jádra databáze stejně jako ASM, který se používá především s DAS nebo SAN úložiště. Jako takové *je hlavní zásadou použití dNFS při implementaci úložiště NAS a použití ASM při implementaci úložiště SAN.*
 
-dNFS je výchozí možnost v oracle 18c a výchozí pro RAC.
+dNFS je výchozí možnost v oracle 18c.
 
 dNFS je k dispozici počínaje databází Oracle Database 11g. Níže uvedený diagram porovnává dNFS s nativnínfs. Při použití dNFS, databáze Oracle, která běží na virtuálním počítači Azure můžete řídit více vstupně-va než nativní klient nfs.
 

@@ -1,24 +1,19 @@
 ---
-title: Jak vytvořit image virtuálních virtuálních počítačů s Windows pomocí Packeru v Azure
+title: Jak vytvořit obrázky virtuálních virtuálních aplikací systému Windows pomocí packeru
 description: Naučte se používat Packer k vytváření image virtuálních počítačů s Windows v Azure
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: cb81cbb12605a9d4b8870aab4bb461c8af079cf5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: f813551ed665628898bb219a611947c3026ac67c
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460745"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084477"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak pomocí Packeru vytvářet ibi virtuálních strojů windows v Azure
 Každý virtuální počítač (VM) v Azure se vytvoří z image, která definuje distribuci Windows a verzi operačního systému. Bitové kopie mohou obsahovat předinstalované aplikace a konfigurace. Azure Marketplace poskytuje mnoho ihráží první a třetí strany pro většinu běžných operačních prostředí a aplikačních prostředí, nebo můžete vytvořit vlastní image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak pomocí nástroje s otevřeným zdrojovým kódem [Packer](https://www.packer.io/) definovat a vytvářet vlastní image v Azure.

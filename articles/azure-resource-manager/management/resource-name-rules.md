@@ -2,13 +2,13 @@
 title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981524"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086381"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -534,6 +534,13 @@ V následujících tabulkách se termínem alfanumerický rozumí:
 > | --- | --- | --- | --- |
 > | Clustery | skupina prostředků | 4-63 | Alfanumerické a spojovníky.<br><br>Začátek a konec alfanumerickým. |
 > | pracovní prostory | skupina prostředků | 4-63 | Alfanumerické a spojovníky.<br><br>Začátek a konec alfanumerickým. |
+
+## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+
+> [!div class="mx-tableFixed"]
+> | Entita | Rozsah | Délka | Platné znaky |
+> | --- | --- | --- | --- |
+> | Řešení | Pracovní prostor | – | U řešení, na které se napojí společnost Microsoft, musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>U řešení, která jsou vytvářena třetími stranami, musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje malá a velká písmena. |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
