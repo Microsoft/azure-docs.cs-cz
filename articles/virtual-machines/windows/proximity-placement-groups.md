@@ -1,30 +1,30 @@
 ---
-title: 'PowerShell: Použití skupin umístění bezkontaktní komunikace'
-description: Přečtěte si o vytváření a používání skupin umístění bezkontaktní komunikace pomocí Azure PowerShellu.
+title: 'PowerShell: použití skupin umístění blízkosti'
+description: Seznamte se s vytvářením a používáním skupin umístění blízkosti pomocí Azure PowerShell.
 services: virtual-machines
 ms.service: virtual-machines
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
-ms.openlocfilehash: f69e245d72a63b942896cdd9f4a2225cb4c1706d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: zivr
+ms.openlocfilehash: 2401e8c160fd1c2ee3a734f374f1d4409c52ed16
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78208521"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098522"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Nasazení virtuálních účtů do skupin umístění bezkontaktní komunikace pomocí Prostředí PowerShell
+# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Nasazení virtuálních počítačů do skupin umístění Proximity pomocí prostředí PowerShell
 
 
-Chcete-li získat virtuální chod co nejblíže a dosáhnout nejnižší možné latence, měli byste je nasadit v [rámci skupiny umístění bez kontaktní místo](co-location.md#proximity-placement-groups).
+Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci [skupiny umístění blízkosti](co-location.md#proximity-placement-groups).
 
-Skupina umístění bezkontaktní komunikace je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěny blízko sebe. Skupiny umístění bezkontaktní komunikace jsou užitečné pro úlohy, kde je požadavek nízké latence.
+Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěné blízko sebe. Skupiny umístění blízkosti jsou užitečné pro úlohy, u kterých je minimální latence požadavek.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Vytvoření skupiny umístění bezkontaktní komunikace
-Vytvořte skupinu umístění bezkontaktní komunikace pomocí [rutiny New-AzProximityPlacementGroup.](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) 
+Pomocí rutiny [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) vytvořte skupinu umístění blízkosti. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -38,9 +38,9 @@ $ppg = New-AzProximityPlacementGroup `
    -ProximityPlacementGroupType Standard
 ```
 
-## <a name="list-proximity-placement-groups"></a>Seznam skupin umístění bezkontaktní komunikace
+## <a name="list-proximity-placement-groups"></a>Seznam skupin umístění blízkosti
 
-Můžete vypsat všechny skupiny umístění bezkontaktní umístění pomocí [rutiny Get-AzProximityPlacementGroup.](/powershell/module/az.compute/get-azproximityplacementgroup)
+Pomocí rutiny [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup) můžete zobrazit seznam všech skupin umístění blízkosti.
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální ho ve skupině `-ProximityPlacementGroup $ppg.Id` umístění bezkontaktní umístění pomocí odkazovat na id skupiny umístění bezkontaktní při použití [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) k vytvoření virtuálního mísy.
+Pokud k vytvoření virtuálního počítače použijete `-ProximityPlacementGroup $ppg.Id` [příkaz New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) , ve skupině umístění blízkosti se vytvoří virtuální počítač, který bude odkazovat na ID skupiny umístění blízkosti.
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -62,16 +62,16 @@ New-AzVm `
   -ProximityPlacementGroup $ppg.Id
 ```
 
-Virtuální hotel můžete zobrazit ve skupině umístění pomocí [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup).
+Virtuální počítač ve skupině umístění můžete zobrazit pomocí [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup).
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
     Format-Table -Property VirtualMachines -Wrap
 ```
 
-### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>Přesunutí existujícího virtuálního virtuálního virtuálního pracovního bodu do skupiny umístění bezkontaktní
+### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>Přesunout existující virtuální počítač do skupiny umístění blízkosti
 
-Můžete také přidat existující virtuální hod do skupiny umístění bezkontaktní komunikace. Musíte nejprve zastavit\navrátit virtuální počítač, pak aktualizovat virtuální počítač a restartovat.
+Existující virtuální počítač můžete také přidat do skupiny umístění blízkosti. Nejdřív musíte virtuální počítač stop\deallocate a pak aktualizovat virtuální počítač a restartovat.
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
@@ -81,9 +81,9 @@ Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName -ProximityPlacement
 Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 ```
 
-### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>Přesunutí existujícího virtuálního virtuálního pracovního virtuálního hotelu mimo skupinu umístění bez kontaktní ch odst.
+### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>Přesunout existující virtuální počítač ze skupiny umístění do blízkosti
 
-Pokud chcete odebrat virtuální počítač ze skupiny umístění bezkontaktní, musíte nejprve zastavit\navrátit virtuální počítač, pak aktualizovat virtuální počítač a restartovat.
+Pokud chcete virtuální počítač odebrat ze skupiny umístění blízkosti, musíte nejdřív virtuální počítač stop\deallocate a pak ho aktualizovat a restartovat.
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
@@ -96,11 +96,11 @@ Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti
-Můžete také vytvořit sadu dostupnosti ve skupině umístění bezkontaktní chod. Použijte stejný `-ProximityPlacementGroup` parametr s rutinou [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) k vytvoření skupiny dostupnosti a všechny virtuální chody vytvořené v sadě dostupnosti budou také vytvořeny ve stejné skupině umístění bezkontaktní komunikace.
+Ve skupině umístění blízkosti můžete také vytvořit skupinu dostupnosti. Použijte stejný `-ProximityPlacementGroup` parametr s rutinou [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) k vytvoření skupiny dostupnosti a všechny virtuální počítače vytvořené ve skupině dostupnosti se vytvoří i ve stejné skupině umístění blízkosti.
 
-Chcete-li přidat nebo odebrat existující sadu dostupnosti do skupiny umístění bezkontaktní komunikace, musíte nejprve zastavit všechny virtuální chody v sadě dostupnosti. 
+Pokud chcete přidat nebo odebrat existující skupinu dostupnosti do skupiny umístění blízkosti, musíte nejprve zastavit všechny virtuální počítače ve skupině dostupnosti. 
 
-### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>Přesunutí existující skupiny dostupnosti do skupiny umístění bezkontaktní
+### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>Přesunout existující skupinu dostupnosti do skupiny umístění blízkosti
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
@@ -122,7 +122,7 @@ foreach ($vmId in $vmIDs){
     } 
 ```
 
-### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>Přesunutí existující sady dostupnosti ze skupiny umístění bezkontaktní komunikace
+### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>Přesunutí stávající skupiny dostupnosti mimo skupinu umístění blízkosti
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
@@ -146,12 +146,12 @@ foreach ($vmId in $vmIDs){
 
 ## <a name="scale-sets"></a>Škálovací sady
 
-Můžete také vytvořit škálovací sadu ve skupině umístění bezkontaktní chod. Stejný `-ProximityPlacementGroup` parametr použijte u [nového AzVmssu](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) k vytvoření škálovací sady a všechny instance budou vytvořeny ve stejné skupině umístění bezkontaktní komunikace.
+Ve skupině umístění blízkosti můžete také vytvořit sadu škálování. Použijte stejný `-ProximityPlacementGroup` parametr s [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) k vytvoření sady škálování a všechny instance se vytvoří ve stejné skupině umístění blízkosti.
 
 
-Chcete-li přidat nebo odebrat existující sadu měřítka do skupiny umístění bezkontaktní, musíte nejprve zastavit škálovací sadu. 
+Pokud chcete přidat nebo odebrat existující sadu škálování na skupinu umístění blízkosti, musíte nejprve zastavit sadu škálování. 
 
-### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>Přesunutí existující škálovací sady do skupiny umístění bezkontaktní
+### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>Přesunout existující sadu škálování do skupiny umístění blízkosti
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
@@ -161,7 +161,7 @@ Update-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupN
 Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 ```
 
-### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>Přesunutí existující sady škálování ze skupiny umístění bezkontaktní
+### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>Přesune stávající škálu, která je nastavená mimo skupinu umístění blízkosti.
 
 ```azurepowershell-interactive
 $vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
@@ -173,4 +173,4 @@ Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupNa
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete také použít [Azure CLI](../linux/proximity-placement-groups.md) k vytvoření skupiny umístění bezkontaktní.
+Pomocí rozhraní příkazového [řádku Azure](../linux/proximity-placement-groups.md) můžete také vytvořit skupiny umístění pro Proximity.

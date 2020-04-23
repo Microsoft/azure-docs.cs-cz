@@ -1,73 +1,284 @@
 ---
-title: Řešení problémů se zálohováním sdílených složek Azure
+title: Řešení potíží se zálohováním sdílených složek Azure
 description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
-ms.date: 08/20/2019
+ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6ce613b8c0fe8a7a5df6397ba2f1eb508d61aae
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252386"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100052"
 ---
-# <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Řešení problémů se zálohováním sdílených složek Azure
+# <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Řešení potíží při zálohování sdílených složek Azure
 
-K řešení problémů a chyb, ke kterým dochází při používání zálohování sdílených složek Azure, můžete využít informace uvedené v následujících tabulkách.
+Tento článek obsahuje informace o řešení potíží, které řeší všechny problémy, které jste procházeli při konfiguraci zálohování nebo obnovení sdílených složek Azure pomocí služby Azure Backup.
 
-## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Omezení zálohování sdílených složek Azure během období Preview
+## <a name="common-configuration-issues"></a>Běžné problémy s konfigurací
 
-Zálohování sdílených složek Azure je ve verzi Preview. Sdílené složky Azure v účtech úložiště pro obecné účely v1 i pro obecné účely v2 jsou podporované. Následující scénáře zálohování se nepodporují u sdílených složek Azure:
+### <a name="could-not-find-my-storage-account-to-configure-backup-for-the-azure-file-share"></a>Nepovedlo se najít účet úložiště pro konfiguraci zálohování sdílené složky Azure.
 
-- Pro ochranu souborů Azure pomocí Azure Backup není k dispozici žádné rozhraní příkazového řádku.
-- Maximální počet plánovaných záloh je jedna za den.
-- Maximální počet záloh na vyžádání jsou čtyři za den.
-- Pomocí [uzamčení prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) v účtu úložiště zabráníte náhodnému odstranění záloh v trezoru služby Recovery Services.
-- Neodstraňujte snímky vytvořené službou Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení.
-- Neodstraňujte sdílené složky, které jsou chráněné službou Azure Backup. Aktuální řešení odstraní všechny snímky pořízené službou Azure Backup po odstranění sdílené složky a tím ztratí všechny body obnovení
+- Počkejte na dokončení zjišťování.
+- Ověřte, jestli je už žádná sdílená složka v účtu úložiště chráněná jiným úložištěm Recovery Services.
 
-Zálohování pro sdílené složky Azure v účtech úložiště s replikací [zónově redundantního úložiště](../storage/common/storage-redundancy-zrs.md) (ZRS) je momentálně dostupné jenom ve středních USA (CUS), východních USA (EUS), východních USA 2 (EUS2), severní Evropě (NE), jihovýchodní Asii (SEA), západní Evropě (WE) a západní CH2 (WUS2).
+  >[!NOTE]
+  >Všechny sdílené složky v účtu úložiště je možné chránit jenom v rámci jednoho trezoru Recovery Services. Pomocí [tohoto skriptu](scripts/backup-powershell-script-find-recovery-services-vault.md) můžete najít trezor služby Recovery Services, ve kterém je váš účet úložiště zaregistrovaný.
 
-## <a name="configuring-backup"></a>Konfigurace zálohování
+- Ujistěte se, že sdílená složka není přítomna v žádném z nepodporovaných účtů úložiště. Podporované účty úložiště můžete najít v tématu [Podpora pro zálohování sdílených složek Azure](azure-file-share-support-matrix.md) .
 
-Následující tabulka se týká konfigurace zálohování:
+### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Chyba na portálu hlásí, že zjišťování účtů úložiště selhalo
 
-| Chybové zprávy | Alternativní řešení nebo tipy k řešení |
-| ------------------ | ----------------------------- |
-| Nemůžu najít svůj účet úložiště pro konfiguraci zálohování sdílené složky Azure. | <ul><li>Počkejte na dokončení zjišťování. <li>Zkontrolujte, jestli nějaká sdílená složka z daného účtu úložiště již není chráněná pomocí jiného trezoru služby Recovery Services. **Poznámka:** Všechny sdílené složky v účtu úložiště je možné chránit pouze v jednom trezoru služby Recovery Services. <li>Ujistěte se, že se sdílená složka nenachází v žádném z nepodporovaných účtů úložiště.<li> Ujistěte se, že je v účtu úložiště zaškrtnuto políčko **Povolit důvěryhodným službám společnosti Microsoft pro přístup k tomuto účtu úložiště.** [Přečtěte si další informace.](../storage/common/storage-network-security.md)|
-| Chyba na portálu hlásí, že zjišťování účtů úložiště selhalo. | Pokud máte partnerské předplatné (s podporou poskytovatele CSP), chybu ignorujte. Pokud vaše předplatné nepodporuje poskytovatele CSP a vaše účty úložiště nejde zjistit, kontaktujte podporu.|
-| Nepodařilo se ověřit nebo zaregistrovat vybraný účet úložiště.| Zkuste operaci zopakovat. Pokud problém přetrvává, kontaktujte podporu.|
-| Nepodařilo se vypsat nebo najít sdílené složky ve vybraném účtu úložiště. | <ul><li> Ujistěte se, že účet úložiště existuje ve skupině prostředků (a nebyl odstraněn nebo přesunut po posledním ověření nebo registraci v trezoru).<li>Ujistěte se, že sdílená složka, kterou chcete chránit, nebyla odstraněná. <li>Ujistěte se, že účet úložiště podporuje zálohování sdílených složek.<li>Zkontrolujte, jestli daná sdílená složka již není chráněná ve stejném trezoru služby Recovery Services.|
-| Konfigurace zálohování sdílené složky (nebo konfigurace zásad ochrany) se nedaří. | <ul><li>Zkuste operaci zopakovat a zjistěte, jestli problém přetrvává. <li> Ujistěte se, že sdílená složka, kterou chcete chránit, nebyla odstraněná. <li> Pokud se pokoušíte chránit více sdílených složek najednou a u některých z nich se to nedaří, zkuste znovu nakonfigurovat zálohování sdílených složek, u kterých došlo k chybě. |
-| Po zrušení ochrany sdílené složky nejde odstranit trezor služby Recovery Services. | Na webu Azure Portal otevřete**úložiště** Vault > **úložiště infrastruktury** > zálohování a kliknutím na **Zrušit registraci** odeberte účet úložiště z trezoru služby Recovery Services.|
+Pokud máte partnerské předplatné (s podporou CSP), ignorujte tuto chybu. Pokud vaše předplatné není povolené CSP a vaše účty úložiště nejde zjistit, obraťte se na podporu.
 
-## <a name="error-messages-for-backup-or-restore-job-failures"></a>Chybové zprávy pro selhání úloh zálohování nebo obnovení
+### <a name="selected-storage-account-validation-or-registration-failed"></a>Nepovedlo se ověřit nebo zaregistrovat vybraný účet úložiště.
 
-| Chybové zprávy | Alternativní řešení nebo tipy k řešení |
-| -------------- | ----------------------------- |
-| Operace selhala, protože se sdílená složka nenašla. | Ujistěte se, že sdílená složka, kterou chcete chránit, nebyla odstraněná.|
-| Účet úložiště se nenašel nebo se nepodporuje. | <ul><li>Ujistěte se, že účet úložiště existuje ve skupině prostředků a nebyl z ní odstraněn nebo odebrán po posledním ověření. <li> Ujistěte se, že účet úložiště podporuje zálohování sdílených složek.|
-| Dosáhli jste maximálního počtu snímků pro tuto sdílenou složku, další snímky budete moci pořídit po vypršení platnosti starších snímků. | <ul><li> K této chybě může dojít v případě, že vytvoříte více záloh souboru na vyžádání. <li> Platí omezení 200 snímků na sdílenou složku, a to včetně snímků pořízených službou Azure Backup. Starší naplánované zálohy (nebo snímky) se čistí automaticky. Zálohy (nebo snímky) na vyžádání se musí odstranit, pokud dojde k dosažení maximálního omezení.<li> Odstraňte zálohy na vyžádání (snímky sdílené složky Azure) na portálu Soubory Azure. **Poznámka:** Pokud odstraníte snímky vytvořené službou Azure Backup, přijdete o body obnovení. |
-| Zálohování nebo obnovení sdílené složky selhalo kvůli omezování služby úložiště. Pravděpodobnou příčinou je zaneprázdněnost služby úložiště zpracováním jiných požadavků pro daný účet úložiště.| Po nějaké době zkuste operaci zopakovat. |
-| Obnovení selhalo s chybou Cílová sdílená složka se nenašla. | <ul><li>Ujistěte se, že vybraný účet úložiště existuje a cílová sdílená složka není odstraněná. <li> Ujistěte se, že účet úložiště podporuje zálohování sdílených složek. |
-| Úlohy zálohování nebo obnovení selhaly kvůli tomu, že je účet úložiště v uzamčeném stavu. | Odeberte zámek účtu úložiště nebo místo zámku pro čtení použijte zámek proti odstranění a zkuste operaci zopakovat. |
-| Obnovení selhalo, protože počet souborů, u kterých došlo k chybě, překračuje prahovou hodnotu. | <ul><li> Důvody selhání obnovení jsou uvedené v souboru (cestu najdete v podrobnostech o úloze). Vyřešte chyby a zopakujte operaci obnovení pouze pro soubory, u kterých došlo k chybě. <li> Běžné důvody selhání obnovení souborů: <br/> – Ujistěte se, že se soubory, u kterých došlo k chybě, aktuálně nepoužívají. <br/> – V nadřazeném adresáři existuje adresář se stejným názvem jako soubor, u kterého došlo k chybě. |
-| Obnovení selhalo, protože nebylo možné obnovit žádný soubor. | <ul><li> Důvody selhání obnovení jsou uvedené v souboru (cestu najdete v podrobnostech o úloze). Vyřešte chyby a zopakujte operaci obnovení pouze pro soubory, u kterých došlo k chybě. <li> Běžné důvody selhání obnovení souborů: <br/> – Ujistěte se, že se soubory, u kterých došlo k chybě, aktuálně nepoužívají. <br/> – V nadřazeném adresáři existuje adresář se stejným názvem jako soubor, u kterého došlo k chybě. |
-| Obnovení selhalo, protože některý ze souborů ve zdroji neexistuje. | <ul><li> Data bodu obnovení neobsahují vybrané položky. Pokud chcete obnovit soubory, zadejte správný seznam souborů. <li> Snímek sdílené složky odpovídající bodu obnovení se ručně odstranil. Vyberte jiný bod obnovení zkuste operaci obnovení zopakovat. |
-| Probíhá jiná úloha obnovení do stejného cíle. | <ul><li>Zálohování sdílených složek nepodporuje paralelní obnovení do stejné cílové sdílené složky. <li>Počkejte na dokončení stávajícího obnovení a zkuste to znovu. Pokud v trezoru služby Recovery Services úlohu zálohování nenajdete, zkontrolujte další trezory služby Recovery Services ve stejném předplatném. |
-| Operace obnovení selhala, protože cílová sdílená složka je plná. | Navyšte kvótu velikosti cílové sdílené složky, aby byla dostatečná pro data obnovení, a zkuste operaci zopakovat. |
-| Operace obnovení selhala, protože došlo k chybě při provádění operací před obnovením s prostředky Synchronizace souborů přidruženými k cílové sdílené složce. | Zkuste operaci zopakovat později, a pokud se problém nevyřeší, kontaktujte podporu Azure. |
-| Jeden nebo více souborů nebylo možné úspěšně obnovit. Další informace najdete v seznamu souborů, u kterých došlo k chybě, v cestě uvedené výše. | <ul> <li> Důvody selhání obnovení jsou uvedené v souboru (cestu najdete v podrobnostech o úloze). Vyřešte tyto důvody a zopakujte operaci obnovení pouze pro soubory, u kterých došlo k chybě. <li> Běžné důvody selhání obnovení souborů: <br/> – Ujistěte se, že se soubory, u kterých došlo k chybě, aktuálně nepoužívají. <br/> – V nadřazeném adresáři existuje adresář se stejným názvem jako soubor, u kterého došlo k chybě. |
+Zkuste registraci zopakovat. Pokud se problém opakuje, obraťte se na podporu.
 
-## <a name="modify-policy"></a>Změnit zásadu
+### <a name="could-not-list-or-find-file-shares-in-the-selected-storage-account"></a>Nepovedlo se vypsat nebo najít sdílené složky ve vybraném účtu úložiště.
 
-| Chybové zprávy | Alternativní řešení nebo tipy k řešení |
-| ------------------ | ----------------------------- |
-| Pro tuto položku probíhá další operace ochrany konfigurace. | Počkejte na dokončení předchozí operace zásad úprav a opakujte akci po určité době.|
-| U vybrané položky probíhá jiná operace. | Počkejte na dokončení další probíhající operace a opakujte akci po nějaké operaci. |
+- Ujistěte se, že účet úložiště existuje ve skupině prostředků a že se po posledním ověření nebo registraci v trezoru neodstranil ani nepřesunul.
+- Zajistěte, aby sdílená složka, kterou chcete chránit, nebyla Odstraněná.
+- Ujistěte se, že účet úložiště je pro zálohování sdílených složek podporovaný účet úložiště. Podporované účty úložiště můžete najít v tématu [Podpora pro zálohování sdílených složek Azure](azure-file-share-support-matrix.md) .
+- Ověřte, jestli je sdílená složka už chráněná ve stejném trezoru Recovery Services.
+
+### <a name="backup-file-share-configuration-or-the-protection-policy-configuration-is-failing"></a>Konfigurace záložní sdílené složky (nebo konfigurace zásad ochrany) selhává
+
+- Pokud potíže potrvají, zkontrolujte konfiguraci znovu.
+- Zajistěte, aby se sdílená složka, kterou chcete chránit, neodstranila.
+- Pokud se pokoušíte chránit více sdílených složek najednou a některé sdílené složky selžou, zkuste znovu nakonfigurovat zálohování pro neúspěšné sdílené složky.
+
+### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Po zrušení ochrany sdílené složky nejde odstranit Recovery Services trezor.
+
+V Azure Portal otevřete > **účty úložiště** **infrastruktury zálohování** **trezoru** > a kliknutím na **zrušit registraci** odeberte účty úložiště z trezoru Recovery Services.
+
+>[!NOTE]
+>Trezor služby Recovery Services je možné odstranit až po zrušení registrace všech účtů úložiště zaregistrovaných v trezoru.
+
+## <a name="common-backup-or-restore-errors"></a>Běžné chyby zálohování nebo obnovení
+
+### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound – operace se nezdařila, protože se nenašla sdílená složka.
+
+Kód chyby: FileShareNotFound
+
+Chybová zpráva: operace se nezdařila, protože se nenašla sdílená složka.
+
+Zajistěte, aby se sdílená složka, kterou se pokoušíte chránit, neodstranila.
+
+### <a name="usererrorfileshareendpointunreachable--storage-account-not-found-or-not-supported"></a>UserErrorFileShareEndpointUnreachable – účet úložiště se nenašel nebo se nepodporuje.
+
+Kód chyby: UserErrorFileShareEndpointUnreachable
+
+Chybová zpráva: účet úložiště se nenašel nebo se nepodporuje.
+
+- Ujistěte se, že účet úložiště existuje ve skupině prostředků a že se po posledním ověření neodstranil nebo neodebral ze skupiny prostředků.
+
+- Ujistěte se, že účet úložiště je pro zálohování sdílených složek podporovaný účet úložiště.
+
+### <a name="afsmaxsnapshotreached--you-have-reached-the-max-limit-of-snapshots-for-this-file-share-you-will-be-able-to-take-more-once-the-older-ones-expire"></a>AFSMaxSnapshotReached – dosáhli jste maximálního počtu snímků pro tuto sdílenou složku; po vypršení platnosti starších verzí bude možné provést další akce.
+
+Kód chyby: AFSMaxSnapshotReached
+
+Chybová zpráva: dosáhli jste maximálního počtu snímků pro tuto sdílenou složku. po vypršení platnosti starších verzí bude možné provést další akce.
+
+- K této chybě může dojít, když vytvoříte více záloh na vyžádání pro sdílenou složku.
+- Počet 200 snímků na sdílenou složku je omezen na, včetně těch, které jsou pořízeny Azure Backup. Starší naplánované zálohy (nebo snímky) se čistí automaticky. Zálohy (nebo snímky) na vyžádání se musí odstranit, pokud dojde k dosažení maximálního omezení.
+
+Odstraňte zálohy na vyžádání (snímky sdílené složky Azure) na portálu Soubory Azure.
+
+>[!NOTE]
+> Pokud odstraníte snímky vytvořené pomocí Azure Backup, ztratíte body obnovení.
+
+### <a name="usererrorstorageaccountnotfound--operation-failed-as-the-specified-storage-account-does-not-exist-anymore"></a>UserErrorStorageAccountNotFound – operace se nezdařila, protože zadaný účet úložiště už neexistuje.
+
+Kód chyby: UserErrorStorageAccountNotFound
+
+Chybová zpráva: operace se nezdařila, protože zadaný účet úložiště už neexistuje.
+
+Ujistěte se, že účet úložiště stále existuje a že není odstraněný.
+
+### <a name="usererrordtsstorageaccountnotfound--the-storage-account-details-provided-are-incorrect"></a>UserErrorDTSStorageAccountNotFound – zadané podrobnosti o účtu úložiště jsou nesprávné.
+
+Kód chyby: UserErrorDTSStorageAccountNotFound
+
+Chybová zpráva: zadané podrobnosti o účtu úložiště jsou nesprávné.
+
+Ujistěte se, že účet úložiště stále existuje a že není odstraněný.
+
+### <a name="usererrorresourcegroupnotfound--resource-group-doesnt-exist"></a>UserErrorResourceGroupNotFound – skupina prostředků neexistuje.
+
+Kód chyby: UserErrorResourceGroupNotFound
+
+Chybová zpráva: Skupina prostředků neexistuje.
+
+Vyberte existující skupinu prostředků nebo vytvořte novou skupinu prostředků.
+
+### <a name="parallelsnapshotrequest--a-backup-job-is-already-in-progress-for-this-file-share"></a>ParallelSnapshotRequest – úloha zálohování už pro tuto sdílenou složku probíhá.
+
+Kód chyby: ParallelSnapshotRequest
+
+Chybová zpráva: pro tuto sdílenou složku již probíhá úloha zálohování.
+
+- Zálohování sdílené složky nepodporuje paralelní požadavky snímku na stejnou sdílenou složku.
+
+- Počkejte, až se dokončí stávající úloha zálohování, a pak to zkuste znovu. Pokud nemůžete najít úlohu zálohování v trezoru Recovery Services, podívejte se na jiné trezory Recovery Services ve stejném předplatném.
+
+### <a name="filesharebackupfailedwithazurerprequestthrottling-filesharerestorefailedwithazurerprequestthrottling--file-share-backup-or-restore-failed-due-to-storage-service-throttling-this-may-be-because-the-storage-service-is-busy-processing-other-requests-for-the-given-storage-account"></a>Zálohování nebo obnovení sdílené složky FileshareBackupFailedWithAzureRpRequestThrottling/FileshareRestoreFailedWithAzureRpRequestThrottling se nezdařilo z důvodu omezení služby úložiště. Důvodem může být to, že služba úložiště je zaneprázdněná zpracováním jiných požadavků pro daný účet úložiště.
+
+Kód chyby: FileshareBackupFailedWithAzureRpRequestThrottling/FileshareRestoreFailedWithAzureRpRequestThrottling
+
+Chybová zpráva: zálohování nebo obnovení sdílené složky se nezdařilo, protože došlo k omezení služby úložiště. Pravděpodobnou příčinou je zaneprázdněnost služby úložiště zpracováním jiných požadavků pro daný účet úložiště.
+
+Zkuste operaci zálohování nebo obnovení provést později.
+
+### <a name="targetfilesharenotfound--target-file-share-not-found"></a>TargetFileShareNotFound – cílová sdílená složka se nenašla.
+
+Kód chyby: TargetFileShareNotFound
+
+Chybová zpráva: cílová sdílená složka se nenašla.
+
+- Ujistěte se, že vybraný účet úložiště existuje a cílová sdílená složka se neodstraní.
+
+- Ujistěte se, že účet úložiště je pro zálohování sdílených složek podporovaný účet úložiště.
+
+### <a name="usererrorstorageaccountislocked--backup-or-restore-jobs-failed-due-to-storage-account-being-in-locked-state"></a>UserErrorStorageAccountIsLocked – úlohy zálohování nebo obnovení selhaly, protože účet úložiště je v uzamčeném stavu.
+
+Kód chyby: UserErrorStorageAccountIsLocked
+
+Chybová zpráva: úlohy zálohování nebo obnovení se nezdařily, protože účet úložiště je v uzamčeném stavu.
+
+Odeberte zámek na účtu úložiště, nebo místo **zámku pro čtení** použijte **Zámek proti odstranění** a zkuste operaci zálohování nebo obnovení zopakovat.
+
+### <a name="datatransferservicecoflimitreached--recovery-failed-because-number-of-failed-files-are-more-than-the-threshold"></a>DataTransferServiceCoFLimitReached – obnovení nebylo úspěšné, protože počet neúspěšných souborů je vyšší než prahová hodnota.
+
+Kód chyby: DataTransferServiceCoFLimitReached
+
+Chybová zpráva: obnovení nebylo úspěšné, protože počet neúspěšných souborů je vyšší než prahová hodnota.
+
+- Důvody selhání obnovení jsou uvedeny v souboru (cesta je uvedena v podrobnostech úlohy). Vyřešte chyby a opakujte operaci obnovení pouze pro soubory, které selhaly.
+
+- Běžné důvody selhání obnovení souborů:
+
+  - soubory, které se nezdařily, se momentálně používají.
+  - v nadřazeném adresáři existuje adresář se stejným názvem jako soubor, který selhal.
+
+### <a name="datatransferserviceallfilesfailedtorecover--recovery-failed-as-no-file-could-be-recovered"></a>DataTransferServiceAllFilesFailedToRecover – obnovení nebylo úspěšné, protože se nepovedlo obnovit žádný soubor.
+
+Kód chyby: DataTransferServiceAllFilesFailedToRecover
+
+Chybová zpráva: obnovení nebylo úspěšné, protože se nepovedlo obnovit žádný soubor.
+
+- Důvody selhání obnovení jsou uvedeny v souboru (cesta je uvedena v podrobnostech úlohy). Vyřešte chyby a zopakujte operaci obnovení pouze pro soubory, u kterých došlo k chybě.
+
+- Běžné důvody selhání obnovení souborů:
+
+  - soubory, které se nezdařily, se momentálně používají.
+  - v nadřazeném adresáři existuje adresář se stejným názvem jako soubor, který selhal.
+
+### <a name="usererrordtssourceurinotvalid---restore-fails-because-one-of-the-files-in-the-source-does-not-exist"></a>UserErrorDTSSourceUriNotValid – obnovení selhalo, protože jeden ze souborů ve zdroji neexistuje.
+
+Kód chyby: DataTransferServiceSourceUriNotValid
+
+Chybová zpráva: operace obnovení se nezdařila, protože jeden ze souborů ve zdroji neexistuje.
+
+- Data bodu obnovení neobsahují vybrané položky. Pokud chcete obnovit soubory, zadejte správný seznam souborů.
+- Snímek sdílené složky odpovídající bodu obnovení se ručně odstranil. Vyberte jiný bod obnovení zkuste operaci obnovení zopakovat.
+
+### <a name="usererrordtsdestlocked--a-recovery-job-is-in-process-to-the-same-destination"></a>UserErrorDTSDestLocked – probíhá zpracování úlohy obnovení do stejného cíle.
+
+Kód chyby: UserErrorDTSDestLocked
+
+Chybová zpráva: probíhá zpracování úlohy obnovení do stejného cíle.
+
+- Zálohování sdílené složky nepodporuje paralelní obnovení do stejné cílové sdílené složky.
+
+- Počkejte na dokončení stávajícího obnovení a zkuste to znovu. Pokud nemůžete najít úlohu obnovení v trezoru Recovery Services, podívejte se na jiné trezory Recovery Services ve stejném předplatném.
+
+### <a name="usererrortargetfilesharefull--restore-operation-failed-as-target-file-share-is-full"></a>Operace UserErrorTargetFileShareFull-Restore se nezdařila, protože cílová sdílená složka je plná.
+
+Kód chyby: UserErrorTargetFileShareFull
+
+Chybová zpráva: operace obnovení se nezdařila, protože cílová sdílená složka je plná.
+
+Zvyšte kvótu velikosti cílové sdílené složky, aby odpovídala datům pro obnovení, a zkuste operaci obnovení zopakovat.
+
+### <a name="usererrortargetfilesharequotanotsufficient--target-file-share-does-not-have-sufficient-storage-size-quota-for-restore"></a>UserErrorTargetFileShareQuotaNotSufficient – cílová sdílená složka nemá dostatečnou kvótu velikosti úložiště pro obnovení.
+
+Kód chyby: UserErrorTargetFileShareQuotaNotSufficient
+
+Chybová zpráva: cílová sdílená složka nemá dostatečnou kvótu velikosti úložiště pro obnovení.
+
+Zvyšte kvótu velikosti cílové sdílené složky, aby vyhovovala datům pro obnovení, a zkuste operaci zopakovat.
+
+### <a name="file-sync-prerestorefailed--restore-operation-failed-as-an-error-occurred-while-performing-pre-restore-operations-on-file-sync-service-resources-associated-with-the-target-file-share"></a>Operace Synchronizace souborů PreRestoreFailed-Restore se nezdařila, protože došlo k chybě při provádění operací před obnovením u prostředků služby Synchronizace souborů přidružených k cílové sdílené složce.
+
+Kód chyby: Synchronizace souborů PreRestoreFailed
+
+Chybová zpráva: operace obnovení se nezdařila, protože došlo k chybě při provádění operací před obnovením u prostředků služby Synchronizace souborů přidružených k cílové sdílené složce.
+
+Zkuste data obnovit později. Pokud potíže trvají, obraťte se na podporu Microsoftu.
+
+### <a name="azurefilesyncchangedetectioninprogress--azure-file-sync-service-change-detection-is-in-progress-for-the-target-file-share-the-change-detection-was-triggered-by-a-previous-restore-to-the-target-file-share"></a>AzureFileSyncChangeDetectionInProgress-Azure File Sync zjišťování změn služby probíhá pro cílovou sdílenou složku. Detekci změn aktivovala předchozí obnovení do cílové sdílené složky.
+
+Kód chyby: AzureFileSyncChangeDetectionInProgress
+
+Chybová zpráva: pro cílovou sdílenou složku probíhá zjišťování změn služby Azure File Sync. Detekci změn aktivovala předchozí obnovení do cílové sdílené složky.
+
+Použijte jinou cílovou sdílenou složku. Alternativně můžete počkat na dokončení Azure File Sync zjišťování změn služby pro cílovou sdílenou složku před opakováním pokusu o obnovení.
+
+### <a name="usererrorafsrecoverysomefilesnotrestored--one-or-more-files-could-not-be-recovered-successfully-for-more-information-check-the-failed-file-list-in-the-path-given-above"></a>UserErrorAFSRecoverySomeFilesNotRestored – jeden nebo víc souborů se nepovedlo úspěšně obnovit. Další informace najdete v seznamu neúspěšných souborů v cestě uvedené výše.
+
+Kód chyby: UserErrorAFSRecoverySomeFilesNotRestored
+
+Chybová zpráva: jeden nebo více souborů nelze úspěšně obnovit. Další informace najdete v seznamu souborů, u kterých došlo k chybě, v cestě uvedené výše.
+
+- Důvody selhání obnovení jsou uvedeny v souboru (cesta je uvedena v podrobnostech úlohy). Vyřešte důvody a opakujte operaci obnovení pouze pro soubory, které selhaly.
+- Běžné důvody selhání obnovení souborů:
+
+  - soubory, které se nezdařily, se momentálně používají.
+  - v nadřazeném adresáři existuje adresář se stejným názvem jako soubor, který selhal.
+
+### <a name="usererrorafssourcesnapshotnotfound--azure-file-share-snapshot-corresponding-to-recovery-point-cannot-be-found"></a>UserErrorAFSSourceSnapshotNotFound – nenašel se snímek sdílené složky Azure odpovídající bodu obnovení.
+
+Kód chyby: UserErrorAFSSourceSnapshotNotFound
+
+Chybová zpráva: nenašel se snímek sdílené složky Azure odpovídající bodu obnovení.
+
+- Zajistěte, aby byl snímek sdílené složky odpovídající bodu obnovení, který se snažíte použít pro obnovení, stále existuje.
+
+  >[!NOTE]
+  >Pokud odstraníte snímek sdílené složky, který byl vytvořen Azure Backup, odpovídající body obnovení se stanou nepoužitelnými. Pro zajištění zaručeného obnovení Doporučujeme neodstraňovat snímky.
+
+- Zkuste pro obnovení dat vybrat jiný bod obnovení.
+
+### <a name="usererroranotherrestoreinprogressonsametarget--another-restore-job-is-in-progress-on-the-same-target-file-share"></a>UserErrorAnotherRestoreInProgressOnSameTarget – probíhá jiná úloha obnovení ve stejné cílové sdílené složce.
+
+Kód chyby: UserErrorAnotherRestoreInProgressOnSameTarget
+
+Chybová zpráva: probíhá jiná úloha obnovení ve stejné cílové sdílené složce.
+
+Použijte jinou cílovou sdílenou složku. Případně můžete zrušit nebo počkat na dokončení jiného obnovení.
+
+## <a name="common-modify-policy-errors"></a>Běžné chyby zásad úprav
+
+### <a name="bmsusererrorconflictingprotectionoperation--another-configure-protection-operation-is-in-progress-for-this-item"></a>BMSUserErrorConflictingProtectionOperation – pro tuto položku probíhá jiná operace konfigurace ochrany.
+
+Kód chyby: BMSUserErrorConflictingProtectionOperation
+
+Chybová zpráva: pro tuto položku probíhá jiná operace konfigurace ochrany.
+
+Počkejte na dokončení předchozí operace Upravit zásadu a zkuste to znovu později.
+
+### <a name="bmsusererrorobjectlocked--another-operation-is-in-progress-on-the-selected-item"></a>BMSUserErrorObjectLocked – u vybrané položky probíhá jiná operace.
+
+Kód chyby: BMSUserErrorObjectLocked
+
+Chybová zpráva: u vybrané položky probíhá jiná operace.
+
+Počkejte na dokončení jiné probíhající operace a zkuste to znovu později.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zálohování sdílených složek Azure najdete v tématu:
+Další informace o zálohování sdílených složek Azure najdete v těchto tématech:
 
 - [Zálohování sdílených složek Azure](backup-afs.md)
 - [Nejčastější dotazy k zálohování sdílených složek Azure](backup-azure-files-faq.md)

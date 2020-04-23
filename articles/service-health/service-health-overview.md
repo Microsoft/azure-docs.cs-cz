@@ -1,71 +1,71 @@
 ---
-title: Přehled stavu služby | Dokumenty společnosti Microsoft
-description: Přizpůsobené informace o tom, jak jsou vaše aplikace Azure ovlivněny aktuálními a budoucími problémy se službami Azure a údržbou.
+title: Přehled Service Health | Microsoft Docs
+description: Individuální informace o tom, jak jsou vaše aplikace Azure ovlivněny aktuálními a budoucími problémy a údržbou služeb Azure.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 280be9f0df1f94dad59c1af147d499860571f86e
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898440"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097247"
 ---
-# <a name="service-health-overview"></a>Přehled stavu služby
+# <a name="service-health-overview"></a>Přehled Service Health
 
-Služba Service Health vám poskytuje přizpůsobitelný řídicí panel, který sleduje stav vašich služeb Azure v oblastech, kde je používáte. Na tomto řídicím panelu můžete sledovat aktivní události, jako jsou probíhající problémy se službami, nadcházející plánovaná údržba nebo příslušné zdravotní doporučení. Když se události stanou neaktivními, umístí se do vaší zdravotní historie po dobu až 90 dnů. Nakonec můžete pomocí řídicího panelu Stav služby vytvořit a spravovat výstrahy stavu služby, které vás proaktivně upozorní, když vás problémy se službou ovlivňují.
+Service Health poskytuje přizpůsobitelný řídicí panel, který sleduje stav služeb Azure v oblastech, ve kterých je používáte. V tomto řídicím panelu můžete sledovat aktivní události, jako jsou průběžné problémy se službami, nadcházející plánovaná údržba nebo příslušné poradce pro stav. Když se události stanou neaktivní, uloží se do historie stavu po dobu až 90 dnů. Nakonec můžete pomocí řídicího panelu Service Health vytvářet a spravovat výstrahy týkající se stavu služby, které vás proaktivně upozorní na to, co se vás týkají problémy se službou.
 
-## <a name="service-health-events"></a>Události stavu služby
+## <a name="service-health-events"></a>Události Service Health
 
-Stav služby sleduje čtyři typy událostí stavu, které mohou mít vliv na vaše prostředky:
+Service Health sleduje čtyři typy událostí stavu, které mohou mít vliv na vaše prostředky:
 
-1. **Problémy se službami** – problémy ve službách Azure, které se vás teď týkají. 
+1. **Problémy se službou** – problémy ve službách Azure, které vás v tuto chvíli ovlivňují. 
 2. **Plánovaná údržba** – nadcházející údržba, která může ovlivnit dostupnost vašich služeb v budoucnu.  
-3. **Doporučení stavu** – změny ve službách Azure, které vyžadují vaši pozornost. Mezi příklady patří, když jsou funkce Azure zastaralé nebo pokud překročíte kvótu využití.
-4. **Informační zpravodaje zabezpečení (preview)** – oznámení související se zabezpečením, která mohou ovlivnit dostupnost vašich služeb Azure.
+3. **Poradce pro stav** – změny ve službách Azure, které vyžadují vaši pozornost. Příklady zahrnují vyřazení funkcí Azure nebo požadavků na upgrade (například upgrade na podporované rozhraní PHP).
+4. **Informační zpravodaje zabezpečení (Preview)** – oznámení související se zabezpečením, která mohou mít vliv na dostupnost služeb Azure.
 
 > [!NOTE]
-> Chcete-li zobrazit události stavu služby, uživatelé musí [být udělena role čtečky](../role-based-access-control/role-assignments-portal.md) na předplatné.
+> Chcete-li zobrazit Service Health události, musí být uživatelům [udělena role čtenář](../role-based-access-control/role-assignments-portal.md) v rámci předplatného.
 
-## <a name="get-started-with-service-health"></a>Začínáme se stavem služby
+## <a name="get-started-with-service-health"></a>Začínáme s Service Health
 
-Pokud chcete spustit řídicí panel Stavu služby, vyberte na řídicím panelu portálu dlaždici Stav služby. Pokud jste dlaždici dříve odebrali nebo používáte vlastní řídicí panel, vyhledejte službu Service Health v části Další služby (vlevo dole na řídicím panelu).
+Řídicí panel Service Health spustíte tak, že na řídicím panelu portálu vyberete dlaždici Service Health. Pokud jste už tuto dlaždici odebrali nebo jste použili vlastní řídicí panel, vyhledejte Service Health službu v části "další služby" (dole vlevo na řídicím panelu).
 
-![Začínáme se stavem služby](./media/service-health-overview/azure-service-health-overview-1.png)
+![Začínáme s Service Health](./media/service-health-overview/azure-service-health-overview-1.png)
 
-## <a name="see-current-issues-which-impact-your-services"></a>Zobrazení aktuálních problémů, které ovlivňují vaše služby
+## <a name="see-current-issues-which-impact-your-services"></a>Zobrazit aktuální problémy, které mají vliv na vaše služby
 
-Zobrazení **Problémy se službou** zobrazuje všechny probíhající problémy ve službách Azure, které mají vliv na vaše prostředky. Můžete pochopit, kdy problém začal a jaké služby a oblasti jsou ovlivněny. Můžete si také přečíst nejnovější aktualizaci, abyste pochopili, co Azure dělá k vyřešení problému. 
+Zobrazení **problémy se službou** zobrazuje všechny probíhající problémy ve službách Azure, které mají vliv na vaše prostředky. Můžete pochopit, kdy problém začal a jaké služby a oblasti budou ovlivněny. Můžete si také přečíst nejnovější aktualizaci, abyste zjistili, co Azure dělá k vyřešení tohoto problému. 
 
 ![Správa problému se službou](./media/service-health-overview/azure-service-health-overview-2.png)
 
-Zvolte kartu **Potenciální dopad,** chcete-li zobrazit konkrétní seznam prostředků, které vlastníte a které by mohly být ovlivněny problémem. Můžete si stáhnout seznam CSV těchto zdrojů, které chcete sdílet se svým týmem.
+Kliknutím na kartu **potenciální dopad** můžete zobrazit konkrétní seznam prostředků, které vlastníte, což může být ovlivněno problémem. Seznam sdílených svazků clusteru můžete stáhnout a sdílet je s týmem.
 
-![Správa problému se službami – dopad](./media/service-health-overview/azure-service-health-overview-4.png)
+![Správa problému se službou – dopad](./media/service-health-overview/azure-service-health-overview-4.png)
 
-## <a name="get-links-and-downloadable-explanations"></a>Získejte odkazy a vysvětlení ke stažení 
+## <a name="get-links-and-downloadable-explanations"></a>Získat odkazy a vysvětlení ke stažení 
 
-Můžete získat odkaz na problém použít ve vašem systému správy problémů. Můžete si stáhnout soubory PDF a někdy i soubory CSV a sdílet je s lidmi, kteří nemají přístup k portálu Azure.   
+Můžete získat odkaz na problém, který se má použít v systému pro správu problémů. Soubory PDF a soubory CSV si můžete stáhnout a sdílet je s lidmi, kteří nemají přístup k Azure Portal.   
 
-![Správa problému se službami – správa problémů](./media/service-health-overview/azure-service-health-overview-3.png)
+![Správa problému se službou – Správa problémů](./media/service-health-overview/azure-service-health-overview-3.png)
 
-## <a name="get-support-from-microsoft"></a>Získejte podporu od společnosti Microsoft
+## <a name="get-support-from-microsoft"></a>Získat podporu od Microsoftu
 
-Obraťte se na podporu, pokud je prostředek ponechán ve špatném stavu i po vyřešení problému.  Použijte odkazy podpory na pravé straně stránky.  
+Pokud je váš prostředek ponechán v nesprávném stavu i po vyřešení problému, obraťte se na podporu.  Použijte odkazy na podporu na pravé straně stránky.  
 
-## <a name="pin-a-personalized-health-map-to-your-dashboard"></a>Připnutí personalizované mapy stavu na řídicí panel
+## <a name="pin-a-personalized-health-map-to-your-dashboard"></a>Připnout přizpůsobenou mapu stavu na řídicí panel
 
-Funkce Filter Service Health zobrazí vaše důležitá podniková předplatná, oblasti a typy prostředků. Uložte filtr a připněte si přizpůsobenou mapu světa se stavem služeb na řídicí panel portálu. 
+Filtrovat Service Health pro zobrazení předplatných, oblastí a typů prostředků, které jsou důležité pro vaši firmu Uložte filtr a připněte si přizpůsobenou mapu světa se stavem služeb na řídicí panel portálu. 
 
-![Filtrování mapy přizpůsobeného stavu](./media/service-health-overview/azure-service-health-overview-6a.png)
+![Filtrovat přizpůsobenou mapu stavu](./media/service-health-overview/azure-service-health-overview-6a.png)
 
-![Připnutí personalizované mapy stavu](./media/service-health-overview/azure-service-health-overview-6b.png)
+![Připnout přizpůsobenou mapu stavu](./media/service-health-overview/azure-service-health-overview-6b.png)
 
-## <a name="configure-service-health-alerts"></a>Konfigurace výstrah stavu služby
+## <a name="configure-service-health-alerts"></a>Konfigurace upozornění na stav služby
 
-Služba Health se integruje s Azure Monitor, aby vás upozornila prostřednictvím e-mailů, textových zpráv a oznámení webhooku, když jsou ovlivněny vaše důležité obchodní prostředky. Nastavte výstrahu protokolu aktivit pro příslušnou událost stavu služby. Směrujte tuto výstrahu příslušným osobám ve vaší organizaci pomocí skupin akcí. Další informace naleznete v [tématu Konfigurace výstrah pro stav služby](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
+Service Health se integruje s Azure Monitor a upozorní vás prostřednictvím e-mailů, textových zpráv a oznámení Webhooku v případě, že budou ovlivněny vaše důležité firemní prostředky. Nastavte upozornění protokolu aktivit pro příslušnou událost služby Service Health. Směrování této výstrahy na příslušné osoby ve vaší organizaci pomocí skupin akcí. Další informace najdete v tématu [Konfigurace výstrah pro Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) .
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
 ## <a name="next-steps"></a>Další kroky
 
-Nastavte výstrahy tak, abyste byli upozorněni na problémy se stavem. Další informace najdete [v tématu Doporučené postupy pro nastavení výstrah stavu služby Azure](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s). 
+Nastavte výstrahy, abyste byli informováni o problémech se stavem. Další informace najdete v tématu [osvědčené postupy pro nastavení výstrah Azure Service Health](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s). 

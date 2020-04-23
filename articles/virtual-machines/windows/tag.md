@@ -1,40 +1,34 @@
 ---
 title: Jak označit prostředek virtuálního počítače s Windows v Azure
-description: Informace o označování virtuálního počítače s Windows vytvořeného v Azure pomocí modelu nasazení Správce prostředků
-services: virtual-machines-windows
-documentationcenter: ''
+description: Přečtěte si informace o označení virtuálního počítače s Windows vytvořeného v Azure pomocí modelu nasazení Správce prostředků.
 author: mmccrory
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 56d17f45-e4a7-4d84-8022-b40334ae49d2
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 8f95c11f93ca2075eb2472ad5bb7360df7d69234
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 6ecf0f047fe353d94ca901118d1f434e33e9c8d2
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456443"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100562"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak označit virtuální počítač s Windows v Azure
-Tento článek popisuje různé způsoby označení virtuálního počítače s Windows v Azure prostřednictvím modelu nasazení Správce prostředků. Značky jsou uživatelem definované dvojice klíč/hodnota, které lze umístit přímo na prostředek nebo skupinu prostředků. Azure aktuálně podporuje až 50 značek na prostředek a skupinu prostředků. Značky mohou být umístěny na prostředek v době vytvoření nebo přidány do existujícího prostředku. Upozorňujeme, že značky jsou podporovány pouze pro prostředky vytvořené prostřednictvím modelu nasazení Správce prostředků. Pokud chcete označit virtuální počítač s Linuxem, přečtěte [si, jak označit virtuální počítač Linuxu v Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Tento článek popisuje různé způsoby, jak označit virtuální počítač s Windows v Azure pomocí modelu nasazení Správce prostředků. Značky jsou páry klíč/hodnota definované uživatelem, které lze umístit přímo do prostředku nebo skupiny prostředků. Azure v současné době podporuje až 50 značek na jeden prostředek a skupinu prostředků. Značky lze umístit na prostředek v době vytvoření nebo přidání do existujícího prostředku. Upozorňujeme, že značky se podporují jenom u prostředků vytvořených pomocí modelu nasazení Správce prostředků. Pokud chcete označit virtuální počítač se systémem Linux, přečtěte si téma [jak označit virtuální počítač se systémem Linux v Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-tag](../../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-powershell"></a>Označování pomocí PowerShellu
-Chcete-li vytvářet, přidávat a odstraňovat značky prostřednictvím PowerShellu, musíte nejprve nastavit [prostředí PowerShellu pomocí Správce prostředků Azure][PowerShell environment with Azure Resource Manager]. Po dokončení instalace můžete umístit značky na výpočetní prostředky, sítě a prostředky úložiště při vytváření nebo po vytvoření prostředku prostřednictvím prostředí PowerShell. Tento článek se zaměří na prohlížení / úpravy značek umístěných na virtuálních počítačích.
+Pokud chcete vytvořit, přidat a odstranit značky přes PowerShell, musíte nejdřív nastavit [prostředí PowerShell pomocí Azure Resource Manager][PowerShell environment with Azure Resource Manager]. Po dokončení instalace můžete značky umístit na výpočetní, síťové a úložné prostředky při vytváření nebo po vytvoření prostředku přes PowerShell. Tento článek se soustředí na zobrazení nebo úpravu značek umístěných na Virtual Machines.
 
  
 
-Nejprve přejděte na virtuální `Get-AzVM` počítač prostřednictvím rutiny.
+Nejprve přejděte k virtuálnímu počítači pomocí `Get-AzVM` rutiny.
 
         PS C:\> Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
 
-Pokud váš virtuální počítač už značky obsahuje, uvidíte všechny značky ve vašem zdroji:
+Pokud váš virtuální počítač už obsahuje značky, zobrazí se vám všechny značky v prostředku:
 
         Tags : {
                 "Application": "MyApp1",
@@ -43,9 +37,9 @@ Pokud váš virtuální počítač už značky obsahuje, uvidíte všechny znač
                 "Environment": "Production"
                }
 
-Pokud chcete přidat značky přes PowerShell, `Set-AzResource` můžete použít příkaz. Poznámka: Při aktualizaci značek prostřednictvím PowerShellu se značky aktualizují jako celek. Pokud tedy přidáváte jednu značku k prostředku, který již značky má, budete muset zahrnout všechny značky, které chcete umístit do prostředku. Níže je uveden příklad, jak přidat další značky k prostředku prostřednictvím rutin prostředí PowerShell.
+Pokud chcete přidat značky přes PowerShell, můžete použít `Set-AzResource` příkaz. Poznámka: při aktualizaci značek prostřednictvím PowerShellu se značky aktualizují jako celek. Takže pokud přidáváte jednu značku k prostředku, který již obsahuje značky, bude nutné zahrnout všechny značky, které chcete umístit do prostředku. Níže je uveden příklad přidání dalších značek k prostředku prostřednictvím rutin prostředí PowerShell.
 
-Tato první rutina nastaví všechny značky umístěné na *MyTestVM* `Tags` na *proměnnou $tags* pomocí vlastnosti `Get-AzResource` a.
+Tato první rutina nastaví všechny značky, které jsou umístěny v *MyTestVM* , do proměnné *$Tags* pomocí `Get-AzResource` vlastnosti `Tags` a.
 
         PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
@@ -62,15 +56,15 @@ Druhý příkaz zobrazí značky pro danou proměnnou.
     Environment   Production
 ```
 
-Třetí příkaz přidá další značku do *proměnné $tags.* Všimněte si **+=** použití připojit nový klíč/hodnota dvojice do seznamu *$tags.*
+Třetí příkaz přidá do proměnné *$Tags* další značku. Všimněte si použití **+=** pro připojení nové dvojice klíč-hodnota k seznamu *$Tags* .
 
         PS C:\> $tags += @{Location="MyLocation"}
 
-Čtvrtý příkaz nastaví všechny značky definované v *proměnné $tags* na daný prostředek. V tomto případě je MyTestVM.
+Čtvrtý příkaz nastaví všechny značky definované v *$Tags* proměnnou na daný prostředek. V tomto případě je to MyTestVM.
 
         PS C:\> Set-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
 
-Pátý příkaz zobrazí všechny značky na prostředek. Jak můžete vidět, *Umístění* je nyní definována jako značka s *MyLocation* jako hodnota.
+Pátý příkaz zobrazí všechny značky na prostředku. Jak vidíte, *umístění* je nyní definováno jako značka s *MyLocation* jako hodnotou.
 
 ```
     PS C:\> (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
@@ -84,13 +78,13 @@ Pátý příkaz zobrazí všechny značky na prostředek. Jak můžete vidět, *
     Location      MyLocation
 ```
 
-Další informace o označování pomocí PowerShellu najdete v [rutinách prostředků Azure][Azure Resource Cmdlets].
+Další informace o označování značek prostřednictvím PowerShellu najdete v části [rutiny prostředků Azure][Azure Resource Cmdlets].
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o označování prostředků Azure najdete v [tématu Přehled Správce prostředků Azure][Azure Resource Manager Overview] a použití značek k uspořádání prostředků [Azure][Using Tags to organize your Azure Resources].
-* Informace o tom, jak vám značky můžou pomoct se správou využití prostředků Azure, najdete [v tématu Principy účtu Azure][Understanding your Azure Bill] a získání [přehledu o spotřebě prostředků Microsoft Azure][Gain insights into your Microsoft Azure resource consumption].
+* Další informace o označování vašich prostředků Azure najdete v tématu [přehled Azure Resource Manager přehledu][Azure Resource Manager Overview] a [použití značek k uspořádání prostředků Azure][Using Tags to organize your Azure Resources].
+* Pokud chcete zjistit, jak vám značky pomůžou spravovat vaše používání prostředků Azure, přečtěte si článek [Princip fakturace Azure][Understanding your Azure Bill] a [Získejte přehled o využití prostředků Microsoft Azure][Gain insights into your Microsoft Azure resource consumption].
 
 [PowerShell environment with Azure Resource Manager]: ../../azure-resource-manager/management/manage-resources-powershell.md
 [Azure Resource Cmdlets]: https://docs.microsoft.com/powershell/module/az.resources/

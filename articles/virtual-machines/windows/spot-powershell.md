@@ -1,37 +1,38 @@
 ---
-title: Nasazení virtuálních virtuálních počítačů Azure Spot pomocí PowerShellu
-description: Zjistěte, jak pomocí Azure PowerShellu nasadit virtuální počítače Spot, abyste ušetřili náklady.
+title: Použití PowerShellu k nasazení virtuálních počítačů Azure na místě
+description: Naučte se používat Azure PowerShell k nasazení virtuálních počítačů na místě za účelem úspory nákladů.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 234cf3f51173c53ef8ca15af4ca6f24881be3109
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.reviewer: jagaveer
+ms.openlocfilehash: 321983fbe99d17dc78198feb195eed8ea26de569
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547288"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100613"
 ---
-# <a name="deploy-spot-vms-using-azure-powershell"></a>Nasazení virtuálních počítačů s bodem pomocí Azure PowerShellu
+# <a name="deploy-spot-vms-using-azure-powershell"></a>Nasazení virtuálních počítačů na místě pomocí Azure PowerShell
 
 
-Použití [spotových virtuálních měn](spot-vms.md) vám umožní využít naši nevyužitou kapacitu s výraznými úsporami nákladů. Kdykoli v okamžiku, kdy Azure potřebuje kapacitu zpět, infrastruktura Azure vystěhovává virtuální počítače Spot. Virtuální počítače Spot jsou proto skvělé pro úlohy, které zvládnou přerušení, jako jsou úlohy dávkového zpracování, vývojová a testovací prostředí, velké výpočetní úlohy a další.
+Použití [přímých virtuálních počítačů](spot-vms.md) vám umožní využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure virtuální počítače na místě. Proto jsou virtuální počítače Skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojové a testovací prostředí, velké výpočetní úlohy a další.
 
-Ceny pro spotové virtuální počítače jsou variabilní na základě oblasti a skladové položky. Další informace najdete v tématu Ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Další informace o nastavení maximální ceny najdete v tématu [Spot Virtuální virtuální chod – ceny](spot-vms.md#pricing).
+Ceny pro virtuální počítače na místě jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Další informace o nastavení maximální ceny najdete v tématu [virtuální počítače – ceny](spot-vms.md#pricing).
 
-Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu za virtuální hod. Maximální cenu pro spotový virtuální virtuální mísu lze nastavit v amerických dolarech (USD) s použitím až 5 desetinných míst. Například hodnota `0.98765`by byla maximální cena $0.98765 USD za hodinu. Pokud nastavíte maximální `-1`cenu , virtuální počítač nebude vystěhován na základě ceny. Cena za virtuální ho virtuálního mítna bude aktuální cena za spot nebo cena za standardní virtuální ms, který je vždy menší, pokud je k dispozici kapacita a kvóta.
+Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu pro virtuální počítač. Maximální cena za virtuální počítač na místě se dá nastavit v amerických dolarech (USD), a to s využitím až 5 desetinných míst. Hodnota `0.98765`by měla být například maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu `-1`, nebude se virtuální počítač vyřadit podle ceny. Cena za virtuální počítač bude aktuální cena za bod nebo cena za standardní virtuální počítač, který je stále menší, pokud je dostupná kapacita a kvóta.
 
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 
-Vytvořte spotVM pomocí [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) k vytvoření konfigurace. Zahrnout `-Priority Spot` a `-MaxPrice` nastavit buď:
-- `-1`takže virtuální počítač není vystěhován na základě ceny.
-- v dolarech až do výše 5 číslic. Například `-MaxPrice .98765` znamená, že virtuální město se bude deallocated jednou cena za spotVM jde o $.98765 za hodinu.
+Vytvořte spotVM pomocí [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) pro vytvoření konfigurace. Zahrňte `-Priority Spot` a `-MaxPrice` nastavte buď na:
+- `-1`virtuální počítač proto nebude vyřazení na základě ceny.
+- hodnota dolaru, maximálně 5 číslic. Například `-MaxPrice .98765` znamená, že se virtuální počítač bude uvolnit, jakmile cena za spotVM bude přibližně o 98765 za hodinu.
 
 
-Tento příklad vytvoří spotVM, který nebude na základě cen (pouze v případě, že Azure potřebuje kapacitu zpět).
+Tento příklad vytvoří spotVM, který se nevrátí na základě cen (jenom v případě, že Azure potřebuje kapacitu zpátky).
 
 ```azurepowershell-interactive
 $resourceGroup = "mySpotRG"
@@ -64,7 +65,7 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-Po vytvoření virtuálního virtuálního aplikace můžete dotaz zobrazit maximální cenu pro všechny virtuální chody ve skupině prostředků.
+Po vytvoření virtuálního počítače se můžete dotazovat, aby se zobrazila maximální cena za všechny virtuální počítače ve skupině prostředků.
 
 ```azurepowershell-interactive
 Get-AzVM -ResourceGroupName $resourceGroup | `
@@ -73,6 +74,6 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="next-steps"></a>Další kroky
 
-Virtuální počítač Spot můžete také vytvořit pomocí [příkazového příkazu Konto Azure](../linux/spot-cli.md) nebo [šablony](../linux/spot-template.md).
+Můžete také vytvořit virtuální počítač s přímým použitím rozhraní příkazového [řádku Azure](../linux/spot-cli.md) nebo [šablony](../linux/spot-template.md).
 
-Pokud narazíte na chybu, přečtěte si informace [o chybových kódech](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Pokud dojde k chybě, přečtěte si [kódy chyb](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

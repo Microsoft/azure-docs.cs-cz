@@ -1,27 +1,28 @@
 ---
-title: Použití virtuálních virtuálních počítačů Azure Spot
-description: Přečtěte si, jak pomocí virtuálních virtuálních počítačů spotů ušetřit náklady.
+title: Použití virtuálních počítačů Azure na místě
+description: Naučte se používat virtuální počítače na místě k úsporám za cenu.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: dd59ccba74b2813b2d38073cac35ba80d97cf4d1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.reviewer: jagaveer
+ms.openlocfilehash: c453e8a70a6cd4b9d33a6d40bebd2ac0a804e5e6
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548148"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100579"
 ---
-# <a name="use-spot-vms-in-azure"></a>Použití virtuálních počítačů spotv Azure
+# <a name="use-spot-vms-in-azure"></a>Použití bodových virtuálních počítačů v Azure
 
 [!INCLUDE [common-spot-vms](../../../includes/virtual-machines-common-spot-vms.md)]  
 
 
 ## <a name="next-steps"></a>Další kroky
-K nasazení virtuálních virtuálních měn [spotů](spot-portal.md)použijte portál , [cli](../linux/spot-cli.md) nebo [prostředí PowerShell.](spot-powershell.md)
+K nasazení virtuálních počítačů na místě použijte [portál](spot-portal.md), [CLI](../linux/spot-cli.md) nebo [PowerShell](spot-powershell.md) .
 
-Můžete také nasadit [škálovací sadu s instancemi virtuálních virtuálních vbodů .](../../virtual-machine-scale-sets/use-spot.md)
+Můžete také nasadit [sadu škálování s instancemi virtuálních počítačů na místě](../../virtual-machine-scale-sets/use-spot.md).
 
-Pokud narazíte na chybu, přečtěte si informace [o chybových kódech](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Pokud dojde k chybě, přečtěte si [kódy chyb](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

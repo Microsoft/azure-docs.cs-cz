@@ -1,59 +1,60 @@
 ---
-title: Zálohování sdílené složky Azure
-description: Přečtěte si, jak zálohovat sdílené složky Azure v trezoru služby Recovery Services
+title: Zálohování Azure File Share
+description: Naučte se zálohovat sdílené složky Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: fd5bb51b2c7b5c09e9d859b69c3094eb50c205b5
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: bea5035ff50eaf4047f56cde3bd671d81e21f5d3
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396285"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101415"
 ---
-# <a name="about-azure-file-share-backup"></a>Zálohování sdílené složky Azure
+# <a name="about-azure-file-share-backup"></a>Zálohování Azure File Share
 
-Zálohování sdílení souborů Azure je nativní cloudové řešení zálohování, které chrání vaše data v cloudu a eliminuje další nároky na údržbu, které se účastní místních řešení zálohování. Služba Azure Backup se hladce integruje se synchronizací souborů Azure a umožňuje centralizovat data sdílení souborů i zálohy. Toto jednoduché, spolehlivé a zabezpečené řešení umožňuje nakonfigurovat ochranu sdílených složek podniku v několika jednoduchých krocích s jistotou, že v případě jakéhokoli scénáře katastrofy můžete obnovit data.
+Zálohování sdílené složky Azure je nativní cloudové řešení zálohování, které chrání vaše data v cloudu a odstraňuje další režijní náklady spojené s místními řešeními zálohování. Služba Azure Backup hladce integruje se službou Azure File Sync a umožňuje centralizovat vaše data sdílené složky i zálohy. Toto jednoduché, spolehlivé a zabezpečené řešení umožňuje nakonfigurovat ochranu firemních sdílených složek v několika jednoduchých krocích s jistotou, že můžete obnovit data v případě jakéhokoli scénáře havárie.
 
-## <a name="key-benefits-of-azure-file-share-backup"></a>Klíčové výhody zálohování sdílení souborů Azure
+## <a name="key-benefits-of-azure-file-share-backup"></a>Klíčové výhody zálohování Azure File Share
 
-* Nulová infrastruktura: Ke konfiguraci ochrany sdílených složek není potřeba žádné nasazení.
-* Integrované možnosti správy: Můžete naplánovat zálohování a určit požadovanou dobu uchování bez další režie vyřezávání dat.
-* Okamžité obnovení: Zálohování sdílené složky Azure používá snímky sdílené složky, takže můžete vybrat jenom soubory, které chcete okamžitě obnovit.
-* Upozorňování a vytváření sestav: Můžete nakonfigurovat výstrahy pro selhání zálohování a obnovení a pomocí řešení pro vytváření sestav poskytovaného službou Azure Backup získat přehled o zálohách ve sdílených složkách.
+* Nulová infrastruktura: ke konfiguraci ochrany sdílených složek není nutné žádné nasazení.
+* Přizpůsobené uchovávání: v závislosti na vašich požadavcích můžete nakonfigurovat zálohy s denním/týdenním/měsíčním/ročním uchováváním.
+* Integrované možnosti správy: můžete naplánovat zálohování a zadat požadovanou dobu uchování bez další režie vyřazování dat.
+* Okamžité obnovení: zálohování sdílené složky Azure používá snímky sdílené složky, takže můžete vybrat jenom soubory, které se mají okamžitě obnovit.
+* Výstrahy a vytváření sestav: můžete nakonfigurovat výstrahy pro selhání zálohování a obnovení a použít řešení pro vytváření sestav, které poskytuje Azure Backup, abyste získali přehled o zálohách ve sdílených složkách souborů.
 
 ## <a name="architecture"></a>Architektura
 
-![Architektura zálohování sdílení souborů Azure](./media/azure-file-share-backup-overview/azure-file-shares-backup-architecture.png)
+![Architektura zálohování sdílené složky Azure](./media/azure-file-share-backup-overview/azure-file-shares-backup-architecture.png)
 
 ## <a name="how-the-backup-process-works"></a>Jak funguje proces zálohování
 
-1. Prvním krokem při konfiguraci zálohování pro sdílené složky Azure file je vytvoření trezoru služeb pro obnovení. Úschovna poskytuje konsolidované zobrazení záloh nakonfigurovaných v různých úlohách.
+1. Prvním krokem při konfiguraci zálohování sdílených složek Azure je vytvoření trezoru služby Recovery Services. Trezor poskytuje konsolidované zobrazení záloh konfigurovaných napříč různými úlohami.
 
-2. Po vytvoření trezoru služba Azure Backup zjišťuje účty úložiště, které lze zaregistrovat v trezoru. Můžete vybrat účet úložiště, který je hostitelem sdílených složek, které chcete chránit.
+2. Po vytvoření trezoru služba Azure Backup zjistí účty úložiště, které se dají zaregistrovat v trezoru. Můžete vybrat účet úložiště hostující sdílené složky, které chcete chránit.
 
-3. Po výběru účtu úložiště služba Azure Backup zobrazí sadu sdílených složek, které se nacházejí v účtu úložiště, a uloží jejich názvy do katalogu vrstvy správy.
+3. Po výběru účtu úložiště vypíše služba Azure Backup sadu sdílených složek v účtu úložiště a uloží jejich názvy v katalogu vrstev pro správu.
 
-4. Potom nakonfigurujte zásady zálohování (plán a uchovávání informací) podle vašich požadavků a vyberte sdílené složky, které chcete zálohovat. Služba Azure Backup registruje plány v rovině ovládacího prvku k plánování zálohování.
+4. Pak nakonfigurujte zásady zálohování (plán a uchovávání) podle vašich požadavků a vyberte sdílené složky, které chcete zálohovat. Služba Azure Backup registruje plány v řídicí rovině pro plánované zálohování.
 
-5. Na základě zadané zásady plánovač e-zálohování Azure aktivuje zálohování v naplánovaný čas. Jako součást této úlohy je snímek sdílené složky vytvořen pomocí rozhraní API sdílené složky. V úložišti metadat je uložena pouze adresa URL snímku.
+5. Na základě zadaných zásad Azure Backup Scheduler spustí zálohování v naplánovaném čase. V rámci této úlohy se snímek sdílené složky vytvoří pomocí rozhraní API pro sdílení souborů. V úložišti metadat je uložena pouze adresa URL snímku.
 
     >[!NOTE]
-    >Data sdílení souborů se nepřenášejí do služby Zálohování, protože služba Backup vytváří a spravuje snímky, které jsou součástí vašeho účtu úložiště.
+    >Data sdílené složky se nepřenášejí do služby zálohování, protože služba zálohování vytváří a spravuje snímky, které jsou součástí vašeho účtu úložiště, a zálohy se nepřenášejí do trezoru.
 
-6. Obsah sdílené složky Azure (jednotlivé soubory nebo úplnou sdílenou složku) můžete obnovit ze snímků dostupných ve zdrojové sdílené složce. Jakmile je operace spuštěna, adresa URL snímku se načte z úložiště metadat a data jsou uvedena a přenesena ze zdrojového snímku do cílovésdílené složky podle vašeho výběru.
+6. Obsah sdílené složky Azure (jednotlivé soubory nebo celou sdílenou složku) můžete obnovit ze snímků dostupných ve zdrojové sdílené složce. Po aktivaci operace se z úložiště metadat načte adresa URL snímku a data se zobrazí a přenesou ze zdrojového snímku do cílové sdílené složky, kterou si zvolíte.
 
-7. Data monitorování úloh zálohování a obnovení se zasouvá do služby Azure Backup Monitoring. To vám umožní sledovat cloudové zálohy pro sdílené složky souborů na jednom řídicím panelu. Kromě toho můžete také nakonfigurovat výstrahy nebo e-mailová oznámení, pokud je ovlivněn stav zálohy. E-maily se posílají prostřednictvím e-mailové služby Azure.
+7. Data sledování úloh zálohování a obnovení se odešlou do služby monitorování Azure Backup. To vám umožní monitorovat zálohy souborů v cloudu na jednom řídicím panelu. Kromě toho můžete nakonfigurovat také výstrahy nebo e-mailová oznámení v případě, že bude ovlivněn stav zálohování. E-maily se odesílají přes e-mailovou službu Azure.
 
 ## <a name="backup-costs"></a>Náklady na zálohování
 
-Zálohování sdílené složky Azure je řešení založené na snímku a poplatky za úložiště, které se účtují za snímky, se účtují spolu s využitím souborů Azure podle podrobností o cenách uvedených [zde](https://azure.microsoft.com/pricing/details/storage/files/).
+Zálohování sdílené složky Azure je řešení založené na snímcích a poplatky za úložiště vynaložené pro snímky se účtují spolu se službou Azure Files podle [níže](https://azure.microsoft.com/pricing/details/storage/files/)uvedených podrobností o cenách.
 
-Poplatek za chráněnou instanci za využití řešení zálohování je však podle cenového modelu popsaného v části [Zálohování pro soubory Azure.](https://azure.microsoft.com/pricing/details/backup/) V současné době byla skutečná cena aktualizována pouze pro západní střední USA. V jiných regionech budou přesné ceny brzy aktualizovány s některými regionálními variantami, ale za použití stejného cenového modelu.
+Poplatek za chráněnou instanci pro využití řešení zálohování je ale podle cenového modelu popsaného v části [zálohování souborů Azure](https://azure.microsoft.com/pricing/details/backup/) . V současné době byla skutečná cena aktualizována pouze pro Středozápadní USA. Pro jiné oblasti se budou brzy aktualizovat přesné ceny s některými regionálními variantami, ale budou se používat stejný cenový model.
 
 >[!NOTE]
->Během náhledu neexistuje žádný "poplatek za chráněnou instanci" a bude vám účtován pouze za snímky podle [zde](https://azure.microsoft.com/pricing/details/storage/files/)uvedených cen .
+>Nyní není k dispozici žádný poplatek za chráněnou instanci a za snímky se vám bude účtovat pouze podle cen uvedených [zde](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si, jak [zálohovat sdílené složky Azure](backup-afs.md)
-* Najděte odpovědi na [otázky týkající se zálohování souborů Azure](backup-azure-files-faq.md)
+* Informace o [Zálohování sdílených složek Azure](backup-afs.md)
+* Najít odpovědi na [otázky týkající se zálohování souborů Azure](backup-azure-files-faq.md)

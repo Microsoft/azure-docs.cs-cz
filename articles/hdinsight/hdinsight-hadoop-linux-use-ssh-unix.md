@@ -1,6 +1,6 @@
 ---
 title: Použití SSH se systémem Hadoop – Azure HDInsight
-description: Pro přístup k systému HDInsight můžete použít Secure Shell (SSH). V tomto dokumentu najdete informace o připojení ke službě HDInsight pomocí příkazů SSH a SCP z klientů se systémem Windows, Linux, Unix nebo macOS.
+description: Pro přístup k systému HDInsight můžete použít Secure Shell (SSH). Tento dokument poskytuje informace o připojení ke službě HDInsight pomocí příkazů SSH z klientů Windows, Linux, UNIX nebo macOS.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,25 +8,25 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: a53037b5f6c43de0e08bb1c5143f27d14600ca62
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 427a3fbebe858d50d774ebfa7de4576985135abf
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381420"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099168"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH
 
-Naučte se používat [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) k bezpečnému připojení k Apache Hadoop na Azure HDInsight. Informace o připojení prostřednictvím virtuální sítě najdete v [tématu Architektura virtuálních sítí Azure HDInsight](./hdinsight-virtual-network-architecture.md) a [Plánování nasazení virtuální sítě pro clustery Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md).
+Naučte se používat [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) k zabezpečenému připojení Apache Hadoop v Azure HDInsight. Informace o připojení přes virtuální síť najdete v tématu [Architektura virtuální sítě Azure HDInsight](./hdinsight-virtual-network-architecture.md). Viz také [Plánování nasazení virtuální sítě pro clustery Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md).
 
-Následující tabulka obsahuje adresu a informace o portu potřebné při připojování k hdinsightu pomocí klienta SSH:
+Následující tabulka obsahuje informace o adrese a portu potřebné pro připojení ke službě HDInsight pomocí klienta SSH:
 
 | Adresa | Port | Připojení... |
 | ----- | ----- | ----- |
 | `<clustername>-ssh.azurehdinsight.net` | 22 | Primární hlavní uzel |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | Sekundární hlavní uzel |
-| `<clustername>-ed-ssh.azurehdinsight.net` | 22 | hraniční uzel (ML Services na HDInsight) |
-| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | hraniční uzel (jakýkoli jiný typ clusteru, pokud existuje uzel hrany) |
+| `<clustername>-ed-ssh.azurehdinsight.net` | 22 | hraniční uzel (služby ML v HDInsight) |
+| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | hraniční uzel (jakýkoli jiný typ clusteru, pokud existuje hraniční uzel) |
 
 Nahraďte `<clustername>` názvem svého clusteru. Parametr `<edgenodename>` nahraďte názvem hraničního uzlu.
 
@@ -41,21 +41,21 @@ Pokud cluster obsahuje hraniční uzel, doporučujeme vám __připojovat se k hr
 
 Systémy Linux, Unix a macOS nabízí příkazy `ssh` a `scp`. Klient `ssh` se v systému založeném na Linuxu nebo Unixu běžně používá k vytvoření vzdálené relace příkazového řádku. Klient `scp` slouží k bezpečnému kopírování souborů mezi vaším klientem a vzdáleným systémem.
 
-Systém Microsoft Windows ve výchozím nastavení nenainstaluje žádné klienty SSH. Klienti `ssh` a `scp` jsou ve Windows k dispozici prostřednictvím následujících balíčků:
+Microsoft Windows ve výchozím nastavení neinstaluje žádné klienty SSH. Klienti `ssh` a `scp` jsou ve Windows k dispozici prostřednictvím následujících balíčků:
 
-* [Klient OpenSSH](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse). Tento klient je volitelná funkce zavedená v aktualizaci Windows 10 Fall Creators Update.
+* [Klient OpenSSH](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse) Tento klient je volitelnou funkcí představenou ve Windows 10 – aktualizace tvůrců.
 
-* [Bash na Ubuntu na Windows 10](https://docs.microsoft.com/windows/wsl/about).
+* [Bash na Ubuntu ve Windows 10](https://docs.microsoft.com/windows/wsl/about).
 
-* [Azure Cloud Shell](../cloud-shell/quickstart.md). Cloud Shell poskytuje prostředí Bash ve vašem prohlížeči.
+* [Azure Cloud Shell](../cloud-shell/quickstart.md). Cloud Shell poskytuje prostředí bash v prohlížeči.
 
 * [Git](https://git-scm.com/).
 
-Existuje také několik grafických Klientů SSH, jako jsou [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/) a [MobaXterm](https://mobaxterm.mobatek.net/). I když je možné tyto klienty použít pro připojení k HDInsightu, proces připojení se od použití nástroje `ssh` liší. Další informace naleznete v dokumentaci grafického klienta, který používáte.
+K dispozici je také několik grafických klientů SSH, jako [jsou například výstupy a](https://www.chiark.greenend.org.uk/~sgtatham/putty/) [MobaXterm](https://mobaxterm.mobatek.net/). I když je možné tyto klienty použít pro připojení k HDInsightu, proces připojení se od použití nástroje `ssh` liší. Další informace najdete v dokumentaci k grafickému klientovi, který používáte.
 
 ## <a name="authentication-ssh-keys"></a><a id="sshkey"></a>Ověřování: Klíče SSH
 
-Klíče SSH používají [kryptografii s veřejným klíčem](https://en.wikipedia.org/wiki/Public-key_cryptography) k ověření relací SSH. Klíče SSH jsou bezpečnější než hesla a nabízí snadný způsob, jak zabezpečit přístup ke clusteru Hadoop.
+Klíče SSH používají [kryptografii s veřejným klíčem](https://en.wikipedia.org/wiki/Public-key_cryptography) k ověřování relací SSH. Klíče SSH jsou bezpečnější než hesla a nabízí snadný způsob, jak zabezpečit přístup ke clusteru Hadoop.
 
 Pokud je váš účet SSH zabezpečený pomocí klíče, klient musí při připojení poskytnout odpovídající privátní klíč:
 
@@ -87,14 +87,14 @@ Během procesu vytváření klíčů budete vyzváni k zadání informací. tře
 
 | Metoda vytvoření | Jak použít veřejný klíč |
 | ------- | ------- |
-| portál Azure | Zrušte zaškrtnutí políčka __Použít přihlašovací heslo clusteru pro SSH__a pak vyberte __veřejný klíč__ jako typ ověřování SSH. Nakonec vyberte soubor veřejného klíče nebo vložte testový obsah tohoto souboru do pole __Veřejný klíč SSH__.</br>![Dialogové okno Veřejný klíč SSH při vytváření clusteru HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
-| Azure PowerShell | Použijte `-SshPublicKey` parametr rutiny [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) a předaj obsah veřejného klíče jako řetězec.|
-| Azure CLI | Použijte `--sshPublicKey` parametr příkazu [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) a předaj obsah veřejného klíče jako řetězec. |
+| portál Azure | Zrušte zaškrtnutí políčka __použít heslo přihlášení clusteru pro SSH__a pak jako typ ověřování SSH vyberte __veřejný klíč__ . Nakonec vyberte soubor veřejného klíče nebo vložte testový obsah tohoto souboru do pole __Veřejný klíč SSH__.</br>![Dialogové okno Veřejný klíč SSH při vytváření clusteru HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
+| Azure PowerShell | Použijte `-SshPublicKey` parametr rutiny [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) a obsah veřejného klíče předejte jako řetězec.|
+| Azure CLI | Použijte `--sshPublicKey` parametr [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) příkazu a předejte obsah veřejného klíče jako řetězec. |
 | Šablona Resource Manageru | Příklad použití klíčů SSH s využití šablony najdete v části věnované [nasazení HDInsightu v Linuxu pomocí klíče SSH](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/). Element `publicKeys` v souboru [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) slouží při vytváření clusteru k předání klíčů do Azure. |
 
 ## <a name="authentication-password"></a>Ověřování: Heslo
 
-Účty SSH je možné zabezpečit pomocí hesla. Když se připojíte k HDInsight pomocí SSH, budete vyzváni k zadání hesla.
+Účty SSH je možné zabezpečit pomocí hesla. Když se připojíte ke službě HDInsight pomocí SSH, budete vyzváni k zadání hesla.
 
 > [!WARNING]  
 > Microsoft nedoporučuje pro SSH používat ověřování heslem. Hesla se dají uhádnout a můžou se stát terčem útoku hrubou silou. Místo toho doporučujeme využívat [klíče SSH k ověřování](#sshkey).
@@ -106,20 +106,20 @@ Během procesu vytváření klíčů budete vyzváni k zadání informací. tře
 
 | Metoda vytvoření | Jak zadat heslo |
 | --------------- | ---------------- |
-| portál Azure | Ve výchozím nastavení má uživatelský účet SSH stejné heslo jako účet pro přihlášení ke clusteru. Chcete-li použít jiné heslo, zaškrtněte __políčko Použít přihlašovací heslo clusteru pro SSH__a zadejte heslo do pole __Heslo SSH.__</br>![Dialogové okno Heslo SSH při vytváření clusteru HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
-| Azure PowerShell | Použijte `--SshCredential` parametr rutiny [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) a předaj `PSCredential` objekt, který obsahuje název uživatelského účtu SSH a heslo. |
-| Azure CLI | Použijte `--ssh-password` parametr příkazu [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) a zadejte hodnotu hesla. |
+| portál Azure | Ve výchozím nastavení má uživatelský účet SSH stejné heslo jako účet pro přihlášení ke clusteru. Chcete-li použít jiné heslo, zrušte políčko __použít heslo přihlášení clusteru pro SSH__a potom zadejte heslo do pole __heslo SSH__ .</br>![Dialogové okno Heslo SSH při vytváření clusteru HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
+| Azure PowerShell | Použijte `--SshCredential` parametr rutiny [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) a předejte `PSCredential` objekt, který obsahuje název a heslo uživatelského účtu SSH. |
+| Azure CLI | Použijte `--ssh-password` parametr [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) příkazu a zadejte hodnotu pro heslo. |
 | Šablona Resource Manageru | Příklad použití hesla s využitím šablony najdete v části věnované [nasazení HDInsightu v Linuxu pomocí hesla SSH](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/). Element `linuxOperatingSystemProfile` v souboru [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) slouží při vytváření clusteru k předání hesla a názvu učtu SSH do Azure.|
 
 ### <a name="change-the-ssh-password"></a>Změna hesla SSH
 
 Informace o změně hesla uživatelského účtu SSH najdete v dokumentu věnovaném [správě HDInsightu](hdinsight-administer-use-portal-linux.md#change-passwords) v části __Změna hesel__.
 
-## <a name="authentication-domain-joined-hdinsight"></a>Ověřovací doména připojená k HDInsight
+## <a name="authentication-domain-joined-hdinsight"></a>HDInsight připojené k doméně ověřování
 
-Pokud používáte __cluster HDInsight přilehlý k doméně__, musíte `kinit` tento příkaz použít po připojení k místnímu uživateli SSH. Tento příkaz vás vyzve k zadání hesla a uživatele domény a ověří platnost vaší relace s využitím domény služby Azure Active Directory přidružené ke clusteru.
+Pokud používáte __cluster HDInsight připojený k doméně__, musíte použít `kinit` příkaz po připojení k místnímu uživateli SSH. Tento příkaz vás vyzve k zadání hesla a uživatele domény a ověří platnost vaší relace s využitím domény služby Azure Active Directory přidružené ke clusteru.
 
-Můžete také povolit ověřování protokolem Kerberos na každém uzlu přilehlém k doméně (například hlavní uzel, hraniční uzel) pro použití účtu domény. To vyžaduje úpravu konfiguračního souboru sshd:
+Ověřování protokolem Kerberos můžete také povolit na všech uzlech připojených k doméně (například hlavní uzel, hraniční uzel) k SSH pomocí účtu domény. To vyžaduje úpravu konfiguračního souboru sshd:
 
 ```bash
 sudo vi /etc/ssh/sshd_config
@@ -137,7 +137,7 @@ Další informace najdete v tématu [Konfigurace clusterů HDInsight připojený
 
 ## <a name="connect-to-nodes"></a>Připojení k uzlům
 
-Hlavní uzly a hraniční uzel (pokud existuje) jsou přístupné přes internet na portech 22 a 23.
+Hlavní uzly a hraniční uzel (pokud existuje) je k dispozici přes Internet na portech 22 a 23.
 
 * Při připojování k __hlavním uzlům__ použijte port __22__ pro připojení k primárnímu hlavnímu uzlu a port __23__ pro připojení k sekundárnímu hlavnímu uzlu. Plně kvalifikovaný název domény, který byste měli použít, je `clustername-ssh.azurehdinsight.net`, kde `clustername` je název vašeho clusteru.
 
@@ -160,11 +160,11 @@ Hlavní uzly a hraniční uzel (pokud existuje) jsou přístupné přes internet
 > [!IMPORTANT]  
 > V předchozích příkladech se předpokládá, že používáte ověřování heslem nebo že automaticky probíhá ověřování certifikátů. Pokud k ověřování používáte pár klíč-hodnota SSH a certifikát se nepoužívá automaticky, použijte parametr `-i` k zadání privátního klíče. Například, `ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net`.
 
-Po připojení se výzva změní a označuje uživatelské jméno SSH a uzel, ke které jste připojeni. Například po připojení k primárnímu hlavnímu uzlu jako `sshuser` se na příkazovém řádku zobrazí `sshuser@<active-headnode-name>:~$`.
+Po připojení se výzva změní, aby označovala uživatelské jméno SSH a uzel, ke kterému jste se připojili. Například po připojení k primárnímu hlavnímu uzlu jako `sshuser` se na příkazovém řádku zobrazí `sshuser@<active-headnode-name>:~$`.
 
-### <a name="connect-to-worker-and-apache-zookeeper-nodes"></a>Připojení k uzlům pracovníka a Apache Zookeeper
+### <a name="connect-to-worker-and-apache-zookeeper-nodes"></a>Připojení k uzlům pracovních procesů a Apache Zookeeper
 
-Pracovní uzly a uzly Zookeeper nejsou přímo přístupné z internetu. Lze se k nim dostat z hlavních nebo hraničních uzlů clusteru. Toto jsou obecné kroky pro připojení k ostatním uzlům:
+Pracovní uzly a uzly Zookeeper nejsou přímo přístupné z Internetu. Lze se k nim dostat z hlavních nebo hraničních uzlů clusteru. Toto jsou obecné kroky pro připojení k ostatním uzlům:
 
 1. Pomocí SSH se připojte k hlavnímu nebo hraničnímu uzlu:
 
@@ -178,7 +178,7 @@ Pracovní uzly a uzly Zookeeper nejsou přímo přístupné z internetu. Lze se 
     ssh sshuser@wn0-myhdi
     ```
 
-    Pokud chcete načíst seznam názvů uzlů, [přečtěte si část Správa HDInsightu pomocí dokumentu rozhraní API Apache Ambari REST API.](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)
+    Pokud chcete načíst seznam názvů uzlů, přečtěte si téma [Správa HDInsight pomocí dokumentu REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes) .
 
 Pokud je účet SSH zabezpečený __heslem__, zadejte toto heslo při připojování.
 
@@ -187,7 +187,7 @@ Pokud je účet SSH zabezpečený __klíči SSH__, zkontrolujte, jestli je na kl
 > [!NOTE]  
 > Dalším možným způsobem přímého přístupu ke všem uzlům clusteru je instalace HDInsightu do služby Azure Virtual Network. Potom můžete váš vzdálený počítač připojit ke stejné virtuální síti a získat přímý přístup ke všem uzlům v clusteru.
 >
-> Další informace najdete [v tématu Plánování virtuální sítě pro HDInsight](hdinsight-plan-virtual-network-deployment.md).
+> Další informace najdete v tématu [plánování virtuální sítě pro HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
 ### <a name="configure-ssh-agent-forwarding"></a>Konfigurace přesměrování agenta SSH
 
@@ -217,9 +217,9 @@ Pokud je účet SSH zabezpečený __klíči SSH__, zkontrolujte, jestli je na kl
     /tmp/ssh-rfSUL1ldCldQ/agent.1792
     ```
 
-    Pokud nic není `ssh-agent` vrácena, pak není spuštěn. Další informace o spouštěcích skriptech agenta najdete v tématu [Použití nástroje SSH agent s SSH (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) nebo v dokumentaci ke klientovi SSH.
+    Pokud není nic vráceno, `ssh-agent` neběží. Další informace o spouštěcích skriptech agenta najdete v tématu [Použití nástroje SSH agent s SSH (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) nebo v dokumentaci ke klientovi SSH.
 
-4. Jakmile ověříte, že **je spuštěný ssh-agent,** přidejte k agentovi svůj soukromý klíč SSH pomocí následujícího klíče:
+4. Jakmile ověříte, že je **Agent SSH** spuštěný, přidejte k agentovi privátní klíč SSH pomocí následujícího kódu:
 
     ```bash
     ssh-add ~/.ssh/id_rsa
@@ -229,35 +229,8 @@ Pokud je účet SSH zabezpečený __klíči SSH__, zkontrolujte, jestli je na kl
 
 5. Připojte se k hlavním uzlům nebo hraničnímu uzlu clusteru pomocí protokolu SSH. Potom se pomocí příkazu SSH k připojte k pracovnímu uzlu nebo k uzlu Zookeeper. Připojení se naváže s využitím přesměrovaného klíče.
 
-## <a name="copy-files"></a>Kopírování souborů
-
-Ke kopírování souborů na jednotlivé uzly clusteru nebo z nich je možné použít nástroj `scp`. Například následující příkaz zkopíruje soubor `test.txt` z místního systému na primární hlavní uzel:
-
-```bash
-scp test.txt sshuser@clustername-ssh.azurehdinsight.net:
-```
-
-Protože po `:` není zadaná žádná cesta, soubor se umístí do domovského adresáře `sshuser`.
-
-Následující příklad zkopíruje soubor `test.txt` z domovského adresáře `sshuser` na primárním hlavním uzlu do místního systému:
-
-```bash
-scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
-```
-
-> [!IMPORTANT]  
-> Nástroj `scp` má přístup pouze k systému souborů jednotlivých uzlů v rámci clusteru. Není možné ho použít pro přístup k datům v úložišti clusteru kompatibilním se systémem HDFS.
->
-> Pokud potřebujete nahrát prostředek pro použití z relace SSH, použijte `scp`. Nahrajte například skript Pythonu a potom tento skript spusťte z relace SSH.
->
-> Informace o přímém načítání dat do úložiště kompatibilního se systémem HDFS najdete v následujících dokumentech:
->
-> * [HDInsight pomocí Služby Azure Storage](hdinsight-hadoop-use-blob-storage.md).
->
-> * [HDInsight pomocí Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md).
-
 ## <a name="next-steps"></a>Další kroky
 
 * [Použití tunelování SSH s HDInsightem](hdinsight-linux-ambari-ssh-tunnel.md)
-* [Plánování virtuální sítě s HDInsight](hdinsight-plan-virtual-network-deployment.md)
 * [Použití hraničních uzlů v HDInsightu](hdinsight-apps-use-edge-node.md#access-an-edge-node)
+* [Použití spojovacího bodu služby se službou HDInsight](./use-scp.md)

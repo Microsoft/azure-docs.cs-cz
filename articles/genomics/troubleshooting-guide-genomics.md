@@ -1,36 +1,35 @@
 ---
 title: Průvodce odstraňováním potíží
 titleSuffix: Microsoft Genomics
-description: Přečtěte si o strategiích řešení potíží s používáním microsoft genomiky, včetně chybových zpráv a jejich řešení.
+description: Přečtěte si o strategiích řešení potíží s používáním Microsoft Genomics, včetně chybových zpráv a jejich řešení.
 keywords: řešení potíží, chyba, ladění
 services: genomics
 author: ruchir
-editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73485995"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100902"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
-Zde je několik tipů pro řešení potíží pro některé běžné problémy, které mohou čelit při používání služby Microsoft Genomics, MSGEN.
+Tady je několik tipů pro řešení potíží s některými běžnými problémy, které se můžou při používání služby Microsoft Genomics MSGEN.
 
- Nejčastější dotazy, které nesouvisí s odstraňováním potíží, naleznete [v tématu Běžné otázky](frequently-asked-questions-genomics.md).
+ Nejčastější dotazy, které se netýkají řešení potíží, najdete v tématu [Nejčastější dotazy](frequently-asked-questions-genomics.md).
 ## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>Krok 1: Vyhledání kódů chyb přidružených k pracovnímu postupu
 
-Chybové zprávy přidružené k pracovnímu postupu můžete vyhledat takto:
+Můžete najít chybové zprávy přidružené k pracovnímu postupu:
 
 1. Použití příkazového řádku a psaní`msgen status`
-2. Zkoumání obsahu standardoutput.txt.
+2. Prozkoumání obsahu StandardOutput. txt.
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. Použití příkazového řádku`msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. používání příkazového řádku`msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -39,20 +38,20 @@ msgen status -u URL -k KEY -w ID
 
 
 
-Existují tři požadované argumenty:
+Existují tři povinné argumenty:
 
-* URL - základní identifikátor URI pro rozhraní API
-* KEY - přístupový klíč pro váš účet Genomics
-    * Pokud chcete najít adresu URL a klíč, přejděte na portál Azure a otevřete stránku účtu Microsoft Genomics. V záhlaví **Správa** zvolte **Přístupové klávesy**. Zde najdete adresu URL rozhraní API i přístupové klíče.
+* URL – základní identifikátor URI pro rozhraní API
+* KLÍČ – přístupový klíč pro váš účet genomiky
+    * Adresu URL a klíč zjistíte tak, že přejdete na Azure Portal a otevřete stránku svého účtu Microsoft Genomics. Pod hlavičkou **správy** vyberte **přístupové klíče**. Tam najdete jak adresu URL rozhraní API, tak přístupové klávesy.
 
   
-* ID - ID pracovního postupu
-    * Chcete-li najít typ `msgen list` ID pracovního postupu v příkazu. Za předpokladu, že váš konfigurační soubor obsahuje adresu URL a přístupové klávesy a je umístěn na stejném místě jako váš msgen exe, příkaz bude vypadat takto: 
+* ID – ID pracovního postupu
+    * Typ ID pracovního postupu zjistíte v `msgen list` příkazu. Za předpokladu, že konfigurační soubor obsahuje adresu URL a přístupové klíče a je umístěn ve stejném umístění jako váš msgen exe, bude příkaz vypadat takto: 
         
         ```bash
         msgen list -f "config.txt"
         ```
-        Výstup z tohoto příkazu bude vypadat takto :
+        Výstup z tohoto příkazu bude vypadat takto:
         
         ```bash
             Microsoft Genomics command-line client v0.7.4
@@ -74,73 +73,73 @@ Existují tři požadované argumenty:
         ```
 
   > [!NOTE]
-  >  Případně můžete místo přímého zadávání adresy URL a klíče zahrnout cestu k konfiguračnímu souboru. Pokud tyto argumenty zahrnete do příkazového řádku i do konfiguračního souboru, budou mít přednost argumenty příkazového řádku.  
+  >  Případně můžete místo přímého zadání adresy URL a klíče použít cestu k konfiguračnímu souboru. Pokud zahrnete tyto argumenty do příkazového řádku i do konfiguračního souboru, budou mít argumenty příkazového řádku přednost.  
 
-Pro ID pracovního postupu 1001 a soubor config.txt umístěný ve stejné cestě jako spustitelný soubor msgen bude příkaz vypadat takto:
+Pro pracovní postup s ID 1001 a soubor config. txt umístěný ve stejné cestě jako spustitelný soubor msgen bude příkaz vypadat takto:
 
 ```bash
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. Zkontrolujte obsah souboru standardoutput.txt 
-Vyhledejte výstupní kontejner pro daný pracovní postup. MSGEN vytvoří `[workflowfilename].logs.zip` složku, po každém spuštění pracovního postupu. Chcete-li zobrazit její obsah, rozbalte složku:
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. prověřte obsah StandardOutput. txt. 
+Vyhledejte kontejner výstupu pro daný pracovní postup. MSGEN vytvoří `[workflowfilename].logs.zip` složku po každém spuštění pracovního postupu. Rozbalte složku pro zobrazení jejího obsahu:
 
-* outputFileList.txt - seznam výstupních souborů vytvořených během pracovního postupu
-* standarderror.txt - tento soubor je prázdný.
-* standardoutput.txt - protokoluje všechny stavové zprávy nejvyšší úrovně včetně chyb, ke kterým došlo při spuštění pracovního postupu.
-* GATK log files - všechny `logs` ostatní soubory ve složce
+* outputFileList. txt – seznam výstupních souborů vyprodukovaných během pracovního postupu
+* StandardError. txt – Tento soubor je prázdný.
+* StandardOutput. txt – protokoluje všechny stavové zprávy nejvyšší úrovně včetně chyb, ke kterým došlo při spuštění pracovního postupu.
+* Soubory protokolu GENOME – všechny ostatní soubory ve `logs` složce
 
-Při řešení potíží zkontrolujte obsah souboru standardoutput.txt a poznamenejte si všechny chybové zprávy, které se zobrazí.
+V případě řešení potíží zkontrolujte obsah StandardOutput. txt a poznamenejte si všechny zobrazené chybové zprávy.
 
 
 ## <a name="step-2-try-recommended-steps-for-common-errors"></a>Krok 2: Vyzkoušejte doporučené kroky pro běžné chyby
 
-Tato část stručně upozorňuje na běžné chyby výstupu služby Microsoft Genomics (msgen) a strategie, které můžete použít k jejich vyřešení. 
+V této části je stručně zvýrazněný výstup běžných chyb Microsoft Genomics služby (msgen) a strategiích, které můžete použít k jejich řešení. 
 
 Služba Microsoft Genomics (msgen) může vyvolat následující dva druhy chyb:
 
-1. Chyby interní služby: Chyby, které jsou interní služby, které nemusí být vyřešeny stanovením parametrů nebo vstupních souborů. Někdy může opětovné odeslání pracovního postupu tyto chyby opravit.
-2. Vstupní chyby: Chyby, které lze vyřešit pomocí správných argumentů nebo opravovat formáty souborů.
+1. Vnitřní chyby služby: chyby, které jsou interní pro službu, které nemusejí být vyřešeny opravou parametrů nebo vstupních souborů. Někdy se může stát, že se tyto chyby vyřeší opětovným odesláním pracovního postupu.
+2. Chyby vstupu: chyby, které lze vyřešit pomocí správných argumentů nebo oprav formátů souborů.
 
-### <a name="1-internal-service-errors"></a>1. Interní chyby služby
+### <a name="1-internal-service-errors"></a>1. interní chyby služby
 
-Vnitřní chyba služby nelze uživatelem najednat. Pracovní postup můžete odeslat znovu, ale pokud to nepomůže, obraťte se na podporu společnosti Microsoft Genomics.
+Interní chyba služby není uživatelem nastavená akce. Pracovní postup můžete znovu odeslat, ale pokud to nefunguje, obraťte se na podporu Microsoft Genomics.
 
 | Chybová zpráva                                                                                                                            | Doporučený postup při řešení potíží                                                                                                                                   |
 |------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Došlo k vnitřní chybě. Zkuste znovu odeslat pracovní postup. Pokud se tato chyba zobrazí znovu, obraťte se na podporu microsoft genomics o pomoc | Odešlete pracovní postup znovu. Obraťte se na podporu Microsoft Genomics o pomoc, pokud problém přetrvává vytvořením [lístku](file-support-ticket-genomics.md )podpory . |
+| Došlo k vnitřní chybě. Zkuste znovu odeslat pracovní postup. Pokud se tato chyba zobrazí znovu, požádejte o pomoc Microsoft Genomics podporu. | Odešlete pracovní postup znovu. Pokud potíže potrvají, požádejte o pomoc Microsoft Genomics podporu. Pokud se problém opakuje, vytvořte [lístek](file-support-ticket-genomics.md )podpory. |
 
-### <a name="2-input-errors"></a>2. Vstupní chyby
+### <a name="2-input-errors"></a>2. chyby vstupu
 
-Tyto chyby lze použít pro uživatele. Na základě typu souboru a kódu chyby vypíše služba Microsoft Genomics odlišné kódy chyb. Postupujte podle níže uvedených doporučených kroků pro řešení potíží.
+Tyto chyby jsou uživatelem akce. Na základě typu souboru a kódu chyby služba Microsoft Genomics výstupy mají odlišné kódy chyb. Postupujte podle doporučených kroků pro řešení potíží uvedených níže.
 
 | Typ souboru | Kód chyby | Chybová zpráva                                                                           | Doporučený postup při řešení potíží                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Všechny          | 701        | Read [readId] má základy [numberOfBases], ale limit je [maxReadLength]           | Nejčastějším důvodem této chyby je poškození souboru vedoucí ke zřetězení dvou čtení. Zkontrolujte vstupní soubory. |
-| Bam          | 200        |   Soubor [yourFileName]nelze přečíst.                                                                                       | Zkontrolujte formát souboru BAM. Odešlete pracovní postup znovu se správně naformátovanou souborem.                                                                           |
-| Bam          | 201        |  Soubor BAM nelze přečíst [File_name].                                                                                      |Zkontrolujte formát souboru BAM.  Odešlete pracovní postup se správně naformátovanou složkou.                                                                            |
-| Bam          | 202        | Soubor BAM nelze přečíst [File_name]. Soubor je příliš malý a chybí záhlaví.                                                                                        | Zkontrolujte formát souboru BAM.  Odešlete pracovní postup se správně naformátovanou složkou.                                                                            |
-| Bam          | 203        |   Soubor BAM nelze přečíst [File_name]. Záhlaví souboru bylo poškozeno.                                                                                      |Zkontrolujte formát souboru BAM.  Odešlete pracovní postup se správně naformátovanou složkou.                                                                           |
-| Bam          | 204        |    Soubor BAM nelze přečíst [File_name]. Záhlaví souboru bylo poškozeno.                                                                                     | Zkontrolujte formát souboru BAM.  Odešlete pracovní postup se správně naformátovanou složkou.                                                                           |
-| Bam          | 205        |    Soubor BAM nelze přečíst [File_name]. Záhlaví souboru bylo poškozeno.                                                                                     | Zkontrolujte formát souboru BAM.  Odešlete pracovní postup se správně naformátovanou složkou.                                                                            |
-| Bam          | 206        |   Soubor BAM nelze přečíst [File_name]. Záhlaví souboru bylo poškozeno.                                                                                      | Zkontrolujte formát souboru BAM.  Odešlete pracovní postup se správně naformátovanou složkou.                                                                            |
-| Bam          | 207        |  Soubor BAM nelze přečíst [File_name]. Soubor zkrácen v blízkosti posunu [posun].                                                                                       | Zkontrolujte formát souboru BAM.  Odešlete pracovní postup se správně naformátovanou složkou.                                                                            |
-| Bam          | 208        |   Neplatný soubor BAM. ReadID [Read_Id] nemá v souboru [File_name] žádnou sekvenci.                                                                                      | Zkontrolujte formát souboru BAM.  Odešlete pracovní postup se správně naformátovanou složkou.                                                                             |
-| FASTQ        | 300        |  Soubor FASTQ nelze přečíst. [File_name] nekončí s novou linií.                                                                                     | Opravte formát souboru FASTQ a odešlete pracovní postup znovu.                                                                           |
-| FASTQ        | 301        |   Soubor FASTQ [File_name] nelze přečíst. Záznam FASTQ je větší než velikost vyrovnávací paměti při posunu: [_offset]                                                                                      | Opravte formát souboru FASTQ a odešlete pracovní postup znovu.                                                                         |
-| FASTQ        | 302        |     Chyba syntaxe FASTQ. Soubor [File_name] má prázdný řádek.                                                                                    | Opravte formát souboru FASTQ a odešlete pracovní postup znovu.                                                                         |
-| FASTQ        | 303        |       Chyba syntaxe FASTQ. Soubor[File_name] má neplatný počáteční znak při posunu: [_offset], typ řádku: [line_type], znak: [_char]                                                                                  | Opravte formát souboru FASTQ a odešlete pracovní postup znovu.                                                                         |
-| FASTQ        | 304      |  FastQ Syntax chyba na readID [_ReadID].  První čtení dávky nemá readID končící na /1 v souboru [File_name]                                                                                       | Opravte formát souboru FASTQ a odešlete pracovní postup znovu.                                                                         |
-| FASTQ        | 305        |  FastQ Syntax chyba na readID [_readID]. Druhé čtení dávky nemá readID končící na /2 v souboru [File_name]                                                                                      | Opravte formát souboru FASTQ a odešlete pracovní postup znovu.                                                                          |
-| FASTQ        | 306        |  FastQ Syntax chyba na readID [_ReadID]. První čtení páru nemá ID, které končí v /1 v souboru [File_name]                                                                                       | Opravte formát souboru FASTQ a odešlete pracovní postup znovu.                                                                          |
-| FASTQ        | 307        |   FastQ Syntax chyba na readID [_ReadID]. ReadID nekončí /1 nebo/2. Soubor [File_name] nelze použít jako spárovaný soubor FASTQ.                                                                                      |Opravte formát souboru FASTQ a odešlete pracovní postup znovu.                                                                          |
-| FASTQ        | 308        |  Chyba čtení FASTQ. Čtení obou konců reagovalo odlišně. Vybrali jste správné fastq soubory?                                                                                       | Opravte formát souboru FASTQ a odešlete pracovní postup znovu.                                                                         |
+| Všechny          | 701        | Čtení [připraveno] má [numberOfBases] základ, ale limit je [maxReadLength].           | Nejběžnějším důvodem této chyby je poškození souboru vedoucí ke zřetězení dvou čtení. Ověřte vstupní soubory. |
+| BAM          | 200        |   Nelze číst soubor ' [yourFileName] '.                                                                                       | Ověřte formát souboru BAM. Odešlete pracovní postup znovu se správným formátovaným souborem.                                                                           |
+| BAM          | 201        |  Nelze číst soubor BAM [File_name].                                                                                      |Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                            |
+| BAM          | 202        | Nelze číst soubor BAM [File_name]. Soubor je moc malý a záhlaví chybí.                                                                                        | Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                            |
+| BAM          | 203        |   Nelze číst soubor BAM [File_name]. Hlavička souboru je poškozená.                                                                                      |Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                           |
+| BAM          | 204        |    Nelze číst soubor BAM [File_name]. Hlavička souboru je poškozená.                                                                                     | Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                           |
+| BAM          | 205        |    Nelze číst soubor BAM [File_name]. Hlavička souboru je poškozená.                                                                                     | Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                            |
+| BAM          | 206        |   Nelze číst soubor BAM [File_name]. Hlavička souboru je poškozená.                                                                                      | Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                            |
+| BAM          | 207        |  Nelze číst soubor BAM [File_name]. Zkrácený soubor v blízkosti posunu [offset].                                                                                       | Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                            |
+| BAM          | 208        |   Neplatný soubor BAM Připravená [Read_Id] nemá v souboru [File_name] žádnou sekvenci.                                                                                      | Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                             |
+| SOUBORŮ fastq        | 300        |  Nepovedlo se přečíst soubor souborů fastq. [File_name] nekončí novým řádkem.                                                                                     | Opravte formát souboru souborů fastq a znovu odešlete pracovní postup.                                                                           |
+| SOUBORŮ fastq        | 301        |   Nelze číst soubor souborů fastq [File_name]. Záznam souborů fastq je větší než velikost vyrovnávací paměti na posunu: [_offset]                                                                                      | Opravte formát souboru souborů fastq a znovu odešlete pracovní postup.                                                                         |
+| SOUBORŮ fastq        | 302        |     Chyba syntaxe souborů fastq Soubor [File_name] obsahuje prázdný řádek.                                                                                    | Opravte formát souboru souborů fastq a znovu odešlete pracovní postup.                                                                         |
+| SOUBORŮ fastq        | 303        |       Chyba syntaxe souborů fastq Soubor [File_name] má neplatný počáteční znak na posunu: [_offset], typ řádku: [line_type], znak: [_char].                                                                                  | Opravte formát souboru souborů fastq a znovu odešlete pracovní postup.                                                                         |
+| SOUBORŮ fastq        | 304      |  SOUBORŮ fastq Chyba syntaxe v připraveném [_ReadID].  První čtení dávky nemá připraven konec/1 v souboru [File_name].                                                                                       | Opravte formát souboru souborů fastq a znovu odešlete pracovní postup.                                                                         |
+| SOUBORŮ fastq        | 305        |  SOUBORŮ fastq Chyba syntaxe v připraveném [_readID]. Druhé čtení dávky nemá v souboru [File_name] připraveno ukončení/2.                                                                                      | Opravte formát souboru souborů fastq a znovu odešlete pracovní postup.                                                                          |
+| SOUBORŮ fastq        | 306        |  SOUBORŮ fastq Chyba syntaxe v připraveném [_ReadID]. První přečtený pár nemá ID, které končí v/1 souboru [File_name].                                                                                       | Opravte formát souboru souborů fastq a znovu odešlete pracovní postup.                                                                          |
+| SOUBORŮ fastq        | 307        |   SOUBORŮ fastq Chyba syntaxe v připraveném [_ReadID]. Připravenost nekončí na/1 nebo/2. Soubor [File_name] nelze použít jako spárované soubory souborů fastq.                                                                                      |Opravte formát souboru souborů fastq a znovu odešlete pracovní postup.                                                                          |
+| SOUBORŮ fastq        | 308        |  Chyba čtení souborů fastq Čtení obou konců reaguje jinak. Zvolili jste správné soubory souborů fastq?                                                                                       | Opravte formát souboru souborů fastq a znovu odešlete pracovní postup.                                                                         |
 |        |       |                                                                                        |                                                                           |
 
-## <a name="step-3-contact-microsoft-genomics-support"></a>Krok 3: Kontaktujte podporu Microsoft Genomics
+## <a name="step-3-contact-microsoft-genomics-support"></a>Krok 3: kontaktování podpory Microsoft Genomics
 
-Pokud máte i nadále selhání úloh nebo máte nějaké další otázky, obraťte se na podporu Microsoft Genomics z portálu Azure. Další informace o tom, jak odeslat žádost o podporu, naleznete [zde](file-support-ticket-genomics.md).
+Pokud budete mít i nadále problémy s úlohou nebo máte nějaké jiné dotazy, obraťte se na podporu Microsoft Genomics Azure Portal. Další informace o tom, jak odeslat žádost o podporu, najdete [tady](file-support-ticket-genomics.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli, jak řešit a řešit běžné problémy se službou Microsoft Genomics. Další informace a obecnější nejčastější dotazy naleznete [v běžných otázkách](frequently-asked-questions-genomics.md). 
+V tomto článku jste zjistili, jak řešit a řešit běžné problémy se službou Microsoft Genomics. Další informace a obecnější Nejčastější dotazy najdete v tématu [Nejčastější dotazy](frequently-asked-questions-genomics.md). 

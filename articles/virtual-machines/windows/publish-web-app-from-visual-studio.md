@@ -1,132 +1,129 @@
 ---
-title: Publikování webové aplikace do virtuálního počítače Azure z Visual Studia
-description: Publikování webové aplikace ASP.NET do virtuálního počítače Azure z Visual Studia
-services: virtual-machines-windows
+title: Publikování webové aplikace na virtuálním počítači Azure ze sady Visual Studio
+description: Publikování webové aplikace v ASP.NET ve virtuálním počítači Azure ze sady Visual Studio
 author: ghogen
 manager: jillfra
-tags: azure-service-management
-ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: 6e5db9b4e46019aa386057d51d956ff11d90f498
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abf0570ee9f01a2378e8c0370cfc3ba5fecc7406
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71970866"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098227"
 ---
-# <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikování ASP.NET webové aplikace do virtuálního počítače Azure z Visual Studia
+# <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikování webové aplikace v ASP.NET ve virtuálním počítači Azure ze sady Visual Studio
 
-Tento dokument popisuje, jak publikovat ASP.NET webové aplikace do virtuálního počítače Azure (VM) pomocí funkce publikování **virtuálních počítačů Microsoft Azure** ve Visual Studiu 2019.  
+Tento dokument popisuje, jak publikovat webovou aplikaci v ASP.NET na virtuálním počítači Azure pomocí funkce publikování **Microsoft Azure Virtual Machines** v aplikaci Visual Studio 2019.  
 
-## <a name="prerequisites"></a>Požadavky
-Aby bylo možné použít Visual Studio k publikování projektu ASP.NET do virtuálního počítače Azure, musí být virtuální počítač správně nastaven.
+## <a name="prerequisites"></a>Požadované součásti
+Aby bylo možné použít Visual Studio k publikování projektu ASP.NET na virtuálním počítači Azure, musí být virtuální počítač správně nastavený.
 
-- Počítač musí být nakonfigurován tak, aby spouštěl ASP.NET webové aplikace a měl nainstalovaný WebDeploy.
+- Počítač musí být nakonfigurovaný tak, aby spouštěl webovou aplikaci v ASP.NET a nainstaloval nástroj WebDeploy.
 
-- Virtuální počítače musí mít nakonfigurovaný název DNS. Další informace najdete [v tématu Vytvoření plně kvalifikovaného názvu domény na webu Azure Portal pro virtuální počítač s Windows](portal-create-fqdn.md).
+- Virtuální počítač musí mít nakonfigurovaný název DNS. Další informace najdete v tématu [Vytvoření plně kvalifikovaného názvu domény v Azure Portal pro virtuální počítač s Windows](portal-create-fqdn.md).
 
-## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Publikování ASP.NET webové aplikace do virtuálního počítače Azure pomocí Visual Studia
-Následující část popisuje, jak publikovat existující ASP.NET webové aplikace do virtuálního počítače Azure.
+## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Publikování webové aplikace v ASP.NET na virtuálním počítači Azure pomocí sady Visual Studio
+Následující část popisuje, jak publikovat stávající webovou aplikaci v ASP.NET na virtuálním počítači Azure.
 
-1. Otevřete řešení webové aplikace ve Visual Studiu 2019.
-2. Klikněte pravým tlačítkem myši na projekt v Průzkumníku řešení a zvolte **Publikovat...**
-3. Pomocí šipky vpravo od stránky můžete procházet možnosti publikování, dokud nenajdete **virtuální počítače Microsoft Azure**.  
+1. Otevřete řešení webové aplikace v aplikaci Visual Studio 2019.
+2. Klikněte pravým tlačítkem na projekt v Průzkumník řešení a vyberte **publikovat...**
+3. Pomocí šipky vpravo od stránky se posuňte mezi možnosti publikování, dokud nenajdete **Microsoft Azure Virtual Machines**.  
 
-   ![Publikovat stránku – šipka doprava]
+   ![Stránka pro publikování – šipka doprava]
 
-4. Vyberte ikonu **Virtuální počítače Microsoft Azure** a vyberte **Publikovat**.
+4. Vyberte ikonu **Microsoft Azure Virtual Machines** a vyberte **publikovat**.
 
-   ![Stránka publikování – ikona Virtuálního počítače Microsoft Azure]
+   ![Stránka pro publikování – ikona Microsoft Azure virtuálního počítače]
 
-5. Zvolte příslušný účet (s předplatným Azure připojeným k vašemu virtuálnímu počítači).  
-   - Pokud jste přihlášeni k sadě Visual Studio, seznam účtů je naplněn všemi ověřenými účty.  
-   - Pokud nejste přihlášeni nebo pokud účet, který potřebujete, není uveden, zvolte "Přidat účet..." a postupujte podle pokynů pro přihlášení.  
-   ![Azure Account Selector]  
+5. Vyberte příslušný účet (s předplatným Azure připojeným k vašemu virtuálnímu počítači).  
+   - Pokud jste přihlášeni k aplikaci Visual Studio, seznam účtů se vyplní všemi vašimi ověřenými účty.  
+   - Pokud nejste přihlášení nebo pokud účet, který potřebujete, není uveden v seznamu, vyberte Přidat účet... a podle zobrazených výzev se přihlaste.  
+   ![Selektor účtu Azure]  
 
-6. Vyberte příslušný virtuální počítač ze seznamu existujících virtuálních počítačů.
+6. Vyberte příslušný virtuální počítač ze seznamu existujících Virtual Machines.
 
    > [!Note]
-   > Vyplnění tohoto seznamu může nějakou dobu trvat.
+   > Naplnění tohoto seznamu může nějakou dobu trvat.
 
-   ![Výběr virtuálních počítačů Azure]
+   ![Selektor virtuálních počítačů Azure]
 
-7. Chcete-li zahájit publikování, klepněte na tlačítko OK.
+7. Kliknutím na OK zahajte publikování.
 
-8. Po zobrazení výzvy k zadání pověření zadejme uživatelské jméno a heslo uživatelského účtu na cílovém virtuálním počítači, který je nakonfigurovaný s právy k publikování. Tato pověření jsou obvykle uživatelské jméno správce a heslo používané při vytváření virtuálního počítače.  
+8. Po zobrazení výzvy k zadání přihlašovacích údajů zadejte uživatelské jméno a heslo uživatelského účtu na cílovém virtuálním počítači, který je nakonfigurovaný s právy pro publikování. Tyto přihlašovací údaje jsou obvykle uživatelské jméno a heslo správce, které se používá při vytváření virtuálního počítače.  
 
-   ![Přihlášení webdeployu]
+   ![Přihlášení k webdeployu]
 
 9. Přijměte certifikát zabezpečení.
 
    ![Chyba certifikátu]
 
-10. Podívejte se na okno Výstup a zkontrolujte průběh operace publikování.
+10. Sledujte okno výstup a ověřte průběh operace publikování.
 
     ![Okno Výstup]
 
-11. Pokud je publikování úspěšné, prohlížeč se spustí a otevře adresu URL nově publikovaného webu.
+11. Pokud publikování proběhlo úspěšně, spustí se prohlížeč a otevře se adresa URL nově publikovaného webu.
 
-**Úspěch!**
+**Nástup!**
 
-Teď jste úspěšně publikovali webovou aplikaci do virtuálního počítače Azure.
+Vaše webová aplikace se teď úspěšně publikovala na virtuálním počítači Azure.
 
-## <a name="publish-page-options"></a>Možnosti stránky publikování
+## <a name="publish-page-options"></a>Možnosti publikování stránky
 
-Po dokončení průvodce publikováním se stránka Publikovat otevře v dokumentu dobře s vybraným novým profilem publikování.
+Po dokončení Průvodce publikováním se stránka publikování otevře v dokumentu dobře s vybraným novým profilem publikování.
 
 ### <a name="re-publish"></a>Znovu publikovat
 
-Chcete-li publikovat aktualizace webové aplikace, vyberte na stránce Publikovat tlačítko **Publikovat.**  
-- Pokud se zobrazí výzva, zadejte uživatelské jméno a heslo.  
-- Publikování začíná okamžitě.
+Chcete-li publikovat aktualizace webové aplikace, vyberte tlačítko **publikovat** na stránce Publikovat.  
+- Po zobrazení výzvy zadejte uživatelské jméno a heslo.  
+- Publikování začne okamžitě.
 
-![Publikovat stránku – tlačítko Publikovat]
+![Stránka pro publikování – tlačítko publikovat]
 
-### <a name="modify-publish-profile-settings"></a>Změna nastavení profilu publikování
+### <a name="modify-publish-profile-settings"></a>Upravit nastavení profilu publikování
 
 Chcete-li zobrazit a upravit nastavení profilu publikování, vyberte **nastavení...**.  
 
-![Publikovat stránku – tlačítko Nastavení]
+![Stránka pro publikování – tlačítko nastavení]
 
-Vaše nastavení by mělo vypadat nějak takto:  
+Vaše nastavení by mělo vypadat přibližně takto:  
 
-![Nastavení publikování – stránka Připojení]
+![Nastavení publikování – stránka připojení]
 
 #### <a name="save-user-name-and-password"></a>Uložit uživatelské jméno a heslo
-- Při každém publikování se vyhněte poskytování ověřovacích informací. Chcete-li tak učinit, vyplňte pole **Uživatelské jméno** a **Heslo** a zaškrtněte políčko **Uložit heslo.**
-- Pomocí tlačítka **Ověřit připojení** ověřte, že jste zadali správné informace.
+- Vyhněte se zadání ověřovacích informací při každém publikování. Provedete to tak, že naplníte pole **uživatelské jméno** a **heslo** a zaškrtnete políčko **Uložit heslo** .
+- Pomocí tlačítka **ověřit připojení** potvrďte, že jste zadali správné informace.
 
-#### <a name="deploy-to-clean-web-server"></a>Nasazení na čistý webový server
+#### <a name="deploy-to-clean-web-server"></a>Nasadit na čistý webový server
 
-- Pokud chcete zajistit, aby webový server měl po každém nahrání čistou kopii webové aplikace a aby z předchozího nasazení nezůstaly žádné další soubory, můžete zkontrolovat políčko **Odebrat další soubory v cílovém umístění na** kartě **Nastavení.**
+- Pokud chcete zajistit, aby webový server měl po každém nahrání čistou kopii webové aplikace a nezůstaly žádné jiné soubory z předchozího nasazení, můžete zaškrtnout políčko **odebrat další soubory v cílovém umístění** na kartě **Nastavení** .
 
-- Upozornění: Publikování s tímto nastavením odstraní všechny soubory, které existují na webovém serveru (adresář wwwroot). Před publikováním se ujistěte, že znáte stav počítače s povolenou touto možností. 
+- Upozornění: publikování pomocí tohoto nastavení odstraní všechny soubory, které existují na webovém serveru (adresář wwwroot). Ujistěte se, že znáte stav počítače před publikováním s povolenou možností. 
 
-![Nastavení publikování – stránka Nastavení]
+![Nastavení publikování – stránka nastavení]
 
 ## <a name="next-steps"></a>Další kroky
 
-### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Nastavení CI/CD pro automatizované nasazení do virtuálního počítače Azure
+### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Nastavení CI/CD pro automatizované nasazení na virtuální počítač Azure
 
-Pokud chcete nastavit kanál průběžného doručování s Azure Pipelines, přečtěte si informace [o nasazení na virtuální mste Windows](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups).
+Postup nastavení kanálu průběžného doručování s Azure Pipelines najdete v tématu [nasazení na virtuální počítač s Windows](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups).
 
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
 [VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
-[Publikovat stránku – šipka doprava]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
-[Stránka publikování – ikona Virtuálního počítače Microsoft Azure]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
-[Azure Account Selector]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
-[Výběr virtuálních počítačů Azure]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
-[Přihlášení webdeployu]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
+[Stránka pro publikování – šipka doprava]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
+[Stránka pro publikování – ikona Microsoft Azure virtuálního počítače]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[Selektor účtu Azure]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
+[Selektor virtuálních počítačů Azure]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
+[Přihlášení k webdeployu]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
 [Chyba certifikátu]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
-[Výstupní okno]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
-[Publikovat stránku – tlačítko Publikovat]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
-[Publikovat stránku – tlačítko Nastavení]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
-[Nastavení publikování – stránka Připojení]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
-[Nastavení publikování – stránka Nastavení]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png
+[okno Výstup]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
+[Stránka pro publikování – tlačítko publikovat]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
+[Stránka pro publikování – tlačítko nastavení]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
+[Nastavení publikování – stránka připojení]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
+[Nastavení publikování – stránka nastavení]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png

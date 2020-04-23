@@ -1,48 +1,45 @@
 ---
-title: Sledování naplánovaných událostí pro virtuální počítače s Windows v Azure
-description: Přečtěte si, jak monitorovat virtuální počítače Azure pro naplánované události.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Monitorování naplánovaných událostí pro virtuální počítače s Windows v Azure
+description: Naučte se monitorovat virtuální počítače Azure pro plánované události.
 author: mysarn
-manager: gwallace
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: vm-windows
+ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
-ms.topic: conceptual
-ms.openlocfilehash: 1cda07c18e4f5ef2a8c00b6a275f22ecc0935751
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073319"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099593"
 ---
-# <a name="monitoring-scheduled-events"></a>Sledování plánovaných událostí
+# <a name="monitoring-scheduled-events"></a>Scheduled Events monitorování
 
-Aktualizace se používají pro různé části Azure každý den, aby služby spuštěné na nich bezpečné a aktuální. Kromě plánovaných aktualizací může dojít také k neplánovaným událostem. Například pokud je zjištěna jakékoli snížení zabezpečení hardwaru nebo poruchy, služby Azure může být nutné provést neplánovanou údržbu. Použití migrace za provozu, zachování paměti aktualizace a obecně zachování přísné pruh na dopad aktualizací, ve většině případů tyto události jsou téměř transparentní pro zákazníky, a nemají žádný vliv nebo nanejvýš způsobit několik sekund virtuálního počítače zmrazit. Však pro některé aplikace i několik sekund zmrazení virtuálního počítače může způsobit dopad. Vědět předem o nadcházející údržbě Azure je důležité, aby bylo zajištěno nejlepší prostředí pro tyto aplikace. [Služba Plánované události](scheduled-events.md) poskytuje programové rozhraní, které má být upozorňováno na nadcházející údržbu, a umožňuje vám řádně zpracovat údržbu. 
+Aktualizace se každý den aplikují na různé části Azure, aby byly služby v nich spuštěné v bezpečí a aktuální. Kromě plánovaných aktualizací může dojít také k neplánovaným událostem. Například pokud dojde k selhání nějakého hardwarového snížení nebo chyby, služby Azure můžou potřebovat neplánovanou údržbu. Pomocí migrace za provozu, zachovávání paměti při zachovávání aktualizací a obecně udržuje striktní pruh o dopadu aktualizací. ve většině případů jsou tyto události téměř transparentní pro zákazníky a nemají žádný dopad nebo většinou způsobují několik sekund zablokování virtuálního počítače. U některých aplikací ale může dojít k ovlivnění i několika sekund zablokování virtuálního počítače. Důležité informace o nadcházející údržbě Azure jsou důležité, aby se zajistilo, že budou tyto aplikace co nejlepší. [Služba Scheduled Events](scheduled-events.md) poskytuje programové rozhraní, které bude dostávat oznámení o nadcházející údržbě, a umožňuje provádět řádné zpracování údržby. 
 
-V tomto článku ukážeme, jak můžete použít naplánované události, které mají být upozorňovány na události údržby, které by mohly mít vliv na vaše virtuální počítače a vytvořit některé základní automatizace, které vám pomohou s monitorováním a analýzou.
+V tomto článku se dozvíte, jak můžete použít naplánované události k oznámení o událostech údržby, které by mohly mít vliv na vaše virtuální počítače, a sestavit základní automatizaci, která může pomáhat s monitorováním a analýzou.
 
 
-## <a name="routing-scheduled-events-to-log-analytics"></a>Směrování naplánovaných událostí do log analytics
+## <a name="routing-scheduled-events-to-log-analytics"></a>Směrování plánovaných událostí do Log Analytics
 
-Naplánované události jsou dostupné jako součást [služby metadat instance Azure](instance-metadata-service.md), která je dostupná na každém virtuálním počítači Azure. Zákazníci mohou psát automatizace dotaz u koncového bodu svých virtuálních počítačů najít naplánované oznámení o údržbě a provádět skutečnosti snižující závažnost rizika, jako je uložení stavu a odebrání virtuálního počítače z rotace. Doporučujeme automatizaci vytváření budov pro záznam naplánovaných událostí, abyste mohli mít protokol auditování událostí údržby Azure. 
+Scheduled Events je k dispozici jako součást [Azure instance metadata Service](instance-metadata-service.md), která je k dispozici na všech virtuálních počítačích Azure. Zákazníci můžou psát Automation pro dotazování koncového bodu svých virtuálních počítačů, aby našli naplánovaná oznámení o údržbě a aby prováděli zmírnění rizik, jako je uložení stavu a přepnutí virtuálního počítače mimo rotaci. Doporučujeme, abyste sestavili automatizaci pro záznam Scheduled Events, abyste mohli mít protokol auditování událostí údržby Azure. 
 
-V tomto článku vás provedeme, jak zachytit naplánované události údržby do analýzy protokolu. Potom spustíme některé základní akce oznámení, jako je odeslání e-mailu vašemu týmu a získání historického zobrazení všech událostí, které ovlivnily vaše virtuální počítače. Pro agregaci událostí a automatizaci budeme používat [Log Analytics](/azure/azure-monitor/learn/quick-create-workspace), ale můžete použít libovolné řešení monitorování shromažďovat tyto protokoly a aktivaci automatizace.
+V tomto článku Vás provedeme procesem zaznamenání údržby Scheduled Events k Log Analytics. Pak budeme aktivovat některé základní akce oznámení, jako je odeslání e-mailu týmu a získání historických přehledů o všech událostech, které ovlivnily vaše virtuální počítače. Pro agregaci a automatizaci událostí budeme používat [Log Analytics](/azure/azure-monitor/learn/quick-create-workspace), ale můžete použít jakékoli řešení monitorování ke shromáždění těchto protokolů a aktivaci automatizace.
 
 ![Diagram znázorňující životní cyklus události](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-V tomto příkladu budete muset vytvořit [virtuální počítač se systémem Windows v sadě dostupnosti](tutorial-availability-sets.md). Naplánované události poskytují oznámení o změnách, které mohou ovlivnit libovolný virtuální počítač ve vaší sadě dostupnosti, cloudové službě, škálovací sadě virtuálních počítačů nebo samostatných virtuálních počítačích. Budeme spouštět [službu,](https://github.com/microsoft/AzureScheduledEventsService) která dotazování pro plánované události na jednom z virtuálních účtů, které budou fungovat jako kolektor, získat události pro všechny ostatní virtuální chody v sadě dostupnosti.    
+V tomto příkladu budete muset vytvořit [virtuální počítač s Windows ve skupině dostupnosti](tutorial-availability-sets.md). Scheduled Events poskytují oznámení o změnách, které můžou ovlivnit některý z virtuálních počítačů ve vaší skupině dostupnosti, cloudové službě, sadě škálování virtuálních počítačů nebo samostatných virtuálních počítačích. Budeme používat [službu](https://github.com/microsoft/AzureScheduledEventsService) , která se dotazuje na naplánované události na jednom z virtuálních počítačů, které se budou chovat jako kolektor, a získat tak události pro všechny ostatní virtuální počítače ve skupině dostupnosti.    
 
-Neodstraňujte skupinu prostředků skupiny na konci kurzu.
+Neodstraňujte skupinu prostředků skupiny na konci tohoto kurzu.
 
-Budete také muset [vytvořit pracovní prostor Log Analytics,](/azure/azure-monitor/learn/quick-create-workspace) který použijeme k agregaci informací z virtuálních aplikací v sadě dostupnosti.
+Budete také muset [vytvořit Log Analytics pracovní prostor](/azure/azure-monitor/learn/quick-create-workspace) , který použijeme k agregaci informací z virtuálních počítačů ve skupině dostupnosti.
 
 ## <a name="set-up-the-environment"></a>Nastavení prostředí
 
-Teď byste měli mít 2 počáteční virtuální chod v sadě dostupnosti. Teď musíme vytvořit třetí virtuální virtuální byl s názvem myCollectorVM ve stejné sadě dostupnosti. 
+Teď byste měli mít 2 počáteční virtuální počítače ve skupině dostupnosti. Nyní musíme ve stejné skupině dostupnosti vytvořit třetí virtuální počítač s názvem myCollectorVM. 
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -59,9 +56,9 @@ New-AzVm `
 ```
  
 
-Stáhněte si instalační soubor ZIP projektu z [GitHubu](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
+Stáhněte si soubor instalace. zip projektu z [GitHubu](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Připojte se k **myCollectorVM** a zkopírujte soubor ZIP do virtuálního počítače a extrahujte všechny soubory. Na virtuálním počítači otevřete výzvu powershellu. Přesuňte výzvu do `SchService.ps1`složky obsahující `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`například: a nastavte službu.
+Připojte se k **myCollectorVM** a zkopírujte soubor. zip do virtuálního počítače a Extrahujte všechny soubory. Na svém VIRTUÁLNÍm počítači otevřete příkazový řádek PowerShellu. Přesuňte výzvu do složky, která obsahuje `SchService.ps1`, například: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`a nastavte službu.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -73,71 +70,71 @@ Spusťte službu.
 .\SchService.ps1 -Start
 ```
 
-Služba nyní spustí dotazování každých 10 sekund pro všechny naplánované události a schválit události k urychlení údržby.  Zmrazit, restartovat, znovu nasadit a Preempt jsou události zachycené událostmi plánu.   Všimněte si, že můžete rozšířit skript aktivovat některé skutečnosti snižující závažnost rizika před schválením události.
+Služba se teď začne dotazovat každých 10 sekund na jakékoli naplánované události a schválí události, aby se tato údržba urychlila.  Zablokování, restartování, opětovné nasazení a přerušení jsou události zachycené událostmi plánování.   Všimněte si, že můžete skript roztáhnout, aby před schválením události aktivoval některé zmírnění.
 
-Ověřte stav služby a ujistěte se, že je spuštěna.
+Ověřte stav služby a ujistěte se, že je spuštěný.
 
 ```powershell
 .\SchService.ps1 -status  
 ```
 
-To by `Running`se mělo vrátit .
+Mělo by se `Running`vrátit.
 
-Služba nyní spustí dotazování každých 10 sekund pro všechny naplánované události a schválit události k urychlení údržby.  Zmrazit, restartovat, znovu nasadit a Preempt jsou události zachycené událostmi plánu. Skript můžete rozšířit tak, aby před schválením události aktivoval některé skutečnosti snižující závažnost rizika.
+Služba se teď začne dotazovat každých 10 sekund na jakékoli naplánované události a schválí události, aby se tato údržba urychlila.  Zablokování, restartování, opětovné nasazení a přerušení jsou události zachycené událostmi plánování. Před schválením události můžete skript roztáhnout, aby se aktivovaly některé zmírnění.
 
-Pokud jsou některé z výše uvedených událostí zachyceny službou Událost plánu, budou zaznamenány ve stavu události protokolu událostí aplikace, typu události, prostředcích (názvy virtuálních počítačů) a NotBefore (minimální výpovědní lhůta). Události s ID 1234 můžete najít v protokolu událostí aplikace.
+Pokud je některá z výše uvedených událostí zachycena službou Event Service, bude zaznamenána do stavu události protokolu událostí aplikace, typu události, prostředků (názvů virtuálních počítačů) a NotBefore (minimální doba oznámení). Události s ID 1234 můžete najít v protokolu událostí aplikace.
 
-Jakmile je služba nastavena a spuštěna, bude protokolovat události v protokolech aplikací systému Windows.   Chcete-li ověřit, že to funguje, restartujte jeden z virtuálních počítačů v sadě dostupnosti a měli byste vidět událost protokolovaná v prohlížeči událostí v protokolech Windows > protokol aplikace zobrazující restartování virtuálního počítače. 
+Jakmile je služba nastavená a spuštěná, bude protokolovat události v protokolech aplikací pro Windows.   Pokud to chcete ověřit, restartujte jeden z virtuálních počítačů ve skupině dostupnosti a v > protokolech systému Windows by se měla zobrazit událost, která se zaznamenala k restartování virtuálního počítače. 
 
-![Snímek obrazovky prohlížeče událostí](./media/notifications/event-viewer.png)
+![Snímek obrazovky prohlížeče událostí.](./media/notifications/event-viewer.png)
 
-Když jsou události zachyceny službou Událost plánu, budou zaznamenány v aplikaci i protokolovat se stavem události, typem události, prostředky (název virtuálního zařízení) a NotBefore (minimální výpovědní doba). Události s ID 1234 můžete najít v protokolu událostí aplikace.
+Když služba Event Scheduler zachytí události, přihlásí se do protokolu události aplikace, a to s využitím stavu události, typu události, prostředků (název virtuálního počítače) a NotBefore (minimální doba oznámení). Události s ID 1234 můžete najít v protokolu událostí aplikace.
 
 > [!NOTE] 
-> V tomto příkladu virtuální počítače byly v sadě dostupnosti, která nám umožnila určit jeden virtuální počítač jako kolektor pro naslouchání a směrování naplánovaných událostí do našeho pracovního místa analýzy protokolů. Pokud máte samostatné virtuální počítače, můžete spustit službu na každém virtuálním počítači a pak je jednotlivě připojit k pracovnímu prostoru analýzy protokolů.
+> V tomto příkladu jsou virtuální počítače ve skupině dostupnosti, což nám umožnilo určit jeden virtuální počítač jako kolektor k naslouchání a směrování naplánovaných událostí do služby Log Analytics funguje místo. Pokud máte samostatné virtuální počítače, můžete službu spustit na každém virtuálním počítači a pak je připojit jednotlivě k pracovnímu prostoru Log Analytics.
 >
-> Pro naše nastavení jsme zvolili Windows, ale můžete navrhnout podobné řešení na Linuxu.
+> Pro naše nastavení jsme zvolili Windows, ale můžete navrhnout podobné řešení na platformě Linux.
 
-Kdykoli můžete zastavit/odebrat službu naplánované události `–stop` pomocí `–remove`přepínačů a .
+V jakémkoli okamžiku můžete zastavit nebo odebrat naplánovanou službu Event Service pomocí přepínačů `–stop` a. `–remove`
 
 ## <a name="connect-to-the-workspace"></a>Připojení k pracovnímu prostoru
 
 
-Nyní chceme připojit pracovní prostor Analýzy protokolů k virtuálnímu virtuálnímu virtuálnímu virtuálnímu virtuálnímu zařízení kolektoru. Pracovní prostor Log Analytics funguje jako úložiště a nakonfigurujeme kolekci protokolu událostí tak, aby zaznamenávala protokoly aplikací z virtuálního počítače kolektoru. 
+Nyní chceme připojit Log Analytics pracovní prostor k virtuálnímu počítači kolektoru. Pracovní prostor Log Analytics funguje jako úložiště a my nakonfigurujeme shromažďování protokolů událostí pro zachycení protokolů aplikace z virtuálního počítače kolektoru. 
 
- Chcete-li směrovat naplánované události do protokolu událostí, který bude uložen jako protokol aplikací naší službou, budete muset připojit virtuální počítač k pracovnímu prostoru Log Analytics.  
+ Chcete-li směrovat Scheduled Events do protokolu událostí, který bude uložen jako protokol aplikace podle naší služby, budete muset připojit virtuální počítač k pracovnímu prostoru Log Analytics.  
  
-1. Otevřete stránku pracovního prostoru, který jste vytvořili.
-1. V části **Připojení ke zdroji dat** vyberte virtuální počítače Azure **(VM).**
+1. Otevřete stránku pro pracovní prostor, který jste vytvořili.
+1. V části **připojit ke zdroji dat** vyberte **virtuální počítače Azure (virtuální počítače)**.
 
-    ![Připojení k virtuálnímu virtuálnímu virtuálnímu zařízení jako zdroji dat](./media/notifications/connect-to-data-source.png)
+    ![Připojení k virtuálnímu počítači jako zdroji dat](./media/notifications/connect-to-data-source.png)
 
 1. Vyhledejte a vyberte **myCollectorVM**. 
-1. Na nové stránce **myCollectorVM**vyberte **připojit**.
+1. Na nové stránce pro **myCollectorVM**vyberte **připojit**.
 
-Tím nainstalujete [agenta Microsoft Monitoring](/azure/virtual-machines/extensions/oms-windows) ve vašem virtuálním počítači. Připojení virtuálního počítače k pracovnímu prostoru a instalace rozšíření bude trvat několik minut. 
+Tím se na virtuální počítač nainstaluje [Agent Microsoft Monitoring Agent](/azure/virtual-machines/extensions/oms-windows) . Připojení virtuálního počítače k pracovnímu prostoru a instalace rozšíření bude trvat několik minut. 
 
 ## <a name="configure-the-workspace"></a>Konfigurace pracovního prostoru
 
-1. Otevřete stránku pracovního prostoru a vyberte **Upřesnit nastavení**.
-1. V levé nabídce vyberte **Data** a potom vyberte **Protokoly událostí systému Windows**.
-1. V **části Shromáždit z následujících protokolů událostí**začněte zapínat *aplikaci* a ze seznamu vyberte **Možnost Aplikace.**
+1. Otevřete stránku pro váš pracovní prostor a vyberte **Upřesnit nastavení**.
+1. V nabídce vlevo vyberte **data** a pak vyberte **protokoly událostí systému Windows**.
+1. V **části shromáždit z následujících protokolů událostí**začněte psát *aplikaci* a pak v seznamu vyberte **aplikace** .
 
-    ![Vybrat upřesnit nastavení](./media/notifications/advanced.png)
+    ![Vybrat upřesňující nastavení](./media/notifications/advanced.png)
 
-1. Ponechte **vybranou možnost Ponechat vybranou chybu,** **UPOZORNĚNÍ**a **INFORMACE** a potom výběrem **možnosti Uložit** nastavení uložte.
+1. Ponechte vybranou možnost **Chyba**, **Upozornění**a **informace** a pak vyberte **Uložit** . tím nastavení uložíte.
 
 
 > [!NOTE]
-> Dojde k určitému zpoždění a může trvat až 10 minut, než bude protokol k dispozici. 
+> Dojde k prodlevě a může trvat až 10 minut, než bude protokol k dispozici. 
 
 
-## <a name="creating-an-alert-rule-with-azure-monitor"></a>Vytvoření pravidla výstrahy pomocí Azure Monitoru 
+## <a name="creating-an-alert-rule-with-azure-monitor"></a>Vytvoření pravidla výstrahy pomocí Azure Monitor 
 
 
-Po přepnutí událostí do analýzy protokolů můžete spustit následující [dotaz](/azure/azure-monitor/log-query/get-started-portal) a vyhledat události plánu.
+Po vložení událostí do Log Analytics můžete spustit následující [dotaz](/azure/azure-monitor/log-query/get-started-portal) , který vyhledá události plánu.
 
-1. V horní části stránky vyberte **Protokoly** a do textového pole vložte následující:
+1. V horní části stránky vyberte **protokoly** a vložte následující text do textového pole:
 
     ```
     Event
@@ -153,28 +150,28 @@ Po přepnutí událostí do analýzy protokolů můžete spustit následující 
     | project-away RenderedDescription,ReqJson
     ```
 
-1. Vyberte **Uložit**a zadejte *logQuery* pro název, ponechejte **dotaz** jako typ, zadejte *VMLogs* jako **kategorii**a pak vyberte **Uložit**. 
+1. Vyberte **Uložit**a pak jako název zadejte *logQuery* , jako typ nechejte **dotaz** , jako **kategorii**zadejte *VMLogs* a pak vyberte **Save (Uložit**). 
 
-    ![Uložení dotazu](./media/notifications/save-query.png)
+    ![Uložit dotaz](./media/notifications/save-query.png)
 
 1. Vyberte **Nové pravidlo upozornění**. 
-1. Na stránce **Vytvořit** pravidlo `collectorworkspace` ponechte jako **zdroj**.
-1. V **části Podmínka**vyberte položku *Vždy, když je <login undefined>hledání v protokolu zákazníka *. Otevře se stránka **Logika signálu Konfigurace.**
-1. Pod **prahovou hodnotou**zadejte *hodnotu 0* a pak vyberte **Hotovo**.
-1. V části **Akce**vyberte **Vytvořit skupinu akcí**. Otevře se stránka **Přidat skupinu akcí.**
-1. Do **názvu skupiny Akce**zadejte příkaz *myActionGroup*.
-1. Do **pole Krátký název**zadejte příkaz **myActionGroup**.
-1. Ve **skupině Resource**vyberte **položku myResourceGroupAvailability**.
-1. V části Akce v **části NÁZEV AKCE** vyberte **e-mail**a pak vyberte **možnost E-mail/SMS/Push/Voice**. Otevře se stránka **E-mail/SMS/Push/Voice.**
-1. Vyberte **E-mail**, zadejte svou e-mailovou adresu a pak vyberte **OK**.
+1. Na stránce **vytvořit pravidlo** nechejte `collectorworkspace` jako **prostředek**.
+1. V části **Podmínka**vyberte položku *vždy, když je <login undefined>hledání v protokolu zákazníka *. Otevře se stránka **Konfigurovat logiku signálu** .
+1. V části **prahová hodnota**zadejte *0* a potom vyberte **Hotovo**.
+1. V části **Akce**vyberte **vytvořit skupinu akcí**. Otevře se stránka **Přidat skupinu akcí** .
+1. Do **název skupiny akcí**zadejte *myActionGroup*.
+1. Do textu **krátký název**zadejte **myActionGroup**.
+1. V **skupiny prostředků**vyberte **myResourceGroupAvailability**.
+1. V části Akce zadejte do pole **název akce** **e-mail**a pak vyberte **e-mail/SMS/Push/Voice**. Otevře se stránka **e-mail/SMS/Push/Voice** .
+1. Vyberte **e-mail**, zadejte e-mailovou adresu a pak vyberte **OK**.
 1. Na stránce **Přidat skupinu akcí** vyberte **OK**. 
-1. Na stránce **Vytvořit pravidlo** zadejte v části **PODROBNOSTI VÝSTRAHY** *příkaz myAlert* pro **název pravidla výstrahy**a potom zadejte *pravidlo upozornění e-mailem* pro **popis**.
-1. Po dokončení vyberte **Vytvořit pravidlo výstrahy**.
-1. Restartujte jeden z virtuálních počítačů v sadě dostupnosti. Během několika minut byste měli dostat e-mail, že výstraha byla spuštěna.
+1. Na stránce **vytvořit pravidlo** v části **Podrobnosti výstrahy**zadejte *myAlert* pro **název pravidla upozornění**a pak zadejte *pravidlo e-mailové výstrahy* pro **Popis**.
+1. Po dokončení vyberte **vytvořit pravidlo výstrahy**.
+1. Restartujte jeden z virtuálních počítačů ve skupině dostupnosti. Během několika minut byste měli obdržet e-mail s aktivovaným upozorněním.
 
-Pokud chcete spravovat pravidla výstrah, přejděte do skupiny prostředků, v levé nabídce vyberte **Upozornění** a v horní části stránky vyberte **Spravovat pravidla výstrah.**
+Chcete-li spravovat pravidla upozornění, přejděte do skupiny prostředků, v nabídce vlevo vyberte možnost **výstrahy** a v horní části stránky vyberte možnost **Spravovat pravidla výstrah** .
 
      
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete na stránce [služby Naplánované události](https://github.com/microsoft/AzureScheduledEventsService) na GitHubu.
+Další informace najdete na stránce [Služba naplánované události](https://github.com/microsoft/AzureScheduledEventsService) na GitHubu.

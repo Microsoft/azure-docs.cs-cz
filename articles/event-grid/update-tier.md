@@ -1,101 +1,101 @@
 ---
-title: Aktualizace cenové úrovně tématu nebo domény Sítě událostí Azure
-description: Tento článek popisuje, jak aktualizovat cenovou úroveň tématu nebo domény Azure Event Grid (základní na premium, premium na základní) pomocí portálu Azure, Azure CLI a Azure PowerShell.
+title: Aktualizace cenové úrovně tématu Azure Event Grid nebo domény
+description: Tento článek popisuje, jak aktualizovat cenovou úroveň Azure Event Gridho tématu nebo domény (Basic to Premium, Premium na Basic) pomocí Azure Portal, Azure CLI a Azure PowerShell.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 1e92a9f0b9ba007b289c634995b04f4f1575310a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: caea8d515964510fce432eb0497e3af19ecc1369
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79300138"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101633"
 ---
-# <a name="update-pricing-tier"></a>Aktualizovat cenovou úroveň 
-Tento článek ukazuje, jak aktualizovat cenovou úroveň tématu nebo domény Azure Event Grid pomocí portálu Azure, Azure CLI a Azure PowerShellu. 
+# <a name="update-pricing-tier"></a>Aktualizace cenové úrovně 
+V tomto článku se dozvíte, jak aktualizovat cenovou úroveň Azure Event Grid tématu nebo domény pomocí Azure Portal, Azure CLI a Azure PowerShell. 
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
-Tato část ukazuje, jak změnit cenovou úroveň tématu nebo domény na webu Azure Portal. 
+V této části se dozvíte, jak změnit cenovou úroveň tématu nebo domény v Azure Portal. 
 
-### <a name="overview-page"></a>Stránka s přehledem
-Cenovou úroveň tématu nebo domény můžete změnit na stránce **Přehled.** Následující příklad ukazuje, jak upgradovat téma ze základní úrovně na úroveň premium. Kroky k přechodu z úrovně premium na základní úroveň jsou podobné.
+### <a name="overview-page"></a>Stránka Přehled
+Cenovou úroveň tématu nebo domény můžete změnit na stránce **Přehled** . Následující příklad ukazuje, jak upgradovat téma z úrovně Basic na úroveň Premium. Postup pro přechod z úrovně Premium na úroveň Basic je podobný.
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na stránku tématu nebo domény. 
-2. Na stránce **Přehled** vyberte aktuální cenovou úroveň (v následujícím příkladu je **základní**.)
+1. V [Azure Portal](https://portal.azure.com)přejděte na téma nebo na stránku domény. 
+2. Na stránce **Přehled** vyberte aktuální cenovou úroveň (v následujícím příkladu je to **základní**).
     
     ![Výběr aktuální cenové úrovně](./media/update-tier/select-tier.png)
-3. Na stránce **Cenová úroveň** změňte úroveň a vyberte **OK**. 
+3. Na stránce **cenová úroveň** změňte úroveň a vyberte **OK**. 
 
     ![Aktualizace cenové úrovně](./media/update-tier/change-tier.png)
-4. Zkontrolujte stav operace na stránce **Oznámení.**
+4. Stav operace ověřte na stránce **oznámení** .
 
-    ![Aktualizovat stav](./media/update-tier/status.png)    
-5. Potvrďte, že se na stránce **Přehled** zobrazuje aktualizovaná vrstva. 
+    ![Stav aktualizace](./media/update-tier/status.png)    
+5. Ověřte, že se na stránce **Přehled** zobrazuje aktualizovaná úroveň. 
 
-    ![Aktualizovat stav](./media/update-tier/changed-tier.png)
+    ![Stav aktualizace](./media/update-tier/changed-tier.png)
 
-### <a name="networking-page"></a>Stránka Sítě
-Můžete **upgradovat** ze základní vrstvy na úroveň premium na stránce **Sítě.** Na této stránce však nelze přejít z úrovně premium na základní úroveň. 
+### <a name="networking-page"></a>Stránka sítě
+Můžete **upgradovat** z úrovně Basic na úroveň Premium na stránce **síť** . Na této stránce se ale nedá downgradovat z úrovně Premium na úroveň Basic. 
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na stránku tématu nebo domény. 
-2. Na stránce **Síť** přepněte na kartu **Soukromá připojení koncového bodu (preview).** 
-3. Pokud je aktuální cenová úroveň **základní**, zobrazí se následující zpráva. Vyberte ji. 
+1. V [Azure Portal](https://portal.azure.com)přejděte na téma nebo na stránku domény. 
+2. Na stránce **síť** přepněte na kartu **připojení privátního koncového bodu (Preview)** . 
+3. Pokud je aktuální cenová úroveň **Basic**, zobrazí se následující zpráva. Vyberte ji. 
 
-    ![Aktualizovat úroveň na stránce připojení privátního koncového bodu](./media/update-tier/private-endpoint-connections-page.png)
-4. Na stránce **Aktualizovat na úroveň ocenění premium** vyberte **Ano**. 
+    ![Stránka aktualizace úrovně na privátních připojeních koncových bodů](./media/update-tier/private-endpoint-connections-page.png)
+4. Na stránce **aktualizace cenové úrovně Premium** vyberte **Ano**. 
     
     ![Potvrdit upgrade](./media/update-tier/message-private-endpoint-connection.png)
-5. Zkontrolujte stav operace na stránce **Oznámení.**
+5. Stav operace ověřte na stránce **oznámení** .
 
-    ![Aktualizovat stav](./media/update-tier/status.png)
+    ![Stav aktualizace](./media/update-tier/status.png)
 
 
 
 ## <a name="use-azure-cli"></a>Použití Azure CLI
-V této části se zobrazí postup, jak pomocí příkazů Azure CLI změnit cenovou úroveň tématu nebo domény. 
+V této části se dozvíte, jak použít příkazy rozhraní příkazového řádku Azure ke změně cenové úrovně tématu. Pokud chcete aktualizovat cenovou úroveň domény, použijte `az eventgrid domain update` příkaz podobným způsobem.
 
-### <a name="upgrade-a-topic-from-basic-to-premium"></a>Upgrade tématu ze základního na prémiový
-
-```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""premium\""}}"
-```
-
-### <a name="downgrade-a-topic-from-premium-to-basic"></a>Downgrade téma z prémie na základní
+### <a name="prerequisites"></a>Požadované součásti
+Aktualizujte rozšíření Azure Event Grid pro rozhraní příkazového řádku spuštěním následujícího příkazu: 
 
 ```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""basic\""}}"
+az extension update -n eventgrid
 ```
 
-### <a name="upgrade-a-domain-from-basic-to-premium"></a>Upgrade domény ze základní na prémiovou
+Pokud rozšíření není nainstalované, nainstalujte ho spuštěním následujícího příkazu: 
 
 ```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/domains/<EVENT GRID DOMAIN NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""premium\""}}"
+az extension add -n eventgrid
 ```
 
-### <a name="downgrade-a-domain-from-premium-to-basic"></a>Přechod na nižší verzi domény z prémiového na základní
+### <a name="upgrade-a-topic-from-basic-to-premium"></a>Upgrade tématu z úrovně Basic na Premium
 
 ```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/domains/<EVENT GRID DOMAIN NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""basic\""}}"
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --sku "Premium" 
 ```
 
+### <a name="downgrade-a-topic-from-premium-to-basic"></a>Downgrade tématu z úrovně Premium na Basic
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --sku "Basic" 
+```
 
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
-V této části se zobrazí postup, jak pomocí příkazů Prostředí PowerShell změnit cenovou úroveň tématu nebo domény. 
+V této části se dozvíte, jak pomocí příkazů PowerShellu změnit cenovou úroveň tématu nebo domény. 
 
-### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Příprava tokenu a záhlaví pro volání rozhraní REST API 
-Spusťte následující příkazy předpokladů, abyste získali ověřovací token pro použití s voláním rozhraní REST API a autorizací a dalšími informacemi o záhlaví. 
+### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Příprava tokenu a hlaviček pro volání REST API 
+Spusťte následující příkazy, abyste získali ověřovací token pro použití s REST API voláními a autorizací a další informace hlavičky. 
 
 ```azurepowershell-interactive
 # replace <CLIENT ID> and <CLIENT SECRET>
@@ -113,7 +113,7 @@ $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_tok
 $Headers.Add("Content-Type","application/json")
 ```
 
-### <a name="upgrade-a-topic-from-basic-to-premium"></a>Upgrade tématu ze základního na prémiový
+### <a name="upgrade-a-topic-from-basic-to-premium"></a>Upgrade tématu z úrovně Basic na Premium
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="premium"}} | ConvertTo-Json -Depth 5
@@ -125,7 +125,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="downgrade-a-topic-from-premium-to-basic"></a>Downgrade téma z prémie na základní
+### <a name="downgrade-a-topic-from-premium-to-basic"></a>Downgrade tématu z úrovně Premium na Basic
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="basic"}} | ConvertTo-Json -Depth 5
@@ -137,7 +137,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="upgrade-a-domain-from-basic-to-premium"></a>Upgrade domény ze základní na prémiovou
+### <a name="upgrade-a-domain-from-basic-to-premium"></a>Upgrade domény z úrovně Basic na Premium
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="premium"}} | ConvertTo-Json -Depth 5
@@ -149,7 +149,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="downgrade-a-domain-from-premium-to-basic"></a>Přechod na nižší verzi domény z prémiového na základní
+### <a name="downgrade-a-domain-from-premium-to-basic"></a>Downgrade domény z úrovně Premium na Basic
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="basic"}} | ConvertTo-Json -Depth 5
@@ -162,4 +162,4 @@ Invoke-RestMethod -Method 'Patch' `
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Pro témata a domény úrovně premium můžete nakonfigurovat soukromé koncové body tak, aby omezovaly přístup pouze z vybraných virtuálních sítí. Podrobné pokyny naleznete v tématu [Konfigurace soukromých koncových bodů](configure-private-endpoints.md).
+Pro témata a domény úrovně Premium můžete nakonfigurovat privátní koncové body, aby se omezil přístup jenom z vybraných virtuálních sítí. Podrobné pokyny najdete v tématu [Konfigurace privátních koncových bodů](configure-private-endpoints.md).

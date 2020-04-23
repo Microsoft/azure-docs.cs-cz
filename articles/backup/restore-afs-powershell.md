@@ -3,41 +3,43 @@ title: Obnovení souborů Azure pomocí PowerShellu
 description: V tomto článku se dozvíte, jak obnovit soubory Azure pomocí služby Azure Backup a PowerShellu.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 12bff49bc249b23542534d218b13b517411f461b
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: bcd85635dbacceb7d1c125bb550feedbdb57e04a
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756192"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097638"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Obnovení souborů Azure pomocí PowerShellu
 
-Tento článek vysvětluje, jak obnovit celou sdílenou složku nebo konkrétní soubory z bodu obnovení vytvořeného službou [Azure Backup](backup-overview.md) pomocí Azure PowerShellu.
+Tento článek vysvětluje, jak obnovit celou sdílenou složku nebo konkrétní soubory z bodu obnovení vytvořeného službou [Azure Backup](backup-overview.md) pomocí Azure PowerShell.
 
-Můžete obnovit celou sdílenou složku nebo určité soubory ve sdílené složce. Můžete obnovit do původního umístění nebo do alternativního umístění.
+Můžete obnovit celou sdílenou složku nebo konkrétní soubory ve sdílené složce. Můžete obnovit do původního umístění nebo do alternativního umístění.
 
 > [!WARNING]
-> Ujistěte se, že verze PS je upgradována na minimální verzi pro "Az.RecoveryServices 2.6.0" pro zálohy AFS. Další informace naleznete [v části](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) popisující požadavek na tuto změnu.
+> Ujistěte se, že je verze PS upgradována na minimální verzi příkazu AZ. RecoveryServices 2.6.0 pro zálohy na AFS. Další informace najdete v [části](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) popisující požadavek na tuto změnu.
 
 >[!NOTE]
->Azure Backup teď podporuje obnovení více souborů nebo složek do původního nebo alternativního umístění pomocí PowerShellu. V této části dokumentu se dozvíte, jak na [to.](#restore-multiple-files-or-folders-to-original-or-alternate-location)
+>Azure Backup teď podporuje obnovení více souborů nebo složek do původního nebo alternativního umístění pomocí PowerShellu. Další informace najdete v [této části](#restore-multiple-files-or-folders-to-original-or-alternate-location) dokumentu.
 
-## <a name="fetch-recovery-points"></a>Načtení bodů obnovení
+## <a name="fetch-recovery-points"></a>Načíst body obnovení
 
-Pomocí [příkazu Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) zobrazíte seznam všech bodů obnovení zálohované položky.
+K vypsání všech bodů obnovení pro zálohovanou položku použijte [příkaz Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) .
 
 V následujícím skriptu:
 
-* Proměnná **$rp** je pole bodů obnovení pro vybranou položku zálohování za posledních sedm dní.
-* Pole je seřazeno v obráceném pořadí času s nejnovějším bodem obnovení v indexu **0**.
-* K výběru bodu obnovení použijte standardní indexování pole PowerShell.
-* V příkladu **$rp[0]** vybere nejnovější bod obnovení.
+* Proměnná **$RP** je pole bodů obnovení pro vybranou zálohovanou položku z posledních sedmi dnů.
+* Pole je seřazené v opačném pořadí s nejnovějším bodem obnovení na indexu **0**.
+* Pro výběr bodu obnovení použijte standardní indexování pole v PowerShellu.
+* V příkladu **$RP [0]** vybere nejnovější bod obnovení.
 
 ```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "afsaccount" -VaultId $vault.ID
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "azurefiles"
 $startDate = (Get-Date).AddDays(-7)
 $endDate = Get-Date
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $afsBkpItem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
-
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
 $rp[0] | fl
 ```
 
@@ -57,24 +59,24 @@ ContainerType        : AzureStorage
 BackupManagementType : AzureStorage
 ```
 
-Po výběru příslušného bodu obnovení obnovíte sdílenou složku nebo soubor do původního umístění nebo do alternativního umístění.
+Po výběru příslušného bodu obnovení obnovte sdílenou složku nebo soubor do původního umístění nebo do alternativního umístění.
 
 ## <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Obnovení sdílené složky Azure do alternativního umístění
 
-Pomocí [položky Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) obnovte vybraný bod obnovení. Zadejte tyto parametry k identifikaci alternativníumístění:
+K obnovení do vybraného bodu obnovení použijte [příkaz Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) . Zadejte tyto parametry pro identifikaci alternativního umístění:
 
-* **TargetStorageAccountName**: Účet úložiště, do kterého se obnoví zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
-* **TargetFileShareName**: Sdílené složky v rámci účtu cílového úložiště, do kterého je obnoven zálohovaný obsah.
-* **TargetFolder**: Složka pod sdílenou složkou souboru, do které jsou obnovena data. Pokud má být zálohovaný obsah obnoven do kořenové složky, přiřazujte hodnoty cílové složky jako prázdný řetězec.
-* **ResolveConflict**: Instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepsání** nebo **přeskočení**.
+* **TargetStorageAccountName**: účet úložiště, do kterého se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
+* **TargetFileShareName**: sdílené složky v rámci cílového účtu úložiště, do kterého se obnoví zálohovaný obsah.
+* **TargetFolder**: složka ve sdílené složce, do které se budou data obnovovat. Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnoty cílové složky jako prázdný řetězec.
+* **ResolveConflict selhalo**: instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
 
-Spusťte rutinu s parametry takto:
+Spusťte rutinu s parametry následujícím způsobem:
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
 ```
 
-Příkaz vrátí úlohu s ID, které má být sledováno, jak je znázorněno v následujícím příkladu.
+Příkaz vrátí úlohu s ID, které se má sledovat, jak je znázorněno v následujícím příkladu.
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -84,26 +86,26 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 ## <a name="restore-an-azure-file-to-an-alternate-location"></a>Obnovení souboru Azure do alternativního umístění
 
-Pomocí [položky Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) obnovte vybraný bod obnovení. Zadejte tyto parametry k identifikaci alternativního umístění a k jednoznačné identifikaci souboru, který chcete obnovit.
+K obnovení do vybraného bodu obnovení použijte [příkaz Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) . Určete tyto parametry k identifikaci alternativního umístění a k jedinečné identifikaci souboru, který chcete obnovit.
 
-* **TargetStorageAccountName**: Účet úložiště, do kterého se obnoví zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
-* **TargetFileShareName**: Sdílené složky v rámci účtu cílového úložiště, do kterého je obnoven zálohovaný obsah.
-* **TargetFolder**: Složka pod sdílenou složkou souboru, do které jsou obnovena data. Pokud má být zálohovaný obsah obnoven do kořenové složky, přiřazujte hodnoty cílové složky jako prázdný řetězec.
-* **SourceFilePath**: Absolutní cesta k souboru, který má být obnoven ve sdílené složce jako řetězec. Tato cesta je stejná cesta použitá v rutině **Get-AzStorageFile** PowerShell.
+* **TargetStorageAccountName**: účet úložiště, do kterého se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
+* **TargetFileShareName**: sdílené složky v rámci cílového účtu úložiště, do kterého se obnoví zálohovaný obsah.
+* **TargetFolder**: složka ve sdílené složce, do které se budou data obnovovat. Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnoty cílové složky jako prázdný řetězec.
+* **SourceFilePath**: absolutní cesta k souboru, která se má obnovit v rámci sdílené složky jako řetězec. Tato cesta je stejná jako cesta použitá v rutině PowerShellu **Get-AzStorageFile** .
 * **SourceFileType**: Určuje, zda je vybrán adresář nebo soubor. Přijímá **adresář** nebo **soubor**.
-* **ResolveConflict**: Instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepsání** nebo **přeskočení**.
+* **ResolveConflict selhalo**: instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
 
-Další parametry (SourceFilePath a SourceFileType) se vztahují pouze k jednotlivému souboru, který chcete obnovit.
+Další parametry (SourceFilePath a SourceFileType) se týkají pouze jednotlivých souborů, které chcete obnovit.
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
 
-Tento příkaz vrátí úlohu s ID, které má být sledováno, jak je znázorněno v předchozí části.
+Tento příkaz vrátí úlohu s ID, které se má sledovat, jak je znázorněno v předchozí části.
 
 ## <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>Obnovení sdílených složek a souborů Azure do původního umístění
 
-Při obnovení do původního umístění není nutné zadávat parametry související s cílem a cílem. Musí být poskytnutpouze **ResolveConflict.**
+Při obnovení do původního umístění nemusíte zadávat parametry související s cíli a cíli. Musí být zadáno pouze **ResolveConflict selhalo** .
 
 ### <a name="overwrite-an-azure-file-share"></a>Přepsání sdílené složky Azure
 
@@ -111,7 +113,7 @@ Při obnovení do původního umístění není nutné zadávat parametry souvis
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
 ```
 
-### <a name="overwrite-an-azure-file"></a>Přepsání souboru Azure
+### <a name="overwrite-an-azure-file"></a>Přepsat soubor Azure
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
@@ -119,11 +121,11 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Obnovení více souborů nebo složek do původního nebo alternativního umístění
 
-Příkaz [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) použijte tak, že předácestu všech souborů nebo složek, které chcete obnovit, jako hodnotu parametru **MultipleSourceFilePath.**
+Použijte příkaz [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) předáním cesty všech souborů nebo složek, které chcete obnovit, jako hodnotu parametru **MultipleSourceFilePath** .
 
 ### <a name="restore-multiple-files"></a>Obnovení více souborů
 
-V následujícím skriptu se pokoušíme obnovit soubory *FileSharePage.png* a *MyTestFile.txt.*
+V následujícím skriptu se snažíme obnovit soubory *FileSharePage. png* a *MyTestFile. txt* .
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
@@ -141,7 +143,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePa
 
 ### <a name="restore-multiple-directories"></a>Obnovení více adresářů
 
-V následujícím skriptu se snažíme obnovit *zrs1_restore* a *obnovit* adresáře.
+V následujícím skriptu se snažíme obnovit adresáře *zrs1_restore* a *obnovení* .
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
@@ -165,8 +167,8 @@ WorkloadName         Operation         Status          StartTime                
 azurefiles           Restore           InProgress      4/5/2020 8:01:24 AM                    cd36abc3-0242-44b1-9964-0a9102b74d57
 ```
 
-Pokud chcete obnovit více souborů nebo složek do alternativního umístění, použijte výše uvedené skripty zadáním cílových hodnot parametrů souvisejících s umístěním, jak je vysvětleno výše v části [Obnovení souboru Azure do alternativního umístění](#restore-an-azure-file-to-an-alternate-location).
+Pokud chcete obnovit více souborů nebo složek do alternativního umístění, použijte výše uvedené skripty zadáním hodnot cílových parametrů souvisejících s umístěním, jak je popsáno výše v části [obnovení souboru Azure do alternativního umístění](#restore-an-azure-file-to-an-alternate-location).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přečtěte si o](restore-afs.md) obnovení souborů Azure na webu Azure Portal.
+[Přečtěte si o](restore-afs.md) obnovení souborů Azure v Azure Portal.

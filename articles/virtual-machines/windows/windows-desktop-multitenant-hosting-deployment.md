@@ -1,52 +1,46 @@
 ---
-title: Jak nasadit Windows 10 do Azure s právy k hostování ve více tenantských zařízeních
-description: Zjistěte, jak maximalizovat výhody windows software assurance a přenést místní licence do Azure
-services: virtual-machines-windows
-documentationcenter: ''
+title: Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty
+description: Přečtěte si, jak maximalizovat výhody programu Software Assurance pro Windows, aby se do Azure přinášejí místní licence.
 author: xujing
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 9ff8cc64266375a2d439763b222870843136f67a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70101494"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101548"
 ---
-# <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 do Azure s právy k hostování ve více tenantských zařízeních 
-Pro zákazníky s Windows 10 Enterprise E3/E5 na uživatele nebo Windows Virtual Desktop Access na uživatele (licence k předplatnému uživatele nebo licence k předplatnému pro uživatele doplňku) vám práva k hostování ve více klientech pro Windows 10 umožňují přenést licence windows 10 do cloudu a provozovat virtuální počítače windows 10 v Azure, aniž byste museli platit za jinou licenci. Další informace najdete v [tématu Víceklientský hosting pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
+# <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty 
+Pro zákazníky s Windows 10 Enterprise E3/E5 podle uživatele nebo přístup k virtuálnímu počítači s Windows na úrovni uživatele (licence pro předplatné uživatele nebo licence k předplatnému uživatele) umožňuje víceklientské hostování pro Windows 10 přístup k cloudu a spouštění Windows 10 Virtual Machines v Azure bez placení na jinou licenci. Další informace najdete v tématu hostování s více [klienty pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
 
 > [!NOTE]
-> Tento článek ukazuje, že můžete implementovat výhody licencování pro ibi Plochy Windows 10 Pro na Azure Marketplace.
-> - Pro Windows 7, 8.1, 10 Enterprise (x64) image na Azure Marketplace pro předplatná MSDN, naleznete v [klientovi Windows v Azure pro vývoj a testování scénářů](client-images.md)
-> - Výhody licencování windows serveru najdete v části [Výhody hybridního využití Azure pro bitové kopie Windows Serveru](hybrid-use-benefit-licensing.md).
+> Tento článek vás seznámí s implementací výhod licencování pro desktopové image Windows 10 pro na Azure Marketplace.
+> - V případě [scénářů pro vývoj a testování](client-images.md) pro Windows 7, 8,1, 10 Enterprise (x64) imagí na Azure Marketplace pro Předplatná MSDN se podívejte na klienta Windows v Azure.
+> - Výhody licencování Windows serveru najdete v tématu [výhody hybridního použití Azure pro image Windows serveru](hybrid-use-benefit-licensing.md).
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Nasazení image Windows 10 z Azure Marketplace 
-Pro nasazení šablon Powershellu, CLI a Azure Resource Manageru najdete bitovou kopii Windows 10 s následujícím názvem vydavatele, nabídkou a sku.
+Pro prostředí PowerShell, rozhraní příkazového řádku a Azure Resource Manager nasazení šablon můžete najít image Windows 10 s následujícím vydavatelem, nabídkou, SKU.
 
 | Operační systém  |      Název vydavatele      |  Nabídka | Skladová jednotka (SKU) |
 |:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-pro   |
+| Windows 10 pro N  | MicrosoftWindowsDesktop | Windows-10  | Náchylné k RS2  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-pro   |
+| Windows 10 pro N  | MicrosoftWindowsDesktop | Windows-10  | Náchylné k RS3  |
 
-## <a name="uploading-windows-10-vhd-to-azure"></a>Nahrání virtuálního pevného disku Windows 10 do Azure
-Pokud nahráváte generalizovaný virtuální disk Windows 10, vezměte prosím na vědomí, že systém Windows 10 nemá ve výchozím nastavení povolený vestavěný účet správce. Chcete-li povolit předdefinovaný účet správce, zahrňte jako součást rozšíření Vlastní skript následující příkaz.
+## <a name="uploading-windows-10-vhd-to-azure"></a>Nahrání virtuálního pevného disku s Windows 10 do Azure
+Pokud nahráváte zobecněný virtuální pevný disk s Windows 10, pamatujte na to, že ve výchozím nastavení není ve Windows 10 povolený vestavěný účet správce. Pokud chcete povolit integrovaný účet správce, zahrňte jako součást rozšíření vlastních skriptů následující příkaz.
 
 ```powershell
 Net user <username> /active:yes
 ```
 
-Následující fragment prostředí powershellu označuje všechny účty správce jako aktivní, včetně integrovaného správce. Tento příklad je užitečný, pokud není známo předdefinované uživatelské jméno správce.
+Následujícím fragmentem kódu prostředí PowerShell označíte všechny účty správců jako aktivní, včetně předdefinovaného správce. Tento příklad je užitečný v případě, že předdefinované uživatelské jméno správce není známé.
 ```powershell
 $adminAccount = Get-WmiObject Win32_UserAccount -filter "LocalAccount=True" | ? {$_.SID -Like "S-1-5-21-*-500"}
 if($adminAccount.Disabled)
@@ -56,12 +50,12 @@ if($adminAccount.Disabled)
 }
 ```
 Další informace najdete tady: 
-* [Jak nahrát Virtuální pevný disk do Azure](upload-generalized-managed.md)
-* [Jak připravit virtuální pevný disk Windows k nahrání do Azure](prepare-for-upload-vhd-image.md)
+* [Postup nahrání virtuálního pevného disku do Azure](upload-generalized-managed.md)
+* [Příprava virtuálního pevného disku s Windows pro nahrání do Azure](prepare-for-upload-vhd-image.md)
 
 
-## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Nasazení Windows 10 s víceklientským hostingovým právem
-Ujistěte se, že jste [nainstalovali a nakonfigurovali nejnovější Azure PowerShell](/powershell/azure/overview). Po přípravě virtuálního pevného disku nahrajte virtuální pevný `Add-AzVhd` disk do účtu služby Azure Storage pomocí rutiny následujícím způsobem:
+## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Nasazení Windows 10 s právy pro hostování s více klienty
+Ujistěte se, že máte [nainstalovanou a nakonfigurovanou nejnovější Azure PowerShell](/powershell/azure/overview). Po přípravě virtuálního pevného disku nahrajte virtuální pevný disk na účet Azure Storage pomocí `Add-AzVhd` rutiny následujícím způsobem:
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -69,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Nasazení pomocí nasazení šablony Správce prostředků Azure** V šablonách Správce prostředků lze `licenseType` zadat další parametr pro. Další informace o [vytváření šablon Azure Resource Manageru](../../resource-group-authoring-templates.md)najdete v článku . Až si nahrajete virtuální pevný disk do Azure, upravte šablonu Správce prostředků tak, aby zahrnovala typ licence jako součást poskytovatele výpočetních prostředků, a nasadit šablonu jako obvykle:
+Nasazení **pomocí Azure Resource Managerho nasazení šablony** V rámci šablon Správce prostředků lze zadat další parametr pro `licenseType` . Můžete si přečíst další informace o [vytváření šablon Azure Resource Manager](../../resource-group-authoring-templates.md). Po nahrání virtuálního pevného disku do Azure upravte Správce prostředků šablonu tak, aby obsahovala typ licence jako součást zprostředkovatele výpočetní služby, a šablonu nasaďte jako normální:
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -78,18 +72,18 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
     }
 ```
 
-**Nasazení přes PowerShell** Při nasazování virtuálního počítače se systémem Windows Server `-LicenseType`prostřednictvím prostředí PowerShell máte další parametr pro aplikaci . Po nahrání virtuálního pevného disku do Azure `New-AzVM` vytvoříte virtuální počítač pomocí a zadejte typ licencování následujícím způsobem:
+**Nasazení prostřednictvím PowerShellu** Při nasazení virtuálního počítače s Windows serverem prostřednictvím PowerShellu máte další parametr pro `-LicenseType`. Po nahrání virtuálního pevného disku do Azure vytvoříte virtuální počítač pomocí příkazu `New-AzVM` a zadáte typ licencování následujícím způsobem:
 ```powershell
 New-AzVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
 
-## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Ověřte, že váš virtuální počítač využívá výhody licencování
-Po nasazení virtuálního počítače pomocí metody nasazení PowerShellu nebo Správce prostředků `Get-AzVM` ověřte typ licence následujícím způsobem:
+## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Ověřte, že váš virtuální počítač využívá výhod licencování.
+Po nasazení virtuálního počítače pomocí metody nasazení PowerShellu nebo Správce prostředků Ověřte typ `Get-AzVM` licence následujícím způsobem:
 ```powershell
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
 
-Výstup je podobný následujícímu příkladu pro Windows 10 se správným typem licence:
+Výstup se podobá následujícímu příkladu pro Windows 10 se správným typem licence:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -97,7 +91,7 @@ Location                 : westus
 LicenseType              : Windows_Client
 ```
 
-Tento výstup kontrastuje s následujícím virtuálním počítačem nasazeným bez licencování výhod hybridního využití Azure, jako je například virtuální počítač nasazený přímo z Galerie Azure:
+Tento výstup se liší od tohoto virtuálního počítače nasazeného bez programu Azure Hybrid Use zvýhodněné licencování, jako je například virtuální počítač nasazený přímo z Galerie Azure:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -107,12 +101,12 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>Další informace o připojení k Azure AD
 >[!NOTE]
->Azure zřdí všechny virtuální počítače s Windows s předdefinovaným účtem správce, který nejde použít k připojení k AAD. Například *Nastavení > účtu > přístupu k práci nebo > +Připojení* nebude fungovat. Musíte vytvořit a přihlásit se jako druhý účet správce, abyste se k Azure AD připojili ručně. Můžete také nakonfigurovat Azure AD pomocí zřizovacíbalíček, použijte odkaz je *další kroky.*
+>Azure zřídí všechny virtuální počítače s Windows s předdefinovaným účtem správce, který se nedá použít k připojení AAD. Například *nastavení > účet > přístup do práce nebo do školy > + připojení* nebude fungovat. Abyste mohli službu Azure AD připojit ručně, musíte vytvořit a přihlásit se jako druhý účet správce. Službu Azure AD můžete nakonfigurovat také pomocí zřizovacího balíčku. Další informace najdete v části *Další kroky* .
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [konfiguraci VDA pro Windows 10](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
-- Další informace o [víceklientských hostingech pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
+- Další informace o [víceklientské hostování pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
 
 

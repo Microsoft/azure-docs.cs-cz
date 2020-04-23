@@ -1,6 +1,6 @@
 ---
-title: Ukázky prostředí Azure PowerShell pro Azure Lab Services | Dokumenty společnosti Microsoft
-description: Ukázky Prostředí Azure PowerShell – skripty, které vám pomůžou spravovat testovací prostředí ve službách Azure Lab Services
+title: Azure PowerShell ukázky pro Azure Lab Services | Microsoft Docs
+description: Ukázky Azure PowerShell – skripty, které vám pomůžou se správou cvičení v Azure Lab Services
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,24 +10,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 09b93cc1d1f05e185a1550fb8141423447e802b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44050ab9367572a8160f6e268781478ca3313419
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64730605"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100851"
 ---
-# <a name="azure-powershell-samples-for-azure-lab-services"></a>Ukázky Prostředí Azure PowerShell pro Azure Lab Services
+# <a name="azure-powershell-samples-for-azure-lab-services"></a>Ukázky Azure PowerShell pro Azure Lab Services
 
-Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu pro Azure Lab Services.
+Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pro Azure Lab Services.
 
 | |  |
 |---|---|
-|[Přidání externího uživatele do testovacího prostředí](scripts/add-external-user-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript prostředí PowerShell přidá externího uživatele do testovacího prostředí v laboratořích Azure DevTest Labs. |
-|[Přidání bitových kopií marketplace do testovacího prostředí](scripts/add-marketplace-images-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript prostředí PowerShell přidá image marketplace do testovacího prostředí v Azure DevTest Labs. |
-|[Vytvoření vlastního obrázku z virtuálního pevného disku](scripts/create-custom-image-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript Prostředí PowerShell vytvoří vlastní image v testovacím prostředí v Azure DevTest Labs. |
-|[Vytvoření vlastní role v testovacím prostředí](scripts/create-custom-role-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript Prostředí PowerShell vytvoří vlastní roli v testovacím prostředí ve službě Azure Lab Services. |
-|[Nastavení povolených velikostí virtuálních počítače v testovacím prostředí](scripts/set-allowed-vm-sizes-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript prostředí PowerShell nastaví povolené velikosti virtuálních počítačů (VM) v testovacím prostředí. |
+|[Přidání externího uživatele do testovacího prostředí](scripts/add-external-user-to-lab.md)| Tento skript PowerShellu přidá externího uživatele do testovacího prostředí v Azure DevTest Labs. |
+|[Přidání imagí z Marketplace do testovacího prostředí](scripts/add-marketplace-images-to-lab.md)| Tento skript PowerShellu přidá image z Marketplace do testovacího prostředí v Azure DevTest Labs. |
+|[Vytvoření vlastní image z VHD](scripts/create-custom-image-from-vhd.md)| Tento skript PowerShellu vytvoří vlastní image v testovacím prostředí v Azure DevTest Labs. |
+|[Vytvoření vlastní role v testovacím prostředí](scripts/create-custom-role-in-lab.md)| Tento skript PowerShellu vytvoří v testovacím prostředí v Azure Lab Services vlastní roli. |
+|[Nastavení povolených velikostí virtuálních počítačů v testovacím prostředí](scripts/set-allowed-vm-sizes-in-lab.md)| Tento skript PowerShellu nastavuje povolené velikosti virtuálních počítačů v testovacím prostředí. |
 

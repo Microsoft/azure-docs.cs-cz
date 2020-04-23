@@ -1,101 +1,180 @@
 ---
-title: Konfigurace ip firewallu pro témata nebo domény Azure Event Grid (Preview)
-description: Tento článek popisuje, jak nakonfigurovat nastavení brány firewall pro témata nebo domény služby Event Grid.
+title: Konfigurace brány firewall protokolu IP pro Azure Event Grid témata nebo domény (Preview)
+description: Tento článek popisuje, jak nakonfigurovat nastavení brány firewall pro Event Grid témata nebo domény.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: b195872ca1002970fa96ae133d5eb47a9267796d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aa86b3619897c310473f12e1c28101185ebf3ab
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299865"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100987"
 ---
-# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>Konfigurace ip firewallu pro témata nebo domény Azure Event Grid (Preview)
-Ve výchozím nastavení jsou téma a doména přístupné z internetu, pokud je požadavek dodáván s platným ověřováním a autorizací. S ip firewallem ji můžete dále omezit pouze na sadu adres IPv4 nebo rozsahy adres IPv4 v zápisu [CIDR (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) Vydavatelé pocházející z jakékoli jiné IP adresy budou odmítnuti a obdrží odpověď 403 (Forbidden). Další informace o funkcích zabezpečení sítě podporovaných programem Event Grid naleznete v [tématu Zabezpečení sítě pro program Event Grid](network-security.md).
+# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>Konfigurace brány firewall protokolu IP pro Azure Event Grid témata nebo domény (Preview)
+Ve výchozím nastavení je k tématům a doménám přístup z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Vydavatelé pocházející z jakékoli jiné IP adresy se odmítnou a obdrží odpověď 403 (zakázáno). Další informace o funkcích zabezpečení sítě podporovaných nástrojem Event Grid najdete v tématu [zabezpečení sítě pro Event Grid](network-security.md).
 
-Tento článek popisuje, jak nakonfigurovat nastavení brány firewall IP pro témata nebo domény služby Azure Event Grid.
+Tento článek popisuje, jak nakonfigurovat nastavení brány firewall protokolu IP pro Azure Event Grid témata nebo domény.
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
-V této části se ukazuje, jak pomocí portálu Azure vytvořit příchozí pravidla brány firewall IP. Kroky uvedené v této části jsou určeny pro témata. Podobné kroky můžete použít k vytvoření příchozích pravidel IP pro **domény**. 
+V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány firewall pro příchozí IP adresy. Postup uvedený v této části najdete v tématu. Pomocí podobných kroků můžete vytvořit pravidla příchozího přenosu IP adres pro **domény**. 
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na téma nebo doménu mřížky událostí a přepněte na kartu **Síť.**
-2. Výběrem **možnosti Veřejné sítě** povolíte přístup k prostředku všem sítím, včetně Internetu. 
+1. V [Azure Portal](https://portal.azure.com)přejděte na téma nebo doménu služby Event Grid a přepněte na kartu **síť** .
+2. Vyberte **veřejné sítě** , pokud chcete, aby všechny sítě, včetně Internetu, umožňovaly přístup k prostředku. 
 
-    Provoz můžete omezit pomocí pravidel brány firewall založených na protokolu IP. Zadejte jednu adresu IPv4 nebo rozsah adres IP v zápisu mezidoménového směrování (CIDR) bez třídy. 
+    Přenos můžete omezit pomocí pravidel brány firewall založené na protokolu IP. Zadejte jednu adresu IPv4 nebo rozsah IP adres v zápisu CIDR (Classless Inter-Domain Routing). 
 
-    ![Stránka Veřejných sítí](./media/configure-firewall/public-networks-page.png)
-3. Vyberte **soukromé koncové body pouze** pro povolení přístupu k tomuto prostředku pouze privátním koncovým bodům. Ke správě připojení použijte kartu **Soukromá připojení koncového bodu** na této stránce. 
+    ![Stránka veřejné sítě](./media/configure-firewall/public-networks-page.png)
+3. Vyberte **soukromé koncové body jenom** pro přístup k tomuto prostředku jenom připojením privátního koncového bodu. Pomocí karty **připojení privátního koncového bodu** na této stránce můžete spravovat připojení. 
 
-    ![Stránka Veřejných sítí](./media/configure-firewall/private-endpoints-page.png)
+    ![Stránka veřejné sítě](./media/configure-firewall/private-endpoints-page.png)
 4. Na panelu nástrojů vyberte **Uložit**. 
 
 
 
 ## <a name="use-azure-cli"></a>Použití Azure CLI
-V této části se zobrazí, jak pomocí příkazů Azure CLI vytvářet témata s pravidly příchozí IP adresy. Kroky uvedené v této části jsou určeny pro témata. Podobné kroky můžete použít k vytvoření příchozích pravidel IP pro **domény**. 
+V této části se dozvíte, jak pomocí příkazů rozhraní příkazového řádku Azure vytvářet témata s pravidly příchozích IP adres. Postup uvedený v této části najdete v tématu. Pomocí podobných kroků můžete vytvořit pravidla příchozího přenosu IP adres pro **domény**. 
 
 
-### <a name="enable-public-network-access-for-an-existing-topic"></a>Povolení přístupu k veřejné síti pro existující téma
-Ve výchozím nastavení je přístup k veřejné síti povolen pro témata a domény. Provoz můžete omezit konfigurací příchozích pravidel brány firewall IP. 
-
-```azurecli-interactive
-az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Enabled\""}}"
-```
-
-### <a name="disable-public-network-access-for-an-existing-topic"></a>Zakázání přístupu k veřejné síti pro existující téma
-Pokud je přístup k veřejné síti pro téma nebo doménu zakázán, není povolen provoz přes veřejný internet. K těmto prostředkům budou mít přístup pouze soukromá připojení koncového bodu. 
+### <a name="prerequisites"></a>Požadované součásti
+Aktualizujte rozšíření Azure Event Grid pro rozhraní příkazového řádku spuštěním následujícího příkazu: 
 
 ```azurecli-interactive
-az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Disabled\""}}"
+az extension update -n eventgrid
 ```
 
-### <a name="create-topic-with-inbound-ip-rules"></a>Vytvoření tématu s pravidly příchozí IP adresy
-Následující ukázkový příkaz příkazu PŘÍKAZKového příkazu vytvoří téma mřížky událostí s pravidly příchozí IP adresy v jednom kroku. 
+Pokud rozšíření není nainstalované, nainstalujte ho spuštěním následujícího příkazu: 
 
 ```azurecli-interactive
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"",\""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+az extension add -n eventgrid
 ```
 
-### <a name="create-topic-first-and-then-add-inbound-ip-rules"></a>Nejprve vytvořte téma a pak přidejte příchozí pravidla IP
-Tento příklad nejprve vytvoří téma mřížky událostí a poté přidá příchozí pravidla IP pro toto téma v samostatném příkazu. Aktualizuje také příchozí pravidla IP, která byla nastavena v druhém příkazu. 
+### <a name="enable-or-disable-public-network-access"></a>Povolit nebo zakázat přístup k veřejné síti
+Ve výchozím nastavení je přístup k veřejné síti povolený pro témata a domény. Můžete ho taky povolit explicitně nebo zakázat. Můžete omezit provoz konfigurací pravidel brány firewall pro příchozí IP adresy. 
+
+#### <a name="enable-public-network-access-while-creating-a-topic"></a>Povolit přístup k veřejné síti při vytváření tématu
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled
+```
+
+
+#### <a name="disable-public-network-access-while-creating-a-topic"></a>Zakázat přístup k veřejné síti při vytváření tématu
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access disabled
+```
+
+> [!NOTE]
+> Když je přístup k veřejné síti pro téma nebo doménu zakázaný, provoz přes veřejný Internet není povolený. Přístup k těmto prostředkům budou mít jenom připojení privátního koncového bodu. 
+
+
+#### <a name="enable-public-network-access-for-an-existing-topic"></a>Povolit přístup k veřejné síti pro existující téma
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled 
+```
+
+#### <a name="disable-public-network-access-for-an-existing-topic"></a>Zakázat přístup k veřejné síti pro existující téma 
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access disabled
+```
+
+### <a name="create-a-topic-with-single-inbound-ip-rule"></a>Vytvoření tématu s pravidlem jednoho příchozího IP adres
+V následujícím ukázkovém příkazu rozhraní příkazového řádku se vytvoří téma Event Grid s pravidly příchozího přenosu IP adres. 
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR or CIDR MASK> allow 
+```
+
+### <a name="create-a-topic-with-multiple-inbound-ip-rules"></a>Vytvoření tématu s více pravidly příchozí IP adresy
+
+Následující ukázkový příkaz rozhraní příkazového řádku vytvoří v jednom kroku téma Event Grid – dvě pravidla příchozích IP adres: 
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow \
+    --inbound-ip-rules <IP ADDR 2 or CIDR MASK 2> allow
+```
+
+### <a name="update-an-existing-topic-to-add-inbound-ip-rules"></a>Aktualizace existujícího tématu pro přidání pravidel příchozího přenosu IP adres
+V tomto příkladu se nejdřív vytvoří téma Event Grid a pak se do samostatného příkazu přidá pravidla příchozího přenosu IP adres pro toto téma. Aktualizuje taky pravidla příchozího přenosu IP, která se nastavila ve druhém příkazu. 
 
 ```azurecli-interactive
 
 # create the event grid topic first
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-    --body {\""location\"":\""<LOCATION>\""}
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location
 
-# add inbound IP rules
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" 
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"", \""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+# add inbound IP rules to an existing topic
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR or CIDR MASK> allow
 
-# later, update topic with additional ip rules or remove them. 
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" 
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"", \""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""}, {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+# later, update topic with additional ip rules
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow \
+    --inbound-ip-rules <IP ADDR 2 or CIDR MASK 2> allow
+```
+
+### <a name="remove-an-inbound-ip-rule"></a>Odebrat pravidlo příchozí IP adresy
+Následující příkaz odebere druhé pravidlo, které jste vytvořili v předchozím kroku, zadáním pouze prvního pravidla při aktualizaci nastavení. 
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow
 ```
 
 
 ## <a name="use-powershell"></a>Použití prostředí PowerShell
-V této části se ukazuje, jak pomocí příkazů Azure PowerShellu vytvářet témata Azure Event Grid s pravidly vstupní brány firewall IP. Kroky uvedené v této části jsou určeny pro témata. Podobné kroky můžete použít k vytvoření příchozích pravidel IP pro **domény**. 
+V této části se dozvíte, jak pomocí Azure PowerShellch příkazů vytvářet Azure Event Grid témata s pravidly brány firewall pro příchozí IP adresy. Postup uvedený v této části najdete v tématu. Pomocí podobných kroků můžete vytvořit pravidla příchozího přenosu IP adres pro **domény**. 
 
-### <a name="prerequisite"></a>Požadavek
-Postupujte podle pokynů z [funkce Postup: Pomocí portálu vytvořte instanční objekt azure a služby Azure AD, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md) k vytvoření aplikace Azure Active Directory a poznamenejte si následující hodnoty:
+### <a name="prerequisites"></a>Požadované součásti
+Postupujte podle pokynů v tématu [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md) k vytvoření aplikace Azure Active Directory a poznamenejte si následující hodnoty:
 
 - ID adresáře (tenanta)
 - ID aplikace (klienta)
-- Tajný klíč aplikace (klienta)
+- Tajný kód aplikace (klienta)
 
-### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Příprava tokenu a záhlaví pro volání rozhraní REST API 
-Spusťte následující příkazy předpokladů, abyste získali ověřovací token pro použití s voláním rozhraní REST API a autorizací a dalšími informacemi o záhlaví. 
+### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Příprava tokenu a hlaviček pro volání REST API 
+Spusťte následující příkazy, abyste získali ověřovací token pro použití s REST API voláními a autorizací a další informace hlavičky. 
 
 ```azurepowershell-interactive
 # replace <CLIENT ID> and <CLIENT SECRET>
@@ -113,8 +192,8 @@ $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_tok
 $Headers.Add("Content-Type","application/json")
 ```
 
-### <a name="enable-public-network-access-for-an-existing-topic"></a>Povolení přístupu k veřejné síti pro existující téma
-Ve výchozím nastavení je přístup k veřejné síti povolen pro témata a domény. Provoz můžete omezit konfigurací příchozích pravidel brány firewall IP. 
+### <a name="enable-public-network-access-for-an-existing-topic"></a>Povolit přístup k veřejné síti pro existující téma
+Ve výchozím nastavení je přístup k veřejné síti povolený pro témata a domény. Můžete omezit provoz konfigurací pravidel brány firewall pro příchozí IP adresy. 
 
 ```azurepowershell-interactive
 $body = @{"properties"=@{"publicNetworkAccess"="enabled"}} | ConvertTo-Json -Depth 5
@@ -126,8 +205,8 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="disable-public-network-access-for-an-existing-topic"></a>Zakázání přístupu k veřejné síti pro existující téma
-Pokud je přístup k veřejné síti pro téma nebo doménu zakázán, není povolen provoz přes veřejný internet. K těmto prostředkům budou mít přístup pouze soukromá připojení koncového bodu. 
+### <a name="disable-public-network-access-for-an-existing-topic"></a>Zakázat přístup k veřejné síti pro existující téma
+Když je přístup k veřejné síti pro téma nebo doménu zakázaný, provoz přes veřejný Internet není povolený. Přístup k těmto prostředkům budou mít jenom připojení privátního koncového bodu. 
 
 ```azurepowershell-interactive
 $body = @{"properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json -Depth 5
@@ -139,12 +218,12 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="create-an-event-grid-topic-with-inbound-rules-in-one-step"></a>Vytvoření tématu mřížky událostí s příchozími pravidly v jednom kroku
+### <a name="create-an-event-grid-topic-with-inbound-rules-in-one-step"></a>Vytvoření tématu Event gridu s příchozími pravidly v jednom kroku
 
 ```azurepowershell-interactive
 
 # prepare the body for the REST PUT method. Notice that inbound IP rules are included. 
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"})}} | ConvertTo-Json -Depth 5
+$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"})}} | ConvertTo-Json -Depth 5
 
 # create the event grid topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `
@@ -160,7 +239,7 @@ Invoke-RestMethod -Method 'Get' `
 ```
 
 
-### <a name="create-event-grid-topic-first-and-then-add-inbound-ip-rules"></a>Nejprve vytvořte téma mřížky událostí a poté přidejte příchozí pravidla IP
+### <a name="create-event-grid-topic-first-and-then-add-inbound-ip-rules"></a>Nejprve vytvořte téma Event Grid a pak přidejte pravidla příchozího přenosu adres IP.
 
 ```azurepowershell-interactive
 
@@ -180,7 +259,7 @@ Invoke-RestMethod -Method 'Get' `
     | ConvertTo-Json -Depth 5
 
 # prepare the body for REST PUT method. Notice that it includes inbound IP rules now. This feature available in both basic and premium tiers.
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"}, @{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"})}} | ConvertTo-Json -Depth 5
+$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"}, @{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"})}} | ConvertTo-Json -Depth 5
 
 # update the topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `
@@ -198,6 +277,6 @@ Invoke-RestMethod -Method 'Get'
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o dodávkách událostí monitorování naleznete v [tématu Sledování doručování zpráv v programu Event Grid](monitor-event-delivery.md).
-* Další informace o ověřovacím klíči naleznete v tématu [Zabezpečení a ověřování mřížky událostí](security-authentication.md).
-* Další informace o vytvoření předplatného Služby Azure Event Grid najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Informace o sledování doručení událostí najdete v tématu [monitorování Event Grid doručování zpráv](monitor-event-delivery.md).
+* Další informace o ověřovacím klíči najdete v tématu [Event Grid Security and Authentication](security-authentication.md).
+* Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).

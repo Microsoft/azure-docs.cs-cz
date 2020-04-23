@@ -1,26 +1,20 @@
 ---
-title: Řešení problémů se sdílenými bitovými kopiemi v Azure
-description: Přečtěte si, jak řešit problémy se sdílenými galeriemi obrázků.
-services: virtual-machine-windows
-documentationcenter: virtual-machine-scale-sets
+title: Řešení potíží se sdílenými bitovými kopiemi v Azure
+description: Naučte se řešit problémy s galeriemi sdílených imagí.
 author: axayjo
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: ''
+ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 04/25/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 80416dd66ec23bcf8bbabeb3549b7342680aa362
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ef4cdb8c5cd8956f85dadba80d3dffec8d0e4730
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458007"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100511"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>Řešení potíží se sdílenými galeriemi imagí
 
@@ -29,4 +23,4 @@ ms.locfileid: "81458007"
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [sdílených galeriích obrázků](shared-image-galleries.md).
+Přečtěte si další informace o [galeriích sdílených imagí](shared-image-galleries.md).

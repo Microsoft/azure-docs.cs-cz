@@ -1,45 +1,39 @@
 ---
 title: Změna velikosti virtuálního počítače s Windows v Azure
-description: Změňte velikost virtuálního počítače používanou pro virtuální počítač Azure.
-services: virtual-machines-windows
-documentationcenter: ''
+description: Změňte velikost virtuálního počítače, která se používá pro virtuální počítač Azure.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 057ff274-6dad-415e-891c-58f8eea9ed78
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+ms.subservice: sizes
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 6718804d4635edb2628b53017ab9d377928afad8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f456af143ac6ec21bcb9b0c3ec75635c51f748ef
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75941725"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099882"
 ---
 # <a name="resize-a-windows-vm"></a>Změna velikosti virtuálního počítače s Windows
 
-Tento článek ukazuje, jak přesunout virtuální ho k jinému [virtuálnímu počítače](sizes.md).
+V tomto článku se dozvíte, jak přesunout virtuální počítač na jinou [Velikost virtuálního počítače](sizes.md).
 
-Po vytvoření virtuálního počítače (VM) můžete škálovat virtuální počítač nahoru nebo dolů změnou velikosti virtuálního počítače. V některých případech je nutné nejprve navrátit virtuální ho. K tomu může dojít, pokud nová velikost není k dispozici v hardwarovém clusteru, který je aktuálně hostitelem virtuálního počítače.
+Po vytvoření virtuálního počítače můžete virtuální počítač škálovat nahoru nebo dolů změnou velikosti virtuálního počítače. V některých případech je nutné nejprve zrušit přidělení virtuálního počítače. K tomu může dojít v případě, že nová velikost není k dispozici v hardwarovém clusteru, který je aktuálně hostitelem virtuálního počítače.
 
-Pokud váš virtuální počítač používá úložiště Premium Storage, ujistěte se, že jste zvolili verzi **s** velikosti, abyste získali podporu úložiště Premium. Místo Standard_E4_v3 například zvolte**Standard_E4**s _v3.
+Pokud virtuální počítač používá Premium Storage, ujistěte se, že zvolíte verzi **s** , abyste získali Premium Storage podporu. Například vyberte Standard_E4**s**_v3 namísto Standard_E4_v3.
 
 ## <a name="use-the-portal"></a>Použití portálu
 
-1. Otevřete [portál Azure](https://portal.azure.com).
-1. Otevřete stránku virtuálního počítače.
-1. V levé nabídce vyberte **Velikost**.
-1. Vyberte novou velikost ze seznamu dostupných velikostí a pak vyberte **Změnit velikost**.
+1. Otevřete [Azure Portal](https://portal.azure.com).
+1. Otevřete stránku pro virtuální počítač.
+1. V nabídce vlevo vyberte **Velikost**.
+1. Ze seznamu dostupných velikostí vyberte novou velikost a pak vyberte **změnit velikost**.
 
 
-Pokud je virtuální počítač aktuálně spuštěn, změna jeho velikosti způsobí restartování. Zastavení virtuálního počítače může odhalit další velikosti.
+Pokud je virtuální počítač momentálně spuštěný, změna jeho velikosti způsobí jeho restartování. Zastavení virtuálního počítače může odhalit další velikosti.
 
-## <a name="use-powershell-to-resize-a-vm-not-in-an-availability-set"></a>Změna velikosti virtuálního počítače, který není v sadě dostupnosti, použijte PowerShell
+## <a name="use-powershell-to-resize-a-vm-not-in-an-availability-set"></a>Použití PowerShellu k změně velikosti virtuálního počítače, který není ve skupině dostupnosti
 
 Nastavte některé proměnné. Nahraďte hodnoty vlastními informacemi.
 
@@ -48,13 +42,13 @@ $resourceGroup = "myResourceGroup"
 $vmName = "myVM"
 ```
 
-Seznam velikostí virtuálních počítače, které jsou k dispozici v hardwarovém clusteru, kde je hostovaný virtuální počítač. 
+Vypíše velikosti virtuálních počítačů, které jsou k dispozici v hardwarovém clusteru, ve kterém je virtuální počítač hostovaný. 
    
 ```powershell
 Get-AzVMSize -ResourceGroupName $resourceGroup -VMName $vmName 
 ```
 
-Pokud je uvedena požadovaná velikost, spusťte následující příkazy pro změna velikosti virtuálního počítače. Pokud požadovaná velikost není uvedena, přejděte ke kroku 3.
+Pokud je požadovaná velikost uvedena, spusťte následující příkazy, abyste změnili velikost virtuálního počítače. Pokud požadovaná velikost není uvedena, pokračujte ke kroku 3.
    
 ```powershell
 $vm = Get-AzVM -ResourceGroupName $resourceGroup -VMName $vmName
@@ -62,7 +56,7 @@ $vm.HardwareProfile.VmSize = "<newVMsize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-Pokud požadovaná velikost není uvedena, spusťte následující příkazy pro navrátit virtuální počítač, změnit jeho velikost a restartovat virtuální počítač. Nahraďte ** \<>newVMsize** požadovanou velikostí.
+Pokud požadovaná velikost není uvedená, spusťte následující příkazy, čímž zrušíte přidělení virtuálního počítače, jeho velikost a restartujte virtuální počítač. Nahraďte ** \<newVMsize>** velikostí, kterou chcete.
    
 ```powershell
 Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
@@ -73,26 +67,26 @@ Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 ```
 
 > [!WARNING]
-> Zrušení přidělení virtuálního počítačů uvolní všechny dynamické IP adresy přiřazené k virtuálnímu jemu. Operační systém a datové disky nejsou ovlivněny. 
+> Zrušení přidělení virtuálního počítače uvolní všechny dynamické IP adresy přiřazené k virtuálnímu počítači. Operační systém a datové disky nejsou ovlivněny. 
 > 
 > 
 
-## <a name="use-powershell-to-resize-a-vm-in-an-availability-set"></a>Změna velikosti virtuálního počítače v sadě dostupnosti pomocí PowerShellu
+## <a name="use-powershell-to-resize-a-vm-in-an-availability-set"></a>Změna velikosti virtuálního počítače ve skupině dostupnosti pomocí PowerShellu
 
-Pokud nová velikost virtuálního počítače v sadě dostupnosti není k dispozici v hardwarovém clusteru, který aktuálně hostuje virtuální počítač, pak všechny virtuální počítače v sadě dostupnosti bude muset být přiděleny ke změně velikosti virtuálního počítače. Také může být nutné aktualizovat velikost jiných virtuálních počítače v sadě dostupnosti po změně velikosti jednoho virtuálního počítače. Chcete-li změnit velikost virtuálního počítače v sadě dostupnosti, proveďte následující kroky.
+Pokud není nová velikost pro virtuální počítač ve skupině dostupnosti v hardwarovém clusteru, který je hostitelem virtuálního počítače, k dispozici, pak bude potřeba uvolnit všechny virtuální počítače ve skupině dostupnosti, aby se změnila velikost virtuálního počítače. Po změně velikosti jednoho virtuálního počítače možná budete muset aktualizovat velikost ostatních virtuálních počítačů ve skupině dostupnosti. Pokud chcete změnit velikost virtuálního počítače ve skupině dostupnosti, proveďte následující kroky.
 
 ```powershell
 $resourceGroup = "myResourceGroup"
 $vmName = "myVM"
 ```
 
-Seznam velikostí virtuálních počítače, které jsou k dispozici v hardwarovém clusteru, kde je hostovaný virtuální počítač. 
+Vypíše velikosti virtuálních počítačů, které jsou k dispozici v hardwarovém clusteru, ve kterém je virtuální počítač hostovaný. 
    
 ```powershell
 Get-AzVMSize -ResourceGroupName $resourceGroup -VMName $vmName 
 ```
 
-Pokud je uvedena požadovaná velikost, spusťte následující příkazy pro změny velikosti virtuálního počítače. Pokud není uveden, přejděte k další části.
+Pokud je požadovaná velikost uvedena, spusťte následující příkazy, abyste změnili velikost virtuálního počítače. Pokud v seznamu není, přečtěte si další část.
    
 ```powershell
 $vm = Get-AzVM -ResourceGroupName $resourceGroup -VMName $vmName 
@@ -100,9 +94,9 @@ $vm.HardwareProfile.VmSize = "<newVmSize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
     
-Pokud požadovaná velikost není uvedena, pokračujte následujícími kroky k navrátit všechny virtuální počítače v sadě dostupnosti, změnit velikost virtuálních počítačů a restartovat je.
+Pokud požadovaná velikost není uvedená, pokračujte podle následujících kroků a Nadělte všechny virtuální počítače ve skupině dostupnosti, změňte velikost virtuálních počítačů a restartujte je.
 
-Zastavte všechny virtuální ho disponibilní služby v sadě dostupnosti.
+Zastavte všechny virtuální počítače ve skupině dostupnosti.
    
 ```powershell
 $as = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup
@@ -114,7 +108,7 @@ foreach ($vmId in $vmIDs){
     } 
 ```
 
-Změňte velikost a restartujte virtuální počítače v sadě dostupnosti.
+Změňte velikost virtuálních počítačů ve skupině dostupnosti a restartujte je.
    
 ```powershell
 $newSize = "<newVmSize>"
@@ -132,5 +126,5 @@ $vmIds = $as.VirtualMachinesReferences
 
 ## <a name="next-steps"></a>Další kroky
 
-Pro další škálovatelnost spusťte více instancí virtuálních počítačí a horizontální navýšení kapacity. Další informace naleznete v tématu [Automatické škálování počítačů s Windows v škálovací sadě virtuálních počítačů](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
+Pro další škálovatelnost spusťte více instancí virtuálních počítačů a nahorizontální navýšení kapacity. Další informace najdete v tématu [Automatické škálování počítačů s Windows v sadě škálování virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
 
