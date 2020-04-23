@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0941a6cdde5b60b71da6f58ea6b0fd2ccbb262
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d64307c4f91839c466b5f3f495cad8d7410ed364
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160956"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867309"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Kurz: Integrace služby Azure Active Directory s splunk Enterprise a Splunk Cloud
 
@@ -35,7 +35,7 @@ Integrace Splunk Enterprise a Splunk Cloud s Azure AD vám poskytuje následují
 Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li nakonfigurovat integraci Azure AD pomocí služeb Splunk Enterprise a Splunk Cloud, potřebujete následující položky:
 
@@ -113,7 +113,7 @@ Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí služeb Spl
     c. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://<splunkserver>/saml/acs`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL, identifikátorem a adresou URL pro odpověď. Obraťte se na [tým podpory splunk enterprise a splunk cloudového klienta,](https://www.splunk.com/about-us/contact.html#tabs/customer-support) abyste získali tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL, identifikátorem a adresou URL pro odpověď. Obraťte se na [tým podpory splunk enterprise a splunk cloudového klienta,](https://www.splunk.com/en_us/about-splunk/contact-us.html) abyste získali tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
 5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
 
@@ -121,7 +121,7 @@ Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí služeb Spl
 
 ### <a name="configure-splunk-enterprise-and-splunk-cloud-single-sign-on"></a>Konfigurace jednotného přihlašování k jednotnému přihlašování splunk enterprise a splunk cloudu
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **Splunk Enterprise a Splunk Cloud,** musíte odeslat stažený **xml metadat federace** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory [Splunk Enterprise a Splunk Cloud](https://www.splunk.com/about-us/contact.html#tabs/customer-support). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **Splunk Enterprise a Splunk Cloud,** musíte odeslat stažený **xml metadat federace** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory [Splunk Enterprise a Splunk Cloud](https://www.splunk.com/en_us/about-splunk/contact-us.html). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -176,7 +176,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>Vytvoření testovacího uživatele Splunk Enterprise a Splunk Cloud
 
-V této části vytvoříte uživatele s názvem Britta Simon v Splunk Enterprise a Splunk Cloud. Spolupracujte s [týmem podpory Splunk Enterprise a Splunk Cloud](https://www.splunk.com/about-us/contact.html#tabs/customer-support) a přidejte uživatele na platformě Splunk Enterprise a Splunk Cloud. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
+V této části vytvoříte uživatele s názvem Britta Simon v Splunk Enterprise a Splunk Cloud. Spolupracujte s [týmem podpory Splunk Enterprise a Splunk Cloud](https://www.splunk.com/en_us/about-splunk/contact-us.html) a přidejte uživatele na platformě Splunk Enterprise a Splunk Cloud. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f0ea5b922b2c958aabf5be3a6123bb81a8f0234
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80048508"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870547"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Kurz: Integrace Azure Active Directory s Jobscience
 
@@ -34,7 +34,7 @@ Integrace Jobscience s Azure AD vám poskytuje následující výhody:
 
 Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, podívejte se, [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li nakonfigurovat integraci Azure AD s Jobscience, budete potřebovat následující položky:
 
@@ -116,7 +116,7 @@ V této části povolíte jednotné přihlašování Azure AD na webu Azure Port
     Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
-    > Tato hodnota není skutečná. Aktualizujte tuto hodnotu skutečnou přihlašovací adresou URL. Získejte tuto hodnotu [týmem podpory jobscience klienta](https://www.jobscience.com/support) nebo z profilu steso, které vytvoříte, který je vysvětleno dále v kurzu. 
+    > Tato hodnota není skutečná. Aktualizujte tuto hodnotu skutečnou přihlašovací adresou URL. Získejte tuto hodnotu [týmem podpory jobscience klienta](http://www.jobscience.com/support) nebo z profilu steso, které vytvoříte, který je vysvětleno dále v kurzu. 
  
 1. V části **Podpisový certifikát SAML** klikněte na **Certifikát (Base64)** a uložte soubor certifikátu do počítače.
 
@@ -134,7 +134,7 @@ V této části povolíte jednotné přihlašování Azure AD na webu Azure Port
 
 1. Přejděte na **instalační program**.
    
-   ![Nastavení](./media/jobscience-tutorial/IC784358.png "Nastavení")
+   ![Instalace a nastavení](./media/jobscience-tutorial/IC784358.png "Nastavení")
 
 1. V levém navigačním podokně klikněte v části **Správa** na **položku Správa domény** a rozbalte související oddíl a potom kliknutím na **Moje doména** otevřete stránku **Moje doména.** 
    
@@ -245,7 +245,7 @@ Aby bylo možné uživatelům Azure AD přihlásit se k Jobscience, musí být z
 
 1. Přejděte do instalačního programu.
    
-   ![Nastavení](./media/jobscience-tutorial/ic784358.png "Nastavení")
+   ![Instalace a nastavení](./media/jobscience-tutorial/ic784358.png "Nastavení")
 1. Přejděte na **spravovat uživatele \> uživatelů**.
    
    ![Uživatelé](./media/jobscience-tutorial/ic784369.png "Uživatelé")
@@ -311,7 +311,7 @@ V této části otestujete konfiguraci jednotného přihlášení Azure AD pomoc
 Po kliknutí na dlaždici Jobscience na přístupovém panelu byste se měli automaticky přihlásit ke své žádosti Jobscience.
 Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

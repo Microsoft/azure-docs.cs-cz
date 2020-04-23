@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: e06e71d4436ac6c64ff2edc876d7849d084482f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671638"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869948"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Přehled diagnostiky služby Azure App Service
 
@@ -31,6 +31,10 @@ V části Funkce Azure přejděte do aplikace funkce a v horní navigaci klikně
 Na domovské stránce diagnostiky služby App Service můžete zvolit kategorii, která nejlépe popisuje problém s vaší aplikací, a to pomocí klíčových slov na každé dlaždici domovské stránky. Na této stránce najdete také **diagnostické nástroje** pro aplikace pro Windows. Viz [Diagnostické nástroje (pouze pro aplikaci pro Windows).](#diagnostic-tools-only-for-windows-app)
 
 ![Domovská stránka](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
+
+> [!NOTE]
+> Pokud vaše aplikace je mimo nebo provádí pomalu, můžete [shromáždit sledování profilování](https://azure.github.io/AppService/2018/06/06/App-Service-Diagnostics-Profiling-an-ASP.NET-Web-App-on-Azure-App-Service.html) k identifikaci hlavní příčinu problému. Profilování je lehké a je určeno pro produkční scénáře.
+>
 
 ## <a name="interactive-interface"></a>Interaktivní rozhraní
 

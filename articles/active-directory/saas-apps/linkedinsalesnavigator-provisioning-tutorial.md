@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f789f82288c9820214c4ab32c271bb547945d4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77057375"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869745"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Kurz: Konfigurace aplikace LinkedIn Sales Navigator pro automatické zřizování uživatelů
 
 Cílem tohoto kurzu je ukázat kroky, které je potřeba provést v LinkedIn Sales Navigator a Azure AD automaticky zřídit a de-provision uživatelské účty z Azure AD na LinkedIn Sales Navigator.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Scénář popsaný v tomto kurzu předpokládá, že již máte následující položky:
 
@@ -53,7 +53,7 @@ Před konfigurací a povolením zřizovací služby se budete muset rozhodnout, 
 
 ## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>Konfigurace zřizování uživatelů do linkedin sales navigator
 
-Tato část vás provede připojením azure ad k rozhraní API pro zřizování uživatelského účtu SCIM společnosti LinkedIn Sales Navigator a konfigurací zřizovací služby pro vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v LinkedIn Sales Navigator na základě uživatele a přiřazení skupiny ve službě Azure AD.
+Tato část vás provede připojením azure ad k rozhraní API pro zřizování uživatelského účtu SCIM společnosti LinkedIn Sales Navigator a konfigurací zřizovací služby tak, aby vytvářela, aktualizovala a zakazovala přiřazené uživatelské účty v LinkedIn Sales Navigator na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
 > Můžete se také rozhodnout, že chcete povolit jednotné přihlašování na saml pro LinkedIn Sales Navigator podle pokynů uvedených na [webu Azure Portal](https://portal.azure.com). Jednotné přihlašování lze nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce se vzájemně doplňují.
@@ -99,7 +99,7 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste správce
 
 11. Vyplňte následující pole v části **Přihlašovací údaje správce** :
 
-    * Do pole Adresa URL https://api.linkedin.com **klienta** zadejte .
+    * Do pole Adresa URL https://developer.linkedin.com **klienta** zadejte .
 
     * Do pole **Tajný token** zadejte přístupový token, který jste vygenerovali v kroku 1, a klepněte na tlačítko **Testovat připojení** .
 

@@ -2,17 +2,17 @@
 title: Přehled
 description: Popisuje, jak Azure Resource Manager využívat k nasazení, správě a řízení přístupu k prostředkům v Azure.
 ms.topic: overview
-ms.date: 03/25/2020
-ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/21/2020
+ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80258137"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870491"
 ---
 # <a name="what-is-azure-resource-manager"></a>Co je Správce prostředků Azure?
 
-Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje vrstvu správy, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky ve vašem předplatném Azure. Funkce správy, jako je řízení přístupu, zámky a značky, slouží k zabezpečení a uspořádání prostředků po nasazení.
+Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje vrstvu správy, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky ve vašem účtu Azure. Funkce správy, jako je řízení přístupu, zámky a značky, slouží k zabezpečení a uspořádání prostředků po nasazení.
 
 Další informace o šablonách Azure Resource Manageru najdete v [tématu Přehled nasazení šablony](../templates/overview.md).
 
@@ -30,10 +30,10 @@ Všechny funkce, které jsou k dispozici na portálu jsou k dispozici také pros
 
 Pokud s Azure Resource Managerem začínáte, existuje několik termínů, které možná neznáte.
 
-* **prostředek** - Spravovatelná položka, která je k dispozici prostřednictvím služby Azure. Příkladem prostředků jsou virtuální počítače, účty úložiště, webové aplikace, databáze a virtuální sítě.
+* **prostředek** - Spravovatelná položka, která je k dispozici prostřednictvím služby Azure. Příkladem prostředků jsou virtuální počítače, účty úložiště, webové aplikace, databáze a virtuální sítě. Skupiny prostředků, předplatná, skupiny pro správu a značky jsou také příklady prostředků.
 * **skupina prostředků** – kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků zahrnuje ty prostředky, které chcete spravovat jako skupinu. O tom, které prostředky do skupiny prostředků patří, rozhodujete vy na základě toho, co je pro vaši organizaci nejvhodnější. Viz [Skupiny prostředků](#resource-groups).
 * **zprostředkovatel prostředků** – služba, která poskytuje prostředky Azure. Například běžným poskytovatelem prostředků je Microsoft.Compute, který poskytuje prostředek virtuálního počítače. Microsoft.Storage je další běžný poskytovatel prostředků. Viz [Zprostředkovatelé a typy prostředků](resource-providers-and-types.md).
-* **Šablona Správce prostředků** – soubor JSON (JavaScript Object Notation), který definuje jeden nebo více prostředků pro nasazení do skupiny prostředků nebo předplatného. Šablony lze použít k nasazení prostředků konzistentně a opakovaně. Viz [Přehled nasazení šablony](../templates/overview.md).
+* **Šablona Správce prostředků** – soubor JSON (JavaScript Object Notation), který definuje jeden nebo více prostředků pro nasazení do skupiny prostředků, předplatného, skupiny pro správu nebo klienta. Šablony lze použít k nasazení prostředků konzistentně a opakovaně. Viz [Přehled nasazení šablony](../templates/overview.md).
 * **deklarativní syntaxe** – Syntaxe, která umožňuje prohlásit „Toto mám v úmyslu vytvořit“, aniž by k tomu bylo nutné psát sekvence programových příkazů. Šablona Resource Manageru je příkladem deklarativní syntaxe. V souboru definujete vlastnosti pro infrastrukturu k nasazení do Azure.  Viz [Přehled nasazení šablony](../templates/overview.md).
 
 ## <a name="the-benefits-of-using-resource-manager"></a>Výhody použití Resource Manageru
@@ -48,7 +48,7 @@ Pomocí Správce prostředků můžete:
 
 * Definujte závislosti mezi prostředky tak, aby byly nasazeny ve správném pořadí.
 
-* Použijte řízení přístupu pro všechny služby ve vaší skupině prostředků, protože řízení přístupu na základě rolí (RBAC) je nativně integrováno do platformy pro správu.
+* Použít řízení přístupu pro všechny služby, protože řízení přístupu na základě rolí (RBAC) je nativně integrován do platformy pro správu.
 
 * Použijte značky na prostředky logicky uspořádat všechny prostředky ve vašem předplatném.
 
@@ -58,11 +58,11 @@ Pomocí Správce prostředků můžete:
 
 Azure poskytuje čtyři úrovně oboru: [skupiny pro správu](../../governance/management-groups/overview.md), předplatná, [skupiny prostředků](#resource-groups)a prostředky. Následující obrázek ukazuje příklad těchto vrstev.
 
-![Rozsah](./media/overview/scope-levels.png)
+![Úrovně řízení](./media/overview/scope-levels.png)
 
 Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vybraná úroveň určuje rozsah použití nastavení. Nižší úrovně dědí nastavení z vyšších úrovní. Pokud například použijete [zásadu](../../governance/policy/overview.md) pro předplatné, zásady se použijí na všechny skupiny prostředků a prostředky ve vašem předplatném. Použijete-li zásadu pro skupinu prostředků, použije se tato zásada skupinu prostředků a všechny její prostředky. Jiná skupina prostředků však nemá toto přiřazení zásad.
 
-Šablony můžete nasadit do skupin pro správu, předplatných nebo skupin prostředků.
+Šablony můžete nasadit do tenantů, skupin pro správu, předplatných nebo skupin prostředků.
 
 ## <a name="resource-groups"></a>Skupiny prostředků
 
@@ -71,6 +71,8 @@ Při definování skupin prostředků byste měli vzít v úvahu některé důle
 * Všechny prostředky ve skupině by měly sdílet stejný životní cyklus. Nasazujete, aktualizujete a odstraňujete je společně. Pokud některý z prostředků, například databázový server, musí mít jiný cyklus nasazení, měl by být v jiné skupině prostředků.
 
 * Každý prostředek může být jenom v jedné skupině prostředků.
+
+* Některé prostředky mohou existovat mimo skupinu prostředků. Tyto prostředky se nasazují do [předplatného](../templates/deploy-to-subscription.md), [skupiny pro správu](../templates/deploy-to-management-group.md)nebo [klienta](../templates/deploy-to-tenant.md). V těchto oborech jsou podporovány pouze určité typy prostředků.
 
 * Prostředky je možné do skupiny prostředků kdykoli přidat nebo naopak odebrat.
 

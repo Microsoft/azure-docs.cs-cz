@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731267"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869063"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Vytvoření nabídky virtuálního počítače Azure
 
@@ -32,17 +32,17 @@ Publikování na Azure Marketplace má následující výhody:
 - Získejte vysoce kvalitní potenciální zákazníky z těchto tržišť
 - Získejte své služby propagované týmy microsoftu a telesales
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 
 Pokud jste tak ještě neučinili, přečtěte si [průvodce publikováním nabídek virtuálních strojů](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) a tento materiál virtuálního počítače Azure:
 
 - Úvodní příručky
   - [Šablony Azure Quickstart](https://azure.microsoft.com/resources/templates/)
   - [Šablony githubazure rychlých startů](https://github.com/azure/azure-quickstart-templates)
-- Kurzy
+- Výukové kurzy
   - [Virtuální počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
   - [Virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
-- Ukázky
+- ukázky
   - [Ukázky azure cli pro virtuální počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
   - [Virtuální počítače Azure PowerShell pro Linux](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
   - [Ukázky nastavení příkazového příkazu Azure pro virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
@@ -240,7 +240,7 @@ Poskytněte web podpory, kde se zákazníci mohou dostat k vašemu týmu podpory
 Poskytněte partnerům společnosti Microsoft kontaktní informace, které budou používat, když zákazníci otevřou lístek podpory. Tato zpráva nebude uvedena na trhu.
 
 - Název
-- E-mail
+- E-mailu
 - Telefon
 
 ### <a name="engineering-contact"></a>Technický kontakt
@@ -248,12 +248,15 @@ Poskytněte partnerům společnosti Microsoft kontaktní informace, které budou
 Poskytněte společnosti Microsoft kontaktní informace, které bude používat v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tato zpráva nebude uvedena na trhu.
 
 - Název
-- E-mail
+- E-mailu
 - Telefon
 
 ### <a name="marketplace-media"></a>Média marketplace
 
 Poskytněte loga a obrázky, které chcete použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazané obrázky způsobí, že vaše podání bude odmítnuto.
+
+>[!Note]
+>Pokud máte problém s nahráváním souborů, ujistěte se, že místní síť neblokuje službu https://upload.xboxlive.com používanou partnerským centrem.
 
 #### <a name="marketplace-logos"></a>Loga tržiště
 

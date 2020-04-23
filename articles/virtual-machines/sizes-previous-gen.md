@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 6cf43df756e9bed0438169c9c01b868653d84b57
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: ac49d2da9d05c9677dbb6f5328874ab3a45ff661
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985724"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081536"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních strojů
 
@@ -216,6 +216,8 @@ Ukládání do mezipaměti úložiště Premium: Není podporováno
 <br>
 
 ## <a name="preview-dc-series"></a>Náhled: DC-série
+
+**Novější velikost doporučení:** [DCsv2-série](dcv2-series.md)
 
 Úložiště Premium: Podporováno
 

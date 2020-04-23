@@ -1,18 +1,18 @@
 ---
 title: Migrace účtu z portálu partnerů cloudu do Partnerského centra – komerční tržiště pro Azure
-description: Jak migrovat účet z CPP do Centra partnerů. - komerční tržiště pro Azure
+description: Jak migrovat svůj účet z CPP do Partnerského centra – komerční tržiště pro Azure
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 3979be6f49f4ad01a6092fc0d5aa767d342c4642
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730494"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024417"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Migrace účtu z portálu partnerů cloudu do partnerského centra
 
@@ -42,6 +42,16 @@ Kliknutím na banner zahájíte proces migrace účtu. Očekává se, že zadát
 2. Registrace do programu Microsoft Partner Network
 
     Pokud váš účet CPP nemá ID sítě partnerů společnosti Microsoft nebo má neplatný účet, budete se muset v rámci procesu aktivace zaregistrovat do programu Microsoft Partner Network.
+
+## <a name="publishers-moving-from-cpp"></a>Vydavatelé, kteří se stěhují z CPP
+
+Pokud byl váš účet migrován z [portálu partnerů cloudu (CPP),](https://cloudpartner.azure.com)nemusíte vytvářet nový účet Centra partnerů. Měli jste obdržet vlastní odkaz na nový účet Partnerského centra v e-mailu a v bannerovém oznámení po přihlášení k existujícímu účtu CPP.
+
+Jakmile aktivujete nový účet Partnerského centra pomocí tohoto přizpůsobeného odkazu, můžete se ke svému účtu vrátit na [řídicím panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) v Centru partnerů.
+
+Smlouva o publikování a informace o profilu společnosti budou migrovány do nového účtu Partnerského centra spolu s dříve nastavenými informacemi o výplatním profilu účtu, uživatelskými účty a oprávněními a aktivními nabídkami přidruženými k vašemu účtu CPP.
+
+Po přesunutí informací o účtu z CPP do Centra partnerů již nebudete cpp používat k aktualizaci účtu ani ke správě uživatelů, oprávnění a fakturace. Po omezenou dobu budou všechny aktualizace účtu, které provedete v Partnerském centru, automaticky aktualizovány ve vašem účtu CPP jen pro čtení, dokud nebude portál CPP nakonec zastaral.
 
 ## <a name="sign-up-for-microsoft-partner-network-program"></a>Registrace do programu Microsoft Partner Network
 

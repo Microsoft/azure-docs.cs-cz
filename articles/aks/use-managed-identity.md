@@ -7,12 +7,12 @@ manager: saudas
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 907aa83bc293aacd9920d8fd79a1b3184dd1d5dc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 7a71d3bd70d97df884f1bc962c0ef9897d7fd2cb
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767593"
+ms.locfileid: "82024400"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes Service
 
@@ -25,9 +25,9 @@ AKS vytvoří dvě spravované identity:
 - **Spravovaná identita přiřazená systémem**: Identita, kterou poskytovatel cloudu Kubernetes používá k vytvoření prostředků Azure jménem uživatele. Životní cyklus identity přiřazené k systému je vázán na klastr. Identita je odstraněna při odstranění clusteru.
 - **Spravovaná identita přiřazená uživatelem**: Identita, která se používá pro autorizaci v clusteru. Například uživatelem přiřazená identita se používá k autorizaci AKS k používání registrů kontejnerů Azure (ACRs) nebo k autorizaci kubelet k získání metadat z Azure.
 
-Doplňky se také ověřují pomocí spravované identity. Pro každý doplněk je spravovaná identita vytvořena AKS a trvá po dobu životnosti doplňku. Pro vytváření a používání vlastní virtuální sítě, statické IP adresy nebo připojeného disku Azure, kde jsou prostředky mimo skupinu prostředků MC_*, použijte k přiřazení role PrincipalID clusteru. Další informace o přiřazení rolí najdete v [tématu Delegát přístup k jiným prostředkům Azure](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
+Doplňky se také ověřují pomocí spravované identity. Pro každý doplněk je spravovaná identita vytvořena AKS a trvá po dobu životnosti doplňku. 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Musíte mít nainstalovaný následující prostředek:
 
@@ -58,6 +58,9 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
     "secret": null
   }
 ```
+
+> [!NOTE]
+> Pro vytváření a používání vlastní virtuální sítě, statické IP adresy nebo připojeného disku Azure, kde jsou prostředky mimo skupinu prostředků MC_*, použijte k přiřazení role PrincipalID clusteru přiřazenou spravovanou identitu systému. Další informace o přiřazení rolí najdete v [tématu Delegát přístup k jiným prostředkům Azure](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
 
 Nakonec získat pověření pro přístup ke clusteru:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73906861"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024876"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -62,11 +62,11 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
 1. Vyberte si z dostupných možností na této stránce:
 
-    1. Chcete-li pracovat se zásadami odvětví, klepněte na tlačítko **Přidat další standardy**. Další informace naleznete v [tématu Aktualizace dynamických balíčků dodržování předpisů](update-regulatory-compliance-packages.md).
+    1. Chcete-li pracovat s oborovými zásadami, vyberte **Přidat další standardy**. Další informace naleznete v [tématu Aktualizace dynamických balíčků dodržování předpisů](update-regulatory-compliance-packages.md).
 
-    1. Pokud chcete přiřadit a spravovat vlastní iniciativy, klikněte na **Přidat vlastní iniciativy**. Další informace naleznete [v tématu Použití vlastních zásad zabezpečení](custom-security-policies.md).
+    1. Chcete-li přiřadit a spravovat vlastní iniciativy, vyberte **Přidat vlastní iniciativy**. Další informace naleznete [v tématu Použití vlastních zásad zabezpečení](custom-security-policies.md).
 
-    1. Chcete-li zobrazit a upravit výchozí zásady, klepněte na **tlačítko Zobrazit účinnou zásadu** a postupujte podle níže uvedeného postupu. 
+    1. Chcete-li zobrazit a upravit výchozí zásady, vyberte **Zobrazit účinnou zásadu** a postupujte podle níže uvedeného. 
 
        ![obrazovka zásad](./media/security-center-policies/policy-screen.png)
        
@@ -96,20 +96,20 @@ Security Center používá řízení přístupu na základě rolí (RBAC). To po
 Pokud výchozí zásady zabezpečení generují doporučení, které není relevantní pro vaše prostředí, můžete jej zastavit zakázáním definice zásady, která odešle doporučení.
 Další informace o doporučeních naleznete v [tématu Správa doporučení zabezpečení](security-center-recommendations.md).
 
-1. V Centru zabezpečení klikněte v části **Zásady & dodržování předpisů** na **položku Zásady zabezpečení**.
+1. V Centru zabezpečení vyberte v části **Zásady & dodržování předpisů** **zásady zabezpečení**.
 
    ![správa politik](./media/tutorial-security-policy/policy-management.png)
 
-2. Klikněte na předplatné nebo skupinu pro správu, pro kterou chcete zakázat doporučení.
+2. Vyberte předplatné nebo skupinu pro správu, pro kterou chcete zakázat doporučení.
 
    > [!NOTE]
    > Pamatujte, že skupina pro správu uplatňuje zásady na svá předplatná. Pokud tedy zakážete zásady předplatného, přičemž toto předplatné patří do skupiny pro správu, která pořád používá stejné zásady, budete doporučení k zásadám nadále dostávat. Tyto zásady budou nadále uplatňovány z úrovně správy a doporučení se budou pořád generovat.
 
-1. Klepněte na tlačítko **Zobrazit účinné zásady**.
+1. Vyberte **možnost Zobrazit účinnou zásadu**.
 
    ![zakázat zásady](./media/tutorial-security-policy/view-effective-policy.png)
 
-1. Klikněte na přiřazenou zásadu.
+1. Vyberte přiřazenou zásadu.
 
    ![zakázat zásady](./media/tutorial-security-policy/security-policy.png)
 
@@ -117,7 +117,7 @@ Další informace o doporučeních naleznete v [tématu Správa doporučení zab
 
    ![zakázat zásady](./media/tutorial-security-policy/disable-policy.png)
 
-1. Klikněte na **Uložit**.
+1. Vyberte **Uložit**.
 
    > [!NOTE]
    > Změny zásad zakázání se mohou projevit až 12 hodin.

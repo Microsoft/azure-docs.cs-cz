@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: b0efed83237c191f02bfffd9b26a0fd9cd2c871f
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 6ed0d743f9b9cdc136b8f52f4d9d02583fc63eb9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606582"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870183"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Propojení sítě testovacího prostředí s virtuální virtuální sítí druhé strany ve službě Azure Lab Services
 
@@ -46,7 +46,7 @@ Během vytváření nového [účtu testovacího prostředí](tutorial-setup-lab
 
 ### <a name="address-range"></a>Rozsah adres
 
-K dispozici je také možnost poskytnout **rozsah adres** pro virtuální počítače pro testovací prostředí. Pokud je k dispozici rozsah adres, všechny virtuální počítače v testovacích prostředích v rámci účtu testovacího prostředí budou vytvořeny v tomto rozsahu adres. Rozsah adres by měl být v zápisu CIDR (např. 10.20.0.0/20) a neměl by se překrývat s existujícími rozsahy adres.  Při poskytování rozsahu adres je důležité přemýšlet o počtu *testovacích prostředí,* která budou vytvořena, a poskytnout rozsah adres, aby se tomu přizpůsobily. Lab Services předpokládá maximálně 512 virtuálních počítačů na testovací prostředí.  Například rozsah IP s /23 můžete vytvořit pouze jednu testovací prostředí.  Rozsah s '/21' umožní vytvoření čtyř laboratoří.
+K dispozici je také možnost poskytnout **rozsah adres** pro virtuální počítače pro testovací prostředí.  Vlastnost **Rozsah adres** platí pouze v případě, že je pro testovací prostředí povolena virtuální síť **Peer.**  Pokud je k dispozici rozsah adres, všechny virtuální počítače v testovacích prostředích v rámci účtu testovacího prostředí budou vytvořeny v tomto rozsahu adres. Rozsah adres by měl být v zápisu CIDR (např. 10.20.0.0/20) a neměl by se překrývat s existujícími rozsahy adres.  Při poskytování rozsahu adres je důležité přemýšlet o počtu *testovacích prostředí,* která budou vytvořena, a poskytnout rozsah adres, aby se tomu přizpůsobily. Lab Services předpokládá maximálně 512 virtuálních počítačů na testovací prostředí.  Například rozsah IP s /23 můžete vytvořit pouze jednu testovací prostředí.  Rozsah s '/21' umožní vytvoření čtyř laboratoří.
 
 Pokud není zadán **rozsah adres,** lab services použije výchozí rozsah adres, který mu Azure při vytváření virtuální sítě, která má být peered s vaší virtuální sítě.  Rozsah je často něco jako 10.x.0.0/16.  To může vést k překrytí rozsahu IP, proto nezapomeňte zadat a rozsah adres v nastavení testovacího prostředí nebo zkontrolovat rozsah adres vaší virtuální sítě, která je peered.
 

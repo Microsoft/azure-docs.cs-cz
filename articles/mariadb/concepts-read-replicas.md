@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: b2e8bec18f4f5df6fb78a3c31aa0956ec7333eb5
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770108"
+ms.locfileid: "82024621"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Repliky pro čtení ve službě Azure Database for MariaDB
 
@@ -33,9 +33,6 @@ Funkce repliky pro čtení používá asynchronní replikaci. Tato funkce není 
 
 ## <a name="cross-region-replication"></a>Replikace mezi oblastmi
 Můžete vytvořit repliku pro čtení v jiné oblasti než hlavní server. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii nebo přiblížení dat uživatelům.
-
-> [!NOTE]
-> Replikace mezi oblastmi je ve verzi Preview.
 
 Hlavní server můžete mít v libovolné [databázi Azure pro oblast MariaDB](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb).  Hlavní server může mít repliku ve spárované oblasti nebo v oblastech univerzální repliky. Následující obrázek ukazuje, které oblasti replik jsou k dispozici v závislosti na hlavní oblasti.
 

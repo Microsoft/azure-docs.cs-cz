@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b9de6c2b8d9f7b11b686e820aab54fdd8e8a02f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67442844"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Kurz: Integrace azure active directory s HR2day by Merces
 
@@ -34,7 +34,7 @@ Integrace HR2day společností Merces s Azure AD vám poskytuje následující v
 Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li nakonfigurovat integraci Azure AD s HR2day společností Merces, potřebujete následující položky:
 
@@ -121,7 +121,7 @@ Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí hr2day od s
 
 6. V části **Deklarace identity uživatelů** v dialogovém okně **Atributy uživatele** upravte deklarace pomocí **ikony Upravit** nebo přidejte deklarace pomocí funkce Přidat **novou deklaraci** pro konfiguraci atributu tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Name (Název) |  Atribut zdroje |
+    | Název |  Atribut zdroje |
     | ---------- | ----------- |
     | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
     | | |
@@ -163,7 +163,7 @@ Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí hr2day od s
 Chcete-li nakonfigurovat jednotné přihlašování na **STRANĚ HR2day podle merces,** musíte odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z portálu Azure do [hr2day týmem podpory Společnosti Merces](mailto:servicedesk@merces.nl). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
 > [!NOTE]
-> Uveďte týmu Merces, že tato integrace potřebuje ID **https://hr2day.force.com/INSTANCENAME**entity, které mají být nastaveny se vzorem .
+> Uveďte týmu Merces, že tato integrace potřebuje ID entity, které má být nastaveno se vzorem **\/https: /hr2day.force.com/INSTANCENAME**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c895a13eb9b2bed9e3a8a5a250c4e925dfa834c5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80331815"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024434"
 ---
 # <a name="what-is-a-device-identity"></a>Co je identita zařízení?
 
@@ -53,6 +53,9 @@ Pokud chcete získat zařízení ve službě Azure AD, máte několik možností
 
 ![Zařízení zobrazená v okně Zařízení Azure AD](./media/overview/azure-active-directory-devices-all-devices.png)
 
+> [!NOTE]
+> Hybridní stav odkazuje na více než jen stav zařízení. Aby byl hybridní stav platný, je vyžadován také platný uživatel Služby Azure AD.
+
 ## <a name="device-management"></a>Správa zařízení
 
 Zařízení ve službě Azure AD lze spravovat pomocí nástrojů pro správu mobilních zařízení (MDM), jako je Microsoft Intune, Microsoft Endpoint Configuration Manager, Zásady skupiny (hybridní připojení Azure AD), Nástroje pro správu mobilních aplikací (MAM) nebo jiné nástroje třetích stran.
@@ -63,6 +66,8 @@ Registrace a připojení zařízení k Azure AD poskytuje uživatelům bezprobl�
 
 > [!NOTE]
 > Zásady podmíněného přístupu založené na zařízení vyžadují buď hybridní zařízení připojená k Azure AD, nebo kompatibilní zařízení azure ad registrovaná nebo registrovaná zařízení Azure AD.
+
+Primární obnovovací token (PRT) obsahuje informace o zařízení a je vyžadován pro sso. Pokud máte zásady podmíněného přístupu založené na zařízení nastavené v aplikaci, bez PRT, přístup je odepřen. Hybridní zásady podmíněného přístupu vyžadují hybridní stav zařízení a platný uživatel, který je přihlášen.
 
 Zařízení, která jsou azure ad připojen nebo hybridní Azure AD připojil výhody z připojovacího zabezpečení na místní prostředky vaší organizace, stejně jako cloudové prostředky. Další informace najdete v článku [Jak funguje přisyťit ém místní prostředky na zařízeních spojených s Azure AD](azuread-join-sso.md).
 

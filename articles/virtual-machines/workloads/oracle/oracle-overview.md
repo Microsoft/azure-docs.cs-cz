@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
 ms.author: borisb
-ms.openlocfilehash: e6a2e7c646782f5ad874124e4a86809ed1d79eea
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: c737189650d571fb62a770707e84ed15c5a37a57
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687397"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870508"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Přehled aplikací a řešení Oracle v Azure
 
@@ -49,7 +49,7 @@ Spouštět podnikové aplikace v Azure na podporovaných operačních systémech
 
 * Azure [Site Recovery](../../../site-recovery/site-recovery-overview.md) můžete spravovat a spravovat zotavení po havárii pro virtuální počítače Oracle Linux v Azure a místní nebo fyzické servery. 
 
-* Povolte clustery Oracle Real Application Clusters (RAC) v Azure pomocí [řešení Azure VMWare solution](https://docs.azure.cloudsimple.com/oracle-rac/) nebo [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
+* Povolte clustery Oracle Real Application Clusters (RAC) v Azure pomocí [řešení Azure VMWare solution](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) nebo [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="backup-oracle-workloads"></a>Zálohování úloh Oracle
 

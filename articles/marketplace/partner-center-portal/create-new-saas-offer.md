@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a39e1e19f65722b4b5ae809ca943da719a3c6e22
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314086"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869772"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvoření nové nabídky SaaS
 
@@ -206,7 +206,7 @@ Existují dva druhy změn k dispozici pro komerční trh vydavatelů:
 - **ID klienta** (povinné): Každá vlastní změna může být zaměřena až na 20 ID klienta. Pokud přidáte vlastní změnu, musíte zadat alespoň jedno ID klienta. ID klienta identifikuje vašeho zákazníka v Azure. Můžete požádat zákazníka o toto ID a oni ho můžou najít tak, že ho najdou portal.azure.com > služby Azure Active Directory > vlastnosti. Hodnota ID adresáře je ID klienta (například 50c464d3-4930-494c-963c-1e951d15360e). ID klienta vašeho zákazníka můžete také vyhledat pomocí adresy URL názvu domény na adrese [What is my Microsoft Azure and Office 365 tenant ID?](https://www.whatismytenantid.com)
 - **Popis** (volitelné): Volitelně zadejte popis pro ID klienta, který vám pomůže identifikovat zákazníka, na kterého cílíte s dodatkem.
 
-#### <a name="terms-and-conditions"></a>Podmínky a ujednání
+#### <a name="terms-and-conditions"></a>podmínky a ujednání
 
 Chcete-li zadat vlastní smluvní podmínky, můžete se rozhodnout, že je zadáte do pole smluvních podmínek. Do tohoto pole můžete zadat až 10 000 znaků textu. Pokud vaše smluvní podmínky vyžadují delší popis, zadejte do tohoto pole odkaz na jednu adresu URL, ve kterém lze vaše smluvní podmínky najít. Zobrazí se zákazníkům jako aktivní odkaz.
 
@@ -289,6 +289,9 @@ Pomocí editoru RTF použijte následující pokyny:
 - **Videa** (volitelně): Přidejte odkazy na videa demonstrující vaši nabídku. Můžete použít odkazy na YouTube a / nebo Vimeo videa, které jsou zobrazeny spolu s vaší nabídkou zákazníkům. Budete také muset zadat miniaturu videa o velikosti 1280 x 720 pixelů ve formátu PNG. V nabídce můžete zobrazit maximálně čtyři videa.
 
 Nezapomeňte **uložit** před přechodem na další část.
+
+>[!Note]
+>Pokud máte problém s nahráváním souborů, ujistěte se, že místní síť neblokuje službu https://upload.xboxlive.com používanou partnerským centrem.
 
 #### <a name="additional-marketplace-listing-resources"></a>Další zdroje informací o výpisu tržiště
 
@@ -399,7 +402,7 @@ Vyberte frekvenci, kterou musí zákazníci zaplatit uvedenou cenu. Musí být p
 
 - **Cena:** USD za měsíc nebo USD za rok
 
-Ceny stanovené v místní měně (USD = Americký dolar) jsou převedeny na místní měnu všech vybraných trhů pomocí aktuálních směnných kurzů dostupných během instalace. Před publikováním ověřte tyto ceny exportem tabulky cen a kontrolou ceny na jednotlivých trzích. Pokud chcete nastavit vlastní ceny na individuálním trhu, upravte a importujte tabulku cen. Jste zodpovědní za ověření těchto cen a vlastníte tato nastavení.
+Ceny stanovené v USD (USD = Americký dolar) jsou převedeny na místní měnu všech vybraných trhů pomocí aktuálních směnných kurzů při uložení. Před publikováním ověřte tyto ceny exportem tabulky cen a kontrolou ceny na jednotlivých trzích. Pokud chcete nastavit vlastní ceny na individuálním trhu, upravte a importujte tabulku cen. Jste zodpovědní za ověření těchto cen a vlastníte tato nastavení.
 *\*Chcete-li povolit export dat o cenách, musíte nejprve uložit změny cen.*
 
 Před publikováním si pečlivě zkontrolujte ceny, protože existují určitá omezení, co se může po publikování plánu změnit:

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 48be73a6385c9690909cb70abe558a2def1ace88
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: f557753c61af1e57490ae2d10b7f42475bd7c0a6
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730510"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870235"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenční příručka pro používání funkcí ve výrazech pro Azure Logic Apps a Power Automate
 
@@ -82,7 +82,7 @@ Chcete-li pracovat s řetězci, můžete použít tyto funkce řetězce a také 
 | [Concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Zkombinujte dva nebo více řetězců a vraťte kombinovaný řetězec. |
 | [Endswith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Zkontrolujte, zda řetězec končí zadaným podřetězcem. |
 | [formatNumber](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | Vrátit číslo jako řetězec na základě zadaného formátu |
-| [Identifikátor guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Generovat globálně jedinečný identifikátor (GUID) jako řetězec. |
+| [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Generovat globálně jedinečný identifikátor (GUID) jako řetězec. |
 | [Indexof](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Vraťte počáteční pozici pro podřetězec. |
 | [Lastindexof](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Vrátí počáteční pozici pro poslední výskyt podřetězce. |
 | [Nahradit](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Nahraďte podřetězec zadaným řetězcem a vraťte aktualizovaný řetězec. |
@@ -163,7 +163,7 @@ Další informace o tom, jak aplikace Logic Apps zpracovávají typy obsahu běh
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Vrátí číslo s plovoucí desetinnou tácem pro vstupní hodnotu. |
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Vraťte verzi celého čísla pro řetězec. |
 | [Json](../logic-apps/workflow-definition-language-functions-reference.md#json) | Vraťte hodnotu nebo objekt typu Zápis objektu JavaScriptu (JSON) pro řetězec nebo XML. |
-| [Řetězec](../logic-apps/workflow-definition-language-functions-reference.md#string) | Vraťte verzi řetězce pro vstupní hodnotu. |
+| [řetězec](../logic-apps/workflow-definition-language-functions-reference.md#string) | Vraťte verzi řetězce pro vstupní hodnotu. |
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Vraťte verzi kódovky URI pro vstupní hodnotu nahrazením znaků nebezpečných adres URL řídicími znaky. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Vraťte binární verzi pro řetězec kódovaný identifikátorem URI. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Vraťte verzi řetězce pro řetězec kódovaný identifikátorem URI. |
@@ -2223,7 +2223,7 @@ A vrátit tyto výsledky:
 
 <a name="guid"></a>
 
-### <a name="guid"></a>Identifikátor guid
+### <a name="guid"></a>guid
 
 Generovat globálně jedinečný identifikátor (GUID) jako řetězec, například "c2ecc88d-88c8-4096-912c-d6f2e2b138ce":
 
@@ -2426,9 +2426,11 @@ iterationIndexes('<loopName>')
 
 *Příklad* 
 
-Tento příklad vytvoří proměnnou čítače a zvyšuje tuto proměnnou o jednu během každé iterace ve smyčce Until, dokud hodnota čítače nedosáhne pěti. Příklad také vytvoří proměnnou, která sleduje aktuální index pro každou iteraci. Ve smyčce Until se během každé iterace v příkladu nastoupí čítač a potom přiřadí hodnotu čítače aktuální hodnotě indexu a pak čítač znásobí. Kdykoli můžete určit aktuální číslo iterace načtením aktuální hodnoty indexu.
+Tento příklad vytvoří proměnnou čítače a zvyšuje tuto proměnnou o jednu během každé iterace ve smyčce Until, dokud hodnota čítače nedosáhne pěti. Příklad také vytvoří proměnnou, která sleduje aktuální index pro každou iteraci. Ve smyčce Until se během každé iterace v příkladu nastoupí čítač a potom přiřadí hodnotu čítače aktuální hodnotě indexu a pak čítač znásobí. Zatímco ve smyčce, tento příklad odkazuje na `iterationIndexes` aktuální index iterace pomocí funkce:
 
-```
+`iterationIndexes('Until_Max_Increment')`
+
+```json
 {
    "actions": {
       "Create_counter_variable": {
@@ -2459,7 +2461,7 @@ Tento příklad vytvoří proměnnou čítače a zvyšuje tuto proměnnou o jedn
             "Create_counter_variable": [ "Succeeded" ]
          }
       },
-      "Until": {
+      "Until_Max_Increment": {
          "type": "Until",
          "actions": {
             "Assign_current_index_to_counter": {
@@ -2472,6 +2474,15 @@ Tento příklad vytvoří proměnnou čítače a zvyšuje tuto proměnnou o jedn
                   "Increment_variable": [ "Succeeded" ]
                }
             },
+            "Compose": {
+               "inputs": "'Current index: ' @{iterationIndexes('Until_Max_Increment')}",
+               "runAfter": {
+                  "Assign_current_index_to_counter": [
+                     "Succeeded"
+                    ]
+                },
+                "type": "Compose"
+            },           
             "Increment_variable": {
                "type": "IncrementVariable",
                "inputs": {

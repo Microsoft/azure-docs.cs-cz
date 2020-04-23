@@ -12,12 +12,12 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ebec4cb6bbbac5b331eb2eb4145716e16e7320fa
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 161f97dc99ce5ce16d7c40126b95a769c4b79621
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677689"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868324"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Platforma identit Microsoftu a protokol OpenID Connect
 
@@ -38,6 +38,7 @@ OpenID Connect popisuje dokument metadat, který obsahuje většinu informací p
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
+
 > [!TIP]
 > Vyzkoušejte si to! Kliknutím [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) zobrazíte `common` konfiguraci klientů.
 
@@ -52,7 +53,7 @@ Může `{tenant}` mít jednu ze čtyř hodnot:
 
 Metadata jsou jednoduchý dokument zápisu objektu JavaScript (JSON). Příklad najdete v následujícím úryvku. Obsah fragmentu je plně popsán ve [specifikaci OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2).
 
-```
+```json
 {
   "authorization_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/authorize",
   "token_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/token",
@@ -84,7 +85,7 @@ Když vaše webová aplikace potřebuje ověřit uživatele, může `/authorize`
 
 Příklad:
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -123,7 +124,7 @@ Poté, co uživatel ověří a udělí souhlas, koncový bod platformy identit m
 
 Úspěšná odpověď při `response_mode=form_post` použití vypadá takto:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -140,7 +141,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 Chybové odpovědi mohou být také odeslány do identifikátoru URI přesměrování, aby je aplikace mohla zpracovat. Odpověď na chybu vypadá takto:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -187,7 +188,7 @@ Pokud chcete odhlásit uživatele z vaší aplikace, nestačí vymazat soubory c
 
 Uživatele můžete přesměrovat na `end_session_endpoint` dokument metadat OpenID Connect:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
@@ -211,7 +212,7 @@ Mnoho webových aplikací musí nejen přihlásit uživatele, ale také pro př�
 ## <a name="get-access-tokens"></a>Získání přístupových tokenů
 Chcete-li získat přístupové tokeny, upravte požadavek na přihlášení:
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -236,7 +237,7 @@ Zahrnutím oborů oprávnění do `response_type=id_token code`požadavku a pomo
 
 Úspěšná odpověď `response_mode=form_post` z použití vypadá takto:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -254,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 Chybové odpovědi mohou být také odeslány do identifikátoru URI přesměrování, aby je aplikace mohla správně zpracovat. Odpověď na chybu vypadá takto:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded

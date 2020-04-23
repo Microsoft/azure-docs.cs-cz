@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/12/2019
+ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 3b2d78bd929e23d49a57f337022f6678114bb5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75457443"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870518"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Vyžadovat zabezpečený přenos pro zajištění zabezpečeného připojení
 
@@ -25,7 +25,7 @@ Když je vyžadován zabezpečený přenos, musí být provedeno volání operac
 
 Připojení ke sdílené složce Azure přes SMB bez šifrování se nezdaří, když je pro účet úložiště vyžadován zabezpečený přenos. Příklady nezabezpečených připojení zahrnují připojení přes SMB 2.1, SMB 3.0 bez šifrování nebo některé verze klienta SMB linuxu.
 
-Ve výchozím nastavení je **vlastnost Požadováno zabezpečeného přenosu** povolena při vytváření účtu úložiště na webu Azure Portal. Je však zakázána při vytvoření účtu úložiště s sadou SDK.
+Ve výchozím nastavení je **vlastnost Požadováno zabezpečeného převodu** povolena při vytváření účtu úložiště.
 
 > [!NOTE]
 > Vzhledem k tomu, že Azure Storage nepodporuje protokol HTTPS pro vlastní názvy domén, tato možnost se nepoužije, když používáte vlastní název domény. A klasické účty úložiště nejsou podporovány.
@@ -53,11 +53,11 @@ Vlastnost **Požadováno zabezpečeného přenosu** můžete zapnout při vytvá
 
 Chcete-li vyžadovat zabezpečený přenos programově, nastavte _vlastnost supportsHttpsTrafficOnly_ v účtu úložiště. Tuto vlastnost můžete nastavit pomocí rozhraní REST API zprostředkovatele prostředků úložiště, klientských knihoven nebo nástrojů:
 
-* [ROZHRANÍ API PRO ODPOČINEK](/rest/api/storagerp/storageaccounts)
+* [REST API](/rest/api/storagerp/storageaccounts)
 * [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
-* [Cli](/cli/azure/storage/account)
+* [Rozhraní příkazového řádku](/cli/azure/storage/account)
 * [Nodejs](https://www.npmjs.com/package/azure-arm-storage/)
-* [Sada SDK rozhraní .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
+* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
 * [Python SDK](https://pypi.org/project/azure-mgmt-storage)
 * [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
 

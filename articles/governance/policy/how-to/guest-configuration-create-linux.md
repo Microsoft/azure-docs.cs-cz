@@ -3,12 +3,12 @@ title: Jak vytvořit zásady konfigurace hosta pro Linux
 description: Přečtěte si, jak vytvořit zásady Azure Zásady konfigurace pro Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 24442a89d55e34f9ce9697c2f6a32cfc740bcd85
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 219b38bd81cae8d16241d1ee16cfdd2f400ae91e
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758958"
+ms.locfileid: "82024978"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Jak vytvořit zásady konfigurace hosta pro Linux
 
@@ -26,9 +26,8 @@ Pomocí následujících akcí vytvořte vlastní konfiguraci pro ověření sta
 > Vlastní zásady s konfigurací hosta je funkce náhledu.
 >
 > Rozšíření Konfigurace hosta je nutné k provádění auditů ve virtuálních počítačích Azure.
-> Chcete-li rozšíření nasadit ve velkém měřítku, přiřaďte následující definice zásad:
->   - Nasadit požadavky pro povolení zásad konfigurace hosta na virtuálních počítačích se systémem Windows.
->   - Nasaďte požadavky a povolte zásady konfigurace hosta na virtuálních počítačích s Linuxem.
+> Chcete-li rozšíření nasadit ve velkém měřítku ve všech počítačích s Linuxem, přiřaďte následující definici zásad:
+>   - [Nasaďte požadavky a povolte zásady konfigurace hosta na virtuálních počítačích s Linuxem.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 

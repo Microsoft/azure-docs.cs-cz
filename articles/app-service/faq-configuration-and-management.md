@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 9e7070e925d12df82adbc3683da5b10e48c5d4b0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 810219bca5c75e3ee7e65c6b7302531bca89788d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668117"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869966"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy ke konfiguraci a správě webových aplikací v Azure
 
@@ -187,7 +187,7 @@ Máte dvě možnosti pro zachycení trasování F12:
 3. Klepněte pravým tlačítkem myši do oblasti zprávy v podokně a pak vyberte **kopírovat vše**.
 4. Vložte zkopírovaný text do souboru a uložte soubor.
 
-Chcete-li zobrazit soubor HAR, můžete použít [prohlížeč HAR](https://www.softwareishard.com/har/viewer/).
+Chcete-li zobrazit soubor HAR, můžete použít [prohlížeč HAR](http://www.softwareishard.com/har/viewer/).
 
 ## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Proč se při pokusu o připojení webové aplikace App Service k virtuální síti připojené k ExpressRoute zobrazí chyba?
 

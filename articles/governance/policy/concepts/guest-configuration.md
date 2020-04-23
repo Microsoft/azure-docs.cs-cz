@@ -3,12 +3,12 @@ title: Naučte se auditovat obsah virtuálních počítačů
 description: Zjistěte, jak zásady Azure používají agenta konfigurace hosta k auditování nastavení uvnitř virtuálních počítačů.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1721c0f1ca7c084d636278aabc96f8dac3293038
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 89f7cc3931971d70b441490f77b67ace89434c2b
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759078"
+ms.locfileid: "82025216"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Principy konfigurace hosta zásad Azure
 
@@ -31,8 +31,8 @@ Chcete-li auditovat nastavení uvnitř počítače, je povoleno [rozšíření v
 > [!Important]
 > Rozšíření Konfigurace hosta je nutné k provádění auditů ve virtuálních počítačích Azure.
 > Chcete-li rozšíření nasadit ve velkém měřítku, přiřaďte následující definice zásad:
->   - Nasadit požadavky pro povolení zásad konfigurace hosta na virtuálních počítačích se systémem Windows.
->   - Nasaďte požadavky a povolte zásady konfigurace hosta na virtuálních počítačích s Linuxem.
+>   - [Nasadit požadavky pro povolení zásad konfigurace hosta na virtuálních počítačích se systémem Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+>   - [Nasaďte požadavky a povolte zásady konfigurace hosta na virtuálních počítačích s Linuxem.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ### <a name="limits-set-on-the-extension"></a>Limity nastavené na rozšíření
 
@@ -67,6 +67,8 @@ Zásady konfigurace hosta zahrnují nové verze. Starší verze operačních sys
 |OpenLogic|CentOS|7.3 a novější|
 |Red Hat|Red Hat Enterprise Linux|7.4 a novější|
 |Suse|SLES|12 SP3 a novější|
+
+Vlastní image virtuálních počítačů jsou podporovány zásadami konfigurace hosta, pokud jsou jedním z operačních systémů ve výše uvedené tabulce.
 
 ### <a name="unsupported-client-types"></a>Nepodporované typy klientů
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/24/2019
+ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79253608"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082114"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace služby Azure AD Connect: Atributy synchronizované se službou Azure Active Directory
 Toto téma uvádí atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
@@ -375,7 +375,7 @@ Tato skupina je sada atributů používaných jako minimální atributy potřebn
 * Yammer (spotřebovává se jenom uživatel)
 * [Hybridní scénáře spolupráce mezi podniky (B2B) nabízené prostředky, jako je SharePoint](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-Tato skupina je sada atributů, které lze použít, pokud adresář Azure AD není použit pro podporu Office 365, Dynamics nebo Intune. Má malou sadu základních atributů.
+Tato skupina je sada atributů, které lze použít, pokud adresář Azure AD není použit pro podporu Office 365, Dynamics nebo Intune. Má malou sadu základních atributů. Všimněte si, že jednotné přihlašování nebo zřizování některých aplikací třetích stran vyžaduje konfiguraci synchronizace atributů kromě atributů popsaných zde. Požadavky na aplikace jsou popsány v [kurzu aplikace SaaS](../saas-apps/tutorial-list.md) pro každou aplikaci.
 
 | Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |

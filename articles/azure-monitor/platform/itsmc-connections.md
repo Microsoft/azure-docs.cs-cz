@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 9441e7bb970508df4c002897ab726d6e683fa848
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 0773492c3042a6f8c906aa6ba1bc3c76ea8c0d8f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733347"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870597"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů/služeb ITSM pomocí konektoru pro správu služeb IT
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi produktem nebo službou ITSM a konektorem ITSMC (IT Service Management Connector) v Log Analytics pro centrální správu pracovních položek. Další informace o ITSMC naleznete v [tématu Přehled](../../azure-monitor/platform/itsmc-overview.md).
@@ -31,7 +31,7 @@ Jsou podporovány následující produkty/služby ITSM. Výběrem produktu zobra
 
 V následujících částech jsou uvedeny podrobnosti o tom, jak připojit produkt Správce služeb system center k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadované součásti
 
 Ujistěte se, že jsou splněny následující požadavky:
 
@@ -176,7 +176,7 @@ Následující ukázkový obrázek znázorňuje podrobnosti o úspěšném přip
 
 V následujících částech jsou uvedeny podrobnosti o tom, jak připojit produkt ServiceNow k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadované součásti
 Ujistěte se, že jsou splněny následující požadavky:
 - ITSMC nainstalován. Další informace: [Přidání řešení konektoru pro správu služeb IT](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - ServiceNow podporované verze: New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
@@ -197,12 +197,12 @@ Ujistěte se, že jsou splněny následující požadavky:
 > [!NOTE]
 > Jako součást definice "Nastavit OAuth" doporučujeme:
 >
-> 1) **Aktualizujte životnost obnovovacího tokenu na 90 dní (7 776 000 sekund):** Jako součást [Nastavit OAuth](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) ve fázi 2: [Vytvořte koncový bod pro klienty pro přístup k instanci](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0) Po definici koncového bodu v ServiceNow okno hledání systému OAuth->aplikační ho registru vyberte název OAuth, který byl definován a aktualizovat pole "Aktualizovat token Lifespan" na 7,776,000.
+> 1) **Aktualizujte životnost obnovovacího tokenu na 90 dní (7 776 000 sekund):** Jako součást [Nastavit OAuth](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) ve fázi 2: [Vytvořte koncový bod pro klienty pro přístup k instanci](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0) Po definici koncového bodu v ServiceNow okno hledání systému OAuth než vyberte registr aplikací. Vyberte název OAuth, který byl definován a aktualizujte pole Aktualizovat token Životnost na 7 776 000 (90 dní v sekundách).
 > Na konci klikněte na aktualizaci.
-> 2) **Doporučujeme vytvořit vnitřní postup, aby se zajistilo, že spojení zůstane naživu:** Podle "Aktualizovat token životnost" aktualizovat token. Ujistěte se, že provést následující operace před obnovení token očekávané doby vypršení platnosti (Několik dní před "Obnovovat token životnost" doporučujeme):
+> 2) **Doporučujeme vytvořit vnitřní postup, aby se zajistilo, že spojení zůstane naživu:** Podle aktualizace tokenu Životnost aktualizovat token. Ujistěte se, že provést následující operace před obnovení token očekávané doby vypršení platnosti (Několik dní před vypršením životnosti obnovovací token doporučujeme):
 >
 >>  1) [Dokončení procesu ruční synchronizace pro konfiguraci konektoru ITSM](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
- >> 2) Odvolat na starý obnovovací token, protože se nedoporučuje zachovat staré klíče z bezpečnostních důvodů. V ServiceNow okno hledat "System OAuth"->"Spravovat tokeny" a vyberte starý token ze seznamu podle názvu OAuth a datum vypršení platnosti. Klikněte na "Odvolat přístup"->"Odvolat.
+ >> 2) Odvolat na starý obnovovací token, protože se nedoporučuje zachovat staré klíče z bezpečnostních důvodů. V servicenow okno hledání systému OAuth než vyberte Spravovat tokeny. Vyberte starý token ze seznamu podle názvu OAuth a data vypršení platnosti. Klikněte na Odvolat přístup a než na Odvolat.
 
 - Nainstalujte uživatelskou aplikaci pro integraci Microsoft Log Analytics (aplikace ServiceNow). [Další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Vytvořte roli uživatele integrace pro nainstalovanou uživatelskou aplikaci. Informace o tom, jak vytvořit roli integračního [uživatele,](#create-integration-user-role-in-servicenow-app)naleznete zde .
@@ -292,7 +292,7 @@ Po úspěšném vytvoření uživatele se stav **kontrolního seznamu instalace 
 V následujících částech jsou uvedeny podrobnosti o tom, jak propojit produkt s ITSMC v Azure.
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadované součásti
 
 Ujistěte se, že jsou splněny následující požadavky:
 
@@ -345,7 +345,7 @@ Další informace: [Vytvoření pracovních položek ITSM z výstrah Azure](../.
 
 V následujících částech jsou uvedeny podrobnosti o tom, jak připojit produkt Cherwell k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadované součásti
 
 Ujistěte se, že jsou splněny následující požadavky:
 

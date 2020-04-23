@@ -1,26 +1,19 @@
 ---
 title: Příklad návodu k infrastruktuře Azure
 description: Přečtěte si o klíčových pokynech pro návrh a implementaci pro nasazení ukázkové infrastruktury v Azure.
-documentationcenter: ''
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: example-scenario
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab6f304d78357e261c68ebbcfcb3746844edce8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43e96b891e60dfcf8bc3c29b202bb60213905372
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038562"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869466"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Příklad návodu k infrastruktuře Azure pro virtuální počítače s Windows
 Tento článek vás provede vytvářením ukázkové aplikační infrastruktury. Podrobně popisujeme návrh infrastruktury pro jednoduchý online obchod, který sdružuje všechny pokyny a rozhodnutí týkající se konvencí pojmenování, sad dostupnosti, virtuálních sítí a nástrojek pro vyrovnávání zatížení a skutečného nasazení virtuálních počítačů.
@@ -47,7 +40,7 @@ Výsledný průmyslový vzor musí obsahovat:
 * Spravované disky Azure
 * Virtuální síť se dvěma podsítěmi
 * Skupiny dostupnosti pro virtuální uživatele s podobnou rolí
-* Virtual Machines
+* Virtuální počítače
 
 Všechny výše uvedené postupujte podle těchto zásad pojmenování:
 
@@ -60,7 +53,7 @@ Všechny výše uvedené postupujte podle těchto zásad pojmenování:
 ## <a name="azure-subscriptions-and-accounts"></a>Předplatná a účty Azure
 Adventure Works Cycles používá své předplatné Enterprise s názvem Adventure Works Enterprise Subscription k poskytování fakturace pro tuto úlohu IT.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 Adventure Works Cycles určily, že by měly používat spravované disky Azure. Při vytváření virtuálních zařízení se používají obě dostupné úrovně úložiště:
 
 * **Standardní úložiště** pro webové servery, aplikační servery a řadiče domény a jejich datové disky.
@@ -89,7 +82,7 @@ Aby byla zachována vysoká dostupnost všech čtyř úrovní jejich internetov�
 * **azos-use-as-SQL** pro sql servery
 * **azos-use-as-dc** pro řadiče domény
 
-## <a name="virtual-machines"></a>Virtual Machines
+## <a name="virtual-machines"></a>Virtuální počítače
 Adventure Works Cycles se rozhodly pro své virtuální počítače Azure o následujících názvech:
 
 * **azos-use-vm-web01** pro první webový server

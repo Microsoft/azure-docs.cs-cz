@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e40171b95e6faae0020f8bf61410aad8999ddecb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 608c2619c19a2b5fa7e39c1ecb82be40ff4e83f4
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536521"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82072616"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Přiřazení přístupových oprávnění k identitě
 
@@ -87,15 +87,6 @@ V kořenovém adresáři sdílené složky jsou podporovány následující sady
 - NT Autorita\SYSTÉM:(F)
 - TVŮRCE VLASTNÍK:(OI)(CI)(IO)(F)
 
-### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurace oprávnění ntfs pomocí icacls
-Pomocí následujícího příkazu systému Windows udělte úplná oprávnění všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře. Nezapomeňte nahradit zástupné hodnoty v příkladu vlastními hodnotami.
-
-```
-icacls <mounted-drive-letter>: /grant <user-email>:(f)
-```
-
-Další informace o použití icacls k nastavení oprávnění NTFS a o různých typech podporovaných oprávnění naleznete [v odkazu na příkazový řádek pro icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
-
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>Připojení sdílené složky z příkazového řádku
 
 Pomocí příkazu **Windows net use** můžete připojit sdílenou složku Azure. Nezapomeňte nahradit zástupné hodnoty v následujícím příkladu vlastními hodnotami. Další informace o připojujících se sdílených složek najdete [v tématu Použití sdílené složky Azure se systémem Windows](../articles/storage/files/storage-how-to-use-files-windows.md). 
@@ -103,6 +94,7 @@ Pomocí příkazu **Windows net use** můžete připojit sdílenou složku Azure
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
 ```
+
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Konfigurace oprávnění ntfs pomocí Průzkumníka souborů systému Windows
 Pomocí Průzkumníka souborů systému Windows udělte úplná oprávnění všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře.
 
@@ -114,6 +106,15 @@ Pomocí Průzkumníka souborů systému Windows udělte úplná oprávnění vš
 7.    Vyberte **OK**.
 8.    Na kartě **Zabezpečení** vyberte všechna oprávnění, která chcete novému uživateli udělit.
 9.    Vyberte **Použít**.
+
+### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurace oprávnění ntfs pomocí icacls
+Pomocí následujícího příkazu systému Windows udělte úplná oprávnění všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře. Nezapomeňte nahradit zástupné hodnoty v příkladu vlastními hodnotami.
+
+```
+icacls <mounted-drive-letter>: /grant <user-email>:(f)
+```
+
+Další informace o použití icacls k nastavení oprávnění NTFS a o různých typech podporovaných oprávnění naleznete [v odkazu na příkazový řádek pro icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. Připojení sdílené složky z virtuálního zařízení přilehlého k doméně
 

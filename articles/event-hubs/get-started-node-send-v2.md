@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 063f2e1005db177420da7f81b799ab01fd212d7e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42c58a84c71b6573814e82517373db6900a83658
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478478"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025012"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Odesílání událostí do event hubů nebo příjem z nich pomocí JavaScriptu (azure/event-hubs verze 5)
 Tento rychlý start ukazuje, jak odesílat události do centra událostí a přijímat je pomocí balíčku JavaScript **azure/event-hubs verze 5.** 
@@ -21,7 +21,7 @@ Tento rychlý start ukazuje, jak odesílat události do centra událostí a při
 > [!IMPORTANT]
 > Tento rychlý start používá nejnovější balíček azure/event-hubs verze 5. Pro rychlý start, který používá starý balíček azure/event-hubs verze 2, najdete v tématu [Odesílání a přijímání událostí pomocí azure/event-hubs verze 2](event-hubs-node-get-started-send.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 Pokud s Azure Event Hubs tečujete, přečtěte si [téma Přehled centra událostí,](event-hubs-about.md) než začnete tento rychlý start. 
 
 Chcete-li tento rychlý start dokončit, potřebujete následující požadavky:
@@ -185,7 +185,7 @@ Nezapomeňte zaznamenat připojovací řetězec a název kontejneru pro pozděj�
 1. Spuštění `node receive.js` tohoto souboru v příkazovém řádku Okno by mělo zobrazovat zprávy o přijatých událostech.
 
     > [!NOTE]
-    > Úplný zdrojový kód, včetně dalších informačních komentářů, najdete na [stránce GitHub receiveEventsUsingCheckpointStore.js](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js).
+    > Úplný zdrojový kód, včetně dalších informačních komentářů, najdete na [stránce GitHub receiveEventsUsingCheckpointStore.js](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js).
 
 Blahopřejeme! Nyní jste obdrželi události z centra událostí. Program příjemce bude přijímat události ze všech oddílů výchozí skupiny příjemců v centru událostí.
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: abf80e98881b73bed53c5a939a79bc8b3a9de2db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/21/2020
+ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530576"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025046"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Jak vytvořit a spravovat repliky čtení v Azure Database for MariaDB pomocí rozhraní API Azure a rozhraní REST API
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak vytvořit a spravovat repliky čtení ve služ
 ## <a name="azure-cli"></a>Azure CLI
 Můžete vytvářet a spravovat repliky čtení pomocí azure CLI.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadované součásti
 
 - [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Databáze Azure pro MariaDB server,](quickstart-create-mariadb-server-database-using-azure-portal.md) který se bude používat jako hlavní server. 
@@ -45,9 +45,6 @@ Příkaz `az mariadb server replica create` vyžaduje následující parametry:
 | source-server | mydemoserver | Název nebo ID existujícího hlavního serveru, ze který má být replikován. |
 
 Chcete-li vytvořit repliku pro `--location` čtení mezi oblastmi, použijte parametr. 
-
-> [!NOTE]
-> Replikace mezi oblastmi je ve verzi Preview.
 
 Příklad cli níže vytvoří repliku v západní USA.
 

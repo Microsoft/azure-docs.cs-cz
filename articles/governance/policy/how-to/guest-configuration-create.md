@@ -3,12 +3,12 @@ title: Jak vytvořit zásady konfigurace hosta pro Windows
 description: Přečtěte si, jak vytvořit zásady Azure Zásady konfigurace pro Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 7b06aa0a70bfa17d67da9c6af447138f8bb9e712
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: f09bb543f73e37bd211a55e2238808f57585bb18
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81757411"
+ms.locfileid: "82024893"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Jak vytvořit zásady konfigurace hosta pro Windows
 
@@ -27,9 +27,8 @@ Pomocí následujících akcí vytvořte vlastní konfiguraci pro ověření sta
 > Vlastní zásady s konfigurací hosta je funkce náhledu.
 >
 > Rozšíření Konfigurace hosta je nutné k provádění auditů ve virtuálních počítačích Azure.
-> Chcete-li rozšíření nasadit ve velkém měřítku, přiřaďte následující definice zásad:
->   - Nasadit požadavky pro povolení zásad konfigurace hosta na virtuálních počítačích se systémem Windows.
->   - Nasaďte požadavky a povolte zásady konfigurace hosta na virtuálních počítačích s Linuxem.
+> Chcete-li rozšíření nasadit ve velkém měřítku ve všech počítačích s Windows, přiřaďte následující definice zásad:
+>   - [Nasadit požadavky pro povolení zásad konfigurace hosta na virtuálních počítačích se systémem Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
 ## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 

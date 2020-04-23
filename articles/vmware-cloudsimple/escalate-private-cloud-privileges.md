@@ -9,25 +9,25 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025312"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870475"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Eskalovat oprávnění virtuálního cloudu privátního cloudu z portálu CloudSimple
 
 Pro přístup správce k privátnímu cloudu vCenter můžete dočasně eskalovat vaše oprávnění CloudSimple.  Pomocí zvýšených oprávnění můžete instalovat řešení VMware, přidávat zdroje identit a spravovat uživatele.
 
-Noví uživatelé mohou být vytvořeni v doméně spřimi vCenter a získat přístup k vCenter.  Když vytváříte nové uživatele, přidejte je do cloudových jednoduchých skupin pro přístup k vCenter.  Další informace naleznete v [tématu CloudSimple Private Cloud model oprávnění vMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
+Noví uživatelé mohou být vytvořeni v doméně spřimi vCenter a získat přístup k vCenter.  Když vytváříte nové uživatele, přidejte je do cloudových jednoduchých skupin pro přístup k vCenter.  Další informace naleznete v [tématu CloudSimple Private Cloud model oprávnění vMware vCenter](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/).
 
 > [!CAUTION]
 > Neprovávejte žádné změny konfigurace pro součásti správy. Akce provedené během eskalovaného privilegovaného stavu mohou nepříznivě ovlivnit systém nebo způsobit, že systém nebude k dispozici.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="escalate-privileges"></a>Zvýšení úrovně oprávnění
 
@@ -88,5 +88,5 @@ Po dokončení úkolů správy byste měli de-eskalovat svá oprávnění.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení zdrojů identit vCenter pro použití služby Active Directory](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
-* Instalace řešení zálohování pro [zálohování virtuálních počítačů](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)
+* [Nastavení zdrojů identit vCenter pro použití služby Active Directory](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
+* Instalace řešení zálohování pro [zálohování virtuálních počítačů](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)

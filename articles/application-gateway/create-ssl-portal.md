@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/13/2019
+ms.date: 04/22/2019
 ms.author: victorh
-ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 62f5375a0d468f5b137c4628c89c802d83dee102
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312380"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024487"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Kurz: Konfigurace aplikační brány s ukončením TLS pomocí portálu Azure
 
@@ -56,13 +56,11 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-Použijte [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) s kryptografickým otiskem, který byl vrácen k exportu souboru pfx z certifikátu:
+Použijte [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) s kryptografickým otiskem, který byl vrácen k exportu souboru pfx z certifikátu. Ujistěte se, že vaše heslo je 4 - 12 znaků:
 
-> [!NOTE]
-> V hesle souboru .pfx nepoužívejte žádné speciální znaky. Podporovány jsou pouze alfanumerické znaky.
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String <your password> -Force -AsPlainText
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
@@ -150,7 +148,7 @@ Na kartě **Konfigurace** připojíte front-endový a back-endový fond, který 
 
    - **Soubor certifikátu PFX** – Vyhledejte a vyberte soubor c:\appgwcert.pfx, který jste vytvořili dříve.
    - **Název certifikátu** - Pro název certifikátu zadejte *mycert1.*
-   - **Heslo** – pro heslo zadejte *Azure123456.*
+   - **Heslo** – zadejte heslo.
   
         Přijměte výchozí hodnoty pro ostatní nastavení na kartě **Naslouchací proces** a pak vyberte kartu **Cíle back-endu** a nakonfigurujte zbytek pravidla směrování.
 
@@ -194,10 +192,10 @@ Chcete-li to provést, budete:
     - **Skupina prostředků**: Vyberte **myResourceGroupAG** pro název skupiny prostředků.
     - **Název virtuálního počítače**: Zadejte *myVM* pro název virtuálního počítače.
     - **Uživatelské jméno**: Zadejte *azureuser* pro uživatelské jméno správce.
-    - **Heslo**: Zadejte *Azure123456* pro heslo správce.
-4. Přijměte další výchozí hodnoty a pak vyberte **Další: Disky**.  
-5. Přijměte výchozí nastavení karty **Disky** a pak vyberte **Další: Síť**.
-6. Na kartě **Síť** ověřte, zda je pro **virtuální síť** vybraná **síť myVNet** a **podsíť** nastavena na **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a pak vyberte **Další: Správa**.
+    - **Heslo**: Zadejte heslo pro účet správce.
+1. Přijměte další výchozí hodnoty a pak vyberte **Další: Disky**.  
+2. Přijměte výchozí nastavení karty **Disky** a pak vyberte **Další: Síť**.
+3. Na kartě **Síť** ověřte, zda je pro **virtuální síť** vybraná **síť myVNet** a **podsíť** nastavena na **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a pak vyberte **Další: Správa**.
 
    Aplikační brána může komunikovat s instancemi mimo virtuální síť, ve které se nachází, ale musíte zajistit připojení IP.
 1. Na kartě **Správa** nastavte **diagnostiku spouštění** na **Vypnuto**. Přijměte ostatní výchozí hodnoty a pak vyberte **Zkontrolovat + vytvořit**.

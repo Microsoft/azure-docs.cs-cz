@@ -1,29 +1,25 @@
 ---
 title: Instalace MongoDB na virtuální počítač s Windows v Azure
 description: Zjistěte, jak nainstalovat MongoDB na virtuální počítač Azure se systémem Windows Server 2012 R2 vytvořeným pomocí modelu nasazení Správce prostředků.
-services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 37c1b58d364e7eadb33803ce7eac1f2b956ec1b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ba7d7fce3f3eabd223956ca8d9cc824fbd0c5f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038556"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869456"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Instalace a konfigurace MongoDB na virtuálním počítači s Windows v Azure
 [MongoDB](https://www.mongodb.org) je populární open-source, vysoce výkonná NoSQL databáze. Tento článek vás provede instalací a konfigurací MongoDB na virtuálním počítači (VM) Windows Serveru 2016 v Azure. [MongoDB](../linux/install-mongodb.md)můžete taky nainstalovat na virtuální počítač s Linuxem v Azure .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 Před instalací a konfigurací MongoDB je potřeba vytvořit virtuální počítač a v ideálním případě do něj přidat datový disk. V následujících článcích můžete vytvořit virtuální počítače a přidat datový disk:
 
 * Vytvořte virtuální počítač s Windows Server pomocí [portálu Azure nebo](quick-create-portal.md) [Azure PowerShellu](quick-create-powershell.md).

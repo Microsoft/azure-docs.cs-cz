@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: 26bfbcb4762d889b2c56276e66e4bf8e0acb64b2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 5495aa6fda189897985ed2f198f6e92c996f6fef
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677709"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868384"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodě platformy identit Microsoftu
 
@@ -97,7 +97,7 @@ Další informace o tom, jak získat a používat tokeny aktualizace, naleznete 
 
 V žádosti o autorizaci [OpenID Connect nebo OAuth 2.0](active-directory-v2-protocols.md) může `scope` aplikace požádat o potřebná oprávnění pomocí parametru dotazu. Pokud se například uživatel přihlásí k aplikaci, odešle žádost jako v následujícím příkladu (s přidanými zalomení řádků pro čitelnost):
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
@@ -179,15 +179,15 @@ Když uživatele přihlásíte do aplikace, můžete určit organizaci, do kter�
 
 Až budete připraveni požádat o oprávnění správce vaší organizace, můžete uživatele přesměrovat na *koncový bod souhlasu správce*platformy identit Microsoftu .
 
-```
+```HTTP
 // Line breaks are for legibility only.
-  GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-  &scope=
-  https://graph.microsoft.com/calendars.read
-  https://graph.microsoft.com/mail.send
+GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://graph.microsoft.com/calendars.read
+https://graph.microsoft.com/mail.send
 ```
 
 
@@ -206,7 +206,7 @@ V tomto okamžiku Azure AD vyžaduje správce klienta k přihlášení k dokonč
 
 Pokud správce schválí oprávnění pro vaši aplikaci, úspěšná odpověď vypadá takto:
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
@@ -220,7 +220,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 Pokud správce neschválí oprávnění pro vaši aplikaci, neúspěšná odpověď vypadá takto:
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
@@ -235,7 +235,7 @@ Po úspěšné odpovědi od koncového bodu souhlasu správce získala vaše apl
 
 Poté, co uživatel odsouhlasí oprávnění pro vaši aplikaci, může vaše aplikace získat přístupové tokeny, které představují oprávnění vaší aplikace k přístupu k prostředku v určité kapacitě. Přístupový token lze použít pouze pro jeden prostředek, ale kódované uvnitř přístupového tokenu je každé oprávnění, které vaše aplikace byla udělena pro tento prostředek. Chcete-li získat přístupový token, vaše aplikace může požádat o koncový bod tokenu platformy identit microsoftu, například takto:
 
-```
+```HTTP
 POST common/oauth2/v2.0/token HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/json
@@ -287,7 +287,7 @@ V tomto příkladu uživatel již `mail.read` souhlasil pro klienta. Klient se z
 
 Zvláštní případ oboru `/.default` existuje, pokud klient požaduje `/.default` vlastní obor. Následující příklad ukazuje tento scénář.
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

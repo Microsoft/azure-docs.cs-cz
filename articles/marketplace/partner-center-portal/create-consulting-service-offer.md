@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: f1354ce824bc4e57ab55846c714d4a0a73a46966
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: eff37750f0580a28c9644ee1ffb7fe4e95038709
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873816"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869796"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultační ch služeb
 
@@ -115,7 +115,7 @@ Zde&#39;ll definovat podrobnosti nabídky, které jsou zobrazeny na trhu. To zah
 > [!NOTE]
 > Podrobnosti nabídky nejsou&#39;nemusí být v angličtině, pokud &quot;popis nabídky začíná frází, Tato aplikace je k dispozici pouze v [neanglickém jazyce]. &quot; Je&#39;také v pořádku poskytnout užitečný odkaz na nabídku obsahu v jazyce, který&#39;se liší od toho, který je použit v podrobnostech nabídky.
 
-### <a name="name"></a>Name (Název)
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předvyplněno textem, který jste zadali do pole **Alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -173,6 +173,9 @@ Přidejte až tři (ale alespoň jeden) podpůrné dokumenty PDF pro vaši nabí
 ### <a name="marketplace-images"></a>Obrázky na marketplace
 
 Poskytněte loga a obrázky, které chcete použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazané obrázky budou odmítnuty.
+
+>[!Note]
+>Pokud máte problém s nahráváním souborů, ujistěte se, že místní síť neblokuje službu https://upload.xboxlive.com používanou partnerským centrem.
 
 #### <a name="store-logos"></a>Loga obchodu
 

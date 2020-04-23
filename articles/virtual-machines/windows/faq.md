@@ -1,25 +1,18 @@
 ---
 title: Nejčastější dotazy k virtuálním počítačům s Windows v Azure
 description: Obsahuje odpovědi na některé běžné otázky týkající se virtuálních počítačů windows vytvořených pomocí modelu Správce prostředků.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-management
-ms.assetid: 757da816-a050-4889-a010-6f75d7978eb7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: e3d2673ba52ba0cca36e2a999558313b64716ade
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33d530181f4cc389f81ea83dc42b774ccfc8fd85
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299610"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869622"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Nejčastější dotazy týkající se virtuálních počítačů s Windows
 Tento článek řeší některé běžné otázky týkající se virtuálních počítačů Windows vytvořených v Azure pomocí modelu nasazení Správce prostředků. Linuxovou verzi tohoto tématu najdete [v tématu Často kladené otázky týkající se virtuálních počítačů s Linuxem](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

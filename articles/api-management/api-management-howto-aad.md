@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6102b1e1d6ddbac01033b9cecfeba96a7eb33777
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473536"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868397"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory ve službě Azure API Management
 
 Tento článek ukazuje, jak povolit přístup k portálu pro vývojáře pro uživatele z Azure Active Directory (Azure AD). Tato příručka také ukazuje, jak spravovat skupiny uživatelů Azure AD přidáním externích skupin, které obsahují uživatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Dokončete následující rychlý start: [Vytvořte instanci Azure API Management](get-started-create-service-instance.md).
 - Importujte a publikujte instanci Azure API Management. Další informace naleznete v [tématu Import a publikování](import-and-publish.md).
@@ -33,12 +33,12 @@ Tento článek ukazuje, jak povolit přístup k portálu pro vývojáře pro už
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autorizace vývojářských účtů pomocí Azure AD
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. Vyberte ![šipka](./media/api-management-howto-aad/arrow.png).
 3. Do vyhledávacího pole zadejte **rozhraní API.**
 4. Vyberte **služby správy rozhraní API**.
 5. Vyberte instanci služby API Management.
-6. V části **Zabezpečení**vyberte **položku Identity**.
+6. V části **Portál pro vývojáře**vyberte **Identity**.
 7. Vyberte **+Přidat** shora.
 
     Vpravo se zobrazí podokno **Přidat zprostředkovatele identity.**

@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: ab3ab25df6ce41d4045a270754830d501fe40689
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8eb59eebd29c2cc94e20b71b467866686deec2f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80347175"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869724"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Přihlášení a spouštění aplikací z portálu Moje aplikace
 
@@ -110,7 +110,7 @@ Pokud máte oprávnění k přístupu a používání cloudových aplikací vaš
 
 Zobrazte a používejte aplikace vaší organizace ze spravovaného prohlížeče Intune na zařízeních se systémem iOS a Android.
 
-1. Na mobilním zařízení si stáhněte a nainstalujte aplikaci Intune Managed Browser z [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) a Google Play [Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
+1. Na mobilním zařízení si stáhněte a nainstalujte aplikaci Intune Managed Browser z Apple App Store a Google Play Store.
 
 2. Otevřete aplikaci Spravovaný https://myapps.microsoft.comprohlížeč Intune, přejděte na stránku nebo použijte odkaz poskytnutý https://myapps.microsoft.com/contoso.comvaší organizací, pokud vás přesměrují na přizpůsobenou stránku, například .
 

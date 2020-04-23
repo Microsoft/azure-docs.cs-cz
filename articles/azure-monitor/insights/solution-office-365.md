@@ -6,17 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437045"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023601"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
 ![Logo Office 365](media/solution-office-365/icon.png)
-
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Aktualizace řešení
@@ -36,7 +35,7 @@ ms.locfileid: "80437045"
 >
 > ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>Otázka: Je možné navšednout na palubu řešení Office 365 Azure Monitor od teď do 30.dubna?
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>Otázka: Je možné navštovit řešení Office 365 Azure Monitor od teď do 30.července?
 > Ne, skripty registrace řešení Azure Monitor Office 365 už nejsou dostupné. Řešení bude odstraněno 30.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>Otázka: Změní se tabulky a schémata?
@@ -103,11 +102,11 @@ ms.locfileid: "80437045"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Otázka: Poskytuje Azure Sentinel další konektory jako součást řešení?
 > Ano, viz [Azure Sentinel připojit zdroje dat](../../sentinel/connect-data-sources.md).
 > 
-> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>Otázka: Co se stane 30. Musím se předem vylodit?
+> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>Otázka: Co se stane 30. Musím se předem vylodit?
 > 
 > - Nebudete moct přijímat data z řešení **Office365.** Řešení již nebude k dispozici na webu Marketplace.
 > - Pro zákazníky Azure Sentinelu bude řešení pracovního prostoru Log Analytics **Office365** zahrnuto do řešení Azure Sentinel **SecurityInsights.**
-> - Pokud řešení nevypnete ručně, data budou 30.
+> - Pokud řešení nevypnete ručně, budou vaše data 30.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Otázka: Budou se moje data přenášet do nového řešení?
 > Ano. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma je odebráno. Když povolíte nový konektor **Office 365** v Sentinelu, schéma se obnoví do pracovního prostoru a všechna data, která již byla shromážděna, budou k dispozici. 

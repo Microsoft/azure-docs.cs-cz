@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f37b070c74abd8511fc597f9b159312d91281083
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759109"
+ms.locfileid: "82024689"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení k Azure IoT Central
 
@@ -50,7 +50,7 @@ Tento přístup je užitečný, když experimentujete s IoT Central nebo testuje
 
 ![Tlačítka SAS pro jednotlivá zařízení](./media/concepts-get-connected/single-device-sas.png)
 
-Další informace najdete v tématu [vytvoření a připojení klientské aplikace Node.js k kurzu aplikace Azure IoT Central.](./tutorial-connect-device.md)
+Další informace najdete v tématu [vytvoření a připojení klientské aplikace Node.js k kurzu aplikace Azure IoT Central.](./tutorial-connect-device-nodejs.md)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Připojení zařízení ve velkém měřítku pomocí SAS
 

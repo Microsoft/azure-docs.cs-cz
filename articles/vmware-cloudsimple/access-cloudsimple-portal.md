@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244729"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869330"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Přístup k řešení VMware pomocí portálu CloudSimple z portálu Azure
 
 Jednotné přihlašování je podporováno pro přístup k portálu CloudSimple. Po přihlášení k portálu Azure, můžete přistupovat k portálu CloudSimple bez přihlášení znovu. Při prvním přístupu na portál CloudSimple budete vyzváni k autorizaci aplikace [CloudSimple Service Authorization.](#consent-to-cloudsimple-service-authorization-application)  Autorizace je jednorázová akce.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Uživatelé s integrovanými rolemi **vlastníka** a **přispěvatele** mají přístup k portálu CloudSimple.  Role musí být nakonfigurovány ve skupině prostředků, kde se nasadí služba CloudSimple.  Role lze také nakonfigurovat na objektu služby CloudSimple.  Další informace o kontrole role najdete v [článku Zobrazení přiřazení rolí.](https://docs.microsoft.com/azure/role-based-access-control/check-access) K portálu CloudSimple mají přístup pouze uživatelé s předdefinovanými rolemi **vlastníka** a **přispěvatele.**  Role musí být nakonfigurovány v rámci předplatného.  Další informace o kontrole role najdete v [článku Zobrazení přiřazení rolí.](https://docs.microsoft.com/azure/role-based-access-control/check-access)
 
@@ -34,7 +34,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="access-the-cloudsimple-portal"></a>Přístup k portálu CloudSimple
 
@@ -71,5 +71,5 @@ Pokud vaše oprávnění neumožňují přístup k portálu CloudSimple, obraťt
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si, jak [vytvořit privátní cloud.](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* Přečtěte si, jak [vytvořit privátní cloud.](https://docs.microsoft.com/azure/vmware-cloudsimple/create-private-cloud/)
 * Přečtěte [si, jak nakonfigurovat prostředí privátního cloudu](quickstart-create-private-cloud.md)

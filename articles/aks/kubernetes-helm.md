@@ -1,25 +1,25 @@
 ---
-title: Nasazení kontejnerů s helmou v Kubernetes v Azure
+title: Instalace stávajících aplikací s helmem v AKS
 description: Zjistěte, jak pomocí balicího nástroje Helm nasadit kontejnery v clusteru Služby Azure Kubernetes (AKS)
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4a9ccaff0e3425c365a64ecb4fbadf3c7aa8dcfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e46bed5fc9fd83a907f8c9e716317a54548c58cc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595174"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870258"
 ---
-# <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalace aplikací pomocí helmu ve službě Azure Kubernetes Service (AKS)
+# <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalace stávajících aplikací pomocí helmu ve službě Azure Kubernetes Service (AKS)
 
 [Helm][helm] je open source obalový nástroj, který vám pomůže nainstalovat a spravovat životní cyklus aplikací Kubernetes. Podobně jako u linuxových správců balíčků, jako jsou *APT* a *Yum*, se Helm používá ke správě Kubernetesových grafů, což jsou balíčky předkonfigurovaných kubernetesových zdrojů.
 
 Tento článek ukazuje, jak nakonfigurovat a používat Helm v clusteru Kubernetes na AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, podívejte se na aks rychlý start [pomocí Azure CLI][aks-quickstart-cli] nebo [pomocí portálu Azure][aks-quickstart-portal].
 

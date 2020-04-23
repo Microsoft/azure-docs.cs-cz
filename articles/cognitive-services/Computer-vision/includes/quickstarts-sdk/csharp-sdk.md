@@ -9,18 +9,18 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ce311d2deaf0eec76ef0dec3ea279a387d14fd22
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 522adc0f07f4ab21e391b952284dff97b089dccc
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81637124"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791672"
 ---
 <a name="HOLTop"></a>
 
 [Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet) | [Ukázky zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [knihovny](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
 * Aktuální verze rozhraní [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
@@ -40,7 +40,7 @@ Po získání klíče z zkušebního předplatného nebo prostředku [vytvořte 
 
 Vytvořte novou aplikaci .NET Core ve vašem upřednostňovaném editoru nebo ide. 
 
-V okně konzoly (například cmd, PowerShell `dotnet new` nebo Bash) vytvořte pomocí `computer-vision-quickstart`příkazu novou konzolovou aplikaci s názvem . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *Program.cs*.
+V okně konzoly (například cmd, PowerShell `dotnet new` nebo Bash) vytvořte pomocí `computer-vision-quickstart`příkazu novou konzolovou aplikaci s názvem . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *ComputerVisionQuickstart.cs*.
 
 ```console
 dotnet new console -n computer-vision-quickstart
@@ -62,13 +62,13 @@ Build succeeded.
 ...
 ```
 
-V adresáři projektu otevřete *soubor Program.cs* v upřednostňovaném editoru nebo rozhraní IDE. Přidejte `using` následující direktivy:
+V adresáři projektu otevřete *soubor ComputerVisionQuickstart.cs* v upřednostňovaném editoru nebo rozhraní IDE. Přidejte `using` následující direktivy:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_using)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_using)]
 
 Ve třídě **Program** aplikace vytvořte proměnné pro koncový bod a klíč Azure vašeho prostředku.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_vars)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_vars)]
 
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
@@ -105,11 +105,11 @@ Tyto fragmenty kódu ukazují, jak provést následující úkoly s klientskou k
 
 V nové metodě vytvořte instanci klienta pomocí koncového bodu a klíče. Vytvořte objekt **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials?view=azure-dotnet)** s klíčem a použijte ho s koncovým bodem k vytvoření objektu **[ComputerVisionClient.](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)**
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_auth)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 
 Pravděpodobně budete chtít volat tuto metodu v metodě. `Main`
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_client)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_client)]
 
 ## <a name="analyze-an-image"></a>Analýza obrázku
 
@@ -117,22 +117,22 @@ Následující kód definuje metodu `AnalyzeImageUrl`, která používá objekt 
 
 Přidejte volání metody `Main` do metody.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_analyzeinmain)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyzeinmain)]
 
 ### <a name="set-up-test-image"></a>Nastavit testovací bitovou kopii
 
 Ve třídě **Program** uložte odkaz na adresu URL obrázku, který chcete analyzovat.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_analyze_url)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyze_url)]
 
 > [!NOTE]
-> Můžete také analyzovat místní obrázek. Podívejte se na ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ComputerVision/Program.cs) pro scénáře zahrnující místní image.
+> Můžete také analyzovat místní obrázek. Podívejte se na ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) pro scénáře zahrnující místní image.
 
 ### <a name="specify-visual-features"></a>Určení vizuálních prvků
 
 Definujte novou metodu pro analýzu obrazu. Přidejte níže uvedený kód, který určuje vizuální funkce, které chcete extrahovat v analýze. Úplný seznam naleznete v výčtu **[VisualFeatureTypes.](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)**
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_visualfeatures)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_visualfeatures)]
 
 Vložte některý z následujících bloků kódu do metody **AnalyzeImageUrl** k implementaci jejich funkcí. Nezapomeňte přidat uzavírací závorku na konci.
 
@@ -144,7 +144,7 @@ Vložte některý z následujících bloků kódu do metody **AnalyzeImageUrl** 
 
 Metoda **AnalyzeImageAsync** vrátí objekt **ImageAnalysis,** který obsahuje všechny extrahované informace.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_analyze_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyze_call)]
 
 Následující části ukazují, jak podrobně analyzovat tyto informace.
 
@@ -152,49 +152,49 @@ Následující části ukazují, jak podrobně analyzovat tyto informace.
 
 Následující kód získá seznam generovaných titulků pro obrázek. Další podrobnosti [najdete v tématu Popis obrázků.](../../concept-describing-images.md)
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_describe)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_describe)]
 
 ### <a name="get-image-category"></a>Získat kategorii obrázků
 
 Následující kód získá zjištěnou kategorii obrázku. Další [podrobnosti najdete v tématu Kategorizace obrázků.](../../concept-categorizing-images.md)
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_categorize)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_categorize)]
 
 ### <a name="get-image-tags"></a>Získat značky obrázků
 
 Následující kód získá sadu zjištěných značek v obraze. Další podrobnosti najdete v [tématu Značky obsahu.](../../concept-tagging-images.md)
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_tags)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_tags)]
 
 ### <a name="detect-objects"></a>Detekce objektů
 
 Následující kód detekuje běžné objekty v obraze a vytiskne je do konzoly. Další [podrobnosti najdete v tématu Detekce objektů.](../../concept-object-detection.md)
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_objects)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_objects)]
 
 ### <a name="detect-brands"></a>Detekce značek
 
 Následující kód detekuje podnikové značky a loga v obrázku a vytiskne je do konzoly. Další [podrobnosti najdete v tématu Detekce značek.](../../concept-brand-detection.md)
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_brands)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_brands)]
 
 ### <a name="detect-faces"></a>Rozpoznávání tváří
 
 Následující kód vrátí zjištěné plochy v obraze s jejich obdélníkovými souřadnicemi a vybranými atributy plochy. Další [podrobnosti najdete v tématu Detekce obličejů.](../../concept-detecting-faces.md)
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_faces)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_faces)]
 
 ### <a name="detect-adult-racy-or-gory-content"></a>Detekujte obsah pro dospělé, pikantní nebo krvavý
 
 Následující kód vytiskne zjištěnou přítomnost obsahu pouze pro dospělé v obrázku. Další podrobnosti najdete [v tématu Dospělý, pikantní, krvavý obsah.](../../concept-detecting-adult-content.md)
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_adult)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_adult)]
 
 ### <a name="get-image-color-scheme"></a>Získat barevné schéma obrázku
 
 Následující kód vytiskne zjištěné barevné atributy v obraze, například dominantní barvy a barvy zvýraznění. Další podrobnosti najdete [v části Barevná schémata.](../../concept-detecting-color-schemes.md)
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_color)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_color)]
 
 ### <a name="get-domain-specific-content"></a>Získání obsahu specifického pro doménu
 
@@ -202,17 +202,17 @@ Počítačové vidění může používat specializované modely k další anal�
 
 Následující kód analyzuje data o zjištěných celebrit v obraze.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_celebs)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_celebs)]
 
 Následující kód analyzuje data o zjištěných orientačních bodů v obraze.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_landmarks)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_landmarks)]
 
 ### <a name="get-the-image-type"></a>Získání typu obrázku
 
 Následující kód vytiskne informace&mdash;o typu obrázku, ať už se jedná o klipart nebo kresbu čar.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_type)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_type)]
 
 ## <a name="read-printed-and-handwritten-text"></a>Čtení tištěného a ručně psaného textu
 
@@ -220,34 +220,34 @@ Počítačové vidění může číst viditelný text v obraze a převést jej n
 
 Přidejte volání metody `Main` do metody.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extracttextinmain)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttextinmain)]
 
 ### <a name="set-up-test-image"></a>Nastavit testovací bitovou kopii
 
 Ve třídě **Program** uložte odkaz na adresu URL obrázku, ze kterého chcete extrahovat text.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extracttext_url)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttext_url)]
 
 > [!NOTE]
-> Můžete také extrahovat text z místního obrazu. Podívejte se na ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ComputerVision/Program.cs) pro scénáře zahrnující místní image.
+> Můžete také extrahovat text z místního obrazu. Podívejte se na ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) pro scénáře zahrnující místní image.
 
 ### <a name="call-the-read-api"></a>Volání rozhraní READ API
 
 Definujte novou metodu čtení textu. Přidejte níže uvedený kód, který volá metodu **BatchReadFileAsync** pro daný obrázek. To vrátí ID operace a spustí asynchronní proces číst obsah obrazu.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extract_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_call)]
 
 ### <a name="get-read-results"></a>Získat výsledky čtení
 
 Dále získat ID operace vrácené z **BatchReadFileAsync** volání a použít jej k dotazování služby pro výsledky operace. Následující kód kontroluje operaci v intervalech jedné sekundy, dokud nejsou vráceny výsledky. Potom vytiskne extrahovaná textová data do konzoly.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extract_response)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_response)]
 
 ### <a name="display-read-results"></a>Zobrazit výsledky čtení
 
 Přidejte následující kód, chcete-li analyzovat a zobrazit načtená textová data a dokončit definici metody.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extract_display)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_display)]
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
@@ -270,4 +270,4 @@ Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, může
 >[Reference rozhraní API pro počítačové zpracování obrazu (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
 
 * [Co je počítačové zpracování obrazu?](../../Home.md)
-* Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ComputerVision/Program.cs).
+* Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs).

@@ -1,26 +1,21 @@
 ---
 title: Migrace z AWS a dalších platforem na spravované disky v Azure
 description: Vytvářejte virtuální počítače v Azure pomocí virtuálních pevných disků nahraných z jiných cloudů, jako je AWS nebo jiné virtualizační platformy, a využijte spravované disky Azure.
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc283d1845926b79fb541d8ccb011fe853f50484
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243156"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870282"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrace z Amazon Web Services (AWS) a dalších platforem na spravované disky v Azure
 

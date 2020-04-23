@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a81f3ffb7ec190943c50127b129523badf0ef0a7
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882977"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868995"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon aplikace, která volá webová API - získat token
 
@@ -173,7 +173,7 @@ Pokud ještě nemáte knihovnu pro zvolený jazyk, můžete protokol použít p�
 
 #### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>První případ: Přístup k žádosti o token pomocí sdíleného tajného klíče
 
-```Text
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
@@ -186,7 +186,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 
 #### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>Druhý případ: Přístup k žádosti o token pomocí certifikátu
 
-```Text
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
@@ -215,7 +215,7 @@ Pokud se zobrazí chybová zpráva, že jste použili neplatný `resource/.defau
 Pokud získáte **nedostatečná oprávnění k dokončení chyby operace** při volání rozhraní API, musí správce klienta udělit oprávnění k aplikaci. Viz krok 6 Registrace klientské aplikace výše.
 Obvykle se zobrazí chyba, která vypadá jako tato chyba:
 
-```JSon
+```json
 Failed to call the web API: Forbidden
 Content: {
   "error": {

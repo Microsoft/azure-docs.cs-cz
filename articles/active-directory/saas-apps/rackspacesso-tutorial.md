@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 31826f5d4d88c977f859a009bface2fddf3a1c88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093186"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Kurz: Integrace služby Azure Active Directory s přiřazovat služby Při vadí mši Rackspace
 
@@ -34,7 +34,7 @@ Integrace přistřešení služby Přistaň Rackspace s Azure AD vám poskytuje 
 Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li nakonfigurovat integraci Azure AD pomocí služby SSO Rackspace, potřebujete následující položky:
 
@@ -187,7 +187,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 ### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>Nastavení mapování atributů v ovládacím panelu Rackspace
 
-Rackspace používá **zásady mapování atributů** k přiřazení rolí rackspace a skupin uživatelům s jedním přihlášením. **Zásady mapování atributů** převádí deklarace identity Azure AD SAML do polí konfigurace uživatele, která Rackspace vyžaduje. Další dokumentaci naleznete v [dokumentaci Základy mapování atributů](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)Rackspace . Některé úvahy:
+Rackspace používá **zásady mapování atributů** k přiřazení rolí rackspace a skupin uživatelům s jedním přihlášením. **Zásady mapování atributů** převádí deklarace identity Azure AD SAML do polí konfigurace uživatele, která Rackspace vyžaduje. Další dokumentaci naleznete v [dokumentaci Základy mapování atributů](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)Rackspace . Některé úvahy:
 
 * Pokud chcete přiřadit různé úrovně přístupu Rackspace pomocí skupin Azure AD, budete muset povolit deklaraci skupiny v nastavení jednotného přihlašování Azure **Rackspace Jednotné** přihlašování. **Zásady mapování atributů** se pak použijí k přizpůsobení těchto skupin požadovaným rolím a skupinám Rackspace:
 
@@ -226,7 +226,7 @@ mapping:
 > [!TIP]
 > Ujistěte se, že používáte textový editor, který ověřuje syntaxi YAML při úpravách souboru zásad.
 
-Další příklady naleznete v dokumentaci k [mapování atributů](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/) Rackspace Basics.
+Další příklady naleznete v dokumentaci k [mapování atributů](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/) Rackspace Basics.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

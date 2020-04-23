@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: d9e1bff3d25a978b5159d8e6ab8ab2453df77ca3
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 8e1e718fa4e6660d72203ac98bb6d427cdba2059
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81640520"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024553"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Plánování kanálů strojového učení pomocí Azure Machine Learning SDK pro Python
 
 V tomto článku se dozvíte, jak programově naplánovat kanál pro spuštění v Azure. Můžete vytvořit plán na základě uplynulého času nebo změn systému souborů. Časové plány lze použít k péči o rutinní úkoly, jako je například monitorování posunu dat. Plány založené na změnách lze použít k reakci na nepravidelné nebo nepředvídatelné změny, jako jsou například nová data, která se nahrávají, nebo úpravy starých dat. Poté, co se naučíte vytvářet plány, dozvíte se, jak je načíst a deaktivovat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -91,7 +91,7 @@ Pokud byl kanál vytvořen s [parametrem DataPath](https://docs.microsoft.com/py
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
 
-reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="Based on time",
+reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="Based on input file change.",
                             pipeline_id=pipeline_id, experiment_name=experiment_name, datastore=datastore, data_path_parameter_name="input_data")
 ```
 

@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
-ms.date: 03/02/2020
-ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/21/2020
+ms.openlocfilehash: dd0b4d1b0998bd4b13a17fb8345b87924bc27e1d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251958"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869971"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Kurz: Analýza dat Apache Spark pomocí Power BI v HDInsightu
 
-V tomto kurzu se dozvíte, jak pomocí [Microsoft Power BI](https://powerbi.microsoft.com/) vizualizovat data v clusteru Apache Spark v Azure [HDInsight](https://azure.microsoft.com/services/hdinsight/).
+V tomto kurzu se dozvíte, jak pomocí Microsoft Power BI vizualizovat data v clusteru Apache Spark v Azure HDInsight.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Dokončete článek [Kurz: Načítání dat a spouštění dotazů v clusteru Apache Spark ve službě Azure HDInsight](./apache-spark-load-data-run-query.md).
 
@@ -70,9 +70,6 @@ V této části pomocí Power BI vytvoříte vizualizace, sestavy a řídicí pa
 ### <a name="create-a-report-in-power-bi-desktop"></a>Vytvoření sestavy v Power BI Desktopu
 
 Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desktopu, načtení dat z clusteru a vytvoření základní vizualizace na základě těchto dat.
-
-> [!NOTE]  
-> Konektor ukázaný v tomto článku je aktuálně ve verzi Preview. Případnou zpětnou vazbu můžete poskytnout přes web [komunity Power BI](https://community.powerbi.com/) nebo na fóru [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas) (Nápady ohledně Power BI).
 
 1. Otevřete Power BI Desktop. Pokud se otevře úvodní obrazovka při spuštění, zavřete ji.
 
@@ -180,7 +177,7 @@ Pokud chcete odstranit cluster, přečtěte si informace [o odstranění cluster
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, jak pomocí [Microsoft Power BI](https://powerbi.microsoft.com/) vizualizovat data v clusteru Apache Spark v Azure [HDInsight](https://azure.microsoft.com/services/hdinsight/). Přejdete k dalšímu článku a uvidíte, že můžete vytvořit aplikaci strojového učení.
+V tomto kurzu jste se naučili, jak pomocí Microsoft Power BI vizualizovat data v clusteru Apache Spark v Azure HDInsight. Přejdete k dalšímu článku a uvidíte, že můžete vytvořit aplikaci strojového učení.
 
 > [!div class="nextstepaction"]
 > [Vytvoření aplikace strojového učení](./apache-spark-ipython-notebook-machine-learning.md)

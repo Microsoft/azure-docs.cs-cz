@@ -1,18 +1,18 @@
 ---
 title: Odstranění trezoru služby Microsoft Azure Recovery Services
-description: V tomto článku se dozvíte, jak odebrat závislosti a potom odstranit trezor Mars (Microsoft Azure Backup Recovery Services).
+description: V tomto článku se dozvíte, jak odebrat závislosti a potom odstranit trezor služby Azure Backup Recovery Services.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: f33f52048729b50015ba86db71118b9a21e1a2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69fed6c53914ed7aa16b04b5311ec69966734f25
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500403"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025131"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru služby Obnovení zálohování Azure
 
-Tento článek popisuje, jak odstranit trezor služby Mars (Microsoft [Azure Backup](backup-overview.md) Recovery Services). Obsahuje pokyny pro odebrání závislostí a následné odstranění trezoru.
+Tento článek popisuje, jak odstranit trezor služby [Azure Backup](backup-overview.md) Recovery Services. Obsahuje pokyny pro odebrání závislostí a následné odstranění trezoru.
 
 ## <a name="before-you-start"></a>Než začnete
 

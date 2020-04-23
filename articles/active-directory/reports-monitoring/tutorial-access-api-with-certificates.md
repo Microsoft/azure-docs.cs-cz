@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d723af5d994006c4ae4f90905ede73fa87326bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2808c8431a6b98b162920fb58a6e2ac0498d2055
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74014271"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081706"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Kurz: Získání dat pomocí rozhraní API pro vytváření sestav služby Azure Active Directory s certifikáty
 
@@ -29,7 +29,7 @@ ms.locfileid: "74014271"
 
 V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu pro přístup k rozhraní MS Graph API pro vytváření sestav. Nedoporučujeme používat testovací certifikáty v produkčním prostředí. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 1. Chcete-li získat přístup k přihlašovacím datům, ujistěte se, že máte klienta Služby Azure Active Directory s prémiovou licencí (P1/P2). Podívejte [se na téma Začínáme s Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) a upgradujte edici Azure Active Directory. Všimněte si, že pokud jste před upgradem neměli žádné údaje o aktivitách, bude trvat několik dní, než se data zobrazí v sestavách po upgradu na prémiovou licenci. 
 
@@ -44,9 +44,9 @@ V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu pro přístup k
     - Přístupové tokeny od uživatele, klíče aplikace a certifikáty pomocí ADAL
     - Rozhraní Graph API zpracovávající stránkové výsledky
 
-6. Pokud modul používáte poprvé, **spusťte modul Install-MSCloudIdUtilsModule**, importujte jej jinak pomocí příkazu **Import-Module** Powershell. Vaše relace by měla vypadat ![podobně jako tato obrazovka: Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Pokud modul používáte poprvé, **spusťte modul Install-MSCloudIdUtilsModule**, importujte jej jinak pomocí příkazu **Import-Module** PowerShell. Vaše relace by měla vypadat ![podobně jako tato obrazovka: Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-7. K vytvoření testovacího certifikátu použijte příkaz **New-SelfSignedCertificate** Powershell.
+7. K vytvoření testovacího certifikátu použijte příkaz **New-SelfSignedCertificate** PowerShell.
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
@@ -63,13 +63,13 @@ V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu pro přístup k
 
 1. Přejděte na [portál Azure](https://portal.azure.com), vyberte Azure **Active Directory**, vyberte registrace **aplikací** a vyberte aplikaci ze seznamu. 
 
-2. Vyberte **Nastavení** > **kláves** a vyberte **Nahrát veřejný klíč**.
+2. Vyberte **Certifikáty & tajných kódů** v části **Spravovat** v okně Registrace aplikace a vyberte **Nahrát certifikát**.
 
-3. Vyberte soubor certifikátu z předchozího kroku a vyberte **Uložit**. 
+3. Vyberte soubor certifikátu z předchozího kroku a vyberte **Přidat**. 
 
-4. Poznamenejte si ID aplikace a kryptografický otisk certifikátu, který jste právě zaregistrovali u aplikace. Pokud chcete najít kryptografický otisk, přejděte na stránce aplikace na portálu na **Nastavení** a klikněte na **Klávesy**. Kryptografický otisk bude v seznamu **Veřejné klíče.**
+4. Poznamenejte si ID aplikace a kryptografický otisk certifikátu, který jste právě zaregistrovali u aplikace. Pokud chcete najít kryptografický otisk, přejděte na stránce aplikace na portálu na **tajný &ch kódů certifikátů** v části **Správa.** Kryptografický otisk bude v seznamu **certifikátů.**
 
-5. Otevřete manifest aplikace v editoru vkládání manifestu a nahraďte vlastnost *keyCredentials* novými informacemi o certifikátu pomocí následujícího schématu. 
+5. Otevřete manifest aplikace v editoru vřádkových manifestů a ověřte, zda je vlastnost *keyCredentials* aktualizována novými informacemi o certifikátu, jak je znázorněno níže - 
 
    ```
    "keyCredentials": [
@@ -81,23 +81,20 @@ V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu pro přístup k
             "value":  "$base64Value" //base64 encoding of the certificate raw data
         }
     ]
-   ```
-
-6. Uložte seznam. 
-  
-7. Nyní můžete získat přístupový token pro rozhraní MS Graph API pomocí tohoto certifikátu. Použijte rutinu **Get-MSCloudIdMSGraphAccessTokenFromCert** z modulu PowerShell MSCloudIdUtils, která předá ID aplikace a kryptografický otisk, který jste získali z předchozího kroku. 
+   ``` 
+6. Nyní můžete získat přístupový token pro rozhraní MS Graph API pomocí tohoto certifikátu. Použijte rutinu **Get-MSCloudIdMSGraphAccessTokenFromCert** z modulu PowerShell MSCloudIdUtils, která předá ID aplikace a kryptografický otisk, který jste získali z předchozího kroku. 
 
    ![portál Azure](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-8. Pomocí přístupového tokenu ve skriptu Powershellu můžete zadat dotaz na rozhraní GRAPH API. Pomocí rutiny **Invoke-MSCloudIdMSGraphQuery** z MSCloudIDUtils můžete vytvořit výčet koncový bod signins a directoryAudits. Tato rutina zpracovává vícestránkové výsledky a odešle tyto výsledky do kanálu Prostředí PowerShell.
+7. Pomocí přístupového tokenu ve skriptu PowerShellu můžete zadat dotaz na rozhraní GRAPH API. Pomocí rutiny **Invoke-MSCloudIdMSGraphQuery** z MSCloudIDUtils můžete vytvořit výčet koncový bod signins a directoryAudits. Tato rutina zpracovává vícestránkové výsledky a odešle tyto výsledky do kanálu Prostředí PowerShell.
 
-9. Dotaz na koncový bod directoryAudits načíst protokoly auditu. 
+8. Dotaz na koncový bod directoryAudits načíst protokoly auditu. 
    ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
-10. Dotaz koncového bodu přihlášení k načtení přihlášení protokoly.
+9. Dotaz koncového bodu přihlášení k načtení přihlášení protokoly.
     ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
-11. Nyní můžete zvolit export těchto dat do csv a uložit do systému SIEM. Můžete také zabalit váš skript do naplánované úlohy, abyste získávali data Azure AD z vašeho klienta pravidelně bez nutnosti ukládat klíče aplikace ve zdrojovém kódu. 
+10. Nyní můžete zvolit export těchto dat do csv a uložit do systému SIEM. Můžete také zabalit váš skript do naplánované úlohy, abyste získávali data Azure AD z vašeho klienta pravidelně bez nutnosti ukládat klíče aplikace ve zdrojovém kódu. 
 
 ## <a name="next-steps"></a>Další kroky
 

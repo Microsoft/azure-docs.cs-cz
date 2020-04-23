@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 539665c4756a7dc87078922421b45a88404f58f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77082967"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868143"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Přístup k prostředí cloudu CloudSimple privátního cloudu a aplikacím z místního prostředí
 
@@ -35,7 +35,7 @@ Chcete-li získat přístup k priviontnímu cloudu vCenter a správci NSX-T, mus
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>Porty potřebné pro použití místního aktivního adresáře jako zdroje identity
 
-Chcete-li nakonfigurovat místní active adresář jako zdroj identity v programu Private Cloud vCenter, musí být otevřeny porty definované v tabulce.  Viz [Použití Azure AD jako zprostředkovatele identity pro vCenter na CloudSimple Privátní cloud](https://docs.azure.cloudsimple.com/azure-ad/) pro kroky konfigurace.
+Chcete-li nakonfigurovat místní active adresář jako zdroj identity v programu Private Cloud vCenter, musí být otevřeny porty definované v tabulce.  Viz [Použití Azure AD jako zprostředkovatele identity pro vCenter na CloudSimple Privátní cloud](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-ad/) pro kroky konfigurace.
 
 | Port         | Zdroj                           | Cíl                                         | Účel                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,6 +60,6 @@ Přístup k virtuálním počítačům s úlohami spuštěné v privátním clou
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření a správa sítí VLAN a podsítí](https://docs.azure.cloudsimple.com/create-vlan-subnet/)
-* [Připojení k místní síti pomocí Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [Nastavení sítě VPN mezi lokalitami z místního prostředí](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [Vytvoření a správa sítí VLAN a podsítí](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)
+* [Připojení k místní síti pomocí Azure ExpressRoute](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-connection/)
+* [Nastavení sítě VPN mezi lokalitami z místního prostředí](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway/)

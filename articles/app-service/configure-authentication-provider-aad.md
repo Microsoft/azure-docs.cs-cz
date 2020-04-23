@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f625f5df4f33c6516bd5c50f97c52404d76757a0
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392567"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024451"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace aplikace App Service nebo aplikace Azure Functions tak, aby používaly přihlášení Azure AD
 
@@ -100,7 +100,7 @@ Proveďte následující kroky:
     |Pole|Popis|
     |-|-|
     |ID klienta| Použijte **ID aplikace (klienta)** registrace aplikace. |
-    |Adresa URL vystavittele| Použijte `https://login.microsoftonline.com/<tenant-id>/v2.0`a * \<nahraďte>id klienta* **ID adresáře (tenanta)** registrace aplikace. Tato hodnota se používá k přesměrování uživatelů na správného klienta Azure AD, stejně jako ke stažení příslušných metadat k určení příslušné klíče podpisu tokenu a hodnotu deklarace vystavitele tokenu například. Sekce `/v2.0` může být vynechána pro aplikace používající AAD v1. |
+    |Adresa URL vystavittele| Použijte `<authentication-endpoint>/<tenant-id>/v2.0`a * \<* nahraďte koncový bod ověřování>[koncovým bodem ověřování pro vaše cloudové prostředí](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (např.https://login.microsoft.com" " pro globální Azure), také nahradit * \<>id klienta* s **ID adresáře (tenanta),** ve kterém byla vytvořena registrace aplikace. Tato hodnota se používá k přesměrování uživatelů na správného klienta Azure AD, stejně jako ke stažení příslušných metadat k určení příslušné klíče podpisu tokenu a hodnotu deklarace vystavitele tokenu například. Sekce `/v2.0` může být vynechána pro aplikace používající AAD v1. |
     |Tajný klíč klienta (volitelné)| Použijte tajný klíč klienta, který jste vygenerovali při registraci aplikace.|
     |Povolené cílové skupiny tokenů| Pokud se jedná o cloudovou nebo serverovou aplikaci a chcete povolit ověřovací tokeny z webové aplikace, přidejte identifikátor **URI ID aplikace** webové aplikace sem. Nakonfigurované **ID klienta** je *vždy* implicitně považováno za povolenou cílovou skupinu. |
 

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934154"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025029"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Nasazování na vyhrazené hostitele
 
@@ -18,7 +18,7 @@ ms.locfileid: "76934154"
 
 Vyhrazená sku je vhodná pro úlohy kontejneru, které vyžadují izolaci pracovního vytížení z hlediska fyzického serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Výchozí limit pro jakékoli předplatné používat vyhrazené sku je 0. Pokud chcete použít tuto sku pro nasazení produkčního kontejneru, vytvořte [žádost o podporu Azure][azure-support] pro zvýšení limitu.
 
@@ -37,7 +37,7 @@ Vlastnost `sku` může mít jednu z následujících hodnot:
 ## <a name="modify-your-json-deployment-template"></a>Úprava šablony nasazení JSON
 
 V šabloně nasazení upravte nebo přidejte následující vlastnosti:
-* V `resources`části `apiVersion` `2012-12-01`najetna na .
+* V `resources`části `apiVersion` `2019-12-01`najetna na .
 * Pod vlastnostmi skupiny `sku` kontejnerů `Dedicated`přidejte vlastnost s hodnotou .
 
 Tady je ukázkový úryvek pro část prostředků šablony nasazení skupiny kontejnerů, která používá vyhrazenou sku:

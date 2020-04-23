@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811682"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024842"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>Konfigurace TLS pro aplikaci v Azure
 
@@ -32,7 +32,7 @@ Chcete-li nakonfigurovat protokol TLS pro aplikaci, musíte nejprve získat cert
 
 Certifikát musí splňovat následující požadavky na certifikáty TLS/SSL v Azure:
 
-* Certifikát musí obsahovat soukromý klíč.
+* Certifikát musí obsahovat veřejný klíč.
 * Certifikát musí být vytvořen pro výměnu klíčů, exportovatelný do souboru Výměny osobních informací (.pfx).
 * Název předmětu certifikátu se musí shodovat s doménou používanou pro přístup ke cloudové službě. Certifikát TLS/SSL nelze získat od certifikační autority pro cloudapp.net doménu. Musíte získat vlastní název domény, který chcete použít při přístupu ke službě. Pokud požadujete certifikát od certifikační autority, musí se název subjektu certifikátu shodovat s vlastním názvem domény používaným pro přístup k vaší aplikaci. Pokud je například název vaší vlastní domény **contoso.com,** požádáte certifikační autoritu o certifikát pro ***.contoso.com** nebo **\.www contoso.com**.
 * Certifikát musí používat minimálně 2048bitové šifrování.

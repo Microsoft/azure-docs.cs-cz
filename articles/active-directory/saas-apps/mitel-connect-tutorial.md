@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 30a4dcbd15d8a47d99b3a61879a7e61938d3b133
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 26a761708f56ff7aba8daf86d2991579e60291cb
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160532"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>Kurz: Integrace Azure Active Directory s Mitel MiCloud Connect
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat Mitel MiCloud Connect s Azure Active D
 Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li nakonfigurovat integraci Azure AD pomocí služby MiCloud Connect, potřebujete následující položky:
 
@@ -202,7 +202,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlášení
 
 V této části vytvoříte uživatele s názvem Britta Simon na vašem účtu MiCloud Connect. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
 
-Podrobnosti o přidávání uživatelů na portálu účtu Mitel najdete v článku [Přidání uživatele](https://docs.shoretel.com/connectcloud/Account/Users/AddUser) ve znalostní bázi Mitel.
+Podrobnosti o přidávání uživatelů na portálu účtu Mitel najdete v článku [Přidání uživatele](https://oneview.mitel.com/s/article/Adding-a-User-092815) ve znalostní bázi Mitel.
 
 Vytvořte si uživatele na svém účtu MiCloud Connect s následujícími podrobnostmi:
 

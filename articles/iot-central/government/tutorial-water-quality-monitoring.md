@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d738868e0e4ca7599f4aaf8d6e09d22f26a8db92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77016370"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024468"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Kurz: Vytvoření aplikace pro monitorování kvality vody v Azure IoT Central
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace úloh.
 > * Přizpůsobte branding aplikací pomocí bílého značení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Doporučujeme, abyste měli předplatné Azure k dokončení tohoto kurzu. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace Azure](https://aka.ms/createazuresubscription).
 
@@ -58,7 +58,7 @@ V této části použijete šablonu **monitorování kvality azure** IoT Central
     * **ADRESA URL**: Můžete zadat libovolnou adresu URL nebo hodnotu adresy URL později změnit.
     * Pokud máte předplatné Azure, zadejte hodnoty pro **Adresář**, **předplatné Azure**a **Oblast**. Pokud nemáte předplatné, můžete zapnout **7denní bezplatnou zkušební verzi** a vyplnit požadované kontaktní informace.
 
-    Další informace o adresářích a předplatných najdete v [tématu Vytvoření aplikace](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) rychlý start.
+    Další informace o adresářích a předplatných najdete v [tématu Vytvoření aplikace](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) rychlý start.
 
 1. V levé dolní části stránky vyberte tlačítko **Vytvořit.**
 

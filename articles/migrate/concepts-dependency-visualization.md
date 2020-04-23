@@ -3,12 +3,12 @@ title: Analýza závislostí v azure migrate server assessment
 description: Popisuje, jak použít analýzu závislostí pro hodnocení pomocí Azure Migrate Server Assessment.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b11796f2c5d7c1d87f383e6780444e572352eff5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537742"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024757"
 ---
 # <a name="dependency-analysis"></a>Analýza závislostí
 
@@ -51,7 +51,7 @@ Pro analýzu založenou na agentovi používá server Assessment [řešení Map 
 
 ### <a name="collected-data"></a>Shromážděná data
 
-Pro vizualizaci založenou na agentovi jsou shromažďována následující data:
+Pro analýzu založenou na agentech jsou shromažďována následující data:
 
 - Název zdrojového počítače, proces, název aplikace.
 - Název serveru cílového počítače, proces, název aplikace a port.

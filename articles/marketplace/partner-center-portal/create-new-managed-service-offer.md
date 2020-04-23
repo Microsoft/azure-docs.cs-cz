@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6baf5d77b70fa6e2717b492163826f27d80fbb88
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: c040907c6101d11ee645f9967278d3cf297bd74a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991616"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869803"
 ---
 # <a name="create-a-new-managed-service-offer"></a>Vytvoření nové nabídky spravované služby
 
@@ -63,7 +63,7 @@ Stránka **Vlastnosti** umožňuje definovat kategorie použité k seskupení na
 
 Vyberte minimálně jednu a maximálně pět kategorií, které budou použity k umístění vaší nabídky do příslušných oblastí vyhledávání na trhu. Nezapomeňte v popisu nabídky zjistit, jak vaše nabídka tyto kategorie podporuje.
 
-### <a name="terms-and-conditions"></a>Podmínky a ujednání
+### <a name="terms-and-conditions"></a>podmínky a ujednání
 
 Uveďte své vlastní právní podmínky v oblasti **smluvních podmínek.** Můžete také zadat adresu URL, kde lze najít vaše smluvní podmínky. Zákazníci budou muset přijmout tyto podmínky, než budou moci vyzkoušet vaši nabídku.
 
@@ -74,7 +74,7 @@ Stránka **Nabídka umožňuje** definovat podrobnosti o tržišti (název nabí
 > [!NOTE]
 > Nabídka výpis obsah (například popis, dokumenty, screenshoty, podmínky použití, atd.) nemusí být v angličtině, pokud popis nabídky začíná frází, "Tato aplikace je k dispozici pouze v [non-anglický jazyk]." Je také přijatelné poskytnout *užitečnou adresu URL odkazu* pro nabízení obsahu v jiném jazyce, než který byl použit v obsahu nabídky.
 
-### <a name="name"></a>Name (Název)
+### <a name="name"></a>Název
 
 Jméno, které zde zadáte, se zákazníkům zobrazí jako název nabídky. Toto pole je předem vyplněno textem, který jste zadali pro **alias Nabídky** při vytváření nabídky, ale tuto hodnotu můžete změnit. Tento název může být chráněn ochrannou známkou (a můžete uvést ochranné známky nebo symboly autorských práv). Název nesmí mít více než 50 znaků a nesmí obsahovat žádné emodži.
 
@@ -137,6 +137,9 @@ Pokud máte weby podpory pro **zákazníky Azure Global Customers** nebo **záka
 ### <a name="marketplace-images"></a>Obrázky na marketplace
 
 V této části můžete poskytnout loga a obrázky, které budou použity při zobrazování vaší nabídky zákazníkovi. Všechny obrázky musí být ve formátu PNG.
+
+>[!Note]
+>Pokud máte problém s nahráváním souborů, ujistěte se, že místní síť neblokuje službu https://upload.xboxlive.com používanou partnerským centrem.
 
 #### <a name="marketplace-logos"></a>Loga tržiště
 

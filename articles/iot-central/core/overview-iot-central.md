@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: ffaab22efb2f6969f03720abba4a7afc6387021a
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 38152889ad43b41aeb345f59963cbfb869964b98
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758220"
+ms.locfileid: "82025233"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
@@ -60,7 +60,7 @@ Jako tvůrce řešení používáte IoT Central k vytvoření vlastního řešen
 - Cloudová aplikace, která přijímá ze zařízení telemetrická data a umožňuje vám tato zařízení spravovat
 - Více zařízení připojených k vaší cloudové aplikaci, na kterých běží vlastní kód
 
-Můžete rychle nasadit novou aplikaci IoT Central a pak ji přizpůsobit podle konkrétních požadavků v prohlížeči. Můžete začít s obecnou _šablonou aplikace_ nebo s některou z šablon aplikací zaměřených na odvětví pro [maloobchod](../retail/overview-iot-central-retail-pnp.md), [energetiku](../energy/overview-iot-central-energy.md), [státní správu](../government/overview-iot-central-government.md)nebo [zdravotní péči](../healthcare/overview-iot-central-healthcare.md).
+Můžete rychle nasadit novou aplikaci IoT Central a pak ji přizpůsobit podle konkrétních požadavků v prohlížeči. Můžete začít s obecnou _šablonou aplikace_ nebo s některou z šablon aplikací zaměřených na odvětví pro [maloobchod](../retail/overview-iot-central-retail.md), [energetiku](../energy/overview-iot-central-energy.md), [státní správu](../government/overview-iot-central-government.md)nebo [zdravotní péči](../healthcare/overview-iot-central-healthcare.md).
 
 Jako tvůrce řešení použijete webové nástroje k vytvoření _šablony zařízení_ pro zařízení, která se připojují k vaší aplikaci. Šablona zařízení je podrobný plán, který definuje charakteristiky a chování typu zařízení, jako je:
 

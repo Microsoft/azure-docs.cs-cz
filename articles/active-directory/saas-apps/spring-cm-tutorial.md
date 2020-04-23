@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: be4edfe3262ab74d903384eb00c0282acc7a3299
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74233388"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867431"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Kurz: Integrace služby Azure Active Directory s SpringCM
 
@@ -35,7 +35,7 @@ Integrace SpringCM s Azure AD poskytuje následující výhody:
 Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li nakonfigurovat integraci Azure AD s SpringCM, potřebujete následující položky:
 
@@ -202,7 +202,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 Chcete-li povolit uživatelům služby Azure Active Directory k přihlášení k SpringCM, musí být zřízena do SpringCM. V případě SpringCM zřizování je ruční úlohy.
 
 > [!NOTE]
-> Další informace naleznete v [tématu Vytvoření a úprava uživatele SpringCM](https://knowledge.springcm.com/create-and-edit-a-springcm-user). 
+> Další informace naleznete v [tématu Vytvoření a úprava uživatele SpringCM](http://community.springcm.com/s/article/Create-and-Edit-a-SpringCM-User-1619481053). 
 
 **Chcete-li zřídit uživatelský účet SpringCM, proveďte následující kroky:**
 
@@ -233,7 +233,7 @@ V této části otestujete konfiguraci jednotného přihlášení Azure AD pomoc
 
 Po kliknutí na dlaždici SpringCM na přístupovém panelu, můžete by měl být automaticky přihlášeni k SpringCM, u kterého nastavíte přisuzuje. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

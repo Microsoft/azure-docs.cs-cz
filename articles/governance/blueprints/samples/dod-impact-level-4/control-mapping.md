@@ -3,12 +3,12 @@ title: Ukázkové ovládací prvky podrobného plánu úrovně DoD Impact Level 
 description: Mapování řízení ukázky podrobného plánu Úrovně dopadu DoD 4. Každý ovládací prvek je mapován na jednu nebo více zásad Azure, které pomáhají s hodnocením.
 ms.date: 03/06/2020
 ms.topic: sample
-ms.openlocfilehash: 001c838ed6a19269a6abbcebd59ee2e344b6a296
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a11a8637618bb42831ccf1a7001e4da40529ba74
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79415389"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024825"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Mapování ovládacího prvku ukázky podrobného plánu úrovně dopadu DoD 4
 
@@ -18,7 +18,7 @@ Následující mapování jsou na **DoD dopad úroveň 4** ovládací prvky. Pom
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definic [zásad Azure.](../../../policy/overview.md) Tyto zásady vám mohou pomoci [posoudit dodržování](../../../policy/how-to/get-compliance-data.md) ovládacího prvku; však často není 1:1 nebo úplnou shodu mezi ovládacím prvkem a jednu nebo více zásad. Jako **takový, kompatibilní** v zásadách Azure odkazuje pouze na zásady samotné; Tím nezajistíte, že jste plně kompatibilní se všemi požadavky ovládacího prvku. Kromě toho standard dodržování předpisů zahrnuje ovládací prvky, které nejsou v tuto chvíli adresovány žádnými definicemi zásad Azure. Dodržování předpisů v zásadách Azure je tedy pouze částečným zobrazením celkového stavu dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi zásad Azure pro tento ukázkový plán dodržování předpisů se může v průběhu času měnit.
-> Chcete-li zobrazit historii změn, podívejte se na [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/DoDIL4/control-mapping.md).
+> Chcete-li zobrazit historii změn, podívejte se na [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md).
 
 ## <a name="ac-2-account-management"></a>Správa účtu AC-2
 
@@ -427,8 +427,8 @@ Teď, když jste zkontrolovali mapování ovládacích prvku podrobného plánu 
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Přečtěte si o [životním cyklu podrobného plánu](../../concepts/lifecycle.md).
-- Pochopit, jak používat [statické a dynamické parametry](../../concepts/parameters.md).
-- Naučte se přizpůsobit [pořadí sekvencování podrobných plánů](../../concepts/sequencing-order.md).
-- Zjistěte, jak využít [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md).
-- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).
+- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)

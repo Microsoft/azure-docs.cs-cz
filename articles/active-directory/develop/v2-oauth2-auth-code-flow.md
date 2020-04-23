@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5e462c52c8b06af6da5081f84a082138cd53a3f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: fcd80c052edf659f93f97800da3112c1f11309cc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677945"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868496"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma identit Microsoftu a tok autorizačního kódu OAuth 2.0
 
@@ -35,7 +35,7 @@ Na vysoké úrovni celý tok ověřování pro nativní/mobilní aplikace vypad�
 
 ## <a name="request-an-authorization-code"></a>Žádost o autorizační kód
 
-Tok autorizačního kódu začíná tím, že `/authorize` klient nasměruje uživatele do koncového bodu. V tomto požadavku klient požaduje `openid` `offline_access`, `https://graph.microsoft.com/mail.read `a oprávnění od uživatele.  Některá oprávnění jsou omezena správcem, například zápis dat `Directory.ReadWrite.All`do adresáře organizace pomocí . Pokud vaše aplikace požaduje přístup k jednomu z těchto oprávnění od uživatele organizace, uživatel obdrží chybovou zprávu, že není oprávněn souhlasit s oprávněními vaší aplikace. Chcete-li požádat o přístup k oborům s omezeným přístupem správce, měli byste si je vyžádat přímo od správce společnosti.  Další informace naleznete v [části Oprávnění s omezenýmpřístupem správce](v2-permissions-and-consent.md#admin-restricted-permissions).
+Tok autorizačního kódu začíná tím, že `/authorize` klient nasměruje uživatele do koncového bodu. V tomto požadavku klient požaduje `openid` `offline_access`, `https://graph.microsoft.com/mail.read ` a oprávnění od uživatele.  Některá oprávnění jsou omezena správcem, například zápis dat `Directory.ReadWrite.All`do adresáře organizace pomocí . Pokud vaše aplikace požaduje přístup k jednomu z těchto oprávnění od uživatele organizace, uživatel obdrží chybovou zprávu, že není oprávněn souhlasit s oprávněními vaší aplikace. Chcete-li požádat o přístup k oborům s omezeným přístupem správce, měli byste si je vyžádat přímo od správce společnosti.  Další informace naleznete v [části Oprávnění s omezenýmpřístupem správce](v2-permissions-and-consent.md#admin-restricted-permissions).
 
 ```
 // Line breaks for legibility only
@@ -76,7 +76,7 @@ Jakmile uživatel ověří a udělí souhlas, koncový bod platformy identit mic
 
 Úspěšná odpověď `response_mode=query` pomocí vypadá takto:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
 code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
@@ -91,7 +91,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 
 Odpovědi na chyby mohou `redirect_uri` být také odeslány, aby je aplikace mohla správně zpracovat:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -122,7 +122,7 @@ Následující tabulka popisuje různé kódy chyb, které `error` mohou být vr
 
 Nyní, když jste získali authorization_code a uživatel vám udělil oprávnění, můžete uplatnit `code` pro `access_token` požadovaný prostředek. To provést odesláním `POST` požadavku `/token` do koncového bodu:
 
-```
+```HTTP
 // Line breaks for legibility only
 
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -221,7 +221,7 @@ Nyní, když jste úspěšně `access_token`získali , můžete použít token v
 > [!TIP]
 > Proveďte tento požadavek v Pošťák! (Nejprve `Authorization` nahraďte záhlaví) [Zkuste spustit tento požadavek v Pošťáku. ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 GET /v1.0/me/messages
 Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
@@ -235,7 +235,7 @@ Obnovovací tokeny nemají zadané doby životnosti. Obvykle životnost impozium
 
 Přestože obnovovací tokeny nejsou odvolány při použití k získání nových přístupových tokenů, očekává se, že zahodíte starý obnovovací token. [OAuth 2.0 spec](https://tools.ietf.org/html/rfc6749#section-6) říká: "Autorizační server může vydat nový obnovovací token, v takovém případě musí klient zahodit starý obnovovací token a nahradit jej novým obnovovacím tokenem. Autorizační server může odvolat starý obnovovací token po vydání nového obnovovacího tokenu klientovi."
 
-```
+```HTTP
 // Line breaks for legibility only
 
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -276,6 +276,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
+
 | Parametr     | Popis         |
 |---------------|-------------------------------------------------------------|
 | `access_token`  | Požadovaný přístupový token. Aplikace můžete použít tento token k ověření zabezpečeného prostředku, jako je například webové rozhraní API. |

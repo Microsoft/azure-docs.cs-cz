@@ -4,22 +4,22 @@ description: Zjistěte, jak identifikovat, diagnostikovat a řešit problémy s 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/10/2020
+ms.date: 04/20/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 852ed8c49eda7f13542eb0bad63d84e1cf770e92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a8b61f3719a60af567d10f8839987e613babc9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131381"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870454"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení problémů s dotazem při používání Služby Azure Cosmos DB
 
 Tento článek vás provede obecným doporučeným přístupem pro řešení potíží s dotazy v Azure Cosmos DB. I když byste neměli považovat kroky popsané v tomto článku úplnou obranu proti potenciálním problémům s dotazem, zahrnuli jsme zde nejběžnější tipy pro výkon. Tento článek byste měli použít jako výchozí místo pro řešení potíží s pomalými nebo nákladnými dotazy v rozhraní API jádra Azure Cosmos DB (SQL). Diagnostické [protokoly](cosmosdb-monitor-resource-logs.md) můžete také použít k identifikaci dotazů, které jsou pomalé nebo které spotřebovávají značné množství propustnosti.
 
-Optimalizace dotazů v Azure Cosmos DB můžete široce kategorizovat: 
+Optimalizace dotazů v Azure Cosmos DB můžete široce kategorizovat:
 
 - Optimalizace, které snižují poplatek za jednotku požadavku (ŽP) dotazu
 - Optimalizace, které jen snižují latenci
@@ -28,19 +28,18 @@ Pokud snížíte poplatek ru dotazu, téměř jistě snížíte také latenci.
 
 Tento článek obsahuje příklady, které můžete znovu vytvořit pomocí datové sady [výživy.](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)
 
-## <a name="important"></a>Důležité
+## <a name="common-sdk-issues"></a>Běžné problémy sady SDK
 
 - Nejlepší výkon najdete v tipech [pro výkon](performance-tips.md).
     > [!NOTE]
     > Pro zvýšení výkonu doporučujeme 64bitové zpracování hostitelů v systému Windows. Sql SDK obsahuje nativní ServiceInterop.dll analyzovat a optimalizovat dotazy místně. Služba ServiceInterop.dll je podporována pouze na platformě Windows x64. Pro Linux a další nepodporované platformy, kde ServiceInterop.dll není k dispozici, další síťové volání bude provedeno do brány získat optimalizovaný dotaz.
-- Dotazy Azure Cosmos DB nepodporují minimální počet položek.
-    - Kód by měl zpracovat libovolnou velikost stránky od nuly do maximálního počtu položek.
-    - Počet položek na stránce se může a bude měnit bez předchozího upozornění.
-- Prázdné stránky jsou očekávány pro dotazy a může se objevit kdykoli.
-    - Prázdné stránky jsou vystaveny v sadách SDK, protože tato expozice umožňuje více příležitostí ke zrušení dotazu. Je také jasné, že sada SDK provádí více síťových volání.
-    - Prázdné stránky se mohou zobrazit v existujících úlohách, protože fyzický oddíl je rozdělen v Azure Cosmos DB. První oddíl bude mít nulové výsledky, což způsobí, že prázdná stránka.
-    - Prázdné stránky jsou způsobeny back-endem preempting dotazu, protože dotaz trvá více než některé pevné množství času na back-endu načíst dokumenty. Pokud Azure Cosmos DB preempts dotaz, vrátí token pokračování, který umožní dotaz pokračovat.
-- Ujistěte se, že vyprázdnění dotazu úplně. Podívejte se na ukázky sady `while` SDK a použijte smyčku k `FeedIterator.HasMoreResults` vyprázdnění celého dotazu.
+- Můžete nastavit `MaxItemCount` pro vaše dotazy, ale nemůžete zadat minimální počet položek.
+    - Kód by měl zpracovat libovolnou `MaxItemCount`velikost stránky od nuly do .
+    - Počet položek na stránce bude vždy menší `MaxItemCount`než zadaný . Nicméně, `MaxItemCount` je přísně maximální a tam by mohlo být méně výsledků, než tato částka.
+- Někdy dotazy mohou mít prázdné stránky i v případě, že jsou výsledky na budoucí stránce. Důvody pro to může být:
+    - Sada SDK může uskutečňovat více síťových volání.
+    - Dotaz může trvat dlouhou dobu načíst dokumenty.
+- Všechny dotazy mají token pokračování, který umožní pokračovat v dotazu. Ujistěte se, že vyprázdnění dotazu úplně. Podívejte se na ukázky sady `while` SDK a použijte smyčku k `FeedIterator.HasMoreResults` vyprázdnění celého dotazu.
 
 ## <a name="get-query-metrics"></a>Získání metrik dotazu
 
@@ -61,6 +60,8 @@ Naleznete v následujících částech pochopit příslušné optimalizace dotaz
 - [Zahrnout nezbytné cesty v zásadách indexování.](#include-necessary-paths-in-the-indexing-policy)
 
 - [Zjistěte, které systémové funkce používají index.](#understand-which-system-functions-use-the-index)
+
+- [Pochopit, které agregační dotazy používají index.](#understand-which-aggregate-queries-use-the-index)
 
 - [Upravte dotazy, které mají filtr a klauzuli ORDER BY.](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
 
@@ -190,7 +191,7 @@ Vlastnosti můžete přidat do zásad indexování kdykoli, bez vlivu na dostupn
 
 Pokud výraz lze přeložit do rozsahu řetězcové hodnoty, můžete použít index. Jinak nemůže.
 
-Zde je seznam funkcí řetězce, které lze použít index:
+Zde je seznam některých běžných funkcí řetězce, které lze použít index:
 
 - STARTSWITH(str_expr, str_expr)
 - LEFT(str_expr, num_expr) = str_expr
@@ -207,6 +208,50 @@ Následují některé běžné systémové funkce, které nepoužívají index a
 ------
 
 Ostatní části dotazu může stále používat index, i když systémové funkce ne.
+
+### <a name="understand-which-aggregate-queries-use-the-index"></a>Pochopit, které agregační dotazy používají index
+
+Ve většině případů agregační systémové funkce v Azure Cosmos DB bude používat index. V závislosti na filtry nebo další klauzule v agregační dotaz, dotazovací stroj může být nutné načíst vysoký počet dokumentů. Dotazovací stroj obvykle použije nejprve filtry rovnosti a rozsahu. Po použití těchto filtrů může dotazovací stroj vyhodnotit další filtry a v případě potřeby se uchýlit k načtení zbývajících dokumentů, aby vypočítal agregaci.
+
+Například vzhledem k těmto dvěma ukázkovým dotazům `CONTAINS` bude dotaz s filtrem rovnosti a `CONTAINS` systémových funkcí obecně efektivnější než dotaz pouze s filtrem systémových funkcí. Důvodem je, že filtr rovnosti je použit a používá index před `CONTAINS` dokumenty je třeba načíst pro dražší filtr.
+
+Dotaz pouze `CONTAINS` s filtrem - vyšší žp.
+
+```sql
+SELECT COUNT(1) FROM c WHERE CONTAINS(c.description, "spinach")
+```
+
+Dotaz s filtrem `CONTAINS` rovnosti i filtrem - nižší poplatek žP:
+
+```sql
+SELECT AVG(c._ts) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" AND CONTAINS(c.description, "spinach")
+```
+
+Zde jsou další příklady agregace dotazů, které nebudou plně používat index:
+
+#### <a name="queries-with-system-functions-that-dont-use-the-index"></a>Dotazy se systémovými funkcemi, které nepoužívají index
+
+Měli byste odkazovat na stránce příslušné [systémové funkce](sql-query-system-functions.md) a zjistit, zda používá index.
+
+```sql
+SELECT MAX(c._ts) FROM c WHERE CONTAINS(c.description, "spinach")
+```
+
+#### <a name="aggregate-queries-with-user-defined-functionsudfs"></a>Agregace dotazů s uživatelem definovanými funkcemi (UDF)
+
+```sql
+SELECT AVG(c._ts) FROM c WHERE udf.MyUDF("Sausages and Luncheon Meats")
+```
+
+#### <a name="queries-with-group-by"></a>Dotazy se skupinou PODLE
+
+ŽP poplatek `GROUP BY` zvýší jako mohutnost vlastností `GROUP BY` v klauzuli zvyšuje. V tomto příkladu dotazovací stroj musí `c.foodGroup = "Sausages and Luncheon Meats"` načíst každý dokument, který odpovídá filtru, takže se očekává, že poplatek žP bude vysoký.
+
+```sql
+SELECT COUNT(1) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" GROUP BY c.description
+```
+
+Pokud plánujete často spouštět stejné agregační dotazy, může být efektivnější vytvořit zhmotněné zobrazení v reálném čase s [informačním kanálem změn Azure Cosmos DB](change-feed.md) než spuštění jednotlivých dotazů.
 
 ### <a name="modify-queries-that-have-both-a-filter-and-an-order-by-clause"></a>Úprava dotazů, které mají filtr i klauzuli ORDER BY
 

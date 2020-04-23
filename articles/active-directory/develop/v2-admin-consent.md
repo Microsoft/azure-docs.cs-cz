@@ -12,16 +12,16 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c9f633e0d205adaf5cefb2e3c036ce7f48253651
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886377"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868671"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Souhlas správce na platformě microsoft identity
 
-Některá oprávnění vyžadují souhlas správce před tím, než mohou být udělena v rámci klienta.  Koncový bod souhlasu správce můžete také použít k udělení oprávnění celému tenantovi.  
+Některá oprávnění vyžadují souhlas správce před tím, než mohou být udělena v rámci klienta.  Koncový bod souhlasu správce můžete také použít k udělení oprávnění celému tenantovi.
 
 ## <a name="recommended-sign-the-user-into-your-app"></a>Doporučené: Přihlášení uživatele do aplikace
 
@@ -33,15 +33,15 @@ Když uživatele přihlásíte do aplikace, můžete určit organizaci, do kter�
 
 Až budete připraveni požádat o oprávnění správce vaší organizace, můžete uživatele přesměrovat na *koncový bod souhlasu správce*platformy identit Microsoftu .
 
-```
+```HTTP
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://graph.microsoft.com/calendars.read
+https://graph.microsoft.com/mail.send
 ```
 
 
@@ -51,7 +51,7 @@ Až budete připraveni požádat o oprávnění správce vaší organizace, mů�
 | `client_id` | Požaduje se | **ID aplikace (klienta),** které je k vaší aplikaci přiřazené [na portálu Azure – možnosti registrace aplikací.](https://go.microsoft.com/fwlink/?linkid=2083908) |
 | `redirect_uri` | Požaduje se |Identifikátor URI přesměrování, kam chcete odeslat odpověď, aby ji vaše aplikace zpracovat. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |
 | `state` | Doporučené | Hodnota zahrnutá v požadavku, která bude také vrácena v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Pomocí stavu můžete zakódovat informace o stavu uživatele v aplikaci před tím, než došlo k požadavku na ověření, například stránku nebo zobrazení, na kterých se používali. |
-|`scope`        | Požaduje se      | Definuje sadu oprávnění požadovaných aplikací. To může být statické (pomocí /.default) nebo dynamické obory.  To může zahrnovat obory`openid`OIDC ( , `profile`, `email`). | 
+|`scope`        | Požaduje se      | Definuje sadu oprávnění požadovaných aplikací. To může být statické (pomocí /.default) nebo dynamické obory.  To může zahrnovat obory`openid`OIDC ( , `profile`, `email`). |
 
 
 V tomto okamžiku Azure AD vyžaduje správce klienta k přihlášení k dokončení požadavku. Správce je požádán o schválení všech oprávnění, `scope` která jste požadovali v parametru.  Pokud jste použili statickou (`/.default`) hodnotu, bude fungovat jako koncový bod souhlasu správce v1.0 a požádá o souhlas pro všechny obory nalezené v požadovaných oprávněních pro aplikaci.

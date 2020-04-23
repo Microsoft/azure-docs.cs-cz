@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f6cd9e17045fc400d32e9822cef870f1763179ab
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: e0b43f7563c9dfac6374590f6b081197536fe31e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885258"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869017"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Desktopová aplikace, která volá webová api: konfigurace kódu
 
@@ -114,7 +114,7 @@ Další informace o konfiguraci MSAL.NET desktopové aplikace:
 
 Představte si aplikaci konzoly `appsettings.json` .NET Core, která má následující konfigurační soubor:
 
-```JSon
+```json
 {
   "Authentication": {
     "AzureCloudInstance": "AzurePublic",
@@ -216,7 +216,7 @@ Cíl-C:
 ```objc
 NSError *msalError = nil;
 
-MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
+MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
 

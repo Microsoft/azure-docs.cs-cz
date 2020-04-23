@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 5c28697b27e9cf910302b7379e1443f7e78e96b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/21/2020
+ms.openlocfilehash: 20d8e46d6fa6b031c809d629a6af41e8e682bcef
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530610"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025080"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Jak vytvořit a spravovat repliky čtení v Azure Database for MariaDB pomocí portálu Azure
 
 V tomto článku se dozvíte, jak vytvořit a spravovat repliky čtení ve službě Azure Database for MariaDB pomocí portálu Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - [Databáze Azure pro MariaDB server,](quickstart-create-mariadb-server-database-using-azure-portal.md) který se bude používat jako hlavní server.
 
@@ -45,9 +45,6 @@ Server replik pro čtení lze vytvořit pomocí následujících kroků:
 6. Vyberte umístění serveru repliky. Výchozí umístění je stejné jako umístění hlavního serveru.
 
     ![Databáze Azure pro MariaDB – umístění repliky](./media/howto-read-replica-portal/replica-location.png)
-
-   > [!NOTE]
-   > Replikace mezi oblastmi je ve verzi Preview. Další informace o oblastech, ve kterých můžete vytvořit repliku, naleznete v [článku koncepty replik pro čtení](concepts-read-replicas.md). 
 
 7. Chcete-li potvrdit vytvoření repliky, vyberte **možnost OK.**
 

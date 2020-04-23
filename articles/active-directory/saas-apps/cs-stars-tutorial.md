@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0c4cb553ee7edc92b5cb3d319631a985de476b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 15b31bf14b01a215d99814ce57eb9cd5f2cb2773
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159305"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869437"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Kurz: Integrace Služby Azure Active Directory s CS Stars
 
@@ -35,7 +35,7 @@ Integrace CS Stars s Azure AD vám poskytuje následující výhody:
 Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li nakonfigurovat integraci Azure AD s CS Stars, potřebujete následující položky:
 
@@ -111,7 +111,7 @@ Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí služby CS 
     b. Do textového pole **Identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.csstars.com/enterprise/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL a identifikátorem. Kontaktujte [tým podpory CS Stars Client](http://www.riskonnectclearsight.com/support/) a získejte tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL a identifikátorem. Kontaktujte [tým podpory CS Stars Client](https://riskonnect.com/support/) a získejte tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
 4. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
 
@@ -129,7 +129,7 @@ Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí služby CS 
 
 ### <a name="configure-cs-stars-single-sign-on"></a>Konfigurace jednotného přihlašování CS Stars
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **CS Stars,** musíte odeslat stažený **XML metadat federace** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory CS [Stars](http://www.riskonnectclearsight.com/support/). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **CS Stars,** musíte odeslat stažený **XML metadat federace** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory CS [Stars](https://riskonnect.com/support/). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -184,7 +184,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlášení
 
 ### <a name="create-cs-stars-test-user"></a>Vytvořit cs stars testovacího uživatele
 
-V této části vytvoříte uživatele s názvem Britta Simon v CS Stars. Spolupracujte s [týmem podpory CS Stars](http://www.riskonnectclearsight.com/support/) a přidejte uživatele na platformu CS Stars. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
+V této části vytvoříte uživatele s názvem Britta Simon v CS Stars. Spolupracujte s [týmem podpory CS Stars](https://riskonnect.com/support/) a přidejte uživatele na platformu CS Stars. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

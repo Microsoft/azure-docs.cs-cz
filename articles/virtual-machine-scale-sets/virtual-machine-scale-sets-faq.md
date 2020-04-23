@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 1dbc08e01b9a36b1bc80ee6b81ceb2d92ff831cc
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273711"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870219"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy ke škálovacím sadám virtuálních počítačů Azure
 
@@ -445,7 +445,7 @@ Existují dva hlavní způsoby, jak změnit heslo pro virtuální počítače ve
 
     Aktualizujte přihlašovací údaje správce přímo v modelu škálovací sady (například pomocí Průzkumníka prostředků Azure, PowerShellu nebo CLI). Po aktualizaci škálovací sady mají všechny nové virtuální počítačy nová pověření. Existující virtuální chody mají pouze nová pověření, pokud jsou reimaged.
 
-- Resetujte heslo pomocí rozšíření pro přístup k virtuálním montovantům.
+- Resetujte heslo pomocí rozšíření pro přístup k virtuálním montovantům. Ujistěte se, že dodržovat požadavky na heslo, jak je popsáno [zde](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).
 
     Použijte následující příklad PowerShellu:
 

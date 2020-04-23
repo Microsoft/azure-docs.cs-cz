@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc6cbbd0aa9cb0750e497c7cc7edbd42f21bda55
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62127340"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024995"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Orchestrace implementace Azure DevTest Labs
 Tento článek obsahuje doporučený přístup pro rychlé nasazení a implementaci Azure DevTest Labs. Následující obrázek zdůrazňuje celkový proces jako normativní pokyny při zachování flexibility pro podporu různých oborových požadavků a scénářů.
@@ -43,7 +43,7 @@ První oblastí zaměření při nasazování řešení Azure DevTest Labs je vy
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>Milník 2: Nasazení pilotní laboratoře
 Jakmile je topologie sítě na místě, první/pilotní laboratoř může být vytvořena pomocí následujících kroků:
 
-1. Vytvořte počáteční prostředí DevTest Labs (podrobné pokyny naleznete [zde)](https://github.com/Azure/fta-devops/blob/master/devtest-labs/articles/devtest-labs-walkthrough-it.md)
+1. Vytvořte počáteční prostředí DevTest Labs.
 2. Určete povolené image virtuálních počítače a velikosti pro použití s testovacím prostředím. Rozhodněte se, jestli se vlastní image můžou nahrát do Azure pro použití s DevTest Labs.
 3. Zabezpečený přístup k testovacímu prostředí vytvořením počáteční role základní řízení přístupu (RBAC) pro testovací prostředí (vlastníci testovacího prostředí a uživatelé testovacího prostředí). Doporučujeme používat synchronizované účty active directory s Azure Active Directory pro identitu s DevTest Labs.
 4. Nakonfigurujte devTest Labs tak, aby používaly zásady, jako jsou plány, správa nákladů, nárokovatelné virtuální počítače, vlastní image nebo vzorce.

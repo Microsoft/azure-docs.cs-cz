@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/09/2020
+ms.date: 04/22/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 5e628626f2db49ff67d6d7ab425a3a19870b1ebd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240895"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082318"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Rychlý start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API
 
@@ -25,7 +25,7 @@ V tomto rychlém startu přidáte identifikátory URI přesměrování, přihla�
 
 Před klient může přistupovat k webové rozhraní API vystavené aplikace prostředků, jako je například rozhraní Microsoft Graph API, rozhraní pro souhlas zajišťuje, že klient získá oprávnění požadované pro požadovaná oprávnění. Ve výchozím nastavení mohou všechny aplikace požadovat oprávnění z rozhraní Microsoft Graph API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Dokončení [rychlého startu: Registrace aplikace s platformou identit microsoftu](quickstart-register-app.md).
 * Kontrola [oprávnění a souhlasu v koncovém bodě platformy identit microsoftu](v2-permissions-and-consent.md).
@@ -110,7 +110,10 @@ Chcete-li konfigurovat nastavení aplikace na základě platformy nebo zařízen
    | **Web**              | Zadejte **identifikátor URI přesměrování** pro vaši aplikaci. |
    | **iOS / macOS**              | Zadejte **ID sady prostředků**aplikace , které najdete v XCode v Info.plist nebo Nastavení sestavení. Přidání ID sady automaticky vytvoří identifikátor URI přesměrování pro aplikaci. |
    | **Android**          | Zadejte **název balíčku**aplikace , který najdete v souboru AndroidManifest.xml.<br/>Generovat a zadávat **hodnotu hash podpisu**. Přidání maše hash podpisu automaticky vytvoří identifikátor URI přesměrování pro aplikaci.  |
-   | **Mobilní a desktopové aplikace**  | Nepovinný parametr. Pokud vytváříte aplikace pro stolní počítače a zařízení, vyberte jednu z **doporučených identifikátorů URI** pro navrhované přesměrování.<br/>Nepovinný parametr. Zadejte **identifikátor URI vlastního přesměrování**, který se používá jako umístění, kde služba Azure AD přesměruje uživatele v reakci na požadavky na ověření. Například pro aplikace .NET Core, kde `https://localhost`chcete interakci, použijte . |
+   | **Mobilní a desktopové aplikace**  | Nepovinný parametr. Pokud vytváříte aplikace pro stolní počítače a zařízení, vyberte jednu z **doporučených identifikátorů URI** pro navrhované přesměrování.<br/>Nepovinný parametr. Zadejte **identifikátor URI vlastního přesměrování**, který se používá jako umístění, kde služba Azure AD přesměruje uživatele v reakci na požadavky na ověření. Například pro aplikace .NET Core, kde `http://localhost`chcete interakci, použijte . |
+
+   > [!NOTE]
+   > Ve službě AD FS (AD FS) a Azure AD B2C je také nutné zadat číslo portu.  Například: `http://localhost:1234`. 
 
    > [!IMPORTANT]
    > U mobilních aplikací, které nepoužívají nejnovější knihovnu Microsoft Authentication Library (MSAL) nebo nepoužívají zprostředkovatele, je nutné nakonfigurovat identifikátory URI přesměrování pro tyto aplikace v **počítačích + zařízeních**.

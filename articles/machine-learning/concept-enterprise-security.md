@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 9f3a1c3455aadfbd243cdc6ab2920849c8558841
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1af1a1ccd8bff8fc4b578ecdeec3ac5f7c2352b1
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414625"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082131"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -183,7 +183,7 @@ Chcete-li povolit zřizování instance Cosmos DB v předplatném pomocí klíč
         > [!NOTE]
         > Tato instance trezoru klíčů se může lišit od trezoru klíčů vytvořeného Azure Machine Learning při zřizování pracovního prostoru. Pokud chcete pro pracovní prostor použít stejnou instanci trezoru klíčů, předejte stejný trezor klíčů při zřizování pracovního prostoru pomocí [parametru key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
-Tato instance Cosmos DB se vytvoří ve skupině prostředků spravované společností Microsoft ve vašem předplatném. 
+Tato instance Cosmos DB se vytvoří ve skupině prostředků spravované společností Microsoft ve vašem předplatném. Skupina spravovaných prostředků je pojmenována ve formátu<AML Workspace Resource Group Name><GUID>
 
 > [!IMPORTANT]
 > * Pokud potřebujete odstranit tuto instanci Cosmos DB, musíte odstranit pracovní prostor Azure Machine Learning, který ji používá. 

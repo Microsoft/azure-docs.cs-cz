@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
-ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56a7680de3127da06341ac03252a9ab0cff9da7c
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266231"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024944"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Použití Azure DNS k poskytování nastavení vlastní domény pro službu Azure
 
 Azure DNS poskytuje DNS pro vlastní doménu pro všechny vaše prostředky Azure, které podporují vlastní domény nebo které mají plně kvalifikovaný název domény (Plně kvalifikovaný název domény). Příkladem je, že máte webovou aplikaci Azure a chcete, aby\.k ní uživatelé přistupovali pomocí contoso.com nebo www contoso.com jako vyvedenní přístupu k síti. Tento článek vás provede konfigurací služby Azure pomocí Azure DNS pro použití vlastních domén.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Abyste mohli azure DNS používat pro vlastní doménu, musíte nejdřív delegovat svou doménu na Azure DNS. Pokyny k konfiguraci názvových serverů pro delegování najdete na stránce [Delegování domény na Azure DNS.](./dns-delegate-domain-azure-dns.md) Jakmile je vaše doména delegována do zóny Azure DNS, můžete nakonfigurovat potřebné záznamy DNS.
 
@@ -40,7 +40,7 @@ Přejděte do zóny DNS a klepněte na tlačítko **+ Sada záznamů**. Vyplňte
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Name (Název)     | myfunctionapp        | Tato hodnota spolu s popiskem názvu domény je hlavní název domény pro vlastní název domény.        |
+|Název     | myfunctionapp        | Tato hodnota spolu s popiskem názvu domény je hlavní název domény pro vlastní název domény.        |
 |Typ     | CNAME        | Použijte záznam CNAME, který používá alias.        |
 |Hodnota TTL     | 1        | 1 se používá po dobu 1 hodiny        |
 |Jednotka hodnoty TTL     | Hodiny        | Hodiny se používají jako měření času         |
@@ -65,7 +65,7 @@ Přejděte do zóny DNS a klepněte na tlačítko **+ Sada záznamů**. Vyplňte
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Name (Název)     | mywebserver        | Tato hodnota spolu s popiskem názvu domény je hlavní název domény pro vlastní název domény.        |
+|Název     | mywebserver        | Tato hodnota spolu s popiskem názvu domény je hlavní název domény pro vlastní název domény.        |
 |Typ     | A        | Jako prostředek je IP adresa.        |
 |Hodnota TTL     | 1        | 1 se používá po dobu 1 hodiny        |
 |Jednotka hodnoty TTL     | Hodiny        | Hodiny se používají jako měření času         |
@@ -92,7 +92,7 @@ Přejděte do zóny DNS a klepněte na tlačítko **+ Sada záznamů**. Vyplňte
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Name (Název)     | mywebserver        | Tato hodnota spolu s popiskem názvu domény je hlavní název domény pro vlastní název domény.        |
+|Název     | mywebserver        | Tato hodnota spolu s popiskem názvu domény je hlavní název domény pro vlastní název domény.        |
 |Typ     | CNAME        | Použijte záznam CNAME, který používá alias. Pokud by prostředek používal adresu IP, byl by použit záznam A.        |
 |Hodnota TTL     | 1        | 1 se používá po dobu 1 hodiny        |
 |Jednotka hodnoty TTL     | Hodiny        | Hodiny se používají jako měření času         |
@@ -128,13 +128,13 @@ Přejděte do zóny DNS a klepněte na tlačítko **+ Sada záznamů**. Vyplňte
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Name (Název)     | asverify.mystorageaccount        | Tato hodnota spolu s popiskem názvu domény je hlavní název domény pro vlastní název domény.        |
+|Název     | asverify.mystorageaccount        | Tato hodnota spolu s popiskem názvu domény je hlavní název domény pro vlastní název domény.        |
 |Typ     | CNAME        | Použijte záznam CNAME, který používá alias.        |
 |Hodnota TTL     | 1        | 1 se používá po dobu 1 hodiny        |
 |Jednotka hodnoty TTL     | Hodiny        | Hodiny se používají jako měření času         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Název DNS, pro který vytváříte alias, je v tomto příkladu asverify.adatumfunctiona9ed.blob.core.windows.net název DNS, který je ve výchozím nastavení k dispozici pro účet úložiště.        |
 
-Přejděte zpět na účet úložiště **tak,** > že kliknete na**Účty úložiště**, vyberte účet úložiště a klikněte na **Vlastní doména**. Zadejte alias, který jste vytvořili bez předpony asverify, zaškrtněte políčko **Použít nepřímé ověření CNAME a klepněte na **tlačítko Uložit**. Po dokončení tohoto kroku se vraťte do zóny DNS a vytvořte záznam CNAME bez předpony asverify.  Po tomto okamžiku můžete bezpečně odstranit záznam CNAME s předponou cdnverify.
+Přejděte zpět na účet úložiště **tak,** > že kliknete na**Účty úložiště**, vyberte účet úložiště a klikněte na **Vlastní doména**. Zadejte alias, který jste vytvořili bez předpony asverify, do textového pole, zaškrtněte **políčko Použít nepřímé ověření CNAME**a klepněte na **uložit**. Po dokončení tohoto kroku se vraťte do zóny DNS a vytvořte záznam CNAME bez předpony asverify.  Po tomto okamžiku můžete bezpečně odstranit záznam CNAME s předponou cdnverify.
 
 ![vlastní doména úložiště objektů blob](./media/dns-custom-domain/indirectvalidate.png)
 
@@ -156,7 +156,7 @@ Přejděte do zóny DNS a klepněte na tlačítko **+ Sada záznamů**. Vyplňte
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Name (Název)     | cdnverify.mycdnendpoint        | Tato hodnota spolu s popiskem názvu domény je hlavní název domény pro vlastní název domény.        |
+|Název     | cdnverify.mycdnendpoint        | Tato hodnota spolu s popiskem názvu domény je hlavní název domény pro vlastní název domény.        |
 |Typ     | CNAME        | Použijte záznam CNAME, který používá alias.        |
 |Hodnota TTL     | 1        | 1 se používá po dobu 1 hodiny        |
 |Jednotka hodnoty TTL     | Hodiny        | Hodiny se používají jako měření času         |

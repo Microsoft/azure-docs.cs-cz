@@ -2,17 +2,18 @@
 title: Povolení šifrování disku Azure pro virtuální počítače s Windows
 description: Tento článek obsahuje pokyny k povolení šifrování disku Microsoft Azure pro virtuální počítače s Windows.
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: b2fe7e4fbe4830567533053580880315ceface5d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 8bed34e816207c9f0bd0565abab6af4adbaeb7fd
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458875"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081638"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Šifrování disku Azure pro virtuální počítače s Windows 
 

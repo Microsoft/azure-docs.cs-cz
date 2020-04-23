@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 195fa26a38d89d9ef738e6060ff7dab602d5c234
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 875114c53cb3193b1b140e95be19daf7fb6415a9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095915"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870311"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Kurz: Integrace Azure Active Directory s Oneteamem
 
@@ -34,7 +34,7 @@ Integrace Oneteamu s Azure AD vám poskytuje následující výhody:
 Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li nakonfigurovat integraci Azure AD s Oneteam, budete potřebovat následující položky:
 
@@ -118,7 +118,7 @@ Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí Oneteamu, p
     Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<team name>.one-team.io/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL pro odpověď a přihlašovací adresou URL. Obraťte se na [tým podpory klienta Oneteam](https://support.one-team.com/hc/requests/new) získat tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL pro odpověď a přihlašovací adresou URL. Obraťte se na tým podpory klienta Oneteam získat tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
 6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
 
@@ -136,7 +136,7 @@ Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí Oneteamu, p
 
 ### <a name="configure-oneteam-single-sign-on"></a>Konfigurace jednotného přihlášení Oneteamu
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **Oneteam,** musíte odeslat stažený **xml metadat federace** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory [Oneteam](https://support.one-team.com/hc/requests/new). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **Oneteam,** musíte odeslat stažený **xml metadat federace** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory Oneteam. Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -194,7 +194,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 V této části je vytvořen uživatel s názvem Britta Simon v Oneteam. Oneteam podporuje zřizování uživatelů just-in-time, které je ve výchozím nastavení povolené. V této části pro vás není žádná položka akce. Pokud uživatel ještě neexistuje v Oneteam, nový je vytvořen po ověření.
 
 >[!NOTE]
->Pokud potřebujete vytvořit uživatele ručně, můžete zvýšit lístek podpory s [týmem podpory Oneteam](https://support.one-team.com/hc/requests/new).
+>Pokud potřebujete vytvořit uživatele ručně, můžete zvýšit lístek podpory s týmem podpory Oneteam.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

@@ -1,25 +1,21 @@
 ---
 title: Služba metadat instance Azure
-description: Restful rozhraní získat informace o výpočetních, síťových a nadcházející události údržby Windows.
-services: virtual-machines-windows
-documentationcenter: ''
+description: RESTful rozhraní získat informace o výpočetních virtuálních počítačích, sítě a nadcházející události údržby.
 author: KumariSupriya
 manager: paulmey
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines
+ms.subservice: monitoring
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f351bba9cd474eab0774efa5ffbd2b24499d105b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cb9453e1a25f4042c45d4e89229b555c996d4c8b
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520958"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870087"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -41,7 +37,7 @@ Oblasti                                        | Dostupnost?                    
 [Všechny obecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 [Azure China 21Vianet](https://www.azure.cn/)                                            | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 
 Verze 2019-11-01 je aktuálně nasazena a nemusí být k dispozici ve všech oblastech.
 
@@ -65,7 +61,7 @@ Pokud není zadána žádná verze, je vrácena chyba se seznamem nejnovějšíc
 > [!NOTE]
 > Odpověď je řetězec JSON. Následující příklad odpovědi je docela vytištěno pro čitelnost.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance"
@@ -104,13 +100,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 Ve výchozím nastavení služba metadat instance vrací data`Content-Type: application/json`ve formátu JSON ( ). Různá úložiště API však vrátit data v různých formátech, pokud je požadováno.
 Následující tabulka je odkazem na jiné formáty dat, které mohou podporovat úložiště API.
 
-rozhraní API | Výchozí formát dat | Jiné formáty
+Rozhraní API | Výchozí formát dat | Jiné formáty
 --------|---------------------|--------------
 /instance | json | text
 /naplánované události | json | Žádná
 /ověřeno | json | Žádná
 
-Chcete-li získat přístup k nevýchozímu formátu odpovědi, zadejte požadovaný formát jako parametr řetězce dotazu v požadavku. Například:
+Chcete-li získat přístup k nevýchozímu formátu odpovědi, zadejte požadovaný formát jako parametr řetězce dotazu v požadavku. Příklad:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -126,7 +122,7 @@ Požadavky musí také `Metadata: true` obsahovat záhlaví zajistit, že skute�
 
 ### <a name="error"></a>Chyba
 
-Pokud není nalezen datový prvek nebo poškozený požadavek, služba metadat instance vrátí standardní chyby HTTP. Například:
+Pokud není nalezen datový prvek nebo poškozený požadavek, služba metadat instance vrátí standardní chyby HTTP. Příklad:
 
 Stavový kód HTTP | Důvod
 ----------------|-------
@@ -145,7 +141,7 @@ Chyba služby 500     | Po určité době opakujte akci
 
 #### <a name="retrieving-network-information"></a>Načítání informací o síti
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
@@ -192,7 +188,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 
 #### <a name="retrieving-all-metadata-for-an-instance"></a>Načítání všech metadat pro instanci
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
@@ -316,7 +312,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 
 #### <a name="retrieving-metadata-in-windows-virtual-machine"></a>Načítání metadat ve virtuálním počítači windows
 
-**Požadavek**
+**Žádost**
 
 Metadata instance lze načíst v `curl` systému Windows prostřednictvím programu:
 
@@ -516,7 +512,7 @@ Součástí scénáře obsluhovanéslužbou metadat instance je poskytnutí zár
 > [!NOTE]
 > Všechny odpovědi rozhraní API jsou řetězce JSON. Následující příklad odpovědi jsou docela vytištěny pro čitelnost.
 
- **Požadavek**
+ **Žádost**
 
  ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
@@ -541,7 +537,7 @@ Objekt blob podpisu je podepsaná verze dokumentu [pkcs7.](https://aka.ms/pkcs7)
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Načítání ověřených metadat ve virtuálním počítači windows
 
- **Požadavek**
+ **Žádost**
 
 Metadata instance lze načíst v systému `curl`Windows pomocí nástroje PowerShell :
 
@@ -577,7 +573,7 @@ Objekt blob podpisu je podepsaná verze dokumentu [pkcs7.](https://aka.ms/pkcs7)
 
 Jako poskytovatel služeb můžete vyžadovat sledování počtu virtuálních počítačů se spuštěným softwarem nebo máte agenty, kteří potřebují sledovat jedinečnost virtuálního počítače. Chcete-li získat jedinečné ID pro virtuální hod, použijte `vmId` pole ze služby metadat instance.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
@@ -595,7 +591,7 @@ Pro určité scénáře je umístění různých replik dat prvořadé. Napřík
 Můžete také použít [zóny dostupnosti](../../availability-zones/az-overview.md) pro instance, aby se tato rozhodnutí.
 Tato data můžete zadat přímo prostřednictvím služby metadat instance.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
@@ -611,7 +607,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 
 Jako poskytovatel služeb můžete získat volání podpory, kde byste se chtěli dozvědět více informací o virtuálním virtuálním vztahu. Požádat zákazníka o sdílení výpočetních metadat můžete poskytnout základní informace pro pracovníky podpory vědět o druhu virtuálního počítače v Azure.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
@@ -711,7 +707,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 Azure má různé suverénní cloudy, jako je [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure, abyste se rozhodli za běhu. Následující ukázka ukazuje, jak lze dosáhnout tohoto chování.
 
-**Požadavek**
+**Žádost**
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
@@ -728,13 +724,13 @@ Oblasti a hodnoty prostředí Azure jsou uvedeny níže.
 [Všechny obecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
 [Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china)          | AzureChinaCloud
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
+[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>Získání značek pro virtuální hod
 
 Značky mohou být použity pro váš virtuální počítač Azure logicky uspořádat do taxonomie. Značky přiřazené k virtuálnímu virtuálnímu jemu se načítají pomocí níže uvedeného požadavku.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
@@ -748,7 +744,7 @@ Department:IT;Environment:Test;Role:WebRole
 
 Pole `tags` je řetězec se značkami oddělenými středníky. To může být problém, pokud středníky jsou použity v samotných značkách. Pokud analyzátor je zapsán programově extrahovat značky, `tagsList` měli byste se spolehnout na pole, které je pole JSON bez oddělovačů a následně snadněji analyzovat.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=JSON"
@@ -780,7 +776,7 @@ Dodavatelé marketplace chtějí zajistit, aby jejich software byl licencován k
 > [!NOTE]
 > Vyžaduje instalaci jq.
 
-**Požadavek**
+**Žádost**
 
  ```bash
   # Get the signature
@@ -842,7 +838,7 @@ Jakmile získáte výše uvedený podpis, můžete ověřit, zda je podpis od sp
 [Všechny obecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | *.metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *.metadata.azure.us
 [Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *.metadata.azure.cn
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | *.metadata.microsoftazure.de
+[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | *.metadata.microsoftazure.de
 
 Existuje známý problém kolem certifikátu používaného k podepisování. Certifikáty nemusí mít přesnou `metadata.azure.com` shodu pro veřejný cloud. Proto by ověření certifikace mělo `.metadata.azure.com` umožnit běžný název z libovolné subdomény.
 
@@ -960,7 +956,7 @@ writeAcceleratorEnabled | Zda je na disku povolen program writeAccelerator
 
 Následuje příklad, jak se dotazovat na informace o úložišti virtuálního zařízení.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"

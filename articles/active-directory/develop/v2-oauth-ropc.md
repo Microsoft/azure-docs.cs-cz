@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 828bdab26684b29d664ea42d0b36f475c7872a80
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a282264ed3e9539bcc96babfc41376d2c6c35628
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309462"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868657"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Platforma identit y Microsoft a pověření vlastníka prostředků OAuth 2.0
 
@@ -50,8 +50,8 @@ Tok ROPC je jeden požadavek: odešle identifikaci klienta a pověření uživat
 > [![Zkuste spustit tento požadavek v Pošťáku.](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
-```
-// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
+```HTTP
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required.
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -67,13 +67,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
 | `tenant` | Požaduje se | Klient adresáře, ke kterému chcete uživatele přihlásit. To může být ve formátu GUID nebo popisný název. Tento parametr nelze nastavit `common` na `consumers`hodnotu nebo `organizations`, ale může být nastaven na hodnotu . |
-| `client_id` | Požaduje se | ID aplikace (klienta), které je k vaší aplikaci přiřazena stránka [Registrace aplikací – a registrací aplikací.](https://go.microsoft.com/fwlink/?linkid=2083908) | 
+| `client_id` | Požaduje se | ID aplikace (klienta), které je k vaší aplikaci přiřazena stránka [Registrace aplikací – a registrací aplikací.](https://go.microsoft.com/fwlink/?linkid=2083908) |
 | `grant_type` | Požaduje se | Musí být `password`nastavena na . |
 | `username` | Požaduje se | E-mailová adresa uživatele. |
 | `password` | Požaduje se | Heslo uživatele. |
 | `scope` | Doporučené | Prostorově oddělený seznam [oborů](v2-permissions-and-consent.md)nebo oprávnění, které aplikace vyžaduje. V interaktivním toku musí správce nebo uživatel předem souhlasit s těmito obory. |
-| `client_secret`| Někdy je vyžadováno | Pokud je vaše aplikace veřejným `client_secret` klientem, pak nebo `client_assertion` nelze zahrnout.  Pokud je aplikace důvěrným klientem, musí být zahrnuta. | 
-| `client_assertion` | Někdy je vyžadováno | Jiná forma `client_secret`aplikace , generovaná pomocí certifikátu.  Další podrobnosti najdete v [tématu pověření certifikátu.](active-directory-certificate-credentials.md) | 
+| `client_secret`| Někdy je vyžadováno | Pokud je vaše aplikace veřejným `client_secret` klientem, pak nebo `client_assertion` nelze zahrnout.  Pokud je aplikace důvěrným klientem, musí být zahrnuta. |
+| `client_assertion` | Někdy je vyžadováno | Jiná forma `client_secret`aplikace , generovaná pomocí certifikátu.  Další podrobnosti najdete v [tématu pověření certifikátu.](active-directory-certificate-credentials.md) |
 
 ### <a name="successful-authentication-response"></a>Úspěšná odpověď na ověření
 

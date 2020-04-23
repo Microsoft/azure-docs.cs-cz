@@ -9,22 +9,22 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e59359d791729d2136003596d80dd1f31a9a2aac
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240083"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025148"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
-Chcete-li na palubě Azure Sentinel, musíte se nejprve připojit ke zdrojům dat. Azure Sentinel je dodáván s řadou konektorů pro řešení Microsoft, které jsou k dispozici iz v krabici a poskytují integraci v reálném čase, včetně řešení Microsoft Threat Protection, a zdrojů Microsoft 365, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a další. Kromě toho existují integrované konektory pro širší ekosystém zabezpečení pro řešení jiných společností než Microsoft. Můžete také použít běžný formát událostí, Syslog nebo REST-API pro připojení zdrojů dat s Azure Sentinel také.  
+Chcete-li na palubě Azure Sentinel, musíte se nejprve připojit ke zdrojům dat. Azure Sentinel je dodáván s řadou konektorů pro řešení Microsoft, které jsou k dispozici iz v krabici a poskytují integraci v reálném čase, včetně řešení Microsoft Threat Protection, a zdrojů Microsoft 365, včetně Office 365, Azure AD, Ochrany ATP v Azure a Zabezpečení aplikací Microsoft Cloud a další. Kromě toho existují integrované konektory pro širší ekosystém zabezpečení pro řešení jiných společností než Microsoft. Můžete také použít běžný formát událostí, Syslog nebo REST-API pro připojení zdrojů dat s Azure Sentinel také.  
 
 1. V nabídce vyberte **Datové konektory**. Tato stránka umožňuje zobrazit úplný seznam konektorů, které Poskytuje Azure Sentinel a jejich stav. Vyberte spojnici, kterou chcete připojit, a vyberte **Otevřít stránku konektoru**. 
 
@@ -56,7 +56,7 @@ Azure Sentinel podporuje následující metody datového připojení:
     - [Office 365](connect-office-365.md)
     - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
     - [Firewall webových aplikací Microsoft](connect-microsoft-waf.md)
-    - [Brána Windows Firewall](connect-windows-firewall.md)
+    - [Brána firewall systému Windows](connect-windows-firewall.md)
     - [Události zabezpečení systému Windows](connect-windows-security-events.md)
 
 - **Externí řešení prostřednictvím rozhraní API**: Některé zdroje dat jsou propojeny pomocí rozhraní API, která jsou poskytována připojeným zdrojem dat. Většina technologií zabezpečení obvykle poskytuje sadu api, přes které lze načíst protokoly událostí. Api se připojují k Azure Sentinelu a shromažďují konkrétní datové typy a odesílají je do Azure Log Analytics. Mezi spotřebiče připojené prostřednictvím ROZHRANÍ API patří:

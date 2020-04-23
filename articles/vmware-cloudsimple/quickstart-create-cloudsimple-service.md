@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8ca8c5cacd2b1a1a7b4f70615831d2901510045e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024428"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868016"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Úvodní příručka – vytvoření řešení Azure VMware pomocí služby CloudSimple
 
@@ -26,7 +26,7 @@ Služba CloudSimple umožňuje využívat řešení Azure VMware od CloudSimple.
 
 Chcete-li přidat službu CloudSimple, musíte vytvořit podsíť brány. Podsíť brány se používá při vytváření hraniční sítě a vyžaduje blok CIDR /28. Adresní prostor podsítě brány musí být jedinečný. Nemůže se překrývat s žádným místním adresním prostorem sítě nebo adresním prostorem virtuální sítě Azure.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Přidělit blok CIDR /28 pro podsíť brány.  Podsíť brány je vyžadována pro službu CloudSimple a je jedinečná pro oblast, ve které je vytvořena. Podsíť brány se používá pro řešení Azure VMware síťovými službami CloudSimple a vyžaduje blok CIDR /28. Adresní prostor podsítě brány musí být jedinečný. Nesmí se překrývat s žádnou sítí, která komunikuje s prostředím CloudSimple.  Sítě, které komunikují s CloudSimple patří místní sítě a virtuální sítě Azure.
 
@@ -34,7 +34,7 @@ Zkontrolujte [požadavky sítě](cloudsimple-network-checklist.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-the-service"></a>Vytvoření služby
 
@@ -87,4 +87,4 @@ Pokud chcete nastavit průběžnou kapacitu pro prostředí CloudSimple Private 
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření privátního cloudu a konfigurace prostředí](quickstart-create-private-cloud.md)
-* Další informace o [službě CloudSimple](https://docs.azure.cloudsimple.com/cloudsimple-service)
+* Další informace o [službě CloudSimple](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service)

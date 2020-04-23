@@ -4,15 +4,15 @@ description: Vytvářejte verze image Azure Shared Gallery pomocí Azure Image B
 author: cynthn
 ms.author: cynthn
 ms.date: 01/14/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines-windows
-manager: gwallace
-ms.openlocfilehash: d5856780d0d9f1a1943bca1c2f076bb3ec914e1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.subservice: imaging
+ms.openlocfilehash: 48eff11facf0f1432534d61f003f61e6755caf33
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76263349"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869518"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Náhled: Vytvoření bitové kopie systému Windows a její distribuce do galerie sdílených obrázků 
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 10d5449cb77ea09f62db0a2f2bbdab6761646738
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ec62095f14b38d0c4ffebfabc14c4a0a27a70fb
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295461"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869828"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nové nabídky Dynamics 365 for Customer Engagement & PowerApps
 
@@ -111,7 +111,7 @@ Vyberte všechny produkty Dynamics 365, na které se tato nabídka vztahuje.
 
 Zadejte číslo verze nabídky. Zákazníci uvidí tuto verzi uvedenou na stránce s podrobnostmi nabídky. Pokud aktualizujete číslo verze pouze z důvodu marketingových a popisných změn, zaškrtněte políčko **Pouze marketing.** Tato možnost umožňuje nabídku obejít fáze certifikace a zřizování.
 
-### <a name="terms-and-conditions"></a>Podmínky a ujednání
+### <a name="terms-and-conditions"></a>podmínky a ujednání
 
 Uveďte své vlastní právní podmínky v oblasti **smluvních podmínek.** Můžete také zadat adresu URL, kde lze najít vaše smluvní podmínky. Zákazníci budou muset přijmout tyto podmínky, než budou moci vyzkoušet vaši nabídku.
 
@@ -124,7 +124,7 @@ Pro každý jazyk/trh budete muset definovat podrobnosti tržiště (název nab�
 > [!NOTE]
 > Nabídka výpis obsah (například popis, dokumenty, screenshoty, podmínky použití, atd.) nemusí být v angličtině, pokud popis nabídky začíná frází, "Tato aplikace je k dispozici pouze v [non-anglický jazyk]." Je také přijatelné poskytnout *užitečnou adresu URL odkazu* pro nabízení obsahu v jiném jazyce, než který byl použit v obsahu nabídky.
 
-### <a name="name"></a>Name (Název)
+### <a name="name"></a>Název
 
 Jméno, které zde zadáte, se zákazníkům zobrazí jako název nabídky. Toto pole je předem vyplněno textem, který jste zadali pro **alias Nabídky** při vytváření nabídky, ale tuto hodnotu můžete změnit. Tento název může být chráněn ochrannou známkou (a můžete uvést ochranné známky nebo symboly autorských práv). Název nesmí mít více než 50 znaků a nesmí obsahovat žádné emodži.
 
@@ -214,6 +214,9 @@ Zde musíte poskytnout alespoň jeden (a až tři) související marketingové d
 ### <a name="marketplace-images"></a>Obrázky na marketplace
 
 V této části můžete poskytnout loga a obrázky, které budou použity při zobrazování vaší nabídky zákazníkovi. Všechny obrázky musí být ve formátu PNG.
+
+>[!Note]
+>Pokud máte problém s nahráváním souborů, ujistěte se, že místní síť neblokuje službu https://upload.xboxlive.com používanou partnerským centrem.
 
 #### <a name="store-logos"></a>Loga obchodu
 

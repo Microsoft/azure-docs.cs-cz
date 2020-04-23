@@ -5,12 +5,12 @@ author: jumeder
 ms.author: jumeder
 ms.date: 04/09/2020
 ms.topic: article
-ms.openlocfilehash: 675f8d988e64ed7b556f154f681ccb53ed1000c6
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f10c736cad9322752d5d552d29ef0c63635628a5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81394290"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868158"
 ---
 # <a name="debug-rendering"></a>Ladění vykreslování
 
@@ -56,7 +56,7 @@ Nicméně, poskytnuté účinky nedávají žádné podrobné introspekce do sta
 ## <a name="performance-considerations"></a>Otázky výkonu
 
 * Povolení překrytí textu vznikne jen málo nebo žádné režie výkonu.
-* Navíc povolení překrytí vznikne netriviální výkon režie, i když se může lišit v závislosti na scéně. U složitých scén může tento režim způsobit pokles snímkové frekvence pod cíl 60 Hz.
+* Povolení režimu drátového modelu způsobuje netriviální výkon režie, i když se může lišit v závislosti na scéně. U složitých scén může tento režim způsobit pokles kmitočet snímků pod cíl 60 Hz.
 
 ## <a name="next-steps"></a>Další kroky
 

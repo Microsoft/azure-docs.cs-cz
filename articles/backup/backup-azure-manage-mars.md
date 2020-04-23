@@ -4,12 +4,12 @@ description: Zjistěte, jak spravovat a monitorovat zálohy agentů Microsoft Az
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 404341c8324d9e127e8d8e6bc8083926c0d3106f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537351"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025097"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agentů služby Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
@@ -79,8 +79,8 @@ Můžete přidat pravidla vyloučení přeskočit soubory a složky, které nech
 
     ![Výběr položek](./media/backup-azure-manage-mars/select-items-remove.png)
 
-> [!NOTE]
-> Při úplném odebrání svazku ze zásadpostupujte opatrně.  Pokud ji potřebujete znovu přidat, bude považována za nový svazek. Další naplánované zálohování provede počáteční zálohování (úplné zálohování) namísto přírůstkového zálohování. Pokud potřebujete dočasně odebrat a přidat položky později, pak se doporučuje použít **nastavení vyloučení** namísto **odebrat položky** k zajištění přírůstkové zálohování namísto úplné zálohy.
+    > [!NOTE]
+    > Při úplném odebrání svazku ze zásadpostupujte opatrně.  Pokud ji potřebujete znovu přidat, bude považována za nový svazek. Další naplánované zálohování provede počáteční zálohování (úplné zálohování) namísto přírůstkového zálohování. Pokud potřebujete dočasně odebrat a přidat položky později, pak se doporučuje použít **nastavení vyloučení** namísto **odebrat položky** k zajištění přírůstkové zálohování namísto úplné zálohy.
 
 2. Dokončení následujících kroků a dokončení operace klepnutím na **tlačítko Dokončit.**
 
@@ -90,7 +90,7 @@ Existují dva způsoby, jak zastavit zálohování souborů a složek:
 
 - **Zastavte ochranu a uchovávejte záložní data**.
   - Tato možnost zastaví všechny budoucí úlohy zálohování z ochrany.
-  - Služba Azure Backup zachová všechny existující body obnovení po neomezenou dobu. Body obnovení nebudou kontrolovány na vypršení platnosti, dokud nebude obnovena ochrana.
+  - Služba Azure Backup bude nadále uchovávat všechny existující body obnovení.  
   - Zálohovaná data pro body obnovení, jejichž platnost nevypršela, budou moci obnovit.
   - Pokud se rozhodnete obnovit ochranu, můžete použít možnost *Znovu povolit plán zálohování.* Poté by se údaje uchovaly na základě nových zásad uchovávání informací.
 - **Zastavte ochranu a odstraňte záložní data**.
@@ -167,7 +167,6 @@ Přístupové heslo se používá k šifrování a dešifrování dat při zálo
 
     ![Vygenerujte přístupové heslo.](./media/backup-azure-manage-mars/passphrase2.png)
 - Ujistěte se, že přístupové heslo je bezpečně uloženy v alternativním umístění (jiné než zdrojový počítač), nejlépe v trezoru klíčů Azure. Mějte přehled o všech přístupových frází, pokud máte více počítačů zálohovány s agenty MARS.
-
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 159b38962fe91cedfc8d313bef943dbc74e9974e
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
-ms.translationtype: MT
+ms.openlocfilehash: e8c4e1fcca347ad2783238c0f5ec4fe407849d3b
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520256"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024518"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
 
@@ -42,16 +42,12 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Přejděte do adresáře, který obsahuje vzorový kód a spusťte příkaz `az webapp up`.
-
-V následujícím příkladu nahraďte <app_name > jedinečným názvem aplikace.
+Přejděte do adresáře, který obsahuje vzorový kód a spusťte příkaz `az webapp up`. V následujícím příkladu nahraďte <app_name > jedinečným názvem aplikace. Statický obsah je označen `--html` příznakem.
 
 ```bash
 cd html-docs-hello-world
-```
 
-```azurecli
-az webapp up --location westeurope --name <app_name> 
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 Příkaz `az webapp up` provádí tyto akce:
@@ -102,7 +98,7 @@ Uložte změny a editor nano zavřete. K uložení použijte příkaz `^O` a k z
 
 Teď aplikaci znovu nasadíte pomocí stejného příkazu `az webapp up`.
 
-```azurecli
+```bash
 az webapp up --location westeurope --name <app_name> --html
 ```
 
@@ -130,7 +126,7 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 
 V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud předpokládáte, že už tyto prostředky nebudete potřebovat, odstraňte skupinu prostředků spuštěním následujícího příkazu ve službě Cloud Shell: Mějte na paměti, že název skupiny prostředků se pro vás automaticky vygeneroval v kroku [Vytvoření webové aplikace](#create-a-web-app).
 
-```azurecli
+```bash
 az group delete --name appsvc_rg_Windows_westeurope
 ```
 

@@ -1,24 +1,19 @@
 ---
 title: Clustery MATLAB na virtuálních počítačích
 description: Pomocí virtuálních počítačů Microsoft Azure můžete vytvářet clustery MATLAB Distributed Computing Server pro spouštění paralelních úloh MATLAB náročných na výpočetní výkon
-services: virtual-machines-windows
-documentationcenter: ''
 author: mscurrell
-manager: gwallace
-editor: ''
-ms.assetid: e9980ce9-124a-41f1-b9ec-f444c8ea5c72
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: Windows
+ms.subservice: workloads
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: a2fb2479f5544b869b51e796085fcb4d0b76121a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038140"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869424"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Vytvoření clusterů distribuovaných výpočetních serverů MATLAB na virtuálních počítačích Azure
 Pomocí virtuálních počítačů Microsoft Azure můžete vytvořit jeden nebo více clusterů MATLAB Distributed Computing Server pro spouštění paralelních úloh MATLAB náročných na výpočetní výkon. Nainstalujte si software MATLAB Distributed Computing Server na virtuální počítač, který se použije jako základní image, a k nasazení a správě clusteru použijte šablonu rychlého startu Azure nebo skript Azure PowerShell (dostupný na [GitHubu).](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) Po nasazení se připojte ke clusteru a spusťte své úlohy.
@@ -26,9 +21,9 @@ Pomocí virtuálních počítačů Microsoft Azure můžete vytvořit jeden nebo
 ## <a name="about-matlab-and-matlab-distributed-computing-server"></a>O distridčním výpočetním serveru MATLAB a MATLAB
 Platforma [MATLAB](https://www.mathworks.com/products/matlab/) je optimalizována pro řešení technických a vědeckých problémů. Uživatelé MATLAB u rozsáhlých simulací a úloh zpracování dat mohou pomocí paralelních výpočetních produktů MathWorks urychlit své výpočetní úlohy využitím výpočetních clusterů a gridových služeb. [Parallel Computing Toolbox](https://www.mathworks.com/products/parallel-computing/) umožňuje uživatelům MATLAB paralelizovat aplikace a využívat vícejádrové procesory, GPU a výpočetní clustery. [MATLAB Distributed Computing Server](https://www.mathworks.com/products/distriben/) umožňuje uživatelům MATLAB využívat mnoho počítačů ve výpočetním clusteru.
 
-Pomocí virtuálních počítačů Azure můžete vytvořit clustery MATLAB Distributed Computing Server, které mají všechny stejné mechanismy, které jsou k dispozici pro odesílání paralelní práce jako místní clustery, jako jsou interaktivní úlohy, dávkové úlohy, nezávislé úlohy a komunikace Úkoly. Používání Azure ve spojení s platformou MATLAB má mnoho výhod ve srovnání s zřizováním a používáním tradičního místního hardwaru: řada velikostí virtuálních strojů, vytváření clusterů na vyžádání, takže platíte jenom za výpočetní prostředky, které používáte, a schopnost testovat modely ve velkém měřítku.  
+Pomocí virtuálních počítačů Azure můžete vytvořit clustery MATLAB Distributed Computing Server, které mají všechny stejné mechanismy, které jsou k dispozici pro odesílání paralelní práce jako místní clustery, jako jsou interaktivní úlohy, dávkové úlohy, nezávislé úlohy a komunikační úlohy. Použití Azure ve spojení s platformou MATLAB má mnoho výhod ve srovnání s zřizováním a používáním tradičního místního hardwaru: řada velikostí virtuálních počítačů, vytváření clusterů na vyžádání, takže platíte jenom za výpočetní prostředky, které používáte, a možnost testovat modely ve velkém měřítku.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 * **Klientský počítač** – ke komunikaci s Azure a clusterem distribuovaných výpočetních serverů MATLAB budete po nasazení potřebovat klientský počítač se systémem Windows.
 * **Azure PowerShell** – přečtěte si, [jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview) pro jeho instalaci do klientského počítače.
 * **Předplatné Azure** – Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/) během několika minut. U větších clusterů zvažte předplatné s průběžným platbou nebo jiné možnosti nákupu.

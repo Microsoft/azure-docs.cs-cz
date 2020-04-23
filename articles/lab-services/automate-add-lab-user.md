@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81a8c5030f716246caf3dcd8b540bb47fcaf6520
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76718135"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023618"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatizace přidání uživatele testovacího prostředí do testovacího prostředí v laboratořích Azure DevTest Labs
-Azure DevTest Labs umožňuje rychle vytvářet samoobslužná prostředí pro testování a testování pomocí portálu Azure. Pokud však máte několik týmů a několik instancí DevTest Labs, automatizace procesu vytváření může ušetřit čas. [Šablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) umožnou vytvářet testovací prostředí, virtuální počítače testovacího prostředí, vlastní image, vzorce a přidávat uživatele automatizovaným způsobem. Tento článek se konkrétně zaměřuje na přidání uživatelů do instance DevTest Labs.
+Azure DevTest Labs umožňuje rychle vytvářet samoobslužná prostředí pro testování a testování pomocí portálu Azure. Pokud však máte několik týmů a několik instancí DevTest Labs, automatizace procesu vytváření může ušetřit čas. [Šablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Environments) umožnou vytvářet testovací prostředí, virtuální počítače testovacího prostředí, vlastní image, vzorce a přidávat uživatele automatizovaným způsobem. Tento článek se konkrétně zaměřuje na přidání uživatelů do instance DevTest Labs.
 
 Chcete-li přidat uživatele do testovacího prostředí, přidejte uživatele do role **Uživatel DevTest Labs** pro testovací prostředí. Tento článek ukazuje, jak automatizovat přidání uživatele do testovacího prostředí pomocí jednoho z následujících způsobů:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f9b39a672cb5640a36490f2cd088092f40065870
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ef715ed7df1cc203e66bb33cd1493a7f7a713327
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454777"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081604"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -399,8 +399,8 @@ Security Center podporované záměry kill řetězce jsou založeny na [MITRE&tr
 
 |Záměr|Popis|
 |------|-------|
-|**Předútok**</br>(nahrazuje sondování)|PreAttack může být buď pokus o přístup k určitému prostředku bez ohledu na škodlivý záměr, nebo neúspěšný pokus o získání přístupu k cílovému systému ke shromažďování informací před zneužitím. Tento krok je obvykle rozpoznán jako pokus pocházející z vnějšku sítě o prohledávání cílového systému a identifikaci vstupního bodu.</br>Další podrobnosti o fázi PreAttack si můžete přečíst na [stránce MITRE](https://attack.mitre.org/matrices/pre/).|
-|**InitialAccess**</br>(nahrazuje využití)|InitialAccess je fáze, kdy útočník podaří získat oporu na napadený prostředek. Tato fáze je relevantní pro výpočetní hostitele a prostředky, jako jsou uživatelské účty, certifikáty atd. Aktéři hrozeb budou často moci řídit prostředek po této fázi.|
+|**Předútok**|PreAttack může být buď pokus o přístup k určitému prostředku bez ohledu na škodlivý záměr, nebo neúspěšný pokus o získání přístupu k cílovému systému ke shromažďování informací před zneužitím. Tento krok je obvykle rozpoznán jako pokus pocházející z vnějšku sítě o prohledávání cílového systému a identifikaci vstupního bodu.</br>Další podrobnosti o fázi PreAttack si můžete přečíst na [stránce MITRE](https://attack.mitre.org/matrices/pre/).|
+|**InitialAccess**|InitialAccess je fáze, kdy útočník podaří získat oporu na napadený prostředek. Tato fáze je relevantní pro výpočetní hostitele a prostředky, jako jsou uživatelské účty, certifikáty atd. Aktéři hrozeb budou často moci řídit prostředek po této fázi.|
 |**Uchování**|Trvalost je jakýkoli přístup, akce nebo změny konfigurace do systému, který dává objektu zabezpečení trvalé přítomnosti v tomto systému. Uživatelé hrozeb budou často muset udržovat přístup k systémům prostřednictvím přerušení, jako je restartování systému, ztráta pověření nebo jiná selhání, která by vyžadovala restartování nástroje pro vzdálený přístup nebo poskytnutí alternativních zadních vrátk, aby mohly znovu získat přístup.|
 |**Eskalace oprávnění**|Eskalace oprávnění je výsledkem akcí, které umožňují protivníkovi získat vyšší úroveň oprávnění v systému nebo síti. Některé nástroje nebo akce vyžadují vyšší úroveň oprávnění k práci a jsou pravděpodobně nezbytné na mnoha místech v průběhu operace. Uživatelské účty s oprávněními k přístupu k určitým systémům nebo k provádění specifických funkcí nezbytných pro protivníky k dosažení jejich cíle mohou být také považovány za eskalaci oprávnění.|
 |**ObranaEvasion**|Obranné úniky se skládají z technik, které protivník může použít, aby se vyhnul odhalení nebo se vyhnul jiné obraně. Někdy jsou tyto akce stejné jako (nebo varianty) techniky v jiných kategoriích, které mají další výhodu podvracení konkrétní obrany nebo zmírnění.|

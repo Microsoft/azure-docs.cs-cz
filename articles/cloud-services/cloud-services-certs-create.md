@@ -8,19 +8,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 173f5c698ab44ea269995665bcbc33c726d4f03a
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: cf2106302064df5ede02d18f253436047a5d33d8
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811458"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024604"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikátů pro Azure Cloud Services
 Certifikáty se používají v Azure pro cloudové služby[(certifikáty služeb)](#what-are-service-certificates)a pro ověřování pomocí rozhraní API pro správu[(certifikáty pro správu).](#what-are-management-certificates) Toto téma poskytuje obecný přehled o obou typech certifikátů, jak je [vytvořit](#create) a nasadit do Azure.
 
 Certifikáty používané v Azure jsou certifikáty x.509 v3 a mohou být podepsány jiným důvěryhodným certifikátem nebo mohou být podepsané svým držitelem. Certifikát podepsaný svým držitelem je podepsán vlastním tvůrcem, proto není ve výchozím nastavení důvěryhodný. Většina prohlížečů tento problém ignoruje. Certifikáty podepsané svým držitelem byste měli používat jenom při vývoji a testování cloudových služeb. 
 
-Certifikáty používané Azure může obsahovat soukromý nebo veřejný klíč. Certifikáty mají kryptografický otisk, který poskytuje prostředky k jejich jednoznačné identifikaci. Tento kryptografický otisk se používá v [konfiguračním souboru](cloud-services-configure-ssl-certificate-portal.md) Azure k identifikaci certifikátu, který by měla cloudová služba používat. 
+Certifikáty používané Azure může obsahovat veřejný klíč. Certifikáty mají kryptografický otisk, který poskytuje prostředky k jejich jednoznačné identifikaci. Tento kryptografický otisk se používá v [konfiguračním souboru](cloud-services-configure-ssl-certificate-portal.md) Azure k identifikaci certifikátu, který by měla cloudová služba používat. 
 
 >[!Note]
 >Azure Cloud Services nepřijímá šifrovaný certifikát AES256-SHA256.
@@ -51,7 +51,7 @@ Na jedno předplatné je limit 100 certifikátů správy. K dispozici je také l
 K vytvoření certifikátu podepsaného svým držitelem můžete použít libovolný nástroj, pokud dodržuje tato nastavení:
 
 * Certifikát X.509.
-* Obsahuje soukromý klíč.
+* Obsahuje veřejný klíč.
 * Vytvořeno pro výměnu klíčů (soubor.pfx).
 * Název subjektu se musí shodovat s doménou používanou pro přístup ke cloudové službě.
 
