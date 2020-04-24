@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183158"
 ---
 > [!NOTE]
-> Ve službě Azure Active Directory B2C [jsou vlastní zásady](../articles/active-directory-b2c/custom-policy-get-started.md) navržené především k řešení složitých scénářů. Pro většinu scénářů doporučujeme použít předdefinované [toky uživatelů](../articles/active-directory-b2c/user-flow-overview.md).
+> V Azure Active Directory B2C jsou [vlastní zásady](../articles/active-directory-b2c/custom-policy-get-started.md) navržené primárně pro řešení složitých scénářů. Pro většinu scénářů doporučujeme použít předdefinované [toky uživatelů](../articles/active-directory-b2c/user-flow-overview.md).
