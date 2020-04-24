@@ -1,64 +1,66 @@
 ---
-title: Azure Service Fabric sondy
-description: Jak modelovat liveness sonda v Azure Service Fabric pomocí souborů manifestu aplikací a služeb.
+title: Sondy Azure Service Fabric
+description: Postup modelování sondy živého provozu v Azure Service Fabric pomocí souborů manifestu aplikace a služby.
 ms.topic: conceptual
+author: tugup
+ms.author: tugup
 ms.date: 3/12/2020
-ms.openlocfilehash: 38f3888a29bf505b723d40bc7cd08fb0c7e29eff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81431212"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137582"
 ---
-# <a name="liveness-probe"></a>Liveness Sonda
-Počínaje 7.1 Service Fabric podporuje liveness sonda mechanismus pro [kontejnerizované][containers-introduction-link] aplikace. Liveness Probe pomáhají oznámit živost kontejnerizované aplikace a když nereagují včas, bude to mít za následek restartování.
-Tento článek obsahuje přehled o tom, jak definovat sondu Liveness prostřednictvím souborů manifestu.
+# <a name="liveness-probe"></a>Test živého provozu
+Počínaje verzí 7,1 podporuje Azure Service Fabric mechanismus sondy pro aplikace s podporou pro [kontejnery][containers-introduction-link] . Sonda živého provozu pomáhá nahlásit živý obsah kontejnerových aplikací, který se restartuje, pokud to neodpoví rychle.
+Tento článek poskytuje přehled o tom, jak definovat sondu živého provozu pomocí souborů manifestu.
 
-Než budete pokračovat v tomto článku, doporučujeme seznámit se s [modelem aplikace Service Fabric][application-model-link] a [modelhostování service fabric][hosting-model-link].
+Předtím, než budete pokračovat v tomto článku, se seznamte s [Service Fabric aplikačním modelem][application-model-link] a s [Service Fabric hostujícím modelem][hosting-model-link].
 
 > [!NOTE]
-> Sonda liveness je podporována pouze pro kontejnery v síťovém režimu NAT.
+> Sonda živých funkcí je podporovaná jenom pro kontejnery v režimu sítě NAT.
 
-## <a name="semantics"></a>Sémantika
-Můžete zadat pouze 1 sondu živosti na kontejner a můžete řídit jeho chování pomocí těchto polí:
+## <a name="semantics"></a>Sémantiku
+Můžete určit pouze jeden test živého provozu na kontejner a může řídit jeho chování pomocí těchto polí:
 
-* `initialDelaySeconds`: Počáteční zpoždění v sekundách spustit provádění sondy po spuštění kontejneru. Podporovaná hodnota je int. Výchozí hodnota je 0. Minimum je 0.
+* `initialDelaySeconds`: Počáteční zpoždění v sekundách, po kterém se spustí sonda po spuštění kontejneru. Podporovaná hodnota je **int**. Výchozí hodnota je 0 a minimální hodnota je 0.
 
-* `timeoutSeconds`: Období v sekundách, po kterém považujeme sondu za neúspěšnou, pokud nebyla úspěšně dokončena. Podporovaná hodnota je int. Výchozí hodnota je 1. Minimum je 1.
+* `timeoutSeconds`: Doba v sekundách, po jejímž uplynutí se test považuje za neúspěšný, pokud se neúspěšně dokončil. Podporovaná hodnota je **int**. Výchozí hodnota je 1 a minimální hodnota je 1.
 
-* `periodSeconds`: Tečka v sekundách určit, jak často jsme sonda. Podporovaná hodnota je int. Výchozí hodnota je 10. Minimum je 1.
+* `periodSeconds`: Doba v sekundách, po kterou se má určit frekvence testu. Podporovaná hodnota je **int**. Výchozí hodnota je 10 a minimální hodnota je 1.
 
-* `failureThreshold`: Jakmile narazíme na FailureThreshold, kontejner se restartuje. Podporovaná hodnota je int. Výchozí hodnota je 3. Minimum je 1.
+* `failureThreshold`: Když máme tuto hodnotu, kontejner se restartuje. Podporovaná hodnota je **int**. Výchozí hodnota je 3 a minimální hodnota je 1.
 
-* `successThreshold`: Při selhání, pro sondu, která má být považována za úspěch, musí úspěšně spustit pro SuccessThreshold. Podporovaná hodnota je int. Výchozí hodnota je 1. Minimum je 1.
+* `successThreshold`: V případě selhání se test testu bude považovat za úspěšný, musí se pro tuto hodnotu úspěšně spustit. Podporovaná hodnota je **int**. Výchozí hodnota je 1 a minimální hodnota je 1.
 
-V jednom okamžiku bude k dispozici maximálně 1 sonda do kontejneru. Pokud sonda nedokončí v **timeoutSeconds** budeme čekat a počítání do **failureThreshold**. 
+V každém okamžiku může existovat maximálně jedna sonda k jednomu kontejneru. Pokud se sonda nedokončí v čase nastaveném v **timeoutSeconds**, vyčkejte a spočítejte čas na **failureThreshold**. 
 
-Kromě toho ServiceFabric vyvolá následující [sestavy stavu][health-introduction-link] sondy na DeployedServicePackage:
+Service Fabric navíc vyvolají následující [sestavy o stavu][health-introduction-link] testu na **DeployedServicePackage**:
 
-* `Ok`: Pokud sonda uspěje pro **successThreshold** pak hlásíme stav jako Ok.
+* `OK`: Sonda se úspěšně nastavila pro hodnotu nastavenou v **successThreshold**.
 
-* `Error`: Pokud sonda failureCount == **failureThreshold**, před restartováním kontejneru hlásíme chybu.
+* `Error`: Test **failureCount** ==  **failureThreshold**před restartováním kontejneru.
 
 * `Warning`: 
-    1. Pokud sonda selže a failureCount < **failureThreshold** hlásíme Upozornění. Tato sestava stavu zůstane, dokud failureCount dosáhne **failureThreshold** nebo **successThreshold**.
-    2. Na úspěch post selhání, stále hlásíme varování, ale s aktualizovaným po sobě jdoucí úspěch.
+    * Sonda se nezdařila a **failureCount** < **failureThreshold**. Tato sestava stavu zůstane, dokud **failureCount** nedosáhne hodnoty nastavené v **failureThreshold** nebo **successThreshold**.
+    * Po úspěchu po selhání zůstane upozornění, ale s aktualizovanými po sobě jdoucími úspěchy.
 
-## <a name="specifying-liveness-probe"></a>Určení sondy živost
+## <a name="specifying-a-liveness-probe"></a>Určení testu živého provozu
 
-Sondu můžete zadat v applicationManifest.xml v části ServiceManifestImport:
+Test paměti můžete zadat v souboru souboru ApplicationManifest. XML pod **ServiceManifestImport**.
 
-Sonda může buď jeden z :
+Sonda může být pro některé z těchto možností:
 
-1. HTTP
-2. TCP
-3. Exec 
+* HTTP
+* TCP
+* Průměrná 
 
-## <a name="http-probe"></a>Sonda HTTP
+### <a name="http-probe"></a>Test protokolu HTTP
 
-Pro sondu HTTP service fabric odešle požadavek HTTP na port a zadanou cestu. Návratový kód větší nebo rovno 200 a menší než 400 označuje úspěch.
+U testu HTTP Service Fabric odešle požadavek HTTP na port a cestu, kterou zadáte. Návratový kód, který je větší než nebo roven 200 a menší než 400, indikuje úspěch.
 
-Zde je příklad, jak zadat httpget sonda:
+Tady je příklad, jak určit test paměti protokolu HTTP:
 
 ```xml
   <ServiceManifestImport>
@@ -79,21 +81,21 @@ Zde je příklad, jak zadat httpget sonda:
   </ServiceManifestImport>
 ```
 
-HttpGet sonda má další vlastnosti, které můžete nastavit:
+Test HTTP má další vlastnosti, které můžete nastavit:
 
-* `path`: Cesta k přístupu na požadavek HTTP.
+* `path`: Cesta, která se má použít v požadavku HTTP.
 
-* `port`: Port pro přístup pro sondy. Rozsah je 1 až 65535. Povinné.
+* `port`: Port, který se má použít pro sondy. Tato vlastnost je povinná. Rozsah je 1 až 65535.
 
-* `scheme`: Schéma pro připojení k balíčku kódu. Pokud je nastavena na HTTPS, ověření certifikátu je přeskočeno. Výchozí hodnota http
+* `scheme`: Schéma, které se má použít pro připojení k balíčku kódu. Pokud je tato vlastnost nastavená na HTTPS, ověření certifikátu se přeskočí. Výchozí nastavení je HTTP.
 
-* `httpHeader`: Záhlaví nastavit v požadavku. Můžete zadat více z nich.
+* `httpHeader`: Hlavičky, které mají být nastaveny v požadavku. Můžete zadat více hlaviček.
 
-* `host`: Hostitelská IP adresa pro připojení.
+* `host`: IP adresa hostitele, ke které se chcete připojit.
 
-## <a name="tcp-probe"></a>Sonda TCP
+### <a name="tcp-probe"></a>Test protokolu TCP
 
-Pro sondu TCP service fabric se pokusí otevřít soket na kontejneru se zadaným portem. Pokud může navázat spojení, sonda je považována za úspěch. Zde je příklad, jak určit sondu, která používá soket TCP:
+V případě sondy TCP se Service Fabric pokusí otevřít soket na kontejneru pomocí zadaného portu. Pokud může navázat připojení, test se považuje za úspěšný. Tady je příklad, jak zadat sondu, která používá soket TCP:
 
 ```xml
   <ServiceManifestImport>
@@ -111,13 +113,13 @@ Pro sondu TCP service fabric se pokusí otevřít soket na kontejneru se zadaný
   </ServiceManifestImport>
 ```
 
-## <a name="exec-probe"></a>Sonda Exec
+### <a name="exec-probe"></a>Test exec
 
-Tato sonda vydá exec do kontejneru a čekat na dokončení příkazu.
+Tato sonda vydá příkaz **exec** do kontejneru a počká, až se příkaz dokončí.
 
 > [!NOTE]
-> Příkaz Exec přebírá řetězec osvojovaný čárkou. Následující příkaz v příkladu bude fungovat pro kontejner Linux.
-> Pokud zkoušíte windows kontejner, použijte <Command>cmd</Command>
+> Příkaz **exec** přijímá řetězec oddělený čárkami. Příkaz v následujícím příkladu bude fungovat pro kontejner Linux.
+> Pokud se snažíte testovat kontejner Windows, použijte **cmd**.
 
 ```xml
   <ServiceManifestImport>
@@ -138,8 +140,8 @@ Tato sonda vydá exec do kontejneru a čekat na dokončení příkazu.
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Související informace naleznete v následujících článcích.
-* [Service Fabric a kontejnery.][containers-introduction-link]
+Související informace najdete v následujícím článku:
+* [Service Fabric a kontejnery][containers-introduction-link]
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md

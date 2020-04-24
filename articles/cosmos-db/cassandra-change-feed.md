@@ -1,26 +1,26 @@
 ---
-title: Změna informačního kanálu v rozhraní API Azure Cosmos DB pro Cassandru
-description: Zjistěte, jak používat kanál změn v rozhraní API Azure Cosmos DB pro Cassandra získat změny provedené ve vašich datech.
+title: Změna kanálu v rozhraní Azure Cosmos DB API pro Cassandra
+description: Naučte se, jak pomocí služby Change feed v rozhraní Azure Cosmos DB API pro Cassandra získat změny provedené ve vašich datech.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: c2c695608653130b97bf29cc9ce48e2fbb429209
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 167d9fc68cb075a2cf96d9079131be9e5a510c08
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74694620"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137412"
 ---
-# <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Změna informačního kanálu v rozhraní API Azure Cosmos DB pro Cassandru
+# <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Změna kanálu v rozhraní Azure Cosmos DB API pro Cassandra
 
-[Podpora kanálu změn](change-feed.md) v rozhraní API Azure Cosmos DB pro Cassandru je dostupná prostřednictvím predikátů dotazů v dotazovacím jazyce Cassandra (CQL). Pomocí těchto podmínek predikátu můžete zadat dotaz na rozhraní API kanálu změn. Aplikace mohou získat změny provedené v tabulce pomocí primárního klíče (označovaného také jako klíč oddílu), jak je požadováno v CQL. Potom můžete provést další akce na základě výsledků. Změny řádků v tabulce jsou zachyceny v pořadí podle doby jejich úpravy a pořadí řazení je zaručeno na klíč oddílu.
+Podpora [kanálu změny](change-feed.md) v rozhraní Azure Cosmos DB API pro Cassandra je k dispozici prostřednictvím predikátů dotazu v CQL (Cassandra Query Language). Pomocí těchto podmínek predikátu se můžete dotazovat na rozhraní API Change feed. Aplikace mohou získat změny provedené v tabulce pomocí primárního klíče (označovaného také jako klíč oddílu), jak je požadováno v CQL. Na základě výsledků pak můžete provést další akce. Změny v řádcích v tabulce jsou zachyceny v pořadí podle doby jejich změny a pořadí řazení je zaručeno na klíč oddílu.
 
-Následující příklad ukazuje, jak získat informační kanál změn na všech řádcích v tabulce Keyspace rozhraní CASSANDRA API pomocí rozhraní .NET. Predikát COSMOS_CHANGEFEED_START_TIME() se používá přímo v rámci CQL k dotazování položek v kanálu změn od zadaného počátečního času (v tomto případě aktuální datetime). Celý vzorek si můžete stáhnout [zde](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/).
+Následující příklad ukazuje, jak získat kanál změn na všech řádcích v tabulce rozhraní API Cassandraho prostoru klíčů s použitím rozhraní .NET. Predikát COSMOS_CHANGEFEED_START_TIME () se používá přímo v rámci CQL k dotazování na položky v kanálu změn od zadaného počátečního času (v tomto případě aktuální datum a čas). Úplnou ukázku, pro C# [tady](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) a pro Java si můžete stáhnout [tady](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java).
 
-V každé iteraci dotaz pokračuje v posledním bodě změny byly přečteny, pomocí stránkovacího stavu. Můžeme vidět nepřetržitý proud nových změn v tabulce v Keyspace. Uvidíme změny řádků, které jsou vloženy nebo aktualizovány. Sledování operací odstranění pomocí kanálu změn v rozhraní CASSANDRA API není aktuálně podporováno. 
+V každé iteraci pokračuje dotaz u poslední změny bodu pomocí stavu stránkování. Průběžný Stream pro nové změny v tabulce se zobrazí v prostoru. Uvidíme změny v řádcích, které jsou vložené nebo aktualizované. Sledování operací odstranění pomocí kanálu změn v rozhraní API Cassandra aktuálně není podporováno.
 
 ```C#
     //set initial start time for pulling the change feed
@@ -70,8 +70,41 @@ V každé iteraci dotaz pokračuje v posledním bodě změny byly přečteny, po
     }
 
 ```
+```java
+        Session cassandraSession = utils.getSession();
 
-Chcete-li získat změny na jeden řádek podle primárního klíče, můžete přidat primární klíč v dotazu. Následující příklad ukazuje, jak sledovat změny pro řádek, kde "user_id = 1"
+        try {
+              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+               LocalDateTime now = LocalDateTime.now().minusHours(6).minusMinutes(30);  
+               String query="SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME()='" 
+                    + dtf.format(now)+ "'";
+               
+             byte[] token=null; 
+             System.out.println(query); 
+             while(true)
+             {
+                 SimpleStatement st=new  SimpleStatement(query);
+                 st.setFetchSize(100);
+                 if(token!=null)
+                     st.setPagingStateUnsafe(token);
+                 
+                 ResultSet result=cassandraSession.execute(st) ;
+                 token=result.getExecutionInfo().getPagingState().toBytes();
+                 
+                 for(Row row:result)
+                 {
+                     System.out.println(row.getString("user_name"));
+                 }
+             }
+                    
+
+        } finally {
+            utils.close();
+            LOGGER.info("Please delete your table after verifying the presence of the data in portal or from CQL");
+        }
+
+```
+Chcete-li získat změny v jednom řádku podle primárního klíče, můžete v dotazu přidat primární klíč. Následující příklad ukazuje, jak sledovat změny řádku, kde "user_id = 1"
 
 ```C#
     //Return the latest change for all row in 'user' table where user_id = 1
@@ -79,21 +112,25 @@ Chcete-li získat změny na jeden řádek podle primárního klíče, můžete p
     $"SELECT * FROM uprofile.user where user_id = 1 AND COSMOS_CHANGEFEED_START_TIME() = '{timeBegin.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture)}'");
 
 ```
-
+```java
+    String query="SELECT * FROM uprofile.user where user_id=1 and COSMOS_CHANGEFEED_START_TIME()='" 
+                    + dtf.format(now)+ "'";
+    SimpleStatement st=new  SimpleStatement(query);
+```
 ## <a name="current-limitations"></a>Aktuální omezení
 
-Následující omezení platí při použití kanálu změn s rozhraním CASSANDRA API:
+Při použití kanálu Change s rozhraní API Cassandra platí následující omezení:
 
-* Vložení a aktualizace jsou aktuálně podporovány. Operace odstranění ještě není podporována. Jako alternativní řešení můžete přidat měkkou značku na řádky, které jsou mazány. Například přidejte pole do řádku s názvem "odstraněno" a nastavte ho na hodnotu "true".
-* Poslední aktualizace je trvalá jako v základním rozhraní SQL API a zprostředkující aktualizace entity nejsou k dispozici.
+* V tuto chvíli se podporuje vkládání a aktualizace. Operace odstranění ještě není podporovaná. Jako alternativní řešení můžete přidat měkké označení na řádky, které se odstraňují. Přidejte například pole do řádku s názvem "Deleted" a nastavte jej na hodnotu "true".
+* Poslední aktualizace je trvalá, protože v základní službě SQL API nejsou k dispozici průběžné aktualizace pro danou entitu.
 
 
 ## <a name="error-handling"></a>Zpracování chyb
 
-Při použití kanálu změn v rozhraní CASSANDRA API jsou podporovány následující kódy chyb a zprávy:
+Při použití kanálu Change v rozhraní API Cassandra jsou podporovány následující chybové kódy a zprávy:
 
-* **Kód chyby HTTP 429** - Pokud je kanál změn omezen, vrátí prázdnou stránku.
+* **Kód chyby HTTP 429** – Pokud je přenosový kanál změn omezený, vrátí prázdnou stránku.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa prostředků rozhraní API Azure Cosmos DB Cassandra pomocí šablon Azure Resource Manager](manage-cassandra-with-resource-manager.md)
+* [Správa prostředků Azure Cosmos DB rozhraní API Cassandra pomocí šablon Azure Resource Manager](manage-cassandra-with-resource-manager.md)

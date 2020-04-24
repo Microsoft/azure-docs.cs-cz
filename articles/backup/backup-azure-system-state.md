@@ -4,12 +4,12 @@ description: Naučte se zálohovat stav systému Windows Server nebo počítač�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 847ed8fc5a6c102284a03fa593587792767d7913
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "76294010"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "82128167"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Zálohování stavu systému Windows ve Správce prostředků nasazení
 
@@ -46,7 +46,7 @@ Chcete-li zálohovat stav systému Windows Server, je třeba vytvořit trezor Re
 6. V části **Skupina prostředků**:
 
     * vyberte **Vytvořit novou**, pokud chcete vytvořit skupinu prostředků.
-    nebo
+    Nebo
     * vyberte **Použít existující** a kliknutím na rozevírací nabídku zobrazte seznam dostupných skupin prostředků.
 
    Kompletní informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md).
@@ -127,7 +127,7 @@ Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu sy
 
     ![stažení přihlašovacích údajů trezoru](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    Přihlašovací údaje trezoru se stáhnou do složky Stažené soubory. Po dokončení stahování přihlašovacích údajů trezoru se zobrazí automaticky otevírané okno s dotazem, jestli chcete přihlašovací údaje otevřít nebo uložit. Klikněte na možnost **Uložit**. Pokud omylem kliknete **Otevřít**, nechte dialogové okno, které se pokusí otevřít přihlašovací údaje trezoru, zobrazit chybu. Přihlašovací údaje trezoru nejde otevřít. Přejděte k dalšímu kroku. Přihlašovací údaje trezoru jsou ve složce Stažené soubory.
+    Přihlašovací údaje trezoru se stáhnou do složky Stažené soubory. Po dokončení stahování přihlašovacích údajů trezoru se zobrazí automaticky otevírané okno s dotazem, jestli chcete přihlašovací údaje otevřít nebo uložit. Klikněte na **Uložit**. Pokud omylem kliknete **Otevřít**, nechte dialogové okno, které se pokusí otevřít přihlašovací údaje trezoru, zobrazit chybu. Přihlašovací údaje trezoru nejde otevřít. Přejděte k dalšímu kroku. Přihlašovací údaje trezoru jsou ve složce Stažené soubory.
 
     ![dokončené stahování přihlašovacích údajů trezoru](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -197,7 +197,7 @@ K dokončení prvotního zálohování použijte agenta Microsoft Azure Recovery
 
 7. Na následujících stránkách vyberte požadovanou četnost zálohování a zásady uchovávání informací pro zálohy stavu systému.
 
-8. Na stránce Potvrzení zkontrolujte informace a poté klikněte na **Dokončit**.
+8. Na stránce Potvrzení zkontrolujte uvedené informace a pak klikněte na **Dokončit**.
 
 9. Až průvodce dokončí vytváření plánu zálohování, klikněte na **Zavřít**.
 
@@ -222,12 +222,12 @@ Po dokončení prvotní zálohy se v konzole Zálohování zobrazí stav **Úloh
 
   ![Dokončení IR](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## <a name="questions"></a>Máte otázky?
+## <a name="questions"></a>Máte dotazy?
 
-Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](https://aka.ms/azurebackup_feedback).
+Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](https://feedback.azure.com/forums/258995-azure-backup).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zdroj dalších informací o [zálohování počítačů se systémem Windows](backup-configure-vault.md).
+* Zdroj dalších informací o [zálohování počítačů se systémem Windows](backup-windows-with-mars-agent.md).
 * Teď, když jste zálohovali stav systému Windows Server, můžete [Spravovat trezory a servery](backup-azure-manage-windows-server.md).
 * Potřebujete-li obnovit zálohu, použijte tento článek k [obnovení souborů na počítač se systémem Windows](backup-azure-restore-windows-server.md).
