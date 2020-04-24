@@ -1,25 +1,14 @@
 ---
-title: Azure Batch spouští velké paralelní úlohy v cloudu | Microsoft Docs
+title: Azure Batch spouští velké Paralelní úlohy v cloudu
 description: Další informace o používání služby Azure Batch pro rozsáhlé paralelní úlohy a úlohy v prostředí HPC.
-services: batch
-documentationcenter: ''
-author: mscurrell
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/19/2018
-ms.author: markscu
-ms.custom: mvc
-ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022796"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116345"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
 
@@ -29,7 +18,7 @@ Vývojáři můžou službu Batch používat jako službu platformy k sestavová
 
 Za používání služby Batch se neúčtují žádné další poplatky. Platíte jenom za spotřebované základní prostředky, jako jsou virtuální počítače, úložiště a sítě.
 
-Porovnání mezi batch a dalšími možnostmi hpc řešení v Azure najdete v [tématu High Performance Computing (HPC) v Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+Porovnání mezi službou Batch a dalšími možnostmi řešení HPC v Azure najdete v tématu [vysoce výkonné výpočty (HPC) v Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
 
 ## <a name="run-parallel-workloads"></a>Spouštění paralelních úloh
 Služba Batch pracuje s vnitřně paralelními aplikacemi úlohami (také známé jako „jednoduše paralelně zpracovatelné“). Vnitřně paralelní úlohy jsou ty, u kterých můžou aplikace pracovat odděleně a každá instance odvede určitou část práce. Při provádění můžou aplikace získávat přístup k některým společným datům, ale nekomunikují s jinými instancemi aplikace. Vnitřně paralelní úlohy proto můžou běžet ve velkém měřítku, které závisí na množství výpočetních prostředků dostupných pro souběžné spouštění aplikací.
@@ -73,12 +62,12 @@ Následující diagram znázorňuje kroky v běžném pracovním postupu služby
 
 |Krok  |Popis  |
 |---------|---------|
-|1. Nahrajte **vstupní soubory** a **aplikace** pro zpracování těchto souborů do účtu Služby Azure Storage.     |Vstupní soubory mohou být jakákoli data, která vaše aplikace zpracuje, třeba data finančního modelování nebo videosoubory k převodu. Soubory aplikací můžou zahrnovat skripty nebo aplikace zpracovávající data, třeba převaděč médií.|
-|2. Vytvořte dávkový **fond** výpočetních uzlů ve vašem účtu Batch, **úlohu** pro spuštění úlohy ve fondu a **úkoly** v úloze.     | Uzly fondu jsou virtuální počítače, které budou provádět vaše úkoly. Zadejte vlastnosti, jako je počet a velikost uzlů, image virtuálních počítačů s Windows nebo Linuxem a aplikaci, která se má nainstalovat, když se uzly připojí k fondu. Náklady na fond a jeho velikost můžete omezit použitím [virtuálních počítačů s nízkou prioritou](batch-low-pri-vms.md) nebo [automatického škálování](batch-automatic-scaling.md) počtu uzlů v závislosti na změnách zatížení. <br/><br/>Když do úlohy přidáte úkoly, služba Batch automaticky naplánuje úkoly k provedení ve výpočetních uzlech ve fondu. Každý úkol používá aplikaci, kterou jste nahráli, ke zpracování vstupních souborů. |
-|3. Stáhněte **si vstupní soubory** a **aplikace** do Batch     |Každý úkol může před spuštěním stáhnout vstupní data, která bude zpracovávat v přiřazeném výpočetním uzlu. Pokud ještě není aplikace v daných uzlech fondu nainstalovaná, může se stáhnout v této fázi. Po dokončení stahování ze služby Azure Storage se v přiřazeném uzlu spustí příslušný úkol.|
-|4. Sledování **provádění úloh**     |Když se úkoly spouštějí, můžete ve službě Batch zadat dotaz na monitorování postupu úloh a jejich úkolů. Vaše klientská aplikace nebo služba komunikuje se službou Batch přes HTTPS. Vzhledem k tomu, že můžete monitorovat tisíce úloh spuštěných v tisících výpočetních uzlů, ujistěte se, že [se služby Batch dotazujete efektivně](batch-efficient-list-queries.md).|
-|5. Nahrát **výstup úlohy**     |Úkoly mohou po dokončení nahrát data svých výsledků do služby Azure Storage. Soubory můžete také načíst přímo ze systému souborů na výpočetním uzlu.|
-|6. Stahování **výstupních souborů**     |Když funkce monitorování zjistí, že jsou úkoly ve vaší úloze dokončené, klientská aplikace nebo služba může stáhnout výstupní data k dalšímu zpracování.|
+|1. nahrání **vstupních souborů** a **aplikací** pro zpracování těchto souborů na účet Azure Storage.     |Vstupní soubory mohou být jakákoli data, která vaše aplikace zpracuje, třeba data finančního modelování nebo videosoubory k převodu. Soubory aplikací můžou zahrnovat skripty nebo aplikace zpracovávající data, třeba převaděč médií.|
+|2. na účtu Batch vytvořte **fond** výpočetních uzlů služby Batch, **úlohu** pro spuštění úlohy ve fondu a **úkoly** v úloze.     | Uzly fondu jsou virtuální počítače, které budou provádět vaše úkoly. Zadejte vlastnosti, jako je počet a velikost uzlů, image virtuálních počítačů s Windows nebo Linuxem a aplikaci, která se má nainstalovat, když se uzly připojí k fondu. Náklady na fond a jeho velikost můžete omezit použitím [virtuálních počítačů s nízkou prioritou](batch-low-pri-vms.md) nebo [automatického škálování](batch-automatic-scaling.md) počtu uzlů v závislosti na změnách zatížení. <br/><br/>Když do úlohy přidáte úkoly, služba Batch automaticky naplánuje úkoly k provedení ve výpočetních uzlech ve fondu. Každý úkol používá aplikaci, kterou jste nahráli, ke zpracování vstupních souborů. |
+|3. stažení **vstupních souborů** a **aplikací** do dávky     |Každý úkol může před spuštěním stáhnout vstupní data, která bude zpracovávat v přiřazeném výpočetním uzlu. Pokud ještě není aplikace v daných uzlech fondu nainstalovaná, může se stáhnout v této fázi. Po dokončení stahování ze služby Azure Storage se v přiřazeném uzlu spustí příslušný úkol.|
+|4. monitorování **provádění úlohy**     |Když se úkoly spouštějí, můžete ve službě Batch zadat dotaz na monitorování postupu úloh a jejich úkolů. Vaše klientská aplikace nebo služba komunikuje se službou Batch přes HTTPS. Vzhledem k tomu, že můžete monitorovat tisíce úloh spuštěných v tisících výpočetních uzlů, ujistěte se, že [se služby Batch dotazujete efektivně](batch-efficient-list-queries.md).|
+|5. odeslání **výstupu úlohy**     |Úkoly mohou po dokončení nahrát data svých výsledků do služby Azure Storage. Soubory můžete také načíst přímo ze systému souborů na výpočetním uzlu.|
+|6. stažení **výstupních souborů**     |Když funkce monitorování zjistí, že jsou úkoly ve vaší úloze dokončené, klientská aplikace nebo služba může stáhnout výstupní data k dalšímu zpracování.|
 
 
 
@@ -90,7 +79,7 @@ Podrobnější informace o prostředcích služby fondech, uzlech a úlohách a 
 ## <a name="next-steps"></a>Další kroky
 
 Začněte pracovat se službou Azure Batch pomocí jedné z těchto šablon Rychlý start:
-* [Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure](quick-create-cli.md)
+* [Spuštění první úlohy služby Batch s využitím Azure CLI](quick-create-cli.md)
 * [Spuštění první úlohy služby Batch pomocí webu Azure Portal](quick-create-portal.md)
 * [Spuštění první úlohy služby Batch pomocí rozhraní API .NET](quick-run-dotnet.md)
 * [Spuštění první úlohy služby Batch pomocí rozhraní API Python](quick-run-python.md)

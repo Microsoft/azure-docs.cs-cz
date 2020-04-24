@@ -11,6 +11,6 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "67235292"
 ---
-V Unity otevřete projekt `Unity` ve složce. Unity vás může vyzvat k jiné verzi Unity mezi projektem a verzí, kterou jste nainstalovali do počítače. Toto upozornění je v pořádku, tak dlouho, dokud vaše verze Unity Editor je novější než ten, který byl vytvořen s projektem. V takovém případě klepněte na tlačítko **Pokračovat**. Pokud je vaše verze Editoru unity starší než ta, kterou projekt potřebuje, klikněte na **Ukončit**a inovujte editor Unity.
+V Unity otevřete projekt ve `Unity` složce. Unity se může zeptat na jinou verzi Unity mezi projektem a ten, který jste na svém počítači nainstalovali. Toto upozornění je v pořádku, pokud je vaše verze editoru Unity novější než ta, ve které byl projekt vytvořen. V takovém případě stačí kliknout na **pokračovat**. Pokud je vaše verze editoru Unity starší, než projekt potřebuje, klikněte na tlačítko **ukončit**a upgradujte svůj Editor Unity.
 
-![Okno Jednota](./media/spatial-anchors-unity/unity-window.png)
+![Okno Unity](./media/spatial-anchors-unity/unity-window.png)

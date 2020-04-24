@@ -15,4 +15,4 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "72818665"
 ---
-Pokyny k vytvoření účtu rozhraní API tabulky Db Azure Cosmos najdete [v tématu Vytvoření databázového účtu](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account).
+Pokyny k vytvoření účtu Azure Cosmos DB rozhraní API pro tabulky najdete v tématu [vytvoření databázového účtu](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account).

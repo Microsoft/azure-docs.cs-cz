@@ -1,45 +1,40 @@
 ---
-title: 'Kurz: Zabezpečení webového serveru Windows s certifikáty TLS/SSL v Azure'
-description: V tomto kurzu se dozvíte, jak pomocí Azure PowerShellu zabezpečit virtuální počítač s Windows, na kterém běží webový server Služby IIS s certifikáty TLS/SSL uloženými v trezoru klíčů Azure.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: 'Kurz: zabezpečení webového serveru Windows pomocí certifikátů TLS/SSL v Azure'
+description: V tomto kurzu se naučíte používat Azure PowerShell k zabezpečení virtuálního počítače s Windows, na kterém běží webový server IIS s certifikáty TLS/SSL uloženými v Azure Key Vault.
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2795d45cd5bba7aab33b06350faee23e83189c30
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: da9834636944c6bb816c4f49b0e9bf3abda2264a
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455576"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097774"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači s Windows v Azure pomocí certifikátů TLS/SSL uložených v trezoru klíčů
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Kurz: zabezpečení webového serveru na virtuálním počítači s Windows v Azure s certifikáty TLS/SSL uloženými v Key Vault
 
 > [!NOTE]
-> V současné době tento dokument pracuje pouze pro generalizované obrázky. Pokud se pokusíte o tento kurz pomocí specializovaného disku, zobrazí se chyba. 
+> V současné době tento dokument funguje pouze pro generalizované obrázky. Při pokusu o použití specializovaného disku v tomto kurzu dojde k chybě. 
 
-K zabezpečení webových serverů lze k šifrování webového provozu použít zabezpečení transportní vrstvy (TLS), dříve označované jako SSL (Secure Sockets Layer), certifikát. Tyto certifikáty TLS/SSL lze uložit do trezoru klíčů Azure a umožňují zabezpečené nasazení certifikátů do virtuálních počítačů (VM) Windows v Azure. Co se v tomto kurzu naučíte:
+Aby bylo možné zabezpečit webové servery, lze pomocí protokolu TLS (Transport Layer Security), dříve označovaného jako SSL (Secure Sockets Layer) (SSL), použít certifikát k šifrování webového provozu. Tyto certifikáty TLS/SSL můžou být uložené v Azure Key Vault a umožňují zabezpečená nasazení certifikátů do virtuálních počítačů s Windows v Azure. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření služby Azure Key Vault
 > * Generování nebo nahrání certifikátu do služby Key Vault
 > * Vytvoření virtuálního počítače a instalace webového serveru služby IIS
-> * Vložte certifikát do virtuálního počítače a nakonfigurujte službu IIS pomocí vazby TLS
+> * Vložení certifikátu do virtuálního počítače a konfigurace služby IIS s použitím vazby TLS
 
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné [https://shell.azure.com/powershell](https://shell.azure.com/powershell)kartě prohlížeče tak, že přejdete na . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/powershell](https://shell.azure.com/powershell)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 
 ## <a name="overview"></a>Přehled
@@ -49,7 +44,7 @@ Místo použití vlastní image virtuálního počítače, která zahrnuje integ
 
 
 ## <a name="create-an-azure-key-vault"></a>Vytvoření služby Azure Key Vault
-Před vytvořením trezoru klíčů a certifikátů vytvořte skupinu prostředků s [aplikací New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupSecureWeb* v umístění *East US*:
+Než budete moct vytvořit Key Vault a certifikáty, vytvořte skupinu prostředků pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupSecureWeb* v umístění *East US*:
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroupSecureWeb"
@@ -57,7 +52,7 @@ $location = "East US"
 New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-Dále vytvořte trezor klíčů s [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault). Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte `mykeyvault` v následujícím příkladu vlastním jedinečným názvem služby Key Vault:
+Dále vytvořte Key Vault pomocí [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault). Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte `mykeyvault` v následujícím příkladu vlastním jedinečným názvem služby Key Vault:
 
 ```azurepowershell-interactive
 $keyvaultName="mykeyvault"
@@ -68,7 +63,7 @@ New-AzKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Vygenerování certifikátu a jeho uložení do služby Key Vault
-Pro použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem pomocí [importu AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate). V tomto kurzu následující příklad ukazuje, jak můžete generovat certifikát podepsaný svým držitelem s [add-AzKeyVaultCertificate,](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) který používá výchozí zásady certifikátu z [New-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy). 
+V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem pomocí [Import-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate). V tomto kurzu následující příklad ukazuje, jak můžete vygenerovat certifikát podepsaný svým držitelem pomocí [Add-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) , který používá výchozí zásadu certifikátu z [New-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy). 
 
 ```azurepowershell-interactive
 $policy = New-AzKeyVaultCertificatePolicy `
@@ -91,7 +86,7 @@ Pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/
 $cred = Get-Credential
 ```
 
-Teď můžete vytvořit virtuální hospodařící s [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud zatím neexistují, vytvoří se podpůrné síťové prostředky. Za účelem povolení zabezpečeného webového provozu rutina také otevře port *443*.
+Nyní můžete vytvořit virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud zatím neexistují, vytvoří se podpůrné síťové prostředky. Za účelem povolení zabezpečeného webového provozu rutina také otevře port *443*.
 
 ```azurepowershell-interactive
 # Create a VM
@@ -117,11 +112,11 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server -IncludeManagementTools"}'
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Poslední krok používá rozšíření Azure Custom Script Extension k instalaci webového serveru Služby IIS pomocí [rozšíření Set-AzVmExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
+Vytvoření virtuálního počítače trvá několik minut. Poslední krok používá rozšíření vlastních skriptů Azure k instalaci webového serveru IIS pomocí [set-AzVmExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Přidání certifikátu ze služby Key Vault do virtuálního počítače
-Chcete-li přidat certifikát z trezoru klíčů do virtuálního počítače, získejte id certifikátu pomocí [služby Get-AzKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret). Přidejte certifikát do virtuálního virtuálního soudu s [add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
+Pokud chcete přidat certifikát z Key Vault do virtuálního počítače, Získejte ID certifikátu pomocí [Get-AzKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret). Přidejte certifikát k virtuálnímu počítači pomocí [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
 
 ```azurepowershell-interactive
 $certURL=(Get-AzKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
@@ -135,7 +130,7 @@ Update-AzVM -ResourceGroupName $resourceGroup -VM $vm
 
 
 ## <a name="configure-iis-to-use-the-certificate"></a>Konfigurace služby IIS na použití certifikátu
-K aktualizaci konfigurace služby IIS použijte znovu rozšíření Vlastní skript s [rozšířením Set-AzVMExtension.](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) Tato aktualizace použije certifikát vložený ze služby Key Vault do IIS a nakonfiguruje webovou vazbu:
+Znovu použijte rozšíření vlastních skriptů s příkazem [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) a aktualizujte konfiguraci služby IIS. Tato aktualizace použije certifikát vložený ze služby Key Vault do IIS a nakonfiguruje webovou vazbu:
 
 ```azurepowershell-interactive
 $PublicSettings = '{
@@ -155,13 +150,13 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
 
 
 ### <a name="test-the-secure-web-app"></a>Testování zabezpečené webové aplikace
-Získejte veřejnou IP adresu virtuálního počítače pomocí [get-azpublicipaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro `myPublicIP`:
+Získejte veřejnou IP adresu vašeho virtuálního počítače pomocí [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro `myPublicIP`:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress" | select "IpAddress"
 ```
 
-Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat `https://<myPublicIP>`. Pokud chcete přijmout upozornění zabezpečení, pokud jste použili certifikát podepsaný svým držitelem, vyberte **Podrobnosti** a **přejděte na webovou stránku**:
+Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat `https://<myPublicIP>`. Pokud chcete upozornění zabezpečení přijmout, pokud jste použili certifikát podepsaný svým držitelem, vyberte **Podrobnosti** a pak **se na webovou stránku dostanete**takto:
 
 ![Přijetí upozornění zabezpečení ve webovém prohlížeči](./media/tutorial-secure-web-server/browser-warning.png)
 
@@ -171,13 +166,13 @@ Potom se zobrazí váš zabezpečený web služby IIS, jak je znázorněno v ná
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste zabezpečili webový server služby IIS s certifikátem TLS/SSL uloženým v úložišti klíčů Azure. Naučili jste se tyto postupy:
+V tomto kurzu jste zabezpečeni webový server služby IIS pomocí certifikátu TLS/SSL, který je uložený v Azure Key Vault. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření služby Azure Key Vault
 > * Generování nebo nahrání certifikátu do služby Key Vault
 > * Vytvoření virtuálního počítače a instalace webového serveru služby IIS
-> * Vložte certifikát do virtuálního počítače a nakonfigurujte službu IIS pomocí vazby TLS
+> * Vložení certifikátu do virtuálního počítače a konfigurace služby IIS s použitím vazby TLS
 
 Na tomto odkazu najdete předem připravené ukázky skriptů pro virtuální počítače.
 

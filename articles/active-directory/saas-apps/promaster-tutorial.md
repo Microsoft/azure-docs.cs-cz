@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s ProMaster (podle Inlogik) | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ProMaster (podle Inlogik).
+title: 'Kurz: Azure Active Directory integrace s prohlavními (po Inlogik) | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a proHlavním serverem (podle Inlogik).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,204 +11,174 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 03/12/2020
 ms.author: jeedes
-ms.openlocfilehash: c0a1f58705a64a973bb91e47e6e9fce87a48ce99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b48d11e15d452b72426c5b83d387f9e004e95dc7
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094216"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80293932"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Kurz: Integrace Azure Active Directory s ProMaster (podle Inlogik)
+# <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Kurz: Azure Active Directory integrace s prohlavními servery (od Inlogik)
 
-V tomto kurzu se dozvíte, jak integrovat ProMaster (podle Inlogik) se službou Azure Active Directory (Azure AD).
-Integrace ProMaster (podle Inlogik) s Azure AD poskytuje následující výhody:
+V tomto kurzu se naučíte integrovat prohlavní (Inlogik) s Azure Active Directory (Azure AD).
+Integrace prohlavní databáze (od Inlogik) se službou Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k ProMaster (podle Inlogik).
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k ProMaster (podle Inlogik) (jednotné přihlašování) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit v Azure AD, který má přístup k prohlavnímu (Inlogik).
+* Uživatelům můžete povolit, aby se automaticky přihlásili k proloze (pomocí Inlogik) (jednotné přihlašování) se svými účty Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-Konfigurace integrace Azure AD s ProMaster (podle Inlogik), potřebujete následující položky:
+Pokud chcete nakonfigurovat integraci Azure AD s prohlavními (Inlogik), budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* ProMaster (podle Inlogik) jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Inlogik (Promaster) – odběr povolený jednotného přihlašování
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* ProMaster (podle Inlogik) podporuje **SP** a **IDP** jednotné přihlašování zahájené pomocí
+* Prohlavní (od Inlogik) podporuje **aktualizace SP** a **IDP** , které iniciovaly jednotné přihlašování.
+* Jakmile nakonfigurujete prohlavní uzel (pomocí Inlogik), můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-promaster-by-inlogik-from-the-gallery"></a>Přidání ProMaster (podle Inlogik) z Galerie
+## <a name="adding-promaster-by-inlogik-from-the-gallery"></a>Přidání řídicího panelu (od Inlogik) z Galerie
 
-Konfigurace integrace ProMaster (podle Inlogik) do služby Azure AD, musíte přidat ProMaster (podle Inlogik) z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci hlavního serveru (Inlogik) do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat hlavní uzel (pomocí Inlogik) z galerie.
 
-**Chcete-li přidat ProMaster (podle Inlogik) z galerie, postupujte následovně:**
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Inlogik (prohlavní)** .
+1. Z panelu výsledků vyberte **prohlavní (od Inlogik)** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Inlogik (Promaster) na základě testovacího uživatele s názvem **B. Simon**.
+Aby jednotné přihlašování fungovalo, musí být navázán odkaz na odkaz mezi uživatelem služby Azure AD a souvisejícím uživatelem v proloze (podle Inlogik).
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí řídicího panelu (od Inlogik), musíte dokončit tyto stavební bloky:
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurovat jednotné přihlašování (Inlogik) SSO](#configure-promaster-by-inlogik-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+    * **[Vytvořte Inlogik testovacího uživatele (prohlavní)](#create-promaster-by-inlogik-test-user)** , který bude mít protějšek B. Simon v proloze (od Inlogik), která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **ProMaster (podle Inlogik)** vyberte **ProMaster (podle Inlogik)** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí řídicího panelu (podle Inlogik), proveďte následující kroky:
 
-     ![ProMaster (podle Inlogik) v seznamu výsledků](common/search-new-app.png)
+1. V [Azure Portal](https://portal.azure.com/)na stránce **Inlogik (hlavní)** integrace aplikace vyberte **jednotné přihlašování**.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-V této části, konfiguraci a testování Azure AD jednotné přihlašování s ProMaster (podle Inlogik) na základě testovací uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v ProMaster (podle Inlogik).
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ProMaster (podle Inlogik), které potřebujete k dokončení následujících stavebních bloků:
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace ProMaster (podle Inlogik) Single Sign-On](#configure-promaster-by-inlogik-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele (podle Inlogik) ProMaster](#create-promaster-by-inlogik-test-user)**  – Pokud chcete mít protějšek Britta Simon ProMaster (podle Inlogik), který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-Ke konfiguraci Azure AD jednotné přihlašování s ProMaster (podle Inlogik), proveďte následující kroky:
-
-1. V [webu Azure portal](https://portal.azure.com/)na **ProMaster (podle Inlogik)** integrace stránce aplikace vyberte **jednotného přihlašování**.
-
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
-
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
-
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
-
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
-
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
-
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
-
-    ![ProMaster (podle Inlogik) domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
-
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
     | |
-    | - |-|
-    |  `https://secure.inlogik.com/<COMPANYNAME>`|
+    |-|-|
+    | `https://secure.inlogik.com/<COMPANYNAME>`|
     | `https://<CUSTOMDOMAIN>/SAMLBASE`|
     | |
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
     | |
-    | - |-|
+    |-|-|
     | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs`|
     | `https://<CUSTOMDOMAIN>/SAMLBASE/saml/acs`|
     | |
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![ProMaster (podle Inlogik) domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
-
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
     | |
-    | - |-|
-    | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs`|
-    | `https://<CUSTOMDOMAIN>/SAMLBASE/saml/acs`|
+    |-|-|
+    | `https://secure.inlogik.com/<COMPANYNAME>`|
+    | `https://<CUSTOMDOMAIN>/SAMLBASE`|
     | |
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory ProMaster (podle Inlogik) klienta](mailto:michael.boldiston@inlogik.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory Inlogik (od klientů)](https://www.inlogik.com/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
+6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-promaster-by-inlogik-single-sign-on"></a>Konfigurace ProMaster (podle Inlogik) jednotného přihlašování
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Ke konfiguraci jednotného přihlašování na **ProMaster (podle Inlogik)** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [tým podpory ProMaster (podle Inlogik)](mailto:michael.boldiston@inlogik.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k proloze (prostřednictvím Inlogik).
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **prohlavní (podle Inlogik)**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    a. V **název** zadat **BrittaSimon**.
-  
-    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+## <a name="configure-promaster-by-inlogik-sso"></a>Konfigurace hlavního serveru jednotného přihlašování (podle Inlogik)
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+Chcete-li konfigurovat jednotné přihlašování na straně **prohlavní (po Inlogik)** , je nutné odeslat **adresu URL federačních metadat aplikace** [týmu podpory prohlavní (podle Inlogik)](https://www.inlogik.com/contact). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-    d. Klikněte na možnost **Vytvořit**.
+### <a name="create-promaster-by-inlogik-test-user"></a>Vytvořit testovacího uživatele prohlavní (od Inlogik)
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+V této části vytvoříte uživatele s názvem B. Simon v proloze (pomocí Inlogik). Pracujte s [týmem podpory Inlogik (Promaster)](https://www.inlogik.com/contact) a přidejte uživatele v rámci platformy prohlavní (podle Inlogik). Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k ProMaster (podle Inlogik).
+### <a name="test-sso"></a>Test SSO
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **ProMaster (podle Inlogik)** .
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+Když kliknete na dlaždici prohlavní (po Inlogik) na přístupovém panelu, měli byste se automaticky přihlásit k hlavnímu serveru (Inlogik), pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-2. V seznamu aplikací vyberte **ProMaster (podle Inlogik)** .
+## <a name="additional-resources"></a>Další zdroje
 
-    ![Odkaz ProMaster (podle Inlogik) v seznamu aplikací](common/all-applications.png)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
-
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
-
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
-
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
-
-### <a name="create-promaster-by-inlogik-test-user"></a>Vytvořit testovacího uživatele ProMaster (podle Inlogik)
-
-V této části vytvoříte uživatele volány Britta Simon v ProMaster (Inlogik). Práce s [tým podpory ProMaster (podle Inlogik)](mailto:michael.boldiston@inlogik.com) přidat uživatele na platformě ProMaster (podle Inlogik). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
-
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
-
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
-
-Po kliknutí na dlaždici ProMaster (podle Inlogik) na přístupovém panelu, můžete by měl být automaticky přihlášeni k ProMaster (podle Inlogik), u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
-
-## <a name="additional-resources"></a>Další prostředky
-
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Vyzkoušejte si prohlavní (od Inlogik) s Azure AD](https://aad.portal.azure.com/)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chránit prohlavní (od Inlogik) s pokročilými viditelnostmi a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Sdílení kotev napříč relacemi a zařízeními'
-description: V tomto kurzu se dozvíte, jak sdílet identifikátory Azure Spatial Anchor mezi zařízeními Android/iOS v Unity s back-endovou službou.
+title: 'Kurz: sdílení kotev napříč relacemi a zařízeními'
+description: V tomto kurzu se dozvíte, jak sdílet identifikátory prostorové kotvy Azure mezi zařízeními s Androidem/iOS v Unity pomocí back-endové služby.
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -15,26 +15,26 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "77615471"
 ---
-# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Kurz: Sdílení prostorových ukotvení Azure napříč relacemi a zařízeními
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Kurz: sdílení prostorových kotev Azure napříč relacemi a zařízeními
 
-V tomto kurzu se dozvíte, jak pomocí [Azure prostorové kotvy](../overview.md) vytvořit kotvy během jedné relace a pak je vyhledejte, na stejném zařízení nebo na jiném. Stejné kotvy mohou být také umístěny více zařízeními na stejném místě a současně.
+V tomto kurzu se dozvíte, jak pomocí [prostorových kotev Azure](../overview.md) vytvořit kotvy během jedné relace a pak je najít, na stejném zařízení nebo na jiném. Stejné kotvy můžou být také umístěny na více zařízeních na stejném místě a zároveň.
 
 ![Uchování](./media/persistence.gif)
 
-Azure Spatial Anchors je vývojářská služba napříč platformami, která umožňuje vytvářet prostředí smíšené reality pomocí objektů, které v průběhu času napříč zařízeními přetrvávají. Po dokončení budete mít aplikaci, kterou lze nasadit na dvě nebo více zařízení. Azure Prostorové kotvy vytvořené jednou instancí lze sdílet s ostatními.
+Prostorové kotvy Azure je služba pro vývojáře napříč platformami, která umožňuje vytvářet hybridní prostředí realit pomocí objektů, které v průběhu času trvale uchovávají jejich umístění v rámci zařízení. Až budete hotovi, budete mít aplikaci, která se dá nasadit na dvě nebo víc zařízení. Prostorové kotvy Azure vytvořené jednou instancí lze sdílet s ostatními.
 
 Dozvíte se, jak provést tyto akce:
 
 > [!div class="checklist"]
-> * Nasazení ASP.NET Core Web App v Azure, které lze použít ke sdílení kotvy, jejich ukládání do paměti po dobu trvání.
-> * Nakonfigurujte scénu AzureSpatialAnchorsLocalSharedDemo v rámci ukázky Unity z našich rychlých startů, abyste využili výhod webové aplikace Kotvy pro sdílení.
-> * Nasaďte a spouštěte na jednom nebo více zařízeních.
+> * Nasazení webové aplikace v ASP.NET Core v Azure, která se dá použít ke sdílení kotev, jejich ukládání do paměti po dobu určitou dobu.
+> * Pomocí našich šablon rychlý Start můžete nakonfigurovat scénu AzureSpatialAnchorsLocalSharedDemo v rámci ukázky Unity a využít tak výhod webové aplikace sdílení kotev.
+> * Nasazení a spuštění do jednoho nebo více zařízení.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Stojí za zmínku, že i když budete používat Unity a ASP.NET Core Web App v tomto kurzu, je pouze ukázat příklad o tom, jak sdílet identifikátory Azure spatial anchor mezi jinými zařízeními. Ke splnění stejného cíle můžete použít jiné jazyky a back-endové technologie. Také ASP.NET Core Web App použitý v tomto kurzu má závislost na .NET Core 2.2 SDK. Funguje dobře na běžných Azure Web Apps (pro Windows), ale v současné době nebude fungovat na Azure Web Apps pro Linux.
+Je to všímáte, že i když v tomto kurzu budete používat Unity a webovou aplikaci ASP.NET Core, zobrazí se jenom příklad, jak sdílet identifikátory prostorových kotev Azure napříč ostatními zařízeními. Stejný cíl můžete dosáhnout pomocí dalších jazyků a back-endové technologie. Také webová aplikace ASP.NET Core použitá v tomto kurzu má závislost na sadě .NET Core 2,2 SDK. Při běžném Web Apps Azure (pro Windows) to funguje dobře, ale v tuto chvíli nebude fungovat na Azure Web Apps pro Linux.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -42,7 +42,7 @@ Stojí za zmínku, že i když budete používat Unity a ASP.NET Core Web App v 
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-## <a name="deploy-your-sharing-anchors-service"></a>Nasazení služby Kotvy sdílení
+## <a name="deploy-your-sharing-anchors-service"></a>Nasazení služby pro sdílení kotev
 
 ## <a name="visual-studio"></a>[Visual Studio](#tab/VS)
 
@@ -52,11 +52,11 @@ Otevřete Visual Studio a otevřete projekt ve `Sharing\SharingServiceSample` sl
 
 ## <a name="visual-studio-code"></a>[Visual Studio Code](#tab/VSC)
 
-Před nasazením služby v kódu VS budete muset vytvořit skupinu prostředků a plán služby App Service.
+Před nasazením služby v VS Code budete muset vytvořit skupinu prostředků a plán App Service.
 
-### <a name="sign-in-to-azure"></a>Přihlášení k Azure
+### <a name="sign-in-to-azure"></a>Přihlášení do Azure
 
-Přejděte na <a href="https://portal.azure.com/" target="_blank">portál Azure</a> a přihlaste se ke svému předplatnému Azure.
+Přejděte na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> a přihlaste se k předplatnému Azure.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -72,17 +72,17 @@ Skupinu prostředků pojmenujte **myResourceGroup** a vyberte **OK**.
 
 Vedle položky **Plán hostování** vyberte **Nový**.
 
-V dialogovém okně **Konfigurovat hostitelský plán** použijte tato nastavení:
+V dialogovém okně **Konfigurovat plán hostování** použijte Tato nastavení:
 
 | Nastavení | Navrhovaná hodnota | Popis |
 |-|-|-|
 |Plán služby App Service| MySharingServicePlan | Název plánu služby App Service. |
 | Umístění | USA – západ | Datacentrum, které je hostitelem webové aplikace. |
-| Velikost | Free | [Cenová úroveň,](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) která určuje funkce hostování. |
+| Velikost | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , která určuje funkce hostování. |
 
 Vyberte **OK**.
 
-Otevřete kód sady Visual Studio `Sharing\SharingServiceSample` a otevřete projekt ve složce. Postupujte <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">podle tohoto kurzu</a> k nasazení služby sdílení prostřednictvím kódu Sady Visual Studio. Můžete postupovat podle kroků od části "Otevřít pomocí kódu sady Visual Studio". Nevytvářejte další projekt mvc, jak je vysvětleno v kroku výše, jak již máte projekt, který je třeba nasadit a publikovat- SharingServiceSample.
+Otevřete Visual Studio Code a otevřete projekt ve `Sharing\SharingServiceSample` složce. Pomocí <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">tohoto kurzu</a> nasaďte službu sdílení prostřednictvím Visual Studio Code. Můžete postupovat podle kroků uvedených v části otevření v Visual Studio Code. Nevytvářejte další projekt MVC, jak je vysvětleno výše v předchozím kroku, protože již máte projekt, který je třeba nasadit a publikovat – SharingServiceSample.
 
 ---
 
@@ -92,18 +92,18 @@ Otevřete kód sady Visual Studio `Sharing\SharingServiceSample` a otevřete pro
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="unity-20193"></a>Jednota 2019.3
+### <a name="unity-20193"></a>Unity 2019,3
 
-Kvůli zásadním změnám není unity 2019.3 v současné době podporována. Použijte unity 2019.1 nebo 2019.2.
+V důsledku zásadních změn se Unity 2019,3 aktuálně nepodporuje. Použijte prosím Unity 2019,1 nebo 2019,2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nasadili ASP.NET Core Web App v Azure a pak nakonfigurovali a nasadili unity app. Vytvořili jste prostorové kotvy s aplikací a sdíleli je s jinými zařízeními pomocí ASP.NET Core Web App.
+V tomto kurzu jste nasadili ASP.NET Core webovou aplikaci v Azure a potom jste nakonfigurovali a nasadili aplikaci Unity. Vytvořili jste prostorové kotvy s aplikací a sdílíte je s ostatními zařízeními pomocí ASP.NET Core webové aplikace.
 
-Můžete vylepšit ASP.NET Core Web App tak, aby pomocí Azure Cosmos DB zachovat úložiště sdílené identifikátory prostorové kotvy. Přidání podpory Azure Cosmos DB umožní vaší ASP.NET Core Web App vytvořit kotvu dnes a vrátit se o několik dní později, aby bylo možné ji znovu najít pomocí identifikátoru kotvy uloženého ve vaší webové aplikaci.
+Můžete vylepšit ASP.NET Core webové aplikace tak, aby používala Azure Cosmos DB k uchování úložiště vašich sdílených prostorových kotev identifikátorů. Přidáním podpory Azure Cosmos DB umožníte, aby webová aplikace ASP.NET Core vytvořila kotvu ještě dnes a později se znovu vrátila dny, aby ji bylo možné znovu vyhledat pomocí identifikátoru kotvy uloženého ve vaší webové aplikaci.
 
 > [!div class="nextstepaction"]
-> [Použití Azure Cosmo DB k ukládání kotev](./tutorial-use-cosmos-db-to-store-anchors.md)
+> [Použití služby Azure Cosmo DB k ukládání kotev](./tutorial-use-cosmos-db-to-store-anchors.md)
 

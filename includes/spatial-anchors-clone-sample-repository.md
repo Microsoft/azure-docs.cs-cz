@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/15/2020
 ms.locfileid: "81422233"
 ---
-Klonovat [ukázky úložiště](https://github.com/Azure/azure-spatial-anchors-samples) spuštěním následující příkazy:
+Naklonujte [úložiště ukázek](https://github.com/Azure/azure-spatial-anchors-samples) spuštěním následujících příkazů:
 
 ```console
 git clone https://github.com/Azure/azure-spatial-anchors-samples.git

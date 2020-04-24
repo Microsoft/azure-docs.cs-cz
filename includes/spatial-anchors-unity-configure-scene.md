@@ -11,6 +11,6 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "68561443"
 ---
-Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Zkopírovali jste je do textového [editoru při nastavování prostředku Prostorové kotvy](#create-a-spatial-anchors-resource).
+Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Při [nastavování prostředku prostorových ukotvení](#create-a-spatial-anchors-resource)jste je zkopírovali do textového editoru.
 
-V podokně **Projektu** `Assets\AzureSpatialAnchors.SDK\Resources`přejděte na . Vyberte `SpatialAnchorConfig`. Potom v podokně **Inspektor** `Account Key` zadejte hodnotu pro `Spatial Anchors Account Key` a `Account ID` jako hodnotu pro `Spatial Anchors Account Id`.
+V podokně **projekt** přejděte na `Assets\AzureSpatialAnchors.SDK\Resources`. Vyberte `SpatialAnchorConfig`. Poté v podokně **inspektor** `Account Key` zadejte jako hodnotu `Spatial Anchors Account Key` pro a `Account ID` jako hodnotu pro. `Spatial Anchors Account Id`

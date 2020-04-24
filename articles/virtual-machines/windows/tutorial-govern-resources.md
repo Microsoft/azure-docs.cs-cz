@@ -1,25 +1,21 @@
 ---
-title: Výuka – správa virtuálních počítačů pomocí PowerShellu
+title: Kurz – Správa virtuálních počítačů pomocí PowerShellu
 description: V tomto kurzu zjistíte, jak pomocí Azure PowerShellu spravovat virtuální počítače Azure s využitím RBAC, zásad, zámků a značek.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: tfitzmac
-manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-windows
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: d8cb1895c980fa9f84983ea8364cb2f0f5dcb982
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b4ce4cd53f9dda3d0f96e892128d543e59c83b26
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456018"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100358"
 ---
-# <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Kurz: Další informace o správě virtuálních strojů windows s Azure PowerShellem
+# <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Kurz: informace o správě virtuálních počítačů s Windows pomocí Azure PowerShell
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -27,7 +23,7 @@ ms.locfileid: "81456018"
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné [https://shell.azure.com/powershell](https://shell.azure.com/powershell)kartě prohlížeče tak, že přejdete na . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/powershell](https://shell.azure.com/powershell)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="understand-scope"></a>Orientace v oborech
 
@@ -57,7 +53,7 @@ Pro správu řešení virtuálních počítačů existují v závislosti na pros
 
 Místo přiřazování rolí jednotlivým uživatelům je často jednodušší použít skupinu Azure Active Directory obsahující uživatele, kteří potřebují provádět podobné akce. Potom této skupině přiřaďte odpovídající role. Pro účely tohoto článku použijte buď existující skupinu pro správu virtuálního počítače, nebo pomocí portálu [vytvořte skupinu Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Po vytvoření nové skupiny nebo nalezení existující skupiny přiřaďte pomocí příkazu [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) skupinu Azure Active Directory k roli přispěvatele virtuálního počítače pro skupinu prostředků.  
+Po vytvoření nové skupiny nebo vyhledání existující skupiny použijte příkaz [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) a přiřaďte skupinu Azure Active Directory k roli Přispěvatel virtuálních počítačů pro skupinu prostředků.  
 
 ```azurepowershell-interactive
 $adgroup = Get-AzADGroup -DisplayName <your-group-name>
@@ -67,13 +63,13 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-Pokud se zobrazí chyba **oznamující hlavní \<guid> neexistuje v adresáři**, nová skupina nebyla rozšířena v celé službě Azure Active Directory. Zkuste příkaz znovu spustit.
+Pokud se zobrazí chyba oznamující, že **identifikátor \<guid objektu zabezpečení> v adresáři neexistuje**, nová skupina se po celou Azure Active Directory nerozšířila. Zkuste příkaz znovu spustit.
 
 Obvykle tento postup zopakujete pro role *Přispěvatel sítě* a *Přispěvatel účtů úložiště*, abyste zajistili přiřazení uživatelů ke správě nasazených prostředků. V tomto článku můžete tyto kroky vynechat.
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](../../governance/policy/overview.md) pomáhá zajistit, aby všechny prostředky v předplatném splňovaly firemní standardy. Vaše předplatné už obsahuje několik definic zásad. Chcete-li zobrazit dostupné definice zásad, použijte příkaz [Get-AzPolicyDefinition:](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition)
+[Azure Policy](../../governance/policy/overview.md) pomáhá zajistit, aby všechny prostředky v předplatném splňovaly firemní standardy. Vaše předplatné už obsahuje několik definic zásad. Dostupné definice zásad zobrazíte pomocí příkazu [Get-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition) :
 
 ```azurepowershell-interactive
 (Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -85,7 +81,7 @@ Zobrazí se definice existujících zásad. Typ zásad je buď **Předdefinovan�
 * Omezení SKU pro virtuální počítače
 * Audit virtuálních počítačů, které nepoužívají spravované disky
 
-V následujícím příkladu načtete definice tří zásad na základě zobrazovaného názvu. Příkaz [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) slouží k přiřazení těchto definic skupině prostředků. U některých zásad určíte povolené hodnoty zadáním hodnot parametrů.
+V následujícím příkladu načtete definice tří zásad na základě zobrazovaného názvu. K přiřazení těchto definic do skupiny prostředků použijte příkaz [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) . U některých zásad určíte povolené hodnoty zadáním hodnot parametrů.
 
 ```azurepowershell-interactive
 # Values to use for parameters
@@ -139,7 +135,7 @@ Po dokončení nasazování můžete použít další nastavení pro správu ře
 
 [Zámky prostředků](../../azure-resource-manager/management/lock-resources.md) zabraňují tomu, aby uživatelé ve vaší organizaci neúmyslně odstranili nebo změnili důležité prostředky. Na rozdíl od řízení přístupu na základě role používají zámky prostředků omezení pro všechny uživatele a role. Zámek můžete nastavit na úroveň *CanNotDelete* nebo *ReadOnly*.
 
-Chcete-li zamknout virtuální počítač a skupinu zabezpečení sítě, použijte příkaz [New-AzResourceLock:](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock)
+Chcete-li zamknout virtuální počítač a skupinu zabezpečení sítě, použijte příkaz [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) :
 
 ```azurepowershell-interactive
 # Add CanNotDelete lock to the VM
@@ -167,11 +163,11 @@ Zobrazí se chyba s oznámením, že operaci odstranění nelze kvůli zámku do
 
 ## <a name="tag-resources"></a>Označení prostředků
 
-[Značky](../../azure-resource-manager/management/tag-resources.md) se použijí na prostředky Azure, aby je logicky uspořádat podle kategorií. Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
+[Značky](../../azure-resource-manager/management/tag-resources.md) můžete použít pro prostředky Azure, abyste je logicky uspořádali podle kategorií. Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
-Chcete-li použít značky na virtuální počítač, použijte příkaz [Set-AzResource:](https://docs.microsoft.com/powershell/module/az.resources/set-azresource)
+Pokud chcete použít značky na virtuálním počítači, použijte příkaz [set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) :
 
 ```azurepowershell-interactive
 # Get the virtual machine
@@ -185,7 +181,7 @@ Set-AzResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } 
 
 ### <a name="find-resources-by-tag"></a>Hledání prostředků podle značky
 
-Chcete-li najít prostředky s názvem a hodnotou značky, použijte příkaz [Získat azResource:](https://docs.microsoft.com/powershell/module/az.resources/get-azresource)
+Chcete-li najít prostředky s názvem a hodnotou značky, použijte příkaz [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) :
 
 ```azurepowershell-interactive
 (Get-AzResource -Tag @{ Environment="Test"}).Name
@@ -203,7 +199,7 @@ Get-AzResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Zamčená skupina zabezpečení sítě nejde odstranit, dokud neodstraníte zámek. Chcete-li zámek odebrat, použijte příkaz [Remove-AzResourceLock:](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock)
+Zamčená skupina zabezpečení sítě nejde odstranit, dokud neodstraníte zámek. Chcete-li odebrat zámek, použijte příkaz [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) :
 
 ```azurepowershell-interactive
 Remove-AzResourceLock -LockName LockVM `
@@ -216,7 +212,7 @@ Remove-AzResourceLock -LockName LockNSG `
   -ResourceGroupName myResourceGroup
 ```
 
-Když už nepotřebujete, můžete použít příkaz [Odebrat AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků, virtuálního virtuálního času a všech souvisejících prostředků.
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) .
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
@@ -232,7 +228,7 @@ V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili
 > * Ochrana důležitých prostředků pomocí zámků
 > * Označení prostředků pro fakturaci a správu
 
-Přejdete k dalšímu kurzu, kde se dozvíte, jak identifikovat změny a spravovat aktualizace balíčků na virtuálním počítači s Linuxem.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak identifikovat změny a spravovat aktualizace balíčků na virtuálním počítači se systémem Linux.
 
 > [!div class="nextstepaction"]
 > [Správa virtuálních počítačů](tutorial-config-management.md)

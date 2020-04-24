@@ -1,6 +1,6 @@
 ---
-title: Úvodní příručka – vytvoření centra oznámení Azure pomocí azure cli | Dokumenty společnosti Microsoft
-description: V tomto kurzu se dozvíte, jak vytvořit centrum oznámení Azure pomocí azure cli.
+title: Rychlý Start – vytvoření centra oznámení Azure pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: V tomto kurzu se naučíte vytvořit centrum oznámení Azure pomocí Azure CLI.
 services: notification-hubs
 author: dbradish-microsoft
 manager: barbkess
@@ -20,33 +20,33 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "80082448"
 ---
-# <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Úvodní příručka: Vytvoření centra oznámení Azure pomocí azure cli
+# <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rychlý Start: vytvoření centra oznámení Azure pomocí Azure CLI
 
-Služba Azure Notification Hubs nabízí snadno použitelné, škálovatelné zasílací jádro, které umožňuje posílat oznámení libovolné platformě (iOS, Android, Windows, Kindle, Baidu atd.) z libovolného back-endu (cloudový nebo místní). Další informace o službě najdete v tématu [Co je Centra oznámení Azure?](notification-hubs-push-notification-overview.md).
+Služba Azure Notification Hubs nabízí snadno použitelné, škálovatelné zasílací jádro, které umožňuje posílat oznámení libovolné platformě (iOS, Android, Windows, Kindle, Baidu atd.) z libovolného back-endu (cloudový nebo místní). Další informace o této službě najdete v tématu [co je Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
-V tomto rychlém startu vytvoříte centrum oznámení pomocí azure cli. První část obsahuje kroky k vytvoření oboru názvů centra oznámení a dotazu na informace o zásadách přístupu pro tento obor názvů. Druhá část obsahuje kroky k vytvoření centra oznámení v existujícím oboru názvů.  Dozvíte se také, jak vytvořit vlastní zásady přístupu.
+V tomto rychlém startu vytvoříte centrum oznámení pomocí Azure CLI. První část obsahuje pokyny k vytvoření oboru názvů centra oznámení a informace o zásadách přístupu k dotazům pro tento obor názvů. Druhá část obsahuje postup vytvoření centra oznámení v existujícím oboru názvů.  Naučíte se také, jak vytvořit vlastní zásady přístupu.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Centra oznámení vyžadují verzi 2.0.67 nebo novější v příkazovém příkazovém příkazu Azure. Spusťte `az --version` a vyhledejte nainstalovanou verzi a závislé knihovny. Informace o instalaci nebo upgradu najdete [v tématu Instalace příkazového příkazového příkazu k webu Azure](/cli/azure/install-azure-cli).
+Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 nebo novější. Spusťte `az --version` pro vyhledání verze a závislých knihoven, které jsou nainstalovány. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
 1. Přihlásit se.
 
-   Pokud používáte místní instalaci příkazu CLI, přihlaste se pomocí příkazu [az login.](/cli/azure/reference-index#az-login)
+   Přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) , pokud používáte místní instalaci rozhraní příkazového řádku.
 
     ```azurecli-interactive
     az login
     ```
 
-    Postup ověřování dokončujte podle pokynů zobrazených v terminálu.
+    Proces ověřování dokončíte podle kroků zobrazených v terminálu.
 
 2. Nainstalujte rozšíření Azure CLI.
 
-   Chcete-li spustit příkazy Azure CLI pro centra oznámení, nainstalujte rozšíření Azure CLI [pro centra oznámení](/cli/azure/ext/notification-hub/notification-hub).  
+   Pokud chcete spustit příkazy rozhraní příkazového řádku Azure CLI pro centra oznámení, nainstalujte rozšíření Azure CLI [pro Notification Hubs](/cli/azure/ext/notification-hub/notification-hub).  
 
     ```azurecli-interactive
     az extension add --name notification-hub
@@ -54,9 +54,9 @@ Centra oznámení vyžadují verzi 2.0.67 nebo novější v příkazovém přík
 
 3. Vytvořte skupinu prostředků.
 
-   Centra oznámení Azure, stejně jako všechny prostředky Azure, musí být nasazená do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
+   Centra oznámení Azure, jako jsou všechny prostředky Azure, musí být nasazená do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
 
-   Pro tento rychlý start vytvořte skupinu prostředků s názvem *spnhubrg* v umístění *eastus* s následujícím [příkazem az group create:](/cli/azure/group#az-group-create)
+   V tomto rychlém startu vytvořte skupinu prostředků s názvem *spnhubrg* v umístění *eastus* pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az-group-create) :
 
    ```azurecli-interactive
    az group create --name spnhubrg --location eastus
@@ -64,9 +64,9 @@ Centra oznámení vyžadují verzi 2.0.67 nebo novější v příkazovém přík
 
 ## <a name="create-a-notification-hub-namespace"></a>Vytvoření oboru názvů centra oznámení
 
-1. Vytvoření oboru názvů pro centra oznámení
+1. Vytvoření oboru názvů pro vaše centra oznámení
 
-   Obor názvů obsahuje jedno nebo více rozbočovačů a název musí být jedinečný ve všech předplatných Azure.  Chcete-li zkontrolovat dostupnost daného oboru názvů služby, použijte příkaz [kontrola dostupnosti az notification-hub.](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-check-availability)  Spusťte příkaz [vytvoření oboru názvů centra oznámení az](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-create) avytvořte obor názvů.  
+   Obor názvů obsahuje jeden nebo víc Center a název musí být v rámci všech předplatných Azure jedinečný.  Pokud chcete ověřit dostupnost daného oboru názvů služby, použijte příkaz [AZ Notification-hub Namespace-Availability Namespace](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-check-availability) .  Spuštěním příkazu [AZ Notification-hub Namespace Create](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-create) vytvořte obor názvů.  
 
    ```azurecli-interactive
    #check availability
@@ -76,19 +76,19 @@ Centra oznámení vyžadují verzi 2.0.67 nebo novější v příkazovém přík
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
    ```
 
-2. Seznam klíčů a připojovacích řetězců pro zásady přístupu k oboru názvů.
+2. Vypíše klíče a připojovací řetězce pro zásady přístupu k oboru názvů.
 
-   Pro nový obor názvů je automaticky vytvořena zásada přístupu s názvem **RootManageSharedAccessKey.**  Každá zásada přístupu má dvě sady klíčů a připojovacích řetězců.  Chcete-li vypsat klíče a připojovací řetězce pro obor názvů, spusťte příkaz [az notification-hub název-centrum autorizačního pravidla seznamu-klíče.](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys)
+   Zásady přístupu s názvem **RootManageSharedAccessKey** se automaticky vytvoří pro nový obor názvů.  Každé zásady přístupu mají dvě sady klíčů a připojovací řetězce.  Chcete-li zobrazit seznam klíčů a připojovacích řetězců pro obor názvů, spusťte příkaz [AZ Notification-hub Namespace – seznam pravidel](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) – příkaz klíče.
 
    ```azurecli-interactive
    az notification-hub namespace authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --name RootManageSharedAccessKey
    ```
 
-## <a name="create-notification-hubs"></a>Vytvoření center oznámení
+## <a name="create-notification-hubs"></a>Vytvořit centra oznámení
 
-1. Vytvořte si první centrum oznámení.
+1. Vytvořte své první centrum oznámení.
 
-   Centrum oznámení lze nyní vytvořit v novém oboru názvů.  Spusťte příkaz vytvořit centrum [oznámení a](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-create) vytvořte centrum oznámení.
+   Centrum oznámení se teď dá vytvořit v novém oboru názvů.  Spuštěním příkazu [AZ Notification-hub Create](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-create) vytvořte centrum oznámení.
 
    ```azurecli-interactive
    az notification-hub create --resource-group spnhubrg --namespace-name spnhubns --name spfcmtutorial1nhub --location eastus --sku Free
@@ -96,7 +96,7 @@ Centra oznámení vyžadují verzi 2.0.67 nebo novější v příkazovém přík
 
 2. Vytvořte druhé centrum oznámení.
 
-   V jednom oboru názvů lze vytvořit více center oznámení.  Chcete-li vytvořit druhý rozbočovač oznámení `az notification-hub create` ve stejném oboru názvů, spusťte příkaz znovu pomocí jiného názvu rozbočovače.
+   V jednom oboru názvů se dá vytvořit víc Center oznámení.  Pokud chcete ve stejném oboru názvů vytvořit druhé centrum oznámení, spusťte `az notification-hub create` příkaz znovu s jiným názvem centra.
 
    ```azurecli-interactive
    az notification-hub create --resource-group spnhubrg --namespace-name spnhubns --name mysecondnhub --location eastus --sku Free
@@ -104,28 +104,28 @@ Centra oznámení vyžadují verzi 2.0.67 nebo novější v příkazovém přík
 
 ## <a name="work-with-access-policies"></a>Práce se zásadami přístupu
 
-1. Vytvořte nové autorizační pravidlo pro centrum oznámení.
+1. Vytvoří nové autorizační pravidlo pro Centrum oznámení.
 
-   Zásady přístupu se automaticky vytvoří pro každé nové centrum oznámení.  Chcete-li vytvořit a přizpůsobit vlastní zásady přístupu, použijte příkaz [az notification-hub authorization-rule create](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-create) .
+   Zásady přístupu se automaticky vytvoří pro každé nové centrum oznámení.  Pokud chcete vytvořit a přizpůsobit vlastní zásady přístupu, použijte příkaz [AZ Notification-hub Authorization-Rule Create](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-create) .
 
    ```azurecli-interactive
    az notification-hub authorization-rule create --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name spnhub1key --rights Listen Send
    ```
 
-2. Seznam zásad přístupu pro centrum oznámení.
+2. Vypíše zásady přístupu pro Centrum oznámení.
 
-   Chcete-li se dotazovat, jaké zásady přístupu existují pro centrum oznámení, použijte příkaz [az notification-hub authorization-rule.](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list)
+   K dotazování na to, jaké zásady přístupu existují pro Centrum oznámení, použijte příkaz [AZ Notification-hub Authorization-Rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) .
 
    ```azurecli-interactive
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
    ```
 
    > [!IMPORTANT]
-   > Nepoužívejte zásady **DefaultFullSharedAccessSignature** ve vaší aplikaci. Ten je určený pouze pro použití na back-endu.  Používejte pouze zásady přístupu **naslouchání** v klientské aplikaci.
+   > V aplikaci nepoužívejte zásady **DefaultFullSharedAccessSignature** . Ten je určený pouze pro použití na back-endu.  V klientské aplikaci použijte pouze zásady přístupu **naslouchání** .
 
-3. Seznam klíčů a připojovacích řetězců pro zásady přístupu k centru oznámení
+3. Seznam klíčů a připojovacích řetězců pro zásady přístupu centra oznámení
 
-   Pro každou zásadu přístupu existují dvě sady klíčů a připojovacích řetězců.  Budete je později potřebovat ke zpracování nabízených oznámení.  Chcete-li vypsat řetězce klíčů a připojení pro zásady přístupu k centru oznámení, použijte příkaz [az authorization-rule-rule.To](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) list the keys and connections strings for a notification hub access policy, use the az notification hub authorization-rule list-keys command.
+   Pro každou zásadu přístupu existují dvě sady klíčů a připojovací řetězce.  Budete je potřebovat později pro zpracování nabízených oznámení.  Chcete-li zobrazit seznam klíčů a řetězců připojení pro zásady přístupu k centru oznámení, použijte příkaz [AZ Notification-hub Authorization-Rule](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) Policy Command-Keys.
 
    ```azurecli-interactive
    #query the keys and connection strings for DefaultListenSharedAccessSignature
@@ -136,11 +136,11 @@ Centra oznámení vyžadují verzi 2.0.67 nebo novější v příkazovém přík
    ```
 
    > [!NOTE]
-   > [Obor názvů centra oznámení](/cli/azure/ext/notification-hub/notification-hub/namespace/authorization-rule#ext-notification-hub-az-notification-hub-namespace-authorization-rule-list-keys) a centrum [oznámení](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) mají samostatné zásady přístupu.  Ujistěte se, že používáte správný odkaz vpříkazkového propojení Azure při dotazování na klíče a připojovací řetězce.
+   > [Obor názvů centra oznámení](/cli/azure/ext/notification-hub/notification-hub/namespace/authorization-rule#ext-notification-hub-az-notification-hub-namespace-authorization-rule-list-keys) a [Centrum oznámení](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) mají samostatné zásady přístupu.  Ujistěte se, že používáte správný odkaz na rozhraní příkazového řádku Azure CLI při dotazování na klíče a připojovací řetězce.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud již není potřeba, použijte příkaz [odstranění skupiny az](/cli/azure/group) k odebrání skupiny prostředků a všech souvisejících prostředků.
+Pokud už je nepotřebujete, odeberte skupinu prostředků a všechny související prostředky pomocí příkazu [AZ Group Delete](/cli/azure/group) .
 
 ```azurecli-interactive
 az group delete --name spnhubrg
@@ -148,9 +148,9 @@ az group delete --name spnhubrg
 
 ## <a name="see-also"></a>Viz také
 
-Seznamte se s úplnými možnostmi správy center oznámení pomocí azure cli.
+Seznamte se s úplnými možnostmi pro správu Center oznámení pomocí Azure CLI.
 
-* [Úplný seznam odkazů azure cli centra pro centra oznámení](/cli/azure/ext/notification-hub/notification-hub)
-* [Seznam odkazů Azure CLI oboru center oznámení](/cli/azure/ext/notification-hub/notification-hub/namespace)
-* [Referenční seznam Azure CLI pravidla autorizace centra oznámení](/cli/azure/ext/notification-hub/notification-hub/authorization-rule)
-* [Seznam odkazů Azure CLI pověření centra oznámení](/cli/azure/ext/notification-hub/notification-hub/credential)
+* [Notification Hubs úplný seznam odkazů Azure CLI](/cli/azure/ext/notification-hub/notification-hub)
+* [Seznam odkazů na obor názvů Azure CLI Notification Hubs](/cli/azure/ext/notification-hub/notification-hub/namespace)
+* [Seznam referenčních seznamů Azure CLI Notification Hubs autorizačního pravidla](/cli/azure/ext/notification-hub/notification-hub/authorization-rule)
+* [Seznam referenčních seznamů Azure CLI Notification Hubs přihlašovacích údajů](/cli/azure/ext/notification-hub/notification-hub/credential)

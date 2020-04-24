@@ -1,7 +1,7 @@
 ---
-title: Migrace do prostředků Azure pro vytváření
+title: Migrace na prostředek Azure pro vytváření obsahu
 titleSuffix: Azure Cognitive Services
-description: Migrujte do klíče vývojového prostředku Azure.
+description: Migrujte na klíč prostředku pro vytváření Azure.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,109 +11,109 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 679073715588a4a81e69e3e7ba2d18341b1bab4b
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78194505"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096618"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
-Ověřování ve vytváření jazyka (LUIS) se změnilo z e-mailového účtu na prostředek Azure. I když není aktuálně vyžadováno, přechod na prostředek Azure se bude vynucovat v budoucnu.
+Language Understanding (LUIS) ověřování při vytváření se změnilo z e-mailového účtu na prostředek Azure. I když to není v současnosti nutné, bude v budoucnu vynutilo přepnutí do prostředku Azure.
 
 ## <a name="why-migrate"></a>Proč migrovat?
 
-Použití prostředku Azure pro vytváření umožňuje jako vlastník prostředku řídit přístup k vytváření. Můžete vytvořit a pojmenovat vývojové prostředky pro správu různých skupin autorů.
+Pomocí prostředku Azure pro vytváření obsahu můžete jako vlastníka prostředku řídit přístup k vytváření obsahu. Můžete vytvořit a pojmenovat prostředky vytváření pro správu různých skupin autorů.
 
-Například jste vlastníkem 2 aplikací LUIS a máte různé členy, kteří jsou spolupracovníky na každé aplikaci. Můžete vytvořit dva různé vývojové prostředky a přiřadit každou aplikaci ke každému samostatnému prostředku. Pak přiřaďte jednotlivé členy jako přispěvatele k správnému zdroji pro vytváření v závislosti na tom, na které aplikaci spolupracují. Autorizační prostředek Azure řídí autorizaci.
+Například jste vlastníkem dvou aplikací LUIS a máte různé členy, kteří jsou spolupracovníky na každé aplikaci. Můžete vytvořit dva různé prostředky pro vytváření obsahu a přiřadit každou aplikaci každému samostatnému prostředku. Pak každému členovi přiřaďte jako přispěvateli správný prostředek pro vytváření obsahu v závislosti na tom, která aplikace na nich spolupracuje. Prostředek pro vytváření Azure řídí autorizaci.
 
 > [!Note]
-> Před migrací se spoluautoři označují jako _spolupracovníci_ na úrovni aplikace LUIS. Po migraci se role _přispěvatele_ Azure používá pro stejné funkce, ale na úrovni prostředků Azure.
+> Před migrací se jako _spolupracovníci_ na úrovni aplikace Luis označují spoluautoři. Po migraci se role Azure _přispěvatele_ používá pro stejné funkce, ale na úrovni prostředků Azure.
 
-## <a name="what-is-migrating"></a>Co je migrace?
+## <a name="what-is-migrating"></a>Co se migruje?
 
 Migrace zahrnuje:
 
-* Všichni uživatelé služby LUIS, vlastníci a přispěvatelé.
-* **Všechny** aplikace.
+* Všichni uživatelé LUIS, vlastníci a přispěvatelé.
+* **Všechny** aplikace
 * **Jednosměrná** migrace.
 
-Vlastník nemůže zvolit podmnožinu aplikací, které chcete migrovat, a proces není reverzibilní.
+Vlastník nemůže zvolit podmnožinu aplikací k migraci a proces nebude vratný.
 
 Migrace není:
 
-* Proces, který shromažďuje spolupracovníky a automaticky přesune nebo přidá do zdrojového prostředku Azure. Tento krok musíte dokončit vy jako vlastník aplikace. Tento krok vyžaduje oprávnění k příslušnému prostředku.
-* Proces vytvoření a přiřazení prostředku běhu za běhu předpověď. Pokud potřebujete prostředek běhu předpověď, který je [samostatný proces](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) a je beze změny.
+* Proces, který shromažďuje spolupracovníky a automaticky přesouvá nebo přidává do prostředku pro vytváření obsahu Azure. Jako vlastník aplikace je potřeba tento krok dokončit. Tento krok vyžaduje oprávnění k příslušnému prostředku.
+* Proces vytvoření a přiřazení prostředku modulu runtime předpovědi. Pokud potřebujete běhový prostředek předpovědi, je to [samostatný proces](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) a nemění se.
 
 ## <a name="how-are-the-apps-migrating"></a>Jak se aplikace migrují?
 
-[Portál LUIS](https://www.luis.ai) poskytuje proces migrace.
+[Portál Luis](https://www.luis.ai) poskytuje proces migrace.
 
 Budete vyzváni k migraci, pokud:
 
-* Máte aplikace v systému ověřování e-mailu pro vytváření.
-* A vy jste majitel aplikace.
+* Máte aplikace v systému ověřování e-mailů pro vytváření obsahu.
+* A jste vlastníkem aplikace.
 
-Proces migrace můžete zpozdit zrušením z okna. Budete pravidelně vyzváni k migraci, dokud nepředáte migrál nebo dokud neuběhnete konečný termín migrace. Proces migrace můžete spustit z ikony zámku horního navigačního panelu.
+Proces migrace můžete odložit zrušením z okna. Pravidelně budete požádáni o migraci, dokud neprovedete migraci nebo neuplyne konečný termín migrace. Proces migrace můžete spustit z ikony zámku horní navigační panel.
 
 ## <a name="migration-for-the-app-owner"></a>Migrace pro vlastníka aplikace
 
 ### <a name="before-you-migrate"></a>Před migrací
 
-* **Povinné**, musíte mít [předplatné Azure](https://azure.microsoft.com/free/). Část procesu předplatného vyžaduje fakturační údaje. Však můžete použít free`F0`( ) cenovou úroveň při použití LUIS.
-* **Volitelně**zálohujte aplikace ze seznamu aplikací portálu LUIS exportem jednotlivých aplikací nebo použijte [exportní rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40).
-* **Volitelně**můžete uložit seznam spolupracovníků jednotlivých aplikací. Tento seznam e-mailů je k dispozici jako součást procesu migrace.
+* Je **potřeba mít** [předplatné Azure](https://azure.microsoft.com/free/). Součástí procesu předplatného je vyžadování fakturačních informací. Při použití LUIS ale můžete použít cenovou`F0`úroveň Free ().
+* **Volitelně můžete**aplikace zálohovat ze seznamu aplikací portálu Luis, a to tak, že jednotlivé aplikace exportujete nebo použijete [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)pro export.
+* **Volitelně můžete**Uložit seznam collaborator's jednotlivých aplikací. Tento e-mailový seznam se poskytuje jako součást procesu migrace.
 
 
-**Vytváření aplikace LUIS je zdarma**, `F0` označené vrstvou. Přečtěte si další informace [o cenových úrovních](luis-boundaries.md#key-limits).
+**Vytváření aplikací Luis je zadarmo**, které uvádí `F0` vrstva. Přečtěte si [Další informace o cenových úrovních](luis-limits.md#key-limits).
 
-Pokud nemáte předplatné Azure, [zaregistrujte se](https://azure.microsoft.com/free/).
+Pokud nemáte předplatné Azure, [Zaregistrujte](https://azure.microsoft.com/free/)se.
 
 ### <a name="migration-steps"></a>Kroky migrace
 
-Postupujte [podle těchto kroků migrace](luis-migration-authoring-steps.md).
+Postupujte podle [těchto kroků migrace](luis-migration-authoring-steps.md).
 
-### <a name="after-you-migrate"></a>Po migraci
+### <a name="after-you-migrate"></a>Po dokončení migrace
 
-Po procesu migrace jsou teď všechny vaše aplikace LUIS přiřazeny k jednomu vývojovému prostředku LUIS.
+Po dokončení procesu migrace se teď všechny vaše aplikace LUIS přiřadí k jednomu prostředku pro vytváření LUIS.
 
-Můžete vytvořit další vývojové prostředky a přiřadit ze stránky **Spravovat -> prostředků Azure** na _portálu LUIS_.
+Na _portálu Luis_můžete vytvořit další prostředky pro vytváření obsahu a přiřadit je na stránce **Spravovat > prostředky Azure** .
 
-Přispěvatele můžete přidat k vývojovému prostředku z _portálu Azure_na stránce **Řízení přístupu (IAM)** pro tento prostředek. Další informace naleznete v tématu [přidání přístupu přispěvatele](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
+Přispěvatele můžete přidat do prostředku vytváření z _Azure Portal_na stránce **Access Control (IAM)** daného prostředku. Další informace najdete v tématu [Přidání přístupu přispěvatele](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
 
 |Portál|Účel|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)|* Vytvořte predikci a vytváření zdrojů.<br>* Přiřaďte přispěvatele.|
-|[LUIS](https://www.luis.ai)|* Migrovat do nových zdrojů vytváření.<br>* Přiřaďte nebo odřaďte predikci a vytváření prostředků k aplikacím ze stránky **Spravovat -> prostředků Azure.**|
+|[Azure](https://azure.microsoft.com/free/)|* Vytvořte předpověď a vytváření prostředků.<br>* Přiřaďte přispěvatele.|
+|[LUIS](https://www.luis.ai)|* Migrujte na nové prostředky pro vytváření obsahu.<br>* Přiřaďte nebo zrušte přiřazení předpovědí a vytváření prostředků aplikacím ze stránky **Spravovat – > prostředky Azure** .|
 
-## <a name="migration-for-the-app-contributor"></a>Migrace pro přispěvatele aplikace
+## <a name="migration-for-the-app-contributor"></a>Migrace pro přispěvatele aplikací
 
-Každý uživatel služby LUIS musí migrovat, včetně spolupracovníků nebo přispěvatelů. Aby měl spolupracovník přístup k aplikaci, musí migrovat.
+Každý uživatel LUIS musí migrovat, včetně spolupracovníků a přispěvatelů. Spolupracovníka musí migrovat, aby měl přístup k aplikaci.
 
 > [!Note]
-> Pokud vlastník aplikace LUIS migroval a přidal spolupracovníka jako přispěvatele na prostředek Azure, spolupracovník bude mít stále žádný přístup k aplikaci, pokud také migrovat.
+> Pokud vlastník aplikace LUIS migrovali a přidal spolupracovníka jako přispěvatele na prostředku Azure, spolupracovníka nebude mít k této aplikaci k dispozici žádný přístup, pokud se ani nepřenáší.
 
 ### <a name="before-the-app-is-migrated"></a>Před migrací aplikace
 
-Můžete se rozhodnout exportovat aplikaci, na které jste spolupracovníkem, a pak ji importovat zpět do služby LUIS. Proces importu vytvoří novou aplikaci s novým ID aplikace, pro kterou jste vlastníkem.
+Můžete zvolit export aplikace, kterou jste spolupracovníka, a pak aplikaci importovat zpátky do LUIS. Proces importu vytvoří novou aplikaci s novým ID aplikace, pro kterou jste vlastníkem.
 
 ### <a name="after-the-app-is-migrated"></a>Po migraci aplikace
 
-Vlastník aplikace musí [přidat váš e-mail do zdrojového prostředku Azure jako spolupracovník](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource).
+Vlastník aplikace musí [Přidat váš e-mail do prostředku pro tvorbu Azure jako spolupracovníka](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource).
 
-Po procesu migrace jsou všechny aplikace, které vlastníte, dostupné na stránce **Moje aplikace** na portálu LUIS.
+Po dokončení procesu migrace budou všechny aplikace, které vlastníte, k dispozici na stránce **Moje aplikace** na portálu Luis.
 
-## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>Poradce při potížích s procesem migrace pro vytváření luis
+## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>Řešení potíží s procesem migrace pro vytváření LUIS
 
-* Vývojové klíče LUIS jsou viditelné pouze na portálu LUIS po dokončení procesu migrace. Pokud vytvoříte vývojové klíče, například pomocí rozhraní ŘÍZENÍ UŽIVATELSKÝCH ROZHRANÍ LUIS, uživatel stále potřebuje dokončit proces migrace na portálu LUIS.
-* Pokud migrovaný uživatel přidá nemigrovaného uživatele jako přispěvatele do svého prostředku Azure, nemigrovaný uživatel nebude mít přístup k aplikacím, pokud se nemigruje.
-* Pokud nemigrovaný uživatel není vlastníkem žádné aplikace, ale je spolupracovníkem jiných aplikací, které jsou vlastněny jinými uživateli a vlastníci prošli procesem migrace, bude muset tento uživatel migrovat, aby měl přístup k aplikacím.
-* Pokud nemigrovaný uživatel přidal jiného migrovaného uživatele jako spolupracovníka do své aplikace, dojde k chybě, protože migrovaného uživatele nebudete moci přidat jako spolupracovníka do aplikace. Nemigrovaný uživatel pak bude muset projít procesem migrace a vytvořit prostředek azure a přidat migrovaného uživatele jako přispěvatele k tomuto prostředku.
+* Klíče pro vytváření LUIS se po dokončení procesu migrace zobrazují jenom na portálu LUIS. Pokud vytváříte klíče pro vytváření obsahu, například s rozhraním příkazového řádku LUIS, uživatel pořád potřebuje dokončit proces migrace na portálu LUIS.
+* Pokud migrovaný uživatel přidá nemigrovaného uživatele jako přispěvatele na svém prostředku Azure, nemigrovaný uživatel nebude mít přístup k aplikacím, dokud nemigruje.
+* Pokud nemigrovaný uživatel není vlastníkem žádné aplikace, ale spolupracuje s jinými aplikacemi, které vlastní jiní uživatelé, a vlastníci prošli procesem migrace, bude muset tento uživatel migrovat, aby měl přístup k aplikacím.
+* Pokud uživatelem nemigrovaný uživatel přidal do své aplikace dalšího migrovaného uživatele, dojde k chybě, protože nebudete moct do aplikace přidat migrovaného uživatele jako spolupracovníka. Nemigrovaný uživatel pak bude muset projít procesem migrace a vytvořit prostředek Azure a přidat migrovaného uživatele jako přispěvatele k tomuto prostředku.
 
 Během procesu migrace se zobrazí chyba, pokud:
-* Vaše předplatné neopravňuje k vytváření prostředků služeb Cognitive Services.
-* Migrace negativně ovlivňuje všechny aplikace za běhu. Při migraci se z vašich aplikací odeberou všichni spolupracovníci a vy jste odebráni jako spolupracovníci z jiných aplikací. Tento proces znamená, že klíče, které jste přiřadili, budou také odstraněny. Migrace se zablokuje, pokud jste přiřadili klíče v jiných aplikacích. Před migrací odeberte bezpečně přiřazený klíč. Pokud víte, že klíč, který jste přiřadili, se nepoužívá v době běhu, pak je nutné jej odebrat, aby bylo možné postupovat v migraci.
+* Vaše předplatné vám neopravňuje k vytváření Cognitive Servicesch prostředků.
+* Vaše migrace negativně ovlivňuje všechny aplikace za běhu. Při migraci se z vašich aplikací odeberou všechny spolupracovníci a Vy jste z jiných aplikací odebrali jako spolupracovníka. Tento proces znamená, že klíče, které jste přiřadili, se taky odebraly. Migrace se zablokuje, pokud jste přiřadili klíče v jiných aplikacích. Před migrací odeberte klíč, který jste přiřadili bezpečně. Pokud víte, že klíč, který jste přiřadili, se v modulu runtime nepoužívá, musíte ho odebrat, aby bylo možné v migraci provést průběh migrace.
 
 Přístup k seznamu prostředků Azure vaší aplikace pomocí následujícího formátu adresy URL:
 
@@ -121,4 +121,4 @@ Přístup k seznamu prostředků Azure vaší aplikace pomocí následujícího 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Jak migrovat aplikaci do zdrojového zdroje](luis-migration-authoring-steps.md)
+* [Postup migrace aplikace do prostředku pro vytváření](luis-migration-authoring-steps.md)

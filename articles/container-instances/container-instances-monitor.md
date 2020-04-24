@@ -1,54 +1,54 @@
 ---
-title: Monitorování instancí kontejnerů
-description: Jak sledovat spotřebu výpočetních prostředků, jako je procesor a paměť pomocí kontejnerů v azure container instances.
+title: Monitorovat instance kontejnerů
+description: Jak monitorovat spotřebu výpočetních prostředků, jako je CPU a paměť, v kontejnerech v Azure Container Instances.
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: b4a66254c18d7e01b6d56e64e6b62721b620d499
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250034"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116363"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Monitorování prostředků kontejneru ve službě Azure Container Instances
 
-[Azure Monitor][azure-monitoring] poskytuje přehled o výpočetních prostředků používaných instancemi kontejnerů. Tato data o využití prostředků vám pomohou určit nejlepší nastavení prostředků pro skupiny kontejnerů. Azure Monitor také poskytuje metriky, které sledují aktivitu sítě ve vašich instancích kontejneru.
+[Azure monitor][azure-monitoring] poskytuje přehled o výpočetních prostředcích používaných instancemi kontejnerů. Tato data o využití prostředků pomáhají určit nejlepší nastavení prostředků pro skupiny kontejnerů. Azure Monitor také poskytuje metriky, které sledují síťové aktivity ve vašich kontejnerových instancích.
 
-Tento dokument podrobnosti shromažďování metriky Azure Monitor pro instance kontejnerů pomocí portálu Azure a Azure CLI.
+Tento dokument popisuje shromažďování Azure Monitor metrik pro instance kontejnerů pomocí Azure Portal a Azure CLI.
 
 > [!IMPORTANT]
-> Metriky Azure Monitoru v instanci kontejnerů Azure jsou aktuálně ve verzi preview a platí určitá [omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Metriky Azure Monitor v Azure Container Instances jsou momentálně ve verzi Preview a [platí některá omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="preview-limitations"></a>Omezení náhledu
+## <a name="preview-limitations"></a>Omezení verze Preview
 
-V tuto chvíli metriky Azure Monitor jsou k dispozici pouze pro kontejnery Linuxu.
+V současné době Azure Monitor metriky dostupné jenom pro kontejnery Linux.
 
 ## <a name="available-metrics"></a>Dostupné metriky
 
-Azure Monitor poskytuje následující [metriky pro instance kontejnerů Azure][supported-metrics]. Tyto metriky jsou k dispozici pro skupinu kontejnerů a jednotlivé kontejnery.
+Azure Monitor poskytuje následující [metriky pro Azure Container Instances][supported-metrics]. Tyto metriky jsou k dispozici pro skupinu kontejnerů a jednotlivé kontejnery. Ve výchozím nastavení jsou metriky agregované jako průměry.
 
-* **Využití procesoru** - měřeno v **milijádrích**. Jeden milicore je 1/1000th jádra CPU, takže 500 milicores (nebo 500 m) představuje 50% využití jádra CPU. Agregované jako **průměrné využití** ve všech jádrech.
+* **Využití procesoru** – měřené v **millicores**. Jedna millicore je 1/1000th jádra procesoru, takže 500 millicores představuje využití 0,5 CPU core.
 
-* **Využití paměti** - agregované jako **průměrné bajty**.
+* **Využití paměti** – bajty v bajtech
 
-* **Počet přijatých síťových bajtů za sekundu** a **počet přenesených síťových bajtů za sekundu** – agregováno jako **průměrný počet bajtů za sekundu**. 
+* **Počet bajtů přijatých v síti za sekundu** a **přenos bajtů sítě za sekundu** 
 
 ## <a name="get-metrics---azure-portal"></a>Získání metrik – Azure Portal
 
-Data služby Azure Monitor budou k dispozici na webu Azure Portal po vytvoření skupiny kontejnerů. Metriky pro skupinu kontejnerů najdete na stránce **Přehled** pro skupinu kontejnerů. Zde si můžete prohlédnout předem vytvořené grafy pro každou z dostupných metrik.
+Data služby Azure Monitor budou k dispozici na webu Azure Portal po vytvoření skupiny kontejnerů. Chcete-li zobrazit metriky pro skupinu kontejnerů, přejděte na stránku **Přehled** pro skupinu kontejnerů. Tady vidíte předem vytvořené grafy pro každou z dostupných metrik.
 
 ![Dvojitý graf][dual-chart]
 
-Ve skupině kontejnerů, která obsahuje více kontejnerů, použijte [dimenzi][monitor-dimension] k prezentaci metrik podle kontejneru. Graf s metrikami jednotlivých kontejnerů vytvoříte následovně:
+Ve skupině kontejnerů, která obsahuje více kontejnerů, použijte [dimenzi][monitor-dimension] a prezentovat metriky podle kontejneru. Graf s metrikami jednotlivých kontejnerů vytvoříte následovně:
 
-1. Na stránce **Přehled** vyberte jeden z grafů metrik, například **PROCESOR**. 
-1. Vyberte tlačítko **Použít rozdělení** a vyberte **Název kontejneru**.
+1. Na stránce **Přehled** vyberte jeden z grafů metrik, například **CPU**. 
+1. Vyberte tlačítko **použít rozdělení** a vyberte **název kontejneru**.
 
 ![Dimenze][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>Získání metrik – Azure CLI
 
-Metriky pro instance kontejneru lze také shromáždit pomocí azure cli. Nejprve pomocí následujícího příkazu získejte ID skupiny kontejnerů. Část `<resource-group>` nahraďte názvem skupiny prostředků a část `<container-group>` nahraďte názvem skupiny kontejnerů.
+Metriky pro instance kontejnerů se dají shromažďovat taky pomocí Azure CLI. Nejprve pomocí následujícího příkazu získejte ID skupiny kontejnerů. Část `<resource-group>` nahraďte názvem skupiny prostředků a část `<container-group>` nahraďte názvem skupiny kontejnerů.
 
 
 ```console
@@ -78,7 +78,7 @@ Timestamp            Name       Average
 2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-Změňte hodnotu `--metric` parametru v příkazu a získejte další [podporované metriky][supported-metrics]. Pomocí následujícího příkazu můžete například získat metriky využití **paměti.** 
+Změňte hodnotu `--metric` parametru v příkazu, aby se získaly další [podporované metriky][supported-metrics]. Pomocí následujícího příkazu můžete například získat metriky využití **paměti** . 
 
 ```azurecli
 az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
@@ -101,7 +101,7 @@ Timestamp            Name          Average
 2019-04-23 23:10:00  Memory Usage  8093696.0
 ```
 
-Pro skupinu s více `containerName` kontejnery lze dimenzi přidat k vrácení metriky na kontejner.
+Pro skupinu s více kontejnery se dá `containerName` dimenze přidat pro návratovou metriku na kontejner.
 
 ```azurecli
 az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
@@ -140,7 +140,7 @@ Timestamp            Name          Containername             Average
 
 Další informace o monitorování Azure najdete v [přehledu monitorování Azure][azure-monitoring].
 
-Zjistěte, jak vytvořit [upozornění na metriky,][metric-alert] abyste dostali upozornění, když metrika pro instance kontejnerů Azure překročí prahovou hodnotu.
+Naučte se vytvářet [Upozornění na metriky][metric-alert] a dostávat upozornění, když metrika Azure Container Instances překračuje prahovou hodnotu.
 
 <!-- IMAGES -->
 [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png

@@ -11,11 +11,11 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "68562436"
 ---
-Otevřete **nastavení sestavení** výběrem**položky Nastavení sestavení** **souborů** > .
+Otevřete **nastavení sestavení** výběrem**nastavení sestavení** **souboru** > .
 
-V části **Platforma** vyberte **Android**. Výběrem **možnosti Přepnout platformu** změníte platformu na **Android**. Unity vás může vyzvat k instalaci součástí podpory Androidu, pokud chybí.
+V části **platforma** vyberte **Android**. Vyberte **přepínač platforma** pro změnu platformy na **Android**. V Unity se může zobrazit výzva k instalaci komponent podpory Androidu, pokud chybí.
 
-![Okno Nastavení sestavení unity](./media/spatial-anchors-unity/unity-android-build-settings.png)
+![Okno nastavení sestavení Unity](./media/spatial-anchors-unity/unity-android-build-settings.png)
 
-Zavřete okno **Nastavení sestavení.**
+Zavřete okno **nastavení sestavení** .
 

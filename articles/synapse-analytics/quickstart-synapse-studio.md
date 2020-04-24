@@ -1,6 +1,6 @@
 ---
-title: Použití Synapse Studio (náhled)
-description: V tomto rychlém startu uvidíte a dozvíte se, jak snadné je dotazovat se na různé typy souborů pomocí Synapse Studio.
+title: Použití synapse studia (Preview)
+description: V tomto rychlém startu uvidíte a naučíte se, jak snadné je dotazování různých typů souborů pomocí synapse studia.
 services: synapse-analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
@@ -9,62 +9,62 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 294f53fe929343708bdbb9564b23c46865cf02ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423863"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096329"
 ---
-# <a name="quickstart-using-synapse-studio-preview"></a>Úvodní příručka: Použití Synapse Studia (náhled)
+# <a name="quickstart-using-synapse-studio-preview"></a>Rychlý Start: použití synapse Studio (Preview)
 
-V tomto rychlém startu se dozvíte, jak dotazovat soubory pomocí Synapse Studio.
+V tomto rychlém startu se dozvíte, jak zadávat dotazy na soubory pomocí synapse studia.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-[Vytvořte pracovní prostor Azure Synapse a přidružený účet úložiště](quickstart-create-workspace.md).
+[Vytvořte pracovní prostor Azure synapse a přidružený účet úložiště](quickstart-create-workspace.md).
 
-## <a name="launch-synapse-studio"></a>Spuštění Synapse Studio
+## <a name="launch-synapse-studio"></a>Spustit synapse Studio
 
-V pracovním prostoru Azure Synapse na webu Azure Portal klikněte na **Spustit Synapse Studio**.
+V pracovním prostoru Azure synapse v Azure Portal klikněte na **Spustit synapse Studio**.
 
-![Spuštění Synapse Studio](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
+![Spustit synapse Studio](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
 
-Synapse Studio můžete také spustit tak, že kliknete na [Azure Synapse Analytics](https://web.azuresynapse.net) a poskytnete příslušné hodnoty klienta, předplatného a pracovního prostoru.
+Alternativně můžete spustit synapse Studio kliknutím na [Azure synapse Analytics](https://web.azuresynapse.net) a zadáním příslušného tenanta, předplatného a hodnot pracovního prostoru.
 
 ## <a name="browse-storage-accounts"></a>Procházet účty úložiště
 
-Po otevření Synapse Studia přejděte na **Data** a potom **rozbalte účty úložiště** a zobrazte účet úložiště v pracovním prostoru.
+Po otevření synapse studia přejděte na **data** a potom rozbalte **účty úložiště** , abyste viděli účet úložiště v pracovním prostoru.
 
-![Procházení souborů v úložišti](./media/quickstart-synapse-studio/browse-files-on-storage.png)
+![Procházet soubory v úložišti](./media/quickstart-synapse-studio/browse-files-on-storage.png)
 
-Můžete vytvářet nové složky a nahrávat soubory pomocí odkazů v panelu nástrojů k uspořádání souborů.
+Můžete vytvářet nové složky a nahrávat soubory pomocí odkazů na panelu nástrojů k uspořádání souborů.
 
-## <a name="query-files-on-storage-account"></a>Dotazovat se na soubory v účtu úložiště
+## <a name="query-files-on-storage-account"></a>Dotazování souborů na účet úložiště
 
 > [!IMPORTANT]
-> Abyste mohli dotazovat na `Storage Blob Reader` soubory, musíte být členem role v podkladovém úložišti. Zjistěte, jak [přiřadit oprávnění RBAC **pro čtení dat objektů blob úložiště** nebo datový přispěvatel **e-blob** úložiště ve službě Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role).
+> Aby bylo možné zadávat dotazy na soubory, `Storage Blob Reader` musíte být členem role v základním úložišti. Přečtěte si, jak [přiřadit oprávnění RBAC pro nástroj **pro čtení dat objektů BLOB úložiště** nebo **přispěvatele úložiště** v Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role).
 
-1. Nahrajte `PARQUET` nějaké soubory.
-2. Vyberte jeden nebo více souborů a pak vytvořte nový skript SQL nebo poznámkový blok Spark, abyste viděli obsah souborů. Pokud chcete vytvořit poznámkový blok, budete muset vytvořit [fond Apache Spark v pracovním prostoru](spark/apache-spark-notebook-create-spark-use-sql.md).
+1. Nahrajte `PARQUET` některé soubory.
+2. Vyberte jeden nebo více souborů a pak vytvořte nový skript SQL nebo Poznámkový blok Spark pro zobrazení obsahu souborů. Pokud chcete vytvořit Poznámkový blok, budete muset vytvořit [fond Apache Spark v pracovním prostoru](quickstart-create-apache-spark-pool.md).
 
-   ![Soubory dotazů v úložišti](./media/quickstart-synapse-studio/query-files-on-storage.png)
+   ![Dotazování souborů na úložiště](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
-3. Spusťte generovaný dotaz nebo poznámkový blok a zostřikujte obsah souboru:
+3. Spuštěním vygenerovaného dotazu nebo poznámkového bloku zobrazíte obsah souboru:
 
-   ![Zobrazení obsahu souboru](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
+   ![Zobrazit obsah souboru](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
 
-4. Dotaz můžete změnit tak, aby filtrovat a řadit výsledky. Vyhledejte funkce jazyka, které jsou k dispozici v sql na vyžádání v [přehledu funkcí SQL](sql/overview-features.md).
+4. Můžete změnit dotaz na filtrování a řazení výsledků. Vyhledá funkce jazyka, které jsou k dispozici v [přehledu funkcí](sql/overview-features.md)SQL na vyžádání v SQL.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Povolení uživatelům Azure AD k dotazování na soubory [přiřazením oprávnění RBAC **datového zařízení k blob úložiště** nebo **rbac přispěvatele objektů blob úložiště** v úložišti Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
-- [Dotazovat se na soubory v Úložišti Azure pomocí SQL Na vyžádání](sql/on-demand-workspace-overview.md)
-- [Vytvoření fondu Apache Spark](spark/apache-spark-notebook-create-spark-use-sql.md)
-- [Vytvoření sestavy Power BI u souborů uložených ve službě Azure Storage](sql/tutorial-connect-power-bi-desktop.md)
+- Umožněte uživatelům Azure AD dotazování souborů [přiřazením **čtecího modulu dat objektů BLOB úložiště** nebo **přispěvatele dat objektů BLOB úložiště** na Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
+- [Dotazování souborů na Azure Storage pomocí SQL na vyžádání](sql/on-demand-workspace-overview.md)
+- [Vytvořit fond Apache Spark](quickstart-create-apache-spark-pool.md)
+- [Vytvoření sestavy Power BI u souborů uložených v Azure Storage](sql/tutorial-connect-power-bi-desktop.md)

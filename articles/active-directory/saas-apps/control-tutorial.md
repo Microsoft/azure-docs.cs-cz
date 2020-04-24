@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s ovládacím prvkem | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a řízení kontinuity podnikových procesů.
+title: 'Kurz: Azure Active Directory integrace s ovládacím prvkem | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a kontrolu kontinuity.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,131 +17,131 @@ ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5a3383c6c79f3cde901c244eafb39bb0f479176
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67164911"
 ---
-# <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Kurz: Integrace řízení kontinuity podnikových procesů pomocí Azure Active Directory
+# <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Kurz: integrace řízení kontinuity s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak zajistit integraci s Azure Active Directory (Azure AD) kontinuity podnikových procesů řízení (řízení). Při řízení integraci s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat řízení kontinuity (řízení) s Azure Active Directory (Azure AD). Když integrujete řízení s Azure AD, můžete:
 
-* Spravujte ve službě Azure AD, který má přístup k ovládacímu prvku.
-* Aby uživatelé mohli být automaticky přihlášeni k řízení pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Spravujte ve službě Azure AD, která má přístup k řízení.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat měsíční zkušební verze [tady](https://azure.microsoft.com/pricing/free-trial/).
-* Ovládacího prvku jednotné přihlašování (SSO) povolené předplatné.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje ovládací prvek **SP** jednotné přihlašování zahájené.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Ovládací prvek podporuje jednotné přihlašování iniciované v **SP** .
 
 ## <a name="adding-control-from-the-gallery"></a>Přidání ovládacího prvku z Galerie
 
-Pokud chcete nakonfigurovat integraci ovládacího prvku do služby Azure AD, budete muset přidat ovládací prvek z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci ovládacího prvku do Azure AD, musíte přidat řízení z Galerie do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **ovládací prvek** do vyhledávacího pole.
-1. Vyberte **ovládací prvek** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **Control** .
+1. Vyberte **ovládací prvek** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s ovládacím prvkem pomocí testovacího uživatele volá **Britta Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v ovládacím prvku.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí ovládacího prvku s použitím testovacího uživatele s názvem **Britta Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v ovládacím prvku.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s ovládacím prvkem, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí řízení, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace jednotného přihlašování k řízení](#configure-control-sso)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvoření ovládacího prvku testovacího uživatele](#create-control-test-user)**  – Pokud chcete mít protějšek Britta Simon v ovládacím prvku, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Nakonfigurovat jednotné](#configure-control-sso)** přihlašování pro řízení – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte kontrolního uživatele testovacího prostředí](#create-control-test-user)** , abyste měli protějšek Britta Simon v ovládacím prvku, který je propojený s reprezentací uživatele v Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **ovládací prvek** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **ovládacího prvku** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** stránky, zadejte hodnoty pro následující pole:
+1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<SUBDOMAIN>.continuity.net/auth/saml`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.continuity.net/auth/saml`
 
     > [!Note]
-    > Hodnota není skutečný. Aktualizujte hodnotu se subdoménou správné. Vaše subdoménu jednotného přihlašování se dají konfigurovat na [strategií ověření ovládacího prvku](https://control.continuity.net/settings/account_profile#tab/security). Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu správnou subdoménou. Vaši subdoménu jednotného přihlašování je možné nakonfigurovat na [řídicích strategiích ověřování](https://control.continuity.net/settings/account_profile#tab/security). Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. V **podpisový certifikát SAML** klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogového okna.
+1. V části **podpisový certifikát SAML** kliknutím na tlačítko **Upravit** otevřete dialogové okno **podpisový certifikát SAML** .
 
-    ![Upravit podpisového certifikátu SAML](common/edit-certificate.png)
+    ![Upravit podpisový certifikát SAML](common/edit-certificate.png)
 
-1. V **podpisový certifikát SAML** tématu, zkopírujte **kryptografický otisk** a uložte ho do počítače.
+1. V části **podpisový certifikát SAML** zkopírujte **kryptografický otisk** a uložte ho do svého počítače.
 
-    ![Zkopírujte hodnotu kryptografického otisku](common/copy-thumbprint.png)
+    ![Kopírovat hodnotu kryptografického otisku](common/copy-thumbprint.png)
 
-1. Na **nastavit řízení** tématu, zkopírujte adresu URL pro přihlášení a uložte do počítače.
+1. V části **nastavení řízení** zkopírujte adresu URL pro přihlášení a uložte ji do svého počítače.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-control-sso"></a>Konfigurovat ovládací prvek jednotného přihlašování
+### <a name="configure-control-sso"></a>Konfigurace jednotného přihlašování k ovládacím prvkům
 
-Ke konfiguraci jednotného přihlašování na **ovládací prvek** straně, je potřeba aktualizovat nastavení ověření jednotného přihlašování na [strategií ověření ovládacího prvku](https://control.continuity.net/settings/account_profile#tab/security). Aktualizace **adresu URL jednotného přihlašování SAML** s **přihlašovací adresa URL** a **otisku certifikátu** s **hodnotu kryptografického otisku** z portálu Azure portal.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **ovládacího prvku** , je nutné aktualizovat nastavení ověřování jednotného přihlašování při [strategii ověřování](https://control.continuity.net/settings/account_profile#tab/security). Aktualizujte **adresu URL jednotného přihlašování SAML** pomocí **přihlašovací adresy URL** a **otisku certifikátu** s **hodnotou kryptografického otisku** z Azure Portal.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k ovládacímu prvku.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k ovládacímu prvku.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **ovládací prvek**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte položku **ovládací prvek**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelů položku **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-control-test-user"></a>Vytvoření ovládacího prvku testovacího uživatele
+### <a name="create-control-test-user"></a>Vytvořit ovládací prvek testovacího uživatele
 
-V této části vytvořte uživatele Britta Simon v ovládacím prvku. Práce s [tým podpory ovládací prvek](mailto:help@continuity.net) přidat uživatele na platformě ovládacího prvku. Britta Simon pomocí služby Azure AD **uživatelské jméno** k naplnění jí **uživatelské ID zprostředkovatele Identity** v ovládacím prvku. Uživatelé musí být vytvořeny a jejich **uživatelské ID zprostředkovatele Identity** nastavit v ovládacím prvku, aby mohli používat jednotné přihlašování.
+V této části vytvoříte v ovládacím prvku uživatele s názvem Britta Simon. Pracujte s [týmem podpory řízení](mailto:help@continuity.net) a přidejte uživatele do řídicí platformy. K naplnění svého **ID uživatele poskytovatele identity** v ovládacím prvku použijte **uživatelské jméno** Azure AD v Britta Simon. Aby bylo možné použít jednotné přihlašování, musí být uživatelé vytvořeni a jejich **ID uživatele zprostředkovatele identity** nastaveno v ovládacím prvku.
 
 ### <a name="test-sso"></a>Test SSO
 
-Když vyberete ovládací prvek dlaždice na přístupovém panelu, by měly být automaticky přihlásíte do ovládacího prvku, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici ovládacího prvku, měli byste být automaticky přihlášeni k ovládacímu prvku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -1,6 +1,6 @@
 ---
-title: Přehled - Dotazovat data v úložišti pomocí SQL na vyžádání (preview)
-description: Tato část obsahuje ukázkové dotazy, které můžete použít k vyzkoušení prostředku SQL na vyžádání (preview) v rámci Azure Synapse Analytics.
+title: Přehled – dotazování dat v úložišti pomocí SQL na vyžádání (Preview)
+description: Tato část obsahuje ukázkové dotazy, které můžete použít k vyzkoušení prostředku SQL na vyžádání (Preview) v rámci služby Azure synapse Analytics.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,74 +9,71 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cdad95b1a910a45629e85bcc716218b272afd9de
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424899"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116243"
 ---
-# <a name="overview-query-data-in-storage"></a>Přehled: Dotazna data v úložišti
+# <a name="overview-query-data-in-storage"></a>Přehled: dotazování na data v úložišti
 
-Tato část obsahuje ukázkové dotazy, které můžete použít k vyzkoušení prostředku SQL na vyžádání (preview) v rámci Azure Synapse Analytics.
+Tato část obsahuje ukázkové dotazy, které můžete použít k vyzkoušení prostředku SQL na vyžádání (Preview) v rámci služby Azure synapse Analytics.
 Aktuálně podporované soubory jsou: 
 - CSV
-- Parketové
+- Parquet
 - JSON
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-Nástroje, které potřebujete k dotazování:
+Nástroje, které potřebujete k vydávání dotazů:
 
-- SQL klientdle dle vašeho výběru:
-    - Azure Synapse Studio (náhled)
+- Klient SQL podle vašeho výběru:
+    - Azure synapse Studio (Preview)
     - Azure Data Studio
     - SQL Server Management Studio
 
-Kromě toho jsou parametry následující:
+Kromě toho parametry jsou následující:
 
 | Parametr                                 | Popis                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Adresa koncového bodu služby SQL na vyžádání    | Bude použit jako název serveru.                                   |
-| Oblast koncového bodu služby SQL na vyžádání     | Bude použit k určení skladování použitého ve vzorcích. |
+| Adresa koncového bodu služby SQL na vyžádání    | Bude použito jako název serveru.                                   |
+| Oblast koncového bodu služby SQL na vyžádání     | Použije se k určení úložiště používaného v ukázkách. |
 | Uživatelské jméno a heslo pro přístup ke koncovému bodu | Bude použit pro přístup ke koncovému bodu.                               |
-| Databáze, kterou použijete k vytvoření zobrazení     | Tato databáze bude použita jako výchozí bod pro vzorky.       |
+| Databáze, kterou použijete k vytvoření zobrazení     | Tato databáze se použije jako výchozí bod pro ukázky.       |
 
-## <a name="first-time-setup"></a>První nastavení
+## <a name="first-time-setup"></a>Nastavení při prvním spuštění
 
-Před použitím ukázky obsažené dále v tomto článku, máte dva kroky:
+Než začnete používat ukázky uvedené dále v tomto článku, máte dva kroky:
 
-- Vytvoření databáze pro vaše zobrazení (v případě, že chcete zobrazit zobrazení)
-- Vytvoření přihlašovacích údajů pro přístup k souborům v úložišti pomocí sql na vyžádání
+- Vytvoření databáze pro zobrazení (pro případ, že chcete použít zobrazení)
+- Vytvoří přihlašovací údaje, které bude SQL na vyžádání používat pro přístup k souborům v úložišti.
 
 ### <a name="create-database"></a>Vytvoření databáze
 
-K vytvoření zobrazení potřebujete databázi. Tuto databázi použijete pro některé ukázkové dotazy v této dokumentaci.
+Chcete-li vytvořit zobrazení, potřebujete databázi. Tuto databázi použijete pro některé z ukázkových dotazů v této dokumentaci.
 
 > [!NOTE]
-> Databáze se používají pouze pro zobrazení metadat, nikoli pro skutečná data.  Poznamenejte si název databáze, který používáte, budete jej později potřebovat.
+> Databáze se používají jenom pro zobrazení metadat, nikoli pro skutečná data.  Poznamenejte si název databáze, který používáte, budete ho potřebovat později.
 
 ```sql
 CREATE DATABASE mydbname;
 ```
 
-### <a name="create-credentials"></a>Vytvoření přihlašovacích údajů
+### <a name="create-credentials"></a>Vytvořit pověření
 
-Před spuštěním dotazů je nutné vytvořit pověření. Toto pověření bude používat služba SQL na vyžádání pro přístup k souborům v úložišti.
+Než budete moct spustit dotazy, musíte vytvořit přihlašovací údaje. Tento přihlašovací údaj bude používat služba SQL na vyžádání pro přístup k souborům v úložišti.
 
 > [!NOTE]
-> Chcete-li úspěšně spustit how to's v této části, musíte použít token SAS.
+> Aby bylo možné úspěšně spustit postup v této části, je nutné použít token SAS.
 >
-> Chcete-li začít používat tokeny SAS, musíte vynechat useridentity, která je vysvětlena v následujícím [článku](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through).
+> Chcete-li začít používat tokeny SAS, je třeba vyřadit UserIdentity, který je vysvětlen v následujícím [článku](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through).
 >
-> SQL na vyžádání ve výchozím nastavení vždy používá předávací zařízení AAD.
+> SQL na vyžádání ve výchozím nastavení vždy používá předávací průchozí služba AAD.
 
-Další informace o správě řízení přístupu k úložišti naleznete na tomto [odkazu](develop-storage-files-storage-access-control.md).
+Další informace o tom, jak spravovat řízení přístupu k úložišti, najdete v tomto [odkazu](develop-storage-files-storage-access-control.md).
 
-> [!WARNING]
-> Musíte vytvořit přihlašovací údaje pro účet úložiště, který se nachází v oblasti koncového bodu. Přestože SQL na vyžádání přístup k úložištím z různých oblastí, s úložiště a koncový bod ve stejné oblasti bude poskytovat lepší výkon prostředí.
-
-Chcete-li vytvořit pověření pro kontejnery CSV, JSON a Parkety, spusťte následující kód:
+Pokud chcete vytvořit přihlašovací údaje pro kontejnery CSV, JSON a Parquet, spusťte následující kód:
 
 ```sql
 -- create credentials for CSV container in our demo storage account
@@ -112,35 +109,35 @@ GO
 
 ## <a name="provided-demo-data"></a>Poskytnutá ukázková data
 
-Ukázková data obsahují následující datové sady:
+Ukázková data obsahují následující sady dat:
 
-- NYC Taxi - Yellow Taxi Trip Records - část veřejného nyc datového souboru
+- NYC taxislužby – žlutý záznam o cestách taxislužby – součást veřejné sady dat NYC
   - Formát CSV
   - Formát Parquet
-- Soubor údajů o populaci
+- Sada dat naplnění
   - Formát CSV
-- Ukázkové soubory parket s vnořenými sloupci
+- Ukázkové soubory Parquet s vnořenými sloupci
   - Formát Parquet
-- Knihy JSON
+- Kniha JSON
   - Formát JSON
 
 | Cesta ke složce                                                  | Popis                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| /csv/                                                        | Nadřazená složka pro data ve formátu CSV                         |
-| /csv/populace/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted /csv/population-unix-hdr-quoted /csv/population-unix-hdr-quoted /cs | Složky s datovými soubory populace v různých formátech CSV. |
-| /csv/taxi/                                                   | Složka s veřejnými datovými soubory NYC ve formátu CSV              |
-| /parkety/                                                    | Nadřazená složka pro data ve formátu Parkety                     |
-| /parkety/taxi                                                | NYC veřejné datové soubory ve formátu parket, rozdělené podle roku, a měsíc pomocí Hive / Hadoop dělení schéma. |
-| /parkety/vnořené/                                             | Ukázkové soubory parket s vnořenými sloupci                     |
-| /json/                                                       | Nadřazená složka pro data ve formátu JSON                        |
-| /json/knihy/                                                 | JSON soubory s daty knih                                   |
+| Formát                                                        | Nadřazená složka pro data ve formátu CSV                         |
+| /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Složky s datovými soubory populace v různých formátech CSV. |
+| /csv/taxi/                                                   | Složka se soubory veřejných dat NYC ve formátu CSV              |
+| Parquet                                                    | Nadřazená složka pro data ve formátu Parquet                     |
+| /parquet/taxi                                                | NYC veřejné datové soubory ve formátu Parquet, rozdělené podle roku a měsíčně pomocí schématu dělení na oddíly (Hadoop). |
+| /parquet/nested/                                             | Ukázkové soubory Parquet s vnořenými sloupci                     |
+| JSON                                                       | Nadřazená složka pro data ve formátu JSON                        |
+| /json/books/                                                 | Soubory JSON s daty z knih                                   |
 
 ## <a name="validation"></a>Ověřování
 
-Spusťte následující tři dotazy a zkontrolujte, zda jsou pověření vytvořena správně.
+Spusťte následující tři dotazy a ověřte, zda jsou pověření vytvořena správně.
 
 > [!NOTE]
-> Všechny identifikátory URI v ukázkových dotazech používají účet úložiště umístěný v oblasti Azure v severní Evropě. Ujistěte se, že jste vytvořili příslušné pověření. Spusťte níže uvedený dotaz a ujistěte se, že je uveden účet úložiště.
+> Všechny identifikátory URI v ukázkových dotazech používají účet úložiště umístěný v Severní Evropa oblasti Azure. Ujistěte se, že jste vytvořili příslušné přihlašovací údaje. Spusťte dotaz níže a ujistěte se, že je uvedený účet úložiště.
 
 ```sql
 SELECT name
@@ -151,7 +148,7 @@ WHERE
      'https://sqlondemandstorage.blob.core.windows.net/json');
 ```
 
-Pokud nemůžete najít příslušné přihlašovací údaje, zkontrolujte [první nastavení](#first-time-setup).
+Pokud nemůžete najít příslušné přihlašovací údaje, ověřte si [nastavení prvního času](#first-time-setup).
 
 ### <a name="sample-query"></a>Ukázkový dotaz
 
@@ -167,22 +164,22 @@ FROM
     ) AS nyc;
 ```
 
-Výše uvedený dotaz by měl vrátit toto číslo: **8945574**.
+Výše uvedený dotaz by měl vracet toto číslo: **8945574**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste připraveni pokračovat v následujících článcích Jak na to:
+Nyní jste připraveni pokračovat s následujícím článkem:
 
 - [Dotaz na jeden soubor CSV](query-single-csv-file.md)
 
 - [Složky dotazů a více souborů CSV](query-folders-multiple-csv-files.md)
 
-- [Soubory specifické pro dotaz](query-specific-files.md)
+- [Dotazování konkrétních souborů](query-specific-files.md)
 
-- [Soubory parket dotazu](query-parquet-files.md)
+- [Dotazování souborů Parquet](query-parquet-files.md)
 
-- [Typy vnořených par dotazů](query-parquet-nested-types.md)
+- [Dotazování vnořených typů Parquet](query-parquet-nested-types.md)
 
-- [Dotaz na soubory JSON](query-json-files.md)
+- [Dotazování souborů JSON](query-json-files.md)
 
 - [Vytváření a používání zobrazení](create-use-views.md)

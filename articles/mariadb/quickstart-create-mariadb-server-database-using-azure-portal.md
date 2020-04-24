@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Vytvoření serveru – portál Azure – Databáze Azure pro MariaDB'
+title: 'Rychlý Start: vytvoření serveru-Azure Portal-Azure Database for MariaDB'
 description: V tomto článku se dozvíte, jak přibližně během pěti minut pomocí webu Azure Portal rychle vytvořit ukázkový server Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
@@ -32,7 +32,7 @@ Vytvoření serveru Azure Database for MariaDB:
 
 1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
 
-2. Vyberte **databáze** > **databáze Azure databáze pro MariaDB**. Můžete také zadat **MariaDB** do vyhledávacího pole a najít službu.
+2. Vyberte **databáze** > **Azure Database for MariaDB**. Službu můžete vyhledat také zadáním **MariaDB** do vyhledávacího pole.
 
    ![Možnost Azure Database for MariaDB](./media/quickstart-create-mariadb-server-database-using-azure-portal/2_navigate-to-mariadb.png)
 
@@ -43,7 +43,7 @@ Vytvoření serveru Azure Database for MariaDB:
     Nastavení | Navrhovaná hodnota | Popis
     ---|---|---
     Název serveru | *Jedinečný název serveru* | Zvolte jedinečný název serveru, který identifikuje váš server Azure Database for MariaDB. Například **mydemoserver**. K zadanému názvu serveru se připojí název domény *.mariadb.database.azure.com*. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.
-    Předplatné | *vaše předplatné* | Vyberte předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
+    Předplatné | *Vaše předplatné* | Vyberte předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků | **myresourcegroup** | Zadejte název nové skupiny prostředků nebo vyberte existující skupinu prostředků. 
     Výběr zdroje | **Prázdné** | Vyberte **Prázdné** a vytvořte nový server od začátku. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for MariaDB, vyberte **Záloha**.)
     Přihlašovací jméno správce serveru | **myadmin** | Přihlašovací účet, který budete používat při připojování k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
@@ -51,14 +51,14 @@ Vytvoření serveru Azure Database for MariaDB:
     Potvrzení hesla | *Nějaké si zvolte*| Potvrďte heslo účtu správce.
     Umístění | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
     Version | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující použití jiné verze).
-    Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenovou úroveň** > **obecného použití**. U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**virtuální jádro** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
+    Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte**pro obecné účely** **cenové úrovně** > . U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**Vcore** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
   
    > [!NOTE]
-   > Zvažte použití základní cenové úrovně, pokud light compute a V/V jsou dostatečné pro vaše úlohy. Všimněte si, že servery vytvořené v základní cenové vrstvě nelze později škálovat na obecné účely nebo optimalizované pro paměť. Další informace naleznete na [stránce s cenami.](https://azure.microsoft.com/pricing/details/mariadb/)
+   > Zvažte použití cenové úrovně Basic, pokud je pro vaše zatížení vhodné světlé výpočetní prostředky a vstupně-výstupní operace. Upozorňujeme, že servery vytvořené v cenové úrovni Basic se nedají později škálovat na Pro obecné účely nebo paměťově optimalizované. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/mariadb/) .
 
    ![Okno Vytvoření serveru – Cenová úroveň](./media/quickstart-create-mariadb-server-database-using-azure-portal/3-pricing-tier.png)
 
-4. Chcete-li zřídit server, vyberte **možnost Zkontrolovat + vytvořit.** Zřizování může trvat až 20 minut.
+4. Vyberte **zkontrolovat + vytvořit** a zřiďte Server. Zřizování může trvat až 20 minut.
 
 5. Pokud chcete monitorovat proces nasazení, vyberte na panelu nástrojů **Oznámení** (ikona zvonku).
 
@@ -91,7 +91,7 @@ Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný
 
 2. Pokud chcete tyto hodnoty zkopírovat, umístěte kurzor na pole, které chcete zkopírovat. Napravo od textu se zobrazí ikona kopírování. Podle potřeby hodnoty zkopírujte výběrem ikony kopírování.
 
-V našem příkladu je název serveru **mydemoserver.mariadb.database.azure.com** a přihlašovací jméno správce serveru je **myadmin\@mydemoserver**.
+V našem příkladu je název serveru **mydemoserver.MariaDB.Database.Azure.com** a přihlašovací jméno správce serveru je **myadmin\@mydemoserver**.
 
 ## <a name="connect-to-azure-database-for-mariadb-by-using-the-mysql-command-line"></a>Připojení ke službě Azure Database for MariaDB pomocí příkazového řádku mysql
 
@@ -122,8 +122,8 @@ Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazo
 
     Parametr mysql |Navrhovaná hodnota|Popis
     ---|---|---
-    --host | *název serveru* | Hodnota názvu serveru, kterou jste použili při vytváření serveru Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.mariadb.database.azure.com),** jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.
-    --user | *přihlašovací jméno správce serveru* |Přihlašovací uživatelské jméno správce serveru, které jste použili při vytváření serveru Azure Database for MariaDB. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *uživatelské\@jméno název_serveru*.
+    --host | *název serveru* | Hodnota názvu serveru, kterou jste použili při vytváření serveru Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*. MariaDB.Database.Azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.
+    --user | *přihlašovací jméno správce serveru* |Přihlašovací uživatelské jméno správce serveru, které jste použili při vytváření serveru Azure Database for MariaDB. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *UserName\@servername*.
     -p | *Vaše heslo*<br>(počkejte na zobrazení výzvy) |Po zobrazení výzvy zadejte heslo, které jste použili při vytváření serveru. Při zadávání hesla se na příkazovém řádku Bash zadávané znaky nezobrazí. Po zadání hesla stiskněte Enter.
 
    Jakmile se nástroj mysl připojí, zobrazí se příkazový řádek `mysql>`. Na tomto příkazovém řádku můžete zadávat příkazy.
@@ -187,7 +187,7 @@ Připojení k serveru pomocí aplikace MySQL Workbench:
 
 1. Na klientském počítači otevřete MySQL Workbench. MySQL Workbench můžete stáhnout a nainstalovat ze [stránky pro stažení aplikace MySQL Workbench](https://dev.mysql.com/downloads/workbench/).
 
-2. Chcete-li vytvořit nové připojení,**+** vyberte vedle záhlaví **MySQL Connections** ikonu plus ( ).
+2. Chcete-li vytvořit nové připojení, vyberte ikonu Plus (**+**) vedle záhlaví **připojení MySQL** .
 
 3. V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** informace o připojení k vašemu serveru. Jako příklad jsou zobrazeny zástupné hodnoty. **Název hostitele**, **Uživatelské jméno** a **Heslo** nahraďte vlastními hodnotami.
 
@@ -197,9 +197,9 @@ Připojení k serveru pomocí aplikace MySQL Workbench:
     |---|---|---|
      Název připojení | **Ukázkové připojení** | Popisek pro toto připojení. |
     Způsob připojení | **Standard (TCP/IP)** | Standard (TCP/IP) je dostačující. |
-    Název hostitele | *název serveru* | Hodnota názvu serveru, kterou jste použili při vytváření serveru Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.mariadb.database.azure.com),** jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku.|
+    Název hostitele | *název serveru* | Hodnota názvu serveru, kterou jste použili při vytváření serveru Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*. MariaDB.Database.Azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku.|
      Port | 3306 | Port, který se má použít při připojování k serveru Azure Database for MariaDB. |
-    Uživatelské jméno |  *přihlašovací jméno správce serveru* | Přihlašovací údaje správce serveru, které jste použili při vytváření serveru Azure Database for MariaDB. Náš příklad uživatelského jména je **myadmin\@mydemoserver**. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku. Formát je *uživatelské\@jméno název_serveru*.
+    Uživatelské jméno |  *přihlašovací jméno správce serveru* | Přihlašovací údaje správce serveru, které jste použili při vytváření serveru Azure Database for MariaDB. Naše ukázkové uživatelské jméno je **myadmin\@mydemoserver**. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku. Formát je *UserName\@servername*.
     Heslo | *Vaše heslo* | Výběrem možnosti **Uložit v trezoru** heslo uložte. |
 
 4. Pokud chcete zkontrolovat, jestli jsou všechny parametry správně nakonfigurované, vyberte **Test připojení**. Potom vyberte **OK** a uložte připojení. 

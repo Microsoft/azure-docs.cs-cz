@@ -11,6 +11,6 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2020
 ms.locfileid: "80758462"
 ---
-|Name (Název) |Popis |Efekty |Version |GitHubu |
+|Název |Popis |Vliv (s) |Version |GitHubu |
 |---|---|---|---|---|
-|[Auditování instancí Azure Spring Cloud, kde není povoleno distribuované trasování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0f2d8593-4667-4932-acca-6a9f187af109) |Distribuované nástroje trasování v Azure Spring Cloud umožňují ladění a sledování složitých propojení mezi mikroslužbami v aplikaci. Distribuované nástroje pro trasování by měly být povoleny a v pořádku. |Audit, zakázáno |1.0.0-náhled |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Platform/Spring_DistributedTracing_Audit.json)
+|[Auditovat instance služby jarních cloudů Azure, u kterých není povolené distribuované trasování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0f2d8593-4667-4932-acca-6a9f187af109) |Nástroje distribuované trasování v Azure jarním cloudu umožňují ladit a monitorovat složitá propojení mezi mikroslužbami v aplikaci. Nástroje pro distribuované trasování by měly být povolené a v dobrém stavu. |Audit, zakázáno |1.0.0 – Preview |[Propojit](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Platform/Spring_DistributedTracing_Audit.json)

@@ -10,7 +10,7 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-app-configuration](azure-policy-samples-policies-app-configuration.md)]
 
-## <a name="app-platform"></a>Platforma aplikace
+## <a name="app-platform"></a>Aplikační platforma
 
 [!INCLUDE [azure-policy-samples-policies-app-platform](azure-policy-samples-policies-app-platform.md)]
 
@@ -18,11 +18,11 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-app-service](azure-policy-samples-policies-app-service.md)]
 
-## <a name="automation"></a>Automatizace
+## <a name="automation"></a>Automation
 
 [!INCLUDE [azure-policy-samples-policies-automation](azure-policy-samples-policies-automation.md)]
 
-## <a name="backup"></a>Zálohování
+## <a name="backup"></a>Backup
 
 [!INCLUDE [azure-policy-samples-policies-backup](azure-policy-samples-policies-backup.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-cache](azure-policy-samples-policies-cache.md)]
 
-## <a name="compute"></a>Služba Compute
+## <a name="compute"></a>Compute
 
 [!INCLUDE [azure-policy-samples-policies-compute](azure-policy-samples-policies-compute.md)]
 
@@ -42,7 +42,7 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-container-registry](azure-policy-samples-policies-container-registry.md)]
 
-## <a name="cosmos-db"></a>Cosmos DB
+## <a name="cosmos-db"></a>Databáze Cosmos
 
 [!INCLUDE [azure-policy-samples-policies-cosmos-db](azure-policy-samples-policies-cosmos-db.md)]
 
@@ -78,7 +78,7 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes](azure-policy-samples-policies-kubernetes.md)]
 
-## <a name="kubernetes-service"></a>Kubernetes servis
+## <a name="kubernetes-service"></a>Služba Kubernetes
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes-service](azure-policy-samples-policies-kubernetes-service.md)]
 
@@ -98,7 +98,7 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-monitoring](azure-policy-samples-policies-monitoring.md)]
 
-## <a name="network"></a>Network (Síť)
+## <a name="network"></a>Síť
 
 [!INCLUDE [azure-policy-samples-policies-network](azure-policy-samples-policies-network.md)]
 
@@ -122,7 +122,7 @@ ms.locfileid: "79382144"
 
 [!INCLUDE [azure-policy-samples-policies-sql](azure-policy-samples-policies-sql.md)]
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 [!INCLUDE [azure-policy-samples-policies-storage](azure-policy-samples-policies-storage.md)]
 

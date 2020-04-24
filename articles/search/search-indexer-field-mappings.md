@@ -1,7 +1,7 @@
 ---
 title: Mapování polí v indexerech
 titleSuffix: Azure Cognitive Search
-description: Nakonfigurujte mapování polí v indexeru tak, aby zohledňovala rozdíly v názvech polí a reprezentacích dat.
+description: Nakonfigurujte mapování polí v indexeru na účet pro rozdíly v názvech polí a reprezentace dat.
 manager: nitinme
 author: mattmsft
 ms.author: magottei
@@ -9,45 +9,42 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3e09741e841897032b8146dee67b79e0c26ea5cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17a96479b80410cbfcb2a6061904491f95c45f10
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275148"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116260"
 ---
-# <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapování polí a transformace pomocí indexerů Azure Cognitive Search
+# <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapování polí a transformace pomocí indexerů Azure Kognitivní hledání
 
-Při použití indexerů Azure Cognitive Search někdy zjistíte, že vstupní data zcela neodpovídají schématu cílového indexu. V těchto případech můžete použít **mapování polí** ke přetvoření dat během procesu indexování.
+Při použití služby Azure Kognitivní hledání indexery někdy zjistíte, že vstupní data neodpovídají schématu cílového indexu. V těchto případech můžete použít **mapování polí** k přetvarování dat během procesu indexování.
 
-Některé situace, kdy jsou užitečná mapování polí:
+Některé situace, kdy je vhodné mapování polí:
 
-* Váš zdroj dat má `_id`pole s názvem , ale Azure Cognitive Search neumožňuje názvy polí, které začínají podtržítkem. Mapování polí umožňuje efektivně přejmenovat pole.
-* Chcete naplnit několik polí v indexu ze stejných dat zdroje dat. Můžete například použít různé analyzátory pro tato pole.
-* Chcete naplnit pole indexu daty z více než jednoho zdroje dat a zdroje dat používají různé názvy polí.
-* Musíte Base64 zakódovat nebo dekódovat data. Mapování polí podporuje několik **mapovacích funkcí**, včetně funkcí pro kódování a dekódování Base64.
+* Váš zdroj dat obsahuje pole s názvem `_id`, ale Azure kognitivní hledání nepovoluje názvy polí, které začínají podtržítkem. Mapování polí umožňuje efektivně přejmenovat pole.
+* Chcete naplnit několik polí v indexu ze stejných dat zdroje dat. Například můžete chtít u těchto polí použít různé analyzátory.
+* Chcete vyplnit pole indexu daty z více než jednoho zdroje dat a jednotlivé zdroje dat používají různé názvy polí.
+* Je potřeba kódovat nebo dekódovat data v kódování Base64. Mapování polí podporují několik **funkcí mapování**, včetně funkcí pro kódování a dekódování base64.
 
 > [!NOTE]
-> Funkce mapování polí indexerů Azure Cognitive Search poskytuje jednoduchý způsob mapování datových polí na indexová pole s několika možnostmi převodu dat. Složitější data mohou vyžadovat předběžné zpracování, aby bylo možné změnit jejich tvar do formuláře, který lze snadno indexovat.
->
-> Microsoft Azure Data Factory je výkonné cloudové řešení pro import a transformaci dat. Můžete také napsat kód pro transformaci zdrojových dat před indexováním. Příklady kódu naleznete v [tématu Model relační data](search-example-adventureworks-modeling.md) a [model víceúrovňové omezující čáry](search-example-adventureworks-multilevel-faceting.md).
->
+> Mapování polí v indexerech je jednoduchý způsob, jak mapovat datová pole k indexovaným polím, a to s určitou možností pro převod dat s lehkým zatížením. Složitější data mohou vyžadovat předběžné zpracování, aby bylo možné je znovu natvarovat do formuláře, který je přispívající k indexování. Jedna z možností, kterou můžete zvážit, je [Azure Data Factory](https://docs.microsoft.com/zure/data-factory/).
 
 ## <a name="set-up-field-mappings"></a>Nastavení mapování polí
 
 Mapování polí se skládá ze tří částí:
 
 1. A `sourceFieldName`, který představuje pole ve zdroji dat. Tato vlastnost je povinná.
-2. Volitelné `targetFieldName`, které představuje pole v indexu vyhledávání. Pokud je vynechán, použije se stejný název jako ve zdroji dat.
-3. Volitelné `mappingFunction`, které lze transformovat data pomocí jedné z několika předdefinovaných funkcí. Úplný seznam funkcí je [uveden níže](#mappingFunctions).
+2. Volitelné `targetFieldName`, které představuje pole v indexu vyhledávání. Je-li tento parametr vynechán, je použit stejný název jako ve zdroji dat.
+3. Volitelná `mappingFunction`, která může transformovat data pomocí jedné z několika předdefinovaných funkcí. Úplný seznam funkcí je [uvedený níže](#mappingFunctions).
 
-Mapování polí jsou přidány `fieldMappings` do pole definice indexeru.
+Mapování polí jsou přidána do `fieldMappings` pole definice indexeru.
 
-## <a name="map-fields-using-the-rest-api"></a>Mapování polí pomocí rozhraní REST API
+## <a name="map-fields-using-the-rest-api"></a>Mapování polí pomocí REST API
 
-Mapování polí můžete přidat při vytváření nového indexeru pomocí požadavku vytvořit rozhraní API [indexeru.](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) Mapování polí existujícího indexeru můžete spravovat pomocí požadavku rozhraní API [aktualizace indexeru.](https://docs.microsoft.com/rest/api/searchservice/update-indexer)
+Mapování polí můžete přidat při vytváření nového indexeru pomocí požadavku [Create indexer](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) API. Mapování polí stávajícího indexeru můžete spravovat pomocí požadavku rozhraní API pro [aktualizaci indexeru](https://docs.microsoft.com/rest/api/searchservice/update-indexer) .
 
-Tady je například postup mapování zdrojového pole na cílové pole s jiným názvem:
+Tady je příklad, jak namapovat zdrojové pole na cílové pole s jiným názvem:
 
 ```JSON
 
@@ -61,7 +58,7 @@ api-key: [admin key]
 }
 ```
 
-Na zdrojové pole lze odkazovat ve více mapováních polí. Následující příklad ukazuje, jak "rozvinit" pole, kopírování stejného zdrojového pole do dvou různých polí indexu:
+Na zdrojové pole se může odkazovat v mapování více polí. Následující příklad ukazuje, jak rozvětvit pole a zkopírovat stejné zdrojové pole do dvou různých indexových polí:
 
 ```JSON
 
@@ -72,17 +69,17 @@ Na zdrojové pole lze odkazovat ve více mapováních polí. Následující př�
 ```
 
 > [!NOTE]
-> Azure Cognitive Search používá porovnání bez rozlišování velkých a malých písmen k vyřešení názvů polí a funkcí v mapování polí. To je výhodné (nemusíte získat všechna písmena vpravo), ale to znamená, že zdroj dat nebo index nemůže mít pole, která se liší pouze případ.  
+> Azure Kognitivní hledání používá porovnávání bez rozlišení velkých a malých písmen k překladu polí a názvů funkcí v mapování polí. To je pohodlné (nemusíte mít vše v pravém), ale to znamená, že váš zdroj dat nebo index nemůže obsahovat pole, která se liší pouze velikostí písmen.  
 >
 >
 
 ## <a name="map-fields-using-the-net-sdk"></a>Mapování polí pomocí sady .NET SDK
 
-Mapování polí v sdk .NET sdk pomocí [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) `SourceFieldName` třídy, která má vlastnosti a `TargetFieldName`, a volitelný `MappingFunction` odkaz.
+Mapování polí v sadě .NET SDK definujete pomocí třídy [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) , která má vlastnosti `SourceFieldName` a `TargetFieldName`a volitelný `MappingFunction` odkaz.
 
-Mapování polí můžete určit při vytváření indexeru nebo později přímým nastavením vlastnosti. `Indexer.FieldMappings`
+Mapování polí můžete zadat při vytváření indexeru nebo později přímo nastavením `Indexer.FieldMappings` vlastnosti.
 
-Následující příklad jazyka C# nastaví mapování polí při vytváření indexeru.
+Následující příklad jazyka C# nastaví mapování polí při sestavování indexeru.
 
 ```csharp
   List<FieldMapping> map = new List<FieldMapping> {
@@ -106,26 +103,26 @@ Následující příklad jazyka C# nastaví mapování polí při vytváření i
 
 ## <a name="field-mapping-functions"></a>Funkce mapování polí
 
-Funkce mapování polí transformuje obsah pole před uložením v indexu. V současné době jsou podporovány následující funkce mapování:
+Funkce mapování pole transformuje obsah pole předtím, než se uloží do indexu. V současné době jsou podporovány následující funkce mapování:
 
 * [base64Encode](#base64EncodeFunction)
 * [base64Decode](#base64DecodeFunction)
-* [extractTokenatPosition](#extractTokenAtPositionFunction)
-* [Kolekce jsonArrayToStringCollection](#jsonArrayToStringCollectionFunction)
-* [Urlencode](#urlEncodeFunction)
+* [extractTokenAtPosition](#extractTokenAtPositionFunction)
+* [jsonArrayToStringCollection](#jsonArrayToStringCollectionFunction)
+* [urlEncode](#urlEncodeFunction)
 * [urlDecode](#urlDecodeFunction)
 
 <a name="base64EncodeFunction"></a>
 
-### <a name="base64encode-function"></a>base64Encode
+### <a name="base64encode-function"></a>base64Encode – funkce
 
-Provádí kódování vstupního řetězce Base64 *bezpečné pro adresu URL.* Předpokládá, že vstup je kódován UTF-8.
+Provádí kódování base64 ve vstupním řetězci *zabezpečeném adresou URL* . Předpokládá, že vstup je kódovaný v kódování UTF-8.
 
 #### <a name="example---document-key-lookup"></a>Příklad – vyhledávání klíčů dokumentu
 
-V klíči dokumentu Azure Cognitive Search se mohou zobrazit pouze znaky bezpečné pro adresy URL (protože zákazníci musí být schopni adresovat dokument pomocí [vyhledávacího rozhraní API).](https://docs.microsoft.com/rest/api/searchservice/lookup-document) Pokud zdrojové pole klíče obsahuje znaky nebezpečné pro `base64Encode` adresy URL, můžete tuto funkci použít k převodu v době indexování. Klíč dokumentu (před i po převodu) však nesmí být delší než 1 024 znaků.
+V klíči dokumentu Azure Kognitivní hledání se můžou vyskytovat jenom bezpečné znaky URL (protože zákazníci musí být schopni dokument adresovat pomocí [rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document) ). Pokud zdrojové pole pro klíč obsahuje nezabezpečené znaky URL, můžete použít `base64Encode` funkci k jejímu převodu v čase indexování. Nicméně klíč dokumentu (před i po převodu) nemůže být delší než 1 024 znaků.
 
-Když načtete kódovaný klíč v době hledání, `base64Decode` můžete pomocí funkce získat původní hodnotu klíče a použít ji k načtení zdrojového dokumentu.
+Když načtete kódovaný klíč v době hledání, můžete použít `base64Decode` funkci k získání původní hodnoty klíče a použít ji k načtení zdrojového dokumentu.
 
 ```JSON
 
@@ -140,19 +137,19 @@ Když načtete kódovaný klíč v době hledání, `base64Decode` můžete pomo
   }]
  ```
 
-Pokud nezahrnete vlastnost parameters pro funkci mapování, bude `{"useHttpServerUtilityUrlTokenEncode" : true}`výchozí hodnota .
+Pokud nezadáte vlastnost Parameters pro funkci mapování, použije se výchozí hodnota `{"useHttpServerUtilityUrlTokenEncode" : true}`.
 
-Azure Cognitive Search podporuje dvě různá kódování Base64. Při kódování a dekódování stejného pole byste měli použít stejné parametry. Další informace naleznete v [tématu base64 možnosti kódování](#base64details) rozhodnout, které parametry použít.
+Azure Kognitivní hledání podporuje dvě různá kódování Base64. Při kódování a dekódování stejného pole byste měli použít stejné parametry. Další informace najdete v tématu [Možnosti kódování Base64](#base64details) pro určení parametrů, které se mají použít.
 
 <a name="base64DecodeFunction"></a>
 
-### <a name="base64decode-function"></a>base64Decode
+### <a name="base64decode-function"></a>base64Decode – funkce
 
-Provede dekódování vstupního řetězce Base64. Vstup je považován za řetězec kódovaný *pro základní adresu URL* Base64.
+Provádí dekódování Base64 vstupního řetězce. U vstupu se předpokládá, že se jedná o řetězec, který je *bezpečný* pro kódování Base64.
 
-#### <a name="example---decode-blob-metadata-or-urls"></a>Příklad – dekódování metadat objektu blob nebo adres URL
+#### <a name="example---decode-blob-metadata-or-urls"></a>Příklad – dekódování metadat nebo adres URL objektu BLOB
 
-Zdrojová data mohou obsahovat řetězce kódované base64, jako jsou řetězce metadat objektu blob nebo webové adresy URL, které chcete prohledávat jako prostý text. `base64Decode` Pomocí funkce můžete při vyplnění indexu vyhledávání převést kódovaná data zpět na běžné řetězce.
+Vaše zdrojová data mohou obsahovat řetězce kódované v kódování Base64, například řetězce metadat objektů BLOB nebo webové adresy URL, které chcete prohledávat jako prostý text. `base64Decode` Funkci lze použít k zapnutí šifrovaných dat zpět do regulárních řetězců při naplňování indexu vyhledávání.
 
 ```JSON
 
@@ -167,48 +164,48 @@ Zdrojová data mohou obsahovat řetězce kódované base64, jako jsou řetězce 
   }]
 ```
 
-Pokud nezahrnete vlastnost parameters, bude výchozí `{"useHttpServerUtilityUrlTokenEncode" : true}`hodnota .
+Pokud vlastnost Parameters nezadáte, použije se výchozí hodnota `{"useHttpServerUtilityUrlTokenEncode" : true}`.
 
-Azure Cognitive Search podporuje dvě různá kódování Base64. Při kódování a dekódování stejného pole byste měli použít stejné parametry. Další podrobnosti naleznete v [tématu base64 možnosti kódování](#base64details) rozhodnout, které parametry použít.
+Azure Kognitivní hledání podporuje dvě různá kódování Base64. Při kódování a dekódování stejného pole byste měli použít stejné parametry. Další podrobnosti najdete v tématu [Možnosti kódování Base64](#base64details) pro rozhodování o tom, jaké parametry se mají použít.
 
 <a name="base64details"></a>
 
-#### <a name="base64-encoding-options"></a>base64 možnosti kódování
+#### <a name="base64-encoding-options"></a>možnosti kódování Base64
 
-Azure Cognitive Search podporuje kódování base64 bezpečné pro adresy URL a normální kódování base64. Řetězec, který je base64 kódován během indexování by měl být dekódován později se stejnými možnostmi kódování, jinak výsledek nebude odpovídat originálu.
+Azure Kognitivní hledání podporuje kódování Base64 s bezpečným URL a normální kódování Base64. Řetězec, který má kódování Base64 během indexování, by měl být později dekódovaný se stejnými možnostmi kódování nebo jinak výsledek nebude odpovídat původnímu.
 
-Pokud `useHttpServerUtilityUrlTokenEncode` jsou `useHttpServerUtilityUrlTokenDecode` parametry nebo pro kódování a `true`dekódování `base64Encode` nastaveny na , pak se chová `base64Decode` jako [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) a chová se jako [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
+Pokud parametry `useHttpServerUtilityUrlTokenEncode` nebo `useHttpServerUtilityUrlTokenDecode` pro kódování a dekódování `true`jsou nastaveny na, se `base64Encode` chovají jako [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) a `base64Decode` chovají se jako [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 
 > [!WARNING]
-> Pokud `base64Encode` se používá k `useHttpServerUtilityUrlTokenEncode` výrobě hodnoty klíče, musí být nastavena na hodnotu true. Pro klíčové hodnoty lze použít pouze kódování base64 bezpečné pro url. Viz [Pravidla pojmenování &#40;Azure Cognitive Search&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules) pro úplnou sadu omezení znaků v klíčových hodnotách.
+> Pokud `base64Encode` se používá k vytvoření hodnot klíče, `useHttpServerUtilityUrlTokenEncode` musí být nastaven na hodnotu true. Pro klíčové hodnoty lze použít pouze kódování Base64 v bezpečí adrese URL. Úplnou sadu omezení znaků v hodnotách klíčů najdete v tématu [pravidla Pojmenování &#40;Azure Kognitivní hledání&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules) .
 
-Knihovny .NET v Azure Cognitive Search předpokládají úplné rozhraní .NET Framework, které poskytuje integrované kódování. A `useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` možnosti využívají tuto vestavěnou funkci. Pokud používáte .NET Core nebo jiné rozhraní, `false` doporučujeme nastavit tyto možnosti a volání architektury kódování a dekódování funkce přímo.
+Knihovny .NET v Azure Kognitivní hledání předpokládají úplný .NET Framework, který poskytuje integrované kódování. Možnosti `useHttpServerUtilityUrlTokenEncode` a `useHttpServerUtilityUrlTokenDecode` využívají tuto vestavěnou funkci. Pokud používáte .NET Core nebo jiné rozhraní, doporučujeme, abyste tyto možnosti nastavovat `false` na a přímo zavolali funkce kódování a dekódování vašeho rozhraní.
 
-Následující tabulka porovnává různé základní 64 kódování `00>00?00`řetězce . Chcete-li určit požadované další zpracování (pokud existuje) pro vaše base64 `00>00?00` funkce, použijte knihovnu `MDA-MDA_MDA`kódovat funkci na řetězci a porovnat výstup s očekávaným výstupem .
+Následující tabulka porovnává různá kódování Base64 řetězce `00>00?00`. Chcete-li určit požadované dodatečné zpracování (pokud existuje) pro funkce Base64, použijte funkci kódování knihovny na řetězec `00>00?00` a porovnejte výstup s očekávaným výstupem. `MDA-MDA_MDA`
 
-| Kódování | Base64 kódovat výstup | Další zpracování po kódování knihovny | Další zpracování před dekódováním knihovny |
+| Kódování | Výstup kódování Base64 | Další zpracování po kódování knihovny | Další zpracování před dekódováním knihovny |
 | --- | --- | --- | --- |
-| Base64 s polstrováním | `MDA+MDA/MDA=` | Použití znaků bezpečných pro adresu URL a odebrání odsazení | Použití standardních znaků base64 a přidání odsazení |
-| Base64 bez polstrování | `MDA+MDA/MDA` | Použití znaků bezpečných pro adresy URL | Použití standardních znaků base64 |
-| Url-safe base64 s polstrováním | `MDA-MDA_MDA=` | Odstranit odsazení | Přidání odsazení |
-| Url-safe base64 bez polstrování | `MDA-MDA_MDA` | Žádný | Žádný |
+| Base64 s odsazením | `MDA+MDA/MDA=` | Používejte znaky bezpečné pro URL a odstraňte odsazení. | Použití standardních znaků Base64 a přidání odsazení |
+| Base64 bez odsazení | `MDA+MDA/MDA` | Použít znaky bezpečné pro URL | Použití standardních znaků base64 |
+| Zabezpečená adresa URL – Base64 s odsazením | `MDA-MDA_MDA=` | Odebrat odsazení | Přidat odsazení |
+| Zabezpečená adresa URL – bez odsazení kódu base64 | `MDA-MDA_MDA` | Žádná | Žádná |
 
 <a name="extractTokenAtPositionFunction"></a>
 
-### <a name="extracttokenatposition-function"></a>funkce extractTokenatPosition
+### <a name="extracttokenatposition-function"></a>extractTokenAtPosition – funkce
 
 Rozdělí pole řetězce pomocí zadaného oddělovače a vybere token na zadané pozici ve výsledném rozdělení.
 
 Tato funkce používá následující parametry:
 
-* `delimiter`: řetězec, který se použije jako oddělovač při rozdělení vstupního řetězce.
-* `position`: celočíselná pozice tokenu založená na nule, kterou chcete vybrat po rozdělení vstupního řetězce.
+* `delimiter`: řetězec, který má být použit jako oddělovač při rozdělení vstupního řetězce.
+* `position`: celé číslo nulové pozice tokenu, který má být vybrán po rozdělení vstupního řetězce.
 
-Například pokud je `Jane Doe`vstup `delimiter` , `" "`je (mezera) `position` a je `Jane`0, výsledek je ; pokud `position` je 1, výsledek `Doe`je . Pokud pozice odkazuje na token, který neexistuje, je vrácena chyba.
+Například pokud je `Jane Doe`vstup, `delimiter` je `" "`(Space) a `position` je 0, výsledek je; `Jane` Pokud `position` je 1, výsledkem je `Doe`. Pokud pozice odkazuje na token, který neexistuje, je vrácena chyba.
 
-#### <a name="example---extract-a-name"></a>Příklad - extrahovat název
+#### <a name="example---extract-a-name"></a>Příklad – extrakce názvu
 
-Zdroj dat obsahuje `PersonName` pole a chcete jej indexovat `FirstName` `LastName` jako dvě samostatná pole a pole. Pomocí této funkce můžete rozdělit vstup pomocí znaku mezery jako oddělovače.
+Zdroj dat obsahuje `PersonName` pole a chcete ho indexovat jako dvě samostatná `FirstName` pole a. `LastName` Tuto funkci můžete použít k rozdělení vstupu pomocí znaku mezery jako oddělovače.
 
 ```JSON
 
@@ -227,15 +224,15 @@ Zdroj dat obsahuje `PersonName` pole a chcete jej indexovat `FirstName` `LastNam
 
 <a name="jsonArrayToStringCollectionFunction"></a>
 
-### <a name="jsonarraytostringcollection-function"></a>jsonArrayToStringCollection
+### <a name="jsonarraytostringcollection-function"></a>jsonArrayToStringCollection – funkce
 
-Transformuje řetězec formátovaný jako pole JSON řetězců do pole řetězců, `Collection(Edm.String)` které lze použít k naplnění pole v indexu.
+Transformuje řetězec formátovaný jako pole JSON řetězců na pole řetězců, které lze použít k naplnění `Collection(Edm.String)` pole v indexu.
 
-Pokud `["red", "white", "blue"]`je například vstupní řetězec , bude `Collection(Edm.String)` cílové pole typu naplněno `red` `white`třemi `blue`hodnotami , a . Pro vstupní hodnoty, které nelze analyzovat jako pole řetězců JSON, je vrácena chyba.
+Například pokud je `["red", "white", "blue"]`vstupní řetězec, pak cílové pole typu `Collection(Edm.String)` bude vyplněno třemi hodnotami `red`, `white`a. `blue` Pro vstupní hodnoty, které nelze analyzovat jako pole řetězců JSON, je vrácena chyba.
 
-#### <a name="example---populate-collection-from-relational-data"></a>Příklad - naplnění kolekce z relačních dat
+#### <a name="example---populate-collection-from-relational-data"></a>Příklad: naplnit kolekci z relačních dat
 
-Azure SQL Database nemá předdefinovaný datový typ, který `Collection(Edm.String)` se přirozeně mapuje na pole v Azure Cognitive Search. Chcete-li naplnit pole kolekce řetězců, můžete předem zpracovat zdrojová data `jsonArrayToStringCollection` jako pole řetězců JSON a potom použít funkci mapování.
+Azure SQL Database nemá integrovaný datový typ, který je přirozeně mapován na `Collection(Edm.String)` pole ve službě Azure kognitivní hledání. Pro naplnění polí kolekce řetězců můžete zdrojová data předzpracovat jako pole řetězce JSON a potom použít funkci `jsonArrayToStringCollection` Mapping.
 
 ```JSON
 
@@ -246,21 +243,19 @@ Azure SQL Database nemá předdefinovaný datový typ, který `Collection(Edm.St
   }]
 ```
 
-Podrobný příklad, který transformuje relační data do polí kolekce indexu, naleznete v [tématu Model relační data](search-example-adventureworks-modeling.md).
-
 <a name="urlEncodeFunction"></a>
 
-### <a name="urlencode-function"></a>urlEncode
+### <a name="urlencode-function"></a>urlEncode – funkce
 
-Tuto funkci lze použít ke kódování řetězce tak, aby byl "URL safe". Při použití s řetězcem, který obsahuje znaky, které nejsou povoleny v adrese URL, tato funkce převede tyto "nebezpečné" znaky na ekvivalenty znakové entity. Tato funkce používá formát kódování UTF-8.
+Tato funkce se dá použít ke kódování řetězce tak, aby byla zabezpečená adresa URL. Při použití s řetězcem, který obsahuje znaky, které nejsou povoleny v adrese URL, tato funkce převede tyto "nebezpečné" znaky na ekvivalenty znakové entity. Tato funkce používá formát kódování UTF-8.
 
 #### <a name="example---document-key-lookup"></a>Příklad – vyhledávání klíčů dokumentu
 
-`urlEncode`funkce může být použita `base64Encode` jako alternativa k funkci, pokud mají být převedeny pouze nebezpečné znaky URL, při zachování jiných znaků tak, jak jsou.
+`urlEncode`funkci lze použít jako alternativu k `base64Encode` funkci, pokud je třeba převést pouze nebezpečné znaky adresy URL, přičemž zachová jiné znaky tak, jak jsou.
 
-Řekněme, že `<hello>` vstupní řetězec je - `(Edm.String)` pak cílové pole typu bude naplněno hodnotou`%3chello%3e`
+Řekněme, že vstupní řetězec je `<hello>` a pak cílové pole typu `(Edm.String)` se naplní hodnotou.`%3chello%3e`
 
-Když načtete kódovaný klíč v době hledání, `urlDecode` můžete pomocí funkce získat původní hodnotu klíče a použít ji k načtení zdrojového dokumentu.
+Když načtete kódovaný klíč v době hledání, můžete použít `urlDecode` funkci k získání původní hodnoty klíče a použít ji k načtení zdrojového dokumentu.
 
 ```JSON
 
@@ -276,13 +271,13 @@ Když načtete kódovaný klíč v době hledání, `urlDecode` můžete pomocí
 
  <a name="urlDecodeFunction"></a>
 
- ### <a name="urldecode-function"></a>urlDecode
+ ### <a name="urldecode-function"></a>urlDecode – funkce
 
- Tato funkce převede řetězec kódovaný adresou URL na dekódovaný řetězec pomocí formátu kódování UTF-8.
+ Tato funkce převede řetězec s kódováním URL na dekódovaný řetězec pomocí formátu UTF-8.
 
- ### <a name="example---decode-blob-metadata"></a>Příklad – dekódování metadat objektu blob
+ ### <a name="example---decode-blob-metadata"></a>Příklad – dekódování metadat objektů BLOB
 
- Někteří klienti úložiště Azure automaticky kódují metadata objektů blob, pokud obsahují znaky bez ASCII. Pokud však chcete, aby byla tato metadata prohledávatelná `urlDecode` (jako prostý text), můžete pomocí této funkce převést kódovaná data zpět na běžné řetězce při vyplnění indexu vyhledávání.
+ Někteří klienti Azure Storage automaticky zakódují metadata objektů blob, pokud obsahují jiné znaky než ASCII. Pokud však chcete taková metadata vyhledat (jako prostý text), můžete použít `urlDecode` funkci k zapnutí šifrovaných dat zpět do regulárních řetězců při plnění indexu vyhledávání.
 
  ```JSON
 
@@ -298,13 +293,13 @@ Když načtete kódovaný klíč v době hledání, `urlDecode` můžete pomocí
  
  <a name="fixedLengthEncodeFunction"></a>
  
- ### <a name="fixedlengthencode-function"></a>funkce fixedLengthEncode
+ ### <a name="fixedlengthencode-function"></a>fixedLengthEncode – funkce
  
  Tato funkce převede řetězec libovolné délky na řetězec s pevnou délkou.
  
- ### <a name="example---map-document-keys-that-are-too-long"></a>Příklad - mapovat klíče dokumentu, které jsou příliš dlouhé
+ ### <a name="example---map-document-keys-that-are-too-long"></a>Příklad – mapování klíčů dokumentů, které jsou příliš dlouhé
  
-Pokud čelíte chybám, které si stěžují na to, že klíč dokumentu je delší než 1024 znaků, lze tuto funkci použít ke zkrácení délky klíče dokumentu.
+Pokud se na základě chyb týkajících se klíče dokumentu nachází více než 1024 znaků, lze tuto funkci použít pro snížení délky klíče dokumentu.
 
  ```JSON
 

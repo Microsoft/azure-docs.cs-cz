@@ -1,35 +1,35 @@
 ---
-title: Získat výchozí odpověď - QnA Maker
-description: Výchozí odpověď je vrácena, pokud neexistuje žádná shoda s otázkou. Můžete chtít změnit výchozí odpověď ze standardní výchozí odpovědi.
-ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: fae5c38fd64435a3fae56862bad04e000916e88b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+title: Získat výchozí odpověď – QnA Maker
+description: Pokud se k otázce neshoduje, vrátí se výchozí odpověď. Je možné, že budete chtít změnit výchozí odpověď z standardní výchozí odpovědi.
+ms.topic: how-to
+ms.date: 04/22/2020
+ms.openlocfilehash: db5a79ec612a73066ac37365a1815841fafb3862
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76843272"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097094"
 ---
-# <a name="set-default-answer-for-a-knowledge-base"></a>Nastavení výchozí odpovědi pro znalostní bázi
+# <a name="change-default-answer-for-a-qna-maker-resource"></a>Změna výchozí odpovědi pro prostředek QnA Maker
 
-Výchozí odpověď je vrácena, pokud neexistuje žádná shoda s otázkou. Můžete chtít změnit výchozí odpověď ze standardní výchozí odpovědi.
+Pokud se k otázce neshoduje, vrátí se výchozí odpověď. Je možné, že budete chtít změnit výchozí odpověď z standardní výchozí odpovědi.
 
-## <a name="change-default-answer"></a>Změnit výchozí odpověď
+## <a name="change-default-answer-in-the-azure-portal"></a>Změnit výchozí odpověď v Azure Portal
 
-1. Přejděte na [portál Azure](https://portal.azure.com) a přejděte na skupinu prostředků, která představuje službu QnA Maker, kterou jste vytvořili.
+1. Přejděte na [Azure Portal](https://portal.azure.com) a přejděte do skupiny prostředků, která představuje službu QnA maker, kterou jste vytvořili.
 
-2. Klepnutím sem otevřete **službu App Service**.
+2. Kliknutím otevřete **App Service**.
 
-    ![Na webu Azure Portal, přístup k app služby pro QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+    ![V Azure Portal přistupovat ke službě App Service pro QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
-3. Klikněte na **Nastavení aplikace** a upravte pole **DefaultAnswer** na požadovanou výchozí odpověď. Klikněte na **Uložit**.
+3. Klikněte na **nastavení aplikace** a upravte pole **DefaultAnswer** na požadovanou výchozí odpověď. Klikněte na **Uložit**.
 
-    ![Vyberte Nastavení aplikace a pak upravte výchozí odpověď pro QnA Maker.](../media/qnamaker-concepts-confidencescore/change-response.png)
+    ![Vyberte nastavení aplikace a pak upravte DefaultAnswer pro QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
 
-4. Restartování služby App Service
+4. Restartujte službu App Service.
 
-    ![Po změně výchozí odpovědi restartujte službu aplikace QnA Maker](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+    ![Po změně DefaultAnswer restartujte QnA Maker AppService](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření robota s QnA Makerem a LUIS](../tutorials/integrate-qnamaker-luis.md)
+* [Vytvoření znalostní báze](../How-to/manage-knowledge-bases.md)

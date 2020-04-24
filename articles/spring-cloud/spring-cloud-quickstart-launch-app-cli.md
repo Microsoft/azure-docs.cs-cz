@@ -1,6 +1,6 @@
 ---
-title: 'Úvodní příručka: Spuštění aplikace Java Spring pomocí azure CLI'
-description: V tomto rychlém startu nasadíte ukázkovou aplikaci do Azure Spring Cloud na Azure CLI.
+title: 'Rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure'
+description: V tomto rychlém startu nasadíte ukázkovou aplikaci do služby Azure jaře Cloud v Azure CLI.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
@@ -13,48 +13,48 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "79470856"
 ---
-# <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Úvodní příručka: Spuštění aplikace Java Spring pomocí azure CLI
+# <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure
 
-Azure Spring Cloud umožňuje snadno spustit aplikaci mikroslužeb založenou na jarním spuštění v Azure.
+Jarní cloud Azure umožňuje snadno spustit aplikaci mikroslužeb založenou na jarním startu v Azure.
 
-Tento rychlý start ukazuje, jak nasadit existující java jarní cloudovou aplikaci do Azure. Až budete hotovi, můžete pokračovat ve správě aplikace prostřednictvím azure cli nebo přepnout na pomocí portálu Azure.
+V tomto rychlém startu se dozvíte, jak nasadit stávající cloudovou aplikaci Java do Azure. Až budete hotovi, můžete pokračovat v správě aplikace prostřednictvím rozhraní příkazového řádku Azure nebo pomocí Azure Portal.
 
 Po tomto rychlém startu se dozvíte, jak:
 
 > [!div class="checklist"]
 > * Zřízení instance služby
 > * Nastavení konfiguračního serveru pro instanci
-> * Místní vytvoření aplikace mikroslužeb
+> * Místní sestavení aplikace mikroslužeb
 > * Nasazení jednotlivých mikroslužeb
-> * Přiřazení veřejného koncového bodu pro vaši aplikaci
+> * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 >[!Note]
-> Azure Spring Cloud se momentálně nabízí jako veřejná verze Preview. Nabídky ve verzi Public Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiálním vydáním.  Funkce a služby veřejné verze Preview nejsou určeny pro produkční použití.  Další informace o podpoře během náhledů najdete v [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo najdete [žádost o podporu,](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kde se dozvíte další informace.
+> Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v našich [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo v souboru o [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) , kde se dozvíte víc.
 
 >[!TIP]
-> Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku.  Má společné nástroje Azure předinstalované, včetně nejnovějších verzí Git, JDK, Maven a Azure CLI. Pokud jste přihlášení k předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z shell.azure.com.  Další informace o Azure Cloud Shellu najdete v [naší dokumentaci](../cloud-shell/overview.md)
+> Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku.  Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Git, JDK, Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Další informace o Azure Cloud Shell najdete v [naší dokumentaci](../cloud-shell/overview.md) .
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 1. [Nainstalovat Git](https://git-scm.com/).
-2. [Instalace JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-3. [Instalace maven 3.0 nebo vyšší](https://maven.apache.org/download.cgi)
-4. [Instalace azure CLI verze 2.0.67 nebo vyšší](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+2. [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
+3. [Nainstalujte Maven 3,0 nebo novější.](https://maven.apache.org/download.cgi)
+4. [Instalace rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Registrace předplatného Azure](https://azure.microsoft.com/free/)
 
 ## <a name="install-the-azure-cli-extension"></a>Instalace rozšíření Azure CLI
 
-Instalace rozšíření Azure Spring Cloud pro azure cli pomocí následujícího příkazu
+Pomocí následujícího příkazu nainstalujte rozšíření Azure jaře Cloud pro rozhraní příkazového řádku Azure.
 
 ```azurecli
 az extension add --name spring-cloud
 ```
 
-## <a name="provision-a-service-instance-on-the-azure-cli"></a>Zřízení instance služby v příkazovém příkazu k dispozici azure
+## <a name="provision-a-service-instance-on-the-azure-cli"></a>Zřízení instance služby v Azure CLI
 
-1. Login to the Azure CLI and choose your active subscription. Nezapomeňte si vybrat aktivní předplatné, které je na seznamu povolených pro Azure Spring Cloud.
+1. Přihlaste se k Azure CLI a vyberte své aktivní předplatné. Nezapomeňte zvolit aktivní předplatné, které je na seznamu povolených pro Azure jaře Cloud.
 
     ```azurecli
         az login
@@ -62,9 +62,9 @@ az extension add --name spring-cloud
         az account set --subscription <Name or ID of subscription from the last step>
     ```
 
-2. Připravte si název pro vaši službu Azure Spring Cloud.  Název musí být dlouhý 4 až 32 znaků a může obsahovat pouze malá písmena, číslice a pomlčky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
+2. Připravte si název služby pro jarní cloudovou službu Azure.  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
 
-3. Vytvořte skupinu prostředků, která bude obsahovat vaši službu Azure Spring Cloud.
+3. Vytvořte skupinu prostředků, která bude obsahovat službu pro jarní cloudovou službu Azure.
 
     ```azurecli
         az group create --location eastus --name <resource group name>
@@ -72,7 +72,7 @@ az extension add --name spring-cloud
 
     Další informace o [skupinách prostředků Azure](../azure-resource-manager/management/overview.md).
 
-4. Otevřete okno Azure CLI a spusťte následující příkazy pro zřízení instance Azure Spring Cloud.
+4. Otevřete okno Azure CLI a spusťte následující příkazy, abyste zřídili instanci Azure Pramenitého cloudu.
 
     ```azurecli
         az spring-cloud create -n <service instance name> -g <resource group name>
@@ -80,7 +80,7 @@ az extension add --name spring-cloud
 
     Nasazení instance služby bude trvat přibližně pět minut.
 
-5. Nastavte výchozí název skupiny prostředků a název clusteru pomocí následujících příkazů:
+5. Pomocí následujících příkazů nastavte výchozí název skupiny prostředků a název clusteru:
 
     ```azurecli
         az configure --defaults group=<resource group name>
@@ -92,7 +92,7 @@ az extension add --name spring-cloud
 
 ## <a name="setup-your-configuration-server"></a>Nastavení konfiguračního serveru
 
-Aktualizujte svůj config-server s umístěním git repozitáře pro náš projekt:
+Aktualizujte konfiguraci-server s umístěním úložiště Git pro náš projekt:
 
 ```azurecli
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/piggymetrics-config
@@ -101,27 +101,27 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=config-server)
 
-## <a name="build-the-microservices-applications-locally"></a>Místní vytváření aplikací mikroslužeb
+## <a name="build-the-microservices-applications-locally"></a>Místní sestavení aplikací mikroslužeb
 
-1. Vytvořte novou složku a naklonujte ukázkové úložiště aplikací do svého účtu Azure Cloud.  
+1. Vytvořte novou složku a naklonujte úložiště ukázkové aplikace do svého cloudového účtu Azure.  
 
     ```console
         mkdir source-code
         git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-2. Změňte adresář a vytvořte projekt.
+2. Změňte adresář a sestavte projekt.
 
     ```console
         cd piggymetrics
         mvn clean package -D skipTests
     ```
 
-Sestavení projektu trvá asi 5 minut.  Po dokončení byste měli mít jednotlivé soubory JAR pro každou službu v příslušných složkách.
+Kompilace projektu trvá přibližně 5 minut.  Po dokončení byste měli mít jednotlivé soubory JAR pro každou službu v příslušných složkách.
 
 ## <a name="create-the-microservices"></a>Vytvoření mikroslužeb
 
-Vytvořte mikroslužby Spring Cloud pomocí souborů JAR vytvořených v předchozím kroku. Vytvoříte tři mikroslužby: **brána**, **auth-service**a **account-service**.
+Vytvářejte jarní cloudové mikroslužby pomocí souborů JAR vytvořených v předchozím kroku. Vytvoříte tři mikroslužby: **Brána**, **auth-Service**a **account-Service**.
 
 ```azurecli
 az spring-cloud app create --name gateway
@@ -144,7 +144,7 @@ az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth
 
 ## <a name="assign-public-endpoint-to-gateway"></a>Přiřazení veřejného koncového bodu k bráně
 
-Potřebujeme způsob, jak přistupovat k aplikaci prostřednictvím webového prohlížeče. Naše aplikace brány potřebuje veřejný koncový bod.
+Potřebujeme způsob, jak získat přístup k aplikaci přes webový prohlížeč. Naše aplikace brány potřebuje veřejný koncový bod.
 
 1. Přiřaďte koncový bod pomocí následujícího příkazu:
 
@@ -152,7 +152,7 @@ Potřebujeme způsob, jak přistupovat k aplikaci prostřednictvím webového pr
 az spring-cloud app update -n gateway --is-public true
 ```
 
-2. Dotaz na aplikaci **brány** pro jeho veřejnou IP adresu, abyste mohli ověřit, že je aplikace spuštěná:
+2. Dotazování aplikace **brány** na veřejnou IP adresu vám umožní ověřit, jestli je aplikace spuštěná:
 
 Linux:
 
@@ -166,26 +166,26 @@ Windows:
 az spring-cloud app show -s <service name> -g <resource group> -n gateway -o table
 ```
 
-3. Přejděte na adresu URL poskytovanou předchozím příkazem a spusťte aplikaci PiggyMetrics.
-    ![Snímek obrazovky s piggymetrics běží](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
+3. Pokud chcete spustit aplikaci PiggyMetrics, přejděte na adresu URL poskytnutou předchozím příkazem.
+    ![Snímek obrazovky s PiggyMetrics spuštěným](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
-Můžete také procházet portál Azure a najít adresu URL. 
-1. Přechod na službu
+Můžete také přejít na Azure Portal a najít tak adresu URL. 
+1. Přejít ke službě
 2. Vybrat **aplikace**
 3. Vybrat **bránu**
 
-    ![Snímek obrazovky s piggymetrics běží](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
+    ![Snímek obrazovky s PiggyMetrics spuštěným](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
     
-4. Nalezení adresy URL **gateway Overview** na ![stránce Přehled brány Snímek obrazovky piggymetrics běží](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+4. Najít adresu URL na stránce ![s **přehledem brány** snímku obrazovky PiggyMetrics Running](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili aplikaci Spring Cloud z azure CLI.  Další informace o Azure Spring Cloud, pokračujte v kurzu o přípravě aplikace pro nasazení.
+V tomto rychlém startu jste nasadili jarní cloudovou aplikaci z Azure CLI.  Další informace o jarním cloudu Azure najdete v kurzu Příprava aplikace na nasazení.
 
 > [!div class="nextstepaction"]
-> [Příprava aplikace Azure Spring Cloud pro nasazení](spring-cloud-tutorial-prepare-app-deployment.md)
+> [Příprava aplikace pro jarní cloudy Azure pro nasazení](spring-cloud-tutorial-prepare-app-deployment.md)
 
-Další ukázky jsou k dispozici na [GitHubu: Ukázky Azure Spring Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).
+Další ukázky jsou k dispozici na GitHubu: [ukázky Azure pro jarní Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

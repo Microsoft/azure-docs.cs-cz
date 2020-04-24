@@ -1,80 +1,80 @@
 ---
-title: Co je nového – jazykové porozumění (LUIS)
-description: Tento článek je pravidelně aktualizován s novinkami o Azure Cognitive Services language understanding API.
+title: Co je nového – Language Understanding (LUIS)
+description: Tento článek se pravidelně aktualizuje o novinky o Language Understanding API Azure Cognitive Services.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 6334b157f68f09f2b165c6073ba63f45a0caf3c4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538014"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097723"
 ---
-# <a name="whats-new-in-language-understanding"></a>Co je nového v jazykovém porozumění
+# <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 
-Přečtěte si, co je ve službě nového. Mezi tyto položky patří poznámky k verzi, videa, příspěvky na blogu a další typy informací. Záložka tuto stránku udržovat aktuální se službou.
+Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="march-2020"></a>Březen 2020
 
-* TLS 1.2 je nyní vynucena pro všechny požadavky HTTP pro tuto službu. Další informace najdete v [tématu Azure Cognitive Services security](../cognitive-services-security.md).
+* Pro všechny požadavky HTTP na tuto službu se teď vynutilo TLS 1,2. Další informace najdete v tématu [zabezpečení Azure Cognitive Services](../cognitive-services-security.md).
 
-### <a name="november-4-2019---ignite"></a>4. listopadu 2019 - Zapalte
+### <a name="november-4-2019---ignite"></a>4. listopadu 2019 – Ignite
 
-* Video – [pokročilé modely pro porozumění přirozenému jazyku (NLU) pomocí luisa a služby Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+* Video – [pokročilé modely přirozeného Language Understanding (NLU) využívající Luis a Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
-* Vyšší produktivita vývojářů
+* Zlepšení produktivity vývojářů
     * Obecná dostupnost našeho [koncového bodu předpovědi V3](luis-migration-api-v3.md).
-    * Možnost importu a exportu aplikací ve formátu .lu[(LUDown).](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown) To dláždí cestu pro efektivní proces CI/CD.
-* Rozšíření jazyka
-    * [Arabština a hindština](luis-language-support.md) ve veřejné verzi preview.
+    * Možnost importovat a exportovat aplikace pomocí formátu. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Tím se PAVES způsob efektivního procesu CI/CD.
+* Jazykové rozšíření
+    * [Arabština a Hindština](luis-language-support.md) ve verzi Public Preview.
 * Předem připravené modely
-    * [Předem sestavené domény](luis-reference-prebuilt-domains.md) jsou nyní obecně dostupné (GA)
-    * Japonské [předem sestavené entity](luis-reference-prebuilt-entities.md#japanese-entity-support) – stáří, měna, číslo a procento nejsou ve V3 podporovány.
-    * Italské [předem sestavené entity](luis-reference-prebuilt-entities.md#italian-entity-support) – stáří, měna, dimenze, počet a procentuální rozlišení změněno z V2.
-* Vylepšené uživatelské prostředí v [preview.luis.ai portálu](https://preview.luis.ai) – vylepšené prostředí pro vytváření a ladění složitých modelů. Vyzkoušejte výukové programy pro náhled portálu:
-    * [Pouze záměry](tutorial-intents-only.md)
-    * [Rozkládatelná strojově naučená entita](tutorial-machine-learned-entity.md)
-* Rozvíjet možnosti porozumění jazykům – [vytvářet sofistikované jazykové modely](luis-concept-entity-types.md) s menším úsilím.
-* Definujte funkce strojového učení na úrovni modelu a povolte modely, které mají být použity jako signály pro jiné modely, například pomocí entit jako prvků záměrů a jiných entit.
-* Nové, rozšířené [limity](luis-boundaries.md) - vyšší maximum pro seznamy frází a celkové fráze, nový model jako omezení funkcí
-* Extrahujte informace z textu ve formátu struktury hluboké hierarchie, díky čemuž jsou aplikace konverzace výkonnější.
+    * [Předem připravené domény](luis-reference-prebuilt-domains.md) jsou teď všeobecně dostupné (GA).
+    * Japonské předem [připravené entity](luis-reference-prebuilt-entities.md#japanese-entity-support) – stáří, měna, číslo a procento nejsou v v3 podporovány.
+    * [Předem připravené entity](luis-reference-prebuilt-entities.md#italian-entity-support) v italštině – stáří, měna, dimenze, číslo a procento rozlišení se změnilo z v2.
+* Vylepšené uživatelské prostředí [portálu Preview.Luis.AI](https://preview.luis.ai) – prostředí přepracované označování, které umožňuje sestavování a ladění složitých modelů. Vyzkoušejte si kurzy portálu Preview:
+    * [Jenom záměry](tutorial-intents-only.md)
+    * [Devytvořená entita získaná počítačem](tutorial-machine-learned-entity.md)
+* Možnosti pro pokročilý jazyk – [vytváření sofistikovaných jazykových modelů](luis-concept-entity-types.md) s menší námahou
+* Definujte funkce strojového učení na úrovni modelu a povolte použití modelů jako signálů jiným modelům, například pomocí entit jako funkcí k záměrům a jiným entitám.
+* Nové, rozšířená [omezení](luis-limits.md) – vyšší maximum pro seznamy frází a celkový počet frází, nový model jako omezení funkcí
+* Extrahujte informace z textu ve formátu hloubkové hierarchické struktury, aby aplikace v konverzaci byly výkonnější.
 
-    ![image entity naučené strojem](./media/whats-new/deep-entity-extraction-example.png)
+    ![bitová kopie entity zjištěná počítačem](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>3. září 2019
 
-* Zdroj pro vytváření Azure – [migrovat nyní](luis-migration-authoring.md).
+* Prostředek pro vytváření Azure – [migrace teď](luis-migration-authoring.md)
     * 500 aplikací na prostředek Azure
-    * 100 verzí na aplikaci
-* Turecká podpora předbudovařů
+    * verze 100 na aplikaci
+* Turecká podpora pro předem připravené entity
 * Italská podpora pro datetimeV2
 
-### <a name="july-23-2019"></a>23. července 2019July 23, 2019
+### <a name="july-23-2019"></a>23. července 2019
 
-* Aktualizace [textu pro rozpoznávání na](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3) 1.2.3
-    * Nástroje pro rozpoznávání věku, teploty, dimenze a měny v italštině
-    * Zlepšení v uznání svátků v angličtině správně vypočítat data založená na Díkůvzdání.
-    * Vylepšení ve francouzštině DateTime snížit falešně pozitivních hodnot non-Date a non-Time entity.
-    * Podpora pro kalendář/školní/fiskální rok a zkratky v angličtině DateRange.
-    * Vylepšené rozpoznávání telefonních čísel v čínštině a japonštině.
-    * Vylepšená podpora numberrange v angličtině.
+* Aktualizace [rozpoznávání – text](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3) na 1.2.3
+    * Věk, teplota, dimenze a rozpoznávání měn v italštině.
+    * Zlepšení rozpoznávání svátků v angličtině, aby se správně počítala data založená na Thanksgiving.
+    * Vylepšení ve francouzštině DateTime k omezení falešně pozitivních entit nezaložených na datu a nepracovních entit.
+    * Podpora pro Calendar, School, fiskální rok a akronymy v angličtině DateRange
+    * Vylepšené rozpoznávání PhoneNumber v čínštině a japonštině.
+    * Vylepšená podpora pro NumberRange v angličtině.
     * Byl vylepšen výkon.
 
 ### <a name="june-24-2019"></a>24. června 2019
 
-* [OrdinalV2 předem vytvořená entita](luis-reference-prebuilt-ordinal-v2.md) pro podporu řazení, jako je například další, předchozí a poslední. Pouze anglická kultura.
+* [OrdinalV2 předem vytvořenou entitu](luis-reference-prebuilt-ordinal-v2.md) pro podporu řazení, jako je například další, předchozí a poslední. Pouze Anglická jazyková verze.
 
-### <a name="may-6-2019---build-conference"></a>6. května 2019 - //Build Conference
+### <a name="may-6-2019---build-conference"></a>6. května 2019 – konference Build
 
-Na konferenci Build 2019 byly vydány následující funkce:
+Následující funkce byly vydány na konferenci Build 2019:
 
-* [Náhled průvodce migrací rozhraní API V3](luis-migration-api-v3.md)
+* [Verze Preview Průvodce migrací rozhraní V3 API](luis-migration-api-v3.md)
 * [Vylepšený řídicí panel analýzy](luis-how-to-use-dashboard.md)
-* [Vylepšené předem vyestavěné domény](luis-reference-prebuilt-domains.md)
-* [Entity dynamického seznamu](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
-* [Externí subjekty](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)
+* [Vylepšené předem připravené domény](luis-reference-prebuilt-domains.md)
+* [Dynamické seznam entit](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
+* [Externí entity](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)
 
 ## <a name="blogs"></a>Blogy
 
@@ -82,14 +82,14 @@ Na konferenci Build 2019 byly vydány následující funkce:
 
 ## <a name="videos"></a>Videa
 
-### <a name="2019-ignite-videos"></a>2019 Zapalte videa
+### <a name="2019-ignite-videos"></a>Ignite videa 2019
 
-[Pokročilé modely znalostního jazyka (NLU) využívající služby LUIS a služby Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+[Pokročilé modely přirozeného Language Understanding (NLU) využívající LUIS a Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
-### <a name="2019-build-videos"></a>2019 Vytváření videí
+### <a name="2019-build-videos"></a>videa k sestavám 2019
 
-[Jak používat Azure Conversational AI k škálování vašeho podnikání pro příští generaci](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+[Jak používat konverzační službu Azure ke škálování vašeho podnikání pro novou generaci](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="service-updates"></a>Aktualizace služeb
 
-[Oznámení o aktualizacích Azure pro služby Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Oznámení o aktualizacích Azure pro Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

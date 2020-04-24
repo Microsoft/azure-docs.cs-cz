@@ -1,92 +1,94 @@
 ---
-title: Mapování pracovních prostorů Azure Automation a Log Analytics
-description: Tento článek popisuje mapování povolené mezi účtem Automation a pracovním prostorem Analýzy protokolů pro podporu řešení
+title: Mapování pracovního prostoru Azure Automation a Log Analytics
+description: Tento článek popisuje mapování povolená mezi účtem služby Automation a pracovním prostorem Log Analytics pro podporu řešení.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/20/2019
+ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7f6508648be1e857a29f46b57e8309a7ec797291
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 1bc47fe6e1f0730bcff49e138df92f85ba3ef1a8
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681841"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114475"
 ---
 # <a name="workspace-mappings"></a>Mapování pracovních prostorů
 
-Při povolení řešení, jako je správa aktualizací, sledování změn a inventář nebo spuštění a zastavení virtuálních účtů během mimo pracovní dobu, jsou podporovány pouze určité oblasti pro propojení pracovního prostoru Log Analytics a účtu automatizace. Toto mapování platí pouze pro účet Automatizace a pracovní prostor Analýzy protokolů. Prostředky vykazující váš účet Automation nebo pracovní prostor Log Analytics se mohou nasytit v jiných oblastech.
+Při povolování Update Management, Change Tracking a inventáře nebo Start/Stop VMs during off-hours jsou podporovány pouze určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation v rámci předplatného. Toto mapování platí pouze pro účet Automation a pracovní prostor Log Analytics. Pracovní prostor Log Analytics a účet Automation musí být ve stejném předplatném, ale můžou být v různých skupinách prostředků nasazených do stejné oblasti.
+
+Další informace najdete v tématu [Log Analytics pracovní prostor a účet Automation](../azure-monitor/insights/solutions.md#log-analytics- workspace-and-automation-account).
 
 ## <a name="supported-mappings"></a>Podporovaná mapování
 
 V následující tabulce jsou uvedena podporovaná mapování:
 
-|**Oblast pracovního prostoru analýzy protokolů**|**Oblast automatizace Azure**|
+|**Oblast pracovního prostoru Log Analytics**|**Oblast Azure Automation**|
 |---|---|
 |**USA**||
-|VýchodUS<sup>1</sup>|Východní US2|
-|Západní US2|Západní US2|
+|EastUS<sup>1</sup>|EastUS2|
+|WestUS2|WestUS2|
 |WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
 |**Kanada**||
-|KanadaStřední|KanadaStřední|
+|CanadaCentral|CanadaCentral|
 |**Asie a Tichomoří**||
-|AustrálieJihovýchod|AustrálieJihovýchod|
-|Jihovýchodní Asie|Jihovýchodní Asie|
-|Střední Indie|Střední Indie|
-|Japonskovýchod|Japonskovýchod|
+|AustraliaSoutheast|AustraliaSoutheast|
+|SoutheastAsia|SoutheastAsia|
+|CentralIndia|CentralIndia|
+|JapanEast|JapanEast|
 |**Evropa**||
-|Spojené královstvíJižní|Spojené královstvíJižní|
+|UKSouth|UKSouth|
 |WestEurope|WestEurope|
 |**US Gov**||
-|USGovVirginie|USGovVirginie|
+|USGovVirginia|USGovVirginia|
 
-<sup>1</sup> EastUS mapování pro pracovní prostory Log Analytics na účty automatizace není přesné mapování oblasti k oblasti, ale je správné mapování.
+<sup>1</sup> mapování EastUS pro Log Analytics pracovní prostory do účtů Automation není přesné mapování oblastí na oblast, ale je to správné mapování.
 
-<sup>2</sup> Vzhledem k omezením kapacity není oblast při vytváření nových zdrojů k dispozici. To zahrnuje účty automatizace a pracovní prostory Analýzy protokolů. Již existující propojené zdroje v regionu by však měly pokračovat v práci.
+<sup>2</sup> z důvodu omezení kapacity není oblast při vytváření nových prostředků dostupná. To zahrnuje účty Automation a pracovní prostory Log Analytics. Dříve existující propojené prostředky v oblasti by však měly fungovat i nadále.
 
 ## <a name="unlink-workspace"></a>Zrušení propojení s pracovním prostorem
 
-Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete svůj účet odpojit přímo z portálu Azure. Než budete pokračovat, musíte nejprve odebrat řešení pro správu aktualizací, sledování změn a zásoby a spuštění a zastavení virtuálních min během mimo pracovní doby, pokud je používáte. Pokud je neodeberete, nelze dokončit operaci odpojení. Projděte si článek konkrétního řešení, které jste importovali, abyste pochopili kroky potřebné k jeho odebrání.
+Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete zrušit propojení svého účtu přímo s Azure Portal. Než budete pokračovat, musíte nejdřív odebrat Update Management, Change Tracking a inventář a Start/Stop VMs during off-hours, pokud je používáte. Pokud je neodeberete, nebudete moci dokončit operaci zrušení propojení. Projděte si článek pro každý, který budete chtít povolit, abyste pochopili kroky potřebné k jeho odebrání.
 
-Po odebrání těchto řešení můžete provést následující kroky k odpojení účtu automatizace.
+Po odebrání těchto kroků můžete zrušit propojení svého účtu Automation.
 
 > [!NOTE]
-> Některá řešení, včetně dřívějších verzí řešení monitorování Azure SQL může mít vytvořené prostředky automatizace a může být nutné odebrat před odpojením pracovního prostoru.
+> Některá řešení, včetně dřívějších verzí řešení Azure SQL monitoring, mohla vytvořit prostředky pro automatizaci a může být potřeba je odebrat před odpojením pracovního prostoru.
 
-1. Na portálu Azure otevřete účet Automation. Na stránce Účet automatizace vyberte **Propojený pracovní prostor v** části Související **prostředky**.
+1. V Azure Portal otevřete svůj účet Automation. Na stránce účet Automation vyberte v části **související prostředky**možnost **propojený pracovní prostor** .
 
-2. Na stránce Odpojit od propojení pracovního prostoru klikněte na **Zrušit propojení pracovního prostoru**. Pokud chcete pokračovat, zobrazí se výzva k ověření.
+2. Na stránce zrušit propojení pracovního prostoru klikněte na **Zrušit propojení pracovního prostoru**. Zobrazí se výzva ověřující, jestli chcete pokračovat.
 
-3. Zatímco Azure Automation se pokusí odpojit účet vašeho pracovního prostoru Log Analytics, můžete sledovat průběh v části **Oznámení** z nabídky.
+3. I když se Azure Automation pokusí odpojit účet Log Analytics pracovním prostoru, můžete sledovat průběh v nabídce **oznámení** .
 
-4. Pokud jste použili řešení správy aktualizací, volitelně můžete chtít odebrat následující položky, které již nejsou potřeba po odebrání řešení.
+4. Pokud jste použili Update Management, možná budete chtít po odebrání odebrat následující položky, které už nepotřebujete.
 
-    * Plány aktualizací – každý má název, který odpovídá nasazení aktualizace, které jste vytvořili.
-    * Hybridní skupiny pracovních pracovníků vytvořené pro `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8`řešení – každý má název podobný .
+    * Plány aktualizací – každý má název, který odpovídá nasazení aktualizace, kterou jste vytvořili.
+    * Skupiny hybridních pracovních procesů vytvořené pro řešení – každý má název podobný řetězci `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8`.
 
-5. Pokud jste použili start/stop virtuálních přivypnuto řešení mimo pracovní dobu, můžete volitelně odebrat následující položky, které nejsou potřeba po odebrání řešení.
+5. Pokud jste použili Start/Stop VMs during off-hours, můžete volitelně odebrat následující položky, které po jejím odebrání nepotřebujete.
 
-    * Spuštění a zastavení plánů runbooku virtuálních knih
-    * Spuštění a zastavení runbooků virtuálních knih
+    * Spuštění a zastavení plánů Runbook VM
+    * Spuštění a zastavení runbooků virtuálních počítačů
     * Proměnné
 
-Případně můžete odpojit pracovní prostor od účtu Automatizace v rámci pracovního prostoru. 
+Alternativně můžete zrušit propojení pracovního prostoru s účtem Automation v pracovním prostoru.
 
-1. V pracovním prostoru vyberte **účet automatizace** v části **Související zdroje**. 
-2. Na stránce Automation Account vyberte **Možnost Zrušit propojení účtu**.
+1. V pracovním prostoru vyberte **účet Automation** v části **související prostředky**. 
+2. Na stránce účet Automation vyberte zrušit **propojení účtu**.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si, jak zavést řešení pro správu aktualizací a sledování změn a zásoby:
+* Naučte se, jak Update Management a Change Tracking a inventář:
 
     * Z [virtuálního počítače](../automation-onboard-solutions-from-vm.md)
-    * Z vašeho [účtu Automation](../automation-onboard-solutions-from-automation-account.md)
-    * Při [procházení více strojů](../automation-onboard-solutions-from-browse.md)
-    * Z [runbooku](../automation-onboard-solutions.md)
+    * Z [účtu Automation](../automation-onboard-solutions-from-automation-account.md)
+    * Při [procházení více počítačů](../automation-onboard-solutions-from-browse.md)
+    * Z [Runbooku](../automation-onboard-solutions.md)
 
-* Přečtěte si, jak zavést řešení Start/Stop virtuálních počítačích mimo pracovní dobu:
+* Naučte se, jak Start/Stop VMs during off-hours připojit:
 
-    * [Nasazení virtuálních virtuálních discích Start/Stop mimo pracovní dobu](../automation-solution-vm-management.md)
+    * [Přehled Start/Stop VMs during off-hours](../automation-solution-vm-management.md)

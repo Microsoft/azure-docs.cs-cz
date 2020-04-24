@@ -11,6 +11,6 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2020
 ms.locfileid: "80758471"
 ---
-|Name (Název) |Popis |Efekty |Version |GitHubu |
+|Název |Popis |Vliv (s) |Version |GitHubu |
 |---|---|---|---|---|
-|[Auditní delegování oborů na správě klienta](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F76bed37b-484f-430f-a009-fd7592dff818) |Auditdelegování oborů na správu klienta přes Azure Lighthouse. |Audit, zakázáno |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)
+|[Auditovat delegování oborů do spravovaného tenanta](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F76bed37b-484f-430f-a009-fd7592dff818) |Auditujte delegování oborů do spravovaného tenanta prostřednictvím Azure Lighthouse. |Audit, zakázáno |1.0.0 |[Propojit](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)

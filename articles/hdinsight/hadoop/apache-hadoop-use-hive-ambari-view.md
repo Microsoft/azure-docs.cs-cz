@@ -1,45 +1,45 @@
 ---
-title: Použití zobrazení Apache Ambari Hive s Apache Hadoop v Azure HDInsight
-description: Přečtěte si, jak pomocí zobrazení Hive z webového prohlížeče odesílat dotazy hive. Zobrazení Hive je součástí webového uživatelského rozhraní Ambari dodávaného s vaším linuxovým clusterem HDInsight.
+title: Použití zobrazení podregistru Apache Ambari s Apache Hadoop ve službě Azure HDInsight
+description: Naučte se používat zobrazení podregistru z webového prohlížeče k odesílání dotazů na podregistr. Zobrazení podregistru je součástí webového uživatelského rozhraní Ambari, které je k dispozici v clusteru HDInsight se systémem Linux.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/06/2020
-ms.openlocfilehash: 787d88d336abcf3b0ba9b14c3d3798850b665eca
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.date: 04/23/2020
+ms.openlocfilehash: a230d4f775207afc37172dae9f0709d66a6d1aa1
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745089"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116617"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoopem v HDInsight
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Přečtěte si, jak spouštět dotazy Hive pomocí zobrazení Apache Ambari Hive View. Zobrazení Hive umožňuje vytvářet, optimalizovat a spouštět dotazy Hive z webového prohlížeče.
+Naučte se spouštět dotazy na podregistry pomocí zobrazení podregistru Apache Ambari. Zobrazení podregistru umožňuje vytvářet, optimalizovat a spouštět dotazy na podregistr z webového prohlížeče.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-Cluster Hadoop na HDInsight. Viz [Začínáme s HDInsight na Linuxu](./apache-hadoop-linux-tutorial-get-started.md).
+Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="run-a-hive-query"></a>Spuštění dotazu Hive
 
-1. Na [portálu Azure](https://portal.azure.com/)vyberte svůj cluster.  Pokyny naleznete [v tématu Seznam a zobrazení clusterů.](../hdinsight-administer-use-portal-linux.md#showClusters) Cluster je otevřen v novém zobrazení portálu.
+1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster.  Pokyny najdete v tématu [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters) . Cluster se otevře v novém zobrazení portálu.
 
-1. V **řídicích panelech clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte `admin`název účtu a heslo pro přihlášení clusteru (výchozí), které jste zadali při vytváření clusteru. Můžete také přejít na `https://CLUSTERNAME.azurehdinsight.net/#/main/views` `CLUSTERNAME` v prohlížeči, kde je název clusteru.
+1. Z **řídicích panelů clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte název a heslo přihlášení clusteru `admin`(výchozí), které jste zadali při vytváření clusteru. Můžete také přejít do `https://CLUSTERNAME.azurehdinsight.net/#/main/views` prohlížeče v prohlížeči, kde `CLUSTERNAME` je název vašeho clusteru.
 
-1. V seznamu zobrazení vyberte __zobrazit zobrazení Hive__.
+1. V seznamu zobrazení vyberte __zobrazení podregistru__.
 
-    ![Apache Ambari vybrat Apache Hive zobrazení](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    ![Ambari, výběr zobrazení Apache Hive pro Apache](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
-    Stránka zobrazení Hive je podobná následujícímu obrázku:
+    Stránka zobrazení podregistru je podobná následujícímu obrázku:
 
-    ![Obrázek listu dotazu pro zobrazení Úl](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
+    ![Obrázek listu dotazu pro zobrazení podregistru](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-1. Na kartě __Dotaz__ vložte do listu následující příkazy HiveQL:
+1. Na kartě __dotaz__ vložte následující příkazy HiveQL do listu:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -58,112 +58,108 @@ Cluster Hadoop na HDInsight. Viz [Začínáme s HDInsight na Linuxu](./apache-ha
         GROUP BY t4;
     ```
 
-    Tyto příkazy provést následující akce:
+    Tyto příkazy provedou následující akce:
 
     |Příkaz | Popis |
     |---|---|
-    |DROP TABULKA|Odstraní tabulku a datový soubor v případě, že tabulka již existuje.|
-    |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří novou "externí" tabulku v Podregistru. Externí tabulky ukládají pouze definici tabulky v Hive. Data zůstanou v původním umístění.|
-    |FORMÁT ŘÁDKU|Ukazuje, jak jsou data formátována. V tomto případě jsou pole v každém protokolu oddělena mezerou.|
-    |ULOŽENÉ JAKO UMÍSTĚNÍ TEXTOVÉHO SOUBORU|Zobrazuje, kde jsou data uložena a že jsou uložena jako text.|
-    |SELECT|Vybere počet všech řádků, kde sloupec t4 obsahuje hodnotu [ERROR].|
+    |ODKLÁDACÍ TABULKA|Odstraní tabulku a datový soubor pro případ, že tabulka již existuje.|
+    |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří novou "externí" tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění.|
+    |FORMÁT ŘÁDKU|Ukazuje, jak jsou data formátována. V tomto případě jsou pole v každém protokolu oddělená mezerou.|
+    |ULOŽENO JAKO UMÍSTĚNÍ TEXTFILE|Zobrazuje, kde jsou data uložená, a že je uložená jako text.|
+    |SELECT|Vybere počet všech řádků, ve kterých sloupec T4 obsahuje hodnotu [Chyba].|
 
    > [!IMPORTANT]  
-   > Ponechejte výběr __databáze__ __ve výchozím nastavení__. Příklady v tomto dokumentu používají výchozí databázi, která je součástí hdinsightu.
+   > Ponechte výběr __databáze__ ve __výchozím nastavení__. Příklady v tomto dokumentu používají výchozí databázi, která je součástí HDInsight.
 
-1. Chcete-li dotaz spustit, vyberte **spustit** pod listem. Tlačítko se změní na oranžovou barvu a text se změní na **Zastavit**.
+1. Chcete-li spustit dotaz, vyberte možnost **Spustit** pod listem. Tlačítko se změní na oranžová a text se změní na **Zastaveno**.
 
-1. Po dokončení dotazu se na kartě **Výsledky** zobrazí výsledky operace. Výsledkem dotazu je následující text:
+1. Po dokončení dotazu se na kartě **výsledky** zobrazí výsledky operace. Následující text je výsledkem dotazu:
 
         loglevel       count
         [ERROR]        3
 
-    Kartu **LOG** můžete použít k zobrazení informací protokolování, které úloha vytvořila.
+    K zobrazení informací o protokolování, které vytvořila úloha, můžete použít kartu **protokol** .
 
    > [!TIP]  
-   > Stáhněte nebo uložte výsledky z rozevíracího okna **Akce** na kartě **Výsledky.**
+   > Stáhněte nebo uložte výsledky z rozevíracího seznamu **Akce** na kartě **výsledky** .
 
-### <a name="visual-explain"></a>Vizuální vysvětlení
+### <a name="visual-explain"></a>Vizuálně vysvětlit
 
-Chcete-li zobrazit vizualizaci plánu dotazů, vyberte pod listem kartu **Vizuální vysvětlení.**
+Chcete-li zobrazit vizualizaci plánu dotazu, vyberte kartu **vizuálně vysvětlit** pod listem.
 
-**Visual Vysvětlit** zobrazení dotazu může být užitečné při pochopení toku složitých dotazů.
+Zobrazení **vizuálního vysvětlujícího** dotazu může být užitečné při seznámení s tokem složitých dotazů.
 
-### <a name="tez-ui"></a>Uz ui
+### <a name="tez-ui"></a>Uživatelské rozhraní tez
 
-Chcete-li zobrazit uhlavní zobrazení tezu pro dotaz, vyberte kartu **Tez UI** pod listem.
+Pokud chcete zobrazit uživatelské rozhraní tez pro dotaz, vyberte kartu **uživatelské rozhraní tez** pod listem.
 
 > [!IMPORTANT]  
-> Tez se nepoužívá k vyřešení všech dotazů. Mnoho dotazů můžete vyřešit bez použití aplikace Tez.
+> Tez se nepoužívá k vyřešení všech dotazů. Můžete vyřešit mnoho dotazů bez použití TEZ.
 
 ## <a name="view-job-history"></a>Zobrazení historie úlohy
 
-Na kartě __Úlohy__ se zobrazuje historie dotazů Hive.
+Karta __úlohy__ zobrazuje historii dotazů na podregistr.
 
-![Historie karet karty Zobrazení Apache Hive](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+![Historie karty Apache Hive zobrazení úloh](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
-## <a name="database-tables"></a>Databázové tabulky
+## <a name="database-tables"></a>Tabulky databáze
 
-Kartu __Tabulky__ můžete použít k práci s tabulkami v databázi Hive.
+Kartu __tabulky__ můžete použít pro práci s tabulkami v rámci databáze podregistru.
 
-![Obrázek karty Tabulek Apache Hive](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+![Obrázek karty Apache Hive tabulky](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>Uložené dotazy
 
-Na kartě **Dotaz** můžete volitelně ukládat dotazy. Po uložení dotazu jej můžete znovu použít na kartě __Uložené dotazy.__
+Na kartě **dotaz** můžete volitelně ukládat dotazy. Po uložení se dotaz dá znovu použít na kartě __uložené dotazy__ .
 
-![Karta Uložené dotazy apache hive](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Karta uložené dotazy v Apache Hive zobrazení](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> Uložené dotazy jsou uloženy ve výchozím úložišti clusteru. Uložené dotazy najdete pod cestou `/user/<username>/hive/scripts`. Ty jsou uloženy `.hql` jako soubory ve formátu prostého textu.
+> Uložené dotazy jsou uloženy ve výchozím úložišti clusteru. Uložené dotazy můžete najít pod cestou `/user/<username>/hive/scripts`. Tyto soubory jsou uloženy jako soubory ve `.hql` formátu prostého textu.
 >
-> Pokud odstraníte cluster, ale úložiště si ponesete, můžete k načtení dotazů použít nástroj, jako je [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) nebo Data Lake Storage Explorer (z [portálu Azure).](https://portal.azure.com)
+> Pokud cluster odstraníte, ale zachováte ho, můžete k načtení dotazů použít nástroj, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nebo data Lake Storage Explorer (na webu [Azure Portal](https://portal.azure.com)).
 
 ## <a name="user-defined-functions"></a>Uživatelsky definované funkce
 
-Můžete rozšířit Hive prostřednictvím uživatelem definovaných funkcí (UDF). Pomocí udf k implementaci funkce nebo logiky, která není snadno modelována v HiveQL.
+Podregistr můžete roztáhnout prostřednictvím uživatelsky definovaných funkcí (UDF). Použijte systém souborů UDF k implementaci funkcí nebo logiky, která není snadno modelována v HiveQL.
 
-Deklarujte a uložte sadu udf pomocí karty **UDF** v horní části zobrazení podregistru. Tyto udfs lze použít s **Editor dotazů**.
+Deklarujete a uložte sadu UDF pomocí karty **UDF** v horní části zobrazení podregistru. Tyto UDF se dají použít spolu s **editorem dotazů**.
 
-![Zobrazení karty UDF s zobrazením Apache Hive](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+![Zobrazení karty UDF zobrazení Apache Hive](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-V dolní části **Editoru dotazů**se zobrazí tlačítko **Vložit udfs** . Tato položka zobrazuje rozevírací seznam uofs definovaných v zobrazení Podhled. Výběrem příkazu UDF přidáte do dotazu příkazy HiveQL, aby bylo možné jej povolit.
+V dolní části **Editoru dotazů**se zobrazí tlačítko **Vložit UDF** . Tato položka zobrazí rozevírací seznam UDF definovaného v zobrazení podregistru. Když vyberete UDF, do dotazu se přidá příkazy HiveQL, které zapnete systém souborů UDF.
 
-Pokud jste například definovali zdroj UDF s následujícími vlastnostmi:
+Například pokud jste definovali UDF s následujícími vlastnostmi:
 
-* Název zdroje: myudfs
+* Název prostředku: myudfs
 
-* Cesta k prostředku: /myudfs.jar
+* Cesta prostředku:/myudfs.jar
 
-* UDF jméno: myawesomeudf
+* Název UDF: myawesomeudf
 
-* Název třídy UDF: com.myudfs.Awesome
+* Název třídy UDF: com. myudfs. super
 
-Pomocí tlačítka **Vložit udfs** se zobrazí položka s názvem **myudfs**s dalším rozevíracím seznamem pro každý udf definovaný pro tento zdroj. V tomto případě je to **myawesomeudf**. Výběrem této položky přidáte na začátek dotazu následující:
+Pomocí tlačítka pro **vložení UDF** se zobrazí položka s názvem **myudfs**a další rozevírací seznam pro každé UDF definované pro daný prostředek. V tomto případě je to **myawesomeudf**. Výběrem této položky se na začátek dotazu přidá následující text:
 
 ```hiveql
 add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-Potom můžete použít UDF v dotazu. Například, `SELECT myawesomeudf(name) FROM people;`.
+Pak můžete použít ve svém dotazu UDF. Například, `SELECT myawesomeudf(name) FROM people;`.
 
-Další informace o používání udimfů s hive na HDInsight, naleznete v následujících článcích:
+Další informace o použití UDF s podregistrum v HDInsight najdete v následujících článcích:
 
-* [Používání Pythonu s Apache Hive a Apache Pig v HDInsightu](python-udf-hdinsight.md)
+* [Použití Pythonu s Apache Hive a Apache prasetem v HDInsight](python-udf-hdinsight.md)
 * [Použití Java UDF s Apache Hive v HDInsight](./apache-hadoop-hive-java-udf.md)
 
-## <a name="hive-settings"></a>Nastavení úlu
+## <a name="hive-settings"></a>Nastavení podregistru
 
-Můžete změnit různá nastavení Hive, například změnu modulu provádění pro Hive z Tez (výchozí) na MapReduce.
+Můžete změnit různá nastavení podregistru, jako je například změna spouštěcího modulu pro podregistr z tez (výchozí) na MapReduce.
 
 ## <a name="next-steps"></a>Další kroky
 
-Obecné informace o Hive na HDInsight:
+Obecné informace o podregistru v HDInsight:
 
-* [Použití Apache Hive s Apache Hadoop na HDInsight](hdinsight-use-hive.md)
-
-Informace o dalších způsobech práce s Hadoopem na HDInsight:
-
-* [Použijte Apache Pig s Apache Hadoop na HDInsight](hdinsight-use-pig.md)
-* [Použití MapReduce s Apache Hadoop na HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Apache Hive s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití klienta Apache Beeline s Apache Hivem](apache-hadoop-use-hive-beeline.md)

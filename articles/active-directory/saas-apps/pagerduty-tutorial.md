@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory se službou PagerDuty | Dokumenty společnosti Microsoft'
+title: 'Kurz: Azure Active Directory integrace s PagerDuty | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a PagerDuty.
 services: active-directory
 documentationCenter: na
@@ -15,238 +15,195 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b7a522aaf35303bbd87e7aafe65b1302f1b98bc0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 99d9988a02b046562c2517df8a81b8ef5c778ef2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095336"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683523"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Kurz: Integrace Služby Azure Active Directory se službou PagerDuty
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pagerduty"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s PagerDuty
 
-V tomto kurzu se dozvíte, jak integrovat PagerDuty s Azure Active Directory (Azure AD).
-Integrace PagerDuty s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat PagerDuty s Azure Active Directory (Azure AD). Když integrujete PagerDuty s Azure AD, můžete:
 
-* Můžete řídit ve službě Azure AD, který má přístup k PagerDuty.
-* Můžete povolit uživatelům, aby se automaticky přihlásili k PagerDuty (jednotné přihlášení) s jejich účty Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Řízení ve službě Azure AD, která má přístup k PagerDuty.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k PagerDuty svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-Chcete-li nakonfigurovat integraci Azure AD pomocí služby PagerDuty, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
-* Předplatné s povoleným jedním přihlášením PagerDuty
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* PagerDuty odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* PagerDuty podporuje **sp** inicioval asociaci služeb při .
+* PagerDuty podporuje jednotné přihlašování iniciované v **SP**
+* Po nakonfigurování PagerDuty můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-pagerduty-from-the-gallery"></a>Přidání PagerDuty z galerie
+## <a name="adding-pagerduty-from-the-gallery"></a>Přidání PagerDuty z Galerie
 
-Chcete-li nakonfigurovat integraci PagerDuty do Azure AD, musíte přidat PagerDuty z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci PagerDuty do služby Azure AD, musíte přidat PagerDuty z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat PagerDuty z galerie, proveďte následující kroky:**
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **PagerDuty** .
+1. Na panelu výsledků vyberte **PagerDuty** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+## <a name="configure-and-test-azure-ad-single-sign-on-for-pagerduty"></a>Konfigurace a testování jednotného přihlašování Azure AD pro PagerDuty
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí PagerDuty pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v PagerDuty.
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí PagerDuty, dokončete následující stavební bloky:
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte PAGERDUTY SSO](#configure-pagerduty-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte PagerDuty Test User](#create-pagerduty-test-user)** -to, abyste měli protějšek B. Simon v PagerDuty, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **PagerDuty**, vyberte **PagerDuty** z panelu výsledků a pak klepněte na **tlačítko Přidat** a přidejte aplikaci.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **PagerDuty** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-     ![PagerDuty v seznamu výsledků](common/search-new-app.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí služby PagerDuty na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v PagerDuty.
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<tenant-name>.pagerduty.com`
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby PagerDuty, je třeba provést následující stavební bloky:
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<tenant-name>.pagerduty.com`
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace pagerduty jednotného přihlášení](#configure-pagerduty-single-sign-on)** - konfigurace nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte pagerduty test uživatele](#create-pagerduty-test-user)** – mít protějšek Britta Simon v PagerDuty, který je propojený s reprezentací Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
-
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí služby PagerDuty, proveďte následující kroky:
-
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **PagerDuty** vyberte **Jedno přihlášení**.
-
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
-
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
-
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
-
-4. V části **Základní konfigurace SAML** proveďte následující kroky:
-
-    ![PagerDuty Domény a adresy URL jednotné přihlašovací informace](common/sp-identifier.png)
-
-    a. Do textového pole **Adresa URL přihlášení** zadejte adresu URL pomocí následujícího vzoru:`https://<tenant-name>.pagerduty.com`
-
-    b. Do textového pole **Identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<tenant-name>.pagerduty.com`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<tenant-name>.pagerduty.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL a identifikátorem. Obraťte se na [tým podpory klienta PagerDuty](https://www.pagerduty.com/support/) získat tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí vlastního přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta PagerDuty](https://www.pagerduty.com/support/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-6. V části **Nastavit PagerDuty** zkopírujte příslušnou adresu URL podle vašeho požadavku.
+1. V části **Nastavení PagerDuty** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-    b. Identifikátor azure reklamy
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    c. Adresa URL odhlášení
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="configure-pagerduty-single-sign-on"></a>Konfigurace jednotného přihlašování PagerDuty
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-1. V jiném okně webového prohlížeče se přihlaste k webu společnosti Pagerduty jako správce.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k PagerDuty.
 
-2. V horní nabídce klikněte na **Nastavení účtu**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **PagerDuty**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-pagerduty-sso"></a>Konfigurace jednotného přihlašování PagerDuty
+
+1. V jiném okně webového prohlížeče se přihlaste k webu PagerDuty společnosti jako správce.
+
+2. V nabídce v horní části klikněte na **Nastavení účtu**.
 
     ![Nastavení účtu](./media/pagerduty-tutorial/ic778535.png "Nastavení účtu")
 
-3. Klepněte **na položku Jednotné přihlášení**.
+3. Klikněte na **jednotné přihlašování**.
 
     ![Jednotné přihlašování](./media/pagerduty-tutorial/ic778536.png "Jednotné přihlašování")
 
 4. Na stránce **Povolit jednotné přihlašování (SSO)** proveďte následující kroky:
 
-    ![Povolení jednotného přihlašování](./media/pagerduty-tutorial/ic778537.png "Povolení jednotného přihlašování")
+    ![Povolit jednotné přihlašování](./media/pagerduty-tutorial/ic778537.png "Povolit jednotné přihlašování")
 
-    a. Otevřete svůj certifikát kódovaný ze základní ho 64 stažený z portálu Azure v poznámkovém bloku, zkopírujte jeho obsah do schránky a vložte ho do textového pole **Certifikát X.509**
+    a. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64, který jste stáhli z Azure Portal, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikátu X. 509.**
   
-    b. Do textového pole **Přihlašovací adresa URL** vložte přihlašovací adresu **URL,** kterou jste zkopírovali z webu Azure Portal.
+    b. Do textového pole **Adresa URL pro přihlášení** vložte **přihlašovací adresu URL** , kterou jste zkopírovali z Azure Portal.
   
-    c. Do textového pole **Adresa URL odhlášení** vložte **adresu URL odhlášení,** kterou jste zkopírovali z webu Azure Portal.
+    c. V textovém poli **Adresa URL pro odhlášení** vložte **adresu URL** pro odhlášení, kterou jste zkopírovali z Azure Portal.
 
-    d. Vyberte **Povolit přihlášení k uživatelskému jménu/heslu**.
+    d. Vyberte možnost **Povolení přihlášení pomocí uživatelského jména a hesla**.
 
-    e. Zaškrtněte políčko **Vyžadovat porovnání kontextu ověřování EXACT.**
+    e. Zaškrtněte políčko **vyžadovat přesné ověření kontextu ověřování** .
 
     f. Klikněte na **Save Changes** (Uložit změny).
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
+### <a name="create-pagerduty-test-user"></a>Vytvořit testovacího uživatele PagerDuty
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Aby se uživatelé Azure AD mohli přihlašovat k PagerDuty, musí se zřídit v PagerDuty. V případě PagerDuty je zřizování ručním úkolem.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
-
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel.**
-
-    ![Tlačítko nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech User proveďte následující kroky.
-
-    ![Dialogové okno Uživatel](common/user-properties.png)
-
-    a. Do pole **Název** zadejte **BrittaSimon**.
-  
-    b. V poli **Uživatelské jméno** typ pole**brittasimon@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
-
-    d. Klikněte na **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu pagerduty.
-
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **PagerDuty**.
-
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
-
-2. V seznamu aplikací vyberte **PagerDuty**.
-
-    ![Odkaz PagerDuty v seznamu Aplikace](common/all-applications.png)
-
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
-
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
-
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
-
-### <a name="create-pagerduty-test-user"></a>Vytvořit uživatele testu PagerDuty
-
-Chcete-li povolit uživatelům Azure AD k přihlášení k PagerDuty, musí být zřízeny do PagerDuty.  
-V případě PagerDuty zřizování je ruční úlohy.
-
->[!NOTE]
->Ke zřizování uživatelských účtů Azure Active Directory můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů Pagerduty nebo rozhraní API poskytovaná službou Pagerduty.
+> [!NOTE]
+> K zřizování Azure Active Directorych uživatelských účtů můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů PagerDuty nebo rozhraní API poskytovaná PagerDuty.
 
 **Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se k tenantovi **Pagerduty.**
+1. Přihlaste se k **PagerDuty** tenantovi.
 
 2. V nabídce v horní části klikněte na **Uživatelé**.
 
-3. Klepněte na tlačítko **Přidat uživatele**.
+3. Klikněte na **Přidat uživatele**.
    
     ![Přidat uživatele](./media/pagerduty-tutorial/ic778539.png "Přidat uživatele")
 
-4.  V dialogovém okně **Pozvat svůj tým** proveďte následující kroky:
+4.  V dialogovém okně **pozvání týmu** proveďte následující kroky:
    
-    ![Pozvěte svůj tým](./media/pagerduty-tutorial/ic778540.png "Pozvěte svůj tým")
+    ![Pozvání týmu](./media/pagerduty-tutorial/ic778540.png "Pozvání týmu")
 
-    a. Zadejte **jméno a příjmení** uživatele, jako je **Britta Simon**. 
+    a. Zadejte **jméno a příjmení uživatele,** jako je **B. Simon**. 
    
-    b. Zadejte **e-mailovou** adresu uživatele, jako **je brittasimon\@contoso.com**.
+    b. Zadejte **e-mailovou** adresu uživatele, jako je **b.\@Simon contoso.com**.
    
-    c. Klikněte na **Přidat**a potom klikněte na **Odeslat pozvánky**.
+    c. Klikněte na **Přidat**a pak klikněte na **Odeslat pozvánky**.
    
-    >[!NOTE]
-    >Všichni připočtení uživatelé obdrží pozvánku k vytvoření účtu PagerDuty.
+    > [!NOTE]
+    > Všichni přidaní uživatelé budou dostávat pozvánku k vytvoření účtu PagerDuty.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici PagerDuty na přístupovém panelu, můžete by měl být automaticky přihlášeni k PagerDuty, u kterého nastavíte přistupující služby. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici PagerDuty, měli byste se automaticky přihlásit k PagerDuty, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si PagerDuty s Azure AD](https://aad.portal.azure.com/)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chránit PagerDuty pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

@@ -1,82 +1,71 @@
 ---
-title: Ověření řešení správy dávek pomocí služby Azure Active Directory
-description: Prozkoumejte pomocí služby Azure Active Directory k ověřování z aplikací, které používají knihovnu Batch Management .NET.
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: batch
+title: Použití Azure Active Directory k ověřování řešení pro správu dávek
+description: Prozkoumejte použití Azure Active Directory k ověření z aplikací, které používají knihovnu Batch Management .NET.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/27/2017
-ms.author: labrenne
-ms.openlocfilehash: 5c217971bd213c97a2ee31a0a1f513b601d14df9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0aa95aa440303d1577b7646c1a9f1bc5b6e69ac2
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472975"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114781"
 ---
-# <a name="authenticate-batch-management-solutions-with-active-directory"></a>Ověření řešení správy dávek pomocí služby Active Directory
+# <a name="authenticate-batch-management-solutions-with-active-directory"></a>Ověřování řešení Batch Management se službou Active Directory
 
-Aplikace, které volají službu Azure Batch Management, se ověřují pomocí [služby Azure Active Directory][aad_about] (Azure AD). Azure AD je služba Microsoft u cloudového cloudu a správy identit. Azure sám používá Azure AD pro ověřování svých zákazníků, správců služeb a uživatelů organizace.
+Aplikace, které volají službu správy Azure Batch, se ověřují pomocí [Azure Active Directory][aad_about] (Azure AD). Azure AD je cloudová služba pro správu identit založená na cloudu od Microsoftu. Azure využívá Azure AD k ověřování svých zákazníků, správců služeb a uživatelů organizace.
 
-Knihovna Správy dávek .NET zveřejňuje typy pro práci s dávkovými účty, klíči účtů, aplikacemi a balíčky aplikací. Knihovna Batch Management .NET je klientem zprostředkovatele prostředků Azure a používá se společně se [Správcem prostředků Azure][resman_overview] ke správě těchto prostředků programově. Azure AD je potřeba k ověření požadavků provedených prostřednictvím libovolného klienta zprostředkovatele prostředků Azure, včetně knihovny Batch Management .NET, a prostřednictvím [Správce prostředků Azure][resman_overview].
+Knihovna Batch Management .NET zpřístupňuje typy pro práci s účty Batch, klíči účtu, aplikacemi a balíčky aplikací. Knihovna Batch Management .NET je klientem poskytovatele prostředků Azure a používá se společně se [Azure Resource Manager][resman_overview] ke správě těchto prostředků prostřednictvím kódu programu. Služba Azure AD se vyžaduje k ověřování požadavků provedených prostřednictvím libovolného klienta poskytovatele prostředků Azure, včetně knihovny Batch Management .NET Library a až po [Azure Resource Manager][resman_overview].
 
-V tomto článku zkoumáme pomocí Azure AD k ověření z aplikací, které používají knihovnu Batch Management .NET. Ukazujeme, jak používat Azure AD k ověření správce předplatného nebo spolusprávce pomocí integrovaného ověřování. Pomocí Azure AD s knihovnou Batch Management .NET používáme ukázkový projekt [AccountManagement,][acct_mgmt_sample] který je k dispozici na GitHubu.
+V tomto článku se podíváme na použití Azure AD k ověřování z aplikací, které používají knihovnu Batch Management .NET. Ukážeme, jak používat Azure AD k ověřování Správce předplatného nebo spolusprávce s použitím integrovaného ověřování. Pomocí ukázkového projektu [službu AccountManagement][acct_mgmt_sample] , který je k dispozici na GitHubu, si můžete projít pomocí Azure AD s knihovnou Batch Management .NET.
 
-Další informace o používání knihovny Správy dávek .NET a ukázky AccountManagement najdete v [tématu Správa dávkových účtů a kvót pomocí klientské knihovny Správy dávek pro rozhraní .NET](batch-management-dotnet.md).
+Další informace o používání knihovny Batch Management .NET a ukázky službu AccountManagement najdete v tématu [Správa účtů a kvót služby Batch pomocí klientské knihovny pro správu služby Batch pro .NET](batch-management-dotnet.md).
 
-## <a name="register-your-application-with-azure-ad"></a>Registrace aplikace pomocí Azure AD
+## <a name="register-your-application-with-azure-ad"></a>Registrace aplikace ve službě Azure AD
 
-Azure [Active Directory Authentication Library][aad_adal] (ADAL) poskytuje programové rozhraní pro Azure AD pro použití ve vašich aplikacích. Chcete-li volat ADAL z vaší aplikace, musíte zaregistrovat aplikaci v tenantovi Azure AD. Když zaregistrujete svou aplikaci, dodáte Azure AD s informacemi o vaší aplikaci, včetně názvu pro ji v rámci klienta Azure AD. Azure AD pak poskytuje ID aplikace, které používáte k přidružení aplikace k Azure AD za běhu. Další informace o ID aplikace najdete v [tématu Objekty za registrovaných aplikací a služeb ve službě Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
+Služba Azure [Active Directory Authentication Library][aad_adal] (ADAL) poskytuje programový rozhraní pro Azure AD pro použití v rámci svých aplikací. Pokud chcete volat ADAL z vaší aplikace, musíte aplikaci zaregistrovat v tenantovi Azure AD. Při registraci aplikace zadáte Azure AD s informacemi o vaší aplikaci, včetně názvu v rámci tenanta Azure AD. Azure AD pak poskytuje ID aplikace, které použijete k přidružení aplikace k Azure AD za běhu. Další informace o ID aplikace najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Chcete-li zaregistrovat ukázkovou aplikaci AccountManagement, postupujte podle pokynů v části [Přidání aplikace](../active-directory/develop/quickstart-register-app.md) v části Integrace aplikací [se službou Azure Active Directory][aad_integrate]. Zadejte **nativní klientskou aplikaci** pro typ aplikace. Standardní identifikátor URI OAuth 2.0 pro `urn:ietf:wg:oauth:2.0:oob`identifikátor URI **přesměrování** je . Můžete však zadat libovolný platný `http://myaccountmanagementsample`identifikátor URI (například) pro **identifikátor URI přesměrování**, protože nemusí být skutečným koncovým bodem:
+Pokud chcete zaregistrovat ukázkovou aplikaci službu AccountManagement, postupujte podle kroků v části [Přidání aplikace](../active-directory/develop/quickstart-register-app.md) v tématu [integrace aplikací s Azure Active Directory][aad_integrate]. Zadejte **nativní klientskou aplikaci** pro daný typ aplikace. Oborový standard OAuth 2,0 identifikátor URI pro **identifikátor URI přesměrování** je `urn:ietf:wg:oauth:2.0:oob`. Můžete ale pro **identifikátor URI přesměrování**zadat jakýkoli platný identifikátor URI `http://myaccountmanagementsample`(například), protože nemusí být skutečným koncovým bodem:
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
-Po dokončení procesu registrace se zobrazí ID aplikace a ID objektu (instančního objektu) uvedené pro vaši aplikaci.  
+Po dokončení procesu registrace uvidíte ID aplikace a ID objektu (instanční objekt) uvedené pro vaši aplikaci.  
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
-## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>Udělení přístupu rozhraní API Azure Resource Manager u vaší aplikace
+## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>Udělení přístupu k aplikaci Azure Resource Manager API
 
-Dále budete muset delegovat přístup k vaší aplikaci do rozhraní API Azure Resource Manager. Identifikátor Azure AD pro rozhraní API správce prostředků je **rozhraní API pro správu služeb Windows Azure**.
+V dalším kroku budete muset delegovat přístup k vaší aplikaci na rozhraní Azure Resource Manager API. Identifikátor Azure AD pro rozhraní Správce prostředků API je **rozhraní API pro správu služeb Windows Azure**.
 
 Na webu Azure Portal postupujte podle těchto pokynů:
 
-1. V levém navigačním podokně portálu Azure vyberte **Všechny služby**, klikněte na **Registrace aplikací**a klikněte na **Přidat**.
-2. Vyhledejte název aplikace v seznamu registrací aplikací:
+1. V levém navigačním podokně Azure Portal vyberte **všechny služby**, klikněte na **Registrace aplikací**a pak klikněte na **Přidat**.
+2. V seznamu registrací aplikací vyhledejte název vaší aplikace:
 
-    ![Vyhledání názvu aplikace](./media/batch-aad-auth-management/search-app-registration.png)
+    ![Vyhledejte název vaší aplikace.](./media/batch-aad-auth-management/search-app-registration.png)
 
-3. Zobrazí okno **Nastavení.** V části **Přístup k rozhraní API** vyberte **Požadovaná oprávnění**.
+3. Zobrazte okno **Nastavení** . V části **přístup k rozhraní API** vyberte **požadovaná oprávnění**.
 4. Kliknutím na **Přidat** přidejte nové požadované oprávnění. 
-5. V kroku 1 zadejte **rozhraní API pro správu služeb Windows Azure**, vyberte toto rozhraní API ze seznamu výsledků a klikněte na tlačítko **Vybrat.**
-6. V kroku 2 zaškrtněte políčko vedle **modelu klasického nasazení Access Azure jako uživatelé organizace**a klikněte na tlačítko **Vybrat.**
-7. Klikněte na tlačítko **Hotovo.**
+5. V kroku 1 zadejte **Windows Azure rozhraní API pro správu služeb**, vyberte toto rozhraní API ze seznamu výsledků a klikněte na tlačítko **Vybrat** .
+6. V kroku 2 zaškrtněte políčko vedle **přístupu k modelu nasazení Azure Classic jako uživatelé organizace**a klikněte na tlačítko **Vybrat** .
+7. Klikněte na tlačítko **Hotovo** .
 
-Okno **Požadovaná oprávnění** nyní ukazuje, že oprávnění k vaší aplikaci jsou udělena pro adal a správce prostředků API. Oprávnění jsou udělena ADAL ve výchozím nastavení při první registraci aplikace s Azure AD.
+Okno **požadovaná oprávnění** teď zobrazuje, že oprávnění k vaší aplikaci se udělují rozhraním API ADAL i správce prostředků. Při první registraci aplikace v Azure AD jsou oprávnění ve výchozím nastavení udělena službě ADAL.
 
-![Delegování oprávnění do rozhraní API Správce prostředků Azure](./media/batch-aad-auth-management/required-permissions-management-plane.png)
+![Delegování oprávnění k rozhraní Azure Resource Manager API](./media/batch-aad-auth-management/required-permissions-management-plane.png)
 
-## <a name="azure-ad-endpoints"></a>Koncové body Azure AD
+## <a name="azure-ad-endpoints"></a>Koncové body služby Azure AD
 
-K ověření řešení správy dávek pomocí Azure AD budete potřebovat dva známé koncové body.
+K ověření vašich řešení pro správu služby Batch ve službě Azure AD budete potřebovat dva dobře známé koncové body.
 
-- **Společný koncový bod Služby Azure AD** poskytuje obecné rozhraní pro shromažďování přihlašovacích údajů, když konkrétní klient není k dispozici, jako v případě integrovaného ověřování:
+- **Společný koncový bod Azure AD** poskytuje obecné rozhraní pro shromažďování přihlašovacích údajů, když není k dispozici konkrétní tenant, jako v případě integrovaného ověřování:
 
     `https://login.microsoftonline.com/common`
 
-- Koncový **bod Správce prostředků Azure** se používá k získání tokenu pro ověřování požadavků na službu správy dávek:
+- **Koncový bod Azure Resource Manager** slouží k získání tokenu pro ověřování požadavků do služby Batch Management:
 
     `https://management.core.windows.net/`
 
-Ukázková aplikace AccountManagement definuje konstanty pro tyto koncové body. Ponechte tyto konstanty beze změny:
+Ukázková aplikace službu AccountManagement definuje konstanty pro tyto koncové body. Nechte tyto konstanty beze změny:
 
 ```csharp
 // Azure Active Directory "common" endpoint.
@@ -87,7 +76,7 @@ private const string ResourceUri = "https://management.core.windows.net/";
 
 ## <a name="reference-your-application-id"></a>Odkaz na ID aplikace 
 
-Vaše klientská aplikace používá ID aplikace (označované také jako ID klienta) pro přístup k Azure AD za běhu. Jakmile zaregistrujete svou aplikaci na webu Azure Portal, aktualizujte kód tak, aby používal ID aplikace poskytované službou Azure AD pro vaši registrovanou aplikaci. V ukázkové aplikaci AccountManagement zkopírujte ID aplikace z portálu Azure na příslušnou konstantu:
+Klientská aplikace používá ID aplikace (také označované jako ID klienta) pro přístup k Azure AD za běhu. Po zaregistrování aplikace v Azure Portal aktualizujte kód tak, aby pro registrovanou aplikaci používal ID aplikace poskytované službou Azure AD. V ukázkové aplikaci službu AccountManagement zkopírujte ID aplikace z Azure Portal do příslušné konstanty:
 
 ```csharp
 // Specify the unique identifier (the "Client ID") for your application. This is required so that your
@@ -96,7 +85,7 @@ Vaše klientská aplikace používá ID aplikace (označované také jako ID kli
 // https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app
 private const string ClientId = "<application-id>";
 ```
-Zkopírujte také identifikátor URI přesměrování, který jste zadali během procesu registrace. Identifikátor URI přesměrování zadaný v kódu se musí shodovat s identifikátorem URI přesměrování, který jste zadali při registraci aplikace.
+Zkopírujte také identifikátor URI přesměrování, který jste zadali během procesu registrace. Identifikátor URI přesměrování zadaný ve vašem kódu se musí shodovat s identifikátorem URI přesměrování, který jste zadali při registraci aplikace.
 
 ```csharp
 // The URI to which Azure AD will redirect in response to an OAuth 2.0 request. This value is
@@ -107,7 +96,7 @@ private const string RedirectUri = "http://myaccountmanagementsample";
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Získání ověřovacího tokenu Azure AD
 
-Po registraci ukázky AccountManagement v tenantovi Azure AD a aktualizovat ukázkový zdrojový kód s vašimi hodnotami, ukázka je připravenko k ověření pomocí Azure AD. Při spuštění ukázky ADAL pokusí získat ověřovací token. V tomto kroku zobrazí výzvu k zadání pověření společnosti Microsoft: 
+Když v tenantovi Azure AD zaregistrujete ukázku službu AccountManagement a aktualizujete ukázkový zdrojový kód pomocí vašich hodnot, je ukázka připravena k ověření pomocí Azure AD. Při spuštění ukázky se ADAL pokusí získat ověřovací token. V tomto kroku vás vyzve k zadání přihlašovacích údajů Microsoftu: 
 
 ```csharp
 // Obtain an access token using the "common" AAD resource. This allows the application
@@ -120,18 +109,18 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
                                                         PromptBehavior.Auto);
 ```
 
-Po zadání pověření může ukázková aplikace přistoupit k vydání ověřených požadavků službě Správa dávek. 
+Po zadání přihlašovacích údajů může ukázková aplikace pokračovat ve vydávání ověřených požadavků do služby Batch Management. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o spuštění [ukázkové aplikace AccountManagement][acct_mgmt_sample]naleznete v [tématu Správa dávkových účtů a kvót pomocí klientské knihovny Správy dávek pro rozhraní .NET](batch-management-dotnet.md).
+Další informace o spuštění [ukázkové aplikace službu AccountManagement][acct_mgmt_sample]najdete v tématu [Správa účtů a kvót služby Batch pomocí klientské knihovny pro správu služby Batch pro .NET](batch-management-dotnet.md).
 
-Další informace o Azure AD najdete v tématu [Dokumentace služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Podrobné příklady, které ukazují, jak používat ADAL jsou k dispozici v knihovně [ukázky kódu Azure.](https://azure.microsoft.com/resources/samples/?service=active-directory)
+Další informace o Azure AD najdete v dokumentaci k [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Podrobné příklady ukazující, jak používat ADAL jsou k dispozici v knihovně [ukázek kódu Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) .
 
-Informace o ověřování aplikací dávkových služeb pomocí služby Azure AD naleznete v [tématu Ověření řešení dávkových služeb pomocí služby Active Directory](batch-aad-auth.md). 
+Pokud chcete ověřit aplikace služby Batch pomocí Azure AD, přečtěte si téma [ověřování řešení služby Batch pomocí služby Active Directory](batch-aad-auth.md). 
 
 
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Co je služba Azure Active Directory?"
+[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Co je Azure Active Directory?"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md
 [aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Scénáře ověřování pro Azure AD"
 [aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Integrace aplikací s Azure Active Directory"

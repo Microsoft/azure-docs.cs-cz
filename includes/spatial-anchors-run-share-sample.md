@@ -13,22 +13,22 @@ ms.locfileid: "72882312"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
-Ukázka systému Java android podporuje sdílení mezi zařízeními.
-Otevřete `SharedActivity.java` soubor ze složky ukázky v Android Studio. Zadejte adresu URL, kterou jste získali v předchozím kroku (z ASP.NET nasazení webové aplikace Azure) jako hodnotu v `SharingAnchorsServiceUrl` souboru. `SharedActivity.java` Nahraďte `index.html` v `api/anchors`adrese url s . Mělo by to `https://<app_name>.azurewebsites.net/api/anchors`vypadat takto: .
+Ukázka Java Android podporuje sdílení přes zařízení.
+Otevřete soubor `SharedActivity.java` ze složky Samples v Android Studio. Zadejte adresu URL, kterou jste získali v předchozím kroku (z nasazení Azure Web App ASP.NET) jako hodnotu `SharingAnchorsServiceUrl` v `SharedActivity.java` souboru. Nahraďte `index.html` adresu v adrese URL `api/anchors`. Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors`.
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="ios"></a>[iOS](#tab/iOS)
 
-Ukázka objective-c iOS podporuje sdílení mezi zařízeními.
-Otevřete `SharedDemoViewController.m` soubor ve složce ukázky. Zadejte adresu URL, kterou jste získali v předchozím kroku (z ASP.NET nasazení webové aplikace Azure) jako hodnotu v `SharingAnchorsServiceUrl` souboru. `SharedActivity.java` Nahraďte `index.html` v `api/anchors`adrese url s . Mělo by to `https://<app_name>.azurewebsites.net/api/anchors`vypadat takto: .
+Ukázka "cíl-C iOS" podporuje sdílení přes zařízení.
+Otevřete soubor `SharedDemoViewController.m` ve složce Samples. Zadejte adresu URL, kterou jste získali v předchozím kroku (z nasazení Azure Web App ASP.NET) jako hodnotu `SharingAnchorsServiceUrl` v `SharedActivity.java` souboru. Nahraďte `index.html` adresu v adrese URL `api/anchors`. Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors`.
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
-Ukázky Xamarin u Androidu i iOS podporují sdílení mezi zařízeními.
-Otevřete `AccountDetails.cs` soubor ve složce ukázky. Zadejte adresu URL, kterou jste získali v předchozím kroku (z ASP.NET nasazení webové aplikace Azure) jako hodnotu v `AnchorSharingServiceUrl` souboru. `SharedActivity.java` Nahraďte `index.html` v `api/anchors`adrese url s . Mělo by to `https://<app_name>.azurewebsites.net/api/anchors`vypadat takto: .
+Ukázky pro Xamarin Android i iOS podporují sdílení přes zařízení.
+Otevřete soubor `AccountDetails.cs` ve složce Samples. Zadejte adresu URL, kterou jste získali v předchozím kroku (z nasazení Azure Web App ASP.NET) jako hodnotu `AnchorSharingServiceUrl` v `SharedActivity.java` souboru. Nahraďte `index.html` adresu v adrese URL `api/anchors`. Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors`.
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -36,46 +36,46 @@ Otevřete `AccountDetails.cs` soubor ve složce ukázky. Zadejte adresu URL, kte
 
 [!INCLUDE [Open Unity Project](spatial-anchors-open-unity-project.md)]
 
-### <a name="set-up-an-android-device"></a>Nastavení zařízení Android
+### <a name="set-up-an-android-device"></a>Nastavení zařízení s Androidem
 
 [!INCLUDE [Android Unity Build Settings](spatial-anchors-unity-android-build-settings.md)]
 
-### <a name="set-up-an-ios-device"></a>Nastavení iOS zařízení
+### <a name="set-up-an-ios-device"></a>Nastavení zařízení s iOS
 
 [!INCLUDE [iOS Unity Build Settings](spatial-anchors-unity-ios-build-settings.md)]
 
-## <a name="configure-the-account-identifier-and-key"></a>Konfigurace identifikátoru účtu a klíče
+## <a name="configure-the-account-identifier-and-key"></a>Konfigurace identifikátoru a klíče účtu
 
-V podokně **Projektu** `Assets/AzureSpatialAnchorsPlugin/Examples` přejděte `AzureSpatialAnchorsLocalSharedDemo.unity` na soubor scény a otevřete jej.
+V podokně **projekt** přejděte na `Assets/AzureSpatialAnchorsPlugin/Examples` a otevřete soubor `AzureSpatialAnchorsLocalSharedDemo.unity` scény.
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-V podokně **Projektu** `Assets\AzureSpatialAnchors.Examples\Resources`přejděte na . Vyberte `SpatialAnchorSamplesConfig`. Potom v podokně **Inspektor** `Sharing Anchors Service url` zadejte (z ASP.NET nasazení webové aplikace `Base Sharing Url`Azure) `index.html` `api/anchors`jako hodnotu pro , nahrazující . Mělo by to `https://<app_name>.azurewebsites.net/api/anchors`vypadat takto: .
+V podokně **projekt** přejděte na `Assets\AzureSpatialAnchors.Examples\Resources`. Vyberte `SpatialAnchorSamplesConfig`. Pak v podokně **inspektor** `Sharing Anchors Service url` zadejte (z nasazení Azure Web App ASP.NET) jako hodnotu `Base Sharing Url`pro, nahraďte `index.html` hodnotou. `api/anchors` Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors`.
 
-Uložte scénu výběrem **možnosti Uložit** > **soubor**.
+Scénu uložte výběrem Uložit **soubor** > **Save**.
 
 ## <a name="deploy-to-your-device"></a>Nasazení zařízení
 
-### <a name="deploy-to-android-device"></a>Nasazení do zařízení Android
+### <a name="deploy-to-android-device"></a>Nasazení na zařízení s Androidem
 
-Přihlaste se na zařízení Android a připojte ho k počítači pomocí kabelu USB.
+Přihlaste se na zařízení s Androidem a připojte ho k počítači pomocí kabelu USB.
 
-Otevřete **nastavení sestavení** výběrem**položky Nastavení sestavení** **souborů** > .
+Otevřete **nastavení sestavení** výběrem**nastavení sestavení** **souboru** > .
 
-V části **Scény v sestavení**zajistěte, aby všechny scény byly zaškrtnuty vedle sebe.
+V části **scény v sestavení**zajistěte, aby všechny scény měly vedle sebe značku zaškrtnutí.
 
-Ujistěte se, že **exportní projekt** nemá zaškrtnutí. Vyberte **sestavit a spustit**. Budete vyzváni k uložení `.apk` souboru. Můžete si pro něj vybrat libovolné jméno.
+Ujistěte se, že **projekt pro export** neobsahuje značku zaškrtnutí. Vyberte **sestavení a spustit**. Zobrazí se výzva k uložení `.apk` souboru. Můžete si vybrat libovolný název.
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-### <a name="deploy-to-an-ios-device"></a>Nasazení na iOS zařízení
+### <a name="deploy-to-an-ios-device"></a>Nasazení na zařízení s iOS
 
-Otevřete **nastavení sestavení** výběrem**položky Nastavení sestavení** **souborů** > .
+Otevřete **nastavení sestavení** výběrem**nastavení sestavení** **souboru** > .
 
-V části **Scény v sestavení**zajistěte, aby všechny scény byly zaškrtnuty vedle sebe.
+V části **scény v sestavení**zajistěte, aby všechny scény měly vedle sebe značku zaškrtnutí.
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-V Xcode zastavte aplikaci tak, že vyberete **Zastavit**.
+V Xcode zastavte aplikaci tak, že vyberete **zastavit**.

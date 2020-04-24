@@ -19,12 +19,12 @@ ms.locfileid: "76021184"
 
 Vytvoření účtu úložiště:
 
-1. V levé nabídce **+** vyberte vytvoření zdroje.
+1. V nabídce vlevo vyberte **+** vytvořit prostředek.
 2. Do vyhledávacího pole zadejte **storage account**, vyberte **Storage account - blob, file, table, queue** a potom vyberte **Vytvořit**.
     ![Snímek obrazovky ukazující, jak by měla vypadat položka účtu úložiště v dialogovém okně hledání prostředků](../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png)
 
 3. Do pole **Název** zadejte *mystorageacct* a několik náhodných čísel, dokud se nezobrazí zelená značka zaškrtnutí, která značí, že se jedná o jedinečný název. Název účtu úložiště musí být malými písmeny a globálně jedinečný. Název svého účtu úložiště si poznamenejte. Budete jej později potřebovat. 
-4. V **modelu nasazení**ponechejte výchozí hodnotu Správce **prostředků**. Další informace o rozdílech mezi Azure Resource Managerem a klasickým modelem nasazení najdete v článku [Vysvětlení modelů nasazení a stavu prostředků](../articles/azure-resource-manager/management/deployment-models.md).
+4. V části **model nasazení**ponechte výchozí hodnotu **Správce prostředků**. Další informace o rozdílech mezi Azure Resource Managerem a klasickým modelem nasazení najdete v článku [Vysvětlení modelů nasazení a stavu prostředků](../articles/azure-resource-manager/management/deployment-models.md).
 5. V části **Druh účtu** vyberte **StorageV2**. Další informace o různých druzích účtů úložiště najdete v článku [Vysvětlení účtů úložiště Azure](../articles/storage/common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 6. V části **Výkon** ponechte výchozí hodnotu **Storage úrovně Standard**. Služba Azure Files aktuálně podporuje pouze službu Storage úrovně Standard. I když vyberete službu Azure Premium Storage, vaše sdílená složka se uloží ve službě Storage úrovně Standard.
 7. V části **Replikace** vyberte **Místně redundantní úložiště (LRS)**. 

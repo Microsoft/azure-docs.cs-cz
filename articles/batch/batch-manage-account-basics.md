@@ -1,27 +1,17 @@
 ---
-title: Správa účtu – Azure Batch | Dokumenty společnosti Microsoft
-description: Informace o tom, co zahrnuje účet Azure Batch
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
+title: Správa vašeho účtu
+description: Přečtěte si, co zahrnuje účet Azure Batch.
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecae47f6aa0ab3f179632467b7da7805f06162d6
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ce0c612e3434249c0c7d078949b10e0b9f6b1f10
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397268"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116005"
 ---
-# <a name="manage-your-batch-account"></a>Správa dávkového účtu
+# <a name="manage-your-batch-account"></a>Správa účtu Batch
 
 Účet Batch je jednoznačně identifikovaná entita v rámci služby Batch. Veškeré zpracování je přidruženo k účtu Batch.
 
@@ -33,23 +23,23 @@ Můžete spustit několik dávkových úloh služby Batch v jednom účtu Batch 
 
 Účet Batch umožňuje efektivně spouštět rozsáhlé paralelní a vysoce výkonné výpočetní úlohy (HPC) v Azure. V rámci účtu, který spravujete:
 
-- Aplikace, které používáte
+- Spuštěné aplikace
 
 - Přidělení fondů a uzlů v rámci fondů
 
-- Počet a typy úkolů 
+- Počet a typy úloh 
 
-- Vstup a výstup dat. Ke správě úkolů není nutné instalovat další software.
+- Vstup a výstup dat. Nemusíte instalovat další software pro správu úloh.
 
-- Při vytváření účtu Dávka budete vyzváni k přiřazení názvu. Tento název je jeho ID a po přiřazení nelze změnit.
+- Při vytváření účtu Batch budete požádáni o přiřazení názvu. Toto jméno je jeho ID a po přiřazení nejde změnit.
 
-- Chcete-li změnit název účtu, musíte jej odstranit a vytvořit nový účet Batch.
+- Chcete-li změnit název účtu, je nutné jej odstranit a vytvořit nový účet Batch.
 
 - Účet se vytvoří v rámci předplatného, které chcete použít.
 
-- Pomocí účtu můžete identifikovat a načíst klíče primárního a sekundárního účtu z libovolného účtu Batch v rámci předplatného.
+- Pomocí účtu můžete identifikovat a načíst primární a sekundární klíče účtu z libovolného účtu Batch v rámci vašeho předplatného.
 
-- Účet udržuje informace o přidělení fondu a kvóty jádra.  
+- Účet uchovává informace o přidělování fondů a hlavních kvótách.  
 
 - Účet obsahuje informace o poloze.
 
@@ -57,8 +47,8 @@ Můžete spustit několik dávkových úloh služby Batch v jednom účtu Batch 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vytvořte dávkový účet pomocí [portálu Azure](batch-account-create-portal.md).
-- Vytvořte dávkový účet programově, například pomocí [knihovny Správy dávek .NET](batch-management-dotnet.md).
-- [Konfigurace nebo zakázání vzdáleného přístupu k výpočetním uzlům ve fondu Azure Batch](pool-endpoint-configuration.md).
-- [Spuštění úloh přípravy úloh a úloh y uvolnění úloh y dávkových výpočetních uzlů](batch-job-prep-release.md)
+- Vytvořte účet Batch pomocí [Azure Portal](batch-account-create-portal.md).
+- Vytvořte účet Batch programově, například pomocí [knihovny Batch Management .NET](batch-management-dotnet.md).
+- [Umožňuje nakonfigurovat nebo zakázat vzdálený přístup k výpočetním uzlům ve fondu Azure Batch](pool-endpoint-configuration.md).
+- [Spuštění úkolů přípravy úloh a uvolnění úloh na výpočetních uzlech Batch](batch-job-prep-release.md)
 

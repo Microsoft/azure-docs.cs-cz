@@ -15,4 +15,4 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "72818611"
 ---
-S tabulkami můžete pracovat prostřednictvím služby Azure Table Storage nebo Azure Cosmos DB. Další informace o rozdílech mezi službami naleznete v tématu [Tabulka nabídek](../articles/cosmos-db/table-introduction.md#table-offerings). U služby, kterou budete používat, si budete muset vytvořit účet.
+S tabulkami můžete pracovat prostřednictvím služby Azure Table Storage nebo Azure Cosmos DB. Další informace o rozdílech mezi službami najdete v tématu [nabídky tabulek](../articles/cosmos-db/table-introduction.md#table-offerings). U služby, kterou budete používat, si budete muset vytvořit účet.

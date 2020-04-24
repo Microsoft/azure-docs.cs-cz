@@ -1,51 +1,51 @@
 ---
-title: Notebooky Zeppelin & clusteru Apache Spark - Azure HDInsight
-description: Podrobné pokyny, jak používat notebooky Zeppelin s clustery Apache Spark v Azure HDInsight.
+title: Zeppelin poznámkové bloky & Apache Spark clusteru – Azure HDInsight
+description: Podrobné pokyny k použití poznámkových bloků Zeppelin s clustery s Apache Spark v Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/07/2020
-ms.openlocfilehash: 3c1369e813ba6518f6cd4b27082020ae36a24c82
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.date: 04/23/2020
+ms.openlocfilehash: e97ac14c91ec9fb05b25d422680d788b4498725f
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811200"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116719"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark ve službě Azure HDInsight
 
-HdInsight Spark clustery patří [Apache Zeppelin](https://zeppelin.apache.org/) notebooky. Pomocí poznámkových bloků můžete spouštět úlohy [Apache Spark.](https://spark.apache.org/) V tomto článku se dozvíte, jak používat poznámkový blok Zeppelin v clusteru HDInsight.
+Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://zeppelin.apache.org/) . Pomocí poznámkových bloků spusťte Apache Spark úlohy. V tomto článku se dozvíte, jak používat Poznámkový blok Zeppelin v clusteru HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Schéma URI pro primární úložiště clusterů. Schéma by `wasb://` bylo pro Azure `abfs://` Blob Storage, pro `adl://` Azure Data Lake Storage Gen2 nebo pro Azure Data Lake Storage Gen1. Pokud je pro úložiště objektů BLOB povolen `wasbs://`zabezpečený přenos, identifikátor URI bude .  Další informace najdete [v tématu Require secure transfer in Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
+* Schéma identifikátoru URI pro primární úložiště clusterů. Schéma bude `wasb://` pro Azure Blob Storage `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.  Další informace najdete v tématu [vyžadování zabezpečeného přenosu v Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
 
-## <a name="launch-an-apache-zeppelin-notebook"></a>Spuštění notebooku Apache Zeppelin
+## <a name="launch-an-apache-zeppelin-notebook"></a>Spuštění poznámkového bloku Apache Zeppelin
 
-1. V přehledu **clusteru**Spark vyberte ze **zřídicích panelů clusteru poznámkový blok** **Zeppelin** . Zadejte pověření správce pro cluster.  
+1. V **přehledu**clusteru Spark vyberte **Poznámkový blok Zeppelin** z **řídicích panelů clusteru**. Zadejte přihlašovací údaje Správce clusteru.  
 
    > [!NOTE]  
-   > Poznámkový blok Zeppelin pro váš cluster můžete také kontaktovat otevřením následující adresy URL ve vašem prohlížeči. Nahraďte **název clusteru názvem clusteru:**
+   > Do poznámkového bloku Zeppelin se můžete dostat i tak, že v prohlížeči otevřete následující adresu URL. Nahraďte **název_clusteru** názvem vašeho clusteru:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. Vytvořte nový poznámkový blok. V podokně záhlaví přejděte na **Poznámkový blok** > **Vytvořit novou poznámku**.
+2. Vytvořte nový poznámkový blok. V podokně záhlaví přejděte na **Poznámkový blok** > **vytvořit novou poznámku**.
 
-    ![Vytvoření nového notebooku Zeppelin](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Vytvoření nového notebooku Zeppelin")
+    ![Vytvoření nového poznámkového bloku Zeppelin](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Vytvoření nového poznámkového bloku Zeppelin")
 
-    Zadejte název poznámkového bloku a vyberte **Vytvořit poznámku**.
+    Zadejte název pro Poznámkový blok a pak vyberte **vytvořit poznámku**.
 
-3. Ujistěte se, že záhlaví poznámkového bloku zobrazuje připojený stav. Je označena zelenou tečkou v pravém horním rohu.
+3. Ujistěte se, že se v hlavičce poznámkového bloku zobrazuje stav připojeno. Je označený zelenou tečkou v pravém horním rohu.
 
-    ![Stav notebooku Zeppelin](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Stav notebooku Zeppelin")
+    ![Stav poznámkového bloku Zeppelin](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Stav poznámkového bloku Zeppelin")
 
-4. Načtěte vzorová data do dočasné tabulky. Když vytvoříte cluster Spark v HDInsightu, `hvac.csv`ukázkový datový soubor , `\HdiSamples\SensorSampleData\hvac`se zkopíruje do přidruženého účtu úložiště v části .
+4. Načtěte vzorová data do dočasné tabulky. Při vytváření clusteru Spark ve službě HDInsight se Ukázkový datový soubor `hvac.csv`zkopíruje do přidruženého účtu úložiště v části. `\HdiSamples\SensorSampleData\hvac`
 
-    Do prázdného odstavce, který je ve výchozím nastavení vytvořen v novém poznámkovém bloku, vložte následující úryvek.
+    V novém poznámkovém bloku vložte následující fragment kódu do prázdného odstavce, který je ve výchozím nastavení vytvořen.
 
     ```scala
     %livy2.spark
@@ -71,152 +71,152 @@ HdInsight Spark clustery patří [Apache Zeppelin](https://zeppelin.apache.org/)
     hvac.registerTempTable("hvac")
     ```
 
-    Stisknutím **kláves SHIFT + ENTER** nebo vyberte tlačítko **Přehrát** pro odstavec, abyste spouštěli výstřižek. Stav v pravém rohu odstavce by měl postupovat od READY, PENDING, Running to FINISHED. Výstup se zobrazí v dolní části stejného odstavce. Snímek obrazovky vypadá jako na následujícím obrázku:
+    Stiskněte **SHIFT + ENTER** nebo vyberte tlačítko **Přehrát** pro odstavec a spusťte fragment kódu. Stav v pravém horním rohu odstavce by měl pokračovat od připraveného až do dokončení. Výstup se zobrazí v dolní části stejného odstavce. Snímek obrazovky vypadá jako na následujícím obrázku:
 
-    ![Vytvoření dočasné tabulky z nezpracovaných dat](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "Vytvoření dočasné tabulky z nezpracovaných dat")
+    ![Vytvořit dočasnou tabulku z nezpracovaných dat](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "Vytvořit dočasnou tabulku z nezpracovaných dat")
 
-    Ke každému odstavci můžete také zadat název. V pravém rohu odstavce vyberte ikonu **Nastavení** (řetězové kolo) a pak vyberte **Zobrazit název**.  
+    Můžete také zadat název každého odstavce. V pravém horním rohu odstavce vyberte ikonu **Nastavení** (Sprocket) a pak vyberte **Zobrazit nadpis**.  
 
     > [!NOTE]  
-    > %spark2 interpret není podporován v poznámkových blocích Zeppelin ve všech verzích HDInsight a %sh interpret nebude podporován od HDInsight 4.0 a dále.
+    > % spark2 překladače není podporován v poznámkových blocích Zeppelin napříč všemi verzemi HDInsight a překladač% SH nebude podporován od HDInsight 4,0 a vyšší.
 
-5. Nyní můžete spustit Příkazy `hvac` Spark SQL v tabulce. Vložte následující dotaz do nového odstavce. Dotaz načte ID budovy. Také rozdíl mezi cílem a skutečnými teplotami pro každou budovu k danému datu. Stiskněte **klávesu SHIFT + ENTER**.
+5. V `hvac` tabulce teď můžete spustit příkazy Spark SQL. Vložte následující dotaz do nového odstavce. Dotaz načte ID sestavení. Také rozdíl mezi cílovou a skutečnou teplotou pro každé sestavení v daném datu. Stiskněte **SHIFT + ENTER**.
 
     ```sql
     %sql
     select buildingID, (targettemp - actualtemp) as temp_diff, date from hvac where date = "6/1/13"
     ```  
 
-    Příkaz **%sql** na začátku informuje poznámkový blok, aby používal interpret Livy Scala.
+    Příkaz **% SQL** na začátku upozorňuje na Poznámkový blok na použití překladače Scala Livy.
 
-6. Chcete-li zobrazení změnit, vyberte ikonu **Pruhový graf.**  **po**výběru **pruhového grafu**, umožňuje zvolit **klávesy**a **hodnoty**.  Následující snímek obrazovky ukazuje výstup.
+6. Vyberte ikonu **pruhového grafu** pro změnu zobrazení.  **Nastavení**, která se zobrazí po výběru **pruhového grafu**, vám umožní vybrat **klíče**a **hodnoty**.  Výstup se zobrazí na následujícím snímku obrazovky.
 
-    ![Spuštění příkazu Spark SQL pomocí poznámkového bloku1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Spuštění příkazu Spark SQL pomocí poznámkového bloku1")
+    ![Spuštění příkazu Spark SQL pomocí notebook1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Spuštění příkazu Spark SQL pomocí notebook1")
 
-7. Příkazy Spark SQL můžete také spustit pomocí proměnných v dotazu. Další úryvek ukazuje, jak definovat `Temp`proměnnou , v dotazu s možnými hodnotami, se kterými chcete dotazovat. Při prvním spuštění dotazu je automaticky vyplněnrozerozevírací seznam s hodnotami, které jste zadali pro proměnnou.
+7. Příkazy Spark SQL můžete také spouštět pomocí proměnných v dotazu. Další fragment kódu ukazuje, jak definovat proměnnou `Temp`v dotazu s možnými hodnotami, se kterými se chcete dotazovat. Při prvním spuštění dotazu se automaticky vyplní rozevírací seznam hodnotami, které jste zadali pro proměnnou.
 
     ```sql
     %sql  
     select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}"
     ```
 
-    Vložte tento úryvek do nového odstavce a stiskněte **klávesu SHIFT + ENTER**. Pak vrozené **rozevírací** seznamu Temp vyberte **65.**
+    Vložte tento fragment kódu do nového odstavce a stiskněte **SHIFT + ENTER**. Pak v rozevíracím seznamu **tempa** vyberte **65** .
 
-8. Chcete-li zobrazení změnit, vyberte ikonu **Pruhový graf.**  Pak vyberte **nastavení** a proveďte následující změny:
+8. Vyberte ikonu **pruhového grafu** pro změnu zobrazení.  Pak vyberte **Nastavení** a proveďte následující změny:
 
-   * **Skupiny:**  Přidejte **targettemp**.  
-   * **Hodnoty:** 1. Odebrat **datum**.  2. Přidejte **temp_diff**.  3.  Změňte agregátor ze **sumy** na **AVG**.  
+   * **Skupiny:**  Přidat **targettemp**.  
+   * **Hodnoty:** první. Odebrat **Datum**.  2. Přidejte **temp_diff**.  3.  Změňte agregátor z **Sum** na **AVG**.  
 
-     Následující snímek obrazovky ukazuje výstup.
+     Výstup se zobrazí na následujícím snímku obrazovky.
 
-     ![Spuštění příkazu Spark SQL pomocí poznámkového bloku2](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Spuštění příkazu Spark SQL pomocí poznámkového bloku2")
+     ![Spuštění příkazu Spark SQL pomocí notebook2](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Spuštění příkazu Spark SQL pomocí notebook2")
 
-## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Jak se používají externí balíčky s poznámkovým blokem?
+## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Návody použít pro Poznámkový blok externí balíčky?
 
-Notebook Zeppelin v clusteru Apache Spark na HDInsightu může používat externí balíčky, které jsou součástí clusteru. Vyhledejte v [úložišti Maven](https://search.maven.org/) úplný seznam balíčků, které jsou k dispozici. Můžete také získat seznam dostupných balíčků z jiných zdrojů. Úplný seznam balíčků, do kterých přispěla komunita, je například k dispozici na [sparku Packages](https://spark-packages.org/).
+Poznámkový blok Zeppelin Apache Spark v HDInsight může používat externí balíčky, které se podílejí na komunitě, které nejsou zahrnuté v clusteru. Vyhledejte v [úložišti Maven](https://search.maven.org/) úplný seznam balíčků, které jsou k dispozici. Můžete také získat seznam dostupných balíčků z jiných zdrojů. Například úplný seznam balíčků, které jsou součástí komunity, je k dispozici v [balíčcích Spark](https://spark-packages.org/).
 
-V tomto článku uvidíte, jak používat [balíček spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) s poznámkovým blokem Jupyter.
+V tomto článku se dozvíte, jak používat balíček [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) s poznámkovým blokem Jupyter.
 
-1. Otevřít nastavení tlumočníka. V pravém horním rohu vyberte přihlášené uživatelské jméno a pak vyberte **Interpret .**
+1. Otevřete nastavení překladače. V pravém horním rohu vyberte přihlášené uživatelské jméno a pak vyberte **Interpret**.
 
-    ![Spuštění tlumočníka](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Výstup úlu")
+    ![Spustit překladač](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Výstup podregistru")
 
-2. Přejděte na **livy2**a vyberte **možnost Upravit**.
+2. Přejděte na **livy2**a pak vyberte **Upravit**.
 
-    ![Změna nastavení interpretu1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Změna nastavení interpretu1")
+    ![Změnit Interpret settings1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Změnit Interpret settings1")
 
-3. Přejděte `livy.spark.jars.packages`na klávesu a nastavte `group:id:version`její hodnotu ve formátu . Takže pokud chcete použít [balíček spark-csv,](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) musíte nastavit hodnotu `com.databricks:spark-csv_2.10:1.4.0`klíče na .
+3. Přejděte na klíč `livy.spark.jars.packages`a nastavte jeho hodnotu ve formátu `group:id:version`. Pokud tedy chcete použít balíček [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) , je nutné nastavit hodnotu klíče na `com.databricks:spark-csv_2.10:1.4.0`.
 
-    ![Změna nastavení interpretu2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Změna nastavení interpretu2")
+    ![Změnit Interpret settings2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Změnit Interpret settings2")
 
-    Chcete-li **restartovat** interpret livy, vyberte uložit a potom **OK.**
+    Vyberte **Save (Uložit** ) a pak na **OK** , abyste restartovali Livy Interpret.
 
-4. Pokud chcete pochopit, jak se dostat na hodnotu klíče zadaného výše, zde je návod.
+4. Pokud chcete pochopit, jak se dorazí na hodnotu klíče, který jste zadali výše, tady je postup.
 
-    a. Vyhledejte balíček v úložišti Maven. Pro tento článek jsme použili [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
+    a. Vyhledejte balíček v úložišti Maven. V tomto článku jsme použili [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
 
-    b. Z úložiště shromážděte hodnoty **groupId**, **ArtifactId**a **Version**.
+    b. Z úložiště Shromážděte hodnoty pro ID **skupiny**, **ArtifactId**a **verzi**.
 
-    ![Použití externích balíčků s notebookem Jupyter](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Použití externích balíčků s notebookem Jupyter")
+    ![Použití externích balíčků s poznámkovým blokem Jupyter](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Použití externích balíčků s poznámkovým blokem Jupyter")
 
-    c. Zřetězit tři hodnoty oddělené dvojtečkou (**:**).
+    c. Zřetězí tři hodnoty oddělené dvojtečkou (**:**).
 
         com.databricks:spark-csv_2.10:1.4.0
 
-## <a name="where-are-the-zeppelin-notebooks-saved"></a>Kde jsou uloženy notebooky Zeppelin?
+## <a name="where-are-the-zeppelin-notebooks-saved"></a>Kam se ukládají poznámkové bloky Zeppelin?
 
-Notebooky Zeppelin jsou uloženy do hlavových uzlů clusteru. Pokud tedy cluster odstraníte, budou odstraněny také poznámkové bloky. Pokud chcete zachovat poznámkové bloky pro pozdější použití v jiných clusterech, musíte je exportovat po dokončení spuštění úloh. Chcete-li exportovat poznámkový blok, vyberte ikonu **Exportovat,** jak je znázorněno na obrázku níže.
+Poznámkové bloky Zeppelin se ukládají do hlavních clusteru. Takže pokud cluster odstraníte, poznámkové bloky se taky odstraní. Pokud chcete zachovat své poznámkové bloky pro pozdější použití v jiných clusterech, musíte je po dokončení spouštění úloh exportovat. Chcete-li exportovat Poznámkový blok, vyberte ikonu **exportu** , jak je znázorněno na obrázku níže.
 
-![Stáhnout poznámkový blok](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "Stažení poznámkového bloku")
+![Stáhnout Poznámkový blok](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "Stáhnout Poznámkový blok")
 
-Tato akce uloží poznámkový blok jako soubor JSON v umístění pro stahování.
+Tato akce uloží Poznámkový blok jako soubor JSON do umístění pro stahování.
 
-## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Slouží `Shiro` ke konfiguraci přístupu k protokolům Zeppelin Interpretů v clusterech balíčků zabezpečení rozlehlé sítě (ESP)
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Slouží `Shiro` ke konfiguraci přístupu k překladačům Zeppelin v clusterech balíček zabezpečení podniku (ESP).
 
-Jak bylo uvedeno `%sh` výše, interpret není podporován od HDInsight 4.0 a dále. Navíc vzhledem `%sh` k tomu, že interpret zavádí potenciální problémy se zabezpečením, jako je například přístupové karty pomocí příkazů prostředí, byl také odebrán z clusterů HDInsight 3.6 ESP. To `%sh` znamená, že interpret není k dispozici po kliknutí na **vytvořit novou poznámku** nebo v interpretu uvisu ve výchozím nastavení.
+Jak bylo uvedeno výše, `%sh` překladač není podporován od HDInsight 4,0 a vyšší. Vzhledem `%sh` k tomu, že překladač zavádí možné problémy se zabezpečením, jako jsou například přístupové karty pomocí příkazů prostředí, byl odebrán také z clusterů HDInsight 3,6 ESP. To znamená `%sh` , že překladač není k dispozici, když ve výchozím nastavení kliknete na možnost **vytvořit novou poznámku** nebo v uživatelském rozhraní překladače.
 
-Uživatelé privilegované domény `Shiro.ini` mohou soubor použít k řízení přístupu k uživatelskému uživatelskému uživatelskému nastavení interpretu. Pouze tito uživatelé `%sh` mohou vytvářet nové `%sh` interprety a nastavit oprávnění pro každého nového interpreta. Chcete-li řídit `shiro.ini` přístup pomocí souboru, použijte následující kroky:
+Uživatelé privilegovaných domén mohou použít `Shiro.ini` soubor k řízení přístupu k uživatelskému rozhraní překladače. Pouze tito uživatelé mohou vytvořit nové `%sh` překladače a nastavit oprávnění u každého nového `%sh` překladače. K řízení přístupu pomocí `shiro.ini` souboru použijte následující postup:
 
-1. Definujte novou roli pomocí existujícího názvu skupiny domény. V následujícím příkladu `adminGroupName` je skupina privilegovaných uživatelů v AAD. V názvu skupiny nepoužívejte speciální znaky ani mezery. Znaky po `=` udělení oprávnění pro tuto roli. `*`znamená, že skupina má úplná oprávnění.
+1. Definujte novou roli pomocí existujícího názvu skupiny domén. V následujícím příkladu `adminGroupName` je skupina privilegovaných uživatelů v AAD. V názvu skupiny Nepoužívejte speciální znaky ani prázdné znaky. Znaky po `=` poskytnutí oprávnění pro tuto roli. `*`znamená, že skupina má úplná oprávnění.
 
     ```
     [roles]
     adminGroupName = *
     ```
 
-2. Přidejte novou roli pro přístup k tlumočníkům Zeppelin. V následujícím příkladu mají `adminGroupName` všichni uživatelé přístup k tlumočníkům Zeppelin a mohou vytvářet nové tlumočníky. Mezi závorky v oblasti `roles[]`můžete umístit více rolí oddělených čárkami. Poté mohou uživatelé, kteří mají potřebná oprávnění, přistupovat k tlumočníkům Zeppelin.
+2. Přidejte novou roli pro přístup k překladačům Zeppelin. V následujícím příkladu mají všichni uživatelé v `adminGroupName` nástroji udělen přístup k překladačům Zeppelin a mohou vytvářet nové překladače. Mezi závorky `roles[]`můžete umístit více rolí oddělených čárkami. Uživatelé s potřebnými oprávněními pak mají přístup k překladačům Zeppelin.
 
     ```
     [urls]
     /api/interpreter/** = authc, roles[adminGroupName]
     ```
 
-## <a name="livy-session-management"></a>Livy session management
+## <a name="livy-session-management"></a>Správa relací Livy
 
-První odstavec kódu v poznámkovém bloku Zeppelin vytvoří novou relaci Livy ve vašem clusteru. Tato relace je sdílena mezi všemi poznámkovými bloky Zeppelin, které později vytvoříte. Pokud je relace Livy z nějakého důvodu zabita, úlohy nebudou spuštěny z notebooku Zeppelin.
+První odstavec s kódem v Zeppelin poznámkovém bloku vytvoří novou relaci Livy v clusteru. Tato relace se sdílí ve všech poznámkových blocích Zeppelin, které vytvoříte později. Pokud se relace Livy z nějakého důvodu ukončila, úlohy se z poznámkového bloku Zeppelin nespustí.
 
-V takovém případě musíte provést následující kroky, než můžete začít spouštět úlohy z poznámkového bloku Zeppelin.  
+V takovém případě je třeba provést následující kroky, aby bylo možné začít spouštět úlohy z Zeppelin poznámkového bloku.  
 
-1. Restartujte interpreta Livy z notebooku Zeppelin. Chcete-li tak učinit, otevřete nastavení interpretu výběrem přihlášeného uživatelského jména v pravém horním rohu a vyberte **interpretovat**.
+1. Restartujte překladač Livy z poznámkového bloku Zeppelin. Uděláte to tak, že v pravém horním rohu otevřete přihlášené uživatelské jméno a pak vyberete **Interpret**.
 
-    ![Spuštění tlumočníka](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Výstup úlu")
+    ![Spustit překladač](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Výstup podregistru")
 
-2. Přejděte na **livy2**a vyberte **možnost restartovat**.
+2. Přejděte na **livy2**a pak vyberte **restartovat**.
 
-    ![Restartujte interpreta Livy](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Restartujte tlumočníka Zeppelin")
+    ![Restartování překladače Livy](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Restartování překladače Zeppelin")
 
-3. Spusťte buňku kódu z existujícího notebooku Zeppelin. Tento kód vytvoří novou relaci Livy v clusteru HDInsight.
+3. Spustí buňku kódu z existujícího poznámkového bloku Zeppelin. Tento kód vytvoří novou relaci Livy v clusteru HDInsight.
 
 ## <a name="general-information"></a>Obecné informace
 
 ### <a name="validate-service"></a>Ověřit službu
 
-Chcete-li ověřit službu z Ambari, přejděte na `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` místo, kde clusterCLUSTERNAME je název clusteru.
+Pokud chcete službu ověřit z Ambari, přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` umístění název_clusteru, kde je název vašeho clusteru.
 
-Chcete-li ověřit službu z příkazového řádku, SSH do hlavního uzlu. Přepnout uživatele na zeppelin pomocí příkazu `sudo su zeppelin`. Příkazy o stavu:
+Chcete-li ověřit službu z příkazového řádku, SSH k hlavnímu uzlu. Přepněte uživatele na Zeppelin pomocí příkazu `sudo su zeppelin`. Stavové příkazy:
 
 |Příkaz |Popis |
 |---|---|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|Stav služby.|
-|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Verze služby.|
-|`ps -aux | grep zeppelin`|Identifikovat PID.|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Verze služby|
+|`ps -aux | grep zeppelin`|Identifikujte PID.|
 
-### <a name="log-locations"></a>Protokolovat umístění
+### <a name="log-locations"></a>Umístění protokolů
 
 |Služba |Cesta |
 |---|---|
-|zeppelin-server|/usr/hdp/current/zeppelin-server/|
+|Zeppelin – Server|/usr/hdp/current/zeppelin-server/|
 |Protokoly serveru|/var/log/zeppelin|
-|Překladač `Shiro`konfigurace, , site.xml, log4j|/usr/hdp/current/zeppelin-server/conf nebo /etc/zeppelin/conf|
+|Interpret konfigurace, `Shiro`, site. XML, log4j|/usr/HDP/Current/Zeppelin-Server/conf nebo/etc/Zeppelin/conf|
 |Adresář PID|/var/run/zeppelin|
 
 ### <a name="enable-debug-logging"></a>Povolit protokolování ladění
 
-1. Přejděte `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` na místo, kde clusterNAME je název clusteru.
+1. Přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` složky název_clusteru, kde je název vašeho clusteru.
 
-1. Přejděte na **CONFIGS** > **Advanced zeppelin-log4j-properties** > **log4j_properties_content**.
+1. Přejděte do **Konfigurace** > **Upřesnit Zeppelin-log4j-Properties** > **log4j_properties_content**.
 
-1. Změnit `log4j.appender.dailyfile.Threshold = INFO` `log4j.appender.dailyfile.Threshold = DEBUG`na .
+1. Upravit `log4j.appender.dailyfile.Threshold = INFO` na `log4j.appender.dailyfile.Threshold = DEBUG`.
 
 1. Přidat `log4j.logger.org.apache.zeppelin.realm=DEBUG`.
 
@@ -224,29 +224,6 @@ Chcete-li ověřit službu z příkazového řádku, SSH do hlavního uzlu. Pře
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
-
-### <a name="scenarios"></a>Scénáře
-
-* [Apache Spark s BI: Interaktivní analýza dat pomocí Spark v HDInsightu s nástroji BI](apache-spark-use-bi-tools.md)
-* [Apache Spark se strojovým učením: Použijte Spark v HDInsightu pro analýzu teploty budovy pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s machine learningem: Využijte Spark v HDInsightu k předvídání výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
-* [Analýza protokolu webových stránek pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
-
-* [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Spouštění úloh na dálku v clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>Nástroje a rozšíření
-
-* [Použití HDInsight Tools Plugin pro IntelliJ IDEA k vytvoření a odeslání aplikací Apache Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití HDInsight Tools Plugin pro IntelliJ IDEA k ladění aplikací Apache Spark na dálku](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Jádra dostupná pro notebook Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
+* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>Správa prostředků
-
-* [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
-* [Sledování a ladění úloh spuštěných v clusteru serveru Apache Spark v HDInsight](apache-spark-job-debugging.md)

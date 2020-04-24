@@ -1,52 +1,63 @@
 ---
-title: Jak auditovat operace roviny řízení Azure Cosmos DB
-description: Zjistěte, jak auditovat operace roviny ovládacího prvku, jako je přidání oblasti, propustnost aktualizace, převzetí služeb při selhání oblasti, přidání virtuální sítě atd.
+title: Postup při auditování operací roviny ovládacího prvku Azure Cosmos DB
+description: Naučte se auditovat operace roviny ovládacího prvku, jako je například přidání oblasti, aktualizace propustnosti, převzetí služeb při selhání oblasti, přidání virtuální sítě atd. v Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: sngun
-ms.openlocfilehash: 64ad8e6b1101d8486268c857b3a7752e1801f52c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 32dd598b8fc62c0ec68f86f95b02f9f3d98cedd2
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420292"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116294"
 ---
-# <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Jak auditovat operace roviny řízení Azure Cosmos DB
+# <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Postup při auditování operací roviny ovládacího prvku Azure Cosmos DB
 
-Operace roviny řízení zahrnují změny účtu nebo kontejneru Azure Cosmos. Například vytvořit účet Azure Cosmos, přidat oblast, aktualizovat propustnost, oblast převzetí služeb při selhání, přidat virtuální síť atd. Tento článek vysvětluje, jak auditovat operace roviny ovládacího prvku v Azure Cosmos DB.
+Řídicí rovina v Azure Cosmos DB je služba RESTful, která umožňuje provádět různé sady operací na účtu Azure Cosmos. Zveřejňuje model veřejného prostředku (například databáze, účet) a různé operace pro koncové uživatele k provádění akcí v modelu prostředků. Operace roviny ovládacího prvku zahrnuje změny v rámci účtu nebo kontejneru Azure Cosmos. Například operace, jako je vytvoření účtu Azure Cosmos, přidání oblasti, aktualizace propustnosti, převzetí služeb při selhání, přidání virtuální sítě atd. jsou některé z operací roviny ovládacího prvku. Tento článek vysvětluje, jak auditovat operace roviny ovládacího prvku v Azure Cosmos DB. Pomocí Azure CLI nebo PowerShellu můžete spouštět operace řídicích roviny na účtech Azure Cosmos pomocí Azure CLI, PowerShellu nebo Azure Portal, zatímco kontejnery.
+
+Následuje několik ukázkových scénářů, ve kterých je užitečné objednání rovin řízení auditování:
+
+* Chcete získat upozornění, když se upraví pravidla brány firewall pro váš účet Azure Cosmos. Výstraha se vyžaduje k vyhledání neoprávněných změn pravidel, která řídí zabezpečení sítě vašeho účtu Azure Cosmos a rychlé fungování.
+
+* Chcete získat výstrahu, pokud se do účtu Azure Cosmos přidá nebo odebere nová oblast. Přidávání nebo odebírání oblastí má vliv na požadavky fakturace a suverenity dat. Tato výstraha vám pomůže zjistit náhodné přidání nebo odebrání oblasti ve vašem účtu.
+
+* Chcete získat další podrobnosti z diagnostických protokolů o tom, co se změnilo. Virtuální síť se například změnila.
 
 ## <a name="disable-key-based-metadata-write-access"></a>Zakázat přístup pro zápis metadat založených na klíčích
- 
-Před auditem operací roviny ovládacího prvku v Azure Cosmos DB zakažte přístup pro zápis metadat založených na klíči ve vašem účtu. Když je zakázán přístup pro zápis metadat založených na klíčích, klienti, kteří se připojují k účtu Azure Cosmos prostřednictvím klíčů účtů, nemají přístup k účtu. Přístup pro zápis můžete `disableKeyBasedMetadataWriteAccess` zakázat nastavením vlastnosti na hodnotu true. Po nastavení této vlastnosti může dojít ke změnám libovolného prostředku od uživatele s rolí a pověřeními na základě rolí (RBAC) a pouze s rolí. Další informace o nastavení této vlastnosti najdete v článku [Zabránění změnám z sad SDK.](role-based-access-control.md#preventing-changes-from-cosmos-sdk)
 
- Při vypínání přístupu pro zápis metadat zvažte následující body:
+Před auditem operací řízení roviny v Azure Cosmos DB zakažte na svém účtu přístup k zápisu metadat na základě klíčů. Pokud je zakázaný přístup pro zápis metadat založených na klíčích, klienti připojující se k účtu Azure Cosmos prostřednictvím klíčů účtu nemají přístup k účtu. Přístup pro zápis můžete zakázat nastavením `disableKeyBasedMetadataWriteAccess` vlastnosti na hodnotu true. Po nastavení této vlastnosti se můžou změny libovolného prostředku vyskytnout od uživatele, který má správnou roli řízení přístupu na základě role (RBAC) a přihlašovací údaje. Další informace o tom, jak tuto vlastnost nastavit, najdete v článku [prevence změn ze sad SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . Po zakázání přístupu pro zápis budou změny v propustnosti založené na sadě SDK fungovat i v indexu.
 
-* Vyhodnoťte a ujistěte se, že vaše aplikace neuskutečňují volání metadat, která mění výše uvedené prostředky (například vytvořit kolekci, aktualizovat propustnost, ...) pomocí sady SDK nebo klíčů účtu.
+Při vypnutí přístupu k zápisu metadat Vezměte v úvahu následující body:
 
-* V současné době portál Azure používá klíče účtů pro operace metadat, a proto tyto operace budou blokovány. Případně můžete k provedení takových operací použít nasazení šablon Azure CLI, SDK nebo Resource Manager.
+* Vyhodnoťte a zajistěte, aby vaše aplikace nevytvářela volání metadat, která mění výše uvedené prostředky (například vytvoření kolekce, aktualizace propustnosti,...) pomocí sady SDK nebo klíčů účtu.
 
-## <a name="enable-diagnostic-logs-for-control-plane-operations"></a>Povolení diagnostických protokolů pro operace roviny řízení
+* V současné době Azure Portal používá klíče účtu pro operace s metadaty, takže tyto operace budou zablokovány. Alternativně můžete pomocí rozhraní příkazového řádku Azure CLI, sad SDK nebo Správce prostředků nasazení šablon provádět tyto operace.
 
-Diagnostické protokoly pro operace roviny řízení můžete povolit pomocí portálu Azure. K povolení přihlášení k operacím roviny řízení použijte následující kroky:
+## <a name="enable-diagnostic-logs-for-control-plane-operations"></a>Povolení diagnostických protokolů pro operace roviny ovládacího prvku
 
-1. Přihlaste se k [portálu Azure portal](https://portal.azure.com) a přejděte na svůj účet Azure Cosmos.
+Můžete povolit diagnostické protokoly pro operace řídicích roviny pomocí Azure Portal. Po povolení budou protokoly diagnostiky zaznamenávat operaci jako pár počátečních a úplných událostí s příslušnými podrobnostmi. Třeba *RegionFailoverStart* a *RegionFailoverComplete* dokončí událost převzetí služeb při selhání oblasti.
 
-1. Otevřete podokno **Nastavení diagnostiky,** zadejte **název,** který mají protokoly vytvořit.
+Chcete-li povolit protokolování na operace roviny ovládacího prvku, použijte následující postup:
 
-1. Vyberte **ControlPlaneRequests** pro typ protokolu a vyberte možnost **Odeslat do analýzy protokolů.**
+1. Přihlaste se [Azure Portal](https://portal.azure.com) a přejděte k účtu Azure Cosmos.
 
-Protokoly můžete také uložit do účtu úložiště nebo datového proudu do centra událostí. Tento článek ukazuje, jak odeslat protokoly do analýzy protokolu a potom dotaz na ně. Po povolení trvá několik minut, než se diagnostické protokoly projeví. Všechny operace roviny řízení prováděné po tomto bodu lze sledovat. Následující snímek obrazovky ukazuje, jak povolit protokoly roviny ovládacího prvku:
+1. Otevřete podokno **nastavení diagnostiky** , zadejte **název** protokolů, které chcete vytvořit.
 
-![Povolení protokolování požadavků na rovinu ovládacího prvku](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
+1. Jako typ protokolu vyberte **ControlPlaneRequests** a vyberte možnost **Odeslat do Log Analytics** .
 
-## <a name="view-the-control-plane-operations"></a>Zobrazit operace řídicí roviny
+Protokoly můžete také ukládat do centra událostí v účtu úložiště nebo v datovém proudu. Tento článek ukazuje, jak odesílat protokoly do Log Analytics a pak je dotazovat. Po povolení bude trvat několik minut, než se diagnostické protokoly projeví. Všechny operace roviny ovládacího prvku provedené po tomto bodu je možné sledovat. Následující snímek obrazovky ukazuje, jak povolit protokoly roviny ovládacího prvku:
 
-Po zapnutí protokolování můžete pomocí následujících kroků vysledovat operace pro konkrétní účet:
+![Povolit protokolování požadavků na řídicí rovinu](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-1. Otevřete kartu **Monitor** z levé navigace a vyberte podokno **Protokoly.** Otevře ui, kde můžete snadno spouštět dotazy s tímto konkrétním účtem v oboru. Spuštěním následujícího dotazu zobrazíte protokoly roviny ovládacího prvku:
+## <a name="view-the-control-plane-operations"></a>Zobrazit operace roviny ovládacího prvku
+
+Po zapnutí protokolování použijte následující postup ke sledování operací pro určitý účet:
+
+1. Přihlaste se [Azure Portal](https://portal.azure.com).
+
+1. V levém navigačním panelu otevřete kartu **monitorování** a pak vyberte podokno **protokoly** . Otevře se uživatelské rozhraní, kde můžete snadno spouštět dotazy s konkrétním účtem v oboru. Spusťte následující dotaz pro zobrazení protokolů roviny ovládacího prvku:
 
    ```kusto
    AzureDiagnostics
@@ -54,21 +65,94 @@ Po zapnutí protokolování můžete pomocí následujících kroků vysledovat 
    | where TimeGenerated >= ago(1h)
    ```
 
-Následující snímky obrazovky zachycují protokoly při přidání virtuální sítě do účtu Azure Cosmos:
+Po přidání virtuální sítě do účtu Azure Cosmos se zachytí následující snímky obrazovky:
 
-![Řízení roviny protokolů při přidání virtuální sítě](./media/audit-control-plane-logs/add-ip-filter-logs.png)
+![Řízení protokolů roviny při přidání virtuální sítě](./media/audit-control-plane-logs/add-ip-filter-logs.png)
 
-Následující snímky obrazovky zachycují protokoly při aktualizaci propustnosti tabulky Cassandra:
+Po aktualizaci propustnosti tabulky Cassandra se zaznamenávají následující snímky obrazovky:
 
-![Řízení roviny protokolů při aktualizaci propustnost](./media/audit-control-plane-logs/throughput-update-logs.png)
+![Řízení protokolů roviny při aktualizaci propustnosti](./media/audit-control-plane-logs/throughput-update-logs.png)
 
-## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Identifikace identity přidružené ke konkrétní operaci
+## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Identifikace identity přidružené k určité operaci
 
-Pokud chcete ladit dále, můžete identifikovat konkrétní operaci v **protokolu aktivit** pomocí ID aktivity nebo časové razítko operace. Časové razítko se používá pro některé klienty Resource Manageru, kde ID aktivity není explicitně předáno. Protokol aktivit poskytuje podrobnosti o identitě, se kterou byla operace zahájena. Následující snímek obrazovky ukazuje, jak používat ID aktivity a najít operace s ním spojené v protokolu aktivit:
+Pokud chcete ladit další, můžete určit konkrétní operace v **protokolu aktivit** pomocí ID aktivity nebo časového razítka operace. Časové razítko se používá pro některé klienty Správce prostředků, kde ID aktivity není explicitně předáno. Protokol aktivit obsahuje podrobné informace o identitě, se kterou byla operace iniciována. Následující snímek obrazovky ukazuje, jak použít ID aktivity a najít k němu přidružené operace v protokolu aktivit:
 
-![Použití ID aktivity a vyhledání operací](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+![Použijte ID aktivity a najděte operace.](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+
+## <a name="control-plane-operations-for-azure-cosmos-account"></a>Řízení operací roviny pro účet Azure Cosmos
+
+Níže jsou uvedené operace roviny ovládacího prvku, které jsou k dispozici na úrovni účtu. Většina operací je sledována na úrovni účtu. Tyto operace jsou k dispozici jako metriky ve službě Azure monitor:
+
+* Přidání oblasti
+* Oblast odebrána
+* Účet se odstranil.
+* Převzetí služeb při selhání oblasti
+* Účet vytvořen
+* Virtuální síť se odstranila.
+* Nastavení sítě účtu se aktualizovala.
+* Nastavení replikace účtu se aktualizovala
+* Klíče účtu se aktualizovaly.
+* Nastavení zálohování účtu se aktualizovala.
+* Nastavení diagnostiky účtu se aktualizovala
+
+## <a name="control-plane-operations-for-database-or-containers"></a>Řízení operací roviny pro databázi nebo kontejnery
+
+Níže jsou dostupné operace roviny ovládacího prvku na úrovni databáze a kontejneru. Tyto operace jsou k dispozici jako metriky ve službě Azure monitor:
+
+* SQL Database Aktualizováno
+* Kontejner SQL se aktualizoval.
+* Aktualizace propustnosti SQL Database
+* Propustnost kontejneru SQL se aktualizovala
+* Odstraněné SQL Database
+* Kontejner SQL se odstranil.
+* Cassandra se aktualizované místo na disku
+* Tabulka Cassandra se aktualizovala.
+* Propustnost Cassandraho místa na disku se aktualizovala
+* Propustnost tabulky Cassandra se aktualizovala.
+* Odstraněné místo na Cassandra
+* Tabulka Cassandra se odstranila.
+* Databáze Gremlin se aktualizovala.
+* Graf Gremlin se aktualizoval.
+* Propustnost databáze Gremlin se aktualizovala
+* Byla aktualizována propustnost grafu Gremlin
+* Databáze Gremlin se odstranila.
+* Graf Gremlin se odstranil.
+* Databáze Mongo se aktualizovala.
+* Kolekce Mongo se aktualizovala
+* Propustnost databáze Mongo se aktualizovala
+* Byla aktualizována propustnost kolekce Mongo
+* Databáze Mongo se odstranila.
+* Kolekce Mongo se odstranila.
+* Tabulka Azure se aktualizovala
+* Aktualizace propustnosti tabulky Azure
+* Tabulka Azure se odstranila.
+
+## <a name="diagnostic-log-operations"></a>Operace diagnostického protokolu
+
+Níže jsou uvedené názvy operací v diagnostických protokolech pro různé operace:
+
+* RegionAddStart, RegionAddComplete
+* RegionRemoveStart, RegionRemoveComplete
+* AccountDeleteStart, AccountDeleteComplete
+* RegionFailoverStart, RegionFailoverComplete
+* AccountCreateStart, AccountCreateComplete
+* AccountUpdateStart, AccountUpdateComplete
+* VirtualNetworkDeleteStart, VirtualNetworkDeleteComplete
+* DiagnosticLogUpdateStart, DiagnosticLogUpdateComplete
+
+Pro operace specifické pro rozhraní API je operace pojmenována s následujícím formátem:
+
+* ApiKind + ApiKindResourceType + typem operace OperationType + spustit/dokončit
+* ApiKind + ApiKindResourceType + "propustnost" + typem operace OperationType + spustit/dokončit
+
+**Případě** 
+
+* CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
+* CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete
+
+Vlastnost *ResourceDetails* obsahuje celé tělo prostředku jako datovou část požadavku a obsahuje všechny vlastnosti požadované k aktualizaci.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Prozkoumejte Azure Monitor pro Azure Cosmos DB](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
-* [Monitorování a ladění metrik v Azure Cosmos DB](use-metrics.md)
+* [Monitorování a ladění pomocí metrik v Azure Cosmos DB](use-metrics.md)

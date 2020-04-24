@@ -11,45 +11,45 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "72933479"
 ---
-Vyberte **Sestavit**. V zobrazeném dialogovém okně vyberte složku, do které chcete exportovat projekt Xcode.
+Vyberte **sestavení**. V dialogovém okně, které se otevře, vyberte složku, do které chcete exportovat projekt Xcode.
 
-Po dokončení exportu se zobrazí složka, která obsahuje exportovaný projekt Xcode.
+Po dokončení exportu se zobrazí složka obsahující exportovaný projekt Xcode.
 
 > [!NOTE]
-> Pokud se zobrazí okno s dotazem, zda chcete nahradit nebo připojit, doporučujeme vybrat **připojit,** protože je rychlejší. Pokud měníte datové zdroje ve scéně, měli byste vybrat **možnost Nahradit.** (Pokud například přidáváte, odebíráte nebo měníte vztahy mezi rodiči a podřízenými vztahy nebo přidáváte, odebíráte nebo měníte vlastnosti.) Pokud provádíte pouze změny zdrojového kódu, append by měl **stačit.**
+> Pokud se zobrazí okno s dotazem, jestli chcete nahradit nebo připojit, doporučujeme vybrat **připojit** , protože je rychlejší. Pokud měníte prostředky ve scéně, je nutné vybrat možnost **nahradit** . (Například pokud přidáváte, odebíráte nebo měníte vztahy nadřazený-podřízený nebo pokud přidáváte, odebíráte nebo měníte vlastnosti.) Pokud provádíte pouze změny zdrojového kódu, musí být příkaz **Append** dostatečně k dispozici.
 
-### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>Převod projektu Xcode na xcworkspace obsahující odkazy na prostorové kotvy Azure
+### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>Převeďte projekt Xcode na xcworkspace obsahující odkazy na prostorové kotvy Azure.
 
-Ve složce exportovaného projektu Xcode spusťte tento příkaz v terminálu a nainstalujte potřebné kakaové pody pro projekt:
+V exportované složce projektu Xcode spusťte tento příkaz v terminálu a nainstalujte nezbytný CocoaPods pro projekt:
 
 ```bash
 pod install --repo-update
 ```
 
-Nyní můžete `Unity-iPhone.xcworkspace` otevřít projekt v Xcode:
+Nyní můžete otevřít `Unity-iPhone.xcworkspace` a otevřít projekt v Xcode:
 
 ```bash
 open ./Unity-iPhone.xcworkspace
 ```
 
 > [!NOTE]
-> Pokud máte problémy s KakaoPodem po upgradu na macOS Catalina (10.15), přečtěte si postup řešení [potíží zde.](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015)
+> Pokud máte CocoaPod problémy po upgradu na macOS Catalina (10,15), Projděte [si postup](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015) řešení potíží.
 
-Vyberte kořenový uzel **Unity-iPhone, chcete-li** zobrazit nastavení projektu, a pak vyberte kartu **Obecné.**
+Vyberte uzel root **Unity-iPhone** pro zobrazení nastavení projektu a pak vyberte kartu **Obecné** .
 
-V **části Podepisování**zkontrolujte, zda je **povolena možnost Automaticky spravovat podepisování.** Pokud není, povolte ji a pak v dialogovém okně, které se zobrazí, vyberte **Povolit automaticky** a resetujte nastavení sestavení.
+V části **podepisování**se ujistěte, že je povoleno **Automatické řízení podepisování** . Pokud není, povolte ji a potom v dialogovém okně, které se zobrazí, vyberte **Povolit automatické** obnovení nastavení sestavení.
 
-V části **Informace o nasazení**zkontrolujte, zda je cíl **nasazení** nastaven na `11.0`.
+V části **informace o nasazení**zajistěte, aby byl **cíl nasazení** nastaven na `11.0`hodnotu.
 
-### <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace do iOS zařízení
+### <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace do zařízení s iOS
 
-Připojte iOS zařízení k Macu a nastavte **aktivní schéma** k iOS zařízení.
+Připojte zařízení s iOS k počítači Mac a nastavte **aktivní schéma** na zařízení s iOS.
 
 ![Vyberte zařízení](./media/spatial-anchors-unity/select-device.png)
 
-Vyberte **Sestavit a spusťte aktuální schéma**.
+Vyberte **Sestavit a potom spusťte aktuální schéma**.
 
 ![Nasazení a spuštění](./media/spatial-anchors-unity/deploy-run.png)
 
 > [!NOTE]
-> Pokud se `library not found for -lPods-Unity-iPhone` zobrazí chyba, pravděpodobně `.xcodeproj` jste soubor `.xcworkspace` místo souboru otevřeli.
+> Pokud se zobrazí `library not found for -lPods-Unity-iPhone` chyba, pravděpodobně jste `.xcodeproj` soubor otevřeli místo `.xcworkspace` souboru.

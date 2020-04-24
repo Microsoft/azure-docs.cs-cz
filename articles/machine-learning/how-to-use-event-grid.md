@@ -1,7 +1,7 @@
 ---
-title: Vytváření pracovních postupů strojového učení založeného na událostech
+title: Vytváření pracovních postupů strojového učení řízených událostmi
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak používat mřížku událostí pomocí Azure Machine Learning k povolení řešení řízených událostmi.
+description: Naučte se používat Event Grid s Azure Machine Learning k povolení řešení založených na událostech.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,63 +10,63 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 03/11/2020
-ms.openlocfilehash: fe6125682f669e453100488b7e0afc4c49409588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a1440dcda27a487c89be4ac63e624a2bb6b393a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79129720"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111874"
 ---
-# <a name="create-event-driven-machine-learning-workflows-preview"></a>Vytváření pracovních postupů strojového učení řízeného událostmi (preview)
+# <a name="create-event-driven-machine-learning-workflows-preview"></a>Vytváření pracovních postupů strojového učení řízených událostmi (Preview)
 
-[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) podporuje události Azure Machine Learning. Můžete se přihlásit k odběru a využívat události, jako je změna stavu spuštění, dokončení spuštění, registrace modelu, nasazení modelu a detekce posunu dat v pracovním prostoru.
+[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) podporuje události Azure Machine Learning. Můžete se přihlásit k odběru a spotřebovávat události, jako je například změna stavu spuštění, dokončení běhu, registrace modelu, nasazení modelu a detekce posunu dat v pracovním prostoru.
 
-Další informace o typech událostí najdete v [tématu Integrace Azure Machine Learning s Event Grid](concept-event-grid-integration.md) a schéma [mřížky událostí Azure Machine Learning](/azure/event-grid/event-schema-machine-learning).
+Další informace o typech událostí najdete v tématu [Azure Machine Learning Integration with Event Grid](concept-event-grid-integration.md) a [schématu Azure Machine Learning Event Grid](/azure/event-grid/event-schema-machine-learning).
 
-Pomocí funkce Event Grid povolte běžné scénáře, jako jsou:
+Pomocí Event Grid můžete povolit běžné scénáře, jako například:
 
-* Odesílání e-mailů při selhání spuštění a dokončení spuštění
-* Použití funkce azure po registraci modelu
+* Odeslat e-maily při spuštění a dokončení spuštění
+* Použití funkce Azure Function po registraci modelu
 * Streamování událostí z Azure Machine Learning do různých koncových bodů
 * Aktivace kanálu ML při zjištění posunu
 
 > [!NOTE] 
-> Aktuálně se události runStatusChanged aktivují pouze v případě, že se nezdařil stav **spuštění.**
+> V současné době se události runStatusChanged aktivují jenom v případě, že se stav spuštění **nezdařil** .
 >
 
-## <a name="prerequisites"></a>Požadavky
-* Přístup přispěvatele nebo vlastníka k pracovnímu prostoru Azure Machine Learning, pro který vytvoříte události.
+## <a name="prerequisites"></a>Požadované součásti
+* Přístup přispěvatele nebo vlastníka k pracovnímu prostoru Azure Machine Learning, pro který budete vytvářet události.
 
-### <a name="configure-eventgrid-using-the-azure-portal"></a>Konfigurace eventgridu pomocí portálu Azure
+### <a name="configure-eventgrid-using-the-azure-portal"></a>Konfigurace EventGrid pomocí Azure Portal
 
-1. Otevřete [portál Azure](https://portal.azure.com) a přejděte do pracovního prostoru Azure Machine Learning.
+1. Otevřete [Azure Portal](https://portal.azure.com) a přejít do pracovního prostoru Azure Machine Learning.
 
-1. Na levém panelu vyberte __Události__ a pak vyberte **Předplatná událostí**. 
+1. Na levém panelu vyberte možnost __události__ a potom vyberte možnost **odběry událostí**. 
 
-    ![select-events-in-workspace.png](./media/how-to-use-event-grid/select-event.png)
+    ![SELECT-events-in-Workspace. png](./media/how-to-use-event-grid/select-event.png)
 
-1. Vyberte typ události, který chcete spotřebovat. Například následující snímek obrazovky vybral __Model registrován__, Model __nasazen ,__ Spustit __dokončeno__a __byl zjištěn posun datové sady__:
+1. Vyberte typ události, který se má spotřebovat. Například následující snímek obrazovky má __zaregistrovaný model__, byl __nasazen model__, __dokončen běh__a __byl zjištěn posun datových sad__:
 
-    ![typ události přidání](./media/how-to-use-event-grid/add-event-type-updated.png)
+    ![Přidat typ události](./media/how-to-use-event-grid/add-event-type-updated.png)
 
-1. Vyberte koncový bod, do který chcete událost publikovat. Na následujícím snímku obrazovky je centrem __událostí__ vybraný koncový bod:
+1. Vyberte koncový bod, do kterého se má událost publikovat. Na následujícím snímku obrazovky je __centrum událostí__ vybraným koncovým bodem:
 
-    ![obslužná rutina události select-event](./media/how-to-use-event-grid/select-event-handler.png)
+    ![rutina Select-Event-](./media/how-to-use-event-grid/select-event-handler.png)
 
-Po potvrzení výběru klepněte na tlačítko __Vytvořit__. Po konfiguraci budou tyto události posunuty do koncového bodu.
+Po potvrzení výběru klikněte na __vytvořit__. Po dokončení konfigurace budou tyto události vloženy do koncového bodu.
 
 
-### <a name="configure-eventgrid-using-the-cli"></a>Konfigurace sítě EventGrid pomocí rozhraní příkazového příkazu
+### <a name="configure-eventgrid-using-the-cli"></a>Konfigurace EventGrid pomocí rozhraní příkazového řádku
 
-Můžete buď nainstalovat nejnovější [azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo použít Azure Cloud Shell, který je k dispozici jako součást předplatného Azure.
+Můžete buď nainstalovat nejnovější rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo použít Azure Cloud Shell poskytované jako součást předplatného Azure.
 
-Chcete-li nainstalovat rozšíření Mřížka událostí, použijte následující příkaz z příkazového příkazu příkazu příkazu:
+Pokud chcete nainstalovat rozšíření Event Grid, použijte z rozhraní příkazového řádku následující příkaz:
 
 ```azurecli-interactive
 az add extension --name eventgrid
 ```
 
-Následující příklad ukazuje, jak vybrat předplatné Azure a vytvoří e nové předplatné událostí pro Azure Machine Learning:
+Následující příklad ukazuje, jak vybrat předplatné Azure a vytvořit nový odběr události pro Azure Machine Learning:
 
 ```azurecli-interactive
 # Select the Azure subscription that contains the workspace
@@ -81,104 +81,102 @@ az eventgrid event-subscription create \
   --subject-begins-with "models/mymodelname"
 ```
 
-## <a name="filter-events"></a>Filtrování událostí
+## <a name="filter-events"></a>Filtrovat události
 
-Při nastavování událostí můžete filtry použít pouze na konkrétní data událostí. V níže uvedeném příkladu pro události změny stavu spuštění můžete filtrovat podle typů spuštění. Událost se aktivuje pouze v případě, že jsou splněna kritéria. Informace o datech událostí, podle kterých můžete filtrovat, najdete v [mřížce událostí Azure Machine Learning.](/azure/event-grid/event-schema-machine-learning) 
+Při nastavování událostí můžete použít filtry, aby se aktivovaly jenom pro konkrétní data událostí. V následujícím příkladu můžete pro události změny stavu spuštění filtrovat podle typů spuštění. Událost se aktivuje pouze v případě, že jsou splněna kritéria. Další informace o datech událostí, která můžete filtrovat podle, najdete v tématu [schéma Event gridu Azure Machine Learning](/azure/event-grid/event-schema-machine-learning) . 
 
-1. Přejděte na portál Azure, vyberte nové předplatné nebo existující předplatné. 
+1. Přejít na Azure Portal, vyberte nové předplatné nebo existující. 
 
-1. Vyberte kartu Filtry a posuňte se dolů na Upřesnit filtry. V **Klíč** a **hodnota** zadejte typy vlastností, které chcete filtrovat. Zde můžete vidět, že událost se spustí pouze v případě, že typ spuštění je spuštění kanálu nebo spuštění kroku kanálu.  
+1. Vyberte kartu filtry a přejděte dolů k části Rozšířené filtry. Pro **klíč** a **hodnotu**zadejte typy vlastností, podle kterých chcete filtrovat. Tady vidíte, že událost se aktivuje jenom v případě, že typ spuštění je spuštění kanálu nebo krok kanálu.  
 
-    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="události filtru":::
+    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="Filtrovat události":::
 
-## <a name="sample-scenarios"></a>Ukázkové scénáře
+## <a name="sample-send-email-alerts"></a>Ukázka: odesílání e-mailových upozornění
 
-### <a name="use-a-logic-app-to-send-email-alerts"></a>Odesílání e-mailových upozornění pomocí aplikace logiky
+Pomocí [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) můžete nakonfigurovat e-maily pro všechny vaše události. Přizpůsobte si podmínky a určete příjemce, aby bylo možné spolupracovat a povědomí mezi týmy spolupracují.
 
-Využijte [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) ke konfiguraci e-mailů pro všechny vaše události. Přizpůsobte si podmínky a určete příjemce, abyste umožnili spolupráci a povědomí mezi týmy, které spolupracují.
+1. V Azure Portal přejdete do pracovního prostoru Azure Machine Learning a na levém panelu vyberete kartu události. Tady vyberte __Logic Apps__. 
 
-1. Na webu Azure Portal přejděte do pracovního prostoru Azure Machine Learning a na levém panelu vyberte kartu Události. Tady vyberte __Aplikace Logika__. 
+    ![SELECT-Logic-AP](./media/how-to-use-event-grid/select-logic-ap.png)
 
-    ![select-logic-ap](./media/how-to-use-event-grid/select-logic-ap.png)
+1. Přihlaste se do uživatelského rozhraní aplikace logiky a jako typ tématu vyberte Machine Learning Service. 
 
-1. Přihlaste se k ujmulovacímu uzponu logické aplikace a jako typ tématu vyberte službu Strojového učení. 
+    ![vybrat-téma-typ](./media/how-to-use-event-grid/select-topic-type.png)
 
-    ![typu select-topic](./media/how-to-use-event-grid/select-topic-type.png)
+1. Vyberte události, které mají být oznamovány. Například následující snímek obrazovky __RunCompleted__.
 
-1. Vyberte události, na které chcete být upozorněni. Například následující snímek obrazovky __RunCompleted__.
+    ![SELECT-Event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-    ![select-event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
+1. Můžete použít metodu filtrování v části výše nebo přidat filtry, aby se aktivovala pouze aplikace logiky pro podmnožinu typů událostí. Na následujícím snímku obrazovky je použit __Filtr předpony__ __/datadriftID/runs/__ .
 
-1. Můžete použít metodu filtrování v části výše nebo přidat filtry pouze aktivovat aplikaci logiky na podmnožinu typů událostí. Na následujícím snímku obrazovky se používá __předponový filtr__ __/datadriftID/runs/.__
+    ![filtr – události](./media/how-to-use-event-grid/filtering-events.png)
 
-    ![filtr-události](./media/how-to-use-event-grid/filtering-events.png)
+1. Dále přidejte krok pro použití této události a hledání e-mailu. K příjmu událostí můžete použít několik různých poštovních účtů. Můžete taky nakonfigurovat podmínky, kdy se má poslat e-mailové upozornění.
 
-1. Dále přidejte krok, který tuto událost spotřebuje, a vyhledejte e-mail. Existuje několik různých e-mailových účtů, které můžete použít k přijímání událostí. Můžete také nakonfigurovat podmínky pro odeslání e-mailové výstrahy.
+    ![vybrat e-mail – akce](./media/how-to-use-event-grid/select-email-action.png)
 
-    ![select-email-akce](./media/how-to-use-event-grid/select-email-action.png)
+1. Vyberte __Odeslat e-mail__ a vyplňte parametry. V předmětu můžete zahrnout __Typ události__ a __téma__ , které vám pomůžou události filtrovat. Do textu zprávy můžete také přidat odkaz na stránku pracovního prostoru pro spuštění. 
 
-1. Vyberte __Odeslat e-mail__ a vyplňte parametry. Do předmětu můžete zahrnout __typ události__ a __téma,__ které vám pomohou filtrovat události. Můžete také zahrnout odkaz na stránku pracovního prostoru pro spuštění v textu zprávy. 
+    ![Konfigurace – e-mail – tělo](./media/how-to-use-event-grid/configure-email-body.png)
 
-    ![konfigurace-email-tělo](./media/how-to-use-event-grid/configure-email-body.png)
+1. Pokud chcete tuto akci Uložit, vyberte **Uložit jako** v levém horním rohu stránky. Z pravého panelu, který se zobrazí, potvrďte vytvoření této akce.
 
-1. Chcete-li tuto akci uložit, v levém rohu stránky vyberte **Uložit jako.** Z pravého panelu, který se zobrazí, potvrďte vytvoření této akce.
-
-    ![potvrdit-logika-app-create](./media/how-to-use-event-grid/confirm-logic-app-create.png)
+    ![potvrdit-Logic-App-Create](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
-### <a name="use-a-logic-app-to-trigger-retraining-workflows-when-data-drift-occurs"></a>Použití aplikace logiky k aktivaci rekvalifikačních pracovních postupů, když dojde k posunu dat
+## <a name="sample-trigger-retraining-when-data-drift-occurs"></a>Ukázka: Aktivace rekurze v případě, že dojde k posunu dat
 
-Modely jít zastaralé v průběhu času a nezůstávají užitečné v kontextu, ve které běží. Jedním ze způsobů, jak zjistit, zda je čas přeškolit model, je detekce posunu dat. 
+Modely se v průběhu času přejdou zastaralě a nezůstávají užitečné v kontextu, ve kterém běží. Jedním ze způsobů, jak zjistit, jestli je čas na reučení modelu, je detekce posunu dat. 
 
-Tento příklad ukazuje, jak používat mřížku událostí s aplikací Azure Logic k aktivaci retraining. Příklad aktivuje kanál Azure Data Factory, když dojde k posunu dat mezi trénovací a obsluhou datových sad modelu.
+Tento příklad ukazuje, jak pomocí služby Event Grid s aplikací logiky Azure aktivovat rekurzi. V příkladu se aktivuje kanál Azure Data Factory, pokud dojde k posunu dat mezi školením modelu a obsluhou datových sad.
 
 Než začnete, proveďte následující akce:
 
-* Nastavení monitorování datové sady pro [detekci posunu dat]( https://aka.ms/datadrift) v pracovním prostoru
-* Vytvořte publikovaný [kanál Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
+* Nastavení monitoru datové sady pro [detekci posunu dat]( https://aka.ms/datadrift) v pracovním prostoru
+* Vytvoří publikovaný [kanál Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
 
-V tomto příkladu jednoduché data factory kanálu se používá ke kopírování souborů do úložiště objektů blob a spustit publikovaný kanál Machine Learning. Další informace o tomto scénáři najdete v tématu, jak nastavit [krok Machine Learning v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)
+V tomto příkladu se k kopírování souborů do úložiště objektů BLOB a spuštění publikovaného kanálu Machine Learning používá jednoduchý kanál Data Factory. Další informace o tomto scénáři najdete v tématu Postup nastavení [Machine Learning kroku v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)
 
-![adf-mlpipeline-stage](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
+![ADF – mlpipeline – fáze](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
 
-1. Začněte s vytvořením aplikace logiky. Přejděte na [portál Azure](https://portal.azure.com), vyhledejte logic apps a vyberte vytvořit.
+1. Začněte vytvářením aplikace logiky. Otevřete [Azure Portal](https://portal.azure.com), vyhledejte Logic Apps a vyberte vytvořit.
 
-    ![aplikace search-logic](./media/how-to-use-event-grid/search-for-logic-app.png)
+    ![hledání-logika – aplikace](./media/how-to-use-event-grid/search-for-logic-app.png)
 
-1. Vyplňte požadované informace. Chcete-li zjednodušit možnosti, použijte stejné předplatné a skupinu prostředků jako váš kanál Azure Data Factory a pracovní prostor Azure Machine Learning.
+1. Vyplňte požadované informace. Pro zjednodušení prostředí použijte stejné předplatné a skupinu prostředků jako Azure Data Factory kanál a Azure Machine Learning pracovní prostor.
 
-    ![set-up-logic-app-for-adf](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
+    ![nastavení-Logic-App-for-ADF](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
 
-1. Po vytvoření aplikace logiky vyberte __při výskytu události prostředku Mřížka událostí__. 
+1. Po vytvoření aplikace logiky vyberte, __kdy dojde k události Event Grid prostředku__. 
 
-    ![select-event-grid-trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
+    ![Výběr-Event-Grid-Trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
 
-1. Přihlaste se a vyplňte podrobnosti o události. Nastavte __název prostředku__ na název pracovního prostoru. Nastavte __typ události__ na __DatasetDriftDetected__.
+1. Přihlaste se a vyplňte podrobnosti události. Nastavte __název prostředku__ na název pracovního prostoru. Nastavte __Typ události__ na __DatasetDriftDetected__.
 
-    ![přihlášení a přidat událost](./media/how-to-use-event-grid/login-and-add-event.png)
+    ![přihlášení a přidání – událost](./media/how-to-use-event-grid/login-and-add-event.png)
 
-1. Přidejte nový krok a vyhledejte __Azure Data Factory__. Vyberte __možnost Vytvořit spuštění kanálu__. 
+1. Přidejte nový krok a vyhledejte __Azure Data Factory__. Vyberte __vytvořit spuštění kanálu__. 
 
-    ![create-adfpipeline-run](./media/how-to-use-event-grid/create-adfpipeline-run.png)
+    ![Vytvoření-adfpipeline-run](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
-1. Přihlaste se a zadejte publikovaný kanál Azure Data Factory, který chcete spustit.
+1. Přihlaste se a zadejte publikovaný Azure Data Factory kanál, který se má spustit.
 
-    ![zadat kanál adf](./media/how-to-use-event-grid/specify-adf-pipeline.png)
+    ![určení – ADF – kanál](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
-1. Uložit a vytvořit aplikaci logiky pomocí tlačítka **uložit** v levém horním rohu stránky. Pokud chcete aplikaci zobrazit, přejděte do pracovního prostoru na [webu Azure Portal](https://portal.azure.com) a klikněte na **Události**.
+1. Uložte a vytvořte aplikaci logiky pomocí tlačítka **Uložit** v levém horním rohu stránky. Pokud chcete zobrazit svou aplikaci, přejděte do pracovního prostoru v [Azure Portal](https://portal.azure.com) a klikněte na **události**.
 
-    ![show-logika-app-webhook](./media/how-to-use-event-grid/show-logic-app-webhook.png)
+    ![show-Logic-App – Webhook](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
-Nyní je kanál datové továrny spuštěn, když dojde k posunu. Zobrazit podrobnosti o vašem běhu dat drift a strojového učení potrubí na [novém portálu pracovního prostoru](https://ml.azure.com). 
+Kanál Data Factory se teď aktivuje, když dojde k posunu. Zobrazte si podrobnosti o běhu posunu dat a kanálu Machine Learning na [novém portálu pracovního prostoru](https://ml.azure.com). 
 
 ![zobrazení v pracovním prostoru](./media/how-to-use-event-grid/view-in-workspace.png)
 
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Nasazení modelu na základě značek pomocí funkcí Azure
+## <a name="sample-deploy-a-model-based-on-tags"></a>Ukázka: nasazení modelu založeného na značkách
 
-Objekt modelu Azure Machine Learning obsahuje parametry, které můžete kontočně nasazení například název modelu, verze, značka a vlastnost. Událost registrace modelu můžete aktivovat koncový bod a můžete použít funkci Azure k nasazení modelu na základě hodnoty těchto parametrů.
+Objekt Azure Machine Learning modelu obsahuje parametry, na jejichž základě můžete nasazovat nasazení, jako je název modelu, verze, značka a vlastnost. Událost registrace modelu může aktivovat koncový bod a pomocí funkce Azure můžete nasadit model založený na hodnotě těchto parametrů.
 
-Například viz [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) úložiště a postupujte podle kroků v souboru **readme.**
+Podívejte se například na [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) úložiště a postupujte podle kroků v souboru **Readme** .
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dostupných událostech najdete v [tématu schéma událostí Azure Machine Learning.](/azure/event-grid/event-schema-machine-learning)
+* Další informace o dostupných událostech najdete v tématu [schéma události Azure Machine Learning](/azure/event-grid/event-schema-machine-learning) .

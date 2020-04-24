@@ -1,7 +1,7 @@
 ---
 title: Známé problémy & řešení potíží
 titleSuffix: Azure Machine Learning
-description: Získejte seznam známých problémů, řešení a řešení potíží pro Azure Machine Learning.
+description: Seznam známých problémů, řešení a řešení potíží pro Azure Machine Learning.
 services: machine-learning
 author: j-martens
 ms.author: jmartens
@@ -10,101 +10,115 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 2db7a25f3f463e9210544354395c9d33a75f633c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: eb8e06370ecbe2b104a19c4e420b5d3ae013a00e
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619373"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116311"
 ---
-# <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží s Azure Machine Learning
+# <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
-Tento článek vám pomůže najít a opravit chyby nebo chyby, se kterými se můžete setkat při používání Azure Machine Learning.
+Tento článek vám pomůže najít a opravit chyby nebo chyby, ke kterým může dojít při použití Azure Machine Learning.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-Někdy může být užitečné, pokud můžete poskytnout diagnostické informace při žádosti o pomoc. Chcete-li zobrazit některé protokoly: 
-1. Navštivte [Azure Machine Learning studio](https://ml.azure.com). 
-1. Na levé straně vyberte **Experimentovat** 
+V některých případech může být užitečné, pokud při dotazování na nápovědu poskytnete diagnostické informace. Chcete-li zobrazit některé protokoly: 
+1. Navštivte [Azure Machine Learning Studio](https://ml.azure.com). 
+1. Na levé straně vyberte **experiment** . 
 1. Vyberte experiment.
-1. Vyberte spustit.
-1. Nahoře vyberte **Výstupy + protokoly**.
+1. Vyberte běh.
+1. V horní části vyberte možnost **výstupy + protokoly**.
 
 > [!NOTE]
-> Azure Machine Learning zaznamenává informace z různých zdrojů během školení, jako je například AutoML nebo kontejner Dockeru, který spouští trénovací úlohu. Mnohé z těchto protokolů nejsou dokumentovány. Pokud narazíte na problémy a obraťte se na podporu společnosti Microsoft, mohou být schopni používat tyto protokoly při řešení potíží.
+> Azure Machine Learning v průběhu školení protokolovat informace z nejrůznějších zdrojů, jako je například AutoML nebo kontejner Docker, který spouští školicí úlohu. Mnohé z těchto protokolů nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
 
 
 ## <a name="resource-quotas"></a>Kvóty prostředků
 
-Přečtěte si o [kvótách prostředků,](how-to-manage-quotas.md) se kterými se můžete setkat při práci s Azure Machine Learning.
+Přečtěte si o [kvótách prostředků](how-to-manage-quotas.md) , se kterými se můžete setkat při práci s Azure Machine Learning.
 
 ## <a name="installation-and-import"></a>Instalace a import
 
-* **Chybová zpráva: Nelze odinstalovat "PyYAML"**
+* **Chybová zpráva: Nejde odinstalovat ' PyYAML '.**
 
-    Azure Machine Learning SDK pro Python: PyYAML je nainstalovaný `distutils` projekt. Proto nemůžeme přesně určit, které soubory patří k němu, pokud je částečná odinstalace. Chcete-li pokračovat v instalaci sady SDK při ignorování této chyby, použijte:
+    Azure Machine Learning SDK pro Python: PyYAML je `distutils` nainstalovaný projekt. Proto nemůžeme přesně určit, které soubory do ní patří, pokud dojde k částečné odinstalaci. Pokud chcete pokračovat v instalaci sady SDK a tuto chybu ignorovat, použijte:
     
     ```Python
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
-* **Databricks selhání při instalaci balíčků**
+* **Při instalaci balíčků došlo k chybě datacihly.**
 
-    Instalace sady Azure Machine Learning SDK se nezdaří na Azure Databricks při instalaci dalšíbalíčky. Některé balíčky, `psutil`například , mohou způsobit konflikty. Chcete-li se vyhnout chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém souvisí s Databricks a ne s Azure Machine Learning SDK. K tomuto problému může dojít i v jiných knihovnách. Příklad:
+    Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, například `psutil`, můžou způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
     
     ```python
     psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
     ```
 
-    Případně můžete použít init skripty, pokud budete mít stále čelí problémům s instalací s knihovnami Pythonu. Tento přístup není oficiálně podporován. Další informace naleznete [v tématu Init skripty s rozsahem clusteru](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+    Případně můžete použít skripty init, pokud máte potíže s instalací v knihovně Python. Tento přístup není oficiálně podporován. Další informace najdete v tématu [skripty init v oboru clusteru](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-* **Chyba importu datových cihel: Nelze importovat název Timedelta z "pandas._libs.tslibs"**: Pokud se tato chyba zobrazí při použití automatického strojového učení, spusťte v poznámkovém bloku dva následující řádky:
+* **Chyba importu datacihly: název ' Timedelta ' nelze importovat z ' PANDAS. _libs. tslibs '**: Pokud se vám tato chyba zobrazí při použití automatizovaného strojového učení, spusťte na poznámkovém bloku tyto dva řádky:
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
     ```
 
-* **Chyba importu databricks: Žádný modul s názvem "pandas.core.indexes"**: Pokud se tato chyba zobrazí při použití automatického strojového učení:
+* **Chyba importu datacihly: žádný modul s názvem PANDAS. Core. Indexes**: Pokud se vám při použití automatizovaného strojového učení zobrazí tato chyba:
 
-    1. Spusťte tento příkaz a nainstalujte dva balíčky do clusteru Azure Databricks:
+    1. Spuštěním tohoto příkazu nainstalujete do clusteru Azure Databricks dva balíčky:
     
        ```bash
        scikit-learn==0.19.1
        pandas==0.22.0
        ```
     
-    1. Odpojte a znovu připojte cluster k poznámkovému bloku.
+    1. Odpojte a znovu připojte cluster ke svému poznámkovému bloku.
     
-    Pokud tyto kroky problém nevyřeší, zkuste cluster restartovat.
+    Pokud tyto kroky problém nevyřeší, zkuste restartovat cluster.
 
-* **Databricks FailToSendFeather**: Pokud `FailToSendFeather` se při čtení dat v clusteru Azure Databricks zobrazí chyba, podívejte se na následující řešení:
+* **Datacihly FailToSendFeather**: Pokud se při čtení `FailToSendFeather` dat v Azure Databricks clusteru zobrazí chyba, přečtěte si následující řešení:
     
-    * Upgrade `azureml-sdk[automl]` balíčku na nejnovější verzi.
-    * Přidejte `azureml-dataprep` verzi 1.1.8 nebo vyšší.
-    * Přidejte `pyarrow` verzi 0.11 nebo vyšší.
+    * Upgradujte `azureml-sdk[automl]` balíček na nejnovější verzi.
+    * Přidejte `azureml-dataprep` 1.1.8 verze nebo vyšší.
+    * Přidejte `pyarrow` verzi 0,11 nebo vyšší.
+    
+* **Instalace PIP: dependecies se nezaručuje být konzistentní s instalací s jedním řádkem**: Toto je známé omezení PIP, protože při instalaci jako jednoho řádku nemá funkční překladač závislostí. První jedinečná závislost je pouze ta, na kterou se odkazuje. Pokud například instalujete Azure-ml-disline, který vyžaduje verzi > 1,0 a AzureML-vlak-automl, která vyžaduje verzi < 1,2 a pokud je nejnovější verze 1,3, když uživatel nainstaluje balíčky na jeden řádek, jak je znázorněno níže, vše se upgraduje na 1,3 i v případě, že balíček AzureML-vlak-automl vyžaduje starší verzi. 
 
-## <a name="create-and-manage-workspaces"></a>Vytváření a správa pracovních prostorů
+    * V případě instalace s jedním řádkem se zobrazí nekonzistentní dependecies.
+    ```python
+       pip install azure-ml-datadrift, azureml-train-automl
+     ```
+   
+    * Chcete-li zajistit, aby byly pro balíčky nainstalovány příslušné verze, nainstalujte pomocí více řádků, jako v následujícím kódu. Pořadí zde nezáleží.
+    
+     ```python
+        pip install azure-ml-datadrift
+        pip install azureml-train-automl 
+     ```
+     
+## <a name="create-and-manage-workspaces"></a>Vytváření a Správa pracovních prostorů
 
 > [!WARNING]
-> Přesunutí pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutí vlastního předplatného do nového tenanta není podporováno. To může způsobit chyby.
+> Přesunutím pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutím vlastnícího předplatného na nového tenanta se nepodporuje. V takovém případě může dojít k chybám.
 
-* **Portál Azure**: Pokud přejdete přímo k zobrazení pracovního prostoru z odkazu sdílení z sady SDK nebo portálu, nebudete moct zobrazit normální stránku **Přehled** s informacemi o předplatném v rozšíření. Také nebudete moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, přejděte přímo do [centra Azure Machine Learning](https://ml.azure.com) a vyhledejte název pracovního prostoru.
+* **Azure Portal**: Pokud přejdete přímo k pracovnímu prostoru z odkazu na sdílení ze sady SDK nebo portálu, nebudete moci zobrazit normální stránku **přehledu** s informacemi o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledejte název pracovního prostoru.
 
 ## <a name="set-up-your-environment"></a>Nastavení prostředí
 
-* **Potíže s vytvářením AmlCompute**: Existuje vzácná šance, že někteří uživatelé, kteří vytvořili svůj pracovní prostor Azure Machine Learning z portálu Azure před vydáním GA, nemusí být schopni vytvořit AmlCompute v tomto pracovním prostoru. Můžete buď vyvolat žádost o podporu proti službě nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo sady SDK odblokovat sami okamžitě.
+* **Problémy při vytváření AmlCompute**: je pravděpodobné, že někteří uživatelé, kteří vytvořili svůj Azure Machine Learning pracovní prostor z Azure Portal před vydáním GA, nemusí být schopni vytvořit AmlCompute v tomto pracovním prostoru. Můžete buď vyvolat žádost o podporu na službu, nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo sadu SDK pro okamžité odblokování.
 
 ## <a name="work-with-data"></a>Práce s daty
 
 ### <a name="overloaded-azurefile-storage"></a>Přetížené úložiště AzureFile
 
-Pokud se zobrazí `Unable to upload project files to working directory in AzureFile because the storage is overloaded`chyba , použijte následující řešení.
+Pokud se zobrazí chybová `Unable to upload project files to working directory in AzureFile because the storage is overloaded`zpráva, použijte následující alternativní řešení.
 
-Pokud používáte sdílenou složku pro jiné úlohy, jako je například přenos dat, doporučujeme použít objekty BLOB, aby byla sdílená složka souboru volně použita pro odesílání spuštění. Můžete také rozdělit zatížení mezi dva různé pracovní prostory.
+Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos dat, doporučuje se použít objekty blob, aby bylo možné používat pro odeslání spuštění sdílení souborů. Úlohy můžete rozdělit také mezi dva různé pracovní prostory.
 
-### <a name="passing-data-as-input"></a>Předávání dat jako vstupu
+### <a name="passing-data-as-input"></a>Předávání dat jako vstupů
 
-*  **TypeError: FileNotFound: Žádný takový soubor nebo adresář**: K této chybě dochází, pokud cesta k souboru, kterou zadáte, není tam, kde je soubor umístěn. Musíte se ujistit, že způsob, jakým odkazujete na soubor, je konzistentní s tím, kde jste namontovali datovou sadu na váš výpočetní cíl. Chcete-li zajistit deterministický stav, doporučujeme použít abstraktní cestu při připojovat datovou sadu k výpočetnímu cíli. Například v následujícím kódu připojíme datovou sadu pod kořenem souborového `/tmp`systému výpočetního cíle . 
+*  **TypeError: FileNotFound: žádný takový soubor nebo adresář**: k této chybě dochází, pokud se v souboru nenachází cesta, kterou zadáte. Je nutné zajistit, aby se způsob, jakým na soubor odkazujete, shodoval s tím, kam jste připojili datovou sadu na výpočetním cíli. Pro zajištění deterministického stavu doporučujeme při připojování datové sady k cíli výpočtů použít abstraktní cestu. Například v následujícím kódu připojíme datovou sadu do kořenového adresáře systému souborů cíle služby COMPUTE `/tmp`. 
     
     ```python
     # Note the leading / in '/tmp/dataset'
@@ -113,65 +127,65 @@ Pokud používáte sdílenou složku pro jiné úlohy, jako je například přen
     } 
     ```
 
-    Pokud nezahrnete úvodní lomítko,/, budete muset předponu pracovního `/mnt/batch/.../tmp/dataset` adresáře, například na výpočetním cíli, abyste označili, kam chcete datovou sadu připojit.
+    Pokud nezadáte úvodní lomítko, "/", budete muset zadat předponu pracovního adresáře, např. `/mnt/batch/.../tmp/dataset` na výpočetním cíli, abyste označili, kam chcete datovou sadu připojit.
 
 ### <a name="data-labeling-projects"></a>Projekty označování dat
 
 |Problém  |Řešení  |
 |---------|---------|
-|Lze použít pouze datové sady vytvořené v úložišti dat objektů blob.     |  toto je známé omezení aktuální verze.       |
-|Po vytvoření se v projektu zobrazí "Inicializace" po dlouhou dobu     | Ručně aktualizujte stránku. Inicializace by měla probíhat přibližně 20 datových bodů za sekundu. Nedostatek automatické aktualizace je známý problém.         |
-|Při kontrole obrázků se nově označené obrázky nezobrazují     |   Chcete-li načíst všechny označené obrázky, zvolte **tlačítko První.** První **First** tlačítko vás přenese zpět na přední stranu seznamu, ale načte všechna označená data.      |
-|Stisknutím klávesy Esc při popisování pro detekci objektů se vytvoří popisek nulové velikosti v levém horním rohu. Odeslání popisků v tomto stavu se nezdaří.     |   Odstraňte štítek kliknutím na křížovou značku vedle něj.  |
+|Můžou se použít jenom datové sady vytvořené pro úložiště dat objektu BLOB.     |  Toto je známé omezení aktuální verze.       |
+|Po vytvoření se v projektu zobrazí "inicializace" po dlouhou dobu.     | Aktualizujte stránku ručně. Inicializace by měla pokračovat zhruba o 20 databody za sekundu. Nedostatečná možnost AutoRefresh je známý problém.         |
+|Při kontrole imagí se nezobrazují nově označené obrázky.     |   Chcete-li načíst všechny označené obrázky, klikněte na tlačítko **první** . **První** tlačítko se vrátí zpět na začátek seznamu, ale načte všechna označená data.      |
+|Když stisknete klávesu ESC, zatímco při rozpoznávání objektu se vytvoří popisek s nulovou velikostí v levém horním rohu. Odesílání popisků v tomto stavu se nezdařilo.     |   Odstraňte popisek kliknutím na křížek vedle něj.  |
 
 ## <a name="azure-machine-learning-designer"></a>Návrhář Azure Machine Learning
 
 Známé problémy:
 
-* **Dlouhá doba přípravy výpočetních prostředků**: Může být několik minut nebo i déle, když se poprvé připojíte nebo vytvoříte výpočetní cíl. 
+* **Dlouhodobá doba přípravy výpočtů**: může to trvat několik minut nebo i déle, když se poprvé připojíte k cíli výpočtů nebo ho vytvoříte. 
 
 ## <a name="train-models"></a>Trénování modelů
 
-* **ModuleErrors (Žádný modul s názvem)**: Pokud běžíte do ModuleErrors při odesílání experimentů v Azure ML, znamená to, že školicí skript očekává balíček k instalaci, ale není přidán. Jakmile zadáte název balíčku, Azure ML nainstaluje balíček v prostředí používaném pro vaše školení. 
+* **ModuleErrors (žádný modul s názvem)**: Pokud při odesílání experimentů ve službě Azure ml používáte systém ModuleErrors, znamená to, že školicí skript očekává, že je balíček nainstalovaný, ale nepřidá se. Až zadáte název balíčku, Azure ML nainstaluje balíček do prostředí, které se používá pro váš školicí běh. 
 
-    Pokud používáte Odhady k odesílání [experimentů,](concept-azure-machine-learning-architecture.md#estimators) můžete `pip_packages` zadat `conda_packages` název balíčku prostřednictvím nebo parametr v odhadu na základě zdroje, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor yml se všemi vašimi závislostmi pomocí `conda_dependencies_file`nebo `pip_requirements_file` vypsat všechny vaše pip požadavky v souboru txt pomocí parametru. Pokud máte vlastní objekt prostředí Azure ML, který chcete přepsat výchozí bitovou kopii používanou `environment` odhadce, můžete určit, že prostředí prostřednictvím parametru konstruktoru odhadu.
+    Pokud používáte [odhady](concept-azure-machine-learning-architecture.md#estimators) k odesílání experimentů, můžete zadat název balíčku prostřednictvím `pip_packages` nebo `conda_packages` parametr v Estimator na základě toho, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor YML se všemi vašimi závislostmi pomocí `conda_dependencies_file`nebo vypsat všechny požadavky PIP v souboru txt pomocí `pip_requirements_file` parametru. Pokud máte vlastní objekt prostředí Azure ML, který chcete přepsat výchozí image, kterou používá Estimator, můžete toto prostředí zadat prostřednictvím `environment` parametru konstruktoru Estimator.
 
-    Azure ML také poskytuje odhady specifické pro architekturu pro Tensorflow, PyTorch, Chainer a SKLearn. Pomocí těchto odhadů se ujistěte, že základní framework závislosti jsou nainstalovány vaším jménem v prostředí používaném pro školení. Máte možnost zadat další závislosti, jak je popsáno výše. 
+    Azure ML také poskytuje odhady specificky pro rozhraní pro Tensorflow, PyTorch, chainer a skriptu sklearn. Pomocí těchto odhady se zajistí, že se závislosti Core Frameworku nainstalují vaším jménem do prostředí používaného pro školení. Máte možnost zadat další závislosti, jak je popsáno výše. 
  
-    Azure ML udržovány docker image a jejich obsah lze zobrazit v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers).
-    Závislosti specifické pro architekturu jsou uvedeny v příslušné rámcové dokumentaci - [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
+    Azure ML zachovává image Docker a jejich obsah se může zobrazit v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers).
+    Závislosti specifické pro rozhraní jsou uvedeny v dokumentaci k příslušnému rozhraní – [chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [skriptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
 
     > [!Note]
-    > Pokud si myslíte, že konkrétní balíček je natolik běžný, že se dá přidat do azure ml udržovaných bitových kopií a prostředí, vyvolávejte problém GitHubu v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers). 
+    > Pokud si myslíte, že konkrétní balíček je dostatečně společný, aby ho bylo možné přidat do spravovaných imagí a prostředí Azure ML, vyřešte v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers)problém GitHubu. 
  
-* **NameError (Název není definován), AttributeError (Objekt nemá žádný atribut)**: Tato výjimka by měla pocházet z vašich trénovacích skriptů. Můžete se podívat na soubory protokolu z webu Azure Portal získat další informace o konkrétní název není definován nebo chyba atribut. Ze sady SDK můžete `run.get_details()` použít k zobrazení chybové zprávy. To bude také seznam všech souborů protokolu generovaných pro váš běh. Prosím, ujistěte se, že se podívat na váš školicí skript a opravit chybu před resubmitting vašeho běhu. 
+* **NameError (název není definován), AttributeError (objekt nemá žádný atribut)**: Tato výjimka by měla pocházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK se můžete `run.get_details()` podívat na chybovou zprávu. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript a opravte chybu před opětovným odesláním běhu. 
 
-* **Horovod byl vypnut**: Ve většině případů, pokud narazíte na "AbortedError: Horovod byl vypnut" tato výjimka znamená, že v jednom z procesů, které způsobily vypnutí Horovoda, byla základní výjimka. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly `70_driver_logs`jsou pojmenovány . V případě distribuované školení, názvy `_rank` protokolu jsou suffix s usnadnit rozlišení protokoly. Chcete-li najít přesnou chybu, která způsobila Horovod vypnout, projít všechny soubory protokolu a hledat `Traceback` na konci driver_log souborů. Jeden z těchto souborů vám poskytne skutečnou základní výjimku. 
+* **Horovod byla vypnuta**: ve většině případů, pokud se zobrazí zpráva "AbortedError: Horovod byla vypnuta" Tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí Horovod. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly jsou pojmenovány `70_driver_logs`. V případě distribuovaného školení jsou názvy protokolů s `_rank` příponou a usnadňují odlišení protokolů. Pokud chcete najít přesnou chybu, která způsobila vypnutí Horovod, Projděte všechny soubory protokolů a hledejte `Traceback` na konci driver_log souborů. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
 
-* **Spustit nebo experimentovat odstranění**: Experimenty lze archivovat pomocí [metody Experiment.archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) nebo z karty Experiment zobrazení v klientovi studio Azure Machine Learning pomocí tlačítka "Experiment archivovat". Tato akce skryje experiment z dotazů a zobrazení seznamu, ale neodstraní jej.
+* **Spuštění nebo experimentování při odstraňování**: experimenty se dají archivovat pomocí metody [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) nebo na kartě experiment v Azure Machine Learning klientovi studia pomocí tlačítka "archivní experiment". Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
 
-    Trvalé odstranění jednotlivých experimentů nebo spuštění není v současné době podporováno. Další informace o odstranění datových zdrojů pracovního prostoru naleznete v [tématu Export nebo odstranění dat pracovního prostoru služby Machine Learning](how-to-export-delete-data.md).
+    Trvalé odstranění individuálních experimentů nebo spuštění není aktuálně podporováno. Další informace o odstraňování prostředků pracovního prostoru najdete v tématu [Export nebo odstranění dat pracovního prostoru služby Machine Learning](how-to-export-delete-data.md).
 
-* **Metric Document je příliš velký**: Azure Machine Learning má vnitřní omezení velikosti objektů metriky, které lze protokolovat najednou z trénovacího běhu. Pokud při protokolování metriky s hodnotou seznamu narazíte na chybu "Metrika je příliš velký", zkuste seznam rozdělit na menší bloky, například:
+* **Dokument metriky je příliš velký**: Azure Machine Learning má interní omezení velikosti objektů metriky, které je možné v jednom z školicích běhů přihlásit. Pokud narazíte na chybu "dokument metriky je moc velký" při protokolování metriky s hodnotou seznamu, zkuste seznam rozdělit na menší bloky dat, například:
 
     ```python
     run.log_list("my metric name", my_metric[:N])
     run.log_list("my metric name", my_metric[N:])
     ```
 
-    Interně Azure ML zřetězí bloky se stejným názvem metriky do souvislého seznamu.
+    Azure ML interně zřetězí bloky se stejným názvem metriky do souvislého seznamu.
 
 ## <a name="automated-machine-learning"></a>Automatizované strojové učení
 
-* **TenzorOvý tok**: Automatizované strojové učení v současné době nepodporuje tenzorový tok verze 1.13. Instalace této verze způsobí, že závislosti balíčků přestanou fungovat. Pracujeme na vyřešení tohoto problému v budoucí verzi.
+* **Tok tensor**: automatizované Machine Learning v současné době nepodporuje tensor Flow verze 1,13. Instalace této verze způsobí, že se závislosti balíčku přestanou pracovat. Pracujeme na řešení tohoto problému v budoucí verzi.
 
-* **Experimentální grafy:** Binární klasifikační grafy (přesnost-odvolání, ROC, gain křivka atd.) zobrazené v automatizovaných iterací experimentu ML nejsou vykreslování správně v uživatelském rozhraní od 4 / 12. Obrázky grafu jsou aktuálně zobrazeny inverzní výsledky, kde jsou zobrazeny výkonnější modely s nižšími výsledky. Usnesení se vyšetřuje.
+* **Grafy experimentů**: binární klasifikační grafy (přesnost-odvolání, ROC, křivka získání atd.) zobrazené v automatizovaných iteracích experimentu se nevykreslují správně v uživatelském rozhraní od 4/12. V grafu jsou v současné době zobrazeny inverzní výsledky, kde je lepší provádět modely s nižšími výsledky. Řešení je v šetření.
 
-* **Databricks zrušit automatizovaný strojový učení spustit**: Pokud používáte funkce automatického strojového učení na Azure Databricks, zrušit spuštění a spustit nový experiment spustit, restartujte cluster Azure Databricks.
+* **Datacihly ruší automatizované spuštění strojového učení**: když v Azure Databricks používáte automatizované funkce machine learningu, ke zrušení spuštění a spuštění nového experimentu restartujte cluster Azure Databricks.
 
-* **Databricks >10 iterací pro automatizované strojové učení**: V automatickém nastavení `show_output` `False` strojového učení, pokud máte více než 10 iterací, nastavte při odeslání spuštění.
+* **Datacihly >10 iterací pro automatizované strojové učení**: v případě automatizovaného nastavení strojového učení, pokud máte více než 10 iterací `False` , nastavte na hodnotu `show_output` při odeslání běhu.
 
-* **Widget Databricks pro Azure Machine Learning SDK a automatizované strojové učení**: Widget Azure Machine Learning SDK není v poznámkovém bloku Databricks podporovaný, protože poznámkové bloky nemohou analyzovat widgety HTML. Widget můžete zobrazit na portálu pomocí tohoto kódu Pythonu v buňce poznámkového bloku Azure Databricks:
+* **Widget datacihly pro sadu Azure Machine Learning SDK a automatizované Machine Learning**: pomůcka SDK pro Azure Machine Learning není v poznámkovém bloku datacihly podporovaná, protože poznámkové bloky nemůžou analyzovat widgety HTML. Widget můžete zobrazit na portálu pomocí tohoto kódu Pythonu v buňce s Azure Databricksm poznámkového bloku:
 
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
@@ -179,19 +193,19 @@ Známé problémy:
 
 ## <a name="deploy--serve-models"></a>Nasazení a obsluha modelů
 
-Pro následující chyby provázte tyto akce:
+Proveďte tyto akce při následujících chybách:
 
 |Chyba  | Řešení  |
 |---------|---------|
-|Selhání vytváření obrázků při nasazování webové služby     |  Přidat "pynacl==1.2.1" jako závislost pipu do souboru Conda pro konfiguraci obrazu       |
-|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Změňte skladovou položku pro virtuální počítače používané ve vašem nasazení na tu, která má více paměti. |
-|Selhání FPGA     |  Modely nebude možné nasadit na FPGA, dokud nepožádáte o kvótu FPGA a nebudete schváleni. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvótu:https://aka.ms/aml-real-time-ai       |
+|Chyba při sestavování obrázku při nasazení webové služby     |  Přidat "pynacl = = 1.2.1" jako závislost PIP k souboru conda pro konfiguraci bitové kopie       |
+|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Změňte SKU pro virtuální počítače používané ve vašem nasazení na jednu, která má více paměti. |
+|Selhání FPGA     |  Modely v FPGA nebudete moct nasadit, dokud si nebudete požádáni a neschválili kvótu FPGA. Pokud chcete požádat o přístup, vyplňte formulář žádosti o kvótu:https://aka.ms/aml-real-time-ai       |
 
-### <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Aktualizace součástí Azure Machine Learning v clusteru AKS
+### <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Aktualizace komponent Azure Machine Learning v clusteru AKS
 
-Aktualizace součástí Azure Machine Learning nainstalovaných v clusteru služby Azure Kubernetes musí být použity ručně. 
+Aktualizace komponent Azure Machine Learning nainstalovaných v clusteru služby Azure Kubernetes se musí použít ručně. 
 
-Tyto aktualizace můžete použít odpojením clusteru z pracovního prostoru Azure Machine Learning a opětovným připojením clusteru k pracovnímu prostoru. Pokud je v clusteru povolena technologie TLS, budete muset při opětovném připojení clusteru zadat certifikát TLS/SSL a soukromý klíč. 
+Tyto aktualizace můžete použít tak, že cluster odpojíte z pracovního prostoru Azure Machine Learning a pak cluster znovu připojíte k pracovnímu prostoru. Pokud je v clusteru povolený protokol TLS, budete muset při opětovném připojení clusteru dodat certifikát TLS/SSL a privátní klíč. 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -212,18 +226,18 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-Pokud již nemáte certifikát TLS/SSL a soukromý klíč nebo používáte certifikát generovaný službou Azure Machine Learning, můžete soubory načíst před `kubectl` odpojením `azuremlfessl`clusteru připojením ke clusteru pomocí a načtením tajného klíče .
+Pokud již nemáte certifikát TLS/SSL a privátní klíč nebo používáte certifikát vygenerovaný Azure Machine Learning, můžete načíst soubory před odpojením clusteru, a to tak, že se připojíte ke clusteru pomocí `kubectl` a načtete tajný klíč. `azuremlfessl`
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes ukládá tajemství v základním-64 kódovaném formátu. Před poskytnutím `cert.pem` tajných kódů budete `key.pem` muset dekódovat součásti `attach_config.enable_ssl`tajných kódů . 
+>Kubernetes ukládá tajné klíče ve formátu kódování Base-64. Před poskytnutím těchto tajných kódů bude nutné `cert.pem` základní `key.pem` -64 dekódovat `attach_config.enable_ssl`. 
 
-### <a name="webservices-in-azure-kubernetes-service-failures"></a>Webservices v Azure Kubernetes service selhání
+### <a name="webservices-in-azure-kubernetes-service-failures"></a>Služby WebServices ve službě Azure Kubernetes – chyby
 
-Mnoho selhání webové služby ve službě Azure Kubernetes lze ladit `kubectl`připojením ke clusteru pomocí . Pro cluster `kubeconfig.json` služeb Azure Kubernetes můžete získat spuštěním
+Mnoho selhání webové služby ve službě Azure Kubernetes se dá ladit připojením ke clusteru pomocí `kubectl`. Cluster služby Azure Kubernetes `kubeconfig.json` můžete získat spuštěním
 
 ```azurecli-interactive
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -231,7 +245,7 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 ## <a name="authentication-errors"></a>Chyby ověřování
 
-Pokud provedete operaci správy výpočetního cíle ze vzdálené úlohy, obdržíte jednu z následujících chyb:
+Pokud provádíte operaci správy na výpočetním cíli ze vzdálené úlohy, zobrazí se jedna z následujících chyb:
 
 ```json
 {"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
@@ -241,4 +255,4 @@ Pokud provedete operaci správy výpočetního cíle ze vzdálené úlohy, obdr�
 {"error":{"code":"AuthenticationFailed","message":"Authentication failed."}}
 ```
 
-Například se zobrazí chyba, pokud se pokusíte vytvořit nebo připojit cíl výpočetní ch od ML kanálu, který je odeslán ke vzdálenému spuštění.
+Například se zobrazí chyba, pokud se pokusíte vytvořit nebo připojit výpočetní cíl z kanálu ML, který je odeslán pro vzdálené spuštění.

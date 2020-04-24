@@ -1,26 +1,21 @@
 ---
 title: 'Kurz: Správa disků v Azure pomocí Azure PowerShellu'
 description: V tomto kurzu zjistíte, jak pomocí Azure PowerShellu vytvářet a spravovat disky Azure pro virtuální počítače.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.subservice: disks
-ms.openlocfilehash: 1957ae620cccee619c8608b79d9e804c356adf17
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: c9f514b70eda7d74950576a1a6f3a1199cddb232
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455661"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100324"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Kurz: Správa disků v Azure pomocí Azure PowerShellu
 
@@ -37,13 +32,13 @@ Virtuální počítače Azure využívají disky k ukládání svých operační
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné [https://shell.azure.com/powershell](https://shell.azure.com/powershell)kartě prohlížeče tak, že přejdete na . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/powershell](https://shell.azure.com/powershell)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="default-azure-disks"></a>Výchozí disky v Azure
 
 Při vytvoření virtuálního počítače Azure se k němu automaticky připojí dva disky. 
 
-**Disk s operačním systémem:** Disky s operačním systémem můžou mít velikost až 4 terabajty a hostují operační systém virtuálního počítače. Pokud vytvoříte nový virtuální počítač (VM) z image [Azure Marketplace,](https://azure.microsoft.com/marketplace/) obvykle 127 GB (ale některé image mají menší velikosti disku operačního systému). Disku s operačním systémem je ve výchozím nastavení přiřazené písmeno jednotky *C*. Konfigurace ukládání do mezipaměti na disku je u disku s operačním systémem optimalizovaná s ohledem na výkon operačního systému. Disk s operačním systémem **by neměl** hostit aplikace nebo data. Pro aplikace a data použijte datový disk, který je podrobněji popsán dále v tomto článku.
+**Disk s operačním systémem:** Disky s operačním systémem můžou mít velikost až 4 terabajty a hostují operační systém virtuálního počítače. Pokud vytvoříte nový virtuální počítač z bitové kopie [Azure Marketplace](https://azure.microsoft.com/marketplace/) , obvykle 127 GB (ale některé image mají menší velikosti disků s operačním systémem). Disku s operačním systémem je ve výchozím nastavení přiřazené písmeno jednotky *C*. Konfigurace ukládání do mezipaměti na disku je u disku s operačním systémem optimalizovaná s ohledem na výkon operačního systému. Disk s operačním systémem **by neměl** hostit aplikace nebo data. Pro aplikace a data použijte datový disk, který je podrobněji popsán dále v tomto článku.
 
 **Dočasný disk:** Dočasné disky používají jednotku SSD, která je umístěná na stejném hostiteli Azure jako virtuální počítač. Dočasné disky mají vysoký výkon a můžou se používat pro operace, jako je zpracování dočasných dat. V případě přesunutí virtuálního počítače na nového hostitele se ale všechna data uložená na dočasném disku odeberou. Velikost dočasného disku se určuje podle [velikosti virtuálního počítače](sizes.md). Dočasným diskům se ve výchozím nastavení přiřazuje písmeno jednotky *D*.
 
@@ -71,7 +66,7 @@ K dokončení příkladu v tomto kurzu potřebujete existující virtuální po�
 Uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači můžete nastavit pomocí příkazu [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 
-Vytvořte virtuální počítač s [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Zobrazí se výzva k zadání uživatelského jména a hesla pro účet správce virtuálního počítače.
+Vytvořte virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Zobrazí se výzva k zadání uživatelského jména a hesla pro účet správce virtuálního počítače.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -85,7 +80,7 @@ New-AzVm `
 ```
 
 
-Vytvořte počáteční konfiguraci pomocí [aplikace New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig). Následující příklad nakonfiguruje disk o velikosti 128 GB.
+Vytvořte počáteční konfiguraci pomocí [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig). Následující příklad nakonfiguruje disk o velikosti 128 GB.
 
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
@@ -94,7 +89,7 @@ $diskConfig = New-AzDiskConfig `
     -DiskSizeGB 128
 ```
 
-Vytvořte datový disk pomocí příkazu [New-AzDisk.](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk)
+Pomocí příkazu [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) vytvořte datový disk.
 
 ```azurepowershell-interactive
 $dataDisk = New-AzDisk `
@@ -103,13 +98,13 @@ $dataDisk = New-AzDisk `
     -Disk $diskConfig
 ```
 
-Získejte virtuální počítač, do kterého chcete datový disk přidat pomocí příkazu [Get-AzVM.](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)
+Pomocí příkazu [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) Získejte virtuální počítač, ke kterému chcete přidat datový disk.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-Přidejte datový disk do konfigurace virtuálního počítače pomocí příkazu [Add-AzVMDataDisk.](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk)
+Přidejte datový disk do konfigurace virtuálního počítače pomocí příkazu [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) .
 
 ```azurepowershell-interactive
 $vm = Add-AzVMDataDisk `
@@ -120,7 +115,7 @@ $vm = Add-AzVMDataDisk `
     -Lun 1
 ```
 
-Aktualizujte virtuální počítač pomocí příkazu [Update-AzVM.](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk)
+Aktualizujte virtuální počítač pomocí příkazu [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) .
 
 ```azurepowershell-interactive
 Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm

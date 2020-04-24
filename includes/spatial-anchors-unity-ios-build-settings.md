@@ -11,13 +11,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "68562502"
 ---
-Otevřete **nastavení sestavení** výběrem**položky Nastavení sestavení** **souborů** > .
+Otevřete **nastavení sestavení** výběrem**nastavení sestavení** **souboru** > .
 
-V části **Platforma** vyberte **iOS**.
+V části **platforma** vyberte **iOS**.
 
-Vyberte **Přepnout platformu,** chcete-li změnit platformu na **iOS**. Unity vás může vyzvat k instalaci součástí podpory iOS, pokud chybí.
+Vyberte **přepínač platforma** pro změnu platformy na **iOS**. V Unity se může zobrazit výzva k instalaci součástí podpory iOS, pokud chybí.
 
-![Okno Nastavení sestavení unity](./media/spatial-anchors-unity/unity-ios-build-settings.png)
+![Okno nastavení sestavení Unity](./media/spatial-anchors-unity/unity-ios-build-settings.png)
 
-Zavřete okno **Nastavení sestavení.**
+Zavřete okno **nastavení sestavení** .
 

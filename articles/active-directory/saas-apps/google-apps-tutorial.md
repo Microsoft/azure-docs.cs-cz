@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s G Suite | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a G Suite.
+title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s konektorem Google Cloud (G Suite) | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a konektorem Google Cloud (G Suite).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,37 +15,37 @@ ms.topic: tutorial
 ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5ef5816759074073c57ef0f616ddea4a159956f
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 5b3282dd88b62a6811031e95672638d67702215a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370344"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048448"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s G Suite
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s konektorem Google Cloud (G Suite)
 
-V tomto kurzu se dozvíte, jak integrovat G Suite s Azure Active Directory (Azure AD). Když integrujete G Suite s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat konektor Google Cloud (G Suite) s Azure Active Directory (Azure AD). Když integrujete konektor Google Cloud (G Suite) s Azure AD, můžete:
 
-* Řízení ve službě Azure AD, která má přístup k G Suite.
-* Umožněte uživatelům, aby se automaticky přihlásili k G Suite pomocí svých účtů Azure AD.
+* Řízení ve službě Azure AD, která má přístup ke konektoru Google Cloud (G Suite).
+* Umožněte, aby se vaši uživatelé automaticky přihlásili ke konektoru Google Cloud (G Suite) pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li začít, potřebujete následující položky:
 
 - Předplatné služby Azure AD.
-- Předplatné G Suite s podporou jednotného přihlašování (SSO).
+- Předplatné Google Cloud (G Suite) konektor s povoleným jednotným přihlašováním (SSO).
 - Předplatné Google Apps nebo předplatné Google Cloud Platform.
 
 > [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí. Tento dokument byl vytvořen pomocí jednotného přihlašování uživatele. Pokud stále používáte starou, bude instalace vypadat jinak. Nové prostředí můžete povolit v nastavení jednotného přihlašování aplikace G-Suite. Přejděte na **Azure AD, podnikové aplikace**, vyberte **G Suite**, vyberte **jednotné přihlašování** a potom klikněte na **vyzkoušet nové prostředí**.
+> K otestování kroků v tomto kurzu nedoporučujeme používat produkční prostředí. Tento dokument byl vytvořen pomocí jednotného přihlašování uživatele. Pokud stále používáte starou, bude instalace vypadat jinak. Nové prostředí můžete povolit v nastavení jednotného přihlašování aplikace G-Suite. Přejděte na **Azure AD, podnikové aplikace**, vyberte **konektor Google Cloud (G Suite)**, vyberte **jednotné přihlašování** a potom klikněte na **vyzkoušet nové prostředí**.
 
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
+K otestování kroků v tomto kurzu byste měli postupovat podle těchto doporučení:
 
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Nepoužívejte své provozní prostředí, pokud není nutné.
 - Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
@@ -56,19 +56,19 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 
 2. **Otázka: jsou Chromebooks a jiná zařízení Chrome kompatibilní s jednotným přihlašováním Azure AD?**
   
-    Odpověď: Ano, uživatelé se mohou přihlašovat ke svým zařízením Chromebook pomocí svých přihlašovacích údajů Azure AD. Informace o tom, proč se uživatelům může zobrazit výzva k zadání přihlašovacích údajů dvakrát, najdete v tomto [článku podpory G Suite](https://support.google.com/chrome/a/answer/6060880) .
+    Odpověď: Ano, uživatelé se mohou přihlašovat ke svým zařízením Chromebook pomocí svých přihlašovacích údajů Azure AD. Informace o tom, proč se uživatelům může zobrazit výzva k zadání přihlašovacích údajů dvakrát, najdete v tomto [článku podpory konektoru Google Cloud (G Suite)](https://support.google.com/chrome/a/answer/6060880) .
 
 3. **Otázka: Pokud povolíte jednotné přihlašování, budou uživatelé moci používat svoje přihlašovací údaje Azure AD k tomu, aby se mohli přihlásit k libovolnému produktu Google, například Google Classroom, GMail, disk Google, YouTube atd.?**
 
-    Odpověď: Ano, v závislosti na [tom, kterou sadu G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) jste zvolili pro povolení nebo zakázání pro vaši organizaci.
+    Odpověď: Ano, v závislosti na [tom, který konektor Google Cloud (G Suite)](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) se rozhodnete pro vaši organizaci povolit nebo zakázat.
 
-4. **Otázka: můžu povolit jednotné přihlašování jenom pro podmnožinu svých uživatelů G Suite?**
+4. **Otázka: můžu povolit jednotné přihlašování jenom pro podmnožinu uživatelů konektoru Google Cloud (G Suite)?**
 
-    Odpověď: Ne, zapnutí jednotného přihlašování okamžitě vyžaduje, aby všichni uživatelé sady G Suite ověřili své přihlašovací údaje služby Azure AD. Vzhledem k tomu, že G Suite nepodporuje více zprostředkovatelů identity, může být poskytovatel identity pro prostředí G Suite buď Azure AD, nebo Google, ale ne současně současně.
+    Odpověď: Ne, okamžitě zapnout jednotné přihlašování vyžaduje, aby všichni uživatelé konektoru Google Cloud (G Suite) mohli provést ověření pomocí svých přihlašovacích údajů Azure AD. Protože konektor Google Cloud (G Suite) nepodporuje více zprostředkovatelů identity, poskytovatel identity pro prostředí konektoru Google Cloud (G Suite) může být buď Azure AD, nebo Google, ale ne současně současně.
 
-5. **Otázka: Pokud je uživatel přihlášený prostřednictvím Windows, automaticky se ověří v G Suite, aniž by se zobrazila výzva k zadání hesla?**
+5. **Otázka: Pokud je uživatel přihlášený prostřednictvím Windows, automaticky se ověří do konektoru Google Cloud (G Suite), aniž by se zobrazila výzva k zadání hesla?**
 
-    Odpověď: Existují dvě možnosti pro povolení tohoto scénáře. Nejdřív se uživatelé mohli do zařízení s Windows 10 přihlásit pomocí [Azure Active Directory JOIN](../device-management-introduction.md). Další možností je, že se uživatelé můžou přihlašovat do zařízení s Windows, která jsou připojená k doméně, do místní služby Active Directory, u které se povolilo jednotné přihlašování ke službě Azure AD prostřednictvím nasazení [Active Directory Federation Services (AD FS) (AD FS)](../hybrid/plan-connect-user-signin.md) . Obě možnosti vyžadují, abyste provedli kroky v následujícím kurzu a povolili jste jednotné přihlašování mezi Azure AD a G Suite.
+    Odpověď: Existují dvě možnosti pro povolení tohoto scénáře. Nejdřív se uživatelé mohli do zařízení s Windows 10 přihlásit pomocí [Azure Active Directory JOIN](../device-management-introduction.md). Další možností je, že se uživatelé můžou přihlašovat do zařízení s Windows, která jsou připojená k doméně, do místní služby Active Directory, u které se povolilo jednotné přihlašování ke službě Azure AD prostřednictvím nasazení [Active Directory Federation Services (AD FS) (AD FS)](../hybrid/plan-connect-user-signin.md) . Obě možnosti vyžadují, abyste provedli kroky v následujícím kurzu a povolili jste jednotné přihlašování mezi Azure AD a konektorem Google Cloud (G Suite).
 
 6. **Otázka: co mám dělat, když se zobrazí chybová zpráva "Neplatný e-mail"?**
 
@@ -76,7 +76,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 
     Atribut e-mail je automaticky vyplněný pro každého uživatele s platnou licencí Exchange. Pokud uživatel není povolený e-mailem, zobrazí se tato chyba, protože aplikace potřebuje získat přístup k tomuto atributu.
 
-    Můžete přejít na portal.office.com s účtem správce, potom kliknout na centrum pro správu, fakturace, předplatná, vybrat předplatné Office 365 a potom kliknout na přiřadit k uživatelům, vybrat uživatele, u kterých chcete ověřit předplatné, a v pravém podokně kliknout na Upravte licence.
+    Můžete přejít na portal.office.com s účtem správce, potom kliknout na centrum pro správu, fakturace, předplatná, vybrat předplatné Office 365 a potom kliknout na přiřadit k uživatelům, vybrat uživatele, u kterých chcete kontrolu předplatného, a v pravém podokně kliknout na Upravit licence.
 
     Po přiřazení licence O365 může trvat několik minut, než se použije. Potom bude automaticky vyplněn atribut User. mail, který by měl vyřešit problém.
 
@@ -84,40 +84,40 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* G Suite podporuje jednotné přihlašování (SSO) iniciované **SP**
+* Konektor Google Cloud (G Suite) podporuje jednotné přihlašování (SSO) spouštěné v **SP**
 
-* G Suite podporuje [ **automatizované** zřizování uživatelů.](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
-* Jakmile nakonfigurujete G Suite, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Konektor Google Cloud (G Suite) podporuje [ **automatizované** zřizování uživatelů.](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+* Jakmile nakonfigurujete konektor Google Cloud (G Suite), můžete vynutilit řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-g-suite-from-the-gallery"></a>Přidání G Suite z Galerie
+## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>Přidání konektoru Google Cloud (G Suite) z Galerie
 
-Pokud chcete nakonfigurovat integraci G Suite do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat G Suite z galerie.
+Pokud chcete nakonfigurovat integraci konektoru Google Cloud (G Suite) do Azure AD, musíte přidat konektor Google Cloud (G Suite) z Galerie do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **G Suite** .
-1. Vyberte **G Suite** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **konektor Google Cloud (G Suite)** .
+1. Z panelu výsledků vyberte **konektor Google Cloud (G Suite)** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-g-suite"></a>Konfigurace a testování jednotného přihlašování Azure AD pro G Suite
+## <a name="configure-and-test-azure-ad-single-sign-on-for-google-cloud-g-suite-connector"></a>Konfigurace a testování jednotného přihlašování Azure AD pro konektor Google Cloud (G Suite)
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí G Suite pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte v G Suite vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí konektoru Google Cloud (G Suite) pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte v konektoru Google Cloud (G Suite) vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí G Suite, dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí konektoru Google Cloud (G Suite), dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[NAKONFIGURUJTE jednotné přihlašování G Suite](#configure-g-suite-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte testovacího uživatele G Suite](#create-g-suite-test-user)** , abyste měli protějšek B. Simon v g Suite, který je propojený s reprezentací uživatele v Azure AD.
+1. **[Konfigurace jednotného přihlašování ke konektoru Google Cloud (G Suite)](#configure-google-cloud-g-suite-connector-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+    1. **[Vytvoření testovacího uživatele konektoru Google Cloud (g Suite)](#create-google-cloud-g-suite-connector-test-user)** – Pokud chcete mít protějšek B. Simon v konektoru Google Cloud (g Suite), který je propojený s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace s aplikacemi **G Suite** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **konektor Google Cloud (G Suite)** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
@@ -125,7 +125,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurační oddíl SAML** , pokud chcete nakonfigurovat pro **Gmail** , proveďte následující kroky:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
     b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
@@ -146,7 +146,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete pro **Google Cloud Platform** nakonfigurovat **základní konfigurační oddíl SAML** , proveďte následující kroky:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
 
     b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     
@@ -165,22 +165,22 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | `https://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a identifikátoru. G Suite při konfiguraci jednotného přihlašování neposkytuje hodnotu ID nebo identifikátoru entity, takže když zrušíte kontrolu pro možnost **vystavitele specifické pro doménu** , hodnota identifikátoru se `google.com`. Pokud zaškrtnete možnost **vystavitele specifické pro doménu** , bude `google.com/a/<yourdomainname.com>`. Pokud chcete zaškrtnout/zrušit kontrolu pro **vystavitele specifické pro doménu** , musíte přejít do oddílu **Konfigurace G Suite jednotného přihlašování** , které se vysvětluje později v tomto kurzu. Další informace získáte od [týmu podpory pro klienty pro sadu G Suite](https://www.google.com/contact/).
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a identifikátoru. Konektor Google Cloud (G Suite) při konfiguraci jednotného přihlašování neposkytuje hodnotu ID nebo identifikátoru entity, takže když zrušíte kontrolu **specifického vystavitele domény** , hodnota identifikátoru bude `google.com`. Pokud zaškrtnete možnost **vystavitele specifické** pro doménu `google.com/a/<yourdomainname.com>`, bude. Pokud chcete zaškrtnout/zrušit kontrolu pro **vystavitele specifické pro doménu** , musíte přejít do části **Konfigurace konektoru pro jednotné přihlašování Google Cloud (G Suite)** , který se vysvětluje později v tomto kurzu. Další informace získáte od [týmu podpory konektoru pro Google Cloud (G Suite)](https://www.google.com/contact/).
 
-1. Vaše aplikace G Suite očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Příklad ukazuje následující snímek obrazovky. Výchozí hodnotou **jedinečného identifikátoru uživatele** je **User. userPrincipalName,** ale G Suite očekává, že tato hodnota bude namapována pomocí e-mailové adresy uživatele. Pro tuto funkci můžete použít atribut **User. mail** ze seznamu nebo použít odpovídající hodnotu atributu na základě konfigurace vaší organizace.
+1. Vaše aplikace konektoru Google Cloud (G Suite) očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Příklad ukazuje následující snímek obrazovky. Výchozí hodnota **jedinečného identifikátoru uživatele** je **User. userPrincipalName** , ale konektor Google Cloud (G Suite) očekává, že bude namapován pomocí e-mailové adresy uživatele. Pro tuto funkci můžete použít atribut **User. mail** ze seznamu nebo použít odpovídající hodnotu atributu na základě konfigurace vaší organizace.
 
     ![image](common/default-attributes.png)
 
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. V části **Nastavení G Suite** zkopírujte na základě vašeho požadavku příslušné adresy URL.
+1. V části **Nastavení konektoru Google Cloud (G Suite)** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -188,19 +188,19 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k G Suite.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup ke konektoru Google Cloud (G Suite).
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **G Suite**.
+1. V seznamu aplikace vyberte **konektor Google Cloud (G Suite)**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -210,13 +210,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-g-suite-sso"></a>Konfigurace jednotného přihlašování G Suite
+## <a name="configure-google-cloud-g-suite-connector-sso"></a>Konfigurace jednotného přihlašování ke konektoru Google Cloud (G Suite)
 
-1. V prohlížeči otevřete novou kartu a přihlaste se ke [konzole pro správu G Suite](https://admin.google.com/) pomocí účtu správce.
+1. V prohlížeči otevřete novou kartu a přihlaste se ke [konzole pro správu konektoru Google Cloud (G Suite)](https://admin.google.com/) pomocí účtu správce.
 
-2. Klikněte na **Zabezpečení**. Pokud odkaz nevidíte, může být skrytý v nabídce **Další ovládací prvky** v dolní části obrazovky.
+2. Klikněte na **zabezpečení**. Pokud odkaz nevidíte, může být skrytý v nabídce **Další ovládací prvky** v dolní části obrazovky.
 
-    ![Klikněte na Zabezpečení.][10]
+    ![Klikněte na zabezpečení.][10]
 
 3. Na stránce **zabezpečení** klikněte na **nastavit jednotné přihlašování (SSO).**
 
@@ -228,35 +228,35 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     a. Vyberte **nastavení jednotného přihlašování s poskytovatelem identity od jiného výrobce**.
 
-    b. V poli **Adresa URL přihlašovací stránky** v G Suite vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    b. V poli **Adresa URL přihlašovací stránky** v konektoru Google Cloud (G Suite) vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    c. V poli **Adresa URL stránky** pro odhlášení v G Suite vložte hodnotu **Adresa URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
+    c. V poli **Adresa URL stránky pro odhlášení** v konektoru Google Cloud (G Suite) vložte hodnotu URL pro **odhlášení** , kterou jste zkopírovali z Azure Portal.
 
-    d. V poli **změnit adresu URL hesla** v G Suite vložte hodnotu **Adresa URL pro změnu hesla** , kterou jste zkopírovali z Azure Portal.
+    d. V poli **změnit adresu URL hesla** v konektoru Google Cloud (G Suite) vložte hodnotu **Adresa URL pro změnu hesla** , kterou jste zkopírovali z Azure Portal.
 
-    e. V G Suite pro **ověřovací certifikát**Nahrajte certifikát, který jste stáhli z Azure Portal.
+    e. V konektoru Google Cloud (G Suite) pro **ověřovací certifikát**Nahrajte certifikát, který jste stáhli z Azure Portal.
 
     f. Zaškrtnout/zrušit kontrolu **použití možnosti vystavitele specifické pro doménu** podle poznámky uvedené výše v části **základní konfigurace SAML** ve službě Azure AD.
 
-    g. Klikněte na **Uložit změny**.
+    g. Klikněte na **Save Changes** (Uložit změny).
 
-### <a name="create-g-suite-test-user"></a>Vytvořit testovacího uživatele G Suite
+### <a name="create-google-cloud-g-suite-connector-test-user"></a>Vytvořit testovacího uživatele konektoru Google Cloud (G Suite)
 
-Cílem této části je [vytvořit uživatele v G Suite s](https://support.google.com/a/answer/33310?hl=en) názvem B. Simon. Po vytvoření uživatele v G Suite se teď uživatel bude moct přihlásit pomocí přihlašovacích údajů pro přihlášení k Office 365.
+Cílem této části je [vytvořit uživatele v konektoru Google Cloud (G Suite)](https://support.google.com/a/answer/33310?hl=en) s názvem B. Simon. Po vytvoření uživatele v konektoru Google Cloud (G Suite) se teď uživatel bude moct přihlásit pomocí přihlašovacích údajů pro přihlášení k Office 365.
 
-G Suite podporuje taky Automatické zřizování uživatelů. Pokud chcete nakonfigurovat automatické zřizování uživatelů, musíte nejdřív [nakonfigurovat G Suite pro Automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
+Konektor Google Cloud (G Suite) podporuje taky Automatické zřizování uživatelů. Pokud chcete nakonfigurovat automatické zřizování uživatelů, musíte nejdřív [nakonfigurovat konektor Google Cloud (G Suite) pro Automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
 
 > [!NOTE]
-> Ujistěte se, že váš uživatel už existuje v G Suite, pokud zřizování ve službě Azure AD nebylo před testováním jednotného přihlašování zapnuté.
+> Ujistěte se, že váš uživatel už existuje v konektoru Google Cloud (G Suite), pokud se zřizování ve službě Azure AD nepřed testováním jednotného přihlašování nezapnulo.
 
 > [!NOTE]
 > Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory Google](https://www.google.com/contact/).
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici G Suite na přístupovém panelu byste měli být automaticky přihlášení do sady G, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici konektor Google Cloud (G Suite) na přístupovém panelu, měli byste se automaticky přihlásit ke konektoru Google Cloud (G Suite), pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další materiály a zdroje informací
 
@@ -268,11 +268,11 @@ Po kliknutí na dlaždici G Suite na přístupovém panelu byste měli být auto
 
 - [Konfigurace zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
 
-- [Vyzkoušejte si G Suite s Azure AD](https://aad.portal.azure.com/)
+- [Vyzkoušejte si konektor Google Cloud (G Suite) s Azure AD](https://aad.portal.azure.com/)
 
 - [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit G Suite pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+- [Jak chránit konektor Google Cloud (G Suite) s pokročilou viditelností a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
 
 <!--Image references-->
 
