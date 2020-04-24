@@ -1,100 +1,87 @@
 ---
 title: Spouštění úloh v rámci uživatelských účtů – Azure Batch
-description: Je užitečné, abyste mohli nakonfigurovat uživatelský účet, pod kterým chcete úlohu spustit. Seznamte se s typy uživatelských účtů a jejich konfigurací.
-services: batch
-author: LauraBrenner
-manager: evansma
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: batch
+description: Je užitečné, abyste mohli nakonfigurovat uživatelský účet, pod kterým chcete úlohu spustit. Přečtěte si o typech uživatelských účtů a o tom, jak je nakonfigurovat.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 11/18/2019
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: fee3dc764d2052185160a4ba6b3d70854c54eeac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22827a1a1406be7cb6ea0bd6e19f6ce316598a48
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252269"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111738"
 ---
 > [!NOTE] 
-> Uživatelské účty popsané v tomto článku se liší od uživatelských účtů používaných pro protokol RDP (RDP) nebo zabezpečené prostředí (SSH) z bezpečnostních důvodů. 
+> Uživatelské účty popsané v tomto článku se liší od uživatelských účtů používaných pro protokol RDP (Remote Desktop Protocol) (RDP) nebo Secure Shell (SSH) z bezpečnostních důvodů. 
 >
-> Pokud se chcete připojit k uzlu s konfigurací virtuálního počítače Linux přes SSH, přečtěte si informace [o použití vzdálené plochy k virtuálnímu počítači SM s Linuxem v Azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Pokud se chcete připojit k uzlům se systémem Windows přes RDP, přečtěte si informace [o připojení k virtuálnímu virtuálnímu virtuálnímu virtuálnímu zařízení se systémem Windows Server](../virtual-machines/windows/connect-logon.md).<br /><br />
-> Pokud se chcete připojit k uzlu, na který běží konfigurace cloudové služby prostřednictvím protokolu RDP, přečtěte si informace [o povolení připojení ke vzdálené ploše pro roli v Cloudových službách Azure](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
->
->
+> Pokud se chcete připojit k uzlu s konfigurací virtuálního počítače se systémem Linux přes SSH, přečtěte si téma [použití vzdálené plochy k virtuálnímu počítači se systémem Linux v Azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Informace o připojení k uzlům se systémem Windows prostřednictvím protokolu RDP najdete v tématu [připojení k virtuálnímu počítači s Windows serverem](../virtual-machines/windows/connect-logon.md).<br /><br />
+> Pokud se chcete připojit k uzlu, na kterém je spuštěná konfigurace cloudové služby prostřednictvím protokolu RDP, přečtěte si téma [povolení připojení ke vzdálené ploše pro roli ve službě Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 
+# <a name="run-tasks-under-user-accounts-in-batch"></a>Spouštění úloh v rámci uživatelských účtů ve Batch
 
-# <a name="run-tasks-under-user-accounts-in-batch"></a>Spuštění úloh v části uživatelské účty v části Dávka
-
-Úloha v Azure Batch se vždy spouští pod uživatelským účtem. Ve výchozím nastavení jsou úlohy spuštěny pod standardními uživatelskými účty bez oprávnění správce. Tato výchozí nastavení uživatelského účtu jsou obvykle dostatečná. Pro určité scénáře je však užitečné konfigurovat uživatelský účet, pod kterým chcete úlohu spustit. Tento článek popisuje typy uživatelských účtů a jak je můžete nakonfigurovat pro váš scénář.
+Úkol v Azure Batch vždy běží v rámci uživatelského účtu. Ve výchozím nastavení se úlohy spouštějí pod standardními uživatelskými účty bez oprávnění správce. Tato výchozí nastavení uživatelského účtu jsou obvykle dostačující. V některých scénářích ale je užitečné, abyste mohli nakonfigurovat uživatelský účet, pod kterým chcete úlohu spustit. Tento článek pojednává o typech uživatelských účtů a o tom, jak je můžete nakonfigurovat pro váš scénář.
 
 ## <a name="types-of-user-accounts"></a>Typy uživatelských účtů
 
-Azure Batch poskytuje dva typy uživatelských účtů pro spouštění úloh:
+Azure Batch poskytuje dva typy uživatelských účtů pro spuštěné úlohy:
 
-- **Účty automatického uživatele.** Účty automatického uživatele jsou předdefinované uživatelské účty, které jsou automaticky vytvářeny službou Batch. Ve výchozím nastavení jsou úlohy spuštěny pod účtem automatického uživatele. Můžete nakonfigurovat specifikaci automatického uživatele pro úlohu tak, aby označovala, pod jakým účtem automatického uživatele má úloha být spuštěna. Specifikace automatického uživatele umožňuje určit úroveň nadmořské výšky a rozsah účtu automatického uživatele, který bude úlohu spouštět. 
+- **Účty automatických uživatelů.** Účty automatických uživatelů jsou předdefinované uživatelské účty, které služba Batch automaticky vytvoří. Ve výchozím nastavení se úlohy spouštějí pod účtem automatického uživatele. Můžete nakonfigurovat specifikaci automatického uživatele pro úkol, aby označoval, pod kterým účtem automatických uživatelů se má úloha spustit. Specifikace automatického uživatele umožňuje zadat úroveň zvýšení úrovně oprávnění a rozsah účtu automatického uživatele, který úlohu spustí. 
 
-- **Pojmenovaný uživatelský účet.** Můžete zadat jeden nebo více pojmenovaných uživatelských účtů pro fond při vytváření fondu. Každý uživatelský účet je vytvořen na každém uzlu fondu. Kromě názvu účtu zadáte heslo uživatelského účtu, úroveň zvýšení oprávnění a pro fondy Linuxu soukromý klíč SSH. Při přidání úlohy můžete zadat pojmenovaný uživatelský účet, pod kterým by měla být tato úloha spuštěna.
-
-> [!IMPORTANT] 
-> Verze služby Batch 2017-01-01.4.0 zavádí narušující změnu, která vyžaduje aktualizaci kódu pro volání této verze. Pokud migrujete kód ze starší verze batch, všimněte si, že vlastnost **runElevated** již není podporována v knihovnách klienta REST API nebo Batch. K určení **výškové výšky** použijte vlastnost new userIdentity úkolu. V části s názvem [Aktualizace kódu do nejnovější knihovny klienta Batch](#update-your-code-to-the-latest-batch-client-library) naleznete rychlé pokyny pro aktualizaci dávkového kódu, pokud používáte některou z klientských knihoven.
->
->
-
-## <a name="user-account-access-to-files-and-directories"></a>Přístup k uživatelským účtům k souborům a adresářům
-
-Účet automatického uživatele i pojmenovaný uživatelský účet mají přístup pro čtení a zápis do adresáře pracovního adresáře úkolu, sdíleného adresáře a úkolů s více instancemi. Oba typy účtů mají přístup pro čtení do adresářů pro spuštění a přípravu úloh.
-
-Pokud je úloha spuštěna pod stejným účtem, který byl použit pro spuštění úlohy zahájení, má úloha přístup pro čtení a zápis do adresáře počáteční úlohy. Podobně pokud je úloha spuštěna pod stejným účtem, který byl použit pro spuštění úlohy přípravy úlohy, má úloha přístup pro čtení a zápis do adresáře úloh y přípravy úloh. Pokud je úloha spuštěna pod jiným účtem, než je počáteční úloha nebo úloha přípravy úlohy, má pouze přístup pro čtení do příslušného adresáře.
-
-Další informace o přístupu k souborům a adresářům z úlohy naleznete v tématu [Vývoj rozsáhlých paralelních výpočetních řešení pomocí aplikace Batch](batch-api-basics.md#files-and-directories).
-
-## <a name="elevated-access-for-tasks"></a>Zvýšený přístup pro úkoly 
-
-Úroveň zvýšení uživatelského účtu označuje, zda je úloha spuštěna se zvýšeným přístupem. Účet automatického uživatele i pojmenovaný uživatelský účet lze spustit se zvýšeným přístupem. Dvě možnosti výškové výšky jsou:
-
-- **NonAdmin:** Úloha je spuštěna jako standardní uživatel bez přístupu se zvýšenými oprávněními. Výchozí úroveň zvýšení dávkového uživatelského účtu je vždy **NonAdmin**.
-- **Správce:** Úloha běží jako uživatel se zvýšeným přístupem a pracuje s úplnými oprávněními správce. 
-
-## <a name="auto-user-accounts"></a>Účty automatického uživatele
-
-Ve výchozím nastavení se úlohy spouštějí v aplikaci Batch pod účtem automatického uživatele, jako standardní uživatel bez zvýšeného přístupu a s rozsahem úloh. Pokud je specifikace automatického uživatele nakonfigurována pro obor úlohy, služba Dávka vytvoří účet automatického uživatele pouze pro tuto úlohu.
-
-Alternativou k oboru úkolu je rozsah fondu. Pokud je specifikace automatického uživatele pro úlohu nakonfigurována pro obor fondu, úloha je spuštěna pod účtem automatického uživatele, který je k dispozici pro všechny úkoly ve fondu. Další informace o oboru fondu naleznete v části s názvem Spustit úlohu jako automatického uživatele s rozsahem fondu.   
-
-Výchozí obor se liší u uzlů Windows a Linux:
-
-- V uzlech systému Windows jsou úlohy ve výchozím nastavení spuštěny v rámci oboru úloh.
-- Linuxové uzly vždy běží pod rozsahem fondu.
-
-Existují čtyři možné konfigurace pro specifikaci automatického uživatele, z nichž každá odpovídá jedinečnému účtu automatického uživatele:
-
-- Přístup bez oprávnění správce s rozsahem úloh (výchozí specifikace automatického uživatele)
-- Přístup správce (se zvýšenými oprávněními) s rozsahem úloh
-- Přístup bez oprávnění správce s rozsahem fondu
-- Přístup správce s rozsahem fondu
+- **Pojmenovaný uživatelský účet.** Při vytváření fondu můžete zadat jeden nebo více pojmenovaných uživatelských účtů pro fond. Každý uživatelský účet se vytvoří v každém uzlu fondu. Kromě názvu účtu zadejte heslo uživatelského účtu, úroveň zvýšení oprávnění a pro fondy Linux privátního klíče SSH. Když přidáte úlohu, můžete zadat pojmenovaný uživatelský účet, pod kterým se má úloha spustit.
 
 > [!IMPORTANT] 
-> Úlohy spuštěné v oboru úloh nemají de facto přístup k jiným úkolům v uzlu. Uživatel se zlými úmysly s přístupem k účtu by však mohl toto omezení obejít odesláním úlohy, která je spuštěna s oprávněními správce a přistupuje k jiným adresářům úloh. Uživatel se zlými úmysly může také použít RDP nebo SSH pro připojení k uzlu. Je důležité chránit přístup ke klíčům účtu Batch, abyste takovému scénáři zabránili. Pokud máte podezření, že váš účet mohl být napaden, nezapomeňte klíče znovu vygenerovat.
+> Služba Batch verze 2017 -01-01.4.0 zavádí zásadní změnu, která vyžaduje, abyste aktualizovali kód pro volání této verze. Pokud migrujete kód ze starší verze služby Batch, Všimněte si, že vlastnost **runElevated** již není podporována v klientských knihovnách REST API nebo Batch. Pomocí nové vlastnosti **userIdentity** úlohy můžete určit úroveň zvýšení úrovně oprávnění. Pokud používáte jednu z klientských knihoven, přečtěte si část s názvem [aktualizace kódu na nejnovější klientskou knihovnu Batch](#update-your-code-to-the-latest-batch-client-library) , kde najdete rychlé pokyny pro aktualizaci kódu Batch.
 >
 >
 
-### <a name="run-a-task-as-an-auto-user-with-elevated-access"></a>Spuštění úlohy jako automatického uživatele se zvýšeným přístupem
+## <a name="user-account-access-to-files-and-directories"></a>Přístup k souborům a adresářům uživatelského účtu
 
-Specifikaci automatického uživatele pro oprávnění správce můžete nakonfigurovat, když potřebujete spustit úlohu se zvýšeným přístupem. Například počáteční úloha může vyžadovat zvýšený přístup k instalaci softwaru v uzlu.
+Účet automatického uživatele i pojmenovaný uživatelský účet mají přístup pro čtení a zápis do adresáře pracovních adresářů, sdílených adresářů a úloh s více instancemi úlohy. Oba typy účtů mají k adresářům pro spuštění a přípravu úlohy oprávnění ke čtení.
+
+Pokud úloha běží pod stejným účtem, který se použil pro spuštění spouštěcího úkolu, má úloha přístup pro čtení a zápis do adresáře spouštěcího úkolu. Podobně platí, že pokud úloha běží pod stejným účtem, který se použil pro spuštění úlohy přípravy úlohy, má úloha přístup pro čtení i zápis do adresáře úkolů přípravy úlohy. Pokud je úloha spuštěna pod jiným účtem než úlohou spustit úlohu nebo úkol přípravy úlohy, má úloha přístup jen pro čtení k příslušnému adresáři.
+
+Další informace o přístupu k souborům a adresářům z úlohy najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md#files-and-directories).
+
+## <a name="elevated-access-for-tasks"></a>Zvýšený přístup pro úlohy 
+
+Úroveň zvýšení úrovně uživatelského účtu indikuje, jestli se úloha spouští s vyšším přístupem. Se zvýšeným přístupem může běžet účet automatického uživatele i pojmenovaný uživatelský účet. Úroveň zvýšení úrovně oprávnění jsou tyto dvě možnosti:
+
+- **Nesprávce:** Úloha se spouští jako standardní uživatel bez zvýšeného přístupu. Výchozí úroveň zvýšení oprávnění pro uživatelský účet Batch je vždy **nesprávce**.
+- **Správce:** Úloha se spouští jako uživatel se zvýšeným přístupem a funguje s úplnými oprávněními správce. 
+
+## <a name="auto-user-accounts"></a>Účty automatických uživatelů
+
+Ve výchozím nastavení se úlohy spouštějí v dávce pod účtem automatických uživatelů, jako standardní uživatel bez zvýšeného přístupu a s oborem úkolu. Pokud je specifikace automatického uživatele nakonfigurovaná pro obor úlohy, vytvoří služba Batch účet automatického uživatele jenom pro tuto úlohu.
+
+Alternativa k oboru úlohy je rozsah fondu. Pokud je specifikace automatického uživatele pro úlohu konfigurovaná pro rozsah fondu, úloha se spustí pod účtem automatického uživatele, který je k dispozici pro libovolný úkol ve fondu. Další informace o rozsahu fondu najdete v části s názvem spuštění úlohy jako automatický uživatel s rozsahem fondu.   
+
+Výchozí obor se liší v uzlech Windows a Linux:
+
+- Ve výchozím nastavení jsou v uzlech systému Windows spouštěny úlohy v oboru úloh.
+- Uzly Linux se vždycky spouštějí v oboru fondu.
+
+Existují čtyři možné konfigurace pro specifikaci automatického uživatele, z nichž každý odpovídá jedinečnému účtu automatického uživatele:
+
+- Přístup bez oprávnění správce s oborem úlohy (výchozí specifikace automatického uživatele)
+- Přístup správce (se zvýšenými oprávněními) s oborem úkolu
+- Přístup bez oprávnění správce s oborem fondu
+- Přístup správce k oboru fondu
+
+> [!IMPORTANT] 
+> Úlohy spuštěné v oboru úlohy nemají oprávnění de facto přístup k jiným úlohám na uzlu. Uživatel se zlými úmysly, který má přístup k účtu, ale může toto omezení obejít tak, že odešle úkol, který se spustí s oprávněními správce a přistupuje k ostatním adresářům úkolů. Uživatel se zlými úmysly může k připojení k uzlu použít taky RDP nebo SSH. Je důležité chránit přístup k klíčům účtu Batch a zabránit tak takovému scénáři. Pokud máte podezření, že váš účet může být ohrožený, nezapomeňte znovu vygenerovat klíče.
+>
+>
+
+### <a name="run-a-task-as-an-auto-user-with-elevated-access"></a>Spustit úlohu jako automatický uživatel se zvýšeným přístupem
+
+Pokud potřebujete spustit úlohu s vyšším přístupem, můžete nakonfigurovat specifikaci automatického uživatele pro oprávnění správce. Spouštěcí úkol může například potřebovat zvýšený přístup k instalaci softwaru na uzel.
 
 > [!NOTE] 
-> Obecně je nejlepší použít zvýšený přístup pouze v případě potřeby. Doporučené postupy doporučují udělit minimální oprávnění nezbytná k dosažení požadovaného výsledku. Pokud například počáteční úloha nainstaluje software pro aktuálního uživatele, nikoli pro všechny uživatele, můžete se vyhnout udělení zvýšeného přístupu k úkolům. Můžete nakonfigurovat specifikaci automatického uživatele pro rozsah fondu a přístup bez správce pro všechny úkoly, které je třeba spustit pod stejným účtem, včetně počáteční úlohy. 
+> Obecně platí, že pokud je to nutné, doporučujeme použít vyšší úroveň přístupu. Osvědčené postupy doporučuje udělit minimální oprávnění nezbytnou k dosažení požadovaného výsledku. Například pokud spouštěcí úkol nainstaluje software pro aktuálního uživatele místo pro všechny uživatele, můžete se vyhnout udělení vyššího přístupu k úkolům. Pro všechny úlohy, které musí běžet pod stejným účtem, včetně spouštěcího úkolu, můžete nakonfigurovat specifikaci automatického uživatele pro rozsah fondu a přístup bez oprávnění správce. 
 >
 >
 
-Následující fragmenty kódu ukazují, jak nakonfigurovat specifikaci automatického uživatele. Příklady nastavují výšku `Admin` výšky `Task`a obor na . Obor úlohy je výchozí nastavení, ale je zde zahrnuta z důvodu příkladu.
+Následující fragmenty kódu ukazují, jak nakonfigurovat specifikaci automatického uživatele. Příklady nastaví úroveň zvýšení úrovně na `Admin` a rozsah na. `Task` Výchozím nastavením je obor úkolu, který je zde uveden v tomto příkladu.
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -126,24 +113,24 @@ task = batchmodels.TaskAddParameter(
 batch_client.task.add(job_id=jobid, task=task)
 ```
 
-### <a name="run-a-task-as-an-auto-user-with-pool-scope"></a>Spuštění úlohy jako automatického uživatele s rozsahem fondu
+### <a name="run-a-task-as-an-auto-user-with-pool-scope"></a>Spustit úlohu jako automatický uživatel s rozsahem fondu
 
-Při zřízení uzlu jsou vytvořeny dva účty automatického uživatelského připojení v celém fondu na každém uzlu ve fondu, jeden se zvýšeným přístupem a jeden bez zvýšeného přístupu. Nastavení oboru automatického uživatele do fondu oboru pro danou úlohu spustí úlohu pod jedním z těchto dvou účtů automatického uživatele celého fondu. 
+Když se zřídí uzel, vytvoří se na každém uzlu ve fondu dva účty automatických uživatelů na úrovni fondu, jeden s vyšším přístupem a druhý bez zvýšeného přístupu. Nastavení oboru automatického uživatele na rozsah fondu pro danou úlohu spustí úlohu v rámci jednoho z těchto dvou účtů automatických uživatelů v rámci fondu. 
 
-Pokud zadáte obor fondu pro automatického uživatele, všechny úlohy, které běží s přístupem správce, budou spuštěny pod stejným účtem automatického uživatele v rámci celého fondu. Podobně úlohy, které běží bez oprávnění správce také spustit pod jeden fond široký účet automatického uživatele. 
+Když pro automatického uživatele určíte rozsah fondu, všechny úlohy, které se spustí s přístupem správce, se spustí v rámci stejného účtu automatických uživatelských účtů pro celý fond. Podobně úlohy, které se spouštějí bez oprávnění správce, se spouštějí také v rámci jednoho účtu automatického uživatele v rámci fondu. 
 
 > [!NOTE] 
-> Dva účty automatického uživatele v celém fondu jsou samostatné účty. Úlohy spuštěné v rámci účtu pro správu v rámci celého fondu nemohou sdílet data s úlohami spuštěnými v rámci standardního účtu a naopak. 
+> Účty automatických uživatelských účtů v rámci fondu jsou samostatné účty. Úlohy spuštěné pod účtem správce na úrovni fondu nemůžou sdílet data s úlohami, které běží na standardním účtu, a naopak. 
 >
 >
 
-Výhodou spuštění pod stejným účtem automatického uživatele je, že úlohy jsou schopny sdílet data s jinými úlohami spuštěnými na stejném uzlu.
+Výhodou spuštění pod stejným účtem automatického uživatele je, že úkoly můžou sdílet data s ostatními úlohami běžícími na stejném uzlu.
 
-Sdílení tajných kódů mezi úkoly je jeden scénář, kde je užitečné spuštění úloh v rámci jednoho ze dvou účtů automatického uživatele celého fondu. Předpokládejme například, že počáteční úloha musí zřídit tajný klíč do uzlu, který mohou použít jiné úkoly. Můžete použít rozhraní Windows Data Protection API (DPAPI), ale vyžaduje oprávnění správce. Místo toho můžete chránit tajný klíč na úrovni uživatele. Úlohy spuštěné pod stejným uživatelským účtem mají přístup k tajnému klíči bez zvýšeného přístupu.
+Sdílení tajných kódů mezi úkoly je jeden scénář, ve kterém jsou užitečné úlohy na jednom ze dvou účtů automatických uživatelů na úrovni fondu. Předpokládejme například, že počáteční úkol potřebuje zřídit tajný klíč na uzel, který mohou používat jiné úkoly. Můžete použít Windows Data Protection API (DPAPI), ale vyžaduje oprávnění správce. Místo toho můžete tajný klíč chránit na úrovni uživatele. Úlohy běžící pod stejným uživatelským účtem mají přístup ke tajnému kódu bez zvýšeného přístupu.
 
-Dalším scénářem, kde můžete chtít spustit úlohy v rámci účtu automatického uživatele s rozsahem fondu je sdílené složky rozhraní MPI (Message Passing Interface). Sdílená složka MPI je užitečná, když uzly v úloze MPI musí pracovat na stejných datech souboru. Hlavní uzel vytvoří sdílenou složku, ke které mají podřízené uzly přístup, pokud jsou spuštěny pod stejným účtem automatického uživatele. 
+Dalším scénářem, kdy budete chtít spouštět úlohy pod účtem automatického uživatele s rozsahem fondu, je sdílená složka rozhraní MPI (Message Passing Interface). Sdílená složka MPI je užitečná v případě, že uzly v úloze MPI potřebují pracovat se stejnými daty souborů. Hlavní uzel vytvoří sdílenou složku, ke které mají podřízené uzly přístup, pokud jsou spuštěny pod stejným účtem automatického uživatele. 
 
-Následující fragment kódu nastaví obor automatického uživatele tak, aby dofondul obor úlohy v aplikaci Batch .NET. Úroveň nadmořské výšky je vynechána, takže úloha je spuštěna pod standardním účtem automatického uživatele v celém fondu.
+Následující fragment kódu nastaví obor automatického uživatele na rozsah fondu pro úkol v dávce .NET. Úroveň zvýšení úrovně se vynechá, takže úloha se spouští pod standardním účtem automatického uživatele v rámci fondu.
 
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserScope.Pool));
@@ -151,21 +138,21 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserSc
 
 ## <a name="named-user-accounts"></a>Pojmenované uživatelské účty
 
-Při vytváření fondu můžete definovat pojmenované uživatelské účty. Pojmenovaný uživatelský účet má jméno a heslo, které zadáte. Můžete určit úroveň zvýšení pro pojmenovaný uživatelský účet. Pro linuxové uzly můžete také zadat soukromý klíč SSH.
+Pojmenované uživatelské účty můžete definovat při vytváření fondu. Pojmenovaný uživatelský účet má jméno a heslo, které zadáte. Úroveň zvýšení oprávnění můžete zadat pro pojmenovaný uživatelský účet. Pro uzly se systémem Linux můžete také zadat privátní klíč SSH.
 
-Pojmenovaný uživatelský účet existuje ve všech uzlech ve fondu a je k dispozici pro všechny úlohy spuštěné na těchto uzlech. Můžete definovat libovolný počet pojmenovaných uživatelů fondu. Když přidáte kolekci úkolů nebo úkolů, můžete určit, že úloha bude spuštěna pod jedním z pojmenovaných uživatelských účtů definovaných ve fondu.
+Pojmenovaný uživatelský účet existuje na všech uzlech ve fondu a je k dispozici pro všechny úlohy běžící na těchto uzlech. Můžete definovat libovolný počet pojmenovaných uživatelů pro fond. Když přidáte úlohu nebo kolekci úkolů, můžete určit, že se úloha spouští pod jedním z pojmenovaných uživatelských účtů definovaných ve fondu.
 
-Pojmenovaný uživatelský účet je užitečný, pokud chcete spustit všechny úlohy v úloze pod stejným uživatelským účtem, ale izolovat je od úloh spuštěných v jiných úlohách současně. Můžete například vytvořit pojmenovaného uživatele pro každou úlohu a spustit úlohy každé úlohy pod tímto pojmenovaným uživatelským účtem. Každá úloha pak může sdílet tajný klíč s vlastními úkoly, ale ne s úlohami spuštěnými v jiných úlohách.
+Pojmenovaný uživatelský účet je užitečný v případě, že chcete spouštět všechny úlohy v úloze pod stejným uživatelským účtem, ale izolovat je od úloh spuštěných v jiných úlohách současně. Můžete například vytvořit pojmenovaného uživatele pro každou úlohu a spustit úkoly každé úlohy pod názvem uživatelský účet. Každá úloha potom může sdílet tajný klíč s vlastními úkoly, ale ne úlohy spuštěné v jiných úlohách.
 
-Pomocí pojmenovaného uživatelského účtu můžete také spustit úlohu, která nastavuje oprávnění pro externí prostředky, jako jsou sdílené složky. S pojmenovaným uživatelským účtem můžete řídit identitu uživatele a můžete tuto identitu uživatele použít k nastavení oprávnění.  
+Pomocí pojmenovaného uživatelského účtu můžete taky spustit úlohu, která nastaví oprávnění u externích prostředků, jako jsou sdílené složky. Pomocí pojmenovaného uživatelského účtu můžete řídit identitu uživatele a pomocí této identity uživatele nastavit oprávnění.  
 
-Pojmenované uživatelské účty umožňují ssh bez hesla mezi uzly Linuxu. Můžete použít pojmenovaný uživatelský účet s uzly Linuxu, které je třeba spustit úlohy s více instancemi. Každý uzel ve fondu můžete spouštět úlohy v rámci uživatelského účtu definovaného v celém fondu. Další informace o úlohách s více instancemi naleznete v [tématu Použití úloh s více\-instancemi ke spuštění aplikací MPI](batch-mpi.md).
+Pojmenované uživatelské účty umožňují SSH bez hesla mezi uzly Linux. U uzlů se systémem Linux, které potřebují spouštět úlohy s více instancemi, můžete použít pojmenovaný uživatelský účet. Každý uzel ve fondu může spouštět úlohy pod uživatelským účtem definovaným v celém fondu. Další informace o úlohách s více instancemi najdete v tématu [použití úloh s více\-instancemi ke spouštění aplikací MPI](batch-mpi.md).
 
 ### <a name="create-named-user-accounts"></a>Vytvoření pojmenovaných uživatelských účtů
 
-Chcete-li vytvořit pojmenované uživatelské účty v části Batch, přidejte do fondu kolekci uživatelských účtů. Následující fragmenty kódu ukazují, jak vytvořit pojmenované uživatelské účty v rozhraní .NET, Java a Pythonu. Tyto fragmenty kódu ukazují, jak vytvořit účty s názvem správce i nesprávce ve fondu. Příklady vytvářejí fondy pomocí konfigurace cloudové služby, ale stejný přístup použijete při vytváření fondu Windows nebo Linux u konfigurace virtuálního počítače.
+Pokud chcete ve službě Batch vytvořit pojmenované uživatelské účty, přidejte do fondu kolekci uživatelských účtů. Následující fragmenty kódu ukazují, jak vytvořit pojmenované uživatelské účty v jazycích .NET, Java a Python. Tyto fragmenty kódu ukazují, jak vytvořit účet správce i bez správce s názvem účty ve fondu. Příklady vytvářejí fondy pomocí konfigurace cloudové služby, ale stejný přístup použijete při vytváření fondu systému Windows nebo Linux pomocí konfigurace virtuálního počítače.
 
-#### <a name="batch-net-example-windows"></a>Příklad dávky .NET (Windows)
+#### <a name="batch-net-example-windows"></a>Příklad dávkového rozhraní .NET (Windows)
 
 ```csharp
 CloudPool pool = null;
@@ -189,7 +176,7 @@ pool.UserAccounts = new List<UserAccount>
 await pool.CommitAsync();
 ```
 
-#### <a name="batch-net-example-linux"></a>Příklad dávky .NET (Linux)
+#### <a name="batch-net-example-linux"></a>Příklad dávkového rozhraní .NET (Linux)
 
 ```csharp
 CloudPool pool = null;
@@ -254,7 +241,7 @@ await pool.CommitAsync();
 ```
 
 
-#### <a name="batch-java-example"></a>Příklad Java dávky
+#### <a name="batch-java-example"></a>Příklad dávkového Java
 
 ```java
 List<UserAccount> userList = new ArrayList<>();
@@ -293,46 +280,46 @@ pool = batchmodels.PoolAddParameter(
 batch_client.pool.add(pool)
 ```
 
-### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Spuštění úlohy pod pořízeným uživatelským účtem se zvýšeným přístupem
+### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Spuštění úlohy pod názvem uživatelského účtu se zvýšeným přístupem
 
-Chcete-li spustit úlohu jako uživatele se zvýšenými oprávněními, nastavte vlastnost **UserIdentity úlohy** na `Admin`pojmenovaný uživatelský účet, který byl vytvořen s **vlastností ElevationLevel** nastavenou na .
+Chcete-li spustit úlohu jako uživatel se zvýšenými oprávněními, nastavte vlastnost **UserIdentity** úlohy na pojmenovaný uživatelský účet, který byl vytvořen s vlastností **ElevationLevel** nastavenou `Admin`na.
 
-Tento fragment kódu určuje, že úloha by měla být spuštěna pod pojmenovaným uživatelským účtem. Tento pojmenovaný uživatelský účet byl definován ve fondu při vytvoření fondu. V tomto případě byl pojmenovaný uživatelský účet vytvořen s oprávněními správce:
+Tento fragment kódu určuje, že úloha by měla běžet pod jménem uživatelského účtu. Tento pojmenovaný uživatelský účet byl ve fondu definován při vytvoření fondu. V tomto případě byl vytvořen pojmenovaný uživatelský účet s oprávněními správce:
 
 ```csharp
 CloudTask task = new CloudTask("1", "cmd.exe /c echo 1");
 task.UserIdentity = new UserIdentity(AdminUserAccountName);
 ```
 
-## <a name="update-your-code-to-the-latest-batch-client-library"></a>Aktualizace kódu na nejnovější knihovnu klienta Batch
+## <a name="update-your-code-to-the-latest-batch-client-library"></a>Aktualizace kódu na nejnovější klientskou knihovnu služby Batch
 
-Verze služby Batch 2017-01-01.4.0 zavádí narušující změnu, která nahradí vlastnost **runElevated** dostupnou v dřívějších verzích vlastností **userIdentity.** Následující tabulky poskytují jednoduché mapování, které můžete použít k aktualizaci kódu z dřívějších verzí klientských knihoven.
+Služba Batch verze 2017 -01-01.4.0 zavádí zásadní změnu a nahrazuje vlastnost **runElevated** , která je k dispozici v dřívějších verzích s vlastností **userIdentity** . Následující tabulky obsahují jednoduché mapování, které můžete použít k aktualizaci kódu z dřívějších verzí klientských knihoven.
 
 ### <a name="batch-net"></a>Batch .NET
 
-| Pokud váš kód používá...                  | Aktualizujte jej na....                                                                                                 |
+| Pokud váš kód používá...                  | Aktualizovat na....                                                                                                 |
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`není zadáno | Není nutná žádná aktualizace.                                                                                               |
+| `CloudTask.RunElevated`Neurčeno | Není nutná žádná aktualizace.                                                                                               |
 
 ### <a name="batch-java"></a>Batch Java
 
-| Pokud váš kód používá...                      | Aktualizujte jej na....                                                                                                                       |
+| Pokud váš kód používá...                      | Aktualizovat na....                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`není zadáno | Není nutná žádná aktualizace.                                                                                                                     |
+| `CloudTask.withRunElevated`Neurčeno | Není nutná žádná aktualizace.                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
-| Pokud váš kód používá...                      | Aktualizujte jej na....                                                                                                                       |
+| Pokud váš kód používá...                      | Aktualizovat na....                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| `run_elevated=True`                       | `user_identity=user`Kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
-| `run_elevated=False`                      | `user_identity=user`Kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
-| `run_elevated`není zadáno | Není nutná žádná aktualizace.                                                                                                                                  |
+| `run_elevated=True`                       | `user_identity=user`, kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
+| `run_elevated=False`                      | `user_identity=user`, kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
+| `run_elevated`Neurčeno | Není nutná žádná aktualizace.                                                                                                                                  |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobný přehled batch, najdete v tématu [Vývoj rozsáhlých paralelních výpočetních řešení s Batch](batch-api-basics.md).
+* Podrobný přehled služby Batch najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).

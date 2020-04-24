@@ -1,28 +1,21 @@
 ---
-title: Událost dokončení odstranění fondu dávek Azure
-description: Odkaz na batch fond odstranit úplnou událost. Tato událost je vyzařována po dokončení operace odstranění fondu.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Událost dokončení odstranění fondu Azure Batch
+description: Odkaz na událost dokončení odstranění fondu Batch Tato událost je vyvolána, když je dokončena operace odstranění fondu.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: d317d7395a8246c109073a72338b55960cb50954
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d28223c79f96f35a6ee11f98e0f09f21d7db4451
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023612"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115937"
 ---
 # <a name="pool-delete-complete-event"></a>Událost dokončení odstranění fondu
 
- Tato událost je vyzařována po dokončení operace odstranění fondu.
+ Tato událost je vyvolána, když je dokončena operace odstranění fondu.
 
- Následující příklad ukazuje tělo fondu odstranit úplnou událost.
+ Následující příklad ukazuje tělo události odstranění fondu po dokončení.
 
 ```
 {
@@ -32,11 +25,11 @@ ms.locfileid: "77023612"
 }
 ```
 
-|Element|Typ|Poznámky|
+|Prvek|Typ|Poznámky|
 |-------------|----------|-----------|
-|`id`|Řetězec|ID bazénu.|
-|`startTime`|DateTime|Čas spuštění odstranění fondu.|
-|`endTime`|DateTime|Čas dokončení odstranění fondu.|
+|`id`|Řetězec|ID fondu|
+|`startTime`|DateTime|Čas zahájení odstranění fondu|
+|`endTime`|DateTime|Čas dokončení odstranění fondu|
 
 ## <a name="remarks"></a>Poznámky
-Další informace o stavech a kódech chyb pro operaci změny velikosti fondu naleznete [v tématu Odstranění fondu z účtu](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).
+Další informace o stavech a kódech chyb pro operaci změny velikosti fondu najdete v tématu [odstranění fondu z účtu](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).

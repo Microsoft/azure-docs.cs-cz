@@ -1,101 +1,104 @@
 ---
-title: Úvod do skupin kontejnerů
-description: Další informace o skupinách kontejnerů v instanci kontejnerů Azure, kolekci instancí, které sdílejí životní cyklus a prostředky, jako je úložiště a síť
+title: Seznámení se skupinami kontejnerů
+description: Přečtěte si o skupinách kontejnerů v Azure Container Instances, kolekci instancí, které sdílejí životní cyklus a prostředky, jako jsou CPU, úložiště a síť.
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3efc4528863286da676fc7eb758176156c87a32a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247212"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115648"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů ve službě Azure Container Instances
 
-Prostředek nejvyšší úrovně v instanci kontejnerů Azure je *skupina kontejnerů*. Tento článek popisuje, jaké skupiny kontejnerů jsou a typy scénářů, které povolují.
+Prostředek nejvyšší úrovně v Azure Container Instances je *Skupina kontejnerů*. Tento článek popisuje, co jsou skupiny kontejnerů a typy scénářů, které povolují.
 
 ## <a name="what-is-a-container-group"></a>Co je skupina kontejnerů?
 
-Skupina kontejnerů je kolekce kontejnerů, které jsou naplánovány na stejném hostitelském počítači. Kontejnery ve skupině kontejnerů sdílejí životní cyklus, prostředky, místní síť a svazky úložiště. Je to podobné v pojetí *pod* v [Kubernetes][kubernetes-pod].
+Skupina kontejnerů je kolekce kontejnerů, které se naplánovaly na stejném hostitelském počítači. Kontejnery ve skupině kontejnerů sdílejí životní cyklus, prostředky, místní síť a svazky úložiště. V [Kubernetes][kubernetes-pod]je to v konceptu podobné jako *pod* .
 
 Následující diagram znázorňuje příklad skupiny kontejnerů, která obsahuje více kontejnerů:
 
-![Diagram skupin kontejnerů][container-groups-example]
+![Diagram skupin kontejneru][container-groups-example]
 
-Tento příklad skupiny kontejnerů:
+Tato ukázková skupina kontejnerů:
 
-* Je naplánováno na jednom hostitelském počítači.
-* Je přiřazen popisek názvu DNS.
-* Zpřístupní jednu veřejnou IP adresu s jedním vystaveným portem.
-* Skládá se ze dvou kontejnerů. Jeden kontejner naslouchá na portu 80, zatímco druhý poslouchá na portu 5000.
-* Zahrnuje dvě sdílené složky Azure jako připojení svazku a každý kontejner připojí jednu ze sdílených složek místně.
+* Je naplánován na jednom hostitelském počítači.
+* Má přiřazený popisek názvu DNS.
+* Zveřejňuje jednu veřejnou IP adresu s jedním vystaveným portem.
+* Se skládá ze dvou kontejnerů. Jeden kontejner naslouchá na portu 80, zatímco druhý naslouchá na portu 5000.
+* Zahrnuje dvě sdílené složky Azure jako připojení svazku a každý kontejner připojí jednu z těchto sdílených složek místně.
 
 > [!NOTE]
-> Skupiny s více kontejnery v současné době podporují pouze kontejnery Linuxu. Pro kontejnery Windows instance kontejneru Azure podporuje jenom nasazení jedné instance kontejneru. Zatímco pracujeme na tom, aby všechny funkce do kontejnerů systému Windows, můžete najít aktuální rozdíly platformy v [přehledu](container-instances-overview.md#linux-and-windows-containers)služby .
+> Skupiny více kontejnerů aktuálně podporují pouze kontejnery Linux. V případě kontejnerů Windows podporuje Azure Container Instances jenom nasazení jediné instance kontejneru. Pracujeme na tom, abychom do kontejnerů Windows provedli všechny funkce. v [přehledu](container-instances-overview.md#linux-and-windows-containers)služeb můžete najít aktuální rozdíly v platformách.
 
 ## <a name="deployment"></a>Nasazení
 
-Zde jsou dva běžné způsoby nasazení skupiny s více kontejnery: použijte [šablonu Správce prostředků][resource-manager template] nebo [soubor YAML][yaml-file]. Šablona Správce prostředků se doporučuje, když potřebujete nasadit další prostředky služby Azure (například [sdílené složky Azure Files)][azure-files]při nasazení instancí kontejneru. Vzhledem k stručnější povaze formátu YAML se doporučuje soubor YAML, pokud vaše nasazení obsahuje pouze instance kontejneru. Podrobnosti o vlastnostech, které můžete nastavit, naleznete v [odkazu na šablonu Správce prostředků](/azure/templates/microsoft.containerinstance/containergroups) nebo v referenční dokumentaci [yaml.](container-instances-reference-yaml.md)
+Tady jsou dva běžné způsoby, jak nasadit skupinu s více kontejnery: použijte [šablonu správce prostředků][resource-manager template] nebo [soubor YAML][yaml-file]. Když při nasazování instancí kontejnerů potřebujete nasadit další prostředky služby Azure (například [sdílenou složku Azure Files][azure-files]), doporučuje se šablona správce prostředků. Vzhledem k výstižnější povaze formátu YAML se doporučuje soubor YAML, pokud nasazení zahrnuje jenom instance kontejnerů. Podrobnosti o vlastnostech, které lze nastavit, naleznete v tématu [Správce prostředků odkaz na šablonu](/azure/templates/microsoft.containerinstance/containergroups) nebo v referenční dokumentaci k [YAML](container-instances-reference-yaml.md) .
 
-Chcete-li zachovat konfiguraci skupiny kontejnerů, můžete exportovat konfiguraci do souboru YAML pomocí [exportu kontejneru az][az-container-export]příkazu Azure CLI . Export umožňuje ukládat konfigurace skupinkontejnerů ve slučovacím řízení verzí pro "konfiguraci jako kód". Nebo použijte exportovaný soubor jako výchozí bod při vývoji nové konfigurace v YAML.
+Pokud chcete zachovat konfiguraci skupiny kontejnerů, můžete tuto konfiguraci exportovat do souboru YAML pomocí příkazu rozhraní příkazového řádku Azure CLI [AZ Container export][az-container-export]. Export umožňuje ukládat konfigurace skupiny kontejnerů ve správě verzí pro "konfiguraci jako kód". Nebo použijte exportovaný soubor jako výchozí bod při vývoji nové konfigurace v YAML.
 
 
 
-## <a name="resource-allocation"></a>Přidělení zdrojů
+## <a name="resource-allocation"></a>Přidělení prostředků
 
-Azure Container Instances přiděluje prostředky, jako jsou procesory, paměť a volitelně [GPU][gpus] (preview) do skupiny více [kontejnerů][resource-requests] přidáním požadavků na prostředky instancí ve skupině. Vezmeme-li prostředky procesoru jako příklad, pokud vytvoříte skupinu kontejnerů se dvěma instancemi kontejneru, z nichž každá požaduje 1 procesor, pak je skupina kontejnerů přidělena 2 procesory.
+Azure Container Instances přiděluje prostředky, jako jsou CPU, paměť a volitelně [GPU][gpus] (Preview), do skupiny více kontejnerů přidáním požadavků na [prostředky][resource-requests] instancí ve skupině. Když jako příklad vytvoříte skupinu kontejnerů se dvěma instancemi kontejnerů, každý z nich požaduje 1 procesor, skupiny kontejnerů se přidělí 2 procesory.
 
-### <a name="resource-usage-by-container-instances"></a>Využití prostředků podle instancí kontejneru
+### <a name="resource-usage-by-container-instances"></a>Využití prostředků podle instancí kontejnerů
 
-Každé instanci kontejneru ve skupině jsou přiděleny prostředky zadané v jeho požadavku na prostředky. Maximální prostředky používané instancí kontejneru ve skupině se však mohou lišit, pokud nakonfigurujete jeho volitelnou vlastnost [limitu prostředků.][resource-limits] Limit prostředků instance kontejneru musí být větší nebo roven vlastnosti [povinného požadavku na prostředky.][resource-requests]
+Každá instance kontejneru ve skupině má přidělené prostředky zadané v její žádosti o prostředky. Maximální počet prostředků využívaných instancí kontejneru ve skupině se ale může lišit, pokud nakonfigurujete její volitelnou vlastnost [limitu prostředků][resource-limits] . Limit prostředků instance kontejneru musí být větší nebo roven vlastnosti povinného [požadavku na prostředek][resource-requests] .
 
-* Pokud nezadáte limit prostředků, maximální využití prostředků instance kontejneru je stejné jako jeho požadavek na prostředky.
+* Pokud nezadáte omezení prostředků, maximální využití prostředků instance kontejneru je stejné jako jeho požadavek na prostředek.
 
-* Pokud zadáte limit pro instanci kontejneru, maximální využití instance může být větší než požadavek, až do limitu, který nastavíte. Odpovídajícím způsobem může snížit využití prostředků jinými instancemi kontejneru ve skupině. Maximální limit prostředků, který můžete nastavit pro instanci kontejneru, je celkový počet prostředků přidělených skupině.
+* Pokud zadáte limit pro instanci kontejneru, maximální využití instance může být větší než požadavek, až do nastaveného limitu. Odpovídající využití prostředků jinými instancemi kontejnerů ve skupině může snížit. Maximální omezení prostředků, které můžete nastavit pro instanci kontejneru, je celkový počet prostředků přidělených skupině.
     
-Například ve skupině se dvěma instancemi kontejneru, z nichž každá požaduje 1 procesor, může jeden z vašich kontejnerů spustit úlohu, která vyžaduje spuštění více procesorů než ostatní.
+Například ve skupině se dvěma instancemi kontejnerů každý požaduje 1 procesor může jeden z vašich kontejnerů spustit úlohu, která vyžaduje více procesorů, než je druhý.
 
-V tomto scénáři můžete nastavit limit prostředků 2 procesory pro instanci kontejneru. Tato konfigurace umožňuje instanci kontejneru používat až do úplné 2 procesory, pokud jsou k dispozici.
+V tomto scénáři můžete pro instanci kontejneru nastavit limit prostředků na až 2 procesory. Tato konfigurace umožňuje, aby instance kontejneru používala až 2 procesorů, pokud je k dispozici.
 
-### <a name="minimum-and-maximum-allocation"></a>Minimální a maximální příděl
+> [!NOTE]
+> Základní infrastruktura služby používá malý objem prostředků skupiny kontejnerů. Vaše kontejnery budou mít přístup k většině prostředků přiřazených ke skupině, ale ne ke všem. Z tohoto důvodu Naplánujte malou vyrovnávací paměť prostředků při žádosti o prostředky pro kontejnery ve skupině.
 
-* Přidělit **minimálně** 1 procesor a 1 GB paměti do skupiny kontejnerů. Jednotlivé instance kontejneru v rámci skupiny lze zřídit s méně než 1 procesoru a 1 GB paměti. 
+### <a name="minimum-and-maximum-allocation"></a>Minimální a maximální přidělení
 
-* **Maximální** prostředky ve skupině kontejnerů najdete v [tématu dostupnost prostředků][region-availability] pro instance kontejneru Azure v oblasti nasazení.
+* Přidělte skupině kontejnerů **minimálně** jeden procesor a 1 GB paměti. Jednotlivé instance kontejneru v rámci skupiny můžou být zřízené s méně než 1 PROCESORem a 1 GB paměti. 
+
+* **Maximální** prostředky ve skupině kontejnerů najdete v tématu [dostupnost prostředků][region-availability] pro Azure Container Instances v oblasti nasazení.
 
 ## <a name="networking"></a>Síťové služby
 
-Skupiny kontejnerů mohou sdílet externí ADRESU IP, jeden nebo více portů na této adrese IP a popisek DNS s plně kvalifikovaným názvem domény (Plně kvalifikovaný název domény). Chcete-li povolit externí mů e-li externí klienti dosáhnout kontejneru v rámci skupiny, je nutné vystavit port na IP adresu a z kontejneru. Vzhledem k tomu, že kontejnery ve skupině sdílejí obor názvů portů, mapování portů není podporováno. Ip adresa skupiny kontejnerů a hlavní obsah kvalifikovaných adres budou uvolněny při odstranění skupiny kontejnerů. 
+Skupiny kontejnerů můžou sdílet externí IP adresu, jeden nebo víc portů na této IP adrese a popisek DNS s plně kvalifikovaným názvem domény (FQDN). Chcete-li povolit externím klientům, aby dosáhli kontejneru v rámci skupiny, je nutné vystavit port na IP adrese a v kontejneru. Vzhledem k tomu, že kontejnery v rámci skupiny sdílejí obor názvů portu, mapování portů se nepodporuje. Po odstranění skupiny kontejnerů se uvolní IP adresa a plně kvalifikovaný název domény skupiny kontejnerů. 
 
-V rámci skupiny kontejnerů se instance kontejneru mohou vzájemně oslovit prostřednictvím localhost na libovolném portu, i když tyto porty nejsou vystaveny externě na IP adrese skupiny nebo z kontejneru.
+V rámci skupiny kontejnerů se instance kontejnerů můžou vzájemně kontaktovat přes localhost na jakémkoli portu, a to i v případě, že se tyto porty nezveřejňují externě na IP adrese skupiny nebo z kontejneru.
 
-Volitelně nasazujte skupiny kontejnerů do [virtuální sítě Azure,][virtual-network] aby kontejnery mohly bezpečně komunikovat s jinými prostředky ve virtuální síti.
+Volitelně nasaďte skupiny kontejnerů do služby [Azure Virtual Network][virtual-network] , abyste kontejnerům umožnili zabezpečenou komunikaci s ostatními prostředky ve virtuální síti.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
-Můžete určit externí svazky, které chcete připojit v rámci skupiny kontejnerů. Mezi podporované svazky patří:
+Můžete zadat externí svazky, které se připojí v rámci skupiny kontejnerů. Mezi podporované svazky patří:
 * [Sdílená složka Azure][azure-files]
 * [Tajný kód][secret]
 * [Prázdný adresář][empty-directory]
-* [Klonované git úložiště][volume-gitrepo]
+* [Naklonované úložiště Git][volume-gitrepo]
 
 Tyto svazky můžete namapovat na konkrétní cesty v rámci jednotlivých kontejnerů ve skupině. 
 
-## <a name="common-scenarios"></a>Obvyklé scénáře
+## <a name="common-scenarios"></a>Typické scénáře
 
-Skupiny s více kontejnery jsou užitečné v případech, kdy chcete rozdělit jednu funkční úlohu na malý počet iobrazek kontejneru. Tyto obrázky pak mohou být doručeny různými týmy a mají samostatné požadavky na prostředky.
+Skupiny více kontejnerů jsou užitečné v případech, kdy chcete rozdělit jednu funkční úlohu na malý počet imagí kontejneru. Tyto Image je pak možné doručovat různými týmy a mít samostatné požadavky na prostředky.
 
 Příklad použití může zahrnovat:
 
-* Kontejner obsluhující webovou aplikaci a kontejner, který vytahuje nejnovější obsah ze správy zdrojového kódu.
-* Kontejner aplikace a kontejner protokolování. Kontejner protokolování shromažďuje protokoly a metriky výstup hlavní aplikace a zapíše je do dlouhodobého úložiště.
-* Kontejner aplikace a kontejner monitorování. Kontejner monitorování pravidelně provádí požadavek na aplikaci, aby bylo zajištěno, že je spuštěna a správně reaguje, a vyvolá výstrahu, pokud není.
-* Front-end kontejner a back-end kontejner. Front-end může sloužit webové aplikace, s back-end běží služba pro načtení dat. 
+* Kontejner obsluhující webovou aplikaci a kontejner, který vybírá nejnovější obsah ze správy zdrojového kódu.
+* Kontejner aplikace a kontejner protokolování. Kontejner protokolování shromažďuje výstup protokolů a metrik pomocí hlavní aplikace a zapisuje je do dlouhodobého úložiště.
+* Kontejner aplikace a kontejner monitorování. Kontejner monitorování pravidelně vytváří požadavek na aplikaci, aby bylo zajištěno, že je spuštěná a správně reaguje, a vyvolá výstrahu, pokud není.
+* Front-end kontejner a back-end kontejner. Front-end může sloužit webové aplikaci s back-end, který spouští službu pro načítání dat. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak nasadit skupinu kontejnerů s více kontejnery pomocí šablony Azure Resource Manageru:
+Přečtěte si, jak nasadit skupinu kontejnerů s více kontejnery pomocí šablony Azure Resource Manager:
 
 > [!div class="nextstepaction"]
 > [Nasazení skupiny kontejnerů][resource-manager template]

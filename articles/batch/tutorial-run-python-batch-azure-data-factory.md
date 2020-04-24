@@ -1,80 +1,77 @@
 ---
-title: Spuštění skriptů Pythonu prostřednictvím datové továrny – Azure Batch Python
-description: Kurz – naučte se spouštět skripty Pythonu jako součást kanálu prostřednictvím Azure Data Factory pomocí Azure Batch.
-services: batch
+title: Spouštění skriptů Pythonu pomocí Data Factory-Azure Batch Pythonu
+description: Kurz – Naučte se spouštět skripty Pythonu jako součást kanálu prostřednictvím Azure Data Factory pomocí Azure Batch.
 author: mammask
-manager: jeconnoc
-ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
-ms.openlocfilehash: 2995c5da4491f14471d9ed03022a144a02beab5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6761896a6555c11d7957f923a5951641c1541012
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78201833"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117059"
 ---
-# <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Kurz: Spouštění skriptů Pythonu prostřednictvím Azure Data Factory pomocí Azure Batch
+# <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Kurz: spouštění skriptů Pythonu pomocí Azure Data Factory pomocí Azure Batch
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Ověření pomocí účtů Batch a Storage
-> * Vývoj a spuštění skriptu v Pythonu
+> * Vývoj a spouštění skriptu v Pythonu
 > * Vytvoření fondu výpočetních uzlů pro spouštění aplikace
-> * Plánování úloh pythonu
-> * Sledování analytického kanálu
-> * Přístup k souborům protokolu
+> * Plánování úloh v Pythonu
+> * Monitorování kanálu analýz
+> * Přístup k protokolům protokolů
 
-V níže uvedeném příkladu je spuštěn skript Pythonu, který přijímá vstup CSV z kontejneru úložiště objektů blob, provádí proces manipulace s daty a zapíše výstup do samostatného kontejneru úložiště objektů blob.
+Následující příklad spustí skript Pythonu, který přijímá vstup sdíleného svazku clusteru z kontejneru úložiště objektů blob, provádí proces manipulace s daty a zapisuje výstup do samostatného kontejneru úložiště objektů BLOB.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-* Nainstalovaná distribuce [Pythonu](https://www.python.org/downloads/) pro lokální testování.
-* Balíček [Azure.](https://pypi.org/project/azure/) `pip`
-* Účet Azure Batch a propojený účet Azure Storage. Další informace o vytváření a propojení dávkových účtů s účty úložiště najdete v [tématu Vytvoření dávkového účtu.](quick-create-portal.md#create-a-batch-account)
-* Účet Azure Data Factory. Další informace o tom, jak vytvořit datovou továrnu na webu Azure Portal, najdete v tématu [Vytvoření datové továrny.](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)
-* [Průzkumník dávek](https://azure.github.io/BatchExplorer/).
-* [Průzkumník úložišť Azure](https://azure.microsoft.com/features/storage-explorer/).
+* Nainstalovaná distribuce [Pythonu](https://www.python.org/downloads/) pro místní testování.
+* Balíček [Azure](https://pypi.org/project/azure/) `pip` .
+* Účet Azure Batch a propojený účet Azure Storage. Další informace o tom, jak vytvořit a propojit účty Batch s účty úložiště, najdete v tématu [Vytvoření účtu Batch](quick-create-portal.md#create-a-batch-account) .
+* Účet Azure Data Factory. Další informace o tom, jak vytvořit datovou továrnu pomocí Azure Portal, najdete v tématu [Vytvoření datové továrny](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) .
+* [Batch Explorer](https://azure.github.io/BatchExplorer/).
+* [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 
-## <a name="create-a-batch-pool-using-batch-explorer"></a>Vytvoření fondu dávek pomocí Průzkumníka dávek
+## <a name="create-a-batch-pool-using-batch-explorer"></a>Vytvoření fondu Batch pomocí Batch Explorer
 
-V této části použijete Batch Explorer k vytvoření fondu dávek, který bude váš kanál Azure Data factory používat. 
+V této části použijete Batch Explorer k vytvoření fondu služby Batch, který bude používat váš kanál Azure Data Factory. 
 
-1. Přihlaste se k Batch Exploreru pomocí přihlašovacích údajů Azure.
-1. Vyberte dávkový účet
-1. Vytvořte fond výběrem **bazénů** na levém panelu a potom tlačítkem **Přidat** nad vyhledávacím formulářem. 
-    1. Zvolte ID a zobrazovaný název. Použijeme `custom-activity-pool` pro tento příklad.
-    1. Nastavte typ měřítka na **pevnou velikost**a nastavte počet vyhrazených uzlů na 2.
-    1. V části **Data science**vyberte jako operační systém systém **Dsvm Windows.**
-    1. Zvolte `Standard_f2s_v2` jako velikost virtuálního počítače.
-    1. Povolte počáteční úlohu `cmd /c "pip install pandas"`a přidejte příkaz . Identita uživatele může zůstat jako výchozí **uživatel fondu**.
+1. Přihlaste se k Batch Explorer pomocí svých přihlašovacích údajů Azure.
+1. Vyberte účet Batch.
+1. Vytvořte fond tak, že na levé straně vyberete **fondy** a pak tlačítko **Přidat** nad formulář pro hledání. 
+    1. Vyberte ID a zobrazované jméno. V tomto příkladu `custom-activity-pool` budeme používat.
+    1. Nastavte typ škálování na **pevnou velikost**a nastavte počet vyhrazených uzlů na 2.
+    1. V oblasti **datové vědy**vyberte jako operační systém možnost **Dsvm Windows** .
+    1. Vyberte `Standard_f2s_v2` velikost virtuálního počítače.
+    1. Povolte spouštěcí úkol a přidejte příkaz `cmd /c "pip install pandas"`. Identita uživatele může zůstat stejná jako uživatel s výchozím **fondem**.
     1. Vyberte **OK**.
 
-## <a name="create-blob-containers"></a>Vytvoření kontejnerů objektů blob
+## <a name="create-blob-containers"></a>Vytváření kontejnerů objektů BLOB
 
-Zde vytvoříte kontejnery objektů blob, které budou ukládat vstupní a výstupní soubory pro dávkovou úlohu Rozpoznávání OCR.
+Tady vytvoříte kontejnery objektů blob, které budou ukládat vstupní a výstupní soubory pro dávkovou úlohu OCR.
 
-1. Přihlaste se k Průzkumníku úložiště pomocí přihlašovacích údajů Azure.
-1. Pomocí účtu úložiště propojeného s vaším účtem Batch vytvořte dva kontejnery objektů blob (jeden pro vstupní soubory, jeden pro výstupní soubory) podle kroků v [části Vytvoření kontejneru objektů blob](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container).
-    * V tomto příkladu budeme volat `input`náš vstupní kontejner `output`a náš výstupní kontejner .
-1. Nahrávání `main.py` `iris.csv` a vstup `input` do vstupního kontejneru pomocí Průzkumníka úložiště podle kroků při [správě objektů BLOB v kontejneru objektů blob](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)
+1. Přihlaste se k Průzkumník služby Storage pomocí svých přihlašovacích údajů Azure.
+1. Pomocí účtu úložiště propojeného s účtem Batch vytvořte dva kontejnery objektů BLOB (jeden pro vstupní soubory, jeden pro výstupní soubory) podle kroků v části [vytvoření kontejneru objektů BLOB](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container).
+    * V tomto příkladu budeme volat náš vstupní kontejner `input`a náš výstupní kontejner. `output`
+1. `main.py` Nahrajte `iris.csv` a do svého vstupního `input` kontejneru pomocí Průzkumník služby Storage podle kroků v části [Správa objektů BLOB v kontejneru objektů BLOB](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) .
 
 
 ## <a name="develop-a-script-in-python"></a>Vývoj skriptu v Pythonu
 
-Následující skript Pythonu `iris.csv` načte `input` datovou sadu z kontejneru, provede proces manipulace `output` s daty a uloží výsledky zpět do kontejneru.
+Následující skript Pythonu načte `iris.csv` datovou sadu z `input` vašeho kontejneru, provede proces manipulace s daty a výsledky uloží zpátky do `output` kontejneru.
 
 ``` python
 # Load libraries
@@ -104,7 +101,7 @@ df.to_csv("iris_setosa.csv", index = False)
 blobService.create_blob_from_text(containerName, "iris_setosa.csv", "iris_setosa.csv")
 ```
 
-Uložte skript `main.py` jako a nahrajte ho do kontejneru **Úložiště Azure.** Nezapomeňte otestovat a ověřit jeho funkce místně před odesláním do kontejneru objektů blob:
+Uložte skript jako `main.py` a nahrajte ho do kontejneru **Azure Storage** . Před nahráním do kontejneru objektů BLOB Nezapomeňte otestovat a ověřit jeho funkčnost místně:
 
 ``` bash
 python main.py
@@ -114,48 +111,48 @@ python main.py
 
 V této části vytvoříte a ověříte kanál pomocí skriptu Pythonu.
 
-1. Postupujte podle pokynů k vytvoření datové továrny v [části](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)"Vytvořit data továrny" tohoto článku .
-1. V poli **Výrobní zdroje** vyberte tlačítko + (plus) a pak vyberte **Pipeline**
-1. Na kartě **Obecné** nastavte název kanálu jako "Spustit Python"
+1. Podle pokynů v části Vytvoření datové továrny v [tomto článku](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)Vytvořte datovou továrnu.
+1. V poli **prostředky továrny** vyberte tlačítko + (plus) a pak vyberte **kanál** .
+1. Na kartě **Obecné** nastavte název kanálu jako "Run Python".
 
     ![](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
-1. V poli **Aktivity** rozbalte **položku Dávková služba**. Přetáhněte vlastní aktivitu z panelu nástrojů **Aktivity** na povrch návrháře kanálu.
-1. Na kartě **Obecné** zadejte **testPipeline** pro Name.
+1. V poli **aktivity** rozbalte položku **Služba Batch**. Přetáhněte vlastní aktivitu z panelu nástrojů **aktivity** na plochu návrháře kanálu.
+1. Na kartě **Obecné** zadejte **testPipeline** pro název.
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task.png)
-1. Na kartě **Azure Batch** přidejte **dávkový účet,** který byl vytvořen v předchozích krocích, a **otestovat připojení,** abyste zajistili, že je úspěšný.
+1. Na kartě **Azure Batch** přidejte **účet Batch** , který byl vytvořen v předchozích krocích, a **otestujte připojení** , aby bylo zajištěno, že je úspěšné.
 
     ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
 1. Na kartě **Nastavení** zadejte příkaz `python main.py`.
-1. Pro **službu propojenou s prostředky**přidejte účet úložiště, který byl vytvořen v předchozích krocích. Otestujte připojení, abyste se ujistili, že je úspěšné.
-1. V **cestě ke složce**vyberte název kontejneru **azure blob storage,** který obsahuje skript Pythonu a přidružené vstupy. Tím se vybrané soubory stáhnou z kontejneru do instanů uzlu fondu před spuštěním skriptu Pythonu.
+1. Pro **propojenou službu prostředku**přidejte účet úložiště, který jste vytvořili v předchozích krocích. Otestujte připojení, abyste zajistili jeho úspěšnost.
+1. V **cestě ke složce**vyberte název kontejneru **Azure Blob Storage** , který obsahuje skript Pythonu a související vstupy. Tím se stáhnou vybrané soubory z kontejneru do instancí uzlů fondu před spuštěním skriptu Pythonu.
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. Kliknutím na **Ověřit** na panelu nástrojů kanálu nad plátnem ověřte nastavení kanálu. Ověřte úspěšné ověření kanálu. Pokud chcete zavřít výstup ověřování, vyberte tlačítko &gt;&gt; (šipky doprava).
-1. Klepněte na **tlačítko Ladění** otestovat kanálu a ujistěte se, že funguje přesně.
-1. Chcete-li publikovat kanál, klepněte na **tlačítko Publikovat.**
-1. Kliknutím na **Aktivovat** spusťte skript Pythonu jako součást dávkového procesu.
+1. Kliknutím na **ladit** otestujete kanál a ujistěte se, že funguje správně.
+1. Kliknutím na **publikovat** publikujte kanál.
+1. Kliknutím na **Trigger (aktivovat** ) spustíte skript Pythonu jako součást dávkového procesu.
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
 
-### <a name="monitor-the-log-files"></a>Sledování souborů protokolu
+### <a name="monitor-the-log-files"></a>Monitorování souborů protokolu
 
-V případě, že upozornění nebo chyby jsou vytvářeny `stdout.txt` `stderr.txt` spuštěním skriptu, můžete rezervovat nebo pro více informací o výstupu, který byl zaznamenán.
+V případě, že se při spuštění skriptu vygenerovala upozornění nebo chyby, můžete se podívat `stdout.txt` `stderr.txt` na Další informace o zaznamenání výstupu.
 
-1. Na levé straně Průzkumníka dávek vyberte **Úlohy.**
-1. Vyberte úlohu vytvořenou vaší továrně dat. Za předpokladu, `custom-activity-pool`že `adfv2-custom-activity-pool`jste fond pojmenovali , vyberte .
-1. Klikněte na úlohu, která měla kód ukončení selhání.
-1. Zobrazit `stdout.txt` `stderr.txt` a prozkoumat a diagnostikovat váš problém.
+1. Vyberte **úlohy** na levé straně Batch Explorer.
+1. Vyberte úlohu vytvořenou datovou továrnou. Za předpokladu, že `custom-activity-pool`jste svůj `adfv2-custom-activity-pool`fond najmenovali, vyberte.
+1. Klikněte na úlohu, u které došlo k chybě ukončovacího kódu.
+1. `stdout.txt` Prohlédněte `stderr.txt` si a prozkoumejte a Diagnostikujte svůj problém.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste prozkoumali příklad, který vás naučil spouštět skripty Pythonu jako součást kanálu prostřednictvím Azure Data Factory pomocí Azure Batch.
+V tomto kurzu jste prozkoumali příklad, který vás seznámí s tím, jak spustit skripty Pythonu jako součást kanálu prostřednictvím Azure Data Factory pomocí Azure Batch.
 
-Další informace o Azure Data Factory najdete v tématu:
+Další informace o Azure Data Factory najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
 > [Azure Data Factory](../data-factory/introduction.md)
 > [kanály a aktivity](../data-factory/concepts-pipelines-activities.md)
-> [Vlastní aktivity](../data-factory/transform-data-using-dotnet-custom-activity.md)
+> [vlastní aktivity](../data-factory/transform-data-using-dotnet-custom-activity.md)

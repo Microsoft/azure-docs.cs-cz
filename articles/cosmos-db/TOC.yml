@@ -112,7 +112,7 @@
           displayName: 'request units, RUs, RU'
           href: scaling-throughput.md
         - name: Zásady řešení a typy konfliktů
-          displayName: 'last write wins, custom'
+          displayName: 'last write wins, custom, multi master, multi-master'
           href: conflict-resolution-policies.md
         - name: Globální distribuce – pod pokličkou
           href: global-dist-under-the-hood.md
@@ -1180,8 +1180,8 @@
       href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
-    - name: Výhody multi-masteru
-      href: multi-master-benefits.md
+    - name: Úrovně výkonu
+      href: performance-levels.md
     - name: Případy použití
       items:
         - name: Běžné případy použití

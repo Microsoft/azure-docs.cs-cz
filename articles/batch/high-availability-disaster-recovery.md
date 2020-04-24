@@ -1,53 +1,43 @@
 ---
 title: Vysoká dostupnost a zotavení po havárii – Azure Batch
-description: Přečtěte si, jak navrhnout dávkovou aplikaci pro regionální výpadek. Úlohy by měly být převzetí služeb při selhání do jiné oblasti nebo rozdělit mezi dvě nebo více oblastí.
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: ''
-ms.tgt_pltfrm: na
+description: Naučte se navrhovat aplikace Batch pro regionální výpadky. Úlohy by se měly překlopit do jiné oblasti nebo rozdělit mezi dvě nebo víc oblastí.
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: labrenne
-ms.openlocfilehash: 84b0cce9557b4ae05586579f175cd0f5db14fdfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da46753906e27a94e3c76fcaf9c4a26861bba6c8
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77026077"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117433"
 ---
 # <a name="design-your-application-for-high-availability"></a>Návrh aplikace pro zajištění vysoké dostupnosti
 
-Azure Batch je místní služba. Dávka je dostupná ve všech oblastech Azure, ale když je vytvořen účet Batch, musí být přidružena k oblasti. Všechny operace pro účet Batch pak platí pro tuto oblast. Například fondy a přidružené virtuální počítače (VM) jsou vytvořeny ve stejné oblasti jako účet Batch.
+Azure Batch je místní služba. Batch je k dispozici ve všech oblastech Azure, ale při vytvoření účtu Batch musí být přidružený k oblasti. Všechny operace pro účet Batch se pak vztahují na tuto oblast. Například fondy a přidružené virtuální počítače se vytvoří ve stejné oblasti jako účet Batch.
 
-Při navrhování aplikace, která používá Batch, je třeba zvážit možnost Batch není k dispozici v oblasti. Je možné se setkat s vzácnou situací, kdy dojde k potížím s oblastí jako celkem, s celou službou Batch v oblasti nebo s problémem s konkrétním účtem Batch.
+Při navrhování aplikace, která používá dávku, je nutné vzít v úvahu možnost, že dávka nebude v oblasti dostupná. Je možné narazit na vzácnou situaci, kdy došlo k potížím s oblastí jako s celou, celou službou Batch v této oblasti nebo problémem s konkrétním účtem Batch.
 
-Pokud aplikace nebo řešení pomocí Batch vždy musí být k dispozici, pak by měl být navržen tak, aby převzetí služeb při selhání do jiné oblasti nebo vždy mít pracovní vytížení rozdělit mezi dvě nebo více oblastí. Oba přístupy vyžadují alespoň dva účty Batch, přičemž každý účet se nachází v jiné oblasti.
+Pokud je aplikace nebo řešení využívající dávku vždycky k dispozici, musí být navržená tak, aby převzetí služeb při selhání do jiné oblasti nebo aby trvalo rozdělení úloh mezi dvě nebo více oblastí. Oba přístupy vyžadují aspoň dva účty Batch, přičemž každý účet se nachází v jiné oblasti.
 
-## <a name="multiple-batch-accounts-in-multiple-regions"></a>Více dávkových účtů ve více oblastech
+## <a name="multiple-batch-accounts-in-multiple-regions"></a>Několik účtů Batch ve více oblastech
 
-Použití více účtů Batch v různých oblastech umožňuje aplikaci pokračovat v běhu, pokud účet Batch v jiné oblasti nebude k dispozici. Použití více účtů je zvláště důležité, pokud vaše aplikace musí být vysoce dostupné.
+Použití více účtů Batch v různých oblastech umožňuje, aby vaše aplikace pokračovala i v případě, že účet Batch v jiné oblasti nebude k dispozici. Používání více účtů je obzvláště důležité, pokud vaše aplikace musí být vysoce dostupná.
 
-V některých případech aplikace může být navržen tak, aby vždy používat dvě nebo více oblastí. Například pokud potřebujete značné množství kapacity, může být potřeba použít více oblastí pro zpracování rozsáhlé aplikace nebo pro budoucí růst.
+V některých případech může být aplikace navržena tak, aby vždy používala dvě nebo více oblastí. Pokud například potřebujete značnou kapacitu, může být potřeba použít více oblastí pro zpracování rozsáhlých aplikací nebo zařízení pro budoucí nárůst.
 
-## <a name="design-considerations-for-providing-failover"></a>Aspekty návrhu pro poskytování převzetí služeb při selhání
+## <a name="design-considerations-for-providing-failover"></a>Faktory návrhu pro poskytování převzetí služeb při selhání
 
-Klíčovým bodem, který je třeba zvážit při poskytování možnosti převzetí služeb při selhání v alternativní oblasti, je, že je třeba zvážit všechny součásti v řešení; nestačí mít pouze druhý účet Batch. Například ve většině dávkových aplikací je vyžadován účet úložiště Azure, přičemž účet úložiště a účet Batch musí být ve stejné oblasti pro přijatelný výkon.
+Klíčovým bodem, který je třeba vzít v úvahu při převzetí služeb při selhání v alternativní oblasti, je, že je nutné vzít v úvahu všechny komponenty v řešení; Stačí jenom druhý účet Batch. Ve většině aplikací služby Batch se například vyžaduje účet Azure Storage, přičemž účet úložiště a účet Batch musí být ve stejné oblasti, aby se přijatelný výkon.
 
-Při navrhování řešení, které může převzetí služeb při selhání, zvažte následující body:
+Při navrhování řešení, které je možné převzetí služeb při selhání, vezměte v úvahu následující body:
 
-- Předem vytvořte všechny požadované účty v každé oblasti, jako je například účet Batch a účet úložiště. Často není žádný poplatek za vytvoření účtů, pouze pokud jsou uložena data nebo je použit účet.
-- Ujistěte se, že kvóty jsou nastaveny na účtech předem, takže můžete přidělit požadovaný počet jader pomocí účtu Batch.
-- Pomocí šablon nebo skriptů automatizujte nasazení aplikace v oblasti.
-- Udržujte binární soubory aplikace a referenční data aktuální ve všech oblastech. Udržování aktuálního stavu zajistí, že region bude možné rychle zprovoznit, aniž byste museli čekat na nahrávání a nasazování souborů. Pokud je například vlastní aplikace pro instalaci do uzlů fondu uložena a odkazována pomocí balíčků aplikací Batch, měla by být při vytvoření nové verze aplikace odeslána do každého účtu Batch a odkazována konfigurací fondu (nebo nastavit novou verzi jako výchozí).
-- V aplikaci volání Batch, úložiště a další služby, snadno přepnout klienty nebo zatížení do jiné oblasti.
-- Osvědčeným postupem k zajištění převzetí služeb při selhání bude úspěšné, je často přepnutí do alternativní oblasti jako součást běžného provozu. Například se dvěma nasazeními v samostatných oblastech přepnete každý měsíc do alternativní oblasti.
+- Předem vytvořte všechny požadované účty v každé oblasti, například účet Batch a účet úložiště. Často se neúčtují žádné poplatky za vytváření účtů, a to jenom v případě, že jsou uložená nějaká data nebo se účet používá.
+- Zajistěte, aby byly u účtů předem nastavené kvóty, takže můžete přidělit požadovaný počet jader pomocí účtu Batch.
+- K automatizaci nasazení aplikace v oblasti použijte šablony nebo skripty.
+- Udržujte binární soubory aplikace a referenční data ve všech oblastech. Když budete mít aktuální čas, zajistíte tak, aby se oblast online rychle nemusela čekat na nahrávání a nasazování souborů. Pokud je například vlastní aplikace k instalaci na uzlech fondu uložena a odkazována pomocí balíčků aplikací služby Batch, pak při vytváření nové verze aplikace by se měla odeslat na každý účet Batch a na který odkazuje konfigurace fondu (nebo se nová verze nastaví jako výchozí).
+- V aplikaci, která volá službu Batch, úložiště a jakékoli další služby, můžete snadno přesměrovat klienty nebo zatížení do jiné oblasti.
+- Osvědčeným postupem, jak zajistit úspěšné převzetí služeb při selhání, je často přepnutí do alternativní oblasti v rámci běžné operace. Například u dvou nasazení v samostatných oblastech se každý měsíc přepínáním na alternativní oblast.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o vytváření dávkových účtů pomocí [portálu Azure](batch-account-create-portal.md), [Rozhraní příkazového příkazu Azure](cli-samples.md), Prostředí [PowerShell](batch-powershell-cmdlets-get-started.md)nebo [rozhraní API pro správu dávek](batch-management-dotnet.md).
-- Výchozí kvóty jsou přidruženy k účtu Batch; [Tento článek](batch-quota-limit.md) podrobně popisuje výchozí hodnoty kvót a popisuje, jak lze kvóty zvýšit.
+- Přečtěte si další informace o vytváření účtů Batch pomocí [Azure Portal](batch-account-create-portal.md), [Azure CLI](cli-samples.md), [PowerShellu](batch-powershell-cmdlets-get-started.md)nebo [rozhraní API pro správu služby Batch](batch-management-dotnet.md).
+- Výchozí kvóty jsou přidruženy k účtu Batch. [Tento článek](batch-quota-limit.md) obsahuje podrobnosti o výchozích hodnotách kvót a popisuje, jak lze kvóty zvýšit.

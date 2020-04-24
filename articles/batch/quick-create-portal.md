@@ -1,20 +1,15 @@
 ---
 title: Rychlý start Azure – spuštění úlohy služby Batch – portál
-description: Zjistěte, jak pomocí portálu Azure vytvořit dávkový účet, fond výpočetních uzlů a úlohu, která spouští základní úkoly ve fondu.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
+description: Naučte se, jak pomocí Azure Portal vytvořit účet Batch, fond výpočetních uzlů a úlohu, která spouští základní úlohy ve fondu.
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 6ce0066765de3d99f8309bf568b467518f38923e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4857b9ffb38cf48678f793284afaaf3bbefb7e42
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240433"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114135"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
 
@@ -24,14 +19,14 @@ Tento rychlý start ukazuje, jak na webu Azure Portal vytvořit účet Batch, *f
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
 Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testování. Účet Batch budete potřebovat k vytváření fondů a úloh. Jak vidíte, účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití.
 
 
-1. Vyberte **možnost Vytvořit službu** > **výpočetní** > **dávky prostředků**. 
+1. Vyberte **vytvořit prostředek** > služba**COMPUTE** > **Batch**. 
 
    ![Batch na webu Marketplace][marketplace_portal]
 
@@ -50,7 +45,7 @@ Po zobrazení zprávy **Nasazení bylo úspěšné** přejděte na portálu do �
 Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový fond výpočetních uzlů s Windows. V tomto rychlém příkladu fond obsahuje 2 uzly se spuštěnou imagí systému Windows Server 2012 R2 z Azure Marketplace.
 
 
-1. V účtu Dávka vyberte **Fondy** > **Přidat**.
+1. V účtu Batch vyberte **fondy** > **Přidat**.
 
 2. Jako **ID fondu** zadejte *mypool*. 
 
@@ -59,9 +54,9 @@ Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový f
    |Nastavení  |Hodnota  |
    |---------|---------|
    |**Typ image**|Marketplace (Linux/Windows)|
-   |**Vydavatel**     |MicrosoftWindowsServer|
-   |**Nabízejí**     |WindowsServer|
-   |**Sku**     |2012-R2-Datacenter-smalldisk|
+   |**Microsoft**     |MicrosoftWindowsServer|
+   |**Nabídka**     |WindowsServer|
+   |**Skladové**     |2012-R2-Datacenter-smalldisk|
 
    ![Výběr operačního systému fondu][pool_os] 
 
@@ -86,7 +81,7 @@ Po několika minutách se stav fondu změní na hodnotu **Stabilní** a uzly se 
 
 Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude spouštět. Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Na začátku úloha neobsahuje žádné úkoly. 
 
-1. V zobrazení Dávkový účet vyberte**Přidat** **úlohy** > . 
+1. V zobrazení účtu Batch vyberte **úlohy** > **Přidat**. 
 
 2. Jako **ID úlohy** zadejte *myjob*. U položky **Fond** vyberte *mypool*. U ostatních nastavení ponechte výchozí hodnoty a vyberte **OK**.
 

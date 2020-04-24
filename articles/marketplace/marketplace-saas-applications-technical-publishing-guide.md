@@ -1,73 +1,68 @@
 ---
 title: Průvodce publikováním aplikací Azure Marketplace SaaS
-description: Podrobný průvodce a publikování kontrolních seznamů pro publikování aplikací SaaS na Azure Marketplace
+description: Podrobný průvodce a publikování kontrolních seznamů pro publikování SaaSch aplikací pro Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 1bc2feb4d8f3f103802bd823c66cd3f54ac5d74a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687544"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117229"
 ---
-# <a name="saas-applications-offer-publishing-guide"></a>SaaS aplikace Nabídka Publishing Guide
+# <a name="saas-applications-offer-publishing-guide"></a>Průvodce publikováním nabídky aplikací SaaS
 
-Aplikace SaaS lze publikovat na trhu se třemi různými výzvami k akci: "Kontaktujte mě", "Zkuste to teď" a "Get it Now." Tato příručka vysvětluje tyto tři možnosti, včetně požadavků pro každou z nich. 
+Aplikace SaaS můžou být na webu Marketplace publikované se třemi různými voláními akce: "kontaktujte mě", vyzkoušet si ho hned a získat hned. Tato příručka vysvětluje tyto tři možnosti, včetně požadavků pro každý z nich. 
 
 ## <a name="offer-overview"></a>Přehled nabídky  
 
-Aplikace SaaS jsou dostupné v obou azure storech Následující tabulka popisuje aktuální dostupné možnosti:
+SaaS aplikace jsou k dispozici v Microsoft AppSource a Azure Marketplace.  Prodejní místa podporují seznam, zkušební verze a transakční nabídky.
 
-| Možnost výkladní skříně | Výpis | Zkušební verze/transakt |  
-| --- | --- | --- |  
-| AppSource | Ano | Ano |
-| Azure marketplace | Ne | Ano |   
+**Seznam:**  Možnost publikování výpisu se skládá z nabídky typu kontakt mi a používá se v případě, že účast na úrovni zkušební verze nebo transakce není proveditelná. Výhodou tohoto přístupu je to, že vydavatelům v rámci trhu umožňuje okamžitě začít přijímat potenciální zákazníky, kteří se můžou rozrůstat, aby zvýšili vaši firmu.  
+**Zkušební verze/transakce:**  Zákazník má možnost si přímo koupit nebo požádat o zkušební verzi vašeho řešení. Díky zkušebnímu prostředí se zvýší úroveň zapojení nabízená zákazníkům a umožní zákazníkům prozkoumat vaše řešení před nákupem. V rámci zkušebního prostředí budete mít lepší šanci na zvýšení úrovně v prodejní místa a měli byste očekávat více a mnohem víc a lepších příležitostí od zákaznických rezervací. Zkušební verze musí zahrnovat bezplatnou podporu aspoň po dobu trvání zkušebního období.  
 
-**Seznam:**  Možnost výpisu publikování se skládá z typu nabídky Kontaktujte mě a používá se, když účast na zkušební verzi nebo na úrovni transakce není proveditelná. Výhodou tohoto přístupu je, že umožňuje vydavatelům s řešením na trhu okamžitě začít přijímat potenciální zákazníky, které lze přeměnit na nabídky pro zvýšení vašeho podnikání.  
-**Zkušební verze/transakce:**  Zákazník má možnost přímo zakoupit nebo požádat o zkušební verzi vašeho řešení. Poskytování zkušební verze zvyšuje úroveň zapojení nabízených zákazníkům a umožňuje zákazníkům prozkoumat vaše řešení před nákupem. Díky zkušebnímu prostředí budete mít větší šanci na propagaci ve výkladních skříních a měli byste očekávat stále bohatší zájemce ze zapojení zákazníků. Zkoušky musí zahrnovat bezplatnou podporu alespoň po dobu zkušební doby.  
-
-| Nabídka aplikací SaaS | Obchodní požadavky | Technické požadavky |  
+| Nabídka aplikací pro SaaS | Podnikové požadavky | Technické požadavky |  
 | --- | --- | --- |  
 | **Kontaktujte nás** | Ano | Ne |  
-| **PowerBI / Dynamika** | Ano | Ano (integrace Azure AD) |  
-| **Aplikace SaaS**| Ano | Ano (integrace Azure AD) |     
+| **PowerBI/Dynamics** | Ano | Ano (Integrace Azure AD) |  
+| **Aplikace SaaS**| Ano | Ano (Integrace Azure AD) |     
 
 ## <a name="saas-list"></a>Seznam SaaS
 
-Výzva k akci pro výpis SaaS bez zkušební verze a bez funkce fakturace je "Kontaktujte mě". 
+Volání akce pro výpis SaaS bez zkušební verze a žádné funkce fakturace není "kontaktujte mě." 
 
-Není nutné konfigurovat službu Azure Active Directory tak, aby vypisovala aplikaci SaaS. 
-
-|Požadavky  |Podrobnosti  |
-|---------|---------|
-|Vaše aplikace je nabídka SaaS  |   Vaše řešení je nabídka SaaS a vy nabízíte víceklientský produkt SaaS.      |
-
-
-## <a name="saas-trial"></a>SaaS Trial
-
-Řešení nebo aplikaci poskytujete pomocí bezplatné zkušební verze založené na softwaru jako službě (SaaS). Bezplatné zkušební nabídky mohou být prezentovány jako zkušební účet s omezeným použitím nebo s omezenou dobou trvání. 
-
+Nemusíte konfigurovat Azure Active Directory k vypsání aplikace SaaS. 
 
 |Požadavky  |Podrobnosti  |
 |---------|---------|
-|Vaše aplikace je nabídka SaaS  |   Vaše řešení je nabídka SaaS a vy nabízíte víceklientský produkt SaaS.      |
-|Vaše aplikace je povolená pro aad     |   Zákazník bude přesměrován do vaší domény a vy budete jednat přímo se zákazníkem       |
+|Vaše aplikace je nabídka SaaS  |   Vaše řešení je SaaS nabídka a nabízí SaaS produkt s více klienty.      |
 
 
-## <a name="saas-trial-technical-requirements"></a>SaaS Trial Technické požadavky
+## <a name="saas-trial"></a>Zkušební verze SaaS
 
-Technické požadavky na aplikace SaaS jsou jednoduché. Vydavatelé se musí integrovat jenom s Azure Active Directory (Azure AD), které mají být publikovány. Integrace Azure AD s aplikacemi je dobře zdokumentována a Microsoft poskytuje více sad SDK a prostředků k dosažení tohoto cíle.  
+Poskytnete řešení nebo aplikaci s využitím bezplatné zkušební verze SaaS (software jako služba). Nabídky bezplatné zkušební verze se můžou prezentovat jako zkušební účet omezeného použití nebo s omezeným trváním. 
 
-Chcete-li začít, doporučujeme, abyste měli předplatné určené pro publikování na Azure Marketplace, což vám umožní izolovat práci od jiných iniciativ. Jakmile to uděláte, můžete začít nasazovat aplikaci SaaS v tomto předplatném a spustit vývojové práce.  
 
-Nejlepší dokumentace, ukázky a pokyny služby Azure Active Directory jsou umístěny na následujících webech: 
+|Požadavky  |Podrobnosti  |
+|---------|---------|
+|Vaše aplikace je nabídka SaaS  |   Vaše řešení je SaaS nabídka a nabízí SaaS produkt s více klienty.      |
+|Vaše aplikace je povolená AAD.     |   Zákazník se znovu nasměruje do vaší domény a vy budete s tímto zákazníkem počítat přímo.       |
 
-* [Průvodce vývojářem služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+
+## <a name="saas-trial-technical-requirements"></a>Technické požadavky na zkušební verzi SaaS
+
+Technické požadavky pro aplikace SaaS jsou jednoduché. Vydavatelé se musí integrovat jenom s Azure Active Directory (Azure AD), aby se publikovaly. Integrace Azure AD s aplikacemi je dobře dokumentováná a Microsoft poskytuje více sad SDK a prostředků k tomu.  
+
+Pro začátek doporučujeme, abyste měli k dispozici předplatné vyhrazené pro publikování Azure Marketplace, což vám umožní izolovat práci z jiných iniciativ. Až to uděláte, můžete v tomto předplatném začít nasazovat aplikaci SaaS, aby se spustila vývojová práce.  
+
+Nejlepší Azure Active Directory dokumentaci, ukázky a pokyny najdete v následujících lokalitách: 
+
+* [Azure Active Directory příručka pro vývojáře](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
 * [Integrace s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
@@ -75,78 +70,78 @@ Nejlepší dokumentace, ukázky a pokyny služby Azure Active Directory jsou um�
 
 * [Plán Azure – zabezpečení a identita](https://azure.microsoft.com/roadmap/?category=security-identity)
 
-Výukové video lekce najděte v následujících postupech:
+Výuková videa najdete v následujících příkladech:
 
-* [Ověřování azure active directory s Vittorio Bertocci](https://channel9.msdn.com/Shows/XamarinShow/Episode-27-Azure-Active-Directory-Authentication-with-Vittorio-Bertocci?term=azure%20active%20directory%20integration)
+* [Ověřování Azure Active Directory pomocí Vittorio Bertocci](https://channel9.msdn.com/Shows/XamarinShow/Episode-27-Azure-Active-Directory-Authentication-with-Vittorio-Bertocci?term=azure%20active%20directory%20integration)
 
-* [Technická instruktáž identity služby Azure Active Directory – část 1 ze 2](https://channel9.msdn.com/Blogs/MVP-Enterprise-Mobility/Azure-Active-Directory-Identity-Technical-Briefing-Part-1-of-2?term=azure%20active%20directory%20integration)
+* [Azure Active Directory technické přehledy identity – část 1 ze 2](https://channel9.msdn.com/Blogs/MVP-Enterprise-Mobility/Azure-Active-Directory-Identity-Technical-Briefing-Part-1-of-2?term=azure%20active%20directory%20integration)
 
-* [Technická instruktáž identity služby Azure Active Directory – část 2 ze 2](https://channel9.msdn.com/Blogs/MVP-Azure/Azure-Active-Directory-Identity-Technical-Briefing-Part-2-of-2?term=azure%20active%20directory%20integration)
+* [Azure Active Directory technické přehledy identity – část 2 ze 2](https://channel9.msdn.com/Blogs/MVP-Azure/Azure-Active-Directory-Identity-Technical-Briefing-Part-2-of-2?term=azure%20active%20directory%20integration)
 
-* [Vytváření aplikací pomocí služby Microsoft Azure Active Directory](https://channel9.msdn.com/Blogs/Windows-Development-for-the-Enterprise/Building-Apps-with-Microsoft-Azure-Active-Directory?term=azure%20active%20directory%20integration)
+* [Sestavování aplikací pomocí Microsoft Azure Active Directory](https://channel9.msdn.com/Blogs/Windows-Development-for-the-Enterprise/Building-Apps-with-Microsoft-Azure-Active-Directory?term=azure%20active%20directory%20integration)
 
-* [Videa Microsoft Azure zaměřená na službu Active Directory](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
+* [Microsoft Azure videa zaměřená na službu Active Directory](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
-Bezplatné školení služby Azure Active Directory je k dispozici na adrese  
-* [Řada obsahu Microsoft Azure pro IT profesionály: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+Bezplatné školení Azure Active Directory k dispozici na adrese  
+* [Microsoft Azure pro řadu obsahu pro IT profesionály: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
-Služba Azure Active Directory navíc poskytuje web pro kontrolu aktualizací služby.   
+Kromě toho Azure Active Directory poskytuje lokalitu pro kontrolu aktualizací služby   
 * [Aktualizace služby Azure AD](https://azure.microsoft.com/updates/?product=active-directory)
 
-## <a name="using-azure-active-directory-to-enable-trials"></a>Povolení zkušebních verzí pomocí služby Azure Active Directory  
+## <a name="using-azure-active-directory-to-enable-trials"></a>Povolení zkušebních verzí pomocí Azure Active Directory  
 
-Microsoft ověřuje všechny uživatele Marketplace pomocí Azure AD, takže když ověřený uživatel klikne na zkušební verzi na Marketplace a přejde na zkušební prostředí, můžete uživatele zřídit přímo do zkušební verze, aniž byste museli vyžadovat další krok přihlášení. Token, který vaše aplikace obdrží z Azure AD během ověřování obsahuje cenné informace o uživateli, které můžete použít k vytvoření uživatelského účtu ve vaší aplikaci, což vám umožní automatizovat zřizování a zvýšit pravděpodobnost konverze. Další informace o tokenu naleznete v [tématu Ukázkové tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
+Microsoft ověřuje všechny uživatele na webu Marketplace pomocí Azure AD, takže když ověřený uživatel klikne na webu Marketplace na základě zkušebního výpisu a přesměruje se na vaše zkušební prostředí, můžete uživatele zřídit přímo do zkušební verze bez nutnosti dalšího kroku přihlášení. Token, který vaše aplikace obdrží z Azure AD během ověřování, zahrnuje cenné uživatelské informace, pomocí kterých můžete v aplikaci vytvořit uživatelský účet, který vám umožní automatizovat prostředí pro zřizování a zvýšit pravděpodobnost převodu. Další informace o tokenu najdete v tématu [ukázkové tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
 
-Použití Azure AD k povolení ověřování jedním kliknutím do vaší aplikace nebo zkušební verze dělá následující akce:  
-* Zjednodušuje zákaznickou zkušenost od Marketplace po zkušební verzi.  
-* Udržuje pocit "prostředí v produktu", i když je uživatel přesměrován z Marketplace do vaší domény nebo zkušebního prostředí.  
-* Snižuje pravděpodobnost opuštění při přesměrování, protože neexistuje další krok přihlášení.  
-* Snižuje bariéry nasazení pro velké množství uživatelů Azure AD.  
+Pomocí Azure AD můžete pro aplikaci nebo zkušební verzi povolit ověřování 1 kliknutím na toto:  
+* Zjednodušuje uživatelské prostředí z webu Marketplace až po zkušební období.  
+* Bez ohledu na to, jak se uživatel přesměruje z webu Marketplace do vaší domény nebo zkušebního prostředí, udržuje dojem "prostředí" v rámci produktu.  
+* Snižuje pravděpodobnost zrušení přesměrování, protože není k dispozici další krok přihlášení.  
+* Omezuje překážky nasazení pro velké populace uživatelů Azure AD.  
 
-## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Certifikace integrace Azure AD pro Marketplace  
+## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Certifikace integrace služby Azure AD pro Marketplace  
 
-Certifikujte integraci Azure AD několika různými způsoby v závislosti na tom, jestli je vaše aplikace jednoklientská nebo víceklientská a jestli jste s Azure AD federovaným jednotném přihlašování (SSO) noví, nebo už ji podporujete.  
+V závislosti na tom, jestli je vaše aplikace založená na jednom tenantovi nebo víceklientské úrovni a jestli už ji nepodporujete, můžete svou integraci Azure AD certifikovat několika různými způsoby.  
 
-**Pro víceklientské aplikace:**  
+**Pro aplikace s více klienty:**  
 
-Pokud už azure ad podporujete, postupujte takto:
-1.    Registrace aplikace na webu Azure Portal
-2.    Povolte funkci podpory více klienta ve službě Azure AD, abyste získali zkušební prostředí s jedním kliknutím. Konkrétnější informace naleznete [zde](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
+Pokud už Azure AD podporujete, udělejte toto:
+1.    Registrace aplikace v Azure Portal
+2.    Ve službě Azure AD povolte funkci podpory více tenantů, abyste získali zkušební prostředí jedním kliknutím. Konkrétnější informace najdete [tady](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
 
-Pokud s azure ad federovaným přiřazovaným přihlašovaným zabezpečením tečune, postupujte takto: 
-1.  Registrace aplikace na webu Azure Portal
-2.  Vývoj přihlížení pomocí služby Azure AD pomocí [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) nebo [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
-3.  Povolte funkci podpory více klientů v AAD, abyste získali zkušební prostředí "jedním kliknutím", více konkrétních informací naleznete [zde](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).  
+Pokud pro federované jednotné přihlašování Azure AD začínáte, postupujte takto: 
+1.  Registrace aplikace v Azure Portal
+2.  K vývoji jednotného přihlašování použijte Azure AD pomocí [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) nebo [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
+3.  Povolení podpory více tenantů v AAD Chcete-li získat další informace o zkušebním prostředí jedním kliknutím, najdete je [tady](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).  
 
-**Pro aplikaci s jedním tenantem použijte některou z následujících možností:**  
+**V případě aplikace pro jednoho tenanta použijte některou z následujících možností:**  
 * Přidání uživatelů do adresáře jako uživatelů typu Host pomocí [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
-* Ruční zřizování zkoušek pro zákazníky pomocí "Kontaktujte mě"
-* Vývoj "testovací jízdy" pro zákazníka
-* Vytvoření ukázkové aplikace pro více klientů pomocí služby SSO
+* Ruční zřízení zkušebních verzí pro zákazníky pomocí ' kontaktujte mě '
+* Vývoj testovacích jednotek pro jednotlivé zákazníky
+* Sestavte ukázkovou ukázkovou aplikaci pro více tenantů pomocí jednotného přihlašování.
 
-## <a name="saas-subscriptions"></a>Odběry SaaS
+## <a name="saas-subscriptions"></a>SaaS předplatná
 
-Použijte typ nabídky aplikace SaaS, který zákazníkovi umožní koupit si technické řešení založené na SaaS jako předplatné. Pro vaši aplikaci SaaS musí být splněny následující požadavky:
-- Cena a faktura služby v bytě (měsíčně nebo ročně), nebo na cenu pro jednotlivé uživatele.
-- Zadejte metodu upgradu nebo zrušení služby kdykoli.
-Společnost Microsoft je hostitelem obchodní transakce. Společnost Microsoft účtuje zákazníkovi vaším jménem. Chcete-li nabídnout aplikaci SaaS jako předplatné, musíte integrovat s api plnění SaaS.  Vaše služba musí podporovat zřizování, upgrade a zrušení.
+Pomocí typu nabídky aplikace SaaS můžete zákazníkům umožnit, aby si koupili své technické řešení založené na SaaS jako předplatné. Pro vaši aplikaci SaaS musí být splněné následující požadavky:
+- Cena a fakturace služby s paušální (měsíční nebo roční) nebo podle sazby za uživatele.
+- Poskytněte způsob, jak službu kdykoli upgradovat nebo zrušit.
+Společnost Microsoft hostuje obchodní transakci. Společnost Microsoft účtuje vaše zákazníky vaším jménem. Pokud chcete aplikaci SaaS nabídnout jako předplatné, je nutné ji integrovat s rozhraními API pro plnění SaaS.  Vaše služba musí podporovat zřizování, upgrade a zrušení.
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- |  
-|Fakturace a měření | Vaše nabídka je oceněna na základě cenového modelu, který vyberete před publikováním (paušální sazba nebo uživatel).  Pokud používáte model paušální sazby, můžete volitelně zahrnout další dimenze používané k nabíjení zákazníků za použití, které není zahrnuto v paušální sazbě. |  
-|Zrušení | Vaši nabídku zákazník kdykoli zruší. |  
-|Vstupní stránka transakce | Hostujete vstupní stránku transakcí pod značkou Azure, kde mohou uživatelé vytvářet a spravovat svůj účet služby SaaS. |   
-| Rozhraní API předplatného | Zpřístupníte službu, která může pracovat s předplatným SaaS, a vytvořit, aktualizovat a odstranit uživatelský účet a plán služeb. Kritické změny rozhraní API musí být podporovány do 24 hodin. Nekritické změny rozhraní API budou vydávány pravidelně. |  
+|Fakturace a měření | Ceny vaší nabídky se účtují na základě cenového modelu, který jste vybrali před publikováním (paušální sazba nebo podle uživatele).  Pokud používáte model paušálních sazeb, můžete volitelně zahrnout další dimenze, které se použijí k účtování zákazníků na využití, která nejsou zahrnutá do paušální sazby. |  
+|Zrušení | Vaši nabídku nemůže zákazník kdykoli zrušit. |  
+|Cílová stránka transakce | Můžete hostovat cílovou stránku transakce se značkou Azure, kde můžou uživatelé vytvářet a spravovat jejich účet služby SaaS. |   
+| Rozhraní API pro předplatné | Vystavíte službu, která může komunikovat s předplatným SaaS k vytváření, aktualizaci a odstraňování uživatelských účtů a plánu služeb. Kritické změny rozhraní API musí být podporované do 24 hodin. Pravidelně se vydávají nekritické změny rozhraní API. |  
 
 >[!Note]
->Přihlášení partnerského kanálu zprostředkovatelů cloudových řešení (CSP) je nyní k dispozici.  Další informace o marketingu vaší nabídky prostřednictvím partnerských kanálů Microsoft CSP najdete v tématu [Poskytovatelé cloudových řešení.](./cloud-solution-providers.md)
+>Výslovný souhlas kanálu pro partnery Cloud Solution Providers (CSP) je teď k dispozici.  Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [Poskytovatelé cloudových řešení](./cloud-solution-providers.md) .
 
 ## <a name="next-steps"></a>Další kroky
-Pokud jste tak ještě neučinili,
+Pokud jste to ještě neudělali,
 
-* [Přečtěte si](https://azuremarketplace.microsoft.com/sell) informace o tržišti.
+* [Seznamte](https://azuremarketplace.microsoft.com/sell) se s Marketplace.
 
-Chcete-li se zaregistrovat v Partnerském centru, začněte vytvářet novou nabídku nebo pracovat na existující nabídce:
+Pokud se chcete zaregistrovat v partnerském centru, začněte vytvářet novou nabídku nebo pracovat na stávajícím:
 
-* [Chcete-li](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) vytvořit nebo dokončit svou nabídku, přihlaste se do Centra partnerů.
-* Další informace najdete [v tématu vytvoření nabídky aplikace SaaS.](./partner-center-portal/create-new-saas-offer.md)
+* [Přihlaste se do partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vytvořte nebo dokončete vaši nabídku.
+* Další informace najdete v tématu [Vytvoření nabídky aplikace v SaaS](./partner-center-portal/create-new-saas-offer.md) .

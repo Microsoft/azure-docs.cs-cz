@@ -1,64 +1,59 @@
 ---
-title: Referenční architektury Azure – Azure Batch
-description: Architektury pro použití Azure Batch a dalších služeb Azure k rozšíření místní vykreslovací farmy prasknutím do cloudu
-services: batch
-ms.service: batch
-author: davefellows
-manager: evansma
-ms.author: labrenne
+title: Referenční architektury vykreslování Azure
+description: Architektury pro používání Azure Batch a dalších služeb Azure k rozšíření místní farmy vykreslování s využitím shlukování do cloudu
 ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: 20442a6618ca9357bb3be95879b68bffca45a40d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbdb5eb39805ac87bf90216e5fbeedae91b423f0
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022949"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115767"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Referenční architektury pro vykreslování Azure
 
-Tento článek ukazuje diagramy architektury vysoké úrovně pro scénáře rozšířit nebo "burst", místní vykreslovací farmy do Azure. Příklady ukazují různé možnosti pro výpočetní, síťové a úložné služby Azure.
+Tento článek ukazuje diagramy architektury vysoké úrovně pro scénáře pro rozšíření nebo "shluky", místní farmu vykreslování do Azure. V příkladech se zobrazují různé možnosti pro výpočetní, síťové a úložné služby Azure.
 
-## <a name="hybrid-with-nfs-or-cfs"></a>Hybridní s NFS nebo CFS
+## <a name="hybrid-with-nfs-or-cfs"></a>Hybrid se systémem souborů NFS nebo CFS
 
-Následující diagram znázorňuje hybridní scénář, který zahrnuje následující služby Azure:
+Následující diagram znázorňuje hybridní scénář, který obsahuje následující služby Azure:
 
-* **Výpočetní –** fond dávek Azure nebo škálovací sada virtuálních strojů.
+* **COMPUTE** -Azure Batch fond nebo sada škálování virtuálních počítačů.
 
-* **Síť** – místní: Azure ExpressRoute nebo VPN. Azure: Virtuální síť Azure.
+* Místní **síť** : Azure EXPRESSROUTE nebo VPN. Azure: virtuální síť Azure.
 
-* **Úložiště** – vstupní a výstupní soubory: NFS nebo CFS pomocí virtuálních počítačích Azure, synchronizované s místním úložištěm přes Azure File Sync nebo RSync. Alternativně: Avere vFXT pro vstup nebo výstup souborů z místních zařízení NAS pomocí systému souborů NFS.
+* Vstupní a výstupní soubory **úložiště** : systém souborů NFS nebo CFS s využitím virtuálních počítačů Azure, které se synchronizují s místním úložištěm pomocí Azure File Sync nebo rsync. Alternativně: avere vFXT pro vstupní nebo výstupní soubory z místních zařízení NAS pomocí systému souborů NFS.
 
-  ![Prasknutí cloudu - Hybridní s NFS nebo CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
+  ![Shlukování cloudu – Hybrid se systémem souborů NFS nebo CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 
 ## <a name="hybrid-with-blobfuse"></a>Hybridní s Blobfuse
 
-Následující diagram znázorňuje hybridní scénář, který zahrnuje následující služby Azure:
+Následující diagram znázorňuje hybridní scénář, který obsahuje následující služby Azure:
 
-* **Výpočetní –** fond dávek Azure nebo škálovací sada virtuálních strojů.
+* **COMPUTE** -Azure Batch fond nebo sada škálování virtuálních počítačů.
 
-* **Síť** – místní: Azure ExpressRoute nebo VPN. Azure: Virtuální síť Azure.
+* Místní **síť** : Azure EXPRESSROUTE nebo VPN. Azure: virtuální síť Azure.
 
-* **Úložiště** – vstupní a výstupní soubory: Úložiště objektů blob, připojené k výpočetním prostředkům přes Azure Blobfuse.
+* Vstupní a výstupní soubory **úložiště** : BLOB Storage, připojené k výpočetním prostředkům prostřednictvím Azure Blobfuse.
 
-  ![Prasknutí mraků - Hybrid s Blobfuse](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
+  ![Shlukování cloudu – hybridní pomocí Blobfuse](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
 
-## <a name="hybrid-compute-and-storage"></a>Hybridní výpočetní výkon a úložiště
+## <a name="hybrid-compute-and-storage"></a>Hybridní výpočetní prostředky a úložiště
 
-Následující diagram znázorňuje plně připojený hybridní scénář pro výpočetní prostředky i úložiště a zahrnuje následující služby Azure:
+Následující diagram znázorňuje plně připojený hybridní scénář pro výpočetní prostředky i úložiště a zahrnuje tyto služby Azure:
 
-* **Výpočetní –** fond dávek Azure nebo škálovací sada virtuálních strojů.
+* **COMPUTE** -Azure Batch fond nebo sada škálování virtuálních počítačů.
 
-* **Síť** – místní: Azure ExpressRoute nebo VPN. Azure: Virtuální síť Azure.
+* Místní **síť** : Azure EXPRESSROUTE nebo VPN. Azure: virtuální síť Azure.
 
-* **Skladování** - Meziprostory: Avere vFXT. Volitelná archivace místních souborů přes Azure Data Box do úložiště objektů Blob nebo místní Avere FXT pro akceleraci NAS.
+* **Úložiště** – mezi místy: avere vFXT. Volitelná archivace místních souborů prostřednictvím Azure Data Box do úložiště objektů BLOB nebo místní avere FXT pro akceleraci NAS.
 
-  ![Prasknutí cloudu – hybridní výpočetní výkon a úložiště](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
+  ![Shlukování cloudu – hybridní výpočetní prostředky a úložiště](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o používání [správců vykreslení](batch-rendering-render-managers.md) s Azure Batch.
+* Další informace o používání [správců vykreslování](batch-rendering-render-managers.md) pomocí Azure Batch.
 
-* Další informace o možnostech [vykreslování v Azure](batch-rendering-service.md).
+* Přečtěte si další informace o možnostech [vykreslování v Azure](batch-rendering-service.md).

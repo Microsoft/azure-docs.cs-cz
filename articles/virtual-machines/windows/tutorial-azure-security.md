@@ -1,25 +1,20 @@
 ---
 title: Kurz – použití Azure Security Center pro virtuální počítače s Windows v Azure
 description: V tomto kurzu získáte informace o funkcích služby Azure Security Center k ochraně a zabezpečení virtuálních počítačů s Windows v Azure.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8979206096896d30338af58387a312617144fd1f
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 7c84c705da99bd6f04a6737a1c781b905cbeaad6
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456222"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100477"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů s Windows
 
@@ -63,7 +58,7 @@ Nastavení zásad zabezpečení pro celé předplatné:
 
 1. Na řídicím panelu Security Center vyberte **Zásady zabezpečení** a pak vyberte své předplatné.
 2. V okně **Zásady zabezpečení** vyberte **Zásady zabezpečení**. 
-3. V **okně Zásady zabezpečení – okno zásad zabezpečení** zapněte nebo vypněte položky zásad, které chcete použít pro předplatné.
+3. V okně zásady **zabezpečení – zásady zabezpečení** zapněte nebo vypněte položky zásad, které chcete použít u předplatného.
 4. Jakmile budete hotovi s výběrem nastavení, vyberte **Uložit** v horní části stránky. 
 
 
@@ -103,14 +98,14 @@ Když se doporučení napraví, označí se jako vyřešená.
 
 ## <a name="view-detected-threats"></a>Zobrazení zjištěných hrozeb
 
-Kromě doporučení ke konfiguraci prostředků zobrazuje Security Center upozornění na zjištěné hrozby. Funkce výstrah zabezpečení agreguje data shromážděná z jednotlivých virtuálních počítačů, síťových protokolů Azure a připojených partnerských řešení a detekuje bezpečnostní hrozby u prostředků Azure. Podrobné informace o možnostech detekce hrozeb centra zabezpečení naleznete v tématu [Jak Centrum zabezpečení rozpozná hrozby?](../../security-center/security-center-alerts-overview.md#detect-threats).
+Kromě doporučení ke konfiguraci prostředků zobrazuje Security Center upozornění na zjištěné hrozby. Funkce výstrah zabezpečení agreguje data shromážděná z jednotlivých virtuálních počítačů, síťových protokolů Azure a připojených partnerských řešení a detekuje bezpečnostní hrozby u prostředků Azure. Podrobné informace o možnostech detekce hrozeb Security Center najdete v tématu [jak Security Center detekuje hrozby?](../../security-center/security-center-alerts-overview.md#detect-threats).
 
-Funkce výstrah zabezpečení vyžaduje zvýšení cenové úrovně Security Center z úrovně *Free* na úroveň *Standard*. **Bezplatná zkušební verze** je k dispozici, když přejdete na tuto vyšší cenovou úroveň. 
+Funkce výstrah zabezpečení vyžaduje zvýšení cenové úrovně Security Center z úrovně *Free* na úroveň *Standard*. Po přechodu na tuto vyšší cenovou úroveň bude k dispozici **bezplatná zkušební verze** . 
 
 Změna cenové úrovně:  
 
 1. Na řídicím panelu Security Center klikněte na **Zásady zabezpečení** a pak vyberte své předplatné.
-2. Vyberte **Cenová úroveň**.
+2. Vyberte **cenovou úroveň**.
 3. Vyberte **Standard** a potom klikněte na **Uložit** v horní části okna.
 
 

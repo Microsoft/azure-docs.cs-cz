@@ -1,39 +1,37 @@
 ---
-title: Použití vykreslovacích aplikací – Azure Batch
-description: Jak používat vykreslovací aplikace s Azure Batch. Tento článek obsahuje stručný popis, jak spustit každou aplikaci vykreslování.
-services: batch
-ms.service: batch
+title: Použití vykreslovacích aplikací
+description: Jak používat vykreslování aplikací pomocí Azure Batch. Tento článek poskytuje stručný popis spuštění jednotlivých aplikací pro vykreslování.
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: dc0ce23c90a4ba6575ba26b37d97f94ba8fa1f63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6610724cd2ecb14d165b587f9df31353e8eb8e41
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75390480"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115801"
 ---
-# <a name="rendering-applications"></a>Vykreslovací aplikace
+# <a name="rendering-applications"></a>Vykreslování aplikací
 
-Vykreslovací aplikace se používají při vytváření dávkových úloh a úloh. Vlastnost příkazového řádku úkolu určuje příslušný příkazový řádek a parametry.  Nejjednodušší způsob, jak vytvořit úlohy projektu, je použít šablony aplikace Batch Explorer, jak je uvedeno v [tomto článku](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer).  Šablony lze v případě potřeby zobrazit a upravit verze.
+Vykreslování aplikací se používá při vytváření úloh a úloh Batch. Vlastnost příkazového řádku úlohy určuje příslušný příkazový řádek a parametry.  Nejjednodušší způsob, jak vytvořit úlohy úlohy, je použití šablon Batch Explorer, jak je uvedeno v [tomto článku](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer).  V případě potřeby lze v šablonách zobrazit a upravit verze, které byly vytvořeny.
 
-Tento článek obsahuje stručný popis, jak spustit každou aplikaci vykreslování.
+Tento článek poskytuje stručný popis spuštění jednotlivých aplikací pro vykreslování.
 
-## <a name="rendering-with-autodesk-3ds-max"></a>Vykreslování s 3ds Max od služby Autodesk
+## <a name="rendering-with-autodesk-3ds-max"></a>Vykreslování pomocí aplikace Autodesk 3ds Max
 
-### <a name="renderer-support"></a>Podpora rendereru
+### <a name="renderer-support"></a>Podpora vykreslovacího modulu
 
-Kromě rendererů zabudovaných do 3ds Max jsou na vykreslovacích obrázcích virtuálního počítači k dispozici následující renderery, na které lze odkazovat v souboru scény 3ds Max:
+Kromě vykreslovacích modulů integrovaných do aplikace 3ds Max jsou k dispozici následující zobrazovací jednotky na obrázcích pro vykreslování virtuálních počítačů, na které lze odkazovat pomocí souboru s maximální scénou 3DS:
 
 * Autodesk Arnold
-* Chaos Skupina V-Ray
+* Chaos skupina V-Ray
 
-### <a name="task-command-line"></a>Příkazový řádek úkolu
+### <a name="task-command-line"></a>Příkazový řádek úlohy
 
-Vyvolat `3dsmaxcmdio.exe` aplikace k provedení vykreslování příkazového řádku v uzlu fondu.  Tato aplikace je na cestě při spuštění úlohy. Aplikace `3dsmaxcmdio.exe` má stejné dostupné parametry `3dsmaxcmd.exe` jako aplikace, která je popsána v [dokumentaci nápovědy 3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (Rendering | vykreslovací sekce příkazového řádku).
+Vyvolat `3dsmaxcmdio.exe` aplikaci k provedení vykreslování příkazového řádku na uzlu fondu.  Tato aplikace se nachází na cestě při spuštění úlohy. `3dsmaxcmdio.exe` Aplikace má stejné dostupné parametry jako `3dsmaxcmd.exe` aplikace, která je popsána v dokumentaci k nástroji [3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (rendering | Oddíl vykreslování příkazového řádku).
 
-Například:
+Příklad:
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"
@@ -41,48 +39,48 @@ Například:
 
 Poznámky:
 
-* Je třeba věnovat velkou pozornost tomu, aby byly nalezeny soubory datových zdrojů.  Ujistěte se, že cesty jsou správné a relativní `-bitmapPath` pomocí okna **Sledování majetku,** nebo použijte parametr na příkazovém řádku.
-* Zkontrolujte, zda existují problémy s rendrováním, například `stdout.txt` neschopnost najít datové zdroje, kontrolou souboru napsaného společností 3ds Max při spuštění úlohy.
+* Aby se zajistilo, že se soubory assetů našly, je potřeba věnovat velkou péči.  Zajistěte, aby byly cesty správné a relativní pomocí okna pro **sledování assetu** , nebo použijte `-bitmapPath` parametr na příkazovém řádku.
+* Podívejte se, jestli jsou problémy s vykreslováním, jako je například neschopnost najít assety, kontrolou `stdout.txt` souboru zapsaného aplikací 3ds Max při spuštění úlohy.
 
-### <a name="batch-explorer-templates"></a>Šablony dávkového průzkumníka
+### <a name="batch-explorer-templates"></a>Šablony Batch Explorer
 
-K šablonám fondu a úloh lze přistupovat z **Galerie** v Průzkumníku dávek.  Zdrojové soubory šablony jsou k dispozici v [datovém úložišti Batch Explorer na GitHubu](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax).
+K šablonám fondů a úloh je možné přistupovat z **Galerie** v Batch Explorer.  Zdrojové soubory šablony jsou k dispozici v [úložišti Batch Explorerch dat na GitHubu](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax).
 
-## <a name="rendering-with-autodesk-maya"></a>Vykreslování s Autodesk Maya
+## <a name="rendering-with-autodesk-maya"></a>Vykreslování pomocí Autodesk Maya
 
-### <a name="renderer-support"></a>Podpora rendereru
+### <a name="renderer-support"></a>Podpora vykreslovacího modulu
 
-Kromě rendererů zabudovaných do Mayy jsou na vykreslovacích obrázcích virtuálních počítačích k dispozici následující renderery, na které lze odkazovat v souboru scény 3ds Max:
+Kromě vykreslovacích modulů integrovaných do Maya jsou k dispozici následující zobrazovací jednotky na obrázcích virtuálních počítačů, na kterých je možné odkazovat pomocí souboru s maximální scénou 3DS:
 
 * Autodesk Arnold
-* Chaos Skupina V-Ray
+* Chaos skupina V-Ray
 
-### <a name="task-command-line"></a>Příkazový řádek úkolu
+### <a name="task-command-line"></a>Příkazový řádek úlohy
 
-Vykreslovací `renderer.exe` modul příkazového řádku se používá v příkazovém řádku úkolu. Vykreslovač příkazového řádku je popsán v [nápovědě Maya](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
+Vykreslovací `renderer.exe` modul příkazového řádku se používá v příkazovém řádku úlohy. Modul pro vykreslování příkazového řádku je popsán v [nápovědě k Maya](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
 
-V následujícím příkladu se úloha přípravy úlohy používá ke zkopírování souborů scény a datových zdrojů do pracovního adresáře přípravy úloh, výstupní složka se používá k uložení vykreslovacího obrazu a snímek 10 se vykreslí.
+V následujícím příkladu se k kopírování souborů scény a prostředků do pracovního adresáře přípravy úlohy používá úloha přípravy úlohy. k uložení image vykreslování se použije výstupní složka a vykreslí se snímek 10.
 
 ```
 render -renderer sw -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-Pro vykreslování V-Ray by soubor scény Maya normálně specifikoval V-Ray jako vykreslovač.  To může být také zadán na příkazovém řádku:
+Pro vykreslování V-Ray by soubor scény Maya normálně jako zobrazovací jednotku určil V-Ray.  Dá se taky zadat na příkazovém řádku:
 
 ```
 render -renderer vray -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-Pro vykreslování Arnold, maya scény soubor by normálně určit Arnold jako vykreslovač.  To může být také zadán na příkazovém řádku:
+Pro vykreslování Arnold by soubor scény Maya normálně určil Arnold jako zobrazovací jednotku.  Dá se taky zadat na příkazovém řádku:
 
 ```
 render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-### <a name="batch-explorer-templates"></a>Šablony dávkového průzkumníka
+### <a name="batch-explorer-templates"></a>Šablony Batch Explorer
 
-K šablonám fondu a úloh lze přistupovat z **Galerie** v Průzkumníku dávek.  Zdrojové soubory šablony jsou k dispozici v [datovém úložišti Batch Explorer na GitHubu](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya).
+K šablonám fondů a úloh je možné přistupovat z **Galerie** v Batch Explorer.  Zdrojové soubory šablony jsou k dispozici v [úložišti Batch Explorerch dat na GitHubu](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí fondu a šablon úloh z [úložiště dat v GitHubu](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) pomocí Dávkového průzkumníka.  V případě potřeby vytvořte nové šablony nebo upravte jednu z dodaných šablon.
+Použijte šablony fondů a úloh z [úložiště dat v GitHubu](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) pomocí Batch Explorer.  V případě potřeby vytvořte nové šablony nebo upravte jednu ze zadaných šablon.

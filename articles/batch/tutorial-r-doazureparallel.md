@@ -1,22 +1,16 @@
 ---
 title: Paralelní simulace jazyka R ve službě Azure Batch
 description: Kurz – podrobné pokyny ke spuštění finanční simulace Monte Carlo ve službě Azure Batch pomocí balíku R doAzureParallel
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c9708360df4a7fb711a3d57b39f33c576c75a0d5
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77025839"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117093"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spuštění paralelní simulace jazyka R ve službě Azure Batch 
 
@@ -30,7 +24,7 @@ V tomto kurzu se dozvíte, jak nasadit fond služby Batch a spustit ve službě 
 > * Vytvoření fondu služby Batch jako paralelního back-endu pro relaci jazyka R
 > * Spuštění ukázkové paralelní simulace v tomto fondu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Nainstalovaná distribuce [R](https://www.r-project.org/), například [Microsoft R Open](https://mran.microsoft.com/open). Použijte jazyk R verze 3.3.1 nebo novější.
 
@@ -40,12 +34,12 @@ V tomto kurzu se dozvíte, jak nasadit fond služby Batch a spustit ve službě 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>Instalace balíčku doAzureParallel
 
-V konzoli RStudio nainstalujte [balíček doAzureParallel GitHub](https://www.github.com/Azure/doAzureParallel). Následující příkazy stáhnou a nainstalují balíček a jeho závislosti v aktuální relaci jazyka R: 
+V konzole RStudio nainstalujte [balíček GitHub balíček doazureparallel](https://www.github.com/Azure/doAzureParallel). Následující příkazy stáhnou a nainstalují balíček a jeho závislosti v aktuální relaci jazyka R: 
 
 ```R
 # Install the devtools package  
@@ -226,7 +220,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-Simulace distribuuje úkoly do uzlů ve fondu služby Batch. Aktivitu můžete sledovat na heat mapě fondu na webu Azure Portal. Přejděte na **dávkové účty** > *myBatchAccount*. Klepněte na **položku Fondy** > *myPoolName*. 
+Simulace distribuuje úkoly do uzlů ve fondu služby Batch. Aktivitu můžete sledovat na heat mapě fondu na webu Azure Portal. Přejít na **účty** > Batch*myBatchAccount*. Klikněte na **fondy** > *myPoolName*. 
 
 ![Heat mapa fondu spouštějícího paralelní úkoly jazyka R](media/tutorial-r-doazureparallel/pool.png)
 

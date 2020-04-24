@@ -10,12 +10,12 @@ metadata:
   author: malopMSFT
   ms.author: allensu
   ms.date: 09/16/2019
-  ms.openlocfilehash: a22284524891c71ec206ef100de9a736cb1a5714
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 1674d92736f7808cd7fc5cc983bc72cea4126868
+  ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77587647"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82100256"
 landingContent:
 - title: Informace o privátním propojení Azure
   linkLists:
@@ -49,17 +49,7 @@ landingContent:
     links:
     - text: Azure CLI
       url: /cli/azure/network
-    - text: Azure Powershell
+    - text: Azure PowerShell
       url: /powershell/module/az.network
     - text: REST
       url: /rest/api/virtualnetwork/privatelinkservices
-- title: Informace o službě Azure Private Link
-  linkLists:
-  - linkListType: video
-    links:
-    - text: Azure Private Link
-      url: https://www.youtube.com/watch?reload=9&v=nuFEVvewUgQ
-    - text: Možnosti soukromého připojení ke službám Azure PaaS pomocí služby Private Link
-      url: https://www.youtube.com/watch?v=aVFV1_ZwAEY
-    - text: Sítě Azure – č.11 – Azure Private Link
-      url: https://www.youtube.com/watch?v=PWKM5KXjWno

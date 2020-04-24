@@ -1,25 +1,15 @@
 ---
-title: Začínáme se službou Azure Batch pomocí příkazového řádku Azure CLI | Dokumentace Microsoftu
+title: Začínáme s Azure CLI pro Batch
 description: Rychlý úvod k příkazům Batch v rozhraní příkazového řádku Azure CLI pro správu prostředků služby Azure Batch
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
-ms.service: batch
 ms.topic: conceptual
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
 ms.date: 07/24/2018
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30f71432ca008b87bddfb253f23ae3cef0ac390d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fe73770dbe8dfe6d69cb08e1fbf44d42bff9e54
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020178"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117365"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Správa prostředků služby Batch pomocí Azure CLI
 
@@ -38,7 +28,7 @@ Nejnovější verzi Azure CLI můžete spustit ve službě [Azure Cloud Shell](.
 
 ## <a name="command-help"></a>Nápověda k příkazům
 
-Pro každý příkaz v rámci rozhraní příkazového řádku Azure CLI můžete zobrazit nápovědu, pokud za název příkazu přidáte parametr `-h`. Jiné parametry vynechejte. Například:
+Pro každý příkaz v rámci rozhraní příkazového řádku Azure CLI můžete zobrazit nápovědu, pokud za název příkazu přidáte parametr `-h`. Jiné parametry vynechejte. Příklad:
 
 * Pokud chcete zobrazit nápovědu pro příkaz `az`, zadejte: `az -h`
 * Pokud chcete vypsat seznam všech příkazů Batch v rámci rozhraní příkazového řádku, zadejte: `az batch -h`
@@ -83,7 +73,7 @@ Pokud chcete rozhraní příkazového řádku Azure CLI používat ke správě p
 
 Máte dvě možnosti ověření proti účtu Batch:
 
-- **Pomocí ověřování azure active directory (Azure AD)** 
+- **Pomocí ověřování Azure Active Directory (Azure AD)** 
 
     Ověření pomocí služby Azure AD je výchozí možností, pokud používáte rozhraní příkazového řádku Azure CLI se službou Batch. Tuto možnost doporučujeme pro většinu scénářů. 
     
@@ -113,7 +103,7 @@ Příklady uvedené v části Ukázkové skripty prostředí ukazují, jak se k 
 
 ## <a name="use-azure-batch-cli-extension-commands"></a>Použití příkazů rozšíření rozhraní příkazového řádku služby Azure Batch
 
-Pokud nainstalujete rozšíření rozhraní příkazového řádku služby Azure Batch, můžete pomocí Azure CLI spouštět kompletní dávkové úlohy bez psaní kódu. Příkazy Batch, které toto rozšíření podporuje, umožňují použití šablon JSON k vytváření fondů, úloh a úkolů pomocí Azure CLI. Pomocí příkazů rozhraní příkazového řádku rozšíření můžete také nahrávat vstupní soubory úloh do účtu služby Azure Storage přidruženého k účtu Batch a stahovat z něj výstupní soubory úloh. Další informace najdete [v tématu Použití šablon příkazového příkazu k příkazu Azure Batch a přenosu souborů](batch-cli-templates.md).
+Pokud nainstalujete rozšíření rozhraní příkazového řádku služby Azure Batch, můžete pomocí Azure CLI spouštět kompletní dávkové úlohy bez psaní kódu. Příkazy Batch, které toto rozšíření podporuje, umožňují použití šablon JSON k vytváření fondů, úloh a úkolů pomocí Azure CLI. Pomocí příkazů rozhraní příkazového řádku rozšíření můžete také nahrávat vstupní soubory úloh do účtu služby Azure Storage přidruženého k účtu Batch a stahovat z něj výstupní soubory úloh. Další informace najdete v tématu [použití Azure Batch šablon CLI a přenosu souborů](batch-cli-templates.md).
 
 ## <a name="script-examples"></a>Příklady skriptu
 
@@ -121,7 +111,7 @@ Viz [příklady skriptu CLI](cli-samples.md) pro službu Batch k provedení bě�
 
 ## <a name="json-files-for-resource-creation"></a>Soubory JSON pro vytváření prostředků
 
-Při vytváření prostředků Batch, jako jsou fondy a úlohy, můžete určit soubor JSON obsahující konfiguraci nového prostředku namísto předávání jejích parametrů v podobě parametrů příkazového řádku. Například:
+Při vytváření prostředků Batch, jako jsou fondy a úlohy, můžete určit soubor JSON obsahující konfiguraci nového prostředku namísto předávání jejích parametrů v podobě parametrů příkazového řádku. Příklad:
 
 ```azurecli
 az batch pool create my_batch_pool.json

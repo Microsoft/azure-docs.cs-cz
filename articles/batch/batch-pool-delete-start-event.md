@@ -1,28 +1,21 @@
 ---
-title: Událost spuštění odstranění fondu dávek Azure
-description: Odkaz na událost odstranění spuštění fondu dávek Tato událost je vyzařována při spuštění operace odstranění fondu.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Událost zahájení odstranění fondu Azure Batch
+description: Referenční informace pro událost zahájení odstranění fondu Batch Tato událost je generována při spuštění operace odstranění fondu.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: 24a68c6656bd13f0c353d53870a51cdc940fd141
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38e419e549006d3fde2f1694e0d40e620cd438e5
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022201"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115920"
 ---
 # <a name="pool-delete-start-event"></a>Událost zahájení odstranění fondu
 
- Tato událost je vyzařována při spuštění operace odstranění fondu. Vzhledem k tomu, že odstranění fondu je asynchronní událost, můžete očekávat, že fond odstranit úplnou událost, která má být vyzařována po dokončení operace odstranění.
+ Tato událost je generována při spuštění operace odstranění fondu. Vzhledem k tomu, že odstranění fondu představuje asynchronní událost, můžete očekávat, že událost odstranění fondu bude po dokončení operace odstranění vygenerována.
 
- Následující příklad ukazuje tělo události odstranění odstranění fondu.
+ Následující příklad ukazuje tělo události spuštění odstranění fondu.
 
 ```
 {
@@ -30,6 +23,6 @@ ms.locfileid: "77022201"
 }
 ```
 
-|Element|Typ|Poznámky|
+|Prvek|Typ|Poznámky|
 |-------------|----------|-----------|
-|`id`|Řetězec|ID bazénu.|
+|`id`|Řetězec|ID fondu|

@@ -1,6 +1,6 @@
 ---
-title: Kurz – Import certifikátu v trezoru klíčů pomocí portálu Azure | Dokumenty společnosti Microsoft
-description: Kurz, který ukazuje, jak importovat certifikát v úložišti klíčů Azure
+title: Kurz – Import certifikátu v Key Vault pomocí Azure Portal | Microsoft Docs
+description: Kurz ukazující Import certifikátu v Azure Key Vault
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -9,30 +9,30 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/03/2020
+ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 754f30f7931f9fad6a95328cbf8ab34f70cb75a0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9496173ee006c6ca3cab557f4e63ec21647ad0fd
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423107"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82105569"
 ---
-# <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Kurz: Import certifikátu v trezoru klíčů Azure
+# <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Kurz: Import certifikátu v Azure Key Vault
 
-Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných kódů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto kurzu vytvoříte trezor klíčů a pak ho použijete k importu certifikátu. Další informace o službě Key Vault najdete v tématu [Přehled](../general/overview.md).
+Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných kódů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto kurzu vytvoříte Trezor klíčů a pak ho použijete k importu certifikátu. Další informace o službě Key Vault najdete v tématu [Přehled](../general/overview.md).
 
 V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > * Vytvoření trezoru klíčů
-> * Importujte certifikát v trezoru klíčů pomocí portálu.
-> * Importujte certifikát v trezoru klíčů pomocí funkce cli.
+> * Importujte certifikát do trezoru klíčů pomocí portálu.
+> * Importujte certifikát do trezoru klíčů pomocí rozhraní příkazového řádku.
 
 
-Než začnete, přečtěte si [základní koncepty trezoru klíčů](../general/basic-concepts.md). 
+Než začnete, přečtěte si téma [Key Vault Basic koncepty](../general/basic-concepts.md). 
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -40,53 +40,56 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
-1. V nabídce Portál Azure nebo na **domovské** stránce vyberte **Vytvořit prostředek**.
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
 2. Do vyhledávacího pole zadejte **Key Vault**.
 3. V seznamu výsledků zvolte **Key Vault**.
 4. V části Key Vault zvolte **Vytvořit**.
 5. V části **Vytvořit trezor klíčů** zadejte následující informace:
-    - **Název:** Je potřeba zadat jedinečný název. Pro tento rychlý start používáme **Example-Vault**. 
+    - **Název:** Je potřeba zadat jedinečný název. V tomto rychlém startu používáme **příklad – trezor**. 
     - **Předplatné:** Zvolte předplatné.
-    - V části **Skupina prostředků**zvolte **Vytvořit nový** a zadejte název skupiny prostředků.
+    - V části **Skupina prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
     - V rozevírací nabídce **Umístění** zvolte umístění.
     - U ostatních možností ponechte jejich výchozí hodnoty.
 6. Po zadání výše uvedených informací vyberte **Vytvořit**.
 
 Poznamenejte si hodnoty dvou vlastností uvedených níže:
 
-* **Název trezoru**: V příkladu je to **Example-Vault**. Tento název budete používat pro další kroky.
+* **Název trezoru**: v tomto příkladu je to **příklad – trezor**. Tento název budete používat pro další kroky.
 * **Identifikátor URI trezoru:** V tomto příkladu je to https://example-vault.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět operace s tímto novým trezorem.
 
 ![Výstup po dokončení vytváření služby Key Vault](../media/certificates/tutorial-import-cert/vault-properties.png)
 
-## <a name="import-a-certificate-to-key-vault"></a>Import certifikátu do trezoru klíčů
+## <a name="import-a-certificate-to-key-vault"></a>Import certifikátu do Key Vault
 
-Chcete-li importovat certifikát do úložiště, musíte mít soubor certifikátu PEM nebo PFX, abyste mohli být na disku. V takovém případě importujeme certifikát s názvem **ExampleCertificate**.
+Pokud chcete importovat certifikát do trezoru, musíte mít soubor certifikátu PEM nebo PFX, který bude na disku. V tomto případě naimportujeme certifikát s názvem souboru s názvem **ExampleCertificate**.
 
 > [!IMPORTANT]
-> V trezoru klíčů Azure jsou podporované formáty certifikátů PFX a PEM. 
-> - Formát souboru .pem obsahuje jeden nebo více souborů certifikátů X509.
-> - Formát souboru .pfx je formát archivního souboru pro ukládání několika kryptografických objektů do jednoho souboru, tj.  
+> V Azure Key Vault jsou podporované formáty certifikátů: PFX a PEM. 
+> - Formát souboru. pem obsahuje jeden nebo více souborů certifikátu x509.
+> - Formát souboru. PFX je formát archivního souboru pro ukládání několika kryptografických objektů do jednoho souboru, tj. certifikát serveru (vydaný pro vaši doménu), odpovídajícího privátního klíče a volitelně může zahrnovat zprostředkující certifikační autoritu.  
 
-1. Na stránkách vlastností trezoru klíčů vyberte **certifikáty**.
+1. Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
 2. Klikněte na **Vygenerovat/importovat**.
-3. Na obrazovce **Vytvořit certifikát zvolte** následující hodnoty:
-    - **Způsob vytváření certifikátů**: Import.
+3. Na obrazovce **vytvořit certifikát** vyberte následující hodnoty:
+    - **Metoda vytvoření certifikátu**: import.
     - **Název certifikátu**: ExampleCertificate.
-    - **Nahrát soubor certifikátu**: vyberte soubor certifikátu z disku
-    - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na **Vytvořit**.
+    - **Nahrát soubor certifikátu**: vyberte soubor certifikátu z disku.
+    - **Heslo** : Pokud nahráváte soubor certifikátu chráněný heslem, zadejte toto heslo sem. V opačném případě ponechte prázdné. Po úspěšném importu souboru certifikátu odstraní Trezor klíčů toto heslo.
+4. Klikněte na **Vytvořit**.
 
 ![Vlastnosti certifikátu](../media/certificates/tutorial-import-cert/cert-import.png)
 
-Jakmile obdržíte zprávu, že certifikát byl úspěšně importován, můžete na něj kliknout v seznamu. Poté můžete zobrazit některé z jeho vlastností. 
+Když přidáte certifikát pomocí metody **importování** , služba Azure Key trezor automaticky naplní parametry certifikátu (tj. období platnosti, název vystavitele, datum aktivace atd.).
+
+Jakmile se zobrazí zpráva o úspěšném importu certifikátu, můžete na něj kliknout v seznamu a zobrazit jeho vlastnosti. 
 
 ![Vlastnosti certifikátu](../media/certificates/tutorial-import-cert/current-version-hidden.png)
 
-## <a name="import-a-certificate-using-azure-cli"></a>Import certifikátu pomocí azure cli
+## <a name="import-a-certificate-using-azure-cli"></a>Import certifikátu pomocí Azure CLI
 
-Importujte certifikát do zadaného trezoru klíčů. Chcete-li importovat existující platný certifikát obsahující soukromý klíč do trezoru klíčů Azure, soubor, který má být importován, může být ve formátu PFX nebo PEM. Pokud je certifikát ve formátu PEM, musí soubor PEM obsahovat klíče i certifikáty x509. Tato operace vyžaduje certifikáty/oprávnění k importu.
+Importuje certifikát do zadaného trezoru klíčů. Pokud chcete importovat existující platný certifikát, který obsahuje privátní klíč, do Azure Key Vault, soubor, který se má importovat, může být ve formátu PFX nebo PEM. Pokud je certifikát ve formátu PEM, musí soubor PEM obsahovat klíč i certifikáty x509. Tato operace vyžaduje oprávnění k certifikátům a importu.
 
 ```azurecli
 az keyvault certificate import --file
@@ -99,7 +102,23 @@ az keyvault certificate import --file
                                [--subscription]
                                [--tags]
 ```
-Další informace o parametrech [naleznete zde](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)
+Další informace o [těchto parametrech](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)
+
+Po importu certifikátu si můžete certifikát zobrazit pomocí [zobrazení certifikátu](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) .
+
+
+```azurecli
+az keyvault certificate show [--id]
+                             [--name]
+                             [--only-show-errors]
+                             [--subscription]
+                             [--vault-name]
+                             [--version]
+```
+
+
+
+Nyní jste vytvořili Trezor klíčů, importovali certifikát a zobrazili jste vlastnosti certifikátu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -113,8 +132,8 @@ Až nebudete prostředky potřebovat, odstraňte jejich skupinu. Tím odstranít
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili trezor klíčů a importovali v něm certifikát. Chcete-li se dozvědět více o trezoru klíčů a o tom, jak jej integrovat s aplikacemi, pokračujte v následujících článcích.
+V tomto kurzu jste vytvořili Key Vault a importovali do něj certifikát. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
-- Další informace o [správě certifikátů v úložišti klíčů Azure](/archive/blogs/kv/manage-certificates-via-azure-key-vault)
-- Zobrazit příklady [importu certifikátů pomocí repoziturek REST API](/rest/api/keyvault/importcertificate/importcertificate)
-- Kontrola [doporučených postupů azure key vaultu](../general/best-practices.md)
+- Přečtěte si další informace o [správě vytváření certifikátů v Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)
+- Podívejte se na příklady [importu certifikátů pomocí rozhraní REST API](/rest/api/keyvault/importcertificate/importcertificate) .
+- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)

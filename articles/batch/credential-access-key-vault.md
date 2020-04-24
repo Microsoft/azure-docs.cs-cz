@@ -1,49 +1,43 @@
 ---
-title: Bezpečný přístup k trezoru klíčů s batch – Azure Batch
-description: Zjistěte, jak programově přistupovat k přihlašovacím údajům z trezoru klíčů pomocí Azure Batch.
-services: batch
-author: laurenhughes
-manager: gwallace
-ms.service: batch
-ms.workload: big-compute
+title: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
+description: Naučte se programově přistupovat k přihlašovacím údajům z Key Vault pomocí Azure Batch.
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: lahugh
-ms.openlocfilehash: 0134e7d92ddca9bd3b45abaf642f33de9d209b33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d24904c3a539431e8aff420e9fbd8291cddde78a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78192298"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117450"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Zabezpečený přístup ke Key Vaultu s využitím služby Batch
 
-V tomto článku se dozvíte, jak nastavit dávkové uzly pro bezpečný přístup k přihlašovacím údajům uloženým v úložišti klíčů Azure. Nemá smysl umisčovat přihlašovací údaje správce do trezoru klíčů a pak pevně kódovat přihlašovací údaje pro přístup k trezoru klíčů ze skriptu. Řešením je použití certifikátu, který uděluje dávkovým uzlům přístup k trezoru klíčů. Pomocí několika kroků můžeme implementovat zabezpečené úložiště klíčů pro Batch.
+V tomto článku se dozvíte, jak nastavit uzly Batch pro zabezpečený přístup k přihlašovacím údajům uloženým v Azure Key Vault. K dispozici není žádný bod pro vložení přihlašovacích údajů správce do Key Vault a pak pevně zakódování přihlašovacích údajů pro přístup Key Vault ze skriptu. Řešením je použít certifikát, který uděluje uzlům služby Batch přístup k Key Vault. Pomocí několika kroků můžeme implementovat zabezpečené úložiště klíčů pro dávku.
 
-K ověření do trezoru klíčů Azure z uzlu Batch potřebujete:
+K ověření Azure Key Vault z uzlu Batch budete potřebovat:
 
-- Přihlašovací údaje služby Azure Active Directory (Azure AD)
+- Přihlašovací údaje pro Azure Active Directory (Azure AD)
 - Certifikát
-- Dávkový účet
+- Účet Batch
 - Fond dávek s alespoň jedním uzlem
 
 ## <a name="obtain-a-certificate"></a>Získání certifikátu
 
-Pokud certifikát ještě nemáte, nejjednodušší způsob, jak ho získat, je vygenerovat `makecert` certifikát podepsaný svým držitelem pomocí nástroje příkazového řádku.
+Pokud certifikát ještě nemáte, nejjednodušší způsob, jak ho získat, je vytvořit certifikát podepsaný svým držitelem pomocí nástroje `makecert` příkazového řádku.
 
-Obvykle můžete najít `makecert` v této `C:\Program Files (x86)\Windows Kits\10\bin\<arch>`cestě: . Otevřete příkazový řádek jako `makecert` správce a přejděte k následujícímu příkladu.
+Obvykle můžete najít `makecert` v této cestě: `C:\Program Files (x86)\Windows Kits\10\bin\<arch>`. Otevřete příkazový řádek jako správce a přejděte k `makecert` části použití následujícího příkladu.
 
 ```console
 cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 ```
 
-Dále pomocí `makecert` nástroje vytvořte soubory certifikátů `batchcertificate.cer` `batchcertificate.pvk`podepsané svým držitelem s názvem a . Běžný název (CN) používá není důležité pro tuto aplikaci, ale je užitečné, aby bylo něco, co vám řekne, co certifikát se používá pro.
+Dále použijte `makecert` nástroj k vytvoření souborů certifikátů podepsaných svým držitelem s `batchcertificate.cer` názvem `batchcertificate.pvk`a. Použitý běžný název (CN) není pro tuto aplikaci důležitý, ale je vhodné ho využít k tomu, abyste si využívali, k čemu se certifikát používá.
 
 ```console
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Dávka vyžaduje `.pfx` soubor. Pomocí nástroje [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) převeďte `.cer` soubory a `.pvk` vytvořené `makecert` na jeden `.pfx` soubor.
+Batch vyžaduje `.pfx` soubor. Použijte nástroj [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) `.cer` k převodu souborů `.pvk` a vytvořených pomocí `makecert` do jediného `.pfx` souboru.
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po
@@ -51,12 +45,12 @@ pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificat
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Přístup k trezoru klíčů je udělen **uživateli** nebo **instančnímu objektu**. Chcete-li programově přistupovat k trezoru klíčů, použijte instanční objekt s certifikátem, který jsme vytvořili v předchozím kroku.
+Přístup k Key Vault je udělen buď **uživateli** , nebo **instančnímu objektu**. Pro přístup k Key Vault programově použijte instanční objekt s certifikátem, který jsme vytvořili v předchozím kroku.
 
-Další informace o objektech služby Azure najdete v tématu [Objekty za registrovaných aplikací a služeb ve službě Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
+Další informace o instančních objektech Azure najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
 > [!NOTE]
-> Instanční objekt musí být ve stejném tenantovi Azure AD jako trezor klíčů.
+> Instanční objekt musí být ve stejném tenantovi služby Azure AD jako Key Vault.
 
 ```powershell
 $now = [System.DateTime]::Parse("2020-02-10")
@@ -73,11 +67,11 @@ $newADApplication = New-AzureRmADApplication -DisplayName "Batch Key Vault Acces
 $newAzureAdPrincipal = New-AzureRmADServicePrincipal -ApplicationId $newADApplication.ApplicationId
 ```
 
-Adresy URL aplikace nejsou důležité, protože je používáme pouze pro přístup k trezoru klíčů.
+Adresy URL pro aplikaci nejsou důležité, protože je používáme pro přístup k Key Vault.
 
-## <a name="grant-rights-to-key-vault"></a>Udělení práv trezoru klíčů
+## <a name="grant-rights-to-key-vault"></a>Udělit práva Key Vault
 
-Instanční objekt vytvořený v předchozím kroku potřebuje oprávnění k načtení tajných klíčů z trezoru klíčů. Oprávnění lze udělit buď prostřednictvím portálu Azure nebo pomocí příkazu PowerShell níže.
+Instanční objekt vytvořený v předchozím kroku potřebuje oprávnění k načtení tajných kódů z Key Vault. Oprávnění lze udělit buď prostřednictvím Azure Portal, nebo pomocí příkazu PowerShellu níže.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -85,15 +79,15 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 ## <a name="assign-a-certificate-to-a-batch-account"></a>Přiřazení certifikátu k účtu Batch
 
-Vytvořte fond dávek, přejděte na kartu certifikátu ve fondu a přiřaďte certifikát, který jste vytvořili. Certifikát je nyní na všech uzlech batch.
+Vytvořte fond dávek a pak ve fondu klikněte na kartu certifikát a přiřaďte certifikát, který jste vytvořili. Certifikát je nyní na všech uzlech Batch.
 
-Dále musíme přiřadit certifikát k účtu Batch. Přiřazení certifikátu k účtu nám umožňuje přiřadit jej do fondů a potom k uzlům. Nejjednodušší způsob, jak to udělat, je přejít na svůj účet Batch na portálu, přejít na **certifikáty**a vybrat **přidat**. Nahrajte `.pfx` soubor, který jsme vygenerovali, v [nabídce Získat certifikát](#obtain-a-certificate) a zadejte heslo. Po dokončení je certifikát přidán do seznamu a můžete ověřit kryptografický otisk.
+Dál je potřeba přiřadit k účtu Batch certifikát. Když k účtu přiřadíte certifikát, umožníme mu přiřadit fondy a pak uzly. Nejjednodušší způsob, jak to provést, je přejít na účet Batch na portálu, přejít na **certifikáty**a vybrat **Přidat**. Nahrajte `.pfx` soubor, který jsme vygenerovali v části [získání certifikátu](#obtain-a-certificate) , a zadejte heslo. Po dokončení se certifikát přidá do seznamu a tento kryptografický otisk můžete ověřit.
 
-Nyní, když vytvoříte fond dávek, můžete přejít na **certifikáty** v rámci fondu a přiřadit certifikát, který jste vytvořili do tohoto fondu. Pokud tak učiníte, ujistěte se, že vyberete **LocalMachine** pro umístění úložiště. Certifikát je načten na všechny uzly dávky ve fondu.
+Když teď vytvoříte fond služby Batch, můžete přejít na **certifikáty** v rámci fondu a přiřadit certifikát, který jste vytvořili do tohoto fondu. Když to uděláte, ujistěte se, že jste pro umístění úložiště vybrali možnost **LocalMachine** . Certifikát je načtený na všech uzlech Batch ve fondu.
 
 ## <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
 
-Pokud máte v plánu získat přístup k trezoru klíčů pomocí skriptů PowerShellu ve svých uzlech, budete potřebovat nainstalovanou knihovnu Azure PowerShellu. Existuje několik způsobů, jak to udělat, pokud vaše uzly mají nainstalována rozhraní WMF (Windows Management Framework) 5, pak můžete použít příkaz install-module ke stažení. Pokud používáte uzly, které nemají WMF 5, nejjednodušší způsob, jak ji nainstalovat, je svázat soubor Azure PowerShell `.msi` se soubory Batch a pak zavolat instalační program jako první část spouštěcího skriptu Batch. Podrobnosti najdete v tomto příkladu:
+Pokud plánujete přístup k Key Vault pomocí skriptů PowerShellu na uzlech, budete potřebovat nainstalovanou knihovnu Azure PowerShell. Existuje několik způsobů, jak to provést, pokud jsou v uzlech nainstalované rozhraní Windows Management Framework (WMF) 5, můžete ho stáhnout pomocí příkazu install-Module. Pokud používáte uzly, které nemají WMF 5, nejjednodušší způsob, jak ji nainstalovat, je soubor Azure PowerShell `.msi` pomocí dávkových souborů odinstalujte a potom zavolejte instalační program jako první část spouštěcího skriptu služby Batch. Podrobnosti najdete v tomto příkladu:
 
 ```powershell
 $psModuleCheck=Get-Module -ListAvailable -Name Azure -Refresh
@@ -104,16 +98,16 @@ if($psModuleCheck.count -eq 0) {
 
 ## <a name="access-key-vault"></a>Přístup ke službě Key Vault
 
-Nyní jsme všichni nastavení pro přístup k trezoru klíčů ve skriptech běžících na uzlech Batch. Chcete-li získat přístup k trezoru klíčů ze skriptu, vše, co potřebujete, je, aby se skript ověřil proti službě Azure AD pomocí certifikátu. Chcete-li to provést v prostředí PowerShell, použijte následující ukázkové příkazy. Zadejte příslušný identifikátor GUID pro **kryptografický otisk**, **ID aplikace** (ID instančního **objektu) a ID klienta** (klient, kde instanční objekt existuje).
+Nyní máme všechna nastavení pro přístup k Key Vault ve skriptech spuštěných na uzlech Batch. Aby bylo možné získat přístup k Key Vault ze skriptu, stačí pro váš skript ověřit službu Azure AD pomocí certifikátu. Pokud to chcete provést v prostředí PowerShell, použijte následující příklady příkazů. Zadejte odpovídající identifikátor GUID pro **kryptografický otisk**, **ID aplikace** (ID objektu služby) a **ID tenanta** (tenant, ve kterém se nachází instanční objekt).
 
 ```powershell
 Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId
 ```
 
-Po ověření, přístup KeyVault, jak byste normálně.
+Po ověření se přístup k trezoru klíčů vyřadí obvyklým způsobem.
 
 ```powershell
 $adminPassword=Get-AzureKeyVaultSecret -VaultName BatchVault -Name batchAdminPass
 ```
 
-Toto jsou pověření, která chcete použít ve skriptu.
+Toto jsou přihlašovací údaje, které se mají použít ve vašem skriptu.

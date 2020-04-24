@@ -1,15 +1,15 @@
 ---
-title: Kurz – obnovení disku virtuálního počítače pomocí azure backupu
+title: Kurz – obnovení disku virtuálního počítače pomocí Azure Backup
 description: Zjistěte, jak obnovit disk a vytvořit obnovený virtuální počítač v Azure pomocí služeb Backup a Recovery Services.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 8a66cee7e844f0049f2d2ca2f6841943aa267f3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 31e2645a4a627793f13c37c543d9e08240e06930
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238731"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113693"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Obnovení disku a vytvoření obnoveného virtuálního počítače v Azure
 
@@ -27,7 +27,7 @@ Informace o obnovení disku a vytvoření chráněného počítače pomocí Powe
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.18 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Tento kurz vyžaduje virtuální počítač s Linuxem chráněný službou Azure Backup. Pro simulaci náhodného odstranění virtuálního počítače a procesu obnovení vytvoříte virtuální počítač z disku v bodu obnovení. Pokud potřebujete virtuální počítač s Linuxem chráněný pomocí služby Azure Backup, přečtěte si téma [Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku](quick-backup-vm-cli.md).
 
@@ -59,11 +59,11 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Obnovení disku virtuálního počítače
 
 > [!IMPORTANT]
-> Důrazně doporučujeme použít az CLI verze 2.0.74 nebo novější, abyste získali všechny výhody rychlého obnovení včetně spravovaného obnovení disku. To je nejlepší, pokud uživatel vždy používá nejnovější verzi.
+> Důrazně se doporučuje použít AZ CLI verze 2.0.74 nebo novější, abyste získali všechny výhody rychlého obnovení, včetně obnovení spravovaného disku. Je nejvhodnější, pokud uživatel vždycky používá nejnovější verzi.
 
 ### <a name="managed-disk-restore"></a>Obnovení spravovaného disku
 
-Pokud zálohovaný virtuální počítač má spravované disky a pokud je záměrem obnovit spravované disky z bodu obnovení, nejprve zadejte účet úložiště Azure. Tento účet úložiště se používá k ukládání konfigurace virtuálního počítače a šablony nasazení, které lze později použít k nasazení virtuálního počítače z obnovených disků. Potom také zadat cílovou skupinu prostředků pro spravované disky, které mají být obnoveny do.
+Pokud má zálohovaný virtuální počítač spravované disky a záměr obnovovat spravované disky z bodu obnovení, musíte nejdřív zadat účet úložiště Azure. Tento účet úložiště se používá k uložení konfigurace virtuálního počítače a šablony nasazení, které se dají později použít k nasazení virtuálního počítače z obnovených disků. Pak zadáte také cílovou skupinu prostředků, do které se mají načíst spravované disky.
 
 1. Účet úložiště vytvoříte pomocí příkazu [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). Název účtu úložiště musí být malými písmeny a globálně jedinečný. Nahraďte *mystorageaccount* vlastním jedinečným názvem:
 
@@ -74,7 +74,7 @@ Pokud zálohovaný virtuální počítač má spravované disky a pokud je zám�
         --sku Standard_LRS
     ```
 
-2. Obnovte disk z bodu obnovení pomocí příkazu [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks). Nahraďte *mystorageaccount* názvem účtu úložiště, který jste vytvořili v předchozím příkazu. Nahraďte *název myRecoveryPointName* názvem bodu obnovení, který jste získali ve výstupu z předchozího příkazu [seznamu az zálohování recoverypoint.](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) ***Poskytněte také cílovou skupinu prostředků, do které jsou spravované disky obnoveny.***
+2. Obnovte disk z bodu obnovení pomocí příkazu [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks). Nahraďte *mystorageaccount* názvem účtu úložiště, který jste vytvořili v předchozím příkazu. Nahraďte *myrecoverypointname názvem* názvem bodu obnovení, který jste získali ve výstupu z předchozího příkazu [AZ Backup RecoveryPoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) . ***Zadejte taky cílovou skupinu prostředků, do které se budou spravované disky obnovují***.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -88,11 +88,23 @@ Pokud zálohovaný virtuální počítač má spravované disky a pokud je zám�
     ```
 
 > [!WARNING]
-> Pokud cílová skupina prostředků není k dispozici, budou spravované disky obnoveny jako nespravované disky do daného účtu úložiště. To bude mít významné důsledky pro dobu obnovení od doby, která byla doba, která byla provedena k obnovení disků zcela závisí na daném účtu úložiště.
+> Pokud není zadaná cílová skupina prostředků, pak se spravované disky obnoví jako nespravované disky do daného účtu úložiště. To bude mít významné důsledky k době obnovení, protože doba potřebná k obnovení disků zcela závisí na daném účtu úložiště. Zákazníci získají výhodu okamžitého obnovení jenom v případě, že je zadaný parametr Target-Resource-Group. Pokud je záměrem obnovit spravované disky jako nespravované, pak Neposkytněte parametr Target-Resource-Group a místo toho zadejte parametr Restore-as-unmanaged-disk, jak je uvedeno níže. Tento parametr je k dispozici z AZ 3.4.0 a dál.
+
+    ```azurecli-interactive
+    az backup restore restore-disks \
+        --resource-group myResourceGroup \
+        --vault-name myRecoveryServicesVault \
+        --container-name myVM \
+        --item-name myVM \
+        --storage-account mystorageaccount \
+        --rp-name myRecoveryPointName
+        --restore-as-unmanaged-disk
+    ```
+Tato akce obnoví spravované disky jako nespravované disky do daného účtu úložiště a nebude využívat funkci okamžitého obnovení. V budoucích verzích rozhraní příkazového řádku bude povinná zadat buď parametr Target-Resource-Group, nebo možnost Restore as-unmanaged-disk.
 
 ### <a name="unmanaged-disks-restore"></a>Obnovení nespravovaných disků
 
-Pokud zálohovaný virtuální počítač má nespravované disky a pokud je záměrem obnovit disky z bodu obnovení, nejprve zadejte účet úložiště Azure. Tento účet úložiště se používá k ukládání konfigurace virtuálního počítače a šablony nasazení, které lze později použít k nasazení virtuálního počítače z obnovených disků. Ve výchozím nastavení budou nespravované disky obnoveny do původních účtů úložiště. Pokud si uživatel přeje obnovit všechny nespravované disky na jedno místo, může být daný účet úložiště také použit jako pracovní umístění pro tyto disky.
+Pokud zálohovaný virtuální počítač obsahuje nespravované disky a záměr obnovovat disky z bodu obnovení, nejprve zadáte účet úložiště Azure. Tento účet úložiště se používá k uložení konfigurace virtuálního počítače a šablony nasazení, které se dají později použít k nasazení virtuálního počítače z obnovených disků. Ve výchozím nastavení se nespravované disky obnoví do původních účtů úložiště. Pokud si uživatel přeje obnovit na jednom místě všechny nespravované disky, pak se daný účet úložiště dá také použít jako pracovní umístění pro tyto disky.
 
 V dalších krocích se obnovený disk použije k vytvoření virtuálního počítače.
 
@@ -117,7 +129,7 @@ V dalších krocích se obnovený disk použije k vytvoření virtuálního poč
         --rp-name myRecoveryPointName
     ```
 
-Jak bylo uvedeno výše, nespravované disky budou obnoveny do původního účtu úložiště. To poskytuje nejlepší výkon obnovení. Ale pokud všechny nespravované disky je třeba obnovit do daného účtu úložiště, použijte příslušný příznak, jak je znázorněno níže.
+Jak bylo uvedeno výše, nespravované disky budou obnoveny do původního účtu úložiště. To poskytuje nejlepší výkon při obnovení. Pokud ale potřebujete obnovit všechny nespravované disky do daného účtu úložiště, použijte odpovídající příznak, jak je uvedeno níže.
 
 ```azurecli-interactive
     az backup restore restore-disks \
@@ -151,15 +163,15 @@ a0a8e5e6  Backup           Completed   myvm         2017-09-19T03:09:21  0:15:26
 fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31.191807
 ```
 
-Po *dokončení sestavy úlohy* obnovení *byly*do účtu úložiště obnoveny potřebné informace (konfigurace virtuálního počítače a šablona nasazení).
+Po dokončení *stavu* sestav úlohy obnovení budou v *Completed*účtu úložiště obnoveny potřebné informace (konfigurace virtuálních počítačů a šablona nasazení).
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>Vytvoření virtuálního počítače z obnoveného disku
 
 Posledním krokem je vytvoření virtuálního počítače z obnovených disků. K vytvoření virtuálního počítače můžete použít šablonu nasazení staženou do daného účtu úložiště.
 
-### <a name="fetch-the-job-details"></a>Načtení podrobností o úloze
+### <a name="fetch-the-job-details"></a>Načtení podrobností úlohy
 
-Podrobnosti výsledné úlohy poskytují identifikátor URI šablony, který lze dotazovat a nasazovat. Pomocí příkazu zobrazení úlohy získáte další podrobnosti o spuštěné obnovené úloze.
+Výsledné Podrobnosti úlohy poskytují identifikátor URI šablony, který lze dotazovat a nasadit. Další podrobnosti o aktivované obnovené úloze získáte pomocí příkazu úlohy show.
 
 ```azurecli-interactive
 az backup job show \
@@ -168,7 +180,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-Výstup tohoto dotazu bude udávat všechny podrobnosti, ale máme zájem pouze o obsah účtu úložiště. Můžete použít [možnosti dotazu](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest) Azure CLI načíst příslušné podrobnosti
+Výstup tohoto dotazu poskytne všechny podrobnosti, ale zajímá se jenom o obsah účtu úložiště. K načtení relevantních podrobností můžeme použít [Možnosti dotazů](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest) rozhraní příkazového řádku Azure CLI.
 
 ```azurecli-interactive
 az backup job show \
@@ -191,9 +203,9 @@ az backup job show \
 
 ### <a name="fetch-the-deployment-template"></a>Načtení šablony nasazení
 
-Šablona není přímo přístupná, protože je pod účtem úložiště zákazníka a daným kontejnerem. Potřebujeme úplnou adresu URL (spolu s dočasným tokenem SAS) pro přístup k této šabloně.
+Šablona není přímo dostupná, protože se nachází v účtu úložiště zákazníka a v daném kontejneru. Pro přístup k této šabloně potřebujeme úplnou adresu URL (spolu s dočasným tokenem SAS).
 
-Nejprve extrahujte objekt blob Uri šablony z podrobností o úloze
+Nejdřív z podrobností úlohy rozbalte identifikátor URI objektu BLOB šablony.
 
 ```azurecli-interactive
 az backup job show \
@@ -205,15 +217,15 @@ az backup job show \
 "https://mystorageaccount.blob.core.windows.net/myVM-daa1931199fd4a22ae601f46d8812276/azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json"
 ```
 
-Objekt BLOB šablony Uri bude tohoto formátu a extrahovat název šablony
+Identifikátor URI objektu BLOB šablony bude v tomto formátu a extrahuje název šablony.
 
 ```https
 https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
 ```
 
-Takže název šablony z výše uvedeného příkladu bude ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` a název kontejneru je```myVM-daa1931199fd4a22ae601f46d8812276```
+Proto název šablony z výše uvedeného příkladu bude ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` a název kontejneru bude```myVM-daa1931199fd4a22ae601f46d8812276```
 
-Nyní získejte token SAS pro tento kontejner a šablonu, jak [je podrobně popsáno zde](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment)
+Nyní Získejte token SAS pro tento kontejner a šablonu, jak je popsáno [zde](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment) .
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -235,9 +247,9 @@ url=$(az storage blob url \
     --connection-string $connection)
 ```
 
-### <a name="deploy-the-template-to-create-the-vm"></a>Nasazení šablony k vytvoření virtuálního počítače
+### <a name="deploy-the-template-to-create-the-vm"></a>Nasazením šablony vytvoříte virtuální počítač.
 
-Teď nasadíte šablonu k vytvoření virtuálního počítače, jak je vysvětleno [zde](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli).
+Nyní nasaďte šablonu k vytvoření virtuálního počítače, jak je vysvětleno [zde](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli).
 
 ```azurecli-interactive
 az group deployment create \

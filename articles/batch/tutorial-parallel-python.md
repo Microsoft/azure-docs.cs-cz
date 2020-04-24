@@ -1,21 +1,16 @@
 ---
-title: Spuštění paralelní úlohy – Azure Batch Python
+title: Spuštění paralelní úlohy
 description: Kurz – Zpracování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch Python
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: d4277e383a5cb69ef5395cb6dc477d888abd1d0d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 32e42fe04ad8ce55bbbbb90e5aca6356fd1c6f22
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77023085"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117110"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní Python API
 
@@ -33,17 +28,17 @@ V tomto kurzu pomocí open source nástroje [ffmpeg](https://ffmpeg.org/) parale
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * [Python verze 2.7 nebo 3.3 nebo novější](https://www.python.org/downloads/)
 
-* [správce](https://pip.pypa.io/en/stable/installing/) balíčků pip
+* Správce balíčků [PIP](https://pip.pypa.io/en/stable/installing/)
 
 * Účet Azure Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 
@@ -65,7 +60,7 @@ Ve prostředí Pythonu nainstalujte vyžadované balíčky pomocí `pip`.
 pip install -r requirements.txt
 ```
 
-Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s jedinečnými hodnotami pro vaše účty. Například:
+Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s jedinečnými hodnotami pro vaše účty. Příklad:
 
 
 ```Python
@@ -107,7 +102,7 @@ Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Fond, výpočetní uzly, úlohy a úkoly můžete sledovat ve svém účtu Batch na webu Azure Portal. Chcete-li například zobrazit tepelnou mapu výpočetních uzlů ve fondu, klepněte na **položku Fondy** > *LinuxFFmpegPool*.
+Fond, výpočetní uzly, úlohy a úkoly můžete sledovat ve svém účtu Batch na webu Azure Portal. Pokud například chcete zobrazit Heat mapu výpočetních uzlů ve fondu, klikněte na **fondy** > *LinuxFFmpegPool*.
 
 Když jsou úkoly spuštěné, heat mapa vypadá přibližně takto:
 
@@ -165,7 +160,7 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
 
-Na účtu Batch potom příklad pomocí volání `create_pool` vytvoří fond výpočetních uzlů. Tato definovaná funkce používá třídu služby Batch [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) k nastavení počtu uzlů, velikosti virtuálního počítače a konfigurace fondu. Zde objekt [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) určuje [imageReference](/python/api/azure-batch/azure.batch.models.imagereference) image na bitovou kopii Ubuntu Server 18.04 LTS publikovanou na Azure Marketplace. Batch podporuje širokou škálu imagí virtuálních počítačů v Azure Marketplace, ale i vlastní image virtuálních počítačů.
+Na účtu Batch potom příklad pomocí volání `create_pool` vytvoří fond výpočetních uzlů. Tato definovaná funkce používá třídu služby Batch [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) k nastavení počtu uzlů, velikosti virtuálního počítače a konfigurace fondu. Zde je objekt [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) určující [element imagereference](/python/api/azure-batch/azure.batch.models.imagereference) pro obrázek Ubuntu serveru 18,04 LTS publikovaný v Azure Marketplace. Batch podporuje širokou škálu imagí virtuálních počítačů v Azure Marketplace, ale i vlastní image virtuálních počítačů.
 
 Počet uzlů a velikost virtuálních počítačů jsou definované konstanty. Batch podporuje vyhrazené uzly a [uzly s nízkou prioritou](batch-low-pri-vms.md) a ve svých fondech můžete použít oba typy. Vyhrazené uzly jsou rezervované pro váš fond. Uzly s nízkou prioritou pocházejí z přebytečné kapacity virtuálních počítačů v Azure a nabízejí se za nižší cenu. Pokud Azure nemá dostatek kapacity, uzly s nízkou prioritou budou nedostupné. Ukázka ve výchozím nastavení vytvoří fond obsahující pouze 5 uzlů s nízkou prioritou ve velikosti *Standard_A1_v2*. 
 

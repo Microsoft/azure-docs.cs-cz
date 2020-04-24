@@ -1,6 +1,6 @@
 ---
-title: Použití SQL na vyžádání (náhled)
-description: V tomto rychlém startu uvidíte a dozvíte se, jak snadné je dotazovat různé typy souborů pomocí SQL na vyžádání (náhled).
+title: Používání SQL na vyžádání (Preview)
+description: V tomto rychlém startu se dozvíte, jak snadné je dotazování různých typů souborů pomocí SQL na vyžádání (Preview).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,66 +9,72 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d543abc88c1e45f2c1f5503473d8e92566fc582
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: d49918fc67a45419e5c7ca123642c48e689a1496
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457378"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113778"
 ---
-# <a name="quickstart-using-sql-on-demand"></a>Úvodní příručka: Použití sql na vyžádání
+# <a name="quickstart-using-sql-on-demand"></a>Rychlý Start: používání SQL na vyžádání
 
-Synapse SQL na vyžádání (preview) je bezserverová dotazovací služba, která umožňuje spouštět dotazy SQL na vaše soubory umístěné v Azure Storage. V tomto rychlém startu se dozvíte, jak dotazovat různé typy souborů pomocí SQL na vyžádání.
+Synapse SQL na vyžádání (Preview) je služba pro dotazování bez serveru, která umožňuje spouštět dotazy SQL na souborech umístěných v Azure Storage. V tomto rychlém startu se dozvíte, jak zadávat dotazy na různé typy souborů pomocí SQL na vyžádání.
 
 Podporovány jsou následující typy souborů: JSON, CSV, Apache Parquet
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-Zvolte klienta SQL pro vydávání dotazů:
+Zvolit klienta SQL pro vydávání dotazů:
 
-- [Azure Synapse Studio](quickstart-synapse-studio.md) je webový nástroj, který můžete použít k procházení souborů v úložišti a vytváření dotazu SQL.
-- [Azure Data Studio](sql/get-started-azure-data-studio.md) je klientský nástroj, který umožňuje spouštět dotazy sql a poznámkové bloky v databázi na vyžádání.
+- [Azure synapse Studio](quickstart-synapse-studio.md) je webový nástroj, který můžete použít k procházení souborů v úložišti a vytváření dotazů SQL.
+- [Azure Data Studio](sql/get-started-azure-data-studio.md) je klientský nástroj, který umožňuje spouštět dotazy a poznámkové bloky SQL v databázi na vyžádání.
 - [SQL Server Management Studio](sql/get-started-ssms.md) je klientský nástroj, který umožňuje spouštět dotazy SQL v databázi na vyžádání.
 
-Parametry pro rychlý start:
+Parametry pro rychlý Start:
 
 | Parametr                                 | Popis                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Adresa koncového bodu služby SQL na vyžádání    | Používá se jako název serveru                                   |
-| Oblast koncového bodu služby SQL na vyžádání     | Používá se k určení, jaké úložiště budeme používat ve vzorcích |
-| Uživatelské jméno a heslo pro přístup ke koncovému bodu | Slouží k přístupu ke koncovému bodu.                               |
-| Databáze použitá k vytvoření zobrazení         | Databáze použitá jako výchozí bod ve vzorcích       |
+| Adresa koncového bodu služby SQL na vyžádání    | Používá se jako název serveru.                                   |
+| Oblast koncového bodu služby SQL na vyžádání     | Slouží k určení, jaké úložiště se bude používat v ukázkách. |
+| Uživatelské jméno a heslo pro přístup ke koncovému bodu | Používá se pro přístup ke koncovému bodu.                               |
+| Databáze používaná k vytváření zobrazení         | Databáze použitá jako počáteční bod v ukázkách       |
 
-## <a name="first-time-setup"></a>První nastavení
+## <a name="first-time-setup"></a>Nastavení při prvním spuštění
 
-Před použitím vzorků:
+Před použitím ukázek:
 
-- Vytvoření databáze pro vaše zobrazení (v případě, že chcete zobrazení použít)
-- Vytvoření přihlašovacích údajů pro přístup k souborům v úložišti pomocí sql na vyžádání
+- Vytvoření databáze pro zobrazení (pro případ, že chcete použít zobrazení)
+- Vytvoření přihlašovacích údajů, které budou používat SQL na vyžádání pro přístup k souborům v úložišti
 
 ### <a name="create-database"></a>Vytvoření databáze
 
-Vytvořte si vlastní databázi pro ukázkové účely. Toto je databáze, ve které vytvoříte zobrazení. Tuto databázi použijte v ukázkových dotazech v tomto článku.
+Vytvořte si vlastní databázi pro demonstrační účely. Toto je databáze, ve které vytvoříte zobrazení. Tuto databázi použijte v ukázkových dotazech v tomto článku.
 
 > [!NOTE]
-> Databáze se používají pouze pro metadata zobrazení, nikoli pro skutečná data.
+> Databáze se používají jenom pro metadata zobrazení, ne pro skutečná data.
 >
 > Poznamenejte si název databáze, který použijete pro pozdější použití v rychlém startu.
 
-Použijte následující dotaz `mydbname` a přecházejte na název podle vašeho výběru:
+Použijte následující dotaz, který se `mydbname` změní na libovolný název:
 
 ```sql
 CREATE DATABASE mydbname
 ```
 
-### <a name="create-credentials"></a>Vytvoření přihlašovacích údajů
+### <a name="create-credentials"></a>Vytvořit pověření
 
-Chcete-li spouštět dotazy pomocí sql na vyžádání, vytvořte pověření pro SQL na vyžádání pro přístup k souborům v úložišti.
+Pokud chcete spouštět dotazy pomocí SQL na vyžádání, vytvořte přihlašovací údaje pro SQL na vyžádání, abyste je mohli použít pro přístup k souborům v úložišti.
 
 > [!NOTE]
-> Všimněte si, že je třeba vytvořit přihlašovací údaje pro přístup k účtu úložiště. Přestože SQL na vyžádání přístup k úložištím z různých oblastí, s úložiště a Azure Synapse pracovní ho prostoru ve stejné oblasti bude poskytovat lepší výkon prostředí.
+> Aby bylo možné úspěšně spustit ukázky v této části, je nutné použít token SAS.
+>
+> Chcete-li začít používat tokeny SAS, je třeba vyřadit UserIdentity, který je vysvětlen v následujícím [článku](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through).
+>
+> SQL na vyžádání ve výchozím nastavení vždy používá předávací průchozí služba AAD.
 
-Upravte následující fragment kódu a vytvořte pověření pro kontejnery CSV, JSON a Parquet:
+Další informace o tom, jak spravovat řízení přístupu k úložišti, najdete v tomto [odkazu](sql/develop-storage-files-storage-access-control.md).
+
+Spusťte následující fragment kódu k vytvoření přihlašovacích údajů použitých v ukázkách v této části:
 
 ```sql
 -- create credentials for containers in our demo storage account
@@ -84,13 +90,13 @@ SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-
 GO
 ```
 
-## <a name="querying-csv-files"></a>Dotazování souborů CSV
+## <a name="querying-csv-files"></a>Dotazování na soubory CSV
 
-Následující obrázek je náhled souboru, který má být dotazován:
+Následující obrázek je náhled souboru, který se má dotazovat:
 
-![Prvních 10 řádků souboru CSV bez záhlaví, Windows styl nový řádek.](./sql/media/query-single-csv-file/population.png)
+![Prvních 10 řádků souboru CSV bez záhlaví, nový řádek stylu Windows](./sql/media/query-single-csv-file/population.png)
 
-Následující dotaz ukazuje, jak číst soubor CSV, který neobsahuje řádek záhlaví, s novým řádkem ve stylu windows a sloupci oddělenými čárkami:
+Následující dotaz ukazuje, jak číst soubor CSV, který neobsahuje řádek záhlaví, s novým řádkem ve stylu Windows a s oddělovači sloupců oddělenými čárkami:
 
 ```sql
 SELECT TOP 10 *
@@ -110,15 +116,15 @@ WHERE
   country_name = 'Luxembourg' AND year = 2017
 ```
 
-Schéma můžete zadat v době kompilace dotazu.
-Další příklady naleznete v tématu, jak zadat [dotaz na soubor CSV](sql/query-single-csv-file.md).
+V době kompilace dotazu můžete zadat schéma.
+Další příklady najdete v tématu Postup [dotazování souboru CSV](sql/query-single-csv-file.md).
 
-## <a name="querying-parquet-files"></a>Dotazování na parketové soubory
+## <a name="querying-parquet-files"></a>Dotazování na soubory Parquet
 
-Následující ukázka ukazuje možnosti odvození automatického schématu pro dotazování parketových souborů. Vrátí počet řádků v září 2017 bez zadání schématu.
+Následující příklad ukazuje schopnosti automatického odvození schématu pro dotazování souborů Parquet. Vrátí počet řádků v září 2017 bez zadání schématu.
 
 > [!NOTE]
-> Při čtení parketových souborů `OPENROWSET WITH` není nutné zadávat sloupce v klauzuli. V takovém případě SQL na vyžádání využívá metadata v souboru parket a vázat sloupce podle názvu.
+> Při čtení souborů Parquet není nutné zadávat sloupce `OPENROWSET WITH` v klauzuli. V takovém případě SQL na vyžádání využívá metadata v souboru Parquet a sváže sloupce podle názvu.
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -129,13 +135,13 @@ FROM OPENROWSET
   ) AS nyc
 ```
 
-Další informace o [dotazování na parketové soubory](sql/query-parquet-files.md).
+Přečtěte si další informace o [dotazování na soubory Parquet](sql/query-parquet-files.md)].
 
 ## <a name="querying-json-files"></a>Dotazování na soubory JSON
 
 ### <a name="json-sample-file"></a>Ukázkový soubor JSON
 
-Soubory jsou *uloženy v kontejneru json,* *knihy*složek a obsahují jednu položku knihy s následující strukturou:
+Soubory jsou uloženy v kontejneru *JSON* , v *knihách*složek a obsahují jednu položku knihy s následující strukturou:
 
 ```json
 {  
@@ -155,7 +161,7 @@ Soubory jsou *uloženy v kontejneru json,* *knihy*složek a obsahují jednu polo
 
 ### <a name="querying-json-files"></a>Dotazování na soubory JSON
 
-Následující dotaz ukazuje, jak používat [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení skalárních hodnot (název, vydavatel) z knihy s názvem *Pravděpodobnostní a statistické metody v kryptologii, Úvod vybranými články*:
+Následující dotaz ukazuje, jak použít [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení skalárních hodnot (title, Publisher) z knihy s názvem *pravděpodobnostní a statistickými metodami v Cryptology, Úvod do vybraných článků*:
 
 ```sql
 SELECT
@@ -177,22 +183,22 @@ WHERE
 ```
 
 > [!IMPORTANT]
-> Čteme celý soubor JSON jako jeden řádek/sloupec, takže FIELDTERMINATOR, FIELDQUOTE a ROWTERMINATOR jsou nastaveny na 0x0b, protože neočekáváme, že jej v souboru najdeme.
+> Načetli jsme celý soubor JSON jako jeden řádek nebo sloupec, takže FIELDTERMINATOR, FIELDQUOTE a ROWTERMINATOR jsou nastavené na 0x0B, protože neočekáváme, že se v souboru nenajde.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste připraveni začít s následujícími články quickstart:
+Nyní jste připraveni začít s následujícími články pro rychlý Start:
 
 - [Dotaz na jeden soubor CSV](sql/query-single-csv-file.md)
 - [Složky dotazů a více souborů CSV](sql/query-folders-multiple-csv-files.md)
-- [Soubory specifické pro dotaz](sql/query-specific-files.md)
-- [Soubory parket dotazu](sql/query-parquet-files.md)
-- [Typy vnořených par dotazů](sql/query-parquet-nested-types.md)
-- [Dotaz na soubory JSON](sql/query-json-files.md)
+- [Dotazování konkrétních souborů](sql/query-specific-files.md)
+- [Dotazování souborů Parquet](sql/query-parquet-files.md)
+- [Dotazování vnořených typů Parquet](sql/query-parquet-nested-types.md)
+- [Dotazování souborů JSON](sql/query-json-files.md)
 - [Vytváření a používání zobrazení](sql/create-use-views.md)
 - [Vytváření a používání externích tabulek](sql/create-use-external-tables.md)
-- [Zachovat výsledek dotazu do úložiště Azure](sql/create-external-table-as-select.md)
+- [Uchovat výsledek dotazu do Azure Storage](sql/create-external-table-as-select.md)
 
-Přejdete k dalšímu článku a dozvíte se, jak zadat dotaz na jeden soubor CSV.
+V dalším článku se dozvíte, jak zadat dotaz na jeden soubor CSV.
 > [!div class="nextstepaction"]
 > [Dotaz na jeden soubor CSV](sql/query-single-csv-file.md)

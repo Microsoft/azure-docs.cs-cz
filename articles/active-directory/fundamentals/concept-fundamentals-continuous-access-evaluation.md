@@ -1,6 +1,6 @@
 ---
-title: Vyhodnocení nepřetržitého přístupu ve službě Azure AD
-description: Rychlejší reakce na změny ve stavu uživatele pomocí vyhodnocení nepřetržitého přístupu ve službě Azure AD
+title: Vyhodnocování průběžného přístupu v Azure AD
+description: Rychlejší reakce na změny v stavech uživatelů pomocí vyhodnocení průběžného přístupu v Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,86 +11,88 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b70c11cd6bc24f945b437decf22586cfb97557
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873300"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112571"
 ---
-# <a name="continuous-access-evaluation"></a>Hodnocení nepřetržitého přístupu
+# <a name="continuous-access-evaluation"></a>Vyhodnocování průběžného přístupu
 
-Služby Microsoftu, jako je Azure Active Directory (Azure AD) a Office 365, používají otevřené standardy a protokoly k maximalizaci interoperability. Jedním z nejkritičtějších je Open ID Connect (OIDC). Když se klientská aplikace, jako je Outlook, připojí ke službě, jako je Exchange Online, jsou požadavky rozhraní API autorizovány pomocí přístupových tokenů OAuth 2.0. Ve výchozím nastavení jsou tyto přístupové tokeny platné po dobu jedné hodiny. Když vyprší jejich platnost, klient je přesměrován zpět do Služby Azure AD k jejich aktualizaci. To také poskytuje příležitost přehodnotit zásady pro přístup uživatelů – můžeme se rozhodnout neaktualizovat token z důvodu zásady podmíněného přístupu nebo proto, že uživatel byl zakázán v adresáři. 
+Služby Microsoftu, jako jsou Azure Active Directory (Azure AD) a Office 365, umožňují maximalizovat interoperabilitu pomocí otevřených standardů a protokolů. Jedním z nejdůležitějších z nich je Open ID Connect (OIDC). Když se klientská aplikace, jako je Outlook, připojí ke službě, jako je Exchange Online, požadavky rozhraní API se autorizují pomocí přístupových tokenů OAuth 2,0. Ve výchozím nastavení jsou tyto přístupové tokeny platné po dobu jedné hodiny. Po vypršení platnosti se klient přesměruje zpátky do služby Azure AD, aby je aktualizoval. To také umožňuje znovu vyhodnotit zásady pro přístup uživatelů – můžeme se rozhodnout neaktualizovat token z důvodu zásad podmíněného přístupu nebo proto, že uživatel byl v adresáři zakázán. 
 
-Slyšeli jsme drtivou zpětnou vazbu od našich zákazníků: hodinová prodleva z důvodu životnosti tokenu přístupu pro opětovné použití zásad podmíněného přístupu a změn ve stavu uživatele (například: zakázáno z důvodu dovolené) není dost dobrá.
+Vypršení platnosti tokenu a aktualizace je standardní mechanismus v oboru. Proto si zákazníci vyjádřili obavy o prodlevu mezi tím, kdy se u uživatele změní rizikové podmínky (například přesun z firemní pobočky do místní kavárny nebo přihlašovací údaje uživatele zjištěné na černém trhu) a kdy je možné zásady uplatnit v souvislosti s touto změnou. Povedli jsme experimenty s přístupem "tupý objekt" s omezenou životností tokenu, ale zjistili jsme, že můžou snížit činnost uživatelů a spolehlivost bez eliminace rizik.
 
-Společnost Microsoft byla prvním účastníkem iniciativy CAEP (Continuous Access Evaluation Protocol) jako součást pracovní [skupiny Sdílené signály a události](https://openid.net/wg/sse/) v nadaci OpenID Foundation. Poskytovatelé identit a předávající strany budou moci využít události zabezpečení a signály definované pracovní skupinou k opětovnéautorizaci nebo ukončení přístupu. Je to vzrušující práce a zlepší bezpečnost napříč mnoha platformami a aplikacemi.
+Včasná reakce na porušení zásad nebo problémy se zabezpečením vyžadují "konverzaci" mezi vystavitelem tokenu, jako je Azure AD, a předávající stranou, jako je Exchange Online. Tato obousměrná konverzace nabízí dvě důležité možnosti. Předávající strana si může všimnout, že se změnily nějaké věci, třeba když klient přichází z nového umístění, a sdělí vystaviteli tokenů. Také dává vydavateli tokenů způsob, jak říct předávající straně, aby zastavila dodržování tokenů pro daného uživatele z důvodu ohrožení bezpečnosti, zákazu nebo jiných obav. Mechanismus pro tuto konverzaci je vyhodnocování nepřetržitého přístupu (CAE).
 
-Vzhledem k tomu, že výhody zabezpečení jsou tak velké, zavádíme počáteční implementaci specifickou pro společnost Microsoft souběžně s naší pokračující prací v rámci normalizačních orgánů. Při práci na nasazení těchto funkcí průběžného hodnocení přístupu (CAE) napříč službami společnosti Microsoft jsme se hodně naučili a tyto informace sdílíme s komunitou standardů. Doufáme, že naše zkušenosti s nasazením mohou pomoci informovat ještě lepší průmyslový standard a jsou odhodláni tuto normu po ratifikaci implementovat, což umožní všem zúčastněným službám využívat výhod.
+Microsoft byl prvním účastníkem v iniciativě protokolu CAEP (Continuous Evaluation Protocol), který je součástí [sdílených signálů a](https://openid.net/wg/sse/) pracovních skupin událostí na OpenID Foundation. Zprostředkovatelé identity a předávající strany budou moci využívat události zabezpečení a signály definované pracovní skupinou k reautorizaci nebo ukončení přístupu. Je skvělé pracovat a vylepšuje zabezpečení napříč mnoha platformami a aplikacemi.
 
-## <a name="how-does-cae-work-in-microsoft-services"></a>Jak cae funguje ve službách společnosti Microsoft?
+Vzhledem k tomu, že výhody zabezpečení jsou tak skvělé, zavádíme pro souběžnou práci v rámci norem základní implementaci specifickou pro společnost Microsoft. Vzhledem k tomu, že pracujeme na nasazení těchto funkcí CAE (continuoed Access Evaluation) napříč službami Microsoftu, zjistili jsme spoustu informací a sdílíme s nimi tyto informace s komunitou standardů. Doufáme, že naše prostředí při nasazení může přispět i k lepšímu používání standardu a po případnému uplatnění tohoto standardu se zavazuje, že budou využívat všechny zúčastněné služby.
 
-Zaměřujeme se na naši počáteční implementaci průběžného hodnocení přístupu k exchange a týmům. Doufáme, že v budoucnu rozšíříme podporu na další služby společnosti Microsoft. Začneme povolit vyhodnocení nepřetržitého přístupu pouze pro klienty bez zásad podmíněného přístupu. Budeme používat naše poznatky z této fáze CAE informovat naše probíhající zavádění CAE.
+## <a name="how-does-cae-work-in-microsoft-services"></a>Jak funguje CAE ve službách Microsoftu?
 
-## <a name="service-side-requirements"></a>Požadavky na straně služby
+Zaměřujeme se na naši počáteční implementaci vyhodnocování průběžného přístupu na Exchange a týmy. Doufáme, že budeme v budoucnu rozšiřovat podporu dalších služeb Microsoftu. Začneme začínat vyhodnocování průběžného přístupu jenom pro klienty bez zásad podmíněného přístupu. Naše studijní materiály z této fáze CAE budeme používat k informování našeho průběžného zavedení CAE.
 
-Vyhodnocení nepřetržitého přístupu se implementuje povolením služeb (poskytovatelů prostředků) k odběru kritických událostí ve službě Azure AD tak, aby tyto události bylo možné vyhodnotit a vynucovat téměř v reálném čase. V tomto počátečním zavedení CAE budou vynuceny následující události:
+## <a name="service-side-requirements"></a>Požadavky na stranu služby
 
-- Uživatelský účet je odstraněn nebo zakázán.
-- Heslo pro uživatele se změní nebo resetuje
+Vyhodnocování průběžného přístupu se implementuje povolením služeb (poskytovatelé prostředků) k přihlášení k odběru kritických událostí ve službě Azure AD, aby se tyto události vyhodnotily a vynutily téměř v reálném čase. V tomto počátečním zavedení CAE se budou vymáhat tyto události:
+
+- Uživatelský účet je odstraněný nebo zakázaný.
+- Heslo pro uživatele se změnilo nebo resetuje.
 - Správce explicitně odvolá všechny aktualizační tokeny pro uživatele.
-- Zvýšené riziko uživatele zjištěné službou Azure AD Identity Protection
+- Azure AD Identity Protection zjištěno zvýšené riziko uživatele
 
-Doufáme, že v budoucnu přidáme další události, včetně událostí, jako jsou změny polohy a stavu zařízení. **Zatímco naším cílem je, aby bylo vynucení okamžité, v některých případech může být kvůli době šíření událostí pozorována latence až 15 minut**. 
+V budoucnu se doufáme, že přidáte další události, včetně událostí, jako jsou například změny umístění a stavu zařízení. **I když je náš cíl vynucení okamžité, může být v některých případech latence až 15 minut v důsledku doby šíření události zjištěna**. 
 
-## <a name="client-side-claim-challenge"></a>Výzva k reklamaci na straně klienta
+## <a name="client-side-claim-challenge"></a>Výzva k deklaracím na straně klienta
 
-Před vyhodnocením nepřetržitého přístupu by se klienti vždy pokoušeli přehrát přístupový token ze své mezipaměti, pokud jeho platnost nevypršela. S CAE zavádíme nový případ, že poskytovatel prostředků může odmítnout token i v případě, že jeho platnost nevypršela. Aby bylo možné informovat klienty obejít jejich mezipaměti i v případě, že tokeny uložené v mezipaměti nebyly vypršela, zavádíme mechanismus s názvem **deklarace problém**. CAE vyžaduje aktualizaci klienta, aby pochopilvýzvu pro deklaraci. Nejnovější verze následujících aplikací níže nárok na podporu výzvu:
+Před vyhodnocením průběžného přístupu by se klienti vždy pokusili přehrát přístupový token z mezipaměti, dokud nevypršela jeho platnost. V CAE zavádíme nový případ, který poskytovatel prostředků může odmítnout token i v případě, že nevypršela jeho platnost. Aby klienti informovali o objednání své mezipaměti i v případě, že nevypršela platnost tokenů uložených v mezipaměti, zavádíme mechanismus s názvem **Challenge Challenge**. CAE vyžaduje aktualizaci klienta pro pochopení výzvy deklarací identity. Výzva pro deklaraci identity podporuje nejnovější verzi následujících aplikací:
 
 - Outlook pro Windows 
 - Outlook iOS 
 - Outlook Android 
 - Outlook Mac 
 - Týmy pro Windows
-- Týmy iOS 
-- Týmy Android 
-- Týmy Mac 
+- Týmy pro iOS 
+- Týmy – Android 
+- Počítače týmů 
 
 ## <a name="token-lifetime"></a>Živostnost tokenu
 
-Vzhledem k tomu, že rizika a zásady jsou vyhodnocovány v reálném čase, budou klienti, kteří vyjednávají relace s ohledem na průběžné hodnocení přístupu, spoléhat na cae místo existujících zásad životnosti tokenu statického přístupu, což znamená, že konfigurovatelné zásady životnosti tokenu již nebudou dodržovány pro klienty podporující CAE, kteří vyjednávají relace podporující CAE.
+Vzhledem k tomu, že rizika a zásady jsou vyhodnocovány v reálném čase, klienti, kteří vyjednají relace s průběžným vyhodnocováním přístupu, se budou spoléhat na CAE namísto existujících zásad životnosti statického přístupového tokenu, což znamená, že konfigurovatelné zásady životního cyklu tokenu již nebudou přijaty pro klienty podporující CAE, kteří vyjednávají
 
-Zvýšíme životnost přístupového tokenu na 24 hodin v relacích CAE. Odvolání je řízeno kritickými událostmi a vyhodnocením zásad, nikoli libovolným časovým obdobím. Tato změna zvyšuje stabilitu aplikací bez ovlivnění stavu zabezpečení. 
+Platnost přístupového tokenu zvýšíme na 24 hodin v CAE relacích. Odvolání je založené na kritických událostech a vyhodnocování zásad, nikoli v libovolném časovém období. Tato změna zvyšuje stabilitu svých aplikací, aniž by to ovlivnilo stav zabezpečení. 
 
 ## <a name="example-flows"></a>Příklady toků
 
-### <a name="user-revocation-event-flow"></a>Tok události odvolání uživatele:
+### <a name="user-revocation-event-flow"></a>Tok událostí odvolání uživatele:
 
-![Tok události odvolání uživatele](./media/concept-fundamentals-continuous-access-evaluation/user-revocation-event-flow.png)
+![Tok událostí odvolaných uživatelem](./media/concept-fundamentals-continuous-access-evaluation/user-revocation-event-flow.png)
 
-1. Klient podporující CAE představuje pověření nebo obnovovací token do služby AAD s žádostí o přístupový token pro určitý prostředek.
-1. Přístupový token je vrácena spolu s dalšími artefakty klientovi.
-1. Správce explicitně [odvolá všechny obnovovací tokeny pro uživatele](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Událost odvolání se odešlou poskytovateli prostředků z Azure AD.
-1. Přístupový token je předložen poskytovateli prostředků. Poskytovatel prostředků vyhodnotí platnost tokenu a zkontroluje, zda pro uživatele existuje nějaká událost odvolání. Poskytovatel prostředků používá tyto informace k rozhodnutí udělit přístup k prostředku, nebo ne.
-1. V takovém případě poskytovatel prostředků odepře přístup a odešle klientovi výzvu nároku 401+
-1. Klient s podporou CAE rozumí výzvě 401+ nároku. Obchází mezipaměti a přejde zpět ke kroku 1, odesílání tokenu aktualizace spolu s deklarace zabezpečení výzvu zpět do Služby Azure AD. Azure AD pak přehodnotí všechny podmínky a vyzve uživatele k opětovnému ověření v tomto případě.
+1. Klient podporující CAE prezentuje přihlašovací údaje nebo obnovovací token pro AAD, který žádá o přístupový token pro určitý prostředek.
+1. Přístupový token je vrácen spolu s jinými artefakty klientovi.
+1. Správce explicitně [odvolá všechny aktualizační tokeny pro uživatele](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Do poskytovatele prostředků z Azure AD se pošle událost odvolání.
+1. Poskytovateli prostředků se zobrazí přístupový token. Poskytovatel prostředků vyhodnocuje platnost tokenu a zkontroluje, jestli pro uživatele existuje nějaká událost odvolání. Poskytovatel prostředků používá tyto informace k rozhodnutí o udělení přístupu k prostředku nebo ne.
+1. V takovém případě poskytovatel prostředků odmítne přístup a pošle výzvu 401 + nárok zpátky klientovi.
+1. Klient podporující CAE rozumí výzvě 401 + Claim. Obchází mezipaměti a vrací se ke kroku 1, odesílá obnovovací token spolu s výzvou k deklaraci identity zpátky do služby Azure AD. Služba Azure AD potom znovu vyhodnotí všechny podmínky a vyzve uživatele k opětovnému ověření v tomto případě.
  
 ## <a name="faqs"></a>Nejčastější dotazy
 
-### <a name="what-is-the-lifetime-of-my-access-token"></a>Jaká je životnost mého přístupového tokenu?
+### <a name="what-is-the-lifetime-of-my-access-token"></a>Jaká je doba života přístupového tokenu?
 
-Pokud nepoužíváte klienty podporující CAE, bude vaše výchozí životnost přístupového tokenu stále 1 hodina, pokud jste nenakonfigurovali životnost přístupového tokenu pomocí funkce [náhledu životnosti konfigurovatelného tokenu (CTL).](../develop/active-directory-configurable-token-lifetimes.md)
+Pokud nepoužíváte klienty podporující CAE, vaše výchozí doba platnosti přístupového tokenu bude pořád 1 hodina, pokud jste nenakonfigurovali dobu života přístupového tokenu pomocí funkce [(CTL)](../develop/active-directory-configurable-token-lifetimes.md) ve verzi Preview.
 
-Pokud používáte klienty podporující CAE, kteří vyjednávají relace podporující cae, bude vaše nastavení ctl pro životnost přístupového tokenu přepsáno a životnost přístupového tokenu bude 24 hodin.
+Pokud používáte klienty podporující CAE, kteří vyjednávají relace s podporou CAE, bude nastavení seznamu CTL pro dobu života přístupového tokenu přepsáno a doba platnosti přístupového tokenu bude 24 hodin.
 
-### <a name="how-quick-is-enforcement"></a>Jak rychlé je vymáhání?
+### <a name="how-quick-is-enforcement"></a>Jak rychle je vynucená?
 
-Zatímco naším cílem je, aby bylo vynucení okamžité, v některých případech může být kvůli době šíření událostí pozorována latence až 15 minut.
+I když je náš cíl vynucení okamžité, může být v některých případech latence až 15 minut v důsledku doby šíření události zjištěna.
 
-### <a name="how-will-cae-work-with-sign-in-frequency"></a>Jak bude CAE fungovat s frekvencí přihlášení?
+### <a name="how-will-cae-work-with-sign-in-frequency"></a>Jak bude CAE pracovat s frekvencí přihlášení?
 
-Frekvence přihlášení bude uspokojena s CAE nebo bez něj.
+Frekvence přihlašování se bude respektovat s CAE nebo bez ní.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Oznámení vyhodnocení průběžného přístupu](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)
+[Oznamujeme Průběžné vyhodnocování přístupu.](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

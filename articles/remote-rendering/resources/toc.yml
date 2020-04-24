@@ -1,10 +1,12 @@
 - name: "Poznámky k\_verzi"
   href: 'https://github.com/Azure/azure-remote-rendering/releases'
-- name: nástroje
-  href: tools/toc.yml
 - name: Řešení potíží
   href: troubleshoot.md
+- name: Podpora
+  href: support.md
 - name: Poskytnutí zpětné vazby k produktu
   href: 'https://feedback.azure.com/forums/928696-azure-remote-rendering'
 - name: Stack Overflow
   href: 'https://stackoverflow.com/questions/tagged/azure-remote-rendering'
+- name: nástroje
+  href: tools/toc.yml

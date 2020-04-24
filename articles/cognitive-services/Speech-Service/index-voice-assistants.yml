@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Dokumentace k hlasovým asistentům
-summary: Hlasoví asistenti využívající službu Řeč umožňuje vývojářům vytvářet přirozené konverzační rozhraní podobné lidem pro jejich aplikace a prostředí.
+summary: Hlasový asistent využívající službu Speech umožňuje vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku.
 metadata:
-  title: Dokumentace k hlasovým asistentům – výukové lekce, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
+  title: Dokumentace k hlasovým pomocníkům – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -11,20 +11,20 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: cbef289ebc79e20b928db684af01a4eaeb1c0ce8
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: c4b1c6348e834f83e20c612678075405a14f1a9d
+  ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81401439"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82106198"
 landingContent:
-- title: Hlasové asistenty
+- title: O hlasových asistentcích
   linkLists:
   - linkListType: overview
     links:
     - text: Co je hlasový asistent?
       url: voice-assistants.md
-    - text: Co je aplikace Vlastní příkazy?
+    - text: Co je to aplikace pro vlastní příkazy?
       url: custom-commands.md
     - text: Co je Direct Line Speech?
       url: direct-line-speech.md
@@ -34,7 +34,11 @@ landingContent:
       url: faq-voice-assistants.md
     - text: Ceny hlasových asistentů
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
-- title: Vývoj pomocí vlastních příkazů
+  - linkListType: get-started
+    links:
+    - text: Vytvoření a nasazení ukázkového hlasového asistenta do předplatného Azure (GitHub)
+      url: https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant
+- title: Vývoj s využitím vlastních příkazů
   linkLists:
   - linkListType: quickstart
     links:
@@ -56,7 +60,7 @@ landingContent:
       url: how-to-custom-speech-commands-confirmations.md
     - text: Přidání opravy v jednom kroku
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Vyvíjejte s přímou přímou řečí
+- title: Vývoj pomocí funkce Direct line Speech
   linkLists:
   - linkListType: quickstart
     links:
@@ -70,7 +74,7 @@ landingContent:
     links:
     - text: Hlasová podpora robota s využitím sady Speech SDK
       url: tutorial-voice-enable-your-bot-speech-sdk.md
-- title: Vývoj pomocí vlastního klíčového slova
+- title: Vývoj s vlastním klíčovým slovem
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -78,5 +82,5 @@ landingContent:
       url: speech-devices-sdk-create-kws.md
   - linkListType: reference
     links:
-    - text: Pokyny pro vlastní pojmenování klíčových slov
+    - text: Vlastní pokyny pro pojmenovávání klíčových slov
       url: speech-devices-sdk-kws-guidelines.md
