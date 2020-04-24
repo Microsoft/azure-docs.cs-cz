@@ -1,29 +1,23 @@
 ---
 title: Vytváření a správa virtuálních počítačů s Windows v Azure, které používají více síťových karet
 description: Naučte se vytvářet a spravovat virtuální počítače s Windows, které mají k němu připojené více síťových adaptérů pomocí šablon Azure PowerShell nebo Správce prostředků.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 9bff5b6d-79ac-476b-a68f-6f8754768413
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79249981"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870274"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače s Windows s více síťovými kartami
 K virtuálním počítačům v Azure můžou být připojené několik síťových adaptérů (nic). Běžným scénářem je použití různých podsítí pro front-endové a back-endové připojení. K virtuálnímu počítači můžete přidružit více síťových adaptérů k několika podsítím, ale tyto podsítě se musí nacházet ve stejné virtuální síti (vNet). Tento článek podrobně popisuje, jak vytvořit virtuální počítač s připojenými více síťovými rozhraními. Naučíte se také, jak přidat nebo odebrat síťové karty z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů jsou *myResourceGroup*, *myVnet*a *myVM*.
 
@@ -81,7 +75,7 @@ Obvykle vytvoříte také [skupinu zabezpečení sítě](../../virtual-network/s
 ### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 Teď začněte sestavovat konfiguraci virtuálních počítačů. Velikost každého virtuálního počítače má omezení celkového počtu síťových adaptérů, které můžete přidat do virtuálního počítače. Další informace najdete v tématu [velikosti virtuálních počítačů s Windows](sizes.md).
 
-1. Nastavte přihlašovací údaje k VIRTUÁLNÍmu počítači na `$cred` proměnnou následujícím způsobem:
+1. Přihlašovací údaje pro virtuální počítač nastavte `$cred` na proměnnou následujícím způsobem:
 
     ```powershell
     $cred = Get-Credential
@@ -158,7 +152,7 @@ Pokud chcete přidat virtuální síťovou kartu k existujícímu virtuálnímu 
     ```
 
     ### <a name="primary-virtual-nics"></a>Primární virtuální síťové karty
-    Jedna z síťových adaptérů na virtuálním počítači s více SÍŤOVÝmi kartami musí být primární. Pokud už jedna z existujících virtuálních síťových karet na virtuálním počítači je nastavená jako primární, můžete tento krok přeskočit. V následujícím příkladu se předpokládá, že na virtuálním počítači teď existují dvě virtuální síťové karty a chcete přidat první síťovou kartu (`[0]`) jako primární:
+    Jedna z síťových adaptérů na virtuálním počítači s více SÍŤOVÝmi kartami musí být primární. Pokud už jedna z existujících virtuálních síťových karet na virtuálním počítači je nastavená jako primární, můžete tento krok přeskočit. V následujícím příkladu se předpokládá, že na virtuálním počítači teď existují dvě virtuální síťové karty a chcete přidat první síťovou kartu`[0]`() jako primární:
         
     ```powershell
     # List existing NICs on the VM and find which one is primary
@@ -204,7 +198,7 @@ Pokud chcete odebrat virtuální síťovou kartu z existujícího virtuálního 
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. Odeberte síťovou kartu pomocí [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) a pak aktualizujte virtuální počítač pomocí [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). Následující příklad odebere *myNic3* získanou pomocí `$nicId` v předchozím kroku:
+4. Odeberte síťovou kartu pomocí [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) a pak aktualizujte virtuální počítač pomocí [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). Následující příklad odebere *myNic3* , jak získali `$nicId` v předchozím kroku:
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
@@ -229,7 +223,7 @@ Pokud chcete odebrat virtuální síťovou kartu z existujícího virtuálního 
 
 Další informace najdete v tématu [vytvoření více instancí pomocí *kopírování*](../../resource-group-create-multiple.md). 
 
-K názvu prostředku můžete také připojit číslo pomocí `copyIndex()`. Pak můžete vytvořit *myNic1*, *MyNic2* a tak dále. Následující kód ukazuje příklad připojení hodnoty indexu:
+Můžete také použít `copyIndex()` pro připojení čísla k názvu prostředku. Pak můžete vytvořit *myNic1*, *MyNic2* a tak dále. Následující kód ukazuje příklad připojení hodnoty indexu:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -243,7 +237,7 @@ Pomocí postupu v části [Konfigurace operačního systému pro více síťový
 
 Azure přiřadí výchozí bránu k prvnímu (primárnímu) síťovému rozhraní připojenému k virtuálnímu počítači. Azure nepřiřazuje výchozí bránu dalším (sekundárním) síťovým rozhraním připojeným k virtuálnímu počítači. Proto ve výchozím nastavení nemůžete komunikovat s prostředky mimo podsíť, ve které sekundární síťové rozhraní je. Sekundární síťová rozhraní však mohou komunikovat s prostředky mimo jejich podsíť, i když se postup pro povolení komunikace liší v různých operačních systémech.
 
-1. Z příkazového řádku systému Windows spusťte příkaz `route print`, který vrátí výstup podobný následujícímu výstupu pro virtuální počítač se dvěma připojenými síťovými rozhraními:
+1. Z příkazového řádku systému Windows spusťte `route print` příkaz, který vrátí výstup podobný následujícímu výstupu pro virtuální počítač se dvěma připojenými síťovými rozhraními:
 
     ```
     ===========================================================================
@@ -255,7 +249,7 @@ Azure přiřadí výchozí bránu k prvnímu (primárnímu) síťovému rozhran�
  
     V tomto příkladu je **Microsoft Hyper-V síťový adaptér #4** (rozhraní 7) sekundární síťové rozhraní, ke kterému není přiřazená výchozí brána.
 
-2. Z příkazového řádku spusťte příkaz `ipconfig`, abyste viděli, která IP adresa je přiřazená sekundárnímu síťovému rozhraní. V tomto příkladu je 192.168.2.4 přiřazen rozhraní 7. Pro sekundární síťové rozhraní se nevrátí žádná adresa výchozí brány.
+2. Z příkazového řádku spusťte `ipconfig` příkaz, abyste viděli, která IP adresa je přiřazená sekundárnímu síťovému rozhraní. V tomto příkladu je 192.168.2.4 přiřazen rozhraní 7. Pro sekundární síťové rozhraní se nevrátí žádná adresa výchozí brány.
 
 3. Pokud chcete směrovat veškerý provoz určený pro adresy mimo podsíť sekundárního síťového rozhraní do brány pro podsíť, spusťte následující příkaz:
 
@@ -281,7 +275,7 @@ Azure přiřadí výchozí bránu k prvnímu (primárnímu) síťovému rozhran�
       netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
       ```
   
-5. Pokud chcete potvrdit, že se přidaná trasa nachází v tabulce směrování, zadejte příkaz `route print`, který vrátí výstup podobný následujícímu textu:
+5. Pokud chcete potvrdit, že se přidaná trasa nachází v tabulce směrování `route print` , zadejte příkaz, který vrátí výstup podobný následujícímu textu:
 
     ```
     ===========================================================================

@@ -1,18 +1,14 @@
 ---
-title: Vyhodnoťte velký počet virtuálních počítačů VMware pro migraci do Azure pomocí Azure Migrate | Microsoft Docs
-description: Popisuje, jak vyhodnotit velký počet virtuálních počítačů VMware pro migraci do Azure pomocí služby Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
-ms.date: 07/12/2019
-ms.author: hamusa
-ms.openlocfilehash: f76134ffc6a7becb9b5719dcb3d826130b7cfa86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+title: Vyhodnoťte velký počet virtuálních počítačů VMware pro migraci do Azure pomocí Azure Migrate
+description: Popisuje, jak vyhodnotit velký počet virtuálních počítačů VMware pro migraci do Azure pomocí služby Azure Migrate. e
+ms.topic: how-to
+ms.date: 03/23/2020
+ms.openlocfilehash: d404583b1bad474a5e24e8c7cf060aeb80d610bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453266"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336854"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Vyhodnocení velkého počtu virtuálních počítačů VMware pro migraci do Azure
 
@@ -49,7 +45,7 @@ Pro plánování použijte omezení shrnutá v této tabulce.
 --- | --- 
 **Azure Migrate projekty** | Vyhodnoťte až 35 000 virtuálních počítačů v projektu.
 **Zařízení Azure Migrate** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů.<br/> Zařízení se může připojit jenom k jednomu vCenter Server.<br/> Zařízení může být přidruženo pouze k jednomu Azure Migrate projektu.<br/>  K jednomu Azure Migrate projektu může být přidružen libovolný počet zařízení. <br/><br/> 
-**Skupina** | Do jedné skupiny můžete přidat až 35 000 virtuálních počítačů.
+**Skupiny** | Do jedné skupiny můžete přidat až 35 000 virtuálních počítačů.
 **Posouzení Azure Migrate** | V jednom posouzení můžete vyhodnotit až 35 000 virtuálních počítačů.
 
 Tato omezení jsou uvedená v některých ukázkových nasazeních:
@@ -69,7 +65,7 @@ Pokud plánujete pro více tenantů prostředí, můžete určit rozsah zjišťo
 
 - Rozsah zjišťování zařízení můžete nastavit vCenter Server datacentrech, clusterech nebo složkách clusterů, hostitelů nebo složek hostitelů nebo jednotlivých virtuálních počítačů.
 - Pokud je vaše prostředí sdíleno mezi klienty a chcete zjistit jednotlivé klienty samostatně, můžete nastavit rozsah přístupu k účtu vCenter, který zařízení používá ke zjišťování. 
-    - Můžete chtít obor podle složek virtuálních počítačů, pokud klienti sdílejí hostitele. Azure Migrate nemůže zjistit virtuální počítače, pokud má účet vCenter udělen přístup na úrovni složky virtuálního počítače vCenter. Pokud chcete určit obor zjišťování pomocí složek virtuálních počítačů, můžete to provést tak, že účet vCenter má přiřazený přístup jen pro čtení na úrovni virtuálního počítače. Další informace o omezení rozsahu zjišťování najdete [tady](tutorial-assess-vmware.md#set-the-scope-of-discovery).
+    - Můžete chtít obor podle složek virtuálních počítačů, pokud klienti sdílejí hostitele. Azure Migrate nemůže zjistit virtuální počítače, pokud má účet vCenter udělen přístup na úrovni složky virtuálního počítače vCenter. Pokud chcete určit obor zjišťování pomocí složek virtuálních počítačů, můžete to provést tak, že účet vCenter má přiřazený přístup jen pro čtení na úrovni virtuálního počítače. [Další informace](set-discovery-scope.md).
 
 ## <a name="prepare-for-assessment"></a>Příprava na posouzení
 

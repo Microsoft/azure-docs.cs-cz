@@ -12,12 +12,12 @@ metadata:
   title: Dokumentace ke službě Language Understanding (LUIS)
   titleSuffix: Azure Cognitive Services
   description: Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí. Služba LUIS využívá strojové učení a umožňuje vývojářům sestavovat aplikace, které dokážou přijmout uživatelský vstup v přirozeném jazyce a extrahovat jeho význam.
-  ms.openlocfilehash: c05d10b4b732a466ff4a6a4abe352e78e898c857
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: f1fab99692fbd02cf3a8b659aad0069ac73ce8e6
+  ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80053360"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82101667"
 landingContent:
 - title: Informace o službě Language Understanding (LUIS)
   linkLists:
@@ -124,7 +124,7 @@ landingContent:
     - text: Materiály pro vývojáře
       url: developer-reference-resource.md
     - text: Omezení aplikace
-      url: luis-boundaries.md
+      url: luis-limits.md
     - text: Předem připravené entity
       url: luis-reference-prebuilt-entities.md
     - text: Vlastní entity
