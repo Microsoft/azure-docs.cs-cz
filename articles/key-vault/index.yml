@@ -13,12 +13,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: e969d71be3c8f77607e69205c24d6c980c9943a2
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.openlocfilehash: 90867d51bd0952eea350ed9120d2274d40b30d99
+  ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81536263"
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "81867254"
 highlightedContent:
   items:
   - title: Seznámení se službou Azure Key Vault
@@ -89,14 +89,34 @@ conceptualContent:
     footerLink:
       url: ./secrets/index.yml
       text: Další informace
-  - title: Správa klíčů úložiště
+  - title: Key Vault se službou Storage
     links:
     - url: ./secrets/overview-storage-keys.md
       itemType: overview
-      text: Klíče úložiště –⁠ Rozhraní příkazového řádku
+      text: Správa klíčů úložiště – CLI
     - url: ./secrets/overview-storage-keys-powershell.md
       itemType: overview
-      text: Klíče úložiště –⁠ PowerShell
+      text: Správa klíčů úložiště –⁠ PowerShell
     - url: ./secrets/storage-keys-sas-tokens-code.md
       itemType: overview
       text: Načtení tokenů SAS v kódu
+  - title: Key Vault se službou Virtual Machines
+    links:
+    - url: ../virtual-machines/extensions/key-vault-windows.md
+      itemType: overview
+      text: Rozšíření Key Vault VM – Windows
+    - url: ../virtual-machines/extensions/key-vault-linux.md
+      itemType: overview
+      text: Rozšíření Key Vault VM – Linux
+    - url: /azure/developer/ansible/key-vault-configure-vm-security
+      itemType: overview
+      text: Key Vault s linuxovými virtuálními počítači v Ansible
+    - url: ../virtual-machines/windows/disk-encryption-key-vault.md
+      itemType: overview
+      text: Key Vault se službou Azure Disk Encryption – Windows
+    - url: ../virtual-machines/linux/disk-encryption-key-vault.md
+      itemType: overview
+      text: Key Vault se službou Azure Disk Encryption – Linux
+    - url: ../virtual-machine-scale-sets/disk-encryption-key-vault.md
+      itemType: overview
+      text: Key Vault se službou Virtual Machine Scale Sets

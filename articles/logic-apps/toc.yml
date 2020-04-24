@@ -227,6 +227,8 @@
           href: ../connectors/connectors-create-api-ftp.md
         - name: GitHubu
           href: ../connectors/connectors-create-api-github.md
+        - name: Gmail – zásady ochrany osobních údajů a zabezpečení dat Googlu
+          href: ../connectors/connectors-google-data-security-privacy-policy.md
         - name: HTTP
           href: ../connectors/connectors-native-http.md
         - name: HTTP + Swagger

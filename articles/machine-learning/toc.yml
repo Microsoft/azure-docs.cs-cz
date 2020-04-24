@@ -149,8 +149,9 @@
             - name: Použití Private Linku
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: Zabezpečení webových služeb pomocí SSL
+            - name: Zabezpečení webových služeb s využitím TLS
               href: how-to-secure-web-service.md
+              displayName: ssl
             - name: Použití identity Azure AD v nasazeních AKS
               href: how-to-use-azure-ad-identity.md
             - name: Opětovné vygenerování přístupových klíčů k úložišti

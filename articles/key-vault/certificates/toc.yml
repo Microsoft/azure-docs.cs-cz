@@ -19,6 +19,8 @@
   items:
     - name: Import certifikátu
       href: tutorial-import-certificate.md
+    - name: Konfigurace obměny certifikátů
+      href: tutorial-rotate-certificates.md
 - name: Koncepty
   items:
     - name: Začínáme s certifikáty služby Key Vault

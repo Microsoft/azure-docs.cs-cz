@@ -45,9 +45,13 @@
       href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
     - name: 14b. Nasazení a integrace Jenkinse s Azure
       href: ../../jenkins/tutorial-build-deploy-jenkins.md
-    - name: 15a. DevOps pro IaaS a PaaS v Azure
+    - name: 15a. Konfigurace strategie postupného nasazování
       href: tutorial-devops-azure-pipelines-classic.md
-    - name: 15b. Průběžná integrace a doručování s využitím Azure Pipelines (YAML)
+    - name: 15b. Konfigurace strategie testovacího nasazování
+      href: tutorial-azure-devops-canary-strategy.md
+    - name: 15c. Konfigurace strategie nasazování typu modrá/zelená
+      href: tutorial-azure-devops-blue-green-strategy.md
+    - name: 15d. Průběžná integrace a doručování s využitím Azure Pipelines (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a. Vytvoření zásobníku LAMP
       href: tutorial-lamp-stack.md

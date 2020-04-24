@@ -7,10 +7,12 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření člena – portál
+    - name: Vytvoření člena s využitím portálu
       href: create-member.md
-    - name: Vytvoření člena – CLI
+    - name: Vytvoření člena s využitím CLI
       href: create-member-cli.md
+    - name: Vytvoření člena s využitím šablony
+      href: create-member-template.md
     - name: Připojení k transakčnímu uzlu
       items:
         - name: Použití VS Code

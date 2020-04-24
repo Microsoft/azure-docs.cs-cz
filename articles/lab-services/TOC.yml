@@ -14,16 +14,34 @@
       href: tutorial-create-custom-lab.md
     - name: 2. Přístup k testovacímu prostředí
       href: tutorial-use-custom-lab.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Šablony Resource Manageru
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: samples-powershell.md
+      items:
+        - name: Přidání externího uživatele do testovacího prostředí
+          href: scripts/add-external-user-to-lab.md
+        - name: Přidání imagí z marketplace do testovacího prostředí
+          href: scripts/add-marketplace-images-to-lab.md
+        - name: Vytvoření vlastní image z VHD
+          href: scripts/create-custom-image-from-vhd.md
+        - name: Vytvoření vlastní role v testovacím prostředí
+          href: scripts/create-custom-role-in-lab.md
+        - name: Nastavení povolených velikostí virtuálních počítačů v testovacím prostředí
+          href: scripts/set-allowed-vm-sizes-in-lab.md
     - name: Azure PowerShell – modul Az.DevTestLabs2
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: Azure CLI
       href: samples-cli.md
+      items:
+        - name: Vytvoření a ověření dostupnosti virtuálního počítače
+          href: scripts/create-verify-virtual-machine-in-lab-cli.md
+        - name: Spuštění virtuálního počítače
+          href: scripts/start-connect-virtual-machine-in-lab-cli.md
+        - name: Zastavení a odstranění virtuálního počítače
+          href: scripts/stop-delete-virtual-machine-in-lab-cli.md
 - name: Koncepty
   items:
     - name: Koncepce DevTest Labs

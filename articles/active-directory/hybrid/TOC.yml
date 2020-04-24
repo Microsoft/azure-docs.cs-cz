@@ -152,6 +152,8 @@
               href: plan-migrate-adfs-pass-through-authentication.md
             - name: Přesun skupin z jedné doménové struktury do druhé
               href: how-to-connect-migrate-groups.md
+            - name: Migrace na cloudové ověřování pomocí postupného uvedení
+              href: how-to-connect-staged-rollout.md
         - name: Aspekty návrhu hybridní identity
           items:
             - name: Přehled aspektů návrhu hybridní identity

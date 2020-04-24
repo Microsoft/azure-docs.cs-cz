@@ -26,6 +26,8 @@
       href: learn/automation-tutorial-runbook-textual-python2.md
 - name: Koncepty
   items:
+    - name: Přehled ověřování účtů služby Automation
+      href: automation-security-overview.md
     - name: Přehled spuštění runbooku
       href: automation-runbook-execution.md
     - name: Přehled funkce Hybrid Runbook Worker
@@ -48,6 +50,8 @@
           href: automation-create-standalone-account.md
         - name: Vytvoření účtu Automation s využitím šablony Resource Manageru
           href: automation-create-account-template.md
+        - name: Konfigurace ověřování s využitím Amazon Web Services
+          href: automation-config-aws-account.md
         - name: Správa účtu Spustit jako služby Automation
           href: manage-runas-account.md
         - name: Správa oprávnění rolí a zabezpečení
@@ -156,6 +160,8 @@
               href: automation-dsc-diagnostics.md
             - name: Řešení potíží s DSC
               href: troubleshoot/desired-state-configuration.md
+            - name: Historie verzí rozšíření Azure DSC
+              href: automation-dsc-extension-history.md
         - name: Change Tracking a Inventory
           items:
             - name: Přehled
@@ -248,8 +254,6 @@
           href: automation-create-alert-triggered-runbook.md
         - name: Správa služeb Office 365
           href: manage-office-365.md
-        - name: Ověřování runbooků s využitím Amazon Web Services
-          href: automation-config-aws-account.md
         - name: Nasazení virtuálního počítače AWS s využitím runbooku Automation
           href: automation-scenario-aws-deployment.md
         - name: Nasazení pomocí šablony Resource Manageru s využitím runbooku

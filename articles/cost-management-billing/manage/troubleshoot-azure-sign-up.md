@@ -1,21 +1,22 @@
 ---
-title: Řešení potíží s registrací do Azure
+title: Nepovedlo se zaregistrovat nový účet Azure
 description: Řešení problému při pokusu o registraci nového účtu na portálu Microsoft Azure nebo v centru účtů
+services: cost-management-billing
 author: v-miegge
-ms.reviewer: dcscontentpm
+manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 540cb5b4ca8f78c734fbc7dcd16358be8eb391c0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e8536555e3763674a2c018182e70f8d50e11556b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409460"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641739"
 ---
-# <a name="troubleshoot-azure-sign-up"></a>Řešení potíží s registrací do Azure
+# <a name="troubleshoot-issues-when-you-sign-up-a-new-account-in-azure-portal-or-azure-account-center"></a>Řešení potíží při registraci nového účtu na webu Azure Portal nebo Centru účtů Azure
 
 Při pokusu o registraci nového účtu na portálu Microsoft Azure nebo v Centru účtů Azure může dojít k problému. Než problém začnete řešit, ověřte platnost následujících tvrzení:
 
@@ -37,7 +38,7 @@ Pokud chcete tento problém vyřešit, postupujte následovně:
 
 3. Zajistěte, aby byla všechna pole adresy vyplněná a platná.
 
-4. Když se registrujete pro předplatné Azure, zajistěte, aby fakturační adresa pro registraci platební karty odpovídala vašim bankovním záznamům.
+4. Když si registrujete předplatné Azure, zkontrolujte, že fakturační adresa pro registraci platební karty odpovídá vašim bankovním záznamům.
 
 Pokud se vám tato chybová zpráva bude zobrazovat dál, zkuste se zaregistrovat pomocí jiného prohlížeče.
 

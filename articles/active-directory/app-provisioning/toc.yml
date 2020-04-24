@@ -79,6 +79,8 @@
   items:
     - name: Kompatibilita s protokolem SCIM 2.0
       href: application-provisioning-config-problem-scim-compatibility.md
+    - name: Scénáře pro SCIM a Graph
+      href: scim-graph-scenarios.md
     - name: Výběr metody zřizování
       href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Zřizování HR v cloudu

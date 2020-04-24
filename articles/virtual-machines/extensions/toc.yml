@@ -8,7 +8,7 @@
       href: agent-linux.md
     - name: Agent virtuálního počítače s Windows
       href: agent-windows.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Použití rozšíření vlastních skriptů
@@ -125,3 +125,5 @@
       href: export-templates.md
     - name: Řešení potíží
       href: troubleshoot.md
+    - name: Problémy se systémy Linux s podporou Pythonu 3
+      href: issues-using-vm-extensions-python-3.md

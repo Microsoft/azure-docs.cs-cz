@@ -232,7 +232,7 @@
           items:
             - name: Vytvoření navrhovatele
               href: index-add-suggesters.md
-            - name: Přidání návrhů nebo automatického dokončování
+            - name: Přidání návrhů a automatického dokončování
               href: search-autocomplete-tutorial.md
         - name: Dotaz z Power Apps
           href: search-howto-powerapps.md
@@ -256,8 +256,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: Vysvětlení filtrů kolekcí
           href: search-query-understand-collection-filters.md
-        - name: Příklad omezujících vlastností na více úrovních
-          href: search-example-adventureworks-multilevel-faceting.md
+        - name: Filtrování podle jazyka
+          href: search-filters-language.md
     - name: Výsledky
       items:
         - name: Práce s výsledky
@@ -455,10 +455,6 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: Ukázka souborů JFK
           href: 'https://aka.ms/jfkfiles'
-        - name: Ukázka úloh NYC
-          href: 'https://aka.ms/azjobsdemo'
-        - name: Případy použití hledání
-          href: 'https://searchsamples.azurewebsites.net/'
     - name: Školení
       items:
         - name: Úvod (Microsoft Learn)

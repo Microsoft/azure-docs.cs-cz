@@ -60,6 +60,8 @@
           href: sql-support-matrix.md
         - name: Matice podpory pro zálohování SAP HANA
           href: sap-hana-backup-support-matrix.md
+        - name: Matice podpory pro zálohování sdílených složek Azure
+          href: azure-file-share-support-matrix.md
         - name: Podporované SKU virtuálních počítačů pro Azure Policy
           href: backup-azure-policy-supported-skus.md
     - name: Nejčastější dotazy
@@ -346,6 +348,8 @@
           href: backup-azure-security-feature.md
         - name: Integrované ovládací prvky zabezpečení
           href: backup-security-controls.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Řešení potíží
       items:
         - name: Virtuální počítač Azure

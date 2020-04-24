@@ -20,8 +20,8 @@
       href: quickstart-synapse-studio.md
     - name: Vytváření fondů
       items:
-        - name: Vytvoření fondu úloh Apache Sparku pomocí webových nástrojů
-          href: ./spark/apache-spark-notebook-create-spark-use-sql.md
+        - name: Vytvoření poznámkového bloku Apache Sparku pomocí webových nástrojů
+          href: quickstart-apache-spark-notebook.md
         - name: Vytvoření fondu úloh Apache Sparku pomocí webu Azure Portal
           href: quickstart-create-apache-spark-pool.md
         - name: Vytvoření fondu SQL

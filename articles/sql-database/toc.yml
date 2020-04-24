@@ -108,7 +108,7 @@
           items:
             - name: Auditování Azure SQL
               href: sql-database-auditing.md
-            - name: Do úložiště za virtuální sítí nebo branou firewall
+            - name: Audit do účtu úložiště za virtuální sítí nebo branou firewall
               href: create-auditing-storage-account-vnet-firewall.md
             - name: Formát protokolu auditu
               href: sql-database-audit-log-format.md
