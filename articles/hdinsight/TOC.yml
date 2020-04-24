@@ -39,6 +39,8 @@
       items:
         - name: Součásti systému Apache Hadoop ve službě HDInsight
           href: ./hdinsight-component-versioning.md
+        - name: Poznámky k verzi Hortonworks
+          href: ./hortonworks-release-notes.md
         - name: Komponenty s vysokou dostupností
           href: ./hdinsight-high-availability-components.md
         - name: Apache Ambari v Azure HDInsightu
@@ -59,10 +61,17 @@
           href: ./cluster-management-best-practices.md
         - name: Dostupnost a spolehlivost
           href: ./hdinsight-high-availability-linux.md
-        - name: Porovnání možností úložiště
-          href: ./hdinsight-hadoop-compare-storage-options.md
         - name: Principy spravovaných identit
           href: ./hdinsight-managed-identities.md
+        - name: Porovnání možností úložiště
+          href: hdinsight-hadoop-compare-storage-options.md
+          items:
+            - name: Přehled Azure Storage
+              href: overview-azure-storage.md
+            - name: Přehled služby Azure Data Lake Storage Gen1
+              href: overview-data-lake-storage-gen1.md
+            - name: Přehled služby Azure Data Lake Storage Gen2
+              href: overview-data-lake-storage-gen2.md
     - name: Postup
       items:
         - name: Vytváření clusterů
@@ -122,6 +131,8 @@
               href: hdinsight-hadoop-linux-use-ssh-unix.md
             - name: Použití tunelového propojení SSH
               href: hdinsight-linux-ambari-ssh-tunnel.md
+            - name: Použití SCP s HDInsightem
+              href: ./use-scp.md
             - name: Omezení přístupu k datům
               href: hdinsight-storage-sharedaccesssignature-permissions.md
             - name: Autorizace uživatelů pro zobrazení Apache Ambari
@@ -216,6 +227,8 @@
           items:
             - name: Řešení potíží s akcemi skriptů
               href: ./troubleshoot-script-action.md
+            - name: Chyby vytváření prostředků
+              href: ./troubleshoot-resource-creation-fails.md
     - name: Referenční informace
       items:
         - name: Azure PowerShell
