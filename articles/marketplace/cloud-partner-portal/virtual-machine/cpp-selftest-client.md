@@ -1,50 +1,50 @@
 ---
-title: Samočinný test klienta pro předběžnou ověření virtuálního počítače | Azure Marketplace
-description: Jak vytvořit klienta s vlastním testem pro předběžnou validaci image virtuálního počítače pro Azure Marketplace.
+title: Samoobslužný test klienta pro předběžné ověření virtuálního počítače | Azure Marketplace
+description: Postup vytvoření samoobslužného klienta pro předběžné ověření image virtuálního počítače pro Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
-ms.openlocfilehash: af42476f9d04f7f2bfc275c731b02aa5a9b8ecf6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f16d26fa95254282e453cd7bf35d85f8b81ed73
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273150"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143196"
 ---
-# <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Vytvoření klienta s vlastním testem pro předběžnou ověření image virtuálního počítače Azure
+# <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Vytvoření klientského samočinného testu pro předběžné ověření image virtuálního počítače Azure
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [certifikaci image virtuálního počítače Azure](https://aks.ms/CertifyVMimage) spravujte migrované nabídky.
+> Od 13. dubna 2020 začneme přesouvat správu nabídek virtuálních počítačů Azure do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Pokud chcete spravovat migrované nabídky, postupujte podle pokynů v tématu [certifikace imagí virtuálních počítačů Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification) .
 
-Tento článek použijte jako vodítko pro vytvoření klientské služby, která spotřebovává rozhraní API pro vlastní testování. Rozhraní API pro autotestování můžete použít k předběžnému ověření virtuálního počítače(VM), abyste zajistili, že splňuje nejnovější požadavky na publikování na Azure Marketplace. Tato klientská služba umožňuje otestovat virtuální počítač před odesláním nabídky pro certifikaci Microsoftu.
+Tento článek slouží jako Průvodce vytvořením klientské služby, která využívá rozhraní API pro samoobslužné testování. Pomocí rozhraní API pro samoobslužné testování můžete předem ověřit virtuální počítač (VM), abyste zajistili, že splňuje nejnovější Azure Marketplace požadavky na publikování. Tato klientská služba umožňuje testovat virtuální počítač před odesláním nabídky pro certifikaci společnosti Microsoft.
 
 ## <a name="development-and-testing-overview"></a>Přehled vývoje a testování
 
-Jako součást procesu autotestu vytvoříte místního klienta, který se připojí k Azure Marketplace a ověří virtuální počítač spuštěný ve vašem předplatném Azure. Virtuální počítač může být spuštěn operační systém Windows nebo Linux.
+V rámci procesu samočinného testování vytvoříte místního klienta, který se připojí k Azure Marketplace a ověří virtuální počítač spuštěný ve vašem předplatném Azure. Virtuální počítač může používat operační systém Windows nebo Linux.
 
 Místní klient spustí skript, který se ověřuje pomocí rozhraní API pro samočinné testování, odesílá informace o připojení a přijímá výsledky testů.
 
-Kroky vysoké úrovně pro vytvoření klienta s vlastním testem jsou:
+Kroky vysoké úrovně pro vytvoření samoobslužného klienta jsou:
 
-1. Zvolte klienta Služby Azure Active Directory (AD) pro vaši aplikaci.
+1. Vyberte klienta Azure Active Directory (AD) pro vaši aplikaci.
 2. Zaregistrujte klientskou aplikaci.
 3. Vytvořte token pro klientskou aplikaci Azure AD.
-4. Předajte token do rozhraní API pro vlastní testování.
+4. Předejte token do rozhraní API pro samočinný test.
 
-Po vytvoření klienta, můžete otestovat proti virtuálnímu počítači.
+Jakmile klienta vytvoříte, můžete ho otestovat na svém VIRTUÁLNÍm počítači.
 
-### <a name="self-test-client-authorization"></a>Autorizace klienta s vlastním testem
+### <a name="self-test-client-authorization"></a>Samoobslužná autorizace klientů
 
-Následující diagram znázorňuje, jak funguje autorizace pro službu pro volání pomocí pověření klienta (sdílený tajný klíč nebo certifikát.)
+Následující diagram ukazuje, jak autorizace funguje pro volání služby prostřednictvím přihlašovacích údajů klienta (sdílený tajný klíč nebo certifikát).
 
 ![Proces autorizace klienta](./media/stclient-dev-process.png)
 
-## <a name="the-self-test-client-api"></a>Rozhraní API klienta pro vlastní testování
+## <a name="the-self-test-client-api"></a>Rozhraní API pro samočinný test klienta
 
-Rozhraní API pro autotestování obsahuje jeden koncový bod, který podporuje pouze metodu POST.  Má následující strukturu.
+Rozhraní API pro samočinné testování obsahuje jeden koncový bod, který podporuje pouze metodu POST.  Má následující strukturu.
 
 ```
 Uri:             https://isvapp.azurewebsites.net/selftest-vm
@@ -62,32 +62,32 @@ Request body:    The Request body parameters should use the following JSON forma
                  }
 ```
 
-Následující tabulka popisuje pole rozhraní API.
+V následující tabulce jsou popsána pole rozhraní API.
 
 
 |      Pole         |    Popis    |
 |  ---------------   |  ---------------  |
-|  Autorizace     |  Řetězec "Bearer xxxx-xxxx-xxxx-xxxxx" obsahuje klientský token služby Azure Active Directory (AD), který lze vytvořit pomocí prostředí PowerShell.          |
-|  Název DNS           |  Název DNS virtuálního_ virtuálního_    |
-|  Uživatel              |  Uživatelské jméno pro přihlášení k virtuálnímu virtuálnímu mísu         |
-|  Heslo          |  Heslo pro přihlášení k virtuálnímu počítače          |
-|  Operační systém                |  Operační systém virtuálního provozu: buď `Linux` nebo`Windows`          |
-|  PortNo            |  Otevřete číslo portu pro připojení k virtuálnímu virtuálnímu provozu. Číslo portu je `22` obvykle `5986` pro Linux a pro Windows.          |
+|  Autorizace     |  Řetězec "nosič xxxx-xxxx-xxxx-XXXXX" obsahuje token klienta Azure Active Directory (AD), který se dá vytvořit pomocí PowerShellu.          |
+|  DNSName           |  Název virtuálního počítače, který se má testovat    |
+|  Uživatel              |  Uživatelské jméno pro přihlášení k virtuálnímu počítači         |
+|  Heslo          |  Heslo pro přihlášení k virtuálnímu počítači          |
+|  Operační systém                |  Operační systém virtuálního počítače: buď `Linux` nebo`Windows`          |
+|  PortNo            |  Otevřete číslo portu pro připojení k virtuálnímu počítači. Číslo portu je typicky `22` pro Linux a `5986` pro Windows.          |
 |  |  |
 
 ## <a name="consuming-the-api"></a>Využívání rozhraní API
 
-Rozhraní API pro samočinné testování můžete využívat pomocí prostředí PowerShell nebo cURL.
+Rozhraní API pro samočinné testování můžete využívat pomocí PowerShellu nebo oblého.
 
-### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Použití Prostředí PowerShell ke spotřebovávat rozhraní API v operačním systému Linux
+### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Použití prostředí PowerShell pro využívání rozhraní API v operačním systému Linux
 
-Pokud chcete volat rozhraní API v PowerShellu, postupujte takto:
+Chcete-li volat rozhraní API v prostředí PowerShell, použijte následující postup:
 
-1. Pomocí `Invoke-WebRequest` příkazu volejte rozhraní API.
-2. Metoda je Post a typ obsahu je JSON, jak je znázorněno v následujícím příkladu kódu a snímání obrazovky.
+1. Použijte `Invoke-WebRequest` příkaz pro volání rozhraní API.
+2. Metoda je post a typ obsahu je JSON, jak je znázorněno v následujícím příkladu kódu a snímku obrazovky.
 3. Zadejte parametry těla ve formátu JSON.
 
-Následující příklad kódu ukazuje volání PowerShellu do rozhraní API.
+Následující příklad kódu ukazuje volání prostředí PowerShell do rozhraní API.
 
 ```powershell
 $accesstoken = "Get token for your Client AAD App"
@@ -105,11 +105,11 @@ $Body = @{
 $res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
-Následující snímek obrazovky ukazuje příklad pro volání rozhraní API v Prostředí PowerShell.
+Následující snímek obrazovky ukazuje příklad volání rozhraní API v prostředí PowerShell.
 
-![Rozhraní API pro volání pomocí PowerShellu pro operační systém Linux](./media/stclient-call-api-ps-linuxvm.png)
+![Volání rozhraní API pomocí PowerShellu pro Linux OS](./media/stclient-call-api-ps-linuxvm.png)
 
-Pomocí předchozího příkladu můžete načíst JSON a analyzovat jej získat následující podrobnosti:
+Pomocí předchozího příkladu můžete načíst JSON a analyzovat ho a získat následující podrobnosti:
 
 ```powershell
 $testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
@@ -128,23 +128,23 @@ For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 }
 ```
 
-Následující snímek obrazovky, `$res.Content`který ukazuje , poskytuje podrobnosti o výsledcích testů ve formátu JSON.
+Následující snímek obrazovky, který ukazuje `$res.Content`, poskytuje podrobné informace o výsledcích testů ve formátu JSON.
 
-![Výsledky JSON z volání PowerShellu na Linux](./media/stclient-pslinux-rescontent-json.png)
+![Výsledky JSON z volání prostředí PowerShell do systému Linux](./media/stclient-pslinux-rescontent-json.png)
 
-Následující snímek obrazovky ukazuje příklad výsledků testů JSON zobrazených v online prohlížeči JSON (například [Code Beautify](https://codebeautify.org/jsonviewer) nebo [JSON Viewer](https://jsonformatter.org/json-viewer)).
+Následující snímek obrazovky ukazuje příklad výsledků testu JSON zobrazených v online prohlížeči JSON (například [Code Beautify](https://codebeautify.org/jsonviewer) nebo [JSON Viewer](https://jsonformatter.org/json-viewer)).
 
-![Výsledky JSON z volání PowerShellu pro virtuální počítač s Linuxem](./media/stclient-consume-api-pslinux-json.png)
+![Výsledky JSON z volání prostředí PowerShell do virtuálního počítače se systémem Linux](./media/stclient-consume-api-pslinux-json.png)
 
-### <a name="use-powershell-to-consume-the-api-on-the-windows-os"></a>Použití prostředí PowerShell ke spotřebovávat rozhraní API v systému Windows OS
+### <a name="use-powershell-to-consume-the-api-on-the-windows-os"></a>Použití prostředí PowerShell ke využívání rozhraní API v operačním systému Windows
 
-Pokud chcete volat rozhraní API v PowerShellu, postupujte takto:
+Chcete-li volat rozhraní API v prostředí PowerShell, použijte následující postup:
 
-1. Pomocí `Invoke-WebRequest` příkazu volejte rozhraní API.
-2. Metoda je Post a typ obsahu je JSON, jak je znázorněno v následujícím příkladu kódu a snímání obrazovky.
-3. Vytvořte parametry Body ve formátu JSON.
+1. Použijte `Invoke-WebRequest` příkaz pro volání rozhraní API.
+2. Metoda je post a typ obsahu je JSON, jak je znázorněno v následujícím příkladu kódu a snímku obrazovky.
+3. Vytvořte parametry těla ve formátu JSON.
 
-Následující příklad kódu ukazuje volání PowerShellu do rozhraní API.
+Následující příklad kódu ukazuje volání prostředí PowerShell do rozhraní API.
 
 ```powershell
 $accesstoken = "Get token for your Client AAD App"
@@ -163,11 +163,11 @@ $res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "appl
 $Content = $res | ConvertFrom-Json
 ```
 
-Následující snímek obrazovky ukazuje příklad pro volání rozhraní API v Prostředí PowerShell.
+Následující snímek obrazovky ukazuje příklad volání rozhraní API v prostředí PowerShell.
 
-![Rozhraní API pro volání pomocí Prostředí PowerShell pro virtuální virtuální mísu s Windows](./media/stclient-call-api-ps-windowsvm.png)
+![Volání rozhraní API pomocí PowerShellu pro virtuální počítač s Windows](./media/stclient-call-api-ps-windowsvm.png)
 
-Pomocí předchozího příkladu můžete načíst JSON a analyzovat jej získat následující podrobnosti:
+Pomocí předchozího příkladu můžete načíst JSON a analyzovat ho a získat následující podrobnosti:
 
 ```powershell
 $testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
@@ -186,21 +186,21 @@ For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 }
 ```
 
-Následující snímek obrazovky, `$res.Content`který ukazuje , poskytuje podrobnosti o výsledcích testů ve formátu JSON.
+Následující snímek obrazovky, který ukazuje `$res.Content`, poskytuje podrobné informace o výsledcích testů ve formátu JSON.
 
-![Výsledky json z volání prostředí PowerShell do Systému Windows](./media/stclient-pswindows-rescontent-json.png)
+![Výsledky JSON z volání prostředí PowerShell do Windows](./media/stclient-pswindows-rescontent-json.png)
 
-Následující snímek obrazovky zobrazuje výsledky testů zobrazené v online prohlížeči JSON.
-(například [Kód Zkrášlit](https://codebeautify.org/jsonviewer), [Prohlížeč JSON](https://jsonformatter.org/json-viewer))
+Následující snímek obrazovky znázorňuje výsledky testů, které se zobrazují v online prohlížeči JSON.
+(například [Code Beautify](https://codebeautify.org/jsonviewer), [Prohlížeč Json](https://jsonformatter.org/json-viewer))
 
-![JSON výsledky z volání prostředí PowerShell na virtuální počítač se systémem Windows](./media/stclient-consume-api-pswindows-json.png)
+![Výsledky JSON z volání prostředí PowerShell do virtuálního počítače s Windows](./media/stclient-consume-api-pswindows-json.png)
 
-### <a name="use-curl-to-consume-the-api-on-the-linux-os"></a>Použití cURL ke spotřebovávat API na operačním systému Linux
+### <a name="use-curl-to-consume-the-api-on-the-linux-os"></a>Použití oblé pro využívání rozhraní API v operačním systému Linux
 
-Chcete-li volat rozhraní API s cURL, postupujte takto:
+Chcete-li volat rozhraní API s kudrlinkou, postupujte takto:
 
-1. Pomocí příkazu curl volejte rozhraní API.
-2. Metoda je Post a typ obsahu je JSON, jak je znázorněno v následujícím fragmentu kódu.
+1. Použijte příkaz kudrlinkou pro volání rozhraní API.
+2. Metoda je post a typ obsahu je JSON, jak je znázorněno v následujícím fragmentu kódu.
 
 ```
 CURL POST -H "Content-Type:application/json"
@@ -209,108 +209,108 @@ https://isvapp.azurewebsites.net/selftest-vm
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
 ```
 
-Na následující obrazovce je uveden příklad použití curl volání rozhraní API.
+Následující obrazovka ukazuje příklad použití objektu kudrlinkou k volání rozhraní API.
 
-![Volání rozhraní API pomocí příkazu curl](./media/stclient-consume-api-curl.png)
+![Volání rozhraní API pomocí příkazu kudrlinkou](./media/stclient-consume-api-curl.png)
 
-Následující snímek obrazovky ukazuje výsledky JSON z volání curl.
+Následující snímek obrazovky ukazuje výsledky JSON ze oblého volání.
 
-![JSON výsledky z curl volání](./media/stclient-consume-api-curl-json.png)
+![Výsledky JSON ze oblého volání](./media/stclient-consume-api-curl-json.png)
 
 
-## <a name="choose-the-azure-ad-tenant-for-the-app"></a>Výběr klienta Azure AD pro aplikaci
+## <a name="choose-the-azure-ad-tenant-for-the-app"></a>Výběr tenanta Azure AD pro aplikaci
 
-Pomocí následujících kroků zvolte klienta Azure AD, kde chcete vytvořit aplikaci.
+Pomocí následujících kroků vyberte tenanta Azure AD, ve kterém chcete vytvořit aplikaci.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Na horním řádku nabídek vyberte svůj účet a v seznamu Adresář vyberte klienta služby Active Directory, ve kterém chcete aplikaci zaregistrovat. Nebo vyberte ikonu **Adresář + Odběr** a zobcvujte filtr globálníodběr. Následující snímek obrazovky ukazuje příklad tohoto filtru.
+2. V horním řádku nabídek vyberte svůj účet a v seznamu adresář zvolte tenanta služby Active Directory, kde chcete aplikaci zaregistrovat. Případně můžete kliknutím na ikonu **adresář + předplatné** zobrazit globální filtr předplatných. Následující snímek obrazovky ukazuje příklad tohoto filtru.
 
-   ![Výběr filtru předplatného](./media/stclient-subscription-filter.png)
+   ![Vyberte filtr předplatného.](./media/stclient-subscription-filter.png)
 
-3. Na levém navigačním panelu vyberte **Všechny služby** a pak vyberte **Azure Active Directory**.
+3. Na levém navigačním panelu vyberte **všechny služby** a pak vyberte **Azure Active Directory**.
 
-   V následujících krocích můžete potřebovat název klienta (nebo název adresáře) nebo ID klienta (nebo ID adresáře).
+   V následujících krocích můžete potřebovat název tenanta (nebo název adresáře) nebo ID klienta (nebo ID adresáře).
 
-   **Jak získat informace o tenantovi:**
+   **Získání informací o tenantovi:**
 
-   V **přehledu služby Azure Active Directory**vyhledejte výraz Vlastnosti a vyberte **vlastnosti**. Jako příklad používáte následující snímek obrazovky:
+   V **Azure Active Directory přehledu**vyhledejte "vlastnosti" a pak vyberte **vlastnosti**. Jako příklad použijte následující snímek obrazovky:
 
-   - **Název** – název klienta nebo název adresáře
-   - **ID adresáře** – ID klienta nebo ID adresáře nebo použití posuvníku k vyhledání vlastností.
+   - **Název** – název tenanta nebo název adresáře
+   - **ID adresáře** – ID klienta nebo ID adresáře nebo použití posuvníku k nalezení vlastností.
 
-   ![Stránka vlastností služby Azure Active Directory](./media/stclient-aad-properties.png)
+   ![Stránka vlastností Azure Active Directory](./media/stclient-aad-properties.png)
 
 ## <a name="register-the-client-app"></a>Registrace klientské aplikace
 
-Pomocí následujících kroků zaregistrujte klientskou aplikaci.
+K registraci klientské aplikace použijte následující postup.
 
-1. Na levém navigačním panelu vyberte **Všechny služby** a pak vyberte **Registrace aplikací**.
-2. V části **Registrace aplikací**vyberte + Registrace **nové aplikace**.
-3. V části **Vytvořit**zadejte informace požadované pro následující pole:
+1. Na levém navigačním panelu vyberte **všechny služby** a pak vyberte **Registrace aplikací**.
+2. V části **Registrace aplikací**vyberte **+ Registrace nové aplikace**.
+3. V části **vytvořit**zadejte informace požadované pro následující pole:
 
-   - **Název** – Zadejte popisný název aplikace. Například "SelfTestClient".
+   - **Název** – zadejte popisný název aplikace. Například "SelfTestClient".
    - **Typ aplikace** – výběr **webové aplikace/rozhraní API**
-   - **Přihlašovací adresa URL** – zadejte "https:\//isvapp.azurewebsites.net/selftest-vm"
+   - **Adresa URL pro přihlášení** – typ https:\//isvapp.azurewebsites.NET/selftest-VM
 
 4. Vyberte **Vytvořit**.
-5. V části **Registrace aplikací** nebo **Registrovaná aplikace**zkopírujte **ID aplikace**.
+5. V části **Registrace aplikací** nebo **registrovaná aplikace**zkopírujte **ID aplikace**.
 
-   ![Získání ID aplikace](./media/stclient-app-id.png)
+   ![Získat ID aplikace](./media/stclient-app-id.png)
 
-6. Na registrovaném panelu nástrojů aplikace vyberte **Nastavení**.
-7. Vyberte **Požadovaná oprávnění** ke konfiguraci oprávnění pro vaši aplikaci.
-8. V části **Požadovaná oprávnění**vyberte **+ Přidat**.
-9. V části **Přidat přístup k rozhraní API**vyberte Vybrat rozhraní **API**.
-10. V **části Vyberte rozhraní API**zadejte "Windows Azure classic deployment model" pro hledání rozhraní API.
-11. Ve výsledcích hledání vyberte **klasický model nasazení Windows Azure** a klikněte na **Vybrat**.
+6. Na panelu nástrojů registrovaná aplikace vyberte **Nastavení**.
+7. Vyberte **požadovaná oprávnění** ke konfiguraci oprávnění pro vaši aplikaci.
+8. V části **požadovaná oprávnění**vyberte **+ Přidat**.
+9. V části **Přidat přístup k rozhraní API** **Vyberte vybrat rozhraní API**.
+10. V části **Vybrat rozhraní API**zadejte "klasický model nasazení Windows Azure", chcete-li vyhledat rozhraní API.
+11. Ve výsledcích hledání vyberte **model nasazení Windows Azure Classic** a pak klikněte na **Vybrat**.
 
-    ![Konfigurace víceklientského klienta pro aplikaci](./media/stclient-select-api.png)
+    ![Konfigurace více tenantů pro aplikaci](./media/stclient-select-api.png)
 
-12. V části **Přidat přístup k rozhraní API**vyberte možnost Vybrat **oprávnění**.
-13. Vyberte **Access "Rozhraní API pro správu služeb Windows Azure "**.
+12. V části **Přidat přístup k rozhraní API**vyberte **vybrat oprávnění**.
+13. Vyberte **přístup "Windows Azure rozhraní API pro správu služeb"**.
 
-    ![Povolení přístupu k rozhraní API pro aplikaci](./media/stclient-enable-api-access.png)
+    ![Povolit přístup k rozhraní API pro aplikaci](./media/stclient-enable-api-access.png)
 
-14. Klepněte na **tlačítko Vybrat**.
+14. Klikněte na **Vybrat**.
 15. Vyberte **Done** (Hotovo).
 16. V části **Nastavení** vyberte **Vlastnosti**.
-17. V části **Vlastnosti**přejděte dolů na **Víceklientské**. Vyberte **ano**.
+17. V části **vlastnosti**se posuňte dolů na **více tenantů**. Vyberte **Ano**.
 
-    ![Konfigurace víceklientského klienta pro aplikaci](./media/stclient-yes-multitenant.png)
+    ![Konfigurace více tenantů pro aplikaci](./media/stclient-yes-multitenant.png)
 
 18. Vyberte **Uložit**.
-19. V části **Nastavení**vyberte **Klávesy**.
-20. Vytvořte tajný klíč výběrem textového pole **Popis** klíče. Nakonfigurujte následující pole:
+19. V části **Nastavení**vyberte **klíče**.
+20. Vytvořte tajný klíč výběrem pole **Popis** klíče. Nakonfigurujte následující pole:
 
     - Zadejte název klíče. Například "selftestclient"
-    - V rozevíracím seznamu **EXPIRES** vyberte možnost "Za 1 rok".
-    - Chcete-li klíč vygenerovat, vyberte **uložit.**
-    - V části **HODNOTA**zkopírujte klíč.
+    - V rozevíracím seznamu **vypršení platnosti** vyberte "v 1 roce".
+    - Vyberte **Save (Uložit** ) a vygenerujte klíč.
+    - Pod položkou **hodnota**Zkopírujte klíč.
 
       >[!Important]
-      >Hodnotu klíče po ukončení formuláře **Klíče** neuvidíte.
+      >Po ukončení formuláře **klíčů** nebudete moct zobrazit klíčovou hodnotu.
 
     ![Formulář hodnoty klíče](./media/stclient-create-key.png)
 
 ## <a name="create-the-token-for-the-client-app"></a>Vytvoření tokenu pro klientskou aplikaci
 
-Pomocí některého z následujících programů můžete vytvořit a získat token pomocí rozhraní OAuth REST API:
+K vytvoření a získání tokenu pomocí REST API OAuth můžete použít kterýkoli z následujících programů:
 
 - Postman
-- cURL v Linuxu
+- kudrlinkou v systému Linux
 - C&#35;
 - PowerShell
 
-### <a name="to-create-and-get-a-token-using-postman"></a>Vytvoření a získání tokenu pomocí Pošťáka
+### <a name="to-create-and-get-a-token-using-postman"></a>Vytvoření a získání tokenu pomocí metody post
 
- Chcete-li požádat Auth0 o žetony pro některou [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) z vašich autorizovaných aplikací, proveďte operaci POST ke koncovému bodu s datovou částí v následujícím formátu:
+ Chcete-li požádat o tokeny Auth0 pro kteroukoli z autorizovaných aplikací, proveďte operaci POST [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) koncovému bodu s datovou částí v následujícím formátu:
 
 ```
 Method Type : POST
 Base Url: https://login.microsoftonline.com/common/oauth2/token
 ```
 
-Předat následující parametry v textu požadavku:
+V textu žádosti předejte následující parametry:
 
 ```
 Body Content-Type: x-www-form-urlencoded
@@ -320,19 +320,19 @@ client_secret: XXX (Paste your Secret Key of Web App/API Type client AD App)
 resource: https://management.core.windows.net
 ```
 
-V hlavičce požadavku předavte následující parametry:
+V hlavičce požadavku předejte následující parametry:
 
 ```
 Content-Type: application/x-www-form-urlencoded
 ```
 
-Následující snímek obrazovky ukazuje příklad použití Postman získat token.
+Následující snímek obrazovky ukazuje příklad použití metody post pro získání tokenu.
 
-![Získat žeton s Pošťákem](./media/stclient-postman-get-token.png)
+![Získání tokenu pomocí metody post](./media/stclient-postman-get-token.png)
 
-### <a name="to-create-and-get-a-token-using-curl-in-linux"></a>Vytvoření a získání tokenu pomocí cURL v Linuxu
+### <a name="to-create-and-get-a-token-using-curl-in-linux"></a>Vytvoření a získání tokenu pomocí kudrlinkou v systému Linux
 
-Chcete-li požádat Auth0 o žetony pro některou [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) z vašich autorizovaných aplikací, proveďte operaci POST ke koncovému bodu s datovou částí v následujícím formátu:
+Chcete-li požádat o tokeny Auth0 pro kteroukoli z autorizovaných aplikací, proveďte operaci POST [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) koncovému bodu s datovou částí v následujícím formátu:
 
 ```
 Request:
@@ -347,13 +347,13 @@ Response:
 {"token":"UClCUUKxUlkdbhE1cHLz3kyjbIZYVh9eB34A5Q21Y3FPqKGSJs","expires":"2014-02-17 18:46:08"}
 ```
 
-Následující snímek obrazovky ukazuje příklad použití příkazu curl k získání tokenu.
+Následující snímek obrazovky ukazuje příklad použití příkazu složeného k získání tokenu.
 
-![Získat token s příkazem curl](./media/stclient-curl-get-token.png)
+![Získat token pomocí příkazu kudrlinkou](./media/stclient-curl-get-token.png)
 
-### <a name="to-create-and-get-a-token-using-c35"></a>Vytvoření a získání tokenu pomocí c&#35;
+### <a name="to-create-and-get-a-token-using-c35"></a>Vytvoření a získání tokenu pomocí jazyka C&#35;
 
-Chcete-li požádat Auth0 o žetony pro některou z\/vašich autorizovaných aplikací, proveďte operaci POST na https: /soamtenant.auth0.com/oauth/token koncovém bodu s datovou částí v následujícím formátu:
+Pokud chcete požádat o tokeny Auth0 pro kteroukoli z autorizovaných aplikací, proveďte operaci POST do koncového\/bodu https:/soamtenant.Auth0.com/OAuth/token s datovou částí v následujícím formátu:
 
 ```csharp
 string clientId = "Your Application Id";
@@ -376,7 +376,7 @@ var token = JObject.Parse(content)["access_token"];
 
 ### <a name="to-create-and-get-a-token-using-powershell"></a>Vytvoření a získání tokenu pomocí PowerShellu
 
-Chcete-li požádat Auth0 o žetony pro některou z\/vašich autorizovaných aplikací, proveďte operaci POST na https: /soamtenant.auth0.com/oauth/token koncovém bodu s datovou částí v následujícím formátu:
+Pokud chcete požádat o tokeny Auth0 pro kteroukoli z autorizovaných aplikací, proveďte operaci POST do koncového\/bodu https:/soamtenant.Auth0.com/OAuth/token s datovou částí v následujícím formátu:
 
 ```powershell
 $clientId = "Application Id of AD Client APP";
@@ -397,7 +397,7 @@ $token.AccessToken
 
 ## <a name="pass-the-client-app-token-to-the-api"></a>Předání tokenu klientské aplikace do rozhraní API
 
-Předavte token rozhraní API pro samočinné testování pomocí následujícího kódu v hlavičce autorizace:
+Předejte token do rozhraní API pro samočinné testování pomocí následujícího kódu v autorizační hlavičce:
 
 ```powershell
 $redirectUri = 'https://isvapp.azurewebsites.net/selftest-vm'
@@ -420,19 +420,19 @@ Write-Output 'Test Results:'
 $result.Content
 ```
 
-## <a name="test-your-self-test-client"></a>Otestujte svého klienta s vlastním testem
+## <a name="test-your-self-test-client"></a>Testování klientského samočinného testu
 
-Chcete-li otestovat klienta, postupujte takto:
+K otestování klienta použijte následující postup:
 
-1. Nasaďte virtuální ho virtuálního mísu, který chcete otestovat.
-2. Volání rozhraní API pro samočinné testování pomocí tokenu klientské aplikace pro autorizaci.
-3. Získejte výsledky testů ve formátu JSON.
+1. Nasaďte virtuální počítač, který chcete testovat.
+2. Zavolejte rozhraní API pro vlastní testování pomocí tokenu klientské aplikace pro autorizaci.
+3. Získá výsledky testu ve formátu JSON.
 
 ### <a name="test-result-examples"></a>Příklady výsledků testu
 
-Následující úryvky zobrazují výsledky testů ve formátu JSON.
+Následující fragmenty kódu ukazují výsledky testů ve formátu JSON.
 
-**Výsledky testů pro virtuální mísu windows:**
+**Výsledky testů pro virtuální počítač s Windows:**
 
 ```json
 {
@@ -471,7 +471,7 @@ Následující úryvky zobrazují výsledky testů ve formátu JSON.
     },
 ```
 
-**Výsledky testů pro virtuální počítač s Linuxem:**
+**Výsledky testů pro virtuální počítač se systémem Linux:**
 
 ```json
 {
@@ -512,4 +512,4 @@ Následující úryvky zobrazují výsledky testů ve formátu JSON.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po úspěšném otestování virtuálního počítače Azure můžete [nabídku publikovat](./cpp-publish-offer.md).
+Po úspěšném otestování virtuálního počítače Azure můžete [tuto nabídku publikovat](./cpp-publish-offer.md).

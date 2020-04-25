@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: eb6fc65d15ba7262b38a48e220f01d74bfcee54a
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.openlocfilehash: a38bb12577fd646b2e7abf773dbb2a3f138f58fe
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146558"
+ms.locfileid: "82127551"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Základní plán zabezpečení Azure pro Azure Database for PostgreSQL jeden server
 
@@ -130,7 +130,7 @@ Pochopení použití značek služby pro Azure Database for PostgreSQL:https://d
 
 - Měla by být povolená DDoS Protection Standard.
 
-- Pro databázové servery PostgreSQL by mělo být povoleno připojení TLS.
+- Pro databázové servery PostgreSQL by mělo být povoleno připojení SSL vynutilo.
 
 Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -525,7 +525,7 @@ Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/s
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-**Pokyny**: Azure Database for PostgreSQL podporuje připojení serveru PostgreSQL k klientským aplikacím pomocí protokolu TLS (Transport Layer Security), dříve označovaného jako SSL (Secure Sockets Layer) (SSL). Vynucování připojení TLS mezi vaším databázovým serverem a klientskými aplikacemi pomáhá chránit před útoky typu "muž" v prostředním případě šifrováním datového proudu mezi serverem a vaší aplikací. V Azure Portal Ujistěte se, že je ve výchozím nastavení povolená možnost vykonat připojení SSL pro všechny vaše Azure Database for PostgreSQL instance.
+**Doprovodné**materiály: Azure Database for PostgreSQL podporuje připojení serveru PostgreSQL k klientským aplikacím pomocí SSL (Secure SOCKETS Layer) (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky. V Azure Portal Ujistěte se, že je ve výchozím nastavení povolená možnost vykonat připojení SSL pro všechny vaše Azure Database for PostgreSQL instance.
 
 V současné době je verze TLS podporovaná pro Azure Database for PostgreSQL TLS 1,0, TLS 1,1, TLS 1,2.
 
@@ -794,7 +794,7 @@ Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resou
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Azure Database for PostgreSQL instance pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. DBforPostgreSQL můžete vytvořit vlastní zásady, které budou auditovat nebo vymáhat konfiguraci sítě vašich Azure Database for PostgreSQL instancí. Můžete také využít integrované definice zásad související s vašimi Azure Database for PostgreSQL instancemi, například:
 
-- Pro databázové servery PostgreSQL by mělo být povoleno připojení TLS.
+- Pro databázové servery PostgreSQL by mělo být povoleno připojení SSL vynutilo.
 
 - Pro databázové servery PostgreSQL by se měla povolit protokolovat připojení.
 

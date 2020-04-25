@@ -1,42 +1,42 @@
 ---
 title: Technické informace o nabídce aplikace Power BI | Azure Marketplace
-description: Konfigurace polí Technické informace pro nabídku aplikace Power BI pro tržiště Microsoft AppSource Marketplace
+description: Nakonfigurujte pole s technickými informacemi o Power BI nabídce aplikace pro Microsoft AppSource Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: d814ebc34193f5d7c0c3828d32aa3d2af29f3679
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b012ac012c7de3c6428ecbe2d2b922a2a9aa0523
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981354"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82141780"
 ---
-# <a name="power-bi-apps-technical-info-tab"></a>Karta Technické informace o aplikacích Power BI
+# <a name="power-bi-apps-technical-info-tab"></a>Karta technické informace o Power BI Apps
 
 >[!Important]
->dubna 2020 začneme přesouvat správu nabídek aplikací Power BI do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
+>Od 13. dubna 2020 začneme přesouvat správu nabídek Power BI aplikací do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Při správě migrovaných nabídek postupujte podle pokynů v tématu [Přehled vytvoření aplikace Power BI](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) .
 
-Na stránce **Nová nabídka** na kartě **Technické informace** zadejte adresu URL instalačního balíčku Power BI a další informace, které potřebujete k ověření nové nabídky.  Pro počáteční verzi jsou všechny aplikace Power BI zdarma a jsou dostupné ke stažení z AppSource. Z tohoto důvodu nelze definovat skladové jednotky (Skladové jednotky) pro tento typ nabídky.
+Na stránce **Nová nabídka** použijte kartu **technické informace** a zadejte adresu URL balíčku Instalační služby Power BI a další informace, které potřebujete k ověření nové nabídky.  V případě počáteční verze jsou všechny Power BI aplikace zdarma a jsou k dispozici ke stažení z AppSource. Z tohoto důvodu není možné pro tento typ nabídky definovat skladové jednotky (SKU).
 
-![Karta Technické informace](./media/technical-info-tab.png)
+![Karta technické informace](./media/technical-info-tab.png)
 
 
-## <a name="technical-info-fields"></a>Pole Technické informace 
+## <a name="technical-info-fields"></a>Pole s technickými informacemi 
 
-Na kartě **Technické informace** vyplňte pole popsaná v následující tabulce. Hvězdička (*) na konci popisku pole znamená, že je pole povinné.
+Na kartě **technické informace** vyplňte pole popsaná v následující tabulce. Hvězdička (*) na konci popisku pole znamená, že pole je povinné.
 
 |        Pole          |  Popis                                                                 |
 |    ---------------    |  ----------------------------------------------------------------------------|
-| **Adresa URL instalačního programu\***     | Power BI vygeneruje tuto adresu URL, když publikujete aplikaci a propagujete ji do produkčního prostředí.  Další informace najdete v [tématu Publikování aplikací pomocí řídicích panelů a sestav v Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
-|  **Pokyny pro ověření**  |  Pokud chcete, přidejte pokyny (až 3 000 znaků), které pomohou týmu pro ověření pravosti Microsoftu nakonfigurovat, připojit a otestovat vaši aplikaci. Zahrňte typická nastavení konfigurace, účty, parametry nebo jiné informace, které lze použít k testování možnosti Připojit data. Tyto informace jsou viditelné pouze pro ověřovací tým a používají se pouze pro účely ověření.  |
-| **Je tato aplikace vytvořena jako balíček obsahu Power BI?** | V současné době se toto pole používá pouze interně. Ponechte výchozí nastavení **ne**. Pokud změníte nastavení na **Ano**, můžete zastavit proces publikování.  |  
+| **Adresa URL instalačního programu\***     | Power BI tuto adresu URL vygeneruje, když aplikaci publikujete a povýšíte ji do produkčního prostředí.  Další informace najdete v tématu [publikování aplikací s řídicími panely a sestavami v Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
+|  **Pokyny k ověření**  |  Pokud chcete, přidejte pokyny (až 3 000 znaků), aby tým Microsoftu pro ověřování mohl konfigurovat, připojit a testovat vaši aplikaci. Zahrňte typická nastavení konfigurace, účty, parametry nebo další informace, které se dají použít k otestování možnosti připojit data. Tyto informace jsou viditelné pouze pro ověřovací tým a používají se pouze pro účely ověření.  |
+| **Je tato aplikace vytvořená jako Power BI balíček obsahu?** | V současné době se toto pole používá pouze interně. Nechejte výchozí nastavení **ne**. Pokud změníte nastavení na **Ano**, můžete zastavit proces publikování.  |  
 |  |  |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Na kartě [Podrobnosti ve výloze](./cpp-storefront-details-tab.md) poskytněte marketingové a právní informace pro svou aplikaci.
+Na kartě [Podrobnosti prezentace](./cpp-storefront-details-tab.md) zadejte marketingové a právní informace pro vaši aplikaci.
 

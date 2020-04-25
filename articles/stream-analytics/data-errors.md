@@ -1,27 +1,27 @@
 ---
-title: Chyby diagnostických protokolů Azure Stream Analytics
-description: Tento článek vysvětluje různé chyby vstupních a výstupních dat, ke kterým může dojít při používání Azure Stream Analytics.
+title: Chyby dat protokolu Azure Stream Analytics prostředku
+description: Tento článek popisuje různé chyby vstupních a výstupních dat, ke kterým může dojít při použití Azure Stream Analytics.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 5457308d577b95201fa31bfad0a6634a7a79eda3
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 5c5da26935e489a1b9489f63b83af176921c3a5a
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398136"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133805"
 ---
-# <a name="azure-stream-analytics-data-errors"></a>Chyby dat Azure Stream Analytics
+# <a name="azure-stream-analytics-data-errors"></a>Chyby Azure Stream Analytics dat
 
-Chyby dat jsou chyby, ke kterým dochází při zpracování dat.  K těmto chybám nejčastěji dochází během operace deserializace, serializace a zápisu dat.  Dojde-li k chybám dat, Stream Analytics zapíše podrobné informace a ukázkové události do diagnostických protokolů.  V některých případech je souhrn těchto informací poskytován také prostřednictvím oznámení portálu.
+Chyby dat jsou chyby, ke kterým došlo při zpracování dat.  K těmto chybám dochází nejčastěji během operací zrušení serializace, serializace a zápisu dat.  Pokud dojde k chybám dat, Stream Analytics zapisuje podrobné informace a ukázkové události do protokolů prostředků.  V některých případech je souhrn těchto informací k dispozici také prostřednictvím oznámení na portálu.
 
-Tento článek popisuje různé typy chyb, příčiny a podrobnosti diagnostického protokolu pro chyby vstupních a výstupních dat.
+Tento článek popisuje různé typy chyb, příčiny a podrobnosti o chybách vstupních a výstupních dat v protokolu prostředků.
 
-## <a name="diagnostic-log-schema"></a>Schéma diagnostického protokolu
+## <a name="resource-logs-schema"></a>Schéma protokolů prostředků
 
-Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagnostiky](stream-analytics-job-diagnostic-logs.md#diagnostics-logs-schema) zobrazíte schéma pro diagnostické protokoly. Následující JSON je ukázková hodnota pro pole **Vlastnosti** diagnostického protokolu pro chybu dat.
+V tématu [řešení potíží s Azure Stream Analytics pomocí diagnostických protokolů](stream-analytics-job-diagnostic-logs.md#resource-logs-schema) můžete zobrazit schéma pro protokoly prostředků. Následující JSON je příkladem hodnoty pro pole **vlastnosti** protokolu prostředku pro chybu dat.
 
 ```json
 {
@@ -41,12 +41,12 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="inputdeserializererrorinvalidcompressiontype"></a>InputDeserializerError.InvalidCompressionType
 
-* Příčina: Vybraný typ komprese vstupu neodpovídá datům.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Zprávy s chybami deserializace včetně neplatného typu komprese jsou vynechány ze vstupu.
+* Příčina: vybraný typ komprese vstupu neodpovídá datům.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: zprávy s jakoukoli chybou deserializace, včetně neplatného typu komprese, jsou ze vstupu vypuštěny.
 * Podrobnosti protokolu
-   * Identifikátor vstupní zprávy. Pro centrum událostí je identifikátor PartitionId, Posun a Pořadové číslo.
+   * Identifikátor vstupní zprávy V centru událostí je identifikátorem PartitionId, offset a pořadové číslo.
 
 **Chybová zpráva**
 
@@ -56,13 +56,13 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="inputdeserializererrorinvalidheader"></a>InputDeserializerError.InvalidHeader
 
-* Příčina: Záhlaví vstupních dat je neplatné. Například csv má sloupce s duplicitními názvy.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Zprávy s chybami deserializace včetně neplatné hlavičky jsou vynechány ze vstupu.
+* Příčina: záhlaví vstupních dat je neplatné. Sdílený svazek clusteru má například sloupce s duplicitními názvy.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: zprávy s jakýmikoli chybami deserializace, včetně neplatných hlaviček, jsou ze vstupu vypuštěny.
 * Podrobnosti protokolu
-   * Identifikátor vstupní zprávy. 
-   * Skutečná datová část až několik kilobajtů.
+   * Identifikátor vstupní zprávy 
+   * Skutečná datová část až do několika kilobajtů
 
 **Chybová zpráva**
 
@@ -72,14 +72,14 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="inputdeserializererrormissingcolumns"></a>InputDeserializerError.MissingColumns
 
-* Příčina: Vstupní sloupce definované pomocí create table nebo prostřednictvím funkce TIMESTAMP BY neexistují.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Události s chybějícími sloupci jsou vynechány ze vstupu.
+* Příčina: neexistuje vstupní sloupec definovaný pomocí CREATE TABLE nebo prostřednictvím časového RAZÍTKa.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: události, které mají chybějící sloupce, se z vstupu zahozeny.
 * Podrobnosti protokolu
-   * Identifikátor vstupní zprávy. 
-   * Názvy chybějících sloupců. 
-   * Skutečná datová část až několik kilobajtů.
+   * Identifikátor vstupní zprávy 
+   * Názvy sloupců, které chybí. 
+   * Skutečná datová část až do několika kilobajtů
 
 **Chybové zprávy**
 
@@ -93,13 +93,13 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="inputdeserializererrortypeconversionerror"></a>InputDeserializerError.TypeConversionError
 
-* Příčina: Vstup nelze převést na typ zadaný v příkazu CREATE TABLE.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Události s chybou převodu typu jsou vynechány ze vstupu.
+* Příčina: nelze převést vstup na typ zadaný v příkazu CREATE TABLE.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: události s chybou konverze typu jsou ze vstupu vyřazeny.
 * Podrobnosti protokolu
-   * Identifikátor vstupní zprávy. 
-   * Název sloupce a očekávaný typ.
+   * Identifikátor vstupní zprávy 
+   * Název sloupce a očekávaného typu.
 
 **Chybové zprávy**
 
@@ -113,13 +113,13 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="inputdeserializererrorinvaliddata"></a>InputDeserializerError.InvalidData
 
-* Příčina: Vstupní data nejsou ve správném formátu. Například vstup není platný JSON.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Všechny události ve zprávě po výskytu neplatné chyby dat jsou vynechány ze vstupu.
+* Příčina: vstupní data nejsou ve správném formátu. Například vstup není platný formát JSON.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: všechny události ve zprávě po zjištění neplatného data jsou vyřazeny ze vstupu.
 * Podrobnosti protokolu
-   * Identifikátor vstupní zprávy. 
-   * Skutečná datová část až několik kilobajtů.
+   * Identifikátor vstupní zprávy 
+   * Skutečná datová část až do několika kilobajtů
 
 **Chybové zprávy**
 
@@ -133,14 +133,14 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="invalidinputtimestamp"></a>InvalidInputTimeStamp
 
-* Příčina: Hodnotu výrazu TIMESTAMP BY nelze převést na datetime.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Události s neplatným vstupním časovým razítkem jsou vynechány ze vstupu.
+* Příčina: hodnota časového RAZÍTKa podle výrazu se nedá převést na typ DateTime.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: události s neplatným vstupním časovým razítkem jsou ze vstupu vypuštěné.
 * Podrobnosti protokolu
-   * Identifikátor vstupní zprávy. 
-   * Chybová zpráva. 
-   * Skutečná datová část až několik kilobajtů.
+   * Identifikátor vstupní zprávy 
+   * Chybová zpráva 
+   * Skutečná datová část až do několika kilobajtů
 
 **Chybová zpráva**
 
@@ -148,14 +148,14 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 "BriefMessage": "Unable to get timestamp for resource 'https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt ' due to error 'Cannot convert string to datetime'"
 ```
 
-### <a name="invalidinputtimestampkey"></a>Neplatný klíč InputTimeStampKey
+### <a name="invalidinputtimestampkey"></a>InvalidInputTimeStampKey
 
-* Příčina: Hodnota timestamp by over timestampcolumn je NULL.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Události s neplatným vstupním klíčem časového razítka jsou vynechány ze vstupu.
+* Příčina: hodnota časového RAZÍTKa prostřednictvím timestampColumn má hodnotu NULL.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: události s neplatným vstupním klíčem časového razítka jsou ze vstupu vyřazeny.
 * Podrobnosti protokolu
-   * Skutečná datová část až několik kilobajtů.
+   * Skutečná datová část až do několika kilobajtů.
 
 **Chybová zpráva**
 
@@ -165,13 +165,13 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="lateinputevent"></a>LateInputEvent
 
-* Příčina: Rozdíl mezi časem aplikace a časem doručení je větší než okno tolerance pozdního doručení.
-* Oznámení portálu: Ne
-* Úroveň diagnostického protokolu: Informace
-* Dopad: Pozdní vstupní události jsou zpracovány podle nastavení "Zpracování jiných událostí" v části Pořadí událostí konfigurace úlohy. Další informace naleznete v [tématu Zásady zpracování času](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Příčina: rozdíl mezi časem a dobou doručení aplikace je větší než zpožděná tolerance doručení.
+* Poskytnuté oznámení na portálu: ne
+* Úroveň protokolu prostředků: informace
+* Dopad: zpožděné vstupní události se zpracovávají podle nastavení "zpracovat jiné události" v části řazení událostí v konfiguraci úlohy. Další informace najdete v tématu [zásady zpracování času](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Podrobnosti protokolu
-   * Čas aplikace a čas příjezdu. 
-   * Skutečná datová část až několik kilobajtů.
+   * Čas aplikace a čas doručení. 
+   * Skutečná datová část až do několika kilobajtů
 
 **Chybová zpráva**
 
@@ -181,13 +181,13 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="earlyinputevent"></a>EarlyInputEvent
 
-* Příčina: Rozdíl mezi časem aplikace a časem doručení je větší než 5 minut.
-* Oznámení portálu: Ne
-* Úroveň diagnostického protokolu: Informace
-* Dopad: Události včasného vstupu jsou zpracovány podle nastavení "Zpracování jiných událostí" v části Pořadí událostí konfigurace úlohy. Další informace naleznete v [tématu Zásady zpracování času](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Příčina: rozdíl mezi časem aplikace a dobou doručení je větší než 5 minut.
+* Poskytnuté oznámení na portálu: ne
+* Úroveň protokolu prostředků: informace
+* Dopad: události předčasného vstupu jsou zpracovávány podle nastavení "zpracovat jiné události" v části řazení událostí v konfiguraci úlohy. Další informace najdete v tématu [zásady zpracování času](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Podrobnosti protokolu
-   * Čas aplikace a čas příjezdu. 
-   * Skutečná datová část až několik kilobajtů.
+   * Čas aplikace a čas doručení. 
+   * Skutečná datová část až do několika kilobajtů
 
 **Chybová zpráva**
 
@@ -197,12 +197,12 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="outoforderevent"></a>OutOfOrderEvent
 
-* Příčina: Událost je považována za neuspořádanou podle definovaného okna tolerance mimo pořadí.
-* Oznámení portálu: Ne
-* Úroveň diagnostického protokolu: Informace
-* Dopad: Události mimo pořadí jsou zpracovány podle nastavení "Zpracování jiných událostí" v části Pořadí událostí konfigurace úlohy. Další informace naleznete v [tématu Zásady zpracování času](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Příčina: událost je považována za mimo pořadí podle definovaného okna tolerance mimo pořadí.
+* Poskytnuté oznámení na portálu: ne
+* Úroveň protokolu prostředků: informace
+* Dopad: události mimo pořadí jsou zpracovávány podle nastavení "zpracovat jiné události" v části řazení událostí v konfiguraci úlohy. Další informace najdete v tématu [zásady zpracování času](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Podrobnosti protokolu
-   * Skutečná datová část až několik kilobajtů.
+   * Skutečná datová část až do několika kilobajtů
 
 **Chybová zpráva**
 
@@ -214,12 +214,12 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 
-* Příčina: Sloupec požadovaný pro výstup neexistuje. Například sloupec definovaný jako Azure Table PartitionKey neexistuje.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Všechny chyby převodu výstupních dat včetně chybějícího požadovaného sloupce jsou zpracovány podle nastavení [Zásady výstupních dat.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)
+* Příčina: sloupec vyžadovaný pro výstup neexistuje. Například sloupec, který je definován jako Azure Table PartitionKey does't, existuje.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: všechny chyby převodu výstupních dat, včetně chybějících požadovaných sloupců, se zpracovávají podle nastavení [zásad výstupních dat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
 * Podrobnosti protokolu
-   * Název sloupce a identifikátor záznamu nebo jeho část.
+   * Název sloupce a buď identifikátor záznamu, nebo část záznamu.
 
 **Chybová zpráva**
 
@@ -229,12 +229,12 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="outputdataconversionerrorcolumnnameinvalid"></a>OutputDataConversionError.ColumnNameInvalid
 
-* Příčina: Hodnota sloupce neodpovídá výstupu. Například název sloupce není platný sloupec tabulky Azure.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Všechny chyby převodu výstupních dat včetně neplatného názvu sloupce jsou zpracovány podle nastavení [Zásady výstupních dat.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)
+* Příčina: hodnota sloupce nevyhovuje výstupu. Například název sloupce není platný sloupec tabulky Azure.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: všechny chyby převodu výstupních dat, včetně neplatného názvu sloupce, se zpracovávají podle nastavení [zásad výstupních dat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
 * Podrobnosti protokolu
-   * Název sloupce a identifikátor záznamu nebo část záznamu.
+   * Název sloupce a buď identifikátor záznamu, nebo část záznamu.
 
 **Chybová zpráva**
 
@@ -244,13 +244,13 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="outputdataconversionerrortypeconversionerror"></a>OutputDataConversionError.TypeConversionError
 
-* Příčina: Sloupec nelze převést na platný typ ve výstupu. Například hodnota sloupce není kompatibilní s omezeními nebo typem definovaným v tabulce SQL.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Všechny chyby převodu výstupních dat včetně chyby převodu typu jsou zpracovány podle nastavení [Zásady výstupních dat.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)
+* Příčina: sloupec nejde převést na platný typ ve výstupu. Například hodnota sloupce je nekompatibilní s omezeními nebo typem definovaným v tabulce SQL.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: všechny chyby převodu výstupních dat, včetně chyby konverze typu, se zpracovávají podle nastavení [zásad výstupních dat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
 * Podrobnosti protokolu
-   * Název sloupce.
-   * Identifikátor záznamu nebo jeho část.
+   * Název sloupce
+   * Buď identifikátor záznamu, nebo část záznamu.
 
 **Chybová zpráva**
 
@@ -260,12 +260,12 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="outputdataconversionerrorrecordexceededsizelimit"></a>OutputDataConversionError.RecordExceededSizeLimit
 
-* Příčina: Hodnota zprávy je větší než podporovaná velikost výstupu. Například záznam je větší než 1 MB pro výstup centra událostí.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Všechny chyby převodu výstupních dat včetně limitu velikosti překročení záznamu jsou zpracovány podle nastavení [Zásady výstupních dat.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)
+* Příčina: hodnota zprávy je větší než podporovaná velikost výstupu. Například záznam je větší než 1 MB pro výstup centra událostí.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: všechny chyby převodu výstupních dat, včetně omezení velikosti překročení záznamu, se zpracovávají podle nastavení [zásad výstupních dat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
 * Podrobnosti protokolu
-   * Identifikátor záznamu nebo jeho část.
+   * Buď identifikátor záznamu, nebo část záznamu.
 
 **Chybová zpráva**
 
@@ -275,13 +275,13 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ### <a name="outputdataconversionerrorduplicatekey"></a>OutputDataConversionError.DuplicateKey
 
-* Příčina: Záznam již obsahuje sloupec se stejným názvem jako sloupec Systém. Například výstup CosmosDB se sloupcem s názvem ID, když je sloupec ID do jiného sloupce.
-* Oznámení portálu: Ano
-* Úroveň diagnostického protokolu: Upozornění
-* Dopad: Všechny chyby převodu výstupních dat včetně duplicitního klíče jsou zpracovány podle nastavení [Zásady výstupních dat.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)
+* Příčina: záznam již obsahuje sloupec se stejným názvem jako systémový sloupec. Například výstup CosmosDB se sloupcem s názvem ID, když sloupec ID je na jiný sloupec.
+* Poskytnuté oznámení na portálu: Ano
+* Úroveň protokolu prostředků: upozornění
+* Dopad: všechny chyby převodu výstupních dat, včetně duplicitního klíče, se zpracovávají podle nastavení [zásad výstupních dat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
 * Podrobnosti protokolu
-   * Název sloupce.
-   * Identifikátor záznamu nebo jeho část.
+   * Název sloupce
+   * Buď identifikátor záznamu, nebo část záznamu.
 
 ```json
 "BriefMessage": "Column 'devicePartitionKey' is being mapped to multiple columns."
@@ -289,6 +289,6 @@ Viz [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagno
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Poradce při potížích s Azure Stream Analytics pomocí protokolů diagnostiky](stream-analytics-job-diagnostic-logs.md)
+* [Řešení potíží s Azure Stream Analytics pomocí diagnostických protokolů](stream-analytics-job-diagnostic-logs.md)
 
-* [Principy monitorování úloh Služby Stream Analytics a monitorování dotazů](stream-analytics-monitoring.md)
+* [Pochopení Stream Analytics monitorování úloh a postup monitorování dotazů](stream-analytics-monitoring.md)

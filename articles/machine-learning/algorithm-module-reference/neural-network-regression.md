@@ -1,98 +1,108 @@
 ---
-title: 'Regrese neuronové sítě: Odkaz na modul'
+title: 'Regrese sítě neuronové: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu regrese neural sítě v Azure Machine Learning vytvořit regresní model pomocí algoritmu přizpůsobitelné neuronové sítě..
+description: Naučte se, jak pomocí modulu neuronové Network regrese v Azure Machine Learning vytvořit regresní model pomocí přizpůsobitelného síťového algoritmu neuronové.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 3a591badab29a1669d109f01f8a93732704d2fd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: c260643d7d553e407d0758f286aac76c91ae08d8
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456094"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137684"
 ---
-# <a name="neural-network-regression-module"></a>Regresní modul neuronové sítě
+# <a name="neural-network-regression-module"></a>Neuronové Network regrese – modul
 
-*Vytvoří regresní model pomocí algoritmu neuronové sítě.*  
+*Vytvoří regresní model pomocí neuronové síťového algoritmu.*  
   
- Kategorie: Strojové učení / Inicializace modelu / Regrese
+ Kategorie: Machine Learning/inicializovat model/regrese
   
 ## <a name="module-overview"></a>Přehled modulu  
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Tento modul slouží k vytvoření regresního modelu pomocí přizpůsobitelného algoritmu neuronové sítě.
+Tento modul použijte k vytvoření regresního modelu pomocí přizpůsobitelného neuronové síťového algoritmu.
   
- Přestože neuronové sítě jsou široce známé pro použití v hlubokéučení a modelování složitých problémů, jako je rozpoznávání obrazu, jsou snadno přizpůsobit regresní problémy. Každá třída statistických modelů může být nazvat neuronové sítě, pokud používají adaptivní váhy a může aproximovat nelineární funkce jejich vstupů. Regrese neuronové sítě je tedy vhodná pro problémy, kde tradiční regresní model se nevejde do řešení.
+ I když se neuronové sítě často označují pro použití v obsáhlém učení a modelování složitých problémů, jako je rozpoznávání obrázků, jsou snadno přizpůsobené regresním problémům. Každá třída statistických modelů může být označována jako neuronovéá síť, pokud používá adaptivní hmotnosti a může přibližné nelineární funkce jejich vstupů. Proto je regrese sítě neuronové vhodná pro problémy, které nemůžou přizpůsobit model s větším tradičním regresí.
   
- Regrese neuronové sítě je metoda učení pod dohledem, a proto vyžaduje *tagovované datové sady*, která obsahuje sloupec popisek. Vzhledem k tomu, že regresní model předpovídá číselnou hodnotu, musí být sloupec popisku číselným datovým typem.  
+ Regrese sítě neuronové je metoda učení pod dohledem a proto vyžaduje *tagované datové sady*, která obsahuje sloupec popisku. Vzhledem k tomu, že regresní model předpovídá číselnou hodnotu, sloupec popisku musí být číselný datový typ.  
   
- Model můžete trénovat poskytnutím modelu a tagged datové sady jako vstup [do Train Model](./train-model.md). Trénovaný model pak lze předpovědět hodnoty pro nové vstupní příklady.  
+ Model můžete proškolit poskytnutím modelu a tagované datové sady jako vstupu pro [vlakový model](./train-model.md). K předpovědi hodnot pro nové příklady vstupu je pak možné použít trained model.  
   
-## <a name="configure-neural-network-regression"></a>Konfigurace regrese neuronové sítě 
+## <a name="configure-neural-network-regression"></a>Konfigurace regrese sítě neuronové 
 
-Neuronové sítě lze značně přizpůsobit. Tato část popisuje, jak vytvořit model pomocí dvou metod:
+Neuronové sítě je možné výrazně přizpůsobit. Tato část popisuje, jak vytvořit model pomocí dvou metod:
   
-+ [Vytvoření modelu neuronové sítě pomocí výchozí architektury](#bkmk_DefaultArchitecture)  
++ [Vytvoření modelu sítě neuronové pomocí výchozí architektury](#bkmk_DefaultArchitecture)  
   
-    Pokud přijmete výchozí architekturu neuronové sítě, použijte podokno **Vlastnosti** k nastavení parametrů, které řídí chování neuronové sítě, jako je například počet uzlů ve skryté vrstvě, rychlost učení a normalizace.
+    Pokud přijmete výchozí neuronové architekturu sítě, použijte podokno **vlastnosti** k nastavení parametrů, které řídí chování sítě neuronové, jako je třeba počet uzlů ve skryté vrstvě, rychlost učení a normalizace.
 
-    Začněte zde, pokud jste novým neuronovými sítěmi. Modul podporuje mnoho přizpůsobení, stejně jako ladění modelu, bez hluboké znalosti neuronových sítí. 
+    Začněte zde, pokud s neuronovéými sítěmi začínáte. Tento modul podporuje mnoho úprav a také optimalizaci modelu bez důkladné znalosti neuronové sítí. 
 
-+ Definování vlastní architektury pro neuronovou síť 
++ Definování vlastní architektury pro neuronové síť 
 
-    Tuto možnost použijte, pokud chcete přidat další skryté vrstvy nebo plně přizpůsobit síťovou architekturu, její připojení a aktivační funkce.
+    Tuto možnost použijte, pokud chcete přidat další skryté vrstvy nebo plně přizpůsobit síťové architektury, její připojení a funkce aktivace.
     
-    Tato možnost je nejlepší, pokud jste již poněkud obeznámeni s neuronovými sítěmi. K definování síťové architektury se používá jazyk Net#.  
+    Tato možnost je nejlepší, pokud už se neuronové sítě už trochu obeznámené. K definování síťové architektury použijte jazyk NET #.  
 
-##  <a name="create-a-neural-network-model-using-the-default-architecture"></a><a name="bkmk_DefaultArchitecture"></a>Vytvoření modelu neuronové sítě pomocí výchozí architektury
+##  <a name="create-a-neural-network-model-using-the-default-architecture"></a><a name="bkmk_DefaultArchitecture"></a>Vytvoření modelu sítě neuronové pomocí výchozí architektury
 
-1.  Přidejte modul **regrese neural sítě** do kanálu v návrháři. Tento modul najdete v části **Strojové učení**, **Inicializovat**, v kategorii **Regrese.** 
+1.  Přidejte do kanálu modul **regrese sítě neuronové** v návrháři. Tento modul najdete v části **Machine Learning**, **Initialize**, v kategorii **regrese** . 
   
-2. Označte, jak chcete model trénovat, nastavením **možnosti Vytvořit režim trenažéru.**  
+2. Určete, jak chcete, aby byl model vyškolený, nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jeden parametr**: Tuto možnost zvolte, pokud již víte, jak chcete model konfigurovat.
+    -   **Jeden parametr**: tuto možnost vyberte, pokud už víte, jak chcete model nakonfigurovat.
 
-    -   **Rozsah parametrů**: Tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit tažení parametrů. Vyberte rozsah hodnot, které chcete iterát přes a [Tune Model Hyperparameters](tune-model-hyperparameters.md) iterates přes všechny možné kombinace nastavení, které jste zadali k určení hyperparameters, které produkují optimální výsledky.   
+    -   **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.   
 
-3.  Ve **specifikaci Skryté vrstvy**vyberte **Možnost Plně propojený případ**. Tato možnost vytvoří model pomocí výchozí architektury neuronové sítě, která pro regresní model neuronové sítě má tyto atributy:  
+3.  V případě **specifikace skryté vrstvy**vyberte možnost **plně připojené**. Tato možnost vytvoří model pomocí výchozí síťové architektury neuronové, která je pro model regrese sítě neuronové, má tyto atributy:  
   
-    + Síť má přesně jednu skrytou vrstvu.
-    + Výstupní vrstva je plně připojena ke skryté vrstvě a skrytá vrstva je plně připojena ke vstupní vrstvě.
+    + Síť obsahuje přesně jednu skrytou vrstvu.
+    + Výstupní vrstva je plně připojená ke skryté vrstvě a skrytá vrstva je plně připojená ke vstupní vrstvě.
     + Počet uzlů ve skryté vrstvě může nastavit uživatel (výchozí hodnota je 100).  
   
-    Vzhledem k tomu, že počet uzlů ve vstupní vrstvě je určen počtem prvků v trénovacích datech, v regresním modelu může být ve výstupní vrstvě pouze jeden uzel.  
+    Vzhledem k tomu, že počet uzlů ve vstupní vrstvě je určen počtem funkcí v školicích datech, v regresním modelu může být ve výstupní vrstvě pouze jeden uzel.  
   
-4. Do **pole Počet skrytých uzlů**zadejte počet skrytých uzlů. Výchozí hodnota je jedna skrytá vrstva se 100 uzly. (Tato možnost není k dispozici, pokud definujete vlastní architekturu pomocí net#.)
+4. Pro **Počet skrytých uzlů**zadejte počet skrytých uzlů. Výchozím nastavením je jedna skrytá vrstva s 100 uzly. (Tato možnost není k dispozici, pokud definujete vlastní architekturu pomocí .NET #.)
   
-5.  Do **pole Učení zadejte**hodnotu, která definuje krok přijatý při každé iteraci před opravou. Vyšší hodnota pro rychlost učení může způsobit, že se model sblíží rychleji, ale může přestřelit místní minima.
+5.  Do pole **rychlost učení**zadejte hodnotu, která definuje krok prováděný v každé iteraci před opravou. Větší hodnota pro studijní kurzy může způsobit, že se model konverguje rychleji, ale může vyhodnotit místní minima.
 
-6.  Pro **počet iterací učení**zadejte maximální počet, kolikrát algoritmus zpracovává případy školení.
+6.  Pro **počet iterací učení**určete maximální počet pokusů, kolikrát algoritmus zpracovává školicí případy.
 
 
-8.  Pro **Momentum**zadejte hodnotu, která se použije během učení jako váhu na uzlech z předchozích iterací.
+8.  Pro **potenciál**zadejte hodnotu, která se má použít během učení, jako váha na uzlech z předchozích iterací.
 
-10. Výběrem možnosti **Náhodné příklady**změňte pořadí případů mezi iteracemi. Pokud zrušíte výběr této možnosti, případy jsou zpracovány v přesně stejném pořadí při každém spuštění kanálu.
+10. Pokud chcete změnit pořadí případů mezi iteracemi, vyberte možnost, která bude náhodně vymezit **Příklady**. Pokud zrušíte výběr této možnosti, jsou případy zpracovávány přesně stejným způsobem pokaždé, když spustíte kanál.
   
-11. Do **pole Osiva náhodných čísel**můžete volitelně zadat hodnotu, která se má použít jako osivo. Určení hodnoty osiva je užitečné, pokud chcete zajistit opakovatelnost napříč spuštěními stejného kanálu.
+11. V případě použití **náhodného čísla**můžete volitelně zadat hodnotu, která se má použít jako počáteční hodnota. Zadání počáteční hodnoty je užitečné, pokud chcete zajistit opakování v rámci spuštění stejného kanálu.
   
-13. Připojte trénovací datovou sadu a jeden z [trénovacích modulů](module-reference.md): 
+13. Připojte školicí datovou sadu a výuku modelu:
+
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
   
-    -   Pokud nastavíte **režim Vytvořit trenér** na jeden **parametr**, použijte [model vlaku](./train-model.md).  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Pokud předáte rozsah parametru pro [vlakový model](train-model.md), použije se jenom výchozí hodnota v seznamu jednoho parametru.  
+    > 
+    > Pokud předáte jednu sadu hodnot parametrů do modulu [předparametrů modelu ladění](tune-model-hyperparameters.md) , když očekává rozsah nastavení pro každý parametr, ignoruje hodnoty a použije výchozí hodnoty pro učit se.  
+    > 
+    > Pokud vyberete možnost **rozsahu parametrů** a zadáte jednu hodnotu pro libovolný parametr, tato jediná hodnota, kterou jste zadali, se použije v celém oblouku, a to i v případě, že se jiné parametry mění v rozsahu hodnot.  
   
    
-14. Odešlete potrubí.  
+14. Odešlete kanál.  
 
 ## <a name="results"></a>Výsledky
 
-Po dokončení tréninku:
+Po dokončení školení:
 
-- Chcete-li uložit snímek trénovaného modelu, vyberte kartu **Výstupy** v pravém panelu modulu **modelu Vlak.** Vyberte ikonu **Registrovat datovou sadu,** chcete-li model uložit jako opakovaně použitelný modul.
+- Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
 ## <a name="next-steps"></a>Další kroky
 

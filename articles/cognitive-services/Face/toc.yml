@@ -5,16 +5,10 @@
   items:
     - name: Co je služba Rozpoznávání tváře?
       href: Overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
-    - name: S využitím klientské sady SDK
-      items:
-        - name: .NET SDK
-          href: Quickstarts/csharp-sdk.md
-        - name: Python SDK
-          href: QuickStarts/python-sdk.md
-        - name: Go SDK
-          href: QuickStarts/go-sdk.md
+    - name: S využitím klientské knihovny
+      href: Quickstarts/client-libraries.md
     - name: S využitím REST API
       items:
         - name: Rozpoznávání tváří na obrázku
@@ -99,7 +93,7 @@
           href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
 - name: Zdroje a prostředky
   items:
-    - name: Ukázky
+    - name: ukázky
       items:
         - name: Ukázky služby Rozpoznávání tváře
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face'

@@ -1,70 +1,70 @@
 ---
-title: Aktualizace nabídky aplikace Power BI | Azure Marketplace
-description: Aktualizujte nabídku aplikace Power BI po publikování na webu Microsoft AppSource Marketplace.
+title: Aktualizace nabídky Power BI aplikací | Azure Marketplace
+description: Po publikování na webu Microsoft AppSource Marketplace aktualizujte nabídku aplikace Power BI.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ee8f67a41d339e6e5f65548867c5458739857d50
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b210a945993457fa76703528178763fdc67e876b
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981252"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82141697"
 ---
-# <a name="update-a-power-bi-app-offer"></a>Aktualizace nabídky aplikace Power BI
+# <a name="update-a-power-bi-app-offer"></a>Aktualizace nabídky Power BI aplikací
 
 >[!Important]
->dubna 2020 začneme přesouvat správu nabídek aplikací Power BI do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
+>Od 13. dubna 2020 začneme přesouvat správu nabídek Power BI aplikací do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Při správě migrovaných nabídek postupujte podle pokynů v tématu [Přehled vytvoření aplikace Power BI](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) .
 
-V tomto článku se píše, jak aktualizovat nabídku aplikací Microsoft Power BI na [portálu pro partnery cloudu](https://cloudpartner.azure.com/) a pak nabídku znovu publikovat. Zde jsou některé běžné důvody pro aktualizaci nabídky:
+V tomto článku se dozvíte, jak aktualizovat nabídku aplikace v Microsoft Power BI v [portál partnerů cloudu](https://cloudpartner.azure.com/) a pak znovu publikovat nabídku. Tady jsou některé běžné důvody pro aktualizaci nabídky:
 
 - Aktualizace obsahu aplikace v Power BI a získání adresy URL instalace z nově zabalené aplikace
-- Aktualizace metadat azure marketplace (informace o prodeji, marketingu nebo podpoře a datové zdroje)
+- Aktualizace metadat Azure Marketplace nabídky (informace o prodeji, marketingu nebo podpoře a assety)
  
-Pomocí funkcí **Porovnání** a **Historie** portálu můžete sledovat podobné změny.
+Pomocí funkcí **porovnání** a **Historie** na portálu můžete sledovat změny, jako jsou tyto.
 
 ## <a name="common-update-operations"></a>Běžné operace aktualizace
 
-Některé atributy nabídky aplikace Power BI se po publikování nabídky v AppSource nedají změnit. Mezi nepovolené změny patří **ID nabídky** a **ID aplikace Publisher**. Ale stále můžete změnit širokou škálu vlastností. Zde jsou některé běžné změny.
+Po publikování nabídky v AppSource se některé atributy nabídky aplikace Power BI nedají změnit. Nepovolené změny zahrnují **ID nabídky** a **ID vydavatele**. Můžete ale pořád měnit široké spektrum vlastností. Tady jsou některé běžné změny.
 
 ### <a name="update-app-content-in-power-bi"></a>Aktualizace obsahu aplikace v Power BI
 
-Aplikace Power BI se často pravidelně aktualizují novým obsahem, opravami zabezpečení, funkcemi a tak dále. Při změně aplikace aktualizujte její adresu URL instalace takto:
+Aplikace Power BI se často aktualizují pomocí nového obsahu, oprav zabezpečení, funkcí a tak dále. Po změně aplikace aktualizujte adresu URL instalace pomocí následujících kroků:
 
-1.  Přihlaste se k [portálu partnerů cloudu](https://cloudpartner.azure.com/).
-2.  V části **Všechny nabídky**najděte nabídku, kterou chcete aktualizovat.
-3.  Na kartě **Technické informace** zadejte novou adresu URL instalace.
-4.  Vyberte **Publikovat,** chcete-li spustit pracovní postup, abyste publikovali novou verzi aplikace na AppSource.
-
-
-### <a name="update-the-offers-marketplace-metadata"></a>Aktualizace metadat Marketplace v nabídce
-
-Metadata marketplace vaší nabídky zahrnují název vaší společnosti, loga a další informace. Chcete-li aktualizovat metadata, postupujte takto:
-
-1.  Přihlaste se k [portálu partnerů cloudu](https://cloudpartner.azure.com/).
-2.  V části **Všechny nabídky**najděte nabídku, kterou chcete aktualizovat.
-3.  Na kartě **Podrobnosti ve Výloze** změňte metadata podle pokynů v článku [Karta Podrobnosti aplikace Power BI .](./cpp-storefront-details-tab.md)
-4.  Vyberte **Publikovat,** chcete-li spustit pracovní postup, abyste publikovali změny.
+1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
+2.  V části **všechny nabídky**Najděte nabídku, kterou chcete aktualizovat.
+3.  Na kartě **technické informace** zadejte novou adresu URL instalace.
+4.  Vyberte **publikovat** a spusťte pracovní postup, který publikuje novou verzi aplikace do AppSource.
 
 
-## <a name="the-compare-feature"></a>Funkce Porovnat
+### <a name="update-the-offers-marketplace-metadata"></a>Aktualizovat metadata Marketplace nabídky
 
-Při aktualizaci publikované nabídky můžete zkontrolovat provedené změny. Použití funkce **Porovnat:**
+Metadata Marketplace vaší nabídky zahrnují název vaší společnosti, loga a další informace. K aktualizaci metadat použijte následující postup:
 
-1.  V libovolném okamžiku procesu úprav vyberte tlačítko **Porovnat** v nabídce.
+1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
+2.  V části **všechny nabídky**Najděte nabídku, kterou chcete aktualizovat.
+3.  Na kartě **Podrobnosti prezentace** změňte metadata podle pokynů uvedených v článku [Karta Podrobnosti o prezentace aplikace Power BI](./cpp-storefront-details-tab.md).
+4.  Vyberte **publikovat** a spusťte pracovní postup pro publikování změn.
+
+
+## <a name="the-compare-feature"></a>Funkce Compare
+
+Při aktualizaci publikované nabídky můžete ověřit provedené změny. Použití funkce **Compare** :
+
+1.  V jakémkoli okamžiku v procesu úprav vyberte tlačítko **Porovnat** nabídky.
 
     ![Tlačítko Porovnat](./media/compare-feature-button.png)
 
-2.  Zobrazení verzí marketingových prostředků a metadat vedle sebe.
+2.  Podívejte se na souběžné verze marketingových assetů a metadat.
 
 
-## <a name="history-of-publishing-actions"></a>Historie publikování akcí
+## <a name="history-of-publishing-actions"></a>Historie akcí publikování
 
-Pokud chcete zobrazit historii publikování nabídky, otevřete na levé straně portálu partnerů cloudu kartu **Historie.** Zde uvidíte historii akcí s časovým razítkem na vašich nabídkách AppSource.
+Historii publikování vaší nabídky zobrazíte tak, že na levé straně portál partnerů cloudu otevřete kartu **Historie** . Tady uvidíte historii akcí s časovým razítkem v nabídkách AppSource.
 
 ## <a name="next-steps"></a>Další kroky
 
-Na portálu partnerů cloudu pravidelně používejte [přehledy prodejců](../../cloud-partner-portal-orig/si-getting-started.md) k vyhledání užitečných informací o zákaznících a využití webu Marketplace.  
+V portál partnerů cloudu pravidelně využívají [prodejce](../../cloud-partner-portal-orig/si-getting-started.md) informací o zákaznících, které vám pomůžou najít užitečné informace o vašich zákaznících a využití na webu Marketplace.  

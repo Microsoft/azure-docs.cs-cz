@@ -1,77 +1,87 @@
 ---
-title: 'Dvoutřídní posílený rozhodovací strom: Odkaz na modul'
+title: 'Zvýšení rozhodovacího stromu se dvěma třídami: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Two-Class Boosted Decision Tree v Azure Machine Learning vytvořit model strojového učení, který je založený na algoritmu posílené rozhodovací stromy.
+description: Naučte se používat modul zesíleného rozhodovacího stromu se dvěma třídami v Azure Machine Learning k vytvoření modelu strojového učení, který je založený na algoritmu zesílených rozhodovacích stromů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 1d144a48f79e59b35c88c5b338747d3186ebceda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 0499d52a6fe3da7349d31748ca3b5add16369571
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920735"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137650"
 ---
-# <a name="two-class-boosted-decision-tree-module"></a>Modul dvoutřídního posíleného rozhodovacího stromu
+# <a name="two-class-boosted-decision-tree-module"></a>Modul pro zvýšení rozhodovacího stromu se dvěma třídami
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Tento modul slouží k vytvoření modelu strojového učení, který je založen na algoritmu boosted rozhodovací stromy. 
+Pomocí tohoto modulu můžete vytvořit model strojového učení, který je založený na algoritmu zesílených rozhodovacích stromů. 
 
-Posílený rozhodovací strom je metoda učení souboru, ve které druhý strom opravuje chyby prvního stromu, třetí strom opravuje chyby prvního a druhého stromu a tak dále.  Předpovědi jsou založeny na celém souboru stromů dohromady, který dělá předpověď.
+Posílený rozhodovací strom je metoda učení kompletu, ve které druhý strom opravuje chyby prvního stromu, třetí strom pro chyby první a druhé stromy a tak dále.  Předpovědi jsou založené na celé kompletování stromů dohromady, které tvoří předpověď.
   
-Obecně platí, že při správné konfiguraci, posílené rozhodovací stromy jsou nejjednodušší metody, pomocí kterých získat nejvyšší výkon na širokou škálu úloh strojového učení. Jsou však také jedním z více paměťově náročných studentů a současná implementace má vše v paměti. Proto model posíleného rozhodovacího stromu nemusí být schopen zpracovat velké datové sady, které mohou zpracovat někteří lineární studenti.
+Obecně platí, že při správné konfiguraci jsou posílené rozhodovací stromy nejjednodušším způsobem, kterým získáte nejvyšší výkon nejrůznějších úloh strojového učení. Jsou to však také jedním z dalších učí náročných na paměť a aktuální implementace uchovává vše v paměti. Proto je možné, že model zesíleného rozhodovacího stromu nebude moci zpracovat velké datové sady, které mohou procesy lineárních učí zpracovat.
 
 ## <a name="how-to-configure"></a>Jak nakonfigurovat
 
-Tento modul vytvoří netrénovaný klasifikační model. Vzhledem k tomu, že klasifikace je metoda učení pod dohledem, potřebujete k trénování modelu *tagovařovnou datovou sadu,* která obsahuje sloupec popisku s hodnotou pro všechny řádky.
+Tento modul vytváří nevlakový model klasifikace. Vzhledem k tomu, že klasifikace je metoda učení pod dohledem, budete potřebovat *datovou sadu s příznakem* , která obsahuje sloupec popisku s hodnotou pro všechny řádky.
 
-Tento typ modelu můžete trénovat pomocí [train modelu](././train-model.md). 
+Tento typ modelu můžete vyškolit pomocí [modelu výuky](././train-model.md). 
 
-1.  V Azure Machine Learning přidejte do kanálu **posílený rozhodovací strom.**
+1.  V Azure Machine Learning přidejte do svého kanálu modul **zesíleného rozhodovacího stromu** .
   
-2.  Určete, jak má být model trénovaný, nastavením **možnosti Vytvořit režim trenažéru.**
+2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .
   
-    + **Jeden parametr**: Pokud víte, jak chcete nakonfigurovat model, můžete zadat určitou sadu hodnot jako argumenty.
+    + **Jediný parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.
   
-    + **Rozsah parametrů**: Pokud si nejste jisti nejlepšími parametry, můžete najít optimální parametry pomocí modulu [Tune Model Hyperparameters.](tune-model-hyperparameters.md) Zadáte určitý rozsah hodnot a trenér iterates přes více kombinací nastavení k určení kombinace hodnot, které vytváří nejlepší výsledek.
+    + **Rozsah parametrů**: Pokud si nejste jisti nejlepšími parametry, můžete najít optimální parametry pomocí modulu [ladit model parametrů](tune-model-hyperparameters.md) . Poskytnete určitou škálu hodnot a Trainer iterovat více kombinací nastavení a určí kombinaci hodnot, které vytvářejí nejlepší výsledek.
   
-3.  Pro **maximální počet listů na strom**, uveďte maximální počet koncových uzlů (listů), které lze vytvořit v libovolném stromu.
+3.  U **maximálního počtu pochodů na strom**určete maximální počet uzlů terminálu (opustí), které je možné vytvořit v jakémkoli stromu.
   
-     Zvýšením této hodnoty můžete potenciálně zvětšit velikost stromu a získat lepší přesnost s rizikem nadměrného vybavení a delší doby tréninku.
+     Zvýšením této hodnoty můžete zvýšit velikost stromu a dosáhnout lepší přesnosti, a to na riziko přebudování a delší dobu školení.
   
-4.  Pro **minimální počet vzorků na uzel listu**, uveďte počet případů potřebných k vytvoření libovolného koncového uzlu (listu) ve stromu.  
+4.  Pro **minimální počet vzorků na uzel listu**určete počet případů vyžadovaných k vytvoření libovolného uzlu terminálu (list) ve stromu.  
   
-     Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například s výchozí hodnotou 1 může i jeden případ způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, data školení by musel obsahovat alespoň pět případů, které splňují stejné podmínky.
+     Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň pět případů splňujících stejné podmínky.
   
-5.  Do **pole Učení**zadejte číslo mezi 0 a 1, které definuje velikost kroku při učení.  
+5.  Do pole **rychlost učení**zadejte číslo od 0 do 1, které definuje velikost kroku při učení.  
   
-     Rychlost učení určuje, jak rychle nebo pomalu se student konverguje s optimálním řešením. Pokud je velikost kroku příliš velká, můžete přestřelit optimální řešení. Pokud je velikost kroku příliš malá, školení trvá déle, než se sbíhají na nejlepší řešení.
+     Studijní frekvence určuje, jak rychle nebo pomalu se učí sblížení s optimálním řešením. Pokud je velikost kroku moc velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než se sblížení dostanou na nejlepší řešení.
   
-6.  V **části Počet vytvořených stromů**uveďte celkový počet rozhodovacích stromů, které mají být vytvořeny v souboru. Vytvořením více rozhodovacích stromů můžete potenciálně získat lepší pokrytí, ale doba tréninku se zvýší.
+6.  Pro **počet konstruovaných stromů**určete celkový počet rozhodovacích stromů, které se mají v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete získat lepší pokrytí, ale čas školení se zvýší.
   
-     Tato hodnota také určuje počet stromů zobrazených při vizualizaci trénovaného modelu. Pokud chcete zobrazit nebo vytisknout jeden strom, nastavte hodnotu na 1. Pokud tak však učiníte, je vytvořen pouze jeden strom (strom s počáteční sadou parametrů) a žádné další iterace jsou prováděny.
+     Tato hodnota také určuje počet stromů zobrazených při vizualizaci výukového modelu. Pokud chcete zobrazit nebo vytisknout jeden strom, nastavte hodnotu na 1. Nicméně když to uděláte, vytvoří se jenom jeden strom (strom s počáteční sadou parametrů) a žádné další iterace se neprovádí.
   
-7.  Pro **osivo náhodného čísla**volitelně zadejte nezáporné celé číslo, které se použije jako náhodná hodnota osiva. Určení osiva zajišťuje reprodukovatelnost napříč spuštěními, které mají stejná data a parametry.  
+7.  V případě **náhodného čísla počáteční**hodnota zadejte nezáporné celé číslo, které chcete použít jako hodnotu náhodného osazení. Určení počáteční hodnoty zajišťuje reprodukovatelnost v různých spuštěních, která mají stejná data a parametry.  
   
-     Náhodné osivo je ve výchozím nastavení nastaveno na hodnotu 0, což znamená, že počáteční hodnota osiva je získána ze systémových hodin.  Postupné spuštění pomocí náhodného osiva může mít různé výsledky.
+     Náhodné osazení je ve výchozím nastavení nastaveno na hodnotu 0, což znamená, že počáteční počáteční hodnota se získá ze systémových hodin.  Po sobě jdoucí běhy s náhodným osivem můžou být odlišné výsledky.
   
 
-9. Trénujte model.
+9. Výukové modely:
+
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
   
-    + Pokud nastavíte **režim Vytvořit trenér** na jeden **parametr**, připojte tagovované datové sady a modul [model vlaku.](./train-model.md)  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Pokud předáte rozsah parametru pro [vlakový model](train-model.md), použije se jenom výchozí hodnota v seznamu jednoho parametru.  
+    > 
+    > Pokud předáte jednu sadu hodnot parametrů do modulu [předparametrů modelu ladění](tune-model-hyperparameters.md) , když očekává rozsah nastavení pro každý parametr, ignoruje hodnoty a použije výchozí hodnoty pro učit se.  
+    > 
+    > Pokud vyberete možnost **rozsahu parametrů** a zadáte jednu hodnotu pro libovolný parametr, tato jediná hodnota, kterou jste zadali, se použije v celém oblouku, a to i v případě, že se jiné parametry mění v rozsahu hodnot.  
    
 ## <a name="results"></a>Výsledky
 
-Po dokončení tréninku:
+Po dokončení školení:
 
-+ Chcete-li uložit snímek trénovaného modelu, vyberte kartu **Výstupy** v pravém panelu modulu **modelu Vlak.** Vyberte ikonu **Registrovat datovou sadu,** chcete-li model uložit jako opakovaně použitelný modul.
++ Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
-+ Chcete-li použít model pro vyhodnocování, přidejte modul **Modelu skóre** do kanálu.
++ Chcete-li použít model pro bodování, přidejte modul určení **skóre modelu** do kanálu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,105 +1,105 @@
 ---
 title: Aktualizace existující nabídky modulu Azure IoT Edge | Azure Marketplace
-description: Jak aktualizovat existující nabídku modulu IoT Edge na Azure Marketplace.
+description: Jak aktualizovat existující nabídku modulu IoT Edge v Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 019711f35d249e6684013feddb6b453d509f66d4
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 17cce766f2d56766a9fcf260416d8bbf3e43d0c5
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985350"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142253"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>Aktualizace existující nabídky modulu IoT Edge
 
 >[!Important]
->dubna 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
+>Od 13. dubna 2020 začneme přesouvat správu nabídek IoT Edge modulů do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Podle pokynů v tématu [vytvoření IoT Edge modulu nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) můžete spravovat migrované nabídky.
 
-Tento článek prochází různé aspekty aktualizace nabídky modulu IoT Edge na [portálu partnerů cloudu](https://cloudpartner.azure.com/) a pak znovu publikování nabídky.
+Tento článek popisuje různé aspekty aktualizace nabídky IoT Edge modulu v [portál partnerů cloudu](https://cloudpartner.azure.com/) a následném opětovném publikování nabídky.
 
-Nabídku můžete aktualizovat několika důvody, například:
+K dispozici je několik důvodů, proč byste mohli chtít aktualizovat nabídku, například:
 
--  Přidání nové verze bitové kopie modulu IoT Edge do existujících skum.
--  Přidání nových skum.
--  Aktualizace metadat marketplace pro nabídku nebo jednotlivé skum.
+-  Přidává se nová verze image modulu IoT Edge do stávajících SKU.
+-  Přidávání nových SKU.
+-  Aktualizují se metadata Marketplace pro nabídku nebo jednotlivé SKU.
 
-Portál nabízí funkce **Porovnat** a **Historie,** které vám pomohou s těmito úpravami.  
+Pro pomoc s těmito úpravami nabízí portál funkce **porovnání** a **Historie** .  
 
 
-## <a name="unpermitted-changes-to-iot-edge-module-offer-or-sku"></a>Nepovolené změny nabídky modulu IoT Edge nebo skladové položky
+## <a name="unpermitted-changes-to-iot-edge-module-offer-or-sku"></a>Nepovolené změny nabídky modulu IoT Edge nebo SKU
 
-Existují atributy nabídky modulu IoT Edge nebo skladové položky, které nelze změnit po nabídce je aktivní na Azure Marketplace. Nelze změnit následující nastavení:
+Existují atributy nabídky modulu IoT Edge nebo SKU, které nelze změnit poté, co je nabídka v Azure Marketplace živá. Nemůžete změnit následující nastavení:
 
 -  **ID nabídky** a **ID vydavatele** nabídky
--  **ID skladové položky** existujících skladových částek
--  Značky verzí, například:`1.0.1`
--  Změny fakturačního/licenčního modelu stávajících skutých.
+-  **ID SKU** existujících SKU
+-  Značky verze, například:`1.0.1`
+-  Fakturační a licenční model se mění ve stávajících SKU
 
 ## <a name="common-update-operations"></a>Běžné operace aktualizace
 
 Následující operace aktualizace jsou běžné.
 
-### <a name="update-the-iot-edge-module-image-version-for-a-sku"></a>Aktualizace verze bitové kopie modulu IoT Edge pro skladovou položku
+### <a name="update-the-iot-edge-module-image-version-for-a-sku"></a>Aktualizace verze image modulu IoT Edge pro SKU
 
-Je běžné, že bitová kopie modulu IoT Edge se pravidelně aktualizuje o opravy zabezpečení, další funkce a tak dále. V tomto scénáři chcete aktualizovat bitovou kopii modulu IoT Edge, na kterou vaše skladová položka odkazuje, pomocí následujících kroků:
+Je běžné, že se image IoT Edge modulu pravidelně aktualizuje pomocí oprav zabezpečení, dalších funkcí a tak dále. V tomto scénáři chcete aktualizovat image modulu IoT Edge, kterou vaše SKU odkazuje, pomocí následujících kroků:
 
-1.  Přihlaste se k [portálu partnerů cloudu](https://cloudpartner.azure.com/).
+1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-2.  V části **Všechny nabídky**najděte nabídku, kterou chcete aktualizovat.
+2.  V části **všechny nabídky**Najděte nabídku, kterou chcete aktualizovat.
 
-3.  Na kartě **Skladové položky** vyberte skladovou položku přidruženou k bitové kopii modulu IoT Edge, kterou chcete aktualizovat.
+3.  Na kartě **SKU** vyberte skladovou jednotku přidruženou k imagi IoT Edge modulu, která se má aktualizovat.
 
-4.  V části **Obrázek modulu Okraj**vyberte **+ Nová verze obrazu** a přidejte nový obrázek modulu IoT Edge.
+4.  V části **Obrázek modulu Edge**vyberte **+ Nová verze image** a přidejte novou image modulu IoT Edge.
 
-5.  Zadejte nové **verze bitové kopie modulu**IoT Edge . Verze bitové kopie musí dodržovat stejná pravidla pro značky jako předchozí verze. Značky verze by měly být ve tvaru X.Y.Z, kde X, Y a Z jsou celá čísla. Ověřte, zda je nová verze, kterou zadáte, větší než všechny předchozí verze.
+5.  Zadejte nové **verze imagí**modulu IoT Edge. Verze image musí splňovat stejné pokyny pro značky jako v předchozích verzích. Značky verze by měly mít formát X. Y. Z, kde X, Y a Z jsou celá čísla. Ověřte, že nová verze, kterou zadáte, je větší než všechny předchozí verze.
 
-6.  Vyberte **Publikovat** a spusťte pracovní postup a publikujte novou verzi modulu IoT Edge na Azure Marketplace.
+6.  Vyberte **publikovat** a spusťte pracovní postup, který publikuje novou verzi IoT Edge modulu do Azure Marketplace.
 
-### <a name="add-a-new-sku"></a>Přidání nové skladové položky
+### <a name="add-a-new-sku"></a>Přidat novou SKLADOVOU položku
 
-Pomocí následujících kroků můžete zpřístupnit novou skladovou položku pro vaši nabídku: 
+K dispozici je nová SKU pro vaši nabídku pomocí následujících kroků: 
 
-1.  Přihlaste se k [portálu partnerů cloudu](https://cloudpartner.azure.com/).
+1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-2.  V části **Všechny nabídky**najděte nabídku, kterou chcete aktualizovat.
+2.  V části **všechny nabídky**Najděte nabídku, kterou chcete aktualizovat.
 
-3.  Na kartě **Skladové položky** vyberte **Přidat novou skladovou položku** a ve vyskakovacím okně zadejte **ID skladové** položky.
+3.  Na kartě **SKU** vyberte **Přidat novou SKU** a v automaticky otevíraném okně zadejte **ID SKU** .
 
-4.  Znovu publikujte modul IoT Edge pomocí kroků popsaných v [části Publikování modulu IoT Edge na Azure Marketplace](./cpp-publish-offer.md).
+4.  Znovu publikujte modul IoT Edge pomocí postupu popsaného v tématu [publikování modulu IoT Edge a Azure Marketplace](./cpp-publish-offer.md).
 
-5.  Vyberte **Publikovat,** chcete-li spustit pracovní postup, abyste publikovali novou skladovou položku.
-
-
-### <a name="update-offer-marketplace-metadata"></a>Aktualizovat metadata tržiště
-
-Pomocí následujících kroků aktualizujte metadata webu marketplace přidružená k vaší nabídce. (Například: název společnosti, loga atd.)
-
-1.  Přihlaste se k [portálu partnerů cloudu](https://cloudpartner.azure.com/).
-
-2.  V části **Všechny nabídky**najděte nabídku, kterou chcete aktualizovat.
-
-3.  Přejděte na kartu **Marketplace.** [Publish an IoT Edge module to Azure Marketplace](./cpp-publish-offer.md)
-
-4.  Vyberte **Publikovat,** chcete-li spustit pracovní postup, abyste publikovali změny.
-
-## <a name="compare-feature"></a>Funkce porovnání
-
-Když u publikované nabídky provedete změny, můžete pomocí funkce **Porovnat** auditovat provedené změny. 
-
-**Použití funkce Porovnat:**
-
-1.  Kdykoli v procesu úprav vyberte **porovnat** pro vaši nabídku.
-
-    ![Tlačítko Porovnat funkci](./media/iot-edge-module-compare.png)
+5.  Vyberte **publikovat** a spusťte pracovní postup pro publikování nové SKU.
 
 
-2.  Podívejte se na souběžné verze marketingových prostředků a metadat.
+### <a name="update-offer-marketplace-metadata"></a>Aktualizace metadat webu nabídky
+
+Pomocí následujících kroků aktualizujte metadata Marketplace přidružená k vaší nabídce. (Například: název společnosti, loga atd.)
+
+1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
+
+2.  V nabídce **všechny nabídky**Vyhledejte nabídku, kterou chcete aktualizovat.
+
+3.  Přejít na kartu **Marketplace** . pomocí pokynů v [modulu publikování IoT Edge Azure Marketplace](./cpp-publish-offer.md) článku udělejte změny v metadatech.
+
+4.  Vyberte **publikovat** a spusťte pracovní postup pro publikování změn.
+
+## <a name="compare-feature"></a>Compare – funkce
+
+Když provedete změny v publikované nabídce, můžete pomocí funkce **Compare** auditovat změny, které jste provedli. 
+
+**Použití funkce Compare:**
+
+1.  V jakémkoli okamžiku v procesu úprav vyberte **Porovnat** pro vaši nabídku.
+
+    ![Tlačítko porovnat funkci](./media/iot-edge-module-compare.png)
 
 
-## <a name="history-of-publishing-actions"></a>Historie publikačních akcí
+2.  Podívejte se na souběžné verze materiálů a metadat marketingu.
 
-Chcete-li zobrazit historickou publikační aktivitu, vyberte kartu **Historie** na levém panelu nabídek cloudového partnerského portálu. Můžete vidět akce s časovým razítkem provedené během životnosti nabídek Azure Marketplace.  <!-- Need to find correct link here:  legal time windowsFor more information, see [History page](cpp-history-page.md) -->
+
+## <a name="history-of-publishing-actions"></a>Historie akcí publikování
+
+Chcete-li zobrazit historické aktivity publikování, vyberte kartu **Historie** v levém navigačním panelu portál partnerů cloudu. Můžete zobrazit akce s časovým razítkem provedenými během životnosti Azure Marketplace nabídek.  <!-- Need to find correct link here:  legal time windowsFor more information, see [History page](cpp-history-page.md) -->

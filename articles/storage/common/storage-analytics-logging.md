@@ -1,6 +1,6 @@
 ---
 title: Protokolování Analýzy úložiště Azure
-description: Přečtěte si, jak protokolovat podrobnosti o požadavcích na Azure Storage.
+description: Naučte se protokolovat podrobnosti o požadavcích provedených proti Azure Storage.
 author: normesta
 ms.service: storage
 ms.subservice: common
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 5b94a97f1286e1273300014e4eef140be412436b
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 45224625cfc828227708247d082a1aab1aef8469
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637187"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142648"
 ---
 # <a name="azure-storage-analytics-logging"></a>Protokolování Analýzy úložiště Azure
 
 Analýza úložiště protokoluje podrobné informace o úspěšných a neúspěšných požadavcích na službu úložiště. Tyto informace je možné použít k monitorování jednotlivých požadavků a diagnostice problémů se službou úložiště. Požadavky jsou protokolovány na základě nejlepší úsilí.
 
- Protokolování Analýzy úložiště ve výchozím nastavení není pro váš účet úložiště povolené. Můžete ji povolit na [webu Azure Portal](https://portal.azure.com/); Podrobnosti najdete [v tématu Sledování účtu úložiště na webu Azure Portal](/azure/storage/storage-monitor-storage-account). Analýzu úložiště můžete také povolit programově prostřednictvím rozhraní REST API nebo klientské knihovny. Pomocí operací [Získat vlastnosti služby blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API), [Získat vlastnosti služby fronty](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)a Získat [službu table service pro](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) každou službu povolte analýzu úložiště.
+ Protokolování Analýzy úložiště ve výchozím nastavení není pro váš účet úložiště povolené. Můžete ji povolit v [Azure Portal](https://portal.azure.com/). Podrobnosti najdete v tématu [monitorování účtu úložiště v Azure Portal](/azure/storage/storage-monitor-storage-account). Analýza úložiště můžete také povolit programově prostřednictvím REST API nebo klientské knihovny. K povolení Analýza úložiště pro každou službu použijte vlastnosti [získat službu BLOB](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)Service, [získat vlastnosti služby front](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)a [získat operace vlastností služby Table](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) Service.
 
- Položky protokolu jsou vytvořeny pouze v případě, že jsou požadavky proti koncovému bodu služby. Například pokud účet úložiště má aktivitu v jeho koncovém bodě objektu blob, ale ne v jeho koncové body tabulky nebo fronty, budou vytvořeny pouze protokoly týkající se služby objektu Blob.
+ Položky protokolu jsou vytvořeny pouze v případě, že jsou zadány požadavky na koncový bod služby. Pokud například účet úložiště obsahuje aktivitu v koncovém bodu objektu blob, ale ne ve svých koncových bodech tabulky nebo fronty, vytvoří se jenom protokoly týkající se Blob service.
 
 > [!NOTE]
 >  Protokolování Analýzy úložiště je v současné době dostupné pouze pro služby Blob a Table service a Službu front. Účet úložiště Premium se však nepodporuje.
 
-## <a name="requests-logged-in-logging"></a>Požadavky přihlášené k protokolování
+## <a name="requests-logged-in-logging"></a>Požadavky zaznamenávané v protokolování
 ### <a name="logging-authenticated-requests"></a>Protokolování ověřených požadavků
 
  Protokolují se následující typy ověřovaných požadavků:
@@ -36,31 +36,31 @@ Analýza úložiště protokoluje podrobné informace o úspěšných a neúspě
 - Požadavky používající SAS (Shared Access Signature) nebo OAuth (Open Authorization), včetně neúspěšných i úspěšných požadavků
 - Žádosti o analytická data
 
-  Požadavky provedené samotnou službou Storage Analytics, jako je například vytvoření nebo odstranění protokolu, nejsou protokolovány. Úplný seznam protokolovaných dat je zdokumentován v tématech [protokolovaných operací služby Storage Analytics a zpráv o stavu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a v [tématech formátu protokolu služby Storage Analytics.](/rest/api/storageservices/storage-analytics-log-format)
+  Požadavky vytvořené Analýza úložiště samotné, například vytvoření nebo odstranění protokolu, nejsou protokolovány. Úplný seznam protokolovaných dat je popsán v tématech [Analýza úložiště protokolovaných operací a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [Analýza úložiště formátu protokolu](/rest/api/storageservices/storage-analytics-log-format) .
 
 ### <a name="logging-anonymous-requests"></a>Protokolování anonymních požadavků
 
- Jsou protokolovány následující typy anonymních požadavků:
+ Protokolují se tyto typy anonymních požadavků:
 
 - Úspěšné požadavky
 - Chyby serveru
-- Chyby časového oběhu pro klienta i server
+- Chyby časového limitu pro klienta i server
 - Neúspěšné požadavky GET s kódem chyby 304 (Nezměněno)
 
-  Všechny ostatní neúspěšné anonymní požadavky nejsou protokolovány. Úplný seznam protokolovaných dat je zdokumentován v tématech [protokolovaných operací služby Storage Analytics a zpráv o stavu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a v [tématech formátu protokolu služby Storage Analytics.](/rest/api/storageservices/storage-analytics-log-format)
+  Všechny ostatní neúspěšné anonymní požadavky nejsou protokolovány. Úplný seznam protokolovaných dat je popsán v tématech [Analýza úložiště protokolovaných operací a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [Analýza úložiště formátu protokolu](/rest/api/storageservices/storage-analytics-log-format) .
 
-## <a name="how-logs-are-stored"></a>Jak jsou protokoly uloženy
+## <a name="how-logs-are-stored"></a>Způsob ukládání protokolů
 
-Všechny protokoly jsou uloženy v blobů bloku v kontejneru s názvem `$logs`, který se automaticky vytvoří, když je služba Storage Analytics povolena pro účet úložiště. Kontejner `$logs` se nachází v oboru názvů objektů blob účtu `http://<accountname>.blob.core.windows.net/$logs`účtu úložiště, například: . Tento kontejner nelze odstranit, jakmile je povolena služba Storage Analytics, i když jeho obsah lze odstranit. Pokud používáte nástroj pro procházení úložiště k navigaci do kontejneru přímo, uvidíte všechny objekty BLOB, které obsahují data protokolování.
+Všechny protokoly se ukládají v objektech blob bloku v kontejneru `$logs`s názvem, který se automaticky vytvoří, když je povolený analýza úložiště pro účet úložiště. `$logs` Kontejner se nachází v oboru názvů objektu BLOB účtu úložiště, například: `http://<accountname>.blob.core.windows.net/$logs`. Po povolení Analýza úložiště nelze tento kontejner odstranit, i když jeho obsah lze odstranit. Pokud použijete nástroj pro procházení úložiště k přímému přechodu do kontejneru, zobrazí se všechny objekty blob, které obsahují vaše data protokolování.
 
 > [!NOTE]
->  Kontejner `$logs` se nezobrazí při provádění operace výpisu kontejneru, jako je například operace Seznam kontejnerů. Musí být přístupné přímo. Můžete například použít operaci objektů BLOB seznamu pro přístup `$logs` k objektům BLOB v kontejneru.
+>  `$logs` Kontejner se nezobrazuje, když je provedena operace výpisu kontejneru, jako je například operace Container lists. K němu je potřeba získat přímý pøístup. Můžete například použít operaci list BLOBs pro přístup k objektům blob v `$logs` kontejneru.
 
-Při zaznamenávání požadavků služba Storage Analytics nahraje průběžné výsledky jako bloky. Služba Storage Analytics tyto bloky pravidelně potvrdí a zpřístupní je jako objekt blob. Může trvat až hodinu, než se data protokolu zobrazí v objektech BLOB v kontejneru **$logs** protože frekvence, na které služba úložiště vyprázdní zapisovače protokolu. Duplicitní záznamy mohou existovat pro protokoly vytvořené ve stejné hodině. Můžete určit, zda záznam je duplicitní kontrolou **RequestId** a **číslo operace.**
+Jak jsou požadavky protokolovány, Analýza úložiště odešle mezilehlé výsledky jako bloky. Analýza úložiště tyto bloky pravidelně zařadí a zpřístupní je jako objekt BLOB. Může trvat až hodinu, než se data protokolu objeví v objektech blob v kontejneru **$logs** , protože frekvence, s jakou služba úložiště vyprázdní zapisovače protokolů. Pro protokoly vytvořené ve stejnou hodinu můžou existovat duplicitní záznamy. Zaškrtnutím čísla **ID** a **operace** můžete určit, jestli je záznam duplicitní.
 
-Pokud máte velký objem dat protokolu s více soubory pro každou hodinu, pak můžete použít metadata objektu blob k určení, jaká data protokol obsahuje kontrolou polí metadat objektu blob. To je také užitečné, protože někdy může být zpoždění při zápisu dat do souborů protokolu: metadata objektu blob poskytuje přesnější označení obsahu objektu blob než název objektu blob.
+Pokud máte velké množství dat protokolu s více soubory pro každou hodinu, pak můžete použít metadata objektu BLOB k určení dat, která protokol obsahuje, prozkoumáním polí metadat objektů BLOB. To je užitečné také v případě, že při zápisu dat do souborů protokolu může dojít k prodlevě: metadata objektů BLOB poskytují přesnější indikaci obsahu objektu blob, než je název objektu BLOB.
 
-Většina nástrojů pro procházení úložiště umožňuje zobrazit metadata objektů BLOB; Můžete také číst tyto informace pomocí prostředí PowerShell nebo programově. Následující fragment prostředí PowerShell je příkladem filtrování seznamu objektů BLOB protokolu podle názvu a metadat a metadat identifikovat pouze ty protokoly, které obsahují operace **zápisu.**  
+Většina nástrojů pro procházení úložiště vám umožní zobrazit metadata objektů BLOB. Tyto informace můžete přečíst také pomocí PowerShellu nebo prostřednictvím kódu programu. Následující fragment kódu prostředí PowerShell představuje příklad filtrování seznamu objektů BLOB protokolu podle názvu pro určení času a metadaty k identifikaci pouze těch protokolů, které obsahují operace **zápisu** .  
 
  ```powershell
  Get-AzureStorageBlob -Container '$logs' |  
@@ -76,27 +76,27 @@ Většina nástrojů pro procházení úložiště umožňuje zobrazit metadata 
  }  
  ```  
 
-Informace o programovém výpisu objektů blob naleznete v [tématu Výčet prostředků objektů Blob](https://msdn.microsoft.com/library/azure/hh452233.aspx) a [nastavení a načítání vlastností a metadat pro prostředky objektů blob](https://msdn.microsoft.com/library/azure/dd179404.aspx).  
+Informace o tom, jak programově vypsat objekty blob, najdete v tématech [vytváření výčtu prostředků objektů BLOB](https://msdn.microsoft.com/library/azure/hh452233.aspx) a [nastavení a načítání vlastností a metadat pro prostředky objektů BLOB](https://msdn.microsoft.com/library/azure/dd179404.aspx).  
 
-### <a name="log-naming-conventions"></a>Protokolovat konvence pojmenování
+### <a name="log-naming-conventions"></a>Zásady vytváření názvů protokolů
 
- Každý protokol bude zapsán v následujícím formátu:
+ Každý protokol bude napsaný v následujícím formátu:
 
  `<service-name>/YYYY/MM/DD/hhmm/<counter>.log`
 
- Následující tabulka popisuje každý atribut v názvu protokolu:
+ V následující tabulce jsou popsány jednotlivé atributy v názvu protokolu:
 
 |Atribut|Popis|
 |---------------|-----------------|
-|`<service-name>`|Název služby úložiště. Například: `blob` `table`, , nebo`queue`|
-|`YYYY`|Čtyřmístný rok pro protokol. Příklad: `2011`|
-|`MM`|Dvoumístný měsíc pro protokol. Příklad: `07`|
-|`DD`|Dvoumístný den pro protokol. Příklad: `31`|
-|`hh`|Dvoumístná hodina, která označuje počáteční hodinu pro protokoly ve formátu UTC 24 hodin. Příklad: `18`|
-|`mm`|Dvoumístné číslo, které označuje počáteční minutu pro protokoly. **Poznámka:**  Tato hodnota není podporována v aktuální verzi služby Storage `00`Analytics a její hodnota bude vždy .|
-|`<counter>`|Čítač založený na nule se šesti číslicemi, který označuje počet objektů BLOB protokolu generovaných pro službu úložiště v hodinovém časovém období. Tento čítač začíná na `000000`. Příklad: `000001`|
+|`<service-name>`|Název služby úložiště Například: `blob`, `table`, nebo`queue`|
+|`YYYY`|Rok čtyř číslice pro protokol. Příklad: `2011`|
+|`MM`|Dva číslice měsíce pro protokol. Příklad: `07`|
+|`DD`|Dva číselné dny pro protokol. Příklad: `31`|
+|`hh`|Dvě číslice hodiny, která označuje počáteční hodinu pro protokoly ve formátu UTC (24 hodin). Příklad: `18`|
+|`mm`|Dva číselné číslo, které označuje počáteční minutu pro protokoly. **Poznámka:**  Tato hodnota není v aktuální verzi Analýza úložiště podporována a její hodnota bude vždy `00`.|
+|`<counter>`|Čítač založený na nule se šesti číslicemi, který indikuje počet objektů BLOB protokolu generovaných pro službu úložiště v časovém intervalu. Tento čítač začíná na `000000`. Příklad: `000001`|
 
- Následuje úplný ukázkový název protokolu, který kombinuje výše uvedené příklady:
+ Následuje úplný název ukázkového protokolu, který kombinuje výše uvedené příklady:
 
  `blob/2011/07/31/1800/000001.log`
 
@@ -104,61 +104,65 @@ Informace o programovém výpisu objektů blob naleznete v [tématu Výčet pros
 
  `https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log`
 
- Při zaznamenání požadavku na úložiště výsledný název protokolu koreluje s hodinou po dokončení požadované operace. Například pokud požadavek GetBlob byla dokončena v 18:30 na 7/31/2011, protokol by být zapsáns následující předponou:`blob/2011/07/31/1800/`
+ Po zaznamenání žádosti o úložiště se výsledný název protokolu koreluje do hodiny, kdy se požadovaná operace dokončila. Pokud se například požadavek getblob dokončil v 6:17:30 v 7/31/2011, protokol se zapíše s následující předponou:`blob/2011/07/31/1800/`
 
-### <a name="log-metadata"></a>Protokolovat metadata
+### <a name="log-metadata"></a>Metadata protokolu
 
- Všechny objekty BLOB protokolu jsou uloženy s metadaty, které lze použít k identifikaci, jaká data protokolování objekt blob obsahuje. Následující tabulka popisuje každý atribut metadat:
+ Všechny objekty blob protokolu jsou uložené s metadaty, která se dají použít k identifikaci dat protokolování, která objekt BLOB obsahuje. Následující tabulka popisuje jednotlivé atributy metadat:
 
 |Atribut|Popis|
 |---------------|-----------------|
-|`LogType`|Popisuje, zda protokol obsahuje informace týkající se operací čtení, zápisu nebo odstraňování. Tato hodnota může zahrnovat jeden typ nebo kombinaci všech tří, oddělených čárkami.<br /><br /> Příklad 1:`write`<br /><br /> Příklad 2:`read,write`<br /><br /> Příklad 3:`read,write,delete`|
-|`StartTime`|Nejbližší čas zápisu do protokolu ve formě `YYYY-MM-DDThh:mm:ssZ`. Příklad: `2011-07-31T18:21:46Z`|
-|`EndTime`|Poslední čas zápisu v protokolu, ve `YYYY-MM-DDThh:mm:ssZ`formě . Příklad: `2011-07-31T18:22:09Z`|
-|`LogVersion`|Verze formátu protokolu.|
+|`LogType`|Popisuje, jestli protokol obsahuje informace týkající se operací čtení, zápisu nebo odstranění. Tato hodnota může obsahovat jeden typ nebo kombinaci všech tří, oddělených čárkami.<br /><br /> Příklad 1:`write`<br /><br /> Příklad 2:`read,write`<br /><br /> Příklad 3:`read,write,delete`|
+|`StartTime`|Čas nejdřívějšího záznamu v protokolu ve formě `YYYY-MM-DDThh:mm:ssZ`. Příklad: `2011-07-31T18:21:46Z`|
+|`EndTime`|Poslední čas záznamu v protokolu ve formě `YYYY-MM-DDThh:mm:ssZ`. Příklad: `2011-07-31T18:22:09Z`|
+|`LogVersion`|Verze formátu protokolu|
 
- Následující seznam zobrazuje úplná ukázková metadata pomocí výše uvedených příkladů:
+ Následující seznam obsahuje kompletní ukázková metadata pomocí výše uvedených příkladů:
 
 -   `LogType=write`
 -   `StartTime=2011-07-31T18:21:46Z`
 -   `EndTime=2011-07-31T18:22:09Z`
 -   `LogVersion=1.0`
 
-## <a name="enable-storage-logging"></a>Povolení protokolování úložiště
+## <a name="enable-storage-logging"></a>Povolit protokolování úložiště
 
-Protokolování úložiště můžete povolit pomocí Azure Portal, PowerShellu a sad SDK úložiště.
+Protokolování úložiště můžete povolit pomocí Azure Portal, PowerShellu a sad Storage SDK.
 
-### <a name="enable-storage-logging-using-the-azure-portal"></a>Povolení protokolování úložiště pomocí portálu Azure  
+### <a name="enable-storage-logging-using-the-azure-portal"></a>Povolení protokolování úložiště pomocí Azure Portal  
 
-Na webu Azure Portal použijte okno **Nastavení diagnostiky (klasické)** k řízení protokolování úložiště, které je přístupné z části **Monitorování (klasické)** **v okně menu**účtu úložiště .
+V Azure Portal použijte okno **nastavení diagnostiky (Classic)** k řízení protokolování úložiště, které je dostupné v části **monitorování (Classic)** v okně **nabídky**účtu úložiště.
 
-Můžete určit služby úložiště, které chcete protokolovat, a dobu uchování (ve dnech) pro protokolovaná data.  
+Můžete zadat služby úložiště, které chcete protokolovat, a dobu uchování (ve dnech) pro zaznamenaná data.  
 
-### <a name="enable-storage-logging-using-powershell"></a>Povolení protokolování úložiště pomocí PowerShellu  
+### <a name="enable-storage-logging-using-powershell"></a>Povolení protokolování úložiště pomocí prostředí PowerShell  
 
- Pomocí Prostředí PowerShell v místním počítači můžete nakonfigurovat protokolování úložiště v účtu úložiště pomocí rutiny Azure PowerShell **Get-AzureStorageServiceLoggingProperty** k načtení aktuálního nastavení a rutina **Set-AzureStorageServiceLoggingProperty** pro změnu aktuálního nastavení.  
+ Pomocí PowerShellu na místním počítači můžete nakonfigurovat protokolování úložiště ve vašem účtu úložiště pomocí rutiny Azure PowerShell rutiny **Get-AzureStorageServiceLoggingProperty** pro načtení aktuálních nastavení a rutinou **set-AzureStorageServiceLoggingProperty** pro změnu aktuálního nastavení.  
 
- Rutiny, které řídí protokolování úložiště použít **LoggingOperations** parametr, který je řetězec obsahující čárka oddělený seznam typů požadavků protokolu. Tři možné typy požadavků jsou **čtení**, **zápis**a **odstranění**. Chcete-li protokolování vypnout, použijte pro parametr **LoggingOperations** hodnotu **žádná.**  
+ Rutiny, které řídí protokolování úložiště, používají parametr **LoggingOperations** , který je řetězec obsahující seznam typů požadavků oddělených čárkami, které se mají protokolovat. Tři možné typy požadavků jsou **čtení**, **zápis**a **odstranění**. Chcete-li přepnout protokolování, použijte hodnotu **none** pro parametr **LoggingOperations** .  
 
- Následující příkaz se přepíná při protokolování požadavků na čtení, zápis a odstranění ve službě Fronta ve výchozím účtu úložiště s možností uchovávání informací nastavenou na pět dní:  
+ Následující příkaz přepne při protokolování žádostí o čtení, zápis a odstranění v Služba front ve vašem výchozím účtu úložiště s možností uchování na pět dní:  
 
 ```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
- Následující příkaz vypne protokolování pro službu table service ve výchozím účtu úložiště:  
+ Následující příkaz odpíná protokolování služby Table Service ve vašem výchozím účtu úložiště:  
 
 ```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
- Informace o tom, jak nakonfigurovat rutiny Azure PowerShellu tak, aby fungovaly s vaším předplatným Azure, a jak vybrat výchozí účet úložiště, který se má použít, najdete v [tématu: Jak nainstalovat a nakonfigurovat Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
+ Informace o tom, jak nakonfigurovat rutiny Azure PowerShell pro práci s předplatným Azure a jak vybrat výchozí účet úložiště, který se má použít, najdete v tématu: [Jak nainstalovat a nakonfigurovat Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
-### <a name="enable-storage-logging-programmatically"></a>Programové povolení protokolování úložiště  
+### <a name="enable-storage-logging-programmatically"></a>Povolení protokolování úložiště prostřednictvím kódu programu  
 
- Kromě použití portálu Azure Portal nebo rutin Azure PowerShell k řízení protokolování úložiště můžete také použít jedno z api úložiště Azure. Pokud například používáte jazyk .NET, můžete použít klientskou knihovnu úložiště.  
+ Kromě použití Azure Portal nebo rutin Azure PowerShell k řízení protokolování úložiště můžete použít také jedno z rozhraní API pro Azure Storage. Pokud například používáte jazyk .NET, můžete použít knihovnu klienta úložiště.  
 
- Třídy **CloudBlobClient**, **CloudQueueClient**a **CloudTableClient** mají všechny metody, jako jsou **SetServiceProperties** a **SetServicePropertiesAsync,** které berou objekt **ServiceProperties** jako parametr. Objekt **ServiceProperties** můžete použít ke konfiguraci protokolování úložiště. Například následující fragment c# ukazuje, jak změnit, co je zaznamenána a doba uchování pro protokolování fronty:  
+# <a name="net-v12-sdk"></a>[\.Sada SDK pro .NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/diagnostic-logs-classic.cs" id="snippet_EnableDiagnosticLogs":::
+
+# <a name="net-v11-sdk"></a>[\.Sada SDK pro .NET v11](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -171,37 +175,40 @@ serviceProperties.Logging.RetentionDays = 2;
 queueClient.SetServiceProperties(serviceProperties);  
 ```  
 
- Další informace o použití jazyka .NET ke konfiguraci protokolování úložiště naleznete v [tématu Odkaz na klientskou knihovnu úložiště](https://msdn.microsoft.com/library/azure/dn261237.aspx).  
+---
 
- Obecné informace o konfiguraci protokolování úložiště pomocí rozhraní REST API naleznete v tématu [Povolení a konfigurace analýzy úložiště](https://msdn.microsoft.com/library/azure/hh360996.aspx).  
 
-## <a name="download-storage-logging-log-data"></a>Stáhnout data protokolu protokolu úložiště
+ Další informace o použití jazyka .NET ke konfiguraci protokolování úložiště najdete v tématu [Reference k klientské knihovně pro úložiště](https://msdn.microsoft.com/library/azure/dn261237.aspx).  
 
- Chcete-li zobrazit a analyzovat data protokolu, měli byste stáhnout objekty BLOB, které obsahují data protokolu, které vás zajímají, do místního počítače. Mnoho nástrojů pro procházení úložiště umožňuje stahovat objekty BLOB z vašeho účtu úložiště; Můžete také použít tým Azure Storage za předpokladu, příkazový řádek Azure Copy Tool [AzCopy](storage-use-azcopy-v10.md) ke stažení dat protokolu.  
+ Obecné informace o konfiguraci protokolování úložiště pomocí REST API najdete v tématu [povolení a konfigurace analýza úložiště](https://msdn.microsoft.com/library/azure/hh360996.aspx).  
+
+## <a name="download-storage-logging-log-data"></a>Stáhnout data protokolu protokolování úložiště
+
+ Pokud chcete zobrazit a analyzovat data protokolu, měli byste si stáhnout objekty blob, které obsahují data protokolu, která vás zajímají, do místního počítače. Mnoho nástrojů pro procházení úložiště vám umožní stahovat objekty BLOB z účtu úložiště. k stažení dat protokolu můžete použít taky Azure Storage týmu [AzCopy](storage-use-azcopy-v10.md) příkazového řádku Azure Copy.  
  
 >[!NOTE]
-> Kontejner `$logs` není integrován s Event Grid, takže nebudete dostávat oznámení při zápisu souborů protokolu. 
+> `$logs` Kontejner není integrován s Event Grid, takže nebudete dostávat oznámení, když budou soubory protokolu zapisovány. 
 
- Chcete-li se ujistit, že stáhnete data protokolu, která vás zajímají, a vyhnout se stahování stejných dat protokolu více než jednou:  
+ Abyste se ujistili, že jste si stáhli data protokolu, která vás zajímají, a nestahovat stejná data protokolu více než jednou:  
 
--   Pomocí konvence pojmenování data a času pro objekty BLOB obsahující data protokolu můžete sledovat, které objekty BLOB jste již stáhli pro analýzu, abyste zabránili opětovnému stažení stejných dat více než jednou.  
+-   Pomocí konvence pojmenování data a času pro objekty BLOB obsahující data protokolu můžete sledovat, které objekty blob jste už stáhli k analýze, abyste se vyhnuli opakovanému stažení stejných dat více než jednou.  
 
--   Pomocí metadat na objekty BLOB obsahující data protokolu k identifikaci konkrétní období, pro které objekt blob obsahuje data protokolu k identifikaci přesné objektu blob, který je třeba stáhnout.  
+-   Použijte metadata v objektech blob obsahující data protokolu k identifikaci konkrétního období, pro které objekt BLOB uchovává data protokolu k identifikaci přesného objektu blob, který potřebujete stáhnout.  
 
-Informace o tom, jak začít s AzCopy, [najdete v tématu Začínáme s AzCopy](storage-use-azcopy-v10.md) 
+Pokud chcete začít s AzCopy, přečtěte si téma Začínáme [s AzCopy](storage-use-azcopy-v10.md) . 
 
-Následující příklad ukazuje, jak můžete stáhnout data protokolu pro službu fronty pro hodiny začínající v 09:00, 10:00 a 11:00 20:00 20:00.
+Následující příklad ukazuje, jak můžete stáhnout data protokolu pro službu fronty po dobu od 09 do 12:00, od 10 DOP. a 11 AM 20. května 2014.
 
 ```
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-Další informace o stahování konkrétních souborů naleznete v [tématu Stahování konkrétních souborů](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files).
+Další informace o tom, jak stáhnout konkrétní soubory, najdete v tématu [stažení konkrétních souborů](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files).
 
-Po stažení dat protokolu můžete zobrazit položky protokolu v souborech. Tyto soubory protokolu používají oddělený textový formát, který mnoho nástrojů pro čtení protokolu jsou schopni analyzovat, včetně Microsoft Message Analyzer (další informace naleznete v příručce [Monitorování, Diagnostika a řešení potíží s Úložiště Microsoft Azure](storage-monitoring-diagnosing-troubleshooting.md)). Různé nástroje mají různé možnosti formátování, filtrování, řazení, prohledávání obsahu souborů protokolu. Další informace o formátu a obsahu souboru protokolu protokolu protokolování úložiště naleznete v [tématu Formát protokolu služby Storage Analytics](/rest/api/storageservices/storage-analytics-log-format) a protokolované operace a [zprávy o stavu služby Storage Analytics](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
+Po stažení dat protokolu můžete zobrazit položky protokolu v souborech. Tyto soubory protokolu používají textový formát s oddělovači, který dokáže analyzovat mnoho nástrojů pro čtení protokolů, včetně Microsoft Message Analyzer (Další informace najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). Různé nástroje mají různá zařízení pro formátování, filtrování, řazení a reklamu při hledání obsahu souborů protokolu. Další informace o formátu a obsahu souboru protokolu protokolování úložiště najdete v článku [Formát protokolu analýza úložiště](/rest/api/storageservices/storage-analytics-log-format) a [Analýza úložiště protokolované operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Formát protokolu analýzy úložiště](/rest/api/storageservices/storage-analytics-log-format)
-* [Služby pro protokolované operace a stavové zprávy analýzy úložiště](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
-* [Metriky analýzy úložiště (klasické)](storage-analytics-metrics.md)
+* [Formát protokolu Analýza úložiště](/rest/api/storageservices/storage-analytics-log-format)
+* [Analýza úložiště protokolované operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
+* [Analýza úložiště metriky (klasické)](storage-analytics-metrics.md)
