@@ -1,22 +1,37 @@
 ---
-title: Seznam zabudovaných politických iniciativ
-description: Seznam předdefinovaných zásad pro zásady Azure. Kategorie zahrnují dodržování předpisů, konfiguraci hosta a další.
-ms.date: 01/31/2020
+title: Seznam předdefinovaných iniciativ zásad
+description: Seznam předdefinovaných iniciativ zásad pro Azure Policy. Kategorie zahrnují dodržování předpisů, konfiguraci hostů a další.
+ms.date: 04/24/2020
 ms.topic: sample
-ms.openlocfilehash: f98a5d611e807875390102d67efd1b0f0f262628
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: generated
+ms.openlocfilehash: 119a016431e399a94fbaffa527172005b9355f42
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239746"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146456"
 ---
-# <a name="azure-policy-built-in-initiative-definitions"></a>Integrované definice iniciativ Azure Policy
+# <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy předdefinované definice iniciativ
 
-Tato stránka je index azure zásad y integrované definice iniciativ.
+Tato stránka je indexem Azure Policy integrovaných definic iniciativ.
 
-Název na každé integrované odkazy na zdroj definice iniciativy na [azure policy github úložiště](https://github.com/Azure/azure-policy). Vestavěné moduly jsou seskupeny podle vlastnosti **kategorie** v **metadatech**. Chcete-li přejít na určitou **kategorii**, použijte nabídku na pravé straně stránky. V opačném případě použijte <kbd>kombinaci kláves Ctrl</kbd>-<kbd>F</kbd> k použití funkce vyhledávání v prohlížeči.
+Název na každém z vestavěných odkazů na zdroj definice iniciativy v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy). Předdefinované jsou seskupené podle vlastnosti **Category** v **metadatech**. Chcete-li přejít do konkrétní **kategorie**, použijte nabídku na pravé straně stránky. V opačném případě použijte k použití funkce hledání v prohlížeči <kbd>kombinaci kláves CTRL</kbd>-<kbd>F</kbd> .
 
-[!INCLUDE [azure-policy-samples-policyset-index](../../../../includes/azure-policy-samples-policyset-index.md)]
+## <a name="guest-configuration"></a>Konfigurace hosta
+
+[!INCLUDE [azure-policy-samples-policysets-guest-configuration](../../../../includes/policy/samples/bycat/policysets-guest-configuration.md)]
+
+## <a name="monitoring"></a>Monitorování
+
+[!INCLUDE [azure-policy-samples-policysets-monitoring](../../../../includes/policy/samples/bycat/policysets-monitoring.md)]
+
+## <a name="regulatory-compliance"></a>Dodržování předpisů
+
+[!INCLUDE [azure-policy-samples-policysets-regulatory-compliance](../../../../includes/policy/samples/bycat/policysets-regulatory-compliance.md)]
+
+## <a name="security-center"></a>Security Center
+
+[!INCLUDE [azure-policy-samples-policysets-security-center](../../../../includes/policy/samples/bycat/policysets-security-center.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

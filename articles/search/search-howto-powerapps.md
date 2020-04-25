@@ -1,180 +1,265 @@
 ---
-title: Jak se dotazovat azure kognitivní vyhledávání z Power Apps
+title: 'Kurz: dotazování z Power Apps'
 titleSuffix: Azure Cognitive Search
-description: Podrobné pokyny, jak vytvořit vlastní konektor pro kognitivní vyhledávání a jak ho vizualizovat z Power Appu
+description: Podrobné pokyny k vytvoření Power aplikace, která se připojuje k indexu služby Azure Kognitivní hledání, odesílá dotazy a vykresluje výsledky.
 author: luiscabrer
 manager: eladz
 ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: c246f8652227a5ad2c0798880e530d6039cdeea8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.topic: tutorial
+ms.date: 04/25/2020
+ms.openlocfilehash: eafd0ced64567ec7b51ff0f8aac19668343867ea
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385108"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129754"
 ---
-# <a name="how-to-query-a-cognitive-search-index-from-power-apps"></a>Jak zadat dotaz na index kognitivního vyhledávání z Power Apps
+# <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Kurz: dotazování indexu Kognitivní hledání z Power Apps
 
-Tento dokument ukazuje, jak vytvořit vlastní konektor Power Apps, abyste mohli načíst výsledky hledání z indexu vyhledávání. Ukazuje také, jak vydat vyhledávací dotaz a vizualizovat výsledky z Power App. 
+Využijte rychlé vývojové prostředí aplikací Power Apps k vytvoření vlastní aplikace pro prohledávatelný obsah v Azure Kognitivní hledání.
+
+V tomto kurzu se naučíte:
+
+> [!div class="checklist"]
+> * Připojení k Azure Kognitivní hledání
+> * Nastavení žádosti o dotaz
+> * Vizualizace výsledků v aplikaci plátna
+
+Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-*    Přístup k účtu Power Apps s možností vytvářet vlastní konektory.
-*    Předpokládáme, že jste už vytvořili index azure vyhledávání.
 
-## <a name="create-a-custom-connector-to-query-azure-search"></a>Vytvoření vlastního konektoru pro dotazování azure search
+* [Účet Power Apps](http://make.powerapps.com)
 
-Existují dva hlavní kroky k mít PowerApp, který zobrazuje výsledky Azure Cognitive Search. Nejprve vytvoříme konektor, který může dotazovat index vyhledávání. V [další části](#visualize-results-from-the-custom-connector) aktualizujeme vaši aplikaci Power Apps, abychom vizualizovali výsledky vrácené konektorem.
+* [Hotely – vzorový index](search-get-started-portal.md)
 
-1. Přejděte na [make.powerapps.com](http://make.powerapps.com) a **přihlaste se**.
+* [Klíč rozhraní API pro dotazování](search-security-api-keys.md#find-existing-keys)
 
-1. Hledání **vlastních datových** > **konektorů**
+## <a name="1---create-a-custom-connector"></a>1. vytvoření vlastního konektoru
+
+Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vlastní konektor pro připojení k indexu vyhledávání v cloudu.
+
+1. [Přihlaste](http://make.powerapps.com) se k Power Apps.
+
+1. Na levé straně rozbalte položku **Data** > **vlastní konektory**dat.
  
-    :::image type="content" source="./media/search-howto-powerapps/1-2-custom-connector.png" alt-text="Vlastní nabídka konektoru" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-2-custom-connector.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
-1. Klikněte na **+ Nový vlastní konektor** a pak vyberte Vytvořit z **prázdné**.
+1. Vyberte **+ Nový vlastní konektor**a pak vyberte **vytvořit z prázdné**.
 
     :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Vytvořit z prázdné nabídky" border="true":::
 
-1. Pojmenujte vlastní konektor. (to znamená *AzureSearchQuery*) a potom klepněte na tlačítko **Pokračovat**. Tím vyvoláte průvodce pro vytvoření nového konektoru.
+1. Zadejte název vlastního konektoru (například *AzureSearchQuery*) a potom klikněte na **pokračovat**.
 
-1. Zadejte informace na obecnou stránku.
+1. Zadejte informace na stránce Obecné:
 
-    - Barva pozadí ikony (například #007ee5)
-    - Popis (například "Konektor pro Azure Cognitive Search")
-    - V hostiteli budete muset zadat adresu URL vyhledávací `<yourservicename>.search.windows.net`služby (například )
-    - Pro základní adresu URL jednoduše zadejte "/"
-    
-    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Obecný informační dialog" border="true":::
+   * Barva pozadí ikony (např. #007ee5)
+   * Popis (např. "konektor do Azure Kognitivní hledání")
+   * V hostiteli budete muset zadat adresu URL vyhledávací služby (například `<yourservicename>.search.windows.net`).
+   * Pro základní adresu URL stačí zadat "/".
 
-1. Na stránce zabezpečení nastavte *klíč rozhraní API* jako typ **ověřování**, nastavte popisek parametru a pole názvu parametru jako klíč *rozhraní API*. V **části Umístění parametru**vyberte *Záhlaví,* jak je znázorněno níže.
- 
+    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Obecný dialog informací" border="true":::
+
+1. Na stránce zabezpečení nastavte *klíč rozhraní API* jako **typ ověřování**, pro *klíč rozhraní API*nastavte jak popisek parametru, tak název parametru. V části **umístění parametru**vyberte *záhlaví* , jak je znázorněno níže.
+
     :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="Možnost typu ověřování" border="true":::
 
-1. Na stránce Definice vyberte **+ Nová akce** a vytvořte akci, která bude dotazovat index. Zadejte hodnotu "Dotaz" pro souhrn a název ID operace. Zadejte popis jako *"Dotazy na index vyhledávání"*.
- 
-    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="Nové možnosti akce" border="true":::
+1. Na stránce definice vyberte **+ Nová akce** a vytvořte akci, která bude dotazovat index. Zadejte hodnotu "dotaz" pro souhrn a název ID operace. Zadejte popis jako *"dotazování indexu hledání"*.
 
+    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="Možnosti nové akce" border="true":::
 
-1. Stisknutím tlačítka **+ Import z ukázky** definujte parametry a záhlaví. Dále definujete požadavek na dotaz.  
+1. Posuňte se dolů. V části požadavky kliknutím na **+ importovat z ukázkového** tlačítka nakonfigurujte požadavek na dotaz na vyhledávací službu:
 
-    * Výběr slovesa`GET`
-    * Pro adresu URL zadejte ukázkový dotaz pro index vyhledávání, například:
-       
-    >https://yoursearchservicename.search.windows.net/indexes/yourindexname/docs?search=*&api-version=2019-05-06-Preview
-    
+   * Vyberte operaci.`GET`
 
-    **Power Apps** použije syntaxi k extrahování parametrů z dotazu. Všimněte si, že jsme explicitně definovali vyhledávací pole. 
+   * Pro adresu URL zadejte ukázkový dotaz pro index vyhledávání (`search=*` vrátí všechny dokumenty, `$select=` umožňuje zvolit pole). Verze rozhraní API je povinná. V plném rozsahu adresa URL může vypadat takto:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2019-05-06`
 
-    :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Importování z ukázky" border="false":::
+   * Pro záhlaví zadejte `Content-Type`. 
 
-1.  Kliknutím na **Importovat** automaticky předvyplnění dialogového okna Požadavek.
+     **Power Apps** použije syntaxi k extrakci parametrů z dotazu. Všimněte si, že jsme explicitně definovali vyhledávací pole. 
 
-    :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Import ze vzorového dialogu" border="false":::
+       :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Importování z ukázky" border="true":::
 
+1. Kliknutím na **importovat** můžete žádost automaticky vyplnit. Nastavení metadat parametru dokončíte kliknutím na **...** symbol vedle každého parametru. Po aktualizaci každého parametru se kliknutím na tlačítko **zpět** vraťte na stránku žádosti.
 
-1. Dokončete nastavení metadat parametrů kliknutím na **...** vedle každého z parametrů.
+   :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Import z ukázkového dialogu" border="true":::
 
-    - Pro *hledání* `*` : Nastavit jako **výchozí hodnotu**, nastavit **jako** *false* a nastavit **viditelnost** na *žádnou*. 
+1. For *Search*: nastavte `*` jako **výchozí hodnotu**, nastavte **Required** jako *false* a nastavte **viditelnost** na *žádná*. 
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Metadata vyhledávacího parametru" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Vyhledat metadata parametrů" border="true":::
 
-    - Pro *verzi rozhraní* `2019-05-06-Preview` api : Nastavit jako **výchozí hodnotu**nastavte **viditelnost** jako interní a **nastavenou** na *hodnotu True*.  
+1. U *pole vybrat*: `HotelName,Description,Address/City` nastavit jako **výchozí hodnotu**nastavte hodnotu **požadováno** na *false*a nastavte vlastnost **visibility** na *none*.  
+
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Metadata parametrů verze" border="true":::
+
+1. Pro *rozhraní API-Version*: `2019-05-06` nastavte jako **výchozí hodnotu** **, nastavte na** *true*a nastavte **visibility** jako *interní*.  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Metadata parametrů verze" border="true":::
 
-    - Podobně pro *api-key*nastavte podle **potřeby**s *vnitřní* **viditelností**. Jako **výchozí hodnotu**zadejte klíč rozhraní API vyhledávací služby .
-    
-    Po provedeném provádění těchto změn přepněte do zobrazení **Editor swagger.** V části parametry byste měli vidět následující konfiguraci:    
+1. Pro *typ obsahu*: nastavte na `application/json`.
 
-    ```
-          parameters:
-          - {name: search, in: query, required: false, type: string, default: '*'}
-          - {name: api-version, in: query, required: true, type: string, default: 2019-05-06-Preview,
-            x-ms-visibility: internal}
-          - {name: api-key, in: header, required: true, type: string, default: YOURKEYGOESHERE,
-            x-ms-visibility: internal}
+1. Po provedení těchto změn přepněte do zobrazení **Editor Swagger** . V části Parameters by se měla zobrazit následující konfigurace:
+
+    ```JSON
+    parameters:
+      - {name: search, in: query, required: false, type: string, default: '*'}
+      - {name: $select, in: query, required: false, type: string, default: 'HotelName,Description,Address/City'}
+      - {name: api-version, in: query, required: true, type: string, default: '2019-05-06',
+        x-ms-visibility: internal}
+      - {name: Content-Type, in: header, required: false, type: string}
     ```
 
-1. V části Odpověď klepněte na **tlačítko "Přidat výchozí odpověď"**. To je důležité, protože to pomůže **Power Apps** pochopit schéma odpovědi. Vložte vzorovou odpověď.
+1. Vraťte se na **3. Krok žádosti** a přejděte dolů do části Response (odpověď). Klikněte na **Přidat výchozí odpověď**. To je důležité, protože pomůže Power Apps pochopit schéma odpovědi. 
+
+1. Vložte ukázkovou odpověď. Snadný způsob, jak zachytit ukázkovou odpověď, je prostřednictvím Průzkumníka služby Search v Azure Portal. V Průzkumníku služby Search byste měli zadat stejný dotaz jako u žádosti, ale přidáním **$Top = 2** omezit výsledky pouze na dva dokumenty:: `search=*&$select=HotelName,Description,Address/City&$top=2`. 
+
+   Power Apps potřebuje k detekci schématu jenom pár výsledků.
+
+    ```JSON
+    {
+        "@odata.context": "https://mydemo.search.windows.net/indexes('hotels-sample-index')/$metadata#docs(*)",
+        "value": [
+            {
+                "@search.score": 1,
+                "HotelName": "Arcadia Resort & Restaurant",
+                "Description": "The largest year-round resort in the area offering more of everything for your vacation – at the best value!  What can you enjoy while at the resort, aside from the mile-long sandy beaches of the lake? Check out our activities sure to excite both young and young-at-heart guests. We have it all, including being named “Property of the Year” and a “Top Ten Resort” by top publications.",
+                "Address": {
+                    "City": "Seattle"
+                }
+            },
+            {
+                "@search.score": 1,
+                "HotelName": "Travel Resort",
+                "Description": "The Best Gaming Resort in the area.  With elegant rooms & suites, pool, cabanas, spa, brewery & world-class gaming.  This is the best place to play, stay & dine.",
+                "Address": {
+                    "City": "Albuquerque"
+                }
+            }
+        ]
+    }
+    ```
 
     > [!TIP] 
-    > Existuje omezení znaků pro odpověď JSON, kterou můžete zadat, takže můžete chtít zjednodušit JSON tak, aby před vložením. Důležité aspekty schéma/formát odpovědi. Skutečné hodnoty v odpovědi vzorku jsou méně důležité a lze je zjednodušit, aby se snížil počet znaků.
-    
+    > Pro odpověď JSON je omezení znaků, které můžete zadat, takže před vložením je vhodné tento formát JSON zjednodušit. Schéma a formát odpovědi jsou důležitější než hodnoty samotné. Například pole Popis může být zjednodušené jenom na první větu.
 
-1.    Než ho budete moci otestovat, klepněte na tlačítko **Vytvořit konektor** v pravém horním rohu obrazovky.
+1. V pravém horním rohu klikněte na **vytvořit konektor** .
 
-1.  Na testovací stránce klikněte na tlačítko **+ Nové připojení**a zadejte klíč dotazu vyhledávací služby jako hodnotu pro klíč rozhraní *API*.
+## <a name="2---test-the-connection"></a>2. testování připojení
 
-    Tento krok může převést ven průvodce a do připojení stránky. Můžete chtít vrátit do editoru vlastní připojení skutečně otestovat připojení. Přejít na **vlastní konektor** > Vyberte nově vytvořený konektor > *...* > **Zobrazit vlastnosti** > **Upravit** > **4. Test** se dostat zpět na zkušební stránku.
+Při prvním vytvoření konektoru ho budete muset znovu otevřít ze seznamu vlastních konektorů, aby ho bylo možné otestovat. Později, pokud provedete další aktualizace, můžete otestovat v rámci průvodce.
 
-1.    Nyní klikněte na **možnost Testovat operaci** a ujistěte se, že získáváte výsledky z indexu. Pokud jste byli úspěšní, měli byste vidět stav 200 a v textu odpovědi byste měli vidět JSON, který popisuje výsledky hledání.
+Pro tento úkol budete potřebovat [klíč rozhraní API pro dotazy](search-security-api-keys.md#find-existing-keys) . Při každém vytvoření připojení, ať už se jedná o testovací běh nebo zahrnutí do aplikace, konektor potřebuje klíč rozhraní API pro dotazování, který se používá pro připojení k Azure Kognitivní hledání.
 
+1. Úplně vlevo klikněte na **vlastní konektory**.
 
+1. Vyhledejte konektor podle názvu (v tomto kurzu je to "AzureSearchQuery").
 
+1. Vyberte konektor, rozbalte seznam akce a vyberte **Zobrazit vlastnosti**.
 
-## <a name="visualize-results-from-the-custom-connector"></a>Vizualizujte výsledky z vlastního konektoru
-Cílem tohoto kurzu není ukázat vám, jak vytvořit efektní uživatelské prostředí s aplikacemi napájení, takže rozložení uživatelského rozhraní bude minimalistické. Pojďme vytvořit PowerApp s vyhledávacím polem, vyhledávacím tlačítkem a zobrazit výsledky v ovládacím prvku galerie.  PowerApp se připojí k našemu nedávno vytvořenému vlastnímu konektoru, aby získal data z Azure Search.
+    :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="Zobrazit vlastnosti" border="true":::
 
-1. Vytvořte novou power aplikaci. Přejděte do části **Aplikace,** klikněte na **+ Nová aplikace**a vyberte Základní **stránka**.
+1. V pravém horním rohu vyberte **Upravit** .
+
+1. Vyberte **4. Test** pro otevření zkušební stránky
+
+1. V testovací operaci klikněte na **+ nové připojení**.
+
+1. Zadejte klíč rozhraní API pro dotazování. Toto je dotaz Azure Kognitivní hledání pro přístup k indexu jen pro čtení. Klíč můžete [Najít](search-security-api-keys.md#find-existing-keys) v Azure Portal. 
+
+1. V části operace klikněte na tlačítko **test operace** . Pokud jste úspěšní, měli byste vidět stav 200 a v těle odpovědi byste měli vidět JSON, který popisuje výsledky hledání.
+
+    :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="Odpověď JSON" border="true":::
+
+## <a name="3---visualize-results"></a>3 – vizualizace výsledků
+
+V tomto kroku vytvoříte aplikaci Power, která má vyhledávací pole, tlačítko vyhledávání a oblast zobrazení pro výsledky. Power App se připojí k nedávno vytvořenému vlastnímu konektoru a získá data z Azure Search.
+
+1. Na levé straně rozbalte **aplikace** > **a nové** > **plátno**aplikace.
 
     :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Vytvoření aplikace plátna" border="true":::
 
-1. Vyberte typ aplikace, který chcete. Pro tento kurz vytvořte **prázdnou aplikaci** s **rozložením telefonu**. Zobrazí se **Power Apps Studio.**
+1. Vyberte typ aplikace. V tomto kurzu vytvoříte **prázdnou aplikaci** s **rozložením pro telefon**. Zobrazí se **aplikace Power App Studio** .
 
-1. Jakmile jste ve studiu, vyberte kartu **Zdroje dat** a klikněte na nový konektor, který jste právě vytvořili. V našem případě se nazývá *AzureSearchQuery*. Klepněte **na tlačítko Přidat připojení**.
+1. V nástroji Studio vyberte kartu **zdroje dat** a klikněte na nový konektor, který jste právě vytvořili. V našem případě se nazývá *AzureSearchQuery*. Klikněte na **Přidat připojení**.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="připojit konektor" border="true":::
+   Zadejte klíč rozhraní API pro dotazování.
 
-    *AzureSearchQuery* je nyní zdroj dat, který je k dispozici pro použití z vaší aplikace.
-    
-1. Přejděte na **kartu Vložení**, abychom do formuláře mohli přidat několik ovládacích prvků.
+    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="konektor připojení" border="true":::
+
+    Nyní *AzureSearchQuery* je zdroj dat, který je k dispozici pro použití z vaší aplikace.
+
+1. Na **kartě Vložení**přidejte do plátna několik ovládacích prvků.
 
     :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="Vložit ovládací prvky" border="true":::
 
-1.  Vložte tyto prvky:
-    -   Textový popisek s hodnotou Dotaz:"
-    -   Element pro zadávání textu (volat *txtQuery*, výchozí hodnota: "*")
-    -   Tlačítko s textem "Hledat" 
-    -   S názvem Vertikální galerie (zavolejte *galeriiResults*)
-    
-    Formulář by měl vypadat nějak takto:
+1. Vložte následující prvky:
 
-    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Rozložení Ovládací prvky" border="true":::
+   * Textový popisek s hodnotou dotaz:
+   * Textový vstup elementu (volání IT *txtQuery*, výchozí hodnota: "*")
+   * Tlačítko s textem hledání 
+   * Svislá galerie s názvem (volání IT *galleryResults*)
 
-1. Chcete-li, aby **tlačítko Hledat** vystavilo dotaz, vyberte tlačítko a vložte následující akci, kterou chcete provést s **onSelect**:
+    Plátno by mělo vypadat přibližně takto:
+
+    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Rozložení ovládacích prvků" border="true":::
+
+1. Chcete-li, aby **tlačítko Hledat** vydávalo dotaz, vložte následující akci do **příkazového výběru**:
 
     ```
     If(!IsBlank(txtQuery.Text),
-        ClearCollect(azResult, AzureSearchQuery.Get({search: txtQuery.Text}).value))
+        ClearCollect(azResult, AzureSearchQuery.Query({search: txtQuery.Text}).value))
     ```
 
-    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Tlačítko OnSelect" border="true":::
- 
-    Tato akce způsobí, že tlačítko aktualizovat novou kolekci s názvem *azResult* s výsledkem vyhledávacího dotazu, pomocí textu v textovém poli *txtQuery* jako termín dotazu.
-    
-1.  Jako další krok propojíme vertikální galerii, kterou jsme vytvořili, s kolekcí *azResult.* Vyberte ovládací prvek galerie a proveďte následující akce v podokně vlastností.
+   Na následujícím snímku obrazovky vidíte řádek vzorců pro akci při **výběru** .
 
-    -  Nastavte **Zdroj dat** na *azResult*.
-    
-    -  Vyberte **rozložení,** které vám vyhovuje na základě typu dat v indexu. V tomto případě jsme použili *název, titulky a rozložení těla.*
-    
-    -  **Upravte pole**a vyberte pole, která chcete vizualizovat.
+       :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Button OnSelect" border="true":::
 
-    Vzhledem k tomu, že jsme poskytli ukázkový výsledek, když jsme definovali konektor, aplikace si je vědoma polí dostupných ve vašem indexu.
+   Tato akce způsobí, že tlačítko aktualizuje novou kolekci s názvem *azResult* s výsledkem vyhledávacího dotazu, a to pomocí textu v textovém poli *txtQuery* jako termín dotazu.
+
+   > [!NOTE]
+   > Zkuste to znovu, pokud se zobrazí chyba syntaxe vzorce "funkce ClearCollect" obsahuje některé neplatné funkce ":
+   > 
+   > * Nejdřív se ujistěte, že je odkaz na konektor správný. Vymažte název konektoru a začněte psát název vašeho konektoru. Technologie IntelliSense by měla navrhovat pravou spojnici a operaci.
+   > 
+   > * Pokud chyba přetrvává, odstraňte a znovu vytvořte konektor. Pokud je k dispozici více instancí konektoru, aplikace pravděpodobně používá nesprávný jeden z nich.
+   > 
+
+1. Propojte svislý ovládací prvek galerie s kolekcí *azResult* , která byla vytvořena při dokončení předchozího kroku. 
+
+   Vyberte ovládací prvek galerie a v podokně Vlastnosti proveďte následující akce.
+
+   * Nastavte **zdroj dat** na *azResult*.
+   * Vyberte **rozložení** , které pro vás bude fungovat na základě typu dat v indexu. V tomto případě jsme použili rozložení *název, podnadpis a text* .
+   * **Upravte pole**a vyberte pole, která chcete vizualizovat.
+
+    Vzhledem k tomu, že jsme tento konektor definovali jako výsledek ukázky, aplikace si uvědomuje pole, která jsou k dispozici ve vašem indexu.
     
     :::image type="content" source="./media/search-howto-powerapps/2-7-gallery-select-fields.png" alt-text="Pole galerie" border="true":::   
  
-1.  Stisknutím **klávesy F5** zobrazíte náhled aplikace.  
+1. Stisknutím klávesy **F5** zobrazte náhled aplikace.  
 
-    Nezapomeňte, že pole lze nastavit na vypočtené hodnoty.      
-    V tomto příkladu nastavení pomocí rozložení *"Obrázek, Název a Titulky"* a určení funkce *Obrázek* jako zřetězení `"https://mystore.blob.core.windows.net/multilang/" & ThisItem.metadata_storage_name`kořenové cesty pro data a název souboru (například ) vytvoří níže uvedený výsledek.
+    :::image type="content" source="./media/search-howto-powerapps/2-8-3-final.png" alt-text="Konečná aplikace" border="true":::    
 
-    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Konečná aplikace" border="true":::        
+<!--     Remember that the fields can be set to calculated values.
+
+    For the example, setting using the *"Image, Title and Subtitle"* layout and specifying the *Image* function as the concatenation of the root path for the data and the file name (for instance, `"https://mystore.blob.core.windows.net/multilang/" & ThisItem.metadata_storage_name`) will produce the result below.
+
+    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Final app" border="true":::         -->
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+
+Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
+
+Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace a online školení najdete v [tématu Power Apps Learning Catalog](https://docs.microsoft.com/powerapps/learning-catalog/get-started).
+Power Apps umožňuje rychlý vývoj aplikací pro vlastní aplikace. Teď, když víte, jak se připojit k indexu hledání, se dozvíte víc o vytváření bohatých vizualizací v rámci vlastní aplikace Power.
+
+> [!div class="nextstepaction"]
+> [Katalog kurzů pro Power Apps](https://docs.microsoft.com/powerapps/learning-catalog/get-started)
 

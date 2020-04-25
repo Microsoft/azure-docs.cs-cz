@@ -15,16 +15,16 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 1949b66ee48036163e92cb37c275e9117d6a74b4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: be2a52f1a9071e9d4bb77ab4439291fd58cd828b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460014"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129376"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Kurz – Správa disků v Azure pomocí Azure CLI
 
-Virtuální počítače Azure využívají disky k ukládání svých operačních systémů, aplikací a dat. Při vytváření virtuálního počítače je důležité zvolit velikost disku a konfiguraci odpovídající očekávanému zatížení. V tomto kurzu se dozvíte, jak nasadit a spravovat disky virtuálních počítačů. Dozvíte se o těchto tématech:
+Virtuální počítače Azure využívají disky k ukládání svých operačních systémů, aplikací a dat. Když vytváříte virtuální počítač, je důležité zvolit velikost disku a konfiguraci odpovídající očekávanému zatížení. V tomto kurzu se dozvíte, jak nasadit a spravovat disky virtuálních počítačů. Dozvíte se o těchto tématech:
 
 > [!div class="checklist"]
 > * Disky s operačním systémem a dočasné disky
@@ -32,7 +32,6 @@ Virtuální počítače Azure využívají disky k ukládání svých operační
 > * Disky Standard a Premium
 > * Výkon disků
 > * Připojení a příprava datových disků
-> * Změna velikosti disků
 > * Snímky disků
 
 
@@ -50,7 +49,7 @@ Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další
 
 ## <a name="vm-disk-types"></a>Typy disků virtuálního počítače
 
-Azure poskytuje dva typy disků, standardní a Premium.
+Azure nabízí dva typy disků: Standard a Premium.
 
 ### <a name="standard-disk"></a>Disk Standard
 
@@ -69,7 +68,7 @@ V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekun
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem.
 
-Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné [https://shell.azure.com/powershell](https://shell.azure.com/bash)kartě prohlížeče tak, že přejdete na . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/powershell](https://shell.azure.com/bash)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="create-and-attach-disks"></a>Vytvoření a připojení disků
 
@@ -177,13 +176,13 @@ Po dokončení konfigurace disku zavřete relaci SSH.
 exit
 ```
 
-## <a name="take-a-disk-snapshot"></a>Pořízení snímku disku
+## <a name="take-a-disk-snapshot"></a>Pořídit snímek disku
 
-Když pořídíte snímek disku, Azure vytvoří kopii disku k danému okamžiku určenou jen pro čtení. Snímky virtuálních počítačů Azure jsou užitečné k rychlému uložení stavu virtuálního počítače před změnou konfigurace. V případě problému nebo chyby lze virtuální ho snímací objekt obnovit pomocí snímku. Pokud má virtuální počítač více než jeden disk, pořizuje se snímek každého disku nezávisle na ostatních. V zájmu vytváření konzistentních záloh (vzhledem k aplikacím) zvažte možnost virtuální počítač před pořizováním snímků zastavit. Můžete také použít [službu Azure Backup](/azure/backup/), která umožňuje provádět automatizované zálohování spuštěného virtuálního počítače.
+Když pořídíte snímek disku, Azure vytvoří kopii disku k danému okamžiku určenou jen pro čtení. Snímky virtuálních počítačů Azure jsou užitečné k rychlému uložení stavu virtuálního počítače před změnou konfigurace. V případě problému nebo chyby se dá virtuální počítač obnovit pomocí snímku. Pokud má virtuální počítač více než jeden disk, pořizuje se snímek každého disku nezávisle na ostatních. V zájmu vytváření konzistentních záloh (vzhledem k aplikacím) zvažte možnost virtuální počítač před pořizováním snímků zastavit. Můžete také použít [službu Azure Backup](/azure/backup/), která umožňuje provádět automatizované zálohování spuštěného virtuálního počítače.
 
 ### <a name="create-snapshot"></a>Vytvoření snímku
 
-Před vytvořením snímku disku virtuálního počítače potřebujete ID nebo název disku. Pomocí příkazu [az vm show](/cli/azure/vm#az-vm-show) vraťte ID disku. V tomto příkladu se ID disku uloží do proměnné, aby se mohlo použít v pozdějším kroku.
+Před vytvořením snímku disku virtuálního počítače potřebujete ID nebo název disku. K vrácení ID disku použijte příkaz [AZ VM show](/cli/azure/vm#az-vm-show) . V tomto příkladu se ID disku uloží do proměnné, aby se mohlo použít v pozdějším kroku.
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -265,7 +264,6 @@ V tomto kurzu jste se dozvěděli o tématech spojených s disky virtuálních p
 > * Disky Standard a Premium
 > * Výkon disků
 > * Připojení a příprava datových disků
-> * Změna velikosti disků
 > * Snímky disků
 
 V dalším kurzu se dozvíte, jak automatizovat konfiguraci virtuálních počítačů.
