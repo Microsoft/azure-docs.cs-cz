@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/20/2020
-ms.openlocfilehash: d711cc7e58fb055eda62cfc364a5552a7d10f7bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: 80ce7f893b4828125cd9b63ffe33b7c0d873e899
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272289"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146891"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
-Azure Data Lake Storage Gen2 je cloudová služba úložiště vyhrazená pro analýzy velkých objemů dat, která je založená na službě Azure Blob Storage. Data Lake Storage Gen2 kombinuje možnosti služby Azure Blob Storage a Azure Data Lake Storage Gen1. Výsledná služba nabízí funkce z Azure Data Lake Storage Gen1, jako jsou sémantika systému souborů, zabezpečení na úrovni adresáře a souborů a škálovatelnost, společně s nízkými náklady, vrstvené úložiště, vysokou dostupností a možnostmi zotavení po havárii ze služby Azure Blob Storage.
+Azure Data Lake Storage Gen2 je cloudová služba úložiště vyhrazená pro analýzy velkých objemů dat, která je založená na službě Azure Blob Storage. Data Lake Storage Gen2 kombinuje možnosti služby Azure Blob Storage a Azure Data Lake Storage Gen1. Výsledná služba nabízí funkce z Azure Data Lake Storage Gen1. Mezi tyto funkce patří: sémantika systému souborů, zabezpečení na úrovni adresáře a souborů a přizpůsobivost. Společně s nízkými náklady, vrstvené úložiště, vysokou dostupností a možnostmi zotavení po havárii ze služby Azure Blob Storage.
 
 ## <a name="data-lake-storage-gen2-availability"></a>Dostupnost Data Lake Storage Gen2
 
@@ -57,7 +57,7 @@ Vytvořte účet úložiště Azure Data Lake Storage Gen2.
 1. Klikněte na **Vytvořit**.
 1. Na obrazovce **vytvořit účet úložiště** :
     1. Vyberte správné předplatné a skupinu prostředků.
-    1. Zadejte název účtu Data Lake Storage Gen2. Další informace o zásadách vytváření názvů účtů úložiště najdete v tématu zásady [vytváření názvů pro prostředky Azure](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).
+    1. Zadejte název účtu Data Lake Storage Gen2.
     1. Klikněte na kartu **Upřesnit** .
     1. V části **Data Lake Storage Gen2**klikněte na **povoleno** vedle **hierarchického oboru názvů** .
     1. Klikněte na **Zkontrolovat a vytvořit**.
@@ -136,7 +136,7 @@ az storage account create --name <STORAGEACCOUNTNAME> \
     --kind StorageV2 --hierarchical-namespace true
 ```
 
-Potom se přihlaste k portálu. Přidejte do role **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště novou spravovanou identitu přiřazenou uživatelem, jak je popsáno v kroku 3 tématu [použití Azure Portal](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Potom se přihlaste k portálu. Přidejte do role **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště novou spravovanou identitu přiřazenou uživatelem. Tento krok je popsaný v kroku 3 tématu [použití Azure Portal](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 Po přiřazení role pro spravovanou identitu přiřazenou uživateli nasaďte šablonu pomocí následujícího fragmentu kódu.
 
@@ -165,15 +165,15 @@ Další informace o oprávněních k souborům pomocí seznamů řízení přís
 
 ### <a name="how-do-i-control-access-to-my-data-in-data-lake-storage-gen2"></a>Návody řízení přístupu k datům v Data Lake Storage Gen2?
 
-Schopnost clusteru HDInsight přistupovat k souborům v Data Lake Storage Gen2 je řízena prostřednictvím spravovaných identit. Spravovaná identita je identita registrovaná v Azure Active Directory (Azure AD), jejíž přihlašovací údaje jsou spravované v Azure. U spravovaných identit nemusíte registrovat instanční objekty ve službě Azure AD ani uchovávat přihlašovací údaje, jako jsou certifikáty.
+Schopnost clusteru HDInsight přistupovat k souborům v Data Lake Storage Gen2 je řízena prostřednictvím spravovaných identit. Spravovaná identita je identita registrovaná v Azure Active Directory (Azure AD), jejíž přihlašovací údaje jsou spravované v Azure. U spravovaných identit nemusíte registrovat instanční objekty ve službě Azure AD. Nebo Udržujte přihlašovací údaje, jako jsou certifikáty.
 
-Služby Azure mají dva typy spravovaných identit: přiřazeno systémem a přiřazeno uživateli. HDInsight používá pro přístup k Data Lake Storage Gen2 spravované identity přiřazené uživatelem. Spravovaná identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure.
+Služby Azure mají dva typy spravovaných identit: přiřazeno systémem a přiřazeno uživateli. HDInsight používá pro přístup k Data Lake Storage Gen2 spravované identity přiřazené uživatelem. A `user-assigned managed identity` vytvoří se jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure.
 
 Životní cyklus identity přiřazené uživatelem se spravuje nezávisle na životním cyklu instancí služeb Azure, ke kterým je přiřazená. Další informace o spravovaných identitách najdete v tématu [Jak fungují spravované identity prostředků Azure?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work).
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>Návody nastavení oprávnění pro uživatele Azure AD k dotazování na data v Data Lake Storage Gen2 pomocí podregistru nebo jiných služeb?
 
-Pokud chcete nastavit oprávnění pro uživatele k dotazování na data, použijte skupiny zabezpečení Azure AD jako přiřazený objekt zabezpečení v seznamech ACL. Nepřiřazujte přímo jednotlivým uživatelům nebo instančním objektům oprávnění k přístupu k souborům. Když používáte skupiny zabezpečení Azure AD k řízení toku oprávnění, můžete přidávat a odebírat uživatele nebo instanční objekty bez nutnosti znovu použít seznamy ACL pro celou adresářovou strukturu. Stačí přidat nebo odebrat uživatele z příslušné skupiny zabezpečení Azure AD. Seznamy ACL nejsou zděděné, takže při opakovaném použití seznamů ACL je potřeba aktualizovat seznam ACL u všech souborů a podadresářů.
+Pokud chcete nastavit oprávnění pro uživatele k dotazování na data, použijte skupiny zabezpečení Azure AD jako přiřazený objekt zabezpečení v seznamech ACL. Nepřiřazujte přímo jednotlivým uživatelům nebo instančním objektům oprávnění k přístupu k souborům. Pomocí skupin zabezpečení služby Azure AD pro řízení toku oprávnění můžete přidávat a odebírat uživatele nebo instanční objekty bez nutnosti znovu použít seznamy ACL pro celou adresářovou strukturu. Stačí přidat nebo odebrat uživatele z příslušné skupiny zabezpečení Azure AD. Seznamy ACL nejsou zděděné, takže při opakovaném použití seznamů ACL je potřeba aktualizovat seznam ACL u všech souborů a podadresářů.
 
 ## <a name="access-files-from-the-cluster"></a>Přístup k souborům z clusteru
 

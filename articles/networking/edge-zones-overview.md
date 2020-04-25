@@ -1,171 +1,191 @@
 ---
-title: O zónách Azure Edge – náhled
-description: Přečtěte si o výhodách výpočetnítechniky od Microsoftu.
+title: O verzi Preview zóny Azure Edge
+description: 'Přečtěte si o nabídkách hraničního zpracování od Microsoftu: zóna Azure Edge.'
 services: vnf-manager
 author: ganesr
 ms.service: vnf-manager
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: ganesr
-ms.openlocfilehash: aaa849633591bfd34a9fca026c820ec2f9137844
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 90e796c244950d6d374a02757b608099c229c1ea
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410839"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146951"
 ---
-# <a name="about-azure-edge-zones---preview"></a>O zónách Azure Edge – náhled
+# <a name="about-azure-edge-zone-preview"></a>O verzi Preview zóny Azure Edge
 
-Azure Edge Zones je řada nabídek z Microsoft Azure, která umožňuje zpracování dat v blízkosti uživatele. Virtuální počítače, kontejnery a další vybrané služby Azure můžete nasadit do hraničních zón, abyste vyřešili nízkou latenci a vysokou propustnost aplikací.
+Hraniční zóna Azure je skupina nabídek od Microsoft Azure, které umožňují zpracování dat blízko uživateli. Virtuální počítače, kontejnery a jiné vybrané služby Azure můžete nasadit do hraničních zón a řešit tak požadavky aplikací s nízkou latencí a vysokou propustností.
 
-Typické scénáře případu použití pro zóny edge zahrnují:
+Mezi typické scénáře použití pro hraniční zóny patří:
 
-- Velení a řízení v reálném čase v robotice
-- Analýzy v reálném čase a odvození pomocí umělé inteligence a strojového učení
-- Strojové vidění
-- Vzdálené vykreslování pro scénáře smíšené reality a VDI
-- Pohlcující hraní pro více hráčů
-- Streamování médií a doručování obsahu
-- Dohled a bezpečnost
+- Příkazy a ovládací prvky v reálném čase v robotech.
+- Analýzy v reálném čase a Inferencing prostřednictvím umělé Intelligence a strojového učení.
+- Strojní Vision.
+- Vzdálené vykreslování pro hybridní realitu a scénáře VDI
+- Moderní hry pro více hráčů.
+- Streamování médií a doručování obsahu.
+- Dohled a zabezpečení.
 
-Azure Edge Zones se donich ve třech samostatných nabídkách:
+Existují tři typy hraničních zón Azure:
 
-- Zóny Azure Edge
-- Zóny Azure Edge s operátorem
-- Privátní hraniční zóny Azure
+- Hraniční zóny Azure
+- Hraniční zóny Azure s operátorem
+- Zóny privátních hraničních zařízení Azure
 
-## <a name="azure-edge-zones"></a><a name="edge-zones"></a>Zóny Azure Edge
+## <a name="azure-edge-zones"></a><a name="edge-zones"></a>Hraniční zóny Azure
 
-![Okrajové zóny](./media/edge-zones-overview/edge-zones.png "Okrajové zóny")
+![Hraniční zóny Azure](./media/edge-zones-overview/edge-zones.png "Hraniční zóny Azure")
 
-Azure Edge Zones jsou rozšíření s malým půdorysem Azure umístěnými v centrech populace, která jsou daleko od oblastí Azure. Azure Edge Zones podporují virtuální počítače, kontejnery a vybranou sadu služeb Azure, které umožňují spouštět aplikace citlivé na latenci a náročnou propustnost blízko koncovým uživatelům. Azure Edge Zones jsou součástí globální sítě Microsoftu a nabízejí zabezpečené, spolehlivé a velké šířky pásma připojení mezi aplikacemi spuštěné v edge zóně v blízkosti uživatele a úplnou sadou služeb Azure spuštěných v oblastech Azure. Azure Edge Zones vlastní a provozuje Microsoft a umožňují vám používat stejnou sadu nástrojů a portálu Azure ke správě a nasazování služeb do hraničních zón.
+Hraniční zóny Azure jsou rozšíření Azure, která jsou umístěná v centrech, která jsou mnohem mimo oblasti Azure. Azure Edge Zones podporuje virtuální počítače, kontejnery a vybranou sadu služeb Azure, které umožňují spouštět aplikace náročné na latenci a propustnosti blízko koncovým uživatelům. Hraniční zóny Azure jsou součástí globální sítě Microsoftu. Poskytují zabezpečené a spolehlivé připojení s vysokou šířkou pásma mezi aplikacemi, které běží na hraniční zóně blízko uživatele. A nabízejí kompletní sadu služeb Azure běžící v rámci oblastí Azure. Hraniční zóny Azure jsou vlastněné a provozované společností Microsoft. Pomocí stejné sady nástrojů Azure a stejného portálu můžete spravovat a nasazovat služby do hraničních zón.
 
-Typické případy použití zahrnují:
+Mezi typické případy použití patří:
 
-- Streamování her a her
-- Streamování médií a doručování obsahu
-- Analýzy a odvození v reálném čase pomocí umělé inteligence a strojového učení
-- Vykreslování pro smíšenou realitu
+- Hraní herních a herních dat.
+- Streamování médií a doručování obsahu.
+- Analýzy v reálném čase a Inferencing prostřednictvím umělé Intelligence a strojového učení.
+- Vykreslování pro Mixed realitu.
 
-Azure Edge Zóny budou k dispozici v následujících metros:
+Zóny Azure Edge budou k dispozici v následujících oblastech Metro:
 
-- New York, Spojené situovat
-- Los Angeles, Kalifornie
+- New York, NY
+- Los Angeles, CA
 - Miami, FL
 
-Pro více informací [se spojte s týmem Edge Zones.](https://aka.ms/EdgeZones)
+Další informace [vám poskytne tým hraničních zón](https://aka.ms/EdgeZones) .
 
-## <a name="azure-edge-zones-with-carrier"></a><a name="carrier"></a>Zóny Azure Edge s operátorem
+## <a name="azure-edge-zones-with-carrier"></a><a name="carrier"></a>Hraniční zóny Azure s operátorem
 
-![Okrajové zóny s nosičem](./media/edge-zones-overview/edge-carrier.png "Okrajové zóny s nosičem")
+![Hraniční zóny s operátorem](./media/edge-zones-overview/edge-carrier.png "Hraniční zóny s operátorem")
 
-Azure Edge Zones s operátorem jsou malá rozšíření o půdorys Azure umístěná v datových centrech mobilních operátorů v populačních centrech. Azure Edge Zones s infrastrukturou operátora se umístí o jeden skok dál od sítě 5G mobilního operátora a nabízí aplikacím z mobilních zařízení latenci pod 10 milisekund. Azure Edge Zones s operátorem se nasazuje v datových centrech mobilních operátorů a jsou připojené ke globální síti Microsoftu. Nabízejí zabezpečené, spolehlivé a velké šířky pásma připojení mezi aplikacemi spuštěné v blízkosti uživatele a úplnou sadou služeb Azure spuštěných v oblastech Azure. Vývojáři mohou používat stejnou sadu známých nástrojů k vytváření a nasazování služeb do zón Edge.
+Hraniční zóny Azure s dopravcem jsou rozšíření Azure, která jsou umístěná v datových centrech mobilní operátory v umístěních na populaci. Hraniční zóna Azure s infrastrukturou dopravců je jediným směrováním ze sítě 5G mobilního operátora. Toto umístění nabízí latenci méně než 10 milisekund pro aplikace z mobilních zařízení.
 
-Typické případy použití zahrnují:
+Hraniční zóny Azure s dopravcem se nasazují v datových centrech mobilní operátory a připojují se k globální síti Microsoft. Poskytují zabezpečené a spolehlivé připojení s vysokou šířkou pásma mezi aplikacemi, které běží blízko uživateli. A nabízejí kompletní sadu služeb Azure běžící v rámci oblastí Azure. Vývojáři můžou pomocí stejné sady známých nástrojů sestavovat a nasazovat služby do hraničních zón.
 
-- Streamování her a her
-- Streamování médií a doručování obsahu
-- Analýzy a odvození v reálném čase pomocí umělé inteligence a strojového učení
-- Vykreslování pro smíšenou realitu
-- Propojené automobily
-- Telemedicína
+Mezi typické případy použití patří:
 
-Edge Zones budou nabízeny ve spolupráci s následujícími operátory:
+- Hraní herních a herních dat.
+- Streamování médií a doručování obsahu.
+- Analýzy v reálném čase a Inferencing prostřednictvím umělé Intelligence a strojového učení.
+- Vykreslování pro Mixed realitu.
+- Připojená mobilní zařízení.
+- Tele – Medicine
 
-- AT&T (Atlanta, Dallas a Los Angeles)
+Hraniční zóny budou nabídnuty ve spolupráci s následujícími operátory:
 
-## <a name="azure-private-edge-zones"></a><a name="private-edge-zones"></a>Privátní hraniční zóny Azure
+- AT&T (Brno, Praha a Los Angeles)
 
-![Privátní okrajové zóny](./media/edge-zones-overview/private-edge.png "Privátní okrajové zóny")
+## <a name="azure-private-edge-zones"></a><a name="private-edge-zones"></a>Zóny privátních hraničních zařízení Azure
 
-Azure Private Edge Zones jsou rozšíření s malým půdorysem Azure umístěných místně. Privátní hraniční zóny Azure jsou založené na platformě [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) a umožňují přístup k výpočetním a úložným službám s nízkou latencí nasazeným místně. Privátní hraniční zóny také umožňují nasazovat virtualizované síťové funkce (VNF), jako jsou mobilní jádra paketů, směrovače, brány firewall a zařízení SD-WAN a aplikace z ISVS jako [spravované aplikace Azure](https://azure.microsoft.com/services/managed-applications/) vedle sebe spolu s virtuálními počítači a kontejnery v místním prostředí. Privátní hraniční zóny Azure jsou dodávány s cloudovým nativním orchestračním řešením, které umožňuje spravovat životní cyklus virtualizovaných síťových funkcí (VNF) a aplikací z portálu Azure.
+![Zóny privátního okraje](./media/edge-zones-overview/private-edge.png "Zóny privátního okraje")
 
-Privátní hraniční zóny Azure umožňují vyvíjet a nasazovat místní aplikace pomocí stejných známých nástrojů používaných k vytváření a nasazování aplikací v Azure. Můžete také spouštět soukromé mobilní sítě (privátní LTE, privátní 5G), bezpečnostní funkce, jako jsou brány firewall, a rozšířit místní sítě na více větví a Azure pomocí zařízení SD-WAN na stejných privátních zařízeních Edge Zone a spravovat je z Azure.
+Zóny privátních hraničních zařízení Azure jsou rozšířeními Azure, která jsou umístěná v místním prostředí. Zóna privátního Edge Azure je založená na platformě [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) . Umožňuje přístup s nízkou latencí k výpočetním a místně nasazeným službám úložiště. Privátní hraniční zóna také umožňuje nasazovat aplikace od nezávislého výrobce softwaru a funkce virtualizované sítě (VNFs) jako [spravované aplikace Azure](https://azure.microsoft.com/services/managed-applications/) spolu s virtuálními počítači a kontejnery místně. Tyto VNFs můžou zahrnovat jádra mobilních paketů, směrovače, brány firewall a zařízení SD-WAN. Zóna privátního Edge Azure je dodávána s řešením orchestrace v nativním cloudu, které umožňuje spravovat životní cyklus VNFs a aplikací z Azure Portal.
 
-Typické případy použití zahrnují:
+Zóna privátního okraje Azure umožňuje vyvíjet a nasazovat aplikace místně pomocí stejných známých nástrojů, které používáte k sestavování a nasazování aplikací v Azure. 
 
-- Velení a řízení v reálném čase v robotice
-- Analýzy v reálném čase a odvození pomocí umělé inteligence a strojového učení
-- Strojové vidění
-- Vzdálené vykreslování pro scénáře smíšené reality a VDI
-- Dohled a bezpečnost
+Umožňuje vám také: 
 
-Máme bohatý ekosystém dodavatelů VNF, nemožně inteligentních výrobců a partnerů MSP, kteří umožňují komplexní řešení pomocí zón private edge. Další informace [získáte od týmu zón Private Edge Zones.](https://aka.ms/EdgeZonesPartner)
+- Spusťte soukromé mobilní sítě (Private LTE, Private 5G).
+- Implementujte funkce zabezpečení, jako jsou brány firewall.
+- Rozšíříte své místní sítě napříč několika pobočkami a Azure pomocí zařízení SD-WAN na stejných zařízeních privátních hraničních zařízení a spravujte je z Azure.
 
-## <a name="private-edge-zones---partners"></a><a name="private-edge-partners"></a>Soukromé okrajové zóny – partneři
+Mezi typické případy použití patří:
 
-![Partneři privátní hraniční zóny](./media/edge-zones-overview/partners.png "Partneři privátní hraniční zóny")
+- Příkazy a ovládací prvky v reálném čase v robotech.
+- Analýzy v reálném čase a Inferencing s umělou logikou a strojovým učením.
+- Strojní Vision.
+- Vzdálené vykreslování pro hybridní realitu a scénáře VDI
+- Dohled a zabezpečení.
 
-### <a name="virtualized-network-functions-vnfs"></a><a name="vnf"></a>Virtualizované síťové funkce (VNF)
+Máme bohatou ekosystém VNF dodavatelů, ISV a MSP a umožníme tak kompletní řešení, která používají zóny privátního okraje. Další informace [vám poskytne tým zóny privátního Edge](https://aka.ms/EdgeZonesPartner) .
 
-#### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>Virtualizované evolved packet core (vEPC) pro mobilní sítě
+### <a name="private-edge-zone-partners"></a><a name="private-edge-partners"></a>Partneři zóny privátního okraje
 
-- [Potvrzené sítě](https://www.affirmednetworks.com/)
-- [Druid Software](https://www.druidsoftware.com/)
+![Partneři zóny privátního okraje](./media/edge-zones-overview/partners.png "Partneři privátních hraničních zón")
+
+#### <a name="virtualized-network-functions-vnfs"></a><a name="vnf"></a>Virtualizované síťové funkce (VNFs)
+
+##### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>Virtualizovaný vEPC (virtualized Packet Core) pro mobilní sítě
+
+- [Potvrzující sítě](https://www.affirmednetworks.com/)
+- [Druid software](https://www.druidsoftware.com/)
 - [Expeto](https://www.expeto.io/)
-- [Mavenir (Mavenir)](https://mavenir.com/)
-- [Metapřepínač](https://www.metaswitch.com/)
-- [Nokia Digital Automation Cloud](https://www.dac.nokia.com/)
+- [Mavenir](https://mavenir.com/)
+- [Metaswitch](https://www.metaswitch.com/)
+- [Cloud pro digitální automatizaci Nokia](https://www.dac.nokia.com/)
 
-#### <a name="mobile-radio-partners"></a><a name="mobile-radio"></a>Partneři mobilního rádia
+##### <a name="mobile-radio-partners"></a><a name="mobile-radio"></a>Partneři mobilních přepínačů
 
-- [Křikopové ruksaky](https://support.ruckuswireless.com/)
+- [Commscope Ruckus](https://support.ruckuswireless.com/)
 
-#### <a name="sd-wan-vendors"></a><a name="sdwan-vendors"></a>Dodavatelé SD-WAN
+##### <a name="sd-wan-vendors"></a><a name="sdwan-vendors"></a>Dodavatelé SD-WAN
 
 - [NetFoundry](https://netfoundry.io/)
-- [NuageNetworks od společnosti Nokia](https://www.nuagenetworks.net/)
-- [VMware SD-WAN od Velocloud](https://www.velocloud.com/)
+- [Nuage sítě z Nokia](https://www.nuagenetworks.net/)
+- [VMware SD-WAN podle Velocloud](https://www.velocloud.com/)
 
-#### <a name="router-vendors"></a><a name="router-vendors"></a>Dodavatelé směrovačů
+##### <a name="router-vendors"></a><a name="router-vendors"></a>Dodavatelé směrovačů
 
 - [Arista](https://www.arista.com/)
 
-[Oslovte tým zón private edge,](https://aka.ms/EdgeZonesPartner) kde získáte další informace o tom, jak se stát partnerem.
+##### <a name="firewall-vendors"></a><a name="firewall-vendors"></a>Dodavatelé brány firewall
 
-#### <a name="firewall-vendors"></a><a name="firewall-vendors"></a>Dodavatelé brány firewall
+- [Palo Alto Networks](https://www.paloaltonetworks.com/)
 
-- Palo Alto Networks
+##### <a name="managed-solutions-providers-mobile-operators-and-global-system-integrators-gsis"></a><a name="msp-mobile"></a>Poskytovatelé spravovaných řešení: mobilní operátory a globální systémové integrátory (GSIs)
 
-### <a name="managed-solutions-providers---mobile-operators-and-global-system-integrators"></a><a name="msp-mobile"></a>Poskytovatelé spravovaných řešení - mobilní operátoři a globální systémoví integrátoři
-
-| Globální sis a operátoři | Mobilní operátoři |
+| GSIs a operátory | Mobilní operátory |
 | --- | --- |
 | Amdocs                       | Etisalat             |
 | Americká věž               | NTT Communications   |
-| Století Odkaz                 | Proximus             |
+| CenturyLink                  | Proximus             |
 | Expeto                       | Rogers               |
-| Federované bezdrátové připojení           | SK Telecom           |
+| Federované bezdrátové sítě           | SK Telecom           |
 | Infosys                      | Telefonica           |
 | Tech Mahindra                | Telstra              |
-|        *                     | Vodafone             |
+|                              | Vodafone             |
 
-[Oslovte tým zón private edge,](https://aka.ms/EdgeZonesPartner) kde získáte další informace o tom, jak se stát partnerem.
+Informace o tom, jak se stát partnerem, [získáte od týmu zóny privátního Edge](https://aka.ms/EdgeZonesPartner) .
 
-## <a name="private-edge-zones---solutions"></a><a name="solutions-private-edge"></a>Soukromé okrajové zóny - řešení
+### <a name="private-edge-zone-solutions"></a><a name="solutions-private-edge"></a>Řešení zóny privátního okraje
 
-### <a name="private-mobile-network-on-private-edge-zones"></a><a name="private-mobile-private-edge"></a>Soukromá mobilní síť na privátních okrajových zónách
+#### <a name="private-mobile-network-on-private-edge-zones"></a><a name="private-mobile-private-edge"></a>Privátní mobilní síť na zónách privátního okraje
 
-![Soukromá mobilní síť na privátních okrajových zónách](./media/edge-zones-overview/mobile-networks.png "Soukromá mobilní síť na privátních okrajových zónách")
+![Privátní mobilní síť na zónách privátního okraje](./media/edge-zones-overview/mobile-networks.png "Privátní mobilní síť na zónách privátního okraje")
 
-Nyní můžete nasadit privátní mobilní síť na privátní hraniční zóny. Soukromé mobilní sítě umožňují velmi nízkou latenci, vysokou kapacitu a spolehlivou a bezpečnou bezdrátovou síť, která je vyžadována pro důležité podnikové aplikace. Soukromé mobilní sítě mohou umožnit scénáře, jako je velení a řízení automatizovaných řízených vozidel (AGV) ve skladu, komunikace mezi roboty v reálném čase v inteligentní továrně a rozšířené nemovitosti a aplikace virtuální reality.
+V privátních hraničních zónách teď můžete nasadit privátní mobilní síť. Privátní mobilní sítě umožňují extrémně nízkou latenci, vysokou kapacitu a spolehlivou a zabezpečenou bezdrátovou síť, která je potřebná pro důležité obchodní aplikace. 
 
-Virtualizovaná síťová funkce evolved packet core (vEPC) tvoří mozky soukromé mobilní sítě. Nyní můžete nasadit vEPC na privátní edge zóny. Seznam partnerů vEPC, kteří jsou k dispozici v zónách privátní okrajové, naleznete [v tématu vEPC ISV .](#vEPC)
+Privátní mobilní sítě můžou povolit scénáře jako: 
+- Příkaz a řízení autořízených vozidel (AGVs) v skladech. 
+- Komunikace mezi roboty v rámci inteligentních továren v reálném čase.
+- Rozšířená realita a aplikace Edge pro virtuální realitu
 
-Nasazení řešení privátní mobilní sítě v zónách Private Edge zones vyžaduje další součásti, jako jsou mobilní přístupové body, SIM karty a další virtuální sítě, jako jsou směrovače. Přístup k licencovanému nebo nelicencovanému spektru je rozhodující pro vytvoření soukromé mobilní sítě. Kromě toho může být nutné pomoci s plánováním rf, fyzickým rozložením, instalací a podporou. Seznam partnerů najdete v tématu [Mobilní rádio partneři](#mobile-radio).
+Virtualizovaná funkce sítě vEPC (virtualized Packet Core) je mozkem privátní mobilní sítě. Teď můžete nasadit vEPC na zóny privátních okrajů. Seznam partnerů vEPC, kteří jsou k dispozici v privátních hraničních zónách, najdete v tématu [VEPC ISV](#vEPC).
 
-Microsoft poskytuje partnerský ekosystém, který vám pomůže se všemi aspekty tohoto procesu – od plánování sítě, nákupu požadovaných zařízení, nastavení hardwaru až po správu konfigurace z Azure. Se sadou ověřených partnerů, kteří jsou úzce integrováni se společností Microsoft, si můžete být jisti, že řešení bude spolehlivé a snadno použitelné. Můžete se soustředit na své základní scénáře a přitom se spoléhat na microsoft a její partnery, kteří vám pomohou se zbytkem.
+Nasazení privátního řešení mobilní sítě v privátních hraničních zónách vyžaduje další komponenty, jako jsou mobilní přístupové body, SIM karty a další VNFs, jako jsou směrovače. Přístup k Licencovanému nebo nelicencovaným spektru je zásadní pro nastavení privátní mobilní sítě. A možná budete potřebovat pomoc s plánováním RF, fyzickým rozložením, instalací a podporou. Seznam partnerů najdete v tématu [partneři mobilních přepínačů](#mobile-radio).
 
-### <a name="sd-wan-on-private-edge-zones"></a><a name="sdwan-private-edge"></a>SD-WAN na zónách privátní houženatých hran
+Společnost Microsoft poskytuje partnerský ekosystém, který může pomáhat se všemi aspekty tohoto procesu. Partneři můžou pomáhat s plánováním sítě, nákupem požadovaných zařízení, nastavením hardwaru a správou konfigurace z Azure. Sada ověřených partnerů, které jsou úzce integrované s Microsoftem, zajistí, že vaše řešení bude spolehlivé a bude snadné ho používat. Můžete se zaměřit na základní scénáře a spoléhat na to, že společnost Microsoft a její partneři budou pomáhat s ostatními.
 
-![SD-WAN na zónách privátní houženatých hran](./media/edge-zones-overview/sd-wan.png "SD-WAN na zónách privátní houženatých hran")
+#### <a name="sd-wan-on-private-edge-zones"></a><a name="sdwan-private-edge"></a>SD – WAN v zónách privátního okraje
+
+![SD – WAN v zónách privátního okraje](./media/edge-zones-overview/sd-wan.png "SD – WAN v zónách privátního okraje")
  
-Technologie SD-WAN jako technologie umožňuje vytvářet rozsáhlé sítě WAN na podnikové úrovni se zvýšenou šířkou pásma, vysoce výkonným přístupem ke cloudu, vkládáním služeb, spolehlivostí, správou zásad a rozsáhlou viditelností sítě. SD-WAN poskytuje bezproblémové připojení pobočky řízené z redundantních centrálních řadičů za nižší náklady na vlastnictví.
-SD-WAN na zónách privátní edge vám umožní přejít od modelu zaměřeného na capex k modelu Software jako služba (SaaS) a snížit tak rozpočty IT. Můžete použít svůj výběr SD-WAN partnerů orchestrator nebo řadič povolit nové služby a šířit je po celé síti okamžitě.
+SD-WAN umožňuje vytvářet sítě WAN (Wide Area Network) na podnikové úrovni, které mají tyto výhody:
+
+- Větší šířka pásma
+- Vysoce výkonný přístup ke cloudu
+- Vložení služby
+- Spolehlivost
+- Správa zásad
+- Rozsáhlá viditelnost sítě
+    
+SD-WAN poskytuje bezproblémové připojení k firemní pobočce, které je Orchestrované z redundantních centrálních kontrolérů za sníženou cenu vlastnictví.
+SD-WAN na soukromých hraničních zónách umožňuje přejít z modelu zaměřeného na CAPEX na model softwaru jako služby (SaaS), aby se snížily jeho rozpočty. Můžete použít své možnosti partnerů SD-WAN, Orchestrator nebo Controller, a povolit tak nové služby a rozšířit je v celé síti hned.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace získáte od následujících týmů:
+Další informace získáte v následujících týmech:
 
 * [Tým hraničních zón](https://aka.ms/EdgeZones)
-* [Soukromý tým Edge Zones - stát se partnerem](https://aka.ms/EdgeZonesPartner)
+* [Tým zóny privátního okraje, který se stane partnerem](https://aka.ms/EdgeZonesPartner)

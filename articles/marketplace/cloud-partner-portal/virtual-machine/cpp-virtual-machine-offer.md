@@ -1,50 +1,50 @@
 ---
-title: Nabídka virtuálních strojů na Azure Marketplace
-description: Přehled procesu publikování nabídky virtuálních počítačů na Azure Marketplace.
+title: Nabídka virtuálních počítačů v Azure Marketplace
+description: Přehled procesu publikování nabídky virtuálního počítače na Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: dsindona
-ms.openlocfilehash: 0f2ae9fe6f006b5418ebee82b08a44188b7c58d3
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: b857cf8b7485beb884adf77d99f82d965f55a0ad
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273065"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142799"
 ---
 # <a name="virtual-machine-offer"></a>Nabídka virtuálních počítačů
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky virtuálního počítače Azure](https://aka.ms/CreateAzureVMoffer) ke správě migrovaných nabídek.
+> Od 13. dubna 2020 začneme přesouvat správu nabídek virtuálních počítačů Azure do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Postupujte podle pokynů v tématu [Vytvoření virtuálního počítače Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) pro správu migrovaných nabídek.
 
 |    |    |
 |-----------------------------------------------------------------|------------------------------------------|
-| Tato část vysvětluje, jak publikovat novou nabídku virtuálních strojů na [Azure Marketplace](https://azuremarketplace.microsoft.com). Podpora je poskytována pro virtuální počítače se systémem Windows i Linux, které obsahují virtuální pevný disk operačního systému (VHD) a nulové nebo více datových virtuálních disků. | ![ikona virtuálního počítače](./media/virtual-machine-icon.png)  |
+| V této části se dozvíte, jak publikovat novou nabídku virtuálních počítačů do [Azure Marketplace](https://azuremarketplace.microsoft.com). Podpora je poskytována pro virtuální počítače se systémem Windows i Linux, obsahující virtuální pevný disk operačního systému (VHD) a nula nebo více datových VHD. | ![ikona virtuálního počítače](./media/virtual-machine-icon.png)  |
 
 
 ## <a name="publishing-overview"></a>Přehled publikování
 
-Následující video [Optimalizace nabídky Azure Marketplace](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), představuje široký přehled Azure Marketplace, včetně toho, jak publikovat na tomto marketplace (pomocí řešení virtuálních strojů), jak optimalizovat uživatelské prostředí pomocí stránky produktu a volitelného prostředí Test Drive, jak se generují uživatelští zájemci a jak je můžete spotřebovat a jak je optimalizovat zapojení zákazníků.
+Následující video, [optimalizace nabídky Azure Marketplace](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), nabízí širokou škálu Azure Marketplace, včetně toho, jak publikovat na webu Marketplace (pomocí řešení virtuálního počítače), jak optimalizovat uživatelské prostředí pomocí stránky produktu a volitelného prostředí Test Drive, jak se generují zájemce uživatelů a jak je můžete využívat, a optimalizovat zapojení zákazníka.
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026/player]
 
 
-## <a name="vm-publishing-process-flow"></a>Tok procesu publikování virtuálního montovana
+## <a name="vm-publishing-process-flow"></a>Tok procesu publikování virtuálních počítačů
 
-Následující diagram znázorňuje kroky vysoké úrovně při publikování nabídky virtuálního připojení. 
+Následující diagram znázorňuje nejdůležitější kroky při publikování nabídky virtuálních počítačů. 
 
-![Proces publikování virtuálních montovna](./media/publishvm_001.png)
+![Proces publikování virtuálních počítačů](./media/publishvm_001.png)
 
-1. Vytvořte nabídku - Všechny podrobnosti a informace o nabídce jsou konfigurovány, včetně popisu nabídky, marketingových materiálů, právních, informací o podpoře a specifikací chovaných aktiv.
+1. Vytvoření nabídky – nakonfigurují se všechny podrobnosti a informace o této nabídce, včetně popisu nabídky, marketingových materiálů, právních informací o podpoře a specifikací prostředků.
 
-2. Vytvoření obchodních a technických prostředků – vytvořte obchodní majetek (právní dokumenty a marketingové materiály) a technické prostředky pro přidružené řešení (zde virtuální počítače a připojené disky). 
+2. Vytvořte si obchodní a technické prostředky – vytvořte si obchodní prostředky (právní dokumenty a marketingové materiály) a technické prostředky pro příslušné řešení (tady, virtuální počítače a připojené disky). 
 
-3. Vytvoření skladové položky – vytvořte přidružené skladové položky přidružené k nabídce a odešlete je.  Pro každý obrázek, který plánujete publikovat, je vyžadována jedinečná skladová položka. 
+3. Vytvoření SKU – vytvořte přidružené SKU přidružené k této nabídce a odešlete je.  Pro každou bitovou kopii, kterou plánujete publikovat, se vyžaduje jedinečná SKU. 
  
-4. Certifikujte a publikujte nabídku – Po dokončení nabídky a technických prostředků můžete nabídku odeslat. Toto odeslání zahájí proces publikování, ve kterém je řešení testováno, ověřeno, certifikováno a poté "živě" na trhu.  
+4. Certifikace a publikování nabídky – Jakmile se nabídka a technické prostředky dokončí, můžete nabídku odeslat. U tohoto odeslání se spustí proces publikování, ve kterém je řešení testováno, ověřeno, certifikováno a pak bude na webu Marketplace aktivní.  
 
 ## <a name="next-steps"></a>Další kroky
 
-Než začnete tyto kroky zvážit, musíte splnit [technické a obchodní požadavky](./cpp-prerequisites.md) pro publikování virtuálního počítače na webu Microsoft Azure Marketplace. 
+Než se pustíte do tohoto postupu, musíte splnit [technické a obchodní požadavky](./cpp-prerequisites.md) pro publikování virtuálního počítače do Microsoft Azure Marketplace. 

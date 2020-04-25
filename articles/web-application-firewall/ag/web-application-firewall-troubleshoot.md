@@ -1,34 +1,34 @@
 ---
-title: Poradce při potížích – brána firewall webových aplikací Azure
-description: Tento článek obsahuje informace o řešení potíží pro bránu FIREWALL webových aplikací (WAF) pro bránu aplikací Azure
+title: Řešení potíží – Firewall webových aplikací Azure
+description: Tento článek poskytuje informace o řešení potíží pro Firewall webových aplikací (WAF) pro Azure Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74046197"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131258"
 ---
-# <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Poradce při potížích s bránou firewall webových aplikací (WAF) pro aplikační bránu Azure
+# <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Řešení potíží s firewallem webových aplikací (WAF) pro Azure Application Gateway
 
-Existuje několik věcí, které můžete udělat, pokud jsou blokovány požadavky, které by měly projít bránou firewall webové aplikace (WAF).
+Existuje několik věcí, které můžete provést v případě, že požadavky, které by měly projít Firewall webových aplikací (WAF), jsou blokované.
 
-Nejprve se ujistěte, že jste si přečetli [přehled WAF](ag-overview.md) a [konfigurační dokumenty WAF.](application-gateway-waf-configuration.md) Také se ujistěte, že jste povolili [sledování WAF](../../application-gateway/application-gateway-diagnostics.md) Tyto články vysvětlují, jak waf funguje, jak fungují sady pravidel WAF a jak získat přístup k protokolům WAF.
+Nejdřív se ujistěte, že jste si přečetli [Přehled WAF](ag-overview.md) a [konfigurační dokumenty WAF](application-gateway-waf-configuration.md) . Také se ujistěte, že jste povolili [monitorování WAF](../../application-gateway/application-gateway-diagnostics.md) tyto články vysvětlují, jak funguje funkce WAF, jak pravidlo WAF nastavuje práci a jak získat přístup k protokolům WAF.
 
 ## <a name="understanding-waf-logs"></a>Principy protokolů WAF
 
-Účelem protokolů WAF je zobrazit každý požadavek, který je spárován nebo blokován WAF. Jedná se o hlavní knihu všech vyhodnocených požadavků, které jsou spárovány nebo blokovány. Pokud zjistíte, že WAF blokuje požadavek, že by neměl (falešně pozitivní), můžete udělat pár věcí. Nejprve zúžete a najděte konkrétní požadavek. Prohlédněte si protokoly a vyhledejte konkrétní identifikátor URI, časové razítko nebo ID transakce požadavku. Když najdete přidružené položky protokolu, můžete začít jednat na falešně pozitivních hodnot.
+Účelem protokolu WAF je zobrazení všech požadavků, které jsou porovnány nebo blokovány rozhraním WAF. Je to hlavní kniha všech vyhodnocených požadavků, které jsou shodné nebo blokované. Pokud si všimnete, že WAF blokuje požadavek, který by neměl (falešně pozitivní), můžete provést několik věcí. Nejprve upřesněte a najděte konkrétní požadavek. Prohlédněte si protokoly a najděte konkrétní identifikátor URI, časové razítko nebo ID transakce žádosti. Když najdete přidružené položky protokolu, můžete začít působit na falešně pozitivních hodnot.
 
-Řekněme například, že máte legitimní provoz obsahující řetězec *1 = 1,* který chcete projít waf. Pokud se pokusíte požadavek, WAF blokuje provoz, který obsahuje váš řetězec *1 = 1* v libovolném parametru nebo poli. Toto je řetězec často spojené s útokem injektáže SQL. Můžete se podívat do protokolů a zobrazit časové razítko požadavku a pravidla, která zablokovala/ uzavřeno.
+Řekněme například, že máte legitimní provoz obsahující řetězec *1 = 1* , který chcete předat vaší WAF. Pokud si vyzkoušíte požadavek, WAF blokuje přenos, který obsahuje váš *1 = 1* řetězec v jakémkoli parametru nebo poli. Toto je řetězec často spojený s útokem na injektáže SQL. Můžete procházet protokoly a zobrazit časové razítko požadavku a pravidla, která jsou blokovaná/spárována.
 
-V následujícím příkladu uvidíte, že čtyři pravidla jsou spuštěny během stejného požadavku (pomocí transactionid pole). První z nich říká, že odpovídá, protože uživatel použil číselnou adresu IP pro požadavek, což zvyšuje skóre anomálií o tři, protože je to varování. Další pravidlo, které odpovídá, je 942130, což je jedno, které hledáte. Můžete vidět *1 =* 1 `details.data` v poli. Tím se skóre anomálií opět zvýší o tři, protože je to také varování. Obecně platí, že každé pravidlo, které má akci **Uzavřeno** zvyšuje skóre anomálie a v tomto okamžiku by skóre anomálie bylo šest. Další informace naleznete v [tématu Režim hodnocení anomálií](ag-overview.md#anomaly-scoring-mode).
+V následujícím příkladu vidíte, že se během stejné žádosti spouštějí čtyři pravidla (pomocí pole TransactionId). První z nich odpovídá tomu, že uživatel použil pro požadavek číselnou adresu URL, která zvyšuje skóre anomálií o tři, protože se jedná o upozornění. Další pravidlo, které odpovídá, je 942130, což je ten, který hledáte. V `details.data` poli můžete zobrazit *1 = 1* . Tím se ještě třikrát zvyšuje skóre anomálií, protože se jedná i o upozornění. Obecně platí, že každé pravidlo, které **odpovídá** akci, zvyšuje skóre anomálií a v tomto okamžiku bude skóre anomálie šest. Další informace najdete v tématu [režim bodování anomálií](ag-overview.md#anomaly-scoring-mode).
 
-Poslední dvě položky protokolu ukazují, že požadavek byl zablokován, protože skóre anomálií bylo dostatečně vysoké. Tyto položky mají jinou akci než ostatní dva. Ukazují, že vlastně *zablokovali* žádost. Tato pravidla jsou povinná a nelze je zakázat. Neměly by být považovány za pravidla, ale spíše jako základní infrastrukturu vnitřních waf.
+Poslední dvě položky protokolu ukázaly, že žádost byla zablokována, protože skóre anomálie bylo dostatečně vysoké. Tyto položky mají jinou akci než druhá druhá. Ukazují, že jsou ve skutečnosti *zablokované* . Tato pravidla jsou povinná a nejde je zakázat. Nemusely být považovány za pravidla, ale více jako základní infrastruktura WAF interních.
 
 ```json
 { 
@@ -133,56 +133,56 @@ Poslední dvě položky protokolu ukazují, že požadavek byl zablokován, prot
 }
 ```
 
-## <a name="fixing-false-positives"></a>Oprava falešně pozitivních výsledků
+## <a name="fixing-false-positives"></a>Oprava falešně pozitivních hodnot
 
-S těmito informacemi a znalosti, že pravidlo 942130 je ten, který odpovídá řetězec *1 = 1,* můžete udělat několik věcí, aby to z blokování provozu:
+S těmito informacemi a znalostmi, které pravidlo 942130 odpovídá řetězci *1 = 1* , můžete provést několik akcí, které zabrání v blokování provozu:
 
 - Použití seznamu vyloučení
 
-   Další informace o seznamech vyloučení naleznete v [konfiguraci WAF.](application-gateway-waf-configuration.md#waf-exclusion-lists)
-- Zakažte pravidlo.
+   Další informace o seznamech vyloučení najdete v tématu [Konfigurace WAF](application-gateway-waf-configuration.md#waf-exclusion-lists) .
+- Zakáže pravidlo.
 
 ### <a name="using-an-exclusion-list"></a>Použití seznamu vyloučení
 
-Chcete-li učinit informované rozhodnutí o zpracování falešně pozitivní, je důležité seznámit se s technologiemi, které vaše aplikace používá. Řekněme například, že není sql server v zásobníku technologie a dochází k falešným poplachům souvisejícím s těmito pravidly. Zakázání těchto pravidel nemusí nutně oslabit vaši bezpečnost.
+Aby se zajistilo, že bude mít informovaná rozhodnutí o zpracování falešně pozitivních hodnot, je důležité se seznámit s technologiemi, které vaše aplikace používá. Řekněme například, že ve vašem technologickém zásobníku není SQL Server a že se s těmito pravidly dostanete falešně pozitivní výsledky. Zakázání těchto pravidel neznamená nutně oslabení zabezpečení.
 
-Jednou z výhod použití seznamu vyloučení je, že je zakázána pouze určitá část požadavku. To však znamená, že konkrétní vyloučení je použitelné pro veškerý provoz procházející waf, protože se jedná o globální nastavení. Například to může vést k problému, pokud *1 = 1* je platný požadavek v těle pro určitou aplikaci, ale ne pro ostatní. Další výhodou je, že si můžete vybrat mezi tělem, záhlavím a soubory cookie, které mají být vyloučeny, pokud je splněna určitá podmínka, na rozdíl od vyloučení celé žádosti.
+Jednou z výhod používání seznamu vyloučení je, že je zakázaná jenom určitá část požadavku. To ale znamená, že konkrétní vyloučení se vztahuje na veškerý provoz procházející vaším WAF, protože se jedná o globální nastavení. Například to může vést k problému, pokud *1 = 1* je platný požadavek v těle určité aplikace, ale ne pro jiné. Další výhodou je, že si můžete vybrat mezi textem, hlavičkou a soubory cookie, které se mají vyloučit, pokud je splněná určitá podmínka, a to na rozdíl od úplného požadavku.
 
-V některých případech existují případy, kdy konkrétní parametry získat předány do WAF způsobem, který nemusí být intuitivní. Například je token, který získá předánpři ověřování pomocí služby Azure Active Directory. Tento *token, __RequestVerificationToken*, se obvykle předá jako soubor cookie požadavku. V některých případech, kdy jsou zakázány soubory cookie, je však tento token také předán jako atribut požadavku nebo "arg". Pokud k tomu dojde, je třeba zajistit, aby *__RequestVerificationToken* je přidán do seznamu vyloučení jako **název atributu Požadavek** také.
+V některých případech existují případy, kdy se konkrétní parametry předávají do WAF způsobem, který nemusí být intuitivní. Například je k dispozici token, který se předává při ověřování pomocí Azure Active Directory. Tento token, *__RequestVerificationToken*, obvykle se předává jako soubor cookie žádosti. Nicméně v některých případech, kdy jsou soubory cookie zakázané, je tento token také předán jako atribut Request nebo ARG. Pokud k tomu dojde, musíte zajistit, aby se *__RequestVerificationToken* do seznamu vyloučení Přidal také jako **název atributu žádosti** .
 
 ![Vyloučení](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 
-V tomto příkladu chcete vyloučit **název atributu Request,** který se rovná *textu1*. To je zřejmé, protože v protokolech brány firewall vidíte název atributu: **data: Spárovaná data: 1=1 nalezená v rámci ARGS:text1: 1=1**. Atribut je **text1**. Tento název atributu můžete najít také několika dalšími způsoby, viz [Hledání názvů atributů požadavku](#finding-request-attribute-names).
+V tomto příkladu chcete vyloučit **název atributu žádosti** , který se rovná *Text1*. To je zřejmé, protože můžete zobrazit název atributu v protokolech brány firewall: **data: vyhovující data: 1 = 1 nalezeno v rámci argumentů: Text1:1 = 1**. Atribut je **Text1**. Tento název atributu můžete také najít několika dalšími způsoby, viz [hledání názvů atributů žádosti](#finding-request-attribute-names).
 
 ![Seznamy vyloučení WAF](../media/web-application-firewall-troubleshoot/waf-config.png)
 
 ### <a name="disabling-rules"></a>Zakázání pravidel
 
-Dalším způsobem, jak obejít falešně pozitivní, je zakázat pravidlo, které odpovídalo vstupu, o kterém waf myslel, že je škodlivý. Vzhledem k tomu, že jste analyzovali protokoly WAF a zúžili pravidlo na 942130, můžete ho zakázat na webu Azure Portal. Viz [Přizpůsobení pravidel brány firewall webových aplikací prostřednictvím portálu Azure](application-gateway-customize-waf-rules-portal.md).
+Dalším způsobem, jak získat falešně pozitivní hodnotu, je zakázat pravidlo, které se shoduje se vstupem, na který WAF mysleli. Vzhledem k tomu, že jste analyzovali protokoly WAF a zúžené pravidlo na 942130, můžete ho zakázat v Azure Portal. Viz [přizpůsobení pravidel firewallu webových aplikací pomocí Azure Portal](application-gateway-customize-waf-rules-portal.md).
 
-Jednou z výhod zakázání pravidla je, že pokud víte, že veškerý provoz, který obsahuje určitou podmínku, která bude normálně blokována, je platný provoz, můžete toto pravidlo zakázat pro celý WAF. Pokud se však jedná pouze o platný provoz v konkrétním případě použití, otevřete chybu zabezpečení zakázáním tohoto pravidla pro celý soubor WAF, protože se jedná o globální nastavení.
+Jednou z výhod zakázání pravidla je, že pokud víte, že veškerý provoz obsahující určitou podmínku, která bude normálně blokovaná, je platný provoz, můžete toto pravidlo zakázat pro celou WAF. Pokud se ale jenom jedná o platný provoz v konkrétním případu použití, otevřete chybu zabezpečení tím, že toto pravidlo zakážete pro celou WAF, protože se jedná o globální nastavení.
 
-Pokud chcete používat Azure PowerShell, přečtěte si témat [u tématu Přizpůsobení pravidel brány firewall webových aplikací pomocí PowerShellu](application-gateway-customize-waf-rules-powershell.md). Pokud chcete používat Azure CLI, [přečtěte si témat uvlastního nastavení brány firewall pomocí azure CLI](application-gateway-customize-waf-rules-cli.md).
+Pokud chcete použít Azure PowerShell, přečtěte si téma [přizpůsobení pravidel firewallu webových aplikací prostřednictvím PowerShellu](application-gateway-customize-waf-rules-powershell.md). Pokud chcete použít rozhraní příkazového řádku Azure, přečtěte si téma [přizpůsobení pravidel firewallu webových aplikací prostřednictvím rozhraní příkazového řádku Azure](application-gateway-customize-waf-rules-cli.md).
 
 ![Pravidla WAF](../media/web-application-firewall-troubleshoot/waf-rules.png)
 
-## <a name="finding-request-attribute-names"></a>Hledání názvů atributů požadavku
+## <a name="finding-request-attribute-names"></a>Hledání názvů atributů žádosti
 
-Pomocí [Fiddler](https://www.telerik.com/fiddler), můžete zkontrolovat jednotlivé požadavky a určit, jaké konkrétní pole webové stránky se nazývají. To může pomoci vyloučit určitá pole z kontroly pomocí seznamů vyloučení.
+Pomocí [Fiddler](https://www.telerik.com/fiddler)můžete zkoumat jednotlivé požadavky a určit, jaká konkrétní pole webové stránky jsou volána. To může pomoci při vyloučení určitých polí z kontroly pomocí seznamů vyloučení.
 
-V tomto příkladu uvidíte, že pole, ve kterém byl zadán řetězec *1=1,* se nazývá **text1**.
+V tomto příkladu vidíte, že pole, kde byl zadán řetězec *1 = 1* , se nazývá **Text1**.
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-1.png)
 
-Toto pole můžete vyloučit. Další informace o seznamech vyloučení naleznete v [tématu Omezení velikosti brány firewall webových aplikací a seznamy vyloučení](application-gateway-waf-configuration.md#waf-exclusion-lists). Hodnocení můžete v tomto případě vyloučit konfigurací následujícího vyloučení:
+Toto pole můžete vyloučit. Další informace o seznamech vyloučení najdete v tématu [omezení velikosti požadavků firewallu webových aplikací a seznamů vyloučení](application-gateway-waf-configuration.md#waf-exclusion-lists). Vyhodnocování můžete v tomto případě vyloučit konfigurací následujícího vyloučení:
 
-![Vyloučení WAF](../media/web-application-firewall-troubleshoot/waf-exclusion-02.png)
+![WAF vyloučení](../media/web-application-firewall-troubleshoot/waf-exclusion-02.png)
 
-Můžete také zkontrolovat protokoly brány firewall a získat informace a zjistit, co je třeba přidat do seznamu vyloučení. Chcete-li povolit protokolování, naleznete [v tématu Stav back-endu, diagnostické protokoly a metriky pro aplikační bránu](../../application-gateway/application-gateway-diagnostics.md).
+Můžete také prostudovat protokoly brány firewall a získat informace, abyste viděli, co je třeba přidat do seznamu vyloučení. Pokud chcete povolit protokolování, přečtěte si téma [stav back-endu, protokoly prostředků a metriky pro Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
 
-Zkontrolujte protokol brány firewall a zobrazte soubor PT1H.json po dobu, po kterou došlo k požadavku, který chcete zkontrolovat.
+Zkontrolujte protokol brány firewall a Prohlédněte si soubor PT1H. JSON po dobu, po kterou došlo k žádosti, kterou chcete zkontrolovat.
 
-V tomto příkladu můžete vidět, že máte čtyři pravidla se stejným TransactionID a že všechny došlo ve stejnou dobu:
+V tomto příkladu vidíte, že máte čtyři pravidla se stejným TransactionID a že ke všem došlo ve stejnou dobu.
 
 ```json
 -   {
@@ -287,51 +287,51 @@ V tomto příkladu můžete vidět, že máte čtyři pravidla se stejným Trans
 -   }
 ```
 
-Se znalostí o tom, jak sady pravidel CRS fungují a že sada pravidel CRS 3.0 pracuje se systémem hodnocení anomálií (viz [Brána webových aplikací firewall pro bránu aplikací Azure)](ag-overview.md)víte, že dvě dolní pravidla s **akcí: Blokované** vlastnosti blokují na základě celkového skóre anomálií. Pravidla, na která se zaměřit, jsou první dvě.
+S vaším vědomím, jak pravidlo pro dodržování předpisů funguje a že počítačový RuleSet 3,0 funguje se systémem bodování anomálií (viz téma [Brána Firewall webových aplikací pro Azure Application Gateway](ag-overview.md)) víte, že dolní dvě pravidla s **akcí: blokovaná** vlastnost je blokována na základě celkového skóre anomálií. Mezi pravidla, která je potřeba zaměřit, patří horních dvou.
 
-První položka je zaznamenána, protože uživatel použil číselnou ADRESU IP k přechodu na aplikační bránu, kterou lze v tomto případě ignorovat.
+První položka je zaznamenána, protože uživatel použil číselnou IP adresu k přechodu na Application Gateway, která může být v tomto případě ignorována.
 
-Druhý (pravidlo 942130) je zajímavý. Můžete vidět v detailech, že odpovídá vzoru (1 = 1) a pole se nazývá **text1**. Stejným postupem vylučte **název atributu požadavku,** který **se rovná** **1=1**.
+Druhá je zajímavá (pravidlo 942130). Můžete se podívat v podrobnostech, které se shodují se vzorem (1 = 1), a pole má název **Text1**. Použijte stejné předchozí kroky pro vyloučení **názvu atributu žádosti** , který **se rovná** **1 = 1**.
 
-## <a name="finding-request-header-names"></a>Hledání názvů hlaviček požadavku
+## <a name="finding-request-header-names"></a>Vyhledávají se názvy hlaviček požadavků.
 
-Fiddler je užitečný nástroj opět najít názvy hlavičky požadavku. Na následujícím snímku obrazovky můžete zobrazit záhlaví tohoto požadavku GET, které zahrnují *typ obsahu*, *user-agent*a tak dále.
+Fiddler je užitečný nástroj znovu pro vyhledání názvů hlaviček požadavků. Na následujícím snímku obrazovky vidíte záhlaví této žádosti o získání, což zahrnuje *typ obsahu*, *uživatelský agent*atd.
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
 
-Dalším způsobem, jak zobrazit záhlaví požadavků a odpovědí, je podívat se do vývojářských nástrojů prohlížeče Chrome. Můžete stisknout klávesu F12 nebo klepnout pravým tlačítkem myši na příkaz -> **Zkontrolovat** -> **nástroje pro vývojáře**a vybrat kartu **Síť.** Načtěte webovou stránku a klikněte na požadavek, který chcete zkontrolovat.
+Další možností zobrazení hlaviček žádostí a odpovědí je prohledání v vývojářských nástrojích Chrome. Můžete stisknout klávesu F12 nebo kliknout pravým tlačítkem – > **zkontrolovat** -> **vývojářské nástroje**a vybrat kartu **síť** . načtěte webovou stránku a klikněte na žádost, kterou chcete zkontrolovat.
 
-![Chrom F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
+![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 
-## <a name="finding-request-cookie-names"></a>Hledání názvů souborů cookie požadavku
+## <a name="finding-request-cookie-names"></a>Hledání názvů souborů cookie žádosti
 
-Pokud žádost obsahuje soubory cookie, lze kartu **Cookies** vybrat, aby se zobrazily v Šumaře.
+Pokud požadavek obsahuje soubory cookie, může být vybrána karta **soubory cookie** , aby se zobrazila v Fiddler.
 
-## <a name="restrict-global-parameters-to-eliminate-false-positives"></a>Omezit globální parametry k odstranění falešných poplachů
+## <a name="restrict-global-parameters-to-eliminate-false-positives"></a>Omezení globálních parametrů pro odstranění falešně pozitivních hodnot
 
-- Zakázat kontrolu těla požadavku
+- Zakázat kontrolu textu žádosti
 
-   Nastavením **zkontrolovat tělo požadavku** na vypnuto, nebudou vaše WAF vyhodnocena těla požadavků všech přenosů. To může být užitečné, pokud víte, že těla požadavků nejsou škodlivé pro vaši aplikaci.
+   Když nastavíte možnost **kontrolovat tělo požadavku** na vypnuto, texty požadavků všech přenosů nebudou vyhodnoceny vaším WAF. To může být užitečné, pokud víte, že těla žádosti nejsou škodlivá pro vaši aplikaci.
 
-   Zakázáním této možnosti není zkontrolováno pouze tělo požadavku. Záhlaví a soubory cookie zůstávají kontrolovány, pokud nejsou jednotlivé vyloučeny pomocí funkce seznamu vyloučení.
+   Zakázáním této možnosti není kontrolováno pouze tělo žádosti. Záhlaví a soubory cookie zůstávají zkontrolovány, pokud nejsou vyloučeny pomocí funkce seznamu vyloučení.
 
-- Omezení velikosti souboru
+- Omezení velikosti souborů
 
-   Omezením velikosti souboru pro waf omezujete možnost útoku na vaše webové servery. Povolením nahrávání velkých souborů se zvyšuje riziko, že váš back-end bude zahlcen. Omezení velikosti souboru na normální případ použití aplikace je pouze další způsob, jak zabránit útokům.
+   Omezením velikosti souboru pro WAF omezíte možnost útoku, který se děje na vaše webové servery. Díky povolení nahrávání velkých souborů se zvyšuje riziko zahlceného back-endu. Omezení velikosti souboru na normálním případu použití pro vaši aplikaci je pouze jiný způsob, jak zabránit útokům.
 
    > [!NOTE]
-   > Pokud víte, že vaše aplikace nikdy nebude potřebovat žádné nahrávání souborů nad danou velikost, můžete ji omezit nastavením limitu.
+   > Pokud víte, že vaše aplikace nebude nikdy potřebovat žádné nahrávání souborů nad danou velikost, můžete omezení omezit nastavením limitu.
 
-## <a name="firewall-metrics-waf_v1-only"></a>Metriky brány firewall (pouze WAF_v1)
+## <a name="firewall-metrics-waf_v1-only"></a>Metriky brány firewall (jenom WAF_v1)
 
-Pro brány firewall webových aplikací v1 jsou nyní na portálu k dispozici následující metriky: 
+V případě bran firewall webových aplikací v1 jsou nyní na portálu k dispozici následující metriky: 
 
-1. Brána firewall pro blokované požadavky webové aplikace Počet požadavků Počet požadavků, které byly zablokovány
-2. Brána firewall webových aplikací zablokovala počet pravidel Všechna pravidla, která byla spárována **a** požadavek byl zablokován
-3. Distribuce celkového pravidla brány firewall webové aplikace Všechna pravidla, která byla spárována během hodnocení
+1. Počet zablokovaných požadavků firewallu webových aplikací na základě blokování
+2. Blokované pravidlo brány firewall webových aplikací počítá všechna pravidla, která se shodovala, **a** požadavek byl zablokován.
+3. Všechna pravidla, která se při vyhodnocování shodovala, se budou distribuovat všechna pravidla firewallu webových aplikací.
      
-Chcete-li povolit metriky, vyberte kartu **Metriky** na portálu a vyberte jednu ze tří metrik.
+Pokud chcete povolit metriky, vyberte na portálu kartu **metriky** a vyberte jednu ze tří metrik.
 
 ## <a name="next-steps"></a>Další kroky
 
-Viz [Jak nakonfigurovat bránu firewall webových aplikací v application gateway](tutorial-restrict-web-traffic-powershell.md).
+Viz [jak nakonfigurovat Firewall webových aplikací na Application Gateway](tutorial-restrict-web-traffic-powershell.md).

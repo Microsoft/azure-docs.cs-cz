@@ -1,55 +1,55 @@
 ---
-title: Karta Testovací jednotka virtuálního počítače na portálu cloudových partnerů pro Azure Marketplace
-description: Popisuje kartu Test Drive používanou při vytváření nabídky virtuálního počítače Azure Marketplace.
+title: Karta testovací jednotka virtuálního počítače v portál partnerů cloudu pro Azure Marketplace
+description: Popisuje kartu testovací jednotka použitou při vytváření nabídky virtuálního počítače s Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 22538047adc17a40438359e11bff7fd20e43bcc6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: adac73d64feb6280c5043776249072e9f7595faa
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273082"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142988"
 ---
-# <a name="virtual-machine-test-drive-tab"></a>Karta Testovací jednotka virtuálního počítače
+# <a name="virtual-machine-test-drive-tab"></a>Karta testovací jednotka virtuálního počítače
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky virtuálního počítače Azure](https://aka.ms/CreateAzureVMoffer) ke správě migrovaných nabídek.
+> Od 13. dubna 2020 začneme přesouvat správu nabídek virtuálních počítačů Azure do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Postupujte podle pokynů v tématu [Vytvoření virtuálního počítače Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) pro správu migrovaných nabídek.
 
-Karta **Testovací cesta** na stránce Nová **nabídka** umožňuje potenciálním zákazníkům poskytnout praktickou ukázku klíčových funkcí a výhod produktu, která je demonstrována ve standardizovaném scénáři.  Test Drive je volitelná funkce pro typy nabídek, které podporují testovací jízdu.  Test Drive vyžaduje podporu prostředků, které mají být správně implementovány.  Další informace naleznete v článku [Azure Marketplace Test Drive](https://azure.microsoft.com/blog/azure-marketplace-test-drive/).  <!--TD: Replace with migrated version of Test Drive article! -->
+Karta **Test Drive** na nové stránce **nabídky** vám umožní poskytnout potenciálním zákazníkům praktickou ukázku klíčových funkcí a výhod vašeho produktu, které jsou znázorněné ve standardizovaném scénáři.  Testovací jednotka je volitelnou funkcí pro typy nabídek, které podporují testovací jednotku.  Test Drive vyžaduje, aby byly správně implementovány pomocné prostředky.  Další informace najdete v článku [Azure Marketplace testovacím disku](https://azure.microsoft.com/blog/azure-marketplace-test-drive/).  <!--TD: Replace with migrated version of Test Drive article! -->
 
-Chcete-li tuto funkci povolit, klepněte na kartě **Test Drive** na možnost **Ano** v části **Povolit testovací jízdu**.  Na kartě **Testovací jednotka** se zobrazí pole dostupná pro úpravy.  Připojená hvězdička (*) k názvu pole označuje, že je požadována.
+Tuto funkci povolíte tak, že na kartě **testovací jednotka** kliknete na možnost **Ano** v nabídce **Povolit testovací jednotku**.  Karta **testovací jednotka** zobrazuje pole, která jsou k dispozici pro úpravy.  Připojená hvězdička (*) v názvu pole označuje, že je požadovaná.
 
-![Karta Testovat jízdu ve formuláři Nová nabídka pro virtuální počítače](./media/publishvm_007.png)
+![Karta testovací jednotka na novém formuláři nabídky pro virtuální počítače](./media/publishvm_007.png)
 
 
 ## <a name="field-values"></a>Hodnoty polí
 
-Následující tabulka popisuje účel a obsah těchto polí.  Povinná pole jsou obžalována hvězdičkou (*).
+Následující tabulka popisuje účel a obsah těchto polí.  Požadovaná pole jsou indicted hvězdičkou (*).
 
 
 |    Pole                  |       Popis                                                            |
 |  ---------                |     ---------------                                                          |
-|  *Podrobnosti*   |  |
-| **Popis\***           | Poskytněte přehled scénáře testovací jednotky. Tento text se zobrazí uživateli při zřizování testovací jednotky. Toto pole podporuje základní kód HTML, pokud chcete poskytnout formátovaný obsah.  |
-| **Uživatelská příručka\***           | Nahrajte podrobnou uživatelskou příručku (.pdf), která uživatelům testovacího disku pomůže pochopit, jak používat vaše řešení.  |
-| **Ukázkové video testovací jednotky** | Nahrajte video, které představuje vaše řešení.  Pokud jste zvolili tuto možnost, musíte zadat název, adresu URL videa (hostované na YouTube nebo Vimeo) a miniaturu (533 × 324 pixelů) pro video. |
+|  *Zobrazí*   |  |
+| **Popis\***           | Poskytněte Přehled scénářů testovacích jednotek. Tento text se zobrazí uživateli při zřizování testovací jednotky. Toto pole podporuje základní kód HTML, pokud chcete zadat formátovaný obsah.  |
+| **Uživatelská příručka\***           | Nahrajte podrobného uživatelského ručního (. PDF), který pomůže uživatelům testovacích jednotek pochopit, jak vaše řešení používáte.  |
+| **Ukázkové video testovacího disku** | Nahrajte video, které prezentuje vaše řešení.  Pokud jste vybrali tuto možnost, musíte zadat jméno, adresu URL videa (hostované na YouTube nebo Vimeo) a miniaturu (533x324 pixelů) pro video. |
 | *Technická konfigurace* |  |
-| **Instance\***             | Zadejte dostupnost oblasti a relativně dostupnost instance virtuálního zařízení (kliknutím na ikonu informace pro další podrobnosti).  <br/>Potenciální souběžné relace testovací jednotky by neměly překročit limit kvóty pro vaše předplatné.  První se vypočítá takto: [Počet vybraných oblastí] x [Aktivní instance] + [Počet vybraných oblastí] x [Warm instance] + [Počet vybraných oblastí] x [Studené instance] |
-| **Doba trvání testovací jednotky\***   | Maximální doba trvání relace v hodinách. Relace testovací jednotky se automaticky ukončí po překročení tohoto časového období.  |
-|**Šablona ARM testovací jednotky\***| Nahrajte šablonu Azure Resource Manager přidruženou k této testovací jednotce. Další informace naleznete [v tématu Transformace šablony nasazení virtuálního počítače pro testovací jednotku](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive). |
-| **Přístup k informacím\***    | Přístup k Azure Resource Manager a zkušební přihlašovací údaje, napsané jako prostý text nebo jednoduchý HTML. |
-| *Podrobnosti o předplatném nasazení testovací jednotky* |  |
-| **Id předplatného Azure\*** | Lze získat po přihlášení k [portálu Microsoft Azure](https://ms.portal.azure.com) a kliknutím na **Předplatná** na levém panelu nabídek. (Příklad: "a83645ac-1234-5ab6-6789-1h234g764ghty")    Tento identifikátor by měl být `a83645ac-1234-5ab6-6789-1h234g764ghty`identifikátorEM GUID formuláře .|
-| **Id klienta Azure AD\***    | ID klienta služby Azure Active Directory.  Lze získat po přihlášení k [portálu Microsoft Azure](https://ms.portal.azure.com) a kliknutím na **Azure Active Directory** na levém panelu nabídky, potom kliknutím na **vlastnosti** na středním řádku nabídky a zkopírováním **ID adresáře** z formuláře.  Tento identifikátor by měl být také identifikátor GUID.  Pokud je prázdné, musíte vytvořit ID klienta pro vaši organizaci. |
-| **ID aplikace Azure AD\***       | Identifikátor registrovaného řešení virtuálních počítačů Azure  |
-| **Klíč aplikace Azure AD\***      | Ověřovací klíč pro registrované řešení |
+| **Instance\***             | Určete dostupnost oblasti a relativně dostupnost instance virtuálního počítače (další podrobnosti získáte kliknutím na ikonu informace).  <br/>Potenciální souběžné relace testovacích jednotek by neměly překročit limit kvót pro vaše předplatné.  Předchozí hodnota se vypočítá takto: [počet vybraných oblastí] × [horké instance] + [počet vybraných oblastí] × [teplé instance] + [počet vybraných oblastí] x [studené instance] |
+| **Doba trvání testovacího disku\***   | Maximální doba trvání relace v hodinách Po uplynutí tohoto časového období se relace testovacího disku automaticky ukončí.  |
+|**Šablona ARM testovacích jednotek\***| Nahrajte šablonu Azure Resource Manager přidruženou k této testovací jednotce. Další informace najdete v tématu [transformace šablony nasazení virtuálního počítače pro Test Drive](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive). |
+| **Přístup k informacím\***    | Azure Resource Manager přístup a zkušební přihlašovací údaje, které jsou zapsané jako prostý text nebo jednoduché HTML. |
+| *Podrobnosti o předplatném nasazení testovacích jednotek* |  |
+| **ID předplatného Azure\*** | Lze získat přihlášením do [portál Microsoft Azure](https://ms.portal.azure.com) a kliknutím na **odběry** na levém řádku nabídek. (Příklad: "a83645ac-1234-5ab6-6789-1h234g764ghty")    Tento identifikátor by měl být identifikátor GUID formuláře `a83645ac-1234-5ab6-6789-1h234g764ghty`.|
+| **ID tenanta Azure AD\***    | Azure Active Directory ID tenanta.  Lze získat přihlášením do [portál Microsoft Azure](https://ms.portal.azure.com) a kliknutím na **Azure Active Directory** na levé panelu nabídek a následným kliknutím na položku **vlastnosti** v prostřední nabídce nabídek a zkopírováním **ID adresáře** z formuláře.  Tento identifikátor by měl také být identifikátor GUID.  Pokud je toto pole prázdné, musíte vytvořit ID tenanta pro vaši organizaci. |
+| **ID Aplikace Azure AD\***       | Identifikátor vašeho registrovaného řešení virtuálního počítače Azure  |
+| **Aplikace Azure AD klíč\***      | Ověřovací klíč pro vaše registrované řešení |
 |   |   |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Na další kartě [Marketplace](./cpp-marketplace-tab.md) poskytnete marketingové a právní informace o vašem řešení.
+Na další kartě [Marketplace](./cpp-marketplace-tab.md) budete poskytovat marketingové a právní informace o vašem řešení.

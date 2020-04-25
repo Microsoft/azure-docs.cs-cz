@@ -1,6 +1,6 @@
 ---
-title: Filtrování dat pomocí akcelerace dotazu Azure Data Lake Storage (preview) | Dokumenty společnosti Microsoft
-description: Pomocí akcelerace dotazu (preview) načtěte podmnožinu dat z účtu úložiště.
+title: Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů (Preview) | Microsoft Docs
+description: K načtení podmnožiny dat z vašeho účtu úložiště použijte akceleraci dotazů (Preview).
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,56 +8,56 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: ae3dfc7681ef0d8ce3fcf679bddbd0ff195f4e3b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 22776d9498676ec77cd71845ca5e39f01926259d
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81771843"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137565"
 ---
-# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Filtrování dat pomocí akcelerace dotazu Azure Data Lake Storage (preview)
+# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů (Preview)
 
-Tento článek ukazuje, jak pomocí akcelerace dotazu (preview) načíst podmnožinu dat z vašeho účtu úložiště. 
+V tomto článku se dozvíte, jak pomocí akcelerace dotazů (Preview) načíst podmnožinu dat z vašeho účtu úložiště. 
 
-Akcelerace dotazů (preview) je nová funkce pro Azure Data Lake Storage, která umožňuje aplikacím a analytickým rámcům výrazně optimalizovat zpracování dat načtením pouze dat, která potřebují k provedení dané operace. Další informace najdete v [tématu Azure Data Lake Storage Query Acceleration (preview).](data-lake-storage-query-acceleration.md)
+Akcelerace dotazů (Preview) je nová funkce pro Azure Data Lake Storage, která umožňuje aplikacím a analytickým architekturám významně optimalizovat zpracování dat tím, že načte jenom data, která potřebují k provedení dané operace. Další informace najdete v tématu [akcelerace dotazů Azure Data Lake Storage (Preview)](data-lake-storage-query-acceleration.md).
 
 > [!NOTE]
-> Funkce akcelerace dotazu je ve verzi Public Preview a je k dispozici v oblastech Kanada – střed a Francie – střed. Omezení najdete v článku [Známé problémy.](data-lake-storage-known-issues.md) Chcete-li se zaregistrovat do náhledu, přečtěte [si tento formulář](https://aka.ms/adls/qa-preview-signup).  
+> Funkce zrychlení dotazů je ve verzi Public Preview a je dostupná v oblastech Kanada – střed a Francie – střed. Chcete-li zkontrolovat omezení, přečtěte si článek [známé problémy](data-lake-storage-known-issues.md) . Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [Tento formulář](https://aka.ms/adls/qa-preview-signup).  
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-- Pro přístup k Azure Storage budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si před zahájením [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-- Účet úložiště **pro obecné účely v2.** viz [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
+- Účet úložiště pro **obecné účely v2** . viz [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
 
-- [Sada SDK .NET .](https://dotnet.microsoft.com/download) 
+- [sada .NET SDK](https://dotnet.microsoft.com/download). 
 
 ### <a name="java"></a>[Java](#tab/java)
 
-- Pro přístup k Azure Storage budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si před zahájením [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-- Účet úložiště **pro obecné účely v2.** viz [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
+- Účet úložiště pro **obecné účely v2** . viz [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
 
 - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) verze 8 nebo vyšší.
 
-- [Apache Maven](https://maven.apache.org/download.cgi). 
+- [Apache Maven](https://maven.apache.org/download.cgi) 
 
   > [!NOTE] 
-  > Tento článek předpokládá, že jste vytvořili projekt Java pomocí Apache Maven. Příklad vytvoření projektu pomocí Apache Maven najdete v [tématu Nastavení](storage-quickstart-blobs-java.md#setting-up).
+  > V tomto článku se předpokládá, že jste vytvořili projekt Java pomocí Apache Maven. Příklad toho, jak vytvořit projekt pomocí Apache Maven, najdete v tématu [Nastavení](storage-quickstart-blobs-java.md#setting-up).
   
 ---
 
-## <a name="install-packages"></a>Instalace balíčků 
+## <a name="install-packages"></a>Nainstalovat balíčky 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. Stáhněte balíčky akcelerace dotazu. Komprimovaný soubor ZIP, který obsahuje tyto balíčky, [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net)můžete získat pomocí tohoto odkazu: . 
+1. Stáhněte si balíčky pro zrychlení dotazů. Komprimovaný soubor zip, který obsahuje tyto balíčky, můžete získat pomocí tohoto odkazu: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net). 
 
 2. Extrahujte obsah tohoto souboru do adresáře projektu.
 
-3. Otevřete soubor projektu (*.csproj*) v textovém editoru \<a\> přidejte tyto odkazy na balíček uvnitř elementu Project.
+3. V textovém editoru otevřete soubor projektu (*. csproj*) a přidejte tyto odkazy na balíčky uvnitř elementu \<projektu.\>
 
    ```xml
    <ItemGroup>
@@ -67,7 +67,7 @@ Akcelerace dotazů (preview) je nová funkce pro Azure Data Lake Storage, která
    </ItemGroup>
    ```
 
-4. Obnovte balíčky sady Preview SDK. Tento příklad příkazu obnoví balíčky náhledu `dotnet restore` sady SDK pomocí příkazu. 
+4. Obnovte balíčky sady SDK pro Preview. Tento ukázkový příkaz obnoví balíčky sady SDK verze Preview pomocí `dotnet restore` příkazu. 
 
    ```console
    dotnet restore --source C:\Users\contoso\myProject
@@ -81,16 +81,16 @@ Akcelerace dotazů (preview) je nová funkce pro Azure Data Lake Storage, která
 
 ### <a name="java"></a>[Java](#tab/java)
 
-1. Vytvořte adresář v kořenovém adresáři projektu. Kořenový adresář je adresář, který obsahuje soubor **pom.xml.**
+1. Vytvořte adresář v kořenu projektu. Kořenový adresář je adresář, který obsahuje soubor **pom. XML** .
 
    > [!NOTE]
-   > Příklady v tomto článku předpokládají, že název adresáře je **lib**.
+   > V příkladech v tomto článku se předpokládá, že název adresáře je **lib**.
 
-2. Stáhněte balíčky akcelerace dotazu. Komprimovaný soubor ZIP, který obsahuje tyto balíčky, [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java)můžete získat pomocí tohoto odkazu: . 
+2. Stáhněte si balíčky pro zrychlení dotazů. Komprimovaný soubor zip, který obsahuje tyto balíčky, můžete získat pomocí tohoto odkazu: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java). 
 
-3. Extrahujte soubory v tomto souboru ZIP do adresáře, který jste vytvořili. V našem příkladu se tento adresář nazývá **lib**. 
+3. Extrahujte soubory v tomto souboru zip do adresáře, který jste vytvořili. V našem příkladu má tento adresář název **lib**. 
 
-4. Otevřete soubor *pom.xml* v textovém editoru. Přidejte následující prvky závislostí do skupiny závislostí. 
+4. V textovém editoru otevřete soubor *pom. XML* . Přidejte následující prvky závislosti do skupiny závislostí. 
 
    ```xml
    <!-- Request static dependencies from Maven -->
@@ -145,7 +145,7 @@ Akcelerace dotazů (preview) je nová funkce pro Azure Data Lake Storage, která
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Přidejte `using` tyto příkazy do horní části souboru kódu.
+Přidejte tyto `using` příkazy do horní části souboru kódu.
 
 ```csharp
 using Azure.Storage.Blobs;
@@ -155,14 +155,14 @@ using Azure.Storage.QuickQuery;
 using Azure.Storage.QuickQuery.Models;
 ```
 
-Akcelerace dotazu načte data ve formátu CSV a Json. Proto nezapomeňte přidat pomocí příkazů pro všechny knihovny analýzy CSV nebo Json, které se rozhodnete použít. Příklady, které se zobrazí v tomto článku analyzovat soubor CSV pomocí knihovny [CsvHelper,](https://www.nuget.org/packages/CsvHelper/) která je k dispozici na NuGet. Proto bychom přidat `using` tyto příkazy do horní části souboru kódu.
+Zrychlení dotazů načte data ve formátu CSV a JSON. Proto nezapomeňte přidat příkazy using pro jakékoli knihovny pro analýzu CSV nebo JSON, které se rozhodnete použít. Příklady, které se zobrazí v tomto článku, analyzují soubor CSV pomocí knihovny [CsvHelper](https://www.nuget.org/packages/CsvHelper/) , která je dostupná na NuGet. Proto přidáme tyto `using` příkazy do horní části souboru kódu.
 
 ```csharp
 using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-Chcete-li zkompilovat příklady uvedené v tomto `using` článku, budete také muset přidat tyto příkazy.
+Chcete-li zkompilovat příklady uvedené v tomto článku, budete také muset přidat i `using` tyto příkazy.
 
 ```csharp
 using System.Threading.Tasks;
@@ -174,7 +174,7 @@ using System.Linq;
 
 ### <a name="java"></a>[Java](#tab/java)
 
-Přidejte `import` tyto příkazy do horní části souboru kódu.
+Přidejte tyto `import` příkazy do horní části souboru kódu.
 
 ```java
 import com.azure.storage.blob.*;
@@ -190,15 +190,15 @@ import org.apache.commons.csv.*;
 
 ## <a name="retrieve-data-by-using-a-filter"></a>Načtení dat pomocí filtru
 
-Sql můžete použít k určení predikáty filtru řádků a projekce sloupců v požadavku akcelerace dotazu. Následující kód se dotazuje souboru CSV v úložišti a vrátí `Hemingway, Ernest`všechny řádky dat, kde třetí sloupec odpovídá hodnotě . 
+Pomocí jazyka SQL můžete zadat predikáty filtru řádků a projekce sloupců v požadavku na zrychlení dotazu. Následující kód odešle dotaz do souboru CSV v úložišti a vrátí všechny řádky dat, kde třetí sloupec odpovídá hodnotě `Hemingway, Ernest`. 
 
-- V dotazu SQL `BlobStorage` klíčové slovo slouží k označení souboru, který je dotazován.
+- V dotazu SQL se klíčové slovo `BlobStorage` používá k označení souboru, na který se dotazuje.
 
-- Odkazy na sloupce `_N` jsou určeny `_1`jako místo, kde je první sloupec . Pokud zdrojový soubor obsahuje řádek záhlaví, můžete odkazovat na sloupce podle názvu, který je zadán v řádku záhlaví. 
+- Odkazy na sloupce jsou zadány jako `_N` v případě prvního `_1`sloupce. Pokud zdrojový soubor obsahuje řádek záhlaví, můžete odkazovat na sloupce podle názvu, který je uveden v řádku záhlaví. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Asynchronní `BlobQuickQueryClient.QueryAsync` metoda odešle dotaz do rozhraní API akcelerace dotazu a potom streamuje výsledky zpět do aplikace jako objekt [Stream.](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8)
+Asynchronní metoda `BlobQuickQueryClient.QueryAsync` pošle dotaz do rozhraní API zrychlení dotazů a potom streamuje výsledky zpátky do aplikace jako objekt [streamu](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8) .
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -260,7 +260,7 @@ class ProgressHandler : IProgress<long>
 
 ### <a name="java"></a>[Java](#tab/java)
 
-Metoda `BlobQuickQueryClient.openInputStream()` odešle dotaz do rozhraní API akcelerace dotazu a potom `InputStream` streamuje výsledky zpět do aplikace jako objekt, který lze číst jako jakýkoli jiný objekt InputStream.
+Metoda `BlobQuickQueryClient.openInputStream()` pošle dotaz do rozhraní API pro zrychlení dotazování a poté streamuje výsledky zpátky do aplikace jako `InputStream` objekt, který lze číst stejně jako jakýkoli jiný objekt InputStream.
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -314,9 +314,9 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
 
 ## <a name="retrieve-specific-columns"></a>Načíst konkrétní sloupce
 
-Výsledky můžete oborovat na podmnožinu sloupců. Tímto způsobem načtete pouze sloupce potřebné k provedení daného výpočtu. To zlepšuje výkon aplikace a snižuje náklady, protože méně dat se přenáší v síti. 
+Můžete nastavit rozsah výsledků na podmnožinu sloupců. Tímto způsobem načtete pouze sloupce potřebné k provedení daného výpočtu. To zlepšuje výkon aplikace a snižuje náklady, protože v síti je přenášeno méně dat. 
 
-Tento kód načte `PublicationYear` pouze sloupec pro všechny knihy v datové sadě. Používá také informace z řádku záhlaví ve zdrojovém souboru k odkazování na sloupce v dotazu.
+Tento kód načte pouze `PublicationYear` sloupec pro všechny knihy v sadě dat. Používá také informace z řádku záhlaví ve zdrojovém souboru pro odkaz na sloupce v dotazu.
 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
@@ -341,7 +341,7 @@ static void QueryPublishDates(BlobClient blobClient)
 
 ---
 
-Následující kód kombinuje filtrování řádků a projekce sloupců do stejného dotazu. 
+Následující kód kombinuje filtrování řádků a sloupcové projekce do stejného dotazu. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -367,7 +367,6 @@ static void QueryMysteryBooks(BlobClient blobClient)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Formulář pro zápis akcelerace dotazu](https://aka.ms/adls/queryaccelerationpreview)    
-- [Akcelerace dotazu Azure Data Lake Storage (preview)](data-lake-storage-query-acceleration.md)
-- [Referenční příručka jazyka SQL akcelerace dotazu (náhled)](query-acceleration-sql-reference.md)
-- Odkaz na rozhraní REST API akcelerace dotazu
+- [Registrační formulář pro dotaz na zrychlení](https://aka.ms/adls/queryaccelerationpreview)    
+- [Akcelerace dotazů Azure Data Lake Storage (Preview)](data-lake-storage-query-acceleration.md)
+- [Referenční dokumentace jazyka SQL pro zrychlení dotazů (Preview)](query-acceleration-sql-reference.md)

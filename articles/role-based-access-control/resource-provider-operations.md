@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 61fb8b53d7d109fefc002b387702a240353f0dca
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: bfe0c6fcc0d1d22807bfb59b146050fb307892a0
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82117603"
+ms.locfileid: "82133162"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager operace poskytovatele prostředků
 
@@ -4284,7 +4284,7 @@ Služba Azure: [Event Grid](../event-grid/index.yml)
 > |  | **domény/privateLinkResources** |  |
 > | Akce | Microsoft. EventGrid/doméns/privateLinkResources/Read | Získá nebo zobrazí seznam PrivateLinkResources pro domény. |
 > |  | **domény/zprostředkovatelé/Microsoft. Insights/logDefinitions** |  |
-> | Akce | Microsoft. EventGrid/doméns/Providers/Microsoft. Insights/logDefinitions/Read | Povolit přístup k diagnostickým protokolům |
+> | Akce | Microsoft. EventGrid/doméns/Providers/Microsoft. Insights/logDefinitions/Read | Umožňuje přístup k protokolům prostředků. |
 > |  | **domény/zprostředkovatelé/Microsoft. Insights/metricDefinitions** |  |
 > | Akce | Microsoft. EventGrid/doméns/Providers/Microsoft. Insights/metricDefinitions/Read | Získá dostupné metriky pro domény. |
 > |  | **domény a témata** |  |
@@ -4352,7 +4352,7 @@ Služba Azure: [Event Grid](../event-grid/index.yml)
 > | Akce | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro systémová témata. |
 > | Akce | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro systémová témata. |
 > |  | **systemTopics/Providers/Microsoft. Insights/logDefinitions** |  |
-> | Akce | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/logDefinitions/Read | Povolit přístup k diagnostickým protokolům |
+> | Akce | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/logDefinitions/Read | Umožňuje přístup k protokolům prostředků. |
 > |  | **systemTopics/Providers/Microsoft. Insights/metricDefinitions** |  |
 > | Akce | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/metricDefinitions/Read | Získá dostupné metriky pro systémová témata. |
 > |  | **popisující** |  |
@@ -4376,7 +4376,7 @@ Služba Azure: [Event Grid](../event-grid/index.yml)
 > | Akce | Microsoft. EventGrid/témata/zprostředkovatelé/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro témata. |
 > | Akce | Microsoft. EventGrid/témata/zprostředkovatelé/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro témata. |
 > |  | **témata/poskytovatelé/Microsoft. Insights/logDefinitions** |  |
-> | Akce | Microsoft. EventGrid/témata/zprostředkovatelé/Microsoft. Insights/logDefinitions/Read | Povolit přístup k diagnostickým protokolům |
+> | Akce | Microsoft. EventGrid/témata/zprostředkovatelé/Microsoft. Insights/logDefinitions/Read | Umožňuje přístup k protokolům prostředků. |
 > |  | **témata/poskytovatelé/Microsoft. Insights/metricDefinitions** |  |
 > | Akce | Microsoft. EventGrid/témata/zprostředkovatelé/Microsoft. Insights/metricDefinitions/Read | Získá dostupné metriky pro témata. |
 > |  | **topictypes** |  |

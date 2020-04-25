@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 73f79145f63e0d8afee7596f1f8231a054ef1c2e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: a407461e20eefe29dd410ac6ed547b33287a5be8
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82097689"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145416"
 ---
 # <a name="troubleshoot-runbook-errors"></a>Řešení chyb Runbooku
 
@@ -180,11 +180,11 @@ At line:16 char:1
 
 ### <a name="cause"></a>Příčina
 
-Tato chyba je způsobená použitím rutin AzureRM a AZ Module v sadě Runbook. K tomu dojde, když naimportujete modul AZ před importem modulu AzureRM.
+Tato chyba je pravděpodobně způsobena použitím neúplné migrace z AzureRM k AZ moduls v Runbooku. To může způsobit, že Azure Automation spustit úlohu Runbooku jenom pomocí modulů AzureRM, potom spustit jinou úlohu pomocí jenom AZ modules, což vede k chybě izolovaného prostoru (sandbox). 
 
 ### <a name="resolution"></a>Řešení
 
-Rutiny AZ a AzureRM se nedají importovat a používat ve stejné sadě Runbook. Další informace o AZ rutinách v Azure Automation najdete v tématu [Správa modulů v Azure Automation](../shared-resources/modules.md).
+Nedoporučujeme používat rutiny AZ a AzureRM ve stejné sadě Runbook. Další informace o správném používání těchto modulů najdete v tématu [migrace na az modules](../shared-resources/modules.md#migrating-to-az-modules).
 
 ## <a name="scenario-the-runbook-fails-with-the-error-a-task-was-canceled"></a><a name="task-was-cancelled"></a>Scénář: sada Runbook se nezdařila s chybou: úloha byla zrušena.
 
@@ -581,7 +581,7 @@ Tuto chybu můžete vyřešit dvěma způsoby.
 * Místo použití funkce [Start-Job](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)použijte příkaz [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) a spusťte sadu Runbook.
 * Zkuste spustit Runbook na Hybrid Runbook Worker.
 
-Další informace o tomto chování a dalších chování sady Runbook Azure Automation naleznete v tématu [chování sady Runbook](../automation-runbook-execution.md#runbook-behavior).
+Další informace o tomto chování a dalších chování sady Runbook Azure Automation naleznete v tématu [spuštění sady Runbook v Azure Automation](../automation-runbook-execution.md).
 
 ## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>Scénář: Linux Hybrid Runbook Worker při podepisování Runbooku zobrazit výzvu k zadání hesla
 
@@ -645,11 +645,11 @@ Možné příčiny tohoto problému:
 
 #### <a name="not-using-run-as-account"></a>Nepoužívat účet Spustit jako
 
-Postupujte podle kroků v [kroku 5 – přidání ověřování pro správu prostředků Azure](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) , abyste měli jistotu, že používáte účet Spustit jako pro přístup k Key Vault. 
+Postupujte podle [kroku 5 – přidejte ověřování pro správu prostředků Azure](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) , abyste měli jistotu, že používáte účet Spustit jako pro přístup k Key Vault. 
 
 #### <a name="insufficient-permissions"></a>Nedostatečná oprávnění
 
-Postupujte podle kroků v [Přidání oprávnění Key Vault](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) , abyste zajistili, že účet Spustit jako má dostatečná oprávnění pro přístup k Key Vault. 
+[Přidejte oprávnění pro Key Vault](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) , abyste měli jistotu, že účet Spustit jako má dostatečná oprávnění pro přístup k Key Vault. 
 
 ## <a name="my-problem-isnt-listed-above"></a><a name="other"></a>Můj problém není uvedený výše.
 
@@ -669,7 +669,7 @@ Nápovědu k předávání parametrů do webhooků najdete v tématu [Spuštěn�
 
 ### <a name="issues-using-az-modules"></a>Problémy s použitím AZ modules
 
-Použití AZ modules a AzureRM modulů ve stejném účtu Automation se nepodporuje. Další podrobnosti najdete v tématu [AZ modules in Runbooky](https://docs.microsoft.com/azure/automation/az-modules) .
+Použití nedokončené migrace modulů Runbooku z AzureRM na az může způsobit chyby izolovaného prostoru a selhání Runbooku. Viz [použití modulů ve vašich sadách Runbook](../automation-runbook-execution.md#using-modules-in-your-runbooks).
 
 ### <a name="inconsistent-behavior-in-runbooks"></a>Nekonzistentní chování runbooků
 
@@ -688,10 +688,6 @@ Postupujte podle pokynů v části [Spuštění Runbooku](https://docs.microsoft
 
 Nápovědu k předávání parametrů do webhooků najdete v tématu [Spuštění runbooku z Webhooku](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters-used-when-the-webhook-starts-a-runbook).
 
-### <a name="using-az-modules"></a>Používání modulů Az
-
-Použití AZ modules a AzureRM modulů ve stejném účtu Automation se nepodporuje. Viz [AZ modules in runbookys](https://docs.microsoft.com/azure/automation/az-modules).
-
 ### <a name="using-self-signed-certificates"></a>Používání certifikátů podepsaných svým držitelem
 
 Pokud chcete používat certifikáty podepsané svým držitelem, přečtěte si téma [Vytvoření nového certifikátu](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate).
@@ -702,6 +698,7 @@ Izolovaný prostor Azure zabraňuje přístupu ke všem nezpracovaným serverům
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty
 
+* [Spouštění runbooků ve službě Azure Automation](../automation-runbook-execution.md)
 * [Spuštění Runbooku v Azure Automation](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
 * [Spouštění runbooků ve službě Azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 

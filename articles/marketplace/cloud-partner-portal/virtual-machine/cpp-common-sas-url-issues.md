@@ -1,35 +1,35 @@
 ---
-title: Běžné problémy s adresou URL a opravy SAS pro Azure Marketplace
-description: Seznam běžných problémů týkajících se používání identifikátorů URI se sdíleným podpisem a možných řešení.
+title: Běžné problémy s adresou URL SAS a opravy pro Azure Marketplace
+description: Seznamte se s běžnými problémy s používáním identifikátorů URI sdíleného přístupového podpisu a možných řešení.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/27/2018
 ms.author: dsindona
-ms.openlocfilehash: c575389538230218e1e6e4f172ebcfbee8ee51dc
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 723762695d34380b7f237fa9082dc470dafcc8df
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273456"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147051"
 ---
-# <a name="common-sas-url-issues-and-fixes"></a>Běžné problémy a opravy adres URL s pomocí SAS
+# <a name="common-sas-url-issues-and-fixes"></a>Běžné problémy s adresou URL SAS a opravy
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [běžných problémech s adresou URL a opravách spravovaných](https://aka.ms/AzureSAS_URL_FAQ) nabídek.
+> Od 13. dubna 2020 začneme přesouvat správu nabídek virtuálních počítačů Azure do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Pokud chcete spravovat migrované nabídky, postupujte podle pokynů v tématu [běžné problémy s adresou URL SAS a opravy](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues) .
 
-V následující tabulce jsou uvedeny některé běžné problémy, ke kterým došlo při práci se sdílenými přístupovými podpisy (které slouží k identifikaci a sdílení nahraných virtuálních discích pro vaše řešení) spolu s navrhovanými řešeními.
+V následující tabulce jsou uvedené některé běžné problémy, ke kterým došlo při práci se sdílenými přístupovými podpisy (které slouží k identifikaci a sdílení nahraných virtuálních pevných disků pro vaše řešení) spolu s navrhovanými řešeními.
 
-| **Problém** | **Zpráva o selhání** | **Oprava** | 
+| **Chybu** | **Zpráva o chybě** | **Oprava** | 
 | --------- | ------------------- | ------- | 
-| &emsp;  *Selhání kopírování obrázků* |  |  |
-| "?" není nalezen v adrese URL SAS | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Aktualizujte adresu URL SAS pomocí doporučených nástrojů. |
-| parametry "st" a "se" nejsou v adrese URL SAS | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Aktualizujte adresu URL SAS pomocí správných hodnot **Počáteční datum** a **Koncové datum.** | 
-| "sp=rl" není v adrese URL SAS | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | Aktualizujte adresu URL SAS `Read` `List`s oprávněními nastavenými jako a . | 
-| Adresa URL SAS má mezery v názvu virtuálního pevného disku | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Aktualizujte adresu URL SAS a odeberte mezery. |
-| Chyba autorizace adresy URL sas | `Failure: Copying Images. Not able to download blob due to authorization error` | Zkontrolujte a opravte formát identifikátoru URI SAS. V případě potřeby regenerovat. |
-| Parametry adresy URL SAS "st" a "se" nemají úplnou specifikaci data a času | `Failure: Copying Images. Not able to download blob due to incorrect SAS URL` | Parametry **Počáteční datum** a **Koncové** `st` datum `se` adresy SAS ( a podřetězce) musí `11-02-2017T00:00:00Z`mít úplný formát datatime, například . Zkrácené verze nejsou platné. (Některé příkazy v azure cli může generovat zkrácené hodnoty ve výchozím nastavení.) | 
+| &emsp;  *Selhání při kopírování imagí* |  |  |
+| znak "?" se v adrese URL SAS nenašel. | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Aktualizujte adresu URL SAS pomocí doporučených nástrojů. |
+| parametry "St" a "se" v adrese URL SAS nejsou | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Aktualizujte adresu URL SAS pomocí správného **počátečního data** a hodnot **koncového data** . | 
+| "SP = RL" není adresa URL SAS | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | Aktualizujte adresu URL SAS pomocí nastavení oprávnění `Read` nastaveného jako a `List`. | 
+| Adresa URL SAS obsahuje v názvu virtuálního pevného disku prázdné znaky | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Aktualizujte adresu URL SAS tak, aby se odebraly prázdné znaky. |
+| Chyba autorizace adresy URL SAS | `Failure: Copying Images. Not able to download blob due to authorization error` | Zkontrolujte a opravte formát identifikátoru URI SAS. V případě potřeby znovu vygenerujte. |
+| Parametry adresy URL SAS "St" a "se" neobsahují úplné specifikace data a času. | `Failure: Copying Images. Not able to download blob due to incorrect SAS URL` | `st` Parametry `se` `11-02-2017T00:00:00Z` **počátečního** a **koncového data** adresy URL SAS jsou požadovány pro úplný formát data a času, například. Zkrácené verze jsou neplatné. (Některé příkazy v Azure CLI můžou ve výchozím nastavení generovat zkrácené hodnoty.) | 
 |  |  |  |
 
-Další informace naleznete [v tématu Použití sdílených přístupových podpisů (SAS).](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)
+Další informace najdete v tématu [použití sdílených přístupových podpisů (SAS)](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/).

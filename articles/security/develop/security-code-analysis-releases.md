@@ -1,10 +1,10 @@
 ---
-title: Verze analýzy bezpečnostního kódu společnosti Microsoft
-description: Tento článek popisuje nadcházející verze rozšíření Microsoft Security Code Analysis
+title: Microsoft Security Code Analysis – vydání
+description: Tento článek popisuje nadcházející vydání rozšíření služby Microsoft Security Code Analysis.
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 04/14/2020
+ms.date: 04/24/2020
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,63 +12,63 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a07ce7437d664baca0cfdc310dbc2631f41fdbcc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: d4281d3b6132e551283a71cd1801ef462fbfc68c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81462032"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146127"
 ---
-# <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Verze a plán analýzy bezpečnostního kódu společnosti Microsoft
+# <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Microsoft Security Code Analysis – vydání a plán
 
-Tým pro analýzu bezpečnostního kódu společnosti Microsoft ve spolupráci s podporou vývojářů s potěšením oznamuje nejnovější a nadcházející vylepšení našeho rozšíření MSCA. Viz plán níže.
+Tým Microsoft Security Code Analysis je v partnerství s Developer Support hrdým k oznámení nejnovějších a nadcházejících vylepšení našeho rozšíření MSCA. Přečtěte si prosím následující přehled.
 
 ![Vydání](./media/security-code-analysis-releases/releases.png)
 
-## <a name="credential-scanner-v20-released-on-april-1-2020"></a>Credential Scanner v2.0: Vydáno 1.
+## <a name="credential-scanner-v20-released-in-april-2020"></a>Credential Scanner v 2.0: vydaný v dubnu 2020
 
-### <a name="innovations--improvements"></a>Inovace & zlepšení
+### <a name="innovations--improvements"></a>Inovace & vylepšení
 
-- **Základní motor**
+- **Základní modul**
 
-   - Průměrný výkon upgrade 25% s téměř lineární doby chodu
-   - Kontextové/důkazní vyhledávání a hodnocení pro zvýšení přesnosti
-   - Vylepšení obecných detekcí hesel a logiky párování pro zřejmé zástupné symboly (například fakePassword)
+   - Průměrná aktualizace výkonu 25% s téměř lineárním časem běhu
+   - Vyhledávání a hodnocení na základě kontextu nebo legitimace na vyšší přesnost
+   - Vylepšení obecného zjišťování hesel a srovnávací logiky pro zjevné zástupné symboly (například fakePassword)
 
-- **Pokrytí** - Podpora pro 25 + tajné typy, včetně následujících top požadované:
+- **Pokrytí** – podpora pro 25 a více tajných typů, včetně následujícího shora vyžádaného:
 
-   - Přístupové heslo certifikátu účtu Fabric
-   - Tajný klíč klienta/klíč rozhraní API
-   - Hlavička autorizace protokolu HTTP
-   - Amazon S3 Klient tajný přístupový klíč
-   - Token klientského přístupu služby Azure Active Directory
-   - Klíč hlavního serveru funkcí a rozhraní API Azure
-   - Přístupový klíč Power BI
-   - Vzor hesla šablony Správce prostředků Azure
+   - Přístupové heslo k certifikátu účtu Fabric
+   - Tajný kód klienta/klíč rozhraní API
+   - Autorizační hlavička protokolu HTTP
+   - Přístupový klíč ke tajnému kódu klienta Amazon S3
+   - Azure Active Directory tokenu klientského přístupu
+   - Azure Function Master/klíč rozhraní API
+   - Power BI přístupový klíč
+   - Vzor hesla pro šablonu Azure Resource Manager
 
 - **Výstupy**
 
-   - Podpora formátů výstupních souborů souborů SARIF 2.1 a CSV
+   - Podpora pro formáty souborů výstupu SARIF 2,1 a CSV
 
-## <a name="binskim-v160-to-be-released-on-april-2020"></a>BinSkim v1.6.0: Bude vydánv dubnu 2020
+## <a name="binskim-v160-released-in-april-2020"></a>BinSkim v 1.6.0: vydáno v dubnu 2020
 
-### <a name="improvements"></a>Zlepšení
+### <a name="improvements"></a>Vylepšen
 
-- FUNKCE: Aktualizace konečného SARIF v2 (verze 2.1.16). To umožňuje výsledky ukládání do mezipaměti při předávání --hashes na příkazovém řádku, významné zlepšení výkonu při rekurzivně analýze adresářů s více kopiemi cílů prohledávání.
-- OPRAVA CHYBY: Oprava překlepu v BA2021. DoNotMarkWritableSectionsAsExecutable výstup.
-- VÝKON: Eliminujte načítání PDB pro všechny nesmíšené režimy pro spravované sestavení, včetně knihovny IL (předem kompilované) binárních souborů.
-- FALSE NEGATIVE FIX: Ověřte, zda pdb umístěný vedle binárního souboru skutečně odpovídá binárnímu souboru v analýze
-- FUNKCE: Zadejte argument --local-symbol-directories pro určení dalších (místních, nesymbol-serverových) umístění vyhledávání PDB
-- FALSE POSITIVE FIX: Přeskočit analýzu řízenou PDB pro generovaný nativní bootin exe jádra .NET (což není uživatelsky kontrolovatelný kód).
+- FUNKCE: aktualizujte na finální SARIF v2 (verze 2.1.16). To umožňuje ukládání výsledků do mezipaměti při předávání--hash na příkazovém řádku, což je výrazné zlepšení výkonu při rekurzivní analýze adresářů s více kopiemi cílů skenování.
+- Oprava chyby: Opravte překlep v BA2021. DoNotMarkWritableSectionsAsExecutable výstup.
+- VÝKON: Eliminujte načítání PDB pro všechny mimo smíšený režim pro spravovaná sestavení, včetně knihovny IL (předem kompilovaných) binárních souborů.
+- Nepravdivá ZÁPORNÁ Oprava: Ověřte, že soubor PDB umístěný společně s binárním souborem se ve skutečnosti shoduje s binárním souborem v analýze.
+- FUNKCE: zadáním argumentu--Local-symbol-directorys zadejte další (místní, nesymbolové) umístění pro hledání PDB.
+- FALEŠNě pozitivní Oprava: přeskočit analýzu založenou na PDB pro vygenerovaný spustitelný soubor .NET Core Native Bootstrap (který není uživatelsky ovladatelného kódu).
 
-## <a name="whats-next-in-fy20"></a>Co bude dál v FY20?
+## <a name="whats-next-in-fy20"></a>Co dál v FY20?
 
-- Nástroj java bezpečnostní analýzy
-- Nástroj analýza zabezpečení Pythonu
-- ES Lint nahradit TS Lint pro TypeScript a JavaScript
+- Nástroj Java Security Analysis
+- Nástroj pro analýzu zabezpečení Pythonu
+- ES Lint nahrazení TS Lint pro TypeScript a JavaScript
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokyny k připojení a instalaci analýzy kódu zabezpečení společnosti Microsoft naleznete [v příručce Onboarding and Installation Guide](security-code-analysis-onboard.md).
+Pokyny, jak připojit a nainstalovat Microsoft Security Code Analysis, najdete v naší [příručce k registraci a instalaci](security-code-analysis-onboard.md).
 
-Máte-li další dotazy týkající se rozšíření a nabízených nástrojů, podívejte se na naši [stránku faq](security-code-analysis-faq.md).
+Pokud máte další dotazy týkající se rozšíření a nabízených nástrojů, podívejte se na naše [Časté stránky Nejčastější dotazy](security-code-analysis-faq.md).

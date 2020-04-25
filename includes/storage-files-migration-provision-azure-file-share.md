@@ -1,40 +1,40 @@
 ---
-title: Důležité informace pro zřizování sdílených složek Azure.
-description: Zřizování sdílených složek Azure pro použití s Azure File Sync. Běžný textový blok sdílený mezi dokumenty migrace.
+title: Pokyny pro zřizování sdílených složek Azure
+description: Zřídí sdílené složky Azure pro použití s Azure File Sync. Společný textový blok sdílený v rámci migračních dokumentů.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 8cb398d1b1ec14f52d9c5fa5c122dc2e4ba4376d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d48baba5ee60a2bf5a4cb5e4d1ce840fce8eec43
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78209425"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143579"
 ---
-Sdílená složka Azure se ukládá v cloudu v účtu úložiště Azure.
-Je zde další úroveň výkonu aspekty zde.
+Sdílená složka Azure je uložená v cloudu v účtu úložiště Azure.
+Tady je další úroveň problémů s výkonem.
 
-Pokud máte vysoce aktivní sdílené složky – sdílené složky používané mnoha uživateli nebo aplikacemi, pak dvě sdílené složky Azure mohou dosáhnout limitu výkonu účtu úložiště.
+Pokud máte vysoce aktivní sdílené složky (sdílené položky používá mnoho uživatelů nebo aplikací), může se stát, že dvě sdílené složky Azure dosáhnou limitu výkonu účtu úložiště.
 
-Osvědčeným postupem je nasazení účtů úložiště s jedním souborem sdílené složky.
-Do stejného účtu úložiště můžete sdružovat více sdílených složek Azure v případě, že máte archivní sdílené složky nebo očekáváte v nich nízkou každodenní aktivitu.
+Osvědčeným postupem je nasazování účtů úložiště s jednou sdílenou složkou.
+Můžete seskupit více sdílených složek Azure do stejného účtu úložiště pro případ, že máte archivované sdílené složky nebo v nich očekáváte nízkou denní aktivitu.
 
-Tyto aspekty platí více pro přímý přístup ke cloudu (prostřednictvím virtuálního počítače Azure) než platí pro Azure File Sync. Pokud máte v plánu používat azure file sync jenom na těchto sdílených složek, pak seskupení několik do jednoho účtu úložiště Azure je v pořádku.
+Tyto požadavky se vztahují i na přímý přístup do cloudu (přes virtuální počítač Azure) než Azure File Sync. Pokud plánujete použít Azure File Sync jenom na těchto sdílených složkách, je v pořádku seskupení několika do jednoho účtu Azure Storage.
 
-Pokud jste vytvořili seznam sdílených složek, měli byste každou sdílenou složku namapovat na účet úložiště, ve které budou umístěny.
+Pokud jste vytvořili seznam sdílených složek, měli byste namapovat každou sdílenou složku na účet úložiště, ve kterém se bude nacházet.
 
-V předchozí fázi jste určili příslušný počet akcií. V tomto kroku jste vytvořili mapování účtů úložiště pro sdílení souborů. Nasaďte nyní příslušný počet účtů úložiště Azure s příslušným počtem sdílených složek Azure v nich.
+V předchozí fázi jste určili odpovídající počet sdílených složek. V tomto kroku máte vytvořenou mapování účtů úložiště ke sdíleným složkám souborů. Nyní nasaďte příslušný počet účtů služby Azure Storage s příslušným počtem sdílených složek Azure v těchto souborech.
 
-Ujistěte se, že oblast každého z vašich účtů úložiště je stejná a odpovídá oblasti prostředku služby Synchronizace úložiště, kterou jste už nasadili.
+Ujistěte se, že je oblast každého účtu úložiště stejná a odpovídá oblasti prostředku služby synchronizace úložiště, který jste už nasadili.
 
 > [!CAUTION]
-> Pokud vytvoříte 100 TiB limit sdílené složky Azure, tato sdílená složka můžete použít pouze místně redundantní úložiště nebo zóny redundantní možnosti redundance úložiště. Před použitím 100 sdílených složek TiB zvažte potřeby redundance úložiště.
+> Pokud vytvoříte sdílenou složku Azure, která má limit 100-TiB, může tato sdílená složka používat jenom místně redundantní úložiště nebo redundantní možnosti redundance úložiště v zóně. Než začnete používat 100-TiB sdílené složky, zvažte vaše potřeby redundance úložiště.
 
-Sdílené složky Azure se stále vytvářejí s limitem 5 TiB ve výchozím nastavení. Vzhledem k tomu, že vytváříte nové účty úložiště, nezapomeňte podle [pokynů vytvořit účty úložiště, které umožňují sdílené složky Azure s omezeními 100 TiB](../articles/storage/files/storage-files-how-to-create-large-file-share.md).
+Ve výchozím nastavení se sdílené složky Azure pořád vytváří s limitem 5 TiB. Vzhledem k tomu, že vytváříte nové účty úložiště, nezapomeňte postupovat podle [pokynů k vytvoření účtů úložiště, které umožňují sdílené složky Azure s omezením 100 – TIB](../articles/storage/files/storage-files-how-to-create-large-file-share.md).
 
-Dalším aspektem při nasazování účtu úložiště je redundance úložiště Azure. Viz: [Možnosti redundance azure úložiště](../articles/storage/common/storage-redundancy.md).
+Další aspekty při nasazení účtu úložiště je redundance Azure Storage. Informace najdete v tématu [Azure Storage možností redundance](../articles/storage/common/storage-redundancy.md).
 
-Názvy prostředků jsou také důležité. Pokud například seskupíte více sdílených složek pro oddělení lidských zdrojů do účtu úložiště Azure, měli byste účet úložiště odpovídajícím způsobem pojmenovat. Podobně při pojmenování sdílených složek Azure byste měli používat názvy podobné těm, které se používají pro jejich místní protějšky.
+Názvy vašich prostředků jsou také důležité. Pokud například seskupete pro personální oddělení více sdílených složek do účtu služby Azure Storage, měli byste účet úložiště pojmenovat správně. Podobně při pojmenovávání sdílených složek Azure byste měli používat názvy podobné těm, které se používají pro místní protějšky.

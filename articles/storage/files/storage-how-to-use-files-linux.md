@@ -1,34 +1,34 @@
 ---
-title: Používání souborů Azure s Linuxem | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak připojit sdílenou složku Azure přes SMB na Linuxu.
+title: Použití souborů Azure se systémem Linux | Microsoft Docs
+description: Zjistěte, jak připojit sdílenou složku Azure přes protokol SMB v systému Linux.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 72264755d5f0379f0ffb07852f48885126a36898
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: fcc9876caf0c002650ab30b7eaed7dc44e2f135e
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411605"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137735"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
-Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure lze připojit v linuxových distribucích pomocí [klienta jádra SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby připojení sdílené složky `mount` Azure: on-demand s `/etc/fstab`příkazem a na startu vytvořením položky v .
+Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v rámci distribucí systému Linux pomocí [klienta jádra protokolu SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí `mount` příkazu a po spuštění vytvořením položky v. `/etc/fstab`
 
-Doporučený způsob připojení sdílené složky Azure na Linuxu používá SMB 3.0. Ve výchozím nastavení vyžadují soubory Azure šifrování při přenosu, které podporuje jenom SMB 3.0. Azure Files také podporuje SMB 2.1, který nepodporuje šifrování při přenosu, ale nemusí připojit sdílené složky Azure s SMB 2.1 z jiné oblasti Azure nebo místní z bezpečnostních důvodů. Pokud vaše aplikace výslovně vyžaduje SMB 2.1, není mnoho důvodů, proč ji používat, protože nejoblíbenější, nedávno vydané distribuce Linuxu podporují SMB 3.0:  
+Doporučený způsob, jak připojit sdílenou složku Azure v systému Linux, je použití protokolu SMB 3,0. Ve výchozím nastavení služba soubory Azure vyžaduje šifrování při přenosu, který podporuje jenom SMB 3,0. Soubory Azure také podporují protokol SMB 2,1, který nepodporuje šifrování při přenosu, ale sdílené složky Azure se službou SMB 2,1 nemůžete z jiných oblastí Azure nebo z místního prostředí připojit z důvodů zabezpečení. Pokud vaše aplikace konkrétně nevyžaduje protokol SMB 2,1, existuje málo důvodů, proč byste ji měli použít od většiny oblíbených, nedávno vydaných distribucí Linux podporuje SMB 3,0:  
 
-| | SMB 2.1 <br>(Připojení na virtuálních počítačích ve stejné oblasti Azure) | SMB 3.0 <br>(Montuje z místních a mezioblastových) |
+| | SMB 2.1 <br>(Připojení k virtuálním počítačům ve stejné oblasti Azure) | SMB 3.0 <br>(Připojení z místního prostředí a mezi oblastmi) |
 | --- | :---: | :---: |
-| Ubuntu | 14.04+ | 16.04+ |
-| Red Hat Enterprise Linux (RHEL) | 7+ | 7,5+ |
-| CentOS | 7+ |  7,5+ |
-| Debian | 8+ | 10+ |
-| openSUSE | 13.2+ | 42.3+ |
-| SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
+| Ubuntu | 14.04 + | 16.04 + |
+| Red Hat Enterprise Linux (RHEL) | 7 + | 7.5 + |
+| CentOS | 7 + |  7.5 + |
+| Debian | 8 + | 10+ |
+| openSUSE | 13.2 + | 42.3 + |
+| SUSE Linux Enterprise Server | 12+ | 12 SP3 + |
 
-Pokud používáte linuxovou distribuci, která není uvedena ve výše uvedené tabulce, můžete zkontrolovat, zda vaše linuxová distribuce podporuje SMB 3.0 s šifrováním kontrolou verze jádra Linuxu. SMB 3.0 s šifrováním byl přidán do jádra Linuxu verze 4.11. Příkaz `uname` vrátí verzi linuxového jádra v provozu:
+Pokud používáte distribuci systému Linux, která není uvedená v předchozí tabulce, můžete zjistit, jestli vaše distribuce systému Linux podporuje protokol SMB 3,0 se šifrováním, a to kontrolou verze jádra systému Linux. SMB 3,0 se šifrováním bylo přidáno do jádra Linux verze 4,11. `uname` Příkaz vrátí verzi používaného jádra systému Linux:
 
 ```bash
 uname -r
@@ -37,17 +37,17 @@ uname -r
 ## <a name="prerequisites"></a>Požadavky
 <a id="smb-client-reqs"></a>
 
-* <a id="install-cifs-utils"></a>**Ujistěte se, že je nainstalován balíček cifs-utils.**  
-    Balíček cifs-utils lze nainstalovat pomocí správce balíčků na linuxové distribuci podle vašeho výběru. 
+* <a id="install-cifs-utils"></a>**Ujistěte se, že je nainstalovaný balíček CIFS-util.**  
+    Balíček CIFS-utils se dá nainstalovat pomocí Správce balíčků na distribuci v systému Linux podle vašeho výběru. 
 
-    Na distribucích založených na `apt` **Ubuntu** a **Debianu** použijte správce balíčků:
+    V **Ubuntu** distribucích **založených** na Ubuntu a Debian použijte správce `apt` balíčků:
 
     ```bash
     sudo apt update
     sudo apt install cifs-utils
     ```
 
-    Na **Fedoři**, **Red Hat Enterprise Linux 8+** a `dnf` **CentOS 8 +** použijte správce balíčků:
+    V **Fedora** **Red Hat Enterprise Linux 8 +** a **CentOS 8 +** použijte správce `dnf` balíčků:
 
     ```bash
     sudo dnf install cifs-utils
@@ -59,17 +59,17 @@ uname -r
     sudo yum install cifs-utils 
     ```
 
-    Na **openSUSE**použijte `zypper` správce balíčků:
+    V **openSUSE**použijte správce `zypper` balíčků:
 
     ```bash
     sudo zypper install cifs-utils
     ```
 
-    Na jiných distribucích použijte příslušný správce balíčků nebo [kompilujte ze zdroje](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
+    V ostatních distribucích použijte příslušného správce balíčků nebo [zkompilujte ze zdroje](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download) .
 
-* **Nejnovější verze rozhraní Příkazového řádku Azure (CLI).** Další informace o tom, jak nainstalovat příkazové příkazové příkazy KAD Azure, najdete [v tématu Instalace příkazového příkazového příkazu Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a vyberte operační systém. Pokud dáváte přednost použití modulu Azure PowerShell v PowerShellu 6+, můžete, ale níže uvedené pokyny jsou uvedeny pro rozhraní příkazového příkazového příkazu Konady Azure.
+* **Nejnovější verze rozhraní příkazového řádku Azure (CLI).** Další informace o tom, jak nainstalovat rozhraní příkazového řádku Azure, najdete v tématu [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a výběr operačního systému. Pokud upřednostňujete použití modulu Azure PowerShell v prostředí PowerShell 6 +, můžete si nicméně níže uvedené pokyny předkládat Azure CLI.
 
-* **Ujistěte se, že je otevřený port 445**: SMB komunikuje přes port TCP 445 - zkontrolujte, zda brána firewall neblokuje porty TCP 445 z klientského počítače.  **Nahraďte<>skupiny prostředků** a<>svého účtu **úložiště**
+* **Ujistěte se, že je otevřený port 445**: SMB komunikuje přes port TCP 445 – zkontrolujte, jestli brána firewall neblokuje porty TCP 445 z klientského počítače.  Nahraďte **<>vaší-Resource-Group** a **<účtu úložiště>**
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -85,21 +85,21 @@ uname -r
     nc -zvw3 $fileHost 445
     ```
 
-    Pokud bylo připojení úspěšné, měli byste vidět něco podobného následujícímu výstupu:
+    Pokud bylo připojení úspěšné, měla by se zobrazit něco podobného jako u následujícího výstupu:
 
     ```
     Connection to <your-storage-account> 445 port [tcp/microsoft-ds] succeeded!
     ```
 
-    Pokud se vám nedaří otevřít port 445 v podnikové síti nebo vám to poskytovatel služby Internetu zablokoval, můžete k obejití portu 445 použít připojení VPN nebo expressroute. Další informace najdete [v tématu Aspekty sítě pro přímý přístup ke sdílené složce Azure](storage-files-networking-overview.md)..
+    Pokud nemůžete otevřít port 445 ve vaší podnikové síti nebo pokud ho zabrání poskytovatel internetových služeb, můžete použít připojení k síti VPN nebo ExpressRoute k tomu, abyste mohli pracovat s portem 445. Další informace najdete v tématu [požadavky na síť pro přímý přístup ke sdílení souborů Azure](storage-files-networking-overview.md)..
 
 ## <a name="mounting-azure-file-share"></a>Připojení sdílené složky Azure
-Chcete-li použít sdílenou složku Azure s distribucí Linuxu, musíte vytvořit adresář, který bude sloužit jako přípojný bod pro sdílenou složku Azure. Přípojný bod lze vytvořit kdekoli v systému Linux, ale je běžné konvence k vytvoření pod /mnt. Po přípojné místo, pomocí příkazu `mount` pro přístup ke sdílené složce Azure.
+Pokud chcete použít sdílenou složku Azure s distribucí systému Linux, musíte vytvořit adresář, který bude sloužit jako přípojný bod pro sdílenou složku Azure. Přípojný bod se dá vytvořit kdekoli na svém systému Linux, ale je to obvyklá konvence, kterou můžete vytvořit v rámci/mnt.. Za přípojný bod použijete `mount` příkaz pro přístup ke sdílené složce Azure.
 
-V případě potřeby můžete připojit stejnou sdílenou složku Azure do více přípojkových bodů.
+V případě potřeby můžete stejnou sdílenou složku Azure připojit k několika přípojným bodům.
 
-### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Připojení sdílené složky Azure na vyžádání`mount`
-1. **Vytvořte složku pro přípojný bod**: Nahradit `<your-resource-group>`, `<your-storage-account>`a `<your-file-share>` s příslušnými informacemi pro vaše prostředí:
+### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Připojení sdílené složky Azure na vyžádání pomocí`mount`
+1. **Vytvořte složku pro přípojný bod**: Nahraďte `<your-resource-group>`, `<your-storage-account>`a `<your-file-share>` příslušnými informacemi pro vaše prostředí:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -111,7 +111,7 @@ V případě potřeby můžete připojit stejnou sdílenou složku Azure do víc
     sudo mkdir -p $mntPath
     ```
 
-1. **Pomocí příkazu mount připojte sdílenou složku Azure**. V níže uvedeném příkladu je místní linuxová oprávnění k souborům a složkám výchozí 0755, což znamená číst, psát a spouštět pro vlastníka (na základě vlastníka souboru/adresáře Linuxu), číst a spouštět pro uživatele ve skupině vlastníků a číst a spouštět pro ostatní v systému. Pomocí možností `uid` a `gid` připojení můžete nastavit ID uživatele a ID skupiny pro připojení. Můžete také `dir_mode` použít `file_mode` a nastavit vlastní oprávnění podle potřeby. Další informace o nastavení oprávnění naleznete v [unixovém číselném zápisu](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) na Wikipedii. 
+1. **Připojte sdílenou složku Azure pomocí příkazu připojit**. V následujícím příkladu má místní systém Linux oprávnění k souborům a složkám standardně 0755, což znamená čtení, zápis a spouštění pro vlastníka (na základě souboru/adresáře Linux Owner), čtení a spouštění pro uživatele ve skupině vlastník a pro ostatní v systému. K nastavení ID uživatele `uid` a `gid` ID skupiny pro připojení můžete použít možnosti a připojení. Můžete také použít `dir_mode` a `file_mode` k nastavení vlastních oprávnění podle potřeby. Další informace o tom, jak nastavit oprávnění, najdete v tématu [Číselná notace pro UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) v Wikipedii. 
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -129,12 +129,12 @@ V případě potřeby můžete připojit stejnou sdílenou složku Azure do víc
     ```
 
     > [!Note]  
-    > Výše uvedený příkaz mount se připojí s SMB 3.0. Pokud vaše distribuce Linuxu nepodporuje SMB 3.0 s šifrováním nebo pokud podporuje jenom SMB 2.1, můžete připojit pouze z virtuálního počítače Azure ve stejné oblasti jako účet úložiště. Chcete-li připojit sdílenou složku Azure na distribuci Linuxu, která nepodporuje SMB 3.0 s šifrováním, budete muset [zakázat šifrování při přenosu pro účet úložiště](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    > Výše uvedený příkaz Mount se připojuje pomocí protokolu SMB 3,0. Pokud distribuce systému Linux nepodporuje protokol SMB 3,0 s šifrováním, nebo pokud podporuje pouze protokol SMB 2,1, můžete se připojit pouze k virtuálnímu počítači Azure ve stejné oblasti jako účet úložiště. Pokud chcete sdílenou složku Azure připojit k distribuci v systému Linux, která nepodporuje protokol SMB 3,0 se šifrováním, budete muset [zakázat šifrování při přenosu pro účet úložiště](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-Po dokončení používání sdílené složky Azure, `sudo umount $mntPath` můžete použít k odpojení sdílené složky.
+Až budete s použitím sdílené složky Azure hotovi, můžete ji použít `sudo umount $mntPath` k odpojení sdílené složky.
 
-### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Vytvoření trvalého přípojného bodu pro sdílenou složku Azure`/etc/fstab`
-1. **Vytvoření složky pro přípojný bod**: Složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je běžné, že je to vytvořit pod /mnt. Následující příkaz například vytvoří nový adresář, nahrazuje `<your-resource-group>` `<your-storage-account>`, a `<your-file-share>` s příslušnými informacemi pro vaše prostředí:
+### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Vytvoření trvalého přípojného bodu pro sdílenou složku Azure s`/etc/fstab`
+1. **Vytvoření složky pro přípojný bod**: složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je to obvyklá konvence, kterou můžete vytvořit v rámci/mnt.. Například následující příkaz vytvoří nový adresář, nahradí `<your-resource-group>`, `<your-storage-account>`a `<your-file-share>` s příslušnými informacemi pro vaše prostředí:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -146,7 +146,7 @@ Po dokončení používání sdílené složky Azure, `sudo umount $mntPath` mů
     sudo mkdir -p $mntPath
     ```
 
-1. **Vytvořte soubor pověření pro uložení uživatelského jména (název účtu úložiště) a hesla (klíč účtu úložiště) pro sdílenou složku.** 
+1. **Vytvořte soubor přihlašovacích údajů pro uložení uživatelského jména (název účtu úložiště) a heslo (klíč účtu úložiště) pro sdílenou složku.** 
 
     ```bash
     if [ ! -d "/etc/smbcredentials" ]; then
@@ -167,13 +167,13 @@ Po dokončení používání sdílené složky Azure, `sudo umount $mntPath` mů
     fi
     ```
 
-1. **Změňte oprávnění k souboru pověření, aby soubor s heslem mohl číst nebo upravovat pouze kořenový adresář.** Vzhledem k tomu, že klíč účtu úložiště je v podstatě heslo super správce pro účet úložiště, nastavení oprávnění k souboru tak, aby pouze root přístup je důležité, aby uživatelé s nižšími oprávněními nelze načíst klíč účtu úložiště.   
+1. **Změňte oprávnění k souboru přihlašovacích údajů, aby bylo možné číst nebo upravovat soubor hesla jenom rootem.** Vzhledem k tomu, že klíč účtu úložiště je v podstatě heslem správce účtu úložiště, je třeba nastavit oprávnění k souboru tak, aby přístup k hlavnímu adresáři měl jenom kořenový, aby uživatelé nižších oprávnění nemohli získat klíč účtu úložiště.   
 
     ```bash
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. **Pomocí následujícího příkazu připojíte `/etc/fstab`následující řádek k **: V následujícím příkladu je místní linuxový soubor a oprávnění ke složkám výchozí 0755, což znamená číst, psát a spouštět pro vlastníka (na základě vlastníka souboru/adresáře Linuxu), číst a spouštět pro uživatele ve skupině vlastníků a číst a spouštět pro ostatní v systému. Pomocí možností `uid` a `gid` připojení můžete nastavit ID uživatele a ID skupiny pro připojení. Můžete také `dir_mode` použít `file_mode` a nastavit vlastní oprávnění podle potřeby. Další informace o nastavení oprávnění naleznete v [unixovém číselném zápisu](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) na Wikipedii.
+1. Následující **příkaz použijte k připojení následujícího řádku k `/etc/fstab` **: v následujícím příkladu má místní soubory a složky pro Linux výchozí hodnotu 0755, což znamená čtení, zápis a spouštění pro vlastníka (na základě souboru/adresáře Linux Owner), čtení a spouštění pro uživatele ve skupině vlastník a pro ostatní v systému. K nastavení ID uživatele `uid` a `gid` ID skupiny pro připojení můžete použít možnosti a připojení. Můžete také použít `dir_mode` a `file_mode` k nastavení vlastních oprávnění podle potřeby. Další informace o tom, jak nastavit oprávnění, najdete v tématu [Číselná notace pro UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) v Wikipedii.
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -192,20 +192,20 @@ Po dokončení používání sdílené složky Azure, `sudo umount $mntPath` mů
     ```
     
     > [!Note]  
-    > Výše uvedený příkaz mount se připojí s SMB 3.0. Pokud vaše distribuce Linuxu nepodporuje SMB 3.0 s šifrováním nebo pokud podporuje jenom SMB 2.1, můžete připojit pouze z virtuálního počítače Azure ve stejné oblasti jako účet úložiště. Chcete-li připojit sdílenou složku Azure na distribuci Linuxu, která nepodporuje SMB 3.0 s šifrováním, budete muset [zakázat šifrování při přenosu pro účet úložiště](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    > Výše uvedený příkaz Mount se připojuje pomocí protokolu SMB 3,0. Pokud distribuce systému Linux nepodporuje protokol SMB 3,0 s šifrováním, nebo pokud podporuje pouze protokol SMB 2,1, můžete se připojit pouze k virtuálnímu počítači Azure ve stejné oblasti jako účet úložiště. Pokud chcete sdílenou složku Azure připojit k distribuci v systému Linux, která nepodporuje protokol SMB 3,0 se šifrováním, budete muset [zakázat šifrování při přenosu pro účet úložiště](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>Automatické připojení sdílené složky Azure pomocí autofů
+### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>Automatické připojení sdílených složek Azure pomocí AutoFS
 
-1. **Ujistěte se, že je nainstalován balíček autofs.**  
+1. **Ujistěte se, že je nainstalovaný balíček autofs.**  
 
-    Balíček autofs lze nainstalovat pomocí správce balíčků na linuxové distribuci dle vašeho výběru. 
+    Balíček AutoFS se dá nainstalovat pomocí Správce balíčků na distribuci v systému Linux podle vašeho výběru. 
 
-    Na distribucích založených na `apt` **Ubuntu** a **Debianu** použijte správce balíčků:
+    V **Ubuntu** distribucích **založených** na Ubuntu a Debian použijte správce `apt` balíčků:
     ```bash
     sudo apt update
     sudo apt install autofs
     ```
-    Na **Fedoři**, **Red Hat Enterprise Linux 8+** a `dnf` **CentOS 8 +** použijte správce balíčků:
+    V **Fedora** **Red Hat Enterprise Linux 8 +** a **CentOS 8 +** použijte správce `dnf` balíčků:
     ```bash
     sudo dnf install autofs
     ```
@@ -213,7 +213,7 @@ Po dokončení používání sdílené složky Azure, `sudo umount $mntPath` mů
     ```bash
     sudo yum install autofs 
     ```
-    Na **openSUSE**použijte `zypper` správce balíčků:
+    V **openSUSE**použijte správce `zypper` balíčků:
     ```bash
     sudo zypper install autofs
     ```
@@ -221,19 +221,19 @@ Po dokončení používání sdílené složky Azure, `sudo umount $mntPath` mů
    ```bash
     sudo mkdir /fileshares
     ```
-3. **Kréta nový vlastní konfigurační soubor autofs**
+3. **Crete nový vlastní konfigurační soubor AutoFS**
     ```bash
     sudo vi /etc/auto.fileshares
     ```
-4. **Přidat následující položky do /etc/auto.fileshares**
+4. **Přidat následující položky do/etc/auto.fileshares**
    ```bash
    echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath"" > /etc/auto.fileshares
    ```
-5. **Přidání následující položky do /etc/auto.master**
+5. **Přidejte následující položku do/etc/auto.Master**
    ```bash
    /fileshares /etc/auto.fileshares --timeout=60
    ```
-6. **Restartovat autofs**
+6. **Restartovat AutoFS**
     ```bash
     sudo systemctl restart autofs
     ```
@@ -241,93 +241,88 @@ Po dokončení používání sdílené složky Azure, `sudo umount $mntPath` mů
     ```bash
     cd /fileshares/$filesharename
     ```
-## <a name="securing-linux"></a>Zabezpečení Linuxu
-Aby bylo možné připojit sdílené složky Azure na Linuxu, port 445 musí být přístupné. Řada organizací port 445 blokuje kvůli bezpečnostním rizikům spojeným s protokolem SMB 1. SMB 1, také známý jako CIFS (Common Internet File System), je starší souborový systémový protokol, který je součástí mnoha distribucí Linuxu. Protokol SMB 1 je zastaralý, neefektivní a hlavně nezabezpečený protokol. Dobrou zprávou je, že Soubory Azure nepodporuje SMB 1 a počínaje linuxovým jádrem verze 4.18, Linux umožňuje zakázat SMB 1. Vždy [důrazně doporučujeme](https://aka.ms/stopusingsmb1) zakázat SMB 1 na klienty Linuxu před použitím sdílených složek SMB v produkčním prostředí.
+## <a name="securing-linux"></a>Zabezpečení systému Linux
+Aby bylo možné připojit sdílenou složku Azure v systému Linux, musí být port 445 přístupný. Řada organizací port 445 blokuje kvůli bezpečnostním rizikům spojeným s protokolem SMB 1. SMB 1, označované taky jako CIFS (Common Internet File System), je starší protokol systému souborů, který je součástí mnoha distribucí pro Linux. Protokol SMB 1 je zastaralý, neefektivní a hlavně nezabezpečený protokol. Dobrá zpráva je, že soubory Azure nepodporují protokol SMB 1 a počínaje jádrem Linux verze 4,18, Linux umožňuje zakázat protokol SMB 1. Předtím, než použijete sdílené složky SMB v produkčním prostředí, [důrazně doporučujeme](https://aka.ms/stopusingsmb1) zakázat protokol SMB 1 v klientech se systémem Linux.
 
-Počínaje linuxovým jádrem 4.18 modul jádra SMB, nazývaný `cifs` ze starších důvodů, vystavuje nový parametr modulu (často označovaný jako *parm* různými externími dokumentacemi), nazývaný `disable_legacy_dialects`. Ačkoli byl zaveden v linuxovém jádře 4.18, někteří dodavatelé tuto změnu backportovali na starší jádra, která podporují. Pro větší pohodlí následující tabulka podrobně popisuje dostupnost tohoto parametru modulu na běžných distribucích Linuxu.
+Od verze Linux kernel 4,18 se modul jádra SMB, který se `cifs` volá z původních důvodů, vystaví nový parametr modulu (často se označuje jako *parametr* různými externími dokumenty) `disable_legacy_dialects`. I když se zavedlo v jádře jádra 4,18, někteří dodavatelé tuto změnu nastavili na starší jádra, kterou podporují. V následující tabulce najdete informace o dostupnosti tohoto parametru modulu u běžných distribucí systému Linux.
 
-| Distribuce | Může zakázat SMB 1 |
+| Distribuce | Může zakázat protokol SMB 1. |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | Ne |
+| Ubuntu 14.04 – 16.04 | Ne |
 | Ubuntu 18.04 | Ano |
-| Ubuntu 19.04+ | Ano |
+| Ubuntu 19.04 + | Ano |
 | Debian 8-9 | Ne |
-| Debian 10+ | Ano |
-| Fedora 29+ | Ano |
+| Debian 10 + | Ano |
+| Fedora 29 + | Ano |
 | CentOS 7 | Ne | 
-| Centos 8+ | Ano |
-| Red Hat Enterprise Linux 6.x-7.x | Ne |
-| Red Hat Enterprise Linux 8+ | Ano |
-| openSUSE Skok 15,0 | Ne |
-| openSUSE Leap 15.1+ | Ano |
+| CentOS 8 + | Ano |
+| Red Hat Enterprise Linux 6. x-7. x | Ne |
+| Red Hat Enterprise Linux 8 + | Ano |
+| openSUSE, přestupné 15,0 | Ne |
+| openSUSE přestupné 15.1 + | Ano |
 | openSUSE Tumbleweed | Ano |
-| SUSE Linux Enterprise 11.x-12.x | Ne |
+| SUSE Linux Enterprise 11. x-12. x | Ne |
 | SUSE Linux Enterprise 15 | Ne |
-| SUSE Linux Enterprise 15.1 | Ne |
+| SUSE Linux Enterprise 15,1 | Ne |
 
-Můžete zkontrolovat, zda vaše linuxová `disable_legacy_dialects` distribuce podporuje parametr modulu pomocí následujícího příkazu.
+Pomocí následujícího příkazu můžete zjistit, jestli vaše distribuce systému Linux `disable_legacy_dialects` podporuje parametr Module.
 
 ```bash
 sudo modinfo -p cifs | grep disable_legacy_dialects
 ```
 
-Tento příkaz by měl výstup následující zprávy:
+Tento příkaz by měl mít výstup následující zprávy:
 
 ```output
 disable_legacy_dialects: To improve security it may be helpful to restrict the ability to override the default dialects (SMB2.1, SMB3 and SMB3.02) on mount with old dialects (CIFS/SMB1 and SMB2) since vers=1.0 (CIFS/SMB1) and vers=2.0 are weaker and less secure. Default: n/N/0 (bool)
 ```
 
-Před zakázáním SMB 1, musíte zkontrolovat, zda modul SMB není aktuálně načten ve vašem systému (to se stane automaticky, pokud jste namontovali sdílenou složku SMB). Můžete to provést pomocí následujícího příkazu, který by měl výstup nic, pokud SMB není načten:
+Než protokol SMB 1 zakážete, musíte se ujistit, že modul SMB není v systému aktuálně načtený (k tomu dojde automaticky v případě, že jste připojili sdílenou složku SMB). Můžete to provést pomocí následujícího příkazu, který by neměl být vypsán, pokud není načten protokol SMB:
 
 ```bash
 lsmod | grep cifs
 ```
 
-Chcete-li modul uvolnit, nejprve odpojte `umount` všechny sdílené složky SMB (pomocí příkazu, jak je popsáno výše). Všechny připojené sdílené složky SMB v systému můžete identifikovat pomocí následujícího příkazu:
+Chcete-li uvolnit modul, nejprve odpojte všechny sdílené složky SMB (pomocí `umount` příkazu popsaného výše). Všechny připojené sdílené složky SMB v systému můžete identifikovat pomocí následujícího příkazu:
 
 ```bash
 mount | grep cifs
 ```
 
-Jakmile odpojíte všechny sdílené složky SMB, je bezpečné uvolnit modul. Můžete to provést pomocí příkazu `modprobe`:
+Jakmile odpojíte všechny sdílené složky SMB, je možné modul uvolnit. Můžete to provést pomocí příkazu `modprobe`:
 
 ```bash
 sudo modprobe -r cifs
 ```
 
-Modul můžete ručně načíst pomocí protokolu SMB `modprobe` 1, který je uvolněn pomocí příkazu:
+Modul můžete ručně načíst pomocí protokolu SMB 1 uvolněného pomocí `modprobe` příkazu:
 
 ```bash
 sudo modprobe cifs disable_legacy_dialects=Y
 ```
 
-Nakonec můžete zkontrolovat, zda byl modul SMB načten parametrem, a `/sys/module/cifs/parameters`to tak, že se podíváte na načtené parametry v :
+Nakonec můžete ověřit, že se modul SMB načetl s parametrem, a to tak, že si prohlédněte načtené parametry v `/sys/module/cifs/parameters`:
 
 ```bash
 cat /sys/module/cifs/parameters/disable_legacy_dialects
 ```
 
-Chcete-li trvale zakázat SMB 1 na distribucích založených na Ubuntu a Debianu, musíte vytvořit nový `/etc/modprobe.d/local.conf` soubor (pokud ještě nemáte vlastní možnosti pro jiné moduly) volané s nastavením. To lze provést pomocí následujícího příkazu:
+Chcete-li trvale zakázat protokol SMB 1 v distribucích založených na Ubuntu a Debian, je nutné vytvořit nový soubor (Pokud ještě nemáte vlastní možnosti pro jiné moduly) volané `/etc/modprobe.d/local.conf` pomocí tohoto nastavení. Můžete to provést pomocí následujícího příkazu:
 
 ```bash
 echo "options cifs disable_legacy_dialects=Y" | sudo tee -a /etc/modprobe.d/local.conf > /dev/null
 ```
 
-Můžete ověřit, že to fungovalo načtením modulu SMB:
+To, jestli se to osvědčilo, můžete ověřit tak, že načtete modul SMB:
 
 ```bash
 sudo modprobe cifs
 cat /sys/module/cifs/parameters/disable_legacy_dialects
 ```
 
-## <a name="feedback"></a>Váš názor
-Uživatelé Linuxu, chceme slyšet od vás!
-
-Skupina uživatelů Azure Files for Linux poskytuje fórum pro sdílení zpětné vazby při vyhodnocování a přijímání úložiště souborů na Linuxu. Pošlete e-mail [emitujte uživatele Azure Files Linux,](mailto:azurefiles@microsoft.com) aby se připojili ke skupině uživatelů.
-
 ## <a name="next-steps"></a>Další kroky
 Další informace o službě Soubory Azure najdete na těchto odkazech:
 
 * [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 * [Nejčastější dotazy](../storage-files-faq.md)
-* [Řešení potíží](storage-troubleshoot-linux-file-connection-problems.md)
+* [Odstraňování potíží](storage-troubleshoot-linux-file-connection-problems.md)

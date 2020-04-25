@@ -1,134 +1,134 @@
 ---
-title: Získání identifikátoru URI podpisu sdíleného přístupu pro bitovou kopii virtuálního počítače založeného na Microsoft Azure | Azure Marketplace
-description: Vysvětluje, jak získat identifikátor URI sdíleného přístupového podpisu (SAS) pro bitovou kopii virtuálního počítače.
+title: Získat identifikátor URI sdíleného přístupového podpisu pro vaši image virtuálního počítače založené na Microsoft Azure | Azure Marketplace
+description: Vysvětluje, jak získat identifikátor URI sdíleného přístupového podpisu (SAS) pro vaši image virtuálního počítače.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 2fdbc2a11bd963057b465a629757f2be51ae4061
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 46b3764fe2a1e09875f2b92a461591b6ff08540f
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273847"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147893"
 ---
-# <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Získání identifikátoru URI sdíleného přístupového podpisu pro bitovou kopii virtuálního počítače
+# <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Získat identifikátor URI sdíleného přístupového podpisu pro vaši image virtuálního počítače
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Získat identifikátor URI sdíleného přístupového podpisu pro bitovou kopii virtuálního počítače](https://aka.ms/GetSASURI) a spravovat migrované nabídky.
+> Od 13. dubna 2020 začneme přesouvat správu nabídek virtuálních počítačů Azure do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Postupujte podle pokynů v tématu [Získání identifikátoru URI sdíleného přístupového podpisu pro vaši image virtuálního počítače](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues) , abyste mohli spravovat migrované nabídky.
 
-Během procesu publikování je nutné zadat jednotný identifikátor prostředku (URI) pro každý virtuální pevný disk (VHD) přidružený k vašim skum. Společnost Microsoft potřebuje přístup k těmto virtuálním serverům během procesu certifikace. Tento článek vysvětluje, jak generovat identifikátor URI sdílený přístupový podpis (SAS) pro každý virtuální pevný disk. Tento identifikátor URI zadáte na kartě **SKU** na portálu partnerů cloudu.
+Během procesu publikování musíte zadat identifikátor URI (Uniform Resource Identifier) pro každý virtuální pevný disk (VHD) přidružený k vašim SKU. Společnost Microsoft potřebuje během procesu certifikace přístup k těmto virtuálním pevným diskům. Tento článek vysvětluje, jak vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro každý virtuální pevný disk. Tento identifikátor URI zadáte na kartě **SKU** v portál partnerů cloudu.
 
-Při generování identifikátorů URI SAS pro virtuální počítače dodržujte následující požadavky:
+Při generování identifikátorů URI SAS pro vaše virtuální pevné disky postupujte podle následujících požadavků:
 
-- Podporovány jsou pouze nespravované virtuální disponály.
-- `List`a `Read` oprávnění jsou dostatečná. *Neposkytují* `Write` ani `Delete` přístup.
-- Doba trvání přístupu (*datum vypršení platnosti)* by měla být minimálně tři týdny od vytvoření identifikátoru URI SAS.
-- Chcete-li chránit před změnami času UTC, nastavte počáteční datum na jeden den před aktuálním datem. Pokud je například aktuální datum 6.
+- Podporují se jenom nespravované virtuální pevné disky.
+- `List`a `Read` dostatečná oprávnění. `Write` Neposkytněte `Delete` *ani nepoužívejte přístup* .
+- Doba trvání přístupu (*Datum vypršení platnosti*) by měla být minimálně tři týdny od okamžiku, kdy se identifikátor URI SAS vytvoří.
+- Pro ochranu proti variacím času UTC nastavte počáteční datum na jeden den před aktuálním datem. Pokud je aktuální datum například 6. října 2014, vyberte 10/5/2014.
 
-## <a name="generate-the-sas-url"></a>Generovat adresu URL SAS
+## <a name="generate-the-sas-url"></a>Vygenerovat adresu URL SAS
 
-Adresu URL SAS lze vygenerovat dvěma běžnými způsoby pomocí následujících nástrojů:
+Adresu URL SAS lze vytvořit dvěma běžnými způsoby pomocí následujících nástrojů:
 
-- Microsoft Storage Explorer – grafický nástroj dostupný pro Windows, macOS a Linux
-- Rozhraní příkazového nastavení Microsoft Azure – doporučeno pro operační systémy, které nejsou s Windows, a pro automatizovaná nebo průběžná integrační prostředí
+- Microsoft Průzkumník služby Storage – grafický nástroj dostupný pro Windows, macOS a Linux
+- Microsoft Azure CLI – doporučené pro prostředí, která nejsou ve Windows OSs a automatizované nebo kontinuální integrace
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pomocí následujících kroků vygenerujte identifikátor URI SAS pomocí azure CLI.
+Pomocí následujících kroků vygenerujte identifikátor URI SAS pomocí Azure CLI.
 
-1. Stáhněte a nainstalujte [rozhraní příkazového příkazu KOnZ Microsoft Azure](https://azure.microsoft.com/documentation/articles/xplat-cli-install/). Verze jsou k dispozici pro Windows, macOS a různé distribuce Linuxu.
-2. Vytvořte soubor PowerShellu (příponu),`.ps1` zkopírujte v následujícím kódu a uložte ho místně.
+1. Stáhněte a nainstalujte [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/). Verze jsou k dispozici pro Windows, macOS a různé distribucey systému Linux.
+2. Vytvořte soubor PowerShellu (`.ps1` příponu souboru), zkopírujte následující kód a pak ho uložte místně.
 
    ```azurecli-interactive
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
    ```
 
-3. Upravte soubor a zadám následující hodnoty parametrů.  Data by měla být uvedena ve formátu UTC datetime, například `2016-10-25T00:00:00Z`.
-   - `<account-name>`- Název účtu úložiště Azure
-   - `<account-key>`- Klíč účtu úložiště Azure
-   - `<vhd-name>`- Vaše jméno VHD
-   - `<start-date>`- Datum zahájení oprávnění pro přístup k Virtuálnímu pevnému disku. Zadejte datum jeden den před aktuálním datem.
-   - `<expiry-date>`- Datum vypršení platnosti oprávnění pro přístup k Virtuálnímu pevnému disku.  Zadejte datum nejméně tři týdny po aktuálním datu.
+3. Upravte soubor tak, aby poskytoval následující hodnoty parametrů.  Data by měla být zadána ve formátu UTC DateTime, například `2016-10-25T00:00:00Z`.
+   - `<account-name>`– Váš název účtu služby Azure Storage
+   - `<account-key>`– Váš klíč účtu úložiště Azure
+   - `<vhd-name>`– Název virtuálního pevného disku
+   - `<start-date>`– Počáteční datum oprávnění pro přístup VHD. Zadejte datum jeden den před aktuálním datem.
+   - `<expiry-date>`– Datum vypršení platnosti oprávnění pro přístup VHD.  Zadejte datum nejméně tři týdny po aktuálním datu.
 
-   Následující příklad ukazuje správné hodnoty parametrů (v době psaní tohoto článku).
+   Následující příklad ukazuje správné hodnoty parametrů (v době psaní tohoto zápisu).
 
    ```azurecli-interactive
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
    ```
 
-4. Uložte změny tohoto skriptu prostředí PowerShell.
-5. Spusťte tento skript pomocí oprávnění správce a vygenerujte *připojovací řetězec SAS* pro přístup na úrovni kontejneru.  Můžete použít dva základní přístupy:
-   - Spusťte skript z konzole.  Například v systému Windows klikněte na skript a vyberte **Spustit jako správce**.
-   - Spusťte skript z editoru skriptů prostředí PowerShell, jako je [například prostředí Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise), pomocí oprávnění správce.
-     Následující ukazuje připojovací řetězec SAS generované v rámci tohoto editoru.
+4. Uložte změny do tohoto skriptu PowerShellu.
+5. Spusťte tento skript s oprávněními správce pro vygenerování *připojovacího řetězce SAS* pro přístup na úrovni kontejneru.  Můžete použít dva základní přístupy:
+   - Spusťte skript z konzoly nástroje.  Například v systému Windows klikněte na skript a vyberte **Spustit jako správce**.
+   - Spusťte skript z editoru skriptu PowerShell, jako je například [Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise), pomocí oprávnění správce.
+     Následující příklad ukazuje připojovací řetězec SAS generovaný v tomto editoru.
 
-     ![Generování identifikátoru URI sas v prostředí PowerShell ISE](./media/publishvm_032.png)
+     ![Generování identifikátoru URI SAS v prostředí PowerShell ISE](./media/publishvm_032.png)
 
-6. Zkopírujte výsledný připojovací řetězec SAS a uložte jej do textového souboru na bezpečném místě.  Tento řetězec upravíte a přidáte do něj přidružené informace o umístění virtuálního pevného disku a vytvoříte tak konečný identifikátor URI s rozhraním SAS.
-7. Na webu Azure Portal přejděte na úložiště objektů blob, které obsahuje virtuální pevný disk přidružený k nově generovanému identifikátoru URI.
-8. Zkopírujte hodnotu adresy URL **koncového bodu služby Objektů blob**, jak je znázorněno níže.
+6. Zkopírujte výsledný připojovací řetězec SAS a uložte ho do textového souboru v zabezpečeném umístění.  Tento řetězec upravíte tak, aby se do něho přidaly informace o umístění virtuálního pevného disku, aby se vytvořil finální identifikátor URI SAS.
+7. V Azure Portal přejděte do úložiště objektů blob, které obsahuje virtuální pevný disk přidružený k nově vygenerovanému identifikátoru URI.
+8. Zkopírujte hodnotu adresy URL **koncového bodu BLOB Service**, jak je znázorněno níže.
 
-    ![Koncový bod služby objektů blob na webu Azure Portal](./media/publishvm_033.png)
+    ![Blob service koncový bod v Azure Portal](./media/publishvm_033.png)
 
-9. Upravte textový soubor pomocí připojovacího řetězce SAS z kroku 6.  Celý identifikátor URI s postupem do aplikace SAS vytvoříte v následujícím formátu:
+9. Upravte textový soubor s připojovacím řetězcem SAS z kroku 6.  Úplný identifikátor URI SAS vytvoříte pomocí následujícího formátu:
 
     `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 
-    Pokud je `TestRGVM2.vhd`například název VDH , bude výsledný identifikátor URI SAS:
+    Například pokud je `TestRGVM2.vhd`název při, výsledný identifikátor URI SAS by byl:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-Opakujte tyto kroky pro každý virtuální pevný disk v sku, které chcete publikovat.
+Tento postup opakujte pro každý virtuální pevný disk ve skladových položkách, které plánujete publikovat.
 
-### <a name="microsoft-storage-explorer"></a>Průzkumník úložišť Microsoft
+### <a name="microsoft-storage-explorer"></a>Průzkumník služby Storage Microsoftu
 
-Pomocí následujících kroků vygenerujte identifikátor URI SAS pomocí Průzkumníka úložiště Microsoft Azure.
+Pomocí následujících kroků vygenerujte identifikátor URI SAS s Průzkumník služby Microsoft Azure Storage.
 
 1. Stáhnout a nainstalovat [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
-2. Otevřete průzkumníka a v levém panelu nabídky klikněte na ikonu **Přidat účet.**  Zobrazí se dialogové okno **Připojit k úložišti Azure.**
-3. Vyberte **Přidat účet Azure** a klikněte na **Přihlásit se**.  Pokračujte v požadovaných krocích pro přihlášení k účtu Azure.
+2. Otevřete Průzkumníka a v nabídce na levé straně nabídek klikněte na ikonu **Přidat účet** .  Zobrazí se dialogové okno **připojit k Azure Storage** .
+3. Vyberte **Přidat účet Azure** a klikněte na **Přihlásit**.  Pokračujte podle požadovaných kroků a přihlaste se k účtu Azure.
 4. V levém podokně **Průzkumníka** přejděte na **účty úložiště** a rozbalte tento uzel.
-5. Klikněte pravým tlačítkem myši na virtuální pevný disk a v místní nabídce vyberte **Získat přístup ke sdílené položce.**
+5. Klikněte pravým tlačítkem na virtuální pevný disk a v místní nabídce vyberte **získat přístupový podpis sdílení** .
 
-    ![Získání položky SAS v Azure Exploreru](./media/publishvm_034.png)
+    ![Získat položku SAS v Azure Exploreru](./media/publishvm_034.png)
 
-6. Zobrazí se dialogové okno **Sdílený přístupový podpis.** Zadejte hodnoty pro následující pole:
-   - **Čas zahájení** – datum zahájení oprávnění pro přístup k virtuálnímu pevnému disku. Zadejte datum, které je jeden den před aktuálním datem.
-   - **Doba platnosti** - datum vypršení platnosti oprávnění pro přístup k virtuálnímu pevnému disku.  Zadejte datum nejméně tři týdny po aktuálním datu.
-   - **Oprávnění** – `Read` vyberte `List` a oprávnění.
+6. Zobrazí se dialogové okno **sdílený přístupový podpis** . Zadejte hodnoty pro následující pole:
+   - **Čas spuštění** – počáteční datum oprávnění pro přístup VHD. Zadejte datum, které je před aktuálním datem jeden den.
+   - **Čas** vypršení platnosti oprávnění – datum vypršení platnosti oprávnění pro přístup VHD.  Zadejte datum nejméně tři týdny po aktuálním datu.
+   - **Oprávnění** – vyberte oprávnění `Read` a `List` .
 
-     ![Dialogové okno SAS v Průzkumníkovi Azure](./media/publishvm_035.png)
+     ![Dialogové okno SAS v Azure Exploreru](./media/publishvm_035.png)
 
-7. Kliknutím na **Vytvořit** vytvořte přidružený identifikátor URI SAS pro tento virtuální pevný disk.  Dialogové okno nyní zobrazuje podrobnosti o této operaci.
-8. Zkopírujte hodnotu **adresy URL** a uložte ji do textového souboru na bezpečném místě.
+7. Kliknutím na **vytvořit** vytvořte přidružený identifikátor URI SAS pro tento virtuální pevný disk.  Dialog teď zobrazí podrobnosti o této operaci.
+8. Zkopírujte hodnotu **URL** a uložte ji do textového souboru v zabezpečeném umístění.
 
-    ![Vytvoření identifikátoru URI sas v Průzkumníkovi Azure](./media/publishvm_036.png)
+    ![Vytvoření identifikátoru URI SAS v Průzkumníkovi Azure](./media/publishvm_036.png)
 
-    Tato vygenerovaná adresa URL SAS je pro přístup na úrovni kontejneru.  Aby byl název přidruženého virtuálního pevného disku konkrétní, musí k němu být přidán přidružený název virtuálního pevného disku.
+    Tato vygenerovaná adresa URL SAS je určena pro přístup na úrovni kontejneru.  Aby se to zajistilo, musí se do něj přidat přidružený název virtuálního pevného disku.
 
-9. Upravte textový soubor. Za řetězec vložte `vhds` název virtuálního pevného disku do adresy URL SAS (včetně úvodního lomítka).  Konečný identifikátor URI SAS by měl mít formát:
+9. Upravte textový soubor. Po `vhds` řetězci v adrese URL SAS vložte název virtuálního pevného disku (včetně úvodního lomítka).  Poslední identifikátor URI SAS by měl být ve formátu:
 
     `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 
-    Pokud je `TestRGVM2.vhd`například název VDH , bude výsledný identifikátor URI SAS:
+    Například pokud je `TestRGVM2.vhd`název při, výsledný identifikátor URI SAS by byl:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-Opakujte tyto kroky pro každý virtuální pevný disk v sku, které chcete publikovat.
+Tento postup opakujte pro každý virtuální pevný disk ve skladových položkách, které plánujete publikovat.
 
 ## <a name="verify-the-sas-uri"></a>Ověření identifikátoru URI SAS
 
-Zkontrolujte a ověřte každý vygenerovaný identifikátor URI s rozhraním SAS pomocí následujícího kontrolního seznamu.  Ověřte, zda:
+Pomocí následujícího kontrolního seznamu Zkontrolujte a ověřte každý generovaný identifikátor URI SAS.  Ověřte, že:
 
-- Identifikátor URI je formuláře: `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` +`<sas-connection-string>`
-- Identifikátor URI obsahuje název souboru obrázku v pevném rozlišení, včetně přípony názvu souboru ".vhd".
-- Směrem ke středu identifikátoru URI se `sp=rl` zobrazí. Tento řetězec `Read` označuje, že a `List` přístup je zadán.
-- Po tomto `sr=c` bodě se také objeví. Tento řetězec označuje, že je zadán přístup na úrovni kontejneru.
-- Zkopírujte a vložte identifikátor URI do prohlížeče a začněte stahovat přidružený objekt blob.  (Operaci můžete zrušit před dokončením stahování.)
+- Identifikátor URI má formát: `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` +`<sas-connection-string>`
+- Identifikátor URI obsahuje název souboru bitové kopie VHD, včetně přípony názvu souboru. VHD.
+- K doprostřed identifikátoru URI `sp=rl` se zobrazí. Tento řetězec označuje, `Read` že `List` a je určen přístup.
+- Po tomto okamžiku se `sr=c` zobrazí také. Tento řetězec označuje, že je určen přístup na úrovni kontejneru.
+- Zkopírujte identifikátor URI a vložte ho do prohlížeče, abyste mohli začít stahovat přidružený objekt BLOB.  (Operaci můžete zrušit před dokončením stahování.)
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte potíže s generováním identifikátoru URI SAS, přečtěte [si téma Běžné problémy s adresou URL SAS](./cpp-common-sas-url-issues.md).  V opačném případě uložte identifikátory URI SAS do zabezpečeného umístění pro pozdější použití. Bude nutné [publikovat nabídku virtuálních počítačích](./cpp-publish-offer.md) na portálu partnerů cloudu.
+Pokud máte potíže s vygenerováním identifikátoru URI SAS, podívejte se na [časté problémy s adresou URL SAS](./cpp-common-sas-url-issues.md).  V opačném případě uložte identifikátory URI SAS do zabezpečeného umístění pro pozdější použití. Bude se vyžadovat [publikování nabídky virtuálních počítačů](./cpp-publish-offer.md) v portál partnerů cloudu.

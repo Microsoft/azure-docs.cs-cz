@@ -1,44 +1,44 @@
 ---
-title: Nabídka nastavení pro modul Azure IoT Edge | Azure Marketplace
-description: Konfigurace nastavení nabídky pro modul IoT Edge.
+title: Nastavení nabídky pro modul Azure IoT Edge | Azure Marketplace
+description: Nakonfigurujte nastavení nabídky pro modul IoT Edge.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 7a35277a61217dab2982d6436903cd09abfe8c7d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d6d2306dfd44bad6e1f903c3cef3eeb4993f4cd9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984959"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148027"
 ---
-# <a name="iot-edge-module-offer-settings-tab"></a>Karta Nastavení nabídky modulu IoT Edge
+# <a name="iot-edge-module-offer-settings-tab"></a>Karta nastavení nabídky modulu IoT Edge
 
 >[!Important]
->dubna 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
+>Od 13. dubna 2020 začneme přesouvat správu nabídek IoT Edge modulů do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Podle pokynů v tématu [vytvoření IoT Edge modulu nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) můžete spravovat migrované nabídky.
 
-Stránka **Moduly IoT Edge > nová nabídka** se otevře se zaměřením na kartu Nastavení **nabídky.** 
+**IoT Edge moduly > novou stránku nabídky** se otevře s fokusem na kartě **nastavení nabídky** .
 
-![Stránka Nová nabídka pro moduly IoT Edge](./media/iot-edge-module-offer-settings-tab.png)
+![Nová stránka nabídky pro moduly IoT Edge](./media/iot-edge-module-offer-settings-tab.png)
 
 
-## <a name="offer-identity-settings"></a>Nabídnout nastavení identity
+## <a name="offer-identity-settings"></a>Nastavení identity nabídky
 
-V části **Identita nabídky**je nutné zadat informace pro pole popsaná v následující tabulce. Hvězdička (*) připojená k názvu pole označuje, že je požadováno. 
+V části **Nabídka identity**musíte zadat informace pro pole popsaná v následující tabulce. Hvězdička (*), která je připojena k názvu pole, označuje, že je požadováno. 
 
 |  **Pole**       |     **Popis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **ID nabídky\***       | Jedinečný identifikátor (v rámci profilu vydavatele) pro nabídku. Tento identifikátor bude viditelný v adresách URL produktů a přehledech. Má maximální délku 50 znaků a může používat malé alfanumerické znaky a pomlčky (-). (Identifikátor nemůže končit pomlčkou.) **Poznámka:** Toto pole nelze změnit po přepychu nabídky do provozu. <br> Pokud například Contoso publikuje nabídku s **ukázkovým iot-edge-modulem ID**nabídky `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`, přiřadí se mu adresa URL Azure Marketplace . |
-| **Vydavatel\***     | Jedinečný identifikátor vaší organizace na Azure Marketplace. Všechny nabídky by měly být spojeny s vaším ID majitele stránek. Tuto hodnotu nelze po uložení nabídky změnit. |
-| **Jméno\***          | Zobrazovaný název vaší nabídky. Tento název se zobrazí na Azure Marketplace a na portálu partnerů cloudu. Může mít maximálně 50 znaků. Pro váš produkt doporučujeme používat rozpoznatelnou značku. Neuvádějte název organizace, pokud tak váš produkt neuvede na trh. Pokud tuto nabídku prodáváte na jiných webech a v publikacích, ujistěte se, že název je ve všech publikacích přesně stejný. |
+| **ID nabídky\***       | Jedinečný identifikátor (v rámci profilu vydavatele) pro nabídku. Tento identifikátor bude viditelný v adresách URL produktů a sestavách Insights. Má maximální délku 50 znaků a může používat malé alfanumerické znaky a pomlčky (-). (Identifikátor nemůže končit spojovníkem.) **Poznámka:** Po živé nabídce nelze toto pole změnit. <br> Pokud například contoso zveřejňuje nabídku s **ukázkami ID nabídky-IoT-Edge-Module**, přiřadí se Azure Marketplace adresa URL `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`. |
+| **Microsoft\***     | Jedinečný identifikátor vaší organizace v Azure Marketplace. Všechny vaše nabídky by se měly přidružit k vašemu vydavateli s vaším ID. Tuto hodnotu nelze po uložení nabídky změnit. |
+| **Název\***          | Zobrazovaný název vaší nabídky Tento název se zobrazí v Azure Marketplace a v portál partnerů cloudu. Může mít maximálně 50 znaků. Pro váš produkt doporučujeme použít rozpoznatelný název značky. Nepoužívejte název vaší organizace, pokud to nezpůsobuje uvedení produktu na trh. Pokud tuto nabídku zadáte na jiné weby a publikace, ujistěte se, že je název přesně stejný ve všech publikacích. |
 |  |  |
 
 
-Vyberte **Uložit,** chcete-li nastavení nabídky uložit.
+Vyberte **Uložit** a uložte nastavení nabídky.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Karta [SKU](./cpp-skus-tab.md) slouží ke konfiguraci virtuálních zařízení pro vaši nabídku.
+Použijte kartu [SKU](./cpp-skus-tab.md) ke konfiguraci SKU pro vaši nabídku.

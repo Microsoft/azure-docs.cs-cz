@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42abeba310e7a30364f93e998f12129a2d3c1f15
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 4226a625918be378b14e14c55fe4dd4ca5c398d5
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114288"
+ms.locfileid: "82136681"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Spravovat přihlašovací údaje v Azure Automation
 
@@ -41,7 +41,7 @@ V rámci Azure PowerShell AZ Module se k vytváření a správě prostředků p�
 
 ## <a name="activities-used-to-access-credentials"></a>Aktivity používané pro přístup k přihlašovacím údajům
 
-Aktivity v následující tabulce se používají pro přístup k přihlašovacím údajům v sadách Runbook a konfiguracích DSC.
+Aktivity v následující tabulce se používají pro přístup k přihlašovacím údajům v grafických sadách Runbook a konfiguracích DSC. Příklady použití aktivit najdete v tématu věnovaném [vytváření grafik v Azure Automation](../automation-graphical-authoring-intro.md#activities).
 
 | Aktivita | Popis |
 |:--- |:--- |

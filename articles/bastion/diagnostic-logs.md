@@ -1,54 +1,54 @@
 ---
-title: Povolení diagnostických protokolů Azure Bastion a práce s ním
-description: V tomto článku se dozvíte, jak povolit a pracovat s diagnostickými protokoly Azure Bastion.
+title: Povolení a práce s protokoly prostředků Azure bastionu
+description: V tomto článku se dozvíte, jak povolit a pracovat s diagnostickými protokoly Azure bastionu.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 97f0cdb1e93ef2ad06d2daa04b2f4893fd5dfac2
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 4b71dba02a311b8fa6a16645364f90d7632693a2
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619268"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131278"
 ---
-# <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Povolení diagnostických protokolů Bastion a práce s ním
+# <a name="enable-and-work-with-bastion-resource-logs"></a>Povolení a práce s protokoly prostředků bastionu
 
-Jako uživatelé připojit k úlohám pomocí Azure Bastion, Bastion můžete protokolovat diagnostiku vzdálených relací. Pomocí diagnostiky pak můžete zobrazit, kteří uživatelé připojení k jakému zatížení, v kolik hodin, odkud a další takové relevantní informace o protokolování. Chcete-li použít diagnostiku, musíte povolit protokoly diagnostiky v Azure Bastion. Tento článek vám pomůže povolit protokoly diagnostiky a potom zobrazit protokoly.
+Uživatelé, kteří se připojují k úlohám pomocí Azure bastionu, můžou bastionu protokolovat diagnostiku vzdálených relací. Pak můžete pomocí diagnostiky zobrazit, kteří uživatelé se k nimž mají připojené úlohy, v jakém čase, kdy a dalších relevantních informací o protokolování. Aby bylo možné používat diagnostiku, musíte povolit diagnostické protokoly v Azure bastionu. Tento článek vám pomůže povolit diagnostické protokoly a pak zobrazit protokoly.
 
-## <a name="enable-the-diagnostics-log"></a><a name="enable"></a>Povolení diagnostického protokolu
+## <a name="enable-the-resource-log"></a><a name="enable"></a>Povolení protokolu prostředků
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na prostředek Azure Bastion a na stránce Azure Bastion vyberte **nastavení diagnostiky.**
+1. V [Azure Portal](https://portal.azure.com)přejděte do svého prostředku Azure bastionu a na stránce Azure bastionu vyberte **nastavení diagnostiky** .
 
    ![nastavení diagnostiky](./media/diagnostic-logs/1diagnostics-settings.png)
-2. Vyberte **Nastavení diagnostiky**, pak vyberte **+Přidat diagnostické nastavení** pro přidání cíle pro protokoly.
+2. Vyberte **nastavení diagnostiky**a pak vyberte **+ Přidat nastavení diagnostiky** a přidejte tak cíl pro protokoly.
 
-   ![přidat diagnostické nastavení](./media/diagnostic-logs/2add-diagnostic-setting.png)
-3. Na stránce **Nastavení diagnostiky** vyberte typ účtu úložiště, který se má použít pro ukládání protokolů diagnostiky.
+   ![Přidat nastavení diagnostiky](./media/diagnostic-logs/2add-diagnostic-setting.png)
+3. Na stránce **nastavení diagnostiky** vyberte typ účtu úložiště, který se má použít k ukládání diagnostických protokolů.
 
    ![vybrat umístění úložiště](./media/diagnostic-logs/3add-storage-account.png)
 4. Po dokončení nastavení bude vypadat podobně jako v tomto příkladu:
 
-   ![ukázková nastavení](./media/diagnostic-logs/4example-settings.png)
+   ![Příklad nastavení](./media/diagnostic-logs/4example-settings.png)
 
-## <a name="view-diagnostics-log"></a><a name="view"></a>Zobrazit protokol diagnostiky
+## <a name="view-diagnostics-log"></a><a name="view"></a>Zobrazit diagnostický protokol
 
-Chcete-li získat přístup k protokolům diagnostiky, můžete přímo použít účet úložiště, který jste zadali při povolení nastavení diagnostiky.
+Chcete-li získat přístup k diagnostickým protokolům, můžete přímo použít účet úložiště, který jste zadali, a povolit nastavení diagnostiky.
 
-1. Přejděte na prostředek účtu úložiště a potom na **Kontejnery**. Zobrazí se **objekt blob s protokoly přehledů-bastionaudit,** který se vytvořil v kontejneru objektů blob účtu úložiště.
+1. Přejděte k prostředku svého účtu úložiště a potom do **kontejnerů**. V kontejneru objektů BLOB v účtu úložiště se zobrazí objekt BLOB **Insights-logs-bastionauditlogs** .
 
    ![nastavení diagnostiky](./media/diagnostic-logs/1-navigate-to-logs.png)
-2. Při navigaci do kontejneru se ve svém blogu zobrazují různé složky. Tyto složky označují hierarchii prostředků pro prostředek Azure Bastion.
+2. Při přechodu dovnitř kontejneru uvidíte na svém blogu různé složky. Tyto složky označují hierarchii prostředků pro váš prostředek Azure bastionu.
 
-   ![přidat diagnostické nastavení](./media/diagnostic-logs/2-resource-h.png)
-3. Přejděte do úplné hierarchie prostředku Azure Bastion, jehož diagnostika protokoly, které chcete získat přístup nebo zobrazení. 'y =', 'm =', 'd =', 'h =' a 'm =' označují rok, měsíc, den, hodinu a minutu pro diagnostické protokoly.
+   ![Přidat nastavení diagnostiky](./media/diagnostic-logs/2-resource-h.png)
+3. Přejděte do úplné hierarchie prostředku Azure bastionu, jehož diagnostické protokoly chcete získat nebo zobrazit. "Y =", 'm = ", 'd =", "h =" a 'm = "označují rok, měsíc, den, hodinu a minutu v případě protokolů prostředků.
 
    ![vybrat umístění úložiště](./media/diagnostic-logs/3-resource-location.png)
-4. Vyhledejte soubor json vytvořený službou Azure Bastion, který obsahuje data protokolu diagnostiky pro časové období, na které se přecvádám.
+4. Vyhledejte soubor JSON vytvořený pomocí Azure bastionu, který obsahuje data diagnostického protokolu pro časový interval, na který přejdete.
 
-5. Stáhněte soubor json z kontejneru objektů blob úložiště. Příklad položky ze souboru json je uveden níže pro referenci:
+5. Stáhněte soubor JSON z kontejneru objektů BLOB úložiště. Příklad položky ze souboru JSON je uveden níže pro referenci:
 
    ```json
    { 
@@ -79,4 +79,4 @@ Chcete-li získat přístup k protokolům diagnostiky, můžete přímo použít
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si nejčastější dotazy k [baště](bastion-faq.md).
+Přečtěte si [Nejčastější dotazy k bastionu](bastion-faq.md).

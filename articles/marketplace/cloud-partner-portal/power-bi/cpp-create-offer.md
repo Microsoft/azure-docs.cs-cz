@@ -1,48 +1,48 @@
 ---
 title: Vytvoření nabídky aplikace Power BI | Azure Marketplace
-description: Jak vytvořit nabídku aplikace Power BI pro tržiště Microsoft AppSource Marketplace.
+description: Jak vytvořit nabídku aplikace Power BI pro Microsoft AppSource Marketplace
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c396468bff0edef5cfceccd3d3c3394662111c10
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c8273025b92a74286d3f918289ef9f21bd992182
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984840"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143123"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Vytvoření nabídky aplikace Power BI
 
 >[!Important]
->dubna 2020 začneme přesouvat správu nabídek aplikací Power BI do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
+>Od 13. dubna 2020 začneme přesouvat správu nabídek Power BI aplikací do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Při správě migrovaných nabídek postupujte podle pokynů v tématu [Přehled vytvoření aplikace Power BI](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) .
 
-V tomto článku se uvádí postup, jak vytvořit novou nabídku aplikace Power BI pro [AppSource](https://appsource.microsoft.com). Každá nabídka se zobrazí jako jeho vlastní entita v AppSource. Když vytvoříte novou nabídku na [portálu partnerů](https://cloudpartner.azure.com/)cloudu , budete muset zadat čtyři skupiny prostředků pro vaši nabídku.
+Tento článek obsahuje seznam kroků, které je potřeba provést, pokud chcete vytvořit novou nabídku Power BI aplikací pro [AppSource](https://appsource.microsoft.com). Každá nabídka se zobrazí jako vlastní entita v AppSource. Když v [portál partnerů cloudu](https://cloudpartner.azure.com/)vytvoříte novou nabídku, budete muset zadat čtyři skupiny prostředků pro vaši nabídku.
 
-Skupiny majetku jsou popsány v následující tabulce:
+Skupiny assetů jsou popsány v následující tabulce:
 
-|   Skupina majetku      | Popis                                                                         |
+|   Skupina prostředků      | Popis                                                                         |
 | ----------------   | ----------------                                                                    |
-| Nastavení nabídky     | Primární identifikace a název nabídky.                                      |
-| Technické informace     | Adresa URL instalačního programu, kterou používáte k instalaci aplikace do klientského pracovního prostoru Power BI. Další informace o tom, jak tuto adresu URL vygenerovat, najdete v [dokumentaci k aplikacím Power BI](https://go.microsoft.com/fwlink/?linkid=2028636). |
-| Podrobnosti o výloze | Obsahuje marketingové, právní a olovo správcovských prostředků. Marketingové prostředky zahrnují popis nabídky a loga. Právní majetek zahrnuje zásady ochrany osobních údajů, podmínky použití a další právní dokumentaci. Zásady správy zájemců umožňují určit, jak zacházet s zájemci z uživatelského portálu AppSource. |
-| Kontakty           | Obsahuje informace o kontaktech podpory a zásadách.                                     |
+| Nastavení nabídky     | Primární identifikace a název nabídky                                      |
+| Technické informace     | Adresa URL instalačního programu, kterou použijete k instalaci aplikace v pracovním prostoru Power BI klienta. Další informace o tom, jak tuto adresu URL vygenerovat, najdete v [dokumentaci k aplikaci Power BI](https://go.microsoft.com/fwlink/?linkid=2028636). |
+| Prezentace podrobnosti | Obsahuje prostředky pro marketing, právní a vedoucí řízení. K marketingovým prostředkům patří popis nabídky a loga. Právní prostředky zahrnují zásady ochrany osobních údajů, podmínek použití a další právní dokumentaci. Zásady správy potenciálních zákazníků vám umožní určit, jak se mají zpracovávat potenciální zákazníky z portálu AppSource User Portal. |
+| Kontakty           | Obsahuje informace o kontaktech a zásadách podpory.                                     |
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky
 
-Po přihlášení k portálu partnerů cloudu vyberte v levém podokně **novou nabídku.** Chcete-li zobrazit formulář Nová nabídka a zahájit proces definování datových zdrojů pro novou nabídku aplikace, vyberte **možnost Aplikace Power BI**.
+Po přihlášení k portál partnerů cloudu v levém podokně vyberte **Nová nabídka** . Pak pokud chcete zobrazit formulář nové nabídky a zahájit proces definování assetů pro novou nabídku aplikace, vyberte **Power BI aplikace**.
 
-![Položka nabídky Power BI](./media/new-offer-menu.png)
+![Položka nabídky nabídky pro Power BI](./media/new-offer-menu.png)
 
 > [!NOTE] 
-> Pokud možnost **Aplikace Power BI** není zobrazená nebo není povolená, váš účet nemá oprávnění k vytvoření tohoto typu nabídky. Zkontrolujte, zda jste splnili všechny [požadavky](./cpp-prerequisites.md) pro tento typ nabídky, včetně registrace vývojářského účtu.
+> Pokud není zobrazená možnost **aplikace Power BI** nebo není povolená, váš účet nemá oprávnění k vytvoření tohoto typu nabídky. Zkontrolujte, jestli jste splnili všechny [předpoklady](./cpp-prerequisites.md) pro tento typ nabídky, včetně registrace pro vývojářský účet.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující články vysvětlují karty na stránce **Nová nabídka** pro typ nabídky aplikace Power BI. Každý článek popisuje skupiny prostředků a podpůrné služby pro novou nabídku aplikace Power BI.
+Následující články vysvětlují karty na **nové stránce nabídek** pro typ nabídky aplikace Power BI. Každý článek popisuje skupiny assetů a podpůrné služby pro novou nabídku aplikace Power BI.
 
 -  [Karta nastavení nabídky](./cpp-offer-settings-tab.md)
 -  [Karta Technické informace](./cpp-technical-info-tab.md)

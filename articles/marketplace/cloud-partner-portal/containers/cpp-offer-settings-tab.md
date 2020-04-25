@@ -1,5 +1,5 @@
 ---
-title: Nastavení nabídky pro bitovou kopii kontejnerů Azure | Azure Marketplace
+title: Nastavení nabídky pro Image kontejnerů Azure | Azure Marketplace
 description: Nakonfigurujte nastavení nabídky pro kontejner Azure.
 author: dsindona
 ms.service: marketplace
@@ -7,36 +7,36 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: dfdc588ffe3ca8c0f21e4111b6f4c66de162299d
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 61d9fa535d2bec0a52351ba6199183ea899a0e1c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270175"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146260"
 ---
-# <a name="container-offer-settings-tab"></a>Karta Nastavení nabídky kontejneru
+# <a name="container-offer-settings-tab"></a>Karta nastavení nabídky kontejneru
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek Azure Container do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky kontejneru Azure](https://aka.ms/CreateContainerOffer) ke správě migrovaných nabídek.
+> Od 13. dubna 2020 začneme přesouvat správu nabídek Azure Container do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Postupujte podle pokynů v části [vytvoření kontejneru Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) pro správu migrovaných nabídek.
 
-Otevře se stránka **Kontejnery > nová nabídka** se zaměřením na kartu **Nastavení nabídky.** 
+Zobrazí se stránka **kontejnery > nové nabídky** s fokusem na kartě **nastavení nabídky** . 
 
 ![Identita nabídky](./media/containers-offer-settings.png)
 
-## <a name="offer-identity-settings"></a>Nabídnout nastavení identity
+## <a name="offer-identity-settings"></a>Nastavení identity nabídky
 
-V části **Identita nabídky**je nutné zadat informace pro pole popsaná v následující tabulce. Hvězdička (*) připojená k názvu pole označuje, že je požadováno. 
+V části **Nabídka identity**musíte zadat informace pro pole popsaná v následující tabulce. Hvězdička (*), která je připojena k názvu pole, označuje, že je požadováno. 
 
 |  **Pole**       |     **Popis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **ID nabídky\***       | Jedinečný identifikátor (v rámci profilu vydavatele) pro nabídku. Tento identifikátor bude viditelný v adresách URL produktů a přehledech. Má maximální délku 50 znaků a může používat malé alfanumerické znaky a pomlčky (-). (Identifikátor nemůže končit pomlčkou.) **Poznámka:** Toto pole nelze změnit po přepychu nabídky do provozu. <br> Pokud například Contoso publikuje nabídku s **ukázkovým kontejnerem**ID nabídky `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-container?tab=Overview`, přiřadí se mu adresa URL Azure Marketplace . |
-| **Publisher ID\***     | Jedinečný identifikátor vaší organizace na Azure Marketplace. Všechny nabídky by měly být spojeny s vaším ID majitele stránek. Tuto hodnotu nelze po uložení nabídky změnit. |
-| **Jméno\***          | Zobrazovaný název vaší nabídky. Tento název se zobrazí na Azure Marketplace a na portálu partnerů cloudu. Může mít maximálně 50 znaků. Pro váš produkt doporučujeme používat rozpoznatelnou značku. Neuvádějte název organizace, pokud tak váš produkt neuvede na trh. Pokud tuto nabídku prodáváte na jiných webech a v publikacích, ujistěte se, že název je ve všech publikacích přesně stejný. |
+| **ID nabídky\***       | Jedinečný identifikátor (v rámci profilu vydavatele) pro nabídku. Tento identifikátor bude viditelný v adresách URL produktů a sestavách Insights. Má maximální délku 50 znaků a může používat malé alfanumerické znaky a pomlčky (-). (Identifikátor nemůže končit spojovníkem.) **Poznámka:** Po živé nabídce nelze toto pole změnit. <br> Pokud například contoso zveřejňuje nabídku s ID nabídky **-Container**, je jí přiřazena Azure Marketplace adresa URL `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-container?tab=Overview`. |
+| **ID vydavatele\***     | Jedinečný identifikátor vaší organizace v Azure Marketplace. Všechny vaše nabídky by se měly přidružit k vašemu vydavateli s vaším ID. Tuto hodnotu nelze po uložení nabídky změnit. |
+| **Název\***          | Zobrazovaný název vaší nabídky Tento název se zobrazí v Azure Marketplace a v portál partnerů cloudu. Může mít maximálně 50 znaků. Pro váš produkt doporučujeme použít rozpoznatelný název značky. Nepoužívejte název vaší organizace, pokud to nezpůsobuje uvedení produktu na trh. Pokud tuto nabídku zadáte na jiné weby a publikace, ujistěte se, že je název přesně stejný ve všech publikacích. |
 |  |  |
 
-Vyberte **Uložit,** chcete-li nastavení nabídky uložit.
+Vyberte **Uložit** a uložte nastavení nabídky.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Karta [SKU](./cpp-skus-tab.md) slouží ke konfiguraci virtuálních zařízení pro vaši nabídku.
+Použijte kartu [SKU](./cpp-skus-tab.md) ke konfiguraci SKU pro vaši nabídku.

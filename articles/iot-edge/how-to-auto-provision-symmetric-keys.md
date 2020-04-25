@@ -1,6 +1,6 @@
 ---
-title: Zřizovací zařízení pomocí symetrického atestace klíče – Azure IoT Edge
-description: Použití symetrického atestace klíče k testování automatického zřizování zařízení pro Azure IoT Edge se službou zřizování zařízení
+title: Zřízení zařízení pomocí ověření identity symetrického klíče – Azure IoT Edge
+description: Použití ověření identity symetrického klíče k testování automatického zřizování zařízení pro Azure IoT Edge se službou Device Provisioning
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,79 +9,79 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 139a2cafe137d000b991cbad8b8567e005ffc728
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c6c2067526850ba972f002dc40bbd5d4cb24c9ba
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668677"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131012"
 ---
-# <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Vytvoření a zřízení zařízení IoT Edge pomocí symetrického atestace klíče
+# <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Vytvoření a zřízení zařízení IoT Edge pomocí ověřování symetrického klíče
 
-Zařízení Azure IoT Edge se můžou automaticky zřizovat pomocí [služby Zřizování zařízení,](../iot-dps/index.yml) stejně jako zařízení, která nemají povolenou výhodu. Pokud nejste obeznámeni s procesem automatického zřizování, zkontrolujte [koncepty automatického zřizování](../iot-dps/concepts-auto-provisioning.md) před pokračováním.
+Zařízení Azure IoT Edge se dají automaticky zřídit pomocí [služby Device Provisioning](../iot-dps/index.yml) , stejně jako zařízení, která nejsou povolená přes hranice. Pokud nejste obeznámeni s procesem automatického zřizování, před pokračováním zkontrolujte [Koncepty automatického zřizování](../iot-dps/concepts-auto-provisioning.md) .
 
-Tento článek ukazuje, jak vytvořit individuální zápis služby Device Provisioning Service pomocí atestace symetrického klíče na zařízení IoT Edge s následujícími kroky:
+V tomto článku se dozvíte, jak vytvořit službu Device Provisioning pomocí ověření symetrického klíče na zařízení IoT Edge pomocí následujících kroků:
 
-* Vytvořte instanci služby Zřizování zařízení služby IoT Hub (DPS).
-* Vytvořte individuální registraci pro zařízení.
-* Nainstalujte runtime IoT Edge a připojte se k ioT hubu.
+* Vytvořte instanci IoT Hub Device Provisioning Service (DPS).
+* Vytvořte jednotlivou registraci zařízení.
+* Nainstalujte modul runtime IoT Edge a připojte se k IoT Hub.
 
-Symetrické atestace klíče je jednoduchý přístup k ověřování zařízení s instancí služby Device Provisioning Service. Tato metoda atestace představuje prostředí "Hello world" pro vývojáře, kteří jsou nové pro zřizování zařízení nebo nemají přísné požadavky na zabezpečení. Atestace zařízení pomocí certifikátů [TPM](../iot-dps/concepts-tpm-attestation.md) nebo [X.509](../iot-dps/concepts-security.md#x509-certificates) je bezpečnější a měla by být použita pro přísnější požadavky na zabezpečení.
+Symetrický ověření identity je jednoduchý přístup k ověřování zařízení pomocí instance služby Device Provisioning. Tato metoda ověření identity představuje prostředí "Hello World" pro vývojáře, kteří jsou noví v zřizování zařízení, nebo nemají přísné požadavky na zabezpečení. Ověření zařízení pomocí [čipu TPM](../iot-dps/concepts-tpm-attestation.md) nebo [X. 509](../iot-dps/concepts-security.md#x509-certificates) je bezpečnější a mělo by se používat pro přísnější požadavky na zabezpečení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Aktivní centrum IoT Hub
+* Aktivní IoT Hub
 * Fyzické nebo virtuální zařízení
 
-## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Nastavení služby zřizování zařízení služby IoT Hub
+## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Nastavení IoT Hub Device Provisioning Service
 
-Vytvořte novou instanci služby Zřizování zařízení služby IoT Hub v Azure a propojte ji s vaším centrem IoT hub. Podle pokynů můžete [postupovat v části Nastavení DPS centra IoT](../iot-dps/quick-setup-auto-provision.md)Hub .
+Vytvořte novou instanci IoT Hub Device Provisioning Service v Azure a propojte ji se službou IoT Hub. Můžete postupovat podle pokynů v tématu [nastavení IoT Hub DPS](../iot-dps/quick-setup-auto-provision.md).
 
-Po spuštění služby Device Provisioning Service zkopírujte hodnotu **oboru ID** ze stránky s přehledem. Tuto hodnotu použijete při konfiguraci běhu IoT Edge.
+Po spuštění služby Device Provisioning zkopírujte na stránce Přehled hodnotu **Rozsah ID** . Tuto hodnotu použijete při konfiguraci modulu runtime IoT Edge.
 
-## <a name="choose-a-unique-registration-id-for-the-device"></a>Zvolte jedinečné ID registrace pro zařízení
+## <a name="choose-a-unique-registration-id-for-the-device"></a>Zvolit jedinečný registrační identifikátor zařízení
 
-Pro identifikaci každého zařízení musí být definováno jedinečné ID registrace. Můžete použít mac adresu, sériové číslo nebo jakékoli jedinečné informace ze zařízení.
+Aby bylo možné identifikovat jednotlivá zařízení, musí být definováno jedinečné ID registrace. V zařízení můžete použít adresu MAC, sériové číslo nebo libovolné jedinečné informace.
 
-V tomto příkladu používáme kombinaci ADRESY MAC a sériového čísla tvořícího následující řetězec pro ID registrace: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`.
+V tomto příkladu používáme kombinaci adresy MAC a sériového čísla, které tvoří následující řetězec pro ID registrace: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`.
 
-Vytvořte jedinečné ID registrace pro vaše zařízení. Platné znaky jsou malá alfanumerická a pomlčka ('-').
+Vytvořte jedinečné ID registrace pro vaše zařízení. Platné znaky jsou malé alfanumerické znaky a spojovníky (-).
 
 ## <a name="create-a-dps-enrollment"></a>Vytvoření registrace DPS
 
-Pomocí ID registrace vašeho zařízení vytvořte individuální registraci v DPS.
+Pomocí ID registrace vašeho zařízení vytvořte jednotlivou registraci v DPS.
 
-Při vytváření registrace v DPS máte možnost deklarovat **počáteční stav dvojčete zařízení**. V dvojčeti zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky se používají k vytvoření [automatických nasazení](how-to-deploy-monitor.md).
+Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav**dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
 
 > [!TIP]
-> Skupiny zápisy jsou také možné při použití symetrické hoda a osazení a zahrnují stejná rozhodnutí jako jednotlivé zápisy.
+> Registrace skupin je také možné použít při použití symetrického ověřování klíčů a zahrnovat stejná rozhodnutí jako jednotlivé registrace.
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na instanci služby Zřizování zařízení služby IoT Hub.
+1. V [Azure Portal](https://portal.azure.com)přejděte do vaší instance IoT Hub Device Provisioning Service.
 
-1. V části **Nastavení**vyberte **Spravovat registrace**.
+1. V části **Nastavení**vyberte **spravovat registrace**.
 
-1. Vyberte **Přidat individuální zápis** a proveďte následující kroky konfigurace registrace:  
+1. Vyberte **přidat jednotlivou registraci** a potom proveďte následující kroky, abyste nakonfigurovali registraci:  
 
-   1. V **případě mechanismu**vyberte možnost **Symetrický klíč**.
+   1. V případě **mechanismu**vyberte **symetrický klíč**.
 
-   1. Zaškrtněte políčko **Automaticky generovat klávesy.**
+   1. Zaškrtněte políčko **automaticky generovat klíče** .
 
-   1. Zadejte **ID registrace,** které jste pro své zařízení vytvořili.
+   1. Zadejte **ID registrace** , které jste vytvořili pro vaše zařízení.
 
-   1. Pokud chcete, zadejte **ID zařízení centra IoT** Hub pro své zařízení. ID zařízení můžete použít k cílení na jednotlivé zařízení pro nasazení modulu. Pokud ID zařízení nezadáte, použije se ID registrace.
+   1. Pokud chcete, zadejte **ID zařízení IoT Hub** . Pomocí ID zařízení můžete cílit na jednotlivá zařízení pro nasazení modulů. Pokud ID zařízení nezadáte, použije se ID registrace.
 
-   1. Vyberte **True,** chcete-li deklarovat, že registrace je pro zařízení IoT Edge. Pro registraci skupiny musí být všechna zařízení zařízení IoT Edge nebo žádná z nich nemůže být.
+   1. Vyberte **hodnotu true** , pokud chcete deklarovat, že registrace je určena pro IoT Edge zařízení. V případě registrace skupiny musí být všechna zařízení IoT Edge nebo žádná z nich nemůžete.
 
    > [!TIP]
-   > V rozhraní příkazového příkazu k systému Azure můžete vytvořit [registraci](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu zápisů](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí **příznaku s podporou okrajů** určit, že zařízení nebo skupina zařízení je zařízení IoT Edge.
+   > V Azure CLI můžete vytvořit [registraci](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu registrace](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí příznaku s **povoleným okrajem** určit, že zařízení nebo skupina zařízení je IoT Edge zařízení.
 
-   1. Přijměte výchozí hodnotu ze zásad přidělení služby Device Provisioning Service pro **způsob přiřazení zařízení k rozbočovačům** nebo zvolte jinou hodnotu, která je specifická pro tento zápis.
+   1. Přijměte výchozí hodnotu ze zásad přidělení služby Device Provisioning pro **způsob, jakým chcete přiřadit zařízení k rozbočovačům** , nebo vyberte jinou hodnotu, která je specifická pro tento zápis.
 
-   1. Vyberte propojené **služby IoT Hub,** ke kterému chcete zařízení připojit. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno jednomu z nich podle vybraných zásad přidělení.
+   1. Vyberte propojené **IoT Hub** , ke kterým chcete zařízení připojit. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno k jednomu z nich podle vybrané zásady přidělování.
 
-   1. **Zvolte, jak chcete s daty zařízení nacházet při opětovném zřizování,** když zařízení poprvním požadavku na zřízení požadují zřizování.
+   1. Vyberte **, jak chcete, aby se data zařízení při opětovném zřizování zpracovala** při zřizování zařízení po prvním přihlášení.
 
-   1. Pokud chcete, přidejte hodnotu značky do **počátečního stavu dvojčete zařízení.** Značky můžete použít k cílení skupin zařízení pro nasazení modulu. Například:
+   1. Pokud chcete, přidejte hodnotu značky do **počátečního stavového vlákna zařízení** . Pomocí značek můžete cílit skupiny zařízení na nasazení modulů. Příklad:
 
       ```json
       {
@@ -94,28 +94,28 @@ Při vytváření registrace v DPS máte možnost deklarovat **počáteční sta
       }
       ```
 
-   1. Ujistěte **se, že** položka Povolit je nastavena na **povolit**.
+   1. Ujistěte se, že **položka povolit položku** je nastavená na **Povolit**.
 
    1. Vyberte **Uložit**.
 
-Teď, když pro toto zařízení existuje registrace, může runtime IoT Edge automaticky zřídit zařízení během instalace. Nezapomeňte zkopírovat hodnotu **primárního klíče** registrace, která se použije při instalaci runtime IoT Edge, nebo pokud budete vytvářet klíče zařízení pro použití s registrací skupiny.
+Teď, když pro toto zařízení existuje registrace, IoT Edge modul runtime může zařízení během instalace automaticky zřídit. Nezapomeňte zkopírovat hodnotu **primárního klíče** registrace, která se má použít při instalaci IoT Edge runtime, nebo pokud budete vytvářet klíče zařízení pro použití se zápisem skupiny.
 
-## <a name="derive-a-device-key"></a>Odvození klíče zařízení
+## <a name="derive-a-device-key"></a>Odvodit klíč zařízení
 
 > [!NOTE]
-> Tato část je vyžadována pouze v případě, že používáte registraci skupiny.
+> Tato část se vyžaduje jenom v případě, že používáte registraci skupiny.
 
-Každé zařízení používá svůj odvozený klíč zařízení s jedinečným ID registrace k provedení symetrického atestace klíče s registrací během zřizování. Chcete-li generovat klíč zařízení, použijte klíč, který jste zkopírovali z registrace DPS, k výpočtu [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) jedinečného Registračního ID pro zařízení a převeďte výsledek do formátu Base64.
+Každé zařízení používá svůj odvozený klíč zařízení s jedinečným ID registrace k provádění ověření symetrického klíče pomocí zápisu během zřizování. Pokud chcete vygenerovat klíč zařízení, použijte klíč, který jste zkopírovali z registrace DPS, k výpočtu [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) jedinečného ID registrace pro zařízení a převod výsledku na Formát Base64.
 
-Do kódu zařízení nezahrnujte primární nebo sekundární klíč registrace.
+Do kódu zařízení nezahrnujte primární ani sekundární klíč registrace.
 
-### <a name="linux-workstations"></a>Linuxové pracovní stanice
+### <a name="linux-workstations"></a>Pracovní stanice Linux
 
-Pokud používáte pracovní stanici Linux, můžete použít openssl ke generování odvozeného klíče zařízení, jak je znázorněno v následujícím příkladu.
+Pokud používáte pracovní stanici se systémem Linux, můžete použít OpenSSL k vygenerování odvozeného klíče zařízení, jak je znázorněno v následujícím příkladu.
 
-Nahraďte hodnotu **klíče** **primárním klíčem,** který jste si poznamenali dříve.
+Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
 
-Nahraďte hodnotu **REG_ID** registračním ID zařízení.
+Hodnotu **REG_ID** nahraďte ID registrace vašeho zařízení.
 
 ```bash
 KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
@@ -131,11 +131,11 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ### <a name="windows-based-workstations"></a>Pracovní stanice založené na systému Windows
 
-Pokud používáte pracovní stanici se systémem Windows, můžete pomocí prostředí PowerShell vygenerovat odvozený klíč zařízení, jak je znázorněno v následujícím příkladu.
+Pokud používáte pracovní stanici se systémem Windows, můžete použít PowerShell k vygenerování odvozeného klíče zařízení, jak je znázorněno v následujícím příkladu.
 
-Nahraďte hodnotu **klíče** **primárním klíčem,** který jste si poznamenali dříve.
+Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
 
-Nahraďte hodnotu **REG_ID** registračním ID zařízení.
+Hodnotu **REG_ID** nahraďte ID registrace vašeho zařízení.
 
 ```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
@@ -152,26 +152,26 @@ echo "`n$derivedkey`n"
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
-## <a name="install-the-iot-edge-runtime"></a>Instalace runtime IoT Edge
+## <a name="install-the-iot-edge-runtime"></a>Instalace modulu runtime IoT Edge
 
-Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho součásti spustit v kontejnerech a umožňují nasadit další kontejnery do zařízení, takže můžete spustit kód na okraji.
+Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho komponenty se spouštějí v kontejnerech a umožňují na zařízení nasadit další kontejnery, abyste mohli spustit kód na hraničních zařízeních.
 
 Při zřizování zařízení budete potřebovat následující informace:
 
-* Hodnota **oboru DPS ID**
+* Hodnota **rozsahu ID** DPS
 * **ID registrace** zařízení, které jste vytvořili
-* **Primární klíč,** který jste zkopírovali z registrace DPS
+* **Primární klíč** , který jste zkopírovali z registrace DPS
 
 > [!TIP]
-> Pro registrace skupiny potřebujete [odvozený klíč](#derive-a-device-key) každého zařízení, nikoli registrační klíč DPS.
+> Pro zápis skupin potřebujete místo registračního klíče každého zařízení [odvozený klíč](#derive-a-device-key) každého zařízení.
 
-### <a name="linux-device"></a>Linuxové zařízení
+### <a name="linux-device"></a>Zařízení se systémem Linux
 
-Postupujte podle pokynů pro architekturu vašeho zařízení. Ujistěte se, že konfigurace ioT Edge runtime pro automatické, ne ruční zřizování.
+Postupujte podle pokynů pro architekturu vašeho zařízení. Nezapomeňte nakonfigurovat IoT Edge runtime pro automatické, ne ruční zřizování.
 
-[Instalace runtime Azure IoT Edge na Linux](how-to-install-iot-edge-linux.md)
+[Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md)
 
-Oddíl v konfiguračním souboru pro zřizování symetrických klíčů vypadá takto:
+Oddíl konfiguračního souboru pro zajištění symetrického klíče vypadá takto:
 
 ```yaml
 # DPS symmetric key provisioning configuration
@@ -185,28 +185,28 @@ provisioning:
       symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-Nahraďte zástupné `<SCOPE_ID>` `<REGISTRATION_ID>`hodnoty `<SYMMETRIC_KEY>` pro , a data, která jste shromáždili dříve. Ujistěte se, že **zřizování:** řádek nemá žádné předchozí mezery a že vnořené položky jsou odsazeny dvěma mezerami.
+Nahraďte zástupné `<SCOPE_ID>`hodnoty `<REGISTRATION_ID>`pro, `<SYMMETRIC_KEY>` a daty, která jste shromáždili dříve. Ujistěte se, že **zřizování:** řádek neobsahuje žádné předchozí prázdné znaky a že vnořené položky jsou odsazeny dvěma mezerami.
 
 ### <a name="windows-device"></a>Zařízení s Windows
 
-Nainstalujte runtime IoT Edge na zařízení, pro které jste vygenerovali odvozený klíč zařízení. Nakonfigurujete runtime IoT Edge pro automatické, ne ruční zřizování.
+Nainstalujte modul runtime IoT Edge na zařízení, pro které jste vygenerovali odvozený klíč zařízení. Nastavíte modul runtime IoT Edge pro automatické, ne ruční zřizování.
 
-Podrobnější informace o instalaci IoT Edge do Windows, včetně předpokladů a pokynů pro úlohy, jako je správa kontejnerů a aktualizace IoT Edge, najdete [v tématu Instalace runtime Azure IoT Edge v systému Windows](how-to-install-iot-edge-windows.md).
+Podrobnější informace o instalaci IoT Edge ve Windows, včetně požadavků a pokynů pro úlohy, jako je Správa kontejnerů a aktualizace IoT Edge, najdete v tématu [Instalace modulu runtime Azure IoT Edge ve Windows](how-to-install-iot-edge-windows.md).
 
-1. Otevřete okno PowerShellu v režimu správce. Nezapomeňte použít relaci AMD64 powershellu při instalaci IoT Edge, ne PowerShell (x86).
+1. Otevřete okno PowerShellu v režimu správce. Při instalaci IoT Edge, ne pomocí PowerShellu (x86) nezapomeňte použít relaci AMD64 prostředí PowerShell.
 
-1. Příkaz **Deploy-IoTEdge** zkontroluje, zda je váš počítač se systémem Windows v podporované verzi, zapne funkci kontejnerů a poté stáhne modul runtime moby a modul runtime IoT Edge. Příkaz je výchozí pro použití kontejnerů systému Windows.
+1. Příkaz **Deploy-IoTEdge** zkontroluje, jestli má počítač s Windows podporovanou verzi, zapne funkci Containers a pak stáhne modul runtime Moby a modul runtime IoT Edge. Příkaz ve výchozím nastavení používá kontejnery Windows.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-1. V tomto okamžiku se zařízení IoT Core mohou automaticky restartovat. K restartování vás mohou vyzvat jiná zařízení s Windows 10 nebo Windows Server. Pokud ano, restartujte zařízení nyní. Jakmile je vaše zařízení připravené, spusťte PowerShell znovu jako správce.
+1. V tuto chvíli se zařízení IoT Core můžou restartovat automaticky. Jiná zařízení s Windows 10 nebo Windows Server vás můžou vyzvat k restartování. Pokud ano, restartujte zařízení nyní. Až bude zařízení připravené, spusťte PowerShell jako správce znovu.
 
-1. Příkaz **Initialize-IoTEdge** konfiguruje runtime IoT Edge ve vašem počítači. Příkaz výchozí ruční zřizování s kontejnery `-Dps` systému Windows, pokud používáte příznak použít automatické zřizování.
+1. Příkaz **Initialize-IoTEdge** nakonfiguruje IoT Edge modul runtime na vašem počítači. Příkaz se ve výchozím nastavení provede ručním zřizováním pomocí kontejnerů Windows `-Dps` , pokud nepoužijete příznak pro Automatické zřizování.
 
-   Nahraďte zástupné `{scope_id}` `{registration_id}`hodnoty `{symmetric_key}` pro , a data, která jste shromáždili dříve.
+   Nahraďte zástupné `{scope_id}`hodnoty `{registration_id}`pro, `{symmetric_key}` a daty, která jste shromáždili dříve.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -215,9 +215,9 @@ Podrobnější informace o instalaci IoT Edge do Windows, včetně předpokladů
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
-Pokud modul runtime úspěšně začal, můžete přejít do služby IoT Hub a začít nasazovat moduly IoT Edge do vašeho zařízení. Pomocí následujících příkazů v zařízení ověřte, zda byl runtime úspěšně nainstalován a spuštěn.
+Pokud se modul runtime úspěšně spustil, můžete přejít do svého IoT Hub a začít nasazovat IoT Edge moduly do svého zařízení. Pomocí následujících příkazů na zařízení ověřte, že modul runtime byl úspěšně nainstalován a spuštěn.
 
-### <a name="linux-device"></a>Linuxové zařízení
+### <a name="linux-device"></a>Zařízení se systémem Linux
 
 Zkontrolujte stav služby IoT Edge.
 
@@ -225,13 +225,13 @@ Zkontrolujte stav služby IoT Edge.
 systemctl status iotedge
 ```
 
-Zkontrolujte protokoly služby.
+Projděte si protokoly služby.
 
 ```cmd/sh
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Seznam spuštěných modulů.
+Vypíše spuštěné moduly.
 
 ```cmd/sh
 iotedge list
@@ -245,20 +245,20 @@ Zkontrolujte stav služby IoT Edge.
 Get-Service iotedge
 ```
 
-Zkontrolujte protokoly služby.
+Projděte si protokoly služby.
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Seznam spuštěných modulů.
+Vypíše spuštěné moduly.
 
 ```powershell
 iotedge list
 ```
 
-Můžete ověřit, že byla použita individuální registrace, kterou jste vytvořili ve službě Device Provisioning Service. Přejděte na instanci služby zřizování zařízení na webu Azure Portal. Otevřete podrobnosti o registraci pro jednotlivé registrace, které jste vytvořili. Všimněte si, že je **přiřazen** stav registrace a id zařízení je uveden.
+Můžete ověřit, že se použil jednotlivý zápis, který jste vytvořili v rámci služby Device Provisioning. V Azure Portal přejděte na instanci služby Device Provisioning. Otevřete podrobnosti registrace pro jednotlivou registraci, kterou jste vytvořili. Všimněte si, že je **přiřazený** stav registrace a že je uvedené ID zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Proces registrace služby Device Provisioning Service umožňuje nastavit ID zařízení a značky dvojčete zařízení současně s zřízením nového zařízení. Tyto hodnoty můžete použít k cílení na jednotlivá zařízení nebo skupiny zařízení pomocí automatické správy zařízení. Zjistěte, jak [nasadit a monitorovat moduly IoT Edge ve velkém měřítku pomocí portálu Azure](how-to-deploy-monitor.md) nebo [pomocí rozhraní příkazového příkazového příkazu Azure](how-to-deploy-monitor-cli.md).
+Proces registrace služby Device Provisioning umožňuje nastavit ID zařízení a nedokončené značky zařízení současně, když zřizujete nové zařízení. Tyto hodnoty můžete použít k zaměření jednotlivých zařízení nebo skupin zařízení pomocí automatické správy zařízení. Naučte se, jak [nasadit a monitorovat IoT Edge moduly ve velkém měřítku pomocí Azure Portal](how-to-deploy-at-scale.md) nebo [pomocí Azure CLI](how-to-deploy-cli-at-scale.md).

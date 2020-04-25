@@ -1,42 +1,42 @@
 ---
 title: Vytvoření nabídky modulu Azure IoT Edge | Azure Marketplace
-description: Jak publikovat nový modul IoT Edge pro Marketplace.
+description: Jak publikovat nový modul IoT Edge pro Marketplace
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ab40a0e90bee8f034d811aac2781192359cbc109
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d8f4300f45fc626c104055f987d123301ba8f39d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981745"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148066"
 ---
-# <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Vytvoření nové nabídky modulů IoT Edge pomocí portálu partnerů cloudu
+# <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Vytvoření nové nabídky modulu IoT Edge s využitím portál partnerů cloudu
 
 >[!Important]
->dubna 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
+>Od 13. dubna 2020 začneme přesouvat správu nabídek IoT Edge modulů do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Podle pokynů v tématu [vytvoření IoT Edge modulu nabídky](https://docs.microsoft.com//azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) můžete spravovat migrované nabídky.
 
-Tento článek popisuje, jak vytvořit a publikovat položku nabídky modulu IoT Edge pro Azure Marketplace. Každá nabídka se na Azure Marketplace zobrazuje jako vlastní entita a je přidružená k jedné nebo více skum.  Nabídka modulu IoT Edge se skládá z následujících skupin prostředků a podpůrných služeb:
+Tento článek popisuje, jak vytvořit a publikovat položku nabídky IoT Edge modulu pro Azure Marketplace. Každá nabídka se zobrazí jako vlastní entita v Azure Marketplace a je spojena s jednou nebo více SKU.  Nabídka modulu IoT Edge se skládá z následujících skupin prostředků a podpůrných služeb:
 
-|  **Skupina majetku**   |  **Popis**  |
+|  **Skupina prostředků**   |  **Popis**  |
 |  ---------------   |  ---------------  |
-|    SKU            |  Nejmenší nasaditelná jednotka nabídky. Jedna nabídka (třída produktu) může mít více sku s ku s sebou přidružené k nabídce. Sku lze rozlišovat mezi podporovanými funkcemi a fakturačními modely. |
-|  Marketplace       | Obsahuje marketingová, právní a vedoucí aktiva a specifikace správy.  <ul><li> Marketingové prostředky zahrnují název nabídky, popis a loga</li> <li> Právní majetek zahrnuje zásady ochrany osobních údajů, podmínky použití a další právní dokumentaci</li>  <li> Zásady správy potenciálních zákazníků umožňují určit, jak zpracovat zájemce z portálu koncového uživatele Azure Marketplace.</li> </ul> |
-| Podpora            | Obsahuje informace o kontaktech podpory a zásadách. |
+|    SKU            |  Nejmenší jednotka v nabídce k nasazení. K jedné nabídce (třídě produktu) může být přidruženo několik SKU přidružených k této nabídce. Můžete použít SKU k odlišení podporovaných funkcí a modelů fakturace. |
+|  Marketplace       | Obsahuje prostředky a specifikace pro marketing, právní a vedoucí.  <ul><li> Marketingové prostředky zahrnují název nabídky, popis a loga.</li> <li> Právní prostředky zahrnují zásady ochrany osobních údajů, podmínek použití a další právní dokumentaci.</li>  <li> Zásady správy potenciálních zákazníků vám umožní určit, jak se mají zpracovávat potenciální zákazníky z portálu Azure Marketplace portál pro koncové uživatele.</li> </ul> |
+| Podpora            | Obsahuje informace o kontaktech a zásadách podpory |
 
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky 
 
-Přihlaste se k [portálu partnerů cloudu](https://cloudpartner.azure.com/)a na levém řádku nabídek vyberte **+ nová nabídka.** V nabídce Nová nabídka vyberte **Moduly IoT Edge,** chcete-li zobrazit formulář **Nová nabídka** a spustit proces definování datových zdrojů pro novou nabídku modulu ioT Edge Module. 
+Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/)a v levém řádku nabídek vyberte **+ Nová nabídka** . V nabídce nová nabídka vyberte **IoT Edge moduly** pro zobrazení **nového formuláře nabídky** a spusťte proces definování prostředků pro novou nabídku modulu IoT Edge. 
 
-![Nový modul IoT Edge nabízí výběr uživatelského rozhraní](./media/new-iot-edge-module-offer.png)
+![Výběr uživatelského rozhraní nabídky modulu New IoT Edge](./media/new-iot-edge-module-offer.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Stránka **Nová nabídka** pro typ nabídky modulu IoT Edge obsahuje sadu karet a polí formulářů, které použijete k vytvoření nové nabídky. Každý z následujících článků vysvětluje, jak pomocí karty definovat skupiny prostředků a podpůrné služby pro novou nabídku modulu IoT Edge.
+**Nová stránka nabídky** pro typ nabídky IoT Edge modul poskytuje sadu karet a polí formuláře, které použijete k vytvoření nové nabídky. V následujících článcích se dozvíte, jak pomocí karty definovat skupiny assetů a podpůrné služby pro novou nabídku modulu IoT Edge.
 
 - [Karta nastavení nabídky](./cpp-offer-settings-tab.md)
 - [Karta Skladové položky](./cpp-skus-tab.md)

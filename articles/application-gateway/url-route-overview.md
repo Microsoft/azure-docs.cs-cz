@@ -1,18 +1,18 @@
 ---
 title: Přehled směrování obsahu na základě adresy URL v Azure Application Gateway
-description: Tento článek obsahuje přehled směrování obsahu založeného na adresách URL na základě adresy AZURE Application Gateway, konfigurace UrlPathMap a pravidla PathBasedRouting.
+description: Tento článek poskytuje přehled směrování obsahu založeného na adrese URL Azure Application Gateway, konfigurace UrlPathMap a pravidla PathBasedRouting.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d393055b0ac62198bd5a7239b2b92b7aeff62e5
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77251834"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145355"
 ---
 # <a name="url-path-based-routing-overview"></a>Přehled směrování na základě cest URL
 
@@ -24,10 +24,10 @@ V následujícím příkladu služba Application Gateway obsluhuje provoz pro co
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Požadavky na\:http //contoso.com/video/* jsou směrovány do\:Fondu VideoServerA a http //contoso.com/images/* jsou směrovány do fondu ImageServerPool. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
+Požadavky na http\://contoso.com/video/* jsou směrovány do videofondserveru a http\://contoso.com/images/* jsou směrovány do obrazkyfondserveru. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
 
 > [!IMPORTANT]
-> Pro skladovou položku v1 jsou pravidla zpracována v pořadí, v jakém jsou uvedena na portálu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem. Pro skladovou položku v2 mají přesné shody vyšší prioritu. Důrazně se však doporučuje nejprve nakonfigurovat posluchače s více sítěmi před konfigurací základního naslouchací procesu. Tím se zajistí směrování provozu do správného back-endu.
+> V případě SKU V1 se pravidla zpracovávají v pořadí, v jakém jsou uvedena na portálu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem. V případě SKU verze V2 mají přesné shody vyšší prioritu. Před konfigurací základního naslouchacího procesu se ale důrazně doporučuje nakonfigurovat nejprve naslouchací procesy pro více webů. Tím se zajistí směrování provozu do správného back-endu.
 
 ## <a name="urlpathmap-configuration-element"></a>Konfigurační prvek UrlPathMap
 
@@ -62,17 +62,17 @@ Prvek UrlPathMap slouží k určení vzorů cest pro mapování fondů back-end 
 }]
 ```
 
-### <a name="pathpattern"></a>Vzor cesty
+### <a name="pathpattern"></a>PathPattern
 
-PathPattern je seznam vzorů cesty, které mají odpovídat. Každý vzor musí začínat znakem „/“ a znak „*“ lze použít pouze na konci za znakem „/“. Řetězec přidaný do matcheru cesty neobsahuje žádný text po prvním ? nebo #, a tyto znaky zde nejsou povoleny. V opačném případě jsou v pathpatternu povoleny všechny znaky povolené v adrese URL.
+PathPattern je seznam vzorů cest, který se má shodovat. Každý vzor musí začínat znakem „/“ a znak „*“ lze použít pouze na konci za znakem „/“. Řetězec dodaný do shody cest nezahrnuje text za první? nebo # a tyto znaky tady nejsou povolené. V opačném případě jsou všechny znaky povolené v adrese URL povoleny v PathPattern.
 
-Podporované vzory závisí na tom, zda nasadíte aplikační bránu v1 nebo v2:
+Podporované vzory závisí na tom, jestli nasazujete Application Gateway v1 nebo v2:
 
-#### <a name="v1"></a>v1
+#### <a name="v1"></a>V1
 
-Pravidla cesty jsou malá a velká písmena.
+Pravidla cesty rozlišují malá a velká písmena.
 
-|vzor cesty v1  |Je podporována?  |
+|V1 – vzor cesty  |Je podporováno?  |
 |---------|---------|
 |`/images/*`     |ano|
 |`/images*`     |ne|
@@ -83,9 +83,9 @@ Pravidla cesty jsou malá a velká písmena.
 
 #### <a name="v2"></a>v2
 
-Pravidla cesty jsou malá a velká písmena.
+Pravidla cesty rozlišují malá a velká písmena.
 
-|vzor cesty v2  |Je podporována?  |
+|V2 – vzor cesty  |Je podporováno?  |
 |---------|---------|
 |`/images/*`     |ano|
 |`/images*`     |ano|
@@ -113,8 +113,8 @@ Fragment pravidla PathBasedRouting:
         "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/httpListeners/<listenerName>"
     },
     "urlPathMap": {
-        "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/ urlPathMaps/{urlpathMapName}"
-    },
+        "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/urlPathMaps/{urlpathMapName}"
+    }
 
 }
     }

@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Gateway & poznámky k verzi Azure Data Box Edge 1911| Dokumenty společnosti Microsoft
-description: Popisuje kritické otevřené problémy a řešení pro Azure Data Box Gateway a Azure Data Box Edge s verzí 1911.
+title: Azure Stack Edge & zpráva k vydání verze Azure Data Box Gateway 1911 | Microsoft Docs
+description: Popisuje kritické otevřené problémy a řešení pro Azure Stack Edge a Data Box Gateway spuštění 1911 verze.
 services: databox
 author: priestlg
 ms.service: databox
@@ -8,36 +8,36 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: v-grpr
-ms.openlocfilehash: 325f3dea8ae43f9a788efc7d215e184af8c30330
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 526f0ae21ac0c49d8c5fd984b09b7a2252afb606
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82087683"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129354"
 ---
-# <a name="azure-data-box-edge-and-azure-data-box-gateway-1911-release-notes"></a>Azure Data Box Edge a Azure Data Box Gateway 1911 poznámky k verzi
+# <a name="azure-stack-edge-and-azure-data-box-gateway-1911-release-notes"></a>Zpráva k vydání verze Azure Stack Edge a Azure Data Box Gateway 1911
 
-Následující poznámky k verzi identifikují důležité problémy s otevřením a vyřešené problémy pro verzi 1911 pro Azure Data Box Edge a Azure Data Box Gateway.
+Následující poznámky k verzi identifikují kritické otevřené problémy a vyřešené problémy pro vydání 1911 pro Azure Stack Edge a Data Box Gateway.
 
-Poznámky k verzi jsou průběžně aktualizovány a jako kritické problémy, které vyžadují řešení jsou zjištěny, jsou přidány. Před nasazením brány Data Box Edge/Data Box Gateway pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
+Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením Azure Stack Edge/Data Box Gateway pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
 Tato verze odpovídá verzím softwaru:
 
-- **Brána datové schránky 1911 (1.6.1049.786)**
-- **Datová schránka Edge 1911 (1.6.1049.786)**
+- **Azure Stack Edge 1911 (1.6.1049.786)**
+- **Data Box Gateway 1911 (1.6.1049.786)**
 
 > [!NOTE]
-> Aktualizaci 1911 lze použít pouze pro všechna zařízení, na kterých jsou spuštěny verze softwaru obecné dostupnosti (GA) nebo novější.
+> Aktualizace 1911 se dá použít jenom pro všechna zařízení, na kterých běží Obecná dostupnost softwaru (GA) nebo novější verze.
 
-## <a name="whats-new"></a>Novinky
+## <a name="whats-new"></a>Co je nového
 
-Ve verzi 1911 nejsou žádné nové funkce, pouze opravy chyb.
+Ve verzi 1911 nejsou žádné nové funkce, jenom opravy chyb.
 
-## <a name="known-issues-in-ga-release"></a>Známé problémy ve verzi GA
+## <a name="known-issues-in-this-release"></a>Známé problémy v této verzi
 
-Žádné nové problémy jsou vydání uvedeno pro tuto verzi. Všechny problémy s vydáním se přenesly z předchozích verzí. Seznam známých problémů naleznete ve verzi GA na jdete na [známé problémy.](data-box-gateway-release-notes.md#known-issues-in-ga-release)
+Pro tuto verzi se neuvedly žádné nové problémy. Všechny uvedené verze převzaly problémy z předchozích verzí. Pokud chcete zobrazit seznam známých problémů, přejděte ke [známým problémům ve verzi GA](data-box-gateway-release-notes.md#known-issues-in-ga-release).
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Příprava na nasazení Azure Stack Edge](data-box-edge-deploy-prep.md)
 - [Příprava k nasazení služby Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
-- [Příprava k nasazení služby Azure Data Box Edge](data-box-edge-deploy-prep.md)

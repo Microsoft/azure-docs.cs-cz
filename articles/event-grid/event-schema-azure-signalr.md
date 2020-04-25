@@ -1,37 +1,37 @@
 ---
-title: Azure SingnalR jako zdroj mřížky událostí
-description: Popisuje vlastnosti, které jsou k dispozici pro události Azure SignalR s Azure Event Grid
+title: Azure Signal jako zdroj Event Grid
+description: Popisuje vlastnosti, které jsou k dispozici pro události služby Azure Signal s Azure Event Grid
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/23/2020
 ms.author: babanisa
-ms.openlocfilehash: 730d1a7a053ab636c45313dd0c35a537434eb782
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393399"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133722"
 ---
-# <a name="azure-event-grid-event-schema-for-signalr-service"></a>Schéma událostí Azure Event Grid pro službu SignalR
+# <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid schéma událostí pro službu Signal
 
-Tento článek obsahuje vlastnosti a schéma událostí služby SignalR.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md). Poskytuje také seznam rychlých spuštění a kurzů pro použití Azure SignalR jako zdroj událostí.
+Tento článek poskytuje vlastnosti a schéma pro události služby signalizace.Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md). Nabízí také seznam rychlých startů a kurzů pro použití služby Azure Signal jako zdroje událostí.
 
-## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
+## <a name="event-grid-event-schema"></a>Schéma událostí služby Event Grid
 
 ### <a name="available-event-types"></a>Dostupné typy událostí
 
-Služba SignalR vydává následující typy událostí:
+Služba signalizace emituje následující typy událostí:
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Připojení Microsoft.SignalRService.ClientConnection | Je aktivována při připojení klienta. |
-| Microsoft.SignalRService.ClientConnectionOdpojeno | Je aktivována při odpojení připojení klienta. |
+| Microsoft. SignalRService. ClientConnectionConnected | Vyvolá se, když se připojí připojení klienta. |
+| Microsoft. SignalRService. ClientConnectionDisconnected | Vyvolá se v případě, že bylo připojení klienta odpojeno. |
 
 ### <a name="example-event"></a>Příklad události
 
-Následující příklad ukazuje schéma události připojeného k připojení klienta: 
+Následující příklad ukazuje schéma připojené události připojení klienta: 
 
 ```json
 [{
@@ -51,7 +51,7 @@ Následující příklad ukazuje schéma události připojeného k připojení k
 }]
 ```
 
-Schéma pro událost odpojeného připojení klienta je podobné: 
+Schéma pro událost odpojení klientského připojení je podobné: 
 
 ```json
 [{
@@ -78,12 +78,12 @@ Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | řetězec | Úplná cesta k prostředku ke zdroji události. Toto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| Předmět | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Eventtype | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
-| eventTime | řetězec | Čas, kdy je událost generována na základě času UTC zprostředkovatele. |
+| téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | objekt | Data událostí signalr service. |
+| data | objekt | Data události služby signalizace. |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
@@ -91,19 +91,19 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| časové razítko | řetězec | Čas, kdy je událost generována na základě času UTC zprostředkovatele. |
-| název hubu | řetězec | Rozbočovač, ke kterému patří připojení klienta. |
+| časové razítko | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| hubName | řetězec | Rozbočovač, ke kterému patří připojení klienta. |
 | connectionId | řetězec | Jedinečný identifikátor pro připojení klienta. |
-| userId | řetězec | Identifikátor uživatele definovaný v deklaraci. |
-| Errormessage | řetězec | Chyba, která způsobuje odpojení připojení. |
+| userId | řetězec | Identifikátor uživatele definovaný v deklaraci identity. |
+| Chybová | řetězec | Chyba, která způsobí odpojení připojení. |
 
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
 |Nadpis | Popis |
 |---------|---------|
-| [Reakce na události služby Azure SignalR pomocí mřížky událostí](../azure-signalr/signalr-concept-event-grid-integration.md) | Přehled integrace služby Azure SignalR s gridem událostí. |
-| [Jak odeslat události služby Azure SignalR do mřížky událostí](../azure-signalr/signalr-howto-event-grid-integration.md) | Ukazuje, jak odeslat události služby Azure SignalR do aplikace prostřednictvím služby Event Grid. |
+| [Reakce na události služby signalizace Azure pomocí Event Grid](../azure-signalr/signalr-concept-event-grid-integration.md) | Přehled integrace služby Azure Signaler pomocí Event Grid. |
+| [Odeslání událostí služby signalizace Azure do Event Grid](../azure-signalr/signalr-howto-event-grid-integration.md) | Ukazuje, jak odesílat události služby signalizace Azure do aplikace prostřednictvím Event Grid. |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do Služby Azure Event Grid najdete v tématu [Co je event grid?](overview.md)
-* Další informace o vytvoření předplatného Služby Azure Event Grid najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](overview.md)
+* Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).

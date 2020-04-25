@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 04/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fe7b375ebafb1e8194b29061430d956e48f2c441
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: bf8c797edec143d09739272917b5781a239280ba
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100750"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147750"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -111,6 +111,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 04/24/2020: změny ve [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s ANF v SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse), ve SAP HANA škálování na více instancí [s pohotovostním uzlem na virtuálních počítačích Azure s ANF na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)a s [vysokou dostupností](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) pro SAP NetWeaver na virtuálních počítačích Azure v SLES s [ANF, které](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) umožňují objasnění, že se automaticky přiřazují IP adresy pro NetWeaver svazky
 - 04/22/2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) pro odebrání atributu `is-managed` meta z pokynů, protože je v konfliktu s umístěním clusteru do režimu údržby nebo z něj.
 - 04/21/2020: Přidání SQL Azure DB jako podporované DBMS pro SAP pro SAP (Hybris) Commerce Platform 1811 a novější v článcích o [tom, jaký software SAP je podporován pro nasazení Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) a [certifikace a konfigurace sap běžící v Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/16/2020: Přidání SAP HANA jako podporovaného systému DBMS pro SAP (Hybris) Commerce Platform v článcích o [tom, co je software SAP pro nasazení Azure podporovaný](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) a [certifikace a konfigurace sap spuštěné v Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)

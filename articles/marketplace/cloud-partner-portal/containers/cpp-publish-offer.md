@@ -1,5 +1,5 @@
 ---
-title: Publikovat nabídku image kontejnerů Azure | Azure Marketplace
+title: Publikování nabídky imagí Azure Containers | Azure Marketplace
 description: Jak publikovat nabídku kontejneru Azure.
 author: dsindona
 ms.service: marketplace
@@ -7,40 +7,40 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 8003bf1cb7905d5decf8a6267ea397f1b2c01222
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 58e096a3b25b16e54cf2f18935dcf4a2d44cd767
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270158"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146216"
 ---
 # <a name="publish-container-offer"></a>Publikace nabídky kontejnerů
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek Azure Container do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky kontejneru Azure](https://aka.ms/CreateContainerOffer) ke správě migrovaných nabídek.
+> Od 13. dubna 2020 začneme přesouvat správu nabídek Azure Container do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Postupujte podle pokynů v části [vytvoření kontejneru Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) pro správu migrovaných nabídek.
 
- Po vytvoření nové nabídky pomocí stránky **Nová nabídka** můžete nabídku publikovat. Chcete-li zahájit proces publikování, vyberte **publikovat.**
+ Po vytvoření nové nabídky pomocí stránky **Nová nabídka** můžete tuto nabídku publikovat. Vyberte **publikovat** a spusťte proces publikování.
 
-Následující diagram znázorňuje hlavní kroky v procesu publikování pro nabídku "přejít do provozu".
+Následující diagram znázorňuje hlavní kroky v procesu publikování pro nabídku "jít živě".
 
-![Kroky publikování pro nabídku kontejnerů](./media/offer-publishing-steps.png)
+![Kroky publikování pro nabídku kontejneru](./media/offer-publishing-steps.png)
 
 ## <a name="detailed-description-of-publishing-steps"></a>Podrobný popis kroků publikování
 
-Následující tabulka popisuje každý krok publikování. Je také uveden odhadovaný čas dokončení každého kroku.
+V následující tabulce jsou popsány jednotlivé kroky publikování. Také je uvedena předpokládaná doba pro dokončení každého kroku.
 
 
-|  **Krok publikování**           | **Čas**    | **Popis**                                                            |
+|  **Krok publikování**           | **Interval**    | **Popis**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Ověřit požadavky         | 15 min   | Informace o nabídce a nastavení nabídky jsou ověřeny.                        |
-| Certifikace                  | 1 týden | Nabídku analyzuje certifikační tým Azure. V nabídce se zkontrolují viry, malware, dodržování bezpečnostních předpisů a problémy se zabezpečením. Nabídka se zkontroluje, aby se zjistilo, jestli splňuje všechna kritéria způsobilosti. Další informace naleznete [v požadavcích a](./cpp-prerequisites.md) [přípravě technických prostředků](./cpp-create-technical-assets.md). Pokud je nalezen problém, je k dispozici zpětná vazba. |
-| Balení | 1 hodina  | Technické prostředky nabídky jsou baleny pro použití zákazníkem a systémy zájemců jsou konfigurovány a nastaveny. |
-|  Odhlášení vydavatele             |  -        | Konečná recenze a potvrzení vydavatele před tím, než nabídka začne být v provozu. Nabídku můžete nasadit ve vybraných předplatných (v krocích informací o nabídce) a ověřit, zda splňuje všechny vaše požadavky.  Vyberte **Přejít na živo,** aby se vaše nabídka mohla přesunout k dalšímu kroku. |
-| Balení                 | 1 hodina | Hotová nabídka je replikována v produkčních systémech a oblastech tržiště. | 
+| Ověřit požadavky         | 15 min   | Budou ověřeny informace nabídky a nastavení nabídky.                        |
+| Certifikace                  | 1 týden | Nabídka se analyzuje prostřednictvím certifikačního týmu Azure. V nabídce se zkontrolují viry, malware, dodržování bezpečnostních předpisů a problémy se zabezpečením. Nabídka se zkontroluje, aby se zjistilo, jestli splňuje všechna kritéria způsobilosti. Další informace najdete v tématu [požadavky](./cpp-prerequisites.md) a [Příprava technických prostředků](./cpp-create-technical-assets.md). V případě, že dojde k problému, je poskytnuta zpětná vazba. |
+| Balení | 1 hodina  | Technické prostředky nabídky jsou zabaleny pro zákazníky a jsou nakonfigurované a nastavené systémy pro potenciální zákazníky. |
+|  Odhlášení vydavatele             |  -        | Poslední kontrola a potvrzení vydavatele před tím, než bude nabídka živá. Nabídku můžete nasadit ve vybraných předplatných (v informacích o nabídce) a ověřit, že splňuje všechny vaše požadavky.  Vyberte možnost **Přejít do provozu** , aby vaše nabídka mohla přejít k dalšímu kroku. |
+| Balení                 | 1 hodina | Nabídka dokončená se replikuje na Marketplace v produkčních systémech a oblastech. | 
 | Živé                           | 4 dny |Nabídka je uvolněna, replikována do požadovaných oblastí a zpřístupněna veřejnosti. |
 
-Vyčkejte až 10 pracovních dnů, než proces publikování skončí, a nabídka bude vydána. Po dokončení procesu publikování bude nabídka kontejneru uvedena na [webu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).
+Povolí až 10 pracovních dní pro dokončení procesu publikování a nabídka se uvolní. Po dokončení procesu publikování se vaše nabídka kontejneru zobrazí v [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Aktualizace existující nabídky kontejnerů na Azure Marketplace](./cpp-update-existing-offer.md)
+[Aktualizovat existující nabídku kontejneru na Azure Marketplace](./cpp-update-existing-offer.md)

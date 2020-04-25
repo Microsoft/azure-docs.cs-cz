@@ -1,45 +1,45 @@
 ---
-title: Nastavení marketplace pro image kontejnerů Azure | Azure Marketplace
-description: Nakonfigurujte nastavení marketplace pro kontejner Azure.
+title: Nastavení Marketplace pro Image kontejnerů Azure | Azure Marketplace
+description: Nakonfigurujte nastavení Marketplace pro kontejner Azure.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: cb879a9578a550e972ed7874a42cf389271abf47
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 724c2ffebd34b838c19f3296363c38c83e142b96
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270294"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148237"
 ---
-# <a name="container-marketplace-tab"></a>Karta Tržiště kontejnerů
+# <a name="container-marketplace-tab"></a>Karta tržiště kontejneru
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek Azure Container do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky kontejneru Azure](https://aka.ms/CreateContainerOffer) ke správě migrovaných nabídek.
+> Od 13. dubna 2020 začneme přesouvat správu nabídek Azure Container do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Postupujte podle pokynů v části [vytvoření kontejneru Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) pro správu migrovaných nabídek.
 
-Karta **Marketplace** na stránce **Nová nabídka** umožňuje poskytovat potenciálním zákazníkům marketingové, prodejní a právní informace a smlouvy a spravovat potenciální zákazníky generované z tržiště. Přidejte obsah specifický pro marketing do části **Přehled.**
+Karta **tržiště** na **nové stránce nabídky** vám umožní poskytnout potenciálním zákazníkům marketingové, prodejní a právní informace a smlouvy a spravovat zájemce vygenerované z webu Marketplace. Přidejte svůj obsah určený pro marketing do části **Přehled** .
 
 ## <a name="overview"></a>Přehled
 
-V této části zadáte obecné informace o nabídce Azure Marketplace.  Hvězdička (*) připojená k názvu pole označuje, že je požadováno.
+V této části zadáte obecné informace o vaší nabídce Azure Marketplace.  Hvězdička (*), která je připojena k názvu pole, označuje, že je požadováno.
 
-![Informace o tržišti](./media/containers-marketplace-tab.png)
+![Informace o Marketplace](./media/containers-marketplace-tab.png)
 
-Následující tabulka popisuje účel a obsah těchto polí. Povinná pole jsou obžalována hvězdičkou (*).
+Následující tabulka popisuje účel a obsah těchto polí. Požadovaná pole jsou indicted hvězdičkou (*).
 
 |    Pole                  |       Popis                                                            |
 |  ---------                |     ---------------                                                          |
-| **Název\***                 | Název nabídky. To bude zobrazeno prominentně na trhu.  Maximální délka je 50 znaků. |
-| **Souhrn\***               | Krátké shrnutí nabídky. Maximální délka je 100 znaků. |
-| **Dlouhý souhrn\***          | Delší shrnutí nabídky (i když by to mohlo být stejné jako **shrnutí**).  Maximální délka je 256 znaků. |
-| **Popis\***           | Popis nabídky.  Maximální délka je 3000 znaků, podporuje jednoduché formátování HTML.
-| **Identifikátor marketingu**  | Jedinečná adresa URL, která má být přidružena k této nabídce, která obvykle zahrnuje název organizace a řešení. Maximální délka je 50 znaků.   |
-| **Náhled ID předplatného\*** | Přidejte jeden až 100 identifikátorů předplatného pro předběžné recenzenty. Tato předplatná uvedená na seznamu povolených budou mít přístup k nabídce, jakmile bude zveřejněna, než začne být uvedena v provozu. |
+| **Nadpis\***                 | Název nabídky Bude se zobrazovat na webu Marketplace na místě.  Maximální délka je 50 znaků. |
+| **Souhrn\***               | Krátké shrnutí nabídky Maximální délka je 100 znaků. |
+| **Dlouhý souhrn\***          | Delší souhrn nabídky (i když by to bylo stejné jako u **souhrnu**).  Maximální délka je 256 znaků. |
+| **Popis\***           | Popis nabídky  Maximální délka je 3000 znaků, podporuje jednoduché formátování HTML.
+| **Identifikátor marketingu**  | Jedinečná adresa URL, která se má přidružit k této nabídce, která obvykle zahrnuje vaši organizaci a název řešení. Maximální délka je 50 znaků.   |
+| **Náhled ID předplatných\*** | Přidejte jednu až 100 identifikátorů předplatného pro náhledy. Po publikování těchto bílých předplatných budou mít přístup k této nabídce k dispozici, než budou živá. |
 |  |  |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Na kartě [Podpora](./cpp-support-tab.md) můžete poskytnout technické a uživatelské zdroje podpory pro vaši nabídku.
+Kartu [Podpora](./cpp-support-tab.md) použijte k poskytnutí prostředků technické podpory a podpory uživatelů pro vaši nabídku.

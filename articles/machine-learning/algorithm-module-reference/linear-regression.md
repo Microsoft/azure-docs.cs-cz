@@ -1,143 +1,153 @@
 ---
-title: 'Lineární regrese: Odkaz na modul'
+title: 'Lineární regrese: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu lineární regrese v Azure Machine Learning vytvořit lineární regresní model pro použití v kanálu.
+description: Naučte se používat modul lineární regrese v Azure Machine Learning k vytvoření modelu lineární regrese pro použití v kanálu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 602553637e21b17aa4f9bc7402753af024c697c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 9d83a9ffb9dc334ef959b7a8039b9a9c4a1fced7
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477557"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137449"
 ---
-# <a name="linear-regression-module"></a>Lineární regresní modul
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+# <a name="linear-regression-module"></a>Modul lineární regrese
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Tento modul slouží k vytvoření modelu lineární regrese pro použití v kanálu.  Lineární regrese se pokouší vytvořit lineární vztah mezi jednou nebo více nezávislými proměnnými a číselným výsledkem nebo závislou proměnnou. 
+Tento modul slouží k vytvoření modelu lineární regrese pro použití v kanálu.  Lineární regrese se pokusí vytvořit lineární vztah mezi jednou nebo více nezávislými proměnnými a číselným výstupem nebo závislou proměnnou. 
 
-Tento modul slouží k definování metody lineární regrese a potom tálovat model pomocí popisované datové sady. Trénovaný model pak lze použít k předpovědi.
+Pomocí tohoto modulu můžete definovat metodu lineární regrese a potom vytvořit model pomocí popisku DataSet. K vytvoření předpovědi se pak dá použít trained model.
 
 ## <a name="about-linear-regression"></a>O lineární regresi
 
-Lineární regrese je běžná statistická metoda, která byla přijata ve strojovém učení a vylepšena mnoha novými metodami pro montáž linky a měření chyby. V nejzákladnějším smyslu regrese odkazuje na předpověď číselného cíle. Lineární regrese je stále dobrou volbou, pokud chcete jednoduchý model pro základní prediktivní úkol. Lineární regrese také má tendenci dobře pracovat na vysokorozměrných, řídkých datových sadách, které postrádají složitost.
+Lineární regrese je běžná statistická metoda, kterou jste přijali v machine learningu a vylepšili jsme mnoho nových metod pro přizpůsobení řádku a měření chyby. V nejširším smyslu regrese odkazuje na předpověď číselného cíle. Lineární regrese je stále dobrá volbou, pokud chcete jednoduchý model pro základní prediktivní úlohu. Lineární regrese má také v úmyslu dobře fungovat i u vysoce dimenzionálních a řídkých datových sad, které nemají složitost.
 
-Azure Machine Learning podporuje celou řadu regresních modelů, kromě lineární regrese. Termín "regrese" však lze interpretovat volně a některé typy regrese v jiných nástrojích nejsou podporovány.
+Azure Machine Learning podporuje různé regresní modely kromě lineární regrese. Výraz "regrese" však lze volně interpretovat a některé typy regrese poskytované v jiných nástrojích nejsou podporovány.
 
-+ Klasický problém regrese zahrnuje jednu nezávislou proměnnou a závislou proměnnou. Tomu se říká *jednoduchá regrese*.  Tento modul podporuje jednoduchou regresi.
++ K problému s klasickými regresi se skládá jediná nezávislá proměnná a závislá proměnná. Tato metoda se nazývá *Jednoduchá regrese*.  Tento modul podporuje jednoduchou regresi.
 
-+ *Vícelineární regrese* zahrnuje dvě nebo více nezávislých proměnných, které přispívají k jedné závislé proměnné. Problémy, ve kterých se používá více vstupů k předvídání jednoho číselného výsledku, se také nazývají *mnohorozměrná lineární regrese*.
++ *Více lineární regrese* zahrnuje dvě nebo více nezávislých proměnných, které přispívají k jedné závislé proměnné. Problémy, ve kterých se pro předpověď jednoho číselného výsledku používá více vstupů, se také nazývají *Lineární lineární regrese*.
 
-    Lineární **regrese** modul může vyřešit tyto problémy, stejně jako většina ostatních regresních modulů.
+    Modul **lineární regrese** může tyto problémy vyřešit, stejně jako většina ostatních regresních modulů.
 
-+ *Regrese s více popisky* je úkolem předvídání více závislých proměnných v rámci jednoho modelu. Například v logistické regresi s více popisky lze vzorek přiřadit k více různým popiskům. (To se liší od úlohy předvídání více úrovní v rámci jedné proměnné třídy.)
++ *Regrese s více popisky* je úkol předpovědi více závislých proměnných v rámci jednoho modelu. Například v případě logistické regrese s více štítky lze vzorek přiřadit více různým popiskům. (To se liší od úlohy předpovědi více úrovní v rámci jedné proměnné třídy.)
 
-    Tento typ regrese není ve službě Azure Machine Learning podporován. Chcete-li předpovědět více proměnných, vytvořte pro každý výstup, který chcete předpovědět, samostatný student.
+    Tento typ regrese není v Azure Machine Learning podporován. Chcete-li předpovědět více proměnných, vytvořte samostatný seznam pro každý výstup, který chcete předpovědět.
 
-Po celá léta statistici vyvíjejí stále vyspělejší metody pro regresi. To platí i pro lineární regrese. Tento modul podporuje dvě metody měření chyby a přizpůsobení regresní čáry: metoda obyčejné nejmenší čtverce a sestup přechodu.
+Pro roky byly statistikou vyvinuty stále větší pokročilé metody pro regresi. To platí i pro lineární regresi. Tento modul podporuje dvě metody měření chyby a odpovídá regresní čáře: obyčejnému nejmenšímu čtverci a zaklesání gradientu.
 
-- **Sestup přechodu** je metoda, která minimalizuje množství chyb v každém kroku procesu školení modelu. Existuje mnoho variací na gradientsestup a jeho optimalizace pro různé problémy učení byla rozsáhle studována. Pokud zvolíte tuto možnost pro **metodu Řešení**, můžete nastavit různé parametry pro řízení velikosti kroku, rychlost učení a tak dále. Tato možnost také podporuje použití integrovaného parametru sweep.
+- **Klesání gradientu** je metoda, která minimalizuje množství chyb v každém kroku procesu školení modelu. Existuje spousta variací pro klesání gradientu a jeho optimalizace pro různé problémy s učením byla značně vyzkoušena. Pokud zvolíte tuto možnost pro **metodu řešení**, můžete nastavit různé parametry pro řízení velikosti kroku, studijní frekvence a tak dále. Tato možnost také podporuje použití integrovaného úklidu parametrů.
 
-- **Obyčejné nejmenší čtverce** jsou jednou z nejčastěji používaných technik v lineární regresi. Například nejmenší čtverečky je metoda, která se používá v analytickém nástroji pro aplikaci Microsoft Excel.
+- **Běžný nejmenší počet čtverců** je jedním z nejčastěji používaných technik v lineární regresi. Například nejméně čtverce je metoda, která se používá v analytickém doplňku pro aplikaci Microsoft Excel.
 
-    Obyčejné nejmenší čtverce odkazuje na loss funkce, která počítá chybu jako součet čtverečních vzdálenost od skutečné hodnoty k předpovídané čáry a odpovídá modelu minimalizací kvadratických chyb. Tato metoda předpokládá silný lineární vztah mezi vstupy a závislou proměnnou.
+    Běžné nejmenší čtverce odkazují na funkci ztráty, která počítá chybu jako součet čtverce vzdálenosti od skutečné hodnoty až po předpokládaný řádek a odpovídá modelu minimalizací čtvercové chyby. Tato metoda předpokládá silný lineární vztah mezi vstupy a závislou proměnnou.
 
 ## <a name="configure-linear-regression"></a>Konfigurace lineární regrese
 
-Tento modul podporuje dvě metody pro montáž regresního modelu s různými možnostmi:
+Tento modul podporuje dvě metody pro přizpůsobení regresního modelu s různými možnostmi:
 
-+ [Přizpůsobit regresní model pomocí běžných nejmenších čtverců](#create-a-regression-model-using-ordinary-least-squares)
++ [Přizpůsobit regresní model pomocí běžných minimálních čtverců](#create-a-regression-model-using-ordinary-least-squares)
 
-    Pro malé datové sady je nejlepší vybrat obyčejné nejmenší čtverce. To by mělo poskytnout podobné výsledky excelu.
+    Pro malé datové sady je nejlepší vybrat běžné nejméně čtverce. To by mělo mít podobné výsledky do Excelu.
     
-+ [Vytvoření regresního modelu pomocí online sestupu přechodu](#create-a-regression-model-using-online-gradient-descent)
++ [Vytvoření regresního modelu pomocí online gradientu](#create-a-regression-model-using-online-gradient-descent)
 
-    Gradient sestup je lepší funkce ztráty pro modely, které jsou složitější, nebo které mají příliš málo trénovacích dat vzhledem k počtu proměnných.
+    Klesání gradientu je lepší funkcí pro ztrátu modelů, které jsou složitější, nebo které mají příliš málo školicích dat pro daný počet proměnných.
 
-### <a name="create-a-regression-model-using-ordinary-least-squares"></a>Vytvoření regresního modelu pomocí běžných nejmenších čtverců
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>Vytvoření regresního modelu pomocí běžných minimálních čtverců
 
-1. Přidejte modul **Model lineární regrese** do kanálu v návrháři.
+1. Přidejte modul **lineární regrese** do kanálu v návrháři.
 
-    Tento modul najdete v kategorii **Machine Learning.** Rozbalte **Inicializovat model**, **rozbalte regresi**a přetáhněte modul **Model lineární regrese** do kanálu.
+    Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte položku **inicializovat model**, rozbalte položku **regrese**a poté přetáhněte modul **lineární regrese** do vašeho kanálu.
 
-2. V podokně **Vlastnosti** vyberte v rozevíracím seznamu **Metody řešení** **obyčejné nejmenší čtverce**. Tato možnost určuje metodu výpočtu použitou k nalezení regresní čáry.
+2. V podokně **vlastnosti** v rozevíracím seznamu **Metoda řešení** vyberte možnost **obyčejné nejméně čtverce**. Tato možnost určuje metodu výpočtu, která se používá k nalezení regresní čáry.
 
-3. Do **pole Hmotnost regularizace L2**zadejte hodnotu, která se má použít jako hmotnost pro regularizaci L2. Doporučujeme použít nenulovou hodnotu, abyste se vyhnuli nadměrnému vybavení.
+3. V části **váha pravidelného vyvážení**zadejte hodnotu, která se má použít jako váha pro pravidelnosti L2. Doporučujeme použít nenulovou hodnotu, abyste se vyhnuli nedodržení.
 
-     Další informace o tom, jak regularizace ovlivňuje přizpůsobení modelu, najdete v tomto článku: [Regularizace L1 a L2 pro strojové učení](https://msdn.microsoft.com/magazine/dn904675.aspx)
+     Další informace o tom, jak pravidelná změna má vliv na model, najdete v tomto článku: [L1 a pro použití algoritmu L2 pro Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)
 
-4. Chcete-li zobrazit termín pro zachycení, vyberte možnost **Zahrnout termín zachycení**.
+4. Vyberte možnost **včetně podmínky zachycení**, pokud chcete zobrazit termín pro Intercept.
 
-    Tuto volbu odznačte, pokud nepotřebujete zkontrolovat vzorec regrese.
+    Tuto možnost zrušte, pokud nepotřebujete kontrolovat vzorec regrese.
 
-5. Pro **osivo náhodných čísel**můžete volitelně zadat hodnotu pro generátor náhodných čísel používaný modelem.
+5. V případě použití **náhodného čísla**můžete volitelně zadat hodnotu pro počáteční generátor náhodných čísel používaný modelem.
 
-    Použití hodnoty osiva je užitečné, pokud chcete zachovat stejné výsledky v různých spuštěních stejného kanálu. V opačném případě je výchozí použít hodnotu ze systémových hodin.
-
-
-7. Přidejte modul [Model vlaku](./train-model.md) do kanálu a připojte označenou datovou sadu.
-
-8. Odešlete potrubí.
-
-### <a name="results-for-ordinary-least-squares-model"></a>Výsledky pro běžný model nejmenších čtverců
-
-Po dokončení tréninku:
+    Použití počáteční hodnoty je užitečné, pokud chcete zachovat stejné výsledky v různých spuštěních stejného kanálu. V opačném případě se ve výchozím nastavení používá hodnota ze systémových hodin.
 
 
-+ Chcete-li předpovědi, připojte trénovaný model k modulu [Model skóre](./score-model.md) spolu s datovou sadou nových hodnot. 
+7. Přidejte modul [vlakového modelu](./train-model.md) do vašeho kanálu a připojte datovou sadu s popiskem.
+
+8. Odešlete kanál.
+
+### <a name="results-for-ordinary-least-squares-model"></a>Výsledky pro model obyčejného minimálního čtverce
+
+Po dokončení školení:
 
 
-### <a name="create-a-regression-model-using-online-gradient-descent"></a>Vytvoření regresního modelu pomocí online sestupu přechodu
++ Chcete-li vytvořit předpovědi, připojte k modulu pro stanovení [skóre](./score-model.md) , proškolený model a datovou sadu nových hodnot. 
 
-1. Přidejte modul **Model lineární regrese** do kanálu v návrháři.
 
-    Tento modul najdete v kategorii **Machine Learning.** Rozbalte **možnost Inicializovat model**, **rozbalte regresi**a přetáhněte modul **Model lineární regrese** do kanálu.
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>Vytvoření regresního modelu pomocí online gradientu
 
-2. V podokně **Vlastnosti** v rozevíracím seznamu **Metody řešení** zvolte **Online Gradient Descent** jako výpočetní metodu použitou k nalezení regresní čáry.
+1. Přidejte modul **lineární regrese** do kanálu v návrháři.
 
-3. V **části Vytvořit režim podpracovadtu**označte, zda chcete model trénovat s předdefinovanou sadou parametrů, nebo zda chcete model optimalizovat pomocí tažení parametrů.
+    Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte možnost **inicializovat model**, rozbalte **regresi**a přetáhněte modul **lineární regrese** do vašeho kanálu.
 
-    + **Jeden parametr**: Pokud víte, jak chcete nakonfigurovat lineární regresní síť, můžete zadat určitou sadu hodnot jako argumenty.
+2. V podokně **vlastnosti** v rozevíracím seznamu **Metoda řešení** vyberte možnost **online přechodové** prolomení jako metodu výpočtu použitou k nalezení regresní čáry.
+
+3. V případě **režimu vytvoření Trainer**určete, zda chcete vytvořit výuku modelu pomocí předdefinované sady parametrů, nebo pokud chcete model optimalizovat pomocí parametru sweep.
+
+    + **Jediný parametr**: Pokud víte, jak chcete nakonfigurovat síť lineární regrese, můžete zadat konkrétní sadu hodnot jako argumenty.
     
-    + **Rozsah parametrů**: Tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit tažení parametrů. Vyberte rozsah hodnot, které chcete iterát přes a [Tune Model Hyperparameters](tune-model-hyperparameters.md) iterates přes všechny možné kombinace nastavení, které jste zadali k určení hyperparameters, které produkují optimální výsledky.  
+    + **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.  
 
    
-4. V **poli Rychlost učení**zadejte počáteční rychlost učení pro optimalizátor sestupu stochastického gradientu.
+4. Do pole **rychlost učení**zadejte počáteční rychlost učení pro Optimalizátor stochastického pro prorážku klesání.
 
-5. Pro **počet epoch školení**zadejte hodnotu, která označuje, kolikrát by měl algoritmus iterate prostřednictvím příkladů. Pro datové sady s malým počtem příkladů by toto číslo mělo být velké, aby bylo dosaženo konvergence.
+5. Pro **počet epochs školení**zadejte hodnotu, která označuje, kolikrát by se měl algoritmus iterovat prostřednictvím příkladů. U datových sad s malým počtem příkladů by toto číslo mělo být velké, aby se dosáhlo konvergence.
 
-6. **Normalizovat funkce**: Pokud jste již normalizovali číselná data použitá k trénování modelu, můžete tuto možnost zrušit. Ve výchozím nastavení modul normalizuje všechny číselné vstupy na rozsah mezi 0 a 1.
+6. **Funkce normalizace**: Pokud už máte normalizovaná číselná data, která se používají pro výuku modelu, můžete tuto možnost zrušit. Ve výchozím nastavení modul normalizuje všechny číselné vstupy na rozsah od 0 do 1.
 
     > [!NOTE]
     > 
-    > Nezapomeňte použít stejnou metodu normalizace na nová data používaná pro vyhodnocování.
+    > Nezapomeňte použít stejnou metodu normalizace na nová data použitá pro vyhodnocování.
 
-7. Do **pole Hmotnost regularizace L2**zadejte hodnotu, která se má použít jako hmotnost pro regularizaci L2. Doporučujeme použít nenulovou hodnotu, abyste se vyhnuli nadměrnému vybavení.
+7. V části **váha pravidelného vyvážení**zadejte hodnotu, která se má použít jako váha pro pravidelnosti L2. Doporučujeme použít nenulovou hodnotu, abyste se vyhnuli nedodržení.
 
-    Další informace o tom, jak regularizace ovlivňuje přizpůsobení modelu, najdete v tomto článku: [Regularizace L1 a L2 pro strojové učení](https://msdn.microsoft.com/magazine/dn904675.aspx)
-
-
-9. Vyberte možnost **Snížit rychlost učení**, pokud chcete, aby se rychlost učení s nikým s postupem iterací snižovala.  
-
-10. Pro **osivo náhodných čísel**můžete volitelně zadat hodnotu pro generátor náhodných čísel používaný modelem. Použití hodnoty osiva je užitečné, pokud chcete zachovat stejné výsledky v různých spuštěních stejného kanálu.
+    Další informace o tom, jak pravidelná změna má vliv na model, najdete v tomto článku: [L1 a pro použití algoritmu L2 pro Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)
 
 
-12. Přidejte označenou datovou sadu a jeden z trénovacích modulů.
+9. Tuto možnost **Vyberte, pokud**chcete, aby se studijní frekvence snížila v průběhu iterací.  
 
-    Pokud nepoužíváte parametr sweep, použijte modul [Model vlaku.](train-model.md)
+10. V případě použití **náhodného čísla**můžete volitelně zadat hodnotu pro počáteční generátor náhodných čísel používaný modelem. Použití počáteční hodnoty je užitečné, pokud chcete zachovat stejné výsledky v různých spuštěních stejného kanálu.
 
-13. Odešlete potrubí.
 
-### <a name="results-for-online-gradient-descent"></a>Výsledky pro online sestup z gradientu
+12. Výukové modely:
 
-Po dokončení tréninku:
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
+  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Pokud předáte rozsah parametru pro [vlakový model](train-model.md), použije se jenom výchozí hodnota v seznamu jednoho parametru.  
+    > 
+    > Pokud předáte jednu sadu hodnot parametrů do modulu [předparametrů modelu ladění](tune-model-hyperparameters.md) , když očekává rozsah nastavení pro každý parametr, ignoruje hodnoty a použije výchozí hodnoty pro učit se.  
+    > 
+    > Pokud vyberete možnost **rozsahu parametrů** a zadáte jednu hodnotu pro libovolný parametr, tato jediná hodnota, kterou jste zadali, se použije v celém oblouku, a to i v případě, že se jiné parametry mění v rozsahu hodnot.
 
-+ Chcete-li předpovědi, připojte trénovaný model k modulu [Model skóre](./score-model.md) spolu s novými vstupními daty.
+13. Odešlete kanál.
+
+### <a name="results-for-online-gradient-descent"></a>Výsledky pro online gradient
+
+Po dokončení školení:
+
++ Chcete-li vytvořit předpovědi, připojte k modulu určení [modelu hodnocení](./score-model.md) , a to společně s novými vstupními daty.
 
 
 ## <a name="next-steps"></a>Další kroky

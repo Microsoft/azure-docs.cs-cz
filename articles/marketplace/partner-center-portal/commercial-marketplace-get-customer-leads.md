@@ -1,110 +1,110 @@
 ---
-title: Konfigurace zájemců zákazníků | Azure Marketplace
-description: Konfigurace zákazníků vede na komerčním trhu.
+title: Konfigurace potenciálních zákazníků z nabídky Microsoftu pro komerční tržiště
+description: Nakonfigurujete zájemce zákazníků na komerčním webu Microsoft Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: a1ec89dfd2dda91a10f2cc00b6ca4d9d7abbf032
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 54c67656d7847b44c8fc83b33a4e03be3838cf76
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731144"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131096"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Potenciální zákazníci vaší nabídky na marketplace
 
-Zájemci jsou zákazníci, kteří mají zájem o vaše nabídky nebo o jejich nasazení z [Azure Marketplace](https://azuremarketplace.microsoft.com) nebo z [AppSource](https://appsource.microsoft.com). Jakmile bude vaše nabídka zveřejněna na trhu, obdržíte potenciální zákazníky. Tento článek vysvětlí:
+Potenciální zákazníci zajímá nebo nasazují vaše nabídky z Microsoft [AppSource](https://appsource.microsoft.com) a [Azure Marketplace](https://azuremarketplace.microsoft.com). Po publikování vaší nabídky na webu Marketplace obdržíte potenciální zákazníky. Tento článek vysvětluje:
 
-* Jak vaše nabídka na trhu generuje zákazníky, což zajišťuje, že nezmeškáte obchodní příležitosti. 
-* Připojte svůj CRM k vaší nabídce, abyste mohli spravovat své potenciální zákazníky na jednom centrálním místě.
-* Seznamte se s údaji o potenciálních zákaznících, které vám posíláme, abyste mohli sledovat zákazníky, kteří vás kontaktovali.
+* Jak vaše nabídka Marketplace vygeneruje zájemce zákazníků, aby se zajistilo, že nebudete mít žádné obchodní příležitosti. 
+* Jak připojit systém pro řízení vztahů se zákazníky (CRM) k vaší nabídce, abyste mohli spravovat potenciální zákazníky v jednom centrálním umístění.
+* Data o zájemci vám pošleme, abyste se mohli podívat na zákazníky, kteří se na vás dostali.
 
-## <a name="generate-customer-leads"></a>Generovat zájemce zákazníků
+## <a name="generate-customer-leads"></a>Generování potenciálních zákazníků
 
-Zde jsou místa, kde je zájemce generován:
+Tady jsou místa, kde se vygeneruje zájemce:
 
-1. Když zákazník souhlasí se sdílením svých informací po výběru možnosti "Kontaktujte mě" z trhu. Tento zájemce je **počátečním zájemcem,** kde sdílíme informace o zákazníkovi, který projevil zájem o získání vašeho produktu. Zájemce je horní část akviziční cesty.
+- Zákazník souhlasí s sdílením jejich informací po výběru **kontaktování** na komerčním webu Marketplace. Tento potenciální zákazník je *počátečním zájmem* . S vámi sdílíme informace o zákazníkovi, který vyjádřil zájem získat svůj produkt. Vedoucí je horní část trychtýře pořízení.
 
-      ![Dynamics 365 Kontaktujte mě](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
+    ![Dynamics 365 kontaktujte mě](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
 
-2. Když zákazník vybere "Získat nyní" nebo "Vytvořit" (na [portálu Azure)](https://portal.azure.com/)získat vaši nabídku, tento zájemce je **aktivní zájemce**, kde sdílíme informace o zákazníkovi, který začal nasazovat váš produkt.
+- Zákazník vybere **Get hned** (nebo vybere **vytvořit** v [Azure Portal](https://portal.azure.com/)) k získání vaší nabídky. Tento potenciální zákazník je *aktivním* zájemcem. Informace o zákazníkovi, který zahájil nasazení vašeho produktu, sdílíme s vámi.
 
-    ![SQL Get it Now](./media/commercial-marketplace-get-customer-leads/sql-get-it-now.png)
+    ![Tlačítko získat nyní SQL](./media/commercial-marketplace-get-customer-leads/sql-get-it-now.png)
 
-    ![Vytvoření systému Windows Server](./media/commercial-marketplace-get-customer-leads/windows-server-create.png)
+    ![Tlačítko pro vytvoření Windows serveru](./media/commercial-marketplace-get-customer-leads/windows-server-create.png)
 
-3. Zákazník provede "Testovací jízdu" nebo spustí "bezplatnou zkušební verzi" vaší nabídky. Testovací jízdy nebo bezplatné zkušební verze jsou zrychlené příležitosti pro okamžité sdílení vaší firmy s potenciálními zákazníky bez překážek vstupu.
+- Zákazník vybere **testovou jednotku** nebo **bezplatnou zkušební verzi** a vyzkoušení vaší nabídky. Testovací jednotky nebo bezplatné zkušební verze představují urychlené příležitosti pro okamžité sdílení vaší firmy s potenciálními zákazníky bez jakýchkoli překážek vstupu.
 
-    ![Testovací jízda Dynamics 365](./media/commercial-marketplace-get-customer-leads/dynamics-365-test-drive.png)
+    ![Tlačítko testovací jednotky Dynamics 365](./media/commercial-marketplace-get-customer-leads/dynamics-365-test-drive.png)
 
-    ![Testovací jízda Dynamics 365](./media/commercial-marketplace-get-customer-leads/dynamics-365-free-trial.png)
+    ![Tlačítko bezplatné zkušební verze Dynamics 365](./media/commercial-marketplace-get-customer-leads/dynamics-365-free-trial.png)
 
-## <a name="connect-to-your-crm-system"></a>Připojení k crm systému
+## <a name="connect-to-your-crm-system"></a>Připojení k systému CRM
 
 [!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-## <a name="understand-lead-data"></a>Principy dat zájemců
+## <a name="understand-lead-data"></a>Pochopení údajů o potenciálních datech
 
-Každý zájemce, který obdržíte během procesu získávání zákazníků, má data v konkrétních polích. První pole, na které `LeadSource` je třeba dávat pozor, je pole, které následuje po tomto formátu:**Nabídka** **akce** | zdroje .
+Každý zájemce, kterého obdržíte během procesu pořízení zákazníka, má data v konkrétních polích. První pole, pro které se má zjistit, `LeadSource` je pole, které následuje po tomto formátu:**Nabídka** **zdroje a akce** | .
 
-**Zdroje:** Hodnota tohoto pole je naplněna na základě tržiště, které vygenerovalo zájemce. Možné hodnoty `"AzureMarketplace"` `"AzurePortal"`jsou `"AppSource (SPZA)"`, a .
+**Zdroje**: hodnota pro toto pole je naplněná na základě tržiště, který vygeneroval zájemce. Možné hodnoty jsou `"AzureMarketplace"`, `"AzurePortal"`a `"AppSource (SPZA)"`.
 
-**Akce**: Hodnota tohoto pole je vyplněna na základě akce, kterou zákazník provedl na trhu a která vygenerovala zájemce. 
+**Akce**: hodnota pro toto pole je naplněná na základě akce, kterou zákazník zavedl na webu Marketplace, který zájemce vygeneroval.
 
 Možné hodnoty:
 
-- "INS" - instalace. Tato akce se provádí na Azure Marketplace nebo AppSource, když si zákazník koupí váš produkt.
-- "PLT" - Zkratka pro Partner Led Trial. Tato akce je na AppSource, když zákazník používá možnost Kontaktujte mě.
-- "DNC" - Nekontaktujte. Tato akce se na AppSource, když partner, který byl kříž uvedený na stránce aplikace dostane požádán, aby byl kontaktován. Sdílíme informace o tom, že tento zákazník byl ve vaší aplikaci uveden na kříži, ale není třeba ho kontaktovat.
-- "Vytvořit" – Tato akce je jenom uvnitř portálu Azure a je generována, když zákazník zakoupí vaši nabídku na svůj účet.
-- "StartTestDrive" – Tato akce je pouze pro testovací jednotky a je generována, když zákazník spustí testovací jednotku.
+- **"Ins"**: představuje *instalaci*. Tato akce je Azure Marketplace nebo AppSource, když zákazník koupí váš produkt.
+- **"PLT"**: zastupuje *zkušební verzi, která se zavedla pro partnery*. Tato akce se provádí v AppSource, když zákazník vybere možnost **kontakt mi** .
+- **"DNC"**: představuje *nekontaktování*. Tato akce se nachází v AppSource, když se partner, který byl křížově uvedený na stránce aplikace, vyžádá, aby kontaktoval. Sdílíme oznámení, že tento zákazník byl ve vaší aplikaci křížově uveden, ale není potřeba ho kontaktovat.
+- **"Vytvořit"**: Tato akce je pouze uvnitř Azure Portal a je generována, když zákazník koupí vaši nabídku na svůj účet.
+- **"StartTestDrive"**: Tato akce je určena pouze pro možnost **testovací jednotka** a je generována, když zákazník spustí testovací jednotku.
 
-**Nabídky**: Můžete mít více nabídek na trhu. Hodnota pro toto pole je naplněna na základě nabídky, která vygenerovala zájemce. ID vydavatele i ID nabídky jsou v tomto poli odesílány a jsou to hodnoty, které jste zadali při publikování nabídky na trhu.
+**Nabídky**: na komerčním webu Marketplace můžete mít několik nabídek. Hodnota tohoto pole je vyplněna na základě nabídky, která zájemce vygenerovala. ID vydavatele a ID nabídky jsou odesílány v tomto poli a jsou to hodnoty, které jste zadali při publikování nabídky na webu Marketplace.
 
-Následující příklady ukazují příklady hodnot `publisherid.offerid`v očekávaném formátu : 
+Následující příklady znázorňují hodnoty v očekávaném formátu `publisherid.offerid`: 
 
-1. `checkpoint.check-point-r77-10sg-byol`
-1. `bitnami.openedxcypress`
-1. `docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145`
+- `checkpoint.check-point-r77-10sg-byol`
+- `bitnami.openedxcypress`
+- `docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145`
 
-## <a name="customer-info"></a>Informace o zákaznících
+## <a name="customer-information"></a>Informace o zákaznících
 
-Informace o zákazníkovi jsou odesílány prostřednictvím více polí. Následující příklad ukazuje informace o zákazníkovi, které jsou obsaženy v zájemci.
+Informace o zákazníkovi se odesílají prostřednictvím několika polí. Následující příklad ukazuje informace o zákaznících, které jsou obsaženy v rámci zájemce:
 
-- Jméno: Jan
-- Příjmení: Novák
-- E-mail:\@jsmith microsoft.com
+- FirstName: Jan
+- LastName: Smith
+- E-mail: JSmith\@Microsoft.com
 - Telefon: 1234567890
-- Země: USA
+- Země: US
 - Společnost: Microsoft
-- Název: CTO
+- Název: technický ředitel
 
->[!Note]
->Pro každého zájemce nejsou vždy k dispozici všechna data v předchozím příkladu. Vzhledem k tomu, že zájemce získáte z několika kroků, jak je uvedeno v části Zájemci zákazníků, je nejlepším způsobem, jak s zájemci zacházet, deduplikovat záznamy a přizpůsobit následná opatření. Tímto způsobem každý zákazník dostává příslušnou zprávu a vytváříte jedinečný vztah.
+>[!NOTE]
+>Ne všechna data v předchozím příkladu jsou vždy k dispozici pro každého zájemce. Vzhledem k tomu, že se dostanete k několika krokům, jak je uvedeno v části "generování zájemců zákazníků", nejlepším způsobem, jak zájemce zvládnout, je zrušit duplicitu záznamů a přizpůsobit následná sledování. Tímto způsobem každý zákazník získá příslušnou zprávu a Vy vytvoříte jedinečnou relaci.
 
-## <a name="best-practices-for-lead-management"></a>Doporučené postupy pro vedení
+## <a name="best-practices-for-lead-management"></a>Osvědčené postupy pro správu potenciálních zákazníků
 
-1. *Proces* – Definujte jasný prodejní proces s milníky, kku a jasným vlastnictvím týmu.
-2. *Kvalifikace* – Definujte požadavky, které označují, zda byl zájemce plně kvalifikován. Ujistěte se, že obchodní nebo marketingoví zástupci pečlivě zařadí zájemce, než je provedete celým prodejním procesem.
-3. *Sledování* - Nezapomeňte sledovat, očekávejte, že typická transakce bude vyžadovat 5 až 12 následných hovorů
-4. *Pečujte* - Pečujte o své zájemce, abyste se dostali na cestu k vyšší ziskové marži.
+- **Proces**: Definujte jasný prodejní proces s milníky, analýzou a jasným vlastnictvím týmu.
+- **Kvalifikace**: Definujte předpoklady, které označují, zda byl zájemce plně kvalifikován. Zajistěte, aby prodejci prodeje nebo marketingu zabírali před úplným prodejem.
+- **Následná**akce: Nezapomeňte pokračovat. Očekává se, že typická transakce vyžaduje 5 až 12 následných volání.
+- **Nurture**: nurture vašich zájemců, abyste vám pomohli dosáhnout vyššího ziskového rozpětí.
 
-## <a name="leads-frequently-asked-questions"></a>Nejčastější dotazy zájemců
+## <a name="leads-frequently-asked-questions"></a>Nejčastější dotazy k zájemcům
 
-### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Kde mohu získat pomoc s nastavením cíle pro potenciální zákazníky?
+### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Kde můžu získat pomoc při nastavování cíle realizace?
 
-Dokumentaci najdete [zde](#connect-to-your-crm-system) nebo odešlete lístek podpory https://partner.microsoft.com/support/v2/?stage=1 a pak vyberte **"vytvoření nabídky"** → typ **nabídky** → **"konfigurace správy potenciálních zákazníků".**
+Postupujte podle kroků v části [připojení k systému CRM](#connect-to-your-crm-system)nebo odešlete lístek podpory prostřednictvím [podpory a podpory partnerského centra](https://partner.microsoft.com/support/v2/?stage=1). Pak vyberte **Nabídka vytvořit** > **váš typ** > pro**správu správy potenciálních zákazníků**.
 
-### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>Je nutné nakonfigurovat cíl zájemce, abych mohl zveřejnit nabídku na trhu?
+### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Je nutné nakonfigurovat cíl zájemce, aby bylo možné publikovat nabídku na komerčním webu Marketplace?
 
-Odpověď závisí na typu nabídky, kterou publikujete. SaaS a Dynamics 365 for Customer Engagement nabízí seznam jako "Kontaktujte mě", všechny nabídky Dynamics 365 pro operace, všechny nabídky Dynamics 365 Business Central a všechny nabídky konzultačních služeb vyžadují připojení k cíli zájemce. Pokud váš typ nabídky nebyl uveden, není vyžadován. Doporučujeme však nakonfigurovat cíl zájemce, abyste nezmeškali obchodní příležitosti.
+Odpověď závisí na typu nabídky, kterou publikujete. Software jako služba (SaaS) a Dynamics 365 Customer Engagement použijte **kontaktní mě** k vypsání všech Dynamics 365 pro nabídky finance a Operations, všech Dynamics 365 Business Central nabízí a všech nabídek služeb. V důsledku toho vyžadují připojení k cíli zájemce. Pokud váš typ nabídky není uveden, připojení k cíli zájemce není vyžadováno. Doporučujeme, abyste nakonfigurovali cíl zájemce, abyste nemuseli přijít o obchodní příležitosti.
 
-### <a name="how-can-i-find-the-test-lead"></a>Jak najdu testovacího stopovace?
+### <a name="how-can-i-find-the-test-lead"></a>Jak můžu najít vedoucí test?
 
-Vyhledejte `"MSFT_TEST"` v destinaci zájemce ukázkový test od společnosti Microsoft:
+Vyhledejte `"MSFT_TEST"` v cíli zájemce. Tady je ukázka vedoucího testu od Microsoftu:
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -121,46 +121,46 @@ phone = 1234567890
 title = MSFT_TEST_636573304831318844
 ```
 
-### <a name="i-have-a-live-offer-but-im-not-seeing-any-leads"></a>Mám živou nabídku, ale nevidím žádné stopy?
+### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Mám živou nabídku, ale proč mi nevidím nějaké potenciální zákazníky?
 
-Zkontrolujte, zda je připojení k cíli zájemce platné. Po zveřejnění nabídky v Partnerském centru vám zašleme testovacího zájemce. Pokud se zobrazí testovací zájemce, připojení je platné. Připojení pro potenciální zákazníky můžete také otestovat tím, že se pokusíte získat náhled nabídky během kroku náhledu kliknutím na "get it now", "contacts me" nebo "free trial" na výpisu na trhu.
+Ujistěte se, že je připojení k cíli realizace platné. Po výběru **publikovat** na vaší nabídce v partnerském centru vám pošleme vedoucího testu. Pokud se zobrazí vedoucí testu, připojení je platné. Můžete také otestovat své zájemce tím, že se v kroku Preview pokusíte získat náhled nabídky. Vyberte **získat hned**, **kontaktujte mě**nebo **bezplatnou zkušební verzi** na výpisu na komerčním webu Marketplace.
 
-Také se ujistěte, že hledáte správná data. Obsah v části [Porozumět údajům o zájemcích](#understand-lead-data) v tomto dokumentu popisuje údaje o zájemcích, které odesíláme do cíle zájemce.
+Ujistěte se také, že hledáte správná data. Obsah v části [pochopení údajů o potenciálních datech](#understand-lead-data) v tomto článku popisuje údaje o zájemcích, které jsme poslali do vašeho cíle potenciálního zákazníka.
 
-### <a name="i-have-configured-azure-blob-as-my-lead-destination-why-dont-i-see-the-lead"></a>Nakonfiguroval jsem Azure BLOB jako cíl pro potenciální zákazníky, proč nevidím zájemce?
+### <a name="i-configured-azure-blob-storage-as-my-lead-destination-but-why-dont-i-see-the-lead"></a>Nakonfiguroval (a) jsem úložiště objektů BLOB v Azure jako cíl pro zájem, ale proč nevidím potenciálního zákazníka?
 
-Cíl zájemců o objekt blob Azure už není podporovaný, takže vám chybí všichni zákazníci, kteří jsou generováni vaší nabídkou. Přepněte na některou z dalších [možností cíle zájemce](./commercial-marketplace-get-customer-leads.md). 
+Azure Blob Storage už není podporovaný jako cíl pro realizace, takže nebudete mít žádné zájemce vygenerované vaší nabídkou. Přepněte na kteroukoli z dalších [možností cíle pro zájemce](./commercial-marketplace-get-customer-leads.md). 
 
-### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Obdržel(a) jsem e-mail od marketplace, proč nemohu najít zájemce v crm?
+### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Dostal jsem e-mail z komerčního tržiště, ale proč nemůžu v mém CRM najít potenciálního zákazníka?
 
-Je možné, že e-mailová doména koncového uživatele pochází z .edu. Z důvodu ochrany osobních údajů nepředáváme soukromé identifikovatelné informace z domény .edu. Odešlete lístek https://partner.microsoft.com/support/v2/?stage=1podpory prostřednictvím .
+Je možné, že e-mailová doména koncového uživatele pochází z. edu. Z důvodů ochrany osobních údajů nemusíme z domény. edu předávat osobní identifikovatelné osobní údaje. Odešlete lístek podpory prostřednictvím [odborné pomoci a podpory pro partnerským centru](https://partner.microsoft.com/support/v2/?stage=1).
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Nakonfiguroval jsem Azure Table jako cíl pro potenciální zákazníky, jak můžu zobrazit zájemce?
+### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Jak si můžu zobrazit potenciální zákazníky?
 
-K datům o potenciálních zákaznících uloženým v tabulce Azure můžete přistupovat z webu Azure Portal nebo si můžete zdarma stáhnout a nainstalovat [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) a zobrazit data tabulk vašeho účtu úložiště Azure.
+K datům zájemce uloženým v tabulce Azure můžete přistupovat z Azure Portal. Můžete si také stáhnout a nainstalovat [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) zdarma a zobrazit tak data z tabulky vašeho účtu úložiště Azure.
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Nakonfiguroval jsem Azure Table jako cíl pro potenciální zákazníky, můžu dostat upozornění při každém odeslání nového zájemce marketplacem?
+### <a name="i-configured-an-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-commercial-marketplace-lead-is-sent"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Můžu dostávat oznámení při každém odeslání nového potenciálního zákazníka z obchodu Marketplace?
 
-Ano, podle pokynů nastavte tok Microsoftu, který odešle e-mail, pokud je zájemce přidán do tabulky Azure v dokumentaci [zde](./commercial-marketplace-lead-management-instructions-azure-table.md).
+Ano. Postupujte podle pokynů v tématu [Konfigurace řízení zájemců pomocí tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) k nastavení služby Microsoft flow, která odešle e-mail, když se do tabulky Azure přidá zájemce.
 
-### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>Nakonfiguroval jsem salesforce jako cíl pro potenciální zákazníky, proč nelze zájemce najít?
+### <a name="i-configured-salesforce-as-my-lead-destination-but-why-cant-i-find-the-leads"></a>Nakonfigurovali jste Salesforce jako cíl pro zájem, ale proč nemůžu najít potenciální zákazníky?
 
-Zkontrolujte, zda je formulář "web pro zájemce" povinným polem založeným na seznamu. Pokud ano, přepněte toto pole na nepovinné textové pole.
+Zkontroluje, jestli je formulář Web-to-zájemce povinným polem na základě seznamu vyskladnění. Pokud je, přepněte pole na nepovinné textové pole.
 
-### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Byl tam problém s mým hlavním cílem, a já jsem vynechal některé vede. Mohu si je nechat poslat e-mailem?
+### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Došlo k potížím s cílem mého zájemce a vynechali nějaké zájemce. Můžu se mi poslat do e-mailu?
 
-Vzhledem k zásadám pro identifikaci soukromých informací nemůžeme sdílet informace o potenciálních zákaznících prostřednictvím nezabezpečených e-mailů.
+V důsledku zásad identifikovatelné osobní údaje nemůžeme sdílet informace o potenciálních osobách prostřednictvím nezabezpečeného e-mailu.
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Nakonfiguroval jsem Azure Table jako cíl pro potenciální zákazníky, kolik to bude stát?
+### <a name="i-configured-an-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Do jaké míry budou náklady?
 
-Data olověné genje nízká (<1 GB pro téměř všechny vydavatele). Náklady budou záviset na počtu přijatých zájemců, pokud bude za měsíc přijato 1 000 zájemců, bude to stát kolem 50 centů. Další informace o cenách úložiště najdete v [tématu ceny za úložiště](https://azure.microsoft.com/pricing/details/storage/).
+Data generování zájemců jsou nízká. Téměř všem vydavatelům je méně než 1 GB. Náklady závisí na počtu přijatých zájemců. Například pokud 1 000 potenciální zákazníci obdrží za měsíc, náklady jsou přibližně 50 centů. Další informace o cenách služby Storage najdete v tématu [Azure Storage přehledu cen](https://azure.microsoft.com/pricing/details/storage/).
 
-Pokud vaše otázka stále není zodpovězena, kontaktujte podporu prostřednictvím aka.ms/marketplacepublishersupport a pak vyberte **možnost "vytvoření nabídky"** → **typ nabídky** → **"konfigurace správy potenciálních zákazníků".** 
+Pokud na vaši otázku neodpovíte, kontaktujte podpora Microsoftu prostřednictvím [centra pro partnery a pomoc a podporu](https://aka.ms/marketplacepublishersupport). Pak vyberte **Nabídka vytvořit** > **váš typ** > pro**správu správy potenciálních zákazníků**.
 
-### <a name="i-am-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-who-to-receive-these-emails"></a>Dostávám e-mailová oznámení, když jsou přijati noví zákazníci zájemci. Jak mohu nakonfigurovat, kdo bude tyto e-maily dostávat?
+### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Přijímám e-mailová oznámení, když se přijímají Noví zájemci zákazníků. Jak můžu nakonfigurovat někoho jiného, aby přijímal tyto e-maily?
 
-Získejte přístup ke své nabídce v Centru partnerů a přejděte na stránku **Nastavení nabídky** ->**úpravy** **správy** -> zájemců . Aktualizujte e-mailové adresy v poli **Kontaktní e-mail.**
+Přihlaste se k nabídce v partnerském centru a přejděte na stránku **nastavení nabídky**  > > **Správa zájemců****Upravit**. Aktualizujte e-mailové adresy v poli **kontaktní e-mail** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile je technické nastavení zavedeno, měli byste tyto potenciální zákazníky začlenit do aktuální prodejní & marketingové strategie a provozních procesů. Máme zájem lépe porozumět vašemu celkovému prodejnímu procesu a chceme s vámi úzce spolupracovat na poskytování vysoce kvalitních potenciálních zákazníků a dostatečného množství dat, abyste byli úspěšní. Uvítáme vaši zpětnou vazbu o tom, jak můžeme optimalizovat a vylepšovat potenciální zákazníky, které vám posíláme, s dalšími údaji, které pomohou těmto zákazníkům uspět. Dejte nám vědět, pokud máte zájem [o poskytnutí zpětné vazby](mailto:AzureMarketOnboard@microsoft.com) a návrhů, které vašemu prodejnímu týmu umožní být úspěšnější s zájemci marketplace.
+Po uvedení technického nastavení zahrňte tyto zájemce do své aktuální prodejní a marketingové strategie a provozní procesy. Uvažujete o tom, abychom lépe porozuměli celkovému procesu prodeje a chtěli byste úzce spolupracovat s vámi na zajištění vysoce kvalitních zájemců a dostatečného množství dat, aby bylo možné to úspěšně provést. Uvítáme vaše názory na to, jak můžeme optimalizovat a zdokonalovat zájemce, abychom vám poslali další data, abychom těmto zákazníkům pomohli zajistit úspěch. Dejte nám vědět, pokud máte zájem o [poskytování zpětné vazby](mailto:AzureMarketOnboard@microsoft.com) a návrhů, které umožní vašemu prodejnímu týmu lepší úspěšnost s komerčními zájemci na webu Marketplace.

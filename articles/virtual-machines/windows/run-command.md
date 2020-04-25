@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: a0125c556789b1a1a5b11dcd16b852d7f57b6c50
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82099865"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143781"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Spouštění skriptů PowerShellu na VIRTUÁLNÍm počítači s Windows pomocí příkazu Spustit
 
@@ -58,7 +58,7 @@ The entity was not found in this Azure location
 |**EnableAdminAccount**|Zkontroluje, jestli je účet místního správce zakázaný, a pokud ho povolí.|
 |**Příkazu**| Zobrazuje podrobné informace o IP adrese, masce podsítě a výchozí bráně pro každý adaptér vázaný na protokol TCP/IP.|
 |**RDPSettings**|Zkontroluje nastavení registru a nastavení zásad domény. Navrhuje akce zásad, pokud je počítač součástí domény, nebo upravuje nastavení na výchozí hodnoty.|
-|**ResetRDPCert**|Odebere certifikát SSL vázaný na naslouchací proces protokolu RDP a obnoví zabezpečení naslouchacího procesu RDP na výchozí hodnotu. Pokud se zobrazí nějaké problémy s certifikátem, použijte tento skript.|
+|**ResetRDPCert**|Odebere certifikát TLS/SSL vázaný na naslouchací proces protokolu RDP a obnoví zabezpečení naslouchacího procesu RDP na výchozí hodnotu. Pokud se zobrazí nějaké problémy s certifikátem, použijte tento skript.|
 |**SetRDPPort**|Nastaví výchozí nebo uživatelem zadané číslo portu pro připojení ke vzdálené ploše. Povolí pravidla brány firewall pro příchozí přístup k portu.|
 
 ## <a name="azure-cli"></a>Azure CLI

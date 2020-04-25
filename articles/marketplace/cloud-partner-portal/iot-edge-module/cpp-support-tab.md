@@ -1,47 +1,47 @@
 ---
-title: Podpora modulu Azure IoT Edge | Azure Marketplace
-description: Možnosti podpory pro modul IoT Edge.
+title: Podpora pro modul Azure IoT Edge | Azure Marketplace
+description: Možnosti podpory pro modul IoT Edge
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 45304e12bf959cb1f695384535360af283ee3f10
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 59469aaa0a63cd56debe6af84d48bafa727df88c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981864"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142300"
 ---
 # <a name="iot-edge-module-support-tab"></a>Karta Podpora modulu IoT Edge
 
 >[!Important]
->dubna 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
+>Od 13. dubna 2020 začneme přesouvat správu nabídek IoT Edge modulů do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Podle pokynů v tématu [vytvoření IoT Edge modulu nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) můžete spravovat migrované nabídky.
 
-Karta **Podpora** na stránce **Nová nabídka** slouží k poskytování technických a uživatelských zdrojů podpory pro vaši nabídku.  Ve formuláři podpory jsou k dispozici následující vstupní oblasti: **Technický kontakt**, **Zákaznická podpora**a Adresy URL **podpory**. Hvězdička (*) připojená k názvu pole označuje, že je požadováno.
+Karta **Podpora** na **nové stránce nabídek** vám poskytne prostředky technické podpory a podpory uživatelů pro vaši nabídku.  Ve formuláři podpory jsou k dispozici následující vstupní oblasti: **technický kontakt**, **zákaznická podpora**a **adresy URL podpory**. Hvězdička (*), která je připojena k názvu pole, označuje, že je požadováno.
 
-![Karta Podpora ve formuláři Nová nabídka pro moduly IoT Edge](./media/iot-edge-module-support-tab.png)
+![Karta Podpora na novém formuláři nabídky pro IoT Edge moduly](./media/iot-edge-module-support-tab.png)
 
 ## <a name="support-form-fields"></a>Pole formuláře podpory
 
-Následující tabulka popisuje pole formuláře a vstup požadovaný pro každé pole. Povinná pole jsou obžalována hvězdičkou (*).
+Následující tabulka popisuje pole formuláře a vstup vyžadovaný pro každé pole. Požadovaná pole jsou indicted hvězdičkou (*).
 
 |  **Pole**                |     **Popis**                                                          |
 |  ---------                |     ---------------                                                          |
 | ***Technický kontakt***  |  *Slouží jako technický kontakt mezi společností Microsoft a vaší organizací.* | 
-| **Jméno\***                  | Jméno osoby nebo skupiny, která slouží jako technická/technická podpora     |
-| **E-mail\***                 | E-mailová adresa tohoto technického kontaktu                                      |
+| **Název\***                  | Jméno osoby nebo skupiny, která slouží jako technická/technická podpora     |
+| **E-mailu\***                 | E-mailová adresa tohoto technického kontaktu                                      |
 | **Telefon\***                 | Telefonní číslo pro technickou podporu                                           |
-| ***Zákaznická podpora***  | *Přijímá lístky podpory otevřené zákazníky v Azure* |
-| **Jméno\***                  | Jméno osoby nebo skupiny, která slouží jako zákaznická podpora                  |
-| **E-mail\***                 | E-mailová adresa zákaznické podpory                                            |
-| **Telefon\***                 | Telefonní číslo zákaznické podpory                                            |
-| ***Adresy URL podpory***  | *Weby podpory, které bude společnost Microsoft používat, když vaši zákazníci otevřou lístky podpory* |
-| **Veřejný Azure**          | Adresa URL pro veřejný web podpory internetu                                         |
-| **Azure Government Cloud**| Adresa URL webu podpory vládního cloudu                                        |
+| ***Zákaznická podpora***  | *Přijímá lístky podpory otevřené zákazníky v Azure.* |
+| **Název\***                  | Jméno osoby nebo skupiny, která slouží jako zákaznická podpora                  |
+| **E-mailu\***                 | E-mailová adresa zákaznické podpory                                            |
+| **Telefon\***                 | Telefonní číslo pro zákaznickou podporu                                            |
+| ***Adresy URL podpory***  | *Weby podpory, které Microsoft použije, když vaši zákazníci otevřou lístky podpory* |
+| **Veřejné Azure**          | Adresa URL webu podpory veřejné sítě Internet                                         |
+| **Cloud Azure Government**| Adresa URL webu podpory pro vládní Cloud                                        |
 |   |   |
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dokončení poskytování informací o podpoře můžete [nabídku publikovat](./cpp-publish-offer.md).
+Po dokončení poskytování informací o podpoře jste připraveni [publikovat vaši nabídku](./cpp-publish-offer.md).

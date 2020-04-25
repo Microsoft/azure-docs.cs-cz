@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05002c1b11ef31b61fb4036f09dc8edcdafca767
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f03b146331069371106c1857f2acc68b566d3c5d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75608376"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129235"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrace protokolů Azure Active Directory s využitím ArcSight pomocí Azure Monitor
 
@@ -30,7 +30,7 @@ ms.locfileid: "75608376"
 
 V tomto článku se dozvíte, jak směrovat protokoly Azure AD do ArcSight pomocí Azure Monitor. 
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
 * Centrum událostí Azure, které obsahuje protokoly aktivit služby Azure AD. Naučte se, jak [streamovat protokoly aktivit do centra událostí](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
@@ -53,7 +53,7 @@ Stáhněte si a otevřete [Průvodce konfigurací pro ArcSight SmartConnector pr
     * Nastavení aplikace z vašeho nasazení je trvalé v nastavení aplikace ve službě Azure Function Apps. 
     * V Azure se vytvoří nová skupina prostředků pro ArcSight s aplikací Azure AD pro konektor ArcSight a účty úložiště obsahující mapované soubory ve formátu CEF.
 
-4. Nakonec proveďte kroky po nasazení v Průvodci konfigurací **po nasazení** . V této části se dozvíte, jak provést další konfiguraci, pokud jste v plánu App Service, abyste zabránili nečinnosti aplikací Function App po uplynutí časového limitu, nakonfigurujete streamování diagnostických protokolů z centra událostí a aktualizujete certifikát úložiště klíčů SysLog NG démona SmartConnector a přidružíte ho k nově vytvořenému účtu úložiště.
+4. Nakonec proveďte kroky po nasazení v Průvodci konfigurací **po nasazení** . V této části se dozvíte, jak provést další konfiguraci, pokud jste v plánu App Service, abyste zabránili nečinnosti aplikací Function App po uplynutí časového limitu, nakonfigurujete streamování protokolů prostředků z centra událostí a aktualizujete certifikát úložiště klíčů démona SysLog NG SmartConnector a přidružíte ho k nově vytvořenému účtu úložiště.
 
 5. Průvodce konfigurací také vysvětluje, jak přizpůsobit vlastnosti konektoru v Azure a jak upgradovat a odinstalovat konektor. K dispozici je také část týkající se vylepšení výkonu, včetně upgradu na [plán spotřeby Azure](https://azure.microsoft.com/pricing/details/functions) a konfigurace ArcSight Load Balancer, pokud je zatížení události větší než v případě, že je možné vyřadit z jednoho procesu syslog ng SmartConnector.
 

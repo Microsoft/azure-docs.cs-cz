@@ -1,319 +1,319 @@
 ---
-title: Podporované služby a schémata azure resourcelogs
-description: Seznamte se s podporovanými službami a schématem událostí pro protokoly prostředků Azure.
+title: Protokoly prostředků Azure podporují služby a schémata.
+description: Pochopte podporované služby a schéma událostí pro protokoly prostředků Azure.
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: 352310a6e489a96c38e85b16e9504d8eb9be38b1
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 7183c0b268342d08fe7c0ed79c7fa589e3e28afe
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457242"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128474"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Podporované služby, schémata a kategorie pro protokoly prostředků Azure
 
 > [!NOTE]
-> Protokoly prostředků byly dříve označovány jako diagnostické protokoly.
+> Protokoly prostředků se dříve nazývaly diagnostické protokoly.
 
-[Protokoly prostředků Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md) jsou protokoly vyzařované službami Azure, které popisují provoz těchto služeb nebo prostředků. Všechny protokoly prostředků dostupné prostřednictvím Služby Azure Monitor sdílejí společné schéma nejvyšší úrovně s flexibilitou pro každou službu k vyzařování jedinečných vlastností pro své vlastní události.
+[Protokoly prostředků Azure monitor](../../azure-monitor/platform/platform-logs-overview.md) jsou protokoly emitované službami Azure, které popisují fungování těchto služeb nebo prostředků. Všechny protokoly prostředků dostupné prostřednictvím Azure Monitor sdílejí společné schéma nejvyšší úrovně s flexibilitou pro každou službu, aby vygenerovala jedinečné vlastnosti pro vlastní události.
 
-Kombinace typu prostředku (k dispozici `resourceId` ve vlastnosti) `category` a jednoznačně identifikovat schéma. Tento článek popisuje schéma nejvyšší úrovně pro protokoly prostředků a odkazy na schéma pro každou službu.
+Kombinace typu prostředku (k dispozici ve `resourceId` vlastnosti) a `category` jednoznačné určení schématu. Tento článek popisuje schéma nejvyšší úrovně pro protokoly prostředků a odkazy na schémat pro každou službu.
 
-## <a name="top-level-resource-logs-schema"></a>Schéma protokolů prostředků nejvyšší úrovně
+## <a name="top-level-resource-logs-schema"></a>Schéma protokolů prostředků na nejvyšší úrovni
 
 | Název | Požadováno/volitelné | Popis |
 |---|---|---|
 | time | Požaduje se | Časové razítko (UTC) události. |
-| resourceId | Požaduje se | ID prostředku, který událost emitoval. Pro služby tenanta se jedná o formulář /tenants/tenant-id/providers/provider-name. |
-| tenantId | Požadováno pro protokoly klienta | ID klienta klienta služby Active Directory, se kterým je tato událost svázána. Tato vlastnost se používá pouze pro protokoly na úrovni klienta, nezobrazí se v protokolech na úrovni prostředků. |
-| operationName | Požaduje se | Název operace reprezentované touto událostí. Pokud událost představuje operaci RBAC, toto je název operace RBAC (např. Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Obvykle modelováno ve formě operace Správce prostředků, i když se nejedná`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`o skutečné operace správce prostředků ( ) |
-| operationVersion | Nepovinné | Api-verze spojená s operací, pokud operationName byla provedena pomocí API (např. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Pokud neexistuje žádné rozhraní API, které odpovídá této operaci, verze představuje verzi této operace v případě, že vlastnosti spojené s operací změnit v budoucnu. |
-| category | Požaduje se | Kategorie protokolu události. Kategorie je rozlišovací schopnost, při které můžete povolit nebo zakázat protokoly na konkrétní prostředek. Vlastnosti, které se zobrazují v objektu blob vlastností události, jsou stejné v rámci určité kategorie protokolu a typu prostředku. Typické kategorie protokolu jsou "Audit" "Provozní" "Spuštění" a "Požadavek". |
-| resultType | Nepovinné | Stav události. Mezi typické hodnoty patří Spuštěno, Probíhá, Úspěšné, Neúspěšné, Aktivní a Vyřešeno. |
-| resultSignature | Nepovinné | Dílčí stav události. Pokud tato operace odpovídá volání rozhraní REST API, jedná se o stavový kód HTTP odpovídajícího volání REST. |
-| resultDescription | Nepovinné | Statický textový popis této operace, např. "Získejte soubor úložiště." |
+| resourceId | Požaduje se | ID prostředku prostředku, který vyvolal událost. Pro služby tenanta se jedná o formulář/tenants/tenant-ID/Providers/Provider-Name. |
+| tenantId | Vyžadováno pro protokoly klientů | ID tenanta klienta služby Active Directory, se kterým je tato událost svázána. Tato vlastnost se používá jenom pro protokoly na úrovni tenanta, nezobrazuje se v protokolech na úrovni prostředků. |
+| operationName | Požaduje se | Název operace reprezentované touto událostí. Pokud událost představuje operaci RBAC, jedná se o název operace RBAC (např. Microsoft. Storage/storageAccounts/blobServices/BLOBs/Read). Obvykle se modeluje ve formě operace Správce prostředků, i když nejsou skutečné dokumentované Správce prostředků operace (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`). |
+| operationVersion | Nepovinné | Verze rozhraní API přidružená k operaci, pokud se operace provedla pomocí rozhraní API (např. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Pokud neexistuje žádné rozhraní API, které by odpovídalo této operaci, verze představuje verzi této operace pro případ, že se vlastnosti přidružené k operaci v budoucnu mění. |
+| category | Požaduje se | Kategorie protokolu události Kategorie je členitost, na které můžete povolit nebo zakázat protokoly na konkrétním prostředku. Vlastnosti, které se zobrazují v objektu BLOB vlastností události, jsou stejné v rámci konkrétní kategorie protokolu a typu prostředku. Typické kategorie protokolu jsou "Audit" "provozní" "provádění" a "Request". |
+| resultType | Nepovinné | Stav události Mezi obvyklé hodnoty patří počáteční, probíhající, úspěšná, neúspěšná, aktivní a vyřešená. |
+| resultSignature | Nepovinné | Stav sub události Pokud tato operace odpovídá REST API volání, jedná se o stavový kód HTTP odpovídajícího volání REST. |
+| resultDescription | Nepovinné | Statický textový popis této operace, např. "Získat soubor úložiště" |
 | durationMs | Nepovinné | Doba trvání operace v milisekundách. |
-| callerIpAddress | Nepovinné | IP adresa volajícího, pokud operace odpovídá volání rozhraní API, které by pocházet z entity s veřejně dostupnou IP adresu. |
-| correlationId | Nepovinné | Identifikátor GUID slouží k seskupení sadu souvisejících událostí. Obvykle, pokud dvě události mají stejnou operaciName, ale dva různé stavy (např. "Spuštěno" a "Úspěšné"), sdílejí stejné ID korelace. To může také představovat další vztahy mezi událostmi. |
-| identity | Nepovinné | Objekt blob JSON, který popisuje identitu uživatele nebo aplikace, která provedla operaci. Obvykle to bude zahrnovat autorizaci a deklarace identity / Token JWT ze služby Active Directory. |
-| Úroveň | Nepovinné | Úroveň závažnosti události. Musí být jeden z informační, upozornění, chyba nebo kritické. |
-| location | Nepovinné | Oblast zdroje vyzařující událost, např. "Východní USA" nebo "Francie – jih" |
-| properties | Nepovinné | Všechny rozšířené vlastnosti související s touto konkrétní kategorie událostí. Všechny vlastní/jedinečné vlastnosti musí být vloženy do této "části B" schématu. |
+| callerIpAddress | Nepovinné | IP adresa volajícího, pokud operace odpovídá volání rozhraní API, které pochází z entity s veřejně dostupnou IP adresou. |
+| correlationId | Nepovinné | Identifikátor GUID použitý k seskupení sady souvisejících událostí. Obvykle Pokud mají dvě události stejný OperationName, ale dva různé stavy (např. "Spuštěno" a "úspěch") sdílí stejné ID korelace. To může také představovat jiné vztahy mezi událostmi. |
+| identity | Nepovinné | Objekt BLOB JSON, který popisuje identitu uživatele nebo aplikace, která provedla operaci. Obvykle se jedná o tokeny autorizace a deklarace identity/JWT ze služby Active Directory. |
+| Úroveň | Nepovinné | Úroveň závažnosti události Musí se jednat o jednu z informativních, varovných, chybových nebo kritických. |
+| location | Nepovinné | Oblast zdroje, která vyvolala událost, např. "Východní USA" nebo "Francie – jih" |
+| properties | Nepovinné | Všechny rozšířené vlastnosti související s touto konkrétní kategorií událostí. Všechny vlastní a jedinečné vlastnosti musí být vloženy do tohoto "části B" schématu. |
 
-## <a name="service-specific-schemas-for-resource-logs"></a>Schémata specifická pro službu pro protokoly prostředků
-Schéma pro protokoly diagnostiky prostředků se liší v závislosti na prostředku a kategorii protokolu. Tento seznam zobrazuje všechny služby, které zpřístupňují protokoly prostředků a odkazy na službu a schéma specifické pro kategorii, pokud jsou k dispozici.
+## <a name="service-specific-schemas-for-resource-logs"></a>Schémata pro protokoly prostředků pro konkrétní služby
+Schéma pro protokoly diagnostiky prostředků se liší v závislosti na kategoriích prostředků a protokolů. V tomto seznamu jsou uvedeny všechny služby, které zpřístupňují dostupné protokoly prostředků, a odkazy na schéma specifické pro službu a kategorii, kde je k dispozici.
 
-| Služba | Dokumenty schématu & |
+| Služba | Schéma & docs |
 | --- | --- |
-| Azure Active Directory | [Přehled](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [schéma protokolů auditu](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) a schéma [přihlášení](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Azure Active Directory | [Přehled](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [schéma protokolu auditu](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) a [schéma přihlášení](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
-| API Management | [Protokoly prostředků správy rozhraní API](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
-| Brány Application Gateway |[Protokolování pro aplikační bránu](../../application-gateway/application-gateway-diagnostics.md) |
-| Azure Automation |[Analýza protokolů pro Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
-| Azure Batch |[Protokolování dávek Azure](../../batch/batch-diagnostics.md) |
-| Azure Database for MySQL | [Azure Database for MySQL diagnostické protokoly](../../mysql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Database for PostgreSQL | [Azure Database pro postgreSQL protokoly](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Průzkumník dat Azure | [Protokoly Průzkumníka dat Azure](/azure/data-explorer/using-diagnostic-logs) |
+| API Management | [Protokoly prostředků API Management](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
+| Brány Application Gateway |[Protokolování pro Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
+| Azure Automation |[Log Analytics pro Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
+| Azure Batch |[Protokolování Azure Batch](../../batch/batch-diagnostics.md) |
+| Azure Database for MySQL | [Protokoly diagnostiky Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for PostgreSQL | [Protokoly Azure Database for PostgreSQL](../../postgresql/concepts-server-logs.md#resource-logs) |
+| Průzkumník dat Azure | [Protokoly Průzkumník dat Azure](/azure/data-explorer/using-diagnostic-logs) |
 | Cognitive Services | [Protokolování pro Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
-| Container Registry | [Protokolování pro registr kontejnerů Azure](../../container-registry/container-registry-diagnostics-audit-logs.md) |
-| Content Delivery Network | [Azure protokoly pro CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
+| Container Registry | [Protokolování pro Azure Container Registry](../../container-registry/container-registry-diagnostics-audit-logs.md) |
+| Content Delivery Network | [Protokoly Azure pro CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Protokolování Azure Cosmos DB](../../cosmos-db/logging.md) |
-| Data Factory | [Monitorování datových továren pomocí Azure Monitoru](../../data-factory/monitor-using-azure-monitor.md) |
+| Data Factory | [Monitorování datových továren pomocí Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Přístup k protokolům pro Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Přístup k protokolům pro Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| Event Hubs |[Protokoly centra událostí Azure](../../event-hubs/event-hubs-diagnostic-logs.md) |
+| Event Hubs |[Protokoly Event Hubs Azure](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Schéma není k dispozici. |
 | Brána Azure Firewall | Schéma není k dispozici. |
-| IoT Hub | [Operace ioT hubu](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| Key Vault |[Protokolování trezoru klíčů Azure](../../key-vault/general/logging.md) |
-| Kubernetes Service |[Azure Kubernetes protokolování](../../aks/view-master-logs.md#log-event-schema) |
+| IoT Hub | [IoT Hub operace](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
+| Key Vault |[Protokolování Azure Key Vault](../../key-vault/general/logging.md) |
+| Kubernetes Service |[Protokolování Azure Kubernetes](../../aks/view-master-logs.md#log-event-schema) |
 | Load Balancer |[Log Analytics pro Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Vlastní schéma sledování Logic Apps B2B](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Skupiny zabezpečení sítě) |[Analýza protokolu pro skupiny zabezpečení sítě (NSG)](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| Ochrana před útoky DDoS | [Správa standardu ochrany Azure DDoS](../../virtual-network/manage-ddos-protection.md) |
-| Vyhrazená služba Power BI | [Protokolování pro Power BI vložené v Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
-| Recovery Services | [Datový model pro zálohování Azure](../../backup/backup-azure-reports-data-model.md)|
-| Search |[Povolení a používání analýzy návštěvnosti vyhledávání](../../search/search-traffic-analytics.md) |
+| Ochrana před útoky DDoS | [Spravovat Azure DDoS Protection Standard](../../virtual-network/manage-ddos-protection.md) |
+| Vyhrazená služba Power BI | [Protokolování Power BI Embedded v Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
+| Recovery Services | [Datový model pro Azure Backup](../../backup/backup-azure-reports-data-model.md)|
+| Search |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
 | Service Bus |[Protokoly Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| Databáze SQL | [Protokolování databáze Azure SQL](../../sql-database/sql-database-metrics-diag-logging.md) |
+| Databáze SQL | [Protokolování Azure SQL Database](../../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Protokoly úloh](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-| Traffic Manager | [Schéma protokolu správce provozu](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
+| Traffic Manager | [Schéma Traffic Managerho protokolu](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuální sítě | Schéma není k dispozici. |
 | Brány virtuálních sítí | Schéma není k dispozici. |
 
-## <a name="supported-log-categories-per-resource-type"></a>Podporované kategorie protokolů podle typu prostředku
+## <a name="supported-log-categories-per-resource-type"></a>Podporované kategorie protokolů na typ prostředku
 
-Některé kategorie mohou být podporovány pouze pro určité typy prostředků. Toto je seznam všech, které jsou k dispozici v nějaké formě.  Například kategorie Microsoft.Sql/servers/databases nejsou k dispozici pro všechny typy databází. Další informace naleznete v [informacích o protokolování diagnostiky databáze SQL](../../sql-database/sql-database-metrics-diag-logging.md). 
+Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Toto je seznam všech dostupných v některém formuláři.  Například kategorie Microsoft. SQL/servery/databáze nejsou k dispozici pro všechny typy databází. Další informace najdete v tématu [informace o protokolování diagnostiky SQL Database](../../sql-database/sql-database-metrics-diag-logging.md). 
 
 |Typ prostředku|Kategorie|Zobrazovaný název kategorie|
 |---|---|---|
-|Microsoft.AAD/domainServices|Zabezpečení systému|Zabezpečení systému|
-|Microsoft.AAD/domainServices|Správa účtů|Správa účtů|
-|Microsoft.AAD/domainServices|Odhlášení|Odhlášení|
-|Microsoft.AAD/domainServices|ObjectAccess|ObjectAccess|
-|Microsoft.AAD/domainServices|Změna zásad|Změna zásad|
-|Microsoft.AAD/domainServices|PrivilegeUse|PrivilegeUse|
-|Microsoft.AAD/domainServices|Podrobné sledování|Podrobné sledování|
-|Microsoft.AAD/domainServices|DirectoryServiceAccess|DirectoryServiceAccess|
-|Microsoft.AAD/domainServices|Přihlášení k účtu|Přihlášení k účtu|
-|microsoft.aadiam/tenants|Signin|Signin|
-|Microsoft.AnalysisServices/servery|Modul|Modul|
-|Microsoft.AnalysisServices/servery|Služba|Služba|
-|Microsoft.ApiManagement/service|GatewayLogs|Protokoly související s bránou ApiManagement Gateway|
-|Microsoft.AppPlatform/jaro|Konzola aplikace|Konzola aplikace|
-|Microsoft.Automation/automationÚčty|Pracovní protokoly|Protokoly úloh|
-|Microsoft.Automation/automationÚčty|JobStreams|Toky úloh|
-|Microsoft.Automation/automationÚčty|DscNodeStatus|Stav uzlu Dsc|
-|Microsoft.Batch/batchAccounts|Protokol služeb|Protokoly služeb|
-|Pracovní prostory Microsoft.BatchAI|Událost BaiClusterEvent|Událost BaiClusterEvent|
-|Pracovní prostory Microsoft.BatchAI|Událost BaiClusterNodeEvent|Událost BaiClusterNodeEvent|
-|Pracovní prostory Microsoft.BatchAI|BaiJobEvent|BaiJobEvent|
-|Microsoft.Blockchain/blockchainČlenové|BlockchainAplikace|Aplikace Blockchain|
-|Microsoft.Blockchain/blockchainČlenové|Proxy server|Proxy server|
-|Microsoft.Cdn/profiles/koncové body|CoreAnalytics|Získá metriky koncového bodu, například šířku pásma, odchozí, atd.|
-|Microsoft.ClassicNetwork/networksecuritygroups|Událost toku pravidel skupiny zabezpečení sítě|Událost toku pravidel skupiny zabezpečení sítě|
-|Microsoft.CognitiveServices/účty|Auditování|Protokoly auditu|
-|Microsoft.CognitiveServices/účty|Požadavek na odpověď|Protokoly požadavků a odpovědí|
-|Microsoft.ContainerRegistry/registry|Události ContainerRegistryRepositoryEvents|Protokoly repositoryEvent (náhled)|
-|Microsoft.ContainerRegistry/registry|ContainerRegistryLoginEvents|Události přihlášení (náhled)|
-|Microsoft.ContainerService/spravované clustery|kube-apiserver|Kubernetes API Server|
-|Microsoft.ContainerService/spravované clustery|kube-controller-manager|Správce regulátorů Kubernetes|
-|Microsoft.ContainerService/spravované clustery|kube-plánovač|Kubernetes Plánovač|
-|Microsoft.ContainerService/spravované clustery|kube-audit|Kubernetesův audit|
-|Microsoft.ContainerService/spravované clustery|automatické škálování clusteru|Autoscaler clusteru Kubernetes|
-|Microsoft.Databricks/pracovní prostory|dbfs|Systém souborů Databricks|
-|Microsoft.Databricks/pracovní prostory|Clustery|Clustery datových cihel|
-|Microsoft.Databricks/pracovní prostory|accounts|Účty Databricks|
-|Microsoft.Databricks/pracovní prostory|Úlohy|Databricks Práce|
-|Microsoft.Databricks/pracovní prostory|poznámkový blok|Poznámkový blok Databricks|
-|Microsoft.Databricks/pracovní prostory|Ssh|Datové cihly SSH|
-|Microsoft.Databricks/pracovní prostory|Pracovní prostor|Pracovní prostor Datové cihly|
-|Microsoft.Databricks/pracovní prostory|Tajemství|Databricks Tajemství|
-|Microsoft.Databricks/pracovní prostory|sqlPermissions|Databricks SQLPermissions|
-|Microsoft.Databricks/pracovní prostory|instancePooly|Fondy instancí|
-|Microsoft.DataCatalog/datacatalogs|ScanStatusLogEvent|ScanStatus|
-|Microsoft.DataFactory/továrny|Počet aktivit|Protokol aktivity kanálu|
-|Microsoft.DataFactory/továrny|PipelineRuns|Protokol spuštění kanálu|
-|Microsoft.DataFactory/továrny|Spuštění aktivační události|Protokol spuštění aktivační události|
-|Microsoft.DataLakeAnalytics/účty|Auditování|Protokoly auditu|
-|Microsoft.DataLakeAnalytics/účty|Žádosti|Protokoly požadavků|
-|Microsoft.DataLakeStore/účty|Auditování|Protokoly auditu|
-|Microsoft.DataLakeStore/účty|Žádosti|Protokoly požadavků|
-|Microsoft.DataShare/účty|Sdílené složky|Sdílené složky|
-|Microsoft.DataShare/účty|ShareSubscriptions|Sdílet předplatná|
-|Microsoft.DataShare/účty|SentShareSnapshots|Odeslané snímky sdílené složky|
-|Microsoft.DataShare/účty|Funkce ReceivedShareSnapshots|Přijaté snímky sdílené složky|
-|Microsoft.DBforMySQL/servery|MySqlSlowLogs|Protokoly serveru MySQL|
-|Microsoft.DBforMySQL/servery|MySqlAuditLogs|Protokoly auditu MySQL|
-|Microsoft.DBforPostgreSQL/servery|PostgreSQLLogs|Protokoly serveru PostgreSQL|
-|Microsoft.DBforPostgreSQL/servery|Statistiky běhu dotazu|Statistiky modulu runtime úložiště dotazů PostgreSQL|
-|Microsoft.DBforPostgreSQL/servery|Statistiky QueryStoreWait|Statistiky čekání úložiště dotazů PostgreSQL|
-|Microsoft.DBforPostgreSQL/serversv2|PostgreSQLLogs|Protokoly serveru PostgreSQL|
-|Microsoft.DBforPostgreSQL/serversv2|Statistiky běhu dotazu|Statistiky modulu runtime úložiště dotazů PostgreSQL|
-|Microsoft.DBforPostgreSQL/serversv2|Statistiky QueryStoreWait|Statistiky čekání úložiště dotazů PostgreSQL|
-|Microsoft.DesktopVirtualization/pracovní prostory|CheckPoint|CheckPoint|
-|Microsoft.DesktopVirtualization/pracovní prostory|Chyba|Chyba|
-|Microsoft.DesktopVirtualization/pracovní prostory|Správa|Správa|
-|Microsoft.DesktopVirtualization/pracovní prostory|Informační kanál|Informační kanál|
-|Microsoft.DesktopVirtualization/applicationGroups|CheckPoint|CheckPoint|
-|Microsoft.DesktopVirtualization/applicationGroups|Chyba|Chyba|
-|Microsoft.DesktopVirtualization/applicationGroups|Správa|Správa|
-|Microsoft.DesktopVirtualization/hostPools|CheckPoint|CheckPoint|
-|Microsoft.DesktopVirtualization/hostPools|Chyba|Chyba|
-|Microsoft.DesktopVirtualization/hostPools|Správa|Správa|
-|Microsoft.DesktopVirtualization/hostPools|Připojení|Připojení|
-|Microsoft.DesktopVirtualization/hostPools|Registrace hostitele|Registrace hostitele|
-|Microsoft.Devices/IotHubs|Připojení|Připojení|
-|Microsoft.Devices/IotHubs|Telemetrie zařízení|Telemetrie zařízení|
-|Microsoft.Devices/IotHubs|C2DPříkazy|Příkazy C2D|
-|Microsoft.Devices/IotHubs|DeviceIdentityOperations|Operace identity zařízení|
-|Microsoft.Devices/IotHubs|FileUploadOperations|Operace nahrávání souborů|
-|Microsoft.Devices/IotHubs|Trasy|Trasy|
-|Microsoft.Devices/IotHubs|D2CTwinOperations|D2CTwinOperations|
-|Microsoft.Devices/IotHubs|C2DTwinOperations|Operace dvojčete C2D|
-|Microsoft.Devices/IotHubs|TwinQueries|Dvojité dotazy|
-|Microsoft.Devices/IotHubs|JobsOperations|Operace úloh|
-|Microsoft.Devices/IotHubs|Přímé metody|Přímé metody|
-|Microsoft.Devices/IotHubs|Distribuované trasování|Distribuované trasování (náhled)|
-|Microsoft.Devices/IotHubs|Konfigurace|Konfigurace|
-|Microsoft.Devices/IotHubs|Streamy zařízení|Datové proudy zařízení (náhled)|
-|Microsoft.Devices/provisioningServices|Provoz zařízení|Provoz zařízení|
-|Microsoft.Devices/provisioningServices|ServiceOperations|Operace služby|
-|Microsoft.DocumentDB/databaseAccounts|Požadavky datových letadel|Požadavky datových letadel|
-|Microsoft.DocumentDB/databaseAccounts|MongoPožadavky|MongoPožadavky|
-|Microsoft.DocumentDB/databaseAccounts|Statistika času dotazu|Statistika času dotazu|
-|Microsoft.DocumentDB/databaseAccounts|Statistika partitionKey|Statistika partitionKey|
-|Microsoft.DocumentDB/databaseAccounts|Ovládací požadavky na letadlo|Ovládací požadavky na letadlo|
-|Microsoft.EnterpriseKnowledgeGraph/služby|Událost auditu|Protokol události auditu|
-|Microsoft.EnterpriseKnowledgeGraph/služby|DataIssue|Protokol DataIssue|
-|Microsoft.EnterpriseKnowledgeGraph/služby|Žádosti|Konfigurační protokol|
-|Obory názvů Microsoft.EventHub/Namespaces|Archivní logy|Archivní protokoly|
-|Obory názvů Microsoft.EventHub/Namespaces|Provozní logy|Provozní protokoly|
-|Obory názvů Microsoft.EventHub/Namespaces|AutoScaleLogs|Protokoly automatického škálování|
-|Obory názvů Microsoft.EventHub/Namespaces|KafkaCoordinatorLogs|Protokoly koordinátora Kafka|
-|Obory názvů Microsoft.EventHub/Namespaces|KafkaUserErrorLogs|Protokoly chyb uživatelů kafka|
-|Obory názvů Microsoft.EventHub/Namespaces|Událost EventHubVnetConnectionEvent|Protokoly připojení filtrování virtuální sítě/IP|
-|Obory názvů Microsoft.EventHub/Namespaces|CustomerManagedKeyUserLogs|Protokoly klíčů spravované zákazníkem|
-|Microsoft.HealthcareApis/služby|Auditní protokoly|Protokoly auditu|
-|Microsoft.Insights/AutoscaleSettings|Automatické hodnocení|Hodnocení automatického škálování|
-|Microsoft.Insights/AutoscaleSettings|Akce automatického škálování|Akce automatického škálování|
-|Microsoft.IoTSpaces/Graph|Trasování|Trasování|
-|Microsoft.IoTSpaces/Graph|Operační|Operační|
-|Microsoft.IoTSpaces/Graph|Auditování|Auditování|
-|Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
-|Microsoft.IoTSpaces/Graph|Příchozí přenos dat|Příchozí přenos dat|
-|Microsoft.IoTSpaces/Graph|Výchozí přenos dat|Výchozí přenos dat|
-|Úložiště Microsoft.KeyVault/trezory|Událost auditu|Protokoly auditu|
-|Microsoft.Kusto/Clustery|SucceededIngestion|Úspěšné operace ingestování|
-|Microsoft.Kusto/Clustery|Neúspěšné požití|Neúspěšné operace ingestování|
-|Microsoft.Logic/pracovní postupy|Workflowruntime|Diagnostické události za běhu pracovního postupu|
-|Microsoft.Logic/integrationÚčty|IntegrationAccountTrackingEvents|Účet integrace sleduje události|
-|Microsoft.MachineLearningServices/pracovní prostory|Událost AmlComputeClusterEvent|Událost AmlComputeClusterEvent|
-|Microsoft.MachineLearningServices/pracovní prostory|Událost AmlComputeClusterNodeEvent|Událost AmlComputeClusterNodeEvent|
-|Microsoft.MachineLearningServices/pracovní prostory|AmlComputeJobEvent|AmlComputeJobEvent|
-|Microsoft.Media/mediaservices|KeyDeliveryPožadavky|Požadavky na doručení klíčů|
-|Microsoft.Network/networksecuritygroups|Událost NetworkSecurityGroupEvent|Událost skupiny zabezpečení sítě|
-|Microsoft.Network/networksecuritygroups|Čítač pravidel networksecuritygroup|Čítač pravidel skupiny zabezpečení sítě|
-|Microsoft.Network/networksecuritygroups|Událost NetworkSecurityGroupFlowEvent|Událost toku pravidel skupiny zabezpečení sítě|
-|Microsoft.Network/publicIPAdresy|DDoSProtectionNotifications|Oznámení o ochraně DDoS|
-|Microsoft.Network/publicIPAdresy|DDoSMitigationFlowLogs|Tok protokoly rozhodnutí o zmírnění DDoS|
-|Microsoft.Network/publicIPAdresy|Sestavy DDoSMitigation|Zprávy o zmírnění DDoS|
-|Microsoft.Network/virtualNetworks|Výstrahy ochrany virtuálních počítače|Výstrahy ochrany virtuálních počítače|
-|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Protokol přístupu k aplikační bráně|
-|Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Protokol výkonu aplikační brány|
-|Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Protokol brány firewall brány aplikace|
-|Microsoft.Network/azurefirewalls|AzureFirewallApplicationRule|Pravidlo aplikace Azure Firewall|
-|Microsoft.Network/azurefirewalls|AzureFirewallNetworkRule|Síťové pravidlo Azure Firewall|
-|Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|Diagnostické protokoly brány|
-|Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|Diagnostické protokoly tunelového propojení|
-|Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|Protokoly diagnostiky tras|
-|Microsoft.Network/virtualNetworkGateways|Protokol IKEDiagnosticLog|Diagnostické protokoly protokolu IKE|
-|Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|Diagnostické protokoly P2S|
-|Microsoft.Network/trafficManagerProfiles|Události ProbeHealthStatusEvents|Událost výsledků stavu sondy správce provozu|
-|Microsoft.Network/expressRouteCircuits|PeeringRouteLog|Protokoly směrovacích tabulek partnerského vztahu|
-|Microsoft.Network/vpnGateways|GatewayDiagnosticLog|Diagnostické protokoly brány|
-|Microsoft.Network/vpnGateways|TunnelDiagnosticLog|Diagnostické protokoly tunelového propojení|
-|Microsoft.Network/vpnGateways|RouteDiagnosticLog|Protokoly diagnostiky tras|
-|Microsoft.Network/vpnGateways|Protokol IKEDiagnosticLog|Diagnostické protokoly protokolu IKE|
-|Microsoft.Network/frontdoors|FrontdoorAccessLog|Protokol přístupu předních dveří|
-|Microsoft.Network/frontdoors|FrontdoorWebApplicationFirewallLog|Protokol brány firewall webové aplikace frontdoor|
-|Microsoft.Network/p2sVpnBrány|GatewayDiagnosticLog|Diagnostické protokoly brány|
-|Microsoft.Network/p2sVpnBrány|Protokol IKEDiagnosticLog|Diagnostické protokoly protokolu IKE|
-|Microsoft.Network/p2sVpnBrány|P2SDiagnosticLog|Diagnostické protokoly P2S|
-|Microsoft.Network/bastionHosts|BastionAuditLogs|Protokoly auditu bašty|
-|Microsoft.Network/loadBalancers|Událost LoadBalancerAlertEvent|Události výstrahy pro vyrovnávání zatížení|
-|Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Stav sondy pro vyrovnávání zatížení|
-|Microsoft.PowerBIDedicated/kapacity|Modul|Modul|
-|Microsoft.RecoveryServices/Vaults|Sestava AzureBackupReport|Data azure sestavy zálohování|
-|Microsoft.RecoveryServices/Vaults|CoreAzureBackup|Základní data zálohování Azure|
-|Microsoft.RecoveryServices/Vaults|AddonAzureZálohy|Data zálohovací úlohy Addon Azure|
-|Microsoft.RecoveryServices/Vaults|AddonAzureBackupAlerts|Data výstrah zálohování Addon Azure|
-|Microsoft.RecoveryServices/Vaults|Zásady zálohování AddonAzure|Data zásad zálohování Azure v dodatku|
-|Microsoft.RecoveryServices/Vaults|AddonAzureBackupStorage|Addon Azure Data úložiště zálohování|
-|Microsoft.RecoveryServices/Vaults|Instance AddonAzureBackupProtectedInstance|Data instance chráněné zálohování Addon Azure|
-|Microsoft.RecoveryServices/Vaults|Úlohy AzureSiteRecovery|Úlohy obnovení webu Azure|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Události obnovení webu Azure|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplikované položky|Replikované položky obnovení webu Azure|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationStats|Statistiky replikace obnovení lokality Azure|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Body obnovení webu Azure|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationDataUploadRate|Rychlost odesílání dat replikace obnovení webu Azure|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Konve dat disku chráněného obnovení webu Azure|
-|Microsoft.Search/searchServices|Protokoly operací|Protokoly operací|
-|Obory názvů Microsoft.ServiceBus|Provozní logy|Provozní protokoly|
-|Microsoft.Sql/servery/databáze|SqlInsights|Přehledy SQL|
-|Microsoft.Sql/servery/databáze|Automatické ladění|Automatické ladění|
-|Microsoft.Sql/servery/databáze|Statistiky běhu dotazu|Statistiky běhu úložiště dotazů|
-|Microsoft.Sql/servery/databáze|Statistiky QueryStoreWait|Statistiky čekání úložiště dotazů|
-|Microsoft.Sql/servery/databáze|chyby|chyby|
-|Microsoft.Sql/servery/databáze|Statistiky databasewait|Statistika čekání databáze|
-|Microsoft.Sql/servery/databáze|Časové limity|Časové limity|
-|Microsoft.Sql/servery/databáze|Bloky|Bloky|
-|Microsoft.Sql/servery/databáze|Zablokování|Zablokování|
-|Microsoft.Sql/servery/databáze|Auditování|Protokoly auditu|
-|Microsoft.Sql/servery/databáze|SqlSecurityAuditEvents|Událost auditu zabezpečení SQL|
-|Microsoft.Sql/servery/databáze|Pracovníci DmsWorkers|Dms Pracovníci|
-|Microsoft.Sql/servery/databáze|ExecRequests|Požadavky exec|
-|Microsoft.Sql/servery/databáze|RequestSteps|Kroky požadavku|
-|Microsoft.Sql/servery/databáze|Požadavky sql|Požadavky SQL|
-|Microsoft.Sql/servery/databáze|Čeká|Čeká|
-|Microsoft.Sql/managedInstances|ResourceUsageStats|Statistika využití zdrojů|
-|Microsoft.Sql/managedInstances|SqlSecurityAuditEvents|Událost auditu zabezpečení SQL|
-|Microsoft.Sql/managedInstances/databases|SqlInsights|Přehledy SQL|
-|Microsoft.Sql/managedInstances/databases|Statistiky běhu dotazu|Statistiky běhu úložiště dotazů|
-|Microsoft.Sql/managedInstances/databases|Statistiky QueryStoreWait|Statistiky čekání úložiště dotazů|
-|Microsoft.Sql/managedInstances/databases|chyby|chyby|
-|Microsoft.Storage/storageAccounts/tableServices|SkladováníČtení|SkladováníČtení|
-|Microsoft.Storage/storageAccounts/tableServices|StorageWrite|StorageWrite|
-|Microsoft.Storage/storageAccounts/tableServices|StorageDelete|StorageDelete|
-|Microsoft.Storage/storageAccounts/blobServices|SkladováníČtení|SkladováníČtení|
-|Microsoft.Storage/storageAccounts/blobServices|StorageWrite|StorageWrite|
-|Microsoft.Storage/storageAccounts/blobServices|StorageDelete|StorageDelete|
-|Microsoft.Storage/storageAccounts/fileServices|SkladováníČtení|SkladováníČtení|
-|Microsoft.Storage/storageAccounts/fileServices|StorageWrite|StorageWrite|
-|Microsoft.Storage/storageAccounts/fileServices|StorageDelete|StorageDelete|
-|Microsoft.Storage/storageAccounts/queueServices|SkladováníČtení|SkladováníČtení|
-|Microsoft.Storage/storageAccounts/queueServices|StorageWrite|StorageWrite|
-|Microsoft.Storage/storageAccounts/queueServices|StorageDelete|StorageDelete|
-|Microsoft.StreamAnalytics/streamingjobs|Spouštěcí|Spouštěcí|
-|Microsoft.StreamAnalytics/streamingjobs|Vytváření obsahu|Vytváření obsahu|
-|Microsoft.web/hostingenvironments|AppServiceEnvironmentPlatformLogs|Protokoly platformy prostředí služby App Service|
-|Microsoft.web/weby|FunctionAppLogs|Protokoly aplikací funkcí|
-|Microsoft.web/weby|Protokoly HTTPSlužby AppService|Protokoly HTTP|
-|Microsoft.web/weby|AppServiceConsoleLogs|Protokoly konzoly služby App|
-|Microsoft.web/weby|AppServiceAppLogs|Protokoly aplikací služby App Service|
-|Microsoft.web/weby|AppServiceFileAuditLogs|Protokoly auditu změny obsahu webu|
-|Microsoft.web/weby|AppServiceAuditLogs|Protokoly auditování aplikace Access|
-|microsoft.web/sites/sloty|FunctionAppLogs|Protokoly aplikací funkcí|
-|microsoft.web/sites/sloty|Protokoly HTTPSlužby AppService|Protokoly HTTP|
-|microsoft.web/sites/sloty|AppServiceConsoleLogs|Protokoly konzoly|
-|microsoft.web/sites/sloty|AppServiceAppLogs|Protokoly aplikací|
-|microsoft.web/sites/sloty|AppServiceFileAuditLogs|Protokoly auditu změny obsahu webu|
-|microsoft.web/sites/sloty|AppServiceAuditLogs|Protokoly auditování aplikace Access|
+|Microsoft. AAD/domainServices|SystemSecurity|SystemSecurity|
+|Microsoft. AAD/domainServices|Službu AccountManagement|Službu AccountManagement|
+|Microsoft. AAD/domainServices|LogonLogoff|LogonLogoff|
+|Microsoft. AAD/domainServices|ObjectAccess|ObjectAccess|
+|Microsoft. AAD/domainServices|PolicyChange|PolicyChange|
+|Microsoft. AAD/domainServices|PrivilegeUse|PrivilegeUse|
+|Microsoft. AAD/domainServices|DetailTracking|DetailTracking|
+|Microsoft. AAD/domainServices|DirectoryServiceAccess|DirectoryServiceAccess|
+|Microsoft. AAD/domainServices|AccountLogon|AccountLogon|
+|Microsoft. aadiam/tenantů|Přihlášení|Přihlášení|
+|Microsoft. AnalysisServices/servery|Modul|Modul|
+|Microsoft. AnalysisServices/servery|Služba|Služba|
+|Microsoft.ApiManagement/service|GatewayLogs|Protokoly související s bránou ApiManagement|
+|Microsoft. AppPlatform/pružina|ApplicationConsole|Konzola aplikace|
+|Microsoft. Automation/automationAccounts|JobLogs|Protokoly úloh|
+|Microsoft. Automation/automationAccounts|JobStreams|Datové proudy úloh|
+|Microsoft. Automation/automationAccounts|DscNodeStatus|Stav uzlu DSC|
+|Microsoft. Batch/batchAccounts|ServiceLog|Protokoly služby|
+|Microsoft. BatchAI/pracovní prostory|BaiClusterEvent|BaiClusterEvent|
+|Microsoft. BatchAI/pracovní prostory|BaiClusterNodeEvent|BaiClusterNodeEvent|
+|Microsoft. BatchAI/pracovní prostory|BaiJobEvent|BaiJobEvent|
+|Microsoft. blockchain/blockchainMembers|BlockchainApplication|Aplikace blockchain|
+|Microsoft. blockchain/blockchainMembers|Proxy server|Proxy server|
+|Microsoft. CDN/Profiles/koncových bodů|CoreAnalytics|Získá metriky koncového bodu, například šířku pásma, odchozí přenos atd.|
+|Microsoft. ClassicNetwork/networksecuritygroups|Událost toku pravidla skupiny zabezpečení sítě|Událost toku pravidla skupiny zabezpečení sítě|
+|Microsoft. Cognitiveservices Account/účty|Auditování|Protokoly auditu|
+|Microsoft. Cognitiveservices Account/účty|Operace RequestResponse|Protokoly žádostí a odpovědí|
+|Microsoft. ContainerRegistry/Registry|ContainerRegistryRepositoryEvents|Protokoly RepositoryEvent (Preview)|
+|Microsoft. ContainerRegistry/Registry|ContainerRegistryLoginEvents|Události přihlášení (Preview)|
+|Microsoft. ContainerService/managedClusters|kube-apiserver|Server Kubernetes API|
+|Microsoft. ContainerService/managedClusters|Kube-Controller-Manager|Správce kontroleru Kubernetes|
+|Microsoft. ContainerService/managedClusters|Kube – Scheduler|Plánovač Kubernetes|
+|Microsoft. ContainerService/managedClusters|Kube – audit|Kubernetes audit|
+|Microsoft. ContainerService/managedClusters|cluster – automatické škálování|Automatické škálování clusteru Kubernetes|
+|Microsoft. datacihly/pracovní prostory|dBFS|Systém souborů Databricks|
+|Microsoft. datacihly/pracovní prostory|existující|Clustery datacihlů|
+|Microsoft. datacihly/pracovní prostory|accounts|Účty datacihlů|
+|Microsoft. datacihly/pracovní prostory|úlohy|Úlohy datacihlů|
+|Microsoft. datacihly/pracovní prostory|poznámkového bloku|Poznámkový blok Databricks|
+|Microsoft. datacihly/pracovní prostory|protokoly|SSH datacihlů|
+|Microsoft. datacihly/pracovní prostory|Pracovní prostor|Pracovní prostor datacihly|
+|Microsoft. datacihly/pracovní prostory|záleží|Tajné kódy datacihlů|
+|Microsoft. datacihly/pracovní prostory|sqlPermissions|Datacihly SQLPermissions|
+|Microsoft. datacihly/pracovní prostory|instancePools|Fondy instancí|
+|Microsoft. datacatalog/datacatalogs|ScanStatusLogEvent|ScanStatus|
+|Microsoft. DataFactory/továrny|ActivityRuns|Spuštění protokolu aktivity kanálu|
+|Microsoft. DataFactory/továrny|PipelineRuns|Protokol spuštění kanálu|
+|Microsoft. DataFactory/továrny|TriggerRuns|Aktivační událost spuštění protokolu|
+|Microsoft. DataLakeAnalytics/účty|Auditování|Protokoly auditu|
+|Microsoft. DataLakeAnalytics/účty|Žádosti|Protokoly žádostí|
+|Microsoft. DataLakeStore/účty|Auditování|Protokoly auditu|
+|Microsoft. DataLakeStore/účty|Žádosti|Protokoly žádostí|
+|Microsoft. datashare/Accounts|Sdílené složky|Sdílené složky|
+|Microsoft. datashare/Accounts|ShareSubscriptions|Sdílet předplatná|
+|Microsoft. datashare/Accounts|SentShareSnapshots|Odeslané sdílené snímky|
+|Microsoft. datashare/Accounts|ReceivedShareSnapshots|Přijaté snímky sdílené složky|
+|Microsoft. DBforMySQL/servery|MySqlSlowLogs|Protokoly serveru MySQL|
+|Microsoft. DBforMySQL/servery|MySqlAuditLogs|Protokoly auditu MySQL|
+|Microsoft. DBforPostgreSQL/servery|PostgreSQLLogs|Protokoly serveru PostgreSQL|
+|Microsoft. DBforPostgreSQL/servery|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů PostgreSQL|
+|Microsoft. DBforPostgreSQL/servery|QueryStoreWaitStatistics|Statistiky čekání na úložiště dotazů PostgreSQL|
+|Microsoft. DBforPostgreSQL/serversv2|PostgreSQLLogs|Protokoly serveru PostgreSQL|
+|Microsoft. DBforPostgreSQL/serversv2|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů PostgreSQL|
+|Microsoft. DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|Statistiky čekání na úložiště dotazů PostgreSQL|
+|Microsoft. DesktopVirtualization/pracovní prostory|CheckPoint|CheckPoint|
+|Microsoft. DesktopVirtualization/pracovní prostory|Chyba|Chyba|
+|Microsoft. DesktopVirtualization/pracovní prostory|Správa|Správa|
+|Microsoft. DesktopVirtualization/pracovní prostory|Informační kanál|Informační kanál|
+|Microsoft. DesktopVirtualization/applicationGroups|CheckPoint|CheckPoint|
+|Microsoft. DesktopVirtualization/applicationGroups|Chyba|Chyba|
+|Microsoft. DesktopVirtualization/applicationGroups|Správa|Správa|
+|Microsoft. DesktopVirtualization/hostPools|CheckPoint|CheckPoint|
+|Microsoft. DesktopVirtualization/hostPools|Chyba|Chyba|
+|Microsoft. DesktopVirtualization/hostPools|Správa|Správa|
+|Microsoft. DesktopVirtualization/hostPools|Připojení|Připojení|
+|Microsoft. DesktopVirtualization/hostPools|HostRegistration|HostRegistration|
+|Microsoft. Devices/IotHubs|Připojení|Připojení|
+|Microsoft. Devices/IotHubs|DeviceTelemetry|Telemetrie zařízení|
+|Microsoft. Devices/IotHubs|C2DCommands|Příkazy C2D|
+|Microsoft. Devices/IotHubs|DeviceIdentityOperations|Operace identity zařízení|
+|Microsoft. Devices/IotHubs|FileUploadOperations|Operace nahrávání souborů|
+|Microsoft. Devices/IotHubs|Trasy|Trasy|
+|Microsoft. Devices/IotHubs|D2CTwinOperations|D2CTwinOperations|
+|Microsoft. Devices/IotHubs|C2DTwinOperations|C2D – zdvojené operace|
+|Microsoft. Devices/IotHubs|TwinQueries|Zdvojené dotazy|
+|Microsoft. Devices/IotHubs|JobsOperations|Operace úloh|
+|Microsoft. Devices/IotHubs|DirectMethods|Přímé metody|
+|Microsoft. Devices/IotHubs|DistributedTracing|Distribuované trasování (Preview)|
+|Microsoft. Devices/IotHubs|Konfigurace|Konfigurace|
+|Microsoft. Devices/IotHubs|DeviceStreams|Datové proudy zařízení (Preview)|
+|Microsoft. Devices/provisioningServices|DeviceOperations|Operace zařízení|
+|Microsoft. Devices/provisioningServices|ServiceOperations|Operace služby|
+|Microsoft. DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
+|Microsoft. DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
+|Microsoft. DocumentDB/databaseAccounts|QueryRuntimeStatistics|QueryRuntimeStatistics|
+|Microsoft. DocumentDB/databaseAccounts|PartitionKeyStatistics|PartitionKeyStatistics|
+|Microsoft. DocumentDB/databaseAccounts|ControlPlaneRequests|ControlPlaneRequests|
+|Microsoft. EnterpriseKnowledgeGraph/Services|AuditEvent|Protokol AuditEvent|
+|Microsoft. EnterpriseKnowledgeGraph/Services|Dataproblém|Protokol dataissues|
+|Microsoft. EnterpriseKnowledgeGraph/Services|Žádosti|Konfigurační protokol|
+|Microsoft. EventHub/obory názvů|ArchiveLogs|Protokoly archivu|
+|Microsoft. EventHub/obory názvů|OperationalLogs|Provozní protokoly|
+|Microsoft. EventHub/obory názvů|AutoScaleLogs|Protokoly automatického škálování|
+|Microsoft. EventHub/obory názvů|KafkaCoordinatorLogs|Protokoly koordinátora Kafka|
+|Microsoft. EventHub/obory názvů|KafkaUserErrorLogs|Protokoly chyb uživatele Kafka|
+|Microsoft. EventHub/obory názvů|EventHubVNetConnectionEvent|Protokoly připojení k virtuální síti nebo filtrování IP adres|
+|Microsoft. EventHub/obory názvů|CustomerManagedKeyUserLogs|Protokoly zákaznických klíčů spravovaných zákazníky|
+|Microsoft. HealthcareApis/Services|AuditLogs|Protokoly auditu|
+|Microsoft. Insights/AutoscaleSettings|AutoscaleEvaluations|Vyhodnocení automatického škálování|
+|Microsoft. Insights/AutoscaleSettings|AutoscaleScaleActions|Akce škálování automatického škálování|
+|Microsoft. IoTSpaces/Graph|Trasování|Trasování|
+|Microsoft. IoTSpaces/Graph|Funkční|Funkční|
+|Microsoft. IoTSpaces/Graph|Auditování|Auditování|
+|Microsoft. IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
+|Microsoft. IoTSpaces/Graph|Příchozí přenos dat|Příchozí přenos dat|
+|Microsoft. IoTSpaces/Graph|Výchozí přenos dat|Výchozí přenos dat|
+|Trezory a trezory Microsoft.|AuditEvent|Protokoly auditu|
+|Microsoft. Kusto/clustery|SucceededIngestion|Úspěšné operace ingestování|
+|Microsoft. Kusto/clustery|FailedIngestion|Neúspěšné operace ingestování|
+|Microsoft. Logic/Workflows|Modul|Diagnostické události modulu runtime pracovního postupu|
+|Microsoft. Logic/integrationAccounts|IntegrationAccountTrackingEvents|Účet pro integraci sleduje události|
+|Microsoft. MachineLearningServices/pracovní prostory|AmlComputeClusterEvent|AmlComputeClusterEvent|
+|Microsoft. MachineLearningServices/pracovní prostory|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|
+|Microsoft. MachineLearningServices/pracovní prostory|AmlComputeJobEvent|AmlComputeJobEvent|
+|Microsoft. Media/MediaServices|KeyDeliveryRequests|Požadavky na doručení klíčů|
+|Microsoft. Network/networksecuritygroups|NetworkSecurityGroupEvent|Událost skupiny zabezpečení sítě|
+|Microsoft. Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Čítač pravidla skupiny zabezpečení sítě|
+|Microsoft. Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|Událost toku pravidla skupiny zabezpečení sítě|
+|Microsoft. Network/publicIPAddresses|DDoSProtectionNotifications|Oznámení o ochraně DDoS|
+|Microsoft. Network/publicIPAddresses|DDoSMitigationFlowLogs|Protokoly DDoSch rozhodnutí o zmírnění rizik|
+|Microsoft. Network/publicIPAddresses|DDoSMitigationReports|Sestavy zmírnění hrozeb DDoS|
+|Microsoft. Network/virtualNetworks|VMProtectionAlerts|Výstrahy ochrany virtuálních počítačů|
+|Microsoft. Network/applicationGateways|ApplicationGatewayAccessLog|Protokol Application Gateway Access|
+|Microsoft. Network/applicationGateways|ApplicationGatewayPerformanceLog|Protokol výkonu Application Gateway|
+|Microsoft. Network/applicationGateways|ApplicationGatewayFirewallLog|Protokol brány Application Gateway firewall|
+|Microsoft. Network/azurefirewalls|AzureFirewallApplicationRule|Azure Firewall pravidlo aplikace|
+|Microsoft. Network/azurefirewalls|AzureFirewallNetworkRule|Azure Firewall síťové pravidlo|
+|Microsoft. Network/virtualNetworkGateways|GatewayDiagnosticLog|Diagnostické protokoly brány|
+|Microsoft. Network/virtualNetworkGateways|TunnelDiagnosticLog|Protokoly diagnostiky tunelu|
+|Microsoft. Network/virtualNetworkGateways|RouteDiagnosticLog|Protokoly diagnostiky směrování|
+|Microsoft. Network/virtualNetworkGateways|IKEDiagnosticLog|Diagnostické protokoly IKE|
+|Microsoft. Network/virtualNetworkGateways|P2SDiagnosticLog|Diagnostické protokoly P2S|
+|Microsoft. Network/trafficManagerProfiles|ProbeHealthStatusEvents|Událost výsledků testu stavu Traffic Manager|
+|Microsoft. Network/expressRouteCircuits|PeeringRouteLog|Protokoly tabulky směrování partnerských vztahů|
+|Microsoft. Network/vpnGateways|GatewayDiagnosticLog|Diagnostické protokoly brány|
+|Microsoft. Network/vpnGateways|TunnelDiagnosticLog|Protokoly diagnostiky tunelu|
+|Microsoft. Network/vpnGateways|RouteDiagnosticLog|Protokoly diagnostiky směrování|
+|Microsoft. Network/vpnGateways|IKEDiagnosticLog|Diagnostické protokoly IKE|
+|Microsoft. Network/frontdoors|FrontdoorAccessLog|Protokol přístupu Frontdoor|
+|Microsoft. Network/frontdoors|FrontdoorWebApplicationFirewallLog|Protokol Frontdoor firewallu webových aplikací|
+|Microsoft. Network/p2sVpnGateways|GatewayDiagnosticLog|Diagnostické protokoly brány|
+|Microsoft. Network/p2sVpnGateways|IKEDiagnosticLog|Diagnostické protokoly IKE|
+|Microsoft. Network/p2sVpnGateways|P2SDiagnosticLog|Diagnostické protokoly P2S|
+|Microsoft. Network/bastionHosts|BastionAuditLogs|Protokoly auditu bastionu|
+|Microsoft. Network/loadBalancers|LoadBalancerAlertEvent|Load Balancer události výstrahy|
+|Microsoft. Network/loadBalancers|LoadBalancerProbeHealthStatus|Stav testu Load Balancer|
+|Microsoft. PowerBIDedicated/– kapacity|Modul|Modul|
+|Microsoft. RecoveryServices/trezory|AzureBackupReport|Azure Backup data vytváření sestav|
+|Microsoft. RecoveryServices/trezory|CoreAzureBackup|Základní data Azure Backup|
+|Microsoft. RecoveryServices/trezory|AddonAzureBackupJobs|Doplněk Azure Backup data úlohy|
+|Microsoft. RecoveryServices/trezory|AddonAzureBackupAlerts|Doplněk Azure Backup data výstrah|
+|Microsoft. RecoveryServices/trezory|AddonAzureBackupPolicy|Doplněk Azure Backup data zásad|
+|Microsoft. RecoveryServices/trezory|AddonAzureBackupStorage|Doplněk Azure Backup data úložiště|
+|Microsoft. RecoveryServices/trezory|AddonAzureBackupProtectedInstance|Doplněk Azure Backup data chráněné instance|
+|Microsoft. RecoveryServices/trezory|AzureSiteRecoveryJobs|Úlohy Azure Site Recovery|
+|Microsoft. RecoveryServices/trezory|AzureSiteRecoveryEvents|Události Azure Site Recovery|
+|Microsoft. RecoveryServices/trezory|AzureSiteRecoveryReplicatedItems|Azure Site Recovery replikované položky|
+|Microsoft. RecoveryServices/trezory|AzureSiteRecoveryReplicationStats|Statistika replikace Azure Site Recovery|
+|Microsoft. RecoveryServices/trezory|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery bodů obnovení|
+|Microsoft. RecoveryServices/trezory|AzureSiteRecoveryReplicationDataUploadRate|Frekvence nahrávání dat replikace Azure Site Recovery|
+|Microsoft. RecoveryServices/trezory|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery přenos dat chráněných disků|
+|Microsoft. Search/searchServices|OperationLogs|Protokoly operací|
+|Microsoft. ServiceBus/obory názvů|OperationalLogs|Provozní protokoly|
+|Microsoft. SQL/servery/databáze|SQLInsights|Přehledy SQL|
+|Microsoft. SQL/servery/databáze|AutomaticTuning|Automatické ladění|
+|Microsoft. SQL/servery/databáze|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|
+|Microsoft. SQL/servery/databáze|QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|
+|Microsoft. SQL/servery/databáze|chyby|chyby|
+|Microsoft. SQL/servery/databáze|DatabaseWaitStatistics|Statistika čekání databáze|
+|Microsoft. SQL/servery/databáze|Časové limity|Časové limity|
+|Microsoft. SQL/servery/databáze|Bloky|Bloky|
+|Microsoft. SQL/servery/databáze|Zablokování|Zablokování|
+|Microsoft. SQL/servery/databáze|Auditování|Protokoly auditu|
+|Microsoft. SQL/servery/databáze|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|
+|Microsoft. SQL/servery/databáze|DmsWorkers|Pracovní procesy DMS|
+|Microsoft. SQL/servery/databáze|ExecRequests|Požadavky exec|
+|Microsoft. SQL/servery/databáze|RequestSteps|Kroky žádosti|
+|Microsoft. SQL/servery/databáze|SqlRequests|Požadavky SQL|
+|Microsoft. SQL/servery/databáze|Čeká|Čeká|
+|Microsoft. SQL/managedInstances|ResourceUsageStats|Statistika využití prostředků|
+|Microsoft. SQL/managedInstances|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|
+|Microsoft. SQL/managedInstances/databáze|SQLInsights|Přehledy SQL|
+|Microsoft. SQL/managedInstances/databáze|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|
+|Microsoft. SQL/managedInstances/databáze|QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|
+|Microsoft. SQL/managedInstances/databáze|chyby|chyby|
+|Microsoft. Storage/storageAccounts/tableServices|StorageRead|StorageRead|
+|Microsoft. Storage/storageAccounts/tableServices|StorageWrite|StorageWrite|
+|Microsoft. Storage/storageAccounts/tableServices|StorageDelete|StorageDelete|
+|Microsoft. Storage/storageAccounts/blobServices|StorageRead|StorageRead|
+|Microsoft. Storage/storageAccounts/blobServices|StorageWrite|StorageWrite|
+|Microsoft. Storage/storageAccounts/blobServices|StorageDelete|StorageDelete|
+|Microsoft. Storage/storageAccounts/služby|StorageRead|StorageRead|
+|Microsoft. Storage/storageAccounts/služby|StorageWrite|StorageWrite|
+|Microsoft. Storage/storageAccounts/služby|StorageDelete|StorageDelete|
+|Microsoft. Storage/storageAccounts/queueServices|StorageRead|StorageRead|
+|Microsoft. Storage/storageAccounts/queueServices|StorageWrite|StorageWrite|
+|Microsoft. Storage/storageAccounts/queueServices|StorageDelete|StorageDelete|
+|Microsoft. StreamAnalytics/streamingjobs|Spouštěcí|Spouštěcí|
+|Microsoft. StreamAnalytics/streamingjobs|Vytváření obsahu|Vytváření obsahu|
+|Microsoft. Web/hostingenvironments|AppServiceEnvironmentPlatformLogs|App Service Environment protokoly platformy|
+|Microsoft. Web/weby|FunctionAppLogs|Protokoly aplikací funkcí|
+|Microsoft. Web/weby|AppServiceHTTPLogs|Protokoly HTTP|
+|Microsoft. Web/weby|AppServiceConsoleLogs|Protokoly konzoly App Service|
+|Microsoft. Web/weby|AppServiceAppLogs|App Service protokoly aplikací|
+|Microsoft. Web/weby|AppServiceFileAuditLogs|Protokoly změny obsahu webu|
+|Microsoft. Web/weby|AppServiceAuditLogs|Přístup k protokolům auditu|
+|Microsoft. Web/weby/sloty|FunctionAppLogs|Protokoly aplikací funkcí|
+|Microsoft. Web/weby/sloty|AppServiceHTTPLogs|Protokoly HTTP|
+|Microsoft. Web/weby/sloty|AppServiceConsoleLogs|Protokoly konzoly|
+|Microsoft. Web/weby/sloty|AppServiceAppLogs|Protokoly aplikací|
+|Microsoft. Web/weby/sloty|AppServiceFileAuditLogs|Protokoly změny obsahu webu|
+|Microsoft. Web/weby/sloty|AppServiceAuditLogs|Přístup k protokolům auditu|
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o protokolech prostředků](../../azure-monitor/platform/platform-logs-overview.md)
-* [Streamování protokolů prostředků prostředků do **centra událostí**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Změna nastavení diagnostiky protokolu prostředků pomocí rozhraní AZURE Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Analýza protokolů z úložiště Azure pomocí analýzy protokolů](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [**Event Hubs** protokolů prostředku prostředku streamování](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+* [Změna nastavení diagnostiky protokolu prostředků pomocí Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
+* [Analýza protokolů z Azure Storage pomocí Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

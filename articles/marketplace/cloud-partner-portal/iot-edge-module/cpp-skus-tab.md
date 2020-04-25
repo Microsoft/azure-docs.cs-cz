@@ -1,143 +1,143 @@
 ---
 title: SKU modulu Azure IoT Edge | Azure Marketplace
-description: Vytvořte skupro modul IoT Edge.
+description: Vytvořte SKU pro modul IoT Edge.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c1d1daea71ea8b69ef24031c643caf8dcd0d1fb7
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 0a394c14842fe0c4eb4baa18cbb13acb8ca3170a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983326"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142464"
 ---
 # <a name="iot-edge-module-skus-tab"></a>Karta SKU modulu IoT Edge
 
 >[!Important]
->dubna 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
+>Od 13. dubna 2020 začneme přesouvat správu nabídek IoT Edge modulů do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Podle pokynů v tématu [vytvoření IoT Edge modulu nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) můžete spravovat migrované nabídky.
 
-Karta **SKU** na stránce **Nová nabídka** umožňuje vytvořit jednu nebo více slok a přidružit je k nové nabídce.  Můžete použít různé sku sku rozlišovat řešení podle sad funkcí, fakturační modely nebo některé jiné charakteristiky.
-
-
-## <a name="sku-settings"></a>Nastavení skladové položky
-
-Když začnete vytvářet novou nabídku, nejsou k nabídce přidruženy žádné souspolečnosti. Chcete-li vytvořit novou skladovou položku, postupujte takto:
-
-- Na stránce **Moduly IoT Edge > Nová nabídka** vyberte kartu **SKU.**
-- V části Skladové položky vyberte **+ Nová skladová položka,** chcete-li otevřít dialogové okno.
-
-  ![Nové tlačítko Skladové položky na kartě Nová nabídka pro moduly IoT Edge](./media/iot-edge-module-skus-tab-new-sku.png)
-
-- V dialogovém okně **Nová skladová položka** zadejte identifikátor skladové položky a pak vyberte **OK**.
-(V následující tabulce jsou uvedeny konvence pojmenování identifikátorů.)
-
-Karta **Skladové položky** se aktualizuje a zobrazí pole, která upravujete pro konfiguraci skladové položky. Hvězdička (*) připojená k názvu pole označuje, že je požadováno.
-
-|  **Pole**       |     **Popis**                                                          |
-|  ---------       |     ---------------                                                          |
-| **ID skladové položky\***       | Identifikátor této skladové položky. Tento název má maximálně 50 znaků, skládající se z malých alfanumerických znaků nebo pomlčky (-), ale nemůže končit pomlčkou. **Poznámka:** Po publikování nabídky nelze tento název změnit. Název je veřejně viditelný v adresách URL produktu. |
-|  |  |
+Karta **SKU** na nové stránce **nabídky** umožňuje vytvořit jednu nebo více SKU a přidružit je k nové nabídce.  Pomocí různých SKU můžete odlišit řešení pomocí sad funkcí, modelů fakturace nebo některé jiné charakteristiky.
 
 
-## <a name="sku-details"></a>Podrobnosti o skladové jednotce
+## <a name="sku-settings"></a>Nastavení SKU
 
-Nakonfigurujte **podrobnosti skladové položky** a definujte, jak se vaše skladová položka zobrazí na webech Azure Marketplace a Azure Portal.
+Když začnete vytvářet novou nabídku, nejsou k této nabídce přidružené žádné skladové položky. Chcete-li vytvořit novou SKLADOVOU položku, postupujte takto:
 
-![Metadata sku modulu IoT Edge](media/iot-edge-module-skus-tab-metadata.png)
+- Na stránce **IoT Edge moduly > nové nabídky** vyberte kartu **SKU** .
+- V části SKU vyberte **+ Nová SKU** a otevřete dialogové okno.
 
-Následující tabulka popisuje účel, obsah a formátování polí v části **Podrobnosti skladové položky**. Povinná pole jsou obžalována hvězdičkou (*).
+  ![Tlačítko Nová SKU na nové kartě Nabídka pro IoT Edge moduly](./media/iot-edge-module-skus-tab-new-sku.png)
+
+- V dialogovém okně **Nová SKU** zadejte identifikátor SKU a pak vyberte **OK**.
+(Následující tabulka poskytuje konvence pojmenování identifikátorů.)
+
+Karta **SKU** se aktualizuje a zobrazí pole, která upravíte pro konfiguraci SKU. Hvězdička (*), která je připojena k názvu pole, označuje, že je požadováno.
 
 |  **Pole**       |     **Popis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Název\***        | Název této skladové položky. Maximální délka 50 znaků. <br/> Zobrazí se na webu Azure Portal a bude použit jako výchozí název modulu (bez mezer a speciálních znaků), když se nasadí. Podívejte se na obrázky níže a přesně uvidíte, kde je toto pole zobrazeno.|
-| **Souhrn\***      | Krátké shrnutí této skladové položky. Maximální délka 100 znaků. **Neshrnujte** nabídku, jen skladovou položku.  Tento souhrn se zobrazí na Azure Marketplace. Podívejte se na obrázky níže a přesně uvidíte, kde je toto pole zobrazeno.|
-| **Popis\***  | Stručný popis této skladové položky. Maximální délka 3000 znaků. Nepopisují nabídku, ale jen tento Skladové položky. Zobrazí se na azure marketplace a na webu Azure Portal. Na webu Azure Portal se připojí k popisu marketplace popisující nabídku definovanou na kartě Marketplace.  Může být stejný jako souhrn skladové položky. Podívejte se na obrázky níže a přesně uvidíte, kde je toto pole zobrazeno.|
-| **Skrýt tuto skladovou položku\*** | Zachovat výchozí nastavení, které je **Ne**. |
+| **ID SKU\***       | Identifikátor této SKU Tento název má maximálně 50 znaků, který se skládá z malých alfanumerických znaků nebo pomlček (-), ale nemůže končit pomlčkou. **Poznámka:** Po publikování nabídky nelze tento název změnit. Název je veřejně viditelný v adresách URL produktu. |
 |  |  |
 
 
-### <a name="sku-example"></a>Příklad skladové položky
+## <a name="sku-details"></a>Podrobnosti SKU
 
- Následující příklady ukazují, jak se pole **Název**skladové položky , **Souhrn**a **Popis** zobrazují v různých zobrazeních.
+Nakonfigurujte **Podrobnosti SKU** a definujte, jak se bude skladová jednotka zobrazovat na Azure Marketplace a Azure Portal weby.
+
+![Metadata SKU modulu IoT Edge](media/iot-edge-module-skus-tab-metadata.png)
+
+Následující tabulka popisuje účel, obsah a formátování polí v **podrobnostech SKU**. Požadovaná pole jsou indicted hvězdičkou (*).
+
+|  **Pole**       |     **Popis**                                                          |
+|  ---------       |     ---------------                                                          |
+| **Nadpis\***        | Název této SKU Maximální délka 50 znaků. <br/> Zobrazí se v Azure Portal a použije se jako výchozí název modulu (bez mezer a speciálních znaků) při jeho nasazení. Chcete-li zobrazit přesně, kde se toto pole zobrazuje, podívejte se na obrázky níže.|
+| **Souhrn\***      | Krátký souhrn této SKU Maximální délka 100 znaků. Nevytvářejte **Souhrn nabídky** , stačí pouze SKU.  Tento souhrn se zobrazí v Azure Marketplace. Chcete-li zobrazit přesně, kde se toto pole zobrazuje, podívejte se na obrázky níže.|
+| **Popis\***  | Krátký popis této SKU Maximální délka 3000 znaků. Nepopisujte nabídku, ale pouze tuto skladovou jednotku. Zobrazí se v Azure Marketplace a v Azure Portal. V Azure Portal se připojí k popisu na webu Marketplace, který popisuje nabídku definovanou na kartě Marketplace.  Může to být stejné jako souhrn SKU. Chcete-li zobrazit přesně, kde se toto pole zobrazuje, podívejte se na obrázky níže.|
+| **Skrýt tuto SKU\*** | Nechejte výchozí nastavení, což **není.** |
+|  |  |
+
+
+### <a name="sku-example"></a>Příklad SKU
+
+ Následující příklady ukazují, jak se pole **název**SKU, **Souhrn**a **Popis** zobrazují v různých zobrazeních.
  
 
 #### <a name="on-the-azure-marketplace-website"></a>Na webu Azure Marketplace:
 
-- Při pohledu na podrobnosti sku:
+- Při prohlížení podrobností SKU:
 
-    ![Jak se na webu Azure Marketplace zobrazují skutonové sady](media/iot-edge-module-ampdotcom-pdp-plans.png)
+    ![Jak se zobrazují skladové jednotky na Azure Marketplace webu](media/iot-edge-module-ampdotcom-pdp-plans.png)
 
 
-#### <a name="on-the-azure-portal-website"></a>Na webu Portálu Azure:
+#### <a name="on-the-azure-portal-website"></a>Na webu Azure Portal:
 
-- Při procházení sku:
+- Při procházení SKU:
 
-    ![Jak se při procházení portálu Azure #1 zobrazí modul IoT Edge](media/iot-edge-module-portal-browse.png)
+    ![Jak se IoT Edge modul zobrazuje při procházení Azure Portal #1](media/iot-edge-module-portal-browse.png)
 
-    ![Jak se při procházení portálu Azure #2](media/iot-edge-module-portal-product-picker.png)
+    ![Jak se IoT Edge modul zobrazuje při procházení Azure Portal #2](media/iot-edge-module-portal-product-picker.png)
 
-- Při hledání skutých a konečníku:
+- Při hledání SKU:
 
-    ![Jak se při prohledávání webu Azure Portal zobrazuje modul IoT Edge](media/iot-edge-module-portal-search.png)
+    ![Jak se IoT Edge modul zobrazuje při hledání Azure Portal](media/iot-edge-module-portal-search.png)
 
-- Při pohledu na podrobnosti sku:
+- Při prohlížení podrobností SKU:
 
-    ![Jak se modul IoT Edge zobrazuje při hledání podrobností o produktu na portálu](./media/iot-edge-module-portal-pdp.png)
+    ![Jak se IoT Edge modul zobrazuje při prohlížení podrobností o produktu na portálu](./media/iot-edge-module-portal-pdp.png)
 
 - Při nasazování modulu:
     
-    ![Jak se při nasazování zobrazuje modul IoT Edge](./media/iot-edge-module-deployment.png)
+    ![Jak se IoT Edge modul zobrazuje při nasazení](./media/iot-edge-module-deployment.png)
 
 
-## <a name="sku-content"></a>Obsah skladové položky
+## <a name="sku-content"></a>Obsah SKU
 
-V části **Obrázky edge modulu**poskytněte informace, které potřebujeme k nahrání modulu IoT Edge.
+V části **Image modulu Edge**zadejte informace, které potřebujeme k nahrání IoT Edgeho modulu.
 
-Ubytujte nám přístup k [vašemu registru kontejnerů Azure](https://azure.microsoft.com/services/container-registry/) (ACR), který obsahuje bitovou kopii modulu IoT Edge, abychom ho mohli nahrát a certifikovat. Po publikování se váš modul IoT Edge zkopíruje a distribuuje pomocí registru veřejných kontejnerů hostovaného na Azure Marketplace.
+Poskytněte nám přístup k vašemu [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR), který obsahuje váš obrázek IoT Edge modulu, abychom ho mohli nahrát a certifikovat. Po publikování se váš modul IoT Edge zkopíruje a distribuuje pomocí veřejného registru kontejneru hostovaného Azure Marketplace.
 
-Můžete cílit na více platforem a poskytnout několik verzí prostřednictvím značek. Další informace o [značkách a správě verzí najdete v technických prostředcích modulu "Připravte si modul IoT Edge"](./cpp-create-technical-assets.md).
+Můžete cílit na více platforem a poskytnout několik verzí prostřednictvím značek. Přečtěte si další informace o [značkách a verzích v tématu "Příprava vašich technických prostředků IoT Edge modulu"](./cpp-create-technical-assets.md).
 
-![Obrázky modulu IoT Edge](./media/iot-edge-module-skus-tab-acr.png)
+![Image modulu IoT Edge](./media/iot-edge-module-skus-tab-acr.png)
 
-Následující tabulka popisuje účel, obsah a formátování polí pro **oddíly Podrobnosti úložiště obrázků** a **Verze obrázku**.  Povinná pole jsou obžalována hvězdičkou (*).
+Následující tabulka popisuje účel, obsah a formátování polí pro **informace o úložišti** imagí oddílů a **verzi image**.  Požadovaná pole jsou indicted hvězdičkou (*).
 
 
 |  **Pole**       |     **Popis**                                                          |
 |  ---------       |     ---------------                                                          |
-|  |  ***Podrobnosti o úložišti obrázků***    |
-| **ID předplatného\***        | ID předplatného Azure vašeho ACR.|
-| **Název skupiny prostředků\***      | Název skupiny prostředků acr.|
-| **Název registru\***  | Název registru ACR. Zkopírujte pouze název registru, nikoli název přihlašovacího `azurecr.io`serveru (například bez .) |
-| **Název úložiště\***  | Název úložiště acr, který obsahuje modul IoT Edge. **Poznámka:** Po nastavení názvu jej nelze později změnit. Použijte jedinečný název, abyste zajistili, že žádná jiná nabídka ve vašem účtu nebude mít stejný název. |
-| **Username\*** | Uživatelské jméno přidružené k vašemu ACR (uživatelské jméno správce). |
-| **Heslo\*** | Heslo přidružené k acr. |
+|  |  ***Podrobnosti o úložišti imagí***    |
+| **ID předplatného\***        | ID předplatného Azure vašeho ACRu.|
+| **Název skupiny prostředků\***      | Název skupiny prostředků vašeho ACRu.|
+| **Název registru\***  | Název registru ACR Pouze zkopírujte název registru, nikoli název přihlašovacího serveru (například bez přípony `azurecr.io`.). |
+| **Název úložiště\***  | Název úložiště ACR, který obsahuje váš modul IoT Edge. **Poznámka:** Po nastavení je název nelze později změnit. Použijte jedinečný název, abyste se ujistili, že žádné jiné nabídky ve vašem účtu nemají stejný název. |
+| **Jmen\*** | Uživatelské jméno přidružené k vašemu ACR (uživatelské jméno správce). |
+| **Zadáno\*** | Heslo přidružené k vašemu ACR. |
 |    |  ***Verze image***   |
-| **Značka obrázku nebo Digest\*** | Musí obsahovat alespoň `latest` značku a značku verze (například počínaje místem, `xx.xx.xx-` kde xx je číslo). Měly by být [značky manifestu,](https://github.com/estesp/manifest-tool) které cílí na více platforem. Všechny značky odkazované značkou manifestu musí být také přidány, abychom je mohli nahrát. Pomocí značek můžete přidat několik verzí modulu IoT Edge. Všechny značky `latest`manifestu (kromě) `X.Y.Z-` musí začínat buď buď `X.Y-` s celými písmeny X, Y, Z. Další informace o [značkách a správě verzí najdete v technických prostředcích modulu "Připravte si modul IoT Edge"](./cpp-create-technical-assets.md). <br/> Pokud například `latest` značka odkazuje na `1.0.1-linux-x64`tuto `1.0.1-linux-arm32`značku `1.0.1-windows-arm32`, je třeba přidat těchto 6 značek. |
+| **Značka obrázku nebo hodnota Digest\*** | Musí obsahovat alespoň `latest` značku a značku verze (například začíná na `xx.xx.xx-` WHERE XX je číslo). Měly by být v [manifestu značky](https://github.com/estesp/manifest-tool) , aby bylo možné cílit na více platforem. Všechny značky, na které se odkazuje značka manifestu, musí být také přidané, aby je bylo možné nahrát. Pomocí značek můžete přidat několik verzí modulu IoT Edge. Všechny značky manifestu (s `latest`výjimkou) musí začínat buď `X.Y-` nebo `X.Y.Z-` , kde X, Y, Z jsou celá čísla. Přečtěte si další informace o [značkách a verzích v tématu "Příprava vašich technických prostředků IoT Edge modulu"](./cpp-create-technical-assets.md). <br/> Například pokud `latest` značka odkazuje na `1.0.1-linux-x64`, `1.0.1-linux-arm32`, a `1.0.1-windows-arm32`, je nutné přidat tyto 6 značek sem. |
 |  |  |
 
 
-### <a name="help-your-customers-launch-by-using-default-settings"></a>Pomozte zákazníkům spustit pomocí výchozího nastavení
+### <a name="help-your-customers-launch-by-using-default-settings"></a>Pomáhat zákazníkům při spouštění pomocí výchozích nastavení
 
-Definujte nejběžnější nastavení pro nasazení modulu IoT Edge. Optimalizujte nasazení zákazníků tím, že jim umožníte spustit modul IoT Edge out-of-the-box s těmito výchozími hodnotami.
+Zadejte nejběžnější nastavení pro nasazení modulu IoT Edge. Optimalizujte zákaznická nasazení tím, že jim umožníte spustit modul IoT Edge předem s těmito výchozími hodnotami.
 
-![Výchozí nastavení modulu IoT Edge při nasazení](./media/iot-edge-module-skus-tab-iot-edge-defaults.png)
+![Výchozí nastavení IoT Edge modulu v nasazení](./media/iot-edge-module-skus-tab-iot-edge-defaults.png)
 
-Následující tabulka popisuje účel, obsah a formátování polí pro **výchozí trasy**, Výchozí **vlastnosti požadované dvojčete**, **Výchozí proměnné prostředí**a **Výchozí možnosti vytvoření**.
+Následující tabulka popisuje účel, obsah a formátování polí pro **výchozí trasy**, **výchozí hodnoty nevlákenných požadovaných vlastností**, **výchozí proměnné prostředí**a **výchozí createOptions**.
 
 |  **Pole**       |     **Popis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Výchozí trasy**        | Každý výchozí název a hodnota postupu musí být menší než 512 znaků. Můžete definovat až 5 výchozích tras. Ujistěte se, že v hodnotě trasy používáte správnou [syntaxi trasy.](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) Chcete-li odkazovat na modul, použijte jeho výchozí název modulu, který bude název **skladové položky** bez mezer a speciálních znaků. Chcete-li odkazovat na další moduly, které ještě nejsou známy, použijte `<FROM_MODULE_NAME>` konvenci, aby zákazníci věděli, že tyto informace potřebují aktualizovat. Další informace o [trasách IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes). <br/> Pokud například `ContosoModule` modul naslouchá vstupům `ContosoInput` na a `ContosoOutput`výstupním datům na , má smysl definovat následující 2 výchozí trasy:<br/>- název #1:`ToContosoModule`<br/>- Hodnota #1:`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>- Název #2:`FromContosoModuleToCloud`<br/>- Hodnota #2:`FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream`<br/>  |
-| **Výchozí požadované vlastnosti dvojčete**      | Každý výchozí název a hodnota požadovaných vlastností dvojčete musí být menší než 512 znaků. Můžete definovat až 5 požadovaných vlastností dvojčete názvu/hodnoty. Hodnoty twin požadované vlastnosti musí být platné JSON, non-uvozené, bez polí a s maximální vnořené hierarchie 4. Další informace o [dvoupožadovaných vlastnostech](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties). <br/> Pokud například modul podporuje dynamicky konfigurovatelnou obnovovací frekvenci prostřednictvím požadovaných vlastností dvojčete, má smysl definovat následující výchozí požadovanou vlastnost dvojčete:<br/> - název #1:`RefreshRate`<br/>- Hodnota #1:`60`|
-| **Výchozí proměnné prostředí**  | Každý výchozí název a hodnota proměnných prostředí musí být menší než 512 znaků. Můžete definovat až 5 proměnných prostředí název/hodnota. <br/>Pokud například modul vyžaduje přijetí podmínek použití před spuštěním, můžete definovat následující proměnnou prostředí:<br/> - název #1:`ACCEPT_EULA`<br/>- Hodnota #1:`Y`|
-| **Výchozí možnosti vytvoření**  | CreateOptions musí být menší než 512 znaků. Musí to být platný JSON, neuvozený. Další informace o [createOptions](https://docs.microsoft.com/azure/iot-edge/module-composition#configure-modules). <br/> Například pokud modul vyžaduje vazbu port, můžete definovat následující createOptions:<br/>  `"HostConfig":{"PortBindings":{"5012/tcp":[{"HostPort":"5012"}]}`|
+| **Výchozí trasy**        | U každého výchozího názvu a hodnoty trasy musí být méně než 512 znaků. Můžete definovat až 5 výchozích tras. V hodnotě trasy nezapomeňte použít správnou [syntaxi trasy](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) . Chcete-li se podívat na modul, použijte jeho výchozí název, který bude vaším názvem **SKU** bez mezer a speciálních znaků. Pokud chcete odkazovat na jiné moduly, které ještě nebyly známy, použijte `<FROM_MODULE_NAME>` konvenci, aby vaši zákazníci věděli, že potřebují aktualizovat tyto informace. Přečtěte si další informace o [IoT Edgech trasách](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes). <br/> Například pokud modul `ContosoModule` naslouchá vstupům `ContosoInput` a výstupům na data `ContosoOutput`, má smysl definovat následující 2 výchozí trasy:<br/>-Název #1:`ToContosoModule`<br/>-Value #1:`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>-Název #2:`FromContosoModuleToCloud`<br/>-Value #2:`FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream`<br/>  |
+| **Výchozí požadované vlastnosti**      | U každého výchozího vlákna požadovaných vlastností musí být název a hodnota kratší než 512 znaků. Můžete definovat až 5 požadovaných vlastností s dvojitou hodnotou názvu nebo hodnoty. Hodnoty vlákenných požadovaných vlastností musí být platné JSON, bez řídicích znaků, bez polí a s maximální vnořenou hierarchií 4. Přečtěte si další informace o [dvojitě požadovaných vlastnostech](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties). <br/> Například pokud modul podporuje dynamickou konfigurovatelnou obnovovací frekvenci prostřednictvím nevlákenných požadovaných vlastností, má smysl definovat následující výchozí vlastnost s dvojitou hodnotou:<br/> -Název #1:`RefreshRate`<br/>-Value #1:`60`|
+| **Výchozí proměnné prostředí**  | Všechny výchozí proměnné prostředí název a hodnota musí být kratší než 512 znaků. Můžete definovat až 5 proměnných prostředí s názvem a hodnotou. <br/>Například pokud modul vyžaduje, aby před zahájením přijímal podmínky použití, můžete definovat následující proměnnou prostředí:<br/> -Název #1:`ACCEPT_EULA`<br/>-Value #1:`Y`|
+| **Výchozí createOptions**  | CreateOptions musí mít méně než 512 znaků. Musí být platný kód JSON, který neřídí řídicí znaky. Přečtěte si další informace o [createOptions](https://docs.microsoft.com/azure/iot-edge/module-composition#configure-modules). <br/> Například pokud modul vyžaduje vázání portu, můžete definovat následující createOptions:<br/>  `"HostConfig":{"PortBindings":{"5012/tcp":[{"HostPort":"5012"}]}`|
 |   |   |
 
-Vyberte **Uložit,** chcete-li uložit nastavení skladové položky. 
+Vyberte **Uložit** a uložte nastavení SKU. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Na [kartě Marketplace](./cpp-marketplace-tab.md) můžete vytvořit popis marketplace pro vaši nabídku.
+Na [kartě Marketplace](./cpp-marketplace-tab.md) můžete vytvořit popis Marketplace pro vaši nabídku.

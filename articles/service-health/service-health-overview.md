@@ -3,12 +3,12 @@ title: Přehled Service Health | Microsoft Docs
 description: Individuální informace o tom, jak jsou vaše aplikace Azure ovlivněny aktuálními a budoucími problémy a údržbou služeb Azure.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 280be9f0df1f94dad59c1af147d499860571f86e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82097247"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146930"
 ---
 # <a name="service-health-overview"></a>Přehled Service Health
 
@@ -41,6 +41,12 @@ Zobrazení **problémy se službou** zobrazuje všechny probíhající problémy
 Kliknutím na kartu **potenciální dopad** můžete zobrazit konkrétní seznam prostředků, které vlastníte, což může být ovlivněno problémem. Seznam sdílených svazků clusteru můžete stáhnout a sdílet je s týmem.
 
 ![Správa problému se službou – dopad](./media/service-health-overview/azure-service-health-overview-4.png)
+
+## <a name="see-emerging-issues-which-may-impact-your-services"></a>Podívejte se na vznikající problémy, které můžou mít vliv na vaše služby.
+
+V některých situacích se může stát, že se na [stránku stavu Azure](https://status.azure.com) publikují rozšířené problémy se službami, které by mohly být zaslány ovlivněným zákazníkům. Abyste zajistili, že Azure Service Health poskytuje komplexní přehled o problémech, které vás mohou ovlivnit, jsou aktivní problémy se stavovou stránkou Azure v Service Health při *nově vznikajících problémech*. V případě, že je událost aktivní na stránce stavu Azure, bude v Service Health k dispozici informační zpráva o nově vznikajících problémech. Kliknutím na banner si zobrazíte všechny podrobnosti o problému.
+
+![Vznikající problém služby](./media/service-health-overview/azure-service-health-emerging-issue.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>Získat odkazy a vysvětlení ke stažení 
 

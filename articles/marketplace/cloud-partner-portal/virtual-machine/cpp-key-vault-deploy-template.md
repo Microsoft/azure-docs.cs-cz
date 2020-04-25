@@ -1,25 +1,25 @@
 ---
-title: Šablona nasazení úložiště klíčů Azure | Azure Marketplace
-description: Zobrazí seznam šablony Azure Resource Manager, která je nutná k nasazení nové instance Azure Key Vault.
+title: Šablona nasazení Azure Key Vault | Azure Marketplace
+description: Vypíše šablonu Azure Resource Manager požadovanou k nasazení nové instance Azure Key Vault.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 0d08caf5444216666e7296b830f0af6af606dd4f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a6e7260bb761db5cfa6884baf29317a004ab1452
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273830"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147031"
 ---
 # <a name="key-vault-deployment-template"></a>Šablona nasazení trezoru klíčů
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [certifikaci image virtuálního počítače Azure](https://aks.ms/CertifyVMimage) spravujte migrované nabídky.
+> Od 13. dubna 2020 začneme přesouvat správu nabídek virtuálních počítačů Azure do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Pokud chcete spravovat migrované nabídky, postupujte podle pokynů v tématu [certifikace imagí virtuálních počítačů Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification) .
 
-Následující šablona Azure Resource Manager definuje novou instanci Azure Key Vault.  Používá se v článku [Vytvořit certifikát trezoru klíčů](cpp-create-key-vault-cert.md). 
+Následující šablona Azure Resource Manager definuje novou instanci Azure Key Vault.  Používá se v článku [Vytvoření certifikátu trezoru klíčů](cpp-create-key-vault-cert.md).
 
 ```json
 {

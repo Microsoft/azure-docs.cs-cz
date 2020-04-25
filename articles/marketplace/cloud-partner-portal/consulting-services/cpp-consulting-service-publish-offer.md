@@ -1,39 +1,39 @@
 ---
-title: Publikování nabídky konzultačních služeb Azure a Dynamics 365 | Azure Marketplace
-description: Publikujte nabídku poradenské služby Azure nebo Dynamics 365 na portálu cloudových partnerů pro Azure Marketplace nebo AppSource.
+title: Služby Azure a Dynamics 365 – konzultační služba – publikování nabídek | Azure Marketplace
+description: V portál partnerů cloudu pro Azure Marketplace nebo AppSource můžete publikovat nabídku konzultační služby Azure nebo Dynamics 365.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a06bae941c75e43a0e4ea2b66cc420e7a2467c3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c602bbee128c3338d841cb4564add26ba1c9e841
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985078"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146630"
 ---
-# <a name="publish-a-consulting-service-offer"></a>Publikování nabídky poradenské služby
+# <a name="publish-a-consulting-service-offer"></a>Publikování konzultační nabídky služby
 
 >[!Important]
->dubna 2020 začneme přesouvat správu vašich poradenských nabídek služeb do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu pro vytvoření služby](https://aka.ms/AzureCreateConsultingService) postupujte podle pokynů pro správu migrovaných nabídek.
+>Od 13. dubna 2020 začneme přesouvat správu nabídek konzultačních služeb do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Pokud chcete spravovat migrované nabídky, postupujte podle pokynů v tématu [Přehled vytváření konzultační služby](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer) .
 
-Po dokončení **nastavení nabídky**, **podrobnosti o výloze**a **kontakty**vyberte **Publikovat** a zadejte e-mailovou adresu. Když je společnost Microsoft připravena vaši nabídku publikovat, obdržíte e-mail, abyste si ji před ujetím zobrazili. Můžete se kdykoli vrátit na portál a zkontrolovat stav vaší nabídky.
+Po dokončení **nastavení nabídek**, **prezentace podrobností**a **kontaktů**vyberte **publikovat** a zadejte e-mailovou adresu. Když je Microsoft připravený k publikování vaší nabídky, obdržíte e-mail, ve kterém si můžete zobrazit jeho náhled, než bude živý. Můžete se kdykoli vrátit na portál a kdykoli kdykoli ověřit stav vaší nabídky.
 
-Nabídky se mohou během procesu publikování zobrazit ve stavu Publikování zrušeno nebo Publikování se nezdařilo. Tato označení jsou běžnou součástí procesu a umožňují společnosti Microsoft provádět úpravy vaší nabídky. Pokud se vaše nabídka zobrazí jako "Publikování zrušeno", ponechte ji jako tento stav.
+Nabídky se můžou během procesu publikování zobrazit ve stavu "publikování zrušeno" nebo "publikování se nezdařilo". Tato označení jsou běžnou součástí procesu a umožňují společnosti Microsoft provádět úpravy vaší nabídky. Pokud se vaše nabídka zobrazí jako "publikování zrušeno", ponechte tento stav.
 
 ## <a name="lead-destination"></a>Cíl zájemce
 
-Můžete vybrat systém CRM, ve kterém jsou uloženy informace o potenciálních zákaznících. Crm systém, který vyberete zde je místo, kde jsme psát informace o uživatelích, kteří vyzkoušet svou aplikaci na AppSource.
+Můžete vybrat systém CRM, ve kterém jsou uložené informace o potenciálním zájemci. Systém CRM, který zde vyberete, je místo, kde zapíšeme informace o uživatelích, kteří si aplikaci vyzkoušeli na AppSource.
 
-Na základě zvoleného systému CRM vyberte odpovídající adresu URL z následujícího seznamu, kde naleznete informace o tom, jak vyplnit další sadu polí.
+V závislosti na zvoleném systému CRM vyberte odpovídající adresu URL z následujícího seznamu, kde najdete informace o tom, jak vyplnit další sadu polí.
 
-Pokud máte jeden z následujících crm systémů, vyberte [tabulku Azure:](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)  
+Pokud máte jeden z následujících systémů CRM, vyberte [tabulku Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) :  
 * [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)
 * [Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
 * [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokračujte dál a dozvíte se, jak nabídku publikovat.
+Pokračujte a Naučte se, jak publikovat vaši nabídku.

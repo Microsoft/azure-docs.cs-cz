@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: 618033e24236d26601fafaf7b0678ee83ec973e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650134"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127866"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Vizualizace protokolů a metrik služby Azure Kognitivní hledání pomocí Power BI
 [Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-what-is-azure-search) umožňuje ukládat protokoly operací a metriky služeb o vaší vyhledávací službě v účtu Azure Storage. Tato stránka poskytuje pokyny k vizualizaci těchto informací prostřednictvím aplikace Power BI Template. Aplikace poskytuje podrobné přehledy o vaší vyhledávací službě, včetně informací o vyhledávání, indexování, operacích a metrikách služeb.
@@ -20,7 +20,9 @@ ms.locfileid: "77650134"
 Můžete najít Power BI App template **kognitivní hledání Azure: Analýza protokolů a metrik** na [tržišti aplikací pro Power BI](https://appsource.microsoft.com/marketplace/apps).
 
 ## <a name="how-to-get-started-with-the-app"></a>Jak začít s aplikací
-1. Povolit protokolování diagnostiky pro vaši vyhledávací službu:
+
+1. Povolit protokolování metrik a prostředků pro vyhledávací službu:
+
     1. Umožňuje vytvořit nebo identifikovat existující [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , do kterého můžete archivovat protokoly.
     1. Přejděte do služby Azure Kognitivní hledání v Azure Portal
     1. V části monitorování v levém sloupci vyberte **nastavení diagnostiky** .
@@ -84,7 +86,7 @@ Pokud chcete vizualizovat data z jiného účtu úložiště nebo změnit počet
 
 1. Otevřete sestavu pro zobrazení aktualizovaných dat. Je také možné, že budete muset aktualizovat sestavu, aby se zobrazila nejnovější data.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Pokud zjistíte, že se data nezobrazí, postupujte podle těchto kroků pro řešení potíží:
 
 1. Otevřete sestavu a aktualizujte stránku, abyste měli jistotu, že si prohlížíte nejnovější data. V sestavě je možnost aktualizovat data. Tuto možnost vyberte, pokud chcete získat nejnovější data.

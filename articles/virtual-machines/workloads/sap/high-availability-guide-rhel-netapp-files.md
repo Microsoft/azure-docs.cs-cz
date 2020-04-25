@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: b58c24fdd7912b3e424a493932fe09b1a1f058c5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: HT
+ms.openlocfilehash: 601194d3a8cc789c51b8e127001ab2367dceeee7
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661273"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148224"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP
 
@@ -32,14 +32,14 @@ ms.locfileid: "77661273"
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2009879]: https://launchpad.support.sap.com/#/notes/2009879
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -97,39 +97,38 @@ Nyní je možné dosáhnout dostupnosti SAP NetWeaver HA pomocí sdíleného úl
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP HANA používají virtuální název hostitele a virtuální IP adresy. V Azure se nástroj pro vyrovnávání zatížení vyžaduje k použití virtuální IP adresy. Doporučujeme použít službu [Load Balancer úrovně Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal). Následující seznam uvádí konfiguraci nástroje pro vyrovnávání zatížení s oddělenými IP adresami front-endu pro (A) SCS a OLAJÍCÍCH.
 
-### <a name="ascs"></a>(A)SCS
+### <a name="ascs"></a>Určitého SCS
 
 * Konfigurace front-endu
   * 192.168.14.9 IP adres
-* Konfigurace back-endu
-  * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
 * Port testu paměti
-  * Port 620<strong>&lt;nr&gt;</strong>
+  * Port 620<strong>&lt;Nr&gt;</strong>
 * Pravidla vyrovnávání zatížení
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 36<strong>&lt;nr&gt;</strong> TCP
-  * 39<strong>&lt;nr&gt;</strong> TCP
-  * 81<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * 32<strong>&lt;Nr&gt; </strong> TCP
+  * 36<strong>&lt;Nr&gt; </strong> TCP
+  * 39<strong>&lt;Nr&gt; </strong> TCP
+  * 81<strong>&lt;Nr&gt; </strong> TCP
+  * 5<strong>&lt;Nr&gt;</strong>13 TCP
+  * 5<strong>&lt;Nr&gt;</strong>14 TCP
+  * 5.16 TCP<strong>&lt;&gt;</strong>
 
 ### <a name="ers"></a>OLAJÍCÍCH
 
 * Konfigurace front-endu
   * 192.168.14.10 IP adres
-* Konfigurace back-endu
-  * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
 * Port testu paměti
-  * Port 621<strong>&lt;nr&gt;</strong>
+  * Port 621<strong>&lt;Nr&gt;</strong>
 * Pravidla vyrovnávání zatížení
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 33<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * 32<strong>&lt;Nr&gt; </strong> TCP
+  * 33<strong>&lt;Nr&gt; </strong> TCP
+  * 5<strong>&lt;Nr&gt;</strong>13 TCP
+  * 5<strong>&lt;Nr&gt;</strong>14 TCP
+  * 5.16 TCP<strong>&lt;&gt;</strong>
+
+* Konfigurace back-endu
+  * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Nastavení infrastruktury Azure NetApp Files 
 
@@ -147,7 +146,7 @@ Tento postup předpokládá, že jste už nasadili [Azure Virtual Network](https
 Architektura SAP NetWeaver uvedená v tomto článku používá fond kapacit s jednou Azure NetApp Files, SKU úrovně Premium. Pro úlohy aplikace SAP NetWeaver v Azure doporučujeme Azure NetApp Files Premium SKU.  
 4. Přenesete podsíť do souborů Azure NetApp, jak je popsáno v [pokynech delegování podsítě na Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
-5. Nasaďte Azure NetApp Files svazky podle [pokynů pro vytvoření svazku pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Nasaďte svazky v určené Azure NetApp Files [podsíti](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Mějte na paměti, že Azure NetApp Files prostředky a virtuální počítače Azure musí být ve stejném Virtual Network Azure nebo ve virtuálních sítích Azure s partnerským vztahem. V tomto příkladu používáme dva Azure NetApp Files svazky: SAP<b>QAS</b> a transSAP. Cesty k souborům, které jsou připojené k odpovídajícím přípojným bodům, jsou/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys atd.  
+5. Nasaďte Azure NetApp Files svazky podle [pokynů pro vytvoření svazku pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Nasaďte svazky v určené Azure NetApp Files [podsíti](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). IP adresy svazků Azure NetApp se přiřazují automaticky. Mějte na paměti, že Azure NetApp Files prostředky a virtuální počítače Azure musí být ve stejném Virtual Network Azure nebo ve virtuálních sítích Azure s partnerským vztahem. V tomto příkladu používáme dva Azure NetApp Files svazky: SAP<b>QAS</b> a transSAP. Cesty k souborům, které jsou připojené k odpovídajícím přípojným bodům, jsou/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys atd.  
 
    1. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/sapmnt<b>QAS</b>)
    2. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ASCS)
@@ -167,7 +166,7 @@ Při zvažování Azure NetApp Files pro SAP NetWeaver v architektuře SUSE pro 
 - Minimální objem je 100 GiB.
 - Azure NetApp Files a všech virtuálních počítačů, kde se Azure NetApp Files svazky připojí, musí být ve stejné oblasti jako Azure Virtual Network nebo ve [virtuálních sítích s partnerským vztahem](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) . V současné době se podporuje Azure NetApp Files přístup přes partnerský vztah virtuálních sítí ve stejné oblasti. Přístup k Azure NetApp přes globální partnerský vztah ještě není podporovaný.
 - Vybraná virtuální síť musí mít podsíť, delegovanou na Azure NetApp Files.
-- Azure NetApp Files nabízí [zásady exportu](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): můžete řídit povolené klienty, typ přístupu (čtení & zápisu, jen pro čtení atd.). 
+- Azure NetApp Files nabízí [zásady exportu](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): můžete řídit povolené klienty, typ přístupu (čtení&zápisu, jen pro čtení atd.). 
 - Azure NetApp Files funkce zatím nereaguje na zóny. Aktuálně Azure NetApp Files funkce není nasazená ve všech zónách dostupnosti v oblasti Azure. Mějte na paměti, že v některých oblastech Azure máte vliv na potenciální latenci. 
 - Azure NetApp Files svazky lze nasadit jako svazky NFSv3 nebo NFSv 4.1. Pro aplikační vrstvu SAP (ASCS/OLAJÍCÍCH, aplikační servery SAP) se podporují oba protokoly. 
 
@@ -177,7 +176,7 @@ V tomto příkladu byly prostředky nasazeny ručně prostřednictvím [Azure Po
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
-Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální počítače. Následně vytvoříte Nástroj pro vyrovnávání zatížení a použijete virtuální počítače ve fondech back-endu.
+Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální počítače. Následně vytvoříte Nástroj pro vyrovnávání zatížení a použijete virtuální počítače ve fondu back-end.
 
 1. Vytvořit nástroj pro vyrovnávání zatížení (interní, standardní):  
    1. Vytvoření IP adresy front-endu
@@ -185,23 +184,22 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
          1. Zadejte název nového fondu IP adres front-endu (například **front-end. QAS. ASCS**)
          1. Nastavte přiřazení na statické a zadejte IP adresu (například **192.168.14.9**).
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
       1. 192.168.14.10 IP adres pro ASCS OLAJÍCÍCH
          * Opakujte výše uvedené kroky v části a a vytvořte tak IP adresu pro OLAJÍCÍCH (například **192.168.14.10** a **front-end. QAS. OLAJÍCÍCH**)
-   1. Vytvoření back-end fondů
-      1. Vytvoření fondu back-endu pro ASCS
-         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte fondy back-endu a klikněte na Přidat.
-         1. Zadejte název nového back-end fondu (například **back-end. QAS**)
-         1. Klikněte na Přidat virtuální počítač.
-         1. Vyberte virtuální počítač. 
-         1. Vyberte virtuální počítače v clusteru (A) SCS a jejich IP adresy.
-         1. Klikněte na tlačítko Přidat.
+   1. Vytvoření back-endového fondu
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte fondy back-endu a klikněte na Přidat.
+      1. Zadejte název nového back-end fondu (například **back-end. QAS**)
+      1. Klikněte na Přidat virtuální počítač.
+      1. Vyberte Virtuální počítač. 
+      1. Vyberte virtuální počítače v clusteru (A) SCS a jejich IP adresy.
+      1. Klikněte na tlačítko Přidat.
    1. Vytvoření sond stavu
       1. Port 620**00** pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
          1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
       1. Port 621**01** pro ASCS olajících
             * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
@@ -212,7 +210,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Vybrat **porty ha**
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
          * Opakujte výše uvedené kroky a vytvořte tak pravidla vyrovnávání zatížení pro OLAJÍCÍCH (například **kg. QAS. OLAJÍCÍCH**)
 1. Případně, pokud váš scénář vyžaduje základní nástroj pro vyrovnávání zatížení (interní), postupujte podle následujících kroků:  
    1. Vytvoření IP adresy front-endu
@@ -220,23 +218,22 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
          1. Zadejte název nového fondu IP adres front-endu (například **front-end. QAS. ASCS**)
          1. Nastavte přiřazení na statické a zadejte IP adresu (například **192.168.14.9**).
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
       1. 192.168.14.10 IP adres pro ASCS OLAJÍCÍCH
          * Opakujte výše uvedené kroky v části a a vytvořte tak IP adresu pro OLAJÍCÍCH (například **192.168.14.10** a **front-end. QAS. OLAJÍCÍCH**)
-   1. Vytvoření back-end fondů
-      1. Vytvoření fondu back-endu pro ASCS
-         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte fondy back-endu a klikněte na Přidat.
-         1. Zadejte název nového back-end fondu (například **back-end. QAS**)
-         1. Klikněte na Přidat virtuální počítač.
-         1. Vyberte skupinu dostupnosti, kterou jste vytvořili dříve pro ASCS. 
-         1. Vyberte virtuální počítače v clusteru (A) SCS.
-         1. Klikněte na tlačítko OK.
+   1. Vytvoření back-endového fondu
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte fondy back-endu a klikněte na Přidat.
+      1. Zadejte název nového back-end fondu (například **back-end. QAS**)
+      1. Klikněte na Přidat virtuální počítač.
+      1. Vyberte skupinu dostupnosti, kterou jste vytvořili dříve pro ASCS. 
+      1. Vyberte virtuální počítače v clusteru (A) SCS.
+      1. Klikněte na OK.
    1. Vytvoření sond stavu
       1. Port 620**00** pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
          1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
       1. Port 621**01** pro ASCS olajících
             * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
@@ -247,7 +244,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Zachovejte protokol **TCP**, zadejte port **3200**
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
       1. Další porty pro ASCS
          * Opakujte výše uvedené kroky v části "d" pro porty**36 00**,**39 00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASCS
       1. Další porty pro ASCS OLAJÍCÍCH
@@ -266,7 +263,7 @@ Pokyny v této části se použijí jenom v případě, že používáte Azure N
 1. Ověřte nastavení domény systému souborů NFS. Ujistěte se, že je doména nakonfigurovaná jako výchozí doména Azure NetApp Files, tj. **`defaultv4iddomain.com`** a mapování je nastavené na **nikdo**.  
 
     > [!IMPORTANT]
-    > Ujistěte se, že jste na virtuálním počítači nastavili doménu systému souborů NFS na `/etc/idmapd.conf` tak, aby odpovídala výchozí konfiguraci domény v Azure NetApp Files: **`defaultv4iddomain.com`** . Pokud dojde k neshodě mezi konfigurací domény v klientovi NFS (tj. virtuálním počítačem) a serverem NFS, tj. konfigurací Azure NetApp, pak se oprávnění k souborům na svazcích Azure NetApp, která jsou připojená k virtuálním počítačům, zobrazí jako `nobody`.  
+    > Ujistěte se, že jste na virtuálním `/etc/idmapd.conf` počítači nastavili doménu systému souborů NFS, aby odpovídala **`defaultv4iddomain.com`** výchozí konfiguraci domény v Azure NetApp Files:. Pokud dojde k neshodě mezi konfigurací domény v klientovi NFS (tj. virtuálním počítačem) a serverem NFS, tj. konfigurací Azure NetApp, pak se budou zobrazovat oprávnění k souborům na svazcích Azure NetApp, které jsou připojené k virtuálním počítačům `nobody`.  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -278,7 +275,7 @@ Pokyny v této části se použijí jenom v případě, že používáte Azure N
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** ověřte `nfs4_disable_idmapping`. Měl by být nastaven na **Y**. Chcete-li vytvořit adresářovou strukturu, kde je umístěn `nfs4_disable_idmapping`, spusťte příkaz Mount. V/sys/modules nebudete moct ručně vytvořit adresář, protože přístup je vyhrazený pro jádro nebo ovladače.  
+4. **[A]** ověřte `nfs4_disable_idmapping`. Měl by být nastaven na **Y**. Pokud chcete vytvořit adresářovou strukturu `nfs4_disable_idmapping` , kde se nachází, spusťte příkaz Mount. V/sys/modules nebudete moct ručně vytvořit adresář, protože přístup je vyhrazený pro jádro nebo ovladače.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -292,7 +289,7 @@ Pokyny v této části se použijí jenom v případě, že používáte Azure N
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   Další informace o tom, jak změnit parametr `nfs4_disable_idmapping`, najdete v článku https://access.redhat.com/solutions/1749883.
+   Další podrobnosti o tom, jak změnit `nfs4_disable_idmapping` parametr, https://access.redhat.com/solutions/1749883naleznete v tématu.
 
 ### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
@@ -304,14 +301,14 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 1. **[A]** nastavení rozlišení názvu hostitele
 
-   Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
+   Můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.
 
     ```
     sudo vi /etc/hosts
     ```
 
-   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele, aby odpovídaly vašemu prostředí
+   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí.
 
     ```
     # IP address of cluster node 1
@@ -894,7 +891,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 ## <a name="install-database"></a>Instalace databáze
 
-V tomto příkladu je SAP NetWeaver nainstalovaný na SAP HANA. Pro tuto instalaci můžete použít každou podporovanou databázi. Další informace o tom, jak nainstalovat SAP HANA v Azure, najdete v tématu [Vysoká dostupnost SAP HANA na virtuálních počítačích Azure v Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+V tomto příkladu je SAP NetWeaver nainstalovaný na SAP HANA. Pro tuto instalaci můžete použít každou podporovanou databázi. Další informace o tom, jak nainstalovat SAP HANA v Azure, najdete v tématu [Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
 1. Spusťte instalaci instance databáze SAP.
 
@@ -928,7 +925,7 @@ Pomocí těchto kroků nainstalujete aplikační Server SAP.
 
    Aktualizujte SAP HANA zabezpečené úložiště tak, aby odkazovalo na virtuální název nastavení replikace SAP HANA systému.
 
-   Spusťte následující příkaz, který zobrazí seznam položek jako \<sapsid > ADM.
+   Spuštěním následujícího příkazu vypíšete položky jako \<sapsid>ADM.
 
    ```
    hdbuserstore List
@@ -1092,7 +1089,7 @@ Pomocí těchto kroků nainstalujete aplikační Server SAP.
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   Pokud se server zpráv ukončí jenom jednou, restartuje se `sapstart`. Pokud jste ho ASCS dostatečně přesunuli, Pacemaker se nakonec přesune instance na jiný uzel. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
+   Pokud server pouze jednou zadáte, bude restartován nástrojem `sapstart`. Pokud jste ho ASCS dostatečně přesunuli, Pacemaker se nakonec přesune instance na jiný uzel. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
@@ -1186,7 +1183,7 @@ Pomocí těchto kroků nainstalujete aplikační Server SAP.
    [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
    ```
 
-   Pokud příkaz spustíte pouze jednou, `sapstart` proces restartuje. Pokud je spuštěno dostatečně často, `sapstart` proces nerestartuje a prostředek bude v zastaveném stavu. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředku instance OLAJÍCÍCH po testu.
+   Pokud příkaz spouštíte pouze jednou, `sapstart` proces se restartuje. Pokud je spuštěno dostatečně často, `sapstart` proces nebude restartován a prostředek bude zastaven. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředku instance OLAJÍCÍCH po testu.
 
    ```
    [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01

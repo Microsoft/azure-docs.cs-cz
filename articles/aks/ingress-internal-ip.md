@@ -5,12 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat NGINX příchozího �
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 38b08775158a9e5742f1df013ba52a2176af390d
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: d6533434fc053427ae26a28879af18aed73f40aa
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100035"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145425"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat do interní virtuální sítě ve službě Azure Kubernetes (AKS)
 
@@ -53,7 +53,7 @@ Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu
 > Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic*. Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
 
 > [!TIP]
-> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat SSL fungovat.
+> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
 
 ```console
 # Create a namespace for your ingress resources

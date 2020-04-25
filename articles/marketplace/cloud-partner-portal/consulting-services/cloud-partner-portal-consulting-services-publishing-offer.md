@@ -1,54 +1,54 @@
 ---
-title: Nabídka konzultačních služeb Azure a Dynamics 365 | Azure Marketplace
-description: Průvodce pro definování a publikování nabídky poradenské služby Azure nebo Dynamics 365 na portálu pro partnery cloudu.
+title: Nabídka služeb pro konzultace s Azure a Dynamics 365 | Azure Marketplace
+description: Příručka pro definování a publikování nabídky služby na konzultačních službách Azure nebo Dynamics 365 v portál partnerů cloudu.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: dace05715828395aed3953b42bf7926df292bbdb
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: bdc2537d21fd88c677d07ebdb5170cdf14c7489d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981337"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146702"
 ---
-# <a name="azure-and-dynamics-365-consulting-service-offer"></a>Nabídka konzultačních služeb Azure a Dynamics 365
+# <a name="azure-and-dynamics-365-consulting-service-offer"></a>Nabídka služeb pro konzultace s Azure a Dynamics 365
 
 >[!Important]
->dubna 2020 začneme přesouvat správu vašich poradenských nabídek služeb do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu pro vytvoření služby](https://aka.ms/AzureCreateConsultingService) postupujte podle pokynů pro správu migrovaných nabídek.
+>Od 13. dubna 2020 začneme přesouvat správu nabídek konzultačních služeb do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Pokud chcete spravovat migrované nabídky, postupujte podle pokynů v tématu [Přehled vytváření konzultační služby](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer) .
 
-Tento článek vysvětluje, jak publikovat nabídku poradenské služby na webu Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> nebo <a href="https://appsource.microsoft.com">AppSource</a>. Řešení založená na Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>a Power <a href="https://powerapps.microsoft.com">Apps</a> můžou být uvedená na AppSource. Další nabídky založené na jiných <a href="https://azure.microsoft.com/services">službách</a> Microsoft Azure můžou být uvedené na Azure Marketplace.
+Tento článek vysvětluje, jak publikovat konzultační nabídku služby pro Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> nebo <a href="https://appsource.microsoft.com">AppSource</a>. Řešení založená na Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>a <a href="https://powerapps.microsoft.com">Power Apps</a> můžou být uvedená v AppSource. Další nabídky založené na dalších <a href="https://azure.microsoft.com/services">službách Microsoft Azure</a> mohou být uvedeny v Azure Marketplace.
 
-## <a name="publishing-benefits"></a>Publikování výhod
+## <a name="publishing-benefits"></a>Výhody publikování
 
-Publikování na jednom z tržišť společnosti Microsoft má následující výhody:
+Publikování na jednom z webů Microsoft Marketplace přináší následující výhody:
 
-- Propagujte svou společnost využitím značky Microsoft.
-- Potenciálně oslovit více než 100 milionů uživatelů Office 365 a Dynamics 365 na AppSource a oslovit více než 200 000 organizací prostřednictvím Azure Marketplace.
-- Získejte vysoce kvalitní potenciální zákazníky z těchto tržišť.
-- Nechte své služby propagovat týmy microsoftu a telesales.
+- Zvyšte svoji společnost využitím značky Microsoftu.
+- Může mít přístup více než 100 000 000 Office 365 a Dynamics 365 uživatelů na AppSource a více než 200 000 organizací prostřednictvím Azure Marketplace.
+- Získejte vysoce kvalitní zájemce z těchto tržišť.
+- Získejte své služby, které jsou povýšené v oblasti Microsoftu a týmy pro prodej.
 
-## <a name="publish-a-consulting-service-offer"></a>Publikování nabídky poradenské služby
+## <a name="publish-a-consulting-service-offer"></a>Publikování konzultační nabídky služby
 
-Tato část popisuje prvky publikování nabídky poradenské služby. Publikování je rozděleno do následujících hlavních částí:
+V této části najdete přehled prvků publikování konzultační nabídky služeb. Publikování je rozdělené do těchto hlavních částí:
 
-- [Předpoklady konzultačních služeb](./cpp-consulting-service-prerequisites.md) uvádějí požadavky na publikování nabídky konzultačních služeb pro:
+- Požadavky na [konzultační služby](./cpp-consulting-service-prerequisites.md) obsahují seznam požadavků pro publikování konzultační nabídky služby pro:
  
     - Microsoft Azure
-    - Angažovanost zákazníků Dynamics 365 
-    - Finanční & operace Dynamics 365 
+    - Dynamics 365 Customer Engagement 
+    - Dynamics 365 – finanční operace & 
     - Dynamics 365 Customer Insights
     - Dynamics 365 Business Central 
     - Power BI 
     - Power Apps
     - Power Automate
-- [Vytvoření nové nabídky](./cpp-consulting-service-create-offer.md) uvádí kroky potřebné k vytvoření položky nabídky poradenské služby pomocí portálu partnerů cloudu:
+- [Vytvoření nové nabídky](./cpp-consulting-service-create-offer.md) obsahuje seznam kroků požadovaných k vytvoření položky konzultační služby pomocí portál partnerů cloudu:
     - [Definujte nastavení nabídky](./cpp-consulting-service-define-offer-settings.md).
-    - [Zadejte podrobnosti o výloze a jestli se chcete publikovat na Azure Marketplace nebo na AppSource.](./cpp-consulting-service-storefront-details.md)
-- [Publikování nabídky](./cpp-consulting-service-publish-offer.md) vysvětluje, jak odeslat nabídku ke zveřejnění.
+    - [Zadejte prezentace podrobnosti a určete, jestli se má publikovat v Azure Marketplace nebo na AppSource.](./cpp-consulting-service-storefront-details.md)
+- Tato [Nabídka vám](./cpp-consulting-service-publish-offer.md) vysvětlí, jak odeslat nabídku k publikování.
 
 ## <a name="next-steps"></a>Další kroky
 
-Než provedete tyto kroky k publikování nabídky poradenské služby, musíte splnit [požadavky](./cpp-consulting-service-prerequisites.md) pro publikování nabídky poradenské služby.
+Před provedením těchto kroků k publikování nabídky konzultačních služeb musíte splnit [požadavky](./cpp-consulting-service-prerequisites.md) pro publikování konzultační nabídky služby.

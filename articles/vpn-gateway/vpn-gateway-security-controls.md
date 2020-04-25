@@ -1,6 +1,6 @@
 ---
-title: Ovládací prvky zabezpečení pro bránu Azure VPN Gateway
-description: Kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocení brány Azure VPN Gateway
+title: Řízení zabezpečení pro Azure VPN Gateway
+description: Kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocení VPN Gateway Azure
 services: sql-database
 author: msmbaldwin
 manager: rkarlin
@@ -8,59 +8,59 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cdf616b29a93e786ef26af83b5d3b3541f94d67c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6fc5b4c901254decdb2d34281a10ababd4d79d45
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972275"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127859"
 ---
-# <a name="security-controls-for-azure-vpn-gateway"></a>Ovládací prvky zabezpečení pro bránu Azure VPN Gateway
+# <a name="security-controls-for-azure-vpn-gateway"></a>Řízení zabezpečení pro Azure VPN Gateway
 
-Tento článek dokumentuje ovládací prvky zabezpečení integrované do brány Azure VPN Gateway.
+Tento článek popisuje ovládací prvky zabezpečení integrované do Azure VPN Gateway.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Network (Síť)
+## <a name="network"></a>Síť
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky |
+| Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Podpora koncového bodu služby| Není dostupné. | |
-| Podpora vstřikování virtuální sítě| Není dostupné. | |
-| Podpora izolace sítě a brány firewall| Ano | Brány VPN jsou vyhrazené instance virtuálních počítačen pro každého zákazníka virtuální sítě  |
+| Podpora koncového bodu služby| – | |
+| Podpora vkládání virtuální sítě| – | |
+| Izolace sítě a podpora brány firewall| Ano | Brány VPN jsou vyhrazené instance virtuálních počítačů pro jednotlivé zákazníky Virtual Network  |
 | Podpora vynuceného tunelování| Ano |  |
 
-## <a name="monitoring--logging"></a>Sledování & protokolování
+## <a name="monitoring--logging"></a>Monitorování protokolování &
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora monitorování Azure (analýza protokolů, přehledy aplikací atd.)| Ano | Viz [Protokoly diagnostiky/výstrahy](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure Monitor metriky/výstrahy.](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)  |
-| Protokolování a audit roviny řízení a správy| Ano | Protokol aktivit Správce prostředků Azure. |
-| Protokolování a audit roviny dat | Ano | [Diagnostické protokoly monitorování Azure](../azure-resource-manager/management/view-activity-logs.md) pro protokolování připojení k síti VPN a auditování. |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Viz výstraha [protokolu Azure monitor výstrah](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure monitor metriky](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
+| Protokolování a audit roviny řízení a správy| Ano | Azure Resource Manager protokolu aktivit. |
+| Protokolování a audit roviny dat | Ano | [Protokoly aktivit Azure monitor](../azure-resource-manager/management/view-activity-logs.md) pro protokolování a AUDITOVÁNÍ připojení VPN. |
 
 ## <a name="identity"></a>Identita
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Ověřování| Ano | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) pro správu služby a konfiguraci brány Azure VPN. |
-| Autorizace| Ano | Autorizace podpory prostřednictvím [RBAC](../role-based-access-control/overview.md). |
+| Ověřování| Ano | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) pro správu služby a konfiguraci služby Azure VPN Gateway. |
+| Autorizace| Ano | Umožňuje autorizaci pomocí [RBAC](../role-based-access-control/overview.md). |
 
 ## <a name="data-protection"></a>Ochrana dat
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky |
+| Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování na straně serveru v klidovém stavu: Klíče spravované společností Microsoft | Není dostupné. | Vpn brána tranzitu zákaznická data, neukládá zákaznická data |
-| Šifrování při přenosu (například šifrování ExpressRoute, šifrování ve virtuální síti a šifrování virtuální sítě)| Ano | Brána VPN šifruje klientské pakety mezi branami Azure VPN a místními zařízeními VPN (S2S) nebo klienty VPN (P2S) zákazníky. Brány VPN také podporují šifrování virtuální sítě na virtuální síť. |
-| Šifrování na straně serveru v klidovém stavu: klíče spravované zákazníkem (BYOK) | Ne | Předsdílené klíče zadané zákazníkem jsou v klidovém stavu zašifrovány. ale ještě není integrován s CMK. |
-| Šifrování na úrovni sloupců (Azure Data Services)| Není dostupné. | |
-| Zašifrovaná volání rozhraní API| Ano | Prostřednictvím [Správce prostředků Azure](../azure-resource-manager/index.yml) a HTTPS  |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | – | Zákaznická data služby VPN Gateway neukládají zákaznická data |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Brána VPN Gateway zašifruje pakety zákazníků mezi bránami Azure VPN a místními zařízeními VPN (P2S) zákazníků. Brány VPN také podporují šifrování VNet-to-VNet. |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ne | Předem sdílené klíče zadané zákazníkem jsou zašifrované v klidovém stavu. ale zatím není integrovaná do CMK. |
+| Šifrování na úrovni sloupce (Azure Data Services)| – | |
+| Zašifrovaná volání rozhraní API| Ano | Prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a https  |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (správa verzí konfigurace atd.)| Ano | Pro operace správy lze stav konfigurace brány Azure VPN exportovat jako šablonu Azure Resource Manager u verze v průběhu času. |
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano | V případě operací správy se stav konfigurace služby Azure VPN Gateway dá exportovat jako šablona Azure Resource Manager a v průběhu času se pořídí verze. |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [integrovaných ovládacích prvcích zabezpečení napříč službami Azure](../security/fundamentals/security-controls.md).
+- Přečtěte si další informace o [integrovaných kontrolních prvcích zabezpečení napříč službami Azure](../security/fundamentals/security-controls.md).

@@ -1,9 +1,9 @@
 ---
-title: Správa uživatelů vyloučených ze zásad podmíněného přístupu – Azure AD
-description: Zjistěte, jak používat kontroly přístupu k Přístupu služby Azure Active Directory (Azure AD) ke správě uživatelů, kteří byli vyloučeni ze zásad podmíněného přístupu.
+title: Spravovat uživatele vyloučené ze zásad podmíněného přístupu – Azure AD
+description: Naučte se používat kontroly přístupu Azure Active Directory (Azure AD) ke správě uživatelů, kteří byli vyloučení ze zásad podmíněného přístupu.
 services: active-directory
 documentationcenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,151 +12,159 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 09/25/2018
-ms.author: ajburnle
+ms.date: 04/24/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d7bce940f2b614c239e8b5e5719d96da10a6c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91bb5a342eea079b6e9abcf109ad472151d3c13d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75422713"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144504"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Použití kontrol přístupu azure ad ke správě uživatelů vyloučených ze zásad podmíněného přístupu
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Pomocí kontrol přístupu Azure AD Spravujte uživatele vyloučené ze zásad podmíněného přístupu.
 
-V ideálním světě by všichni uživatelé sledovali přístupovou policii, aby zabezpečili přístup k prostředkům vaší organizace. Někdy však existují obchodní případy, které vyžadují, abyste udělali výjimky. Tento článek popisuje některé příklady, kde může být vyžadováno vyloučení a jak můžete jako správce IT spravovat tento úkol, vyhnout se dohledu nad výjimkami zásad a poskytnout auditorům důkaz, že tyto výjimky jsou pravidelně kontrolovány pomocí Azure Nástroje active Directory (Azure AD) zkontrolovaly přístup.
+V ideálním světě budou všichni uživatelé dodržovat zásady přístupu, aby zabezpečený přístup k prostředkům vaší organizace. Někdy ale existují obchodní případy, které vyžadují, abyste měli výjimky. Tento článek prochází několika příklady situací, kdy může být potřeba vyloučit. Vy, jako správce IT, může spravovat tuto úlohu, vyhýbat se nedohledům zásad a poskytovat auditorům kontrolu nad tím, že se tyto výjimky pravidelně přezkoumávají pomocí Azure Active Directory (Azure AD) kontroly přístupu.
 
-> [!NOTE]
-> K použití kontrol přístupu k Azure AD je vyžadována platná licence Azure AD Premium P2, Enterprise Mobility + Security E5 nebo zkušební licence. Další informace naleznete v [tématu Edice Služby Azure Active Directory](../fundamentals/active-directory-whatis.md).
+>[!NOTE]
+> K používání kontrol přístupu Azure AD se vyžaduje platná Azure AD Premium P2, Enterprise Mobility + Security E5 nebo zkušební licence. Další informace najdete v tématu [Azure Active Directory edice](../fundamentals/active-directory-whatis.md).
 
-## <a name="why-would-you-exclude-users-from-policies"></a>Proč byste vyloučili uživatele ze zásad?
+## <a name="why-would-you-exclude-users-from-policies"></a>Proč byste měli vyloučit uživatele ze zásad?
 
-Jako správce IT můžete použít [podmíněný přístup Azure AD](../conditional-access/overview.md) k vyžadování, aby se uživatelé ověřovali pomocí vícefaktorového ověřování (MFA) nebo se přihlašovali z důvěryhodné sítě nebo zařízení. Během plánování nasazení zjistíte, že některé z těchto požadavků nemohou splnit všichni uživatelé. Existují například uživatelé, kteří pracují ze vzdálené kanceláře, která není součástí vaší interní sítě, nebo existuje vedoucí pracovník, který používá starý telefon, který není podporován. Firma vyžaduje, aby se tito uživatelé mohli přihlásit a dělat svou práci, proto jsou vyloučeni ze zásad podmíněného přístupu.
+Řekněme, že jako správce se rozhodnete použít [podmíněný přístup Azure AD](../conditional-access/overview.md) k vyžádání vícefaktorového ověřování (MFA) a omezení žádostí o ověření na konkrétní sítě nebo zařízení. Během plánování nasazení si myslíte, že ne všichni uživatelé můžou tyto požadavky splnit. Můžete mít například uživatele, kteří pracují se vzdálenými pobočkami, nikoli součástí vaší interní sítě. Může být také nutné připojovat uživatele, kteří se připojují pomocí nepodporovaných zařízení při čekání na nahrazení těchto zařízení. V krátkém případě firmy potřebují tyto uživatele, aby se přihlásili a mohli svou úlohu vyřadit ze zásad podmíněného přístupu.
 
-Jako další příklad můžete použít [pojmenované umístění](../conditional-access/location-condition.md) v podmíněném přístupu ke konfiguraci sady okresů a oblastí, ze kterých nechcete povolit uživatelům přístup k jejich tenantovi.
+Dalším příkladem může být použití [pojmenovaných umístění](../conditional-access/location-condition.md) v podmíněném přístupu k určení sady zemí a oblastí, ze kterých nechcete uživatelům povolit přístup ke svému tenantovi.
 
 ![Pojmenovaná umístění v podmíněném přístupu](./media/conditional-access-exclusion/named-locations.png)
 
-V některých případech však mohou mít uživatelé legitimní důvod k přihlášení z těchto blokovaných zemí nebo oblastí. Uživatelé mohou například cestovat z pracovních nebo osobních důvodů. V tomto příkladu zásady podmíněného přístupu blokovat tyto země nebo oblasti může mít vyhrazené skupiny zabezpečení cloudu pro uživatele, kteří jsou vyloučeni ze zásad. Uživatelé, kteří potřebují přístup na cestách, se můžou přidat do skupiny pomocí [samoobslužné správy skupin azure ad](../users-groups-roles/groups-self-service-management.md).
+Někteří uživatelé bohužel můžou mít i nadále platný důvod pro přihlášení z těchto blokovaných zemí nebo oblastí. Uživatelé můžou být například na cestách pro práci a potřebují přístup k podnikovým prostředkům. V takovém případě zásada podmíněného přístupu zablokuje, že tyto země nebo oblasti můžou používat skupinu zabezpečení cloudu pro vyloučené uživatele ze zásad. Uživatelé, kteří potřebují přístup při cestování, se můžou do skupiny přidat pomocí [samoobslužné správy skupin Azure AD](../users-groups-roles/groups-self-service-management.md).
 
-Dalším příkladem může být, že máte zásadu podmíněného přístupu, která [blokuje starší verze ověřování pro drtivou většinu uživatelů](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Společnost Microsoft důrazně doporučuje blokovat používání starších protokolů ve vašem tenantovi ke zlepšení stavu zabezpečení. Pokud však máte některé uživatele, kteří absolutně potřebují používat starší metody ověřování pro přístup k prostředkům prostřednictvím klientů založených na Office 2010 nebo IMAP/SMTP/POP, můžete tyto uživatele vyloučit ze zásad, které blokují starší metody ověřování.
+Dalším příkladem může být, že máte zásady podmíněného přístupu [blokující starší verze ověřování pro většinu uživatelů](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Pokud ale máte nějaké uživatele, kteří potřebují používat starší metody ověřování pro přístup k prostředkům prostřednictvím klientů Office 2010 nebo IMAP/SMTP/na bázi POP, můžete tyto uživatele vyloučit ze zásad, které blokují starší metody ověřování.
 
-## <a name="why-are-exclusions-challenging"></a>Proč jsou vyloučení náročná?
+>[!NOTE]
+>Microsoft důrazně doporučuje, abyste v tenantovi zablokovali použití starších protokolů pro zlepšení stav zabezpečení.
 
-Ve službě Azure AD můžete obor zásady podmíněného přístupu pro sadu uživatelů. Některé z těchto uživatelů můžete také vyloučit výběrem rolí Azure AD, jednotlivých uživatelů nebo hostů uživatelů. Je důležité si uvědomit, že při konfiguraci těchto vyloučení, záměr zásad nelze vynutit pro tyto uživatele. Pokud byla tato vyloučení nakonfigurována jako seznam jednotlivých uživatelů nebo prostřednictvím starší místní skupiny zabezpečení, omezuje viditelnost tohoto seznamu vyloučení (uživatelé nemusí vědět o jeho existenci) a kontrolu správce IT (uživatelé se mohou připojit k bezpečnostní skupiny, aby se tato zásada neobeštla). Uživatelé, kteří se kvalifikovali pro vyloučení najednou, ji navíc již nemusí potřebovat nebo na něj mohou mít nárok.
+## <a name="why-are-exclusions-challenging"></a>Proč jsou vyloučení náročné?
 
-Na začátku vyloučení je krátký seznam uživatelů, kteří obcházejí zásady. V průběhu času je stále více uživatelů vyloučeno a seznam roste. V určitém okamžiku je třeba seznam zkontrolovat a potvrdit, že každý z těchto uživatelů by měl být stále vyloučen. Správa seznamu z technického hlediska může být poměrně snadná, ale kdo dělá obchodní rozhodnutí a jak se ujistíte, že je vše auditovatelné?
+Ve službě Azure AD můžete nastavit obor zásad podmíněného přístupu na skupinu uživatelů. Vyloučení můžete taky nakonfigurovat tak, že vyberete role Azure AD, jednotlivé uživatele nebo hosty. Měli byste mít na paměti, že při konfiguraci vyloučení nelze záměr zásad vynutit u vyloučených uživatelů. Pokud jsou vyloučení nakonfigurovaná pomocí seznamu uživatelů nebo starší verze místních skupin zabezpečení, budete mít k vyloučení omezené přehledy. Výsledek:
 
-Pokud však nakonfigurujete vyloučení zásad y podmíněného přístupu pomocí skupiny Azure AD, můžete použít kontroly přístupu jako kompenzační řízení, zvýšit viditelnost a snížit počet uživatelů, kteří mají výjimku.
+- Uživatelé nemusí mít jistotu, že jsou vyloučeni.
 
-## <a name="how-to-create-an-exclusion-group-in-a-conditional-access-policy"></a>Jak vytvořit skupinu vyloučení v zásadách podmíněného přístupu
+- Uživatelé se mohou připojit ke skupině zabezpečení a obejít zásadu.
 
-Podle těchto kroků vytvořte novou skupinu Azure AD a zásady podmíněného přístupu, které se na tuto skupinu nevztahují.
+- Vyloučení uživatelé můžou být kvalifikováni pro vyloučení dřív, ale už se o ně nemůžou kvalifikovat.
+
+Při první konfiguraci vyloučení se často shortlist uživatelům, kteří tyto zásady nepoužívají. V průběhu času se k vyloučení přidá více uživatelů a seznam se zvětší. V některých případech je třeba zkontrolovat seznam a ověřit, že každý z těchto uživatelů je stále způsobilý k vyloučení. Správa seznamu vyloučení z technického hlediska může být poměrně jednoduchá, ale v rozhodování o obchodních rozhodnutích a jak se ujistit, že je vše auditováno? Pokud ale konfigurujete vyloučení pomocí skupiny Azure AD, můžete použít kontroly přístupu jako kompenzační ovládací prvek, zvýšit viditelnost a snížit počet vyloučených uživatelů.
+
+## <a name="how-to-create-an-exclusion-group-in-a-conditional-access-policy"></a>Postup vytvoření skupiny vyloučení v zásadách podmíněného přístupu
+
+Pomocí těchto kroků můžete vytvořit novou skupinu Azure AD a zásadu podmíněného přístupu, která se na tuto skupinu nevztahuje.
 
 ### <a name="create-an-exclusion-group"></a>Vytvoření skupiny vyloučení
 
 1. Přihlaste se k portálu Azure.
 
-1. V levém navigačním panelu klikněte na **Azure Active Directory** a potom klikněte na **Skupiny**.
+2. V levém navigačním panelu klikněte na **Azure Active Directory** a pak klikněte na **skupiny**.
 
-1. V horní nabídce klikněte na **Nová skupina** a otevřete podokno skupiny.
+3. V horní nabídce klikněte na **Nová skupina** a otevřete podokno skupiny.
 
-1. V seznamu **Typ skupiny** vyberte **Možnost Zabezpečení**. Zadejte název a popis.
+4. V seznamu **typ skupiny** vyberte **zabezpečení**. Zadejte název a popis.
 
-1. Nezapomeňte nastavit typ **členství** na **Přiřazeno**.
+5. Nezapomeňte nastavit typ **členství** na **přiřazeno**.
 
-1. Vyberte uživatele, kteří by měli být součástí této skupiny vyloučení, a klepněte na tlačítko **Vytvořit**.
+6. Vyberte uživatele, kteří by měli být součástí této skupiny vyloučení, a pak klikněte na **vytvořit**.
 
-    ![Podokno Nové skupiny ve službě Azure Active Directory](./media/conditional-access-exclusion/new-group.png)
+![Nové podokno skupiny v Azure Active Directory](./media/conditional-access-exclusion/new-group.png)
 
 ### <a name="create-a-conditional-access-policy-that-excludes-the-group"></a>Vytvoření zásady podmíněného přístupu, která vylučuje skupinu
 
 Nyní můžete vytvořit zásadu podmíněného přístupu, která používá tuto skupinu vyloučení.
 
-1. V levém navigačním panelu klikněte na **Azure Active Directory** a potom kliknutím na Podmíněný **přístup** otevřete okno **Zásady.**
+1. V levém navigačním panelu klikněte na **Azure Active Directory** a potom kliknutím na **podmíněný přístup** otevřete okno **zásady** .
 
-1. Kliknutím na **Nová zásada** otevřete **podokno Nový.**
+2. Kliknutím na **Nová zásada** otevřete **nové** podokno.
 
-1. Zadejte název.
+3. Zadejte název.
 
-1. V části Přiřazení klikněte na **Uživatelé a skupiny**.
+4. V části přiřazení klikněte na **Uživatelé a skupiny**.
 
-1. Na kartě **Zahrnout** vyberte **Všichni uživatelé**.
+5. Na kartě **Zahrnout** vyberte **Všichni uživatelé**.
 
-1. Na kartě **Vyloučit** přidejte zaškrtnutí **do skupin Uživatelů a skupin a** klikněte na Vybrat **vyloučené uživatele**.
+6. Na kartě **vyloučit** přidejte značku zaškrtnutí pro **uživatele a skupiny** a potom klikněte na **Vybrat vyloučené uživatele**.
 
-1. Vyberte skupinu vyloučení, kterou jste vytvořili.
+7. Vyberte skupinu vyloučení, kterou jste vytvořili.
 
-    > [!NOTE]
-    > Jako osvědčený postup doporučujeme vyloučit alespoň jeden účet správce ze zásad při testování, abyste se ujistili, že nejste uzamčeni z vašeho tenanta.
+   > [!NOTE] 
+   > V rámci osvědčeného postupu se doporučuje při testování vyloučit aspoň jeden účet správce ze zásady, abyste se ujistili, že se nezamknete ze svého tenanta.
 
-1. Pokračujte v nastavování zásad podmíněného přístupu na základě vašich organizačních požadavků.
+8. Pokračujte v nastavování zásad podmíněného přístupu na základě požadavků vaší organizace.
 
-    ![Podokno Vybrat vyloučené uživatele v podmíněném přístupu](./media/conditional-access-exclusion/select-excluded-users.png)
+![Vybrat podokno vyloučené uživatele v podmíněném přístupu](./media/conditional-access-exclusion/select-excluded-users.png)
+  
+Podíváme se na dva příklady, kde můžete pomocí kontrol přístupu spravovat vyloučení v zásadách podmíněného přístupu.
 
-Podívejme se na dva příklady, kde můžete pomocí kontrol přístupu spravovat vyloučení v zásadách podmíněného přístupu.
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Příklad 1: kontrola přístupu pro uživatele, kteří přistupují z blokovaných zemí nebo oblastí
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Příklad 1: Kontrola přístupu pro uživatele, kteří přistupují z blokovaných zemí nebo oblastí
+Řekněme, že máte zásady podmíněného přístupu, které blokují přístup z určitých zemí nebo oblastí. Zahrnuje skupinu, která je z těchto zásad vyloučená. Tady je doporučený kontroler přístupu, kde jsou členové skupiny zkontrolováni.
 
-Řekněme, že máte zásady podmíněného přístupu, které blokují přístup z určitých zemí nebo oblastí. Zahrnuje skupinu, která je vyloučena ze zásady. Zde je doporučená kontrola přístupu, kde jsou členové skupiny kontrolováni.
+> [!NOTE] 
+> K vytvoření kontrol přístupu je potřeba role globálního správce nebo Správce uživatelů.
 
-> [!NOTE]
-> K vytvoření kontrol y přístupu je vyžadována role globálního správce nebo správce uživatele.
+1. K revizi dojde každý týden.
 
-1. Přezkum se bude opakovat každý týden.
+2. Nikdy se neukončí, abyste se ujistili, že udržujete tuto skupinu vyloučení nejaktuálnější.
 
-2. Nikdy neskončí, abyste se ujistili, že udržujete tuto skupinu vyloučení nejaktuálnější.
+3. Všichni členové této skupiny budou v oboru pro kontrolu.
 
-3. Všichni členové této skupiny budou mít prostor pro přezkum.
+4. Každý uživatel bude muset sami ověřit, že stále potřebují přístup z těchto blokovaných zemí nebo oblastí, takže stále musí být členem skupiny.
 
-4. Každý uživatel bude muset sami dosvědčit, že stále potřebují přístup z těchto blokovaných zemí nebo oblastí, a proto musí být stále členem skupiny.
+5. Pokud uživatel neodpoví na žádost o revizi, automaticky se odebere ze skupiny a nebude už mít přístup ke klientovi a přitom na cestách do těchto zemí nebo oblastí.
 
-5. Pokud uživatel neodpoví na žádost o kontrolu, bude automaticky odebrán ze skupiny, a proto již nebude mít přístup k tenantovi při cestování do těchto zemí nebo oblastí.
+6. Povolte e-mailová oznámení, aby uživatelé věděli o zahájení a dokončení kontroly přístupu.
 
-6. Povolte e-mailová oznámení, aby byli uživatelé upozorněni na zahájení a dokončení kontroly přístupu.
+    ![Vytvoří podokno kontroly přístupu, například 1.](./media/conditional-access-exclusion/create-access-review-1.png)
 
-    ![Vytvoření podokna kontroly přístupu například 1](./media/conditional-access-exclusion/create-access-review-1.png)
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Příklad 2: kontrola přístupu pro uživatele, kteří přistupují pomocí starší verze ověřování
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Příklad 2: Kontrola přístupu pro uživatele, kteří přistupují ke staršímu ověřování
+Řekněme, že máte zásadu podmíněného přístupu, která uživatelům blokuje přístup pomocí starší verze ověřování a starších verzí klientů a zahrnuje skupinu, která je z těchto zásad vyloučená. Tady je doporučený kontroler přístupu, kde jsou členové skupiny zkontrolováni.
 
-Řekněme, že máte zásadu podmíněného přístupu, která blokuje přístup pro uživatele pomocí staršíverze ověřování a starší chod klienta. Zahrnuje skupinu, která je vyloučena ze zásady. Zde je doporučená kontrola přístupu, kde jsou členové skupiny kontrolováni.
+1. Tato recenze by musela být opakovaná kontrola.
 
-1. Tato recenze by musela být opakovanou recenzí.
+2. Všichni členové skupiny by museli zkontrolovat.
 
-2. Všichni ve skupině by museli být přezkoumáni.
+3. Dá se nakonfigurovat tak, aby vybral vlastníky obchodních jednotek jako vybrané kontrolory.
 
-3. Může být nakonfigurován tak, aby seznam vlastníků organizační jednotky jako vybraných recenzentů.
+4. Automaticky použít výsledky a odebrat uživatele, kteří nebyli schválením, aby mohli dál používat starší metody ověřování.
 
-4. Automaticky použijte výsledky a odeberte uživatele, kteří nebyli schváleni, aby mohli nadále používat starší metody ověřování.
+5. Může být výhodné povolit doporučení, aby kontroloři velkých skupin mohli snadno učinit svá rozhodnutí.
 
-5. Může být výhodné povolit doporučení, aby se recenzenti velkých skupin mohli snadno rozhodovat.
-
-6. Povolte e-mailová oznámení, aby byli uživatelé upozorněni na zahájení a dokončení kontroly přístupu.
+6. Povolit e-mailová oznámení, aby se uživatelům zobrazilo oznámení o zahájení a dokončení kontroly přístupu.
 
     ![Vytvoření podokna kontroly přístupu například 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
-**Pro Tip:** Pokud máte mnoho skupin vyloučení, a proto potřebujete vytvořit více kontrol přístupu, máme nyní rozhraní API v beta koncovém bodě Microsoft Graph, který vám umožní vytvářet a spravovat je programově. Pokud chcete začít, přečtěte si [odkaz na rozhraní API pro kontroly přístupu azure a](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) [například načítání recenzí přístupu k Azure AD prostřednictvím Microsoft Graphu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
+>[!IMPORTANT] 
+>Pokud máte mnoho skupin vyloučení a proto potřebujete vytvořit více kontrol přístupu, teď máme v koncovém bodu Microsoft Graph beta rozhraní API, které umožňuje jejich vytváření a správu prostřednictvím kódu programu. Informace o tom, jak začít, najdete v [referenčních informacích k rozhraní API kontroly přístupu Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) a [příklad načítání kontrol přístupu služby azure AD prostřednictvím Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
-## <a name="access-review-results-and-audit-logs"></a>Přístup k výsledkům kontroly a protokolům auditu
+## <a name="access-review-results-and-audit-logs"></a>Výsledky kontroly přístupu a protokoly auditu
 
-Teď, když máte vše na svém místě, seskupí, zásady podmíněného přístupu a kontroly přístupu, je čas sledovat a sledovat výsledky těchto recenzí.
+Teď, když máte všechno na místě, skupinu, zásady podmíněného přístupu a kontroly přístupu, je čas sledovat a sledovat výsledky těchto revizí.
 
-1. Na webu Azure Portal otevřete okno **Access recenze.**
+1. V Azure Portal otevřete okno kontroly **přístupu** .
 
-1. Otevřete ovládací prvek a program, který jste vytvořili pro správu skupiny vyloučení.
+2. Otevřete ovládací prvek a program, který jste vytvořili pro správu skupiny vyloučení.
 
-1. Kliknutím na **Výsledky** zobrazíte, kdo byl schválen k tomu, aby zůstal v seznamu a kdo byl odebrán.
+3. Kliknutím na **výsledky** zjistíte, kdo byl schválen, aby zůstal v seznamu a kdo byl odebrán.
 
     ![Výsledky kontrol přístupu ukazují, kdo byl schválen](./media/conditional-access-exclusion/access-reviews-results.png)
 
-1. Potom klikněte na **protokoly auditu** a podívejte se na akce, které byly během této kontroly podniknuty.
+4. Pak klikněte na **protokoly auditu** a podívejte se na akce, které byly během této revize podniknuty.
 
-    ![Aplikace Access kontroluje protokoly auditu se seznamem akcí](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
+    ![Kontroly přístupu – protokoly auditu v seznamu akcí](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
 
-Jako správce IT víte, že správa skupin vyloučení do zásad je někdy nevyhnutelná. Však udržování těchto skupin, jejich pravidelné kontroly vlastníkem firmy nebo samotnými uživateli a auditování těchto změn může usnadnit s azure ad kontroly přístupu.
+Jako správce IT víte, že správa skupin vyloučení do vašich zásad je někdy nevyhnutelná. Tyto skupiny si ale můžete pravidelně kontrolovat podle vlastního obchodního vlastníka nebo uživatelů sami a auditování těchto změn se dá zjednodušit pomocí kontrol přístupu Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření kontroly přístupu skupin nebo aplikací](create-access-review.md)
-- [Co je podmíněný přístup ve službě Azure Active Directory?](../conditional-access/overview.md)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

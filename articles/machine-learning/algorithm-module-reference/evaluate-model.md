@@ -1,149 +1,128 @@
 ---
-title: 'Vyhodnotit model: Odkaz na modul'
+title: 'Vyhodnocení modelu: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Vyhodnotit model v Azure Machine Learning měřit přesnost trénovaného modelu.
+description: Naučte se používat modul vyhodnocení modelu v Azure Machine Learning k měření přesnosti vyučeného modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/24/2020
-ms.openlocfilehash: c1bcbb6a368c9c80f968c48c1a6e0bc6c95133d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456400"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129846"
 ---
-# <a name="evaluate-model-module"></a>Vyhodnocovat modelový modul
+# <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Tento modul slouží k měření přesnosti trénovaného modelu. Poskytujete datovou sadu obsahující skóre generovaná z modelu a modul **Vyhodnotit model** vypočítá sadu standardních metrik hodnocení.
+Tento modul použijte k měření přesnosti trained model. Poskytnete datovou sadu obsahující skóre vygenerované z modelu a modul **vyhodnocení modelu** vypočítá sadu standardních metrik vyhodnocení v oboru.
   
- Metriky vrácené **hodnotit model** závisí na typu modelu, který vyhodnocujete:  
+ Metriky vrácené **modelem vyhodnocení** závisí na typu modelu, který vyhodnocujete:  
   
--   **Klasifikační modely**    
+-   **Modely klasifikace**    
 -   **Regresní modely**  
--   **Clustering modely**  
+-   **Modely clusteringu**  
 
 
 > [!TIP]
-> Pokud s hodnocením modelu teknete, doporučujeme sérii videí dr. Stephena Elstona jako součást [kurzu strojového učení](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) od edxu. 
+> Pokud s hodnocením modelu začínáte, doporučujeme, aby se série videí Dr. Stephen Elston jako součást [strojového učení](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) od EdX. 
 
 
-Modul **Vyhodnotit model** lze použít třemi způsoby:
+## <a name="how-to-use-evaluate-model"></a>Jak používat model vyhodnocení
+1. Připojte výstup skóre výsledné **sady** [modelu skóre](./score-model.md) k levému vstupnímu portu **vyhodnocení modelu**. 
 
-+ Vygenerujte skóre nad trénovacími daty a vyhodnoťte model na základě těchto skóre.
-+ Generovat skóre na modelu, ale porovnat tyto skóre skóre na vyhrazené testovací sady
-+ Porovnání skóre pro dva různé, ale související modely pomocí stejné sady dat
+2. Volitelné Připojte výstup skóre výsledné **sady** [modelu skóre](./score-model.md) pro druhý model na **pravého** vstupu **modelu vyhodnocení**. Můžete snadno porovnat výsledky dvou různých modelů se stejnými daty. Dva vstupní algoritmy by měly být stejného typu algoritmu. Nebo můžete porovnat skóre ze dvou různých spuštění přes stejná data s různými parametry.
 
-## <a name="use-the-training-data"></a>Použití trénovacích dat
+    > [!NOTE]
+    > Typ algoritmu odkazuje na třídu "klasifikace dvou tříd", "klasifikace s více třídami", "regrese", "clusteringu" pod "Machine Learning algoritmy". 
 
-Chcete-li vyhodnotit model, musíte připojit datovou sadu, která obsahuje sadu vstupních sloupců a skóre.  Pokud nejsou k dispozici žádná další data, můžete použít původní datovou sadu.
-
-1. Připojte výstup **datové sady Scored** [modelu skóre](./score-model.md) ke vstupu vyhodnocení **modelu**. 
-2. Klikněte na **Vyhodnotit** modul modelu a spusťte kanál a vygenerujte skóre vyhodnocení.
-
-## <a name="use-testing-data"></a>Použití testovacích dat
-
-Běžným scénářem ve strojovém učení je oddělení původní sady dat do trénovacích a testovacích datových sad pomocí modulu [Split](./split-data.md) nebo modulu [Oddíl a ukázka.](./partition-and-sample.md) 
-
-1. Připojte výstup **datové sady Scored** [modelu skóre](score-model.md) ke vstupu vyhodnocení **modelu**. 
-2. Připojte výstup modulu Split Data, který obsahuje testovací data, k pravému vstupu **vyhodnocení modelu**.
-2. Klikněte na **Vyhodnotit** modul modelu a vyberte **Spustit vybranou,** chcete-li generovat hodnocení.
-
-## <a name="compare-scores-from-two-models"></a>Porovnání skóre ze dvou modelů
-
-Můžete také připojit druhou sadu skóre **vyhodnotit model**.  Skóre může být sdílená sada hodnocení, která má známé výsledky, nebo sada výsledků z jiného modelu pro stejná data.
-
-Tato funkce je užitečná, protože můžete snadno porovnat výsledky ze dvou různých modelů na stejná data. Nebo můžete porovnat skóre ze dvou různých spuštění přes stejná data s různými parametry.
-
-1. Připojte výstup **datové sady Scored** [modelu skóre](score-model.md) ke vstupu vyhodnocení **modelu**. 
-2. Připojte výstup modulu Model skóre pro druhý model k pravému vstupu **vyhodnotit model**.
-3. Odešlete potrubí.
+3. Odešlete kanál pro vygenerování skóre vyhodnocení.
 
 ## <a name="results"></a>Výsledky
 
-Po spuštění **vyhodnotit model**, klikněte pravým tlačítkem myši na modul a **vyberte visualizovat výsledky vyhodnocení** zobrazíte výsledky.
+Po spuštění **modelu vyhodnocení**klikněte pravým tlačítkem myši na modul a výběrem **vizualizace výsledky vyhodnocení** zobrazte výsledky.
 
-Pokud připojíte datové sady k oběma vstupům **vyhodnotit model**, výsledky budou obsahovat metriky pro obě sady dat nebo oba modely.
-Model nebo data připojená k levému portu jsou uvedena nejprve v sestavě, následovaná metrikami pro datovou sadu nebo modelem připojeným k pravému portu.  
+Pokud připojíte datové sady ke vstupům **modelu vyhodnocení**, budou výsledky obsahovat metriky pro sadu dat nebo oba modely.
+Model nebo data připojená k levému portu se zobrazí jako první v sestavě, za kterými následuje metrika pro datovou sadu nebo model připojený ke správnému portu.  
 
-Například následující obrázek představuje porovnání výsledků ze dvou modelů clusteringu, které byly postaveny na stejných datech, ale s různými parametry.  
+Například následující obrázek představuje porovnání výsledků ze dvou modelů clusteringu, které byly vytvořeny na stejných datech, ale s různými parametry.  
 
-![Porovnání2Modelů](media/module/evaluate-2-models.png)  
+![Comparing2Models](media/module/evaluate-2-models.png)  
 
-Vzhledem k tomu, že se jedná o model clusteringu, výsledky hodnocení se liší, než když porovnáte skóre ze dvou regresních modelů nebo porovnáte dva klasifikační modely. Celková prezentace je však stejná. 
+Vzhledem k tomu, že se jedná o model clusteringu, výsledky hodnocení jsou jiné než v porovnání s výsledky ze dvou regresních modelů nebo porovnáním dvou modelů klasifikace. Ale celková prezentace je stejná. 
 
 ## <a name="metrics"></a>Metriky
 
-Tato část popisuje metriky vrácené pro konkrétní typy modelů podporovaných pro použití s **vyhodnocením modelu**:
+Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou podporované pro použití s **vyhodnocením modelu**:
 
-+ [klasifikační modely](#metrics-for-classification-models)
-+ [regresní modely](#metrics-for-regression-models)
-+ [clustering modely](#metrics-for-clustering-models)
++ [modely klasifikace](#metrics-for-classification-models)
++ [Regresní modely](#metrics-for-regression-models)
++ [modely clusteringu](#metrics-for-clustering-models)
 
-### <a name="metrics-for-classification-models"></a>Metriky pro klasifikační modely
+### <a name="metrics-for-classification-models"></a>Metriky pro modely klasifikace
 
-Následující metriky jsou hlášeny při hodnocení klasifikační modely.
+Při vyhodnocování modelů klasifikace jsou hlášeny následující metriky.
   
--   **Přesnost** měří dobrotu klasifikačního modelu jako podíl skutečných výsledků na celkových případech.  
+-   **Přesnost** měření modelu klasifikace jako poměru skutečných výsledků do celkového počtu případů je dobrá.  
   
--   **Přesnost** je podíl skutečných výsledků na všech pozitivních výsledcích.  
+-   **Přesnost** je poměr skutečných výsledků pro všechny pozitivní výsledky.  
   
 -   **Odvolání** je zlomek všech správných výsledků vrácených modelem.  
   
--   **F-skóre** se vypočítá jako vážený průměr přesnosti a odvolání mezi 0 a 1, kde je ideální hodnota F-skóre 1.  
+-   Hodnota **f-skore** je vypočítána jako vážený průměr přesnosti a odvolání mezi 0 a 1, kde ideální hodnota F-Skore je 1.  
   
--   **AUC** měří plochu pod křivkou vykreslenou se skutečnými pozitivy na ose y a falešnými poplachy na ose x. Tato metrika je užitečná, protože poskytuje jedno číslo, které umožňuje porovnat modely různých typů.  
+-   **AUC** měří oblast pod křivkou vykreslenou se skutečnými klady na ose y a falešně pozitivních hodnot na ose x. Tato metrika je užitečná, protože poskytuje jedno číslo, které umožňuje porovnat modely různých typů.  
   
-- **Průměrná ztráta protokolu** je jediné skóre, které se používá k vyjádření trestu za nesprávné výsledky. Vypočítá se jako rozdíl mezi dvěma rozděleními pravděpodobnosti – skutečným a rozdělením v modelu.  
+- **Průměrná ztráta protokolu** je jedno skóre, které slouží k vyjádření pokuty pro nesprávné výsledky. Počítá se jako rozdíl mezi dvěma distribucí pravděpodobnosti – true One a v modelu.  
   
-- **Ztráta protokolu školení** je jediné skóre, které představuje výhodu třídění přes náhodné předpověď. Ztráta protokolu měří nejistotu modelu porovnáním pravděpodobností, které vydělá, se známými hodnotami (základní pravda) v popiscích. Chcete minimalizovat ztrátu protokolu pro model jako celek.
+- Ve službě **Training Log ztrát** je jedno skóre, které představuje výhodu klasifikátoru na náhodné předpovědi. Ztráta protokolu měří nejistotu modelu tím, že se porovnávají pravděpodobnosti, že se výstupy označují na známé hodnoty (v terénu). Chcete minimalizovat ztrátu protokolu pro model jako celek.
 
 ### <a name="metrics-for-regression-models"></a>Metriky pro regresní modely
  
-Metriky vrácené pro regresní modely jsou navrženy tak, aby odhadly množství chyb.  Model se považuje za vhodný pro data dobře, pokud je rozdíl mezi pozorovanými a předpovídanouhodnotami malý. Nicméně, při pohledu na vzor zbytků (rozdíl mezi jedním předpokládaným bodem a jeho odpovídající skutečnou hodnotou) vám může říct hodně o potenciálním zkreslení v modelu.  
+Metriky vracené pro regresní modely jsou navržené k odhadu množství chyb.  Model se považuje za správný, pokud rozdíl mezi zjištěnými a předpovězenými hodnotami je malý. Nicméně na vzor zbytků (rozdíl mezi jedním předpokládaným bodem a odpovídající skutečnou hodnotou) vám může sdělit spoustu potenciálního posunu v modelu.  
   
- Následující metriky jsou hlášeny pro vyhodnocení regresní modely.
+ Následující metriky jsou hlášeny pro vyhodnocení regresních modelů.
   
-- **Průměrná absolutní chyba (MAE)** měří, jak blízko jsou předpovědi ke skutečným výsledkům; tak, nižší skóre je lepší.  
+- **Střední absolutní chyba (Mae)** měří způsob, jakým se předpovědi blíží skutečným výsledkům. Proto je nižší skóre lepší.  
   
-- **Kořenová střední kvadratická chyba (RMSE)** vytvoří jednu hodnotu, která shrnuje chybu v modelu. Srovnat rozdíl, metrika ignoruje rozdíl mezi over-prediction a under-prediction.  
+- **Hlavní střední hodnota chyby (RMSE)** vytvoří jednu hodnotu, která shrnuje chybu v modelu. Tím, že umocnění rozdíl, metrika ignoruje rozdíl mezi předpověďmi a průběžnými předpověďmi.  
   
-- **Relativní absolutní chyba (RAE)** je relativní absolutní rozdíl mezi očekávanými a skutečnými hodnotami; relativní, protože střední rozdíl je dělen aritmetickým průměrem.  
+- **Relativní absolutní chyba (Rae)** je relativní absolutní rozdíl mezi očekávanou a skutečnou hodnotou; relativní vzhledem k tomu, že střední rozdíl je vydělený aritmetickým průměrem.  
   
-- **Relativní kvadratózní chyba (RSE)** podobně normalizuje celkovou kvadračovou chybu předpovídaných hodnot vydělením celkovou kvadračnou chybou skutečných hodnot.  
+- **Relativní kvadratická chyba (RSE)** podobně normalizuje celkovou kvadratickou chybu předpokládaných hodnot tak, že se vydělí celkovými kvadratickými chybami skutečných hodnot.  
   
 
   
-- **Determinační koeficient**, často označovaný jako R<sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že model je náhodný (nic nevysvětluje); 1 znamená, že je perfektní fit. Při interpretaci hodnot R<sup>2</sup> je však třeba dbát opatrnosti, protože nízké hodnoty mohou být zcela normální a vysoké hodnoty mohou být podezřelé.
+- **Koeficient stanovitelnosti**, který se často označuje jako R<sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že je model náhodný (vysvětluje nic); 1 znamená dokonalé přizpůsobení. Nicméně opatrnost by se měla použít při interpretaci hodnot R<sup>2</sup> , protože nízké hodnoty můžou být zcela normální a vysoké hodnoty můžou být podezřelé.
 
-###  <a name="metrics-for-clustering-models"></a>Metriky pro clustering modely
+###  <a name="metrics-for-clustering-models"></a>Metriky pro modely clusteringu
 
-Vzhledem k tomu, že clustering modely výrazně liší od klasifikace a regrese modely v mnoha [ohledech, Vyhodnotit model](evaluate-model.md) také vrátí jinou sadu statistik pro clustering modely.  
+Vzhledem k tomu, že se modely clusteringu výrazně liší od klasifikace a regrese modelů v mnoha ohledech, [vyhodnocení modelu](evaluate-model.md) také vrátí jinou sadu statistik pro modely clusteringu.  
   
- Statistiky vrácené pro model clusteringu popisují, kolik datových bodů bylo přiřazeno jednotlivým clusterům, množství oddělení mezi clustery a jak pevně jsou datové body seskupeny v rámci každého clusteru.  
+ Statistika vracené pro model clusteringu popisuje, kolik datových bodů bylo přiřazeno ke každému clusteru, množství oddělení mezi clustery a o tom, jak pevně jsou datové body v rámci jednotlivých clusterů rozsvazcích.  
   
- Statistiky pro model clusteringu jsou zprůměrovány v celé datové sadě, s dalšířádky obsahující statistiky na clusteru.  
+ Statistiky modelu clusteringu jsou průměrně vypočítány přes celou datovou sadu s dalšími řádky, které obsahují statistiku na cluster.  
   
-Následující metriky jsou hlášeny pro vyhodnocení clustering modely.
+Následující metriky jsou hlášeny pro vyhodnocení modelů clusteringu.
     
--   Skóre ve sloupci **Průměrná vzdálenost k jinému středu**představují, jak blízko je v průměru každý bod v clusteru centroidům všech ostatních klastrů.   
+-   Skóre ve sloupci, **Průměrná vzdálenost k druhému středu**představuje způsob, jakým se v průměru blíží každý bod v clusteru, do centroids všech ostatních clusterů.   
 
--   Skóre ve sloupci **Průměrná vzdálenost ke středu clusteru**představují blízkost všech bodů v clusteru k centroidu tohoto clusteru.  
+-   Skóre ve sloupci, **Průměrná vzdálenost do centra clusterů**, představuje uzavření všech bodů v clusteru do těžiště tohoto clusteru.  
   
--   Sloupec **Počet bodů zobrazuje,** kolik datových bodů bylo přiřazeno jednotlivým clusterům, spolu s celkovým počtem datových bodů v libovolném clusteru.  
+-   Sloupec **počet bodů** ukazuje, kolik datových bodů bylo přiřazeno ke každému clusteru, spolu s celkovým celkovým počtem datových bodů v jakémkoli clusteru.  
   
-     Pokud je počet datových bodů přiřazených clusterům menší než celkový počet dostupných datových bodů, znamená to, že datové body nelze clusteru přiřadit.  
+     Pokud je počet datových bodů přiřazených ke clusterům menší, než je celkový počet dostupných datových bodů, znamená to, že datové body nelze přiřadit ke clusteru.  
   
--   Skóre ve sloupci **Maximální vzdálenost k Centru clusteru**představují součet vzdáleností mezi jednotlivými body a centroidem clusteru tohoto bodu.  
+-   Skóre ve sloupci, **maximální vzdálenost do centra clusterů**, představuje součet vzdálenosti mezi každým bodem a těžištěem clusteru daného bodu.  
   
-     Pokud je toto číslo vysoké, může to znamenat, že cluster je široce rozptýlený. Tuto statistiku byste měli zkontrolovat společně s **centrem průměrná vzdálenost do clusteru,** abyste určili dvojstránky clusteru.   
+     Pokud je toto číslo vysoké, může to znamenat, že cluster je výrazně rozptýlený. Tuto statistiku byste měli projít společně s **průměrnou vzdáleností do centra clusterů** k určení rozprostření clusteru.   
 
--   **Kombinované hodnocení** skóre v dolní části každé části výsledků uvádí průměrné skóre pro clustery vytvořené v daném modelu.  
+-   **Kombinované skóre vyhodnocení** v dolní části každé části výsledků obsahuje průměrné skóre pro clustery vytvořené v tomto konkrétním modelu.  
   
 
 ## <a name="next-steps"></a>Další kroky

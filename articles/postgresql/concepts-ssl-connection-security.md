@@ -1,61 +1,61 @@
 ---
-title: SSL – databáze Azure pro PostgreSQL – jeden server
-description: Pokyny a informace o konfiguraci připojení SSL pro Azure Database for PostgreSQL – jeden server.
+title: TLS-Azure Database for PostgreSQL – jeden server
+description: Pokyny a informace o tom, jak nakonfigurovat připojení TLS pro Azure Database for PostgreSQL pro jeden server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 303da4dcb68a79e69254f6610afc0003bf0aa22c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0482e5205b97b5c57c41e0ba98fb9ca819e5d5f
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476996"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82141749"
 ---
-# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurace připojení SSL v databázi Azure pro PostgreSQL – jeden server
+# <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurace připojení TLS v Azure Database for PostgreSQL – jeden server
 
-Azure Database for PostgreSQL upřednostňuje připojení klientských aplikací ke službě PostgreSQL pomocí ssl (Secure Sockets Layer). Vynucení připojení SSL mezi databázovým serverem a klientskými aplikacemi pomáhá chránit před útoky man-in-the-middle šifrováním datového proudu mezi serverem a aplikací.
+Azure Database for PostgreSQL upřednostňuje připojení klientských aplikací ke službě PostgreSQL pomocí protokolu TLS (Transport Layer Security), dříve označovaného jako SSL (Secure Sockets Layer) (SSL). Vynucování připojení TLS mezi vaším databázovým serverem a klientskými aplikacemi pomáhá chránit před útoky typu "prostředník-in-the-middle" tím, že šifruje datový proud mezi serverem a vaší aplikací.
 
-Ve výchozím nastavení je databázová služba PostgreSQL nakonfigurována tak, aby vyžadovala připojení SSL. Pokud klientská aplikace nepodporuje připojení SSL, můžete zakázat vyžadování ssl.
+Ve výchozím nastavení je databázová služba PostgreSQL nakonfigurovaná tak, aby vyžadovala připojení TLS. Pokud klientská aplikace nepodporuje připojení TLS, můžete zakázat vyžadování TLS.
 
-## <a name="enforcing-ssl-connections"></a>Vynucení připojení SSL
+## <a name="enforcing-tls-connections"></a>Vynucování připojení TLS
 
-Pro všechny servery Azure Database for PostgreSQL zřízené prostřednictvím portálu Azure a rozhraní příkazového příkazu CLI je vynucení připojení SSL ve výchozím nastavení povolené. 
+Pro všechny Azure Database for PostgreSQL servery zřízené prostřednictvím Azure Portal a CLI je vynucování připojení TLS ve výchozím nastavení povolené. 
 
-Podobně připojovací řetězce, které jsou předdefinované v nastavení "Připojovací řetězce" pod serverem na webu Azure Portal zahrnují požadované parametry pro běžné jazyky pro připojení k databázovému serveru pomocí protokolu SSL. Parametr SSL se liší v závislosti na konektoru, například "ssl=true" nebo "sslmode=require" nebo "sslmode=required" a dalších variantách.
+Připojovací řetězce, které jsou předem definované v nastavení "připojovací řetězce" na serveru v Azure Portal obsahují také požadované parametry pro společné jazyky pro připojení k databázovému serveru pomocí protokolu TLS. Parametr TLS se liší v závislosti na konektoru, například "SSL = true" nebo "sslmode = vyžadovat" nebo "sslmode = Required" a další variace.
 
-## <a name="configure-enforcement-of-ssl"></a>Konfigurace vynucení protokolu SSL
+## <a name="configure-enforcement-of-tls"></a>Konfigurace vynucení TLS
 
-Volitelně můžete zakázat vynucení připojení SSL. Microsoft Azure doporučuje vždy povolit **vynutit nastavení připojení SSL** pro rozšířené zabezpečení.
+Volitelně můžete zakázat vynucování připojení TLS. Microsoft Azure doporučuje vždycky povolit nastavení **připojení SSL vynutilo** pro zvýšené zabezpečení.
 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-Navštivte server Azure Database for PostgreSQL a klikněte na **Zabezpečení připojení**. Pomocí přepínacího tlačítka můžete povolit nebo zakázat nastavení **vynucení připojení SSL.** Potom klepněte na tlačítko **Uložit**.
+Přejděte na server Azure Database for PostgreSQL a klikněte na **zabezpečení připojení**. Pomocí přepínacího tlačítka povolíte nebo zakážete nastavení **Vynutilí připojení SSL** . Pak klikněte na **Uložit**.
 
-![Zabezpečení připojení – zakázat vynucení protokolu SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
+![Zabezpečení připojení – zakázat vymáhání TLS/SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
-Nastavení můžete potvrdit zobrazením stránky **Přehled** a zobrazí se indikátor **vynucení ssl.**
+Nastavení můžete potvrdit zobrazením stránky **Přehled** , kde se zobrazí indikátor **stavu vystavení SSL** .
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 
-Můžete povolit nebo zakázat **ssl vynucování** parametr pomocí `Enabled` nebo `Disabled` hodnoty v příslušných v Azure CLI.
+Můžete povolit nebo zakázat parametr **SSL-Enforcement** pomocí `Enabled` hodnot nebo `Disabled` v rozhraní příkazového řádku Azure CLI.
 
 ```azurecli
 az postgres server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Enabled
 ```
 
-## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>Ujistěte se, že vaše aplikace nebo architektura podporuje připojení SSL
+## <a name="ensure-your-application-or-framework-supports-tls-connections"></a>Ujistěte se, že vaše aplikace nebo architektura podporuje připojení TLS.
 
-Některé aplikační architektury, které používají PostgreSQL pro své databázové služby nepovolují SSL ve výchozím nastavení během instalace. Pokud váš server PostgreSQL vynucuje připojení SSL, ale aplikace není nakonfigurována pro protokol SSL, může se v aplikaci nepodaří připojit k databázovému serveru. Informace o povolení připojení SSL naleznete v dokumentaci k aplikaci.
+Některé aplikační architektury, které používají PostgreSQL pro své databázové služby, během instalace standardně nepovolují protokol TLS. Pokud váš server PostgreSQL vynutil připojení TLS, ale aplikace není nakonfigurovaná pro TLS, aplikace se nemusí podařit připojit k vašemu databázovému serveru. Informace o tom, jak povolit připojení TLS, najdete v dokumentaci k vaší aplikaci.
 
-## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>Aplikace, které vyžadují ověření certifikátu pro připojení SSL
+## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>Aplikace, které vyžadují ověření certifikátu pro připojení TLS
 
-V některých případech aplikace vyžadují místní soubor certifikátu generovaný z důvěryhodného souboru certifikátu certifikační autority (.cer) pro bezpečné připojení. Certifikát pro připojení k azure databázi pro postgresql server je umístěn na adrese https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem. Stáhněte soubor certifikátu a uložte jej do preferovaného umístění.
+V některých případech aplikace vyžadují místní soubor certifikátu generovaný ze souboru certifikátu důvěryhodné certifikační autority (. cer) pro zabezpečené připojení. Certifikát pro připojení k serveru Azure Database for PostgreSQL se nachází na adrese https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem. Stáhněte si soubor certifikátu a uložte ho do svého upřednostňovaného umístění.
 
 ### <a name="connect-using-psql"></a>Připojení pomocí psql
 
-Následující příklad ukazuje, jak se připojit k serveru PostgreSQL pomocí nástroje příkazového řádku pSQL. Pomocí `sslmode=verify-full` nastavení připojovacího řetězce vynucujte ověření certifikátu SSL. Předajte cestu k `sslrootcert` místnímu souboru certifikátu parametru.
+Následující příklad ukazuje, jak se připojit k serveru PostgreSQL pomocí nástroje příkazového řádku psql. Použijte nastavení `sslmode=verify-full` připojovacího řetězce pro vymáhání ověření certifikátu TLS/SSL. Předat do `sslrootcert` parametru cestu k místnímu souboru certifikátu.
 
 Následující příkaz je příkladem připojovacího řetězce psql:
 
@@ -64,8 +64,8 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 ```
 
 > [!TIP]
-> Zkontrolujte, zda `sslrootcert` hodnota předaná odpovídá cestě k souboru uloženého certifikátu.
+> Potvrďte, že hodnota předaná, aby `sslrootcert` odpovídala cestě k souboru pro certifikát, který jste uložili.
 
 ## <a name="next-steps"></a>Další kroky
 
-Projděte si různé možnosti připojení aplikací v [knihovnách připojení pro Azure Database for PostgreSQL](concepts-connection-libraries.md).
+Přečtěte si různé možnosti připojení aplikací v [knihovně připojení pro Azure Database for PostgreSQL](concepts-connection-libraries.md).

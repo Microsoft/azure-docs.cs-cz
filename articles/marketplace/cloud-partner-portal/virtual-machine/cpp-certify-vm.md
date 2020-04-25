@@ -1,81 +1,81 @@
 ---
-title: Certifikace image virtuálního počítače pro Azure Marketplace
-description: Vysvětluje, jak otestovat a odeslat image virtuálního počítače pro certifikaci Azure Marketplace.
+title: Certifikovat image virtuálního počítače pro Azure Marketplace
+description: Vysvětluje, jak otestovat a odeslat image virtuálního počítače pro Azure Marketplace certifikace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: dsindona
-ms.openlocfilehash: ce1e001b9cafff83a3f9bf546d6903cc4a4f450f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 81dec159a8a84adce97750666baba455ae3fdd93
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273490"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147083"
 ---
 # <a name="certify-your-vm-image"></a>Certifikace image virtuálního počítače
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek virtuálního počítače Azure do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [certifikaci image virtuálního počítače Azure](https://aks.ms/CertifyVMimage) spravujte migrované nabídky.
+> Od 13. dubna 2020 začneme přesouvat správu nabídek virtuálních počítačů Azure do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Pokud chcete spravovat migrované nabídky, postupujte podle pokynů v tématu [certifikace imagí virtuálních počítačů Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification) .
 
-Po vytvoření a nasazení virtuálního počítače (VM) je nutné otestovat a odeslat image virtuálního počítače pro certifikaci Azure Marketplace. Tento článek vysvětluje, kde získat *certifikační testovací nástroj pro Azure Certified*, jak tento nástroj použít k certifikaci image virtuálního počítače a jak nahrát výsledky ověření do kontejneru Azure, kde se nacházejí vaše virtuální počítače. 
-
-
-## <a name="download-and-run-the-certification-test-tool"></a>Stažení a spuštění certifikačního testovacího nástroje
-
-Certifikační testovací nástroj pro Azure Certified běží na místním počítači s Windows, ale testuje virtuální počítač s Windows nebo Linux založený na Azure.  Ověří, že image virtuálního počítače uživatele je kompatibilní s Microsoft Azure – že byly splněny pokyny a požadavky týkající se přípravy virtuálního pevného disku. Výstupem nástroje je zpráva o kompatibilitě, kterou nahrajete na [portál partnerů cloudu](https://cloudpartner.azure.com) a požádáte o certifikaci virtuálních zařízení.
-
-1. Stáhněte a nainstalujte nejnovější [certifikační testovací nástroj pro Azure Certified](https://www.microsoft.com/download/details.aspx?id=44299). 
-2. Otevřete certifikační nástroj a klepněte na tlačítko **Spustit nový test**.
-3. Na obrazovce **Informace o testu** zadejte název **testu** pro testovací běh.
-4. Vyberte **platformu** pro váš `Windows Server` `Linux`virtuální počítač, nebo . Volba platformy ovlivní zbývající možnosti.
-5. Pokud váš virtuální počítač používá tuto databázovou službu, zaškrtněte políčko **Testovat pro Azure SQL Database.**
-
-   ![Úvodní stránka nástroje pro testování certifikátu](./media/publishvm_025.png)
+Až vytvoříte a nasadíte virtuální počítač, musíte otestovat a odeslat image virtuálního počítače pro Azure Marketplace certifikace. Tento článek vysvětluje, kde získat *Nástroj certifikace pro certifikaci pro Azure Certified*, jak tento nástroj použít k certifikaci vaší image virtuálního počítače a jak nahrát výsledky ověření do kontejneru Azure, kde jsou umístěné vaše virtuální pevné disky. 
 
 
-## <a name="connect-the-certification-tool-to-a-vm-image"></a>Připojení certifikačního nástroje k bitové kopii virtuálního zařízení
+## <a name="download-and-run-the-certification-test-tool"></a>Stažení a spuštění nástroje certifikace test
 
-  Nástroj se připojuje k virtuálním počítačům se systémem Windows pomocí [prostředí PowerShell](https://docs.microsoft.com/powershell/) a připojuje se k virtuálním počítačům s Linuxem prostřednictvím [SSH.Net](https://www.ssh.com/ssh/protocol/).
+Nástroj certifikace pro certifikaci pro Azure Certified běží na místním počítači s Windows, ale testuje virtuální počítač se systémem Windows nebo Linux na platformě Azure.  Ověřuje, jestli je vaše uživatelská image virtuálního počítače kompatibilní s Microsoft Azure – splňuje pokyny a požadavky týkající se přípravy vašeho virtuálního pevného disku. Výstupem nástroje je sestava kompatibility, kterou nahrajete do [portál partnerů cloudu](https://cloudpartner.azure.com) pro vyžádání certifikace virtuálního počítače.
 
-### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Připojení certifikačního nástroje k bitové kopii virtuálního počítače s Linuxem
+1. Stáhněte a nainstalujte si nejnovější [Nástroj pro testování certifikace pro certifikaci Azure](https://www.microsoft.com/download/details.aspx?id=44299). 
+2. Otevřete nástroj certifikace a pak klikněte na **Spustit nový test**.
+3. Na obrazovce **informace o testu** zadejte **název testu** testovacího běhu.
+4. Vyberte **platformu** pro váš virtuální počítač, a `Windows Server` to `Linux`buď nebo. Volba vaší platformy má vliv na zbývající možnosti.
+5. Pokud váš virtuální počítač používá tuto databázovou službu, zaškrtněte políčko **test pro Azure SQL Database** .
 
-1. Vyberte režim **ověřování SSH:** `Password Authentication` nebo `key File Authentication`.
-2. Pokud používáte ověřování pomocí hesla, zadejte hodnoty pro **název DNS virtuálního počítače**, uživatelské **jméno**a **heslo**.  Volitelně můžete změnit výchozí číslo **portu SSH.**
+   ![Úvodní stránka nástroje CERT test Tool](./media/publishvm_025.png)
 
-     ![Ověřování hesla image virtuálního počítače s Linuxem](./media/publishvm_026.png)
 
-3. Pokud používáte ověřování pomocí souboru klíčů, zadejte hodnoty pro **název DNS virtuálního uživatele**, uživatelské **jméno**a umístění **soukromého klíče.**  Volitelně můžete zadat **přístupové heslo** nebo změnit výchozí číslo **portu SSH.**
+## <a name="connect-the-certification-tool-to-a-vm-image"></a>Připojení certifikačního nástroje k imagi virtuálního počítače
 
-     ![Ověřování souborů image virtuálního počítače s Linuxem](./media/publishvm_027.png)
+  Nástroj se připojuje k virtuálním počítačům s Windows pomocí [PowerShellu](https://docs.microsoft.com/powershell/) a připojuje se k virtuálním počítačům Linux prostřednictvím [SSH.NET](https://www.ssh.com/ssh/protocol/).
 
-### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Připojení certifikačního nástroje k bitové kopii virtuálního zařízení založeného na Windows**
-1. Zadejte plně kvalifikovaný **název DNS virtuálního zařízení** `MyVMName.Cloudapp.net`(například).
+### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Připojení certifikačního nástroje k imagi virtuálního počítače se systémem Linux
+
+1. Vyberte režim **ověřování SSH** : `Password Authentication` nebo `key File Authentication`.
+2. Pokud používáte ověřování na základě hesla, zadejte hodnoty pro **název DNS virtuálního počítače**, **uživatelské jméno**a **heslo**.  Volitelně můžete změnit výchozí číslo **portu SSH** .
+
+     ![Ověření hesla pro bitovou kopii virtuálního počítače se systémem Linux](./media/publishvm_026.png)
+
+3. Pokud používáte ověřování na základě klíčového souboru, zadejte hodnoty pro **název DNS virtuálního počítače**, **uživatelské jméno**a umístění **privátního klíče** .  Volitelně můžete zadat **heslo** nebo změnit výchozí číslo **portu SSH** .
+
+     ![Ověření souboru image virtuálního počítače se systémem Linux](./media/publishvm_027.png)
+
+### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Připojení certifikačního nástroje k imagi virtuálního počítače se systémem Windows**
+1. Zadejte plně kvalifikovaný **název DNS virtuálního počítače** (například `MyVMName.Cloudapp.net`).
 2. Zadejte hodnoty **uživatelského jména** a **hesla**.
 
-   ![Ověřování hesel pro bitovou kopii virtuálního počítače s Windows](./media/publishvm_028.png)
+   ![Ověřování hesla bitové kopie virtuálního počítače s Windows](./media/publishvm_028.png)
 
 
-## <a name="run-a-certification-test"></a>Spuštění certifikačního testu
+## <a name="run-a-certification-test"></a>Spustit test certifikace
 
-Po zadejme hodnoty parametrů pro image virtuálního počítače v certifikačním nástroji, vyberte **Test připojení** k zajištění platné připojení k virtuálnímu počítači. Po ověření připojení vyberte **další** a spusťte test.  Po dokončení testu se zobrazí tabulka s výsledky testu (Pass/Fail/Warning).  Následující příklad ukazuje výsledky testů pro test virtuálního počítače s Linuxem. 
+Po zadání hodnot parametrů pro image virtuálního počítače v nástroji certifikace vyberte **Test připojení** , aby se zajistilo platné připojení k vašemu virtuálnímu počítači. Po ověření připojení vyberte **Další** a spusťte test.  Po dokončení testu se zobrazí tabulka s výsledky testu (úspěch/chyba/upozornění).  Následující příklad ukazuje výsledky testu pro test virtuálního počítače se systémem Linux. 
 
-![Výsledky certifikačních testů pro bitovou kopii virtuálního počítače s Linuxem](./media/publishvm_029.png)
+![Výsledky testů certifikace pro bitovou kopii virtuálního počítače se systémem Linux](./media/publishvm_029.png)
 
-Pokud některý z testů selže, vaše image *není* certifikována. V takovém případě zkontrolujte požadavky a zprávy selhání, proveďte uvedené změny a znovu spusťte test. 
+Pokud některý z testů selže, váš obrázek *není certifikovaný.* V takovém případě zkontrolujte zprávy o požadavcích a chybách, proveďte uvedené změny a spusťte test znovu. 
 
-Po automatizovaném testu budete muset na obrazovce Dotazník poskytnout další informace o obrázku virtuálního **počítače.**  Obsahuje dvě karty, které je nutné vyplnit.  Karta **Obecné hodnocení** obsahuje otázky **true/false,** zatímco **přizpůsobení jádra** obsahuje více otázek výběru a volného tvaru.  Vyplňte otázky na obou kartách a vyberte **další**.
+Po automatizovaném testu budete muset na obrazovce **dotazníku** zadat další informace o imagi virtuálního počítače.  Obsahuje dvě karty, které je třeba dokončit.  Karta **obecné posouzení** obsahuje otázky na **true/false** , zatímco **přizpůsobení jádra** obsahuje více otázek výběru a volného tvaru.  Dokončete otázky na obou kartách a pak vyberte **Další**.
 
-![Dotazník certifikačního nástroje](./media/publishvm_030.png)
+![Dotazník nástroje certifikace](./media/publishvm_030.png)
 
-Poslední obrazovka umožňuje poskytnout další informace, jako jsou například informace o přístupu SSH pro bitovou kopii virtuálního počítače s Linuxem a vysvětlení pro všechna selhání hodnocení, pokud hledáte výjimky. 
+Poslední obrazovka vám umožní zadat další informace, například informace o přístupu SSH pro image virtuálního počítače se systémem Linux, a vysvětlení všech neúspěšných posouzení, pokud hledáte výjimky. 
 
-Nakonec klepněte na **tlačítko Generovat sestavu** a stáhněte si kromě odpovědí na dotazník také výsledky testů a soubory protokolu pro provedené testovací případy. Uložte výsledky ve stejném kontejneru jako virtuální pevné disky.
+Nakonec klikněte na tlačítko **Generovat sestavu** a Stáhněte si výsledky testů a soubory protokolu pro provedené testovací případy, a to spolu s odpověďmi na dotazník. Výsledky uložte do stejného kontejneru jako virtuální pevný disk (VHD).
 
-![Uložení výsledků certifikačních testů](./media/publishvm_031.png)
+![Uložení výsledků testů certifikace](./media/publishvm_031.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Dále [vygenerujete jednotné identifikátory prostředků (URI) pro každý virtuální pevný disk,](./cpp-get-sas-uri.md) který odešlete na trh. 
+V dalším kroku [vygenerujete identifikátor URI (Uniform Resource Identifier) pro každý virtuální pevný disk](./cpp-get-sas-uri.md) , který odešlete do webu Marketplace. 

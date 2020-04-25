@@ -1,6 +1,6 @@
 ---
-title: Kopírování a transformace dat v Azure Synapse Analytics
-description: Zjistěte, jak kopírovat data do a z Azure Synapse Analytics a transformovat data v Azure Synapse Analytics pomocí Data Factory.
+title: Kopírování a transformace dat v Azure synapse Analytics
+description: Naučte se kopírovat data do a z Azure synapse Analytics a transformovat data v Azure synapse Analytics pomocí Data Factory.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -11,79 +11,72 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 7fb1560fb9be809d816dde7dd69f1ec8afe5649f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e469a38f4730eb0f9d8debe71bde9a56dd152028
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417576"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146403"
 ---
-# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Synapse Analytics (dříve Azure SQL Data Warehouse) pomocí Azure Data Factory 
+# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování a transformace dat ve službě Azure synapse Analytics (dříve Azure SQL Data Warehouse) pomocí Azure Data Factory 
 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
-> * [Verze1](v1/data-factory-azure-sql-data-warehouse-connector.md)
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
+> * [Version1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Aktuální verze](connector-azure-sql-data-warehouse.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do Azure Synapse Analytics a pomocí toku dat k transformaci dat v Azure Data Lake Storage Gen2. Další informace o Azure Data Factory najdete v [úvodním článku](introduction.md).
-
-
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do Azure SQL Data Warehouse a použít Tok dat k transformaci dat v Azure Data Lake Storage Gen2. Další informace o Azure Data Factory najdete v [úvodním článku](introduction.md).
-
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do Azure Synapse Analytics a pomocí toku dat k transformaci dat v Azure Data Lake Storage Gen2. Další informace o Azure Data Factory najdete v [úvodním článku](introduction.md).
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do Azure synapse Analytics a jak transformovat data v Azure Data Lake Storage Gen2 pomocí toku dat. Pokud se chcete dozvědět o Azure Data Factory, přečtěte si [úvodní článek](introduction.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Tento konektor Azure Synapse Analytics je podporovaný pro následující aktivity:
+Tento konektor Azure synapse Analytics se podporuje pro následující činnosti:
 
-- [Kopírovat aktivitu](copy-activity-overview.md) s [podporovanou tabulkou matice zdroje/jímky](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou tabulkou matice zdroje/jímky](copy-activity-overview.md)
 - [Mapování toku dat](concepts-data-flow-overview.md)
-- [Vyhledávací aktivita](control-flow-lookup-activity.md)
-- [Aktivita getMetadata](control-flow-get-metadata-activity.md)
+- [Aktivita vyhledávání](control-flow-lookup-activity.md)
+- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 
-Pro aktivitu kopírování tento konektor Azure Synapse Analytics podporuje tyto funkce:
+U aktivity kopírování tento konektor Azure synapse Analytics podporuje tyto funkce:
 
-- Kopírování dat pomocí ověřování SQL a ověřování tokenů aplikace Azure Active Directory (Azure AD) pomocí instančního objektu nebo spravovaných identit pro prostředky Azure.
-- Jako zdroj načtěte data pomocí dotazu SQL nebo uložené procedury.
-- Jako jímka načtěte data pomocí [příkazu PolyBase](#use-polybase-to-load-data-into-azure-sql-data-warehouse) nebo [COPY](#use-copy-statement) (náhled) nebo hromadné ho vložení. Doporučujeme Příkaz PolyBase nebo COPY (náhled) pro lepší výkon kopírování.
+- Zkopírujte data pomocí ověřování SQL a Azure Active Directory (Azure AD) ověřování tokenu aplikace pomocí instančního objektu nebo spravovaných identit pro prostředky Azure.
+- Jako zdroj načte data pomocí dotazu SQL nebo uložené procedury.
+- Jako jímky načtěte data pomocí příkazu [Base](#use-polybase-to-load-data-into-azure-sql-data-warehouse) nebo [copy](#use-copy-statement) (Preview) nebo hromadného vložení. Pro lepší výkon kopírování doporučujeme použít příkaz Base nebo COPY (Preview).
 
 > [!IMPORTANT]
-> Pokud kopírujete data pomocí modulu Runtime integrace Azure Data Factory, nakonfigurujte [bránu firewall serveru Azure SQL,](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) aby měly služby Azure přístup k serveru.
-> Pokud kopírujete data pomocí modulu runtime integrace s vlastním hostitelem, nakonfigurujte bránu firewall serveru Azure SQL, aby byla povolena příslušná oblast IP adres. Tento rozsah zahrnuje IP adresu počítače, která se používá k připojení k Azure Synapse Analytics.
+> Pokud kopírujete data pomocí Azure Data Factory Integration Runtime, nakonfigurujte [bránu firewall serveru SQL Azure](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) , aby služby Azure mohly získat přístup k serveru.
+> Pokud kopírujete data pomocí místního prostředí Integration runtime, nakonfigurujte bránu firewall serveru SQL Azure tak, aby povolovala příslušný rozsah IP adres. Tento rozsah zahrnuje IP adresu počítače, která se používá pro připojení ke službě Azure synapse Analytics.
 
 ## <a name="get-started"></a>Začínáme
 
 > [!TIP]
-> Chcete-li dosáhnout nejlepšího výkonu, použijte PolyBase k načtení dat do Azure Synapse Analytics. [Použití PolyBase k načtení dat do části Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-sql-data-warehouse) obsahuje podrobnosti. Návod k případu použití najdete v [tématu Načtení 1 TB do Azure Synapse Analytics do 15 minut s Azure Data Factory](load-azure-sql-data-warehouse.md).
+> Abyste dosáhli nejlepšího výkonu, využijte základ k načtení dat do služby Azure synapse Analytics. Informace najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-sql-data-warehouse) . Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](load-azure-sql-data-warehouse.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech, které definují entity Datové továrny specifické pro konektor Azure Synapse Analytics.
+Následující části obsahují podrobné informace o vlastnostech, které definují Data Factory entit specifických pro konektor Azure synapse Analytics.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro propojenou službu Azure Synapse Analytics jsou podporovány následující služby:
+Pro propojenou službu Azure synapse Analytics jsou podporovány následující vlastnosti:
 
 | Vlastnost            | Popis                                                  | Požaduje se                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| type                | Vlastnost type musí být nastavena na **AzureSqlDW**.             | Ano                                                          |
-| připojovací řetězec    | Zadejte informace potřebné pro připojení k instanci Azure Synapse Analytics pro vlastnost **connectionString.** <br/>Označte toto pole jako securestring bezpečně ukládat v datové továrně. Můžete také umístit heslo/service principal key v Azure Key Vault `password` a pokud je ověřování SQL vytáhnout konfiguraci z připojovacího řetězce. Podívejte se na příklad JSON pod tabulkou a [přihlašovací údaje úložiště v](store-credentials-in-key-vault.md) článku Azure Key Vault s další podrobnosti. | Ano                                                          |
-| servicePrincipalId  | Zadejte ID klienta aplikace.                         | Ano, při použití ověřování Azure AD s instančním objektem. |
-| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano, při použití ověřování Azure AD s instančním objektem. |
-| Nájemce              | Zadejte informace o klientovi (název domény nebo ID klienta), pod kterým se aplikace nachází. Můžete načíst na jenom myši v pravém horním rohu portálu Azure. | Ano, při použití ověřování Azure AD s instančním objektem. |
-| connectVia          | [Integrační runtime,](concepts-integration-runtime.md) který se má použít k připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo runtime integrace s vlastním hostitelem (pokud vaše úložiště dat je umístěno v privátní síti). Pokud není zadán, používá výchozí Azure Integration Runtime. | Ne                                                           |
+| type                | Vlastnost Type musí být nastavená na **AzureSqlDW**.             | Ano                                                          |
+| připojovací řetězec    | Zadejte informace potřebné pro připojení ke službě Azure synapse Analytics instance pro vlastnost **ConnectionString** . <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit klíč k hlavnímu názvu hesla nebo služby a v případě, že ověřování SQL `password` vyžádá konfiguraci z připojovacího řetězce. Další podrobnosti najdete v příkladech JSON pod tabulkou a [přihlašovacími údaji pro Store v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano                                                          |
+| servicePrincipalId  | Zadejte ID klienta aplikace.                         | Ano, pokud použijete ověřování Azure AD s instančním objektem. |
+| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud použijete ověřování Azure AD s instančním objektem. |
+| tenant              | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Ano, pokud použijete ověřování Azure AD s instančním objektem. |
+| connectVia          | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne                                                           |
 
-Pro různé typy ověřování naleznete v následujících částech na požadavky a Ukázky JSON, v uvedeném pořadí:
+Pro různé typy ověřování se podívejte na následující oddíly týkající se požadavků a ukázek JSON, v uvedeném pořadí:
 
 - [Ověřování pomocí SQL](#sql-authentication)
-- Ověřování tokenů aplikace Azure AD: [Instanční objekt služby](#service-principal-authentication)
-- Ověřování tokenů aplikace Azure AD: [Spravované identity pro prostředky Azure](#managed-identity)
+- Ověřování tokenu aplikací služby Azure AD: [instanční objekt](#service-principal-authentication)
+- Ověřování tokenu aplikací Azure AD: [spravované identity pro prostředky Azure](#managed-identity)
 
 >[!TIP]
->Pokud stisknete chybu s kódem chyby jako "UserErrorFailedToConnectToSqlServer" a zprávou jako `Pooling=false` "Limit relace pro databázi je XXX a bylo dosaženo.", přidejte do připojovacího řetězce a opakujte akci.
+>Pokud jste narazili na chybu s kódem chyby jako "UserErrorFailedToConnectToSqlServer" a zprávu, jako je "omezení relace pro databázi je XXX a bylo dosaženo.", `Pooling=false` přidejte do svého připojovacího řetězce a zkuste to znovu.
 
 ### <a name="sql-authentication"></a>Ověřování pomocí SQL
 
@@ -105,7 +98,7 @@ Pro různé typy ověřování naleznete v následujících částech na požada
 }
 ```
 
-**Heslo v trezoru klíčů Azure:**
+**Heslo v Azure Key Vault:**
 
 ```json
 {
@@ -133,29 +126,29 @@ Pro různé typy ověřování naleznete v následujících částech na požada
 
 ### <a name="service-principal-authentication"></a>Ověřování instančních objektů
 
-Pokud chcete použít ověřování tokenu aplikace Azure AD založené na primárním zabezpečení služby, postupujte takto:
+Chcete-li použít ověřování pomocí tokenu aplikace služby Azure AD založené na instančním objektu, postupujte podle následujících kroků:
 
-1. **[Vytvořte aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)** z webu Azure Portal. Poznamenejte si název aplikace a následující hodnoty, které definují propojenou službu:
+1. **[Vytvořte aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)** z Azure Portal. Poznamenejte si název aplikace a následující hodnoty, které definují propojenou službu:
 
     - ID aplikace
     - Klíč aplikace
     - ID tenanta
 
-2. Pokud jste to ještě neudělali, **[zřídíte správce Služby Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** pro váš Server Azure SQL na webu Azure Portal. Správce Azure AD může být uživatel Azure AD nebo skupina Azure AD. Pokud skupině se spravovanou identitou udělíte roli správce, přeskočte kroky 3 a 4. Správce bude mít úplný přístup k databázi.
+2. Pokud jste to ještě neudělali, **[zřídí správce služby Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** pro Azure SQL server na Azure Portal. Správce Azure AD může být uživatel Azure AD nebo skupina Azure AD. Pokud skupině udělíte roli správce spravovanou identitou, přeskočte kroky 3 a 4. Správce bude mít úplný přístup k databázi.
 
-3. **[Vytvořte obsažené uživatele databáze](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** pro instanční objekt. Připojte se k datovému skladu, ze kterého nebo do kterého chcete kopírovat data pomocí nástrojů, jako je SSMS, s identitou Azure AD, která má alespoň alter oprávnění LIBOVOLNÉHO UŽIVATELE. Spusťte následující T-SQL:
+3. **[Vytvořte uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** pro instanční objekt. Připojte se k datovému skladu z nebo do kterého chcete kopírovat data pomocí nástrojů jako SSMS, s identitou Azure AD, která má alespoň změnu oprávnění uživatele. Spusťte následující příkaz T-SQL:
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Udělte zaregistrovaný objekt služby potřebná oprávnění** jako obvykle pro uživatele SQL nebo jiné uživatele. Spusťte následující kód nebo se podívejte na další možnosti [zde](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Pokud chcete použít PolyBase k načtení dat, naučte [se požadované oprávnění databáze](#required-database-permission).
+4. **Udělte instančnímu objektu potřebná oprávnění** , jako byste to udělali normálně pro uživatele SQL nebo jiné. Spusťte následující kód, nebo se [sem](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)podívejte na další možnosti. Pokud chcete k načtení dat použít základ, Projděte si [požadované oprávnění databáze](#required-database-permission).
 
     ```sql
     EXEC sp_addrolemember db_owner, [your application name];
     ```
 
-5. **Konfigurace propojené služby Azure Synapse Analytics** v Azure Data Factory.
+5. **Nakonfigurujte propojenou službu Azure synapse Analytics** v Azure Data Factory.
 
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Příklad propojené služby, který používá ověřování instančního objektu
@@ -184,27 +177,27 @@ Pokud chcete použít ověřování tokenu aplikace Azure AD založené na prim�
 
 ### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>Spravované identity pro ověřování prostředků Azure
 
-Továrna dat může být přidružena ke [spravované identitě pro prostředky Azure,](data-factory-service-identity.md) která představuje konkrétní továrnu. Tuto spravovanou identitu můžete použít pro ověřování Azure Synapse Analytics. Určená továrna může přistupovat k datům z nebo do datového skladu a kopírovat do nich pomocí této identity.
+Datová továrna může být přidružená ke [spravované identitě pro prostředky Azure](data-factory-service-identity.md) , které představují konkrétní továrnu. Tuto spravovanou identitu můžete použít pro ověřování Azure synapse Analytics. Určená továrna má přístup k datovému skladu a jejich kopírování pomocí této identity.
 
-Chcete-li použít ověřování spravované identity, postupujte takto:
+Pokud chcete použít spravované ověřování identity, postupujte podle těchto kroků:
 
-1. Pokud jste to ještě neudělali, **[zřídíte správce Služby Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** pro váš Server Azure SQL na webu Azure Portal. Správce Azure AD může být uživatel Azure AD nebo skupina Azure AD. Pokud skupině se spravovanou identitou udělíte roli správce, přeskočte kroky 3 a 4. Správce bude mít úplný přístup k databázi.
+1. Pokud jste to ještě neudělali, **[zřídí správce služby Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** pro Azure SQL server na Azure Portal. Správce Azure AD může být uživatel Azure AD nebo skupina Azure AD. Pokud skupině udělíte roli správce spravovanou identitou, přeskočte kroky 3 a 4. Správce bude mít úplný přístup k databázi.
 
-2. **[Vytvořte obsažené uživatele databáze](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** pro identitu spravovanou datovou továrnou. Připojte se k datovému skladu, ze kterého nebo do kterého chcete kopírovat data pomocí nástrojů, jako je SSMS, s identitou Azure AD, která má alespoň alter oprávnění LIBOVOLNÉHO UŽIVATELE. Spusťte následující T-SQL. 
+2. **[Vytvořte uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** pro Data Factory spravovanou identitu. Připojte se k datovému skladu z nebo do kterého chcete kopírovat data pomocí nástrojů jako SSMS, s identitou Azure AD, která má alespoň změnu oprávnění uživatele. Spusťte následující příkaz T-SQL. 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. **Udělte datová továrna spravovaná identita potřebná oprávnění** jako obvykle pro uživatele SQL a ostatní. Spusťte následující kód nebo se podívejte na další možnosti [zde](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Pokud chcete použít PolyBase k načtení dat, naučte [se požadované oprávnění databáze](#required-database-permission).
+3. **Udělte Data Factory spravovaná identita potřebná** k tomu, aby se běžně daly dělat pro uživatele SQL a jiné. Spusťte následující kód, nebo se [sem](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)podívejte na další možnosti. Pokud chcete k načtení dat použít základ, Projděte si [požadované oprávnění databáze](#required-database-permission).
 
     ```sql
     EXEC sp_addrolemember db_owner, [your Data Factory name];
     ```
 
-5. **Konfigurace propojené služby Azure Synapse Analytics** v Azure Data Factory.
+5. **Nakonfigurujte propojenou službu Azure synapse Analytics** v Azure Data Factory.
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -224,16 +217,16 @@ Chcete-li použít ověřování spravované identity, postupujte takto:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [Datové sady.](concepts-datasets-linked-services.md) 
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . 
 
-Pro datovou sadu Azure Synapse Analytics jsou podporovány následující vlastnosti:
+Pro datovou sadu Azure synapse Analytics jsou podporovány následující vlastnosti:
 
 | Vlastnost  | Popis                                                  | Požaduje se                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | Vlastnost **type** datové sady musí být nastavena na **AzureSqlDWTable**. | Ano                         |
-| Schématu | Název schématu. |Ne pro zdroj, Ano pro umyvadlo  |
-| tabulka | Název tabulky/zobrazení. |Ne pro zdroj, Ano pro umyvadlo  |
-| tableName | Název tabulky/zobrazení se schématem. Tato vlastnost je podporována pro zpětnou kompatibilitu. Pro nové pracovní `schema` `table`vytížení, použití a . | Ne pro zdroj, Ano pro umyvadlo |
+| type      | Vlastnost **Type** datové sady musí být nastavená na **AzureSqlDWTable**. | Ano                         |
+| XSD | Název schématu. |Ne pro zdroj, Ano pro jímku  |
+| tabulka | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
+| tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a. `table` | Ne pro zdroj, Ano pro jímku |
 
 #### <a name="dataset-properties-example"></a>Příklad vlastností datové sady
 
@@ -256,21 +249,21 @@ Pro datovou sadu Azure Synapse Analytics jsou podporovány následující vlastn
 }
 ```
 
-## <a name="copy-activity-properties"></a>Kopírovat vlastnosti aktivity
+## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem a jímkou Azure Synapse Analytics.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem a jímkou Azure synapse Analytics.
 
-### <a name="azure-synapse-analytics-as-the-source"></a>Azure Synapse Analytics jako zdroj
+### <a name="azure-synapse-analytics-as-the-source"></a>Azure synapse Analytics jako zdroj
 
-Chcete-li zkopírovat data z Azure Synapse Analytics, nastavte vlastnost **type** ve zdroji Kopírovat aktivitu na **SqlDWSource**. V části Zdroj **kopírování aktivity** jsou podporovány následující vlastnosti:
+Pokud chcete kopírovat data z Azure synapse Analytics, nastavte vlastnost **typ** ve zdroji aktivity kopírování na **SqlDWSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost                     | Popis                                                  | Požaduje se |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| type                         | Vlastnost **type** zdroje Aktivity kopírování musí být nastavena na **sqldwsource**. | Ano      |
-| sqlReaderQuery               | Ke čtení dat použijte vlastní dotaz SQL. Příklad: `select * from MyTable`. | Ne       |
+| type                         | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SqlDWSource**. | Ano      |
+| sqlReaderQuery               | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `select * from MyTable`. | Ne       |
 | sqlReaderStoredProcedureName | Název uložené procedury, která čte data ze zdrojové tabulky. Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. | Ne       |
-| storedProcedureParameters    | Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou dvojice názvů nebo hodnot. Názvy a písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. | Ne       |
-| Isolationlevel | Určuje chování uzamčení transakce pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted** (výchozí), **ReadUncommitted**, **RepeatableRead**, **Serializable**, **Snímek**. Další podrobnosti naleznete v [tomto dokumentu.](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) | Ne |
+| storedProcedureParameters    | Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. | Ne       |
+| isolationLevel | Určuje chování při zamykání transakcí pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted** (default), **READUNCOMMITTED**, **RepeatableRead**, **serializovatelný**, **Snapshot**. Další podrobnosti najdete v [tomto dokumentu](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) . | Ne |
 
 **Příklad: použití dotazu SQL**
 
@@ -340,7 +333,7 @@ Chcete-li zkopírovat data z Azure Synapse Analytics, nastavte vlastnost **type*
 ]
 ```
 
-**Vzorek uložená procedura:**
+**Ukázková uložená procedura:**
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -359,34 +352,34 @@ END
 GO
 ```
 
-### <a name="azure-synapse-analytics-as-sink"></a><a name="azure-sql-data-warehouse-as-sink"></a>Azure Synapse Analytics jako umyvadlo
+### <a name="azure-synapse-analytics-as-sink"></a><a name="azure-sql-data-warehouse-as-sink"></a>Azure synapse Analytics jako jímku
 
-Azure Data Factory podporuje tři způsoby načítání dat do datového skladu SQL.
+Azure Data Factory podporuje tři způsoby, jak načíst data do SQL Data Warehouse.
 
 ![Možnosti kopírování jímky SQL DW](./media/connector-azure-sql-data-warehouse/sql-dw-sink-copy-options.png)
 
-- [Použít polybase](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 
-- [Použít příkaz COPY (náhled)](#use-copy-statement)
-- Použití hromadné vložky
+- [Použít základ](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 
+- [Použít příkaz COPY (Preview)](#use-copy-statement)
+- Použít hromadné vložení
 
-Nejrychlejší a nejškálovatelnější způsob, jak načíst data je prostřednictvím [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) nebo [COPY prohlášení](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (náhled).
+Nejrychlejší a nejškálovatelný způsob, jak načíst data, je prostřednictvím [základny](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) nebo [příkazu copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (Preview).
 
-Chcete-li zkopírovat data do datového skladu Azure SQL, nastavte typ jímky v okně Kopírovat aktivitu do **aplikace SqlDWSink**. V části **Jímka** aktivity kopírování jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data do Azure SQL Data Warehouse, nastavte typ jímky v aktivitě kopírování na **SqlDWSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost          | Popis                                                  | Požaduje se                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| type              | Vlastnost **type** jímky aktivity kopírování musí být nastavena na **sqldwsink**. | Ano                                           |
-| allowPolyBase     | Označuje, zda se má použít PolyBase k načtení dat do datového skladu SQL. `allowCopyCommand`a `allowPolyBase` nemůže být obojí pravdivé. <br/><br/>Najdete [v článku Použití PolyBase k načtení dat do](#use-polybase-to-load-data-into-azure-sql-data-warehouse) oddílu Azure SQL Data Warehouse pro omezení a podrobnosti.<br/><br/>Povolené hodnoty jsou **True** a **False** (výchozí). | Ne.<br/>Použít při použití PolyBase.     |
-| polyBaseSettings  | Skupina vlastností, které lze `allowPolybase` zadat, pokud je vlastnost nastavena na **hodnotu true**. | Ne.<br/>Použít při použití PolyBase. |
-| allowCopyCommand | Označuje, zda se má použít [příkaz COPY](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview) k načtení dat do datového skladu SQL. `allowCopyCommand`a `allowPolyBase` nemůže být obojí pravdivé. <br/><br/>V článku [Použití příkazu COPY k načtení dat do](#use-copy-statement) oddílu Azure SQL Data Warehouse pro omezení a podrobnosti.<br/><br/>Povolené hodnoty jsou **True** a **False** (výchozí). | Ne.<br>Použít při použití COPY. |
-| copyCommandSettings | Skupina vlastností, které lze `allowCopyCommand` zadat, když je vlastnost nastavena na hodnotu TRUE. | Ne.<br/>Použít při použití COPY. |
-| writeBatchSize    | Počet řádků, které mají být vloženy do tabulky SQL **na dávku**.<br/><br/>Povolená hodnota je **celé číslo** (počet řádků). Ve výchozím nastavení Data Factory dynamicky určuje příslušnou velikost dávky na základě velikosti řádku. | Ne.<br/>Použít při použití hromadné vložky.     |
-| writeBatchTimeout | Počkejte čas, než bude operace dávkového vložení dokončena, než bude časový režim ukončen.<br/><br/>Povolená hodnota je **timespan**. Příklad: "00:30:00" (30 minut). | Ne.<br/>Použít při použití hromadné vložky.        |
-| preCopyScript     | Zadejte dotaz SQL pro kopírování aktivity spustit před zápisem dat do Datového skladu Azure SQL v každém spuštění. Pomocí této vlastnosti vyčistit přednačtená data. | Ne                                            |
-| tableOption | Určuje, zda se má automaticky vytvořit tabulka jímky, pokud neexistuje na základě zdrojového schématu. Automatické vytváření tabulek není podporováno, pokud je fázovaná kopie nakonfigurována v aktivitě kopírování. Povolené hodnoty `none` jsou: `autoCreate`(výchozí), . |Ne |
-| disableMetricsCollection | Data Factory shromažďuje metriky, jako je NAPŘÍKLAD SQL Data Warehouse DWU pro optimalizaci výkonu kopírování a doporučení. Pokud se obáváte tohoto `true` chování, zadejte jej vypnout. | Ne (výchozí `false`hodnota je ) |
+| type              | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **SqlDWSink**. | Ano                                           |
+| allowPolyBase     | Označuje, zda se má k načtení dat do SQL Data Warehouse použít základ. `allowCopyCommand`a `allowPolyBase` nemůže být současně true. <br/><br/>Omezení a podrobnosti najdete v tématu [použití základu k načtení dat do Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) části.<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | Ne.<br/>Platí při použití základny.     |
+| polyBaseSettings  | Skupina vlastností, které lze zadat, pokud je `allowPolybase` vlastnost nastavena na **hodnotu true**. | Ne.<br/>Platí při použití základny. |
+| allowCopyCommand | Označuje, zda se má při načítání dat do SQL Data Warehouse použít [příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (Preview). `allowCopyCommand`a `allowPolyBase` nemůže být současně true. <br/><br/>Omezení a podrobnosti najdete v tématu [použití příkazu copy k načtení dat do Azure SQL Data Warehouse](#use-copy-statement) části.<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | Ne.<br>Použijte při použití kopírování. |
+| copyCommandSettings | Skupina vlastností, které lze zadat, pokud `allowCopyCommand` je vlastnost nastavena na hodnotu true. | Ne.<br/>Použijte při použití kopírování. |
+| writeBatchSize    | Počet řádků, které mají být vloženy do tabulky SQL **na dávku**.<br/><br/>Povolená hodnota je **Integer** (počet řádků). Ve výchozím nastavení Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku. | Ne.<br/>Platí při použití hromadného vložení.     |
+| writeBatchTimeout | Počkejte, než se operace dávkového vložení dokončí, než vyprší časový limit.<br/><br/>Povolená hodnota je **TimeSpan**. Příklad: "00:30:00" (30 minut). | Ne.<br/>Platí při použití hromadného vložení.        |
+| preCopyScript     | Zadejte dotaz SQL pro aktivitu kopírování, která se spustí před zápisem dat do Azure SQL Data Warehouse při každém spuštění. Tato vlastnost slouží k vyčištění předem načtených dat. | Ne                                            |
+| tableOption | Určuje, jestli se má automaticky vytvořit tabulka jímky, pokud na základě schématu zdroje neexistuje. Vytvoření automatické tabulky není podporováno, je-li v aktivitě kopírování konfigurována Příprava kopie. Povolené hodnoty jsou: `none` (výchozí), `autoCreate`. |Ne |
+| disableMetricsCollection | Data Factory shromažďuje metriky, jako je například SQL Data Warehouse DWU, pro optimalizaci výkonu a doporučení pro kopírování. Pokud se s tímto chováním obáváte, `true` určete, jestli ho chcete vypnout. | Ne (výchozí nastavení `false`je) |
 
-#### <a name="sql-data-warehouse-sink-example"></a>Příklad jímky datového skladu SQL
+#### <a name="sql-data-warehouse-sink-example"></a>Příklad jímky SQL Data Warehouse
 
 ```json
 "sink": {
@@ -402,61 +395,61 @@ Chcete-li zkopírovat data do datového skladu Azure SQL, nastavte typ jímky v 
 }
 ```
 
-## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Použití PolyBase k načtení dat do datového skladu Azure SQL
+## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Použít základ k načtení dat do Azure SQL Data Warehouse
 
-Použití [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) je efektivní způsob, jak načíst velké množství dat do Azure Synapse Analytics s vysokou propustností. Uvidíte velký zisk v propustnosti pomocí PolyBase namísto výchozího mechanismu BULKINSERT. Návod k případu použití najdete v tématu [načtení 1 TB do Azure Synapse Analytics](v1/data-factory-load-sql-data-warehouse.md).
+Použití [základny](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) je účinný způsob, jak načíst velké množství dat do Azure synapse Analytics s vysokou propustností. Místo výchozího mechanismu BULKINSERT se zobrazí velký nárůst propustnosti pomocí základu. Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics](v1/data-factory-load-sql-data-warehouse.md).
 
-* Pokud jsou vaše zdrojová data v **objektech Blob Azure, Azure Data Lake Storage Gen1 nebo Azure Data Lake Storage Gen2**a **formát je kompatibilní s PolyBase**, můžete použít aktivitu kopírování k přímému vyvolání PolyBase a nechat Azure SQL Data Warehouse vyžádat data ze zdroje. Podrobnosti naleznete **[v tématu Přímá kopie pomocí PolyBase](#direct-copy-by-using-polybase)**.
-* Pokud úložiště a formát zdrojových dat není původně podporováno službou PolyBase, použijte místo toho **[fázovanou kopii pomocí funkce PolyBase.](#staged-copy-by-using-polybase)** Funkce fázované kopie také poskytuje lepší propustnost. Automaticky převede data do formátu kompatibilního s PolyBase, uloží data v úložišti objektů Blob Azure.
+* Pokud jsou zdrojová data ve **službě Azure Blob, Azure Data Lake Storage Gen1 nebo Azure Data Lake Storage Gen2**a **formát je**standardně kompatibilní, můžete k přímému vyvolání základny použít aktivitu kopírování, která umožňuje Azure SQL Data Warehouse načíst data ze zdroje. Podrobnosti najdete v tématu **[Přímá kopie pomocí základu](#direct-copy-by-using-polybase)**.
+* Pokud se vaše zdrojové úložiště dat a formát v základu nepodporují, použijte místo toho funkci **[dvoufázové kopie pomocí základní](#staged-copy-by-using-polybase)** funkce. Funkce dvoufázové kopírování nabízí také lepší propustnost. Automaticky převede data do formátu kompatibilního se standardem, uloží data do úložiště objektů BLOB v Azure. potom zavolá základnu, aby načetla data do SQL Data Warehouse.
 
 >[!TIP]
->Další informace o [doporučených postupech pro používání služby PolyBase](#best-practices-for-using-polybase).
+>Přečtěte si další informace o [osvědčených postupech pro použití základny](#best-practices-for-using-polybase).
 
-V části Aktivita kopírování `polyBaseSettings` jsou podporována následující nastavení PolyBase:
+V rámci `polyBaseSettings` aktivity kopírování jsou podporovány následující základní nastavení:
 
 | Vlastnost          | Popis                                                  | Požaduje se                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| rejectValue       | Určuje počet nebo procento řádků, které lze odmítnout před selháním dotazu.<br/><br/>Další informace o možnostech odmítnutí polyBase naleznete v části Argumenty v části [CREATE EXTERNAL TABLE (Transact-SQL).](https://msdn.microsoft.com/library/dn935021.aspx) <br/><br/>Povolené hodnoty jsou 0 (výchozí), 1, 2 atd. | Ne                                            |
-| rejectType        | Určuje, zda je možnost **rejectValue** hodnotou literálu nebo procentem.<br/><br/>Povolené hodnoty jsou **Hodnota** (výchozí) a **Procento**. | Ne                                            |
-| rejectSampleValue | Určuje počet řádků, které mají být načteny před přepočtem PolyBase procento odmítnutých řádků.<br/><br/>Povolené hodnoty jsou 1, 2 atd. | Ano, pokud **rejectType** je **procento**. |
-| useTypeDefault    | Určuje, jak zpracovat chybějící hodnoty v oddělených textových souborech, když PolyBase načte data z textového souboru.<br/><br/>Další informace o této vlastnosti naleznete v části Argumenty v [části CREATE EXTERNAL FILE FORMAT (Transact-SQL).](https://msdn.microsoft.com/library/dn935026.aspx)<br/><br/>Povolené hodnoty jsou **True** a **False** (výchozí).<br><br> | Ne                                            |
+| rejectValue       | Určuje počet nebo procento řádků, které lze odmítnout před tím, než se dotaz nezdařil.<br/><br/>Další informace o možnostech odmítnutí základní třídy najdete v oddílu argumenty v tématu [vytvoření externí tabulky (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx). <br/><br/>Povolené hodnoty jsou 0 (výchozí), 1, 2 atd. | Ne                                            |
+| rejectType        | Určuje, zda je možnost **rejectValue** hodnotou literálu nebo procentem.<br/><br/>Povolené hodnoty jsou **hodnota** (výchozí) a **procento**. | Ne                                            |
+| Rejecttype rejectsamplevalue | Určuje počet řádků, které se mají načíst před tím, než základ přepočítá procento odmítnutých řádků.<br/><br/>Povolené hodnoty jsou 1, 2 atd. | Ano, pokud je **rejectType** **procent**. |
+| useTypeDefault    | Určuje, jak se mají zpracovat chybějící hodnoty v textových souborech s oddělovači, když základ dat načte data z textového souboru.<br/><br/>Přečtěte si další informace o této vlastnosti z oddílu argumenty v tématu [Create External File Format (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí).<br><br> | Ne                                            |
 
-### <a name="direct-copy-by-using-polybase"></a>Přímá kopie pomocí PolyBase
+### <a name="direct-copy-by-using-polybase"></a>Přímá kopie pomocí základu
 
-SQL Data Warehouse PolyBase přímo podporuje Azure Blob, Azure Data Lake Storage Gen1 a Azure Data Lake Storage Gen2. Pokud vaše zdrojová data splňují kritéria popsaná v této části, použijte PolyBase ke kopírování přímo ze zdrojového úložiště dat do Azure Synapse Analytics. V opačném případě použijte [fázovanou kopii pomocí polybase](#staged-copy-by-using-polybase).
+SQL Data Warehouse základna podporuje přímo Azure Blob, Azure Data Lake Storage Gen1 a Azure Data Lake Storage Gen2. Pokud zdrojová data splňují kritéria popsaná v této části, použijte základnu pro kopírování přímo ze zdrojového úložiště dat do služby Azure synapse Analytics. V opačném případě použijte [dvoufázové kopírování pomocí základny](#staged-copy-by-using-polybase).
 
 > [!TIP]
-> Chcete-li efektivně kopírovat data do SQL Data Warehouse, další informace z [Azure Data Factory je ještě jednodušší a pohodlnější odhalit poznatky z dat při použití Data Lake Store s SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
+> Pokud chcete data efektivně kopírovat SQL Data Warehouse, přečtěte si další informace z [Azure Data Factory díky tomu je ještě snazší a pohodlnější získat poznatky z dat při použití Data Lake Store se SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
 
-Pokud nejsou splněny požadavky, Azure Data Factory zkontroluje nastavení a automaticky přejde zpět do bulkinsert mechanismus pro přesun dat.
+Pokud požadavky nejsou splněné, Azure Data Factory zkontroluje nastavení a automaticky se vrátí k BULKINSERT mechanismu přesunu dat.
 
 1. **Zdrojová propojená služba** je s následujícími typy a metodami ověřování:
 
-    | Podporovaný typ úložiště zdrojových dat                             | Podporovaný typ ověřování zdroje                        |
+    | Typ podporovaného zdrojového úložiště dat                             | Typ podporovaného ověřování zdroje                        |
     | :----------------------------------------------------------- | :---------------------------------------------------------- |
-    | [Azure Blob](connector-azure-blob-storage.md)                | Ověřování pomocí klíče účtu, ověřování spravované identity |
+    | [Azure Blob](connector-azure-blob-storage.md)                | Ověřování klíčů účtu, ověřování spravované identity |
     | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | Ověřování instančních objektů                            |
-    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Ověřování pomocí klíče účtu, ověřování spravované identity |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Ověřování klíčů účtu, ověřování spravované identity |
 
     >[!IMPORTANT]
-    >Pokud je vaše Azure Storage nakonfigurovaná s koncovým bodem služby Virtuální sítě, musíte použít spravované ověřování identity – přečtěte si [odkaz dopad používání koncových bodů služby Virtuální sítě s úložištěm Azure](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Seznamte se s požadovanými konfiguracemi v Datové továrně z [Azure Blob – spravované ověřování identity](connector-azure-blob-storage.md#managed-identity) a Azure Data Lake Storage Gen2 – část [ověřování identity spravované.](connector-azure-data-lake-storage.md#managed-identity)
+    >Pokud je vaše Azure Storage nakonfigurovaná pomocí koncového bodu služby virtuální sítě, musíte použít spravované ověřování identity – Přečtěte si, [Jaký je dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Přečtěte si o požadovaných konfiguracích v Data Factory z oddílu [ověřování identity spravovaného pomocí objektů BLOB v Azure](connector-azure-blob-storage.md#managed-identity) a v části [ověřování identity spravované Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
 
-2. **Zdrojový formát dat** je z **parket**, **ORC**nebo **oddělovače textu**, s následujícími konfiguracemi:
+2. **Zdrojový formát dat** je **Parquet**, **ORC**nebo **text s oddělovači**, s následujícími konfiguracemi:
 
-   1. Cesta ke složce neobsahuje filtr se zástupnými symboly.
-   2. Název souboru je prázdný nebo odkazuje na jeden soubor. Pokud zadáte název souboru se zástupnými symboly v aktivitě kopírování, může být `*` pouze nebo `*.*`.
-   3. `rowDelimiter`je **výchozí ,** **\n**, **\r\n**nebo **\r**.
-   4. `nullValue`je ponecháno jako výchozí nebo nastaveno `treatEmptyAsNull` na prázdný **řetězec** (""), a je ponecháno jako výchozí nebo nastaveno na hodnotu true.
-   5. `encodingName`je ponecháno jako výchozí nebo nastaveno na **utf-8**.
-   6. `quoteChar`, `escapeChar`a `skipLineCount` nejsou zadány. Podpora podpory PolyBase přeskakuje `firstRowAsHeader` řádek záhlaví, který lze konfigurovat jako v adf.
-   7. `compression`nemůže být **žádná komprese**, **GZip**nebo **Deflate**.
+   1. Cesta ke složce neobsahuje filtr zástupných znaků.
+   2. Název souboru je prázdný nebo odkazuje na jeden soubor. Pokud v aktivitě kopírování zadáte název souboru se zástupnými znaky `*` , `*.*`může to být pouze nebo.
+   3. `rowDelimiter`je **Výchozí hodnota**, **\n**, **\r\n**nebo **\r**.
+   4. `nullValue`je ponechán jako výchozí nebo nastaven na **prázdný řetězec** ("") a `treatEmptyAsNull` je ponechán jako výchozí nebo nastaven na hodnotu true.
+   5. `encodingName`je ponechán jako výchozí nebo nastavený na **UTF-8**.
+   6. `quoteChar`, `escapeChar`a `skipLineCount` nejsou zadány. Základní podpora – přeskočit řádek záhlaví, který se dá nakonfigurovat jako `firstRowAsHeader` v ADF.
+   7. `compression`nemůže být **žádná komprese**, **gzip**nebo **Deflate**.
 
-3. Pokud je zdrojem `recursive` složka, musí být aktivita kopírování nastavena na hodnotu true.
+3. Pokud je zdrojem složka, musí být `recursive` v aktivitě kopírování nastavena hodnota true (pravda).
 
-4. `wildcardFolderPath`, `wildcardFilename` `modifiedDateTimeStart`, `modifiedDateTimeEnd` `additionalColumns` , a nejsou zadány.
+4. `wildcardFolderPath`nejsou `wildcardFilename`zadány `modifiedDateTimeEnd` , `additionalColumns` , `modifiedDateTimeStart`a.
 
 >[!NOTE]
->Pokud je zdrojem složka, poznámka PolyBase načte soubory ze složky a všech jejích podsložek a nenačte data ze souborů, pro které název souboru začíná podtržením (_) nebo tečkou (.), jak je popsáno [zde - ARGUMENT UMÍSTĚNÍ](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2).
+>Pokud je zdrojem složka, Poznámka základem načte soubory ze složky a všech jejích podsložek a nenačte data ze souborů, pro které název souboru začíná podtržítkem (_) nebo tečkou (.), jak je uvedeno [tady: argument Location](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2).
 
 ```json
 "activities":[
@@ -492,14 +485,14 @@ Pokud nejsou splněny požadavky, Azure Data Factory zkontroluje nastavení a au
 ]
 ```
 
-### <a name="staged-copy-by-using-polybase"></a>Fázovaná kopie pomocí PolyBase
+### <a name="staged-copy-by-using-polybase"></a>Příprava kopírování pomocí základu
 
-Pokud vaše zdrojová data nejsou nativně kompatibilní s PolyBase, povolte kopírování dat prostřednictvím dočasné pracovní instance úložiště objektů blob Azure (nemůže to být Azure Premium Storage). V takovém případě Azure Data Factory automaticky převede data tak, aby splňovaly požadavky na formát dat PolyBase. Pak vyvolá PolyBase načíst data do datového skladu SQL. Nakonec vyčistí vaše dočasná data z úložiště objektů blob. Podrobnosti o kopírování dat prostřednictvím instancí instancí úložiště objektů Blob Azure najdete v tématu [Staged copy.](copy-activity-performance-features.md#staged-copy)
+Pokud vaše zdrojová data nejsou nativně kompatibilní s základnu, povolte kopírování dat prostřednictvím dočasné pracovní instance služby Azure Blob Storage (nemůže to být Azure Premium Storage). V tomto případě Azure Data Factory automaticky převede data tak, aby splňovala požadavky na formát dat základu. Potom vyvolá základ k načtení dat do SQL Data Warehouse. Nakonec vymaže vaše dočasná data z úložiště objektů BLOB. Podrobnosti o kopírování dat pomocí pracovní instance úložiště objektů BLOB v Azure najdete v tématu [připravené kopírování](copy-activity-performance-features.md#staged-copy) .
 
-Chcete-li tuto funkci použít, vytvořte [propojenou službu Azure Blob Storage,](connector-azure-blob-storage.md#linked-service-properties) která odkazuje na účet úložiště Azure s dočasným úložištěm objektů blob. Pak `enableStaging` zadejte `stagingSettings` vlastnosti a aktivity kopírování, jak je znázorněno v následujícím kódu.
+Pokud chcete tuto funkci použít, vytvořte [propojenou službu azure BLOB Storage](connector-azure-blob-storage.md#linked-service-properties) , která odkazuje na účet služby Azure Storage s dočasným úložištěm objektů BLOB. Pak zadejte vlastnosti `enableStaging` a `stagingSettings` aktivity kopírování, jak je znázorněno v následujícím kódu.
 
 >[!IMPORTANT]
->Pokud je vaše pracovní Azure Storage nakonfigurovaná s koncovým bodem služby Virtuální sítě, musíte použít spravované ověřování identity – přečtěte si [odkaz dopad používání koncových bodů služby Virtuální sítě s úložištěm Azure](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Seznamte se s požadovanými konfiguracemi v Datové továrně z [Azure Blob – ověřování spravované identity](connector-azure-blob-storage.md#managed-identity).
+>Pokud je vaše pracovní Azure Storage nakonfigurovaná pomocí koncového bodu služby virtuální sítě, musíte použít spravované ověřování identity – Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Přečtěte si o požadovaných konfiguracích v Data Factory z [ověřování identity spravovaného objektem BLOB v Azure](connector-azure-blob-storage.md#managed-identity).
 
 ```json
 "activities":[
@@ -538,51 +531,51 @@ Chcete-li tuto funkci použít, vytvořte [propojenou službu Azure Blob Storage
 ]
 ```
 
-### <a name="best-practices-for-using-polybase"></a>Doporučené postupy pro používání PolyBase
+### <a name="best-practices-for-using-polybase"></a>Osvědčené postupy pro použití základu
 
-Následující části obsahují kromě těch, které jsou uvedeny v [doporučených postupech pro Azure Synapse Analytics ,](../synapse-analytics/sql/best-practices-sql-pool.md)také doporučené postupy.
+Následující části obsahují osvědčené postupy kromě těch, které jsou uvedené v článku [osvědčené postupy pro Azure synapse Analytics](../synapse-analytics/sql/best-practices-sql-pool.md).
 
-#### <a name="required-database-permission"></a>Požadované oprávnění k databázi
+#### <a name="required-database-permission"></a>Požadovaná oprávnění databáze
 
-Chcete-li použít PolyBase, uživatel, který načte data do datového skladu SQL musí mít [oprávnění "CONTROL"](https://msdn.microsoft.com/library/ms191291.aspx) v cílové databázi. Jedním ze způsobů, jak toho dosáhnout, je přidat uživatele jako člena **db_owner** role. Jak to udělat v [přehledu datového skladu SQL](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
+Chcete-li použít základnu, uživatel, který načte data do SQL Data Warehouse, musí mít v cílové databázi [oprávnění "Control"](https://msdn.microsoft.com/library/ms191291.aspx) . Jedním ze způsobů, jak toho dosáhnout, je přidání uživatele jako člena role **db_owner** . Přečtěte si, jak to udělat v [přehledu SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
 
-#### <a name="row-size-and-data-type-limits"></a>Omezení velikosti řádků a datového typu
+#### <a name="row-size-and-data-type-limits"></a>Omezení velikosti řádku a datového typu
 
-Zatížení PolyBase jsou omezena na řádky menší než 1 MB. Nelze jej použít k načtení do VARCHR(MAX), NVARCHAR(MAX) nebo VARBINARY(MAX). Další informace naleznete v tématu [omezení kapacity služby SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
+Základní zatížení je omezeno na řádky menší než 1 MB. Nedá se použít k načtení do VARCHR (MAX), NVARCHAR (MAX) nebo VARBINARY (MAX). Další informace najdete v tématu [omezení kapacity služby SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
 
-Pokud zdrojová data obsahují řádky větší než 1 MB, můžete chtít zdrojové tabulky svisle rozdělit na několik malých. Ujistěte se, že největší velikost každého řádku nepřekračuje limit. Menší tabulky pak lze načíst pomocí PolyBase a sloučeny v Azure Synapse Analytics.
+Pokud má zdrojová data řádky větší než 1 MB, možná budete chtít svisle rozdělit zdrojové tabulky na několik malých. Ujistěte se, že největší velikost každého řádku nepřekračuje limit. Menší tabulky se pak dají načíst pomocí základu a sloučí se dohromady v Azure synapse Analytics.
 
-Případně pro data s tak širokými sloupci můžete použít non-PolyBase k načtení dat pomocí adf, vypnutím nastavení "povolit PolyBase".
+Alternativně můžete pro data s takovými roztažitelnémi sloupci použít nezaloženou základnu k načtení dat pomocí automatického podavače (ADF) vypnutím nastavení "zapnout základnu".
 
-#### <a name="sql-data-warehouse-resource-class"></a>Třída prostředků datového skladu SQL
+#### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse – Třída prostředků
 
-Chcete-li dosáhnout nejlepší možné propustnost, přiřaďte větší třídu prostředků uživateli, který načte data do datového skladu SQL prostřednictvím PolyBase.
+Abyste dosáhli nejlepší možné propustnosti, přiřaďte uživateli větší třídu prostředků, která načte data do SQL Data Warehouse prostřednictvím základu.
 
-#### <a name="polybase-troubleshooting"></a>Řešení potíží s polybasem
+#### <a name="polybase-troubleshooting"></a>Řešení potíží se základem
 
-**Načítání do sloupce Desetinné číslo**
+**Načítání do desetinného sloupce**
 
-Pokud jsou zdrojová data v textovém formátu nebo jiných úložištích kompatibilních s polybase (pomocí fázované kopie a PolyBase) a obsahuje prázdnou hodnotu, která se má načíst do desítkové kolony datového skladu SQL, můžete chybovat následující chybu:
+Pokud jsou vaše zdrojová data v textovém formátu nebo v jiných nekompatibilních úložištích, která nejsou kompatibilní s primárním úložištěm (pomocí připraveného kopírování a základu), a obsahuje prázdnou hodnotu, která se má načíst do SQL Data Warehouse desetinného sloupce, může se vyrazit následující chyba:
 
 ```
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-Řešením je zrušit výběr možnosti **"Použít typ výchozí**" (jako false) v nastavení prohloubení aktivity kopírování -> PolyBase. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
-)" je nativní konfigurace PolyBase, která určuje, jak zacházet s chybějícími hodnotami v oddělených textových souborech, když PolyBase načítá data z textového souboru. 
+Řešením je zrušit výběr možnosti**použít výchozí typ**(jako false) ve jímky aktivity kopírování – > základní nastavení. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
+)" je základní nativní konfigurace, která určuje, jak se mají zpracovat chybějící hodnoty v textových souborech s oddělovači, když základ dat načte data z textového souboru. 
 
-**`tableName`v Azure Synapse Analytics**
+**`tableName`ve službě Azure synapse Analytics**
 
-V následující tabulce jsou uvedeny příklady, jak zadat vlastnost **tableName** v datové sadě JSON. Zobrazuje několik kombinací schématu a názvů tabulek.
+V následující tabulce jsou uvedeny příklady, jak zadat vlastnost **TableName** v datové sadě JSON. Zobrazuje několik kombinací názvů schémat a tabulek.
 
-| Schéma DB | Název tabulky | **název_tabulky** JSON, vlastnost               |
+| Schéma databáze | Název tabulky | **TableName** Vlastnost JSON               |
 | --------- | ---------- | ----------------------------------------- |
-| Dbo       | Mytable    | MyTable nebo dbo. MyTable nebo [dbo]. [MyTable] |
-| dbo1      | Mytable    | dbo1. MyTable nebo [dbo1]. [MyTable]          |
-| Dbo       | My.Table   | [My.Table] nebo [dbo]. [My.Table]            |
-| dbo1      | My.Table   | [dbo1]. [My.Table]                         |
+| dbo       | MyTable    | MyTable nebo dbo. MyTable nebo [dbo]. MyTable |
+| dbo1      | MyTable    | dbo1. MyTable nebo [dbo1]. MyTable          |
+| dbo       | Moje tabulka   | [My. Table] nebo [dbo]. [My. Table]            |
+| dbo1      | Moje tabulka   | [dbo1]. [My. Table]                         |
 
-Pokud se zobrazí následující chyba, problém může být hodnota, kterou jste zadali pro **vlastnost tableName.** Správný způsob zadání hodnot pro vlastnost **tableName** JSON naleznete v předchozí tabulce.
+Pokud se zobrazí následující chyba, může být problémem hodnota, kterou jste zadali pro vlastnost **TableName** . Správný způsob, jak zadat hodnoty pro vlastnost **TableName** JSON, najdete v předchozí tabulce.
 
 ```
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
@@ -590,57 +583,57 @@ Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account
 
 **Sloupce s výchozími hodnotami**
 
-V současné době funkce PolyBase v továrně dat přijímá pouze stejný počet sloupců jako v cílové tabulce. Příkladem je tabulka se čtyřmi sloupci, kde je jeden z nich definován s výchozí hodnotou. Vstupní data stále musí mít čtyři sloupce. Vstupní datová sada se třemi sloupci poskytuje chybu podobnou následující zprávě:
+V současné době funkce Base v Data Factory přijímá pouze stejný počet sloupců jako v cílové tabulce. Příkladem je tabulka se čtyřmi sloupci, kde jedna z nich je definována s výchozí hodnotou. Vstupní data stále musí mít čtyři sloupce. Vstupní datová sada se třemi sloupci poskytuje chybu podobnou této zprávě:
 
 ```
 All columns of the table must be specified in the INSERT BULK statement.
 ```
 
-Hodnota NULL je zvláštní forma výchozí hodnoty. Pokud je sloupec nullable, vstupní data v objektu blob pro tento sloupec může být prázdný. Ale nemůže chybět ze vstupní datové sady. PolyBase vloží hodnotu NULL pro chybějící hodnoty v Azure Synapse Analytics.
+Hodnota NULL je speciální forma výchozí hodnoty. Pokud sloupec může mít hodnotu null, vstupní data v objektu BLOB pro tento sloupec můžou být prázdná. Ve vstupní datové sadě ale nemůže chybět. Základní znak pro chybějící hodnoty ve službě Azure synapse Analytics vloží hodnotu NULL.
 
-## <a name="use-copy-statement-to-load-data-into-azure-sql-data-warehouse-preview"></a><a name="use-copy-statement"></a>Načtení dat do Datového skladu Azure SQL (preview) pomocí příkazu COPY
+## <a name="use-copy-statement-to-load-data-into-azure-sql-data-warehouse-preview"></a><a name="use-copy-statement"></a>Pomocí příkazu COPY načíst data do Azure SQL Data Warehouse (Preview)
 
-Příkaz SQL Data Warehouse [COPY](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview) přímo podporuje načítání dat z **objektů Blob Azure a Azure Data Lake Storage Gen2**. Pokud vaše zdrojová data splňují kritéria popsaná v této části, můžete použít příkaz COPY v ADF k načtení dat do Azure SQL Data Warehouse. Azure Data Factory zkontroluje nastavení a selže spuštění aktivity kopírování, pokud není splněna kritéria.
+[Příkaz COPY](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) SQL Data Warehouse (Preview) přímo podporuje načítání dat z **Azure Blob a Azure Data Lake Storage Gen2**. Pokud zdrojová data splňují kritéria popsaná v této části, můžete použít příkaz COPY v ADF k načtení dat do Azure SQL Data Warehouse. Azure Data Factory kontroluje nastavení a v případě, že nejsou splněná kritéria, se spustí aktivita kopírování.
 
 >[!NOTE]
->V současné době Data Factory podporuje pouze kopii z copy prohlášení kompatibilní zdroje uvedené níže.
+>V současné době Data Factory pouze podpora kopírování ze zdrojů kompatibilních se KOPÍROVÁNÍm, které jsou uvedeny níže.
 
-Příkaz Using COPY podporuje následující konfiguraci:
+Použití příkazu COPY podporuje následující konfiguraci:
 
-1. **Zdrojová propojená služba a formát** jsou s následujícími typy a metodami ověřování:
+1. **Zdrojová propojená služba a formát** mají následující typy a metody ověřování:
 
-    | Podporovaný typ úložiště zdrojových dat                             | Podporovaný formát           | Podporovaný typ ověřování zdroje                         |
+    | Typ podporovaného zdrojového úložiště dat                             | Podporovaný formát           | Typ podporovaného ověřování zdroje                         |
     | :----------------------------------------------------------- | -------------------------- | :----------------------------------------------------------- |
-    | [Azure Blob](connector-azure-blob-storage.md)                | [Oddělovač textu](format-delimited-text.md)             | Ověřování pomocí klíče účtu, ověřování podpisů se sdíleným přístupem, ověřování instančního objektu, ověřování spravované identity |
-    | &nbsp;                                                       | [Parketové](format-parquet.md)                    | Ověřování pomocí klíče účtu, ověřování podpisu sdíleného přístupu |
-    | &nbsp;                                                       | [Orc](format-orc.md)                        | Ověřování pomocí klíče účtu, ověřování podpisu sdíleného přístupu |
-    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [Oddělovač textu](format-delimited-text.md)<br/>[Parketové](format-parquet.md)<br/>[Orc](format-orc.md) | Ověřování pomocí klíče účtu, ověřování na objektu zabezpečení služby, ověřování spravované identity |
+    | [Azure Blob](connector-azure-blob-storage.md)                | [Text oddělený textem](format-delimited-text.md)             | Ověřování klíčů účtu, ověřování sdíleného přístupového podpisu, ověřování instančního objektu, ověřování spravované identity |
+    | &nbsp;                                                       | [Parquet](format-parquet.md)                    | Ověřování klíčů účtu, ověřování sdíleného přístupového podpisu |
+    | &nbsp;                                                       | [ORC](format-orc.md)                        | Ověřování klíčů účtu, ověřování sdíleného přístupového podpisu |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [Text oddělený textem](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | Ověřování klíčů účtu, ověřování instančního objektu, ověřování spravované identity |
 
     >[!IMPORTANT]
-    >Pokud je vaše Azure Storage nakonfigurovaná s koncovým bodem služby Virtuální sítě, musíte použít spravované ověřování identity – přečtěte si [odkaz dopad používání koncových bodů služby Virtuální sítě s úložištěm Azure](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Seznamte se s požadovanými konfiguracemi v Datové továrně z [Azure Blob – spravované ověřování identity](connector-azure-blob-storage.md#managed-identity) a Azure Data Lake Storage Gen2 – část [ověřování identity spravované.](connector-azure-data-lake-storage.md#managed-identity)
+    >Pokud je vaše Azure Storage nakonfigurovaná pomocí koncového bodu služby virtuální sítě, musíte použít spravované ověřování identity – Přečtěte si, [Jaký je dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Přečtěte si o požadovaných konfiguracích v Data Factory z oddílu [ověřování identity spravovaného pomocí objektů BLOB v Azure](connector-azure-blob-storage.md#managed-identity) a v části [ověřování identity spravované Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
 
 2. Nastavení formátu jsou následující:
 
-   1. Pro **parkety** `compression` : nemůže být **komprese**, **Snappy**, nebo **GZip**.
-   2. Pro **ORC** `compression` : může být žádná **komprese**, **```zlib```** nebo **Snappy**.
-   3. Pro **oddělované znění**:
-      1. `rowDelimiter`je explicitně nastavena jako **jeden znak** nebo **"\r\n**", výchozí hodnota není podporována.
-      2. `nullValue`je ponecháno jako výchozí nebo nastaveno na **prázdný řetězec** ("").
-      3. `encodingName`je ponecháno jako výchozí nebo nastaveno na **utf-8 nebo utf-16**.
-      4. `escapeChar`musí být `quoteChar`stejný jako , a není prázdný.
-      5. `skipLineCount`je ponecháno jako výchozí nebo nastaveno na hodnotu 0.
-      6. `compression`nemůže být **komprese** nebo **GZip**.
+   1. Pro **Parquet**: `compression` nemůže být **žádná komprese**, **přichycení**nebo **gzip**.
+   2. Pro **ORC**: `compression` nemůže být **žádná komprese**, **```zlib```** nebo **přichycení**.
+   3. Pro **text s oddělovačem**:
+      1. `rowDelimiter`je explicitně nastaveno jako **jeden znak** nebo "**\r\n**", výchozí hodnota není podporována.
+      2. `nullValue`je ponechán jako výchozí nebo nastaven na **prázdný řetězec** ("").
+      3. `encodingName`je ponechán jako výchozí nebo nastavený na **UTF-8 nebo UTF-16**.
+      4. `escapeChar`musí být stejný jako `quoteChar`a není prázdný.
+      5. `skipLineCount`je ponechán jako výchozí nebo nastavený na 0.
+      6. `compression`nemůže být **žádná komprese** ani **gzip**.
 
-3. Pokud je zdrojem `recursive` složka, musí být aktivita kopírování nastavena na hodnotu true.
+3. Pokud je zdrojem složka, musí být `recursive` v aktivitě kopírování nastavena hodnota true (pravda).
 
-4. `wildcardFolderPath`, `wildcardFilename` `modifiedDateTimeStart`, `modifiedDateTimeEnd` `additionalColumns` , a nejsou zadány.
+4. `wildcardFolderPath`nejsou `wildcardFilename`zadány `modifiedDateTimeEnd` , `additionalColumns` , `modifiedDateTimeStart`a.
 
-V části `allowCopyCommand` aktivita kopírování jsou podporována následující nastavení příkazu COPY:
+V části `allowCopyCommand` aktivita kopírování jsou podporovány následující nastavení příkazu copy:
 
 | Vlastnost          | Popis                                                  | Požaduje se                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| výchozí hodnoty | Určuje výchozí hodnoty pro každý cílový sloupec v SQL DW.  Výchozí hodnoty ve vlastnosti přepíší výchozí omezení nastavené v datovém skladu a sloupec identity nemůže mít výchozí hodnotu. | Ne |
-| additionalOptions | Další možnosti, které budou předány příkazu SQL DW COPY přímo v klauzuli "With" v [příkazu COPY](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Uveďte hodnotu podle potřeby zarovnat s požadavky příkazu COPY. | Ne |
+| defaultValues – výchozí | Určuje výchozí hodnoty pro každý cílový sloupec v SQL DW.  Výchozí hodnoty ve vlastnosti přepíší výchozí sadu omezení v datovém skladu a sloupec identity nemůže mít výchozí hodnotu. | Ne |
+| additionalOptions | Další možnosti, které budou předány příkazu kopírování SQL DW přímo v klauzuli WITH v [příkazu copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Zarovnejte hodnotu podle potřeby, aby odpovídala požadavkům příkazu COPY. | Ne |
 
 ```json
 "activities":[
@@ -690,36 +683,36 @@ V části `allowCopyCommand` aktivita kopírování jsou podporována následuj�
 ```
 
 
-## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
-Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="getmetadata-activity-properties"></a>Vlastnosti aktivity GetMetadata
 
-Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu GetMetadata](control-flow-get-metadata-activity.md) 
+Pokud se chcete dozvědět víc o vlastnostech, podívejte se na [aktivitu GetMetadata](control-flow-get-metadata-activity.md) . 
 
-## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>Mapování datových typů pro Datový sklad Azure SQL
+## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>Mapování datových typů pro Azure SQL Data Warehouse
 
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 
-Při transformaci dat v toku dat mapování můžete číst a zapisovat do tabulek z Azure Synapse Analytics. Další informace naleznete v [transformaci zdroje](data-flow-source.md) a [jímce transformace](data-flow-sink.md) v mapování datových toků.
+Při transformaci dat v toku mapování dat můžete číst a zapisovat do tabulek z Azure synapse Analytics. Další informace najdete v tématu transformace [zdroje](data-flow-source.md) a [transformace jímky](data-flow-sink.md) v tématu mapování toků dat.
 
 ### <a name="source-transformation"></a>Transformace zdroje
 
-Nastavení specifická pro Azure Synapse Analytics jsou k dispozici na kartě **Možnosti zdroje** v transformaci zdroje. 
+Nastavení specifická pro Azure synapse Analytics jsou k dispozici na kartě **zdrojové možnosti** zdrojové transformace. 
 
-**Vstup:** Vyberte, zda navedete zdroj ```Select * from <table-name>```na tabulku (ekvivalentní) nebo zadáte vlastní dotaz SQL.
+**Vstup:** Vyberte, zda se má zdroj nasměrovat v tabulce ( ```Select * from <table-name>```odpovídající hodnotě), nebo zadejte vlastní dotaz SQL.
 
-**Dotaz**: Pokud ve vstupním poli vyberete dotaz, zadejte pro zdroj dotaz SQL. Toto nastavení přepíše všechny tabulky, které jste zvolili v datové sadě. **Klauzule Order By** zde nejsou podporovány, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelem definované funkce tabulky. **select * z udfGetData()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat. Použití dotazů je také skvělý způsob, jak snížit řádky pro testování nebo pro vyhledávání. 
+**Dotaz**: Pokud ve vstupním poli vyberete možnost dotaz, zadejte pro zdroj dotaz SQL. Toto nastavení potlačí všechny tabulky, které jste vybrali v datové sadě. Klauzule **ORDER by** nejsou tady podporované, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat. Použití dotazů je také skvělým způsobem, jak omezit řádky pro testování nebo pro vyhledávání. 
 
 * Příklad SQL:```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Velikost dávky**: Zadejte velikost dávky pro velké datové bloky do čtení. V datových tocích použije ADF toto nastavení k nastavení sloupcového ukládání do mezipaměti spark. Toto je pole možností, které bude používat výchozí hodnoty Spark, pokud zůstane prázdné.
+**Velikost dávky**: zadejte velikost dávky pro velké objemy dat v čtení. V datových tocích bude ADF pomocí tohoto nastavení nastavit sloupcovou mezipaměť Spark. Toto je pole možností, které použije výchozí hodnoty Sparku, pokud je ponecháno prázdné.
 
-**Úroveň izolace**: Výchozí hodnota pro zdroje SQL v toku dat mapování je přečtena nezávazně. Zde můžete změnit úroveň izolace na jednu z těchto hodnot:
-* Přečtěte si potvrzené
-* Číst nesvěřené
-* Opakovatelné čtení
+**Úroveň izolace**: ve výchozím nastavení pro zdroje SQL v toku dat mapování je čtení nepotvrzené. Úroveň izolace můžete změnit tady na jednu z těchto hodnot:
+* Čtení potvrzeno
+* Čtení nepotvrzených
+* Opakované čtení
 * Serializovatelný
 * Žádné (ignorovat úroveň izolace)
 
@@ -727,59 +720,59 @@ Nastavení specifická pro Azure Synapse Analytics jsou k dispozici na kartě **
 
 ### <a name="sink-transformation"></a>Transformace jímky
 
-Nastavení specifická pro Azure Synapse Analytics jsou k dispozici na kartě **Nastavení** transformace jímky.
+Nastavení specifická pro Azure synapse Analytics jsou k dispozici na kartě **Nastavení** transformace jímky.
 
-**Metoda aktualizace:** Určuje, jaké operace jsou povoleny v cílové masce databáze. Ve výchozím nastavení je povolit pouze vložení. Chcete-li aktualizovat, upsert nebo odstranit řádky, je nutné změnit řádek transformace označit řádky pro tyto akce. Pro aktualizace, upserts a odstraní, klíčový sloupec nebo sloupce musí být nastavena k určení, který řádek změnit.
+**Metoda aktualizace:** Určuje, jaké operace jsou pro cíl databáze povolené. Ve výchozím nastavení je povolen pouze vkládání. Chcete-li aktualizovat, Upsert nebo odstranit řádky, je pro označení řádků pro tyto akce nutná transformace ALTER Row. V případě aktualizací upsertuje a DELETE musí být klíčový sloupec nebo sloupce nastaveny k určení, který řádek má být změněn.
 
-**Akce tabulky:** Určuje, zda chcete znovu vytvořit nebo odebrat všechny řádky z cílové tabulky před zápisem.
-* Žádné: V tabulce nebude provedena žádná akce.
-* Znovu: Tabulka bude vynechána a znovu vytvořena. Povinné při dynamickém vytváření nové tabulky.
-* Zkrátit: Všechny řádky z cílové tabulky budou odebrány.
+**Akce tabulky:** Určuje, zda mají být před zápisem znovu vytvořeny nebo odebrány všechny řádky z cílové tabulky.
+* Žádné: v tabulce se neprovede žádná akce.
+* Znovu vytvořit: tabulka se vynechá a znovu vytvoří. Požadováno při dynamickém vytváření nové tabulky.
+* Zkrátit: všechny řádky z cílové tabulky se odeberou.
 
-**Povolit pracovní:** Určuje, zda se má používat [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15) při zápisu do Azure Synapse Analytics.
+**Povolit přípravu:** Určuje, jestli se má při zápisu do Azure synapse Analytics použít [základ](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15) .
 
-**Velikost dávky**: Určuje, kolik řádků se zapisuje v každém bloku. Větší dávkové velikosti zlepšují optimalizaci komprese a paměti, ale při ukládání dat do mezipaměti riskují výjimky z paměti.
+**Velikost dávky**: Určuje, kolik řádků je v jednotlivých intervalech zapisováno. Větší velikosti dávek zlepšují kompresi a optimalizaci paměti, ale při ukládání dat do mezipaměti riskuje výjimky z paměti.
 
-**Skripty před a po SQL:** Zadejte víceřádkové skripty SQL, které budou spuštěny před zápisem (předběžného zpracování) a po zápisu dat (následného zpracování) do databáze Dřezu.
+**Skripty před a po SQL**: zadejte víceřádkové skripty SQL, které se spustí před (před zpracováním) a po (po zpracování) se zapisují do databáze jímky.
 
-![skripty pro zpracování SQL před a po](media/data-flow/prepost1.png "Skripty pro zpracování SQL")
+![skripty pro zpracování před a po SQL](media/data-flow/prepost1.png "Skripty pro zpracování SQL")
 
-## <a name="data-type-mapping-for-azure-synapse-analytics"></a>Mapování datových typů pro Azure Synapse Analytics
+## <a name="data-type-mapping-for-azure-synapse-analytics"></a>Mapování datových typů pro Azure synapse Analytics
 
-Když kopírujete data z Azure Synapse Analytics nebo do ní, použijí se z datových typů Azure Synapse Analytics následující mapování do dočasných datových typů Azure Data Factory. Podívejte se na schéma a mapování datových typů se [dozvíte,](copy-activity-schema-and-type-mapping.md) jak aktivita kopírování mapuje zdrojové schéma a datový typ do jímky.
+Když kopírujete data z nebo do služby Azure synapse Analytics, používají se následující mapování z datových typů Azure synapse Analytics k Azure Data Factory dočasných datových typů. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ do jímky, najdete v tématu [mapování typů schématu a dat](copy-activity-schema-and-type-mapping.md) .
 
 >[!TIP]
->Podívejte se na [datové typy tabulky v článku Azure Synapse Analytics](../synapse-analytics/sql/develop-tables-data-types.md) o datových typech podporovaných SQL DW a o zástupných řešeních pro nepodporované datové typy.
+>V článku věnovaném [datovým typům tabulky v Azure synapse Analytics](../synapse-analytics/sql/develop-tables-data-types.md) najdete datové typy podporované SQL DW a alternativní řešení pro nepodporované.
 
-| Datový typ Azure Synapse Analytics    | Dočasný datový typ datové továrny |
+| Datový typ Azure synapse Analytics    | Data Factory pomocný datový typ |
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
-| binární                                | Bajt[]                         |
+| binární                                | Byte []                         |
 | bitové                                   | Logická hodnota                        |
-| char                                  | Řetězec, Znak[]                 |
+| char                                  | Řetězec, znak []                 |
 | date                                  | DateTime                       |
 | Datum a čas                              | DateTime                       |
 | datetime2                             | DateTime                       |
-| Datetimeoffset                        | DateTimeOffset                 |
+| DateTimeOffset                        | DateTimeOffset                 |
 | Desetinné číslo                               | Desetinné číslo                        |
-| ATRIBUT FILESTREAM (varbinary(max)) | Bajt[]                         |
+| Atribut FILESTREAM (varbinary (max)) | Byte []                         |
 | Plovoucí desetinná čárka                                 | Double                         |
-| image                                 | Bajt[]                         |
+| image                                 | Byte []                         |
 | int                                   | Int32                          |
-| Peníze                                 | Desetinné číslo                        |
-| Nchar                                 | Řetězec, Znak[]                 |
+| papír                                 | Desetinné číslo                        |
+| nchar                                 | Řetězec, znak []                 |
 | numerické                               | Desetinné číslo                        |
-| nvarchar                              | Řetězec, Znak[]                 |
-| reálná                                  | Single                         |
-| Rowversion                            | Bajt[]                         |
-| Smalldatetime                         | DateTime                       |
+| nvarchar                              | Řetězec, znak []                 |
+| real                                  | Single                         |
+| rowversion                            | Byte []                         |
+| smalldatetime                         | DateTime                       |
 | smallint                              | Int16                          |
-| Smallmoney                            | Desetinné číslo                        |
+| smallmoney                            | Desetinné číslo                        |
 | time                                  | TimeSpan                       |
 | tinyint                               | Byte                           |
 | uniqueidentifier                      | Identifikátor GUID                           |
-| Varbinary                             | Bajt[]                         |
-| varchar                               | Řetězec, Znak[]                 |
+| varbinary                             | Byte []                         |
+| varchar                               | Řetězec, znak []                 |
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a propady podle aktivity kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky pomocí aktivity kopírování v Azure Data Factory najdete v tématu [podporovaná úložiště dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).

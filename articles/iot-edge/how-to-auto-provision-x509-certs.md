@@ -1,6 +1,6 @@
 ---
-title: Automatické zřizování zařízení s DPS pomocí certifikátů X.509 – Azure IoT Edge | Dokumenty společnosti Microsoft
-description: Použití certifikátů X.509 k testování automatického zřizování zařízení pro Azure IoT Edge se službou zřizování zařízení
+title: Automatické zřizování zařízení s DPS pomocí certifikátů X. 509 – Azure IoT Edge | Microsoft Docs
+description: Použití certifikátů X. 509 k otestování automatického zřizování zařízení pro Azure IoT Edge se službou Device Provisioning
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,53 +9,53 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d5e968e578428a16a0005149a409986015a1fc5c
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393758"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131313"
 ---
-# <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Vytvoření a zřízení zařízení IoT Edge pomocí certifikátů X.509
+# <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Vytvoření a zřízení zařízení IoT Edge pomocí certifikátů X. 509
 
-Pomocí [služby Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml)můžete automaticky zřídit zařízení IoT Edge pomocí certifikátů X.509. Pokud nejste obeznámeni s procesem automatického zřizování, zkontrolujte [koncepty automatického zřizování](../iot-dps/concepts-auto-provisioning.md) před pokračováním.
+Pomocí [Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml)můžete automaticky zřizovat IoT Edge zařízení pomocí certifikátů X. 509. Pokud nejste obeznámeni s procesem automatického zřizování, před pokračováním zkontrolujte [Koncepty automatického zřizování](../iot-dps/concepts-auto-provisioning.md) .
 
-Tento článek ukazuje, jak vytvořit zápis služby Device Provisioning Service pomocí certifikátů X.509 na zařízení IoT Edge s následujícími kroky:
+V tomto článku se dozvíte, jak vytvořit registraci služby Device Provisioning pomocí certifikátů X. 509 na zařízení IoT Edge pomocí následujících kroků:
 
-* Generovat certifikáty a klíče.
-* Vytvořte buď individuální registraci pro zařízení, nebo skupinovou registraci pro sadu zařízení.
-* Nainstalujte runtime IoT Edge a zaregistrujte zařízení pomocí služby IoT Hub.
+* Generování certifikátů a klíčů.
+* Vytvoří buď jednotlivou registraci zařízení, nebo registraci skupiny pro sadu zařízení.
+* Nainstalujte modul runtime IoT Edge a zaregistrujte zařízení v IoT Hub.
 
-Použití certifikátů X.509 jako mechanismu s ověřováním je vynikající způsob, jak škálovat výrobu a zjednodušit zřizování zařízení. Certifikáty X.509 jsou obvykle uspořádány v řetězu důvěryhodnosti certifikátů. Počínaje certifikátem podepsaným svým držitelem nebo důvěryhodným kořenovým certifikátem každý certifikát v řetězci podepíše další nižší certifikát. Tento vzor vytvoří delegovaný řetězec důvěryhodnosti z kořenového certifikátu dolů přes každý zprostředkující certifikát na konečný "listový" certifikát nainstalovaný v zařízení.
+Používání certifikátů X. 509 jako mechanismu ověřování je skvělým způsobem, jak škálovat produkční prostředí a zjednodušit zřizování zařízení. Obvykle jsou certifikáty X. 509 uspořádány v řetězu certifikátů důvěryhodnosti. Počínaje certifikátem podepsaným svým držitelem nebo důvěryhodným kořenovým certifikátem podepisuje každý certifikát v řetězu další nižší certifikát. Tento model vytvoří delegovaný řetěz vztahu důvěryhodnosti od kořenového certifikátu až po každý zprostředkující certifikát s konečným certifikátem "list" nainstalovaným na zařízení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Aktivní služba IoT Hub.
-* Fyzické nebo virtuální zařízení jako zařízení IoT Edge.
-* Nainstalované nejnovější verze [Gitu.](https://git-scm.com/download/)
-* Instance služby Zřizování zařízení služby IoT Hub v Azure, propojené s vaším centrem IoT hub.
-  * Pokud nemáte instanci služby zřizování zařízení, postupujte podle pokynů v [části Nastavení DPS služby IoT Hub](../iot-dps/quick-setup-auto-provision.md).
-  * Po spuštění služby Device Provisioning Service zkopírujte hodnotu **oboru ID** ze stránky s přehledem. Tuto hodnotu použijete při konfiguraci běhu IoT Edge.
+* Aktivní IoT Hub.
+* Fyzické nebo virtuální zařízení, které se má IoT Edge zařízení.
+* Je nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/) .
+* Instance IoT Hub Device Provisioning Service v Azure propojená se službou IoT Hub.
+  * Pokud nemáte instanci služby Device Provisioning, postupujte podle pokynů v [části nastavení IoT Hub DPS](../iot-dps/quick-setup-auto-provision.md).
+  * Po spuštění služby Device Provisioning zkopírujte na stránce Přehled hodnotu **Rozsah ID** . Tuto hodnotu použijete při konfiguraci modulu runtime IoT Edge.
 
-## <a name="generate-device-identity-certificates"></a>Generovat certifikáty identity zařízení
+## <a name="generate-device-identity-certificates"></a>Generování certifikátů identit zařízení
 
-Certifikát identity zařízení je listový certifikát, který se připojuje prostřednictvím řetězu důvěryhodnosti certifikátu k nejvyššímu certifikátu certifikační autority X.509. Certifikát identity zařízení musí mít běžný název (CN) nastavený na ID zařízení, které má mít zařízení ve vašem centru IoT Hub.
+Certifikát identity zařízení je listový certifikát, který se připojuje prostřednictvím řetězu certifikátů s nejvyšším certifikátem certifikační autority (CA) X. 509. Certifikát identity zařízení musí mít běžný název (CN) nastavený na ID zařízení, které má mít zařízení ve službě IoT Hub.
 
-Certifikáty identity zařízení se používají jenom pro zřizování zařízení IoT Edge a ověřování zařízení pomocí Služby Azure IoT Hub. Na rozdíl od certifikátů certifikační autority, které zařízení IoT Edge představuje modulům nebo listovým zařízením k ověření, se nejedná o podpisové certifikáty. Další informace najdete v [tématu Podrobnosti o využití certifikátu Azure IoT Edge](iot-edge-certs.md).
+Certifikáty identit zařízení se používají jenom ke zřízení IoT Edge zařízení a ověřování zařízení s využitím Azure IoT Hub. Nepodepisují certifikáty, na rozdíl od certifikátů certifikační autority, které IoT Edge zařízení prezentuje modulům nebo listovým zařízením k ověření. Další informace najdete v tématu informace o [využití certifikátu Azure IoT Edge](iot-edge-certs.md).
 
-Po vytvoření certifikátu identity zařízení byste měli mít dva soubory: soubor CER nebo PEM, který obsahuje veřejnou část certifikátu, a soubor CER nebo .pem se soukromým klíčem certifikátu. Pokud plánujete použít zápis skupiny v DPS, potřebujete také veřejnou část zprostředkujícího nebo kořenového certifikátu certifikační autority ve stejném řetězci důvěryhodnosti certifikátů.
+Po vytvoření certifikátu identity zařízení byste měli mít dva soubory: soubor. cer nebo. pem, který obsahuje veřejnou část certifikátu, a soubor. cer nebo. pem s privátním klíčem certifikátu. Pokud plánujete použít registraci skupin v DPS, budete také potřebovat veřejnou část certifikátu zprostředkující nebo kořenové certifikační autority ve stejném řetězu certifikátů.
 
-K nastavení automatického zřizování pomocí X.509 potřebujete následující soubory:
+K nastavení automatického zřizování pomocí X. 509 potřebujete následující soubory:
 
-* Certifikát identity zařízení a jeho certifikát soukromého klíče. Certifikát identity zařízení se nahraje do DPS, pokud vytvoříte individuální registraci. Soukromý klíč je předán do běhu IoT Edge.
-* Úplný řetězový certifikát, který by měl mít alespoň identitu zařízení a zprostředkující certifikáty v něm. Úplný řetězový certifikát je předán runtime IoT Edge.
-* Zprostředkující nebo kořenový certifikát certifikační autority z řetězu důvěryhodnosti certifikátů. Tento certifikát se nahraje do DPS, pokud vytvoříte skupinový zápis.
+* Certifikát identity zařízení a jeho certifikát privátního klíče. Certifikát identity zařízení se nahraje do DPS, pokud vytvoříte jednotlivou registraci. Privátní klíč se předává do modulu runtime IoT Edge.
+* Úplný řetězový certifikát, který by měl mít alespoň identitu zařízení a zprostředkující certifikáty. Úplný certifikát řetězu se předává modulu runtime IoT Edge.
+* Certifikát zprostředkující nebo kořenové certifikační autority z řetězu certifikátů, který je důvěryhodný. Tento certifikát se nahraje do DPS, pokud vytvoříte registraci skupiny.
 
 ### <a name="use-test-certificates"></a>Použití testovacích certifikátů
 
-Pokud nemáte k dispozici certifikační autoritu k vytvoření nových certifikátů identity a chcete vyzkoušet tento scénář, úložiště Git Azure IoT Edge obsahuje skripty, které můžete použít ke generování testovacích certifikátů. Tyto certifikáty jsou určeny pouze pro vývojové testování a nesmí být použity v produkčním prostředí.
+Pokud nemáte k dispozici certifikační autoritu pro vytváření nových certifikátů identit a chcete tento scénář vyzkoušet, Azure IoT Edge úložiště Git obsahuje skripty, které můžete použít k vygenerování testovacích certifikátů. Tyto certifikáty jsou navržené jenom pro vývojové testování a nesmí se používat v produkčním prostředí.
 
-Chcete-li vytvořit testovací certifikáty, postupujte podle pokynů v [části Vytvoření ukázkových certifikátů a otestujte funkce zařízení IoT Edge](how-to-create-test-certificates.md). Dokončete dvě požadované části a nastavte skripty pro generování certifikátů a vytvořte kořenový certifikát certifikační autority. Potom postupujte podle pokynů k vytvoření certifikátu identity zařízení. Po dokončení byste měli mít následující řetěz certifikátů a dvojici klíčů:
+Chcete-li vytvořit testovací certifikáty, postupujte podle kroků v části [Vytvoření ukázkových certifikátů k otestování IoT Edgech funkcí zařízení](how-to-create-test-certificates.md). Chcete-li nastavit skripty generování certifikátů a vytvořit certifikát kořenové certifikační autority, postupujte podle těchto dvou požadovaných oddílů. Pak postupujte podle pokynů a vytvořte certifikát identity zařízení. Až budete hotovi, měli byste mít následující řetěz certifikátů a pár klíčů:
 
 Linux:
 
@@ -67,40 +67,40 @@ Windows:
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
-Potřebujete oba tyto certifikáty na zařízení IoT Edge. Pokud budete používat individuální zápis do DPS, nahrajete soubor .cert.pem. Pokud budete používat skupinový zápis v DPS, budete k nahrání potřebovat také zprostředkující nebo kořenový certifikát certifikační autority ve stejném řetězci důvěryhodnosti certifikátů. Pokud používáte ukázkové certifikáty, `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` použijte certifikát pro zápis do skupiny.
+Tyto certifikáty budete potřebovat na zařízení IoT Edge. Pokud budete chtít použít jednotlivou registraci v DPS, nahrajete soubor. CERT. pem. Pokud se chystáte použít registraci skupin v DPS, budete také potřebovat certifikát zprostředkující nebo kořenové certifikační autority ve stejném řetězu certifikátů, který chcete odeslat. Pokud používáte ukázkové certifikáty, použijte `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` certifikát pro zápis skupiny.
 
-## <a name="create-a-dps-individual-enrollment"></a>Vytvoření individuální registrace DPS
+## <a name="create-a-dps-individual-enrollment"></a>Vytvořte si jednotlivou registraci DPS
 
-Pomocí generovaných certifikátů a klíčů vytvořte individuální registraci v DPS pro jedno zařízení IoT Edge. Jednotlivé registrace převezmou veřejnou část certifikátu identity zařízení a porovná ji s certifikátem na zařízení.
+Pomocí vygenerovaných certifikátů a klíčů můžete vytvořit jednotlivou registraci v DPS pro jedno IoT Edge zařízení. Jednotlivé registrace přijímají veřejnou část certifikátu identity zařízení a shodují s certifikátem v zařízení.
 
-Pokud chcete zřídit více zařízení IoT Edge, postupujte podle kroků v další části [Vytvoření registrace skupiny DPS](#create-a-dps-group-enrollment).
+Pokud chcete zřídit více IoT Edge zařízení, postupujte podle kroků v následující části a [vytvořte registraci skupiny DPS](#create-a-dps-group-enrollment).
 
-Při vytváření registrace v DPS máte možnost deklarovat **počáteční stav dvojčete zařízení**. V dvojčeti zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky se používají k vytvoření [automatických nasazení](how-to-deploy-monitor.md).
+Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav**dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
 
-Další informace o registracích ve službě Device Provisioning Service najdete v tématu [Správa registrací zařízení](../iot-dps/how-to-manage-enrollments.md).
+Další informace o registraci ve službě Device Provisioning najdete v tématu [Správa registrace zařízení](../iot-dps/how-to-manage-enrollments.md).
 
    > [!TIP]
-   > V rozhraní příkazového příkazu k systému Azure můžete vytvořit [registraci](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu zápisů](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí **příznaku s podporou okrajů** určit, že zařízení nebo skupina zařízení je zařízení IoT Edge.
+   > V Azure CLI můžete vytvořit [registraci](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu registrace](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí příznaku s **povoleným okrajem** určit, že zařízení nebo skupina zařízení je IoT Edge zařízení.
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na instanci služby Zřizování zařízení služby IoT Hub.
+1. V [Azure Portal](https://portal.azure.com)přejděte do vaší instance IoT Hub Device Provisioning Service.
 
-1. V části **Nastavení**vyberte **Spravovat registrace**.
+1. V části **Nastavení**vyberte **spravovat registrace**.
 
-1. Vyberte **Přidat individuální zápis** a proveďte následující kroky konfigurace registrace:  
+1. Vyberte **přidat jednotlivou registraci** a potom proveďte následující kroky, abyste nakonfigurovali registraci:  
 
-   * **Mechanismus**: Vyberte **X.509**.
+   * **Mechanismus**: vyberte **X. 509**.
 
-   * **Primární soubor Pem nebo CER certifikátu**: Nahrajte veřejný soubor z certifikátu identity zařízení. Pokud jste použili skripty ke generování testovacího certifikátu, zvolte následující soubor:
+   * **Primární soubor certifikátu. pem nebo. cer**: Nahrajte veřejný soubor z certifikátu identity zařízení. Pokud jste použili skripty pro vygenerování testovacího certifikátu, vyberte následující soubor:
 
       `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 
-   * **ID zařízení ioT hubu**: Pokud chcete, zadejte ID zařízení. ID zařízení můžete použít k cílení na jednotlivé zařízení pro nasazení modulu. Pokud ID zařízení nezadáte, použije se běžný název (CN) v certifikátu X.509.
+   * **ID zařízení IoT Hub**: Pokud chcete, zadejte ID zařízení. Pomocí ID zařízení můžete cílit na jednotlivá zařízení pro nasazení modulů. Pokud ID zařízení nezadáte, použije se běžný název (CN) v certifikátu X. 509.
 
-   * **Zařízení IoT Edge**: Výběrem možnosti **True** deklarujete, že registrace je pro zařízení IoT Edge.
+   * **IoT Edge zařízení**: výběrem **hodnoty true** deklarujete, že registrace je určena pro IoT Edge zařízení.
 
-   * **Vyberte služby IoT huby, kterým lze toto zařízení přiřadit:** Zvolte propojený rozbočovač IoT hub, ke kterému chcete zařízení připojit. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno jednomu z nich podle vybraných zásad přidělení.
+   * **Vyberte centra IoT, ke kterým se má toto zařízení přiřadit**: zvolte propojené centrum IoT, ke kterému chcete zařízení připojit. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno k jednomu z nich podle vybrané zásady přidělování.
 
-   * **Počáteční stav dvojčete zařízení:** Přidejte hodnotu značky, která se přidá do dvojčete zařízení, pokud chcete. Značky můžete použít k cílení skupin zařízení pro automatické nasazení. Příklad:
+   * **Počáteční stav vlákna zařízení**: přidejte hodnotu značky, která se má přidat do vlákna zařízení v případě, že chcete. Pomocí značek můžete cílit na skupiny zařízení pro automatické nasazení. Příklad:
 
       ```json
       {
@@ -115,37 +115,37 @@ Další informace o registracích ve službě Device Provisioning Service najdet
 
 1. Vyberte **Uložit**.
 
-Teď, když pro toto zařízení existuje registrace, může runtime IoT Edge automaticky zřídit zařízení během instalace. Pokračujte do části [Instalace runtime technologie IoT Edge](#install-the-iot-edge-runtime) a nastavte zařízení IoT Edge.
+Teď, když pro toto zařízení existuje registrace, IoT Edge modul runtime může zařízení během instalace automaticky zřídit. Pokračujte k nastavení IoT Edge zařízení v části [Instalace modulu runtime IoT Edge](#install-the-iot-edge-runtime) .
 
 ## <a name="create-a-dps-group-enrollment"></a>Vytvoření registrace skupiny DPS
 
-Pomocí generovaných certifikátů a klíčů vytvořte skupinový zápis v DPS pro více zařízení IoT Edge. Skupinové zápisy používají zprostředkující nebo kořenový certifikát certifikační autority z řetězu důvěryhodnosti certifikátů, který se používá ke generování certifikátů identity jednotlivých zařízení.
+Pomocí vygenerovaných certifikátů a klíčů vytvořte registraci skupiny v DPS pro více IoT Edgech zařízení. Skupinové registrace používají certifikát zprostředkující nebo kořenové certifikační autority z řetězu certifikátů, který se používá k vygenerování individuálních certifikátů identit zařízení.
 
-Pokud chcete místo toho zřídit jedno zařízení IoT Edge, postupujte podle kroků v předchozí části [Vytvoření individuální registrace DPS](#create-a-dps-individual-enrollment).
+Pokud místo toho chcete zřídit jedno IoT Edge zařízení, postupujte podle kroků v předchozí části a [Vytvořte si jednotlivou registraci DPS](#create-a-dps-individual-enrollment).
 
-Při vytváření registrace v DPS máte možnost deklarovat **počáteční stav dvojčete zařízení**. V dvojčeti zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky se používají k vytvoření [automatických nasazení](how-to-deploy-monitor.md).
+Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav**dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
 
 ### <a name="verify-your-root-certificate"></a>Ověření kořenového certifikátu
 
-Při vytváření skupiny zápisů máte možnost použít ověřený certifikát. Certifikát můžete ověřit pomocí DPS tím, že prokážete, že vlastníte kořenový certifikát. Další informace naleznete v tématu [Jak provést kontrolu vlastnictví certifikátů certifikační autority X.509](../iot-dps/how-to-verify-certificates.md).
+Při vytváření skupiny registrací máte možnost použít ověřený certifikát. Certifikát s DPS můžete ověřit tak, že prokážete, že máte vlastnictví kořenového certifikátu. Další informace najdete v tématu [postup pro kontrolu vlastnictví certifikátů certifikační autority X. 509](../iot-dps/how-to-verify-certificates.md).
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na instanci služby Zřizování zařízení služby IoT Hub.
+1. V [Azure Portal](https://portal.azure.com)přejděte do vaší instance IoT Hub Device Provisioning Service.
 
-1. V levé nabídce vyberte **Certifikáty.**
+1. V nabídce na levé straně vyberte **certifikáty** .
 
-1. Výběrem **možnosti Přidat** přidáte nový certifikát.
+1. Vyberte **Přidat** a přidejte nový certifikát.
 
-1. Zadejte popisný název certifikátu a vyhledejte soubor CER nebo Pem, který představuje veřejnou část certifikátu X.509.
+1. Zadejte popisný název certifikátu, vyhledejte soubor. cer nebo. pem, který představuje veřejnou část vašeho certifikátu X. 509.
 
-   Pokud používáte ukázkové certifikáty, `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` nahrajte certifikát.
+   Pokud používáte ukázkové certifikáty, nahrajte `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` certifikát.
 
 1. Vyberte **Uložit**.
 
-1. Certifikát by nyní měl být uveden na stránce **Certifikáty.** Vyberte ji, chcete-li otevřít podrobnosti o certifikátu.
+1. Váš certifikát by měl být teď uvedený na stránce **certifikáty** . Vyberte ho a otevřete podrobnosti certifikátu.
 
-1. Vyberte **Generovat ověřovací kód** a pak zkopírujte generovaný kód.
+1. Vyberte možnost **Generovat ověřovací kód** a potom zkopírujte generovaný kód.
 
-1. Bez ohledu na to, zda jste si přinesli vlastní certifikát certifikační autority nebo používáte ukázkové certifikáty, můžete k ověření dokladu o vlastnictví použít ověřovací nástroj uvedený v úložišti IoT Edge. Ověřovací nástroj používá certifikát certifikační autority k podepsání nového certifikátu, který má jako název subjektu zadaný ověřovací kód.
+1. Bez ohledu na to, zda jste si položili vlastní certifikát certifikační autority nebo používáte ukázkové certifikáty, můžete k ověření vlastnictví použít ověřovací nástroj, který je k dispozici v úložišti IoT Edge. Nástroj pro ověření používá certifikát certifikační autority k podepsání nového certifikátu, který má poskytnutý ověřovací kód jako název subjektu.
 
    * Windows:
 
@@ -159,33 +159,33 @@ Při vytváření skupiny zápisů máte možnost použít ověřený certifiká
      ./certGen.sh create_verification_certificate <verification code>
      ```
 
-1. Na stejné stránce podrobností o certifikátu na webu Azure Portal nahrajte nově vygenerovaný ověřovací certifikát.
+1. Na stránce s podrobnostmi o certifikátu v Azure Portal nahrajte nově vygenerovaný ověřovací certifikát.
 
 1. Vyberte možnost **ověření**.
 
-### <a name="create-enrollment-group"></a>Vytvořit skupinu zápisů
+### <a name="create-enrollment-group"></a>Vytvořit skupinu registrace
 
-Další informace o registracích ve službě Device Provisioning Service najdete v tématu [Správa registrací zařízení](../iot-dps/how-to-manage-enrollments.md).
+Další informace o registraci ve službě Device Provisioning najdete v tématu [Správa registrace zařízení](../iot-dps/how-to-manage-enrollments.md).
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na instanci služby Zřizování zařízení služby IoT Hub.
+1. V [Azure Portal](https://portal.azure.com)přejděte do vaší instance IoT Hub Device Provisioning Service.
 
-1. V části **Nastavení**vyberte **Spravovat registrace**.
+1. V části **Nastavení**vyberte **spravovat registrace**.
 
-1. Vyberte **Přidat skupinu zápisů** a proveďte následující kroky konfigurace zápisu:
+1. Vyberte **Přidat skupinu** registrací a potom proveďte následující kroky, abyste nakonfigurovali registraci:
 
-   * **Název skupiny**: Zadejte zapamatovatelný název pro registraci této skupiny.
+   * **Název skupiny**: zadejte zapamatovatelné jméno pro zápis této skupiny.
 
-   * **Typ atestace**: Vyberte **certifikát**.
+   * **Typ ověření identity**: vyberte **certifikát**.
 
-   * **Zařízení IoT Edge**: Vyberte **True**. Pro registraci skupiny musí být všechna zařízení zařízení IoT Edge nebo žádná z nich nemůže být.
+   * **IoT Edge zařízení**: vyberte **true**. V případě registrace skupiny musí být všechna zařízení IoT Edge nebo žádná z nich nemůžete.
 
-   * **Typ certifikátu**: **Pokud** máte ověřený certifikát certifikační autority uložený s DPS, nebo **zprostředkující certifikát,** chcete-li odeslat nový soubor právě pro tento zápis.
+   * **Typ certifikátu**: vyberte **certifikát certifikační** autority, pokud máte ověřený certifikát CA uložený ve službě DPS nebo **zprostředkující certifikát** , pokud chcete nahrát nový soubor jenom pro tento zápis.
 
-   * **Primární certifikát**: Pokud jste v poslední části zvolili certifikát certifikační autority, zvolte certifikát z rozevíracího seznamu. Pokud jste zvolili zprostředkující certifikát, nahrajte veřejný soubor z certifikátu certifikační autority v řetězci důvěryhodnosti certifikátů, který byl použit ke generování certifikátů identity zařízení.
+   * **Primární certifikát**: Pokud jste v poslední části zvolili certifikát certifikační autority, zvolte svůj certifikát z rozevíracího seznamu. Pokud jste zvolili zprostředkující certifikát, nahrajte veřejný soubor z certifikátu certifikační autority v řetězu certifikátů, který se použil k vygenerování certifikátů identit zařízení.
 
-   * **Vyberte služby IoT huby, kterým lze toto zařízení přiřadit:** Zvolte propojený rozbočovač IoT hub, ke kterému chcete zařízení připojit. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno jednomu z nich podle vybraných zásad přidělení.
+   * **Vyberte centra IoT, ke kterým se má toto zařízení přiřadit**: zvolte propojené centrum IoT, ke kterému chcete zařízení připojit. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno k jednomu z nich podle vybrané zásady přidělování.
 
-   * **Počáteční stav dvojčete zařízení:** Přidejte hodnotu značky, která se přidá do dvojčete zařízení, pokud chcete. Značky můžete použít k cílení skupin zařízení pro automatické nasazení. Příklad:
+   * **Počáteční stav vlákna zařízení**: přidejte hodnotu značky, která se má přidat do vlákna zařízení v případě, že chcete. Pomocí značek můžete cílit na skupiny zařízení pro automatické nasazení. Příklad:
 
       ```json
       {
@@ -200,33 +200,33 @@ Další informace o registracích ve službě Device Provisioning Service najdet
 
 1. Vyberte **Uložit**.
 
-Teď, když pro toto zařízení existuje registrace, může runtime IoT Edge automaticky zřídit zařízení během instalace. Pokračujte k další části a nastavte zařízení IoT Edge.
+Teď, když pro toto zařízení existuje registrace, IoT Edge modul runtime může zařízení během instalace automaticky zřídit. Pokračujte k další části a nastavte zařízení IoT Edge.
 
-## <a name="install-the-iot-edge-runtime"></a>Instalace runtime IoT Edge
+## <a name="install-the-iot-edge-runtime"></a>Instalace modulu runtime IoT Edge
 
-Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho součásti spustit v kontejnerech a umožňují nasadit další kontejnery do zařízení, takže můžete spustit kód na okraji.
+Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho komponenty se spouštějí v kontejnerech a umožňují na zařízení nasadit další kontejnery, abyste mohli spustit kód na hraničních zařízeních.
 
-Zřizování X.509 pomocí DPS je podporováno jenom v ioT edge verze 1.0.9 nebo novější.
+Zřizování X. 509 s DPS se podporuje jenom v IoT Edge verze 1.0.9 nebo novější.
 
 Při zřizování zařízení budete potřebovat následující informace:
 
-* Hodnota **oboru DPS ID.** Tuto hodnotu můžete načíst ze stránky přehledu instance DPS na webu Azure Portal.
-* Soubor řetězu certifikátu identity zařízení v zařízení.
-* Soubor klíče identity zařízení v zařízení.
-* Volitelné ID registrace (natažené z běžného názvu v certifikátu identity zařízení, pokud není zadáno).
+* Hodnota **rozsahu ID** DPS. Tuto hodnotu můžete načíst ze stránky přehled vaší instance DPS v Azure Portal.
+* Soubor řetězu certifikátů identity zařízení v zařízení.
+* Soubor klíče identity zařízení na zařízení.
+* Nepovinná registrační ID (načtené z obecného názvu v certifikátu identity zařízení, pokud není zadaný)
 
-### <a name="linux-device"></a>Linuxové zařízení
+### <a name="linux-device"></a>Zařízení se systémem Linux
 
-Pomocí následujícího odkazu nainstalujte runtime Azure IoT Edge do zařízení pomocí příkazů vhodných pro architekturu vašeho zařízení. Když se dostanete do části o konfiguraci daemon zabezpečení, nakonfigurujte runtime IoT Edge pro X.509 automatické, nikoli ruční zřizování. Po dokončení předchozích částí tohoto článku byste měli mít všechny potřebné informace a soubory certifikátů.
+Pomocí následujícího odkazu nainstalujete Azure IoT Edge runtime na zařízení pomocí příkazů vhodných pro architekturu vašeho zařízení. Až se dostanete k části týkající se konfigurace démona zabezpečení, nakonfigurujte modul runtime IoT Edge pro X. 509 Automatic, ne ručně, zřizování. Po dokončení předchozích částí tohoto článku byste měli mít všechny informace a soubory certifikátů, které potřebujete.
 
-[Instalace runtime Azure IoT Edge na Linux](how-to-install-iot-edge-linux.md)
+[Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md)
 
-Přidáte-li certifikát X.509 a informace o klíči do souboru config.yaml, měly by být cesty poskytovány jako identifikátory URI souboru. Příklad:
+Když přidáte certifikát X. 509 a informace o klíči do souboru config. yaml, cesty by se měly zadat jako identifikátory URI souborů. Příklad:
 
 * `file:///<path>/identity_certificate_chain.pem`
 * `file:///<path>/identity_key.pem`
 
-Oddíl v konfiguračním souboru pro automatické zřizování X.509 vypadá takto:
+Oddíl konfiguračního souboru pro X. 509 Automatické zřizování vypadá takto:
 
 ```yaml
 # DPS X.509 provisioning configuration
@@ -241,9 +241,9 @@ provisioning:
     identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
 ```
 
-Nahraďte zástupné `scope_id` `identity_cert`hodnoty `identity_pk` pro aplikaci , ID oboru z instance DPS a identifikátory URI řetězcem certifikátů a umístěním klíčových souborů v zařízení. Pokud `registration_id` chcete, poskytněte zařízení nebo ponechte tento řádek zakomentovaný pro registraci zařízení s názvem kn.
+Nahraďte zástupné `scope_id`hodnoty `identity_cert`pro `identity_pk` , s ID oboru z vaší instance DPS a identifikátory URI pro řetěz certifikátů a umístění souborů klíčů na vašem zařízení. Pokud chcete `registration_id` zařízení zaregistrovat, zadejte ho pro zařízení, nebo ponechte tento řádek Zakomentovat a zaregistrujte zařízení s názvem CN certifikátu identity.
 
-Po aktualizaci souboru config.yaml vždy restartujte bezpečnostního daemonu.
+Po aktualizaci souboru config. yaml vždy restartujte proces zabezpečení.
 
 ```bash
 sudo systemctl restart iotedge
@@ -251,24 +251,24 @@ sudo systemctl restart iotedge
 
 ### <a name="windows-device"></a>Zařízení s Windows
 
-Nainstalujte runtime IoT Edge na zařízení, pro které jste vygenerovali řetězec certifikátů identit a klíč identity. Nakonfigurujete runtime IoT Edge pro automatické, ne ruční zřizování.
+Nainstalujte modul runtime IoT Edge na zařízení, pro které jste vygenerovali řetěz certifikátů identit a klíč identity. Nastavíte modul runtime IoT Edge pro automatické, ne ruční zřizování.
 
-Podrobnější informace o instalaci IoT Edge do Windows, včetně předpokladů a pokynů pro úlohy, jako je správa kontejnerů a aktualizace IoT Edge, najdete [v tématu Instalace runtime Azure IoT Edge v systému Windows](how-to-install-iot-edge-windows.md).
+Podrobnější informace o instalaci IoT Edge ve Windows, včetně požadavků a pokynů pro úlohy, jako je Správa kontejnerů a aktualizace IoT Edge, najdete v tématu [Instalace modulu runtime Azure IoT Edge ve Windows](how-to-install-iot-edge-windows.md).
 
-1. Otevřete okno PowerShellu v režimu správce. Nezapomeňte použít relaci AMD64 powershellu při instalaci IoT Edge, ne PowerShell (x86).
+1. Otevřete okno PowerShellu v režimu správce. Při instalaci IoT Edge, ne pomocí PowerShellu (x86) nezapomeňte použít relaci AMD64 prostředí PowerShell.
 
-1. Příkaz **Deploy-IoTEdge** zkontroluje, zda je váš počítač se systémem Windows v podporované verzi, zapne funkci kontejnerů a poté stáhne modul runtime moby a modul runtime IoT Edge. Příkaz je výchozí pro použití kontejnerů systému Windows.
+1. Příkaz **Deploy-IoTEdge** zkontroluje, jestli má počítač s Windows podporovanou verzi, zapne funkci Containers a pak stáhne modul runtime Moby a modul runtime IoT Edge. Příkaz ve výchozím nastavení používá kontejnery Windows.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-1. V tomto okamžiku se zařízení IoT Core mohou automaticky restartovat. K restartování vás mohou vyzvat jiná zařízení s Windows 10 nebo Windows Server. Pokud ano, restartujte zařízení nyní. Jakmile je vaše zařízení připravené, spusťte PowerShell znovu jako správce.
+1. V tuto chvíli se zařízení IoT Core můžou restartovat automaticky. Jiná zařízení s Windows 10 nebo Windows Server vás můžou vyzvat k restartování. Pokud ano, restartujte zařízení nyní. Až bude zařízení připravené, spusťte PowerShell jako správce znovu.
 
-1. Příkaz **Initialize-IoTEdge** konfiguruje runtime IoT Edge ve vašem počítači. Příkaz výchozí ruční zřizování, `-Dps` pokud používáte příznak použít automatické zřizování.
+1. Příkaz **Initialize-IoTEdge** nakonfiguruje IoT Edge modul runtime na vašem počítači. Příkaz je standardně nastaven na ruční zřizování, pokud nepoužijete `-Dps` příznak pro Automatické zřizování.
 
-   Nahraďte zástupné `{scope_id}` `{identity cert chain path}`hodnoty `{identity key path}` pro , a příslušné hodnoty z instance DPS a cesty k souborům v zařízení. Chcete-li zadat ID registrace, `-RegistrationId {registration_id}` uveďte také, případně nahradit zástupný symbol.
+   Nahraďte zástupné `{scope_id}`hodnoty `{identity cert chain path}`pro, `{identity key path}` a odpovídajícími hodnotami z instance DPS a cesty k souborům na vašem zařízení. Chcete-li zadat ID registrace, zahrňte `-RegistrationId {registration_id}` také zástupný text nahraďte podle potřeby.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -276,17 +276,17 @@ Podrobnější informace o instalaci IoT Edge do Windows, včetně předpokladů
    ```
 
    >[!TIP]
-   >Soubor config.yaml ukládá váš certifikát a klíčové informace jako identifikátory URI souboru. Příkaz Initialize-IoTEdge však zpracovává tento krok formátování za vás, takže můžete poskytnout absolutní cestu k certifikátu a klíčovým souborům v zařízení.
+   >V souboru config. yaml se uloží certifikát a informace o klíči jako identifikátory URI souborů. Příkaz Initialize-IoTEdge ale tento krok formátování zpracovává za vás, takže můžete zadat absolutní cestu k certifikátu a souborům klíčů na zařízení.
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
-Pokud modul runtime úspěšně začal, můžete přejít do služby IoT Hub a začít nasazovat moduly IoT Edge do vašeho zařízení.
+Pokud se modul runtime úspěšně spustil, můžete přejít do svého IoT Hub a začít nasazovat IoT Edge moduly do svého zařízení.
 
-Můžete ověřit, že byla použita individuální registrace, kterou jste vytvořili ve službě Device Provisioning Service. Přejděte na instanci služby zřizování zařízení na webu Azure Portal. Otevřete podrobnosti o registraci pro jednotlivé registrace, které jste vytvořili. Všimněte si, že je **přiřazen** stav registrace a id zařízení je uveden.
+Můžete ověřit, že se použil jednotlivý zápis, který jste vytvořili v rámci služby Device Provisioning. V Azure Portal přejděte na instanci služby Device Provisioning. Otevřete podrobnosti registrace pro jednotlivou registraci, kterou jste vytvořili. Všimněte si, že je **přiřazený** stav registrace a že je uvedené ID zařízení.
 
-Pomocí následujících příkazů v zařízení ověřte, zda byl runtime úspěšně nainstalován a spuštěn.
+Pomocí následujících příkazů na zařízení ověřte, že modul runtime byl úspěšně nainstalován a spuštěn.
 
-### <a name="linux-device"></a>Linuxové zařízení
+### <a name="linux-device"></a>Zařízení se systémem Linux
 
 Zkontrolujte stav služby IoT Edge.
 
@@ -294,13 +294,13 @@ Zkontrolujte stav služby IoT Edge.
 systemctl status iotedge
 ```
 
-Zkontrolujte protokoly služby.
+Projděte si protokoly služby.
 
 ```cmd/sh
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Seznam spuštěných modulů.
+Vypíše spuštěné moduly.
 
 ```cmd/sh
 iotedge list
@@ -314,13 +314,13 @@ Zkontrolujte stav služby IoT Edge.
 Get-Service iotedge
 ```
 
-Zkontrolujte protokoly služby.
+Projděte si protokoly služby.
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Seznam spuštěných modulů.
+Vypíše spuštěné moduly.
 
 ```powershell
 iotedge list
@@ -328,4 +328,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Další kroky
 
-Proces registrace služby Device Provisioning Service umožňuje nastavit ID zařízení a značky dvojčete zařízení současně s zřízením nového zařízení. Tyto hodnoty můžete použít k cílení na jednotlivá zařízení nebo skupiny zařízení pomocí automatické správy zařízení. Zjistěte, jak [nasadit a monitorovat moduly IoT Edge ve velkém měřítku pomocí portálu Azure](how-to-deploy-monitor.md) nebo [pomocí rozhraní příkazového příkazového příkazu Azure](how-to-deploy-monitor-cli.md).
+Proces registrace služby Device Provisioning umožňuje nastavit ID zařízení a nedokončené značky zařízení současně, když zřizujete nové zařízení. Tyto hodnoty můžete použít k zaměření jednotlivých zařízení nebo skupin zařízení pomocí automatické správy zařízení. Naučte se, jak [nasadit a monitorovat IoT Edge moduly ve velkém měřítku pomocí Azure Portal](how-to-deploy-at-scale.md) nebo [pomocí Azure CLI](how-to-deploy-cli-at-scale.md).

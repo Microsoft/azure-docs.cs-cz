@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: eb8e06370ecbe2b104a19c4e420b5d3ae013a00e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116311"
+ms.locfileid: "82127574"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -40,6 +40,23 @@ Přečtěte si o [kvótách prostředků](how-to-manage-quotas.md) , se kterými
 
 ## <a name="installation-and-import"></a>Instalace a import
 
+* **Instalace PIP: u závislostí není zaručeno konzistence při instalaci s jedním řádkem**: 
+
+   Toto je známé omezení PIP, protože při instalaci jako jediného řádku nemá funkční překladač závislostí. První jedinečná závislost je pouze ta, na kterou se odkazuje. 
+
+   V následujícím kódu `azure-ml-datadrift` `azureml-train-automl` se obě nainstalují pomocí jediného příkazu PIP. 
+     ```
+       pip install azure-ml-datadrift, azureml-train-automl
+     ```
+   V tomto příkladě řekněme `azure-ml-datadrift` , že vyžaduje verzi > 1,0 a `azureml-train-automl` vyžaduje verzi < 1,2. Pokud `azure-ml-datadrift` je nejnovější verze 1,3, pak se oba balíčky upgradují na 1,3 bez ohledu na `azureml-train-automl` požadavky balíčku na starší verzi. 
+
+   Chcete-li zajistit, aby byly pro balíčky nainstalovány příslušné verze, nainstalujte pomocí více řádků, jako v následujícím kódu. Objednávka tady není problém, protože PIP se v rámci dalšího řádku explicitně downgraduje. A proto se aplikují příslušné závislosti verzí.
+    
+     ```
+        pip install azure-ml-datadrift
+        pip install azureml-train-automl 
+     ```
+     
 * **Chybová zpráva: Nejde odinstalovat ' PyYAML '.**
 
     Azure Machine Learning SDK pro Python: PyYAML je `distutils` nainstalovaný projekt. Proto nemůžeme přesně určit, které soubory do ní patří, pokud dojde k částečné odinstalaci. Pokud chcete pokračovat v instalaci sady SDK a tuto chybu ignorovat, použijte:
@@ -83,20 +100,6 @@ Přečtěte si o [kvótách prostředků](how-to-manage-quotas.md) , se kterými
     * Přidejte `azureml-dataprep` 1.1.8 verze nebo vyšší.
     * Přidejte `pyarrow` verzi 0,11 nebo vyšší.
     
-* **Instalace PIP: dependecies se nezaručuje být konzistentní s instalací s jedním řádkem**: Toto je známé omezení PIP, protože při instalaci jako jednoho řádku nemá funkční překladač závislostí. První jedinečná závislost je pouze ta, na kterou se odkazuje. Pokud například instalujete Azure-ml-disline, který vyžaduje verzi > 1,0 a AzureML-vlak-automl, která vyžaduje verzi < 1,2 a pokud je nejnovější verze 1,3, když uživatel nainstaluje balíčky na jeden řádek, jak je znázorněno níže, vše se upgraduje na 1,3 i v případě, že balíček AzureML-vlak-automl vyžaduje starší verzi. 
-
-    * V případě instalace s jedním řádkem se zobrazí nekonzistentní dependecies.
-    ```python
-       pip install azure-ml-datadrift, azureml-train-automl
-     ```
-   
-    * Chcete-li zajistit, aby byly pro balíčky nainstalovány příslušné verze, nainstalujte pomocí více řádků, jako v následujícím kódu. Pořadí zde nezáleží.
-    
-     ```python
-        pip install azure-ml-datadrift
-        pip install azureml-train-automl 
-     ```
-     
 ## <a name="create-and-manage-workspaces"></a>Vytváření a Správa pracovních prostorů
 
 > [!WARNING]

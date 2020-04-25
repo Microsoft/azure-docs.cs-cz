@@ -1,48 +1,49 @@
 ---
-title: Nejčastější dotazy týkající se rozhraní API Azure Cosmos DB pro cassandru.
-description: Získejte odpovědi na nejčastější dotazy týkající se rozhraní AZURE Cosmos DB API pro Cassandru.
+title: Nejčastější dotazy týkající se rozhraní API Cassandra pro Azure Cosmos DB
+description: Získejte odpovědi na nejčastější dotazy týkající se rozhraní API Cassandra pro Azure Cosmos DB.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 416f0c5f995a101298e84c81317c7d39fb5d43f8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 2d6cae3a7a41eae05783d3bcc12ec2bfe8220c4c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727382"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148326"
 ---
-# <a name="frequently-asked-questions-about-the-azure-cosmos-db-api-for-cassandra"></a>Nejčastější dotazy týkající se rozhraní AZURE Cosmos DB API pro Cassandra
+# <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API Cassandra pro Azure Cosmos DB
 
-## <a name="what-are-some-key-differences-between-apache-cassandra-and-cassandra-api"></a>Jaké jsou některé klíčové rozdíly mezi Apache Cassandra a Cassandra API?
+## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Jaké jsou některé klíčové rozdíly mezi Apache Cassandra a rozhraní API Cassandra?
 
-- Apache Cassandra doporučuje limit 100 MB na velikost klíče oddílu. Cassandra API umožňuje až 10 GB na oddíl.
-- Apache Cassandra umožňuje zakázat trvalé revize - tj. To může vést ke ztrátě dat, pokud uzel přejde před Memtables vyprázdnění sStables na disku. Cosmos DB vždy provádí trvalé revize, takže nikdy nebudete mít ztrátu dat.
-- Apache Cassandra může vidět snížený výkon, pokud zatížení zahrnuje mnoho nahrazení a / nebo odstraní. Důvodem je neplatné, že úlohy čtení musí přeskočit načíst nejnovější data. Cassandra API neuvidí snížený výkon čtení, pokud má zatížení velké množství nahrazení nebo odstranění.
-- Během scénáře vysoké nahrazení úlohy, zhutnění je třeba spustit sloučit SSTables na disku (sloučení je potřeba, protože Apache Cassandra zápisy jsou pouze připojit, tedy více aktualizací jsou uloženy jako jednotlivé položky SSTable, které je třeba pravidelně slučovat). To může také vést ke snížení výkonu čtení během zhutnění. K tomu nedochází v rozhraní API Cassandra, protože neimplementuje zhutnění.
-- Nastavení replikačního faktoru 1 je možné s Apache Cassandra. Však vede k nízké dostupnosti, pokud pouze uzel s daty přejde dolů. Toto není problém s rozhraním API Azure Cosmos DB Cassandra, protože je vždy replikační faktor 4 (kvorum 3).
-- Přidání nebo odebrání uzlů v Apache Cassandra vyžaduje mnoho ručního zásahu, ale také vysoký procesor na novém uzlu, zatímco existující uzly přesunou některé z jejich rozsahů tokenů do nového uzlu. To je stejné při vyřazení existujícího uzlu z provozu. Horizontální navýšení kapacity se však provádí bez problémů pod kapotou v rozhraní API Azure Cosmos DB Cassandra, bez jakýchkoli problémů zjištěných ve službě nebo aplikaci.
-- Není třeba nastavit num_tokens na každém uzlu v clusteru jako v Apache Cassandra. Uzly a rozsahy tokenů jsou plně spravovány cosmos DB.
-- Rozhraní API Azure Cosmos DB Cassandra je plně spravované, takže nepotřebujete příkazy nodetool, jako je oprava, vyřazení z provozu atd., které se používají v Apache Cassandra.
+- Apache Cassandra doporučuje pro velikost klíče oddílu omezení 100 MB. Rozhraní API Cassandra pro Azure Cosmos DB umožňuje až 10 GB na oddíl.
+- Apache Cassandra umožňuje zakázat trvalá potvrzení změn. Můžete přeskočit zápis do protokolu potvrzení a přejít přímo na memtables. To může způsobit ztrátu dat v případě, že se uzel přestane vyprázdnit, než se memtables SSTables na disk. Azure Cosmos DB vždy provádí trvalá potvrzení, aby se zabránilo ztrátě dat.
+- Apache Cassandra se může podívat na snížený výkon, pokud zatížení zahrnuje mnoho nahrazení nebo odstranění. Důvodem je označení, že úlohy čtení musí přeskočit, aby se načetla nejnovější data. Rozhraní API Cassandra se nezobrazuje snížený výkon při čtení, pokud má zatížení mnoho nahrazení nebo odstranění.
+- V rámci scénářů s vysokým počtem úloh se musí komprimace spustit pro sloučení SSTables na disku. (Sloučení je potřeba, protože zápisy Apache Cassandra jsou jenom připojené. Několik aktualizací je uloženo jako jednotlivé SSTable položky, které je třeba pravidelně slučovat. Tato situace může také vést k nižšímu výkonu čtení během komprimace. Tento dopad na výkon se v rozhraní API Cassandra neprovádí, protože rozhraní API neimplementuje komprimaci.
+- Pro Apache Cassandra je možné nastavit faktor replikace 1. Pokud ale jediný uzel s daty nefunguje, bude mít za následek nízkou dostupnost. Nejedná se o problém s rozhraní API Cassandra pro Azure Cosmos DB, protože je vždy faktor replikace 4 (kvorum 3).
+- Přidání nebo odebrání uzlů v Apache Cassandra vyžaduje ruční zásah, společně s vysokým využitím procesoru na novém uzlu, zatímco stávající uzly přesunují do nového uzlu některé z jeho rozsahů tokenů. Tato situace je stejná, pokud vyřadíte existující uzel z provozu. Rozhraní API Cassandra se ale škálují bez problémů zjištěných ve službě nebo v aplikaci.
+- V každém uzlu v clusteru není nutné nastavovat **num_tokens** jako v Apache Cassandra. Azure Cosmos DB plně spravuje uzly a rozsahy tokenů.
+- Rozhraní API Cassandra je plně spravovaná. Nepotřebujete příkazy **nodetool** , jako je třeba oprava a vyřazení z provozu, které se používají v Apache Cassandra.
 
 ## <a name="other-frequently-asked-questions"></a>Další nejčastější dotazy
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Jaká je verze protokolu podporovaná rozhraním AZURE Cosmos DB Cassandra API? Existuje plán na podporu jiných protokolů?
+### <a name="what-protocol-version-does-the-cassandra-api-support"></a>Jakou verzi protokolu podporuje rozhraní API Cassandra?
 
-Rozhraní API Azure Cosmos DB Cassandra podporuje rozhraní CQL verze 3.x. Je to CQL kompatibilita je založena na veřejném [apache cassandra github repozitář .](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile) Pokud máte zpětnou vazbu ohledně podpory jiných protokolů, dejte nám vědět prostřednictvím [hlasové zpětné vazby od uživatelů](https://feedback.azure.com/forums/263030-azure-cosmos-db) nebo pošlete e-mail na adresu [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
+Rozhraní API Cassandra pro Azure Cosmos DB podporuje CQL verze 3. x. Jeho kompatibilita s CQL je založená na veřejném [úložišti GitHubu Apache Cassandra](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile). Pokud máte zpětnou vazbu k podpoře dalších protokolů, dejte nám vědět prostřednictvím [zpětné vazby uživatele](https://feedback.azure.com/forums/263030-azure-cosmos-db) nebo odesláním [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)e-mailu.
 
-### <a name="why-is-choosing-a-throughput-for-a-table-a-requirement"></a>Proč je výběr propustnost pro tabulku požadavek?
+### <a name="why-is-choosing-throughput-for-a-table-a-requirement"></a>Proč zvolit propustnost pro tabulku, kterou požadujete?
 
-Azure Cosmos DB nastaví výchozí propustnost pro váš kontejner na základě toho, kde vytvoříte tabulku z – portálu nebo CQL.
-Azure Cosmos DB poskytuje záruky výkonu a latence s horní hranice na provoz. Tato záruka je možné, když modul můžete vynutit zásadsprávné zásady na operace klienta. Propustnost nastavení zajišťuje, že získáte garantovanou propustnost a latenci, protože platforma rezervuje tuto kapacitu a zaručuje úspěch provozu.
-Můžete [elasticky změnit propustnost,](manage-scale-cassandra.md) abyste mohli těžit ze sezónnosti vaší aplikace a ušetřit náklady.
+Azure Cosmos DB nastaví výchozí propustnost pro váš kontejner na základě místa, kde tabulku vytvoříte: Azure Portal nebo CQL.
 
-Koncept propustnost je vysvětleno v [jednotkách požadavků v azure cosmos DB](request-units.md) článku. Propustnost pro tabulku je distribuována napříč základní fyzické oddíly stejně.
+Azure Cosmos DB poskytuje záruky pro výkon a latenci s horními mezemi operací. Tyto záruky jsou možné i v případě, že modul může vyhovět zásadám správného řízení operací klienta. Nastavení propustnosti zajistí, že získáte zaručenou propustnost a latenci, protože platforma rezervuje tuto kapacitu a zaručuje úspěch operace.
+Můžete [elasticky měnit propustnost](manage-scale-cassandra.md) , abyste využili sezónnost vaší aplikace a ušetřili náklady.
 
-### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>Co je výchozí RU/s tabulky při vytvoření prostřednictvím CQL? Co když to budu muset změnit?
+Koncept propustnosti je vysvětlen v tématu [jednotky žádostí v Azure Cosmos DB](request-units.md) . Propustnost pro tabulku je rovnoměrně rozložená mezi příslušné fyzické oddíly.
 
-Azure Cosmos DB používá jednotky požadavků za sekundu (RU/s) jako měnu pro poskytování propustnost. Tabulky vytvořené prostřednictvím CQL mají 400 RU. ŽP můžete změnit z portálu.
+### <a name="what-is-the-throughput-of-a-table-thats-created-through-cql"></a>Jaká je propustnost tabulky, která je vytvořená prostřednictvím CQL?
+
+Azure Cosmos DB používá jednotky žádostí za sekundu (RU/s) jako měnu pro zajištění propustnosti. Tabulky vytvořené prostřednictvím CQL ve výchozím nastavení mají 400 RU. RU můžete změnit z Azure Portal.
 
 CQL
 
@@ -60,125 +61,132 @@ outgoingPayload["cosmosdb_provisioned_throughput"] = Encoding.UTF8.GetBytes(prov
 simpleStatement.SetOutgoingPayload(outgoingPayload);
 ```
 
-### <a name="what-happens-when-throughput-is-used-up"></a>Co se stane, když je využita propustnost?
+### <a name="what-happens-when-throughput-is-used-up"></a>Co se stane, když se propustnost využije?
 
-Azure Cosmos DB poskytuje záruky výkonu a latence s horní hranice na provoz. Tato záruka je možné, když modul můžete vynutit zásadsprávné zásady na operace klienta. To je možné na základě nastavení propustnosti, která zajišťuje, že získáte garantovanou propustnost a latenci, protože platforma rezervuje tuto kapacitu a zaručuje úspěch operace.
-Při překročení této kapacity se zobrazí přetížená chybová zpráva označující, že vaše kapacita byla vymásnuta.
-0x1001 Přetížené: požadavek nelze zpracovat, protože "Míra požadavků je velký". V tomto okamžiku je důležité zjistit, jaké operace a jejich objem způsobuje tento problém. Můžete získat představu o spotřebované kapacitě, která prochází zřízenou kapacitu s metrikami na portálu. Pak je třeba zajistit, že kapacita je spotřebována téměř stejně ve všech základních oddílech. Pokud se zobrazí většina propustnost je spotřebována jeden oddíl, máte zkosení pracovního vytížení.
+Azure Cosmos DB poskytuje záruky pro výkon a latenci s horními mezemi operací. Tyto záruky jsou možné i v případě, že modul může vyhovět zásadám správného řízení operací klienta. Nastavení propustnosti zajistí, že získáte zaručenou propustnost a latenci, protože platforma rezervuje tuto kapacitu a zaručuje úspěch operace.
 
-K dispozici jsou metriky, které ukazují, jak se propustnost používá v průběhu hodin, dnů a za sedm dní, napříč oddíly nebo v souhrnu. Další informace najdete [v tématu Monitorování a ladění s metrikami v Azure Cosmos DB](use-metrics.md).
+Po převzetí této kapacity se zobrazí následující chybová zpráva, která indikuje, že se vaše kapacita použila:
 
-Diagnostické protokoly jsou vysvětleny v článku [protokolování diagnostiky Azure Cosmos DB.](logging.md)
+**0x1001 přetížení: požadavek nejde zpracovat, protože frekvence požadavků je velká.** 
 
-### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Má primární klíč mapovat na koncept klíče oddílu Azure Cosmos DB?
+Je nutné zjistit, jaké operace (a jejich objem) způsobují tento problém. Můžete získat představu o využité kapacitě v rámci zřízené kapacity a metriky na Azure Portal. Pak je potřeba zajistit, aby byla kapacita spotřebována skoro stejně ve všech podkladových oddílech. Pokud vidíte, že jeden oddíl spotřebovává většinu propustností, máte k dispozici zešikmení úlohy.
 
-Ano, klíč oddílu se používá k umístění entity do správného umístění. V Azure Cosmos DB se používá k nalezení správného logického oddílu, který se ukládá na fyzickém oddílu. Koncept dělení je dobře vysvětleno v [oddílu a škálování v článku Azure Cosmos DB.](partition-data.md) Zásadní vzít pryč zde je, že logický oddíl by neměl jít přes 10-GB limit dnes.
+K dispozici jsou metriky, které ukazují, jak se propustnost používá za hodiny, za dny a za sedm dní, napříč oddíly nebo v agregaci. Další informace najdete v tématu [monitorování a ladění pomocí metrik v Azure Cosmos DB](use-metrics.md).
 
-### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Co se stane, když dostanu plnou kvótu" oznámení o tom, že oddíl je plný?
+Diagnostické protokoly jsou vysvětleny v článku [Azure Cosmos DB diagnostické protokolování](logging.md) .
 
-Azure Cosmos DB je systém založený na sla, který poskytuje neomezené škálování se zárukami latence, propustnosti, dostupnosti a konzistence. Toto neomezené úložiště je založeno na horizontálníškálování dat pomocí dělení jako klíčový koncept. Koncept dělení je dobře vysvětleno v [oddílu a škálování v článku Azure Cosmos DB.](partition-data.md)
+### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Mapuje primární klíč na klíč oddílu Azure Cosmos DB konceptu?
 
-Limit 10 GB na počet entit nebo položek na logický oddíl, které byste měli dodržovat. Chcete-li zajistit, že vaše aplikace škáluje dobře, doporučujeme *nevytvářet* aktivní oddíl uložením všech informací v jednom oddílu a dotazování. Tato chyba může přijít pouze v případě, že vaše data jsou zkosená:&nbsp;to znamená, že máte velké množství dat pro jeden klíč oddílu (více než 10 GB). Distribuci dat můžete najít pomocí portálu úložiště. Způsob, jak opravit tuto chybu, je znovu vytvořit tabulku a zvolit granulární primární (klíč oddílu), který umožňuje lepší distribuci dat.
+Ano, klíč oddílu se použije k umístění entity do správného umístění. V Azure Cosmos DB se používá k vyhledání správného logického oddílu, který je uložený na fyzickém oddílu. Koncept dělení se dobře vysvětluje v [oddílu a měřítku v Azure Cosmos DB](partition-data.md) článku. Základní poznatkem tady je, že logický oddíl by neměl jít o limit 10 GB.
 
-### <a name="is-it-possible-to-use-cassandra-api-as-key-value-store-with-millions-or-billions-of-individual-partition-keys"></a>Je možné použít Cassandra API jako úložiště hodnot klíčů s miliony nebo miliardami jednotlivých klíčů oddílů?
+### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>Co se stane, když získám oznámení, že je oddíl plný?
 
-Azure Cosmos DB můžete ukládat neomezená data horizontálním navýšením kapacity úložiště. To je nezávislé na propustnost. Ano, můžete vždy stačí použít Cassandra API pro ukládání a načítání klíče / hodnoty zadáním pravé primární / partition klíč. Tyto jednotlivé klíče získat své vlastní logický oddíl a sedět na vrcholu fyzického oddílu bez problémů.
+Azure Cosmos DB je systém založený na smlouvě o úrovni služeb (SLA). Poskytuje neomezenou škálu a zaručuje latenci, propustnost, dostupnost a konzistenci. Toto neomezené úložiště je založené na horizontálním škálování dat a používá dělení jako klíčové pojmy. Koncept dělení se dobře vysvětluje v [oddílu a měřítku v Azure Cosmos DB](partition-data.md) článku.
 
-### <a name="is-it-possible-to-create-more-than-one-table-with-apache-cassandra-api-of-azure-cosmos-db"></a>Je možné vytvořit více než jednu tabulku s Apache Cassandra API Azure Cosmos DB?
+U počtu entit nebo položek na logický oddíl byste měli dodržovat omezení o velikosti 10 GB. Aby se zajistilo, že se vaše aplikace dobře škáluje, doporučujeme, abyste nevytvořili aktivní oddíl tím, *že budete ukládat* všechny informace v jednom oddílu a dotazovat se na něj. Tato chyba se může nacházet jenom v případě, že jsou vaše data nakloněná: to znamená, že máte spoustu dat pro jeden klíč&nbsp;oddílu (víc než 10 GB). Distribuci dat můžete najít pomocí portálu úložiště. Tuto chybu lze vyřešit tak, že znovu vytvoříte tabulku a vyberete podrobný primární (klíč oddílu), který umožňuje lepší distribuci dat.
 
-Ano, je možné vytvořit více než jednu tabulku s Apache Cassandra API. Každá z těchto tabulek je považována za jednotku propustnost a úložiště.
+### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>Můžu použít rozhraní API Cassandra jako úložiště hodnot klíčů s miliony nebo miliardami klíčů oddílů?
 
-### <a name="is-it-possible-to-create-more-than-one-table-in-succession"></a>Je možné vytvořit více než jednu tabulku za sebou?
+Azure Cosmos DB může ukládat neomezená data tak, že se škáluje úložiště. Toto úložiště je nezávisle na propustnosti. Ano, rozhraní API Cassandra můžete vždy použít k ukládání a načítání klíčů a hodnot zadáním správného primárního klíče/oddílu. Tyto jednotlivé klíče získají svůj vlastní logický oddíl a základem fyzický oddíl bez problémů.
 
-Azure Cosmos DB je systém řízený prostředky pro aktivity dat i řízení roviny. Kontejnery jako kolekce, tabulky jsou runtime entity, které jsou zřízeny pro danou kapacitu propustnosti. Vytvoření těchto kontejnerů v rychlém sledu není očekávané aktivity a omezené. Pokud máte testy, které přetažení /vytvoření tabulky okamžitě, zkuste je rozmístit.
+### <a name="can-i-create-more-than-one-table-with-the-cassandra-api"></a>Můžu vytvořit více než jednu tabulku s rozhraní API Cassandra?
 
-### <a name="what-is-maximum-number-of-tables-that-can-be-created"></a>Co je maximální počet tabulek, které lze vytvořit?
+Ano, je možné vytvořit více než jednu tabulku s rozhraní API Cassandra. Každá z těchto tabulek je považována za jednotku pro propustnost a úložiště.
 
-Neexistuje žádný fyzický limit na počet tabulek, [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) pošlete e-mail, pokud máte velký počet tabulek (kde celková stabilní velikost přesahuje 10 TB dat), které je třeba vytvořit z obvyklých 10s nebo 100s.
+### <a name="can-i-create-more-than-one-table-in-succession"></a>Je možné vytvořit více než jednu tabulku v případě úspěchu?
 
-### <a name="what-is-the-maximum--of-keyspace-that-we-can-create"></a>Jaký je maximální počet keyspace, které můžeme vytvořit?
+Azure Cosmos DB je systém řízený prostředky pro aktivity dat i řízení. Kontejnery, jako jsou kolekce a tabulky, jsou běhové entity, které jsou zřízené pro danou kapacitu propustnosti. Vytváření těchto kontejnerů v rychlém úspěchu není očekávanou aktivitou a může být omezené. Pokud máte testy pro okamžité vyřazení nebo vytváření tabulek, zkuste je umístit na místo.
 
-Neexistuje žádný fyzický limit na počet klíčových prostorů, protože jsou [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) kontejnery metadat, pošlete e-mail na pokud máte velký počet klíčových prostorů z nějakého důvodu.
+### <a name="what-is-the-maximum-number-of-tables-that-i-can-create"></a>Jaký je maximální počet tabulek, které lze vytvořit?
 
-### <a name="is-it-possible-to-bring-in-lot-of-data-after-starting-from-normal-table"></a>Je možné přinést velké množství dat po spuštění z normální tabulky?
+Počet tabulek není nijak fyzickým omezením. Pokud máte velký počet tabulek (kde celková stálá velikost překročí 10 TB dat), která je potřeba vytvořit, ne běžné desítky nebo stovky, odešlete e-mail na [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)adresu.
 
-Ano, za předpokladu, že rovnoměrně distribuované oddíly, kapacita úložiště je automaticky spravována a zvyšuje, jak tlačit více dat. Takže můžete s jistotou importovat tolik dat, kolik potřebujete, bez správy a zřizování uzlů a další. Pokud však očekáváte velký nárůst dat, má větší smysl přímo [zjištdat očekávanou propustnost,](set-throughput.md) než ji spustit nižší a okamžitě ji zvýšit.
+### <a name="what-is-the-maximum-number-of-keyspaces-that-i-can-create"></a>Jaký je maximální počet míst, který můžu vytvořit?
 
-### <a name="is-it-possible-to-supply-yaml-file-settings-to-configure-apache-casssandra-api-of-azure-cosmos-db-behavior"></a>Je možné zadat nastavení souborů yaml ke konfiguraci apache casssandra API chování Azure Cosmos DB?
+Neexistuje žádný fyzický limit počtu prostorů klíčů, protože se jedná o kontejnery metadat. Pokud máte velký počet paměťových prostorů, odešlete e-mail na [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)adresu.
 
-Apache Cassandra API Azure Cosmos DB je služba platformy. Poskytuje kompatibilitu na úrovni protokolu pro provádění operací. Skrývá složitost správy, monitorování a konfigurace. Jako vývojář/uživatel se nemusíte starat o dostupnost, neplatné kameny, mezipaměť klíčů, mezipaměť řádků, filtr květů a množství dalších nastavení. Rozhraní Apache Cassandra rozhraní Azure Cosmos DB se zaměřuje na poskytování výkonu pro čtení a zápis, který potřebujete bez režie konfigurace a správy.
+### <a name="can-i-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>Můžu po spuštění z normální tabulky dostat spoustu dat?
 
-### <a name="will-apache-cassandra-api-for-azure-cosmos-db-support-node-additioncluster-statusnode-status-commands"></a>Bude apache cassandra API pro Azure Cosmos DB podporovat příkazy pro přidání uzlu/stav clusteru/stav uzlu?
+Ano. Za předpokladu stejnoměrně distribuovaných oddílů je kapacita úložiště automaticky spravovaná a při doručování do více dat se zvyšuje. Takže můžete bez obav naimportovat tolik dat, kolik potřebujete, aniž byste museli spravovat a zřizovat uzly a další. Pokud však očekáváte hodně bezprostředního nárůstu dat, je vhodnější přímo [zřídit předpokládanou propustnost](set-throughput.md) , a to ani začít rychleji a okamžitě zvýšit.
 
-Apache Cassandra API je platformová služba, která umožňuje plánování kapacity, reagovat na požadavky na elasticitu propustnosti & úložiště hračkou. S Azure Cosmos DB, kterou zřídíte propustnost, potřebujete. Pak můžete škálovat nahoru a dolů libovolný počet krát přes den bez obav o přidání / odstranění uzlů nebo jejich správu. To znamená, že nemusíte používat uzel, nástroj pro správu clusteru příliš.
+### <a name="can-i-use-yaml-file-settings-to-configure-api-behavior"></a>Můžu použít nastavení souboru YAML ke konfiguraci chování rozhraní API?
 
-### <a name="what-happens-with-respect-to-various-config-settings-for-keyspace-creation-like-simplenetwork"></a>Co se stane s ohledem na různá nastavení konfigurace pro vytvoření keyspace, jako je jednoduchý / síť?
+Rozhraní API Cassandra pro Azure Cosmos DB poskytuje kompatibilitu na úrovni protokolu pro provádění operací. Skrývá složitost správy, monitorování a konfigurace. Jako vývojář nebo uživatel se nemusíte starat o dostupnost, neplatnou hodnotu, mezipaměť klíčů, mezipaměť řádků, filtr Bloom a velké množství dalších nastavení. Rozhraní API Cassandra se zaměřuje na zajištění výkonu čtení a zápisu, které potřebujete, bez režie konfigurace a správy.
 
-Azure Cosmos DB poskytuje globální distribuci po vybalení z důvodu dostupnosti a nízké latence. Není nutné nastavit repliky nebo jiné věci. Všechny zápisy jsou vždy trvale kvorum potvrzena v jakékoli oblasti, kde píšete při poskytování záruk výkonu.
+### <a name="will-the-cassandra-api-support-node-addition-cluster-status-and-node-status-commands"></a>Bude rozhraní API Cassandra podporovat příkazy pro přidání uzlu, stav clusteru a stav uzlu?
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gc_grace-compression-memtable_flush_period-and-more"></a>Co se stane s ohledem na různá nastavení metadat tabulky, jako je filtr květu, ukládání do mezipaměti, čtení změn oprav, gc_grace, kompresní memtable_flush_period a další?
+Rozhraní API Cassandra zjednodušuje plánování kapacity a reaguje na požadavky na pružnost v případě propustnosti a úložiště. S Azure Cosmos DB zřizujete propustnost, kterou potřebujete. Pak můžete v průběhu dne kdykoli škálovat a snížit množství, aniž byste se museli starat o přidávání, odstraňování nebo správu uzlů. Nemusíte používat nástroje pro správu uzlů a clusterů.
 
-Azure Cosmos DB poskytuje výkon pro čtení a zápisy a propustnost bez nutnosti dotýkat se libovolného nastavení konfigurace a náhodně s nimi manipulovat.
+### <a name="what-happens-with-various-configuration-settings-for-keyspace-creation-like-simplenetwork"></a>Co se stane s různými nastaveními konfigurace pro vytvoření prostoru, jako je jednoduchá síť nebo síť?
 
-### <a name="is-time-to-live-ttl-supported-for-cassandra-tables"></a>Je pro tabulky Cassandra podporován a aktivní čas (TTL)?
+Azure Cosmos DB poskytuje globální distribuci z okna pro účely dostupnosti a nízké latence. Nemusíte nastavovat repliky ani jiné věci. Zápisy jsou vždy trvale kvorum potvrzené v jakékoli oblasti, kde píšete, a přitom poskytují záruky na výkon.
 
-Ano, ttl je podporován.
+### <a name="what-happens-with-various-settings-for-table-metadata"></a>Co se stane s různými nastaveními pro metadata tabulky?
 
-### <a name="is-it-possible-to-monitor-node-status-replica-status-gc-and-os-parameters-earlier-with-various-tools-what-needs-to-be-monitored-now"></a>Je možné sledovat stav uzlu, stav repliky, gc a parametry operačního serveru dříve pomocí různých nástrojů? Co je třeba nyní sledovat?
+Azure Cosmos DB poskytuje záruky výkonu pro čtení, zápisy a propustnost. Nemusíte si dělat starosti se zabývat libovolnými konfiguračními nastaveními a omylem manipulovat. Mezi tato nastavení patří filtr Bloom, ukládání do mezipaměti, možnost opravy gc_grace a komprese memtable_flush_period.
 
-Azure Cosmos DB je platformová služba, která vám pomůže zvýšit produktivitu a nemusíte se starat o správu a monitorování infrastruktury. Stačí se postarat o propustnost, která je k dispozici na portálu metriky najít, pokud jste stále omezené a zvýšit nebo snížit, že propustnost.
-Monitor [SLA](monitor-accounts.md).
-Použití [metrik y](use-metrics.md) Použít diagnostické [protokoly](logging.md).
+### <a name="is-time-to-live-supported-for-cassandra-tables"></a>Je pro tabulky Cassandra podporováno TTL (Time to Live)?
 
-### <a name="which-client-sdks-can-work-with-apache-cassandra-api-of-azure-cosmos-db"></a>Které klientské sady SDK můžou pracovat s rozhraním Apache Cassandra API Azure Cosmos DB?
+Ano, hodnota TTL je podporována.
 
-Ovladače klientů Apache Cassandra SDK, které používají CQLv3, byly použity pro klientské programy. Pokud máte další ovladače, které používáte, nebo pokud [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)čelíte problémům, pošlete e-mail na adresu .
+### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>Jak můžu monitorovat infrastrukturu spolu s propustností?
 
-### <a name="is-composite-partition-key-supported"></a>Je složený klíč oddílu podporován?
+Azure Cosmos DB je služba platformy, která vám pomůže zvýšit produktivitu a nedělejte si starosti se správou a monitorováním infrastruktury. Například nemusíte monitorovat stav uzlu, stav repliky, GC a parametry operačního systému dříve s různými nástroji. Stačí jenom zajistit propustnost, která je k dispozici v metrikách portálu, abyste viděli, jestli se vám omezilo omezení, a pak tuto propustnost zvýšíte nebo snížíte. Můžete:
 
-Ano, k vytvoření složeného klíče oddílu můžete použít běžnou syntaxi.
+- Monitorovat [SLA](monitor-accounts.md)
+- Použití [metrik](use-metrics.md)
+- Použití [diagnostických protokolů](logging.md)
 
-### <a name="can-i-use-sstableloader-for-data-loading"></a>Mohu použít sstableloader pro načítání dat?
+### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Které klientské sady SDK můžou pracovat s rozhraní API Cassandra?
 
-Ne, sstableloader není podporován.
+Ovladače klienta sady Apache Cassandra SDK, které používají CQLv3, byly použity pro klientské programy. Pokud máte jiné ovladače, které používáte, nebo pokud máte potíže, odešlete e-mail na [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
 
-### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>Může být místní cluster Apache Cassandra spárován s rozhraním Cassandra rozhraní Azure Cosmos DB?
+### <a name="are-composite-partition-keys-supported"></a>Jsou podporovány klíče kompozitního oddílu?
 
-V současné době má Azure Cosmos DB optimalizované prostředí pro cloudové prostředí bez režie operací. Pokud požadujete párování, pošlete poštu [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) s popisem scénáře. Pracujeme na nabídce, která vám pomůže spárovat místní/jiný cloudový cluster Cassandra s rozhraním Cassandra API společnosti Cosomos DB.
+Ano, k vytvoření klíčů složených oddílů můžete použít běžnou syntaxi.
 
-### <a name="does-cassandra-api-provide-full-backups"></a>Poskytuje rozhraní CASSANDRA API úplné zálohy?
+### <a name="can-i-use-sstableloader-for-data-loading"></a>Můžu použít sstableloader k načítání dat?
 
-Azure Cosmos DB poskytuje dvě bezplatné úplné zálohy pořízené v intervalu čtyři hodiny dnes ve všech rozhraních API. Tím zajistíte, že nemusíte nastavovat plán zálohování a další věci.
-Pokud chcete upravit uchovávání informací a frekvenci, pošlete e-mail nebo [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) vyvoláte případ podpory. Informace o možnosti zálohování je k dispozici v [automatické zálohování online a obnovení pomocí Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) článku.
+Ne, sstableloader se nepodporuje.
 
-### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Jak zpracovává účet rozhraní API Cassandra převzetí služeb při selhání, pokud dojde k selhání oblasti?
+### <a name="can-i-pair-an-on-premises-apache-cassandra-cluster-with-the-cassandra-api"></a>Můžu párovat místní cluster Apache Cassandra pomocí rozhraní API Cassandra?
 
-Rozhraní API Azure Cosmos DB Cassandra si půjčuje z globálně distribuované platformy Azure Cosmos DB. Chcete-li zajistit, aby vaše aplikace mohla tolerovat prostoje datového centra, povolte alespoň jednu další oblast pro účet na portálu Azure Cosmos DB [Vývoj s účty Azure Cosmos DB s více oblastmi](high-availability.md). Prioritu oblasti můžete nastavit pomocí portálu [Vývoj s účty Azure Cosmos DB s více oblastmi](high-availability.md).
+V současné době Azure Cosmos DB má optimalizované prostředí pro cloudové prostředí bez režie provozu. Pokud požadujete párování, pošlete e-mail na [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) popis vašeho scénáře. Pracujeme na nabídce, která vám pomůžou spárovat místní nebo cloudový cluster Cassandra s rozhraní API Cassandra pro Azure Cosmos DB.
 
-Můžete přidat libovolný počet oblastí pro účet a řídit, kde může převzít služby při selhání, a to poskytnutím priority převzetí služeb při selhání. Chcete-li použít databázi, musíte také zadat aplikaci. Pokud tak učiníte, vaši zákazníci nebudou mít prostoje.
+### <a name="does-the-cassandra-api-provide-full-backups"></a>Poskytuje rozhraní API Cassandra úplné zálohy?
 
-### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Indexuje rozhraní API Apache Cassandra ve výchozím nastavení všechny atributy entity?
+Azure Cosmos DB poskytuje dvě bezplatné zálohy, které jsou pořízeny ve čtyřnásobných intervalech napříč všemi rozhraními API. Takže nemusíte nastavovat plán zálohování. 
 
-Ne. Cassandra API podporuje [sekundární indexy](cassandra-secondary-index.md), které se chovají velmi podobně jako Apache Cassandra. Ve výchozím nastavení neindexuje každý atribut.  
+Pokud chcete upravit dobu uchovávání a četnosti, odešlete [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) e-mailem nebo vyvolejte případ podpory. Informace o možnostech zálohování najdete v článku [automatické online zálohování a obnovení pomocí Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) .
 
+### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Jak účet rozhraní API Cassandra zpracovává převzetí služeb při selhání, pokud dojde k výpadku oblasti?
 
-### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Lze použít nový Cassandra API SDK místně s emulátorem?
+Rozhraní API Cassandra se vypůjčuje z globálně distribuované platformy Azure Cosmos DB. Chcete-li zajistit, aby vaše aplikace mohla tolerovat výpadky datového centra, povolte pro účet v Azure Portal alespoň jednu další oblast. Další informace najdete v tématu [Vysoká dostupnost pomocí Azure Cosmos DB](high-availability.md).
 
-Ano, to to je podporováno. Podrobnosti o tom, jak to povolit, naleznete [zde](local-emulator.md#cassandra-api)
+Pro účet můžete přidat tolik oblastí, kolik chcete, a určit, kde při převzetí služeb při selhání bude možné převzít služby při selhání. Chcete-li použít databázi, je nutné zadat také aplikaci. Když to uděláte, vaši zákazníci nebudou mít žádný výpadek.
 
+### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Má rozhraní API Cassandra index všechny atributy entity ve výchozím nastavení?
 
-### <a name="how-can-i-migrate-data-from-their-apache-cassandra-clusters-to-cosmos-db"></a>Jak mohu migrovat data z jejich clusterů Apache Cassandra do Cosmos DB?
-
-O možnostech migrace si můžete přečíst [zde](cassandra-import-data.md).
+Ne. Rozhraní API Cassandra podporuje [sekundární indexy](cassandra-secondary-index.md), které se chovají podobně jako Apache Cassandra. Rozhraní API ve výchozím nastavení neindexuje každý atribut.  
 
 
-### <a name="feature-x-of-regular-cassandra-api-isnt-working-as-today-where-can-the-feedback-be-provided"></a>Funkce x pravidelného Rozhraní API Cassandra nefunguje jako dnes, kde může být poskytnuta zpětná vazba?
+### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Můžu novou rozhraní API Cassandra sadu SDK použít lokálně s emulátorem?
 
-Poskytněte zpětnou vazbu prostřednictvím [hlasové zpětné vazby od uživatelů](https://feedback.azure.com/forums/263030-azure-cosmos-db).
+Ano, tato možnost je podporována. Podrobnosti o tom, jak to povolit, najdete v článku [použití emulátoru Azure Cosmos pro místní vývoj a testování](local-emulator.md#cassandra-api) .
+
+
+### <a name="how-can-i-migrate-data-from-apache-cassandra-clusters-to-azure-cosmos-db"></a>Jak mohu migrovat data z clusterů Apache Cassandra do Azure Cosmos DB?
+
+Informace o možnostech migrace najdete v článku [migrace dat do rozhraní API Cassandra účtu v Azure Cosmos DB](cassandra-import-data.md) kurzu.
+
+
+### <a name="where-can-i-give-feedback-on-cassandra-api-features"></a>Kde můžu sdělit svůj názor na funkce rozhraní API Cassandra?
+
+Poskytněte zpětnou vazbu pomocí [hlasu pro uživatele](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 [azure-portal]: https://portal.azure.com
 [query]: sql-api-sql-query.md
 
 ## <a name="next-steps"></a>Další kroky
 
-- Začínáme s [elastickým škálováním účtu rozhraní API Azure Cosmos DB Cassandra](manage-scale-cassandra.md).
+- Začněte s [elastickým škálováním Azure Cosmos DB rozhraní API Cassandra účet](manage-scale-cassandra.md).

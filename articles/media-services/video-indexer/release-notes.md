@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 07046d181e8e83e0271cb78cfb182df4e76980b5
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115512"
+ms.locfileid: "82131212"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -65,7 +65,7 @@ V nadcházejících týdnech ji změníme a vrátíme adresu URL [video indexer 
     * Nahrazení adresy URL adresou URL odkazující na rozhraní API widgetů Video Indexer (například [pomůcka Insights](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * Pomocí webu Video Indexer Vygenerujte novou vloženou adresu URL:
          
-         Kliknutím na tlačítko **Přehrát** přejděte na stránku vašeho videa – > klikněte ** &lt;na&gt; vložit** – > zkopírovat adresu URL do aplikace:
+         Stisknutím tlačítka **Přehrát** přejděte na stránku videa – > klikněte na ** &lt; / &gt; ** tlačítko pro vložení – > zkopírujte adresu URL do vaší aplikace:
    
     Regionální adresy URL nejsou podporované a v nadcházejících týdnech se zablokují.
 

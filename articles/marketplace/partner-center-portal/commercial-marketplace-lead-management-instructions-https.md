@@ -1,48 +1,48 @@
 ---
-title: Koncový bod HTTPS | Azure Marketplace
-description: Nakonfigurujte správu zájemců pro koncový bod HTTPS.
+title: Microsoft Commercial Marketplace – Správa potenciálních zákazníků pomocí protokolu HTTPS
+description: Konfigurace vedoucího komerčního tržiště Microsoftu pro koncový bod HTTPS
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 33359883df86091120295b93618a13476e428d2f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1c3337e970fdbb22cb1ed88f105d5e7798a68f74
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262527"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133733"
 ---
-# <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurace správy potenciálních zákazníků pomocí koncového bodu HTTPS
+# <a name="configure-lead-management-by-using-an-https-endpoint"></a>Konfigurace správy potenciálních zákazníků pomocí koncového bodu HTTPS
 
->[!Note]
->Konektor Power Automate použitý v těchto pokynech vyžaduje placené předplatné Power Automate. Před použitím pokynů v tomto dokumentu to prosím zúčtujte.
+>[!NOTE]
+>Konektor Power automat používaný v těchto pokynech vyžaduje placené předplatné k automatizaci. Než budete postupovat podle pokynů v tomto článku, ujistěte se, že tento účet máte.
 
-Pokud váš systém správy vztahů se zákazníky (CRM) není explicitně podporován v Centru partnerů pro příjem potenciálních zákazníků Azure Marketplace a AppSource, můžete k zpracování těchto zájemců použít koncový bod HTTPS v Power Automate. S koncovým bodem HTTPS mohou být tito zájemci odesláni jako e-mailové oznámení nebo mohou být zapsáni do systému správy vztahů se zákazníky (CRM) podporovaného power automatem. Pokyny v tomto článku vás provedou základním procesem k vytvoření nového toku pomocí power automatu, který vygeneruje adresu URL HTTP POST, kterou zadáte do portálu pro publikování pro pole URL adresy URL pro správu zájemců > **HTTPS.** Také jsou zahrnuty pokyny, jak můžete vyzkoušet svůj tok pomocí nástroje s názvem [Pošťák,](https://www.getpostman.com/downloads/) který lze nalézt na internetu.
+Pokud se v partnerském centru nepodporuje Podniková správa vztahů se zákazníky (CRM) pro příjem Microsoft AppSource a Azure Marketplace potenciálních zákazníků, můžete tyto zájemce zpracovat pomocí koncového bodu HTTPS v Power automatu. Pomocí koncového bodu HTTPS je možné tyto zájemce odeslat jako e-mailové oznámení nebo je můžete zapsat do systému CRM, který podporuje Power automat. Pokyny v tomto článku vás seznámí se základním procesem vytvoření nového toku pomocí Power Automate, který vygeneruje adresu URL post protokolu HTTP, kterou zadáte na portál pro publikování pro pole > **Adresa URL koncového bodu** **správy potenciálních zákazníků**. K dispozici jsou také pokyny, jak testovat tok pomocí nástroje označovaného jako " [Poster](https://www.getpostman.com/downloads/)", který je k dispozici online.
 
-## <a name="create-a-flow-using-power-automate"></a>Vytvoření toku pomocí power automatu
+## <a name="create-a-flow-by-using-power-automate"></a>Vytvoření toku pomocí Power automatizuje
 
-1. Otevřete webovou stránku [Flow.](https://flow.microsoft.com/) Vyberte **Přihlásit**se , nebo pokud ještě nemáte účet, vyberte **Zaregistrovat se zdarma** a vytvořte si bezplatný účet Flow.
+1. Otevřete webovou stránku [Power automatizováno](https://flow.microsoft.com/) . Vyberte **Sign in** (Přihlásit se). Pokud ještě nemáte účet, vyberte **zaregistrovat se zdarma** a vytvořte si bezplatný účet Power Automatizujte.
 
-2. Přihlaste se a na řádku nabídek vyberte **Moje toky.**
+1. Přihlaste se a v nabídce vyberte **Moje toky** .
 
-3. Vyberte **+Automatizovat - z prázdné**.
+1. Vyberte **+ automatizovaná – z prázdné**.
 
-    ![Moje toky + Automatizovaná - z prázdného místa](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
+    ![Moje toky + automatizovaná – od prázdná](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-4. V okně *Sestavení automatického toku* vyberte **přeskočit**. 
+1. V okně **sestavit automatizovaný tok** vyberte **Přeskočit**. 
 
-    ![Vytváření automatizovaného toku – přeskočit](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
+    ![Tlačítko pro přeskočení okna pro automatické sestavování toku](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
 
-5. Do pole Hledat konektory a aktivační události zadejte "request" pro **vyhledání** konektoru Požadavku.
-6. V části *Triggers*vyberte **Při přijetí požadavku HTTP**. 
+1. Do pole **vyhledávací konektory a triggery** zadejte **požadavek** na vyhledání konektoru požadavků.
+1. V části **triggery**vyberte, **kdy se přijme požadavek HTTP**. 
 
-    ![konektor požadavku - aktivační události](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
+    ![Nabídka triggery](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
 
-7. Při přijetí *požadavku HTTP okno* zkopírujte a vložte schéma JSON níže do textového pole Text požadavku **JSON schéma.** Toto schéma používá společnost Microsoft k obsahují data zájemce.
+1. V okně **když se přijme požadavek HTTP** , zkopírujte a vložte následující schéma JSON do textového pole **schématu JSON textu žádosti** . Toto schéma používá společnost Microsoft k tomu, aby obsahovalo vaše údaje o vašich potenciálních datech.
 
-    ![konektor požadavku - aktivační události](./media/commercial-marketplace-lead-management-instructions-https/https-request-received.png)
+    ![Textové pole pro schéma JSON textu žádosti](./media/commercial-marketplace-lead-management-instructions-https/https-request-received.png)
 
     **Schéma JSON**
 
@@ -103,121 +103,120 @@ Pokud váš systém správy vztahů se zákazníky (CRM) není explicitně podpo
     }
     ```
 
->[!Note]
->V tomto okamžiku v konfiguraci můžete vybrat buď připojení k systému CRM nebo konfiguraci e-mailové oznámení. Postupujte podle zbývajících pokynů na základě vašeho výběru.
+>[!NOTE]
+>V této chvíli můžete v konfiguraci vybrat možnost připojení k systému CRM nebo nakonfigurovat e-mailové oznámení. Postupujte podle dalších pokynů na základě vašeho výběru.
 
-### <a name="to-connect-to-a-crm-system"></a>Připojení k systému CRM
+### <a name="connect-to-a-crm-system"></a>Připojení k systému CRM
 
 1. Vyberte **+ Nový krok**.
-2. Vyberte systém CRM podle vašeho výběru vyhledáním na něm tam, kde je uvedeno *Hledat konektory a akce*, a vyberte jej v části *Akce* s akcí pro vytvoření nového záznamu. Následující snímek obrazovky ukazuje **Dynamics 365 - Vytvoření** nového záznamu jako příklad.
+1. Zvolte systém CRM podle vašeho výběru, a to tak, že ho vyhledáte, kde říkají **spojnice a akce hledání**. Na kartě **Akce** vyberte tuto akci pro vytvoření nového záznamu. Následující obrazovka ukazuje jako příklad **Vytvoření nového záznamu (Dynamics 365)** .
 
     ![Vytvoření nového záznamu](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
 
-3. Zadejte **název organizace** přidružený k systému CRM. V rozevíracím seznamu Název entity vyberte **Zájemce.** **Entity Name**
+1. Zadejte **název organizace** , který je přidružený k systému CRM. V rozevíracím seznamu **název entity** vyberte **zájemci** .
 
-    ![Vybrat zájemce](./media/commercial-marketplace-lead-management-instructions-https/select-leads.png)
+    ![Vybrat potenciální zákazníky](./media/commercial-marketplace-lead-management-instructions-https/select-leads.png)
 
-4. Tok zobrazuje formulář pro poskytování informací o zájemcích. Položky ze vstupní žádosti můžete mapovat tak, že přidáte dynamický obsah. Následující snímek obrazovky zobrazuje **OfferTitle** jako příklad.
+1. Power automatizuje zobrazuje formulář pro poskytování informací o potenciálních vedoucích. Položky ze vstupní žádosti můžete mapovat tak, že vyberete možnost Přidat dynamický obsah. Na následující obrazovce vidíte **OfferTitle** jako příklad.
 
     ![Přidat dynamický obsah](./media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png)
 
-5. Namapujte požadovaná pole a pak vyberte **Uložit,** chcete-li tok uložit. Adresa URL HTTP POST je vytvořena a je přístupná v okně *Při přijetí požadavku HTTP.* Zkopírujte tuto adresu URL pomocí ovládacího prvku copy, který je umístěn vpravo od adresy URL HTTP POST - to je důležité, abyste omylem nezmeškali žádnou část celé adresy URL. Uložte tuto adresu URL podle potřeby při konfiguraci správy zájemců na portálu pro publikování.
+1. Namapujte pole, která chcete, a pak vyberte **Uložit** . tím se váš tok uloží. Vytvoří se adresa URL POST protokolu HTTP a je dostupná v okně **při přijetí požadavku HTTP** . Zkopírujte tuto adresu URL pomocí ovládacího prvku kopírování, který je umístěn napravo od adresy URL HTTP POST. Použití ovládacího prvku kopírování je důležité, takže nemůžete přijít o žádnou část celé adresy URL. Tuto adresu URL uložte, protože ji budete potřebovat při konfiguraci správy potenciálních zákazníků na portálu pro publikování.
 
-    ![Při přijetí požadavku HTTP.](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
+    ![Při přijetí požadavku HTTP](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
 
-### <a name="to-set-up-email-notification"></a>Nastavení e-mailového oznámení
+### <a name="set-up-email-notification"></a>Nastavení e-mailového oznámení
 
-1. Nyní, když jste dokončili schéma JSON, vyberte **+ Nový krok**.
-2. V části **Zvolit akci**vyberte **Akce**.
-3. V části **Akce**vyberte **Odeslat e-mail (Office 365 Outlook).**
+1. Teď, když jste dokončili schéma JSON, vyberte **+ Nový krok**.
+1. V části **zvolit akci**vyberte **Akce**.
+1. Na kartě **Akce** vyberte **Odeslat e-mail (Office 365 Outlook)**.
 
-    >[!Note]
-    >Pokud chcete použít jiného poskytovatele e-mailu, vyhledejte a místo toho jako akci vyberte *Odeslat e-mailové oznámení (E-mail).*
+    >[!NOTE]
+    >Pokud chcete použít jiného poskytovatele e-mailu, vyhledejte a vyberte **Odeslat e-mailové oznámení (e-mail)** jako akci.
 
-    ![Přidání akce e-mailu](./media/commercial-marketplace-lead-management-instructions-https/https-request-received-send-email.png)
+    ![Přidat akci e-mailu](./media/commercial-marketplace-lead-management-instructions-https/https-request-received-send-email.png)
 
-4. V okně **Odeslat e-mail** nakonfigurujte následující povinná pole:
+1. V okně **Odeslat e-mail** nakonfigurujte následující povinná pole:
 
-   - **Chcete-li** zadat alespoň jednu platnou e-mailovou adresu, kam budou zájemci odesláni.
-   - **Předmět** – tok vám dává možnost přidat dynamický obsah, například **LeadSource** v následujícím snímání obrazovky. Začněte zadáním názvu pole a kliknutím na seznam výběrů dynamický obsah v automaticky otevíraném okně. 
+   - **Do**: Zadejte alespoň jednu platnou e-mailovou adresu, kam budou odesílány zájemci.
+   - **Předmět**: Power Automate vám dává možnost Přidat dynamický obsah, jako je například **LeadSource** , na následující obrazovce. Začněte zadáním názvu pole. Pak v automaticky otevíraném okně vyberte seznam pro výběr dynamického obsahu. 
 
-        >[!Note] 
-        > Při přidávání názvů polí můžete každý z nich sledovat pomocí klávesy " a potom zadat a vytvořit nový řádek. Jakmile přidáte názvy polí, můžete přidat každý přidružený parametr z dynamického seznamu vyskladnění.
+        >[!NOTE] 
+        > Při přidávání názvů polí můžete každý název sledovat dvojtečkou (:) a pak vyberte **ENTER** a vytvořte nový řádek. Po přidání názvů polí můžete přidat každý přidružený parametr ze seznamu dynamického výběru.
 
-        ![Přidání akce e-mailu pomocí dynamického obsahu](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
+        ![Přidání e-mailové akce pomocí dynamického obsahu](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **Tělo** – ze seznamu výběru dynamického obsahu přidejte požadované informace do textu e-mailu. Například Příjmení, Jméno, E-mail a Společnost. <br> <br> Po dokončení nastavení e-mailového oznámení bude vypadat jako příklad v následujícím zachycení obrazovky.
+   - **Tělo**: ze seznamu pro výběr dynamického obsahu přidejte do textu e-mailu požadované informace. Použijte například LastName, FirstName, E-mail a společnost. Až budete s nastavením e-mailového oznámení hotovi, vypadá to jako na příkladu na následující obrazovce.
 
 
-       ![Přidání akce e-mailu](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
+       ![Příklad e-mailových oznámení](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
 
-5. Chcete-li dokončit tok, vyberte **uložit.** Adresa URL HTTP POST je vytvořena a je přístupná v okně *Při přijetí požadavku HTTP.* Zkopírujte tuto adresu URL pomocí ovládacího prvku copy, který je umístěn vpravo od adresy URL HTTP POST - to je důležité, abyste omylem nezmeškali žádnou část celé adresy URL. Uložte tuto adresu URL podle potřeby při konfiguraci správy zájemců na portálu pro publikování.
+1. Kliknutím na **Uložit** dokončete tok. Vytvoří se adresa URL POST protokolu HTTP a je dostupná v okně **při přijetí požadavku HTTP** . Zkopírujte tuto adresu URL pomocí ovládacího prvku kopírování, který je umístěn napravo od adresy URL HTTP POST. Použití tohoto ovládacího prvku je důležité, takže nemůžete přijít o žádnou část celé adresy URL. Tuto adresu URL uložte, protože ji budete potřebovat při konfiguraci správy potenciálních zákazníků na portálu pro publikování.
 
-   ![HTTP POST URL ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
+   ![ADRESA URL PRO POST HTTP](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
 
 ### <a name="testing"></a>Testování
 
-Můžete otestovat, že vše funguje podle očekávání pomocí následujících kroků pomocí nástroje s názvem [Postman](https://app.getpostman.com/app/download/win64), který lze stáhnout online. To je k dispozici pro Windows. 
+Můžete otestovat, že vše funguje podle očekávání, pomocí nástroje označovaného jako " [Poster](https://app.getpostman.com/app/download/win64)", který lze stáhnout online. Tento nástroj je k dispozici pro Windows. 
 
-1. Spusťte Pošťák a vyberte **Nový** > **požadavek** pro nastavení testovacího nástroje. 
+1. Spusťte příkaz post a vyberte **Nový** > **požadavek** a nastavte si testovací nástroj. 
 
-   ![Žádost o nastavení testovacího nástroje](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
+   ![Požadavek na nastavení testovacího nástroje](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 
-2. Vyplňte formulář *Uložit požadavek* a pak **uložte** do složky, kterou jste vytvořili.
+1. Vyplňte formulář **Uložit žádost** a pak ho uložte do složky, kterou jste vytvořili.
 
-   ![Uložení požadavku](./media/commercial-marketplace-lead-management-instructions-https/postman-save-to-test.png)
+   ![Formulář pro uložení žádosti](./media/commercial-marketplace-lead-management-instructions-https/postman-save-to-test.png)
 
-3. V rozevíracím seznamu vyberte **POST.** 
+1. V rozevíracím seznamu vyberte **Odeslat** . 
 
-   ![Otestujte můj tok](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
+   ![Test toku](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-4. Vložte adresu URL HTTP POST z toku, který jste vytvořili v Power Automate, kde je uvedeno *Enter request URL*.
+1. Vložte adresu URL POST protokolu HTTP z toku, který jste vytvořili v části Power Automate, kde uvádí **adresu URL žádosti**.
 
-   ![Vložení adresy URL HTTP POST](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
+   ![Vložit adresu URL pro POST HTTP](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
-5. Vraťte se do [flow](https://flow.microsoft.com/) a najděte tok, který jste vytvořili pro odesílání zájemců, a přejděte na **můj toky** z panelu nabídek Tok.  Vyberte 3 tečky vedle názvu toku a vyberte **Upravit**.
+1. Vraťte se k [Power](https://flow.microsoft.com/)automatu. V řádku nabídek Power Automate můžete vyhledat tok, který jste vytvořili pro odesílání zájemců, a to tak, že kliknete na **Moje toky** . Vyberte tři tečky vedle názvu toku a zobrazte další možnosti a vyberte **Upravit**.
 
-   ![Moje toky - Upravit](./media/commercial-marketplace-lead-management-instructions-https/my-flows-edit.png)
 
-6. V pravém horním rohu vyberte **Testovat,** vyberte možnost "Prováděj akci aktivační události" a pak vyberte **Testovat**. V horní části obrazovky se zobrazí údaj, který označuje, že test byl zahájen
+1. V pravém horním rohu vyberte **test** , vyberte možnost **provede akci aktivace**a pak vyberte **test**. V horní části obrazovky uvidíte indikaci, že byl test spuštěn.
 
-   ![Zkušební průtok - aktivační událost](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
+   ![Provedem možnost Akce triggeru](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
 
-7. Vraťte se do aplikace Postman a vyberte **Odeslat** vedle místa, kam jste vložili adresu URL HTTPS.
+1. Vraťte se do aplikace pro odesílání a vyberte **Odeslat**.
 
-   ![Otestovat můj tok - Odeslat](./media/commercial-marketplace-lead-management-instructions-https/postman-send.png)
+   ![Tlačítko Odeslat](./media/commercial-marketplace-lead-management-instructions-https/postman-send.png)
 
-8. Vraťte se do svého toku a zkontrolujte výsledek. Pokud vše funguje podle očekávání, zobrazí se zpráva oznamující, že byla úspěšná.
+1. Vraťte se ke svému toku a podívejte se na výsledek. Pokud vše funguje podle očekávání, zobrazí se zpráva, která indikuje, že tok byl úspěšný.
 
-   ![Tok – kontrola výsledků](./media/commercial-marketplace-lead-management-instructions-https/my-flow-check-results.png)
+   ![Výsledky kontroly](./media/commercial-marketplace-lead-management-instructions-https/my-flow-check-results.png)
 
-9. Měli jste také obdržet e-mail. Zkontrolujte e-mailovou schránku. 
+1. Měli byste mít také přijatý e-mail. Prohlédněte si e-mailové doručené pošty. 
 
-    >[!Note] 
-    >Pokud nevidíte e-mail z testu, zkontrolujte složky se spamem a nevyžádanou poštou. Níže si všimnete pouze pole štítky, které jste přidali při konfiguraci e-mailové oznámení. Pokud by se jednalo o skutečného zájemce generovaného z vaší nabídky, viděli byste také skutečné informace z kontaktu zájemce v těle a v řádku Předmět.
+    >[!NOTE] 
+    >Pokud nevidíte e-mail od testu, zkontrolujte nevyžádanou poštu a složky Nevyžádaná pošta. Na následující obrazovce si všimnete pouze popisků polí, které jste přidali při konfiguraci e-mailového oznámení. Pokud se jednalo o skutečného zájemce vygenerovaného vaší nabídkou, zobrazí se vám také aktuální informace z kontaktu zájemce v textu a na řádku předmětu.
 
-   ![Přijatý e-mail](./media/commercial-marketplace-lead-management-instructions-https/email-received.png)
+   ![E-mail přijat](./media/commercial-marketplace-lead-management-instructions-https/email-received.png)
 
-## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Konfigurace nabídky pro odesílání zájemců do koncového bodu HTTPS
+## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Konfigurace nabídky pro odeslání zájemců do koncového bodu HTTPS
 
-Až budete připraveni nakonfigurovat informace o správě zájemců pro vaši nabídku na portálu pro publikování, postupujte podle následujících kroků:
+Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši nabídku na portálu pro publikování, postupujte podle těchto kroků.
 
-1. Přejděte na stránku **Nastavení nabídky** pro vaši nabídku.
-2. V části Správa zájemců vyberte **Připojit.**
-3. V rozbalovacím okně Podrobnosti o připojení vyberte **koncový bod HTTPS** pro cíl **zájemce** a vložte do adresy URL HTTP POST z toku, který jste vytvořili podle předchozích kroků do pole **URL koncového bodu HTTPS.**
-4. **Kontaktní e-mail** – Poskytněte e-maily lidem ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Můžete poskytnout více e-mailů tím, že je oddělíte středníkem.
-5. Vyberte **OK**.
+1. Pro vaši nabídku přejdete na stránku **nastavení nabídek** .
+1. V části **Správa zájemců** vyberte **připojit** .
+1. V místním okně **Podrobnosti připojení** vyberte pro **cíl zájemce** **koncový bod HTTPS** . Vložte adresu URL POST protokolu HTTP z toku, který jste vytvořili, pomocí předchozích kroků do pole **Adresa URL koncového bodu https** .
+1. V části **kontaktní e-mail**zadejte e-mailové adresy pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Více e-mailů můžete zadat tak, že je oddělíte středníkem.
+1. Vyberte **OK**.
 
-Chcete-li se ujistit, že jste se úspěšně připojili k cíli zájemce, klikněte na tlačítko ověřit. Pokud bude úspěšná, budete mít testovacího zájemce v cíli zájemce.
+Chcete-li se ujistit, že jste úspěšně připojeni k cíli zájemce, klikněte na tlačítko **ověřit** . V případě úspěchu budete mít vedoucího testu v cíli realizace.
 
->[!Note] 
->Před přijetím zájemců o nabídku je nutné dokončit konfiguraci zbývající nabídky a publikovat ji.
+>[!NOTE] 
+>Musíte dokončit konfiguraci zbytku nabídky a publikovat ji předtím, než budete moct získat zájemce pro tuto nabídku.
 
-Při generování zájemců odesílá společnost Microsoft zájemce na tok, který se směruje na nakonfigurovaný systém CRM nebo e-mailovou adresu.
+Po vygenerování zájemců pošle Microsoft do tohoto toku zájemce. Zájemci se budou směrovat do systému CRM nebo e-mailové adresy, kterou jste nakonfigurovali.
 
-![Vedení řízení - připojit](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+![Tlačítko pro řízení připojení zájemce](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
 
-![Podrobnosti připojení](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
+![Cíl zájemce podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
 
-![Podrobnosti připojení](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
+![Kontaktní e-mail s podrobnostmi připojení](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 

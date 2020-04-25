@@ -1,6 +1,6 @@
 ---
-title: Opětovné přizabezpečení virtuálních počítačů Azure k primární oblasti pomocí Azure Site Recovery | Dokumenty společnosti Microsoft
-description: Popisuje, jak znovu chránit virtuální počítače Azure po převzetí služeb při selhání, sekundární k primární oblasti pomocí Azure Site Recovery.
+title: Znovu nastavte ochranu virtuálních počítačů Azure do primární oblasti pomocí Azure Site Recovery | Microsoft Docs
+description: Popisuje, jak znovu chránit virtuální počítače Azure po převzetí služeb při selhání, sekundární do primární oblasti, pomocí Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,92 +8,96 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 73747b8331054cdc3bfa1f4073ccf2cdb62ab326
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 600167e529e1ff8cfa65eeb3d0fb6fe26e9466bf
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283238"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137514"
 ---
-# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Opětovné nahrazení služby Azure virtuálními počítači do primární oblasti
+# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Opětovné zapnutí ochrany virtuálních počítačů Azure v primární oblasti
 
-Když [si pojistit virtuální](site-recovery-failover.md) počítače Azure z jedné oblasti do druhé pomocí [Azure Site Recovery](site-recovery-overview.md), virtuální počítače spouštět v sekundární oblasti, v **nechráněném** stavu. Pokud chcete navrácení služeb po službách pro virtuální chod do primární oblasti, proveďte následující úkoly:
+Při [převzetí služeb při selhání](site-recovery-failover.md) virtuálních počítačů Azure z jedné oblasti do druhé pomocí [Azure Site Recovery](site-recovery-overview.md)se virtuální počítače spustí v sekundární oblasti v **nechráněném** stavu. Pokud chcete převzít služby při selhání back-VM do primární oblasti, proveďte následující úlohy:
 
-1. Znovu chránit virtuální chodvvvviše v sekundární oblasti tak, aby se začaly replikovat do primární oblasti.
-1. Po dokončení opětovnéochrany a virtuální počítače jsou replikovat, můžete převzetí služeb při selhání ze sekundární do primární oblasti.
+1. Znovu nastavte ochranu virtuálních počítačů v sekundární oblasti, aby se začaly replikovat do primární oblasti.
+1. Po dokončení ochrany a replikaci virtuálních počítačů můžete převzít služby při selhání ze sekundární do primární oblasti.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Převzetí služeb při selhání virtuálního zařízení z primární do sekundární oblasti musí být potvrzena.
-- Primární cílová lokalita by měla být k dispozici a měli byste mít přístup nebo vytvořit prostředky v této oblasti.
+- Převzetí služeb virtuálního počítače při selhání z primární do sekundární oblasti musí být potvrzené.
+- Primární cílový webový server by měl být dostupný a měl by být přístupný nebo vytvářet prostředky v této oblasti.
 
-## <a name="reprotect-a-vm"></a>Opětovné přizamknení virtuálního mísa
+## <a name="reprotect-a-vm"></a>Opětovné zapnutí ochrany virtuálního počítače
 
-1. V**replikovaných položkách** **úložiště** > klepněte pravým tlačítkem myši na neúspěšný virtuální virtuální virtuální ms a vyberte **příkaz Znovu chránit**. Směr reprotection by měl být zobrazil od sekundárního k primárnímu.
+1. V **trezoru** > **replikované položky**klikněte pravým tlačítkem na virtuální počítač převzetí služeb při selhání a vyberte **znovu zapnout ochranu**. Směr další ochrany by se měl zobrazit ze sekundárního na primární.
 
-   ![Znovu chránit](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![Znovunastavení ochrany](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
-1. Zkontrolujte skupinu prostředků, síť, úložiště a skupiny dostupnosti. Pak klikněte na **OK**. Pokud jsou všechny prostředky označeny jako nové, jsou vytvořeny jako součást procesu opětovnéochrany.
-1. Úloha opětovné ochrany zasílá cílový web nejnovějšími daty. Po dokončení úlohy dojde k rozdílové replikaci. Potom můžete převzetí služeb při selhání zpět do primární lokality. Pomocí možnosti přizpůsobit můžete vybrat účet úložiště nebo síť, kterou chcete použít při opětovném přichytvám.
+1. Zkontrolujte skupinu prostředků, síť, úložiště a skupiny dostupnosti. Pak klikněte na **OK**. Pokud jsou nějaké prostředky označené jako nové, vytvoří se jako součást procesu nové ochrany.
+1. V rámci úlohy ochrany se v cílové lokalitě dokončí nejnovější data. Po dokončení úlohy bude provedena rozdílová replikace. Pak můžete převzít služby při selhání zpět do primární lokality. Pomocí možnosti přizpůsobit můžete vybrat účet úložiště nebo síť, kterou chcete použít při opětovném zapnutí ochrany.
 
-   ![Přizpůsobit, možnost](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
+   ![Přizpůsobení možnosti](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
 
 ### <a name="customize-reprotect-settings"></a>Přizpůsobení nastavení opětovné ochrany
 
-Můžete přizpůsobit následující vlastnosti cílového virtuálního počítače během opětovnéochrany.
+Během ochrany můžete přizpůsobit následující vlastnosti cílového virtuálního počítače.
 
 ![Přizpůsobení](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |Vlastnost |Poznámky  |
 |---------|---------|
-|Cílová skupina prostředků | Upravte cílovou skupinu prostředků, ve které se vytvoří virtuální hod. Jako součást opětovné ochrany se odstraní cílový virtuální virtuální virtuální ms. Můžete zvolit novou skupinu prostředků, pod kterou chcete vytvořit virtuální hod po převzetí služeb při selhání. |
-|Cílová virtuální síť | Cílovou síť nelze během úlohy opětovného ochrany změnit. Chcete-li změnit síť, znovu mapování sítě. |
-|Cílové úložiště (sekundární virtuální počítače nepoužívají spravované disky) | Účet úložiště, který virtuální hod používá po převzetí služeb při selhání. |
-|Replika spravovaných disků (sekundární virtuální počítače používají spravované disky) | Site Recovery vytvoří repliky spravované disky v primární oblasti zrcadlit sekundární virtuálního počítače spravované disky. |
-|Úložiště mezipaměti | Můžete zadat účet úložiště mezipaměti, který se má použít během replikace. Ve výchozím nastavení je vytvořen nový účet úložiště mezipaměti, pokud neexistuje. |
-|Skupina dostupnosti | Pokud je virtuální virtuální hotel v sekundární oblasti součástí skupiny dostupnosti, můžete zvolit sadu dostupnosti pro cílový virtuální virtuální ms v primární oblasti. Ve výchozím nastavení se site recovery pokusí najít existující sadu dostupnosti v primární oblasti a použít ji. Během vlastního nastavení můžete zadat novou sadu dostupnosti. |
+|Cílová skupina prostředků | Upravte cílovou skupinu prostředků, ve které se virtuální počítač vytvoří. V rámci ochrany je cílový virtuální počítač odstraněný. Můžete zvolit novou skupinu prostředků, ve které se po převzetí služeb při selhání vytvoří virtuální počítač. |
+|Cílová virtuální síť | Cílovou síť nelze změnit během úlohy opětovného zapnutí ochrany. Chcete-li změnit síť, proveďte znovu mapování sítě. |
+|Cílové úložiště (sekundární virtuální počítač nepoužívá spravované disky) | Můžete změnit účet úložiště, který virtuální počítač používá po převzetí služeb při selhání. |
+|Spravované disky repliky (sekundární virtuální počítač používá spravované disky) | Site Recovery vytvoří repliku spravované disky v primární oblasti pro zrcadlení spravovaných disků sekundárního virtuálního počítače. |
+|Úložiště mezipaměti | Můžete zadat účet úložiště mezipaměti, který se použije při replikaci. Ve výchozím nastavení se vytvoří nový účet úložiště mezipaměti, pokud neexistuje. |
+|Skupina dostupnosti | Pokud je virtuální počítač v sekundární oblasti součástí skupiny dostupnosti, můžete zvolit skupinu dostupnosti pro cílový virtuální počítač v primární oblasti. Ve výchozím nastavení se Site Recovery pokusí najít existující skupinu dostupnosti v primární oblasti a použít ji. Během přizpůsobení můžete zadat novou skupinu dostupnosti. |
 
-### <a name="what-happens-during-reprotection"></a>Co se stane během opětovné ochrany?
+### <a name="what-happens-during-reprotection"></a>Co se stane během ochrany?
 
-Ve výchozím nastavení dochází k následujícímu:
+Ve výchozím nastavení dojde k následujícímu:
 
-1. Účet úložiště mezipaměti se vytvoří v oblasti, kde je spuštěn virtuální ms a u kterých se nezdařilo.
-1. Pokud cílový účet úložiště (původní účet úložiště v primární oblasti) neexistuje, vytvoří se nový účet. Název účtu přiřazeného úložiště je název účtu úložiště, který používá sekundární virtuální `asr`virtuální_
-1. Pokud váš virtuální počítač používá spravované disky, repliky spravované disky se vytvoří v primární oblasti pro uložení dat replikovaných z disků sekundárního virtuálního počítače.
-1. Pokud cílová dostupnost neexistuje, nová je vytvořena jako součást úlohy opětovného ochrany, pokud je to nutné. Pokud jste přizpůsobili nastavení opětovné ochrany, použije se vybraná sada.
+1. Účet úložiště mezipaměti se vytvoří v oblasti, ve které běží virtuální počítač pro převzetí služeb při selhání.
+1. Pokud cílový účet úložiště (původní účet úložiště v primární oblasti) neexistuje, vytvoří se nový. Přiřazený název účtu úložiště je název účtu úložiště používaného sekundárním virtuálním počítačem, který je s `asr`příponou.
+1. Pokud virtuální počítač používá spravované disky, v primární oblasti se vytvoří replika spravované disky pro ukládání dat replikovaných z disků sekundárního virtuálního počítače.
+1. Pokud cílová skupina dostupnosti neexistuje, vytvoří se nová v rámci úlohy opětovného ochrany v případě potřeby. Pokud jste upravili nastavení ochrany, použije se vybraná sada.
 
-Když spustíte úlohu opětovného ochrany a cílový virtuální virtuální byl, dojde k následujícímu:
+Když aktivujete úlohu opětovné ochrany a cílový virtuální počítač existuje, dojde k následujícímu:
 
-1. Virtuální virtuální hotel na cílové straně je vypnutý, pokud je spuštěný.
-1. Pokud virtuální modul používá spravované disky, vytvoří se kopie `-ASRReplica` původního disku s příponou. Původní disky budou odstraněny. Kopie `-ASRReplica` se používají pro replikaci.
-1. Pokud virtuální modul používá nespravované disky, jsou datové disky cílového virtuálního počítače odpojené a používané pro replikaci. Kopie disku operačního systému se vytvoří a připojí k virtuálnímu počítači. Původní disk operačního systému je odpojen a používán pro replikaci.
-1. Synchronizují se pouze změny mezi zdrojovým a cílovým diskem. Rozdíly jsou vypočítány porovnáním obou disků a pak převedeny. Zkontrolujte níže, abyste našli odhadovaný čas dokončení opětovné ochrany.
-1. Po dokončení synchronizace začíná rozdílová replikace a bod obnovení je vytvořen v souladu se zásadami replikace.
+1. Cílový virtuální počítač je vypnutý, pokud je spuštěný.
+1. Pokud virtuální počítač používá spravované disky, vytvoří se kopie původního disku s `-ASRReplica` příponou. Původní disky se odstraní. `-ASRReplica` Kopie se používají pro replikaci.
+1. Pokud virtuální počítač používá nespravované disky, jsou datové disky cílového virtuálního počítače odpojeny a použity pro replikaci. Na virtuálním počítači se vytvoří a připojí kopie disku s operačním systémem. Původní disk s operačním systémem je odpojený a používá se k replikaci.
+1. Synchronizují se jenom změny mezi zdrojovým diskem a cílovým diskem. Rozdíly jsou vypočítány porovnáním disků a pak přenesených. Níže najdete informace o odhadované době pro dokončení ochrany.
+1. Po dokončení synchronizace se spustí rozdílová replikace a v souladu se zásadami replikace se vytvoří bod obnovení.
 
-Když spustíte úlohu opětovného ochrany a cílový virtuální modul a disky neexistují, dojde k následujícímu:
+Když aktivujete úlohu opětovné ochrany a cílový virtuální počítač a disky neexistují, dojde k následujícímu:
 
-1. Pokud virtuální modul používá spravované disky, repliky `-ASRReplica` disky jsou vytvořeny s příponou. Kopie `-ASRReplica` se používají pro replikaci.
-1. Pokud virtuální modul používá nespravované disky, repliky disky jsou vytvořeny v účtu cílového úložiště.
-1. Celé disky jsou zkopírovány z oblasti převzetí štěstí do nové cílové oblasti.
-1. Po dokončení synchronizace začíná rozdílová replikace a bod obnovení je vytvořen v souladu se zásadami replikace.
+1. Pokud virtuální počítač používá spravované disky, vytvoří se disketa repliky `-ASRReplica` s příponou. `-ASRReplica` Kopie se používají pro replikaci.
+1. Pokud virtuální počítač používá nespravované disky, vytvoří se na cílovém účtu úložiště disketa repliky.
+1. Všechny disky se zkopírují z oblasti převzetí služeb při selhání do nové cílové oblasti.
+1. Po dokončení synchronizace se spustí rozdílová replikace a v souladu se zásadami replikace se vytvoří bod obnovení.
 
-#### <a name="estimated-time-to-do-the-reprotection"></a>Odhadovaný čas na reprotekci
+#### <a name="estimated-time-to-do-the-reprotection"></a>Odhadovaný čas k provedení ochrany
 
 Ve většině případů Azure Site Recovery nereplikuje úplná data do zdrojové oblasti.
-Následující podmínky určují, kolik dat je replikováno:
+Následující podmínky určují, kolik dat se replikuje:
 
-1. Pokud jsou zdrojová data virtuálního počítače z nějakého důvodu odstraněná, poškozená nebo nepřístupná, například změna nebo odstranění skupiny prostředků, dojde během opětovné ochrany k úplné počáteční replikaci, protože ve zdrojové oblasti nejsou k dispozici žádná data.
-1. Pokud jsou přístupná zdrojová data virtuálního počítače, pak se vypočítají pouze rozdíly porovnáním obou disků a pak přeneseny. Chcete-li získat odhadovaný čas, podívejte se do níže uvedené tabulky.
+1. Pokud dojde k odstranění, poškození nebo nepřístupné zdrojovému virtuálnímu počítači z nějakého důvodu, třeba ke změně nebo odstranění skupiny prostředků, dojde během ochrany k úplné počáteční replikaci k tomu, že ve zdrojové oblasti nejsou k dispozici žádná data, která by bylo možné použít.
+1. Pokud jsou data zdrojového virtuálního počítače přístupná, vypočítávají se jenom rozdílové rozdíly porovnáním disků a pak přenesených. Odhadovaný čas získáte v tabulce níže.
 
-|Příklad situace | Doba, která byla doba na opětovné naochranu |
+|Příklad situace | Doba, jakou trvalo opětovné zapnutí ochrany |
 |---|---|
-|Oblast zdroje má 1 virtuální virtuální počítače se standardním diskem o velikosti 1 TB.<br/>Používá se pouze 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je standardní s propustností 60 MiB/S.<br/>Po převzetí služeb při selhání se žádná změna dat nemění.| Přibližný čas: 45 minut – 1,5 hodiny.<br/>Během opětovné ochrany site recovery naplní kontrolní součet všech dat, která budou trvat 127 GB / 45 GB, přibližně 45 minut.<br/>Některé režijní čas je vyžadován pro obnovení webu na automatické škálování, přibližně 20-30 minut.<br/>Žádná obvinění z výstupu. |
-|Oblast zdroje má 1 virtuální virtuální počítače se standardním diskem o velikosti 1 TB.<br/>Používá se pouze 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je standardní s propustností 60 MiB/S.<br/>45 GB dat se změní po převzetí služeb při selhání.| Přibližný čas: 1 hodina – 2 hodiny.<br/>Během opětovné ochrany site recovery naplní kontrolní součet všech dat, která budou trvat 127 GB / 45 GB, přibližně 45 minut.<br/>Doba přenosu pro použití změn 45 GB, což je 45 GB/ 45 MB/s, přibližně 17 minut.<br/>Poplatky za odchozí přenos dat by byly pro změny dat o velikosti 45 GB, nikoli pro kontrolní součet. |
+|Zdrojová oblast má 1 virtuální počítač s 1 TB standardního disku.<br/>Používá se jenom 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je Standard s propustností 60 MB/s.<br/>Po převzetí služeb při selhání se žádná data nezmění.| Přibližná doba: 60-90 minut.<br/> Během ochrany Site Recovery naplní kontrolní součet všech dat. To funguje na 45MBps, takže celková doba, kterou bude trvat, je 127 GB/45 MB/s, přibližně 45 minut.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
+|Zdrojová oblast má 1 virtuální počítač s 1 TB standardního disku.<br/>Používá se jenom 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je Standard s propustností 60 MB/s.<br/>po převzetí služeb při selhání se změní 45 GB dat.| Přibližná doba: 2,5-3 hodiny.<br/> Během ochrany Site Recovery naplní kontrolní součet všech dat. To funguje na 45MBps, takže celková doba, kterou bude trvat, je 127 GB/45 MB/s, přibližně 45 minut.<br/>Rychlost přenosu je přibližně 16% propustnosti nebo 9.6 MB/s. Proto se doba přenosu aplikuje na změny 45 GB, což je 45 GB/9.6 MB/s, 80 přibližně v minutách.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
+|Zdrojová oblast má 1 virtuální počítač s 1 TB standardního disku.<br/>Používá se jenom 20 GB dat a zbytek disku je prázdný.<br/>Typ disku je Standard s propustností 60 MB/s.<br/>Počáteční data na disku hned po převzetí služeb při selhání byly 15 GB. Po převzetí služeb při selhání se změnila 5 GB dat. Celková naplněná data jsou tedy 20 GB.| Přibližná doba: 1 – 1,5 hodiny<br/>Vzhledem k tomu, že data naplněná na disku jsou menší než 10% velikosti disku, provádíme kompletní počáteční replikaci.<br/> Rychlost přenosu je přibližně 16% propustnosti nebo 9.6 MB/s. Proto se doba přenosu aplikuje na změny 20 GB, což je 20 GB/9.6 MB/s, přibližně 36 minut.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
+|Zdrojová oblast má 1 virtuální počítač s 1 TB Premium diskem.<br/>Používá se jenom 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je Premium s propustností 200 MB/s.<br/>Po převzetí služeb při selhání se žádná data nezmění.| Přibližná doba: 45-60 minut.<br/>Během ochrany Site Recovery naplní kontrolní součet všech dat. To funguje na 80MBps, takže celková doba, kterou bude trvat, je 127 GB/80 MB/s, přibližně 27 minut.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
+|Zdrojová oblast má 1 virtuální počítač s 1 TB Premium diskem.<br/>Používá se jenom 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je Premium s propustností 200 MB/s.<br/>po převzetí služeb při selhání se změní 45 GB dat.| Přibližná doba: 1,5 – 2 hodiny.<br/>Během ochrany Site Recovery naplní kontrolní součet všech dat. To funguje na 80MBps, takže celková doba, kterou bude trvat, je 127 GB/80 MB/s, přibližně 27 minut.</br>Rychlost přenosu je přibližně 16% propustnosti nebo 32MBps. Proto se doba přenosu aplikuje na změny 45 GB, které jsou 45 GB/32 MB/s, přibližně 24 minut.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
+|Zdrojová oblast má 1 virtuální počítač s 1 TB Premium diskem.<br/>Používá se jenom 20 GB dat a zbytek disku je prázdný.<br/>Typ disku je Premium s propustností 200 MB/s.<br/>Počáteční data na disku hned po převzetí služeb při selhání byly 15 GB. Po převzetí služeb při selhání se změnila 5 GB dat. Celková naplněná data jsou tedy 20 GB.| Přibližná doba: 30-45 minut.<br/>Vzhledem k tomu, že data naplněná na disku jsou menší než 10% velikosti disku, provádíme kompletní počáteční replikaci.<br/>Rychlost přenosu je přibližně 16% propustnosti nebo 32MBps. Proto se doba přenosu aplikuje na změny 20 GB, což je 20 GB/32 MB/s, přibližně 11 minut.<br/>Site Recovery k automatickému škálování vyžaduje určitý čas režie, přibližně 20-30 minut. |
 
-Když je virtuální počítač znovu chráněný po selhání zpět do primární oblasti (tj. pokud je virtuální počítač znovu chráněný z primární oblasti do oblasti zotavení po Havárii), odstraní se cílový virtuální počítač a přidružené nic (y) cílové.
+Pokud je virtuální počítač po převzetí služeb při selhání zpátky do primární oblasti (tj. Pokud je virtuální počítač znovu chráněný z primární oblasti na oblast zotavení po havárii), odstraní se cílový virtuální počítač a přidružené síťové karty.
 
-Když je virtuální počítač znovu chráněný z oblasti ZOTAVENÍ do primární oblasti, neodstraníme někdejší primární virtuální počítač a přidružené nic(s).
+Když je virtuální počítač znovu chráněn z oblasti zotavení po havárii do primární oblasti, neodstraníme primární virtuální počítač Erstwhile a přidružené síťové karty (y).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po zamknuté virtuálního počítače můžete zahájit převzetí služeb při selhání. Převzetí služeb při selhání vypne virtuální ho v sekundární oblasti a vytvoří a spustí virtuální ho v primární oblasti, s krátkými prostoji během tohoto procesu. Doporučujeme zvolit vhodný čas pro tento proces a spustit test převzetí služeb při selhání před zahájením úplné převzetí služeb při selhání do primární lokality. [Další informace](site-recovery-failover.md) o převzetí služeb při selhání azure site recovery.
+Po uzamknutí virtuálního počítače můžete iniciovat převzetí služeb při selhání. Převzetí služeb při selhání vypne virtuální počítač v sekundární oblasti a vytvoří a spustí virtuální počítač v primární oblasti, přičemž během tohoto procesu dojde k krátkému výpadku. Pro tento proces doporučujeme zvolit vhodný čas a před zahájením úplného převzetí služeb při selhání do primární lokality spustit testovací převzetí služeb při selhání. [Další informace](site-recovery-failover.md) o převzetí služeb při selhání Azure Site Recovery.

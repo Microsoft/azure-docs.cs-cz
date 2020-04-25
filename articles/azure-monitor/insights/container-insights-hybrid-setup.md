@@ -1,18 +1,18 @@
 ---
-title: Konfigurace clusterů hybridních kubernetes pomocí Azure Monitoru pro kontejnery | Dokumenty společnosti Microsoft
-description: Tento článek popisuje, jak můžete nakonfigurovat Azure Monitor pro kontejnery pro monitorování clusterů Kubernetes hostovaných v Azure Stack nebo v jiném prostředí.
+title: Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejnery | Microsoft Docs
+description: Tento článek popisuje, jak můžete nakonfigurovat Azure Monitor pro kontejnery, abyste mohli monitorovat clustery Kubernetes hostované v Azure Stack nebo jiném prostředí.
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 6c2782fdd810403a793f6ef682d1112fadc22465
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: c0dbbf9f65aa96db1ebcd0b03552bba8d1f91863
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769042"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143177"
 ---
-# <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurace hybridních clusterů Kubernetes pomocí Azure Monitoru pro kontejnery
+# <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejnery
 
-Azure Monitor pro kontejnery poskytuje bohaté možnosti monitorování pro služby Azure Kubernetes Service (AKS) a [AKS Engine v Azure](https://github.com/Azure/aks-engine), což je samoobslužný cluster Kubernetes hostovaný v Azure. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných mimo Azure a dosáhnout podobného prostředí monitorování.
+Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro Azure Kubernetes Service (AKS) a [AKS Engine v Azure](https://github.com/Azure/aks-engine), což je samoobslužný cluster Kubernetes hostovaný v Azure. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných mimo Azure a dosáhnout podobných možností monitorování.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -20,76 +20,76 @@ Než začnete, ujistěte se, že máte následující:
 
 * Pracovní prostor služby Log Analytics.
 
-    Azure Monitor pro kontejnery podporuje pracovní prostor Analýzy protokolů v oblastech uvedených v [Azure Products podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Chcete-li vytvořit vlastní pracovní prostor, můžete jej vytvořit prostřednictvím [Azure Resource Manager](../platform/template-workspace-configuration.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo na [webu Azure Portal](../learn/quick-create-workspace.md).
+    Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Pokud chcete vytvořit vlastní pracovní prostor, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../platform/template-workspace-configuration.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md).
 
     >[!NOTE]
-    >Povolit monitorování více clusterů se stejným názvem clusteru do stejného pracovního prostoru Log Analytics není podporováno. Názvy clusterů musí být jedinečné.
+    >Možnost monitorování více clusterů se stejným názvem clusteru do stejného Log Analytics pracovní prostor není podporována. Názvy clusterů musí být jedinečné.
     >
 
-* Jste členem role **přispěvatele Log Analytics** povolit monitorování kontejnerů. Další informace o řízení přístupu k pracovnímu prostoru Log Analytics naleznete v [tématu Správa přístupu k datům pracovního prostoru a protokolu.](../platform/manage-access.md)
+* Jste členem **role přispěvatel Log Analytics** , abyste povolili monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa přístupu k pracovním prostorům a datům protokolu](../platform/manage-access.md) .
 
-* [HELM klienta](https://helm.sh/docs/using_helm/) na palubě Azure Monitor pro kontejnery grafu pro zadaný cluster Kubernetes.
+* [Helm klientovi](https://helm.sh/docs/using_helm/) , aby se připojil diagram Azure monitor for Containers pro zadaný cluster Kubernetes.
 
-* Pro kontejnerizovanou verzi agenta Log Analytics pro Linux ke komunikaci s Azure Monitorem jsou vyžadovány následující informace o konfiguraci serveru proxy a brány firewall:
+* Následující informace o konfiguraci proxy serveru a brány firewall jsou vyžadovány pro kontejnerové verze Log Analytics agenta pro Linux pro komunikaci s Azure Monitor:
 
     |Prostředek agenta|Porty |
     |------|---------|   
-    |*.ods.opinsights.azure.com |Přístav 443 |  
-    |*.oms.opinsights.azure.com |Přístav 443 |  
-    |*.blob.core.windows.net |Přístav 443 |  
-    |*.dc.services.visualstudio.com |Přístav 443 |
+    |*.ods.opinsights.azure.com |Port 443 |  
+    |*.oms.opinsights.azure.com |Port 443 |  
+    |*.blob.core.windows.net |Port 443 |  
+    |*. dc.services.visualstudio.com |Port 443 |
 
-* Kontejnerizovaný agent vyžaduje Kubelet `cAdvisor secure port: 10250` `unsecure port :10255` nebo otevřít na všech uzlech v clusteru shromažďovat metriky výkonu. Doporučujeme, `secure port: 10250` abyste na konfigurovali na kubeletově cAdvisoru, pokud ještě není nakonfigurován.
+* Kontejner s označením vyžaduje, aby `cAdvisor secure port: 10250` se `unsecure port :10255` Kubelet nebo otevřel na všech uzlech v clusteru za účelem shromažďování metrik výkonu. Doporučujeme, abyste nakonfigurovali `secure port: 10250` na CAdvisor pro Kubelet, pokud už není nakonfigurovaná.
 
-* Kontejnerizovaný agent vyžaduje, aby byly v kontejneru zadány následující proměnné prostředí, aby bylo možné komunikovat se `KUBERNETES_SERVICE_HOST` službou Rozhraní API Kubernetes v rámci clusteru za účelem shromažďování dat inventáře – a `KUBERNETES_PORT_443_TCP_PORT`.
+* Kontejner s označením vyžaduje, aby v kontejneru bylo zadáno následující proměnné prostředí, aby bylo možné komunikovat se službou Kubernetes API v rámci clusteru za účelem shromažďování dat inventáře `KUBERNETES_SERVICE_HOST` a `KUBERNETES_PORT_443_TCP_PORT`.
 
 >[!IMPORTANT]
->Minimální verze agenta podporovaná pro monitorování hybridních clusterů Kubernetes je ciprod10182019 nebo novější.
+>Minimální verze agenta podporovaná pro monitorování clusterů Hybrid Kubernetes je ciprod10182019 nebo novější.
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
 
-Následující je oficiálně podporována pomocí Azure Monitor pro kontejnery.
+Následující je oficiálně podporovaná s Azure Monitor pro kontejnery.
 
-- Prostředí: Kubernetes místní, AKS Engine v Azure a Azure Stack. Další informace najdete v tématu [AKS Engine na Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
-- Verze Kubernetes a zásady podpory jsou stejné jako verze [podporovaných AKS](../../aks/supported-kubernetes-versions.md).
-- Kontejnerový běh: Docker a Moby
-- Linux OS verze pro master a pracoval uzly: Ubuntu (18.04 LTS a 16.04 LTS)
-- Podporováno řízení přístupu: Kubernetes RBAC a non-RBAC
+- Prostředí: Kubernetes místně, AKS Engine v Azure a Azure Stack. Další informace najdete v tématu [AKS Engine on Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+- Verze Kubernetes a zásad podpory jsou stejné jako verze [podporovaných AKS](../../aks/supported-kubernetes-versions.md).
+- Modul runtime kontejneru: Docker a Moby
+- Verze operačního systému Linux pro hlavní a zpracovávané uzly: Ubuntu (18,04 LTS a 16,04 LTS)
+- Podpora řízení přístupu: Kubernetes RBAC a non-RBAC
 
 ## <a name="enable-monitoring"></a>Povolení monitorování
 
-Povolení Azure Monitor pro kontejnery pro hybridní cluster Kubernetes se skládá z provedení následujících kroků v pořadí.
+Povolení Azure Monitor pro kontejnery pro cluster Hybrid Kubernetes se skládá z následujících kroků v uvedeném pořadí.
 
-1. Nakonfigurujte pracovní prostor Log Analytics pomocí řešení Container Insights.
+1. Nakonfigurujte svůj pracovní prostor Log Analytics pomocí řešení Container Insights.
 
-2. Povolte azure monitor pro kontejnery HELM graf s pracovním prostorem Log Analytics.
+2. Povolte Azure Monitor pro kontejnery HELM s Log Analytics pracovním prostorem.
 
-### <a name="how-to-add-the-azure-monitor-containers-solution"></a>Jak přidat řešení Azure Monitor Containers
+### <a name="how-to-add-the-azure-monitor-containers-solution"></a>Postup přidání řešení Azure Monitor Containers
 
-Řešení můžete nasadit pomocí zařízené šablony Azure Resource Manager pomocí `New-AzResourceGroupDeployment` rutiny Azure PowerShell nebo pomocí azure cli.
+Řešení můžete nasadit pomocí zadané šablony Azure Resource Manager pomocí rutiny `New-AzResourceGroupDeployment` Azure PowerShell nebo pomocí Azure CLI.
 
-Pokud nejste obeznámeni s konceptem nasazování prostředků pomocí šablony, přečtěte si:
+Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, přečtěte si téma:
 
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
 
-* [Nasazení prostředků pomocí šablon Správce prostředků a nastavení příkazového uživatelského příkazu Azure](../../azure-resource-manager/templates/deploy-cli.md)
+* [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Pokud se rozhodnete použít azure cli, musíte nejprve nainstalovat a použít příkazového příkazového příkazu místně. Musíte spouštět Azure CLI verze 2.0.59 nebo novější. Chcete-li identifikovat `az --version`verzi, spusťte aplikaci . Pokud potřebujete nainstalovat nebo upgradovat vázačitelné příkazy k Webu Azure, přečtěte si informace [o instalaci příkazového příkazového příkazu k azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.59 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Tato metoda zahrnuje dvě šablony JSON. Jedna šablona určuje konfiguraci pro povolení monitorování a druhá obsahuje hodnoty parametrů, které nakonfigurujete tak, aby určila následující:
+Tato metoda zahrnuje dvě šablony JSON. Jedna šablona určuje konfiguraci pro povolení monitorování a druhá obsahuje hodnoty parametrů, které nakonfigurujete, aby určovaly následující:
 
-- **workspaceResourceId** – úplné ID prostředku pracovního prostoru Analýzy protokolů.
-- **workspaceRegion** – oblast, ve které se pracovní prostor vytvoří, která se také označuje jako **Umístění** ve vlastnostech pracovního prostoru při zobrazení z portálu Azure.
+- **workspaceResourceId** – úplné ID prostředku pracovního prostoru Log Analytics.
+- **workspaceRegion** – oblast, ve které je pracovní prostor vytvořen, který se také označuje jako **umístění** ve vlastnostech pracovního prostoru při prohlížení z Azure Portal.
 
-Chcete-li nejprve identifikovat úplné ID prostředku pracovního `workspaceResourceId` prostoru Analýzy protokolů požadovaného pro hodnotu parametru v **souboru containerSolutionParams.json,** proveďte následující kroky a pak spusťte rutinu prostředí PowerShell nebo příkaz Azure CLI pro přidání řešení.
+Abyste nejdřív identifikovali úplné ID prostředku pracovního prostoru Log Analytics požadovaného pro hodnotu `workspaceResourceId` parametru v souboru **containerSolutionParams. JSON** , proveďte následující kroky a potom spusťte rutinu PowerShellu nebo příkaz Azure CLI a přidejte řešení.
 
-1. Seznam všech předplatných, ke kterým máte přístup pomocí následujícího příkazu:
+1. Vypíše seznam všech předplatných, ke kterým máte přístup, pomocí následujícího příkazu:
 
     ```azurecli
     az account list --all -o table
     ```
 
-    Výstup se bude podobat následujícímu:
+    Výstup bude vypadat přibližně takto:
 
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
@@ -97,21 +97,21 @@ Chcete-li nejprve identifikovat úplné ID prostředku pracovního `workspaceRes
     Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
     ```
 
-    Zkopírujte hodnotu **pro SubscriptionId**.
+    Zkopírujte hodnotu pro **SubscriptionId**.
 
-2. Přepněte na předplatné hostující pracovní prostor Log Analytics pomocí následujícího příkazu:
+2. Přepněte do předplatného hostujícího Log Analytics pracovní prostor pomocí následujícího příkazu:
 
     ```azurecli
     az account set -s <subscriptionId of the workspace>
     ```
 
-3. Následující příklad zobrazuje seznam pracovních prostorů ve vašich předplatných ve výchozím formátu JSON.
+3. Následující příklad zobrazí seznam pracovních prostorů v předplatných ve výchozím formátu JSON.
 
-    ```
+    ```azurecli
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    Ve výstupu vyhledejte název pracovního prostoru a potom zkopírujte úplné ID prostředku tohoto pracovního prostoru Analýzy protokolů pod **ID**pole .
+    Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID**pole.
 
 4. Zkopírujte a vložte do souboru následující syntaxi JSON:
 
@@ -172,7 +172,7 @@ Chcete-li nejprve identifikovat úplné ID prostředku pracovního `workspaceRes
    }
     ```
 
-5. Uložte tento soubor jako containerSolution.json do místní složky.
+5. Uložte tento soubor jako containerSolution. JSON do místní složky.
 
 6. Do souboru vložte následující syntaxi JSON:
 
@@ -191,13 +191,13 @@ Chcete-li nejprve identifikovat úplné ID prostředku pracovního `workspaceRes
     }
     ```
 
-7. Upravte hodnoty pro **workspaceResourceId** pomocí hodnoty, kterou jste zkopírovali v kroku 3, a pro **oblast pracovního prostoru** zkopírujte hodnotu **Region** po spuštění zobrazení [protokolu analýzy monitorování az](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list)příkazu Azure CLI .
+7. Upravte hodnoty pro **workspaceResourceId** pomocí hodnoty, kterou jste zkopírovali v kroku 3, a pro **WorkspaceRegion** Zkopírujte hodnotu **oblasti** po spuštění příkazu Azure CLI [AZ monitor Log-Analytics pracovní prostor zobrazit](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list).
 
-8. Uložte tento soubor jako kontejnerSolutionParams.json do místní složky.
+8. Uložte tento soubor jako containerSolutionParams. JSON do místní složky.
 
 9. Jste připraveni k nasazení této šablony.
 
-   * Pokud chcete nasadit pomocí Azure PowerShellu, použijte ve složce, která šablonu obsahuje, následující příkazy:
+   * K nasazení pomocí Azure PowerShell použijte ve složce obsahující šablonu tyto příkazy:
 
        ```powershell
        # configure and login to the cloud of log analytics workspace.Specify the corresponding cloud environment of your workspace to below command.
@@ -214,13 +214,13 @@ Chcete-li nejprve identifikovat úplné ID prostředku pracovního `workspaceRes
        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of log analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
        ```
 
-       Změna konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující a obsahuje výsledek:
+       Dokončení změny konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující zprávě, která obsahuje výsledek:
 
        ```powershell
        provisioningState       : Succeeded
        ```
 
-   * Chcete-li nasadit pomocí příkazového příkazu k řešení Azure, spusťte následující příkazy:
+   * Pokud ho chcete nasadit pomocí Azure CLI, spusťte následující příkazy:
 
        ```azurecli
        az login
@@ -231,42 +231,42 @@ Chcete-li nejprve identifikovat úplné ID prostředku pracovního `workspaceRes
        az deployment group create --resource-group <resource group of log analytics workspace> --name <deployment name> --template-file  ./containerSolution.json --parameters @./containerSolutionParams.json
        ```
 
-       Změna konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující a obsahuje výsledek:
+       Dokončení změny konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující zprávě, která obsahuje výsledek:
 
        ```azurecli
        provisioningState       : Succeeded
        ```
 
-       Po povolení monitorování může trvat přibližně 15 minut, než budete moci zobrazit metriky stavu pro cluster.
+       Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit metriky stavu clusteru.
 
 ## <a name="install-the-chart"></a>Instalace grafu
 
 >[!NOTE]
->Následující příkazy platí pouze pro helmu verze 2. Použití parametru --name není použitelné u helmu verze 3.
+>Následující příkazy jsou použitelné pouze pro Helm verze 2. Použití parametru--name není použitelné pro Helm verze 3.
 
 Chcete-li povolit graf HELM, postupujte takto:
 
-1. Přidejte úložiště grafů Azure do místního seznamu spuštěním následujícího příkazu:
+1. Přidejte úložiště Azure Charts do svého místního seznamu spuštěním následujícího příkazu:
 
     ```
     helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
     ````
 
-2. Graf nainstalujte spuštěním následujícího příkazu:
+2. Nainstalujte graf spuštěním následujícího příkazu:
 
     ```
     $ helm install --name myrelease-1 \
     --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
     ```
 
-    Pokud je pracovní prostor Log Analytics v Azure V Číně, spusťte následující příkaz:
+    Pokud je pracovní prostor Log Analytics v Azure Čína, spusťte následující příkaz:
 
     ```
     $ helm install --name myrelease-1 \
      --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
-    Pokud je pracovní prostor Log Analytics v Azure US Government, spusťte následující příkaz:
+    Pokud je pracovní prostor Log Analytics ve vládě Azure USA, spusťte následující příkaz:
 
     ```
     $ helm install --name myrelease-1 \
@@ -275,27 +275,27 @@ Chcete-li povolit graf HELM, postupujte takto:
 
 ## <a name="configure-agent-data-collection"></a>Konfigurace shromažďování dat agenta
 
-Při pohledu s grafem verze 1.0.0 jsou nastavení sběru dat agenta řízena z configmap. Naleznete v dokumentaci o nastavení shromažďování dat [agenta zde](container-insights-agent-config.md).
+V případě sestavování pomocí grafu verze 1.0.0 se nastavení shromažďování dat agenta řídí z ConfigMap. [Tady](container-insights-agent-config.md)najdete informace o nastavení shromažďování dat agenta v dokumentaci.
 
-Po úspěšném nasazení grafu můžete zkontrolovat data pro hybridní cluster Kubernetes v Azure Monitor pro kontejnery z portálu Azure.  
+Po úspěšném nasazení grafu můžete zkontrolovat data pro svůj cluster Hybrid Kubernetes ve službě Azure Monitor for Containers z Azure Portal.  
 
 >[!NOTE]
->Latence ingestování je přibližně pět až deset minut od agenta k potvrzení v pracovním prostoru Azure Log Analytics. Stav clusteru zobrazit hodnotu **Žádná data** nebo **Neznámý,** dokud všechna požadovaná data monitorování je k dispozici ve službě Azure Monitor.
+>Latence příjmu je od agenta pět do deseti minut od agenta k potvrzení v pracovním prostoru Azure Log Analytics. Stav clusteru zobrazí hodnotu **žádná data** nebo **neznámé** , dokud nejsou v Azure monitor k dispozici všechna požadovaná data monitorování.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud při pokusu o povolení monitorování hybridního clusteru Kubernetes narazíte na chybu, zkopírujte skript prostředí PowerShell [TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) a uložte jej do složky v počítači. Tento skript je k dispozici pomoci zjistit a opravit problémy, které se vyskytly. Problémy, které je určen k detekci a pokus o opravu jsou následující:
+Pokud dojde k chybě při pokusu o povolení monitorování pro cluster Hybrid Kubernetes, zkopírujte skript PowerShellu [TroubleshootError_nonAzureK8s. ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) a uložte ho do složky ve vašem počítači. Tento skript je k dispozici, aby bylo možné zjistit a opravit zjištěné problémy. Problémy, které je navrženo pro detekci a pokus o opravu, jsou následující:
 
 * Zadaný pracovní prostor Log Analytics je platný.
-* Pracovní prostor Log Analytics je nakonfigurovaný s řešením Azure Monitor for Containers. Pokud ne, nakonfigurujte pracovní prostor.
-* Jsou spuštěny pody repliksad OmsAgent
-* OmsAgent daemonset lusky jsou spuštěny
-* Služba OmsAgent Health je spuštěna
-* ID pracovního prostoru Analýzy protokolů a klíč nakonfigurovaný v kontejnerizovaném agentovi se shoduje s pracovním prostorem, se kterým je insight nakonfigurován.
-* Ověřte všechny pracovní `kubernetes.io/role=agent` uzly Linuxu mají popisek pro naplánování rs pod. Pokud neexistuje, přidejte ji.
-* Ověřte `cAdvisor secure port:10250` nebo `unsecure port: 10255` je otevřen a otevře se ve všech uzlech v clusteru.
+* Pracovní prostor Log Analytics je nakonfigurovaný pomocí řešení Azure Monitor for Containers. V takovém případě nakonfigurujte pracovní prostor.
+* OmsAgent REPLICASET lusky jsou spuštěné.
+* OmsAgent daemonset lusky jsou spuštěné.
+* Služba Health OmsAgent je spuštěná.
+* ID a klíč pracovního prostoru Log Analytics nakonfigurované na kontejnerovém agentovi se shodují s pracovním prostorem, pomocí kterého je tento přehled nakonfigurovaný.
+* Ověří, jestli mají `kubernetes.io/role=agent` všechny uzly pro Linux Worker popisek pro naplánování RS pod. Pokud neexistuje, přidejte ho.
+* Ověřte `cAdvisor secure port:10250` nebo `unsecure port: 10255` je otevřeno na všech uzlech v clusteru.
 
-Chcete-li provést s Azure PowerShell, použijte následující příkazy ve složce, která obsahuje skript:
+Chcete-li provést příkaz s Azure PowerShell, použijte ve složce obsahující skript následující příkazy:
 
 ```powershell
 .\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile> -clusterContextInKubeconfig <clusterContext>
@@ -303,4 +303,4 @@ Chcete-li provést s Azure PowerShell, použijte následující příkazy ve slo
 
 ## <a name="next-steps"></a>Další kroky
 
-Díky monitorování, které umožňuje shromažďovat využití stavu a prostředků hybridního clusteru Kubernetes a úloh, které na nich běží, najdete informace o [tom, jak používat](container-insights-analyze.md) Azure Monitor pro kontejnery.
+Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků hybridního clusteru Kubernetes a spuštěných úloh se naučíte [používat](container-insights-analyze.md) Azure monitor pro kontejnery.

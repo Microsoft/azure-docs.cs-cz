@@ -5,12 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3a71666a5391194e63566d61cb2d054eed4e271c
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 27b80b1f0b6728b5ad69edae51f0d42bfac351d0
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100936"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145496"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat se statickou veřejnou IP adresou ve službě Azure Kubernetes Service (AKS)
 
@@ -62,7 +62,7 @@ Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu
 > Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic*. Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
 
 > [!TIP]
-> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat SSL fungovat.
+> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
 
 Aktualizujte následující skript s použitím **IP adresy** vašeho kontroleru příchozího přenosu dat a **jedinečného názvu** , který byste chtěli použít pro předponu plně kvalifikovaného názvu domény:
 
@@ -287,7 +287,7 @@ certificate.cert-manager.io/tls-secret created
 
 Otevřete webový prohlížeč s plně kvalifikovaným názvem domény vašeho kontroleru Kubernetes příchozího přenosu dat *https://demo-aks-ingress.eastus.cloudapp.azure.com*, například.
 
-Jak tyto příklady používají `letsencrypt-staging`, vydaný certifikát SSL není důvěryhodný pro prohlížeč. Přijměte výzvu k zadání upozornění, abyste mohli pokračovat v používání aplikace. Informace o certifikátu zobrazí tento *falešný certifikát x1 pro Intermediate* , který je vydaný pomocí zašifrování. Tento falešný certifikát indikuje `cert-manager` správné zpracování žádosti a obdržel certifikát od poskytovatele:
+Jak tyto příklady používají `letsencrypt-staging`, vydaný certifikát TLS/SSL není v prohlížeči důvěryhodný. Přijměte výzvu k zadání upozornění, abyste mohli pokračovat v používání aplikace. Informace o certifikátu zobrazí tento *falešný certifikát x1 pro Intermediate* , který je vydaný pomocí zašifrování. Tento falešný certifikát indikuje `cert-manager` správné zpracování žádosti a obdržel certifikát od poskytovatele:
 
 ![Pojďme si dešifrovat přípravný certifikát](media/ingress/staging-certificate.png)
 

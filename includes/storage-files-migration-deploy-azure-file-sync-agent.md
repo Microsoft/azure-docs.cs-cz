@@ -1,41 +1,40 @@
 ---
-title: Nasazení agenta synchronizace souborů Azure
-description: Nasazení agenta Azure File Sync. Běžný textový blok sdílený mezi dokumenty migrace.
+title: Nasazení agenta Azure File Sync
+description: Nasazení agenta Azure File Sync. Společný textový blok sdílený v rámci migračních dokumentů.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 694becc49667204ef2071a140bb6330285089039
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66388f14949b4f398de18c9162ca453e7fb3cbe1
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78209412"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143614"
 ---
-V této části nainstalujete agenta Azure File Sync na windows server.
-[Průvodce nasazením](../articles/storage/files/storage-sync-files-deployment-guide.md) ukazuje, že je třeba vypnout **rozšířené zabezpečení aplikace IE**. Vylepšené zabezpečení IE je bezpečnostní opatření, které se nevztahuje na Azure File Sync a jeho vypnutí vám umožní ověření do Azure bez problémů.
+V této části nainstalujete agenta Azure File Sync do instance Windows serveru.
 
-Otevřete PowerShell a nainstalujte požadované moduly PowerShellu pomocí následujících příkazů. Ujistěte se, že nainstalujete úplný modul a zprostředkovatele NuGet po zobrazení výzvy:
+[Průvodce nasazením](../articles/storage/files/storage-sync-files-deployment-guide.md) znázorňuje, že je nutné vypnout **konfiguraci rozšířeného zabezpečení aplikace Internet Explorer**. Tato míra zabezpečení se nedá použít u Azure File Sync. Vypnutím IT můžete provádět ověřování v Azure bez jakýchkoli problémů.
+
+Otevřete PowerShell a nainstalujte požadované moduly PowerShellu pomocí následujících příkazů. Po zobrazení výzvy nezapomeňte nainstalovat úplný modul a poskytovatele NuGet.
 
 ```powershell
 Install-Module -Name Az -AllowClobber
 Install-Module -Name Az.StorageSync
 ```
 
-Pokud máte nějaké problémy s dosažením internetu z vašeho serveru, nyní je čas je vyřešit. Azure File Sync používá jakékoli dostupné síťové připojení k internetu.
-Vyžadování proxy serveru pro přístup k internetu je také podporováno. Můžete buď nakonfigurovat proxy pro celý počítač nyní, nebo určit proxy server, který pouze synchronizace souborů bude používat, během instalace agenta.
+Pokud máte nějaké problémy, které se doblíží k Internetu z vašeho serveru, teď je čas k jejich řešení. Azure File Sync používá jakékoli dostupné síťové připojení k Internetu. Podporuje se taky proxy server pro přístup k Internetu. V průběhu instalace agenta můžete buď nakonfigurovat proxy server pro všechny počítače, nebo zadat proxy server, který bude používat pouze Azure File Sync.
 
-Pokud to znamená, že potřebujete otevřít brány firewall pro tento server, pak to může být přijatelný přístup k vám. Na konci instalace serveru po dokončení registrace serveru bude sestava připojení k síti zobrazující přesné adresy URL koncových bodů v Azure, se kterými synchronizace souborů musí komunikovat pro vybranou oblast. Zpráva také uvádí důvod, proč je komunikace potřebná. Pomocí sestavy můžete zamknout brány firewall kolem tohoto serveru na konkrétní adresy URL.
+Pokud konfigurujete proxy server, budete muset otevřít brány firewall pro tento server, což může být přijatelný přístup. Po dokončení instalace serveru vám v sestavě připojení k síti zobrazíte přesnou adresu URL koncových bodů v Azure, které Azure File Sync musí komunikovat s pro vybranou oblast. Tato sestava také vysvětluje důvod, proč je komunikace nutná. Sestavu můžete použít k uzamknutí bran firewall kolem tohoto serveru na konkrétní adresy URL.
 
-Můžete také postupovat konzervativnější přístup, ve kterém není otevřít firewally široké, ale místo toho omezit server komunikovat do vyšší úrovně DNS názvové prostory – je k dispozici další dokumentaci a podrobnosti k dispozici v [Azure File Sync proxy a nastavení brány firewall](../articles/storage/files/storage-sync-files-firewall-and-proxy.md) článku. Postupujte podle svých vlastních síťových doporučených postupů.
+Můžete také postupovat podle konzervativního přístupu, ve kterém neotevíráte brány firewall, ale místo toho omezit server tak, aby komunikoval s obory názvů DNS vyšší úrovně. Další informace najdete v tématu [nastavení proxy serveru a brány firewall pro Azure File Sync](../articles/storage/files/storage-sync-files-firewall-and-proxy.md). Řiďte se doporučenými osvědčenými postupy pro sítě.
 
-Na konci průvodce *instalací* serveru se zobrazí průvodce *registrací* serveru.
-Zaregistrujte server do prostředků Azure služby Storage Sync Service z dřívějších.
+Na konci průvodce *instalací* serveru se otevře průvodce *registrací* serveru. Zaregistrujte server do prostředku Azure služby synchronizace úložiště ze starší verze.
 
-Tyto kroky jsou podrobněji popsány v příručce pro nasazení, včetně výše uvedených modulů prostředí PowerShell, které byste měli nainstalovat jako první: [instalace agenta synchronizace souborů Azure](../articles/storage/files/storage-sync-files-deployment-guide.md).
+Tyto kroky jsou podrobněji popsané v Průvodci nasazením, včetně modulů PowerShellu, které byste měli nejdřív nainstalovat: [Azure File Sync instalaci agenta](../articles/storage/files/storage-sync-files-deployment-guide.md).
 
-Nejnovější agent by měl být použit a lze stáhnout z Microsoft Download Center: [Azure File Sync - agent](https://aka.ms/AFS/agent "Agent synchronizace souborů Azure ke stažení").
+Použijte nejnovějšího agenta. Můžete si ho stáhnout z webu Microsoft Download Center: [Agent Azure File Sync](https://aka.ms/AFS/agent "Stažení agenta Azure File Sync").
 
-Po úspěšné instalaci a registraci serveru můžete zkontrolovat, zda jste úspěšně dokončili tento krok: Přejděte na prostředek služby Synchronizace úložiště na webu Azure portal a potom podle levé nabídky na "Registrované servery". Uvidíte váš server uvedeny tam hned.
+Po úspěšné instalaci a registraci serveru můžete ověřit, že jste úspěšně dokončili tento krok. Přejděte do prostředku služby synchronizace úložiště v Azure Portal a pak podle levé nabídky **Zaregistrujte servery**. Zobrazí se váš server v seznamu.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71219473"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128721"
 ---
 # <a name="api-management-policies"></a>Zásady služby API Management
 V této části najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](api-management-howto-policies.md).  
@@ -50,7 +50,7 @@ V této části najdete referenční informace pro následující zásady API Ma
     -   [Nastavte proměnnou](api-management-advanced-policies.md#set-variable) – zachovat hodnotu v pojmenované kontextové proměnné pro pozdější přístup.  
     -   [Nastavit metodu žádosti](api-management-advanced-policies.md#SetRequestMethod) – umožňuje změnit metodu HTTP pro požadavek.  
     -   [Nastavit stavový kód](api-management-advanced-policies.md#SetStatus) – změní stavový kód HTTP na zadanou hodnotu.  
-    -   [Trasování](api-management-advanced-policies.md#Trace) – přidá vlastní trasování do výstupu [kontroly rozhraní API](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) , Application Insights telemetrií a diagnostické protokoly.  
+    -   [Trasování](api-management-advanced-policies.md#Trace) – přidá vlastní trasování do výstupu [kontroly rozhraní API](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) Application Insights telemetrií a protokoly prostředků.  
     -   [Wait](api-management-advanced-policies.md#Wait) -čeká na uzavřenou [žádost o odeslání](api-management-advanced-policies.md#SendRequest), před pokračováním [Získá hodnotu z mezipaměti](api-management-caching-policies.md#GetFromCacheByKey)nebo zásady [toku řízení](api-management-advanced-policies.md#choose) .  
 -   [Zásady ověřování](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   Ověřování pomocí služby [back-end](api-management-authentication-policies.md#Basic) s využitím základního ověřování pomocí back-endu  

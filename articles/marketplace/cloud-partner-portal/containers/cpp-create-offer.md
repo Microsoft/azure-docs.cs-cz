@@ -1,42 +1,42 @@
 ---
 title: Vytvoření nabídky kontejnerů Azure | Azure Marketplace
-description: Jak publikovat novou nabídku kontejnerů pro Marketplace..
+description: Jak publikovat novou nabídku kontejneru pro Marketplace...
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 25d678ad7b8c2b786239b294de873bc1d98fa5cb
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a7266d0f32a8ac18a4a76dee7eb3c39be253f7bd
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270328"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148295"
 ---
-# <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Vytvoření nové nabídky kontejnerů pomocí portálu partnerů cloudu
+# <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Vytvoření nové nabídky kontejnerů pomocí portál partnerů cloudu
 
 > [!IMPORTANT]
-> dubna 2020 začneme přesouvat správu nabídek Azure Container do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky kontejneru Azure](https://aka.ms/CreateContainerOffer) ke správě migrovaných nabídek.
+> Od 13. dubna 2020 začneme přesouvat správu nabídek Azure Container do partnerského centra. Po dokončení migrace vytvoříte a budete spravovat své nabídky v partnerském centru. Postupujte podle pokynů v části [vytvoření kontejneru Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) pro správu migrovaných nabídek.
 
-Tento článek popisuje, jak vytvořit a publikovat položku nabídky kontejneru pro Azure Marketplace. Každá nabídka se na Azure Marketplace zobrazuje jako vlastní entita a je přidružená k jedné nebo více skum.  Nabídka kontejnerů se skládá z následujících skupin aktiv a podpůrných služeb:
+Tento článek popisuje, jak vytvořit a publikovat položku nabídky kontejneru pro Azure Marketplace. Každá nabídka se zobrazí jako vlastní entita v Azure Marketplace a je spojena s jednou nebo více SKU.  Nabídka kontejnerů se skládá z následujících skupin prostředků a podpůrných služeb:
 
-|  **Skupina majetku**   |  **Popis**  |
+|  **Skupina prostředků**   |  **Popis**  |
 |  ---------------   |  ---------------  |
-|    SKU            |  Nejmenší nasaditelná jednotka nabídky. Jedna nabídka (třída produktu) může mít více sku s ku s sebou přidružené k nabídce. Sku lze rozlišovat mezi podporovanými funkcemi a fakturačními modely. |
-|  Marketplace       | Obsahuje marketingová, právní a vedoucí aktiva a specifikace správy.  <ul><li> Marketingové prostředky zahrnují název nabídky, popis a loga</li> <li> Právní majetek zahrnuje zásady ochrany osobních údajů, podmínky použití a další právní dokumentaci</li>  <li> Zásady správy potenciálních zákazníků umožňují určit, jak zpracovat zájemce z portálu koncového uživatele Azure Marketplace.</li> </ul> |
-| Podpora            | Obsahuje informace o kontaktech podpory a zásadách. |
+|    SKU            |  Nejmenší jednotka v nabídce k nasazení. K jedné nabídce (třídě produktu) může být přidruženo několik SKU přidružených k této nabídce. Můžete použít SKU k odlišení podporovaných funkcí a modelů fakturace. |
+|  Marketplace       | Obsahuje prostředky a specifikace pro marketing, právní a vedoucí.  <ul><li> Marketingové prostředky zahrnují název nabídky, popis a loga.</li> <li> Právní prostředky zahrnují zásady ochrany osobních údajů, podmínek použití a další právní dokumentaci.</li>  <li> Zásady správy potenciálních zákazníků vám umožní určit, jak se mají zpracovávat potenciální zákazníky z portálu Azure Marketplace portál pro koncové uživatele.</li> </ul> |
+| Podpora            | Obsahuje informace o kontaktech a zásadách podpory |
 
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky 
 
-Přihlaste se k [portálu partnerů cloudu](https://cloudpartner.azure.com/)a na levém řádku nabídek vyberte **+ Nová nabídka.** V nabídce Nová nabídka vyberte **Kontejnery,** chcete-li zobrazit formulář **Nová nabídka** a zahájit proces definování datových zdrojů pro novou nabídku kontejnerů.
+Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/)a v levém řádku nabídek vyberte **+ Nová nabídka** . V nabídce nová nabídka vyberte **kontejnery** a zobrazte tak formulář **nové nabídky** a spusťte proces definování prostředků pro novou nabídku kontejneru.
 
 ![Vybrat možnost kontejnerů pro novou nabídku](./media/azure-container-offer.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Stránka **Nová nabídka** pro typ nabídky kontejneru obsahuje sadu karet a polí formulářů, které použijete k vytvoření nové nabídky. Každý z následujících článků vysvětluje, jak pomocí karty definovat skupiny prostředků a podpůrné služby pro novou nabídku kontejnerů.
+**Nová stránka nabídky** pro typ nabídky kontejnerů poskytuje sadu karet a polí formuláře, která použijete k vytvoření nové nabídky. V následujících článcích se dozvíte, jak pomocí karty definovat skupiny assetů a podpůrné služby pro novou nabídku kontejnerů.
 
 - [Karta nastavení nabídky](./cpp-offer-settings-tab.md)
 - [Karta Skladové položky](./cpp-skus-tab.md)

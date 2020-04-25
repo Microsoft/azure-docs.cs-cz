@@ -1,1111 +1,1111 @@
 ---
-title: Základ zabezpečení Azure pro databázi Azure pro postgreSQL single server
-description: Základ zabezpečení Azure pro databázi Azure pro postgreSQL single server
+title: Základní plán zabezpečení Azure pro Azure Database for PostgreSQL jeden server
+description: Základní plán zabezpečení Azure pro Azure Database for PostgreSQL jeden server
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: dfe1bd1cbc99838f427aaba5bc29b23f8bfcbaff
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: eb6fc65d15ba7262b38a48e220f01d74bfcee54a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758673"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146558"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Základ zabezpečení Azure pro databázi Azure pro postgreSQL single server
+# <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Základní plán zabezpečení Azure pro Azure Database for PostgreSQL jeden server
 
-Základ zabezpečení Azure pro Azure Database for PostgreSQL Single Server obsahuje doporučení, která vám pomůžou zlepšit stav zabezpečení vašeho nasazení.
+Základní plán zabezpečení Azure pro Azure Database for PostgreSQL jeden server obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Směrný plán pro tuto službu vychází z [azure security benchmark verze 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení, jak můžete zabezpečit cloudová řešení v Azure s našimi pokyny pro osvědčené postupy.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace naleznete v [tématu Přehled směrného plánu zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace naleznete v [tématu Security Control: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Ochrana prostředků pomocí skupin zabezpečení sítě nebo brány Azure Firewall ve virtuální síti
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Chraňte prostředky pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
 
-**Pokyny:** Konfigurace privátního propojení pro azure databázi pro PostgreSQL s privátními koncovými body. Private Link umožňuje připojení k různým službám PaaS v Azure prostřednictvím privátního koncového bodu. Azure Private Link v podstatě přináší služby Azure uvnitř vaší privátní virtuální sítě (VNet). Provoz mezi vaší virtuální sítí a instancí PostgreSQL putuje páteřní sítí Microsoftu.
+**Pokyny**: konfigurace privátního odkazu pro Azure Database for PostgreSQL se soukromými koncovými body. Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím privátního koncového bodu. Privátní propojení Azure v podstatě přináší služby Azure do privátního Virtual Network (VNet). Přenosy mezi vaší virtuální sítí a instancí PostgreSQL cestují páteřní síť Microsoftu.
 
-Případně můžete použít koncové body služby Virtuální síť k ochraně a omezení přístupu k síti k vaší implementaci Azure Database pro postgreSQL. Pravidla virtuální sítě jsou jedna funkce zabezpečení brány firewall, která řídí, zda váš server Azure Database for PostgreSQL přijímá komunikaci odesílanou z konkrétních podsítí ve virtuálních sítích.
+Alternativně můžete použít koncové body služby Virtual Network k ochraně a omezení síťového přístupu k vašim Azure Database for PostgreSQL implementaci. Pravidla virtuální sítě jsou jednou funkcí zabezpečení brány firewall, která určuje, jestli váš server Azure Database for PostgreSQL přijímá komunikaci, která se odesílají z konkrétních podsítí ve virtuálních sítích.
 
-Můžete také zabezpečit azure databáze pro postgreSQL server s pravidly brány firewall. Brána firewall serveru zabrání veškerému přístupu k databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Bránu firewall nakonfigurujete tak, že vytvoříte pravidla brány firewall určující rozsahy přípustných IP adres. Pravidla brány firewall můžete vytvořit na úrovni serveru.
+Můžete také zabezpečit Azure Database for PostgreSQL Server pomocí pravidel brány firewall. Brána firewall serveru znemožní přístup k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Bránu firewall nakonfigurujete tak, že vytvoříte pravidla brány firewall určující rozsahy přípustných IP adres. Pravidla brány firewall můžete vytvořit na úrovni serveru.
 
-Jak nakonfigurovat privátní propojení pro azure databázi pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+Postup konfigurace privátního odkazu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
 Jak vytvořit a spravovat koncové body služby virtuální sítě a pravidla virtuální sítě v Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
 
-Jak nakonfigurovat pravidla brány firewall Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal
+Jak nakonfigurovat Azure Database for PostgreSQL pravidla brány firewall:https://docs.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Sledování a protokolování konfigurace a provozu sítí, podsítí a síťových rozhraní
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuální sítě, podsítí a síťových karet.
 
-**Pokyny:** Když je vaše instance Azure Database for PostgreSQL zabezpečená do privátního koncového bodu, můžete nasadit virtuální počítače ve stejné virtuální síti. Skupinu zabezpečení sítě (NSG) můžete použít ke snížení rizika exfiltrace dat. Povolte protokoly toku nsg a odesílat protokoly do účtu úložiště pro audit provozu. Protokoly toku nsg můžete také odesílat do pracovního prostoru Analýzy protokolů a pomocí traffic analytics poskytovat přehled o toku provozu ve vašem cloudu Azure. Některé výhody Traffic Analytics jsou schopnost vizualizovat aktivitu v síti a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzorce toku provozu a určit chybné konfigurace sítě.
+**Doprovodné**materiály: Pokud je vaše instance Azure Database for PostgreSQL zabezpečená pro soukromý koncový bod, můžete virtuální počítače nasadit ve stejné virtuální síti. Ke snížení rizika exfiltrace dat můžete použít skupinu zabezpečení sítě (NSG). Povolte protokoly toku NSG a odešlete protokoly do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-Jak nakonfigurovat privátní propojení pro azure databázi pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+Postup konfigurace privátního odkazu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
-Povolení protokolů toku nsg:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+Jak povolit protokoly toku NSG:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Jak povolit a používat Traffic Analytics:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="13-protect-critical-web-applications"></a>1.3: Ochrana kritických webových aplikací
+### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro webové aplikace spuštěné ve službě Azure App Service nebo výpočetních prostředcích.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Odepřít komunikaci se známými škodlivými IP adresami
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
-**Pokyny:** Použijte pokročilou ochranu před internetovými hrozbami pro databázi Azure pro PostgreSQL. Pokročilá ochrana před internetovými zprávami detekuje neobvyklé aktivity indikující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
+**Pokyny**: použití rozšířené ochrany před internetovými útoky pro Azure Database for PostgreSQL. Rozšířená ochrana před internetovými útoky detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
-Povolte standard ochrany DDoS ve virtuálních sítích přidružených k vašim instancím Azure Database for PostgreSQL, abyste se ochránili před útoky DDoS. Pomocí integrované analýzy hrozeb Centra zabezpečení Azure můžete odepřít komunikaci se známými škodlivými nebo nepoužívanými internetovými IP adresami.
+Povolte DDoS Protection Standard ve virtuálních sítích přidružených k vašim Azure Database for PostgreSQL instancím, abyste se mohli chránit před útoky DDoS. K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
-Jak nakonfigurovat pokročilou ochranu před internetovými hrozbami pro databázi Azure pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-Jak nakonfigurovat ochranu Před sdos:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+Jak nakonfigurovat DDoS Protection:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Záznam síťových paketů a protokolů toku
+### <a name="15-record-network-packets-and-flow-logs"></a>1,5: záznam síťových paketů a protokolů toků
 
-**Pokyny:** Když je vaše instance Azure Database for PostgreSQL zabezpečená do privátního koncového bodu, můžete nasadit virtuální počítače ve stejné virtuální síti. Potom můžete nakonfigurovat skupinu zabezpečení sítě (NSG), abyste snížili riziko exfiltrace dat. Povolte protokoly toku nsg a odesílat protokoly do účtu úložiště pro audit provozu. Protokoly toku nsg můžete také odesílat do pracovního prostoru Analýzy protokolů a pomocí traffic analytics poskytovat přehled o toku provozu ve vašem cloudu Azure. Některé výhody Traffic Analytics jsou schopnost vizualizovat aktivitu v síti a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzorce toku provozu a určit chybné konfigurace sítě.
+**Doprovodné**materiály: Pokud je vaše instance Azure Database for PostgreSQL zabezpečená pro soukromý koncový bod, můžete virtuální počítače nasadit ve stejné virtuální síti. Pak můžete nakonfigurovat skupinu zabezpečení sítě (NSG), aby se snížilo riziko exfiltrace dat. Povolte protokoly toku NSG a odešlete protokoly do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-Povolení protokolů toku nsg:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+Jak povolit protokoly toku NSG:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Jak povolit a používat Traffic Analytics:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Nasazení síťových systémů detekce vniknutí/prevence vniknutí (IDS/IPS)
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
-**Pokyny:** Použijte pokročilou ochranu před internetovými hrozbami pro databázi Azure pro PostgreSQL. Pokročilá ochrana před internetovými zprávami detekuje neobvyklé aktivity indikující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
+**Pokyny**: použití rozšířené ochrany před internetovými útoky pro Azure Database for PostgreSQL. Rozšířená ochrana před internetovými útoky detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
-Jak nakonfigurovat pokročilou ochranu před internetovými hrozbami pro databázi Azure pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="17-manage-traffic-to-web-applications"></a>1.7: Správa návštěvnosti webových aplikací
+### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro webové aplikace spuštěné ve službě Azure App Service nebo výpočetních prostředcích.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimalizace složitosti a administrativní režie pravidel zabezpečení sítě
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
-**Pokyny:** Pro prostředky, které potřebují přístup k vaší azure databáze pro postgreSQL instance, použijte značky virtuální síťové služby k definování řízení přístupu k síti na skupiny zabezpečení sítě nebo Azure Firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu výrobní značky (např. WestUs) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro odpovídající službu. Společnost Microsoft spravuje předpony adres zahrnuté v servisním štítku a automaticky aktualizuje výrobní číslo jako adresy změnit.
+**Doprovodné**materiály: u prostředků, které potřebují přístup k instancím Azure Database for PostgreSQL, použijte značky služby virtuální sítě a definujte řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. SQL. WestUs) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo zamítnout přenos pro odpovídající službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
-Poznámka: Azure Database for PostgreSQL používá značku služby "Microsoft.Sql".
+Poznámka: Azure Database for PostgreSQL používá značku služby Microsoft. SQL.
 
-Další informace o používání značek služeb:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Další informace o použití značek služeb:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-Principy využití výrobních značek pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet#terminology-and-description
+Pochopení použití značek služby pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet#terminology-and-description
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Udržovat standardní konfigurace zabezpečení pro síťová zařízení
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
 
-**Pokyny:** Definujte a implementujte standardní konfigurace zabezpečení pro nastavení sítě a síťové prostředky přidružené k vašim instancím Azure Database for PostgreSQL s Azure Policy. Pomocí aliasů zásad Azure v oborech názvů Microsoft.DBforPostgreSQL a Microsoft.Network vytvořte vlastní zásady k auditování nebo vynucení síťové konfigurace instancí Azure Database for PostgreSQL. Můžete také využít předdefinované definice zásad související se sítí nebo vaší azure databáze pro postgreSQL instance, jako jsou:
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro nastavení sítě a síťové prostředky přidružené k vašim Azure Database for PostgreSQL instancím Azure Policy. Pomocí aliasů Azure Policy v oborech názvů Microsoft. DBforPostgreSQL a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace sítě vašich Azure Database for PostgreSQLch instancí. Můžete také využít integrované definice zásad týkající se sítě nebo vašich Azure Database for PostgreSQL instancí, například:
 
-- DDoS Protection Standard by měla být povolena
+- Měla by být povolená DDoS Protection Standard.
 
-- Vynutit připojení SSL by mělo být povoleno pro databázové servery PostgreSQL.
+- Pro databázové servery PostgreSQL by mělo být povoleno připojení TLS.
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Ukázky zásad Azure pro sítě:https://docs.microsoft.com/azure/governance/policy/samples/
+Azure Policy ukázky pro síťové služby:https://docs.microsoft.com/azure/governance/policy/samples/
 
-Jak vytvořit Azure Blueprint:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Postup vytvoření Azure Blueprint:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="110-document-traffic-configuration-rules"></a>1.10: Dokumentovat pravidla konfigurace provozu
+### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
-**Pokyny:** Použití značek pro prostředky související se zabezpečením sítě a tokem provozu pro instance Azure Database for PostgreSQL k poskytování metadat a logické organizace.
+**Doprovodné**materiály: používejte značky pro prostředky, které se týkají zabezpečení sítě a toku provozu pro vaše Azure Database for PostgreSQL instance pro poskytování metadat a logické organizace.
 
-Pomocí některé z předdefinovaných definic zásad Azure souvisejících s označováním, jako je například Vyžadovat značku a její hodnotu, můžete zajistit, aby byly všechny prostředky vytvořeny pomocí značek, a upozornit vás na existující neoznačené prostředky.
+Použijte některou z vestavěných definic zásad Azure souvisejících s označováním, jako je například "vyžadovat značku a její hodnotu", aby se zajistilo, že všechny prostředky budou vytvořeny pomocí značek, a upozorní vás na stávající neoznačené prostředky.
 
-Azure PowerShell nebo Azure CLI můžete použít k vyhledávání nebo provádění akcí na prostředky na základě jejich značek.
+Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
 
-Jak vytvářet a používat značky:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Použití automatizovaných nástrojů ke sledování konfigurace síťových prostředků a zjišťování změn
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: pomocí automatizovaných nástrojů monitorujte konfigurace síťových prostředků a zjišťují změny.
 
-**Pokyny:** Pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků souvisejících s instancemi Azure Database for PostgreSQL. Vytvořte výstrahy v rámci Azure Monitor, který se aktivuje, když dojde ke změnám kritických síťových prostředků.
+**Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi Azure Database for PostgreSQL instancemi. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
 Jak zobrazit a načíst události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Jak vytvořit výstrahy ve službě Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Postup při vytváření výstrah v Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace naleznete [v tématu Security Control: Logging and Monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Použití schválených zdrojů synchronizace času
+### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
-**Pokyny**: Microsoft udržuje zdroj času používaný pro prostředky Azure, jako je například Azure Database for PostgreSQL pro časová razítka v protokolech.
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Microsoft
-
-### <a name="22-configure-central-security-log-management"></a>2.2: Konfigurace správy centrálního protokolu zabezpečení
-
-**Pokyny:** Povolte diagnostická nastavení a protokoly serveru a ingestujte protokoly pro agregaci dat zabezpečení generovaných vaší azure database pro postgresql instance. V rámci Azure Monitoru můžete pomocí pracovního prostoru Log Analytics dotazovat a provádět analýzy a používat účty úložiště Azure pro dlouhodobé nebo archivní úložiště. Případně můžete povolit a na palubě data do Azure Sentinelu nebo siem třetí strany.
-
-Jak nakonfigurovat a získat přístup k protokolům serveru pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
-
-Jak nakonfigurovat a získat přístup k protokolům auditu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-audit
-
-Jak napalubě Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
-
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
-
-**Odpovědnost**: Zákazník
-
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Povolení protokolování auditování prostředků Azure
-
-**Pokyny:** Povolte nastavení diagnostiky v azure databázi pro postgreSQL instance pro přístup k protokolům auditování, zabezpečení a diagnostiky. Ujistěte se, že konkrétně povolíte protokol postgresql auditu. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky. Můžete také povolit nastavení diagnostiky protokolu aktivit Azure a odeslat protokoly do stejného pracovního prostoru Analýzy protokolů nebo účtu úložiště.
-
-Jak nakonfigurovat a získat přístup k protokolům serveru pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
-
-Jak nakonfigurovat a získat přístup k protokolům auditu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-audit
-
-Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
-
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
-
-**Odpovědnost**: Zákazník
-
-### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Shromažďování protokolů zabezpečení z operačních systémů
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Pokyny**: Společnost Microsoft udržuje zdroj času používaný pro prostředky Azure, například Azure Database for PostgreSQL pro časová razítka v protokolech.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Zodpovědnost**: Microsoft
 
-### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurace uchovávání úložiště protokolu zabezpečení
+### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
 
-**Pokyny:** V rámci Azure Monitor, pro pracovní prostor Log Analytics slouží k uložení databáze Azure pro protokoly PostgreSQL, nastavte dobu uchování v souladu s předpisy vaší organizace dodržování předpisů. Účty úložiště Azure používejte pro dlouhodobé nebo archivní úložiště.
+**Pokyny**: povolení nastavení diagnostiky a protokolů serveru a příjem protokolů pro agregaci dat zabezpečení generovaných vašimi Azure Database for PostgreSQL instancemi. V rámci Azure Monitor Používejte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty Azure Storage pro dlouhodobé nebo archivní úložiště. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-Jak nastavit parametry uchovávání protokolu pro pracovní prostory Analýzy protokolů:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Konfigurace a přístup k protokolům serveru pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-Ukládání protokolů prostředků v účtu úložiště Azure:https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+Postup konfigurace a přístup k protokolům auditu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-**Monitorování Azure Security Center**: Nelze použít
+Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Odpovědnost**: Zákazník
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-### <a name="26-monitor-and-review-logs"></a>2.6: Sledování a kontrola protokolů
+**Zodpovědnost**: zákazník
 
-**Pokyny:** Analyzujte a monitorujte protokoly z vaší azure databáze pro postgreSQL instance pro neobvyklé chování. Pomocí analýzy protokolů Azure Monitor můžete kontrolovat protokoly a provádět dotazy na data protokolu. Případně můžete povolit a na palubě data azure sentinelu nebo třetí strany SIEM.
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
-Jak napalubě Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+**Pokyny**: povolení nastavení diagnostiky na vašich instancích Azure Database for PostgreSQL pro přístup k protokolům auditu, zabezpečení a zdrojů. Ujistěte se, že jste konkrétně povolili protokol auditu PostgreSQL. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky. Můžete také povolit nastavení diagnostiky protokolů aktivit Azure a odesílat protokoly do stejného Log Analytics pracovního prostoru nebo účtu úložiště.
 
-Další informace o analýze protokolů:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+Konfigurace a přístup k protokolům serveru pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-Jak provádět vlastní dotazy v Azure Monitoru:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Povolit upozornění na anomální aktivitu
-
-**Pokyny:** Povolit pokročilou ochranu před internetovými hrozbami pro databázi Azure pro PostgreSQL. Pokročilá ochrana před internetovými zprávami detekuje neobvyklé aktivity indikující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
-
-Kromě toho můžete povolit protokoly serveru a nastavení diagnostiky pro PostgreSQL a odesílat protokoly do pracovního prostoru Analýzy protokolů. Zadejte pracovní prostor Analýzy protokolů do Azure Sentinelu, protože poskytuje řešení automatické odpovědi orchestrace zabezpečení (SOAR). To umožňuje vytvářet a používat playbooky (automatizovaná řešení) k nápravě problémů se zabezpečením.
-
-Jak povolit pokročilou ochranu před internetovými hrozbami pro databázi Azure pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
-
-Jak nakonfigurovat a získat přístup k protokolům serveru pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
-
-Jak nakonfigurovat a získat přístup k protokolům auditu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-audit
+Postup konfigurace a přístup k protokolům auditu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-audit
 
 Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-Jak napalubě Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Zodpovědnost**: zákazník
 
-**Odpovědnost**: Zákazník
+### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
 
-### <a name="28-centralize-anti-malware-logging"></a>2.8: Centralizovat protokolování antimalwaru
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Pokyny**: Nepoužije se; Azure Database for PostgreSQL nezpracovává ani nevytváří protokoly související s antimalwarem.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="29-enable-dns-query-logging"></a>2.9: Povolení protokolování dotazů DNS
+### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Pokyny**: Nepoužije se; Azure Database for PostgreSQL nezpracovává ani nevytváří protokoly související se službou DNS.
+**Doprovodné**materiály: v rámci Azure monitor pro pracovní prostor Log Analytics, který se používá k ukládání protokolů Azure Database for PostgreSQL, nastavte dobu uchování podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-**Monitorování Azure Security Center**: Nelze použít
+Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
-**Odpovědnost**: Nepoužije se
+Ukládání protokolů prostředků do účtu Azure Storage:https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
 
-### <a name="210-enable-command-line-audit-logging"></a>2.10: Povolení protokolování auditu příkazového řádku
+**Monitorování Azure Security Center**: nelze použít
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Zodpovědnost**: zákazník
 
-**Monitorování Azure Security Center**: Nelze použít
+### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
-**Odpovědnost**: Nepoužije se
+**Pokyny**: analýza a sledování protokolů z Azure Database for PostgreSQL instancí pro chování neobvyklé. Pomocí Log Analytics Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo jiného dodavatele SIEM.
+
+Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+
+Další informace o Log Analytics:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+
+Postup provádění vlastních dotazů v Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: povolení výstrah pro aktivitu neobvyklé
+
+**Pokyny**: povolení rozšířené ochrany před internetovými útoky pro Azure Database for PostgreSQL. Rozšířená ochrana před internetovými útoky detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
+
+Kromě toho můžete povolit protokoly serveru a nastavení diagnostiky pro PostgreSQL a odesílat protokoly do pracovního prostoru Log Analytics. Připojte pracovní prostor Log Analytics do Azure Sentinel, protože poskytuje řešení pro automatizované odpovědi na orchestraci zabezpečení (společnosti). To umožňuje vytvořit playbooky (automatizovaná řešení) a použít je k nápravě problémů zabezpečení.
+
+Jak povolit rozšířenou ochranu před internetovými útoky pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+
+Konfigurace a přístup k protokolům serveru pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+
+Postup konfigurace a přístup k protokolům auditu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-audit
+
+Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+
+Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+
+**Monitorování Azure Security Center**: Ano
+
+**Zodpovědnost**: zákazník
+
+### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
+
+**Doprovodné**materiály: nepoužitelné; Azure Database for PostgreSQL nezpracovává ani nevytváří protokoly související s malwarem.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="29-enable-dns-query-logging"></a>2,9: povolení protokolování dotazů DNS
+
+**Doprovodné**materiály: nepoužitelné; Azure Database for PostgreSQL nezpracovává ani nevytváří protokoly související s DNS.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="210-enable-command-line-audit-logging"></a>2,10: povolení protokolování auditu příkazového řádku
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace naleznete [v tématu Zabezpečení: Identita a řízení přístupu](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Vedení soupisu administrativních účtů
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Pokyny:** Udržovat soupis uživatelských účtů, které mají přístup pro správu k rovině ovládacího prvku (například portál Azure) vaší azure databáze pro postgreSQL instance. Kromě toho udržovat soupis účtů pro správu, které mají přístup k rovině dat (v rámci samotné databáze) vaší azure databáze pro postgreSQL instance. (Při vytváření serveru PostgreSQL zadejte pověření pro uživatele správce. Tento správce lze použít k vytvoření dalších uživatelů PostgreSQL.)
+**Doprovodné**materiály: Udržujte inventář uživatelských účtů, které mají přístup správce k rovině řízení (například Azure Portal) vašich Azure Database for PostgreSQL instancí. Kromě toho udržujte inventarizaci účtů pro správu, které mají přístup k rovině dat (v samotné databázi) vašich Azure Database for PostgreSQL instancí. (Při vytváření serveru PostgreSQL zadáte přihlašovací údaje pro uživatele správce. Tento správce se dá použít k vytvoření dalších uživatelů PostgreSQL.)
 
-Azure Database for PostgreSQL nepodporuje integrované řízení přístupu založené na rolích, ale můžete vytvořit vlastní role na základě konkrétních operací zprostředkovatele prostředků.
+Azure Database for PostgreSQL nepodporuje integrované řízení přístupu založené na rolích, ale můžete vytvořit vlastní role na základě konkrétních operací poskytovatele prostředků.
 
-Principy vlastních rolí předplatného Azure:https://docs.microsoft.com/azure/role-based-access-control/custom-roles 
+Porozumění vlastním rolím pro předplatné Azure:https://docs.microsoft.com/azure/role-based-access-control/custom-roles 
 
-Principy azure databáze pro operace poskytovatele prostředků PostgreSQL:https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql 
+Principy Azure Database for PostgreSQL operací poskytovatele prostředků:https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql 
 
-Principy správy přístupu pro Azure Database pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-security#access-management
+Pochopení správy přístupu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-security#access-management
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="32-change-default-passwords-where-applicable"></a>3.2: Změna výchozích hesel, pokud je to možné
+### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
-**Pokyny**: Azure Active Directory a Azure Database pro PostgreSQL nemají koncept výchozí hesla.
+**Doprovodné**materiály: Azure Active Directory a Azure Database for PostgreSQL nemají koncept výchozích hesel.
 
-Po vytvoření azure databáze pro postgreSQL prostředek sám, Azure vynutí vytvoření administrativního uživatele se silným heslem. Po vytvoření instance PostgreSQL však můžete použít první účet správce serveru, který jste vytvořili, k vytvoření dalších uživatelů a udělení přístupu pro správu k nim. Při vytváření těchto účtů se ujistěte, že pro každý účet nakonfigurujete jiné silné heslo.
+Při vytváření samotného Azure Database for PostgreSQL prostředku vynutí Azure vytvoření administrativního uživatele se silným heslem. Po vytvoření instance PostgreSQL můžete použít první účet správce serveru, který jste vytvořili, a vytvořit tak další uživatele a udělit jim přístup pro správu. Při vytváření těchto účtů se ujistěte, že pro každý účet nakonfigurujete jiné silné heslo.
 
-Jak vytvořit další účty pro Azure Database pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-create-users
+Postup vytvoření dalších účtů pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-create-users
 
-Jak aktualizovat heslo správce:https://docs.microsoft.com/azure/postgresql/howto-create-manage-server-portal#update-admin-password
+Postup aktualizace hesla správce:https://docs.microsoft.com/azure/postgresql/howto-create-manage-server-portal#update-admin-password
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Použití vyhrazených administrativních účtů
+### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Pokyny:** Vytvořte standardní operační postupy týkající se použití vyhrazených účtů pro správu, které mají přístup k vaší azure databázi pro postgreSQL instance. Pomocí správy identity a přístupu Centra zabezpečení Azure můžete sledovat počet účtů pro správu. 
+**Doprovodné**materiály: vytvořte standardní operační postupy kolem použití vyhrazených účtů pro správu, které mají přístup k vašim instancím Azure Database for PostgreSQL. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu. 
 
-Principy identity a přístupu Centra zabezpečení Azure:https://docs.microsoft.com/azure/security-center/security-center-identity-access 
+Pochopení Azure Security Center identity a přístupu:https://docs.microsoft.com/azure/security-center/security-center-identity-access 
 
-Zjistěte, jak vytvořit uživatele správce v Azure Database pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-create-users#the-server-admin-account
+Princip vytváření uživatelů s oprávněními správce v Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-create-users#the-server-admin-account
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Použití jednotného přihlašování (SSO) s Azure Active Directory
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
-**Pokyny:** Přihlášení do databáze Azure pro PostgreSQL se podporuje pomocí uživatelského jména/hesla nakonfigurovaného přímo v databázi, stejně jako pomocí identity Služby Azure Active Directory (AD) a s využitím tokenu Azure AD pro připojení. Při použití tokenu Azure AD jsou podporovány různé metody, jako je například uživatel Azure AD, skupina Azure AD nebo aplikace Azure AD, která se připojuje k databázi.
+**Doprovodné**materiály: přihlášení k Azure Database for PostgreSQL je podporované pomocí uživatelského jména a hesla, které je nakonfigurované přímo v databázi, a také pomocí Azure Active Directory (AD) identity a využití tokenu Azure AD k připojení. Při použití tokenu Azure AD se podporují různé metody, jako je například uživatel Azure AD, skupina Azure AD nebo aplikace Azure AD připojující se k databázi.
 
-Samostatně, řízení přístupu roviny pro PostgreSQL je k dispozici prostřednictvím REST API a podporuje sso. Chcete-li ověřit, nastavte hlavičku autorizace pro vaše požadavky na webový token JSON, který získáte ze služby Azure Active Directory.
+Přístup k rovině ovládacího prvku pro PostgreSQL je k dispozici samostatně prostřednictvím REST API a podporuje jednotné přihlašování. Pro ověření nastavte hlavičku autorizace pro vaše požadavky na JSON Web Token, které získáte z Azure Active Directory.
 
-K ověřování pomocí Azure Database for PostgreSQL použijte Službu Azure Active Directory:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+Pro ověřování pomocí Azure Database for PostgreSQL použijte Azure Active Directory:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
-Principy azure databáze pro rozhraní API PostgreSQL REST:https://docs.microsoft.com/rest/api/postgresql/
+Pochopení Azure Database for PostgreSQL REST API:https://docs.microsoft.com/rest/api/postgresql/
 
-Principy přisátého řešení zabezpečení pomocí Azure AD:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Vysvětlení jednotného přihlašování pomocí služby Azure AD:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Použití vícefaktorového ověřování pro veškerý přístup založený na službě Azure Active Directory
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Pokyny:** Povolte vícefaktorové ověřování Azure Active Directory (MFA) a postupujte podle doporučení Centra identit a správy přístupu Azure Security Center. Při využití tokenů Azure AD pro přihlášení do databáze to umožňuje vyžadovat vícefaktorové ověřování pro přihlášení do databáze.
+**Doprovodné**materiály: povolte Azure Active Directory Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu. Při použití tokenů Azure AD pro přihlášení k vaší databázi vám to umožní vyžadovat vícefaktorové ověřování pro přihlášení k databázi.
 
-Jak povolit vícefaktorové povolení v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Jak povolit vícefaktorové ověřování v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-K ověřování pomocí Azure Database for PostgreSQL použijte Službu Azure Active Directory:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+Pro ověřování pomocí Azure Database for PostgreSQL použijte Azure Active Directory:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
-Jak sledovat identitu a přístup v rámci Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Jak monitorovat identitu a přístup v rámci Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Pro všechny administrativní úkoly používejte vyhrazené počítače (pracovní stanice s privilegovaným přístupem)
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
 
-**Pokyny:** Používejte pracovní stanice s privilegovaným přístupem (PAWs) s vícefaktorovým ověřováním (MFA) nakonfigurovaným pro přihlášení a konfiguraci prostředků Azure.
+**Pokyny**: použití pracovních stanic s privilegovaným přístupem (privilegovaným přístupem) s nakonfigurovaným Multi-Factor Authentication (MFA), které jsou nakonfigurovány pro přihlášení a konfiguraci prostředků Azure.
 
 Další informace o pracovních stanicích s privilegovaným přístupem:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-Jak povolit vícefaktorové povolení v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Jak povolit vícefaktorové ověřování v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: Protokolování a upozornění na podezřelou aktivitu z administrativních účtů
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: protokolování a upozornění na podezřelou aktivitu z účtů pro správu
 
-**Pokyny:** Povolit pokročilou ochranu před internetovými technologiemi pro azure databázi pro PostgreSQL generovat výstrahy pro podezřelé aktivity.
+**Doprovodné**materiály: povolení rozšířené ochrany před internetovými útoky pro Azure Database for PostgreSQL pro generování výstrah pro podezřelou aktivitu.
 
-Kromě toho můžete použít Azure Active Directory (AD) Privilegované správy identit (PIM) pro generování protokolů a výstrah, když dojde k podezřelé nebo nebezpečné aktivity v prostředí.
+Kromě toho můžete použít Azure Active Directory (AD) Privileged Identity Management (PIM) pro generování protokolů a výstrah, když dojde k podezřelé nebo nebezpečné aktivitě v prostředí.
 
-Pomocí azure ad detekce rizik pro zobrazení výstrah a sestav na rizikové chování uživatelů.
+Pomocí zjišťování rizik Azure AD můžete zobrazit výstrahy a sestavy týkající se rizikového chování uživatelů.
 
-Jak nastavit pokročilou ochranu před internetovými hrozbami pro databázi Azure pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+Postup nastavení rozšířené ochrany před internetovými útoky pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-Jak nasadit správu privilegovaných identit (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Postup nasazení Privileged Identity Management (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Seznamte se s detekcí rizik Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Vysvětlení zjišťování rizik Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Správa prostředků Azure z jenom schválených umístění
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
 
-**Pokyny:** Pomocí pojmenovaných umístění podmíněného přístupu povolte portálu a Azure Resource Manageru přístup pouze z konkrétních logických seskupení rozsahů IP adres nebo zemí nebo oblastí.
+**Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu umožněte portálu a Azure Resource Manager přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
 Jak nakonfigurovat pojmenovaná umístění v Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="39-use-azure-active-directory"></a>3.9: Použití služby Azure Active Directory
+### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
-**Pokyny:** Jako centrální systém ověřování a autorizace použijte službu Azure Active Directory (AD). Azure AD chrání data pomocí silnéšifrování pro data v klidovém stavu a při přenosu. Azure AD také soli, hashy a bezpečně ukládá přihlašovací údaje uživatele.
+**Doprovodné**materiály: jako centrální ověřování a systém autorizací použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
-Pro přihlášení do Azure Database pro PostgreSQL se doporučuje použít Azure AD a použít token Azure AD pro připojení. Při použití tokenu Azure AD jsou podporovány různé metody, jako je například uživatel Azure AD, skupina Azure AD nebo aplikace Azure AD, která se připojuje k databázi.
+Pro přihlášení k Azure Database for PostgreSQL se doporučuje používat Azure AD a k připojení použít token Azure AD. Při použití tokenu Azure AD se podporují různé metody, jako je například uživatel Azure AD, skupina Azure AD nebo aplikace Azure AD připojující se k databázi.
 
-Přihlašovací údaje Azure AD se můžou taky použít pro správu na úrovni roviny správy (například portál Azure) k řízení účtů správce PostgreSQL.
+Přihlašovací údaje Azure AD se můžou používat taky pro správu na úrovni roviny správy (například Azure Portal) k řízení účtů správce PostgreSQL.
 
-K ověřování pomocí Azure Database for PostgreSQL použijte Službu Azure Active Directory:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+Pro ověřování pomocí Azure Database for PostgreSQL použijte Azure Active Directory:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Pravidelně kontrolujte a slaďujte přístup uživatelů
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Pokyny:** Zkontrolujte protokoly služby Azure Active Directory, které vám pomohou zjistit zastaralé účty, které mohou zahrnovat účty s rolemi správy Azure Database for PostgreSQL. Kromě toho použijte Azure Identity Access Reviews k efektivní správě členství ve skupinách, přístupu k podnikovým aplikacím, které se mohou použít pro přístup k Azure Database pro PostgreSQL, a přiřazení rolí. Přístup uživatelů by měl být pravidelně kontrolován, například každých 90 dní, aby se zajistilo, že pouze ti praví uživatelé mají nepřetržitý přístup.
+**Doprovodné**materiály: Přečtěte si protokoly Azure Active Directory, které vám pomůžou zjistit zastaralé účty, které můžou zahrnovat Azure Database for PostgreSQL administrativních rolí. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím, které se dají použít pro přístup k Azure Database for PostgreSQL a přiřazení rolí. Přístup uživatelů by se měl pravidelně kontrolovat, například každých 90 dní, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-Principy sestav Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Pochopení sestav Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Jak používat recenze přístupu k identitám Azure:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Jak používat kontroly přístupu Azure identity:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 Zkontrolujte uživatele PostgreSQL a přiřazené role:https://www.postgresql.org/docs/current/database-roles.html
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Sledování pokusů o přístup k deaktivovaným účtům
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: monitorování pokusů o přístup k deaktivovaným účtům
 
-**Pokyny:** Povolte diagnostická nastavení pro databázi Azure pro PostgreSQL a Azure Active Directory a odesílněte všechny protokoly do pracovního prostoru Analýzy protokolů. Nakonfigurujte požadované výstrahy (například neúspěšné pokusy o ověření) v rámci analýzy protokolů.
+**Doprovodné**materiály: povolení nastavení diagnostiky pro Azure Database for PostgreSQL a Azure Active Directory a posílání všech protokolů do log Analyticsho pracovního prostoru. Nakonfigurujte požadovaná upozornění (například neúspěšné pokusy o ověření) v rámci Log Analytics.
 
-Jak nakonfigurovat a získat přístup k protokolům serveru pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+Konfigurace a přístup k protokolům serveru pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-Jak nakonfigurovat a získat přístup k protokolům auditu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-audit
+Postup konfigurace a přístup k protokolům auditu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Jak integrovat protokoly aktivit Azure do Azure Monitoru:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Jak integrovat protokoly aktivit Azure do Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Upozornění na odchylku chování přihlášení k účtu
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
-**Pokyny:** Povolit pokročilou ochranu před internetovými technologiemi pro azure databázi pro PostgreSQL generovat výstrahy pro podezřelé aktivity.
+**Doprovodné**materiály: povolení rozšířené ochrany před internetovými útoky pro Azure Database for PostgreSQL pro generování výstrah pro podezřelou aktivitu.
 
-Pomocí funkcí ochrany identity a detekce rizik služby Azure Active Directory můžete nakonfigurovat automatické odpovědi na zjištěné podezřelé akce. Můžete povolit automatizované odpovědi prostřednictvím Azure Sentinelu k implementaci odpovědí na zabezpečení vaší organizace.
+Pomocí funkcí Azure Active Directory Identity Protection a detekce rizik můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce. Můžete povolit automatizované odezvy prostřednictvím služby Azure Sentinel, abyste mohli implementovat reakce na zabezpečení vaší organizace.
 
-Můžete také ingestovat protokoly do Azure Sentinelu pro další šetření.
+K dalšímu zkoumání můžete také ingestovat protokoly do Azure Sentinel.
 
-Jak nastavit pokročilou ochranu před internetovými hrozbami pro databázi Azure pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+Postup nastavení rozšířené ochrany před internetovými útoky pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-Přehled ochrany identity Azure AD:https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection
+Přehled Azure AD Identity Protection:https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection
 
-Jak zobrazit Azure AD riskantní přihlášení:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Jak zobrazit rizikové přihlašování Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Jak napalubě Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Poskytněte společnosti Microsoft přístup k relevantním zákaznickým datům během scénářů podpory
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
 
-**Pokyny**: V současné době není k dispozici; Customer Lockbox ještě není podporovánpro Azure Database for PostgreSQL.
+**Doprovodné**materiály: aktuálně není k dispozici; Customer Lockbox ještě není pro Azure Database for PostgreSQL podporovaná.
 
-Seznam služeb podporovaných customer lockbox:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Seznam podporovaných služeb Customer Lockbox:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace naleznete [v tématu Security Control: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Udržovat soupis citlivých informací
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
-**Pokyny:** Pomocí značek můžete při sledování azure databáze pro instance PostgreSQL nebo souvisejících prostředků, které ukládají nebo zpracovávají citlivé informace.
+**Doprovodné**materiály: pomocí značek pomáhají při sledování Azure Database for PostgreSQLch instancí nebo souvisejících prostředků, které ukládají nebo zpracovávají citlivé informace.
 
-Jak vytvářet a používat značky:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Izolovat systémy ukládající nebo zpracovávající citlivé informace
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny**: Implementujte samostatné odběry nebo skupiny pro správu pro vývoj, testování a výrobu. Pomocí kombinace privátních odkazů, koncových bodů služby nebo pravidel brány firewall můžete izolovat a omezit přístup k síti k vaší instanci Azure Database for PostgreSQL.
+**Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Pomocí kombinace privátních odkazů, koncových bodů služby a/nebo pravidel brány firewall můžete izolovat a omezit síťový přístup k instancím Azure Database for PostgreSQL.
 
 Jak vytvořit další předplatná Azure:https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Jak vytvořit skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
+Postup vytvoření Skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
 
-Jak nakonfigurovat privátní propojení pro azure databázi pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+Postup konfigurace privátního odkazu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
 Jak vytvořit a spravovat koncové body služby virtuální sítě a pravidla virtuální sítě v Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
 
-Jak nakonfigurovat pravidla brány firewall Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules
+Jak nakonfigurovat Azure Database for PostgreSQL pravidla brány firewall:https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules
 
-**Monitorování Centra zabezpečení Azure**: Není k dispozici
+**Monitorování Azure Security Center**: není k dispozici.
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Sledování a blokování neoprávněného přenosu citlivých informací
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
 
-**Pokyny:** Při použití virtuálních počítačů Azure pro přístup k azure databázi pro postgreSQL instance, využijte private link, postgreSQL konfigurace sítě, skupiny zabezpečení sítě a značky služeb ke zmírnění možnosti exfiltrace dat.
+**Doprovodné**materiály: při použití virtuálních počítačů Azure pro přístup k instancím Azure Database for PostgreSQL použijte privátní linku, konfigurace sítě PostgreSQL, skupiny zabezpečení sítě a značky služeb, aby se zmírnila možnost datových exfiltrace.
 
-Microsoft spravuje základní infrastrukturu pro Azure Database pro PostgreSQL a zavedl přísné ovládací prvky, aby zabránil ztrátě nebo vystavení zákaznických dat.
+Společnost Microsoft spravuje základní infrastrukturu pro Azure Database for PostgreSQL a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-Jak zmírnit exfiltraci dat pro Azure Database pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link
+Jak zmírnit exfiltrace dat pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link
 
-Seznamte se s ochranou zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Sdíleno
+**Odpovědnost**: sdílená
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Šifrování všech citlivých informací při přepravě
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-**Naváděcí**pokyny: Azure Database for PostgreSQL podporuje připojení serveru PostgreSQL ke klientským aplikacím pomocí ssl (Secure Sockets Layer). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky. Na webu Azure Portal se ujistěte, že je ve výchozím nastavení povoleno "Vynutit připojení SSL" pro všechny instance Azure Database for PostgreSQL.
+**Pokyny**: Azure Database for PostgreSQL podporuje připojení serveru PostgreSQL k klientským aplikacím pomocí protokolu TLS (Transport Layer Security), dříve označovaného jako SSL (Secure Sockets Layer) (SSL). Vynucování připojení TLS mezi vaším databázovým serverem a klientskými aplikacemi pomáhá chránit před útoky typu "muž" v prostředním případě šifrováním datového proudu mezi serverem a vaší aplikací. V Azure Portal Ujistěte se, že je ve výchozím nastavení povolená možnost vykonat připojení SSL pro všechny vaše Azure Database for PostgreSQL instance.
 
-Aktuálně verze TLS podporovaná pro Azure Database for PostgreSQL jsou TLS 1.0, TLS 1.1, TLS 1.2.
+V současné době je verze TLS podporovaná pro Azure Database for PostgreSQL TLS 1,0, TLS 1,1, TLS 1,2.
 
-Jak nakonfigurovat šifrování při přenosu pro Azure Database pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security
+Postup konfigurace šifrování při přenosu pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Sdíleno
+**Odpovědnost**: sdílená
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Použití aktivního nástroje pro zjišťování k identifikaci citlivých dat
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
 
-**Pokyny:** Funkce identifikace, klasifikace a prevence ztrát dat ještě nejsou k dispozici pro Azure Database for PostgreSQL. Implementujte řešení třetích stran, pokud je to nutné pro účely dodržování předpisů.
+**Doprovodné**materiály: funkce pro identifikaci, klasifikaci a ochranu před únikem informací ještě nejsou k dispozici pro Azure Database for PostgreSQL. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů.
 
-Pro základní platformu, která je spravována společností Microsoft, společnost Microsoft považuje veškerý obsah zákazníků za citlivý a zachází velmi daleko, aby se ochránila před ztrátou a expozicí dat zákazníků. Aby byla zákaznická data v Azure stále zabezpečená, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a funkcí ochrany dat.
+Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-Seznamte se s ochranou zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Sdíleno
+**Odpovědnost**: sdílená
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Použití Azure RBAC k řízení přístupu k prostředkům
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny:** Pomocí řízení přístupu na základě rolí Azure (RBAC) můžete řídit přístup k databázi Azure pro rovinu řízení PostgreSQL (například portál Azure). Pro přístup k rovině dat (v rámci samotné databáze) použijte dotazy SQL k vytvoření uživatelů a konfiguraci uživatelských oprávnění. RBAC nemá vliv na uživatelská oprávnění v rámci databáze.
+**Pokyny**: použití řízení přístupu na základě role (RBAC) v Azure k řízení přístupu k Azure Database for PostgreSQL rovině ovládacího prvku (např. Azure Portal). Pro přístup k rovině dat (v samotné databázi) použijte dotazy SQL k vytvoření uživatelů a konfiguraci oprávnění uživatele. RBAC nemá vliv na uživatelská oprávnění v rámci databáze.
 
 Jak nakonfigurovat RBAC v Azure:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-Jak nakonfigurovat přístup uživatelů pomocí databáze SQL pro Azure pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-create-users
+Jak nakonfigurovat přístup uživatelů pomocí SQL pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-create-users
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Použití ochrany před ztrátou dat na hostiteli k vynucení kontroly přístupu
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-Microsoft spravuje základní infrastrukturu pro Azure Database pro PostgreSQL a zavedl přísné ovládací prvky, aby zabránil ztrátě nebo vystavení zákaznických dat.
+Společnost Microsoft spravuje základní infrastrukturu pro Azure Database for PostgreSQL a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-Seznamte se s ochranou zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Microsoft
+**Zodpovědnost**: Microsoft
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Šifrování citlivých informací v klidovém stavu
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
 
-**Pokyny:** Služba Azure Database for PostgreSQL používá kryptografický modul ověřený FIPS 140-2 pro šifrování dat v klidovém stavu. Data, včetně záloh, jsou šifrována na disku, s výjimkou dočasných souborů vytvořených při spouštění dotazů. Služba používá 256bitovou šifru AES, která je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
+**Pokyny**: Služba Azure Database for PostgreSQL používá šifrovací modul ověřený standardem FIPS 140-2 pro šifrování úložiště dat v klidovém provozu. Data včetně záloh se šifrují na disku, s výjimkou dočasných souborů vytvořených při spouštění dotazů. Služba používá algoritmus AES 256-bit, který je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
-Šifrování dat pomocí klíčů spravovaných zákazníkem (CMK) pro server Azure Database for PostgreSQL Single umožňuje přenést vlastní klíč (BYOK) pro ochranu dat v klidovém stavu. V tomto okamžiku je nutné požádat o přístup k použití této funkce. Chcete-li tak učinit, obraťte se na:
+Šifrování dat pomocí klíčů spravovaných zákazníkem (CMK) pro Azure Database for PostgreSQL jeden server umožňuje využít vlastní klíč (BYOK) pro ochranu dat v klidovém prostředí. V tuto chvíli musíte požádat o přístup k používání této možnosti. Chcete-li to provést, obraťte se na:
 
 AskAzureDBforPostgreSQL@service.microsoft.com.
 
-Principy šifrování v klidovém stavu pro Azure Database pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-security
+Vysvětlení šifrování v klidovém umístění pro Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-security
 
-Principy šifrování v klidovém stavu pro Azure Database for PostgreSQL pomocí klíčů spravovaných zákazníkem:https://docs.microsoft.com/azure/postgresql/concepts-data-encryption-postgresql
+Vysvětlení šifrování v klidovém formátu pro Azure Database for PostgreSQL pomocí klíčů spravovaných zákazníkem:https://docs.microsoft.com/azure/postgresql/concepts-data-encryption-postgresql
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Microsoft
+**Zodpovědnost**: Microsoft
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokolování a upozorňování na změny kritických prostředků Azure
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
-**Pokyny:** Pomocí Azure Monitor s protokolem aktivit Azure vytvořit výstrahy pro při provádění změn na produkční instance Azure Database pro PostgreSQL a dalších důležitých nebo souvisejících prostředků.
+**Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích Azure Database for PostgreSQL a dalších důležitých nebo souvisejících prostředcích.
 
-Jak vytvořit výstrahy pro události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Vytváření upozornění pro události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace naleznete v [tématu Security Control: Vulnerability Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Spuštění automatizovaných nástrojů pro vyhledávání chyb zabezpečení
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-**Pokyny**: V současné době není k dispozici; Azure Security Center zatím nepodporuje posouzení ohrožení zabezpečení pro Azure Database for PostgreSQL.
+**Doprovodné**materiály: aktuálně není k dispozici; Azure Security Center ještě nepodporuje posouzení ohrožení zabezpečení pro Azure Database for PostgreSQL.
 
 Pokrytí funkcí pro služby Azure PaaS v Azure Security Center:https://docs.microsoft.com/azure/security-center/features-paas
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Nasazení řešení pro správu automatických oprav operačního systému
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Nasazení automatizovaného řešení pro správu softwarových oprav od jiných výrobců
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: nasazení automatizovaného řešení pro správu oprav softwaru třetí strany
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Porovnání prohledávačů ohrožení zabezpečení zády k zadní straně
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: porovnání kontrol zabezpečení back-to-back
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Použití procesu hodnocení rizik a upřednostnění nápravy zjištěných zranitelných míst
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
 
-**Pokyny:** Společnost Microsoft provádí správu chyb zabezpečení v základních systémech, které podporují Azure Database for PostgreSQL.
+**Pokyny**: Společnost Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Database for PostgreSQL.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Microsoft
+**Zodpovědnost**: Microsoft
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace naleznete v [tématu Security Control: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
-### <a name="61-use-azure-asset-discovery"></a>6.1: Použití Azure Asset Discovery
+### <a name="61-use-azure-asset-discovery"></a>6,1: použijte Azure Asset Discovery.
 
-**Pokyny:** Pomocí Azure Resource Graph dotaz a zjistit všechny prostředky (včetně Azure Database for PostgreSQL instance) v rámci předplatného. Ujistěte se, že máte příslušná (číst) oprávnění ve vašem tenantovi a jsou schopni vytvořit výčet všech předplatných Azure, stejně jako prostředky v rámci vašich předplatných.
+**Pokyny**: pomocí Azure Resource graphu se můžete dotazovat a zjišťovat všechny prostředky (včetně instancí Azure Database for PostgreSQL) v rámci vašich předplatných. Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
 
-Jak vytvářet dotazy pomocí Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure Resource graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Jak zobrazit předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Jak zobrazit vaše předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Principy Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
+Porozumění službě Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="62-maintain-asset-metadata"></a>6.2: Udržování metadat datových zdrojů
+### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
-**Pokyny:** Použití značek pro Azure Database pro postgreSQL instance a další související prostředky poskytující metadata logicky uspořádat do taxonomie.
+**Doprovodné**materiály: použití značek pro Azure Database for PostgreSQL instancí a dalších souvisejících prostředků, které dávají metadata k logickému uspořádání do taxonomie.
 
-Jak vytvářet a používat značky:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Odstranění neautorizovaných prostředků Azure
+### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
-**Pokyny:** Použijte značkování, skupiny pro správu a samostatné předplatná, kde je to vhodné, k uspořádání a sledování Azure Database pro postgreSQL instance a související prostředky. Pravidelně odsouhlasete zásoby a zajistěte, aby byly z předplatného včas odstraněny neoprávněné prostředky.
+**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování Azure Database for PostgreSQLch instancí a souvisejících prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Jak vytvořit další předplatná Azure:https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Jak vytvořit skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
+Postup vytvoření Skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
 
-Jak vytvářet a používat značky:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Udržovat soupis schválených prostředků Azure a softwarových titulů
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: udržování inventáře schválených prostředků Azure a softwarových titulů
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky a Azure jako celek.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky a Azure jako celek.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Monitorování neschválených prostředků Azure
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
-**Pokyny**: Pomocí zásad Azure můžete omezit typ prostředků, které lze vytvořit v předplatných zákazníků pomocí následujících předdefinovaných definic zásad:
-
-- Nepovolené typy prostředků
-
-- Povolené typy prostředků
-
-Kromě toho použijte Azure Resource Graph k dotazování/zjišťování prostředků v rámci předplatného.
-
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-Jak vytvářet dotazy pomocí Azure Graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Sledování neschválených softwarových aplikací v rámci výpočetních prostředků
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Odebrání neschválených prostředků Azure a softwarových aplikací
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky a Azure jako celek.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="68-use-only-approved-applications"></a>6.8: Používejte pouze schválené aplikace
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="69-use-only-approved-azure-services"></a>6.9: Používejte jenom schválené služby Azure
-
-**Pokyny**: Pomocí zásad Azure můžete omezit typ prostředků, které lze vytvořit v předplatných zákazníků pomocí následujících předdefinovaných definic zásad:
+**Doprovodné**materiály: pomocí Azure Policy můžete klást omezení typů prostředků, které se dají vytvořit v zákaznických předplatných, a to pomocí těchto integrovaných definic zásad:
 
 - Nepovolené typy prostředků
 
 - Povolené typy prostředků
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat prostředky v rámci předplatných.
 
-Jak odepřít konkrétní typ prostředku pomocí zásad Azure:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: Nelze použít
+Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-**Odpovědnost**: Zákazník
+**Monitorování Azure Security Center**: nelze použít
 
-### <a name="610-implement-approved-application-list"></a>6.10: Implementace schváleného seznamu žádostí
+**Zodpovědnost**: zákazník
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Odpovědnost**: Nepoužije se
+**Monitorování Azure Security Center**: nelze použít
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6.11: Omezte možnost uživatelů komunikovat se Správcem prostředků Azure prostřednictvím skriptů
+**Odpovědnost**: netýká se
 
-**Pokyny:** Pomocí podmíněného přístupu Azure omezte možnost uživatelů pracovat se Správcem prostředků Azure konfigurací "Blokovat přístup" pro aplikaci Microsoft Azure Management. To může zabránit vytváření a změny prostředků v prostředí s vysokým zabezpečením, jako jsou instance Azure Database pro PostgreSQL obsahující citlivé informace.
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Odeberte neschválené prostředky Azure a softwarové aplikace
 
-Jak nakonfigurovat podmíněný přístup pro blokování přístupu ke Správci prostředků Azure:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky a Azure jako celek.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Odpovědnost**: netýká se
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Omezení možnosti uživatelů spouštět skripty v rámci výpočetních prostředků
+### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fyzicky nebo logicky oddělit vysoce rizikové aplikace
+### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro webové aplikace spuštěné ve službě Azure App Service nebo výpočetních prostředcích.
+**Doprovodné**materiály: pomocí Azure Policy můžete klást omezení typů prostředků, které se dají vytvořit v zákaznických předplatných, a to pomocí těchto integrovaných definic zásad:
 
-**Monitorování Azure Security Center**: Nelze použít
+- Nepovolené typy prostředků
 
-**Odpovědnost**: Nepoužije se
+- Povolené typy prostředků
+
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="610-implement-approved-application-list"></a>6,10: Implementujte schválený seznam aplikací
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6,11: Omezte schopnost uživatelů pracovat se správcem prostředků Azure prostřednictvím skriptů
+
+**Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů pracovat s Azure Resource Manager konfigurací možnosti blokovat přístup pro aplikaci Microsoft Azure Management. To může zabránit vytváření a změnám prostředků v prostředí s vysokým zabezpečením, jako jsou například instance Azure Database for PostgreSQL obsahující citlivé údaje.
+
+Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace naleznete v [tématu Zabezpečení: Zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Pokyny:** Definujte a implementujte standardní konfigurace zabezpečení pro vaše instance Azure Database for PostgreSQL pomocí zásad Azure. Pomocí aliasů zásad Azure v oboru názvů Microsoft.DBforPostgreSQL můžete vytvořit vlastní zásady k auditování nebo vynucení síťové konfigurace instancí Azure Database for PostgreSQL. Můžete také využít předdefinované definice zásad související s vaší databází Azure pro instance PostgreSQL, například:
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Azure Database for PostgreSQL instance pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. DBforPostgreSQL můžete vytvořit vlastní zásady, které budou auditovat nebo vymáhat konfiguraci sítě vašich Azure Database for PostgreSQL instancí. Můžete také využít integrované definice zásad související s vašimi Azure Database for PostgreSQL instancemi, například:
 
-- Vynutit připojení SSL by mělo být povoleno pro databázové servery PostgreSQL.
+- Pro databázové servery PostgreSQL by mělo být povoleno připojení TLS.
 
-- Pro databázové servery PostgreSQL by měla být povolena připojení protokolu.
+- Pro databázové servery PostgreSQL by se měla povolit protokolovat připojení.
 
-Jak zobrazit dostupné aliasy zásad Azure:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Jak zobrazit dostupné aliasy Azure Policy:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Vytvoření bezpečných konfigurací operačního systému
+### <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Udržování zabezpečených konfigurací prostředků Azure
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
-**Pokyny:** Pomocí zásad Azure [odepřít] a [nasadit, pokud neexistují] vynutit zabezpečené nastavení napříč prostředky Azure.
+**Pokyny**: použijte zásady Azure [Deny] a [nasazení, pokud neexistuje], abyste vynutili zabezpečená nastavení napříč prostředky Azure.
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Principy efektů zásad Azure:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Pochopení Azure Policych účinků:https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Udržovat bezpečné konfigurace operačního systému
+### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Konfigurace prostředků Azure bezpečně ukládá
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
-**Pokyny:** Pokud používáte vlastní definice zásad Azure pro vaše instance Azure Database for PostgreSQL a související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
+**Pokyny**: Pokud používáte vlastní definice zásad Azure pro vaše Azure Database for PostgreSQL instance a související prostředky, používejte Azure Repos k bezpečnému ukládání a správě kódu.
 
 Jak ukládat kód v Azure DevOps:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Dokumentace k azure repos:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos dokumentaci:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Bezpečné ukládání vlastních bitových kopií operačního systému
+### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Nasazení nástrojů pro správu konfigurace systému
+### <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
 
-**Pokyny**: Pomocí aliasů zásad Azure v oboru názvů Microsoft.DBforPostgreSQL vytvořte vlastní zásady pro výstrahu, audit ování a vynucení konfigurací systému. Kromě toho vytvořte proces a kanál pro správu výjimek zásad.
+**Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. DBforPostgreSQL můžete vytvořit vlastní zásady pro upozornění, audit a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Nasazení nástrojů pro správu konfigurace systému pro operační systémy
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: nasaďte nástroje pro správu konfigurace systému pro operační systémy.
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementace automatického monitorování konfigurace pro služby Azure
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Implementujte automatizované monitorování konfigurace pro služby Azure.
 
-**Pokyny**: Pomocí aliasů zásad Azure v oboru názvů Microsoft.DBforPostgreSQL vytvořte vlastní zásady pro výstrahu, audit ování a vynucení konfigurací systému. Pomocí zásad Azure [audit] [odepřít] a [nasadit, pokud neexistují] automaticky vynutit konfigurace pro vaše instance Azure Database pro PostgreSQL a související prostředky.
+**Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. DBforPostgreSQL můžete vytvořit vlastní zásady pro upozornění, audit a prosazování konfigurace systému. Použijte zásady Azure [audit], [Deny] a [nasazení, pokud neexistuje] k automatickému vymáhání konfigurací pro Azure Database for PostgreSQL instance a související prostředky.
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementace automatizovaného monitorování konfigurace operačních systémů
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="711-manage-azure-secrets-securely"></a>7.11: Bezpečná správa tajných kódů Azure
+### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
 
-**Pokyny:** Pro virtuální počítače Azure nebo webové aplikace spuštěné ve službě Azure App Service, které se používají k přístupu k vaší službě Azure Database for PostgreSQL, použijte identitu spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení azure databáze pro správu tajných služeb PostgreSQL. Ujistěte se, že je povoleno měkké odstranění trezoru klíčů.
+**Doprovodné**materiály: u Azure Virtual Machines nebo webových aplikací běžících na Azure App Service se používá pro přístup k instancím Azure Database for PostgreSQL použijte identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů Azure Database for PostgreSQL. Ujistěte se, že je povolené Key Vault obnovitelné odstranění.
 
-Jak integrovat s Azure Spravované identity:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Jak integrovat se spravovanými identitami Azure:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Jak vytvořit trezor klíčů:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Postup vytvoření Key Vault:https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Jak zajistit ověřování trezoru klíčů se spravovanou identitou:https://docs.microsoft.com/azure/key-vault/managed-identity
+Jak zajistit Key Vault ověřování pomocí spravované identity:https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Bezpečná a automatická správa identit
+### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Pokyny:** Azure Database for PostgreSQL server podporuje ověřování Azure Active Directory (ve verzi Preview) pro přístup k databázím.  Při vytváření azure databáze pro postgresql server, zadáte pověření pro uživatele správce. Tento správce lze použít k vytvoření dalších uživatelů databáze.  
+**Pokyny**: Azure Database for PostgreSQL Server podporuje ověřování Azure Active Directory (ve verzi Preview) pro přístup k databázím.  Při vytváření Azure Database for PostgreSQLho serveru poskytnete přihlašovací údaje pro uživatele správce. Tento správce se dá použít k vytvoření dalších uživatelů databáze.  
 
-Pro virtuální počítače Azure nebo webové aplikace spuštěné ve službě Azure App Service, které se používají k přístupu k serveru Azure Database for PostgreSQL, použijte identitu spravované služby ve spojení s Azure Key Vault k ukládání a načítání přihlašovacích údajů pro server Azure Database for PostgreSQL. Ujistěte se, že je povoleno měkké odstranění trezoru klíčů.
+V případě Azure Virtual Machines nebo webových aplikací běžících na Azure App Service se používá pro přístup k serveru Azure Database for PostgreSQL použijte Identita spravované služby ve spojení s Azure Key Vault ukládat a načítat přihlašovací údaje pro Azure Database for PostgreSQL Server. Ujistěte se, že je povolené Key Vault obnovitelné odstranění.
 
-Pomocí spravovaných identit můžete poskytovat služby Azure s automaticky spravovanou identitou ve službě Azure Active Directory (AD). Spravované identity umožňuje ověření na libovolnou službu, která podporuje ověřování Azure AD, včetně trezoru klíčů, bez pověření ve vašem kódu.
+Spravované identity použijte k poskytování služeb Azure s automaticky spravovanou identitou v Azure Active Directory (AD). Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
-Jak nakonfigurovat spravované identity:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+Postup konfigurace spravovaných identit:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-Jak integrovat s Azure Spravované identity:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Jak integrovat se spravovanými identitami Azure:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Eliminujte nezamýšlenou expozici pověření
+### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
 
-**Pokyny**: Implementujte skener pověření k identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů také podpoří přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je azure key vault.
+**Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
 
-Jak nastavit skener pověření:https://secdevtools.azurewebsites.net/helpcredscan.html
+Jak nastavit skener přihlašovacích údajů:https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace naleznete v [tématu Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Používejte centrálně spravovaný antimalwarový software
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-Microsoft anti-malware je povolena na podkladovém hostiteli, který podporuje služby Azure (například Azure App Service), ale neběží na obsah zákazníka.
+Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure App Service), ale neběží na zákaznickém obsahu.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Microsoft
+**Zodpovědnost**: Microsoft
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Předprohledávací soubory, které se mají nahrát do nevýpočetních prostředků Azure
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
 
-**Pokyny:** Microsoft anti-malware je povolena na podkladovém hostiteli, který podporuje služby Azure (například Azure Database for PostgreSQL), ale neběží na obsah zákazníků.
+**Pokyny**: ochrana proti malwaru od Microsoftu je povolená na podkladovém hostiteli, který podporuje služby Azure (například Azure Database for PostgreSQL), ale neběží na zákaznickém obsahu.
 
-Předem proskente veškerý obsah, který se nahrává do nevýpočetních prostředků Azure, jako je app service, storage datového jezera, úložiště objektů blob, databáze Azure pro PostgreSQL atd. Společnost Microsoft nemá v těchto případech přístup k vašim datům.
+Předem prohledejte veškerý obsah, který se nahrává do nevýpočetních prostředků Azure, jako jsou App Service, Data Lake Storage, Blob Storage, Azure Database for PostgreSQL atd. Společnost Microsoft nemá přístup k vašim datům v těchto instancích.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Sdíleno
+**Odpovědnost**: sdílená
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Zajistěte aktualizaci antimalwarového softwaru a podpisů
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: Ujistěte se, že antimalwarový software a signatury jsou aktualizované.
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-Microsoft anti-malware je povolena na podkladovém hostiteli, který podporuje služby Azure (například Azure Database for PostgreSQL), ale neběží na obsah zákazníka.
+Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure Database for PostgreSQL), ale neběží na zákaznickém obsahu.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Microsoft
+**Zodpovědnost**: Microsoft
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace naleznete [v tématu Security Control: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Zajistěte pravidelné automatické zálohování
+### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
-**Pokyny:** Azure Database for PostgreSQL přebírá zálohy datových souborů a transakční protokol. V závislosti na podporované maximální velikosti úložiště buď pořizujeme úplné a rozdílové zálohy (4 TB max servery úložiště) nebo zálohy snímků (až 16 TB max servery úložiště). Tyto zálohy umožňují obnovit server na libovolný bod v čase v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně jej můžete nakonfigurovat až na 35 dní. Všechny zálohy jsou šifrovány pomocí 256bitového šifrování AES.
+**Doprovodné**materiály: Azure Database for PostgreSQL přebírají zálohy datových souborů a transakčního protokolu. V závislosti na podporované maximální velikosti úložiště vezmeme úplné a rozdílové zálohy (4 TB max. servery úložiště) nebo zálohy snímků (až 16 TB maximálních úložných serverů). Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
 
-Jak zálohovat server v Azure Database pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+Postup zálohování serveru v Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
 Principy počáteční konfigurace Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Sdíleno
+**Odpovědnost**: sdílená
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Proveďte kompletní zálohy systému a zálohujte všechny klienty spravované klíče
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny spravované klíče zákazníka.
 
-**Pokyny**: Azure Database for PostgreSQL automaticky vytvoří zálohy serveru a uloží je do místně redundantního nebo geograficky redundantního úložiště podle volby uživatele. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou nezbytnou součástí každé strategie kontinuity podnikání, protože chrání vaše data před náhodným poškozením nebo odstraněním.
+**Doprovodné**materiály: Azure Database for PostgreSQL automaticky vytvoří zálohy serveru a uloží je do místně redundantního nebo geograficky redundantního úložiště v závislosti na volbě uživatele. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.
 
-Pokud pomocí Azure Key Vault ukládat přihlašovací údaje pro vaše instance Azure Database for PostgreSQL, zajistit pravidelné automatické zálohování klíčů.
+Pokud chcete ukládat přihlašovací údaje pro instance Azure Database for PostgreSQL pomocí Azure Key Vault, zajistěte pravidelné automatizované zálohování vašich klíčů.
 
-Jak zálohovat server v Azure Database pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+Postup zálohování serveru v Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
-Jak zálohovat klíče trezoru klíčů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Postup zálohování klíčů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Sdíleno
+**Odpovědnost**: sdílená
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Ověření všech záloh včetně klíčů spravovaných zákazníkem
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: Ověřte všechny zálohy včetně spravovaných klíčů zákazníků.
 
-**Pokyny**: V Azure Database pro PostgreSQL, provádění obnovení vytvoří nový server ze zálohy původního serveru. K dispozici jsou dva typy obnovení: obnovení v čase v čase a geografické obnovení. Obnovení bodu v čase je k dispozici s možností redundance zálohování a vytvoří nový server ve stejné oblasti jako původní server. Geografické obnovení je k dispozici pouze v případě, že jste server nakonfigurovali pro geograficky redundantní úložiště a umožňuje obnovit server do jiné oblasti.
+**Doprovodné**materiály: v Azure Database for PostgreSQL obnovení vytvoří nový server ze zálohy původního serveru. K dispozici jsou dva typy obnovení: obnovení k bodu v čase a geografické obnovení. Obnovení k určitému bodu v čase je dostupné s možností redundance zálohy a vytvoří nový server ve stejné oblasti jako původní server. Geografické obnovení je k dispozici pouze v případě, že jste server nakonfigurovali pro geograficky redundantní úložiště a máte možnost obnovit server do jiné oblasti.
 
-Odhadovaná doba obnovení závisí na několika faktorech, včetně velikosti databáze, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází, které se současně obnovují ve stejné oblasti. Doba zotavení je obvykle kratší než 12 hodin.
+Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení je obvykle méně než 12 hodin.
 
-Pravidelně otestujte obnovení databáze Azure pro postgreSQL instance.
+Pravidelně testujte obnovení instancí Azure Database for PostgreSQL.
 
-Jak zálohovat server v Azure Database pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+Postup zálohování serveru v Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zajištění ochrany záloh a klíčů spravovaných zákazníkem
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a spravovaných klíčů zákazníků.
 
-**Pokyny:** Azure Database for PostgreSQL přebírá úplné, rozdílové a transakční protokol zálohy. Tyto zálohy umožňují obnovit server na libovolný bod v čase v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně jej můžete nakonfigurovat až na 35 dní. Všechny zálohy jsou šifrovány pomocí 256bitového šifrování AES.
+**Doprovodné**materiály: Azure Database for PostgreSQL přebírá úplné a rozdílové zálohy a zálohování protokolů transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
 
-Principy zálohování a obnovení v Azure Database pro PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-backup
+Principy zálohování a obnovení v Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-backup
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace naleznete [v tématu Security Control: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
 
-### <a name="101-create-an-incident-response-guide"></a>10.1: Vytvoření průvodce odezvou na incidenty
+### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
-**Pokyny:** Vytvořte průvodce odezvou na incidenty pro vaši organizaci. Ujistěte se, že existují písemné plány reakce na incidenty, které definují všechny role personálu, stejně jako fáze zpracování incidentů / správy od detekce až po kontrolu po incidentu.
+**Pokyny**: Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů z detekce až po přezkoumání po jednotlivých událostech.
 
-Jak nakonfigurovat automatizaci pracovních postupů v Centru zabezpečení Azure:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+Postup konfigurace automatizace pracovních postupů v rámci Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-Pokyny pro vytváření vlastního procesu reakce na bezpečnostní incidenty:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-Anatomie incidentu v centru Microsoft Security Response Center:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Anatomie centra Microsoft Security Response Center:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-Zákazník může také využít nist počítačové bezpečnosti Incident Handling Guide na pomoc při vytváření vlastního plánu reakce na incidenty:https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty:https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Vytvoření postupu hodnocení incidentů a stanovení priorit
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
-**Pokyny**: Centrum zabezpečení přiřazuje každé výstraze závažnost, která vám pomůže určit prioritu, které výstrahy by měly být nejprve prošetřeny. Závažnost je založena na tom, jak sebevědomý Security Center je v hledání nebo analytice slouží k vydání výstrahy, stejně jako úroveň spolehlivosti, že tam byl škodlivý záměr za aktivitu, která vedla k upozornění.
+**Doprovodné**materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
-Navíc jasně označit odběry (pro ex. výroby, non-prod) a vytvořit systém pojmenování pro jasně identifikovat a kategorizovat prostředky Azure.
+Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="103-test-security-response-procedures"></a>10.3: Zkušební postupy odezvy zabezpečení
+### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
-**Pokyny**: Proveďte cvičení k testování schopností reakce na incidenty vašich systémů na pravidelné kadenci. Identifikujte slabá místa a mezery a podle potřeby plán revidujte.
+**Doprovodné**materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
-Podívejte se na publikaci NIST: Průvodce testovacími, školicími a cvičebními programy pro plány a schopnosti IT:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Poskytněte kontaktní údaje bezpečnostních incidentů a nakonfigurujte upozornění na bezpečnostní incidenty
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
-**Pokyny**: Kontaktní informace o bezpečnostních incidentech společnost Microsoft použije k tomu, aby vás kontaktovala, pokud centrum MSRC (Microsoft Security Response Center) zjistí, že k datům zákazníka byla přístupná nezákonná nebo neoprávněná strana.  Zkontrolujte incidenty po faktu, abyste zajistili, že budou problémy vyřešeny.
+**Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka přistupovala protiprávní nebo neoprávněná strana.  Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-Jak nastavit kontakt zabezpečení Centra zabezpečení Azure:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+Jak nastavit Azure Security Center kontakt zabezpečení:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Začleňte výstrahy zabezpečení do systému reakce na incidenty
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
-**Pokyny:** Exportujte výstrahy a doporučení Centra zabezpečení Azure pomocí funkce Nepřetržitý export. Nepřetržitý export umožňuje exportovat výstrahy a doporučení buď ručně, nebo průběžně. Datový konektor Azure Security Center můžete použít k streamování výstrah Sentinel.
+**Doprovodné**materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
 
-Jak nakonfigurovat nepřetržitý export:https://docs.microsoft.com/azure/security-center/continuous-export
+Postup konfigurace průběžného exportu:https://docs.microsoft.com/azure/security-center/continuous-export
 
-Jak streamovat výstrahy do Azure Sentinelu:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+Jak streamovat výstrahy do Azure Sentinel:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatizace reakce na výstrahy zabezpečení
+### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
-**Pokyny:** Pomocí funkce Automatizace pracovních postupů v Centru zabezpečení Azure můžete automaticky aktivovat odpovědi prostřednictvím "Logic Apps" na výstrahy zabezpečení a doporučení.
+**Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 
-Konfigurace automatizace pracovních postupů a aplikací logiky:https://docs.microsoft.com/azure/security-center/workflow-automation
+Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps:https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace naleznete [v tématu Bezpečnostní kontrola: Penetrační testy a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Proveďte pravidelné penetrační testování prostředků Azure a zajistěte nápravu všech kritických zjištění zabezpečení do 60 dnů
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech důležitých zjištění zabezpečení do 60 dnů.
 
-**Pokyny**: Postupujte podle pravidel společnosti Microsoft a ujistěte se, že vaše penetrační testy neporušují zásady společnosti Microsoft:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**Doprovodné**materiály: Využijte pravidla zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-Další informace o strategii společnosti Microsoft a provádění červených týmů a testování průniku živých webů proti cloudové infrastruktuře, službám a aplikacím spravovanému společností Microsoft naleznete zde:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+V této části najdete další informace o strategii a provádění testování na základě červeného týmu a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Sdíleno
+**Odpovědnost**: sdílená
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na [srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zásad zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

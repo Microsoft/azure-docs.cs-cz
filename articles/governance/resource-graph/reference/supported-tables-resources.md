@@ -1,14 +1,14 @@
 ---
 title: Podporované typy prostředků Správce prostředků
 description: Poskytněte seznam Správce prostředků typů prostředků, které podporuje Azure Resource Graph, a historii změn.
-ms.date: 04/23/2020
+ms.date: 04/24/2020
 ms.topic: reference
-ms.openlocfilehash: 021a0d595a34bc132aa0e67f2b5485ae9c321ef3
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 7092a6dccc2870c7fd7b6dc6feb3af16f0fd3b7a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116634"
+ms.locfileid: "82141901"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
 
@@ -65,6 +65,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Automation/automationaccounts
 - Microsoft. Automation/automationaccounts/Configurations
 - Microsoft. Automation/automationaccounts/Runbooky
+- Microsoft. autonomoussystems/pracovní prostory
 - Microsoft. azconfig/configurationstores
 - Microsoft. azureactivedirectory selhala/b2cdirectories
 - Microsoft. azuredata/datacontrollers
@@ -104,6 +105,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Cognition/syntheticsaccounts
 - Microsoft. cognitiveservices Account/účty
 - Microsoft. COMPUTE/availabilitysets
+- Microsoft. COMPUTE/diskaccesses
 - Microsoft. COMPUTE/diskencryptionsets
 - Microsoft. COMPUTE/disky
 - Microsoft. COMPUTE/galerie

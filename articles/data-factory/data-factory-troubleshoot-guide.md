@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s Azure Data Factory | Dokumenty společnosti Microsoft
-description: Zjistěte, jak řešit potíže s externími aktivitami řízení v Azure Data Factory.
+title: Řešení potíží s Azure Data Factory | Microsoft Docs
+description: Přečtěte si, jak řešit potíže s externími ovládacími prvky v Azure Data Factory.
 services: data-factory
 author: nabhishek
 ms.service: data-factory
@@ -8,21 +8,21 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c9a1ac831c4300c0523717fddc1fa53417068b89
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: af0c95c197a70291e0fc863f3256be0e9a1da7f1
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416572"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133212"
 ---
-# <a name="troubleshoot-azure-data-factory"></a>Poradce při potížích s Azure Data Factory
+# <a name="troubleshoot-azure-data-factory"></a>Řešení potíží s Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek zkoumá běžné metody řešení potíží pro aktivity externího řízení v Azure Data Factory.
+Tento článek popisuje běžné metody řešení potíží pro aktivity externích řízení v Azure Data Factory.
 
 ## <a name="connector-and-copy-activity"></a>Aktivita konektoru a kopírování
 
-Problémy s konektorem, například při výskytu chyby pomocí aktivity kopírování, najdete [v tématu Poradce při potížích s konektory Azure Data Factory .](connector-troubleshoot-guide.md)
+V případě problémů s konektorem, například Chyba při použití aktivity kopírování, najdete informace v tématu [řešení potíží s Azure Data Factory konektory](connector-troubleshoot-guide.md).
   
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -33,7 +33,7 @@ Problémy s konektorem, například při výskytu chyby pomocí aktivity kopíro
 
 - **Příčina**:`The Databricks access token has expired.`
 
-- **Doporučení:** Ve výchozím nastavení je přístupový token Azure Databricks platný po dobu 90 dnů. Vytvořte nový token a aktualizujte propojenou službu.
+- **Doporučení**: ve výchozím nastavení je přístupový token Azure Databricks platný po dobu 90 dnů. Vytvořte nový token a aktualizujte propojenou službu.
 
 
 ### <a name="error-code--3201"></a>Kód chyby: 3201
@@ -42,7 +42,7 @@ Problémy s konektorem, například při výskytu chyby pomocí aktivity kopíro
 
 - **Příčina**:`Bad authoring: Notebook path not specified correctly.`
 
-- **Doporučení:** Zadejte cestu poznámkového bloku v aktivitě Databricks.
+- **Doporučení**: zadejte cestu k poznámkovému bloku v aktivitě datacihly.
 
 <br/>  
 
@@ -50,7 +50,7 @@ Problémy s konektorem, například při výskytu chyby pomocí aktivity kopíro
 
 - **Příčina**:`Authoring error: Databricks cluster does not exist or has been deleted.`
 
-- **Doporučení**: Ověřte, zda existuje cluster Databricks.
+- **Doporučení**: Ověřte, zda existuje cluster datacihly.
 
 <br/>  
 
@@ -58,7 +58,7 @@ Problémy s konektorem, například při výskytu chyby pomocí aktivity kopíro
 
 - **Příčina**:`Bad authoring.`
 
-- **Doporučení:** Zadejte absolutní cesty pro schémata adresování pracovního prostoru nebo `dbfs:/folder/subfolder/foo.py` pro soubory uložené v systému souborů Databricks.
+- **Doporučení**: Zadejte buď absolutní cesty pro schémata adresování pracovních prostorů `dbfs:/folder/subfolder/foo.py` , nebo soubory uložené v systému souborů datacihly.
 
 <br/>  
 
@@ -82,7 +82,7 @@ Problémy s konektorem, například při výskytu chyby pomocí aktivity kopíro
 
 - **Příčina**:`Bad authoring.`
 
-- **Doporučení**: Podívejte se na chybovou zprávu.
+- **Doporučení**: Přečtěte si chybovou zprávu.
 
 <br/>
 
@@ -92,7 +92,7 @@ Problémy s konektorem, například při výskytu chyby pomocí aktivity kopíro
 
 - **Příčina**:`Too many Databricks runs in an hour.`
 
-- **Doporučení:** Zkontrolujte všechny kanály, které používají tento pracovní prostor Databricks pro jejich míru vytváření pracovních míst.  Pokud kanály spustily příliš mnoho databricků, běží v agregátně, migrujte některé kanály do nového pracovního prostoru.
+- **Doporučení**: Ověřte všechny kanály, které používají tento pracovní prostor datacihly pro svou rychlost vytváření úloh.  Pokud kanály spouštějí příliš mnoho datacihlů, migrují se některé kanály do nového pracovního prostoru.
 
 <br/>  
 
@@ -100,106 +100,106 @@ Problémy s konektorem, například při výskytu chyby pomocí aktivity kopíro
 
 - **Příčina**:`Authoring error: No value provided for the parameter.`
 
-- **Doporučení:** Zkontrolujte kanál JSON a ujistěte se, že všechny parametry v poznámkovém bloku baseParameters určují neprázdnou hodnotu.
+- **Doporučení**: Zkontrolujte kód JSON kanálu a ujistěte se, že všechny parametry v poznámkovém bloku baseParameters určují neprázdnou hodnotu.
 
 <br/>  
 
-- **Zpráva** `User: `: SimpleUserContext{userId=...,user@company.comname= , orgId=...}` is not   authorized to access cluster.`
+- **Zpráva**: `User: `SimpleUserContext {userId =..., název =user@company.com, OrgID =...}` is not   authorized to access cluster.`
 
-- **Příčina**: Uživateli, který vygeneroval přístupový token, není povolen přístup k clusteru Databricks určenému v propojené službě.
+- **Příčina**: uživatel, který vygeneroval přístupový token, nemá oprávnění k přístupu ke clusteru datacihlům, který je zadaný v propojené službě.
 
-- **Doporučení:** Ujistěte se, že uživatel má požadovaná oprávnění v pracovním prostoru.
+- **Doporučení**: Ujistěte se, že uživatel má v pracovním prostoru požadovaná oprávnění.
 
 
 ### <a name="error-code--3203"></a>Kód chyby: 3203
 
 - **Zpráva**:`The cluster is in Terminated state, not available to receive jobs. Please fix the cluster or retry later.`
 
-- **Příčina**: Cluster byl ukončen. Pro interaktivní clustery to může být spor.
+- **Příčina**: cluster byl ukončen. U interaktivních clusterů to může být spor.
 
-- **Doporučení**: Nejlepší způsob, jak se této chybě vyhnout, je použít clustery úloh.
+- **Doporučení**: nejlepší způsob, jak se vyhnout této chybě, je použití clusterů úloh.
 
 
 ### <a name="error-code--3204"></a>Kód chyby: 3204
 
 - **Zpráva**:`Job execution failed.`
 
-- **Příčina**: Chybové zprávy označují různé problémy, například neočekávaný stav clusteru nebo určitou aktivitu. Nejčastěji se nezobrazí žádná chybová zpráva.
+- **Příčina**: chybové zprávy indikují různé problémy, jako je neočekávaný stav clusteru nebo konkrétní aktivita. Nezobrazuje se vám většinou žádná chybová zpráva.
 
-- **Doporučení**: Není k mů e pojem
+- **Doporučení**: není k dispozici
             
 
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
-Následující tabulka se vztahuje na U-SQL.
+Následující tabulka platí pro U-SQL.
       
 ### <a name="error-code--2709"></a>Kód chyby: 2709
 
 - **Zpráva**:`The access token is from the wrong tenant.`
 
-- **Příčina:** Nesprávný klient Azure Active Directory (Azure AD).
+- **Příčina**: nesprávný tenant Azure Active Directory (Azure AD).
 
-- **Doporučení:** Nesprávný klient Azure Active Directory (Azure AD).
+- **Doporučení**: nesprávný tenant Azure Active Directory (Azure AD).
 
 <br/>
 
 - **Zpráva**:`We cannot accept your job at this moment. The maximum number of queued jobs for   your account is 200. `
 
-- **Příčina**: Tato chyba je způsobena omezením v analýze datového jezera.
+- **Příčina**: Tato chyba je způsobená omezováním Data Lake Analytics.
 
-- **Doporučení**: Snižte počet odeslaných úloh do služby Data Lake Analytics změnou aktivačních událostí datové továrny a nastavení souběžnosti s aktivitami. Nebo zvyšte limity pro Data Lake Analytics.
+- **Doporučení**: Snižte počet odeslaných úloh, které se mají Data Lake Analytics změnou Data Factory triggerů a nastavení souběžnosti u aktivit. Nebo zvyšte limity Data Lake Analytics.
 
 <br/>  
 
 - **Zpráva**:`This job was rejected because it requires 24 AUs. This account's administrator-defined policy prevents a job from using more than 5 AUs.`
 
-- **Příčina**: Tato chyba je způsobena omezením v analýze datového jezera.
+- **Příčina**: Tato chyba je způsobená omezováním Data Lake Analytics.
 
-- **Doporučení**: Snižte počet odeslaných úloh do služby Data Lake Analytics změnou aktivačních událostí datové továrny a nastavení souběžnosti s aktivitami. Nebo zvyšte limity pro Data Lake Analytics.
+- **Doporučení**: Snižte počet odeslaných úloh, které se mají Data Lake Analytics změnou Data Factory triggerů a nastavení souběžnosti u aktivit. Nebo zvyšte limity Data Lake Analytics.
 
 
 ### <a name="error-code--2705"></a>Kód chyby: 2705
 
 - **Zpráva**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/>  <br/>  User is   not able to access Data Lake Store.  <br/>  <br/>  User is  not authorized to use Data Lake Analytics.`
 
-- **Příčina**: Instanční objekt nebo certifikát nemají přístup k souboru v úložišti.
+- **Příčina**: objekt služby nebo certifikát nemá přístup k souboru v úložišti.
 
-- **Doporučení:** Ujistěte se, že instanční objekt nebo certifikát, který uživatel poskytuje pro úlohy Data Lake Analytics, má přístup k účtu Data Lake Analytics a výchozí instanci Úložiště datového jezera z kořenové složky.
+- **Doporučení**: Ujistěte se, že instanční objekt nebo certifikát, který uživatel poskytuje pro úlohy Data Lake Analytics, má přístup k účtu Data Lake Analytics a výchozí instanci Data Lake Storage z kořenové složky.
 
 
 ### <a name="error-code--2711"></a>Kód chyby: 2711
 
 - **Zpráva**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/>  <br/>  User is   not able to access Data Lake Store.  <br/>  <br/>  User is  not authorized to use Data Lake Analytics.`
 
-- **Příčina**: Instanční objekt nebo certifikát nemají přístup k souboru v úložišti.
+- **Příčina**: objekt služby nebo certifikát nemá přístup k souboru v úložišti.
 
-- **Doporučení:** Ujistěte se, že instanční objekt nebo certifikát, který uživatel poskytuje pro úlohy Data Lake Analytics, má přístup k účtu Data Lake Analytics a výchozí instanci Úložiště datového jezera z kořenové složky.
+- **Doporučení**: Ujistěte se, že instanční objekt nebo certifikát, který uživatel poskytuje pro úlohy Data Lake Analytics, má přístup k účtu Data Lake Analytics a výchozí instanci Data Lake Storage z kořenové složky.
 
 <br/>  
 
 - **Zpráva**:`Cannot find the 'Azure Data Lake Store' file or folder.`
 
-- **Příčina**: Cesta k souboru U-SQL je chybná nebo pověření propojené služby nemají přístup.
+- **Příčina**: cesta k souboru U-SQL je chybná nebo přihlašovací údaje propojené služby nemají přístup.
 
-- **Doporučení:** Ověřte cestu a pověření poskytnutá v propojené službě.
+- **Doporučení**: Ověřte cestu a přihlašovací údaje, které jsou k dispozici v propojené službě.
 
 
 ### <a name="error-code--2704"></a>Kód chyby: 2704
 
 - **Zpráva**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/>  <br/>  User is   not able to access Data Lake Store.  <br/>  <br/>  User is  not authorized to use Data Lake Analytics.`
 
-- **Příčina**: Instanční objekt nebo certifikát nemají přístup k souboru v úložišti.
+- **Příčina**: objekt služby nebo certifikát nemá přístup k souboru v úložišti.
 
-- **Doporučení:** Ujistěte se, že instanční objekt nebo certifikát, který uživatel poskytuje pro úlohy Data Lake Analytics, má přístup k účtu Data Lake Analytics a výchozí instanci Úložiště datového jezera z kořenové složky.
+- **Doporučení**: Ujistěte se, že instanční objekt nebo certifikát, který uživatel poskytuje pro úlohy Data Lake Analytics, má přístup k účtu Data Lake Analytics a výchozí instanci Data Lake Storage z kořenové složky.
 
 
 ### <a name="error-code--2707"></a>Kód chyby: 2707
 
 - **Zpráva**:`Cannot resolve the account of AzureDataLakeAnalytics. Please check 'AccountName' and   'DataLakeAnalyticsUri'.`
 
-- **Příčina**: Účet Data Lake Analytics v propojené službě je chybný.
+- **Příčina**: účet Data Lake Analytics v propojené službě je nesprávný.
 
-- **Doporučení**: Ověřte, zda je k dispozici správný účet.
+- **Doporučení**: Ověřte, zda je zadán správný účet.
 
 
 ### <a name="error-code--2703"></a>Kód chyby: 2703
@@ -208,7 +208,7 @@ Následující tabulka se vztahuje na U-SQL.
 
 - **Příčina**: Chyba je z Data Lake Analytics.
 
-- **Doporučení**: Chyba, jako je příklad, znamená, že úloha byla odeslána do služby Data Lake Analytics a tamní skript se nezdařil. Prozkoumejte v data lake analytics. Na portálu přejděte na účet Data Lake Analytics a vyhledejte úlohu pomocí ID spuštění aktivity datové továrny (ne ID spuštění kanálu). Úloha tam poskytuje další informace o chybě a pomůže vám řešit potíže. Pokud řešení není jasné, obraťte se na tým podpory Data Lake Analytics a zadejte adresu URL úlohy, která obsahuje název vašeho účtu a ID úlohy.
+- **Doporučení**: Chyba jako v příkladu znamená, že úloha byla odeslána do data Lake Analytics a skript se nezdařil. Prozkoumejte v Data Lake Analytics. Na portálu přejdete na účet Data Lake Analytics a vyhledáte úlohu pomocí ID spuštění Data Factory aktivity (ne ID spuštění kanálu). Úloha obsahuje další informace o této chybě a pomůže vám při odstraňování potíží. Pokud řešení není jasné, obraťte se na tým podpory Data Lake Analytics a zadejte adresu URL úlohy, která zahrnuje název vašeho účtu a ID úlohy.
           
 
 ## <a name="azure-functions"></a>Azure Functions
@@ -217,81 +217,81 @@ Následující tabulka se vztahuje na U-SQL.
 
 - **Zpráva**:`Invalid HttpMethod: '%method;'.`
 
-- **Příčina**: Metoda Http zadaná v datové části aktivity není podporována aktivitou funkce Azure.
+- **Příčina**: metoda HTTP zadaná v datové části aktivity není podporována aktivitou funkce Azure Functions.
 
-- **Doporučení:** Http metody, které jsou podporovány jsou PUT, POST, GET, DELETE, MOŽNOSTI, HEAD a TRACE.
+- **Doporučení**: podporované metody HTTP jsou PUT, post, Get, DELETE, Options, Head a Trace.
 
 
 ### <a name="error-code--3603"></a>Kód chyby: 3603
 
 - **Zpráva**:`Response Content is not a valid JObject.`
 
-- **Příčina**: Azure funkce, která byla volána nevrátil a JSON datové části v odpovědi. Aktivita funkce ADF Azure podporuje pouze obsah odpovědí JSON.
+- **Příčina**: volaná funkce Azure nevrátila v odpovědi datovou část JSON. Aktivita Azure Functions ADF podporuje jenom obsah odpovědi JSON.
 
-- **Doporučení:** Aktualizace funkce Azure pro vrácení platné datové části JSON, například funkce Jazyka C# může\"vrátit\"\"(ActionResult)new OkObjectResult("{ Id : 123\"}");
+- **Doporučení**: aktualizujte funkci Azure Functions, aby vrátila platnou datovou část JSON, např. funkce jazyka C# může vracet (\"ActionResult\")\"New\"OkObjectResult ({ID: 123});
 
 
 ### <a name="error-code--3606"></a>Kód chyby: 3606
 
-- **Zpráva**: Funkce Azure aktivity chybí funkční klávesa.
+- **Zpráva**: aktivita funkce Azure postrádá klíč funkce.
 
-- **Příčina**: Definice aktivity funkce Azure není úplná.
+- **Příčina**: definice aktivity funkce Azure není dokončená.
 
-- **Doporučení:** Zkontrolujte vstupní AzureFunction activity JSON definice má vlastnost s názvem "functionKey".
+- **Doporučení**: Zkontrolujte, zda definice JSON vstupní AzureFunction aktivity obsahuje vlastnost s názvem functionKey.
 
 
 ### <a name="error-code--3607"></a>Kód chyby: 3607
 
 - **Zpráva**:`Azure function activity missing function name.`
 
-- **Příčina**: Definice aktivity funkce Azure není úplná.
+- **Příčina**: definice aktivity funkce Azure není dokončená.
 
-- **Doporučení:** Zkontrolujte vstupní AzureFunction activity JSON definice má vlastnost s názvem "functionName".
+- **Doporučení**: Zkontrolujte, zda definice JSON vstupní AzureFunction aktivity obsahuje vlastnost s názvem "název funkce".
 
 
 ### <a name="error-code--3608"></a>Kód chyby: 3608
 
 - **Zpráva**:`Call to provided Azure function '%FunctionName;' failed with status-'%statusCode;' and message - '%message;'.`
 
-- **Příčina**: Podrobnosti funkce Azure v definici aktivity mohou být nesprávné.
+- **Příčina**: Podrobnosti funkce Azure v definici aktivit můžou být nesprávné.
 
-- **Doporučení:** Opravte podrobnosti funkce azure a opakujte akci.
+- **Doporučení**: Opravte Podrobnosti funkce Azure a zkuste to znovu.
 
 
 ### <a name="error-code--3609"></a>Kód chyby: 3609
 
 - **Zpráva**:`Azure function activity missing functionAppUrl.`
 
-- **Příčina**: Definice aktivity funkce Azure není úplná.
+- **Příčina**: definice aktivity funkce Azure není dokončená.
 
-- **Doporučení:** Zkontrolujte vstupní AzureFunction activity JSON definice má vlastnost s názvem "functionAppUrl".
+- **Doporučení**: Zkontrolujte, zda definice JSON vstupní AzureFunction aktivity obsahuje vlastnost s názvem functionAppUrl.
 
 
 ### <a name="error-code--3610"></a>Kód chyby: 3610
 
 - **Zpráva**:`There was an error while calling endpoint.`
 
-- **Příčina**: Adresa URL funkce může být nesprávná.
+- **Příčina**: adresa URL funkce může být nesprávná.
 
-- **Doporučení:** Ujistěte se, že hodnota 'functionAppUrl' v aktivitě JSON je správná a zkuste to znovu.
+- **Doporučení**: Ujistěte se prosím, že hodnota pro ' functionAppUrl ' v kódu JSON aktivity je správná, a zkuste to znovu.
 
 
 ### <a name="error-code--3611"></a>Kód chyby: 3611
 
 - **Zpráva**:`Azure function activity missing Method in JSON.`
 
-- **Příčina**: Definice aktivity funkce Azure není úplná.
+- **Příčina**: definice aktivity funkce Azure není dokončená.
 
-- **Doporučení:** Zkontrolujte vstupní AzureFunction activity JSON definice má vlastnost s názvem "metoda".
+- **Doporučení**: Zkontrolujte prosím, že definice JSON vstupní AzureFunction aktivity obsahuje vlastnost s názvem Method.
 
 
 ### <a name="error-code--3612"></a>Kód chyby: 3612
 
 - **Zpráva**:`Azure function activity missing LinkedService definition in JSON.`
 
-- **Příčina**: Definice aktivity funkce Azure není úplná.
+- **Příčina**: definice aktivity funkce Azure není dokončená.
 
-- **Doporučení:** Zkontrolujte vstupní AzureFunction aktivity JSON definice má propojené podrobnosti o službě.
+- **Doporučení**: Zkontrolujte, zda definice JSON vstupní AzureFunction aktivity obsahuje propojené služby.
 
 
 
@@ -301,90 +301,90 @@ Následující tabulka se vztahuje na U-SQL.
 
 - **Zpráva**:`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
 
-- **Příčina**: Chybný formát nebo chybějící definice vlastnosti %propertyName;.
+- **Příčina**: chybný formát nebo chybějící definice vlastnosti% PropertyName;.
 
-- **Doporučení:** Zkontrolujte, zda aktivita %activityName;' má vlastnost %propertyName;' definovanou se správnými daty.
+- **Doporučení**: Zkontrolujte prosím, jestli aktivita% Activity; má definovanou vlastnost% PropertyName; se správnými daty.
 
 
 ### <a name="error-code--4110"></a>Kód chyby: 4110
 
 - **Zpráva**:`AzureMLExecutePipeline activity missing LinkedService definition in JSON.`
 
-- **Příčina**: Definice aktivity AzureMLExecutePipeline není dokončena.
+- **Příčina**: definice aktivity AzureMLExecutePipeline není dokončena.
 
-- **Doporučení:** Zkontrolujte, zda má vstupní definice JSON aktivity AzureMLExecutePipeline propojené podrobnosti o službě.
+- **Doporučení**: Zkontrolujte prosím, jestli vstupní definice JSON pro aktivitu AzureMLExecutePipeline obsahuje propojené informace o službě.
 
 
 ### <a name="error-code--4111"></a>Kód chyby: 4111
 
 - **Zpráva**:`AzureMLExecutePipeline activity has wrong LinkedService type in JSON. Expected LinkedService type: '%expectedLinkedServiceType;', current LinkedService type: Expected LinkedService type: '%currentLinkedServiceType;'.`
 
-- **Příčina:** Nesprávná definice aktivity.
+- **Příčina**: Nesprávná definice aktivity.
 
-- **Doporučení:** Zkontrolujte, zda má vstupní definice JSON aktivity AzureMLExecutePipeline správné podrobnosti o propojené službě.
+- **Doporučení**: Zkontrolujte prosím, jestli vstupní definice JSON pro aktivitu AzureMLExecutePipeline neobsahuje správné podrobnosti propojené služby.
 
 
 ### <a name="error-code--4112"></a>Kód chyby: 4112
 
 - **Zpráva**:`AzureMLService linked service has invalid value for property '%propertyName;'.`
 
-- **Příčina**: Chybný formát nebo chybějící definice vlastnosti %propertyName;.
+- **Příčina**: chybný formát nebo chybějící definice vlastnosti% PropertyName;.
 
-- **Doporučení:** Zkontrolujte, zda má propojená služba vlastnost %propertyName;' definovanou se správnými daty.
+- **Doporučení**: Zkontrolujte, jestli je u propojené služby definovaná vlastnost% PropertyName; se správnými daty.
 
 
 ### <a name="error-code--4121"></a>Kód chyby: 4121
 
 - **Zpráva**:`Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Příčina**: Platnost pověření používaného pro přístup k Azure Machine Learning vypršela.
+- **Příčina**: vypršela platnost přihlašovacích údajů použitých pro přístup k Azure Machine Learning.
 
-- **Doporučení:** Ověřte, zda je pověření platné a opakujte akci.
+- **Doporučení**: Ověřte, že přihlašovací údaje jsou platné, a zkuste to znovu.
 
 
 ### <a name="error-code--4122"></a>Kód chyby: 4122
 
 - **Zpráva**:`Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Příčina**: Pověření poskytnutá v propojené službě Azure Machine Learning je neplatná nebo nemá oprávnění k operaci.
+- **Příčina**: přihlašovací údaje zadané v propojené službě Azure Machine Learning jsou neplatné nebo nemají oprávnění k této operaci.
 
-- **Doporučení:** Ověřte, zda jsou přihlašovací údaje v propojené službě platné a mají oprávnění k přístupu k Azure Machine Learning.
+- **Doporučení**: Ověřte, že přihlašovací údaje v propojené službě jsou platné a mají oprávnění pro přístup k Azure Machine Learning.
 
 
 ### <a name="error-code--4123"></a>Kód chyby: 4123
 
 - **Zpráva**:`Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Příčina**: Vlastnosti aktivity, jako je pipelineParameters jsou neplatné pro kanál Azure ML.
+- **Příčina**: vlastnosti aktivity, například pipelineParameters, jsou pro kanál Azure ml neplatné.
 
-- **Doporučení:** Zkontrolujte hodnotu vlastností aktivity tak, aby odpovídala očekávané datové části publikovaného kanálu Azure ML určeného v propojené službě.
+- **Doporučení**: Zkontrolujte hodnoty vlastností aktivity, aby odpovídaly očekávané datové části publikovaného kanálu Azure ml zadaného v propojené službě.
 
 
 ### <a name="error-code--4124"></a>Kód chyby: 4124
 
 - **Zpráva**:`Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Příčina**: Publikovaný koncový bod kanálu Azure ML neexistuje.
+- **Příčina**: publikovaný koncový bod kanálu Azure ml neexistuje.
 
-- **Doporučení:** Ověřte, zda publikovaný koncový bod kanálu Azure Machine Learning zadaný v propojené službě existuje v Azure Machine Learning.
+- **Doporučení**: Ověřte, že v Azure Machine Learning existuje publikovaný koncový bod kanálu Azure Machine Learning, který je zadaný v propojené službě.
 
 
 ### <a name="error-code--4125"></a>Kód chyby: 4125
 
 - **Zpráva**:`Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Příčina**: Chyba serveru v Azure Machine Learning.
+- **Příčina**: Chyba serveru na Azure Machine Learning.
 
-- **Doporučení**: Opakujte akci později. Pokud problém přetrvává, obraťte se na tým Azure Machine Learning.
+- **Doporučení**: zkuste to prosím znovu později. Pokud problém trvá, obraťte se na tým Azure Machine Learning.
 
 
 ### <a name="error-code--4126"></a>Kód chyby: 4126
 
 - **Zpráva**:`Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure Machine Learning for more error logs.`
 
-- **Příčina:** Spuštění kanálu Azure ML se nezdařilo.
+- **Příčina**: selhalo spuštění kanálu Azure ml.
 
-- **Doporučení:** Zkontrolujte, zda v Azure Machine Learning další protokoly chyb a opravit kanál ML.
+- **Doporučení**: Azure Machine Learning pro další protokoly chyb prosím vraťte se změnami a opravte kanál ml.
 
 
 
@@ -394,87 +394,87 @@ Následující tabulka se vztahuje na U-SQL.
 
 - **Zpráva**:`Please provide value for the required property '%propertyName;'.`
 
-- **Příčina**: Hodnota vlastnosti nebyla poskytnuta, ale je požadováno ve scénáři.
+- **Příčina**: hodnota vlastnosti nebyla poskytnuta, ale je vyžadována ve scénáři.
 
-- **Doporučení**: Zadejte hodnotu ze zprávy a akci opakujte.
+- **Doporučení**: zadejte hodnotu ze zprávy a zkuste to znovu.
 
 
 ### <a name="error-code--2104"></a>Kód chyby: 2104
 
 - **Zpráva**:`The type of the property '%propertyName;' is incorrect.`
 
-- **Příčina**: Typ zadané vlastnosti není podle očekávání.
+- **Příčina**: typ poskytnuté vlastnosti není podle očekávání.
 
-- **Doporučení:** Opravte typ zařízení a akci opakujte.
+- **Doporučení**: Opravte typ vlastnosti a zkuste to znovu.
 
 
 ### <a name="error-code--2105"></a>Kód chyby: 2105
 
 - **Zpráva**:`An invalid json is provided for property '%propertyName;'. Encountered an error while trying to parse: '%message;'.`
 
-- **Příčina**: Hodnota vlastnosti je neplatná nebo nemá očekávaný formát.
+- **Příčina**: hodnota vlastnosti je neplatná nebo nemá očekávaný formát.
 
-- **Doporučení:** Vyhledejte dokumentaci k nemovitosti a ujistěte se, že zadaná hodnota má očekávaný formát a typ.
+- **Doporučení**: vyhledejte dokumentaci pro danou vlastnost a ujistěte se, že zadaná hodnota má očekávaný formát a typ.
 
 
 ### <a name="error-code--2106"></a>Kód chyby: 2106
 
 - **Zpráva**:`The storage connection string is invalid. %errorMessage;`
 
-- **Příčina**: Připojovací řetězec pro úložiště je neplatný nebo má nesprávný formát.
+- **Příčina**: připojovací řetězec pro úložiště je neplatný nebo má nesprávný formát.
 
-- **Doporučení:** Přejděte na portál Azure, vyhledejte úložiště, zkopírujte připojovací řetězec a vložte do propojené služby a zkuste to znovu.
+- **Doporučení**: přejděte prosím na Azure Portal, najděte úložiště, zkopírujte připojovací řetězec a vložte ho do propojené služby a zkuste to znovu.
 
 
 ### <a name="error-code--2108"></a>Kód chyby: 2108
 
 - **Zpráva**:`Error calling the endpoint '%url;'. Response status code: '%code;'`
 
-- **Příčina**: Požadavek se nezdařil z důvodu základního problému, jako je připojení k síti, selhání DNS, ověření certifikátu serveru nebo časový výtok.
+- **Příčina**: požadavek se nezdařil z důvodu základního problému, například připojení k síti, selhání služby DNS, ověřování certifikátu serveru nebo vypršení časového limitu.
 
-- **Doporučení**: Žádost ověřte pomocí Fiddler/Postman.
+- **Doporučení**: k ověření žádosti použijte Fiddler/Poster.
 
 
 ### <a name="error-code--2110"></a>Kód chyby: 2110
 
 - **Zpráva**:`The linked service type '%linkedServiceType;' is not supported for '%executorType;' activities.`
 
-- **Příčina**: Propojená služba zadaná v aktivitě byla chybná.
+- **Příčina**: propojená služba zadaná v aktivitě je nesprávná.
 
-- **Doporučení:** Ujistěte se, že typ propojené služby je jedním z podporovaných typů aktivity. Například pro aktivity HDI může být typ propojené služby HDInsight nebo HDInsightOnDemand.
+- **Doporučení**: Ujistěte se prosím, že typ propojené služby je jedním z podporovaných typů aktivity. Například pro aktivity HDI může být typ propojené služby HDInsight nebo HDInsightOnDemand.
 
 
 ### <a name="error-code--2111"></a>Kód chyby: 2111
 
 - **Zpráva**:`The type of the property '%propertyName;' is incorrect. The expected type is %expectedType;.`
 
-- **Příčina**: Typ zadané vlastnosti není podle očekávání.
+- **Příčina**: typ poskytnuté vlastnosti není podle očekávání.
 
-- **Doporučení:** Opravte typ zařízení a akci opakujte.
+- **Doporučení**: Opravte typ vlastnosti a zkuste to znovu.
 
 
 ### <a name="error-code--2112"></a>Kód chyby: 2112
 
 - **Zpráva**:`The cloud type is unsupported or could not be determined for storage from the EndpointSuffix '%endpointSuffix;'.`
 
-- **Příčina**: Typ cloudu není podporován nebo nelze určit pro úložiště z koncového pole Suffix.
+- **Příčina**: typ cloudu není podporovaný nebo ho nejde určit pro úložiště z EndpointSuffix.
 
-- **Doporučení:** Použijte úložiště v jiném cloudu a zkuste to znovu.
+- **Doporučení**: prosím, použijte úložiště v jiném cloudu a zkuste to znovu.
 
 
 ### <a name="error-code--2128"></a>Kód chyby: 2128
 
 - **Zpráva**:`No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
 
-- **Příčina:** Připojení k síti, selhání DNS, ověření certifikátu serveru nebo časový výtok.
+- **Příčina**: připojení k síti, selhání služby DNS, ověřování certifikátu serveru nebo časový limit.
 
-- **Doporučení**: Ověřte, zda koncový bod, který se pokoušíte požadavek na požadavek. Můžete použít nástroje, jako je Šumař / Pošťák.
+- **Doporučení**: Ověřte, že koncový bod, který se snažíte dosáhnout, reaguje na požadavky. Můžete použít nástroje jako Fiddler/post.
 
 
 
 ## <a name="custom"></a>Vlastní
 
-Následující tabulka platí pro Azure Batch.
+Následující tabulka se vztahuje na Azure Batch.
       
 ### <a name="error-code--2500"></a>Kód chyby: 2500
 
@@ -482,79 +482,79 @@ Následující tabulka platí pro Azure Batch.
 
 - **Příčina**:`Can't launch command, or the program returned an error code.`
 
-- **Doporučení**: Ujistěte se, že spustitelný soubor existuje. Pokud byl program spuštěn, ujistěte se, že *stdout.txt* a *stderr.txt* byly nahrány do účtu úložiště. Je vhodné vyzařovat velké protokoly v kódu pro ladění.
+- **Doporučení**: Ujistěte se, že spustitelný soubor existuje. Pokud se program spustil, ujistěte se, že se do účtu úložiště nahrály *STDOUT. txt* a *stderr. txt* . Je dobrým zvykem generovat protokoly Copious v kódu pro ladění.
 
 
 ### <a name="error-code--2501"></a>Kód chyby: 2501
 
 - **Zpráva**:`Cannot access user batch account; please check batch account settings.`
 
-- **Příčina:** Nesprávný přístupový klíč dávky nebo název fondu.
+- **Příčina**: nesprávný klíč pro přístup k dávce nebo název fondu.
 
-- **Doporučení:** Ověřte název fondu a klíč batch přístup u propojené služby.
+- **Doporučení**: Ověřte název fondu a přístupový klíč Batch v propojené službě.
 
 
 ### <a name="error-code--2502"></a>Kód chyby: 2502
 
 - **Zpráva**:`Cannot access user storage account; please check storage account settings.`
 
-- **Příčina:** Nesprávný název účtu úložiště nebo přístupový klíč.
+- **Příčina**: nesprávný název účtu úložiště nebo přístupový klíč.
 
-- **Doporučení:** Ověřte název účtu úložiště a přístupový klíč v propojené službě.
+- **Doporučení**: Ověřte název účtu úložiště a přístupový klíč v propojené službě.
 
 
 ### <a name="error-code--2504"></a>Kód chyby: 2504
 
 - **Zpráva**:`Operation returned an invalid status code 'BadRequest'.`
 
-- **Příčina**: Příliš mnoho souborů ve složceCesta vlastní aktivity. Celková velikost resourceFiles nemůže být větší než 32 768 znaků.
+- **Příčina**: v FolderPath vlastní aktivity je moc velký počet souborů. Celková velikost resourceFiles nemůže být delší než 32 768 znaků.
 
-- **Doporučení:** Odebrání nepotřebných souborů. Nebo je zip a přidat rozbalit příkaz k jejich extrahování. Použijte například`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;  $folder\yourProgram.exe`
+- **Doporučení**: Odstraňte nepotřebné soubory. Nebo je zip a přidejte příkaz k extrakci, který je rozbalí. Například použijte`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;  $folder\yourProgram.exe`
 
 
 ### <a name="error-code--2505"></a>Kód chyby: 2505
 
 - **Zpráva**:`Cannot create Shared Access Signature unless Account Key credentials are used.`
 
-- **Příčina**: Vlastní aktivity podporují pouze účty úložiště, které používají přístupový klíč.
+- **Příčina**: vlastní aktivity podporují jenom účty úložiště, které používají přístupový klíč.
 
-- **Doporučení**: Viz popis chyby.
+- **Doporučení**: Přečtěte si popis chyby.
 
 
 ### <a name="error-code--2507"></a>Kód chyby: 2507
 
 - **Zpráva**:`The folder path does not exist or is empty: ...`
 
-- **Příčina:** V účtu úložiště na zadané cestě nejsou žádné soubory.
+- **Příčina**: v zadaném umístění nejsou žádné soubory v účtu úložiště.
 
-- **Doporučení:** Cesta ke složce musí obsahovat spustitelné soubory, které chcete spustit.
+- **Doporučení**: cesta ke složce musí obsahovat spustitelné soubory, které chcete spustit.
 
 
 ### <a name="error-code--2508"></a>Kód chyby: 2508
 
 - **Zpráva**:`There are duplicate files in the resource folder.`
 
-- **Příčina**: Více souborů se stejným názvem jsou v různých podsložkách folderPath.
+- **Příčina**: více souborů se stejným názvem jsou v různých podsložkách FolderPath.
 
-- **Doporučení:** Vlastní aktivity slanou strukturu složek pod folderPath.  Pokud potřebujete zachovat strukturu složek, zip soubory a extrahovat je v Azure Batch pomocí příkazu rozbalit. Použijte například`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;   $folder\yourProgram.exe`
+- **Doporučení**: vlastní aktivity sloučí strukturu složek pod FolderPath.  Pokud potřebujete zachovat strukturu složek, soubory zip a extrahujte je v Azure Batch pomocí příkazu Rozbalit. Například použijte`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;   $folder\yourProgram.exe`
 
 
 ### <a name="error-code--2509"></a>Kód chyby: 2509
 
 - **Zpráva**:`Batch   url ... is invalid; it must be in Uri format.`
 
-- **Příčina:** Adresy URL dávek musí být podobné`https://mybatchaccount.eastus.batch.azure.com`
+- **Příčina**: adresy URL dávky musí být podobné`https://mybatchaccount.eastus.batch.azure.com`
 
-- **Doporučení**: Viz popis chyby.
+- **Doporučení**: Přečtěte si popis chyby.
 
 
 ### <a name="error-code--2510"></a>Kód chyby: 2510
 
 - **Zpráva**:`An   error occurred while sending the request.`
 
-- **Příčina**: Adresa URL dávky je neplatná.
+- **Příčina**: adresa URL dávky není platná.
 
-- **Doporučení:** Ověřte dávkovou adresu URL.
+- **Doporučení**: Ověřte adresu URL dávky.
             
 
 ## <a name="hdinsight"></a>HDInsight
@@ -563,130 +563,133 @@ Následující tabulka platí pro Azure Batch.
 
 - **Zpráva**:`Unexpected error happened: '%error;'.`
 
-- **Příčina**: Došlo k internímu problému se službou.
+- **Příčina**: došlo k internímu problému se službou.
 
-- **Doporučení**: Obraťte se na podporu ADF pro další pomoc.
+- **Doporučení**: Pokud potřebujete další pomoc, obraťte se prosím na podporu ADF.
 
 
 ### <a name="error-code--201"></a>Kód chyby: 201
 
 - **Zpráva**:`JobType %jobType; is not found.`
 
-- **Příčina**: Existuje nový typ úlohy, který není podporován adf.
+- **Příčina**: k dispozici je nový typ úlohy, který pomocí ADF nepodporuje.
 
-- **Doporučení**: Obraťte se na tým podpory ADF pro další pomoc.
+- **Doporučení**: obraťte se prosím na tým podpory ADF a požádejte o další pomoc.
 
 
 ### <a name="error-code--202"></a>Kód chyby: 202
 
 - **Zpráva**:`Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
 
-- **Příčina**: Chybová zpráva by měla zobrazit podrobnosti o tom, co se pokazilo.
+- **Příčina**: chybová zpráva by měla zobrazovat podrobnosti o tom, co se pokazilo.
 
-- **Doporučení:** Chybová zpráva by měla pomoci při řešení problému. Pokud není k dispozici dostatek informací, obraťte se na podporu ADF pro další pomoc.
+- **Doporučení**: chybová zpráva by měla pomoct při odstraňování problému. Pokud k dispozici nejsou žádné informace, obraťte se na podporu ADF, kde najdete další nápovědu.
 
 
 ### <a name="error-code--203"></a>Kód chyby: 203
 
 - **Zpráva**:`Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
 
-- **Příčina**: Chybová zpráva by měla zobrazit podrobnosti o tom, co se pokazilo.
+- **Příčina**: chybová zpráva by měla zobrazovat podrobnosti o tom, co se pokazilo.
 
-- **Doporučení:** Chybová zpráva by měla pomoci při řešení problému. Pokud není k dispozici dostatek informací, obraťte se na podporu ADF pro další pomoc.
+- **Doporučení**: chybová zpráva by měla pomoct při odstraňování problému. Pokud k dispozici nejsou žádné informace, obraťte se na podporu ADF, kde najdete další nápovědu.
 
 
 ### <a name="error-code--204"></a>Kód chyby: 204
 
 - **Zpráva**:`The resumption token is missing for runId '%runId;'.`
 
-- **Příčina**: Došlo k internímu problému se službou.
+- **Příčina**: došlo k internímu problému se službou.
 
-- **Doporučení**: Obraťte se na podporu ADF pro další pomoc.
+- **Doporučení**: Pokud potřebujete další pomoc, obraťte se prosím na podporu ADF.
 
 
 ### <a name="error-code--205"></a>Kód chyby: 205
 
 - **Zpráva**:`Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
 
-- **Příčina**: Při vytváření clusteru HDI na vyžádání došlo k chybě.
+- **Příčina**: při vytváření clusteru HDI na vyžádání došlo k chybě.
 
-- **Doporučení**: Obraťte se na podporu ADF pro další pomoc.
+- **Doporučení**: Pokud potřebujete další pomoc, obraťte se prosím na podporu ADF.
 
 
 ### <a name="error-code--206"></a>Kód chyby: 206
 
 - **Zpráva**:`The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
 
-- **Příčina**: Došlo k internímu problému se službou, která to způsobila.
+- **Příčina**: došlo k vnitřnímu problému se službou, která to způsobila.
 
-- **Doporučení**: Může se jedná o přechodný problém. Opakujte úlohu a pokud problém přetrvává, požádejte o další pomoc podporu podavače ADF.
+- **Doporučení**: může to být přechodný problém. Zkuste prosím úlohu zopakovat. Pokud potíže potrvají, obraťte se na podporu ADF a požádejte o další pomoc.
 
 
 ### <a name="error-code--207"></a>Kód chyby: 207
 
 - **Zpráva**:`Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
 
-- **Příčina**: Při pokusu o určení oblasti z účtu primárního úložiště došlo k vnitřní chybě.
+- **Příčina**: při pokusu o zjištění oblasti z primárního účtu úložiště došlo k vnitřní chybě.
 
-- **Doporučení:** Zkuste jiné úložiště. V případě, že se nejedná o přijatelné řešení, obraťte se na tým podpory ADF pro další pomoc.
+- **Doporučení**: zkuste jiné úložiště. V případě, že se nejedná o přijatelné řešení, kontaktujte tým podpory ADF a požádejte o další pomoc.
 
 
 ### <a name="error-code--208"></a>Kód chyby: 208
 
 - **Zpráva**:`Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
 
-- **Příčina**: Při pokusu o čtení instančního objektu nebo vytvoření instance ověřování MSI došlo k vnitřní chybě.
+- **Příčina**: při pokusu o čtení instančního objektu nebo při vytváření instancí ověřování MSI došlo k vnitřní chybě.
 
-- **Doporučení:** Zvažte poskytnutí instančního objektu, který má oprávnění k vytvoření clusteru HDInsight v poskytnutém předplatném a akci opakujte. V případě, že se nejedná o přijatelné řešení, obraťte se na tým podpory ADF pro další pomoc.
+- **Doporučení**: zvažte prosím poskytnutí instančního objektu, který má oprávnění k vytvoření clusteru HDInsight v zadaném předplatném, a zkuste to znovu. Ujistěte se, že je [správně nastavená Správa identit](https://docs.microsoft.com/azure/hdinsight/hdinsight-managed-identities). V případě, že se nejedná o přijatelné řešení, obraťte se na tým podpory ADF a požádejte o další pomoc.
 
 
 ### <a name="error-code--2300"></a>Kód chyby: 2300
 
 - **Zpráva**:`Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
 
-<br>
-
-- **Příčina:** Pokud chybová zpráva obsahuje zprávu podobnou "Vzdálený název nelze přeložit.' to může znamenat, že zadaný identifikátor URI clusteru je neplatný.
+- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou "vzdálenému názvu nelze přeložit". to může znamenat, že zadaný identifikátor URI clusteru je neplatný.
 
 
-- **Doporučení**: Ujistěte se, že cluster nebyl odstraněn a že zadaný identifikátor URI je správný. Při otevření identifikátoru URI v prohlížeči byste měli vidět ui Ambari. Pokud je cluster ve virtuální síti, identifikátor URI by měl být privátní identifikátor URI. Chcete-li jej otevřít, použijte virtuální počítač, který je součástí stejné virtuální sítě. Další informace naleznete v [tomto](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#directly-connect-to-apache-hadoop-services).
+- **Doporučení**: Ujistěte se, že se cluster neodstranil a že je zadaný identifikátor URI správný. Po otevření identifikátoru URI v prohlížeči by se mělo zobrazit uživatelské rozhraní Ambari. Pokud je cluster ve virtuální síti, identifikátor URI by měl být privátním identifikátorem URI. Pokud ho chcete otevřít, použijte virtuální počítač, který je součástí stejné virtuální sítě. Další informace najdete v [tomto](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#directly-connect-to-apache-hadoop-services)tématu.
                   
 
 <br>
 
-- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou "Úkol byl zrušen.', znamená to, že časový čas odeslání úlohy byl vyhotoven.
+- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou "úloha byla zrušena.", znamená to, že odeslání úlohy vypršel časový limit.
 
-- **Doporučení:** Problém může být obecné připojení HDInsight nebo připojení k síti. Nejprve zkontrolujte, zda je rozhraní HDInsight Ambari k dispozici v libovolném prohlížeči. Zkontrolujte, zda jsou vaše přihlašovací údaje stále platné. Pokud používáte integrovaný runtime (IR s vlastním hostitelem), nezapomeňte to provést z virtuálního počítače nebo počítače, kde je nainstalována infračervená infračervená infračervená instalace s vlastním hostitelem. Potom zkuste úlohu odeslat z datové továrny znovu. Pokud se stále nezdaří, obraťte se na tým data factory pro podporu.
-
-<br>
-
-- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou "Správce uživatele je uzamčen v Ambari" nebo "Neautorizováno: Uživatelské jméno nebo heslo Ambari je nesprávné", znamená to, že přihlašovací údaje pro HDInsight jsou nesprávné nebo vypršela jeho platnost.
-
-- **Doporučení**: Opravte pověření a znovu nasaďte propojenou službu. Nejprve se ujistěte, že pověření fungují na HDInsight otevřením identifikátoru URI clusteru v libovolném prohlížeči a pokusem o přihlášení. Pokud přihlašovací údaje nefungují, můžete je obnovit z webu Azure Portal.
+- **Doporučení**: Tento problém může být buď obecným připojením HDInsight, nebo připojením k síti. Nejdřív potvrďte, že je uživatelské rozhraní HDInsight Ambari dostupné z libovolného prohlížeče. Potvrďte, že vaše přihlašovací údaje jsou pořád platné. Další informace najdete v tématu [webové uživatelské rozhraní pro Ambari](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-manage-ambari#ambari-web-ui). Pokud používáte integrovaný modul runtime (IR) s místním hostováním, ujistěte se, že provedete tento postup z virtuálního počítače nebo počítače, ve kterém je nainstalováno prostředí IR pro místní hostování. Pak zkuste úlohu odeslat z Data Factory znovu. Pokud se to nepodaří, obraťte se na tým Data Factory pro podporu.
 
 <br>
 
-- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou '502 - webový server obdržel neplatnou odpověď při hraní jako brána nebo proxy server', tato chyba je vrácena službou HDInsight.
+- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou "Správci uživatelů je zamčený v Ambari" nebo "neoprávněné: Ambari uživatelské jméno nebo heslo není správné", znamená to, že přihlašovací údaje pro HDInsight nejsou správné nebo vypršela jejich platnost.
 
-
-- **Doporučení:** Prohlédněte si dokumentaci k řešení https://hdinsight.github.io/ambari/ambari-ui-502-error.html https://hdinsight.github.io/spark/spark-thriftserver-errors.htmlpotíží https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502azure HDInsight, například , , .
-                  
+- **Doporučení**: Opravte přihlašovací údaje a znovu nasaďte propojenou službu. Nejdřív ověřte, že přihlašovací údaje fungují v HDInsight tím, že otevřete identifikátor URI clusteru v jakémkoli prohlížeči a zkusíte se přihlásit. Pokud přihlašovací údaje nefungují, můžete je resetovat z Azure Portal. Pro cluster ESP můžete [resetovat heslo pomocí samoobslužného resetování hesla](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password).
 
 <br>
 
-- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou "Nelze opravit žádost o odeslání úlohy, protože služba templeton je zaneprázdněna příliš mnoha žádostmi o odeslání úloh" nebo "Queue root.joblauncher již má 500 aplikací, nemůže přijmout odeslání žádosti", znamená to, že do hdinsightu je současně odesíláno příliš mnoho úloh.
+- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou 502-webový server obdržel neplatnou odpověď v době, kdy funguje jako brána nebo proxy server, tato chyba je vrácena službou HDInsight.
 
-- **Doporučení:** Zvažte omezení počtu souběžných úloh odeslaných do HDInsight. Odkazovat na souběžnost aktivity data factory, pokud jsou úlohy jsou předkládány stejnou aktivitou. Změňte aktivační události tak, aby souběžné spuštění kanálu byly rozloženy v čase. Naleznete v dokumentaci HDInsight upravit templeton.parallellism.job.submit podle chyby naznačuje.
+- **Doporučení**: Chyba 502, většinou je to způsobeno tím, že proces serveru Ambari byl vypnut. Služby Ambari můžete restartovat restartováním hlavního uzlu.  
+
+    1. Připojte se k jednomu z uzlů v HDInsight pomocí SSH.
+    2. Identifikujte aktivního hostitele hlavního uzlu spuštěním příkazu "headnodehost".
+    3. Připojte se k aktivnímu hlavnímu uzlu jako server Ambari umístěný na aktivním hlavním uzlu pomocí SSH.  
+    4. Restartujte aktivní hlavní uzel.
+
+        Další informace: Projděte si dokumentaci k řešení potíží s Azure HDInsight, například: [AMBARI UI 502 Error](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [RpcTimeoutException for Apache Spark Thrift Server](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-troubleshoot-rpctimeoutexception)a [Poradce při potížích se špatnými chybami brány v Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502).
+
+<br>
+
+- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou této žádosti o odeslání žádosti o úlohu, protože služba Templeton je zaneprázdněná s příliš velkým počtem požadavků na odeslání úlohy nebo kořen fronty. joblauncher už má 500 aplikací, nemůže přijmout odeslání aplikace, to znamená, že se do HDInsight odesílá příliš mnoho úloh současně.
+
+- **Doporučení**: Zvažte omezení počtu souběžných úloh odeslaných do HDInsight. Pokud jsou úlohy odesílány stejnou aktivitou, přečtěte si téma Data Factory souběžnosti aktivity. Změna aktivačních událostí, aby souběžné běhy byly rozloženy v průběhu času. Informace o [HDInsight documentation](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors) tom, `templeton.parallellism.job.submit` jak Chyba naznačuje, najdete v dokumentaci k HDInsight.
 
 
 ### <a name="error-code--2301"></a>Kód chyby: 2301
 
 - **Zpráva**:`Could not get the status of the application '%physicalJobId;' from the HDInsight service. Received the following error: %message;. Please refer to HDInsight troubleshooting documentation or contact their support for further assistance.`
 
-- **Příčina:** Cluster nebo služba HDInsight má problémy.
+- **Příčina**: cluster HDInsight nebo služba má problémy.
 
 
-- **Doporučení:** K této chybě dochází, když adf nezíská odpověď z clusteru HDInsight při pokusu o získání stavu spuštěné úlohy. Může to být příčinou problémů v samotném clusteru nebo služba HDInsight může mít výpadek. Další pomoc naleznete v dokumentaci k řešení potíží s rozhraním HDInsight na adrese https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide.
+- **Doporučení**: k této chybě dochází, když ADF při pokusu o získání stavu spuštěné úlohy neobdrží odpověď z clusteru HDInsight. Může to způsobovat problémy v samotném clusteru nebo služba HDInsight může mít výpadek. Další pomoc najdete v dokumentaci pro řešení https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guidepotíží s HDInsight na adrese nebo kontaktujte podporu.
                 
 
 
@@ -694,74 +697,73 @@ Následující tabulka platí pro Azure Batch.
 
 - **Zpráva**:`Hadoop job failed with exit code '%exitCode;'. See '%logPath;/stderr' for more details. Alternatively, open the Ambari UI on the HDI cluster and find the logs for the job '%jobId;'. Contact HDInsight team for further support.`
 
-- **Příčina**: Úloha byla odeslána do clusteru HDI a selhala tam.
+- **Příčina**: úloha byla odeslána do clusteru HDI a tam se nezdařila.
 
-- **Doporučení:** Postupujte podle odkazu protokoly příze v aktivitě spustit výstup a vyhledejte chyby ve výstupu HDI. V případě potřeby kontaktujte tým HDInsight.
+- **Doporučení**: postupujte podle odkazu protokoly příze ve výstupu spuštění aktivity a vyhledejte chyby ve výstupu HDI. Pokud potřebujete podporu, obraťte se na tým HDInsight.
 
 
 ### <a name="error-code--2303"></a>Kód chyby: 2303
 
 - **Zpráva**:`Hadoop job failed with transient exit code '%exitCode;'. See '%logPath;/stderr' for more details. Alternatively, open the Ambari UI on the HDI cluster and find the logs for the job '%jobId;'. Try again or contact HDInsight team for further support.`
 
-- **Příčina**: Úloha byla odeslána do clusteru HDI a selhala tam.
+- **Příčina**: úloha byla odeslána do clusteru HDI a tam se nezdařila.
 
-- **Doporučení:** Postupujte podle odkazu protokoly příze v aktivitě spustit výstup a vyhledejte chyby ve výstupu HDI. Zkuste to znovu nebo se v případě potřeby obraťte na tým HDInsight.
+- **Doporučení**: postupujte podle odkazu protokoly příze ve výstupu spuštění aktivity a vyhledejte chyby ve výstupu HDI. Zkuste to znovu nebo v případě potřeby kontaktujte tým služby HDInsight.
 
 
 ### <a name="error-code--2304"></a>Kód chyby: 2304
 
 - **Zpráva**:`MSI authentication is not supported on storages for HDI activities.`
 
-- **Příčina:** Služby propojené s úložištěm používané v propojené službě HDI nebo aktivitě HDI jsou konfigurovány s ověřováním MSI, které není podporováno.
+- **Příčina**: propojené služby úložiště používané v HDI propojené službě nebo aktivitě HDI jsou nakonfigurované s ověřováním pomocí MSI, které se nepodporuje.
 
-- **Doporučení:** Poskytněte úplné připojovací řetězce pro účty úložiště používané v propojené službě HDI nebo aktivitě HDI.
+- **Doporučení**: Zadejte prosím úplné připojovací řetězce pro účty úložiště použité v aktivitě propojené služby HDI nebo HDI.
 
 
 ### <a name="error-code--2305"></a>Kód chyby: 2305
 
 - **Zpráva**:`Failed to initialize the HDInsight client for the cluster '%cluster;'. Error: '%message;'`
 
-- **Příčina**: Informace o připojení pro cluster HDI jsou nesprávné, zadaný uživatel nemá oprávnění k provedení požadované akce nebo služba HDInsight měla problémy s odpovědí na požadavky adf.
+- **Příčina**: informace o připojení pro cluster HDI nejsou správné, zadaný uživatel nemá oprávnění k provedení požadované akce nebo služba HDInsight měla problémy s odezvou na požadavky z ADF.
 
-- **Doporučení**: Ujistěte se, že informace o uživateli jsou správné. Také ověřte, že umělou instalaci Ambari pro cluster HDI lze otevřít v prohlížeči z virtuálního počítače, kde je infračervený přenos nainstalován v případě samoobslužné infračervené hodu, nebo lze otevřít z libovolného počítače v případě Azure IR.
+- **Doporučení**: Ujistěte se prosím, že jsou informace o uživateli správné. Ověřte také, že uživatelské rozhraní Ambari pro cluster HDI lze otevřít v prohlížeči z virtuálního počítače, ve kterém je nainstalováno infračervené vysílání v případě místního prostředí IR, nebo může být otevřeno z libovolného počítače v případě Azure IR.
 
 
 ### <a name="error-code--2306"></a>Kód chyby: 2306
 
 - **Zpráva**:`An invalid json is provided for script action '%scriptActionName;'. Error: '%message;'`
 
-- **Příčina**: Json poskytnutý pro akci skriptu je neplatný.
+- **Příčina**: zadaný kód JSON pro akci skriptu je neplatný.
 
 
-- **Doporučení**: Chybová zpráva by měla pomoci identifikovat problém. Opravte konfiguraci json a akci opakujte. Další https://docs.microsoft.com/azure/data-factory/compute-linked-services#azure-hdinsight-on-demand-linked-service informace naleznete.
+- **Doporučení**: chybová zpráva by měla pomáhat při identifikaci problému. Opravte prosím konfiguraci JSON a zkuste to znovu. Další https://docs.microsoft.com/azure/data-factory/compute-linked-services#azure-hdinsight-on-demand-linked-service informace najdete v.
                 
-
 
 ### <a name="error-code--2310"></a>Kód chyby: 2310
 
 - **Zpráva**:`Failed to submit Spark job. Error: '%message;'`
 
-- **Příčina**: ADF se pokusil vytvořit dávku v clusteru Spark pomocí Livy API (livy/batch), ale obdržel chybu.
+- **Příčina**: služba ADF se pokusila vytvořit dávku v clusteru Spark pomocí rozhraní Livy API (Livy/Batch), ale přijala chybu.
 
-- **Doporučení**: Chcete-li problém vyřešit, postupujte podle chybové zprávy. Pokud není dostatek informací, aby si to vyřešit, obraťte se na hdi tým a poskytnout jim id dávky a ID úlohy, které lze nalézt v aktivitě spustit výstup v ADF monitorovací stránku.
+- **Doporučení**: Pokud chcete problém vyřešit, postupujte prosím podle chybové zprávy. Pokud není dostatek informací, aby je bylo možné vyřešit, obraťte se na tým HDI a poskytněte mu ID dávky a ID úlohy, které najdete v části výstup spuštění aktivit na stránce monitorování ADF.
 
 
 ### <a name="error-code--2312"></a>Kód chyby: 2312
 
 - **Zpráva**:`Spark job failed, batch id:%batchId;. Please follow the links in the activity run Output from ADF Monitoring page to troubleshoot the run on HDInsight Spark cluster. Please contact HDInsight support team for further assistance.`
 
-- **Příčina**: Úloha se nezdařila v clusteru HDInsight Spark.
+- **Příčina**: Úloha selhala v clusteru HDInsight Spark.
 
-- **Doporučení:** Postupujte podle odkazů na stránce Výstup spuštění aktivity v adf monitoringu a vyřešte potíže se spuštěním v clusteru HDInsight Spark. Další pomoc vám poskytne tým podpory HDInsight.
+- **Doporučení**: při řešení potíží se spouštěním v clusteru HDInsight Spark prosím použijte odkazy na výstupu spuštění aktivit na stránce monitorování ADF. Pokud potřebujete další pomoc, obraťte se prosím na tým podpory HDInsight.
 
 
 ### <a name="error-code--2313"></a>Kód chyby: 2313
 
 - **Zpráva**:`The batch with ID '%batchId;' was not found on Spark cluster. Open the Spark History UI and try to find it there. Contact HDInsight support for further assistance.`
 
-- **Příčina**: Dávka byla odstraněna v clusteru HDInsight Spark.
+- **Příčina**: dávka se odstranila v clusteru HDInsight Spark.
 
-- **Doporučení:** Poradce při potížích s dávkami v clusteru HDInsight Spark. Další pomoc vám poskytne podpora HDInsight. 
+- **Doporučení**: řešení potíží se dávkami v clusteru HDInsight Spark. Pokud potřebujete další pomoc, obraťte se na podporu služby HDInsight. 
 
 
 ### <a name="error-code--2328"></a>Kód chyby: 2328
@@ -770,34 +772,34 @@ Následující tabulka platí pro Azure Batch.
 
 - **Příčina**:`The error message should show the details of what went wrong.`
 
-- **Doporučení:** Chybová zpráva by měla pomoci při řešení problému.
+- **Doporučení**: chybová zpráva by měla pomoct při odstraňování problému.
 
 
 ### <a name="error-code--2329"></a>Kód chyby: 2329
 
 - **Zpráva**:`Failed to delete the on demand HDI cluster. Cluster or linked service name: '%clusterName;', error: '%message;'`
 
-- **Příčina**: Chybová zpráva by měla zobrazit podrobnosti o tom, co se pokazilo.
+- **Příčina**: chybová zpráva by měla zobrazovat podrobnosti o tom, co se pokazilo.
 
-- **Doporučení:** Chybová zpráva by měla pomoci při řešení problému.
+- **Doporučení**: chybová zpráva by měla pomoct při odstraňování problému.
 
 
 ### <a name="error-code--2331"></a>Kód chyby: 2331
 
 - **Zpráva**:`The file path should not be null or empty.`
 
-- **Příčina**: Zadaný soubor cesta je prázdný.
+- **Příčina**: Zadaná cesta k souboru je prázdná.
 
-- **Doporučení:** Zadejte cestu k existujícímu souboru.
+- **Doporučení**: zadejte cestu k souboru, který existuje.
 
 
 ### <a name="error-code--2340"></a>Kód chyby: 2340
 
 - **Zpráva**:`HDInsightOnDemand linked service does not support execution via SelfHosted IR. Your IR name is '%IRName;'. Please select an Azure IR instead.`
 
-- **Příčina**: Propojená služba HDInsightOnDemand nepodporuje spuštění prostřednictvím služby SelfHosted IR.
+- **Příčina**: propojená služba HDInsightOnDemand nepodporuje spouštění prostřednictvím SelfHosted IR.
 
-- **Doporučení:** Vyberte azure ir a zkuste to znovu.
+- **Doporučení**: vyberte prosím Azure IR a zkuste to znovu.
 
 
 ### <a name="error-code--2341"></a>Kód chyby: 2341
@@ -806,21 +808,21 @@ Následující tabulka platí pro Azure Batch.
 
 - **Příčina**: Zadaná adresa URL není ve správném formátu.
 
-- **Doporučení:** Opravte adresu URL clusteru a akci opakujte.
+- **Doporučení**: Opravte prosím adresu URL clusteru a zkuste to znovu.
 
 
 ### <a name="error-code--2342"></a>Kód chyby: 2342
 
 - **Zpráva**:`Failed to connect to HDInsight cluster: '%errorMessage;'.`
 
-- **Příčina**: Zadaná pověření jsou pro cluster chybná nebo došlo k problému s konfigurací sítě nebo připojením nebo došlo k potížím s připojením ke clusteru.
+- **Příčina**: zadané přihlašovací údaje jsou pro cluster chybné nebo došlo k potížím s konfigurací sítě nebo se jedná o problém s připojením nebo se může stát, že při připojování ke clusteru dojde k problémům.
 
 - **Doporučení**:  
-      1. Ověřte správnost přihlašovacích údajů otevřením ui clusteru HDInsight v prohlížeči.
-      2. Pokud je cluster ve virtuální síti a používá se infračervená infračervená infračervená z vlastních serverů, adresa URL HDI by měla být privátní adresou URL ve virtuálních sítích, to znamená, že by měla mít za názvem clusteru '-int'. Napříkladhttps://mycluster.azurehdinsight.net/" " byhttps://mycluster-int.azurehdinsight.net/měla být změněna na " ".
-      2. Pokud je cluster ve virtuální síti, používá se infračervené zařízení hostované na vlastní uživatele a byla použita privátní adresa URL a připojení se stále nezdařilo, pak virtuální virtuální počítače, kde je infračervený přenos nainstalován, měl problémy s připojením k rozhraní HDI. Připojte se k virtuálnímu virtuálnímu virtuálnímu zařízení, kde je nainstalováninfračervený přenos a otevřete ui Ambari v prohlížeči. Použijte privátní adresu URL clusteru. Toto připojení by mělo fungovat z prohlížeče. Pokud tomu tak není, obraťte se na tým podpory HDInsight pro další pomoc.
-      3. Pokud se nepoužívají infračervené nebo infračervené ovládání hostované samostatně, měl by být cluster HDI přístupný veřejně. Otevřete ui Ambari v prohlížeči a ujistěte se, že se otevře. Pokud se s clusterem nebo službami v něm najdou nějaké problémy, požádejte o pomoc tým podpory HDInsight.
-      Takže obecně musí být adresa URL clusteru HDI používaná v propojené službě ADF přístupná pro službu ADF IR (vlastní hostované nebo Azure), aby testovací připojení prošlo a aby fungovalo spuštění. To lze snadno ověřit otevřením této adresy URL z prohlížeče z virtuálního počítače nebo z libovolného veřejného počítače.
+      1. Otevřete uživatelské rozhraní Ambari clusteru HDInsight v prohlížeči a ověřte, jestli jsou přihlašovací údaje správné.
+      2. Pokud je cluster ve virtuální síti a používá se místní prostředí IR, adresa URL HDI by měla být privátní adresou URL v virtuální sítě, to znamená, že po názvu clusteru musí obsahovat "-int". Například "https://mycluster.azurehdinsight.net/" by měl být změněn na "https://mycluster-int.azurehdinsight.net/".
+      2. Pokud je cluster ve virtuální síti, používá se místní prostředí IR a privátní adresa URL se použila a připojení se pořád nezdařilo, virtuální počítač, ve kterém je nainstalovaná služba IR, má problémy s připojením k HDI. Připojte se k virtuálnímu počítači, kde je nainstalovaný IR, a otevřete uživatelské rozhraní Ambari v prohlížeči. Pro cluster použijte soukromou adresu URL. Toto připojení by mělo fungovat z prohlížeče. Pokud ne, požádejte o další pomoc tým podpory HDInsight.
+      3. Pokud se nepoužívá místní prostředí IR, cluster HDI by měl být přístupný veřejně. Otevřete uživatelské rozhraní Ambari v prohlížeči a ujistěte se, že se otevře. Pokud se v clusteru nebo službách nacházejí nějaké problémy, požádejte o pomoc tým podpory HDInsight.
+      Obecně platí, že adresa URL clusteru HDI, která se používá v propojené službě ADF, musí být přístupná pro službu ADF IR (v místním prostředí nebo Azure), aby bylo možné test připojení předat a aby fungovala. To se dá snadno ověřit otevřením této adresy URL z prohlížeče buď z virtuálního počítače, nebo z libovolného veřejného počítače.
     
 
 
@@ -828,100 +830,100 @@ Následující tabulka platí pro Azure Batch.
 
 - **Zpráva**:`User name and password cannot be null or empty to connect to the HDInsight cluster.`
 
-- **Příčina**: Uživatelské jméno nebo heslo jsou prázdné.
+- **Příčina**: buď je uživatelské jméno nebo heslo prázdné.
 
-- **Doporučení:** Zadejte správná pověření pro připojení k rozhraní HDI a akci opakujte.
+- **Doporučení**: Poskytněte správné přihlašovací údaje pro připojení k HDI a zkuste to znovu.
 
 
 ### <a name="error-code--2345"></a>Kód chyby: 2345
 
 - **Zpráva**:`Failed to read the content of the hive script. Error: '%message;'`
 
-- **Příčina**: Soubor skriptu neexistuje nebo se adf nemůže připojit k umístění skriptu.
+- **Příčina**: soubor skriptu neexistuje nebo se ADF nepodařilo připojit k umístění skriptu.
 
-- **Doporučení**: Ověřte, zda skript existuje a že přidružená propojená služba má správná pověření pro připojení.
+- **Doporučení**: Ověřte prosím, jestli tento skript existuje, a přidružená propojená služba má správné přihlašovací údaje pro připojení.
 
 
 ### <a name="error-code--2346"></a>Kód chyby: 2346
 
 - **Zpráva**:`Failed to create ODBC connection to the HDI cluster with error message '%message;'.`
 
-- **Příčina**: ADF se pokusil navázat připojení ODBC ke clusteru HDI a s chybou se nezdařilo.
+- **Příčina**: služba ADF se pokusila vytvořit připojení ODBC ke clusteru HDI a selhala s chybou.
 
-- **Doporučení:** Chybová zpráva a kód chyby by měly pomoci při odstraňování chyb připojení ROZHRANÍ ODBC. V případě, že k vyřešení problému nestačí, obraťte se na tým Azure HDInsight s žádostí o podporu.
+- **Doporučení**: chybová zpráva a kód chyby by měly pomáhat při řešení chyb připojení rozhraní ODBC. V případě, že k vyřešení problému nestačí, kontaktujte prosím tým Azure HDInsight, který vám poskytne podporu.
 
 
 ### <a name="error-code--2347"></a>Kód chyby: 2347
 
 - **Zpráva**:`Hive execution through ODBC failed with error message '%message;'.`
 
-- **Příčina**: ADF odeslal skript podregistru ke spuštění do clusteru HDI prostřednictvím připojení ODBC a skript selhal na ROZHRANÍ HDI.
+- **Příčina**: služba ADF odeslala skript podregistru pro provedení do clusteru HDI prostřednictvím připojení ODBC a skript se nezdařil na HDI.
 
-- **Doporučení:** Spuštění skriptu podregistru se nezdařilo v clusteru HDI a chybová zpráva a kód chyby by měly pomoci při řešení potíží. V případě, že k vyřešení problému nestačí, obraťte se na tým Azure HDInsight s žádostí o podporu.
+- **Doporučení**: spuštění skriptu podregistru v clusteru HDI se nezdařilo a chybová zpráva a kód chyby by měl pomáhat při řešení potíží. V případě, že k vyřešení problému nestačí, kontaktujte prosím tým Azure HDInsight, který vám poskytne podporu.
 
 
 ### <a name="error-code--2348"></a>Kód chyby: 2348
 
 - **Zpráva**:`The main storage has not been initialized. Please check the properties of the storage linked service in the HDI linked service.`
 
-- **Příčina**: Vlastnosti služby propojené úložiště nejsou správně nastaveny.
+- **Příčina**: vlastnosti propojené služby úložiště nejsou správně nastavené.
 
-- **Doporučení:** V hlavní službě propojené úložiště pro aktivity HDI jsou podporovány pouze úplné připojovací řetězce. Ujistěte se, že nepoužíváte msi auth nebo aplikace.
+- **Doporučení**: v hlavní propojené službě úložiště pro aktivity HDI se podporují jenom úplné připojovací řetězce. Ujistěte se prosím, že nepoužíváte ověřování MSI nebo aplikace.
 
 
 ### <a name="error-code--2350"></a>Kód chyby: 2350
 
 - **Zpráva**:`Failed to prepare the files for the run '%jobId;'. HDI cluster: '%cluster;', Error: '%errorMessage;'`
 
-- **Příčina**: Pověření poskytnutá pro připojení k úložišti, kde by měly být soubory umístěny, jsou nesprávná nebo soubory neexistují.
+- **Příčina**: zadané přihlašovací údaje pro připojení k úložišti, kde se mají soubory umístit, jsou nesprávné nebo soubory zde neexistují.
 
-- **Doporučení:** K této chybě dochází, když ADF provede kroky přípravy pro aktivity HDI. Pokusí se zkopírovat soubory do hlavního úložiště před odesláním úlohy hdi. Ujistěte se, že soubory existují v zadaným umístění, připojení úložiště je správné. ADF HDI aktivity nepodporují ověřování MSI na účty úložiště související s aktivitami HDI, takže se ujistěte, že tyto propojené služby mají úplné klíče nebo používají Azure Key Vault.
+- **Doporučení**: k této chybě dochází, když ADF provede přípravu kroků pro aktivity HDI. Před odesláním úlohy do HDI se pokusí zkopírovat soubory do hlavního úložiště. Ujistěte se, že soubory existují v zadaném umístění, připojení úložiště je správné. Aktivity HDI ADF nepodporují ověřování MSI u účtů úložiště souvisejících s aktivitami HDI, takže se ujistěte, že tyto propojené služby mají úplné klíče nebo používají Azure Key Vault.
 
 
 ### <a name="error-code--2351"></a>Kód chyby: 2351
 
 - **Zpráva**:`Could not open the file '%filePath;' in container/fileSystem '%container;'.`
 
-- **Příčina**: Soubor neexistuje v zadané cestě.
+- **Příčina**: soubor neexistuje v zadané cestě.
 
-- **Doporučení:** Zkontrolujte, zda soubor skutečně existuje, a propojená služba s informacemi o připojení směřujícími na tento soubor má správná pověření.
+- **Doporučení**: Zkontrolujte, jestli soubor skutečně existuje a propojená služba s informacemi o připojení odkazující na tento soubor má správné přihlašovací údaje.
 
 
 ### <a name="error-code--2352"></a>Kód chyby: 2352
 
 - **Zpráva**:`The file storage has not been initialized. Please check the properties of the file storage linked service in the HDI activity.`
 
-- **Příčina**: Vlastnosti propojené služby úložiště souborů nejsou správně nastaveny.
+- **Příčina**: vlastnosti propojené služby File Storage nejsou nastaveny správně.
 
-- **Doporučení:** Ujistěte se, že vlastnosti propojené služby úložiště souborů jsou správně nakonfigurovány.
+- **Doporučení**: Ujistěte se prosím, že jsou správně nakonfigurované vlastnosti propojené služby File Storage.
 
 
 ### <a name="error-code--2353"></a>Kód chyby: 2353
 
 - **Zpráva**:`The script storage has not been initialized. Please check the properties of the script storage linked service in the HDI activity.`
 
-- **Příčina**: Vlastnosti propojené služby úložiště skriptů nejsou správně nastaveny.
+- **Příčina**: vlastnosti propojené služby úložiště skriptu nejsou správně nastavené.
 
-- **Doporučení:** Ujistěte se, že vlastnosti služby propojené úložiště skriptů jsou správně nakonfigurovány.
+- **Doporučení**: Ujistěte se prosím, že jsou správně nakonfigurované vlastnosti propojené služby úložiště skriptů.
 
 
 ### <a name="error-code--2354"></a>Kód chyby: 2354
 
 - **Zpráva**:`The storage linked service type '%linkedServiceType;' is not supported for '%executorType;' activities for property '%linkedServicePropertyName;'.`
 
-- **Příčina**: Typ služby propojené úložiště není aktivitou podporován.
+- **Příčina**: typ propojené služby úložiště není podporován aktivitou.
 
-- **Doporučení:** Ujistěte se, že vybraná propojená služba má jeden z podporovaných typů aktivity. Hdi aktivity podporují azureblobstorage a AzureBlobFSStorage propojené služby.
+- **Doporučení**: Ujistěte se, že vybraná propojená služba má jeden z podporovaných typů aktivity. Aktivity HDI podporují propojené služby AzureBlobStorage a AzureBlobFSStorage. Další informace najdete v článku [porovnání možností úložiště pro použití s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options) .
 
 
 ### <a name="error-code--2355"></a>Kód chyby: 2355
 
 - **Zpráva**:`The '%value' provided for commandEnvironment is incorrect. The expected value should be an array of strings where each string has the format CmdEnvVarName=CmdEnvVarValue.`
 
-- **Příčina**: Za předpokladu, pro commandEnvironment je nesprávná.
+- **Příčina**: zadaná pro commandEnvironment je nesprávná.
 
 - **Doporučení**:  
-      Ujistěte se, že zadaný \"hodnota\"je \"podobný: commandEnvironment\" : [ variableName=variableValue ] A každá proměnná se zobrazí v seznamu pouze jednou.
+      Ujistěte se prosím, že zadaná hodnota je podobná \":\"commandEnvironment: \"[Variable = VariableValue\" ] a každá proměnná se v seznamu zobrazí jenom jednou.
     
 
 
@@ -929,10 +931,10 @@ Následující tabulka platí pro Azure Batch.
 
 - **Zpráva**:`The commandEnvironment already contains a variable named '%variableName;'.`
 
-- **Příčina**: Proměnná byla poskytnuta dvakrát v commandEnvironment .
+- **Příčina**: proměnná byla v commandEnvironment zadána dvakrát.
 
 - **Doporučení**:  
-      Ujistěte se, že zadaný \"hodnota\"je \"podobný: commandEnvironment\" : [ variableName=variableValue ] A každá proměnná se zobrazí v seznamu pouze jednou.
+      Ujistěte se prosím, že zadaná hodnota je podobná \":\"commandEnvironment: \"[Variable = VariableValue\" ] a každá proměnná se v seznamu zobrazí jenom jednou.
     
 
 
@@ -940,54 +942,54 @@ Následující tabulka platí pro Azure Batch.
 
 - **Zpráva**:`The certificate or password is wrong for ADLS Gen 1 storage.`
 
-- **Příčina**: Zadaný pověření jsou nesprávné.
+- **Příčina**: zadané přihlašovací údaje nejsou správné.
 
-- **Doporučení:** Ověřte informace o připojení v propojené službě ADLS Gen 1 a ujistěte se, že testovací připojení je úspěšné.
+- **Doporučení**: Ověřte informace o připojení v propojené službě adls Gen 1 a ujistěte se, že je test připojení úspěšný.
 
 
 ### <a name="error-code--2358"></a>Kód chyby: 2358
 
 - **Zpráva**:`The value '%value;' for the required property 'TimeToLive' in the on demand HDInsight linked service '%linkedServiceName;' has invalid format. It should be a timespan between '00:05:00' and '24:00:00'.`
 
-- **Příčina**: Zadaný hodnota pro požadovanou vlastnost TimeToLive má neplatný formát. 
+- **Příčina**: zadaná hodnota pro povinnou vlastnost ' TimeToLive ' má neplatný formát. 
 
-- **Doporučení:** Aktualizujte hodnotu, která má být v navrhovaném rozsahu, a akci opakujte.
+- **Doporučení**: Aktualizujte hodnotu tak, aby byla v navrhovaném rozsahu, a akci opakujte.
 
 
 ### <a name="error-code--2359"></a>Kód chyby: 2359
 
 - **Zpráva**:`The value '%value;' for the property 'roles' is invalid. Expected types are 'zookeeper', 'headnode', and 'workernode'.`
 
-- **Příčina**: Zadaný hodnota vlastnosti 'role' je neplatná.
+- **Příčina**: zadaná hodnota pro vlastnost Roles je neplatná.
 
-- **Doporučení:** Aktualizujte hodnotu tak, aby byla jedním z návrhů, a akci opakujte.
+- **Doporučení**: Aktualizujte prosím tuto hodnotu, aby byla jedním z návrhů, a zkuste to znovu.
 
 
 ### <a name="error-code--2360"></a>Kód chyby: 2360
 
 - **Zpráva**:`The connection string in HCatalogLinkedService is invalid. Encountered an error while trying to parse: '%message;'.`
 
-- **Příčina**: Zadaný připojovací řetězec pro službu HCatalogLinkedService je neplatný.
+- **Příčina**: zadaný připojovací řetězec pro HCatalogLinkedService je neplatný.
 
-- **Doporučení:** Aktualizujte hodnotu na správný připojovací řetězec Azure SQL a zkuste to znovu.
+- **Doporučení**: Aktualizujte prosím hodnotu na správný připojovací řetězec SQL Azure a zkuste to znovu.
 
 
 ### <a name="error-code--2361"></a>Kód chyby: 2361
 
 - **Zpráva**:`Failed to create on demand HDI cluster. Cluster name is '%clusterName;'.`
 
-- **Příčina**: Vytvoření clusteru se nezdařilo a služba ADF nezískala zpět chybu ze služby HDInsight.
+- **Příčina**: Vytvoření clusteru se nezdařilo a služba ADF se nedostala zpět do služby HDInsight.
 
-- **Doporučení:** Otevřete portál Azure a pokuste se najít prostředek HDI s zadaným názvem a zkontrolujte stav zřizování. Další pomoc vám poskytne tým podpory HDInsight.
+- **Doporučení**: otevřete Azure Portal a pokuste se najít prostředek HDI se zadaným názvem a ověřte stav zřizování. Pokud potřebujete další pomoc, obraťte se na tým podpory HDInsight.
 
 
 ### <a name="error-code--2362"></a>Kód chyby: 2362
 
 - **Zpráva**:`Only Azure Blob storage accounts are supported as additional storages for HDInsight on demand linked service.`
 
-- **Příčina**: Zapředpokladuté další úložiště není úložiště objektů blob Azure.
+- **Příčina**: zadané dodatečné úložiště nebylo úložištěm objektů BLOB v Azure.
 
-- **Doporučení:** Poskytněte účet úložiště objektů Blob Azure jako další úložiště pro hdinsight na vyžádání propojené služby.
+- **Doporučení**: Poskytněte účet Azure Blob Storage jako další úložiště pro propojenou službu HDInsight na vyžádání.
 
 
 
@@ -997,62 +999,62 @@ Následující tabulka platí pro Azure Batch.
 
 - **Zpráva**:`No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
 
-- **Příčina:** Připojení k síti, selhání DNS, ověření certifikátu serveru nebo časový výtok.
+- **Příčina**: připojení k síti, selhání služby DNS, ověřování certifikátu serveru nebo časový limit.
 
-- **Doporučení**: Ověřte, zda koncový bod, který se pokoušíte požadavek na požadavek. Můžete použít nástroje, jako je Šumař / Pošťák.
+- **Doporučení**: Ověřte, že koncový bod, který se snažíte dosáhnout, reaguje na požadavky. Můžete použít nástroje jako Fiddler/post.
 
 
 ### <a name="error-code--2108"></a>Kód chyby: 2108
 
 - **Zpráva**:`Error calling the endpoint '%url;'. Response status code: '%code;'`
 
-- **Příčina**: Požadavek se nezdařil z důvodu základního problému, jako je připojení k síti, selhání DNS, ověření certifikátu serveru nebo časový výtok.
+- **Příčina**: požadavek se nezdařil z důvodu základního problému, například připojení k síti, selhání služby DNS, ověřování certifikátu serveru nebo vypršení časového limitu.
 
-- **Doporučení**: Žádost ověřte pomocí Fiddler/Postman.
+- **Doporučení**: k ověření žádosti použijte Fiddler/Poster.
 <br>
 
 
 #### <a name="more-details"></a>Další podrobnosti
-Použití Fiddleru k vytvoření relace HTTP monitorované webové aplikace:
+Použití Fiddler k vytvoření relace HTTP monitorované webové aplikace:
 
-1. Stáhněte, nainstalujte a otevřete [Šumař](https://www.telerik.com/download/fiddler).
+1. Stáhněte, nainstalujte a otevřete [Fiddler](https://www.telerik.com/download/fiddler).
 
-1. Pokud vaše webová aplikace používá protokol HTTPS, přejděte > na **možnosti nástroje** > **šumava****HTTPS**. Vyberte **Zachytávat HTTPS CONNECTs** a **dešifrovat přenosy HTTPS**.
+1. Pokud vaše webová aplikace používá protokol HTTPS, použijte **možnost nástroje** > **Fiddler možnosti** > **https**. Vyberte **zachytit protokol HTTPS připojení** a **dešifrování přenosu HTTPS**.
 
    ![Fiddler možnosti](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
-1. Pokud vaše aplikace používá certifikáty TLS/SSL, přidejte do zařízení certifikát Fiddler. Přejděte na **možnosti** > **nástroje fiddler možnosti** > **HTTPS** > **akce** > **exportovat kořenový certifikát na plochu**.
+1. Pokud vaše aplikace používá certifikáty TLS/SSL, přidejte do svého zařízení certifikát Fiddler. V **nabídce nástroje** > **Fiddler možnosti** > **https** > **Akce** > **exportovat kořenový certifikát do plochy**.
 
-1. Vypněte zachytávání tak, že přejdete na **Soubor** > **Zachytit provoz**. Nebo stiskněte **klávesu F12**.
+1. Vypněte zachytávání pomocí přechodu na **File** > **přenos**souborů. Nebo stiskněte klávesu **F12**.
 
-1. Vymažte mezipaměť prohlížeče, aby byly odebrány všechny položky uložené v mezipaměti a musely být znovu staženy.
+1. Vymažte mezipaměť prohlížeče, aby se odstranily všechny položky v mezipaměti, a je nutné je znovu stáhnout.
 
-1. Vytvoření požadavku:
+1. Vytvořit požadavek:
 
-   1. Vyberte kartu **Skladatel.**
+   1. Vyberte kartu **Autor** .
 
-   1. Nastavte metodu protokolu HTTP a adresu URL.
+   1. Nastavte metodu HTTP a adresu URL.
    
-   1. V případě potřeby přidejte záhlaví a tělo požadavku.
+   1. Pokud potřebujete, přidejte záhlaví a text žádosti.
 
    1. Vyberte **Provést**.
 
-1. Zapněte zachytávání provozu znovu a dokončete problematickou transakci na stránce.
+1. Zapněte znovu zachytávání provozu a dokončete problematickou transakci na stránce.
 
-1. Přejděte na **Soubor** > **Uložit** > **všechny relace**.
+1. Přejít na **soubor** > **Uložit** > **všechny relace**.
 
-Další informace naleznete [v tématu Začínáme s šumavou](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler).
+Další informace najdete v tématu [Začínáme s Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další nápovědu k řešení potíží naleznete v těchto zdrojích:
+Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 
-*  [Blog data factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Požadavky na funkce datové továrny](https://feedback.azure.com/forums/270578-data-factory)
+*  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 *  [Videa Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Fórum MSDN](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
-*  [Fórum přetečení zásobníku pro datovou továrnu](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Twitter informace o Data Factory](https://twitter.com/hashtag/DataFactory)
+*  [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
+*  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
 
 
             

@@ -5,12 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: c2c01fdf5620f1a474a4bb56be14d40d21283773
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: bc95f60534e11be1babb4c688800e2c834c0d7dc
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100919"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145348"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu HTTPS ve službě Azure Kubernetes (AKS)
 
@@ -46,7 +46,7 @@ Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu
 > Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic*. Podle potřeby zadejte obor názvů pro vlastní prostředí.
 
 > [!TIP]
-> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat SSL fungovat.
+> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
 
 ```console
 # Create a namespace for your ingress resources

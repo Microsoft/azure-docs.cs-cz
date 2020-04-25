@@ -1,53 +1,22 @@
 ---
-title: Řízení údržby
-description: Naučte se řídit, kdy se na virtuální počítače Azure používá údržba pomocí řízení údržby.
+title: Řízení údržby pro virtuální počítače Azure pomocí rozhraní příkazového řádku
+description: Naučte se řídit, kdy se na virtuální počítače Azure použije údržba pomocí řízení údržby a CLI.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 58c0964d170f49066802b955f09dab01eaf998a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4843b4769e31748fd5f624005792c604db18f11e
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250176"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137497"
 ---
-# <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Verze Preview: řízení aktualizací pomocí řízení údržby a Azure CLI
+# <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Řízení aktualizací pomocí řízení údržby a Azure CLI
 
-Spravujte aktualizace platforem, které nevyžadují restart, pomocí řízení údržby. Azure často aktualizuje svoji infrastrukturu, aby vylepšila spolehlivost, výkon, zabezpečení a spouštěla nové funkce. Většina aktualizací je pro uživatele transparentní. Některé citlivé úlohy, jako jsou hraní her, streamování médií a finanční transakce, neumožňují tolerovat zamrznutí nebo odpojení virtuálních počítačů za účelem údržby ani pár sekund. Řízení údržby vám dává možnost počkat na aktualizace platformy a použít ji v průběhu 35ého okna. 
-
-Řízení údržby vám umožní určit, kdy se mají aktualizace použít pro izolované virtuální počítače a vyhrazené hostitele Azure.
-
-Pomocí řízení údržby můžete:
-- Dávka se aktualizuje do jednoho balíčku aktualizace.
-- Počkejte až 35 dní, než se aktualizace použijí. 
-- Automatizujte aktualizace platforem pro okno údržby pomocí Azure Functions.
-- Konfigurace údržby pracují v rámci předplatných a skupin prostředků. 
-
-> [!IMPORTANT]
-> Řízení údržby je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-
-## <a name="limitations"></a>Omezení
-
-- Virtuální počítače musí být na [vyhrazeném hostiteli](./linux/dedicated-hosts.md)nebo být vytvořené pomocí [izolované velikosti virtuálního počítače](./linux/isolation.md).
-- Po 35 dnech se automaticky použije aktualizace.
-- Uživatel musí mít přístup k **přispěvateli prostředků** .
-
-
-## <a name="install-the-maintenance-extension"></a>Instalace rozšíření údržby
-
-Pokud se rozhodnete nainstalovat rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) místně, budete potřebovat verzi 2.0.76 nebo novější.
-
-Nainstalujte rozhraní `maintenance` příkazového řádku verze Preview místně nebo v Cloud Shell. 
-
-```azurecli-interactive
-az extension add -n maintenance
-```
-
+Řízení údržby vám umožní určit, kdy se mají aktualizace použít pro izolované virtuální počítače a vyhrazené hostitele Azure. Toto téma popisuje možnosti rozhraní příkazového řádku Azure CLI pro řízení údržby. Další informace o výhodách použití řízení údržby, jejich omezení a dalších možností správy najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](maintenance-control.md).
 
 ## <a name="create-a-maintenance-configuration"></a>Vytvořit konfiguraci údržby
 
@@ -61,7 +30,7 @@ az maintenance configuration create \
    -g myMaintenanceRG \
    --name myConfig \
    --maintenanceScope host\
-   --location  eastus
+   --location eastus
 ```
 
 Zkopírujte ID konfigurace z výstupu pro pozdější použití.

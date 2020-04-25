@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 9723fc3ab68785c6e444647f427fcf9788792cea
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 27f86a3fa34f8029e59d11066de9ea5a25a8c5ad
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115682"
+ms.locfileid: "82147983"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Konektory pro Azure Logic Apps
 
@@ -48,9 +48,6 @@ Konektory jsou dostupné jako integrované triggery a akce nebo jako spravované
 
   Konektory jsou klasifikovány buď jako standard, nebo jako podnikové. [Podnikové konektory](#enterprise-connectors) poskytují pro další náklady přístup k podnikovým systémům, jako jsou SAP, IBM MQ a IBM 3270. Pokud chcete zjistit, jestli je konektor Standard nebo Enterprise, přečtěte si téma technické podrobnosti na referenční stránce každého konektoru v části [konektory – přehled](https://docs.microsoft.com/connectors).
 
-  > [!IMPORTANT]
-  > Od **1. května 2020**můžou změny na [zabezpečení a zásady ochrany osobních údajů](https://www.blog.google/technology/safety-security/project-strobe/) od společnosti Google ovlivnit aplikace logiky, které používají [konektor Gmail](https://docs.microsoft.com/connectors/gmail/). Pokud vaše aplikace logiky používají konektor Gmail s uživatelským účtem Gmail (e-mailová adresa @gmail.com , @googlemail.comkterá končí na nebo), vaše aplikace logiky můžou používat jenom triggery, akce a konektory schválené společností Google. Od **15. června 2020**budou všechny pracovní postupy, které nedodržují předpisy, zakázané. Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
-
   Pomocí těchto kategorií můžete také identifikovat konektory, i když některé konektory mohou více kategorií. Například SAP je konektor Enterprise a konektor On-Premises Connector:
 
   |   |   |
@@ -59,6 +56,9 @@ Konektory jsou dostupné jako integrované triggery a akce nebo jako spravované
   | [**Místní konektory**](#on-premises-connectors) | Když nainstalujete a nastavíte místní [bránu dat][gateway-doc], tyto konektory pomůžou vašim aplikacím logiky přístup k místním systémům, jako je SQL Server, SharePoint Server, Oracle DB, sdílené složky a další. |
   | [**Konektory účtu pro integraci**](#integration-account-connectors) | K dispozici při vytváření a placení účtu pro integraci, tyto konektory transformují a ověřují nestrukturované soubory XML, kódují a dekódovat ploché soubory a zpracovávají zprávy B2B (Business-to-Business) pomocí protokolů AS2, EDIFACT a X12. |
   |||
+
+  > [!IMPORTANT]
+  > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 <a name="integration-service-environment"></a>
 
