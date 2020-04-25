@@ -8,84 +8,84 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5652df0cf142af2ff96590368892530abcb3d667
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
-ms.translationtype: HT
+ms.openlocfilehash: bee40bc30a0ffbdacf8cc7bf88d1512c4fc43fa4
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133221"
+ms.locfileid: "82147953"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s výstupy Azure Stream Analytics
 
-Tento článek popisuje běžné problémy s Azure Stream Analyticsmi výstupními připojeními, jak řešit problémy s výstupem a jak tyto problémy vyřešit. Mnoho kroků pro řešení potíží vyžaduje, aby byly pro vaši úlohu Stream Analytics povolené prostředky a další diagnostické protokoly. Pokud nemáte Povolené protokoly prostředků, přečtěte si téma [řešení potíží s Azure Stream Analytics pomocí protokolů prostředků](stream-analytics-job-diagnostic-logs.md).
+Tento článek popisuje běžné problémy s Azure Stream Analyticsmi výstupními připojeními a postupy při řešení problémů s výstupem. Mnohé kroky pro řešení potíží vyžadují, aby se pro vaši úlohu Stream Analytics povolily prostředky a další diagnostické protokoly. Pokud nemáte Povolené protokoly prostředků, přečtěte si téma [řešení potíží s Azure Stream Analytics pomocí protokolů prostředků](stream-analytics-job-diagnostic-logs.md).
 
-## <a name="output-not-produced-by-job"></a>Výstup nevytvořený úlohou
+## <a name="the-job-doesnt-produce-output"></a>Úloha nevytváří výstup.
 
-1.  Ověřte připojení ke výstupům pomocí tlačítka **Testovat připojení** pro každý výstup.
+1. Ověřte připojení ke výstupům pomocí tlačítka **Testovat připojení** pro každý výstup.
+1. Podívejte se na [sledování metrik](stream-analytics-monitoring.md) na kartě **monitorování** . Vzhledem k tomu, že jsou hodnoty agregované, jsou metriky zpožděné o několik minut.
 
-2.  Podívejte se na [**sledování metrik**](stream-analytics-monitoring.md) na kartě **monitorování** . Vzhledem k tomu, že jsou hodnoty agregované, jsou metriky zpožděné o několik minut.
-   * Pokud jsou vstupní události větší než 0, může úloha číst vstupní data. Pokud vstupní události nejsou větší než 0, dojde k problému se vstupem úlohy. Informace o řešení problémů se vstupním připojením najdete v tématu [řešení potíží se vstupními připojeními](stream-analytics-troubleshoot-input.md) .
-   * Pokud jsou chyby převodu dat větší než 0 a stoupání, přečtěte si část [Azure Stream Analytics chyby dat](data-errors.md) , kde najdete podrobné informace o chybách při převodu dat.
-   * Pokud jsou chyby za běhu větší než 0, může vaše úloha přijímat data, ale při zpracování dotazu generuje chyby. Chyby najdete v [protokolech auditu](../azure-resource-manager/management/view-activity-logs.md) a ve stavu filtru při *selhání* .
-   * Pokud InputEvents je větší než 0 a OutputEvents se rovná 0, jedna z následujících možností je true:
-      * Zpracování dotazu mělo za výsledek nulu výstupních událostí.
-      * Události nebo pole mohou být poškozena a výsledkem zpracování dotazu je nulový výstup.
+   * Pokud je hodnota **vstupních událostí** větší než nula, může úloha číst vstupní data. Pokud hodnota **vstupních událostí** není větší než nula, dojde k problému se vstupem úlohy. Další informace najdete v tématu [řešení potíží se vstupními připojeními](stream-analytics-troubleshoot-input.md) .
+   * Pokud je hodnota **chyby převodu dat** větší než nula a stoupání, přečtěte si část [Azure Stream Analytics chyby dat](data-errors.md) , kde najdete podrobné informace o chybách při převodu dat.
+   * Pokud je hodnota **chyby běhového prostředí** větší než nula, úloha přijme data, ale při zpracování dotazu generuje chyby. Chcete-li najít chyby, klikněte na [protokoly auditu](../azure-resource-manager/management/view-activity-logs.md)a potom vyfiltrujte stav **selhání** .
+   * Pokud je hodnota **vstupních událostí** větší než nula a **výstupní události** se rovná nule, jeden z následujících příkazů je pravdivý:
+      * Zpracování dotazu vedlo k nulovým výstupním událostem.
+      * Události nebo pole mohou být poškozeny, což po zpracování dotazu vytvoří nulový výstup.
       * Úloha nemohla odeslat data do výstupní jímky pro účely připojení nebo ověřování.
 
-   Ve všech dříve uvedených chybových případech vysvětlují zprávy o operacích, které obsahují další podrobnosti (včetně toho, co se děje), s výjimkou případů, kdy logika dotazu vyfiltruje všechny události. Pokud zpracování více událostí generuje chyby, jsou chyby shrnuty každých 10 minut.
+   Zprávy protokolu operací vysvětlují další podrobnosti, včetně toho, co se děje, s výjimkou případů, kdy logika dotazu filtruje všechny události. Pokud zpracování více událostí generuje chyby, jsou chyby shrnuty každých 10 minut.
 
-## <a name="job-output-is-delayed"></a>Výstup úlohy je zpožděný
+## <a name="the-first-output-is-delayed"></a>První výstup je zpožděný.
 
-### <a name="first-output-is-delayed"></a>První výstup je zpožděný.
+Při spuštění úlohy Stream Analytics se čtou vstupní události. V některých případech ale může dojít ke zpoždění výstupu.
 
-Po spuštění úlohy Stream Analytics se načtou vstupní události, ale v některých případech může dojít ke zpoždění generování výstupu.
+Dlouhé hodnoty času v dočasných prvcích dotazů mohou přispět k zpoždění výstupu. Aby se vytvořil správný výstup v rámci velkých oken času, úloha streamování načte data z poslední možné doby k vyplnění časového okna. Data mohou být až po dobu až sedmi dnů. Žádný výstup negeneruje, dokud nebudou přečteny nezpracované vstupní události. Tento problém se může nacházet při upgradu systému na úlohy streamování. V případě, že dojde k upgradu, úloha se restartuje. K těmto inovacím obvykle dochází jednou za několik měsíců.
 
-Dlouhé hodnoty času v dočasných prvcích dotazů mohou přispět k zpoždění výstupu. Aby se vytvořil správný výstup v rámci velkých oken času, úloha streamování se spustí tak, že si přečte data z poslední možné doby (až do sedmi dnů předá) a vyplní časový interval. Během této doby se nevytvoří žádný výstup, dokud není dokončená čtení nezpracovaných vstupních událostí. Tento problém se může nacházet v případě, že systém upgraduje úlohy streamování, takže úlohu restartuje. K těmto inovacím obvykle dochází jednou za několik měsíců.
+Při návrhu dotazu Stream Analytics použijte volitelné rozhodnutí. Pokud pro dočasné prvky v syntaxi dotazu úlohy použijete velký časový interval, může při spuštění nebo restartování úlohy způsobit zpoždění v prvním výstupu. Více než několik hodin, až sedm dní, je považováno za velký časový interval.
 
-Proto při navrhování Stream Analyticsho dotazu použijte volitelné rozhodnutí. Pokud používáte velký časový interval (více než několik hodin, až sedm dní) pro dočasné prvky v syntaxi dotazu úlohy, může to způsobit zpoždění prvního výstupu při spuštění nebo restartování úlohy.  
+Jedním z rizik pro tento druh prvního zpoždění výstupu je použití technik paralelního dotazování, jako je vytváření oddílů dat. Nebo můžete přidat další jednotky streamování pro zlepšení propustnosti, dokud se úloha nedosáhne.  Další informace najdete v tématu [týkajícím se vytváření úloh Stream Analytics](stream-analytics-concepts-checkpoint-replay.md).
 
-Jedním z rizik pro tento druh prvního zpoždění výstupu je použití technik paralelního zpracování dotazů (rozdělení dat) nebo přidání dalších jednotek streamování pro zvýšení propustnosti, dokud se úloha nedosáhne.  Další informace najdete v tématu [týkajícím se vytváření úloh Stream Analytics](stream-analytics-concepts-checkpoint-replay.md) .
+Tyto faktory ovlivňují časovou osu prvního výstupu:
 
-Tyto faktory ovlivňují časovou osu prvního generovaného výstupu:
+* Použití agregovaných oken, jako je například klauzule GROUP BY pro bubny, skákající a posuvná okna:
 
-1. Použití agregovaných agregačních hodnot (skupin podle bubnu, skákající a klouzavého okna)
-   - V případě agregací nebo skákající oken se výsledky generují na konci časového rámce okna.
-   - Pro posuvné okno jsou výsledky generovány, když událost zadá nebo ukončí posuvné okno.
-   - Pokud plánujete použít velkou velikost okna (> 1 hodina), je nejlepší zvolit skákající nebo posuvné okno, abyste mohli výstup zobrazit častěji.
+  * V případě agregací nebo skákající oken se výsledky generují na konci časového rámce okna.
+  * Pro posuvné okno se výsledky generují, když událost vstoupí do posuvných oken nebo je ukončí.
+  * Pokud plánujete použít velkou velikost okna, například více než jednu hodinu, je nejlepší vybrat skákající nebo posuvné okno. Tyto typy oken umožňují zobrazit výstup častěji.
 
-2. Použití dočasná spojení (spojení s DATEDIFF)
-   - Shody jsou generovány, jakmile se dorazí na obě strany odpovídajících událostí.
-   - Data, která nemají shodu (levé vnější spojení), se generují na konci okna DATEDIFF s ohledem na každou událost na levé straně.
+* Používání dočasná spojení, jako je například spojení s DATEDIFF:
+  * Shoduje se s vygenerováním hned po doručení obou stran odpovídajících událostí.
+  * Data, u kterých chybí shoda, jako je levé vnější spojení, se generují na konci okna DATEDIFF pro každou událost na levé straně.
 
-3. Použití dočasných analytických funkcí (například FIRST, LAST a LAG s TRVÁNÍm LIMITu)
-   - Pro analytické funkce je výstup vygenerován pro každou událost, neexistuje žádná prodleva.
+* Použití dočasných analytických funkcí, jako je například FIRST, LAST a LAG s TRVÁNÍm LIMITu:
+  * Pro analytické funkce je výstup vygenerován pro každou událost. Nedochází k žádnému zpoždění.
 
-### <a name="output-falls-behind"></a>Výstup spadá pod
+## <a name="the-output-falls-behind"></a>Výstup spadá pod
 
-Pokud při běžném provozu úlohy zjistíte, že výstup úlohy je na konci (delší a delší latence), můžete určit hlavní příčiny tím, že prozkoumáte tyto faktory:
-- Bez ohledu na to, jestli je jímka pro příjem dat omezená
-- Bez ohledu na to, jestli je nadřazený zdroj omezený
-- Určuje, jestli je logika zpracování v dotazu náročná na výpočetní výkon.
+V průběhu běžné operace úlohy může výstup trvat déle a delší dobu latence. Pokud výstup spadá do toho, jak to bude, můžete určit hlavní příčiny tím, že prozkoumáte následující faktory:
 
-Chcete-li tyto podrobnosti zobrazit, vyberte v Azure Portal úlohu streamování a vyberte **diagram úlohy**. U každého vstupu je metrika události nevyřízených položek na oddíl. Pokud se metrika události nevyřízených položek stále zvyšuje, je indikátorem, že systémové prostředky jsou omezené. Potenciálně to může být způsobeno omezením výstupní jímky nebo vysokým PROCESORem. Další informace o používání diagramu úloh naleznete v tématu [ladění řízené daty pomocí diagramu úloh](stream-analytics-job-diagram-with-metrics.md).
+* Bez ohledu na to, jestli je jímka pro příjem dat omezená
+* Bez ohledu na to, jestli je nadřazený zdroj omezený
+* Určuje, jestli je logika zpracování v dotazu náročná na výpočetní výkon.
+
+Chcete-li zobrazit podrobnosti výstupu, vyberte úlohu streamování v Azure Portal a pak vyberte **diagram úlohy**. Pro každý vstup existuje metrika události nevyřízených položek na oddíl. Pokud se metrika stále zvyšuje, je indikátorem, že systémové prostředky jsou omezené. Zvýšení je potenciálně v důsledku omezení výstupní jímky nebo vysokého využití procesoru. Další informace najdete v tématu [ladění řízené daty pomocí diagramu úloh](stream-analytics-job-diagram-with-metrics.md).
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Upozornění na porušení klíče s výstupem Azure SQL Database
 
-Když nakonfigurujete službu Azure SQL Database jako výstup do Stream Analytics úlohy, hromadně vloží záznamy do cílové tabulky. Obecně platí, že Azure Stream Analytics garantuje [alespoň jedno doručení](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) do výstupní jímky, takže když tabulka SQL má definováno jedinečné omezení, může pro výstup SQL stále [dosáhnout přesného doručení]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) .
+Když nakonfigurujete službu Azure SQL Database jako výstup do Stream Analytics úlohy, hromadně vloží záznamy do cílové tabulky. Obecně Azure Stream Analytics garantuje doručení do výstupní jímky [aspoň jednou](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) . V případě, že má tabulka SQL definováno jedinečné omezení, můžete přesto [dosáhnout přesně jednoho doručení]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) do výstupu SQL.
 
-Jakmile budou v tabulce SQL nastavena omezení jedinečnosti klíčů a v tabulce SQL jsou vloženy duplicitní záznamy, Azure Stream Analytics odstraní duplicitní záznam. Rozdělí data na dávky a rekurzivně vloží dávky, dokud nebude nalezen jeden duplicitní záznam. Pokud má úloha streamování velký počet duplicitních řádků, musí tento proces rozdělení a vložení ignorovat duplicitní hodnoty po jednom, což je méně efektivní a časově náročné. Pokud se v protokolu aktivit během poslední hodiny zobrazí zpráva s upozorněním na porušení klíčů, je pravděpodobnější, že váš výstup SQL zpomaluje celou úlohu.
+Když nastavíte omezení jedinečnosti klíčů pro tabulku SQL, Azure Stream Analytics odstraní duplicitní záznamy. Rozdělí data do dávek a rekurzivně je vloží, dokud nebude nalezen jediný duplicitní záznam. Proces rozdělení a vložení ignoruje duplicitní hodnoty v jednom okamžiku. Pro úlohu streamování, která má mnoho duplicitních řádků, je proces neefektivní a časově náročný. Pokud se v protokolu aktivit během předchozí hodiny zobrazí více výstražných zpráv o porušení klíčů, je pravděpodobný, že váš výstup SQL zpomaluje celou úlohu.
 
-Chcete-li tento problém vyřešit, je nutné [nakonfigurovat index]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) , který způsobuje porušení klíče, povolením možnosti IGNORE_DUP_KEY. Povolením této možnosti umožníte, aby se duplicitní hodnoty v SQL ignorovaly během hromadných vložení a SQL Azure jednoduše vznikne varovná zpráva namísto chyby. Azure Stream Analytics již nevytváří chyby narušení primárního klíče.
+Chcete-li tento problém vyřešit, [nakonfigurujte index]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) , který způsobuje porušení klíče, povolením možnosti IGNORE_DUP_KEY. Tato možnost umožňuje SQL ignorovat duplicitní hodnoty během hromadných vložení. Azure SQL Database jednoduše vytvoří zprávu upozornění namísto chyby. V důsledku toho Azure Stream Analytics už nevytvářejí chyby narušení primárního klíče.
 
 Při konfiguraci IGNORE_DUP_KEY pro několik typů indexů Pamatujte na následující poznámky:
 
-* Nemůžete nastavit IGNORE_DUP_KEY pro primární klíč nebo jedinečné omezení, které používá příkaz ALTER INDEX, je nutné index vyřadit a znovu vytvořit.  
-* Možnost IGNORE_DUP_KEY můžete nastavit pomocí příkazu ALTER INDEX pro jedinečný index, který se liší od omezení primárního klíče a JEDINEČNosti a vytvořen pomocí definice vytvořit INDEX nebo INDEX.  
+* Nemůžete nastavit IGNORE_DUP_KEY pro primární klíč nebo jedinečné omezení, které používá příkaz ALTER INDEX. Index je potřeba vyřadit a znovu vytvořit.  
+* IGNORE_DUP_KEY můžete nastavit pomocí příkazu ALTER INDEX pro jedinečný index. Tato instance je odlišná od primárního KLÍČového a JEDINEČNÉho omezení a je vytvořena pomocí definice indexu nebo indexu.  
+* Možnost IGNORE_DUP_KEY neplatí pro indexy úložiště sloupců, protože pro ně nemůžete vymáhat jedinečnost.  
 
-* IGNORE_DUP_KEY se nevztahují na indexy úložiště sloupců, protože u takových indexů nemůžete vymáhat jedinečnost.  
+## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Názvy sloupců jsou malými písmeny v Azure Stream Analytics (1,0)
 
-## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Názvy sloupců jsou použitay nižšími než Azure Stream Analytics
-Při použití původní úrovně kompatibility (1,0) Azure Stream Analytics použít ke změně názvů sloupců malými písmeny. Toto chování bylo opraveno v novějších úrovních kompatibility. Aby bylo možné zachovat případ, doporučujeme zákazníkům, aby přešli na úroveň kompatibility 1,1 a novější. Další informace o [úrovni kompatibility pro úlohy Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)najdete v.
+Při použití původní úrovně kompatibility (1,0) Azure Stream Analytics změny názvů sloupců na malá písmena. Toto chování bylo opraveno v novějších úrovních kompatibility. Pokud chcete zachovat případ, přejděte na úroveň kompatibility 1,1 nebo novější. Další informace najdete v tématu [úroveň kompatibility pro úlohy Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
 
 ## <a name="get-help"></a>Podpora
 
@@ -96,5 +96,5 @@ Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fó
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční dokumentace jazyka Azure Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční informace o REST API správy Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

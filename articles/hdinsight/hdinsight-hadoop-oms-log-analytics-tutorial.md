@@ -1,34 +1,34 @@
 ---
-title: Použití protokolů Azure Monitor ke sledování clusterů Azure HDInsight
-description: Zjistěte, jak pomocí protokolů Azure Monitoru monitorovat monitoru monitoru spouštěné v clusteru HDInsight.
+title: Použití protokolů Azure Monitor k monitorování clusterů Azure HDInsight
+description: Naučte se používat protokoly Azure Monitor k monitorování úloh spuštěných v clusteru HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: e4b33e132e660fba7d06ff33c7db06c7727dd26c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: 4007d18291e91ae2a72d7a99dac2cb3a8bc2877a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162782"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143853"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Monitorování clusterů HDInsight s využitím protokolů služby Azure Monitor
 
-Zjistěte, jak povolit protokolům Azure Monitoru monitorke monitorke ke sledování operací clusteru Hadoop v HDInsightu a jak přidat řešení monitorování HDInsight.
+Naučte se, jak povolit protokoly Azure Monitor pro monitorování operací clusteru Hadoop v HDInsight. A postup přidání řešení pro monitorování HDInsight.
 
-[Protokoly Azure Monitoru](../log-analytics/log-analytics-overview.md) je služba ve službě Azure Monitor, která monitoruje vaše cloudová a místní prostředí, aby byla zachována jejich dostupnost a výkon. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji.
+[Protokoly Azure monitor](../log-analytics/log-analytics-overview.md) jsou služba Azure monitor, která monitoruje cloudové a místní prostředí. Monitorování je udržování jejich dostupnosti a výkonu. Shromažďuje data vygenerovaná prostředky ve vašem cloudu, v místních prostředích a z jiných monitorovacích nástrojů. Data se používají k zajištění analýzy napříč různými zdroji.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Log Analytics. Tento pracovní prostor si můžete myslet jako jedinečné prostředí protokolů Azure Monitor s vlastním úložištěm dat, zdroji dat a řešeními. Pokyny naleznete v [tématu Vytvoření pracovního prostoru Analýzy protokolů](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
+* Pracovní prostor služby Log Analytics. Tento pracovní prostor si můžete představit jako jedinečné Azure Monitor zaprotokolované prostředí s vlastním úložištěm dat, zdroji dat a řešeními. Pokyny najdete v tématu [Vytvoření pracovního prostoru Log Analytics](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
 
-* Cluster Azure HDInsight. V současné době můžete používat protokoly Azure Monitor s následujícími typy clusterů HDInsight:
+* Cluster Azure HDInsight. V současné době můžete použít protokoly Azure Monitor s následujícími typy clusterů HDInsight:
 
   * Hadoop
   * HBase
@@ -37,32 +37,32 @@ Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azur
   * Spark
   * Storm
 
-  Pokyny k vytvoření clusteru HDInsight najdete v tématu [Začínáme s Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
+  Pokyny k vytvoření clusteru HDInsight najdete v tématu Začínáme [se službou Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
 
-* Modul Azure PowerShell Az.  Viz [Představení nového modulu Azure PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az). Ujistěte se, že máte nejnovější verzi. V případě `Update-Module -Name Az`potřeby spusťte .
+* Azure PowerShell AZ Module.  Další informace najdete v tématu [Úvod do nového Azure PowerShell AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az). Ujistěte se, že máte nejnovější verzi. V případě potřeby spusťte `Update-Module -Name Az`.
 
 > [!NOTE]  
-> Doporučujeme umístit cluster HDInsight i pracovní prostor Log Analytics do stejné oblasti pro lepší výkon. Protokoly Azure Monitor není k dispozici ve všech oblastech Azure.
+> Pro lepší výkon doporučujeme umístit cluster HDInsight i Log Analytics pracovní prostor do stejné oblasti. Protokoly Azure Monitor nejsou k dispozici ve všech oblastech Azure.
 
 ## <a name="enable-azure-monitor-logs-by-using-the-portal"></a>Povolení protokolů Azure Monitor pomocí portálu
 
-V této části nakonfigurujete existující cluster HDInsight Hadoop tak, aby používal pracovní prostor Azure Log Analytics ke sledování úloh, ladění protokolů atd.
+V této části nakonfigurujete existující cluster HDInsight Hadoop tak, aby používal pracovní prostor Azure Log Analytics k monitorování úloh, protokolů ladění atd.
 
-1. Na [portálu Azure](https://portal.azure.com/)vyberte svůj cluster.  Pokyny naleznete [v tématu Seznam a zobrazení clusterů.](./hdinsight-administer-use-portal-linux.md#showClusters) Cluster se otevře na nové stránce portálu.
+1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster. Cluster se otevře na nové stránce portálu.
 
-1. Zleva v části **Monitorování**vyberte **Azure Monitor**.
+1. Vlevo v části **monitorování**vyberte **Azure monitor**.
 
-1. V hlavním zobrazení vyberte v části **Integrace monitorování Azure**možnost **Povolit**.
+1. V hlavním zobrazení v části **Azure monitor integrace**vyberte **Povolit**.
 
-1. V rozevíracím seznamu **Vyberte pracovní prostor** vyberte existující pracovní prostor Analýzy protokolů.
+1. V rozevíracím seznamu **Vyberte pracovní prostor** vyberte existující pracovní prostor Log Analytics.
 
-1. Vyberte **Uložit**.  Uložení nastavení trvá několik okamžiků.
+1. Vyberte **Uložit**.  Uložení nastavení může chvíli trvat.
 
-    ![Povolení monitorování clusterů HDInsight](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "Povolení monitorování clusterů HDInsight")
+    ![Povolit monitorování clusterů HDInsight](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "Povolit monitorování clusterů HDInsight")
 
-## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>Povolení protokolů Azure Monitor pomocí Azure PowerShellu
+## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>Povolit protokoly Azure Monitor pomocí Azure PowerShell
 
-Protokoly Azure Monitoru můžete povolit pomocí rutiny Modul Az Azure PowerShell [povolit AzHDInsightMonitoring.](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring)
+Protokoly Azure Monitor můžete povolit pomocí Azure PowerShell rutinu AZ Module [Enable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) .
 
 ```powershell
 # Enter user information
@@ -94,7 +94,7 @@ Get-AzHDInsightMonitoring `
     -Name $cluster
 ```
 
-Chcete-li zakázat, použijte [rutinu Disable-AzHDInsightMonitoring:](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring)
+Pokud ho chcete zakázat, použijte rutinu [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) :
 
 ```powershell
 Disable-AzHDInsightMonitoring -Name "<your-cluster>"
@@ -102,36 +102,37 @@ Disable-AzHDInsightMonitoring -Name "<your-cluster>"
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>Instalace řešení pro správu clusteru HDInsight
 
-HDInsight poskytuje řešení pro správu specifická pro cluster, která můžete přidat pro protokoly Azure Monitor. [Řešení pro správu](../log-analytics/log-analytics-add-solutions.md) přidávají do protokolů Azure Monitoru funkce a poskytují další data a analytické nástroje. Tato řešení shromažďují důležité metriky výkonu z clusterů HDInsight a poskytují nástroje pro vyhledávání metrik. Tato řešení také poskytují vizualizace a řídicí panely pro většinu typů clusterů podporovaných v HDInsight. Pomocí metriky, které shromažďujete s řešením, můžete vytvořit vlastní pravidla monitorování a výstrahy.
+HDInsight poskytuje řešení pro správu pro konkrétní clustery, která můžete přidat pro protokoly Azure Monitor. [Řešení pro správu](../log-analytics/log-analytics-add-solutions.md) přidávají funkce do protokolů Azure monitor a poskytují další data a analytické nástroje. Tato řešení shromažďují důležité metriky výkonu z clusterů HDInsight. A poskytněte nástroje pro hledání metrik. Tato řešení také poskytují vizualizace a řídicí panely pro většinu typů clusterů podporovaných v HDInsight. Pomocí metrik, které s řešením shromáždíte, můžete vytvořit vlastní pravidla monitorování a výstrahy.
 
-Toto jsou dostupná řešení HDInsight:
+Dostupná řešení HDInsight:
 
-* Monitorování hdinsight hadoopu
-* Monitorování hbase HDInsight
-* Interaktivní monitorování dotazů HDInsight
-* HDInsight Kafka Monitoring
-* Monitorování hdinsight spark
-* Monitorování bouře HDInsight
+* Monitorování HDInsight Hadoop
+* HDInsight HBase Monitoring
+* Monitorování interaktivních dotazů HDInsight
+* Monitorování HDInsight Kafka
+* Monitorování HDInsight Spark
+* Sledování v HDInsight
 
-Pokyny k instalaci řešení pro správu najdete [v tématu Řešení pro správu v Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Chcete-li experimentovat, nainstalujte řešení monitorování hadoopu HDInsight. Po dokončení se v části **Souhrn**zobrazí dlaždice **HDInsightHadoop** . Vyberte dlaždici **HDInsightHadoop.** Řešení HDInsightHadoop vypadá takto:
+Pokyny k řešení pro správu najdete v tématu [řešení pro správu v Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Pokud chcete experimentovat, nainstalujte řešení pro monitorování HDInsight Hadoop. Až to bude hotové, zobrazí se pod položkou **summary**dlaždice **HDInsightHadoop** . Vyberte dlaždici **HDInsightHadoop** . Řešení HDInsightHadoop vypadá takto:
 
-![Zobrazení řešení monitorování HDInsight](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
+![Zobrazení řešení pro monitorování HDInsight](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
-Vzhledem k tomu, že cluster je zcela nový cluster, sestava nezobrazuje žádné aktivity.
+Vzhledem k tomu, že cluster je úplně nový cluster, sestava nezobrazuje žádné aktivity.
 
 ## <a name="configuring-performance-counters"></a>Konfigurace čítačů výkonu
 
-Azure Monitor také podporuje shromažďování a analýzu metrik výkonu pro uzly ve vašem clusteru. Další informace o povolení a konfiguraci této funkce najdete [v tématu Zdroje dat o výkonu Linuxu v Azure Monitoru](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters).
+Azure monitor podporuje shromažďování a analýzu metrik výkonu pro uzly ve vašem clusteru. Další informace najdete v tématu [zdroje dat o výkonu pro Linux v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters).
 
 ## <a name="cluster-auditing"></a>Auditování clusteru
 
-HDInsight podporuje auditování clusteru pomocí protokolů Azure Monitor importem následujících typů protokolů:
+Služba HDInsight podporuje auditování clusteru s protokoly Azure Monitor importem následujících typů protokolů:
 
-* `log_gateway_audit_CL`- Tato tabulka obsahuje protokoly auditu z uzlů brány clusteru, které zobrazují úspěšné a neúspěšné pokusy o přihlášení.
-* `log_auth_CL`- tato tabulka poskytuje protokoly SSH s úspěšnými a neúspěšnými pokusy o přihlášení.
-* `log_ambari_audit_CL`- tato tabulka obsahuje protokoly auditu z Ambari.
-* `log_ranger_audti_CL`- tato tabulka obsahuje protokoly auditu od Apache Ranger na CLUSTEREch ESP.
+* `log_gateway_audit_CL`– Tato tabulka poskytuje protokoly auditu z uzlů brány clusteru, které zobrazují úspěšné a neúspěšné pokusy o přihlášení.
+* `log_auth_CL`– Tato tabulka poskytuje protokoly SSH s úspěšnými a neúspěšnými pokusy o přihlášení.
+* `log_ambari_audit_CL`– Tato tabulka poskytuje protokoly auditu z Ambari.
+* `log_ranger_audti_CL`– Tato tabulka poskytuje protokoly auditu z Apache Ranger v clusterech ESP.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Dotaz na protokoly Azure Monitor pro monitorování clusterů HDInsight](hdinsight-hadoop-oms-log-analytics-use-queries.md)
+* [Dotazování protokolů Azure Monitor pro monitorování clusterů HDInsight](hdinsight-hadoop-oms-log-analytics-use-queries.md)
+* [Jak monitorovat dostupnost clusteru pomocí protokolů Apache Ambari a Azure Monitor](./hdinsight-cluster-availability.md)
