@@ -1,7 +1,7 @@
 ---
-title: Vyberte doménu pro vlastní projekt Vision - Počítačové vidění
+title: Vyberte doménu pro Custom Vision projekt – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Tento článek vám ukáže, jak vybrat doménu pro váš projekt ve službě Custom Vision Service.
+description: V tomto článku se dozvíte, jak vybrat doménu pro projekt v Custom Vision Service.
 services: cognitive-services
 author: shonohs
 manager: nitinme
@@ -10,64 +10,64 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 1569b6081adad4cae0855f9adfb4e14e910bf819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78899448"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127778"
 ---
-# <a name="select-a-domain-for-a-custom-vision-project"></a>Výběr domény pro vlastní projekt vize
+# <a name="select-a-domain-for-a-custom-vision-project"></a>Vyberte doménu pro Custom Vision projekt.
 
-V okně nastavení pro váš vlastní projekt Vision můžete vybrat doménu pro váš projekt. Zvolte doménu, která je nejblíže k vašemu scénáři.
+V okně nastavení pro váš Custom Vision projekt můžete vybrat doménu pro svůj projekt. Vyberte doménu, která je nejblíže vašemu scénáři.
 
 ## <a name="image-classification"></a>Klasifikace obrázků
 
 |Domain (Doména)|Účel|
 |---|---|
-|__Obecné__| Optimalizováno pro širokou škálu úloh klasifikace obrázků. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, kterou doménu zvolit, vyberte obecnou doménu.|
-|__Potravin__|Optimalizováno pro fotografie jídel, jak byste je viděli v menu restaurace. Chcete-li klasifikovat fotografie jednotlivých druhů ovoce nebo zeleniny, použijte doménu Potraviny.|
-|__Památek__|Optimalizováno pro rozpoznatelné orientační body, přírodní i umělé. Tato doména funguje nejlépe, když je orientační bod jasně viditelný na fotografii. Tato doména funguje i v případě, že orientační bod je mírně blokován lidmi před ním.|
-|__Maloobchod__|Optimalizováno pro obrázky, které se nacházejí v nákupním katalogu nebo na webu nákupu. Pokud chcete vysoce přesné třídění mezi šaty, kalhoty a košile, použijte tuto doménu.|
-|__Kompaktní domény__| Optimalizováno pro omezení klasifikace v reálném čase na hraničních zařízeních.|
+|__Obecné__| Optimalizováno pro širokou škálu úloh klasifikace imagí. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, jakou doménu chcete vybrat, vyberte obecnou doménu.|
+|__Simulant__|Optimalizováno pro fotografie misek, jak byste je viděli v nabídce restaurace. Pokud chcete klasifikovat fotografie jednotlivých druhů ovoce a zeleniny, použijte doménu jídla.|
+|__Památek__|Optimalizováno pro rozpoznatelný orientačních bodů, jak přirozené, tak umělé. Tato doména funguje nejlépe, když je ve fotografii jasně viditelný bod. Tato doména funguje i v případě, že je bod lehce překážkou pro lidi před ním.|
+|__Maloobchod__|Optimalizováno pro obrázky, které se nacházejí v nákupním katalogu nebo na nákupním webu. Pokud požadujete vysokou přesnost klasifikace mezi dresses, Pants a košile, použijte tuto doménu.|
+|__Kompaktní domény__| Optimalizováno pro omezení klasifikace v reálném čase u hraničních zařízení.|
 
 ## <a name="object-detection"></a>Detekce objektů
 
 |Domain (Doména)|Účel|
 |---|---|
-|__Obecné__| Optimalizováno pro širokou škálu úloh detekce objektů. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, kterou doménu zvolit, vyberte obecnou doménu.|
-|__Logo__|Optimalizováno pro vyhledávání log značky v obrázcích.|
-|__Výrobky na regálech__|Optimalizováno pro detekci a klasifikaci výrobků na regálech.|
-|__Kompaktní domény__| Optimalizováno pro omezení detekce objektů v reálném čase na hraničních zařízeních.|
+|__Obecné__| Optimalizováno pro širokou škálu úloh detekce objektů. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, kterou doménu si zvolíte, vyberte obecnou doménu.|
+|__Logo__|Optimalizováno pro hledání loga značky v obrázcích.|
+|__Produkty na police__|Optimalizováno pro zjišťování a klasifikaci produktů v police.|
+|__Kompaktní domény__| Optimalizováno pro omezení detekce objektů v reálném čase u hraničních zařízení.|
 
 ## <a name="compact-domains"></a>Kompaktní domény
 
-Modely generované kompaktními doménami lze exportovat pro místní spuštění. Výkon modelu se liší podle vybrané domény. V následující tabulce uvádíme velikost modelu a čas odvození na procesorech Intel \[\]Desktop CPU a GPU NVidia 1 . 
+Modely generované pomocí kompaktních domén lze exportovat pro místní spuštění. Výkon modelu se liší podle vybrané domény. V níže uvedené tabulce oznamujeme velikost modelu a dobu odvození na PROCESORech Intel Desktop a NVidia GPU \[1.\] 
 
 > [!NOTE]
-> Tato čísla nezahrnují čas předběžného zpracování a postprocessingu.
+> Tato čísla nezahrnují předzpracování a postprocessingí času.
 
-|Úkol|Domain (Doména)|Velikost modelu|Čas odvození procesoru|Doba odvození GPU|
+|Úkol|Domain (Doména)|Velikost modelu|Čas odvození procesoru|Čas odvození GPU|
 |---|---|---|---|---|
-|Classification|Obecné (kompaktní)|5 MB|13 ms|5 ms|
-|Detekce objektů|Obecné (kompaktní)|45 MB|35 ms|5 ms|
-|Detekce objektů|Obecné (kompaktní) [S1]|14 MB|27 ms|7 ms|
+|Classification|Obecné (kompaktní)|5 MB|13 MS|5 MS|
+|Detekce objektů|Obecné (kompaktní)|45 MB|35 MS|5 MS|
+|Detekce objektů|General (Compact) [S1]|14 MB|27 MS|7 MS|
 
-## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK (Vision AI Dev Kit)
+## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK (Vision AI dev Kit)
 
-Při výběru kompaktní domény je k dispozici další možnost "Export schopnosti" umožňuje rozlišovat mezi "Základní platformy" a "Vision AI Dev Kit".
+Když je vybraná kompaktní doména, je k dispozici možnost exportovat možnosti, která umožňuje rozlišovat základní platformy a Vision AI dev Kit.
 
 V části _Možnosti exportu_ jsou dvě možnosti:
 
 - Základní platformy (Tensorflow, CoreML, ONNX atd.)
-- Vision AI Dev Kit.
+- Sada Vision AI dev Kit.
 
-_Je-li vybrána sada Vision AI Dev Kit,_ jsou pro klasifikaci obrázků k dispozici _obecné_(kompaktní) a obecné (kompaktní) [S1] obecné , _orientační body_a _maloobchod,_ ale nikoli kompaktní domény _potravin,_ zatímco pro detekci objektů jsou k dispozici _obecné (kompaktní)_ i _obecné (kompaktní) [S1]._
+Když je _sada Vision AI dev Kit_ vybraná jako _Obecné_, _orientační_a _maloobchodní_ , ale ne i _v případě_ , že jsou k dispozici obě _Obecné (kompaktní)_ a _Obecné (kompaktní) [S1]_ pro detekci objektů.
 
 >[!NOTE]
->__Obecná (kompaktní)__ doména pro detekci objektů vyžaduje speciální logiku postprocessingu. Podrobnosti naleznete v ukázkovém skriptu v exportovaném zip balíčku. Pokud potřebujete model bez logiky postprocessingu, použijte __obecné (kompaktní) [S1]__.
+>__Obecná (kompaktní)__ doména pro detekci objektu vyžaduje speciální logiku postprocessing. Podrobnosti najdete v ukázkovém skriptu v exportovaném balíčku zip. Pokud potřebujete model bez logiky postprocessing, použijte __Obecné (Compact) [S1]__.
 
 >[!IMPORTANT]
->Neexistuje žádná záruka, že exportované modely poskytují přesně stejný výsledek jako rozhraní API předpověď v cloudu. Mírný rozdíl v běžící platformě nebo implementaci předběžného zpracování může způsobit větší rozdíl ve výstupech modelu. Podrobnosti logiky předběžného zpracování naleznete v [tomto dokumentu](python-tutorial.md).
+>Neexistuje žádná záruka, že exportované modely přidávají přesně stejný výsledek jako předpověď rozhraní API v cloudu. Nepatrný rozdíl ve spuštěné platformě nebo implementace předběžného zpracování může způsobit větší rozdíl v výstupech modelu. Podrobnosti o logice předběžného zpracování najdete v [tomto dokumentu](quickstarts/image-classification.md).
 
-\[1\] Procesor Intel Xeon E5-2690 a NVIDIA Tesla M60
+\[1\] Intel Xeon E5-2690 CPU a NVIDIA Tesla M60

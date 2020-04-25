@@ -107,7 +107,7 @@
           href: ./ag/bot-protection.md
         - name: Přidružení zásad ke stávající službě Application Gateway
           href: ./ag/associate-waf-policy-existing-gateway.md
-        - name: Diagnostické protokoly
+        - name: Protokoly prostředků
           href: ./ag/web-application-firewall-logs.md
         - name: Řešení potíží s WAF
           href: ./ag/web-application-firewall-troubleshoot.md

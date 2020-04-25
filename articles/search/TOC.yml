@@ -68,6 +68,8 @@
           href: cognitive-search-tutorial-blob.md
         - name: Python
           href: cognitive-search-tutorial-blob-python.md
+    - name: Dotaz z Power Apps
+      href: search-howto-powerapps.md
 - name: ukázky
   items:
     - name: 'Ukázky C#'
@@ -234,8 +236,6 @@
               href: index-add-suggesters.md
             - name: Přidání návrhů a automatického dokončování
               href: search-autocomplete-tutorial.md
-        - name: Dotaz z Power Apps
-          href: search-howto-powerapps.md
         - name: Reference k syntaxi
           items:
             - name: Jednoduchá syntaxe dotazů

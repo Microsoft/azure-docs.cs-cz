@@ -1,24 +1,24 @@
 ---
 title: Co je služba Azure Analysis Services | Dokumentace Microsoftu
-description: Seznamte se s Azure Analysis Services, plně spravovanou platformou jako službou (PaaS), která poskytuje datové modely na podnikové úrovni v cloudu.
+description: Přečtěte si o Azure Analysis Services plně spravovaná platforma jako služba (PaaS), která poskytuje modely dat na podnikové úrovni v cloudu.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 350fd9c7057df96a4ad1abc0d9c8b5ec3871ef38
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: b1c755176a62b7e362707da093a899ae96cfe69a
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271654"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128870"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services je plně spravovaná platforma jako služba (PaaS), která poskytuje datové modely na podnikové úrovni v cloudu. Můžete používat pokročilé funkce mashupu a modelování pro kombinování dat z více zdrojů dat, definovat metriky a zabezpečit svá data v jediném důvěryhodném tabulkovém sémantickém datovém modelu. Datový model poskytuje uživatelům jednodušší a rychlejší způsob, jak provádět analýzu dat ad hoc pomocí nástrojů, jako je Power BI a Excel.
+Azure Analysis Services je plně spravovaná platforma jako služba (PaaS), která poskytuje datové modely na podnikové úrovni v cloudu. Můžete používat pokročilé funkce mashupu a modelování pro kombinování dat z více zdrojů dat, definovat metriky a zabezpečit svá data v jediném důvěryhodném tabulkovém sémantickém datovém modelu. Datový model poskytuje uživatelům snadnější a rychlejší způsob provádění analýzy dat ad hoc pomocí nástrojů, jako jsou Power BI a Excel.
 
 ![Zdroje dat](./media/analysis-services-overview/aas-overview-overall.png)
 
@@ -34,11 +34,11 @@ Azure Analysis Services se integruje s mnoha službami Azure a umožňuje tak se
 
 ## <a name="the-right-tier-when-you-need-it"></a>Správná úroveň kdykoli potřebujete
 
-Azure Analysis Services je k dispozici na úrovních **Vývojář**, **Basic**a **Standard.** V rámci každé vrstvy se náklady na plán liší podle výkonu zpracování, jednotek zpracování dotazů (QPU) a velikosti paměti. Při vytváření serveru si vyberete plán na nějaké úrovni. Plány můžete měnit na vyšší nebo nižší v rámci stejné úrovně nebo upgradovat na vyšší úroveň, není však možné downgradovat z vyšší úrovně na nižší.
+Azure Analysis Services je k dispozici v úrovních **Developer**, **Basic**a **Standard** . V rámci každé úrovně se náklady naplánují v závislosti na výpočetním výkonu, jednotkách zpracování dotazů (jednotek qpu) a velikosti paměti. Při vytváření serveru si vyberete plán na nějaké úrovni. Plány můžete měnit na vyšší nebo nižší v rámci stejné úrovně nebo upgradovat na vyšší úroveň, není však možné downgradovat z vyšší úrovně na nižší.
 
 ### <a name="developer-tier"></a>Úroveň Developer
 
-Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení. Jeden plán zahrnuje stejné funkce jako úroveň Standard, ale s omezením výkonu, jednotek QPU a velikosti paměti. Horizontální navýšení kapacity replikdotazu není pro tuto úroveň *k dispozici.* Tato úroveň nenabízí smlouvu SLA.
+Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení. Jeden plán zahrnuje stejné funkce jako úroveň Standard, ale s omezením výkonu, jednotek QPU a velikosti paměti. Škálování na více instancí repliky dotazů není pro tuto vrstvu *k dispozici* . Tato úroveň nenabízí smlouvu SLA.
 
 |Plánování  |Jednotky QPU  |Paměť (GB)  |
 |---------|---------|---------|
@@ -47,7 +47,7 @@ Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení.
 
 ### <a name="basic-tier"></a>Úroveň Basic
 
-Tato úroveň se doporučuje pro produkční řešení s menšími tabulkovými modely, omezenou souběžností uživatelů a jednoduchými požadavky na obnovení dat. Horizontální navýšení kapacity replikdotazu není pro tuto úroveň *k dispozici.* Perspektivy, větší počet oddílů a funkce tabulkového modelu DirectQuery se v této úrovni *nepodporují*.  
+Tato úroveň se doporučuje pro produkční řešení s menšími tabulkovými modely, omezenou souběžností uživatelů a jednoduchými požadavky na obnovení dat. Škálování na více instancí repliky dotazů není pro tuto vrstvu *k dispozici* . Perspektivy, větší počet oddílů a funkce tabulkového modelu DirectQuery se v této úrovni *nepodporují*.  
 
 |Plánování  |Jednotky QPU  |Paměť (GB)  |
 |---------|---------|---------|
@@ -64,13 +64,13 @@ Tato úroveň je pro důležité produkční aplikace, které vyžadují elastic
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8 <sup>[1](#depr)</sup>, <sup>[2.](#rec)</sup>    |    320    |    200     |
-|S9 <sup>[1](#depr)</sup>, <sup>[2.](#rec)</sup>    |    640    |    400     |
+|S8 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    320    |    200     |
+|S9 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    640    |    400     |
 |S8v2 <sup> [1](#depr)</sup>   |    640     |    200     |
 |S9v2 <sup> [1](#depr)</sup>    |    1280    |    400     |
 
-<a name="depr">1</a> - Není k dispozici ve všech oblastech.   
-<a name="rec">2</a> - Tento plán je zastaralé. v2.
+<a name="depr">1</a> – není k dispozici ve všech oblastech.   
+<a name="rec">2</a> – tento plán je zastaralý. V2 se doporučuje.
 
 
 ## <a name="availability-by-region"></a>Dostupnost podle oblasti
@@ -79,7 +79,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="americas"></a>Amerika
 
-|Region (Oblast)  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
@@ -97,7 +97,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="europe"></a>Evropa
 
-|Region (Oblast)  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Severní Evropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Severní Evropa     |    S8v2, S9v2      |    3     |
@@ -107,7 +107,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="asia-pacific"></a>Asie a Tichomoří 
 
-|Region (Oblast)  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Austrálie – východ     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Austrálie – východ     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2    |    1     |
@@ -136,11 +136,11 @@ Celková cena závisí na několika faktorech, například na zvolené oblasti, 
 
 ## <a name="built-on-sql-server-analysis-services"></a>Vytvořeno na základě SQL Server Analysis Services
 
-Služba Azure Analysis Services je kompatibilní s mnoha skvělými funkcemi, které už jsou ve službě SQL Server Analysis Services Enterprise Edition. Azure Analysis Services podporuje tabulkové modely na [úrovni kompatibility](analysis-services-compat-level.md) 1200 nebo vyšší. Tabulkové modely jsou relační konstrukce modelování (model, tabulky, sloupce) vyjádřené v definicích objektů tabulkových metadat v jazyce TMSL (Tabular Model Scripting Language) a kódu tabulkového objektového modelu (TOM). Podporovány jsou oddíly, perspektivy, zabezpečení na úrovni řádků, obousměrné vztahy a překlady\*. Vícerozměrné modely a PowerPivot pro SharePoint *nejsou* ve službě Azure Analysis Services podporované.
+Služba Azure Analysis Services je kompatibilní s mnoha skvělými funkcemi, které už jsou ve službě SQL Server Analysis Services Enterprise Edition. Azure Analysis Services podporuje tabulkové modely na [úrovni kompatibility](analysis-services-compat-level.md) 1200 nebo vyšší. Tabulkové modely jsou relační konstrukce modelování (model, tabulky, sloupce) vyjádřené v definicích objektů tabulkových metadat v jazyce TMSL (Tabular Model Scripting Language) a kódu tabulkového objektového modelu (TOM). Podporují\*se oddíly, perspektivy, zabezpečení na úrovni řádku, obousměrné relace a překlady. V Azure Analysis Services *se* nepodporují multidimenzionální modely a doplněk PowerPivot pro SharePoint.
 
-Podporují se tabulkové modely v režimu DirectQuery i režimu v paměti. Tabulkové modely režimu v paměti (výchozí) podporují více zdrojů dat. Vzhledem k tomu, že data modelu jsou v režimu v paměti hodně komprimovaná a uložená v mezipaměti, poskytuje tento model nejrychlejší odezvu na dotazy ve velkých objemech dat. Poskytuje také největší flexibilitu pro složité datové sady a dotazy. Vytváření oddílů umožňuje přírůstkové načítání, zvyšuje paralelizaci a snižuje využití paměti. Podporují se i další pokročilé funkce modelování dat, jako jsou počítané tabulky a všechny funkce DAX. Modely v paměti se musí aktualizovat (zpracovávat) za účelem aktualizace dat v mezipaměti ze zdrojů dat. S podporou primárního výkonu Azure nabízejí bezobslužné operace aktualizace pomocí PowerShellu, TOM, TMSL a REST flexibilitu při zajišťování toho, aby byla data modelu vždy aktuální. 
+Podporují se tabulkové modely v režimu DirectQuery i režimu v paměti. Tabulkové modely režimu v paměti (výchozí) podporují více zdrojů dat. Vzhledem k tomu, že data modelu jsou v režimu v paměti hodně komprimovaná a uložená v mezipaměti, poskytuje tento model nejrychlejší odezvu na dotazy ve velkých objemech dat. Poskytuje také největší flexibilitu pro složité datové sady a dotazy. Vytváření oddílů umožňuje přírůstkové načítání, zvyšuje paralelizaci a snižuje využití paměti. Podporují se i další pokročilé funkce modelování dat, jako jsou počítané tabulky a všechny funkce DAX. Modely v paměti se musí aktualizovat (zpracovávat) za účelem aktualizace dat v mezipaměti ze zdrojů dat. Díky podpoře služeb Azure Service Principal, bezobslužné operace aktualizace s využitím PowerShellu, možnosti, TMSL a REST nabízí flexibilitu při zajištění aktuálnosti dat modelu v aktuálním stavu. 
 
-Režim DirectQuery* využívá relační databáze back-endu pro ukládání a spouštění dotazů. Extrémně velké datové sady v jednotlivých sql serverech, datovém skladu SQL Serveru, Azure SQL Database, Azure Synapse Analytics (SQL Data Warehouse), Oracle a Teradata zdroje dat jsou podporované. Datové sady back-endu mohou být větší než dostupná paměť prostředku serveru. Složité scénáře aktualizace datového modelu nejsou potřeba. Existují také určitá omezení, jako jsou omezené typy zdrojů dat, omezení vzorců jazyka DAX a některé pokročilé funkce modelování dat nejsou podporovány. Než se rozhodnete, co je pro vás nejvhodnější, podívejte se na článek o [režimu DirectQuery](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular).
+Režim DirectQuery* využívá relační databáze back-endu pro ukládání a spouštění dotazů. Jsou podporovány extrémně velké datové sady v jednom SQL Server, SQL Server datového skladu, Azure SQL Database, zdrojích dat Azure synapse Analytics (SQL Data Warehouse), Oracle a Teradata. Datové sady back-endu mohou být větší než dostupná paměť prostředku serveru. Složité scénáře aktualizace datového modelu nejsou potřeba. Existují také určitá omezení, například omezené typy zdrojů dat, omezení vzorců DAX a některé pokročilé funkce modelování dat nejsou podporovány. Než se rozhodnete, co je pro vás nejvhodnější, podívejte se na článek o [režimu DirectQuery](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular).
 
 \* Dostupnost funkcí závisí na úrovni.
 
@@ -150,26 +150,26 @@ Tabulkové modely ve službě Azure Analysis Services podporují celou řadu zdr
 
 ## <a name="compatibility-level"></a>Úroveň kompatibility
 
-Úroveň kompatibility odkazuje na chování specifické pro vydání v modulu Analysis Services. Azure Analysis Services podporuje tabulkové modely na úrovni kompatibility 1200 nebo vyšší. Další informace najdete v [tématu Úroveň kompatibility pro tabulkové modely](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services).
+Úroveň kompatibility odkazuje na chování specifické pro vydání v modulu Analysis Services. Azure Analysis Services podporuje tabulkové modely na úrovni kompatibility 1200 nebo vyšší. Další informace najdete v tématu [úroveň kompatibility pro tabelární modely](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services).
 
 
 ## <a name="your-data-is-secure"></a>Vaše data jsou v bezpečí
 
-Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Jako služba Azure Analysis Services poskytuje **základní** úroveň útoků ddos (Distributed denial of service) automaticky povolených jako součást platformy Azure. Další informace najdete v [tématu Přehled ochrany DDoS Azure](../virtual-network/ddos-protection-overview.md). 
+Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Jako služba Azure Analysis Services poskytuje **základní** úroveň útoků DDoS (Distributed Denial of Service), které se automaticky povolují jako součást platformy Azure. Další informace najdete v tématu [přehled Azure DDoS Protection Standard](../virtual-network/ddos-protection-overview.md). 
 
-Na úrovni serveru analysis services poskytuje bránu firewall, ověřování Azure, role správce serveru a šifrování na straně serveru. Na úrovni datového modelu, uživatelské role, úroveň řádků a zabezpečení na úrovni objektu zajišťují, že vaše data jsou bezpečná a uvidí je pouze uživatelé, kteří je mají vidět.
+Na úrovni serveru Analysis Services poskytuje bránu firewall, ověřování Azure, role správce serveru a šifrování na straně serveru. Na úrovni datového modelu, rolích uživatelů, zabezpečení na úrovni řádků a objektů zajišťuje bezpečnost vašich dat a jejich zobrazení pouze uživatelé, kteří jsou určeni k jejich zobrazení.
 
 ### <a name="firewall"></a>Brána firewall
 
-Brána firewall služby Azure Analysis Services blokuje všechna připojení klientů kromě IP adres zadaných v pravidlech. Ve výchozím nastavení není pro nové servery povolena ochrana brány firewall. Doporučuje se, aby byla povolena ochrana brány firewall a pravidla jsou konfigurována jako součást skriptu pro zřizování serveru nebo na portálu ihned po vytvoření serveru. Pravidla můžete konfigurovat zadáním povolených IP adres jednotlivých klientů nebo jejich rozsahu. Povolit nebo blokovat je možné také připojení (služby) Power BI. Pravidla a bránu firewall můžete konfigurovat na portálu nebo pomocí PowerShellu. Další informace najdete v článku o [konfiguraci brány firewall serveru](analysis-services-qs-firewall.md).
+Brána firewall služby Azure Analysis Services blokuje všechna připojení klientů kromě IP adres zadaných v pravidlech. Ve výchozím nastavení není ochrana brány firewall pro nové servery povolena. Doporučuje se povolit ochranu brány firewall a pravidla se konfigurují jako součást skriptu zřizování serveru nebo na portálu hned po vytvoření serveru. Pravidla můžete konfigurovat zadáním povolených IP adres jednotlivých klientů nebo jejich rozsahu. Povolit nebo blokovat je možné také připojení (služby) Power BI. Pravidla a bránu firewall můžete konfigurovat na portálu nebo pomocí PowerShellu. Další informace najdete v článku o [konfiguraci brány firewall serveru](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Ověřování uživatelů zařizuje služba [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Uživatelé používají při přihlašování identitu účtu organizace s přístupem k databázi založeným na roli. Identity uživatelů musí být členy výchozí služby Azure Active Directory pro předplatné, ve kterém se server nachází. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
 
 ### <a name="data-security"></a>Zabezpečení dat
 
-Služba Azure Analysis Services využívá úložiště Azure Blob Storage k zachování úložiště a metadat pro databáze služby Analysis Services. Datové soubory v objektu Blob jsou šifrované pomocí [azure blob server side encryption (SSE)](../storage/common/storage-service-encryption.md). Při použití režimu přímých dotazů se ukládají jenom metada. Ke skutečným datům se přistupuje ze zdroje dat v době dotazu prostřednictvím šifrovaného protokolu.
+Služba Azure Analysis Services využívá úložiště Azure Blob Storage k zachování úložiště a metadat pro databáze služby Analysis Services. Datové soubory v objektu BLOB se šifrují pomocí [šifrování na straně serveru Azure Blob (SSE)](../storage/common/storage-service-encryption.md). Při použití režimu přímých dotazů se ukládají jenom metada. Ke skutečným datům se přistupuje ze zdroje dat v době dotazu prostřednictvím šifrovaného protokolu.
 
 Zabezpečeného přístupu ke zdrojům dat nacházejícím se místně ve vaší organizaci se dosahuje instalací a konfigurací [místní brány dat](analysis-services-gateway.md). Brány poskytují přístup k datům pro režim DirectQuery a režim v paměti.
 
@@ -202,21 +202,21 @@ Pokud se o službě Azure Security chcete dozvědět víc, podívejte se na [Mic
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Vyvíjejte a nasazujte modely pomocí sady Visual Studio s projekty Analysis Services. Rozšíření projektů Analysis Services obsahuje šablony a průvodce, které vás rychle zvedat. Prostředí pro vytváření modelu v sadě Visual Studio nyní obsahuje moderní dotaz get data source a mashup funkce pro tabulkové modely 1400 a vyšší. Pokud už znáte funkci Získání dat v aplikacích Power BI Desktop a Excel 2016, tak už víte, jak snadné je vytvářet vysoce přizpůsobené dotazy na zdroj dat. 
+Vývoj a nasazení modelů pomocí sady Visual Studio s Analysis Services projekty. Rozšíření Analysis Servicesch projektů zahrnuje šablony a průvodce, které vám pomohou rychle získat a rychle začít. Prostředí pro vytváření modelů v aplikaci Visual Studio teď zahrnuje moderní dotaz get data source a hybridní funkce pro tabelární modely 1400 a vyšší. Pokud už znáte funkci Získání dat v aplikacích Power BI Desktop a Excel 2016, tak už víte, jak snadné je vytvářet vysoce přizpůsobené dotazy na zdroj dat. 
 
-Projekty služby Microsoft Analysis Services jsou k dispozici jako bezplatný instalovatelný balíček VSIX. [Můžete si je stáhnout z webu Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). Rozšíření funguje s libovolnou verzí Visual Studia 2017 a novější, včetně bezplatné verze Community.
+Projekty Microsoft Analysis Services jsou k dispozici jako bezplatný balíček VSIX, který lze instalovat. [Můžete si je stáhnout z webu Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). Rozšíření funguje s libovolnou verzí sady Visual Studio 2017 nebo novější, včetně bezplatné edice Community.
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
 Spravujte servery a modelové databáze pomocí aplikace [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Připojte se k vašim serverům v cloudu. Spouštějte skripty jazyka TMSL přímo z okna dotazu XMLA a automatizujte úlohy pomocí skriptů TMSL a PowerShellu. Nové funkce se přidávají rychle – aplikace SSMS se aktualizuje každý měsíc.
 
-### <a name="open-source-tools"></a>Nástroje s otevřeným zdrojovým kódem
+### <a name="open-source-tools"></a>Open Source nástroje
 
-Analysis Services má živou komunitu vývojářů, kteří vytvářejí nástroje. Nezapomeňte se podívat na [Tabulkový editor](https://tabulareditor.github.io/), open-source nástroj pro vytváření, údržbu a správu tabulkových modelů pomocí intuitivního a lehkého editoru. [DAX Studio](https://daxstudio.org/)je skvělý open-source nástroj pro vytváření, diagnostiku jazyka DAX, ladění výkonu a analýzu.
+Analysis Services má nezářivou komunitu vývojářů, kteří vytvářejí nástroje. Nezapomeňte si prohlédnout [tabulkový editor](https://tabulareditor.github.io/), open source nástroj pro vytváření, správu a správu tabulkových modelů pomocí intuitivního, zjednodušeného editoru. [DAX Studio](https://daxstudio.org/)je skvělým Open Source nástrojem pro vytváření, diagnostikování, ladění výkonu a analýzu DAX.
 
 ### <a name="powershell"></a>PowerShell
 
-Úlohy správy prostředků serveru, jako je vytváření prostředků serveru, pozastavení nebo obnovení operací serveru nebo změna úrovně služby (vrstvy) používají rutiny Azure PowerShell. Ostatní úlohy správy databází, jako je například přidávání nebo odebírání členů rolí, zpracování nebo spouštění skriptů jazyka TMSL, používají rutiny v modulu SqlServer. Další informace najdete v článku o [správě služby Azure Analysis Services pomocí PowerShellu](analysis-services-powershell.md).
+Úlohy správy prostředků serveru, jako je vytváření prostředků serveru, pozastavení nebo obnovení operací serveru nebo změna úrovně služby (vrstvy) pomocí rutin Azure PowerShell. Ostatní úlohy správy databází, jako je například přidávání nebo odebírání členů rolí, zpracování nebo spouštění skriptů jazyka TMSL, používají rutiny v modulu SqlServer. Další informace najdete v článku o [správě služby Azure Analysis Services pomocí PowerShellu](analysis-services-powershell.md).
 
 ### <a name="object-model-and-scripting"></a>Objektový model a skriptování
 
@@ -230,7 +230,7 @@ Podporují se všechny moderní nástroje pro zkoumání a vizualizaci dat, jako
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 
-Služba Azure Analysis Services je integrovaná do metriky Azure. Poskytuje velký počet metrik pro konkrétní prostředky, které vám pomůžou s monitorováním výkonu a stavu serverů. Další informace naleznete v [tématu Sledování metrik serveru](analysis-services-monitor.md). Metriky zaznamenávejte pomocí [diagnostických protokolů prostředků Azure](../azure-monitor/platform/platform-logs-overview.md). Monitorujte a odesílejte protokoly do [Azure Storage](https://azure.microsoft.com/services/storage/), streamujte je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportujte je do [protokolů Azure Monitoru](https://azure.microsoft.com/services/log-analytics/), což je služba [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Další informace najdete v článku o [nastavení protokolování diagnostiky](analysis-services-logging.md).
+Azure Analysis Services je integrovaná s metrikami Azure Monitor a poskytuje velký počet metrik specifických pro prostředky, které vám pomůžou monitorovat výkon a stav serverů. Další informace najdete v tématu [monitorování metrik serveru](analysis-services-monitor.md). Zaznamenejte metriky s [protokoly platformy prostředků](../azure-monitor/platform/platform-logs-overview.md). Monitorování a posílání protokolů [Azure Storage](https://azure.microsoft.com/services/storage/), jejich streamování do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a jejich export do [protokolů Azure monitor](https://azure.microsoft.com/services/log-analytics/), služby [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Další informace najdete v článku o [nastavení protokolování diagnostiky](analysis-services-logging.md).
 
 Služba Azure Analysis Services také podporuje používání [zobrazení dynamické správy](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services). Zobrazení dynamické správy koordinují na základě syntaxe SQL sady řádků schématu, které vracejí metadata a informace monitorování týkající se instance serveru.
 
@@ -238,19 +238,19 @@ Služba Azure Analysis Services také podporuje používání [zobrazení dynami
 
 Konkrétní dokumentace pro službu Azure Analysis Services je uvedená zde. K vyhledání článků použijte obsah na levé straně obrazovky prohlížeče. 
 
-Vzhledem k tomu, že tabulkové modely ve službě Azure Analysis Services jsou téměř stejné jako tabulkové modely ve službách SQL Server Analysis Services a datových sadách Power BI Premium, existuje rozsáhlá knihovna kurzů pro modelování sdílených dat, koncepčních, procedurálních, vývojářských a referenčních článků v [dokumentaci služby Analysis Services](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current). Články ve sdílené dokumentaci služby Analysis Services ukazují, jestli se vztahují také na služby Azure Analysis Services pomocí banneru APPLYS TO pod názvem. Pomocí voliče verze nad obsahem můžete zobrazit pouze ty články, které se vztahují na platformu, kterou používáte.
+Vzhledem k tomu, že tabulkové modely v Azure Analysis Services jsou v datových sadách SQL Server Analysis Services a Power BI Premium mnohem stejné jako tabelární modely, existuje rozsáhlá knihovna sdílených dat, koncepčních, procedurálních, vývojářských a referenčních článků v [Analysis Services dokumentaci](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current). Články v dokumentaci ke sdílenému Analysis Services ukazují, jestli se vztahují také na Azure Analysis Services na hlavičku pod názvem. Můžete také použít selektor verzí nad obsahem a zobrazit jenom ty články, které se vztahují na platformu, kterou používáte.
 
 ![Sdílená dokumentace](./media/analysis-services-overview/aas-overview-applies-to.png)
 
 ### <a name="contribute"></a>Přispějte!
 
-Dokumentace ke službě Analysis Services, je stejně jako tento článek Open Source. Další informace o tom, jak můžete přispět, najdete v [průvodci přispěvatelem v dokumentech](https://docs.microsoft.com/contribute/). 
+Dokumentace ke službě Analysis Services, je stejně jako tento článek Open Source. Další informace o tom, jak můžete přispívat, najdete v [příručce pro přispěvatele docs](https://docs.microsoft.com/contribute/). 
 
-Dokumentace ke službě Azure Analysis Services používá také [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) (Potíže GitHubu). Můžete poskytnout zpětnou vazbu týkající se produktu nebo dokumentace. Použijte část **Váš názor** v dolní části článku. Problémy GitHubu nejsou povolené pro dokumentaci sdílené služby Analysis Services. 
+Dokumentace ke službě Azure Analysis Services používá také [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) (Potíže GitHubu). Můžete poskytnout zpětnou vazbu týkající se produktu nebo dokumentace. Použijte část **Váš názor** v dolní části článku. V dokumentaci ke sdílenému Analysis Services nejsou povolené problémy GitHubu. 
 
 ## <a name="blogs"></a>Blogy
 
-Všechno se rychle mění. Získejte nejnovější informace o [blogu Power BI](https://powerbi.microsoft.com/blog/category/analysis-services/) a blogu [Azure](https://azure.microsoft.com/blog/).
+Všechno se rychle mění. Získejte nejnovější informace o [blogu Power BI](https://powerbi.microsoft.com/blog/category/analysis-services/) a [blogu Azure](https://azure.microsoft.com/blog/).
 
 ## <a name="community"></a>Komunita
 

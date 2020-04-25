@@ -7,6 +7,9 @@
 - name: Rychlé starty
   expanded: true
   items:
+    - name: Šablona ARM
+      displayName: Resource Manager
+      href: quickstart-cluster-template.md
     - name: Vytvoření aplikace .NET
       href: service-fabric-quickstart-dotnet.md
     - name: Nasazení aplikace typu kontejner pro Linux
