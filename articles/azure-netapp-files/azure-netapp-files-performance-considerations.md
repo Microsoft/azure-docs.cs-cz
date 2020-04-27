@@ -1,6 +1,6 @@
 ---
-title: Důležité informace o výkonu souborů Azure NetApp | Dokumenty společnosti Microsoft
-description: Popisuje aspekty výkonu pro soubory Azure NetApp.
+title: Požadavky na výkon pro Azure NetApp Files | Microsoft Docs
+description: Popisuje požadavky na výkon pro Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,51 +15,51 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
 ms.openlocfilehash: 97e3c6212edd2ade4eabb96db3543e9b3b68e2ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67454136"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Aspekty výkonu pro Azure NetApp Files
 
-[Limit propustnost](azure-netapp-files-service-levels.md) pro svazek je určen kombinací kvóty přiřazené ke svazku a vybrané úrovni služby. Při provádění plánů výkonu o soubory Azure NetApp, musíte pochopit několik aspektů. 
+[Omezení propustnosti](azure-netapp-files-service-levels.md) svazku je určeno kombinací kvóty přiřazené ke svazku a vybrané úrovně služby. Při provádění plánů výkonu o Azure NetApp Files je třeba pochopit několik důležitých informací. 
 
 ## <a name="quota-and-throughput"></a>Kvóta a propustnost  
 
-Limit propustnost je pouze jeden determinant skutečného výkonu, který bude realizován.  
+Limit propustnosti je pouze jeden determinant skutečného výkonu, který bude realizován.  
 
-Typické aspekty výkonu úložiště, včetně kombinace čtení a zápisu, velikost přenosu, náhodné nebo sekvenční vzory a mnoho dalších faktorů přispěje k celkovému výkonu dodané.  
+Typickými aspekty výkonu úložiště, včetně kombinace čtení a zápisu, velikosti přenosu, náhodných nebo sekvenčních vzorů a mnoha dalších faktorů, přispějete k celkovému množství dodaného výkonu.  
 
-Maximální empirická propustnost, která byla pozorována při testování, je 4 500 MiB/s.  Na úrovni úložiště Premium bude objemová kvóta 70.31 TiB zřídit limit propustnost, který je dostatečně vysoký, aby bylo dosaženo této úrovně výkonu.  
+Maximální empirická propustnost, která byla pozorována při testování, je 4 500 MiB/s.  V úrovni Premium Storage zřídí kvóta 70,31 TiB limit propustnosti, který je dostatečně vysoký pro dosažení této úrovně výkonu.  
 
-Pokud uvažujete o přiřazení částek objemových kvót nad 70,31 TiB, může být ke svazku přiřazena další kvóta pro ukládání dalších dat. Přidaná kvóta však nebude mít za následek další zvýšení skutečné propustnost.  
+Pokud se chystáte přidělit objemové kvóty na více než 70,31 TiB, může být ke svazku přiřazená další kvóta pro ukládání dalších dat. Přidaná kvóta ale nebude mít za následek další zvýšení skutečné propustnosti.  
 
-Další informace najdete [v tématu Benchmarky výkonu pro soubory Azure NetApp.](azure-netapp-files-performance-benchmarks.md)
+Další informace najdete v tématu [srovnávací testy výkonu pro Azure NetApp Files](azure-netapp-files-performance-benchmarks.md) .
 
-## <a name="overprovisioning-the-volume-quota"></a>Nadměrné zřizování hromadné kvóty
+## <a name="overprovisioning-the-volume-quota"></a>Přezřizování kvóty svazků
 
-Pokud je výkon pracovního vytížení vázán na limit propustnosti, je možné nadurčitou kvótu svazku nastavit vyšší úroveň propustnosti a dosáhnout vyššího výkonu.  
+Pokud je výkon úlohy vázaný na limit propustnosti, je možné převýšit kvótu svazku na nastavení vyšší úrovně propustnosti a dosáhnout vyššího výkonu.  
 
-Například pokud svazek ve vrstvě úložiště Premium má pouze 500 GiB dat, ale vyžaduje 128 MiB/s propustnost, můžete nastavit kvótu na 2 TiB tak, aby úroveň propustnost je nastavena odpovídajícím způsobem (64 MiB/s na TB * 2 TiB = 128 MiB/s).  
+Pokud například svazek v úrovni Premium Storage má jenom 500 GiB dat, ale vyžaduje 128 MiB/s, můžete nastavit kvótu na 2 TiB, aby se úroveň propustnosti nastavila odpovídajícím způsobem (64 MiB/s za TB × 2 TiB = 128 MiB/s).  
 
-Pokud konzistentně přeznesete svazek pro dosažení vyšší propustnost, zvažte místo toho použití vyšší úrovně služeb.  Ve výše uvedeném příkladu můžete dosáhnout stejného limitu propustnosti s polovinou kvóty svazku pomocí úrovně úložiště Ultra místo (128 MiB/s na TiB * 1 TiB = 128 MiB/s).
+Pokud jste trvale přezřídili svazek pro dosažení vyšší propustnosti, zvažte místo toho použití vyšší úrovně služby.  V předchozím příkladu můžete dosáhnout stejného limitu propustnosti s poloviční kvótou svazku pomocí úrovně Ultra Storage místo toho (128 MiB/s za TiB * 1 TiB = 128 MiB/s).
 
-## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dynamicky se zvyšující nebo klesající objemová kvóta
+## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dynamické zvýšení nebo snížení kvóty svazku
 
-Pokud jsou požadavky na výkon dočasné povahy nebo pokud máte zvýšené potřeby výkonu po pevně stanovenou dobu, můžete dynamicky zvýšit nebo snížit kvótu svazku a okamžitě upravit limit propustnost.  Všimněte si následujících úvah: 
+Pokud jsou vaše požadavky na výkon dočasná, nebo pokud jste zvýšili nároky na výkon po určitou dobu, můžete kvótu pro okamžitou úpravu limitu propustnosti dynamicky zvýšit nebo snížit.  Vezměte na vědomí následující skutečnosti: 
 
-* Kvóta svazku může být zvýšena nebo snížena bez nutnosti pozastavit viliky a přístup ke svazku není přerušennebo ovlivněn.  
+* Kvóta svazku se dá zvýšit nebo snížit, aniž by bylo nutné pozastavit v/v a přístup k tomuto svazku není přerušený ani ovlivněný.  
 
-    Kvótu můžete upravit během aktivní vstupně-v.a. transakce vůči svazku.  Všimněte si, že kvóta svazku nemůže být nikdy snížena pod množství logických dat uložených ve svazku.
+    Kvótu můžete upravit během aktivní vstupně-výstupní transakce se svazkem.  Počítejte s tím, že kvótu svazku nelze nikdy snížit pod množství logických dat, která jsou uložena ve svazku.
 
-* Při změně kvóty svazku je odpovídající změna limitu propustnosti téměř okamžitá. 
+* Po změně kvóty svazku je odpovídající změna v limitu propustnosti skoro okamžitá. 
 
-    Změna nepřeruší ani neovlivní přístup ke svazku nebo vstupně-va.  
+    Tato změna neovlivní nebo neovlivní přístup ke svazku nebo vstupně-výstupní operace.  
 
-* Úprava kvóty hlasitosti vyžaduje změnu velikosti fondu kapacity.  
+* Úprava kvóty svazku vyžaduje změnu velikosti fondu kapacity.  
 
-    Velikost fondu kapacity lze upravit dynamicky a bez dopadu na dostupnost svazku nebo vstupně-va.
+    Velikost fondu kapacity se dá upravit dynamicky a aniž by to ovlivnilo dostupnost svazku nebo vstupně-výstupní operace.
 
 ## <a name="next-steps"></a>Další kroky
 

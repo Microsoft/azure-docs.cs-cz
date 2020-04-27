@@ -1,6 +1,6 @@
 ---
-title: Stažení datových zdrojů mediálních služeb do počítače – Azure | Dokumenty společnosti Microsoft
-description: Přečtěte si o stahování datových zdrojů do počítače. Ukázky kódu jsou zapsány v c# a používají sady Media Services SDK pro rozhraní .NET.
+title: Stažení Media Services prostředků do počítače – Azure | Microsoft Docs
+description: Přečtěte si o stažení prostředků do svého počítače. Ukázky kódu jsou napsané v jazyce C# a používají sadu Media Services SDK pro .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61465656"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Postup: Dodání datového zdroje stažením  
-Tento článek popisuje možnosti doručování mediálních datových zdrojů nahraných do služby Media Services. Obsah služby Media Services můžete doručovat v mnoha scénářích aplikace. Po kódování stáhněte generované datové zdroje médií nebo k nim získejte přístup pomocí lokátoru streamování. Chcete-li zvýšit výkon a škálovatelnost, můžete také poskytovat obsah pomocí sítě pro doručování obsahu (CDN).
+# <a name="how-to-deliver-an-asset-by-download"></a>Postupy: doručení assetu stažením  
+Tento článek popisuje možnosti pro doručování mediálních prostředků odeslaných do Media Services. Obsah Media Services můžete doručovat v mnoha scénářích aplikací. Po kódování Stáhněte vygenerované mediální prostředky nebo k nim přihlaste pomocí lokátoru streamování. Pro zlepšení výkonu a škálovatelnosti můžete obsah doručovat také pomocí Content Delivery Network (CDN).
 
-Tento příklad ukazuje, jak stáhnout datové zdroje médií ze služby Media Services do místního počítače. Kód dotazuje úlohy přidružené k účtu Media Services podle ID úlohy a přistupuje k jeho **OutputMediaAssets** kolekce (což je sada jednoho nebo více datových zdrojů výstupního média, který je výsledkem spuštění úlohy). Tento příklad ukazuje, jak stáhnout datové zdroje výstupních médií z úlohy, ale můžete použít stejný přístup ke stažení jiných datových zdrojů.
+Tento příklad ukazuje, jak stáhnout mediální prostředky z Media Services do místního počítače. Kód dotazuje úlohy přidružené k účtu Media Services podle ID úlohy a přistupuje ke své kolekci **OutputMediaAssets** (což je sada jednoho nebo více výstupních prostředků médií, které jsou výsledkem spuštění úlohy). Tento příklad ukazuje, jak stáhnout výstupní mediální prostředky z úlohy, ale můžete použít stejný přístup ke stažení jiných prostředků.
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Stejné ID zásad použijte, pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez nahrávání). Další informace naleznete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Použijte stejné ID zásad, pokud vždycky používáte stejné dny nebo přístupová oprávnění, například zásady pro Lokátory, které mají zůstat v platnosti po dlouhou dobu (zásady bez nahrávání). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
 ```csharp
     // Download the output asset of the specified job to a local folder.
@@ -88,5 +88,5 @@ Tento příklad ukazuje, jak stáhnout datové zdroje médií ze služby Media S
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Doručování streamovaného obsahu](media-services-deliver-streaming-content.md)
+[Doručení obsahu streamování](media-services-deliver-streaming-content.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Vlastní ukládání do mezipaměti ve službě Azure API Management
-description: Zjistěte, jak ukládat položky do mezipaměti podle klíče ve správě rozhraní Azure API
+description: Přečtěte si, jak ukládat položky do mezipaměti podle klíče v Azure API Management
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60780816"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Vlastní ukládání do mezipaměti ve službě Azure API Management
-Služba Azure API Management má integrovanou podporu pro [ukládání do mezipaměti odpovědi HTTP](api-management-howto-cache.md) pomocí adresy URL prostředku jako klíče. Klíč lze upravit hlavičkami požadavku `vary-by` pomocí vlastností. To je užitečné pro ukládání do mezipaměti celé odpovědi HTTP (aka reprezentace), ale někdy je užitečné pouze do mezipaměti část reprezentace. Nové [zásady vyhledávání mezipaměti](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) a [hodnoty úložiště mezipaměti](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) poskytují možnost ukládat a načítat libovolné části dat z definice zásad. Tato možnost také přidává hodnotu dříve zavedené zásady [odesílání požadavků,](/azure/api-management/api-management-advanced-policies#SendRequest) protože nyní můžete ukládat odpovědi z externích služeb do mezipaměti.
+Služba Azure API Management obsahuje integrovanou podporu [ukládání odpovědí HTTP do mezipaměti](api-management-howto-cache.md) pomocí adresy URL prostředku jako klíče. Klíč lze upravit pomocí hlaviček požadavků pomocí `vary-by` vlastností. To je užitečné pro ukládání úplných odpovědí HTTP (neboli reprezentace), ale v některých případech je vhodné, aby část reprezentace mohla ukládat do mezipaměti. Nové zásady [cache-Lookup-Value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) a [cache-Store-Value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) umožňují ukládat a načítat libovolné části dat v rámci definic zásad. Tato možnost také přidá hodnotu k dříve zavedené zásadě [odeslání – požadavek](/azure/api-management/api-management-advanced-policies#SendRequest) , protože teď můžete ukládat odpovědi z externích služeb do mezipaměti.
 
 ## <a name="architecture"></a>Architektura
-Služba API Management používá sdílenou mezipaměť dat pro jednotlivé klienty, takže při škálování na více jednotek stále získáte přístup ke stejným datům uloženým v mezipaměti. Však při práci s nasazením s více oblastmi existují nezávislé mezipaměti v rámci každé z oblastí. Je důležité nepovažovat mezipaměť jako úložiště dat, kde je jediným zdrojem některé informace. Pokud jste tak učinili a později jste se rozhodli využít nasazení ve více oblastech, mohou zákazníci s uživateli, kteří cestují, ztratit přístup k těmto datům uloženým v mezipaměti.
+Služba API Management používá sdílenou mezipaměť dat pro jednotlivé klienty, takže při horizontálním navýšení kapacity až na více jednotek získáte přístup ke stejným datům uloženým v mezipaměti. Při práci s nasazením ve více oblastech ale v každé z těchto oblastí existují nezávislé mezipaměti. Je důležité, abyste mezipaměť nepovažovali za úložiště dat, kde se jedná o jediný zdroj některých informací. Pokud jste pracovali a později jste se rozhodli využít výhod nasazení ve více oblastech, můžou zákazníci s uživateli, kteří cestují, přijít o přístup k těmto datům v mezipaměti.
 
 ## <a name="fragment-caching"></a>Ukládání fragmentů do mezipaměti
-Existují určité případy, kdy odpovědi, které jsou vráceny obsahují určitou část dat, která je nákladná, a přesto zůstává čerstvá po přiměřenou dobu. Jako příklad zvažte službu vytvořenou leteckou společností, která poskytuje informace týkající se rezervací letů, stavu letu atd. Pokud je uživatel členem programu leteckých bodů, bude mít také informace týkající se jejich aktuálního stavu a nahromaděných ujetých kilometrů. Tyto informace týkající se uživatele mohou být uloženy v jiném systému, ale může být žádoucí zahrnout je do odpovědí vrácených o stavu letu a rezervacích. To lze provést pomocí procesu nazývaného ukládání fragmentů do mezipaměti. Primární reprezentace může být vrácena ze serveru původu pomocí nějakého tokenu k označení, kam mají být vloženy informace související s uživatelem. 
+Existují určité případy, kdy vracené odpovědi obsahují část dat, která je náročná na zjištění a stále po rozumnou dobu. Podívejte se například na službu vytvořenou leteckou společností, která poskytuje informace o rezervacích letu, stavu letu atd. Pokud je uživatel členem programu Points Points, měl by také informace týkající se jejich aktuálního stavu a nahromaděné vzdálenosti. Tyto informace související s uživatelem můžou být uložené v jiném systému, ale může být žádoucí je zahrnout do odpovědí vrácených o stav letu a rezervacích. To lze provést pomocí procesu nazývaného ukládání fragmentu do mezipaměti. Primární reprezentace se dá vrátit ze zdrojového serveru pomocí určitého druhu tokenu, který označuje, kam se mají vkládat informace související s uživatelem. 
 
-Zvažte následující odpověď JSON z back-endového rozhraní API.
+Vezměte v úvahu následující odpověď JSON z back-endu API.
 
 ```json
 {
@@ -43,13 +43,13 @@ Zvažte následující odpověď JSON z back-endového rozhraní API.
 }  
 ```
 
-A sekundární zdroj, `/userprofile/{userid}` který vypadá jako,
+A sekundární prostředek `/userprofile/{userid}` , který vypadá takto,
 
 ```json
 { "username" : "Bob Smith", "Status" : "Gold" }
 ```
 
-Chcete-li určit příslušné informace o uživateli, které mají být zahrnuty, musí správa rozhraní API určit, kdo je koncový uživatel. Tento mechanismus je závislý na implementaci. Jako příklad používám deklaraci `Subject` tokenu. `JWT` 
+Chcete-li určit vhodné informace o uživateli, které mají být zahrnuty, API Management nutné určit, kdo má koncový uživatel. Tento mechanismus je závislý na implementaci. Například používám `Subject` deklaraci identity `JWT` tokenu. 
 
 ```xml
 <set-variable
@@ -57,7 +57,7 @@ Chcete-li určit příslušné informace o uživateli, které mají být zahrnut
   value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 ```
 
-Správa rozhraní `enduserid` API ukládá hodnotu do kontextové proměnné pro pozdější použití. Dalším krokem je zjištění, zda předchozí požadavek již načetl informace o uživateli a uložil je do mezipaměti. Za tímto cílem `cache-lookup-value` používá zásady správa rozhraní API.
+API Management ukládá `enduserid` hodnotu v kontextové proměnné pro pozdější použití. Dalším krokem je určit, jestli už předchozí požadavek načetl informace o uživateli, a uložit ho do mezipaměti. V takovém případě API Management používá `cache-lookup-value` zásady.
 
 ```xml
 <cache-lookup-value
@@ -65,7 +65,7 @@ key="@("userprofile-" + context.Variables["enduserid"])"
 variable-name="userprofile" />
 ```
 
-Pokud není žádná položka v mezipaměti, která odpovídá `userprofile` hodnotě klíče, pak je vytvořen žádný kontext proměnné. Správa rozhraní API kontroluje úspěšnost `choose` vyhledávání pomocí zásad toku řízení.
+Pokud v mezipaměti není žádná položka, která by odpovídala hodnotě klíče, není vytvořena žádná `userprofile` kontextová proměnná. API Management kontroluje úspěšnost vyhledávání pomocí zásad toku `choose` řízení.
 
 ```xml
 <choose>
@@ -75,7 +75,7 @@ Pokud není žádná položka v mezipaměti, která odpovídá `userprofile` hod
 </choose>
 ```
 
-Pokud `userprofile` kontextová proměnná neexistuje, bude muset správa rozhraní API provést požadavek HTTP, aby ji načetla.
+Pokud `userprofile` kontextová proměnná neexistuje, bude muset API Management vytvořit požadavek HTTP na jeho načtení.
 
 ```xml
 <send-request
@@ -92,7 +92,7 @@ Pokud `userprofile` kontextová proměnná neexistuje, bude muset správa rozhra
 </send-request>
 ```
 
-Správa rozhraní `enduserid` API používá k vytvoření adresy URL pro prostředek profilu uživatele. Jakmile api management má odpověď, vytáhne základní text z odpovědi a uloží zpět do proměnné kontextu.
+API Management používá `enduserid` k vytvoření adresy URL prostředku profilu uživatele. Jakmile API Management obdrží odpověď, vyžádá text zprávy z odpovědi a uloží ji zpátky do kontextové proměnné.
 
 ```xml
 <set-variable
@@ -100,7 +100,7 @@ Správa rozhraní `enduserid` API používá k vytvoření adresy URL pro prost�
     value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 ```
 
-Chcete-li zabránit api management z provedení tohoto požadavku HTTP znovu, když stejný uživatel provede jiný požadavek, můžete zadat pro uložení profilu uživatele v mezipaměti.
+Aby se zabránilo API Management, aby se tento požadavek HTTP prováděl znovu, když stejný uživatel provede jinou žádost, můžete zadat uložení profilu uživatele do mezipaměti.
 
 ```xml
 <cache-store-value
@@ -108,11 +108,11 @@ Chcete-li zabránit api management z provedení tohoto požadavku HTTP znovu, kd
     value="@((string)context.Variables["userprofile"])" duration="100000" />
 ```
 
-Správa rozhraní API ukládá hodnotu do mezipaměti pomocí přesně stejného klíče, který se původně pokusil načíst pomocí služby API Management. Doba trvání, kterou se správa rozhraní API rozhodne ukládat hodnotu, by měla být založena na tom, jak často se informace mění a jak jsou uživatelé tolerantní k zastaralým informacím. 
+API Management ukládá hodnotu v mezipaměti pomocí přesně stejného klíče, který API Management původně pokusil ho načíst. Doba, po kterou API Management zvolit uložení hodnoty, by měla být založená na tom, jak často se informace mění a jak mají odolní uživatelé zastaralou informaci. 
 
-Je důležité si uvědomit, že načítání z mezipaměti je stále mimo proces, požadavek na síť a potenciálně může stále přidat desítky milisekund k požadavku. Výhody přicházejí při určování informace o profilu uživatele trvá déle, než je z důvodu nutnosti provádět databázové dotazy nebo agregovat informace z více back-endů.
+Je důležité si uvědomit, že načítání z mezipaměti je stále mimo proces, síťový požadavek a potenciálně může do žádosti přidat desítky milisekund. Výhody dostanou při určování informací o profilu uživatele déle než v důsledku nutnosti provádět databázové dotazy nebo agregovat informace z několika back-endy.
 
-Posledním krokem v procesu je aktualizace vrácené odpovědi s informacemi o profilu uživatele.
+Posledním krokem v procesu je aktualizovat vrácenou odpověď s informacemi o profilu uživatele.
 
 ```xml
 <!-- Update response body with user profile-->
@@ -121,9 +121,9 @@ Posledním krokem v procesu je aktualizace vrácené odpovědi s informacemi o p
     to="@((string)context.Variables["userprofile"])" />
 ```
 
-Můžete se rozhodnout zahrnout uvozovky jako součást tokenu tak, aby i v případě, že nedojde k nahrazení, odpověď je stále platný JSON.  
+Můžete zvolit, aby se uvozovky zahrnuly jako součást tokenu, takže i v případě, že k nahrazení nedojde, je odpověď stále platným kódem JSON.  
 
-Jakmile zkombinujete všechny tyto kroky dohromady, konečný výsledek je zásada, která vypadá jako následující.
+Jakmile zkombinujete všechny tyto kroky dohromady, je konečným výsledkem zásada, která vypadá jako následující.
 
 ```xml
 <policies>
@@ -177,22 +177,22 @@ Jakmile zkombinujete všechny tyto kroky dohromady, konečný výsledek je zása
 </policies>
 ```
 
-Tento přístup ukládání do mezipaměti se používá především na webových stránkách, kde html je složen na straně serveru tak, aby mohla být vykreslena jako jedna stránka. To může být také užitečné v prostředí API, kde klienti nemohou provádět ukládání do mezipaměti HTTP na straně klienta nebo je žádoucí, aby tuto odpovědnost na klienta.
+Tento přístup do mezipaměti se primárně používá na webech, kde se na straně serveru skládá HTML, takže se dá vykreslit jako jediná stránka. Může to být užitečné i v rozhraních API, kde klienti nemůžou provádět ukládání HTTP do mezipaměti na straně klienta nebo je žádoucí, aby na klientovi neumístili tuto odpovědnost.
 
-Stejný druh ukládání fragmentů do mezipaměti lze provést také na webových serverech back-endu pomocí serveru mezipaměti Redis, nicméně použití služby API Management k provedení této práce je užitečné, pokud fragmenty uložené v mezipaměti pocházejí z různých back-endů než primární Reakce.
+Stejný druh ukládání fragmentů do mezipaměti můžete také provést na back-end webových serverech pomocí serveru pro ukládání do mezipaměti Redis, ale používání služby API Management k provedení této práce je užitečné v případě, že fragmenty v mezipaměti přicházejí z různých back-endu než primární odpovědi.
 
-## <a name="transparent-versioning"></a>Transparentní správa verzí
-Je běžnou praxí pro více různých implementačních verzí rozhraní API, které mají být podporovány v jednom okamžiku. Například pro podporu různých prostředí (dev, test, produkční, atd.) nebo pro podporu staršíverze rozhraní API poskytnout čas pro spotřebitele rozhraní API migrovat na novější verze. 
+## <a name="transparent-versioning"></a>Transparentní Správa verzí
+Je běžné, že se v jednom okamžiku podporuje více různých implementačních verzí rozhraní API. Například pro podporu různých prostředí (vývoj, testování, produkce atd.) nebo pro podporu starších verzí rozhraní API, aby uživatelé rozhraní API mohli migrovat na novější verze. 
 
-Jeden přístup k zpracování tohoto, namísto vyžadování vývojáři `/v1/customers` `/v2/customers` klienta změnit adresy URL z na je uložit do dat profilu spotřebitele, které verze rozhraní API, které aktuálně chcete použít a volání příslušné adresy URL back-endu. Chcete-li určit správnou adresu URL back-endu pro volání pro konkrétního klienta, je nutné zadat dotaz na některá konfigurační data. Ukládáním těchto konfiguračních dat do mezipaměti může správa rozhraní API minimalizovat snížení výkonu při tomto vyhledávání.
+Jeden z přístupů k tomu, aby vývojáři klientů nemuseli měnit adresy URL z `/v1/customers` na `/v2/customers` , je uložit v datech profilu uživatele, která verze rozhraní API aktuálně chce použít a zavolat příslušnou adresu URL pro back-end. Chcete-li určit správnou adresu URL back-endu pro volání konkrétního klienta, je nutné zadat dotaz na některá konfigurační data. Uložením těchto konfiguračních dat API Management může minimalizovat snížení výkonu při tomto vyhledávání.
 
-Prvním krokem je určení identifikátoru použitého ke konfiguraci požadované verze. V tomto příkladu jsem se rozhodl přidružit verzi ke klíči předplatného produktu. 
+Prvním krokem je určení identifikátoru používaného ke konfiguraci požadované verze. V tomto příkladu se rozhodnete přidružit verzi k klíči předplatného produktu. 
 
 ```xml
 <set-variable name="clientid" value="@(context.Subscription.Key)" />
 ```
 
-Správa rozhraní API pak provádí vyhledávání mezipaměti, aby se zjistilo, zda již načetlpožadovanou verzi klienta.
+API Management pak vyhledáváním v mezipaměti zjistí, zda již byla požadovaná verze klienta načtena.
 
 ```xml
 <cache-lookup-value
@@ -200,14 +200,14 @@ key="@("clientversion-" + context.Variables["clientid"])"
 variable-name="clientversion" />
 ```
 
-Potom správa rozhraní API zkontroluje, zda nebyl a našel v mezipaměti.
+Pak API Management zkontroluje, jestli se v mezipaměti nenajde.
 
 ```xml
 <choose>
     <when condition="@(!context.Variables.ContainsKey("clientversion"))">
 ```
 
-Pokud ji správa rozhraní API nenašla, načte ji.
+Pokud API Management nenalezne, API Management ho načte.
 
 ```xml
 <send-request
@@ -220,7 +220,7 @@ Pokud ji správa rozhraní API nenašla, načte ji.
 </send-request>
 ```
 
-Extrahujte základní text odpovědi z odpovědi.
+Extrahuje text zprávy odpovědi z odpovědi.
 
 ```xml
 <set-variable
@@ -228,7 +228,7 @@ Extrahujte základní text odpovědi z odpovědi.
       value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
 ```
 
-Uložte jej zpět do mezipaměti pro budoucí použití.
+Uložte je zpátky do mezipaměti pro budoucí použití.
 
 ```xml
 <cache-store-value
@@ -237,14 +237,14 @@ Uložte jej zpět do mezipaměti pro budoucí použití.
       duration="100000" />
 ```
 
-A nakonec aktualizujte adresu URL back-end a vyberte verzi služby požadovanou klientem.
+Nakonec aktualizujte adresu URL back-endu a vyberte verzi služby, kterou klient požaduje.
 
 ```xml
 <set-backend-service
       base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
 ```
 
-Úplné zásady jsou následující:
+Kompletní zásada je následující:
 
 ```xml
 <inbound>
@@ -269,12 +269,12 @@ A nakonec aktualizujte adresu URL back-end a vyberte verzi služby požadovanou 
 </inbound>
 ```
 
-Povolení spotřebitelů rozhraní API, aby transparentně řídit, které back-endverze je přístup klientů bez nutnosti aktualizovat a znovu nasadit klienty je elegantní řešení, které řeší mnoho problémů s verzí rozhraní API.
+Povolením spotřebitelů rozhraní API transparentně ovládáte, ke které verzi back-endu se klienti přistupují bez nutnosti aktualizace a opětovné nasazení klientů je elegantní řešení, které řeší mnoho potíží se správou verzí rozhraní API.
 
-## <a name="tenant-isolation"></a>Izolace klienta
-Ve větších nasazeních s více tenanty některé společnosti vytvářejí samostatné skupiny klientů na různých nasazeních back-endového hardwaru. Tím se minimalizuje počet zákazníků, kteří jsou ovlivněny problém hardwaru na back-endu. Umožňuje také postupně zavádět nové verze softwaru. V ideálním případě by tato back-endová architektura měla být transparentní pro spotřebitele rozhraní API. Toho lze dosáhnout podobným způsobem jako transparentní správa verzí, protože je založena na stejné technice manipulace s adresou URL back-endu pomocí stavu konfigurace na klíč rozhraní API.  
+## <a name="tenant-isolation"></a>Izolace tenanta
+Ve větších nasazeních s více klienty vytvářejí některé společnosti samostatné skupiny klientů v různých nasazeních hardwaru back-endu. Tím se minimalizuje počet zákazníků, na které má vliv problém s hardwarem v back-endu. Také umožňuje, aby byly nové verze softwaru zahrnuty ve fázích. V ideálním případě by tato architektura back-end měla být transparentní pro uživatele rozhraní API. Toho je možné dosáhnout podobným způsobem transparentní správy verzí, protože jsou založené na stejné technice při manipulaci s adresou URL back-endu pomocí stavu konfigurace na klíč rozhraní API.  
 
-Místo vrácení upřednostňované verze rozhraní API pro každý klíč předplatného byste vrátit identifikátor, který se vztahuje klienta na přiřazenou skupinu hardwaru. Tento identifikátor lze použít k vytvoření příslušné adresy URL back-endu.
+Místo vrácení upřednostňované verze rozhraní API pro každý klíč předplatného byste vrátili identifikátor, který vztahuje tenanta k přiřazené hardwarové skupině. Tento identifikátor lze použít k vytvoření příslušné adresy URL back-endu.
 
 ## <a name="summary"></a>Souhrn
-Svoboda používat mezipaměť pro správu rozhraní Azure API pro ukládání jakéhokoli druhu dat umožňuje efektivní přístup ke konfiguračním datům, která mohou ovlivnit způsob zpracování příchozího požadavku. Lze také použít k ukládání fragmentů dat, které můžete rozšířit odpovědi, vrácené z back-endu rozhraní API.
+Volná mezipaměť služby Azure API Management pro ukládání jakéhokoli druhu dat umožňuje efektivní přístup k datům konfigurace, který může ovlivnit způsob zpracování příchozího požadavku. Dá se taky použít k ukládání fragmentů dat, které můžou rozšiřovat odpovědi, které se vrátí z back-endu rozhraní API.

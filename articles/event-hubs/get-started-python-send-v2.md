@@ -1,6 +1,6 @@
 ---
-title: Odesílání nebo přijímání událostí z Azure Event Hubs pomocí Pythonu (nejnovější)
-description: Tento článek poskytuje návod pro vytvoření aplikace Pythonu, která odesílá nebo přijímá události do/z Azure Event Hubs pomocí nejnovějšího balíčku azure-eventhub verze 5.
+title: Posílání a přijímání událostí z Azure Event Hubs pomocí Pythonu (nejnovější)
+description: Tento článek popisuje návod pro vytvoření aplikace v Pythonu, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure-eventhub verze 5.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,47 +8,47 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 352ff91bf26c7ff4f6945431fe6e1357f030e1db
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 6b16398c7c1fd53562df7e4ac8e801a8c97162f6
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477531"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159433"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Odesílání událostí do nebo přijímání událostí z centra událostí pomocí Pythonu (azure-eventhub verze 5)
-Tento rychlý start ukazuje, jak odesílat události do centra událostí a přijímat je pomocí balíčku **Pythonu azure-eventhub verze 5.**
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Posílání událostí a přijímání událostí z Center událostí pomocí Pythonu (Azure – eventhub verze 5)
+V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure-eventhub verze 5** Python.
 
 > [!IMPORTANT]
-> Tento rychlý start používá nejnovější balíček azure-eventhub verze 5. Pro rychlý start, který používá starý balíček azure-eventhub verze 1, najdete v tématu [Odesílání a přijímání událostí pomocí azure-eventhub verze 1](event-hubs-python-get-started-send.md). 
+> V tomto rychlém startu se používá nejnovější balíček Azure-eventhub verze 5. Rychlý Start, který používá starý balíček Azure-eventhub verze 1, najdete v tématu [události posílání a přijímání pomocí Azure-eventhub verze 1](event-hubs-python-get-started-send.md). 
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud s Azure Event Hubs tenete nováčkem, přečtěte si [téma Přehled centra událostí,](event-hubs-about.md) než začnete tento rychlý start. 
+Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
-Chcete-li tento rychlý start dokončit, potřebujete následující požadavky:
+K dokončení tohoto rychlého startu potřebujete následující požadavky:
 
-- **Předplatné Microsoft Azure**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo použít výhody předplatitele MSDN při vytváření [účtu](https://azure.microsoft.com).
-- Python 2.7 nebo 3.5 nebo novější, s nainstalovaným a aktualizovaným PIPEm.
-- Balíček Pythonu pro centra událostí. 
+- **Microsoft Azure předplatné**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo využít výhody pro předplatitele MSDN při [vytváření účtu](https://azure.microsoft.com).
+- Python 2,7 nebo 3,5 nebo novější, s nainstalovaným a aktualizovaným PIP
+- Balíček Pythonu pro Event Hubs. 
 
-    Chcete-li balíček nainstalovat, spusťte tento příkaz v příkazovém řádku, který má v cestě Python:
+    Chcete-li nainstalovat balíček, spusťte tento příkaz na příkazovém řádku, který má Python v cestě:
 
     ```cmd
     pip install azure-eventhub
     ```
 
-    Nainstalujte následující balíček pro příjem událostí pomocí úložiště objektů blob Azure jako úložiště kontrolních bodů:
+    Nainstalujte následující balíček pro příjem událostí pomocí úložiště objektů BLOB v Azure jako úložiště kontrolního bodu:
 
     ```cmd
     pip install azure-eventhub-checkpointstoreblob-aio
     ```
-- **Vytvořte obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití [portálu Azure](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Chcete-li vytvořit obor názvů a centrum událostí, postupujte podle postupu v [tomto článku](event-hubs-create.md). Potom získejte **připojovací řetězec pro obor názvů Event Hubs** podle následujících pokynů z článku: [Získat připojovací řetězec](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto rychlém startu.
+- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů Event Hubs** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto rychlém startu.
 
 ## <a name="send-events"></a>Odesílání událostí
-V této části vytvoříte skript Pythonu pro odesílání událostí do centra událostí, které jste vytvořili dříve.
+V této části vytvoříte skript v jazyce Python, který bude odesílat události do centra událostí, které jste vytvořili dříve.
 
-1. Otevřete svůj oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/).
-2. Vytvořte skript s názvem *send.py*. Tento skript odešle dávku událostí do centra událostí, které jste vytvořili dříve.
-3. Do *send.py*vložte následující kód :
+1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/).
+2. Vytvořte skript s názvem *Send.py*. Tento skript pošle dávku událostí do centra událostí, které jste vytvořili dříve.
+3. Vložte následující kód do *Send.py*:
 
     ```python
     import asyncio
@@ -78,33 +78,33 @@ V této části vytvoříte skript Pythonu pro odesílání událostí do centra
     ```
 
     > [!NOTE]
-    > Úplný zdrojový kód, včetně informačních komentářů, najdete na [stránce GitHub send_async.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py).
+    > Úplný zdrojový kód, včetně informativních komentářů, najdete na [stránce GitHub send_async. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py).
     
 
 ## <a name="receive-events"></a>Příjem událostí
-Tento rychlý start používá úložiště objektů blob Azure jako úložiště kontrolních bodů. Úložiště kontrolních bodů se používá k zachování kontrolních bodů (to znamená poslední pozice pro čtení).  
+V tomto rychlém startu se jako úložiště kontrolního bodu používá úložiště objektů blob Azure. Úložiště kontrolního bodu se používá k trvalému kontrolnímu bodu (to znamená poslední pozice pro čtení).  
 
 > [!NOTE]
-> Pokud používáte azure zásobníku, tato platforma může podporovat jinou verzi sady Storage Blob SDK než ty, které jsou obvykle k dispozici v Azure. Například pokud používáte [ve verzi Azure Stack Hub 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze pro službu Storage je verze 2017-11-09. V takovém případě kromě následujících kroků v této části budete muset také přidat kód pro cílrozhraní API služby úložiště verze 2017-11-09. Příklad, jak cílit na konkrétní verzi rozhraní API úložiště, najdete [v tématu synchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py) a [asynchronní ukázky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py) na GitHubu. Další informace o verzích služeb Azure Storage, které jsou podporované v centru Azure Stack Hub, najdete v centru [Azure Stack Hub: Rozdíly a důležité informace](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
+> Pokud používáte centrum Azure Stack, může tato platforma podporovat jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure. Pokud například používáte [v Azure Stack centra verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v článku [synchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py) a [asynchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py) ukázky na GitHubu. Další informace o verzích služby Azure Storage podporovaných v centru Azure Stack najdete v tématu [úložiště centra pro Azure Stack: rozdíly a požadavky](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
 
 
-### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Vytvoření účtu úložiště Azure a kontejneru objektů blob
-Vytvořte účet úložiště Azure a kontejner objektů blob v něm pomocí následujících kroků:
+### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Vytvoření účtu služby Azure Storage a kontejneru objektů BLOB
+Pomocí následujících kroků vytvořte účet úložiště Azure a kontejner objektů BLOB.
 
 1. [Vytvoření účtu Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [Vytvoření kontejneru objektů blob](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
+3. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md)
 
-Nezapomeňte zaznamenat připojovací řetězec a název kontejneru pro pozdější použití v přijímaném kódu.
+Nezapomeňte si poznamenejte připojovací řetězec a název kontejneru pro pozdější použití v kódu pro příjem.
 
 
-### <a name="create-a-python-script-to-receive-events"></a>Vytvoření skriptu Pythonu pro příjem událostí
+### <a name="create-a-python-script-to-receive-events"></a>Vytvoření skriptu v jazyce Python pro příjem událostí
 
-V této části vytvoříte skript Pythonu pro příjem událostí z centra událostí:
+V této části vytvoříte skript v jazyce Python pro příjem událostí z centra událostí:
 
-1. Otevřete svůj oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/).
+1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/).
 2. Vytvořte skript s názvem *recv.py*.
-3. Do *recv.py*vložte následující kód :
+3. Vložte následující kód do *recv.py*:
 
     ```python
     import asyncio
@@ -137,12 +137,12 @@ V této části vytvoříte skript Pythonu pro příjem událostí z centra udá
     ```
 
     > [!NOTE]
-    > Úplný zdrojový kód, včetně dalších informačních komentářů, najdete na [stránce GitHub recv_with_checkpoint_store_async.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/recv_with_checkpoint_store_async.py).
+    > Úplný zdrojový kód včetně dalších informativních komentářů najdete na [stránce GitHub recv_with_checkpoint_store_async. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/recv_with_checkpoint_store_async.py).
 
 
-### <a name="run-the-receiver-app"></a>Spuštění aplikace přijímače
+### <a name="run-the-receiver-app"></a>Spuštění aplikace příjemce
 
-Chcete-li skript spustit, otevřete příkazový řádek, který má v cestě Python, a spusťte tento příkaz:
+Chcete-li spustit skript, otevřete příkazový řádek, který má v cestě Python, a pak spusťte tento příkaz:
 
 ```bash
 python recv.py
@@ -150,16 +150,16 @@ python recv.py
 
 ### <a name="run-the-sender-app"></a>Spuštění aplikace odesílatele
 
-Chcete-li skript spustit, otevřete příkazový řádek, který má v cestě Python, a spusťte tento příkaz:
+Chcete-li spustit skript, otevřete příkazový řádek, který má v cestě Python, a pak spusťte tento příkaz:
 
 ```bash
 python send.py
 ```
 
-Okno příjemce by měl zobrazit zprávy, které byly odeslány do centra událostí.
+V okně přijímače by se měly zobrazit zprávy, které byly odeslány do centra událostí.
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste odeslali a přijali události asynchronně. Chcete-li se dozvědět, jak synchronizovaně odesílat a přijímat události, přejděte na [stránku githubu sync_samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples/sync_samples).
+V tomto rychlém startu jste události odeslali a přijali asynchronně. Pokud se chcete dozvědět, jak odesílat a přijímat události synchronně, navštivte [stránku Sync_samples GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples/sync_samples).
 
-Pro všechny ukázky (synchronní i asynchronní) na GitHubu přejděte do [klientské knihovny Azure Event Hubs pro ukázky Pythonu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples).
+Pro všechny ukázky (synchronní i asynchronní) na GitHubu najdete ukázky v části [Klientská knihovna pro Azure Event Hubs pro Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples).

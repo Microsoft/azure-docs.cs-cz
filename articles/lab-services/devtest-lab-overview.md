@@ -1,6 +1,6 @@
 ---
-title: O azure devtest labs | Dokumenty společnosti Microsoft
-description: Zjistěte, jak devTest Labs můžou usnadnit vytváření, správu a monitorování virtuálních počítačů Azure
+title: O Azure DevTest Labs | Microsoft Docs
+description: Přečtěte si, jak DevTest Labs usnadňuje vytváření, správu a monitorování virtuálních počítačů Azure.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
 ms.openlocfilehash: b7cd6bb1fd0377ca1440d9c667453df922aacbd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60561451"
 ---
 # <a name="about-azure-devtest-labs"></a>Služba Azure Devtest Labs
-Azure DevTest Labs umožňuje vývojářům v týmech efektivně spravovat virtuální počítače (VM) a paaS prostředky bez čekání na schválení.
+Azure DevTest Labs umožňuje vývojářům v týmech efektivně spravovat virtuální počítače a prostředky PaaS bez čekání na schválení.
 
-DevTest Labs vytvoří testovací prostředí skládající se z předem nakonfigurovaných základen nebo šablon Azure Resource Manager. Ty mají všechny potřebné nástroje a software, které můžete použít k vytvoření prostředí. Prostředí můžete vytvořit během několika minut, na rozdíl od hodin nebo dnů.
+DevTest Labs vytváří cvičení skládající se z předem konfigurovaných základů nebo šablon Azure Resource Manager. Mají všechny potřebné nástroje a software, které můžete použít k vytváření prostředí. Během několika minut můžete vytvořit prostředí, a to na rozdíl od hodin nebo dnů.
 
-Pomocí devTest Labs můžete otestovat nejnovější verze aplikací následujícím způsobem:
+Pomocí DevTest Labs můžete testovat nejnovější verze svých aplikací, a to provedením následujících úloh:
 
-- Rychle zřašte prostředí Windows a Linux pomocí opakovaně použitelných šablon a artefaktů.
+- Pomocí opakovaně použitelných šablon a artefaktů rychle zřídí prostředí Windows a Linux.
 - Prostřednictvím snadné integrace svého kanálu nasazení s DevTest Labs můžete zřizovat prostředí na vyžádání.
-- Škálujte zátěžové testování zřízením více testovacích agentů a vytvořením předem zřízených prostředí pro školení a ukázky.
+- Škálujte zátěžové testování tím, že zřizujete více testovacích agentů a vytvoříte předem zřízené prostředí pro školení a ukázky.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/What-is-Azure-DevTest-Labs/player]
 
 ## <a name="capabilities"></a>Možnosti
-DevTest Labs poskytuje vývojářům pracujícím s virtuálními počítačemi následující funkce:
+DevTest Labs poskytuje vývojářům, kteří pracují s virtuálními počítači, následující možnosti:
 
-- Vytvořte virtuální ms rychle podle následujících méně než pět jednoduchých kroků.
-- Vyberte si z kurátorského seznamu základen virtuálních her, které jsou nakonfigurované, schválené a autorizované vedoucím týmu nebo centrálním IT.
-- Vytvořte virtuální počítače z předem vytvořených vlastních irek, které mají veškerý software a nástroje, které už jsou nainstalované. 
-- Vytvořte virtuální počítače ze vzorců, které jsou v podstatě vlastní image v kombinaci s nejnovější sestavení softwaru, který je nainstalován při vytvoření virtuálních počítače. 
-- Nainstalujte artefakty, které jsou rozšíření nasazené na virtuálních počítačích po jejich zřízení.
-- Nastavte plány automatického vypínání a automatického spuštění na virtuálních počítačích.
-- Nárokujte předem vytvořený virtuální virtuální ms, aniž byste museli projít procesem vytváření.
+- Rychlé vytváření virtuálních počítačů pomocí méně než pěti jednoduchých kroků:
+- Vyberte si z uspořádaného seznamu základů virtuálních počítačů, které jsou nakonfigurované, schválené a autorizované týmem vedoucím nebo centrálním IT.
+- Vytvořte virtuální počítače z předem vytvořených vlastních imagí, které mají již nainstalovaného veškerého softwaru a nástrojů. 
+- Vytvořte virtuální počítače ze vzorců, které jsou v podstatě vlastními bitovými kopiemi v kombinaci s nejnovějšími sestaveními softwaru, který je nainstalovaný při vytváření virtuálních počítačů. 
+- Instalace artefaktů, které jsou rozšířeními nasazenými na virtuálních počítačích po jejich zřízení.
+- Nastavte automatické vypínání a automatické spouštění plánů na virtuálních počítačích.
+- Vyžádá předem vytvořený virtuální počítač, aniž by procházel procesem vytváření.
 
-DevTest Labs poskytuje vývojářům pracujícím s prostředími PaaS následující funkce:
+DevTest Labs poskytuje vývojářům, kteří pracují s PaaS prostředími, následující možnosti:
 
 - Pomocí Správce prostředků můžete rychle vytvářet prostředí PaaS pomocí méně než tří jednoduchých kroků.
-- Vyberte si z kurátorského seznamu šablon Správce prostředků, které jsou nakonfigurované a autorizované vedoucím týmu nebo centrálním IT oddělením.
-- Stočte prázdnou skupinu prostředků (izolovaného prostoru) pomocí šablony Správce prostředků k prozkoumání Azure v kontextu testovacího prostředí.
+- Vyberte si z nespravovaného seznamu šablon Správce prostředků, které jsou nakonfigurované a autorizované vedoucím nebo centrálním týmem.
+- Pokud chcete prozkoumat Azure v rámci kontextu testovacího prostředí, zastavte si prázdnou skupinu prostředků (sandbox) pomocí šablony Správce prostředků.
 
-DevTest Labs také umožňuje centrálnímu IT kontrolovat odpady, optimalizovat náklady na zdroje a zůstat v rámci rozpočtů tím, že provádí následující úkoly:  
+DevTest Labs také umožňuje centrální IT řízení odpadů, optimalizaci nákladů na prostředky a udržení v rámci rozpočtů, a to provedením následujících úloh:  
 
-- Nastavení plánů automatického vypnutí a automatického spuštění na virtuálních počítačích.
-- Nastavení zásad na počet virtuálních počítačů, které mohou uživatelé vytvořit.
-- Nastavení zásad pro velikosti virtuálních počítačů a image galerie, ze kterých si uživatelé vybírají.
-- Sledování nákladů a stanovení cílů v laboratořích.
-- Získání oznámení o vysoké předpokládané náklady pro laboratoře, takže můžete provést nezbytná opatření.
+- Nastavení automatického vypínání a automatického spouštění plánů na virtuálních počítačích.
+- Nastavení zásad pro počet virtuálních počítačů, které uživatelé mohou vytvořit.
+- Nastavení zásad pro velikosti virtuálních počítačů a obrázků z Galerie, ze kterých si uživatelé vyberou
+- Sledování nákladů a nastavení cílů v laboratořích.
+- Získání upozornění na vysoce plánované náklady na cvičení, abyste mohli podniknout potřebné akce.
 
-DevTest Labs poskytuje následující výhody při vytváření, konfiguraci a správě prostředí v cloudu.
+DevTest Labs přináší následující výhody při vytváření, konfiguraci a správě prostředí v cloudu.
 
-## <a name="cost-control-and-governance"></a>Kontrola nákladů a správa
-DevTest Labs usnadňuje řízení nákladů tím, že vám umožní dělat následující úkoly:
+## <a name="cost-control-and-governance"></a>Řízení nákladů a zásady správného řízení
+DevTest Labs usnadňuje řízení nákladů tím, že vám umožní provádět následující úlohy:
 
-- [Nastavte zásady pro vaše testovací prostředí](devtest-lab-get-started-with-lab-policies.md), jako je počet virtuálních počítačů na uživatele nebo na testovací prostředí. 
-- Vytvořte [zásady pro automatické vypnutí](devtest-lab-set-lab-policy.md) a spuštění virtuálních ms.
-- Sledujte náklady na virtuální počítače a paas prostředky se točil do laboratoře, aby zůstali v rámci [svého rozpočtu](devtest-lab-configure-cost-management.md).
-- Zůstaňte v kontextu svých laboratoří, abyste nezaváli zdroje mimo ně.
+- [Nastavte zásady v laboratořích](devtest-lab-get-started-with-lab-policies.md), například počet virtuálních počítačů na uživatele nebo na testovací prostředí. 
+- Vytvořte [zásady pro automatické vypnutí](devtest-lab-set-lab-policy.md) a spuštění virtuálních počítačů.
+- Sledujte náklady na virtuální počítače a PaaS prostředky, které provedete v rámci [vašeho rozpočtu](devtest-lab-configure-cost-management.md).
+- Zůstaňte v kontextu cvičení, abyste nemuseli vytvářet prostředky mimo ně.
 
-## <a name="quickly-get-to-ready-to-test"></a>Rychlé přepychu je připraveno k testování
-DevTest Labs vám umožní vytvářet předem zřízené prostředí vybavené vším, co váš tým potřebuje k vývoji a testování aplikací. Stačí [nárokovat prostředí,](devtest-lab-add-claimable-vm.md) kde je nainstalováno poslední dobré sestavení vaší aplikace a začít pracovat. Nebo použijte kontejnery pro ještě rychlejší a štíhlejší vytváření prostředí.
+## <a name="quickly-get-to-ready-to-test"></a>Rychlá příprava na testování
+DevTest Labs umožňuje vytvářet předem zajištěná prostředí s podporou všeho, co váš tým potřebuje k vývoji a testování aplikací. Stačí [uplatnit deklaraci prostředí](devtest-lab-add-claimable-vm.md) , kde je nainstalované poslední dobré sestavení vaší aplikace, a začít pracovat. Nebo používejte kontejnery pro i rychlejší vytváření štíhlého prostředí.
 
-## <a name="create-once-use-everywhere"></a>Vytvořit jednou, používat všude
-Zachyťte a sdílejte [šablony prostředí](devtest-lab-create-environment-from-arm.md) PaaS a [artefakty](add-artifact-repository.md) v rámci vašeho týmu nebo organizace – vše ve složce zdrojového kódu – a snadno vytvářejte vývojářská a testovací prostředí.
+## <a name="create-once-use-everywhere"></a>Vytvořte jednou, používejte všude
+Zachyťte a sdílejte [šablony prostředí](devtest-lab-create-environment-from-arm.md) PaaS a [artefakty](add-artifact-repository.md) v rámci svého týmu nebo organizace – to vše ve správě zdrojového kódu, abyste mohli snadno vytvářet vývojová a testovací prostředí.
 
-## <a name="worry-free-self-service"></a>Bezstarostná samoobsluha
-DevTest Labs umožňuje vývojářům a testerům rychle a snadno [vytvářet virtuální počítače IaaS](devtest-lab-add-vm.md) a [prostředky PaaS](devtest-lab-create-environment-from-arm.md) pomocí sady předem nakonfigurovaných prostředků.
+## <a name="worry-free-self-service"></a>Samoobslužná služba bez obav
+DevTest Labs umožňuje vývojářům a testerům rychle a snadno [vytvořit virtuální počítače s IaaS](devtest-lab-add-vm.md) a [prostředky PaaS](devtest-lab-create-environment-from-arm.md) pomocí sady předem nakonfigurovaných prostředků.
 
-## <a name="use-iaas-and-paas-resources"></a>Použití prostředků IaaS a PaaS 
-Vývojáři můžou taky spouštět prostředky PaaS, jako jsou clustery Azure Service Fabric, funkce Webové aplikace služby Azure App Service a farmy SharePoint, pomocí šablon Správce prostředků. Chcete-li začít s PaaS v testovacích prostředích, použijte šablony z [úložiště veřejného prostředí](devtest-lab-configure-use-public-environments.md) nebo [připojte testovací prostředí k vlastnímu úložišti Git](devtest-lab-create-environment-from-arm.md#configure-your-own-template-repositories). Můžete také sledovat náklady na tyto zdroje, abyste zůstali v rámci svého rozpočtu.
+## <a name="use-iaas-and-paas-resources"></a>Používání prostředků IaaS a PaaS 
+Vývojáři také mohou PaaS prostředky, jako jsou clustery Azure Service Fabric, Web Apps funkce Azure App Service a farmy služby SharePoint pomocí šablon Správce prostředků. Pokud chcete začít PaaS v laboratořích, použijte šablony z [úložiště veřejného prostředí](devtest-lab-configure-use-public-environments.md) nebo [Připojte testovací prostředí k vlastnímu úložišti Git](devtest-lab-create-environment-from-arm.md#configure-your-own-template-repositories). Můžete také sledovat náklady na tyto prostředky, abyste zůstali ve svém rozpočtu.
 
-## <a name="integrate-with-your-existing-toolchain"></a>Integrace se stávajícím nářadím
-Pomocí předem provedených modulů plug-in nebo rozhraní API zřizujte vývojová/testovací prostředí přímo z preferovaného [nástroje pro průběžnou integraci (CI),](devtest-lab-integrate-ci-cd-vsts.md)integrovaného vývojového prostředí (IDE) nebo kanálu s automatickými verzemi. Můžete také použít komplexní nástroj příkazového řádku.
+## <a name="integrate-with-your-existing-toolchain"></a>Integrace s existujícím sada nástrojů
+Využijte předem připravené moduly plug-in nebo rozhraní API k zřizování prostředí pro vývoj a testování přímo z preferovaného [Nástroje pro kontinuální integraci (CI)](devtest-lab-integrate-ci-cd-vsts.md), integrovaného vývojového prostředí (IDE) nebo kanálu automatizovaného vydání. Můžete také použít komplexní nástroj příkazového řádku.
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- Další informace o devTest Labs najdete v tématu [DevTest Labs concepts](devtest-lab-concepts.md).
-- Návod s podrobnými pokyny najdete [v tématu Kurz: Nastavení testovacího prostředí pomocí Azure DevTest Labs](tutorial-create-custom-lab.md).
+- Další informace o DevTest Labs najdete v tématu [Koncepty DevTest Labs](devtest-lab-concepts.md).
+- Návod s podrobnými pokyny najdete v tématu [kurz: nastavení testovacího prostředí pomocí Azure DevTest Labs](tutorial-create-custom-lab.md).

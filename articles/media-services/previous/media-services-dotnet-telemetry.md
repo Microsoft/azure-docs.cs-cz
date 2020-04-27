@@ -1,6 +1,6 @@
 ---
-title: Konfigurace telemetrie Mediálních služeb Azure pomocí rozhraní .NET| Dokumenty společnosti Microsoft
-description: Tento článek ukazuje, jak používat telemetrická data Azure Media Services pomocí sady .NET SDK.
+title: Konfigurace telemetrie Azure Media Services pomocí .NET | Microsoft Docs
+description: V tomto článku se dozvíte, jak používat telemetrie Azure Media Services s využitím sady .NET SDK.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61464942"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurace telemetrie Mediálních služeb Azure pomocí rozhraní .NET 
+# <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurace telemetrie Azure Media Services pomocí .NET 
 
 Tento článek popisuje obecné kroky, které můžete provést při konfiguraci telemetrie Azure Media Services (AMS) pomocí sady .NET SDK. 
 
 >[!NOTE]
->Podrobné vysvětlení toho, co je telemetrie AMS a jak ji využívat, najdete v článku [s přehledem.](media-services-telemetry-overview.md)
+>Podrobné vysvětlení toho, co je telemetrie AMS a jak ji využívat, najdete v článku [Přehled](media-services-telemetry-overview.md) .
 
-Telemetrická data můžete využívat jedním z následujících způsobů:
+Data telemetrie můžete využívat jedním z následujících způsobů:
 
-- Čtení dat přímo z Azure Table Storage (například pomocí sady Storage SDK). Popis tabulek úložiště telemetrie naleznete **v tématu náročné informace o telemetrii** v [tomto](https://msdn.microsoft.com/library/mt742089.aspx) článku.
+- Načte data přímo z Azure Table Storage (například pomocí sady Storage SDK). Popis tabulek úložišť telemetrie najdete v **informacích o využívání telemetrie** v [tomto](https://msdn.microsoft.com/library/mt742089.aspx) článku.
 
 Nebo
 
-- Použijte podporu sady Media Services .NET SDK pro čtení dat úložiště. Tento článek ukazuje, jak povolit telemetrii pro zadaný účet AMS a jak zadat dotaz na metriky pomocí sady Azure Media Services .NET SDK.  
+- Pro čtení dat úložiště použijte podporu v sadě Media Services .NET SDK. Tento článek ukazuje, jak povolit telemetrii pro zadaný účet AMS a jak dotazovat metriky pomocí sady Azure Media Services .NET SDK.  
 
-## <a name="configuring-telemetry-for-a-media-services-account"></a>Konfigurace telemetrie pro účet Mediální služby
+## <a name="configuring-telemetry-for-a-media-services-account"></a>Konfigurace telemetrie pro účet Media Services
 
-Pro povolení telemetrie jsou potřeba následující kroky:
+Pro povolení telemetrie je potřeba provést tyto kroky:
 
-- Získejte přihlašovací údaje účtu úložiště připojeného k účtu Mediální ch služeb. 
-- Vytvořte koncový bod oznámení s **endpointtype** nastavenou na **AzureTable** a endPointAddress směřující na tabulku úložiště.
+- Získejte přihlašovací údaje k účtu úložiště připojenému k účtu Media Services. 
+- Vytvořte koncový bod oznámení s **EndPointType** nastavenou na **Azure** a položku endPointAddress ukazující na tabulku úložiště.
 
 ```csharp
         INotificationEndPoint notificationEndPoint = 
@@ -50,7 +50,7 @@ Pro povolení telemetrie jsou potřeba následující kroky:
                       "https://" + _mediaServicesStorageAccountName + ".table.core.windows.net/");
 ```
 
-- Vytvořte nastavení konfigurace monitorování pro služby, které chcete sledovat. Není povoleno více než jedno nastavení konfigurace monitorování. 
+- Vytvořte nastavení konfigurace monitorování pro služby, které chcete monitorovat. Není povoleno více než jedno nastavení konfigurace monitorování. 
 
 ```csharp
         IMonitoringConfiguration monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
@@ -61,15 +61,15 @@ Pro povolení telemetrie jsou potřeba následující kroky:
             });
 ```
 
-## <a name="consuming-telemetry-information"></a>Spotřebovávající telemetrické informace
+## <a name="consuming-telemetry-information"></a>Využívání informací o telemetrie
 
-Informace o využívání telemetrických informací naleznete v [tomto](media-services-telemetry-overview.md) článku.
+Informace o využívání informací telemetrie najdete v [tomto](media-services-telemetry-overview.md) článku.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
 1. Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-2. Přidejte do aplikace Do **souboru appSettings** definovaných v souboru app.config následující prvek:
+2. Přidejte následující element do **appSettings** definované v souboru App. config:
 
     ```xml
         <add key="StorageAccountName" value="storage_name" />
@@ -77,7 +77,7 @@ Informace o využívání telemetrických informací naleznete v [tomto](media-s
  
 ## <a name="example"></a>Příklad  
     
-Následující příklad ukazuje, jak povolit telemetrii pro zadaný účet AMS a jak zadat dotaz na metriky pomocí sady Azure Media Services .NET SDK.  
+Následující příklad ukazuje, jak povolit telemetrii pro zadaný účet AMS a jak dotazovat metriky pomocí sady Azure Media Services .NET SDK.  
 
 ```csharp
 using System;

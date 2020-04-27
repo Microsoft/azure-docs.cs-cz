@@ -1,54 +1,54 @@
 ---
-title: Podpora pro komerční trh | Azure Marketplace
-description: Informace o podpoře a odkazy pro Azure Marketplace a AppSource
+title: Podpora komerčního tržiště | Azure Marketplace
+description: Informace o podpoře a odkazy na Azure Marketplace a AppSource
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 2b73fee33692b65770caeea651c12e9780dba2c4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 3871ef232d9a2315ece632f6f764f8377a8435c5
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681385"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159911"
 ---
-# <a name="support-for-the-marketplace"></a>Podpora pro marketplace
+# <a name="support-for-the-marketplace"></a>Podpora pro Marketplace
 
 Tady je seznam možností podpory pro Marketplace.  
 
-Mnoho z vašich otázek můžete navíc získat odpovědi na [marketplace kanálu komunitního fóra C+AI](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
+Navíc můžete získat spoustu vašich otázek na webu Marketplace v komunitním [fóru C + AI](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
 
 ## <a name="onboarding"></a>Onboarding
 
-Otevřete lístek s [podporou vydavatele webu](https://aka.ms/marketplacepublishersupport) Microsoft Marketplace pro problémy s registrací a začínáním.
+Otevřete lístek s [podporou vydavatele na webu Microsoft Marketplace](https://partner.microsoft.com/support/v2/?stage=1) pro problémy s připojováním a zahájením práce.
 
 ## <a name="partner-center"></a>Partnerské centrum   
 
 | Kanál podpory | Popis | Dostupnost |  
 |:--- |:--- |:--- |  
-| Pomoc najdete na stránce Vytvořit incident na webu [Podpory Marketplace.](https://aka.ms/marketplacepublishersupport)</li> </ul> | Podpora partnerského centra. | Podpora je poskytována 24x5. |  
+| Pomoc najdete na stránce vytvoření incidentu, která se nachází na [webu podpora Marketplace](https://partner.microsoft.com/support/v2/?stage=1) .</li> </ul> | Podpora pro partnerské Centrum. | Podpora je poskytována 24x5. |  
 
 ## <a name="technical"></a>Technické  
 
 | Kanál podpory | Popis |  
 |:--- |:--- |  
-| Fóra MSDN: Tržiště umístěné na [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Fórum Microsoft Developer Network. |  
-| Přetečení zásobníku: Azure umístěný na [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow prostředí získat řešení a klást otázky týkající se všeho, co souvisí s Azure Marketplace.<ul> <li>Přetečení zásobníku: Azure Marketplace umístěné na [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Přetečení zásobníku: Azure Resource Manager umístěný na [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Přetečení zásobníku: Virtuální počítače v Azure umístěné na [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Přetečení zásobníku: Kontejnery v Azure umístěné na [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
+| Fóra MSDN: web Marketplace umístěný na adrese [Social.MSDN.Microsoft.com/forums/Azure/Home?Forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Fórum Microsoft Developer Network. |  
+| Stack Overflow: Azure umístěný na adrese [StackOverflow.com/Questions/Tagged/Azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow prostředí pro získání řešení a dotazování na všechno, co souvisí s Azure Marketplace.<ul> <li>Stack Overflow: Azure Marketplace nacházející se na [StackOverflow.com/Questions/Tagged/Azure-Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manager nacházející se na [StackOverflow.com/Questions/Tagged/Azure-Resource-Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtual Machines na Azure, které najdete na adrese [StackOverflow.com/Questions/Tagged/Azure-Virtual-Machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: kontejnery v Azure umístěné na adrese [StackOverflow.com/search?q=Azure+Container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 
-## <a name="marketing-resources"></a>Marketingové zdroje  
+## <a name="marketing-resources"></a>Marketingové prostředky  
 
 | Kanál podpory | Popis | Dostupnost |  
 |:--- |:--- |:--- |  
-| E-mail:[cosell@microsoft.com](mailto:cosell@microsoft.com) | Podpora procesů registrace a otázek souvisejících s programem Co-Sell. | Založeno v tichomořském časovém pásmu. |  
-| E-mail:[gtm@microsoft.com](mailto:gtm@microsoft.com) | Podpora výhod GTM a programových otázek. | Pracovní doba je v tichomořském časovém pásmu. |  
-| E-mail:[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Odpovědi na otázky týkající se využití log a značky Azure. |  |  
+| Elektron[cosell@microsoft.com](mailto:cosell@microsoft.com) | Podpora pro procesy připojování a dotazy týkající se programu společného prodeje. | Založený na časovém pásmu tichomořského. |  
+| Elektron[gtm@microsoft.com](mailto:gtm@microsoft.com) | Podpora GTMch výhod a otázek programu. | Pracovní doba je v časovém pásmu tichomořského. |  
+| Elektron[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Odpovědi na otázky týkající se využití loga a brandingu Azure. |  |  
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Navštivte [web ovou stránku s průvodcem pro vydavatele komerčního tržiště](https://docs.microsoft.com/azure/marketplace/).
-* Další informace o [podpoře programu komerčního tržiště v Centru partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+* Navštivte [stránku příručka pro vydavatele komerčního webu Marketplace](https://docs.microsoft.com/azure/marketplace/).
+* Přečtěte si další informace o [podpoře programu komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
 
 ---

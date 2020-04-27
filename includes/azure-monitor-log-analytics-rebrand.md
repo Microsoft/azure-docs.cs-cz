@@ -5,11 +5,11 @@ ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
 ms.openlocfilehash: 7578cf914030dfb9a116d26c1006791ef3a1401f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67174733"
 ---
 >[!NOTE]
-> Tento článek byl nedávno aktualizován tak, aby používal termín protokoly Azure Monitor namísto analýzy protokolů. Data protokolu jsou stále uložena v pracovním prostoru Log Analytics a jsou stále shromažďována a analyzována stejnou službou Log Analytics. Aktualizujeme terminologii tak, aby lépe odrážela roli [protokolů v Azure Monitoru](../articles/azure-monitor/platform/data-platform-logs.md). Podrobnosti najdete v [tématu změny terminologie Azure Monitoru.](../articles/azure-monitor/azure-monitor-rebrand.md)
+> Tento článek byl nedávno aktualizován, aby používal Azure Monitor protokoly místo Log Analytics. Data protokolu se pořád ukládají do Log Analyticsho pracovního prostoru a pořád se shromažďují a analyzují pomocí stejné služby Log Analytics. Aktualizujeme terminologii, aby lépe odrážela roli [protokolů v Azure monitor](../articles/azure-monitor/platform/data-platform-logs.md). Podrobnosti najdete v tématu [Azure monitor změny terminologie](../articles/azure-monitor/azure-monitor-rebrand.md) .

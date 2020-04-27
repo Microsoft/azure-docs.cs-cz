@@ -1,6 +1,6 @@
 ---
-title: Pokyny pro optimalizaci výkonu úložiště datového jezera Azure ) Dokumenty společnosti Microsoft
-description: Pokyny pro optimalizaci výkonu azure datového jezera Gen1 Hive
+title: Pokyny k ladění výkonu Azure Data Lake Storage Gen1 registru | Microsoft Docs
+description: Pokyny k vyladění výkonu podregistru Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -13,61 +13,61 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 433c6b7d70cea9406b67d65e23cc357939cb5aa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61437272"
 ---
-# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro Hive na HDInsight a Azure Data Lake Storage Gen1
+# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro podregistr v HDInsight a Azure Data Lake Storage Gen1
 
-Výchozí nastavení byla nastavena tak, aby poskytovala dobrý výkon v mnoha různých případech použití.  Pro náročné dotazy vstupně-v a. Hive můžete vyladit tak, aby získal i lepší výkon s Azure Data Lake Storage Gen1.  
+Výchozí nastavení byla nastavena tak, aby poskytovala dobrý výkon v mnoha různých případech použití.  U dotazů náročných na vstupně-výstupní operace může být podregistr vyladěn, aby bylo možné dosáhnout vyššího výkonu Azure Data Lake Storage Gen1.  
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Gen1 úložiště datového jezera**. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Storage Gen1.](data-lake-store-get-started-portal.md)
-* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Viz [Vytvoření clusteru HDInsight s gen1 úložiště datového jezera](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
-* **Spuštění Hive na HDInsight**.  Další informace o spouštění úloh Hive na HDInsight upřené na jdete [na tématu Použití Hive na HDInsightu.](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
-* **Pokyny pro ladění výkonu pro úložiště datových jezer Gen1**.  Obecné koncepty výkonu najdete v [tématu Data Lake Storage Gen1 Performance Tuning Guidance](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **Účet Data Lake Storage Gen1**. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) .
+* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Další informace najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
+* **Spuštění podregistru v HDInsight**.  Další informace o spouštění úloh podregistru v HDInsight najdete v tématu [použití podregistru v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive) .
+* **Pokyny k ladění výkonu na data Lake Storage Gen1**.  Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 pokyny k ladění výkonu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) .
 
 ## <a name="parameters"></a>Parametry
 
-Tady jsou nejdůležitější nastavení pro vyladění pro lepší výkon Data Lake Storage Gen1:
+Tady je nejdůležitější nastavení pro optimalizaci pro zlepšení výkonu Data Lake Storage Gen1:
 
-* **hive.tez.container.size** – množství paměti sužovky sužovaná jednotlivými úkoly
+* **podregistr. TEZ. Container. Size** – množství paměti využité jednotlivými úkoly
 
-* **tez.grouping.min-size** – minimální velikost každého mapovače
+* **TEZ. Grouping. min-Size** – minimální velikost každého mapování
 
-* **tez.grouping.max-size** – maximální velikost každého mapovače
+* **TEZ. Grouping. Max-Size** – maximální velikost každého mapování
 
-* **hive.exec.reducer.bytes.per.reducer** – velikost každého reduktoru
+* **podregistr. Exec. snižoval. bytes. per.** – velikost každého zmenšení
 
-**hive.tez.container.size** – Velikost kontejneru určuje, kolik paměti je k dispozici pro každou úlohu.  Toto je hlavní vstup pro řízení souběžnosti v Hive.  
+**podregistr. TEZ. Container. Size** – velikost kontejneru určuje, kolik paměti je k dispozici pro každý úkol.  Toto je hlavní vstup pro řízení souběžnosti v podregistru.  
 
-**tez.grouping.min-size** – Tento parametr umožňuje nastavit minimální velikost každého mapovače.  Pokud je počet mapovačů, které Tez vybere, menší než hodnota tohoto parametru, pak Tez použije zde nastavenou hodnotu.
+**TEZ. Grouping. min-Size** – tento parametr umožňuje nastavit minimální velikost každého mapovače.  Pokud počet mapovačů, které tez zvolí, je menší než hodnota tohoto parametru, pak tez použije nastavenou hodnotu.
 
-**tez.grouping.max-size** – Parametr umožňuje nastavit maximální velikost každého mapovače.  Pokud je počet mapovačů, které Tez vybere, větší než hodnota tohoto parametru, pak Tez použije zde nastavenou hodnotu.
+**TEZ. Grouping. Max-Size** – parametr umožňuje nastavit maximální velikost každého mapovače.  Pokud počet mapovačů, které tez zvolí, je větší než hodnota tohoto parametru, pak tez použije nastavenou hodnotu.
 
-**hive.exec.reducer.bytes.per.reducer** – Tento parametr nastaví velikost každého reduktoru.  Ve výchozím nastavení je každý reduktor 256 MB.  
+**podregistr. Exec. snižoval. bytes. per. snižoval** – tento parametr nastavuje velikost každého zmenšení.  Ve výchozím nastavení má každý zpomalení 256 MB.  
 
 ## <a name="guidance"></a>Doprovodné materiály
 
-**Nastavte hive.exec.reducer.bytes.per.reducer** – Výchozí hodnota funguje dobře, když jsou data nekomprimovaná.  U komprimovaných dat byste měli zmenšit velikost reduktoru.  
+**Nastavit podregistr. Exec. snižovalo. bytes. per.** – výchozí hodnota je vhodná, když jsou data nekomprimovaná.  Pro komprimovaná data byste měli zmenšit velikost zmenšení.  
 
-**Nastavte hodnotu hive.tez.container.size** – V každém uzlu je paměť určena yarn.nodemanager.resource.memory-mb a ve výchozím nastavení by měla být správně nastavena v clusteru HDI.  Další informace o nastavení příslušné paměti v YARN naleznete v tomto [příspěvku](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
+**Nastavení podregistru. TEZ. Container. Size** – v každém uzlu je paměť určena pomocí příze. NodeManager. Resource. Memory-MB a měla by být ve výchozím nastavení správně nastavena v clusteru HDI.  Další informace o nastavení vhodné paměti v PŘÍZi najdete v tomto [příspěvku](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
 
-Vstupně-rozložitelné úlohy mohou těžit z více paralelismu snížením velikosti kontejneru Tez. To dává uživateli více kontejnerů, které zvyšuje souběžnost.  Některé dotazy Hive však vyžadují značné množství paměti (např.  Pokud úloha nemá dostatek paměti, získáte výjimku z paměti během běhu.  Pokud obdržíte výjimky z paměti, pak byste měli zvýšit paměť.   
+Úlohy náročné na vstupně-výstupní operace můžou těžit z více paralelismu díky snížení velikosti kontejneru TEZ. Tím se uživateli poskytne více kontejnerů, které zvyšují souběžnost.  Některé dotazy podregistru ale vyžadují značné množství paměti (např. MapJoin).  Pokud úloha nemá dostatek paměti, během běhu se zobrazí výjimka z důvodu nedostatku paměti.  Pokud se dostanou výjimky z paměti, měli byste zvětšit paměť.   
 
-Souběžný počet spuštěných úloh nebo paralelismu bude ohraničen celkovou pamětí YARN.  Počet kontejnerů YARN bude určovat, kolik souběžných úloh lze spustit.  Chcete-li najít paměť YARN na uzel, můžete přejít na Ambari.  Přejděte na YARN a zobrazte kartu Configs.  V tomto okně se zobrazí paměť YARN.  
+Souběžný počet probíhajících úloh nebo paralelismu bude svázán s celkovou pamětí PŘÍZe.  Počet kontejnerů PŘÍZe určí, kolik souběžných úloh může být spuštěno.  Pro nalezení paměti PŘÍZe na uzel můžete přejít na Ambari.  Přejděte na PŘÍZe a zobrazte kartu konfigurace.  V tomto okně se zobrazí paměť PŘÍZe.  
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size
-Klíčem ke zlepšení výkonu pomocí úložiště datového jezera Gen1 je zvýšit souběžnost co nejvíce.  Tez automaticky vypočítá počet úkolů, které by měly být vytvořeny, takže není nutné jej nastavit.   
+Klíčem ke zvýšení výkonu pomocí Data Lake Storage Gen1 je co nejvíc zvýšit souběžnost.  Tez automaticky vypočítá počet úloh, které by se měly vytvořit, takže je nemusíte nastavovat.   
 
 ## <a name="example-calculation"></a>Příklad výpočtu
 
-Řekněme, že máte cluster D14 s 8 uzlem.  
+Řekněme, že máte cluster D14 s 8 uzly.  
 
     Total YARN memory = nodes * YARN memory per node
     Total YARN memory = 8 nodes * 96GB = 768GB
@@ -75,19 +75,19 @@ Klíčem ke zlepšení výkonu pomocí úložiště datového jezera Gen1 je zv�
 
 ## <a name="limitations"></a>Omezení
 
-**Omezení úložiště datového jezera Gen1** 
+**Omezení Data Lake Storage Gen1** 
 
-Pokud dosáhnete limitů šířky pásma poskytovaných data lake storage gen1, začnete vidět selhání úloh. To lze identifikovat sledováním chyb omezení v protokolech úloh.  Můžete snížit paralelismus zvýšením velikosti kontejneru Tez.  Pokud potřebujete více souběžnosti pro vaši práci, kontaktujte nás.
+Pokud jste dosáhli limitu šířky pásma poskytovaného Data Lake Storage Gen1, začali byste zobrazovat selhání úloh. To je možné identifikovat pozorováním chyb omezení v protokolech úloh.  Paralelismus můžete snížit zvýšením velikosti kontejneru TEZ.  Pokud potřebujete pro svoji úlohu víc souběžnosti, kontaktujte nás prosím.
 
-Chcete-li zkontrolovat, zda jste stále omezení, je třeba povolit protokolování ladění na straně klienta. Zde je návod, jak to můžete udělat:
+Chcete-li zjistit, zda se vám omezilo omezení, je nutné povolit protokolování ladění na straně klienta. Můžete to udělat takto:
 
-1. Vložte následující vlastnost do vlastností log4j v konfiguraci Hive. To lze provést ze zobrazení Ambari: log4j.logger.com.microsoft.azure.datalake.store=DEBUG Restartujte všechny uzly/službu, aby se konfigurační konfigurace projevila.
+1. Do vlastností log4j v části Konfigurace podregistru vložte následující vlastnost. To se dá udělat z Ambari zobrazení: log4j. protokolovací. com. Microsoft. Azure. datalake. Store = ladění restartujte všechny uzly/služby, aby se konfigurace projevila.
 
-2. Pokud jste stále omezení, uvidíte kód chyby HTTP 429 v souboru protokolu úlu. Soubor protokolu podregistru je v&lt;/tmp/ user&gt;/hive.log
+2. Pokud se vám omezí omezení, zobrazí se v souboru protokolu podregistru kód chyby HTTP 429. Soubor protokolu podregistru je v/tmp/&lt;User&gt;/Hive.log
 
-## <a name="further-information-on-hive-tuning"></a>Další informace o ladění Hive
+## <a name="further-information-on-hive-tuning"></a>Další informace o optimalizaci podregistru
 
-Zde je několik blogů, které vám pomohou vyladit vaše dotazy Hive:
-* [Optimalizace dotazů Hive pro Hadoop v HDInsight](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
-* [Poradce při potížích s výkonem dotazu Hive](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
-* [Zapalte diskuse o optimalizaci Hive na HDInsight](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)
+Tady je několik blogů, které vám pomůžou při optimalizaci dotazů na podregistr:
+* [Optimalizace dotazů na podregistr pro Hadoop v HDInsight](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
+* [Řešení potíží s výkonem dotazů na podregistr](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
+* [Ignite hovořit o optimalizaci podregistru v HDInsight](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

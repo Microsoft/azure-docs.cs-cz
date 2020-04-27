@@ -1,6 +1,6 @@
 ---
-title: Sledovat průběh úlohy pomocí rozhraní .NET
-description: Přečtěte si, jak pomocí kódu obslužné rutiny události sledovat průběh úlohy a odesílat aktualizace stavu. Ukázka kódu je zapsána v c# a používá sadku Media Services SDK pro rozhraní .NET.
+title: Monitorování průběhu úlohy pomocí .NET
+description: Naučte se, jak pomocí kódu obslužných rutin událostí sledovat průběh úloh a odesílat aktualizace stavu. Ukázka kódu je zapsána v jazyce C# a používá sadu SDK Media Services pro .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: e787617ab6e04a5ff2e7f5d4921a5bf7a4a1eb5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "64867104"
 ---
-# <a name="monitor-job-progress-using-net"></a>Sledovat průběh úlohy pomocí rozhraní .NET 
+# <a name="monitor-job-progress-using-net"></a>Monitorování průběhu úlohy pomocí .NET 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Při spuštění úlohy často vyžadují způsob, jak sledovat průběh úlohy. Průběh můžete zkontrolovat definováním obslužné rutiny události StateChanged (jak je popsáno v tomto tématu) nebo pomocí úložiště Fronty Azure ke sledování oznámení úloh mediálních služeb (jak je popsáno v [tomto](media-services-dotnet-check-job-progress-with-queues.md) tématu).
+Když spouštíte úlohy, často potřebujete způsob, jak sledovat průběh úloh. Průběh můžete zjistit definováním obslužné rutiny události StateChanged (jak je popsáno v tomto tématu) nebo pomocí Azure Queue Storage k monitorování oznámení úloh Media Services (jak je popsáno v [tomto](media-services-dotnet-check-job-progress-with-queues.md) tématu).
 
-## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>Definovat obslužnou rutinu události StateChanged pro sledování průběhu úlohy
+## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>Definování obslužné rutiny události StateChanged pro monitorování průběhu úlohy
 
-Následující příklad kódu definuje obslužnou rutinu události StateChanged. Tato obslužná rutina události sleduje průběh úlohy a poskytuje aktualizovaný stav v závislosti na stavu. Kód také definuje metodu LogJobStop. Tato pomocná metoda protokoluje podrobnosti o chybě.
+Následující příklad kódu definuje obslužnou rutinu události StateChanged. Tato obslužná rutina události sleduje průběh úloh a poskytuje aktualizovaný stav v závislosti na stavu. Kód také definuje metodu LogJobStop. Tato pomocná metoda zaznamená podrobnosti o chybě.
 
 ```csharp
     private static void StateChanged(object sender, JobStateChangedEventArgs e)

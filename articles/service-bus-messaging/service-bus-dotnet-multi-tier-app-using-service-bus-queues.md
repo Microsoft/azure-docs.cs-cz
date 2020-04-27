@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60403090"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Vícevrstvá aplikace .NET, která používá fronty Azure Service Bus
@@ -58,7 +58,7 @@ V následující části se probírá kód, který tuto architekturu implementuj
 
 ## <a name="create-a-namespace"></a>Vytvoření oboru názvů
 
-Prvním krokem je vytvoření *oboru názvů*a získání klíče s [sdíleným přístupovým podpisem (SAS)](service-bus-sas.md) pro tento obor názvů. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu Service Bus. Systém vygeneruje klíč SAS při vytvoření oboru názvů. Kombinace názvu oboru názvů a klíče SAS poskytuje přihlašovací údaje, pomocí kterých služba Service Bus ověří přístup k aplikaci.
+Prvním krokem je vytvoření *oboru názvů*a získání klíče [sdíleného přístupového podpisu (SAS)](service-bus-sas.md) pro tento obor názvů. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu Service Bus. Systém vygeneruje klíč SAS při vytvoření oboru názvů. Kombinace názvu oboru názvů a klíče SAS poskytuje přihlašovací údaje, pomocí kterých služba Service Bus ověří přístup k aplikaci.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -177,7 +177,7 @@ V této části vytvoříte stránky, které vaše aplikace zobrazí.
 6. Objeví se dialogové okno pro vytvoření zobrazení. V seznamu **Šablona** vyberte **Vytvořit**. V seznamu **Třída modelu** vyberte třídu **OnlineOrder**.
    
    ![][15]
-7. Klikněte na **Přidat**.
+7. Klikněte na tlačítko **Add** (Přidat).
 8. Teď změňte zobrazený název vaší aplikace. V **Průzkumníku řešení** poklikejte na soubor **Views\Shared\\_Layout.cshtml** a otevře se v editoru Visual Studio.
 9. Všechny výskyty **My ASP.NET Application** změňte na **Northwind Traders Products**.
 10. Odstraňte odkazy **Home**, **About** a **Contact**. Odstraňte zvýrazněný uzel:

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: ADSyncConfig PowerShell Reference | Dokumenty společnosti Microsoft'
-description: Tento dokument obsahuje referenční informace pro modul PowerShell ADSyncConfig.psm1.
+title: 'Azure AD Connect: Reference prostředí PowerShell ADSyncConfig | Microsoft Docs'
+description: Tento dokument poskytuje referenční informace pro modul prostředí PowerShell ADSyncConfig. psm1.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,20 +11,20 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60381191"
 ---
-# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell Reference
-Následující dokumentace obsahuje referenční informace pro modul PowerShell ADSyncConfig.psm1, který je součástí služby Azure AD Connect.
+# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: Reference prostředí PowerShell ADSyncConfig
+Následující dokumentace obsahuje referenční informace pro modul ADSyncConfig. psm1 PowerShell, který je součástí nástroje Azure AD Connect.
 
 
-## <a name="get-adsyncadconnectoraccount"></a>Účet Get-AdsyncadConnector
+## <a name="get-adsyncadconnectoraccount"></a>Get-ADSyncADConnectorAccount
 
 ### <a name="synopsis"></a>SYNOPSE
-Získá název účtu a domény, která je nakonfigurována v každém konektoru Služby AD
+Získá název a doménu účtu, který je nakonfigurovaný v jednotlivých konektorech služby AD.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -33,7 +33,7 @@ Get-ADSyncADConnectorAccount
 ```
 
 ### <a name="description"></a>POPIS
-Tato funkce používá rutinu Get-ADSyncConnector, která je k dispozici v aplikaci AAD Connect, k načtení z parametrů připojení v tabulce zobrazující účet konektoru Služby AD.
+Tato funkce používá rutinu Get-ADSyncConnector, která je k dispozici v AAD Connect k načtení z parametrů připojení tabulka, která zobrazuje účet konektorů služby AD.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -42,10 +42,10 @@ Tato funkce používá rutinu Get-ADSyncConnector, která je k dispozici v aplik
 Get-ADSyncADConnectorAccount
 ```
 
-## <a name="get-adsyncobjectswithinheritancedisabled"></a>Get-AdSyncObjectsWithInheritanceDisabled Get-AdSyncObjectsWithInheritanceDisabled Get-AdSyncObjectsWithInheritanceDisabled Get-
+## <a name="get-adsyncobjectswithinheritancedisabled"></a>Get-ADSyncObjectsWithInheritanceDisabled
 
 ### <a name="synopsis"></a>SYNOPSE
-Získá objekty AD s dědičností oprávnění zakázáno
+Získá objekty AD s děděním oprávnění zakázané.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -54,7 +54,7 @@ Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] 
 ```
 
 ### <a name="description"></a>POPIS
-Hledání ve skrytém vzhledem k parametru SearchBase a vrátí všechny objekty filtrované podle parametru ObjectClass, které mají aktuálně zakázanou dědičnost acl.
+Vyhledá ve službě AD počínaje parametrem SearchBase a vrátí všechny objekty filtrované podle parametru ObjectClass, který má aktuálně zakázanou dědičnost seznamu ACL.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -63,26 +63,26 @@ Hledání ve skrytém vzhledem k parametru SearchBase a vrátí všechny objekty
 Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
+Get-ADSyncObjectsWithInheritanceDisabled-SearchBase "contoso"
 
 #### <a name="example-2"></a>PŘÍKLAD 2
 ```
 Find 'user' objects with disabled inheritance in 'Contoso' domain
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
+Get-ADSyncObjectsWithInheritanceDisabled-SearchBase "contoso" – ObjectClass "User"
 
 #### <a name="example-3"></a>PŘÍKLAD 3
 ```
 Find all types of objects with disabled inheritance in a OU
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
+Get-ADSyncObjectsWithInheritanceDisabled-SearchBase OU = AzureAD, DC = contoso, DC = com-ObjectClass ' * '
 
 ### <a name="parameters"></a>PARAMETRY
 
 #### <a name="-searchbase"></a>-SearchBase
-SearchBase pro dotaz LDAP, který může být DistinguishedName domény služby AD nebo fQDN
+SearchBase pro dotaz protokolu LDAP, který může být rozlišující nebo plně kvalifikovaný název domény služby AD
 
 ```yaml
 Type: String
@@ -96,8 +96,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-objectclass"></a>-ObjectClass
-Třída objektů pro vyhledávání, které mohou být '*' (pro libovolnou třídu objektu), "uživatel", "skupina", "kontejner" atd. Ve výchozím nastavení bude tato funkce hledat třídu objektů "organizationalUnit".
+#### <a name="-objectclass"></a>– ObjectClass
+Třída objektů, které se mají hledat, může být "*" (pro libovolnou třídu objektů), "User", "Group", "Container" atd. Ve výchozím nastavení tato funkce vyhledá objektovou třídu ' organizationalUnit '.
 
 ```yaml
 Type: String
@@ -113,12 +113,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncbasicreadpermissions"></a>Set-AdSyncBasicReadPermissions
+## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
 ### <a name="synopsis"></a>SYNOPSE
-Inicializovat doménovou strukturu a doménu služby Active Directory pro základní oprávnění ke čtení.
+Inicializujte doménovou strukturu a doménu služby Active Directory pro základní oprávnění ke čtení.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -128,31 +128,31 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAcco
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Distinguishedname
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [-SkipAdminSdHolders]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncBasicReadPermissions uděluje požadovaná oprávnění k účtu synchronizace služby AD, která zahrnují následující:
+Funkce Set-ADSyncBasicReadPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
-Přístup ke službě Číst vlastnosti u všech atributů pro všechny objekty počítače potomků
+Číst přístup k vlastnostem u všech atributů pro všechny objekty odvozeného počítače
 2.
-Přístup ke službě Číst vlastnosti u všech atributů pro všechny objekty podřízeného zařízení
+Číst přístup k vlastnostem u všech atributů pro všechny podřízené objekty zařízení
 3.
-Přístup ke službě Číst vlastnosti u všech atributů pro všechny objekty cizí zabezpečení potomků
+Číst přístup k vlastnostem u všech atributů pro všechny objekty následníka foreignsecurityprincipal
 5.
-Přístup ke službě Číst vlastnosti u všech atributů pro všechny objekty uživatele potomků
+Číst přístup k vlastnostem u všech atributů pro všechny objekty potomků uživatele
 6.
-Přístup ke službě Číst pro všechny atributy pro všechny objekty inetorgperson následovníků
+Číst přístup k vlastnostem u všech atributů pro všechny odvozené objekty InetOrgPerson
 7.
-Přístup ke službě Číst ve všech atributech pro všechny objekty skupiny potomků
+Číst přístup k vlastnostem u všech atributů pro všechny objekty potomk Group
 8.
-Přístup ke službě Číst ve všech atributech pro všechny objekty kontaktů potomků
+Číst přístup k vlastnostem u všech atributů pro všechny objekty kontaktu potomků
 
-Tato oprávnění jsou použita pro všechny domény v doménové struktuře.
-Volitelně můžete zadat DistinguishedName v ADobjectDN parametr nastavit tato oprávnění pouze pro tento objekt AD (včetně dědičnosti na dílčí objekty).
+Tato oprávnění se vztahují na všechny domény v doménové struktuře.
+Volitelně můžete zadat rozlišující parametr v parametru ADobjectDN pro nastavení těchto oprávnění pouze pro daný objekt AD (včetně dědičnosti na dílčí objekty).
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -178,8 +178,8 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnecto
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorNázev_účtu
-Název účtu služby Active Directory, který je nebo bude používat Azure AD Connect Sync ke správě objektů v adresáři.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Název účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Doména účtu služby Active Directory, který je nebo bude používán Azure AD Connect Sync ke správě objektů v adresáři.
+Doména účtu služby Active Directory, která je nebo bude používána Azure AD Connect synchronizace ke správě objektů v adresáři.
 
 ```yaml
 Type: String
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName účtu služby Active Directory, který je nebo bude používán azure ad connect sync ke správě objektů v adresáři.
+Rozlišujícímu účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName cílového objektu AD pro nastavení oprávnění (volitelné)
+Rozlišující pole cílového objektu AD pro nastavení oprávnění (volitelné)
 
 ```yaml
 Type: String
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Volitelný parametr označující, zda by kontejner AdminSDHolder neměl být aktualizován pomocí těchto oprávnění.
+Volitelný parametr, který označuje, jestli by se neměl aktualizovat kontejner AdminSDHolder pomocí těchto oprávnění
 
 ```yaml
 Type: SwitchParameter
@@ -253,7 +253,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Co když
+#### <a name="-whatif"></a>-WhatIf
 Zobrazuje, co by se stalo při spuštění rutiny.
 Rutina není spuštěna.
 
@@ -286,12 +286,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncexchangehybridpermissions"></a>Set-AdsyncExchangeHybridPermissions
+## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
 ### <a name="synopsis"></a>SYNOPSE
-Inicializovat doménovou strukturu a doménu služby Active Directory pro funkci Exchange Hybrid.
+Inicializujte doménovou strukturu a doménu služby Active Directory pro funkci hybridního systému Exchange.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -301,25 +301,25 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnecto
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Distinguishedname
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [-SkipAdminSdHolders]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncSyncSyncHybridPermissions uděluje požadovaná oprávnění k účtu synchronizace služby AD, která zahrnují následující:
+Funkce Set-ADSyncExchangeHybridPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
-Přístup ke vlastnostem pro čtení a zápis u všech atributů pro všechny objekty uživatele potomků
+Přístup k vlastnostem pro čtení/zápis u všech atributů pro všechny objekty potomků uživatele
 2.
-Přístup ke vlastnostem pro čtení a zápis u všech atributů pro všechny objekty inetorgperson následovníků
+Přístup k vlastnostem pro čtení/zápis u všech atributů pro všechny odvozené objekty InetOrgPerson
 3.
-Přístup ke vlastnostem pro čtení a zápis u všech atributů pro všechny objekty skupiny potomků
+Přístup k vlastnostem pro čtení/zápis u všech atributů pro všechny objekty potomk Group
 4.
-Přístup ke vlastnostem pro čtení a zápis u všech atributů pro všechny objekty kontaktů potomků
+Přístup k vlastnostem pro čtení/zápis u všech atributů pro všechny objekty kontaktu potomků
 
-Tato oprávnění jsou použita pro všechny domény v doménové struktuře.
-Volitelně můžete zadat DistinguishedName v ADobjectDN parametr nastavit tato oprávnění pouze pro tento objekt AD (včetně dědičnosti na dílčí objekty).
+Tato oprávnění se vztahují na všechny domény v doménové struktuře.
+Volitelně můžete zadat rozlišující parametr v parametru ADobjectDN pro nastavení těchto oprávnění pouze pro daný objekt AD (včetně dědičnosti na dílčí objekty).
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -345,8 +345,8 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADCon
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorNázev_účtu
-Název účtu služby Active Directory, který je nebo bude používat Azure AD Connect Sync ke správě objektů v adresáři.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Název účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -361,7 +361,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Doména účtu služby Active Directory, který je nebo bude používán Azure AD Connect Sync ke správě objektů v adresáři.
+Doména účtu služby Active Directory, která je nebo bude používána Azure AD Connect synchronizace ke správě objektů v adresáři.
 
 ```yaml
 Type: String
@@ -376,7 +376,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName účtu služby Active Directory, který je nebo bude používán azure ad connect sync ke správě objektů v adresáři.
+Rozlišujícímu účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -391,7 +391,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName cílového objektu AD pro nastavení oprávnění (volitelné)
+Rozlišující pole cílového objektu AD pro nastavení oprávnění (volitelné)
 
 ```yaml
 Type: String
@@ -406,7 +406,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Volitelný parametr označující, zda by kontejner AdminSDHolder neměl být aktualizován pomocí těchto oprávnění.
+Volitelný parametr, který označuje, jestli by se neměl aktualizovat kontejner AdminSDHolder pomocí těchto oprávnění
 
 ```yaml
 Type: SwitchParameter
@@ -420,7 +420,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Co když
+#### <a name="-whatif"></a>-WhatIf
 Zobrazuje, co by se stalo při spuštění rutiny.
 Rutina není spuštěna.
 
@@ -453,12 +453,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Oprávnění set-adsyncexchangemailpublicfolderpermissions
+## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
 ### <a name="synopsis"></a>SYNOPSE
-Inicializovat doménovou strukturu a doménu služby Active Directory pro funkci Veřejné složky pošty exchange.
+Inicializujte svou doménovou strukturu a doménu služby Active Directory pro funkci veřejné složky Exchange pošty.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -469,19 +469,19 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String>
  [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Distinguishedname
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncExchangeMailPublicFolderPermissions uděluje požadovaná oprávnění k účtu synchronizace služby AD, která zahrnují následující:
+Funkce Set-ADSyncExchangeMailPublicFolderPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
-Přístup ke službě Číst u všech atributů pro všechny objekty publicfolder descendant
+Číst přístup k vlastnostem u všech atributů pro všechny objekty následníka PublicFolder
 
-Tato oprávnění jsou použita pro všechny domény v doménové struktuře.
-Volitelně můžete zadat DistinguishedName v ADobjectDN parametr nastavit tato oprávnění pouze pro tento objekt AD (včetně dědičnosti na dílčí objekty).
+Tato oprávnění se vztahují na všechny domény v doménové struktuře.
+Volitelně můžete zadat rozlišující parametr v parametru ADobjectDN pro nastavení těchto oprávnění pouze pro daný objekt AD (včetně dědičnosti na dílčí objekty).
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -507,8 +507,8 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnect
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorNázev_účtu
-Název účtu služby Active Directory, který je nebo bude používat Azure AD Connect Sync ke správě objektů v adresáři.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Název účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -523,7 +523,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Doména účtu služby Active Directory, který je nebo bude používán Azure AD Connect Sync ke správě objektů v adresáři.
+Doména účtu služby Active Directory, která je nebo bude používána Azure AD Connect synchronizace ke správě objektů v adresáři.
 
 ```yaml
 Type: String
@@ -538,7 +538,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName účtu služby Active Directory, který je nebo bude používán azure ad connect sync ke správě objektů v adresáři.
+Rozlišujícímu účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -553,7 +553,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName cílového objektu AD pro nastavení oprávnění (volitelné)
+Rozlišující pole cílového objektu AD pro nastavení oprávnění (volitelné)
 
 ```yaml
 Type: String
@@ -568,7 +568,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Volitelný parametr označující, zda by kontejner AdminSDHolder neměl být aktualizován pomocí těchto oprávnění.
+Volitelný parametr, který označuje, jestli by se neměl aktualizovat kontejner AdminSDHolder pomocí těchto oprávnění
 
 ```yaml
 Type: SwitchParameter
@@ -582,7 +582,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Co když
+#### <a name="-whatif"></a>-WhatIf
 Zobrazuje, co by se stalo při spuštění rutiny.
 Rutina není spuštěna.
 
@@ -615,12 +615,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Oprávnění Guids konzistence set-ADSyncMsDsDsD
+## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
 ### <a name="synopsis"></a>SYNOPSE
-Inicializovat doménovou strukturu a doménu služby Active Directory pro funkci mS-DS-ConsistencyGuid.
+Inicializujte doménovou strukturu a doménu služby Active Directory pro funkci mS-DS-ConsistencyGuid.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -630,19 +630,19 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADCon
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Distinguishedname
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncMsDsKonzistencGuidPermissions uděluje požadovaná oprávnění k účtu synchronizace služby AD, mezi něž patří následující:
+Funkce Set-ADSyncMsDsConsistencyGuidPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
-Přístup ke vlastnostem pro čtení a zápis v atributu mS-DS-ConsistencyGuid pro všechny objekty uživatele potomků
+Přístup k vlastnostem pro čtení a zápis v atributu mS-DS-ConsistencyGuid pro všechny objekty potomků uživatelů
 
-Tato oprávnění jsou použita pro všechny domény v doménové struktuře.
-Volitelně můžete zadat DistinguishedName v ADobjectDN parametr nastavit tato oprávnění pouze pro tento objekt AD (včetně dědičnosti na dílčí objekty).
+Tato oprávnění se vztahují na všechny domény v doménové struktuře.
+Volitelně můžete zadat rozlišující parametr v parametru ADobjectDN pro nastavení těchto oprávnění pouze pro daný objekt AD (včetně dědičnosti na dílčí objekty).
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -668,8 +668,8 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorNázev_účtu
-Název účtu služby Active Directory, který je nebo bude používat Azure AD Connect Sync ke správě objektů v adresáři.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Název účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -684,7 +684,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Doména účtu služby Active Directory, který je nebo bude používán Azure AD Connect Sync ke správě objektů v adresáři.
+Doména účtu služby Active Directory, která je nebo bude používána Azure AD Connect synchronizace ke správě objektů v adresáři.
 
 ```yaml
 Type: String
@@ -699,7 +699,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName účtu služby Active Directory, který je nebo bude používán azure ad connect sync ke správě objektů v adresáři.
+Rozlišujícímu účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -714,7 +714,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName cílového objektu AD pro nastavení oprávnění (volitelné)
+Rozlišující pole cílového objektu AD pro nastavení oprávnění (volitelné)
 
 ```yaml
 Type: String
@@ -729,7 +729,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Volitelný parametr označující, zda by kontejner AdminSDHolder neměl být aktualizován pomocí těchto oprávnění.
+Volitelný parametr, který označuje, jestli by se neměl aktualizovat kontejner AdminSDHolder pomocí těchto oprávnění
 
 ```yaml
 Type: SwitchParameter
@@ -743,7 +743,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Co když
+#### <a name="-whatif"></a>-WhatIf
 Zobrazuje, co by se stalo při spuštění rutiny.
 Rutina není spuštěna.
 
@@ -776,12 +776,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
 ### <a name="synopsis"></a>SYNOPSE
-Inicializovat doménovou strukturu a doménu služby Active Directory pro synchronizaci hodnot hash hesel.
+Inicializujte doménovou strukturu a doménu služby Active Directory pro synchronizaci hodnot hash hesel.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -791,19 +791,19 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnec
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Distinguishedname
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncPasswordHashSyncPermissions uděluje požadovaná oprávnění k účtu synchronizace služby AD, která zahrnují následující:
+Funkce Set-ADSyncPasswordHashSyncPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
-Replikace změn adresáře
+Replikují se změny adresáře.
 2.
-Replikace adresáře změní vše
+Replikují se všechny změny adresáře.
 
-Tato oprávnění jsou udělena všem doménám v doménové struktuře.
+Tato oprávnění jsou udělena pro všechny domény v doménové struktuře.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -819,8 +819,8 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=A
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorNázev_účtu
-Název účtu služby Active Directory, který bude služba Azure AD Connect Sync používat ke správě objektů v adresáři.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Název účtu služby Active Directory, který se bude používat Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -835,7 +835,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Doména účtu služby Active Directory, kterou bude služba Azure AD Connect Sync používat ke správě objektů v adresáři.
+Doména účtu služby Active Directory, která se bude používat Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -850,7 +850,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName účtu služby Active Directory, který bude používat Azure AD Connect Sync ke správě objektů v adresáři.
+Rozlišujícímu účtu služby Active Directory, který bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -864,7 +864,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Co když
+#### <a name="-whatif"></a>-WhatIf
 Zobrazuje, co by se stalo při spuštění rutiny.
 Rutina není spuštěna.
 
@@ -897,12 +897,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncpasswordwritebackpermissions"></a>Oprávnění Set-ADSyncPasswordWritebackPermissions
+## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
 ### <a name="synopsis"></a>SYNOPSE
-Inicializovat doménovou strukturu a doménu služby Active Directory pro zpětný zápis hesla ze služby Azure AD.
+Inicializujte doménovou strukturu a doménu služby Active Directory pro zpětný zápis hesla ze služby Azure AD.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -912,23 +912,23 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConne
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Distinguishedname
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncPasswordWritebackPermissions uděluje požadovaná oprávnění k účtu synchronizace služby AD, která zahrnují následující:
+Funkce Set-ADSyncPasswordWritebackPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
-Obnovit heslo u podřízených uživatelských objektů
+Resetování hesla u uživatelských objektů potomků
 2.
-Přístup k vlastnosti zápisu v atributu lockoutTime pro všechny objekty následníka uživatelů
+Přístup k vlastnostem zápisu v atributu lockoutTime pro všechny objekty potomků uživatele
 3.
-Přístup k vlastnosti zápisu na atribut pwdLastSet pro všechny objekty uživatele potomků
+Přístup k vlastnostem zápisu v atributu pwdLastSet pro všechny objekty potomků uživatele
 
-Tato oprávnění jsou použita pro všechny domény v doménové struktuře.
-Volitelně můžete zadat DistinguishedName v ADobjectDN parametr nastavit tato oprávnění pouze pro tento objekt AD (včetně dědičnosti na dílčí objekty).
+Tato oprávnění se vztahují na všechny domény v doménové struktuře.
+Volitelně můžete zadat rozlišující parametr v parametru ADobjectDN pro nastavení těchto oprávnění pouze pro daný objekt AD (včetně dědičnosti na dílčí objekty).
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -954,8 +954,8 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -AD
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorNázev_účtu
-Název účtu služby Active Directory, který je nebo bude používat Azure AD Connect Sync ke správě objektů v adresáři.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Název účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -970,7 +970,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Doména účtu služby Active Directory, který je nebo bude používán Azure AD Connect Sync ke správě objektů v adresáři.
+Doména účtu služby Active Directory, která je nebo bude používána Azure AD Connect synchronizace ke správě objektů v adresáři.
 
 ```yaml
 Type: String
@@ -985,7 +985,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName účtu služby Active Directory, který je nebo bude používán azure ad connect sync ke správě objektů v adresáři.
+Rozlišujícímu účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -1000,7 +1000,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName cílového objektu AD pro nastavení oprávnění (volitelné)
+Rozlišující pole cílového objektu AD pro nastavení oprávnění (volitelné)
 
 ```yaml
 Type: String
@@ -1015,7 +1015,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Volitelný parametr označující, zda by kontejner AdminSDHolder neměl být aktualizován pomocí těchto oprávnění.
+Volitelný parametr, který označuje, jestli by se neměl aktualizovat kontejner AdminSDHolder pomocí těchto oprávnění
 
 ```yaml
 Type: SwitchParameter
@@ -1029,7 +1029,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Co když
+#### <a name="-whatif"></a>-WhatIf
 Zobrazuje, co by se stalo při spuštění rutiny.
 Rutina není spuštěna.
 
@@ -1062,14 +1062,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncrestrictedpermissions"></a>Oprávnění Set-AdsyncrestrictedPermissions
+## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
 ### <a name="synopsis"></a>SYNOPSE
-Zpřísňte oprávnění pro objekt ad, který není jinak součástí žádné skupiny zabezpečení chráněné ho diody.
-Typickým příkladem je účet AD Connect (MSOL) vytvořený službou AAD Connect automaticky.
-Tento účet má oprávnění replikovat ve všech doménách, ale může být snadno ohrožena, protože není chráněna.
+Umožňuje posílit oprávnění objektu AD, který není v žádné skupině zabezpečení s ochranou AD zahrnutý jinak.
+Typickým příkladem je účet služby AD Connect (MSOL) vytvořený pomocí AAD Connect automaticky.
+Tento účet má oprávnění k replikaci u všech domén, ale dá se snadno ohrozit, protože není chráněný.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -1079,13 +1079,13 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncRestrictedPermissions zpřísní oprávnění oo poskytnutého účtu.
-Oprávnění k dotažení zahrnují následující kroky:
+Funkce Set-ADSyncRestrictedPermissions bude sestavovat oprávnění po přečtení poskytnutého účtu.
+Oprávnění k zpřísnění zahrnuje následující kroky:
 1.
-Zakázat dědičnost zadaného objektu
+Zakázat dědění pro zadaný objekt
 2.
-Odeberte všechny ace na konkrétní objekt, s výjimkou ACE specifické pro SELF.
-Chceme zachovat výchozí oprávnění neporušená, pokud jde o SELF.
+Odebere všechny položky ACE u konkrétního objektu s výjimkou položek ACE specifických pro sebe.
+Chceme, aby výchozí oprávnění zůstala beze změny, když se dostane do sebe.
 3.
 Přiřaďte tato konkrétní oprávnění:
 
@@ -1114,8 +1114,8 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN "CN=TestAccount1,CN=Users,
 ### <a name="parameters"></a>PARAMETRY
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName účtu služby Active Directory, jehož oprávnění je třeba zpřísnit.
-Obvykle se jedná o účet MSOL_nnnnnnnnnn nebo vlastní doménový účet, který je nakonfigurován v konektoru služby AD.
+Rozlišující pole účtu služby Active Directory, jehož oprávnění je potřeba zvýšit
+Obvykle se jedná o účet MSOL_nnnnnnnnnn nebo vlastní účet domény, který je nakonfigurovaný v konektoru služby AD.
 
 ```yaml
 Type: String
@@ -1130,7 +1130,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-credential"></a>-Credential
-Pověření správce, které má potřebná oprávnění k omezení oprávnění k účtu ADConnectorAccountDN. Obvykle se jedná o správce rozlehlé sítě nebo domény. Chcete-li se vyhnout selhání vyhledávání účtu, použijte plně kvalifikovaný název domény účtu správce.
+Pověření správce, které má potřebná oprávnění k omezení oprávnění účtu ADConnectorAccountDN. Většinou se jedná o podnik nebo správce domény. Použijte plně kvalifikovaný název domény účtu správce, aby nedocházelo k chybám při vyhledávání účtů.
 Příklad: CONTOSO\admin
 
 ```yaml
@@ -1146,7 +1146,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-disablecredentialvalidation"></a>-DisableCredentialValidation
-Při použití DisableCredentialValidation funkce nezkontroluje, zda jsou pověření uvedená v -Credential platná ve službě AD a zda má poskytnutý účet potřebná oprávnění k omezení oprávnění k účtu ADConnectorAccountDN.
+Když se použije DisableCredentialValidation, funkce se neověří, jestli jsou přihlašovací údaje zadané v přihlašovacích údajích platné ve službě AD a jestli má poskytnutý účet potřebná oprávnění k omezení oprávnění pro účet ADConnectorAccountDN.
 
 ```yaml
 Type: SwitchParameter
@@ -1160,7 +1160,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Co když
+#### <a name="-whatif"></a>-WhatIf
 Zobrazuje, co by se stalo při spuštění rutiny.
 Rutina není spuštěna.
 
@@ -1193,12 +1193,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Oprávnění Zpětného zápisu set-ADSyncUnifiedGroupWritebackPermissions
+## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
 ### <a name="synopsis"></a>SYNOPSE
-Inicializovat doménovou strukturu a doménu služby Active Directory pro zpětné zápisskupiny z Azure AD.
+Inicializujte svou doménovou strukturu a doménu služby Active Directory pro zpětný zápis skupin z Azure AD.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -1208,20 +1208,20 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADC
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Distinguishedname
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncUnifiedGroupWritebackPermissions bude udělovat požadovaná oprávnění k účtu synchronizace služby AD, která zahrnují následující:
+Funkce Set-ADSyncUnifiedGroupWritebackPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
-Obecný soubor Pro čtení/zápis, Odstranění, Odstranění stromu a Vytvořit\Odstranit podřízenou položku pro všechny typy objektů skupiny a podobjekty
+Obecný pro čtení, zápis, odstranění, odstranění stromu a Create\Delete podřízenou položku pro všechny typy objektů skupiny a podobjekty
 
-Tato oprávnění jsou použita pro všechny domény v doménové struktuře.
-Volitelně můžete zadat DistinguishedName v ADobjectDN parametr nastavit tato oprávnění pouze pro tento objekt AD (včetně dědičnosti na dílčí objekty).
-V tomto případě ADobjectDN bude rozlišující název kontejneru, který chcete propojit s GroupWriteback funkce.
+Tato oprávnění se vztahují na všechny domény v doménové struktuře.
+Volitelně můžete zadat rozlišující parametr v parametru ADobjectDN pro nastavení těchto oprávnění pouze pro daný objekt AD (včetně dědičnosti na dílčí objekty).
+V tomto případě bude ADobjectDN rozlišující název kontejneru, který si přejete propojit s funkcí GroupWriteback.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -1247,8 +1247,8 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector'
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorNázev_účtu
-Název účtu služby Active Directory, který je nebo bude používat Azure AD Connect Sync ke správě objektů v adresáři.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Název účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -1263,7 +1263,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Doména účtu služby Active Directory, který je nebo bude používán Azure AD Connect Sync ke správě objektů v adresáři.
+Doména účtu služby Active Directory, která je nebo bude používána Azure AD Connect synchronizace ke správě objektů v adresáři.
 
 ```yaml
 Type: String
@@ -1278,7 +1278,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName účtu služby Active Directory, který je nebo bude používán azure ad connect sync ke správě objektů v adresáři.
+Rozlišujícímu účtu služby Active Directory, který je nebo bude používán Azure AD Connect synchronizace pro správu objektů v adresáři.
 
 ```yaml
 Type: String
@@ -1293,7 +1293,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName cílového objektu AD pro nastavení oprávnění (volitelné)
+Rozlišující pole cílového objektu AD pro nastavení oprávnění (volitelné)
 
 ```yaml
 Type: String
@@ -1308,7 +1308,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Volitelný parametr označující, zda by kontejner AdminSDHolder neměl být aktualizován pomocí těchto oprávnění.
+Volitelný parametr, který označuje, jestli by se neměl aktualizovat kontejner AdminSDHolder pomocí těchto oprávnění
 
 ```yaml
 Type: SwitchParameter
@@ -1322,7 +1322,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Co když
+#### <a name="-whatif"></a>-WhatIf
 Zobrazuje, co by se stalo při spuštění rutiny.
 Rutina není spuštěna.
 
@@ -1355,12 +1355,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="show-adsyncadobjectpermissions"></a>Oprávnění zobrazit adsyncadobjectpermissions
+## <a name="show-adsyncadobjectpermissions"></a>Zobrazit – ADSyncADObjectPermissions
 
 ### <a name="synopsis"></a>SYNOPSE
-Zobrazí oprávnění určeného objektu AD.
+Zobrazí oprávnění zadaného objektu AD.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -1369,8 +1369,8 @@ Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>POPIS
-Tato funkce vrátí všechna oprávnění ad aktuálně nastavená pro daný objekt AD, která jsou k dispozici v parametru -ADobjectDN.
-ADobjectDN musí být poskytnuta ve formátu DistinguishedName.
+Tato funkce vrací všechna oprávnění služby AD aktuálně nastavená pro daný objekt služby Active Directory zadané v parametru-ADobjectDN.
+ADobjectDN musí být k dispozici ve formátu rozlišujícího.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -1398,4 +1398,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).

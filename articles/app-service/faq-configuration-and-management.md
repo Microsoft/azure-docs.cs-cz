@@ -1,6 +1,6 @@
 ---
-title: Časté otázky ke konfiguraci
-description: Získejte odpovědi na nejčastější dotazy týkající se problémů s konfigurací a správou služby Azure App Service.
+title: Nejčastější dotazy ke konfiguraci
+description: Získejte odpovědi na nejčastější dotazy týkající se problémů s konfigurací a správou pro Azure App Service.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,134 +8,134 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 810219bca5c75e3ee7e65c6b7302531bca89788d
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869966"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159996"
 ---
-# <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy ke konfiguraci a správě webových aplikací v Azure
+# <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
-Tento článek obsahuje odpovědi na nejčastější dotazy týkající se problémů s konfigurací a správou [funkce Webové aplikace služby Azure App Service](https://azure.microsoft.com/services/app-service/web/).
+V tomto článku najdete odpovědi na nejčastější dotazy týkající se problémů s konfigurací a správou [funkce Web Apps Azure App Service](https://azure.microsoft.com/services/app-service/web/).
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Existují omezení, o kterých bych měl vědět, pokud chci přesunout prostředky služby App Service?
+## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Existují nějaká omezení, o kterých byste měli vědět, pokud chci přesunout App Service prostředky?
 
-Pokud máte v plánu přesunout prostředky služby App Service do nové skupiny prostředků nebo předplatného, existuje několik omezení, které je třeba znát. Další informace naleznete v tématu [Omezení služby App Service](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
+Pokud plánujete přesunout App Service prostředků do nové skupiny prostředků nebo předplatného, existuje několik omezení, o kterých byste měli vědět. Další informace najdete v tématu [omezení App Service](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
-## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Jak se používá vlastní název domény pro svou webovou aplikaci?
+## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Návody použít pro moji webovou aplikaci vlastní název domény?
 
-Odpovědi na časté otázky týkající se používání vlastního názvu domény ve webové aplikaci Azure najdete v našem sedmiminutovém videu [Přidání vlastního názvu domény](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name). Video nabízí návod, jak přidat vlastní název domény. Popisuje, jak používat vlastní adresu URL namísto adresy URL *.azurewebsites.net s webovou aplikací Služby aplikací. Můžete také zobrazit podrobný [návod, jak mapovat vlastní název domény](app-service-web-tutorial-custom-domain.md).
-
-
-## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>Jak si koupím novou vlastní doménu pro webovou aplikaci?
-
-Informace o tom, jak zakoupit a nastavit vlastní doménu pro webovou aplikaci Služby Aplikace, najdete [v tématu Nákup a konfigurace vlastního názvu domény ve službě App Service](manage-custom-dns-buy-domain.md).
+Odpovědi na běžné dotazy týkající se používání vlastního názvu domény ve webové aplikaci Azure najdete v našem sedmi minutách. [přidejte si vlastní název domény](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name). Video nabízí návod, jak přidat vlastní název domény. Popisuje, jak použít vlastní adresu URL místo adresy URL *. azurewebsites.net ve vaší webové aplikaci App Service. Můžete si také prohlédnout podrobný návod, [jak namapovat vlastní název domény](app-service-web-tutorial-custom-domain.md).
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>Jak nahraji a nakonfiguruji existující certifikát TLS/SSL pro svou webovou aplikaci?
+## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>Návody koupit novou vlastní doménu pro moji webovou aplikaci?
 
-Informace o tom, jak nahrát a nastavit existující vlastní certifikát TLS/SSL, najdete v článku [Přidání certifikátu TLS/SSL do aplikace App Service](configure-ssl-certificate.md).
-
-
-## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>Jak si v Azure pro webovou aplikaci koupím a nakonfiguruji nový certifikát TLS/SSL?
-
-Informace o tom, jak zakoupit a nastavit certifikát TLS/SSL pro webovou aplikaci Služby aplikace, najdete [v tématu Přidání certifikátu TLS/SSL do aplikace App Service](configure-ssl-certificate.md).
+Informace o tom, jak koupit a nastavit vlastní doménu pro App Service webovou aplikaci, najdete v tématu [Nákup a konfigurace vlastního názvu domény v App Service](manage-custom-dns-buy-domain.md).
 
 
-## <a name="how-do-i-move-application-insights-resources"></a>Jak se přesunout prostředky Application Insights?
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>Návody nahrát a nakonfigurovat existující certifikát TLS/SSL pro moji webovou aplikaci?
 
-V současné době Azure Application Insights nepodporuje operaci přesunutí. Pokud původní skupina prostředků obsahuje prostředek Application Insights, nelze tento prostředek přesunout. Pokud při pokusu o přesunutí aplikace App Service zahrnete prostředek Application Insights, celá operace přesunutí se nezdaří. Přehledy aplikací a plán služby App Service však nemusí být ve stejné skupině prostředků jako aplikace, aby aplikace fungovala správně.
+Informace o tom, jak nahrát a nastavit stávající vlastní certifikát TLS/SSL, najdete v tématu [Přidání certifikátu TLS/SSL do aplikace App Service](configure-ssl-certificate.md).
 
-Další informace naleznete v tématu [Omezení služby App Service](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
-## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Kde najdu kontrolní seznam pokynů a další informace o operacích přesunu prostředků?
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>Návody koupit a nakonfigurovat nový certifikát TLS/SSL v Azure pro moji webovou aplikaci?
 
-[Omezení služby App Service](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md) ukazuje, jak přesunout prostředky do nového předplatného nebo do nové skupiny prostředků ve stejném předplatném. Můžete získat informace o kontrolním seznamu přesunu prostředků, zjistit, které služby podporují operaci přesunutí a získat další informace o omezeních služby App Service a dalších tématech.
+Informace o nákupu a nastavení certifikátu TLS/SSL pro App Service webové aplikace najdete v tématu [Přidání certifikátu TLS/SSL do aplikace App Service](configure-ssl-certificate.md).
 
-## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Jak nastavím časové pásmo serveru pro webovou aplikaci?
 
-Nastavení časového pásma serveru pro webovou aplikaci:
+## <a name="how-do-i-move-application-insights-resources"></a>Návody přesunout prostředky Application Insights?
 
-1. Na webu Azure Portal přejděte v předplacené službě App Service do nabídky **Nastavení aplikace.**
-2. V části **Nastavení aplikace**přidejte toto nastavení:
-    * Klíč = WEBSITE_TIME_ZONE
-    * Hodnota = *požadované časové pásmo*
+V současné době Azure Application Insights nepodporuje operaci přesunu. Pokud původní skupina prostředků zahrnuje prostředek Application Insights, nemůžete tento prostředek přesunout. Pokud při pokusu o přesunutí aplikace App Service přidáte prostředek Application Insights, celá operace přesunu se nezdařila. Application Insights a plán App Service ale nemusí být ve stejné skupině prostředků, jako aplikace, aby aplikace správně fungovala.
+
+Další informace najdete v tématu [omezení App Service](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
+
+## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Kde najdu kontrolní seznam pokynů a další informace o operacích přesunutí prostředků?
+
+[App Service omezením](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md) se dozvíte, jak přesunout prostředky do nového předplatného nebo do nové skupiny prostředků ve stejném předplatném. Můžete získat informace o kontrolním seznamu pro přesunutí prostředků, zjistit, které služby podporují operaci přesunu, a získat další informace o omezeních App Service a dalších tématech.
+
+## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Návody nastavit časové pásmo serveru pro moji webovou aplikaci?
+
+Nastavení časového pásma serveru pro vaši webovou aplikaci:
+
+1. V Azure Portal v předplatném App Service přejděte do nabídky **nastavení aplikace** .
+2. V části **nastavení aplikace**přidejte toto nastavení:
+    * Key = WEBSITE_TIME_ZONE
+    * Hodnota = *časové pásmo, které chcete*
 3. Vyberte **Uložit**.
 
-Pro služby aplikace, které běží na Windows, naleznete ve sloupci **Časové pásmo** v článku [Výchozí časová pásma](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) pro přijaté hodnoty. Pro služby App, které běží na Linuxu, nastavte [název databáze TZ](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) jako hodnotu časového pásma. Zde je příklad názvu databáze TZ: America/Adak.
+Pro služby App Service, které jsou spuštěné v systému Windows, se ve sloupci **timezone (časové pásmo** ) v článku [výchozí časové pásmo](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) pro přijaté hodnoty zobrazí. Pro služby App Services spuštěné v systému Linux nastavte jako hodnotu časového pásma [název TZ databáze](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) . Tady je příklad názvu TZ databáze: America/Adak.
 
-## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Proč se moje průběžné webjobs někdy nezdaří?
+## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Proč dojde k selhání mých nepřetržitých webových úloh?
 
-Ve výchozím nastavení jsou webové aplikace uvolněny, pokud jsou nečinné po nastavenou dobu. To umožňuje systému šetřit prostředky. V základních a standardních plánech můžete zapnout nastavení **Vždy zapnuto,** aby webová aplikace byla neustále načtená. Pokud vaše webová aplikace běží souvislé WebJobs, měli byste zapnout **vždy zapnuto**, nebo webjobs nemusí běžet spolehlivě. Další informace naleznete [v tématu Vytvoření nepřetržitě spuštěné webové úlohy](webjobs-create.md#CreateContinuous).
+Ve výchozím nastavení jsou webové aplikace uvolněny, pokud nejsou po stanovenou dobu nečinné. To umožňuje systému šetřit prostředky. V plánech Basic a Standard můžete zapnout nastavení **Always On** , aby se webová aplikace neustále načetla. Pokud vaše webová aplikace spouští nepřetržité webové úlohy, měli byste zapnout funkci **Always On**, jinak nemusí být webové úlohy spolehlivě fungovat. Další informace najdete v tématu [Vytvoření nepřetržitě spuštěné úlohy WebJob](webjobs-create.md#CreateContinuous).
 
-## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Jak získám odchozí IP adresu webové aplikace?
+## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Návody získat odchozí IP adresu pro moji webovou aplikaci?
 
-Získání seznamu odchozích IP adres webové aplikace:
+Získání seznamu odchozích IP adres pro vaši webovou aplikaci:
 
-1. Na webu Azure Portal přejděte v okně webové aplikace do nabídky **Vlastnosti.**
-2. Vyhledejte **odchozí adresy IP**.
+1. V okně Azure Portal v okně webové aplikace přejděte do nabídky **vlastnosti** .
+2. Vyhledejte **odchozí IP adresy**.
 
-Zobrazí se seznam odchozích adres IP.
+Zobrazí se seznam odchozích IP adres.
 
-Informace o tom, jak získat odchozí IP adresu, pokud je váš web hostovaný v prostředí [Služby](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses)App Service, najdete v tématu Odchozí síťové adresy .
+Informace o tom, jak získat odchozí IP adresu, pokud je váš web hostovaný v App Service Environment, najdete v tématu [odchozí síťové adresy](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses).
 
-## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Jak získám vyhrazenou nebo vyhrazenou příchozí IP adresu pro svou webovou aplikaci?
+## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Návody získat rezervovanou nebo vyhrazenou příchozí IP adresu pro moji webovou aplikaci?
 
-Pokud chcete nastavit vyhrazenou nebo vyhrazenou IP adresu pro příchozí volání na web aplikace Azure, nainstalujte a nakonfigurujte certifikát TLS/SSL založený na IP adresách.
+K nastavení vyhrazené nebo rezervované IP adresy pro příchozí hovory provedené na webu Azure App nainstalujte a nakonfigurujte certifikát TLS/SSL založený na protokolu IP.
 
-Všimněte si, že chcete-li použít vyhrazenou nebo vyhrazenou IP adresu pro příchozí volání, váš plán služby App Service musí být v plánu základní nebo vyšší služby.
+Všimněte si, že pokud chcete použít vyhrazenou nebo rezervovanou IP adresu pro příchozí volání, musí být plán App Service v plánu služeb Basic nebo vyšší.
 
-## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>Můžu exportovat certifikát služby App Service, aby se používal mimo Azure, třeba pro web hostovaný jinde? 
+## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>Můžu exportovat App Service můj certifikát pro použití mimo Azure, například pro web hostující jinde? 
 
-Ano, můžete je exportovat a používat mimo Azure. Další informace najdete v [tématu Nejčastější dotazy k certifikátům služby App Service a vlastním doménám](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
+Ano, můžete je exportovat, abyste je mohli používat mimo Azure. Další informace najdete v tématu [Nejčastější dotazy týkající se App Service certifikátů a vlastních domén](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
 
-## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>Můžu exportovat certifikát služby App Service pro použití s jinými cloudovými službami Azure?
+## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>Můžu exportovat svůj App Service certifikát pro použití s dalšími Cloud Services Azure?
 
-Portál poskytuje prvotřídní prostředí pro nasazení certifikátu služby App Service prostřednictvím azure key vaultu do aplikací App Service. Od zákazníků jsme však dostávali žádosti o použití těchto certifikátů mimo platformu služby App Service, například s virtuálními počítači Azure. Informace o tom, jak vytvořit místní kopii Certifikátu služby App Service, abyste mohli certifikát používat s jinými prostředky Azure, najdete [v tématu Vytvoření místní kopie PFX certifikátu služby App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
+Portál poskytuje prvotřídní prostředí pro nasazení App Serviceho certifikátu prostřednictvím Azure Key Vault pro App Service aplikací. Dostali jsme ale žádosti od zákazníků, aby tyto certifikáty používali mimo App Service platformu, například pomocí Azure Virtual Machines. Pokud se chcete dozvědět, jak vytvořit místní kopii PFX certifikátu App Service, abyste mohli používat certifikát s dalšími prostředky Azure, přečtěte si téma [Vytvoření místní kopie PFX certifikátu App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
 
-Další informace najdete v [tématu Nejčastější dotazy k certifikátům služby App Service a vlastním doménám](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
+Další informace najdete v tématu [Nejčastější dotazy týkající se App Service certifikátů a vlastních domén](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
 
 
-## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>Proč se při pokusu o zálohování webové aplikace zobrazuje zpráva Částečně úspěšná?
+## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>Proč se při pokusu o zálohování webové aplikace zobrazí zpráva "částečně úspěšné"?
 
-Častou příčinou selhání zálohování je, že některé soubory jsou používány aplikací. Soubory, které jsou používány, jsou při zálohování uzamčeny. Tím zabráníte zálohování těchto souborů a může dojít k částečnému úspěšnému stavu. Můžete potenciálně zabránit tomu, aby k tomu došlo vyloučením souborů z procesu zálohování. Můžete si vybrat zálohovat pouze to, co je potřeba. Další informace najdete v [tématu Zálohování pouze důležitých částí vašeho webu pomocí webových aplikací Azure](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/).
+Běžnou příčinou selhání zálohování je, že aplikace používá některé soubory. Soubory, které jsou používány, jsou při provádění zálohy uzamčeny. Tím se zabrání v zálohování těchto souborů a výsledkem může být stav "částečně úspěšné". Můžete tak zabránit tomu, aby k tomu došlo, vyloučením souborů z procesu zálohování. Můžete se rozhodnout zálohovat jenom to, co je potřeba. Další informace najdete v tématu [zálohování pouze důležitých částí vaší lokality pomocí Azure Web Apps](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/).
 
-## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Jak odeberu záhlaví z odpovědi HTTP?
+## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Návody odebrat hlavičku z odpovědi HTTP?
 
-Chcete-li odebrat záhlaví z odpovědi HTTP, aktualizujte soubor web.config webu. Další informace najdete [v tématu Odebrání záhlaví standardních serverů na webech Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
+Chcete-li odebrat hlavičky z odpovědi HTTP, aktualizujte soubor Web. config vašeho webu. Další informace najdete v tématu [Odebrání standardních hlaviček serveru na Azure websites](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
 
-## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>Je služba App Service kompatibilní se standardy PCI Standard 3.0 a 3.1?
+## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>Je App Service kompatibilní se standardem PCI 3,0 a 3,1?
 
-V současné době je funkce Webové aplikace služby Azure App Service v souladu se standardem PCI Data Security Standard (DSS) verze 3.0 úrovně 1. PCI DSS verze 3.1 je na našem plánu. Plánování již probíhá, jak bude pokračovat přijetí nejnovějšínormy.
+V současné době je funkce Web Apps Azure App Service v souladu s verzí DSS (PCI data Security Standard) 3,0 úrovně 1. PCI DSS verze 3,1 se nachází v naší mapě. Plánování už probíhá, pokud budete pokračovat v přijímání nejnovějšího standardního standardu.
 
-Certifikace PCI DSS verze 3.1 vyžaduje zakázání zabezpečení transportní vrstvy (TLS) 1.0. V současné době zakázání TLS 1.0 není možnost pro většinu plánů služby App Service. Pokud však používáte prostředí služby App Service nebo jste ochotni migrovat své úlohy do prostředí služby App Service, můžete získat větší kontrolu nad svým prostředím. To zahrnuje zakázání TLS 1.0 kontaktováním podpory Azure. V blízké budoucnosti plánujeme zpřístupnit tato nastavení uživatelům.
+PCI DSS certifikace verze 3,1 vyžaduje zakázání protokolu TLS (Transport Layer Security) 1,0. V současné době zakázání TLS 1,0 není možností pro většinu plánů App Service. Pokud ale použijete App Service Environment nebo jste ochotni migrovat vaše zatížení do App Service Environment, můžete získat větší kontrolu nad prostředím. To zahrnuje zakázání TLS 1,0 kontaktováním podpory Azure. V blízké budoucnosti plánujete, aby tato nastavení byla uživatelům přístupná.
 
-Další informace najdete v tématu [Kompatibilita webových aplikací služby Microsoft Azure App Service s PCI Standard 3.0 a 3.1](https://support.microsoft.com/help/3124528).
+Další informace najdete v tématu [Microsoft Azure App Service dodržování předpisů webových aplikací pomocí standardu PCI 3,0 a 3,1](https://support.microsoft.com/help/3124528).
 
-## <a name="how-do-i-use-the-staging-environment-and-deployment-slots"></a>Jak se používá pracovní prostředí a sloty nasazení?
+## <a name="how-do-i-use-the-staging-environment-and-deployment-slots"></a>Návody použít testovací prostředí a nasazovací sloty?
 
-V plánech Standardní a Premium App Service, když nasadíte webovou aplikaci do služby App Service, můžete nasadit do samostatného slotu pro nasazení namísto do výchozího produkčního slotu. Sloty pro nasazení jsou živé webové aplikace, které mají své vlastní názvy hostitelů. Obsah webové aplikace a konfigurační prvky lze přepínat mezi dvěma sloty nasazení, včetně produkčního slotu.
+Když v plánech Standard a Premium App Service nasadíte webovou aplikaci na App Service, můžete ji nasadit do samostatného slotu nasazení místo do výchozí produkční přihrádky. Sloty nasazení jsou živé webové aplikace, které mají vlastní názvy hostitelů. Prvky obsahu a konfigurace webové aplikace je možné prohodit mezi dvěma sloty nasazení, včetně produkčního slotu.
 
-Další informace o používání slotů nasazení najdete [v tématu Nastavení pracovního prostředí ve službě App Service](deploy-staging-slots.md).
+Další informace o použití slotů nasazení najdete v tématu [Nastavení přípravného prostředí v App Service](deploy-staging-slots.md).
 
-## <a name="how-do-i-access-and-review-webjob-logs"></a>Jak lze získat přístup k protokolům webjobů a zkontrolovat je?
+## <a name="how-do-i-access-and-review-webjob-logs"></a>Návody přístup a kontrola protokolů webové úlohy?
 
-Kontrola protokolů webjobů:
+Kontrola protokolů webové úlohy:
 
-1. Přihlaste se na [své webové stránky Kudu](https://*yourwebsitename*.scm.azurewebsites.net).
+1. Přihlaste se k **webu Kudu** (`https://*yourwebsitename*.scm.azurewebsites.net`).
 2. Vyberte webovou úlohu.
-3. Vyberte tlačítko **Přepnout výstup.**
-4. Chcete-li stáhnout výstupní soubor, vyberte odkaz **Stáhnout.**
-5. Pro jednotlivé spuštění vyberte **možnost Individuální vyvolání**.
-6. Vyberte tlačítko **Přepnout výstup.**
+3. Vyberte tlačítko **přepnout výstup** .
+4. Pokud chcete stáhnout výstupní soubor, vyberte odkaz **ke stažení** .
+5. Pro jednotlivé běhy vyberte **jednotlivé vyvolání**.
+6. Vyberte tlačítko **přepnout výstup** .
 7. Vyberte odkaz ke stažení.
 
-## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Pokouším se použít hybridní připojení se serverem SQL Server. Proč se zobrazuje zpráva "System.OverflowException: Aritmetická operace vedla k přetečení"?
+## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Snažím se použít Hybrid Connections s SQL Server. Proč se zobrazí zpráva "System. OverflowException: aritmetická operace vedla k přetečení"?
 
-Pokud používáte hybridní připojení pro přístup k serveru SQL Server, aktualizace microsoft .NET na 10 května 2016, může způsobit selhání připojení. Může se zobrazit tato zpráva:
+Pokud používáte Hybrid Connections pro přístup k SQL Server, může aktualizace Microsoft .NET na 10, 2016 způsobit selhání připojení. Může se zobrazit tato zpráva:
 
 ```
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
@@ -143,124 +143,124 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ### <a name="resolution"></a>Řešení
 
-Výjimka byla způsobena problémem s správcem hybridního připojení, který byl od té doby opraven. Chcete-li tento problém vyřešit, [aktualizujte správce hybridního připojení.](https://go.microsoft.com/fwlink/?LinkID=841308)
+Výjimka byla způsobena problémem s Správce hybridního připojení, která od byla opravena. Nezapomeňte [aktualizovat správce hybridního připojení](https://go.microsoft.com/fwlink/?LinkID=841308) pro vyřešení tohoto problému.
 
-## <a name="how-do-i-add-a-url-rewrite-rule"></a>Jak přidám pravidlo pro přepis adresy URL?
+## <a name="how-do-i-add-a-url-rewrite-rule"></a>Návody přidat pravidlo pro přepsání adresy URL?
 
-Chcete-li přidat pravidlo přepisu adresy URL, vytvořte soubor web.config s příslušnými položkami konfigurace ve složce **wwwroot.** Další informace najdete [v tématu Azure App Services: Principy přepisu adres URL](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
+Chcete-li přidat pravidlo přepsání adresy URL, vytvořte soubor Web. config s příslušnými konfiguračními položkami ve složce **wwwroot** . Další informace najdete v tématu [Azure App Services: principy přepsání adresy URL](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
 
-## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Jak můžu řídit příchozí provoz do Služby App Service?
+## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Návody řízení příchozího provozu do App Service?
 
-Na úrovni webu máte dvě možnosti pro řízení příchozího provozu do služby App Service:
+Na úrovni webu máte dvě možnosti řízení příchozího provozu do App Service:
 
-* Zapněte dynamická omezení IP adres. Informace o tom, jak zapnout dynamická omezení IP adres, najdete v [tématu Omezení IP adres a domén pro weby Azure](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/).
-* Zapněte zabezpečení modulu. Informace o tom, jak zapnout zabezpečení modulů, najdete v tématu [Brána firewall webové aplikace ModSecurity na webech Azure](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/).
+* Zapněte dynamická omezení IP adres. Pokud se chcete dozvědět, jak zapnout dynamická omezení IP adres, přečtěte si téma [omezení IP adresy a domény pro Azure websites](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/).
+* Zapněte zabezpečení modulů. Informace o tom, jak zapnout zabezpečení modulů, najdete v tématu [ModSecurity Firewall webových aplikací v Azure websites](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/).
 
-Pokud používáte prostředí Služby App Service, můžete použít [bránu firewall Barracuda](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/).
+Pokud používáte App Service Environment, můžete použít [bránu firewall Barracuda](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/).
 
-## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Jak zablokuji porty ve webové aplikaci App Service?
+## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Návody blokovat porty ve App Service webové aplikaci?
 
-Ve sdíleném prostředí klienta služby App Service není možné blokovat konkrétní porty z důvodu povahy infrastruktury. TCP porty 4020, 4022 a 4024 může být také otevřena pro vzdálené ladění sady Visual Studio.
+Ve sdíleném prostředí klienta App Service není možné zablokovat konkrétní porty kvůli povaze infrastruktury. Pro vzdálené ladění sady Visual Studio se můžou otevřít taky porty TCP 4020, 4022 a 4024.
 
-V prostředí služby App Service máte plnou kontrolu nad příchozím a odchozím provozem. Skupiny zabezpečení sítě můžete použít k omezení nebo zablokování určitých portů. Další informace o prostředí služby App Service [najdete v tématu Zavedení prostředí služby App Service](https://azure.microsoft.com/blog/introducing-app-service-environment/).
+V App Service Environment máte plnou kontrolu nad příchozím a odchozím provozem. Skupiny zabezpečení sítě můžete použít k omezení nebo blokování konkrétních portů. Další informace o App Service Environment najdete v tématu [Úvod do App Service Environment](https://azure.microsoft.com/blog/introducing-app-service-environment/).
 
-## <a name="how-do-i-capture-an-f12-trace"></a>Jak lze zachytit trasování F12?
+## <a name="how-do-i-capture-an-f12-trace"></a>Návody zachytit trasování F12?
 
-Máte dvě možnosti pro zachycení trasování F12:
+Pro zachycení trasování F12 máte dvě možnosti:
 
-* Trasování HTTP F12
+* Trasování protokolu HTTP F12
 * Výstup konzoly F12
 
-### <a name="f12-http-trace"></a>Trasování HTTP F12
+### <a name="f12-http-trace"></a>Trasování protokolu HTTP F12
 
-1. V Aplikaci Internet Explorer přejděte na svůj web. Před dalším krokem je důležité se přihlásit. V opačném případě trasování F12 zachycuje citlivá data přihlášení.
+1. V Internet Exploreru přejdete na web. Před provedením dalších kroků je důležité se přihlásit. V opačném případě trasování F12 zachytí citlivá přihlašovací data.
 2. Stiskněte klávesu F12.
-3. Ověřte, zda je vybraná karta **Síť,** a pak vyberte zelené tlačítko **Přehrát.**
-4. Proveďte kroky, které reprodukují problém.
-5. Vyberte červené tlačítko **Zastavit.**
-6. Vyberte tlačítko **Uložit** (ikona disku) a uložte soubor HAR (v aplikaci Internet Explorer a Microsoft Edge) *nebo* klepněte pravým tlačítkem myši na soubor HAR a pak vyberte **Uložit jako HAR s obsahem** (v Chromu).
+3. Ověřte, že je vybraná karta **síť** , a pak vyberte zelené tlačítko **Přehrát** .
+4. Proveďte kroky, které reprodukovaly problém.
+5. Vyberte tlačítko červeného **zastavení** .
+6. Vyberte tlačítko **Uložit** (ikona disku) a uložte soubor Har (v Internet Exploreru a Microsoft Edge) *nebo* klikněte pravým tlačítkem myši na soubor Har a pak vyberte **Uložit jako Har s obsahem** (v Chrome).
 
 ### <a name="f12-console-output"></a>Výstup konzoly F12
 
-1. Vyberte kartu **Konzola.**
-2. Pro každou kartu, která obsahuje více než nula položek, vyberte kartu (**Chyba**, **Upozornění**nebo **Informace**). Pokud karta není vybraná, ikona karty je šedá nebo černá, když přesunete kurzor od ní.
-3. Klepněte pravým tlačítkem myši do oblasti zprávy v podokně a pak vyberte **kopírovat vše**.
-4. Vložte zkopírovaný text do souboru a uložte soubor.
+1. Vyberte kartu **Konzola** .
+2. Pro každou kartu, která obsahuje více než 0 položek, vyberte kartu (**Chyba**, **varování**nebo **informace**). Pokud karta není vybraná, ikona karty je po přesunutí kurzoru z ní šedá nebo černá.
+3. V oblasti zpráv v podokně klikněte pravým tlačítkem myši a vyberte možnost **Kopírovat vše**.
+4. Vložte zkopírovaný text do souboru a pak soubor uložte.
 
-Chcete-li zobrazit soubor HAR, můžete použít [prohlížeč HAR](http://www.softwareishard.com/har/viewer/).
+Chcete-li zobrazit soubor HAR, můžete použít [prohlížeč Har](http://www.softwareishard.com/har/viewer/).
 
-## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Proč se při pokusu o připojení webové aplikace App Service k virtuální síti připojené k ExpressRoute zobrazí chyba?
+## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Proč se při pokusu o připojení webové aplikace App Service k virtuální síti, která je připojená k ExpressRoute, zobrazí chyba?
 
-Pokud se pokusíte připojit webovou aplikaci Azure k virtuální síti, která je připojená k Azure ExpressRoute, nezdaří se. Zobrazí se následující zpráva: "Brána není brána VPN."
+Pokud se pokusíte připojit webovou aplikaci Azure k virtuální síti, která je připojená k Azure ExpressRoute, dojde k jejímu chybě. Zobrazí se následující zpráva: "brána není bránou sítě VPN."
 
-V současné době nelze mít připojení VPN z bodu na místo k virtuální síti, která je připojena k ExpressRoute. Vpn point-to-site a ExpressRoute nemohou existovat společně pro stejnou virtuální síť. Další informace naleznete v tématu [ExpressRoute a omezení připojení VPN mezi lokalitami](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations).
+V současné době nemůžete mít připojení VPN typu Point-to-site k virtuální síti, která je připojená k ExpressRoute. Sítě VPN typu Point-to-site a ExpressRoute nemohou existovat současně pro stejnou virtuální síť. Další informace najdete v tématu [omezení a omezení připojení ExpressRoute a Site-to-Site VPN](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations).
 
-## <a name="how-do-i-connect-an-app-service-web-app-to-a-virtual-network-that-has-a-static-routing-policy-based-gateway"></a>Jak připojím webovou aplikaci služby App Service k virtuální síti, která má statickou směrovací bránu (založenou na zásadách)?
+## <a name="how-do-i-connect-an-app-service-web-app-to-a-virtual-network-that-has-a-static-routing-policy-based-gateway"></a>Návody připojit webovou aplikaci App Service k virtuální síti s bránou statického směrování (na základě zásad)?
 
-V současné době není podporováno připojení webové aplikace služby App Service k virtuální síti, která má statickou bránu směrování (založené na zásadách). Pokud vaše cílová virtuální síť již existuje, musí mít před připojením k aplikaci povolenou síť VPN z bodu na lokalitu s dynamickou směrovací bránou. Pokud je brána nastavena na statické směrování, nelze povolit síť VPN z bodu na lokalitu. 
+V současné době se připojení webové aplikace App Service k virtuální síti s bránou statických směrování (založenou na zásadách) nepodporuje. Pokud vaše cílová virtuální síť již existuje, musí mít povolenou síť VPN typu Point-to-site s bránou dynamického směrování, aby ji bylo možné připojit k aplikaci. Pokud je brána nastavená na statické směrování, nemůžete povolit síť VPN typu Point-to-site. 
 
-Další informace najdete [v tématu Integrace aplikace s virtuální sítí Azure](web-sites-integrate-with-vnet.md).
+Další informace najdete v tématu [integrace aplikace do služby Azure Virtual Network](web-sites-integrate-with-vnet.md).
 
-## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>Proč můžu v prostředí služby App Service vytvořit jenom jeden plán služby App Service, i když mám k dispozici dva pracovníky?
+## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>Proč se v mém App Service Environment dá vytvořit jenom jeden plán App Service, i když mám k dispozici dva pracovní procesy?
 
-Chcete-li poskytnout odolnost proti chybám, prostředí služby App Service vyžaduje, aby každý fond pracovních prostředků potřeboval alespoň jeden další výpočetní prostředek. Další výpočetní prostředek nelze přiřadit pracovní vytížení.
+Aby se zajistila odolnost proti chybám, App Service Environment vyžaduje, aby každý pracovní fond měl aspoň jeden další výpočetní prostředek. K dodatečnému výpočetnímu prostředku nelze přiřadit úlohu.
 
-Další informace naleznete v [tématu Jak vytvořit prostředí služby App Service](environment/app-service-web-how-to-create-an-app-service-environment.md).
+Další informace najdete v tématu [vytvoření App Service Environment](environment/app-service-web-how-to-create-an-app-service-environment.md).
 
-## <a name="why-do-i-see-timeouts-when-i-try-to-create-an-app-service-environment"></a>Proč se při pokusu o vytvoření prostředí služby App Service zobrazují časové osy?
+## <a name="why-do-i-see-timeouts-when-i-try-to-create-an-app-service-environment"></a>Proč se při pokusu o vytvoření App Service Environment zobrazí časové limity?
 
-Někdy se nezdaří vytvoření prostředí služby App Service. V takovém případě se v protokolech aktivit zobrazí následující chyba:
+V některých případech se vytváření App Service Environment nezdařilo. V takovém případě se v protokolech aktivit zobrazí následující chyba:
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
 Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
-Chcete-li tento problém vyřešit, ujistěte se, že žádná z následujících podmínek jsou pravdivé:
+Chcete-li tento problém vyřešit, ujistěte se, že není splněna žádná z následujících podmínek:
 * Podsíť je příliš malá.
 * Podsíť není prázdná.
-* ExpressRoute zabraňuje požadavkům na připojení k síti prostředí služby App Service.
-* Chybná skupina zabezpečení sítě zabraňuje požadavkům na připojení k síti v prostředí služby App Service.
-* Vynucené tunelování je zapnuto.
+* ExpressRoute zabraňuje požadavkům na připojení k síti App Service Environment.
+* Nesprávná skupina zabezpečení sítě brání požadavkům na připojení k síti App Service Environment.
+* Vynucené tunelování je zapnuté.
 
-Další informace najdete [v tématu Časté problémy při nasazování (vytváření) nové prostředí služby Azure App Service](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/).
+Další informace najdete v tématu [časté problémy při nasazení (vytvoření) nového Azure App Service Environment](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/).
 
-## <a name="why-cant-i-delete-my-app-service-plan"></a>Proč nemohu odstranit svůj plán služby App Service?
+## <a name="why-cant-i-delete-my-app-service-plan"></a>Proč nemůžu odstranit plán App Service?
 
-Plán služby App Service nelze odstranit, pokud jsou k plánu služby App Service přidruženy nějaké aplikace služby App Service. Než plán služby App Service odstraníte, odeberte všechny přidružené aplikace služby App Service z plánu služby App Service.
+Plán App Service nemůžete odstranit, pokud jsou nějaké App Service aplikace spojené s plánem App Service. Než odstraníte plán App Service, odeberte všechny přidružené App Service aplikace z plánu App Service.
 
-## <a name="how-do-i-schedule-a-webjob"></a>Jak naplánuji webovou úlohu?
+## <a name="how-do-i-schedule-a-webjob"></a>Návody naplánovat úlohu WebJob?
 
-Naplánovanou webovou úlohu můžete vytvořit pomocí výrazů Cron:
+Naplánovanou webovou úlohu můžete vytvořit pomocí výrazů cron:
 
-1. Vytvořte soubor settings.job.
-2. Do tohoto souboru JSON zahrňte vlastnost plánu pomocí výrazu Cron: 
+1. Vytvoří soubor Settings. job.
+2. V tomto souboru JSON zahrňte vlastnost plánu pomocí výrazu cron: 
     ```json
     { "schedule": "{second}
     {minute} {hour} {day}
     {month} {day of the week}" }
     ```
 
-Další informace o naplánovaných webových úlohách naleznete v [tématu Vytvoření naplánované webové úlohy pomocí výrazu Cron](webjobs-create.md#CreateScheduledCRON).
+Další informace o naplánovaných webových úlohách najdete v tématu [Vytvoření plánované webové úlohy pomocí výrazu cron](webjobs-create.md#CreateScheduledCRON).
 
-## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Jak můžu provést penetrační testy pro svou aplikaci App Service?
+## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Návody udělat testování průniku pro moji aplikaci App Service?
 
-Chcete-li provést penetrační zkoušky, [odešlete žádost](https://portal.msrc.microsoft.com/engage/pentest).
+Chcete-li provést testování průniku, [odešlete žádost](https://portal.msrc.microsoft.com/engage/pentest).
 
-## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Jak nakonfiguruji vlastní název domény pro webovou aplikaci služby App Service, která používá Traffic Manager?
+## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Návody nakonfigurovat vlastní název domény pro webovou aplikaci App Service, která používá Traffic Manager?
 
-Informace o tom, jak používat vlastní název domény s aplikací App Service, která používá Azure Traffic Manager pro vyrovnávání zatížení, najdete v [tématu Konfigurace vlastního názvu domény pro webovou aplikaci Azure pomocí Traffic Manageru](configure-domain-traffic-manager.md).
+Pokud chcete zjistit, jak použít vlastní název domény s aplikací App Service, která používá Azure Traffic Manager pro vyrovnávání zatížení, přečtěte si téma [Konfigurace vlastního názvu domény pro webovou aplikaci Azure s Traffic Manager](configure-domain-traffic-manager.md).
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Můj certifikát služby App Service je označený příznakem podvodu. Jak to můžu vyřešit?
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Během ověření domény nákupu certifikátu služby App Service se může zobrazit následující zpráva:
+Při ověřování App Service nákupu certifikátů se může zobrazit následující zpráva:
 
-"Váš certifikát byl označen za možný podvod. Žádost je v současné době přezkoumávána. Pokud se certifikát nestane použitelným do 24 hodin, obraťte se na podporu Azure."
+"Certifikát byl označen jako označený jako možný podvod. V tuto chvíli je žádost v současnosti pod kontrolou. Pokud se certifikát nestane použitelným během 24 hodin, kontaktujte podporu Azure.
 
-Jak zpráva naznačuje, může dokončení tohoto procesu ověření podvodu trvat až 24 hodin. Během této doby se zpráva bude dál zoavkovat.
+Jak zpráva indikuje, může dokončení tohoto procesu ověřování podvodů trvat až 24 hodin. Během této doby se tato zpráva zobrazí i nadále.
 
-Pokud váš certifikát služby App Service tuto zprávu zobrazuje i po 24 hodinách, spusťte následující skript prostředí PowerShell. Skript kontaktuje [poskytovatele certifikátu](https://www.godaddy.com/) přímo k vyřešení problému.
+Pokud váš App Service certifikát dál zobrazuje tuto zprávu po 24 hodinách, spusťte prosím následující skript PowerShellu. Skript kontaktuje [poskytovatele certifikátů](https://www.godaddy.com/) přímo za účelem vyřešení tohoto problému.
 
 ```powershell
 Connect-AzAccount
@@ -271,38 +271,38 @@ $actionProperties = @{
 Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Group Name>" -ResourceType Microsoft.CertificateRegistration/certificateOrders -ResourceName "<App Service Certificate Resource Name>" -Action resendRequestEmails -Parameters $actionProperties -ApiVersion 2015-08-01 -Force   
 ```
 
-## <a name="how-do-authentication-and-authorization-work-in-app-service"></a>Jak ověřování a autorizace fungují ve službě App Service?
+## <a name="how-do-authentication-and-authorization-work-in-app-service"></a>Jak funguje ověřování a autorizace v App Service?
 
-Podrobnou dokumentaci pro ověřování a autorizaci ve službě App Service najdete v tématu dokumenty pro různá přihlášení zprostředkovatele:
+Podrobnou dokumentaci k ověřování a autorizaci v App Service najdete v článku dokumentace pro různá přihlášení poskytovatele identity:
 * [Azure Active Directory](configure-authentication-provider-aad.md)
 * [Facebook](configure-authentication-provider-facebook.md)
 * [Google](configure-authentication-provider-google.md)
 * [Účet Microsoft](configure-authentication-provider-microsoft.md)
 * [Twitter](configure-authentication-provider-twitter.md)
 
-## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Jak přesměruji výchozí doménu *.azurewebsites.net do vlastní domény své webové aplikace Azure?
+## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Návody přesměrovat výchozí doménu *. azurewebsites.net na vlastní doménu webové aplikace Azure?
 
-Když vytvoříte nový web pomocí webových aplikací v Azure, bude k vašemu webu přiřazen výchozí *název webu*.azurewebsites.net doména. Pokud na web přidáte vlastní název hostitele a nechcete, aby uživatelé měli přístup k výchozí doméně *.azurewebsites.net, můžete výchozí adresu URL přesměrovat. Informace o přesměrování veškerého provozu z výchozí domény webu na vlastní doménu najdete v [tématu Přesměrování výchozí domény na vlastní doménu ve webových aplikacích Azure](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
+Když vytváříte nový web pomocí Web Apps v Azure, k vaší lokalitě se přiřadí výchozí *název_webu*. azurewebsites.NET doména. Pokud do svého webu přidáte vlastní název hostitele a nechcete, aby uživatelé měli přístup k vaší výchozí doméně *. azurewebsites.net, můžete přesměrovat výchozí adresu URL. Informace o tom, jak přesměrovat veškerý provoz z výchozí domény vašeho webu do vlastní domény, najdete v tématu [přesměrování výchozí domény do vlastní domény ve službě Azure Web Apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
 
-## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Jak zjistím, která verze verze rozhraní .NET je nainstalovaná ve službě App Service?
+## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Návody určit, která verze rozhraní .NET je nainstalovaná v App Service?
 
-Nejrychlejší způsob, jak najít verzi microsoftu .NET, která je nainstalovaná ve službě App Service, je pomocí konzoly Kudu. Ke konzoli Kudu můžete přistupovat z portálu nebo pomocí adresy URL aplikace App Service. Podrobné pokyny naleznete v [tématu Určení nainstalované verze rozhraní .NET ve službě App Service](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/).
+Nejrychlejší způsob, jak najít verzi rozhraní Microsoft .NET, která je nainstalovaná v App Service, je použití konzoly Kudu. Ke konzole Kudu můžete přistupovat z portálu nebo pomocí adresy URL vaší aplikace App Service. Podrobné pokyny najdete v tématu [určení nainstalované verze rozhraní .NET v App Service](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/).
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Proč automatické škálování nefunguje podle očekávání?
 
-Pokud automatické škálování Azure není škálovat v nebo škálovat instanci webové aplikace, jak jste očekávali, můžete být spuštěna do scénáře, ve kterém jsme záměrně rozhodnete neškálovat, aby se zabránilo nekonečné smyčky z důvodu "mávání." K tomu obvykle dochází, když mezi prahovými hodnotami škálování a škálování není dostatečná rezerva. Informace o tom, jak se vyhnout mávání a přečtěte si další doporučené postupy automatického škálování, naleznete v [tématu Doporučené postupy automatického škálování](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
+Pokud se automatické škálování Azure neškáluje nebo škáluje instanci webové aplikace, jak jste očekávali, může se stát, že se rozhodnete, že záměrně nemusíte škálovat, aby nedocházelo k nekonečné smyčce v důsledku "přepíná". K tomu obvykle dochází v případě, že se nejedná o odpovídající okraj mezi mezními hodnotami škálování a škálování. Další informace o tom, jak se vyhnout "přepíná" a získat informace o dalších osvědčených postupech automatického škálování, najdete v tématu [osvědčené postupy pro automatické škálování](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
 
 ## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>Proč se automatické škálování někdy škáluje pouze částečně?
 
-Automatické škálování se aktivuje, když metriky překročí předem nakonfigurované hranice. Někdy si můžete všimnout, že kapacita je naplněna pouze částečně ve srovnání s tím, co jste očekávali. Tato situace může nastat, pokud není k dispozici požadovaný počet instancí. V tomto scénáři automatické škálování částečně vyplní dostupný počet instancí. Automatické škálování pak spustí logiku opětovného vyvážení získat větší kapacitu. Přiděluje zbývající instance. Všimněte si, že to může trvat několik minut.
+Automatické škálování se aktivuje, když metriky překročí předem nakonfigurované hranice. V některých případech se může stát, že se kapacita vyplní pouze částečně v porovnání s očekávaným způsobem. K tomu může dojít v případě, že počet instancí, které chcete použít, není k dispozici. V takovém případě se automatické škálování částečně vyplní pomocí dostupného počtu instancí. Automatické škálování potom spustí logiku pro vyrovnávání zatížení a získá větší kapacitu. Přidělí zbývající instance. Všimněte si, že to může trvat několik minut.
 
-Pokud nevidíte očekávaný počet instancí po několika minutách, může to být proto, že částečné doplnění stačilo k tomu, aby metriky byly v rámci hranic. Nebo automatické škálování může mít zmenšen, protože dosáhl a dolní hranice metriky.
+Pokud nevidíte očekávaný počet instancí po několika minutách, může to být způsobeno tím, že částečné doplňování bylo dostačující k uvedení metrik v rámci hranic. Nebo se automatické škálování mohlo škálovat dolů, protože dosáhlo se dolní hranice metriky.
 
-Pokud žádná z těchto podmínek neplatí a problém přetrvává, odešlete žádost o podporu.
+Pokud se žádná z těchto podmínek nepoužije a problém přetrvává, odešlete žádost o podporu.
 
-## <a name="how-do-i-turn-on-http-compression-for-my-content"></a>Jak lze pro svůj obsah zapnout kompresi HTTP?
+## <a name="how-do-i-turn-on-http-compression-for-my-content"></a>Návody zapnout kompresi HTTP pro můj obsah?
 
-Chcete-li zapnout kompresi pro statické i dynamické typy obsahu, přidejte do souboru web.config na úrovni aplikace následující kód:
+Chcete-li zapnout kompresi pro statický i dynamický typ obsahu, přidejte do souboru Web. config na úrovni aplikace následující kód:
 
 ```xml
 <system.webServer>
@@ -310,8 +310,8 @@ Chcete-li zapnout kompresi pro statické i dynamické typy obsahu, přidejte do 
 </system.webServer>
 ```
 
-Můžete také určit konkrétní dynamické a statické typy MIME, které chcete komprimovat. Další informace najdete v odpovědi na otázku fóra v [nastavení httpCompression na jednoduchém webu Azure](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview).
+Můžete také zadat konkrétní dynamické a statické typy MIME, které chcete zkomprimovat. Další informace najdete v naší reakci na otázku fóra v tématu [Nastavení httpCompression na jednoduchém webu Azure](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview).
 
-## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Jak se migruje z místního prostředí do služby App Service?
+## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Návody migraci z místního prostředí do App Service?
 
-Chcete-li migrovat weby z webových serverů Windows a Linux u app service, můžete použít Pomocníka pro migraci služby Azure App Service. Nástroj pro migraci vytvoří webové aplikace a databáze v Azure podle potřeby a pak publikuje obsah. Další informace najdete v tématu [Azure App Service Migration Assistant](https://appmigration.microsoft.com/).
+Chcete-li migrovat lokality z webových serverů Windows a Linux na App Service, můžete použít Pomocník s migrací Azure App Service. Nástroj pro migraci v Azure podle potřeby vytvoří webové aplikace a databáze a publikuje obsah. Další informace najdete v tématu [Azure App Service Pomocník s migrací](https://appmigration.microsoft.com/).

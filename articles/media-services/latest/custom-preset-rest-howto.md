@@ -1,6 +1,6 @@
 ---
-title: Zakódovat vlastní transformaci pomocí media services v3 REST - Azure | Dokumenty společnosti Microsoft
-description: Toto téma ukazuje, jak pomocí Azure Media Services v3 kódovat vlastní transformaci pomocí REST.
+title: Kódování vlastní transformace pomocí Media Services V3 REST – Azure | Microsoft Docs
+description: V tomto tématu se dozvíte, jak použít Azure Media Services V3 ke kódování vlastní transformace pomocí REST.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,33 +13,33 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65761795"
 ---
-# <a name="how-to-encode-with-a-custom-transform---rest"></a>Jak zakódovat pomocí vlastní transformace - REST
+# <a name="how-to-encode-with-a-custom-transform---rest"></a>Jak kódovat pomocí vlastní transformace – REST
 
-Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených předvoleb založených na osvědčených postupech v oboru, jak je znázorněno v kurzu [Streamování souborů.](stream-files-tutorial-with-rest.md#create-a-transform) Můžete také vytvořit vlastní přednastavení pro cílí na konkrétní scénář nebo požadavky na zařízení.
+Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených integrovaných přednastavení na základě osvědčených postupů, jak je znázorněno v kurzu [streamování souborů](stream-files-tutorial-with-rest.md#create-a-transform) . Můžete také vytvořit vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení.
 
 ## <a name="considerations"></a>Požadavky
 
-Při vytváření vlastních přednastavení platí následující aspekty:
+Při vytváření vlastních přednastavení platí následující požadavky:
 
-* Všechny hodnoty pro výšku a šířku obsahu AVC musí být násobkem 4.
-* Ve službě Azure Media Services v3 jsou všechny přetáčicí přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavení s našimi v2 API, který používá kilobitů za sekundu jako jednotku. Například pokud byl určen přenosový tok v 2 jako 128 (kilobitů za sekundu), ve v3 by byla nastavena na 128000 (bitů za sekundu).
+* Všechny hodnoty pro výšku a šířku v obsahu AVC musí být násobkem 4.
+* V Azure Media Services V3 jsou všechny přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavení s našimi rozhraními API v2, která jako jednotku používala kilobity za sekundu. Pokud je například přenosová rychlost v v2 zadaná jako 128 (kilobit/s), ve verzi V3 by se nastavila na 128000 (bity za sekundu).
 
 ## <a name="prerequisites"></a>Požadavky 
 
-- [Vytvořte účet mediálních služeb](create-account-cli-how-to.md). <br/>Nezapomeňte si zapamatovat název skupiny prostředků a název účtu Mediální služby. 
-- [Konfigurace postman pro Azure Media Services REST API volání](media-rest-apis-with-postman.md).<br/>Ujistěte se, že postupujte podle posledního kroku v tématu [Získat Azure AD Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
+- [Vytvořte účet Media Services](create-account-cli-how-to.md). <br/>Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
+- [Nakonfigurujte metodu post pro Azure Media Services REST API volání](media-rest-apis-with-postman.md).<br/>Nezapomeňte postupovat podle posledního kroku v tématu [získání tokenu Azure AD](media-rest-apis-with-postman.md#get-azure-ad-token). 
 
-## <a name="define-a-custom-preset"></a>Definování vlastního přednastavení
+## <a name="define-a-custom-preset"></a>Definování vlastní předvolby
 
-Následující příklad definuje tělo požadavku nové transformace. Definujeme sadu výstupů, které chceme generovat při použití této transformace. 
+Následující příklad definuje tělo žádosti o novou transformaci. Definujeme sadu výstupů, které chceme vygenerovat při použití této transformace. 
 
-V tomto příkladu nejprve přidáme vrstvu AacAudio pro kódování zvuku a dvě vrstvy H264Video pro kódování videa. Ve vrstvách videa přiřazujeme popisky tak, aby je bylo možné použít v názvech výstupních souborů. Dále chceme, aby výstup obsahoval také miniatury. V níže uvedeném příkladu určíme obrázky ve formátu PNG, generované při 50 % rozlišení vstupního videa a na třech časových razítkách - {25%, 50%, 75} délky vstupního videa. Nakonec určíme formát výstupních souborů - jeden pro video + audio a druhý pro miniatury. Vzhledem k tomu, že máme více H264Layers, musíme použít makra, které produkují jedinečné názvy na vrstvu. Můžeme použít `{Label}` buď `{Bitrate}` nebo makro, příklad ukazuje bývalý.
+V tomto příkladu jsme nejdřív přidali vrstvu AacAudio pro kódování zvuku a dvě vrstvy H264Video pro kódování videa. Ve vrstvách videa přiřadíme popisky, aby je bylo možné použít v názvech výstupních souborů. Dále chceme, aby výstup zahrnoval také miniatury. V následujícím příkladu určíme obrázky ve formátu PNG vygenerované v 50% rozlišení vstupního videa a tři časová razítka – {25%, 50%, 75} délky vstupního videa. Nakonec určíme formát pro výstupní soubory – jeden pro video a zvuk a druhý pro miniatury. Vzhledem k tomu, že máme více H264Layers, musíme použít makra, která vytvoří jedinečné názvy na každou vrstvu. Můžeme buď použít makro `{Label}` nebo `{Bitrate}` , v příkladu se zobrazí předchozí.
 
 ```json
 {
@@ -131,24 +131,24 @@ V tomto příkladu nejprve přidáme vrstvu AacAudio pro kódování zvuku a dv�
 
 ```
 
-## <a name="create-a-new-transform"></a>Vytvoření nové transformace  
+## <a name="create-a-new-transform"></a>Vytvořit novou transformaci  
 
-V tomto příkladu vytvoříme **transformaci,** která je založena na vlastní přednastavení jsme definovali dříve. Při vytváření transformace, měli byste nejprve použít [Získat](https://docs.microsoft.com/rest/api/media/transforms/get) ke kontrole, pokud již existuje. Pokud transformace existuje, znovu jej použijte. 
+V tomto příkladu vytvoříme **transformaci** , která je založena na vlastní předvolbě, které jsme definovali dříve. Při vytváření transformace byste nejprve měli použít příkaz [Get](https://docs.microsoft.com/rest/api/media/transforms/get) a ověřit, zda již existuje. Pokud transformace existuje, znovu ji použijte. 
 
-V kolekci Pošťáka, kterou jste stáhli, vyberte **Transformovat a vytváření úloh**->**nebo aktualizovat transformaci**.
+V kolekci, kterou jste stáhli, vyberte Transformers **a úlohy**->**vytvořit nebo aktualizovat transformaci**.
 
-Metoda požadavku **PUT** HTTP je podobná:
+Metoda **Put** http je podobná:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
 ```
 
-Vyberte kartu **Tělo** a nahraďte tělo kódem json, který jste [definovali dříve](#define-a-custom-preset). Chcete-li použít transformaci na zadané video nebo zvuk, je třeba odeslat úlohu v rámci této transformace.
+Vyberte kartu **tělo** a nahraďte text kódem JSON, který jste [definovali dříve](#define-a-custom-preset). Pokud Media Services chcete použít transformaci na zadané video nebo zvuk, musíte úlohu v rámci této transformace odeslat.
 
 Vyberte **Poslat**. 
 
-Chcete-li použít transformaci na zadané video nebo zvuk, je třeba odeslat úlohu v rámci této transformace. Úplný příklad, který ukazuje, jak odeslat úlohu v rámci transformace, najdete [v tématu Výuka: Streamovat video soubory - REST](stream-files-tutorial-with-rest.md).
+Pokud Media Services chcete použít transformaci na zadané video nebo zvuk, musíte úlohu v rámci této transformace odeslat. Kompletní příklad, který ukazuje, jak odeslat úlohu v rámci transformace, najdete v tématu [kurz: streamování souborů videa – REST](stream-files-tutorial-with-rest.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Zobrazit [další operace REST](https://docs.microsoft.com/rest/api/media/)
+Zobrazit [Další operace REST](https://docs.microsoft.com/rest/api/media/)

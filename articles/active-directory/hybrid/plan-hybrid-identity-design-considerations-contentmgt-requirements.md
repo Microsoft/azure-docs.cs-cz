@@ -1,6 +1,6 @@
 ---
-title: Návrh hybridní identity – požadavky na správu obsahu Azure | Dokumenty společnosti Microsoft
-description: Poskytuje přehled o tom, jak určit požadavky na správu obsahu vaší firmy. Obvykle, když má uživatel vlastní zařízení, může mít také více pověření, která se budou střídat podle aplikace, kterou používají. Je důležité rozlišovat, jaký obsah byl vytvořen pomocí osobních pověření oproti pověřením vytvořeným pomocí podnikových pověření. Vaše řešení identit y by mělo být schopno pracovat s cloudovými službami, aby koncovým uživatelům poskytovalo bezproblémové prostředí a současně zajistilo jejich ochranu osobních údajů a zvýšilo ochranu před únikem dat.
+title: Návrh hybridní identity – požadavky na správu obsahu Azure | Microsoft Docs
+description: Poskytuje přehled o tom, jak určit požadavky vaší firmy na správu obsahu. Když má uživatel vlastní zařízení, může mít také několik přihlašovacích údajů, které se budou střídat podle používané aplikace. Je důležité odlišit, který obsah byl vytvořen pomocí osobních přihlašovacích údajů, oproti těm vytvořeným pomocí podnikových přihlašovacích údajů. Vaše řešení identity by mělo být schopné komunikovat s Cloud Services a zajistit tak bezproblémové prostředí koncovým uživatelům a zároveň zajistit jejich soukromí a zvýšit ochranu před únikem dat.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "64918442"
 ---
-# <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na správu obsahu pro řešení hybridní identity
-Pochopení požadavků na správu obsahu pro vaši firmu může mít přímý vliv na vaše rozhodnutí, které řešení hybridní identity použít. S rozšířením více zařízení a schopností uživatelů přinést si vlastní zařízení[(BYOD)](https://aka.ms/byodcg)musí společnost chránit vlastní data, ale musí také udržovat soukromí uživatele neporušené. Obvykle, když má uživatel vlastní zařízení, může mít také více pověření, která se budou střídat podle aplikace, kterou používají. Je důležité rozlišovat, jaký obsah byl vytvořen pomocí osobních pověření oproti pověřením vytvořeným pomocí podnikových pověření. Vaše řešení identit y by mělo být schopno pracovat s cloudovými službami, aby koncovým uživatelům poskytovalo bezproblémové prostředí a současně zajistilo jejich ochranu osobních údajů a zvýšilo ochranu před únikem dat. 
+# <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na správu obsahu pro vaše řešení hybridní identity
+Porozumění požadavkům na správu obsahu pro vaši firmu může přímo ovlivnit vaše rozhodnutí, které řešení hybridní identity použít. Při šíření více zařízení a schopnost uživatelů přinášet si vlastní zařízení ([BYOD](https://aka.ms/byodcg)) musí společnost chránit svoje vlastní data, ale také musí zachovat ochranu osobních údajů uživatele. Když má uživatel vlastní zařízení, může mít také několik přihlašovacích údajů, které se budou střídat podle používané aplikace. Je důležité odlišit, který obsah byl vytvořen pomocí osobních přihlašovacích údajů, oproti těm vytvořeným pomocí podnikových přihlašovacích údajů. Vaše řešení identity by mělo být schopné komunikovat s Cloud Services a zajistit tak bezproblémové prostředí koncovým uživatelům a zároveň zajistit jejich soukromí a zvýšit ochranu před únikem dat. 
 
-Vaše řešení identity bude využito různými technickými kontrolami, aby bylo možné poskytovat správu obsahu, jak je znázorněno na obrázku níže:
+Vaše řešení identity budou využívat různé technické ovládací prvky, aby bylo možné poskytovat správu obsahu, jak je znázorněno na následujícím obrázku:
 
 ![ovládací prvky zabezpečení](./media/plan-hybrid-identity-design-considerations/securitycontrols.png)
 
@@ -34,33 +34,33 @@ Vaše řešení identity bude využito různými technickými kontrolami, aby by
 
 Obecně platí, že požadavky na správu obsahu budou využívat váš systém správy identit v následujících oblastech:
 
-* Ochrana osobních údajů: identifikace uživatele, který vlastní prostředek, a použití příslušných ovládacích prvků pro zachování integrity.
-* Klasifikace dat: identifikujte uživatele nebo skupinu a úroveň přístupu k objektu podle jeho klasifikace. 
-* Ochrana před únikem dat: bezpečnostní kontroly odpovědné za ochranu dat, aby se zabránilo úniku, budou muset pracovat se systémem identit, aby se ověřila identita uživatele. To je také důležité pro audit trail účel.
+* Ochrana osobních údajů: Identifikujte uživatele, který vlastní prostředek, a použijte příslušné ovládací prvky pro zachování integrity.
+* Klasifikace dat: Identifikujte uživatele nebo skupinu a úroveň přístupu k objektu podle jeho klasifikace. 
+* Ochrana před únikem dat: kontroly zabezpečení, které jsou zodpovědné za ochranu dat, aby se zabránilo úniku dat, bude potřeba, abyste se systémem identity ověřili identitu uživatele. To je důležité taky pro účely auditu pro audit.
 
 > [!NOTE]
-> Další informace o doporučených postupech a pokyny pro klasifikaci dat načtete [pro klasifikaci cloudu.](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)
+> Další informace o osvědčených postupech a pokynech pro klasifikaci dat najdete v článku [klasifikace dat pro připravenost na Cloud](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) .
 > 
 > 
 
-Při plánování hybridního řešení identity zajistěte, aby byly zodpovězeny následující otázky podle požadavků vaší organizace:
+Při plánování řešení hybridní identity zajistěte, aby byly na základě požadavků vaší organizace zodpovězeny následující otázky:
 
-* Má vaše společnost zavedeny bezpečnostní kontroly k vynucení ochrany osobních údajů?
-  * Pokud ano, budou bezpečnostní ovládací prvky schopny integrovat se s řešením hybridní identity, které se chystáte přijmout?
+* Má vaše společnost bezpečnostní mechanismy pro vymáhání ochrany soukromí dat?
+  * Pokud ano, budou mít ovládací prvky zabezpečení integraci s řešením hybridní identity, které chcete přijmout?
 * Používá vaše společnost klasifikaci dat?
-  * Pokud ano, je současné řešení schopno integrovat s řešením hybridní identity, které se chystáte přijmout?
-* Má vaše společnost v současné době nějaké řešení pro únik dat? 
-  * Pokud ano, je současné řešení schopno integrovat s řešením hybridní identity, které se chystáte přijmout?
-* Potřebuje vaše společnost auditovat přístup k prostředkům?
-  * Pokud ano, jaký typ zdrojů?
-  * Pokud ano, jaká úroveň informací je nezbytná?
-  * Pokud ano, kde musí být umístěn protokol auditu? Místní nebo v cloudu?
-* Potřebuje vaše společnost šifrovat všechny e-maily, které obsahují citlivá data (SSN, čísla kreditních karet atd.)?
-* Potřebuje vaše společnost šifrovat všechny dokumenty/obsahy sdílené s externími obchodními partnery?
-* Potřebuje vaše společnost vynucovat firemní zásady u určitých druhů e-mailů (neodpovíte na všechny, nepředávají)?
+  * Pokud ano, je aktuální řešení schopné integrovat řešení hybridní identity, které hodláte přijmout?
+* Má vaše společnost teď nějaké řešení pro úniky dat? 
+  * Pokud ano, je aktuální řešení schopné integrovat řešení hybridní identity, které hodláte přijmout?
+* Potřebuje vaše společnost Auditovat přístup k prostředkům?
+  * Pokud ano, jaký typ prostředků?
+  * Pokud ano, jaké množství informací je potřeba?
+  * Pokud ano, kde se musí nacházet protokol auditu? Místně nebo v cloudu?
+* Potřebuje vaše společnost šifrovat všechny e-maily, které obsahují citlivá data (čísla sociálního zabezpečení, čísla kreditních karet atd.)?
+* Potřebuje vaše společnost šifrovat všechny dokumenty a obsah sdílený s externími obchodními partnery?
+* Potřebuje vaše společnost vyhovět firemním zásadám u určitých druhů e-mailů (Neodpovídat všem, Nepředávat)?
 
 > [!NOTE]
-> Každou odpověď si poznamenejte a ujistěte se, že dobře chápete důvody, které vás k ní vedly. [Definovat strategii ochrany osobních údajů](plan-hybrid-identity-design-considerations-data-protection-strategy.md) půjde přes možnosti k dispozici a výhody / nevýhody každé možnosti.  Tím, že odpověděl na tyto otázky, budete vybírat, která možnost nejlépe vyhovuje vašim obchodním potřebám.
+> Každou odpověď si poznamenejte a ujistěte se, že dobře chápete důvody, které vás k ní vedly. [Definování strategie ochrany dat](plan-hybrid-identity-design-considerations-data-protection-strategy.md) překročí dostupné možnosti a výhody a nevýhody jednotlivých možností.  Po zodpovězení těchto otázek si vyberete, která možnost nejlépe vyhovuje vašim obchodním potřebám.
 > 
 > 
 
@@ -68,5 +68,5 @@ Při plánování hybridního řešení identity zajistěte, aby byly zodpověze
 [Určení požadavků na řízení přístupu](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
 
 ## <a name="see-also"></a>Viz také
-[Přehled aspekty návrhu](plan-hybrid-identity-design-considerations-overview.md)
+[Přehled otázek návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

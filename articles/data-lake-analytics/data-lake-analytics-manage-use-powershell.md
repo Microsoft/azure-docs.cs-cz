@@ -1,6 +1,6 @@
 ---
 title: Správa Azure Data Lake Analytics pomocí Azure PowerShell
-description: Tento článek popisuje, jak pomocí Azure PowerShellu spravovat účty Data Lake Analytics, zdroje dat, uživatele & úlohy.
+description: Tento článek popisuje, jak pomocí Azure PowerShell spravovat účty Data Lake Analytics, zdroje dat, uživatele a & úlohy.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: matt1883
@@ -10,28 +10,28 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66156428"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Správa Azure Data Lake Analytics pomocí Azure PowerShell
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí Azure PowerShellu.
+Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí Azure PowerShell.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Chcete-li používat PowerShell s analýzou datového jezera, shromažďujte následující informace: 
+Pokud chcete používat PowerShell s Data Lake Analytics, shromážděte následující informace: 
 
-* **ID předplatného:** ID předplatného Azure, které obsahuje váš účet Data Lake Analytics.
-* **Skupina prostředků:** Název skupiny prostředků Azure, která obsahuje váš účet Data Lake Analytics.
-* **Název účtu Data Lake Analytics**: Název vašeho účtu Data Lake Analytics.
-* **Výchozí název účtu Úložiště dat:** Každý účet Data Lake Analytics má výchozí účet Data Lake Store.
-* **Poloha**: Umístění vašeho účtu Data Lake Analytics, například "Východní USA 2" nebo jiných podporovaných lokalit.
+* **ID předplatného**: ID předplatného Azure, které obsahuje váš účet Data Lake Analytics.
+* **Skupina prostředků**: název skupiny prostředků Azure, která obsahuje váš účet Data Lake Analytics.
+* **Data Lake Analytics název účtu**: název vašeho účtu Data Lake Analytics.
+* **Výchozí název Data Lake Store účtu**: každý Data Lake Analytics účet má výchozí data Lake Store účet.
+* **Umístění**: umístění účtu Data Lake Analytics, například "východní USA 2" nebo jiná podporovaná umístění.
 
 Fragment kódu PowerShellu v tomto kurzu používá následující proměnné k ukládání příslušných informací:
 
@@ -45,9 +45,9 @@ $location = "<Location>"
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
-### <a name="log-in-using-interactive-user-authentication"></a>Přihlášení pomocí interaktivního ověřování uživatele
+### <a name="log-in-using-interactive-user-authentication"></a>Přihlášení pomocí interaktivního ověřování uživatelů
 
-Přihlášení pomocí ID předplatného nebo podle názvu předplatného
+Přihlaste se pomocí ID předplatného nebo podle názvu předplatného.
 
 ```powershell
 # Using subscription id
@@ -57,9 +57,9 @@ Connect-AzAccount -SubscriptionId $subId
 Connect-AzAccount -SubscriptionName $subname 
 ```
 
-## <a name="saving-authentication-context"></a>Ukládání kontextu ověřování
+## <a name="saving-authentication-context"></a>Ukládá se kontext ověřování.
 
-Rutina `Connect-AzAccount` vždy vyzve k zadání pověření. Můžete se vyhnout vyzvání pomocí následujících rutin:
+`Connect-AzAccount` Rutina vždy vyzve k zadání přihlašovacích údajů. K tomu se můžete vyhnout, když použijete následující rutiny:
 
 ```powershell
 # Save login session information
@@ -69,7 +69,7 @@ Save-AzAccounts -Path D:\profile.json
 Select-AzAccounts -Path D:\profile.json 
 ```
 
-### <a name="log-in-using-a-service-principal-identity-spi"></a>Přihlášení pomocí identity hlavního povinného servisu (SPI)
+### <a name="log-in-using-a-service-principal-identity-spi"></a>Přihlaste se pomocí identity objektu služby (SPI).
 
 ```powershell
 $tenantid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"  
@@ -104,7 +104,7 @@ New-AdlStore -ResourceGroupName $rg -Name $adls -Location $location
 New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -DefaultDataLake $adls
 ```
 
-### <a name="get-account-information"></a>Získání informací o účtu
+### <a name="get-account-information"></a>Získat informace o účtu
 
 Získejte podrobnosti o účtu.
 
@@ -112,28 +112,28 @@ Získejte podrobnosti o účtu.
 Get-AdlAnalyticsAccount -Name $adla
 ```
 
-### <a name="check-if-an-account-exists"></a>Kontrola, zda účet existuje
+### <a name="check-if-an-account-exists"></a>Zjistit, jestli účet existuje
 
 ```powershell
 Test-AdlAnalyticsAccount -Name $adla
 ```
 
 ## <a name="manage-data-sources"></a>Správa zdrojů dat
-Azure Data Lake Analytics momentálně podporuje následující zdroje dat:
+Azure Data Lake Analytics aktuálně podporuje následující zdroje dat:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure Storage](../storage/common/storage-introduction.md)
 
-Každý účet Data Lake Analytics má výchozí účet Data Lake Store. Výchozí účet Data Lake Store se používá k ukládání metadat úlohy a protokolů auditu úloh. 
+Každý Data Lake Analytics účet má výchozí účet Data Lake Store. Výchozí účet Data Lake Store slouží k ukládání metadat úlohy a protokolů auditu úlohy. 
 
-### <a name="find-the-default-data-lake-store-account"></a>Vyhledání výchozího účtu Data Lake Store
+### <a name="find-the-default-data-lake-store-account"></a>Najít výchozí účet Data Lake Store
 
 ```powershell
 $adla_acct = Get-AdlAnalyticsAccount -Name $adla
 $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 ```
 
-Výchozí účet Data Lake Store můžete najít filtrováním seznamu `IsDefault` zdrojů dat podle vlastnosti:
+Výchozí účet Data Lake Store můžete najít tak, že filtrujete seznam zdrojů dat pomocí `IsDefault` vlastnosti:
 
 ```powershell
 Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
@@ -197,7 +197,7 @@ $script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 ```
 
-### <a name="list-jobs"></a>Seznam úloh
+### <a name="list-jobs"></a>Vypsat úlohy
 
 Výstup zahrnuje aktuálně spuštěné úlohy a nedávno dokončené úlohy.
 
@@ -205,17 +205,17 @@ Výstup zahrnuje aktuálně spuštěné úlohy a nedávno dokončené úlohy.
 Get-AdlJob -Account $adla
 ```
 
-### <a name="list-the-top-n-jobs"></a>Seznam nejlepších pracovních míst N
+### <a name="list-the-top-n-jobs"></a>Seznam úloh prvních N
 
-Ve výchozím nastavení je seznam úloh seřazen podle času odeslání. Takže nejnověji odeslané úlohy se objeví jako první. Ve výchozím nastavení účet ADLA pamatuje úlohy po dobu 180 dnů, ale rutina Get-AdlJob ve výchozím nastavení vrátí pouze prvních 500. Pomocí parametru -Top uveďte určitý počet úloh.
+Ve výchozím nastavení se seznam úloh seřadí podle doby odeslání. Proto se poslední odeslané úlohy zobrazí jako první. Ve výchozím nastavení účet ADLA pamatuje úlohy po dobu 180 dnů, ale rutina Get-AdlJob ve výchozím nastavení vrátí pouze prvních 500. K vypsání konkrétního počtu úloh použijte parametr-top.
 
 ```powershell
 $jobs = Get-AdlJob -Account $adla -Top 10
 ```
 
-### <a name="list-jobs-by-job-state"></a>Seznam úloh podle stavu úlohy
+### <a name="list-jobs-by-job-state"></a>Výpis úloh podle stavu úlohy
 
-Pomocí `-State` parametru. Můžete kombinovat některou z těchto hodnot:
+Použití `-State` parametru. Můžete kombinovat libovolnou z těchto hodnot:
 
 * `Accepted`
 * `Compiling`
@@ -238,13 +238,13 @@ Get-AdlJob -Account $adla -State Ended
 Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 ```
 
-### <a name="list-jobs-by-job-result"></a>Seznam úloh podle výsledku úlohy
+### <a name="list-jobs-by-job-result"></a>Vypíše úlohy podle výsledku úlohy.
 
-Pomocí `-Result` parametru můžete zjistit, zda byly dokončeny dokončené úlohy úspěšně dokončeny. Má tyto hodnoty:
+Pomocí `-Result` parametru zjistíte, zda ukončené úlohy byly úspěšně dokončeny. Má tyto hodnoty:
 
 * Cancelled
 * Failed
-* Žádný
+* Žádná
 * Úspěch
 
 ``` powershell
@@ -255,17 +255,17 @@ Get-AdlJob -Account $adla -State Ended -Result Succeeded
 Get-AdlJob -Account $adla -State Ended -Result Failed
 ```
 
-### <a name="list-jobs-by-job-submitter"></a>Seznam úloh podle předkladatele úloh
+### <a name="list-jobs-by-job-submitter"></a>Výpis úloh podle odesílatele úlohy
 
-Parametr `-Submitter` vám pomůže určit, kdo odeslal úlohu.
+`-Submitter` Parametr vám pomůže zjistit, kdo úlohu odeslal.
 
 ```powershell
 Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
 ```
 
-### <a name="list-jobs-by-submission-time"></a>Seznam úloh podle doby odeslání
+### <a name="list-jobs-by-submission-time"></a>Vypíše úlohy podle času odeslání.
 
-Je `-SubmittedAfter` užitečné při filtrování do časového rozsahu.
+`-SubmittedAfter` Je užitečné při filtrování do časového rozsahu.
 
 
 ```powershell
@@ -293,9 +293,9 @@ Get-AdlJob -AccountName $adla -JobId $job.JobId
 Stop-AdlJob -Account $adla -JobID $jobID
 ```
 
-### <a name="wait-for-a-job-to-finish"></a>Počkejte na dokončení úlohy
+### <a name="wait-for-a-job-to-finish"></a>Počkejte na dokončení úlohy.
 
-Místo opakování, `Get-AdlAnalyticsJob` dokud úloha neskončí, `Wait-AdlJob` můžete pomocí rutiny počkat na ukončení úlohy.
+Místo opakování `Get-AdlAnalyticsJob` úlohy můžete použít `Wait-AdlJob` rutinu, která čeká na dokončení úlohy.
 
 ```powershell
 Wait-AdlJob -Account $adla -JobId $job.JobId
@@ -303,18 +303,18 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 
 ## <a name="analyzing-job-history"></a>Analýza historie úloh
 
-Použití Azure PowerShellu k analýze historie úloh, které běží v analýze datového jezera, je výkonná technika. Můžete ji použít k získání přehledu o využití a nákladech. Další informace naleznete v [repo části Analýzy historie úloh](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis)  
+Pomocí Azure PowerShell můžete analyzovat historii úloh, které jsou spuštěné v Data Lake Analytics, což je výkonná technika. Můžete ji použít k získání přehledu o využití a nákladech. Další informace najdete v [úložišti ukázek analýzy historie úloh](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis) .  
 
-## <a name="list-job-pipelines-and-recurrences"></a>Seznam kanálů úloh a opakování
+## <a name="list-job-pipelines-and-recurrences"></a>Seznam kanálů a opakování úloh
 
-Pomocí `Get-AdlJobPipeline` rutiny zobrazíte informace o kanálu, které byly dříve odeslány.
+Pomocí `Get-AdlJobPipeline` rutiny můžete zobrazit informace o kanálu dříve odeslaných úloh.
 
 ```powershell
 $pipelines = Get-AdlJobPipeline -Account $adla
 $pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
 ```
 
-Pomocí `Get-AdlJobRecurrence` rutiny zobrazíte informace o opakování dříve odeslaných úloh.
+Pomocí `Get-AdlJobRecurrence` rutiny můžete zobrazit informace o opakování dříve odeslaných úloh.
 
 ```powershell
 $recurrences = Get-AdlJobRecurrence -Account $adla
@@ -325,17 +325,17 @@ $recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>
 
 ## <a name="manage-compute-policies"></a>Správa výpočetních zásad
 
-### <a name="list-existing-compute-policies"></a>Seznam existujících zásad výpočetních prostředků
+### <a name="list-existing-compute-policies"></a>Vypsat existující výpočetní zásady
 
-Rutina `Get-AdlAnalyticsComputePolicy` načte informace o zásadách výpočetních prostředků pro účet Data Lake Analytics.
+`Get-AdlAnalyticsComputePolicy` Rutina načte informace o zásadách výpočtů pro účet Data Lake Analytics.
 
 ```powershell
 $policies = Get-AdlAnalyticsComputePolicy -Account $adla
 ```
 
-### <a name="create-a-compute-policy"></a>Vytvoření zásad výpočetních prostředků
+### <a name="create-a-compute-policy"></a>Vytvoření výpočetních zásad
 
-Rutina `New-AdlAnalyticsComputePolicy` vytvoří nové výpočetní zásady pro účet Data Lake Analytics. Tento příklad nastaví maximální au, které jsou k dispozici pro zadaného uživatele 50 a minimální prioritu úlohy na 250.
+`New-AdlAnalyticsComputePolicy` Rutina vytvoří novou výpočetní zásadu pro účet Data Lake Analytics. V tomto příkladu se nastaví maximální jednotky Austrálie dostupné pro zadaného uživatele na 50 a minimální priorita úlohy na 250.
 
 ```powershell
 $userObjectId = (Get-AzAdUser -SearchString "garymcdaniel@contoso.com").Id
@@ -358,30 +358,30 @@ Nahrajte soubor.
 Import-AdlStoreItem -AccountName $adls -Path "c:\data.tsv" -Destination "/data_copy.csv" 
 ```
 
-Nahrajte celou složku rekurzivně.
+Nahrajte rekurzivně celou složku.
 
 ```powershell
 Import-AdlStoreItem -AccountName $adls -Path "c:\myData\" -Destination "/myData/" -Recurse
 ```
 
-Stáhněte soubor.
+Stáhněte si soubor.
 
 ```powershell
 Export-AdlStoreItem -AccountName $adls -Path "/data.csv" -Destination "c:\data.csv"
 ```
 
-Stáhněte si celou složku rekurzivně.
+Stáhnout celou složku rekurzivně.
 
 ```powershell
 Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recurse
 ```
 
 > [!NOTE]
-> Pokud je proces nahrávání nebo stahování přerušen, můžete se pokusit proces obnovit ``-Resume`` znovu spuštěním rutiny s příznakem.
+> Pokud je proces nahrávání nebo stahování přerušený, můžete se pokusit proces obnovit spuštěním rutiny s ``-Resume`` příznakem.
 
 ## <a name="manage-the-u-sql-catalog"></a>Správa katalogu U-SQL
 
-Katalog U-SQL se používá ke strukturování dat a kódu, takže je mohou sdílet skripty U-SQL. Katalog umožňuje nejvyšší možný výkon s daty v Azure Data Lake. Další informace najdete v tématu [Použití katalogu U-SQL](data-lake-analytics-use-u-sql-catalog.md).
+Katalog U-SQL slouží ke strukturování dat a kódu, aby je bylo možné sdílet se skripty U-SQL. Katalog umožňuje nejvyšší možný výkon s daty v Azure Data Lake. Další informace najdete v tématu [Použití katalogu U-SQL](data-lake-analytics-use-u-sql-catalog.md).
 
 ### <a name="list-items-in-the-u-sql-catalog"></a>Seznam položek v katalogu U-SQL
 
@@ -396,7 +396,7 @@ Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database"
 Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database.schema"
 ```
 
-### <a name="list-all-the-assemblies-the-u-sql-catalog"></a>Seznam všech sestavení katalogu U-SQL
+### <a name="list-all-the-assemblies-the-u-sql-catalog"></a>Vypíše všechna sestavení v katalogu U-SQL.
 
 ```powershell
 $dbs = Get-AdlCatalogItem -Account $adla -ItemType Database
@@ -413,7 +413,7 @@ foreach ($db in $dbs)
 }
 ```
 
-### <a name="get-details-about-a-catalog-item"></a>Získání podrobností o položce katalogu
+### <a name="get-details-about-a-catalog-item"></a>Získat podrobnosti o položce katalogu
 
 ```powershell
 # Get details of a table
@@ -423,9 +423,9 @@ Get-AdlCatalogItem  -Account $adla -ItemType Table -Path "master.dbo.mytable"
 Test-AdlCatalogItem  -Account $adla -ItemType Database -Path "master"
 ```
 
-### <a name="store-credentials-in-the-catalog"></a>Uložení přihlašovacích údajů v katalogu
+### <a name="store-credentials-in-the-catalog"></a>Ukládat přihlašovací údaje v katalogu
 
-V rámci databáze U-SQL vytvořte objekt pověření pro databázi hostovanou v Azure. V současné době u-SQL pověření jsou jediným typem položky katalogu, které můžete vytvořit prostřednictvím prostředí PowerShell.
+V rámci databáze U-SQL vytvořte objekt přihlašovacích údajů pro databázi hostovanou v Azure. V současné době jsou přihlašovací údaje U-SQL jediným typem položky katalogu, kterou můžete vytvořit prostřednictvím PowerShellu.
 
 ```powershell
 $dbName = "master"
@@ -441,13 +441,13 @@ New-AdlCatalogCredential -AccountName $adla `
 
 ## <a name="manage-firewall-rules"></a>Správa pravidel brány firewall
 
-### <a name="list-firewall-rules"></a>Seznam pravidel brány firewall
+### <a name="list-firewall-rules"></a>Vypsat pravidla brány firewall
 
 ```powershell
 Get-AdlAnalyticsFirewallRule -Account $adla
 ```
 
-### <a name="add-a-firewall-rule"></a>Přidání pravidla brány firewall
+### <a name="add-a-firewall-rule"></a>Přidat pravidlo brány firewall
 
 ```powershell
 $ruleName = "Allow access from on-prem server"
@@ -457,7 +457,7 @@ $endIpAddress = "<end IP address>"
 Add-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
 ```
 
-### <a name="modify-a-firewall-rule"></a>Změna pravidla brány firewall
+### <a name="modify-a-firewall-rule"></a>Úprava pravidla brány firewall
 
 ```powershell
 Set-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
@@ -489,7 +489,7 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 Resolve-AzError -Last
 ```
 
-### <a name="verify-if-you-are-running-as-an-administrator-on-your-windows-machine"></a>Ověření, zda používáte jako správce počítače se systémem Windows
+### <a name="verify-if-you-are-running-as-an-administrator-on-your-windows-machine"></a>Ověřte, jestli na počítači s Windows běží jako správce.
 
 ```powershell
 function Test-Administrator  
@@ -500,7 +500,7 @@ function Test-Administrator
 }
 ```
 
-### <a name="find-a-tenantid"></a>Vyhledání id klienta
+### <a name="find-a-tenantid"></a>Najít TenantID
 
 Z názvu předplatného:
 
@@ -540,7 +540,7 @@ $domain = "contoso.com"
 Get-TenantIdFromDomain $domain
 ```
 
-### <a name="list-all-your-subscriptions-and-tenant-ids"></a>Seznam všech předplatných a ID klienta
+### <a name="list-all-your-subscriptions-and-tenant-ids"></a>Vypíše všechna Vaše předplatná a ID tenantů.
 
 ```powershell
 $subs = Get-AzSubscription
@@ -553,9 +553,9 @@ foreach ($sub in $subs)
 
 ## <a name="create-a-data-lake-analytics-account-using-a-template"></a>Vytvoření účtu Data Lake Analytics pomocí šablony
 
-Šablonu Skupiny prostředků Azure můžete taky použít pomocí následující ukázky: [Vytvoření účtu Data Lake Analytics pomocí šablony.](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
+Šablonu skupiny prostředků Azure můžete použít také v následující ukázce: [Vytvoření účtu Data Lake Analytics pomocí šablony](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template) .
 
 ## <a name="next-steps"></a>Další kroky
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* Začínáme s Analýzou datových jezer pomocí azure [portálu](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [Azure CLI](data-lake-analytics-get-started-cli.md)
-* Správa Azure Data Lake Analytics pomocí [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) 
+* Začínáme s Data Lake Analytics pomocí rozhraní příkazového[řádku Azure](data-lake-analytics-get-started-cli.md) [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | 
+* Správa Azure Data Lake Analytics pomocí rozhraní příkazového[řádku](data-lake-analytics-manage-use-cli.md) [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) |  

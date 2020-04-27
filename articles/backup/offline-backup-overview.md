@@ -1,86 +1,86 @@
 ---
 title: Přehled zálohování offline
-description: Seznamte se s komponentami offline zálohování. Patří mezi ně offline zálohování založené na Azure Data Box a offline zálohování na základě služby Azure Import/Export.
+description: Přečtěte si informace o komponentách offline zálohování. Zahrnují zálohování offline na základě Azure Data Box a offline zálohování založeného na službě Azure import/export.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 4dae68c46e0072a726bba13139e405b44be0f008
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a33810c633d8c7ca79c559355935d3c11853bc0a
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78196148"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160917"
 ---
 # <a name="overview-of-offline-backup"></a>Přehled zálohování offline
 
 Tento článek poskytuje přehled zálohování offline.
 
-Počáteční úplné zálohy do Azure obvykle přenášejí velké objemy dat online a vyžadují větší šířku pásma sítě ve srovnání s následnými zálohami, které přenášejí pouze přírůstkové změny. Vzdálené kanceláře nebo datová centra v určitých zeměpisných oblastech nemají vždy dostatečnou šířku pásma sítě. Z tohoto důvodu tyto počáteční zálohy trvat několik dní. Během této doby zálohy nepřetržitě používat stejnou síť, která byla zřízena pro aplikace spuštěné v místním datovém centru.
+Počáteční úplné zálohování do Azure obvykle přenáší velké objemy dat online a při porovnání s dalšími zálohami, které přenášejí pouze přírůstkové změny, vyžadují větší šířku pásma sítě. Vzdálené pobočky nebo datová centra v určitých geografických oblastech nemají vždy dostatečnou šířku pásma sítě. Z tohoto důvodu budou tyto prvotní zálohy trvat několik dní. Během této doby budou zálohy průběžně používat stejnou síť, která byla zřízena pro aplikace spuštěné v místním datovém centru.
 
-Azure Backup podporuje zálohování offline, které přenáší počáteční záložní data offline bez použití šířky pásma sítě. Poskytuje mechanismus kopírování záložních dat do zařízení fyzického úložiště. Zařízení se pak dodávají do blízkého datového centra Azure a nahrají se do trezoru služby Recovery Services. Tento proces zajišťuje robustní přenos záložních dat bez použití libovolné šířky pásma sítě.
+Azure Backup podporuje offline zálohování, které přenáší počáteční zálohovaná data offline bez použití šířky pásma sítě. Poskytuje mechanismus pro kopírování zálohovaných dat do fyzických úložných zařízení. Zařízení se pak dodávají do okolního datacentra Azure a nahrála se do trezoru Recovery Services. Tento proces zajistí robustní přenos zálohovaných dat bez použití šířky pásma sítě.
 
 ## <a name="offline-backup-options"></a>Možnosti zálohování offline
 
-Zálohování offline je nabízeno ve dvou režimech založených na vlastnictví úložných zařízení:
+Offline zálohování se nabízí ve dvou režimech na základě vlastnictví úložných zařízení:
 
-- Offline zálohování založené na Azure Data Box (preview)
-- Offline zálohování založené na službě Import a export Azure
+- Zálohování offline na základě Azure Data Box (Preview)
+- Zálohování offline na základě služby Azure import/export
 
-## <a name="offline-backup-based-on-azure-data-box-preview"></a>Offline zálohování založené na Azure Data Box (preview)
+## <a name="offline-backup-based-on-azure-data-box-preview"></a>Zálohování offline na základě Azure Data Box (Preview)
 
-Tento režim je aktuálně podporován agentem Microsoft Azure Recovery Services (MARS) ve verzi Preview. Tato možnost využívá [Azure Data Box](https://azure.microsoft.com/services/databox/) k přepravě proprietárních, zabezpečených a nefalšovacích přenosových zařízení s USB konektory do vašeho datového centra nebo vzdálené kanceláře. Záložní data jsou přímo zapsána do těchto zařízení. Tato možnost šetří úsilí potřebné k získání vlastní disky a konektory kompatibilní s Azure nebo zřídit dočasné úložiště jako pracovní umístění. Microsoft také zpracovává logistiku přenosu od konce do konce, kterou můžete sledovat prostřednictvím portálu Azure. 
+Tento režim se v současné době podporuje u agenta Microsoft Azure Recovery Services (MARS) ve verzi Preview. Tato možnost využívá výhod [Azure Data box](https://azure.microsoft.com/services/databox/) k dodávání zařízení pro přenos, zabezpečení a odolného proti falšování Microsoftu pomocí konektorů USB do vašeho datového centra nebo do vzdálené kanceláře. Zálohovaná data se do těchto zařízení napíší přímo. Tato možnost šetří úsilí potřebné k zajištění vlastních disků a konektorů, které jsou kompatibilní s Azure, nebo k zajištění dočasného úložiště jako pracovního umístění. Microsoft také zpracovává ucelenou logistiku přenosu, kterou můžete sledovat prostřednictvím Azure Portal.
 
-Zde je zobrazena architektura, která popisuje přesun záložních dat pomocí této možnosti.
+Zde je uvedena architektura, která popisuje přesun zálohovaných dat pomocí této možnosti.
 
 ![Architektura Azure Backup Data Box](./media/offline-backup-overview/azure-backup-databox-architecture.png)
 
-Zde je shrnutí architektury:
+Tady je souhrn architektury:
 
-1. Azure Backup přímo zkopíruje záložní data do těchto předkonfigurovaných zařízení.
-2. Potom můžete tato zařízení poslat zpět do datového centra Azure.
-3. Azure Data Box zkopíruje data do účtu úložiště vlastněného zákazníkem.
-4. Azure Backup automaticky zkopíruje záložní data z účtu úložiště do určeného trezoru služby Recovery Services. Jsou naplánovány přírůstkové zálohování online.
+1. Azure Backup přímo kopíruje zálohovaná data do těchto předkonfigurovaných zařízení.
+2. Pak můžete tato zařízení dodávat zpátky do datacentra Azure.
+3. Azure Data Box zkopíruje data do účtu úložiště ve vlastnictví zákazníka.
+4. Azure Backup automaticky kopíruje zálohovaná data z účtu úložiště do určeného trezoru Recovery Services. Probíhá plánování přírůstkových online záloh.
 
-Pokud chcete použít offline zálohování založené na Azure Data Box, přečtěte si [tématu Zálohování offline pomocí Azure Data Box](offline-backup-azure-data-box.md).
+Pokud chcete použít offline zálohování na základě Azure Data Box, přečtěte si téma [zálohování do offline režimu pomocí Azure Data box](offline-backup-azure-data-box.md).
 
-## <a name="offline-backup-based-on-the-azure-importexport-service"></a>Offline zálohování založené na službě Import a export Azure
+## <a name="offline-backup-based-on-the-azure-importexport-service"></a>Zálohování offline na základě služby Azure import/export
 
-Tato možnost je podporována Microsoft Azure Backup Server (MABS), System Center Data Protection Manager (DPM) DPM-A a agent MARS. Používá [službu Azure Import/Export](https://docs.microsoft.com/azure/storage/common/storage-import-export-service). Počáteční záložní data do Azure můžete přenést pomocí vlastních disků a konektorů kompatibilních s Azure. Tento přístup vyžaduje zřízení dočasného úložiště označované jako pracovní umístění a použití předem připravených nástrojů k formátování a kopírování záložních dat na disky vlastněné zákazníkem. 
+Tuto možnost podporuje Microsoft Azure Backup Server (MABS), aplikace System Center Data Protection Manager (DPM) DPM-A a Agent MARS. Používá [službu Azure import/export](https://docs.microsoft.com/azure/storage/common/storage-import-export-service). Data počátečního zálohování můžete přenést do Azure pomocí vlastních disků a konektorů, které jsou kompatibilní s Azure. Tento přístup vyžaduje zřízení dočasného úložiště označovaného jako pracovní umístění a použití předem připravených nástrojů k formátování a zkopírování zálohovaných dat na disky vlastněné zákazníkem.
 
-Zde je zobrazena architektura, která popisuje přesun záložních dat pomocí této možnosti.
+Zde je uvedena architektura, která popisuje přesun zálohovaných dat pomocí této možnosti.
 
-![Architektura služby Import a export záloh Azure](./media/offline-backup-overview/azure-backup-import-export.png)
+![Azure Backup architektura služby Import/export](./media/offline-backup-overview/azure-backup-import-export.png)
 
-Zde je shrnutí architektury:
+Tady je souhrn architektury:
 
-1. Namísto odesílání záložních dat po síti azure backup zapíše záložní data do pracovního umístění.
-2. Data v pracovním umístění jsou zapsána na jeden nebo více disků SATA pomocí vlastního nástroje.
-3. Jako součást přípravné práce nástroj vytvoří úlohu importu Azure. Jednotky SATA jsou dodávány do nejbližšího datového centra Azure a odkazují na úlohu importu pro připojení aktivit.
-4. V datovém centru Azure se data na discích zkopírují do účtu úložiště Azure.
-5. Azure Backup zkopíruje záložní data z účtu úložiště do trezoru služby Recovery Services. Přírůstkové zálohování jsou naplánovány.
+1. Místo posílání zálohovaných dat v síti Azure Backup zapisuje zálohovaná data do pracovního umístění.
+2. Data v pracovním umístění jsou zapsána do jednoho nebo více disků SATA pomocí vlastního nástroje.
+3. V rámci přípravné práce nástroj vytvoří úlohu importu Azure. Jednotky SATA se dodávají do nejbližšího datacentra Azure a odkazují na úlohu importu, aby se tyto aktivity připojily.
+4. V datovém centru Azure se data na discích zkopírují do účtu služby Azure Storage.
+5. Azure Backup zkopíruje zálohovaná data z účtu úložiště do trezoru Recovery Services. Přírůstkové zálohování je naplánováno.
 
-Pokud chcete použít offline zálohování založené na službě Import a Export Azure s agentem MARS, přečtěte si [článek Pracovní postup zálohování offline v azure backupu](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
+Pokud chcete použít offline zálohování založené na službě Azure import/export s agentem MARS, přečtěte si téma [pracovní postup offline zálohování v Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
 
-Chcete-li použít totéž společně s MABS nebo DPM-A, přečtěte si [informace o pracovním postupu zálohování offline pro aplikace DPM a Server zálohování Azure](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-).
+Chcete-li použít stejné společně s MABS nebo DPM-A, přečtěte si [pracovní postup offline zálohování pro DPM a Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-).
 
-## <a name="offline-backup-support-summary"></a>Souhrn podpory zálohování offline
+## <a name="offline-backup-support-summary"></a>Souhrn podpory offline zálohování
 
-Následující tabulka porovnává dvě dostupné možnosti, takže můžete provést příslušné volby na základě vašeho scénáře.
+Následující tabulka porovnává dvě dostupné možnosti, abyste mohli vhodným způsobem vybrat na základě vašeho scénáře.
 
-| **Aspekty**                                            | **Offline zálohování založené na Azure Data Boxu**                     | **Offline zálohování založené na službě Import a export Azure**                |
+| **Aspekty**                                            | **Zálohování offline na základě Azure Data Box**                     | **Zálohování offline na základě služby Azure import/export**                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Modely nasazení Azure Backup                              | Agent MARS (náhled)                                              | MARS Agent, MABS, DPM-A                                           |
-| Maximální počet záložních dat na server (MARS) nebo na skupinu ochrany (MABS, DPM-A) | [Disk Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-disk-overview) – 7,2 TB <br> [Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) – 80 TB       | 80 TB (až 10 disků po 8 TB)                          |
-| Zabezpečení (data, zařízení a služba)                           | [Data](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) – 256bitová šifrovaná AES <br> [Zařízení](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) - Robustní pouzdro, proprietární rozhraní založené na pověření pro kopírování dat <br> [Služba](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) – chráněná funkcemi zabezpečení Azure | Data – zašifrováno nástroj BitLocker                                 |
-| Dočasné zřizování dočasného pracovního umístění                     | Není požadováno                                                | Více než nebo rovno odhadované velikosti záložních dat        |
-| Podporované oblasti                                           | [Oblasti disku Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Oblasti datové schránky Azure](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Oblasti služby Import a export Azure](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
-| Přeshraniční doprava                                     | Nepodporuje se  <br>    Zdrojová adresa a cílové datové centrum Azure musí být ve stejné zemi* | Podporuje se                                                    |
-| Logistika transferů (dodávka, doprava, vyzvednutí)           | Plně spravovaný Microsoft                                     | Zákazník řízený                                            |
-| Ceny                                                      | [Ceny azure datové schránky](https://azure.microsoft.com/pricing/details/databox/) <br> [Ceny disku Azure Data Box](https://azure.microsoft.com/pricing/details/databox/disk/) | [Ceny za služby Azure importu a exportu](https://azure.microsoft.com/pricing/details/storage-import-export/) |
+| Azure Backup modely nasazení                              | Agent MARS (Preview)                                              | Agent MARS, MABS, DPM-A                                           |
+| Maximální počet zálohovaných dat na server (MARS) nebo na skupinu ochrany (MABS, DPM-A) | [Azure Data box disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) – 7,2 TB <br> [Azure Data box](https://docs.microsoft.com/azure/databox/data-box-overview) – 80 TB       | 80 TB (až 10 disků o 8 TB)                          |
+| Zabezpečení (data, zařízení a služba)                           | [Data](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) -AES 256-bit šifrováno <br> [Zařízení](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) – robustní – proprietární, rozhraní založené na přihlašovacích údajích ke kopírování dat <br> Funkce zabezpečení Azure, které jsou chráněné [službou](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) | Data – šifrovaný BitLocker                                 |
+| Dočasné zřízení pracovního umístění                     | Není požadováno                                                | Větší než nebo rovna odhadované velikosti zálohovaných dat        |
+| Podporované oblasti                                           | [Azure Data Box oblasti disku](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box oblasti](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Oblasti služeb importu a exportu v Azure](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
+| Expedice mezi země                                     | Nepodporuje se  <br>    Zdrojová adresa a cílové datacentrum Azure musí být ve stejné zemi *. | Podporuje se                                                    |
+| Logistika přenosů (doručení, přeprava, vyzvednutí)           | Plně spravované Microsoftem                                     | Spravované zákazníkem                                            |
+| Ceny                                                      | [Ceny Azure Data Box](https://azure.microsoft.com/pricing/details/databox/) <br> [Ceny Azure Data Box disku](https://azure.microsoft.com/pricing/details/databox/disk/) | [Ceny za službu import/export v Azure](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 
-*Pokud vaše země nemá datové centrum Azure, musíte je poslat do datového centra Azure v jiné zemi.
+* Pokud vaše země nemá datové centrum Azure, musíte disky dodávat do datacentra Azure v jiné zemi.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zálohování Azure offline zálohování pomocí Azure Data Box](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
-* [Pracovní postup zálohování offline v Azure Backup](backup-azure-backup-import-export.md) 
-* [Pracovní postup zálohování offline pro DPM a Azure Backup Server](backup-azure-backup-server-import-export-.md)
+- [Azure Backup offline zálohování pomocí Azure Data Box](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
+- [Pracovní postup offline zálohování v Azure Backup](backup-azure-backup-import-export.md)
+- [Pracovní postup offline zálohování pro DPM a Azure Backup Server](backup-azure-backup-server-import-export-.md)

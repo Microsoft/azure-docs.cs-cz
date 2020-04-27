@@ -1,6 +1,6 @@
 ---
-title: Ceny azure cloudshellu | Dokumenty společnosti Microsoft
-description: Přehled cen azure cloudshellu
+title: Ceny Azure Cloud Shell | Microsoft Docs
+description: Přehled cen Azure Cloud Shell
 services: ''
 documentationcenter: ''
 author: maertendMSFT
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
 ms.openlocfilehash: 2834bc7d9456c1177bdd2c235b8211a1edde6e42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60199410"
 ---
 # <a name="pricing"></a>Ceny
-Bash v Cloud Shellu a PowerShellu v Cloud Shellu podléhá níže daným informacím.
+Bash v Cloud Shell a PowerShellu v Cloud Shell podléhají níže uvedeným informacím.
 
-## <a name="compute-cost"></a>Výpočetní náklady
-Azure Cloud Shell běží na počítači poskytovaném zdarma Azure, ale vyžaduje sdílení souborů Azure. 
+## <a name="compute-cost"></a>Náklady na výpočetní výkon
+Azure Cloud Shell běží na počítači, který poskytuje Azure zdarma, ale vyžaduje sdílenou složku Azure, která se má použít. 
 
 ## <a name="storage-cost"></a>Náklady na úložiště
-Cloud Shell vyžaduje připojení nové nebo existující sdílené složky Azure Files, aby se uchovaly soubory napříč relacemi. Skladování je běžné.
+Cloud Shell vyžaduje, aby se nová nebo existující sdílená složka Azure Files mohla připojit k souborům trvalém napříč relacemi. Úložiště má běžné náklady.
 
-Tady [najdete podrobnosti o nákladech na soubory Azure](https://azure.microsoft.com/pricing/details/storage/files/). 
+[Podrobnosti o cenách souborů Azure najdete tady](https://azure.microsoft.com/pricing/details/storage/files/). 

@@ -1,6 +1,6 @@
 ---
-title: Problémy s přihlášením k aplikaci microsoftu | Dokumenty společnosti Microsoft
-description: Řešení běžných problémů, kterým čelípři přihlašování k aplikacím Microsoft první strany pomocí Azure AD (jako je Office 365)
+title: Problémy s přihlášením k aplikaci Microsoftu | Microsoft Docs
+description: Řešení běžných problémů při přihlašování k aplikacím Microsoftu, které používají službu Azure AD (například Office 365)
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,29 +17,29 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67108304"
 ---
-# <a name="problems-signing-in-to-a-microsoft-application"></a>Problémy s přihlášením k aplikaci Microsoft
+# <a name="problems-signing-in-to-a-microsoft-application"></a>Problémy s přihlášením k aplikaci Microsoftu
 
-Microsoft Aplikace (jako Office 365 Exchange, SharePoint, Yammer, atd.) jsou přiřazeny a spravovány trochu jinak než aplikace SaaS třetích stran nebo jiné aplikace, které integrujete s Azure AD pro jednotné přihlašování.
+Aplikace Microsoftu (jako je Office 365 Exchange, SharePoint, Yammer atd.) se přiřazují a spravují jinak než aplikace třetích stran SaaS nebo jiné aplikace, které integrujete se službou Azure AD pro jednotné přihlašování.
 
-Existují tři hlavní způsoby, které uživatel může získat přístup k aplikaci publikované společností Microsoft.
+Existují tři hlavní způsoby, jak může uživatel získat přístup k aplikaci publikované v Microsoftu.
 
--   U aplikací v Office 365 nebo jiných placených sadách je uživatelům udělen přístup prostřednictvím **přiřazení licence** buď přímo k jejich uživatelskému účtu, nebo prostřednictvím skupiny využívající možnosti přiřazení licencí založených na skupině.
+-   Pro aplikace v sadě Office 365 nebo jiné placené sady se uživatelům udělí přístup prostřednictvím **přiřazení licence** buď přímo k jejich uživatelskému účtu, nebo prostřednictvím skupiny s využitím možnosti přiřazení licencí na základě skupin.
 
--   U aplikací, které společnost Microsoft nebo třetí strana zveřejňuje volně pro každého, kdo je může používat, může být uživatelům udělen přístup prostřednictvím **souhlasu uživatele**. To znamená, že se přihlásí k aplikaci pomocí svého účtu Azure AD Work nebo School a umožní jí přístup k některé omezené sadě dat na svém účtu.
+-   Pro aplikace, které společnost Microsoft nebo třetí strana zveřejňuje volně pro použití kýmkoli, se uživatelům může udělit přístup prostřednictvím **souhlasu uživatele**. To znamená, že se přihlásí k aplikaci pomocí pracovního nebo školního účtu Azure AD a umožní, aby měl přístup k některé omezené sadě dat na svém účtu.
 
--   U aplikací, které společnost Microsoft nebo třetí strana publikuje volně pro každého, kdo může používat, může být uživatelům udělen přístup také na základě **souhlasu správce**. To znamená, že správce určil, že aplikace může být použita všemi v organizaci, takže se k aplikaci přihlásí pomocí účtu globálního správce a udělí přístup všem uživatelům v organizaci.
+-   Pro aplikace, které společnost Microsoft nebo třetí strana zveřejňuje volně pro použití kýmkoli, můžou být uživatelům udělen i přístup prostřednictvím **souhlasu správce**. To znamená, že správce zjistil, že aplikace může být používána všemi uživateli v organizaci, aby se přihlásila k aplikaci pomocí účtu globálního správce a udělila přístup všem v organizaci.
 
-Chcete-li problém vyřešit, začněte s [obecnými problémovými oblastmi s přístupem k aplikacím, abyste zvážili](#general-problem-areas-with-application-access-to-consider) a přečetli si návod: Kroky k řešení potíží s přístupem k aplikacím společnosti Microsoft, abyste se dostali k podrobnostem.
+Pokud chcete tento problém vyřešit, začněte tím, že začnete s [obecnými oblastmi problému s přístupem k aplikacím](#general-problem-areas-with-application-access-to-consider) a pak si přečtěte návod: kroky pro řešení potíží s aplikací Microsoft Access, abyste se dostali k podrobnostem.
 
-## <a name="general-problem-areas-with-application-access-to-consider"></a>Obecné problémové oblasti s přístupem k aplikacím, které je třeba zvážit
+## <a name="general-problem-areas-with-application-access-to-consider"></a>Obecné oblasti problému s přístupem k aplikacím, které je potřeba zvážit
 
-Následuje seznam obecných problémových oblastí, do kterých můžete přejít, pokud máte představu o tom, kde začít, ale doporučujeme přečíst si návod, abyste mohli rychle začít: Návod: Kroky k řešení potíží s přístupem k aplikacím Microsoft Application.
+V následujícím seznamu jsou uvedeny obecné oblasti problémů, na které můžete přejít, pokud máte představu o tom, kde začít, ale doporučujeme vám přečíst si návod, který vám pomůže rychle se pustit: Návod: kroky pro řešení potíží s aplikací Microsoft Access.
 
 -   [Problémy s uživatelským účtem](#problems-with-the-users-account)
 
@@ -47,486 +47,486 @@ Následuje seznam obecných problémových oblastí, do kterých můžete přej�
 
 -   [Problémy se zásadami podmíněného přístupu](#problems-with-conditional-access-policies)
 
--   [Problémy se souhlasem aplikace](#problems-with-application-consent)
+-   [Problémy s souhlasem aplikace](#problems-with-application-consent)
 
-## <a name="steps-to-troubleshoot-microsoft-application-access"></a>Postup řešení potíží s přístupem k aplikacím společnosti Microsoft
+## <a name="steps-to-troubleshoot-microsoft-application-access"></a>Postup odstraňování potíží s aplikací Microsoft Access
 
-Níže jsou uvedeny některé běžné problémy lidé narazit, když jejich uživatelé nemohou přihlásit k aplikaci společnosti Microsoft.
+Tady jsou některé běžné problémy, ke kterým lidé běžet, když se jejich uživatelé nebudou moct přihlašovat k aplikaci Microsoftu.
 
-- Obecné problémy, které je třeba nejprve zkontrolovat
+- Obecné problémy k první kontrole
 
-  * Ujistěte se, že se uživatel přihlašuje ke **správné adrese URL** a ne k místní adrese URL aplikace.
+  * Ujistěte se, že se uživatel přihlašuje ke **správné adrese URL** , a ne k místní adrese URL aplikace.
 
-  * Ujistěte se, že uživatelský účet **není uzamčen.**
+  * Ujistěte se, že účet uživatele není **uzamčený.**
 
-  * Ujistěte se, **že účet uživatele existuje** ve službě Azure Active Directory. [Kontrola, zda ve službě Azure Active Directory existuje uživatelský účet](#problems-with-the-users-account)
+  * Ujistěte se, že **uživatelský účet existuje** v Azure Active Directory. [Ověřte, zda uživatelský účet existuje v Azure Active Directory](#problems-with-the-users-account)
 
-  * Zkontrolujte, zda je pro přihlášení **povolen** uživatelský [účet.](#problems-with-the-users-account)
+  * Ujistěte se, že je **povolený** účet uživatele pro přihlášení. [Zkontrolujte stav účtu uživatele](#problems-with-the-users-account) .
 
-  * Ujistěte se, že vypršela platnost hesla uživatele nebo zda **není zapomenuto.** [Resetování hesla uživatele](#reset-a-users-password) nebo [povolení samoobslužného resetování hesla](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+  * Ujistěte se, že **heslo uživatele není prošlé nebo zapomenuté.** [Resetování hesla uživatele](#reset-a-users-password) nebo [Povolení samoobslužného resetování hesla](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
-  * Ujistěte se, že **vícefaktorové ověřování** neblokuje přístup uživatelů. [Kontrola stavu vícefaktorového ověřování uživatele](#check-a-users-multi-factor-authentication-status) nebo [kontrola kontaktních údajů uživatele](#check-a-users-authentication-contact-info) pro ověřování
+  * Ujistěte se, že **Multi-Factor Authentication** neblokuje přístup uživatelů. [Kontrolovat stav vícefaktorového ověřování uživatele](#check-a-users-multi-factor-authentication-status) nebo [zjistit kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
 
-  * Ujistěte se, že **zásady podmíněného přístupu** nebo **zásady ochrany identity** neblokují přístup uživatelů. [Zkontrolujte konkrétní zásady podmíněného přístupu](#problems-with-conditional-access-policies) nebo [zkontrolujte zásady podmíněného přístupu konkrétní aplikace](#check-a-specific-applications-conditional-access-policy) nebo [zakažte určitou zásadu podmíněného přístupu](#disable-a-specific-conditional-access-policy)
+  * Zajistěte, aby **zásady podmíněného přístupu** nebo zásady **ochrany identit** neblokovaly přístup uživatelů. [Ověřte konkrétní zásady podmíněného přístupu](#problems-with-conditional-access-policies) nebo [Ověřte zásadu podmíněného přístupu konkrétní aplikace](#check-a-specific-applications-conditional-access-policy) nebo [zakažte konkrétní zásadu podmíněného](#disable-a-specific-conditional-access-policy) přístupu.
 
-  * Ujistěte se, že jsou informace **o ověřovacím kontaktu** uživatele aktuální, aby bylo možné vynucovat zásady vícefaktorového ověřování nebo podmíněného přístupu. [Kontrola stavu vícefaktorového ověřování uživatele](#check-a-users-multi-factor-authentication-status) nebo [kontrola kontaktních údajů uživatele](#check-a-users-authentication-contact-info) pro ověřování
+  * Ujistěte se, že **kontaktní údaje pro ověření** uživatele jsou aktuální, aby bylo možné vyhovět Multi-Factor Authentication nebo zásadám podmíněného přístupu. [Kontrolovat stav vícefaktorového ověřování uživatele](#check-a-users-multi-factor-authentication-status) nebo [zjistit kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
 
-- U **aplikací Microsoftu, které vyžadují licenci** (například Office365), je třeba zkontrolovat několik konkrétních problémů, jakmile vyloučíte výše uvedené obecné problémy: **Microsoft**
+- Pro aplikace **Microsoftu** **, které vyžadují licenci** (například Office 365), zde najdete některé konkrétní problémy, které se kontrolují, když jste si vyřadíte Obecné problémy výše:
 
-  * Ujistěte se, že uživatel nebo má **přiřazenou licenci.** [Kontrola přiřazených licencí uživatele](#check-a-users-assigned-licenses) nebo [kontrola přiřazených licencí skupiny](#check-a-groups-assigned-licenses)
+  * Ujistěte se, že uživatel nebo má **přiřazenou licenci.** [Ověření licencí přiřazených uživateli](#check-a-users-assigned-licenses) nebo [ověření licencí přidělených skupině](#check-a-groups-assigned-licenses)
 
-  * Pokud je licence **přiřazena** **ke statické skupině**, ujistěte se, že je uživatel **členem** této skupiny. [Kontrola členství uživatele ve skupinách](#check-a-users-group-memberships)
+  * Pokud je licence **přiřazena ke** **statické skupině**, ujistěte se, že **je uživatel členem** této skupiny. [Ověřit členství uživatele ve skupinách](#check-a-users-group-memberships)
 
-  * Pokud je licence **přiřazena** **dynamické skupině**, ujistěte se, že je pravidlo dynamické **skupiny správně nastaveno**. [Kontrola kritérií členství dynamické skupiny](#check-a-dynamic-groups-membership-criteria)
+  * Pokud je licence **přiřazená k** **dynamické skupině**, ujistěte se, že **je správně nastavené pravidlo dynamické skupiny**. [Zkontroluje kritéria členství v dynamické skupině.](#check-a-dynamic-groups-membership-criteria)
 
-  * Pokud je licence **přiřazena** **dynamické skupině**, ujistěte se, že dynamická skupina **dokončila zpracování** svého členství a že uživatel je **členem** (to může nějakou dobu trvat). [Kontrola členství uživatele ve skupinách](#check-a-users-group-memberships)
+  * Pokud je licence **přiřazena** **dynamické skupině**, ujistěte se, že dynamická skupina **dokončila zpracování** členství a že **uživatel je členem** (může to trvat delší dobu). [Ověřit členství uživatele ve skupinách](#check-a-users-group-memberships)
 
-  *  Jakmile se ujistíte, že je licence přiřazena, ujistěte se, že platnost licence **nevypršela**.
+  *  Jakmile se zajistěte, aby byla licence přiřazena, zajistěte, aby licence **nevypršela**.
 
-  *  Ujistěte se, že licence je **pro aplikaci,** ke které přistupují.
+  *  Ujistěte se, že je licence určena **pro aplikaci** , ke které přistupuje.
 
-- U aplikací **společnosti Microsoft,** **které nevyžadují licenci**, je třeba zkontrolovat následující skutečnosti:
+- Pro aplikace **Microsoftu** **, které nevyžadují licenci**, je tady několik věcí, které byste měli kontrolovat:
 
-  * Pokud aplikace požaduje **oprávnění na úrovni uživatele** (například "Přístup k poštovní schránce tohoto uživatele"), ujistěte se, že se uživatel přihlásil k aplikaci a provedl **operaci souhlasu na úrovni uživatele,** aby aplikace získala přístup k jejich datům.
+  * Pokud aplikace požaduje oprávnění na **úrovni uživatele** (například "přístup k poštovní schránce uživatele"), ujistěte se, že se uživatel přihlásil k aplikaci a provedl **operaci souhlasu na úrovni uživatele** , která aplikaci umožní přístup k datům.
 
-  * Pokud aplikace požaduje **oprávnění na úrovni správce** (například "Přístup k poštovním schránkám všech uživatelů"), ujistěte se, že globální správce provedl **operaci souhlasu na úrovni správce jménem všech uživatelů** v organizaci.
+  * Pokud aplikace požaduje **oprávnění na úrovni správce** (například přístup ke všem poštovním schránkám uživatelů), ujistěte se, že globální správce provedl **jménem všech uživatelů v organizaci operaci souhlasu na úrovni správce** .
 
 ## <a name="problems-with-the-users-account"></a>Problémy s uživatelským účtem
 
-Přístup k aplikaci lze blokovat kvůli problému s uživatelem, který je přiřazen k aplikaci. Níže jsou uvedeny některé způsoby, jak můžete řešit a řešit problémy s uživateli a jejich nastavení účtu:
+Přístup k aplikaci lze zablokovat kvůli problému s uživatelem přiřazeným k aplikaci. Níže jsou uvedeny některé způsoby, jak můžete řešit problémy s uživateli a jejich nastavení účtu:
 
--   [Kontrola, zda ve službě Azure Active Directory existuje uživatelský účet](#check-if-a-user-account-exists-in-azure-active-directory)
+-   [Ověřte, zda uživatelský účet existuje v Azure Active Directory](#check-if-a-user-account-exists-in-azure-active-directory)
 
--   [Kontrola stavu účtu uživatele](#check-a-users-account-status)
+-   [Zkontroluje stav účtu uživatele.](#check-a-users-account-status)
 
 -   [Resetování hesla uživatele](#reset-a-users-password)
 
--   [Povolení samoobslužného resetování hesla](#enable-self-service-password-reset)
+-   [Povolení samoobslužného resetování hesel](#enable-self-service-password-reset)
 
--   [Kontrola stavu vícefaktorového ověřování uživatele](#check-a-users-multi-factor-authentication-status)
+-   [Zkontroluje stav vícefaktorového ověřování uživatele.](#check-a-users-multi-factor-authentication-status)
 
--   [Kontrola kontaktních údajů uživatele pro ověřování](#check-a-users-authentication-contact-info)
+-   [Ověřit kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
 
--   [Kontrola členství uživatele ve skupinách](#check-a-users-group-memberships)
+-   [Ověřit členství uživatele ve skupinách](#check-a-users-group-memberships)
 
--   [Kontrola přiřazených licencí uživatele](#check-a-users-assigned-licenses)
+-   [Ověření licencí přiřazených uživateli](#check-a-users-assigned-licenses)
 
 -   [Přiřazení licence uživateli](#assign-a-user-a-license)
 
-### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>Kontrola, zda ve službě Azure Active Directory existuje uživatelský účet
+### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>Ověřte, zda uživatelský účet existuje v Azure Active Directory
 
-Chcete-li zkontrolovat, zda je k dispozici uživatelský účet, postupujte takto:
+Pokud chcete zjistit, jestli je uživatelský účet přítomen, postupujte takto:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  Zkontrolujte vlastnosti objektu uživatele a ujistěte se, že vypadají podle očekávání a chybí žádná data.
+7.  Zkontrolujte vlastnosti objektu uživatele, abyste měli jistotu, že vypadají podle očekávání a že nechybí žádná data.
 
-### <a name="check-a-users-account-status"></a>Kontrola stavu účtu uživatele
+### <a name="check-a-users-account-status"></a>Zkontroluje stav účtu uživatele.
 
-Chcete-li zkontrolovat stav účtu uživatele, postupujte takto:
+Chcete-li zjistit stav účtu uživatele, postupujte podle následujících kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  klepněte na **položku Profil**.
+7.  klikněte na **profil**.
 
-8.  V části **Nastavení** zkontrolujte, zda je **přihlášení bloku** nastaveno na **ne**.
+8.  V části **Nastavení** zajistěte, aby se **blokování přihlášení** nastavilo na **ne**.
 
 ### <a name="reset-a-users-password"></a>Resetování hesla uživatele
 
-Chcete-li obnovit heslo uživatele, postupujte takto:
+Pokud chcete resetovat heslo uživatele, postupujte podle těchto kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  klikněte na tlačítko **Obnovit heslo** v horní části podokna uživatele.
+7.  klikněte na tlačítko **resetovat heslo** v horní části podokna uživatele.
 
-8.  Klepněte na tlačítko **Obnovit heslo** v podokně **Obnovit heslo,** které se zobrazí.
+8.  klikněte na tlačítko **resetovat heslo** v podokně pro **resetování hesla** , které se zobrazí.
 
-9.  Zkopírujte **dočasné heslo** nebo **zadejte nové heslo** pro uživatele.
+9.  Zkopírujte **dočasné heslo** nebo **Zadejte nové heslo** pro uživatele.
 
-10. Sdělte toto nové heslo uživateli, bude nutné změnit toto heslo během jejich další přihlášení do služby Azure Active Directory.
+10. Sdělit tomuto uživateli nové heslo, musí si toto heslo během příštího přihlašování k Azure Active Directory změnit.
 
 ### <a name="enable-self-service-password-reset"></a>Povolení samoobslužného resetování hesel
 
-Chcete-li povolit samoobslužné resetování hesla, postupujte podle následujících kroků nasazení:
+Pokud chcete povolit samoobslužné resetování hesla, postupujte podle následujících kroků nasazení:
 
--   [Povolení uživatelům resetovat hesla služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Povolit uživatelům resetovat hesla Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
--   [Povolení uživatelům resetovat nebo změnit místní hesla služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Povolit uživatelům resetovat nebo změnit místní hesla služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
-### <a name="check-a-users-multi-factor-authentication-status"></a>Kontrola stavu vícefaktorového ověřování uživatele
+### <a name="check-a-users-multi-factor-authentication-status"></a>Zkontroluje stav vícefaktorového ověřování uživatele.
 
-Chcete-li zkontrolovat stav vícefaktorového ověřování uživatele, postupujte takto:
+Chcete-li zjistit stav vícefaktorového ověřování uživatele, postupujte takto:
 
-1. Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4. V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4. v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5. klepněte na položku **Všichni uživatelé**.
+5. klikněte na **Všichni uživatelé**.
 
-6. klikněte na tlačítko **Vícefaktorové ověřování** v horní části podokna.
+6. v horní části podokna klikněte na tlačítko **Multi-Factor Authentication** .
 
-7. Jakmile se **portál správy vícefaktorového ověřování** načte, ujistěte se, že jste na kartě **Uživatelé.**
+7. Po načtení **portálu pro správu Multi-Factor Authentication** se ujistěte, že jste na kartě **Uživatelé** .
 
-8. Vyhledejte uživatele v seznamu uživatelů vyhledáváním, filtrováním nebo řazením.
+8. Vyhledejte uživatele v seznamu uživatelů hledáním, filtrováním nebo řazením.
 
-9. Vyberte uživatele ze seznamu uživatelů a **povolit**, **zakázat**nebo **vynutit** vícefaktorové ověřování podle potřeby.
+9. Vyberte uživatele ze seznamu uživatelů a podle potřeby povolte, **zakažte** **nebo** **vypněte**službu Multi-Factor Authentication.
 
-   * **Poznámka:** Pokud je uživatel v **vynuceném** stavu, můžete jej dočasně nastavit na **Zakázáno,** aby se mohl vrátit do svého účtu. Jakmile jsou zpět, pak můžete změnit jejich stav **povoleno** znovu požadovat, aby znovu zaregistrovat své kontaktní údaje během jejich další přihlášení. Případně můžete podle kroků v části [Kontrola ověřovacích kontaktních údajů uživatele](#check-a-users-authentication-contact-info) ověřit nebo nastavit tato data pro ně.
+   * **Poznámka**: Pokud je uživatel ve stavu **vykonatelné** , můžete ho nastavit tak, aby se dočasně **zakázal** , aby se mohl vrátit ke svému účtu. Jakmile se znovu vrátí, můžete změnit jejich stav na **povoleno** , aby bylo možné znovu zaregistrovat své kontaktní údaje při příštím přihlášení. Případně můžete postupovat podle pokynů v [kontaktních informacích k ověření uživatele](#check-a-users-authentication-contact-info) a ověřit nebo nastavit tato data.
 
-### <a name="check-a-users-authentication-contact-info"></a>Kontrola kontaktních údajů uživatele pro ověřování
+### <a name="check-a-users-authentication-contact-info"></a>Ověřit kontaktní údaje pro ověření uživatele
 
-Chcete-li zkontrolovat kontaktní údaje uživatele pro ověřování pomocí vícefaktorového ověřování, podmíněného přístupu, ochrany identity a resetování hesla, postupujte takto:
+Pokud chcete zjistit kontaktní údaje pro ověření uživatele, které se používají pro službu Multi-Factor Authentication, podmíněný přístup, ochranu identity a resetování hesel, postupujte podle těchto kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  klepněte na **položku Profil**.
+7.  klikněte na **profil**.
 
-8.  Posuňte se dolů na **Informace o autentizaci**.
+8.  Přejděte dolů na **kontaktní údaje pro ověření**.
 
-9.  **Zkontrolujte** data registrovaná pro uživatele a podle potřeby aktualizujte.
+9.  **Zkontrolujte** data zaregistrovaná pro uživatele a podle potřeby je aktualizujte.
 
-### <a name="check-a-users-group-memberships"></a>Kontrola členství uživatele ve skupinách
+### <a name="check-a-users-group-memberships"></a>Ověřit členství uživatele ve skupinách
 
-Chcete-li zkontrolovat členství uživatele ve skupinách, postupujte takto:
+Pokud chcete ověřit členství uživatele ve skupině, postupujte podle těchto kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  Kliknutím na **Skupiny** zobrazíte, ve kterých skupinách je uživatel členem.
+7.  Kliknutím na **skupiny** zobrazíte skupiny, kterých je uživatel členem.
 
-### <a name="check-a-users-assigned-licenses"></a>Kontrola přiřazených licencí uživatele
+### <a name="check-a-users-assigned-licenses"></a>Ověření licencí přiřazených uživateli
 
-Chcete-li zkontrolovat přiřazené licence uživatele, postupujte takto:
+Pokud chcete ověřit přiřazené licence uživatele, postupujte podle těchto kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  Chcete-li zjistit, které licence uživatel aktuálně přiřadil, klepněte na **položku Licence.**
+7.  Kliknutím na **licence** zobrazíte licence, které uživatel aktuálně přiřadil.
 
 ### <a name="assign-a-user-a-license"></a>Přiřazení licence uživateli 
 
-Chcete-li uživateli přiřadit licenci, postupujte takto:
+K přiřazení licence uživateli použijte následující postup:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  Chcete-li zjistit, které licence uživatel aktuálně přiřadil, klepněte na **položku Licence.**
+7.  Kliknutím na **licence** zobrazíte licence, které uživatel aktuálně přiřadil.
 
-8.  klikněte na tlačítko **Přiřadit.**
+8.  klikněte na tlačítko **přiřadit** .
 
 9.  Vyberte **jeden nebo více produktů** ze seznamu dostupných produktů.
 
-10. **Volitelně** klepněte na položku **možností přiřazení,** chcete-li granularly přiřadit produkty. Po dokončení klepněte na **tlačítko Ok.**
+10. **Volitelné** kliknutím na položku **možnosti přiřazení** podrobně přiřaďte produkty. Po dokončení klikněte na **OK** .
 
-11. Klepnutím na tlačítko **Přiřadit** přiřadíte tyto licence tomuto uživateli.
+11. Pro přiřazení těchto licencí tomuto uživateli klikněte na tlačítko **přiřadit** .
 
 ## <a name="problems-with-groups"></a>Problémy se skupinami
 
-Přístup k aplikaci lze blokovat kvůli problému se skupinou, která je přiřazena k aplikaci. Níže jsou uvedeny některé způsoby řešení a řešení problémů se skupinami a členstvím ve skupinách:
+Přístup k aplikaci lze zablokovat kvůli problému se skupinou, která je přiřazena k aplikaci. Níže jsou uvedené některé způsoby, jak můžete řešit problémy se skupinami a členstvím ve skupinách:
 
--   [Kontrola členství ve skupině](#check-a-groups-membership)
+-   [Ověřit členství ve skupině](#check-a-groups-membership)
 
--   [Kontrola kritérií členství dynamické skupiny](#check-a-dynamic-groups-membership-criteria)
+-   [Zkontroluje kritéria členství v dynamické skupině.](#check-a-dynamic-groups-membership-criteria)
 
--   [Kontrola přiřazených licencí skupiny](#check-a-groups-assigned-licenses)
+-   [Ověření licencí přidělených skupině](#check-a-groups-assigned-licenses)
 
--   [Opětovné zpracování licencí skupiny](#reprocess-a-groups-licenses)
+-   [Znovu zpracovat licence skupiny](#reprocess-a-groups-licenses)
 
--   [Přiřazení skupiny k licenci](#assign-a-group-a-license)
+-   [Přiřazení licence skupiny a](#assign-a-group-a-license)
 
-### <a name="check-a-groups-membership"></a>Kontrola členství ve skupině
+### <a name="check-a-groups-membership"></a>Ověřit členství ve skupině
 
-Chcete-li zkontrolovat členství ve skupině, postupujte takto:
+Chcete-li ověřit členství ve skupině, postupujte podle následujících kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na **položku Všechny skupiny**.
+5.  klikněte na **všechny skupiny**.
 
-6.  **Vyhledejte** skupinu, která vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** skupinu, kterou vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  Klepnutím na tlačítko **Členové** zkontrolujte seznam uživatelů přiřazených k této skupině.
+7.  Kliknutím na **Členové** zkontrolujte seznam uživatelů přiřazených k této skupině.
 
-### <a name="check-a-dynamic-groups-membership-criteria"></a>Kontrola kritérií členství dynamické skupiny 
+### <a name="check-a-dynamic-groups-membership-criteria"></a>Zkontroluje kritéria členství v dynamické skupině. 
 
-Chcete-li zkontrolovat kritéria členství dynamické skupiny, postupujte takto:
+Pokud chcete ověřit kritéria členství v dynamické skupině, postupujte podle těchto kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na **položku Všechny skupiny**.
+5.  klikněte na **všechny skupiny**.
 
-6.  **Vyhledejte** skupinu, která vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** skupinu, kterou vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  klikněte na **Dynamická pravidla členství.**
+7.  klikněte na **dynamická pravidla členství.**
 
-8.  Zkontrolujte **jednoduché** nebo **rozšířené** pravidlo definované pro tuto skupinu a ujistěte se, že uživatel, který má být členem této skupiny, splňuje tato kritéria.
+8.  Zkontrolujte **jednoduché** nebo **Rozšířené** pravidlo definované pro tuto skupinu a ujistěte se, že uživatel, který chcete být členem této skupiny, splňuje tato kritéria.
 
-### <a name="check-a-groups-assigned-licenses"></a>Kontrola přiřazených licencí skupiny
+### <a name="check-a-groups-assigned-licenses"></a>Ověření licencí přidělených skupině
 
-Chcete-li zkontrolovat přiřazené licence skupiny, postupujte takto:
+Chcete-li ověřit přiřazené licence skupiny, postupujte podle těchto kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na **položku Všechny skupiny**.
+5.  klikněte na **všechny skupiny**.
 
-6.  **Vyhledejte** skupinu, která vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** skupinu, kterou vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  Chcete-li zjistit, které licence skupina aktuálně přiřadila, klepněte na **položku Licence.**
+7.  Kliknutím na **licence** zobrazíte licence, které skupina aktuálně přiřadila.
 
-### <a name="reprocess-a-groups-licenses"></a>Opětovné zpracování licencí skupiny
+### <a name="reprocess-a-groups-licenses"></a>Znovu zpracovat licence skupiny
 
-Chcete-li znovu zpracovat přiřazené licence skupiny, postupujte takto:
+Chcete-li znovu zpracovat přiřazené licence skupiny, postupujte podle těchto kroků:
 
-1. Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4. V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4. v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5. klepněte na **položku Všechny skupiny**.
+5. klikněte na **všechny skupiny**.
 
-6. **Vyhledejte** skupinu, která vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6. **Vyhledejte** skupinu, kterou vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7. Chcete-li zjistit, které licence skupina aktuálně přiřadila, klepněte na **položku Licence.**
+7. Kliknutím na **licence** zobrazíte licence, které skupina aktuálně přiřadila.
 
-8. Klepnutím na tlačítko **Znovu zpracovat** zajistíte, že licence přiřazené členům této skupiny jsou aktuální. To může trvat dlouhou dobu, v závislosti na velikosti a složitosti skupiny.
+8. klikněte na tlačítko znovu **zpracovat** a ujistěte se, že licence přiřazené členům této skupiny jsou aktuální. V závislosti na velikosti a složitosti skupiny to může trvat dlouhou dobu.
 
    >[!NOTE]
-   >Chcete-li to provést rychleji, zvažte dočasné přiřazení licence přímo uživateli. [Přiřazení licence uživateli](#problems-with-application-consent).
+   >Chcete-li to provést rychleji, zvažte možnost dočasného přiřazení licence přímo uživateli. [Přiřaďte uživateli licenci](#problems-with-application-consent).
    >
    >
 
-### <a name="assign-a-group-a-license"></a>Přiřazení skupiny k licenci
+### <a name="assign-a-group-a-license"></a>Přiřazení licence skupiny a
 
-Chcete-li skupině přiřadit licenci, postupujte takto:
+Pokud chcete přiřadit licenci ke skupině, postupujte podle těchto kroků:
 
-1. Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4. V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4. v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5. klepněte na **položku Všechny skupiny**.
+5. klikněte na **všechny skupiny**.
 
-6. **Vyhledejte** skupinu, která vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6. **Vyhledejte** skupinu, kterou vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7. Chcete-li zjistit, které licence skupina aktuálně přiřadila, klepněte na **položku Licence.**
+7. Kliknutím na **licence** zobrazíte licence, které skupina aktuálně přiřadila.
 
-8. klikněte na tlačítko **Přiřadit.**
+8. klikněte na tlačítko **přiřadit** .
 
 9. Vyberte **jeden nebo více produktů** ze seznamu dostupných produktů.
 
-10. **Volitelně** klepněte na položku **možností přiřazení,** chcete-li granularly přiřadit produkty. Po dokončení klepněte na **tlačítko Ok.**
+10. **Volitelné** kliknutím na položku **možnosti přiřazení** podrobně přiřaďte produkty. Po dokončení klikněte na **OK** .
 
-11. Klepnutím na tlačítko **Přiřadit** přiřadíte tyto licence této skupině. To může trvat dlouhou dobu, v závislosti na velikosti a složitosti skupiny.
+11. Kliknutím na tlačítko **přiřadit** jim přiřadíte tyto licence k této skupině. V závislosti na velikosti a složitosti skupiny to může trvat dlouhou dobu.
 
     >[!NOTE]
-    >Chcete-li to provést rychleji, zvažte dočasné přiřazení licence přímo uživateli. [Přiřazení licence uživateli](#problems-with-application-consent).
+    >Chcete-li to provést rychleji, zvažte možnost dočasného přiřazení licence přímo uživateli. [Přiřaďte uživateli licenci](#problems-with-application-consent).
     > 
     >
 
 ## <a name="problems-with-conditional-access-policies"></a>Problémy se zásadami podmíněného přístupu
 
-### <a name="check-a-specific-conditional-access-policy"></a>Kontrola konkrétní zásady podmíněného přístupu
+### <a name="check-a-specific-conditional-access-policy"></a>Ověřte konkrétní zásady podmíněného přístupu.
 
 Kontrola nebo ověření jedné zásady podmíněného přístupu:
 
-1. Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4. V navigační nabídce klikněte na **Podnikové aplikace.**
+4. v navigační nabídce klikněte na **podnikové aplikace** .
 
-5. klikněte na navigační položku **podmíněného přístupu.**
+5. klikněte na položku navigace **podmíněného přístupu** .
 
-6. klikněte na zásady, které máte zájem o kontrolu.
+6. klikněte na zásadu, které vás zajímá při kontrole.
 
-7. Zkontrolujte, zda neexistují žádné konkrétní podmínky, přiřazení nebo jiná nastavení, která mohou blokovat přístup uživatelů.
+7. Zkontrolujte, že neexistují žádné konkrétní podmínky, přiřazení nebo jiná nastavení, která by mohla blokovat přístup uživatelů.
 
    >[!NOTE]
-   >Můžete chtít dočasně zakázat tyto zásady, abyste se ujistili, že neovlivňuje přihlášení. Chcete-li to provést, nastavte přepínač **Povolit zásady** na **Ne** a klepněte na tlačítko **Uložit.**
+   >Možná budete chtít dočasně zakázat tuto zásadu, aby se zajistilo, že se neovlivňují přihlášení. Uděláte to tak, že nastavíte přepínač **Povolit zásadu** na **ne** a kliknete na tlačítko **Uložit** .
    >
    >
 
-### <a name="check-a-specific-applications-conditional-access-policy"></a>Kontrola zásad podmíněného přístupu konkrétní aplikace
+### <a name="check-a-specific-applications-conditional-access-policy"></a>Zkontroluje zásadu podmíněného přístupu konkrétní aplikace.
 
-Kontrola nebo ověření aktuálně nakonfigurované zásady podmíněného přístupu jedné aplikace:
+Chcete-li zkontrolovat nebo ověřit aktuálně nakonfigurovanou zásadu podmíněného přístupu jedné aplikace:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Podnikové aplikace.**
+4.  v navigační nabídce klikněte na **podnikové aplikace** .
 
-5.  klepněte na **položku Všechny aplikace**.
+5.  klikněte na **všechny aplikace**.
 
-6.  Vyhledejte aplikaci, která vás zajímá, nebo se uživatel pokouší přihlásit pomocí zobrazované aplikace nebo ID aplikace.
-
-     >[!NOTE]
-     >Pokud hledáte aplikaci, klikněte na tlačítko **Filtr** a rozbalte rozsah seznamu na **Všechny aplikace**. Pokud chcete zobrazit další sloupce, klikněte na tlačítko **Sloupce** a přidejte další podrobnosti o svých aplikacích.
-     >
-     >
-
-7.  klikněte na navigační položku **podmíněného přístupu.**
-
-8.  klikněte na zásady, které máte zájem o kontrolu.
-
-9.  Zkontrolujte, zda neexistují žádné konkrétní podmínky, přiřazení nebo jiná nastavení, která mohou blokovat přístup uživatelů.
+6.  Vyhledejte aplikaci, kterou vás zajímá, nebo se uživatel pokouší přihlásit pomocí zobrazovaného názvu aplikace nebo ID aplikace.
 
      >[!NOTE]
-     >Můžete chtít dočasně zakázat tyto zásady, abyste se ujistili, že neovlivňuje přihlášení. Chcete-li to provést, nastavte přepínač **Povolit zásady** na **Ne** a klepněte na tlačítko **Uložit.**
+     >Pokud nevidíte aplikaci, kterou hledáte, klikněte na tlačítko **Filtr** a rozbalte rozsah seznamu do **všech aplikací**. Chcete-li zobrazit více sloupců, klikněte na tlačítko **sloupce** a přidejte další podrobnosti pro aplikace.
      >
      >
 
-### <a name="disable-a-specific-conditional-access-policy"></a>Zakázání určité zásady podmíněného přístupu
+7.  klikněte na položku navigace **podmíněného přístupu** .
+
+8.  klikněte na zásadu, které vás zajímá při kontrole.
+
+9.  Zkontrolujte, zda nejsou k dispozici žádné konkrétní podmínky, přiřazení nebo jiná nastavení, která mohou blokovat přístup uživatelů.
+
+     >[!NOTE]
+     >Možná budete chtít dočasně zakázat tuto zásadu, aby se zajistilo, že se neovlivňují přihlášení. Uděláte to tak, že nastavíte přepínač **Povolit zásadu** na **ne** a kliknete na tlačítko **Uložit** .
+     >
+     >
+
+### <a name="disable-a-specific-conditional-access-policy"></a>Zakázání specifických zásad podmíněného přístupu
 
 Kontrola nebo ověření jedné zásady podmíněného přístupu:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Podnikové aplikace.**
+4.  v navigační nabídce klikněte na **podnikové aplikace** .
 
-5.  klikněte na navigační položku **podmíněného přístupu.**
+5.  klikněte na položku navigace **podmíněného přístupu** .
 
-6.  klikněte na zásady, které máte zájem o kontrolu.
+6.  klikněte na zásadu, které vás zajímá při kontrole.
 
-7.  Zakažte zásadu nastavením **přepínače Povolit zásadu** na **Ne** a klepnutím na tlačítko **Uložit.**
+7.  Zakažte zásadu tak, že nastavíte přepínač **Povolit zásadu** na **ne** a kliknete na tlačítko **Uložit** .
 
-## <a name="problems-with-application-consent"></a>Problémy se souhlasem aplikace
+## <a name="problems-with-application-consent"></a>Problémy s souhlasem aplikace
 
-Přístup k aplikaci lze blokovat, protože nedošlo k operaci souhlasu se správnými oprávněními. Níže jsou uvedeny některé způsoby řešení a řešení problémů se souhlasem aplikace:
+Přístup k aplikaci je možné zablokovat, protože nedošlo k operaci souhlasu se správnými oprávněními. Tady je několik způsobů, jak můžete řešit problémy s vydáním aplikace a řešit je:
 
 -   [Provedení operace souhlasu na úrovni uživatele](#perform-a-user-level-consent-operation)
 
--   [Provedení operace souhlasu na úrovni správce pro libovolnou aplikaci](#perform-administrator-level-consent-operation-for-any-application)
+-   [Provedení operace souhlasu na úrovni správce u libovolné aplikace](#perform-administrator-level-consent-operation-for-any-application)
 
 -   [Provedení souhlasu na úrovni správce pro aplikaci s jedním klientem](#perform-administrator-level-consent-for-a-single-tenant-application)
 
--   [Provedení souhlasu na úrovni správce pro víceklientské aplikace](#perform-administrator-level-consent-for-a-multi-tenant-application)
+-   [Provádění souhlasu se správcem na úrovni správce pro aplikaci s více klienty](#perform-administrator-level-consent-for-a-multi-tenant-application)
 
 ### <a name="perform-a-user-level-consent-operation"></a>Provedení operace souhlasu na úrovni uživatele
 
--   U jakékoli aplikace s podporou open ID Connect, která požaduje oprávnění, provede přechod na přihlašovací obrazovku aplikace souhlas na úrovni uživatele s aplikací přihlášeného uživatele.
+-   U jakékoli otevřené aplikace s podporou připojení, která žádá o oprávnění, přejde na přihlašovací obrazovce aplikace souhlas na úrovni uživatele k aplikaci pro přihlášeného uživatele.
 
--   Chcete-li to provést programově, přečtěte si téma [Požadování souhlasu jednotlivých uživatelů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent).
+-   Pokud to chcete provést programově, přečtěte si téma [vyžádání souhlasu jednotlivých uživatelů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent).
 
-### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Provedení operace souhlasu na úrovni správce pro libovolnou aplikaci
+### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Provedení operace souhlasu na úrovni správce u libovolné aplikace
 
--   Pouze **u aplikací vyvinutých pomocí aplikačního modelu V1**můžete vynutit, aby k tomuto souhlasu na úrovni správce došlo přidáním "**\_?prompt=admin consent**" na konec přihlašovací adresy URL aplikace.
+-   **Jenom pro aplikace vyvíjené pomocí aplikačního modelu v1**můžete tomuto souhlasu s oprávněními na úrovni správce přinutit tak, že na konec adresy URL pro přihlášení k aplikaci přidáte "**? prompt = souhlasu správce\_**".
 
--   U **všech aplikací vyvinutých pomocí aplikačního modelu V2**můžete tento souhlas na úrovni správce vynutit podle pokynů v části **Požádat o oprávnění od** správce adresáře [v části Použití koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   U **všech aplikací vyvinutých pomocí aplikačního modelu v2**můžete vyhovět tomuto souhlasu na úrovni správce, a to podle pokynů v části **vyžádání oprávnění z Správce adresáře** v tématu [použití koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Provedení souhlasu na úrovni správce pro aplikaci s jedním klientem
 
--   U **jednoklientských aplikací,** které požadují oprávnění (například ty, které vyvíjíte nebo vlastníte ve vaší organizaci), můžete provést operaci **souhlasu** na úrovni správy jménem všech uživatelů tak, že se přihlásíte jako globální správce a kliknete na tlačítko **Udělit oprávnění** v horní části **registru aplikací –&gt; všechny aplikace –&gt; vyberte aplikaci –&gt; požadovaná oprávnění.**
+-   Pro **aplikace pro jednoho tenanta** , které požadují oprávnění (například ty, které vyvíjíte nebo vlastníte ve vaší organizaci), můžete provádět operace **souhlasu s správní úrovní** jménem všech uživatelů přihlášením jako globální správce a kliknutím na tlačítko **udělit oprávnění** v horní části **registru aplikace –&gt; všechny aplikace –&gt; Vyberte podokno oprávnění&gt; požadovaná aplikací** .
 
--   U **všech aplikací vyvinutých pomocí aplikačního modelu V1 nebo V2**můžete tento souhlas na úrovni správce vynutit podle pokynů v části **Požádat o oprávnění od** správce adresáře [v části Použití koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   U **všech aplikací vyvinutých pomocí aplikačního modelu v1 nebo v2**můžete vyhovět tomuto souhlasu na úrovni správce, a to podle pokynů v části **vyžádání oprávnění z Správce adresáře** v tématu [použití koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
-### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Provedení souhlasu na úrovni správce pro víceklientské aplikace
+### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Provádění souhlasu se správcem na úrovni správce pro aplikaci s více klienty
 
--   U **víceklientských aplikací,** které požadují oprávnění (například aplikace, kterou vyvíjí třetí strana nebo společnost Microsoft), můžete provést operaci **souhlasu na úrovni správy.** Přihlaste se jako globální správce a klikněte na tlačítko **Udělit oprávnění** v části **Podnikové aplikace –&gt; Všechny aplikace –&gt; Vyberte aplikaci –&gt; podokno oprávnění** (brzy k dispozici).
+-   Pro **víceklientské aplikace** , které vyžadují oprávnění (například aplikace, kterou třetí strana nebo společnost Microsoft), můžete provést operaci **souhlasu s správní úrovní** . Přihlaste se jako globální správce a klikněte na tlačítko **udělit oprávnění** v části **podnikové aplikace –&gt; všechny aplikace –&gt; Vyberte podokno&gt; oprávnění aplikace** (brzy bude k dispozici).
 
--   Tento souhlas na úrovni správce můžete také vynutit podle pokynů v části **Požádat o oprávnění od** správce adresáře v části Použití [koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   Tento souhlas na úrovni správce můžete taky vyžádat podle pokynů v části **vyžádání oprávnění z Správce adresáře** v tématu [použití koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ## <a name="next-steps"></a>Další kroky
 [Použití koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)

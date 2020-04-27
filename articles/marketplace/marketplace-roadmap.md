@@ -1,46 +1,46 @@
 ---
-title: Azure Marketplace a plán AppSource
-description: Plán, co se děje na marketplace
+title: Plán Azure Marketplace a AppSource
+description: Přehled o tom, co se děje na webu Marketplace
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: 24e622f76e604d7c0c48e2f3c354e3b4aa64e549
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 0631859983944a7e33615106060d3ffb45a3c7bc
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084902"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160490"
 ---
-# <a name="microsoft-commercial-marketplace-roadmap"></a>Plán obchodního trhu společnosti Microsoft
+# <a name="microsoft-commercial-marketplace-roadmap"></a>Plán komerčního tržiště Microsoftu
 
-Tento dokument poskytuje přehled o dalším přístupu na komerční tržiště společnosti Microsoft pro vydavatele, prodejce a zákazníky. Zachycuje některé významné funkce, které jsme se zavázali, hrubý časový rámec, kdy můžete očekávat, že je uvidíte, a bude aktualizován měsíčně. Nejedná se o úplný seznam všech nových funkcí, ale má poskytnout přehled o našich klíčových investicích. Tyto sady funkcí a časové rámce doručení jsou aktuální a mohou se změnit.
+Tento dokument poskytuje přehled o tom, co je dál pro komerční tržiště Microsoftu pro vydavatele, prodejce a zákazníky. Zachycuje některé z významných funkcí, které jsme si potvrdili, což je hrubý časový rámec, kdy je můžete očekávat, a bude se aktualizovat měsíčně. Nejedná se o úplný seznam všech nových funkcí, ale je určený k tomu, aby poskytoval přehled o našich klíčových investicích. Tyto sady funkcí a časové rámce pro doručení jsou aktuální a mohou se změnit.
 
-Vítáme vaše návrhy! Zapojte se do konverzace v [komunitě partnerů microsoftu](https://www.microsoftpartnercommunity.com/) a získejte nejnovější aktualizace nových funkcí, programů a událostí.
+Vítáme vaše návrhy! Připojte se ke konverzaci v [komunitě partnerů Microsoftu](https://www.microsoftpartnercommunity.com/) , abyste získali nejnovější aktualizace nových funkcí, programů a událostí.
 
 ## <a name="roadmap"></a>Plán
-![Plán tržiště na listopad 2019](./media/marketplace-publishers-guide/roadmap-nov19.png)
+![Průvodce Marketplace pro listopadu 2019](./media/marketplace-publishers-guide/roadmap-nov19.png)
 
 ## <a name="recent-releases"></a>Poslední verze
 
-Jakmile je schopnost živá, bude odstraněna z plánu. Funkce, které byly přidány na trh, naleznete v následující dokumentaci.
+Jakmile je funkce živá, odebere se z plánu. Funkce, které byly přidány do webu Marketplace, najdete v následující dokumentaci.
 
-* [Marketplace + CSP Aktualizace Blog](https://aka.ms/marketplacemarchupdateblog)
-* [Publikovat nabídky do kanálu CSP (ISV)](https://aka.ms/publishtocsp)
-* [Další prodej nabídky marketplace (CSP)](https://aka.ms/marketplaceincsp)
-* [Standardní kontrakt](https://aka.ms/standardcontract)
-* [Rozhraní API plnění SaaS](https://aka.ms/saasapiv2)
-* [Marketplace Geos a měny](https://aka.ms/marketplacegeos)
-* [Seller Insights](./partner-center-portal/analytics.md)
-* [Microsoft Build Marketplace Blog](https://aka.ms/marketplacebuildblog)
-* [Marketplace května Aktualizace Blog](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* Centrum partnerů: Vytvoření migrace[účtu správy](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) /  [účtu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [z cpp](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
-* Centrum partnerů: Vytvoření aktualizace[stavu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
-) / publikování /  [nabídky SaaS,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)[aktualizace existující](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [nabídky, analýza nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
-* [Získání podpory pro marketplace v Partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* [Blog o aktualizaci Marketplace a CSP](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
+* [Publikování nabídek do kanálu CSP (ISV)](./cloud-solution-providers.md)
+* [Proprodej nabídek na webu Marketplace (CSP)](https://docs.microsoft.com/partner-center/sell-marketplace-products)
+* [Smlouva standard pro komerční tržiště Microsoftu](./standard-contract.md)
+* [Rozhraní API naplnění SaaS](./partner-center-portal/pc-saas-fulfillment-apis.md)
+* [Geografická dostupnost a podpora měny pro komerční tržiště](./marketplace-geo-availability-currencies.md)
+* [Analýzy pro komerční tržiště v partnerském centru](./partner-center-portal/analytics.md)
+* [Blog Microsoft Build Marketplace](https://azure.microsoft.com/blog/announcing-new-marketplace-revenue-opportunities/)
+* [Web Marketplace může aktualizovat blog](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
+* Partnerské centrum: [Vytvoření účtu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [Správa migrace účtu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [z cpp](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
+* Partnerské centrum: [Vytvoření SaaS nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / aktualizovat[stav](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
+) / publikování[existující nabídka](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [Analýza](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
+* [Získat podporu pro Marketplace v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
 ## <a name="next-steps"></a>Další kroky
 
-Navštivte stránku [Azure Marketplace a Průvodce vydavatelem AppSource.](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)
+Navštivte stránku [Příručka pro vydavatele Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) .

@@ -1,115 +1,115 @@
 ---
-title: Go-To-Market Services - vaše výhody komerčního trhu | Azure Marketplace
-description: Služby go-to-market – prostředky společnosti Microsoft, které mohou vydavatelé používat, jsou popsány v této části.
+title: Služby pro uvedení na trh – výhody vašich komerčních webů na webu Marketplace | Azure Marketplace
+description: Služby pro uvedení na trh – prostředky společnosti Microsoft, které mohou vydavatelé používat, jsou popsány v této části.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: d5c8b2f5cb03c7e1777137100547fbbbaf107f0b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 2249dde8578dcd5cc3444aeef6b51c8afb2f31fa
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81684542"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160592"
 ---
-# <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního trhu
+# <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
-Publikovali jste na marketplace, nyní chcete, aby vaše nabídka byla úspěšná. Poskytujeme vám výhody - prodej, technické a marketingové - které potřebujete k urychlení růstu vaší nabídky.
+Publikovali jste na webu Marketplace, nyní chcete zobrazit vaši nabídku, která je úspěšná. Poskytujeme vám výhody – prodej, technický a marketing – potřebujete k urychlení růstu vaší nabídky.
 
-Když se svou nabídkou pustíte do provozu, tým programu Marketplace Rewards vás osloví a začne s vámi spolupracovat na vašich způsobilých výhodách. Výhody programu Marketplace Rewards narůstají na základě vašeho zapojení a prodeje na komerčním trhu. Čím více se zapojíte, tím více se dostanete zpět.
+Když budete pracovat s vaší nabídkou, bude se tým na webu Marketplace vystihnout a začít pracovat s vámi na základě vašich nároků na vaše výhody. Výhody na webu Marketplace se účtují na základě zapojení do komerčního tržiště a prodeje. Tím více zahájíte, tím více se vrátíte zpět.
 
-## <a name="marketplace-rewards"></a>Odměny od Marketplace
+## <a name="marketplace-rewards"></a>Ceny Marketplace
 
-Odměny Marketplace jsou navrženy tak, aby vás podporovaly v konkrétní fázi růstu, počínaje osvětovými aktivitami, které vám pomohou získat vaše první zákazníky. Jak rostete na trhu, odemknete nové výhody, které vám pomohou převést zákazníky a uzavřít obchody. 
+Ceny na Marketplace jsou navržené tak, aby vám podporovaly v konkrétní fázi růstu, počínaje osvětou aktivitami, které vám pomůžou získat vaše první zákazníky. Při zvětšování na webu Marketplace budete odemykat nové výhody, které vám pomohou převést zákazníky a uzavřít obchody. 
 
-Program vytváří pozitivní zpětnou vazbu: výhody v každé fázi růstu jsou navrženy tak, aby vás postoupily do další fáze, což vám umožní rozšířit vaše podnikání na zákazníky společnosti Microsoft, s polem společnosti Microsoft a prostřednictvím kanálu společnosti Microsoft využitím komerčního trhu jako platformy. 
+Program vytvoří pozitivní smyčku zpětné vazby: výhody v jednotlivých fázích růstu jsou navržené tak, aby vás pokračovaly v další fázi, což vám umožní rozšířit vaši firmu na zákazníky Microsoftu, pole Microsoftu a prostřednictvím kanálu Microsoftu prostřednictvím komerčního tržiště, které využijí vaší platformy. 
 
-Vaše výhody jsou rozlišeny podle toho, zda je vaše nabídka [Seznam, Zkušební verze nebo Transact](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option).
+Vaše výhody se liší v závislosti na tom, jestli je vaše nabídka [seznam, zkušební verze nebo transakční](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option).
 
-Na základě vaší způsobilosti vás bude kontaktovat člen týmu odměn, jakmile vaše nabídka začne vycházet. 
+Na základě vašich nároků vám bude kontaktován člen týmu útraty, pokud vaše nabídka bude živá. 
 
-Pro partnery společnosti Transact, jak rostete fakturované prodeje prostřednictvím platformy marketplace, odemknete větší výhody na úroveň. 
+U partnerů pro Transact-to, jak budete rozšiřovat účtované prodeje prostřednictvím platformy Marketplace, můžete pro každou úroveň odemknout větší výhody. 
 
-Minimální požadavek na publikování v obchodech je MPNID, takže tyto výhody jsou k dispozici všem partnerům bez ohledu na stav kompetence MPN nebo typ partnera. Každý partner je oprávněn rozvíjet své podnikání prostřednictvím trhu jako platformy. 
+Minimálním požadavkem pro publikování v prodejní místa je MPNID, takže tyto výhody jsou dostupné všem partnerům bez ohledu na stav kompetence MPN nebo partnerský typ. Každý partner je oprávněn rozšířit svou firmu na webu Marketplace jako platformu.
 
-Získáte podporu při pochopení zdrojů, které máte k dispozici, a při implementaci osvědčených postupů, které můžete také [zkontrolovat sami](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/). 
+Získáte podporu při porozumění dostupných zdrojích a implementaci osvědčených postupů, které můžete také [zkontrolovat sami](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
-Podrobné popisy všech výhod programu naleznete v [balíčku programu Marketplace Rewards](https://aka.ms/marketplacerewards).
+Podrobné popisy všech výhod programu najdete na [webu Marketplace](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)– výhody programu.
 
-Postup, jak začít, jsou snadné:
+Postup, jak začít, je snadné:
 
-1. Publikujte nabídku v Microsoft AppSource nebo Azure Marketplace.
-2. Tým osloví "vlastníka" nebo "primární kontakt" na nabídku tržiště. Osvědčeným postupem je zadávat jednotlivce nebo alias, který pravidelně kontrolujete: zprávy odesílané aliasům, například info@company.com často se ztrácejí.
-
->[!Note]
->Pokud je vaše nabídka aktivní déle než čtyři týdny a neobdrželi jste zprávu, zkontrolujte v rámci organizace, kdo je vlastníkem dané nabídky, a to v partnerském centru. Měli by mít komunikaci a další kroky. <br> <br> Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete https://aka.ms/marketplacepublishersupportzvýšit lístek podpory na adrese .
-
-Rozsah aktivit, které máte k dispozici, se rozšiřuje s tím, jak rostete své nabídky na trhu. Všechny zápisy obdrží základní úroveň optimalizačních doporučení a propagace jako součást samoobslužného e-mailu o zdrojích a osvědčených postupech.
-
-## <a name="list-trial-and-consulting-benefits"></a>Seznam, zkušební a konzultační výhody
-
-Pokud publikujete zkušební nebo konzultační doklad o koncepci, implementaci nebo workshopu, bude vám přidělen manažer zapojení po dobu tří měsíců, který vám pomůže v úspěšném plánu na trhu. Toto tříměsíční angažmá můžete zopakovat pokaždé, když publikujete novou nabídku, abyste pomohli úspěšně začít s každou z vašich nových nabídek.
-
-Níže uvedená tabulka shrnuje požadavky na způsobilost pro nabídky seznamu a zkušebníverze:
-
-![Výhody na trhu](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
-
-Podrobné popisy všech těchto výhod naleznete v [balíčku programu Marketplace Rewards](https://aka.ms/marketplacerewards).
-
-## <a name="marketplace-rewards-for-transact-partners"></a>Odměny marketplace pro partnery pro transakt
-
-Když přejdete do provozu s převoditelnou nabídkou na Azure Marketplace nebo Microsoft AppSource, budete mít přístup k dalším výhodám při růstu fakturovaných prodejních transakcí nebo licencí prodaných prostřednictvím komerčního trhu. 
+1. Publikování nabídky buď Microsoft AppSource, nebo Azure Marketplace.
+2. Tým dosáhne nabídky vlastník nebo primární kontakt na nabídku Marketplace. Osvědčeným postupem je zadat buď jednotlivce, nebo alias, který pravidelně kontrolujete: zprávy odesílané aliasům, například info@company.com často se ztratí.
 
 >[!Note]
->Prahová hodnota prodaných licencí platí pouze pro aplikace Microsoft 365 (aplikace SaaS, které mají integraci s Microsoft Teams, Office, Outlook em nebo SharePoint) a výhody musí být dokončeny do 30.
+>Pokud byla nabídka živá po dobu více než čtyř týdnů a neobdrželi jste zprávu, zkontrolujte v partnerském centru v organizaci, která je vlastníkem příslušné nabídky. Měly by mít komunikaci a další kroky. <br> <br> Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na stránce [pomoc a podpora](https://partner.microsoft.com/support/v2/?stage=1).
 
-Tyto výhody jsou navrženy tak, aby vám pomohly v marketingových, prodejních a technických aktivitách, a tím vám pomohly získat více návštěvníků, získat více potenciálních zákazníků a převést více obchodů.
+Rozsah aktivit, které jsou k dispozici, se rozšíří při zvětšování nabídek na webu Marketplace. Všechny výpisy obdrží základní úroveň doporučení optimalizace a povýšení v rámci samoobslužného e-mailu s prostředky a osvědčenými postupy.
 
-Všichni partneři, kteří mají živou nabídku, pracují se specializovaným manažerem zapojení a vybírají pro vaše portfolio nabídek na marketplace aktivity s nejvyšší hodnotou. Toto zapojení je evergreen na nabídku, což znamená, že si můžete vybrat své aktivity a načasování těchto aktivit, aby odpovídaly načasování vaší společnosti širší marketingové a prodejní strategie. 
+## <a name="list-trial-and-consulting-benefits"></a>Výhody pro seznam, zkušební verze a konzultace
+
+Pokud publikujete zkušební nebo konzultační kontrolu konceptu, implementace nebo služby dílny, budete mít k manažera Engagement po dobu tří měsíců, která vám pomůže s úspěšným plánem pro uvedení na trh. Tento tříměsíční závazek můžete opakovat pokaždé, když publikujete novou nabídku, a získáte tak, že se všechny nové nabídky spustí s úspěchem.
+
+Následující tabulka shrnuje požadavky na způsobilost pro nabídky seznamů a zkušebních verzí:
+
+![Výhody pro uvedení na trh](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
+
+Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)– výhody programu.
+
+## <a name="marketplace-rewards-for-transact-partners"></a>Ceny na webu Marketplace pro partnery Transact
+
+Až budete pracovat s podporou transakcí v Azure Marketplace nebo Microsoft AppSource, budete mít přístup k dalším výhodám při růstu fakturovaných prodejních transakcí nebo míst prodávaných prostřednictvím komerčního tržiště. 
+
+>[!Note]
+>Prahová hodnota počtu vydaných míst se vztahuje jenom na Microsoft 365 aplikace (SaaS aplikace, které mají integrace s Microsoft teams, Office, Outlookem nebo SharePointem) a výhody se musí dokončit 30. června 2020.
+
+Tyto výhody jsou navržené tak, aby vám podporovaly marketing, prodej a technické aktivity a tím vám pomohly získat další návštěvníky, získat větší potenciální zákazníky a převést více firmy.
+
+Všem partnerům, kteří mají živou nabídku, se dostanou pracovat s vyhrazeným správcem Engagement a vybírat z vašich portfolií nabídek na webu Marketplace aktivity nejvyšší hodnoty. Tato akce je doručoval na každou nabídku, což znamená, že si můžete vybrat své aktivity a časování těchto aktivit, které se bude zarovnávat s časováním širších marketingových a prodejních strategií vaší společnosti. 
 
 ![Marketingové výhody](./media/marketplace-publishers-guide/marketing-benefit.png)
 
-![Výhody prodeje](./media/marketplace-publishers-guide/sales-benefit.png)
+![Prodejní výhody](./media/marketplace-publishers-guide/sales-benefit.png)
 
 ![Technické výhody](./media/marketplace-publishers-guide/technical-benefit.png)
 
-\*Prahová hodnota prodaných licencí platí pouze pro aplikace Microsoft 365 (aplikace SaaS, které mají integraci s Microsoft Teams, Office, Outlook em nebo SharePoint) a výhody musí být dokončeny do 30.
+\*Prahová hodnota počtu vydaných míst se vztahuje jenom na Microsoft 365 aplikace (SaaS aplikace, které mají integrace s Microsoft teams, Office, Outlookem nebo SharePointem) a výhody se musí dokončit 30. června 2020.
 
-Podrobné popisy všech těchto výhod naleznete v [balíčku programu Marketplace Rewards](https://aka.ms/marketplacerewards).
+Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)– výhody programu.
 
-Kromě výhod odměn mají partneři obchodních aplikací s nabídkami Dynamics publikované v Microsoft AppSource k dispozici doplňkové programování prostřednictvím [služby ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview). To zahrnuje technickou, marketingovou a prodejní podporu, která se specializuje na potřeby partnerů obchodních aplikací.
+Kromě výhod nevýhod je, že partneři podnikových aplikací s nabídkami Dynamics publikovaná na Microsoft AppSource mají k dispozici další programování prostřednictvím [ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview). To zahrnuje technickou, marketingovou a prodejní podporu, která je specializovaná na potřeby partnerů obchodních aplikací.
 
-## <a name="marketplace-rewards-requirements-and-restrictions"></a>Požadavky a omezení odměn na Marketplace
+## <a name="marketplace-rewards-requirements-and-restrictions"></a>Požadavky a omezení pro Marketplace
 
-### <a name="publisher-agreement"></a>Smlouva s vydavatelem
+### <a name="publisher-agreement"></a>Smlouva vydavatele
 
-Všechny činnosti popsané na této stránce jsou zahrnuty ve [smlouvě s vydavatelem tržiště](https://go.microsoft.com/fwlink/?LinkID=699560) a jsou v souladu s Dodatkem k programu komerčních výhod.
+Všechny aktivity popsané na této stránce jsou pokryté [smlouvou vydavatele na webu Marketplace](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) a jsou v souladu s doplňkem programu komerčních výhod.
 
-### <a name="cancellation-policy"></a>Storno podmínky
+### <a name="cancellation-policy"></a>Zásady zrušení
 
-[Vydavatelé seznamu a zkušební verze](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) se mohou přihlásit nebo se odhlásit z aktivit podle publikace nabídky. Partneři se mohou kdykoli odhlásit z jakéhokoli závazku. 
+Vydavatelé [seznamů a zkušebních verzí](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) se můžou rozhodnout nebo odsouhlasit aktivity na každou nabídku. Partneři si můžou kdykoli kdykoli odhlásit. 
 
-Společnost Microsoft si vyhrazuje právo odvolat a ukončit výhody programu Marketplace Rewards majitelům stránek, kteří: 
+Společnost Microsoft si vyhrazuje právo odvolat a zrušit výhody, které můžou využít pro vydavatele, kteří: 
 
-* nezákonnou činnost prostřednictvím jejich uvedení na trhu.
-* jsou vyřazeny z komerčního trhu. 
-* používat svou nabídku k zobrazování marketingového nebo jiného obsahu, který porušuje zákony o autorských právech nebo ochranných známkách.
-* porušovat zásady [sponzorského programu Azure](https://azure.microsoft.com/offers/ms-azr-0036p/), mimo jiné včetně využití sponzorského financování Azure pro vlastní interní operace nebo těžbu Bitcoinu. 
+* Zapojte se do neplatného aktivity pomocí jejich výpisu na webu Marketplace.
+* jsou označeny z komerčního tržiště. 
+* pomocí své nabídky můžete zobrazit marketing nebo jiný obsah, který porušuje zákony o autorských právech nebo ochranných známkách.
+* porušuje zásady [programu pro sponzorství Azure](https://azure.microsoft.com/offers/ms-azr-0036p/), včetně, ale ne omezeného, pomocí financování Azure sponzorství pro své vlastní interní operace nebo Bitcoin dolování.
 
 ### <a name="offer-availability"></a>Dostupnost nabídky
 
-Tato nabídka se provádí v angličtině pro všechny partnery s živou nabídkou na Azure Marketplace nebo Microsoft AppSource.
+Tato nabídka je prováděna v angličtině pro všechny partnery s živou nabídkou v Azure Marketplace nebo Microsoft AppSource.
 
-Transakce, u kterých se prokáže, že jsou podvodné, se nezapočítávají do [úrovně fakturovaného prodejního programu vydavatele](https://aka.ms/marketplacepublisherrewards), jak je uvedeno v [seznamu, zkušební verzi, části s poradenstvím,](#list-trial-and-consulting-benefits) části [výhod partnerů pro transakce](#marketplace-rewards-for-transact-partners) a [podrobného balíčku programů](https://aka.ms/marketplacepublisherrewards). Společnost Microsoft přidělí partnery úrovním způsobilosti na základě jejich skutečných fakturovaných prodejů po odebrání podvodu. 
+Transakce, které jsou ověřené jako podvodné, se nepočítají směrem k prodejní úrovni programu v programu Publisher, jak je uvedeno v části [seznam, zkušební verze, konzultace](#list-trial-and-consulting-benefits) a [výhody pro partnery](#marketplace-rewards-for-transact-partners) v oblasti transakcí. Po odebrání podvodu bude Microsoft přidělovat partnerům nárok na úrovně způsobilosti na základě jejich skutečného účtovaného prodeje.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste nabídku vytvořili v [Centru partnerů](https://partner.microsoft.com/dashboard/commercial-marketplace/overview), přihlaste se a vytvořte nebo nakonfigurujte nabídku.
+Pokud jste nabídku vytvořili v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/overview), přihlaste se a vytvořte nebo nakonfigurujte vaši nabídku.
 
-Projděte si [samoobslužné zdroje, které máte k dispozici](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
+Prohlédněte si [samoobslužné prostředky, které máte k dispozici](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
-Zaregistrujte se do [komunitního fóra Microsoft AppSource a Azure Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) a získejte informace o relevantních tématech nebo se zapojte do diskuse.
+Zaregistrujte se na [Microsoft AppSource a Azure Marketplace Komunitní fórum](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) a seznamte se s příslušnými tématy nebo se připojte k diskuzi.
 
 ---

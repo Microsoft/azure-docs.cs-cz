@@ -1,6 +1,6 @@
 ---
-title: Požadavky na řízení přístupu návrhu hybridní identity Azure | Dokumenty společnosti Microsoft
-description: Zahrnuje pilíře identity a identifikaci požadavků na přístup pro prostředky pro uživatele v hybridním prostředí.
+title: Požadavky na řízení přístupu k návrhu hybridní identity Azure | Microsoft Docs
+description: Pokrývá pilíře identity a identifikaci požadavků na přístup k prostředkům pro uživatele v hybridním prostředí.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,63 +18,63 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60295139"
 ---
-# <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na řízení přístupu pro řešení hybridní identity
-Když organizace navrhuje své řešení hybridní identity, mohou také tuto příležitost využít ke kontrole požadavků na přístup pro prostředky, které plánují zpřístupnit uživatelům. Přístup k datům překračuje všechny čtyři pilíře identity, které jsou:
+# <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na řízení přístupu pro vaše řešení hybridní identity
+Když organizace navrhuje své řešení hybridní identity, může také využít tuto příležitost ke kontrole požadavků na přístup k prostředkům, které plánuje, aby je uživatelé mohli zpřístupnit. Přístup k datům překračuje všechny čtyři pilíře identity, které jsou:
 
 * Správa
 * Ověřování
 * Autorizace
 * Auditování
 
-Následující části budou zahrnovat ověřování a autorizaci podrobněji, správa a auditování jsou součástí životního cyklu hybridní identity. Další informace o těchto funkcích naleznete [v části Určení úloh správy hybridní identity.](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
+Následující části budou zahrnovat ověřování a autorizaci ve více podrobnostech, správě a auditování jsou součástí životního cyklu hybridní identity. Další informace o těchto možnostech najdete v tématu [určení úloh správy hybridních identit](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) .
 
 > [!NOTE]
-> Přečtěte si [čtyři pilíře identity - Správa identit ve věku hybridního IT](https://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) pro více informací o každém z těchto pilířů.
+> Přečtěte si [čtyři pilíře správy identity-identity ve stáří hybridního IT,](https://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) kde najdete další informace o každém z těchto pilířů.
 > 
 > 
 
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace
-Existují různé scénáře pro ověřování a autorizaci, tyto scénáře budou mít specifické požadavky, které musí splňovat řešení hybridní identity, které společnost přijme. Scénáře zahrnující komunikaci mezi podniky (B2B) mohou přidat další výzvu pro správce IT, protože budou muset zajistit, aby metoda ověřování a autorizace používaná organizací mohla komunikovat se svými obchodními partnery. Během procesu navrhování požadavků na ověřování a autorizaci zajistěte, aby byly zodpovězeny následující otázky:
+Existují různé scénáře pro ověřování a autorizaci. Tyto scénáře budou mít specifické požadavky, které musí splnit řešení hybridní identity, které společnost hodlá přijmout. Scénáře týkající se komunikace B2B (Business to Business) můžou přidat další výzvu pro správce IT, protože budou muset zajistit, aby metoda ověřování a autorizace používaná organizací mohla komunikovat se svými obchodními partnery. Během navrhování pro požadavky na ověřování a autorizaci se ujistěte, že máte zodpovězené následující otázky:
 
-* Ověří a autorizuje vaše organizace pouze uživatele, kteří se nacházejí v jejich systému správy identit?
+* Bude vaše organizace ověřovat a autorizovat jenom uživatele, kteří se nacházejí v jejich systému správy identit?
   * Existují nějaké plány pro scénáře B2B?
-  * Pokud ano, už víte, které protokoly (SAML, OAuth, Kerberos nebo Certifikáty) budou použity k připojení obou firem?
-* Podporuje řešení hybridní identity, které chcete přijmout, tyto protokoly?
+  * Pokud ano, už víte, které protokoly (SAML, OAuth, Kerberos nebo certifikáty) se budou používat k propojení obou firem?
+* Bude řešení hybridní identity, které hodláte přijmout, podporovat tyto protokoly?
 
-Dalším důležitým bodem, který je třeba zvážit, je, kde bude umístěno úložiště ověřování, které budou uživatelé a partneři používat, a model správy, který se má použít. Zvažte následující dvě základní možnosti:
+Dalším důležitým bodem, který je třeba zvážit, je místo, kde se nachází úložiště ověřování, které budou používat uživatelé a partneři, a model správy, který se má použít. Vezměte v úvahu následující dvě základní možnosti:
 
-* Centralizované: v tomto modelu lze přihlašovací údaje, zásady a správu uživatele centralizovat místně nebo v cloudu.
-* Hybridní: v tomto modelu budou pověření, zásady a správa uživatele centralizované místně a replikovány v cloudu.
+* Centralizované: v tomto modelu mohou být přihlašovací údaje, zásady a Správa uživatele centralizované místně nebo v cloudu.
+* Hybridní: v tomto modelu budou přihlašovací údaje, zásady a Správa uživatele centralizované místně a replikované v cloudu.
 
-Model, který vaše organizace přijme, se bude lišit v závislosti na jejich obchodních požadavcích, chcete odpovědět na následující otázky, abyste zjistili, kde se bude systém správy identit nabývat, a režim správy, který chcete použít:
+Model, který bude vaše organizace přijmout, se bude lišit v závislosti na jejich obchodních požadavcích, a chcete zodpovědět následující otázky, které vám pomůžou určit, kde se bude systém správy identit nacházet, a režim správy, který se má použít:
 
 * Má vaše organizace aktuálně místní správu identit?
-  * Pokud ano, mají v plánu si ho nechat?
-  * Existují nějaké požadavky na regulaci nebo dodržování předpisů, které musí vaše organizace dodržovat a které určují, kde by měl být systém správy identit?
+  * Pokud ano, naplánujte si je?
+  * Existují nějaké požadavky na předpisy nebo požadavky na dodržování předpisů, které vaše organizace musí dodržovat, kde se má nacházet systém správy identit?
 * Používá vaše organizace jednotné přihlašování pro aplikace umístěné místně nebo v cloudu?
-  * Pokud ano, má přijetí modelu hybridní identity vliv na tento proces?
+  * Pokud ano, bude se tento proces týkat i přijetí modelu hybridních identit?
 
 ## <a name="access-control"></a>Řízení přístupu
-Zatímco ověřování a autorizace jsou základními prvky umožňujícími přístup k podnikovým datům prostřednictvím ověření uživatele, je také důležité řídit úroveň přístupu, kterou budou mít tito uživatelé, a úroveň přístupu, kterou budou mít správci nad prostředky. které řídí. Vaše řešení hybridní identity musí být schopno poskytnout podrobný přístup k prostředkům, delegování a řízení přístupu na základě role. Ujistěte se, že je zodpovězena následující otázka týkající se řízení přístupu:
+Zatímco ověřování a autorizace jsou základními prvky, které umožňují přístup k podnikovým datům prostřednictvím ověření uživatele, je také důležité řídit úroveň přístupu, kterou tito uživatelé budou mít, a úroveň přístupu správců budou mít prostředky, které spravují. Vaše řešení hybridní identity musí být schopné poskytnout podrobný přístup k prostředkům, delegování a základnímu řízení přístupu role. Ujistěte se, že je na řízení přístupu zodpovězená následující otázka:
 
-* Má vaše společnost ke správě systému identit více než jednoho uživatele se zvýšenými oprávněními?
+* Má vaše společnost více než jednoho uživatele se zvýšenými oprávněními ke správě vašeho systému identity?
   * Pokud ano, potřebuje každý uživatel stejnou úroveň přístupu?
-* Bude vaše společnost muset delegovat přístup k uživatelům ke správě konkrétních prostředků?
-  * Pokud ano, jak často se to stane?
-* Bude vaše společnost potřebovat integrovat možnosti řízení přístupu mezi místními a cloudovými prostředky?
-* Bude vaše společnost muset omezit přístup ke zdrojům v souladu s určitými podmínkami?
-* Bude mít vaše společnost nějakou aplikaci, která potřebuje vlastní řízení přístup k některým prostředkům?
-  * Pokud ano, kde se tyto aplikace nacházejí (místně nebo v cloudu)?
-  * Pokud ano, kde se tyto cílové prostředky nacházejí (místně nebo v cloudu)?
+* Potřebuje vaše společnost pro správu konkrétních prostředků delegovat přístup pro uživatele?
+  * Pokud ano, jak často k tomu dochází?
+* Potřebuje vaše společnost integrovat možnosti řízení přístupu mezi místními a cloudovým prostředky?
+* Potřebuje vaše společnost omezit přístup k prostředkům podle určitých podmínek?
+* Má vaše společnost nějakou aplikaci, která potřebuje přístup k některým prostředkům vlastním ovládacím prvkům?
+  * Pokud ano, kde se nacházejí tyto aplikace (místně nebo v cloudu)?
+  * Pokud ano, kde se nacházejí tyto cílové prostředky (místně nebo v cloudu)?
 
 > [!NOTE]
-> Každou odpověď si poznamenejte a ujistěte se, že dobře chápete důvody, které vás k ní vedly. [Definovat strategii ochrany osobních údajů](plan-hybrid-identity-design-considerations-data-protection-strategy.md) půjde přes možnosti k dispozici a výhody / nevýhody každé možnosti.  Zodpovězením těchto otázek si vyberete, která možnost nejlépe vyhovuje vašim obchodním potřebám.
+> Každou odpověď si poznamenejte a ujistěte se, že dobře chápete důvody, které vás k ní vedly. [Definování strategie ochrany dat](plan-hybrid-identity-design-considerations-data-protection-strategy.md) překročí dostupné možnosti a výhody a nevýhody jednotlivých možností.  Tím, že odpovíte na tyto otázky, vyberete, která možnost bude nejlépe vyhovovat vašim potřebám vaší firmy.
 > 
 > 
 
@@ -82,5 +82,5 @@ Zatímco ověřování a autorizace jsou základními prvky umožňujícími př
 [Určení požadavků na reakce na incidenty](plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 
 ## <a name="see-also"></a>Viz také
-[Přehled aspekty návrhu](plan-hybrid-identity-design-considerations-overview.md)
+[Přehled otázek návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

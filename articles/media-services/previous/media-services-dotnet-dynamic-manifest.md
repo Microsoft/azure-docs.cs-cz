@@ -1,6 +1,6 @@
 ---
 title: Vytváření filtrů pomocí sady Azure Media Services .NET SDK
-description: Toto téma popisuje, jak vytvořit filtry, aby je váš klient mohl použít k vysílání datového proudu určitých částí datového proudu. Media Services vytváří dynamické manifesty k dosažení tohoto selektivního streamování.
+description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services vytvoří dynamické manifesty pro dosažení tohoto selektivního streamování.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,37 +16,37 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
 ms.openlocfilehash: c60b223f91a151bf63cabc5e95816f2545022503
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69016609"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>Vytváření filtrů pomocí sady Media Services .NET SDK 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
-> * [Odpočinku](media-services-rest-dynamic-manifest.md)
+> * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-Počínaje verzí 2.17 umožňuje služba Media Services definovat filtry pro vaše datové zdroje. Tyto filtry jsou pravidla na straně serveru, která zákazníkům umožňují zvolit si například: přehrávání pouze části videa (namísto přehrávání celého videa) nebo určení pouze podmnožinu zvukových a obrazových interpretací, které zařízení zákazníka zvládne (namísto všechny interpretace, které jsou přidruženy k prostředku). Tohoto filtrování vašich datových zdrojů je dosaženo prostřednictvím **dynamického manifestu,** které jsou vytvořeny na základě požadavku zákazníka na streamování videa na základě určených filtrů.
+Počínaje verzí 2,17 Media Services umožňuje definovat filtry pro vaše prostředky. Tyto filtry jsou pravidla na straně serveru, která zákazníkům umožňují vybrat, co dělají: přehrávání pouze části videa (místo přehrávání celého videa) nebo určení pouze podmnožiny zvukových a video verzí, které může zařízení zákazníka zpracovat (místo všech verzí přidružených k assetu). Toto filtrování prostředků se dosahuje prostřednictvím **dynamických manifestů**, které jsou vytvořené na základě žádosti zákazníka o streamování videa na základě zadaných filtrů.
 
-Podrobnější informace týkající se filtrů a dynamického manifestu naleznete [v tématu Přehled dynamických manifestů](media-services-dynamic-manifest-overview.md).
+Podrobnější informace týkající se filtrů a dynamického manifestu naleznete v tématu [Přehled dynamických manifestů](media-services-dynamic-manifest-overview.md).
 
-Tento článek ukazuje, jak pomocí sady Media Services .NET SDK vytvářet, aktualizovat a odstraňovat filtry. 
+V tomto článku se dozvíte, jak pomocí Media Services .NET SDK vytvářet, aktualizovat a odstraňovat filtry. 
 
-Poznámka: Pokud aktualizujete filtr, může trvat až dvě minuty, než koncový bod streamování aktualizuje pravidla. Pokud byl obsah obsluhován pomocí tohoto filtru (a ukládán do mezipaměti proxy a cdn), může aktualizace tohoto filtru způsobit selhání přehrávače. Po aktualizaci filtru vždy vymažte mezipaměť. Pokud tato možnost není možná, zvažte použití jiného filtru. 
+Poznámka: Pokud filtr aktualizujete, může trvat až dvě minuty, než koncový bod streamování pravidel aktualizuje pravidla. Pokud byl obsah obsluhován pomocí tohoto filtru (a ukládá do mezipaměti proxy a mezipaměti CDN), může aktualizace tohoto filtru způsobit selhání přehrávače. Po aktualizaci filtru vždy vymažte mezipaměť. Pokud tato možnost není možná, zvažte použití jiného filtru. 
 
-## <a name="types-used-to-create-filters"></a>Typy používané k vytváření filtrů
-Při vytváření filtrů se používají následující typy: 
+## <a name="types-used-to-create-filters"></a>Typy použité k vytváření filtrů
+Při vytváření filtrů se používají tyto typy: 
 
-* **IStreamingFilter**.  Tento typ je založen na následujícím filtru rozhraní REST [API.](https://docs.microsoft.com/rest/api/media/operations/filter)
-* **IStreamingAssetFilter**. Tento typ je založen na následujícím filtru PROSTŘEDKŮ ROZHRANÍ REST [API AssetFilter.](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**. Tento typ je založen na následujících rozhraních REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** a **IFilterTrackPropertyCondition**. Tyto typy jsou založeny na následujících rest API [FilterTrackSelect a FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **IStreamingFilter**.  Tento typ je založený na následujícím [filtru](https://docs.microsoft.com/rest/api/media/operations/filter) REST API.
+* **IStreamingAssetFilter**. Tento typ je založený na následujících REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**. Tento typ je založený na následujících REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** a **IFilterTrackPropertyCondition**. Tyto typy jsou založené na následujících rozhraních REST API [FilterTrackSelect a FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
-## <a name="createupdatereaddelete-global-filters"></a>Vytvořit/aktualizovat/číst/odstranit globální filtry
-Následující kód ukazuje, jak pomocí rozhraní .NET vytvářet, aktualizovat, číst a odstraňovat filtry datových zdrojů.
+## <a name="createupdatereaddelete-global-filters"></a>Vytváření, aktualizace, čtení a odstraňování globálních filtrů
+Následující kód ukazuje, jak použít .NET k vytváření, aktualizaci, čtení a odstraňování filtrů assetů.
 
 ```csharp
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
@@ -75,8 +75,8 @@ Následující kód ukazuje, jak pomocí rozhraní .NET vytvářet, aktualizovat
     filter.Delete();
 ```
 
-## <a name="createupdatereaddelete-asset-filters"></a>Vytvořit/aktualizovat/číst/odstranit filtry datových zdrojů
-Následující kód ukazuje, jak pomocí rozhraní .NET vytvářet, aktualizovat, číst a odstraňovat filtry datových zdrojů.
+## <a name="createupdatereaddelete-asset-filters"></a>Vytváření, aktualizace, čtení a odstraňování filtrů assetů
+Následující kód ukazuje, jak použít .NET k vytváření, aktualizaci, čtení a odstraňování filtrů assetů.
 
 ```csharp
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
@@ -107,20 +107,20 @@ Následující kód ukazuje, jak pomocí rozhraní .NET vytvářet, aktualizovat
 ```
 
 
-## <a name="build-streaming-urls-that-use-filters"></a>Vytváření streamovaných adres URL s použitím filtrů
-Informace o tom, jak publikovat a doručovat datové zdroje, najdete v [tématu Doručování obsahu zákazníkům Přehled](media-services-deliver-content-overview.md).
+## <a name="build-streaming-urls-that-use-filters"></a>Vytváření streamování adres URL, které používají filtry
+Informace o tom, jak publikovat a doručovat vaše assety, najdete v tématu [doručování obsahu zákazníkům – přehled](media-services-deliver-content-overview.md).
 
-Následující příklady ukazují, jak přidat filtry do datových adres URL.
+Následující příklady ukazují, jak přidat filtry na adresy URL streamování.
 
 **MPEG DASH** 
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP Živé vysílání (HLS) V4**
+**Apple HTTP Live Streaming (HLS) v4**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
-**Apple HTTP Živé vysílání (HLS) V3**
+**Apple HTTP Live Streaming (HLS) V3**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 

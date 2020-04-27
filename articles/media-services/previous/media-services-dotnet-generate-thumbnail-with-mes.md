@@ -1,6 +1,6 @@
 ---
 title: Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET
-description: Toto téma ukazuje, jak pomocí rozhraní .NET kódovat datový zdroj a současně generovat miniatury pomocí standardu kodéru médií.
+description: Toto téma ukazuje, jak použít rozhraní .NET ke kódování assetu a generovat miniatury ve stejnou dobu pomocí Media Encoder Standard.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61244225"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET 
 
-Pomocí standardu kodéru médií můžete generovat jednu nebo více miniatur ze vstupního videa ve formátech souborů obrázku [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)nebo [BMP.](https://en.wikipedia.org/wiki/BMP_file_format) Můžete odeslat úkoly, které vytvářejí pouze obrazy, nebo můžete kombinovat generování miniatur s kódováním. Tento článek obsahuje několik ukázkových přednastavení miniatur XML a JSON pro tyto scénáře. Na konci článku je [ukázkový kód,](#code_sample) který ukazuje, jak pomocí media services .NET SDK k provedení úlohy kódování.
+Pomocí Media Encoder Standard můžete vygenerovat jednu nebo více miniatur ze vstupního videa ve formátech [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)nebo [bmp](https://en.wikipedia.org/wiki/BMP_file_format) . Můžete odeslat úkoly, které vytváří pouze obrázky, nebo můžete zkombinovat vytváření miniatur pomocí kódování. Tento článek poskytuje několik ukázkových předvoleb XML a miniatur formátu JSON pro tyto scénáře. Na konci článku je k dispozici [vzorový kód](#code_sample) , který ukazuje, jak použít sadu Media Services .NET SDK k provedení úlohy kódování.
 
-Další podrobnosti o prvcích, které se používají v přednastavení ukázkových vzorků, naleznete [schéma Standard programu Media Encoder](media-services-mes-schema.md).
+Chcete-li zobrazit další podrobnosti o prvcích, které se používají ve vzorových předvolbách, měli byste zkontrolovat [Media Encoder Standard schématu](media-services-mes-schema.md).
 
-Přečtěte si část [Důležité informace.](media-services-dotnet-generate-thumbnail-with-mes.md#considerations)
+Nezapomeňte si prohlédnout část s [informacemi](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) o tom, co je potřeba.
     
-## <a name="example-of-a-single-png-file-preset"></a>Příklad přednastavení "jeden soubor PNG"
+## <a name="example-of-a-single-png-file-preset"></a>Příklad předvolby "jeden soubor PNG"
 
-Následující přednastavení JSON a XML lze použít k vytvoření jednoho výstupního souboru PNG z prvních několika sekund vstupního videa, kde kodér provede nejlepší pokus o nalezení "zajímavého" rámce. Všimněte si, že rozměry výstupního obrazu byly nastaveny na 100 %, což znamená, že odpovídají rozměrům vstupního videa. Všimněte si také, jak "Formát" nastavení v "Výstupy" je nutné, aby odpovídaly použití "PngLayers" v části "Kodeky". 
+Následující přednastavení JSON a XML lze použít k vytvoření jediného výstupního souboru PNG z prvních několika sekund vstupního videa, kde kodér provádí snahu o nejlepší úsilí při hledání "zajímavého" rámce. Všimněte si, že rozměry výstupních imagí byly nastaveny na 100%, což znamená, že odpovídají rozměrům vstupního videa. Všimněte si také, že nastavení "formát" v části "výstupy" se musí shodovat s použitím "PngLayers" v části "kodeky". 
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
@@ -85,9 +85,9 @@ Následující přednastavení JSON a XML lze použít k vytvoření jednoho vý
     </Preset>
 ```
 
-## <a name="example-of-a-series-of-jpeg-images-preset"></a>Příklad přednastaveného nastavení "série obrázků JPEG"
+## <a name="example-of-a-series-of-jpeg-images-preset"></a>Příklad přednastavení "série obrázků JPEG"
 
-Následující přednastavení JSON a XML lze použít k vytvoření sady 10 obrazů při časových razítkách 5%, 15%, ..., 95% vstupní časové osy, kde je velikost obrazu určena jako jedna čtvrtina vstupního videa.
+Následující přednastavení JSON a XML lze použít k vytvoření sady 10 imagí v časových razítkech 5%, 15%,..., 95% vstupní časové osy, kde je velikost obrázku zadaná jako jedna čtvrtina vstupního videa.
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
@@ -145,9 +145,9 @@ Následující přednastavení JSON a XML lze použít k vytvoření sady 10 obr
     </Preset>
 ```
 
-## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Příklad přednastavení "jeden obrázek na určitém časovém razítku"
+## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Příklad "jednoho obrázku v konkrétním časovém razítku"
 
-Následující přednastavení JSON a XML lze použít k vytvoření jednoho obrazu JPEG na 30sekundové značce vstupního videa. Toto přednastavení očekává, že vstupní video bude mít delší dobu trvání (jinak se úloha nezdaří).
+Následující přednastavení JSON a XML lze použít k vytvoření jednoho obrázku JPEG na 30 sekundovém označení vstupního videa. Tato předvolba očekává, že bude vstupní video v době trvání delší než 30 sekund (jinak úloha neproběhne úspěšně).
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
@@ -204,11 +204,11 @@ Následující přednastavení JSON a XML lze použít k vytvoření jednoho obr
     </Preset>
 ```
 
-## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Příklad přednastaveného nastavení "miniatury v různých rozlišeních"
+## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Příklad předvolby "miniatury v různých rozlišeních"
 
-Následující přednastavení lze použít ke generování miniatur v různých rozlišeních v jednom úkolu. V příkladu, na pozicích 5%, 15%, ..., 95% vstupní časové osy, kodér generuje dva obrazy – jeden při 100% vstupního rozlišení videa a druhý na 50%.
+Následující předvolbu lze použít ke generování miniatur v různých rozlišeních v jednom úkolu. V příkladu na pozicích 5%, 15%,..., 95% vstupní časové osy, kodér vygeneruje dvě image – jednu na 100% vstupního rozlišení videa a druhý na 50%.
 
-Všimněte si použití makra {Resolution} v názvu souboru; označuje kodéru, aby používal šířku a výšku, kterou jste zadali v části Kódování přednastavení při generování názvu souboru výstupních obrazů. To také pomáhá rozlišovat mezi různými obrázky snadno
+Poznámka: použití makra {Solution} v názvu souboru; označuje kodéru, aby používal šířku a výšku, které jste zadali v části Encoding (kódování) při generování názvu souboru výstupních imagí. To vám také pomůže snadno rozlišovat mezi různými obrázky.
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
@@ -279,10 +279,10 @@ Všimněte si použití makra {Resolution} v názvu souboru; označuje kodéru, 
 
 ## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Příklad generování miniatury při kódování
 
-Zatímco všechny výše uvedené příklady diskutovali o tom, jak můžete odeslat úlohu kódování, která vytváří pouze obrázky, můžete také kombinovat kódování videa a zvuku s generováním miniatur. Následující přednastavení JSON a XML **sdělují standardu Media Encoder Standard,** aby během kódování vygeneroval miniaturu.
+I když všechny výše uvedené příklady obsahují informace o tom, jak můžete odeslat úlohu kódování, která vytváří pouze image, můžete také zkombinovat kódování videa nebo zvuku s generováním miniatur. Následující přednastavení JSON a XML oznamují **Media Encoder Standard** k vygenerování miniatury během kódování.
 
 ### <a name="json-preset"></a><a id="json"></a>Přednastavení JSON
-Informace o schématu naleznete v [tomto](https://msdn.microsoft.com/library/mt269962.aspx) článku.
+Informace o schématu najdete v [tomto](https://msdn.microsoft.com/library/mt269962.aspx) článku.
 
 ```json
     {
@@ -347,7 +347,7 @@ Informace o schématu naleznete v [tomto](https://msdn.microsoft.com/library/mt2
 ```
 
 ### <a name="xml-preset"></a><a id="xml"></a>Přednastavení XML
-Informace o schématu naleznete v [tomto](https://msdn.microsoft.com/library/mt269962.aspx) článku.
+Informace o schématu najdete v [tomto](https://msdn.microsoft.com/library/mt269962.aspx) článku.
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
@@ -401,23 +401,23 @@ Informace o schématu naleznete v [tomto](https://msdn.microsoft.com/library/mt2
     </Preset>   
 ```
 
-## <a name="encode-video-and-generate-thumbnail-with-net"></a><a id="code_sample"></a>Kódování videa a generování miniatur pomocí rozhraní .NET
+## <a name="encode-video-and-generate-thumbnail-with-net"></a><a id="code_sample"></a>Kódování videa a generování miniatury pomocí .NET
 
-Následující příklad kódu používá k provádění následujících úloh sad Media Services .NET SDK následující úkoly:
+Následující příklad kódu používá sadu Media Services .NET SDK k provádění následujících úloh:
 
 * Vytvořte úlohu kódování.
-* Získejte odkaz na standardní kodér mediálního kodéru.
-* Načtěte přednastavený [xml](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [json,](media-services-dotnet-generate-thumbnail-with-mes.md#json) které obsahují přednastavení kódování, stejně jako informace potřebné ke generování miniatur. Tento kód [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) můžete uložit do souboru a použít následující kód k načtení souboru.
+* Získejte odkaz na kodér Media Encoder Standard.
+* Načtěte přednastavený [soubor XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) , který obsahuje přednastavení kódování, i informace potřebné k vygenerování miniatur. Tento soubor [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) můžete uložit do souboru a použít následující kód k načtení souboru.
   
         // Load the XML (or JSON) from the local file.
         string configuration = File.ReadAllText(fileName);  
 * Přidejte do úlohy jednu úlohu kódování. 
-* Zadejte vstupní datový zdroj, který má být kódován.
-* Vytvořte výstupní datový zdroj, který obsahuje kódovaný datový zdroj.
+* Určete vstupní Asset, který se má zakódovat.
+* Vytvořte výstupní Asset, který obsahuje kódovaný Asset.
 * Přidejte obslužnou rutinu události pro kontrolu průběhu úlohy.
-* Odešlete práci.
+* Odešlete úlohu.
 
-Informace o nastavení vývojového prostředí naleznete v článku [vývoje mediálních služeb pomocí rozhraní .NET.](media-services-dotnet-how-to-use.md)
+Pokyny k nastavení vývojového prostředí najdete v článku [Media Services vývoj s rozhraním .NET](media-services-dotnet-how-to-use.md) .
 
 ```csharp
 using System;
@@ -548,22 +548,22 @@ namespace EncodeAndGenerateThumbnails
 ## <a name="considerations"></a>Požadavky
 Platí následující důležité informace:
 
-* Použití explicitní časová razítka pro Start/Krok/Rozsah předpokládá, že vstupní zdroj je alespoň 1 minutu dlouhý.
-* Jpg/Png/BmpImage prvky mají Start, Step, a Range řetězce atributy - tyto mohou být interpretovány jako:
+* Použití explicitních časových razítek pro počátek/krok/rozsah předpokládá, že vstupní zdroj je alespoň 1 minuta dlouhý.
+* Elementy jpg/png/BmpImage obsahují atributy řetězce začátek, krok a rozsah – tyto prvky lze interpretovat jako:
   
-  * Číslo snímku, pokud jsou nezáporná celá čísla, například "Start": "120",
-  * Vzhledem k době trvání zdroje, pokud je vyjádřena jako %-suffixed, například "Start": "15%", NEBO
-  * Časové razítko, pokud je vyjádřeno jako HH:MM:SS... Formát. Například "Start" : "00:01:00"
+  * Číslo rámce, pokud jsou nezáporná celá čísla, například Start: "120",
+  * Relativní ke zdrojové době trvání, pokud je vyjádřena jako%, například "Start": "15%" nebo
+  * Časové razítko, pokud se vyjádří jako HH: MM: SS... formátovat. Například "Start": "00:01:00"
     
-    Můžete kombinovat notace, jak se vám zlíbí.
+    Při psaní můžete kombinovat a párovat notace.
     
-    Kromě toho Start také podporuje speciální makro:{Best}, který se pokouší určit první "zajímavý" snímek obsahu POZNÁMKA: (Krok a rozsah jsou ignorovány, když je start nastaven na {Best})
-  * Výchozí hodnoty: Start:{Best}
-* Výstupní formát musí být explicitně k dispozici pro každý formát obrázku: Jpg/Png/BmpFormat. Pokud je přítomen, MES zápasy JpgVideo na JpgFormat a tak dále. OutputFormat zavádí nové makro specifické pro kodek obrázku: {Index}, které musí být přítomno (jednou a pouze jednou) pro výstupní formáty obrazu.
+    Kromě toho také spuštění podporuje speciální makro {Best}, které se pokusí určit první "zajímavý" rámec poznámky k obsahu: (krok a rozsah se ignoruje, když je počátek nastavený na {Best}).
+  * Výchozí hodnoty: začátek: {nejlepší}
+* Výstupní formát se musí explicitně zadat pro každý formát obrázku: jpg/png/BmpFormat. V případě, že je přítomný, rozchází na JpgVideo na JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétního kodeku pro Image: {index}, které musí být přítomné (jednou a jenom jednou) pro formáty výstupu obrázku.
 
 ## <a name="next-steps"></a>Další kroky
 
-Průběh [úlohy](media-services-check-job-progress.md) můžete zkontrolovat, zatímco úloha kódování čeká na vyřízení.
+V průběhu zpracování úlohy kódování můžete kontrolovat [Průběh úlohy](media-services-check-job-progress.md) .
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -572,5 +572,5 @@ Průběh [úlohy](media-services-check-job-progress.md) můžete zkontrolovat, z
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Přehled kódování mediálních služeb](media-services-encode-asset.md)
+[Přehled kódování Media Services](media-services-encode-asset.md)
 

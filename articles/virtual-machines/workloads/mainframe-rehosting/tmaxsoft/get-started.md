@@ -1,45 +1,45 @@
 ---
-title: Začínáme s TmaxSoft OpenFrame na virtuálních počítačích Azure
-description: Znovu hostujte úlohy sálových počítačů IBM z/OS pomocí prostředí TmaxSoft OpenFrame na virtuálních počítačích Azure.
+title: Začínáme s TmaxSoft OpenFrame na Azure Virtual Machines
+description: Znovu hostovat úlohy sálového počítače IBM z/OS pomocí prostředí TmaxSoft OpenFrame na Azure Virtual Machines (virtuálních počítačů).
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: 408e0166e52af9efd3d4c64f1b29bddcfc1cca4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61485364"
 ---
 # <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>Začínáme s TmaxSoft OpenFrame v Azure
 
-Vezměte si stávající prostředky sálového počítače a přesuňte je do Microsoft Azure pomocí TmaxSoft OpenFrame. Toto oblíbené rehostingové řešení vytváří prostředí emulace v Azure, což vám umožní rychle migrovat aplikace. Není nutné přeformátování.
+Převezměte své stávající sálové prostředky a přesuňte je do Microsoft Azure pomocí OpenFrameu TmaxSoft. Toto oblíbené řešení pro opětovné hostování vytvoří prostředí pro emulaci v Azure, které vám umožní rychle migrovat aplikace. Není vyžadováno žádné přeformátování.
 
-## <a name="openframe-rehosting-environment"></a>Prostředí pro rehosting OpenFrame
+## <a name="openframe-rehosting-environment"></a>Prostředí pro opětovné hostování OpenFrame
 
-Nastavte prostředí OpenFrame v Azure pro vývoj, ukázky, testování nebo produkční úlohy. Jak ukazuje následující obrázek, OpenFrame obsahuje více součástí, které vytvářejí prostředí emulace sálových počítačů v Azure. Online služby OpenFrame například nahrazují middleware sálových počítačů, jako je IBM Customer Information Control System (CICS). OpenFrame Batch se svou komponentou TJES nahrazuje dílčí systém dílčího projektu (JES) mainframů IBM. 
+Nastavte OpenFrame prostředí v Azure pro vývoj, ukázky, testování nebo produkční úlohy. Jak ukazuje následující obrázek, OpenFrame obsahuje několik komponent, které vytvářejí prostředí emulace sálového počítače v Azure. OpenFrame online služby například nahrazuje middleware sálového počítače, jako je například systém CICS (Customer Information Control System) společnosti IBM. OpenFrame Batch s jeho komponentou TJES nahrazuje podsystém položek úloh v rámci sálového počítače IBM (JES). 
 
-![Proces rehostingu OpenFrame](media/openframe-01.png)
+![Proces opětovného hostování OpenFrame](media/openframe-01.png)
 
 > [!NOTE]
-> Chcete-li spustit prostředí OpenFrame v Azure, musíte mít platnou licenci produktu nebo zkušební licenci od společnosti TmaxSoft.
+> Pokud chcete spustit prostředí OpenFrame v Azure, musíte mít platnou licenci na produkt nebo zkušební licenci od TmaxSoft.
 
-## <a name="openframe-components"></a>Komponenty OpenFrame
+## <a name="openframe-components"></a>Součásti OpenFrame
 
-Následující součásti jsou součástí prostředí OpenFrame v Azure:
+Následující komponenty jsou součástí prostředí OpenFrame v Azure:
 
-- **Nástroje pro migraci,** včetně OFMiner, řešení, které analyzuje prostředky sálových počítačů a pak je migruje do Azure.
-- **Kompilátory**, včetně OFCOBOL, kompilátor, který interpretuje mainframe cobol programy; OFPLI, který interpretuje mainframe pl / i programy; a OFASM, kompilátor, který interpretuje mainframe assembler programy.
-- **Součásti front-endu,** včetně java podnikového uživatelského řešení (JEUS), webového aplikačního serveru, který je certifikován pro Java Enterprise Edition 6.OFGW, a komponenty brány OpenFrame, která poskytuje naslouchací proces 3270.
-- **Aplikační** prostředí. OpenFrame Base je middleware, který spravuje celý systém. OpenFrame Server type C (OSC) nahrazuje middleware sálového počítače a IBM CICS.
-- **Relační databáze**, například Tibero (zobrazeno), Oracle Database, Microsoft SQL Server, IBM Db2 nebo MySQL. Aplikace OpenFrame používají ke komunikaci s databází protokol OdBC (Open Database Connectivity).
-- **Zabezpečení** prostřednictvím TACF, servisního modulu, který řídí přístup uživatelů k systémům a prostředkům. 
-- **OFManager** je řešení, které poskytuje funkce pro provoz a správu OpenFrame ve webovém prostředí.
+- **Nástroje pro migraci** , včetně OFMiner, řešení, které analyzuje prostředky sálových počítačů a pak je migruje do Azure.
+- **Kompilátory**, včetně OFCOBOL, kompilátor, který interpretuje programy COBOL sálového počítače; OFPLI, která interpretuje programy PL/I tohoto sálového počítače; a OFASM, kompilátor, který interpretuje programy assembleru sálového počítače.
+- Komponenty **front-end** , včetně řešení Java Enterprise User (JEUS), serveru webové aplikace, který je certifikovaný pro jazyk Java Enterprise Edition 6. OFGW a komponentou OpenFrame Gateway, která poskytuje naslouchací proces 3270.
+- Prostředí **aplikace** . OpenFrame Base je middleware, který spravuje celý systém. OpenFrame Server Type C (OSC) nahrazuje middleware a IBM CICS pro sálové počítače.
+- **Relační databáze**, jako je Tibero (zobrazený), Oracle Database, Microsoft SQL Server, IBM Db2 nebo MySQL. Aplikace OpenFrame používají ke komunikaci s databází protokol ODBC (Open Database Connectivity).
+- **Zabezpečení** prostřednictvím TACF, modulu služby, který řídí přístup uživatelů k systémům a prostředkům. 
+- **OFManager** je řešení, které poskytuje funkce pro operace a správu OpenFrame ve webovém prostředí.
 
 ![Architektura OpenFrame](media/openframe-02.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Instalace TmaxSoft OpenFrame do Azure](./install-openframe-azure.md)
+- [Instalace TmaxSoft OpenFrame v Azure](./install-openframe-azure.md)

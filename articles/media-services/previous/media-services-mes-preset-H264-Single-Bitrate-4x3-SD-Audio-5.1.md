@@ -1,6 +1,6 @@
 ---
-title: H264 Jeden přenosový tok 4x3 SD Audio 5.1 | Dokumenty společnosti Microsoft
-description: Toto téma poskytuje přehled přednastavení **úlohy H264 Single Bitrate 4x3 SD Audio 5.1.**
+title: H264 s jednou přenosovou rychlostí 4x3 SD 5,1 | Microsoft Docs
+description: V tématu najdete přehled přednastavené úlohy **H264 s jednou přenosovou rychlostí 4X3 SD Audio 5,1** .
 author: Juliako
 manager: femila
 editor: ''
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: b3d31116ec30415a741b6175e7a50ed0169f6073
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61463544"
 ---
 # <a name="h264-single-bitrate-4x3-sd-audio-51"></a>H264 Single Bitrate 4x3 SD Audio 5.1
-`Media Encoder Standard`definuje sadu přednastavení kódování, které můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, do kterého chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16. Vlastní přednastavení byste pak předali kodéru. Seznam všech přednastavených názvů podporovaných `Media Encoder Standard` tímto kodérem naleznete [v tématu Přednastavení úloh pro standard kodéru médií](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definuje sadu přednastavení kódování, kterou můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, ve kterém chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení založené na JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16). Pak byste měli předat vlastní předvolbu kodéru. Seznam všech přednastavených názvů podporovaných tímto `Media Encoder Standard` kodérem najdete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Toto téma `H264 Single Bitrate 4x3 SD Audio 5.1` zobrazuje přednastavení ve formátu XML a JSON.  
+ Toto téma ukazuje `H264 Single Bitrate 4x3 SD Audio 5.1` Předvolby ve formátu XML a JSON.  
   
- Toto přednastavení vytváří jeden soubor MP4 s přenosovou rychlostí 1800 kbps a zvuk AAC 5.1. Podrobné informace o profilu, přenosovérychlosti, vzorkovací frekvenci atd. Vysvětlení, co každý prvek znamená, a platné hodnoty pro každý prvek naleznete schéma [Standard kodéru médií](media-services-mes-schema.md).  
+ Tato předvolba vytvoří jeden soubor MP4 s přenosovou rychlostí 1800 KB/s a zvukem AAC 5,1. Podrobné informace o profilu, přenosové rychlosti, vzorkovací frekvenci atd. z této předvolby najdete v souboru XML nebo JSON definovaném níže. Vysvětlení toho, co každý prvek znamená, a platné hodnoty pro každý prvek naleznete v [Media Encoder Standard schématu](media-services-mes-schema.md).  
   
  XML  
   

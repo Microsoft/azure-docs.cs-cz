@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 4b166af219c8983e5765ef4c884ced7eb0689f54
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 1cd536f4a7c3751e2b85f40e582c1eb1c5bf2c74
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106674"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160507"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Nejčastější dotazy ke komerčnímu marketplace Microsoftu
 
@@ -57,8 +57,9 @@ Díky Azure Marketplace můžou zákazníci zjišťovat technické aplikace sest
 Nabídky Azure Marketplace lze zakoupit prostřednictvím:
 
 * [Web založený na prezentace](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [portál Azure](https://portal.azure.com) <br>
-[!Note] Vyžaduje účet Azure. Pokud ho ještě nemáte, budete přesměrováni na stránku **Vítá vás Azure** , abyste ho mohli vytvořit.  
+* [portál Azure](https://portal.azure.com) <br> 
+>[!Note]
+>Vyžaduje účet Azure. Pokud ho ještě nemáte, budete přesměrováni na stránku **Vítá vás Azure** , abyste ho mohli vytvořit.  
 * [Rozhraní příkazového řádku Azure (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -336,7 +337,7 @@ Zájemci jsou zákazníci, kteří nasazují vaše produkty z webu Marketplace. 
 
 **Kde můžu získat pomoc při nastavování cíle realizace?**
 
-Další informace najdete v [centru partnerů – získáte dokumentaci k zákaznickým zájemcům](./partner-center-portal/commercial-marketplace-get-customer-leads.md) nebo odeslat lístek [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) podpory, a to tak, že vyberete typ nabídky a správu potenciálních zákazníků.
+Další informace najdete v tématu [partner Center – získat zájemce pro zákazníky](./partner-center-portal/commercial-marketplace-get-customer-leads.md) nebo odeslat lístek podpory prostřednictvím [pomoci a podpory](https://partner.microsoft.com/support/v2/?stage=1) tak, že vyberete typ nabídky a správu potenciálních zákazníků.
 
 **Je nutné nakonfigurovat cíl zájemce pro publikování nabídky na webu Marketplace?**
 

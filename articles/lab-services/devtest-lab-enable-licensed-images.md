@@ -1,6 +1,6 @@
 ---
-title: Povolení licencované image v testovacím prostředí v laboratořích Azure DevTest Labs | Dokumenty společnosti Microsoft
-description: Zjistěte, jak povolit licencovanou bitovou kopii v Azure DevTest Labs pomocí portálu Azure
+title: Povolte ve svém testovacím prostředí licencovaný obraz v Azure DevTest Labs | Microsoft Docs
+description: Naučte se, jak povolit licencovanou image v Azure DevTest Labs pomocí Azure Portal
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,85 +15,85 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 11b6553fe8aceef0d3d15977998dd870c275128a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61294213"
 ---
-# <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Povolení licencované image v testovacím prostředí v laboratořích Azure DevTest Labs
+# <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Povolte ve svém testovacím prostředí licencovaný obraz v Azure DevTest Labs
 
-V Azure DevTest Labs licencovaná bitová kopie obsahuje podmínky – obvykle od třetí strany – které musí být přijaty předtím, než je bitová kopie přístupná uživatelům v testovacím prostředí. Následující části popisují, jak pracovat s licencovanými bitovými kopiemi, aby byly k dispozici pro vytváření virtuálních počítačů.
+V Azure DevTest Labs je licencovaná image taková, která zahrnuje podmínky a ujednání – obvykle od třetí strany – to je potřeba přijmout, než bude image přístupná uživatelům v testovacím prostředí. Následující části popisují, jak pracovat s licencovanými bitovými kopiemi, aby byly k dispozici pro použití při vytváření virtuálních počítačů.
 
-## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Určení, zda je licencovaná bitová kopie dostupná uživatelům
-Prvním krokem k povolení uživatelům vytvářet virtuální uživatele z licencované bitové kopie je zajistit, aby byly pro licencovanou bitovou kopii přijaty smluvní podmínky. Následující kroky ukazují, jak můžete zobrazit stav nabídky licencovaného obrázku a v případě potřeby přijmout její smluvní podmínky.
+## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Zjištění, jestli je k dispozici licencovaná image pro uživatele
+Prvním krokem, který uživatelům umožňuje vytvářet virtuální počítače z licencované image, je zajistit, aby byly podmínky a ujednání přijaté pro licencovanou bitovou kopii. Následující kroky ukazují, jak můžete zobrazit stav nabídky licencované image a v případě potřeby přijmout podmínky a ujednání.
 
-1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Vyberte **Všechny služby**a ze seznamu vyberte **DevTest Labs.**
+1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 
-1. Ze seznamu testovacích prostředí vyberte požadovanou testovací prostředí.  
+1. V seznamu cvičení vyberte požadované testovací prostředí.  
 
-1. V levém panelu v části **NASTAVENÍ**vyberte **Možnost Konfigurace a zásady**.
+1. Na levém panelu v části **Nastavení**vyberte **Konfigurace a zásady**.
 
-1. V levém panelu pod **položkou ZÁKLADY VIRTUÁLNÍCH STROJŮ**vyberte **obrázky na marketplace**. 
+1. Na levém panelu v části **základy virtuálních počítačů**vyberte **Image Marketplace**. 
 
-    ![Položka nabídky Obrázky na webu Marketplace](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-marketplace-images.png)
+    ![Položka nabídky imagí Marketplace](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-marketplace-images.png)
 
-    Zobrazí se seznam všech dostupných bitových kopií na marketplace, včetně **stavu NABÍDKY** pro každý obrázek.
+    Zobrazí se seznam všech dostupných imagí na webu Marketplace, včetně **stavu nabídky** pro jednotlivé obrázky.
 
-    ![Seznam obrázků na tržišti zobrazujících stav nabídky pro každý obrázek](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-offer-status.png)
+    ![Seznam imagí Marketplace znázorňující stav nabídky pro každý obrázek](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-offer-status.png)
 
-    Licencovaný obrázek zobrazuje stav nabídky 
+    Licencovaná image zobrazuje stav nabídky 
     
-    - **Přijaté podmínky:** Licencovaná bitová kopie je uživatelům k dispozici k vytvoření virtuálních počítačů. 
-    - **Potřebná kontrola podmínek:** licencovaná bitová kopie není v současné době uživatelům k dispozici. Podmínky licence musí být přijaty před testovacím prostředí uživatelé můžete použít k vytvoření virtuálních počítačů. 
+    - **Přijaté výrazy:** licencovaná Image je k dispozici uživatelům k vytváření virtuálních počítačů. 
+    - **Nutná kontrola podmínek:** licencovaná bitová kopie není aktuálně k dispozici pro uživatele. Podmínky a ujednání licence musí být přijaty předtím, než je uživatelé testovacího prostředí můžou použít k vytvoření virtuálních počítačů. 
 
-## <a name="making-a-licensed-image-available-to-lab-users"></a>Zpřístupnění licencované bitové kopie uživatelům testovacího prostředí
-Chcete-li zajistit, aby byla licencovaná bitová kopie dostupná uživatelům testovacího prostředí, musí vlastník testovacího prostředí s oprávněními správce nejprve přijmout podmínky pro tuto licencovanou bitovou kopii. Povolení matné nasazení pro předplatné přidružené k licencované bitové kopii automaticky přijímá právní podmínky a prohlášení o zásadách ochrany osobních údajů pro tuto bitovou kopii. [Práce s image Marketplace ve Správci prostředků Azure](https://azure.microsoft.com/blog/working-with-marketplace-images-on-azure-resource-manager/) poskytuje další informace o programovém nasazení ibi k rezortu marketplace.
+## <a name="making-a-licensed-image-available-to-lab-users"></a>Zpřístupnění licencované image uživatelům testovacího prostředí
+Aby bylo zajištěno, že je k dispozici licencovaná bitová kopie pro uživatele testovacího prostředí, musí nejdřív vlastník testovacího prostředí s oprávněním správce přijmout podmínky a ujednání pro tuto licencovanou image. Povolení programového nasazení pro předplatné přidružené k licencované imagi automaticky přijímá právní podmínky a prohlášení o ochraně osobních údajů pro tuto image. [Práce s imagemi Marketplace na Azure Resource Manager](https://azure.microsoft.com/blog/working-with-marketplace-images-on-azure-resource-manager/) poskytuje další informace o programovém nasazení imagí z Marketplace.
 
-Programové nasazení licencované bitové kopie můžete povolit takto:
+Pomocí následujícího postupu můžete povolit programové nasazení pro licencovanou Image:
 
-1. Na [webu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)přejděte na seznam **ibi obrázků marketplace**.
+1. V [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)otevřete seznam **imagí na webu Marketplace**.
 
-1. Identifikujte licencovanou bitovou kopii, ke které chcete mít přístup uživatelům, ale jejíž podmínky nebyly přijaty. Může se například zobrazit virtuální počítač pro datové vědy, který zobrazuje stav **přijatých podmínek** nebo **potřebných podmínek**.
+1. Identifikujte licencovaný obrázek, pro který chcete, aby měli uživatelé přístup, ale jejichž výrazy nebyly přijaty. Může se například zobrazit Data Science Virtual Machine, který zobrazuje stav buď **přijatých podmínek** , nebo je **potřeba přezkoumání podmínek**.
 
-    ![Okno Konfigurovat programové nasazení](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
+    ![Konfigurovat okno programového nasazení](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
-   > Virtuální počítače pro datové vědy jsou image Virtuálního počítače Azure, předinstalované, nakonfigurované a testované s několika oblíbenými nástroji, které se běžně používají pro analýzu dat, strojové učení a školení ai. [Úvod do virtuálního počítače Azure Data Science pro Linux a Windows](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) poskytuje velké množství informací o dsvms.
+   > Virtuální počítače pro datové vědy jsou image virtuálních počítačů Azure, předem nainstalované, nakonfigurované a testované pomocí několika oblíbených nástrojů, které se běžně používají pro analýzu dat, strojové učení a školení AI. [Úvod do Azure Data Science Virtual Machine pro Linux a Windows](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) přináší skvělé informace o DSVMs.
    >
    >
 
-1. Ve sloupci **STAV NABÍDKY** pro obrázek vyberte **položku Terms review needed**.
+1. Ve sloupci **stav nabídky** pro obrázek vyberte požadované **výrazy nutná kontrola**.
 
-1. V okně Konfigurovat programové nasazení vyberte **povolit**.
+1. V okně Konfigurace programového nasazení vyberte **Povolit**.
 
-    ![Okno Konfigurovat programové nasazení](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-enable-programmatic-deployment.png)
+    ![Konfigurovat okno programového nasazení](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-enable-programmatic-deployment.png)
 
    > [!IMPORTANT]
-   > V okně Konfigurovat programové nasazení se může zobrazit více předplatných. Ujistěte se, že povolujete programové nasazení pouze pro zamýšlené předplatné.
+   > V okně Konfigurovat programové nasazení se může zobrazit několik předplatných. Ujistěte se, že povolujete programové nasazení pouze pro zamýšlené předplatné.
    >
    >
 
 
 1. Vyberte **Uložit**. 
 
-    V seznamu bitových kopií marketplace, že obrázek nyní zobrazuje **podmínky přijaté** a je k dispozici pro uživatele k vytvoření virtuálních počítačů.
+    V seznamu imagí z Marketplace teď tento obrázek zobrazuje **přijaté výrazy** a je k dispozici uživatelům k vytváření virtuálních počítačů.
 
 > [!NOTE]
-> Uživatelé mohou vytvořit vlastní bitovou kopii z licencované bitové kopie. Další informace najdete [v tématu Vytvoření vlastního obrázku ze souboru Virtuálního pevného disku.](devtest-lab-create-template.md)
+> Uživatelé můžou z licencované image vytvořit vlastní image. Další informace najdete v tématu [Vytvoření vlastní image ze souboru VHD](devtest-lab-create-template.md) .
 >
 >
 
 
-## <a name="related-blog-posts"></a>Související příspěvky blogu
+## <a name="related-blog-posts"></a>Související blogové příspěvky
 
 - [Vlastní obrázky nebo vzorce?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Kopírování vlastních ibi mezi azure devtest labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Kopírování vlastních imagí mezi Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření vlastní image z virtuálního počítače](devtest-lab-create-custom-image-from-vm-using-portal.md)
-- [Vytvoření vlastního obrázku ze souboru VHD](devtest-lab-create-template.md)
+- [Vytvoření vlastní image ze souboru VHD](devtest-lab-create-template.md)
 - [Přidání virtuálního počítače do testovacího prostředí](devtest-lab-add-vm.md)

@@ -18,17 +18,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62f0d82a543c0ae4e629eda3bca18b0a06322f2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60381229"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect v Microsoft Cloudu Německo – verze Public Preview
 ## <a name="introduction"></a>Úvod
 Azure AD Connect poskytuje synchronizaci mezi vaší místní službou Active Directory a službou Azure Active Directory.
 V současné době je nutné, aby mnoho scénářů v [Microsoft Cloudu Německo](https://azure.microsoft.com/global-infrastructure/germany/
-) prováděl operátor. Při používání služby Microsoft Cloud Germany si musíte být vědomi následujících informací:
+) prováděl operátor. Pokud používáte Microsoft Cloud Německo, musíte mít na paměti následující informace:
 
 * Aby mohlo dojít k úspěšné synchronizaci, je nutné, aby na proxy serveru byly otevřené následující adresy URL:
   
@@ -42,7 +42,7 @@ V současné době je nutné, aby mnoho scénářů v [Microsoft Cloudu Německo
 Službu Azure AD Connect lze stáhnout z okna Azure AD Connect v rámci portálu.  Pomocí pokynů níže vyhledejte okno Azure AD Connect.
 
 ### <a name="the-azure-ad-connect-blade"></a>Okno Azure AD Connect
-Po přihlášení k webu Azure Portal:
+Až se přihlásíte k Azure Portal:
 
 1. Přejděte do Procházet.
 2. Vyberte Azure Active Directory.
@@ -64,5 +64,5 @@ Následující tabulka popisuje funkce zobrazené v okně.
 Chcete-li nainstalovat službu Azure AD Connect, můžete využít dokumentaci, kterou najdete [tady](how-to-connect-install-roadmap.md).
 
 ## <a name="advanced-features-and-additional-information"></a>Pokročilé funkce a další informace
-Další informace o vlastních nastaveních nebo upřesňujících konfiguracích najdete [v části Integrace místních identit pomocí služby Azure Active Directory](whatis-hybrid-identity.md). Tato stránka poskytuje informace a odkazy na další doprovodné materiály.
+Další informace o vlastních nastaveních a pokročilých konfiguracích najdete na webu [Integrace místních identit s Azure Active Directory](whatis-hybrid-identity.md). Tato stránka poskytuje informace a odkazy na další doprovodné materiály.
 

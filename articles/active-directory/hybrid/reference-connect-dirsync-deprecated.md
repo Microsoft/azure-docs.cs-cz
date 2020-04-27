@@ -1,5 +1,5 @@
 ---
-title: Upgrade z DirSync a Azure AD Sync | Dokumenty společnosti Microsoft
+title: Upgrade z DirSync a Azure AD Sync | Microsoft Docs
 description: Popisuje, jak upgradovat z DirSync a Azure AD Sync na Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -18,55 +18,55 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60381174"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Upgrade Windows Azure Active Directory Sync a Azure Active Directory Sync
-Azure AD Connect je nejlepší způsob, jak propojit místní adresář s Azure AD a Office 365. To je skvělý čas na upgrade na Azure AD Connect z Windows Azure Active Directory Sync (DirSync) nebo Azure AD Sync, protože tyto nástroje jsou teď zastaralé a už nejsou podporované od dubna 13, 2017.
+Azure AD Connect je nejlepší způsob, jak propojit místní adresář s Azure AD a Office 365. Jedná se o skvělou dobu k upgradu na Azure AD Connect ze služby Windows Azure Active Directory Sync (DirSync) nebo Azure AD Sync, protože tyto nástroje jsou nyní zastaralé a již nejsou podporovány od 13. dubna 2017.
 
-Dva nástroje pro synchronizaci identit, které jsou zastaralé byly nabízeny pro zákazníky jedné doménové struktury (DirSync) a pro více doménových domén ových domén ových a dalších pokročilých zákazníků (Azure AD Sync). Tyto starší nástroje byly nahrazeny jediným řešením, které je k dispozici pro všechny scénáře: Azure AD Connect. Nabízí nové funkce, vylepšení funkcí a podporu pro nové scénáře. Aby bylo možné pokračovat v synchronizaci dat místní identity do Azure AD a Office 365, důrazně doporučujeme upgradovat na Azure AD Connect. Společnost Microsoft nezaručuje, že tyto starší verze budou fungovat po 31.
+Pro zákazníky s jednou doménovou strukturou (DirSync) a pro více doménovou strukturu a další pokročilé zákazníky (Azure AD Sync) se nabídly dva nástroje pro synchronizaci identity, které jsou zastaralé. Tyto starší nástroje byly nahrazeny jedním řešením, který je k dispozici pro všechny scénáře: Azure AD Connect. Nabízí nové funkce, vylepšení funkcí a podporu pro nové scénáře. Aby bylo možné pokračovat v synchronizaci místních dat identity s Azure AD a Office 365, důrazně doporučujeme upgradovat na Azure AD Connect. Společnost Microsoft nezaručuje, že tyto starší verze budou fungovat až do 31. prosince 2017.
 
-Poslední verze DirSync byla vydána v červenci 2014 a poslední verze Azure AD Sync byla vydána v květnu 2015.
+Poslední vydání DirSync bylo vydány v červenci 2014 a poslední vydání Azure AD Sync bylo vydáno v květnu 2015.
 
 ## <a name="what-is-azure-ad-connect"></a>Co je služba Azure AD Connect
-Azure AD Connect je nástupcem DirSync a Azure AD Sync. Kombinuje všechny scénáře, které tyto dva podporované. Další informace o tom najdete v [integrací místních identit pomocí služby Azure Active Directory](whatis-hybrid-identity.md).
+Azure AD Connect je následníkem DirSync a Azure AD Sync. Kombinuje všechny scénáře, které jsou tyto dvě podporovány. Další informace o této službě najdete v tématu [Integrace místních identit s Azure Active Directory](whatis-hybrid-identity.md).
 
 ## <a name="deprecation-schedule"></a>Plán vyřazení
 | Datum | Poznámka |
 | --- | --- |
-| 13. dubna 2016April 13, 2016 |Synchronizace služby Windows Azure Active Directory ("DirSync") a Synchronizace Microsoft Azure Active Directory ("Azure AD Sync") se oznamují jako zastaralé. |
-| 13. dubna 2017April 13, 2017 |Podpora končí. Zákazníci už nebudou moct otevřít případ podpory bez předchozího upgradu na Azure AD Connect. |
-|31. prosince 2017December 31, 2017|Azure AD už nemusí přijímat komunikaci ze služby Windows Azure Active Directory Sync ("DirSync") a Microsoft Azure Active Directory Sync ("Azure AD Sync").
+| 13. dubna 2016 |Windows Azure Active Directory Sync ("DirSync") a Microsoft Azure Active Directory Sync ("Azure AD Sync") jsou vyhlášena jako zastaralá. |
+| 13. dubna 2017 |Podpora končí. Zákazníci už nebudou moct otevřít případ podpory bez upgradu na Azure AD Connect jako první. |
+|31. prosince 2017|Služba Azure AD už nemusí přijímat komunikaci ze služby Windows Azure Active Directory Sync (DirSync) a Microsoft Azure Active Directory synchronizaci ("Azure AD Sync").
 
-## <a name="how-to-transition-to-azure-ad-connect"></a>Jak přejít na Azure AD Connect
-Pokud používáte DirSync, existují dva způsoby, jak můžete upgradovat: Vlastní upgrade a paralelní nasazení. Pro většinu zákazníků je doporučen a pokud máte poslední operační systém a méně než 50 000 objektů, doporučuje se upgrade na místě. V ostatních případech se doporučuje provést paralelní nasazení, kde je konfigurace DirSync přesunuta na nový server se systémem Azure AD Connect.
+## <a name="how-to-transition-to-azure-ad-connect"></a>Přechod na Azure AD Connect
+Pokud používáte DirSync, existují dva způsoby, jak můžete upgradovat: místní upgrade a paralelní nasazení. Pro většinu zákazníků se doporučuje místní upgrade a pokud máte poslední operační systém a méně než 50 000 objektů. V ostatních případech se doporučuje provést paralelní nasazení, kde se vaše konfigurace DirSync přesune na nový server se systémem Azure AD Connect.
 
 | Řešení | Scénář |
 | --- | --- |
-| [Upgrade z nástroje DirSync](how-to-dirsync-upgrade-get-started.md) |<li>Pokud máte existující server DirSync již spuštěn.</li> |
-| [Upgrade ze synchronizace Azure AD](how-to-upgrade-previous-version.md) |<li>Pokud přecházíte z Azure AD Sync.</li> |
+| [Upgrade z nástroje DirSync](how-to-dirsync-upgrade-get-started.md) |<li>Máte-li již existující server DirSync spuštěn.</li> |
+| [Upgrade z Azure AD Sync](how-to-upgrade-previous-version.md) |<li>Pokud přesouváte z Azure AD Sync.</li> |
 
-Pokud chcete vidět, jak provést vlastní upgrade z DirSync na Azure AD Connect, pak se podívejte na toto video channel 9:
+Pokud se chcete podívat, jak provést místní upgrade z DirSync na Azure AD Connect, přečtěte si toto video o kanálu 9:
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-in-place-upgrade-from-legacy-tools/player]
 >
 >
 
 ## <a name="faq"></a>Nejčastější dotazy
-**Otázka: Obdržel jsem e-mailové oznámení od týmu Azure a/nebo zprávu z Centra zpráv Office 365, ale používám Connect.**  
-Oznámení bylo také odesláno zákazníkům pomocí Azure AD Connect s číslem sestavení 1.0. \*0 (pomocí verze pre-1.1). Společnost Microsoft doporučuje zákazníkům, aby zůstali aktuální s verzemi Azure AD Connect. Funkce [automatického upgradu](how-to-connect-install-automatic-upgrade.md) zavedená v 1.1 usnadňuje vždy nainstalovanou nejnovější verzi služby Azure AD Connect.
+**Otázka: jsem přijal e-mailové oznámení z týmu Azure nebo zprávy z centra zpráv Office 365, ale používám Connect.**  
+Oznámení bylo odesláno také zákazníkům, kteří používají Azure AD Connect s číslem sestavení 1,0. \*0 (s využitím verze před 1,1). Microsoft doporučuje zákazníkům aktuálnost Azure AD Connect verzí. Funkce [automatického upgradu](how-to-connect-install-automatic-upgrade.md) představená v 1,1 usnadňuje vždy instalaci nejnovější verze Azure AD Connect.
 
-**Otázka: Přestane DirSync/Azure AD Sync fungovat 13.**  
-13. dubna 2017 bude služba DirSync/Azure AD Sync pokračovat v práci.  Azure AD však již nemusí přijímat komunikaci z DirSync/Azure AD Sync po 31 prosince 2017.
+**Otázka: bude DirSync/Azure AD Sync přestat fungovat 13. dubna 2017?**  
+DirSync/Azure AD Sync bude i nadále fungovat 13. dubna 2017.  Služba Azure AD však již nesmí přijímat komunikaci z DirSync/Azure AD Sync po 31. prosince 2017.
 
-**Otázka: Ze kterých verzí DirSync mohu upgradovat?**  
-Je podporován pro upgrade z libovolné verze DirSync, která je právě používána. 
+**Otázka: které verze DirSync můžu upgradovat?**  
+Podporuje se upgrade z aktuálně používané verze DirSync. 
 
-**Otázka: A co konektor Azure AD pro FIM/MIM?**  
-Konektor Azure AD pro FIM/MIM **nebyl** ahlášen jako zastaralé. Je na **funkci zmrazení**; nejsou přidány žádné nové funkce a neobdrží žádné opravy chyb. Společnost Microsoft doporučuje zákazníkům, kteří ji používají k plánování přechodu z něj do služby Azure AD Connect. Důrazně doporučujeme nespouštět žádná nová nasazení, která by používala. Tento konektor bude v budoucnu oznámen zastaralá.
+**Otázka: co je to konektor Azure AD pro FIM/MIM?**  
+Služba Azure AD Connector pro FIM/ **MIM se** neoznámila jako zastaralá. Je na **zablokované funkci**; nepřidaly se žádné nové funkce a neobdrží žádné opravy chyb. Microsoft doporučuje zákazníkům, aby se z něho naplánovali, aby se přesunuli na Azure AD Connect. Důrazně doporučujeme, abyste nespouštěli nová nasazení pomocí této aplikace. Tento konektor bude v budoucnu ohlášen jako zastaralý.
 
 ## <a name="additional-resources"></a>Další zdroje
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

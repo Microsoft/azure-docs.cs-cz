@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s atributem, který není synchronizován ve službě Azure AD Connect | Dokumenty společnosti Microsoft
-description: Toto téma obsahuje postup řešení problémů se synchronizací atributů pomocí úlohy řešení potíží.
+title: Řešení potíží s atributem, který se nesynchronizuje v Azure AD Connect | Microsoft Docs
+description: V tomto tématu najdete postup řešení potíží se synchronizací atributů pomocí úlohy řešení potíží.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,79 +16,79 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a639b14c9313179816f6376aa0c5642a645ea344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60455909"
 ---
-# <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Poradce při potížích s atributem, který není synchronizován ve službě Azure AD Connect
+# <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Řešení potíží s atributem, který se nesynchronizuje v Azure AD Connect
 
 ## <a name="recommended-steps"></a>**Doporučené kroky**
 
-Než prozkoumáme problémy se synchronizací atributů, pochopme proces synchronizace **Služby Azure AD Connect:**
+Než prozkoumáte problémy se synchronizací atributů, Podívejme se na **Azure AD Connect** proces synchronizace:
 
-  ![Proces synchronizace připojení Azure AD](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/syncingprocess.png)
+  ![Proces synchronizace Azure AD Connect](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/syncingprocess.png)
 
 ### <a name="terminology"></a>**Terminologie**
 
-* **CS:** Mezerník spojnice, tabulka v databázi.
+* **Cs:** Místo konektoru, tabulka v databázi.
 * **MV:** Metaverse, tabulka v databázi.
-* **AD:** Active Directory
+* **Služba AD:** Služba Active Directory
 * **AAD:** Azure Active Directory
 
 ### <a name="synchronization-steps"></a>**Kroky synchronizace**
 
-* Import ze služby AD: Objekty služby Active Directory jsou přeneseny do služby AD CS.
+* Import ze služby AD: objekty služby Active Directory se přenesou do služby AD CS.
 
-* Import z aad: Objekty Služby Azure Active Directory jsou přeneseny do služby AAD CS.
+* Import z AAD: objekty Azure Active Directory se přenesou do služby AAD CS.
 
-* Synchronizace: **Pravidla příchozí synchronizace** a **Pravidla odchozí synchronizace** jsou spouštěna v pořadí podle čísla priority od nižší k vyšší. Chcete-li zobrazit pravidla synchronizace, můžete přejít na **Editor pravidel synchronizace** z aplikací klasické pracovní plochy. **Pravidla příchozí synchronizace** přináší data z CS do MV. **Pravidla odchozí synchronizace** přesouvá data z MV do CS.
+* Synchronizace: **pravidla pro příchozí synchronizaci** a **pravidla odchozí synchronizace** se spouštějí v pořadí podle priority od nižších po vyšší. Chcete-li zobrazit pravidla synchronizace, můžete přejít na **Editor synchronizačních pravidel** z aplikací klasické pracovní plochy. **Pravidla pro příchozí synchronizaci** přináší data z cs do MV. **Pravidla odchozí synchronizace** přesouvá data z MV do cs.
 
-* Export do služby AD: Po spuštění synchronizace jsou objekty exportovány ze služby AD CS do **služby Active Directory**.
+* Export do AD: po spuštění synchronizace se objekty exportují ze služby AD CS do **Active Directory**.
 
-* Export do služby AAD: Po spuštění synchronizace se objekty exportují z aad cs do **služby Azure Active Directory**.
+* Export do AAD: po spuštění synchronizace se objekty exportují z AAD CS do **Azure Active Directory**.
 
-### <a name="step-by-step-investigation"></a>**Krok za krokem vyšetřování**
+### <a name="step-by-step-investigation"></a>**Krok za krokem šetření**
 
-* Začneme naše hledání z **Metaverse** a podívat se na mapování atributů ze zdroje na cíl.
+* Začneme hledat v **úložišti Metaverse** a podíváme se na mapování atributů ze zdroje do cíle.
 
-* Spusťte **Správce synchronizačních služeb** z desktopových aplikací, jak je znázorněno níže:
+* Spusťte **Synchronization Service Manager** z aplikací klasické pracovní plochy, jak je znázorněno níže:
 
-  ![Spuštění Správce synchronizačních služeb](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/startmenu.png)
+  ![Spustit Synchronization Service Manager](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/startmenu.png)
 
-* Ve **Správci synchronizačních služeb**vyberte **hledání Metaverse**, vyberte **obor podle typu objektu**, vyberte objekt pomocí atributu a klepněte na tlačítko **Hledat.**
+* V **Synchronization Service Manager**vyberte **hledání Metaverse**, vyberte **Rozsah podle typu objektu**, vyberte objekt pomocí atributu a klikněte na tlačítko **Hledat** .
 
-  ![Metaverse hledání](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvsearch.png)
+  ![Hledání v úložišti Metaverse](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvsearch.png)
 
-* Poklepáním na objekt nalezený ve vyhledávání **Metaverse** zobrazíte všechny jeho atributy. Kliknutím na kartu **Konektory** se můžete podívat na odpovídající objekt ve všech **prostorech konektoru**.
+* Dvojím kliknutím na objekt, který najdete v **úložišti Metaverse** , zobrazte všechny jeho atributy. Kliknutím na kartu **konektory** se můžete podívat na odpovídající objekt ve všech **prostorech konektoru**.
 
-  ![Konektory objektů Metaverse](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvattributes.png)
+  ![Konektory objektů úložiště metaverse](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvattributes.png)
 
-* Poklepáním na **konektor služby Active Directory** zobrazte atributy prostoru **konektoru.** Klikněte na tlačítko **Náhled,** v následujícím dialogu klikněte na **tlačítko Generovat náhled.**
+* Dvojitým kliknutím na **konektor služby Active Directory** zobrazíte atributy **prostoru konektoru** . Klikněte na tlačítko **Náhled** . v následujícím dialogovém okně klikněte na tlačítko **vygenerovat náhled** .
 
-  ![Atributy prostoru spojnice](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
+  ![Atributy prostoru konektoru](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
-* Nyní klikněte na **importovat atribut toku**, to ukazuje tok atributů z **Prostoru konektoru služby Active Directory** do **Metaverse**. Sloupec **Pravidlo synchronizace** zobrazuje, které **pravidlo synchronizace** přispělo k tomuto atributu. **Sloupec Zdroj dat** zobrazuje atributy z **prostoru konektoru**. Sloupec **Atribut Metaverse** zobrazuje atributy v **Metaverse**. Zde se můžete podívat na atribut, který se nesynchronizuje. Pokud zde atribut nenajdete, není to namapováno a musíte vytvořit nové vlastní **pravidlo synchronizace,** abyste atribut namapovali.
+* Nyní klikněte na **tok importovaného atributu**, který ukazuje tok atributů z **prostoru konektoru služby Active Directory do úložiště** **Metaverse**. Sloupec **pravidlo synchronizace** zobrazuje, které **pravidlo synchronizace** přispělo k tomuto atributu. Sloupec **zdroj dat** zobrazuje atributy z **prostoru konektoru**. Sloupec **atributu Metaverse** zobrazuje atributy v **úložišti Metaverse**. Zde můžete vyhledat atribut, který zde není synchronizován. Pokud zde atribut nenajdete, není to namapováno a je třeba vytvořit nové vlastní **synchronizační pravidlo** pro mapování atributu.
 
-  ![Atributy prostoru spojnice](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/cstomvattributeflow.png)
+  ![Atributy prostoru konektoru](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/cstomvattributeflow.png)
 
-* Kliknutím na **tok atributů Export** v levém podokně zobrazíte tok atributů z **Metaverse** zpět do **prostoru konektoru služby Active Directory** pomocí pravidel odchozí **synchronizace**.
+* Kliknutím na **tok atributů exportu** v levém podokně zobrazíte tok atributů z úložiště **Metaverse** zpátky do **prostoru konektoru služby Active Directory** pomocí **pravidel odchozí synchronizace**.
 
-  ![Atributy prostoru spojnice](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
+  ![Atributy prostoru konektoru](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
 
-* Podobně můžete zobrazit objekt **Azure Active Directory Connector Space** a můžete generovat **náhled** pro zobrazení toku atributů z **Metaverse** do **prostoru konektoru** a naopak, tímto způsobem můžete zjistit, proč se atribut nesynchronizuje.
+* Podobně můžete zobrazit objekt **prostoru konektoru Azure Active Directory** a můžete vygenerovat **Náhled** pro zobrazení toku atributů z úložiště **Metaverse** do **prostoru konektoru** a naopak, což vám umožní zjistit, proč se atribut nesynchronizuje.
 
 ## <a name="recommended-documents"></a>**Doporučené dokumenty**
-* [Synchronizace služby Azure AD Connect: Technické koncepty](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Synchronizace Azure AD Connect: Principy architektury](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Synchronizace Azure AD Connect: Principy deklarativního zřizování](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Synchronizace azure a připojení služby Azure AD: principy výrazů deklarativního zřizování](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
+* [Azure AD Connect synchronizace: technické koncepty](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
+* [Azure AD Connect synchronizace: Principy architektury](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
+* [Azure AD Connect synchronizace: principy deklarativního zřizování](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
+* [Azure AD Connect synchronizace: principy deklarativních zřizovacích výrazů](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
 * [Synchronizace služby Azure AD Connect: Principy výchozí konfigurace](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Synchronizace azure ad připojení: principy uživatelů, skupin a kontaktů](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Synchronizace služby Azure AD Connect: Atributy Stín](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect synchronizace: principy uživatelů, skupin a kontaktů](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
+* [Azure AD Connect Sync: atributy stínů](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Synchronizace služby Azure AD Connect](how-to-connect-sync-whatis.md).
+- [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md).
 - [Co je hybridní identita?](whatis-hybrid-identity.md).

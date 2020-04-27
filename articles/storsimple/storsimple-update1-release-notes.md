@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 Series Update 1.2 poznámky k verzi | Dokumenty společnosti Microsoft
-description: Popisuje nové funkce, problémy a řešení pro aktualizaci 1.2 řady StorSimple 8000.
+title: Zpráva k vydání verze StorSimple 8000 Series Update 1,2 | Microsoft Docs
+description: Popisuje nové funkce, problémy a alternativní řešení pro StorSimple 8000 Series Update 1,2.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -16,101 +16,101 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60530996"
 ---
-# <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>Aktualizace 1.2 poznámky k verzi pro zařízení řady StorSimple 8000
+# <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>Zpráva k vydání verze 1,2 pro zařízení s StorSimple 8000 series
 
 ## <a name="overview"></a>Přehled
-Následující poznámky k verzi popisují nové funkce a identifikují kritické otevřené problémy pro aktualizaci 1.2 řady StorSimple 8000. Obsahují také seznam aktualizací softwaru StorSimple, ovladače a diskového firmwaru, které jsou součástí této verze. 
+Následující poznámky k verzi popisují nové funkce a identifikují důležité otevřené problémy pro StorSimple 8000 Series Update 1,2. Obsahují také seznam aktualizací StorSimple softwaru, ovladačů a firmwaru disku, které jsou součástí této verze. 
 
-Aktualizaci 1.2 lze použít na libovolné zařízení StorSimple se spuštěnou verzí (GA), aktualizací 0.1, aktualizací 0.2 nebo aktualizací 0.3. Aktualizace 1.2 není k dispozici, pokud je v zařízení spuštěna aktualizace 1 nebo aktualizace 1.1. Pokud je v zařízení spuštěna verze (GA), obraťte se na [podporu společnosti Microsoft,](storsimple-contact-microsoft-support.md) která vám pomůže s instalací této aktualizace.
+Aktualizaci 1,2 lze použít pro jakékoli zařízení StorSimple s verzí (GA), aktualizaci 0,1, aktualizaci 0,2 nebo aktualizace softwaru 0,3. Aktualizace 1,2 není k dispozici, pokud je na zařízení spuštěná aktualizace 1 nebo aktualizace 1,1. Pokud na zařízení běží verze (GA), obraťte se prosím na [Podpora Microsoftu](storsimple-contact-microsoft-support.md) , který vám pomůže s instalací této aktualizace.
 
-V následující tabulce jsou uvedeny verze softwaru zařízení odpovídající aktualizacím 1, 1.1 a 1.2.
+V následující tabulce jsou uvedené verze softwaru pro zařízení, které odpovídají aktualizacím 1, 1,1 a 1,2.
 
-| Pokud běží aktualizace ... | jedná se o verzi softwaru vašeho zařízení. |
+| Při spuštění aktualizace... | Toto je verze softwaru vašeho zařízení. |
 | --- | --- |
 | Aktualizace 1.2 |6.3.9600.17584 |
 | Aktualizace 1.1 |6.3.9600.17521 |
-| Aktualizace 1.0 |6.3.9600.17491 |
+| Aktualizace 1,0 |6.3.9600.17491 |
 
-Před nasazením aktualizace v řešení StorSimple si přečtěte informace obsažené v poznámkách k verzi. Další informace naleznete v tématu [jak nainstalovat aktualizaci 1.2 do zařízení StorSimple](storsimple-install-update-1.md). 
+Před nasazením aktualizace do řešení StorSimple si prosím přečtěte informace uvedené v poznámkách k verzi. Další informace najdete v tématu [instalace aktualizace 1,2 na zařízení StorSimple](storsimple-install-update-1.md). 
 
 > [!IMPORTANT]
-> * Instalace této aktualizace (včetně aktualizací systému Windows) trvá přibližně 5 až 10 hodin. 
-> * Aktualizace 1.2 obsahuje aktualizace softwaru, ovladače LSI a firmwaru disku. Chcete-li nainstalovat, postupujte podle pokynů v [instalaci aktualizace 1.2 na zařízení StorSimple](storsimple-install-update-1.md).
-> * U nových verzí se aktualizace nemusí zobrazit okamžitě, protože provádíme postupné zavádění aktualizací. Skenování aktualizace za pár dní znovu, protože tyto budou brzy k dispozici.
+> * Instalace této aktualizace (včetně aktualizací systému Windows) trvá přibližně 5-10 hodin. 
+> * Aktualizace 1,2 obsahuje software, ovladač LSI a aktualizace firmwaru disku. Pokud ho chcete nainstalovat, postupujte podle pokynů v článku [instalace aktualizace 1,2 na zařízení StorSimple](storsimple-install-update-1.md).
+> * Pro nové verze se aktualizace nemusí okamžitě zobrazovat, protože provádíme dvoufázové zavedení aktualizací. Vyhledá aktualizace za několik dní znovu, protože budou brzy k dispozici.
 > 
 > 
 
-## <a name="whats-new-in-update-12"></a>Co je nového v aktualizaci 1.2
-Tyto funkce byly poprvé vydány s aktualizací 1, která byla zpřístupněna omezené sadě uživatelů. S aktualizací 1.2 by většina uživatelů StorSimple viděla následující nové funkce a vylepšení:
+## <a name="whats-new-in-update-12"></a>Co je nového v aktualizaci 1,2
+Tyto funkce byly nejprve vydány s aktualizací Update 1, která byla k dispozici pro omezené skupiny uživatelů. V případě verze Update 1,2 se většina uživatelů StorSimple zobrazí v následujících nových funkcích a vylepšeních:
 
-* **Migrace z řady 5000-7000 na zařízení řady 8000** – Tato verze představuje novou funkci migrace, která umožňuje uživatelům zařízení řady StorSimple 5000-7000 migrovat svá data do fyzického zařízení řady StorSimple 8000 nebo virtuálního zařízení. Funkce migrace má dvě klíčové návrhy hodnoty:                                                                  
+* **Migrace z 5000-7000 řad na zařízení 8000 series** – Tato verze zavádí novou funkci migrace, která umožňuje uživatelům zařízení StorSimple 5000-7000 Series migrovat svá data do fyzického zařízení StorSimple 8000 Series nebo virtuálního zařízení. Funkce migrace má dvě pozice pro klíčové hodnoty:                                                                  
   
-  * **Kontinuita provozu**tím, že umožňuje migraci stávajících dat na zařízeních řady 5000-7000 na zařízení řady 8000.
-  * **Vylepšené nabídky funkcí zařízení řady 8000**, jako je efektivní centralizovaná správa více spotřebičů prostřednictvím služby StorSimple Manager, lepší třída hardwaru a aktualizovaného firmwaru, virtuálních zařízení, mobility dat a funkcí v budoucím plánu.
+  * **Provozní kontinuita**tím, že umožňuje migrovat stávající data na zařízeních řady 5000-7000 až 8000 series.
+  * **Vylepšené nabídky funkcí řady 8000**, jako je například efektivní Centralizovaná správa více zařízení prostřednictvím služby StorSimple Manager, lepšího druhu hardwaru a aktualizovaného firmwaru, virtuálních zařízení, mobility dat a funkcí v budoucím plánu.
     
-    Podrobnosti o migraci řady StorSimple 5000-7000 do zařízení řady 8000 naleznete v [průvodci migrací.](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) 
-* **Dostupnost na portálu Azure Government Portal** – StorSimple je teď dostupná na portálu Azure Government. Podívejte se, jak [nasadit zařízení StorSimple na portálu Azure Government Portal](storsimple-deployment-walkthrough-gov.md).
-* **Podpora pro ostatní poskytovatele cloudových služeb** - Dalšími podporovanými poskytovateli cloudových služeb jsou Amazon S3, Amazon S3 s RRS, HP a OpenStack (beta).
-* **Aktualizace na nejnovější úložiště API** – S touto verzí StorSimple byla aktualizována na nejnovější azure storage service API. Zařízení řady StorSimple 8000 se spuštěnou verzí softwaru před aktualizací 1 (release, 0.1, 0.2 a 0.3) používají verze api služby Azure Storage Service starší než 17. Jak je uvedeno v aktualizovaném [oznámení o odebrání verzí služby Storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx), do srpna 1, 2016, tato api budou zastaralé. Je nezbytně nutné použít aktualizaci řady StorSimple 8000 1 před srpnem 1, 2016. Pokud tak neučiníte, zařízení StorSimple přestanou fungovat správně.
-* **Podpora zónově redundantního úložiště (ZRS)** – S upgradem na nejnovější verzi api úložiště bude řada StorSimple 8000 podporovat zónově redundantní úložiště (ZRS) kromě místně redundantního úložiště (LRS) a geograficky redundantního úložiště (GRS). Podrobnosti o ZRS najdete v tomto [článku o možnostech redundance úložiště Azure.](../storage/common/storage-redundancy.md)
-* **Rozšířené počáteční nasazení a aktualizace –** V této verzi byly vylepšeny procesy instalace a aktualizace. Instalace prostřednictvím průvodce instalací je vylepšena tak, aby poskytovala uživateli zpětnou vazbu, pokud je konfigurace sítě a nastavení brány firewall nesprávná. Další diagnostické rutiny byly poskytnuty, které vám pomohou s odstraňováním potíží se sítí zařízení. Další informace o nových diagnostických rutinách používaných k řešení potíží naleznete v [článku o nasazení řešení potíží.](storsimple-troubleshoot-deployment.md)
+    Podrobnosti o migraci řady StorSimple 5000-7000 na zařízení 8000 series najdete v [Průvodci migrací](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) . 
+* **Dostupnost na portálu Azure Government** – StorSimple je teď k dispozici na portálu Azure Government. Další informace najdete [v tématu nasazení zařízení StorSimple na portálu Azure Government](storsimple-deployment-walkthrough-gov.md).
+* **Podpora jiných poskytovatelů cloudových služeb** – podporovaná ostatní poskytovatelé cloudových služeb jsou Amazon S3, Amazon S3 s použitím prostředků RR, HP a OpenStack (beta).
+* **Aktualizace na nejnovější rozhraní API úložiště** – v této verzi jsme StorSimple aktualizovali na nejnovější rozhraní api služby Azure Storage. Na zařízeních řady StorSimple 8000, na kterých běží předběžná aktualizace 1 verze softwaru (verze, 0,1, 0,2 a 0,3), používají verze rozhraní API služby Azure Storage starší než 17. července 2009. Jak je uvedeno v aktualizovaném [oznámení o odebrání verzí služby úložiště](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx), od 1. srpna 2016 budou tato rozhraní API zastaralá. Je potřeba, abyste před 1. srpna 2016 používali aktualizaci řady StorSimple 8000 Series Update 1. Pokud to neuděláte, zařízení StorSimple přestanou fungovat správně.
+* **Podpora pro zónu redundantního úložiště (ZRS)** – při upgradu na nejnovější verzi rozhraní API úložiště bude řada StorSimple 8000 podporovat úložiště ZRS () Kromě místně redundantního úložiště (LRS) a geograficky redundantního úložiště (GRS). Podrobnosti o ZRS najdete [v tomto článku týkajícím se Azure Storage možností redundance](../storage/common/storage-redundancy.md) .
+* **Rozšířené počáteční nasazení a možnosti aktualizace** – v této verzi byly vylepšeny procesy instalace a aktualizace. Instalace prostřednictvím Průvodce instalací je vylepšena, aby poskytla uživateli zpětnou vazbu, pokud není správná konfigurace sítě a nastavení brány firewall. K dispozici jsou další diagnostické rutiny, které vám pomůžou při řešení potíží se sítí zařízení. Další informace o nových rutinách pro diagnostiku používaných při řešení potíží najdete v [článku věnovaném řešení potíží s nasazením](storsimple-troubleshoot-deployment.md) .
 
-## <a name="issues-fixed-in-update-12"></a>Problémy opravené v aktualizaci 1.2
-Následující tabulka obsahuje souhrn problémů, které byly opraveny v aktualizacích 1.2, 1.1 a 1.    
+## <a name="issues-fixed-in-update-12"></a>Problémy opravené v aktualizaci 1,2
+Následující tabulka poskytuje souhrn problémů vyřešených v aktualizacích 1,2, 1,1 a 1.    
 
 | Ne. | Funkce | Problém | Opraveno v aktualizaci | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- | --- |
-| 1 |Prostředí Windows PowerShell pro StorSimple |Když uživatel vzdáleně přistupoval k zařízení StorSimple pomocí prostředí Windows PowerShell pro StorSimple a poté spustil průvodce instalací, došlo k chybě, jakmile byla zadána adresa IP data 0. Tato chyba je nyní opravena v aktualizaci 1. |Update 1 |Ano |Ano |
-| 2 |Obnovení továrního nastavení |V některých případech při obnovení továrního nastavení se zařízení StorSimple zaseklo a zobrazilo tuto zprávu: **Probíhá obnovení továrního nastavení (fáze 8).** K tomu došlo, pokud jste během probíhajícírutiny stiskli kombinaci kláves CTRL+C. Tato chyba je nyní opravena. |Update 1 |Ano |Ne |
-| 3 |Obnovení továrního nastavení |Po neúspěšném obnovení továrního nastavení duálního řadiče bylo povoleno pokračovat v registraci zařízení. Výsledkem byla nepodporovaná konfigurace systému. V aktualizaci 1 se zobrazí chybová zpráva a registrace je blokována na zařízení, které má selhání obnovení továrního nastavení. |Update 1 |Ano |Ne |
-| 4 |Obnovení továrního nastavení |V některých případech byly vyvolány falešně pozitivní neshody výstrahy. Na zařízeních se spuštěnou aktualizací 1 již nebudou generovány nesprávné výstrahy neshody. |Update 1 |Ano |Ne |
-| 5 |Obnovení továrního nastavení |Pokud obnovení továrního nastavení bylo přerušeno před dokončením, zařízení vstoupilo do režimu obnovení a neumožnilo přístup k prostředí Windows PowerShell pro StorSimple. Tato chyba je nyní opravena. |Update 1 |Ano |Ne |
-| 6 |Zotavení po havárii |Chyba zotavení po havárii (DR) byla opravena v případě, že by se při zjišťování záloh na cílovém zařízení nezdaří zotavení po havárii. |Update 1 |Ano |Ano |
-| 7 |Sledování LED diod |V některých případech monitorování LED diod na zadní straně přístroje nenaznačovalo správný stav. Modrá LED dioda byla vypnuta. DATA 0 a DATA 1 LED diody blikaly, i když tato rozhraní nebyla nakonfigurována. Problém byl opraven a monitorování LED diod nyní označují správný stav. |Update 1 |Ano |Ne |
-| 8 |Sledování LED diod |V některých případech se po použití aktualizace 1 modré světlo na aktivním ovladači vypne, což ztěžuje identifikaci aktivního řadiče. Tento problém byl opraven v této verzi opravy. |Aktualizace 1.2 |Ano |Ne |
-| 9 |Síťová rozhraní |V předchozích verzích může zařízení StorSimple nakonfigurované s nesměrovatelnou bránou přejít do offline. V této verzi byla metrika směrování pro data 0 nejnižší; proto i v případě, že jiná síťová rozhraní jsou povolena v cloudu, veškerý cloudový provoz ze zařízení bude směrován přes data 0. |Update 1 |Ano |Ano |
-| 10 |Zálohování |Chyba v aktualizaci 1, která způsobila selhání záloh po 24 dnech, byla opravena v aktualizaci aktualizace 1.1. |Aktualizace 1.1 |Ano |Ano |
-| 11 |Zálohování |Chyba v předchozích verzích vedla ke snížení výkonu pro snímky cloudu s nízkou mírou změn. Tato chyba byla opravena v této verzi opravy. |Aktualizace 1.2 |Ano |Ano |
-| 12 |Aktualizace |V této verzi opravy byla opravena chyba v aktualizaci 1, která ohlásila neúspěšný upgrade a způsobila, že řadiče přejdou do režimu obnovení. |Aktualizace 1.2 |Ano |Ano |
+| 1 |Windows PowerShell pro StorSimple |Když se uživatel vzdáleně přistupoval k zařízení StorSimple pomocí Windows PowerShell pro StorSimple a potom spustí Průvodce instalací, došlo k chybě hned po vstupu data 0 IP. Tato chyba je nyní opravena ve verzi Update 1. |Update 1 |Ano |Ano |
+| 2 |Obnovení továrního nastavení |Když jste v některých případech provedli obnovení továrního nastavení, zařízení StorSimple se zablokoval a zobrazila se tato zpráva: **resetování na tovární nastavení probíhá (fáze 8)**. K tomu došlo, pokud jste při běhu rutiny stiskli kombinaci kláves CTRL + C. Tato chyba je nyní opravena. |Update 1 |Ano |Ne |
+| 3 |Obnovení továrního nastavení |Po neúspěšném obnovení továrního nastavení s dvojím kontrolérem jste mohli pokračovat v registraci zařízení. Výsledkem je Nepodporovaná konfigurace systému. V Update 1 se zobrazí chybová zpráva a na zařízení s neúspěšnou resetováním továrního nastavení se zablokuje registrace. |Update 1 |Ano |Ne |
+| 4 |Obnovení továrního nastavení |V některých případech byly vyvolány falešně pozitivní výstrahy neshody. Na zařízeních s aktualizací Update 1 se již negenerují nesprávné výstrahy neshody. |Update 1 |Ano |Ne |
+| 5 |Obnovení továrního nastavení |Pokud bylo obnovení továrního nastavení přerušeno před dokončením, zařízení vstoupilo do režimu obnovení a nepovolilo vám přístup k Windows PowerShell pro StorSimple. Tato chyba je nyní opravena. |Update 1 |Ano |Ne |
+| 6 |Zotavení po havárii |Došlo k opravené chybě zotavení po havárii (DR) při zjišťování zálohování na cílovém zařízení. |Update 1 |Ano |Ano |
+| 7 |Monitorování diody LED |V některých případech monitorované indikátory LED na zadní straně zařízení neoznačovaly správný stav. Modrý indikátor LED byl vypnut. DATA 0 a diody dat 1 byly blikat, i když tato rozhraní nebyla nakonfigurována. Problém byl opraven a monitorování diod LED nyní indikuje správný stav. |Update 1 |Ano |Ne |
+| 8 |Monitorování diody LED |V některých případech po použití aktualizace 1 se modré světlo na aktivním kontroleru vypne a díky tomu je obtížné identifikovat aktivní kontroler. Tento problém byl opravený v této verzi opravy. |Aktualizace 1.2 |Ano |Ne |
+| 9 |Síťová rozhraní |V předchozích verzích mohl být zařízení StorSimple nakonfigurované s Nesměrovatelné bránou, které by bylo online. V této verzi se metrika směrování pro data 0 provedla nejnižší; Proto i v případě, že jsou v cloudu zapnutá jiná síťová rozhraní, veškerý cloudový provoz ze zařízení bude směrován přes data 0. |Update 1 |Ano |Ano |
+| 10 |Zálohování |Chyba v Update 1, která způsobila selhání zálohování po 24 dnech, byla opravena ve verzi patch Update 1,1. |Aktualizace 1.1 |Ano |Ano |
+| 11 |Zálohování |Výsledkem chyby v předchozích verzích byl špatný výkon pro cloudové snímky s nízkou mírou změn. Tato chyba byla opravena v této verzi opravy. |Aktualizace 1.2 |Ano |Ano |
+| 12 |Aktualizace |Došlo k chybě v aktualizaci Update 1, která ohlásila selhání upgradu a způsobila, že řadiče přešly do režimu obnovení, který byl opraven v této verzi opravy. |Aktualizace 1.2 |Ano |Ano |
 
-## <a name="known-issues-in-update-12"></a>Známé problémy v aktualizaci 1.2
-Následující tabulka obsahuje souhrn známých problémů v této verzi.
+## <a name="known-issues-in-update-12"></a>Známé problémy v aktualizaci 1,2
+Následující tabulka poskytuje souhrn známých problémů v této verzi.
 
-| Ne. | Funkce | Problém | Komentáře/řešení | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
+| Ne. | Funkce | Problém | Komentáře a alternativní řešení | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- | --- |
-| 1 |Diskové kvorum |Ve výjimečných případech pokud většina disků ve skříni EBOD zařízení 8600 jsou odpojeny, což nemá žádné kvorum disku, pak fond úložiště bude offline. Zůstane v offline i v případě, že jsou disky znovu připojeny. |Budete muset restartovat zařízení. Pokud problém přetrvává, obraťte se na podporu společnosti Microsoft pro další kroky. |Ano |Ne |
-| 2 |Nesprávné ID řadiče |Při provedení výměny řadiče se může řadič 0 zobrazit jako řadič 1. Během nahrazení řadiče, když je bitová kopie načtena z uzlu peer, ID řadiče se může zpočátku zobrazit jako ID peer controller. Ve výjimečných případech toto chování může být také vidět po restartování systému. |Není vyžadována žádná akce uživatele. Tato situace se vyřeší sama po dokončení nahrazení řadiče. |Ano |Ne |
-| 3 |Účty úložiště |Použití služby Úložiště k odstranění účtu úložiště je nepodporovaný scénář. To povede k situaci, ve které nelze načíst uživatelská data. |Ano |Ano | |
-| 4 |Převzetí služeb při selhání zařízení |Více převzetí služeb při selhání kontejneru svazku ze stejného zdrojového zařízení do různých cílových zařízení není podporováno. Převzetí služeb při selhání zařízení z jednoho mrtvého zařízení na více zařízení způsobí, že kontejnery svazků na prvním selhání zařízení ztratí vlastnictví dat. Po takovém převzetí služeb při selhání se tyto kontejnery svazků zobrazí nebo se budou chovat jinak, když je zobrazíte na klasickém portálu Azure. | |Ano |Ne |
-| 5 |Instalace |Během instalace aplikace StorSimple Adapter pro službu SharePoint je třeba zadat ip adresu zařízení, aby byla instalace úspěšně dokončena. | |Ano |Ne |
-| 6 |Webový proxy server |Pokud je konfigurace webového proxy serveru jako zadaný protokol protokolem https, bude ovlivněna komunikace mezi zařízeními a službami a zařízení přejde do offline. Balíčky podpory budou také generovány v procesu, spotřebovávající významné prostředky na vašem zařízení. |Ujistěte se, že adresa URL webového proxy serveru má jako zadaný protokol protokol HTTP. Další informace najdete v článku [Konfigurace webového proxy serveru pro zařízení](storsimple-configure-web-proxy.md). |Ano |Ne |
-| 7 |Webový proxy server |Pokud nakonfigurujete a povolíte webový proxy server na registrovaném zařízení, budete muset restartovat aktivní řadič v zařízení. | |Ano |Ne |
-| 8 |Vysoká latence cloudu a vysoké vstupně-výstupní úlohy |Když vaše zařízení StorSimple narazí na kombinaci velmi vysoké latence cloudu (pořadí sekund) a vysoké vstupně-výstupní úlohy, svazky zařízení přejdou do zhoršeného stavu a vstupně-výstupních služeb může selhat s chybou "zařízení není připraveno". |Budete muset ručně restartovat řadiče zařízení nebo provést převzetí služeb při selhání zařízení k obnovení z této situace. |Ano |Ne |
-| 9 |Azure PowerShell |Při použití Rutina StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** vybrat první objekt, takže můžete vytvořit nový **Objekt VolumeContainer,** rutina vrátí všechny objekty. |Zalomit rutinu do závorek takto: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |Ano |Ano |
-| 10 |Migrace |Při předání více kontejnerů svazku pro migraci, ETA pro nejnovější zálohování je přesné pouze pro první kontejner svazku. Paralelní migrace navíc začne po migraci prvních 4 záloh v prvním kontejneru svazku. |Doporučujeme migrovat jeden kontejner svazku najednou. |Ano |Ne |
-| 11 |Migrace |Po obnovení nejsou svazky přidány do zásady zálohování nebo skupiny virtuálních disků. |Chcete-li vytvořit zálohy, budete muset tyto svazky přidat do zásad zálohování. |Ano |Ano |
-| 12 |Migrace |Po dokončení migrace zařízení řady 5000/7000 nesmí přistupovat k migrované datové kontejnery. |Doporučujeme odstranit migrované datové kontejnery po dokončení migrace a potvrzené. |Ano |Ne |
-| 13 |Klonování a dr. |Zařízení StorSimple se spuštěnou aktualizací 1 nemůže klonovat nebo provádět zotavení po havárii na zařízení se systémem předaktualizací 1. |Chcete-li povolit tyto operace, budete muset aktualizovat cílové zařízení na aktualizaci 1. |Ano |Ano |
-| 14 |Migrace |Zálohování konfigurace pro migraci může selhat na zařízení řady 5000-7000, pokud existují skupiny svazků bez přidružených svazků. |Odstraňte všechny prázdné skupiny svazků bez přidružených svazků a opakujte zálohu konfigurace. |Ano |Ne |
+| 1 |Kvorum disku |Ve výjimečných případech dojde k odpojení většiny disků v EBOD skříni zařízení 8600, což způsobí nedostatečné diskové kvorum, ale fond úložiště bude offline. Zůstane v režimu offline i v případě, že jsou disky znovu připojeny. |Budete muset zařízení restartovat. Pokud se problém opakuje, kontaktujte prosím podpora Microsoftu pro další kroky. |Ano |Ne |
+| 2 |Nesprávné ID kontroleru |Když se provede nahrazení řadiče, může se řadič 0 zobrazit jako kontroler 1. Když se při nahrazení řadiče načte z uzlu rovnocenného uzlu, ID kontroleru se může zpočátku zobrazit jako ID partnerského řadiče. Ve výjimečných případech se toto chování může zobrazit i po restartování systému. |Není vyžadována žádná akce uživatele. Tato situace se vyřeší sám po dokončení nahrazení kontroleru. |Ano |Ne |
+| 3 |Účty úložiště |Použití služby úložiště k odstranění účtu úložiště je nepodporovaný scénář. To vede k situaci, kdy nelze načíst uživatelská data. |Ano |Ano | |
+| 4 |Převzetí služeb při selhání zařízení |Víc převzetí služeb při selhání kontejneru svazků ze stejného zdrojového zařízení do různých cílových zařízení se nepodporuje. Převzetí služeb zařízení při selhání z jednoho nedoručeného zařízení na několik zařízení způsobí, že kontejnery svazků u prvního zařízení, které převezme služby při selhání, ztratí vlastnictví dat. Po takovém převzetí služeb při selhání se tyto kontejnery svazků zobrazí nebo se budou chovat jinak, než je zobrazíte na portálu Azure Classic. | |Ano |Ne |
+| 5 |Instalace |Během instalace služby StorSimple Adapter pro SharePoint je potřeba zadat IP adresu zařízení, aby se instalace úspěšně dokončila. | |Ano |Ne |
+| 6 |Webový proxy server |Pokud vaše konfigurace webového proxy serveru jako zadaného protokolu obsahuje HTTPS, bude ovlivněná komunikace mezi zařízením a zařízení bude offline. Balíčky podpory budou také vygenerovány v procesu a budou spotřebovávat významné prostředky na vašem zařízení. |Ujistěte se, že adresa URL webového proxy serveru má jako zadaný protokol HTTP. Další informace najdete v článku [Konfigurace webového proxy serveru pro zařízení](storsimple-configure-web-proxy.md). |Ano |Ne |
+| 7 |Webový proxy server |Pokud nakonfigurujete a povolíte webový proxy server na registrovaném zařízení, budete muset na svém zařízení restartovat aktivní kontroler. | |Ano |Ne |
+| 8 |Vysoká latence v cloudu a vysoká zátěž/výstup |Když zařízení StorSimple zaznamená kombinaci velmi vysoké latence v cloudu (v řádu sekund) a vysoké vstupně-výstupní úlohy, svazky zařízení přejdou do stavu sníženo a vstupně-výstupní operace se nemusí zdařit s chybou zařízení není připraveno. |V takovém případě budete muset ručně restartovat řadiče zařízení nebo provést převzetí služeb při selhání zařízení pro obnovení. |Ano |Ne |
+| 9 |Azure PowerShell |Když použijete rutinu StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object-First 1-počkat** na výběr prvního objektu, abyste mohli vytvořit nový objekt **ke kontejneru svazků** , rutina vrátí všechny objekty. |Zabalte rutinu do závorek následujícím způsobem: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object-First 1-Wait** |Ano |Ano |
+| 10 |Migrace |Pokud je pro migraci předána více kontejnerů svazků, je ETA pro nejnovější zálohování přesné pouze pro první kontejner svazků. Kromě toho se spustí paralelní migrace po migraci prvních 4 záloh v prvním kontejneru svazků. |Doporučujeme migrovat jeden kontejner svazků v jednom okamžiku. |Ano |Ne |
+| 11 |Migrace |Po obnovení nebudou svazky přidány do zásad zálohování nebo do skupiny virtuálních disků. |Tyto svazky budete muset přidat do zásad zálohování, aby bylo možné vytvářet zálohy. |Ano |Ano |
+| 12 |Migrace |Po dokončení migrace nesmí zařízení řady 5000/7000 přistupovat ke migrovaných datovým kontejnerům. |Po dokončení a potvrzení migrace doporučujeme odstranit migrované datové kontejnery. |Ano |Ne |
+| 13 |Klonování a zotavení po havárii |Zařízení StorSimple se systémem Update 1 nemůže klonovat nebo provést zotavení po havárii na zařízení, na kterém běží software před aktualizací 1. |Aby bylo možné tyto operace, je třeba aktualizovat cílové zařízení na aktualizaci 1. |Ano |Ano |
+| 14 |Migrace |Pokud existují skupiny svazků bez přidružených svazků, zálohování konfigurace pro migraci na zařízení řady 5000-7000 se nemusí zdařit. |Odstraňte všechny prázdné skupiny svazků bez přidružených svazků a opakujte zálohování konfigurace. |Ano |Ne |
 
-## <a name="physical-device-updates-in-update-12"></a>Aktualizace fyzických zařízení v aktualizaci 1.2
-Pokud je aktualizace opravy 1.2 použita na fyzické zařízení (spuštěné verze před aktualizací 1), verze softwaru se změní na 6.3.9600.17584.
+## <a name="physical-device-updates-in-update-12"></a>Aktualizace fyzických zařízení v aktualizaci 1,2
+Pokud je aktualizace 1,2 na fyzickém zařízení použita (verze se spouští před aktualizací Update 1), verze softwaru se změní na 6.3.9600.17584.
 
-## <a name="controller-and-firmware-updates-in-update-12"></a>Aktualizace řadiče a firmwaru v aktualizaci 1.2
-Tato verze aktualizuje ovladač a firmware disku v zařízení.
+## <a name="controller-and-firmware-updates-in-update-12"></a>Aktualizace řadiče a firmwaru v aktualizaci 1,2
+Tato verze aktualizuje ovladač a firmware disku na vašem zařízení.
 
-* Další informace o aktualizaci řadiče SAS naleznete [v tématu Aktualizace 1 pro řadiče LSI SAS v zařízení Microsoft Azure StorSimple Appliance](https://support.microsoft.com/kb/3043005). 
-* Další informace o aktualizaci firmwaru disku naleznete v [tématu Aktualizace firmwaru disku 1 pro zařízení Microsoft Azure StorSimple Appliance](https://support.microsoft.com/kb/3063416).
+* Další informace o aktualizaci řadiče SAS najdete [v části Update 1 pro řadiče LSI SAS v zařízení Microsoft Azure StorSimple](https://support.microsoft.com/kb/3043005). 
+* Další informace o aktualizaci firmwaru disku naleznete v části [firmware disku Update 1 pro Microsoft Azure StorSimple zařízení](https://support.microsoft.com/kb/3063416).
 
-## <a name="virtual-device-updates-in-update-12"></a>Aktualizace virtuálních zařízení v aktualizaci 1.2
-Tuto aktualizaci nelze použít na virtuální zařízení. Bude třeba vytvořit nová virtuální zařízení. 
+## <a name="virtual-device-updates-in-update-12"></a>Aktualizace virtuálních zařízení v aktualizaci Update 1,2
+Tuto aktualizaci nelze použít pro virtuální zařízení. Nová virtuální zařízení bude potřeba vytvořit. 
 
 ## <a name="next-steps"></a>Další kroky
-* [Nainstalujte do zařízení aktualizaci 1.2](storsimple-install-update-1.md).
+* [Na vaše zařízení nainstalujte aktualizaci 1,2](storsimple-install-update-1.md).
 

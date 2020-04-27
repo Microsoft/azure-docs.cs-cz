@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect – chyby LargeObject způsobené atributem userCertificate | Dokumenty společnosti Microsoft
-description: Toto téma obsahuje nápravné kroky pro chyby LargeObject způsobené atributem userCertificate.
+title: Chyby Azure AD Connect – LargeObject způsobené atributem userCertificate | Microsoft Docs
+description: Toto téma popisuje nápravné kroky pro chyby LargeObject způsobené atributem userCertificate.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,168 +18,168 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "62095485"
 ---
-# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizace azure ad připojení: zpracování chyb LargeObject způsobených atributem userCertificate
+# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect synchronizace: zpracování chyb LargeObject způsobených atributem userCertificate
 
-Azure AD vynucuje maximální limit **15** hodnot certifikátu na atribut **userCertificate.** Pokud Azure AD Connect exportuje objekt s více než 15 hodnotami do Azure AD, Azure AD vrátí chybu **LargeObject** se zprávou:
+Služba Azure AD vynutila maximální limit **15** hodnot certifikátů v atributu **userCertificate** . Pokud Azure AD Connect exportuje objekt s více než 15 hodnotami do Azure AD, Azure AD vrátí chybu **LargeObject** se zprávou:
 
->*"Zřízený objekt je příliš velký. Ořízněte počet hodnot atributů u tohoto objektu. Operace bude zopakována v dalším cyklu synchronizace..."*
+>*"Zřízený objekt je moc velký. Ořízne počet hodnot atributu u tohoto objektu. Operace bude opakována v dalším cyklu synchronizace...*
 
-Chyba LargeObject může být způsobena jinými atributy ad. Chcete-li potvrdit, že je skutečně způsobenatributem userCertificate, je třeba ověřit objekt buď v místním ad nebo v [Metaverse Search Správce synchronizačních služeb](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch).
+Chyba LargeObject může být způsobena jinými atributy služby AD. Aby bylo možné potvrdit, že je výsledkem atribut userCertificate, je třeba ověřit objekt v místní službě AD nebo v [Synchronization Service Manager ve vyhledávání Metaverse](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch).
 
-Chcete-li získat seznam objektů v tenantovi s chybami LargeObject, použijte jednu z následujících metod:
+Pokud chcete získat seznam objektů ve vašem tenantovi s LargeObject chybami, použijte jednu z následujících metod:
 
- * Pokud je váš tenant povolen pro Azure AD Connect Health pro synchronizaci, můžete odkazovat na zprávu [o chybě synchronizace](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync) k dispozici.
+ * Pokud je u tenanta povolený Azure AD Connect Health ke synchronizaci, můžete se podívat na poskytnutou [zprávu o chybách synchronizace](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync) .
  
- * E-mail s oznámením o chybách synchronizace adresářů, který je odeslán na konci každého cyklu synchronizace, obsahuje seznam objektů s chybami LargeObject. 
- * [Karta Operace správce služeb synchronizace](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) zobrazí seznam objektů s chybami LargeObject, pokud klepnete na nejnovější operaci Exportovat do Služby Azure AD.
+ * Oznamovací e-mail pro chyby synchronizace adresářů, které se odesílají na konci každého synchronizačního cyklu, má seznam objektů s LargeObject chybami. 
+ * Pokud kliknete na nejnovější operaci export do služby Azure AD, na [kartě Synchronization Service Manager operace](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) se zobrazí seznam objektů s chybami LargeObject.
  
-## <a name="mitigation-options"></a>Možnosti zmírnění rizik
-Dokud není vyřešena chyba LargeObject, nelze exportovat do služby Azure AD další změny atributů stejného objektu. Chcete-li chybu vyřešit, můžete zvážit následující možnosti:
+## <a name="mitigation-options"></a>Možnosti zmírnění
+Dokud nebude chyba LargeObject vyřešena, nelze do služby Azure AD exportovat jiné změny atributů stejného objektu. Chcete-li vyřešit chybu, můžete zvážit následující možnosti:
 
- * Upgradujte Azure AD Connect na sestavení 1.1.524.0 nebo po. V Azure AD Connect sestavení 1.1.524.0 pravidla synchronizace out-of-box byly aktualizovány na neexportovat atributy userCertificate a userSMIMECertificate, pokud atributy mají více než 15 hodnot. Podrobnosti o tom, jak upgradovat Azure AD Connect, najdete v článku [Azure AD Connect: Upgrade z předchozí verze na nejnovější](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+ * Upgradujte Azure AD Connect pro sestavení 1.1.524.0 nebo After. V Azure AD Connect sestavování 1.1.524.0 buildu se dopředná pravidla synchronizace pro všechna pole aktualizovala tak, aby neexportoval atributy userCertificate a userSMIMECertificate, pokud atributy mají více než 15 hodnot. Podrobnosti o tom, jak upgradovat Azure AD Connect, najdete v článku [Azure AD Connect: upgrade z předchozí verze na nejnovější verzi](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
 
- * Implementujte **pravidlo odchozí synchronizace** ve službě Azure AD Connect, která exportuje **hodnotu null namísto skutečných hodnot pro objekty s více než 15 hodnotami certifikátu**. Tato možnost je vhodná, pokud nepožadujete žádnou z hodnot certifikátu, které mají být exportovány do Služby Azure AD pro objekty s více než 15 hodnotami. Podrobnosti o implementaci tohoto pravidla synchronizace naleznete v další části [Implementace pravidla synchronizace pro omezení exportu atributu userCertificate](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
+ * Implementujte **Pravidlo odchozí synchronizace** v Azure AD Connect, které exportuje **hodnotu null, a ne skutečné hodnoty pro objekty s více než 15 hodnotami certifikátů**. Tato možnost je vhodná, pokud nepotřebujete exportovat žádnou z hodnot certifikátů do služby Azure AD pro objekty s více než 15 hodnotami. Podrobnosti o tom, jak implementovat toto pravidlo synchronizace, najdete v další části [implementace pravidla synchronizace pro omezení exportu atributu userCertificate](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
 
- * Odebráním hodnot, které vaše organizace nepoužívá, snižte počet hodnot certifikátů v místním objektu služby AD (15 nebo méně). To je vhodné, pokud je nadýmání atributu způsobeno vypršením nebo nepoužitými certifikáty. [Pomocí skriptu PowerShellu, který je k dispozici,](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) můžete použít k vyhledání, zálohování a odstranění certifikátů, jejichž platnost vypršela v místním zařízení AD. Před odstraněním certifikátů doporučujeme ověřit u správců infrastruktury veřejných klíčů ve vaší organizaci.
+ * Snižte počet hodnot certifikátů na objektu místní služby AD (15 nebo méně) tím, že odeberete hodnoty, které už vaše organizace nepoužívá. To je vhodné, pokud je atribut dispozici determinističtější způsoben vypršením nebo nepoužitými certifikáty. Pomocí [skriptu prostředí PowerShell, který je zde k dispozici](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) , můžete najít, zálohovat a odstranit certifikáty s vypršenou platností v místní službě AD. Před odstraněním certifikátů se doporučujeme ověřit u správců infrastruktury veřejných klíčů ve vaší organizaci.
 
- * Nakonfigurujte Azure AD Connect tak, aby byl atribut userCertificate exportován do Služby Azure AD. Obecně doporučujeme tuto možnost, protože atribut může být použit službou Microsoft Online Services k povolení konkrétních scénářů. Zejména jde o toto:
-    * Atribut userCertificate na objektu User používají klienti Exchange Online a Outlook pro podepisování a šifrování zpráv. Další informace o této funkci naleznete v článku [S/MIME pro podepisování zpráv a šifrování](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx).
+ * Nakonfigurujte Azure AD Connect, aby se vyloučil Export atributu userCertificate do služby Azure AD. Obecně platí, že tuto možnost nedoporučujeme, protože atribut můžou použít služby Microsoft Online Services k povolení konkrétních scénářů. Zejména jde o toto:
+    * Atribut userCertificate objektu User používá klient Exchange Online a Outlook pro podepisování a šifrování zpráv. Další informace o této funkci najdete v článku [S/MIME pro podepisování a šifrování zpráv](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx).
 
-    * Atribut userCertificate na objektu Computer používá Azure AD k povolení připojení zařízení s Windows 10 pro místní doménu k připojení k Azure AD. Další informace o této funkci najdete v článku [Připojení zařízení spojených s doménou k prostředí Azure AD pro Windows 10](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy).
+    * V Azure AD se používá atribut userCertificate na objektu počítače, aby se zařízení s Windows 10 připojená k doméně mohla připojit k Azure AD. Pokud se o této funkci chcete dozvědět víc, přečtěte si článek [připojení zařízení připojených k doméně k Azure AD pro prostředí Windows 10](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy).
 
 ## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>Implementace pravidla synchronizace pro omezení exportu atributu userCertificate
-Chcete-li vyřešit chybu LargeObject způsobenou atributem userCertificate, můžete implementovat pravidlo odchozí synchronizace v aplikaci Azure AD Connect, které exportuje **hodnotu null namísto skutečných hodnot pro objekty s více než 15 hodnotami certifikátu**. Tato část popisuje kroky potřebné k implementaci pravidla synchronizace pro **objekty User.** Kroky lze upravit pro **kontaktní** a **počítačové** objekty.
+Chcete-li vyřešit chybu LargeObject způsobenou atributem userCertificate, můžete implementovat pravidlo odchozí synchronizace v Azure AD Connect, které exportuje **hodnotu null namísto skutečných hodnot pro objekty s více než 15 hodnotami certifikátů**. Tato část popisuje kroky potřebné k implementaci pravidla synchronizace pro objekty **uživatele** . Tyto kroky lze upravit pro objekty **kontaktů** a **počítačů** .
 
 > [!IMPORTANT]
-> Export nulové hodnoty odebere hodnoty certifikátu, které byly dříve úspěšně exportovány do služby Azure AD.
+> Při exportu hodnoty null se úspěšně exportují hodnoty certifikátů do Azure AD.
 
-Kroky lze shrnout takto:
+Postup může být shrnut jako:
 
-1. Zakažte plánovač synchronizace a ověřte, zda neprobíhá žádná synchronizace.
-3. Vyhledejte existující pravidlo odchozí synchronizace pro atribut userCertificate.
+1. Zakáže Plánovač synchronizace a ověří, že neprobíhá žádná synchronizace.
+3. Vyhledejte stávající pravidlo odchozí synchronizace pro atribut userCertificate.
 4. Vytvořte požadované pravidlo odchozí synchronizace.
 5. Ověřte nové pravidlo synchronizace u existujícího objektu s chybou LargeObject.
-6. Použijte nové pravidlo synchronizace na zbývající objekty s chybou LargeObject.
-7. Ověřte, že neexistují žádné neočekávané změny čekající na export do služby Azure AD.
+6. Použijte nové pravidlo synchronizace pro zbývající objekty s chybou LargeObject.
+7. Ověřte, že neexistují žádné neočekávané změny, které čekají na export do Azure AD.
 8. Exportujte změny do služby Azure AD.
-9. Znovu povolte plánovač synchronizace.
+9. Znovu povolte Plánovač synchronizace.
 
-### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1. Zakázat plánovač synchronizace a ověřit, že neprobíhá žádná synchronizace.
-Ujistěte se, že žádná synchronizace probíhá, když jste uprostřed implementace nového pravidla synchronizace, abyste zabránili nechtěným změnám exportovaným do Azure AD. Zakázání integrovaného plánovače synchronizace:
-1. Spusťte relaci Prostředí PowerShell na serveru Azure AD Connect.
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1. Zakázat Plánovač synchronizace a ověřit, zda neprobíhá žádná synchronizace
+Zajistěte, aby se žádná synchronizace neprobíhala v průběhu implementace nového pravidla synchronizace, aby se předešlo nezamýšleným změnám exportovaným do Azure AD. Zakázání integrovaného plánovače synchronizace:
+1. Spusťte relaci PowerShellu na Azure AD Connectovém serveru.
 
-2. Zakázat naplánovanou synchronizaci spuštěním rutiny:`Set-ADSyncScheduler -SyncCycleEnabled $false`
+2. Zakažte naplánovanou synchronizaci spuštěním rutiny:`Set-ADSyncScheduler -SyncCycleEnabled $false`
 
 > [!Note]
-> Předchozí kroky se vztahují jenom pro novější verze (1.1.xxx.x) služby Azure AD Connect s integrovaným plánovačem. Pokud používáte starší verze (1.0.xxx.x) služby Azure AD Connect, která používá Plánovač úloh systému Windows, nebo používáte vlastní plánovač (není běžné) k aktivaci pravidelné synchronizace, je třeba je odpovídajícím způsobem zakázat.
+> Předchozí kroky platí jenom pro novější verze (1.1. xxx. x) Azure AD Connect s integrovaným plánovačem. Pokud používáte starší verze (1.0. xxx. x) Azure AD Connect, které používají systém Windows Plánovač úloh nebo používáte vlastní Plánovač (Neběžné) pro aktivaci pravidelné synchronizace, je nutné je podle potřeby zakázat.
 
-1. Spusťte **Správce synchronizačních služeb** tak, že přejdete na start → Služba synchronizace.
+1. Spusťte **Synchronization Service Manager** spuštěním synchronizační služby →.
 
-1. Přejděte na kartu **Operace** a potvrďte, že neexistuje žádná operace, jejíž stav *probíhá.*
+1. Přejít na kartu **operace** a potvrďte, že neexistuje žádná operace, jejíž stav probíhá *.*
 
-### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Krok 2. Vyhledání existujícího pravidla odchozí synchronizace pro atribut userCertificate
-Mělo by existovat existující pravidlo synchronizace, které je povolené a nakonfigurované pro export atributu userCertificate pro objekty uživatele do služby Azure AD. Vyhledejte toto pravidlo synchronizace a zjistěte jeho **prioritu** a konfiguraci **filtru oborů:**
+### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Krok 2. Najít stávající pravidlo odchozí synchronizace pro atribut userCertificate
+Mělo by existovat existující synchronizační pravidlo, které je povolené a nakonfigurované pro export atributu userCertificate uživatelských objektů do Azure AD. Vyhledejte toto pravidlo synchronizace, abyste zjistili jeho **prioritu** a konfiguraci **filtru oboru** :
 
-1. Spusťte **Editor pravidel synchronizace** tak, že přejdete na START → Editor pravidel synchronizace.
+1. Spusťte **Editor synchronizačních pravidel** tak, že otevřete Editor pravidel synchronizace →.
 
-2. Nakonfigurujte vyhledávací filtry s následujícími hodnotami:
+2. Nakonfigurujte filtry hledání s následujícími hodnotami:
 
     | Atribut | Hodnota |
     | --- | --- |
     | Směr |**Odchozí** |
     | Typ objektu MV |**Person (Osoba)** |
-    | Konektor |*název konektoru Azure AD* |
-    | Typ objektu konektoru |**Uživatele** |
-    | Atribut MV |**userCertificate** |
+    | Konektor |*název vašeho konektoru služby Azure AD* |
+    | Typ objektu konektoru |**uživatelský** |
+    | MV – atribut |**userCertificate** |
 
-3. Pokud používáte pravidla synchronizace OOB (out-of-box) na konektor Azure AD k exportu atributu UserCertficiate pro objekty uživatele, měli byste získat zpět pravidlo *"Out to AAD – User ExchangeOnline".*
+3. Pokud k exportu atributu userCertficiate pro uživatelské objekty používáte pravidla synchronizace OOB (předdefinovaných) na službu Azure AD Connector, měli byste se vrátit k pravidlu *"odchozí pro AAD – uživatel ExchangeOnline"* .
 4. Poznamenejte si hodnotu **priority** tohoto pravidla synchronizace.
-5. Vyberte pravidlo synchronizace a klepněte na **tlačítko Upravit**.
-6. V rozbalovacím dialogovém okně *Upravit potvrzení vyhrazeného pravidla* klepněte na tlačítko **Ne**. (Nebojte se, nebudeme provádět žádné změny tohoto pravidla synchronizace).
-7. Na obrazovce úprav vyberte kartu **Filtr vymezení rozsahu.**
-8. Poznamenejte si konfiguraci filtru oboru. Pokud používáte pravidlo synchronizace OOB, měla by existovat přesně **jedna skupina filtrů oboru obsahující dvě klauzule**, včetně:
+5. Vyberte pravidlo synchronizace a klikněte na **Upravit**.
+6. V místním dialogovém okně *Upravit potvrzení rezervovaného pravidla* klikněte na **ne**. (Nedělejte si starosti, v tomto pravidle synchronizace nebudeme dělat žádné změny).
+7. Na obrazovce pro úpravy vyberte kartu **Filtr oboru** .
+8. Poznamenejte si konfiguraci filtru oborů. Pokud používáte pravidlo synchronizace OOB, měl by existovat přesně **jedna skupina filtru oborů obsahující dvě klauzule**, včetně:
 
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
-    | sourceObjectType | Stejné | Uživatel |
-    | cloudMastered | Notequal | True |
+    | sourceObjectType | VÝŠI | Uživatel |
+    | cloudMastered | NOTEQUAL | True |
 
-### <a name="step-3-create-the-outbound-sync-rule-required"></a>Krok 3. Vytvoření požadovaného pravidla odchozí synchronizace
-Nové pravidlo synchronizace musí mít stejný **filtr oboru** a **vyšší prioritu** než stávající pravidlo synchronizace. Tím je zajištěno, že nové pravidlo synchronizace se vztahuje na stejnou sadu objektů jako existující pravidlo synchronizace a přepíše existující pravidlo synchronizace pro atribut userCertificate. Vytvoření pravidla synchronizace:
-1. V Editoru pravidel synchronizace klikněte na tlačítko **Přidat nové pravidlo.**
+### <a name="step-3-create-the-outbound-sync-rule-required"></a>Krok 3. Vytvořit požadované pravidlo pro odchozí synchronizaci
+Nové pravidlo synchronizace musí mít stejný **Filtr oboru** a **vyšší prioritu** než stávající pravidlo synchronizace. Tím se zajistí, že se nové pravidlo synchronizace bude vztahovat na stejnou sadu objektů jako stávající pravidlo synchronizace a přepíše stávající pravidlo synchronizace pro atribut userCertificate. Postup vytvoření pravidla synchronizace:
+1. V editoru pravidel synchronizace klikněte na tlačítko **Přidat nové pravidlo** .
 2. Na **kartě Popis**zadejte následující konfiguraci:
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Name (Název) | *Zadejte název* | Například *"Out to AAD – Vlastní přepsání pro userCertificate"* |
-    | Popis | *Uveďte popis* | Například *"Pokud userCertificate atribut má více než 15 hodnot, export null."* |
-    | Připojený systém | *Výběr konektoru Azure AD* |
-    | Typ připojeného systémového objektu | **Uživatele** | |
-    | Typ objektu Metaverse | **Osoba** | |
-    | Typ propojení | **Připojit** | |
-    | Priorita | *Zvolte číslo mezi 1 - 99* | Zvolené číslo nesmí být použito žádným existujícím pravidlem synchronizace a má nižší hodnotu (a tedy vyšší prioritu) než existující pravidlo synchronizace. |
+    | Název | *Zadat název* | Například *"odchozí AAD – vlastní přepsání pro userCertificate"* |
+    | Popis | *Zadejte popis.* | Například *"Pokud má atribut userCertificate více než 15 hodnot, exportujte hodnotu null."* |
+    | Připojený systém | *Vyberte konektor Azure AD.* |
+    | Typ připojeného systémového objektu | **uživatelský** | |
+    | Typ objektu úložiště metaverse | **uživateli** | |
+    | Typ odkazu | **Připojit** | |
+    | Priorita | *Zvolit číslo mezi 1-99* | Zvolené číslo nesmí být použito žádným existujícím pravidlem synchronizace a má nižší hodnotu (a proto vyšší prioritu) než stávající pravidlo synchronizace. |
 
-3. Přejděte na kartu **filtru oborů** a implementujte stejný filtr oboru, který používá stávající pravidlo synchronizace.
-4. Přeskočte kartu **Pravidla spojení.**
-5. Přejděte na kartu **Transformace** a přidejte novou transformaci pomocí následující konfigurace:
+3. Přejít na kartu **Filtr oboru** a implementovat stejný filtr oboru, který používá existující synchronizační pravidlo.
+4. Přeskočit kartu **pravidla spojení** .
+5. Chcete-li přidat novou transformaci pomocí následující konfigurace, otevřete kartu **transformace** :
 
     | Atribut | Hodnota |
     | --- | --- |
     | Typ toku |**Expression** |
-    | Atribut cíle |**userCertificate** |
-    | Atribut zdroje |*Použijte následující výraz*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
+    | Cílový atribut |**userCertificate** |
+    | Zdrojový atribut |*Použijte následující výraz*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     
 6. Kliknutím na tlačítko **Přidat** vytvořte pravidlo synchronizace.
 
 ### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>Krok 4. Ověření nového pravidla synchronizace u existujícího objektu s chybou LargeObject
-Toto je ověřit, že pravidlo synchronizace vytvořené pracuje správně na existující objekt AD s LargeObject chyba před použitím na jiné objekty:
-1. Přejděte na kartu **Operace** ve Správci synchronizačních služeb.
-2. Vyberte nejnovější operaci Exportovat do Azure AD a klikněte na jeden z objektů s chybami LargeObject.
-3.  Na přeskupovací obrazovce Vlastnosti objektu prostoru konektoru klikněte na tlačítko **Náhled.**
-4. Na přeskakovací obrazovce Náhled vyberte **Úplná synchronizace** a klepněte na **Náhled potvrzení**.
-5. Zavřete obrazovku Náhled a obrazovku Vlastnosti prostoru konektoru.
-6. Přejděte na kartu **Konektory** ve Správci synchronizačních služeb.
-7. Klikněte pravým tlačítkem myši na konektor **Azure AD** a vyberte **spustit...**
-8. V automaticky otevíraném kroku Spustit konektor vyberte **Krok exportu** a klepněte na tlačítko **OK**.
-9. Počkejte na export u Azure AD k dokončení a potvrďte, že není žádná další LargeObject chyba na tento konkrétní objekt.
+K tomu je potřeba ověřit, jestli vytvořené pravidlo synchronizace funguje správně u existujícího objektu AD s chybou LargeObject, než ho použijete na jiné objekty:
+1. V Synchronization Service Manager otevřete kartu **operace** .
+2. Vyberte nejnovější operaci export do služby Azure AD a klikněte na jeden z objektů s LargeObject chybami.
+3.  V místní obrazovce vlastnosti objektu prostoru konektoru klikněte na tlačítko **Náhled** .
+4. V místní obrazovce Preview vyberte **Úplná synchronizace** a klikněte na **Potvrdit náhled**.
+5. Zavřete obrazovku Preview a obrazovku vlastnosti objektu prostoru konektoru.
+6. V Synchronization Service Manager otevřete kartu **konektory** .
+7. Klikněte pravým tlačítkem na konektor **Azure AD** a vyberte **Spustit...**
+8. V automaticky otevíraném okně konektoru spustit vyberte krok **Export** a klikněte na **OK**.
+9. Počkejte na dokončení exportu do Azure AD a potvrďte, že u tohoto konkrétního objektu není k dispozici žádná další LargeObject chyba.
 
-### <a name="step-5-apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>Krok 5. Použití nového pravidla synchronizace u zbývajících objektů s chybou LargeObject
-Po přidání pravidla synchronizace je třeba spustit krok úplné synchronizace na konektoru služby AD:
-1. Přejděte na kartu **Konektory** ve Správci synchronizačních služeb.
-2. Klikněte pravým tlačítkem myši na konektor **ad** konektor a vyberte **spustit...**
-3. V automaticky otevíraném poli Spustit konektor vyberte krok **Úplná synchronizace** a klepněte na tlačítko **OK**.
+### <a name="step-5-apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>Krok 5. Použití nového pravidla synchronizace pro zbývající objekty s chybou LargeObject
+Po přidání pravidla synchronizace musíte na konektoru služby AD spustit úplný krok synchronizace:
+1. V Synchronization Service Manager otevřete kartu **konektory** .
+2. Klikněte pravým tlačítkem na konektor **AD** a vyberte **Spustit...**
+3. V automaticky otevíraném okně Spustit konektor vyberte možnost **úplný krok synchronizace** a klikněte na tlačítko **OK**.
 4. Počkejte na dokončení kroku úplné synchronizace.
-5. Pokud máte více než jeden konektor ad, opakujte výše uvedené kroky pro zbývající konektory ad. Obvykle více konektorů jsou vyžadovány, pokud máte více místních adresářů.
+5. Pokud máte více konektorů služby AD, opakujte výše uvedené kroky u zbývajících konektorů služby AD. V případě, že máte více místních adresářů, je obvykle vyžadováno více konektorů.
 
-### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>Krok 6. Ověřte, že nečekají na export do služby Azure AD žádné neočekávané změny.
-1. Přejděte na kartu **Konektory** ve Správci synchronizačních služeb.
-2. Klikněte pravým tlačítkem myši na konektor **Azure AD** a vyberte **možnost Hledat mezeru v konektoru**.
-3. V automaticky otevíraném-
-    1. Nastavte obor na **čekající export**.
-    2. Zaškrtněte všechna 3 zaškrtávací políčka, včetně **přidat**, **upravit** a **odstranit**.
-    3. Kliknutím na tlačítko **Hledat** vrátíte všechny objekty se změnami čekajícími na export do Služby Azure AD.
-    4. Ověřte, zda nedošlo k žádným neočekávaným změnám. Chcete-li zkontrolovat změny pro daný objekt, poklepejte na objekt.
+### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>Krok 6. Ověřte, že neexistují žádné neočekávané změny, které čekají na export do Azure AD.
+1. V Synchronization Service Manager otevřete kartu **konektory** .
+2. Klikněte pravým tlačítkem na konektor **Azure AD** a vyberte **Hledat místo v konektoru**.
+3. V rozbalovacím seznamu prostor vyhledávacího konektoru:
+    1. Nastavte rozsah na **Export čeká na vyřízení**.
+    2. Zaškrtněte všechna 3 zaškrtávací políčka, včetně **Přidat**, **Upravit** a **Odstranit**.
+    3. Klikněte na tlačítko **Hledat** a vraťte všechny objekty se změnami, které čekají na export do Azure AD.
+    4. Ověřte, že nedošlo k neočekávaným změnám. Chcete-li prostudovat změny pro daný objekt, dvakrát klikněte na objekt.
 
-### <a name="step-7-export-the-changes-to-azure-ad"></a>Krok 7. Export změn do Azure AD
-Export ovat změny do Služby Azure AD:
-1. Přejděte na kartu **Konektory** ve Správci synchronizačních služeb.
-2. Klikněte pravým tlačítkem myši na konektor **Azure AD** a vyberte **spustit...**
-4. V automaticky otevíraném kroku Spustit konektor vyberte **Krok exportu** a klepněte na tlačítko **OK**.
-5. Počkejte na dokončení exportu do služby Azure AD a potvrďte, že neexistují žádné další chyby LargeObject.
+### <a name="step-7-export-the-changes-to-azure-ad"></a>Krok 7. Exportujte změny do Azure AD.
+Export změn do Azure AD:
+1. V Synchronization Service Manager otevřete kartu **konektory** .
+2. Klikněte pravým tlačítkem na konektor **Azure AD** a vyberte **Spustit...**
+4. V automaticky otevíraném okně konektoru spustit vyberte krok **Export** a klikněte na **OK**.
+5. Počkejte na dokončení exportu do Azure AD a potvrďte, že nejsou k dispozici žádné další LargeObject chyby.
 
 ### <a name="step-8-re-enable-sync-scheduler"></a>Krok 8. Opětovné povolení plánovače synchronizace
-Teď, když je problém vyřešen, znovu povolte předdefinovaný plánovač synchronizace:
-1. Spusťte relaci prostředí PowerShell.
-2. Znovu povolte naplánovanou synchronizaci spuštěním rutiny:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+Teď, když se problém vyřeší, znovu povolte integrovaný Plánovač synchronizace:
+1. Spusťte relaci PowerShellu.
+2. Znovu povolit plánovanou synchronizaci spuštěním rutiny:`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 > [!Note]
-> Předchozí kroky se vztahují jenom pro novější verze (1.1.xxx.x) služby Azure AD Connect s integrovaným plánovačem. Pokud používáte starší verze (1.0.xxx.x) služby Azure AD Connect, která používá Plánovač úloh systému Windows, nebo používáte vlastní plánovač (není běžné) k aktivaci pravidelné synchronizace, je třeba je odpovídajícím způsobem zakázat.
+> Předchozí kroky platí jenom pro novější verze (1.1. xxx. x) Azure AD Connect s integrovaným plánovačem. Pokud používáte starší verze (1.0. xxx. x) Azure AD Connect, které používají systém Windows Plánovač úloh nebo používáte vlastní Plánovač (Neběžné) pro aktivaci pravidelné synchronizace, je nutné je podle potřeby zakázat.
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

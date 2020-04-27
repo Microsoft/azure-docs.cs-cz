@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 8a287ec5cd33c9f2a96af7ad8162f7c8f54df118
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134166"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160149"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Výhody použití Azure NetApp Files pro automatizaci elektronického návrhu
 
@@ -77,9 +77,9 @@ Kompletní zatížení je kombinace souběžně běžících funkčních a fyzic
 
 Funkční fáze se skládá z počáteční specifikace a logického návrhu. K fyzické fázi dochází, když je logický návrh převeden na fyzický čip. Během fáze odhlašování a odhlášení se dokončily závěrečné kontroly a návrh se doručí do slévárenského výrobního oddělení.  
 
-Mezi funkční fáze patří kombinace sekvenčního a náhodného vstupně-výstupních operací čtení a zápisu. Funkční fáze jsou náročné na metadata, jako je například File stat a Access calls. I když jsou operace s metadaty efektivně bez velikosti, rozsah operací čtení a zápisu mezi méně než 1 a a 16 KB. Většina čtení je mezi 4 a 16 K.  Většina zápisů je 4 KB nebo méně.  Fyzické fáze se skládají z celých sekvenčních operací čtení a zápisu s kombinací velikosti 32 K a 64 K OP.  
+Funkční fáze obsahuje kombinaci sekvenčního a náhodného vstupně-výstupních operací čtení a zápisu. Funkční fáze je náročné na metadata, jako je například File stat a Access calls. I když jsou operace s metadaty efektivně bez velikosti, rozsah operací čtení a zápisu mezi méně než 1 a a 16 KB. Většina čtení je mezi 4 a 16 K.  Většina zápisů je 4 KB nebo méně. Fyzická fáze se zcela skládá ze všech operací průběžného čtení a zápisu s kombinací velikosti 32 K a 64 K OP.  
 
-Většina propustnosti v grafech výše přichází ze sekvenčních fyzických fází úloh. Vstupně-výstupní operace pocházejí z malých fází a funkcí náročných na metadata. Obě fáze probíhají paralelně. 
+Ve výše uvedených grafech je většina propustnosti ze sekvenční fyzické fáze úlohy. Vstup/výstup přichází z malé náhodné a funkční fáze náročné na metadata. Obě fáze probíhají paralelně. 
 
 V závěru můžete párovat výpočetní prostředí Azure s Azure NetApp Files pro návrh EDA a získat tak škálovatelnou šířku pásma. 
 

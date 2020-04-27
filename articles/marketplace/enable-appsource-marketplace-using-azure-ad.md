@@ -1,39 +1,39 @@
 ---
-title: Povolení výpisu Microsoft AppSource a Azure Marketplace pomocí Služby Azure Active Directory | Azure
-description: Povolte typ výpisu pomocí Azure Active Directory na Azure Marketplace a AppSource pro vydavatele aplikací a služeb.
+title: Povolení Microsoft AppSource a Azure Marketplace výpisu pomocí Azure Active Directory | Azure
+description: Povolit typ výpisu pomocí Azure Active Directory v Azure Marketplace a AppSource pro vydavatele aplikací a služeb.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: d2f33fc8b1bdd15b53ad9130b5cc598dd6d5ee1a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81684628"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160609"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Povolení uvedení na AppSource a Marketplace s využitím Azure Active Directory
 
- Azure Active Directory (Azure AD) je cloudová identitová služba, která umožňuje ověřování pomocí účtu Microsoft. Azure AD používá standardní architektury. [Další informace o službě Azure Active Directory](https://azure.microsoft.com/services/active-directory).
+ Azure Active Directory (Azure AD) je cloudová služba identit, která umožňuje ověřování pomocí účet Microsoft. Azure AD používá Oborová standardní rozhraní. [Přečtěte si další informace o Azure Active Directory](https://azure.microsoft.com/services/active-directory).
 
 ## <a name="azure-ad-benefits"></a>Výhody Azure AD
 
-Zákazníci Microsoft AppSource a Azure Marketplace používají k vyhledávání v katalogech výpisů prostředí v produktu. Tyto akce vyžadují, aby se zákazníci k produktu přihlásili. Integrace Azure AD poskytuje následující výhody:
+Zákazníci Microsoft AppSource a Azure Marketplace používají prostředí v rámci produktu k prohledávání katalogů výpisů. Tyto akce vyžadují, aby se zákazníci přihlásili k produktu. Integrace Azure AD přináší následující výhody:
 
 - Rychlejší zapojení a optimalizované prostředí pro zákazníky
 - Jednotné přihlašování (SSO) pro miliony podnikových uživatelů
-- Konzistentní, přihlašovací prostředí napříč aplikacemi publikovanými různými partnery
-- Škálovatelné ověřování napříč platformami pro mobilní a cloudové aplikace
+- Konzistentní prostředí pro přihlašování napříč aplikacemi, které publikovali různí partneři
+- Škálovatelné ověřování více platforem pro mobilní a cloudové aplikace
 
-## <a name="offers-that-require-azure-ad"></a>Nabídky, které vyžadují Azure AD
+## <a name="offers-that-require-azure-ad"></a>Nabídky vyžadující Azure AD
 
-Různé [možnosti výpisu a typy nabídek](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) pro AppSource a Azure Marketplace mají různé požadavky na implementaci Azure AD. Podrobnosti naleznete v následující tabulce:
+Různé [Možnosti výpisu a typy nabídek](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) pro AppSource a Azure Marketplace mají různé požadavky na implementaci Azure AD. Podrobnosti najdete v následující tabulce:
 
-| **Typ nabídky**    | **Je vyžadováno přisychávací služby Azure AD?**  |  |   |  |
+| **Typ nabídky**    | **Vyžaduje se jednotné přihlašování Azure AD?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-|  | Kontaktujte mě | Zkušební verze | Testovací verze | Transact |
+|  | Kontaktujte mě | Zkušební verze | Testovací verze | Provedena |
 | Virtuální počítač | – | Ne | Ne | Ne |
 | Aplikace Azure (šablona řešení)  | – | – | – | – |
 | Spravované aplikace  | – | – | – | Ne |
@@ -41,56 +41,56 @@ Různé [možnosti výpisu a typy nabídek](https://docs.microsoft.com/azure/mar
 | Containers  | – | – | – | Ne |
 | Konzultační služby  | Ne | – | – | – |
 
-Další informace o technických požadavcích SaaS naleznete v [průvodci nabídkou publikování aplikací SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
+Další informace o technických požadavcích na SaaS najdete v tématu [SaaS Applications nabízí průvodce publikováním](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
 ## <a name="azure-ad-integration"></a>Integrace Azure AD
 
-- Informace o tom, jak povolit jednotné přihlašování integrací Azure AD do výpisu, najdete v [tématu Azure Active Directory pro vývojáře]( https://aka.ms/aaddev).
-- Podrobnosti o jednotném přihlašování Azure AD najdete v tématu [Co je přístup k aplikacím a jednotné přihlašování pomocí Služby Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+- Informace o tom, jak povolit jednotné přihlašování integrací služby Azure AD do svého seznamu, najdete v tématu [Azure Active Directory pro vývojáře]( https://docs.microsoft.com/azure/active-directory/develop/).
+- Pokud chcete získat podrobné informace o jednotném přihlašování Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="enable-a-trial-listing"></a>Povolení zkušebního zápisu
+## <a name="enable-a-trial-listing"></a>Povolit výpis zkušební verze
 
-Automatické nastavení zákazníka může zvýšit pravděpodobnost převodu. Když zákazník vybere zkušební zápis a bude přesměrován do zkušebního prostředí, můžete ho nastavit přímo, aniž byste museli vyžadovat další kroky přihlášení.
+Automatické nastavení zákazníků může zvýšit pravděpodobnost převodu. Když zákazník vybere váš výpis vaší zkušební verze a bude přesměrován do vašeho zkušebního prostředí, můžete zákazníka nastavit přímo bez nutnosti dalších kroků pro přihlášení.
 
-Během ověřování Azure AD odešle token do vaší aplikace nebo nabídky. Informace o uživateli poskytnuté tokenem umožňují vytvoření uživatelského účtu ve vaší aplikaci nebo nabídce. Další informace naleznete v [tématu Ukázkové tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Při ověřování Azure AD pošle token vaší aplikaci nebo nabídce. Informace o uživateli poskytované tokenem umožňují vytvořit uživatelský účet v aplikaci nebo nabídce. Další informace najdete v tématu [ukázkové tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
-Když pomocí Azure AD povolíte ověřování jedním kliknutím ve vaší aplikaci nebo zkušebním zápisu, tak:
+Když použijete Azure AD k povolení ověřování jedním kliknutím ve vaší aplikaci nebo v seznamu zkušebních verzí, můžete:
 
-- Zjednodušte zákaznickou zkušenost od Marketplace až po zkušební zápis.
-- Udržujte pocit prostředí v produktu i v případě, že je uživatel přesměrován z webu Marketplace do vaší domény nebo zkušebního prostředí.
-- Snižte pravděpodobnost opuštění při přesměrování uživatelů, protože neexistují žádné další kroky přihlášení.
-- Snižte bariéry nasazení pro velké množství uživatelů Azure AD.
+- Zjednodušte si prostředí pro zákazníky z webu Marketplace až po výpis vaší zkušební verze.
+- Udržujte si dojem prostředí v produktu i v případě, že je uživatel přesměrován z webu Marketplace do vaší domény nebo zkušebního prostředí.
+- Snižte pravděpodobnost zrušení při přesměrování uživatelů, protože nejsou k dispozici žádné další kroky pro přihlášení.
+- Snižte překážky nasazení pro velké populace uživatelů Azure AD.
 
-## <a name="verify-azure-ad-integration"></a>Ověření integrace Azure AD
+## <a name="verify-azure-ad-integration"></a>Ověření integrace služby Azure AD
 
-### <a name="multitenant-solutions"></a>Víceklientská řešení
+### <a name="multitenant-solutions"></a>Víceklientské řešení
 
-Pomocí azure ad pro podporu následujícíakce:
+Pomocí Azure AD můžete podporovat tyto akce:
 
-- Zaregistrujte svou aplikaci v jedné z výlalech Marketplace. Zobrazit [registraci aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) nebo [appsource certifikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified) pro další informace.
-- Povolte funkci podpory multitenancy ve službě Azure AD, abyste získali zkušební prostředí s jedním kliknutím.
+- Zaregistrujte svou aplikaci v některém z prodejní místa na webu Marketplace. Další informace najdete v zobrazení [Registrace aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) nebo [certifikace AppSource](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified) .
+- Povolení funkce podpory víceklientské architektury ve službě Azure AD pro získání zkušebního prostředí jedním kliknutím.
 
-Pokud s používáním federovaného jednotného přihlašování Azure AD tečujete, postupujte takto:
+Pokud s použitím federovaného jednotného přihlašování Azure AD začínáte, proveďte tyto kroky:
 
-1. Zaregistrujte svou aplikaci na Marketplace.
-1. Vývoj přisávacího zabezpečení s Azure AD pomocí [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) nebo [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).
-1. Povolte funkci podpory multitenancy ve službě Azure AD a poskytněte zkušební prostředí s jedním kliknutím.
+1. Zaregistrujte svou aplikaci na webu Marketplace.
+1. K vývoji jednotného přihlašování pomocí Azure AD použijte [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) nebo [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).
+1. Povolení funkce podpory víceklientské architektury ve službě Azure AD za účelem poskytování zkušebního prostředí jedním kliknutím.
 
-### <a name="single-tenant-solutions"></a>Řešení pro jednoho klienta
+### <a name="single-tenant-solutions"></a>Řešení pro jednoho tenanta
 
-Pomocí azure ad pro podporu jedné z následujících akcí:
+Pomocí Azure AD můžete podporovat jednu z následujících akcí:
 
-- Přidejte uživatele typu Host do adresáře pomocí [azure ad b2b](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
-- Ručně nastavte zkušební verze pro zákazníky pomocí možnosti **Publikování kontaktujte mě.**
-- Vyvíjejte testovací jízdu pro zákazníka.
-- Vytvořte ukázkovou aplikaci pro více klientů, která používá služby SSO.
+- Přidejte uživatele typu Host do adresáře pomocí [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- Ručně nastavte zkušební verze pro zákazníky pomocí možnosti publikování v **kontaktu** .
+- Vývoj testovacích jednotek pro zákazníka
+- Vytvořte ukázkovou ukázkovou aplikaci pro více tenantů, která používá jednotné přihlašování.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste tak ještě neučinili, 
+Pokud jste to ještě neudělali, 
 
-- [Přečtěte si](https://azuremarketplace.microsoft.com/sell) informace o tržišti.
+- [Seznamte](https://azuremarketplace.microsoft.com/sell) se s Marketplace.
 
-Chcete-li se zaregistrovat v Partnerském centru, začněte vytvářet novou nabídku nebo pracovat na existující nabídce:
+Pokud se chcete zaregistrovat v partnerském centru, začněte vytvářet novou nabídku nebo pracovat na stávajícím:
 
-- [Chcete-li](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) vytvořit nebo dokončit svou nabídku, přihlaste se do Centra partnerů.
+- [Přihlaste se do partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vytvořte nebo dokončete vaši nabídku.

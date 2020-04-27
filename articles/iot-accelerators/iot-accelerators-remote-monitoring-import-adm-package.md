@@ -1,6 +1,6 @@
 ---
-title: Balíček importu řešení vzdáleného monitorování – Azure | Dokumenty společnosti Microsoft
-description: Tento článek popisuje, jak importovat balíček automatické správy zařízení do akcelerátoru řešení vzdáleného monitorování
+title: Import balíčku řešení vzdáleného monitorování – Azure | Microsoft Docs
+description: Tento článek popisuje, jak importovat automatický balíček pro správu zařízení do akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: philmea
 ms.author: dobett
@@ -9,56 +9,56 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61443328"
 ---
-# <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Import balíčku automatické správy zařízení do akcelerátoru řešení vzdáleného monitorování
+# <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Import automatického balíčku pro správu zařízení do akcelerátoru řešení vzdáleného monitorování
 
-Konfigurace automatické správy zařízení definuje změny konfigurace, které se mají nasadit do skupiny zařízení. Tento článek předpokládá, že vývojář ve vaší organizaci již vytvořil automatickou konfiguraci správy zařízení. Informace o tom, jak vývojář vytvoří konfiguraci, najdete v jednom z následujících článků s postupy služby IoT Hub:
+Automatická konfigurace správy zařízení definuje změny konfigurace, které se mají nasadit do skupiny zařízení. V tomto článku se předpokládá, že vývojář ve vaší organizaci už vytvořil automatickou konfiguraci správy zařízení. Další informace o tom, jak Vývojář vytvoří konfiguraci, najdete v některém z následujících článků s postupy IoT Hub:
 
-- [Konfigurace a monitorování zařízení IoT ve velkém měřítku pomocí portálu Azure](../iot-hub/iot-hub-auto-device-config.md)
-- [Konfigurace a monitorování zařízení IoT ve velkém měřítku pomocí rozhraní příkazového příkazu Azure](../iot-hub/iot-hub-auto-device-config-cli.md)
+- [Nakonfigurujte a monitorujte zařízení IoT ve velkém měřítku pomocí Azure Portal](../iot-hub/iot-hub-auto-device-config.md)
+- [Konfigurace a monitorování škálování zařízení IoT pomocí Azure CLI](../iot-hub/iot-hub-auto-device-config-cli.md)
 
-Vývojář vytvoří a testuje konfiguraci automatické správy zařízení ve vývojovém prostředí. Až budete připraveni, můžete importovat konfiguraci do akcelerátoru řešení vzdáleného monitorování.
+Vývojář vytvoří a testuje automatickou konfiguraci správy zařízení ve vývojovém prostředí. Až budete připraveni, můžete importovat konfiguraci do akcelerátoru řešení vzdáleného monitorování.
 
 ## <a name="export-a-configuration"></a>Export konfigurace
 
-Pomocí portálu Azure exportujte konfiguraci automatické správy zařízení z vývojového prostředí:
+Pomocí Azure Portal exportujte automatickou konfiguraci správy zařízení z vašeho vývojového prostředí:
 
-1. Na webu Azure Portal přejděte do centra IoT, které používáte k vývoji a testování zařízení IoT. Klikněte na **konfiguraci zařízení IoT**:
+1. V Azure Portal přejděte do služby IoT Hub, kterou používáte pro vývoj a testování zařízení IoT. Klikněte na **Konfigurace zařízení IoT**:
 
     [![Konfigurace zařízení IoT](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
 
-1. Klikněte na konfiguraci, kterou chcete použít. Stránka **Podrobnosti konfigurace zařízení** zobrazuje:
+1. Klikněte na konfiguraci, kterou chcete použít. Zobrazí se stránka **Podrobnosti konfigurace zařízení** :
 
-    [![Detail konfigurace zařízení IoT](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
+    [![Podrobnosti konfigurace zařízení IoT](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
 1. Klikněte na **Stáhnout konfigurační soubor**:
 
-    [![Stáhnout konfigurační soubor](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
+    [![Stažení konfiguračního souboru](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
 
-1. Uložte soubor JSON jako místní soubor nazvaný **configuration.json**.
+1. Uložte soubor JSON jako místní soubor s názvem **Configuration. JSON**.
 
-Nyní máte soubor, který obsahuje automatickou konfiguraci správy zařízení. V další části importujete tuto konfiguraci jako balíček do řešení vzdáleného monitorování.
+Nyní máte soubor, který obsahuje automatickou konfiguraci správy zařízení. V další části naimportujete tuto konfiguraci jako balíček do řešení vzdáleného monitorování.
 
-## <a name="import-a-package"></a>Import balíčku
+## <a name="import-a-package"></a>Importovat balíček
 
-Podle následujících kroků importujte do řešení automatickou konfiguraci správy zařízení jako balíček:
+Pomocí následujícího postupu naimportujte automatickou konfiguraci správy zařízení jako balíček do svého řešení:
 
-1. Přejděte na stránku **Balíčky** na ![webovém uživatelském uživatelském mši vzdáleného monitorování: Balíčky](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
+1. Přejděte na stránku **balíčky** ve webovém uživatelském rozhraní vzdáleného monitorování: balíčky ![.](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
-1. Klepněte na **+ Nový balíček**, zvolte **Konfigurace** jako typ balíčku a klepnutím na **tlačítko Procházet** vyberte soubor **configuration.json,** který jste uložili v předchozí části:
+1. Klikněte na **+ nový balíček**, zvolte **Konfigurace** jako typ balíčku a klikněte na **Procházet** a vyberte soubor **Configuration. JSON** , který jste uložili v předchozí části:
 
     ![Vybrat konfiguraci](media/iot-accelerators-remote-monitoring-import-adm-package/uploadpackage.png)
 
-1. Kliknutím na **Nahrát** přidáte balíček do řešení vzdáleného monitorování:
+1. Kliknutím na **nahrát** přidejte balíček do řešení vzdáleného monitorování:
 
     ![Nahraný balíček](media/iot-accelerators-remote-monitoring-import-adm-package/uploadedpackage.png)
 
-Nyní jste jako balíček nahráli automatickou konfiguraci správy zařízení. Na stránce **Nasazení** můžete tento balíček nasadit do připojených zařízení.
+Nyní jste nahráli automatickou konfiguraci správy zařízení jako balíček. Na stránce **nasazení** můžete tento balíček nasadit do připojených zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak vytvořit konfigurační balíček a importovat ho z řešení vzdáleného monitorování, je dalším krokem naučit se [spravovat zařízení připojená ke vzdálenému monitorování hromadně](iot-accelerators-remote-monitoring-bulk-configuration-update.md).
+Teď, když jste se naučili, jak vytvořit konfigurační balíček a importovat ho do nástroje pro vzdálené monitorování, je dalším krokem informace o tom, jak [spravovat zařízení připojená ke vzdálenému monitorování hromadně](iot-accelerators-remote-monitoring-bulk-configuration-update.md).

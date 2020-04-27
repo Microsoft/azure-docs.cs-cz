@@ -1,6 +1,6 @@
 ---
-title: Řešení zabezpečených výstrah LDAP ve službě Azure AD Domain Services | Dokumenty společnosti Microsoft
-description: Zjistěte, jak řešit a řešit běžné výstrahy pomocí zabezpečeného protokolu LDAP pro službu Azure Active Directory Domain Services.
+title: Vyřešit výstrahy zabezpečeného protokolu LDAP v Azure AD Domain Services | Microsoft Docs
+description: Naučte se řešit běžné výstrahy pomocí protokolu Secure LDAP pro Azure Active Directory Domain Services.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,55 +12,55 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
 ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71258052"
 ---
-# <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: Zabezpečení výstrah LDAP ve službě Azure Active Directory Domain Services
+# <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy protokol Secure LDAP v Azure Active Directory Domain Services
 
-Aplikace a služby, které ke komunikaci se službou LdAP (LdAP) používají protokol LDAP (LIGHTWEIGHT Directory Access Services), lze [nakonfigurovat tak, aby používaly zabezpečené protokol LDAP](tutorial-configure-ldaps.md). Aby zabezpečené protokol LDAP fungovaly správně, musí být otevřen příslušný certifikát a požadované síťové porty.
+Aplikace a služby, které používají protokol LDAP (Lightweight Directory Access Protocol) ke komunikaci s Azure Active Directory Domain Services (Azure služba AD DS), je možné [nakonfigurovat tak, aby používaly zabezpečený protokol LDAP](tutorial-configure-ldaps.md). Aby zabezpečený protokol LDAP správně fungoval, musí být otevřený vhodný certifikát a požadované síťové porty.
 
-Tento článek vám pomůže pochopit a vyřešit běžné výstrahy se zabezpečeným přístupem LDAP ve službě Azure AD DS.
+Tento článek vám pomůže pochopit a vyřešit běžné výstrahy pomocí zabezpečeného přístupu LDAP v Azure služba AD DS.
 
-## <a name="aadds101-secure-ldap-network-configuration"></a>AADDS101: Bezpečná konfigurace sítě LDAP
+## <a name="aadds101-secure-ldap-network-configuration"></a>AADDS101: konfigurace sítě protokol Secure LDAP
 
-### <a name="alert-message"></a>Výstražná zpráva
+### <a name="alert-message"></a>Zpráva výstrahy
 
-*Pro spravovanou doménu je povoleno zabezpečené protokol LDAP přes internet. Přístup k portu 636 však není uzamčen pomocí skupiny zabezpečení sítě. To může vystavit uživatelské účty ve spravované doméně k útokům hrubou silou hesla.*
+*Pro spravovanou doménu je povolená protokol Secure LDAP přes Internet. Přístup k portu 636 ale není uzamčený pomocí skupiny zabezpečení sítě. To může vystavit uživatelské účty ve spravované doméně pro zneužití hesla hrubou silou.*
 
 ### <a name="resolution"></a>Řešení
 
-Pokud povolíte zabezpečené protokol LDAP, doporučujeme vytvořit další pravidla, která omezují příchozí přístup ldaps na konkrétní adresy IP. Tato pravidla chrání spravovanou doménu Azure AD DS před útoky hrubou silou. Chcete-li aktualizovat skupinu zabezpečení sítě tak, aby omezila přístup k portu TCP 636 pro zabezpečený protokol LDAP, proveďte následující kroky:
+Pokud povolíte zabezpečený protokol LDAP, doporučujeme vytvořit další pravidla, která omezují přístup příchozích LDAP na konkrétní IP adresy. Tato pravidla chrání spravovanou doménu Azure služba AD DS před útoky hrubou silou. Pokud chcete aktualizovat skupinu zabezpečení sítě tak, aby se omezil přístup k portu TCP 636 pro zabezpečený protokol LDAP, proveďte následující kroky:
 
-1. Na webu Azure Portal vyhledejte a vyberte **skupiny zabezpečení sítě**.
-1. Zvolte skupinu zabezpečení sítě přidruženou ke spravované doméně, *například AADDS-contoso.com-NSG*, a pak vyberte **Příchozí pravidla zabezpečení.**
-1. **+ Přidejte** pravidlo pro port TCP 636. V případě potřeby **vyberte** Upřesnit v okně a vytvořte pravidlo.
-1. V **rozevírací**nabídce Source zvolte *IP adresy.* Zadejte zdrojové adresy IP, které chcete udělit přístup pro zabezpečený provoz LDAP.
-1. Jako **cíl**zvolte *Libovolné* a pak zadejte **rozsahy cílových portů** *636* .
-1. Nastavte **protokol** jako *protokol TCP* a **akci,** která má *být povolena*.
-1. Zadejte prioritu pravidla a zadejte název, například *RestrictLDAPS*.
+1. V Azure Portal vyhledejte a vyberte **skupiny zabezpečení sítě**.
+1. Zvolte skupinu zabezpečení sítě přidruženou k vaší spravované doméně, například *AADDS-contoso.com-NSG*, a pak vyberte **příchozí pravidla zabezpečení** .
+1. **+ Přidejte** pravidlo pro port TCP 636. V případě potřeby vyberte v okně možnost **Upřesnit** a vytvořte pravidlo.
+1. V části **zdroj**vyberte *IP adresy* z rozevírací nabídky. Zadejte zdrojové IP adresy, u kterých chcete udělit přístup pro zabezpečený přenos LDAP.
+1. Vyberte *jako* **cíl**a pak zadejte *636* pro **rozsahy cílových portů**.
+1. Nastavte **protokol** *TCP* a **akci** , která má být *povolena*.
+1. Zadejte prioritu pravidla a potom zadejte název, například *RestrictLDAPS*.
 1. Až budete připraveni, vyberte **Přidat** a vytvořte pravidlo.
 
-Stav spravované domény Azure AD DS se automaticky aktualizuje do dvou hodin a odebere výstrahu.
+Stav spravované domény Azure služba AD DS se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
 
 > [!TIP]
-> Tcp port 636 není jediné pravidlo potřebné pro Azure AD DS běžet hladce. Další informace najdete ve [skupinách zabezpečení sítě Azure AD DS a požadovaných portech](network-considerations.md#network-security-groups-and-required-ports).
+> Nejedná se o jediné pravidlo, které vyžaduje, aby Azure služba AD DS běžely hladce. 636 Další informace najdete v tématu [skupiny zabezpečení sítě Azure služba AD DS a požadované porty](network-considerations.md#network-security-groups-and-required-ports).
 
-## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Platnost zabezpečeného certifikátu LDAP vypršela
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: vyprší platnost certifikátu protokol Secure LDAP
 
-### <a name="alert-message"></a>Výstražná zpráva
+### <a name="alert-message"></a>Zpráva výstrahy
 
-*Platnost zabezpečeného certifikátu LDAP pro spravovanou doménu vyprší [date]].*
+*Platnost certifikátu zabezpečeného protokolu LDAP pro spravovanou doménu vyprší dne [datum]].*
 
 ### <a name="resolution"></a>Řešení
 
-Vytvořte náhradní zabezpečený certifikát LDAP podle pokynů k [vytvoření certifikátu pro zabezpečený protokol LDAP](tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap). Použijte náhradní certifikát pro Azure AD DS a distribuovat certifikát všem klientům, kteří se připojují pomocí zabezpečeného LDAP.
+Pomocí postupu pro [Vytvoření certifikátu protokolu Secure LDAP](tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)vytvořte náhradní certifikát zabezpečeného protokolu LDAP. Použijte náhradní certifikát pro Azure služba AD DS a distribuujte certifikát pro všechny klienty, kteří se připojují pomocí protokolu Secure LDAP.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte stále problémy, [otevřete žádost o podporu Azure][azure-support] pro další pomoc při řešení potíží.
+Pokud stále máte problémy, [otevřete žádost o podporu Azure][azure-support] , kde najdete další pomoc při řešení potíží.
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

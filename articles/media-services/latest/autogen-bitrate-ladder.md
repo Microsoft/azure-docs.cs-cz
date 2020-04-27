@@ -1,6 +1,6 @@
 ---
-title: Kódování videí pomocí standardního kodéru ve službách Media Services – Azure | Dokumenty společnosti Microsoft
-description: Toto téma ukazuje, jak pomocí standardního kodéru ve službě Media Services kódovat vstupní video pomocí automaticky generovaného žebříku přenosové rychlosti na základě vstupního rozlišení a přenosového toku.
+title: Kódování videí pomocí standardu Encoder v Media Services – Azure | Microsoft Docs
+description: V tomto tématu se dozvíte, jak používat standardní kodér v Media Services ke kódování vstupního videa s automaticky generovaným žebříkem rychlosti na základě vstupních rozlišení a přenosové rychlosti.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,32 +15,32 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60733313"
 ---
-#  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kódování pomocí automaticky generovaného žebříku s přenosovou rychlostí
+#  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kódování pomocí automaticky generovaného žebříku přenosové rychlosti
 
 ## <a name="overview"></a>Přehled
 
-Tento článek vysvětluje, jak pomocí standardního kodéru ve službě Media Services kódovat vstupní video do automaticky generovaného žebříku přenosové rychlosti (dvojice bitrate-rozlišení) na základě vstupního rozlišení a přenosového toku. Toto nastavení vestavěného kodéru nebo přednastavení nikdy nepřekročí vstupní rozlišení a přenosový tok. Například pokud je vstup 720p při 3 Mbps, výstup zůstane v nejlepším případě 720p a začne rychlostí nižší než 3 Mbps.
+V tomto článku se dozvíte, jak používat standardní kodér v Media Services ke kódování vstupního videa do automaticky generovaného panelu přenosové rychlosti (páry rozlišení přenosů) na základě rozlišení vstupu a přenosové rychlosti. Toto vestavěné nastavení kodéru nebo předvolba nebude nikdy přesáhnout vstupní rozlišení a přenosovou rychlost. Pokud je například vstup ve formátu 720p ve 3 MB/s, výstup bude ve formátu 720p nejlepší a bude začínat tarify nižšími než 3 MB/s.
 
 ### <a name="encoding-for-streaming"></a>Kódování pro streamování
 
-Při použití **AdaptiveStreaming** přednastavení v **transformaci**, získáte výstup, který je vhodný pro doručení prostřednictvím streaming protokoly jako HLS a DASH. Při použití tohoto přednastavení služba inteligentně určuje, kolik vrstev videa má generovat a při jakém přenosovém toku a rozlišení. Výstupní obsah obsahuje soubory MP4, kde není prokládáno zvuk kódovaný AAC a video kódované H.264.
+Při použití předdefinovaného **AdaptiveStreaming** v **transformaci**získáte výstup, který je vhodný pro doručování přes protokoly streamování, jako je HLS nebo pomlčka. Při použití této předvolby služba inteligentně určuje, kolik vrstev videa se má vygenerovat a jaký přenosová rychlost a řešení. Výstupní obsah obsahuje soubory MP4, kde video s kódováním ve formátu AAC a H. 264 není prokládané.
 
-Příklad použití tohoto přednastavení najdete v [tématu Streamování souboru](stream-files-dotnet-quickstart.md).
+Příklad toho, jak se tato předvolba používá, najdete v tématu [streamování souboru](stream-files-dotnet-quickstart.md).
 
 ## <a name="output"></a>Výstup
 
-Tato část ukazuje tři příklady výstupních vrstev videa vytvořených kodérem Mediálních služeb v důsledku kódování s **přednastavením AdaptiveStreaming.** Ve všech případech, výstup obsahuje audio-pouze MP4 soubor se stereofonním zvukem kódované na 128 kbps.
+V této části jsou uvedeny tři příklady výstupních vrstev videí vytvořených nástrojem Media Services Encoder v důsledku kódování s přednastavenou **AdaptiveStreaming** . Ve všech případech výstup obsahuje pouze zvukový soubor MP4 s stereo zvuk kódovaný při 128 kb/s.
 
 ### <a name="example-1"></a>Příklad 1
-Zdroj s výškou "1080" a snímkovou frekvencí "29.970" vytváří 6 vrstev videa:
+Zdroj s výškou "1080" a snímkem "29,970" vytváří 6 vrstev videa:
 
-|Vrstva|Vlastnost Height|impulzu|Bitová rychlost (kbps)|
+|Vrstva|Vlastnost Height|impulzu|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -50,9 +50,9 @@ Zdroj s výškou "1080" a snímkovou frekvencí "29.970" vytváří 6 vrstev vid
 |6|180|320|380|
 
 ### <a name="example-2"></a>Příklad 2
-Zdroj s výškou "720" a snímkovou frekvencí "23.970" vytváří 5 vrstev videa:
+Zdroj s výškou "720" a snímkem "23,970" vytváří 5 vrstev videa:
 
-|Vrstva|Vlastnost Height|impulzu|Bitová rychlost (kbps)|
+|Vrstva|Vlastnost Height|impulzu|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -61,9 +61,9 @@ Zdroj s výškou "720" a snímkovou frekvencí "23.970" vytváří 5 vrstev vide
 |5|180|320|320|
 
 ### <a name="example-3"></a>Příklad 3
-Zdroj s výškou "360" a snímkovou frekvencí "29.970" vytváří 3 vrstvy videa:
+Zdroj s výškou "360" a snímkem "29,970" vytvoří 3 vrstvy videa:
 
-|Vrstva|Vlastnost Height|impulzu|Bitová rychlost (kbps)|
+|Vrstva|Vlastnost Height|impulzu|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

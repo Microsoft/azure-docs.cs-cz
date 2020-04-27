@@ -1,6 +1,6 @@
 ---
-title: Čtení dat ze zachycených center Událostí Azure z aplikace Pythonu (nejnovější)
-description: Tento článek ukazuje, jak napsat kód Pythonu pro zachycení dat, která se odešle do centra událostí a číst data zachycené události z účtu úložiště Azure.
+title: Číst data z Azure Event Hubs zachycená z aplikace v Pythonu (nejnovější)
+description: V tomto článku se dozvíte, jak napsat kód v Pythonu pro zachycení dat, která se odesílají do centra událostí, a přečtěte si data zachycených událostí z účtu služby Azure Storage.
 services: event-hubs
 documentationcenter: ''
 author: spelluru
@@ -12,51 +12,51 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 191a2246afdc60953d8c353f9ccdc2339130f910
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77187241"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159331"
 ---
-# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Zachyťte data event hubů v Azure Storage a přečtěte si je pomocí Pythonu (azure-eventhub verze 5)
+# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Zaznamenání dat Event Hubs v Azure Storage a jejich čtení pomocí Pythonu (Azure-eventhub verze 5)
 
-Centrum událostí můžete nakonfigurovat tak, aby se data odeslaná do centra událostí zachytila v účtu úložiště Azure nebo v Azure Data Lake Storage Storage Gen 1 nebo Gen 2. Tento článek ukazuje, jak napsat kód Pythonu k odeslání událostí do centra událostí a číst zachycená data z **úložiště objektů Blob Azure**. Další informace o této funkci naleznete v [tématu Přehled funkcí zachycení centra událostí](event-hubs-capture-overview.md).
+Můžete nakonfigurovat centrum událostí tak, aby data odesílaná do centra událostí byla zachycena v účtu služby Azure Storage nebo Azure Data Lake Storage Gen 1 nebo Gen 2. V tomto článku se dozvíte, jak psát kód v Pythonu pro odesílání událostí do centra událostí a čtení zachycených dat z **Azure Blob Storage**. Další informace o této funkci najdete v tématu [Přehled funkcí Event Hubs Capture](event-hubs-capture-overview.md).
 
-Tento rychlý start používá [Azure Python SDK](https://azure.microsoft.com/develop/python/) k předvedení funkce zachycení. Aplikace *sender.py* odesílá simulovanou telemetrii prostředí do centra událostí ve formátu JSON. Centrum událostí je nakonfigurované tak, aby používalo funkci Zachycení k zápisu těchto dat do úložiště objektů Blob v dávkách. Aplikace *capturereader.py* tyto objekty BLOB přečte a vytvoří soubor pro každý zařízení. Aplikace pak zapíše data do souborů CSV.
+V tomto rychlém startu se k předvedení funkce Capture používá [sada Azure Python SDK](https://azure.microsoft.com/develop/python/) . Aplikace *sender.py* odesílá simulovanou telemetrii v oblasti životního prostředí do Center událostí ve formátu JSON. Centrum událostí je nakonfigurované tak, aby pomocí funkce Capture napsalo tato data do služby Blob Storage v dávkách. Aplikace *capturereader.py* tyto objekty blob přečte a vytvoří pro každé zařízení soubor připojení. Aplikace pak data zapíše do souborů CSV.
 
 > [!IMPORTANT]
-> Tento rychlý start používá verzi 5 Azure Event Hubs Python SDK. Rychlý start, který používá verzi 1 sady Python SDK, naleznete v [tomto článku](event-hubs-capture-python.md). 
+> V tomto rychlém startu se používá verze 5 sady Azure Event Hubs Python SDK. Informace o rychlém startu, který používá verzi 1 sady Python SDK, najdete v [tomto článku](event-hubs-capture-python.md). 
 
 V tomto rychlém startu: 
 
 > [!div class="checklist"]
-> * Vytvořte účet úložiště objektů blob Azure a kontejner na webu Azure Portal.
-> * Vytvořte obor názvů Event Hubs pomocí portálu Azure.
-> * Vytvořte centrum událostí s povolenou funkcí Zachycení a připojte ho k účtu úložiště.
-> * Odesílejte data do centra událostí pomocí skriptu Pythonu.
-> * Čtení a zpracování souborů ze služby Event Hubs Capture pomocí jiného skriptu Pythonu.
+> * Vytvořte účet úložiště objektů BLOB v Azure a kontejner ve Azure Portal.
+> * Vytvořte Event Hubs obor názvů pomocí Azure Portal.
+> * Vytvořte centrum událostí s povolenou funkcí Capture a připojte ho k účtu úložiště.
+> * Odešlete data do centra událostí pomocí skriptu Pythonu.
+> * Čtení a zpracování souborů z Event Hubs zachytávání pomocí jiného skriptu Pythonu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Python 2.7 a 3.5 nebo novější s nainstalovaným a aktualizovaným PIPEm.  
-- Předplatné Azure. Pokud ho nemáte, [vytvořte si účet zdarma,](https://azure.microsoft.com/free/) než začnete.  
-- Aktivní obor názvů Event Hubs a centrum událostí.
-[Vytvořte obor názvů Event Hubs a centrum událostí v oboru názvů](event-hubs-create.md). Zaznamenejte název oboru názvů Centra událostí, název centra událostí a primární přístupový klíč pro obor názvů. Pokud chcete získat přístupový klíč, [přečtěte si informace o získání připojovacího řetězce Centra událostí](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Výchozí název klíče je *RootManageSharedAccessKey*. Pro tento rychlý start potřebujete pouze primární klíč. Nepotřebujete připojovací řetězec.  
-- Účet úložiště Azure, kontejner objektů blob v účtu úložiště a připojovací řetězec k účtu úložiště. Pokud tyto položky nemáte, postupujte takto:  
-    1. [Vytvoření účtu úložiště Azure](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
+- Python 2,7 a 3,5 nebo novější s nainstalovaným a aktualizovaným PIP.  
+- Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.  
+- Aktivní Event Hubs obor názvů a centrum událostí.
+[Vytvořte obor názvů Event Hubs a centrum událostí v oboru názvů](event-hubs-create.md). Poznamenejte si název oboru názvů Event Hubs, název centra událostí a primární přístupový klíč pro obor názvů. Přístupovou klávesu získáte v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Výchozí název klíče je *RootManageSharedAccessKey*. V tomto rychlém startu potřebujete jenom primární klíč. Nepotřebujete připojovací řetězec.  
+- Účet úložiště Azure, kontejner objektů BLOB v účtu úložiště a připojovací řetězec k účtu úložiště. Pokud tyto položky nemáte, udělejte toto:  
+    1. [Vytvoření účtu služby Azure Storage](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
     1. [Vytvoření kontejneru objektů blob v účtu úložiště](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
-    1. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string)
+    1. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md)
 
-    Nezapomeňte zaznamenat připojovací řetězec a název kontejneru pro pozdější použití v tomto rychlém startu.  
-- Povolte funkci Zachycení pro centrum událostí. Chcete-li tak učinit, postupujte podle pokynů v [povolit zachycení centra událostí pomocí portálu Azure](event-hubs-capture-enable-through-portal.md). Vyberte účet úložiště a kontejner objektů blob, který jste vytvořili v předchozím kroku. Funkci můžete také povolit při vytváření centra událostí.  
+    Nezapomeňte si poznamenejte připojovací řetězec a název kontejneru pro pozdější použití v tomto rychlém startu.  
+- Povolte funkci Capture pro centrum událostí. Pokud to chcete provést, postupujte podle pokynů v tématu [povolení Event Hubsho zachycení pomocí Azure Portal](event-hubs-capture-enable-through-portal.md). Vyberte účet úložiště a kontejner objektů blob, který jste vytvořili v předchozím kroku. Tuto funkci můžete povolit i při vytváření centra událostí.  
 
-## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>Vytvoření skriptu Pythonu pro odesílání událostí do centra událostí
-V této části vytvoříte skript Pythonu, který odešle 200 událostí (10 zařízení * 20 událostí) do centra událostí. Tyto události jsou ukázkové environmentální čtení, které je odesláno ve formátu JSON. 
+## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>Vytvoření skriptu v jazyce Python pro odesílání událostí do centra událostí
+V této části vytvoříte skript v jazyce Python, který odesílá 200 událostí (10 zařízení × 20 událostí) do centra událostí. Tyto události představují ukázkový přečtení z prostředí, které je odesláno ve formátu JSON. 
 
-1. Otevřete svůj oblíbený editor Pythonu, například [Visual Studio Code][Visual Studio Code].
+1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code][Visual Studio Code].
 2. Vytvořte skript s názvem *sender.py*. 
-3. Do *sender.py*vložte následující kód . 
+3. Vložte následující kód do *sender.py*. 
    
     ```python
     import time
@@ -89,18 +89,18 @@ V této části vytvoříte skript Pythonu, který odešle 200 událostí (10 za
     producer.close()
     ```
 4. Ve skriptech nahraďte následující hodnoty:  
-    * Nahraďte `EVENT HUBS NAMESPACE CONNECTION STRING` připojovacím řetězcem pro obor názvů Event Hubs.  
-    * Nahraďte `EVENT HUB NAME` název centra událostí.  
-5. Spusťte skript a odešlete události do centra událostí.  
-6. Na webu Azure Portal můžete ověřit, že centrum událostí přijalo zprávy. Přepněte do zobrazení **Zprávy** v části **Metriky.** Aktualizujte stránku a aktualizujte graf. Může trvat několik sekund, než se stránka zobrazí, než byly přijaty zprávy. 
+    * Nahraďte `EVENT HUBS NAMESPACE CONNECTION STRING` připojovacím řetězcem pro váš Event Hubs obor názvů.  
+    * Nahraďte `EVENT HUB NAME` názvem vašeho centra událostí.  
+5. Spusťte skript pro odesílání událostí do centra událostí.  
+6. V Azure Portal můžete ověřit, že centrum událostí přijalo zprávy. Přepněte do zobrazení **zprávy** v části **metriky** . Aktualizujte stránku, aby se graf aktualizoval. Stránka může trvat několik sekund, než se zobrazí zpráva, že byly přijaty zprávy. 
 
-    [![Ověřte, zda centrum událostí přijalo zprávy](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
+    [![Ověřte, že centrum událostí přijalo zprávy.](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
 
-## <a name="create-a-python-script-to-read-your-capture-files"></a>Vytvoření skriptu Pythonu pro čtení souborů pro digitalizaci
-V tomto příkladu se zachycená data ukládají v úložišti objektů blob Azure. Skript v této části přečte zachycené datové soubory z vašeho účtu úložiště Azure a generuje soubory CSV, které můžete snadno otevřít a zobrazit. Zobrazí se 10 souborů v aktuálním pracovním adresáři aplikace. Tyto soubory budou obsahovat environmentální údaje pro 10 zařízení. 
+## <a name="create-a-python-script-to-read-your-capture-files"></a>Vytvoření skriptu v jazyce Python pro čtení digitalizačních souborů
+V tomto příkladu jsou zachycená data uložená v úložišti objektů BLOB v Azure. Skript v tomto oddílu přečte soubory zachycených dat z vašeho účtu úložiště Azure a generuje soubory CSV, abyste je mohli snadno otevřít a zobrazit. V aktuálním pracovním adresáři aplikace se zobrazí 10 souborů. Tyto soubory budou obsahovat čtení z hlediska prostředí pro 10 zařízení. 
 
-1. V editoru Pythonu vytvořte skript s názvem *capturereader.py*. Tento skript přečte zachycené soubory a vytvoří soubor pro každé zařízení pro zápis dat pouze pro toto zařízení.
-2. Do *capturereader.py*vložte následující kód . 
+1. V editoru Pythonu Vytvořte skript s názvem *capturereader.py*. Tento skript přečte zachycené soubory a vytvoří soubor pro každé zařízení, které zapisuje data pouze pro toto zařízení.
+2. Vložte následující kód do *capturereader.py*. 
    
     ```python
     import os
@@ -157,33 +157,33 @@ V tomto příkladu se zachycená data ukládají v úložišti objektů blob Azu
     
     startProcessing()    
     ```
-3. Nahraďte `AZURE STORAGE CONNECTION STRING` připojovacím řetězcem pro váš účet úložiště Azure. Název kontejneru, který jste vytvořili v tomto rychlém startu, je *zachycení*. Pokud jste pro kontejner použili jiný název, *nahraďte sběr* názvů za název kontejneru v účtu úložiště. 
+3. Nahraďte `AZURE STORAGE CONNECTION STRING` připojovacím řetězcem pro váš účet úložiště Azure. Název kontejneru, který jste vytvořili v rámci tohoto rychlého startu, je *Capture*. Pokud jste pro kontejner použili jiný název, nahraďte *Capture* názvem kontejneru v účtu úložiště. 
 
 ## <a name="run-the-scripts"></a>Spuštění skriptů
-1. Otevřete příkazový řádek, který má v cestě Python, a pak spusťte tyto příkazy k instalaci balíčků požadavků Pythonu:
+1. Otevřete příkazový řádek, který má v cestě Python, a potom spuštěním těchto příkazů nainstalujte balíčky požadovaných součástí Pythonu:
    
    ```
    pip install azure-storage-blob
    pip install azure-eventhub
    pip install avro-python3
    ```
-2. Změňte adresář na adresář, do kterého jste uložili *sender.py* a *capturereader.py*, a spusťte tento příkaz:
+2. Přejděte do adresáře, kam jste uložili *sender.py* a *capturereader.py*, a spusťte tento příkaz:
    
    ```
    python sender.py
    ```
    
-   Tento příkaz spustí nový proces Pythonu pro spuštění odesílatele.
-3. Počkejte několik minut, než se sběr spustí, a pak v původním příkazovém okně zadejte následující příkaz:
+   Tento příkaz spustí nový proces Pythonu, který spustí odesílatele.
+3. Počkejte několik minut, než se záznam spustí, a potom v původním příkazovém okně zadejte následující příkaz:
    
    ```
    python capturereader.py
    ```
 
-   Tento procesor pro sběr dat používá místní adresář ke stažení všech objektů BLOB z účtu úložiště a kontejneru. Zpracovává všechny, které nejsou prázdné, a zapíše výsledky jako soubory CSV do místního adresáře.
+   Tento procesor zachycení používá místní adresář ke stažení všech objektů BLOB z účtu úložiště a kontejneru. Zpracovává všechny, které nejsou prázdné, a zapisuje výsledky jako soubory CSV do místního adresáře.
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se [na ukázky Pythonu na GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples). 
+Podívejte se [na ukázky v Pythonu na GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples). 
 
 
 [Azure portal]: https://portal.azure.com/

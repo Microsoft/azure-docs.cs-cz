@@ -1,6 +1,6 @@
 ---
-title: Při kódování pomocí Azure Media Services můžete video podříznout
-description: Toto téma popisuje, jak při kódování pomocí služby Azure Media Services pomocí sady .NET SDK podklipovat video.
+title: Rozříznout video při kódování pomocí Azure Media Services
+description: Toto téma popisuje, jak rozříznout video při kódování s Azure Media Services pomocí sady .NET SDK
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
 ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67305145"
 ---
-# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Subclip video při kódování s Media Services - .NET
+# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Rozříznout video při kódování pomocí Media Services-.NET
 
-Video můžete oříznout nebo podklipu při kódování pomocí [úlohy](https://docs.microsoft.com/rest/api/media/jobs). Tato funkce funguje s libovolnou [transformací,](https://docs.microsoft.com/rest/api/media/transforms) která je vytvořena pomocí [přednastavení BuiltInStandardEncoder Preset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) nebo [Přednastavení StandardEncoder.](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)
+Video můžete při kódování pomocí [úlohy](https://docs.microsoft.com/rest/api/media/jobs)oříznout nebo vystřihnout. Tato funkce funguje s libovolnou [transformací](https://docs.microsoft.com/rest/api/media/transforms) , která je sestavená buď pomocí přednastavení [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) , nebo z [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) předvoleb.
 
-Následující příklad Jazyka C# vytvoří úlohu, která ořízne video ve datovém zdroji při odesílání úlohy kódování. 
+Následující příklad jazyka C# vytvoří úlohu, která ořízne video v Assetu, když odešle úlohu kódování. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li provést kroky popsané v tomto tématu, musíte:
+K dokončení kroků popsaných v tomto tématu je třeba provést následující kroky:
 
 - [Vytvoření účtu Azure Media Services](create-account-cli-how-to.md)
-- Vytvořte transformace a vstupní a výstupní prostředky. Můžete vidět, jak vytvořit transformace a vstupní a výstupní prostředky v [upload, kódování a streamování videa pomocí .NET](stream-files-tutorial-with-api.md) kurzu.
-- Projděte si téma [konceptu kódování.](encoding-concept.md)
+- Vytvořte transformaci a vstupní a výstupní prostředky. Informace o tom, jak vytvořit transformace a vstupní a výstupní prostředky, najdete v kurzech k [nahrávání, kódování a streamování pomocí .NET](stream-files-tutorial-with-api.md) .
+- Přečtěte si téma o [pojmu kódování](encoding-concept.md) .
 
 ## <a name="example"></a>Příklad
 
@@ -91,4 +91,4 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 
 ## <a name="next-steps"></a>Další kroky
 
-[Kódování pomocí vlastní transformace](customize-encoder-presets-how-to.md) 
+[Kódování s vlastní transformací](customize-encoder-presets-how-to.md) 

@@ -1,5 +1,5 @@
 ---
-title: Odeslání událostí úložiště objektů blob Azure do koncového bodu webu – Powershell | Dokumenty společnosti Microsoft
+title: Odeslání událostí služby Azure Blob Storage do webového koncového bodu – PowerShell | Microsoft Docs
 description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage.
 author: normesta
 ms.author: normesta
@@ -9,15 +9,15 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68847159"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Úvodní příručka: Směrování událostí úložiště do koncového bodu webu pomocí PowerShellu
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Rychlý Start: směrování událostí úložiště do webového koncového bodu pomocí PowerShellu
 
-Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí Azure PowerShell přihlásit k odběru událostí úložiště objektů blob, aktivační událost a zobrazit výsledek. 
+Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku použijete Azure PowerShell k přihlášení k odběru událostí služby Blob Storage, aktivaci události a zobrazení výsledku. 
 
 Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
@@ -29,17 +29,17 @@ Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tento článek vyžaduje, abyste spouštěli nejnovější verzi Azure PowerShellu. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
+Tento článek vyžaduje, abyste spustili nejnovější verzi Azure PowerShell. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k `Connect-AzAccount` předplatnému Azure pomocí příkazu a postupujte podle pokynů na obrazovce k ověření.
+Přihlaste se k předplatnému `Connect-AzAccount` Azure pomocí příkazu a podle pokynů na obrazovce proveďte ověření.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Tento příklad používá **westus2** a ukládá výběr v proměnné pro použití v celém.
+Tento příklad používá **westus2** a ukládá výběr do proměnné pro použití v celém.
 
 ```powershell
 $location = "westus2"
@@ -49,7 +49,7 @@ $location = "westus2"
 
 Témata služby Event Grid jsou prostředky Azure a musí být umístěné ve skupině prostředků Azure. Skupina prostředků je logická kolekce, ve které se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup.](/powershell/module/az.resources/new-azresourcegroup)
+Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) .
 
 Následující příklad vytvoří skupinu prostředků **gridResourceGroup** v umístění **westus2**.  
 
@@ -60,12 +60,12 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Události služby Blob Storage jsou dostupné v účtech úložiště pro obecné účely verze 2 a v účtech Blob Storage. Účty úložiště pro **obecné účely verze 2** podporují všechny funkce ve všech službách úložiště, včetně objektů blob, souborů, front a tabulek. **Účet úložiště objektů blob** je účet specializovaného úložiště pro ukládání nestrukturovaných dat jako objektů objektů (objektů) ve službě Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
+Události služby Blob Storage jsou dostupné v účtech úložiště pro obecné účely verze 2 a v účtech Blob Storage. Účty úložiště pro **obecné účely verze 2** podporují všechny funkce ve všech službách úložiště, včetně objektů blob, souborů, front a tabulek. **Účet Blob Storage** je specializovaný účet úložiště pro ukládání nestrukturovaných dat jako objektů BLOB (objekty) v Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
-Vytvořte účet úložiště objektů blob s lrs replikace pomocí [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)a pak načtěte kontext účtu úložiště, který definuje účet úložiště, který má být použit. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext. Tento příklad vytvoří účet úložiště s názvem **gridstorage** s místně redundantní úložiště (LRS). 
+Vytvořte účet Blob Storage s replikací LRS pomocí [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)a pak načtěte kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext. Tento příklad vytvoří účet úložiště s názvem **gridstorage** s místně redundantním úložištěm (LRS). 
 
 > [!NOTE]
-> Názvy účtů úložiště jsou v globálním oboru názvů, takže je třeba připojit některé náhodné znaky k názvu uvedenému v tomto skriptu.
+> Názvy účtů úložiště jsou v globálním oboru názvů, takže musíte do názvu uvedeného v tomto skriptu připojit některé náhodné znaky.
 
 ```powershell
 $storageName = "gridstorage"
@@ -103,7 +103,7 @@ Měli byste vidět web aktuálně bez zobrazených zpráv.
 
 ## <a name="subscribe-to-your-storage-account"></a>Přihlášení k odběru účtu úložiště
 
-Přihlásíte se k odběru tématu, abyste sdělili aplikaci Event Grid, které události chcete sledovat. Následující příklad se přihlásí k odběru účtu úložiště, který jste vytvořili, a předá adresu URL z webové aplikace jako koncový bod pro oznámení událostí. Koncový bod pro webovou aplikaci musí obsahovat příponu `/api/updates/`.
+Přihlásíte se k odběru tématu, které informuje Event Grid události, které chcete sledovat. V následujícím příkladu se přihlásí k odběru účtu úložiště, který jste vytvořili, a předá adresu URL z vaší webové aplikace jako koncový bod pro oznamování událostí. Koncový bod pro webovou aplikaci musí obsahovat příponu `/api/updates/`.
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
@@ -121,7 +121,7 @@ Podívejte se na webovou aplikaci znovu a všimněte si, že do ní byla odeslá
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Aktivace události ze služby Blob Storage
 
-Nyní aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Nejprve vytvoříme kontejner a objekt. Potom nahrajeme objekt do kontejneru.
+Nyní aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Nejprve vytvoříme kontejner a objekt. Nyní nahrajte objekt do kontejneru.
 
 ```powershell
 $containerName = "gridcontainer"
@@ -162,7 +162,7 @@ Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncov
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud máte v plánu pokračovat v práci s tímto účtem úložiště a odběr událostí, nečistěte prostředky vytvořené v tomto článku. Pokud neplánujete pokračovat, odstraňte prostředky vytvořené v tomto článku pomocí následujícího příkazu.
+Pokud máte v úmyslu pokračovat v práci s tímto účtem úložiště a odběrem událostí, neprovádějte čištění prostředků vytvořených v tomto článku. Pokud pokračovat nechcete, pomocí následujícího příkazu odstraňte prostředky, které jste vytvořili v tomto článku.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup

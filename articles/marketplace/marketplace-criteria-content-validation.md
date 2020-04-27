@@ -1,98 +1,111 @@
 ---
-title: Ověření obsahu kritérií tržiště | Azure Marketplace
-description: Tento článek popisuje, jak se stát vydavatelem na trhu.
+title: Nabídky a kritéria publikování služeb Marketplace | Azure Marketplace
+description: Tento článek popisuje, jak se stát vydavatelem Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 1c98fd9b9146a0c6784d482ed61b32df1ef23d03
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: ca40e8e00cb72d6ecc3246ad7aef3b3bac4fbedd
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082386"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160473"
 ---
-# <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro zápis na Azure Marketplace
+# <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro výpis Azure Marketplace
 
-Tento dokument obsahuje pokyny pro požadavky a kontrolní seznam pro recenzenty pro nové nabídky a služby uvedené na Azure Marketplace.
+Tento dokument obsahuje požadavky a pokyny pro nové nabídky a služby, které jsou uvedeny v Azure Marketplace.
 
-Všechny nabídky musí splňovat všechny níže uvedené [požadavky na výpis.](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) Další požadavky a kontrolní seznamy jsou k dispozici pro konkrétní typy výpisů, včetně: nabídek s [připojenými zkušebními verzemi](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [aplikací SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-app-requirements), [kontejnerů](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)a [konzultačních nabídek](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
+Všechny nabídky musí splňovat požadavky uvedené v části "požadavky na výpis pro všechny nabídky".
 
+Pro konkrétní typy seznamů jsou k dispozici další požadavky a kontrolní seznamy, včetně: 
+* [Požadavky na nabídku zkušební verze](#trial-offer-requirements)
+* [Požadavky aplikace SaaS](#saas-app-requirements)
+* [Požadavky na nabídky kontejneru](#container-offer-requirements)
+* [Požadavky na konzultační nabídky](#consulting-offer-requirements)
 
-## <a name="all-listing-requirements"></a>Všechny požadavky na zařazení na seznam
+## <a name="listing-requirements-for-all-offers"></a>Výpis požadavků pro všechny nabídky
 
-|  | Výpis prvku | Základní požadavky | Optimální požadavky |
+|  | Výpis elementu | Základní požadavek | Optimální požadavek |
 |:--- |:--- |:--- |:--- |
-| 1 | Cíl zájemce | Nakonfigurován cíl zájemce| Katalog OCP obsahuje informace o cílovém CRM také na kartě partnerského řešení. | 
-| 2 | Název nabídky | Popis nabídky řešení. Odpovídá online propagaci řešení na webových stránkách partnera | Obsahuje klíčová hledaná slova. |
-| 3 | Logo | Logo se zobrazuje správně | Logo se zobrazuje správně a obsahuje [obrázek hrdiny, který je velkoformátovou bitovou kopii na webu Azure Portal |
-| 4 |  Popis nabídky | <br>* 2-3 odstavce <br>* Nabídka řešení je snadno srozumitelná na první pohled <br>* Popis nabídky je bez pravopisných a gramatických chyb <br>* Popis nabídky je komplexní a zachycuje: cílové publikum, typ uživatele, proč je to cenné (hodnota vrtule) <br>* Popis nabídky je v odstavci narativní formulář s krátkými větami, které je snadné pochopit | <br>* Cílový průmysl je nastíněn (pokud je to relevantní) <br>* Dobrý styl formátování s každým odstavcem záhlaví s jednou větou nebo frází shrnující obsah, který následuje a včetně odrážek (pokud je to vhodné) zdůraznit klíčové výhody. Cílem je, aby čtenář pochopil nabídku na první pohled ve snadno zobrazitelným formátu a nemusel číst odstavce. <br>* Mezi jednotlivými odstavci je mezera a čte se jako brožura pro automobily. To znamená, že ne technické vlastnosti nebo kód žargon, ale popis nabídky v jednoduchých termínech a je komplexní. | 
-| 5 | Kategorie & Průmysl | <br>* Kategorie odpovídají řešení nabízejícím možnosti <br>* Nerozšiřujte se na kategorie, které řešení nevyhovuje <br>* Optimální průmysl, nebo všechna průmyslová odvětví vybrána (ne-li optimální odvětví) | <br>* Max. 3 kategorie <br>* Max. 3 průmyslová odvětví |
-| 6 | Obrázky | <br>* Není vyžadován žádný obrázek, ale pokud je k dispozici, musí se zobrazit a obraz s vysokým rozlišením. <br>* Požadavky na obrázky jsou uvedeny v Partnerském centru a také zde <br>* Text obsažený na snímku je čitelný s jasným obrazem | Nabídka řešení je snadno srozumitelná na první pohled |
-| 7 | Videa | <br>* Není nutné žádné videa, ale pokud je k dispozici, musí přehrávat bez chyb. <br>* Je-li poskytnuto, nesmí odkazovat na konkurenční společnosti, pokud neprokazuje řešení migrace |<br>* V ideálním případě 3 min nebo více <br>* Řešení nabízí snadno srozumitelné prostřednictvím video obsahu <br>* Ukázka možností řešení |
-| 8 | Stav seznamu (výzva k akci) | <br>Musí být označen jedním z následujících typů: <ul>o Kontaktujte mě</ul><ul>o Zkušební verze/Získat trial nyní/Spustit zkušební verzi/Testovací jízdu</ul><ul>o Koupit nyní / Get it Now</ul> | Zákazník může snadno pochopit, jaké další kroky jsou k dispozici: <ul>1. Vyzkoušejte zkušební verzi</ul> <ul>2. Koupit nyní</ul><ul>3. Kontakt prostřednictvím e-mailu nebo telefonního čísla zajistit PoC, hodnocení, nebo Briefing.</ul> | 
-| 9 | Ceny řešení | Musí mít kartu/podrobnosti o cenách řešení a v místní měně partnerského řešení, které nabízí | Více možností fakturace, které jsou k dispozici s cenami úrovní pro zákazníka, aby měli možnosti |    
-| 10 | Další informace | Odkazy v dolní části (pod popisem, nikoli odkazy na tržiště vlevo) vedou k dalším informacím o řešení a jsou veřejně dostupné a správně se zobrazují |    Odkazy na konkrétní položky (například stránky s specifikacemi na partnerském webu) a nejen na partnerskou domovskou stránku | 
-| 11 | Pomoc & řešení | Odkaz alespoň na jednu z následujících možností: <br>o Telefonní čísla <br>o E-mailová podpora <br>o Chatagenti <br>o Komunitní fóra |<br>* Všechny uvedené metody podpory: telefonická & e-mailová podpora. <br>* Placená podpora nabízená zdarma během zkušební nebo zkušební doby | 
-| 12 | Právní informace | Zásady nebo podmínky dostupné prostřednictvím veřejné adresy URL |  | 
+| 1 | Cíl zájemce | Má nakonfigurovaný cíl zájemce.| Katalog s jedním komerčním partnerem (OCP) obsahuje informace o cíli CRM, které jsou také uvedeny na kartě Partnerská řešení. | 
+| 2 | Název nabídky | Stručně popisuje nabídku řešení. Odpovídá online podpoře řešení na webu partnera. | Obsahuje hledaná klíčová slova. |
+| 3 | Logo | Logo se zobrazí správně. | Logo se zobrazí správně a obsahuje obrázek "Hero image", což je obrázek ve velkém formátu v Azure Portal. |
+| 4 |  Popis nabídky | <ul><li> Obsahuje 2-3 odstavců.</li><li>Nabídku řešení je snadné chápat na první pohled.</li><li>Je bez pravopisu a gramatických chyb.</li><li>Je vyčerpávající a zachycuje cílovou cílovou skupinu, typ uživatele a důvody, proč je to cenné (hodnota jejich umístění).</li><li>Je v podobě mluveného komentáře s krátkými větami, které je snadné pochopit.</li></ul> | <ul><li> Cílový obor je popsaný (Pokud je relevantní).</li><li>Dobré formátování stylu s každým nadpisem odstavce obsahujícím jednu větu nebo frázi, která shrnuje obsah, který následuje, a pomocí odrážek, pokud je to vhodné, pro zdůraznění klíčových výhod. Cílem je, aby čtenář pochopil nabídku na první pohled ve snadno čitelném formátu a nemusel číst dlouhé odstavce.</li><li>Mezi jednotlivými odstavci je mezera. Přečte se jako brožura na automobilu. To znamená, že je komplexní a popisuje nabídku jednoduše a bez technických žargonu. | 
+| 5 | Kategorie a odvětví | <ul><li>Kategorie odpovídají možnostem nabídky řešení.</li><li>Nezvětšujte do kategorií, které řešení nevyhovuje.</li><li>Optimální obor nebo všechny vybrané obory (pokud nejsou optimálními průmyslovými odvětvími). | <ul><li>Max. 3 kategorie.</li><li>Max. 3 odvětví. |
+| 6 | Obrázky | <ul><li>Není vyžadován žádný obrázek, ale je-li k dispozici, musí být zobrazen jako obrázek s vysokým rozlišením.</li><li>Požadavky na bitovou kopii jsou uvedeny v portál partnerů cloudu (CPP) a zde.</li><li>Text zahrnutý na snímku obrazovky je čitelný a obrázek je jasný. | Nabídka řešení je snadno srozumitelná na první pohled. |
+| 7 | Videa | <ul><li>Není nutné žádné video, ale pokud je k dispozici, musí se přehrávat bez chyb.</li><li>Pokud je tato situace k dispozici, nemusí Neodkazovat na konkurenční společnosti, *Pokud* se nejedná o řešení migrace. |<ul><li>V ideálním případě je délka 3 min. nebo více.</li><li>Nabídka řešení je snadno srozumitelná prostřednictvím obsahu videa.</li><li>Poskytuje ukázku možností řešení. |
+| 8 | Stav seznamu (volání akce) | <ul><li>Musí být označena jako jeden z následujících typů: <ul><li>*Kontaktujte mě*</li><li>*Zkušební verze*zkušební zkušební verze*teď*/*začíná zkušební*/*jednotkou* /</li><li>*Koupit hned*/*Get It Now*</li></ul></ul> | Zákazník může snadno pochopit, jaké jsou další kroky: <ol><li>Vyzkoušejte si zkušební verzi.</li><li>Kupte si hned.</li><li>Kontaktování e-mailem nebo telefonním číslem vám umožní zajistit testování konceptu (koncepce), posouzení nebo přehled.</li></ol> | 
+| 9 | Ceny řešení | Musí mít kartu/Podrobnosti řešení a ceny musí být v místní měně nabídky partnerských řešení. | K dispozici je více možností fakturace s cenami za úrovně, které poskytují možnosti zákazníka. |    
+| 10 | Další informace | Odkazy v dolní části (pod popisem, ne Azure Marketplace odkazy na levé straně) vedou k dalším informacím o řešení a jsou veřejně dostupné a zobrazují se správně. |    Odkazuje na konkrétní položky (například stránky specifikace na partnerském webu), nikoli jenom na domovskou stránku partnera. | 
+| 11 | Podpora řešení a pomoc | Odkaz alespoň na jednu z následujících možností: <ul><li>Telefonní čísla</li><li>E-mailová podpora</li><li>Chat agenti</li><li>Komunitní fóra |<ul><li>V seznamu jsou uvedeny všechny metody podpory.</li><li>Placená podpora se v průběhu *zkušebního* období nebo *zkušební jednotky* nabízí zdarma. | 
+| 12 | Právní informace | Zásady nebo výrazy jsou k dispozici prostřednictvím veřejné adresy URL. |  |
 
----
-## <a name="trial-offer-requirements"></a>Požadavky na zkušební nabídku
+--- 
 
-|  | Výpis prvku | Základní požadavky | Optimální požadavky | 
+## <a name="trial-offer-requirements"></a>Požadavky na nabídku zkušební verze
+
+|  | Výpis elementu | Základní požadavek | Optimální požadavek | 
 |:--- |:--- |:--- |:--- |
-|  | Stav seznamu | Odkaz musí vést ke zkušebním zkušenostem vedeným zákazníkem | Další CTA (například koupit nyní) také k dispozici | 
-
----
-## <a name="saas-app-requirements"></a>Požadavky na aplikaci SaaS
-
-|  | Výpis prvku | Základní požadavky | Optimální požadavky | 
-|:--- |:--- |:--- |:--- |
-| 1 | Název nabídky |<br>* Musí se skládat pouze z malé, alfanumerické znaky, pomlčky, nebo podtržítka. Po publikování nelze změnit. <br>* Popis řešení nabídky.<br>* Odpovídá on-line propagaci řešení na webových stránkách partnera. | Obsahuje klíčová hledaná slova. |
-| 2 | Technické informace: Konfigurace |<br>* U aplikace SaaS zvolte, jestli chcete aplikaci vypsat, nebo jestli chcete zákazníkům umožnit nákup vaší aplikace přes Azure.<br>* Vyberte příslušný text, který chcete na vaší nabídce akvizice tlačítko: Zdarma, Zkušební verze zdarma, nebo Kontaktujte mě<br>* Vyberte pouze (pop-up box) - jeden z těchto příslušných produktů, pokud vaše aplikace využívá technologii: Cortana Intelligence, Power BI Solution Templates, Power Apps |  |
-| 3 | Testovací verze | Vybrat: Ano nebo Ne | Zákazník může snadno pochopit, jaké další kroky jsou k dispozici: <br>1. Vyzkoušejte zkušební verzi <br>2. Koupit nyní <br>3. Kontakt prostřednictvím e-mailu nebo telefonního čísla zajistit PoC, hodnocení, nebo Briefing. |
-| 4 | Podrobnosti o výloze: Souhrn nabídky | Zobrazí se na vyhledávací stránce aplikace s maximálně 100 znaky. | |
-| 5 | Podrobnosti o výloze: Industries | Odvětví (Max 2): Vyberte odvětví, která je vaše aplikace nejlépe zarovnaná a použitelná. | |
-| 6 | Popis nabídky | <br>* Jednoduché HTML je povoleno, včetně p, em, ul, li, ol a záhlaví tagy. Maximálně 3000 znaků. <br>* 2-3 odstavce <br>* Nabídka řešení je snadno srozumitelná na první pohled <br>* Popis je komplexní a zachycuje: cílové publikum *, typ uživatele, <br> proč je to cenné (hodnota vrtu)* Popis nabídky je v odstavci narativní formulář s krátkými větami, které je snadné pochopit. | <br>* Cílový průmysl je nastíněn (pokud je to relevantní) <br>* Dobrý styl formátování s každým odstavcem záhlaví s jednou větou nebo frází shrnující obsah, který následuje a včetně odrážek (pokud je to vhodné) zdůraznit klíčové výhody. Cílem je, aby čtenář pochopil nabídku na první pohled ve snadno zobrazitelným formátu a nemusel číst odstavce. <br>* Mezi jednotlivými odstavci je mezera a čte se jako brožura pro automobily. To znamená, že ne technické vlastnosti nebo kód žargon, ale popis nabídky v jednoduchých termínech a je komplexní. | 
-| 7 | Marketingové artefakty | Loga se zobrazují správně | <br>* Logo obsahuje "obrázek hrdiny" na webu Azure Portal. Musí být 815 x 290 pixelů. <br>* Loga: Malé (48x48) & Velké (216x216) jsou požadavky <br> * Snímek obrazovky (Max 5): Vyžaduje obrázek PNG (1280 x 720 pixelů). |
-| 8 | Kategorie & Průmysl | <br>* Kategorie odpovídají řešení nabízejícím možnosti <br>* Z rozbalovacího rámečku by měla být vybrána alespoň 1 položka (položky) <br>* Nerozšiřujte se na kategorie, které řešení nevyhovuje <br>* Optimální průmysl, nebo všechna průmyslová odvětví vybrána (ne-li optimální odvětví <br>* Nerozšiřujte se na kategorie, které řešení nevyhovuje <br>* Optimální průmysl, nebo všechna průmyslová odvětví vybrána (ne-li optimální odvětví) | Max. 3 kategorie vybrané, pokud je to možné. |
-| 9 | Vedení řízení | Vyberte systém, ve kterém budou vaši zájemci uloženi. Podívejte [se na získání potenciálních zákazníků](./partner-center-portal/commercial-marketplace-get-customer-leads.md) pro připojení vašeho CRM systému. |  |
-| 10 | Kontakty: Podpora řešení & nápověda | <br>* Technické kontaktní jméno: Zadejte jméno technického kontaktu pro vaši aplikaci. Tento kontakt obdrží technickou komunikaci od společnosti Microsoft.<br>* Technický kontaktní e-mail: Zadejte e-mailovou adresu technického kontaktu pro vaši aplikaci.<br>* Technické kontakty Telefon: Zadejte telefonní číslo technického kontaktu. Jsou podporovány zápisy telefonního čísla ISO; podrobnosti naleznete https://en.wikipedia.org/wiki/E.123v tématu .<br>* Název kontaktu podpory: Zadejte jméno kontaktu podpory pro vaši aplikaci. Tento kontakt obdrží komunikaci související s podporou od společnosti Microsoft.<br>* Kontaktní e-mail podpory: Zadejte e-mailovou adresu kontaktu podpory pro vaši aplikaci. <br>* Kontaktní telefon podpory: Zadejte telefonní číslo kontaktu podpory. Jsou podporovány zápisy telefonního čísla ISO; podrobnosti naleznete https://en.wikipedia.org/wiki/E.123v tématu . <br>* Adresa URL podpory: Zadejte adresu URL na stránku podpory. | <br>* Všechny uvedené metody podpory: telefonická & e-mailová podpora. <br>* Placená podpora nabízená zdarma během zkušební nebo zkušební doby |
-| 11 | Právní informace |<br>* Adresa URL zásad ochrany osobních údajů: Adresu URL zásad ochrany osobních údajů vaší aplikace zadejte do pole URL zásad ochrany osobních údajů v Centru partnerů. <br>* Podmínky použití: Zadejte podmínky používání aplikace. Zákazníci musí tyto podmínky přijmout, než si budou moci aplikaci vyzkoušet. |    Zásady nebo podmínky dostupné prostřednictvím veřejného webu URL |
+|  | Stav seznamu (volání akce) | Odkaz musí vést k *vyzkoušení* zkušeností zákazníků. | K dispozici jsou také další volání akce (například *koupit nyní*). | 
 
 ---
 
-## <a name="container-offer-requirements"></a>Požadavky na nabídku kontejnerů
+## <a name="saas-app-requirements"></a>Požadavky aplikace SaaS
 
-|  | Výpis prvku | Základní požadavky | Optimální požadavky | 
+|  | Výpis elementu | Základní požadavek | Optimální požadavek | 
 |:--- |:--- |:--- |:--- |
-|1 |Nastavení nabídky | <br>* ID nabídky: Max 50 znaků <br>* ID vydavatele: Vyberte si z rozevíracího <br>* Jméno: Max 50 znaků | Zrcadlí styl názvu již k dispozici v popisu- nechci dlouhé tituly. | 
-| 2 | SKU | Kliknutí partnerů na nové skuténky| Zrcadlí styl názvu již k dispozici v popisu- nechci dlouhé tituly.  |
-| 3 | Artefakty tržiště | Loga se zobrazují správně |<br>* Logo obsahuje "hero image", což je velkoformátová image na webu Azure Portal <br>* Loga: Malé (48x48) & Velké (216x216) jsou požadavky <br>* Požadavky na obraz hrdiny: 815 x 290 pixelů <br>* Snímek obrazovky (Max 5): Vyžaduje obrázek .png s rozlišením 1280 x 720.|
-| 4 | Vedení řízení |<br>* Vedení Management: Vyberte systém, kde budou uloženy vaše vede. <br>* Podívejte [se na získání zákazníků vede](./partner-center-portal/commercial-marketplace-get-customer-leads.md) k připojení vašeho CRM systému. | |
+| 1 | Název nabídky |<ul><li>Musí obsahovat jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Po publikování se název nedá změnit.</li><li>Popisuje nabídku řešení.</li><li>Odpovídá online podpoře řešení na webu partnera. | Obsahuje hledaná klíčová slova. |
+| 2 | Technické informace: Konfigurace |<ul><li>V případě aplikací SaaS (software jako služba) vyberte, jestli chcete zobrazit jenom seznam aplikací, nebo pokud chcete, aby si zákazníci mohli koupit aplikaci prostřednictvím Azure.</li><li>Vyberte požadovaný text na tlačítku pro získání nabídky: *zdarma*, *bezplatná zkušební verze*nebo *kontaktujte mě*.</li><li>V automaticky otevíraném okně vyberte jenom jeden příslušný produkt, pokud vaše aplikace využívá technologii: Cortana Intelligence, Power BI šablony řešení nebo Power Apps. |  |
+| 3 | Testovací jednotka | Vyberte *Ano* nebo *Ne*. | Zákazník může snadno pochopit, jaké jsou další kroky: <ol><li>Vyzkoušejte si zkušební verzi.</li><li>Kupte si hned.</li><li>Kontaktování e-mailem nebo telefonním číslem vám umožní zajistit pro ověření koncepce, posouzení nebo přehled.</li></ol> |
+| 4 | Prezentace podrobnosti: Souhrn nabídky | Zobrazí se na stránce vyhledávání vaší aplikace a může mít maximálně 100 znaků. | |
+| 5 | Prezentace podrobnosti: odvětví | Obory (max. 2): Vyberte odvětví, pro které je vaše aplikace nejlépe zarovnaná a platí pro. | |
+| 6 | Popis nabídky | <ul><li>Je povolený jednoduchý HTML, \<včetně p> \<, em> \<, ul> \<, li> \<, OL> a značek hlaviček. Max. 3000 znaků.</li><li>Obsahuje 2-3 odstavců.</li><li>Nabídku řešení je snadné chápat na první pohled.</li><li>Popis je komplexní a zachycuje cílovou cílovou skupinu, typ uživatele a důvody, proč je to cenné (hodnota jejich umístění).</li><li>Je v podobě mluveného komentáře s krátkými větami, které je snadné pochopit. | <ul><li>Cílový obor je popsaný (Pokud je relevantní).</li><li>Dobré formátování stylu s každým nadpisem odstavce obsahujícím jednu větu nebo frázi, která shrnuje obsah, který následuje, a pomocí odrážek, pokud je to vhodné, pro zdůraznění klíčových výhod. Cílem je, aby čtenář pochopil nabídku na první pohled ve snadno čitelném formátu a nemusel číst odstavce.</li><li>Mezi jednotlivými odstavci je mezera. Přečte se jako brožura na automobilu. To znamená, že je komplexní a popisuje nabídku jednoduše a bez technických žargonu. | 
+| 7 | Marketingové artefakty | Loga se zobrazují správně. | <ul><li>Logo obsahuje obrázek "Hero image", což je obrázek ve velkém formátu v Azure Portal.</li><li>Log: malá (48 &#215; 48 pixelů) a velká (216 &#215; 216 pixelů) jsou povinná.</li><li>[Požadavky na Image Hero](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)</li><li>Snímek obrazovky (max. 5): CPP vyžaduje obrázek PNG s rozlišením 1280 &#215; 720 pixelů. |
+| 8 | Kategorie a odvětví | <ul><li>Kategorie odpovídají možnostem nabídky řešení.</li><li>V automaticky otevíraném okně vyberte alespoň jednu položku.</li><li>Nezvětšujte do kategorií, které řešení nevyhovuje.</li><li>Optimální obor nebo všechny vybrané obory (pokud nejsou optimálními průmyslovými odvětvími). | Max. Pokud je to možné, vyberte 3 kategorie. |
+| 9 | Správa potenciálních zákazníků | Vyberte systém, ve kterém budou vaše potenciální zákazníci ukládat. Informace o tom, jak připojit systém CRM, najdete v článku o [získání zájemců](./partner-center-portal/commercial-marketplace-get-customer-leads.md) . |  |
+| 10 | Kontakty: podpora řešení a pomoc | <ul><li>Technický kontaktní název: název technického kontaktu pro vaši aplikaci. Tento kontakt dostane technickou komunikaci od Microsoftu.</li><li>Technický kontaktní e-mail: e-mailová adresa technického kontaktu pro vaši aplikaci.</li><li>Technický kontakt na telefon: telefonní číslo technického kontaktu. Jsou podporovány [zápisy telefonních čísel ISO](https://en.wikipedia.org/wiki/E.123) .</li><li>Název kontaktu podpory: název kontaktu podpory pro vaši aplikaci. Tento kontakt obdrží od Microsoftu sdělení týkající se podpory.</li><li>Kontaktní e-mail podpory: e-mailová adresa kontaktu podpory pro vaši aplikaci.</li><li>Kontaktní telefon na podporu: telefonní číslo kontaktu podpory. Jsou podporovány [zápisy telefonních čísel ISO](https://en.wikipedia.org/wiki/E.123) .</li><li>Adresa URL podpory: adresa URL vaší stránky podpory. | <ul><li>V seznamu jsou uvedeny všechny metody podpory.</li><li>Placená podpora se poskytuje zdarma během *zkušebního* období nebo *zkušebního* období. |
+| 11 | Právní informace |<ul><li>Adresa URL zásad ochrany osobních údajů: adresa URL zásad ochrany osobních údajů vaší aplikace v poli Adresa URL zásad ochrany osobních údajů v CPP.</li><li>Podmínky použití: podmínkami použití vaší aplikace. Zákazníci musí tyto podmínky přijmout, aby mohli svoji aplikaci vyzkoušet. |    Zásady nebo výrazy jsou k dispozici prostřednictvím webu veřejné adresy URL. |
 
 ---
 
-## <a name="consulting-offer-requirements"></a>Požadavky na nabídku konzultací
+## <a name="container-offer-requirements"></a>Požadavky na nabídky kontejneru
 
-|  | Výpis prvku | Základní požadavky | Optimální požadavky |
+|  | Výpis elementu | Základní požadavek | Optimální požadavek | 
 |:--- |:--- |:--- |:--- |
-| 1 | Název nabídky  |  <br>* Musí jasně uvést typ služby a dobu trvání v následujícím formátu: NÁZEV: TYP DOBY TRVÁNÍ. (to znamená"Nabídka zapojení: 1-týdenní proof-of-Concept")  | <br>* Neopakuje název vydavatele <br>* Zrcadlí styl titulu již k dispozici v popisu- nechci dlouhé tituly. | 
-| 2 | Popis nabídky  |<br>* Zajistěte správné používání [názvů produktů společnosti Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx) <br>* Nabídky označené jako cena: Odhadovaná musí mít poznámku buď v horní nebo dolní části nabídky vysvětlit variabilitu (cestování do klienta, počet serverů, které jsou migrovány, atd.) <br>* Každý typ nabídky má požadavky na popis takto: <ul><br>o Briefingy potřebují alespoň 4 až 5 kulek s informacemi o tématech, která jsou předmětem briefingu </ul> <ul><br>o Všechny workshopy potřebují agendu </ul><ul><br>o Všechny pořady jednání musí být rozděleny podle dne nebo týdne, v závislosti na délce trvání workshopu </ul><ul><br>o Hodnocení, POC, neškolicí workshopy, Implementace nabízí dodávky </ul><ul><br>o Školicí semináře nepotřebují výstupy, ale potřebují podrobnější program s tématy, která budou pokryta. | <br>* Každá nabídka má agendu a výstupy <br>* Nabídka obsahuje odstavec s kontextem o společnosti poskytující služby v horní části <br>* Nabídka obsahuje odstavec o hodnotě samotné služby jako horní části |
-| 3 | Formátování Markdownu  | Všechny nabídky musí používat formátování Markdown, aby se nabídka při převodu na HTML správně vykreslovala.  |  |
-| 4 | Kategorie & Průmysl | Kategorie, které nejsou relevantní |  | 
-| 5 | Stav seznamu (CTA) | Automaticky uveden jako Kontakt mě |  | 
-| 6 | Pomoc & řešení  | Podpora & Nápověda není vyžadována  | | 
-| 7 | Zásady ochrany osobních údajů & podmínky použití k dispozici  |  Zásady nebo podmínky nejsou vyžadovány  | | 
-| 8 | Typy služeb | Zajistit, aby typ služby odpovídal titulu | |
-| 9 | Kompetence |<br>* Musí být alespoň jedna z následujících možností:<br>* Vývoj aplikací <br>* Integrace aplikací <br>* Správa životního cyklu aplikací <br>* Cloudová platforma <br>* Analýza dat <br>* Datové centrum <br>* Datová platforma <br>* DevOps |
-| 10 | Produkty | Musí být Azure | |
-| 11 | Země/region | Zajistit, aby země a oblast odpovídaly zvolené měně | |
-| 12 | Další informace  | <br>* Odkazy v dolní části (pod popisem, ne na trhu odkazy na levé straně) vést k více informací o řešení a jsou veřejně dostupné a zobrazení správně. <br>* Odkazy musí mít "popisný název" a nesmí se objevit jako název souboru všech stažení | |
+|1 |Nastavení nabídky | <ul><li>ID nabídky: max. 50 znaků.</li><li>ID vydavatele: vyberte ho v rozevíracím seznamu.</li><li>Název: max. 50 znaků. | Zrcadlí styl nadpisu, který je již k dispozici v popisu. Nepoužívejte dlouhé názvy. | 
+| 2 | SKU | Partner vybere nové SKU.| Nadpis zrcadlí styl nadpisu, který je již k dispozici v popisu. Nepoužívejte dlouhé názvy.  |
+| 3 | Artefakty Marketplace | Loga se zobrazují správně. |<ul><li>Logo obsahuje obrázek "Hero image", což je obrázek ve velkém formátu v Azure Portal.</li><li>Log: malá (48 &#215; 48 pixelů) a velká (216 &#215; 216 pixelů) jsou povinná.</li><li>[Požadavky na Image Hero](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)</li><li>Snímek obrazovky (max. 5): CPP vyžaduje obrázek PNG s rozlišením 1280 &#215; 720 pixelů.|
+| 4 | Správa potenciálních zákazníků |<ul><li>Řízení vedoucích: vyberte systém, ve kterém budou vaše potenciální zákazníci uložené.</li><li>Informace o tom, jak připojit systém CRM, najdete v článku o [získání zájemců](./partner-center-portal/commercial-marketplace-get-customer-leads.md) . | |
 
+---
+
+## <a name="consulting-offer-requirements"></a>Požadavky na konzultační nabídky
+
+|  | Výpis elementu | Základní požadavek | Optimální požadavek |
+|:--- |:--- |:--- |:--- |
+| 1 | Název nabídky  |  Musí jasně vypsat typ služby a dobu trvání v *názvu formátu: typ trvání* (například "nabídka zapojení: 1-týden).  | <ul><li>Neopakuje název vydavatele.</li><li>Nadpis zrcadlí styl nadpisu, který je již k dispozici v popisu. Nepoužívejte dlouhé názvy. | 
+| 2 | Popis nabídky  |<ul><li>Zajistěte správné použití [názvů produktů společnosti Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx).</li><li>Nabídky označené jako *Price: odhad* musí obsahovat poznámku na nejvyšší nebo nejnižší úrovni, která vysvětlí proměnlivost (cestovné na klienta, počet migrovaných serverů atd.).</li><li>Každý typ nabídky má požadavky na popis, jak je znázorněno níže: <ul><li>Pro krátké potřeby je potřeba mít aspoň čtyři nebo pět odrážek s informacemi o tématech, která se mají pokrýt.</li><li>Všechny semináře potřebují agendu.</li><li>Všechny agendy musí být rozdělené podle dne nebo týdne v závislosti na době trvání dílny.</li><li>Posouzení, posuzování koncepce, neškolicí semináře a implementace nabídky vyžadují dodávky.</li><li>Školicí semináře nepotřebují dodávky, ale potřebují podrobnější agendu s tématy, která se potýkají.</li></ul></ul> | <ul><li>Každá nabídka obsahuje agendu a dodávky.</li><li>Nabídka obsahuje odstavec s kontextem o společnosti, která poskytuje službu v horní části.</li><li>Nabídka obsahuje odstavec týkající se hodnoty samotné služby jako horní části. |
+| 3 | Formátování Markdownu  | Všechny nabídky musí používat formátování Markdownu, aby se nabídka správně vykreslovat, když se převede na HTML.  |  |
+| 4 | Kategorie a odvětví | Kategorie nejsou relevantní. |  | 
+| 5 | Stav seznamu (volání akce) | Automaticky se zobrazí jako *kontakt mi*. |  | 
+| 6 | Podpora řešení a pomoc  | Podpora a pomoc nejsou požadovány.  | | 
+| 7 | K dispozici jsou zásady ochrany osobních údajů a podmínek použití  |  Zásady nebo podmínky se nevyžadují.  | | 
+| 8 | Typy služeb | Zajistěte, aby se typ služby shodoval s názvem. | |
+| 9 | Kompetence | Musí mít alespoň jednu z následujících možností kompetence:<ul><li>Vývoj aplikací</li><li>Integrace aplikací</li><li>Správa životního cyklu aplikací</li><li>Cloudová platforma<li>Analýza dat</li><li>Data Center</li><li>Datová platforma</li><li>DevOps |
+| 10 | Produkty | Musí se jednat o produkty Azure. | |
+| 11 | Země | Ujistěte se, že země nebo oblast odpovídají vybrané měně. | |
+| 12 | Další informace  | <ul><li>Odkazy v dolní části (pod popisem, ne Azure Marketplace odkazy na levé straně) vedou k dalším informacím o řešení a jsou veřejně dostupné a jsou zobrazovány správně.</li><li>Odkazy musí obsahovat "popisný název" a nebudou se zobrazovat jako název souboru pro soubory ke stažení. | |
+
+---
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si o různých typech nabídek na trhu. <br>[Aplikace SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[Konzultační služby](https://docs.microsoft.com/azure/marketplace/consulting-services)
-*    [Určete typ výpisu pro vaše řešení](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
+* Přečtěte si o různých typech nabídek v Azure Marketplace:
+  * [Aplikace SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)
+  * [Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers)
+  * [Konzultační služby](https://docs.microsoft.com/azure/marketplace/consulting-services)
+
+* [Určení možnosti publikování](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+

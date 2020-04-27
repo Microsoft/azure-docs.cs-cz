@@ -1,6 +1,6 @@
 ---
-title: Řízení přístupu na základě rolí pro účty Mediálních služeb – Azure | Dokumenty společnosti Microsoft
-description: Tento článek popisuje řízení přístupu na základě rolí (RBAC) pro účty Azure Media Services.
+title: Řízení přístupu na základě role pro účty Media Services – Azure | Microsoft Docs
+description: Tento článek popisuje řízení přístupu na základě role (RBAC) pro účty Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,21 +13,21 @@ ms.date: 05/23/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 93b2cd3a2565b14ea07d6db6b14dd146e4223528
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66236921"
 ---
-# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Řízení přístupu na základě rolí (RBAC) pro účty mediálních služeb
+# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Řízení přístupu na základě role (RBAC) pro účty Media Services
 
-V současné době Azure Media Services nedefinuje žádné vlastní role specifické pro službu. Chcete-li získat úplný přístup k účtu Mediální služby, mohou zákazníci používat předdefinované role **vlastníka** nebo **přispěvatele**. Hlavní rozdíl mezi těmito rolemi je: **Vlastník** může řídit, kdo má přístup k prostředku a **přispěvatel** nemůže. Integrovanou roli **čtečky** lze také použít, ale uživatel nebo aplikace bude mít pouze přístup pro čtení k rozhraním API mediálních služeb. 
+V současné době Azure Media Services nedefinuje žádné vlastní role specifické pro danou službu. Aby mohli zákazníci získat úplný přístup k účtu Media Services, můžou použít předdefinované role **vlastníka** nebo **přispěvatele**. Hlavní rozdíl mezi těmito rolemi je: **vlastník** může řídit, kdo má přístup k prostředku a **Přispěvatel** nemůže. Lze také použít integrovanou roli **Čtenář** , ale uživatel nebo aplikace budou mít přístup jen pro čtení k rozhraním API Media Services. 
 
 ## <a name="design-principles"></a>Principy návrhu
 
-Jedním z klíčových principů návrhu rozhraní API v3 je vyšší zabezpečení rozhraní API. v3 API nevracejí tajné klíče nebo pověření na **get** nebo **list** operace. Klíče v odpovědi mají vždy hodnotu null, jsou prázdné nebo upravené. Uživatel musí volat samostatnou metodu akce získat tajné klíče nebo pověření. Role **Čtečka** nemůže volat operace jako Asset.ListContainerSas, StreamingLocator.ListContentKeys, ContentKeyPolicies.GetPolicyPropertiesWithSecrets. S samostatné akce umožňuje nastavit podrobnější oprávnění zabezpečení RBAC ve vlastní roli v případě potřeby.
+Jedním z klíčových principů návrhu rozhraní API v3 je vyšší zabezpečení rozhraní API. Rozhraní V3 API nevrací tajné klíče ani přihlašovací údaje na operace **Get** nebo **list** . Klíče v odpovědi mají vždy hodnotu null, jsou prázdné nebo upravené. Pro získání tajných klíčů nebo přihlašovacích údajů musí uživatel zavolat samostatnou metodu akce. Role **Čtenář** nemůže volat operace jako Asset. ListContainerSas, StreamingLocator. ListContentKeys, ContentKeyPolicies. GetPolicyPropertiesWithSecrets. Samostatné akce umožňují nastavit podrobnější oprávnění zabezpečení RBAC v vlastní roli v případě potřeby.
 
-Chcete-li uvést operace, které služba Media Services podporuje, proveďte následující akce:
+Pokud chcete zobrazit seznam operací, které Media Services podporuje, udělejte toto:
 
 ```csharp
 foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operations.List())
@@ -36,16 +36,16 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 }
 ```
 
-Předdefinovaný článek [definice rolí](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) přesně říká, co role uděluje. 
+V článku [předdefinované definice rolí](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) se přesně dozvíte, co role uděluje. 
 
-Další informace naleznete v následujících článcích:
+Další informace najdete v následujících článcích:
 
 - [Role klasického správce předplatného, role Azure RBAC a role správce Azure AD](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 - [Co je RBAC pro prostředky Azure?](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Použití RBAC ke správě přístupu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Operace zprostředkovatele prostředků mediálních služeb](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
+- [Správa přístupu pomocí RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
+- [Media Services operace poskytovatele prostředků](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vývoj pomocí mediálních služeb v3 API](media-services-apis-overview.md)
-- [Získat zásady klíče obsahu pomocí služby Media Services .NET](get-content-key-policy-dotnet-howto.md)
+- [Vývoj s využitím rozhraní API Media Services V3](media-services-apis-overview.md)
+- [Získání zásad pro klíč obsahu pomocí Media Services .NET](get-content-key-policy-dotnet-howto.md)

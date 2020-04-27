@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlastních artefaktů pro váš virtuální počítač DevTest Labs | Dokumenty společnosti Microsoft
-description: Zjistěte, jak vytvářet vlastní artefakty, které se mají používat v laboratořích Azure DevTest Labs.
+title: Vytvoření vlastních artefaktů pro virtuální počítač s DevTest Labs | Microsoft Docs
+description: Naučte se vytvářet vlastní artefakty pro použití s Azure DevTest Labs.
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66399205"
 ---
-# <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Vytvoření vlastních artefaktů pro váš virtuální počítač DevTest Labs
+# <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Vytvoření vlastních artefaktů pro virtuální počítač s DevTest Labs
 
-Podívejte se na následující video, kde najdete přehled kroků popsaných v tomto článku:
+V následujícím videu najdete přehled kroků popsaných v tomto článku:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/how-to-author-custom-artifacts/player]
 >
 >
 
 ## <a name="overview"></a>Přehled
-*Artefakty* můžete použít k nasazení a nastavení aplikace po zřízení virtuálního počítače. Artefakt se skládá z definičního souboru artefaktu a dalších souborů skriptů, které jsou uloženy ve složce v úložišti Git. Soubory definice artefaktů se skládají z JSON a výrazů, které můžete použít k určení, co chcete nainstalovat na virtuální počítač. Můžete například definovat název artefaktu, příkaz ke spuštění a parametry, které jsou k dispozici při spuštění příkazu. Můžete odkazovat na jiné soubory skriptů v souboru definice artefaktu podle názvu.
+Můžete použít *artefakty* k nasazení a nastavení aplikace po zřízení virtuálního počítače. Artefakt se skládá z definičního souboru artefaktu a dalších souborů skriptu, které jsou uloženy ve složce v úložišti Git. Definiční soubory artefaktů se skládají z formátu JSON a výrazů, které můžete použít k určení toho, co chcete nainstalovat na virtuální počítač. Můžete například definovat název artefaktu, příkaz ke spuštění a parametry, které jsou k dispozici při spuštění příkazu. Můžete odkazovat na jiné soubory skriptu v rámci definičního souboru artefaktu podle názvu.
 
-## <a name="artifact-definition-file-format"></a>Formát souboru definice artefaktu
+## <a name="artifact-definition-file-format"></a>Formát definičního souboru artefaktu
 Následující příklad ukazuje oddíly, které tvoří základní strukturu definičního souboru:
 
     {
@@ -55,16 +55,16 @@ Následující příklad ukazuje oddíly, které tvoří základní strukturu de
 
 | Název elementu | Povinné? | Popis |
 | --- | --- | --- |
-| $schema |Ne |Umístění souboru schématu JSON. Soubor schématu JSON vám může pomoci otestovat platnost definičního souboru. |
-| title |Ano |Název artefaktu zobrazeného v laboratoři. |
-| description |Ano |Popis artefaktu zobrazeného v laboratoři. |
-| iconUri |Ne |Identifikátor URI ikony zobrazené v testovacím prostředí. |
-| targetOsType |Ano |Operační systém virtuálního zařízení, kde je artefakt nainstalován. Podporované možnosti jsou Windows a Linux. |
-| parameters |Ne |Hodnoty, které jsou k dispozici při spuštění příkazu instalace artefaktu v počítači. To vám pomůže přizpůsobit artefakt. |
-| Spustitpříkaz |Ano |Příkaz pro instalaci artefaktů, který se spouští na virtuálním počítači. |
+| $schema |Ne |Umístění souboru schématu JSON. Soubor schématu JSON vám může přispět k otestování platnosti definičního souboru. |
+| title |Ano |Název artefaktu zobrazeného v testovacím prostředí |
+| description |Ano |Popis artefaktu zobrazeného v testovacím prostředí |
+| iconUri |Ne |Identifikátor URI ikony zobrazené v testovacím prostředí |
+| targetOsType |Ano |Operační systém virtuálního počítače, ve kterém je artefakt nainstalovaný. Podporované možnosti jsou Windows a Linux. |
+| parameters |Ne |Hodnoty, které jsou k dispozici při spuštění instalačního příkazu artefaktu v počítači. To vám pomůže přizpůsobit svůj artefakt. |
+| SpustitPříkaz |Ano |Instalační příkaz artefaktu, který je spuštěný na virtuálním počítači. |
 
-### <a name="artifact-parameters"></a>Parametry artefaktů
-V části parametry definičního souboru určete, které hodnoty může uživatel zadat při instalaci artefaktu. Na tyto hodnoty můžete odkazovat v příkazu instalace artefaktu.
+### <a name="artifact-parameters"></a>Parametry artefaktu
+V oddílu Parameters souboru definice určete, které hodnoty může uživatel zadat při instalaci artefaktu. Na tyto hodnoty můžete odkazovat v příkazu pro instalaci artefaktů.
 
 Chcete-li definovat parametry, použijte následující strukturu:
 
@@ -78,19 +78,19 @@ Chcete-li definovat parametry, použijte následující strukturu:
 
 | Název elementu | Povinné? | Popis |
 | --- | --- | --- |
-| type |Ano |Typ hodnoty parametru. Povolené typy naleznete v následujícím seznamu. |
+| type |Ano |Typ hodnoty parametru Seznam povolených typů najdete v následujícím seznamu. |
 | displayName |Ano |Název parametru, který se zobrazí uživateli v testovacím prostředí. |
-| description |Ano |Popis parametru, který je zobrazen v testovacím prostředí. |
+| description |Ano |Popis parametru, který se zobrazí v testovacím prostředí. |
 
-Povolené typy jsou:
+Povolené typy:
 
 * řetězec (libovolný platný řetězec JSON)
 * int (libovolné platné celé číslo JSON)
-* bool (jakýkoliv platný JSON Boolean)
-* array (libovolné platné pole JSON)
+* bool (jakákoli platná logická hodnota JSON)
+* Array (jakékoli platné pole JSON)
 
 ## <a name="secrets-as-secure-strings"></a>Tajné klíče jako zabezpečené řetězce
-Deklarujte tajné kódy jako zabezpečené řetězce. Zde je syntaxe pro deklarování `parameters` parametru zabezpečeného řetězce v části souboru **artifactfile.json:**
+Deklarace tajných kódů jako zabezpečených řetězců. Tady je syntaxe pro deklaraci parametru zabezpečeného řetězce v rámci `parameters` oddílu souboru **artifactfile. JSON** :
 
 ```json
 
@@ -102,7 +102,7 @@ Deklarujte tajné kódy jako zabezpečené řetězce. Zde je syntaxe pro deklaro
     },
 ```
 
-Pro příkaz pro instalaci artefaktu spusťte skript prostředí PowerShell, který přebírá zabezpečený řetězec vytvořený pomocí příkazu ConvertTo-SecureString. 
+Pro příkaz pro instalaci artefaktu spusťte PowerShellový skript, který převezme zabezpečený řetězec vytvořený pomocí příkazu ConvertTo-SecureString. 
 
 ```json
   "runCommand": {
@@ -110,21 +110,21 @@ Pro příkaz pro instalaci artefaktu spusťte skript prostředí PowerShell, kte
   }
 ```
 
-Úplný příklad artefaktfile.json a artefakt.ps1 (skript Prostředí PowerShell), naleznete [v této ukázce na GitHubu](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes).
+Úplný příklad artifactfile. JSON a artefakt. ps1 (PowerShell Script) najdete v [této ukázce na GitHubu](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes).
 
-Dalším důležitým bodem na vědomí, není protokolovat tajné kódy do konzoly jako výstup je zachycen pro ladění uživatele. 
+Dalším důležitým bodem, který je třeba poznamenat, není protokolovat tajné klíče do konzoly, protože výstup je zachycen pro ladění uživatele. 
 
-## <a name="artifact-expressions-and-functions"></a>Artefaktové výrazy a funkce
-Výrazy a funkce můžete použít k vytvoření příkazu instalace artefaktu.
-Výrazy jsou uzavřeny s závorkami ([ a ]) a jsou vyhodnoceny při instalaci artefaktu. Výrazy se mohou objevit kdekoli v řetězcové hodnotě JSON. Výrazy vždy vrátí jinou hodnotu JSON. Pokud potřebujete použít literál řetězec, který začíná závorkou ([), musíte použít dvě závorky ([[].
-Obvykle používáte výrazy s funkcemi k vytvoření hodnoty. Stejně jako v JavaScriptu jsou volání funkcí formátována jako **functionName (arg1, arg2, arg3)**.
+## <a name="artifact-expressions-and-functions"></a>Výrazy a funkce artefaktů
+Pomocí výrazů a funkcí můžete vytvořit příkaz pro instalaci artefaktu.
+Výrazy jsou uzavřeny v závorkách ([a]) a jsou vyhodnocovány při instalaci artefaktu. Výrazy se můžou objevit kdekoli v hodnotě řetězce JSON. Výrazy vždycky vracejí jinou hodnotu JSON. Pokud potřebujete použít řetězcový literál, který začíná hranatou závorkou ([), musíte použít dvě hranaté závorky ([[).
+Obvykle používáte výrazy s funkcemi k vytvoření hodnoty. Stejně jako v jazyce JavaScript jsou volání funkcí formátována jako **Functions (arg1, arg2, Arg3)**.
 
 V následujícím seznamu jsou uvedeny běžné funkce:
 
-* **parameters(parameterName)**: Vrátí hodnotu parametru, která je k dispozici při spuštění příkazu artefaktu.
-* **concat(arg1, arg2, arg3,..... )**: Kombinuje více řetězcových hodnot. Tato funkce může trvat různé argumenty.
+* **Parameters (ParameterName)**: vrátí hodnotu parametru, která je k dispozici při spuštění příkazu artefaktu.
+* **Concat (arg1, arg2, arg3,.....)**: kombinuje více řetězcových hodnot. Tato funkce může mít různé argumenty.
 
-Následující příklad ukazuje, jak používat výrazy a funkce k vytvoření hodnoty:
+Následující příklad ukazuje, jak použít výrazy a funkce k vytvoření hodnoty:
 
     runCommand": {
         "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
@@ -135,23 +135,23 @@ Následující příklad ukazuje, jak používat výrazy a funkce k vytvoření 
 
 ## <a name="create-a-custom-artifact"></a>Vytvoření vlastního artefaktu
 
-1. Nainstalujte editor JSON. Pro práci s definičními soubory artefaktů potřebujete editor JSON. Doporučujeme používat [Visual Studio Code](https://code.visualstudio.com/), který je k dispozici pro Windows, Linux a OS X.
-2. Získejte ukázkový soubor definice artefaktfile.json. Podívejte se na artefakty vytvořené týmem DevTest Labs v našem [úložišti GitHub](https://github.com/Azure/azure-devtestlab). Vytvořili jsme bohatou knihovnu artefaktů, které vám pomohou vytvořit si vlastní artefakty. Stáhněte si soubor definice artefaktu a proveďte v něm změny a vytvořte si vlastní artefakty.
-3. Využijte technologie IntelliSense. Pomocí technologie IntelliSense můžete zobrazit platné prvky, které můžete použít k vytvoření souboru definice artefaktu. Můžete také zobrazit různé možnosti pro hodnoty prvku. Například při úpravě **targetOsType** element, IntelliSense vám ukáže dvě možnosti, pro Windows nebo Linux.
-4. Uložte artefakt do [veřejného úložiště Git pro DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) nebo [vlastní úložiště Git](devtest-lab-add-artifact-repo.md). Ve veřejném úložišti můžete zobrazit artefakty sdílené ostatními uživateli, které můžete použít přímo, nebo je přizpůsobit tak, aby vyhovovaly vašim potřebám.
+1. Nainstalujte Editor JSON. Pro práci se soubory definice artefaktů potřebujete Editor JSON. Doporučujeme použít [Visual Studio Code](https://code.visualstudio.com/), který je k dispozici pro Windows, Linux a OS X.
+2. Získání ukázkového definičního souboru artifactfile. JSON Podívejte se na artefakty vytvořené týmem DevTest Labs v našem [úložišti GitHub](https://github.com/Azure/azure-devtestlab). Vytvořili jsme bohatou knihovnu artefaktů, které vám pomůžou vytvořit vlastní artefakty. Stáhněte soubor definice artefaktů a proveďte změny v něm, aby bylo možné vytvořit vlastní artefakty.
+3. Využijte technologii IntelliSense. Použijte technologii IntelliSense k zobrazení platných prvků, které lze použít k vytvoření souboru definice artefaktů. Můžete také zobrazit různé možnosti pro hodnoty prvku. Například při úpravách prvku **targetOsType** vám IntelliSense zobrazí dvě volby, pro Windows nebo Linux.
+4. Uložte artefakt ve [veřejném úložišti Git pro DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) nebo [vlastní úložiště Git](devtest-lab-add-artifact-repo.md). Ve veřejném úložišti můžete zobrazit artefakty sdílené jinými uživateli, které můžete použít přímo, nebo je přizpůsobit podle svých potřeb.
    
    1. Vytvořte samostatný adresář pro každý artefakt. Název adresáře by měl být stejný jako název artefaktu.
-   2. Uložte soubor definice artefaktu (artifactfile.json) do adresáře, který jste vytvořili.
-   3. Uložte skripty, na které odkazuje příkaz instalace artefaktu.
+   2. Uložte soubor definice artefaktu (artifactfile. JSON) do adresáře, který jste vytvořili.
+   3. Uložte skripty, na které se odkazuje pomocí příkazu pro instalaci artefaktu.
       
-      Zde je příklad, jak může vypadat složka artefaktů:
+      Tady je příklad, jak může složka artefaktů vypadat:
       
       ![Příklad složky artefaktů](./media/devtest-lab-artifact-author/git-repo.png)
-5. Pokud k ukládání artefaktů používáte vlastní úložiště, přidejte úložiště do testovacího prostředí podle následujících pokynů v článku: [Přidejte úložiště Git pro artefakty a šablony](devtest-lab-add-artifact-repo.md).
+5. Pokud používáte vlastní úložiště pro ukládání artefaktů, přidejte úložiště do testovacího prostředí podle pokynů v článku: [Přidání úložiště Git pro artefakty a šablony](devtest-lab-add-artifact-repo.md).
 
 ## <a name="related-articles"></a>Související články
-* [Jak diagnostikovat selhání artefaktů v DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)
-* [Připojení virtuálního počítače k existující doméně služby Active Directory pomocí šablony Správce prostředků v devTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [Postup diagnostiky selhání artefaktů v DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)
+* [Připojení virtuálního počítače k existující doméně služby Active Directory pomocí Správce prostředků šablony v DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si, jak [přidat úložiště artefaktů Git do testovacího prostředí](devtest-lab-add-artifact-repo.md).
+* Naučte se [Přidat úložiště artefaktů Git do testovacího prostředí](devtest-lab-add-artifact-repo.md).

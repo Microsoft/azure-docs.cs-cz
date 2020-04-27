@@ -1,6 +1,6 @@
 ---
-title: Připojení prostředí k virtuální síti testovacího prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak se připojit prostředí (jako je cluster Service Fabric) k virtuální síti testovacího prostředí ve službě Azure DevTest Labs
+title: Připojení prostředí k virtuální síti testovacího prostředí v Azure DevTest Labs | Microsoft Docs
+description: Naučte se, jak připojit prostředí (jako je Service Fabric cluster) k virtuální síti testovacího prostředí v Azure DevTest Labs
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: bb8b5f7d6578390fd0f48c3de154cfdb034ac6c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60777164"
 ---
-# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Připojení prostředí k virtuální síti testovacího prostředí ve službě Azure DevTest Labs
-Azure DevTest Labs usnadňuje vytváření virtuálních počítačů v testovacím prostředí s [integrované sítě](devtest-lab-configure-vnet.md). Má značnou flexibilitu s možností [vytvoření prostředí více virtuálních počítačů](devtest-lab-test-env.md). Tento článek ukazuje, jak připojit virtuální počítače v prostředí k virtuální síti testovacího prostředí. Jeden scénář, kde jste tuto funkci používat, je nastavení N-vrstvou aplikaci s datovou vrstvu serveru SQL Server, které je připojené k testovací prostředí virtuální síť umožňuje testovací virtuální počítače v testovacím prostředí k němu přistupovat.  
+# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Připojte prostředí k virtuální síti testovacího prostředí v Azure DevTest Labs
+Azure DevTest Labs usnadňuje vytváření virtuálních počítačů v testovacím prostředí s [integrovanými sítěmi](devtest-lab-configure-vnet.md). Má značnou flexibilitu při [vytváření prostředí s více virtuálními počítači](devtest-lab-test-env.md). Tento článek ukazuje, jak připojit virtuální počítače v prostředí k virtuální síti testovacího prostředí. Jedním z scénářů, kde tuto funkci použijete, je nastavení N-vrstvé aplikace s SQL Server datovou vrstvou, která je připojená k virtuální síti testovacího prostředí, aby k ní měli testovací virtuální počítače.  
 
-## <a name="sample-environment-that-uses-lab-vnet"></a>Ukázková prostředí, které používá virtuální síť
-Zde je šablona jednoduché prostředí, která se připojuje podsíť testovacího prostředí. V této ukázce `DTLSubnetId` parametr představuje ID podsítě, ve které existuje testovacího prostředí. Je přiřazen k: `$(LabSubnetId)`, který je automaticky řešené DevTest Labs k ID podsítě testovacího prostředí. **Podsítě** vlastnost **síťové rozhraní** virtuálního počítače v této definici je nastavena na `DTLSubnetId` tak, aby se připojí stejné podsíti. 
+## <a name="sample-environment-that-uses-lab-vnet"></a>Ukázkové prostředí, které používá virtuální síť testovacího prostředí
+Tady je jednoduchá šablona prostředí, která spojuje podsíť testovacího prostředí. V této ukázce `DTLSubnetId` parametr představuje ID podsítě, ve které testovací prostředí existuje. Přiřazeno k: `$(LabSubnetId)`, který je automaticky vyřešen DevTest Labs, na ID podsítě testovacího prostředí. Vlastnost **Subnet** **síťového rozhraní** virtuálního počítače v této definici je nastavená `DTLSubnetId` tak, aby se přiřadí ke stejné podsíti. 
 
 ```json
 {
@@ -160,5 +160,5 @@ Zde je šablona jednoduché prostředí, která se připojuje podsíť testovac�
 }
 ```
 
-## <a name="next-steps"></a>Další postup
-Najdete v následujícím článku na webu Azure portal provádět tyto operace: [Restartovat virtuální počítač](devtest-lab-restart-vm.md).
+## <a name="next-steps"></a>Další kroky
+Pokud chcete použít Azure Portal k provedení těchto operací, přečtěte si následující článek: [restartování virtuálního počítače](devtest-lab-restart-vm.md).

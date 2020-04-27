@@ -1,6 +1,6 @@
 ---
-title: Kurz zálohování virtuálního pole Microsoft Azure StorSimple | Dokumenty společnosti Microsoft
-description: Popisuje, jak zálohovat sdílené složky a svazky virtuálního pole StorSimple.
+title: Kurz zálohování virtuálních polí Microsoft Azure StorSimple | Microsoft Docs
+description: Popisuje zálohování sdílených složek a svazků virtuálních polí StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -16,103 +16,103 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60581301"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Zálohování sdílených složek nebo svazků ve virtuálním poli StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Virtuální pole StorSimple je místní virtuální zařízení s hybridním cloudovým úložištěm, které lze nakonfigurovat jako souborový server nebo server iSCSI. Virtuální pole umožňuje uživateli vytvořit naplánované a ruční zálohování všech sdílených složek nebo svazků v zařízení. Při konfiguraci jako souborový server také umožňuje obnovení na úrovni položky. Tento kurz popisuje, jak vytvořit naplánované a ruční zálohování a provést obnovení na úrovni položky k obnovení odstraněného souboru ve virtuálním poli.
+Virtuální pole StorSimple je hybridní cloudové úložiště, které se dá nakonfigurovat jako souborový server nebo server iSCSI. Virtuální pole umožňuje uživateli vytvářet naplánované a ruční zálohy všech sdílených složek nebo svazků v zařízení. Když je nakonfigurovaný jako souborový server, umožňuje taky obnovení na úrovni položek. V tomto kurzu se dozvíte, jak vytvořit naplánované a ruční zálohy a provést obnovení na úrovni položky k obnovení odstraněného souboru ve virtuálním poli.
 
-Tento kurz se vztahuje pouze na virtuální pole StorSimple. Informace o řadě 8000 naleznete v části [Vytvoření zálohy pro zařízení řady 8000.](storsimple-manage-backup-policies-u2.md)
+Tento kurz se vztahuje pouze na virtuální pole StorSimple. Informace o řadě 8000 najdete na webu [vytvoření zálohy pro zařízení 8000 series](storsimple-manage-backup-policies-u2.md) .
 
 ## <a name="back-up-shares-and-volumes"></a>Zálohování sdílených složek a svazků
 
-Zálohy poskytují ochranu v okamžiku, zlepšují obnovitelnost a minimalizují dobu obnovení sdílených složek a svazků. Sdílenou složku nebo svazek můžete zálohovat na zařízení StorSimple dvěma způsoby: **Naplánované** nebo **Ruční**. Každá z metod je popsána v následujících částech.
+Zálohy poskytují ochranu k určitému bodu v čase, zlepšují možnosti obnovení a minimalizují dobu obnovení sdílených složek a svazků. Sdílenou složku nebo svazek můžete na zařízení StorSimple zálohovat dvěma způsoby: **naplánované** nebo **Ruční**. Jednotlivé metody jsou popsány v následujících částech.
 
-## <a name="change-the-backup-start-time"></a>Změna počátečního času zálohování
+## <a name="change-the-backup-start-time"></a>Změna času zahájení zálohování
 
 > [!NOTE]
-> V této verzi jsou naplánované zálohy vytvořeny výchozí zásadou, která se spouští denně v určený čas a zálohuje všechny sdílené složky nebo svazky v zařízení. V tuto chvíli není možné vytvořit vlastní zásady pro naplánované zálohy.
+> V této verzi se naplánovaná zálohování vytvoří pomocí výchozí zásady, která běží denně v zadanou dobu, a zálohuje všechny sdílené složky nebo svazky na zařízení. V tuto chvíli není možné vytvářet vlastní zásady pro plánované zálohy.
 
 
-Virtuální pole StorSimple má výchozí zásady zálohování, které začíná v určitou denní dobu (22:30) a zálohuje všechny sdílené složky nebo svazky v zařízení jednou denně. Můžete změnit čas spuštění zálohy, ale frekvenci a uchovávání (která určuje počet záloh, které chcete zachovat) nelze změnit. Během těchto záloh je zálohováno celé virtuální zařízení. To může potenciálně ovlivnit výkon zařízení a ovlivnit úlohy nasazené na zařízení. Proto doporučujeme naplánovat tyto zálohy pro špičku.
+Vaše virtuální pole StorSimple má výchozí zásadu zálohování, která začíná v zadaném dni (22:30) a zálohuje všechny sdílené složky nebo svazky na zařízení jednou denně. Můžete změnit čas, kdy se zálohování spustí, ale frekvence a uchování (která určuje počet uchovávaných záloh) nelze změnit. Během těchto záloh se zálohuje celé virtuální zařízení. To může mít vliv na výkon zařízení a vliv na úlohy nasazené na zařízení. Proto doporučujeme, abyste tyto zálohy naplánovali na dobu mimo špičku.
 
- Chcete-li změnit výchozí čas zahájení zálohování, proveďte na [webu Azure Portal](https://portal.azure.com/)následující kroky .
+ Chcete-li změnit výchozí čas zahájení zálohování, proveďte následující kroky v [Azure Portal](https://portal.azure.com/).
 
-#### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>Změna počátečního času výchozí zásady zálohování
+#### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>Změna počátečního času pro výchozí zásady zálohování
 
-1. Přejděte na **zařízení**. Zobrazí se seznam zařízení registrovaných ve službě StorSimple Device Manager. 
+1. Přejít na **zařízení**. Zobrazí se seznam zařízení zaregistrovaných ve službě StorSimple Device Manager. 
    
-    ![přejít na zařízení](./media/storsimple-virtual-array-backup/changebuschedule1.png)
+    ![Přejít na zařízení](./media/storsimple-virtual-array-backup/changebuschedule1.png)
 
-2. Vyberte a klikněte na zařízení. Zobrazí se okno **Nastavení.** Přejděte na **spravovat zásady zálohování >**.
+2. Vyberte zařízení a klikněte na něj. Zobrazí se okno **Nastavení** . Přejít na **správu zásad zálohování >**.
    
-    ![vyberte zařízení](./media/storsimple-virtual-array-backup/changebuschedule2.png)
+    ![Vyberte své zařízení.](./media/storsimple-virtual-array-backup/changebuschedule2.png)
 
-3. V okně **zásad zálohování** je výchozí čas zahájení 22:30. Můžete určit nový čas zahájení denního plánu v časovém pásmu zařízení.
+3. V okně **zásady zálohování** je výchozí čas začátku 22:30. Můžete zadat nový čas zahájení denního plánu v časovém pásmu zařízení.
    
-    ![přechod na zásady zálohování](./media/storsimple-virtual-array-backup/changebuschedule5.png)
+    ![Přejít k zásadám zálohování](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
 4. Klikněte na **Uložit**.
 
-### <a name="take-a-manual-backup"></a>Ruční zálohování
+### <a name="take-a-manual-backup"></a>Provedení ručního zálohování
 
-Kromě naplánovaných záloh můžete kdykoli provést ruční (na vyžádání) zálohování dat zařízení.
+Kromě naplánovaných záloh můžete kdykoli ručně (na vyžádání) vytvořit zálohu dat zařízení.
 
 #### <a name="to-create-a-manual-backup"></a>Ruční vytvoření zálohy
 
-1. Přejděte na **zařízení**. Vyberte zařízení a klikněte pravým tlačítkem myši **...** zcela vpravo ve vybraném řádku. V místní nabídce vyberte **Převzít zálohu**.
+1. Přejít na **zařízení**. Vyberte zařízení a klikněte pravým tlačítkem myši na **...** úplně vpravo na vybraném řádku. V místní nabídce vyberte možnost **provést zálohování**.
    
-    ![navigace pro zálohování](./media/storsimple-virtual-array-backup/takebackup1m.png)
+    ![přejděte k provedení zálohování.](./media/storsimple-virtual-array-backup/takebackup1m.png)
 
-2. V okně **Převzít zálohu** klikněte na **Take backup**. Tím se zálohují všechny sdílené složky na souborovém serveru nebo všechny svazky na serveru iSCSI. 
+2. V okně **provést zálohování** klikněte na možnost **provést zálohování**. Tím dojde k zálohování všech sdílených složek na souborovém serveru nebo na všech svazcích serveru iSCSI. 
    
-    ![spuštění zálohy](./media/storsimple-virtual-array-backup/takebackup2m.png)
+    ![spouští se zálohování](./media/storsimple-virtual-array-backup/takebackup2m.png)
    
-    Spustí se záloha na vyžádání a uvidíte, že byla spuštěna úloha zálohování.
+    Spustí se zálohování na vyžádání a uvidíte, že se spustila úloha zálohování.
    
-    ![spuštění zálohy](./media/storsimple-virtual-array-backup/takebackup3m.png) 
+    ![spouští se zálohování](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
-    Po úspěšném dokončení úlohy budete znovu upozorněni. Proces zálohování se spustí.
+    Po úspěšném dokončení úlohy budete znovu upozorněni. Pak se spustí proces zálohování.
    
-    ![vytvořena úloha zálohování](./media/storsimple-virtual-array-backup/takebackup4m.png)
+    ![Úloha zálohování se vytvořila.](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. Chcete-li sledovat průběh zálohování a podívat se na podrobnosti o úloze, klikněte na oznámení. Tím přejdete na **podrobnosti o úloze**.
+3. Pokud chcete sledovat průběh zálohování a podívat se na Podrobnosti úlohy, klikněte na oznámení. Tím přejdete k **podrobnostem úlohy**.
    
-     ![podrobnosti o úloze zálohování](./media/storsimple-virtual-array-backup/takebackup5m.png)
+     ![Podrobnosti úlohy zálohování](./media/storsimple-virtual-array-backup/takebackup5m.png)
 
-4. Po dokončení zálohování přejděte do **katalogu zálohování služby Management >**. Na zařízení se zobrazí snímek cloudu všech sdílených složek (nebo svazků).
+4. Po dokončení zálohování přejdete do části **správa > zálohovat katalog**. Na vašem zařízení se zobrazí snímek cloudu se všemi sdílenými složkami (nebo svazky).
    
-    ![Dokončená záloha](./media/storsimple-virtual-array-backup/takebackup19m.png) 
+    ![Zálohování se dokončilo.](./media/storsimple-virtual-array-backup/takebackup19m.png) 
 
 ## <a name="view-existing-backups"></a>Zobrazit existující zálohy
-Chcete-li zobrazit existující zálohy, proveďte následující kroky na webu Azure Portal.
+Chcete-li zobrazit existující zálohy, proveďte následující kroky v Azure Portal.
 
 #### <a name="to-view-existing-backups"></a>Zobrazení existujících záloh
 
-1. Přejděte na **okno Zařízení.** Vyberte a klikněte na zařízení. V okně **Nastavení** přejděte do **katalogu zálohování > správy**.
+1. Otevřete okno **zařízení** . Vyberte zařízení a klikněte na něj. V okně **Nastavení** otevřete **katalog Správa > zálohování**.
    
-    ![Přechod do katalogu záloh](./media/storsimple-virtual-array-backup/viewbackups1.png)
-2. Zadejte následující kritéria, která mají být použita pro filtrování:
+    ![Přejít ke katalogu záloh](./media/storsimple-virtual-array-backup/viewbackups1.png)
+2. Zadejte následující kritéria, která budou použita pro filtrování:
    
-   - **Časové rozpětí** – může být **past 1 hodina**, Past **24 hodin**, Past 7 **days**, **Past 30 days**, Past **year**, a **Custom date**.
+   - **Časový rozsah** – může být **za 1 hodinu**, **posledních 24 hodin**, **posledních 7 dní**, **posledních 30 dní**, **minulý rok**a **vlastní datum**.
     
-   - **Zařízení** – vyberte ze seznamu souborových serverů nebo serverů iSCSI registrovaných ve službě StorSimple Device Manager.
+   - **Zařízení** – vyberte ze seznamu souborové servery nebo servery iSCSI, které jsou zaregistrované ve službě StorSimple Device Manager.
    
-   - **Inicializováno** – může být automaticky **naplánováno** (pomocí zásad zálohování) nebo **ručně** iniciováno (vámi).
+   - **Iniciované** – dá se automaticky **naplánovat** (zásady zálohování) nebo **ručně** iniciované (vámi).
    
-     ![Filtrování záloh](./media/storsimple-virtual-array-backup/viewbackups2.png)
+     ![Filtrovat zálohy](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. Klikněte na **Použít**. Filtrovaný seznam záloh se zobrazí v okně **katalogu zálohování.** Poznámka: v daném okamžiku lze zobrazit pouze 100 záložních prvků.
+3. Klikněte na **Použít**. Filtrovaný seznam záloh se zobrazí v okně **katalog záloh** . Poznámka: v daný okamžik se dají zobrazit jenom 100 elementy zálohy.
    
     ![Aktualizovaný katalog záloh](./media/storsimple-virtual-array-backup/viewbackups3.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [správě virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md).
+Přečtěte si další informace o [správě virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md).
 

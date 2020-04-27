@@ -1,6 +1,6 @@
 ---
-title: Azure Traffic Manager s azure site recovery | Dokumenty společnosti Microsoft
-description: Popisuje, jak používat Azure Traffic Manager s Azure Site Recovery pro zotavení po havárii a migraci
+title: Traffic Manager Azure s Azure Site Recovery | Microsoft Docs
+description: Popisuje, jak používat Azure Traffic Manager s Azure Site Recovery pro zotavení po havárii a pro migraci.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -9,114 +9,114 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60947742"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager se službou Azure Site Recovery
 
-Azure Traffic Manager umožňuje řídit distribuci provozu mezi koncovými body aplikace. Koncový bod je jakákoli internetová služba hostovaná v rámci nebo mimo Azure.
+Azure Traffic Manager umožňuje řídit distribuci provozu napříč koncovými body vaší aplikace. Koncový bod je jakákoli internetová služba hostovaná v rámci nebo mimo Azure.
 
-Traffic Manager používá dns systém DNS k přesměrování požadavků klientů na nejvhodnější koncový bod na základě metody směrování provozu a stavu koncových bodů. Traffic Manager poskytuje celou řadu [metod směrování provozu](../traffic-manager/traffic-manager-routing-methods.md) a [možností monitorování koncových bodů](../traffic-manager/traffic-manager-monitoring.md), takže vyhovuje různým požadavkům aplikací a modelům automatického převzetí služeb při selhání. Klienti se připojí k vybranému koncovému bodu přímo. Traffic Manager není proxy nebo brána a nevidí přenos y procházející mezi klientem a službou.
+Traffic Manager používá službu DNS (Domain Name System) k přímému směrování požadavků klientů na nejvhodnější koncový bod, a to na základě metody směrování provozu a stavu koncových bodů. Traffic Manager poskytuje celou řadu [metod směrování provozu](../traffic-manager/traffic-manager-routing-methods.md) a [možností monitorování koncových bodů](../traffic-manager/traffic-manager-monitoring.md), takže vyhovuje různým požadavkům aplikací a modelům automatického převzetí služeb při selhání. Klienti se připojí k vybranému koncovému bodu přímo. Traffic Manager není proxy nebo brána a nevidí přenos mezi klientem a službou.
 
-Tento článek popisuje, jak můžete kombinovat inteligentní směrování Azure Traffic Monitor s výkonnými možnostmi zotavení po havárii azure site recovery a migrace.
+Tento článek popisuje, jak můžete kombinovat inteligentní směrování v Azure Traffic Monitor s výkonnými možnostmi pro zotavení po havárii a migraci Azure Site Recovery.
 
-## <a name="on-premises-to-azure-failover"></a>Místní převzetí služeb při selhání azure
+## <a name="on-premises-to-azure-failover"></a>Převzetí služeb při selhání z místního prostředí do Azure
 
-Pro první scénář zvažte **společnost A,** která má všechny své aplikační infrastruktury spuštěné v místním prostředí. Z důvodů kontinuity provozu a dodržování předpisů se **společnost A** rozhodne používat Azure Site Recovery k ochraně svých aplikací.
+V prvním scénáři zvažte **Společnost A** , která má veškerou její aplikační infrastrukturu spuštěnou v místním prostředí. V zájmu zajištění provozní kontinuity a dodržování předpisů se **Společnost** rozhodla použít Azure Site Recovery k ochraně svých aplikací.
 
-**Společnost A** spouštěla aplikace s veřejnými koncovými body a chce možnost bezproblémově přesměrovat provoz do Azure v případě havárie. [Metoda směrování](../traffic-manager/traffic-manager-configure-priority-routing-method.md) provozu priority ve Službě Azure Traffic Manager umožňuje společnosti A snadno implementovat tento vzor převzetí služeb při selhání.
+**Společnost A** provozuje aplikace s veřejnými koncovými body a chce schopnost plynule přesměrovat provoz do Azure v případě havárie. Metoda [prioritního](../traffic-manager/traffic-manager-configure-priority-routing-method.md) směrování provozu v Azure Traffic Manager umožňuje společnosti a snadno implementovat tento vzor převzetí služeb při selhání.
 
 Nastavení je následující:
-- **Společnost A** vytvoří [profil traffic managera](../traffic-manager/traffic-manager-create-profile.md).
-- S využitím metody směrování **priority** **vytvoří společnost A** dva koncové body – **primární** pro místní a převzetí služeb **při selhání** pro Azure. **Primární** je přiřazena priorita 1 a **převzetí služeb při selhání** je přiřazena priorita 2.
-- Vzhledem k tomu, **že primární** koncový bod je hostovaný mimo Azure, koncový bod se vytvoří jako [externí](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) koncový bod.
-- S Azure Site Recovery web nemá web Azure žádné virtuální počítače nebo aplikace spuštěné před převzetíslužeb služeb při selhání. Koncový bod **převzetí služeb při selhání** se tedy také vytvoří jako **externí** koncový bod.
-- Ve výchozím nastavení je provoz uživatelů směrován na místní aplikaci, protože tento koncový bod má nejvyšší prioritu, která je s ním spojena. Žádný provoz je směrována do Azure, pokud **primární** koncový bod je v pořádku.
+- **Společnost A** vytvoří [profil Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
+- S využitím metody směrování **priority** **Společnost A** vytvoří dva koncové body – **primární** pro místní prostředí a **převzetí služeb při selhání** pro Azure. K **primární** je přiřazena priorita 1 a pro **převzetí služeb při selhání** je přiřazena Priorita 2.
+- Vzhledem k tomu, že je **primární** koncový bod hostovaný mimo Azure, je koncový bod vytvořený jako [externí](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) koncový bod.
+- V Azure Site Recovery nemá lokalita Azure žádné virtuální počítače ani aplikace spuštěné před převzetím služeb při selhání. Proto se koncový bod **převzetí služeb při selhání** vytvoří také jako **externí** koncový bod.
+- Ve výchozím nastavení je provoz uživatele směrován do místní aplikace, protože k tomuto koncovému bodu je přidružena nejvyšší priorita. Žádný provoz není směrován do Azure, pokud je **primárním** koncovým bodem v pořádku.
 
-![Místní Azure před převzetím služeb při selhání](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-before.png)
+![Místní – až Azure před převzetím služeb při selhání](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-before.png)
 
-V případě havárie může společnost A aktivovat [převzetí služeb při selhání](site-recovery-failover.md) do Azure a obnovit své aplikace v Azure. Když Azure Traffic Manager zjistí, že **primární** koncový bod už není v pořádku, automaticky použije koncový bod **převzetí služeb při selhání** v odpovědi DNS a uživatelé se připojí k aplikaci obnovené v Azure.
+V případě havárie může společnost A aktivovat [převzetí služeb při selhání](site-recovery-failover.md) do Azure a obnovovat své aplikace v Azure. Když Azure Traffic Manager zjistí, že **primární** koncový bod už není v pořádku, použije v odpovědi DNS automaticky koncový bod **převzetí služeb při selhání** a uživatelé se připojí k aplikaci obnovenou v Azure.
 
-![Místní Azure po převzetí služeb při selhání](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-after.png)
+![Místní – až Azure po převzetí služeb při selhání](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-after.png)
 
-V závislosti na obchodních požadavcích může **společnost A** zvolit vyšší nebo nižší [frekvenci zjišťování,](../traffic-manager/traffic-manager-monitoring.md) aby přepnula mezi místním prostředím do Azure v případě havárie a zajistila minimální prostoje pro uživatele.
+V závislosti na podnikových požadavcích může **Společnost A** vybrat vyšší nebo nižší [četnost zjišťování](../traffic-manager/traffic-manager-monitoring.md) pro přepínání mezi místními počítači a Azure v případě havárie a zajištění minimálního výpadku uživatelů.
 
-Když je problém omezen, **společnost A** může navrácení služeb po obnovení z Azure do místního prostředí[(VMware](vmware-azure-failback.md) nebo [Hyper-V)](hyper-v-azure-failback.md)pomocí Azure Site Recovery. Když nyní Traffic Manager zjistí, že **primární** koncový bod je opět v pořádku, automaticky využívá **primární** koncový bod ve svých odpovědích DNS.
+Když je havárie obsaženo, může **Společnost A** navracet služby po obnovení z Azure do svého místního prostředí ([VMware](vmware-azure-failback.md) nebo [Hyper-V](hyper-v-azure-failback.md)) pomocí Azure Site Recovery. Když teď Traffic Manager detekuje, že **primární** koncový bod je opět v pořádku, automaticky využívá **primární** koncový bod v odpovědích DNS.
 
-## <a name="on-premises-to-azure-migration"></a>Místní migrace do Azure
+## <a name="on-premises-to-azure-migration"></a>Migrace z místního prostředí do Azure
 
-Kromě zotavení po havárii azure site recovery také umožňuje [migrace do Azure](migrate-overview.md). Pomocí výkonných možností převzetí služeb při selhání testu Azure Site Recovery můžou zákazníci vyhodnocovat výkon aplikací v Azure, aniž by to ovlivnilo jejich místní prostředí. A když jsou zákazníci připraveni k migraci, mohou se rozhodnout migrovat celé úlohy společně nebo se rozhodnout migrovat a škálovat postupně.
+Kromě zotavení po havárii Azure Site Recovery taky umožňuje [migrace do Azure](migrate-overview.md). Azure Site Recovery díky výkonným funkcím testovacího převzetí služeb při selhání můžete zákazníkům vyhodnotit výkon aplikace v Azure, aniž by to mělo vliv na jejich místní prostředí. A když jsou zákazníci připraveni na migraci, můžou zvolit, že se mají migrovat celé úlohy dohromady, nebo se můžete rozhodnout migrovat a škálovat postupně.
 
-Azure Traffic Manager [je vážený](../traffic-manager/traffic-manager-configure-weighted-routing-method.md) směrování metoda slouží k přímé některé části příchozíprovoz do Azure při směrování většinu do místního prostředí. Tento přístup vám může pomoci posoudit výkon škálování, protože můžete pokračovat ve zvyšování váhy přiřazené k Azure při migraci stále více a více úloh do Azure.
+Metodu [váženého](../traffic-manager/traffic-manager-configure-weighted-routing-method.md) směrování v Azure Traffic Manager je možné využít k směrování některých částí příchozího provozu do Azure, a to tak, že se většina přesměruje do místního prostředí. Tento přístup může přispět k vyhodnocení výkonu škálování, protože můžete dál zvyšovat váhu přiřazenou k Azure při migraci více a dalších úloh do Azure.
 
-**Například společnost B** se rozhodne migrovat ve fázích, přesunutí některé jeho aplikační prostředí při zachování zbytek v místním prostředí. Během počátečních fází, kdy je většina prostředí místní, je místnímprostředí přiřazena větší hmotnost. Traffic manager vrátí koncový bod na základě vahou přiřazených k dostupným koncovým bodům.
+Například **Společnost B** se rozhodne pro migraci ve fázích a přesunutím některých jeho aplikačního prostředí a zachování místního nastavení. V počátečních fázích, kdy je většina prostředí místní, se k místnímu prostředí přiřadí větší váha. Traffic Manager vrací koncový bod na základě vah přiřazených k dostupným koncovým bodům.
 
-![Migrace mezi místními a virtuálními zařízeními a Azure](./media/concepts-traffic-manager-with-site-recovery/on-premises-migration.png)
+![Migrace z místního prostředí do Azure](./media/concepts-traffic-manager-with-site-recovery/on-premises-migration.png)
 
-Během migrace jsou aktivní oba koncové body a většina provozu je směrována do místního prostředí. Jak migrace pokračuje, větší váhu lze přiřadit ke koncovému bodu v Azure a nakonec místní koncový bod lze deaktivovat po migraci.
+Během migrace jsou oba koncové body aktivní a většina provozu je směrována do místního prostředí. Jak migrace pokračuje, může se koncovým bodem v Azure přiřadit větší váha a nakonec může být místní koncový bod deaktivovaný po migraci.
 
 ## <a name="azure-to-azure-failover"></a>Převzetí služeb při selhání Azure do Azure
 
-V tomto příkladu zvažte **společnost C,** která má všechny své aplikační infrastruktury se systémem Azure. Z důvodů kontinuity provozu a dodržování předpisů se **společnost C** rozhodne používat Azure Site Recovery k ochraně svých aplikací.
+V tomto příkladu zvažte **Společnost C** , která má veškerou svoji aplikační infrastrukturu běžící v Azure. V zájmu zajištění provozní kontinuity a dodržování předpisů se **Společnost C** rozhodne použít Azure Site Recovery k ochraně svých aplikací.
 
-**Společnost C** spouštěla aplikace s veřejnými koncovými body a chce možnost bezproblémově přesměrovat provoz do jiné oblasti Azure v případě havárie. [Metoda směrování](../traffic-manager/traffic-manager-configure-priority-routing-method.md) provozu priority umožňuje společnosti **C** snadno implementovat tento vzor převzetí služeb při selhání.
+**Společnost C** spouští aplikace s veřejnými koncovými body a chce schopnost plynule přesměrovat provoz do jiné oblasti Azure v události po havárii. Metoda [Priorita](../traffic-manager/traffic-manager-configure-priority-routing-method.md) přenosu dat umožňuje **společnosti C** snadno implementovat tento vzor převzetí služeb při selhání.
 
 Nastavení je následující:
-- **Společnost C** vytvoří [profil traffic managera](../traffic-manager/traffic-manager-create-profile.md).
-- S využitím metody směrování **priority** **vytvoří společnost C** dva koncové body – **primární** pro zdrojovou oblast (Azure East Asia) a převzetí služeb **při selhání** pro oblast obnovení (Azure Jihovýchodní Asie). **Primární** je přiřazena priorita 1 a **převzetí služeb při selhání** je přiřazena priorita 2.
-- Vzhledem k tomu, **že primární** koncový bod je hostovaný v Azure, koncový bod může být jako koncový bod [Azure.](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints)
-- S Azure Site Recovery, obnovení webu Azure nemá žádné virtuální počítače nebo aplikace spuštěné před převzetí služeb při selhání. Koncový bod **převzetí služeb při selhání** lze tedy vytvořit jako [externí](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) koncový bod.
-- Ve výchozím nastavení je provoz uživatelů směrován do zdrojové oblasti (východní Asie) aplikace jako koncový bod má nejvyšší prioritu s ním spojené. Žádný provoz je směrována do oblasti **obnovení,** pokud primární koncový bod je v pořádku.
+- **Společnost C** vytvoří [profil Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
+- Při použití metody směrování **priority** **Společnost C** vytvoří dva koncové body – **primární** pro zdrojovou oblast (Azure východní Asie) a **převzetí služeb při selhání** pro oblast obnovení (Azure jihovýchodní Asie). K **primární** je přiřazena priorita 1 a pro **převzetí služeb při selhání** je přiřazena Priorita 2.
+- Vzhledem k tomu, že je **primární** koncový bod hostovaný v Azure, může být koncový bod jako koncový bod [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) .
+- V Azure Site Recovery nemá lokalita Azure Recovery žádné virtuální počítače ani aplikace spuštěné před převzetím služeb při selhání. Koncový bod **převzetí služeb při selhání** se proto dá vytvořit jako [externí](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) koncový bod.
+- Ve výchozím nastavení je provoz uživatele směrován do aplikace zdrojové oblasti (Východní Asie), protože k tomuto koncovému bodu je přidružena nejvyšší priorita. Pokud je **primárním** koncovým bodem v pořádku, žádný provoz se nesměruje do oblasti obnovení.
 
 ![Azure-to-Azure před převzetím služeb při selhání](./media/concepts-traffic-manager-with-site-recovery/azure-failover-before.png)
 
-V případě havárie **může společnost C** aktivovat převzetí služeb při [selhání](azure-to-azure-tutorial-failover-failback.md) a obnovit své aplikace v oblasti Azure pro obnovení. Když Azure Traffic Manager zjistí, že primární koncový bod už není v pořádku, automaticky použije koncový bod **převzetí služeb při selhání** v odpovědi DNS a uživatelé se připojí k aplikaci obnovené v oblasti Azure pro obnovení (jihovýchodní Asie).
+V případě havárie může **Společnost C** aktivovat [převzetí služeb při selhání](azure-to-azure-tutorial-failover-failback.md) a obnovovat své aplikace v oblasti Azure Recovery. Když Azure Traffic Manager zjistí, že primární koncový bod již není v pořádku, používá v odpovědi DNS automaticky koncový bod **převzetí služeb při selhání** a uživatelé se k aplikaci obnovili v oblasti obnovení Azure (jihovýchodní Asie).
 
 ![Azure-to-Azure po převzetí služeb při selhání](./media/concepts-traffic-manager-with-site-recovery/azure-failover-after.png)
 
-V závislosti na obchodních požadavcích může **společnost C** zvolit vyšší nebo nižší [frekvenci zjišťování](../traffic-manager/traffic-manager-monitoring.md) pro přepínání mezi zdrojovými oblastmi a oblastmi obnovení a zajistit minimální prostoje pro uživatele.
+V závislosti na podnikových požadavcích může **Společnost C** zvolit vyšší nebo nižší [četnost zjišťování](../traffic-manager/traffic-manager-monitoring.md) pro přepínání mezi zdroji a oblastmi obnovení a zajistit minimální prostoje pro uživatele.
 
-Když je problém omezen, **společnost C** můžete navrácení služeb po obnovení z oblasti Azure pro obnovení do oblasti source Azure pomocí Azure Site Recovery. Když nyní Traffic Manager zjistí, že **primární** koncový bod je opět v pořádku, automaticky využívá **primární** koncový bod ve svých odpovědích DNS.
+Když je havárie obsaženo, může **Společnost C** navracet služby po obnovení z oblasti Azure Recovery do zdrojové oblasti azure pomocí Azure Site Recovery. Když teď Traffic Manager detekuje, že **primární** koncový bod je opět v pořádku, automaticky využívá **primární** koncový bod v odpovědích DNS.
 
-## <a name="protecting-multi-region-enterprise-applications"></a>Ochrana podnikových aplikací pro více oblastí
+## <a name="protecting-multi-region-enterprise-applications"></a>Ochrana více oblastí podnikových aplikací
 
-Globální podniky často zlepšují zákaznickou zkušenost tím, že přizpůsobují své aplikace regionálním potřebám. Lokalizace a snížení latence může vést k rozdělení aplikační infrastruktury napříč oblastmi. Podniky jsou také vázány regionálními zákony o datech v určitých oblastech a rozhodnou se izolovat část své aplikační infrastruktury v rámci regionálních hranic.  
+Globální podniky často zlepšují zkušenosti zákazníků tím, že přizpůsobují své aplikace pro účely regionálních potřeb. Omezení lokalizace a latence může vést k rozdělení aplikační infrastruktury mezi oblasti. Podniky jsou také vázány oblastními zákony na data v určitých oblastech a umožňují izolovat část své aplikační infrastruktury v rámci regionálních hranic.  
 
-Podívejme se na příklad, kdy **společnost D** rozdělila své koncové body aplikace tak, aby sloužily samostatně Německu a zbytku světa. **Společnost D** využívá azure traffic manageru [geografické](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) směrování metoda k nastavení tohoto nastavení. Veškerý provoz pocházející z Německa je směrován do **koncového bodu 1** a veškerý provoz pocházející mimo Německo je směrován na **koncový bod 2**.
+Podívejme se na příklad, kde **Společnost D** rozdělí své koncové body aplikace na samostatnou, která slouží jako Německo a zbytek světa. **Společnost D** používá k nastavení [geografické](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) metody směrování v Azure Traffic Manager. Veškerý provoz pocházející z Německa je směrován na **koncový bod 1** a veškerý provoz pocházející mimo Německo je směrován do **koncového bodu 2**.
 
-Problém s tímto nastavením je, že pokud **koncový bod 1** přestane fungovat z nějakého důvodu, neexistuje žádné přesměrování provozu na koncový bod **2**. Provoz pocházející z Německa je i nadále směrován na **koncový bod 1** bez ohledu na stav koncového bodu, takže němečtí uživatelé nemají přístup k **aplikaci společnosti D.** Podobně pokud **koncový bod 2** přejde do offline, neexistuje žádné přesměrování provozu na **koncový bod 1**.
+Tento problém s tímto nastavením znamená, že pokud **koncový bod 1** z nějakého důvodu přestane fungovat, neexistuje žádné přesměrování provozu do **koncového bodu 2**. Provoz pocházející z Německa i nadále směřuje na **koncový bod 1** bez ohledu na stav koncového bodu, přičemž uživatelé mají přístup k aplikaci ve **společnosti D**bez přístupu. Podobně platí, že pokud **koncový bod 2** přejde do režimu offline, neexistuje žádné přesměrování provozu do **koncového bodu 1**.
 
-![Aplikace pro více oblastí před](./media/concepts-traffic-manager-with-site-recovery/geographic-application-before.png)
+![Aplikace s více oblastmi](./media/concepts-traffic-manager-with-site-recovery/geographic-application-before.png)
 
-Aby se zabránilo spuštění do tohoto problému a zajistit odolnost aplikace, **společnost D** používá [vnořené profily Traffic Manager](../traffic-manager/traffic-manager-nested-profiles.md) s Azure Site Recovery. V nastavení vnořeného profilu není provoz směrován na jednotlivé koncové body, ale na jiné profily Traffic Manageru. Toto nastavení funguje takto:
-- Namísto využití geografického směrování s jednotlivými koncovými body používá **společnost D** geografické směrování s profily Traffic Manageru.
-- Každý podřízený profil Traffic Manageru využívá **směrování priorit** s primárním koncovým bodem a koncovým bodem obnovení, a proto vnoření **směrování priority** v rámci **geografického** směrování.
-- Chcete-li povolit odolnost proti chybám aplikace, každá distribuce úloh využívá Azure Site Recovery k převzetí služeb při selhání do oblasti obnovení založené v případě události po havárii.
-- Když nadřazený Traffic Manager obdrží dotaz DNS, je přesměrován na příslušný podřízený Traffic Manager, který odpoví na dotaz s dostupným koncovým bodem.
+Aby se zabránilo tomuto problému a zajistila odolnost aplikace, **Společnost D** používá [vnořené Traffic Manager profily](../traffic-manager/traffic-manager-nested-profiles.md) s Azure Site Recovery. V nastavení vnořeného profilu se provoz nesměruje na jednotlivé koncové body, ale místo na jiné profily Traffic Manager. Tady je postup, jak tato instalace funguje:
+- Místo použití geografického směrování s jednotlivými koncovými body používá **Společnost D** geografické směrování s Traffic Manager profily.
+- Každý podřízený profil Traffic Manager využívá směrování **priority** s primárním a koncovým bodem obnovení, a proto vnoření směrování **priority** v rámci **geografického** směrování.
+- Aby byla zajištěna odolnost aplikace, každá distribuce zatížení využívá Azure Site Recovery k převzetí služeb při selhání do oblasti obnovení založené v případě události havárie.
+- Když nadřazený Traffic Manager obdrží dotaz DNS, je přesměrován na relevantní podřízenou Traffic Manager, která reaguje na dotaz s dostupným koncovým bodem.
 
-![Aplikace pro více oblastí po](./media/concepts-traffic-manager-with-site-recovery/geographic-application-after.png)
+![Aplikace s více oblastmi po](./media/concepts-traffic-manager-with-site-recovery/geographic-application-after.png)
 
-Například pokud koncový bod v Německu Central selže, aplikace lze rychle obnovit do Německa severovýchod. Nový koncový bod zpracovává provoz y pocházející z Německa s minimálními prostoji pro uživatele. Podobně výpadek koncového bodu v západní Evropě lze zpracovat obnovením zatížení aplikace do severní Evropy, s Azure Traffic Manager zpracování přesměrování DNS do dostupného koncového bodu.
+Pokud se například koncový bod v Německu (střední) nedaří, aplikace se dá rychle obnovit na Německo – severovýchod. Nový koncový bod zpracovává provoz pocházející z Německa s minimálními výpadky pro uživatele. Podobně výpadk koncového bodu v Západní Evropa může být zpracován pomocí obnovy úlohy aplikace do Severní Evropa a Azure Traffic Manager zpracovává přesměrování DNS na dostupný koncový bod.
 
-Výše uvedené nastavení lze rozšířit tak, aby zahrnovalo tolik požadovaných kombinací oblastí a koncových bodů. Traffic Manager umožňuje až 10 úrovní vnořených profilů a nepovoluje smyčky v rámci vnořené konfigurace.
+Výše uvedené nastavení lze rozšířit tak, aby zahrnovalo, že je vyžadováno mnoho kombinací oblastí a koncových bodů. Traffic Manager umožňuje až 10 úrovní vnořených profilů a nepovoluje smyčky v rámci vnořené konfigurace.
 
-## <a name="recovery-time-objective-rto-considerations"></a>Aspekty cíle doby zotavení (RTO)
+## <a name="recovery-time-objective-rto-considerations"></a>Předpoklady pro čas obnovení (RTO)
 
-Ve většině organizací je přidávání nebo úprava záznamů DNS zpracovávána samostatným týmem nebo jiným uživatelem mimo organizaci. To dělá úkol měnit záznamy DNS velmi náročné. Doba, kterou je třeba integrovat jinýmtýmů nebo organizací spravujícím infrastrukturu DNS, se v jednotlivých organizacích liší a má vliv na rto aplikace.
+Ve většině organizací se při přidávání a úpravách záznamů DNS využívá samostatný tým nebo někdo mimo organizaci. Díky tomu je úloha změny záznamů DNS velmi náročná. Čas potřebný k aktualizaci záznamů DNS jinými týmy nebo organizacemi, které spravují infrastrukturu DNS, se liší od organizace až po organizaci a ovlivňuje RTO aplikace.
 
-Využitím Traffic Manager, můžete předpětí práce potřebné pro aktualizace DNS. V době skutečného převzetí služeb při selhání není vyžadována žádná ruční nebo skriptovaná akce. Tento přístup pomáhá při rychlém přepínání (a tím i snížení RTO) a také při předcházení nákladným časově náročným chybám změny DNS v případě katastrofy. S Traffic Manager, i krok navrácení služeb po obnovení je automatizován, které by jinak musely být spravovány samostatně.
+Díky využití Traffic Manager můžete frontload práci nutnou k aktualizacím DNS. V době skutečného převzetí služeb při selhání se nevyžaduje žádná ruční nebo skriptovaná akce. Tento přístup pomáhá při rychlém přepínání (a proto snížení RTO) a také v případě výpadku nákladné chyby změn DNS v události havárie. V Traffic Manager se i krok navrácení služeb po obnovení automaticky, což by jinak bylo nutné spravovat samostatně.
 
-Nastavení správného [intervalu zjišťování](../traffic-manager/traffic-manager-monitoring.md) prostřednictvím základních nebo rychlých kontrol stavu intervalu může výrazně snížit RTO během převzetí služeb při selhání a snížit prostoje pro uživatele.
+Nastavení správného [intervalu zjišťování](../traffic-manager/traffic-manager-monitoring.md) prostřednictvím základních nebo krátkých kontrol stavu intervalu může výrazně RTO během převzetí služeb při selhání a omezit prostoje pro uživatele.
 
-Můžete také optimalizovat hodnotu DNS Time to Live (TTL) pro profil Traffic Manager. TTL je hodnota, pro kterou by byla položka DNS uložena do mezipaměti klientem. Pro záznam dns by neměl být dotazován dvakrát v rámci rozsahu TTL. Ke každému záznamu DNS je přidružena ttl. Snížení této hodnoty má za následek další dotazy DNS na Traffic Manager, ale může snížit RTO rychlejším zjišťováním výpadků.
+Navíc můžete optimalizovat hodnotu TTL (Time to Live) DNS pro profil Traffic Manager. Hodnota TTL je hodnota, pro kterou bude klient ukládat položku DNS do mezipaměti. V případě záznamu se DNS do rozsahu TTL nedotazuje dvakrát. K jednotlivým záznamům DNS je přidružena hodnota TTL. Omezením této hodnoty se vyhodnotí další dotazy DNS na Traffic Manager, ale můžou snížit RTO, protože zjistíte výpadky rychleji.
 
-TTL zkušenosti klienta také nezvýší, pokud se zvýší počet překladačů DNS mezi klientem a autoritativní server DNS. Překladače DNS 'odpočítávat' TTL a předávat pouze hodnotu TTL, která odráží uplynulý čas od uložení záznamu do mezipaměti. Tím zajistíte, že záznam DNS se aktualizuje na straně klienta po TTL, bez ohledu na počet překladačů DNS v řetězci.
+Hodnota TTL, kterou klient používá, se také nezvyšuje, pokud se zvyšuje počet překladačů DNS mezi klientem a autoritativním serverem DNS. Překladače DNS vypočítávají hodnotu TTL a předají se jenom na hodnotu TTL, která odráží uplynulý čas od chvíle, kdy byl záznam uložen v mezipaměti. Tím se zajistí, že se záznam DNS aktualizuje na klientovi po hodnotě TTL bez ohledu na počet překladačů DNS v řetězu.
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o [metodách směrování](../traffic-manager/traffic-manager-routing-methods.md)traffic manageru .
-- Další informace o [vnořených profilech Traffic Manageru](../traffic-manager/traffic-manager-nested-profiles.md).
-- Další informace o [monitorování koncových bodů](../traffic-manager/traffic-manager-monitoring.md).
-- Další informace o [plánech obnovení](site-recovery-create-recovery-plans.md) pro automatizaci převzetí služeb při selhání aplikací.
+- Přečtěte si další informace o Traffic Manager [metod směrování](../traffic-manager/traffic-manager-routing-methods.md).
+- Přečtěte si další informace o [vnořených Traffic Manager profilech](../traffic-manager/traffic-manager-nested-profiles.md).
+- Přečtěte si další informace o [monitorování koncových bodů](../traffic-manager/traffic-manager-monitoring.md).
+- Další informace o [plánech obnovení](site-recovery-create-recovery-plans.md) pro automatizaci převzetí služeb při selhání aplikace.

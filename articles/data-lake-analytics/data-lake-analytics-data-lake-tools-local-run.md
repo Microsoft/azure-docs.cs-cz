@@ -1,6 +1,6 @@
 ---
-title: Spouštění skriptů Azure Data Lake U-SQL v místním počítači
-description: Zjistěte, jak pomocí nástrojů Azure Data Lake Tools pro Visual Studio spouštět úlohy U-SQL v místním počítači.
+title: Spuštění Azure Data Lake skriptů U-SQL na místním počítači
+description: Naučte se používat Nástroje Azure Data Lake pro Visual Studio ke spouštění úloh U-SQL na místním počítači.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -11,102 +11,102 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "62113931"
 ---
-# <a name="run-u-sql-scripts-on-your-local-machine"></a>Spuštění skriptů U-SQL v místním počítači
+# <a name="run-u-sql-scripts-on-your-local-machine"></a>Spouštění skriptů U-SQL na místním počítači
 
-Při vývoji skriptů U-SQL můžete ušetřit čas a náklady spuštěním skriptů místně. Azure Data Lake Tools pro Visual Studio podporuje spouštění skriptů U-SQL v místním počítači. 
+Když vyvíjíte skripty U-SQL, můžete ušetřit čas a výdaje spuštěním skriptů místně. Nástroje Azure Data Lake pro Visual Studio podporuje spouštění skriptů U-SQL na místním počítači. 
 
-## <a name="basic-concepts-for-local-runs"></a>Základní koncepty pro místní běhy
+## <a name="basic-concepts-for-local-runs"></a>Základní pojmy pro místní běhy
 
-Následující graf ukazuje součásti pro místní spuštění a jak tyto součásti mapovat na cloud spustit.
+Následující graf znázorňuje komponenty pro místní spuštění a způsob mapování těchto součástí do cloudového spuštění.
 
-|Komponenta|Místní spuštění|Cloud běh|
+|Součást|Místní spuštění|Spuštění cloudu|
 |---------|---------|---------|
-|Úložiště|Kořenová složka místních dat|Výchozí účet Azure Data Lake Store|
-|Služba Compute|Modul místního spuštění U-SQL|Služba Azure Data Lake Analytics|
+|Storage|Kořenová složka místních dat|Výchozí účet Azure Data Lake Store|
+|Compute|Místní modul runtime U-SQL|Služba Azure Data Lake Analytics|
 |Spustit prostředí|Pracovní adresář v místním počítači|Cluster Azure Data Lake Analytics|
 
-Následující části poskytují další informace o součástech místního spuštění.
+Níže uvedené části poskytují další informace o místních součástech pro spuštění.
 
 ### <a name="local-data-root-folders"></a>Kořenové složky místních dat
 
-Kořenová složka místních dat je **místní úložiště** pro místní výpočetní účet. Každá složka v místním systému souborů v místním počítači může být místní kořenovou složkou dat. Je stejný jako výchozí účet Azure Data Lake Store účtu Data Lake Analytics. Přepnutí do jiné kořenové složky dat je stejné jako přepnutí na jiný výchozí účet úložiště. 
+Kořenová složka místních dat je **místní úložiště** pro místní výpočetní účet. Každá složka v místním systému souborů na místním počítači může být kořenová složka místních dat. Je stejný jako výchozí účet Azure Data Lake Store účtu Data Lake Analytics. Přepnutí na jinou kořenovou složku dat je stejně jako přepnutí na jiný výchozí účet úložiště. 
 
-Kořenová složka dat se používá následujícím způsobem:
-- Uložit metadata. Příklady jsou databáze, tabulky, funkce s hodnotou tabulky a sestavení.
-- Vyhledejte vstupní a výstupní cesty, které jsou definovány jako relativní cesty ve skriptech U-SQL. Pomocí relativní cesty, je jednodušší nasadit u-SQL skripty do Azure.
+Složka data root se používá následujícím způsobem:
+- Ukládat metadata Příklady jsou databáze, tabulky, funkce vracející tabulku a sestavení.
+- Vyhledejte vstupní a výstupní cesty, které jsou definovány jako relativní cesty ve skriptech U-SQL. Pomocí relativních cest je snazší nasadit skripty U-SQL do Azure.
 
 ### <a name="u-sql-local-run-engines"></a>Moduly místního spuštění U-SQL
 
-Modul místního spuštění U-SQL je **místní výpočetní účet** pro úlohy U-SQL. Uživatelé můžou spouštět úlohy U-SQL místně prostřednictvím nástrojů Azure Data Lake Tools pro Visual Studio. Místní spuštění jsou také podporovány prostřednictvím příkazového řádku Azure Data Lake U-SQL SDK a programovací rozhraní. Další informace o [Azure Data Lake U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/).
+Místní modul runtime U-SQL je **místní výpočetní účet** pro úlohy u-SQL. Uživatelé můžou spouštět úlohy U-SQL místně prostřednictvím Nástroje Azure Data Lake pro Visual Studio. Místní běhy jsou také podporovány prostřednictvím rozhraní příkazového řádku sady Azure Data Lake U-SQL SDK a programovacích rozhraní. Přečtěte si další informace o [Azure Data Lake SDK U-SQL](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/).
 
 ### <a name="working-directories"></a>Pracovní adresáře
 
-Při spuštění skriptu U-SQL je potřeba pracovní složka adresáře k ukládání výsledků kompilace do mezipaměti, spuštění protokolů a provádění dalších funkcí. V nástroji Azure Data Lake Tools pro Visual Studio je pracovní adresář pracovním adresářem projektu U-SQL. Nachází se pod. `<U-SQL project root path>/bin/debug>` Pracovní adresář je vyčištěn při každém spuštění nového spuštění.
+Když spustíte skript U-SQL, je pracovní složka pracovního adresáře nutná k ukládání výsledků kompilace do mezipaměti, spuštění protokolů a provádění dalších funkcí. V Nástroje Azure Data Lake pro Visual Studio pracovní adresář je pracovní adresář v projektu U-SQL. Je umístěný v `<U-SQL project root path>/bin/debug>`. Pracovní adresář se vyčistí při každém spuštění nového spuštění.
 
-## <a name="local-runs-in-microsoft-visual-studio"></a>Místní spuštění v sadě Microsoft Visual Studio
+## <a name="local-runs-in-microsoft-visual-studio"></a>Místní spuštění v Microsoft Visual Studio
 
-Nástroje datového jezera Azure pro Visual Studio mají integrovaný modul místního spuštění. Nástroje povrch motoru jako místní výpočetní účet. Chcete-li skript U-SQL spustit místně, vyberte v rozevírací nabídce okraje editoru skriptu účet **Local-machine** nebo **Local-project.** Pak vyberte **Odeslat**.
+Nástroje Azure Data Lake pro Visual Studio mít integrovaný místní modul spuštění. Nástroje surfují modul jako místní výpočetní účet. Chcete-li spustit skript U-SQL místně, vyberte v rozevírací nabídce okraje editoru skriptu účet **místní počítač** nebo **místní projekt** . Pak vyberte **Odeslat**.
 
-![Odeslání skriptu U-SQL k místnímu účtu](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
+![Odeslání skriptu U-SQL do místního účtu](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
  
 ## <a name="local-runs-with-a-local-machine-account"></a>Místní spuštění s účtem místního počítače
 
-Účet **místního počítače** je sdílený místní výpočetní účet s jednou kořenovou složkou místních dat jako účet místního úložiště. Ve výchozím nastavení je kořenová složka dat umístěna na **adrese C:\Users\<username>\AppData\Local\USQLDataRoot**. Je také konfigurovatelný prostřednictvím **nástrojů** > **Data Lake** > **Možnosti a nastavení**.
+Účet **místního počítače** je sdílený místní výpočetní účet s jednou adresářovou kořenovou složkou místních dat jako s účtem místního úložiště. Ve výchozím nastavení se složka data root nachází v adresáři **C:\Users\<username> \appdata\local\usqldataroot**. Dá se taky nakonfigurovat prostřednictvím **nástrojů** > **Data Lake** > **možností a nastavení**.
 
 ![Konfigurace kořenové složky místních dat](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
   
-Projekt U-SQL je vyžadován pro místní spuštění. Pracovní adresář projektu U-SQL se používá pro místní pracovní adresář u-SQL. Výsledky kompilace, protokoly spuštění a další soubory související se spuštěním úlohy jsou generovány a uloženy ve složce pracovního adresáře během místního spuštění. Pokaždé, když znovu spustíte skript, všechny soubory v pracovním adresáři jsou vyčištěny a znovu generovány.
+Pro místní spuštění je vyžadován projekt U-SQL. Pracovní adresář v projektu U-SQL se používá pro místní běhový pracovní adresář U-SQL. Výsledky kompilace, spuštění protokolů a další soubory související s spuštěním úlohy se generují a ukládají do složky pracovního adresáře během místního spuštění. Pokaždé, když znovu spustíte skript, všechny soubory v pracovním adresáři se vyčistí a znovu vygenerují.
 
 ## <a name="local-runs-with-a-local-project-account"></a>Místní spuštění s účtem místního projektu
 
-Účet **místního projektu** je projektově izolovaný místní výpočetní účet pro každý projekt s izolovanou kořenovou složkou místních dat. Každý aktivní projekt U-SQL, který se otevře `(Local-project: <project name>)` v Průzkumníkovi řešení v sadě Visual Studio, má odpovídající účet. Účty jsou uvedeny v Průzkumníkovi serveru v sadě Visual Studio i v okraji editoru skriptů U-SQL.  
+Účet **místní projekt** je místní výpočetní účet izolovaný na projektu pro každý projekt s kořenovou složkou izolované místní data. Každý aktivní projekt U-SQL, který se otevírá v Průzkumník řešení v aplikaci Visual Studio `(Local-project: <project name>)` má odpovídající účet. Účty jsou uvedeny v Průzkumník serveru v aplikaci Visual Studio a na okraji editoru skriptu U-SQL.  
 
-Účet **místního projektu** poskytuje čisté a izolované vývojové prostředí. Účet **místního počítače** má sdílenou kořenovou složku místních dat, která ukládá metadata a vstupní a výstupní data pro všechny místní úlohy. Ale účet **místního projektu** vytvoří dočasnou kořenovou složku místních dat v pracovním adresáři projektu U-SQL při každém spuštění skriptu U-SQL. Tato kořenová složka dočasných dat je vyčištěna, když dojde k opětovnému sestavení nebo opětovnému spuštění. 
+Účet **místní projekt** poskytuje čisté a izolované vývojové prostředí. Účet **místního počítače** má sdílenou kořenovou složku místních dat, která ukládá metadata a vstupní a výstupní data pro všechny místní úlohy. Účet **místního projektu** ale při každém spuštění skriptu u-SQL vytvoří dočasnou kořenovou složku místních dat v pracovním adresáři u-SQL projektu. Tato dočasná kořenová složka dat je vyčištěna, když dojde k opakovanému sestavení nebo opětovnému spuštění. 
 
-Projekt U-SQL spravuje izolované prostředí místního spuštění prostřednictvím odkazu projektu a vlastnosti. Můžete nakonfigurovat vstupní zdroje dat pro skripty U-SQL v projektovém i odkazovaném databázovém prostředí.
+Projekt U-SQL spravuje izolované místní běhové prostředí prostřednictvím odkazu a vlastnosti projektu. Vstupní zdroje dat pro skripty U-SQL můžete nakonfigurovat v rámci projektu i v odkazovaných databázových prostředích.
 
-### <a name="manage-the-input-data-source-for-a-local-project-account"></a>Správa vstupního zdroje dat pro účet místního projektu 
+### <a name="manage-the-input-data-source-for-a-local-project-account"></a>Správa vstupního zdroje dat pro účet místní projekt 
 
-Projekt U-SQL vytvoří kořenovou složku místních dat a nastaví data pro účet **místního projektu.** Dočasná kořenová složka dat je vyčištěna a znovu vytvořena v pracovním adresáři projektu U-SQL pokaždé, když dojde k opětovnému sestavení a místnímu spuštění. Všechny zdroje dat, které jsou konfigurovány v projektu U-SQL, jsou před spuštěním místní úlohy zkopírovány do této dočasné kořenové složky místních dat. 
+Projekt U-SQL vytvoří kořenovou složku místních dat a nastaví data pro účet **místního projektu** . Dočasná kořenová složka dat se vyčistí a znovu vytvoří v pracovním adresáři U-SQL projektu pokaždé, když dojde k opětovnému sestavení a místnímu spuštění. Všechny zdroje dat, které jsou konfigurovány projektem U-SQL, se zkopírují do této dočasné kořenové složky místních dat, než se spustí místní úloha. 
 
-Kořenovou složku zdrojů dat můžete nakonfigurovat. Klepněte pravým tlačítkem myši na**položku** **U-SQL project** > **Property** > Test Data Source . Při spuštění skriptu U-SQL na účtu **místního projektu** jsou všechny soubory a podsložky ve složce **Testovací zdroj dat** zkopírovány do dočasné kořenové složky místních dat. Soubory pod podsložkami jsou zahrnuty. Po spuštění místní úlohy lze výstupní výsledky nalézt také pod dočasnou kořenovou složkou místních dat v pracovním adresáři projektu. Všechny tento výstup je odstraněn a vyčištěn, když projekt získá znovu sestavit a vyčistit. 
+Můžete nakonfigurovat kořenovou složku zdrojů dat. Klikněte pravým tlačítkem na**zdroj dat testu** > **vlastnosti** >  **projektu U-SQL**. Když spustíte skript U-SQL na účtu **místní projekt** , všechny soubory a podsložky ve složce **zdroje testovacích dat** se zkopírují do dočasné místní kořenové složky dat. Jsou zahrnuty soubory podsložek. Po spuštění místní úlohy je možné výsledky výstupů najít také v dočasné místní složce pro kořen dat v pracovním adresáři projektu. Veškerý tento výstup se odstraní a vyčistí, když se projekt znovu sestaví a vyčistí. 
 
-![Konfigurace testovacího zdroje dat projektu](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
+![Konfigurace zdroje testovacích dat projektu](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
 
-### <a name="manage-a-referenced-database-environment-for-a-local-project-account"></a>Správa referenčního databázového prostředí pro účet **místního projektu** 
+### <a name="manage-a-referenced-database-environment-for-a-local-project-account"></a>Správa odkazovaného databázového prostředí pro účet **místní projekt** 
 
-Pokud dotaz U-SQL používá nebo se dotazuje s databázovými objekty U-SQL, je nutné před místním spuštěním skriptu U-SQL provést místní nastavení databázových prostředí. Pro účet **místního projektu** lze závislosti databáze U-SQL spravovat pomocí odkazů na projekt U-SQL. Do projektu U-SQL můžete přidat odkazy na databázový projekt U-SQL. Před spuštěním skriptů U-SQL na účtu **místního projektu** jsou všechny odkazované databáze nasazeny do dočasné kořenové složky místních dat. A pro každé spuštění je kořenová složka dočasných dat vyčištěna jako čerstvé izolované prostředí.
+Pokud dotaz U-SQL používá nebo se dotazuje s objekty databáze U-SQL, je nutné, aby byla prostředí databáze připravena místně před spuštěním skriptu U-SQL místně. Pro účet **místního projektu** lze závislosti u-SQL Database spravovat pomocí odkazů na projekt u-SQL. Do projektu U-SQL můžete přidat odkazy na projekt databáze U-SQL. Před spuštěním skriptů U-SQL na účtu **místní projekt** budou všechny odkazované databáze nasazeny do dočasné místní kořenové složky dat. U každého spuštění se složka dočasných dat vyčistí jako čerstvé izolované prostředí.
 
-Viz tento související článek:
-* Zjistěte, jak spravovat definice a odkazy na databázi U-SQL v [databázových projektech U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+Další informace najdete v tomto souvisejícím článku:
+* Naučte se spravovat definice a odkazy databáze U-SQL v [projektech databáze u-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md).
 
-## <a name="the-difference-between-local-machine-and-local-project-accounts"></a>Rozdíl mezi účty **místního počítače** a **místního projektu**
+## <a name="the-difference-between-local-machine-and-local-project-accounts"></a>Rozdíl mezi účty **místní počítač** a **místní projekt**
 
-Účet **místního počítače** simuluje účet Azure Data Lake Analytics na místních počítačích uživatelů. Stejné prostředí sdílí s účtem Azure Data Lake Analytics. Účet **místního projektu** poskytuje uživatelsky přívětivé prostředí místního vývoje. Toto prostředí pomáhá uživatelům nasadit odkazy na databázi a vstupní data před místním spuštěním skriptů. Účet **místního počítače** poskytuje sdílené trvalé prostředí, které lze přistupovat prostřednictvím všech projektů. Účet **místního projektu** poskytuje izolované vývojové prostředí pro každý projekt. Je to svěží pro každý běh. Účet **místního projektu** nabízí rychlejší vývoj díky rychlému použití nových změn.
+Účet **místního počítače** simuluje účet Azure Data Lake Analytics v místních počítačích uživatelů. Sdílí stejné prostředí s účtem Azure Data Lake Analytics. Účet **místní projekt** nabízí uživatelsky přívětivé místní vývojové prostředí. Toto prostředí pomáhá uživatelům nasazovat databázové odkazy a vstupní data předtím, než budou spouštět skripty místně. Účet **místního počítače** poskytuje sdílené trvalé prostředí, ke kterému lze přihlédnout prostřednictvím všech projektů. Účet **místního projektu** poskytuje izolované vývojové prostředí pro každý projekt. Aktualizuje se pro každé spuštění. Účet **místního projektu** nabízí rychlejší vývojové prostředí, které rychle aplikuje nové změny.
 
-Další rozdíly mezi účty **místního počítače** a **místního projektu** jsou uvedeny v následující tabulce:
+V následující tabulce jsou uvedeny další rozdíly mezi účty **místní počítač** a **místní projekt** :
 
-|Rozdílový úhel|Místní počítač|Místní projekt|
+|Úhel rozdílů|Místní počítač|Místní projekt|
 |----------------|---------------|---------------|
-|Místní přístup|Je přístupný všem projektům.|K tomuto účtu má přístup pouze odpovídající projekt.|
-|Kořenová složka místních dat|Trvalá místní složka. Nakonfigurováno prostřednictvím **nástrojů** > **Možnosti a nastavení****datového jezera** > .|Dočasná složka vytvořená pro každé místní spuštění v pracovním adresáři projektu U-SQL. Složka se vyčistí, když dojde k opětovnému sestavení nebo opětovnému spuštění.|
-|Vstupní data pro skript U-SQL|Relativní cesta pod kořenovou složkou trvalých místních dat.|Nastavit prostřednictvím >  **vlastnosti projektu U-SQL****Test Data Source**. Všechny soubory a podsložky jsou před místním spuštěním zkopírovány do kořenové složky dočasných dat.|
-|Výstupní data pro skript U-SQL|Relativní cesta pod kořenovou složkou trvalých místních dat.|Výstup do kořenové složky dočasných dat. Výsledky jsou vyčištěny při opětovném sestavení nebo opětovné spuštění.|
-|Nasazení odkazované databáze|Odkazované databáze nejsou nasazeny automaticky při spuštění proti účtu **místního počítače.** Je to stejné pro odeslání účtu Azure Data Lake Analytics.|Odkazované databáze jsou nasazeny na účet **místního projektu** automaticky před místním spuštěním. Všechna databázová prostředí jsou vyčištěna a znovu nasazena, když dojde k opětovnému sestavení nebo opětovnému spuštění.|
+|Místní přístup|Lze k němu přistupovat všechny projekty.|K tomuto účtu má přístup jenom odpovídající projekt.|
+|Kořenová složka místních dat|Trvalá místní složka. Nakonfigurováno prostřednictvím **nástrojů** > **Data Lake** > **možností a nastavení**.|Dočasná složka vytvořená pro každý místní běh v pracovním adresáři U-SQL projektu. Složka se vyčistí, když dojde k opakovanému sestavení nebo opětovnému spuštění.|
+|Vstupní data pro skript U-SQL|Relativní cesta v rámci trvalé místní kořenové složky dat|Nastaví se ve > **zdroji dat testu** **Vlastnosti projektu U-SQL**. Všechny soubory a podsložky se zkopírují do kořenové složky dočasných dat před místním spuštěním.|
+|Výstupní data pro skript U-SQL|Relativní cesta pod kořenovou složkou trvalého místního data|Výstup do dočasné kořenové složky dat Výsledky jsou vyčištěny, když dojde k opakovanému sestavení nebo opětovnému spuštění.|
+|Nasazení odkazované databáze|Odkazované databáze nejsou nasazeny automaticky, pokud jsou spuštěny v účtu **místního počítače** . Je totéž pro odeslání do účtu Azure Data Lake Analytics.|Odkazované databáze jsou do účtu **místního projektu** nasazeny automaticky před místním spuštěním. Všechna databázová prostředí se vyčistí a znovu nasazují, když dojde k opakovanému sestavení nebo opětovnému spuštění.|
 
-## <a name="a-local-run-with-the-u-sql-sdk"></a>Místní spuštění s u-SQL SDK
+## <a name="a-local-run-with-the-u-sql-sdk"></a>Místní spuštění pomocí sady U-SQL SDK
 
-Skripty U-SQL můžete spouštět místně v sadě Visual Studio a také použít Azure Data Lake U-SQL SDK ke spuštění skriptů U-SQL místně s příkazovým řádkem a programovacími rozhraními. Prostřednictvím těchto rozhraní můžete automatizovat u-SQL místní spuštění a testy.
+Můžete spouštět skripty U-SQL lokálně v sadě Visual Studio a také pomocí Azure Data Lake sady U-SQL SDK spouštět skripty U-SQL místně pomocí příkazového řádku a programovacích rozhraní. Prostřednictvím těchto rozhraní můžete automatizovat místní běhy U-SQL a testy.
 
-Další informace o [Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md).
+Přečtěte si další informace o [Azure Data Lake SDK U-SQL](data-lake-analytics-u-sql-sdk.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Jak nastavit kanál CI/CD pro Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md).
-- [Jak otestovat kód Azure Data Lake Analytics](data-lake-analytics-cicd-test.md).
+- [Postup testování kódu Azure Data Lake Analytics](data-lake-analytics-cicd-test.md).

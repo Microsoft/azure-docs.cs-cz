@@ -1,6 +1,6 @@
 ---
-title: Ladění opakovaných úloh v Azure Data Lake Analytics
-description: Zjistěte, jak pomocí nástrojů Datového jezera Azure pro Visual Studio ladit abnormální opakované úlohy.
+title: Ladění opakujících se úloh v Azure Data Lake Analytics
+description: Naučte se, jak pomocí Nástroje Azure Data Lake pro Visual Studio ladit neobvyklou opakovanou úlohu.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -10,63 +10,63 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
 ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60629710"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Řešení potíží s neobvykle se opakující úlohou
 
-Tento článek ukazuje, jak používat [Nástroje datového jezera Azure pro Visual Studio](https://aka.ms/adltoolsvs) k řešení problémů s opakovanými úlohami. Další informace o kanálu a opakovaných úlohách najdete na [blogu Azure Data Lake a Azure HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/).
+Tento článek popisuje, jak pomocí [nástroje Azure Data Lake pro Visual Studio](https://aka.ms/adltoolsvs) řešit problémy s opakovanými úlohami. Přečtěte si další informace o kanálu a opakujících se úlohách na [blogu Azure Data Lake a Azure HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/).
 
-Opakované úlohy obvykle sdílejí stejnou logiku dotazu a podobná vstupní data. Představte si například, že máte opakovanou úlohu spuštěnou každé pondělí ráno v 8 hodin ráno. pro počítání týdenního aktivního uživatele z minulého týdne. Skripty pro tyto úlohy sdílejí jednu šablonu skriptu, která obsahuje logiku dotazu. Vstupy pro tyto úlohy jsou údaje o využití za minulý týden. Sdílení stejné logiky dotazu a podobný vstup obvykle znamená, že výkon těchto úloh je podobné a stabilní. Pokud jedna z vašich opakovaných úloh náhle provádí abnormálně, selže nebo zpomaluje hodně, možná budete chtít:
+Opakující se úlohy obvykle sdílejí stejnou logiku dotazu a podobná vstupní data. Představte si například, že máte opakovanou úlohu, která se spouští každé pondělí ráno v 8 dop. pro výpočet týdenního aktivního uživatele v minulém týdnu. Skripty pro tyto úlohy sdílejí jednu šablonu skriptu obsahující logiku dotazu. Vstupy pro tyto úlohy jsou data o využití za poslední týden. Sdílení stejné logiky dotazů a podobného vstupu obvykle znamená, že výkon těchto úloh je podobný a stabilní. Pokud se jedna z vašich opakovaných úloh náhle vykoná neobvykle, dojde k chybě nebo zpomalí velkou spoustu, možná budete chtít:
 
-- Podívejte se na statistické sestavy pro předchozí spuštění opakované úlohy a zjistěte, co se stalo.
-- Porovnejte abnormální práci s normální, abyste zjistili, co se změnilo.
+- Další informace o tom, co se stalo, najdete v sestavách statistiky pro předchozí spuštění opakované úlohy.
+- Pokud chcete zjistit, co se změnilo, porovnejte neobvyklou úlohu s normálním výskytem.
 
-**Související zobrazení úloh** v nástrojích Azure Data Lake tools for Visual Studio vám pomůže urychlit průběh řešení potíží s oběma případy.
+**Zobrazení související úlohy** v nástroje Azure Data Lake pro Visual Studio pomáhá urychlit průběh odstraňování potíží s oběma případy.
 
-## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>Krok 1: Vyhledání opakovaných úloh a otevření souvisejícího zobrazení úlohy
+## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>Krok 1: Vyhledání opakujících se úloh a otevření souvisejícího zobrazení úlohy
 
-Chcete-li použít související zobrazení úloh k řešení potíží s opakovanými úlohami, musíte nejprve najít opakovanou úlohu v sadě Visual Studio a potom otevřít související zobrazení úloh.
+Chcete-li použít související zobrazení úlohy k řešení problému opakované úlohy, je třeba nejprve najít opakující se úlohu v aplikaci Visual Studio a následně otevřít související zobrazení úlohy.
 
-### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>Případ 1: Máte adresu URL opakované úlohy
+### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>Případ 1: máte adresu URL pro opakovanou úlohu.
 
-Pomocí **nástroje** > **Data Lake** > **Zobrazení úlohy**můžete vložit adresu URL úlohy pro otevření zobrazení úlohy v sadě Visual Studio. Vyberte **Zobrazit související úlohy,** chcete-li otevřít související zobrazení úloh.
+Pomocí **nástrojů** > **Data Lake** > **zobrazení úloh**můžete vložit adresu URL úlohy pro otevření zobrazení úlohy v aplikaci Visual Studio. Vyberte **Zobrazit související úlohy** a otevřete zobrazení související úlohy.
 
-![Zobrazit odkaz Související úlohy v nástrojích Analýzy datového jezera](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
+![Zobrazit odkaz související úlohy v Data Lake Analyticsch nástrojích](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  
-### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>Případ 2: Máte potrubí pro opakované úlohy, ale ne URL
+### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>Případ 2: máte kanál pro opakovanou úlohu, ale ne adresu URL.
 
-V sadě Visual Studio můžete otevřít prohlížeč kanálu prostřednictvím Průzkumníka serveru > účtu Azure Data Lake Analytics > **kanály**. (Pokud tento uzel v Průzkumníkovi serveru nemůžete najít, [stáhněte si nejnovější modul plug-in](https://aka.ms/adltoolsvs).) 
+V aplikaci Visual Studio můžete otevřít Prohlížeč kanálů prostřednictvím Průzkumník serveru >te Azure Data Lake Analytics účtu > **kanály**. (Pokud tento uzel nemůžete najít v Průzkumník serveru, [Stáhněte si nejnovější modul plug-in](https://aka.ms/adltoolsvs).) 
 
-![Výběr uzlu Potrubí](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
+![Výběr uzlu kanály](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
 
-V prohlížeči kanálů jsou všechny kanály pro účet Data Lake Analytics uvedeny vlevo. Můžete rozbalit kanály a najít všechny opakované úlohy a pak vybrat ten, který má problémy. Související zobrazení úloh se otevře vpravo.
+V prohlížeči kanálu jsou všechny kanály pro Data Lake Analytics účet uvedeny vlevo. Můžete rozbalit kanály a vyhledat všechny opakované úlohy a pak vybrat tu, která obsahuje problémy. Otevře se související zobrazení úlohy vpravo.
 
-![Výběr kanálu a otevření souvisejícího zobrazení úloh](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-view.png)
+![Výběr kanálu a otevření souvisejícího zobrazení úlohy](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-view.png)
 
-## <a name="step-2-analyze-a-statistics-report"></a>Krok 2: Analýza statistické sestavy
+## <a name="step-2-analyze-a-statistics-report"></a>Krok 2: analýza statistické sestavy
 
-Souhrn a statistika sestavy jsou zobrazeny v horní části související zobrazení úloh. Zde můžete najít potenciální hlavní příčinu problému. 
+Souhrn a sestava statistiky se zobrazí v horní části zobrazení související úlohy. Zde můžete najít potenciální hlavní příčinu problému. 
 
-1.  V sestavě ukazuje osa X čas odeslání úlohy. Použij to k nalezení té abnormální práce.
-2.  Pomocí procesu v následujícím diagramu zkontrolujte statistiky a získejte přehled o problému a možných řešeních.
+1.  V sestavě se na ose X zobrazuje čas odeslání úlohy. Použijte ho k nalezení neobvyklé úlohy.
+2.  Pomocí postupu v následujícím diagramu můžete kontrolovat statistiku a získat přehled o problému a možných řešeních.
 
 ![Diagram procesu pro kontrolu statistik](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-metrics-debugging-flow.png)
 
-## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>Krok 3: Porovnání abnormální úlohy s normální úlohou
+## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>Krok 3: porovnání neobvyklé úlohy s normální úlohou
 
-Všechny odeslané opakované úlohy najdete v seznamu úloh v dolní části zobrazení související úlohy. Chcete-li najít další poznatky a potenciální řešení, klikněte pravým tlačítkem myši na neobvyklou úlohu. Pomocí zobrazení Rozdíl úlohy můžete porovnat abnormální úlohu s předchozí normální úlohou.
+Všechny odeslané opakující se úlohy můžete najít v seznamu úloh v dolní části souvisejícího zobrazení úlohy. Pokud chcete najít další přehledy a potenciální řešení, klikněte pravým tlačítkem myši na neobvyklou úlohu. Pomocí zobrazení rozdílů úloh můžete porovnat neobvyklou úlohu s předchozí normální.
 
 ![Místní nabídka pro porovnání úloh](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/compare-job.png)
 
-Dávejte pozor na velké rozdíly mezi těmito dvěma pracovními místy. Tyto rozdíly jsou pravděpodobně příčinou problémů s výkonem. Chcete-li zkontrolovat další, postupujte podle kroků v následujícím diagramu:
+Věnujte pozornost velkým rozdílům mezi těmito dvěma úlohami. Tyto rozdíly pravděpodobně způsobují problémy s výkonem. K další kontrole použijte postup v následujícím diagramu:
 
 ![Diagram procesu pro kontrolu rozdílů mezi úlohami](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-diff-debugging-flow.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Řešení problémů se zkosením dat](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
-* [Ladění uživatelem definovaného kódu Jazyka C pro neúspěšné úlohy U-SQL](data-lake-analytics-debug-u-sql-jobs.md)
+* [Řešení problémů s pozkosením dat](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
+* [Ladit uživatelsky definovaný kód C# pro nezdařené úlohy U-SQL](data-lake-analytics-debug-u-sql-jobs.md)
