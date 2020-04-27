@@ -13,30 +13,14 @@
       items:
         - name: Použití webového portálu
           href: getting-started-build-a-classifier.md
-        - name: S využitím .NET SDK
-          href: csharp-tutorial.md
-        - name: Používání sady Python SDK
-          href: python-tutorial.md
-        - name: Používání sady Java SDK
-          href: java-tutorial.md
-        - name: Použití Node.js SDK
-          href: node-tutorial.md
-        - name: Použití sady Go SDK
-          href: go-tutorial.md
+        - name: Použití sady Custom Vision SDK
+          href: quickstarts/image-classification.md
     - name: Sestavení detektoru objektů
       items:
         - name: Použití webového portálu
           href: get-started-build-detector.md
-        - name: S využitím .NET SDK
-          href: csharp-tutorial-od.md
-        - name: Používání sady Python SDK
-          href: python-tutorial-od.md
-        - name: Používání sady Java SDK
-          href: java-tutorial-od.md
-        - name: Použití Node.js SDK
-          href: node-tutorial-object-detection.md
-        - name: Použití sady Go SDK
-          href: go-tutorial-object-detection.md
+        - name: Použití sady Custom Vision SDK
+          href: quickstarts/object-detection.md
 - name: Kurzy
   items:
     - name: Vytváření sestavy vizuálních stavů na zařízení IoT

@@ -89,7 +89,7 @@
           href: ea-portal-administration.md
         - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
           href: mca-enterprise-operations.md
-        - name: Smlouvy a dodatky Azure EA
+        - name: Smlouvy k Azure EA a jejich změny
           href: ea-portal-agreements.md
         - name: Faktury za smlouvy Enterprise
           href: ea-portal-enrollment-invoices.md
@@ -107,7 +107,7 @@
       href: billing-troubleshoot-azure-payment-issues.md
     - name: Odmítnutá karta
       href: troubleshoot-declined-card.md
-    - name: Problémy s registrací
+    - name: Problémy s registrací účtu Azure
       href: troubleshoot-azure-sign-up.md
     - name: Problémy s přihlašováním k předplatnému
       href: troubleshoot-sign-in-issue.md
@@ -115,7 +115,7 @@
       href: enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kontaktování podpory
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: REST API
       items:

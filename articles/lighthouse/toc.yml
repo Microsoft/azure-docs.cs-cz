@@ -44,6 +44,9 @@
     - name: Zobrazení a správa zákazníků
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: Odebrání přístupu k delegování
+      displayName: 'delete, undelegate'
+      href: ./how-to/remove-delegation.md
     - name: Integrace služby Azure Monitor
       items:
         - name: Použití protokolů Azure Monitoru ve velkém měřítku

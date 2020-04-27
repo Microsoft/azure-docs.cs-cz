@@ -4,7 +4,7 @@
   items:
     - name: Co je privátní propojení Azure?
       href: private-link-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vytvoření privátního koncového bodu – portál
       href: create-private-endpoint-portal.md
@@ -24,6 +24,8 @@
       href: private-endpoint-overview.md
     - name: Služba privátního propojení
       href: private-link-service-overview.md
+    - name: Integrace DNS privátního koncového bodu
+      href: private-endpoint-dns.md
 - name: Postup
   items:
     - name: Privátní připojení k účtu úložiště
@@ -48,7 +50,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure/network
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/az.network
     - name: .NET
       href: /api/overview/azure/virtual-network

@@ -1,6 +1,6 @@
 ---
-title: Kurz – konfigurace protokolu HTTPS ve vlastní doméně pro Azure Front Door | Dokumenty společnosti Microsoft
-description: V tomto kurzu se dozvíte, jak povolit a zakázat https v konfiguraci Azure Front Door pro vlastní doménu.
+title: Kurz – konfigurace HTTPS pro vlastní doménu pro služby Azure front-dveří | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak povolit a zakázat protokol HTTPS v konfiguraci front-dveří Azure pro vlastní doménu.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 56a2246b4f1da51d9b18a34279eff04264530ef5
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878030"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160081"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Front Dooru
 
 V tomto kurzu se dozvíte, jak povolit protokol HTTPS pro vlastní doménu přidruženou ke Front Dooru v části hostitelů front-endu. Použitím protokolu HTTPS pro vlastní doménu (například https:\//www.contoso.com) zajistíte zabezpečené doručování citlivých dat prostřednictvím šifrování TLS/SSL při posílání přes internet. Když se webový prohlížeč připojí k webu přes HTTPS, ověří certifikát zabezpečení webu a to, že je vydán legitimní certifikační autoritou. Tento proces zajišťuje zabezpečení a chrání vaše webové aplikace před útoky.
 
-Azure Front Door ve výchozím nastavení podporuje protokol HTTPS na výchozím názvu hostitele front door. Pokud například vytvoříte Front Door (jako https:\//contoso.azurefd.net), HTTPS se automaticky povolí u žádostí na doménu https://contoso.azurefd.net. Jakmile ale začleníte vlastní doménu „www.contoso.com“, bude potřeba pro tohoto hostitele front-endu povolit HTTPS dodatečně.   
+Přední dveře Azure ve výchozím nastavení podporují protokol HTTPS pro výchozí název hostitele front-dveří. Například pokud vytvoříte přední dvířka (například `https://contoso.azurefd.net`), protokol HTTPS je automaticky povolen pro požadavky vytvořené na. `https://contoso.azurefd.net` Jakmile ale začleníte vlastní doménu „www.contoso.com“, bude potřeba pro tohoto hostitele front-endu povolit HTTPS dodatečně.   
 
 Mezi klíčové atributy vlastní funkce HTTPS patří mimo jiné:
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > - Povolit protokol HTTPS pro vlastní doménu
 > - Použít certifikát spravovaný službou AFD 
-> - Použijte vlastní certifikát, tedy vlastní certifikát TLS/SSL
+> - Použijte vlastní certifikát, to znamená vlastní certifikát TLS/SSL.
 > - Ověření domény
 > - Zákaz protokolu HTTPS pro vlastní doménu
 
@@ -50,12 +50,12 @@ Před dokončením kroků v tomto kurzu musíte nejprve vytvořit Front Door s m
 
 ## <a name="tlsssl-certificates"></a>Certifikáty TLS/SSL
 
-Chcete-li povolit protokol HTTPS pro bezpečné doručování obsahu ve vlastní doméně Front Door, musíte použít certifikát TLS/SSL. Můžete použít certifikát, který je spravovaný Azure Front Door nebo použít vlastní certifikát.
+Pokud chcete protokol HTTPS povolit pro bezpečné doručování obsahu na vlastní doméně front-dveří, musíte použít certifikát TLS/SSL. Můžete použít certifikát, který je spravovaný přes službu Azure front-dveří, nebo použít vlastní certifikát.
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Možnost 1 (výchozí): Použití certifikátu spravovaného službou Front Door
 
-Když použijete certifikát spravovaný Azure Front Door, můžete zapnout funkci HTTPS pomocí několika kliknutí. Azure Front Door zcela zpracovává úlohy správy certifikátů, jako je zásobování a obnovení. Jakmile funkci povolíte, proces se okamžitě zahájí. Pokud už je vlastní doména namapovaná na výchozího hostitele front-endu Front Dooru (`{hostname}.azurefd.net`), není potřeba žádná další akce. Front Door postup zpracuje a dokončí vaši žádost automaticky. Pokud je ale vaše vlastní doména namapovaná jinde, musíte vlastnictví domény ověřit prostřednictvím e-mailu.
+Když použijete certifikát, který spravuje přední dvířka Azure, může být funkce HTTPS zapnutá jenom několika kliknutími. Přední dveře Azure zcela zpracovávají úlohy správy certifikátů, jako je například nákup a obnovení. Jakmile funkci povolíte, proces se okamžitě zahájí. Pokud už je vlastní doména namapovaná na výchozího hostitele front-endu Front Dooru (`{hostname}.azurefd.net`), není potřeba žádná další akce. Front Door postup zpracuje a dokončí vaši žádost automaticky. Pokud je ale vaše vlastní doména namapovaná jinde, musíte vlastnictví domény ověřit prostřednictvím e-mailu.
 
 Pokud chcete povolit HTTPS pro vlastní doménu, postupujte následovně:
 
@@ -72,26 +72,26 @@ Pokud chcete povolit HTTPS pro vlastní doménu, postupujte následovně:
 
 ### <a name="option-2-use-your-own-certificate"></a>Možnost 2: Použití vlastního certifikátu
 
-K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se provádí prostřednictvím integrace s Azure Key Vault, která vám umožní bezpečně ukládat vaše certifikáty. Azure Front Door používá tento zabezpečený mechanismus k získání certifikátu a vyžaduje několik dalších kroků. Při vytváření certifikátu TLS/SSL je nutné jej vytvořit s povolenou certifikační autoritou (CA). Pokud použijete nepovolenou certifikační autoritu, vaše žádost se odmítne. Seznam povolených certifikačních úřadů najdete [v tématu Povolené certifikační autority, kde najdete povolení vlastního protokolu HTTPS na Azure Front Door](front-door-troubleshoot-allowed-ca.md).
+K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se provádí prostřednictvím integrace s Azure Key Vault, která vám umožní bezpečně ukládat vaše certifikáty. Přední dveře Azure používají tento zabezpečený mechanismus k získání certifikátu a vyžadují několik dalších kroků. Při vytváření certifikátu TLS/SSL ho musíte vytvořit s povolenou certifikační autoritou (CA). Pokud použijete nepovolenou certifikační autoritu, vaše žádost se odmítne. Seznam povolených certifikačních autorit najdete v tématu [povolené certifikační autority pro povolení vlastního protokolu HTTPS na frontách Azure](front-door-troubleshoot-allowed-ca.md).
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Příprava účtu a certifikátu Azure Key Vault
  
 1. Azure Key Vault: Musíte mít účet Azure Key Vault běžící v rámci stejného předplatného jako Front Door, pro který chcete vlastní HTTPS povolit. Pokud účet Azure Key Vault nemáte, vytvořte ho.
 
 > [!WARNING]
-> Azure Front Door v současné době podporuje pouze key vault účty ve stejném předplatném jako konfigurace front door. Pokud vyberete účet v rámci jiného předplatného, dojde k chybě.
+> Přední dveře Azure v současné době podporují jenom Key Vault účty ve stejném předplatném, jako je konfigurace front-dveří. Pokud vyberete účet v rámci jiného předplatného, dojde k chybě.
 
-2. Certifikáty Azure Key Vault: Pokud už certifikát máte, můžete ho nahrát přímo do vašeho účtu Azure Key Vault, nebo můžete vytvořit nový certifikát přímo prostřednictvím služby Azure Key Vault z jedné z certifikačních autorit, se kterými se Azure Key Vault integruje. Nahrajte certifikát jako objekt **certifikátu,** nikoli jako **tajný klíč**.
-
-> [!NOTE]
-> Pro váš vlastní certifikát TLS/SSL nepodporuje přední dveře certifikáty s algoritmy ES kryptografie.
-
-#### <a name="register-azure-front-door"></a>Registrace předních dveří Azure
-
-Zaregistrujte instanční objekt pro Azure Front Door jako aplikaci ve službě Azure Active Directory prostřednictvím PowerShellu.
+2. Certifikáty Azure Key Vault: Pokud už certifikát máte, můžete ho nahrát přímo do vašeho účtu Azure Key Vault, nebo můžete vytvořit nový certifikát přímo prostřednictvím služby Azure Key Vault z jedné z certifikačních autorit, se kterými se Azure Key Vault integruje. Nahrajte certifikát jako objekt **certifikátu** místo **tajného klíče**.
 
 > [!NOTE]
-> Tato akce vyžaduje oprávnění globálního správce a je třeba provést pouze **jednou** na klienta.
+> U vlastního certifikátu TLS/SSL nepodporuje přední dveře certifikáty s algoritmy kryptografie EC.
+
+#### <a name="register-azure-front-door"></a>Registrovat přední dveře Azure
+
+Zaregistrujte instanční objekt pro služby Azure front-dveří jako aplikaci ve vašem Azure Active Directory prostřednictvím PowerShellu.
+
+> [!NOTE]
+> Tato akce vyžaduje globální oprávnění správce a je nutné ji provést pouze **jednou** pro každého tenanta.
 
 1. V případě potřeby nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) v PowerShellu na místním počítači.
 
@@ -99,23 +99,23 @@ Zaregistrujte instanční objekt pro Azure Front Door jako aplikaci ve službě 
 
      `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
-#### <a name="grant-azure-front-door-access-to-your-key-vault"></a>Udělení přístupu k předním dveřím Azure do trezoru klíčů
+#### <a name="grant-azure-front-door-access-to-your-key-vault"></a>Udělení přístupu k trezoru klíčů pro Azure na přední dveře
  
-Udělte oprávnění Azure Front Door pro přístup k certifikátům v účtu Azure Key Vault.
+Udělte pro přístup k certifikátům ve vašem účtu Azure Key Vault oprávnění pro přední dveře Azure.
 
 1. V účtu trezoru klíčů vyberte v části Nastavení možnost **Zásady přístupu**, pak vyberte **Přidat novou** a vytvořte novou zásadu.
 
-2. V části **Výběr objektu zabezpečení** vyhledejte **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** a vyberte **Microsoft.Azure.Frontdoor**. Klepněte na **tlačítko Vybrat**.
+2. V části **Výběr objektu zabezpečení** vyhledejte **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** a vyberte **Microsoft.Azure.Frontdoor**. Klikněte na **Vybrat**.
 
-3. V **části Tajná oprávnění**vyberte možnost **Získat,** chcete-li povolit načtení certifikátu předními dveřmi.
+3. V části **oprávnění tajného**kódu vyberte **získat** , pokud chcete, aby přední dvířka získala certifikát.
 
-4. V **části Oprávnění certifikátu**vyberte **možnost Získat,** chcete-li povolit načtení certifikátu předními dveřmi.
+4. V části **oprávnění certifikátu**vyberte **získat** a umožněte tak, aby přední dvířka získala certifikát.
 
 5. Vyberte **OK**. 
 
-    Azure Front Door teď mají přístup k tomuto trezoru klíčů a certifikátům, které jsou uložené v tomto trezoru klíčů.
+    Přední dveře Azure teď můžou získat přístup k tomuto Key Vault a certifikáty, které jsou uložené v tomto Key Vault.
  
-#### <a name="select-the-certificate-for-azure-front-door-to-deploy"></a>Vyberte certifikát pro Azure Front Door, který chcete nasadit.
+#### <a name="select-the-certificate-for-azure-front-door-to-deploy"></a>Vyberte certifikát pro nasazení na přední dveře Azure.
  
 1. Vraťte se na Front Door na portálu. 
 
@@ -125,9 +125,9 @@ Udělte oprávnění Azure Front Door pro přístup k certifikátům v účtu Az
 
 3. V části Typ správy certifikátu vyberte **Použít vlastní certifikát**. 
 
-4. Azure Front Door vyžaduje, aby předplatné účtu Trezor klíčů je stejné jako u vašich předních dveří. Vyberte trezor klíčů, certifikát (tajný kód) a verzi certifikátu.
+4. Přední dveře Azure vyžadují, aby bylo předplatné Key Vault stejné jako pro vaše přední dveře. Vyberte trezor klíčů, certifikát (tajný kód) a verzi certifikátu.
 
-    Azure Front Door uvádí následující informace: 
+    Přední dvířka Azure obsahují následující informace: 
     - Účty trezoru klíčů pro ID vašeho předplatného 
     - Certifikáty (tajné kódy) v rámci vybraného trezoru klíčů 
     - Dostupné verze certifikátu 
@@ -147,13 +147,13 @@ Při použití vlastního certifikátu se ověření domény nevyžaduje.
 
 Záznam CNAME by měl mít následující formát, kde *Název* je název vaší vlastní domény a *Hodnota* je výchozí název hostitele .azurefd.net vašeho Front Dooru:
 
-| Name (Název)            | Typ  | Hodnota                 |
+| Název            | Typ  | Hodnota                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
 Další informace o záznamech CNAME najdete v tématu popisujícím [vytvoření záznamu DNS CNAME](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
-Pokud je váš záznam CNAME ve správném formátu, DigiCert automaticky ověří váš název vlastní domény a vytvoří pro váš název domény vyhrazený certifikát. DigiCert vám neodešle ověřovací e-mail a vy nebudete muset potvrzovat svou žádost. Certifikát je platný po dobu jednoho roku a bude automaticky obnoven před vypršením jeho platnosti. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation). 
+Pokud je váš záznam CNAME ve správném formátu, DigiCert automaticky ověří váš název vlastní domény a vytvoří pro váš název domény vyhrazený certifikát. DigiCert vám neodešle ověřovací e-mail a vy nebudete muset potvrzovat svou žádost. Certifikát je platný jeden rok a před vypršením jeho platnosti se obnoví jeho platnost. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation). 
 
 Automatické ověření trvá obvykle několik minut. Pokud se vaše doména neověří do hodiny, otevřete lístek podpory.
 
@@ -176,7 +176,7 @@ webmaster@&lt;název_vaší_domény.com&gt;
 hostmaster@&lt;název_vaší_domény.com&gt;  
 postmaster@&lt;název_vaší_domény.com&gt;  
 
-Během několika minut byste měli obdržet podobný e-mail jako v následujícím příkladu s výzvou ke schválení žádosti. Pokud používáte filtr nevyžádané admin@digicert.com pošty, přidejte jej do seznamu povolených položek. Pokud e-mail neobdržíte do 24 hodin, kontaktujte podporu Microsoftu.
+Během několika minut byste měli obdržet podobný e-mail jako v následujícím příkladu s výzvou ke schválení žádosti. Pokud používáte filtr spamu, přidejte admin@digicert.com ho do seznamu povolených. Pokud e-mail neobdržíte do 24 hodin, kontaktujte podporu Microsoftu.
 
 Po kliknutí na odkaz na schválení budete přesměrováni na online formulář pro schválení. Postupujte podle pokynů ve formuláři. Máte na výběr dvě možnosti ověření:
 
@@ -184,7 +184,7 @@ Po kliknutí na odkaz na schválení budete přesměrováni na online formulář
 
 - Můžete schválit pouze konkrétní název hostitele použitý v této žádosti. Další požadavky budou vyžadovat dodatečné schválení.
 
-Po schválení DigiCert dokončí vytvoření certifikátu pro váš název vlastní domény. Certifikát je platný po dobu jednoho roku a bude automaticky obnoven před vypršením jeho platnosti.
+Po schválení DigiCert dokončí vytvoření certifikátu pro váš název vlastní domény. Certifikát je platný jeden rok a před vypršením jeho platnosti se obnoví jeho platnost.
 
 ## <a name="wait-for-propagation"></a>Čekání na rozšíření
 
@@ -224,7 +224,7 @@ V předchozích krocích jste pro vlastní doménu povolili protokol HTTPS. Poku
 
 ### <a name="disable-the-https-feature"></a>Zákaz funkce HTTPS 
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na konfiguraci **Azure Front Door.**
+1. V [Azure Portal](https://portal.azure.com)přejděte do konfigurace front- **dveří Azure** .
 
 2. V seznamu hostitelů front-endu klikněte na vlastní doménu, pro kterou chcete zakázat HTTPS.
 
@@ -252,7 +252,7 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 
 2. *Používáte protokol TLS/SSL založený na IP nebo SNI?*
 
-    Azure Front Door používá SNI TLS/SSL.
+    Přední dveře Azure používají SNI TLS/SSL.
 
 3. *Co když neobdržím e-mail pro ověření domény od DigiCert?*
 
@@ -260,7 +260,7 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 
 4. *Je používání certifikátu SAN méně bezpečné než vyhrazený certifikát?*
     
-    Certifikát SAN využívá stejné standardy šifrování a zabezpečení jako vyhrazený certifikát. Všechny vydané certifikáty TLS/SSL používají SHA-256 pro lepší zabezpečení serveru.
+    Certifikát SAN využívá stejné standardy šifrování a zabezpečení jako vyhrazený certifikát. Všechny vydané certifikáty TLS/SSL používají pro rozšířené zabezpečení serveru SHA-256.
 
 5. *Potřebuji záznam CAA (Certificate Authority Authorization) pro svého poskytovatele DNS?*
 

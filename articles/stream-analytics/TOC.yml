@@ -219,7 +219,7 @@
           href: stream-analytics-troubleshoot-output.md
         - name: Logika dotazování
           href: stream-analytics-troubleshoot-query.md
-        - name: Protokoly aktivit a diagnostické protokoly
+        - name: Protokoly aktivit a prostředků
           href: stream-analytics-job-diagnostic-logs.md
         - name: Chyby dat
           href: data-errors.md

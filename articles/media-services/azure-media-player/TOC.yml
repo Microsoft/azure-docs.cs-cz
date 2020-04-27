@@ -35,6 +35,8 @@
 - name: ukázky
   items:
     - name: Ukázky Azure Media Playeru
+      href: demos.md
+    - name: Vzorky Azure Media Playeru
       href: 'https://github.com/Azure-Samples/azure-media-player-samples'
 - name: Referenční informace
   items:

@@ -11,12 +11,12 @@ metadata:
   author: rohinkoul
   ms.author: rohink
   ms.date: 08/19/2019
-  ms.openlocfilehash: eb0172894a1cc03e465ada78575c9b7b1f76141a
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 2159cd10327d5a2d58ed012d7e2572e9f8ec387b
+  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "76938000"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82130752"
 landingContent:
 - title: Informace o Traffic Manageru
   linkLists:
@@ -76,7 +76,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Povolení protokolování diagnostiky
+    - text: Povolení protokolování prostředků
       url: traffic-manager-diagnostic-logs.md
     - text: Řešení potíží s degradovaným stavem
       url: traffic-manager-troubleshooting-degraded.md
@@ -84,7 +84,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure Powershell
+    - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.trafficmanager/?view=azps-2.5.0
     - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/network/traffic-manager?view=azure-cli-latest
