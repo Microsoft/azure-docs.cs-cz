@@ -1,6 +1,6 @@
 ---
-title: Získání tokenu ve webové aplikaci, která volá webová rozhraní API – platforma identit Microsoftu | Azure
-description: Zjistěte, jak získat token pro webovou aplikaci, která volá webová api
+title: Získání tokenu ve webové aplikaci, která volá webová rozhraní API – Microsoft Identity Platform | Azure
+description: Zjistěte, jak získat token pro webovou aplikaci, která volá webová rozhraní API.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,23 +11,23 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1069b4288f8253ccb9a7774b3144d10d85dcdd36
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537096"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181728"
 ---
-# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webová aplikace, která volá webová api: Získání tokenu pro aplikaci
+# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webová aplikace, která volá webová rozhraní API: Získá token pro aplikaci.
 
-Vytvořili jste objekt klientské aplikace. Nyní ji použijete k získání tokenu pro volání webového rozhraní API. V ASP.NET nebo ASP.NET Core se volání webového rozhraní API provádí v kontroleru:
+Sestavili jste objekt klientské aplikace. Teď ho použijete k získání tokenu pro volání webového rozhraní API. V ASP.NET nebo ASP.NET Core se volání webového rozhraní API provádí v kontroleru:
 
-- Získejte token pro webové rozhraní API pomocí mezipaměti tokenů. Chcete-li získat tento `AcquireTokenSilent` token, volání metody.
-- Volání chráněné rozhraní API, předávání přístupový token k němu jako parametr.
+- Získání tokenu pro webové rozhraní API pomocí mezipaměti tokenů Chcete-li získat tento token, zavoláte metodu MSAL `AcquireTokenSilent` (nebo ekvivalent v Microsoft. identity. Web).
+- Zavolejte chráněné rozhraní API a předejte mu přístupový token jako parametr.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Metody kontroleru jsou `[Authorize]` chráněny atributem, který nutí uživatele, kteří jsou ověřováni, aby používali webovou aplikaci. Zde je kód, který volá Microsoft Graph:
+Metody kontroleru jsou chráněné `[Authorize]` atributem, který vynucuje ověřování uživatelů pro používání webové aplikace. Zde je kód, který volá Microsoft Graph:
 
 ```csharp
 [Authorize]
@@ -45,16 +45,16 @@ public class HomeController : Controller
 }
 ```
 
-Služba `ITokenAcquisition` je vložena ASP.NET pomocí vkládání závislostí.
+`ITokenAcquisition` Služba je vložená pomocí ASP.NET pomocí injektáže závislosti.
 
-Zde je zjednodušený kód pro `HomeController`akci , který získá token pro volání Microsoft Graph:
+Zde je zjednodušený kód pro akci `HomeController`, která získá token pro volání Microsoft Graph:
 
 ```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
  string[] scopes = new string[]{"user.read"};
- string accessToken = await tokenAcquisition.GetAccessTokenOnBehalfOfUserAsync(scopes);
+ string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
  // Use the access token to call a protected web API.
  HttpClient client = new HttpClient();
@@ -63,28 +63,28 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-Chcete-li lépe porozumět kódu potřebnému pro tento scénář, podívejte se na krok fáze 2 ([2-1-Web app Calls Microsoft Graph)](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph) [v kurzu kurzu ms-identity-aspnetcore-webapp-tutorial.](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)
+Pro lepší pochopení kódu potřebného pro tento scénář si přečtěte téma fáze 2 ([2-1 – volání webové aplikace Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) v kurzu [MS-identity-aspnetcore-WebApp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) .
 
-Existují i jiné složité varianty, jako například:
+Existují i jiné složité variace, jako například:
 
-- Volání několika api.
-- Zpracování přírůstkového souhlasu a podmíněného přístupu.
+- Volání několika rozhraní API.
+- Probíhá zpracování přírůstkového souhlasu a podmíněného přístupu.
 
-Tyto pokročilé kroky jsou popsány v kapitole 3 kurz [3-WebApp-multi-API.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs)
+Tyto pokročilé kroky jsou uvedené v části 3 kurzu [3-WebApp-multi-API](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) .
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Kód pro ASP.NET je podobný kódu zobrazenému pro ASP.NET Core:
+Kód pro ASP.NET je podobný kódu, který je zobrazený pro ASP.NET Core:
 
-- Akce kontroleru, chráněná atributem [Authorize], extrahuje ID klienta a ID uživatele `ClaimsPrincipal` člena řadiče. (ASP.NET `HttpContext.User`použití .)
-- Odtud vytvoří MSAL.NET `IConfidentialClientApplication` objekt.
-- Nakonec volá metodu `AcquireTokenSilent` důvěrné klientské aplikace.
+- Akce kontroleru chráněná atributem [autorizovat] extrahuje ID tenanta a ID uživatele `ClaimsPrincipal` člena kontroleru. (ASP.NET používá `HttpContext.User`.)
+- Odtud vytvoří objekt MSAL.NET `IConfidentialClientApplication` .
+- Nakonec volá `AcquireTokenSilent` metodu důvěrné klientské aplikace.
 
 # <a name="java"></a>[Java](#tab/java)
 
-V ukázce Java je kód, který volá rozhraní API, v metodě getUsersFromGraph v [authPageController.java#L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62).
+V ukázce Java je kód, který volá rozhraní API, v metodě getUsersFromGraph v [AuthPageController. Java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62).
 
-Metoda se pokusí `getAuthResultBySilentFlow`volat . Pokud uživatel potřebuje souhlas s více obory, `MsalInteractionRequiredException` kód zpracuje objekt napadnout uživatele.
+Metoda se pokusí o volání `getAuthResultBySilentFlow`. Pokud uživatel musí souhlasit s více rozsahy, kód zpracuje `MsalInteractionRequiredException` objekt a požádá uživatele o výzvu.
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")
@@ -144,9 +144,9 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 
 # <a name="python"></a>[Python](#tab/python)
 
-V ukázce Pythonu je kód, který volá Microsoft Graph v [app.py#L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
+V ukázce Pythonu je kód, který volá Microsoft Graph, v [App. py # L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
 
-Kód se pokusí získat token z mezipaměti tokenů. Potom po nastavení hlavičky autorizace volá webové rozhraní API. Pokud nemůže získat token, znovu přihlásí uživatele.
+Kód se pokusí získat token z mezipaměti tokenu. Po nastavení autorizační hlavičky pak volá webové rozhraní API. Pokud nemůže token získat, uživatel ho znovu přihlásí.
 
 ```python
 @app.route("/graphcall")
@@ -160,6 +160,8 @@ def graphcall():
         ).json()
     return render_template('display.html', result=graph_data)
 ```
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 3765c70b27fb98518f71a55f00acfe5b831044ec
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146678"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188391"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -26,7 +26,7 @@ Když použijete cloudovou službu, osvědčeným postupem je omezit přístup j
 > [!NOTE]
 > Informace v tomto článku jsou v sadě Azure Machine Learning Python SDK verze 1.0.83.1 nebo vyšší.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Služba Multi-Factor Authentication je podporovaná, pokud je služba Azure Active Directory (Azure AD) nakonfigurovaná tak, aby ji používala. Toto je proces ověřování:
 
@@ -44,7 +44,7 @@ Azure Machine Learning podporuje dvě formy ověřování pro webové služby: k
 
 |Metoda ověřování|Popis|Azure Container Instances|AKS|
 |---|---|---|---|
-|Klíč|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolená|
+|Key|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolená|
 |Podpisový|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici.| Zakázáno ve výchozím nastavení |
 
 Příklady kódu naleznete v [části ověřování webové služby](how-to-setup-authentication.md#web-service-authentication).
@@ -78,7 +78,7 @@ V následující tabulce jsou uvedené některé hlavní operace Azure Machine L
 Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role. Vlastní role se podporují jenom pro operace v pracovním prostoru a Výpočetní prostředky služby Machine Learning. Vlastní role mohou mít oprávnění číst, zapisovat nebo odstranit v pracovním prostoru a výpočetní prostředky v daném pracovním prostoru. Role může být dostupná na konkrétní úrovni pracovního prostoru, na konkrétní úrovni skupiny prostředků nebo na konkrétní úrovni předplatného. Další informace najdete v tématu [Správa uživatelů a rolí v pracovním prostoru Azure Machine Learning](how-to-assign-roles.md).
 
 > [!WARNING]
-> Azure Machine Learning se v současné době Azure Active Directory spolupráci mezi společnostmi nepodporují.
+> Azure Machine Learning se podporuje při spolupráci Azure Active Directory Business-to-Business, ale v současné době se nepodporují u Azure Active Directory spolupráce od firmy po spotřebitele.
 
 ### <a name="securing-compute-targets-and-data"></a>Zabezpečení výpočetních cílů a dat
 
@@ -385,10 +385,7 @@ Podrobnosti najdete tady:
 
 * [Zabezpečení Azure Machine Learning webové služby pomocí protokolu TLS](how-to-secure-web-service.md)
 * [Využití modelu Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md)
-* [Jak spustit Batch předpovědi](how-to-use-parallel-run-step.md)
-* [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
-* [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [Použití Azure Machine Learning s Azure Firewall](how-to-access-azureml-behind-firewall.md)
 * [Použití Azure Machine Learning s využitím Azure Virtual Network](how-to-enable-virtual-network.md)
 * [Osvědčené postupy pro sestavování doporučení pro systémy](https://github.com/Microsoft/Recommenders)
 * [Sestavení rozhraní API pro doporučení v reálném čase v Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

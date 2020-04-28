@@ -1,19 +1,21 @@
 ---
+title: zahrnout soubor
+description: zahrnout soubor
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
-ms.openlocfilehash: fbc6889507e58c4721597a1108337fcb1f8756a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: feea9696316723a2750be6fc1e13001224320324
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75751576"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865631"
 ---
 S výrazným růstem virtuálních počítačů hostovaných v Azure je důležité identifikovat problémy s výkonem a stavem, které ovlivňují aplikace a služby infrastruktury, které podporují. Základní monitorování se ve výchozím nastavení provádí s Azure podle typů metrik využití procesoru, využití disku, využití paměti a síťového provozu shromážděných hypervisorem hostitele. Další data metrik a protokolu lze shromažďovat pomocí [rozšíření](../articles/virtual-machines/windows/extensions-features.md) pro konfiguraci diagnostiky na virtuálních počítačích z hostovaného operačního systému.
 
-Azure Monitor poskytuje centralizované monitorování s komplexními funkcemi, jako je Azure Monitor pro virtuální počítače, a pomáhá vám diagnostikovat problémy s výkonem a stavem s komponentami webové aplikace založenými na rozhraní .NET nebo Java, které běží uvnitř virtuálního počítače. a Application Insights.
+Azure Monitor poskytuje centralizované monitorování s komplexními funkcemi, jako je Azure Monitor pro virtuální počítače a Přehledy aplikací, který vám pomůže diagnostikovat problémy s výkonem a stavem s hostovaným operačním systémem, komponentami webové aplikace založené na rozhraní .NET nebo Java, které běží uvnitř virtuálního počítače.
 
 ## <a name="diagnostics-and-metrics"></a>Diagnostika a metriky 
 
@@ -68,7 +70,7 @@ Některé z věcí, které můžete dělat s protokoly diagnostiky patří:
 
 Pro viditelnost aplikace nebo služby podporované sady škálování virtuálních zařízení Azure a virtuálních strojů, identifikaci problémů s hostovaným os nebo zatížení spuštěné ve virtuálním počítači, abyste pochopili, zda má vliv na dostupnost nebo výkon aplikace, nebo je problém s aplikací, povolte [Azure Monitor pro virtuální počítače](../articles/azure-monitor/insights/vminsights-overview.md) a Application [Insights](../articles/azure-monitor/app/app-insights-overview.md).
 
-Azure Monitor pro virtuální počítače monitoruje vaše virtuální počítače Azure (VM) ve velkém měřítku analýzou výkonu a stavu vašich virtuálních počítačů s Windows a Linuxem, včetně různých procesů a vzájemně propojených závislostí na jiných prostředcích a externích procesech, které Zjistí. Obsahuje několik grafů výkonu trendů, které vám pomohou při vyšetřování problémů a posouzení kapacity vašich virtuálních počítačích. Mapa závislostí zobrazuje monitorované a nemonitorované počítače, selhání a aktivní síťová připojení mezi procesy a těmito počítači a zobrazuje grafy trendů se standardními metrikami síťového připojení. V kombinaci s Application Insights můžete sledovat aplikaci a zaznamenávat telemetrii, jako jsou požadavky HTTP, výjimky atd., takže můžete korelovat problémy mezi virtuálními počítači a vaší aplikací. Nakonfigurujte [výstrahy Azure Monitoru](../articles/azure-monitor/platform/alerts-overview.md) tak, aby vás upozorňovaly na důležité podmínky zjištěné z dat monitorování shromážděných službou Azure Monitor pro virtuální počítače.
+Azure Monitor pro virtuální počítače monitoruje vaše virtuální počítače Azure (VM) ve velkém měřítku analýzou výkonu a stavu virtuálních počítačů s Windows a Linuxem, včetně různých procesů a vzájemně propojených závislostí na jiných prostředcích a externích procesech, které zjikne. Obsahuje několik grafů výkonu trendů, které vám pomohou při vyšetřování problémů a posouzení kapacity vašich virtuálních počítačích. Mapa závislostí zobrazuje monitorované a nemonitorované počítače, selhání a aktivní síťová připojení mezi procesy a těmito počítači a zobrazuje grafy trendů se standardními metrikami síťového připojení. V kombinaci s Application Insights můžete sledovat aplikaci a zaznamenávat telemetrii, jako jsou požadavky HTTP, výjimky atd., takže můžete korelovat problémy mezi virtuálními počítači a vaší aplikací. Nakonfigurujte [výstrahy Azure Monitoru](../articles/azure-monitor/platform/alerts-overview.md) tak, aby vás upozorňovaly na důležité podmínky zjištěné z dat monitorování shromážděných službou Azure Monitor pro virtuální počítače.
 
 ## <a name="next-steps"></a>Další kroky
 

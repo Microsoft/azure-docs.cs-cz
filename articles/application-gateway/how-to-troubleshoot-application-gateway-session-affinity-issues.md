@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 9f14521c15c3497bed4ffbeba44cb5d78ee4df7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: aa3617b30fe1ef9b4d4a6c5fe5aac51bff95bb92
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047992"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866673"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Poradce při potížích se spřažením relací brány Azure Application Gateway
 
@@ -83,7 +83,7 @@ Chcete-li tento problém identifikovat, postupujte podle pokynů:
     **Tip** Pokud nevíte, jak používat Šumař, zaškrtněte možnost "**Chci sbírat síťový provoz a analyzovat jej pomocí webového ladicího programu**" v dolní části.
 
 2. Zkontrolujte a analyzujte protokoly relací, abyste zjistili, zda soubory cookie poskytované klientem mají podrobnosti o ARRAffinity. Pokud nenajdete podrobnosti ARRAffinity, například "**ARRAffinity =** *ARRAffinityValue*" v sadě souborů cookie, to znamená, že klient neodpovídá se souborem cookie ARRA, který je poskytován aplikační bránou.
-    Například:
+    Příklad:
 
     ![poradce při potížích-session-afinita-problémy-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
@@ -97,7 +97,7 @@ K tomuto problému dochází, protože internet explorer a jiné prohlížeče n
 
 #### <a name="resolution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, měli byste ke službě Application Gateway přistupovat pomocí plně kvalifikovaného názvu domény. Například použijte [http://website.com](https://website.com/) [http://appgw.website.com](http://appgw.website.com/) nebo .
+Pokud chcete tento problém vyřešit, měli byste ke službě Application Gateway přistupovat pomocí plně kvalifikovaného názvu domény. Například použijte [http://website.com](https://website.com/) [http://appgw.website.com](http://website.com/) nebo .
 
 ## <a name="additional-logs-to-troubleshoot"></a>Další protokoly k řešení potíží
 

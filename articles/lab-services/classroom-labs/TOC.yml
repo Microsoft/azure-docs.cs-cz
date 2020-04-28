@@ -108,6 +108,8 @@
           href: how-to-windows-shutdown.md
         - name: Zobrazení informací o podpoře (instruktor)
           href: lab-creator-support-information.md
+        - name: Přístup k virtuálním počítačům studentů ze zobrazení instruktora
+          href: instructor-access-virtual-machines.md
     - name: Připojení k virtuálním počítačům v testovacích prostředích v učebnách (student)
       items:
         - name: Přístup k testovacím prostředím v učebnách

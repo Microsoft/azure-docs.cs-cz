@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd218c61114c1e15009ace5a9a9bd7a536996e86
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b58abede48c0e096f3f54989d783b1e455f8e4d4
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968671"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82169638"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím obsahu
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat obsah s Azure Active Directory (Azure 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -46,6 +46,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Obsah podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 * Contentd podporuje zřizování uživatelů **jenom v čase** .
+* Po nakonfigurování obsahu můžete vyhovět řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 > [!NOTE]
 > Identifikátorem této aplikace je pevná řetězcová hodnota. V jednom tenantovi se dá nakonfigurovat jenom jedna instance.
@@ -54,7 +55,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci obsahu do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat obsahy z galerie.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -74,7 +75,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s vy
     * **[Vytvořte testovacího uživatele s obsahem](#create-contentful-test-user)** , abyste měli protějšek B. Simon v obsahu, který je propojený s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -86,14 +87,24 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v části **základní konfigurace SAML** hodnoty následujících polí:
 
-    - V textovém poli **Adresa URL odpovědi** zkopírujte adresu URL služby ACS (služba vyhodnocení zákazníka) na stránce pro nastavení jednotného přihlašování v obsahu. Bude vypadat nějak takto: `https://be.contentful.com/sso/<organization_id>/consume`
+    - V textovém poli **Adresa URL odpovědi** zkopírujte adresu URL služby ACS (služba vyhodnocení zákazníka) na stránce pro nastavení jednotného přihlašování v obsahu. Bude vypadat takto:`https://be.contentful.com/sso/<organization_id>/consume`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    - Do textového pole **Adresa URL pro přihlášení** zkopírujte stejnou adresu URL služby ACS (služba pro vyhodnocení zákazníka). Bude vypadat nějak takto: `https://be.contentful.com/sso/<organization_id>/login`
+    - Do textového pole **Adresa URL pro přihlášení** zkopírujte stejnou adresu URL služby ACS (služba pro vyhodnocení zákazníka). Bude vypadat takto:`https://be.contentful.com/sso/<organization_id>/login`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL tak, že na stránce pro nastavení jednotného přihlašování nakopírujete adresu URL služby ACS (kontrolní výraz).
+
+1. Obsahovaná aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
+
+    ![image](common/default-attributes.png)
+
+1. Kromě výše jsou u obsahu aplikace v odpovědi SAML, které jsou uvedeny níže, očekáváno méně dalších atributů. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+    
+    | Název |  Zdrojový atribut|
+    | --------------- | --------- |
+    | e-mail | User. userPrincipalName |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -156,7 +167,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici s obsahem na přístupovém panelu, měli byste se automaticky přihlásit k obsahu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

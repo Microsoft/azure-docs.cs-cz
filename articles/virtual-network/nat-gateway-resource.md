@@ -1,7 +1,7 @@
 ---
 title: Navrhování virtuálních sítí pomocí prostředků brány NAT
 titleSuffix: Azure Virtual Network NAT
-description: Přečtěte si, jak navrhovat virtuální sítě pomocí prostředků brány NAT.
+description: Naučte se navrhovat virtuální sítě s prostředky brány NAT.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -12,226 +12,233 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2020
+ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 4095b0b48e86b0aafcc86d74ca1fa25bacddf0ec
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 6bb53539c105cda99c842b6b0fa236f0e18a85ea
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011714"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182476"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
-Prostředky brány NAT jsou součástí [překladu síťových překladů a](nat-overview.md) poskytují odchozí připojení k Internetu pro jednu nebo více podsítí virtuální sítě. Podsíť virtuální sítě uvádí, které nat brána bude použita. Nat poskytuje překlad zdrojové síťové adresy (SNAT) pro podsíť.  Prostředky brány NAT určují, které statické IP adresy virtuální počítače používají při vytváření odchozích toků. Statické adresy IP pocházejí z veřejných prostředků IP adres, veřejných prostředků předpony IP nebo obojího. Prostředek brány NAT může použít až 16 statických IP adres z obou.
+Prostředky brány NAT jsou součástí [Virtual Network NAT](nat-overview.md) a poskytují odchozí připojení k Internetu pro jednu nebo více podsítí virtuální sítě. Podsíť stavu virtuální sítě, která se použije pro bránu NAT. Překlad adres (NAT) pro podsíť poskytuje překlad adres (SNAT).  Prostředky brány NAT určují, které statické IP adresy virtuální počítače používají při vytváření odchozích toků. Statické IP adresy pocházejí z prostředků veřejné IP adresy, prostředků předpony veřejných IP adres nebo obojího. Pokud se používá prostředek předpony veřejných IP adres, všechny IP adresy celého prostředku předpony veřejné IP adresy se spotřebují prostředkem brány NAT. Prostředek brány NAT může využít celkem až 16 statických IP adres z obou.
 
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtuální síť NAT pro odchozí do Internetu">
+  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network překlad adres (NAT) pro odchozí připojení do Internetu">
 </p>
 
-*Obrázek: Virtuální síť NAT pro odchozí do Internetu*
+*Obrázek: Virtual Network NAT pro odchozí připojení do Internetu*
 
-## <a name="how-to-deploy-nat"></a>Jak nasadit NAT
+## <a name="how-to-deploy-nat"></a>Postup nasazení překladu adres (NAT)
 
 Konfigurace a používání brány NAT je záměrně jednoduché:  
 
 Prostředek brány NAT:
-- Vytvořit regionální nebo zónový (zónově izolovaný) prostředek brány NAT,
-- Přiřadit IP adresy,
-- V případě potřeby upravte časový limit nečinnosti protokolu TCP (volitelné).  <ins>Před</ins> změnou výchozího nastavení zkontrolujte [časovače.](#timers)
+- Vytvořte prostředek brány NAT pro oblast nebo oblast (izolovaný z zóny),
+- Přiřaďte IP adresy,
+- V případě potřeby upravte časový limit nečinnosti protokolu TCP (volitelné).  Zkontrolujte [časovače](#timers) <ins>předtím, než</ins> změníte výchozí nastavení.
 
 Virtuální síť:
 - Nakonfigurujte podsíť virtuální sítě tak, aby používala bránu NAT.
 
-Uživatelem definované trasy nejsou nutné.
+Trasy definované uživatelem nejsou nutné.
 
 ## <a name="resource"></a>Prostředek
 
-Prostředek je navržen tak, aby byl jednoduchý, jak můžete vidět z následujícího příkladu Správce prostředků Azure ve formátu podobném šabloně.  Tento formát šablony je zde zobrazen pro ilustraci pojmů a struktury.  Upravte příklad podle svých potřeb.  Tento dokument není určen jako kurz.
+Prostředek je navržený tak, aby byl jednoduchý, jak můžete vidět v následujícím příkladu Azure Resource Manager ve formátu podobném šabloně.  Tento formát podobný tomuto: slouží k znázornění konceptů a struktury.  Upravte příklad podle svých potřeb.  Tento dokument není určený jako kurz.
 
-Následující diagram znázorňuje zapisovatelné odkazy mezi různými prostředky Azure Resource Manager.  Šipka označuje směr odkazu, který pochází z místa, odkud je zapisovatelný. Revize 
+Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revize 
 
 <p align="center">
-  <img src="media/nat-overview/flow-map.svg" width="256" title="Objektový model NAT virtuální sítě">
+  <img src="media/nat-overview/flow-map.svg" width="256" title="Virtual Network objektového modelu NAT">
 </p>
 
-*Obrázek: Objektový model virtuální sítě NAT*
+*Obrázek: Virtual Network objektového modelu NAT*
 
-Nat se doporučuje pro většinu úloh, pokud nemáte konkrétní závislost na odchozí připojení nástroje [pro vyrovnávání zatížení založené](../load-balancer/load-balancer-outbound-connections.md)na fondu .  
+Překlad adres (NAT) se doporučuje pro většinu úloh, pokud nemáte konkrétní závislost na [Load Balancer odchozí připojení na základě fondu](../load-balancer/load-balancer-outbound-connections.md).  
 
-Můžete migrovat ze standardních scénářů nástrojů pro vyrovnávání zatížení, včetně [odchozích pravidel](../load-balancer/load-balancer-outbound-rules-overview.md), do brány NAT. Chcete-li migrovat, přesuňte veřejné ip a veřejné ip prefix ové prostředky z frontendů vykladače vyrovnávání zatížení do brány NAT. Nové IP adresy pro bránu NAT nejsou povinné. Standardní veřejnou IP adresu a předponu lze znovu použít, pokud celkový počet nepřesáhne 16 IP adres. Plánujte migraci s ohledem na přerušení služby během přechodu.  Můžete minimalizovat přerušení automatizací procesu. Nejprve otestujte migraci v přípravném prostředí.  Během přechodu nejsou ovlivněny příchozí původní toky.
+Můžete migrovat ze standardních scénářů nástroje pro vyrovnávání zatížení, včetně [odchozích pravidel](../load-balancer/load-balancer-outbound-rules-overview.md), do brány NAT. Pokud chcete migrovat, přesuňte prostředky předpony veřejné IP adresy a veřejné IP adresy ze služby Load Balancer do brány NAT. Nové IP adresy brány NAT se nevyžadují. Prostředky se standardními veřejnými IP adresami a prostředky předpony veřejných IP adres se dají znovu použít, dokud celková hodnota nepřekročí 16 IP adres. Plánování migrace s přerušením služeb při přechodu.  K minimalizaci přerušení slouží automatizace procesu. Nejprve otestujte migraci v přípravném prostředí.  V průběhu přechodu nejsou ovlivněny příchozí toky.
 
-Následující příklad je úryvek ze šablony Azure Resource Manager.  Tato šablona nasazuje několik prostředků, včetně brány NAT.  Šablona má v tomto příkladu následující parametry:
 
-- **natgatewayname** - Název brány NAT.
+Následující příklad je fragment kódu z Azure Resource Manager šablony.  Tato šablona nasadí několik prostředků, včetně brány NAT.  V tomto příkladu má šablona následující parametry:
+
+- **natgatewayname** – název brány NAT.
 - **umístění** – oblast Azure, kde se nachází prostředek.
-- **publicipname** - Název odchozí veřejné IP adresy přidružené k bráně NAT.
-- **vnetname** - Název virtuální sítě.
-- **podprogram -** Název podsítě přidružené k bráně NAT.
+- **publicipname** – název odchozí veřejné IP adresy přidružené k BRÁNě NAT
+- **vnetname** – název virtuální sítě.
+- název **podsítě** – název podsítě přidružené k bráně NAT.
 
-Celkový počet adres IP poskytnutých všemi prostředky IP adresy a předpony nesmí překročit celkem 16 IP adres. Libovolný počet IP adres mezi 1 a 16 je povolen.
+Celkový počet IP adres poskytnutých všemi IP adresami a prostředky předpony nesmí být delší než 16 IP adres. Je povolen libovolný počet IP adres mezi 1 a 16.
 
 :::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="81-96":::
 
-Po vytvoření prostředku brány NAT jej lze použít v jedné nebo více podsítích virtuální sítě. Určete, které podsítě používají tento prostředek brány NAT. Brána NAT není schopna překlíkem více než jednu virtuální síť. Není nutné přiřadit stejnou bránu NAT všem podsítím virtuální sítě. Jednotlivé podsítě lze konfigurovat s různými prostředky brány NAT.
+Po vytvoření prostředku brány NAT se dá použít v jedné nebo několika podsítích virtuální sítě. Určete podsítě, které tento prostředek brány NAT používají. Brána NAT nemůže rozbírat více než jednu virtuální síť. Není nutné přiřadit stejnou bránu NAT ke všem podsítím virtuální sítě. Jednotlivé podsítě je možné nakonfigurovat pomocí různých prostředků brány NAT.
 
-Scénáře, které nepoužívají zóny dostupnosti, budou místní (není zadána žádná zóna). Pokud používáte zóny dostupnosti, můžete určit zónu pro izolujeTE NAT na určitou zónu. Redundance zóny není podporována. Projděte si [zóny dostupnosti NAT](#availability-zones).
+Scénáře, které nepoužívají zóny dostupnosti, budou oblastní (bez zadání zóny). Pokud používáte zóny dostupnosti, můžete zadat zónu pro izolaci překladu adres (NAT) pro konkrétní zónu. Zóna – redundance není podporována. Zkontrolujte [zóny dostupnosti](#availability-zones)NAT.
 
 :::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="1-146" highlight="81-96":::
 
-Brány NAT jsou definovány s vlastností v podsíti v rámci virtuální sítě. Toky vytvořené virtuálními počítači v **podsíťovém názvu** virtuální **sítě** virtuální sítě budou používat bránu NAT. Všechna odchozí připojení budou používat IP adresy přidružené k **natgatewayname** jako zdrojovou IP adresu.
+Brány NAT jsou definované s vlastností v podsíti v rámci virtuální sítě. Toky vytvořené virtuálními počítači v **podsíti** podsítě virtuální sítě **vnetname** budou používat bránu NAT. Všechna odchozí připojení budou používat IP adresy přidružené k **natgatewayname** jako zdrojová IP adresa.
 
-Další informace o šabloně Azure Resource Manager použité v tomto příkladu najdete v tématu:
+Další informace o šabloně Azure Resource Manager použité v tomto příkladu naleznete v tématu:
 
-- [Úvodní příručka: Vytvoření brány NAT – šablona Správce prostředků](quickstart-create-nat-gateway-template.md)
-- [Virtuální síť NAT](https://azure.microsoft.com/resources/templates/101-nat-gateway-1-vm/)
+- [Rychlý Start: Vytvoření brány NAT – šablona Správce prostředků](quickstart-create-nat-gateway-template.md)
+- [Virtual Network NAT](https://azure.microsoft.com/resources/templates/101-nat-gateway-1-vm/)
 
-## <a name="design-guidance"></a>Pokyny k návrhu
+## <a name="design-guidance"></a>Doprovodné materiály k návrhu
 
-V této části se seznamte s aspekty návrhu virtuálních sítí pomocí nat.  
+V této části se seznámíte s důležitými informacemi pro navrhování virtuálních sítí pomocí překladu adres (NAT).  
 
 1. [Optimalizace nákladů](#cost-optimization)
 1. [Koexistence příchozích a odchozích](#coexistence-of-inbound-and-outbound)
-2. [Správa základních zdrojů](#managing-basic-resources)
+2. [Správa základních prostředků](#managing-basic-resources)
 3. [Zóny dostupnosti](#availability-zones)
 
 ### <a name="cost-optimization"></a>Optimalizace nákladů
 
-[Koncové body služby](virtual-network-service-endpoints-overview.md) a [soukromé propojení](../private-link/private-link-overview.md) jsou možnosti, které je třeba zvážit pro optimalizaci nákladů. Nat není potřeba pro tyto služby. Přenosy směrované do koncových bodů služby nebo soukromého propojení není zpracována virtuální sítě NAT.  
+[Koncové body služby](virtual-network-service-endpoints-overview.md) a [soukromé odkazy](../private-link/private-link-overview.md) jsou možnosti, které je vhodné zvážit pro optimalizaci nákladů. NAT není pro tyto služby potřeba. Přenosy směrované do koncových bodů služby nebo privátního propojení nejsou zpracovávány překladem adres (NAT) virtuální sítě.  
 
-Koncové body služby propojují prostředky služeb Azure s vaší virtuální sítí a řídí přístup k prostředkům služeb Azure. Například při přístupu k úložišti Azure použijte koncový bod služby pro úložiště, abyste se vyhnuli poplatkům za zpracování dat NAT. Koncové body služby jsou zdarma.
+Koncové body služby propojují prostředky služeb Azure s vaší virtuální sítí a ovládají přístup k prostředkům služby Azure. Když například přistupujete k Azure Storage, použijte koncový bod služby pro úložiště, abyste se vyhnuli poplatkům za NAT zpracovaných dat. Koncové body služby jsou bezplatné.
 
-Privátní odkaz zveřejňuje služby Azure PaaS (nebo jiné služby hostované s privátním odkazem) jako soukromý koncový bod uvnitř virtuální sítě.  Soukromé propojení se účtuje na základě doby trvání a zpracovávaných dat.
+Privátní odkaz zveřejňuje službu Azure PaaS (nebo jiné služby hostované pomocí privátního propojení) jako soukromý koncový bod ve virtuální síti.  Privátní odkaz se účtuje na základě doby trvání a zpracovaných dat.
 
-Vyhodnoťte, pokud jeden nebo oba tyto přístupy jsou vhodné pro váš scénář a použít podle potřeby.
+Vyhodnoťte, jestli je jeden nebo oba z těchto přístupů pro váš scénář dobrým způsobem, a použijte podle potřeby.
 
 ### <a name="coexistence-of-inbound-and-outbound"></a>Koexistence příchozích a odchozích
 
 Brána NAT je kompatibilní s:
 
- - Standardní odvykač zatížení
+ - Load Balancer úrovně Standard
  - Standardní veřejná IP adresa
- - Standardní veřejná předpona IP
+ - Standardní předpona veřejných IP adres
 
-Při vývoji nového nasazení začněte se standardními skum.
-
-<p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtuální síť NAT pro odchozí do Internetu">
-</p>
-
-*Obrázek: Virtuální síť NAT pro odchozí do Internetu*
-
-Scénář odchozího internetu poskytovaný bránou NAT lze rozšířit pomocí příchozích funkcí Internetu. Každý prostředek si je vědomsměru, ve kterém pochází tok. V podsíti s bránou NAT jsou všechny scénáře odchozího do Internetu nahrazeny bránou NAT. Příchozí z internetových scénářů jsou poskytovány příslušného prostředku.
-
-#### <a name="nat-and-vm-with-instance-level-public-ip"></a>NAT a virtuální hod s veřejnou IP adresou na úrovni instance
+Při vývoji nového nasazení začněte se standardními SKU Standard.
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction2.svg" width="300" title="Virtuální síť NAT a virtuální počítač s veřejnou IP adresou na úrovni instance">
+  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network překlad adres (NAT) pro odchozí připojení do Internetu">
 </p>
 
-*Obrázek: Virtuální síť NAT a virtuální počítač s veřejnou IP adresou na úrovni instance*
+*Obrázek: Virtual Network NAT pro odchozí připojení do Internetu*
+
+Scénář jenom pro odchozí připojení k Internetu poskytovaný bránou NAT se dá rozšířit o funkce z Internetu. Každý prostředek ví o směru, ve kterém se tok nacházel. V podsíti s bránou NAT je všechny odchozí a internetové scénáře nahrazené bránou NAT. Příchozí z internetových scénářů poskytuje příslušný prostředek.
+
+#### <a name="nat-and-vm-with-instance-level-public-ip"></a>NAT a virtuální počítač s veřejnou IP adresou na úrovni instance
+
+<p align="center">
+  <img src="media/nat-overview/flow-direction2.svg" width="300" title="Virtual Network NAT a virtuální počítač s veřejnou IP adresou na úrovni instance">
+</p>
+
+*Obrázek: Virtual Network NAT a virtuální počítač s veřejnou IP adresou na úrovni instance*
 
 | Směr | Prostředek |
 |:---:|:---:|
-| Příchozí | Virtuální virtuální ms s veřejnou IP adresou na úrovni instance |
+| Příchozí | Virtuální počítač s veřejnou IP adresou na úrovni instance |
 | Odchozí | NAT Gateway |
 
-Virtuální počítač bude používat bránu NAT pro odchozí.  Příchozí pochází není ovlivněna.
+Virtuální počítač bude používat bránu NAT pro odchozí připojení.  Příchozí původ není ovlivněn.
 
-#### <a name="nat-and-vm-with-public-load-balancer"></a>NAT a virtuální hod s veřejným balancerem zatížení
+#### <a name="nat-and-vm-with-public-load-balancer"></a>NAT a virtuální počítač s veřejným Load Balancer
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction3.svg" width="350" title="Virtuální síť NAT a virtuální počítač s veřejným nástrojem pro vyrovnávání zatížení">
+  <img src="media/nat-overview/flow-direction3.svg" width="350" title="Virtual Network NAT a virtuální počítač s veřejným Load Balancer">
 </p>
 
-*Obrázek: Virtuální síť NAT a virtuální počítač s veřejným nástrojem pro vyrovnávání zatížení*
+*Obrázek: Virtual Network NAT a virtuální počítač s veřejným Load Balancer*
 
 | Směr | Prostředek |
 |:---:|:---:|
-| Příchozí | veřejný balancer |
+| Příchozí | veřejné Load Balancer |
 | Odchozí | NAT Gateway |
 
-Jakákoli odchozí konfigurace z pravidla vyrovnávání zatížení nebo odchozích pravidel je nahrazena bránou NAT.  Příchozí pochází není ovlivněna.
+Jakákoli odchozí konfigurace z pravidla vyrovnávání zatížení nebo odchozích pravidel je nahrazena bránou NAT.  Příchozí původ není ovlivněn.
 
-#### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>NAT a virtuální hod s veřejnou IP adresou na úrovni instance a veřejným vyvyčovávatelem zatížení
+#### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>NAT a virtuální počítač s veřejnou IP adresou na úrovni instance a veřejnými Load Balancer
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction4.svg" width="425" title="Virtuální síť NAT a virtuální počítač s veřejnou IP adresou na úrovni instance a veřejným nástrojem pro vyrovnávání zatížení">
+  <img src="media/nat-overview/flow-direction4.svg" width="425" title="Virtual Network NAT a virtuální počítač s veřejnou IP adresou na úrovni instance a veřejnými Load Balancer">
 </p>
 
-*Obrázek: Virtuální síť NAT a virtuální počítač s veřejnou IP adresou na úrovni instance a veřejným nástrojem pro vyrovnávání zatížení*
+*Obrázek: Virtual Network NAT a virtuální počítač s veřejnou IP adresou na úrovni instance a veřejným Load Balancer*
 
 | Směr | Prostředek |
 |:---:|:---:|
-| Příchozí | Virtuální ms s veřejnou IP adresou na úrovni instance a veřejným vyvažovačem zatížení |
+| Příchozí | Virtuální počítač s veřejnou IP adresou na úrovni instance a veřejnými Load Balancer |
 | Odchozí | NAT Gateway |
 
-Jakákoli odchozí konfigurace z pravidla vyrovnávání zatížení nebo odchozích pravidel je nahrazena bránou NAT.  Virtuální počítač bude také používat bránu NAT pro odchozí.  Příchozí pochází není ovlivněna.
+Jakákoli odchozí konfigurace z pravidla vyrovnávání zatížení nebo odchozích pravidel je nahrazena bránou NAT.  Virtuální počítač bude taky používat bránu NAT pro odchozí připojení.  Příchozí původ není ovlivněn.
 
-### <a name="managing-basic-resources"></a>Správa základních zdrojů
+### <a name="managing-basic-resources"></a>Správa základních prostředků
 
-Standardní vyrovnávání zatížení, veřejná IP adresa a veřejná předpona IP jsou kompatibilní s bránou NAT. Brány NAT pracují v rozsahu podsítě. Základní skladová položka těchto služeb musí být nasazena v podsíti bez brány NAT. Toto oddělení umožňuje obě varianty skladové položky koexistovat ve stejné virtuální síti.
+Služba Load Balancer úrovně Standard, veřejná IP adresa a předpona veřejné IP adresy jsou kompatibilní s bránou NAT. Brány NAT pracují v oboru podsítě. Základní skladová položka těchto služeb musí být nasazená v podsíti bez brány NAT. Toto rozdělení umožňuje, aby obě varianty SKU existovaly ve stejné virtuální síti.
 
-Brány NAT mají přednost před odchozími scénáři podsítě. Základní vyrovnávání zatížení nebo veřejnou IP adresu (a všechny spravované služby vytvořené s nimi) nelze upravit pomocí správných překladů. Brána NAT přebírá kontrolu nad odchozím do internetového provozu v podsíti. Příchozí provoz na základní vyrovnávání zatížení a veřejnou IP adresu není k dispozici. Příchozí provoz na základní vyrovnávání zatížení a nebo veřejná IP nakonfigurovaná na virtuálním počítači nebude k dispozici.
+Brány NAT mají přednost před odchozími scénáři podsítě. Základní nástroj pro vyrovnávání zatížení nebo veřejnou IP adresu (a všechny spravované služby, které jsou s nimi vytvořeny), nelze upravit pomocí správných překladů. Brána NAT v podsíti přebírá kontrolu odchozího provozu na Internet. Příchozí provoz do služby Load Balancer úrovně Basic a veřejná IP adresa nejsou k dispozici. Příchozí provoz na základní nástroj pro vyrovnávání zatížení, nebo veřejná IP adresa nakonfigurovaná na virtuálním počítači, nebude k dispozici.
 
 ### <a name="availability-zones"></a>Zóny dostupnosti
 
-#### <a name="zone-isolation-with-zonal-stacks"></a>Zónová izolace se zónovými zásobníky
+#### <a name="zone-isolation-with-zonal-stacks"></a>Izolace zóny pomocí plošných zásobníků
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtuální síť NAT s izolací zóny, vytvoření více "zonal stacks"">
+  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtual Network překlad adres (NAT) s izolací zóny, vytváření více "zonal stacks"">
 </p>
 
-*Obrázek: Virtuální síť NAT s izolací zóny, vytvoření více "zónonální zásobníky"*
+*Obrázek: Virtual Network překlad adres (NAT) s izolací zóny, vytvoření několika "plošných zásobníků"*
 
-I bez zón dostupnosti je nat odolný a může přežít selhání více součástí infrastruktury.  Zóny dostupnosti se na této odolnosti vytvářejí pomocí scénářů izolace zóny pro nat.
+I bez zón dostupnosti je NAT odolné a může zamezit několik selhání součástí infrastruktury.  Zóny dostupnosti sestavují tuto odolnost pomocí scénářů izolace zón pro překlad adres (NAT).
 
-Virtuální sítě a jejich podsítě jsou místní konstrukce.  Podsítě nejsou omezeny na zónu.
+Virtuální sítě a jejich podsítě jsou regionální konstrukce.  Podsítě nejsou omezeny na zónu.
 
-Zónové příslib pro izolaci zóny existuje, když je instance virtuálního počítače používající prostředek brány NAT ve stejné zóně jako prostředek brány NAT a jeho veřejné IP adresy. Vzor, který chcete použít pro izolaci zóny, vytváří "zónový zásobník" pro zónu dostupnosti.  Tento zásobník zón se skládá z instancí virtuálních počítačů, prostředků brány NAT, veřejných IP adres nebo prostředků předpony v podsíti, o které se předpokládá, že obsluhuje pouze stejnou zónu.   Operace roviny řízení a rovina dat jsou pak zarovnány a omezeny na zadanou zónu. 
+Příslib oblasti pro izolaci zóny existuje, pokud instance virtuálního počítače pomocí prostředku brány NAT je ve stejné zóně jako prostředek brány NAT a jeho veřejné IP adresy. Vzor, který chcete použít pro izolaci zóny, vytváří pro každou zónu dostupnosti "plošný zásobník".  Tato "sada oblastí" sestává z instancí virtuálních počítačů, prostředků brány NAT, veřejné IP adresy nebo prostředků předpony v podsíti, u které se předpokládá, že obsluhuje pouze stejnou zónu.   Operace roviny ovládacího prvku a rovina dat jsou pak zarovnány k zadané zóně a omezeny na ni. 
 
-Očekává se, že selhání v jiné zóně, než kde existuje váš scénář, nebude mít dopad na nat. Odchozí provoz z virtuálních počítačů ve stejné zóně se nezdaří z důvodu izolace zóny.  
+Selhání v jiné oblasti, než kde váš scénář existuje, by mělo být bez dopadu na překlad adres (NAT). Odchozí přenosy z virtuálních počítačů ve stejné zóně selžou z důvodu izolace zóny.  
 
 #### <a name="integrating-inbound-endpoints"></a>Integrace příchozích koncových bodů
 
-Pokud váš scénář vyžaduje příchozí koncové body, máte dvě možnosti:
+Pokud váš scénář vyžaduje vstupní koncové body, máte dvě možnosti:
 
-| Možnost | Vzor | Příklad | Verze Pro | Con |
+| Možnost | Vzor | Příklad | Verze Pro | Př |
 |---|---|---|---|---|
-| (1) | **Zarovnejte** příchozí koncové body s příslušnými **zásobníky zonální, které** vytváříte pro odchozí. | Vytvořte standardní vyvažovač zatížení se zonálním frontendem. | Stejný model stavu a režim selhání pro příchozí a odchozí. Jednodušší ovládání. | Jednotlivé IP adresy pro jednotlivé zóny může být nutné maskovat běžným názvem DNS. |
-| (2) | **Překryvte** zásobníky zón s příchozím koncovým bodem **mezi zónami.** | Vytvořte standardní vyvažovač zatížení s front-endem bez zón. | Jedna ADRESA IP pro příchozí koncový bod. | Různé modely stavu a režimy selhání pro příchozí a odchozí.  Složitější provoz. |
+| první | **Zarovnejte** příchozí koncové body s příslušnými **zásobníky pro oblast** , které vytváříte pro odchozí. | Vytvořte službu Load Balancer úrovně Standard s oblastmi front-endu. | Stejný model stavu a režim selhání pro příchozí a odchozí. Jednodušší provoz. | Jednotlivé IP adresy na zónu může být potřeba maskovat běžným názvem DNS. |
+| (2) | Skládání plošných zásobníků **přes příchozí** koncový bod **mezi zónami** | Vytvořte službu Load Balancer úrovně Standard s front-redundantním front-endu. | Jedna IP adresa pro příchozí koncový bod | Různé modely stavu a režimy selhání pro příchozí a odchozí.  Složitější pro práci. |
 
 >[!NOTE]
-> Zónově izolovaná brána NAT vyžaduje IP adresy, které odpovídají zóně brány NAT. Prostředky brány NAT s IP adresami z jiné zóny nebo bez zóny nejsou povoleny.
+> Brána NAT izolovaná na zóně vyžaduje, aby IP adresy odpovídaly zóně brány NAT. Prostředky brány NAT s IP adresami z jiné zóny nebo bez zóny nejsou povolené.
 
-#### <a name="cross-zone-outbound-scenarios-not-supported"></a>Odchozí scénáře mezi zónami nejsou podporovány
+#### <a name="cross-zone-outbound-scenarios-not-supported"></a>Odchozí scénáře mezi zónami nejsou podporovány.
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="Virtuální síť NAT není kompatibilní s podsítí pro zónování">
+  <img src="media/nat-overview/az-directions2.svg" width="425" title="Virtual Network NAT není kompatibilní s podsítí pokrývání zón.">
 </p>
 
-*Obrázek: Překlad síťových sítí není kompatibilní s podsítí zahrnující zónu*
+*Obrázek: Virtual Network NAT není kompatibilní s podsítí pokrývání zóny*
 
-Pokud se instance virtuálních strojů nasazují ve více zónách ve stejné podsíti, nelze dosáhnout zonálního příslibu s prostředky brány NAT.   A i kdyby k podsíti bylo připojeno více zonálních bran NAT, instance virtuálního počítače by nevěděla, který prostředek brány NAT má být vyvolený.
+Pokud jsou instance virtuálních počítačů nasazené ve více zónách ve stejné podsíti, nemůžete dosáhnout příslibu Zona s prostředky brány NAT.   A dokonce i v případě, že jsou k podsíti připojená několik bran NAT, instance virtuálního počítače by nevěděla, který prostředek brány NAT má vybrat.
 
-Zonální příslib neexistuje, když a) zóna instance virtuálního počítače a zóny zóny brány nananek zóny nejsou zarovnány nebo b) prostředek brány regionální NAT se používá s instancemi místního virtuálního počítače.
+Does't příslib v oblasti a v případě, že se nerovná zóna instance virtuálního počítače a zóny služby NAT, se pro instance virtuálních počítačů používají místní prostředek brány NAT.
 
-Zatímco scénář se zobrazí pracovat, jeho model stavu a režim selhání není definovánz hlediska zóny dostupnosti. Zvažte jít s zonální zásobníky nebo všechny regionální místo.
+I když se zdá, že se tento scénář bude pracovat, jeho model stavu a režim selhání není definovaný v bodu zóny dostupnosti zobrazení. Zvažte místo toho použití zásobníků oblastí nebo všech oblastí.
 
 >[!NOTE]
->Vlastnost zóny prostředku brány NAT není proměnlivá.  Znovu nasaďte prostředek brány NAT s zamýšlenou místní nebo zónovou předvolbou.
+>Vlastnost Zones prostředku brány NAT není proměnlivá.  Znovu nasaďte prostředek brány NAT pomocí zamýšleného regionu nebo Předvolby zóny.
 
 >[!NOTE] 
->IP adresy samy o sobě nejsou zónově redundantní, pokud není zadána žádná zóna.  Front-end [standardního vykladače zatížení je zóna redundantní,](../load-balancer/load-balancer-standard-availability-zones.md#frontend) pokud ip adresa není vytvořena v určité zóně.  To se nevztahuje na NAT.  Podporována je pouze regionální nebo zónová izolace.
+>IP adresy samy sebe nejsou v zóně – redundantní, pokud není zadaná žádná zóna.  Front [-end Standard Load Balancer je redundantní v zóně](../load-balancer/load-balancer-standard-availability-zones.md#frontend) , pokud IP adresa není vytvořená v konkrétní zóně.  To se nevztahuje na překlad adres (NAT).  Podporovaná je jenom regionální nebo izolovaný izolaci zón.
+
+## <a name="performance"></a>Výkon
+
+Každý prostředek brány NAT může poskytovat propustnost až 50 GB/s. Nasazení můžete rozdělit do několika podsítí a přiřadit každou podsíť nebo skupiny podsítí a bránu NAT pro horizontální navýšení kapacity.
+
+Každá brána NAT může podporovat 64 000 připojení na přiřazenou odchozí IP adresu.  Podrobné informace a pokyny k [řešení problémů najdete](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) v následující části o překladu zdrojového síťového adres (SNAT).
 
 ## <a name="source-network-address-translation"></a>Překlad zdrojové síťové adresy
 
-Zdrojový překlad síťových adres (SNAT) přepíše zdroj toku, který má pocházet z jiné adresy IP.  Prostředky brány NAT používají variantu SNAT běžně označované jako překlad adresy portu (PAT). PAT přepíše zdrojovou adresu a zdrojový port. S SNAT neexistuje žádný pevný vztah mezi počtem soukromých adres a jejich přeloženými veřejnými adresami.  
+Zdrojový překlad adres (SNAT) přepíše zdroj toku, který má být vytvořen z jiné IP adresy.  Prostředky brány NAT používají variantu SNAT, která se běžně označuje jako na překladu adres portů (PAT). PAT přepíše zdrojovou a zdrojový port. V SNAT není žádný pevný vztah mezi počtem privátních adres a jejich přeloženými veřejnými adresami.  
 
 ### <a name="fundamentals"></a>Základy
 
-Podívejme se na příklad čtyř toků, které vysvětlují základní koncept.  Brána NAT používá prostředek veřejné IP adresy 65.52.0.2.
+Pojďme se podívat na příklad čtyř toků a vysvětlit základní koncept.  Brána NAT používá 65.52.0.2 prostředku s veřejnou IP adresou.
 
 | Tok | Zdrojová řazená kolekce členů | Cílová řazená kolekce členů |
 |:---:|:---:|:---:|
@@ -240,59 +247,62 @@ Podívejme se na příklad čtyř toků, které vysvětlují základní koncept.
 | 3 | 192.168.0.17.5768 | 65.52.0.1:80 |
 | 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
-Tyto toky mohou vypadat takto po PAT došlo:
+Tyto toky můžou vypadat takto po přijetí PAT:
 
-| Tok | Zdrojová řazená kolekce členů | SNAT'ed zdroj n-tice | Cílová řazená kolekce členů | 
+| Tok | Zdrojová řazená kolekce členů | SNAT'ed zdrojová řazená kolekce členů | Cílová řazená kolekce členů | 
 |:---:|:---:|:---:|:---:|
 | 1 | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.2:235 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.2:236 | 65.52.0.1:80 |
 | 4 | 192.168.0.16:4285 | 65.52.0.2:237 | 65.52.0.2:80 |
 
-Cíl uvidí zdroj toku jako 65.52.0.2 (zdrojová řazená kolekce členů SNAT) se zobrazeným přiřazeným portem.  PAT, jak je znázorněno v předchozí tabulce se také nazývá port maskování SNAT.  Za ip adresou a portem je maskováno více soukromých zdrojů.
+Cíl se zobrazí jako 65.52.0.2 (zdrojová řazená kolekce členů na SNAT) se zobrazeným přiřazeným portem.  PAT, jak je znázorněno v předchozí tabulce, se označuje také jako maskování portů SNAT.  Několik privátních zdrojů je maskovaných za IP adresou a portem.
 
-Neber závislost na konkrétním způsobu přiřazení zdrojových portů.  Předek je pouze ilustrací základního pojmu.
+Neprovádějte závislost na konkrétním způsobu, jakým jsou přiřazeny zdrojové porty.  Předchozí je příkladem základního konceptu.
 
-SNAT poskytované NAT se liší od [load balancer](../load-balancer/load-balancer-outbound-connections.md) v několika aspektech.
+SNAT, kterou poskytuje překlad adres (NAT), se liší od [Load Balancer](../load-balancer/load-balancer-outbound-connections.md) v několika aspektech.
 
 ### <a name="on-demand"></a>Na vyžádání
 
-NAT poskytuje porty SNAT na vyžádání pro nové odchozí přenosy. Všechny dostupné porty SNAT ve skladu používají všechny virtuální počítače v podsítích nakonfigurovaných pomocí NAT. 
+NAT poskytuje porty SNAT na vyžádání pro nové toky odchozího provozu. Všechny dostupné porty SNAT v inventáři používá libovolný virtuální počítač v podsítích konfigurovaných pomocí překladu adres (NAT). 
 
 <p align="center">
-  <img src="media/nat-overview/lb-vnnat-chart.svg" width="550" title="Virtuální síť NAT odchozí SNAT na vyžádání">
+  <img src="media/nat-overview/lb-vnnat-chart.svg" width="550" title="Odchozí SNAT na vyžádání Virtual Network překladu adres (NAT)">
 </p>
 
-*Obrázek: Virtuální síť NAT na vyžádání odchozí SNAT*
+*Obrázek: Virtual Network NAT na vyžádání odchozí SNAT*
 
-Libovolná konfigurace IP virtuálního počítače může podle potřeby vytvářet odchozí toky na vyžádání.  Předběžné přidělení podle plánování instance včetně překročení prvního případu na instanci není povinné.  
+Jakákoli konfigurace IP virtuálního počítače může v případě potřeby vytvářet odchozí toky na vyžádání.  Plánování předběžného přidělování za instance, včetně nadměrného zřízení případných případů, se nevyžaduje.  
 
 <p align="center">
   <img src="media/nat-overview/exhaustion-threshold.svg" width="550" title="Rozdíly ve scénářích vyčerpání">
 </p>
 
-*Obrázek: Rozdíly ve scénářích vyčerpání*
+*Obrázek: rozdíly ve scénářích vyčerpání*
 
-Jakmile se port SNAT uvolní, je k dispozici pro použití libovolným virtuálním počítačem v podsítích nakonfigurovaných pomocí NAT.  Přidělení na vyžádání umožňuje dynamické a rozdílné úlohy v podsítích používat porty SNAT podle potřeby.  Dokud bude k dispozici inventář portů SNAT, toky SNAT budou úspěšné. SNAT port hot spots těžit z větší zásoby místo. Porty SNAT nejsou ponechány nepoužívané pro virtuální počítače, které je aktivně nepotřebují.
+Po vydání portu SNAT je možné ho použít pro libovolný virtuální počítač v podsítích nakonfigurovaných pomocí překladu adres (NAT).  Přidělení na vyžádání umožňuje dynamickým a odlišným úlohám v podsítích používat porty SNAT podle potřeby.  Pokud je k dispozici inventář portů SNAT, budou toky SNAT úspěšné. Z většího inventáře místo toho zvýhodněné body SNAT z provozu. Porty SNAT nejsou nepoužitelné pro virtuální počítače, které je aktivně nepotřebují.
 
 ### <a name="scaling"></a>Škálování
 
-Škálování NAT je především funkce správy sdílené, dostupné snat port zásob. Nat potřebuje dostatek zásob portů SNAT pro očekávané maximální odchozí toky pro všechny podsítě připojené k prostředku brány NAT.  K vytvoření inventáře portů SNAT můžete použít prostředky veřejných IP adres, veřejné prostředky předpony IP nebo obojí.
+Škálování NAT je primárně funkcí správy sdíleného, dostupného inventáře portů SNAT. Překlad adres (NAT) potřebuje dostatek inventáře portů SNAT pro očekávané výstupní toky ve špičce pro všechny podsítě připojené k prostředku brány NAT.  K vytvoření inventáře portů SNAT můžete použít prostředky veřejné IP adresy, prostředky předpony veřejných IP adres nebo obojí.  
 
-SNAT mapuje soukromé adresy na jednu nebo více veřejných IP adres, přepisuje zdrojovou adresu a zdrojový port v procesech. Prostředek brány NAT použije pro tento překlad 64 000 portů (portů SNAT) na konfigurovanou veřejnou IP adresu. Prostředky brány NAT mohou škálovat až na 16 IP adres a 1M Porty SNAT. Pokud je k dispozici prostředek veřejné předpony IP, každá adresa IP v rámci předpony poskytuje inventář portů SNAT. A přidání dalších veřejných IP adres zvyšuje dostupné porty SNAT. TCP a UDP jsou samostatné zásoby portů SNAT a nesouvisející.
+>[!NOTE]
+>Pokud přiřazujete prostředek předpony veřejných IP adres, použije se celá předpona veřejné IP adresy.  Nemůžete přiřadit prostředek předpony veřejných IP adres a pak rozdělit jednotlivé IP adresy, které se přiřadí jiným prostředkům.  Chcete-li přiřadit jednotlivé IP adresy z předpony veřejné IP adresy k více prostředkům, je třeba vytvořit jednotlivé veřejné IP adresy z prostředku předpony veřejné IP adresy a přiřadit je podle potřeby namísto samotného prostředku předpony veřejné IP adresy.
 
-Prostředky brány NAT oportunisticky znovu používají zdrojové porty. Pro účely škálování byste měli předpokládat, že každý tok vyžaduje nový port SNAT a škálovat celkový počet dostupných IP adres pro odchozí provoz.
+SNAT namapuje privátní adresy na jednu nebo více veřejných IP adres a přepíše zdrojové adresy a zdrojový port v procesech. Prostředek brány NAT bude pro tento překlad používat porty 64 000 (porty SNAT) podle nakonfigurované veřejné IP adresy. Prostředky brány NAT můžou škálovat až na 16 IP adres a 1 milion portů SNAT. Pokud je zadaný prostředek předpony veřejných IP adres, každá IP adresa v rámci předpony poskytuje inventář portů SNAT. A přidáním dalších veřejných IP adres zvýšíte dostupné porty SNAT inventáře. TCP a UDP jsou samostatné inventáře portů SNAT a nesouvisející.
+
+Prostředky brány NAT oportunisticky znovu použít zdrojové porty. Pro účely škálování byste měli předpokládat, že každý tok vyžaduje nový port SNAT a škálovat celkový počet dostupných IP adres pro odchozí provoz.
 
 ### <a name="protocols"></a>Protokoly
 
-Prostředky brány NAT interagují s hlavičkami přenosu IP a IP toků UDP a TCP a jsou agnostik k datovým částem aplikační vrstvy.  Jiné protokoly IP nejsou podporovány.
+Prostředky brány NAT komunikují s hlavičkami IP a IP přenosů protokolů UDP a TCP a nezávislá se do datových částí aplikační vrstvy.  Jiné protokoly IP nejsou podporovány.
 
 ### <a name="timers"></a>Časovače
 
 >[!IMPORTANT]
->Dlouhý časovač nečinnosti může zbytečně zvýšit pravděpodobnost vyčerpání SNAT. Čím déle časovač zadáte, delší NAT bude držet na SNAT porty, dokud se nakonec časový limit nečinnosti. Pokud jsou časový limit nečinnosti, nakonec se nezdaří a zbytečně spotřebovávají zásoby portů SNAT.  Toky, které selhávají po 2 hodinách, by selhaly také ve výchozím nastavení 4 minuty. Zvýšení časového limitu nečinnosti je poslední možnost, která by měla být použita střídmě. Pokud tok nikdy nezůstane nečinný, nebude ovlivněn časovačem nečinnosti.
+>Dlouhý časovač nečinnosti může nutně zvýšit pravděpodobnost vyčerpání SNAT. Čím dál zadáte časovač, tím déle bude zařízení NAT na portech SNAT, dokud nezruší časový limit nečinnosti. Pokud vaše toky nemají časový limit nečinnosti, budou se nakonec zdařit a zbytečně spotřebovávat inventář portů SNAT.  Toky, které selžou 2 hodiny, se nezdařily i ve výchozím nastavení 4 minuty. Zvýšení časového limitu nečinnosti je poslední možnost použití, která by se měla používat zřídka. Pokud tok nikdy nepracuje, nebude to mít vliv na nečinný časovač.
 
-Časový limit nečinnosti protokolu TCP lze upravit ze 4 minut (výchozí) na 120 minut (2 hodiny) pro všechny toky.  Kromě toho můžete obnovit časovač nečinnosti s provozem na toku.  Doporučený vzor pro aktualizaci dlouhých nečinných připojení a detekce živosti koncového bodu je tcp keepalives.  Tcp keepalives se zobrazí jako duplicitní ACK ke koncovým bodům, jsou nízké režii a neviditelné pro aplikační vrstvu.
+Časový limit nečinnosti TCP se dá upravit ze 4 minut (výchozí) na 120 minut (2 hodiny) pro všechny toky.  Kromě toho můžete časovač nečinnosti resetovat pomocí provozu toku.  Doporučený vzor pro obnovení dlouhých nečinných připojení a zjišťování živých koncových bodů je udržení naživu v TCP.  Kontroly zatížení sítě TCP se zobrazují jako duplicitní potvrzení koncových bodů, jsou nízká režie a neviditelná pro vrstvu aplikace.
 
 Pro vydání portu SNAT se používají následující časovače:
 
@@ -300,46 +310,46 @@ Pro vydání portu SNAT se používají následující časovače:
 |---|---|
 | TCP FIN | 60 sekund |
 | TCP RST | 10 sekund |
-| TCP napůl otevřené | 30 sekund |
+| Poloviční otevření TCP | 30 sekund |
 
-Port SNAT je k dispozici pro opakované použití na stejnou cílovou adresu IP a cílový port po 5 sekundách.
+Port SNAT je k dispozici pro opakované použití na stejnou cílovou IP adresu a cílový port po 5 sekundách.
 
 >[!NOTE] 
->Tato nastavení časovače se mohou změnit. Hodnoty jsou k dispozici pro řešení potíží a neměli byste mít závislost na konkrétní časovače v tomto okamžiku.
+>Tato nastavení časovače se mohou změnit. Tyto hodnoty jsou k dispozici pro pomoc při řešení potíží a v současné době byste neměli mít závislost na konkrétních časovačích.
 
 ## <a name="limitations"></a>Omezení
 
-- Nat je kompatibilní se standardními veřejnými IP adresami Skladových disponií, veřejnou předponou IP a prostředky pro vyrovnávání zatížení.   Základní zdroje (například základní vyvyčovávač zatížení) a všechny produkty z nich odvozené nejsou kompatibilní s nat.  Základní prostředky musí být umístěny v podsíti, která není nakonfigurována pomocí nasíťového nat.
-- Rodina adres IPv4 je podporována.  NAT nespolupracuje s rodinou adres IPv6.  Nat nelze nasadit v podsíti s předponou IPv6.
-- Protokolování toku nsg není podporováno při použití NAT.
-- Nat nemůže protápit více virtuálních sítí.
+- Překlad adres (NAT) je kompatibilní s veřejnou IP adresou SKU, předponou veřejné IP adresy a prostředky nástroje pro vyrovnávání zatížení.   Základní prostředky (například základní nástroj pro vyrovnávání zatížení) a jakékoli produkty, které jsou z nich odvozené, nejsou kompatibilní se službou NAT.  Základní prostředky musí být umístěné v podsíti, která není nakonfigurovaná s překladem adres (NAT).
+- Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.  Překlad adres (NAT) nejde nasadit v podsíti s předponou IPv6.
+- Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
+- Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
 
 
 ## <a name="feedback"></a>Váš názor
 
-Chceme vědět, jak můžeme zlepšit službu. Chybí vám schopnost? Udělej si svůj případ pro to, co bychom měli stavět další na [UserVoice pro NAT](https://aka.ms/natuservoice).
+Chceme zjistit, jak můžeme službu vylepšit. Chybí funkce? Udělejte si případ, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [virtuální síti NAT](nat-overview.md).
-* Přečtěte si [o metrikách a výstrahách pro prostředky brány NAT](nat-metrics.md).
-* Informace o [řešení potíží s prostředky brány NAT](troubleshoot-nat.md).
+* Přečtěte si o službě [NAT pro virtuální sítě](nat-overview.md).
+* Seznamte [se s metrikami a upozorněními pro prostředky brány NAT](nat-metrics.md).
+* Přečtěte si informace o [řešení potíží s prostředky brány NAT](troubleshoot-nat.md).
 * Kurz pro ověření brány NAT
   - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
+  - [Prostředí](tutorial-create-validate-nat-gateway-powershell.md)
   - [Portál](tutorial-create-validate-nat-gateway-portal.md)
-* Úvodní příručka pro nasazení prostředku brány NAT
+* Rychlý Start pro nasazení prostředku brány NAT
   - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
+  - [Prostředí](./quickstart-create-nat-gateway-powershell.md)
   - [Portál](./quickstart-create-nat-gateway-portal.md)
   - [Šablona](./quickstart-create-nat-gateway-template.md)
-* Informace o rozhraní API pro prostředky brány NAT
+* Další informace o rozhraní API prostředků brány NAT
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
-* Další informace o [zónách dostupnosti](../availability-zones/az-overview.md).
-* Informace o [standardním vyvažovači zatížení](../load-balancer/load-balancer-standard-overview.md).
-* Informace o [zónách dostupnosti a standardním vyvažovači zatížení](../load-balancer/load-balancer-standard-availability-zones.md).
-* [Řekněte nám, co se má stavět pro virtuální síť NAT v UserVoice](https://aka.ms/natuservoice).
+  - [Prostředí](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+* Přečtěte si o [zónách dostupnosti](../availability-zones/az-overview.md).
+* Přečtěte si o [službě Load Balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md).
+* Seznamte [se se zónami dostupnosti a standardním nástrojem pro vyrovnávání zatížení](../load-balancer/load-balancer-standard-availability-zones.md).
+* [Řekněte nám, co se má sestavit příště pro Virtual Network překlad adres (NAT) ve službě UserVoice](https://aka.ms/natuservoice).
 
 

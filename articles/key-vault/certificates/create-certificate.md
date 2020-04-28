@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 21bcaf8636638153ad5e5659ef3e1bff0631d9b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430952"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866257"
 ---
 # <a name="certificate-creation-methods"></a>Metody vytvoření certifikátu
 
@@ -80,10 +80,10 @@ Adresovatelný klíč a tajný klíč získat jejich atributy z atributů certif
 ## <a name="partnered-ca-providers"></a>Partneři poskytovatelé certifikačníautority
 Vytvoření certifikátu lze dokončit ručně nebo pomocí vystavitele "Self". Key Vault také spolupracuje s určitými poskytovateli emitentů, aby zjednodušil vytváření certifikátů. Následující typy certifikátů lze objednat pro trezor klíčů s těmito poskytovateli vystavitele partnera.  
 
-|Poskytovatel|Typ certifikátu|  
-|--------------|----------------------|  
-|DigiCert|Key Vault nabízí Certifikáty OV nebo EV SSL s DigiCert|
-|Globální znak|Trezor klíčů nabízí certifikáty OV nebo EV SSL s GlobalSign|
+|Poskytovatel|Typ certifikátu|Nastavení konfigurace  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault nabízí Certifikáty OV nebo EV SSL s DigiCert| [Průvodce integrací](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|Globální znak|Trezor klíčů nabízí certifikáty OV nebo EV SSL s GlobalSign| [Průvodce integrací](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  Vystavitel certifikátu je entita reprezentovaná v trezoru klíčů Azure (KV) jako prostředek certifikátu issuer. Používá se k poskytnutí informací o zdroji certifikátu KV; název vystavitele, zprostředkovatele, pověření a další podrobnosti o správě.
 

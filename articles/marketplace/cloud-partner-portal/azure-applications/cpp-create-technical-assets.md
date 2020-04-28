@@ -7,77 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 59f9fecb3d949d9cdf48719e6329b066d9eb3fc5
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 7bfc74b2d27a879352f54df0772784a98e15e46d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393522"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865541"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Příprava technických prostředků aplikace Azure
 
-Tento článek popisuje prostředky pro přípravu technických prostředků pro vaši nabídku aplikace Azure.
+[Portál cloudových partnerů](https://cloudpartner.azure.com/) už nepodporuje vytváření a správu nabídek aplikací Azure. Místo toho byla tato funkce přesunuta na [portál Microsoft Partner Center](https://partner.microsoft.com/). Další informace najdete [v tématu Vytvoření nabídky aplikace Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer).
 
-## <a name="before-you-begin"></a>Než začnete
-
-Prohlédněte si následující video, [vytváření šablon řešení a spravované aplikace pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603), přehled o tom, jak vytvořit šablonu Azure Resource Manageru, definovat aplikační řešení Azure a pak, jak následně publikovat nabídku aplikací na Azure Marketplace.
-
->[!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3603/player]
-
-
-Projděte si následující dokumentaci k aplikacím Azure, která poskytuje rychlé starty, kurzy a ukázky.
-
-- [Principy šablon Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-- Rychlá zprovoznění:
-
-  - [Šablony Azure Quickstart](https://azure.microsoft.com/documentation/templates/)
-  - [Šablony githubazure rychlých startů](https://github.com/azure/azure-quickstart-templates)
-  - [Publikování definice aplikace](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-  - [Nasazení aplikace katalogu služeb](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
-
-  
-- Kurzy:
-
-  - [Vytvoření definičních souborů](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-  - [Publikování aplikace Marketplace](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
-
-  - Vzorky:
-
-    - [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-    - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-    - [Řešení spravovaných aplikací](https://docs.microsoft.com/azure/managed-applications/sample-projects)
-
-## <a name="fundamental-technical-knowledge"></a>Základní technické znalosti
-
-Navrhování, vytváření a testování těchto prostředků nějakou dobu trvá a vyžaduje technické znalosti platformy Azure i technologií používaných k sestavení nabídky.
-
-Váš technický tým by měl mít znalosti o následujících technologiích společnosti Microsoft:
-
-- Základní znalosti [služeb Azure](https://azure.microsoft.com/services/)
-- Jak [navrhovat a navrhovat aplikace Azure](https://azure.microsoft.com/solutions/architecture/)
-- Pracovní znalosti virtuálních [počítačů Azure](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage)a Azure [Networking](https://azure.microsoft.com/services/?filter=networking)
-- Pracovní znalosti [Správce prostředků Azure](https://azure.microsoft.com/features/resource-manager/)
-- Pracovní znalostjové společnosti [JSON](https://www.json.org/)
-
-## <a name="suggested-tools"></a>Navrhované nástroje
-
-Chcete-li spravovat aplikaci Azure, zvolte jedno nebo obě následující skriptovací prostředí:
-
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
-
-Doporučujeme přidat do vývojového prostředí následující nástroje:
-
-- [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
-- [Visual Studio Code](https://code.visualstudio.com/) s následujícími rozšířeními:
-
-  - Rozšíření: [Nástroje Azure Správce prostředků](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-  - Rozšíření: [Zkrášlení](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-  - Rozšíření: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
-
-Doporučujeme také zkontrolovat dostupné nástroje na stránce [Nástroje pro vývojáře Azure](https://azure.microsoft.com/tools/) a pokud používáte Visual Studio, [tržiště Visual Studia](https://marketplace.visualstudio.com/).
-
-## <a name="next-steps"></a>Další kroky
-
-[Vytvoření nabídky aplikací Azure](./cpp-create-offer.md)
-
+Než vytvoříte novou nabídku aplikací Azure, měli byste si přečíst [vytvořit účet Centra partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít řídicí panel Commercial [Marketplace](https://partner.microsoft.com/dashboard/directory) s vybranou stránkou **Přehled.** Podle pokynů v [části Vytvoření nabídky aplikace Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer) vytvořte svou nabídku.

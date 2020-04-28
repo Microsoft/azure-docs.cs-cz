@@ -1,5 +1,5 @@
 ---
-title: Přístup k trezoru klíčů za bránou firewall – Trezor klíčů Azure | Dokumenty společnosti Microsoft
+title: Přístup k Key Vault za bránou firewall Azure Key Vault | Microsoft Docs
 description: Zjistěte, jak přistupovat ke službě Azure Key Vault z aplikace za bránou firewall
 services: key-vault
 author: amitbapat
@@ -10,28 +10,28 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: e24684063e73b8f8b659304987f46632f3601e8c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5317111cf023316541f3435ff0d34450061209c6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423114"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186369"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Přístup ke službě Azure Key Vault za bránou firewall
 
-## <a name="what-ports-hosts-or-ip-addresses-should-i-open-to-enable-my-key-vault-client-application-behind-a-firewall-to-access-key-vault"></a>Jaké porty, hostitelé nebo IP adresy mám otevřít, aby klientská aplikace trezoru klíčů za bránou firewall přístup k trezoru klíčů?
+## <a name="what-ports-hosts-or-ip-addresses-should-i-open-to-enable-my-key-vault-client-application-behind-a-firewall-to-access-key-vault"></a>Jaké porty, hostitele nebo IP adresy mám otevřít a povolit tak aplikaci klienta trezoru klíčů za bránou firewall pro přístup k trezoru klíčů?
 
 Pokud chcete umožnit přístup k trezoru klíčů, musí mít klientská aplikace trezoru klíčů přístup k několika koncovým bodům pro různé funkce:
 
 * Ověřování prostřednictvím Azure Active Directory (Azure AD)
 * Správa služby Azure Key Vault. Jedná se o vytváření, čtení, aktualizaci, odstraňování a nastavování zásad přístupu prostřednictvím Azure Resource Manageru.
-* Přístup k objektům (klíče a tajných klíčů) uloženým v úložišti klíčů a [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)jejich správě prochází koncový bod specifický pro trezor klíčů (například ).  
+* Přístup k objektům (klíčům a tajným kódům) uloženým ve službě Key Vault a správa těchto objektů probíhají přes koncový bod specifický pro službu Key Vault (například `https://yourvaultname.vault.azure.net`).  
 
 V závislosti na vaší konfiguraci a prostředí existuje několik variant.
 
 ## <a name="ports"></a>Porty
 
-Veškerý provoz směřující do trezoru klíčů pro všechny tři funkce (ověřování, správa a přístup k rovině dat) prochází přes protokol HTTPS: port 443. Nicméně u seznamu CRL může občas docházet k provozu přes protokol HTTP (na portu 80). Klienti, kteří podporují ocsp by neměldosáhnout CRL, ale může občas dosáhnout [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl).  
+Veškerý provoz směřující do trezoru klíčů pro všechny tři funkce (ověřování, správa a přístup k rovině dat) prochází přes protokol HTTPS: port 443. Nicméně u seznamu CRL může občas docházet k provozu přes protokol HTTP (na portu 80). Klienti, kteří podporují protokol OCSP, by neměli mít přístup k [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl)seznamu CRL, ale můžou se k nim občas  
 
 ## <a name="authentication"></a>Authentication
 
@@ -39,8 +39,8 @@ Klientské aplikace trezoru klíčů budou kvůli ověřování potřebovat př�
 
 | Typ objektu zabezpečení | Koncový bod:port |
 | --- | --- |
-| Uživatel používající účet Microsoft<br> (například user@hotmail.com) |**Globální:**<br> login.microsoftonline.com:443<br><br> **Azure Čína:**<br> login.chinacloudapi.cn:443<br><br>**Azure USA – vláda:**<br> login.microsoftonline.us:443<br><br>**Azure Německo:**<br> login.microsoftonline.de:443<br><br> a <br>login.live.com:443 |
-| Uživatel nebo instanční objekt používající pracovní nebo školní účet s Azure AD (například user@contoso.com) |**Globální:**<br> login.microsoftonline.com:443<br><br> **Azure Čína:**<br> login.chinacloudapi.cn:443<br><br>**Azure USA – vláda:**<br> login.microsoftonline.us:443<br><br>**Azure Německo:**<br> login.microsoftonline.de:443 |
+| Uživatel používající účet Microsoft<br> (například user@hotmail.com) |**Globální**<br> login.microsoftonline.com:443<br><br> **Azure Čína:**<br> login.chinacloudapi.cn:443<br><br>**Azure USA – vláda:**<br> login.microsoftonline.us:443<br><br>**Azure Německo:**<br> login.microsoftonline.de:443<br><br> a <br>login.live.com:443 |
+| Uživatel nebo instanční objekt používající pracovní nebo školní účet s Azure AD (například user@contoso.com) |**Globální**<br> login.microsoftonline.com:443<br><br> **Azure Čína:**<br> login.chinacloudapi.cn:443<br><br>**Azure USA – vláda:**<br> login.microsoftonline.us:443<br><br>**Azure Německo:**<br> login.microsoftonline.de:443 |
 | Uživatel nebo instanční objekt používající pracovní nebo školní účet a službu Active Directory Federation Services (AD FS) nebo jiný federovaný koncový bod (například user@contoso.com) |Všechny koncové body pro pracovní nebo školní účet a AD FS nebo jiné federované koncové body |
 
 Existují i další možné komplexní scénáře. Další informace najdete v tématech [Azure Active Directory Authentication Flow](../../active-directory/develop/authentication-scenarios.md) (Tok ověřování Azure Active Directory), [Integrating Applications with Azure Active Directory](../../active-directory/develop/active-directory-how-to-integrate.md) (Integrace aplikací s Azure Active Directory) a [Active Directory Authentication Protocols](https://msdn.microsoft.com/library/azure/dn151124.aspx) (Ověřovací protokoly Active Directory).  
@@ -51,8 +51,8 @@ Pro správu služby Key Vault (CRUD a nastavení zásad přístupu) je nutné, a
 
 | Typ operace | Koncový bod:port |
 | --- | --- |
-| Operace roviny řízení služby Key Vault<br> prostřednictvím Azure Resource Manageru |**Globální:**<br> management.azure.com:443<br><br> **Azure Čína:**<br> management.chinacloudapi.cn:443<br><br> **Azure USA – vláda:**<br> management.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> management.microsoftazure.de:443 |
-| Microsoft Graph API |**Globální:**<br> graph.microsoft.com:443<br><br> **Azure Čína:**<br> graph.chinacloudapi.cn:443<br><br> **Azure USA – vláda:**<br> graph.microsoft.com:443<br><br> **Azure Německo:**<br> graph.cloudapi.de:443 |
+| Operace roviny řízení služby Key Vault<br> prostřednictvím Azure Resource Manageru |**Globální**<br> management.azure.com:443<br><br> **Azure Čína:**<br> management.chinacloudapi.cn:443<br><br> **Azure USA – vláda:**<br> management.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> management.microsoftazure.de:443 |
+| Microsoft Graph API |**Globální**<br> graph.microsoft.com:443<br><br> **Azure Čína:**<br> graph.chinacloudapi.cn:443<br><br> **Azure USA – vláda:**<br> graph.microsoft.com:443<br><br> **Azure Německo:**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>Operace služby Key Vault
 
@@ -60,7 +60,7 @@ Pro všechny operace správy objektů trezoru klíčů (klíče a tajné kódy) 
 
 | Typ operace | Koncový bod:port |
 | --- | --- |
-| Operace, včetně kryptografických operací na klíčích; vytváření, čtení, aktualizace nebo odstraňování klíčů a tajných kódů; nastavování nebo získávání značek a jiných atributů objektů trezoru klíčů (klíče a tajné kódy) |**Globální:**<br> &lt;název_trezoru&gt;.vault.azure.net:443<br><br> **Azure Čína:**<br> &lt;název_trezoru&gt;.vault.azure.cn:443<br><br> **Azure USA – vláda:**<br> &lt;název_trezoru&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> &lt;název_trezoru&gt;.vault.microsoftazure.de:443 |
+| Operace, včetně kryptografických operací na klíčích; vytváření, čtení, aktualizace nebo odstraňování klíčů a tajných kódů; nastavování nebo získávání značek a jiných atributů objektů trezoru klíčů (klíče a tajné kódy) |**Globální**<br> &lt;název_trezoru&gt;.vault.azure.net:443<br><br> **Azure Čína:**<br> &lt;název_trezoru&gt;.vault.azure.cn:443<br><br> **Azure USA – vláda:**<br> &lt;název_trezoru&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> &lt;název_trezoru&gt;.vault.microsoftazure.de:443 |
 
 ## <a name="ip-address-ranges"></a>Rozsahy IP adres
 
@@ -68,4 +68,4 @@ Služba Key Vault používá jiné prostředky Azure, například infrastrukturu
 
 ## <a name="next-steps"></a>Další kroky
 
-Máte-li dotazy týkající se trezoru klíčů, navštivte [fóra Azure Key Vault](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+Pokud máte dotazy týkající se Key Vault, navštivte [fóra Azure Key Vault](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).

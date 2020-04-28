@@ -1,61 +1,140 @@
 ---
 title: Správa přístupových klíčů pro účet
 titleSuffix: Azure Storage
-description: Přečtěte si, jak zobrazit, spravovat a otáčet přístupové klíče účtu úložiště.
+description: Naučte se zobrazovat, spravovat a střídat přístupové klíče k účtu úložiště.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 04/24/2020
 ms.author: tamram
-ms.openlocfilehash: 50c0980800bbc9b2951bf9107114c1a4d9265558
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454658"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176616"
 ---
 # <a name="manage-storage-account-access-keys"></a>Správa přístupových klíčů účtu úložiště
 
-Když vytvoříte účet úložiště, Azure vygeneruje dva 512bitové klíče pro přístup k účtu úložiště. Tyto klíče lze použít k autorizaci přístupu k datům v účtu úložiště prostřednictvím autorizace sdíleného klíče.
+Když vytvoříte účet úložiště, Azure vygeneruje 2 512 přístupové klíče účtu úložiště. Tyto klíče se dají použít k autorizaci přístupu k datům v účtu úložiště prostřednictvím autorizace pomocí sdíleného klíče.
 
-Společnost Microsoft doporučuje používat Azure Key Vault ke správě přístupových klíčů a pravidelně otáčet a regenerovat klíče. Použití služby Azure Key Vault usnadňuje otáčení klíčů bez přerušení do aplikací. Klíče můžete také otáčet ručně.
+Microsoft doporučuje použít Azure Key Vault ke správě přístupových klíčů a k pravidelnému střídání a opětovnému vygenerování klíčů. Použití Azure Key Vault usnadňuje střídání klíčů bez přerušení v aplikacích. Klíče můžete také ručně otáčet.
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-## <a name="view-access-keys-and-connection-string"></a>Zobrazení přístupových klíčů a připojovacího řetězce
+## <a name="view-account-access-keys"></a>Zobrazit přístupové klíče účtu
 
-[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
+Přístupové klíče k účtu můžete zobrazit a zkopírovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Azure Portal taky poskytuje připojovací řetězec pro váš účet úložiště, který můžete kopírovat.
 
-## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Správa přístupových klíčů pomocí služby Azure Key Vault
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Společnost Microsoft doporučuje ke správě a otočení přístupových klíčů používat azure key vault. Vaše aplikace může bezpečně přistupovat k vašim klíčům v trezoru klíčů, takže se můžete vyhnout jejich ukládání s kódem aplikace. Další informace o použití trezoru klíčů pro správu klíčů naleznete v následujících článcích:
+Zobrazení a zkopírování přístupových klíčů účtu úložiště nebo připojovacího řetězce z Azure Portal:
 
-- [Správa klíčů účtů úložiště pomocí Azure Key Vault a PowerShellu](../../key-vault/secrets/overview-storage-keys-powershell.md)
-- [Správa klíčů účtů úložiště pomocí azure key vaultu a azure cli](../../key-vault/secrets/overview-storage-keys.md)
+1. V [Azure Portal](https://portal.azure.com)přejděte na svůj účet úložiště.
+1. V části **Nastavení** vyberte **Přístupové klíče**. Zobrazí se přístupové klíče vašeho účtu a také úplný připojovací řetězec pro jednotlivé klíče.
+1. Vyhledejte hodnotu **klíče** pod **klíč1**a kliknutím na tlačítko **Kopírovat** Zkopírujte klíč účtu.
+1. Alternativně můžete zkopírovat celý připojovací řetězec. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a kliknutím na tlačítko **Kopírovat** zkopírujte připojovací řetězec.
 
-## <a name="manually-rotate-access-keys"></a>Ruční otočení přístupových kláves
+    :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="Snímek obrazovky znázorňující zobrazení přístupových klíčů v Azure Portal":::
 
-Společnost Microsoft doporučuje pravidelně střídat přístupové klíče, aby byl váš účet úložiště zabezpečen. Pokud je to možné, použijte Azure Key Vault ke správě přístupových klíčů. Pokud trezor klíčů nepoužíváte, budete muset klíče otočit ručně.
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Jsou přiřazeny dva přístupové klávesy, abyste je mohli otáčet. S dvěma klíči zajišťuje, že vaše aplikace udržuje přístup k Azure Storage v průběhu celého procesu.
+Pokud chcete načíst přístupové klíče k účtu pomocí PowerShellu, zavolejte příkaz [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) .
+
+Následující příklad načte první klíč. Chcete-li načíst druhý klíč, `Value[1]` použijte místo `Value[0]`. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
+
+```powershell
+$storageAccountKey = `
+    (Get-AzStorageAccountKey `
+    -ResourceGroupName <resource-group> `
+    -Name <storage-account>).Value[0]
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete zobrazit seznam klíčů pro přístup k účtu pomocí Azure CLI, zavolejte příkaz [AZ Storage Account Keys list](/cli/azure/storage/account/keys#az-storage-account-keys-list) , jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami. 
+
+```azurecli-interactive
+az storage account keys list \
+  --resource-group <resource-group> \
+  --account-name <storage-account>
+```
+
+---
+
+Pro přístup k Azure Storage můžete použít kterýkoli ze dvou klíčů, ale obecně je dobrým zvykem použít první klíč a při střídání klíčů rezervovat použití druhého klíče.
+
+Chcete-li zobrazit nebo číst přístupové klíče účtu, musí být uživatel buď správcem služby, nebo musí být přiřazena role RBAC, která zahrnuje **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Mezi předdefinované role RBAC, které zahrnují tuto akci, patří role **vlastníka**, **přispěvatele**a **role služby operátora klíče účtu úložiště** . Další informace o roli správce služby najdete v tématu [role správců pro klasický odběr, role Azure RBAC a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o předdefinovaných rolích pro Azure Storage najdete v části **úložiště** v [předdefinovaných rolích Azure pro službu Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
+
+## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Správa přístupových klíčů pomocí Azure Key Vault
+
+Microsoft doporučuje, abyste ke správě a střídání přístupových klíčů používali Azure Key Vault. Vaše aplikace může bezpečně přistupovat k vašim klíčům v Key Vault, abyste se mohli vyhnout jejich ukládání do kódu aplikace. Další informace o použití Key Vault ke správě klíčů najdete v následujících článcích:
+
+- [Správa klíčů účtu úložiště pomocí Azure Key Vault a PowerShellu](../../key-vault/secrets/overview-storage-keys-powershell.md)
+- [Správa klíčů účtu úložiště pomocí Azure Key Vault a Azure CLI](../../key-vault/secrets/overview-storage-keys.md)
+
+## <a name="manually-rotate-access-keys"></a>Ruční otočení přístupových klíčů
+
+Společnost Microsoft doporučuje, abyste své přístupové klíče pravidelně přeměnili, aby se zajistilo zabezpečení účtu úložiště. Pokud je to možné, použijte Azure Key Vault ke správě přístupových klíčů. Pokud Key Vault nepoužíváte, budete muset klíče otočit ručně.
+
+Přiřadí se dva přístupové klíče, abyste mohli klíče otáčet. Máte-li dvě klíče, zajistíte tím, že vaše aplikace bude udržovat v průběhu procesu přístup k Azure Storage.
 
 > [!WARNING]
-> Obnovení přístupových klíčů může ovlivnit všechny aplikace nebo služby Azure, které jsou závislé na klíči účtu úložiště. Všichni klienti, kteří používají klíč účtu pro přístup k účtu úložiště, musí být aktualizováni, aby používali nový klíč, včetně mediálních služeb, cloudových, desktopových a mobilních aplikací a grafických aplikací uživatelského rozhraní pro Azure Storage, jako je [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+> Opětovné generování přístupových klíčů může mít vliv na jakékoli aplikace nebo služby Azure, které jsou závislé na klíči účtu úložiště. Všichni klienti, kteří používají klíč účtu pro přístup k účtu úložiště, se musí aktualizovat tak, aby používali nový klíč, včetně Media Services, cloudu, desktopových a mobilních aplikací a aplikací grafického uživatelského rozhraní pro Azure Storage, jako je například [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
-Chcete-li otočit klíče účtu úložiště, postupujte podle tohoto postupu:
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Aktualizujte připojovací řetězce v kódu aplikace a použijte sekundární klíč.
-2. Znovu vygenerujte primární přístupový klíč pro účet úložiště. V okně **Přístupové klíče** na webu Azure portal klikněte na **Regenerate Key1**a potom kliknutím na **Ano** potvrďte, že chcete vygenerovat nový klíč.
-3. Aktualizujte připojovací řetězce v kódu tak, aby odkazovaly na nový primární přístupový klíč.
-4. Stejným způsobem pak opětovně vygenerujte sekundární přístupový klíč.
+K otočení přístupových klíčů účtu úložiště v Azure Portal:
+
+1. Aktualizujte připojovací řetězce v kódu aplikace tak, aby odkazovaly na sekundární přístupový klíč pro účet úložiště.
+1. V [Azure Portal](https://portal.azure.com)přejděte na svůj účet úložiště.
+1. V části **Nastavení** vyberte **Přístupové klíče**.
+1. Pokud chcete znovu vygenerovat primární přístupový klíč pro účet úložiště, vyberte tlačítko **znovu vygenerovat** vedle primárního přístupového klíče.
+1. Aktualizujte připojovací řetězce v kódu tak, aby odkazovaly na nový primární přístupový klíč.
+1. Stejným způsobem pak opětovně vygenerujte sekundární přístupový klíč.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Postup při otáčení přístupových klíčů k účtu úložiště pomocí PowerShellu:
+
+1. Aktualizujte připojovací řetězce v kódu aplikace tak, aby odkazovaly na sekundární přístupový klíč pro účet úložiště.
+1. Voláním příkazu [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) znovu vygenerujte primární přístupový klíč, jak je znázorněno v následujícím příkladu:
+
+    ```powershell
+    New-AzStorageAccountKey -ResourceGroupName <resource-group> `
+      -Name <storage-account> `
+      -KeyName key1
+    ```
+
+1. Aktualizujte připojovací řetězce v kódu tak, aby odkazovaly na nový primární přístupový klíč.
+1. Stejným způsobem pak opětovně vygenerujte sekundární přístupový klíč. Chcete-li znovu vygenerovat sekundární klíč `key2` , použijte jako název klíče místo `key1`.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+K otočení přístupových klíčů účtu úložiště pomocí Azure CLI:
+
+1. Aktualizujte připojovací řetězce v kódu aplikace tak, aby odkazovaly na sekundární přístupový klíč pro účet úložiště.
+1. Zavolejte příkazem [AZ Storage Account Keys obnovit](/cli/azure/storage/account/keys#az-storage-account-keys-renew) a znovu vygenerujte primární přístupový klíč, jak je znázorněno v následujícím příkladu:
+
+    ```azurecli-interactive
+    az storage account keys renew \
+      --resource-group <resource-group> \
+      --account-name <storage-account>
+      --key primary
+    ```
+
+1. Aktualizujte připojovací řetězce v kódu tak, aby odkazovaly na nový primární přístupový klíč.
+1. Stejným způsobem pak opětovně vygenerujte sekundární přístupový klíč. Chcete-li znovu vygenerovat sekundární klíč `key2` , použijte jako název klíče místo `key1`.
+
+---
 
 > [!NOTE]
-> Společnost Microsoft doporučuje používat pouze jeden z klíčů ve všech aplikacích současně. Pokud používáte klíč 1 v některých místech a klíč 2 v jiných, nebudete moci otáčet klíče bez ztráty přístupu některé aplikace.
+> Microsoft doporučuje používat ve všech aplikacích současně jenom jeden z klíčů. Pokud na některých místech a v dalších klíčích 2 použijete klíč 1, nebudete moct tyto klíče otočit, aniž by aplikace ztratila přístup.
 
-Chcete-li otočit přístupové klíče účtu, musí být uživatel správcem služeb nebo musí být přiřazena role RBAC, která zahrnuje **microsoft.storage/storageaccounts/regeneratekey/action**. Some built-in RBAC roles that include this action are the **Owner**, **Contributor**, and **Storage Account Key Operator Service Role** roles. Další informace o roli správce služby najdete [v tématu Klasické role správce předplatného, role Azure RBAC a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o předdefinovaných rolích RBAC pro Azure Storage najdete v části **Úložiště** [ve integrovaných rolích Azure pro Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
+Pro otočení přístupových klíčů účtu musí uživatel být buď správce služby, nebo musí být přiřazená role RBAC, která zahrnuje **Microsoft. Storage/storageAccounts/RegenerateKey/Action**. Mezi předdefinované role RBAC, které zahrnují tuto akci, patří role **vlastníka**, **přispěvatele**a **role služby operátora klíče účtu úložiště** . Další informace o roli správce služby najdete v tématu [role správců pro klasický odběr, role Azure RBAC a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o integrovaných rolích RBAC pro Azure Storage najdete v části **úložiště** v [předdefinovaných rolích Azure pro službu Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled účtu úložiště Azure](storage-account-overview.md)
+- [Přehled účtu Azure Storage](storage-account-overview.md)
 - [vytvořit účet úložiště](storage-account-create.md)

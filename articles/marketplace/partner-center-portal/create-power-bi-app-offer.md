@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 776311d6e6395cbe462f958bd8685fa0259e1fc2
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: dc036ae3cba6aa4d3a689562afffb991fadc8c0a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674186"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867600"
 ---
 # <a name="create-a-power-bi-app"></a>Vytvoření aplikace Power BI
 
@@ -55,7 +55,7 @@ Po zadání těchto dvou hodnot vyberte **Vytvořit** a pokračujte na stránku 
 
 Na stránce **Přehled nabídky** se zobrazí vizuální znázornění kroků potřebných k publikování této nabídky (dokončené i nadcházející) a jak dlouho by mělo trvat dokončení každého kroku.
 
-Obsahuje odkazy k provádění operací na tuto nabídku na základě výběru, který provedete. Například:
+Obsahuje odkazy k provádění operací na tuto nabídku na základě výběru, který provedete. Příklad:
 
 - Pokud je nabídka konceptem - [Odstranit koncept nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Pokud je nabídka živá - [Přestaňte nabídku prodávat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -128,7 +128,7 @@ Volitelně vyberte v každém odvětví až dvě odvětví a dvě vertikály. Za
 
 ### <a name="legal"></a>Právní informace
 
-#### <a name="terms-and-conditions"></a>Podmínky a ujednání
+#### <a name="terms-and-conditions"></a>podmínky a ujednání
 
 Chcete-li poskytnout vlastní smluvní podmínky, zadejte do pole **Smluvní podmínky** až 10 000 znaků. Pokud vaše smluvní podmínky vyžadují delší popis, zadejte jeden webový odkaz na místo, kde je lze nalézt. Zobrazí se zákazníkům jako aktivní odkaz.
 
@@ -149,7 +149,7 @@ Definujte podrobnosti tržiště (například název nabídky, popis a obrázky)
 > [!NOTE]
 > Podrobnosti nabídky nemusí být v angličtině, pokud popis nabídky &quot;začíná frází, Tato aplikace je k dispozici pouze v [neanglickém jazyce]. &quot; Je&#39;také v pořádku poskytnout užitečný odkaz na nabídku obsahu v jazyce, který&#39;se liší od toho, který je použit v nabídce výpisu.
 
-### <a name="name"></a>Name (Název)
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název nabídky. Toto pole je předvyplněno textem, který jste zadali do pole **Alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -221,6 +221,9 @@ Poskytněte alespoň jeden a až tři související marketingové dokumenty ve f
 ### <a name="marketplace-images"></a>Obrázky na marketplace
 
 Poskytněte loga a obrázky, které chcete použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazané obrázky budou odmítnuty.
+
+>[!Note]
+>Pokud máte problém s nahráváním souborů, ujistěte se, že místní síť neblokuje službu https://upload.xboxlive.com používanou partnerským centrem.
 
 #### <a name="store-logos"></a>Loga obchodu
 

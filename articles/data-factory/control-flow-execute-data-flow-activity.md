@@ -1,6 +1,6 @@
 ---
 title: Aktivita toku dat
-description: Jak spustit toky dat z kanálu datové továrny.
+description: Jak spouštět toky dat z kanálu služby Data Factory.
 services: data-factory
 documentationcenter: ''
 author: kromerm
@@ -8,19 +8,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 03/16/2020
-ms.openlocfilehash: 32088dd712cd0c70fc01de48add17a0b6a828dc8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/25/2020
+ms.openlocfilehash: 78ef749f36e9ffd3aae510d201b0700e5e197065
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415333"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183292"
 ---
-# <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat ve Službě Azure Data Factory
+# <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Aktivita Tok dat slouží k transformaci a přesouvání dat prostřednictvím mapování datových toků. Pokud s toky dat teču nejste, přečtěte si části [Mapování toku dat](concepts-data-flow-overview.md)
+Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostřednictvím mapování toků dat. Pokud s toky dat začínáte, přečtěte si téma [mapování toku dat – přehled](concepts-data-flow-overview.md)
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -56,73 +56,73 @@ Aktivita Tok dat slouží k transformaci a přesouvání dat prostřednictvím m
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-Dataflow | Odkaz na prováděný tok dat | DataFlowReference | Ano
-integraceDoba běhu | Výpočetní prostředí, ve které běží tok dat. Pokud není zadán, bude použit a automaticky přeložit za běhu integrace Azure | IntegrationRuntimeReference | Ne
-compute.coreCount | Počet jader použitých v jiskřícím clusteru. Lze zadat pouze v případě, že se používá runtime integrace Azure. | 8, 16, 32, 48, 80, 144, 272 | Ne
-compute.computeType | Typ výpočetních prostředků použitých v clusteru jiskry. Lze zadat pouze v případě, že se používá runtime integrace Azure. | "Obecné", "ComputeOptimized", "MemoryOptimized" | Ne
-staging.linkedService | Pokud používáte zdroj NEBO jímku SQL DW, účet úložiště použitý pro pracovní polybase | Odkaz služby LinkedServiceReference | Pouze v případě, že tok dat čte nebo zapisuje do SQL DW
-staging.folderPath | Pokud používáte zdroj nebo jímku SQL DW, cesta ke složce v účtu úložiště objektů blob použitá pro pracovní prostředí PolyBase | Řetězec | Pouze v případě, že tok dat čte nebo zapisuje do SQL DW
+toku dat | Odkaz na prováděný tok dat | DataFlowReference | Ano
+integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | Ne
+Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | Ne
+Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | Ne
+Příprava. linkedService | Pokud používáte zdroj dat nebo jímku SQL DW, účet úložiště, který se používá pro základní fázování | LinkedServiceReference | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
+Příprava. folderPath | Pokud používáte zdroj dat nebo jímku SQL DW, cesta ke složce v účtu BLOB Storage se používá pro základní fázování. | Řetězec | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
 
 ![Spustit tok dat](media/data-flow/activity-data-flow.png "Spustit tok dat")
 
-### <a name="dynamically-size-data-flow-compute-at-runtime"></a>Výpočetní výpočetní tok dat s dynamickou velikostí za běhu
+### <a name="dynamically-size-data-flow-compute-at-runtime"></a>Dynamická velikost výpočetního toku dat za běhu
 
-Vlastnosti Počet jádra a Typ výpočetního výkonu lze dynamicky nastavit tak, aby se přizpůsobily velikosti příchozích zdrojových dat za běhu. Pomocí aktivit kanálu, jako je vyhledávání nebo získat metadata, můžete najít velikost dat zdrojové datové sady. Potom použijte přidat dynamický obsah ve vlastnostech aktivity toku dat.
+Vlastnosti základního počtu a výpočetního typu se dají nastavit dynamicky tak, aby se při spuštění upravily na velikost příchozích zdrojových dat. Použijte aktivity kanálu, jako je Lookup nebo získat metadata, abyste našli velikost dat zdrojové datové sady. Pak použijte možnost Přidat dynamický obsah do vlastností aktivity toku dat.
 
-![Dynamický tok dat](media/data-flow/dyna1.png "Dynamický tok dat")
+![Tok dynamického toku dat](media/data-flow/dyna1.png "Tok dynamického toku dat")
 
-[Zde je stručný instruktážní video vysvětluje tuto techniku](https://www.youtube.com/watch?v=jWSkJdtiJNM)
+[Toto je stručný kurz pro video, který vysvětluje tuto techniku.](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
-### <a name="data-flow-integration-runtime"></a>Za běhu integrace toku dat
+### <a name="data-flow-integration-runtime"></a>Prostředí Integration runtime toku dat
 
-Zvolte, který integrační běh ový čas se má použít pro spuštění aktivity toku dat. Ve výchozím nastavení bude Data Factory používat runtime integrace Azure s automatickým překladem se čtyřmi pracovními jádry a žádný čas na život (TTL). Tento infračervený přenos má typ výpočetních prostředků pro obecné účely a běží ve stejné oblasti jako vaše továrna. Můžete vytvořit vlastní runtimes integrace Azure, které definují konkrétní oblasti, typ výpočetních prostředků, počty jader a TTL pro spuštění aktivity toku dat.
+Vyberte, který Integration Runtime se má použít pro spuštění aktivity toku dat. Ve výchozím nastavení používá Data Factory k automatickému vyřešení prostředí Azure Integration runtime se čtyřmi jádry pracovního procesu a bez TTL (Time to Live). Tento IR má pro výpočetní typ pro obecné účely a běží ve stejné oblasti jako vaše továrna. Můžete vytvářet vlastní prostředí Azure Integration runtime, která definují konkrétní oblasti, výpočetní typ, počty jader a hodnotu TTL pro spuštění aktivity toku dat.
 
-Pro spuštění kanálu clusteru je cluster úloh, který trvá několik minut ke spuštění před spuštěním spuštění. Pokud není zadán žádný TTL, tato doba spuštění je vyžadována při každém spuštění kanálu. Pokud zadáte TTL, teplý fond clusteru zůstane aktivní po dobu určenou po posledním spuštění, což má za následek kratší časy spuštění. Například pokud máte TTL 60 minut a spustit tok dat na něm jednou za hodinu, fond clusteru zůstane aktivní. Další informace najdete v [tématu Azure integration runtime](concepts-integration-runtime.md).
+V případě spuštění kanálu je cluster clusterem úloh, který trvá několik minut, než se spustí spuštění. Pokud není zadána hodnota TTL, je při každém spuštění kanálu vyžadován tento čas spuštění. Zadáte-li hodnotu TTL, zůstane aktivní fond clusterů aktivní po dobu zadanou po posledním spuštění, což bude mít za následek kratší dobu spouštění. Například pokud máte hodnotu TTL 60 minut a za každou hodinu spustíte tok dat, fond clusterů zůstane aktivní. Další informace najdete v tématu [prostředí Azure Integration runtime](concepts-integration-runtime.md).
 
-![Doba běhu integrace Azure](media/data-flow/ir-new.png "Doba běhu integrace Azure")
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
 > [!NOTE]
-> Výběr integračního běhu v aktivitě toku dat se vztahuje pouze na *spuštěná spuštění* vašeho kanálu. Ladění kanálu s toky dat běží na clusteru určeném v relaci ladění.
+> Výběr Integration Runtime v aktivitě toku dat se vztahuje pouze na *aktivované spouštění* vašeho kanálu. Ladění kanálu pomocí datových toků běží v clusteru zadaném v relaci ladění.
 
 ### <a name="polybase"></a>PolyBase
 
-Pokud používáte Azure SQL Data Warehouse jako jímku nebo zdroj, musíte zvolit pracovní umístění pro dávkové zatížení PolyBase. PolyBase umožňuje hromadné dávkové načítání namísto načítání dat řádek po řádku. PolyBase výrazně snižuje dobu načítání do SQL DW.
+Pokud používáte Azure SQL Data Warehouse jako jímku nebo zdroj, musíte zvolit pracovní umístění pro zatížení základní dávky. Základem je hromadné načtení dávkového načítání namísto načítání datových řádků po řádku. Základce výrazně zkracuje dobu načítání do SQL datového skladu.
 
-## <a name="parameterizing-data-flows"></a>Parametrizace toků dat
+## <a name="parameterizing-data-flows"></a>Toky dat Parametrizace
 
 ### <a name="parameterized-datasets"></a>Parametrizované datové sady
 
-Pokud tok dat používá parametrizované datové sady, nastavte hodnoty parametrů na kartě **Nastavení.**
+Pokud datový tok používá parametrizované datové sady, nastavte hodnoty parametrů na kartě **Nastavení** .
 
 ![Spustit parametry toku dat](media/data-flow/params.png "Parametry")
 
 ### <a name="parameterized-data-flows"></a>Parametrizované toky dat
 
-Pokud je tok dat parametrizován, nastavte dynamické hodnoty parametrů toku dat na kartě **Parametry.** Můžete použít buď jazyk výrazu kanálu ADF (pouze pro typy řetězců), nebo jazyk výrazu toku dat k přiřazení dynamických nebo literálových hodnot parametrů. Další informace naleznete v [tématu Parametry toku dat](parameters-data-flow.md).
+Pokud je tok dat parametrizovaný, nastavte dynamické hodnoty parametrů toku dat na kartě **parametry** . K přiřazení hodnot parametrů Dynamic nebo Literal můžete použít jazyk výrazu kanálu ADF nebo jazyk výrazu toku dat. Další informace najdete v tématu [parametry toku dat](parameters-data-flow.md). Pokud chcete zahrnout vlastnosti kanálu jako součást výrazu k předání do parametru toku dat, zvolte možnost výrazy kanálu.
 
-![Příklad parametru toku dat](media/data-flow/parameter-example.png "Příklad parametru")
+![Příklad spuštění parametru toku dat](media/data-flow/parameter-example.png "Příklad parametru")
 
 ### <a name="parameterized-compute-properties"></a>Parametrizované výpočetní vlastnosti.
 
-Pokud použijete runtime s automatickou resolveu integrace Azure a zadáte hodnoty pro compute.coreCount a compute.computeType, můžete parametrizovat počet jader nebo typ výpočetní doby.
+Pokud použijete automatické řešení Azure Integration runtime a zadáte hodnoty Compute. coreCount a COMPUTE. computeType, můžete parametrizovat typ jádra nebo Compute.
 
-![Příklad parametru toku dat](media/data-flow/parameterize-compute.png "Příklad parametru")
+![Příklad spuštění parametru toku dat](media/data-flow/parameterize-compute.png "Příklad parametru")
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>Ladění kanálu aktivity toku dat
 
-Chcete-li spustit kanál ladění se spuštěnou aktivitou toku dat, musíte zapnout režim ladění toku dat pomocí jezdce **Ladění toku dat** na horním panelu. Režim ladění umožňuje spustit tok dat proti aktivnímu clusteru Spark. Další informace naleznete [v tématu Režim ladění](concepts-data-flow-debug-mode.md).
+Chcete-li spustit ladicí kanál spuštěný s aktivitou toku dat, je nutné přepnout na režim ladění toku dat prostřednictvím posuvníku **ladění toku dat** na horním panelu. Režim ladění umožňuje spustit tok dat proti aktivnímu clusteru Spark. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
 
-![Tlačítko Ladění](media/data-flow/debugbutton.png "Tlačítko Ladění")
+![Tlačítko ladit](media/data-flow/debugbutton.png "Tlačítko ladit")
 
-Kanál ladění je spuštěn proti aktivnímu ladicímu clusteru, nikoli integračnímu runtime prostředí určenému v nastavení aktivity toku dat. Při spuštění režimu ladění můžete zvolit výpočetní prostředí ladění.
+Ladicí kanál běží na aktivním ladicím clusteru, nikoli v prostředí Integration runtime zadaném v nastavení aktivity toku dat. Můžete zvolit prostředí ladění COMPUTE při spuštění režimu ladění.
 
-## <a name="monitoring-the-data-flow-activity"></a>Sledování aktivity toku dat
+## <a name="monitoring-the-data-flow-activity"></a>Monitorování aktivity toku dat
 
-Aktivita toku dat má speciální prostředí monitorování, kde můžete zobrazit dělení, čas fáze a informace o datové masivu. Otevřete podokno monitorování pomocí ikony brýlí v části **Akce**. Další informace naleznete v [tématu Sledování toků dat](concepts-data-flow-monitoring.md).
+Aktivita toku dat má speciální prostředí pro monitorování, ve kterém můžete zobrazit oddíly, čas fáze a informace o datových řádcích. Otevřete podokno monitorování pomocí ikony brýlí v části **Akce**. Další informace najdete v tématu [monitorování toků dat](concepts-data-flow-monitoring.md).
 
-### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Použití výsledků aktivity toku dat v následné aktivitě
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Použití aktivity toku dat v důsledku následné aktivity
 
-Aktivita toku dat výstupy metriky týkající se počtu řádků zapsaných do každého jímky a řádky číst z každého zdroje. Tyto výsledky jsou `output` vráceny v části výsledek spuštění aktivity. Vrácené metriky jsou ve formátu níže json.
+Aktivita toku dat výstupuje metriky týkající se počtu řádků zapsaných do každé jímky a řádků načtených z každého zdroje. Tyto výsledky se vrátí v `output` části výsledku spuštění aktivity. Vrácené metriky jsou ve formátu níže uvedeného formátu JSON.
 
 ``` json
 {
@@ -150,16 +150,16 @@ Aktivita toku dat výstupy metriky týkající se počtu řádků zapsaných do 
 }
 ```
 
-Chcete-li například získat počet řádků zapsaných do jímky s názvem "sink1" `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`v aktivitě s názvem "dataflowActivity", použijte .
+Pokud například chcete získat počet řádků zapsaných do jímky s názvem ' sink1 ' v aktivitě s názvem ' dataflowActivity ', použijte `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`.
 
-Chcete-li získat počet řádků číst ze zdroje s názvem 'source1', který byl použit v tomto jímce, použijte `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`.
+Chcete-li získat počet řádků načtených ze zdroje s názvem ' source1 ', který byl použit v této jímky `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`, použijte.
 
 > [!NOTE]
-> Pokud jímky má napsané nula řádků, nezobrazí se v metriky. Existenci lze ověřit `contains` pomocí funkce. Například `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` zkontroluje, zda byly zapsány všechny řádky do jímky1.
+> Pokud má jímka zapsána nula řádků, nebude zobrazena v metrikách. Existenci lze ověřit pomocí `contains` funkce. Například zkontroluje, `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` zda byly do sink1 zapsány nějaké řádky.
 
 ## <a name="next-steps"></a>Další kroky
 
-Viz aktivity toku řízení podporované společností Data Factory: 
+Viz aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita podmínky Když](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)

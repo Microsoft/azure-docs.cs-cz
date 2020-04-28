@@ -9,18 +9,18 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1bc47fe6e1f0730bcff49e138df92f85ba3ef1a8
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 607cebca3e6e8ddd95900ecdbd7041e5f7bb50cc
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114475"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165769"
 ---
 # <a name="workspace-mappings"></a>Mapování pracovních prostorů
 
 Při povolování Update Management, Change Tracking a inventáře nebo Start/Stop VMs during off-hours jsou podporovány pouze určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation v rámci předplatného. Toto mapování platí pouze pro účet Automation a pracovní prostor Log Analytics. Pracovní prostor Log Analytics a účet Automation musí být ve stejném předplatném, ale můžou být v různých skupinách prostředků nasazených do stejné oblasti.
 
-Další informace najdete v tématu [Log Analytics pracovní prostor a účet Automation](../azure-monitor/insights/solutions.md#log-analytics- workspace-and-automation-account).
+Další informace najdete v tématu [Log Analytics pracovní prostor a účet Automation](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
 
 ## <a name="supported-mappings"></a>Podporovaná mapování
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault jako zdroj mřížky událostí
-description: Popisuje vlastnosti a schémata k dispozici pro události Azure Key Vault s Azure Event Grid
+title: Azure Key Vault jako zdroj Event Grid
+description: V této části najdete popis vlastností a schématu poskytnutých pro Azure Key Vault události Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458245"
 ---
-# <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault jako zdroj mřížky událostí
+# <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault jako zdroj Event Grid
 
-Tento článek obsahuje vlastnosti a schéma pro události v [azure key vault](../key-vault/index.yml), aktuálně ve verzi preview. Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek poskytuje vlastnosti a schéma pro události v [Azure Key Vault](../key-vault/index.yml), které jsou aktuálně ve verzi Preview. Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md).
 
-## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
+## <a name="event-grid-event-schema"></a>Schéma událostí služby Event Grid
 
 ### <a name="available-event-types"></a>Dostupné typy událostí
 
 Účet Azure Key Vault generuje následující typy událostí:
 
-| Celé jméno události | Zobrazovaný název události | Popis |
+| Úplný název události | Zobrazovaný název události | Popis |
 | ---------- | ----------- |---|
-| Microsoft.KeyVault.CertificateNewVersionVytvořeno | Byla vytvořena nová verze certifikátu | Aktivuje se při vytvoření nového certifikátu nebo nové verze certifikátu. |
-| Nearexpiry rozhraní Microsoft.KeyVault.Certificate | Certifikát blížící se vypršení platnosti | Aktivuje se, když vyprší platnost aktuální verze certifikátu. (Událost se spustí 30 dní před datem vypršení platnosti.) |
-| Platnost programu Microsoft.KeyVault.Certificate vypršela | Platnost certifikátu vypršela | Aktivuje se po vypršení platnosti certifikátu. |
-| Microsoft.KeyVault.KeyNewVersionVytvořeno | Vytvořena nová verze klíče | Aktivuje se při vytvoření nového klíče nebo nové verze klíče. |
-| Microsoft.KeyVault.KeyNearExpiry | Klíč v blízkosti vypršení platnosti | Aktivuje se, když vyprší platnost aktuální verze klíče. (Událost se spustí 30 dní před datem vypršení platnosti.) |
-| Platnost souboru Microsoft.KeyVault.KeyVypršela | Platnost klíče vypršela. | Aktivuje se při vypršení platnosti klíče. |
-| Microsoft.KeyVault.SecretNewVersionVytvořeno | Byla vytvořena tajná nová verze | Aktivuje se při vytvoření nového tajného nebo nového tajného klíče. |
-| Microsoft.KeyVault.SecretNearExpiry | Tajné téměř vypršení platnosti | Aktivuje se, když vyprší platnost aktuální verze tajného klíče. (Událost se spustí 30 dní před datem vypršení platnosti.) |
-| Platnost souboru Microsoft.KeyVault.SecretVypršela | Platnost tajného klíče vypršela | Aktivuje se při vypršení platnosti tajného klíče. |
+| Microsoft. klíčů trezor. CertificateNewVersionCreated | Nově vytvořená verze certifikátu | Aktivuje se při vytvoření nového certifikátu nebo verze nového certifikátu. |
+| Microsoft. klíčů trezor. CertificateNearExpiry | Brzo vyprší platnost certifikátu | Aktivuje se v případě vypršení platnosti aktuální verze certifikátu. (Událost se aktivuje 30 dní před datem vypršení platnosti.) |
+| Microsoft. klíčů trezor. CertificateExpired | Platnost certifikátu vypršela | Aktivováno, když vypršela platnost certifikátu. |
+| Microsoft. klíčů trezor. KeyNewVersionCreated | Byla vytvořena klíčová nová verze. | Aktivuje se při vytvoření nového klíče nebo verze nového klíče. |
+| Microsoft. klíčů trezor. KeyNearExpiry | Klíč s blížícím se koncem platnosti | Aktivuje se, když brzy vyprší platnost aktuální verze klíče. (Událost se aktivuje 30 dní před datem vypršení platnosti.) |
+| Platnost služby Microsoft. klíčů trezor. | Platnost klíče vypršela. | Aktivuje se, když vypršela platnost klíče. |
+| Microsoft. klíčů trezor. SecretNewVersionCreated | Byla vytvořena tajná nová verze. | Aktivuje se, když se vytvoří nový tajný kód nebo nová tajná verze. |
+| Microsoft. klíčů trezor. SecretNearExpiry | Tajný kód v blízkosti vypršení platnosti | Aktivuje se, když brzy vyprší platnost aktuální verze tajného kódu. (Událost se aktivuje 30 dní před datem vypršení platnosti.) |
+| Microsoft. klíčů trezor. SecretExpired | Platnost tajného kódu vypršela | Aktivováno, když vypršela platnost tajného klíče. |
 
 ### <a name="event-examples"></a>Příklady událostí
 
-Následující příklad ukazuje schéma pro **Microsoft.KeyVault.SecretNewVersionCreated**:
+Následující příklad ukazuje schéma pro **Microsoft. SecretNewVersionCreated trezor**:
 
 ```JSON
 [
@@ -69,29 +69,29 @@ Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | ---------- | ----------- |---|
-| id | řetězec | ID objektu, který tuto událost spustil |
-| název trezoru | řetězec | Název trezoru klíčů objektu, který tuto událost spustil |
-| Objecttype | řetězec | Typ objektu, který tuto událost spustil |
-| Objectname | řetězec | Název objektu, který tuto událost spustil |
-| version | řetězec | Verze objektu, který tuto událost spustil |
-| Nbf | číslo | Datum nepředspotřeby v sekundách od 1970-01-01T00:00:00Z objektu, který tuto událost spustil |
-| exp | číslo | Datum vypršení platnosti v sekundách od 1970-01-01T00:00:00Z objektu, který spustil tuto událost |
+| id | řetězec | ID objektu, který aktivoval tuto událost |
+| vaultName | řetězec | Název trezoru klíčů u objektu, který aktivoval tuto událost |
+| objectType | řetězec | Typ objektu, který aktivoval tuto událost |
+| objectName | řetězec | Název objektu, který aktivoval tuto událost |
+| version | řetězec | Verze objektu, který aktivoval tuto událost |
+| NBF | číslo | Datum před dnem v sekundách od roku 1970-01-01T00:00:00Z objektu, který aktivoval tuto událost |
+| exp | číslo | Datum vypršení platnosti v sekundách od 1970-01-01T00:00:00Z objektu, který aktivoval tuto událost |
 
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
 |Nadpis  |Popis  |
 |---------|---------|
-| [Monitorování událostí trezoru klíčů pomocí Azure Event Grid](../key-vault/general/event-grid-overview.md) | Přehled integrace trezoru klíčů s mřížkou událostí. |
-| [Kurz: Vytváření a sledování událostí trezoru klíčů pomocí mřížky událostí](../key-vault/general/event-grid-tutorial.md) | Přečtěte si, jak nastavit oznámení mřížky událostí pro trezor klíčů. |
+| [Monitorování událostí Key Vault s využitím Azure Event Grid](../key-vault/general/event-grid-overview.md) | Přehled integrace Key Vault s Event Grid |
+| [Kurz: vytváření a sledování událostí Key Vault s využitím Event Grid](../key-vault/general/event-grid-tutorial.md) | Přečtěte si, jak nastavit oznámení Event Grid pro Key Vault. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do Služby Azure Event Grid najdete v tématu [Co je event grid?](overview.md).
-* Další informace o tom, jak vytvořit předplatné Služby Event Grid, najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).
-* Další informace o integraci trezoru klíčů s mřížkou událostí najdete v [tématu Sledování trezoru klíčů pomocí Azure Event Grid (preview).](../key-vault/general/event-grid-overview.md)
-* Kurz o integraci trezoru klíčů s událostí gridu najdete v tématu [Příjem a reagovat na oznámení trezoru klíčů s Azure Event Grid (preview)](../key-vault/general/event-grid-tutorial.md).
-* Další pokyny pro trezor klíčů a azure automation najdete v těchto tématech:
+* Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](overview.md).
+* Další informace o tom, jak vytvořit předplatné Azure Event Grid, najdete v tématu [Event Grid schématu předplatného](subscription-creation-schema.md).
+* Další informace o integraci Key Vault s Event Grid najdete v tématu [monitorování Key Vault s Azure Event Grid (Preview)](../key-vault/general/event-grid-overview.md).
+* Kurz týkající se Key Vault integrace s Event Grid najdete v tématu [příjem a reakce na oznámení o trezoru klíčů pomocí Azure Event Grid (Preview)](../key-vault/general/event-grid-tutorial.md).
+* Další pokyny pro Key Vault a Azure Automation najdete v těchto tématech:
     - [Co je Azure Key Vault?](../key-vault/general/overview.md)
-    - [Monitorování trezoru klíčů pomocí Azure Event Grid (preview)](../key-vault/general/event-grid-overview.md)
-    - [Příjem a reakce na oznámení trezoru klíčů pomocí Azure Event Grid (preview)](../key-vault/general/event-grid-tutorial.md)
-    - [Azure Automation – přehled](../automation/index.yml)
+    - [Monitorování Key Vault s využitím Azure Event Grid (Preview)](../key-vault/general/event-grid-overview.md)
+    - [Příjem a reakce na oznámení trezoru klíčů pomocí Azure Event Grid (Preview)](../key-vault/general/event-grid-tutorial.md)
+    - [Přehled Azure Automation](../automation/index.yml)

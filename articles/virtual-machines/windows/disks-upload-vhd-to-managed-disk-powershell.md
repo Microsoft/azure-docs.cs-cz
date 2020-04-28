@@ -1,6 +1,6 @@
 ---
-title: Nahrání virtuálního pevného disku do Azure nebo zkopírování disku napříč oblastmi – Azure PowerShell
-description: Zjistěte, jak nahrát virtuální pevný disk na spravovaný disk Azure a zkopírovat spravovaný disk napříč oblastmi pomocí Azure PowerShellu pomocí přímého nahrávání.
+title: Nahrání virtuálního pevného disku do Azure nebo kopírování disku do různých oblastí – Azure PowerShell
+description: Přečtěte si, jak nahrát VHD na spravovaný disk Azure a zkopírovat spravovaný disk do různých oblastí pomocí Azure PowerShell přes přímé nahrávání.
 author: roygara
 ms.author: rogarana
 ms.date: 03/27/2020
@@ -8,45 +8,45 @@ ms.topic: article
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 7c66507989357569828d4ef933cfdca735f71570
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 6242baf5a541231d367d456450388ef455312780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085407"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182510"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Nahrání virtuálního pevného disku do Azure nebo zkopírování spravovaného disku do jiné oblasti – Azure PowerShell
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
-- Stáhněte si nejnovější [verzi AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
+- Stáhněte si nejnovější [verzi nástroje AzCopy v10 za účelem](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Nainstalujte modul Azure PowerShell](/powershell/azure/install-Az-ps).
-- Pokud máte v úmyslu nahrát virtuální pevný disk z místního prostředí: Pevný virtuální disk velikosti, který [byl připraven pro Azure](prepare-for-upload-vhd-image.md), uložený místně.
+- Pokud máte v úmyslu nahrát VHD z místního prostředí: virtuální pevný disk s pevnou velikostí, který [je připravený pro Azure](prepare-for-upload-vhd-image.md), je uložený místně.
 - Nebo spravovaný disk v Azure, pokud máte v úmyslu provést akci kopírování.
 
 ## <a name="getting-started"></a>Začínáme
 
-Pokud dáváte přednost nahrávání disků přes GUI, můžete tak učinit pomocí Průzkumníka úložiště Azure. Podrobnosti najdete v [části: Správa spravovaných disků Azure pomocí Průzkumníka Azure](disks-use-storage-explorer-managed-disks.md)
+Pokud byste chtěli nahrávat disky prostřednictvím grafického uživatelského rozhraní, můžete to udělat pomocí Průzkumník služby Azure Storage. Podrobnosti najdete v tématu: [použití Průzkumník služby Azure Storage ke správě služby Azure Managed disks](disks-use-storage-explorer-managed-disks.md) .
 
-Chcete-li nahrát virtuální pevný disk do Azure, budete muset vytvořit prázdný spravovaný disk, který je nakonfigurovaný pro tento proces nahrávání. Před vytvořením, je tu nějaké další informace, které byste měli vědět o těchto disků.
+Pokud chcete nahrát virtuální pevný disk do Azure, budete muset vytvořit prázdný spravovaný disk, který je nakonfigurovaný pro tento proces nahrávání. Před tím, než ho vytvoříte, se dozvíte o některých dalších informacích, které byste měli znát na těchto discích.
 
 Tento druh spravovaného disku má dva jedinečné stavy:
 
-- ReadToUpload, což znamená, že disk je připraven k příjmu nahrát, ale nebyl vygenerován žádný [podpis zabezpečeného přístupu](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS).
-- ActiveUpload, což znamená, že disk je připraven k přijetí nahrávání a SAS byla vygenerována.
+- ReadToUpload, což znamená, že disk je připravený k přijetí nahrávání, ale nevytvořil se žádný [podpis zabezpečeného přístupu](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS).
+- ActiveUpload, což znamená, že disk je připravený k přijetí nahrávání a vygeneroval se SAS.
 
 > [!NOTE]
-> Zatímco v jednom z těchto stavů bude spravovaný disk účtovány při [standardních cenách hdd](https://azure.microsoft.com/pricing/details/managed-disks/), bez ohledu na skutečný typ disku. Například P10 se bude účtovat jako S10. To bude platit, dokud `revoke-access` se volá na spravovaném disku, který je nutný k připojení disku k virtuálnímu počítači.
+> V některém z těchto stavů se spravovaný disk bude účtovat podle [standardních cen HDD](https://azure.microsoft.com/pricing/details/managed-disks/), bez ohledu na skutečný typ disku. Například P10 bude účtován jako S10. To bude platit až do `revoke-access` chvíle, kdy se zavolá na spravovaný disk, který je potřeba k připojení disku k virtuálnímu počítači.
 
 ## <a name="create-an-empty-managed-disk"></a>Vytvoření prázdného spravovaného disku
 
-Než budete moci vytvořit prázdný standardní pevný disk pro nahrávání, budete potřebovat velikost souboru virtuálního pevného disku, který chcete nahrát, v bajtech. Příklad kódu dostane, že pro vás, ale k `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`tomu sami můžete použít: . Tato hodnota se používá při zadávání parametru **-UploadSizeInBytes.**
+Než budete moct vytvořit prázdný standardní pevný disk pro nahrávání, budete potřebovat velikost souboru virtuálního pevného disku, který chcete nahrát (v bajtech). Ukázkový kód vám poskytne za vás, ale k tomu můžete použít: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Tato hodnota se používá při zadání parametru **-UploadSizeInBytes** .
 
-Nyní v místním prostředí vytvořte prázdný standardní pevný disk pro nahrávání zadáním nastavení **Upload** v parametru **-CreateOption** a parametru **-UploadSizeInBytes** v rutině [New-AzDiskConfig.](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) Pak volejte [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) vytvořit disk.
+Teď v místním prostředí vytvořte prázdný standardní pevný disk pro nahrávání zadáním nastavení **nahrávání** v parametru **-CreateOption** a také parametru **-UploadSizeInBytes** v rutině [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) . Pak zavolejte [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) a vytvořte disk.
 
-Nahraďte `<yourdiskname>`a `<yourresourcegroupname>` `<yourregion>` spusťte následující příkazy:
+`<yourdiskname>`Nahraďte `<yourresourcegroupname>`, a `<yourregion>` poté spusťte následující příkazy:
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -56,11 +56,11 @@ $diskconfig = New-AzDiskConfig -SkuName 'Standard_LRS' -OsType 'Windows' -Upload
 New-AzDisk -ResourceGroupName '<yourresourcegroupname' -DiskName '<yourdiskname>' -Disk $diskconfig
 ```
 
-Pokud chcete nahrát buď prémiový SSD nebo standardní SSD, nahraďte **Standard_LRS** **buď Premium_LRS** nebo **StandardSSD_LRS**. Ultra disky ještě nejsou podporovány.
+Pokud chcete nahrát disk SSD úrovně Premium nebo standardní SSD, nahraďte **Standard_LRS** buď pomocí **Premium_LRS** nebo **StandardSSD_LRS**. Disky Ultra nejsou ještě podporovány.
 
-Teď, když jste vytvořili prázdný spravovaný disk, který je nakonfigurovaný pro proces nahrávání, můžete do něj nahrát virtuální pevný disk. Chcete-li na disk nahrát virtuální pevný disk, budete potřebovat zapisovatelný SAS, abyste na něj mohli odkazovat jako na cíl pro nahrávání.
+Teď, když jste vytvořili prázdný spravovaný disk, který je nakonfigurovaný pro proces nahrávání, můžete do něj nahrát VHD. K nahrání virtuálního pevného disku na disk budete potřebovat SAS s možností zápisu, abyste na něj mohli odkazovat jako na cíl pro nahrání.
 
-Chcete-li vygenerovat zapisovatelné sazby prázdného spravovaného disku, nahraďte `<yourdiskname>`a `<yourresourcegroupname>`použijte následující příkazy:
+Pokud chcete vygenerovat zapisovatelný SAS pro váš prázdný spravovaný disk `<yourdiskname>`, `<yourresourcegroupname>`nahraďte a a pak použijte následující příkazy:
 
 ```powershell
 $diskSas = Grant-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>' -DurationInSecond 86400 -Access 'Write'
@@ -70,19 +70,19 @@ $disk = Get-AzDisk -ResourceGroupName '<yourresourcegroupname>' -DiskName '<your
 
 ## <a name="upload-a-vhd"></a>Nahrání virtuálního pevného disku
 
-Teď, když máte SAS pro prázdný spravovaný disk, můžete ho použít k nastavení spravovaného disku jako cíle pro příkaz pro nahrávání.
+Teď, když máte na svém prázdném spravovaném disku SAS, můžete ho použít k nastavení spravovaného disku jako cíle pro váš příkaz pro nahrání.
 
-Pomocí aplikace AzCopy v10 můžete nahrát místní soubor VHD na spravovaný disk zadáním vygenerovaného identifikátoru URI SAS.
+Pomocí AzCopy v10 za účelem nahrajte místní soubor VHD na spravovaný disk zadáním identifikátoru URI SAS, který jste vygenerovali.
 
-Toto nahrání má stejnou propustnost jako ekvivalentní [standardní pevný disk](disks-types.md#standard-hdd). Například pokud máte velikost, která se rovná S4, budete mít propustnost až 60 MiB/s. Ale pokud máte velikost, která se rovná S70, budete mít propustnost až 500 MiB / s.
+Toto nahrávání má stejnou propustnost jako ekvivalentní [standardní pevný disk](disks-types.md#standard-hdd). Například pokud máte velikost, která je rovna S4, budete mít propustnost až 60 MiB/s. Pokud ale máte velikost, která je rovna S70, budete mít propustnost až 500 MiB/s.
 
 ```
-AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
+AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
 
-Po dokončení nahrávání a již není nutné zapisovat žádná další data na disk, odvolat SAS. Zrušením SAS změníte stav spravovaného disku a umožníte připojit disk k virtuálnímu počítače.
+Po dokončení nahrávání a už nebudete muset na disk zapisovat další data, Odvolejte SAS. Odvoláním SAS dojde ke změně stavu spravovaného disku a budete moci připojit disk k virtuálnímu počítači.
 
-Nahraďte `<yourdiskname>`a `<yourresourcegroupname>`spusťte následující příkaz:
+`<yourdiskname>`Nahraďte `<yourresourcegroupname>`a a pak spusťte následující příkaz:
 
 ```powershell
 Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>'
@@ -90,14 +90,14 @@ Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<you
 
 ## <a name="copy-a-managed-disk"></a>Kopírování spravovaného disku
 
-Přímé nahrávání také zjednodušuje proces kopírování spravovaného disku. Můžete buď kopírovat v rámci stejné oblasti nebo zkopírovat spravovaný disk do jiné oblasti.
+Přímé nahrávání také zjednodušuje proces kopírování spravovaného disku. Můžete buď zkopírovat ve stejné oblasti, nebo zkopírovat spravovaný disk do jiné oblasti.
 
-Postupujte skript to udělá za vás, proces je podobný krokům popsaným výše, s některými rozdíly, protože pracujete s existujícím diskem.
+Následující skript to provede za vás, postup je podobný dříve popsaným krokům, a to kvůli nějakým rozdílům, protože pracujete s existujícím diskem.
 
 > [!IMPORTANT]
-> Musíte přidat posun 512, když poskytujete velikost disku v bajtů spravovaného disku z Azure. Důvodem je, že Azure vynese zápatí při vrácení velikosti disku. Kopie se nezdaří, pokud tak neučiníte. Následující skript již dělá to pro vás.
+> Pokud zadáváte velikost disku v bajtech spravovaného disku z Azure, musíte přidat posun 512. Je to proto, že Azure při vracení velikosti disku vynechá zápatí. Pokud to neuděláte, kopie se nezdaří. Následující skript to pro vás už dělá.
 
-Nahraďte `<sourceDiskNameHere>` `<targetDiskNameHere>`hodnoty `<targetResourceGroupHere>` `<yourOSTypeHere>` `<sourceResourceGroupHere>`, `<yourTargetLocationHere>` , , , a (příklad hodnoty umístění uswest2) a spusťte následující skript, abyste zkopírovali spravovaný disk.
+Nahraďte `<sourceResourceGroupHere>`hodnotu `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` a `<yourTargetLocationHere>` (příkladem hodnoty Location by se uswest2) hodnotami a spuštěním následujícího skriptu zkopírujte spravovaný disk.
 
 ```powershell
 
@@ -129,6 +129,6 @@ Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste úspěšně nahráli virtuální pevný disk na spravovaný disk, můžete připojit disk k virtuálnímu počítači a začít ho používat.
+Teď, když jste úspěšně nahráli VHD na spravovaný disk, můžete disk připojit k virtuálnímu počítači a začít ho používat.
 
-Informace o připojení datového disku k virtuálnímu počítači najdete v článku o tématu: [Připojení datového disku k virtuálnímu počítači windows pomocí prostředí PowerShell](attach-disk-ps.md). Pokud chcete disk použít jako disk operačního [systému, přečtěte si informace o vytvoření virtuálního počítače se systémem Windows ze specializovaného disku](create-vm-specialized.md#create-the-new-vm).
+Informace o tom, jak připojit datový disk k virtuálnímu počítači, najdete v našem článku na předmětu: [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](attach-disk-ps.md). Postup použití disku jako disku s operačním systémem najdete v tématu [Vytvoření virtuálního počítače s Windows z specializovaného disku](create-vm-specialized.md#create-the-new-vm).

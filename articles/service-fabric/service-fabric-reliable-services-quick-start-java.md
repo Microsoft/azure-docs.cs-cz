@@ -1,46 +1,46 @@
 ---
-title: Vytvořte si první spolehlivou službu v Javě
-description: Úvod k vytvoření aplikace Microsoft Azure Service Fabric s bezstavové a stavové služby.
+title: Vytvoření první spolehlivé služby v jazyce Java
+description: Úvod k vytvoření aplikace Microsoft Azure Service Fabric se stavovou a stavovou službou.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: c3b301a7a9039f1fe8095950f0a5a4e23eb52a9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614209"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184142"
 ---
-# <a name="get-started-with-reliable-services-in-java"></a>Začínáme se spolehlivými službami v Javě
+# <a name="get-started-with-reliable-services-in-java"></a>Začínáme s Reliable Services v jazyce Java
 > [!div class="op_single_selector"]
 > * [C# v systému Windows](service-fabric-reliable-services-quick-start.md)
 > * [Java v Linuxu](service-fabric-reliable-services-quick-start-java.md)
 >
 >
 
-Tento článek vysvětluje základy spolehlivých služeb Azure Service Fabric a provede vás vytvořením a nasazením jednoduché aplikace spolehlivé služby napsané v jazyce Java. 
+Tento článek vysvětluje základy služby Azure Service Fabric Reliable Services a provede vás vytvořením a nasazením jednoduché aplikace spolehlivé služby napsané v jazyce Java. 
 
 ## <a name="installation-and-setup"></a>Instalace a nastavení
-Než začnete, ujistěte se, že máte ve vašem počítači nastavené vývojové prostředí Service Fabric.
-Pokud ji potřebujete nastavit, přejděte na [Začínáme na Macu](service-fabric-get-started-mac.md) nebo [začínáme na Linuxu](service-fabric-get-started-linux.md).
+Než začnete, ujistěte se, že máte na svém počítači nastavené vývojové prostředí Service Fabric.
+Pokud ho potřebujete nastavit, přečtěte si v článku [Začínáme v počítači Mac](service-fabric-get-started-mac.md) nebo [Začínáme](service-fabric-get-started-linux.md)se systémem Linux.
 
 ## <a name="basic-concepts"></a>Základní koncepty
-Chcete-li začít se spolehlivými službami, stačí pochopit několik základních pojmů:
+Abyste mohli začít s Reliable Services, stačí pochopit jenom několik základních konceptů:
 
-* **Typ služby**: Toto je implementace služby. Je definovántřídou, kterou napíšete, která rozšiřuje `StatelessService` a všechny další kód nebo závislosti v něm použité, spolu s názvem a číslem verze.
-* **Named service instance**: Chcete-li spustit službu, vytvořte pojmenované instance typu služby, podobně jako vytváříte instance objektů typu třídy. Instance služby jsou ve skutečnosti objekt instance třídy služby, které píšete.
-* **Hostitel služby**: Pojmenované instance služby, které vytvoříte, musí být spuštěny uvnitř hostitele. Hostitel služby je pouze proces, kde lze spustit instance služby.
-* **Registrace služby**: Registrace spojuje vše dohromady. Typ služby musí být registrován s runtime Service Fabric v hostiteli služby, aby service fabric mohl vytvářet instance, které mají být spuštěny.  
+* **Typ služby**: Toto je vaše implementace služby. Je definována třídou, kterou napíšete, `StatelessService` která rozšiřuje a jakýkoli jiný kód nebo závislosti, společně s názvem a číslem verze.
+* **Instance pojmenované služby**: Pokud chcete službu spustit, vytvoříte pojmenované instance typu služby, podobně jako při vytváření instancí objektů typu třídy. Instance služby jsou ve skutečnosti instance objektů vaší třídy služby, kterou píšete.
+* **Hostitel služby**: pojmenované instance služby, které vytvoříte, musí běžet v rámci hostitele. Hostitel služby je jenom proces, ve kterém se můžou spouštět instance služby.
+* **Registrace služby**: registrace přináší všechno dohromady. Typ služby musí být zaregistrován s modulem runtime Service Fabric v hostiteli služby, aby mohl Service Fabric vytvářet instance pro spuštění.  
 
 ## <a name="create-a-stateless-service"></a>Vytvoření bezstavové služby
-Začněte vytvořením aplikace Service Fabric. Service Fabric SDK pro Linux obsahuje Generátor Yeoman poskytnout lešení pro aplikaci Service Fabric se službou bez stavů. Začněte spuštěním následujícího příkazu Yeoman:
+Začněte vytvořením aplikace Service Fabric. Sada Service Fabric SDK pro Linux zahrnuje generátor Yeoman, který poskytuje generování uživatelského rozhraní pro Service Fabric aplikace se stavovou službou. Začněte spuštěním následujícího příkazu Yeoman:
 
 ```bash
 $ yo azuresfjava
 ```
 
-Podle pokynů vytvořte **spolehlivou bezstavovou službu**. Pro účely tohoto kurzu pojmenujte aplikaci "HelloWorldApplication" a službu "HelloWorld". Výsledek zahrnuje adresáře `HelloWorldApplication` pro `HelloWorld`a .
+Pokud chcete vytvořit **spolehlivou bezstavovou službu**, postupujte podle pokynů. Pro tento kurz pojmenujte aplikaci "HelloWorldApplication" a službu "HelloWorld". Výsledek zahrnuje adresáře pro `HelloWorldApplication` a. `HelloWorld`
 
 ```bash
 HelloWorldApplication/
@@ -67,7 +67,7 @@ HelloWorldApplication/
 └── uninstall.sh
 ```
 ### <a name="service-registration"></a>Registrace služby
-Typy služeb musí být registrovány pomocí zaběhu Service Fabric. Typ služby je `ServiceManifest.xml` definován v a třídy služby, která implementuje `StatelessService`. Registrace služby se provádí v hlavním vstupním bodě procesu. V tomto příkladu je `HelloWorldServiceHost.java`hlavní vstupní bod procesu :
+Typy služeb musí být registrovány s modulem runtime Service Fabric. Typ služby je definován v třídě `ServiceManifest.xml` a vaší třídy služby, která implementuje `StatelessService`. Registrace služby se provádí v hlavním vstupním bodě procesu. V tomto příkladu je `HelloWorldServiceHost.java`hlavním vstupním bodem procesu:
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -85,9 +85,9 @@ public static void main(String[] args) throws Exception {
 
 ## <a name="implement-the-service"></a>Implementace služby
 
-Otevřete **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Tato třída definuje typ služby a může spustit libovolný kód. Rozhraní API služby poskytuje dva vstupní body pro váš kód:
+Otevřete **HelloWorldApplication/Hello/src/statelessservice/HelloWorldService. Java**. Tato třída definuje typ služby a může spustit libovolný kód. Rozhraní API služby poskytuje dva vstupní body pro váš kód:
 
-* Metoda otevřeného vstupního bodu `runAsync()`s názvem , kde můžete začít s pouštět všechny úlohy, včetně dlouhotrvajícívýpočetní úlohy.
+* Otevřená metoda vstupního bodu, která se nazývá `runAsync()`, kde můžete začít spouštět jakékoli úlohy, včetně dlouhotrvajících výpočetních úloh.
 
 ```java
 @Override
@@ -96,7 +96,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-* Vstupní bod komunikace, do kterého můžete připojit příchozí zásobník. Toto je místo, kde můžete začít přijímat požadavky od uživatelů a dalších služeb.
+* Vstupní bod komunikace, ve kterém můžete připojit svůj komunikační zásobník podle vlastního výběru. Tady můžete začít přijímat žádosti od uživatelů a dalších služeb.
 
 ```java
 @Override
@@ -105,22 +105,22 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-Tento kurz se `runAsync()` zaměřuje na metodu vstupního bodu. Toto je místo, kde můžete okamžitě spustit kód.
+Tento kurz se `runAsync()` zaměřuje na metodu vstupního bodu. Tady můžete hned začít s kódem.
 
-### <a name="runasync"></a>Synchronizace runasync
-Platforma volá tuto metodu, když je umístěna instance služby a připravena ke spuštění. Pro službu bez stavů, to znamená, když je otevřena instance služby. Token zrušení je k dispozici pro koordinaci, když je třeba zavřít instanci služby. V Service Fabric tento otevřený/zavřít cyklus instance služby může dojít mnohokrát po dobu životnosti služby jako celku. K tomu může dojít z různých důvodů, včetně:
+### <a name="runasync"></a>RunAsync
+Platforma volá tuto metodu, když je umístěna instance služby a je připravena k provedení. U bezstavových služeb to znamená, že když je instance služby otevřená. Token zrušení se poskytuje ke koordinaci, když je potřeba uzavřít instanci služby. V Service Fabric může tento cyklus otevření nebo ukončení instance služby probíhat mnohokrát po celou dobu životnosti služby. K tomu může dojít z různých důvodů, včetně:
 
-* Systém přesune instance služby pro vyrovnávání prostředků.
-* V kódu dochází k chybám.
-* Aplikace nebo systém je inovován.
-* Základní hardware dochází k výpadku.
+* Systém přesune vaše instance služby pro vyrovnávání prostředků.
+* Ve vašem kódu dojde k chybám.
+* Aplikace nebo systém se upgraduje.
+* Dojde k výpadku základního hardwaru.
 
-Tato orchestrace je spravována Service Fabric, aby vaše služba byla vysoce dostupná a správně vyvážená.
+Tato orchestrace je spravovaná nástrojem Service Fabric, aby byla vaše služba vysoce dostupná a správně vyvážená.
 
-`runAsync()`by neměla blokovat synchronně. Implementace runAsync by měla vrátit CompletableFuture povolit modul runtime pokračovat. Pokud vaše úloha potřebuje implementovat dlouho běžící úlohu, která by měla být provedena uvnitř CompletableFuture.
+`runAsync()`nemělo by se blokovat synchronně. Vaše implementace runAsync by měla vrátit CompletableFuture, aby bylo možné pokračovat v běhu. Pokud vaše úlohy potřebují implementovat dlouhodobou spuštěnou úlohu, která by se měla provést v rámci CompletableFuture.
 
 #### <a name="cancellation"></a>Zrušení
-Zrušení úlohy je kooperativní úsilí řízené zadaným tokenem zrušení. Systém čeká na ukončení úlohy (úspěšným dokončením, zrušením nebo chybou), než se přesune dál. Je důležité ctít zrušení token, dokončit jakoukoli `runAsync()` práci a ukončit co nejrychleji, když systém požaduje zrušení. Následující příklad ukazuje, jak zpracovat událost zrušení:
+Zrušení úloh je úsilí v družstvu, které provádí poskytnutý token zrušení. Systém čeká na ukončení úlohy (po úspěšném dokončení, zrušení nebo chybě) před tím, než se přesune. Je důležité přijmout token zrušení, dokončit práci a skončit `runAsync()` co nejrychleji, když systém požaduje zrušení. Následující příklad ukazuje, jak zpracovat událost zrušení:
 
 ```java
 @Override
@@ -144,20 +144,20 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-V tomto příkladu bezstavové služby je počet uložen v místní proměnné. Ale protože se jedná o bezstavovou službu, hodnota, která je uložena existuje pouze pro aktuální životní cyklus jeho instance služby. Při přesunu nebo restartování služby dojde ke ztrátě hodnoty.
+V tomto příkladu služby bez stavu je počet uložený v místní proměnné. Vzhledem k tomu, že se jedná o bezstavovou službu, hodnota, která je uložena, je určena pouze pro aktuální životní cyklus své instance služby. Při přesunu nebo restartu služby dojde ke ztrátě hodnoty.
 
 ## <a name="create-a-stateful-service"></a>Vytvoření stavové služby
-Service Fabric zavádí nový druh služby, která je stavová. Stavová služba může spolehlivě udržovat stav v rámci samotné služby, která je umístěna společně s kódem, který ji používá. Stav je vysoce k dispozici Service Fabric bez nutnosti zachovat stav do externího úložiště.
+Service Fabric zavádí nový druh služby, která je stavová. Stavová služba může udržovat stav spolehlivě v rámci samotné služby, společně umístěná pomocí kódu, který je používá. Stav je vysoce dostupný pomocí Service Fabric bez nutnosti zachovat stav do externího úložiště.
 
-Chcete-li převést hodnotu čítače z bezstavové na vysoce dostupné a trvalé, i když se služba přesune nebo restartuje, potřebujete stavovou službu.
+Chcete-li převést hodnotu čítače ze stavu bez stavů na vysokou dostupnost a trvalé, i když se služba přesune nebo restartuje, budete potřebovat stavovou službu.
 
-Ve stejném adresáři jako aplikace HelloWorld můžete přidat novou `yo azuresfjava:AddService` službu spuštěním příkazu. Zvolte "Spolehlivé stavové služby" pro váš rámec a název služby "HelloWorldStateful". 
+Ve stejném adresáři jako aplikace HelloWorld můžete přidat novou službu spuštěním `yo azuresfjava:AddService` příkazu. Vyberte možnost Reliable stavová služba pro vaši architekturu a pojmenujte službu "HelloWorldStateful". 
 
-Vaše aplikace by nyní měla mít dvě služby: bezstavovou službu HelloWorld a stavovou službu HelloWorldStateful.
+Vaše aplikace by teď měla mít dvě služby: Hello a stavovou službu HelloWorldStateful.
 
-Stavová služba má stejné vstupní body jako bezstavová služba. Hlavním rozdílem je dostupnost zprostředkovatele stavu, který může spolehlivě ukládat stav. Service Fabric je dodáván s implementací zprostředkovatele stavu s názvem Spolehlivé kolekce, která umožňuje vytvářet replikované datové struktury prostřednictvím správce spolehlivého stavu. Stavová spolehlivá služba používá tohoto poskytovatele stavu ve výchozím nastavení.
+Stavová služba má stejné vstupní body jako Bezstavová služba. Hlavním rozdílem je dostupnost zprostředkovatele stavu, který může spolehlivě ukládat stav. Service Fabric obsahuje implementaci poskytovatele stavu nazvanou Reliable Collections, která umožňuje vytvářet replikované datové struktury prostřednictvím Správce spolehlivého stavu. Stavová služba Reliable využívá tohoto poskytovatele stavu ve výchozím nastavení.
 
-Otevřete HelloWorldStateful.java v **HelloWorldStateful -> src**, který obsahuje následující metodu RunAsync:
+Otevřete HelloWorldStateful. Java v **HelloWorldStateful-> src**, který obsahuje následující RunAsync metodu:
 
 ```java
 @Override
@@ -182,24 +182,24 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-### <a name="runasync"></a>Synchronizace runasync
-`RunAsync()`funguje podobně ve stavových a bezstavových službách. Však ve stavu služby `RunAsync()`platformy provádí další práci vaším jménem před tím, než provede . Tato práce může zahrnovat zajištění, že spolehlivé správce stavu a spolehlivé kolekce jsou připraveny k použití.
+### <a name="runasync"></a>RunAsync
+`RunAsync()`funguje podobně jako stavová a Bezstavová služba. Ve stavové službě ale platforma před spuštěním provede další práci vaším jménem `RunAsync()`. Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
 
-### <a name="reliable-collections-and-the-reliable-state-manager"></a>Spolehlivé kolekce a spolehlivý správce stavu
+### <a name="reliable-collections-and-the-reliable-state-manager"></a>Spolehlivé kolekce a správce spolehlivého stavu
 ```java
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) je implementace slovníku, který můžete použít ke spolehlivému ukládání stavu ve službě. Pomocí service fabric a spolehlivé hashmaps můžete ukládat data přímo ve vaší službě bez nutnosti externího trvalého úložiště. Spolehlivé mapy HashMaps zpřístupní vaše data vysoce. Service Fabric toho dosáhne vytvořením a správou více *replik služby* za vás. Poskytuje také rozhraní API, které abstrahuje pryč složitosti správy těchto replik a jejich přechody stavu.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) je slovníková implementace, kterou můžete použít k spolehlivému ukládání stavu ve službě. Pomocí Service Fabric a spolehlivých HashMaps můžete ukládat data přímo do služby bez nutnosti externího trvalého úložiště. Spolehlivé HashMaps zajistí vysokou dostupnost vašich dat. Service Fabric toho dosahuje vytvořením a správou více *replik* vaší služby za vás. Poskytuje také rozhraní API, které abstrakce zjednodušuje správu těchto replik a jejich přechodů na stav.
 
-Spolehlivé kolekce můžete uložit libovolný typ Java, včetně vlastní typy, s několika upozornění:
+Spolehlivé kolekce můžou ukládat jakýkoli typ Java, včetně vašich vlastních typů, s několika upozorněními:
 
-* Service Fabric umožňuje váš stav vysoce dostupné *replikací* stavu mezi uzly a spolehlivé HashMap ukládá data na místní disk na každé replice. To znamená, že vše, co je uloženo ve spolehlivých HashMaps musí být *serializovatelné*. 
-* Objekty jsou replikovány pro vysokou dostupnost při potvrzení transakcí na spolehlivé HashMaps. Objekty uložené ve spolehlivých mapách HashJsou uloženy v místní paměti ve vaší službě. To znamená, že máte místní odkaz na objekt.
+* Service Fabric zajistí, aby byl stav vysoce dostupný při *replikaci* do všech uzlů, a spolehlivý HashMap ukládá vaše data na místní disk v každé replice. To znamená, že všechno, co je uloženo v Reliable HashMaps, musí být *serializovatelný*. 
+* Objekty jsou replikovány pro zajištění vysoké dostupnosti při potvrzení transakcí na spolehlivých HashMaps. Objekty uložené v Reliable HashMaps jsou v rámci služby uchovávány v místní paměti. To znamená, že máte místní odkaz na objekt.
   
-   Je důležité, abyste nemutovali místní instance těchto objektů bez provedení operace aktualizace spolehlivé kolekce v transakci. Důvodem je, že změny místních instancí objektů nebudou replikovány automaticky. Je nutné znovu vložit objekt zpět do slovníku nebo použít jednu z metod *aktualizace* ve slovníku.
+   Je důležité, abyste nemuseli provádět místní instance těchto objektů bez provedení operace aktualizace pro spolehlivou kolekci v transakci. Důvodem je to, že změny místních instancí objektů nebudou replikovány automaticky. Objekt je nutné znovu vložit zpět do slovníku nebo použít jednu z metod *aktualizace* ve slovníku.
 
-Správce spolehlivého stavu spravuje spolehlivé mapy HashMaps za vás. Můžete požádat správce spolehlivého stavu o spolehlivou kolekci podle jména kdykoli a na libovolném místě ve vaší službě. Správce spolehlivého stavu zajišťuje, že získáte odkaz zpět. Nedoporučujeme ukládat odkazy na spolehlivé instance kolekce v proměnných nebo vlastnostech členů třídy. Zvláštní pozornost je třeba dbát na to, aby byl odkaz nastaven na instanci po celou dobu životního cyklu služby. Správce spolehlivého stavu zpracovává tuto práci za vás a je optimalizován pro opakované návštěvy.
+Správce Reliable State spravuje spolehlivé HashMaps za vás. Správce spolehlivého stavu můžete požádat o spolehlivou kolekci podle názvu kdykoli a na jakémkoli místě ve vaší službě. Správce Reliable State zajišťuje, že získáte odkaz zpátky. Nedoporučujeme ukládat odkazy na spolehlivé instance kolekcí v proměnných členů třídy nebo vlastnostech. Aby se zajistilo, že odkaz bude v životním cyklu služby neustále nastavený na instanci, musí být podniknuta zvláštní péče. Reliable State Manager zpracovává tuto práci za vás a je optimalizovaná pro opakované návštěvy.
 
 
 ### <a name="transactional-and-asynchronous-operations"></a>Transakční a asynchronní operace
@@ -220,20 +220,20 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 });
 ```
 
-Operace na spolehlivé HashMaps jsou asynchronní. Důvodem je, že operace zápisu se spolehlivými kolekcemi provádějí vstupně-vanové operace k replikaci a zachování dat na disk.
+Operace s Reliable HashMaps jsou asynchronní. Důvodem je to, že operace zápisu s spolehlivými kolekcemi provádějí vstupně-výstupní operace pro replikaci a uchovávání dat na disk.
 
-Spolehlivé operace HashMap jsou *transakční*, takže můžete udržovat stav konzistentní napříč více spolehlivé HashMaps a operace. Například můžete získat pracovní položku z jednoho spolehlivého slovníku, provést operaci na něm a uložit výsledek v jiném Spolehlivé HashMap, to vše v rámci jedné transakce. To je považováno za atomické operace a zaručuje, že celá operace bude úspěšná nebo celá operace se vrátí zpět. Pokud dojde k chybě po vyřazení položky z fronty, ale před uložením výsledku, celá transakce je vrácena zpět a položka zůstane ve frontě pro zpracování.
+Spolehlivé operace HashMap jsou *transakční*, takže je možné udržet stav konzistentně napříč několika spolehlivými HashMaps a operacemi. Například můžete získat pracovní položku z jednoho spolehlivého slovníku, provést na ní operaci a výsledek Uložit do jiného spolehlivého HashMapu, a to vše v rámci jedné transakce. Tato možnost se považuje za atomickou operaci a zaručuje, že celá operace bude úspěšná nebo se vrátí celá operace. Pokud dojde k chybě po vyřazení položky z fronty, ale před uložením výsledku, je celá transakce vrácena zpět a položka zůstane ve frontě ke zpracování.
 
 
 ## <a name="build-the-application"></a>Sestavení aplikace
 
-Yeoman lešení obsahuje gradle skript pro sestavení aplikace a bash skripty pro nasazení a odebrání aplikace. Chcete-li aplikaci spustit, nejprve vytvořte aplikaci s gradle:
+Generování uživatelského rozhraní Yeoman zahrnuje skript Gradle pro sestavení aplikace a bash skripty pro nasazení a odebrání aplikace. Chcete-li spustit aplikaci, nejprve sestavte aplikaci pomocí Gradle:
 
 ```bash
 $ gradle
 ```
 
-Tím se vytvoří balíček aplikace Service Fabric, který lze nasadit pomocí cli service fabric.
+Tím se vytvoří balíček aplikace Service Fabric, který se dá nasadit pomocí Service Fabric CLI.
 
 ## <a name="deploy-the-application"></a>Nasazení aplikace
 
@@ -255,10 +255,10 @@ Nasazení sestavené aplikace je stejné jako u všech ostatních aplikací Serv
 
 Parametry těchto příkazů najdete v generovaných manifestech uvnitř balíčku aplikace.
 
-Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) na adrese [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
+Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) na adrese `http://localhost:19080/Explorer`. Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
 > [!IMPORTANT]
-> Chcete-li nasadit aplikaci do zabezpečeného clusteru Linux v Azure, musíte nakonfigurovat certifikát pro ověření aplikace pomocí runtime Service Fabric. To umožňuje služby spolehlivé služby komunikovat s podkladových service fabric runtime API. Další informace najdete [v tématu Konfigurace aplikace Spolehlivé služby pro spuštění v clusterech Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Pokud chcete nasadit aplikaci do clusteru zabezpečeného Linux v Azure, musíte nakonfigurovat certifikát pro ověření aplikace pomocí modulu runtime Service Fabric. To umožňuje, aby vaše služby Reliable Services komunikovaly se základními rozhraními API Service Fabric runtime. Další informace najdete v tématu [Konfigurace aplikace Reliable Services pro spouštění v clusterech se systémem Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="next-steps"></a>Další kroky

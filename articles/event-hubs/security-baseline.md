@@ -1,1091 +1,1091 @@
 ---
-title: Směrný plán zabezpečení Azure pro centra událostí
-description: Směrný plán zabezpečení Azure pro centra událostí
+title: Základní hodnoty zabezpečení Azure pro Event Hubs
+description: Základní hodnoty zabezpečení Azure pro Event Hubs
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1c7e18214ec175b8b21d25643098631a044da19c
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: c60c1d33954b5e12038fd66787225f4d0aeba62d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758314"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184703"
 ---
-# <a name="azure-security-baseline-for-event-hubs"></a>Směrný plán zabezpečení Azure pro centra událostí
+# <a name="azure-security-baseline-for-event-hubs"></a>Základní hodnoty zabezpečení Azure pro Event Hubs
 
-Směrný plán zabezpečení Azure pro centra událostí obsahuje doporučení, která vám pomohou zlepšit stav zabezpečení vašeho nasazení.
+Základní plán zabezpečení Azure pro Event Hubs obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Směrný plán pro tuto službu vychází z [azure security benchmark verze 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení, jak můžete zabezpečit cloudová řešení v Azure s našimi pokyny pro osvědčené postupy.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace naleznete v [tématu Přehled směrného plánu zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace naleznete v [tématu Security Control: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Ochrana prostředků pomocí skupin zabezpečení sítě nebo brány Azure Firewall ve virtuální síti
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Chraňte prostředky pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
 
-**Pokyny:** Integrace centra událostí s koncovými body služby virtuální sítě umožňuje zabezpečený přístup k možnostem zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou vázané na virtuální sítě, přičemž cesta síťového provozu je zabezpečená na obou koncích.
+**Pokyny**: integrace centra událostí s koncovými body služby virtuální sítě umožňuje zabezpečený přístup k funkcím zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou svázané s virtuálními sítěmi, a cestu síťového provozu, která je zabezpečená na obou koncích.
 
-Jakmile je příslušný obor názvů Event Hubs vázán alespoň na jeden koncový bod služby podsítě virtuální sítě, již nepřijímá provoz odkudkoli, ale autorizované podsítě ve virtuálních sítích. Z hlediska virtuální sítě vazba oboru názvů Event Hubs na koncový bod služby konfiguruje izolovaný síťový tunel z podsítě virtuální sítě do služby zasílání zpráv. 
+Po vytvoření vazby na alespoň jeden koncový bod služby virtuální sítě musí příslušný obor názvů Event Hubs nadále přijímat provoz z libovolného místa, ale z nich budou ověřeny podsítě ve virtuálních sítích. Z perspektivy virtuální sítě vytvoří služba Event Hubs obor názvů na koncový bod služby konfiguraci izolovaného síťového tunelu z podsítě virtuální sítě do služby zasílání zpráv. 
 
-Můžete také vytvořit privátní koncový bod, což je síťové rozhraní, které vás soukromě a bezpečně připojí ke službě Azure Event Hubs pomocí služby Azure Private Link. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě, efektivně uvedení služby do virtuální sítě. Veškerý provoz na službu lze směrovat přes soukromý koncový bod, takže nejsou potřeba žádné brány, zařízení NAT, připojení ExpressRoute nebo VPN nebo veřejné IP adresy. 
+Můžete také vytvořit soukromý koncový bod, což je síťové rozhraní, které se připojí soukromě a bezpečně ke službě Azure Event Hubs Service pomocí služby privátního propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. 
 
-Obor názvů Azure Event Hubs můžete také zabezpečit pomocí bran firewall. Azure Event Hubs podporuje ovládací prvky přístupu založené na IP adresách pro příchozí podporu brány firewall. Pravidla brány firewall můžete nastavit pomocí portálu Azure, šablon Azure Resource Manager nebo pomocí azure cli nebo Azure PowerShell.
+Obor názvů Azure Event Hubs můžete zabezpečit také pomocí bran firewall. Azure Event Hubs podporuje řízení přístupu na základě IP adres pro podporu příchozích bran firewall. Pravidla brány firewall můžete nastavit pomocí Azure Portal, Azure Resource Manager šablon nebo prostřednictvím rozhraní příkazového řádku Azure CLI nebo Azure PowerShell.
 
-Jak používat koncové body služby virtuální sítě s Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
+Použití koncových bodů služby virtuální sítě s Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
 
-Další informace najdete v tématu Integrace Center https://docs.microsoft.com/azure/event-hubs/private-link-serviceudálostí Azure s Privátním propojením Azure: .
+Další informace najdete v tématu Integrace služby Azure Event Hubs s privátním odkazem Azure: https://docs.microsoft.com/azure/event-hubs/private-link-service.
 
-Povolit integraci virtuálních sítí a brány firewall v oboru názvů Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls
+Povolit integraci virtuálních sítí a brány firewall na Event Hubs oboru názvů:https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls
 
-Jak nakonfigurovat pravidla brány firewall IP pro obory názvů Centra událostí Azure:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
+Jak nakonfigurovat pravidla brány firewall protokolu IP pro obory názvů Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Sledování a protokolování konfigurace a provozu sítí, podsítí a síťových rozhraní
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuální sítě, podsítí a síťových karet.
 
-**Pokyny:** Použijte Azure Security Center a postupujte podle doporučení ochrany sítě, abyste pomohli zabezpečit prostředky Event Hubs v Azure. Pokud používáte virtuální počítače Azure pro přístup k vašim centrům událostí, povolte protokoly toku skupiny zabezpečení sítě (NSG) a odesílejte protokoly do účtu úložiště pro audit provozu.
+**Doprovodné**materiály: použijte Azure Security Center a sledujte doporučení pro ochranu sítě, která vám pomůžou zabezpečit prostředky Event Hubs v Azure. Pokud používáte virtuální počítače Azure pro přístup k centrům událostí, povolte protokoly toku NSG (Network Security Group) a odešlete protokoly do účtu úložiště pro audit provozu.
 
-Povolení protokolů toku nsg:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+Jak povolit protokoly toku NSG:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Principy zabezpečení sítě poskytované službou Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
+Principy zabezpečení sítě, které poskytuje Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="13-protect-critical-web-applications"></a>1.3: Ochrana kritických webových aplikací
+### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro webové aplikace spuštěné ve službě Azure App Service nebo výpočetních prostředcích.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Odepřít komunikaci se známými škodlivými IP adresami
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
-**Pokyny:** Povolte standard ochrany DDoS ve virtuálních sítích přidružených k rozbočovačům událostí, abyste se ochránili před distribuovanými útoky dohledu (DDoS). Pomocí integrované analýzy hrozeb Centra zabezpečení Azure můžete odepřít komunikaci se známými škodlivými nebo nepoužívanými internetovými IP adresami.
+**Pokyny**: povolení DDoS Protection Standard ve virtuálních sítích přidružených k centrům událostí pro ochranu před distribuovanými útoky s cílem odepření služeb (DDoS). K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
-Jak nakonfigurovat ochranu Před sdos:[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
+Jak nakonfigurovat DDoS Protection:[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
 
-Další informace o integrované hrozbové inteligenci Centra zabezpečení Azure:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+Další informace o Azure Security Center integrované analýze hrozeb:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Záznam síťových paketů a protokolů toku
+### <a name="15-record-network-packets-and-flow-logs"></a>1,5: záznam síťových paketů a protokolů toků
 
-**Pokyny:** Pokud pomocí virtuálních počítačů Azure pro přístup k rozbočovačům událostí povolte protokoly toku skupiny zabezpečení sítě (NSG) a odesílejte protokoly do účtu úložiště pro audit provozu. Protokoly toku nsg můžete také odesílat do pracovního prostoru Analýzy protokolů a pomocí traffic analytics poskytovat přehled o toku provozu ve vašem cloudu Azure. Některé výhody Traffic Analytics jsou schopnost vizualizovat aktivitu v síti a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzorce toku provozu a určit chybné konfigurace sítě.
+**Pokyny**: Pokud používáte virtuální počítače Azure pro přístup k centrům událostí, povolte protokoly toku NSG (Network Security Group) a odešlete protokoly do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-Pokud je to nutné pro zkoumání neobvyklé aktivity, povolte zachytávání paketů Sledování sítě.
+Pokud je to potřeba pro prošetření aktivity neobvyklé, povolte zachytávání paketů Network Watcher.
 
-Povolení protokolů toku nsg:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+Jak povolit protokoly toku NSG:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Jak povolit a používat Traffic Analytics:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
-Jak povolit sledování sítě:https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+Postup povolení Network Watcher:https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Nasazení síťových systémů detekce vniknutí/prevence vniknutí (IDS/IPS)
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
-**Pokyny:** Pokud používáte virtuální počítače Azure pro přístup k vašim centrům událostí, vyberte nabídku z Azure Marketplace, která podporuje funkce IDS/IPS s možnostmi kontroly datové části. Pokud detekce vniknutí nebo prevence na základě kontroly datové části není vyžadováno pro vaši organizaci, můžete použít integrovanou funkci brány firewall Služby Azure Event Hubs. Přístup k oboru názvů centra Event Hubs můžete omezit na omezený rozsah adres IP nebo na určitou adresu IP pomocí pravidel brány firewall.
+**Pokyny**: Pokud k přístupu k centrům událostí používáte virtuální počítače Azure, vyberte nabídku z Azure Marketplace, která podporuje funkce ID/IP adresy s možnostmi kontroly zatížení. Pokud se zjišťování vniknutí nebo prevence na základě kontroly datové části pro vaši organizaci nevyžaduje, můžete použít integrovanou funkci brány firewall Azure Event Hubs. Přístup k oboru názvů Event Hubs můžete omezit na omezený rozsah IP adres nebo na konkrétní IP adresu pomocí pravidel brány firewall.
 
 Azure Marketplace:
 
 https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
-Jak přidat pravidlo brány firewall do event hubů pro zadanou adresu IP:
+Postup přidání pravidla brány firewall v Event Hubs pro zadanou IP adresu:
 
  https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
-**Monitorování Centra zabezpečení Azure:** Ještě není k dispozici
+**Monitorování Azure Security Center**: zatím není k dispozici
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="17-manage-traffic-to-web-applications"></a>1.7: Správa návštěvnosti webových aplikací
+### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro webové aplikace spuštěné ve službě Azure App Service nebo výpočetních prostředcích.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimalizace složitosti a administrativní režie pravidel zabezpečení sítě
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
-**Pokyny**: Není použitelné, toto doporučení je určeno pro webové aplikace spuštěné ve službě Azure App Service nebo výpočetních prostředcích.
+**Doprovodné**materiály: Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Udržovat standardní konfigurace zabezpečení pro síťová zařízení
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
 
-**Pokyny:** Definujte a implementujte standardní konfigurace zabezpečení pro síťové prostředky přidružené k oborům názvů Azure Event Hubs pomocí zásad Azure. Pomocí aliasů zásad Azure v oborech názvů Microsoft.EventHub a Microsoft.Network vytvořte vlastní zásady pro auditování nebo vynucení síťové konfigurace oborů názvů Event Hubs. Můžete také využít předdefinované definice zásad související s Azure Event Hubs, jako jsou:
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro síťové prostředky přidružené k vašim oborům názvů Azure Event Hubs pomocí Azure Policy. Pomocí aliasů Azure Policy v oborech názvů Microsoft. EventHub a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě vašich Event Hubs oborů názvů. Můžete také využít integrované definice zásad související s Azure Event Hubs, například:
 
 - Centrum událostí by mělo používat koncový bod služby virtuální sítě.
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Integrované zásady Azure pro obor názvů Event Hubs:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
-
-
-
-Ukázky zásad Azure pro sítě:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
+Integrovaná zásada Azure pro obor názvů Event Hubs:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
 
 
-Jak vytvořit Azure Blueprint:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Azure Policy ukázky pro síťové služby:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
-**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: Zákazník
 
-### <a name="110-document-traffic-configuration-rules"></a>1.10: Dokumentovat pravidla konfigurace provozu
+Postup vytvoření Azure Blueprint:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Pokyny:** Používejte značky pro virtuální sítě a další prostředky související se zabezpečením sítě a tokem provozu, které jsou přidruženy k rozbočovačům událostí.
+**Monitorování Azure Security Center**: nelze použít
 
-Jak vytvářet a používat značky:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+**Zodpovědnost**: zákazník
 
-**Monitorování Azure Security Center**: Nelze použít
+### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
-**Odpovědnost**: Zákazník
+**Doprovodné**materiály: používejte značky pro virtuální sítě a další prostředky, které se týkají zabezpečení sítě a toku provozu, které jsou přidruženy k centrům událostí.
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Použití automatizovaných nástrojů ke sledování konfigurace síťových prostředků a zjišťování změn
+Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Pokyny:** Pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků souvisejících s azure event huby. Vytvořte výstrahy v rámci Azure Monitor, který se aktivuje, když dojde ke změnám kritických síťových prostředků.
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: pomocí automatizovaných nástrojů monitorujte konfigurace síťových prostředků a zjišťují změny.
+
+**Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků souvisejících s Azure Event Hubs. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
 Jak zobrazit a načíst události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Jak vytvořit výstrahy ve službě Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Postup při vytváření výstrah v Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace naleznete [v tématu Security Control: Logging and Monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Použití schválených zdrojů synchronizace času
+### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
-**Pokyny**: Nepoužije se; Microsoft udržuje zdroj času používaný pro prostředky Azure, jako jsou Azure Event Hubs, pro časová razítka v protokolech.
+**Doprovodné**materiály: nepoužitelné; Microsoft udržuje čas používaný pro prostředky Azure, jako je například Azure Event Hubs, pro časová razítka v protokolech.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Microsoft
+**Zodpovědnost**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2.2: Konfigurace správy centrálního protokolu zabezpečení
+### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
 
-**Pokyny:** V rámci Azure Monitor, nakonfigurujte protokoly související s centra událostí v rámci protokolu aktivit a centrum událostí nastavení diagnostiky pro odesílání protokolů do pracovního prostoru Log Analytics, které mají být dotazovány nebo do účtu úložiště pro dlouhodobé archivní úložiště.
+**Doprovodné**materiály: v rámci Azure monitor Nakonfigurujte protokoly související s centry událostí v nastaveních diagnostiky protokolů aktivit a centra událostí, aby se protokoly odesílaly do pracovního prostoru Log Analytics, který se má dotazovat nebo do účtu úložiště pro dlouhodobé archivace úložiště.
 
-Jak nakonfigurovat nastavení diagnostiky pro Centra událostí Azure:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
+Postup konfigurace nastavení diagnostiky pro Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
 
-Principy protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
+Seznámení s protokolem aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Povolení protokolování auditování prostředků Azure
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
-**Pokyny:** Povolte nastavení diagnostiky pro obor názvů Centra událostí Azure. Existují tři kategorie nastavení diagnostiky pro Centra událostí Azure: protokoly archivu, provozní protokoly a protokoly automatického škálování. Povolte provozní protokoly, abyste mohli zachytit informace o tom, co se děje během operací Event Hubs, konkrétně typu operace, včetně vytvoření centra událostí, použitých prostředků a stavu operace.
+**Doprovodné**materiály: povolení nastavení diagnostiky pro obor názvů Azure Event Hubs. Existují tři kategorie nastavení diagnostiky pro Azure Event Hubs: archivní protokoly, provozní protokoly a protokoly automatického škálování. Povolte provozní protokoly pro zaznamenávání informací o tom, co se děje během operací Event Hubs, konkrétně typ operace, včetně vytvoření centra událostí, použitých prostředků a stavu operace.
 
-Kromě toho můžete povolit nastavení diagnostiky protokolu aktivit Azure a odeslat je do účtu úložiště Azure, centra událostí nebo do pracovního prostoru Log Analytics. Protokoly aktivit poskytují přehled o operacích, které byly provedeny na azure event huby a další prostředky. Pomocí protokolů aktivit můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) převzaté ve vašich oborech názvů Centra událostí Azure.
+Kromě toho můžete povolit nastavení diagnostiky protokolu aktivit Azure a odeslat je do účtu Azure Storage, centra událostí nebo pracovního prostoru Log Analytics. Protokoly aktivit poskytují přehled o operacích, které byly provedeny v Event Hubs Azure a dalších prostředcích. Pomocí protokolů aktivit můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) provedené v oborech názvů Azure Event Hubs.
 
-Jak povolit nastavení diagnostiky pro Centra událostí Azure:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
+Postup povolení nastavení diagnostiky pro Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
 
-Jak povolit diagnostická nastavení pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Jak povolit nastavení diagnostiky pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Shromažďování protokolů zabezpečení z operačních systémů
+### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurace uchovávání úložiště protokolu zabezpečení
+### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Pokyny:** V rámci Azure Monitor, nastavte dobu uchovávání pracovního prostoru Log Analytics podle předpisů vaší organizace dodržování předpisů pro zachycení a kontrolu událostí hub-související incidenty.
+**Doprovodné**materiály: v rámci Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace za účelem zachycení a kontroly incidentů souvisejících s centrem událostí.
 
-Jak nastavit parametry uchovávání protokolu pro pracovní prostory Analýzy protokolů:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="26-monitor-and-review-logs"></a>2.6: Sledování a kontrola protokolů
+### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
-**Pokyny:** Analyzujte a monitorujte protokoly pro neobvyklé chování a pravidelně kontrolujte výsledky související s centry událostí. Pomocí analýzy protokolů Azure Monitor můžete kontrolovat protokoly a provádět dotazy na data protokolu. Případně můžete povolit a na palubě data azure sentinelu nebo třetí strany SIEM.
+**Doprovodné**materiály: analýza a sledování protokolů pro neobvyklé chování a pravidelné kontroly výsledků souvisejících s centry událostí. Pomocí Log Analytics Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo jiného dodavatele SIEM.
  
 
-Další informace o pracovním prostoru Analýzy protokolů:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+Další informace o pracovním prostoru Log Analytics:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Jak provádět vlastní dotazy v Azure Monitoru:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+Postup provádění vlastních dotazů v Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
-Jak napalubě Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Povolit upozornění na anomální aktivitu
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: povolení výstrah pro aktivitu neobvyklé
 
-**Pokyny:** V rámci Azure Monitor, nakonfigurujte protokoly související s Azure Event Hubs v rámci protokolu aktivit a nastavení diagnostiky centra událostí pro odesílání protokolů do pracovního prostoru Log Analytics, který má být dotazován, nebo do účtu úložiště pro dlouhodobé úložiště archivace. Pomocí pracovního prostoru Log Analytics můžete vytvářet výstrahy pro neobvyklé aktivity nalezené v protokolech zabezpečení a událostech.
+**Doprovodné**materiály: v rámci Azure monitor Nakonfigurujte protokoly týkající se Azure Event Hubs v protokolu aktivit a Event Hubs nastavení diagnostiky k odesílání protokolů do log Analyticsho pracovního prostoru, který se má dotazovat nebo do účtu úložiště pro dlouhodobé archivace úložiště. Pomocí Log Analytics pracovního prostoru můžete vytvářet výstrahy pro aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech.
 
-Případně můžete povolit a na palubě data do Azure Sentinelu. 
+Alternativně můžete povolit a začlenit data do Azure Sentinel. 
 
-Seznamte se s protokolem aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
+Pochopení protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
-Jak nakonfigurovat nastavení diagnostiky pro Centra událostí Azure:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
+Postup konfigurace nastavení diagnostiky pro Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
 
-How to alert on Log Analytics workspace log data:https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
+Jak upozornit na data protokolu Log Analytics pracovního prostoru:https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-Jak napalubě Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Monitorování Centra zabezpečení Azure:** Ještě není k dispozici
+**Monitorování Azure Security Center**: zatím není k dispozici
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="28-centralize-anti-malware-logging"></a>2.8: Centralizovat protokolování antimalwaru
+### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
 
-**Pokyny**: Nepoužije se; Centrum událostí nezpracovává protokolování antimalwaru.
+**Doprovodné**materiály: nepoužitelné; Centrum událostí nezpracovává protokolování proti malwaru.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="29-enable-dns-query-logging"></a>2.9: Povolení protokolování dotazů DNS
+### <a name="29-enable-dns-query-logging"></a>2,9: povolení protokolování dotazů DNS
 
-**Pokyny**: Nepoužije se; Centra událostí nezpracovává ani nevytváří protokoly související se službou DNS.
+**Doprovodné**materiály: nepoužitelné; Event Hubs nezpracovává ani nevytváří protokoly související s DNS.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="210-enable-command-line-audit-logging"></a>2.10: Povolení protokolování auditu příkazového řádku
+### <a name="210-enable-command-line-audit-logging"></a>2,10: povolení protokolování auditu příkazového řádku
 
-**Pokyny**: Nepoužije se; Tento pokyn je určen pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace naleznete [v tématu Zabezpečení: Identita a řízení přístupu](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Vedení soupisu administrativních účtů
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Pokyny:** Služba Azure Active Directory (AD) má předdefinované role, které musí být explicitně přiřazeny a jsou dotazovatelné. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy ke zjišťování účtů, které jsou členy skupin pro správu. 
+**Doprovodné**materiály: Azure Active Directory (AD) mají předdefinované role, které se musí explicitně přiřadit a které jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu. 
 
-Jak získat roli adresáře ve službě Azure AD s PowerShellem:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Jak získat roli adresáře ve službě Azure AD pomocí prostředí PowerShell:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-Jak získat členy role adresáře ve službě Azure AD s PowerShellem:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Jak získat členy role adresáře ve službě Azure AD pomocí prostředí PowerShell:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="32-change-default-passwords-where-applicable"></a>3.2: Změna výchozích hesel, pokud je to možné
+### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
-**Navádění:** Řízení přístupu k rozbočovačům událostí je řízeno prostřednictvím služby Azure Active Directory (AD). Azure AD nemá koncept výchozí hesla.
+**Pokyny**: přístup roviny ovládacího prvku k Event Hubs je řízen prostřednictvím Azure Active Directory (AD). Azure AD nemá koncept výchozích hesel.
 
-Přístup k centru událostí se řídí prostřednictvím Azure AD se spravovanými identitami nebo registracemi aplikací a také se sdílenými přístupovými podpisy. Sdílené přístupové podpisy používají klienti, kteří se připojují k vašim centrům událostí, a lze je kdykoli obnovit.
+Přístup k rovině dat pro Event Hubs se řídí prostřednictvím Azure AD se spravovanými identitami nebo Registrace aplikací a také signaturami sdíleného přístupu. Sdílené přístupové podpisy používají klienti připojující se k centrům událostí a dají se kdykoli znovu vygenerovat.
 
-Principy sdílených přístupových podpisů pro centra událostí:https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
+Vysvětlení sdílených přístupových podpisů pro Event Hubs:https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Použití vyhrazených administrativních účtů
+### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Pokyny**: Vytvořit standardní operační postupy týkající se používání vyhrazených administrativních účtů. Pomocí správy identit a přístupu Centra zabezpečení Azure můžete sledovat počet účtů pro správu.
+**Doprovodné**materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu.
 
-Kromě toho můžete použít doporučení z Azure Security Center nebo integrované zásady Azure, jako jsou:
+Kromě toho můžete použít doporučení z Azure Security Center nebo integrovaných zásad Azure, jako je například:
 
-- K vašemu předplatnému by mělo být přiřazeno více než jednoho vlastníka.
+- K vašemu předplatnému by měl být přiřazený víc než jeden vlastník.
 
-- Zastaralé účty s oprávněními vlastníka by měly být odebrány z vašeho předplatného
+- Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.
 
-- Z předplatného by měly být odebrány externí účty s oprávněními vlastníka.
+- Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 
-Jak pomocí Azure Security Center sledovat identitu a přístup (Preview):https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Použití Azure Security Center k monitorování identity a přístupu (Preview):https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Jak používat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak používat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Použití jednotného přihlašování (SSO) s Azure Active Directory
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
-**Pokyny:** Microsoft Azure poskytuje integrovanou správu řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (AD). Klíčovou výhodou používání Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2.0 z platformy Microsoft Identity. Název prostředku pro vyžádání tokenu\/je https: /eventhubs.azure.net/. Azure AD ověřuje intezuru zabezpečení (uživatele, skupiny nebo instančního objektu) spuštěné aplikace. Pokud je ověření úspěšné, Azure AD vrátí přístupový token do aplikace a aplikace pak můžete použít přístupový token k autorizaci požadavku na prostředky Azure Event Hubs.
+**Doprovodné**materiály: Microsoft Azure poskytuje integrované řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (AD). Klíčovou výhodou použití Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Název prostředku pro vyžádání tokenu je https:\//eventhubs.Azure.NET/. Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak může pomocí přístupového tokenu autorizovat požadavky na prostředky Azure Event Hubs.
 
-Jak ověřit aplikaci pomocí Azure AD pro přístup k prostředkům Centra událostí:https://docs.microsoft.com/azure/event-hubs/authenticate-application
+Jak ověřit aplikaci s využitím služby Azure AD pro přístup k prostředkům Event Hubs:https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
-Principy přisážacího zabezpečení pomocí Azure AD:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Principy jednotného přihlašování pomocí služby Azure AD:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Použití vícefaktorového ověřování pro veškerý přístup založený na službě Azure Active Directory
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Pokyny:** Povolte vícefaktorové ověřování Azure Active Directory (MFA) a postupujte podle doporučení pro správu identit centra zabezpečení Azure a správy přístupu, abyste pomohli chránit prostředky centra událostí.
+**Doprovodné**materiály: povolte Azure Active Directory Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu, která vám pomůžou chránit vaše prostředky s povoleným centrem událostí.
 
-Jak povolit vícefaktorové povolení v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Jak povolit vícefaktorové ověřování v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Jak sledovat identitu a přístup v rámci Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Jak monitorovat identitu a přístup v rámci Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Pro všechny administrativní úkoly používejte vyhrazené počítače (pracovní stanice s privilegovaným přístupem)
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
 
-**Pokyny**: Používejte pracovní stanice s privilegovaným přístupem (PAW) s vícefaktorovým ověřováním (MFA) nakonfigurovaným pro přihlášení a konfiguraci prostředků s podporou centra událostí.
+**Pokyny**: použití pracovních stanic s privilegovaným přístupem (privilegovaným přístupem) s nakonfigurovaným Multi-Factor Authentication (MFA), které jsou nakonfigurovány pro přihlášení a konfiguraci prostředků s podporou centra událostí.
 
 Další informace o pracovních stanicích s privilegovaným přístupem:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-Jak povolit vícefaktorové povolení v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Jak povolit vícefaktorové ověřování v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: Protokolování a upozornění na podezřelou aktivitu z administrativních účtů
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: protokolování a upozornění na podezřelou aktivitu z účtů pro správu
 
-**Pokyny:** Použití Azure Active Directory (AD) Privileged Identity Management (PIM) pro generování protokolů a výstrah, když dojde k podezřelé nebo nebezpečné aktivity v prostředí. Pomocí zjišťování rizik Azure AD můžete zobrazit výstrahy a sestavy o rizikovém chování uživatelů. Další protokolování můžete zasílat výstrahy Azure Security Center pro zjišťování rizik do Azure Monitoru a konfigurovat vlastní výstrahy/oznámení pomocí skupin akcí.
+**Pokyny**: pomocí Azure Active Directory (AD) PRIVILEGED Identity Management (PIM) můžete generovat protokoly a výstrahy, když dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Pomocí zjišťování rizik Azure AD můžete zobrazit výstrahy a sestavy týkající se rizikového chování uživatelů. Pro další protokolování odešlete výstrahy Azure Security Center detekce rizik do Azure Monitor a nakonfigurujte vlastní výstrahy a oznámení pomocí skupin akcí.
 
-Jak nasadit správu privilegovaných identit (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Postup nasazení Privileged Identity Management (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Seznamte se s detekcí rizik Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Vysvětlení zjišťování rizik Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Správa prostředků Azure z jenom schválených umístění
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
 
-**Pokyny:** Pomocí pojmenovaných umístění podmíněného přístupu můžete povolit přístup pouze z určitých logických seskupení oblastí IP adres nebo zemí nebo oblastí.
+**Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu povolíte přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
 
 
 Jak nakonfigurovat pojmenovaná umístění v Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="39-use-azure-active-directory"></a>3.9: Použití služby Azure Active Directory
+### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
-**Pokyny:** Použijte Azure Active Directory (AD) jako centrální ověřovací a autorizační systém pro prostředky Azure, jako jsou centra událostí. To umožňuje řízení přístupu na základě rolí (RBAC) na prostředky citlivé na správu.
+**Doprovodné**materiály: použití Azure Active Directory (AD) jako centrálního ověřování a autorizačního systému pro prostředky Azure, jako je například Event Hubs. To umožňuje řízení přístupu na základě role (RBAC) pro správu citlivých prostředků.
 
  Jak vytvořit a nakonfigurovat instanci Azure AD:https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
-Informace o tom, jak se Azure Event Hubs integrují s Azure Active Directory (AAD), najdete v tématu Autorizace přístupu k prostředkům Centra událostí pomocí Azure Active Directory:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+Další informace o tom, jak Azure Event Hubs integruje s Azure Active Directory (AAD), najdete v tématu Autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Pravidelně kontrolujte a slaďujte přístup uživatelů
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Pokyny:** Služba Azure Active Directory (AD) poskytuje protokoly, které vám pomohou zjistit zastaralé účty. Kromě toho můžete pomocí azure identity access reviews efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazení rolí. Přístup uživatelů lze pravidelně kontrolovat, aby se zajistilo, že pouze ti praví uživatelé mají trvalý přístup.
+**Doprovodné**materiály: Azure Active Directory (AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-V dalším případě pravidelně otáčejte sdílenými přístupovými podpisy centra událostí.
+V dalším případě pravidelně otáčejte Event Hubs "sdílené přístupové podpisy".
 
-Principy sestav Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Pochopení sestav Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Jak používat recenze přístupu k identitám Azure:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Jak používat kontroly přístupu Azure identity:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-Principy sdílených přístupových podpisů pro centra událostí:https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
+Princip sdílených přístupových podpisů pro Event Hubs:https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Sledování pokusů o přístup k deaktivovaným účtům
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: monitorování pokusů o přístup k deaktivovaným účtům
 
-**Pokyny:** Máte přístup k aktivitě přihlášení služby Azure Active Directory (AD), zdrojům protokolu auditu a protokolu rizikových událostí, které umožňují integraci s libovolným nástrojem SIEM/Monitoring.
+**Doprovodné**materiály: máte přístup k aktivitě přihlašování Azure Active Directory (AD), událostem auditu a rizikovým protokolům událostí, které umožňují integraci s jakýmkoli nástrojem Siem/monitoring.
 
-Tento proces můžete zjednodušit vytvořením diagnostických nastavení pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do pracovního prostoru Log Analytics. Můžete nakonfigurovat požadované výstrahy protokolu v rámci Log Analytics.
+Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy protokolu můžete nakonfigurovat v rámci Log Analytics.
 
-Jak integrovat protokoly aktivit Azure do Azure Monitoru:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Jak integrovat protokoly aktivit Azure do Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Autorizace přístupu k prostředkům Centra událostí pomocí Služby Azure Active Directory:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+Autorizovat přístup k prostředkům Event Hubs pomocí Azure Active Directory:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Upozornění na odchylku chování přihlášení k účtu
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
-**Pokyny:** Pomocí funkcí ochrany identity azure active directory a funkce detekce rizik nakonfigurujte automatické odpovědi na zjištěné podezřelé akce související s prostředky s povolenými centry centra událostí. Měli byste povolit automatické odpovědi prostřednictvím Azure Sentinelu k implementaci odpovědí na zabezpečení vaší organizace.
+**Pokyny**: pomocí funkcí Azure Active Directory ochrany identit a detekce rizik můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce související s vašimi prostředky s podporou Event Hubs. Pomocí služby Azure Sentinel byste měli povolit automatizované odezvy pro implementaci reakcí zabezpečení vaší organizace.
 
-Jak zobrazit Azure AD riskantní přihlášení:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+Jak zobrazit rizikové přihlašování Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-Jak nakonfigurovat a povolit zásady rizik a zásady ochrany identity:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Jak nakonfigurovat a povolit zásady pro rizika ochrany identity:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Jak napalubě Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Poskytněte společnosti Microsoft přístup k relevantním zákaznickým datům během scénářů podpory
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
 
-**Pokyny**: V současné době není k dispozici; Customer Lockbox ještě není podporován pro centra událostí.
+**Doprovodné**materiály: aktuálně není k dispozici; Customer Lockbox ještě není pro Event Hubs podporovaná.
 
-Seznam služeb podporovaných customer lockboxem:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Seznam služeb podporovaných Customer Lockbox:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Momentálně není k dispozici
+**Odpovědnost**: aktuálně není k dispozici.
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace naleznete [v tématu Security Control: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Udržovat soupis citlivých informací
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
-**Pokyny:** Pomocí značek na prostředky související s event huby pomoci při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
+**Doprovodné**materiály: pomocí značek u prostředků souvisejících s vaším Event Hubs pomáhat při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
-Jak vytvořit a používat značky:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Izolovat systémy ukládající nebo zpracovávající citlivé informace
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny**: Implementujte samostatné odběry nebo skupiny pro správu pro vývoj, testování a výrobu. Obory názvů Event Hubs by měly být odděleny virtuální sítí s povolenými a odpovídajícím označením koncových bodů služby.
+**Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Obory názvů Event Hubs by měly být oddělené pomocí virtuální sítě s povolenými koncovými body služby a odpovídajícím způsobem označeny.
 
-Obor názvů Azure Event Hubs můžete také zabezpečit pomocí bran firewall. Azure Event Hubs podporuje ovládací prvky přístupu založené na IP adresách pro příchozí podporu brány firewall. Pravidla brány firewall můžete nastavit pomocí portálu Azure, šablon Azure Resource Manager nebo pomocí azure cli nebo Azure PowerShell.
+Obor názvů Azure Event Hubs můžete také zabezpečit pomocí bran firewall. Azure Event Hubs podporuje řízení přístupu na základě IP adres pro podporu příchozích bran firewall. Pravidla brány firewall můžete nastavit pomocí Azure Portal, Azure Resource Manager šablon nebo prostřednictvím rozhraní příkazového řádku Azure CLI nebo Azure PowerShell.
 
 Jak vytvořit další předplatná Azure:https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Jak vytvořit skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
+Postup vytvoření Skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
 
-Konfigurace pravidel brány firewall IP pro obory názvů Centra událostí Azure:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
-
-Jak vytvářet a využívat značky:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
-
-Jak vytvořit virtuální síť:https://docs.microsoft.com/azure/virtual-network/quick-create-portal
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Sledování a blokování neoprávněného přenosu citlivých informací
-
-**Pokyny:** Při použití virtuálních počítačů pro přístup k rozbočovačům událostí využijte virtuální sítě, koncové body služby, bránu firewall centra událostí, skupiny zabezpečení sítě a značky služeb, abyste zmírnili možnost exfiltrace dat.
-
-Microsoft spravuje základní infrastrukturu pro Azure Event Hubs a zavedl přísné ovládací prvky, aby zabránil ztrátě nebo vystavení zákaznických dat.
-
-Konfigurace pravidel brány firewall IP pro obory názvů Centra událostí Azure:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
-
-Principy koncových bodů služby Virtuální síť pomocí center událostí Azure:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
-
-Integrace Center událostí Azure s Privátním propojením Azure:https://docs.microsoft.com/azure/event-hubs/private-link-service
-
-Principy skupin zabezpečení sítě a značek služeb:https://docs.microsoft.com/azure/virtual-network/security-overview
-
-Seznamte se s ochranou zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Šifrování všech citlivých informací při přepravě
-
-**Pokyny:** Azure Event Hubs ve výchozím nastavení vynucuje komunikaci šifrovanou tls. V současné době jsou podporovány verze TLS 1.0, 1.1 a 1.2. TLS 1.0 a 1.1 jsou však na cestě k vyřazení v celém odvětví, takže pokud je to možné, použijte TLS 1.2.
-
-Informace o funkcích zabezpečení centra událostí naleznete v tématu Zabezpečení sítě:https://docs.microsoft.com/azure/event-hubs/network-security
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Microsoft
-
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Použití aktivního nástroje pro zjišťování k identifikaci citlivých dat
-
-**Pokyny:** Funkce identifikace, klasifikace a prevence ztrát dat ještě nejsou k dispozici pro Centra událostí Azure. Implementujte řešení třetích stran, pokud je to nutné pro účely dodržování předpisů.
-
-Pro základní platformu, která je spravována společností Microsoft, společnost Microsoft považuje veškerý obsah zákazníků za citlivý a zachází velmi daleko, aby se ochránila před ztrátou a expozicí dat zákazníků. Aby byla zákaznická data v Azure stále zabezpečená, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a funkcí ochrany dat.
-
-Seznamte se s ochranou zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
-
-**Odpovědnost**: Sdíleno
-
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Použití Azure RBAC k řízení přístupu k prostředkům
-
-**Pokyny:** Centra událostí Azure podporuje použití Služby Azure Active Directory (AD) k autorizaci požadavků na prostředky centra událostí. S Azure AD, můžete použít řízení přístupu na základě rolí (RBAC) udělit oprávnění k zaregistrovaný objekt zabezpečení, který může být uživatel nebo instanční objekt služby aplikace.
-
-Principy Azure AD RBAC a dostupné role pro Centra událostí Azure:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Použití ochrany před ztrátou dat na hostiteli k vynucení kontroly přístupu
-
-**Pokyny**: Nepoužije se; Tento pokyn je určen pro výpočetní prostředky.
-
-Společnost Microsoft spravuje základní infrastrukturu pro centra událostí a zavedla přísné kontroly, aby zabránila ztrátě nebo vystavení zákaznických dat.
-
-Seznamte se s ochranou zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Šifrování citlivých informací v klidovém stavu
-
-**Pokyny**: Azure Event Hubs podporuje možnost šifrování dat v klidovém stavu pomocí klíčů spravovaných společností Microsoft nebo klíčů spravovaných zákazníky. Tato funkce umožňuje vytvářet, otáčet, zakázat a odvolat přístup ke klíčům spravovaným zákazníkem, které se používají k šifrování dat centra událostí Azure v klidovém stavu.
-
-Jak nakonfigurovat klíče spravované zákazníkem pro šifrování Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokolování a upozorňování na změny kritických prostředků Azure
-
-**Pokyny:** Pomocí Azure Monitor s protokolem aktivit Azure vytvořit výstrahy pro kdy dojde ke změnám na produkční instance Centra událostí Azure a dalších kritických nebo souvisejících prostředků.
-
-Jak vytvořit výstrahy pro události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
-
-*Další informace naleznete v [tématu Security Control: Vulnerability Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
-
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Spuštění automatizovaných nástrojů pro vyhledávání chyb zabezpečení
-
-**Pokyny**: Nepoužije se; Společnost Microsoft provádí správu chyb zabezpečení v základních systémech, které podporují centra událostí.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Microsoft
-
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Nasazení řešení pro správu automatických oprav operačního systému
-
-**Pokyny**: Nepoužije se; Společnost Microsoft provádí správu oprav v základních systémech, které podporují centra událostí.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Microsoft
-
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Nasazení automatizovaného řešení pro správu softwarových oprav od jiných výrobců
-
-**Pokyny**: Nepoužije se; referenční hodnota je určena pro výpočetní prostředky.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Microsoft
-
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Porovnání prohledávačů ohrožení zabezpečení zády k zadní straně
-
-**Pokyny**: Nepoužije se; Společnost Microsoft provádí správu chyb zabezpečení v základních systémech, které podporují centra událostí.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Microsoft
-
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Použití procesu hodnocení rizik a upřednostnění nápravy zjištěných zranitelných míst
-
-**Pokyny**: Nepoužije se; Společnost Microsoft provádí správu chyb zabezpečení v základních systémech, které podporují centra událostí.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Microsoft
-
-## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
-
-*Další informace naleznete v [tématu Security Control: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
-
-### <a name="61-use-azure-asset-discovery"></a>6.1: Použití Azure Asset Discovery
-
-**Pokyny:** Pomocí Azure Resource Graph můžete dotazovat a zjišťovat všechny prostředky (včetně oborů názvů Centra událostí Azure) v rámci vašeho předplatného. Ujistěte se, že máte příslušná (číst) oprávnění ve vašem tenantovi a jsou schopni vytvořit výčet všech předplatných Azure, stejně jako prostředky v rámci vašich předplatných.
-
-Jak vytvářet dotazy pomocí Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-Jak zobrazit předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
-
-Principy Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="62-maintain-asset-metadata"></a>6.2: Udržování metadat datových zdrojů
-
-**Pokyny:** Použijte značky pro prostředky Azure, které poskytují metadata, aby je logicky uspořádali do taxonomie.
+Nakonfigurujte pravidla brány firewall protokolu IP pro Azure Event Hubs obory názvů:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
 Jak vytvářet a používat značky:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: Nelze použít
+Postup vytvoření Virtual Network:https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
-**Odpovědnost**: Zákazník
+**Monitorování Azure Security Center**: nelze použít
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Odstranění neautorizovaných prostředků Azure
+**Zodpovědnost**: zákazník
 
-**Pokyny:** Pomocí značkování, skupin pro správu a samostatných předplatných, kde je to vhodné, můžete uspořádat a sledovat obory názvů Centra událostí Azure a související prostředky. Pravidelně odsouhlasete zásoby a zajistěte, aby byly z předplatného včas odstraněny neoprávněné prostředky.
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
+
+**Doprovodné**materiály: při použití virtuálních počítačů pro přístup k centrům událostí můžete pomocí virtuálních sítí, koncových bodů služby, Event Hubs brány firewall, skupin zabezpečení sítě a značek služeb zmírnit možnost exfiltraceí dat.
+
+Microsoft spravuje základní infrastrukturu pro Azure Event Hubs a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
+
+Nakonfigurujte pravidla brány firewall protokolu IP pro Azure Event Hubs obory názvů:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
+
+Pochopení Virtual Networkch koncových bodů služby pomocí Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
+
+Integrace Azure Event Hubs s privátním propojením Azure:https://docs.microsoft.com/azure/event-hubs/private-link-service
+
+Pochopení skupin zabezpečení sítě a značek služeb:https://docs.microsoft.com/azure/virtual-network/security-overview
+
+Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
+
+**Pokyny**: Azure Event Hubs ve výchozím nastavení vynutil komunikaci zašifrovanou pomocí protokolu TLS. V tuto chvíli jsou podporované TLS verze 1,0, 1,1 a 1,2. TLS 1,0 a 1,1 ale mají cestu k vyřazení celého oboru, takže pokud je to možné, použijte protokol TLS 1,2.
+
+Vysvětlení funkcí zabezpečení Event Hubs najdete v tématu zabezpečení sítě:https://docs.microsoft.com/azure/event-hubs/network-security
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: Microsoft
+
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
+
+**Doprovodné**materiály: funkce pro identifikaci, klasifikaci a ochranu před únikem informací ještě nejsou pro Azure Event Hubs k dispozici. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů.
+
+Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
+
+Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
+
+**Odpovědnost**: sdílená
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
+
+**Pokyny**: Azure Event Hubs podporuje použití Azure Active Directory (AD) k autorizaci požadavků na Event Hubs prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instanční objekt služby.
+
+Pochopení služby Azure AD RBAC a dostupných rolí pro Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
+
+**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+
+Společnost Microsoft spravuje základní infrastrukturu pro Event Hubs a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
+
+Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
+
+**Pokyny**: Azure Event Hubs podporuje možnost šifrování neaktivních dat buď pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem. Tato funkce umožňuje vytvořit, otočit, zakázat a odvolat přístup k klíčům spravovaným zákazníkem, které se používají k šifrování neaktivních dat služby Azure Event Hubs.
+
+Postup konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
+
+**Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích Azure Event Hubs a dalších důležitých nebo souvisejících prostředcích.
+
+Vytváření upozornění pro události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
+
+*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
+
+**Doprovodné**materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Event Hubs.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: Microsoft
+
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
+
+**Doprovodné**materiály: nepoužitelné; Microsoft provádí správu oprav pro základní systémy, které podporují Event Hubs.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: Microsoft
+
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: nasazení automatizovaného řešení pro správu oprav softwaru třetí strany
+
+**Doprovodné**materiály: nepoužitelné; Srovnávací test je určený pro výpočetní prostředky.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: Microsoft
+
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: porovnání kontrol zabezpečení back-to-back
+
+**Doprovodné**materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Event Hubs.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: Microsoft
+
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
+
+**Doprovodné**materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Event Hubs.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: Microsoft
+
+## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
+
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+
+### <a name="61-use-azure-asset-discovery"></a>6,1: použijte Azure Asset Discovery.
+
+**Pokyny**: pomocí Azure Resource graphu se můžete dotazovat a zjišťovat všechny prostředky (včetně oborů názvů Azure Event Hubs) v rámci vašich předplatných. Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
+
+Jak vytvářet dotazy pomocí Azure Resource graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
+Jak zobrazit vaše předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+
+Porozumění službě Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
+
+**Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
+
+Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
+
+**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování oborů názvů Azure Event Hubs a souvisejících prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Jak vytvořit další předplatná Azure:https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Jak vytvořit skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
+Postup vytvoření Skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
 
-Jak vytvořit a používat značky:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Udržovat soupis schválených prostředků Azure a softwarových titulů
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: udržování inventáře schválených prostředků Azure a softwarových titulů
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky a Azure jako celek.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky a Azure jako celek.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Monitorování neschválených prostředků Azure
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
-**Pokyny**: Pomocí zásad Azure můžete omezit typ prostředků, které lze vytvořit v předplatných zákazníků pomocí následujících předdefinovaných definic zásad:
-
-- Nepovolené typy prostředků
-
-- Povolené typy prostředků
-
-Kromě toho použijte Azure Resource Graph k dotazování/zjišťování prostředků v rámci předplatného.
-
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-Jak vytvářet dotazy pomocí Azure Graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Sledování neschválených softwarových aplikací v rámci výpočetních prostředků
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Odebrání neschválených prostředků Azure a softwarových aplikací
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky a Azure jako celek.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="68-use-only-approved-applications"></a>6.8: Používejte pouze schválené aplikace
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="69-use-only-approved-azure-services"></a>6.9: Používejte jenom schválené služby Azure
-
-**Pokyny**: Pomocí zásad Azure můžete omezit typ prostředků, které lze vytvořit v předplatných zákazníků pomocí následujících předdefinovaných definic zásad:
+**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
 - Nepovolené typy prostředků
 
 - Povolené typy prostředků
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování prostředků v rámci předplatných.
 
-Jak odepřít konkrétní typ prostředku pomocí zásad Azure:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: Nelze použít
+Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-**Odpovědnost**: Zákazník
+**Monitorování Azure Security Center**: nelze použít
 
-### <a name="610-implement-approved-application-list"></a>6.10: Implementace schváleného seznamu žádostí
+**Zodpovědnost**: zákazník
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Odpovědnost**: Nepoužije se
+**Monitorování Azure Security Center**: nelze použít
 
-### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6.11: <div>Omezte možnost uživatelů komunikovat se Správcem prostředků Azure pomocí skriptů</div>
+**Odpovědnost**: netýká se
 
-**Pokyny:** Konfigurace podmíněného přístupu Azure, chcete-li omezit možnost uživatelů pracovat se Správcem prostředků Azure konfigurací "Blokovat přístup" pro aplikaci "Správa Microsoft Azure".
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Odeberte neschválené prostředky Azure a softwarové aplikace
 
-Jak nakonfigurovat podmíněný přístup pro blokování přístupu ke Správci prostředků Azure:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky a Azure jako celek.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Odpovědnost**: netýká se
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Omezení možnosti uživatelů spouštět skripty v rámci výpočetních prostředků
+### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fyzicky nebo logicky oddělit vysoce rizikové aplikace
+### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro webové aplikace spuštěné ve službě Azure App Service nebo výpočetních prostředcích.
+**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-**Monitorování Azure Security Center**: Nelze použít
+- Nepovolené typy prostředků
 
-**Odpovědnost**: Nepoužije se
+- Povolené typy prostředků
+
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="610-implement-approved-application-list"></a>6,10: Implementujte schválený seznam aplikací
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6,11: <div>Omezení schopnosti uživatelů pracovat s Azure Resource Manager prostřednictvím skriptů</div>
+
+**Pokyny**: Nakonfigurujte podmíněný přístup Azure tak, aby uživatelé mohli komunikovat s Azure Resource Manager konfigurací možnosti blokovat přístup pro aplikaci Microsoft Azure Management.
+
+Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace naleznete v [tématu Zabezpečení: Zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Pokyny:** Definujte a implementujte standardní konfigurace zabezpečení pro nasazení centra událostí Azure. Pomocí aliasů zásad Azure v oboru názvů Microsoft.EventHub vytvořte vlastní zásady pro auditování nebo vynucení konfigurací. Můžete také využít předdefinované definice zásad pro Azure Event Hubs, jako jsou:
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro nasazení služby Azure Event Hubs. Použijte aliasy Azure Policy v oboru názvů Microsoft. EventHub k vytvoření vlastních zásad pro auditování nebo vymáhání konfigurací. Můžete také využít integrované definice zásad pro Azure Event Hubs například:
 
-- Diagnostické protokoly v centru událostí by měly být povoleny
+- Měly by být povolené diagnostické protokoly v centru událostí.
 
 - Centrum událostí by mělo používat koncový bod služby virtuální sítě.
 
-Integrované zásady Azure pro obor názvů Event Hubs:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
+Integrovaná zásada Azure pro obor názvů Event Hubs:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
-Jak zobrazit dostupné aliasy zásad Azure:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Jak zobrazit dostupné aliasy Azure Policy:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Vytvoření bezpečných konfigurací operačního systému
+### <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Udržování zabezpečených konfigurací prostředků Azure
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
-**Pokyny:** Pomocí zásad Azure [odepřít] a [nasadit, pokud neexistují] vynutit zabezpečené nastavení v rámci prostředků s povolenými event huby. 
+**Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistují] pro vymáhání zabezpečených nastavení napříč prostředky s povolenými Event Hubs. 
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
  
-Další informace o efektech zásad Azure:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Další informace o Azure Policych důsledcích:https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Udržovat bezpečné konfigurace operačního systému
+### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Konfigurace prostředků Azure bezpečně ukládá
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
-**Pokyny:** Pokud používáte vlastní definice zásad Azure pro vaše centra událostí nebo související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
+**Pokyny**: Pokud používáte vlastní definice Azure Policy pro Event Hubs nebo související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
 
 Jak ukládat kód v Azure DevOps:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Dokumentace k azure repos:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos dokumentaci:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Bezpečné ukládání vlastních bitových kopií operačního systému
+### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Nasazení nástrojů pro správu konfigurace systému
+### <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
 
-**Pokyny**: Pomocí aliasů zásad Azure v oboru názvů "Microsoft.EventHub" můžete vytvořit vlastní zásady pro výstrahu, audit ování a vynucení konfigurací systému. Kromě toho vytvořte proces a kanál pro správu výjimek zásad.
+**Pokyny**: použijte aliasy Azure Policy v oboru názvů Microsoft. EventHub k vytvoření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Nasazení nástrojů pro správu konfigurace systému pro operační systémy
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: nasaďte nástroje pro správu konfigurace systému pro operační systémy.
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementace automatického monitorování konfigurace pro služby Azure
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Implementujte automatizované monitorování konfigurace pro služby Azure.
 
-**Pokyny**: Pomocí aliasů zásad Azure v oboru názvů "Microsoft.EventHub" můžete vytvořit vlastní zásady pro výstrahu, audit ování a vynucení konfigurací systému. Pomocí zásad Azure [audit] [odepřít] a [nasadit, pokud neexistují] automaticky vynutit konfigurace pro nasazení Azure Event Hubs a související prostředky.
+**Pokyny**: použijte aliasy Azure Policy v oboru názvů Microsoft. EventHub k vytvoření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. K automatickému vymáhání konfigurací pro nasazení Azure Event Hubs a související prostředky použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
 
-Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementace automatizovaného monitorování konfigurace operačních systémů
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="711-manage-azure-secrets-securely"></a>7.11: Bezpečná správa tajných kódů Azure
+### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
 
-**Pokyny:** Pro virtuální počítače Azure nebo webové aplikace spuštěné ve službě Azure App Service, které se používají pro přístup k vašim centrům událostí, použijte identitu spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy sdílených přístupových podpisů pro nasazení center událostí Azure. Ujistěte se, že je povoleno obnovitelné odstranění trezoru klíčů.
+**Doprovodné**materiály: u virtuálních počítačů Azure nebo webových aplikací běžících na Azure App Service se používá pro přístup k centrům událostí, použití identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy sdíleného přístupového podpisu pro nasazení Event Hubs Azure. Ujistěte se, že je povolené Key Vault obnovitelné odstranění.
 
-Ověření spravované identity pomocí Služby Azure Active Directory pro přístup k prostředkům Centra událostí:https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest
+Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs:https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest
 
-Konfigurace klíčů spravovaných zákazníkem pro centra událostí:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
+Konfigurace klíčů spravovaných zákazníkem pro Event Hubs:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
 
-Jak integrovat s Azure Spravované identity:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Jak integrovat se spravovanými identitami Azure:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Jak vytvořit trezor klíčů:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Postup vytvoření Key Vault:https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Jak zajistit ověřování trezoru klíčů se spravovanou identitou:https://docs.microsoft.com/azure/key-vault/managed-identity
+Jak zajistit Key Vault ověřování pomocí spravované identity:https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Bezpečná a automatická správa identit
+### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Pokyny:** Pro virtuální počítače Azure nebo webové aplikace spuštěné ve službě Azure App Service, které se používají pro přístup k vašim centrům událostí, použijte identitu spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení Center událostí Azure. Ujistěte se, že je povoleno obnovitelné odstranění trezoru klíčů.
+**Doprovodné**materiály: u virtuálních počítačů Azure nebo webových aplikací běžících na Azure App Service se používá pro přístup k centrům událostí, použití identita spravované služby ve spojení s Azure Key Vault k zjednodušení a zabezpečení Event Hubs Azure. Ujistěte se, že je povolené Key Vault obnovitelné odstranění.
 
-Pomocí spravovaných identit můžete poskytovat služby Azure s automaticky spravovanou identitou ve službě Azure Active Directory (AD). Spravované identity umožňuje ověření na libovolnou službu, která podporuje ověřování Azure AD, včetně Azure Key Vault, bez pověření ve vašem kódu.
+Spravované identity použijte k poskytování služeb Azure s automaticky spravovanou identitou v Azure Active Directory (AD). Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Azure Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
-Ověření spravované identity pomocí Služby Azure Active Directory pro přístup k prostředkům centra událostí:https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest 
+Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs:https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest 
 
-Konfigurace klíčů spravovaných zákazníkem pro centra událostí:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
+Konfigurace klíčů spravovaných zákazníkem pro Event Hubs:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
 
-Jak nakonfigurovat spravované identity:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+Postup konfigurace spravovaných identit:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-Jak integrovat s Azure Spravované identity:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Jak integrovat se spravovanými identitami Azure:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Eliminujte nezamýšlenou expozici pověření
+### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
 
-**Pokyny**: Implementujte skener pověření k identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů také podpoří přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je azure key vault.
+**Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
 
-Jak nastavit skener pověření:https://secdevtools.azurewebsites.net/helpcredscan.html
+Jak nastavit skener přihlašovacích údajů:https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace naleznete v [tématu Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Používejte centrálně spravovaný antimalwarový software
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-Microsoft anti-malware je povolena na podkladovém hostiteli, který podporuje služby Azure (například Azure App Service), ale neběží na obsah zákazníka.
+Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure App Service), ale neběží na zákaznickém obsahu.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Předprohledávací soubory, které se mají nahrát do nevýpočetních prostředků Azure
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
 
-**Pokyny:** Před skenování veškerý obsah, který se nahrává do nevýpočetních prostředků Azure, jako jsou Azure Event Hubs, App Service, Data Lake Storage, Blob Storage, Azure Database for PostgreSQL atd. Společnost Microsoft nemá v těchto případech přístup k vašim datům.
+**Pokyny**: předběžná kontrola veškerého obsahu, který se nahrává do nevýpočetních prostředků Azure, jako je například Azure Event Hubs, App Service, Data Lake Storage, Blob Storage, Azure Database for PostgreSQL atd. Společnost Microsoft nemá přístup k vašim datům v těchto instancích.
 
-Microsoft anti-malware je povolena na podkladovém hostiteli, který podporuje služby Azure (například Azure Cache pro Redis), ale neběží na obsah zákazníka.
+Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure (například mezipaměť Azure pro Redis), ale neběží na zákaznickém obsahu.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Zajistěte aktualizaci antimalwarového softwaru a podpisů
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: Ujistěte se, že antimalwarový software a signatury jsou aktualizované.
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace naleznete [v tématu Security Control: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Zajistěte pravidelné automatické zálohování
+### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
-**Pokyny:** Konfigurace geografické zotavení po havárii pro Azure Event Hubs. Když se v ypracují prostoje celé oblasti Azure nebo datových center (pokud se nepoužívají žádné zóny dostupnosti), je důležité, aby zpracování dat dál fungovalo v jiné oblasti nebo datovém centru. Jako takové geografické zotavení po havárii a geografická replikace jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje geografické zotavení po havárii i geografickou replikaci na úrovni oboru názvů. 
+**Pokyny**: Konfigurace geografického zotavení po havárii pro Azure Event Hubs. Při výpadku provozu celé oblasti Azure nebo Datacenter (Pokud se nepoužívají žádné zóny dostupnosti) je důležité, aby zpracování dat pokračovalo v práci v jiné oblasti nebo datacentru. V takovém případě geografické zotavení po havárii a geografická replikace jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje jak geografické zotavení po havárii, tak i geografickou replikaci na úrovni oboru názvů. 
 
-Principy geograficky zotavení po havárii pro Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
+Vysvětlení geografického zotavení po havárii pro Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Proveďte kompletní zálohy systému a zálohujte všechny klienty spravované klíče
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny spravované klíče zákazníka.
 
-**Pokyny:** Azure Event Hubs poskytuje šifrování dat v klidovém stavu pomocí šifrování služby Azure Storage Service Encryption (Azure SSE). Event Hubs spoléhá na Azure Storage pro ukládání dat a ve výchozím nastavení, všechna data, která jsou uložená s Azure Storage je šifrována pomocí klíčů spravovaných Microsoftem. Pokud používáte Azure Key Vault pro ukládání klíčů spravovaných zákazníkem, zajistěte pravidelné automatické zálohování klíčů.
+**Pokyny**: Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. Pokud používáte Azure Key Vault k ukládání klíčů spravovaných zákazníkem, zajistěte pravidelné automatizované zálohování vašich klíčů.
 
-Zajistěte pravidelné automatické zálohování tajných kódů trezoru klíčů pomocí následujícího příkazu prostředí PowerShell: Backup-AzKeyVaultSecret
+Pomocí následujícího příkazu PowerShellu Zajistěte pravidelné automatizované zálohování Key Vault tajných kódů: Backup-AzKeyVaultSecret
 
-Jak nakonfigurovat klíče spravované zákazníkem pro šifrování dat služby Azure Event Hubs v klidovém stavu:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
+Postup konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém umístění:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
 
-Jak zálohovat tajné kódy trezoru klíčů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+Postup při zálohování Key Vault tajných kódů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Ověření všech záloh včetně klíčů spravovaných zákazníkem
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: Ověřte všechny zálohy včetně spravovaných klíčů zákazníků.
 
-**Pokyny:** Testování obnovení zálohovaných klíčů spravovaných zákazníkem.
+**Pokyny**: testování obnovení zálohovaných spravovaných klíčů zákazníků.
 
  
 
-Jak obnovit klíče trezoru klíčů v Azure:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+Postup obnovení klíčů trezoru klíčů v Azure:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zajištění ochrany záloh a klíčů spravovaných zákazníkem
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a spravovaných klíčů zákazníků.
 
-**Pokyny:** Povolte obnovitelné odstranění v trezoru klíčů, abyste ochránili klíče před náhodným nebo škodlivým odstraněním. Azure Event Hubs vyžaduje, aby byly nakonfigurovány klíče spravované zákazníky, aby byly nakonfigurovány obnovitelné odstranění a nevyčistit.
+**Pokyny**: povolení obnovitelného odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění. Azure Event Hubs vyžaduje, aby klíče spravované zákazníky měly obnovitelné odstranění a nenakonfigurovaly se.
 
-Nakonfigurujte obnovitelné odstranění pro účet Azure Storage, který se používá pro sběr dat centra událostí. Všimněte si, že tato funkce ještě není podporovaná pro Azure Data Lake Storage Gen 2.
+Nakonfigurujte obnovitelné odstranění pro účet Azure Storage, který se používá k zachytávání dat Event Hubs. Všimněte si, že tato funkce ještě není podporovaná Azure Data Lake Storage Gen 2.
 
-Jak povolit obnovitelné odstranění v trezoru klíčů:https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Jak povolit obnovitelné odstranění v Key Vault:https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-Nastavení trezoru klíčů s klíči:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
+Nastavení trezoru klíčů pomocí klíčů:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
 
-Obnovitelné odstranění pro objekty BLOB úložiště Azure:https://docs.microsoft.com//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Obnovitelné odstranění pro objekty blob Azure Storage:https://docs.microsoft.com//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace naleznete [v tématu Security Control: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
 
-### <a name="101-create-an-incident-response-guide"></a>10.1: Vytvoření průvodce odezvou na incidenty
+### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
-**Pokyny**: Ujistěte se, že existují písemné plány reakce na incidenty, které definují role personálu, jakož i fáze zpracování incidentů / správy.
+**Doprovodné**materiály: Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují role pracovníků a také fáze zpracování a správy incidentů.
 
-Jak nakonfigurovat automatizaci pracovních postupů v Centru zabezpečení Azure:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+Postup konfigurace automatizace pracovních postupů v rámci Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Vytvoření postupu hodnocení incidentů a stanovení priorit
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
-**Pokyny**: Centrum zabezpečení přiřazuje výstrahám závažnost, která vám pomůže určit pořadí, ve kterém se účastníte jednotlivých výstrah, takže když dojde k ohrožení zabezpečení prostředku, můžete se k němu hned dostat. Závažnost je založena na tom, jak sebevědomý Security Center je v hledání nebo analytice slouží k vydání výstrahy, stejně jako úroveň spolehlivosti, že tam byl škodlivý záměr za aktivitu, která vedla k upozornění.
+**Pokyny**: Security Center přiřadí závažnosti výstrahám, které vám pomůžou určit prioritu pořadí, ve kterém se zúčastníte jednotlivých výstrah, takže pokud dojde k ohrožení určitého prostředku, můžete se k němu hned dostat. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="103-test-security-response-procedures"></a>10.3: Zkušební postupy odezvy zabezpečení
+### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
-**Pokyny**: Proveďte cvičení k testování schopností reakce na incidenty vašich systémů na pravidelné kadenci. Identifikujte slabá místa a mezery a podle potřeby plán revidujte.
+**Doprovodné**materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
-Podívejte se na publikaci NIST: Průvodce testovacími, školicími a cvičebními programy pro plány a schopnosti IT:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Poskytněte kontaktní údaje bezpečnostních incidentů a nakonfigurujte upozornění na bezpečnostní incidenty
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
-**Pokyny**: Kontaktní informace o bezpečnostních incidentech společnost Microsoft použije k tomu, aby vás kontaktovala, pokud centrum MSRC (Microsoft Security Response Center) zjistí, že k datům zákazníka byla přístupná nezákonná nebo neoprávněná strana.  Zkontrolujte incidenty po faktu, abyste zajistili, že budou problémy vyřešeny. 
+**Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka přistupovala protiprávní nebo neoprávněná strana.  Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy. 
 
-Jak nastavit kontakt zabezpečení Centra zabezpečení Azure:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+Jak nastavit Azure Security Center kontakt zabezpečení:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Začleňte výstrahy zabezpečení do systému reakce na incidenty
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
-**Pokyny:** Exportujte výstrahy a doporučení Centra zabezpečení Azure pomocí funkce Nepřetržitý export. Nepřetržitý export umožňuje exportovat výstrahy a doporučení buď ručně, nebo průběžně. Datový konektor Azure Security Center můžete použít k streamování výstrah Sentinel.
+**Doprovodné**materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
 
-Jak nakonfigurovat nepřetržitý export:https://docs.microsoft.com/azure/security-center/continuous-export
+Postup konfigurace průběžného exportu:https://docs.microsoft.com/azure/security-center/continuous-export
 
-Jak streamovat výstrahy do Azure Sentinelu:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+Jak streamovat výstrahy do Azure Sentinel:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatizace reakce na výstrahy zabezpečení
+### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
-**Pokyny:** Pomocí funkce Automatizace pracovních postupů v Centru zabezpečení Azure můžete automaticky aktivovat odpovědi prostřednictvím "Logic Apps" na výstrahy zabezpečení a doporučení.
+**Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 
-Konfigurace automatizace pracovních postupů a aplikací logiky:https://docs.microsoft.com/azure/security-center/workflow-automation
+Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps:https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace naleznete [v tématu Bezpečnostní kontrola: Penetrační testy a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Proveďte pravidelné penetrační testování prostředků Azure a zajistěte nápravu všech kritických zjištění zabezpečení do 60 dnů
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech důležitých zjištění zabezpečení do 60 dnů.
 
-**Pokyny**: Postupujte podle pravidel společnosti Microsoft a ujistěte se, https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1že penetrační testy neporušují zásady společnosti Microsoft: .
-Další informace o strategii společnosti Microsoft a provádění červených týmů a testování pronikání živých webů proti cloudové infrastruktuře, službám a aplikacím společnosti Microsoft naleznete zde:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+**Doprovodné**materiály: řiďte se prosím pravidly zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1Microsoftu:.
+Další informace o strategii a provádění testování na základě červeného seskupování a testování průniku na webu pomocí spravované cloudové infrastruktury, služeb a aplikací Microsoftu najdete tady:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na [srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zásad zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

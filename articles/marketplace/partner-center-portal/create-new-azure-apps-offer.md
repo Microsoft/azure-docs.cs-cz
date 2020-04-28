@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 516ebce176f53a0495ea493f5327658162e7ea9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730619"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867268"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -49,7 +49,7 @@ Všechny aplikace Azure obsahují alespoň dva soubory `.zip` v kořenové slož
 
 Všechny nové nabídky aplikací Azure musí obsahovat [identifikátor GUID přiřazení využití partnera Azure](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution).
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 
 Projděte si následující dokumentaci k aplikacím Azure, která poskytuje rychlé starty, kurzy a ukázky.
 
@@ -221,6 +221,9 @@ V části **Kontakt podpory** musíte také zadat adresu **URL podpory,** kde mo
 
 V této části můžete poskytnout loga a obrázky, které budou použity při zobrazování vaší nabídky zákazníkovi. Všechny obrázky musí být ve formátu PNG.
 
+>[!Note]
+>Pokud máte problém s nahráváním souborů, ujistěte se, že místní síť neblokuje službu https://upload.xboxlive.com používanou partnerským centrem.
+
 #### <a name="store-logos"></a>Loga obchodu
 
 Zadejte logo nabídky ve třech velikostech: **Malé (48 x 48),** **Střední (90 x 90)** a **Velké (216 x 216).**
@@ -355,7 +358,7 @@ Pokud jste již nastavili ceny pro svůj plán v amerických dolarech (USD) a p�
 
 Zadejte měsíční cenu pro tento plán.  Tato cena je navíc k jakékoli infrastruktuře Azure nebo nákladům na software s průběžnými platbami, které vzniknou prostředkům nasazeným tímto řešením.
 
-Ceny stanovené v místní měně (USD = Americký dolar) jsou převedeny na místní měnu všech vybraných trhů pomocí aktuálních směnných kurzů dostupných během instalace. Před publikováním ověřte tyto ceny exportem tabulky cen a kontrolou ceny na jednotlivých trzích. Pokud chcete nastavit vlastní ceny na individuálním trhu, upravte a importujte tabulku cen. 
+Ceny stanovené v USD (USD = Americký dolar) jsou převedeny na místní měnu všech vybraných trhů pomocí aktuálních směnných kurzů při uložení. Před publikováním ověřte tyto ceny exportem tabulky cen a kontrolou ceny na jednotlivých trzích. Pokud chcete nastavit vlastní ceny na individuálním trhu, upravte a importujte tabulku cen. 
 
 >[!Note]
 >Chcete-li povolit export dat o cenách, musíte nejprve uložit změny cen.
@@ -397,7 +400,16 @@ Všechny balíčky plánu aplikací Azure musí obsahovat `.zip` tyto dva soubor
 
 * Definice uživatelského rozhraní pro prostředí vytváření aplikací Azure s názvem [createUiDefinition.json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
 
+Maximální podporované velikosti souborů jsou:
+
+* Až 1 Gb v `.zip` celkové komprimované velikosti archivu
+
+* Až 1 GB pro každý jednotlivý nekomprimovaný soubor v archivu `.zip`  
+
 Všechny nové nabídky aplikací Azure musí také obsahovat identifikátor [GUID přiřazení využití partnera Azure.](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)
+
+>[!Note]
+>Pokud máte problém s nahráváním souborů, ujistěte se, že místní síť neblokuje službu https://upload.xboxlive.com používanou partnerským centrem.
 
 ### <a name="previously-published-packages"></a>Dříve publikované balíčky 
 

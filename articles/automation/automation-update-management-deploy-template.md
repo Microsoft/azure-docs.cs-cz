@@ -1,34 +1,34 @@
 ---
-title: Použití šablon Azure Resource Manager k založení správy aktualizací | Dokumenty společnosti Microsoft
-description: K nasazení řešení Azure Automation Update Management můžete použít šablonu Azure Resource Manageru.
+title: Použití šablon Azure Resource Manager k zprovoznění Update Management | Microsoft Docs
+description: K připojení Update Management řešení Azure Automation můžete použít šablonu Azure Resource Manager.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/30/2020
-ms.openlocfilehash: 81f9d242d93ffe513c0c3733ceb9d38ca9cadc1c
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.date: 04/24/2020
+ms.openlocfilehash: 45045cb1360658d394e5469d022ac03033d11aff
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617464"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165786"
 ---
-# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Řešení pro správu aktualizací pomocí šablony Azure Resource Manager
+# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Připojení Update Management řešení pomocí šablony Azure Resource Manager
 
-Pomocí [šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md) můžete povolit řešení Azure Automation Update Management ve vaší skupině prostředků. Tento článek obsahuje ukázkovou šablonu, která automatizuje následující:
+K povolení řešení Azure Automation Update Management ve vaší skupině prostředků můžete použít [šablony Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md) . Tento článek poskytuje ukázkovou šablonu, která automatizuje následující:
 
-* Vytvoření pracovního prostoru Azure Monitor Log Analytics.
+* Vytváření pracovního prostoru Azure Monitor Log Analytics
 * Vytvoření účtu Azure Automation.
-* Propojení účtu Automatizace s pracovním prostorem Log Analytics, pokud již není propojeno.
-* Registrace řešení Azure Automation Update Management.
+* Propojení účtu Automation s pracovním prostorem Log Analytics, pokud ještě není propojené.
+* Připojování řešení Azure Automation Update Management
 
-Šablona neautomatizuje připojení jednoho nebo více virtuálních počítačů Azure nebo než Azure.
+Šablona neautomatizuje připojování jednoho nebo více virtuálních počítačů Azure nebo mimo Azure.
 
-Pokud už máte pracovní prostor Analýzy protokolů a účet automatizace nasazené v podporované oblasti ve vašem předplatném, nejsou propojeny. V pracovním prostoru ještě není nasazené řešení správy aktualizací. Pomocí této šablony úspěšně vytvoří propojení a nasadí řešení správy aktualizací. 
+Pokud už máte pracovní prostor Log Analytics a účet Automation je nasazený v podporované oblasti v rámci vašeho předplatného, nejsou propojené. Pracovní prostor ještě nemá nasazené řešení Update Management. Pomocí této šablony se úspěšně vytvoří odkaz a nasadí se Update Management řešení. 
 
 >[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](automation-update-azure-modules.md).
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="api-versions"></a>Verze rozhraní API
 
@@ -36,37 +36,44 @@ V následující tabulce jsou uvedeny verze rozhraní API pro prostředky použi
 
 | Prostředek | Typ prostředku | Verze rozhraní API |
 |:---|:---|:---|
-| Pracovní prostor | pracovní prostory | 2017-03-15-náhled |
+| Pracovní prostor | pracovní prostory | 2017-03-15 – Preview |
 | Účet Automation | automation | 2015-10-31 | 
-| Řešení | Řešení | 2015-11-01-náhled |
+| Řešení | Řešení | 2015-11-01 – Preview |
 
 ## <a name="before-using-the-template"></a>Před použitím šablony
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento článek vyžaduje modul Azure PowerShell Az. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, musíte také spustit [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) k vytvoření připojení s Azure. S Azure PowerShell, nasazení používá [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek Azure PowerShell AZ Module. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit [příkaz Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) a vytvořit připojení k Azure. Při použití Azure PowerShell nasazení používá [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
-Pokud se rozhodnete nainstalovat a používat příkaz cli místně, tento článek vyžaduje, abyste spouštěli Azure CLI verze 2.1.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Pomocí příkazového [příkazového příkazového příkazu](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)Azure používá toto nasazení vytvoření nasazení skupiny AZ . 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.1.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Pomocí Azure CLI toto nasazení používá příkaz [AZ Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
 
-Šablona JSON je nakonfigurována tak, aby vás vyzvala k zadání:
+Šablona JSON je nakonfigurovaná tak, aby vás vyzvala k těmto akcím:
 
 * Název pracovního prostoru
-* Oblast, ve které chcete vytvořit pracovní prostor
-* Název účtu automatizace
-* Oblast, ve které chcete vytvořit účet
+* Oblast, ve které se má pracovní prostor vytvořit
+* Název účtu Automation
+* Oblast, ve které se má účet vytvořit
 
-Šablona JSON určuje výchozí hodnotu pro ostatní parametry, které budou pravděpodobně použity pro standardní konfiguraci ve vašem prostředí. Šablonu můžete uložit do účtu úložiště Azure pro sdílený přístup ve vaší organizaci. Další informace o práci se šablonami najdete v [tématu Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md).
+Šablona JSON určuje výchozí hodnotu pro ostatní parametry, které se pravděpodobně použijí pro standardní konfiguraci ve vašem prostředí. Šablonu můžete uložit v účtu služby Azure Storage pro sdílený přístup ve vaší organizaci. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md).
 
-Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro pracovní prostor Log Analytics:
+Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro Log Analytics pracovní prostor:
 
-* sku – výchozí hodnota nové cenové úrovně Per-GB vydané v cenovém modelu z dubna 2018
-* uchovávání dat - výchozí hodnota na třicet dní
-* rezervace kapacity - výchozí hodnota 100 GB
+* SKU – výchozí hodnota pro novou cenovou úroveň za GB vydanou v cenovém modelu z dubna 2018
+* uchovávání dat – výchozí hodnota je 30 dní.
+* rezervace kapacity – výchozí hodnota je 100 GB.
 
 >[!WARNING]
->Pokud vytváříte nebo konfigurujete pracovní prostor Log Analytics v předplatném, které se přihlásilo k cenovému modelu z dubna 2018, je jedinou platnou cenovou úrovní Log Analytics **PerGB2018**.
+>Pokud vytváříte nebo konfigurujete pracovní prostor Log Analytics v předplatném, které se přihlásilo k novému cenovému modelu od dubna 2018, bude jediná platná Log Analytics cenová úroveň **PerGB2018**.
 >
 
->[!NOTE]
->Před použitím této šablony zkontrolujte [další podrobnosti,](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) abyste plně pochopili možnosti konfigurace pracovního prostoru, jako je režim řízení přístupu, cenová úroveň, uchovávání informací a úroveň rezervace kapacity. Pokud jste novým protokoly Azure Monitor a ještě jste nenasadili pracovní prostor, měli byste si projít pokyny k [návrhu pracovního prostoru,](../azure-monitor/platform/design-logs-deployment.md) abyste se dozvěděli o řízení přístupu a pochopili strategie implementace návrhu, které doporučujeme pro vaši organizaci.
+Šablona JSON určuje výchozí hodnotu pro ostatní parametry, které by pravděpodobně byly použity jako standardní konfigurace ve vašem prostředí. Šablonu můžete uložit v účtu služby Azure Storage pro sdílený přístup ve vaší organizaci. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md).
+
+Pokud se Azure Automation a Azure Monitor, je důležité pochopit následující podrobnosti o konfiguraci, aby se předešlo chybám při pokusu o vytvoření, konfiguraci a používání Log Analyticsho pracovního prostoru propojeného s vaším novým účtem služby Automation.
+
+* Přečtěte si [Další podrobnosti](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) , abyste plně pochopili možnosti konfigurace pracovního prostoru, jako je režim řízení přístupu, cenová úroveň, uchování a úroveň rezervace kapacity.
+
+* Vzhledem k tomu, že jsou podporovány pouze některé oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation v rámci předplatného, zkontrolujte [mapování pracovních prostorů](how-to/region-mappings.md) a určete podporované oblasti jako vložené nebo v souboru parametrů.
+
+* Pokud Azure Monitor protokoly a ještě nemáte nasazený pracovní prostor, měli byste si projít průvodce [návrhem pracovního prostoru](../azure-monitor/platform/design-logs-deployment.md) , kde najdete informace o řízení přístupu a pochopení strategií implementace návrhu, které doporučujeme pro vaši organizaci.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
@@ -116,32 +123,6 @@ Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro pra
         },
         "location": {
             "type": "string",
-            "allowedValues": [
-                "australiacentral",
-                "australiaeast",
-                "australiasoutheast",
-                "brazilsouth",
-                "canadacentral",
-                "centralindia",
-                "centralus",
-                "eastasia",
-                "eastus",
-                "eastus2",
-                "francecentral",
-                "japaneast",
-                "koreacentral",
-                "northcentralus",
-                "northeurope",
-                "southafricanorth",
-                "southcentralus",
-                "southeastasia",
-                "uksouth",
-                "ukwest",
-                "westcentralus",
-                "westeurope",
-                "westus",
-                "westus2"
-            ],
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
@@ -236,11 +217,11 @@ Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro pra
     }
     ```
 
-2. Upravte šablonu tak, aby vyhovovala vašim požadavkům. Zvažte vytvoření [souboru parametrů Správce prostředků](../azure-resource-manager/templates/parameter-files.md) namísto předávání parametrů jako vsazených hodnot.
+2. Upravte šablonu tak, aby splňovala vaše požadavky. Místo předání parametrů jako vložené hodnoty zvažte vytvoření [souboru parametrů správce prostředků](../azure-resource-manager/templates/parameter-files.md) .
 
-3. Uložte tento soubor do místní složky jako **deployUMSolutiontemplate.json**.
+3. Uložte tento soubor do místní složky jako **deployUMSolutiontemplate. JSON**.
 
-4. Jste připraveni k nasazení této šablony. Můžete použít buď PowerShell nebo Azure CLI. Až se zobrazí výzva k zadání názvu účtu pracovního prostoru a automatizace, zadejte název, který je globálně jedinečný ve všech předplatných Azure.
+4. Jste připraveni k nasazení této šablony. Můžete použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI. Po zobrazení výzvy k zadání pracovního prostoru a názvu účtu Automation zadejte název, který bude globálně jedinečný v rámci všech předplatných Azure.
 
     **PowerShell**
 
@@ -260,10 +241,10 @@ Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro pra
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte nasazené řešení správy aktualizací, můžete povolit virtuální ms pro správu, zkontrolovat hodnocení aktualizací a nasadit aktualizace, aby byly v souladu s předpisy.
+Teď, když máte nasazené řešení Update Management, můžete povolit virtuální počítače pro správu, zkontrolovat posouzení aktualizací a nasadit aktualizace, aby byly v souladu s předpisy.
 
-- Z vašeho [účtu Azure Automation](automation-onboard-solutions-from-automation-account.md) pro jeden nebo více počítačů Azure a ručně pro počítače než Azure.
+- Z [účtu Azure Automation](automation-onboard-solutions-from-automation-account.md) pro jeden nebo více počítačů Azure a ručně pro počítače mimo Azure.
 
-- Pro jeden virtuální počítač Azure ze stránky virtuálního počítače na webu Azure Portal. Tento scénář je k dispozici pro [virtuální počítače s Linuxem](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) a [Windows.](../virtual-machines/windows/tutorial-config-management.md#enable-update-management)
+- Pro jeden virtuální počítač Azure ze stránky virtuálního počítače v Azure Portal. Tento scénář je k dispozici pro virtuální počítače se systémy [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) a [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) .
 
-- Pro [více virtuálních počítačů Azure](manage-update-multi.md) jejich výběrem ze stránky Virtuální **počítače** na webu Azure Portal. 
+- Pro [více virtuálních počítačů Azure](manage-update-multi.md) je můžete vybrat ze stránky **virtuální počítače** v Azure Portal. 

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace klíčů spravovaných zákazníkem pro službu Import/Export pomocí portálu Azure Portal
-description: Zjistěte, jak pomocí portálu Azure nakonfigurovat klíče spravované zákazníky pomocí služby Azure Key Vault for Azure Import a Export. Klíče spravované zákazníkem umožňují vytvářet, otáčet, zakazovat a odvolávat ovládací prvky přístupu.
+title: Použití Azure Portal ke konfiguraci klíčů spravovaných zákazníkem pro službu import/export
+description: Naučte se používat Azure Portal ke konfiguraci klíčů spravovaných zákazníkem pomocí Azure Key Vault pro službu import/export Azure. Klíče spravované zákazníkem umožňují vytvářet, otáčet, zakazovat a odvolávat řízení přístupu.
 services: storage
 author: alkohli
 ms.service: storage
@@ -8,103 +8,102 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: d3e4535c05ef077d14ef74310459a84af0f02fd5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456494"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176324"
 ---
-# <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Použití klíčů spravovaných zákazníkem ve službě Azure Key Vault for Import/Export
+# <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Použití klíčů spravovaných zákazníkem v Azure Key Vault pro službu import/export
 
-Azure Import/Export chrání klíče nástroje BitLocker používané k uzamčení jednotek pomocí šifrovacího klíče. Ve výchozím nastavení jsou klíče nástroje BitLocker šifrovány pomocí klíčů spravovaných společností Microsoft. Pro další kontrolu nad šifrovacíklíče, můžete také poskytnout klientspravované klíče.
+Import/export v Azure chrání klíče BitLockeru používané k uzamčení jednotek prostřednictvím šifrovacího klíče. Klíče BitLockeru se ve výchozím nastavení šifrují pomocí klíčů spravovaných Microsoftem. Pro další kontrolu nad šifrovacími klíči můžete zadat i klíče spravované zákazníkem.
 
-Klíče spravované zákazníkem musí být vytvořeny a uloženy v trezoru klíčů Azure. Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../../key-vault/general/overview.md)
+Klíče spravované zákazníkem musí být vytvořeny a uloženy v Azure Key Vault. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/general/overview.md)
 
-Tento článek ukazuje, jak používat klíče spravované zákazníkem se službou Import/Export na [webu Azure Portal](https://portal.azure.com/).
+V tomto článku se dozvíte, jak používat klíče spravované zákazníky se službou Import/export v [Azure Portal](https://portal.azure.com/).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
-1. Vytvořili jste úlohu importu nebo exportu podle pokynů v části:
+1. Vytvořili jste úlohu importu nebo exportu podle pokynů v tématu:
 
-    - [Vytvořte úlohu importu pro objekty BLOB](storage-import-export-data-to-blobs.md).
-    - [Vytvořte úlohu importu pro soubory](storage-import-export-data-to-files.md).
-    - [Vytvoření úlohy exportu pro objekty BLOB](storage-import-export-data-from-blobs.md)
+    - [Vytvořte úlohu importu pro objekty blob](storage-import-export-data-to-blobs.md).
+    - [Vytvoří úlohu importu pro soubory](storage-import-export-data-to-files.md).
+    - [Vytvoření úlohy exportu pro objekty blob](storage-import-export-data-from-blobs.md)
 
-2. Máte existující Azure Key Vault s klíčem v něm, který můžete použít k ochraně klíče Nástroje BitLocker. Informace o tom, jak vytvořit trezor klíčů pomocí webu Azure Portal, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z Azure Key Vault pomocí portálu Azure](../../key-vault/secrets/quick-create-portal.md).
+2. Máte existující Azure Key Vault s klíčem, který můžete použít k ochraně klíče nástroje BitLocker. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../../key-vault/secrets/quick-create-portal.md).
 
-    - V existujícím trezoru klíčů jsou nastaveny **funkce Neodstranit** a **Neodstraňovat.** Tyto vlastnosti nejsou ve výchozím nastavení povoleny. Chcete-li tyto vlastnosti povolit, přečtěte si části s názvem **Povolení odstranění pomocí protokolu soft a** povolení ochrany proti **vymazání** v jednom z následujících článků:
+    - **Obnovitelné odstranění** a **nevyprázdnit** se nastaví na stávající Key Vault. Tyto vlastnosti nejsou ve výchozím nastavení povolené. Pokud chcete tyto vlastnosti povolit, přečtěte si část s názvem **Povolení obnovitelného odstranění** a **Povolení vyprázdnit ochranu** v jednom z následujících článků:
 
-        - [Jak používat obnovitelné odstranění s Prostředím PowerShell](../../key-vault/general/soft-delete-powershell.md).
-        - [Jak používat soft-delete s CLI](../../key-vault/general/soft-delete-cli.md).
-    - Existující trezor klíčů by měl mít klíč RSA o velikosti 2048 nebo více. Další informace o klíčích najdete v **tématu Klíče trezoru klíčů** v [tématu O klíčích, tajných klíčích a certifikátech trezoru klíčů Azure](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+        - [Jak používat obnovitelné odstranění pomocí prostředí PowerShell](../../key-vault/general/soft-delete-powershell.md).
+        - [Jak používat obnovitelné odstranění pomocí rozhraní](../../key-vault/general/soft-delete-cli.md)PŘÍKAZového řádku
+    - Existující Trezor klíčů by měl mít klíč RSA o velikosti 2048 nebo více. Další informace o klíčích najdete v tématu **Key Vault klíče** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
     - Trezor klíčů musí být ve stejné oblasti jako účet úložiště pro vaše data.  
-    - Pokud nemáte existující trezor klíčů Azure, můžete jej také vytvořit vřádkem, jak je popsáno v následující části.
+    - Pokud nemáte existující Azure Key Vault, můžete ho také vytvořit, jak je popsáno v následující části.
 
-## <a name="enable-keys"></a>Povolení klíčů
+## <a name="enable-keys"></a>Povolit klíče
 
-Konfigurace klíče spravovaného zákazníkem pro službu Import/Export je volitelná. Ve výchozím nastavení používá služba Import/Export klíč spravovaný společností Microsoft k ochraně klíče nástroje BitLocker. Pokud chcete povolit klíče spravované zákazníky na webu Azure Portal, postupujte takto:
+Konfigurace klíče spravovaného zákazníkem pro službu import/export je volitelná. Ve výchozím nastavení používá služba import/export k ochraně klíče nástroje BitLocker spravovaný klíč společnosti Microsoft. Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupujte následovně:
 
-1. Přejděte do okna **Přehled** pro úlohu importu.
-2. V pravém podokně vyberte Zvolit způsob **šifrování klíčů nástroje BitLocker**.
+1. Přejít na okno **Přehled** pro vaši úlohu importu.
+2. V pravém podokně vyberte možnost **zvolit způsob šifrování klíčů BitLockeru**.
 
     ![Zvolit možnost šifrování](./media/storage-import-export-encryption-key-portal/encryption-key-1.png)
 
-3. V okně **Šifrování** můžete zobrazit a zkopírovat klíč nástroje BitLocker zařízení. V části **Typ šifrování**můžete zvolit, jak chcete chránit klíč nástroje BitLocker. Ve výchozím nastavení se používá klíč spravovaný společností Microsoft.
+3. V okně **šifrování** můžete zobrazit a zkopírovat klíč BitLockeru zařízení. V části **typ šifrování**můžete zvolit, jakým způsobem chcete chránit klíč nástroje BitLocker. Ve výchozím nastavení se používá spravovaný klíč společnosti Microsoft.
 
-    ![Zobrazit klíč nástroje BitLocker](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
+    ![Zobrazit klíč BitLockeru](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
 
-4. Máte možnost zadat klíč spravovaný zákazníkem. Po výběru klíče spravovaného zákazníkem **vyberte trezor klíčů a klíč**.
+4. Máte možnost zadat spravovaný klíč zákazníka. Po výběru klíče spravovaného zákazníkem **Vyberte Trezor klíčů a klíč**.
 
-    ![Vybrat klíč spravovaný zákazníkem](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
+    ![Vybrat spravovaný klíč zákazníka](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
 
-5. V příkazu Select key z úložiště **klíčů Azure je** automaticky vyplněno. V **seznamu Trezor klíčů**můžete vybrat existující trezor klíčů z rozevíracího seznamu.
+5. V okně **Vybrat klíč z Azure Key Vault** se předplatné automaticky vyplní. V případě **trezoru klíčů**můžete v rozevíracím seznamu vybrat existující Trezor klíčů.
 
-    ![Výběr nebo vytvoření trezoru klíčů Azure](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
+    ![Vyberte nebo vytvořte Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
 
-6. Můžete také vybrat **Vytvořit nový** a vytvořit nový trezor klíčů. V **okně Vytvořit trezor klíčů**zadejte skupinu prostředků a název trezoru klíčů. Přijměte všechny ostatní výchozí hodnoty. Vyberte **zkontrolovat + vytvořit**.
+6. Můžete také vybrat **vytvořit nové** a vytvořit nový trezor klíčů. V okně **vytvořit Trezor klíčů**zadejte skupinu prostředků a název trezoru klíčů. Přijměte všechny ostatní výchozí hodnoty. Vyberte **zkontrolovat + vytvořit**.
 
-    ![Vytvoření nového trezoru klíčů Azure](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
+    ![Vytvořit nový Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
 
-7. Zkontrolujte informace přidružené k trezoru klíčů a vyberte **Vytvořit**. Počkejte několik minut na dokončení vytvoření trezoru klíčů.
+7. Zkontrolujte informace spojené s vaším trezorem klíčů a vyberte **vytvořit**. Počkejte pár minut, než se vytváření trezoru klíčů dokončí.
 
-    ![Vytvoření trezoru klíčů Azure](./media/storage-import-export-encryption-key-portal/encryption-key-6.png)
+    ![Vytvořit Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-6.png)
 
-8. V **klíči Select z trezoru klíčů Azure**můžete vybrat klíč v existujícím trezoru klíčů.
+8. V poli **Vybrat klíč z Azure Key Vault**můžete vybrat klíč v existující trezoru klíčů.
 
-9. Pokud jste vytvořili nový trezor klíčů, vyberte **Vytvořit nový** a vytvořte klíč. Velikost klíče RSA může být 2048 nebo vyšší.
+9. Pokud jste vytvořili nový trezor klíčů, vyberte **vytvořit nový** a vytvořte klíč. Velikost klíče RSA může být 2048 nebo vyšší.
 
-    ![Vytvoření nového klíče v trezoru klíčů Azure](./media/storage-import-export-encryption-key-portal/encryption-key-7.png)
+    ![Vytvořit nový klíč v Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-7.png)
 
-    Pokud při vytváření trezoru klíčů není povolena ochrana proti odstranění a vymazání, bude trezor klíčů aktualizován tak, aby byla povolena ochrana proti odstranění a vymazání.
+    Pokud při vytváření trezoru klíčů nejsou zapnutá ochrana před odstraněním a vyprázdněním klíče, Trezor klíčů se aktualizuje, aby byla zapnutá ochrana proti odstranění a vyprázdnění.
 
-10. Zadejte název klíče, přijměte další výchozí hodnoty a vyberte **Vytvořit**.
+10. Zadejte název pro svůj klíč, Přijměte ostatní výchozí hodnoty a vyberte **vytvořit**.
 
     ![Vytvořit nový klíč](./media/storage-import-export-encryption-key-portal/encryption-key-8.png)
 
-11. Vyberte **verzi** a pak zvolte **Vybrat**. Budete upozorněni, že klíč je vytvořen v trezoru klíčů.
+11. Vyberte **verzi** a pak zvolte **Vybrat**. Zobrazí se oznámení o vytvoření klíče v trezoru klíčů.
 
-    ![V trezoru klíčů byl vytvořen nový klíč](./media/storage-import-export-encryption-key-portal/encryption-key-9.png)
+    ![Nový klíč vytvořený v trezoru klíčů](./media/storage-import-export-encryption-key-portal/encryption-key-9.png)
 
-V okně **Šifrování** uvidíte trezor klíčů a klíč vybraný pro klíč spravovaný zákazníkem.
+V okně **šifrování** uvidíte Trezor klíčů a klíč vybraný pro váš zákaznický klíč.
 
 ## <a name="disable-keys"></a>Zakázat klíče
 
-Můžete zakázat pouze klíče spravované společností Microsoft a přesunout se na klíče spravované zákazníkem v libovolné fázi úlohy importu nebo exportu. Po vytvoření však nelze zakázat klíč spravovaný zákazníkem.
+Ve všech fázích úlohy import/export můžete zakázat jenom spravované klíče Microsoftu a přejít na spravované klíče zákazníka. Po vytvoření se ale spravovaný klíč zákazníka nedá zakázat.
 
-## <a name="troubleshoot-customer-managed-key-errors"></a>Poradce při potížích s chybami klíče spravovaného zákazníkem
+## <a name="troubleshoot-customer-managed-key-errors"></a>Řešení chyb zákaznických klíčů
 
-Pokud se zobrazí chyby související s klíčem spravovaným zákazníkem, použijte k řešení potíží následující tabulku:
+Pokud obdržíte nějaké chyby týkající se vašeho spravovaného klíče zákazníka, použijte následující tabulku k řešení potíží:
 
 | Kód chyby     |Podrobnosti     | Obnovitelné?    |
 |----------------|------------|-----------------|
-| CmkErrorAccessOdvolán | Použitý klíč spravovaný zákazníkem, ale přístup ke klíči je nyní odvolán. Další informace naleznete v [tématu Povolení přístupu ke klíči](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).                                                      | Ano, zkontrolujte, zda: <ol><li>Trezor klíčů má stále MSI v zásadách přístupu.</li><li>Zásady přístupu poskytuje oprávnění k získání, obtékání, rozbalení.</li><li>Pokud je trezor klíčů ve virtuální síti za bránou firewall, zkontrolujte, jestli je **povolená možnost Povolit důvěryhodnou službu Microsoft.**</li></ol>                                                                                            |
-| CmkErrorZakázáno      | Použitý klíč spravovaný zákazníkem, ale klíč je zakázán. Další informace naleznete v [tématu Povolení klíče](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate).                                                                             | Ano, povolením klíčové verze     |
-| CmkErrorNotFound      | Použil klíč spravovaný zákazníkem, ale nemůže ho najít. <br>Pokud je klíč odstraněn a vymazán po období uchování, nelze klíč obnovit. Pokud jste klíč zálohovali, můžete klíč obnovit a tento problém vyřešit. | Ne, klíč byl odstraněn a také byl vymazán po období uchovávání. <br>Ano, pouze v případě, že zákazník má zálohovaný klíč a obnoví jej.  |
-| CmkErrorVaultnebyl nalezen | Použil klíč spravovaný zákazníkem, ale nemůže najít trezor klíčů přidružený ke klíči.<br>Pokud jste trezor klíčů odstranili, nemůžete klíč spravovaný zákazníkem obnovit.  Pokud jste migrovali trezor klíčů do jiného tenanta, přečtěte si informace [o změně ID klienta trezoru klíčů po přesunutí předplatného](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix). |   Ne, pokud zákazník odstranil trezor klíčů.<br> Ano, pokud trezor klíčů prošel migrací klienta, proveďte jednu z těchto částí: <ol><li>přesunout zpět trezor klíčů ke starému tenantovi.</li><li>set Identity = None a potom zpět na Identity = SystemAssigned, tato dehtí a znovu vytvoří identitu</li></ol>|
+| CmkErrorAccessRevoked | Použili jste zákazníkem spravovaný klíč, ale přístup k klíči je momentálně odvolaný. Další informace najdete v tématu Jak [Povolit přístup k klíčům](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).                                                      | Ano, zjistit, zda: <ol><li>Trezor klíčů má stále instalační soubor MSI v zásadách přístupu.</li><li>Zásady přístupu poskytují oprávnění k získání, zabalení a rozbalení.</li><li>Pokud je Trezor klíčů ve virtuální síti za bránou firewall, ověřte, jestli je povolená možnost **Povolit důvěryhodné služby společnosti Microsoft** .</li></ol>                                                                                            |
+| CmkErrorKeyDisabled      | Byl použit klíč spravovaný zákazníkem, ale klíč je zakázán. Další informace najdete v tématu Jak [klíč povolit](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate).                                                                             | Ano, povolením verze klíče     |
+| CmkErrorKeyNotFound      | Použili jste zákazníkem spravovaný klíč, ale nemůžete najít Trezor klíčů přidružený ke klíči.<br>Pokud jste odstranili Trezor klíčů, nemůžete obnovit spravovaný klíč zákazníka.  Pokud jste tento trezor klíčů migrovali do jiného tenanta, přečtěte si téma [Změna ID tenanta trezoru klíčů po přesunu předplatného](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix). |   Pokud jste odstranili Trezor klíčů:<ol><li>Ano, pokud je v době trvání ochrany vyprázdnění, postupujte podle kroků v části [obnovení trezoru klíčů](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault).</li><li>Ne, pokud je mimo dobu trvání ochrany vyprázdnění.</li></ol><br>V opačném případě, pokud Trezor klíčů prošl při migraci tenanta, můžete ho obnovit pomocí jednoho z následujících kroků: <ol><li>Obnovte Trezor klíčů zpátky na starého tenanta.</li><li>Nastavte `Identity = None` a pak nastavte hodnotu zpět na `Identity = SystemAssigned`. Tím se po vytvoření nové identity odstraní a znovu vytvoří identita. Povolte `Get`, `Wrap`a `Unwrap` oprávnění k nové identitě v zásadách přístupu trezoru klíčů.</li></ol>|
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+- [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

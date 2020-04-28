@@ -7,600 +7,600 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6e660c1244dd5566fbfb45a6da37d39294354ccb
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 7cb99ee9f52a26bd432a506ddc3ea4c9b13275b5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81756985"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185111"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Standardní hodnoty zabezpečení Azure pro službu Key Vault
 
-Směrný plán zabezpečení Azure pro trezor klíčů obsahuje doporučení, která vám pomohou zlepšit stav zabezpečení vašeho nasazení.
+Základní plán zabezpečení Azure pro Key Vault obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Směrný plán pro tuto službu vychází z [azure security benchmark verze 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení, jak můžete zabezpečit cloudová řešení v Azure s našimi pokyny pro osvědčené postupy.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace naleznete v [tématu Přehled směrného plánu zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace naleznete v [tématu Security Control: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Ochrana prostředků pomocí skupin zabezpečení sítě nebo brány Azure Firewall ve virtuální síti
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Chraňte prostředky pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
 
-**Navádění:** Integrace Azure Key Vault s Azure Private Link. 
+**Pokyny**: Integrace Azure Key Vault s privátním odkazem Azure. 
 
-Služba Azure Private Link Service umožňuje přístup ke službám Azure Services (například Azure Key Vault) a službám hostovaným u zákazníků a partnerů Azure přes privátní koncový bod ve vaší virtuální síti.
+Služba privátního propojení Azure umožňuje přístup ke službám Azure (například Azure Key Vault) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím privátního koncového bodu ve vaší virtuální síti.
 
-Azure Private Endpoint je síťové rozhraní, které vás soukromě a bezpečně propojuje se službou využívající Azure Private Link. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě, efektivně uvedení služby do virtuální sítě. Veškerý provoz na službu lze směrovat přes soukromý koncový bod, takže nejsou potřeba žádné brány, zařízení NAT, připojení ExpressRoute nebo VPN nebo veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, což vám nejvyšší úroveň rozlišovací schopnost v řízení přístupu.
+Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
 
-Jak integrovat trezor klíčů s Privátním propojením Azure:
+Jak integrovat Key Vault s privátním odkazem na Azure:
 
 https://docs.microsoft.com/azure/key-vault/private-link-service
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Sledování a protokolování konfigurace a provozu sítí, podsítí a síťových rozhraní
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuální sítě, podsítí a síťových karet.
 
-**Pokyny:** Pomocí Azure Security Center a postupujte podle doporučení ochrany sítě, abyste pomohli zabezpečit prostředky konfigurované trezorem klíčů v Azure. 
+**Doprovodné**materiály: použijte Azure Security Center a sledujte doporučení pro ochranu sítě, která vám pomůžou zabezpečit vaše Key Vault nakonfigurované prostředky v Azure. 
 
-Další informace o zabezpečení sítě poskytované službou Azure Security Center: 
+Další informace o zabezpečení sítě, které poskytuje Azure Security Center: 
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="13-protect-critical-web-applications"></a>1.3: Ochrana kritických webových aplikací
+### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro webové aplikace spuštěné ve službě Azure App Service nebo výpočetních prostředcích.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Odepřít komunikaci se známými škodlivými IP adresami
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
-**Pokyny:** Povolte Azure DDoS Protection Standard na virtuálních sítích Azure přidružené k instancím trezoru klíčů pro ochranu proti distribuovaným útokům s cílem odepření služby. Pomocí integrované analýzy hrozeb Centra zabezpečení Azure můžete odepřít komunikaci se známými škodlivými nebo nepoužívanými internetovými IP adresami.
+**Pokyny**: povolení Azure DDoS Protection Standard ve virtuálních sítích Azure přidružených k vašim Key Vault instancím pro ochranu před distribuovanými útoky DoS (Denial-of-Service). K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
  
-Správa Azure DDoS Protection Standard pomocí portálu Azure:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+Správa Azure DDoS Protection Standard pomocí Azure Portal:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-Zjišťování hrozeb pro vrstvu služeb Azure v Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+Detekce hrozeb pro vrstvu služby Azure v Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Záznam síťových paketů a protokolů toku
+### <a name="15-record-network-packets-and-flow-logs"></a>1,5: záznam síťových paketů a protokolů toků
 
-**Navádění**: Azure Key Vault nepoužívá skupiny zabezpečení sítě (NSG) a protokoly toku pro Azure Key Vault nejsou zachyceny. Místo toho použijte Azure Private Link k zabezpečení instancí Azure Key Vault a povolit nastavení diagnostiky pro záznam metrik a události auditu.
+**Doprovodné**materiály: Azure Key Vault nepoužívá skupiny zabezpečení sítě (NSG) a protokoly toků pro Azure Key Vault nejsou zachyceny. Místo toho pomocí privátního odkazu Azure Zabezpečte své instance Azure Key Vault a povolte nastavení diagnostiky pro zaznamenávání metrik a událostí auditu.
 
-Integrace trezoru klíčů s privátním propojením Azure:
+Integrace Key Vault s privátním odkazem na Azure:
 
 https://docs.microsoft.com/azure/key-vault/private-link-service
 
-Protokolování trezoru klíčů Azure:https://docs.microsoft.com/azure/key-vault/key-vault-logging
+Protokolování Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Nasazení síťových systémů detekce vniknutí/prevence vniknutí (IDS/IPS)
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
-**Pokyny:** Tento požadavek lze splnit konfigurací rozšířené ochrany před hrozbami (ATP) pro Azure Key Vault. Atp poskytuje další vrstvu inteligence zabezpečení. Tento nástroj detekuje potenciálně škodlivé pokusy o přístup nebo zneužití účtů Azure Key Vault.
+**Pokyny**: Tento požadavek je možné splnit konfigurací rozšířené ochrany před internetovými útoky (ATP) pro Azure Key Vault. ATP poskytuje další vrstvu zabezpečení, která je součástí služby Security Intelligence. Tento nástroj detekuje potenciálně nebezpečné pokusy o přístup k účtům Azure Key Vault a jejich zneužití.
 
-Když Azure Security Center zjistí neobvyklé aktivity, zobrazí výstrahy. Také e-maily správce předplatného s podrobnostmi o podezřelé aktivity a doporučení, jak prozkoumat a napravit identifikované hrozby.
+Když Azure Security Center detekuje aktivitu neobvyklé, zobrazí výstrahy. Také pošle e-mailem správce předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak zjistit a opravit zjištěné hrozby.
 
-Nastavte pokročilou ochranu před hrozbami pro Azure Key Vault:
+Nastavte rozšířenou ochranu před internetovými útoky pro Azure Key Vault:
 
 https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="17-manage-traffic-to-web-applications"></a>1.7: Správa návštěvnosti webových aplikací
+### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro webové aplikace spuštěné ve službě Azure App Service nebo výpočetních prostředcích.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimalizace složitosti a administrativní režie pravidel zabezpečení sítě
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
-**Pokyny:** Pro prostředky, které potřebují přístup k vašim instancím Azure Key Vault, použijte značky služeb Azure pro Azure Key Vault k definování ovládacích prvků přístupu k síti ve skupinách zabezpečení sítě nebo azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. apimanagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro odpovídající službu. Společnost Microsoft spravuje předpony adres zahrnuté v servisním štítku a automaticky aktualizuje výrobní číslo jako adresy změnit.
+**Doprovodné**materiály: u prostředků, které potřebují přístup k instancím Azure Key Vault, použijte značky služeb Azure pro Azure Key Vault k definování řízení přístupu k síti u skupin zabezpečení sítě nebo na Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. ApiManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
 Přehled značek služeb Azure:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Udržovat standardní konfigurace zabezpečení pro síťová zařízení
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
 
-**Pokyny:** Definujte a implementujte standardní konfigurace zabezpečení pro síťové prostředky přidružené k instancím Azure Key Vault s Azure Policy. Pomocí aliasů zásad Azure v oborech názvů Microsoft.KeyVault a Microsoft.Network vytvořte vlastní zásady pro auditování nebo vynucení síťové konfigurace instancí trezoru klíčů Azure. Můžete také využít předdefinované definice zásad související s Azure Key Vault, například:
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro síťové prostředky přidružené k vašim Azure Key Vault instancí Azure Policy. Pomocí aliasů Azure Policy v oborech názvů Microsoft. klíčů a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě vašich Azure Key Vault. Můžete také využít integrované definice zásad související s Azure Key Vault, například:
 
-Trezor klíčů by měl používat koncový bod služby virtuální sítě.
+Key Vault by měl používat koncový bod služby virtuální sítě
 
-Kurz: Vytvářejte a spravujte zásady pro vynucení dodržování předpisů:
+Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Ukázky zásad Azure:
+Azure Policy ukázky:
 
 https://docs.microsoft.com/azure/governance/policy/samples/#networ
 
-Úvodní příručka: Definujte a přiřaďte podrobný plán na portálu:
+Rychlý Start: definování a přiřazení podrobného plánu na portálu:
 
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="110-document-traffic-configuration-rules"></a>1.10: Dokumentovat pravidla konfigurace provozu
+### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
-**Pokyny:** Pomocí značek pro prostředky související se zabezpečením sítě a tokem provozu pro instance Azure Key Vault poskytují metadata a logické organizace.
+**Doprovodné**materiály: používejte značky pro prostředky, které se týkají zabezpečení sítě a toku provozu pro vaše Azure Key Vault instance pro poskytování metadat a logické organizace.
 
-Pomocí některé z předdefinovaných definic zásad Azure souvisejících s označováním, jako je například Vyžadovat značku a její hodnotu, můžete zajistit, aby se všechny prostředky vytvořily pomocí značek, a upozornit vás na existující neoznačené prostředky.
+Použijte některou z předdefinovaných Azure Policy definic souvisejících s označováním, jako je "vyžadovat značku a její hodnotu", aby se zajistilo, že všechny prostředky budou vytvořeny pomocí značek, a upozorní vás na stávající neoznačené prostředky.
 
-Azure PowerShell nebo Azure CLI můžete použít k vyvyhledávání nebo provádění akcí na prostředky na základě jejich značek.
+Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
 
-K uspořádání prostředků Azure použijte značky:
+Použití značek k uspořádání prostředků Azure:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Použití automatizovaných nástrojů ke sledování konfigurace síťových prostředků a zjišťování změn
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: pomocí automatizovaných nástrojů monitorujte konfigurace síťových prostředků a zjišťují změny.
 
-**Pokyny:** Pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků souvisejících s instancemi trezoru klíčů Azure. Vytvořte výstrahy v rámci Azure Monitor, který se aktivuje, když dojde ke změnám kritických síťových prostředků.
+**Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi Azure Key Vault instancemi. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-Zobrazení a načtení událostí protokolu aktivit Azure:
+Zobrazit a načíst události protokolu aktivit Azure:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Vytvářejte, zobrazujte a spravujte výstrahy protokolu aktivit pomocí Azure Monitoru:
+Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace naleznete [v tématu Security Control: Logging and Monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Použití schválených zdrojů synchronizace času
+### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
-**Pokyny**: Nepoužije se; Microsoft udržuje zdroj času používaný pro prostředky Azure, jako je azure key vault, pro časová razítka v protokolech.
+**Doprovodné**materiály: nepoužitelné; Společnost Microsoft udržuje zdroj času, který se používá pro prostředky Azure, například Azure Key Vault, pro časová razítka v protokolech.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Microsoft
+**Zodpovědnost**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2.2: Konfigurace správy centrálního protokolu zabezpečení
+### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
 
-**Pokyny:** Ingestování protokolů prostřednictvím Azure Monitor agregovat data zabezpečení generované Azure Key Vault. V rámci Azure Monitoru můžete pomocí pracovního prostoru Azure Log Analytics dotazovat a provádět analýzy a používat účty úložiště Azure pro dlouhodobé úložiště a archivní úložiště. Případně můžete povolit a na palubě data do Azure Sentinelu nebo siem třetí strany. 
+**Pokyny**: ingestování protokolů prostřednictvím Azure monitor k agregaci dat zabezpečení vygenerovaných Azure Key Vault. V rámci Azure Monitor můžete k dotazování a provádění analýz použít pracovní prostor Azure Log Analytics a používat účty Azure Storage k dlouhodobému a Archivačnímu úložišti. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany. 
 
-Protokolování trezoru klíčů Azure:
+Protokolování Azure Key Vault:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
-Úvodní příručka: Jak napalubě Azure Sentinel:
+Rychlý Start: jak na desku zapnout službu Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Povolení protokolování auditování prostředků Azure
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
-**Pokyny:** Povolte nastavení diagnostiky v instanci Azure Key Vault pro přístup k protokolům auditování, zabezpečení a diagnostiky. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky.
+**Pokyny**: povolení nastavení diagnostiky na vašich instancích Azure Key Vault pro přístup k protokolům auditu, zabezpečení a diagnostiky. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky.
 
-Protokolování trezoru klíčů Azure:
+Protokolování Azure Key Vault:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Shromažďování protokolů zabezpečení z operačních systémů
+### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurace uchovávání úložiště protokolu zabezpečení
-
-**Pokyny:** V rámci Azure Monitor, pro pracovní prostor Log Analytics slouží k uložení protokolů Azure Key Vault, nastavte dobu uchování v souladu s předpisy vaší organizace dodržování předpisů. Účty úložiště Azure používejte pro dlouhodobé nebo archivní úložiště.
-
-Změna doby uchovávání dat:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Odpovědnost**: netýká se
 
-### <a name="26-monitor-and-review-logs"></a>2.6: Sledování a kontrola protokolů
+### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Pokyny:** Analyzujte a monitorujte protokoly neobvyklé chování a pravidelně kontrolujte výsledky prostředků chráněných úložištěm klíčů Azure. Pomocí pracovního prostoru Služby Log Analytics služby Azure Monitor můžete kontrolovat protokoly a provádět dotazy na data protokolu. Případně můžete povolit a na palubě data azure sentinelu nebo třetí strany SIEM. 
+**Doprovodné**materiály: v rámci Azure monitor pro pracovní prostor Log Analytics, který se používá k ukládání protokolů Azure Key Vault, nastavte dobu uchování podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-Úvodní příručka: Na palubě Azure Sentinelu:
+Změnit dobu uchovávání dat:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
+
+**Pokyny**: analýza a sledování protokolů pro neobvyklé chování a pravidelné kontroly výsledků pro prostředky chráněné vaším Azure Key Vault. Pomocí Log Analytics pracovního prostoru Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo jiného dodavatele SIEM. 
+
+Rychlý Start: zprovoznění služby Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Začínáme s Analýzou protokolů ve službě Azure Monitor:
+Začínáme s Log Analytics v Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Začínáme s dotazy protokolů v Azure Monitoru:
+Začínáme s dotazy protokolu v Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Povolit upozornění na anomální aktivitu
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: povolení výstrah pro aktivitu neobvyklé
 
-**Pokyny:** V Centru zabezpečení Azure povolte pokročilou ochranu před hrozbami (ATP) pro trezor klíčů. Povolte diagnostická nastavení v trezoru klíčů Azure a odesílejte protokoly do pracovního prostoru Analýzy protokolů. Založte pracovní prostor Analýzy protokolů do Azure Sentinelu, protože poskytuje řešení automatické odpovědi orchestrace zabezpečení (SOAR). To umožňuje vytvářet a používat playbooky (automatizovaná řešení) k nápravě problémů se zabezpečením.
+**Doprovodné**materiály: v Azure Security Center povolte pro Key Vault rozšířenou ochranu před internetovými útoky (ATP). Povolte nastavení diagnostiky v Azure Key Vault a odešlete protokoly do pracovního prostoru Log Analytics. Připojte pracovní prostor Log Analytics do Azure Sentinel, protože poskytuje řešení pro automatizované odpovědi na orchestraci zabezpečení (společnosti). To umožňuje vytvořit playbooky (automatizovaná řešení) a použít je k nápravě problémů zabezpečení.
 
-Úvodní příručka: Na palubě Azure Sentinelu:
+Rychlý Start: zprovoznění služby Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Správa výstrah zabezpečení a reakce na ně v Azure Security Center:
+Správa a reakce na výstrahy zabezpečení v Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts
 
-Reagujte na události pomocí výstrah azure monitoru:
+Reakce na události s výstrahami Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="28-centralize-anti-malware-logging"></a>2.8: Centralizovat protokolování antimalwaru
+### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
 
-**Pokyny**: Nepoužije se; Azure Key Vault nezpracovává ani nevytváří protokoly související s antimalwarem.
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="29-enable-dns-query-logging"></a>2.9: Povolení protokolování dotazů DNS
-
-**Pokyny**: Nepoužije se; Azure Key Vault nezpracovává ani nevytváří protokoly související se službou DNS.
+**Doprovodné**materiály: nepoužitelné; Azure Key Vault nezpracovává ani nevytváří protokoly související s malwarem.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="210-enable-command-line-audit-logging"></a>2.10: Povolení protokolování auditu příkazového řádku
+### <a name="29-enable-dns-query-logging"></a>2,9: povolení protokolování dotazů DNS
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Azure Key Vault nezpracovává ani nevytváří protokoly související s DNS.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
+
+### <a name="210-enable-command-line-audit-logging"></a>2,10: povolení protokolování auditu příkazového řádku
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace naleznete [v tématu Zabezpečení: Identita a řízení přístupu](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Vedení soupisu administrativních účtů
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Pokyny:** Udržujte inventář aplikací registrovaných službou Azure Active Directory a také všechny uživatelské účty, které mají přístup k vašim klíčům, tajným klíčům a certifikátům služby Azure Key Vault. Můžete použít buď portál Azure nebo PowerShell k dotazování a odsouhlasení přístupu trezoru klíčů. Chcete-li zobrazit přístup v PowerShellu, použijte následující příkaz:
+**Doprovodné**materiály: udržování inventáře vašich Azure Active Directorych aplikací registrovaných i všech uživatelských účtů, které mají přístup k vašim Azure Key Vault klíčům, tajným klíčům a certifikátům. K dotazování a sjednocení Key Vault přístupu můžete použít buď Azure Portal, nebo PowerShell. Chcete-li zobrazit přístup v prostředí PowerShell, použijte následující příkaz:
 
-(Get-AzResource -ResourceId [KeyVaultResourceID]). Vlastnosti.Zásady přístupu
+(Get-AzResource-ResourceId [KeyVaultResourceID]). Properties. AccessPolicies
 
-Registrace aplikace pomocí služby Azure Active Directory:
+Registrace aplikace s Azure Active Directory:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
 
-Bezpečný přístup do trezoru klíčů:
+Zabezpečený přístup k trezoru klíčů:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="32-change-default-passwords-where-applicable"></a>3.2: Změna výchozích hesel, pokud je to možné
+### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
-**Pokyny**: Nepoužije se; Azure Key Vault nemá koncept výchozích hesel, protože ověřování poskytuje služba Active Directory a zabezpečuje se řízením přístupu na základě rolí.
+**Doprovodné**materiály: nepoužitelné; Azure Key Vault nemá koncept výchozích hesel, protože ověřování zajišťuje služba Active Directory a je zabezpečené pomocí řízení přístupu na základě role.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Použití vyhrazených administrativních účtů
+### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Pokyny:** Vytvořte standardní operační postupy týkající se použití vyhrazených účtů pro správu, které mají přístup k instancím azure key vault. Pomocí správy identit a přístupu Centra zabezpečení Azure (aktuálně ve verzi Preview) můžete sledovat počet aktivních účtů pro správu.
+**Doprovodné**materiály: vytvořte standardní operační postupy kolem použití vyhrazených účtů pro správu, které mají přístup k vašim instancím Azure Key Vault. Pomocí Azure Security Center správy identit a přístupu (aktuálně ve verzi Preview) můžete monitorovat počet aktivních účtů pro správu.
 
-Sledování identity a přístupu (náhled):
+Monitorovat identitu a přístup (Preview):
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Použití jednotného přihlašování (SSO) s Azure Active Directory
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
-**Pokyny**: Použijte instanční objekt Služby Azure ve spojení s AppId, TenantID a ClientSecret, chcete-li bezproblémově ověřit vaši aplikaci a načíst token, který se použije pro přístup k tajným klíčům Azure Vault.
+**Pokyny**: pomocí instančního objektu Azure ve spojení s AppID, TenantID a ClientSecret můžete hladce ověřit vaši aplikaci a načíst token, který se použije pro přístup k Azure Key Vault tajným klíčům.
 
-Ověřování služby azure key vault pomocí rozhraní .NET:
+Ověřování služba-služba pro Azure Key Vault pomocí rozhraní .NET:
 
 https://docs.microsoft.com/azure/key-vault/service-to-service-authentication
 
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Použití vícefaktorového ověřování pro veškerý přístup založený na službě Azure Active Directory
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Pokyny:** Povolte vícefaktorové ověřování Azure Active Directory a postupujte podle doporučení Centra identit a přístupu Azure Security Center (aktuálně ve verzi Preview), abyste pomohli chránit prostředky centra událostí.
+**Doprovodné**materiály: povolte Azure Active Directory Multi-Factor Authentication a sledujte Azure Security Center doporučení pro správu identit a přístupu (aktuálně ve verzi Preview), která vám pomůžou chránit vaše prostředky s podporou centra událostí.
 
 Plánování cloudového nasazení Azure Multi-Factor Authentication:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Sledování identity a přístupu (náhled):
+Monitorovat identitu a přístup (Preview):
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Pro všechny administrativní úkoly používejte vyhrazené počítače (pracovní stanice s privilegovaným přístupem)
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
 
-**Pokyny:** Použijte pracovní stanici s privilegovaným přístupem (PAW) s Azure Multi-Factor Authentication (MFA) nakonfigurovanou pro přihlášení a konfiguraci prostředků s povoleným trezorem klíčů. 
+**Pokyny**: použití pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) se službou Azure Multi-Factor Authentication (MFA) nakonfigurovanou pro přihlášení a konfiguraci Key Vaultch povolených prostředků. 
 
-Pracovní stanice s privilegovaným přístupem:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
+Pracovní stanice privilegovaného přístupu:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
 Plánování cloudového nasazení Azure Multi-Factor Authentication:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: Protokolování a upozornění na podezřelou aktivitu z administrativních účtů
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: protokolování a upozornění na podezřelou aktivitu z účtů pro správu
 
-**Pokyny:** Použití Azure Active Directory (AAD) Privileged Identity Management (PIM) pro generování protokolů a výstrah, když dojde k podezřelé nebo nebezpečné aktivity v prostředí. Pomocí detekce rizik AAD můžete zobrazit výstrahy a sestavy o rizikovém chování uživatelů. Další protokolování můžete zasílat výstrahy Azure Security Center pro zjišťování rizik do Azure Monitoru a konfigurovat vlastní výstrahy/oznámení pomocí skupin akcí.
+**Doprovodné**materiály: použijte Azure Active Directory (AAD) PRIVILEGED Identity Management (PIM) pro generování protokolů a výstrah v případě, že v prostředí dojde k podezřelé nebo nebezpečné aktivitě. Detekce rizik AAD slouží k zobrazení výstrah a sestav na základě rizikového chování uživatelů. Pro další protokolování odešlete výstrahy Azure Security Center detekce rizik do Azure Monitor a nakonfigurujte vlastní výstrahy a oznámení pomocí skupin akcí.
 
-Povolte pokročilou ochranu před hrozbami (ATP) pro Azure Key Vault a vygenerujte výstrahy pro podezřelou aktivitu.
+Povolit rozšířenou ochranu před internetovými útoky (ATP) pro Azure Key Vault pro generování výstrah pro podezřelou aktivitu.
 
-Nasazení správy privilegovaných identit Azure AD (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Nasadit Azure AD Privileged Identity Management (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Nastavení pokročilé ochrany před hrozbami pro Azure Key Vault (preview):https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
+Nastavte rozšířenou ochranu před internetovými útoky pro Azure Key Vault (Preview):https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
-Výstrahy pro trezor klíčů Azure (náhled):https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
+Výstrahy pro Azure Key Vault (Preview):https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
 
-Detekce rizik služby Azure Active Directory:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Azure Active Directory detekce rizik:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Vytváření a správa skupin akcí na webu Azure Portal:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
-
-
-
-**Monitorování Centra zabezpečení Azure:** Ano
-
-**Odpovědnost**: Zákazník
-
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Správa prostředků Azure z jenom schválených umístění
-
-**Pokyny**: Nakonfigurujte podmínku umístění zásad podmíněného přístupu a spravujte pojmenovaná umístění. S pojmenovanými umístěními můžete vytvořit logická seskupení rozsahů IP adres nebo zemí a oblastí. Přístup k citlivým prostředkům, jako jsou tajné klíče trezoru klíčů, můžete omezit na nakonfigurovaná pojmenovaná umístění.
-
-Jaká je podmínka umístění v podmíněném přístupu služby Azure Active Directory?:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Vytváření a Správa skupin akcí v Azure Portal:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="39-use-azure-active-directory"></a>3.9: Použití služby Azure Active Directory
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
 
-**Pokyny:** Použijte Azure Active Directory (AAD) jako centrální ověřovací a autorizační systém pro prostředky Azure, jako je trezor klíčů. To umožňuje řízení přístupu na základě rolí (RBAC) spravovat citlivé prostředky.
+**Pokyny**: umožňuje nakonfigurovat podmínku umístění zásad podmíněného přístupu a spravovat pojmenovaná umístění. Pomocí pojmenovaných umístění můžete vytvořit logická seskupení rozsahů IP adres nebo zemí a oblastí. Přístup k citlivým prostředkům, jako jsou Key Vault tajné klíče, můžete omezit na vaše nakonfigurovaná pojmenovaná umístění.
+
+Jaká je podmínka umístění v Azure Active Directory podmíněný přístup?:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+
+
+
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
+
+**Zodpovědnost**: zákazník
+
+### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
+
+**Doprovodné**materiály: jako centrální ověřování a systém autorizací pro prostředky Azure, jako je například Key Vault, použijte Azure Active Directory (AAD). To umožňuje řízení přístupu na základě role (RBAC) spravovat citlivé prostředky.
 
  
 
-Úvodní příručka: Vytvoření nového klienta ve službě Azure Active Directory:
+Rychlý Start: vytvoření nového tenanta v Azure Active Directory:
 
 https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Pravidelně kontrolujte a slaďujte přístup uživatelů
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Pokyny:** Zkontrolujte protokoly služby Azure Active Directory (AAD), které vám pomohou zjistit zastaralé účty s rolemi správy Azure Key Vault. Kromě toho použijte kontroly přístupu AAD efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím, které lze použít pro přístup k Azure Key Vault a přiřazení rolí. Přístup uživatelů by měl být pravidelně kontrolován, například každých 90 dní, aby se zajistilo, že pouze ti praví uživatelé mají trvalý přístup.
+**Pokyny**: Projděte si protokoly Azure Active Directory (AAD), které vám pomůžou zjistit zastaralé účty s Azure Key Vault administrativními rolemi. Pomocí kontrol přístupu AAD můžete navíc efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím, které se dají použít pro přístup k Azure Key Vault a přiřazení rolí. Přístup uživatelů by se měl pravidelně kontrolovat, například každých 90 dní, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-Sestavy služby Azure Active Directory a dokumentace monitorování:
+Azure Active Directory sestavy a monitorovací dokumentace:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Co jsou kontroly přístupu k Azure AD?:
+Co jsou kontroly přístupu Azure AD?:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Sledování pokusů o přístup k deaktivovaným účtům
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: monitorování pokusů o přístup k deaktivovaným účtům
 
-**Pokyny:** Povolte diagnostická nastavení pro Azure Key Vault a Azure Active Directory a odesílat všechny protokoly do pracovního prostoru Analýzy protokolů. Nakonfigurujte požadované výstrahy (například pokusy o přístup k zakázaným tajným kódům) v rámci analýzy protokolů.
+**Doprovodné**materiály: povolení nastavení diagnostiky pro Azure Key Vault a Azure Active Directory a posílání všech protokolů do log Analyticsho pracovního prostoru. Nakonfigurujte požadovaná upozornění (například pokusy o přístup k zakázaným tajným klíčům) v rámci Log Analytics.
 
-Integrace protokolů Azure AD s protokoly Azure Monitoru:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Integrace protokolů služby Azure AD s protokoly Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Migrace ze starého řešení trezoru klíčů:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
+Migrace ze starého řešení Key Vault:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
 
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Upozornění na odchylku chování přihlášení k účtu
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
-**Pokyny:** Pomocí funkcí ochrany identity azure active directory a detekce rizik nakonfigurujte automatické odpovědi na zjištěné podezřelé akce související s prostředky chráněnými úložištěm klíčů Azure. Měli byste povolit automatické odpovědi prostřednictvím Azure Sentinelu k implementaci odpovědí na zabezpečení vaší organizace. 
+**Pokyny**: pomocí funkcí Azure Active Directory ochrany identit a detekce rizik můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se vašich Azure Key Vault chráněných prostředků. Pomocí služby Azure Sentinel byste měli povolit automatizované odezvy pro implementaci reakcí zabezpečení vaší organizace. 
 
 Sestava rizikových přihlášení na portálu Azure Active Directory:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
 
-Postup: Konfigurace a povolení zásad rizik:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Postupy: konfigurace a povolení zásad rizik:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Jak napalubě Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
-
-
-**Monitorování Centra zabezpečení Azure:** Ano
-
-**Odpovědnost**: Zákazník
-
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Poskytněte společnosti Microsoft přístup k relevantním zákaznickým datům během scénářů podpory
-
-**Pokyny**: Nepoužije se; Customer Lockbox není podporován pro Azure Key Vault.
-
-Podporované služby a scénáře v obecné dostupnosti:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
+**Monitorování Azure Security Center**: Ano
 
-**Monitorování Azure Security Center**: Nelze použít
+**Zodpovědnost**: zákazník
 
-**Odpovědnost**: Nepoužije se
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
+
+**Doprovodné**materiály: nepoužitelné; Customer Lockbox se pro Azure Key Vault nepodporuje.
+
+Podporované služby a scénáře ve všeobecné dostupnosti:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace naleznete [v tématu Security Control: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Udržovat soupis citlivých informací
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
-**Pokyny:** Pomocí značek můžete při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace o prostředcích s povoleným úložištěm klíčů Azure. 
+**Doprovodné**materiály: pomocí značek pomáhají při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace na Azure Key Vault povolené prostředky. 
 
-K uspořádání prostředků Azure použijte značky:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
-
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Izolovat systémy ukládající nebo zpracovávající citlivé informace
-
-**Pokyny:** Můžete zabezpečit přístup k Azure Key Vault pomocí koncových bodů služby virtuální sítě nakonfigurovaných k omezení přístupu k určitým podsítím.
-
-Po nastavení pravidel brány firewall můžete provádět operace datové roviny služby Azure Key Vault pouze v případě, že váš požadavek pochází z povolených podsítí nebo rozsahů IP adres. To platí také pro přístup k Azure Key Vault na webu Azure Portal. I když můžete přejít do trezoru klíčů z portálu Azure, nemusí být možné seznam klíčů, tajných kódů nebo certifikátů, pokud váš klientský počítač není v seznamu povolených. To má vliv také na výběr úložiště klíčů Azure a další služby Azure. Je možné, že se zobrazí seznamy trezorů klíčů, ale nikoli klíče seznamu, pokud pravidla brány firewall brání vašemu počítači v klientském počítači.
-
-Konfigurace bran azure key vault a virtuálních sítí:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
-
-Koncové body služby Virtuální sítě pro Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
+Použití značek k uspořádání prostředků Azure:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Sledování a blokování neoprávněného přenosu citlivých informací
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny:** Všechna data uložená v úložišti klíčů Azure vault je považovánza citlivý. Pomocí ovládacích prvků přístupu k datové rovině úložiště klíčů Azure vault můžete řídit přístup k tajným klíčům služby Azure Key Vault. K řízení přístupu v síťové vrstvě můžete také použít vestavěnou bránu firewall trezoru klíčů. Chcete-li monitorovat přístup k úložišti klíčů Azure, povolte nastavení diagnostiky trezoru klíčů a odesílejte protokoly do pracovního prostoru úložiště Azure nebo do pracovního prostoru Log Analytics.
+**Pokyny**: pomocí koncových bodů služby virtuální sítě, které jsou nakonfigurovány k omezení přístupu ke konkrétním podsítím, můžete zabezpečit přístup k Azure Key Vault.
 
-Bezpečný přístup do trezoru klíčů:https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+Po uplatnění pravidel brány firewall můžete provádět operace Azure Key Vault roviny dat pouze v případě, že požadavek pochází z povolených podsítí nebo rozsahů IP adres. To platí také pro Azure Key Vault přístup v Azure Portal. I když můžete z Azure Portal přejít k trezoru klíčů, možná nebudete moct zobrazit seznam klíčů, tajných kódů ani certifikátů, pokud klientský počítač není na seznamu povolených. To má vliv také na Azure Key Vault pro výběr a další služby Azure. Možná budete moct zobrazit seznamy trezorů klíčů, ale ne seznam klíčů, pokud pravidla firewallu brání vašemu klientskému počítači.
 
-Konfigurace bran azure key vault a virtuálních sítí:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
+Nakonfigurovat Azure Key Vault brány firewall a virtuální sítě:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
-Protokolování trezoru klíčů Azure:https://docs.microsoft.com/azure/key-vault/key-vault-logging
-
-
-
-**Monitorování Centra zabezpečení Azure:** Ano
-
-**Odpovědnost**: Zákazník
-
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Šifrování všech citlivých informací při přepravě
-
-**Naváděcí**pokyny: Veškerý provoz do azure key vault pro ověřování, správu a přístup k rovině dat, je šifrovaný a přejde přes HTTPS: port 443. (Příležitostně však bude pro CRL existovat přenoshttp [port 80].) 
-
-Přístup k úložišti klíčů Azure za bránou firewall:https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+Koncové body služby virtuální sítě pro Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
 
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Microsoft
+**Zodpovědnost**: zákazník
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Použití aktivního nástroje pro zjišťování k identifikaci citlivých dat
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
 
-**Pokyny**: Nepoužije se; všechna data v rámci služby Azure Key Vault (tajné klíče, klíče a certifikáty) se považují za citlivé.
+**Doprovodné**materiály: všechna data uložená v Azure Key Vault se považují za citlivá. Pro řízení přístupu k Azure Key Vault tajným klíčům použijte Azure Key Vault řízení přístupu k rovině dat. K řízení přístupu v síťové vrstvě můžete použít také vestavěnou bránu firewall Key Vault. Pokud chcete monitorovat přístup k Azure Key Vault, povolte Key Vault nastavení diagnostiky a odešlete protokoly do účtu Azure Storage nebo Log Analytics pracovního prostoru.
+
+Zabezpečený přístup k trezoru klíčů:https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+
+Nakonfigurovat Azure Key Vault brány firewall a virtuální sítě:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
+
+Protokolování Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
-**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Monitorování Azure Security Center**: Ano
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Použití Azure RBAC k řízení přístupu k prostředkům
+**Zodpovědnost**: zákazník
 
-**Navádění:** Zabezpečte přístup ke správě a datové rovině instancí azure key vault.
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-Bezpečný přístup do trezoru klíčů:
+**Doprovodné**materiály: veškerý provoz Azure Key Vault pro ověřování, správu a přístup k rovině dat je zašifrovaný a projde přes protokol https: port 443. (Pro seznam CRL bude ale občas možné provozovat přenosy HTTP [port 80].) 
+
+Přístup k Azure Key Vault za bránou firewall:https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: Microsoft
+
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
+
+**Doprovodné**materiály: nepoužitelné; všechna data v Azure Key Vault (tajné klíče, klíče a certifikáty) se považují za citlivá.
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
+
+**Doprovodné**materiály: zabezpečený přístup k rovině správy a dat vašich Azure Key Vaultch instancí.
+
+Zabezpečený přístup k trezoru klíčů:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Použití ochrany před ztrátou dat na hostiteli k vynucení kontroly přístupu
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
 
-**Pokyny**: Microsoft spravuje základní infrastrukturu pro Azure Key Vault a zavedlpřísné ovládací prvky, aby se zabránilo ztrátě nebo vystavení dat zákazníkům.
+**Doprovodné**materiály: Společnost Microsoft spravuje základní infrastrukturu pro Azure Key Vault a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
 Co je Azure Key Vault?
 
@@ -611,101 +611,101 @@ Ochrana zákaznických dat Azure:
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Microsoft
+**Zodpovědnost**: Microsoft
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Šifrování citlivých informací v klidovém stavu
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
 
-**Pokyny:** Všechny spravované objekty (klíč, certifikáty a tajné klíče) jsou šifrovány v klidovém stavu v trezoru klíčů Azure.
+**Doprovodné**materiály: všechny spravované objekty (klíče, certifikáty a tajné klíče) jsou v klidovém stavu zašifrované Azure Key Vault.
 
-Dokumentací:
+Podpůrná dokumentace:
 
 - [Model šifrování a tabulka správy klíčů](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#encryption-model-and-key-management-table)
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Microsoft
+**Zodpovědnost**: Microsoft
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokolování a upozorňování na změny kritických prostředků Azure
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
-**Pokyny:** Pomocí řešení Azure Key Vault Analytics v Azure Monitoru zkontrolujte protokoly událostí auditování azure key vault.
+**Pokyny**: pomocí řešení Azure Key Vault Analytics v Azure monitor Zkontrolujte protokoly událostí auditu Azure Key Vault.
 
-Řešení Azure Key Vault Analytics v Azure Monitoru:
+Řešení Azure Key Vault Analytics v Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
 
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace naleznete v [tématu Security Control: Vulnerability Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Spuštění automatizovaných nástrojů pro vyhledávání chyb zabezpečení
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-**Pokyny:** Společnost Microsoft provádí správu chyb zabezpečení v základních systémech, které podporují azure key vault.
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Microsoft
-
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Nasazení řešení pro správu automatických oprav operačního systému
-
-**Pokyny:** Není k onomké Společnost Microsoft provádí správu oprav v základních systémech, které podporují trezor klíčů.
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Nasazení automatizovaného řešení pro správu softwarových oprav od jiných výrobců
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Pokyny**: Společnost Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Key Vault.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Zodpovědnost**: Microsoft
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Porovnání prohledávačů ohrožení zabezpečení zády k zadní straně
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
 
-**Pokyny:** Společnost Microsoft provádí správu chyb zabezpečení v základních systémech, které podporují trezor klíčů.
+**Doprovodné**materiály: není k dispozici; Microsoft provádí správu oprav pro základní systémy, které podporují Key Vault.
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Microsoft
+**Odpovědnost**: netýká se
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Použití procesu hodnocení rizik a upřednostnění nápravy zjištěných zranitelných míst
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: nasazení automatizovaného řešení pro správu oprav softwaru třetí strany
 
-**Pokyny:** Použijte výchozí hodnocení rizik (Zabezpečené skóre) poskytované Centrem zabezpečení Azure.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-Vylepšete své skóre zabezpečení v Azure Security Center:
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: porovnání kontrol zabezpečení back-to-back
+
+**Pokyny**: Společnost Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Key Vault.
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: Microsoft
+
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
+
+**Doprovodné**materiály: použijte výchozí hodnocení rizik (zabezpečené skóre) poskytované Azure Security Center.
+
+Vylepšete Vaše zabezpečené skóre v Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace naleznete v [tématu Security Control: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
-### <a name="61-use-azure-asset-discovery"></a>6.1: Použití Azure Asset Discovery
+### <a name="61-use-azure-asset-discovery"></a>6,1: použijte Azure Asset Discovery.
 
-**Pokyny:** Pomocí Azure Resource Graph dotaz a zjistit všechny prostředky (včetně instancí Azure Key Vault) v rámci předplatného. Ujistěte se, že máte příslušná (číst) oprávnění ve vašem tenantovi a jsou schopni vytvořit výčet všech předplatných Azure, stejně jako prostředky v rámci vašich předplatných.
+**Pokyny**: k dotazování a zjišťování všech prostředků (včetně instancí Azure Key Vault) v rámci vašeho předplatného použijte Azure Resource Graph. Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
 
-Úvodní příručka: Spusťte první dotaz na graf prostředků pomocí Průzkumníka prostředků Azure:
+Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Získejte odběry, ke kterým má přístup běžný účet.:
+Získání předplatných, ke kterým má aktuální účet přístup:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -713,594 +713,594 @@ Co je řízení přístupu na základě role (RBAC) u prostředků Azure?
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="62-maintain-asset-metadata"></a>6.2: Udržování metadat datových zdrojů
+### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
-**Pokyny:** Použití značek pro prostředky Azure Key Vault poskytuje metadata logicky uspořádat do taxonomie.
+**Doprovodné**materiály: použití značek pro Azure Key Vault prostředků, které dávají metadata k logickému uspořádání do taxonomie.
 
-Jak vytvořit a používat značky:
+Vytváření a používání značek:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Odstranění neautorizovaných prostředků Azure
+### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
-**Pokyny:** Použijte značkování, skupiny pro správu a samostatné předplatná, kde je to vhodné, k uspořádání a sledování instancí Azure Key Vault a souvisejících prostředků. Pravidelně odsouhlasete zásoby a zajistěte, aby byly z předplatného včas odstraněny neoprávněné prostředky.
+**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování Azure Key Vaultch instancí a souvisejících prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Vytvořte další předplatné Azure:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Vytvořte skupiny pro správu pro organizaci a správu prostředků:
+Vytvoření skupin pro správu pro organizaci a správu prostředků:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-K uspořádání prostředků Azure použijte značky:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Použití značek k uspořádání prostředků Azure:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Udržovat soupis schválených prostředků Azure a softwarových titulů
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: udržování inventáře schválených prostředků Azure a softwarových titulů
 
-**Pokyny:** Definování seznamu schválených prostředků Azure a schváleného softwaru pro vaše výpočetní prostředky
+**Doprovodné**materiály: definování seznamu schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Monitorování neschválených prostředků Azure
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
-**Pokyny:** Pomocí zásad Azure můžete omezit typ prostředků, které lze vytvořit v předplatných zákazníků pomocí následujících předdefinovaných definic zásad:
-
-- Nepovolené typy prostředků
-
-- Povolené typy prostředků
-
-Kromě toho použijte Azure Resource Graph k dotazování/zjišťování prostředků v rámci předplatného.
-
-Kurz: Vytvářejte a spravujte zásady pro vynucení dodržování předpisů:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-Úvodní příručka: Spusťte první dotaz na graf prostředků pomocí Průzkumníka prostředků Azure:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Sledování neschválených softwarových aplikací v rámci výpočetních prostředků
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Odebrání neschválených prostředků Azure a softwarových aplikací
-
-**Pokyny**: Nepoužije se; Toto doporučení je určené pro Azure jako celek i výpočetní prostředky.
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="68-use-only-approved-applications"></a>6.8: Používejte pouze schválené aplikace
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="69-use-only-approved-azure-services"></a>6.9: Používejte jenom schválené služby Azure
-
-**Pokyny:** Pomocí zásad Azure můžete omezit typ prostředků, které lze vytvořit v předplatných zákazníků pomocí následujících předdefinovaných definic zásad:
+**Doprovodné**materiály: pomocí zásad Azure můžete nastavovat omezení pro typ prostředků, které se dají vytvořit v předplatných zákazníků, a to pomocí těchto integrovaných definic zásad:
 
 - Nepovolené typy prostředků
 
 - Povolené typy prostředků
 
-Kurz: Vytvářejte a spravujte zásady pro vynucení dodržování předpisů:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat prostředky v rámci předplatných.
 
-Ukázky zásad Azure:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="610-implement-approved-application-list"></a>6.10: Implementace schváleného seznamu žádostí
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
-**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Monitorování Azure Security Center**: nelze použít
 
-### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11: Omezte možnost uživatelů komunikovat se Správcem azurezdrojů pomocí skriptů
+**Zodpovědnost**: zákazník
 
-**Pokyny:** Pomocí podmíněného přístupu Azure omezte možnost uživatelů pracovat se Správcem prostředků Azure (ARM) konfigurací "Blokovat přístup" pro aplikaci "Správa Microsoft Azure". To může zabránit vytváření a změny prostředků v prostředí s vysokým zabezpečením, jako jsou ty s konfigurací trezoru klíčů.
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Odeberte neschválené prostředky Azure a softwarové aplikace
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro Azure jako celek a také pro výpočetní prostředky.
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
+
+**Doprovodné**materiály: pomocí zásad Azure můžete nastavovat omezení pro typ prostředků, které se dají vytvořit v předplatných zákazníků, a to pomocí těchto integrovaných definic zásad:
+
+- Nepovolené typy prostředků
+
+- Povolené typy prostředků
+
+Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+Azure Policy ukázky:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="610-implement-approved-application-list"></a>6,10: Implementujte schválený seznam aplikací
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
+
+### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6,11: Omezte schopnost uživatelů pracovat se AzureResources Managerem prostřednictvím skriptů.
+
+**Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů pracovat s Azure Resource Manager (ARM) tak, že pro aplikaci Microsoft Azure Management nakonfigurujete "blokování přístupu". To může zabránit vytváření a změnám prostředků v rámci prostředí s vysokým zabezpečením, jako jsou ty s konfigurací Key Vault.
 
 Správa přístupu ke správě Azure pomocí podmíněného přístupu:
 
 https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Omezení možnosti uživatelů spouštět skripty v rámci výpočetních prostředků
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fyzicky nebo logicky oddělit vysoce rizikové aplikace
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro webové aplikace spuštěné ve službě Azure App Service nebo výpočetních prostředcích.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
+
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace naleznete v [tématu Zabezpečení: Zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Pokyny:** Pomocí aliasů zásad Azure v oboru názvů "Microsoft.KeyVault" můžete vytvořit vlastní zásady pro auditování nebo vynucení konfigurace instancí azure key vault. Můžete také použít integrované definice zásad Azure pro Azure Key Vault, jako jsou:
+**Doprovodné**materiály: použijte aliasy Azure Policy v oboru názvů "Microsoft. klíčů trezor" k vytvoření vlastních zásad pro auditování nebo vymáhání konfigurace vašich Azure Key Vaultch instancí. Můžete také použít předdefinované definice Azure Policy pro Azure Key Vault, například:
 
-Objekty trezoru klíčů by měly být obnovitelné
+Key Vault objekty by měly být obnovitelné
 
-Nasazení diagnostických nastavení pro trezor klíčů do pracovního prostoru Log Analytics
+Nasazení nastavení diagnostiky pro Key Vault k pracovnímu prostoru Log Analytics
 
-Diagnostické protokoly v trezoru klíčů by měly být povoleny
+Měly by být povolené diagnostické protokoly v Key Vault.
 
-Trezor klíčů by měl používat koncový bod služby virtuální sítě.
+Key Vault by měl používat koncový bod služby virtuální sítě
 
-Nasazení diagnostických nastavení trezoru klíčů do centra událostí
+Nasazení nastavení diagnostiky pro Key Vault do centra událostí
 
-Doporučení z Azure Security Center použijte jako směrný plán zabezpečené konfigurace pro instance azure key vaultu.
+Použijte doporučení z Azure Security Center jako standardní hodnoty konfigurace pro vaše Azure Key Vault instance.
 
-Jak zobrazit dostupné aliasy zásad Azure:
+Jak zobrazit dostupné aliasy Azure Policy:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Kurz: Vytvářejte a spravujte zásady pro vynucení dodržování předpisů:
+Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Vytvoření bezpečných konfigurací operačního systému
+### <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Udržování zabezpečených konfigurací prostředků Azure
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
-**Pokyny:** Pomocí zásad Azure [odepřít] a [nasadit, pokud neexistují] vynutit zabezpečené nastavení v rámci prostředků s povolenou službou Azure Key Vault. 
+**Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistují] pro vymáhání zabezpečených nastavení napříč prostředky s povolenými Azure Key Vault. 
 
-Kurz: Vytvářejte a spravujte zásady pro vynucení dodržování předpisů:
+Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage 
 
   
-Seznamte se s efekty zásad Azure: 
+Pochopení Azure Policych účinků: 
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Udržovat bezpečné konfigurace operačního systému
+### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Konfigurace prostředků Azure bezpečně ukládá
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
-**Pokyny:** Pokud používáte vlastní definice zásad Azure pro prostředky s povoleným úložištěm klíčů Azure, použijte Azure Repos k bezpečnému ukládání a správě kódu.
+**Pokyny**: Pokud používáte vlastní definice Azure Policy pro prostředky s povoleným Azure Key Vault, používejte Azure Repos k bezpečnému ukládání a správě kódu.
 
 Jak ukládat kód v Azure DevOps: 
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops 
 
-Dokumentace k azure repos: 
+Azure Repos dokumentaci: 
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Bezpečné ukládání vlastních bitových kopií operačního systému
+### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Nasazení nástrojů pro správu konfigurace systému
+### <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
 
-**Pokyny**: Pomocí aliasů zásad Azure v oboru názvů Microsoft.KeyVault vytvořte vlastní zásady pro výstrahu, auditování a vynucení konfigurací systému. Kromě toho vytvořte proces a kanál pro správu výjimek zásad.
+**Pokyny**: použijte aliasy Azure Policy v oboru názvů "Microsoft. klíčů trezor" k vytváření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
-Jak nakonfigurovat a spravovat zásady Azure:
+Jak nakonfigurovat a spravovat Azure Policy:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Nasazení nástrojů pro správu konfigurace systému pro operační systémy
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: nasaďte nástroje pro správu konfigurace systému pro operační systémy.
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementace automatického monitorování konfigurace pro služby Azure
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Implementujte automatizované monitorování konfigurace pro služby Azure.
 
-**Pokyny:** Pomocí Centra zabezpečení Azure můžete provádět prohledávací plány prostředků chráněných úložištěm klíčů Azure 
+**Pokyny**: použití Azure Security Center k provádění kontrol standardních hodnot vašich prostředků chráněných Azure Key Vault 
 
   
 
-Jak napravit doporučení v Azure Security Center: 
+Postup nápravy doporučení v Azure Security Center: 
 
 https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementace automatizovaného monitorování konfigurace operačních systémů
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
 
-**Pokyny**: Nepoužije se; tento benchmark je určen pro výpočetní prostředky.
+**Doprovodné**materiály: nepoužitelné; Tento srovnávací test je určený pro výpočetní prostředky.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
 
-### <a name="711-manage-azure-secrets-securely"></a>7.11: Bezpečná správa tajných kódů Azure
+### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
 
-**Pokyny:** Pomocí identity spravované služby ve spojení s Azure Key Vault zjednodušit a zabezpečit správu tajných služeb pro vaše cloudové aplikace. Ujistěte se, že azure key vault obnovitelné odstranění je povolena.
+**Doprovodné**materiály: použití identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů pro vaše cloudové aplikace. Ujistěte se, že je povoleno Azure Key Vault obnovitelné odstranění.
 
-Jak integrovat s Azure Spravované identity:
+Jak integrovat se spravovanými identitami Azure:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Jak vytvořit trezor klíčů:
+Postup vytvoření Key Vault:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Jak zajistit ověřování trezoru klíčů se spravovanou identitou: 
+Jak zajistit Key Vault ověřování pomocí spravované identity: 
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Bezpečná a automatická správa identit
+### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Pokyny:** Pomocí identity spravované služby ve spojení s Azure Key Vault zjednodušit a zabezpečit správu tajných služeb pro vaše cloudové aplikace. 
+**Doprovodné**materiály: použití identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů pro vaše cloudové aplikace. 
 
   
 
-Jak integrovat s Azure Spravované identity: 
+Jak integrovat se spravovanými identitami Azure: 
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
 
-Jak vytvořit trezor klíčů: 
+Postup vytvoření Key Vault: 
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal    
 
-Jak zajistit ověřování trezoru klíčů se spravovanou identitou:  
+Jak zajistit Key Vault ověřování pomocí spravované identity:  
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Eliminujte nezamýšlenou expozici pověření
+### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
 
-**Pokyny**: Implementujte skener pověření k identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů také podpoří přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je azure key vault.  
+**Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.  
   
- Jak nastavit skener pověření:https://secdevtools.azurewebsites.net/helpcredscan.html
+ Jak nastavit skener přihlašovacích údajů:https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace naleznete v [tématu Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Používejte centrálně spravovaný antimalwarový software
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky. Společnost Microsoft zpracovává antimalwarovou platformu.
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Nepoužije se
-
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Předprohledávací soubory, které se mají nahrát do nevýpočetních prostředků Azure
-
-**Pokyny:** Microsoft anti-malware je povolena na podkladovém hostiteli, který podporuje služby Azure (například Azure Key Vault), ale neběží na obsah zákazníka.
-
-Předem proskente veškerý obsah, který se nahrává nebo odesílá do nevýpočetních prostředků Azure, jako je Azure Key Vault. Společnost Microsoft nemá v těchto případech přístup k vašim datům.
-
-Seznamte se s antimalwarovým programem Microsoft pro cloudové služby Azure a virtuální počítače:https://docs.microsoft.com/azure/security/fundamentals/antimalware
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Zajistěte aktualizaci antimalwarového softwaru a podpisů
-
-**Pokyny**: Nepoužije se; Toto doporučení je určeno pro výpočetní prostředky. Společnost Microsoft zpracovává antimalwarovou platformu.
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Microsoft zpracovává anti-malware pro základní platformu.
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Nepoužije se
+**Odpovědnost**: netýká se
+
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
+
+**Pokyny**: ochrana proti malwaru od Microsoftu je povolená na podkladovém hostiteli, který podporuje služby Azure (například Azure Key Vault), ale nespouští se u zákaznického obsahu.
+
+Předem prohledejte veškerý obsah, který se nahrává nebo odesílá do nevýpočetních prostředků Azure, jako je například Azure Key Vault. Společnost Microsoft nemá přístup k vašim datům v těchto instancích.
+
+Pochopení ochrany proti malwaru Microsoftu pro Azure Cloud Services a Virtual Machines:https://docs.microsoft.com/azure/security/fundamentals/antimalware
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: Ujistěte se, že antimalwarový software a signatury jsou aktualizované.
+
+**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Microsoft zpracovává anti-malware pro základní platformu.
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Odpovědnost**: netýká se
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace naleznete [v tématu Security Control: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Zajistěte pravidelné automatické zálohování
+### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
-**Pokyny**: Pomocí následujících příkazů prostředí PowerShell zajistěte pravidelné automatické zálohování certifikátů, klíčů, účtů spravovaného úložiště a tajných kódů úložiště:
+**Doprovodné**materiály: Zajistěte pravidelné automatizované zálohování Key Vault certifikátů, klíčů, spravovaných účtů úložiště a tajných kódů s následujícími příkazy PowerShellu:
 
-- Backup-AzKeyVaultCertificate
+- Backup – AzKeyVaultCertificate
 
-- Záložní-AzKeyVaultKey
+- Backup – AzKeyVaultKey
 
-- Účet Backup-AzKeyVaultManagedStorageAccount
+- Backup – AzKeyVaultManagedStorageAccount
 
-- Zálohování-AzKeyVaultSecret
+- Backup – AzKeyVaultSecret
 
-Volitelně můžete ukládat zálohy trezoru klíčů v rámci služby Azure Backup.
+V případě potřeby můžete ukládat zálohy Key Vault v Azure Backup.
 
-Jak zálohovat certifikáty trezoru klíčů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
+Postup zálohování certifikátů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
 
-Jak zálohovat klíče trezoru klíčů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Postup zálohování klíčů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-How to backup Key Vault Managed Storage Accounts:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+Postup zálohování Key Vault spravovaných účtů úložiště:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
 
-Jak zálohovat tajné kódy trezoru klíčů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+Postup při zálohování Key Vault tajných kódů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
-Jak povolit Azure Backup:https://docs.microsoft.com/azure/backup
-
-
-
-**Monitorování Azure Security Center**: Nelze použít
-
-**Odpovědnost**: Zákazník
-
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Proveďte kompletní zálohy systému a zálohujte všechny klienty spravované klíče
-
-**Pokyny**: Provádějte zálohy certifikátů trezoru klíčů, klíčů, účtů spravovaného úložiště a tajných kódů pomocí následujících příkazů prostředí PowerShell:
-
-- Backup-AzKeyVaultCertificate
-
-- Záložní-AzKeyVaultKey
-
-- Účet Backup-AzKeyVaultManagedStorageAccount
-
-- Zálohování-AzKeyVaultSecret
-
-Volitelně můžete ukládat zálohy trezoru klíčů v rámci služby Azure Backup.
-
-Jak zálohovat certifikáty trezoru klíčů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
-
-Jak zálohovat klíče trezoru klíčů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
-
-How to backup Key Vault Managed Storage Accounts:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
-
-Jak zálohovat tajné kódy trezoru klíčů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
-
-Jak povolit Azure Backup:https://docs.microsoft.com/azure/backup
+Postup povolení Azure Backup:https://docs.microsoft.com/azure/backup
 
 
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Ověření všech záloh včetně klíčů spravovaných zákazníkem
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny spravované klíče zákazníka.
 
-**Pokyny:** Pravidelně provádějte obnovení dat certifikátů trezoru klíčů, klíčů, účtů spravovaného úložiště a tajných kódů pomocí následujících příkazů prostředí PowerShell:
+**Doprovodné**materiály: proveďte zálohy certifikátů Key Vault, klíčů, spravovaných účtů úložiště a tajných kódů s následujícími příkazy PowerShellu:
 
-- Obnovit azKeyVaultCertificate
+- Backup – AzKeyVaultCertificate
 
-- Obnovit klíč AzKeyVault
+- Backup – AzKeyVaultKey
 
-- Obnovení účtu AzKeyVaultManagedStorageAccount
+- Backup – AzKeyVaultManagedStorageAccount
 
-- Obnovit-AzKeyVaultSecret
+- Backup – AzKeyVaultSecret
 
-Jak obnovit certifikáty trezoru klíčů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
+V případě potřeby můžete ukládat zálohy Key Vault v Azure Backup.
 
-Jak obnovit klíče trezoru klíčů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
+Postup zálohování certifikátů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
 
-How to restore Key Vault Managed Storage Accounts:https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
+Postup zálohování klíčů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-Jak obnovit tajné klíče trezoru klíčů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
+Postup zálohování Key Vault spravovaných účtů úložiště:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+
+Postup při zálohování Key Vault tajných kódů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+
+Postup povolení Azure Backup:https://docs.microsoft.com/azure/backup
 
 
-**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: Zákazník
+**Monitorování Azure Security Center**: nelze použít
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zajištění ochrany záloh a klíčů spravovaných zákazníkem
+**Zodpovědnost**: zákazník
 
-**Pokyny:** Ujistěte se, že je povoleno obnovitelné odstranění pro Azure Key Vault. Obnovitelné odstranění umožňuje obnovení odstraněných trezorů klíčů a objektů úschovny, jako jsou klíče, tajné klíče a certifikáty. 
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: Ověřte všechny zálohy včetně spravovaných klíčů zákazníků.
 
-Jak používat azure key vault je obnovitelné odstranění: 
+**Doprovodné**materiály: pravidelně provádějte obnovení dat Key Vault certifikátů, klíčů, spravovaných účtů úložiště a tajných kódů s následujícími příkazy PowerShellu:
+
+- Obnovit – AzKeyVaultCertificate
+
+- Obnovit – AzKeyVaultKey
+
+- Obnovit – AzKeyVaultManagedStorageAccount
+
+- Obnovit – AzKeyVaultSecret
+
+Postup obnovení Key Vaultch certifikátů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
+
+Postup obnovení klíčů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
+
+Postup obnovení Key Vault spravovaných účtů úložiště:https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
+
+Postup obnovení Key Vault tajných kódů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
+
+
+**Monitorování Azure Security Center**: nelze použít
+
+**Zodpovědnost**: zákazník
+
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a spravovaných klíčů zákazníků.
+
+**Pokyny**: Ujistěte se, že je pro Azure Key Vault povoleno obnovitelné odstranění. Obnovitelné odstranění umožňuje obnovit odstraněné trezory klíčů a objekty trezoru, jako jsou klíče, tajné klíče a certifikáty. 
+
+Použití obnovitelného odstranění Azure Key Vault: 
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace naleznete [v tématu Security Control: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
 
-### <a name="101-create-an-incident-response-guide"></a>10.1: Vytvoření průvodce odezvou na incidenty
+### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
-**Pokyny:** Vytvořte průvodce odezvou na incidenty pro vaši organizaci. Ujistěte se, že existují písemné plány reakce na incidenty, které definují všechny role personálu, stejně jako fáze zpracování incidentů / správy od detekce až po kontrolu po incidentu. Tyto procesy by se měly zaměřit na ochranu citlivých systémů, například na systémy používající tajné klíče trezoru klíčů.
+**Pokyny**: Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů z detekce až po přezkoumání po jednotlivých událostech. Tyto procesy by měly mít fokus na ochranu citlivých systémů, jako jsou například pomocí Key Vault tajných klíčů.
 
-Jak nakonfigurovat automatizaci pracovních postupů v Centru zabezpečení Azure: 
+Postup konfigurace automatizace pracovních postupů v rámci Azure Security Center: 
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide   
 
-Pokyny pro vytváření vlastního procesu reakce na bezpečnostní incidenty:  
+Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení:  
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-Anatomie incidentu v centru Microsoft Security Response Center:   
+Anatomie centra Microsoft Security Response Center:   
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process   
 
-Zákazník může také využít nist počítačové bezpečnosti Incident Handling Guide na pomoc při vytváření vlastního plánu reakce na incidenty: 
+Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty: 
 
 https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Vytvoření postupu hodnocení incidentů a stanovení priorit
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
-**Pokyny**: Centrum zabezpečení přiřazuje každé výstraze závažnost, která vám pomůže určit prioritu, které výstrahy by měly být nejprve prošetřeny. Závažnost je založena na tom, jak sebevědomý Security Center je v hledání nebo analytice slouží k vydání výstrahy, stejně jako úroveň spolehlivosti, že tam byl škodlivý záměr za aktivitu, která vedla k upozornění. Navíc jasně označit odběry (pro ex. produkční, non-prod) a vytvořit systém pojmenování pro jasně identifikovat a kategorizovat prostředky Azure, zejména ty, které zpracovávají citlivá data, jako jsou tajné kódy Azure Key Vault.
+**Doprovodné**materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění. Kromě toho jasně označte odběry (pro např. produkční, neprodukční) a vytvoření názvového systému, který umožňuje snadno identifikovat a kategorizovat prostředky Azure, zejména ty, které zpracovávají citlivá data, například Azure Key Vault tajných údajů.
 
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="103-test-security-response-procedures"></a>10.3: Zkušební postupy odezvy zabezpečení
+### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
-**Pokyny:** Provádění cvičení k testování možností reakce na incidenty vašich systémů na pravidelné kadence pomoci chránit vaše instance Azure Key Vault a související prostředky. Identifikujte slabá místa a mezery a podle potřeby plán revidujte.
+**Doprovodné**materiály: proveďte cvičení k otestování funkcí reakce na incidenty na běžných tempo, které vám pomůžou chránit vaše Azure Key Vaulté instance a související prostředky. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
-Podívejte se na publikaci NIST: Průvodce testovacími, školicími a cvičebními programy pro plány a schopnosti IT: 
+Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT: 
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Poskytněte kontaktní údaje bezpečnostních incidentů a nakonfigurujte upozornění na bezpečnostní incidenty
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
-**Pokyny**: Kontaktní informace o bezpečnostních incidentech společnost Microsoft použije k tomu, aby vás kontaktovala, pokud centrum MSRC (Microsoft Security Response Center) zjistí, že k vašim datům získala přístup nezákonná nebo neoprávněná strana.  Zkontrolujte incidenty po faktu, abyste zajistili, že budou problémy vyřešeny.
+**Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba.  Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-Jak nastavit kontakt zabezpečení Centra zabezpečení Azure:
+Jak nastavit Azure Security Center kontakt zabezpečení:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Monitorování Centra zabezpečení Azure:** Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Začleňte výstrahy zabezpečení do systému reakce na incidenty
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
-**Pokyny:** Exportujte výstrahy a doporučení Centra zabezpečení Azure pomocí funkce nepřetržitého exportu, která vám pomůže identifikovat rizika pro prostředky s povoleným úložištěm klíčů Azure. Nepřetržitý export umožňuje exportovat výstrahy a doporučení buď ručně, nebo průběžně.  Datový konektor Azure Security Center můžete použít k streamování výstrah do Azure Sentinelu. 
+**Doprovodné**materiály: vyexportujte výstrahy a doporučení pro Azure Security Center pomocí funkce průběžného exportu, které vám pomůžou identifikovat rizika pro prostředky s povoleným Azure Key Vault. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem.  Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel. 
 
  
 
-Jak nakonfigurovat nepřetržitý export: 
+Postup konfigurace průběžného exportu: 
 
 https://docs.microsoft.com/azure/security-center/continuous-export 
 
   
 
-Jak streamovat výstrahy do Azure Sentinelu: 
+Jak streamovat výstrahy do Azure Sentinel: 
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatizace reakce na výstrahy zabezpečení
+### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
-**Pokyny:** Pomocí funkce Automatizace pracovních postupů v Centru zabezpečení Azure můžete automaticky aktivovat odpovědi prostřednictvím "Logic Apps" na výstrahy zabezpečení a doporučení k ochraně prostředků chráněných úložištěm klíčů Azure. 
+**Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" pro výstrahy zabezpečení a doporučení k ochraně vašich chráněných prostředků Azure Key Vault. 
 
  
 
-Konfigurace automatizace pracovních postupů a aplikací logiky: 
+Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps: 
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost**: Zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace naleznete [v tématu Bezpečnostní kontrola: Penetrační testy a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Proveďte pravidelné penetrační testování prostředků Azure a zajistěte nápravu všech kritických zjištění zabezpečení do 60 dnů
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech důležitých zjištění zabezpečení do 60 dnů.
 
-**Pokyny:** Není provádět testování pera na azure key vault služby přímo, ale doporučuje se otestovat prostředky Azure, které používají key vault k zajištění zabezpečení tajných kódů.
+**Pokyny**: neprovádíte přímé testování perem u Azure Key Vault služby, ale doporučujeme, abyste otestovali prostředky Azure, které používají Key Vault k zajištění zabezpečení tajných kódů.
 
-Budete se muset řídit pravidly společnosti Microsoft, abyste zajistili, že penetrační testy nebudou v rozporu se zásadami společnosti Microsoft:
+Abyste zajistili, že testy průniku nebudou mít porušení zásad Microsoftu, budete muset postupovat podle pravidel Microsoft Engagement:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-Další informace o strategii společnosti Microsoft a provádění červených týmů a testování průniku živých webů proti cloudové infrastruktuře, službám a aplikacím spravovanému společností Microsoft naleznete zde: 
+V této části najdete další informace o strategii a provádění testování na základě červeného týmu a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem: 
 
 https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Monitorování Azure Security Center**: Nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost**: Sdíleno
+**Odpovědnost**: sdílená
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na [srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zásad zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

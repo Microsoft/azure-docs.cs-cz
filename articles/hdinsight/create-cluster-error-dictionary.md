@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight Vytvoření clusteru – slovník chyb
-description: Zjistěte, jak řešit chyby, ke kterým dochází při vytváření clusterů Azure HDInsight
+title: Azure HDInsight – vytvoření clusteru – chybový slovník
+description: Naučte se řešit chyby, ke kterým dochází při vytváření clusterů Azure HDInsight.
 author: karkrish
 ms.author: v-todmc
 ms.reviewer: hrasheed
@@ -8,75 +8,75 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 803783eddfbffd5c3dbab7353ee00dd7f11a09e5
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618898"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186630"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Chyby při vytváření clusteru
 
-Tento článek popisuje řešení chyb, které mohou narazit při vytváření clusterů.
+Tento článek popisuje řešení chyb, ke kterým může dojít při vytváření clusterů.
 
 > [!NOTE]
-> První tři chyby popsané v tomto článku jsou chyby ověření. K nim může dojít, když produkt Azure HDInsight používá **CsmDocument_2_0** třídy.
+> První tři chyby popsané v tomto článku jsou chyby ověřování. K tomu může dojít, když produkt Azure HDInsight používá třídu **CsmDocument_2_0** .
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Kód chyby: Dokument DeploymentDocument CsmDocument_2_0 ověření se nezdařil.
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Kód chyby: DeploymentDocument ' CsmDocument_2_0 ' se nepodařilo ověřit
 
 ### <a name="error"></a>Chyba
 
-"Umístění akce skriptu nelze\<získat přístup\>k adrese URI: SCRIPT ACTION URL "
+"Umístění akce skriptu není možné přistupovat\<k identifikátoru\>URI: URL akce skriptu"
 
 #### <a name="error-message"></a>Chybová zpráva
 
-"Vzdálený server vrátil chybu: (404) nebyl nalezen."
+"Vzdálený server vrátil chybu: (404) Nenalezeno."
 
 ### <a name="cause"></a>Příčina
 
-Služba HDInsight nemá přístup k adrese URL akce skriptu, kterou jste zadali jako součást požadavku vytvořit cluster. Služba obdrží předchozí chybovou zprávu při pokusu o přístup k akci skriptu.
+Služba HDInsight nemá přístup k adrese URL akce skriptu, kterou jste zadali v rámci žádosti o vytvoření clusteru. Služba obdrží předchozí chybovou zprávu, když se pokusí o přístup k akci skriptu.
 
 ### <a name="resolution"></a>Řešení
 
-- U adresy URL protokolu HTTP nebo HTTPS ověřte adresu URL pokusem o přejděte z okna anonymního prohlížeče.
-- Pro adresu URL WASB, ujistěte se, že skript existuje v účtu úložiště, který udáváte v požadavku. Také se ujistěte, že klíč úložiště pro tento účet úložiště je správný.
-- Pro adresu URL ADLS se ujistěte, že skript existuje v účtu úložiště.
+- V případě adresy URL protokolu HTTP nebo HTTPS Ověřte adresu URL tak, že se pokusíte přejít z okna prohlížeče anonymním.
+- V případě adresy URL WASB se ujistěte, že tento skript existuje v účtu úložiště, který v žádosti udělíte. Ujistěte se také, že klíč úložiště pro tento účet úložiště je správný.
+- V případě adresy URL ADLS se ujistěte, že tento skript existuje v účtu úložiště.
 
 ---
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Kód chyby: Dokument DeploymentDocument CsmDocument_2_0 ověření se nezdařil.
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Kód chyby: DeploymentDocument ' CsmDocument_2_0 ' se nepodařilo ověřit
 
 ### <a name="error"></a>Chyba
 
-"Umístění akce skriptu nelze \<získat\>přístup k identifikátoru URI: SCRIPT_ACTION_URL "
+"Umístění akce skriptu není možné přistupovat \<k\>identifikátoru URI: SCRIPT_ACTION_URL"
 
 #### <a name="error-message"></a>Chybová zpráva
 
-"Daný SCRIPT_URI \<identifikátoru URI skriptu\> je v ADLS, ale tento cluster nemá žádný objekt zabezpečení úložiště datového jezera"
+"Zadané identifikátory URI \<SCRIPT_URI\> skriptu jsou v adls, ale tento cluster nemá žádný objekt zabezpečení Data Lake Storage".
 
 ### <a name="cause"></a>Příčina
 
-Služba HDInsight nemá přístup k adrese URL akce skriptu, kterou jste zadali jako součást požadavku vytvořit cluster. Služba obdrží předchozí chybovou zprávu při pokusu o přístup k akci skriptu.
+Služba HDInsight nemá přístup k adrese URL akce skriptu, kterou jste zadali v rámci žádosti o vytvoření clusteru. Služba obdrží předchozí chybovou zprávu, když se pokusí o přístup k akci skriptu.
 
 ### <a name="resolution"></a>Řešení
 
-Přidejte odpovídající účet Azure Data Lake Storage Gen 1 do clusteru. Také přidejte instanční objekt, který přistupuje k účtu Data Lake Storage Gen 1 do clusteru.
+Přidejte odpovídající Azure Data Lake Storage účet 1. generace do clusteru. Přidejte taky instanční objekt, který přistupuje k Data Lake Storage účtu 1. generace ke clusteru.
 
 ---
 
-## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Kód chyby: Dokument DeploymentDocument CsmDocument_2_0 ověření se nezdařil.
+## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Kód chyby: DeploymentDocument ' CsmDocument_2_0 ' se nepodařilo ověřit
 
 ### <a name="error"></a>Chyba
 
-"Velikost virtuálního\<\>počítače " CUSTOMER_SPECIFIED_VM_SIZE " uvedené v požadavku\<je\>neplatná nebo není podporována pro roli ' ROLE '. Platné hodnoty \<jsou: VALID_VM_SIZE_FOR_ROLE\>."
+\<Velikost virtuálního počítače\>CUSTOMER_SPECIFIED_VM_SIZE zadaná v požadavku je neplatná nebo není podporovaná pro roli\<role.\> Platné hodnoty jsou: \<VALID_VM_SIZE_FOR_ROLE\>. "
 
 ### <a name="cause"></a>Příčina
 
-Zadaná velikost virtuálního počítače není pro roli povolena. K této chybě může dojít, protože hodnota velikosti virtuálního počítače nefunguje podle očekávání nebo není vhodná pro roli počítače.
+Velikost virtuálního počítače, kterou jste zadali, není pro tuto roli povolená. K této chybě může dojít, protože hodnota velikosti virtuálního počítače nefunguje podle očekávání nebo není vhodná pro roli počítače.
 
 ### <a name="resolution"></a>Řešení
 
-Chybová zpráva uvádí platné hodnoty pro velikost virtuálního počítače. Vyberte jednu z těchto hodnot a opakujte požadavek vytvořit cluster.
+Chybová zpráva obsahuje seznam platných hodnot pro velikost virtuálního počítače. Vyberte jednu z těchto hodnot a opakujte požadavek na vytvoření clusteru.
 
 ---
 
@@ -84,19 +84,19 @@ Chybová zpráva uvádí platné hodnoty pro velikost virtuálního počítače.
 
 ### <a name="error"></a>Chyba
 
-"VirtualNetworkId není platný. VirtualNetworkId\<'\>USER_VIRTUALNETWORKID '*"
+"VirtualNetworkId není platný. VirtualNetworkId '\<USER_VIRTUALNETWORKID\>' *
 
 ### <a name="cause"></a>Příčina
 
-Hodnota **VirtualNetworkId,** kterou jste zadali při vytváření clusteru, není ve správném formátu.
+Hodnota **VirtualNetworkId** , kterou jste zadali během vytváření clusteru, nemá správný formát.
 
 ### <a name="resolution"></a>Řešení
 
-Ujistěte se, že hodnoty **VirtualNetworkId** a podsítě jsou ve správném formátu. Chcete-li získat hodnotu **VirtualNetworkId:**
+Ujistěte se, že hodnoty **VirtualNetworkId** a Subnet jsou ve správném formátu. Pokud chcete získat hodnotu **VirtualNetworkId** :
 
 1. Přejděte na web Azure Portal.
-1. Vyberte virtuální síť.
-1. Vyberte položku nabídky **Vlastnosti.** Hodnota **vlastnosti ResourceID** je hodnota **VirtualNetworkId.**
+1. Vyberte svou virtuální síť.
+1. Vyberte položku nabídky **vlastnosti** . Hodnota vlastnosti **ResourceID** je hodnota **VirtualNetworkId** .
 
 Tady je příklad ID virtuální sítě:
 
@@ -108,15 +108,15 @@ Tady je příklad ID virtuální sítě:
 
 ### <a name="error"></a>Chyba
 
-"Nasazení clusteru se nezdařilo z důvodu chyby v akci vlastního skriptu. Neúspěšné \<akce:\>SCRIPT_NAME , Přejděte do uzuliny Ambari, abyste chybu dále ladili."
+Nasazení clusteru se nepovedlo kvůli chybě v akci vlastního skriptu. Neúspěšné akce \<:\>SCRIPT_NAME, přečtěte si prosím uživatelské rozhraní Ambari, abyste mohli dál ladit selhání. "
 
 ### <a name="cause"></a>Příčina
 
-Vlastní skript, který jste zadali během požadavku vytvořit cluster, je proveden po úspěšném nasazení clusteru. Tento kód chyby označuje, že při provádění \<vlastního\>skriptu s názvem SCRIPT_NAME došlo k chybě.
+Vlastní skript, který jste zadali během žádosti o vytvoření clusteru, se spustí po úspěšném nasazení clusteru. Tento kód chyby označuje, že při provádění vlastního skriptu s názvem \<SCRIPT_NAME\>došlo k chybě.
 
 ### <a name="resolution"></a>Řešení
 
-Vzhledem k tomu, že skript je váš vlastní skript, doporučujeme vyřešit problém a v případě potřeby skript znovu spustit. Chcete-li vyřešit selhání skriptu, zkontrolujte protokoly ve složce /var/lib/ambari-agent/*. Nebo otevřete stránku **Operace** v uzdu Ambari a pak vyberte **operaci run_customscriptaction** chcete-li zobrazit podrobnosti o chybě.
+Vzhledem k tomu, že skript je váš vlastní skript, doporučujeme, abyste problém vyřešíte a v případě potřeby znovu spustíte skript. Pokud chcete řešit potíže s selháním skriptu, Projděte si protokoly ve složce/var/lib/Ambari-agent/*. Nebo otevřete stránku **operace** v uživatelském rozhraní Ambari a potom vyberte operaci **run_customscriptaction** pro zobrazení podrobností o chybě.
 
 ---
 
@@ -124,15 +124,15 @@ Vzhledem k tomu, že skript je váš vlastní skript, doporučujeme vyřešit pr
 
 ### <a name="error"></a>Chyba
 
-"Verze \<\> schématu META_STORE_TYPE Metastore \<\> METASTORE_MAJOR_VERSION \<v\> databázi DATABASE_NAME \<není\>kompatibilní s verzí clusteru CLUSTER_VERSION "
+"Verze \<\> \<schématu\> META_STORE_TYPE metastore METASTORE_MAJOR_VERSION v database_name \<\> databáze není kompatibilní s verzí \<clusteru CLUSTER_VERSION"\>
 
 ### <a name="cause"></a>Příčina
 
-Vlastní metastore není kompatibilní s vybranou verzí clusteru HDInsight. V současné době clustery HDInsight 4.0 podporují pouze Metastore verze 3.0 a novější, zatímco clustery HDInsight 3.6 nepodporují Metastore verze 3.0 a novější.
+Vlastní metastore je nekompatibilní s vybranou verzí clusteru HDInsight. V současné době clustery HDInsight 4,0 podporují jenom metastore verze 3,0 a novější, zatímco clustery HDInsight 3,6 nepodporují metastore verze 3,0 a novější.
 
 ### <a name="resolution"></a>Řešení
 
-Používejte pouze verze Metastore, které podporuje vaše verze clusteru HDInsight. Pokud nezadáte vlastní metastore, HDInsight interně vytvoří metastore a pak jej odstraní po odstranění clusteru.
+Používejte jenom metastore verze, které podporuje vaše verze clusteru HDInsight. Pokud nezadáte vlastní metastore, HDInsight interně vytvoří metastore a pak ho odstraní po odstranění clusteru.
 
 ---
 
@@ -140,20 +140,20 @@ Používejte pouze verze Metastore, které podporuje vaše verze clusteru HDInsi
 
 ### <a name="error"></a>Chyba
 
-"Nelze se připojit ke koncovému bodu správy clusteru k provedení operace škálování. Ověřte, zda pravidla zabezpečení sítě neblokují externí přístup ke clusteru a zda lze úspěšně získat přístup k rozhraní správce clusteru (Ambari).
+Nepovedlo se připojit ke koncovému bodu správy clusteru, aby se provedla operace škálování. Ověřte, zda pravidla zabezpečení sítě neblokují externí přístup ke clusteru a aby bylo možné získat přístup k uživatelskému rozhraní Správce clusteru (Ambari). "
 
 ### <a name="cause"></a>Příčina
 
-Pravidlo brány firewall ve skupině zabezpečení sítě (NSG) blokuje komunikaci clusteru s kritickými službami azure health and management services.
+Pravidlo brány firewall ve skupině zabezpečení sítě (NSG) blokuje komunikaci clusteru s důležitými službami stavu a správy Azure.
 
 ### <a name="resolution"></a>Řešení
 
-Pokud chcete k řízení síťového provozu použít skupiny zabezpečení sítě, před instalací HDInsightu prováďte následující akce:
+Pokud plánujete použít skupiny zabezpečení sítě k řízení síťového provozu, před instalací HDInsight proveďte následující akce:
 
-- Identifikujte oblast Azure, kterou chcete použít pro HDInsight.
-- Identifikujte IP adresy vyžadované hdinsightem. Další informace najdete v tématu [IP adresy pro správu služby HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
-  - Vytvořte nebo upravte skupiny zabezpečení sítě pro podsíť, do které chcete nainstalovat HDInsight.
-  - U skupin zabezpečení sítě povolte příchozí přenosy na portu 443 z adres IP. Tato konfigurace zajišťuje, že služby správy HDInsight mohou dosáhnout clusteru mimo virtuální síť.
+- Identifikujte oblast Azure, kterou plánujete použít pro HDInsight.
+- Identifikujte IP adresy, které vyžaduje HDInsight. Další informace najdete v tématu [IP adresy pro správu služby HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+  - Vytvořte nebo upravte skupiny zabezpečení sítě pro podsíť, do které plánujete nainstalovat HDInsight.
+  - U skupin zabezpečení sítě povolte příchozí přenosy na portu 443 z IP adres. Tato konfigurace zajistí, že se služby HDInsight Management budou moci spojit s clusterem mimo virtuální síť.
 
 ---
 
@@ -161,20 +161,20 @@ Pokud chcete k řízení síťového provozu použít skupiny zabezpečení sít
 
 ### <a name="error"></a>Chyba
 
-"Spravovaná identita nemá oprávnění k účtu úložiště. Ověřte, zda je role Vlastník dat objektu blob úložiště přiřazena spravované identitě pro účet úložiště. Úložiště: \</subscriptions/ ID\> předplatného\< /resourceGroups/ Název\> skupiny prostředků /providers/Microsoft.Storage/storageAccounts/ \<Název\> \<účtu úložiště\> , Spravovaná identita: /předplatná/ ID předplatného /resourceGroups/\< / Název\> skupiny prostředků /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>"
+"Spravovaná identita nemá oprávnění k účtu úložiště. Ověřte prosím, že role vlastníka dat objektů BLOB úložiště je přiřazená k spravované identitě pro účet úložiště. Storage:/subscriptions/ \<\> ID předplatného\< /ResourceGroups/název\> skupiny \<prostředků/Providers/Microsoft.Storage/storageAccounts/název\>účtu úložiště, spravovaná identita \<:/subscriptions/\> ID předplatného/resourceGroups/\> / \<\< název skupiny prostředků/Providers/Microsoft.ManagedIdentity/userAssignedIdentities/\>název spravované identity uživatele.
 
 ### <a name="cause"></a>Příčina
 
-Neposkytli jste oprávnění potřebná ke správě identity. Uživatelem přiřazená spravovaná identita nemá roli přispěvatele úložiště objektů blob na účtu úložiště Azure Data Lake Storage Gen2.
+Nezadali jste oprávnění potřebná ke správě identity. Spravovaná identita přiřazená uživatelem nemá v účtu úložiště Azure Data Lake Storage Gen2 roli Přispěvatel Blob Storage.
 
 ### <a name="resolution"></a>Řešení
 
 1. Otevřete web Azure Portal.
-1. Přejděte na svůj účet úložiště.
-1. Podívejte se do části **Řízení přístupu (IAM)**.
-1. Ujistěte se, že uživatel má roli přispěvatele dat objektů blob úložiště nebo roli vlastníka dat objektu blob úložiště, která je jim přiřazena.
+1. Přejít na účet úložiště.
+1. Podívejte se na **Access Control (IAM)**.
+1. Ujistěte se, že má uživatel přiřazenou roli Přispěvatel dat objektu BLOB úložiště nebo přiřazenou roli vlastníka dat objektu BLOB úložiště.
 
-Další informace naleznete v tématu [Nastavení oprávnění pro spravovanou identitu v účtu Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Další informace najdete v tématu [Nastavení oprávnění pro spravovanou identitu na účtu Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 ---
 
@@ -182,35 +182,35 @@ Další informace naleznete v tématu [Nastavení oprávnění pro spravovanou i
 
 ### <a name="error"></a>Chyba
 
-"Pravidla zabezpečení ve skupině zabezpečení sítě\</předplatná/ SubscriptionID\>/resourceGroups/<\> název skupiny prostředků výchozí/zprostředkovatelé/Microsoft.Network/networkSecurityGroups/\<\>\<\> \<\>\<\> \<Název\> skupiny síťových zabezpečení nakonfigurovaná s podsítí /předplatná/ SubscriptionID /resourceGroups/ Název skupiny prostředků RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/ Virtual Network Name /podnets/ Podnet Name neumožňuje požadované příchozí a/nebo odchozí připojení. Další informace najdete na webu [Plánování virtuální sítě pro Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)nebo se obraťte na podporu."
+"Pravidla zabezpečení\<ve skupině zabezpečení sítě/Subscriptions/SubscriptionID\>/ResourceGroups/<název\> skupiny prostředků default/Providers/Microsoft. Network/networkSecurityGroups/\<název\> skupiny zabezpečení sítě nakonfigurovaná s podsítí/Subscriptions/\<SubscriptionId\>/resourceGroups/\<název\> skupiny prostředků RG-westeurope-VNet-TomTom-default/Providers/Microsoft. Network/virtualNetworks\</Virtual Network\>name\</subnets/název\> podsítě nepovoluje požadované příchozí nebo odchozí připojení. Další informace najdete v tématu [plánování virtuální sítě pro Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment), nebo kontaktování podpory.
 
 ### <a name="cause"></a>Příčina
 
-Pokud skupiny zabezpečení sítě nebo uživatelem definované trasy (UDR) řídí příchozí provoz do clusteru HDInsight, ujistěte se, že váš cluster může komunikovat s kritickými službami stavu a správy Azure.
+Pokud skupiny zabezpečení sítě nebo trasy definované uživatelem (udr) řídí příchozí provoz do clusteru HDInsight, ujistěte se, že váš cluster může komunikovat s důležitými službami Azure Health a Management.
 
 ### <a name="resolution"></a>Řešení
 
-Pokud chcete k řízení síťového provozu použít skupiny zabezpečení sítě, před instalací HDInsightu prováďte následující akce:
+Pokud plánujete použít skupiny zabezpečení sítě k řízení síťového provozu, před instalací HDInsight proveďte následující akce:
 
-- Identifikujte oblast Azure, kterou chcete použít pro HDInsight, a vytvořte bezpečný seznam IP adres pro vaši oblast. Další informace naleznete v [tématu Zdraví a služby správy: Konkrétní regiony](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions).
-- Identifikujte IP adresy, které vyžaduje HDInsight. Další informace naleznete v tématu [HDInsight management IP addresses](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
-- Vytvořte nebo upravte skupiny zabezpečení sítě pro podsíť, do které chcete nainstalovat HDInsight. U skupin zabezpečení sítě povolte příchozí přenosy na portu 443 z adres IP. Tato konfigurace zajišťuje, že služby správy HDInsight mohou dosáhnout clusteru mimo virtuální síť.
+- Identifikujte oblast Azure, kterou plánujete použít pro HDInsight, a vytvořte bezpečný seznam IP adres pro vaši oblast. Další informace najdete v tématu [služby pro stav a správu: konkrétní oblasti](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions).
+- Identifikujte IP adresy, které HDInsight vyžaduje. Další informace najdete v tématu [IP adresy správy HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+- Vytvořte nebo upravte skupiny zabezpečení sítě pro podsíť, do které plánujete nainstalovat HDInsight. U skupin zabezpečení sítě povolte příchozí přenosy na portu 443 z IP adres. Tato konfigurace zajistí, že se služby HDInsight Management budou moci spojit s clusterem mimo virtuální síť.
 
 ---
 
-## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Kód chyby: Instalaci součástí se nepodařilo nainstalovat do jednoho nebo více hostitelů.
+## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Kód chyby: instalačnímu programu clusteru se nepodařilo nainstalovat součásti na jednoho nebo více hostitelů.
 
 ### <a name="error"></a>Chyba
 
-"Instalaci clusteru se nepodařilo nainstalovat součásti do jednoho nebo více hostitelů. Opakujte žádost."
+"Instalačnímu programu clusteru se nepodařilo nainstalovat součásti na jednoho nebo více hostitelů. Opakujte prosím požadavek.
 
 ### <a name="cause"></a>Příčina 
 
-Tato chyba se obvykle generuje, když je přechodný problém nebo výpadek Azure.
+Tato chyba se obvykle generuje, když dojde k přechodnému problému nebo výpadku Azure.
 
 ### <a name="resolution"></a>Řešení
 
-Zkontrolujte [stavovou](https://status.azure.com) stránku Azure pro všechny výpadky Azure, které by mohly ovlivnit nasazení clusteru. Pokud nejsou žádné výpadky, opakujte nasazení clusteru.
+Podívejte se na stránku [stav Azure](https://status.azure.com) pro všechny výpadky Azure, které můžou mít vliv na nasazení clusteru. Pokud nedošlo k výpadkům, zkuste cluster nasadit znovu.
 
 ---
 
@@ -218,36 +218,36 @@ Zkontrolujte [stavovou](https://status.azure.com) stránku Azure pro všechny v�
 
 ### <a name="error"></a>Chyba
 
-Nelze se připojit ke koncovému bodu správy clusteru. Opakujte akci později.
+Nelze se připojit ke koncovému bodu správy clusteru. Zkuste to prosím znovu později.
 
 ### <a name="cause"></a>Příčina
 
-Služba HDInsight se nemůže připojit ke clusteru při pokusu o vytvoření clusteru
+Služba HDInsight se nemůže připojit ke clusteru při pokusu o vytvoření clusteru.
 
 ### <a name="resolution"></a>Řešení
 
-Pokud používáte vlastní skupinu zabezpečení sítě virtuální sítě (NSG) a uživatelem definované trasy (UDR), ujistěte se, že váš cluster může komunikovat se službami správy HDInsight. Další informace naleznete v [tématu IP adresy hdinsight pro správu](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+Pokud používáte vlastní skupinu zabezpečení sítě VNet (skupin zabezpečení sítě) a trasy definované uživatelem (udr), ujistěte se, že váš cluster může komunikovat se službami HDInsight Management. Další informace najdete v tématu [IP adresy správy HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Kód chyby: Nasazení se nezdařila z<Resource URI>důvodu porušení zásad: "Prostředek " byl zakázán zásadami. Identifikátory zásad: '[{"policyAssignment":{"name":""id":"/providers/Microsoft.Management/managementGroups/<Policy Name> providers/Microsoft.Authorization/policyAssignments/ "},"policyDefinition":'Id":"/providers/Microsoft.ManagementGroups/providers/Microsoft.Authorization/policyAssignments/ "},"policyDefinition":'.id":"/providers/Microsoft.ManagementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition":'.,<Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Kód chyby: nasazení selhala kvůli porušení zásad: prostředek<Resource URI>byl zakázán zásadami. Identifikátory zásad: [{"policyAssignment": {"název": "<Policy Name> ", "ID": "/Providers/Microsoft.Management/managementgroups/.<Management Group Name> Providers/Microsoft. Authorization/policyAssignments/<Policy Name>"}, "policyDefinition":<Policy Definition>
 
 ### <a name="cause"></a>Příčina
 
-Zásady Azure založené na předplatném můžete odmítnout vytváření veřejných IP adres. K vytvoření clusteru HDInsight jsou potřeba dvě veřejné IP adresy.
+Zásady Azure založené na předplatném můžou odepřít vytváření veřejných IP adres. K vytvoření clusteru HDInsight jsou potřeba dvě veřejné IP adresy.
 
-Vytvoření clusteru obecně ovlivňují následující zásady:
+Následující zásady obecně ovlivňují vytváření clusteru:
 
-* Zásady, které brání vytváření IP adres nebo vyrovnávání zatížení v rámci předplatného.
-* Zásady, které brání vytváření účtů úložiště.
-* Zásady, které brání odstranění síťových prostředků, jako jsou ip adresy nebo nástroje pro vyrovnávání zatížení.
+* Zásady, které zabraňují vytváření IP adres nebo nástrojů pro vyrovnávání zatížení v rámci předplatného.
+* Zásady, které zabraňují vytváření účtů úložiště.
+* Zásady, které zabraňují odstraňování síťových prostředků, jako jsou IP adresy nebo nástroje pro vyrovnávání zatížení.
 
 ### <a name="resolution"></a>Řešení
 
-Při vytváření clusteru HDInsight odstraňte nebo zakažte zásady Azure založené na předplatném.
+Při vytváření clusteru HDInsight odstraňte nebo zakažte přiřazení Azure Policy na základě předplatného.
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o řešení chyb při vytváření clusteru najdete v [tématu Poradce při potížích s chybami vytváření clusteru pomocí Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails).
+Další informace o chybách při vytváření clusteru najdete v tématu [řešení potíží s vytvářením clusteru pomocí Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails).

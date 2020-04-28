@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 04/21/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 70a087e106e632d697052461928f3e1123a06b1b
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.openlocfilehash: 42eec4a0796a7f07c7e7d1c35571d9d4ddcf69d7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82137531"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176698"
 ---
 # <a name="azure-data-lake-storage-query-acceleration-preview"></a>Akcelerace dotazů Azure Data Lake Storage (Preview)
 
@@ -71,7 +71,7 @@ Příklad toho, jak může aplikace integrovat akceleraci dotazů, najdete v té
 
 ## <a name="pricing"></a>Ceny
 
-V důsledku zvýšeného výpočetního zatížení v rámci služby Azure Data Lake Storage se cenový model pro použití akcelerace dotazů liší od normálního transakčního modelu Azure Data Lake Storage. Zrychlení dotazů účtuje náklady na množství prověřených dat a také náklady na množství dat vrácených volajícímu.
+V důsledku zvýšeného výpočetního zatížení v rámci služby Azure Data Lake Storage se cenový model pro použití akcelerace dotazů liší od normálního transakčního modelu Azure Data Lake Storage. Zrychlení dotazů účtuje náklady na množství prověřených dat a také náklady na množství dat vrácených volajícímu. Další informace najdete v tématu [Azure Data Lake Storage Gen2 ceny](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
 Bez ohledu na změnu modelu fakturace je cenový model zrychlení dotazu navržen tak, aby snížil celkové náklady na vlastnictví úlohy, a to s ohledem na snížení mnohem dražších nákladů na virtuální počítače.
 

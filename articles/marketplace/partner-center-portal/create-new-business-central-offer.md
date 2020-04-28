@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 10fa16767061506eccf212c182e738246dc9fe7b
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115284"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867228"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Vytvoření nové nabídky Dynamics 365 Business Central
 
@@ -107,7 +107,7 @@ Vyberte minimálně jednu a maximálně tři kategorie, které budou použity k 
 
 Zadejte číslo verze nabídky. Zákazníci uvidí tuto verzi uvedenou na stránce s podrobnostmi nabídky.
 
-### <a name="terms-and-conditions"></a>Podmínky a ujednání
+### <a name="terms-and-conditions"></a>podmínky a ujednání
 
 Uveďte své vlastní právní podmínky v oblasti **smluvních podmínek.** Můžete také zadat adresu URL, kde lze najít vaše smluvní podmínky. Zákazníci budou muset přijmout tyto podmínky, než budou moci vyzkoušet vaši nabídku.
 
@@ -118,7 +118,7 @@ Stránka Nabídka uvádí, kde definujete podrobnosti pro vaši nabídku (např�
 > [!NOTE]
 > Podrobnosti nabídky můžete poskytnout pouze v jednom jazyce. Nemusí být v angličtině, pokud popis nabídky začíná frází"Tato aplikace je k dispozici pouze v [neanglickém jazyce]." Je také přijatelné poskytnout *adresu URL odkazu nápovědy* pro nabízení obsahu v jiném jazyce, než který byl použit v obsahu nabídky.
 
-### <a name="name"></a>Name (Název)
+### <a name="name"></a>Název
 
 Jméno, které zde zadáte, se zákazníkům zobrazí jako název nabídky. Toto pole je předem vyplněno textem, který jste zadali pro **alias Nabídky** při vytváření nabídky, ale tuto hodnotu můžete změnit. Tento název může být chráněn ochrannou známkou (a můžete uvést ochranné známky nebo symboly autorských práv). Název nesmí mít více než 50 znaků a nesmí obsahovat žádné emodži.
 
@@ -192,6 +192,9 @@ Zadejte zde alespoň jeden (a až tři) související marketingové dokumenty, j
 ### <a name="marketplace-images"></a>Obrázky na marketplace
 
 V této části můžete poskytnout loga a obrázky, které budou použity při zobrazování vaší nabídky zákazníkovi. Všechny obrázky musí být ve formátu PNG. Nahrajte logo nabídky ve dvou velikostech: **Malé (48 x 48)** a **Velké (216 x 216).**
+
+>[!Note]
+>Pokud máte problém s nahráváním souborů, ujistěte se, že místní síť neblokuje službu https://upload.xboxlive.com používanou partnerským centrem.
 
 #### <a name="screenshots"></a>Snímky obrazovek
 

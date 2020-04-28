@@ -1,24 +1,18 @@
 ---
 title: Přesunutí prostředku virtuálního počítače s Windows v Azure
 description: Přesuňte virtuální počítač s Windows do jiného předplatného nebo skupiny prostředků Azure v modelu nasazení Správce prostředků.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: ed29c92d20a6b0d749ec44a22f42ec446ec58650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c3f5541405d1fd983bbf988b99d2b4e10d8908c
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919562"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865668"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Přesun virtuálního počítače s Windows do jiného předplatného nebo jiné skupiny prostředků Azure
 Tento článek vás provede přesunutím virtuálního počítače (VM) Windows mezi skupinami prostředků nebo odběry. Přechod mezi předplatnými může být užitečné, pokud jste původně vytvořili virtuální počítač v osobním předplatném a teď ho chcete přesunout do předplatného vaší společnosti, abyste mohli pokračovat ve své práci. Není nutné spustit virtuální ho, aby se přesunout a měl by pokračovat v běhu během přesunutí.

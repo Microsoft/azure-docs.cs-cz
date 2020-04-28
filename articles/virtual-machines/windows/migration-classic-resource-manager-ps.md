@@ -1,25 +1,19 @@
 ---
 title: Migrace do Správce prostředků pomocí PowerShellu
 description: Tento článek vás provede migrací prostředků IaaS podporovanou platformou, jako jsou virtuální počítače, virtuální sítě a účty úložiště z klasických na Azure Resource Manager pomocí příkazů Azure PowerShellu
-services: virtual-machines-windows
-documentationcenter: ''
 author: tanmaygore
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 2b3dff9b-2e99-4556-acc5-d75ef234af9c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 12a77c4c21a26f1ec52bb3ffdc312df56d3c4537
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 314d7a4725709f00ba5cdbf54595857502bc5805
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249968"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865941"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrace prostředků IaaS z klasického do Správce prostředků Azure pomocí PowerShellu
 
@@ -60,7 +54,7 @@ Pokyny k instalaci najdete v tématu [Jak nainstalovat a nakonfigurovat Azure Po
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Krok 3: Ujistěte se, že jste správcem předplatného
 Chcete-li provést tuto migraci, musíte být přidáni jako spolusprávce předplatného na [webu Azure Portal](https://portal.azure.com).
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce **Hub** vyberte **Předplatné**. Pokud ji nevidíte, vyberte **Všechny služby**.
 3. Najděte příslušnou položku předplatného a pak se podívejte do pole **MOJE ROLE.** Pro spolusprávce by měla být hodnota _Správce účtu_.
 

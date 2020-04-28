@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 75e1f5fbfa41ac310d2a737dcfe28199715a094b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: d73c858bdbfee7c5b7c7e31b62b1f601b7b6838a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312876"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866442"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Vývoj a nasazení webových úloh pomocí sady Visual Studio – Azure App Service
 
@@ -79,7 +79,7 @@ Projekt můžete nasadit jako webovou úlohu samostatně nebo jej propojit s web
 
 ![Diagram znázorňující projekt WebJob odkazující na webový projekt](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadované součásti
 
 Pokud používáte Visual Studio 2015, nainstalujte [Azure SDK pro .NET (Visual Studio 2015).](https://azure.microsoft.com/downloads/)
 
@@ -175,7 +175,7 @@ Při konfiguraci nasazení konzolové aplikace pro webjobs nainstaluje visual st
           "runMode": "Continuous"
         }
 
-Tento soubor můžete upravit přímo a Visual Studio poskytuje technologie IntelliSense. Schéma souboru je uloženo [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) na a lze jej zobrazit zde.  
+Tento soubor můžete upravit přímo a Visual Studio poskytuje technologie IntelliSense. Schéma souboru je uloženo [https://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) na a lze jej zobrazit zde.  
 
 ### <a name="webjobs-listjson"></a><a id="webjobslist"></a>webjobs-list.json
 Když propojíte projekt s podporou webjobs s webovým projektem, visual studio uloží název projektu WebJobs do souboru *webjobs-list.json* ve složce *Vlastnosti* webového projektu. Seznam může obsahovat více projektů WebJobs, jak je znázorněno v následujícím příkladu:
@@ -192,7 +192,7 @@ Když propojíte projekt s podporou webjobs s webovým projektem, visual studio 
           ]
         }
 
-Tento soubor můžete upravit přímo a Visual Studio poskytuje technologie IntelliSense. Schéma souboru je uloženo [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) na a lze jej zobrazit zde.
+Tento soubor můžete upravit přímo a Visual Studio poskytuje technologie IntelliSense. Schéma souboru je uloženo [https://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) na a lze jej zobrazit zde.
 
 ### <a name="deploy-a-webjobs-project"></a><a id="deploy"></a>Nasazení projektu WebJobs
 Projekt WebJobs, který jste propojili s webovým projektem, se automaticky nasadí s webovým projektem. Informace o nasazení webového projektu najdete v **tématu Návody nasazení** > **aplikace** v levém navigačním panelu.

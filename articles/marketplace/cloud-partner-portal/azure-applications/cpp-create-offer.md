@@ -7,29 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: dsindona
-ms.openlocfilehash: 823c9cbe8c850fbc4170a5734305f9cc5e45be83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 405593a97571ac5be351011890d162b5c0396966
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285278"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865575"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
-Tento článek popisuje, jak vytvořit a publikovat položku nabídky aplikace Azure pro Azure Marketplace. Každá nabídka se na Azure Marketplace zobrazuje jako vlastní entita a skládá se z následujících seskupení prostředků a podpůrných služeb: podrobnosti o nabídce, jednotky sou, marketingové artefakty a informace o podpoře.
+[Portál cloudových partnerů](https://cloudpartner.azure.com/) už nepodporuje vytváření a správu nabídek aplikací Azure. Místo toho byla tato funkce přesunuta na [portál Microsoft Partner Center](https://partner.microsoft.com/). Další informace najdete [v tématu Vytvoření nabídky aplikace Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer).
 
-## <a name="new-offer-form"></a>Formulář nové nabídky
-
-Přihlaste se k [portálu partnerů cloudu](https://cloudpartner.azure.com/)a na levém řádku nabídek vyberte **+ Nová nabídka.** V nabídce Nová nabídka vyberte **Aplikace Azure,** chcete-li zobrazit formulář **Nová nabídka** a spustit proces definování datových zdrojů pro novou nabídku.
-
-![Formulář nové nabídky](./media/azure-new-managedapp-offer.png)
-
-## <a name="next-steps"></a>Další kroky
-
-Stránka Nová nabídka obsahuje sadu karet a polí formulářů, které použijete k vytvoření nové nabídky. Následující články vysvětlují, jak definovat skupiny prostředků a podpůrné služby pro vaši novou nabídku.
-
-* [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
-* [Karta Skladové položky](./cpp-skus-tab.md)
-* [Karta Testovací verze](./cpp-testdrive-tab.md)
-* [Karta Marketplace](./cpp-marketplace-tab.md)
-* [Karta Podpora](./cpp-support-tab.md)
+Než vytvoříte novou nabídku aplikací Azure, měli byste si přečíst [vytvořit účet Centra partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít řídicí panel Commercial [Marketplace](https://partner.microsoft.com/dashboard/directory) s vybranou stránkou **Přehled.** Podle pokynů v [části Vytvoření nabídky aplikace Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer) vytvořte svou nabídku.

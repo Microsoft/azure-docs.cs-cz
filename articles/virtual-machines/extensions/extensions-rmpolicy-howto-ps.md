@@ -1,6 +1,6 @@
 ---
-title: Omezení instalace rozšíření virtuálních počítače pomocí zásad Azure
-description: Pomocí zásad Azure můžete omezit nasazení rozšíření.
+title: Omezení instalace rozšíření virtuálních počítačů pomocí Azure Policy
+description: Použijte Azure Policy k omezení nasazení rozšíření.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -13,34 +13,34 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 428db340ce43463939ce71ffadd4188060f3e732
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b86429c90f436007116a45c6dbab443d6cc889e0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073117"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188548"
 ---
-# <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Omezení instalace rozšíření na virtuálních počítačích s Windows pomocí zásad Azure
+# <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Omezení instalace rozšíření na virtuálních počítačích s Windows pomocí Azure Policy
 
-Pokud chcete zabránit použití nebo instalaci určitých rozšíření na virtuálních počítačích s Windows, můžete vytvořit zásadu Azure pomocí PowerShellu k omezení rozšíření pro virtuální počítače v rámci skupiny prostředků. 
+Pokud chcete zabránit použití nebo instalaci určitých rozšíření na virtuální počítače s Windows, můžete vytvořit definici Azure Policy pomocí prostředí PowerShell k omezení rozšíření pro virtuální počítače v rámci skupiny prostředků. 
 
-Tento kurz používá Azure PowerShell v rámci cloudového prostředí, které se neustále aktualizuje na nejnovější verzi. 
+V tomto kurzu se používá Azure PowerShell v Cloud Shell, která se průběžně aktualizuje na nejnovější verzi. 
 
  
 
 ## <a name="create-a-rules-file"></a>Vytvoření souboru pravidel
 
-Chcete-li omezit, jaká rozšíření lze nainstalovat, musíte mít [pravidlo,](../../governance/policy/concepts/definition-structure.md#policy-rule) které poskytuje logiku k identifikaci rozšíření.
+Chcete-li omezit, jaká rozšíření lze nainstalovat, je nutné mít [pravidlo](../../governance/policy/concepts/definition-structure.md#policy-rule) , které poskytne Logic pro identifikaci rozšíření.
 
-Tento příklad ukazuje, jak odepřít rozšíření publikované "Microsoft.Compute" vytvořením souboru pravidel v Prostředí Azure Cloud Shell, ale pokud pracujete v Prostředí PowerShell místně, můžete také vytvořit místní soubor a nahradit cestu ($home/clouddrive) s cestou k místnímu souboru ve vašem počítači.
+V tomto příkladu se dozvíte, jak odepřít rozšíření publikovaná pomocí ' Microsoft. COMPUTE ' vytvořením souboru pravidel v Azure Cloud Shell, ale pokud pracujete v místním prostředí PowerShell, můžete také vytvořit místní soubor a nahradit cestu ($home/clouddrive) cestou k místnímu souboru na vašem počítači.
 
-V [prostředí cloud](https://shell.azure.com/powershell)udáváte:
+Do [Cloud Shell](https://shell.azure.com/powershell)zadejte:
 
 ```azurepowershell-interactive
 nano $home/clouddrive/rules.json
 ```
 
-Zkopírujte a vložte do souboru následující soubor JSon.
+Zkopírujte následující soubor. JSON a vložte ho do souboru.
 
 ```json
 {
@@ -66,21 +66,21 @@ Zkopírujte a vložte do souboru následující soubor JSon.
 }
 ```
 
-Až budete hotovi, stiskněte **Ctrl + O** a pak **Enter** pro uložení souboru. Chcete-li soubor zavřít a ukončit, stiskněte **klávesu Ctrl + X.**
+Až skončíte, stiskněte **klávesu CTRL + O** a pak **zadáním** uložte soubor. Stiskněte **CTRL + X** , abyste soubor zavřeli a ukončili.
 
 ## <a name="create-a-parameters-file"></a>Vytvoření souboru parametrů
 
-Potřebujete také soubor [parametrů,](../../governance/policy/concepts/definition-structure.md#parameters) který vytvoří strukturu, kterou můžete použít pro předávání v seznamu rozšíření, která chcete blokovat. 
+Budete také potřebovat soubor [parametrů](../../governance/policy/concepts/definition-structure.md#parameters) , který vytvoří strukturu, kterou můžete použít pro předání seznamu rozšíření, která chcete zablokovat. 
 
-Tento příklad ukazuje, jak vytvořit soubor parametrů pro virtuální počítače v prostředí Cloud Shell, ale pokud pracujete v prostředí PowerShell místně, můžete také vytvořit místní soubor a nahradit cestu ($home/clouddrive) s cestou k místnímu souboru v počítači.
+V tomto příkladu se dozvíte, jak vytvořit soubor parametrů pro virtuální počítače v Cloud Shell, ale pokud pracujete v místním prostředí PowerShell, můžete také vytvořit místní soubor a nahradit cestu ($home/clouddrive) cestou k místnímu souboru na vašem počítači.
 
-V [prostředí Cloud Shell](https://shell.azure.com/powershell)zadejte:
+Do [Cloud Shell](https://shell.azure.com/powershell)zadejte:
 
 ```azurepowershell-interactive
 nano $home/clouddrive/parameters.json
 ```
 
-Zkopírujte a vložte do souboru následující soubor JSon.
+Zkopírujte následující soubor. JSON a vložte ho do souboru.
 
 ```json
 {
@@ -95,13 +95,13 @@ Zkopírujte a vložte do souboru následující soubor JSon.
 }
 ```
 
-Až budete hotovi, stiskněte **Ctrl + O** a pak **Enter** pro uložení souboru. Chcete-li soubor zavřít a ukončit, stiskněte **klávesu Ctrl + X.**
+Až skončíte, stiskněte **klávesu CTRL + O** a pak **zadáním** uložte soubor. Stiskněte **CTRL + X** , abyste soubor zavřeli a ukončili.
 
-## <a name="create-the-policy"></a>Vytvořit zásadu
+## <a name="create-the-policy"></a>Vytvoření zásady
 
-Definice zásadje objekt používaný k uložení konfigurace, kterou chcete použít. Definice zásad používá k definování zásad soubory pravidel a parametrů. Vytvořte definici zásad pomocí rutiny [New-AzPolicyDefinition.](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition)
+Definice zásady je objekt, který slouží k uložení konfigurace, kterou chcete použít. Definice zásady používá soubory pravidel a parametrů k definování zásad. Pomocí rutiny [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) vytvořte definici zásady.
 
- Pravidla a parametry zásad jsou soubory, které jste vytvořili a uložili jako soubory JSON ve vašem cloudovém prostředí.
+ Pravidla a parametry zásad jsou soubory, které jste vytvořili a uložili ve službě cloud Shell jako soubory. JSON.
 
 
 ```azurepowershell-interactive
@@ -118,9 +118,9 @@ $definition = New-AzPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>Přiřazení zásady
 
-Tento příklad přiřadí zásadu skupině prostředků pomocí [aplikace New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment). Žádný virtuální virtuální ms vytvořený ve skupině prostředků **myResourceGroup** nebude moct nainstalovat rozšíření Agent pro přístup virtuálních připojení nebo Vlastní skript. 
+Tento příklad přiřadí zásadu ke skupině prostředků pomocí [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment). Žádný virtuální počítač vytvořený ve skupině prostředků **myResourceGroup** nebude moct nainstalovat agenta přístupu k virtuálním počítačům ani rozšíření vlastních skriptů. 
 
-Použití [Get-AzSubscription | Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) rutina získat id předplatného použít místo jednoho v příkladu.
+Použijte [příkaz Get-AzSubscription | Rutina Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) pro získání ID předplatného, které se má použít místo v příkladu.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"
@@ -141,7 +141,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>Testování zásad
 
-Chcete-li otestovat zásady, zkuste použít rozšíření Přístup k virtuálnímu připojení. Následující by měl selhat se zprávou "Set-AzVMAccessExtension : Prostředek myVMAccess' byl zakázán zásadou."
+Pokud chcete zásadu otestovat, zkuste použít rozšíření přístupu virtuálních počítačů. Následující příkaz by neměl selhat se zprávou "set-AzVMAccessExtension: prostředek" myVMAccess "byl zakázán zásadami."
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `
@@ -151,9 +151,9 @@ Set-AzVMAccessExtension `
    -Location EastUS 
 ```
 
-Na portálu by měla selhat změna hesla s "Nasazení šablony se nezdařilo z důvodu porušení zásad." zpráva.
+V portálu by změna hesla měla selhat s "nasazení šablony se nezdařilo z důvodu porušení zásad". zpráva.
 
-## <a name="remove-the-assignment"></a>Odebrání přiřazení
+## <a name="remove-the-assignment"></a>Odebrat přiřazení
 
 ```azurepowershell-interactive
 Remove-AzPolicyAssignment -Name not-allowed-vmextension-windows -Scope $scope

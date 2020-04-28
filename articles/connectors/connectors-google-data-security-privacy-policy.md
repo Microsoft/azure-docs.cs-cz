@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 01121612c5574544ef6985d33f56f3e334f8d37c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8c2ef8d174e8449b88f2257074bee69c3f45c6d9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82120649"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181935"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps
 
@@ -34,13 +34,13 @@ Pokud máte Logic Apps, které používají konektor Gmail, obdržíte e-mail s 
 
 V rámci této zásady platí, že když použijete účet příjemce Gmail, můžete použít konektor Gmail jenom s konkrétními službami, které se můžou změnit. Naše technické týmy pokračují v práci s Google a přidává další služby do tohoto seznamu. V současnosti se tady nacházejí triggery, akce a konektory, které jsou v rámci služby Gmail standardně schválené a které můžete použít ve stejném pracovním postupu aplikace logiky pomocí konektoru Gmail, když použijete účet uživatele Gmail:
 
-* Logic Apps integrovaných triggerů a akcí: Batch, Control, datové operace, datum a čas, plochý soubor, kapalina, požadavek, plán, proměnné a XML
+* Logic Apps integrovaných triggerů a akcí: Batch, Control, datové operace, datum a čas, plochý soubor, HTTP, kapalina, požadavky, plán, proměnné a XML
 
 * Služby Google: Gmail, Kalendář Google, Kontakty Google, disk Google, tabulky Google a úkoly Google
 
 * Schválené služby Microsoftu: Dynamics 365, Excel Online, Microsoft teams, Office 365, OneDrive a SharePoint Online
 
-* Konektory pro zdroje dat spravované zákazníkem: FTP, HTTP, RSS, SFTP, SMTP a SQL Server
+* Konektory pro zdroje dat spravované zákazníkem: FTP, RSS, SFTP, SMTP a SQL Server
 
 Nejnovější informace najdete v [technické referenční dokumentaci konektoru Gmail](https://docs.microsoft.com/connectors/gmail/).
 

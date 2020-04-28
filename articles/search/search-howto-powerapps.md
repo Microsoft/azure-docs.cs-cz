@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: eafd0ced64567ec7b51ff0f8aac19668343867ea
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: e4afa3c122fa6e21b29b6ad52a386096b20aa055
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82129754"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184385"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Kurz: dotazování indexu Kognitivní hledání z Power Apps
 
@@ -214,7 +214,7 @@ V tomto kroku vytvoříte aplikaci Power, která má vyhledávací pole, tlačí
 
    Na následujícím snímku obrazovky vidíte řádek vzorců pro akci při **výběru** .
 
-       :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Button OnSelect" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Tlačítko při výběru" border="true":::
 
    Tato akce způsobí, že tlačítko aktualizuje novou kolekci s názvem *azResult* s výsledkem vyhledávacího dotazu, a to pomocí textu v textovém poli *txtQuery* jako termín dotazu.
 

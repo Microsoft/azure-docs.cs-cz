@@ -1,128 +1,128 @@
 ---
-title: Poradce při potížích s cíli úložiště služby Azure HPC Cache NFS
-description: Tipy, jak se vyhnout chybám konfigurace a dalším problémům, které mohou způsobit selhání při vytváření cíle úložiště systému souborů NFS
+title: Řešení potíží s cíli úložiště systému souborů NFS pro mezipaměť HPC Azure
+description: Tipy pro předcházení chybám konfigurace a další problémy, které můžou způsobit selhání při vytváření cíle úložiště NFS
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: 0a24530810a448a713c01efbc8933b9f22d15b3b
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 72b6b0b78da23fd0891c0571c9137fefbfb0b077
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536365"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186613"
 ---
-# <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Poradce při potížích s konfigurací naserveru NAS a cílovými problémy úložiště systému NFS
+# <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Řešení potíží s cílovým úložištěm a konfigurací serveru NFS
 
-Tento článek poskytuje řešení pro některé běžné chyby konfigurace a další problémy, které by mohly zabránit Azure HPC Cache z přidání systému úložiště nfs jako cíl úložiště.
+Tento článek obsahuje řešení některých běžných chyb konfigurace a dalších problémů, které by mohly zabránit mezipaměti prostředí Azure HPC v přidání úložného systému NFS jako cíle úložiště.
 
-Tento článek obsahuje podrobnosti o kontrole portů a povolení root přístupu k systému NAS. Obsahuje také podrobné informace o méně běžných problémech, které mohou způsobit selhání vytvoření cíle úložiště systému nfs.
+Tento článek obsahuje podrobné informace o tom, jak kontrolovat porty a jak povolit kořenový přístup k systému NAS. Obsahuje taky podrobné informace o méně běžných problémech, které by mohly způsobit selhání vytvoření cíle úložiště NFS.
 
 > [!TIP]
-> Před použitím této příručky si přečtěte [požadavky pro cíle úložiště služby NFS](hpc-cache-prereqs.md#nfs-storage-requirements).
+> Před použitím tohoto průvodce si přečtěte [předpoklady pro cílení úložiště NFS](hpc-cache-prereqs.md#nfs-storage-requirements).
 
-Pokud zde není zahrnuto řešení vašeho problému, [otevřete lístek podpory,](hpc-cache-support-ticket.md) aby s vámi služba a podpora společnosti Microsoft mohly spolupracovat na prošetření a vyřešení problému.
+Pokud zde řešení problému není zahrnuto, [otevřete prosím lístek podpory](hpc-cache-support-ticket.md) , aby vám služba a podpora Microsoftu mohla spolupracovat, abyste mohli problém prozkoumat a vyřešit.
 
-## <a name="check-port-settings"></a>Kontrola nastavení portu
+## <a name="check-port-settings"></a>Kontrolovat nastavení portu
 
-Azure HPC Cache potřebuje přístup pro čtení a zápis k několika portům UDP/TCP v back-endovém úložném systému NAS. Ujistěte se, že tyto porty jsou přístupné v systému NAS a také že provoz je povolen pro tyto porty prostřednictvím všech bran firewall mezi systémem úložiště a podsítí mezipaměti. K ověření této konfigurace může být nutné pracovat se správci brány firewall a sítě pro datové centrum.
+Mezipaměť prostředí Azure HPC potřebuje přístup pro čtení a zápis k několika portům UDP/TCP na back-endovém systému úložiště NAS. Zajistěte, aby tyto porty byly dostupné v systému NAS, a také to, že provoz těchto portů je povolený prostřednictvím všech bran firewall mezi systémem úložiště a podsítí mezipaměti. Pro ověření této konfigurace může být nutné pracovat s bránou firewall a správci sítě pro vaše datové centrum.
 
-Porty se liší pro systémy úložiště od různých dodavatelů, proto při nastavování cíle úložiště zkontrolujte požadavky systému.
+Porty se liší pro systémy úložišť od různých dodavatelů, proto při nastavování cíle úložiště ověřte požadavky vašeho systému.
 
 Obecně platí, že mezipaměť potřebuje přístup k těmto portům:
 
 | Protocol (Protokol) | Port  | Služba  |
 |----------|-------|----------|
-| Protokol TCP/UDP  | 111   | rpcbind  |
-| Protokol TCP/UDP  | 2049  | NFS      |
-| Protokol TCP/UDP  | 4045  | nlockmgr řekl: |
-| Protokol TCP/UDP  | 4046  | připnout   |
-| Protokol TCP/UDP  | 4047  | status   |
+| TCP/UDP  | 111   | rpcbind  |
+| TCP/UDP  | 2049  | NFS      |
+| TCP/UDP  | 4045  | nlockmgr |
+| TCP/UDP  | 4046  | připojeno   |
+| TCP/UDP  | 4047  | status   |
 
-Chcete-li se dozvědět konkrétní porty ``rpcinfo`` potřebné pro váš systém, použijte následující příkaz. Tento příkaz níže uvádí porty a formátuje příslušné výsledky v tabulce. (Místo *<storage_IP>* termín použijte IP adresu vašeho systému.)
+Pokud chcete zjistit konkrétní porty potřebné pro váš systém, použijte následující ``rpcinfo`` příkaz. Tento příkaz vypíše porty a naformátuje příslušné výsledky v tabulce. (Použijte IP adresu vašeho systému místo *<storage_IP>* termínu.)
 
-Tento příkaz můžete vydat z libovolného klienta Linuxu, který má nainstalovanou infrastrukturu systému NFS. Pokud používáte klienta uvnitř podsítě clusteru, může také pomoci ověřit připojení mezi podsítí a systémem úložiště.
+Tento příkaz můžete vydat ze všech klientů se systémem Linux, na kterých je nainstalována infrastruktura systému souborů NFS. Pokud používáte klienta v podsíti clusteru, může vám také pomáhat ověřit připojení mezi podsítí a systémem úložiště.
 
 ```bash
 rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
 ```
 
-Ujistěte se, že všechny ``rpcinfo`` porty vrácené dotazem umožňují neomezený provoz z podsítě mezipaměti Azure HPC.
+Zajistěte, aby všechny porty vrácené ``rpcinfo`` dotazem umožňovaly neomezený provoz z podsítě mezipaměti HPC Azure.
 
-Zkontrolujte tato nastavení jak na samotném NAS, tak na všech firewallech mezi úložným systémem a podsítí mezipaměti.
+Tato nastavení ověřte na samotném serveru NAS a také na všech branách firewall mezi systémem úložiště a podsítí mezipaměti.
 
-## <a name="check-root-access"></a>Kontrola přístupu ke kořenům
+## <a name="check-root-access"></a>Kontrolovat kořenový přístup
 
-Azure HPC Cache potřebuje přístup k exportu vašeho systému úložiště k vytvoření cíle úložiště. Konkrétně připojí exporty jako ID uživatele 0.
+Mezipaměť HPC Azure potřebuje přístup k exportům vašeho systému úložiště, aby bylo možné vytvořit cíl úložiště. Konkrétně připojí exporty jako ID uživatele 0.
 
-Různé systémy úložiště používají různé metody, které umožňují tento přístup:
+Různé systémy úložiště umožňují přístup k tomuto přístupu pomocí různých metod:
 
-* Linuxové servery obvykle ``no_root_squash`` přidávají ``/etc/exports``do exportované cesty v .
-* Systémy NetApp a EMC obvykle řídí přístup pomocí pravidel exportu, která jsou vázána na konkrétní IP adresy nebo sítě.
+* Servery Linux se obecně ``no_root_squash`` přidávají do exportované cesty ``/etc/exports``v.
+* Systémy NetApp a EMC obvykle kontrolují přístup s pravidly exportu, která jsou vázaná na konkrétní IP adresy nebo sítě.
 
-Pokud používáte pravidla exportu, nezapomeňte, že mezipaměť může používat více různých IP adres z podsítě mezipaměti. Povolit přístup z celého rozsahu možných adres IP podsítě.
+Pokud používáte pravidla exportu, pamatujte, že mezipaměť může použít několik různých IP adres z podsítě mezipaměti. Povolí přístup z celé řady možných IP adres podsítě.
 
 > [!NOTE]
-> Ve výchozím nastavení Azure HPC Cache squashes root přístup. Podrobnosti najdete v části [Konfigurace dalších nastavení mezipaměti.](configuration.md#configure-root-squash)
+> Ve výchozím nastavení mezipaměť prostředí Azure HPC squashes root Access. Podrobnosti najdete v tématu [Konfigurace dalších nastavení mezipaměti](configuration.md#configure-root-squash) .
 
-Spolupracujte s dodavatelem úložiště NAS a povolte správnou úroveň přístupu pro mezipaměť.
+Spolupracujte se svým dodavatelem úložiště NAS, abyste povolili správnou úroveň přístupu pro mezipaměť.
 
-### <a name="allow-root-access-on-directory-paths"></a>Povolit kořenový přístup na cesty adresářů
+### <a name="allow-root-access-on-directory-paths"></a>Povolení kořenového přístupu na cestách adresářů
 <!-- linked in prereqs article -->
 
-Pro systémy NAS, které exportují hierarchické adresáře, potřebuje Azure HPC Cache root přístup ke každé úrovni exportu.
+Pro systémy NAS, které exportují hierarchické adresáře, vyžaduje mezipaměť prostředí Azure HPC kořenový přístup k jednotlivým úrovním exportu.
 
-Systém může například zobrazit tři exporty, jako jsou tyto:
+Systém může například zobrazit tři podobné exporty:
 
 * ``/ifs``
 * ``/ifs/accounting``
 * ``/ifs/accounting/payroll``
 
-Export ``/ifs/accounting/payroll`` je dítě ``/ifs/accounting``, ``/ifs/accounting`` a je sám ``/ifs``dítě .
+Export ``/ifs/accounting/payroll`` je podřízenou položkou ``/ifs/accounting``a ``/ifs/accounting`` je podřízenou položkou ``/ifs``.
 
-Pokud přidáte ``payroll`` export jako cíl úložiště mezipaměti HPC, ``/ifs/`` mezipaměť se skutečně připojí a přistupuje k adresáři mezd. Takže Azure HPC Cache ``/ifs`` potřebuje root přístup ``/ifs/accounting/payroll`` k přístupu k exportu.
+Pokud přidáte ``payroll`` exportovat jako cíl úložiště mezipaměti HPC, mezipaměť ve skutečnosti připojí ``/ifs/`` a přístup k adresáři mzdy z tohoto místa. Takže mezipaměť HPC Azure potřebuje k ``/ifs`` ``/ifs/accounting/payroll`` exportu přístup rootem.
 
-Tento požadavek souvisí se způsobem, jakým mezipaměti indexuje soubory a zabraňuje kolizím souborů pomocí popisovačů souborů, které poskytuje úložný systém.
+Tento požadavek souvisí s tím, jak mezipaměť indexuje soubory, a zabraňuje kolizím souborů pomocí popisovačů souborů, které poskytuje systém úložiště.
 
-Systém NAS s hierarchickými exporty může poskytnout různé popisovače souborů pro stejný soubor, pokud je soubor načten z různých exportů. Klient může například ``/ifs/accounting`` připojit a ``payroll/2011.txt``získat k němu přístup . Jiný klient ``/ifs/accounting/payroll`` připojí a přistupuje k souboru ``2011.txt``. V závislosti na tom, jak systém úložiště přiřadí popisovače souborů, mohou tito ``<mount2>/payroll/2011.txt`` dva klienti ``<mount3>/2011.txt``obdržet stejný soubor s různými popisovači souborů (jeden pro a jeden pro).
+Systém NAS s hierarchickými exporty může pro stejný soubor poskytnout různé obslužné rutiny souborů, pokud je soubor načten z různých exportů. Klient může například připojit ``/ifs/accounting`` soubor ``payroll/2011.txt``a získat k němu přístup. Další klient připojí ``/ifs/accounting/payroll`` a přistupuje k souboru ``2011.txt``. V závislosti na tom, jak systém úložiště přiřazuje popisovače souborů, můžou tito dva klienti obdržet stejný soubor s různými popisovači souborů ( ``<mount2>/payroll/2011.txt`` jeden pro a ``<mount3>/2011.txt``jeden pro).
 
-Systém úložiště back-end uchovává interní aliasy pro popisovače souborů, ale Azure HPC Cache nemůže zjistit, které popisovače souborů v jeho rejstříku odkazují na stejnou položku. Takže je možné, že mezipaměť může mít různé zápisy uložené v mezipaměti pro stejný soubor a použít změny nesprávně, protože neví, že se jedná o stejný soubor.
+Back-endové úložné systémy uchovávají interní aliasy pro popisovače souborů, ale mezipaměť prostředí Azure HPC nemůže určit, které popisovače souborů v indexu odkazují na stejnou položku. Proto je možné, že mezipaměť může mít jiné zápisy do mezipaměti pro stejný soubor a změny použít nesprávně, protože neví, že se jedná o stejný soubor.
 
-Chcete-li se vyhnout této možné kolizi souborů pro soubory ve více exportech, Azure HPC Cache automaticky připojí nejmělčí dostupné export v cestě (v``/ifs`` příkladu) a používá popisovač souboru daný z tohoto exportu. Pokud více exportů používá stejnou základní cestu, Azure HPC Cache potřebuje root přístup k této cestě.
+Aby nedošlo k této možné kolizi souborů v několika exportech, mezipaměť prostředí Azure HPC automaticky připojovat k nejbližšímu dostupnému exportu``/ifs`` v cestě (v příkladu) a používá popisovač souborů daný z tohoto exportu. Pokud více exportů používá stejnou základní cestu, Azure HPC cache potřebuje k této cestě přístup root.
 
 ## <a name="enable-export-listing"></a>Povolit výpis exportu
 <!-- link in prereqs article -->
 
-NAS musí uvést své exporty, když azure hpc cache dotazy.
+Pokud se do mezipaměti HPC Azure dotazuje, musí si seznam exportovat.
 
-Na většině systémů úložiště nfs, můžete otestovat odesláním následující dotaz z klienta Linux:``showmount -e <storage IP address>``
+Ve většině systémů úložišť NFS můžete tento test otestovat odesláním následujícího dotazu z klienta pro Linux:``showmount -e <storage IP address>``
 
-Pokud je to možné, použijte klienta Linux ze stejné virtuální sítě jako vaši mezipaměť.
+Pokud je to možné, použijte klienta pro Linux ze stejné virtuální sítě jako mezipaměť.
 
-Pokud tento příkaz neuvádí exporty, bude mít mezipaměť potíže s připojením k vašemu úložnému systému. Spolupracujte s dodavatelem NAS a povolte exportní zápis.
+Pokud tento příkaz nezobrazuje Seznam exportů, bude mít mezipaměť potíže s připojením k vašemu úložnému systému. Pokud chcete povolit výpis exportu, spolupracujte s dodavatelem serveru NAS.
 
-## <a name="adjust-vpn-packet-size-restrictions"></a>Úprava omezení velikosti paketů VPN
+## <a name="adjust-vpn-packet-size-restrictions"></a>Upravit omezení velikosti paketů sítě VPN
 <!-- link in prereqs article and configuration article -->
 
-Pokud máte VPN mezi mezipamětí a zařízením NAS, může vpn blokovat plnohodnotné 1500bajtové ethernetové pakety. Tento problém může mít, pokud velké výměny mezi NAS a Azure HPC Cache instance nedokončí, ale menší aktualizace fungovat podle očekávání.
+Pokud máte síť VPN mezi mezipamětí a zařízením NAS, může síť VPN blokovat 1500 paketů Ethernet s plnou velikostí. K tomuto problému může dojít, pokud se velké výměny mezi serverem NAS a instancí Azure HPC cache nedokončily, ale menší aktualizace fungují podle očekávání.
 
-Neexistuje jednoduchý způsob, jak zjistit, zda váš systém má tento problém, pokud neznáte podrobnosti o konfiguraci VPN. Zde je několik metod, které vám mohou pomoci zkontrolovat tento problém.
+Neexistuje jednoduchý způsob, jak zjistit, jestli má váš systém tento problém, pokud neznáte podrobnosti o konfiguraci sítě VPN. Tady je několik metod, které vám můžou při kontrole tohoto problému.
 
-* Pomocí programů pro sledování paketů na obou stranách sítě VPN můžete zjistit, které pakety se úspěšně přenášejí.
-* Pokud vaše VPN umožňuje příkazy ping, můžete otestovat odeslání paketu v plné velikosti.
+* Pomocí monitorování paketů na obou stranách sítě VPN můžete zjistit, které přenosy paketů proběhly úspěšně.
+* Pokud vaše síť VPN povoluje příkazy příkazu příkazového testu, můžete otestovat odesílání paketů s plnou velikostí.
 
-  Spusťte příkaz ping přes VPN na NAS s těmito možnostmi. (Místo<*storage_IP>* hodnotu použijte IP adresu vašeho úložného systému.)
+  Pomocí těchto možností spusťte na serveru NAS příkaz pro zadání příkazu k odeslání. (Místo *<storage_IP>* hodnotu použijte IP adresu systému úložiště.)
 
    ```bash
    ping -M do -s 1472 -c 1 <storage_IP>
    ```
 
-  Toto jsou možnosti v příkazu:
+  Jedná se o možnosti v příkazu:
 
-  * ``-M do``- Netříštit
-  * ``-c 1``- Odeslat pouze jeden paket
-  * ``-s 1472``- Nastavte velikost datové části na 1472 bajtů. Toto je maximální velikost datové části pro paket 1500 bajtů po účtování režie sítě Ethernet.
+  * ``-M do``– Nefragmentovat
+  * ``-c 1``– Odeslat jenom jeden paket
+  * ``-s 1472``– Nastavte velikost datové části na 1472 bajtů. Toto je maximální velikost datové části pro 1500 bajt po zúčtování pro režii sítě Ethernet.
 
   Úspěšná odpověď vypadá takto:
 
@@ -131,20 +131,20 @@ Neexistuje jednoduchý způsob, jak zjistit, zda váš systém má tento problé
   1480 bytes from 10.54.54.11: icmp_seq=1 ttl=64 time=2.06 ms
   ```
 
-  Pokud příkaz ping selže s 1472 bajtů, pravděpodobně dojde k problému s velikostí paketu.
+  Pokud se příkaz if nezdařil z 1472 bajtů, pravděpodobně došlo k potížím s velikostí paketů.
 
-Chcete-li problém vyřešit, možná budete muset nakonfigurovat upínání MSS v síti VPN, aby vzdálený systém správně zjistil maximální velikost rámce. Další informace najdete v dokumentaci k [parametrům brány VPN APsec/IKE.](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)
+Chcete-li tento problém vyřešit, bude pravděpodobně nutné nakonfigurovat připojení MSS na síti VPN, aby vzdálený systém správně rozpoznal maximální velikost rámce. Další informace najdete v [dokumentaci k parametrům VPN Gateway IPSec/IKE](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) .
 
-V některých případech může pomoci změna nastavení MTU pro mezipaměť Azure HPC na 1400. Pokud však omezíte mtu v mezipaměti, musíte také omezit nastavení MTU pro klienty a back-endové úložné systémy, které interagují s mezipamětí. Podrobnosti najdete v [části Konfigurace dalších nastavení mezipaměti Azure HPC.](configuration.md#adjust-mtu-value)
+V některých případech může pomáhat Změna nastavení jednotky MTU pro mezipaměť prostředí Azure HPC na 1400. Pokud však omezíte jednotku MTU v mezipaměti, musíte také omezit nastavení jednotky MTU pro klienty a back-endové systémy úložiště, které pracují s mezipamětí. Podrobnosti najdete v tématu [Konfigurace dalších nastavení mezipaměti HPC Azure](configuration.md#adjust-mtu-value) .
 
-## <a name="check-for-acl-security-style"></a>Kontrola stylu zabezpečení acl
+## <a name="check-for-acl-security-style"></a>Kontrolovat styl zabezpečení seznamu ACL
 
 Některé systémy NAS používají hybridní styl zabezpečení, který kombinuje seznamy řízení přístupu (ACL) s tradičním zabezpečením POSIX nebo UNIX.
 
-Pokud váš systém hlásí svůj styl zabezpečení jako UNIX nebo POSIX bez zahrnutí zkratky "ACL", tento problém se vás netýká.
+Pokud váš systém hlásí svůj styl zabezpečení jako UNIX nebo POSIX bez zahrnutí zkratky "ACL", tento problém vás neovlivní.
 
-Pro systémy, které používají aklů, Azure HPC Cache musí sledovat další hodnoty specifické pro uživatele, aby bylo možné řídit přístup k souborům. To se provádí povolením mezipaměti přístupu. Neexistuje ovládací prvek pro uživatele, který by zapnul mezipaměť pro přístup, ale můžete otevřít lístek podpory a požádat o jeho povolení pro ovlivněné cíle úložiště v systému mezipaměti.
+Pro systémy, které používají seznamy ACL, musí mezipaměť prostředí Azure HPC sledovat další hodnoty specifické pro uživatele, aby bylo možné řídit přístup k souborům. To se provádí povolením mezipaměti pro přístup. Není k dispozici žádný ovládací prvek pro přístup do mezipaměti, ale můžete otevřít lístek podpory a požádat ho, aby byl povolen pro ovlivněné cíle úložiště v systému cache.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte problém, který nebyl v tomto článku vyřešen, [otevřete lístek podpory](hpc-cache-support-ticket.md) a získejte odbornou pomoc.
+Pokud máte problém, který se v tomto článku nevyřešil, [otevřete lístek podpory](hpc-cache-support-ticket.md) , který vám umožní získat odbornou pomoc.
