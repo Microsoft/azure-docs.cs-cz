@@ -1,6 +1,6 @@
 ---
-title: Přidružení zásad brány firewall webových aplikací k existující bráně aplikace Azure
-description: Zjistěte, jak přidružit zásady brány firewall webových aplikací k existující bráně aplikací Azure.
+title: Přidružení zásady firewallu webových aplikací k existujícímu Application Gateway Azure
+description: Přečtěte si, jak přidružit zásady firewallu webových aplikací k existujícímu Application Gateway Azure.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,17 +8,17 @@ ms.service: web-application-firewall
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: 1ed2e0cf8cc8cd841d8779462d62ba4852774a3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083910"
 ---
-# <a name="associate-a-waf-policy-with-an-existing-application-gateway"></a>Přidružení zásad waf k existující aplikační bráně
+# <a name="associate-a-waf-policy-with-an-existing-application-gateway"></a>Přidružení zásady WAF k existujícímu Application Gateway
 
-Azure PowerShell můžete použít k [vytvoření zásad WAF](create-waf-policy-ag.md), ale už možná máte aplikační bránu a chcete k ní přidružit zásady WAF. V tomto článku uděláte právě to; vytvoříte zásadu WAF a přidružíte ji k již existující bráně aplikace. 
+Azure PowerShell můžete použít k [Vytvoření zásady WAF](create-waf-policy-ag.md), ale možná už máte Application Gateway a chcete k ní přidružit jenom zásadu WAF. V tomto článku jste to právě provedete; vytvoříte zásadu WAF a přidružíte ji k již existujícímu Application Gateway. 
 
-1. Získejte zásady brány aplikace a brány firewall. Pokud nemáte existující zásady brány firewall, přečtěte si krok 2. 
+1. Získejte Application Gateway a zásady brány firewall. Pokud nemáte existující zásady brány firewall, přečtěte si krok 2. 
 
    ```azurepowershell-interactive
       Connect-AzAccount
@@ -29,17 +29,17 @@ Azure PowerShell můžete použít k [vytvoření zásad WAF](create-waf-policy-
       $policy = Get-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>`
    ```
 
-2. (Nepovinné) Vytvořte zásady brány firewall.
+2. Volitelné Vytvořte zásady brány firewall.
 
    ```azurepowershell-interactive
       New-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>'
       $policy = Get-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>`
    ```
    > [!NOTE]
-   > Pokud vytváříte tuto zásadu WAF pro přechod z konfigurace WAF na zásadu WAF, musí být zásada přesnou kopií staré konfigurace. To znamená, že každé vyloučení, vlastní pravidlo, zakázané pravidlo skupiny, atd.
-3. (Nepovinné) Zásady WAF můžete nakonfigurovat tak, aby vyhovovaly vašim potřebám. To zahrnuje vlastní pravidla, zakázání pravidel / skupin pravidel, vyloučení, nastavení limitů pro odesílání souborů atd. Pokud tento krok přeskočíte, budou vybrány všechny výchozí hodnoty. 
+   > Pokud vytváříte tuto zásadu WAF k přechodu z WAF konfigurace na zásadu WAF, pak musí být tato zásada přesnou kopii staré konfigurace. To znamená, že každé vyloučení, vlastní pravidlo, skupina zakázaných pravidel atd. musí být přesně stejné, jako je v konfiguraci WAF.
+3. Volitelné Zásady WAF můžete nakonfigurovat tak, aby vyhovovaly vašim potřebám. Patří sem vlastní pravidla, zákaz skupin pravidel, vyloučení, nastavení limitů nahrávání souborů atd. Pokud tento krok přeskočíte, budou vybrány všechny výchozí hodnoty. 
    
-4. Uložte zásadu a připojte ji k bráně aplikace. 
+4. Uložte zásadu a připojte ji k vašemu Application Gateway. 
    
    ```azurepowershell-interactive
       #Save the policy itself

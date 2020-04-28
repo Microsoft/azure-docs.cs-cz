@@ -1,7 +1,7 @@
 ---
-title: Vyrovnávání zatížení na více konfiguracích IP – Azure CLI
+title: Vyrovnávání zatížení u více konfigurací IP – Azure CLI
 titleSuffix: Azure Load Balancer
-description: V tomto článku se dozvíte o vyrovnávání zatížení napříč primární a sekundární konfigurace IP pomocí Azure CLI.
+description: V tomto článku se dozvíte víc o vyrovnávání zatížení napříč primárními a sekundárními konfiguracemi IP adres pomocí Azure CLI.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,29 +14,29 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 6ac9e362314cc45e6adbdcf1390f70cbe6b05de8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74075966"
 ---
-# <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Vyrovnávání zatížení ve více konfiguracích IP pomocí PowerShellu
+# <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Vyrovnávání zatížení u více konfigurací IP adres pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
 > * [Portál](load-balancer-multiple-ip.md)
-> * [Cli](load-balancer-multiple-ip-cli.md)
+> * [CLI](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
 
-Tento článek popisuje, jak používat Azure Load Balancer s více IP adresami na sekundární síťové rozhraní (NIC). V tomto scénáři máme dva virtuální počítače se systémem Windows, každý s primární a sekundární nic. Každá ze sekundárních nic má dvě konfigurace IP. Každý virtuální virtuální virtuální mše hostuje weby contoso.com i fabrikam.com. Každý web je vázán na jednu z konfigurací IP na sekundární nic. Nástroj Azure Load Balancer používáme k vystavení dvou front-endových IP adres, jedné pro každý web, k distribuci provozu do příslušné konfigurace IP webu. Tento scénář používá stejné číslo portu v obou front-endů, stejně jako oba back-endového fondu IP adresy.
+Tento článek popisuje, jak použít Azure Load Balancer s více IP adresami na sekundárním síťovém rozhraní (NIC). V tomto scénáři máme dva virtuální počítače s Windows, každý s primárním a sekundárním síťovým ADAPTÉRem. Každá ze sekundárních síťových adaptérů má dvě konfigurace protokolu IP. Každý virtuální počítač je hostitelem webů contoso.com a fabrikam.com. Každý web je vázán na jednu z konfigurací protokolu IP v sekundárním síťovém adaptéru. K vystavení přenosu dat do příslušné konfigurace protokolu IP pro web používáme Azure Load Balancer k vystavení dvou IP adres front-endu, jeden pro každý web. V tomto scénáři se používá stejné číslo portu v obou front-endu i v obou IP adresách back-end fondu.
 
-![Obrázek scénáře LB](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
+![Obrázek scénáře vyrovnávání zatížení](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Kroky pro vyrovnávání zatížení ve více konfiguracích IP
+## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Postup vyrovnávání zatížení u více konfigurací IP adres
 
-Postupujte podle následujících kroků k dosažení scénáře popsaného v tomto článku:
+Podle následujícího postupu můžete dosáhnout scénáře popsaného v tomto článku:
 
 1. Nainstalujte Azure PowerShell. Projděte si článek [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview), kde najdete informace o instalaci nejnovější verze prostředí Azure PowerShell, výběru předplatného a přihlášení k účtu.
 2. Vytvořte skupinu prostředků pomocí následujících nastavení:
@@ -46,24 +46,24 @@ Postupujte podle následujících kroků k dosažení scénáře popsaného v to
     $myResourceGroup = "contosofabrikam"
     ```
 
-    Další informace naleznete v tématu Krok 2 vytvoření [skupiny prostředků](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+    Další informace najdete v kroku 2 tématu [Vytvoření skupiny prostředků](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
-3. [Vytvořte sadu dostupnosti,](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json) která bude obsahovat vaše virtuální počítače. V tomto scénáři použijte následující příkaz:
+3. [Vytvořte skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json) , která bude obsahovat vaše virtuální počítače. V tomto scénáři použijte následující příkaz:
 
     ```powershell
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. Postupujte podle pokynů kroky 3 až 5 v vytvoření článku [virtuálního počítače systému Windows](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) připravit vytvoření virtuálního počítače s jednou nic. Spusťte krok 6.1 a místo kroku 6.2 použijte následující:
+4. Postupujte podle pokynů 3 až 5 v článku [Vytvoření virtuálního počítače s Windows](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) a připravte vytváření virtuálního počítače s jedním síťovým adaptérem. Proveďte krok 6,1 a místo kroku 6,2 použijte následující:
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    Pak [dokončete vytvoření](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) kroků virtuálního aplikace pro Windows 6.3 až 6.8.
+    Potom dokončete kroky [Vytvoření virtuálního počítače s Windows](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) 6,3 až 6,8.
 
-5. Přidejte druhou konfiguraci IP do každého z virtuálních počítačů. Postupujte podle pokynů v [článku Přiřazení více IP adres virtuálním počítačům.](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add) Použijte následující nastavení konfigurace:
+5. Přidejte ke každému virtuálnímu počítači druhou konfiguraci protokolu IP. Postupujte podle pokynů v tématu [přiřazení více IP adres k virtuálním počítačům](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add) . Použijte následující nastavení konfigurace:
 
     ```powershell
     $NicName = "VM1-NIC2"
@@ -73,11 +73,11 @@ Postupujte podle následujících kroků k dosažení scénáře popsaného v to
     $Subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $myVnet
     ```
 
-    Pro účely tohoto kurzu není nutné přidružit sekundární konfigurace IP adres k veřejným IP adresám. Chcete-li odebrat veřejnou část přidružení IP adresy, upravte příkaz.
+    Pro účely tohoto kurzu nemusíte přidružit sekundární konfigurace IP s veřejnými IP adresami. Úpravou příkazu odeberte část přidružení veřejné IP adresy.
 
-6. Znovu proveďte kroky 4 až 6 tohoto článku pro VM2. Nezapomeňte při tom nahradit název virtuálního virtuálního montovana na VM2. Všimněte si, že není nutné vytvořit virtuální síť pro druhý virtuální počítač. Můžete nebo nemusíte vytvořit novou podsíť na základě případu použití.
+6. Kroky 4 až 6 tohoto článku proveďte znovu pro VM2. Pokud to uděláte, nezapomeňte název virtuálního počítače nahradit na VM2. Všimněte si, že nemusíte vytvářet virtuální síť pro druhý virtuální počítač. V závislosti na vašem případu použití můžete nebo nemůžete vytvořit novou podsíť.
 
-7. Vytvořte dvě veřejné IP adresy a uložte je do příslušných proměnných, jak je znázorněno na obrázku:
+7. Vytvořte dvě veřejné IP adresy a uložte je do příslušných proměnných, jak je znázorněno níže:
 
     ```powershell
     $publicIP1 = New-AzPublicIpAddress -Name PublicIp1 -ResourceGroupName contosofabrikam -Location 'West Central US' -AllocationMethod Dynamic -DomainNameLabel contoso
@@ -87,14 +87,14 @@ Postupujte podle následujících kroků k dosažení scénáře popsaného v to
     $publicIP2 = Get-AzPublicIpAddress -Name PublicIp2 -ResourceGroupName contosofabrikam
     ```
 
-8. Vytvořte dvě front-endové konfigurace IP adres:
+8. Vytvořte dvě konfigurace IP adresy front-endu:
 
     ```powershell
     $frontendIP1 = New-AzLoadBalancerFrontendIpConfig -Name contosofe -PublicIpAddress $publicIP1
     $frontendIP2 = New-AzLoadBalancerFrontendIpConfig -Name fabrikamfe -PublicIpAddress $publicIP2
     ```
 
-9. Vytvořte fondy back-endových adres, sondu a pravidla vyrovnávání zatížení:
+9. Vytvořte své fondy back-end adres, sondu a pravidla vyrovnávání zatížení:
 
     ```powershell
     $beaddresspool1 = New-AzLoadBalancerBackendAddressPoolConfig -Name contosopool
@@ -106,13 +106,13 @@ Postupujte podle následujících kroků k dosažení scénáře popsaného v to
     $lbrule2 = New-AzLoadBalancerRuleConfig -Name HTTPf -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthprobe -Protocol Tcp -FrontendPort 80 -BackendPort 80
     ```
 
-10. Po vytvoření těchto prostředků vytvořte vyvažovači zatížení:
+10. Po vytvoření těchto prostředků vytvořte Nástroj pro vyrovnávání zatížení:
 
     ```powershell
     $mylb = New-AzLoadBalancer -ResourceGroupName contosofabrikam -Name mylb -Location 'West Central US' -FrontendIpConfiguration $frontendIP1 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
     ```
 
-11. Přidejte do nově vytvořeného nástroje pro vyrovnávání zatížení druhý fond adres back-end a konfiguraci ip adres front-endu:
+11. Do nově vytvořeného nástroje pro vyrovnávání zatížení přidejte druhý fond back-end adres a konfiguraci IP adresy front-endu:
 
     ```powershell
     $mylb = Get-AzLoadBalancer -Name "mylb" -ResourceGroupName $myResourceGroup | Add-AzLoadBalancerBackendAddressPoolConfig -Name fabrikampool | Set-AzLoadBalancer
@@ -122,7 +122,7 @@ Postupujte podle následujících kroků k dosažení scénáře popsaného v to
     Add-AzLoadBalancerRuleConfig -Name HTTP -LoadBalancer $mylb -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80 | Set-AzLoadBalancer
     ```
 
-12. Níže uvedené příkazy získají síťové karty a pak přidají obě konfigurace IP jednotlivých sekundárních nic do fondu back-endových adres nástroje pro vyrovnávání zatížení:
+12. Níže uvedené příkazy získají síťové karty a potom do fondu back-end adres nástroje pro vyrovnávání zatížení přidají obě konfigurace protokolu IP obou sekundárních síťových adaptérů:
 
     ```powershell
     $nic1 = Get-AzNetworkInterface -Name "VM1-NIC2" -ResourceGroupName "MyResourcegroup";
@@ -139,8 +139,8 @@ Postupujte podle následujících kroků k dosažení scénáře popsaného v to
     $nic2 | Set-AzNetworkInterface
     ```
 
-13. Nakonec je nutné nakonfigurovat záznamy o prostředcích DNS tak, aby ukazovaly na příslušnou front-endovou IP adresu vykladače zatížení. Můžete hostovat své domény v Azure DNS. Další informace o používání Azure DNS s Balancer, najdete [v tématu použití Azure DNS s jinými službami Azure](../dns/dns-for-azure-services.md).
+13. Nakonec je třeba nakonfigurovat záznamy prostředků DNS tak, aby odkazovaly na příslušné IP adresy front-endu Load Balancer. Domény můžete hostovat v Azure DNS. Další informace o použití Azure DNS s Load Balancer najdete v tématu [použití Azure DNS s dalšími službami Azure](../dns/dns-for-azure-services.md).
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o tom, jak kombinovat služby vyrovnávání zatížení v Azure v [použití služeb vyrovnávání zatížení v Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Zjistěte, jak můžete použít různé typy protokolů v Azure ke správě a odstraňování problémů s vyrovnávání zatížení v [protokolech Azure Monitor pro Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).
+- Přečtěte si další informace o tom, jak kombinovat služby Vyrovnávání zatížení v Azure [pomocí služeb vyrovnávání zatížení v Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
+- Přečtěte si, jak můžete pomocí různých typů protokolů v Azure spravovat a řešit potíže s vyrovnáváním zatížení v [protokolech Azure Monitor Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).

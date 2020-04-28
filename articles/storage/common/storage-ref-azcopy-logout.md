@@ -1,6 +1,6 @@
 ---
-title: azkopie odhlášení | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje referenční informace pro příkaz odhlášení azcopy.
+title: odhlášení AzCopy | Microsoft Docs
+description: Tento článek poskytuje referenční informace k příkazu pro odhlášení AzCopy.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,19 +9,19 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 538c54c338540059baa17b9818d444cc863b7309
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74034056"
 ---
 # <a name="azcopy-logout"></a>azcopy logout
 
-Přihlásí uživatele a ukončí přístup k prostředkům Azure Storage.
+Zaznamená uživatele a ukončí přístup k prostředkům Azure Storage.
 
-## <a name="synopsis"></a>Synopse
+## <a name="synopsis"></a>Stručný obsah
 
-Tento příkaz odebere všechny přihlašovací údaje uložených v mezipaměti pro aktuálního uživatele.
+Tento příkaz odebere všechny přihlašovací informace v mezipaměti pro aktuálního uživatele.
 
 ```azcopy
 azcopy logout [flags]
@@ -30,23 +30,23 @@ azcopy logout [flags]
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
 - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
-- [Přenos dat pomocí úložiště AzCopy a Blob](storage-use-azcopy-blobs.md)
-- [Přenos dat pomocí AzCopy a ukládání souborů](storage-use-azcopy-files.md)
-- [Konfigurace, optimalizace a řešení potíží s azcopy](storage-use-azcopy-configure.md)
+- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
+- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Možnosti
 
 |Možnost|Popis|
 |--|--|
-|-h, --pomoc|Zobrazí obsah nápovědy pro příkaz odhlášení.|
+|-h,--help|Zobrazit obsah nápovědu pro příkaz pro odhlášení|
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
 |Možnost|Popis|
 |---|---|
-|--cap-mbps uint32|Završuje přenosovou rychlost v megabitech za sekundu. Propustnost se může mírně lišit od víčka. Pokud je tato možnost nastavena na nulu nebo je vynechána, propustnost není omezena.|
-|--řetězec výstupního typu|Formát výstupu příkazu. Volby zahrnují: text, json. Výchozí hodnota je "text".|
+|--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
+|--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
 
 ## <a name="see-also"></a>Viz také
 
-- [azkopie](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

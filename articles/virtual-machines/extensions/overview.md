@@ -1,6 +1,6 @@
 ---
 title: Funkce a rozšíření virtuálních počítačů Azure
-description: Zjistěte, co jsou rozšíření virtuálních počítačů Azure a jak je používat s virtuálními počítači Azure
+description: Přečtěte si, jaká rozšíření virtuálních počítačů Azure jsou a jak se dají používat s virtuálními počítači Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -15,68 +15,68 @@ ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: akjosh
 ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74072978"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Funkce a rozšíření virtuálních počítačů Azure
-Rozšíření virtuálních počítačů Azure (VM) jsou malé aplikace, které poskytují úlohy konfigurace a automatizace po nasazení na virtuálních počítačích Azure, můžete použít existující image a pak je přizpůsobit jako součást nasazení a dostat vás z podnikání vlastních obrazové budovy.
+Rozšíření virtuálních počítačů Azure jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. můžete použít existující image a pak je přizpůsobit jako součást nasazení. získáte tak vlastní vytváření vlastních imagí.
 
-Platforma Azure hostuje mnoho rozšíření, která sahají od konfigurace virtuálních počítačů, monitorování, zabezpečení a aplikací nástrojů. Vydavatelé vezmou aplikaci, pak ji zabalí do rozšíření a zjednoduší instalaci, takže vše, co musíte udělat, je poskytnout povinné parametry. 
+Platforma Azure je hostitelem mnoha rozšíření, která jsou v rozsahu od konfigurace virtuálních počítačů, monitorování, zabezpečení a aplikace nástrojů. Vydavatelé přebírají aplikaci, pak ji zabalí do rozšíření a zjednoduší instalaci, takže stačí, když zadáte povinné parametry. 
 
- Existuje velký výběr rozšíření první a třetí strany, pokud aplikace v úložišti rozšíření neexistuje, pak můžete použít rozšíření vlastní skript a nakonfigurovat virtuální počítač s vlastní skripty a příkazy.
+ Existuje velký výběr první a rozšíření od jiných dodavatelů, pokud aplikace v úložišti rozšíření neexistuje, můžete použít rozšíření vlastních skriptů a nakonfigurovat svůj virtuální počítač pomocí vlastních skriptů a příkazů.
 
-Příklady klíčových scénářů, pro které se rozšíření používají:
-* Konfigurace virtuálního počítače, můžete použít Powershell DSC (konfigurace požadovaného stavu), Chef, Loutka a vlastní script rozšíření k instalaci agentů konfigurace virtuálních počítačů a nakonfigurovat virtuální počítač. 
-* AV produkty, jako je Symantec, ESET.
-* Nástroj pro zranitelnost virtuálního počítače, například Qualys, Rapid7, HPE.
-* Nástroje pro monitorování virtuálních stránek a aplikací, jako je DynaTrace, Azure Network Watcher, Site24x7 a Stackify.
+Příklady klíčových scénářů, pro které jsou rozšíření používána:
+* Konfigurace virtuálních počítačů: k instalaci agentů konfigurace virtuálních počítačů a konfiguraci virtuálního počítače můžete použít rozšíření PowerShell DSC (Konfigurace požadovaného stavu), saďte, Puppet a Custom Script Extensions. 
+* ANTIVIROVÝch produktů, jako je Symantec, ESET.
+* Nástroj pro ohrožení zabezpečení virtuálního počítače, jako je například Qualys, Rapid7, HPE.
+* Nástroje pro monitorování virtuálních počítačů a aplikací, jako je DynaTrace, Azure Network Watcher, Site24x7 a Stackify.
 
-Rozšíření lze svázat s novým nasazením virtuálních počítače. Mohou být například součástí většího nasazení, konfigurace aplikací při poskytování virtuálních počítačů nebo spustit proti všem podporovaným systémům provozovaným rozšířením po nasazení.
+Rozšíření lze seskupit pomocí nového nasazení virtuálního počítače. Můžou být třeba součástí rozsáhlejšího nasazení, konfigurace aplikací v zřizování virtuálních počítačů nebo spouštění pro všechny podporované systémy ovládanými rozšířeními po nasazení.
 
-## <a name="how-can-i-find-what-extensions-are-available"></a>Jak najdu, jaká rozšíření jsou k dispozici?
-Dostupná rozšíření můžete zobrazit v okně virtuálního počítače na portálu, v rámci rozšíření to představuje jen malé množství, pro úplný seznam můžete použít nástroje rozhraní příkazového příkazu, najdete [v tématu Zjišťování rozšíření virtuálních zařízení pro Linux](features-linux.md) a zjišťování rozšíření [virtuálních zařízení pro Windows](features-windows.md).
+## <a name="how-can-i-find-what-extensions-are-available"></a>Jak můžu najít rozšíření, která jsou k dispozici?
+Dostupná rozšíření si můžete zobrazit v okně virtuálního počítače na portálu. v části rozšíření to představuje jenom malou část. úplný seznam vám umožní použít nástroje CLI, které najdete v tématu [zjišťování rozšíření virtuálních počítačů pro Linux](features-linux.md) a [zjišťování rozšíření virtuálních počítačů pro Windows](features-windows.md).
 
-## <a name="how-can-i-install-an-extension"></a>Jak mohu nainstalovat rozšíření?
-Rozšíření virtuálních počítačen Azure se můžou spravit buď pomocí Azure CLI, Azure PowerShellu, šablon Azure Resource Manager u portálu Azure. Chcete-li vyzkoušet rozšíření, můžete přejít na portál Azure, vyberte rozšíření vlastní skript, pak předat příkaz / skript a spustit rozšíření.
+## <a name="how-can-i-install-an-extension"></a>Jak můžu nainstalovat rozšíření?
+Rozšíření virtuálních počítačů Azure je možné spravovat pomocí Azure Resource Managerch šablon Azure CLI, Azure PowerShell, a Azure Portal. Pokud chcete vyzkoušet rozšíření, můžete přejít na Azure Portal, vybrat rozšíření vlastních skriptů a pak předat příkaz nebo skript a spustit rozšíření.
 
-Pokud chcete stejné rozšíření, které jste přidali na portálu pomocí cli nebo šablony Správce prostředků, podívejte se na různé rozšíření dokumentace, jako je [například Windows Custom Script Extension](custom-script-windows.md) a Linux Custom Script [Extension](custom-script-linux.md).
+Pokud chcete přidat stejné rozšíření, které jste přidali na portálu pomocí rozhraní příkazového řádku nebo šablony Správce prostředků, přečtěte si část dokumentace k rozšíření, například [rozšíření vlastních skriptů Windows](custom-script-windows.md) a [rozšíření vlastních skriptů pro Linux](custom-script-linux.md).
 
-## <a name="how-do-i-manage-extension-application-lifecycle"></a>Jak mohu spravovat životní cyklus rozšíření aplikace?
-K instalaci nebo odstranění rozšíření se nemusíte připojovat přímo k virtuálnímu virtuálnímu zařízení. Vzhledem k tomu, že životní cyklus rozšíření Azure se spravuje mimo virtuální počítač a je integrovaný do platformy Azure, získáte také integrovaný stav rozšíření.
+## <a name="how-do-i-manage-extension-application-lifecycle"></a>Návody spravovat životní cyklus aplikace rozšíření?
+K instalaci nebo odstranění tohoto rozšíření se nemusíte připojovat k virtuálnímu počítači přímo. Protože životní cyklus aplikace rozšíření Azure je spravován mimo virtuální počítač a integrovaný do platformy Azure, získáte také integrovaný stav rozšíření.
 
-## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Ještě něco bych měl myslet na rozšíření?
-Rozšíření instalovat aplikace, stejně jako všechny aplikace existují některé požadavky, pro rozšíření je seznam podporovaných operačních oken a linuxových operačních systémů a musíte mít nainstalované agenty virtuálních zařízení Azure. Některé jednotlivé aplikace rozšíření virtuálního připojení může mít své vlastní požadavky prostředí, jako je například přístup ke koncovému bodu.
+## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Něco jiného, co by mělo být v souvislosti s rozšířeními uvažujete?
+Rozšíření instalují aplikace, stejně jako u všech aplikací, pro rozšíření existuje seznam podporovaných systémů Windows a Linux operačních systémech a musíte mít nainstalované agenty virtuálních počítačů Azure. Některé aplikace rozšíření virtuálních počítačů můžou mít své vlastní požadavky na životní prostředí, jako je třeba přístup ke koncovému bodu.
 
 ## <a name="troubleshoot-extensions"></a>Poradce při potížích s rozšířeními
 
-Informace o řešení potíží pro každé rozšíření naleznete v části **Poradce při potížích a podpoře** v přehledu rozšíření. Zde je seznam dostupných informací o řešení potíží:
+Informace o řešení potíží pro jednotlivá rozšíření najdete v části **řešení potíží a podpora** v tématu Přehled tohoto rozšíření. Tady je seznam informací o řešení problémů, které jsou k dispozici:
 
 | Obor názvů | Řešení potíží |
 |-----------|-----------------|
-| microsoft.azure.monitoring.dependencyagent.dependencyagentlinux | [Závislost monitoru Azure pro Linux](agent-dependency-linux.md#troubleshoot-and-support) |
-| Microsoft.azure.monitoring.dependencyagent.dependencyagentwindows | [Závislost monitoru Azure pro Windows](agent-dependency-windows.md#troubleshoot-and-support) |
-| microsoft.azure.security.azurediskencryptionforlinux | [Šifrování disku Azure pro Linux](azure-disk-enc-linux.md#troubleshoot-and-support) |
-| šifrování microsoft.azure.security.azuredisk | [Šifrování disku Azure pro Windows](azure-disk-enc-windows.md#troubleshoot-and-support) |
-| Rozšíření microsoft.compute.customscriptextension | [Vlastní skript pro Windows](custom-script-windows.md#troubleshoot-and-support) |
-| Microsoft.ostcextensions.customscriptforlinux | [Požadovaná konfigurace stavu pro Linux](dsc-linux.md#troubleshoot-and-support) |
-| soubor microsoft.powershell.dsc | [Konfigurace požadovaného stavu pro windows](dsc-windows.md#troubleshoot-and-support) |
-| microsoft.hpccompute.nvidiagpudriverlinux | [Rozšíření ovladače GPU NVIDIA pro Linux](hpccompute-gpu-linux.md#troubleshoot-and-support) |
-| microsoft.hpccompute.nvidiagpudriverwindows | [Rozšíření ovladače GPU NVIDIA pro Windows](hpccompute-gpu-windows.md#troubleshoot-and-support) |
-| microsoft.azure.security.iaasantimalware | [Antimalwarové rozšíření pro Windows](iaas-antimalware-windows.md#troubleshoot-and-support) |
-| microsoft.enterprisecloud.monitoring.omsagentforlinux | [Azure Monitor pro Linux](oms-linux.md#troubleshoot-and-support)
-| Microsoft.enterprisecloud.monitoring.microsoftmonitoringagent | [Azure Monitor pro Windows](oms-windows.md#troubleshoot-and-support) |
-| stackify.linuxagent.extension.stackifylinuxagentextension stackify.linuxagentextension stackify.linuxagentextension stackify.linuxagent.stackifylinuxagentextension stackify.linux | [Stackify Retrace pro Linux](stackify-retrace-linux.md#troubleshoot-and-support) |
-| rozšíření vmaccessforlinux.microsoft.ostcextensions | [Resetování hesla (VMAccess) pro Linux](vmaccess.md#troubleshoot-and-support) |
-| Microsoft.recoveryservices.vmsnapshot | [Snímek pro Linux](vmsnapshot-linux.md#troubleshoot-and-support) |
-| Microsoft.recoveryservices.vmsnapshot | [Snímek pro Windows](vmsnapshot-windows.md#troubleshoot-and-support) |
+| Microsoft. Azure. Monitoring. dependencyagent. dependencyagentlinux | [Závislost Azure Monitor pro Linux](agent-dependency-linux.md#troubleshoot-and-support) |
+| Microsoft. Azure. Monitoring. dependencyagent. dependencyagentwindows | [Azure Monitor závislost pro Windows](agent-dependency-windows.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. azurediskencryptionforlinux | [Azure Disk Encryption pro Linux](azure-disk-enc-linux.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. azurediskencryption | [Azure Disk Encryption pro Windows](azure-disk-enc-windows.md#troubleshoot-and-support) |
+| Microsoft. Compute. CustomScriptExtension | [Vlastní skript pro Windows](custom-script-windows.md#troubleshoot-and-support) |
+| Microsoft. ostcextensions. customscriptforlinux | [Konfigurace požadovaného stavu pro Linux](dsc-linux.md#troubleshoot-and-support) |
+| Microsoft. PowerShell. DSC | [Konfigurace požadovaného stavu pro Windows](dsc-windows.md#troubleshoot-and-support) |
+| Microsoft. hpccompute. nvidiagpudriverlinux | [Rozšíření ovladače NVIDIA GPU pro Linux](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| Microsoft. hpccompute. nvidiagpudriverwindows | [Rozšíření ovladače NVIDIA GPU pro Windows](hpccompute-gpu-windows.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. iaasantimalware | [Antimalwarové rozšíření pro Windows](iaas-antimalware-windows.md#troubleshoot-and-support) |
+| Microsoft. enterprisecloud. Monitoring. omsagentforlinux | [Azure Monitor pro Linux](oms-linux.md#troubleshoot-and-support)
+| Microsoft. enterprisecloud. Monitoring. microsoftmonitoringagent | [Azure Monitor pro Windows](oms-windows.md#troubleshoot-and-support) |
+| Stackify. linuxagent. extension. stackifylinuxagentextension | [Stackify přetrasování pro Linux](stackify-retrace-linux.md#troubleshoot-and-support) |
+| vmaccessforlinux. Microsoft. ostcextensions | [Resetování hesla (VMAccess) pro Linux](vmaccess.md#troubleshoot-and-support) |
+| Microsoft. recoveryservices. VMSnapshot | [Snímek pro Linux](vmsnapshot-linux.md#troubleshoot-and-support) |
+| Microsoft. recoveryservices. VMSnapshot | [Snímek pro Windows](vmsnapshot-windows.md#troubleshoot-and-support) |
 
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o tom, jak linuxový agent a rozšíření fungují, najdete v [tématu rozšíření virtuálních virtuálních počítače Azure a funkce pro Linux](features-linux.md).
-* Další informace o tom, jak agent hosta Windows a rozšíření fungují, najdete v [tématu rozšíření virtuálních](features-windows.md)aplikací Azure a funkce pro Windows .  
-* Informace o instalaci agenta hosta Windows najdete v [tématu Přehled agenta virtuálních strojů Azure Windows](agent-windows.md).  
-* Informace o instalaci agenta Linuxu najdete v [tématu Přehled agenta virtuálních strojů Azure Linuxu](agent-linux.md).  
+* Další informace o fungování agenta a rozšíření pro Linux najdete v tématu [rozšíření a funkce virtuálních počítačů Azure pro Linux](features-linux.md).
+* Další informace o tom, jak funguje Agent hosta a rozšíření systému Windows, najdete v tématu [rozšíření a funkce virtuálních počítačů Azure pro Windows](features-windows.md).  
+* Informace o instalaci agenta hosta systému Windows najdete v tématu [Přehled agenta virtuálního počítače Azure s Windows](agent-windows.md).  
+* Informace o instalaci agenta pro Linux najdete v tématu [Přehled agenta virtuálních počítačů Azure Linux](agent-linux.md).  
 

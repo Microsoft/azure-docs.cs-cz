@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Ukázky konfigurace směrovače – NAT'
-description: Tato stránka obsahuje ukázky konfigurace směrovačů pro směrovače Cisco a Juniper.
+title: 'Azure ExpressRoute: Ukázky konfigurace směrovače – překlad adres (NAT)'
+description: Tato stránka poskytuje ukázky konfigurace směrovače pro směrovače Cisco a Juniper.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,28 +8,28 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74072113"
 ---
-# <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Ukázky konfigurace směrovače pro nastavení a správu nat
+# <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Ukázky konfigurace směrovače pro nastavení a správu překladu adres (NAT)
 
-Tato stránka poskytuje vzorky konfigurace NAT pro směrovače řady Cisco ASA a Juniper SRX při práci s ExpressRoute. Jsou určeny pouze jako vzorky, které jsou orientační, a nesmějí být používány tak, jak jsou. Můžete spolupracovat s dodavatelem a přijít s vhodnými konfiguracemi pro vaši síť.
+Tato stránka poskytuje ukázky konfigurace NAT pro směrovače Cisco ASA a Juniper SRX Series při práci s ExpressRoute. Jsou určené jenom pro podrobné pokyny a nesmí se používat jako. S vaším dodavatelem můžete pracovat s odpovídajícími konfiguracemi pro vaši síť.
 
 > [!IMPORTANT]
-> Vzorky na této stránce jsou určeny pouze pro orientaci. Musíte pracovat s prodejním / technickým týmem vašeho dodavatele a vaším síťovým týmem, abyste přišli s vhodnými konfiguracemi, které splní vaše potřeby. Společnost Microsoft nebude podporovat problémy související s konfiguracemi uvedenými na této stránce. Problémy s podporou vám poskytne dodavatel zařízení.
+> Ukázky na této stránce jsou určené pouze pro doprovodné materiály. Musíte pracovat s prodejem a technickým týmem vašeho dodavatele a týmem vaší sítě, aby se dosáhlo správných konfigurací, které vyhovují vašim potřebám. Společnost Microsoft nebude podporovat problémy související s konfiguracemi uvedenými na této stránce. Pokud potřebujete problémy s podporou, obraťte se na dodavatele zařízení.
 > 
 > 
 
-* Ukázky konfigurace směrovače níže platí pro azure veřejné a partnerských společností Microsoft. Nesmíte konfigurovat NAT pro privátní partnerský vztah Azure. Další podrobnosti naleznete v [požadavcích na partnerské partnerské partnerské partnerské společnosti ExpressRoute](expressroute-circuit-peerings.md) a [požadavky na navádění k virtuálním údajům expressroute a požadavky na například expressroute.](expressroute-nat.md)
+* Níže uvedené ukázky konfigurace směrovače se vztahují na partnerské vztahy Azure a veřejné partnerské vztahy Microsoftu. Pro privátní partnerské vztahy Azure nesmíte nakonfigurovat překlad adres (NAT). Další podrobnosti najdete v požadavcích na [partnerské vztahy ExpressRoute](expressroute-circuit-peerings.md) a [ExpressRoute překladu adres (NAT)](expressroute-nat.md) .
 
-* Pro připojení k internetu a ExpressRoute je nutné použít samostatné fondy IP adres NAT. Použití stejného fondu IP adres NAT přes internet a ExpressRoute bude mít za následek asymetrické směrování a ztrátu připojení.
+* Pro připojení k Internetu a ExpressRoute je nutné použít samostatné fondy IP adres NAT. Použití stejného fondu IP adres NAT v Internetu a ExpressRoute bude mít za následek asymetrické směrování a ztrátu připojení.
 
 
-## <a name="cisco-asa-firewalls"></a>Brány firewall Cisco ASA
-### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>Konfigurace PAT pro provoz ze sítě zákazníka do společnosti Microsoft
+## <a name="cisco-asa-firewalls"></a>Firewally Cisco ASA
+### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>Konfigurace PAT pro provoz ze sítě zákazníka do Microsoftu
     object network MSFT-PAT
       range <SNAT-START-IP> <SNAT-END-IP>
 
@@ -49,14 +49,14 @@ Tato stránka poskytuje vzorky konfigurace NAT pro směrovače řady Cisco ASA a
 
     nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
 
-### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>Konfigurace PAT pro provoz od Microsoftu k síti zákazníka
+### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>Konfigurace PAT pro provoz od Microsoftu do zákaznické sítě
 
 **Rozhraní a směr:**
 
     Source Interface (where the traffic enters the ASA): inside
     Destination Interface (where the traffic exits the ASA): outside
 
-**Konfigurace:**
+**Rozšířeného**
 
 Fond NAT:
 
@@ -68,7 +68,7 @@ Cílový server:
     object network Customer-Network
         network-object <IP> <Subnet-Mask>
 
-Skupina objektů pro IP adresy odběratele
+Skupina objektů pro IP adresy zákazníka
 
     object-group network MSFT-Network-1
         network-object <MSFT-IP> <Subnet-Mask>
@@ -81,8 +81,8 @@ Příkazy NAT:
     nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
 
 
-## <a name="juniper-srx-series-routers"></a>Juniper SRX série směrovačů
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Vytvoření redundantních ethernetových rozhraní pro cluster
+## <a name="juniper-srx-series-routers"></a>Směrovače společnosti Juniper SRX Series
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Vytvořte redundantní rozhraní sítě Ethernet pro cluster.
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -114,15 +114,15 @@ Příkazy NAT:
     }
 
 
-### <a name="2-create-two-security-zones"></a>2. Vytvoření dvou zón zabezpečení
-* Zóna důvěryhodnosti pro interní síť a zónu nedůvěryhodnosti pro externí síťové směrovače směřující k okraji
-* Přiřazení příslušných rozhraní zónám
-* Povolit služby na rozhraních
+### <a name="2-create-two-security-zones"></a>2. Vytvořte dvě zóny zabezpečení
+* Zóna důvěryhodnosti pro interní síť a nedůvěryhodnou zónu pro vnější hraniční směrovače sítě
+* Přiřazení vhodných rozhraní k zónám
+* Povolení služeb v rozhraních
 
-    zabezpečení { zóny { security-zone Trust { host-inbound-traffic { system-services { ping;                   } protokoly { bgp;                   } } rozhraní { reth0.100;               } } } security-zone Untrust { host-inbound-traffic { system-services { ping;                   } protokoly { bgp;                   } } rozhraní { reth1.100;               }           }       }   }
+    zabezpečení {Zones {Security-Zone Trust {System-Inbound-provoz {System-Services {test;                   } protokoly {BGP;                   }} rozhraní {RETH 0.100;               }} zóna Security nedůvěřuje {System-Inbound-provoz {System-Services {test;                   } protokoly {BGP;                   }} rozhraní {RETH 1.100;               }           }       }   }
 
 
-### <a name="3-create-security-policies-between-zones"></a>3. Vytvoření zásad zabezpečení mezi zónami
+### <a name="3-create-security-policies-between-zones"></a>3. vytvoření zásad zabezpečení mezi zónami
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -153,9 +153,9 @@ Příkazy NAT:
     }
 
 
-### <a name="4-configure-nat-policies"></a>4. Konfigurace zásad NAT
-* Vytvořte dva fondy NAT. Jeden bude použit pro přenos nanat odchozí do společnosti Microsoft a další od společnosti Microsoft k zákazníkovi.
-* Vytvoření pravidel pro NAT příslušného provozu
+### <a name="4-configure-nat-policies"></a>4. konfigurace zásad NAT
+* Vytvořte dva fondy NAT. Ten se použije pro přenos dat NAT do Microsoftu a dalších od Microsoftu po zákazníka.
+* Vytvořit pravidla pro NAT odpovídající provozu
   
        security {
            nat {
@@ -212,10 +212,10 @@ Příkazy NAT:
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Konfigurace protokolu BGP pro inzerování selektivních předpon v každém směru
-Podívejte se na ukázky na stránce [ukázky konfigurace směrování.](expressroute-config-samples-routing.md)
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. konfigurace protokolu BGP pro inzerování selektivních předpon v každém směru
+Přečtěte si ukázky na stránce [ukázky konfigurace směrování](expressroute-config-samples-routing.md) .
 
-### <a name="6-create-policies"></a>6. Vytváření zásad
+### <a name="6-create-policies"></a>6. vytvoření zásad
     routing-options {
                   autonomous-system <Customer-ASN>;
     }

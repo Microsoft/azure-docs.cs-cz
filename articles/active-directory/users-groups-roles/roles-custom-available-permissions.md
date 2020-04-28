@@ -1,6 +1,6 @@
 ---
-title: Dostupná oprávnění role vlastního správce – Azure AD | Dokumenty společnosti Microsoft
-description: Vlastní oprávnění role správce pro delegování správy identit.
+title: Dostupná oprávnění vlastní role správce – Azure AD | Microsoft Docs
+description: Oprávnění role vlastního správce pro delegování správy identit.
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,154 +14,154 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74025153"
 ---
-# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Podtypy a oprávnění registrace aplikací ve službě Azure Active Directory
+# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Podtypy registrace aplikace a oprávnění v Azure Active Directory
 
-Tento článek obsahuje aktuálně dostupná oprávnění k registraci aplikací pro vlastní definice rolí ve službě Azure Active Directory (Azure AD).
+Tento článek obsahuje aktuálně dostupná oprávnění k registraci aplikací pro vlastní definice rolí v Azure Active Directory (Azure AD).
 
-## <a name="permissions-for-managing-single-directory-applications"></a>Oprávnění pro správu aplikací s jedním adresářem
+## <a name="permissions-for-managing-single-directory-applications"></a>Oprávnění ke správě aplikací s jedním adresářem
 
-Při výběru oprávnění pro vlastní roli máte možnost udělit přístup ke správě pouze aplikací s jedním adresářem. Aplikace s jedním adresářem jsou k dispozici jenom pro uživatele v organizaci Azure AD, kde je aplikace registrována. Aplikace s jedním adresářem jsou definovány tak, že mají **podporované typy účtů** nastavené na "Účty pouze v tomto organizačním adresáři". V rozhraní API grafu mají aplikace s jedním adresářem vlastnost signInAudience nastavenou na "AzureADMyOrg.".
+Při volbě oprávnění pro vlastní roli máte možnost udělit přístup pro správu pouze aplikací s jedním adresářem. Aplikace s jedním adresářem jsou k dispozici pouze uživatelům v organizaci Azure AD, kde je aplikace zaregistrovaná. Aplikace s jedním adresářem jsou definované jako **podporované typy účtů** nastavené na účty pouze v tomto organizačním adresáři. V Graph API aplikace s jedním adresářem mají vlastnost signInAudience nastavenou na "AzureADMyOrg".
 
-Chcete-li udělit přístup pouze ke správě aplikací s jedním adresářem, použijte níže uvedená oprávnění s podtypem **applications.myOrganization**. Například microsoft.directory/applications.myOrganization/basic/update.
+Chcete-li udělit přístup ke správě pouze aplikací s jedním adresářem, použijte níže uvedená oprávnění u podtypu **Applications. myOrganization**. Například Microsoft. Directory/Applications. myOrganization/Basic/Update.
 
-Vysvětlení, co znamenají obecné termíny podtyp, oprávnění a sada vlastností, najdete v [přehledu vlastních rolí.](roles-custom-overview.md) Následující informace jsou specifické pro registrace žádostí.
+V tématu [Přehled vlastních rolí](roles-custom-overview.md) najdete vysvětlení významu podtypu, oprávnění a sady vlastností obecných podmínek. Následující informace jsou specifické pro registraci aplikací.
 
 ### <a name="create-and-delete"></a>Vytvořit a odstranit
 
-Existují dvě oprávnění k dispozici pro udělení možnosti vytvářet registrace aplikací, z nichž každé s jiným chováním:
+Existují dvě oprávnění, která jsou k dispozici pro udělení možnosti vytvářet registrace aplikací, z nichž každá má jiné chování:
 
-#### <a name="microsoftdirectoryapplicationscreateasowner"></a>Microsoft.directory/applications/createAsOwner
+#### <a name="microsoftdirectoryapplicationscreateasowner"></a>Microsoft. Directory/Applications/createAsOwner
 
-Přiřazení tohoto oprávnění má za následek, že tvůrce bude přidán jako první vlastník registrace vytvořené aplikace a registrace vytvořené aplikace se započítá do kvóty 250 vytvořených objektů tvůrce.
+Když se tato oprávnění přiřadí, přiřadí se autor jako první vlastník vytvořené registrace aplikace a registrace vytvořené aplikace se bude počítat s kvótou vytvořených objektů tvůrce 250.
 
-#### <a name="microsoftdirectoryapplicationscreate"></a>Microsoft.directory/applications/create
+#### <a name="microsoftdirectoryapplicationscreate"></a>Microsoft. Directory/aplikace/vytvořit
 
-Přiřazení tohoto oprávnění způsobí, že tvůrce nebude přidán jako první vlastník registrace vytvořené aplikace a registrace vytvořené aplikace se nezapočítá v kvótu 250 vytvořených objektů tvůrce. Toto oprávnění používejte opatrně, protože postupitele nic nebrání ve vytváření registrací aplikací, dokud nebude kvóta na úrovni adresáře přístupová. Pokud jsou přiřazena obě oprávnění, má toto oprávnění přednost.
+Když se tato oprávnění přiřadí, nepřidá se tvůrce jako první vlastník vytvořené registrace aplikace a registrace vytvořené aplikace se nebude počítat s kvótou vytvořených objektů tvůrce 250. Toto oprávnění používejte opatrně, protože nebrání žádnému neoprávněnému nabyvateli v vytváření registrací aplikací, dokud se nedosáhne kvóty na úrovni adresáře. Pokud jsou přiřazena obě oprávnění, má tato oprávnění přednost.
 
-Pokud jsou přiřazena obě oprávnění, oprávnění /create bude mít přednost. Ačkoli oprávnění /createAsOwner automaticky nepřidá tvůrce jako prvního vlastníka, vlastníci mohou být určeni při vytváření registrace aplikace při použití grafových api nebo rutin prostředí PowerShell.
+Pokud jsou přiřazena obě oprávnění, bude mít přednost oprávnění/CREATE. I když oprávnění/createAsOwner nepřidá tvůrce automaticky jako prvního vlastníka, můžou se vlastníci zadat během vytváření registrace aplikace při použití rozhraní Graph API nebo rutin PowerShellu.
 
-Vytvořte oprávnění udělit přístup k příkazu **Nová registrace.**
+Oprávnění CREATE udělte přístup k příkazu **New Registration** .
 
-[Tato oprávnění udělují přístup k příkazu Nový registrační portál.](./media/roles-create-custom/new-custom-role.png)
+[Tato oprávnění udělují přístup k novému registračnímu portálu příkazu](./media/roles-create-custom/new-custom-role.png)
 
-Pro udělení možnosti odstranění registrací aplikací jsou k dispozici dvě oprávnění:
+Existují dvě oprávnění, která jsou k dispozici pro udělení možnosti odstraňovat registrace aplikací:
 
-#### <a name="microsoftdirectoryapplicationsdelete"></a>microsoft.directory/applications/delete
+#### <a name="microsoftdirectoryapplicationsdelete"></a>Microsoft. Directory/aplikace/odstranit
 
-Uděluje možnost odstranit registrace aplikací bez ohledu na podtyp; to znamená aplikace s jedním klientem i více klienty.
+Udělí možnost odstraňovat registrace aplikací bez ohledu na podtyp; To znamená jeden tenant i víceklientské aplikace.
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationdelete"></a>microsoft.directory/applications.myOrganization/delete
+#### <a name="microsoftdirectoryapplicationsmyorganizationdelete"></a>Microsoft. Directory/Applications. myOrganization/DELETE
 
-Uděluje možnost odstranit registrace aplikací omezené na ty, které jsou přístupné pouze pro účty ve vaší organizaci nebo aplikace s jedním tenantem (podtyp myOrganization).
+Udělí možnost odstraňovat registrace aplikací omezené na ty, které jsou přístupné jenom účtům ve vaší organizaci nebo aplikacích s jedním klientem (myOrganization podtyp).
 
-![Tato oprávnění udělují přístup k příkazu Odstranit registraci aplikace.](./media/roles-custom-available-permissions/delete-app-registration.png)
+![Tato oprávnění udělují přístup k příkazu Odstranit registraci aplikace](./media/roles-custom-available-permissions/delete-app-registration.png)
 
 > [!NOTE]
-> Při přiřazování role, která obsahuje oprávnění k vytvoření, musí být přiřazení role provedeno v oboru adresáře. Oprávnění vytvořit přiřazené v oboru prostředků neuděluje možnost vytvářet registrace aplikací.
+> Při přiřazování role, která obsahuje oprávnění k vytvoření, je nutné přiřazení role provést v oboru adresáře. Oprávnění vytvořit přiřazené v oboru prostředku neuděluje možnost vytvářet registrace aplikací.
 
 ### <a name="read"></a>Čtení
 
-Všichni členové uživatelé v organizaci mohou ve výchozím nastavení číst informace o registraci aplikace. Uživatelé typu Host a instanční objekty aplikačních služeb však nemohou. Pokud plánujete přiřadit roli uživateli typu Host nebo aplikaci, musíte zahrnout příslušná oprávnění ke čtení.
+Všichni členové členských uživatelů v organizaci můžou ve výchozím nastavení číst informace o registraci aplikace. Uživatelé typu Host a instanční objekty aplikace ale nemůžou. Pokud plánujete přiřadit roli uživateli nebo aplikaci typu Host, musíte zahrnout příslušná oprávnění ke čtení.
 
-#### <a name="microsoftdirectoryapplicationsallpropertiesread"></a>Microsoft.directory/applications/allProperties/read
+#### <a name="microsoftdirectoryapplicationsallpropertiesread"></a>Microsoft. Directory/Applications/allProperties/Read
 
-Možnost číst všechny vlastnosti jednoklientských a víceklientských aplikací mimo vlastnosti, které nelze číst v žádné situaci, jako jsou pověření.
+Možnost číst všechny vlastnosti jednoho klienta a víceklientské aplikace mimo vlastnosti, které nelze číst v jakékoli situaci, jako jsou přihlašovací údaje.
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesread"></a>microsoft.directory/applications.myOrganization/allProperties/read
+#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesread"></a>Microsoft. Directory/Applications. myOrganization/allProperties/Read
 
-Uděluje stejná oprávnění jako microsoft.directory/applications/allProperties/read, ale pouze pro aplikace s jedním klientem.
+Udělí stejná oprávnění jako Microsoft. Directory/Applications/allProperties/Read, ale jenom pro aplikace s jedním klientem.
 
-#### <a name="microsoftdirectoryapplicationsownersread"></a>microsoft.directory/applications/owners/read
+#### <a name="microsoftdirectoryapplicationsownersread"></a>Microsoft. Directory/aplikace/vlastníci/čtení
 
-Uděluje možnost číst vlastníky vlastnosti na jednotenanta a více klienta aplikace. Uděluje přístup ke všem polím na stránce vlastníků registrace aplikace:
+Uděluje možnost číst vlastníky v aplikacích pro jednoho tenanta a víceklientské aplikace. Uděluje přístup ke všem polím na stránce vlastníci registrace aplikace:
 
-![Tato oprávnění udělují přístup na stránku vlastníků registrace aplikací.](./media/roles-custom-available-permissions/app-registration-owners.png)
+![Tato oprávnění udělují přístup k stránce vlastníci registrace aplikací.](./media/roles-custom-available-permissions/app-registration-owners.png)
 
-#### <a name="microsoftdirectoryapplicationsstandardread"></a>Microsoft.directory/applications/standard/read
+#### <a name="microsoftdirectoryapplicationsstandardread"></a>Microsoft. Directory/Applications/Standard/Read
 
-Uděluje přístup ke standardním vlastnostem registrace aplikace pro čtení. To zahrnuje vlastnosti napříč stránkami registrace aplikace.
+Udělí přístup ke čtení standardních vlastností registrace aplikace. To zahrnuje vlastnosti mezi stránkami pro registraci aplikací.
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationstandardread"></a>microsoft.directory/applications.myOrganization/standard/read
+#### <a name="microsoftdirectoryapplicationsmyorganizationstandardread"></a>Microsoft. Directory/Applications. myOrganization/Standard/Read
 
-Uděluje stejná oprávnění jako microsoft.directory/applications/standard/read, ale pouze pro aplikace s jedním tenantem.
+Udělí stejná oprávnění jako Microsoft. Directory/Applications/Standard/Read, ale jenom pro aplikace s jedním klientem.
 
 ### <a name="update"></a>Aktualizace
 
-#### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>Microsoft.directory/applications/allProperties/update
+#### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>Microsoft. Directory/Applications/allProperties/Update
 
-Možnost aktualizovat všechny vlastnosti v aplikacích s jedním adresářem a více adresáři.
+Možnost aktualizovat všechny vlastnosti v jednom adresáři a ve více adresářových aplikacích.
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>microsoft.directory/applications.myOrganization/allProperties/update
+#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>Microsoft. Directory/Applications. myOrganization/allProperties/Update
 
-Uděluje stejná oprávnění jako microsoft.directory/applications/allProperties/update, ale pouze pro aplikace s jedním klientem.
+Udělí stejná oprávnění jako Microsoft. Directory/Applications/allProperties/Update, ale pouze pro aplikace s jedním klientem.
 
-#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft.directory/applications/audience/update
+#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>Microsoft. Directory/Applications/publikum/Update
 
-Možnost aktualizovat vlastnost typu podporovaného účtu (signInAudience) v aplikacích s jedním adresářem a s více adresáři.
+Možnost aktualizovat vlastnost podporovaného typu účtu (signInAudience) na jednom adresáři a ve více adresářových aplikacích.
 
-![Toto oprávnění uděluje přístup k vlastnosti typu podporovaného účtu pro registraci aplikace na stránce ověřování.](./media/roles-custom-available-permissions/supported-account-types.png)
+![Toto oprávnění uděluje přístup k vlastnosti typu účtu, který podporuje registraci aplikace na stránce ověřování.](./media/roles-custom-available-permissions/supported-account-types.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationaudienceupdate"></a>microsoft.directory/applications.myOrganization/audience/update
+#### <a name="microsoftdirectoryapplicationsmyorganizationaudienceupdate"></a>Microsoft. Directory/Applications. myOrganization/publikum/Update
 
-Uděluje stejná oprávnění jako microsoft.directory/applications/audience/update, ale pouze pro aplikace s jedním tenantem.
+Udělí stejná oprávnění jako Microsoft. Directory/Applications/publikum/Update, ale jenom pro aplikace s jedním klientem.
 
-#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>microsoft.directory/applications/authentication/update
+#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>Microsoft. Directory/Applications/Authentication/Update
 
-Možnost aktualizovat adresu URL odpovědi, odhlašovací adresu URL, implicitní tok a vlastnosti domény vydavatele v aplikacích s jedním klientem a více klienty. Uděluje přístup ke všem polím na stránce ověřování registrace aplikace s výjimkou podporovaných typů účtů:
+Možnost aktualizace adres URL odpovědi, adresy URL pro odhlášení, implicitního toku a vlastností domény vydavatele v rámci jednoho tenanta a víceklientské aplikace. Udělí přístup ke všem polím na stránce ověřování registrace aplikace s výjimkou podporovaných typů účtů:
 
-![Uděluje přístup k ověřování registrace aplikací, ale nepodporovaným typům účtů.](./media/roles-custom-available-permissions/supported-account-types.png)
+![Udělí přístup k ověřování registrace aplikace, ale ne k podporovaným typům účtů.](./media/roles-custom-available-permissions/supported-account-types.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationauthenticationupdate"></a>microsoft.directory/applications.myOrganization/authentication/update
+#### <a name="microsoftdirectoryapplicationsmyorganizationauthenticationupdate"></a>Microsoft. Directory/Applications. myOrganization/Authentication/Update
 
-Uděluje stejná oprávnění jako microsoft.directory/applications/authentication/update, ale pouze pro aplikace s jedním klientem.
+Udělí stejná oprávnění jako Microsoft. Directory/Applications/Authentication/Update, ale jenom pro aplikace s jedním klientem.
 
-#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>Microsoft.directory/applications/basic/update
+#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>Microsoft. Directory/Applications/Basic/Update
 
-Možnost aktualizovat název, logo, adresu URL domovské stránky, adresu URL služby a vlastnosti adresy URL prohlášení o zásadách ochrany osobních údajů v aplikacích s jedním tenantem a více klienty. Uděluje přístup ke všem polím na stránce značky registrace aplikace:
+Možnost aktualizace vlastností název, logo, adresa URL domovské stránky, adresa URL podmínek služby a vlastnosti adresy URL prohlášení o zásadách ochrany osobních údajů v aplikacích pro jednoho tenanta a víceklientské úrovni. Udělí přístup ke všem polím na stránce s informacemi o registraci aplikace:
 
-![Toto oprávnění uděluje přístup na stránku značky registrace aplikací.](./media/roles-custom-available-permissions/app-registration-branding.png)
+![Toto oprávnění uděluje přístup k stránce s informacemi o registraci aplikace.](./media/roles-custom-available-permissions/app-registration-branding.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationbasicupdate"></a>microsoft.directory/applications.myOrganization/basic/update
+#### <a name="microsoftdirectoryapplicationsmyorganizationbasicupdate"></a>Microsoft. Directory/Applications. myOrganization/Basic/Update
 
-Uděluje stejná oprávnění jako microsoft.directory/applications/basic/update, ale pouze pro aplikace s jedním klientem.
+Udělí stejná oprávnění jako Microsoft. Directory/Applications/Basic/Update, ale jenom pro aplikace s jedním klientem.
 
-#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>Microsoft.directory/applications/credentials/update
+#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace
 
-Možnost aktualizovat certifikáty a vlastnosti tajných kódů klienta v aplikacích s jedním klientem a více klienty. Uděluje přístup ke všem polím na stránce & osvědčení o registraci aplikace:
+Možnost aktualizace certifikátů a vlastností tajných kódů klienta v aplikacích s jedním klientem a víceklientské aplikace. Udělí přístup ke všem polím na stránce certifikáty pro registraci aplikací & tajných kódů:
 
-![Toto oprávnění uděluje přístup k certifikátům registrace aplikací & stránce tajných kódů.](./media/roles-custom-available-permissions/app-registration-secrets.png)
+![Toto oprávnění uděluje přístup k registračním certifikátům aplikací & stránce tajných klíčů.](./media/roles-custom-available-permissions/app-registration-secrets.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>microsoft.directory/applications.myOrganization/credentials/update
+#### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>Microsoft. Directory/Applications. myOrganization/přihlašovací údaje/aktualizace
 
-Uděluje stejná oprávnění jako microsoft.directory/applications/credentials/update, ale pouze pro aplikace s jedním adresářem.
+Udělí stejná oprávnění jako Microsoft. Directory/Applications/Credentials/Update, ale jenom pro aplikace s jedním adresářem.
 
-#### <a name="microsoftdirectoryapplicationsownersupdate"></a>soubor microsoft.directory/applications/owners/update
+#### <a name="microsoftdirectoryapplicationsownersupdate"></a>Microsoft. Directory/aplikace/vlastníci/aktualizace
 
-Možnost aktualizovat vlastnost vlastníka na jednotenanta a více klientů. Uděluje přístup ke všem polím na stránce vlastníků registrace aplikace:
+Možnost aktualizovat vlastnost Owner v jednom tenantovi a víceklientském tenantovi. Uděluje přístup ke všem polím na stránce vlastníci registrace aplikace:
 
-![Tato oprávnění udělují přístup na stránku vlastníků registrace aplikací.](./media/roles-custom-available-permissions/app-registration-owners.png)
+![Tato oprávnění udělují přístup k stránce vlastníci registrace aplikací.](./media/roles-custom-available-permissions/app-registration-owners.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationownersupdate"></a>microsoft.directory/applications.myOrganization/owners/update
+#### <a name="microsoftdirectoryapplicationsmyorganizationownersupdate"></a>Microsoft. Directory/Applications. myOrganization/Owners/Update
 
-Uděluje stejná oprávnění jako microsoft.directory/applications/owners/update, ale pouze pro aplikace s jedním tenantem.
+Udělí stejná oprávnění jako Microsoft. Directory/Applications/Owners/Update, ale jenom pro aplikace s jedním klientem.
 
-#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>soubor microsoft.directory/applications/permissions/update
+#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>Microsoft. Directory/aplikace/oprávnění/aktualizace
 
-Možnost aktualizovat delegovaná oprávnění, oprávnění aplikací, autorizované klientské aplikace, požadovaná oprávnění a udělit vlastnosti souhlasu v aplikacích s jedním klientem a více klienty. Neuděluje možnost souhlasu. Uděluje přístup ke všem polím v oprávněních rozhraní API pro registraci aplikací a vystavit stránky rozhraní API:
+Možnost aktualizovat delegovaná oprávnění, oprávnění aplikace, autorizované klientské aplikace, požadovaná oprávnění a udělit vlastnosti souhlasu pro jeden tenant a víceklientské aplikace. Neuděluje možnost provádět souhlas. Uděluje přístup všem polím v rozhraní API pro registraci aplikace a zpřístupňuje stránky rozhraní API:
 
-![Tato oprávnění udělují přístup ke stránce oprávnění rozhraní API pro registraci aplikací.](./media/roles-custom-available-permissions/app-registration-api-permissions.png)
+![Tato oprávnění udělují přístup ke stránce oprávnění rozhraní API pro registraci aplikace.](./media/roles-custom-available-permissions/app-registration-api-permissions.png)
 
-![Tato oprávnění udělují přístup k registraci aplikace Vystavit stránku rozhraní API](./media/roles-custom-available-permissions/app-registration-expose-api.png)
+![Tato oprávnění udělují přístup k registraci aplikace zobrazit stránku rozhraní API](./media/roles-custom-available-permissions/app-registration-expose-api.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>microsoft.directory/applications.myOrganization/permissions/update
+#### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>Microsoft. Directory/Applications. myOrganization/oprávnění/Update
 
-Uděluje stejná oprávnění jako microsoft.directory/applications/permissions/update, ale pouze pro aplikace s jedním klientem.
+Udělí stejná oprávnění jako Microsoft. Directory/Applications/Permissions/Update, ale jenom pro aplikace s jedním klientem.
 
 ## <a name="required-license-plan"></a>Požadovaný licenční plán
 
@@ -169,5 +169,5 @@ Uděluje stejná oprávnění jako microsoft.directory/applications/permissions/
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vytváření vlastních rolí pomocí [portálu Azure Portal, Azure AD PowerShell a rozhraní GRAPH API](roles-create-custom.md)
+- Vytváření vlastních rolí pomocí [Azure Portal, Azure AD PowerShellu a Graph API](roles-create-custom.md)
 - [Zobrazení přiřazení pro vlastní roli](roles-view-assignments.md)

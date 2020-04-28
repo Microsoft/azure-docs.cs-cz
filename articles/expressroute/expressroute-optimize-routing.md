@@ -1,5 +1,5 @@
 ---
-title: 'Azure ExpressRoute: Optimalizace směrování'
+title: 'Azure ExpressRoute: optimalizace směrování'
 description: Tato stránka obsahuje podrobné informace o tom, jak optimalizovat směrování, pokud máte více než jeden okruh ExpressRoute, který poskytuje připojení mezi Microsoftem a vaší podnikovou sítí.
 services: expressroute
 author: charwen
@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
 ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74080138"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimalizace směrování ExpressRoute
 Pokud máte víc okruhů ExpressRoute, máte více než jednu cestu, jak se připojit k Microsoftu. V důsledku toho může dojít k neoptimálnímu směrování, to znamená, že přenosy dat mezi vaší sítí a Microsoftem mohou použít delší cestu. Čím delší je síťová cesta, tím větší je latence. Latence má přímý vliv na výkon aplikací a činnost koncového uživatele. Tento článek popíše tento problém a vysvětlí možnosti optimalizace směrování pomocí standardních technologií směrování.
 
-## <a name="path-selection-on-microsoft-and-public-peerings"></a>Výběr cesty v partnerských a veřejných partnerských partnerech Microsoftu
-Je důležité zajistit, aby při využití microsoftnebo veřejné peering, že provoz toky přes požadovanou cestu, pokud máte jeden nebo více ExpressRoute okruhy, stejně jako cesty k Internetu přes Internet Exchange (IX) nebo Internet Service Provider (ISP). Protokol BGP využívá algoritmus výběru nejlepší cesty založený na řadě faktorů, včetně nejdelší shody předpony (LPM). Chcete-li zajistit, aby provoz určený pro Azure prostřednictvím Microsoftu nebo veřejného partnerského vztahu procházel cestou ExpressRoute, musí zákazníci implementovat atribut *Local Preference,* aby bylo zajištěno, že cesta je vždy upřednostňovaná na ExpressRoute. 
+## <a name="path-selection-on-microsoft-and-public-peerings"></a>Výběr cesty na Microsoftu a veřejných partnerských vztahů
+Je důležité zajistit, aby při použití partnerského vztahu Microsoftu nebo veřejného partnera, který provoz přetéká přes požadovanou cestu, pokud máte jeden nebo více okruhů ExpressRoute, a také cesty k Internetu prostřednictvím internetového Exchange (IX) nebo poskytovatele internetových služeb (ISP). Protokol BGP využívá nejlepší algoritmus výběru cest založený na několika faktorech, včetně nejdelší shody předpony (základní). Aby se zajistilo, že provoz určený pro Azure prostřednictvím Microsoft nebo veřejného partnerského vztahu prochází cestou ExpressRoute, musí implementovat atribut *místní předvolby* , aby se zajistilo, že je tato cesta vždy upřednostňovaná v ExpressRoute. 
 
 > [!NOTE]
-> Výchozí místní předvolba je obvykle 100. Vyšší místní preference jsou preferovány. 
+> Výchozí místní preference je obvykle 100. Vyšší místní předvolby jsou vhodnější. 
 >
 >
 
-Zvažte následující příklad scénáře:
+Vezměte v úvahu následující vzorový scénář:
 
 ![Případ 1 ExpressRoute – Problém: Neoptimální směrování od zákazníka do Microsoftu](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
-Ve výše uvedeném příkladu, chcete-li preferovat ExpressRoute cesty konfigurovat místní předvolby takto. 
+Ve výše uvedeném příkladu dáváte přednost ExpressRoute cestám konfigurace místní předvolby následujícím způsobem. 
 
-**Konfigurace Cisco IOS-XE z pohledu R1:**
+**Konfigurace Cisco IOS-XE z perspektivy R1:**
 
     R1(config)#route-map prefer-ExR permit 10
     R1(config-route-map)#set local-preference 150
@@ -41,7 +41,7 @@ Ve výše uvedeném příkladu, chcete-li preferovat ExpressRoute cesty konfigur
     R1(config-router)#neighbor 1.1.1.2 activate
     R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
 
-**Konfigurace Junos z pohledu R1:**
+**Konfigurace Junos z hlediska R1:**
 
     user@R1# set protocols bgp group ibgp type internal
     user@R1# set protocols bgp group ibgp local-preference 150
@@ -54,7 +54,7 @@ Podívejme se zblízka na problém směrování na příkladu. Představte si, �
 ![Případ 1 ExpressRoute – Problém: Neoptimální směrování od zákazníka do Microsoftu](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
 ### <a name="solution-use-bgp-communities"></a>Řešení: Použití komunit protokolu BGP
-Abyste optimalizovali směrování pro uživatele obou poboček, musíte vědět, která předpona je z oblasti Azure USA – západ a která z Azure USA – východ. Tyto informace kódujeme pomocí [hodnot komunity protokolu BGP](expressroute-routing.md). Každé oblasti Azure jsme přiřadili jedinečnou hodnotu komunity Protokolu BGP, například "12076:51004" pro USA – východ, 12076:51006 pro USA – západ. Teď, když už víte, které předpona je z které oblasti Azure, můžete nakonfigurovat, který okruh ExpressRoute se bude upřednostňovat. Vzhledem k tomu, že k výměně informací o směrování používáme protokol BGP, můžete použít k ovlivnění směrování hodnotu Local Preference protokolu BGP. V našem příkladu můžete přiřadit vyšší hodnotu Local Preference pro 13.100.0.0/16 v oblasti USA – západ než v oblasti USA – východ a obdobně vyšší hodnotu Local Preference pro 23.100.0.0/16 v oblasti USA – východ než USA – západ. Tato konfigurace zajistí, že když jsou k dispozici obě cesty do Microsoftu, uživatelé v Los Angeles použijí pro připojení k Azure USA – západ okruh ExpressRoute v oblasti USA – západ, zatímco uživatelé v New Yorku použijí pro připojení k Azure USA – východ okruh ExpressRoute v oblasti USA – východ. Směrování je optimalizované na obou stranách. 
+Abyste optimalizovali směrování pro uživatele obou poboček, musíte vědět, která předpona je z oblasti Azure USA – západ a která z Azure USA – východ. Tyto informace kódujeme pomocí [hodnot komunity protokolu BGP](expressroute-routing.md). K každé oblasti Azure jsme přiřadili jedinečnou hodnotu komunity protokolu BGP, třeba "12076:51004" pro USA – východ, "12076:51006" pro USA – západ. Teď, když už víte, které předpona je z které oblasti Azure, můžete nakonfigurovat, který okruh ExpressRoute se bude upřednostňovat. Vzhledem k tomu, že k výměně informací o směrování používáme protokol BGP, můžete použít k ovlivnění směrování hodnotu Local Preference protokolu BGP. V našem příkladu můžete přiřadit vyšší hodnotu Local Preference pro 13.100.0.0/16 v oblasti USA – západ než v oblasti USA – východ a obdobně vyšší hodnotu Local Preference pro 23.100.0.0/16 v oblasti USA – východ než USA – západ. Tato konfigurace zajistí, že když jsou k dispozici obě cesty do Microsoftu, uživatelé v Los Angeles použijí pro připojení k Azure USA – západ okruh ExpressRoute v oblasti USA – západ, zatímco uživatelé v New Yorku použijí pro připojení k Azure USA – východ okruh ExpressRoute v oblasti USA – východ. Směrování je optimalizované na obou stranách. 
 
 ![Případ 1 ExpressRoute – Řešení: Použití komunit protokolu BGP](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
 
@@ -74,7 +74,7 @@ Existují dvě řešení problému. První z nich je, že budete jednoduše inze
 Druhým řešením je, že budete nadále inzerovat obě předpony v obou okruzích ExpressRoute a kromě toho nám dáte vědět, která předpona je blíž ke které z poboček. Protože podporujeme předřazení protokolu BGP AS PATH, můžete konfigurovat cestu AS PATH pro vaši předponu a ovlivnit směrování. V tomto příkladu lze prodloužit AS PATH pro 172.2.0.0/31 v oblasti USA – východ tak, abychom pro přenos dat určený pro tuto předponu preferovali okruh ExpressRoute v oblasti USA – západ (protože naše síť si bude myslet, že cesta k této předponě je přes západ kratší). Obdobně lze prodloužit AS PATH pro 172.2.0.2/31 v oblasti USA – západ, abychom preferovali okruh ExpressRoute v oblasti USA – východ. Směrování je optimalizované pro obě pobočky. Pokud v tomto návrhu jeden okruh ExpressRoute není funkční, Exchange Online se s vámi pořád může spojit prostřednictvím jiného okruhu ExpressRoute a vaší sítě WAN. 
 
 > [!IMPORTANT]
-> Odebereme soukromá čísla AS v CESTĚ AS pro předpony přijaté v partnerské společnosti Microsoft při partnerského vztahu pomocí soukromého čísla AS. Musíte peer s veřejným AS a připojit veřejná čísla AS v cestě AS ovlivnit směrování pro Partnerský vztah Společnosti Microsoft.
+> Pro předpony přijaté v partnerském vztahu Microsoftu odebereme jako čísla v cestě AS čísla, která jsou přijatá při partnerském vztahu s privátním číslem. Pro ovlivnění směrování pro partnerský vztah Microsoftu je potřeba, abyste se připojili k veřejnému připojení jako k jako číslům v cestě AS.
 > 
 > 
 
